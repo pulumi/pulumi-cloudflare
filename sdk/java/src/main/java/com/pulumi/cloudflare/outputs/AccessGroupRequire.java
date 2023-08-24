@@ -3,6 +3,7 @@
 
 package com.pulumi.cloudflare.outputs;
 
+import com.pulumi.cloudflare.outputs.AccessGroupRequireAuthContext;
 import com.pulumi.cloudflare.outputs.AccessGroupRequireAzure;
 import com.pulumi.cloudflare.outputs.AccessGroupRequireExternalEvaluation;
 import com.pulumi.cloudflare.outputs.AccessGroupRequireGithub;
@@ -20,6 +21,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class AccessGroupRequire {
     private @Nullable Boolean anyValidServiceToken;
+    private @Nullable List<AccessGroupRequireAuthContext> authContexts;
     private @Nullable String authMethod;
     private @Nullable List<AccessGroupRequireAzure> azures;
     private @Nullable Boolean certificate;
@@ -43,6 +45,9 @@ public final class AccessGroupRequire {
     private AccessGroupRequire() {}
     public Optional<Boolean> anyValidServiceToken() {
         return Optional.ofNullable(this.anyValidServiceToken);
+    }
+    public List<AccessGroupRequireAuthContext> authContexts() {
+        return this.authContexts == null ? List.of() : this.authContexts;
     }
     public Optional<String> authMethod() {
         return Optional.ofNullable(this.authMethod);
@@ -112,6 +117,7 @@ public final class AccessGroupRequire {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean anyValidServiceToken;
+        private @Nullable List<AccessGroupRequireAuthContext> authContexts;
         private @Nullable String authMethod;
         private @Nullable List<AccessGroupRequireAzure> azures;
         private @Nullable Boolean certificate;
@@ -135,6 +141,7 @@ public final class AccessGroupRequire {
         public Builder(AccessGroupRequire defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.anyValidServiceToken = defaults.anyValidServiceToken;
+    	      this.authContexts = defaults.authContexts;
     	      this.authMethod = defaults.authMethod;
     	      this.azures = defaults.azures;
     	      this.certificate = defaults.certificate;
@@ -160,6 +167,14 @@ public final class AccessGroupRequire {
         public Builder anyValidServiceToken(@Nullable Boolean anyValidServiceToken) {
             this.anyValidServiceToken = anyValidServiceToken;
             return this;
+        }
+        @CustomType.Setter
+        public Builder authContexts(@Nullable List<AccessGroupRequireAuthContext> authContexts) {
+            this.authContexts = authContexts;
+            return this;
+        }
+        public Builder authContexts(AccessGroupRequireAuthContext... authContexts) {
+            return authContexts(List.of(authContexts));
         }
         @CustomType.Setter
         public Builder authMethod(@Nullable String authMethod) {
@@ -301,6 +316,7 @@ public final class AccessGroupRequire {
         public AccessGroupRequire build() {
             final var o = new AccessGroupRequire();
             o.anyValidServiceToken = anyValidServiceToken;
+            o.authContexts = authContexts;
             o.authMethod = authMethod;
             o.azures = azures;
             o.certificate = certificate;

@@ -21,7 +21,6 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     // Create a CSR and generate a CA certificate
     ///     var examplePrivateKey = new Tls.PrivateKey("examplePrivateKey", new()
     ///     {
     ///         Algorithm = "RSA",
@@ -29,7 +28,6 @@ namespace Pulumi.Cloudflare
     /// 
     ///     var exampleCertRequest = new Tls.CertRequest("exampleCertRequest", new()
     ///     {
-    ///         KeyAlgorithm = examplePrivateKey.Algorithm,
     ///         PrivateKeyPem = examplePrivateKey.PrivateKeyPem,
     ///         Subjects = new[]
     ///         {

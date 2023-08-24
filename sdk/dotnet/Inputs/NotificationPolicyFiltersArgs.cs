@@ -36,6 +36,18 @@ namespace Pulumi.Cloudflare.Inputs
             set => _enableds = value;
         }
 
+        [Input("environments")]
+        private InputList<string>? _environments;
+
+        /// <summary>
+        /// Environment of pages. Available values: `ENVIRONMENT_PREVIEW`, `ENVIRONMENT_PRODUCTION`.
+        /// </summary>
+        public InputList<string> Environments
+        {
+            get => _environments ?? (_environments = new InputList<string>());
+            set => _environments = value;
+        }
+
         [Input("eventSources")]
         private InputList<string>? _eventSources;
 
@@ -58,6 +70,18 @@ namespace Pulumi.Cloudflare.Inputs
         {
             get => _eventTypes ?? (_eventTypes = new InputList<string>());
             set => _eventTypes = value;
+        }
+
+        [Input("events")]
+        private InputList<string>? _events;
+
+        /// <summary>
+        /// Pages event to alert. Available values: `EVENT_DEPLOYMENT_STARTED`, `EVENT_DEPLOYMENT_FAILED`, `EVENT_DEPLOYMENT_SUCCESS`.
+        /// </summary>
+        public InputList<string> Events
+        {
+            get => _events ?? (_events = new InputList<string>());
+            set => _events = value;
         }
 
         [Input("healthCheckIds")]
@@ -154,6 +178,18 @@ namespace Pulumi.Cloudflare.Inputs
         {
             get => _products ?? (_products = new InputList<string>());
             set => _products = value;
+        }
+
+        [Input("projectIds")]
+        private InputList<string>? _projectIds;
+
+        /// <summary>
+        /// Identifier of pages project.
+        /// </summary>
+        public InputList<string> ProjectIds
+        {
+            get => _projectIds ?? (_projectIds = new InputList<string>());
+            set => _projectIds = value;
         }
 
         [Input("protocols")]

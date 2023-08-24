@@ -23,6 +23,7 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly ImmutableArray<string> Claims;
         public readonly string? ClientId;
         public readonly string? ClientSecret;
+        public readonly bool? ConditionalAccessEnabled;
         public readonly string? DirectoryId;
         public readonly string? EmailAttributeName;
         public readonly string? IdpPublicCert;
@@ -58,6 +59,8 @@ namespace Pulumi.Cloudflare.Outputs
             string? clientId,
 
             string? clientSecret,
+
+            bool? conditionalAccessEnabled,
 
             string? directoryId,
 
@@ -95,6 +98,7 @@ namespace Pulumi.Cloudflare.Outputs
             Claims = claims;
             ClientId = clientId;
             ClientSecret = clientSecret;
+            ConditionalAccessEnabled = conditionalAccessEnabled;
             DirectoryId = directoryId;
             EmailAttributeName = emailAttributeName;
             IdpPublicCert = idpPublicCert;

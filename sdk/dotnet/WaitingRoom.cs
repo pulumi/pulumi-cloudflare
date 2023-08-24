@@ -42,6 +42,7 @@ namespace Pulumi.Cloudflare
     ///         Name = "foo",
     ///         NewUsersPerMinute = 200,
     ///         Path = "/",
+    ///         QueueingStatusCode = 200,
     ///         TotalActiveUsers = 200,
     ///         ZoneId = "0da42c8d2132a9ddaf714f9e7c920711",
     ///     });
@@ -137,6 +138,12 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Output("queueingMethod")]
         public Output<string?> QueueingMethod { get; private set; } = null!;
+
+        /// <summary>
+        /// HTTP status code returned to a user while in the queue.
+        /// </summary>
+        [Output("queueingStatusCode")]
+        public Output<int?> QueueingStatusCode { get; private set; } = null!;
 
         /// <summary>
         /// Lifetime of a cookie (in minutes) set by Cloudflare for users who get access to the origin. Defaults to `5`.
@@ -293,6 +300,12 @@ namespace Pulumi.Cloudflare
         public Input<string>? QueueingMethod { get; set; }
 
         /// <summary>
+        /// HTTP status code returned to a user while in the queue.
+        /// </summary>
+        [Input("queueingStatusCode")]
+        public Input<int>? QueueingStatusCode { get; set; }
+
+        /// <summary>
         /// Lifetime of a cookie (in minutes) set by Cloudflare for users who get access to the origin. Defaults to `5`.
         /// </summary>
         [Input("sessionDuration")]
@@ -407,6 +420,12 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("queueingMethod")]
         public Input<string>? QueueingMethod { get; set; }
+
+        /// <summary>
+        /// HTTP status code returned to a user while in the queue.
+        /// </summary>
+        [Input("queueingStatusCode")]
+        public Input<int>? QueueingStatusCode { get; set; }
 
         /// <summary>
         /// Lifetime of a cookie (in minutes) set by Cloudflare for users who get access to the origin. Defaults to `5`.

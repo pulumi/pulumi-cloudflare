@@ -3,6 +3,7 @@
 
 package com.pulumi.cloudflare.inputs;
 
+import com.pulumi.cloudflare.inputs.AccessGroupExcludeAuthContextArgs;
 import com.pulumi.cloudflare.inputs.AccessGroupExcludeAzureArgs;
 import com.pulumi.cloudflare.inputs.AccessGroupExcludeExternalEvaluationArgs;
 import com.pulumi.cloudflare.inputs.AccessGroupExcludeGithubArgs;
@@ -28,6 +29,13 @@ public final class AccessGroupExcludeArgs extends com.pulumi.resources.ResourceA
 
     public Optional<Output<Boolean>> anyValidServiceToken() {
         return Optional.ofNullable(this.anyValidServiceToken);
+    }
+
+    @Import(name="authContexts")
+    private @Nullable Output<List<AccessGroupExcludeAuthContextArgs>> authContexts;
+
+    public Optional<Output<List<AccessGroupExcludeAuthContextArgs>>> authContexts() {
+        return Optional.ofNullable(this.authContexts);
     }
 
     @Import(name="authMethod")
@@ -167,6 +175,7 @@ public final class AccessGroupExcludeArgs extends com.pulumi.resources.ResourceA
 
     private AccessGroupExcludeArgs(AccessGroupExcludeArgs $) {
         this.anyValidServiceToken = $.anyValidServiceToken;
+        this.authContexts = $.authContexts;
         this.authMethod = $.authMethod;
         this.azures = $.azures;
         this.certificate = $.certificate;
@@ -213,6 +222,19 @@ public final class AccessGroupExcludeArgs extends com.pulumi.resources.ResourceA
 
         public Builder anyValidServiceToken(Boolean anyValidServiceToken) {
             return anyValidServiceToken(Output.of(anyValidServiceToken));
+        }
+
+        public Builder authContexts(@Nullable Output<List<AccessGroupExcludeAuthContextArgs>> authContexts) {
+            $.authContexts = authContexts;
+            return this;
+        }
+
+        public Builder authContexts(List<AccessGroupExcludeAuthContextArgs> authContexts) {
+            return authContexts(Output.of(authContexts));
+        }
+
+        public Builder authContexts(AccessGroupExcludeAuthContextArgs... authContexts) {
+            return authContexts(List.of(authContexts));
         }
 
         public Builder authMethod(@Nullable Output<String> authMethod) {

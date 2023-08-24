@@ -46,6 +46,10 @@ export interface AccessApplicationSaasApp {
      */
     consumerServiceUrl: pulumi.Input<string>;
     /**
+     * Custom attribute mapped from IDPs.
+     */
+    customAttributes?: pulumi.Input<pulumi.Input<inputs.AccessApplicationSaasAppCustomAttribute>[]>;
+    /**
      * The format of the name identifier sent to the SaaS application. Defaults to `email`.
      */
     nameIdFormat?: pulumi.Input<string>;
@@ -55,8 +59,27 @@ export interface AccessApplicationSaasApp {
     spEntityId: pulumi.Input<string>;
 }
 
+export interface AccessApplicationSaasAppCustomAttribute {
+    friendlyName?: pulumi.Input<string>;
+    /**
+     * Friendly name of the Access Application.
+     */
+    name?: pulumi.Input<string>;
+    nameFormat?: pulumi.Input<string>;
+    required?: pulumi.Input<boolean>;
+    source: pulumi.Input<inputs.AccessApplicationSaasAppCustomAttributeSource>;
+}
+
+export interface AccessApplicationSaasAppCustomAttributeSource {
+    /**
+     * Friendly name of the Access Application.
+     */
+    name: pulumi.Input<string>;
+}
+
 export interface AccessGroupExclude {
     anyValidServiceToken?: pulumi.Input<boolean>;
+    authContexts?: pulumi.Input<pulumi.Input<inputs.AccessGroupExcludeAuthContext>[]>;
     authMethod?: pulumi.Input<string>;
     azures?: pulumi.Input<pulumi.Input<inputs.AccessGroupExcludeAzure>[]>;
     certificate?: pulumi.Input<boolean>;
@@ -76,6 +99,15 @@ export interface AccessGroupExclude {
     oktas?: pulumi.Input<pulumi.Input<inputs.AccessGroupExcludeOkta>[]>;
     samls?: pulumi.Input<pulumi.Input<inputs.AccessGroupExcludeSaml>[]>;
     serviceTokens?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface AccessGroupExcludeAuthContext {
+    acId: pulumi.Input<string>;
+    /**
+     * The ID of this resource.
+     */
+    id: pulumi.Input<string>;
+    identityProviderId: pulumi.Input<string>;
 }
 
 export interface AccessGroupExcludeAzure {
@@ -115,6 +147,7 @@ export interface AccessGroupExcludeSaml {
 
 export interface AccessGroupInclude {
     anyValidServiceToken?: pulumi.Input<boolean>;
+    authContexts?: pulumi.Input<pulumi.Input<inputs.AccessGroupIncludeAuthContext>[]>;
     authMethod?: pulumi.Input<string>;
     azures?: pulumi.Input<pulumi.Input<inputs.AccessGroupIncludeAzure>[]>;
     certificate?: pulumi.Input<boolean>;
@@ -134,6 +167,15 @@ export interface AccessGroupInclude {
     oktas?: pulumi.Input<pulumi.Input<inputs.AccessGroupIncludeOkta>[]>;
     samls?: pulumi.Input<pulumi.Input<inputs.AccessGroupIncludeSaml>[]>;
     serviceTokens?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface AccessGroupIncludeAuthContext {
+    acId: pulumi.Input<string>;
+    /**
+     * The ID of this resource.
+     */
+    id: pulumi.Input<string>;
+    identityProviderId: pulumi.Input<string>;
 }
 
 export interface AccessGroupIncludeAzure {
@@ -173,6 +215,7 @@ export interface AccessGroupIncludeSaml {
 
 export interface AccessGroupRequire {
     anyValidServiceToken?: pulumi.Input<boolean>;
+    authContexts?: pulumi.Input<pulumi.Input<inputs.AccessGroupRequireAuthContext>[]>;
     authMethod?: pulumi.Input<string>;
     azures?: pulumi.Input<pulumi.Input<inputs.AccessGroupRequireAzure>[]>;
     certificate?: pulumi.Input<boolean>;
@@ -192,6 +235,15 @@ export interface AccessGroupRequire {
     oktas?: pulumi.Input<pulumi.Input<inputs.AccessGroupRequireOkta>[]>;
     samls?: pulumi.Input<pulumi.Input<inputs.AccessGroupRequireSaml>[]>;
     serviceTokens?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface AccessGroupRequireAuthContext {
+    acId: pulumi.Input<string>;
+    /**
+     * The ID of this resource.
+     */
+    id: pulumi.Input<string>;
+    identityProviderId: pulumi.Input<string>;
 }
 
 export interface AccessGroupRequireAzure {
@@ -240,6 +292,7 @@ export interface AccessIdentityProviderConfig {
     claims?: pulumi.Input<pulumi.Input<string>[]>;
     clientId?: pulumi.Input<string>;
     clientSecret?: pulumi.Input<string>;
+    conditionalAccessEnabled?: pulumi.Input<boolean>;
     directoryId?: pulumi.Input<string>;
     emailAttributeName?: pulumi.Input<string>;
     idpPublicCert?: pulumi.Input<string>;
@@ -311,6 +364,7 @@ export interface AccessPolicyApprovalGroup {
 
 export interface AccessPolicyExclude {
     anyValidServiceToken?: pulumi.Input<boolean>;
+    authContexts?: pulumi.Input<pulumi.Input<inputs.AccessPolicyExcludeAuthContext>[]>;
     authMethod?: pulumi.Input<string>;
     azures?: pulumi.Input<pulumi.Input<inputs.AccessPolicyExcludeAzure>[]>;
     certificate?: pulumi.Input<boolean>;
@@ -330,6 +384,15 @@ export interface AccessPolicyExclude {
     oktas?: pulumi.Input<pulumi.Input<inputs.AccessPolicyExcludeOkta>[]>;
     samls?: pulumi.Input<pulumi.Input<inputs.AccessPolicyExcludeSaml>[]>;
     serviceTokens?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface AccessPolicyExcludeAuthContext {
+    acId: pulumi.Input<string>;
+    /**
+     * The ID of this resource.
+     */
+    id: pulumi.Input<string>;
+    identityProviderId: pulumi.Input<string>;
 }
 
 export interface AccessPolicyExcludeAzure {
@@ -375,6 +438,7 @@ export interface AccessPolicyExcludeSaml {
 
 export interface AccessPolicyInclude {
     anyValidServiceToken?: pulumi.Input<boolean>;
+    authContexts?: pulumi.Input<pulumi.Input<inputs.AccessPolicyIncludeAuthContext>[]>;
     authMethod?: pulumi.Input<string>;
     azures?: pulumi.Input<pulumi.Input<inputs.AccessPolicyIncludeAzure>[]>;
     certificate?: pulumi.Input<boolean>;
@@ -394,6 +458,15 @@ export interface AccessPolicyInclude {
     oktas?: pulumi.Input<pulumi.Input<inputs.AccessPolicyIncludeOkta>[]>;
     samls?: pulumi.Input<pulumi.Input<inputs.AccessPolicyIncludeSaml>[]>;
     serviceTokens?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface AccessPolicyIncludeAuthContext {
+    acId: pulumi.Input<string>;
+    /**
+     * The ID of this resource.
+     */
+    id: pulumi.Input<string>;
+    identityProviderId: pulumi.Input<string>;
 }
 
 export interface AccessPolicyIncludeAzure {
@@ -439,6 +512,7 @@ export interface AccessPolicyIncludeSaml {
 
 export interface AccessPolicyRequire {
     anyValidServiceToken?: pulumi.Input<boolean>;
+    authContexts?: pulumi.Input<pulumi.Input<inputs.AccessPolicyRequireAuthContext>[]>;
     authMethod?: pulumi.Input<string>;
     azures?: pulumi.Input<pulumi.Input<inputs.AccessPolicyRequireAzure>[]>;
     certificate?: pulumi.Input<boolean>;
@@ -458,6 +532,15 @@ export interface AccessPolicyRequire {
     oktas?: pulumi.Input<pulumi.Input<inputs.AccessPolicyRequireOkta>[]>;
     samls?: pulumi.Input<pulumi.Input<inputs.AccessPolicyRequireSaml>[]>;
     serviceTokens?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface AccessPolicyRequireAuthContext {
+    acId: pulumi.Input<string>;
+    /**
+     * The ID of this resource.
+     */
+    id: pulumi.Input<string>;
+    identityProviderId: pulumi.Input<string>;
 }
 
 export interface AccessPolicyRequireAzure {
@@ -764,6 +847,10 @@ export interface DevicePostureRuleInput {
      */
     domain?: pulumi.Input<string>;
     /**
+     * The datetime a device last seen in RFC 3339 format from Tanium.
+     */
+    eidLastSeen?: pulumi.Input<string>;
+    /**
      * True if the firewall must be enabled.
      */
     enabled?: pulumi.Input<boolean>;
@@ -820,6 +907,10 @@ export interface DevicePostureRuleInput {
      */
     requireAll?: pulumi.Input<boolean>;
     /**
+     * The risk level from Tanium. Available values: `low`, `medium`, `high`, `critical`.
+     */
+    riskLevel?: pulumi.Input<string>;
+    /**
      * Checks if the application should be running.
      */
     running?: pulumi.Input<boolean>;
@@ -835,6 +926,10 @@ export interface DevicePostureRuleInput {
      * The thumbprint of the file certificate.
      */
     thumbprint?: pulumi.Input<string>;
+    /**
+     * The total score from Tanium.
+     */
+    totalScore?: pulumi.Input<number>;
     /**
      * The operating system semantic version.
      */
@@ -1118,7 +1213,7 @@ export interface GetRulesetsFilter {
      */
     name?: string;
     /**
-     * Point in the request/response lifecycle where the ruleset will be created. Available values: `ddosL4`, `ddosL7`, `httpCustomErrors`, `httpLogCustomFields`, `httpRequestCacheSettings`, `httpRequestFirewallCustom`, `httpRequestFirewallManaged`, `httpRequestLateTransform`, `httpRequestLateTransformManaged`, `httpRequestMain`, `httpRequestOrigin`, `httpRequestDynamicRedirect`, `httpRequestRedirect`, `httpRequestSanitize`, `httpRequestTransform`, `httpResponseFirewallManaged`, `httpResponseHeadersTransform`, `httpResponseHeadersTransformManaged`, `httpResponseCompression`, `magicTransit`, `httpRatelimit`, `httpRequestSbfm`, `httpConfigSettings`.
+     * Point in the request/response lifecycle where the ruleset will be created. Available values: `ddosL4`, `ddosL7`, `httpConfigSettings`, `httpCustomErrors`, `httpLogCustomFields`, `httpRatelimit`, `httpRequestCacheSettings`, `httpRequestDynamicRedirect`, `httpRequestFirewallCustom`, `httpRequestFirewallManaged`, `httpRequestLateTransform`, `httpRequestOrigin`, `httpRequestRedirect`, `httpRequestSanitize`, `httpRequestSbfm`, `httpRequestTransform`, `httpResponseCompression`, `httpResponseFirewallManaged`, `httpResponseHeadersTransform`, `magicTransit`.
      */
     phase?: string;
     /**
@@ -1141,7 +1236,7 @@ export interface GetRulesetsFilterArgs {
      */
     name?: pulumi.Input<string>;
     /**
-     * Point in the request/response lifecycle where the ruleset will be created. Available values: `ddosL4`, `ddosL7`, `httpCustomErrors`, `httpLogCustomFields`, `httpRequestCacheSettings`, `httpRequestFirewallCustom`, `httpRequestFirewallManaged`, `httpRequestLateTransform`, `httpRequestLateTransformManaged`, `httpRequestMain`, `httpRequestOrigin`, `httpRequestDynamicRedirect`, `httpRequestRedirect`, `httpRequestSanitize`, `httpRequestTransform`, `httpResponseFirewallManaged`, `httpResponseHeadersTransform`, `httpResponseHeadersTransformManaged`, `httpResponseCompression`, `magicTransit`, `httpRatelimit`, `httpRequestSbfm`, `httpConfigSettings`.
+     * Point in the request/response lifecycle where the ruleset will be created. Available values: `ddosL4`, `ddosL7`, `httpConfigSettings`, `httpCustomErrors`, `httpLogCustomFields`, `httpRatelimit`, `httpRequestCacheSettings`, `httpRequestDynamicRedirect`, `httpRequestFirewallCustom`, `httpRequestFirewallManaged`, `httpRequestLateTransform`, `httpRequestOrigin`, `httpRequestRedirect`, `httpRequestSanitize`, `httpRequestSbfm`, `httpRequestTransform`, `httpResponseCompression`, `httpResponseFirewallManaged`, `httpResponseHeadersTransform`, `magicTransit`.
      */
     phase?: pulumi.Input<string>;
     /**
@@ -1651,6 +1746,10 @@ export interface NotificationPolicyFilters {
      */
     enableds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
+     * Environment of pages. Available values: `ENVIRONMENT_PREVIEW`, `ENVIRONMENT_PRODUCTION`.
+     */
+    environments?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
      * Source configuration to alert on for pool or origin.
      */
     eventSources?: pulumi.Input<pulumi.Input<string>[]>;
@@ -1658,6 +1757,10 @@ export interface NotificationPolicyFilters {
      * Stream event type to alert on.
      */
     eventTypes?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Pages event to alert. Available values: `EVENT_DEPLOYMENT_STARTED`, `EVENT_DEPLOYMENT_FAILED`, `EVENT_DEPLOYMENT_SUCCESS`.
+     */
+    events?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Identifier health check. Required when using `filters.0.status`.
      */
@@ -1690,6 +1793,10 @@ export interface NotificationPolicyFilters {
      * Product name. Available values: `workerRequests`, `workerDurableObjectsRequests`, `workerDurableObjectsDuration`, `workerDurableObjectsDataTransfer`, `workerDurableObjectsStoredData`, `workerDurableObjectsStorageDeletes`, `workerDurableObjectsStorageWrites`, `workerDurableObjectsStorageReads`.
      */
     products?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Identifier of pages project.
+     */
+    projectIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Protocol to alert on for dos.
      */
@@ -2282,7 +2389,7 @@ export interface RecordData {
 
 export interface RulesetRule {
     /**
-     * Action to perform in the ruleset rule. Available values: `allow`, `block`, `challenge`, `ddosDynamic`, `execute`, `forceConnectionClose`, `jsChallenge`, `log`, `logCustomField`, `managedChallenge`, `redirect`, `rewrite`, `route`, `score`, `setCacheSettings`, `setConfig`, `serveError`, `skip`, `compressResponse`.
+     * Action to perform in the ruleset rule. Available values: `block`, `challenge`, `compressResponse`, `ddosDynamic`, `ddosMitigation`, `execute`, `forceConnectionClose`, `jsChallenge`, `log`, `logCustomField`, `managedChallenge`, `redirect`, `rewrite`, `route`, `score`, `serveError`, `setCacheSettings`, `setConfig`, `skip`.
      */
     action?: pulumi.Input<string>;
     /**
@@ -2521,7 +2628,7 @@ export interface RulesetRuleActionParametersOverridesCategory {
 
 export interface RulesetRuleActionParametersOverridesRule {
     /**
-     * Action to perform in the ruleset rule. Available values: `allow`, `block`, `challenge`, `ddosDynamic`, `execute`, `forceConnectionClose`, `jsChallenge`, `log`, `logCustomField`, `managedChallenge`, `redirect`, `rewrite`, `route`, `score`, `setCacheSettings`, `setConfig`, `serveError`, `skip`, `compressResponse`.
+     * Action to perform in the ruleset rule. Available values: `block`, `challenge`, `compressResponse`, `ddosDynamic`, `ddosMitigation`, `execute`, `forceConnectionClose`, `jsChallenge`, `log`, `logCustomField`, `managedChallenge`, `redirect`, `rewrite`, `route`, `score`, `serveError`, `setCacheSettings`, `setConfig`, `skip`.
      */
     action?: pulumi.Input<string>;
     /**

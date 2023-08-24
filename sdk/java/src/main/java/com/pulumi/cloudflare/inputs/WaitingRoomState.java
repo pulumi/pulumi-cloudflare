@@ -215,6 +215,21 @@ public final class WaitingRoomState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * HTTP status code returned to a user while in the queue.
+     * 
+     */
+    @Import(name="queueingStatusCode")
+    private @Nullable Output<Integer> queueingStatusCode;
+
+    /**
+     * @return HTTP status code returned to a user while in the queue.
+     * 
+     */
+    public Optional<Output<Integer>> queueingStatusCode() {
+        return Optional.ofNullable(this.queueingStatusCode);
+    }
+
+    /**
      * Lifetime of a cookie (in minutes) set by Cloudflare for users who get access to the origin. Defaults to `5`.
      * 
      */
@@ -290,6 +305,7 @@ public final class WaitingRoomState extends com.pulumi.resources.ResourceArgs {
         this.path = $.path;
         this.queueAll = $.queueAll;
         this.queueingMethod = $.queueingMethod;
+        this.queueingStatusCode = $.queueingStatusCode;
         this.sessionDuration = $.sessionDuration;
         this.suspended = $.suspended;
         this.totalActiveUsers = $.totalActiveUsers;
@@ -595,6 +611,27 @@ public final class WaitingRoomState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder queueingMethod(String queueingMethod) {
             return queueingMethod(Output.of(queueingMethod));
+        }
+
+        /**
+         * @param queueingStatusCode HTTP status code returned to a user while in the queue.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder queueingStatusCode(@Nullable Output<Integer> queueingStatusCode) {
+            $.queueingStatusCode = queueingStatusCode;
+            return this;
+        }
+
+        /**
+         * @param queueingStatusCode HTTP status code returned to a user while in the queue.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder queueingStatusCode(Integer queueingStatusCode) {
+            return queueingStatusCode(Output.of(queueingStatusCode));
         }
 
         /**

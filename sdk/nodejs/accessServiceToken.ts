@@ -71,6 +71,10 @@ export class AccessServiceToken extends pulumi.CustomResource {
      */
     public /*out*/ readonly clientSecret!: pulumi.Output<string>;
     /**
+     * Length of time the service token is valid for. Available values: `8760h`, `17520h`, `43800h`, `87600h`, `forever`
+     */
+    public readonly duration!: pulumi.Output<string>;
+    /**
      * Date when the token expires.
      */
     public /*out*/ readonly expiresAt!: pulumi.Output<string>;
@@ -103,6 +107,7 @@ export class AccessServiceToken extends pulumi.CustomResource {
             resourceInputs["accountId"] = state ? state.accountId : undefined;
             resourceInputs["clientId"] = state ? state.clientId : undefined;
             resourceInputs["clientSecret"] = state ? state.clientSecret : undefined;
+            resourceInputs["duration"] = state ? state.duration : undefined;
             resourceInputs["expiresAt"] = state ? state.expiresAt : undefined;
             resourceInputs["minDaysForRenewal"] = state ? state.minDaysForRenewal : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
@@ -113,6 +118,7 @@ export class AccessServiceToken extends pulumi.CustomResource {
                 throw new Error("Missing required property 'name'");
             }
             resourceInputs["accountId"] = args ? args.accountId : undefined;
+            resourceInputs["duration"] = args ? args.duration : undefined;
             resourceInputs["minDaysForRenewal"] = args ? args.minDaysForRenewal : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["zoneId"] = args ? args.zoneId : undefined;
@@ -144,6 +150,10 @@ export interface AccessServiceTokenState {
      */
     clientSecret?: pulumi.Input<string>;
     /**
+     * Length of time the service token is valid for. Available values: `8760h`, `17520h`, `43800h`, `87600h`, `forever`
+     */
+    duration?: pulumi.Input<string>;
+    /**
      * Date when the token expires.
      */
     expiresAt?: pulumi.Input<string>;
@@ -169,6 +179,10 @@ export interface AccessServiceTokenArgs {
      * The account identifier to target for the resource. Conflicts with `zoneId`.
      */
     accountId?: pulumi.Input<string>;
+    /**
+     * Length of time the service token is valid for. Available values: `8760h`, `17520h`, `43800h`, `87600h`, `forever`
+     */
+    duration?: pulumi.Input<string>;
     /**
      * Refresh the token if terraform is run within the specified amount of days before expiration
      */

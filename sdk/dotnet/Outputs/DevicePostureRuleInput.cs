@@ -46,6 +46,10 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string? Domain;
         /// <summary>
+        /// The datetime a device last seen in RFC 3339 format from Tanium.
+        /// </summary>
+        public readonly string? EidLastSeen;
+        /// <summary>
         /// True if the firewall must be enabled.
         /// </summary>
         public readonly bool? Enabled;
@@ -102,6 +106,10 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly bool? RequireAll;
         /// <summary>
+        /// The risk level from Tanium. Available values: `low`, `medium`, `high`, `critical`.
+        /// </summary>
+        public readonly string? RiskLevel;
+        /// <summary>
         /// Checks if the application should be running.
         /// </summary>
         public readonly bool? Running;
@@ -117,6 +125,10 @@ namespace Pulumi.Cloudflare.Outputs
         /// The thumbprint of the file certificate.
         /// </summary>
         public readonly string? Thumbprint;
+        /// <summary>
+        /// The total score from Tanium.
+        /// </summary>
+        public readonly int? TotalScore;
         /// <summary>
         /// The operating system semantic version.
         /// </summary>
@@ -143,6 +155,8 @@ namespace Pulumi.Cloudflare.Outputs
             string? countOperator,
 
             string? domain,
+
+            string? eidLastSeen,
 
             bool? enabled,
 
@@ -172,6 +186,8 @@ namespace Pulumi.Cloudflare.Outputs
 
             bool? requireAll,
 
+            string? riskLevel,
+
             bool? running,
 
             string? sensorConfig,
@@ -179,6 +195,8 @@ namespace Pulumi.Cloudflare.Outputs
             string? sha256,
 
             string? thumbprint,
+
+            int? totalScore,
 
             string? version,
 
@@ -192,6 +210,7 @@ namespace Pulumi.Cloudflare.Outputs
             ConnectionId = connectionId;
             CountOperator = countOperator;
             Domain = domain;
+            EidLastSeen = eidLastSeen;
             Enabled = enabled;
             Exists = exists;
             Id = id;
@@ -206,10 +225,12 @@ namespace Pulumi.Cloudflare.Outputs
             Overall = overall;
             Path = path;
             RequireAll = requireAll;
+            RiskLevel = riskLevel;
             Running = running;
             SensorConfig = sensorConfig;
             Sha256 = sha256;
             Thumbprint = thumbprint;
+            TotalScore = totalScore;
             Version = version;
             VersionOperator = versionOperator;
         }

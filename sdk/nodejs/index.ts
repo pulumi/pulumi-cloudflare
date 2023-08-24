@@ -100,6 +100,11 @@ export type AuthenticatedOriginPullsCertificate = import("./authenticatedOriginP
 export const AuthenticatedOriginPullsCertificate: typeof import("./authenticatedOriginPullsCertificate").AuthenticatedOriginPullsCertificate = null as any;
 utilities.lazyLoad(exports, ["AuthenticatedOriginPullsCertificate"], () => require("./authenticatedOriginPullsCertificate"));
 
+export { BotManagementArgs, BotManagementState } from "./botManagement";
+export type BotManagement = import("./botManagement").BotManagement;
+export const BotManagement: typeof import("./botManagement").BotManagement = null as any;
+utilities.lazyLoad(exports, ["BotManagement"], () => require("./botManagement"));
+
 export { ByoIpPrefixArgs, ByoIpPrefixState } from "./byoIpPrefix";
 export type ByoIpPrefix = import("./byoIpPrefix").ByoIpPrefix;
 export const ByoIpPrefix: typeof import("./byoIpPrefix").ByoIpPrefix = null as any;
@@ -263,6 +268,10 @@ export const getRulesets: typeof import("./getRulesets").getRulesets = null as a
 export const getRulesetsOutput: typeof import("./getRulesets").getRulesetsOutput = null as any;
 utilities.lazyLoad(exports, ["getRulesets","getRulesetsOutput"], () => require("./getRulesets"));
 
+export { GetUserResult } from "./getUser";
+export const getUser: typeof import("./getUser").getUser = null as any;
+utilities.lazyLoad(exports, ["getUser"], () => require("./getUser"));
+
 export { GetZoneArgs, GetZoneResult, GetZoneOutputArgs } from "./getZone";
 export const getZone: typeof import("./getZone").getZone = null as any;
 export const getZoneOutput: typeof import("./getZone").getZoneOutput = null as any;
@@ -292,6 +301,16 @@ export { HealthcheckArgs, HealthcheckState } from "./healthcheck";
 export type Healthcheck = import("./healthcheck").Healthcheck;
 export const Healthcheck: typeof import("./healthcheck").Healthcheck = null as any;
 utilities.lazyLoad(exports, ["Healthcheck"], () => require("./healthcheck"));
+
+export { HostnameTlsSettingArgs, HostnameTlsSettingState } from "./hostnameTlsSetting";
+export type HostnameTlsSetting = import("./hostnameTlsSetting").HostnameTlsSetting;
+export const HostnameTlsSetting: typeof import("./hostnameTlsSetting").HostnameTlsSetting = null as any;
+utilities.lazyLoad(exports, ["HostnameTlsSetting"], () => require("./hostnameTlsSetting"));
+
+export { HostnameTlsSettingCiphersArgs, HostnameTlsSettingCiphersState } from "./hostnameTlsSettingCiphers";
+export type HostnameTlsSettingCiphers = import("./hostnameTlsSettingCiphers").HostnameTlsSettingCiphers;
+export const HostnameTlsSettingCiphers: typeof import("./hostnameTlsSettingCiphers").HostnameTlsSettingCiphers = null as any;
+utilities.lazyLoad(exports, ["HostnameTlsSettingCiphers"], () => require("./hostnameTlsSettingCiphers"));
 
 export { IpsecTunnelArgs, IpsecTunnelState } from "./ipsecTunnel";
 export type IpsecTunnel = import("./ipsecTunnel").IpsecTunnel;
@@ -583,6 +602,11 @@ export type ZoneDnssec = import("./zoneDnssec").ZoneDnssec;
 export const ZoneDnssec: typeof import("./zoneDnssec").ZoneDnssec = null as any;
 utilities.lazyLoad(exports, ["ZoneDnssec"], () => require("./zoneDnssec"));
 
+export { ZoneHoldArgs, ZoneHoldState } from "./zoneHold";
+export type ZoneHold = import("./zoneHold").ZoneHold;
+export const ZoneHold: typeof import("./zoneHold").ZoneHold = null as any;
+utilities.lazyLoad(exports, ["ZoneHold"], () => require("./zoneHold"));
+
 export { ZoneLockdownArgs, ZoneLockdownState } from "./zoneLockdown";
 export type ZoneLockdown = import("./zoneLockdown").ZoneLockdown;
 export const ZoneLockdown: typeof import("./zoneLockdown").ZoneLockdown = null as any;
@@ -645,6 +669,8 @@ const _module = {
                 return new AuthenticatedOriginPulls(name, <any>undefined, { urn })
             case "cloudflare:index/authenticatedOriginPullsCertificate:AuthenticatedOriginPullsCertificate":
                 return new AuthenticatedOriginPullsCertificate(name, <any>undefined, { urn })
+            case "cloudflare:index/botManagement:BotManagement":
+                return new BotManagement(name, <any>undefined, { urn })
             case "cloudflare:index/byoIpPrefix:ByoIpPrefix":
                 return new ByoIpPrefix(name, <any>undefined, { urn })
             case "cloudflare:index/certificatePack:CertificatePack":
@@ -689,6 +715,10 @@ const _module = {
                 return new GreTunnel(name, <any>undefined, { urn })
             case "cloudflare:index/healthcheck:Healthcheck":
                 return new Healthcheck(name, <any>undefined, { urn })
+            case "cloudflare:index/hostnameTlsSetting:HostnameTlsSetting":
+                return new HostnameTlsSetting(name, <any>undefined, { urn })
+            case "cloudflare:index/hostnameTlsSettingCiphers:HostnameTlsSettingCiphers":
+                return new HostnameTlsSettingCiphers(name, <any>undefined, { urn })
             case "cloudflare:index/ipsecTunnel:IpsecTunnel":
                 return new IpsecTunnel(name, <any>undefined, { urn })
             case "cloudflare:index/list:List":
@@ -803,6 +833,8 @@ const _module = {
                 return new ZoneCacheVariants(name, <any>undefined, { urn })
             case "cloudflare:index/zoneDnssec:ZoneDnssec":
                 return new ZoneDnssec(name, <any>undefined, { urn })
+            case "cloudflare:index/zoneHold:ZoneHold":
+                return new ZoneHold(name, <any>undefined, { urn })
             case "cloudflare:index/zoneLockdown:ZoneLockdown":
                 return new ZoneLockdown(name, <any>undefined, { urn })
             case "cloudflare:index/zoneSettingsOverride:ZoneSettingsOverride":
@@ -831,6 +863,7 @@ pulumi.runtime.registerResourceModule("cloudflare", "index/apiToken", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/argo", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/authenticatedOriginPulls", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/authenticatedOriginPullsCertificate", _module)
+pulumi.runtime.registerResourceModule("cloudflare", "index/botManagement", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/byoIpPrefix", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/certificatePack", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/customHostname", _module)
@@ -853,6 +886,8 @@ pulumi.runtime.registerResourceModule("cloudflare", "index/filter", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/firewallRule", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/greTunnel", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/healthcheck", _module)
+pulumi.runtime.registerResourceModule("cloudflare", "index/hostnameTlsSetting", _module)
+pulumi.runtime.registerResourceModule("cloudflare", "index/hostnameTlsSettingCiphers", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/ipsecTunnel", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/list", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/listItem", _module)
@@ -910,6 +945,7 @@ pulumi.runtime.registerResourceModule("cloudflare", "index/zone", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/zoneCacheReserve", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/zoneCacheVariants", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/zoneDnssec", _module)
+pulumi.runtime.registerResourceModule("cloudflare", "index/zoneHold", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/zoneLockdown", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/zoneSettingsOverride", _module)
 pulumi.runtime.registerResourcePackage("cloudflare", {

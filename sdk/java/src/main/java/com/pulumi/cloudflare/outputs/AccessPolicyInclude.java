@@ -3,6 +3,7 @@
 
 package com.pulumi.cloudflare.outputs;
 
+import com.pulumi.cloudflare.outputs.AccessPolicyIncludeAuthContext;
 import com.pulumi.cloudflare.outputs.AccessPolicyIncludeAzure;
 import com.pulumi.cloudflare.outputs.AccessPolicyIncludeExternalEvaluation;
 import com.pulumi.cloudflare.outputs.AccessPolicyIncludeGithub;
@@ -20,6 +21,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class AccessPolicyInclude {
     private @Nullable Boolean anyValidServiceToken;
+    private @Nullable List<AccessPolicyIncludeAuthContext> authContexts;
     private @Nullable String authMethod;
     private @Nullable List<AccessPolicyIncludeAzure> azures;
     private @Nullable Boolean certificate;
@@ -43,6 +45,9 @@ public final class AccessPolicyInclude {
     private AccessPolicyInclude() {}
     public Optional<Boolean> anyValidServiceToken() {
         return Optional.ofNullable(this.anyValidServiceToken);
+    }
+    public List<AccessPolicyIncludeAuthContext> authContexts() {
+        return this.authContexts == null ? List.of() : this.authContexts;
     }
     public Optional<String> authMethod() {
         return Optional.ofNullable(this.authMethod);
@@ -112,6 +117,7 @@ public final class AccessPolicyInclude {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean anyValidServiceToken;
+        private @Nullable List<AccessPolicyIncludeAuthContext> authContexts;
         private @Nullable String authMethod;
         private @Nullable List<AccessPolicyIncludeAzure> azures;
         private @Nullable Boolean certificate;
@@ -135,6 +141,7 @@ public final class AccessPolicyInclude {
         public Builder(AccessPolicyInclude defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.anyValidServiceToken = defaults.anyValidServiceToken;
+    	      this.authContexts = defaults.authContexts;
     	      this.authMethod = defaults.authMethod;
     	      this.azures = defaults.azures;
     	      this.certificate = defaults.certificate;
@@ -160,6 +167,14 @@ public final class AccessPolicyInclude {
         public Builder anyValidServiceToken(@Nullable Boolean anyValidServiceToken) {
             this.anyValidServiceToken = anyValidServiceToken;
             return this;
+        }
+        @CustomType.Setter
+        public Builder authContexts(@Nullable List<AccessPolicyIncludeAuthContext> authContexts) {
+            this.authContexts = authContexts;
+            return this;
+        }
+        public Builder authContexts(AccessPolicyIncludeAuthContext... authContexts) {
+            return authContexts(List.of(authContexts));
         }
         @CustomType.Setter
         public Builder authMethod(@Nullable String authMethod) {
@@ -301,6 +316,7 @@ public final class AccessPolicyInclude {
         public AccessPolicyInclude build() {
             final var o = new AccessPolicyInclude();
             o.anyValidServiceToken = anyValidServiceToken;
+            o.authContexts = authContexts;
             o.authMethod = authMethod;
             o.azures = azures;
             o.certificate = certificate;

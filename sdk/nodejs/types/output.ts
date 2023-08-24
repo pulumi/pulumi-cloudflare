@@ -46,6 +46,10 @@ export interface AccessApplicationSaasApp {
      */
     consumerServiceUrl: string;
     /**
+     * Custom attribute mapped from IDPs.
+     */
+    customAttributes?: outputs.AccessApplicationSaasAppCustomAttribute[];
+    /**
      * The format of the name identifier sent to the SaaS application. Defaults to `email`.
      */
     nameIdFormat?: string;
@@ -55,8 +59,27 @@ export interface AccessApplicationSaasApp {
     spEntityId: string;
 }
 
+export interface AccessApplicationSaasAppCustomAttribute {
+    friendlyName?: string;
+    /**
+     * Friendly name of the Access Application.
+     */
+    name?: string;
+    nameFormat?: string;
+    required?: boolean;
+    source: outputs.AccessApplicationSaasAppCustomAttributeSource;
+}
+
+export interface AccessApplicationSaasAppCustomAttributeSource {
+    /**
+     * Friendly name of the Access Application.
+     */
+    name: string;
+}
+
 export interface AccessGroupExclude {
     anyValidServiceToken?: boolean;
+    authContexts?: outputs.AccessGroupExcludeAuthContext[];
     authMethod?: string;
     azures?: outputs.AccessGroupExcludeAzure[];
     certificate?: boolean;
@@ -76,6 +99,15 @@ export interface AccessGroupExclude {
     oktas?: outputs.AccessGroupExcludeOkta[];
     samls?: outputs.AccessGroupExcludeSaml[];
     serviceTokens?: string[];
+}
+
+export interface AccessGroupExcludeAuthContext {
+    acId: string;
+    /**
+     * The ID of this resource.
+     */
+    id: string;
+    identityProviderId: string;
 }
 
 export interface AccessGroupExcludeAzure {
@@ -115,6 +147,7 @@ export interface AccessGroupExcludeSaml {
 
 export interface AccessGroupInclude {
     anyValidServiceToken?: boolean;
+    authContexts?: outputs.AccessGroupIncludeAuthContext[];
     authMethod?: string;
     azures?: outputs.AccessGroupIncludeAzure[];
     certificate?: boolean;
@@ -134,6 +167,15 @@ export interface AccessGroupInclude {
     oktas?: outputs.AccessGroupIncludeOkta[];
     samls?: outputs.AccessGroupIncludeSaml[];
     serviceTokens?: string[];
+}
+
+export interface AccessGroupIncludeAuthContext {
+    acId: string;
+    /**
+     * The ID of this resource.
+     */
+    id: string;
+    identityProviderId: string;
 }
 
 export interface AccessGroupIncludeAzure {
@@ -173,6 +215,7 @@ export interface AccessGroupIncludeSaml {
 
 export interface AccessGroupRequire {
     anyValidServiceToken?: boolean;
+    authContexts?: outputs.AccessGroupRequireAuthContext[];
     authMethod?: string;
     azures?: outputs.AccessGroupRequireAzure[];
     certificate?: boolean;
@@ -192,6 +235,15 @@ export interface AccessGroupRequire {
     oktas?: outputs.AccessGroupRequireOkta[];
     samls?: outputs.AccessGroupRequireSaml[];
     serviceTokens?: string[];
+}
+
+export interface AccessGroupRequireAuthContext {
+    acId: string;
+    /**
+     * The ID of this resource.
+     */
+    id: string;
+    identityProviderId: string;
 }
 
 export interface AccessGroupRequireAzure {
@@ -240,6 +292,7 @@ export interface AccessIdentityProviderConfig {
     claims: string[];
     clientId?: string;
     clientSecret?: string;
+    conditionalAccessEnabled?: boolean;
     directoryId?: string;
     emailAttributeName?: string;
     idpPublicCert?: string;
@@ -311,6 +364,7 @@ export interface AccessPolicyApprovalGroup {
 
 export interface AccessPolicyExclude {
     anyValidServiceToken?: boolean;
+    authContexts?: outputs.AccessPolicyExcludeAuthContext[];
     authMethod?: string;
     azures?: outputs.AccessPolicyExcludeAzure[];
     certificate?: boolean;
@@ -330,6 +384,15 @@ export interface AccessPolicyExclude {
     oktas?: outputs.AccessPolicyExcludeOkta[];
     samls?: outputs.AccessPolicyExcludeSaml[];
     serviceTokens?: string[];
+}
+
+export interface AccessPolicyExcludeAuthContext {
+    acId: string;
+    /**
+     * The ID of this resource.
+     */
+    id: string;
+    identityProviderId: string;
 }
 
 export interface AccessPolicyExcludeAzure {
@@ -375,6 +438,7 @@ export interface AccessPolicyExcludeSaml {
 
 export interface AccessPolicyInclude {
     anyValidServiceToken?: boolean;
+    authContexts?: outputs.AccessPolicyIncludeAuthContext[];
     authMethod?: string;
     azures?: outputs.AccessPolicyIncludeAzure[];
     certificate?: boolean;
@@ -394,6 +458,15 @@ export interface AccessPolicyInclude {
     oktas?: outputs.AccessPolicyIncludeOkta[];
     samls?: outputs.AccessPolicyIncludeSaml[];
     serviceTokens?: string[];
+}
+
+export interface AccessPolicyIncludeAuthContext {
+    acId: string;
+    /**
+     * The ID of this resource.
+     */
+    id: string;
+    identityProviderId: string;
 }
 
 export interface AccessPolicyIncludeAzure {
@@ -439,6 +512,7 @@ export interface AccessPolicyIncludeSaml {
 
 export interface AccessPolicyRequire {
     anyValidServiceToken?: boolean;
+    authContexts?: outputs.AccessPolicyRequireAuthContext[];
     authMethod?: string;
     azures?: outputs.AccessPolicyRequireAzure[];
     certificate?: boolean;
@@ -458,6 +532,15 @@ export interface AccessPolicyRequire {
     oktas?: outputs.AccessPolicyRequireOkta[];
     samls?: outputs.AccessPolicyRequireSaml[];
     serviceTokens?: string[];
+}
+
+export interface AccessPolicyRequireAuthContext {
+    acId: string;
+    /**
+     * The ID of this resource.
+     */
+    id: string;
+    identityProviderId: string;
 }
 
 export interface AccessPolicyRequireAzure {
@@ -764,6 +847,10 @@ export interface DevicePostureRuleInput {
      */
     domain?: string;
     /**
+     * The datetime a device last seen in RFC 3339 format from Tanium.
+     */
+    eidLastSeen?: string;
+    /**
      * True if the firewall must be enabled.
      */
     enabled: boolean;
@@ -820,6 +907,10 @@ export interface DevicePostureRuleInput {
      */
     requireAll: boolean;
     /**
+     * The risk level from Tanium. Available values: `low`, `medium`, `high`, `critical`.
+     */
+    riskLevel?: string;
+    /**
      * Checks if the application should be running.
      */
     running: boolean;
@@ -835,6 +926,10 @@ export interface DevicePostureRuleInput {
      * The thumbprint of the file certificate.
      */
     thumbprint?: string;
+    /**
+     * The total score from Tanium.
+     */
+    totalScore?: number;
     /**
      * The operating system semantic version.
      */
@@ -1092,7 +1187,7 @@ export interface GetRulesetsFilter {
      */
     name?: string;
     /**
-     * Point in the request/response lifecycle where the ruleset will be created. Available values: `ddosL4`, `ddosL7`, `httpCustomErrors`, `httpLogCustomFields`, `httpRequestCacheSettings`, `httpRequestFirewallCustom`, `httpRequestFirewallManaged`, `httpRequestLateTransform`, `httpRequestLateTransformManaged`, `httpRequestMain`, `httpRequestOrigin`, `httpRequestDynamicRedirect`, `httpRequestRedirect`, `httpRequestSanitize`, `httpRequestTransform`, `httpResponseFirewallManaged`, `httpResponseHeadersTransform`, `httpResponseHeadersTransformManaged`, `httpResponseCompression`, `magicTransit`, `httpRatelimit`, `httpRequestSbfm`, `httpConfigSettings`.
+     * Point in the request/response lifecycle where the ruleset will be created. Available values: `ddosL4`, `ddosL7`, `httpConfigSettings`, `httpCustomErrors`, `httpLogCustomFields`, `httpRatelimit`, `httpRequestCacheSettings`, `httpRequestDynamicRedirect`, `httpRequestFirewallCustom`, `httpRequestFirewallManaged`, `httpRequestLateTransform`, `httpRequestOrigin`, `httpRequestRedirect`, `httpRequestSanitize`, `httpRequestSbfm`, `httpRequestTransform`, `httpResponseCompression`, `httpResponseFirewallManaged`, `httpResponseHeadersTransform`, `magicTransit`.
      */
     phase?: string;
     /**
@@ -1859,6 +1954,10 @@ export interface NotificationPolicyFilters {
      */
     enableds?: string[];
     /**
+     * Environment of pages. Available values: `ENVIRONMENT_PREVIEW`, `ENVIRONMENT_PRODUCTION`.
+     */
+    environments?: string[];
+    /**
      * Source configuration to alert on for pool or origin.
      */
     eventSources?: string[];
@@ -1866,6 +1965,10 @@ export interface NotificationPolicyFilters {
      * Stream event type to alert on.
      */
     eventTypes?: string[];
+    /**
+     * Pages event to alert. Available values: `EVENT_DEPLOYMENT_STARTED`, `EVENT_DEPLOYMENT_FAILED`, `EVENT_DEPLOYMENT_SUCCESS`.
+     */
+    events?: string[];
     /**
      * Identifier health check. Required when using `filters.0.status`.
      */
@@ -1898,6 +2001,10 @@ export interface NotificationPolicyFilters {
      * Product name. Available values: `workerRequests`, `workerDurableObjectsRequests`, `workerDurableObjectsDuration`, `workerDurableObjectsDataTransfer`, `workerDurableObjectsStoredData`, `workerDurableObjectsStorageDeletes`, `workerDurableObjectsStorageWrites`, `workerDurableObjectsStorageReads`.
      */
     products?: string[];
+    /**
+     * Identifier of pages project.
+     */
+    projectIds?: string[];
     /**
      * Protocol to alert on for dos.
      */
@@ -2490,7 +2597,7 @@ export interface RecordData {
 
 export interface RulesetRule {
     /**
-     * Action to perform in the ruleset rule. Available values: `allow`, `block`, `challenge`, `ddosDynamic`, `execute`, `forceConnectionClose`, `jsChallenge`, `log`, `logCustomField`, `managedChallenge`, `redirect`, `rewrite`, `route`, `score`, `setCacheSettings`, `setConfig`, `serveError`, `skip`, `compressResponse`.
+     * Action to perform in the ruleset rule. Available values: `block`, `challenge`, `compressResponse`, `ddosDynamic`, `ddosMitigation`, `execute`, `forceConnectionClose`, `jsChallenge`, `log`, `logCustomField`, `managedChallenge`, `redirect`, `rewrite`, `route`, `score`, `serveError`, `setCacheSettings`, `setConfig`, `skip`.
      */
     action?: string;
     /**
@@ -2729,7 +2836,7 @@ export interface RulesetRuleActionParametersOverridesCategory {
 
 export interface RulesetRuleActionParametersOverridesRule {
     /**
-     * Action to perform in the ruleset rule. Available values: `allow`, `block`, `challenge`, `ddosDynamic`, `execute`, `forceConnectionClose`, `jsChallenge`, `log`, `logCustomField`, `managedChallenge`, `redirect`, `rewrite`, `route`, `score`, `setCacheSettings`, `setConfig`, `serveError`, `skip`, `compressResponse`.
+     * Action to perform in the ruleset rule. Available values: `block`, `challenge`, `compressResponse`, `ddosDynamic`, `ddosMitigation`, `execute`, `forceConnectionClose`, `jsChallenge`, `log`, `logCustomField`, `managedChallenge`, `redirect`, `rewrite`, `route`, `score`, `serveError`, `setCacheSettings`, `setConfig`, `skip`.
      */
     action?: string;
     /**

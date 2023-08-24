@@ -18,6 +18,18 @@ namespace Pulumi.Cloudflare.Inputs
         [Input("consumerServiceUrl", required: true)]
         public Input<string> ConsumerServiceUrl { get; set; } = null!;
 
+        [Input("customAttributes")]
+        private InputList<Inputs.AccessApplicationSaasAppCustomAttributeGetArgs>? _customAttributes;
+
+        /// <summary>
+        /// Custom attribute mapped from IDPs.
+        /// </summary>
+        public InputList<Inputs.AccessApplicationSaasAppCustomAttributeGetArgs> CustomAttributes
+        {
+            get => _customAttributes ?? (_customAttributes = new InputList<Inputs.AccessApplicationSaasAppCustomAttributeGetArgs>());
+            set => _customAttributes = value;
+        }
+
         /// <summary>
         /// The format of the name identifier sent to the SaaS application. Defaults to `email`.
         /// </summary>

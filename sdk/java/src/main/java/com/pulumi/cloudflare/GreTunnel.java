@@ -43,7 +43,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var example = new GreTunnel(&#34;example&#34;, GreTunnelArgs.builder()        
  *             .accountId(&#34;f037e56e89293a057740de681ac9abbe&#34;)
- *             .cloudflareGreEndpoint(&#34;203.0.113.1&#34;)
+ *             .cloudflareGreEndpoint(&#34;203.0.113.2&#34;)
  *             .customerGreEndpoint(&#34;203.0.113.1&#34;)
  *             .description(&#34;Tunnel for ISP X&#34;)
  *             .healthCheckEnabled(true)

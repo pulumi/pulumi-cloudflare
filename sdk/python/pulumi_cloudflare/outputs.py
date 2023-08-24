@@ -13,7 +13,10 @@ from . import outputs
 __all__ = [
     'AccessApplicationCorsHeader',
     'AccessApplicationSaasApp',
+    'AccessApplicationSaasAppCustomAttribute',
+    'AccessApplicationSaasAppCustomAttributeSource',
     'AccessGroupExclude',
+    'AccessGroupExcludeAuthContext',
     'AccessGroupExcludeAzure',
     'AccessGroupExcludeExternalEvaluation',
     'AccessGroupExcludeGithub',
@@ -21,6 +24,7 @@ __all__ = [
     'AccessGroupExcludeOkta',
     'AccessGroupExcludeSaml',
     'AccessGroupInclude',
+    'AccessGroupIncludeAuthContext',
     'AccessGroupIncludeAzure',
     'AccessGroupIncludeExternalEvaluation',
     'AccessGroupIncludeGithub',
@@ -28,6 +32,7 @@ __all__ = [
     'AccessGroupIncludeOkta',
     'AccessGroupIncludeSaml',
     'AccessGroupRequire',
+    'AccessGroupRequireAuthContext',
     'AccessGroupRequireAzure',
     'AccessGroupRequireExternalEvaluation',
     'AccessGroupRequireGithub',
@@ -40,6 +45,7 @@ __all__ = [
     'AccessOrganizationLoginDesign',
     'AccessPolicyApprovalGroup',
     'AccessPolicyExclude',
+    'AccessPolicyExcludeAuthContext',
     'AccessPolicyExcludeAzure',
     'AccessPolicyExcludeExternalEvaluation',
     'AccessPolicyExcludeGithub',
@@ -47,6 +53,7 @@ __all__ = [
     'AccessPolicyExcludeOkta',
     'AccessPolicyExcludeSaml',
     'AccessPolicyInclude',
+    'AccessPolicyIncludeAuthContext',
     'AccessPolicyIncludeAzure',
     'AccessPolicyIncludeExternalEvaluation',
     'AccessPolicyIncludeGithub',
@@ -54,6 +61,7 @@ __all__ = [
     'AccessPolicyIncludeOkta',
     'AccessPolicyIncludeSaml',
     'AccessPolicyRequire',
+    'AccessPolicyRequireAuthContext',
     'AccessPolicyRequireAzure',
     'AccessPolicyRequireExternalEvaluation',
     'AccessPolicyRequireGithub',
@@ -425,6 +433,8 @@ class AccessApplicationSaasApp(dict):
             suggest = "consumer_service_url"
         elif key == "spEntityId":
             suggest = "sp_entity_id"
+        elif key == "customAttributes":
+            suggest = "custom_attributes"
         elif key == "nameIdFormat":
             suggest = "name_id_format"
 
@@ -442,14 +452,18 @@ class AccessApplicationSaasApp(dict):
     def __init__(__self__, *,
                  consumer_service_url: str,
                  sp_entity_id: str,
+                 custom_attributes: Optional[Sequence['outputs.AccessApplicationSaasAppCustomAttribute']] = None,
                  name_id_format: Optional[str] = None):
         """
         :param str consumer_service_url: The service provider's endpoint that is responsible for receiving and parsing a SAML assertion.
         :param str sp_entity_id: A globally unique name for an identity or service provider.
+        :param Sequence['AccessApplicationSaasAppCustomAttributeArgs'] custom_attributes: Custom attribute mapped from IDPs.
         :param str name_id_format: The format of the name identifier sent to the SaaS application. Defaults to `email`.
         """
         pulumi.set(__self__, "consumer_service_url", consumer_service_url)
         pulumi.set(__self__, "sp_entity_id", sp_entity_id)
+        if custom_attributes is not None:
+            pulumi.set(__self__, "custom_attributes", custom_attributes)
         if name_id_format is not None:
             pulumi.set(__self__, "name_id_format", name_id_format)
 
@@ -470,6 +484,14 @@ class AccessApplicationSaasApp(dict):
         return pulumi.get(self, "sp_entity_id")
 
     @property
+    @pulumi.getter(name="customAttributes")
+    def custom_attributes(self) -> Optional[Sequence['outputs.AccessApplicationSaasAppCustomAttribute']]:
+        """
+        Custom attribute mapped from IDPs.
+        """
+        return pulumi.get(self, "custom_attributes")
+
+    @property
     @pulumi.getter(name="nameIdFormat")
     def name_id_format(self) -> Optional[str]:
         """
@@ -479,12 +501,101 @@ class AccessApplicationSaasApp(dict):
 
 
 @pulumi.output_type
+class AccessApplicationSaasAppCustomAttribute(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "friendlyName":
+            suggest = "friendly_name"
+        elif key == "nameFormat":
+            suggest = "name_format"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AccessApplicationSaasAppCustomAttribute. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AccessApplicationSaasAppCustomAttribute.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AccessApplicationSaasAppCustomAttribute.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 source: 'outputs.AccessApplicationSaasAppCustomAttributeSource',
+                 friendly_name: Optional[str] = None,
+                 name: Optional[str] = None,
+                 name_format: Optional[str] = None,
+                 required: Optional[bool] = None):
+        """
+        :param str name: Friendly name of the Access Application.
+        """
+        pulumi.set(__self__, "source", source)
+        if friendly_name is not None:
+            pulumi.set(__self__, "friendly_name", friendly_name)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if name_format is not None:
+            pulumi.set(__self__, "name_format", name_format)
+        if required is not None:
+            pulumi.set(__self__, "required", required)
+
+    @property
+    @pulumi.getter
+    def source(self) -> 'outputs.AccessApplicationSaasAppCustomAttributeSource':
+        return pulumi.get(self, "source")
+
+    @property
+    @pulumi.getter(name="friendlyName")
+    def friendly_name(self) -> Optional[str]:
+        return pulumi.get(self, "friendly_name")
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        """
+        Friendly name of the Access Application.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="nameFormat")
+    def name_format(self) -> Optional[str]:
+        return pulumi.get(self, "name_format")
+
+    @property
+    @pulumi.getter
+    def required(self) -> Optional[bool]:
+        return pulumi.get(self, "required")
+
+
+@pulumi.output_type
+class AccessApplicationSaasAppCustomAttributeSource(dict):
+    def __init__(__self__, *,
+                 name: str):
+        """
+        :param str name: Friendly name of the Access Application.
+        """
+        pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        Friendly name of the Access Application.
+        """
+        return pulumi.get(self, "name")
+
+
+@pulumi.output_type
 class AccessGroupExclude(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
         if key == "anyValidServiceToken":
             suggest = "any_valid_service_token"
+        elif key == "authContexts":
+            suggest = "auth_contexts"
         elif key == "authMethod":
             suggest = "auth_method"
         elif key == "commonName":
@@ -515,6 +626,7 @@ class AccessGroupExclude(dict):
 
     def __init__(__self__, *,
                  any_valid_service_token: Optional[bool] = None,
+                 auth_contexts: Optional[Sequence['outputs.AccessGroupExcludeAuthContext']] = None,
                  auth_method: Optional[str] = None,
                  azures: Optional[Sequence['outputs.AccessGroupExcludeAzure']] = None,
                  certificate: Optional[bool] = None,
@@ -536,6 +648,8 @@ class AccessGroupExclude(dict):
                  service_tokens: Optional[Sequence[str]] = None):
         if any_valid_service_token is not None:
             pulumi.set(__self__, "any_valid_service_token", any_valid_service_token)
+        if auth_contexts is not None:
+            pulumi.set(__self__, "auth_contexts", auth_contexts)
         if auth_method is not None:
             pulumi.set(__self__, "auth_method", auth_method)
         if azures is not None:
@@ -579,6 +693,11 @@ class AccessGroupExclude(dict):
     @pulumi.getter(name="anyValidServiceToken")
     def any_valid_service_token(self) -> Optional[bool]:
         return pulumi.get(self, "any_valid_service_token")
+
+    @property
+    @pulumi.getter(name="authContexts")
+    def auth_contexts(self) -> Optional[Sequence['outputs.AccessGroupExcludeAuthContext']]:
+        return pulumi.get(self, "auth_contexts")
 
     @property
     @pulumi.getter(name="authMethod")
@@ -674,6 +793,57 @@ class AccessGroupExclude(dict):
     @pulumi.getter(name="serviceTokens")
     def service_tokens(self) -> Optional[Sequence[str]]:
         return pulumi.get(self, "service_tokens")
+
+
+@pulumi.output_type
+class AccessGroupExcludeAuthContext(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "acId":
+            suggest = "ac_id"
+        elif key == "identityProviderId":
+            suggest = "identity_provider_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AccessGroupExcludeAuthContext. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AccessGroupExcludeAuthContext.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AccessGroupExcludeAuthContext.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 ac_id: str,
+                 id: str,
+                 identity_provider_id: str):
+        """
+        :param str id: The ID of this resource.
+        """
+        pulumi.set(__self__, "ac_id", ac_id)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "identity_provider_id", identity_provider_id)
+
+    @property
+    @pulumi.getter(name="acId")
+    def ac_id(self) -> str:
+        return pulumi.get(self, "ac_id")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of this resource.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="identityProviderId")
+    def identity_provider_id(self) -> str:
+        return pulumi.get(self, "identity_provider_id")
 
 
 @pulumi.output_type
@@ -939,6 +1109,8 @@ class AccessGroupInclude(dict):
         suggest = None
         if key == "anyValidServiceToken":
             suggest = "any_valid_service_token"
+        elif key == "authContexts":
+            suggest = "auth_contexts"
         elif key == "authMethod":
             suggest = "auth_method"
         elif key == "commonName":
@@ -969,6 +1141,7 @@ class AccessGroupInclude(dict):
 
     def __init__(__self__, *,
                  any_valid_service_token: Optional[bool] = None,
+                 auth_contexts: Optional[Sequence['outputs.AccessGroupIncludeAuthContext']] = None,
                  auth_method: Optional[str] = None,
                  azures: Optional[Sequence['outputs.AccessGroupIncludeAzure']] = None,
                  certificate: Optional[bool] = None,
@@ -990,6 +1163,8 @@ class AccessGroupInclude(dict):
                  service_tokens: Optional[Sequence[str]] = None):
         if any_valid_service_token is not None:
             pulumi.set(__self__, "any_valid_service_token", any_valid_service_token)
+        if auth_contexts is not None:
+            pulumi.set(__self__, "auth_contexts", auth_contexts)
         if auth_method is not None:
             pulumi.set(__self__, "auth_method", auth_method)
         if azures is not None:
@@ -1033,6 +1208,11 @@ class AccessGroupInclude(dict):
     @pulumi.getter(name="anyValidServiceToken")
     def any_valid_service_token(self) -> Optional[bool]:
         return pulumi.get(self, "any_valid_service_token")
+
+    @property
+    @pulumi.getter(name="authContexts")
+    def auth_contexts(self) -> Optional[Sequence['outputs.AccessGroupIncludeAuthContext']]:
+        return pulumi.get(self, "auth_contexts")
 
     @property
     @pulumi.getter(name="authMethod")
@@ -1128,6 +1308,57 @@ class AccessGroupInclude(dict):
     @pulumi.getter(name="serviceTokens")
     def service_tokens(self) -> Optional[Sequence[str]]:
         return pulumi.get(self, "service_tokens")
+
+
+@pulumi.output_type
+class AccessGroupIncludeAuthContext(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "acId":
+            suggest = "ac_id"
+        elif key == "identityProviderId":
+            suggest = "identity_provider_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AccessGroupIncludeAuthContext. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AccessGroupIncludeAuthContext.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AccessGroupIncludeAuthContext.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 ac_id: str,
+                 id: str,
+                 identity_provider_id: str):
+        """
+        :param str id: The ID of this resource.
+        """
+        pulumi.set(__self__, "ac_id", ac_id)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "identity_provider_id", identity_provider_id)
+
+    @property
+    @pulumi.getter(name="acId")
+    def ac_id(self) -> str:
+        return pulumi.get(self, "ac_id")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of this resource.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="identityProviderId")
+    def identity_provider_id(self) -> str:
+        return pulumi.get(self, "identity_provider_id")
 
 
 @pulumi.output_type
@@ -1393,6 +1624,8 @@ class AccessGroupRequire(dict):
         suggest = None
         if key == "anyValidServiceToken":
             suggest = "any_valid_service_token"
+        elif key == "authContexts":
+            suggest = "auth_contexts"
         elif key == "authMethod":
             suggest = "auth_method"
         elif key == "commonName":
@@ -1423,6 +1656,7 @@ class AccessGroupRequire(dict):
 
     def __init__(__self__, *,
                  any_valid_service_token: Optional[bool] = None,
+                 auth_contexts: Optional[Sequence['outputs.AccessGroupRequireAuthContext']] = None,
                  auth_method: Optional[str] = None,
                  azures: Optional[Sequence['outputs.AccessGroupRequireAzure']] = None,
                  certificate: Optional[bool] = None,
@@ -1444,6 +1678,8 @@ class AccessGroupRequire(dict):
                  service_tokens: Optional[Sequence[str]] = None):
         if any_valid_service_token is not None:
             pulumi.set(__self__, "any_valid_service_token", any_valid_service_token)
+        if auth_contexts is not None:
+            pulumi.set(__self__, "auth_contexts", auth_contexts)
         if auth_method is not None:
             pulumi.set(__self__, "auth_method", auth_method)
         if azures is not None:
@@ -1487,6 +1723,11 @@ class AccessGroupRequire(dict):
     @pulumi.getter(name="anyValidServiceToken")
     def any_valid_service_token(self) -> Optional[bool]:
         return pulumi.get(self, "any_valid_service_token")
+
+    @property
+    @pulumi.getter(name="authContexts")
+    def auth_contexts(self) -> Optional[Sequence['outputs.AccessGroupRequireAuthContext']]:
+        return pulumi.get(self, "auth_contexts")
 
     @property
     @pulumi.getter(name="authMethod")
@@ -1582,6 +1823,57 @@ class AccessGroupRequire(dict):
     @pulumi.getter(name="serviceTokens")
     def service_tokens(self) -> Optional[Sequence[str]]:
         return pulumi.get(self, "service_tokens")
+
+
+@pulumi.output_type
+class AccessGroupRequireAuthContext(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "acId":
+            suggest = "ac_id"
+        elif key == "identityProviderId":
+            suggest = "identity_provider_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AccessGroupRequireAuthContext. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AccessGroupRequireAuthContext.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AccessGroupRequireAuthContext.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 ac_id: str,
+                 id: str,
+                 identity_provider_id: str):
+        """
+        :param str id: The ID of this resource.
+        """
+        pulumi.set(__self__, "ac_id", ac_id)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "identity_provider_id", identity_provider_id)
+
+    @property
+    @pulumi.getter(name="acId")
+    def ac_id(self) -> str:
+        return pulumi.get(self, "ac_id")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of this resource.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="identityProviderId")
+    def identity_provider_id(self) -> str:
+        return pulumi.get(self, "identity_provider_id")
 
 
 @pulumi.output_type
@@ -1861,6 +2153,8 @@ class AccessIdentityProviderConfig(dict):
             suggest = "client_id"
         elif key == "clientSecret":
             suggest = "client_secret"
+        elif key == "conditionalAccessEnabled":
+            suggest = "conditional_access_enabled"
         elif key == "directoryId":
             suggest = "directory_id"
         elif key == "emailAttributeName":
@@ -1908,6 +2202,7 @@ class AccessIdentityProviderConfig(dict):
                  claims: Optional[Sequence[str]] = None,
                  client_id: Optional[str] = None,
                  client_secret: Optional[str] = None,
+                 conditional_access_enabled: Optional[bool] = None,
                  directory_id: Optional[str] = None,
                  email_attribute_name: Optional[str] = None,
                  idp_public_cert: Optional[str] = None,
@@ -1941,6 +2236,8 @@ class AccessIdentityProviderConfig(dict):
             pulumi.set(__self__, "client_id", client_id)
         if client_secret is not None:
             pulumi.set(__self__, "client_secret", client_secret)
+        if conditional_access_enabled is not None:
+            pulumi.set(__self__, "conditional_access_enabled", conditional_access_enabled)
         if directory_id is not None:
             pulumi.set(__self__, "directory_id", directory_id)
         if email_attribute_name is not None:
@@ -2017,6 +2314,11 @@ class AccessIdentityProviderConfig(dict):
     @pulumi.getter(name="clientSecret")
     def client_secret(self) -> Optional[str]:
         return pulumi.get(self, "client_secret")
+
+    @property
+    @pulumi.getter(name="conditionalAccessEnabled")
+    def conditional_access_enabled(self) -> Optional[bool]:
+        return pulumi.get(self, "conditional_access_enabled")
 
     @property
     @pulumi.getter(name="directoryId")
@@ -2356,6 +2658,8 @@ class AccessPolicyExclude(dict):
         suggest = None
         if key == "anyValidServiceToken":
             suggest = "any_valid_service_token"
+        elif key == "authContexts":
+            suggest = "auth_contexts"
         elif key == "authMethod":
             suggest = "auth_method"
         elif key == "commonName":
@@ -2386,6 +2690,7 @@ class AccessPolicyExclude(dict):
 
     def __init__(__self__, *,
                  any_valid_service_token: Optional[bool] = None,
+                 auth_contexts: Optional[Sequence['outputs.AccessPolicyExcludeAuthContext']] = None,
                  auth_method: Optional[str] = None,
                  azures: Optional[Sequence['outputs.AccessPolicyExcludeAzure']] = None,
                  certificate: Optional[bool] = None,
@@ -2407,6 +2712,8 @@ class AccessPolicyExclude(dict):
                  service_tokens: Optional[Sequence[str]] = None):
         if any_valid_service_token is not None:
             pulumi.set(__self__, "any_valid_service_token", any_valid_service_token)
+        if auth_contexts is not None:
+            pulumi.set(__self__, "auth_contexts", auth_contexts)
         if auth_method is not None:
             pulumi.set(__self__, "auth_method", auth_method)
         if azures is not None:
@@ -2450,6 +2757,11 @@ class AccessPolicyExclude(dict):
     @pulumi.getter(name="anyValidServiceToken")
     def any_valid_service_token(self) -> Optional[bool]:
         return pulumi.get(self, "any_valid_service_token")
+
+    @property
+    @pulumi.getter(name="authContexts")
+    def auth_contexts(self) -> Optional[Sequence['outputs.AccessPolicyExcludeAuthContext']]:
+        return pulumi.get(self, "auth_contexts")
 
     @property
     @pulumi.getter(name="authMethod")
@@ -2545,6 +2857,57 @@ class AccessPolicyExclude(dict):
     @pulumi.getter(name="serviceTokens")
     def service_tokens(self) -> Optional[Sequence[str]]:
         return pulumi.get(self, "service_tokens")
+
+
+@pulumi.output_type
+class AccessPolicyExcludeAuthContext(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "acId":
+            suggest = "ac_id"
+        elif key == "identityProviderId":
+            suggest = "identity_provider_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AccessPolicyExcludeAuthContext. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AccessPolicyExcludeAuthContext.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AccessPolicyExcludeAuthContext.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 ac_id: str,
+                 id: str,
+                 identity_provider_id: str):
+        """
+        :param str id: The ID of this resource.
+        """
+        pulumi.set(__self__, "ac_id", ac_id)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "identity_provider_id", identity_provider_id)
+
+    @property
+    @pulumi.getter(name="acId")
+    def ac_id(self) -> str:
+        return pulumi.get(self, "ac_id")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of this resource.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="identityProviderId")
+    def identity_provider_id(self) -> str:
+        return pulumi.get(self, "identity_provider_id")
 
 
 @pulumi.output_type
@@ -2822,6 +3185,8 @@ class AccessPolicyInclude(dict):
         suggest = None
         if key == "anyValidServiceToken":
             suggest = "any_valid_service_token"
+        elif key == "authContexts":
+            suggest = "auth_contexts"
         elif key == "authMethod":
             suggest = "auth_method"
         elif key == "commonName":
@@ -2852,6 +3217,7 @@ class AccessPolicyInclude(dict):
 
     def __init__(__self__, *,
                  any_valid_service_token: Optional[bool] = None,
+                 auth_contexts: Optional[Sequence['outputs.AccessPolicyIncludeAuthContext']] = None,
                  auth_method: Optional[str] = None,
                  azures: Optional[Sequence['outputs.AccessPolicyIncludeAzure']] = None,
                  certificate: Optional[bool] = None,
@@ -2873,6 +3239,8 @@ class AccessPolicyInclude(dict):
                  service_tokens: Optional[Sequence[str]] = None):
         if any_valid_service_token is not None:
             pulumi.set(__self__, "any_valid_service_token", any_valid_service_token)
+        if auth_contexts is not None:
+            pulumi.set(__self__, "auth_contexts", auth_contexts)
         if auth_method is not None:
             pulumi.set(__self__, "auth_method", auth_method)
         if azures is not None:
@@ -2916,6 +3284,11 @@ class AccessPolicyInclude(dict):
     @pulumi.getter(name="anyValidServiceToken")
     def any_valid_service_token(self) -> Optional[bool]:
         return pulumi.get(self, "any_valid_service_token")
+
+    @property
+    @pulumi.getter(name="authContexts")
+    def auth_contexts(self) -> Optional[Sequence['outputs.AccessPolicyIncludeAuthContext']]:
+        return pulumi.get(self, "auth_contexts")
 
     @property
     @pulumi.getter(name="authMethod")
@@ -3011,6 +3384,57 @@ class AccessPolicyInclude(dict):
     @pulumi.getter(name="serviceTokens")
     def service_tokens(self) -> Optional[Sequence[str]]:
         return pulumi.get(self, "service_tokens")
+
+
+@pulumi.output_type
+class AccessPolicyIncludeAuthContext(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "acId":
+            suggest = "ac_id"
+        elif key == "identityProviderId":
+            suggest = "identity_provider_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AccessPolicyIncludeAuthContext. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AccessPolicyIncludeAuthContext.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AccessPolicyIncludeAuthContext.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 ac_id: str,
+                 id: str,
+                 identity_provider_id: str):
+        """
+        :param str id: The ID of this resource.
+        """
+        pulumi.set(__self__, "ac_id", ac_id)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "identity_provider_id", identity_provider_id)
+
+    @property
+    @pulumi.getter(name="acId")
+    def ac_id(self) -> str:
+        return pulumi.get(self, "ac_id")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of this resource.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="identityProviderId")
+    def identity_provider_id(self) -> str:
+        return pulumi.get(self, "identity_provider_id")
 
 
 @pulumi.output_type
@@ -3288,6 +3712,8 @@ class AccessPolicyRequire(dict):
         suggest = None
         if key == "anyValidServiceToken":
             suggest = "any_valid_service_token"
+        elif key == "authContexts":
+            suggest = "auth_contexts"
         elif key == "authMethod":
             suggest = "auth_method"
         elif key == "commonName":
@@ -3318,6 +3744,7 @@ class AccessPolicyRequire(dict):
 
     def __init__(__self__, *,
                  any_valid_service_token: Optional[bool] = None,
+                 auth_contexts: Optional[Sequence['outputs.AccessPolicyRequireAuthContext']] = None,
                  auth_method: Optional[str] = None,
                  azures: Optional[Sequence['outputs.AccessPolicyRequireAzure']] = None,
                  certificate: Optional[bool] = None,
@@ -3339,6 +3766,8 @@ class AccessPolicyRequire(dict):
                  service_tokens: Optional[Sequence[str]] = None):
         if any_valid_service_token is not None:
             pulumi.set(__self__, "any_valid_service_token", any_valid_service_token)
+        if auth_contexts is not None:
+            pulumi.set(__self__, "auth_contexts", auth_contexts)
         if auth_method is not None:
             pulumi.set(__self__, "auth_method", auth_method)
         if azures is not None:
@@ -3382,6 +3811,11 @@ class AccessPolicyRequire(dict):
     @pulumi.getter(name="anyValidServiceToken")
     def any_valid_service_token(self) -> Optional[bool]:
         return pulumi.get(self, "any_valid_service_token")
+
+    @property
+    @pulumi.getter(name="authContexts")
+    def auth_contexts(self) -> Optional[Sequence['outputs.AccessPolicyRequireAuthContext']]:
+        return pulumi.get(self, "auth_contexts")
 
     @property
     @pulumi.getter(name="authMethod")
@@ -3477,6 +3911,57 @@ class AccessPolicyRequire(dict):
     @pulumi.getter(name="serviceTokens")
     def service_tokens(self) -> Optional[Sequence[str]]:
         return pulumi.get(self, "service_tokens")
+
+
+@pulumi.output_type
+class AccessPolicyRequireAuthContext(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "acId":
+            suggest = "ac_id"
+        elif key == "identityProviderId":
+            suggest = "identity_provider_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AccessPolicyRequireAuthContext. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AccessPolicyRequireAuthContext.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AccessPolicyRequireAuthContext.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 ac_id: str,
+                 id: str,
+                 identity_provider_id: str):
+        """
+        :param str id: The ID of this resource.
+        """
+        pulumi.set(__self__, "ac_id", ac_id)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "identity_provider_id", identity_provider_id)
+
+    @property
+    @pulumi.getter(name="acId")
+    def ac_id(self) -> str:
+        return pulumi.get(self, "ac_id")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        """
+        The ID of this resource.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="identityProviderId")
+    def identity_provider_id(self) -> str:
+        return pulumi.get(self, "identity_provider_id")
 
 
 @pulumi.output_type
@@ -4760,6 +5245,8 @@ class DevicePostureRuleInput(dict):
             suggest = "connection_id"
         elif key == "countOperator":
             suggest = "count_operator"
+        elif key == "eidLastSeen":
+            suggest = "eid_last_seen"
         elif key == "isActive":
             suggest = "is_active"
         elif key == "issueCount":
@@ -4772,8 +5259,12 @@ class DevicePostureRuleInput(dict):
             suggest = "os_distro_revision"
         elif key == "requireAll":
             suggest = "require_all"
+        elif key == "riskLevel":
+            suggest = "risk_level"
         elif key == "sensorConfig":
             suggest = "sensor_config"
+        elif key == "totalScore":
+            suggest = "total_score"
         elif key == "versionOperator":
             suggest = "version_operator"
 
@@ -4797,6 +5288,7 @@ class DevicePostureRuleInput(dict):
                  connection_id: Optional[str] = None,
                  count_operator: Optional[str] = None,
                  domain: Optional[str] = None,
+                 eid_last_seen: Optional[str] = None,
                  enabled: Optional[bool] = None,
                  exists: Optional[bool] = None,
                  id: Optional[str] = None,
@@ -4811,10 +5303,12 @@ class DevicePostureRuleInput(dict):
                  overall: Optional[str] = None,
                  path: Optional[str] = None,
                  require_all: Optional[bool] = None,
+                 risk_level: Optional[str] = None,
                  running: Optional[bool] = None,
                  sensor_config: Optional[str] = None,
                  sha256: Optional[str] = None,
                  thumbprint: Optional[str] = None,
+                 total_score: Optional[int] = None,
                  version: Optional[str] = None,
                  version_operator: Optional[str] = None):
         """
@@ -4826,6 +5320,7 @@ class DevicePostureRuleInput(dict):
         :param str connection_id: The workspace one connection id.
         :param str count_operator: The count comparison operator for kolide. Available values: `>`, `>=`, `<`, `<=`, `==`.
         :param str domain: The domain that the client must join.
+        :param str eid_last_seen: The datetime a device last seen in RFC 3339 format from Tanium.
         :param bool enabled: True if the firewall must be enabled.
         :param bool exists: Checks if the file should exist.
         :param str id: The Teams List id.
@@ -4840,10 +5335,12 @@ class DevicePostureRuleInput(dict):
         :param str overall: Overall ZTA score from Crowdstrike. Value must be between 1 and 100.
         :param str path: The path to the file.
         :param bool require_all: True if all drives must be encrypted.
+        :param str risk_level: The risk level from Tanium. Available values: `low`, `medium`, `high`, `critical`.
         :param bool running: Checks if the application should be running.
         :param str sensor_config: Sensor signal score from Crowdstrike. Value must be between 1 and 100.
         :param str sha256: The sha256 hash of the file.
         :param str thumbprint: The thumbprint of the file certificate.
+        :param int total_score: The total score from Tanium.
         :param str version: The operating system semantic version.
         :param str version_operator: The version comparison operator for crowdstrike. Available values: `>`, `>=`, `<`, `<=`, `==`.
         """
@@ -4863,6 +5360,8 @@ class DevicePostureRuleInput(dict):
             pulumi.set(__self__, "count_operator", count_operator)
         if domain is not None:
             pulumi.set(__self__, "domain", domain)
+        if eid_last_seen is not None:
+            pulumi.set(__self__, "eid_last_seen", eid_last_seen)
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
         if exists is not None:
@@ -4891,6 +5390,8 @@ class DevicePostureRuleInput(dict):
             pulumi.set(__self__, "path", path)
         if require_all is not None:
             pulumi.set(__self__, "require_all", require_all)
+        if risk_level is not None:
+            pulumi.set(__self__, "risk_level", risk_level)
         if running is not None:
             pulumi.set(__self__, "running", running)
         if sensor_config is not None:
@@ -4899,6 +5400,8 @@ class DevicePostureRuleInput(dict):
             pulumi.set(__self__, "sha256", sha256)
         if thumbprint is not None:
             pulumi.set(__self__, "thumbprint", thumbprint)
+        if total_score is not None:
+            pulumi.set(__self__, "total_score", total_score)
         if version is not None:
             pulumi.set(__self__, "version", version)
         if version_operator is not None:
@@ -4967,6 +5470,14 @@ class DevicePostureRuleInput(dict):
         The domain that the client must join.
         """
         return pulumi.get(self, "domain")
+
+    @property
+    @pulumi.getter(name="eidLastSeen")
+    def eid_last_seen(self) -> Optional[str]:
+        """
+        The datetime a device last seen in RFC 3339 format from Tanium.
+        """
+        return pulumi.get(self, "eid_last_seen")
 
     @property
     @pulumi.getter
@@ -5081,6 +5592,14 @@ class DevicePostureRuleInput(dict):
         return pulumi.get(self, "require_all")
 
     @property
+    @pulumi.getter(name="riskLevel")
+    def risk_level(self) -> Optional[str]:
+        """
+        The risk level from Tanium. Available values: `low`, `medium`, `high`, `critical`.
+        """
+        return pulumi.get(self, "risk_level")
+
+    @property
     @pulumi.getter
     def running(self) -> Optional[bool]:
         """
@@ -5111,6 +5630,14 @@ class DevicePostureRuleInput(dict):
         The thumbprint of the file certificate.
         """
         return pulumi.get(self, "thumbprint")
+
+    @property
+    @pulumi.getter(name="totalScore")
+    def total_score(self) -> Optional[int]:
+        """
+        The total score from Tanium.
+        """
+        return pulumi.get(self, "total_score")
 
     @property
     @pulumi.getter
@@ -7168,6 +7695,8 @@ class NotificationPolicyFilters(dict):
             suggest = "packets_per_seconds"
         elif key == "poolIds":
             suggest = "pool_ids"
+        elif key == "projectIds":
+            suggest = "project_ids"
         elif key == "requestsPerSeconds":
             suggest = "requests_per_seconds"
         elif key == "targetHostnames":
@@ -7189,8 +7718,10 @@ class NotificationPolicyFilters(dict):
     def __init__(__self__, *,
                  alert_trigger_preferences: Optional[Sequence[str]] = None,
                  enableds: Optional[Sequence[str]] = None,
+                 environments: Optional[Sequence[str]] = None,
                  event_sources: Optional[Sequence[str]] = None,
                  event_types: Optional[Sequence[str]] = None,
+                 events: Optional[Sequence[str]] = None,
                  health_check_ids: Optional[Sequence[str]] = None,
                  input_ids: Optional[Sequence[str]] = None,
                  limits: Optional[Sequence[str]] = None,
@@ -7199,6 +7730,7 @@ class NotificationPolicyFilters(dict):
                  packets_per_seconds: Optional[Sequence[str]] = None,
                  pool_ids: Optional[Sequence[str]] = None,
                  products: Optional[Sequence[str]] = None,
+                 project_ids: Optional[Sequence[str]] = None,
                  protocols: Optional[Sequence[str]] = None,
                  requests_per_seconds: Optional[Sequence[str]] = None,
                  services: Optional[Sequence[str]] = None,
@@ -7210,8 +7742,10 @@ class NotificationPolicyFilters(dict):
         """
         :param Sequence[str] alert_trigger_preferences: Alert trigger preferences. Example: `slo`.
         :param Sequence[str] enableds: State of the pool to alert on.
+        :param Sequence[str] environments: Environment of pages. Available values: `ENVIRONMENT_PREVIEW`, `ENVIRONMENT_PRODUCTION`.
         :param Sequence[str] event_sources: Source configuration to alert on for pool or origin.
         :param Sequence[str] event_types: Stream event type to alert on.
+        :param Sequence[str] events: Pages event to alert. Available values: `EVENT_DEPLOYMENT_STARTED`, `EVENT_DEPLOYMENT_FAILED`, `EVENT_DEPLOYMENT_SUCCESS`.
         :param Sequence[str] health_check_ids: Identifier health check. Required when using `filters.0.status`.
         :param Sequence[str] input_ids: Stream input id to alert on.
         :param Sequence[str] limits: A numerical limit. Example: `100`.
@@ -7220,6 +7754,7 @@ class NotificationPolicyFilters(dict):
         :param Sequence[str] packets_per_seconds: Packets per second threshold for dos alert.
         :param Sequence[str] pool_ids: Load balancer pool identifier.
         :param Sequence[str] products: Product name. Available values: `worker_requests`, `worker_durable_objects_requests`, `worker_durable_objects_duration`, `worker_durable_objects_data_transfer`, `worker_durable_objects_stored_data`, `worker_durable_objects_storage_deletes`, `worker_durable_objects_storage_writes`, `worker_durable_objects_storage_reads`.
+        :param Sequence[str] project_ids: Identifier of pages project.
         :param Sequence[str] protocols: Protocol to alert on for dos.
         :param Sequence[str] requests_per_seconds: Requests per second threshold for dos alert.
         :param Sequence[str] slos: A numerical limit. Example: `99.9`.
@@ -7232,10 +7767,14 @@ class NotificationPolicyFilters(dict):
             pulumi.set(__self__, "alert_trigger_preferences", alert_trigger_preferences)
         if enableds is not None:
             pulumi.set(__self__, "enableds", enableds)
+        if environments is not None:
+            pulumi.set(__self__, "environments", environments)
         if event_sources is not None:
             pulumi.set(__self__, "event_sources", event_sources)
         if event_types is not None:
             pulumi.set(__self__, "event_types", event_types)
+        if events is not None:
+            pulumi.set(__self__, "events", events)
         if health_check_ids is not None:
             pulumi.set(__self__, "health_check_ids", health_check_ids)
         if input_ids is not None:
@@ -7252,6 +7791,8 @@ class NotificationPolicyFilters(dict):
             pulumi.set(__self__, "pool_ids", pool_ids)
         if products is not None:
             pulumi.set(__self__, "products", products)
+        if project_ids is not None:
+            pulumi.set(__self__, "project_ids", project_ids)
         if protocols is not None:
             pulumi.set(__self__, "protocols", protocols)
         if requests_per_seconds is not None:
@@ -7286,6 +7827,14 @@ class NotificationPolicyFilters(dict):
         return pulumi.get(self, "enableds")
 
     @property
+    @pulumi.getter
+    def environments(self) -> Optional[Sequence[str]]:
+        """
+        Environment of pages. Available values: `ENVIRONMENT_PREVIEW`, `ENVIRONMENT_PRODUCTION`.
+        """
+        return pulumi.get(self, "environments")
+
+    @property
     @pulumi.getter(name="eventSources")
     def event_sources(self) -> Optional[Sequence[str]]:
         """
@@ -7300,6 +7849,14 @@ class NotificationPolicyFilters(dict):
         Stream event type to alert on.
         """
         return pulumi.get(self, "event_types")
+
+    @property
+    @pulumi.getter
+    def events(self) -> Optional[Sequence[str]]:
+        """
+        Pages event to alert. Available values: `EVENT_DEPLOYMENT_STARTED`, `EVENT_DEPLOYMENT_FAILED`, `EVENT_DEPLOYMENT_SUCCESS`.
+        """
+        return pulumi.get(self, "events")
 
     @property
     @pulumi.getter(name="healthCheckIds")
@@ -7364,6 +7921,14 @@ class NotificationPolicyFilters(dict):
         Product name. Available values: `worker_requests`, `worker_durable_objects_requests`, `worker_durable_objects_duration`, `worker_durable_objects_data_transfer`, `worker_durable_objects_stored_data`, `worker_durable_objects_storage_deletes`, `worker_durable_objects_storage_writes`, `worker_durable_objects_storage_reads`.
         """
         return pulumi.get(self, "products")
+
+    @property
+    @pulumi.getter(name="projectIds")
+    def project_ids(self) -> Optional[Sequence[str]]:
+        """
+        Identifier of pages project.
+        """
+        return pulumi.get(self, "project_ids")
 
     @property
     @pulumi.getter
@@ -9810,7 +10375,7 @@ class RulesetRule(dict):
                  version: Optional[str] = None):
         """
         :param str expression: Criteria for an HTTP request to trigger the ruleset rule action. Uses the Firewall Rules expression language based on Wireshark display filters. Refer to the [Firewall Rules language](https://developers.cloudflare.com/firewall/cf-firewall-language) documentation for all available fields, operators, and functions.
-        :param str action: Action to perform in the ruleset rule. Available values: `allow`, `block`, `challenge`, `ddos_dynamic`, `execute`, `force_connection_close`, `js_challenge`, `log`, `log_custom_field`, `managed_challenge`, `redirect`, `rewrite`, `route`, `score`, `set_cache_settings`, `set_config`, `serve_error`, `skip`, `compress_response`.
+        :param str action: Action to perform in the ruleset rule. Available values: `block`, `challenge`, `compress_response`, `ddos_dynamic`, `ddos_mitigation`, `execute`, `force_connection_close`, `js_challenge`, `log`, `log_custom_field`, `managed_challenge`, `redirect`, `rewrite`, `route`, `score`, `serve_error`, `set_cache_settings`, `set_config`, `skip`.
         :param 'RulesetRuleActionParametersArgs' action_parameters: List of parameters that configure the behavior of the ruleset rule action.
         :param str description: Brief summary of the ruleset rule and its intended use.
         :param bool enabled: Whether the rule is active.
@@ -9858,7 +10423,7 @@ class RulesetRule(dict):
     @pulumi.getter
     def action(self) -> Optional[str]:
         """
-        Action to perform in the ruleset rule. Available values: `allow`, `block`, `challenge`, `ddos_dynamic`, `execute`, `force_connection_close`, `js_challenge`, `log`, `log_custom_field`, `managed_challenge`, `redirect`, `rewrite`, `route`, `score`, `set_cache_settings`, `set_config`, `serve_error`, `skip`, `compress_response`.
+        Action to perform in the ruleset rule. Available values: `block`, `challenge`, `compress_response`, `ddos_dynamic`, `ddos_mitigation`, `execute`, `force_connection_close`, `js_challenge`, `log`, `log_custom_field`, `managed_challenge`, `redirect`, `rewrite`, `route`, `score`, `serve_error`, `set_cache_settings`, `set_config`, `skip`.
         """
         return pulumi.get(self, "action")
 
@@ -11210,7 +11775,7 @@ class RulesetRuleActionParametersOverridesRule(dict):
                  score_threshold: Optional[int] = None,
                  sensitivity_level: Optional[str] = None):
         """
-        :param str action: Action to perform in the ruleset rule. Available values: `allow`, `block`, `challenge`, `ddos_dynamic`, `execute`, `force_connection_close`, `js_challenge`, `log`, `log_custom_field`, `managed_challenge`, `redirect`, `rewrite`, `route`, `score`, `set_cache_settings`, `set_config`, `serve_error`, `skip`, `compress_response`.
+        :param str action: Action to perform in the ruleset rule. Available values: `block`, `challenge`, `compress_response`, `ddos_dynamic`, `ddos_mitigation`, `execute`, `force_connection_close`, `js_challenge`, `log`, `log_custom_field`, `managed_challenge`, `redirect`, `rewrite`, `route`, `score`, `serve_error`, `set_cache_settings`, `set_config`, `skip`.
         :param bool enabled: Whether the rule is active.
         :param str id: Unique rule identifier.
         """
@@ -11229,7 +11794,7 @@ class RulesetRuleActionParametersOverridesRule(dict):
     @pulumi.getter
     def action(self) -> Optional[str]:
         """
-        Action to perform in the ruleset rule. Available values: `allow`, `block`, `challenge`, `ddos_dynamic`, `execute`, `force_connection_close`, `js_challenge`, `log`, `log_custom_field`, `managed_challenge`, `redirect`, `rewrite`, `route`, `score`, `set_cache_settings`, `set_config`, `serve_error`, `skip`, `compress_response`.
+        Action to perform in the ruleset rule. Available values: `block`, `challenge`, `compress_response`, `ddos_dynamic`, `ddos_mitigation`, `execute`, `force_connection_close`, `js_challenge`, `log`, `log_custom_field`, `managed_challenge`, `redirect`, `rewrite`, `route`, `score`, `serve_error`, `set_cache_settings`, `set_config`, `skip`.
         """
         return pulumi.get(self, "action")
 
@@ -15797,7 +16362,7 @@ class GetRulesetsFilterResult(dict):
         :param str id: The ID of the Ruleset to target.
         :param str kind: Type of Ruleset to create. Available values: `custom`, `managed`, `root`, `zone`.
         :param str name: Name of the ruleset.
-        :param str phase: Point in the request/response lifecycle where the ruleset will be created. Available values: `ddos_l4`, `ddos_l7`, `http_custom_errors`, `http_log_custom_fields`, `http_request_cache_settings`, `http_request_firewall_custom`, `http_request_firewall_managed`, `http_request_late_transform`, `http_request_late_transform_managed`, `http_request_main`, `http_request_origin`, `http_request_dynamic_redirect`, `http_request_redirect`, `http_request_sanitize`, `http_request_transform`, `http_response_firewall_managed`, `http_response_headers_transform`, `http_response_headers_transform_managed`, `http_response_compression`, `magic_transit`, `http_ratelimit`, `http_request_sbfm`, `http_config_settings`.
+        :param str phase: Point in the request/response lifecycle where the ruleset will be created. Available values: `ddos_l4`, `ddos_l7`, `http_config_settings`, `http_custom_errors`, `http_log_custom_fields`, `http_ratelimit`, `http_request_cache_settings`, `http_request_dynamic_redirect`, `http_request_firewall_custom`, `http_request_firewall_managed`, `http_request_late_transform`, `http_request_origin`, `http_request_redirect`, `http_request_sanitize`, `http_request_sbfm`, `http_request_transform`, `http_response_compression`, `http_response_firewall_managed`, `http_response_headers_transform`, `magic_transit`.
         :param str version: Version of the ruleset to filter on.
         """
         if id is not None:
@@ -15839,7 +16404,7 @@ class GetRulesetsFilterResult(dict):
     @pulumi.getter
     def phase(self) -> Optional[str]:
         """
-        Point in the request/response lifecycle where the ruleset will be created. Available values: `ddos_l4`, `ddos_l7`, `http_custom_errors`, `http_log_custom_fields`, `http_request_cache_settings`, `http_request_firewall_custom`, `http_request_firewall_managed`, `http_request_late_transform`, `http_request_late_transform_managed`, `http_request_main`, `http_request_origin`, `http_request_dynamic_redirect`, `http_request_redirect`, `http_request_sanitize`, `http_request_transform`, `http_response_firewall_managed`, `http_response_headers_transform`, `http_response_headers_transform_managed`, `http_response_compression`, `magic_transit`, `http_ratelimit`, `http_request_sbfm`, `http_config_settings`.
+        Point in the request/response lifecycle where the ruleset will be created. Available values: `ddos_l4`, `ddos_l7`, `http_config_settings`, `http_custom_errors`, `http_log_custom_fields`, `http_ratelimit`, `http_request_cache_settings`, `http_request_dynamic_redirect`, `http_request_firewall_custom`, `http_request_firewall_managed`, `http_request_late_transform`, `http_request_origin`, `http_request_redirect`, `http_request_sanitize`, `http_request_sbfm`, `http_request_transform`, `http_response_compression`, `http_response_firewall_managed`, `http_response_headers_transform`, `magic_transit`.
         """
         return pulumi.get(self, "phase")
 

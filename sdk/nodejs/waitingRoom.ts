@@ -31,6 +31,7 @@ import * as utilities from "./utilities";
  *     name: "foo",
  *     newUsersPerMinute: 200,
  *     path: "/",
+ *     queueingStatusCode: 200,
  *     totalActiveUsers: 200,
  *     zoneId: "0da42c8d2132a9ddaf714f9e7c920711",
  * });
@@ -125,6 +126,10 @@ export class WaitingRoom extends pulumi.CustomResource {
      */
     public readonly queueingMethod!: pulumi.Output<string | undefined>;
     /**
+     * HTTP status code returned to a user while in the queue.
+     */
+    public readonly queueingStatusCode!: pulumi.Output<number | undefined>;
+    /**
      * Lifetime of a cookie (in minutes) set by Cloudflare for users who get access to the origin. Defaults to `5`.
      */
     public readonly sessionDuration!: pulumi.Output<number | undefined>;
@@ -167,6 +172,7 @@ export class WaitingRoom extends pulumi.CustomResource {
             resourceInputs["path"] = state ? state.path : undefined;
             resourceInputs["queueAll"] = state ? state.queueAll : undefined;
             resourceInputs["queueingMethod"] = state ? state.queueingMethod : undefined;
+            resourceInputs["queueingStatusCode"] = state ? state.queueingStatusCode : undefined;
             resourceInputs["sessionDuration"] = state ? state.sessionDuration : undefined;
             resourceInputs["suspended"] = state ? state.suspended : undefined;
             resourceInputs["totalActiveUsers"] = state ? state.totalActiveUsers : undefined;
@@ -201,6 +207,7 @@ export class WaitingRoom extends pulumi.CustomResource {
             resourceInputs["path"] = args ? args.path : undefined;
             resourceInputs["queueAll"] = args ? args.queueAll : undefined;
             resourceInputs["queueingMethod"] = args ? args.queueingMethod : undefined;
+            resourceInputs["queueingStatusCode"] = args ? args.queueingStatusCode : undefined;
             resourceInputs["sessionDuration"] = args ? args.sessionDuration : undefined;
             resourceInputs["suspended"] = args ? args.suspended : undefined;
             resourceInputs["totalActiveUsers"] = args ? args.totalActiveUsers : undefined;
@@ -267,6 +274,10 @@ export interface WaitingRoomState {
      * The queueing method used by the waiting room. Available values: `fifo`, `random`, `passthrough`, `reject`. Defaults to `fifo`.
      */
     queueingMethod?: pulumi.Input<string>;
+    /**
+     * HTTP status code returned to a user while in the queue.
+     */
+    queueingStatusCode?: pulumi.Input<number>;
     /**
      * Lifetime of a cookie (in minutes) set by Cloudflare for users who get access to the origin. Defaults to `5`.
      */
@@ -341,6 +352,10 @@ export interface WaitingRoomArgs {
      * The queueing method used by the waiting room. Available values: `fifo`, `random`, `passthrough`, `reject`. Defaults to `fifo`.
      */
     queueingMethod?: pulumi.Input<string>;
+    /**
+     * HTTP status code returned to a user while in the queue.
+     */
+    queueingStatusCode?: pulumi.Input<number>;
     /**
      * Lifetime of a cookie (in minutes) set by Cloudflare for users who get access to the origin. Defaults to `5`.
      */

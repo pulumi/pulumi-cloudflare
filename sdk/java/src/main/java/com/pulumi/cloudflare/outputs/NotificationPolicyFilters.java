@@ -22,6 +22,11 @@ public final class NotificationPolicyFilters {
      */
     private @Nullable List<String> enableds;
     /**
+     * @return Environment of pages. Available values: `ENVIRONMENT_PREVIEW`, `ENVIRONMENT_PRODUCTION`.
+     * 
+     */
+    private @Nullable List<String> environments;
+    /**
      * @return Source configuration to alert on for pool or origin.
      * 
      */
@@ -31,6 +36,11 @@ public final class NotificationPolicyFilters {
      * 
      */
     private @Nullable List<String> eventTypes;
+    /**
+     * @return Pages event to alert. Available values: `EVENT_DEPLOYMENT_STARTED`, `EVENT_DEPLOYMENT_FAILED`, `EVENT_DEPLOYMENT_SUCCESS`.
+     * 
+     */
+    private @Nullable List<String> events;
     /**
      * @return Identifier health check. Required when using `filters.0.status`.
      * 
@@ -71,6 +81,11 @@ public final class NotificationPolicyFilters {
      * 
      */
     private @Nullable List<String> products;
+    /**
+     * @return Identifier of pages project.
+     * 
+     */
+    private @Nullable List<String> projectIds;
     /**
      * @return Protocol to alert on for dos.
      * 
@@ -124,6 +139,13 @@ public final class NotificationPolicyFilters {
         return this.enableds == null ? List.of() : this.enableds;
     }
     /**
+     * @return Environment of pages. Available values: `ENVIRONMENT_PREVIEW`, `ENVIRONMENT_PRODUCTION`.
+     * 
+     */
+    public List<String> environments() {
+        return this.environments == null ? List.of() : this.environments;
+    }
+    /**
      * @return Source configuration to alert on for pool or origin.
      * 
      */
@@ -136,6 +158,13 @@ public final class NotificationPolicyFilters {
      */
     public List<String> eventTypes() {
         return this.eventTypes == null ? List.of() : this.eventTypes;
+    }
+    /**
+     * @return Pages event to alert. Available values: `EVENT_DEPLOYMENT_STARTED`, `EVENT_DEPLOYMENT_FAILED`, `EVENT_DEPLOYMENT_SUCCESS`.
+     * 
+     */
+    public List<String> events() {
+        return this.events == null ? List.of() : this.events;
     }
     /**
      * @return Identifier health check. Required when using `filters.0.status`.
@@ -192,6 +221,13 @@ public final class NotificationPolicyFilters {
      */
     public List<String> products() {
         return this.products == null ? List.of() : this.products;
+    }
+    /**
+     * @return Identifier of pages project.
+     * 
+     */
+    public List<String> projectIds() {
+        return this.projectIds == null ? List.of() : this.projectIds;
     }
     /**
      * @return Protocol to alert on for dos.
@@ -257,8 +293,10 @@ public final class NotificationPolicyFilters {
     public static final class Builder {
         private @Nullable List<String> alertTriggerPreferences;
         private @Nullable List<String> enableds;
+        private @Nullable List<String> environments;
         private @Nullable List<String> eventSources;
         private @Nullable List<String> eventTypes;
+        private @Nullable List<String> events;
         private @Nullable List<String> healthCheckIds;
         private @Nullable List<String> inputIds;
         private @Nullable List<String> limits;
@@ -267,6 +305,7 @@ public final class NotificationPolicyFilters {
         private @Nullable List<String> packetsPerSeconds;
         private @Nullable List<String> poolIds;
         private @Nullable List<String> products;
+        private @Nullable List<String> projectIds;
         private @Nullable List<String> protocols;
         private @Nullable List<String> requestsPerSeconds;
         private @Nullable List<String> services;
@@ -280,8 +319,10 @@ public final class NotificationPolicyFilters {
     	      Objects.requireNonNull(defaults);
     	      this.alertTriggerPreferences = defaults.alertTriggerPreferences;
     	      this.enableds = defaults.enableds;
+    	      this.environments = defaults.environments;
     	      this.eventSources = defaults.eventSources;
     	      this.eventTypes = defaults.eventTypes;
+    	      this.events = defaults.events;
     	      this.healthCheckIds = defaults.healthCheckIds;
     	      this.inputIds = defaults.inputIds;
     	      this.limits = defaults.limits;
@@ -290,6 +331,7 @@ public final class NotificationPolicyFilters {
     	      this.packetsPerSeconds = defaults.packetsPerSeconds;
     	      this.poolIds = defaults.poolIds;
     	      this.products = defaults.products;
+    	      this.projectIds = defaults.projectIds;
     	      this.protocols = defaults.protocols;
     	      this.requestsPerSeconds = defaults.requestsPerSeconds;
     	      this.services = defaults.services;
@@ -317,6 +359,14 @@ public final class NotificationPolicyFilters {
             return enableds(List.of(enableds));
         }
         @CustomType.Setter
+        public Builder environments(@Nullable List<String> environments) {
+            this.environments = environments;
+            return this;
+        }
+        public Builder environments(String... environments) {
+            return environments(List.of(environments));
+        }
+        @CustomType.Setter
         public Builder eventSources(@Nullable List<String> eventSources) {
             this.eventSources = eventSources;
             return this;
@@ -331,6 +381,14 @@ public final class NotificationPolicyFilters {
         }
         public Builder eventTypes(String... eventTypes) {
             return eventTypes(List.of(eventTypes));
+        }
+        @CustomType.Setter
+        public Builder events(@Nullable List<String> events) {
+            this.events = events;
+            return this;
+        }
+        public Builder events(String... events) {
+            return events(List.of(events));
         }
         @CustomType.Setter
         public Builder healthCheckIds(@Nullable List<String> healthCheckIds) {
@@ -395,6 +453,14 @@ public final class NotificationPolicyFilters {
         }
         public Builder products(String... products) {
             return products(List.of(products));
+        }
+        @CustomType.Setter
+        public Builder projectIds(@Nullable List<String> projectIds) {
+            this.projectIds = projectIds;
+            return this;
+        }
+        public Builder projectIds(String... projectIds) {
+            return projectIds(List.of(projectIds));
         }
         @CustomType.Setter
         public Builder protocols(@Nullable List<String> protocols) {
@@ -464,8 +530,10 @@ public final class NotificationPolicyFilters {
             final var o = new NotificationPolicyFilters();
             o.alertTriggerPreferences = alertTriggerPreferences;
             o.enableds = enableds;
+            o.environments = environments;
             o.eventSources = eventSources;
             o.eventTypes = eventTypes;
+            o.events = events;
             o.healthCheckIds = healthCheckIds;
             o.inputIds = inputIds;
             o.limits = limits;
@@ -474,6 +542,7 @@ public final class NotificationPolicyFilters {
             o.packetsPerSeconds = packetsPerSeconds;
             o.poolIds = poolIds;
             o.products = products;
+            o.projectIds = projectIds;
             o.protocols = protocols;
             o.requestsPerSeconds = requestsPerSeconds;
             o.services = services;

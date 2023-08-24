@@ -55,6 +55,11 @@ public final class DevicePostureRuleInput {
      */
     private @Nullable String domain;
     /**
+     * @return The datetime a device last seen in RFC 3339 format from Tanium.
+     * 
+     */
+    private @Nullable String eidLastSeen;
+    /**
      * @return True if the firewall must be enabled.
      * 
      */
@@ -125,6 +130,11 @@ public final class DevicePostureRuleInput {
      */
     private @Nullable Boolean requireAll;
     /**
+     * @return The risk level from Tanium. Available values: `low`, `medium`, `high`, `critical`.
+     * 
+     */
+    private @Nullable String riskLevel;
+    /**
      * @return Checks if the application should be running.
      * 
      */
@@ -144,6 +154,11 @@ public final class DevicePostureRuleInput {
      * 
      */
     private @Nullable String thumbprint;
+    /**
+     * @return The total score from Tanium.
+     * 
+     */
+    private @Nullable Integer totalScore;
     /**
      * @return The operating system semantic version.
      * 
@@ -211,6 +226,13 @@ public final class DevicePostureRuleInput {
      */
     public Optional<String> domain() {
         return Optional.ofNullable(this.domain);
+    }
+    /**
+     * @return The datetime a device last seen in RFC 3339 format from Tanium.
+     * 
+     */
+    public Optional<String> eidLastSeen() {
+        return Optional.ofNullable(this.eidLastSeen);
     }
     /**
      * @return True if the firewall must be enabled.
@@ -311,6 +333,13 @@ public final class DevicePostureRuleInput {
         return Optional.ofNullable(this.requireAll);
     }
     /**
+     * @return The risk level from Tanium. Available values: `low`, `medium`, `high`, `critical`.
+     * 
+     */
+    public Optional<String> riskLevel() {
+        return Optional.ofNullable(this.riskLevel);
+    }
+    /**
      * @return Checks if the application should be running.
      * 
      */
@@ -337,6 +366,13 @@ public final class DevicePostureRuleInput {
      */
     public Optional<String> thumbprint() {
         return Optional.ofNullable(this.thumbprint);
+    }
+    /**
+     * @return The total score from Tanium.
+     * 
+     */
+    public Optional<Integer> totalScore() {
+        return Optional.ofNullable(this.totalScore);
     }
     /**
      * @return The operating system semantic version.
@@ -370,6 +406,7 @@ public final class DevicePostureRuleInput {
         private @Nullable String connectionId;
         private @Nullable String countOperator;
         private @Nullable String domain;
+        private @Nullable String eidLastSeen;
         private @Nullable Boolean enabled;
         private @Nullable Boolean exists;
         private @Nullable String id;
@@ -384,10 +421,12 @@ public final class DevicePostureRuleInput {
         private @Nullable String overall;
         private @Nullable String path;
         private @Nullable Boolean requireAll;
+        private @Nullable String riskLevel;
         private @Nullable Boolean running;
         private @Nullable String sensorConfig;
         private @Nullable String sha256;
         private @Nullable String thumbprint;
+        private @Nullable Integer totalScore;
         private @Nullable String version;
         private @Nullable String versionOperator;
         public Builder() {}
@@ -401,6 +440,7 @@ public final class DevicePostureRuleInput {
     	      this.connectionId = defaults.connectionId;
     	      this.countOperator = defaults.countOperator;
     	      this.domain = defaults.domain;
+    	      this.eidLastSeen = defaults.eidLastSeen;
     	      this.enabled = defaults.enabled;
     	      this.exists = defaults.exists;
     	      this.id = defaults.id;
@@ -415,10 +455,12 @@ public final class DevicePostureRuleInput {
     	      this.overall = defaults.overall;
     	      this.path = defaults.path;
     	      this.requireAll = defaults.requireAll;
+    	      this.riskLevel = defaults.riskLevel;
     	      this.running = defaults.running;
     	      this.sensorConfig = defaults.sensorConfig;
     	      this.sha256 = defaults.sha256;
     	      this.thumbprint = defaults.thumbprint;
+    	      this.totalScore = defaults.totalScore;
     	      this.version = defaults.version;
     	      this.versionOperator = defaults.versionOperator;
         }
@@ -464,6 +506,11 @@ public final class DevicePostureRuleInput {
         @CustomType.Setter
         public Builder domain(@Nullable String domain) {
             this.domain = domain;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder eidLastSeen(@Nullable String eidLastSeen) {
+            this.eidLastSeen = eidLastSeen;
             return this;
         }
         @CustomType.Setter
@@ -537,6 +584,11 @@ public final class DevicePostureRuleInput {
             return this;
         }
         @CustomType.Setter
+        public Builder riskLevel(@Nullable String riskLevel) {
+            this.riskLevel = riskLevel;
+            return this;
+        }
+        @CustomType.Setter
         public Builder running(@Nullable Boolean running) {
             this.running = running;
             return this;
@@ -554,6 +606,11 @@ public final class DevicePostureRuleInput {
         @CustomType.Setter
         public Builder thumbprint(@Nullable String thumbprint) {
             this.thumbprint = thumbprint;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder totalScore(@Nullable Integer totalScore) {
+            this.totalScore = totalScore;
             return this;
         }
         @CustomType.Setter
@@ -576,6 +633,7 @@ public final class DevicePostureRuleInput {
             o.connectionId = connectionId;
             o.countOperator = countOperator;
             o.domain = domain;
+            o.eidLastSeen = eidLastSeen;
             o.enabled = enabled;
             o.exists = exists;
             o.id = id;
@@ -590,10 +648,12 @@ public final class DevicePostureRuleInput {
             o.overall = overall;
             o.path = path;
             o.requireAll = requireAll;
+            o.riskLevel = riskLevel;
             o.running = running;
             o.sensorConfig = sensorConfig;
             o.sha256 = sha256;
             o.thumbprint = thumbprint;
+            o.totalScore = totalScore;
             o.version = version;
             o.versionOperator = versionOperator;
             return o;

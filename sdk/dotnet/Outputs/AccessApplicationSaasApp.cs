@@ -18,6 +18,10 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string ConsumerServiceUrl;
         /// <summary>
+        /// Custom attribute mapped from IDPs.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.AccessApplicationSaasAppCustomAttribute> CustomAttributes;
+        /// <summary>
         /// The format of the name identifier sent to the SaaS application. Defaults to `email`.
         /// </summary>
         public readonly string? NameIdFormat;
@@ -30,11 +34,14 @@ namespace Pulumi.Cloudflare.Outputs
         private AccessApplicationSaasApp(
             string consumerServiceUrl,
 
+            ImmutableArray<Outputs.AccessApplicationSaasAppCustomAttribute> customAttributes,
+
             string? nameIdFormat,
 
             string spEntityId)
         {
             ConsumerServiceUrl = consumerServiceUrl;
+            CustomAttributes = customAttributes;
             NameIdFormat = nameIdFormat;
             SpEntityId = spEntityId;
         }

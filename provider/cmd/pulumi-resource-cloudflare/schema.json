@@ -180,6 +180,13 @@
                     "type": "string",
                     "description": "The service provider's endpoint that is responsible for receiving and parsing a SAML assertion.\n"
                 },
+                "customAttributes": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/cloudflare:index/AccessApplicationSaasAppCustomAttribute:AccessApplicationSaasAppCustomAttribute"
+                    },
+                    "description": "Custom attribute mapped from IDPs.\n"
+                },
                 "nameIdFormat": {
                     "type": "string",
                     "description": "The format of the name identifier sent to the SaaS application. Defaults to `email`.\n"
@@ -195,10 +202,52 @@
                 "spEntityId"
             ]
         },
+        "cloudflare:index/AccessApplicationSaasAppCustomAttribute:AccessApplicationSaasAppCustomAttribute": {
+            "properties": {
+                "friendlyName": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Friendly name of the Access Application.\n"
+                },
+                "nameFormat": {
+                    "type": "string"
+                },
+                "required": {
+                    "type": "boolean"
+                },
+                "source": {
+                    "$ref": "#/types/cloudflare:index/AccessApplicationSaasAppCustomAttributeSource:AccessApplicationSaasAppCustomAttributeSource"
+                }
+            },
+            "type": "object",
+            "required": [
+                "source"
+            ]
+        },
+        "cloudflare:index/AccessApplicationSaasAppCustomAttributeSource:AccessApplicationSaasAppCustomAttributeSource": {
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "description": "Friendly name of the Access Application.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "name"
+            ]
+        },
         "cloudflare:index/AccessGroupExclude:AccessGroupExclude": {
             "properties": {
                 "anyValidServiceToken": {
                     "type": "boolean"
+                },
+                "authContexts": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/cloudflare:index/AccessGroupExcludeAuthContext:AccessGroupExcludeAuthContext"
+                    }
                 },
                 "authMethod": {
                     "type": "string"
@@ -302,6 +351,26 @@
             },
             "type": "object"
         },
+        "cloudflare:index/AccessGroupExcludeAuthContext:AccessGroupExcludeAuthContext": {
+            "properties": {
+                "acId": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "string",
+                    "description": "The ID of this resource.\n"
+                },
+                "identityProviderId": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "acId",
+                "id",
+                "identityProviderId"
+            ]
+        },
         "cloudflare:index/AccessGroupExcludeAzure:AccessGroupExcludeAzure": {
             "properties": {
                 "identityProviderId": {
@@ -391,6 +460,12 @@
             "properties": {
                 "anyValidServiceToken": {
                     "type": "boolean"
+                },
+                "authContexts": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/cloudflare:index/AccessGroupIncludeAuthContext:AccessGroupIncludeAuthContext"
+                    }
                 },
                 "authMethod": {
                     "type": "string"
@@ -494,6 +569,26 @@
             },
             "type": "object"
         },
+        "cloudflare:index/AccessGroupIncludeAuthContext:AccessGroupIncludeAuthContext": {
+            "properties": {
+                "acId": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "string",
+                    "description": "The ID of this resource.\n"
+                },
+                "identityProviderId": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "acId",
+                "id",
+                "identityProviderId"
+            ]
+        },
         "cloudflare:index/AccessGroupIncludeAzure:AccessGroupIncludeAzure": {
             "properties": {
                 "identityProviderId": {
@@ -583,6 +678,12 @@
             "properties": {
                 "anyValidServiceToken": {
                     "type": "boolean"
+                },
+                "authContexts": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/cloudflare:index/AccessGroupRequireAuthContext:AccessGroupRequireAuthContext"
+                    }
                 },
                 "authMethod": {
                     "type": "string"
@@ -685,6 +786,26 @@
                 }
             },
             "type": "object"
+        },
+        "cloudflare:index/AccessGroupRequireAuthContext:AccessGroupRequireAuthContext": {
+            "properties": {
+                "acId": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "string",
+                    "description": "The ID of this resource.\n"
+                },
+                "identityProviderId": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "acId",
+                "id",
+                "identityProviderId"
+            ]
         },
         "cloudflare:index/AccessGroupRequireAzure:AccessGroupRequireAzure": {
             "properties": {
@@ -808,6 +929,9 @@
                 },
                 "clientSecret": {
                     "type": "string"
+                },
+                "conditionalAccessEnabled": {
+                    "type": "boolean"
                 },
                 "directoryId": {
                     "type": "string"
@@ -956,6 +1080,12 @@
                 "anyValidServiceToken": {
                     "type": "boolean"
                 },
+                "authContexts": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/cloudflare:index/AccessPolicyExcludeAuthContext:AccessPolicyExcludeAuthContext"
+                    }
+                },
                 "authMethod": {
                     "type": "string"
                 },
@@ -1058,6 +1188,26 @@
             },
             "type": "object"
         },
+        "cloudflare:index/AccessPolicyExcludeAuthContext:AccessPolicyExcludeAuthContext": {
+            "properties": {
+                "acId": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "string",
+                    "description": "The ID of this resource.\n"
+                },
+                "identityProviderId": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "acId",
+                "id",
+                "identityProviderId"
+            ]
+        },
         "cloudflare:index/AccessPolicyExcludeAzure:AccessPolicyExcludeAzure": {
             "properties": {
                 "identityProviderId": {
@@ -1149,6 +1299,12 @@
             "properties": {
                 "anyValidServiceToken": {
                     "type": "boolean"
+                },
+                "authContexts": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/cloudflare:index/AccessPolicyIncludeAuthContext:AccessPolicyIncludeAuthContext"
+                    }
                 },
                 "authMethod": {
                     "type": "string"
@@ -1252,6 +1408,26 @@
             },
             "type": "object"
         },
+        "cloudflare:index/AccessPolicyIncludeAuthContext:AccessPolicyIncludeAuthContext": {
+            "properties": {
+                "acId": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "string",
+                    "description": "The ID of this resource.\n"
+                },
+                "identityProviderId": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "acId",
+                "id",
+                "identityProviderId"
+            ]
+        },
         "cloudflare:index/AccessPolicyIncludeAzure:AccessPolicyIncludeAzure": {
             "properties": {
                 "identityProviderId": {
@@ -1343,6 +1519,12 @@
             "properties": {
                 "anyValidServiceToken": {
                     "type": "boolean"
+                },
+                "authContexts": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/cloudflare:index/AccessPolicyRequireAuthContext:AccessPolicyRequireAuthContext"
+                    }
                 },
                 "authMethod": {
                     "type": "string"
@@ -1445,6 +1627,26 @@
                 }
             },
             "type": "object"
+        },
+        "cloudflare:index/AccessPolicyRequireAuthContext:AccessPolicyRequireAuthContext": {
+            "properties": {
+                "acId": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "string",
+                    "description": "The ID of this resource.\n"
+                },
+                "identityProviderId": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "acId",
+                "id",
+                "identityProviderId"
+            ]
         },
         "cloudflare:index/AccessPolicyRequireAzure:AccessPolicyRequireAzure": {
             "properties": {
@@ -2007,6 +2209,10 @@
                     "type": "string",
                     "description": "The domain that the client must join.\n"
                 },
+                "eidLastSeen": {
+                    "type": "string",
+                    "description": "The datetime a device last seen in RFC 3339 format from Tanium.\n"
+                },
                 "enabled": {
                     "type": "boolean",
                     "description": "True if the firewall must be enabled.\n"
@@ -2063,6 +2269,10 @@
                     "type": "boolean",
                     "description": "True if all drives must be encrypted.\n"
                 },
+                "riskLevel": {
+                    "type": "string",
+                    "description": "The risk level from Tanium. Available values: `low`, `medium`, `high`, `critical`.\n"
+                },
                 "running": {
                     "type": "boolean",
                     "description": "Checks if the application should be running.\n"
@@ -2078,6 +2288,10 @@
                 "thumbprint": {
                     "type": "string",
                     "description": "The thumbprint of the file certificate.\n"
+                },
+                "totalScore": {
+                    "type": "integer",
+                    "description": "The total score from Tanium.\n"
                 },
                 "version": {
                     "type": "string",
@@ -2971,6 +3185,13 @@
                     },
                     "description": "State of the pool to alert on.\n"
                 },
+                "environments": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Environment of pages. Available values: `ENVIRONMENT_PREVIEW`, `ENVIRONMENT_PRODUCTION`.\n"
+                },
                 "eventSources": {
                     "type": "array",
                     "items": {
@@ -2984,6 +3205,13 @@
                         "type": "string"
                     },
                     "description": "Stream event type to alert on.\n"
+                },
+                "events": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Pages event to alert. Available values: `EVENT_DEPLOYMENT_STARTED`, `EVENT_DEPLOYMENT_FAILED`, `EVENT_DEPLOYMENT_SUCCESS`.\n"
                 },
                 "healthCheckIds": {
                     "type": "array",
@@ -3040,6 +3268,13 @@
                         "type": "string"
                     },
                     "description": "Product name. Available values: `worker_requests`, `worker_durable_objects_requests`, `worker_durable_objects_duration`, `worker_durable_objects_data_transfer`, `worker_durable_objects_stored_data`, `worker_durable_objects_storage_deletes`, `worker_durable_objects_storage_writes`, `worker_durable_objects_storage_reads`.\n"
+                },
+                "projectIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Identifier of pages project.\n"
                 },
                 "protocols": {
                     "type": "array",
@@ -4085,7 +4320,7 @@
             "properties": {
                 "action": {
                     "type": "string",
-                    "description": "Action to perform in the ruleset rule. Available values: `allow`, `block`, `challenge`, `ddos_dynamic`, `execute`, `force_connection_close`, `js_challenge`, `log`, `log_custom_field`, `managed_challenge`, `redirect`, `rewrite`, `route`, `score`, `set_cache_settings`, `set_config`, `serve_error`, `skip`, `compress_response`.\n"
+                    "description": "Action to perform in the ruleset rule. Available values: `block`, `challenge`, `compress_response`, `ddos_dynamic`, `ddos_mitigation`, `execute`, `force_connection_close`, `js_challenge`, `log`, `log_custom_field`, `managed_challenge`, `redirect`, `rewrite`, `route`, `score`, `serve_error`, `set_cache_settings`, `set_config`, `skip`.\n"
                 },
                 "actionParameters": {
                     "$ref": "#/types/cloudflare:index/RulesetRuleActionParameters:RulesetRuleActionParameters",
@@ -4668,7 +4903,7 @@
             "properties": {
                 "action": {
                     "type": "string",
-                    "description": "Action to perform in the ruleset rule. Available values: `allow`, `block`, `challenge`, `ddos_dynamic`, `execute`, `force_connection_close`, `js_challenge`, `log`, `log_custom_field`, `managed_challenge`, `redirect`, `rewrite`, `route`, `score`, `set_cache_settings`, `set_config`, `serve_error`, `skip`, `compress_response`.\n"
+                    "description": "Action to perform in the ruleset rule. Available values: `block`, `challenge`, `compress_response`, `ddos_dynamic`, `ddos_mitigation`, `execute`, `force_connection_close`, `js_challenge`, `log`, `log_custom_field`, `managed_challenge`, `redirect`, `rewrite`, `route`, `score`, `serve_error`, `set_cache_settings`, `set_config`, `skip`.\n"
                 },
                 "enabled": {
                     "type": "boolean",
@@ -6658,7 +6893,7 @@
                 },
                 "phase": {
                     "type": "string",
-                    "description": "Point in the request/response lifecycle where the ruleset will be created. Available values: `ddos_l4`, `ddos_l7`, `http_custom_errors`, `http_log_custom_fields`, `http_request_cache_settings`, `http_request_firewall_custom`, `http_request_firewall_managed`, `http_request_late_transform`, `http_request_late_transform_managed`, `http_request_main`, `http_request_origin`, `http_request_dynamic_redirect`, `http_request_redirect`, `http_request_sanitize`, `http_request_transform`, `http_response_firewall_managed`, `http_response_headers_transform`, `http_response_headers_transform_managed`, `http_response_compression`, `magic_transit`, `http_ratelimit`, `http_request_sbfm`, `http_config_settings`.\n"
+                    "description": "Point in the request/response lifecycle where the ruleset will be created. Available values: `ddos_l4`, `ddos_l7`, `http_config_settings`, `http_custom_errors`, `http_log_custom_fields`, `http_ratelimit`, `http_request_cache_settings`, `http_request_dynamic_redirect`, `http_request_firewall_custom`, `http_request_firewall_managed`, `http_request_late_transform`, `http_request_origin`, `http_request_redirect`, `http_request_sanitize`, `http_request_sbfm`, `http_request_transform`, `http_response_compression`, `http_response_firewall_managed`, `http_response_headers_transform`, `magic_transit`.\n"
                 },
                 "version": {
                     "type": "string",
@@ -8942,6 +9177,10 @@
                     "description": "A secret for interacting with Access protocols. **Modifying this attribute will force creation of a new resource.**\n",
                     "secret": true
                 },
+                "duration": {
+                    "type": "string",
+                    "description": "Length of time the service token is valid for. Available values: `8760h`, `17520h`, `43800h`, `87600h`, `forever`\n"
+                },
                 "expiresAt": {
                     "type": "string",
                     "description": "Date when the token expires.\n"
@@ -8962,6 +9201,7 @@
             "required": [
                 "clientId",
                 "clientSecret",
+                "duration",
                 "expiresAt",
                 "name"
             ],
@@ -8969,6 +9209,10 @@
                 "accountId": {
                     "type": "string",
                     "description": "The account identifier to target for the resource. Conflicts with `zone_id`.\n"
+                },
+                "duration": {
+                    "type": "string",
+                    "description": "Length of time the service token is valid for. Available values: `8760h`, `17520h`, `43800h`, `87600h`, `forever`\n"
                 },
                 "minDaysForRenewal": {
                     "type": "integer",
@@ -9003,6 +9247,10 @@
                         "description": "A secret for interacting with Access protocols. **Modifying this attribute will force creation of a new resource.**\n",
                         "secret": true,
                         "willReplaceOnChanges": true
+                    },
+                    "duration": {
+                        "type": "string",
+                        "description": "Length of time the service token is valid for. Available values: `8760h`, `17520h`, `43800h`, `87600h`, `forever`\n"
                     },
                     "expiresAt": {
                         "type": "string",
@@ -9731,6 +9979,156 @@
                         "type": "string",
                         "description": "**Modifying this attribute will force creation of a new resource.**\n",
                         "willReplaceOnChanges": true
+                    },
+                    "zoneId": {
+                        "type": "string",
+                        "description": "The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**\n",
+                        "willReplaceOnChanges": true
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "cloudflare:index/botManagement:BotManagement": {
+            "description": "Provides a resource to configure Bot Management.\n\nSpecifically, this resource can be used to manage:\n\n- **Bot Fight Mode**\n- **Super Bot Fight Mode**\n- **Bot Management for Enterprise**\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as cloudflare from \"@pulumi/cloudflare\";\n\nconst example = new cloudflare.BotManagement(\"example\", {\n    enableJs: true,\n    optimizeWordpress: true,\n    sbfmDefinitelyAutomated: \"block\",\n    sbfmLikelyAutomated: \"managed_challenge\",\n    sbfmStaticResourceProtection: false,\n    sbfmVerifiedBots: \"allow\",\n    zoneId: \"0da42c8d2132a9ddaf714f9e7c920711\",\n});\n```\n```python\nimport pulumi\nimport pulumi_cloudflare as cloudflare\n\nexample = cloudflare.BotManagement(\"example\",\n    enable_js=True,\n    optimize_wordpress=True,\n    sbfm_definitely_automated=\"block\",\n    sbfm_likely_automated=\"managed_challenge\",\n    sbfm_static_resource_protection=False,\n    sbfm_verified_bots=\"allow\",\n    zone_id=\"0da42c8d2132a9ddaf714f9e7c920711\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Cloudflare = Pulumi.Cloudflare;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = new Cloudflare.BotManagement(\"example\", new()\n    {\n        EnableJs = true,\n        OptimizeWordpress = true,\n        SbfmDefinitelyAutomated = \"block\",\n        SbfmLikelyAutomated = \"managed_challenge\",\n        SbfmStaticResourceProtection = false,\n        SbfmVerifiedBots = \"allow\",\n        ZoneId = \"0da42c8d2132a9ddaf714f9e7c920711\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := cloudflare.NewBotManagement(ctx, \"example\", \u0026cloudflare.BotManagementArgs{\n\t\t\tEnableJs:                     pulumi.Bool(true),\n\t\t\tOptimizeWordpress:            pulumi.Bool(true),\n\t\t\tSbfmDefinitelyAutomated:      pulumi.String(\"block\"),\n\t\t\tSbfmLikelyAutomated:          pulumi.String(\"managed_challenge\"),\n\t\t\tSbfmStaticResourceProtection: pulumi.Bool(false),\n\t\t\tSbfmVerifiedBots:             pulumi.String(\"allow\"),\n\t\t\tZoneId:                       pulumi.String(\"0da42c8d2132a9ddaf714f9e7c920711\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.cloudflare.BotManagement;\nimport com.pulumi.cloudflare.BotManagementArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var example = new BotManagement(\"example\", BotManagementArgs.builder()        \n            .enableJs(true)\n            .optimizeWordpress(true)\n            .sbfmDefinitelyAutomated(\"block\")\n            .sbfmLikelyAutomated(\"managed_challenge\")\n            .sbfmStaticResourceProtection(false)\n            .sbfmVerifiedBots(\"allow\")\n            .zoneId(\"0da42c8d2132a9ddaf714f9e7c920711\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  example:\n    type: cloudflare:BotManagement\n    properties:\n      enableJs: true\n      optimizeWordpress: true\n      sbfmDefinitelyAutomated: block\n      sbfmLikelyAutomated: managed_challenge\n      sbfmStaticResourceProtection: false\n      sbfmVerifiedBots: allow\n      zoneId: 0da42c8d2132a9ddaf714f9e7c920711\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\n\n\n```sh\n $ pulumi import cloudflare:index/botManagement:BotManagement example \u003czone_id\u003e\n```\n\n ",
+            "properties": {
+                "autoUpdateModel": {
+                    "type": "boolean",
+                    "description": "Automatically update to the newest bot detection models created by Cloudflare as they are released. [Learn more.](https://developers.cloudflare.com/bots/reference/machine-learning-models#model-versions-and-release-notes).\n"
+                },
+                "enableJs": {
+                    "type": "boolean",
+                    "description": "Use lightweight, invisible JavaScript detections to improve Bot Management. [Learn more about JavaScript Detections](https://developers.cloudflare.com/bots/reference/javascript-detections/).\n"
+                },
+                "fightMode": {
+                    "type": "boolean",
+                    "description": "Whether to enable Bot Fight Mode.\n"
+                },
+                "optimizeWordpress": {
+                    "type": "boolean",
+                    "description": "Whether to optimize Super Bot Fight Mode protections for Wordpress.\n"
+                },
+                "sbfmDefinitelyAutomated": {
+                    "type": "string",
+                    "description": "Super Bot Fight Mode (SBFM) action to take on definitely automated requests.\n"
+                },
+                "sbfmLikelyAutomated": {
+                    "type": "string",
+                    "description": "Super Bot Fight Mode (SBFM) action to take on likely automated requests.\n"
+                },
+                "sbfmStaticResourceProtection": {
+                    "type": "boolean",
+                    "description": "Super Bot Fight Mode (SBFM) to enable static resource protection. Enable if static resources on your application need bot protection. Note: Static resource protection can also result in legitimate traffic being blocked.\n"
+                },
+                "sbfmVerifiedBots": {
+                    "type": "string",
+                    "description": "Super Bot Fight Mode (SBFM) action to take on verified bots requests.\n"
+                },
+                "suppressSessionScore": {
+                    "type": "boolean",
+                    "description": "Whether to disable tracking the highest bot score for a session in the Bot Management cookie.\n"
+                },
+                "usingLatestModel": {
+                    "type": "boolean",
+                    "description": "A read-only field that indicates whether the zone currently is running the latest ML model.\n"
+                },
+                "zoneId": {
+                    "type": "string",
+                    "description": "The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**\n"
+                }
+            },
+            "required": [
+                "usingLatestModel",
+                "zoneId"
+            ],
+            "inputProperties": {
+                "autoUpdateModel": {
+                    "type": "boolean",
+                    "description": "Automatically update to the newest bot detection models created by Cloudflare as they are released. [Learn more.](https://developers.cloudflare.com/bots/reference/machine-learning-models#model-versions-and-release-notes).\n"
+                },
+                "enableJs": {
+                    "type": "boolean",
+                    "description": "Use lightweight, invisible JavaScript detections to improve Bot Management. [Learn more about JavaScript Detections](https://developers.cloudflare.com/bots/reference/javascript-detections/).\n"
+                },
+                "fightMode": {
+                    "type": "boolean",
+                    "description": "Whether to enable Bot Fight Mode.\n"
+                },
+                "optimizeWordpress": {
+                    "type": "boolean",
+                    "description": "Whether to optimize Super Bot Fight Mode protections for Wordpress.\n"
+                },
+                "sbfmDefinitelyAutomated": {
+                    "type": "string",
+                    "description": "Super Bot Fight Mode (SBFM) action to take on definitely automated requests.\n"
+                },
+                "sbfmLikelyAutomated": {
+                    "type": "string",
+                    "description": "Super Bot Fight Mode (SBFM) action to take on likely automated requests.\n"
+                },
+                "sbfmStaticResourceProtection": {
+                    "type": "boolean",
+                    "description": "Super Bot Fight Mode (SBFM) to enable static resource protection. Enable if static resources on your application need bot protection. Note: Static resource protection can also result in legitimate traffic being blocked.\n"
+                },
+                "sbfmVerifiedBots": {
+                    "type": "string",
+                    "description": "Super Bot Fight Mode (SBFM) action to take on verified bots requests.\n"
+                },
+                "suppressSessionScore": {
+                    "type": "boolean",
+                    "description": "Whether to disable tracking the highest bot score for a session in the Bot Management cookie.\n"
+                },
+                "zoneId": {
+                    "type": "string",
+                    "description": "The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**\n",
+                    "willReplaceOnChanges": true
+                }
+            },
+            "requiredInputs": [
+                "zoneId"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering BotManagement resources.\n",
+                "properties": {
+                    "autoUpdateModel": {
+                        "type": "boolean",
+                        "description": "Automatically update to the newest bot detection models created by Cloudflare as they are released. [Learn more.](https://developers.cloudflare.com/bots/reference/machine-learning-models#model-versions-and-release-notes).\n"
+                    },
+                    "enableJs": {
+                        "type": "boolean",
+                        "description": "Use lightweight, invisible JavaScript detections to improve Bot Management. [Learn more about JavaScript Detections](https://developers.cloudflare.com/bots/reference/javascript-detections/).\n"
+                    },
+                    "fightMode": {
+                        "type": "boolean",
+                        "description": "Whether to enable Bot Fight Mode.\n"
+                    },
+                    "optimizeWordpress": {
+                        "type": "boolean",
+                        "description": "Whether to optimize Super Bot Fight Mode protections for Wordpress.\n"
+                    },
+                    "sbfmDefinitelyAutomated": {
+                        "type": "string",
+                        "description": "Super Bot Fight Mode (SBFM) action to take on definitely automated requests.\n"
+                    },
+                    "sbfmLikelyAutomated": {
+                        "type": "string",
+                        "description": "Super Bot Fight Mode (SBFM) action to take on likely automated requests.\n"
+                    },
+                    "sbfmStaticResourceProtection": {
+                        "type": "boolean",
+                        "description": "Super Bot Fight Mode (SBFM) to enable static resource protection. Enable if static resources on your application need bot protection. Note: Static resource protection can also result in legitimate traffic being blocked.\n"
+                    },
+                    "sbfmVerifiedBots": {
+                        "type": "string",
+                        "description": "Super Bot Fight Mode (SBFM) action to take on verified bots requests.\n"
+                    },
+                    "suppressSessionScore": {
+                        "type": "boolean",
+                        "description": "Whether to disable tracking the highest bot score for a session in the Bot Management cookie.\n"
+                    },
+                    "usingLatestModel": {
+                        "type": "boolean",
+                        "description": "A read-only field that indicates whether the zone currently is running the latest ML model.\n"
                     },
                     "zoneId": {
                         "type": "string",
@@ -10692,7 +11090,7 @@
                 },
                 "type": {
                     "type": "string",
-                    "description": "The device posture integration type. Available values: `workspace_one`, `uptycs`, `crowdstrike_s2s`, `intune`, `kolide`, `sentinelone_s2s`.\n"
+                    "description": "The device posture integration type. Available values: `workspace_one`, `uptycs`, `crowdstrike_s2s`, `intune`, `kolide`, `sentinelone_s2s`, `tanium_s2s`.\n"
                 }
             },
             "required": [
@@ -10725,7 +11123,7 @@
                 },
                 "type": {
                     "type": "string",
-                    "description": "The device posture integration type. Available values: `workspace_one`, `uptycs`, `crowdstrike_s2s`, `intune`, `kolide`, `sentinelone_s2s`.\n"
+                    "description": "The device posture integration type. Available values: `workspace_one`, `uptycs`, `crowdstrike_s2s`, `intune`, `kolide`, `sentinelone_s2s`, `tanium_s2s`.\n"
                 }
             },
             "requiredInputs": [
@@ -10760,7 +11158,7 @@
                     },
                     "type": {
                         "type": "string",
-                        "description": "The device posture integration type. Available values: `workspace_one`, `uptycs`, `crowdstrike_s2s`, `intune`, `kolide`, `sentinelone_s2s`.\n"
+                        "description": "The device posture integration type. Available values: `workspace_one`, `uptycs`, `crowdstrike_s2s`, `intune`, `kolide`, `sentinelone_s2s`, `tanium_s2s`.\n"
                     }
                 },
                 "type": "object"
@@ -11943,7 +12341,7 @@
             }
         },
         "cloudflare:index/greTunnel:GreTunnel": {
-            "description": "Provides a resource, that manages GRE tunnels for Magic Transit.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as cloudflare from \"@pulumi/cloudflare\";\n\nconst example = new cloudflare.GreTunnel(\"example\", {\n    accountId: \"f037e56e89293a057740de681ac9abbe\",\n    cloudflareGreEndpoint: \"203.0.113.1\",\n    customerGreEndpoint: \"203.0.113.1\",\n    description: \"Tunnel for ISP X\",\n    healthCheckEnabled: true,\n    healthCheckTarget: \"203.0.113.1\",\n    healthCheckType: \"reply\",\n    interfaceAddress: \"192.0.2.0/31\",\n    mtu: 1476,\n    name: \"GRE_1\",\n    ttl: 64,\n});\n```\n```python\nimport pulumi\nimport pulumi_cloudflare as cloudflare\n\nexample = cloudflare.GreTunnel(\"example\",\n    account_id=\"f037e56e89293a057740de681ac9abbe\",\n    cloudflare_gre_endpoint=\"203.0.113.1\",\n    customer_gre_endpoint=\"203.0.113.1\",\n    description=\"Tunnel for ISP X\",\n    health_check_enabled=True,\n    health_check_target=\"203.0.113.1\",\n    health_check_type=\"reply\",\n    interface_address=\"192.0.2.0/31\",\n    mtu=1476,\n    name=\"GRE_1\",\n    ttl=64)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Cloudflare = Pulumi.Cloudflare;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = new Cloudflare.GreTunnel(\"example\", new()\n    {\n        AccountId = \"f037e56e89293a057740de681ac9abbe\",\n        CloudflareGreEndpoint = \"203.0.113.1\",\n        CustomerGreEndpoint = \"203.0.113.1\",\n        Description = \"Tunnel for ISP X\",\n        HealthCheckEnabled = true,\n        HealthCheckTarget = \"203.0.113.1\",\n        HealthCheckType = \"reply\",\n        InterfaceAddress = \"192.0.2.0/31\",\n        Mtu = 1476,\n        Name = \"GRE_1\",\n        Ttl = 64,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := cloudflare.NewGreTunnel(ctx, \"example\", \u0026cloudflare.GreTunnelArgs{\n\t\t\tAccountId:             pulumi.String(\"f037e56e89293a057740de681ac9abbe\"),\n\t\t\tCloudflareGreEndpoint: pulumi.String(\"203.0.113.1\"),\n\t\t\tCustomerGreEndpoint:   pulumi.String(\"203.0.113.1\"),\n\t\t\tDescription:           pulumi.String(\"Tunnel for ISP X\"),\n\t\t\tHealthCheckEnabled:    pulumi.Bool(true),\n\t\t\tHealthCheckTarget:     pulumi.String(\"203.0.113.1\"),\n\t\t\tHealthCheckType:       pulumi.String(\"reply\"),\n\t\t\tInterfaceAddress:      pulumi.String(\"192.0.2.0/31\"),\n\t\t\tMtu:                   pulumi.Int(1476),\n\t\t\tName:                  pulumi.String(\"GRE_1\"),\n\t\t\tTtl:                   pulumi.Int(64),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.cloudflare.GreTunnel;\nimport com.pulumi.cloudflare.GreTunnelArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var example = new GreTunnel(\"example\", GreTunnelArgs.builder()        \n            .accountId(\"f037e56e89293a057740de681ac9abbe\")\n            .cloudflareGreEndpoint(\"203.0.113.1\")\n            .customerGreEndpoint(\"203.0.113.1\")\n            .description(\"Tunnel for ISP X\")\n            .healthCheckEnabled(true)\n            .healthCheckTarget(\"203.0.113.1\")\n            .healthCheckType(\"reply\")\n            .interfaceAddress(\"192.0.2.0/31\")\n            .mtu(1476)\n            .name(\"GRE_1\")\n            .ttl(64)\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  example:\n    type: cloudflare:GreTunnel\n    properties:\n      accountId: f037e56e89293a057740de681ac9abbe\n      cloudflareGreEndpoint: 203.0.113.1\n      customerGreEndpoint: 203.0.113.1\n      description: Tunnel for ISP X\n      healthCheckEnabled: true\n      healthCheckTarget: 203.0.113.1\n      healthCheckType: reply\n      interfaceAddress: 192.0.2.0/31\n      mtu: 1476\n      name: GRE_1\n      ttl: 64\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\n\n\n```sh\n $ pulumi import cloudflare:index/greTunnel:GreTunnel example \u003caccount_id\u003e/\u003ctunnel_id\u003e\n```\n\n ",
+            "description": "Provides a resource, that manages GRE tunnels for Magic Transit.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as cloudflare from \"@pulumi/cloudflare\";\n\nconst example = new cloudflare.GreTunnel(\"example\", {\n    accountId: \"f037e56e89293a057740de681ac9abbe\",\n    cloudflareGreEndpoint: \"203.0.113.2\",\n    customerGreEndpoint: \"203.0.113.1\",\n    description: \"Tunnel for ISP X\",\n    healthCheckEnabled: true,\n    healthCheckTarget: \"203.0.113.1\",\n    healthCheckType: \"reply\",\n    interfaceAddress: \"192.0.2.0/31\",\n    mtu: 1476,\n    name: \"GRE_1\",\n    ttl: 64,\n});\n```\n```python\nimport pulumi\nimport pulumi_cloudflare as cloudflare\n\nexample = cloudflare.GreTunnel(\"example\",\n    account_id=\"f037e56e89293a057740de681ac9abbe\",\n    cloudflare_gre_endpoint=\"203.0.113.2\",\n    customer_gre_endpoint=\"203.0.113.1\",\n    description=\"Tunnel for ISP X\",\n    health_check_enabled=True,\n    health_check_target=\"203.0.113.1\",\n    health_check_type=\"reply\",\n    interface_address=\"192.0.2.0/31\",\n    mtu=1476,\n    name=\"GRE_1\",\n    ttl=64)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Cloudflare = Pulumi.Cloudflare;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = new Cloudflare.GreTunnel(\"example\", new()\n    {\n        AccountId = \"f037e56e89293a057740de681ac9abbe\",\n        CloudflareGreEndpoint = \"203.0.113.2\",\n        CustomerGreEndpoint = \"203.0.113.1\",\n        Description = \"Tunnel for ISP X\",\n        HealthCheckEnabled = true,\n        HealthCheckTarget = \"203.0.113.1\",\n        HealthCheckType = \"reply\",\n        InterfaceAddress = \"192.0.2.0/31\",\n        Mtu = 1476,\n        Name = \"GRE_1\",\n        Ttl = 64,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := cloudflare.NewGreTunnel(ctx, \"example\", \u0026cloudflare.GreTunnelArgs{\n\t\t\tAccountId:             pulumi.String(\"f037e56e89293a057740de681ac9abbe\"),\n\t\t\tCloudflareGreEndpoint: pulumi.String(\"203.0.113.2\"),\n\t\t\tCustomerGreEndpoint:   pulumi.String(\"203.0.113.1\"),\n\t\t\tDescription:           pulumi.String(\"Tunnel for ISP X\"),\n\t\t\tHealthCheckEnabled:    pulumi.Bool(true),\n\t\t\tHealthCheckTarget:     pulumi.String(\"203.0.113.1\"),\n\t\t\tHealthCheckType:       pulumi.String(\"reply\"),\n\t\t\tInterfaceAddress:      pulumi.String(\"192.0.2.0/31\"),\n\t\t\tMtu:                   pulumi.Int(1476),\n\t\t\tName:                  pulumi.String(\"GRE_1\"),\n\t\t\tTtl:                   pulumi.Int(64),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.cloudflare.GreTunnel;\nimport com.pulumi.cloudflare.GreTunnelArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var example = new GreTunnel(\"example\", GreTunnelArgs.builder()        \n            .accountId(\"f037e56e89293a057740de681ac9abbe\")\n            .cloudflareGreEndpoint(\"203.0.113.2\")\n            .customerGreEndpoint(\"203.0.113.1\")\n            .description(\"Tunnel for ISP X\")\n            .healthCheckEnabled(true)\n            .healthCheckTarget(\"203.0.113.1\")\n            .healthCheckType(\"reply\")\n            .interfaceAddress(\"192.0.2.0/31\")\n            .mtu(1476)\n            .name(\"GRE_1\")\n            .ttl(64)\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  example:\n    type: cloudflare:GreTunnel\n    properties:\n      accountId: f037e56e89293a057740de681ac9abbe\n      cloudflareGreEndpoint: 203.0.113.2\n      customerGreEndpoint: 203.0.113.1\n      description: Tunnel for ISP X\n      healthCheckEnabled: true\n      healthCheckTarget: 203.0.113.1\n      healthCheckType: reply\n      interfaceAddress: 192.0.2.0/31\n      mtu: 1476\n      name: GRE_1\n      ttl: 64\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\n\n\n```sh\n $ pulumi import cloudflare:index/greTunnel:GreTunnel example \u003caccount_id\u003e/\u003ctunnel_id\u003e\n```\n\n ",
             "properties": {
                 "accountId": {
                     "type": "string",
@@ -12410,6 +12808,206 @@
                     "type": {
                         "type": "string",
                         "description": "The protocol to use for the health check. Available values: `TCP`, `HTTP`, `HTTPS`.\n"
+                    },
+                    "zoneId": {
+                        "type": "string",
+                        "description": "The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**\n",
+                        "willReplaceOnChanges": true
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "cloudflare:index/hostnameTlsSetting:HostnameTlsSetting": {
+            "description": "Provides a Cloudflare per-hostname TLS setting resource. Used to set TLS settings for hostnames under the specified zone.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as cloudflare from \"@pulumi/cloudflare\";\n\nconst example = new cloudflare.HostnameTlsSetting(\"example\", {\n    hostname: \"sub.example.com\",\n    setting: \"min_tls_version\",\n    value: \"1.2\",\n    zoneId: \"0da42c8d2132a9ddaf714f9e7c920711\",\n});\n```\n```python\nimport pulumi\nimport pulumi_cloudflare as cloudflare\n\nexample = cloudflare.HostnameTlsSetting(\"example\",\n    hostname=\"sub.example.com\",\n    setting=\"min_tls_version\",\n    value=\"1.2\",\n    zone_id=\"0da42c8d2132a9ddaf714f9e7c920711\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Cloudflare = Pulumi.Cloudflare;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = new Cloudflare.HostnameTlsSetting(\"example\", new()\n    {\n        Hostname = \"sub.example.com\",\n        Setting = \"min_tls_version\",\n        Value = \"1.2\",\n        ZoneId = \"0da42c8d2132a9ddaf714f9e7c920711\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := cloudflare.NewHostnameTlsSetting(ctx, \"example\", \u0026cloudflare.HostnameTlsSettingArgs{\n\t\t\tHostname: pulumi.String(\"sub.example.com\"),\n\t\t\tSetting:  pulumi.String(\"min_tls_version\"),\n\t\t\tValue:    pulumi.String(\"1.2\"),\n\t\t\tZoneId:   pulumi.String(\"0da42c8d2132a9ddaf714f9e7c920711\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.cloudflare.HostnameTlsSetting;\nimport com.pulumi.cloudflare.HostnameTlsSettingArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var example = new HostnameTlsSetting(\"example\", HostnameTlsSettingArgs.builder()        \n            .hostname(\"sub.example.com\")\n            .setting(\"min_tls_version\")\n            .value(\"1.2\")\n            .zoneId(\"0da42c8d2132a9ddaf714f9e7c920711\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  example:\n    type: cloudflare:HostnameTlsSetting\n    properties:\n      hostname: sub.example.com\n      setting: min_tls_version\n      value: '1.2'\n      zoneId: 0da42c8d2132a9ddaf714f9e7c920711\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\n\n\n```sh\n $ pulumi import cloudflare:index/hostnameTlsSetting:HostnameTlsSetting example \u003czone_id\u003e/\u003chostname\u003e/\u003csetting_name\u003e\n```\n\n ",
+            "properties": {
+                "createdAt": {
+                    "type": "string"
+                },
+                "hostname": {
+                    "type": "string",
+                    "description": "Hostname that belongs to this zone name. **Modifying this attribute will force creation of a new resource.**\n"
+                },
+                "setting": {
+                    "type": "string",
+                    "description": "TLS setting name. **Modifying this attribute will force creation of a new resource.**\n"
+                },
+                "updatedAt": {
+                    "type": "string"
+                },
+                "value": {
+                    "type": "string",
+                    "description": "TLS setting value.\n"
+                },
+                "zoneId": {
+                    "type": "string",
+                    "description": "The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**\n"
+                }
+            },
+            "required": [
+                "createdAt",
+                "hostname",
+                "setting",
+                "updatedAt",
+                "value",
+                "zoneId"
+            ],
+            "inputProperties": {
+                "hostname": {
+                    "type": "string",
+                    "description": "Hostname that belongs to this zone name. **Modifying this attribute will force creation of a new resource.**\n",
+                    "willReplaceOnChanges": true
+                },
+                "setting": {
+                    "type": "string",
+                    "description": "TLS setting name. **Modifying this attribute will force creation of a new resource.**\n",
+                    "willReplaceOnChanges": true
+                },
+                "value": {
+                    "type": "string",
+                    "description": "TLS setting value.\n"
+                },
+                "zoneId": {
+                    "type": "string",
+                    "description": "The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**\n",
+                    "willReplaceOnChanges": true
+                }
+            },
+            "requiredInputs": [
+                "hostname",
+                "setting",
+                "value",
+                "zoneId"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering HostnameTlsSetting resources.\n",
+                "properties": {
+                    "createdAt": {
+                        "type": "string"
+                    },
+                    "hostname": {
+                        "type": "string",
+                        "description": "Hostname that belongs to this zone name. **Modifying this attribute will force creation of a new resource.**\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "setting": {
+                        "type": "string",
+                        "description": "TLS setting name. **Modifying this attribute will force creation of a new resource.**\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "updatedAt": {
+                        "type": "string"
+                    },
+                    "value": {
+                        "type": "string",
+                        "description": "TLS setting value.\n"
+                    },
+                    "zoneId": {
+                        "type": "string",
+                        "description": "The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**\n",
+                        "willReplaceOnChanges": true
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "cloudflare:index/hostnameTlsSettingCiphers:HostnameTlsSettingCiphers": {
+            "description": "Provides a Cloudflare per-hostname TLS setting resource, specifically for ciphers suites. Used to set ciphers suites for hostnames under the specified zone.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as cloudflare from \"@pulumi/cloudflare\";\n\nconst example = new cloudflare.HostnameTlsSettingCiphers(\"example\", {\n    hostname: \"sub.example.com\",\n    values: [\"ECDHE-RSA-AES128-GCM-SHA256\"],\n    zoneId: \"0da42c8d2132a9ddaf714f9e7c920711\",\n});\n```\n```python\nimport pulumi\nimport pulumi_cloudflare as cloudflare\n\nexample = cloudflare.HostnameTlsSettingCiphers(\"example\",\n    hostname=\"sub.example.com\",\n    values=[\"ECDHE-RSA-AES128-GCM-SHA256\"],\n    zone_id=\"0da42c8d2132a9ddaf714f9e7c920711\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Cloudflare = Pulumi.Cloudflare;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = new Cloudflare.HostnameTlsSettingCiphers(\"example\", new()\n    {\n        Hostname = \"sub.example.com\",\n        Values = new[]\n        {\n            \"ECDHE-RSA-AES128-GCM-SHA256\",\n        },\n        ZoneId = \"0da42c8d2132a9ddaf714f9e7c920711\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := cloudflare.NewHostnameTlsSettingCiphers(ctx, \"example\", \u0026cloudflare.HostnameTlsSettingCiphersArgs{\n\t\t\tHostname: pulumi.String(\"sub.example.com\"),\n\t\t\tValues: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"ECDHE-RSA-AES128-GCM-SHA256\"),\n\t\t\t},\n\t\t\tZoneId: pulumi.String(\"0da42c8d2132a9ddaf714f9e7c920711\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.cloudflare.HostnameTlsSettingCiphers;\nimport com.pulumi.cloudflare.HostnameTlsSettingCiphersArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var example = new HostnameTlsSettingCiphers(\"example\", HostnameTlsSettingCiphersArgs.builder()        \n            .hostname(\"sub.example.com\")\n            .values(\"ECDHE-RSA-AES128-GCM-SHA256\")\n            .zoneId(\"0da42c8d2132a9ddaf714f9e7c920711\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  example:\n    type: cloudflare:HostnameTlsSettingCiphers\n    properties:\n      hostname: sub.example.com\n      values:\n        - ECDHE-RSA-AES128-GCM-SHA256\n      zoneId: 0da42c8d2132a9ddaf714f9e7c920711\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\n\n\n```sh\n $ pulumi import cloudflare:index/hostnameTlsSettingCiphers:HostnameTlsSettingCiphers example \u003czone_id\u003e/\u003chostname\u003e\n```\n\n ",
+            "properties": {
+                "createdAt": {
+                    "type": "string"
+                },
+                "hostname": {
+                    "type": "string",
+                    "description": "Hostname that belongs to this zone name. **Modifying this attribute will force creation of a new resource.**\n"
+                },
+                "ports": {
+                    "type": "array",
+                    "items": {
+                        "type": "integer"
+                    },
+                    "description": "Ports to use within the IP rule.\n"
+                },
+                "updatedAt": {
+                    "type": "string"
+                },
+                "values": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Ciphers suites value.\n"
+                },
+                "zoneId": {
+                    "type": "string",
+                    "description": "The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**\n"
+                }
+            },
+            "required": [
+                "createdAt",
+                "hostname",
+                "updatedAt",
+                "values",
+                "zoneId"
+            ],
+            "inputProperties": {
+                "hostname": {
+                    "type": "string",
+                    "description": "Hostname that belongs to this zone name. **Modifying this attribute will force creation of a new resource.**\n",
+                    "willReplaceOnChanges": true
+                },
+                "ports": {
+                    "type": "array",
+                    "items": {
+                        "type": "integer"
+                    },
+                    "description": "Ports to use within the IP rule.\n"
+                },
+                "values": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Ciphers suites value.\n"
+                },
+                "zoneId": {
+                    "type": "string",
+                    "description": "The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**\n",
+                    "willReplaceOnChanges": true
+                }
+            },
+            "requiredInputs": [
+                "hostname",
+                "values",
+                "zoneId"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering HostnameTlsSettingCiphers resources.\n",
+                "properties": {
+                    "createdAt": {
+                        "type": "string"
+                    },
+                    "hostname": {
+                        "type": "string",
+                        "description": "Hostname that belongs to this zone name. **Modifying this attribute will force creation of a new resource.**\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "ports": {
+                        "type": "array",
+                        "items": {
+                            "type": "integer"
+                        },
+                        "description": "Ports to use within the IP rule.\n"
+                    },
+                    "updatedAt": {
+                        "type": "string"
+                    },
+                    "values": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "Ciphers suites value.\n"
                     },
                     "zoneId": {
                         "type": "string",
@@ -14550,7 +15148,7 @@
             }
         },
         "cloudflare:index/originCaCertificate:OriginCaCertificate": {
-            "description": "{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as cloudflare from \"@pulumi/cloudflare\";\nimport * as tls from \"@pulumi/tls\";\n\n// Create a CSR and generate a CA certificate\nconst examplePrivateKey = new tls.PrivateKey(\"examplePrivateKey\", {algorithm: \"RSA\"});\nconst exampleCertRequest = new tls.CertRequest(\"exampleCertRequest\", {\n    keyAlgorithm: examplePrivateKey.algorithm,\n    privateKeyPem: examplePrivateKey.privateKeyPem,\n    subjects: [{\n        commonName: \"\",\n        organization: \"Terraform Test\",\n    }],\n});\nconst exampleOriginCaCertificate = new cloudflare.OriginCaCertificate(\"exampleOriginCaCertificate\", {\n    csr: exampleCertRequest.certRequestPem,\n    hostnames: [\"example.com\"],\n    requestType: \"origin-rsa\",\n    requestedValidity: 7,\n});\n```\n```python\nimport pulumi\nimport pulumi_cloudflare as cloudflare\nimport pulumi_tls as tls\n\n# Create a CSR and generate a CA certificate\nexample_private_key = tls.PrivateKey(\"examplePrivateKey\", algorithm=\"RSA\")\nexample_cert_request = tls.CertRequest(\"exampleCertRequest\",\n    key_algorithm=example_private_key.algorithm,\n    private_key_pem=example_private_key.private_key_pem,\n    subjects=[tls.CertRequestSubjectArgs(\n        common_name=\"\",\n        organization=\"Terraform Test\",\n    )])\nexample_origin_ca_certificate = cloudflare.OriginCaCertificate(\"exampleOriginCaCertificate\",\n    csr=example_cert_request.cert_request_pem,\n    hostnames=[\"example.com\"],\n    request_type=\"origin-rsa\",\n    requested_validity=7)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Cloudflare = Pulumi.Cloudflare;\nusing Tls = Pulumi.Tls;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    // Create a CSR and generate a CA certificate\n    var examplePrivateKey = new Tls.PrivateKey(\"examplePrivateKey\", new()\n    {\n        Algorithm = \"RSA\",\n    });\n\n    var exampleCertRequest = new Tls.CertRequest(\"exampleCertRequest\", new()\n    {\n        KeyAlgorithm = examplePrivateKey.Algorithm,\n        PrivateKeyPem = examplePrivateKey.PrivateKeyPem,\n        Subjects = new[]\n        {\n            new Tls.Inputs.CertRequestSubjectArgs\n            {\n                CommonName = \"\",\n                Organization = \"Terraform Test\",\n            },\n        },\n    });\n\n    var exampleOriginCaCertificate = new Cloudflare.OriginCaCertificate(\"exampleOriginCaCertificate\", new()\n    {\n        Csr = exampleCertRequest.CertRequestPem,\n        Hostnames = new[]\n        {\n            \"example.com\",\n        },\n        RequestType = \"origin-rsa\",\n        RequestedValidity = 7,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare\"\n\t\"github.com/pulumi/pulumi-tls/sdk/v4/go/tls\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\texamplePrivateKey, err := tls.NewPrivateKey(ctx, \"examplePrivateKey\", \u0026tls.PrivateKeyArgs{\n\t\t\tAlgorithm: pulumi.String(\"RSA\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\texampleCertRequest, err := tls.NewCertRequest(ctx, \"exampleCertRequest\", \u0026tls.CertRequestArgs{\n\t\t\tKeyAlgorithm:  examplePrivateKey.Algorithm,\n\t\t\tPrivateKeyPem: examplePrivateKey.PrivateKeyPem,\n\t\t\tSubjects: tls.CertRequestSubjectArray{\n\t\t\t\t\u0026tls.CertRequestSubjectArgs{\n\t\t\t\t\tCommonName:   pulumi.String(\"\"),\n\t\t\t\t\tOrganization: pulumi.String(\"Terraform Test\"),\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = cloudflare.NewOriginCaCertificate(ctx, \"exampleOriginCaCertificate\", \u0026cloudflare.OriginCaCertificateArgs{\n\t\t\tCsr: exampleCertRequest.CertRequestPem,\n\t\t\tHostnames: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"example.com\"),\n\t\t\t},\n\t\t\tRequestType:       pulumi.String(\"origin-rsa\"),\n\t\t\tRequestedValidity: pulumi.Int(7),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.tls.PrivateKey;\nimport com.pulumi.tls.PrivateKeyArgs;\nimport com.pulumi.tls.CertRequest;\nimport com.pulumi.tls.CertRequestArgs;\nimport com.pulumi.tls.inputs.CertRequestSubjectArgs;\nimport com.pulumi.cloudflare.OriginCaCertificate;\nimport com.pulumi.cloudflare.OriginCaCertificateArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var examplePrivateKey = new PrivateKey(\"examplePrivateKey\", PrivateKeyArgs.builder()        \n            .algorithm(\"RSA\")\n            .build());\n\n        var exampleCertRequest = new CertRequest(\"exampleCertRequest\", CertRequestArgs.builder()        \n            .keyAlgorithm(examplePrivateKey.algorithm())\n            .privateKeyPem(examplePrivateKey.privateKeyPem())\n            .subjects(CertRequestSubjectArgs.builder()\n                .commonName(\"\")\n                .organization(\"Terraform Test\")\n                .build())\n            .build());\n\n        var exampleOriginCaCertificate = new OriginCaCertificate(\"exampleOriginCaCertificate\", OriginCaCertificateArgs.builder()        \n            .csr(exampleCertRequest.certRequestPem())\n            .hostnames(\"example.com\")\n            .requestType(\"origin-rsa\")\n            .requestedValidity(7)\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  # Create a CSR and generate a CA certificate\n  examplePrivateKey:\n    type: tls:PrivateKey\n    properties:\n      algorithm: RSA\n  exampleCertRequest:\n    type: tls:CertRequest\n    properties:\n      keyAlgorithm: ${examplePrivateKey.algorithm}\n      privateKeyPem: ${examplePrivateKey.privateKeyPem}\n      subjects:\n        - commonName:\n          organization: Terraform Test\n  exampleOriginCaCertificate:\n    type: cloudflare:OriginCaCertificate\n    properties:\n      csr: ${exampleCertRequest.certRequestPem}\n      hostnames:\n        - example.com\n      requestType: origin-rsa\n      requestedValidity: 7\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\n\n\n```sh\n $ pulumi import cloudflare:index/originCaCertificate:OriginCaCertificate example \u003ccertificate_id\u003e\n```\n\n ",
+            "description": "{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as cloudflare from \"@pulumi/cloudflare\";\nimport * as tls from \"@pulumi/tls\";\n\nconst examplePrivateKey = new tls.PrivateKey(\"examplePrivateKey\", {algorithm: \"RSA\"});\nconst exampleCertRequest = new tls.CertRequest(\"exampleCertRequest\", {\n    privateKeyPem: examplePrivateKey.privateKeyPem,\n    subjects: [{\n        commonName: \"\",\n        organization: \"Terraform Test\",\n    }],\n});\nconst exampleOriginCaCertificate = new cloudflare.OriginCaCertificate(\"exampleOriginCaCertificate\", {\n    csr: exampleCertRequest.certRequestPem,\n    hostnames: [\"example.com\"],\n    requestType: \"origin-rsa\",\n    requestedValidity: 7,\n});\n```\n```python\nimport pulumi\nimport pulumi_cloudflare as cloudflare\nimport pulumi_tls as tls\n\nexample_private_key = tls.PrivateKey(\"examplePrivateKey\", algorithm=\"RSA\")\nexample_cert_request = tls.CertRequest(\"exampleCertRequest\",\n    private_key_pem=example_private_key.private_key_pem,\n    subjects=[tls.CertRequestSubjectArgs(\n        common_name=\"\",\n        organization=\"Terraform Test\",\n    )])\nexample_origin_ca_certificate = cloudflare.OriginCaCertificate(\"exampleOriginCaCertificate\",\n    csr=example_cert_request.cert_request_pem,\n    hostnames=[\"example.com\"],\n    request_type=\"origin-rsa\",\n    requested_validity=7)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Cloudflare = Pulumi.Cloudflare;\nusing Tls = Pulumi.Tls;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var examplePrivateKey = new Tls.PrivateKey(\"examplePrivateKey\", new()\n    {\n        Algorithm = \"RSA\",\n    });\n\n    var exampleCertRequest = new Tls.CertRequest(\"exampleCertRequest\", new()\n    {\n        PrivateKeyPem = examplePrivateKey.PrivateKeyPem,\n        Subjects = new[]\n        {\n            new Tls.Inputs.CertRequestSubjectArgs\n            {\n                CommonName = \"\",\n                Organization = \"Terraform Test\",\n            },\n        },\n    });\n\n    var exampleOriginCaCertificate = new Cloudflare.OriginCaCertificate(\"exampleOriginCaCertificate\", new()\n    {\n        Csr = exampleCertRequest.CertRequestPem,\n        Hostnames = new[]\n        {\n            \"example.com\",\n        },\n        RequestType = \"origin-rsa\",\n        RequestedValidity = 7,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare\"\n\t\"github.com/pulumi/pulumi-tls/sdk/v4/go/tls\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\texamplePrivateKey, err := tls.NewPrivateKey(ctx, \"examplePrivateKey\", \u0026tls.PrivateKeyArgs{\n\t\t\tAlgorithm: pulumi.String(\"RSA\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\texampleCertRequest, err := tls.NewCertRequest(ctx, \"exampleCertRequest\", \u0026tls.CertRequestArgs{\n\t\t\tPrivateKeyPem: examplePrivateKey.PrivateKeyPem,\n\t\t\tSubjects: tls.CertRequestSubjectArray{\n\t\t\t\t\u0026tls.CertRequestSubjectArgs{\n\t\t\t\t\tCommonName:   pulumi.String(\"\"),\n\t\t\t\t\tOrganization: pulumi.String(\"Terraform Test\"),\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = cloudflare.NewOriginCaCertificate(ctx, \"exampleOriginCaCertificate\", \u0026cloudflare.OriginCaCertificateArgs{\n\t\t\tCsr: exampleCertRequest.CertRequestPem,\n\t\t\tHostnames: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"example.com\"),\n\t\t\t},\n\t\t\tRequestType:       pulumi.String(\"origin-rsa\"),\n\t\t\tRequestedValidity: pulumi.Int(7),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.tls.PrivateKey;\nimport com.pulumi.tls.PrivateKeyArgs;\nimport com.pulumi.tls.CertRequest;\nimport com.pulumi.tls.CertRequestArgs;\nimport com.pulumi.tls.inputs.CertRequestSubjectArgs;\nimport com.pulumi.cloudflare.OriginCaCertificate;\nimport com.pulumi.cloudflare.OriginCaCertificateArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var examplePrivateKey = new PrivateKey(\"examplePrivateKey\", PrivateKeyArgs.builder()        \n            .algorithm(\"RSA\")\n            .build());\n\n        var exampleCertRequest = new CertRequest(\"exampleCertRequest\", CertRequestArgs.builder()        \n            .privateKeyPem(examplePrivateKey.privateKeyPem())\n            .subjects(CertRequestSubjectArgs.builder()\n                .commonName(\"\")\n                .organization(\"Terraform Test\")\n                .build())\n            .build());\n\n        var exampleOriginCaCertificate = new OriginCaCertificate(\"exampleOriginCaCertificate\", OriginCaCertificateArgs.builder()        \n            .csr(exampleCertRequest.certRequestPem())\n            .hostnames(\"example.com\")\n            .requestType(\"origin-rsa\")\n            .requestedValidity(7)\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  examplePrivateKey:\n    type: tls:PrivateKey\n    properties:\n      algorithm: RSA\n  exampleCertRequest:\n    type: tls:CertRequest\n    properties:\n      privateKeyPem: ${examplePrivateKey.privateKeyPem}\n      subjects:\n        - commonName:\n          organization: Terraform Test\n  exampleOriginCaCertificate:\n    type: cloudflare:OriginCaCertificate\n    properties:\n      csr: ${exampleCertRequest.certRequestPem}\n      hostnames:\n        - example.com\n      requestType: origin-rsa\n      requestedValidity: 7\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\n\n\n```sh\n $ pulumi import cloudflare:index/originCaCertificate:OriginCaCertificate example \u003ccertificate_id\u003e\n```\n\n ",
             "properties": {
                 "certificate": {
                     "type": "string",
@@ -15558,7 +16156,7 @@
                 },
                 "phase": {
                     "type": "string",
-                    "description": "Point in the request/response lifecycle where the ruleset will be created. Available values: `ddos_l4`, `ddos_l7`, `http_custom_errors`, `http_log_custom_fields`, `http_request_cache_settings`, `http_request_firewall_custom`, `http_request_firewall_managed`, `http_request_late_transform`, `http_request_late_transform_managed`, `http_request_main`, `http_request_origin`, `http_request_dynamic_redirect`, `http_request_redirect`, `http_request_sanitize`, `http_request_transform`, `http_response_firewall_managed`, `http_response_headers_transform`, `http_response_headers_transform_managed`, `http_response_compression`, `magic_transit`, `http_ratelimit`, `http_request_sbfm`, `http_config_settings`.\n"
+                    "description": "Point in the request/response lifecycle where the ruleset will be created. Available values: `ddos_l4`, `ddos_l7`, `http_config_settings`, `http_custom_errors`, `http_log_custom_fields`, `http_ratelimit`, `http_request_cache_settings`, `http_request_dynamic_redirect`, `http_request_firewall_custom`, `http_request_firewall_managed`, `http_request_late_transform`, `http_request_origin`, `http_request_redirect`, `http_request_sanitize`, `http_request_sbfm`, `http_request_transform`, `http_response_compression`, `http_response_firewall_managed`, `http_response_headers_transform`, `magic_transit`.\n"
                 },
                 "rules": {
                     "type": "array",
@@ -15597,7 +16195,7 @@
                 },
                 "phase": {
                     "type": "string",
-                    "description": "Point in the request/response lifecycle where the ruleset will be created. Available values: `ddos_l4`, `ddos_l7`, `http_custom_errors`, `http_log_custom_fields`, `http_request_cache_settings`, `http_request_firewall_custom`, `http_request_firewall_managed`, `http_request_late_transform`, `http_request_late_transform_managed`, `http_request_main`, `http_request_origin`, `http_request_dynamic_redirect`, `http_request_redirect`, `http_request_sanitize`, `http_request_transform`, `http_response_firewall_managed`, `http_response_headers_transform`, `http_response_headers_transform_managed`, `http_response_compression`, `magic_transit`, `http_ratelimit`, `http_request_sbfm`, `http_config_settings`.\n"
+                    "description": "Point in the request/response lifecycle where the ruleset will be created. Available values: `ddos_l4`, `ddos_l7`, `http_config_settings`, `http_custom_errors`, `http_log_custom_fields`, `http_ratelimit`, `http_request_cache_settings`, `http_request_dynamic_redirect`, `http_request_firewall_custom`, `http_request_firewall_managed`, `http_request_late_transform`, `http_request_origin`, `http_request_redirect`, `http_request_sanitize`, `http_request_sbfm`, `http_request_transform`, `http_response_compression`, `http_response_firewall_managed`, `http_response_headers_transform`, `magic_transit`.\n"
                 },
                 "rules": {
                     "type": "array",
@@ -15637,7 +16235,7 @@
                     },
                     "phase": {
                         "type": "string",
-                        "description": "Point in the request/response lifecycle where the ruleset will be created. Available values: `ddos_l4`, `ddos_l7`, `http_custom_errors`, `http_log_custom_fields`, `http_request_cache_settings`, `http_request_firewall_custom`, `http_request_firewall_managed`, `http_request_late_transform`, `http_request_late_transform_managed`, `http_request_main`, `http_request_origin`, `http_request_dynamic_redirect`, `http_request_redirect`, `http_request_sanitize`, `http_request_transform`, `http_response_firewall_managed`, `http_response_headers_transform`, `http_response_headers_transform_managed`, `http_response_compression`, `magic_transit`, `http_ratelimit`, `http_request_sbfm`, `http_config_settings`.\n"
+                        "description": "Point in the request/response lifecycle where the ruleset will be created. Available values: `ddos_l4`, `ddos_l7`, `http_config_settings`, `http_custom_errors`, `http_log_custom_fields`, `http_ratelimit`, `http_request_cache_settings`, `http_request_dynamic_redirect`, `http_request_firewall_custom`, `http_request_firewall_managed`, `http_request_late_transform`, `http_request_origin`, `http_request_redirect`, `http_request_sanitize`, `http_request_sbfm`, `http_request_transform`, `http_response_compression`, `http_response_firewall_managed`, `http_response_headers_transform`, `magic_transit`.\n"
                     },
                     "rules": {
                         "type": "array",
@@ -17390,7 +17988,7 @@
             }
         },
         "cloudflare:index/waitingRoom:WaitingRoom": {
-            "description": "Provides a Cloudflare Waiting Room resource.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as cloudflare from \"@pulumi/cloudflare\";\n\n// Waiting Room\nconst example = new cloudflare.WaitingRoom(\"example\", {\n    additionalRoutes: [\n        {\n            host: \"shop1.example.com\",\n            path: \"/example-path\",\n        },\n        {\n            host: \"shop2.example.com\",\n        },\n    ],\n    cookieSuffix: \"queue1\",\n    host: \"foo.example.com\",\n    name: \"foo\",\n    newUsersPerMinute: 200,\n    path: \"/\",\n    totalActiveUsers: 200,\n    zoneId: \"0da42c8d2132a9ddaf714f9e7c920711\",\n});\n```\n```python\nimport pulumi\nimport pulumi_cloudflare as cloudflare\n\n# Waiting Room\nexample = cloudflare.WaitingRoom(\"example\",\n    additional_routes=[\n        cloudflare.WaitingRoomAdditionalRouteArgs(\n            host=\"shop1.example.com\",\n            path=\"/example-path\",\n        ),\n        cloudflare.WaitingRoomAdditionalRouteArgs(\n            host=\"shop2.example.com\",\n        ),\n    ],\n    cookie_suffix=\"queue1\",\n    host=\"foo.example.com\",\n    name=\"foo\",\n    new_users_per_minute=200,\n    path=\"/\",\n    total_active_users=200,\n    zone_id=\"0da42c8d2132a9ddaf714f9e7c920711\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Cloudflare = Pulumi.Cloudflare;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    // Waiting Room\n    var example = new Cloudflare.WaitingRoom(\"example\", new()\n    {\n        AdditionalRoutes = new[]\n        {\n            new Cloudflare.Inputs.WaitingRoomAdditionalRouteArgs\n            {\n                Host = \"shop1.example.com\",\n                Path = \"/example-path\",\n            },\n            new Cloudflare.Inputs.WaitingRoomAdditionalRouteArgs\n            {\n                Host = \"shop2.example.com\",\n            },\n        },\n        CookieSuffix = \"queue1\",\n        Host = \"foo.example.com\",\n        Name = \"foo\",\n        NewUsersPerMinute = 200,\n        Path = \"/\",\n        TotalActiveUsers = 200,\n        ZoneId = \"0da42c8d2132a9ddaf714f9e7c920711\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := cloudflare.NewWaitingRoom(ctx, \"example\", \u0026cloudflare.WaitingRoomArgs{\n\t\t\tAdditionalRoutes: cloudflare.WaitingRoomAdditionalRouteArray{\n\t\t\t\t\u0026cloudflare.WaitingRoomAdditionalRouteArgs{\n\t\t\t\t\tHost: pulumi.String(\"shop1.example.com\"),\n\t\t\t\t\tPath: pulumi.String(\"/example-path\"),\n\t\t\t\t},\n\t\t\t\t\u0026cloudflare.WaitingRoomAdditionalRouteArgs{\n\t\t\t\t\tHost: pulumi.String(\"shop2.example.com\"),\n\t\t\t\t},\n\t\t\t},\n\t\t\tCookieSuffix:      pulumi.String(\"queue1\"),\n\t\t\tHost:              pulumi.String(\"foo.example.com\"),\n\t\t\tName:              pulumi.String(\"foo\"),\n\t\t\tNewUsersPerMinute: pulumi.Int(200),\n\t\t\tPath:              pulumi.String(\"/\"),\n\t\t\tTotalActiveUsers:  pulumi.Int(200),\n\t\t\tZoneId:            pulumi.String(\"0da42c8d2132a9ddaf714f9e7c920711\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.cloudflare.WaitingRoom;\nimport com.pulumi.cloudflare.WaitingRoomArgs;\nimport com.pulumi.cloudflare.inputs.WaitingRoomAdditionalRouteArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var example = new WaitingRoom(\"example\", WaitingRoomArgs.builder()        \n            .additionalRoutes(            \n                WaitingRoomAdditionalRouteArgs.builder()\n                    .host(\"shop1.example.com\")\n                    .path(\"/example-path\")\n                    .build(),\n                WaitingRoomAdditionalRouteArgs.builder()\n                    .host(\"shop2.example.com\")\n                    .build())\n            .cookieSuffix(\"queue1\")\n            .host(\"foo.example.com\")\n            .name(\"foo\")\n            .newUsersPerMinute(200)\n            .path(\"/\")\n            .totalActiveUsers(200)\n            .zoneId(\"0da42c8d2132a9ddaf714f9e7c920711\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  # Waiting Room\n  example:\n    type: cloudflare:WaitingRoom\n    properties:\n      additionalRoutes:\n        - host: shop1.example.com\n          path: /example-path\n        - host: shop2.example.com\n      cookieSuffix: queue1\n      host: foo.example.com\n      name: foo\n      newUsersPerMinute: 200\n      path: /\n      totalActiveUsers: 200\n      zoneId: 0da42c8d2132a9ddaf714f9e7c920711\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nUse the Zone ID and Waiting Room ID to import.\n\n```sh\n $ pulumi import cloudflare:index/waitingRoom:WaitingRoom default \u003czone_id\u003e/\u003cwaiting_room_id\u003e\n```\n\n ",
+            "description": "Provides a Cloudflare Waiting Room resource.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as cloudflare from \"@pulumi/cloudflare\";\n\n// Waiting Room\nconst example = new cloudflare.WaitingRoom(\"example\", {\n    additionalRoutes: [\n        {\n            host: \"shop1.example.com\",\n            path: \"/example-path\",\n        },\n        {\n            host: \"shop2.example.com\",\n        },\n    ],\n    cookieSuffix: \"queue1\",\n    host: \"foo.example.com\",\n    name: \"foo\",\n    newUsersPerMinute: 200,\n    path: \"/\",\n    queueingStatusCode: 200,\n    totalActiveUsers: 200,\n    zoneId: \"0da42c8d2132a9ddaf714f9e7c920711\",\n});\n```\n```python\nimport pulumi\nimport pulumi_cloudflare as cloudflare\n\n# Waiting Room\nexample = cloudflare.WaitingRoom(\"example\",\n    additional_routes=[\n        cloudflare.WaitingRoomAdditionalRouteArgs(\n            host=\"shop1.example.com\",\n            path=\"/example-path\",\n        ),\n        cloudflare.WaitingRoomAdditionalRouteArgs(\n            host=\"shop2.example.com\",\n        ),\n    ],\n    cookie_suffix=\"queue1\",\n    host=\"foo.example.com\",\n    name=\"foo\",\n    new_users_per_minute=200,\n    path=\"/\",\n    queueing_status_code=200,\n    total_active_users=200,\n    zone_id=\"0da42c8d2132a9ddaf714f9e7c920711\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Cloudflare = Pulumi.Cloudflare;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    // Waiting Room\n    var example = new Cloudflare.WaitingRoom(\"example\", new()\n    {\n        AdditionalRoutes = new[]\n        {\n            new Cloudflare.Inputs.WaitingRoomAdditionalRouteArgs\n            {\n                Host = \"shop1.example.com\",\n                Path = \"/example-path\",\n            },\n            new Cloudflare.Inputs.WaitingRoomAdditionalRouteArgs\n            {\n                Host = \"shop2.example.com\",\n            },\n        },\n        CookieSuffix = \"queue1\",\n        Host = \"foo.example.com\",\n        Name = \"foo\",\n        NewUsersPerMinute = 200,\n        Path = \"/\",\n        QueueingStatusCode = 200,\n        TotalActiveUsers = 200,\n        ZoneId = \"0da42c8d2132a9ddaf714f9e7c920711\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := cloudflare.NewWaitingRoom(ctx, \"example\", \u0026cloudflare.WaitingRoomArgs{\n\t\t\tAdditionalRoutes: cloudflare.WaitingRoomAdditionalRouteArray{\n\t\t\t\t\u0026cloudflare.WaitingRoomAdditionalRouteArgs{\n\t\t\t\t\tHost: pulumi.String(\"shop1.example.com\"),\n\t\t\t\t\tPath: pulumi.String(\"/example-path\"),\n\t\t\t\t},\n\t\t\t\t\u0026cloudflare.WaitingRoomAdditionalRouteArgs{\n\t\t\t\t\tHost: pulumi.String(\"shop2.example.com\"),\n\t\t\t\t},\n\t\t\t},\n\t\t\tCookieSuffix:       pulumi.String(\"queue1\"),\n\t\t\tHost:               pulumi.String(\"foo.example.com\"),\n\t\t\tName:               pulumi.String(\"foo\"),\n\t\t\tNewUsersPerMinute:  pulumi.Int(200),\n\t\t\tPath:               pulumi.String(\"/\"),\n\t\t\tQueueingStatusCode: pulumi.Int(200),\n\t\t\tTotalActiveUsers:   pulumi.Int(200),\n\t\t\tZoneId:             pulumi.String(\"0da42c8d2132a9ddaf714f9e7c920711\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.cloudflare.WaitingRoom;\nimport com.pulumi.cloudflare.WaitingRoomArgs;\nimport com.pulumi.cloudflare.inputs.WaitingRoomAdditionalRouteArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var example = new WaitingRoom(\"example\", WaitingRoomArgs.builder()        \n            .additionalRoutes(            \n                WaitingRoomAdditionalRouteArgs.builder()\n                    .host(\"shop1.example.com\")\n                    .path(\"/example-path\")\n                    .build(),\n                WaitingRoomAdditionalRouteArgs.builder()\n                    .host(\"shop2.example.com\")\n                    .build())\n            .cookieSuffix(\"queue1\")\n            .host(\"foo.example.com\")\n            .name(\"foo\")\n            .newUsersPerMinute(200)\n            .path(\"/\")\n            .queueingStatusCode(200)\n            .totalActiveUsers(200)\n            .zoneId(\"0da42c8d2132a9ddaf714f9e7c920711\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  # Waiting Room\n  example:\n    type: cloudflare:WaitingRoom\n    properties:\n      additionalRoutes:\n        - host: shop1.example.com\n          path: /example-path\n        - host: shop2.example.com\n      cookieSuffix: queue1\n      host: foo.example.com\n      name: foo\n      newUsersPerMinute: 200\n      path: /\n      queueingStatusCode: 200\n      totalActiveUsers: 200\n      zoneId: 0da42c8d2132a9ddaf714f9e7c920711\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nUse the Zone ID and Waiting Room ID to import.\n\n```sh\n $ pulumi import cloudflare:index/waitingRoom:WaitingRoom default \u003czone_id\u003e/\u003cwaiting_room_id\u003e\n```\n\n ",
             "properties": {
                 "additionalRoutes": {
                     "type": "array",
@@ -17446,6 +18044,10 @@
                 "queueingMethod": {
                     "type": "string",
                     "description": "The queueing method used by the waiting room. Available values: `fifo`, `random`, `passthrough`, `reject`. Defaults to `fifo`.\n"
+                },
+                "queueingStatusCode": {
+                    "type": "integer",
+                    "description": "HTTP status code returned to a user while in the queue.\n"
                 },
                 "sessionDuration": {
                     "type": "integer",
@@ -17527,6 +18129,10 @@
                 "queueingMethod": {
                     "type": "string",
                     "description": "The queueing method used by the waiting room. Available values: `fifo`, `random`, `passthrough`, `reject`. Defaults to `fifo`.\n"
+                },
+                "queueingStatusCode": {
+                    "type": "integer",
+                    "description": "HTTP status code returned to a user while in the queue.\n"
                 },
                 "sessionDuration": {
                     "type": "integer",
@@ -17611,6 +18217,10 @@
                     "queueingMethod": {
                         "type": "string",
                         "description": "The queueing method used by the waiting room. Available values: `fifo`, `random`, `passthrough`, `reject`. Defaults to `fifo`.\n"
+                    },
+                    "queueingStatusCode": {
+                        "type": "integer",
+                        "description": "HTTP status code returned to a user while in the queue.\n"
                     },
                     "sessionDuration": {
                         "type": "integer",
@@ -18162,7 +18772,7 @@
             }
         },
         "cloudflare:index/workerDomain:WorkerDomain": {
-            "description": "Creates a Worker Custom Domain.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as cloudflare from \"@pulumi/cloudflare\";\n\nconst example = new cloudflare.WorkerDomain(\"example\", {\n    accountId: \"f037e56e89293a057740de681ac9abbe\",\n    hostname: \"subdomain.example.com\",\n    service: \"my-service\",\n    zoneId: \"0da42c8d2132a9ddaf714f9e7c920711\",\n});\n```\n```python\nimport pulumi\nimport pulumi_cloudflare as cloudflare\n\nexample = cloudflare.WorkerDomain(\"example\",\n    account_id=\"f037e56e89293a057740de681ac9abbe\",\n    hostname=\"subdomain.example.com\",\n    service=\"my-service\",\n    zone_id=\"0da42c8d2132a9ddaf714f9e7c920711\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Cloudflare = Pulumi.Cloudflare;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = new Cloudflare.WorkerDomain(\"example\", new()\n    {\n        AccountId = \"f037e56e89293a057740de681ac9abbe\",\n        Hostname = \"subdomain.example.com\",\n        Service = \"my-service\",\n        ZoneId = \"0da42c8d2132a9ddaf714f9e7c920711\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := cloudflare.NewWorkerDomain(ctx, \"example\", \u0026cloudflare.WorkerDomainArgs{\n\t\t\tAccountId: pulumi.String(\"f037e56e89293a057740de681ac9abbe\"),\n\t\t\tHostname:  pulumi.String(\"subdomain.example.com\"),\n\t\t\tService:   pulumi.String(\"my-service\"),\n\t\t\tZoneId:    pulumi.String(\"0da42c8d2132a9ddaf714f9e7c920711\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.cloudflare.WorkerDomain;\nimport com.pulumi.cloudflare.WorkerDomainArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var example = new WorkerDomain(\"example\", WorkerDomainArgs.builder()        \n            .accountId(\"f037e56e89293a057740de681ac9abbe\")\n            .hostname(\"subdomain.example.com\")\n            .service(\"my-service\")\n            .zoneId(\"0da42c8d2132a9ddaf714f9e7c920711\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  example:\n    type: cloudflare:WorkerDomain\n    properties:\n      accountId: f037e56e89293a057740de681ac9abbe\n      hostname: subdomain.example.com\n      service: my-service\n      zoneId: 0da42c8d2132a9ddaf714f9e7c920711\n```\n{{% /example %}}\n{{% /examples %}}",
+            "description": "Creates a Worker Custom Domain.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as cloudflare from \"@pulumi/cloudflare\";\n\nconst example = new cloudflare.WorkerDomain(\"example\", {\n    accountId: \"f037e56e89293a057740de681ac9abbe\",\n    hostname: \"subdomain.example.com\",\n    service: \"my-service\",\n    zoneId: \"0da42c8d2132a9ddaf714f9e7c920711\",\n});\n```\n```python\nimport pulumi\nimport pulumi_cloudflare as cloudflare\n\nexample = cloudflare.WorkerDomain(\"example\",\n    account_id=\"f037e56e89293a057740de681ac9abbe\",\n    hostname=\"subdomain.example.com\",\n    service=\"my-service\",\n    zone_id=\"0da42c8d2132a9ddaf714f9e7c920711\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Cloudflare = Pulumi.Cloudflare;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = new Cloudflare.WorkerDomain(\"example\", new()\n    {\n        AccountId = \"f037e56e89293a057740de681ac9abbe\",\n        Hostname = \"subdomain.example.com\",\n        Service = \"my-service\",\n        ZoneId = \"0da42c8d2132a9ddaf714f9e7c920711\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := cloudflare.NewWorkerDomain(ctx, \"example\", \u0026cloudflare.WorkerDomainArgs{\n\t\t\tAccountId: pulumi.String(\"f037e56e89293a057740de681ac9abbe\"),\n\t\t\tHostname:  pulumi.String(\"subdomain.example.com\"),\n\t\t\tService:   pulumi.String(\"my-service\"),\n\t\t\tZoneId:    pulumi.String(\"0da42c8d2132a9ddaf714f9e7c920711\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.cloudflare.WorkerDomain;\nimport com.pulumi.cloudflare.WorkerDomainArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var example = new WorkerDomain(\"example\", WorkerDomainArgs.builder()        \n            .accountId(\"f037e56e89293a057740de681ac9abbe\")\n            .hostname(\"subdomain.example.com\")\n            .service(\"my-service\")\n            .zoneId(\"0da42c8d2132a9ddaf714f9e7c920711\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  example:\n    type: cloudflare:WorkerDomain\n    properties:\n      accountId: f037e56e89293a057740de681ac9abbe\n      hostname: subdomain.example.com\n      service: my-service\n      zoneId: 0da42c8d2132a9ddaf714f9e7c920711\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\n\n\n```sh\n $ pulumi import cloudflare:index/workerDomain:WorkerDomain example \u003caccount_id\u003e/\u003cworker_domain_id\u003e\n```\n\n ",
             "properties": {
                 "accountId": {
                     "type": "string",
@@ -19313,6 +19923,76 @@
                 "type": "object"
             }
         },
+        "cloudflare:index/zoneHold:ZoneHold": {
+            "description": "Provides a Cloudflare Zone Hold resource that prevents adding\nthe hostname to another account for use.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as cloudflare from \"@pulumi/cloudflare\";\n\nconst example = new cloudflare.ZoneHold(\"example\", {\n    hold: true,\n    zoneId: \"0da42c8d2132a9ddaf714f9e7c920711\",\n});\n```\n```python\nimport pulumi\nimport pulumi_cloudflare as cloudflare\n\nexample = cloudflare.ZoneHold(\"example\",\n    hold=True,\n    zone_id=\"0da42c8d2132a9ddaf714f9e7c920711\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Cloudflare = Pulumi.Cloudflare;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = new Cloudflare.ZoneHold(\"example\", new()\n    {\n        Hold = true,\n        ZoneId = \"0da42c8d2132a9ddaf714f9e7c920711\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := cloudflare.NewZoneHold(ctx, \"example\", \u0026cloudflare.ZoneHoldArgs{\n\t\t\tHold:   pulumi.Bool(true),\n\t\t\tZoneId: pulumi.String(\"0da42c8d2132a9ddaf714f9e7c920711\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.cloudflare.ZoneHold;\nimport com.pulumi.cloudflare.ZoneHoldArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var example = new ZoneHold(\"example\", ZoneHoldArgs.builder()        \n            .hold(true)\n            .zoneId(\"0da42c8d2132a9ddaf714f9e7c920711\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  example:\n    type: cloudflare:ZoneHold\n    properties:\n      hold: true\n      zoneId: 0da42c8d2132a9ddaf714f9e7c920711\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\n\n\n```sh\n $ pulumi import cloudflare:index/zoneHold:ZoneHold example \u003czone_id\u003e\n```\n\n ",
+            "properties": {
+                "hold": {
+                    "type": "boolean",
+                    "description": "Enablement status of the zone hold.\n"
+                },
+                "holdAfter": {
+                    "type": "string",
+                    "description": "The RFC3339 compatible timestamp when to automatically re-enable the zone hold.\n"
+                },
+                "includeSubdomains": {
+                    "type": "boolean",
+                    "description": "Whether to extend to block any subdomain of the given zone.\n"
+                },
+                "zoneId": {
+                    "type": "string",
+                    "description": "The zone identifier to target for the resource.\n"
+                }
+            },
+            "required": [
+                "hold",
+                "holdAfter",
+                "zoneId"
+            ],
+            "inputProperties": {
+                "hold": {
+                    "type": "boolean",
+                    "description": "Enablement status of the zone hold.\n"
+                },
+                "holdAfter": {
+                    "type": "string",
+                    "description": "The RFC3339 compatible timestamp when to automatically re-enable the zone hold.\n"
+                },
+                "includeSubdomains": {
+                    "type": "boolean",
+                    "description": "Whether to extend to block any subdomain of the given zone.\n"
+                },
+                "zoneId": {
+                    "type": "string",
+                    "description": "The zone identifier to target for the resource.\n"
+                }
+            },
+            "requiredInputs": [
+                "hold",
+                "zoneId"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering ZoneHold resources.\n",
+                "properties": {
+                    "hold": {
+                        "type": "boolean",
+                        "description": "Enablement status of the zone hold.\n"
+                    },
+                    "holdAfter": {
+                        "type": "string",
+                        "description": "The RFC3339 compatible timestamp when to automatically re-enable the zone hold.\n"
+                    },
+                    "includeSubdomains": {
+                        "type": "boolean",
+                        "description": "Whether to extend to block any subdomain of the given zone.\n"
+                    },
+                    "zoneId": {
+                        "type": "string",
+                        "description": "The zone identifier to target for the resource.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
         "cloudflare:index/zoneLockdown:ZoneLockdown": {
             "description": "Provides a Cloudflare Zone Lockdown resource. Zone Lockdown allows\nyou to define one or more URLs (with wildcard matching on the domain\nor path) that will only permit access if the request originates\nfrom an IP address that matches a safelist of one or more IP\naddresses and/or IP ranges.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as cloudflare from \"@pulumi/cloudflare\";\n\n// Restrict access to these endpoints to requests from a known IP address range.\nconst example = new cloudflare.ZoneLockdown(\"example\", {\n    configurations: [{\n        target: \"ip_range\",\n        value: \"192.0.2.0/24\",\n    }],\n    description: \"Restrict access to these endpoints to requests from a known IP address range\",\n    paused: false,\n    urls: [\"api.mysite.com/some/endpoint*\"],\n    zoneId: \"0da42c8d2132a9ddaf714f9e7c920711\",\n});\n```\n```python\nimport pulumi\nimport pulumi_cloudflare as cloudflare\n\n# Restrict access to these endpoints to requests from a known IP address range.\nexample = cloudflare.ZoneLockdown(\"example\",\n    configurations=[cloudflare.ZoneLockdownConfigurationArgs(\n        target=\"ip_range\",\n        value=\"192.0.2.0/24\",\n    )],\n    description=\"Restrict access to these endpoints to requests from a known IP address range\",\n    paused=False,\n    urls=[\"api.mysite.com/some/endpoint*\"],\n    zone_id=\"0da42c8d2132a9ddaf714f9e7c920711\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Cloudflare = Pulumi.Cloudflare;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    // Restrict access to these endpoints to requests from a known IP address range.\n    var example = new Cloudflare.ZoneLockdown(\"example\", new()\n    {\n        Configurations = new[]\n        {\n            new Cloudflare.Inputs.ZoneLockdownConfigurationArgs\n            {\n                Target = \"ip_range\",\n                Value = \"192.0.2.0/24\",\n            },\n        },\n        Description = \"Restrict access to these endpoints to requests from a known IP address range\",\n        Paused = false,\n        Urls = new[]\n        {\n            \"api.mysite.com/some/endpoint*\",\n        },\n        ZoneId = \"0da42c8d2132a9ddaf714f9e7c920711\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := cloudflare.NewZoneLockdown(ctx, \"example\", \u0026cloudflare.ZoneLockdownArgs{\n\t\t\tConfigurations: cloudflare.ZoneLockdownConfigurationArray{\n\t\t\t\t\u0026cloudflare.ZoneLockdownConfigurationArgs{\n\t\t\t\t\tTarget: pulumi.String(\"ip_range\"),\n\t\t\t\t\tValue:  pulumi.String(\"192.0.2.0/24\"),\n\t\t\t\t},\n\t\t\t},\n\t\t\tDescription: pulumi.String(\"Restrict access to these endpoints to requests from a known IP address range\"),\n\t\t\tPaused:      pulumi.Bool(false),\n\t\t\tUrls: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"api.mysite.com/some/endpoint*\"),\n\t\t\t},\n\t\t\tZoneId: pulumi.String(\"0da42c8d2132a9ddaf714f9e7c920711\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.cloudflare.ZoneLockdown;\nimport com.pulumi.cloudflare.ZoneLockdownArgs;\nimport com.pulumi.cloudflare.inputs.ZoneLockdownConfigurationArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var example = new ZoneLockdown(\"example\", ZoneLockdownArgs.builder()        \n            .configurations(ZoneLockdownConfigurationArgs.builder()\n                .target(\"ip_range\")\n                .value(\"192.0.2.0/24\")\n                .build())\n            .description(\"Restrict access to these endpoints to requests from a known IP address range\")\n            .paused(\"false\")\n            .urls(\"api.mysite.com/some/endpoint*\")\n            .zoneId(\"0da42c8d2132a9ddaf714f9e7c920711\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  # Restrict access to these endpoints to requests from a known IP address range.\n  example:\n    type: cloudflare:ZoneLockdown\n    properties:\n      configurations:\n        - target: ip_range\n          value: 192.0.2.0/24\n      description: Restrict access to these endpoints to requests from a known IP address range\n      paused: 'false'\n      urls:\n        - api.mysite.com/some/endpoint*\n      zoneId: 0da42c8d2132a9ddaf714f9e7c920711\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\n\n\n```sh\n $ pulumi import cloudflare:index/zoneLockdown:ZoneLockdown example \u003czone_id\u003e/\u003clockdown_id\u003e\n```\n\n ",
             "properties": {
@@ -19720,33 +20400,40 @@
                     "account": {
                         "type": "object",
                         "additionalProperties": {
-                            "$ref": "pulumi.json#/Any"
+                            "type": "string"
                         },
                         "description": "Map of permissions for account level resources.\n"
                     },
                     "id": {
                         "type": "string",
-                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                        "description": "Checksum of permissions.\n"
                     },
                     "permissions": {
                         "type": "object",
                         "additionalProperties": {
-                            "$ref": "pulumi.json#/Any"
+                            "type": "string"
                         },
                         "description": "Map of all permissions available. Should not be used as some permissions will overlap resource scope. Instead, use resource level specific attributes.\n",
                         "deprecationMessage": "Use specific account, zone or user attributes instead."
                     },
+                    "r2": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "string"
+                        },
+                        "description": "Map of permissions for r2 level resources.\n"
+                    },
                     "user": {
                         "type": "object",
                         "additionalProperties": {
-                            "$ref": "pulumi.json#/Any"
+                            "type": "string"
                         },
                         "description": "Map of permissions for user level resources.\n"
                     },
                     "zone": {
                         "type": "object",
                         "additionalProperties": {
-                            "$ref": "pulumi.json#/Any"
+                            "type": "string"
                         },
                         "description": "Map of permissions for zone level resources.\n"
                     }
@@ -19754,10 +20441,11 @@
                 "type": "object",
                 "required": [
                     "account",
+                    "id",
                     "permissions",
+                    "r2",
                     "user",
-                    "zone",
-                    "id"
+                    "zone"
                 ]
             }
         },
@@ -20200,6 +20888,32 @@
                 "required": [
                     "rulesets",
                     "id"
+                ]
+            }
+        },
+        "cloudflare:index/getUser:getUser": {
+            "description": "Use this data source to retrieve information about the currently authenticated user.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as cloudflare from \"@pulumi/cloudflare\";\n\nconst me = cloudflare.getUser({});\nconst all = cloudflare.getApiTokenPermissionGroups({});\nconst example = new cloudflare.ApiToken(\"example\", {\n    name: \"Terraform Cloud (Terraform)\",\n    policies: [{\n        permissionGroups: [all.then(all =\u003e all.user?.[\"User Details Read\"])],\n        resources: me.then(me =\u003e {\n            [`com.cloudflare.api.user.${me.id}`]: \"*\",\n        }),\n    }],\n});\n```\n```python\nimport pulumi\nimport pulumi_cloudflare as cloudflare\n\nme = cloudflare.get_user()\nall = cloudflare.get_api_token_permission_groups()\nexample = cloudflare.ApiToken(\"example\",\n    name=\"Terraform Cloud (Terraform)\",\n    policies=[cloudflare.ApiTokenPolicyArgs(\n        permission_groups=[all.user[\"User Details Read\"]],\n        resources={\n            f\"com.cloudflare.api.user.{me.id}\": \"*\",\n        },\n    )])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Cloudflare = Pulumi.Cloudflare;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var me = Cloudflare.GetUser.Invoke();\n\n    var all = Cloudflare.GetApiTokenPermissionGroups.Invoke();\n\n    var example = new Cloudflare.ApiToken(\"example\", new()\n    {\n        Name = \"Terraform Cloud (Terraform)\",\n        Policies = new[]\n        {\n            new Cloudflare.Inputs.ApiTokenPolicyArgs\n            {\n                PermissionGroups = new[]\n                {\n                    all.Apply(getApiTokenPermissionGroupsResult =\u003e getApiTokenPermissionGroupsResult.User?.User_Details_Read),\n                },\n                Resources = \n                {\n                    { $\"com.cloudflare.api.user.{me.Apply(getUserResult =\u003e getUserResult.Id)}\", \"*\" },\n                },\n            },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"fmt\"\n\n\t\"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\nfunc main() {\npulumi.Run(func(ctx *pulumi.Context) error {\nme, err := cloudflare.GetUser(ctx, nil, nil);\nif err != nil {\nreturn err\n}\nall, err := cloudflare.GetApiTokenPermissionGroups(ctx, nil, nil);\nif err != nil {\nreturn err\n}\n_, err = cloudflare.NewApiToken(ctx, \"example\", \u0026cloudflare.ApiTokenArgs{\nName: pulumi.String(\"Terraform Cloud (Terraform)\"),\nPolicies: cloudflare.ApiTokenPolicyArray{\n\u0026cloudflare.ApiTokenPolicyArgs{\nPermissionGroups: pulumi.StringArray{\n*pulumi.String(all.User.User Details Read),\n},\nResources: pulumi.StringMap{\nfmt.Sprintf(\"com.cloudflare.api.user.%v\", me.Id): pulumi.String(\"*\"),\n},\n},\n},\n})\nif err != nil {\nreturn err\n}\nreturn nil\n})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.cloudflare.CloudflareFunctions;\nimport com.pulumi.cloudflare.ApiToken;\nimport com.pulumi.cloudflare.ApiTokenArgs;\nimport com.pulumi.cloudflare.inputs.ApiTokenPolicyArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var me = CloudflareFunctions.getUser();\n\n        final var all = CloudflareFunctions.getApiTokenPermissionGroups();\n\n        var example = new ApiToken(\"example\", ApiTokenArgs.builder()        \n            .name(\"Terraform Cloud (Terraform)\")\n            .policies(ApiTokenPolicyArgs.builder()\n                .permissionGroups(all.applyValue(getApiTokenPermissionGroupsResult -\u003e getApiTokenPermissionGroupsResult.user().User Details Read()))\n                .resources(Map.of(String.format(\"com.cloudflare.api.user.%s\", me.applyValue(getUserResult -\u003e getUserResult.id())), \"*\"))\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  example:\n    type: cloudflare:ApiToken\n    properties:\n      name: Terraform Cloud (Terraform)\n      policies:\n        - permissionGroups:\n            - ${all.user\"User Details Read\"[%!s(MISSING)]}\n          resources:\n            com.cloudflare.api.user.${me.id}: '*'\nvariables:\n  me:\n    fn::invoke:\n      Function: cloudflare:getUser\n      Arguments: {}\n  all:\n    fn::invoke:\n      Function: cloudflare:getApiTokenPermissionGroups\n      Arguments: {}\n```\n{{% /example %}}\n{{% /examples %}}",
+            "outputs": {
+                "description": "A collection of values returned by getUser.\n",
+                "properties": {
+                    "email": {
+                        "type": "string",
+                        "description": "The user's email address.\n"
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "The user's unique identifier.\n"
+                    },
+                    "username": {
+                        "type": "string",
+                        "description": "The user's username.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "email",
+                    "id",
+                    "username"
                 ]
             }
         },

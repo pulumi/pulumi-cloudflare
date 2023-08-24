@@ -4,7 +4,6 @@
 package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.core.annotations.CustomType;
-import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -15,9 +14,9 @@ public final class GetApiTokenPermissionGroupsResult {
      * @return Map of permissions for account level resources.
      * 
      */
-    private Map<String,Object> account;
+    private Map<String,String> account;
     /**
-     * @return The provider-assigned unique ID for this managed resource.
+     * @return Checksum of permissions.
      * 
      */
     private String id;
@@ -29,28 +28,33 @@ public final class GetApiTokenPermissionGroupsResult {
      * 
      */
     @Deprecated /* Use specific account, zone or user attributes instead. */
-    private Map<String,Object> permissions;
+    private Map<String,String> permissions;
+    /**
+     * @return Map of permissions for r2 level resources.
+     * 
+     */
+    private Map<String,String> r2;
     /**
      * @return Map of permissions for user level resources.
      * 
      */
-    private Map<String,Object> user;
+    private Map<String,String> user;
     /**
      * @return Map of permissions for zone level resources.
      * 
      */
-    private Map<String,Object> zone;
+    private Map<String,String> zone;
 
     private GetApiTokenPermissionGroupsResult() {}
     /**
      * @return Map of permissions for account level resources.
      * 
      */
-    public Map<String,Object> account() {
+    public Map<String,String> account() {
         return this.account;
     }
     /**
-     * @return The provider-assigned unique ID for this managed resource.
+     * @return Checksum of permissions.
      * 
      */
     public String id() {
@@ -64,21 +68,28 @@ public final class GetApiTokenPermissionGroupsResult {
      * 
      */
     @Deprecated /* Use specific account, zone or user attributes instead. */
-    public Map<String,Object> permissions() {
+    public Map<String,String> permissions() {
         return this.permissions;
+    }
+    /**
+     * @return Map of permissions for r2 level resources.
+     * 
+     */
+    public Map<String,String> r2() {
+        return this.r2;
     }
     /**
      * @return Map of permissions for user level resources.
      * 
      */
-    public Map<String,Object> user() {
+    public Map<String,String> user() {
         return this.user;
     }
     /**
      * @return Map of permissions for zone level resources.
      * 
      */
-    public Map<String,Object> zone() {
+    public Map<String,String> zone() {
         return this.zone;
     }
 
@@ -91,23 +102,25 @@ public final class GetApiTokenPermissionGroupsResult {
     }
     @CustomType.Builder
     public static final class Builder {
-        private Map<String,Object> account;
+        private Map<String,String> account;
         private String id;
-        private Map<String,Object> permissions;
-        private Map<String,Object> user;
-        private Map<String,Object> zone;
+        private Map<String,String> permissions;
+        private Map<String,String> r2;
+        private Map<String,String> user;
+        private Map<String,String> zone;
         public Builder() {}
         public Builder(GetApiTokenPermissionGroupsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.account = defaults.account;
     	      this.id = defaults.id;
     	      this.permissions = defaults.permissions;
+    	      this.r2 = defaults.r2;
     	      this.user = defaults.user;
     	      this.zone = defaults.zone;
         }
 
         @CustomType.Setter
-        public Builder account(Map<String,Object> account) {
+        public Builder account(Map<String,String> account) {
             this.account = Objects.requireNonNull(account);
             return this;
         }
@@ -117,17 +130,22 @@ public final class GetApiTokenPermissionGroupsResult {
             return this;
         }
         @CustomType.Setter
-        public Builder permissions(Map<String,Object> permissions) {
+        public Builder permissions(Map<String,String> permissions) {
             this.permissions = Objects.requireNonNull(permissions);
             return this;
         }
         @CustomType.Setter
-        public Builder user(Map<String,Object> user) {
+        public Builder r2(Map<String,String> r2) {
+            this.r2 = Objects.requireNonNull(r2);
+            return this;
+        }
+        @CustomType.Setter
+        public Builder user(Map<String,String> user) {
             this.user = Objects.requireNonNull(user);
             return this;
         }
         @CustomType.Setter
-        public Builder zone(Map<String,Object> zone) {
+        public Builder zone(Map<String,String> zone) {
             this.zone = Objects.requireNonNull(zone);
             return this;
         }
@@ -136,6 +154,7 @@ public final class GetApiTokenPermissionGroupsResult {
             o.account = account;
             o.id = id;
             o.permissions = permissions;
+            o.r2 = r2;
             o.user = user;
             o.zone = zone;
             return o;

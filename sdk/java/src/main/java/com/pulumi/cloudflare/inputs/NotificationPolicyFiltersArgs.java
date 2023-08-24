@@ -47,6 +47,21 @@ public final class NotificationPolicyFiltersArgs extends com.pulumi.resources.Re
     }
 
     /**
+     * Environment of pages. Available values: `ENVIRONMENT_PREVIEW`, `ENVIRONMENT_PRODUCTION`.
+     * 
+     */
+    @Import(name="environments")
+    private @Nullable Output<List<String>> environments;
+
+    /**
+     * @return Environment of pages. Available values: `ENVIRONMENT_PREVIEW`, `ENVIRONMENT_PRODUCTION`.
+     * 
+     */
+    public Optional<Output<List<String>>> environments() {
+        return Optional.ofNullable(this.environments);
+    }
+
+    /**
      * Source configuration to alert on for pool or origin.
      * 
      */
@@ -74,6 +89,21 @@ public final class NotificationPolicyFiltersArgs extends com.pulumi.resources.Re
      */
     public Optional<Output<List<String>>> eventTypes() {
         return Optional.ofNullable(this.eventTypes);
+    }
+
+    /**
+     * Pages event to alert. Available values: `EVENT_DEPLOYMENT_STARTED`, `EVENT_DEPLOYMENT_FAILED`, `EVENT_DEPLOYMENT_SUCCESS`.
+     * 
+     */
+    @Import(name="events")
+    private @Nullable Output<List<String>> events;
+
+    /**
+     * @return Pages event to alert. Available values: `EVENT_DEPLOYMENT_STARTED`, `EVENT_DEPLOYMENT_FAILED`, `EVENT_DEPLOYMENT_SUCCESS`.
+     * 
+     */
+    public Optional<Output<List<String>>> events() {
+        return Optional.ofNullable(this.events);
     }
 
     /**
@@ -197,6 +227,21 @@ public final class NotificationPolicyFiltersArgs extends com.pulumi.resources.Re
     }
 
     /**
+     * Identifier of pages project.
+     * 
+     */
+    @Import(name="projectIds")
+    private @Nullable Output<List<String>> projectIds;
+
+    /**
+     * @return Identifier of pages project.
+     * 
+     */
+    public Optional<Output<List<String>>> projectIds() {
+        return Optional.ofNullable(this.projectIds);
+    }
+
+    /**
      * Protocol to alert on for dos.
      * 
      */
@@ -313,8 +358,10 @@ public final class NotificationPolicyFiltersArgs extends com.pulumi.resources.Re
     private NotificationPolicyFiltersArgs(NotificationPolicyFiltersArgs $) {
         this.alertTriggerPreferences = $.alertTriggerPreferences;
         this.enableds = $.enableds;
+        this.environments = $.environments;
         this.eventSources = $.eventSources;
         this.eventTypes = $.eventTypes;
+        this.events = $.events;
         this.healthCheckIds = $.healthCheckIds;
         this.inputIds = $.inputIds;
         this.limits = $.limits;
@@ -323,6 +370,7 @@ public final class NotificationPolicyFiltersArgs extends com.pulumi.resources.Re
         this.packetsPerSeconds = $.packetsPerSeconds;
         this.poolIds = $.poolIds;
         this.products = $.products;
+        this.projectIds = $.projectIds;
         this.protocols = $.protocols;
         this.requestsPerSeconds = $.requestsPerSeconds;
         this.services = $.services;
@@ -414,6 +462,37 @@ public final class NotificationPolicyFiltersArgs extends com.pulumi.resources.Re
         }
 
         /**
+         * @param environments Environment of pages. Available values: `ENVIRONMENT_PREVIEW`, `ENVIRONMENT_PRODUCTION`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder environments(@Nullable Output<List<String>> environments) {
+            $.environments = environments;
+            return this;
+        }
+
+        /**
+         * @param environments Environment of pages. Available values: `ENVIRONMENT_PREVIEW`, `ENVIRONMENT_PRODUCTION`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder environments(List<String> environments) {
+            return environments(Output.of(environments));
+        }
+
+        /**
+         * @param environments Environment of pages. Available values: `ENVIRONMENT_PREVIEW`, `ENVIRONMENT_PRODUCTION`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder environments(String... environments) {
+            return environments(List.of(environments));
+        }
+
+        /**
          * @param eventSources Source configuration to alert on for pool or origin.
          * 
          * @return builder
@@ -473,6 +552,37 @@ public final class NotificationPolicyFiltersArgs extends com.pulumi.resources.Re
          */
         public Builder eventTypes(String... eventTypes) {
             return eventTypes(List.of(eventTypes));
+        }
+
+        /**
+         * @param events Pages event to alert. Available values: `EVENT_DEPLOYMENT_STARTED`, `EVENT_DEPLOYMENT_FAILED`, `EVENT_DEPLOYMENT_SUCCESS`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder events(@Nullable Output<List<String>> events) {
+            $.events = events;
+            return this;
+        }
+
+        /**
+         * @param events Pages event to alert. Available values: `EVENT_DEPLOYMENT_STARTED`, `EVENT_DEPLOYMENT_FAILED`, `EVENT_DEPLOYMENT_SUCCESS`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder events(List<String> events) {
+            return events(Output.of(events));
+        }
+
+        /**
+         * @param events Pages event to alert. Available values: `EVENT_DEPLOYMENT_STARTED`, `EVENT_DEPLOYMENT_FAILED`, `EVENT_DEPLOYMENT_SUCCESS`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder events(String... events) {
+            return events(List.of(events));
         }
 
         /**
@@ -721,6 +831,37 @@ public final class NotificationPolicyFiltersArgs extends com.pulumi.resources.Re
          */
         public Builder products(String... products) {
             return products(List.of(products));
+        }
+
+        /**
+         * @param projectIds Identifier of pages project.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder projectIds(@Nullable Output<List<String>> projectIds) {
+            $.projectIds = projectIds;
+            return this;
+        }
+
+        /**
+         * @param projectIds Identifier of pages project.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder projectIds(List<String> projectIds) {
+            return projectIds(Output.of(projectIds));
+        }
+
+        /**
+         * @param projectIds Identifier of pages project.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder projectIds(String... projectIds) {
+            return projectIds(List.of(projectIds));
         }
 
         /**

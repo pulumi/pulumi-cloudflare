@@ -176,6 +176,8 @@ func (o AccessApplicationCorsHeaderArrayOutput) Index(i pulumi.IntInput) AccessA
 type AccessApplicationSaasApp struct {
 	// The service provider's endpoint that is responsible for receiving and parsing a SAML assertion.
 	ConsumerServiceUrl string `pulumi:"consumerServiceUrl"`
+	// Custom attribute mapped from IDPs.
+	CustomAttributes []AccessApplicationSaasAppCustomAttribute `pulumi:"customAttributes"`
 	// The format of the name identifier sent to the SaaS application. Defaults to `email`.
 	NameIdFormat *string `pulumi:"nameIdFormat"`
 	// A globally unique name for an identity or service provider.
@@ -196,6 +198,8 @@ type AccessApplicationSaasAppInput interface {
 type AccessApplicationSaasAppArgs struct {
 	// The service provider's endpoint that is responsible for receiving and parsing a SAML assertion.
 	ConsumerServiceUrl pulumi.StringInput `pulumi:"consumerServiceUrl"`
+	// Custom attribute mapped from IDPs.
+	CustomAttributes AccessApplicationSaasAppCustomAttributeArrayInput `pulumi:"customAttributes"`
 	// The format of the name identifier sent to the SaaS application. Defaults to `email`.
 	NameIdFormat pulumi.StringPtrInput `pulumi:"nameIdFormat"`
 	// A globally unique name for an identity or service provider.
@@ -284,6 +288,11 @@ func (o AccessApplicationSaasAppOutput) ConsumerServiceUrl() pulumi.StringOutput
 	return o.ApplyT(func(v AccessApplicationSaasApp) string { return v.ConsumerServiceUrl }).(pulumi.StringOutput)
 }
 
+// Custom attribute mapped from IDPs.
+func (o AccessApplicationSaasAppOutput) CustomAttributes() AccessApplicationSaasAppCustomAttributeArrayOutput {
+	return o.ApplyT(func(v AccessApplicationSaasApp) []AccessApplicationSaasAppCustomAttribute { return v.CustomAttributes }).(AccessApplicationSaasAppCustomAttributeArrayOutput)
+}
+
 // The format of the name identifier sent to the SaaS application. Defaults to `email`.
 func (o AccessApplicationSaasAppOutput) NameIdFormat() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AccessApplicationSaasApp) *string { return v.NameIdFormat }).(pulumi.StringPtrOutput)
@@ -328,6 +337,16 @@ func (o AccessApplicationSaasAppPtrOutput) ConsumerServiceUrl() pulumi.StringPtr
 	}).(pulumi.StringPtrOutput)
 }
 
+// Custom attribute mapped from IDPs.
+func (o AccessApplicationSaasAppPtrOutput) CustomAttributes() AccessApplicationSaasAppCustomAttributeArrayOutput {
+	return o.ApplyT(func(v *AccessApplicationSaasApp) []AccessApplicationSaasAppCustomAttribute {
+		if v == nil {
+			return nil
+		}
+		return v.CustomAttributes
+	}).(AccessApplicationSaasAppCustomAttributeArrayOutput)
+}
+
 // The format of the name identifier sent to the SaaS application. Defaults to `email`.
 func (o AccessApplicationSaasAppPtrOutput) NameIdFormat() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AccessApplicationSaasApp) *string {
@@ -348,8 +367,184 @@ func (o AccessApplicationSaasAppPtrOutput) SpEntityId() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type AccessApplicationSaasAppCustomAttribute struct {
+	FriendlyName *string `pulumi:"friendlyName"`
+	// Friendly name of the Access Application.
+	Name       *string                                       `pulumi:"name"`
+	NameFormat *string                                       `pulumi:"nameFormat"`
+	Required   *bool                                         `pulumi:"required"`
+	Source     AccessApplicationSaasAppCustomAttributeSource `pulumi:"source"`
+}
+
+// AccessApplicationSaasAppCustomAttributeInput is an input type that accepts AccessApplicationSaasAppCustomAttributeArgs and AccessApplicationSaasAppCustomAttributeOutput values.
+// You can construct a concrete instance of `AccessApplicationSaasAppCustomAttributeInput` via:
+//
+//	AccessApplicationSaasAppCustomAttributeArgs{...}
+type AccessApplicationSaasAppCustomAttributeInput interface {
+	pulumi.Input
+
+	ToAccessApplicationSaasAppCustomAttributeOutput() AccessApplicationSaasAppCustomAttributeOutput
+	ToAccessApplicationSaasAppCustomAttributeOutputWithContext(context.Context) AccessApplicationSaasAppCustomAttributeOutput
+}
+
+type AccessApplicationSaasAppCustomAttributeArgs struct {
+	FriendlyName pulumi.StringPtrInput `pulumi:"friendlyName"`
+	// Friendly name of the Access Application.
+	Name       pulumi.StringPtrInput                              `pulumi:"name"`
+	NameFormat pulumi.StringPtrInput                              `pulumi:"nameFormat"`
+	Required   pulumi.BoolPtrInput                                `pulumi:"required"`
+	Source     AccessApplicationSaasAppCustomAttributeSourceInput `pulumi:"source"`
+}
+
+func (AccessApplicationSaasAppCustomAttributeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessApplicationSaasAppCustomAttribute)(nil)).Elem()
+}
+
+func (i AccessApplicationSaasAppCustomAttributeArgs) ToAccessApplicationSaasAppCustomAttributeOutput() AccessApplicationSaasAppCustomAttributeOutput {
+	return i.ToAccessApplicationSaasAppCustomAttributeOutputWithContext(context.Background())
+}
+
+func (i AccessApplicationSaasAppCustomAttributeArgs) ToAccessApplicationSaasAppCustomAttributeOutputWithContext(ctx context.Context) AccessApplicationSaasAppCustomAttributeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessApplicationSaasAppCustomAttributeOutput)
+}
+
+// AccessApplicationSaasAppCustomAttributeArrayInput is an input type that accepts AccessApplicationSaasAppCustomAttributeArray and AccessApplicationSaasAppCustomAttributeArrayOutput values.
+// You can construct a concrete instance of `AccessApplicationSaasAppCustomAttributeArrayInput` via:
+//
+//	AccessApplicationSaasAppCustomAttributeArray{ AccessApplicationSaasAppCustomAttributeArgs{...} }
+type AccessApplicationSaasAppCustomAttributeArrayInput interface {
+	pulumi.Input
+
+	ToAccessApplicationSaasAppCustomAttributeArrayOutput() AccessApplicationSaasAppCustomAttributeArrayOutput
+	ToAccessApplicationSaasAppCustomAttributeArrayOutputWithContext(context.Context) AccessApplicationSaasAppCustomAttributeArrayOutput
+}
+
+type AccessApplicationSaasAppCustomAttributeArray []AccessApplicationSaasAppCustomAttributeInput
+
+func (AccessApplicationSaasAppCustomAttributeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AccessApplicationSaasAppCustomAttribute)(nil)).Elem()
+}
+
+func (i AccessApplicationSaasAppCustomAttributeArray) ToAccessApplicationSaasAppCustomAttributeArrayOutput() AccessApplicationSaasAppCustomAttributeArrayOutput {
+	return i.ToAccessApplicationSaasAppCustomAttributeArrayOutputWithContext(context.Background())
+}
+
+func (i AccessApplicationSaasAppCustomAttributeArray) ToAccessApplicationSaasAppCustomAttributeArrayOutputWithContext(ctx context.Context) AccessApplicationSaasAppCustomAttributeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessApplicationSaasAppCustomAttributeArrayOutput)
+}
+
+type AccessApplicationSaasAppCustomAttributeOutput struct{ *pulumi.OutputState }
+
+func (AccessApplicationSaasAppCustomAttributeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessApplicationSaasAppCustomAttribute)(nil)).Elem()
+}
+
+func (o AccessApplicationSaasAppCustomAttributeOutput) ToAccessApplicationSaasAppCustomAttributeOutput() AccessApplicationSaasAppCustomAttributeOutput {
+	return o
+}
+
+func (o AccessApplicationSaasAppCustomAttributeOutput) ToAccessApplicationSaasAppCustomAttributeOutputWithContext(ctx context.Context) AccessApplicationSaasAppCustomAttributeOutput {
+	return o
+}
+
+func (o AccessApplicationSaasAppCustomAttributeOutput) FriendlyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AccessApplicationSaasAppCustomAttribute) *string { return v.FriendlyName }).(pulumi.StringPtrOutput)
+}
+
+// Friendly name of the Access Application.
+func (o AccessApplicationSaasAppCustomAttributeOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AccessApplicationSaasAppCustomAttribute) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+func (o AccessApplicationSaasAppCustomAttributeOutput) NameFormat() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AccessApplicationSaasAppCustomAttribute) *string { return v.NameFormat }).(pulumi.StringPtrOutput)
+}
+
+func (o AccessApplicationSaasAppCustomAttributeOutput) Required() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AccessApplicationSaasAppCustomAttribute) *bool { return v.Required }).(pulumi.BoolPtrOutput)
+}
+
+func (o AccessApplicationSaasAppCustomAttributeOutput) Source() AccessApplicationSaasAppCustomAttributeSourceOutput {
+	return o.ApplyT(func(v AccessApplicationSaasAppCustomAttribute) AccessApplicationSaasAppCustomAttributeSource {
+		return v.Source
+	}).(AccessApplicationSaasAppCustomAttributeSourceOutput)
+}
+
+type AccessApplicationSaasAppCustomAttributeArrayOutput struct{ *pulumi.OutputState }
+
+func (AccessApplicationSaasAppCustomAttributeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AccessApplicationSaasAppCustomAttribute)(nil)).Elem()
+}
+
+func (o AccessApplicationSaasAppCustomAttributeArrayOutput) ToAccessApplicationSaasAppCustomAttributeArrayOutput() AccessApplicationSaasAppCustomAttributeArrayOutput {
+	return o
+}
+
+func (o AccessApplicationSaasAppCustomAttributeArrayOutput) ToAccessApplicationSaasAppCustomAttributeArrayOutputWithContext(ctx context.Context) AccessApplicationSaasAppCustomAttributeArrayOutput {
+	return o
+}
+
+func (o AccessApplicationSaasAppCustomAttributeArrayOutput) Index(i pulumi.IntInput) AccessApplicationSaasAppCustomAttributeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AccessApplicationSaasAppCustomAttribute {
+		return vs[0].([]AccessApplicationSaasAppCustomAttribute)[vs[1].(int)]
+	}).(AccessApplicationSaasAppCustomAttributeOutput)
+}
+
+type AccessApplicationSaasAppCustomAttributeSource struct {
+	// Friendly name of the Access Application.
+	Name string `pulumi:"name"`
+}
+
+// AccessApplicationSaasAppCustomAttributeSourceInput is an input type that accepts AccessApplicationSaasAppCustomAttributeSourceArgs and AccessApplicationSaasAppCustomAttributeSourceOutput values.
+// You can construct a concrete instance of `AccessApplicationSaasAppCustomAttributeSourceInput` via:
+//
+//	AccessApplicationSaasAppCustomAttributeSourceArgs{...}
+type AccessApplicationSaasAppCustomAttributeSourceInput interface {
+	pulumi.Input
+
+	ToAccessApplicationSaasAppCustomAttributeSourceOutput() AccessApplicationSaasAppCustomAttributeSourceOutput
+	ToAccessApplicationSaasAppCustomAttributeSourceOutputWithContext(context.Context) AccessApplicationSaasAppCustomAttributeSourceOutput
+}
+
+type AccessApplicationSaasAppCustomAttributeSourceArgs struct {
+	// Friendly name of the Access Application.
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (AccessApplicationSaasAppCustomAttributeSourceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessApplicationSaasAppCustomAttributeSource)(nil)).Elem()
+}
+
+func (i AccessApplicationSaasAppCustomAttributeSourceArgs) ToAccessApplicationSaasAppCustomAttributeSourceOutput() AccessApplicationSaasAppCustomAttributeSourceOutput {
+	return i.ToAccessApplicationSaasAppCustomAttributeSourceOutputWithContext(context.Background())
+}
+
+func (i AccessApplicationSaasAppCustomAttributeSourceArgs) ToAccessApplicationSaasAppCustomAttributeSourceOutputWithContext(ctx context.Context) AccessApplicationSaasAppCustomAttributeSourceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessApplicationSaasAppCustomAttributeSourceOutput)
+}
+
+type AccessApplicationSaasAppCustomAttributeSourceOutput struct{ *pulumi.OutputState }
+
+func (AccessApplicationSaasAppCustomAttributeSourceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessApplicationSaasAppCustomAttributeSource)(nil)).Elem()
+}
+
+func (o AccessApplicationSaasAppCustomAttributeSourceOutput) ToAccessApplicationSaasAppCustomAttributeSourceOutput() AccessApplicationSaasAppCustomAttributeSourceOutput {
+	return o
+}
+
+func (o AccessApplicationSaasAppCustomAttributeSourceOutput) ToAccessApplicationSaasAppCustomAttributeSourceOutputWithContext(ctx context.Context) AccessApplicationSaasAppCustomAttributeSourceOutput {
+	return o
+}
+
+// Friendly name of the Access Application.
+func (o AccessApplicationSaasAppCustomAttributeSourceOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v AccessApplicationSaasAppCustomAttributeSource) string { return v.Name }).(pulumi.StringOutput)
+}
+
 type AccessGroupExclude struct {
 	AnyValidServiceToken *bool                                 `pulumi:"anyValidServiceToken"`
+	AuthContexts         []AccessGroupExcludeAuthContext       `pulumi:"authContexts"`
 	AuthMethod           *string                               `pulumi:"authMethod"`
 	Azures               []AccessGroupExcludeAzure             `pulumi:"azures"`
 	Certificate          *bool                                 `pulumi:"certificate"`
@@ -384,6 +579,7 @@ type AccessGroupExcludeInput interface {
 
 type AccessGroupExcludeArgs struct {
 	AnyValidServiceToken pulumi.BoolPtrInput                          `pulumi:"anyValidServiceToken"`
+	AuthContexts         AccessGroupExcludeAuthContextArrayInput      `pulumi:"authContexts"`
 	AuthMethod           pulumi.StringPtrInput                        `pulumi:"authMethod"`
 	Azures               AccessGroupExcludeAzureArrayInput            `pulumi:"azures"`
 	Certificate          pulumi.BoolPtrInput                          `pulumi:"certificate"`
@@ -458,6 +654,10 @@ func (o AccessGroupExcludeOutput) ToAccessGroupExcludeOutputWithContext(ctx cont
 
 func (o AccessGroupExcludeOutput) AnyValidServiceToken() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v AccessGroupExclude) *bool { return v.AnyValidServiceToken }).(pulumi.BoolPtrOutput)
+}
+
+func (o AccessGroupExcludeOutput) AuthContexts() AccessGroupExcludeAuthContextArrayOutput {
+	return o.ApplyT(func(v AccessGroupExclude) []AccessGroupExcludeAuthContext { return v.AuthContexts }).(AccessGroupExcludeAuthContextArrayOutput)
 }
 
 func (o AccessGroupExcludeOutput) AuthMethod() pulumi.StringPtrOutput {
@@ -554,6 +754,115 @@ func (o AccessGroupExcludeArrayOutput) Index(i pulumi.IntInput) AccessGroupExclu
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AccessGroupExclude {
 		return vs[0].([]AccessGroupExclude)[vs[1].(int)]
 	}).(AccessGroupExcludeOutput)
+}
+
+type AccessGroupExcludeAuthContext struct {
+	AcId string `pulumi:"acId"`
+	// The ID of this resource.
+	Id                 string `pulumi:"id"`
+	IdentityProviderId string `pulumi:"identityProviderId"`
+}
+
+// AccessGroupExcludeAuthContextInput is an input type that accepts AccessGroupExcludeAuthContextArgs and AccessGroupExcludeAuthContextOutput values.
+// You can construct a concrete instance of `AccessGroupExcludeAuthContextInput` via:
+//
+//	AccessGroupExcludeAuthContextArgs{...}
+type AccessGroupExcludeAuthContextInput interface {
+	pulumi.Input
+
+	ToAccessGroupExcludeAuthContextOutput() AccessGroupExcludeAuthContextOutput
+	ToAccessGroupExcludeAuthContextOutputWithContext(context.Context) AccessGroupExcludeAuthContextOutput
+}
+
+type AccessGroupExcludeAuthContextArgs struct {
+	AcId pulumi.StringInput `pulumi:"acId"`
+	// The ID of this resource.
+	Id                 pulumi.StringInput `pulumi:"id"`
+	IdentityProviderId pulumi.StringInput `pulumi:"identityProviderId"`
+}
+
+func (AccessGroupExcludeAuthContextArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessGroupExcludeAuthContext)(nil)).Elem()
+}
+
+func (i AccessGroupExcludeAuthContextArgs) ToAccessGroupExcludeAuthContextOutput() AccessGroupExcludeAuthContextOutput {
+	return i.ToAccessGroupExcludeAuthContextOutputWithContext(context.Background())
+}
+
+func (i AccessGroupExcludeAuthContextArgs) ToAccessGroupExcludeAuthContextOutputWithContext(ctx context.Context) AccessGroupExcludeAuthContextOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessGroupExcludeAuthContextOutput)
+}
+
+// AccessGroupExcludeAuthContextArrayInput is an input type that accepts AccessGroupExcludeAuthContextArray and AccessGroupExcludeAuthContextArrayOutput values.
+// You can construct a concrete instance of `AccessGroupExcludeAuthContextArrayInput` via:
+//
+//	AccessGroupExcludeAuthContextArray{ AccessGroupExcludeAuthContextArgs{...} }
+type AccessGroupExcludeAuthContextArrayInput interface {
+	pulumi.Input
+
+	ToAccessGroupExcludeAuthContextArrayOutput() AccessGroupExcludeAuthContextArrayOutput
+	ToAccessGroupExcludeAuthContextArrayOutputWithContext(context.Context) AccessGroupExcludeAuthContextArrayOutput
+}
+
+type AccessGroupExcludeAuthContextArray []AccessGroupExcludeAuthContextInput
+
+func (AccessGroupExcludeAuthContextArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AccessGroupExcludeAuthContext)(nil)).Elem()
+}
+
+func (i AccessGroupExcludeAuthContextArray) ToAccessGroupExcludeAuthContextArrayOutput() AccessGroupExcludeAuthContextArrayOutput {
+	return i.ToAccessGroupExcludeAuthContextArrayOutputWithContext(context.Background())
+}
+
+func (i AccessGroupExcludeAuthContextArray) ToAccessGroupExcludeAuthContextArrayOutputWithContext(ctx context.Context) AccessGroupExcludeAuthContextArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessGroupExcludeAuthContextArrayOutput)
+}
+
+type AccessGroupExcludeAuthContextOutput struct{ *pulumi.OutputState }
+
+func (AccessGroupExcludeAuthContextOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessGroupExcludeAuthContext)(nil)).Elem()
+}
+
+func (o AccessGroupExcludeAuthContextOutput) ToAccessGroupExcludeAuthContextOutput() AccessGroupExcludeAuthContextOutput {
+	return o
+}
+
+func (o AccessGroupExcludeAuthContextOutput) ToAccessGroupExcludeAuthContextOutputWithContext(ctx context.Context) AccessGroupExcludeAuthContextOutput {
+	return o
+}
+
+func (o AccessGroupExcludeAuthContextOutput) AcId() pulumi.StringOutput {
+	return o.ApplyT(func(v AccessGroupExcludeAuthContext) string { return v.AcId }).(pulumi.StringOutput)
+}
+
+// The ID of this resource.
+func (o AccessGroupExcludeAuthContextOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v AccessGroupExcludeAuthContext) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o AccessGroupExcludeAuthContextOutput) IdentityProviderId() pulumi.StringOutput {
+	return o.ApplyT(func(v AccessGroupExcludeAuthContext) string { return v.IdentityProviderId }).(pulumi.StringOutput)
+}
+
+type AccessGroupExcludeAuthContextArrayOutput struct{ *pulumi.OutputState }
+
+func (AccessGroupExcludeAuthContextArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AccessGroupExcludeAuthContext)(nil)).Elem()
+}
+
+func (o AccessGroupExcludeAuthContextArrayOutput) ToAccessGroupExcludeAuthContextArrayOutput() AccessGroupExcludeAuthContextArrayOutput {
+	return o
+}
+
+func (o AccessGroupExcludeAuthContextArrayOutput) ToAccessGroupExcludeAuthContextArrayOutputWithContext(ctx context.Context) AccessGroupExcludeAuthContextArrayOutput {
+	return o
+}
+
+func (o AccessGroupExcludeAuthContextArrayOutput) Index(i pulumi.IntInput) AccessGroupExcludeAuthContextOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AccessGroupExcludeAuthContext {
+		return vs[0].([]AccessGroupExcludeAuthContext)[vs[1].(int)]
+	}).(AccessGroupExcludeAuthContextOutput)
 }
 
 type AccessGroupExcludeAzure struct {
@@ -1221,6 +1530,7 @@ func (o AccessGroupExcludeSamlArrayOutput) Index(i pulumi.IntInput) AccessGroupE
 
 type AccessGroupInclude struct {
 	AnyValidServiceToken *bool                                 `pulumi:"anyValidServiceToken"`
+	AuthContexts         []AccessGroupIncludeAuthContext       `pulumi:"authContexts"`
 	AuthMethod           *string                               `pulumi:"authMethod"`
 	Azures               []AccessGroupIncludeAzure             `pulumi:"azures"`
 	Certificate          *bool                                 `pulumi:"certificate"`
@@ -1255,6 +1565,7 @@ type AccessGroupIncludeInput interface {
 
 type AccessGroupIncludeArgs struct {
 	AnyValidServiceToken pulumi.BoolPtrInput                          `pulumi:"anyValidServiceToken"`
+	AuthContexts         AccessGroupIncludeAuthContextArrayInput      `pulumi:"authContexts"`
 	AuthMethod           pulumi.StringPtrInput                        `pulumi:"authMethod"`
 	Azures               AccessGroupIncludeAzureArrayInput            `pulumi:"azures"`
 	Certificate          pulumi.BoolPtrInput                          `pulumi:"certificate"`
@@ -1329,6 +1640,10 @@ func (o AccessGroupIncludeOutput) ToAccessGroupIncludeOutputWithContext(ctx cont
 
 func (o AccessGroupIncludeOutput) AnyValidServiceToken() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v AccessGroupInclude) *bool { return v.AnyValidServiceToken }).(pulumi.BoolPtrOutput)
+}
+
+func (o AccessGroupIncludeOutput) AuthContexts() AccessGroupIncludeAuthContextArrayOutput {
+	return o.ApplyT(func(v AccessGroupInclude) []AccessGroupIncludeAuthContext { return v.AuthContexts }).(AccessGroupIncludeAuthContextArrayOutput)
 }
 
 func (o AccessGroupIncludeOutput) AuthMethod() pulumi.StringPtrOutput {
@@ -1425,6 +1740,115 @@ func (o AccessGroupIncludeArrayOutput) Index(i pulumi.IntInput) AccessGroupInclu
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AccessGroupInclude {
 		return vs[0].([]AccessGroupInclude)[vs[1].(int)]
 	}).(AccessGroupIncludeOutput)
+}
+
+type AccessGroupIncludeAuthContext struct {
+	AcId string `pulumi:"acId"`
+	// The ID of this resource.
+	Id                 string `pulumi:"id"`
+	IdentityProviderId string `pulumi:"identityProviderId"`
+}
+
+// AccessGroupIncludeAuthContextInput is an input type that accepts AccessGroupIncludeAuthContextArgs and AccessGroupIncludeAuthContextOutput values.
+// You can construct a concrete instance of `AccessGroupIncludeAuthContextInput` via:
+//
+//	AccessGroupIncludeAuthContextArgs{...}
+type AccessGroupIncludeAuthContextInput interface {
+	pulumi.Input
+
+	ToAccessGroupIncludeAuthContextOutput() AccessGroupIncludeAuthContextOutput
+	ToAccessGroupIncludeAuthContextOutputWithContext(context.Context) AccessGroupIncludeAuthContextOutput
+}
+
+type AccessGroupIncludeAuthContextArgs struct {
+	AcId pulumi.StringInput `pulumi:"acId"`
+	// The ID of this resource.
+	Id                 pulumi.StringInput `pulumi:"id"`
+	IdentityProviderId pulumi.StringInput `pulumi:"identityProviderId"`
+}
+
+func (AccessGroupIncludeAuthContextArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessGroupIncludeAuthContext)(nil)).Elem()
+}
+
+func (i AccessGroupIncludeAuthContextArgs) ToAccessGroupIncludeAuthContextOutput() AccessGroupIncludeAuthContextOutput {
+	return i.ToAccessGroupIncludeAuthContextOutputWithContext(context.Background())
+}
+
+func (i AccessGroupIncludeAuthContextArgs) ToAccessGroupIncludeAuthContextOutputWithContext(ctx context.Context) AccessGroupIncludeAuthContextOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessGroupIncludeAuthContextOutput)
+}
+
+// AccessGroupIncludeAuthContextArrayInput is an input type that accepts AccessGroupIncludeAuthContextArray and AccessGroupIncludeAuthContextArrayOutput values.
+// You can construct a concrete instance of `AccessGroupIncludeAuthContextArrayInput` via:
+//
+//	AccessGroupIncludeAuthContextArray{ AccessGroupIncludeAuthContextArgs{...} }
+type AccessGroupIncludeAuthContextArrayInput interface {
+	pulumi.Input
+
+	ToAccessGroupIncludeAuthContextArrayOutput() AccessGroupIncludeAuthContextArrayOutput
+	ToAccessGroupIncludeAuthContextArrayOutputWithContext(context.Context) AccessGroupIncludeAuthContextArrayOutput
+}
+
+type AccessGroupIncludeAuthContextArray []AccessGroupIncludeAuthContextInput
+
+func (AccessGroupIncludeAuthContextArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AccessGroupIncludeAuthContext)(nil)).Elem()
+}
+
+func (i AccessGroupIncludeAuthContextArray) ToAccessGroupIncludeAuthContextArrayOutput() AccessGroupIncludeAuthContextArrayOutput {
+	return i.ToAccessGroupIncludeAuthContextArrayOutputWithContext(context.Background())
+}
+
+func (i AccessGroupIncludeAuthContextArray) ToAccessGroupIncludeAuthContextArrayOutputWithContext(ctx context.Context) AccessGroupIncludeAuthContextArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessGroupIncludeAuthContextArrayOutput)
+}
+
+type AccessGroupIncludeAuthContextOutput struct{ *pulumi.OutputState }
+
+func (AccessGroupIncludeAuthContextOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessGroupIncludeAuthContext)(nil)).Elem()
+}
+
+func (o AccessGroupIncludeAuthContextOutput) ToAccessGroupIncludeAuthContextOutput() AccessGroupIncludeAuthContextOutput {
+	return o
+}
+
+func (o AccessGroupIncludeAuthContextOutput) ToAccessGroupIncludeAuthContextOutputWithContext(ctx context.Context) AccessGroupIncludeAuthContextOutput {
+	return o
+}
+
+func (o AccessGroupIncludeAuthContextOutput) AcId() pulumi.StringOutput {
+	return o.ApplyT(func(v AccessGroupIncludeAuthContext) string { return v.AcId }).(pulumi.StringOutput)
+}
+
+// The ID of this resource.
+func (o AccessGroupIncludeAuthContextOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v AccessGroupIncludeAuthContext) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o AccessGroupIncludeAuthContextOutput) IdentityProviderId() pulumi.StringOutput {
+	return o.ApplyT(func(v AccessGroupIncludeAuthContext) string { return v.IdentityProviderId }).(pulumi.StringOutput)
+}
+
+type AccessGroupIncludeAuthContextArrayOutput struct{ *pulumi.OutputState }
+
+func (AccessGroupIncludeAuthContextArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AccessGroupIncludeAuthContext)(nil)).Elem()
+}
+
+func (o AccessGroupIncludeAuthContextArrayOutput) ToAccessGroupIncludeAuthContextArrayOutput() AccessGroupIncludeAuthContextArrayOutput {
+	return o
+}
+
+func (o AccessGroupIncludeAuthContextArrayOutput) ToAccessGroupIncludeAuthContextArrayOutputWithContext(ctx context.Context) AccessGroupIncludeAuthContextArrayOutput {
+	return o
+}
+
+func (o AccessGroupIncludeAuthContextArrayOutput) Index(i pulumi.IntInput) AccessGroupIncludeAuthContextOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AccessGroupIncludeAuthContext {
+		return vs[0].([]AccessGroupIncludeAuthContext)[vs[1].(int)]
+	}).(AccessGroupIncludeAuthContextOutput)
 }
 
 type AccessGroupIncludeAzure struct {
@@ -2092,6 +2516,7 @@ func (o AccessGroupIncludeSamlArrayOutput) Index(i pulumi.IntInput) AccessGroupI
 
 type AccessGroupRequire struct {
 	AnyValidServiceToken *bool                                 `pulumi:"anyValidServiceToken"`
+	AuthContexts         []AccessGroupRequireAuthContext       `pulumi:"authContexts"`
 	AuthMethod           *string                               `pulumi:"authMethod"`
 	Azures               []AccessGroupRequireAzure             `pulumi:"azures"`
 	Certificate          *bool                                 `pulumi:"certificate"`
@@ -2126,6 +2551,7 @@ type AccessGroupRequireInput interface {
 
 type AccessGroupRequireArgs struct {
 	AnyValidServiceToken pulumi.BoolPtrInput                          `pulumi:"anyValidServiceToken"`
+	AuthContexts         AccessGroupRequireAuthContextArrayInput      `pulumi:"authContexts"`
 	AuthMethod           pulumi.StringPtrInput                        `pulumi:"authMethod"`
 	Azures               AccessGroupRequireAzureArrayInput            `pulumi:"azures"`
 	Certificate          pulumi.BoolPtrInput                          `pulumi:"certificate"`
@@ -2200,6 +2626,10 @@ func (o AccessGroupRequireOutput) ToAccessGroupRequireOutputWithContext(ctx cont
 
 func (o AccessGroupRequireOutput) AnyValidServiceToken() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v AccessGroupRequire) *bool { return v.AnyValidServiceToken }).(pulumi.BoolPtrOutput)
+}
+
+func (o AccessGroupRequireOutput) AuthContexts() AccessGroupRequireAuthContextArrayOutput {
+	return o.ApplyT(func(v AccessGroupRequire) []AccessGroupRequireAuthContext { return v.AuthContexts }).(AccessGroupRequireAuthContextArrayOutput)
 }
 
 func (o AccessGroupRequireOutput) AuthMethod() pulumi.StringPtrOutput {
@@ -2296,6 +2726,115 @@ func (o AccessGroupRequireArrayOutput) Index(i pulumi.IntInput) AccessGroupRequi
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AccessGroupRequire {
 		return vs[0].([]AccessGroupRequire)[vs[1].(int)]
 	}).(AccessGroupRequireOutput)
+}
+
+type AccessGroupRequireAuthContext struct {
+	AcId string `pulumi:"acId"`
+	// The ID of this resource.
+	Id                 string `pulumi:"id"`
+	IdentityProviderId string `pulumi:"identityProviderId"`
+}
+
+// AccessGroupRequireAuthContextInput is an input type that accepts AccessGroupRequireAuthContextArgs and AccessGroupRequireAuthContextOutput values.
+// You can construct a concrete instance of `AccessGroupRequireAuthContextInput` via:
+//
+//	AccessGroupRequireAuthContextArgs{...}
+type AccessGroupRequireAuthContextInput interface {
+	pulumi.Input
+
+	ToAccessGroupRequireAuthContextOutput() AccessGroupRequireAuthContextOutput
+	ToAccessGroupRequireAuthContextOutputWithContext(context.Context) AccessGroupRequireAuthContextOutput
+}
+
+type AccessGroupRequireAuthContextArgs struct {
+	AcId pulumi.StringInput `pulumi:"acId"`
+	// The ID of this resource.
+	Id                 pulumi.StringInput `pulumi:"id"`
+	IdentityProviderId pulumi.StringInput `pulumi:"identityProviderId"`
+}
+
+func (AccessGroupRequireAuthContextArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessGroupRequireAuthContext)(nil)).Elem()
+}
+
+func (i AccessGroupRequireAuthContextArgs) ToAccessGroupRequireAuthContextOutput() AccessGroupRequireAuthContextOutput {
+	return i.ToAccessGroupRequireAuthContextOutputWithContext(context.Background())
+}
+
+func (i AccessGroupRequireAuthContextArgs) ToAccessGroupRequireAuthContextOutputWithContext(ctx context.Context) AccessGroupRequireAuthContextOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessGroupRequireAuthContextOutput)
+}
+
+// AccessGroupRequireAuthContextArrayInput is an input type that accepts AccessGroupRequireAuthContextArray and AccessGroupRequireAuthContextArrayOutput values.
+// You can construct a concrete instance of `AccessGroupRequireAuthContextArrayInput` via:
+//
+//	AccessGroupRequireAuthContextArray{ AccessGroupRequireAuthContextArgs{...} }
+type AccessGroupRequireAuthContextArrayInput interface {
+	pulumi.Input
+
+	ToAccessGroupRequireAuthContextArrayOutput() AccessGroupRequireAuthContextArrayOutput
+	ToAccessGroupRequireAuthContextArrayOutputWithContext(context.Context) AccessGroupRequireAuthContextArrayOutput
+}
+
+type AccessGroupRequireAuthContextArray []AccessGroupRequireAuthContextInput
+
+func (AccessGroupRequireAuthContextArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AccessGroupRequireAuthContext)(nil)).Elem()
+}
+
+func (i AccessGroupRequireAuthContextArray) ToAccessGroupRequireAuthContextArrayOutput() AccessGroupRequireAuthContextArrayOutput {
+	return i.ToAccessGroupRequireAuthContextArrayOutputWithContext(context.Background())
+}
+
+func (i AccessGroupRequireAuthContextArray) ToAccessGroupRequireAuthContextArrayOutputWithContext(ctx context.Context) AccessGroupRequireAuthContextArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessGroupRequireAuthContextArrayOutput)
+}
+
+type AccessGroupRequireAuthContextOutput struct{ *pulumi.OutputState }
+
+func (AccessGroupRequireAuthContextOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessGroupRequireAuthContext)(nil)).Elem()
+}
+
+func (o AccessGroupRequireAuthContextOutput) ToAccessGroupRequireAuthContextOutput() AccessGroupRequireAuthContextOutput {
+	return o
+}
+
+func (o AccessGroupRequireAuthContextOutput) ToAccessGroupRequireAuthContextOutputWithContext(ctx context.Context) AccessGroupRequireAuthContextOutput {
+	return o
+}
+
+func (o AccessGroupRequireAuthContextOutput) AcId() pulumi.StringOutput {
+	return o.ApplyT(func(v AccessGroupRequireAuthContext) string { return v.AcId }).(pulumi.StringOutput)
+}
+
+// The ID of this resource.
+func (o AccessGroupRequireAuthContextOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v AccessGroupRequireAuthContext) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o AccessGroupRequireAuthContextOutput) IdentityProviderId() pulumi.StringOutput {
+	return o.ApplyT(func(v AccessGroupRequireAuthContext) string { return v.IdentityProviderId }).(pulumi.StringOutput)
+}
+
+type AccessGroupRequireAuthContextArrayOutput struct{ *pulumi.OutputState }
+
+func (AccessGroupRequireAuthContextArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AccessGroupRequireAuthContext)(nil)).Elem()
+}
+
+func (o AccessGroupRequireAuthContextArrayOutput) ToAccessGroupRequireAuthContextArrayOutput() AccessGroupRequireAuthContextArrayOutput {
+	return o
+}
+
+func (o AccessGroupRequireAuthContextArrayOutput) ToAccessGroupRequireAuthContextArrayOutputWithContext(ctx context.Context) AccessGroupRequireAuthContextArrayOutput {
+	return o
+}
+
+func (o AccessGroupRequireAuthContextArrayOutput) Index(i pulumi.IntInput) AccessGroupRequireAuthContextOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AccessGroupRequireAuthContext {
+		return vs[0].([]AccessGroupRequireAuthContext)[vs[1].(int)]
+	}).(AccessGroupRequireAuthContextOutput)
 }
 
 type AccessGroupRequireAzure struct {
@@ -2962,29 +3501,30 @@ func (o AccessGroupRequireSamlArrayOutput) Index(i pulumi.IntInput) AccessGroupR
 }
 
 type AccessIdentityProviderConfig struct {
-	ApiToken           *string  `pulumi:"apiToken"`
-	AppsDomain         *string  `pulumi:"appsDomain"`
-	Attributes         []string `pulumi:"attributes"`
-	AuthUrl            *string  `pulumi:"authUrl"`
-	CentrifyAccount    *string  `pulumi:"centrifyAccount"`
-	CentrifyAppId      *string  `pulumi:"centrifyAppId"`
-	CertsUrl           *string  `pulumi:"certsUrl"`
-	Claims             []string `pulumi:"claims"`
-	ClientId           *string  `pulumi:"clientId"`
-	ClientSecret       *string  `pulumi:"clientSecret"`
-	DirectoryId        *string  `pulumi:"directoryId"`
-	EmailAttributeName *string  `pulumi:"emailAttributeName"`
-	IdpPublicCert      *string  `pulumi:"idpPublicCert"`
-	IssuerUrl          *string  `pulumi:"issuerUrl"`
-	OktaAccount        *string  `pulumi:"oktaAccount"`
-	OneloginAccount    *string  `pulumi:"oneloginAccount"`
-	PkceEnabled        *bool    `pulumi:"pkceEnabled"`
-	RedirectUrl        *string  `pulumi:"redirectUrl"`
-	Scopes             []string `pulumi:"scopes"`
-	SignRequest        *bool    `pulumi:"signRequest"`
-	SsoTargetUrl       *string  `pulumi:"ssoTargetUrl"`
-	SupportGroups      *bool    `pulumi:"supportGroups"`
-	TokenUrl           *string  `pulumi:"tokenUrl"`
+	ApiToken                 *string  `pulumi:"apiToken"`
+	AppsDomain               *string  `pulumi:"appsDomain"`
+	Attributes               []string `pulumi:"attributes"`
+	AuthUrl                  *string  `pulumi:"authUrl"`
+	CentrifyAccount          *string  `pulumi:"centrifyAccount"`
+	CentrifyAppId            *string  `pulumi:"centrifyAppId"`
+	CertsUrl                 *string  `pulumi:"certsUrl"`
+	Claims                   []string `pulumi:"claims"`
+	ClientId                 *string  `pulumi:"clientId"`
+	ClientSecret             *string  `pulumi:"clientSecret"`
+	ConditionalAccessEnabled *bool    `pulumi:"conditionalAccessEnabled"`
+	DirectoryId              *string  `pulumi:"directoryId"`
+	EmailAttributeName       *string  `pulumi:"emailAttributeName"`
+	IdpPublicCert            *string  `pulumi:"idpPublicCert"`
+	IssuerUrl                *string  `pulumi:"issuerUrl"`
+	OktaAccount              *string  `pulumi:"oktaAccount"`
+	OneloginAccount          *string  `pulumi:"oneloginAccount"`
+	PkceEnabled              *bool    `pulumi:"pkceEnabled"`
+	RedirectUrl              *string  `pulumi:"redirectUrl"`
+	Scopes                   []string `pulumi:"scopes"`
+	SignRequest              *bool    `pulumi:"signRequest"`
+	SsoTargetUrl             *string  `pulumi:"ssoTargetUrl"`
+	SupportGroups            *bool    `pulumi:"supportGroups"`
+	TokenUrl                 *string  `pulumi:"tokenUrl"`
 }
 
 // AccessIdentityProviderConfigInput is an input type that accepts AccessIdentityProviderConfigArgs and AccessIdentityProviderConfigOutput values.
@@ -2999,29 +3539,30 @@ type AccessIdentityProviderConfigInput interface {
 }
 
 type AccessIdentityProviderConfigArgs struct {
-	ApiToken           pulumi.StringPtrInput   `pulumi:"apiToken"`
-	AppsDomain         pulumi.StringPtrInput   `pulumi:"appsDomain"`
-	Attributes         pulumi.StringArrayInput `pulumi:"attributes"`
-	AuthUrl            pulumi.StringPtrInput   `pulumi:"authUrl"`
-	CentrifyAccount    pulumi.StringPtrInput   `pulumi:"centrifyAccount"`
-	CentrifyAppId      pulumi.StringPtrInput   `pulumi:"centrifyAppId"`
-	CertsUrl           pulumi.StringPtrInput   `pulumi:"certsUrl"`
-	Claims             pulumi.StringArrayInput `pulumi:"claims"`
-	ClientId           pulumi.StringPtrInput   `pulumi:"clientId"`
-	ClientSecret       pulumi.StringPtrInput   `pulumi:"clientSecret"`
-	DirectoryId        pulumi.StringPtrInput   `pulumi:"directoryId"`
-	EmailAttributeName pulumi.StringPtrInput   `pulumi:"emailAttributeName"`
-	IdpPublicCert      pulumi.StringPtrInput   `pulumi:"idpPublicCert"`
-	IssuerUrl          pulumi.StringPtrInput   `pulumi:"issuerUrl"`
-	OktaAccount        pulumi.StringPtrInput   `pulumi:"oktaAccount"`
-	OneloginAccount    pulumi.StringPtrInput   `pulumi:"oneloginAccount"`
-	PkceEnabled        pulumi.BoolPtrInput     `pulumi:"pkceEnabled"`
-	RedirectUrl        pulumi.StringPtrInput   `pulumi:"redirectUrl"`
-	Scopes             pulumi.StringArrayInput `pulumi:"scopes"`
-	SignRequest        pulumi.BoolPtrInput     `pulumi:"signRequest"`
-	SsoTargetUrl       pulumi.StringPtrInput   `pulumi:"ssoTargetUrl"`
-	SupportGroups      pulumi.BoolPtrInput     `pulumi:"supportGroups"`
-	TokenUrl           pulumi.StringPtrInput   `pulumi:"tokenUrl"`
+	ApiToken                 pulumi.StringPtrInput   `pulumi:"apiToken"`
+	AppsDomain               pulumi.StringPtrInput   `pulumi:"appsDomain"`
+	Attributes               pulumi.StringArrayInput `pulumi:"attributes"`
+	AuthUrl                  pulumi.StringPtrInput   `pulumi:"authUrl"`
+	CentrifyAccount          pulumi.StringPtrInput   `pulumi:"centrifyAccount"`
+	CentrifyAppId            pulumi.StringPtrInput   `pulumi:"centrifyAppId"`
+	CertsUrl                 pulumi.StringPtrInput   `pulumi:"certsUrl"`
+	Claims                   pulumi.StringArrayInput `pulumi:"claims"`
+	ClientId                 pulumi.StringPtrInput   `pulumi:"clientId"`
+	ClientSecret             pulumi.StringPtrInput   `pulumi:"clientSecret"`
+	ConditionalAccessEnabled pulumi.BoolPtrInput     `pulumi:"conditionalAccessEnabled"`
+	DirectoryId              pulumi.StringPtrInput   `pulumi:"directoryId"`
+	EmailAttributeName       pulumi.StringPtrInput   `pulumi:"emailAttributeName"`
+	IdpPublicCert            pulumi.StringPtrInput   `pulumi:"idpPublicCert"`
+	IssuerUrl                pulumi.StringPtrInput   `pulumi:"issuerUrl"`
+	OktaAccount              pulumi.StringPtrInput   `pulumi:"oktaAccount"`
+	OneloginAccount          pulumi.StringPtrInput   `pulumi:"oneloginAccount"`
+	PkceEnabled              pulumi.BoolPtrInput     `pulumi:"pkceEnabled"`
+	RedirectUrl              pulumi.StringPtrInput   `pulumi:"redirectUrl"`
+	Scopes                   pulumi.StringArrayInput `pulumi:"scopes"`
+	SignRequest              pulumi.BoolPtrInput     `pulumi:"signRequest"`
+	SsoTargetUrl             pulumi.StringPtrInput   `pulumi:"ssoTargetUrl"`
+	SupportGroups            pulumi.BoolPtrInput     `pulumi:"supportGroups"`
+	TokenUrl                 pulumi.StringPtrInput   `pulumi:"tokenUrl"`
 }
 
 func (AccessIdentityProviderConfigArgs) ElementType() reflect.Type {
@@ -3113,6 +3654,10 @@ func (o AccessIdentityProviderConfigOutput) ClientId() pulumi.StringPtrOutput {
 
 func (o AccessIdentityProviderConfigOutput) ClientSecret() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AccessIdentityProviderConfig) *string { return v.ClientSecret }).(pulumi.StringPtrOutput)
+}
+
+func (o AccessIdentityProviderConfigOutput) ConditionalAccessEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AccessIdentityProviderConfig) *bool { return v.ConditionalAccessEnabled }).(pulumi.BoolPtrOutput)
 }
 
 func (o AccessIdentityProviderConfigOutput) DirectoryId() pulumi.StringPtrOutput {
@@ -3658,6 +4203,7 @@ func (o AccessPolicyApprovalGroupArrayOutput) Index(i pulumi.IntInput) AccessPol
 
 type AccessPolicyExclude struct {
 	AnyValidServiceToken *bool                                  `pulumi:"anyValidServiceToken"`
+	AuthContexts         []AccessPolicyExcludeAuthContext       `pulumi:"authContexts"`
 	AuthMethod           *string                                `pulumi:"authMethod"`
 	Azures               []AccessPolicyExcludeAzure             `pulumi:"azures"`
 	Certificate          *bool                                  `pulumi:"certificate"`
@@ -3692,6 +4238,7 @@ type AccessPolicyExcludeInput interface {
 
 type AccessPolicyExcludeArgs struct {
 	AnyValidServiceToken pulumi.BoolPtrInput                           `pulumi:"anyValidServiceToken"`
+	AuthContexts         AccessPolicyExcludeAuthContextArrayInput      `pulumi:"authContexts"`
 	AuthMethod           pulumi.StringPtrInput                         `pulumi:"authMethod"`
 	Azures               AccessPolicyExcludeAzureArrayInput            `pulumi:"azures"`
 	Certificate          pulumi.BoolPtrInput                           `pulumi:"certificate"`
@@ -3766,6 +4313,10 @@ func (o AccessPolicyExcludeOutput) ToAccessPolicyExcludeOutputWithContext(ctx co
 
 func (o AccessPolicyExcludeOutput) AnyValidServiceToken() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v AccessPolicyExclude) *bool { return v.AnyValidServiceToken }).(pulumi.BoolPtrOutput)
+}
+
+func (o AccessPolicyExcludeOutput) AuthContexts() AccessPolicyExcludeAuthContextArrayOutput {
+	return o.ApplyT(func(v AccessPolicyExclude) []AccessPolicyExcludeAuthContext { return v.AuthContexts }).(AccessPolicyExcludeAuthContextArrayOutput)
 }
 
 func (o AccessPolicyExcludeOutput) AuthMethod() pulumi.StringPtrOutput {
@@ -3862,6 +4413,115 @@ func (o AccessPolicyExcludeArrayOutput) Index(i pulumi.IntInput) AccessPolicyExc
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AccessPolicyExclude {
 		return vs[0].([]AccessPolicyExclude)[vs[1].(int)]
 	}).(AccessPolicyExcludeOutput)
+}
+
+type AccessPolicyExcludeAuthContext struct {
+	AcId string `pulumi:"acId"`
+	// The ID of this resource.
+	Id                 string `pulumi:"id"`
+	IdentityProviderId string `pulumi:"identityProviderId"`
+}
+
+// AccessPolicyExcludeAuthContextInput is an input type that accepts AccessPolicyExcludeAuthContextArgs and AccessPolicyExcludeAuthContextOutput values.
+// You can construct a concrete instance of `AccessPolicyExcludeAuthContextInput` via:
+//
+//	AccessPolicyExcludeAuthContextArgs{...}
+type AccessPolicyExcludeAuthContextInput interface {
+	pulumi.Input
+
+	ToAccessPolicyExcludeAuthContextOutput() AccessPolicyExcludeAuthContextOutput
+	ToAccessPolicyExcludeAuthContextOutputWithContext(context.Context) AccessPolicyExcludeAuthContextOutput
+}
+
+type AccessPolicyExcludeAuthContextArgs struct {
+	AcId pulumi.StringInput `pulumi:"acId"`
+	// The ID of this resource.
+	Id                 pulumi.StringInput `pulumi:"id"`
+	IdentityProviderId pulumi.StringInput `pulumi:"identityProviderId"`
+}
+
+func (AccessPolicyExcludeAuthContextArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessPolicyExcludeAuthContext)(nil)).Elem()
+}
+
+func (i AccessPolicyExcludeAuthContextArgs) ToAccessPolicyExcludeAuthContextOutput() AccessPolicyExcludeAuthContextOutput {
+	return i.ToAccessPolicyExcludeAuthContextOutputWithContext(context.Background())
+}
+
+func (i AccessPolicyExcludeAuthContextArgs) ToAccessPolicyExcludeAuthContextOutputWithContext(ctx context.Context) AccessPolicyExcludeAuthContextOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessPolicyExcludeAuthContextOutput)
+}
+
+// AccessPolicyExcludeAuthContextArrayInput is an input type that accepts AccessPolicyExcludeAuthContextArray and AccessPolicyExcludeAuthContextArrayOutput values.
+// You can construct a concrete instance of `AccessPolicyExcludeAuthContextArrayInput` via:
+//
+//	AccessPolicyExcludeAuthContextArray{ AccessPolicyExcludeAuthContextArgs{...} }
+type AccessPolicyExcludeAuthContextArrayInput interface {
+	pulumi.Input
+
+	ToAccessPolicyExcludeAuthContextArrayOutput() AccessPolicyExcludeAuthContextArrayOutput
+	ToAccessPolicyExcludeAuthContextArrayOutputWithContext(context.Context) AccessPolicyExcludeAuthContextArrayOutput
+}
+
+type AccessPolicyExcludeAuthContextArray []AccessPolicyExcludeAuthContextInput
+
+func (AccessPolicyExcludeAuthContextArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AccessPolicyExcludeAuthContext)(nil)).Elem()
+}
+
+func (i AccessPolicyExcludeAuthContextArray) ToAccessPolicyExcludeAuthContextArrayOutput() AccessPolicyExcludeAuthContextArrayOutput {
+	return i.ToAccessPolicyExcludeAuthContextArrayOutputWithContext(context.Background())
+}
+
+func (i AccessPolicyExcludeAuthContextArray) ToAccessPolicyExcludeAuthContextArrayOutputWithContext(ctx context.Context) AccessPolicyExcludeAuthContextArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessPolicyExcludeAuthContextArrayOutput)
+}
+
+type AccessPolicyExcludeAuthContextOutput struct{ *pulumi.OutputState }
+
+func (AccessPolicyExcludeAuthContextOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessPolicyExcludeAuthContext)(nil)).Elem()
+}
+
+func (o AccessPolicyExcludeAuthContextOutput) ToAccessPolicyExcludeAuthContextOutput() AccessPolicyExcludeAuthContextOutput {
+	return o
+}
+
+func (o AccessPolicyExcludeAuthContextOutput) ToAccessPolicyExcludeAuthContextOutputWithContext(ctx context.Context) AccessPolicyExcludeAuthContextOutput {
+	return o
+}
+
+func (o AccessPolicyExcludeAuthContextOutput) AcId() pulumi.StringOutput {
+	return o.ApplyT(func(v AccessPolicyExcludeAuthContext) string { return v.AcId }).(pulumi.StringOutput)
+}
+
+// The ID of this resource.
+func (o AccessPolicyExcludeAuthContextOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v AccessPolicyExcludeAuthContext) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o AccessPolicyExcludeAuthContextOutput) IdentityProviderId() pulumi.StringOutput {
+	return o.ApplyT(func(v AccessPolicyExcludeAuthContext) string { return v.IdentityProviderId }).(pulumi.StringOutput)
+}
+
+type AccessPolicyExcludeAuthContextArrayOutput struct{ *pulumi.OutputState }
+
+func (AccessPolicyExcludeAuthContextArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AccessPolicyExcludeAuthContext)(nil)).Elem()
+}
+
+func (o AccessPolicyExcludeAuthContextArrayOutput) ToAccessPolicyExcludeAuthContextArrayOutput() AccessPolicyExcludeAuthContextArrayOutput {
+	return o
+}
+
+func (o AccessPolicyExcludeAuthContextArrayOutput) ToAccessPolicyExcludeAuthContextArrayOutputWithContext(ctx context.Context) AccessPolicyExcludeAuthContextArrayOutput {
+	return o
+}
+
+func (o AccessPolicyExcludeAuthContextArrayOutput) Index(i pulumi.IntInput) AccessPolicyExcludeAuthContextOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AccessPolicyExcludeAuthContext {
+		return vs[0].([]AccessPolicyExcludeAuthContext)[vs[1].(int)]
+	}).(AccessPolicyExcludeAuthContextOutput)
 }
 
 type AccessPolicyExcludeAzure struct {
@@ -4535,6 +5195,7 @@ func (o AccessPolicyExcludeSamlArrayOutput) Index(i pulumi.IntInput) AccessPolic
 
 type AccessPolicyInclude struct {
 	AnyValidServiceToken *bool                                  `pulumi:"anyValidServiceToken"`
+	AuthContexts         []AccessPolicyIncludeAuthContext       `pulumi:"authContexts"`
 	AuthMethod           *string                                `pulumi:"authMethod"`
 	Azures               []AccessPolicyIncludeAzure             `pulumi:"azures"`
 	Certificate          *bool                                  `pulumi:"certificate"`
@@ -4569,6 +5230,7 @@ type AccessPolicyIncludeInput interface {
 
 type AccessPolicyIncludeArgs struct {
 	AnyValidServiceToken pulumi.BoolPtrInput                           `pulumi:"anyValidServiceToken"`
+	AuthContexts         AccessPolicyIncludeAuthContextArrayInput      `pulumi:"authContexts"`
 	AuthMethod           pulumi.StringPtrInput                         `pulumi:"authMethod"`
 	Azures               AccessPolicyIncludeAzureArrayInput            `pulumi:"azures"`
 	Certificate          pulumi.BoolPtrInput                           `pulumi:"certificate"`
@@ -4643,6 +5305,10 @@ func (o AccessPolicyIncludeOutput) ToAccessPolicyIncludeOutputWithContext(ctx co
 
 func (o AccessPolicyIncludeOutput) AnyValidServiceToken() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v AccessPolicyInclude) *bool { return v.AnyValidServiceToken }).(pulumi.BoolPtrOutput)
+}
+
+func (o AccessPolicyIncludeOutput) AuthContexts() AccessPolicyIncludeAuthContextArrayOutput {
+	return o.ApplyT(func(v AccessPolicyInclude) []AccessPolicyIncludeAuthContext { return v.AuthContexts }).(AccessPolicyIncludeAuthContextArrayOutput)
 }
 
 func (o AccessPolicyIncludeOutput) AuthMethod() pulumi.StringPtrOutput {
@@ -4739,6 +5405,115 @@ func (o AccessPolicyIncludeArrayOutput) Index(i pulumi.IntInput) AccessPolicyInc
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AccessPolicyInclude {
 		return vs[0].([]AccessPolicyInclude)[vs[1].(int)]
 	}).(AccessPolicyIncludeOutput)
+}
+
+type AccessPolicyIncludeAuthContext struct {
+	AcId string `pulumi:"acId"`
+	// The ID of this resource.
+	Id                 string `pulumi:"id"`
+	IdentityProviderId string `pulumi:"identityProviderId"`
+}
+
+// AccessPolicyIncludeAuthContextInput is an input type that accepts AccessPolicyIncludeAuthContextArgs and AccessPolicyIncludeAuthContextOutput values.
+// You can construct a concrete instance of `AccessPolicyIncludeAuthContextInput` via:
+//
+//	AccessPolicyIncludeAuthContextArgs{...}
+type AccessPolicyIncludeAuthContextInput interface {
+	pulumi.Input
+
+	ToAccessPolicyIncludeAuthContextOutput() AccessPolicyIncludeAuthContextOutput
+	ToAccessPolicyIncludeAuthContextOutputWithContext(context.Context) AccessPolicyIncludeAuthContextOutput
+}
+
+type AccessPolicyIncludeAuthContextArgs struct {
+	AcId pulumi.StringInput `pulumi:"acId"`
+	// The ID of this resource.
+	Id                 pulumi.StringInput `pulumi:"id"`
+	IdentityProviderId pulumi.StringInput `pulumi:"identityProviderId"`
+}
+
+func (AccessPolicyIncludeAuthContextArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessPolicyIncludeAuthContext)(nil)).Elem()
+}
+
+func (i AccessPolicyIncludeAuthContextArgs) ToAccessPolicyIncludeAuthContextOutput() AccessPolicyIncludeAuthContextOutput {
+	return i.ToAccessPolicyIncludeAuthContextOutputWithContext(context.Background())
+}
+
+func (i AccessPolicyIncludeAuthContextArgs) ToAccessPolicyIncludeAuthContextOutputWithContext(ctx context.Context) AccessPolicyIncludeAuthContextOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessPolicyIncludeAuthContextOutput)
+}
+
+// AccessPolicyIncludeAuthContextArrayInput is an input type that accepts AccessPolicyIncludeAuthContextArray and AccessPolicyIncludeAuthContextArrayOutput values.
+// You can construct a concrete instance of `AccessPolicyIncludeAuthContextArrayInput` via:
+//
+//	AccessPolicyIncludeAuthContextArray{ AccessPolicyIncludeAuthContextArgs{...} }
+type AccessPolicyIncludeAuthContextArrayInput interface {
+	pulumi.Input
+
+	ToAccessPolicyIncludeAuthContextArrayOutput() AccessPolicyIncludeAuthContextArrayOutput
+	ToAccessPolicyIncludeAuthContextArrayOutputWithContext(context.Context) AccessPolicyIncludeAuthContextArrayOutput
+}
+
+type AccessPolicyIncludeAuthContextArray []AccessPolicyIncludeAuthContextInput
+
+func (AccessPolicyIncludeAuthContextArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AccessPolicyIncludeAuthContext)(nil)).Elem()
+}
+
+func (i AccessPolicyIncludeAuthContextArray) ToAccessPolicyIncludeAuthContextArrayOutput() AccessPolicyIncludeAuthContextArrayOutput {
+	return i.ToAccessPolicyIncludeAuthContextArrayOutputWithContext(context.Background())
+}
+
+func (i AccessPolicyIncludeAuthContextArray) ToAccessPolicyIncludeAuthContextArrayOutputWithContext(ctx context.Context) AccessPolicyIncludeAuthContextArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessPolicyIncludeAuthContextArrayOutput)
+}
+
+type AccessPolicyIncludeAuthContextOutput struct{ *pulumi.OutputState }
+
+func (AccessPolicyIncludeAuthContextOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessPolicyIncludeAuthContext)(nil)).Elem()
+}
+
+func (o AccessPolicyIncludeAuthContextOutput) ToAccessPolicyIncludeAuthContextOutput() AccessPolicyIncludeAuthContextOutput {
+	return o
+}
+
+func (o AccessPolicyIncludeAuthContextOutput) ToAccessPolicyIncludeAuthContextOutputWithContext(ctx context.Context) AccessPolicyIncludeAuthContextOutput {
+	return o
+}
+
+func (o AccessPolicyIncludeAuthContextOutput) AcId() pulumi.StringOutput {
+	return o.ApplyT(func(v AccessPolicyIncludeAuthContext) string { return v.AcId }).(pulumi.StringOutput)
+}
+
+// The ID of this resource.
+func (o AccessPolicyIncludeAuthContextOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v AccessPolicyIncludeAuthContext) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o AccessPolicyIncludeAuthContextOutput) IdentityProviderId() pulumi.StringOutput {
+	return o.ApplyT(func(v AccessPolicyIncludeAuthContext) string { return v.IdentityProviderId }).(pulumi.StringOutput)
+}
+
+type AccessPolicyIncludeAuthContextArrayOutput struct{ *pulumi.OutputState }
+
+func (AccessPolicyIncludeAuthContextArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AccessPolicyIncludeAuthContext)(nil)).Elem()
+}
+
+func (o AccessPolicyIncludeAuthContextArrayOutput) ToAccessPolicyIncludeAuthContextArrayOutput() AccessPolicyIncludeAuthContextArrayOutput {
+	return o
+}
+
+func (o AccessPolicyIncludeAuthContextArrayOutput) ToAccessPolicyIncludeAuthContextArrayOutputWithContext(ctx context.Context) AccessPolicyIncludeAuthContextArrayOutput {
+	return o
+}
+
+func (o AccessPolicyIncludeAuthContextArrayOutput) Index(i pulumi.IntInput) AccessPolicyIncludeAuthContextOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AccessPolicyIncludeAuthContext {
+		return vs[0].([]AccessPolicyIncludeAuthContext)[vs[1].(int)]
+	}).(AccessPolicyIncludeAuthContextOutput)
 }
 
 type AccessPolicyIncludeAzure struct {
@@ -5412,6 +6187,7 @@ func (o AccessPolicyIncludeSamlArrayOutput) Index(i pulumi.IntInput) AccessPolic
 
 type AccessPolicyRequire struct {
 	AnyValidServiceToken *bool                                  `pulumi:"anyValidServiceToken"`
+	AuthContexts         []AccessPolicyRequireAuthContext       `pulumi:"authContexts"`
 	AuthMethod           *string                                `pulumi:"authMethod"`
 	Azures               []AccessPolicyRequireAzure             `pulumi:"azures"`
 	Certificate          *bool                                  `pulumi:"certificate"`
@@ -5446,6 +6222,7 @@ type AccessPolicyRequireInput interface {
 
 type AccessPolicyRequireArgs struct {
 	AnyValidServiceToken pulumi.BoolPtrInput                           `pulumi:"anyValidServiceToken"`
+	AuthContexts         AccessPolicyRequireAuthContextArrayInput      `pulumi:"authContexts"`
 	AuthMethod           pulumi.StringPtrInput                         `pulumi:"authMethod"`
 	Azures               AccessPolicyRequireAzureArrayInput            `pulumi:"azures"`
 	Certificate          pulumi.BoolPtrInput                           `pulumi:"certificate"`
@@ -5520,6 +6297,10 @@ func (o AccessPolicyRequireOutput) ToAccessPolicyRequireOutputWithContext(ctx co
 
 func (o AccessPolicyRequireOutput) AnyValidServiceToken() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v AccessPolicyRequire) *bool { return v.AnyValidServiceToken }).(pulumi.BoolPtrOutput)
+}
+
+func (o AccessPolicyRequireOutput) AuthContexts() AccessPolicyRequireAuthContextArrayOutput {
+	return o.ApplyT(func(v AccessPolicyRequire) []AccessPolicyRequireAuthContext { return v.AuthContexts }).(AccessPolicyRequireAuthContextArrayOutput)
 }
 
 func (o AccessPolicyRequireOutput) AuthMethod() pulumi.StringPtrOutput {
@@ -5616,6 +6397,115 @@ func (o AccessPolicyRequireArrayOutput) Index(i pulumi.IntInput) AccessPolicyReq
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AccessPolicyRequire {
 		return vs[0].([]AccessPolicyRequire)[vs[1].(int)]
 	}).(AccessPolicyRequireOutput)
+}
+
+type AccessPolicyRequireAuthContext struct {
+	AcId string `pulumi:"acId"`
+	// The ID of this resource.
+	Id                 string `pulumi:"id"`
+	IdentityProviderId string `pulumi:"identityProviderId"`
+}
+
+// AccessPolicyRequireAuthContextInput is an input type that accepts AccessPolicyRequireAuthContextArgs and AccessPolicyRequireAuthContextOutput values.
+// You can construct a concrete instance of `AccessPolicyRequireAuthContextInput` via:
+//
+//	AccessPolicyRequireAuthContextArgs{...}
+type AccessPolicyRequireAuthContextInput interface {
+	pulumi.Input
+
+	ToAccessPolicyRequireAuthContextOutput() AccessPolicyRequireAuthContextOutput
+	ToAccessPolicyRequireAuthContextOutputWithContext(context.Context) AccessPolicyRequireAuthContextOutput
+}
+
+type AccessPolicyRequireAuthContextArgs struct {
+	AcId pulumi.StringInput `pulumi:"acId"`
+	// The ID of this resource.
+	Id                 pulumi.StringInput `pulumi:"id"`
+	IdentityProviderId pulumi.StringInput `pulumi:"identityProviderId"`
+}
+
+func (AccessPolicyRequireAuthContextArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessPolicyRequireAuthContext)(nil)).Elem()
+}
+
+func (i AccessPolicyRequireAuthContextArgs) ToAccessPolicyRequireAuthContextOutput() AccessPolicyRequireAuthContextOutput {
+	return i.ToAccessPolicyRequireAuthContextOutputWithContext(context.Background())
+}
+
+func (i AccessPolicyRequireAuthContextArgs) ToAccessPolicyRequireAuthContextOutputWithContext(ctx context.Context) AccessPolicyRequireAuthContextOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessPolicyRequireAuthContextOutput)
+}
+
+// AccessPolicyRequireAuthContextArrayInput is an input type that accepts AccessPolicyRequireAuthContextArray and AccessPolicyRequireAuthContextArrayOutput values.
+// You can construct a concrete instance of `AccessPolicyRequireAuthContextArrayInput` via:
+//
+//	AccessPolicyRequireAuthContextArray{ AccessPolicyRequireAuthContextArgs{...} }
+type AccessPolicyRequireAuthContextArrayInput interface {
+	pulumi.Input
+
+	ToAccessPolicyRequireAuthContextArrayOutput() AccessPolicyRequireAuthContextArrayOutput
+	ToAccessPolicyRequireAuthContextArrayOutputWithContext(context.Context) AccessPolicyRequireAuthContextArrayOutput
+}
+
+type AccessPolicyRequireAuthContextArray []AccessPolicyRequireAuthContextInput
+
+func (AccessPolicyRequireAuthContextArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AccessPolicyRequireAuthContext)(nil)).Elem()
+}
+
+func (i AccessPolicyRequireAuthContextArray) ToAccessPolicyRequireAuthContextArrayOutput() AccessPolicyRequireAuthContextArrayOutput {
+	return i.ToAccessPolicyRequireAuthContextArrayOutputWithContext(context.Background())
+}
+
+func (i AccessPolicyRequireAuthContextArray) ToAccessPolicyRequireAuthContextArrayOutputWithContext(ctx context.Context) AccessPolicyRequireAuthContextArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessPolicyRequireAuthContextArrayOutput)
+}
+
+type AccessPolicyRequireAuthContextOutput struct{ *pulumi.OutputState }
+
+func (AccessPolicyRequireAuthContextOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessPolicyRequireAuthContext)(nil)).Elem()
+}
+
+func (o AccessPolicyRequireAuthContextOutput) ToAccessPolicyRequireAuthContextOutput() AccessPolicyRequireAuthContextOutput {
+	return o
+}
+
+func (o AccessPolicyRequireAuthContextOutput) ToAccessPolicyRequireAuthContextOutputWithContext(ctx context.Context) AccessPolicyRequireAuthContextOutput {
+	return o
+}
+
+func (o AccessPolicyRequireAuthContextOutput) AcId() pulumi.StringOutput {
+	return o.ApplyT(func(v AccessPolicyRequireAuthContext) string { return v.AcId }).(pulumi.StringOutput)
+}
+
+// The ID of this resource.
+func (o AccessPolicyRequireAuthContextOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v AccessPolicyRequireAuthContext) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o AccessPolicyRequireAuthContextOutput) IdentityProviderId() pulumi.StringOutput {
+	return o.ApplyT(func(v AccessPolicyRequireAuthContext) string { return v.IdentityProviderId }).(pulumi.StringOutput)
+}
+
+type AccessPolicyRequireAuthContextArrayOutput struct{ *pulumi.OutputState }
+
+func (AccessPolicyRequireAuthContextArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AccessPolicyRequireAuthContext)(nil)).Elem()
+}
+
+func (o AccessPolicyRequireAuthContextArrayOutput) ToAccessPolicyRequireAuthContextArrayOutput() AccessPolicyRequireAuthContextArrayOutput {
+	return o
+}
+
+func (o AccessPolicyRequireAuthContextArrayOutput) ToAccessPolicyRequireAuthContextArrayOutputWithContext(ctx context.Context) AccessPolicyRequireAuthContextArrayOutput {
+	return o
+}
+
+func (o AccessPolicyRequireAuthContextArrayOutput) Index(i pulumi.IntInput) AccessPolicyRequireAuthContextOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AccessPolicyRequireAuthContext {
+		return vs[0].([]AccessPolicyRequireAuthContext)[vs[1].(int)]
+	}).(AccessPolicyRequireAuthContextOutput)
 }
 
 type AccessPolicyRequireAzure struct {
@@ -8711,6 +9601,8 @@ type DevicePostureRuleInputType struct {
 	CountOperator *string `pulumi:"countOperator"`
 	// The domain that the client must join.
 	Domain *string `pulumi:"domain"`
+	// The datetime a device last seen in RFC 3339 format from Tanium.
+	EidLastSeen *string `pulumi:"eidLastSeen"`
 	// True if the firewall must be enabled.
 	Enabled *bool `pulumi:"enabled"`
 	// Checks if the file should exist.
@@ -8739,6 +9631,8 @@ type DevicePostureRuleInputType struct {
 	Path *string `pulumi:"path"`
 	// True if all drives must be encrypted.
 	RequireAll *bool `pulumi:"requireAll"`
+	// The risk level from Tanium. Available values: `low`, `medium`, `high`, `critical`.
+	RiskLevel *string `pulumi:"riskLevel"`
 	// Checks if the application should be running.
 	Running *bool `pulumi:"running"`
 	// Sensor signal score from Crowdstrike. Value must be between 1 and 100.
@@ -8747,6 +9641,8 @@ type DevicePostureRuleInputType struct {
 	Sha256 *string `pulumi:"sha256"`
 	// The thumbprint of the file certificate.
 	Thumbprint *string `pulumi:"thumbprint"`
+	// The total score from Tanium.
+	TotalScore *int `pulumi:"totalScore"`
 	// The operating system semantic version.
 	Version *string `pulumi:"version"`
 	// The version comparison operator for crowdstrike. Available values: `>`, `>=`, `<`, `<=`, `==`.
@@ -8781,6 +9677,8 @@ type DevicePostureRuleInputTypeArgs struct {
 	CountOperator pulumi.StringPtrInput `pulumi:"countOperator"`
 	// The domain that the client must join.
 	Domain pulumi.StringPtrInput `pulumi:"domain"`
+	// The datetime a device last seen in RFC 3339 format from Tanium.
+	EidLastSeen pulumi.StringPtrInput `pulumi:"eidLastSeen"`
 	// True if the firewall must be enabled.
 	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
 	// Checks if the file should exist.
@@ -8809,6 +9707,8 @@ type DevicePostureRuleInputTypeArgs struct {
 	Path pulumi.StringPtrInput `pulumi:"path"`
 	// True if all drives must be encrypted.
 	RequireAll pulumi.BoolPtrInput `pulumi:"requireAll"`
+	// The risk level from Tanium. Available values: `low`, `medium`, `high`, `critical`.
+	RiskLevel pulumi.StringPtrInput `pulumi:"riskLevel"`
 	// Checks if the application should be running.
 	Running pulumi.BoolPtrInput `pulumi:"running"`
 	// Sensor signal score from Crowdstrike. Value must be between 1 and 100.
@@ -8817,6 +9717,8 @@ type DevicePostureRuleInputTypeArgs struct {
 	Sha256 pulumi.StringPtrInput `pulumi:"sha256"`
 	// The thumbprint of the file certificate.
 	Thumbprint pulumi.StringPtrInput `pulumi:"thumbprint"`
+	// The total score from Tanium.
+	TotalScore pulumi.IntPtrInput `pulumi:"totalScore"`
 	// The operating system semantic version.
 	Version pulumi.StringPtrInput `pulumi:"version"`
 	// The version comparison operator for crowdstrike. Available values: `>`, `>=`, `<`, `<=`, `==`.
@@ -8914,6 +9816,11 @@ func (o DevicePostureRuleInputTypeOutput) Domain() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DevicePostureRuleInputType) *string { return v.Domain }).(pulumi.StringPtrOutput)
 }
 
+// The datetime a device last seen in RFC 3339 format from Tanium.
+func (o DevicePostureRuleInputTypeOutput) EidLastSeen() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DevicePostureRuleInputType) *string { return v.EidLastSeen }).(pulumi.StringPtrOutput)
+}
+
 // True if the firewall must be enabled.
 func (o DevicePostureRuleInputTypeOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v DevicePostureRuleInputType) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
@@ -8984,6 +9891,11 @@ func (o DevicePostureRuleInputTypeOutput) RequireAll() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v DevicePostureRuleInputType) *bool { return v.RequireAll }).(pulumi.BoolPtrOutput)
 }
 
+// The risk level from Tanium. Available values: `low`, `medium`, `high`, `critical`.
+func (o DevicePostureRuleInputTypeOutput) RiskLevel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DevicePostureRuleInputType) *string { return v.RiskLevel }).(pulumi.StringPtrOutput)
+}
+
 // Checks if the application should be running.
 func (o DevicePostureRuleInputTypeOutput) Running() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v DevicePostureRuleInputType) *bool { return v.Running }).(pulumi.BoolPtrOutput)
@@ -9002,6 +9914,11 @@ func (o DevicePostureRuleInputTypeOutput) Sha256() pulumi.StringPtrOutput {
 // The thumbprint of the file certificate.
 func (o DevicePostureRuleInputTypeOutput) Thumbprint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DevicePostureRuleInputType) *string { return v.Thumbprint }).(pulumi.StringPtrOutput)
+}
+
+// The total score from Tanium.
+func (o DevicePostureRuleInputTypeOutput) TotalScore() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DevicePostureRuleInputType) *int { return v.TotalScore }).(pulumi.IntPtrOutput)
 }
 
 // The operating system semantic version.
@@ -13771,10 +14688,14 @@ type NotificationPolicyFilters struct {
 	AlertTriggerPreferences []string `pulumi:"alertTriggerPreferences"`
 	// State of the pool to alert on.
 	Enableds []string `pulumi:"enableds"`
+	// Environment of pages. Available values: `ENVIRONMENT_PREVIEW`, `ENVIRONMENT_PRODUCTION`.
+	Environments []string `pulumi:"environments"`
 	// Source configuration to alert on for pool or origin.
 	EventSources []string `pulumi:"eventSources"`
 	// Stream event type to alert on.
 	EventTypes []string `pulumi:"eventTypes"`
+	// Pages event to alert. Available values: `EVENT_DEPLOYMENT_STARTED`, `EVENT_DEPLOYMENT_FAILED`, `EVENT_DEPLOYMENT_SUCCESS`.
+	Events []string `pulumi:"events"`
 	// Identifier health check. Required when using `filters.0.status`.
 	HealthCheckIds []string `pulumi:"healthCheckIds"`
 	// Stream input id to alert on.
@@ -13791,6 +14712,8 @@ type NotificationPolicyFilters struct {
 	PoolIds []string `pulumi:"poolIds"`
 	// Product name. Available values: `workerRequests`, `workerDurableObjectsRequests`, `workerDurableObjectsDuration`, `workerDurableObjectsDataTransfer`, `workerDurableObjectsStoredData`, `workerDurableObjectsStorageDeletes`, `workerDurableObjectsStorageWrites`, `workerDurableObjectsStorageReads`.
 	Products []string `pulumi:"products"`
+	// Identifier of pages project.
+	ProjectIds []string `pulumi:"projectIds"`
 	// Protocol to alert on for dos.
 	Protocols []string `pulumi:"protocols"`
 	// Requests per second threshold for dos alert.
@@ -13824,10 +14747,14 @@ type NotificationPolicyFiltersArgs struct {
 	AlertTriggerPreferences pulumi.StringArrayInput `pulumi:"alertTriggerPreferences"`
 	// State of the pool to alert on.
 	Enableds pulumi.StringArrayInput `pulumi:"enableds"`
+	// Environment of pages. Available values: `ENVIRONMENT_PREVIEW`, `ENVIRONMENT_PRODUCTION`.
+	Environments pulumi.StringArrayInput `pulumi:"environments"`
 	// Source configuration to alert on for pool or origin.
 	EventSources pulumi.StringArrayInput `pulumi:"eventSources"`
 	// Stream event type to alert on.
 	EventTypes pulumi.StringArrayInput `pulumi:"eventTypes"`
+	// Pages event to alert. Available values: `EVENT_DEPLOYMENT_STARTED`, `EVENT_DEPLOYMENT_FAILED`, `EVENT_DEPLOYMENT_SUCCESS`.
+	Events pulumi.StringArrayInput `pulumi:"events"`
 	// Identifier health check. Required when using `filters.0.status`.
 	HealthCheckIds pulumi.StringArrayInput `pulumi:"healthCheckIds"`
 	// Stream input id to alert on.
@@ -13844,6 +14771,8 @@ type NotificationPolicyFiltersArgs struct {
 	PoolIds pulumi.StringArrayInput `pulumi:"poolIds"`
 	// Product name. Available values: `workerRequests`, `workerDurableObjectsRequests`, `workerDurableObjectsDuration`, `workerDurableObjectsDataTransfer`, `workerDurableObjectsStoredData`, `workerDurableObjectsStorageDeletes`, `workerDurableObjectsStorageWrites`, `workerDurableObjectsStorageReads`.
 	Products pulumi.StringArrayInput `pulumi:"products"`
+	// Identifier of pages project.
+	ProjectIds pulumi.StringArrayInput `pulumi:"projectIds"`
 	// Protocol to alert on for dos.
 	Protocols pulumi.StringArrayInput `pulumi:"protocols"`
 	// Requests per second threshold for dos alert.
@@ -13948,6 +14877,11 @@ func (o NotificationPolicyFiltersOutput) Enableds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v NotificationPolicyFilters) []string { return v.Enableds }).(pulumi.StringArrayOutput)
 }
 
+// Environment of pages. Available values: `ENVIRONMENT_PREVIEW`, `ENVIRONMENT_PRODUCTION`.
+func (o NotificationPolicyFiltersOutput) Environments() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v NotificationPolicyFilters) []string { return v.Environments }).(pulumi.StringArrayOutput)
+}
+
 // Source configuration to alert on for pool or origin.
 func (o NotificationPolicyFiltersOutput) EventSources() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v NotificationPolicyFilters) []string { return v.EventSources }).(pulumi.StringArrayOutput)
@@ -13956,6 +14890,11 @@ func (o NotificationPolicyFiltersOutput) EventSources() pulumi.StringArrayOutput
 // Stream event type to alert on.
 func (o NotificationPolicyFiltersOutput) EventTypes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v NotificationPolicyFilters) []string { return v.EventTypes }).(pulumi.StringArrayOutput)
+}
+
+// Pages event to alert. Available values: `EVENT_DEPLOYMENT_STARTED`, `EVENT_DEPLOYMENT_FAILED`, `EVENT_DEPLOYMENT_SUCCESS`.
+func (o NotificationPolicyFiltersOutput) Events() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v NotificationPolicyFilters) []string { return v.Events }).(pulumi.StringArrayOutput)
 }
 
 // Identifier health check. Required when using `filters.0.status`.
@@ -13996,6 +14935,11 @@ func (o NotificationPolicyFiltersOutput) PoolIds() pulumi.StringArrayOutput {
 // Product name. Available values: `workerRequests`, `workerDurableObjectsRequests`, `workerDurableObjectsDuration`, `workerDurableObjectsDataTransfer`, `workerDurableObjectsStoredData`, `workerDurableObjectsStorageDeletes`, `workerDurableObjectsStorageWrites`, `workerDurableObjectsStorageReads`.
 func (o NotificationPolicyFiltersOutput) Products() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v NotificationPolicyFilters) []string { return v.Products }).(pulumi.StringArrayOutput)
+}
+
+// Identifier of pages project.
+func (o NotificationPolicyFiltersOutput) ProjectIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v NotificationPolicyFilters) []string { return v.ProjectIds }).(pulumi.StringArrayOutput)
 }
 
 // Protocol to alert on for dos.
@@ -14081,6 +15025,16 @@ func (o NotificationPolicyFiltersPtrOutput) Enableds() pulumi.StringArrayOutput 
 	}).(pulumi.StringArrayOutput)
 }
 
+// Environment of pages. Available values: `ENVIRONMENT_PREVIEW`, `ENVIRONMENT_PRODUCTION`.
+func (o NotificationPolicyFiltersPtrOutput) Environments() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *NotificationPolicyFilters) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Environments
+	}).(pulumi.StringArrayOutput)
+}
+
 // Source configuration to alert on for pool or origin.
 func (o NotificationPolicyFiltersPtrOutput) EventSources() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *NotificationPolicyFilters) []string {
@@ -14098,6 +15052,16 @@ func (o NotificationPolicyFiltersPtrOutput) EventTypes() pulumi.StringArrayOutpu
 			return nil
 		}
 		return v.EventTypes
+	}).(pulumi.StringArrayOutput)
+}
+
+// Pages event to alert. Available values: `EVENT_DEPLOYMENT_STARTED`, `EVENT_DEPLOYMENT_FAILED`, `EVENT_DEPLOYMENT_SUCCESS`.
+func (o NotificationPolicyFiltersPtrOutput) Events() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *NotificationPolicyFilters) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Events
 	}).(pulumi.StringArrayOutput)
 }
 
@@ -14178,6 +15142,16 @@ func (o NotificationPolicyFiltersPtrOutput) Products() pulumi.StringArrayOutput 
 			return nil
 		}
 		return v.Products
+	}).(pulumi.StringArrayOutput)
+}
+
+// Identifier of pages project.
+func (o NotificationPolicyFiltersPtrOutput) ProjectIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *NotificationPolicyFilters) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ProjectIds
 	}).(pulumi.StringArrayOutput)
 }
 
@@ -20510,7 +21484,7 @@ func (o RecordDataPtrOutput) Weight() pulumi.IntPtrOutput {
 }
 
 type RulesetRule struct {
-	// Action to perform in the ruleset rule. Available values: `allow`, `block`, `challenge`, `ddosDynamic`, `execute`, `forceConnectionClose`, `jsChallenge`, `log`, `logCustomField`, `managedChallenge`, `redirect`, `rewrite`, `route`, `score`, `setCacheSettings`, `setConfig`, `serveError`, `skip`, `compressResponse`.
+	// Action to perform in the ruleset rule. Available values: `block`, `challenge`, `compressResponse`, `ddosDynamic`, `ddosMitigation`, `execute`, `forceConnectionClose`, `jsChallenge`, `log`, `logCustomField`, `managedChallenge`, `redirect`, `rewrite`, `route`, `score`, `serveError`, `setCacheSettings`, `setConfig`, `skip`.
 	Action *string `pulumi:"action"`
 	// List of parameters that configure the behavior of the ruleset rule action.
 	ActionParameters *RulesetRuleActionParameters `pulumi:"actionParameters"`
@@ -20548,7 +21522,7 @@ type RulesetRuleInput interface {
 }
 
 type RulesetRuleArgs struct {
-	// Action to perform in the ruleset rule. Available values: `allow`, `block`, `challenge`, `ddosDynamic`, `execute`, `forceConnectionClose`, `jsChallenge`, `log`, `logCustomField`, `managedChallenge`, `redirect`, `rewrite`, `route`, `score`, `setCacheSettings`, `setConfig`, `serveError`, `skip`, `compressResponse`.
+	// Action to perform in the ruleset rule. Available values: `block`, `challenge`, `compressResponse`, `ddosDynamic`, `ddosMitigation`, `execute`, `forceConnectionClose`, `jsChallenge`, `log`, `logCustomField`, `managedChallenge`, `redirect`, `rewrite`, `route`, `score`, `serveError`, `setCacheSettings`, `setConfig`, `skip`.
 	Action pulumi.StringPtrInput `pulumi:"action"`
 	// List of parameters that configure the behavior of the ruleset rule action.
 	ActionParameters RulesetRuleActionParametersPtrInput `pulumi:"actionParameters"`
@@ -20625,7 +21599,7 @@ func (o RulesetRuleOutput) ToRulesetRuleOutputWithContext(ctx context.Context) R
 	return o
 }
 
-// Action to perform in the ruleset rule. Available values: `allow`, `block`, `challenge`, `ddosDynamic`, `execute`, `forceConnectionClose`, `jsChallenge`, `log`, `logCustomField`, `managedChallenge`, `redirect`, `rewrite`, `route`, `score`, `setCacheSettings`, `setConfig`, `serveError`, `skip`, `compressResponse`.
+// Action to perform in the ruleset rule. Available values: `block`, `challenge`, `compressResponse`, `ddosDynamic`, `ddosMitigation`, `execute`, `forceConnectionClose`, `jsChallenge`, `log`, `logCustomField`, `managedChallenge`, `redirect`, `rewrite`, `route`, `score`, `serveError`, `setCacheSettings`, `setConfig`, `skip`.
 func (o RulesetRuleOutput) Action() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RulesetRule) *string { return v.Action }).(pulumi.StringPtrOutput)
 }
@@ -24582,7 +25556,7 @@ func (o RulesetRuleActionParametersOverridesCategoryArrayOutput) Index(i pulumi.
 }
 
 type RulesetRuleActionParametersOverridesRule struct {
-	// Action to perform in the ruleset rule. Available values: `allow`, `block`, `challenge`, `ddosDynamic`, `execute`, `forceConnectionClose`, `jsChallenge`, `log`, `logCustomField`, `managedChallenge`, `redirect`, `rewrite`, `route`, `score`, `setCacheSettings`, `setConfig`, `serveError`, `skip`, `compressResponse`.
+	// Action to perform in the ruleset rule. Available values: `block`, `challenge`, `compressResponse`, `ddosDynamic`, `ddosMitigation`, `execute`, `forceConnectionClose`, `jsChallenge`, `log`, `logCustomField`, `managedChallenge`, `redirect`, `rewrite`, `route`, `score`, `serveError`, `setCacheSettings`, `setConfig`, `skip`.
 	Action *string `pulumi:"action"`
 	// Whether the rule is active.
 	Enabled *bool `pulumi:"enabled"`
@@ -24604,7 +25578,7 @@ type RulesetRuleActionParametersOverridesRuleInput interface {
 }
 
 type RulesetRuleActionParametersOverridesRuleArgs struct {
-	// Action to perform in the ruleset rule. Available values: `allow`, `block`, `challenge`, `ddosDynamic`, `execute`, `forceConnectionClose`, `jsChallenge`, `log`, `logCustomField`, `managedChallenge`, `redirect`, `rewrite`, `route`, `score`, `setCacheSettings`, `setConfig`, `serveError`, `skip`, `compressResponse`.
+	// Action to perform in the ruleset rule. Available values: `block`, `challenge`, `compressResponse`, `ddosDynamic`, `ddosMitigation`, `execute`, `forceConnectionClose`, `jsChallenge`, `log`, `logCustomField`, `managedChallenge`, `redirect`, `rewrite`, `route`, `score`, `serveError`, `setCacheSettings`, `setConfig`, `skip`.
 	Action pulumi.StringPtrInput `pulumi:"action"`
 	// Whether the rule is active.
 	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
@@ -24665,7 +25639,7 @@ func (o RulesetRuleActionParametersOverridesRuleOutput) ToRulesetRuleActionParam
 	return o
 }
 
-// Action to perform in the ruleset rule. Available values: `allow`, `block`, `challenge`, `ddosDynamic`, `execute`, `forceConnectionClose`, `jsChallenge`, `log`, `logCustomField`, `managedChallenge`, `redirect`, `rewrite`, `route`, `score`, `setCacheSettings`, `setConfig`, `serveError`, `skip`, `compressResponse`.
+// Action to perform in the ruleset rule. Available values: `block`, `challenge`, `compressResponse`, `ddosDynamic`, `ddosMitigation`, `execute`, `forceConnectionClose`, `jsChallenge`, `log`, `logCustomField`, `managedChallenge`, `redirect`, `rewrite`, `route`, `score`, `serveError`, `setCacheSettings`, `setConfig`, `skip`.
 func (o RulesetRuleActionParametersOverridesRuleOutput) Action() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RulesetRuleActionParametersOverridesRule) *string { return v.Action }).(pulumi.StringPtrOutput)
 }
@@ -36811,7 +37785,7 @@ type GetRulesetsFilter struct {
 	Kind *string `pulumi:"kind"`
 	// Name of the ruleset.
 	Name *string `pulumi:"name"`
-	// Point in the request/response lifecycle where the ruleset will be created. Available values: `ddosL4`, `ddosL7`, `httpCustomErrors`, `httpLogCustomFields`, `httpRequestCacheSettings`, `httpRequestFirewallCustom`, `httpRequestFirewallManaged`, `httpRequestLateTransform`, `httpRequestLateTransformManaged`, `httpRequestMain`, `httpRequestOrigin`, `httpRequestDynamicRedirect`, `httpRequestRedirect`, `httpRequestSanitize`, `httpRequestTransform`, `httpResponseFirewallManaged`, `httpResponseHeadersTransform`, `httpResponseHeadersTransformManaged`, `httpResponseCompression`, `magicTransit`, `httpRatelimit`, `httpRequestSbfm`, `httpConfigSettings`.
+	// Point in the request/response lifecycle where the ruleset will be created. Available values: `ddosL4`, `ddosL7`, `httpConfigSettings`, `httpCustomErrors`, `httpLogCustomFields`, `httpRatelimit`, `httpRequestCacheSettings`, `httpRequestDynamicRedirect`, `httpRequestFirewallCustom`, `httpRequestFirewallManaged`, `httpRequestLateTransform`, `httpRequestOrigin`, `httpRequestRedirect`, `httpRequestSanitize`, `httpRequestSbfm`, `httpRequestTransform`, `httpResponseCompression`, `httpResponseFirewallManaged`, `httpResponseHeadersTransform`, `magicTransit`.
 	Phase *string `pulumi:"phase"`
 	// Version of the ruleset to filter on.
 	Version *string `pulumi:"version"`
@@ -36835,7 +37809,7 @@ type GetRulesetsFilterArgs struct {
 	Kind pulumi.StringPtrInput `pulumi:"kind"`
 	// Name of the ruleset.
 	Name pulumi.StringPtrInput `pulumi:"name"`
-	// Point in the request/response lifecycle where the ruleset will be created. Available values: `ddosL4`, `ddosL7`, `httpCustomErrors`, `httpLogCustomFields`, `httpRequestCacheSettings`, `httpRequestFirewallCustom`, `httpRequestFirewallManaged`, `httpRequestLateTransform`, `httpRequestLateTransformManaged`, `httpRequestMain`, `httpRequestOrigin`, `httpRequestDynamicRedirect`, `httpRequestRedirect`, `httpRequestSanitize`, `httpRequestTransform`, `httpResponseFirewallManaged`, `httpResponseHeadersTransform`, `httpResponseHeadersTransformManaged`, `httpResponseCompression`, `magicTransit`, `httpRatelimit`, `httpRequestSbfm`, `httpConfigSettings`.
+	// Point in the request/response lifecycle where the ruleset will be created. Available values: `ddosL4`, `ddosL7`, `httpConfigSettings`, `httpCustomErrors`, `httpLogCustomFields`, `httpRatelimit`, `httpRequestCacheSettings`, `httpRequestDynamicRedirect`, `httpRequestFirewallCustom`, `httpRequestFirewallManaged`, `httpRequestLateTransform`, `httpRequestOrigin`, `httpRequestRedirect`, `httpRequestSanitize`, `httpRequestSbfm`, `httpRequestTransform`, `httpResponseCompression`, `httpResponseFirewallManaged`, `httpResponseHeadersTransform`, `magicTransit`.
 	Phase pulumi.StringPtrInput `pulumi:"phase"`
 	// Version of the ruleset to filter on.
 	Version pulumi.StringPtrInput `pulumi:"version"`
@@ -36933,7 +37907,7 @@ func (o GetRulesetsFilterOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetRulesetsFilter) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-// Point in the request/response lifecycle where the ruleset will be created. Available values: `ddosL4`, `ddosL7`, `httpCustomErrors`, `httpLogCustomFields`, `httpRequestCacheSettings`, `httpRequestFirewallCustom`, `httpRequestFirewallManaged`, `httpRequestLateTransform`, `httpRequestLateTransformManaged`, `httpRequestMain`, `httpRequestOrigin`, `httpRequestDynamicRedirect`, `httpRequestRedirect`, `httpRequestSanitize`, `httpRequestTransform`, `httpResponseFirewallManaged`, `httpResponseHeadersTransform`, `httpResponseHeadersTransformManaged`, `httpResponseCompression`, `magicTransit`, `httpRatelimit`, `httpRequestSbfm`, `httpConfigSettings`.
+// Point in the request/response lifecycle where the ruleset will be created. Available values: `ddosL4`, `ddosL7`, `httpConfigSettings`, `httpCustomErrors`, `httpLogCustomFields`, `httpRatelimit`, `httpRequestCacheSettings`, `httpRequestDynamicRedirect`, `httpRequestFirewallCustom`, `httpRequestFirewallManaged`, `httpRequestLateTransform`, `httpRequestOrigin`, `httpRequestRedirect`, `httpRequestSanitize`, `httpRequestSbfm`, `httpRequestTransform`, `httpResponseCompression`, `httpResponseFirewallManaged`, `httpResponseHeadersTransform`, `magicTransit`.
 func (o GetRulesetsFilterOutput) Phase() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetRulesetsFilter) *string { return v.Phase }).(pulumi.StringPtrOutput)
 }
@@ -36997,7 +37971,7 @@ func (o GetRulesetsFilterPtrOutput) Name() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Point in the request/response lifecycle where the ruleset will be created. Available values: `ddosL4`, `ddosL7`, `httpCustomErrors`, `httpLogCustomFields`, `httpRequestCacheSettings`, `httpRequestFirewallCustom`, `httpRequestFirewallManaged`, `httpRequestLateTransform`, `httpRequestLateTransformManaged`, `httpRequestMain`, `httpRequestOrigin`, `httpRequestDynamicRedirect`, `httpRequestRedirect`, `httpRequestSanitize`, `httpRequestTransform`, `httpResponseFirewallManaged`, `httpResponseHeadersTransform`, `httpResponseHeadersTransformManaged`, `httpResponseCompression`, `magicTransit`, `httpRatelimit`, `httpRequestSbfm`, `httpConfigSettings`.
+// Point in the request/response lifecycle where the ruleset will be created. Available values: `ddosL4`, `ddosL7`, `httpConfigSettings`, `httpCustomErrors`, `httpLogCustomFields`, `httpRatelimit`, `httpRequestCacheSettings`, `httpRequestDynamicRedirect`, `httpRequestFirewallCustom`, `httpRequestFirewallManaged`, `httpRequestLateTransform`, `httpRequestOrigin`, `httpRequestRedirect`, `httpRequestSanitize`, `httpRequestSbfm`, `httpRequestTransform`, `httpResponseCompression`, `httpResponseFirewallManaged`, `httpResponseHeadersTransform`, `magicTransit`.
 func (o GetRulesetsFilterPtrOutput) Phase() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetRulesetsFilter) *string {
 		if v == nil {
@@ -42832,8 +43806,13 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessApplicationCorsHeaderArrayInput)(nil)).Elem(), AccessApplicationCorsHeaderArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessApplicationSaasAppInput)(nil)).Elem(), AccessApplicationSaasAppArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessApplicationSaasAppPtrInput)(nil)).Elem(), AccessApplicationSaasAppArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessApplicationSaasAppCustomAttributeInput)(nil)).Elem(), AccessApplicationSaasAppCustomAttributeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessApplicationSaasAppCustomAttributeArrayInput)(nil)).Elem(), AccessApplicationSaasAppCustomAttributeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessApplicationSaasAppCustomAttributeSourceInput)(nil)).Elem(), AccessApplicationSaasAppCustomAttributeSourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessGroupExcludeInput)(nil)).Elem(), AccessGroupExcludeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessGroupExcludeArrayInput)(nil)).Elem(), AccessGroupExcludeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessGroupExcludeAuthContextInput)(nil)).Elem(), AccessGroupExcludeAuthContextArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessGroupExcludeAuthContextArrayInput)(nil)).Elem(), AccessGroupExcludeAuthContextArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessGroupExcludeAzureInput)(nil)).Elem(), AccessGroupExcludeAzureArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessGroupExcludeAzureArrayInput)(nil)).Elem(), AccessGroupExcludeAzureArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessGroupExcludeExternalEvaluationInput)(nil)).Elem(), AccessGroupExcludeExternalEvaluationArgs{})
@@ -42848,6 +43827,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessGroupExcludeSamlArrayInput)(nil)).Elem(), AccessGroupExcludeSamlArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessGroupIncludeInput)(nil)).Elem(), AccessGroupIncludeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessGroupIncludeArrayInput)(nil)).Elem(), AccessGroupIncludeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessGroupIncludeAuthContextInput)(nil)).Elem(), AccessGroupIncludeAuthContextArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessGroupIncludeAuthContextArrayInput)(nil)).Elem(), AccessGroupIncludeAuthContextArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessGroupIncludeAzureInput)(nil)).Elem(), AccessGroupIncludeAzureArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessGroupIncludeAzureArrayInput)(nil)).Elem(), AccessGroupIncludeAzureArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessGroupIncludeExternalEvaluationInput)(nil)).Elem(), AccessGroupIncludeExternalEvaluationArgs{})
@@ -42862,6 +43843,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessGroupIncludeSamlArrayInput)(nil)).Elem(), AccessGroupIncludeSamlArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessGroupRequireInput)(nil)).Elem(), AccessGroupRequireArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessGroupRequireArrayInput)(nil)).Elem(), AccessGroupRequireArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessGroupRequireAuthContextInput)(nil)).Elem(), AccessGroupRequireAuthContextArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessGroupRequireAuthContextArrayInput)(nil)).Elem(), AccessGroupRequireAuthContextArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessGroupRequireAzureInput)(nil)).Elem(), AccessGroupRequireAzureArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessGroupRequireAzureArrayInput)(nil)).Elem(), AccessGroupRequireAzureArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessGroupRequireExternalEvaluationInput)(nil)).Elem(), AccessGroupRequireExternalEvaluationArgs{})
@@ -42886,6 +43869,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessPolicyApprovalGroupArrayInput)(nil)).Elem(), AccessPolicyApprovalGroupArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessPolicyExcludeInput)(nil)).Elem(), AccessPolicyExcludeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessPolicyExcludeArrayInput)(nil)).Elem(), AccessPolicyExcludeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessPolicyExcludeAuthContextInput)(nil)).Elem(), AccessPolicyExcludeAuthContextArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessPolicyExcludeAuthContextArrayInput)(nil)).Elem(), AccessPolicyExcludeAuthContextArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessPolicyExcludeAzureInput)(nil)).Elem(), AccessPolicyExcludeAzureArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessPolicyExcludeAzureArrayInput)(nil)).Elem(), AccessPolicyExcludeAzureArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessPolicyExcludeExternalEvaluationInput)(nil)).Elem(), AccessPolicyExcludeExternalEvaluationArgs{})
@@ -42900,6 +43885,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessPolicyExcludeSamlArrayInput)(nil)).Elem(), AccessPolicyExcludeSamlArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessPolicyIncludeInput)(nil)).Elem(), AccessPolicyIncludeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessPolicyIncludeArrayInput)(nil)).Elem(), AccessPolicyIncludeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessPolicyIncludeAuthContextInput)(nil)).Elem(), AccessPolicyIncludeAuthContextArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessPolicyIncludeAuthContextArrayInput)(nil)).Elem(), AccessPolicyIncludeAuthContextArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessPolicyIncludeAzureInput)(nil)).Elem(), AccessPolicyIncludeAzureArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessPolicyIncludeAzureArrayInput)(nil)).Elem(), AccessPolicyIncludeAzureArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessPolicyIncludeExternalEvaluationInput)(nil)).Elem(), AccessPolicyIncludeExternalEvaluationArgs{})
@@ -42914,6 +43901,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessPolicyIncludeSamlArrayInput)(nil)).Elem(), AccessPolicyIncludeSamlArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessPolicyRequireInput)(nil)).Elem(), AccessPolicyRequireArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessPolicyRequireArrayInput)(nil)).Elem(), AccessPolicyRequireArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessPolicyRequireAuthContextInput)(nil)).Elem(), AccessPolicyRequireAuthContextArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessPolicyRequireAuthContextArrayInput)(nil)).Elem(), AccessPolicyRequireAuthContextArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessPolicyRequireAzureInput)(nil)).Elem(), AccessPolicyRequireAzureArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessPolicyRequireAzureArrayInput)(nil)).Elem(), AccessPolicyRequireAzureArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessPolicyRequireExternalEvaluationInput)(nil)).Elem(), AccessPolicyRequireExternalEvaluationArgs{})
@@ -43368,8 +44357,13 @@ func init() {
 	pulumi.RegisterOutputType(AccessApplicationCorsHeaderArrayOutput{})
 	pulumi.RegisterOutputType(AccessApplicationSaasAppOutput{})
 	pulumi.RegisterOutputType(AccessApplicationSaasAppPtrOutput{})
+	pulumi.RegisterOutputType(AccessApplicationSaasAppCustomAttributeOutput{})
+	pulumi.RegisterOutputType(AccessApplicationSaasAppCustomAttributeArrayOutput{})
+	pulumi.RegisterOutputType(AccessApplicationSaasAppCustomAttributeSourceOutput{})
 	pulumi.RegisterOutputType(AccessGroupExcludeOutput{})
 	pulumi.RegisterOutputType(AccessGroupExcludeArrayOutput{})
+	pulumi.RegisterOutputType(AccessGroupExcludeAuthContextOutput{})
+	pulumi.RegisterOutputType(AccessGroupExcludeAuthContextArrayOutput{})
 	pulumi.RegisterOutputType(AccessGroupExcludeAzureOutput{})
 	pulumi.RegisterOutputType(AccessGroupExcludeAzureArrayOutput{})
 	pulumi.RegisterOutputType(AccessGroupExcludeExternalEvaluationOutput{})
@@ -43384,6 +44378,8 @@ func init() {
 	pulumi.RegisterOutputType(AccessGroupExcludeSamlArrayOutput{})
 	pulumi.RegisterOutputType(AccessGroupIncludeOutput{})
 	pulumi.RegisterOutputType(AccessGroupIncludeArrayOutput{})
+	pulumi.RegisterOutputType(AccessGroupIncludeAuthContextOutput{})
+	pulumi.RegisterOutputType(AccessGroupIncludeAuthContextArrayOutput{})
 	pulumi.RegisterOutputType(AccessGroupIncludeAzureOutput{})
 	pulumi.RegisterOutputType(AccessGroupIncludeAzureArrayOutput{})
 	pulumi.RegisterOutputType(AccessGroupIncludeExternalEvaluationOutput{})
@@ -43398,6 +44394,8 @@ func init() {
 	pulumi.RegisterOutputType(AccessGroupIncludeSamlArrayOutput{})
 	pulumi.RegisterOutputType(AccessGroupRequireOutput{})
 	pulumi.RegisterOutputType(AccessGroupRequireArrayOutput{})
+	pulumi.RegisterOutputType(AccessGroupRequireAuthContextOutput{})
+	pulumi.RegisterOutputType(AccessGroupRequireAuthContextArrayOutput{})
 	pulumi.RegisterOutputType(AccessGroupRequireAzureOutput{})
 	pulumi.RegisterOutputType(AccessGroupRequireAzureArrayOutput{})
 	pulumi.RegisterOutputType(AccessGroupRequireExternalEvaluationOutput{})
@@ -43422,6 +44420,8 @@ func init() {
 	pulumi.RegisterOutputType(AccessPolicyApprovalGroupArrayOutput{})
 	pulumi.RegisterOutputType(AccessPolicyExcludeOutput{})
 	pulumi.RegisterOutputType(AccessPolicyExcludeArrayOutput{})
+	pulumi.RegisterOutputType(AccessPolicyExcludeAuthContextOutput{})
+	pulumi.RegisterOutputType(AccessPolicyExcludeAuthContextArrayOutput{})
 	pulumi.RegisterOutputType(AccessPolicyExcludeAzureOutput{})
 	pulumi.RegisterOutputType(AccessPolicyExcludeAzureArrayOutput{})
 	pulumi.RegisterOutputType(AccessPolicyExcludeExternalEvaluationOutput{})
@@ -43436,6 +44436,8 @@ func init() {
 	pulumi.RegisterOutputType(AccessPolicyExcludeSamlArrayOutput{})
 	pulumi.RegisterOutputType(AccessPolicyIncludeOutput{})
 	pulumi.RegisterOutputType(AccessPolicyIncludeArrayOutput{})
+	pulumi.RegisterOutputType(AccessPolicyIncludeAuthContextOutput{})
+	pulumi.RegisterOutputType(AccessPolicyIncludeAuthContextArrayOutput{})
 	pulumi.RegisterOutputType(AccessPolicyIncludeAzureOutput{})
 	pulumi.RegisterOutputType(AccessPolicyIncludeAzureArrayOutput{})
 	pulumi.RegisterOutputType(AccessPolicyIncludeExternalEvaluationOutput{})
@@ -43450,6 +44452,8 @@ func init() {
 	pulumi.RegisterOutputType(AccessPolicyIncludeSamlArrayOutput{})
 	pulumi.RegisterOutputType(AccessPolicyRequireOutput{})
 	pulumi.RegisterOutputType(AccessPolicyRequireArrayOutput{})
+	pulumi.RegisterOutputType(AccessPolicyRequireAuthContextOutput{})
+	pulumi.RegisterOutputType(AccessPolicyRequireAuthContextArrayOutput{})
 	pulumi.RegisterOutputType(AccessPolicyRequireAzureOutput{})
 	pulumi.RegisterOutputType(AccessPolicyRequireAzureArrayOutput{})
 	pulumi.RegisterOutputType(AccessPolicyRequireExternalEvaluationOutput{})

@@ -24,6 +24,7 @@ from .api_token import *
 from .argo import *
 from .authenticated_origin_pulls import *
 from .authenticated_origin_pulls_certificate import *
+from .bot_management import *
 from .byo_ip_prefix import *
 from .certificate_pack import *
 from .custom_hostname import *
@@ -57,12 +58,15 @@ from .get_load_balancer_pools import *
 from .get_origin_ca_root_certificate import *
 from .get_record import *
 from .get_rulesets import *
+from .get_user import *
 from .get_zone import *
 from .get_zone_cache_reserve import *
 from .get_zone_dnssec import *
 from .get_zones import *
 from .gre_tunnel import *
 from .healthcheck import *
+from .hostname_tls_setting import *
+from .hostname_tls_setting_ciphers import *
 from .ipsec_tunnel import *
 from .list import *
 from .list_item import *
@@ -121,6 +125,7 @@ from .zone import *
 from .zone_cache_reserve import *
 from .zone_cache_variants import *
 from .zone_dnssec import *
+from .zone_hold import *
 from .zone_lockdown import *
 from .zone_settings_override import *
 from ._inputs import *
@@ -286,6 +291,14 @@ _utilities.register(
   "fqn": "pulumi_cloudflare",
   "classes": {
    "cloudflare:index/authenticatedOriginPullsCertificate:AuthenticatedOriginPullsCertificate": "AuthenticatedOriginPullsCertificate"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "index/botManagement",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/botManagement:BotManagement": "BotManagement"
   }
  },
  {
@@ -462,6 +475,22 @@ _utilities.register(
   "fqn": "pulumi_cloudflare",
   "classes": {
    "cloudflare:index/healthcheck:Healthcheck": "Healthcheck"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "index/hostnameTlsSetting",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/hostnameTlsSetting:HostnameTlsSetting": "HostnameTlsSetting"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "index/hostnameTlsSettingCiphers",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/hostnameTlsSettingCiphers:HostnameTlsSettingCiphers": "HostnameTlsSettingCiphers"
   }
  },
  {
@@ -918,6 +947,14 @@ _utilities.register(
   "fqn": "pulumi_cloudflare",
   "classes": {
    "cloudflare:index/zoneDnssec:ZoneDnssec": "ZoneDnssec"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "index/zoneHold",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/zoneHold:ZoneHold": "ZoneHold"
   }
  },
  {

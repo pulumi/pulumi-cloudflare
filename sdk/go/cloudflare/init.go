@@ -59,6 +59,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &AuthenticatedOriginPulls{}
 	case "cloudflare:index/authenticatedOriginPullsCertificate:AuthenticatedOriginPullsCertificate":
 		r = &AuthenticatedOriginPullsCertificate{}
+	case "cloudflare:index/botManagement:BotManagement":
+		r = &BotManagement{}
 	case "cloudflare:index/byoIpPrefix:ByoIpPrefix":
 		r = &ByoIpPrefix{}
 	case "cloudflare:index/certificatePack:CertificatePack":
@@ -103,6 +105,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &GreTunnel{}
 	case "cloudflare:index/healthcheck:Healthcheck":
 		r = &Healthcheck{}
+	case "cloudflare:index/hostnameTlsSetting:HostnameTlsSetting":
+		r = &HostnameTlsSetting{}
+	case "cloudflare:index/hostnameTlsSettingCiphers:HostnameTlsSettingCiphers":
+		r = &HostnameTlsSettingCiphers{}
 	case "cloudflare:index/ipsecTunnel:IpsecTunnel":
 		r = &IpsecTunnel{}
 	case "cloudflare:index/list:List":
@@ -217,6 +223,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ZoneCacheVariants{}
 	case "cloudflare:index/zoneDnssec:ZoneDnssec":
 		r = &ZoneDnssec{}
+	case "cloudflare:index/zoneHold:ZoneHold":
+		r = &ZoneHold{}
 	case "cloudflare:index/zoneLockdown:ZoneLockdown":
 		r = &ZoneLockdown{}
 	case "cloudflare:index/zoneSettingsOverride:ZoneSettingsOverride":
@@ -349,6 +357,11 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"cloudflare",
+		"index/botManagement",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
 		"index/byoIpPrefix",
 		&module{version},
 	)
@@ -455,6 +468,16 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"cloudflare",
 		"index/healthcheck",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
+		"index/hostnameTlsSetting",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
+		"index/hostnameTlsSettingCiphers",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -740,6 +763,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"cloudflare",
 		"index/zoneDnssec",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
+		"index/zoneHold",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

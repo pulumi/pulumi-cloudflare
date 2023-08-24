@@ -235,10 +235,8 @@ class OriginCaCertificate(pulumi.CustomResource):
         import pulumi_cloudflare as cloudflare
         import pulumi_tls as tls
 
-        # Create a CSR and generate a CA certificate
         example_private_key = tls.PrivateKey("examplePrivateKey", algorithm="RSA")
         example_cert_request = tls.CertRequest("exampleCertRequest",
-            key_algorithm=example_private_key.algorithm,
             private_key_pem=example_private_key.private_key_pem,
             subjects=[tls.CertRequestSubjectArgs(
                 common_name="",
@@ -279,10 +277,8 @@ class OriginCaCertificate(pulumi.CustomResource):
         import pulumi_cloudflare as cloudflare
         import pulumi_tls as tls
 
-        # Create a CSR and generate a CA certificate
         example_private_key = tls.PrivateKey("examplePrivateKey", algorithm="RSA")
         example_cert_request = tls.CertRequest("exampleCertRequest",
-            key_algorithm=example_private_key.algorithm,
             private_key_pem=example_private_key.private_key_pem,
             subjects=[tls.CertRequestSubjectArgs(
                 common_name="",

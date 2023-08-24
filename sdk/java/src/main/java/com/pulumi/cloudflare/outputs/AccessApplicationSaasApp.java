@@ -3,8 +3,10 @@
 
 package com.pulumi.cloudflare.outputs;
 
+import com.pulumi.cloudflare.outputs.AccessApplicationSaasAppCustomAttribute;
 import com.pulumi.core.annotations.CustomType;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -16,6 +18,11 @@ public final class AccessApplicationSaasApp {
      * 
      */
     private String consumerServiceUrl;
+    /**
+     * @return Custom attribute mapped from IDPs.
+     * 
+     */
+    private @Nullable List<AccessApplicationSaasAppCustomAttribute> customAttributes;
     /**
      * @return The format of the name identifier sent to the SaaS application. Defaults to `email`.
      * 
@@ -34,6 +41,13 @@ public final class AccessApplicationSaasApp {
      */
     public String consumerServiceUrl() {
         return this.consumerServiceUrl;
+    }
+    /**
+     * @return Custom attribute mapped from IDPs.
+     * 
+     */
+    public List<AccessApplicationSaasAppCustomAttribute> customAttributes() {
+        return this.customAttributes == null ? List.of() : this.customAttributes;
     }
     /**
      * @return The format of the name identifier sent to the SaaS application. Defaults to `email`.
@@ -60,12 +74,14 @@ public final class AccessApplicationSaasApp {
     @CustomType.Builder
     public static final class Builder {
         private String consumerServiceUrl;
+        private @Nullable List<AccessApplicationSaasAppCustomAttribute> customAttributes;
         private @Nullable String nameIdFormat;
         private String spEntityId;
         public Builder() {}
         public Builder(AccessApplicationSaasApp defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.consumerServiceUrl = defaults.consumerServiceUrl;
+    	      this.customAttributes = defaults.customAttributes;
     	      this.nameIdFormat = defaults.nameIdFormat;
     	      this.spEntityId = defaults.spEntityId;
         }
@@ -74,6 +90,14 @@ public final class AccessApplicationSaasApp {
         public Builder consumerServiceUrl(String consumerServiceUrl) {
             this.consumerServiceUrl = Objects.requireNonNull(consumerServiceUrl);
             return this;
+        }
+        @CustomType.Setter
+        public Builder customAttributes(@Nullable List<AccessApplicationSaasAppCustomAttribute> customAttributes) {
+            this.customAttributes = customAttributes;
+            return this;
+        }
+        public Builder customAttributes(AccessApplicationSaasAppCustomAttribute... customAttributes) {
+            return customAttributes(List.of(customAttributes));
         }
         @CustomType.Setter
         public Builder nameIdFormat(@Nullable String nameIdFormat) {
@@ -88,6 +112,7 @@ public final class AccessApplicationSaasApp {
         public AccessApplicationSaasApp build() {
             final var o = new AccessApplicationSaasApp();
             o.consumerServiceUrl = consumerServiceUrl;
+            o.customAttributes = customAttributes;
             o.nameIdFormat = nameIdFormat;
             o.spEntityId = spEntityId;
             return o;

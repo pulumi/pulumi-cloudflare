@@ -30,7 +30,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.NewGreTunnel(ctx, "example", &cloudflare.GreTunnelArgs{
 //				AccountId:             pulumi.String("f037e56e89293a057740de681ac9abbe"),
-//				CloudflareGreEndpoint: pulumi.String("203.0.113.1"),
+//				CloudflareGreEndpoint: pulumi.String("203.0.113.2"),
 //				CustomerGreEndpoint:   pulumi.String("203.0.113.1"),
 //				Description:           pulumi.String("Tunnel for ISP X"),
 //				HealthCheckEnabled:    pulumi.Bool(true),
