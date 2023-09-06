@@ -23,7 +23,7 @@ class AccessServiceTokenArgs:
         The set of arguments for constructing a AccessServiceToken resource.
         :param pulumi.Input[str] name: Friendly name of the token's intent.
         :param pulumi.Input[str] account_id: The account identifier to target for the resource. Conflicts with `zone_id`.
-        :param pulumi.Input[str] duration: Length of time the service token is valid for. Available values: `8760h`, `17520h`, `43800h`, `87600h`, `forever`
+        :param pulumi.Input[str] duration: Length of time the service token is valid for. Available values: `8760h`, `17520h`, `43800h`, `87600h`, `forever`.
         :param pulumi.Input[int] min_days_for_renewal: Refresh the token if terraform is run within the specified amount of days before expiration
         :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. Conflicts with `account_id`.
         """
@@ -65,7 +65,7 @@ class AccessServiceTokenArgs:
     @pulumi.getter
     def duration(self) -> Optional[pulumi.Input[str]]:
         """
-        Length of time the service token is valid for. Available values: `8760h`, `17520h`, `43800h`, `87600h`, `forever`
+        Length of time the service token is valid for. Available values: `8760h`, `17520h`, `43800h`, `87600h`, `forever`.
         """
         return pulumi.get(self, "duration")
 
@@ -114,7 +114,7 @@ class _AccessServiceTokenState:
         :param pulumi.Input[str] account_id: The account identifier to target for the resource. Conflicts with `zone_id`.
         :param pulumi.Input[str] client_id: UUID client ID associated with the Service Token. **Modifying this attribute will force creation of a new resource.**
         :param pulumi.Input[str] client_secret: A secret for interacting with Access protocols. **Modifying this attribute will force creation of a new resource.**
-        :param pulumi.Input[str] duration: Length of time the service token is valid for. Available values: `8760h`, `17520h`, `43800h`, `87600h`, `forever`
+        :param pulumi.Input[str] duration: Length of time the service token is valid for. Available values: `8760h`, `17520h`, `43800h`, `87600h`, `forever`.
         :param pulumi.Input[str] expires_at: Date when the token expires.
         :param pulumi.Input[int] min_days_for_renewal: Refresh the token if terraform is run within the specified amount of days before expiration
         :param pulumi.Input[str] name: Friendly name of the token's intent.
@@ -177,7 +177,7 @@ class _AccessServiceTokenState:
     @pulumi.getter
     def duration(self) -> Optional[pulumi.Input[str]]:
         """
-        Length of time the service token is valid for. Available values: `8760h`, `17520h`, `43800h`, `87600h`, `forever`
+        Length of time the service token is valid for. Available values: `8760h`, `17520h`, `43800h`, `87600h`, `forever`.
         """
         return pulumi.get(self, "duration")
 
@@ -273,7 +273,7 @@ class AccessServiceToken(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_id: The account identifier to target for the resource. Conflicts with `zone_id`.
-        :param pulumi.Input[str] duration: Length of time the service token is valid for. Available values: `8760h`, `17520h`, `43800h`, `87600h`, `forever`
+        :param pulumi.Input[str] duration: Length of time the service token is valid for. Available values: `8760h`, `17520h`, `43800h`, `87600h`, `forever`.
         :param pulumi.Input[int] min_days_for_renewal: Refresh the token if terraform is run within the specified amount of days before expiration
         :param pulumi.Input[str] name: Friendly name of the token's intent.
         :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. Conflicts with `account_id`.
@@ -378,7 +378,7 @@ class AccessServiceToken(pulumi.CustomResource):
         :param pulumi.Input[str] account_id: The account identifier to target for the resource. Conflicts with `zone_id`.
         :param pulumi.Input[str] client_id: UUID client ID associated with the Service Token. **Modifying this attribute will force creation of a new resource.**
         :param pulumi.Input[str] client_secret: A secret for interacting with Access protocols. **Modifying this attribute will force creation of a new resource.**
-        :param pulumi.Input[str] duration: Length of time the service token is valid for. Available values: `8760h`, `17520h`, `43800h`, `87600h`, `forever`
+        :param pulumi.Input[str] duration: Length of time the service token is valid for. Available values: `8760h`, `17520h`, `43800h`, `87600h`, `forever`.
         :param pulumi.Input[str] expires_at: Date when the token expires.
         :param pulumi.Input[int] min_days_for_renewal: Refresh the token if terraform is run within the specified amount of days before expiration
         :param pulumi.Input[str] name: Friendly name of the token's intent.
@@ -426,7 +426,7 @@ class AccessServiceToken(pulumi.CustomResource):
     @pulumi.getter
     def duration(self) -> pulumi.Output[str]:
         """
-        Length of time the service token is valid for. Available values: `8760h`, `17520h`, `43800h`, `87600h`, `forever`
+        Length of time the service token is valid for. Available values: `8760h`, `17520h`, `43800h`, `87600h`, `forever`.
         """
         return pulumi.get(self, "duration")
 

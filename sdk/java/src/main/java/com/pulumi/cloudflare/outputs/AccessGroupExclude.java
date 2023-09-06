@@ -35,7 +35,15 @@ public final class AccessGroupExclude {
     private @Nullable List<AccessGroupExcludeGithub> githubs;
     private @Nullable List<String> groups;
     private @Nullable List<AccessGroupExcludeGsuite> gsuites;
+    /**
+     * @return The ID of an existing IP list to reference.
+     * 
+     */
     private @Nullable List<String> ipLists;
+    /**
+     * @return An IPv4 or IPv6 CIDR block.
+     * 
+     */
     private @Nullable List<String> ips;
     private @Nullable List<String> loginMethods;
     private @Nullable List<AccessGroupExcludeOkta> oktas;
@@ -88,9 +96,17 @@ public final class AccessGroupExclude {
     public List<AccessGroupExcludeGsuite> gsuites() {
         return this.gsuites == null ? List.of() : this.gsuites;
     }
+    /**
+     * @return The ID of an existing IP list to reference.
+     * 
+     */
     public List<String> ipLists() {
         return this.ipLists == null ? List.of() : this.ipLists;
     }
+    /**
+     * @return An IPv4 or IPv6 CIDR block.
+     * 
+     */
     public List<String> ips() {
         return this.ips == null ? List.of() : this.ips;
     }

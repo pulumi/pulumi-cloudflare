@@ -113,10 +113,16 @@ namespace Pulumi.Cloudflare
         public Output<string?> CustomDenyMessage { get; private set; } = null!;
 
         /// <summary>
-        /// Option that redirects to a custom URL when a user is denied access to the application.
+        /// Option that redirects to a custom URL when a user is denied access to the application via identity based rules.
         /// </summary>
         [Output("customDenyUrl")]
         public Output<string?> CustomDenyUrl { get; private set; } = null!;
+
+        /// <summary>
+        /// Option that redirects to a custom URL when a user is denied access to the application via non identity rules.
+        /// </summary>
+        [Output("customNonIdentityDenyUrl")]
+        public Output<string?> CustomNonIdentityDenyUrl { get; private set; } = null!;
 
         /// <summary>
         /// The custom pages selected for the application.
@@ -297,10 +303,16 @@ namespace Pulumi.Cloudflare
         public Input<string>? CustomDenyMessage { get; set; }
 
         /// <summary>
-        /// Option that redirects to a custom URL when a user is denied access to the application.
+        /// Option that redirects to a custom URL when a user is denied access to the application via identity based rules.
         /// </summary>
         [Input("customDenyUrl")]
         public Input<string>? CustomDenyUrl { get; set; }
+
+        /// <summary>
+        /// Option that redirects to a custom URL when a user is denied access to the application via non identity rules.
+        /// </summary>
+        [Input("customNonIdentityDenyUrl")]
+        public Input<string>? CustomNonIdentityDenyUrl { get; set; }
 
         [Input("customPages")]
         private InputList<string>? _customPages;
@@ -461,10 +473,16 @@ namespace Pulumi.Cloudflare
         public Input<string>? CustomDenyMessage { get; set; }
 
         /// <summary>
-        /// Option that redirects to a custom URL when a user is denied access to the application.
+        /// Option that redirects to a custom URL when a user is denied access to the application via identity based rules.
         /// </summary>
         [Input("customDenyUrl")]
         public Input<string>? CustomDenyUrl { get; set; }
+
+        /// <summary>
+        /// Option that redirects to a custom URL when a user is denied access to the application via non identity rules.
+        /// </summary>
+        [Input("customNonIdentityDenyUrl")]
+        public Input<string>? CustomNonIdentityDenyUrl { get; set; }
 
         [Input("customPages")]
         private InputList<string>? _customPages;

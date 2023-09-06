@@ -558,12 +558,14 @@ type AccessGroupExclude struct {
 	Githubs              []AccessGroupExcludeGithub            `pulumi:"githubs"`
 	Groups               []string                              `pulumi:"groups"`
 	Gsuites              []AccessGroupExcludeGsuite            `pulumi:"gsuites"`
-	IpLists              []string                              `pulumi:"ipLists"`
-	Ips                  []string                              `pulumi:"ips"`
-	LoginMethods         []string                              `pulumi:"loginMethods"`
-	Oktas                []AccessGroupExcludeOkta              `pulumi:"oktas"`
-	Samls                []AccessGroupExcludeSaml              `pulumi:"samls"`
-	ServiceTokens        []string                              `pulumi:"serviceTokens"`
+	// The ID of an existing IP list to reference.
+	IpLists []string `pulumi:"ipLists"`
+	// An IPv4 or IPv6 CIDR block.
+	Ips           []string                 `pulumi:"ips"`
+	LoginMethods  []string                 `pulumi:"loginMethods"`
+	Oktas         []AccessGroupExcludeOkta `pulumi:"oktas"`
+	Samls         []AccessGroupExcludeSaml `pulumi:"samls"`
+	ServiceTokens []string                 `pulumi:"serviceTokens"`
 }
 
 // AccessGroupExcludeInput is an input type that accepts AccessGroupExcludeArgs and AccessGroupExcludeOutput values.
@@ -593,12 +595,14 @@ type AccessGroupExcludeArgs struct {
 	Githubs              AccessGroupExcludeGithubArrayInput           `pulumi:"githubs"`
 	Groups               pulumi.StringArrayInput                      `pulumi:"groups"`
 	Gsuites              AccessGroupExcludeGsuiteArrayInput           `pulumi:"gsuites"`
-	IpLists              pulumi.StringArrayInput                      `pulumi:"ipLists"`
-	Ips                  pulumi.StringArrayInput                      `pulumi:"ips"`
-	LoginMethods         pulumi.StringArrayInput                      `pulumi:"loginMethods"`
-	Oktas                AccessGroupExcludeOktaArrayInput             `pulumi:"oktas"`
-	Samls                AccessGroupExcludeSamlArrayInput             `pulumi:"samls"`
-	ServiceTokens        pulumi.StringArrayInput                      `pulumi:"serviceTokens"`
+	// The ID of an existing IP list to reference.
+	IpLists pulumi.StringArrayInput `pulumi:"ipLists"`
+	// An IPv4 or IPv6 CIDR block.
+	Ips           pulumi.StringArrayInput          `pulumi:"ips"`
+	LoginMethods  pulumi.StringArrayInput          `pulumi:"loginMethods"`
+	Oktas         AccessGroupExcludeOktaArrayInput `pulumi:"oktas"`
+	Samls         AccessGroupExcludeSamlArrayInput `pulumi:"samls"`
+	ServiceTokens pulumi.StringArrayInput          `pulumi:"serviceTokens"`
 }
 
 func (AccessGroupExcludeArgs) ElementType() reflect.Type {
@@ -712,10 +716,12 @@ func (o AccessGroupExcludeOutput) Gsuites() AccessGroupExcludeGsuiteArrayOutput 
 	return o.ApplyT(func(v AccessGroupExclude) []AccessGroupExcludeGsuite { return v.Gsuites }).(AccessGroupExcludeGsuiteArrayOutput)
 }
 
+// The ID of an existing IP list to reference.
 func (o AccessGroupExcludeOutput) IpLists() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AccessGroupExclude) []string { return v.IpLists }).(pulumi.StringArrayOutput)
 }
 
+// An IPv4 or IPv6 CIDR block.
 func (o AccessGroupExcludeOutput) Ips() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AccessGroupExclude) []string { return v.Ips }).(pulumi.StringArrayOutput)
 }
@@ -1544,12 +1550,14 @@ type AccessGroupInclude struct {
 	Githubs              []AccessGroupIncludeGithub            `pulumi:"githubs"`
 	Groups               []string                              `pulumi:"groups"`
 	Gsuites              []AccessGroupIncludeGsuite            `pulumi:"gsuites"`
-	IpLists              []string                              `pulumi:"ipLists"`
-	Ips                  []string                              `pulumi:"ips"`
-	LoginMethods         []string                              `pulumi:"loginMethods"`
-	Oktas                []AccessGroupIncludeOkta              `pulumi:"oktas"`
-	Samls                []AccessGroupIncludeSaml              `pulumi:"samls"`
-	ServiceTokens        []string                              `pulumi:"serviceTokens"`
+	// The ID of an existing IP list to reference.
+	IpLists []string `pulumi:"ipLists"`
+	// An IPv4 or IPv6 CIDR block.
+	Ips           []string                 `pulumi:"ips"`
+	LoginMethods  []string                 `pulumi:"loginMethods"`
+	Oktas         []AccessGroupIncludeOkta `pulumi:"oktas"`
+	Samls         []AccessGroupIncludeSaml `pulumi:"samls"`
+	ServiceTokens []string                 `pulumi:"serviceTokens"`
 }
 
 // AccessGroupIncludeInput is an input type that accepts AccessGroupIncludeArgs and AccessGroupIncludeOutput values.
@@ -1579,12 +1587,14 @@ type AccessGroupIncludeArgs struct {
 	Githubs              AccessGroupIncludeGithubArrayInput           `pulumi:"githubs"`
 	Groups               pulumi.StringArrayInput                      `pulumi:"groups"`
 	Gsuites              AccessGroupIncludeGsuiteArrayInput           `pulumi:"gsuites"`
-	IpLists              pulumi.StringArrayInput                      `pulumi:"ipLists"`
-	Ips                  pulumi.StringArrayInput                      `pulumi:"ips"`
-	LoginMethods         pulumi.StringArrayInput                      `pulumi:"loginMethods"`
-	Oktas                AccessGroupIncludeOktaArrayInput             `pulumi:"oktas"`
-	Samls                AccessGroupIncludeSamlArrayInput             `pulumi:"samls"`
-	ServiceTokens        pulumi.StringArrayInput                      `pulumi:"serviceTokens"`
+	// The ID of an existing IP list to reference.
+	IpLists pulumi.StringArrayInput `pulumi:"ipLists"`
+	// An IPv4 or IPv6 CIDR block.
+	Ips           pulumi.StringArrayInput          `pulumi:"ips"`
+	LoginMethods  pulumi.StringArrayInput          `pulumi:"loginMethods"`
+	Oktas         AccessGroupIncludeOktaArrayInput `pulumi:"oktas"`
+	Samls         AccessGroupIncludeSamlArrayInput `pulumi:"samls"`
+	ServiceTokens pulumi.StringArrayInput          `pulumi:"serviceTokens"`
 }
 
 func (AccessGroupIncludeArgs) ElementType() reflect.Type {
@@ -1698,10 +1708,12 @@ func (o AccessGroupIncludeOutput) Gsuites() AccessGroupIncludeGsuiteArrayOutput 
 	return o.ApplyT(func(v AccessGroupInclude) []AccessGroupIncludeGsuite { return v.Gsuites }).(AccessGroupIncludeGsuiteArrayOutput)
 }
 
+// The ID of an existing IP list to reference.
 func (o AccessGroupIncludeOutput) IpLists() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AccessGroupInclude) []string { return v.IpLists }).(pulumi.StringArrayOutput)
 }
 
+// An IPv4 or IPv6 CIDR block.
 func (o AccessGroupIncludeOutput) Ips() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AccessGroupInclude) []string { return v.Ips }).(pulumi.StringArrayOutput)
 }
@@ -2530,12 +2542,14 @@ type AccessGroupRequire struct {
 	Githubs              []AccessGroupRequireGithub            `pulumi:"githubs"`
 	Groups               []string                              `pulumi:"groups"`
 	Gsuites              []AccessGroupRequireGsuite            `pulumi:"gsuites"`
-	IpLists              []string                              `pulumi:"ipLists"`
-	Ips                  []string                              `pulumi:"ips"`
-	LoginMethods         []string                              `pulumi:"loginMethods"`
-	Oktas                []AccessGroupRequireOkta              `pulumi:"oktas"`
-	Samls                []AccessGroupRequireSaml              `pulumi:"samls"`
-	ServiceTokens        []string                              `pulumi:"serviceTokens"`
+	// The ID of an existing IP list to reference.
+	IpLists []string `pulumi:"ipLists"`
+	// An IPv4 or IPv6 CIDR block.
+	Ips           []string                 `pulumi:"ips"`
+	LoginMethods  []string                 `pulumi:"loginMethods"`
+	Oktas         []AccessGroupRequireOkta `pulumi:"oktas"`
+	Samls         []AccessGroupRequireSaml `pulumi:"samls"`
+	ServiceTokens []string                 `pulumi:"serviceTokens"`
 }
 
 // AccessGroupRequireInput is an input type that accepts AccessGroupRequireArgs and AccessGroupRequireOutput values.
@@ -2565,12 +2579,14 @@ type AccessGroupRequireArgs struct {
 	Githubs              AccessGroupRequireGithubArrayInput           `pulumi:"githubs"`
 	Groups               pulumi.StringArrayInput                      `pulumi:"groups"`
 	Gsuites              AccessGroupRequireGsuiteArrayInput           `pulumi:"gsuites"`
-	IpLists              pulumi.StringArrayInput                      `pulumi:"ipLists"`
-	Ips                  pulumi.StringArrayInput                      `pulumi:"ips"`
-	LoginMethods         pulumi.StringArrayInput                      `pulumi:"loginMethods"`
-	Oktas                AccessGroupRequireOktaArrayInput             `pulumi:"oktas"`
-	Samls                AccessGroupRequireSamlArrayInput             `pulumi:"samls"`
-	ServiceTokens        pulumi.StringArrayInput                      `pulumi:"serviceTokens"`
+	// The ID of an existing IP list to reference.
+	IpLists pulumi.StringArrayInput `pulumi:"ipLists"`
+	// An IPv4 or IPv6 CIDR block.
+	Ips           pulumi.StringArrayInput          `pulumi:"ips"`
+	LoginMethods  pulumi.StringArrayInput          `pulumi:"loginMethods"`
+	Oktas         AccessGroupRequireOktaArrayInput `pulumi:"oktas"`
+	Samls         AccessGroupRequireSamlArrayInput `pulumi:"samls"`
+	ServiceTokens pulumi.StringArrayInput          `pulumi:"serviceTokens"`
 }
 
 func (AccessGroupRequireArgs) ElementType() reflect.Type {
@@ -2684,10 +2700,12 @@ func (o AccessGroupRequireOutput) Gsuites() AccessGroupRequireGsuiteArrayOutput 
 	return o.ApplyT(func(v AccessGroupRequire) []AccessGroupRequireGsuite { return v.Gsuites }).(AccessGroupRequireGsuiteArrayOutput)
 }
 
+// The ID of an existing IP list to reference.
 func (o AccessGroupRequireOutput) IpLists() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AccessGroupRequire) []string { return v.IpLists }).(pulumi.StringArrayOutput)
 }
 
+// An IPv4 or IPv6 CIDR block.
 func (o AccessGroupRequireOutput) Ips() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AccessGroupRequire) []string { return v.Ips }).(pulumi.StringArrayOutput)
 }
@@ -4217,12 +4235,14 @@ type AccessPolicyExclude struct {
 	Githubs              []AccessPolicyExcludeGithub            `pulumi:"githubs"`
 	Groups               []string                               `pulumi:"groups"`
 	Gsuites              []AccessPolicyExcludeGsuite            `pulumi:"gsuites"`
-	IpLists              []string                               `pulumi:"ipLists"`
-	Ips                  []string                               `pulumi:"ips"`
-	LoginMethods         []string                               `pulumi:"loginMethods"`
-	Oktas                []AccessPolicyExcludeOkta              `pulumi:"oktas"`
-	Samls                []AccessPolicyExcludeSaml              `pulumi:"samls"`
-	ServiceTokens        []string                               `pulumi:"serviceTokens"`
+	// The ID of an existing IP list to reference.
+	IpLists []string `pulumi:"ipLists"`
+	// An IPv4 or IPv6 CIDR block.
+	Ips           []string                  `pulumi:"ips"`
+	LoginMethods  []string                  `pulumi:"loginMethods"`
+	Oktas         []AccessPolicyExcludeOkta `pulumi:"oktas"`
+	Samls         []AccessPolicyExcludeSaml `pulumi:"samls"`
+	ServiceTokens []string                  `pulumi:"serviceTokens"`
 }
 
 // AccessPolicyExcludeInput is an input type that accepts AccessPolicyExcludeArgs and AccessPolicyExcludeOutput values.
@@ -4252,12 +4272,14 @@ type AccessPolicyExcludeArgs struct {
 	Githubs              AccessPolicyExcludeGithubArrayInput           `pulumi:"githubs"`
 	Groups               pulumi.StringArrayInput                       `pulumi:"groups"`
 	Gsuites              AccessPolicyExcludeGsuiteArrayInput           `pulumi:"gsuites"`
-	IpLists              pulumi.StringArrayInput                       `pulumi:"ipLists"`
-	Ips                  pulumi.StringArrayInput                       `pulumi:"ips"`
-	LoginMethods         pulumi.StringArrayInput                       `pulumi:"loginMethods"`
-	Oktas                AccessPolicyExcludeOktaArrayInput             `pulumi:"oktas"`
-	Samls                AccessPolicyExcludeSamlArrayInput             `pulumi:"samls"`
-	ServiceTokens        pulumi.StringArrayInput                       `pulumi:"serviceTokens"`
+	// The ID of an existing IP list to reference.
+	IpLists pulumi.StringArrayInput `pulumi:"ipLists"`
+	// An IPv4 or IPv6 CIDR block.
+	Ips           pulumi.StringArrayInput           `pulumi:"ips"`
+	LoginMethods  pulumi.StringArrayInput           `pulumi:"loginMethods"`
+	Oktas         AccessPolicyExcludeOktaArrayInput `pulumi:"oktas"`
+	Samls         AccessPolicyExcludeSamlArrayInput `pulumi:"samls"`
+	ServiceTokens pulumi.StringArrayInput           `pulumi:"serviceTokens"`
 }
 
 func (AccessPolicyExcludeArgs) ElementType() reflect.Type {
@@ -4371,10 +4393,12 @@ func (o AccessPolicyExcludeOutput) Gsuites() AccessPolicyExcludeGsuiteArrayOutpu
 	return o.ApplyT(func(v AccessPolicyExclude) []AccessPolicyExcludeGsuite { return v.Gsuites }).(AccessPolicyExcludeGsuiteArrayOutput)
 }
 
+// The ID of an existing IP list to reference.
 func (o AccessPolicyExcludeOutput) IpLists() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AccessPolicyExclude) []string { return v.IpLists }).(pulumi.StringArrayOutput)
 }
 
+// An IPv4 or IPv6 CIDR block.
 func (o AccessPolicyExcludeOutput) Ips() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AccessPolicyExclude) []string { return v.Ips }).(pulumi.StringArrayOutput)
 }
@@ -5209,12 +5233,14 @@ type AccessPolicyInclude struct {
 	Githubs              []AccessPolicyIncludeGithub            `pulumi:"githubs"`
 	Groups               []string                               `pulumi:"groups"`
 	Gsuites              []AccessPolicyIncludeGsuite            `pulumi:"gsuites"`
-	IpLists              []string                               `pulumi:"ipLists"`
-	Ips                  []string                               `pulumi:"ips"`
-	LoginMethods         []string                               `pulumi:"loginMethods"`
-	Oktas                []AccessPolicyIncludeOkta              `pulumi:"oktas"`
-	Samls                []AccessPolicyIncludeSaml              `pulumi:"samls"`
-	ServiceTokens        []string                               `pulumi:"serviceTokens"`
+	// The ID of an existing IP list to reference.
+	IpLists []string `pulumi:"ipLists"`
+	// An IPv4 or IPv6 CIDR block.
+	Ips           []string                  `pulumi:"ips"`
+	LoginMethods  []string                  `pulumi:"loginMethods"`
+	Oktas         []AccessPolicyIncludeOkta `pulumi:"oktas"`
+	Samls         []AccessPolicyIncludeSaml `pulumi:"samls"`
+	ServiceTokens []string                  `pulumi:"serviceTokens"`
 }
 
 // AccessPolicyIncludeInput is an input type that accepts AccessPolicyIncludeArgs and AccessPolicyIncludeOutput values.
@@ -5244,12 +5270,14 @@ type AccessPolicyIncludeArgs struct {
 	Githubs              AccessPolicyIncludeGithubArrayInput           `pulumi:"githubs"`
 	Groups               pulumi.StringArrayInput                       `pulumi:"groups"`
 	Gsuites              AccessPolicyIncludeGsuiteArrayInput           `pulumi:"gsuites"`
-	IpLists              pulumi.StringArrayInput                       `pulumi:"ipLists"`
-	Ips                  pulumi.StringArrayInput                       `pulumi:"ips"`
-	LoginMethods         pulumi.StringArrayInput                       `pulumi:"loginMethods"`
-	Oktas                AccessPolicyIncludeOktaArrayInput             `pulumi:"oktas"`
-	Samls                AccessPolicyIncludeSamlArrayInput             `pulumi:"samls"`
-	ServiceTokens        pulumi.StringArrayInput                       `pulumi:"serviceTokens"`
+	// The ID of an existing IP list to reference.
+	IpLists pulumi.StringArrayInput `pulumi:"ipLists"`
+	// An IPv4 or IPv6 CIDR block.
+	Ips           pulumi.StringArrayInput           `pulumi:"ips"`
+	LoginMethods  pulumi.StringArrayInput           `pulumi:"loginMethods"`
+	Oktas         AccessPolicyIncludeOktaArrayInput `pulumi:"oktas"`
+	Samls         AccessPolicyIncludeSamlArrayInput `pulumi:"samls"`
+	ServiceTokens pulumi.StringArrayInput           `pulumi:"serviceTokens"`
 }
 
 func (AccessPolicyIncludeArgs) ElementType() reflect.Type {
@@ -5363,10 +5391,12 @@ func (o AccessPolicyIncludeOutput) Gsuites() AccessPolicyIncludeGsuiteArrayOutpu
 	return o.ApplyT(func(v AccessPolicyInclude) []AccessPolicyIncludeGsuite { return v.Gsuites }).(AccessPolicyIncludeGsuiteArrayOutput)
 }
 
+// The ID of an existing IP list to reference.
 func (o AccessPolicyIncludeOutput) IpLists() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AccessPolicyInclude) []string { return v.IpLists }).(pulumi.StringArrayOutput)
 }
 
+// An IPv4 or IPv6 CIDR block.
 func (o AccessPolicyIncludeOutput) Ips() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AccessPolicyInclude) []string { return v.Ips }).(pulumi.StringArrayOutput)
 }
@@ -6201,12 +6231,14 @@ type AccessPolicyRequire struct {
 	Githubs              []AccessPolicyRequireGithub            `pulumi:"githubs"`
 	Groups               []string                               `pulumi:"groups"`
 	Gsuites              []AccessPolicyRequireGsuite            `pulumi:"gsuites"`
-	IpLists              []string                               `pulumi:"ipLists"`
-	Ips                  []string                               `pulumi:"ips"`
-	LoginMethods         []string                               `pulumi:"loginMethods"`
-	Oktas                []AccessPolicyRequireOkta              `pulumi:"oktas"`
-	Samls                []AccessPolicyRequireSaml              `pulumi:"samls"`
-	ServiceTokens        []string                               `pulumi:"serviceTokens"`
+	// The ID of an existing IP list to reference.
+	IpLists []string `pulumi:"ipLists"`
+	// An IPv4 or IPv6 CIDR block.
+	Ips           []string                  `pulumi:"ips"`
+	LoginMethods  []string                  `pulumi:"loginMethods"`
+	Oktas         []AccessPolicyRequireOkta `pulumi:"oktas"`
+	Samls         []AccessPolicyRequireSaml `pulumi:"samls"`
+	ServiceTokens []string                  `pulumi:"serviceTokens"`
 }
 
 // AccessPolicyRequireInput is an input type that accepts AccessPolicyRequireArgs and AccessPolicyRequireOutput values.
@@ -6236,12 +6268,14 @@ type AccessPolicyRequireArgs struct {
 	Githubs              AccessPolicyRequireGithubArrayInput           `pulumi:"githubs"`
 	Groups               pulumi.StringArrayInput                       `pulumi:"groups"`
 	Gsuites              AccessPolicyRequireGsuiteArrayInput           `pulumi:"gsuites"`
-	IpLists              pulumi.StringArrayInput                       `pulumi:"ipLists"`
-	Ips                  pulumi.StringArrayInput                       `pulumi:"ips"`
-	LoginMethods         pulumi.StringArrayInput                       `pulumi:"loginMethods"`
-	Oktas                AccessPolicyRequireOktaArrayInput             `pulumi:"oktas"`
-	Samls                AccessPolicyRequireSamlArrayInput             `pulumi:"samls"`
-	ServiceTokens        pulumi.StringArrayInput                       `pulumi:"serviceTokens"`
+	// The ID of an existing IP list to reference.
+	IpLists pulumi.StringArrayInput `pulumi:"ipLists"`
+	// An IPv4 or IPv6 CIDR block.
+	Ips           pulumi.StringArrayInput           `pulumi:"ips"`
+	LoginMethods  pulumi.StringArrayInput           `pulumi:"loginMethods"`
+	Oktas         AccessPolicyRequireOktaArrayInput `pulumi:"oktas"`
+	Samls         AccessPolicyRequireSamlArrayInput `pulumi:"samls"`
+	ServiceTokens pulumi.StringArrayInput           `pulumi:"serviceTokens"`
 }
 
 func (AccessPolicyRequireArgs) ElementType() reflect.Type {
@@ -6355,10 +6389,12 @@ func (o AccessPolicyRequireOutput) Gsuites() AccessPolicyRequireGsuiteArrayOutpu
 	return o.ApplyT(func(v AccessPolicyRequire) []AccessPolicyRequireGsuite { return v.Gsuites }).(AccessPolicyRequireGsuiteArrayOutput)
 }
 
+// The ID of an existing IP list to reference.
 func (o AccessPolicyRequireOutput) IpLists() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AccessPolicyRequire) []string { return v.IpLists }).(pulumi.StringArrayOutput)
 }
 
+// An IPv4 or IPv6 CIDR block.
 func (o AccessPolicyRequireOutput) Ips() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AccessPolicyRequire) []string { return v.Ips }).(pulumi.StringArrayOutput)
 }

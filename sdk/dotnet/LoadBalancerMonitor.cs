@@ -63,6 +63,18 @@ namespace Pulumi.Cloudflare
         public Output<bool?> AllowInsecure { get; private set; } = null!;
 
         /// <summary>
+        /// To be marked unhealthy the monitored origin must fail this healthcheck N consecutive times. Defaults to `0`.
+        /// </summary>
+        [Output("consecutiveDown")]
+        public Output<int?> ConsecutiveDown { get; private set; } = null!;
+
+        /// <summary>
+        /// To be marked healthy the monitored origin must pass this healthcheck N consecutive times. Defaults to `0`.
+        /// </summary>
+        [Output("consecutiveUp")]
+        public Output<int?> ConsecutiveUp { get; private set; } = null!;
+
+        /// <summary>
         /// The RFC3339 timestamp of when the load balancer monitor was created.
         /// </summary>
         [Output("createdOn")]
@@ -211,6 +223,18 @@ namespace Pulumi.Cloudflare
         public Input<bool>? AllowInsecure { get; set; }
 
         /// <summary>
+        /// To be marked unhealthy the monitored origin must fail this healthcheck N consecutive times. Defaults to `0`.
+        /// </summary>
+        [Input("consecutiveDown")]
+        public Input<int>? ConsecutiveDown { get; set; }
+
+        /// <summary>
+        /// To be marked healthy the monitored origin must pass this healthcheck N consecutive times. Defaults to `0`.
+        /// </summary>
+        [Input("consecutiveUp")]
+        public Input<int>? ConsecutiveUp { get; set; }
+
+        /// <summary>
         /// Free text description.
         /// </summary>
         [Input("description")]
@@ -313,6 +337,18 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("allowInsecure")]
         public Input<bool>? AllowInsecure { get; set; }
+
+        /// <summary>
+        /// To be marked unhealthy the monitored origin must fail this healthcheck N consecutive times. Defaults to `0`.
+        /// </summary>
+        [Input("consecutiveDown")]
+        public Input<int>? ConsecutiveDown { get; set; }
+
+        /// <summary>
+        /// To be marked healthy the monitored origin must pass this healthcheck N consecutive times. Defaults to `0`.
+        /// </summary>
+        [Input("consecutiveUp")]
+        public Input<int>? ConsecutiveUp { get; set; }
 
         /// <summary>
         /// The RFC3339 timestamp of when the load balancer monitor was created.

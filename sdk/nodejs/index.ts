@@ -552,6 +552,16 @@ export type Web3Hostname = import("./web3Hostname").Web3Hostname;
 export const Web3Hostname: typeof import("./web3Hostname").Web3Hostname = null as any;
 utilities.lazyLoad(exports, ["Web3Hostname"], () => require("./web3Hostname"));
 
+export { WebAnalyticsRuleArgs, WebAnalyticsRuleState } from "./webAnalyticsRule";
+export type WebAnalyticsRule = import("./webAnalyticsRule").WebAnalyticsRule;
+export const WebAnalyticsRule: typeof import("./webAnalyticsRule").WebAnalyticsRule = null as any;
+utilities.lazyLoad(exports, ["WebAnalyticsRule"], () => require("./webAnalyticsRule"));
+
+export { WebAnalyticsSiteArgs, WebAnalyticsSiteState } from "./webAnalyticsSite";
+export type WebAnalyticsSite = import("./webAnalyticsSite").WebAnalyticsSite;
+export const WebAnalyticsSite: typeof import("./webAnalyticsSite").WebAnalyticsSite = null as any;
+utilities.lazyLoad(exports, ["WebAnalyticsSite"], () => require("./webAnalyticsSite"));
+
 export { WorkerCronTriggerArgs, WorkerCronTriggerState } from "./workerCronTrigger";
 export type WorkerCronTrigger = import("./workerCronTrigger").WorkerCronTrigger;
 export const WorkerCronTrigger: typeof import("./workerCronTrigger").WorkerCronTrigger = null as any;
@@ -813,6 +823,10 @@ const _module = {
                 return new WaitingRoomSettings(name, <any>undefined, { urn })
             case "cloudflare:index/web3Hostname:Web3Hostname":
                 return new Web3Hostname(name, <any>undefined, { urn })
+            case "cloudflare:index/webAnalyticsRule:WebAnalyticsRule":
+                return new WebAnalyticsRule(name, <any>undefined, { urn })
+            case "cloudflare:index/webAnalyticsSite:WebAnalyticsSite":
+                return new WebAnalyticsSite(name, <any>undefined, { urn })
             case "cloudflare:index/workerCronTrigger:WorkerCronTrigger":
                 return new WorkerCronTrigger(name, <any>undefined, { urn })
             case "cloudflare:index/workerDomain:WorkerDomain":
@@ -935,6 +949,8 @@ pulumi.runtime.registerResourceModule("cloudflare", "index/waitingRoomEvent", _m
 pulumi.runtime.registerResourceModule("cloudflare", "index/waitingRoomRules", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/waitingRoomSettings", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/web3Hostname", _module)
+pulumi.runtime.registerResourceModule("cloudflare", "index/webAnalyticsRule", _module)
+pulumi.runtime.registerResourceModule("cloudflare", "index/webAnalyticsSite", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/workerCronTrigger", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/workerDomain", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/workerRoute", _module)

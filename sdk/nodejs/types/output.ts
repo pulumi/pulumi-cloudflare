@@ -93,7 +93,13 @@ export interface AccessGroupExclude {
     githubs?: outputs.AccessGroupExcludeGithub[];
     groups?: string[];
     gsuites?: outputs.AccessGroupExcludeGsuite[];
+    /**
+     * The ID of an existing IP list to reference.
+     */
     ipLists?: string[];
+    /**
+     * An IPv4 or IPv6 CIDR block.
+     */
     ips?: string[];
     loginMethods?: string[];
     oktas?: outputs.AccessGroupExcludeOkta[];
@@ -161,7 +167,13 @@ export interface AccessGroupInclude {
     githubs?: outputs.AccessGroupIncludeGithub[];
     groups?: string[];
     gsuites?: outputs.AccessGroupIncludeGsuite[];
+    /**
+     * The ID of an existing IP list to reference.
+     */
     ipLists?: string[];
+    /**
+     * An IPv4 or IPv6 CIDR block.
+     */
     ips?: string[];
     loginMethods?: string[];
     oktas?: outputs.AccessGroupIncludeOkta[];
@@ -229,7 +241,13 @@ export interface AccessGroupRequire {
     githubs?: outputs.AccessGroupRequireGithub[];
     groups?: string[];
     gsuites?: outputs.AccessGroupRequireGsuite[];
+    /**
+     * The ID of an existing IP list to reference.
+     */
     ipLists?: string[];
+    /**
+     * An IPv4 or IPv6 CIDR block.
+     */
     ips?: string[];
     loginMethods?: string[];
     oktas?: outputs.AccessGroupRequireOkta[];
@@ -378,7 +396,13 @@ export interface AccessPolicyExclude {
     githubs?: outputs.AccessPolicyExcludeGithub[];
     groups?: string[];
     gsuites?: outputs.AccessPolicyExcludeGsuite[];
+    /**
+     * The ID of an existing IP list to reference.
+     */
     ipLists?: string[];
+    /**
+     * An IPv4 or IPv6 CIDR block.
+     */
     ips?: string[];
     loginMethods?: string[];
     oktas?: outputs.AccessPolicyExcludeOkta[];
@@ -452,7 +476,13 @@ export interface AccessPolicyInclude {
     githubs?: outputs.AccessPolicyIncludeGithub[];
     groups?: string[];
     gsuites?: outputs.AccessPolicyIncludeGsuite[];
+    /**
+     * The ID of an existing IP list to reference.
+     */
     ipLists?: string[];
+    /**
+     * An IPv4 or IPv6 CIDR block.
+     */
     ips?: string[];
     loginMethods?: string[];
     oktas?: outputs.AccessPolicyIncludeOkta[];
@@ -526,7 +556,13 @@ export interface AccessPolicyRequire {
     githubs?: outputs.AccessPolicyRequireGithub[];
     groups?: string[];
     gsuites?: outputs.AccessPolicyRequireGsuite[];
+    /**
+     * The ID of an existing IP list to reference.
+     */
     ipLists?: string[];
+    /**
+     * An IPv4 or IPv6 CIDR block.
+     */
     ips?: string[];
     loginMethods?: string[];
     oktas?: outputs.AccessPolicyRequireOkta[];

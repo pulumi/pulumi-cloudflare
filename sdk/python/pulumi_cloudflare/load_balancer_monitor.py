@@ -18,6 +18,8 @@ class LoadBalancerMonitorArgs:
     def __init__(__self__, *,
                  account_id: pulumi.Input[str],
                  allow_insecure: Optional[pulumi.Input[bool]] = None,
+                 consecutive_down: Optional[pulumi.Input[int]] = None,
+                 consecutive_up: Optional[pulumi.Input[int]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  expected_body: Optional[pulumi.Input[str]] = None,
                  expected_codes: Optional[pulumi.Input[str]] = None,
@@ -35,6 +37,8 @@ class LoadBalancerMonitorArgs:
         The set of arguments for constructing a LoadBalancerMonitor resource.
         :param pulumi.Input[str] account_id: The account identifier to target for the resource.
         :param pulumi.Input[bool] allow_insecure: Do not validate the certificate when monitor use HTTPS.  Only valid if `type` is "http" or "https".
+        :param pulumi.Input[int] consecutive_down: To be marked unhealthy the monitored origin must fail this healthcheck N consecutive times. Defaults to `0`.
+        :param pulumi.Input[int] consecutive_up: To be marked healthy the monitored origin must pass this healthcheck N consecutive times. Defaults to `0`.
         :param pulumi.Input[str] description: Free text description.
         :param pulumi.Input[str] expected_body: A case-insensitive sub-string to look for in the response body. If this string is not found, the origin will be marked as unhealthy. Only valid if `type` is "http" or "https".
         :param pulumi.Input[str] expected_codes: The expected HTTP response code or code range of the health check. Eg `2xx`. Only valid and required if `type` is "http" or "https".
@@ -52,6 +56,10 @@ class LoadBalancerMonitorArgs:
         pulumi.set(__self__, "account_id", account_id)
         if allow_insecure is not None:
             pulumi.set(__self__, "allow_insecure", allow_insecure)
+        if consecutive_down is not None:
+            pulumi.set(__self__, "consecutive_down", consecutive_down)
+        if consecutive_up is not None:
+            pulumi.set(__self__, "consecutive_up", consecutive_up)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if expected_body is not None:
@@ -102,6 +110,30 @@ class LoadBalancerMonitorArgs:
     @allow_insecure.setter
     def allow_insecure(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "allow_insecure", value)
+
+    @property
+    @pulumi.getter(name="consecutiveDown")
+    def consecutive_down(self) -> Optional[pulumi.Input[int]]:
+        """
+        To be marked unhealthy the monitored origin must fail this healthcheck N consecutive times. Defaults to `0`.
+        """
+        return pulumi.get(self, "consecutive_down")
+
+    @consecutive_down.setter
+    def consecutive_down(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "consecutive_down", value)
+
+    @property
+    @pulumi.getter(name="consecutiveUp")
+    def consecutive_up(self) -> Optional[pulumi.Input[int]]:
+        """
+        To be marked healthy the monitored origin must pass this healthcheck N consecutive times. Defaults to `0`.
+        """
+        return pulumi.get(self, "consecutive_up")
+
+    @consecutive_up.setter
+    def consecutive_up(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "consecutive_up", value)
 
     @property
     @pulumi.getter
@@ -265,6 +297,8 @@ class _LoadBalancerMonitorState:
     def __init__(__self__, *,
                  account_id: Optional[pulumi.Input[str]] = None,
                  allow_insecure: Optional[pulumi.Input[bool]] = None,
+                 consecutive_down: Optional[pulumi.Input[int]] = None,
+                 consecutive_up: Optional[pulumi.Input[int]] = None,
                  created_on: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  expected_body: Optional[pulumi.Input[str]] = None,
@@ -284,6 +318,8 @@ class _LoadBalancerMonitorState:
         Input properties used for looking up and filtering LoadBalancerMonitor resources.
         :param pulumi.Input[str] account_id: The account identifier to target for the resource.
         :param pulumi.Input[bool] allow_insecure: Do not validate the certificate when monitor use HTTPS.  Only valid if `type` is "http" or "https".
+        :param pulumi.Input[int] consecutive_down: To be marked unhealthy the monitored origin must fail this healthcheck N consecutive times. Defaults to `0`.
+        :param pulumi.Input[int] consecutive_up: To be marked healthy the monitored origin must pass this healthcheck N consecutive times. Defaults to `0`.
         :param pulumi.Input[str] created_on: The RFC3339 timestamp of when the load balancer monitor was created.
         :param pulumi.Input[str] description: Free text description.
         :param pulumi.Input[str] expected_body: A case-insensitive sub-string to look for in the response body. If this string is not found, the origin will be marked as unhealthy. Only valid if `type` is "http" or "https".
@@ -304,6 +340,10 @@ class _LoadBalancerMonitorState:
             pulumi.set(__self__, "account_id", account_id)
         if allow_insecure is not None:
             pulumi.set(__self__, "allow_insecure", allow_insecure)
+        if consecutive_down is not None:
+            pulumi.set(__self__, "consecutive_down", consecutive_down)
+        if consecutive_up is not None:
+            pulumi.set(__self__, "consecutive_up", consecutive_up)
         if created_on is not None:
             pulumi.set(__self__, "created_on", created_on)
         if description is not None:
@@ -358,6 +398,30 @@ class _LoadBalancerMonitorState:
     @allow_insecure.setter
     def allow_insecure(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "allow_insecure", value)
+
+    @property
+    @pulumi.getter(name="consecutiveDown")
+    def consecutive_down(self) -> Optional[pulumi.Input[int]]:
+        """
+        To be marked unhealthy the monitored origin must fail this healthcheck N consecutive times. Defaults to `0`.
+        """
+        return pulumi.get(self, "consecutive_down")
+
+    @consecutive_down.setter
+    def consecutive_down(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "consecutive_down", value)
+
+    @property
+    @pulumi.getter(name="consecutiveUp")
+    def consecutive_up(self) -> Optional[pulumi.Input[int]]:
+        """
+        To be marked healthy the monitored origin must pass this healthcheck N consecutive times. Defaults to `0`.
+        """
+        return pulumi.get(self, "consecutive_up")
+
+    @consecutive_up.setter
+    def consecutive_up(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "consecutive_up", value)
 
     @property
     @pulumi.getter(name="createdOn")
@@ -547,6 +611,8 @@ class LoadBalancerMonitor(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: Optional[pulumi.Input[str]] = None,
                  allow_insecure: Optional[pulumi.Input[bool]] = None,
+                 consecutive_down: Optional[pulumi.Input[int]] = None,
+                 consecutive_up: Optional[pulumi.Input[int]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  expected_body: Optional[pulumi.Input[str]] = None,
                  expected_codes: Optional[pulumi.Input[str]] = None,
@@ -595,6 +661,8 @@ class LoadBalancerMonitor(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_id: The account identifier to target for the resource.
         :param pulumi.Input[bool] allow_insecure: Do not validate the certificate when monitor use HTTPS.  Only valid if `type` is "http" or "https".
+        :param pulumi.Input[int] consecutive_down: To be marked unhealthy the monitored origin must fail this healthcheck N consecutive times. Defaults to `0`.
+        :param pulumi.Input[int] consecutive_up: To be marked healthy the monitored origin must pass this healthcheck N consecutive times. Defaults to `0`.
         :param pulumi.Input[str] description: Free text description.
         :param pulumi.Input[str] expected_body: A case-insensitive sub-string to look for in the response body. If this string is not found, the origin will be marked as unhealthy. Only valid if `type` is "http" or "https".
         :param pulumi.Input[str] expected_codes: The expected HTTP response code or code range of the health check. Eg `2xx`. Only valid and required if `type` is "http" or "https".
@@ -662,6 +730,8 @@ class LoadBalancerMonitor(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: Optional[pulumi.Input[str]] = None,
                  allow_insecure: Optional[pulumi.Input[bool]] = None,
+                 consecutive_down: Optional[pulumi.Input[int]] = None,
+                 consecutive_up: Optional[pulumi.Input[int]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  expected_body: Optional[pulumi.Input[str]] = None,
                  expected_codes: Optional[pulumi.Input[str]] = None,
@@ -688,6 +758,8 @@ class LoadBalancerMonitor(pulumi.CustomResource):
                 raise TypeError("Missing required property 'account_id'")
             __props__.__dict__["account_id"] = account_id
             __props__.__dict__["allow_insecure"] = allow_insecure
+            __props__.__dict__["consecutive_down"] = consecutive_down
+            __props__.__dict__["consecutive_up"] = consecutive_up
             __props__.__dict__["description"] = description
             __props__.__dict__["expected_body"] = expected_body
             __props__.__dict__["expected_codes"] = expected_codes
@@ -715,6 +787,8 @@ class LoadBalancerMonitor(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             account_id: Optional[pulumi.Input[str]] = None,
             allow_insecure: Optional[pulumi.Input[bool]] = None,
+            consecutive_down: Optional[pulumi.Input[int]] = None,
+            consecutive_up: Optional[pulumi.Input[int]] = None,
             created_on: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
             expected_body: Optional[pulumi.Input[str]] = None,
@@ -739,6 +813,8 @@ class LoadBalancerMonitor(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_id: The account identifier to target for the resource.
         :param pulumi.Input[bool] allow_insecure: Do not validate the certificate when monitor use HTTPS.  Only valid if `type` is "http" or "https".
+        :param pulumi.Input[int] consecutive_down: To be marked unhealthy the monitored origin must fail this healthcheck N consecutive times. Defaults to `0`.
+        :param pulumi.Input[int] consecutive_up: To be marked healthy the monitored origin must pass this healthcheck N consecutive times. Defaults to `0`.
         :param pulumi.Input[str] created_on: The RFC3339 timestamp of when the load balancer monitor was created.
         :param pulumi.Input[str] description: Free text description.
         :param pulumi.Input[str] expected_body: A case-insensitive sub-string to look for in the response body. If this string is not found, the origin will be marked as unhealthy. Only valid if `type` is "http" or "https".
@@ -761,6 +837,8 @@ class LoadBalancerMonitor(pulumi.CustomResource):
 
         __props__.__dict__["account_id"] = account_id
         __props__.__dict__["allow_insecure"] = allow_insecure
+        __props__.__dict__["consecutive_down"] = consecutive_down
+        __props__.__dict__["consecutive_up"] = consecutive_up
         __props__.__dict__["created_on"] = created_on
         __props__.__dict__["description"] = description
         __props__.__dict__["expected_body"] = expected_body
@@ -793,6 +871,22 @@ class LoadBalancerMonitor(pulumi.CustomResource):
         Do not validate the certificate when monitor use HTTPS.  Only valid if `type` is "http" or "https".
         """
         return pulumi.get(self, "allow_insecure")
+
+    @property
+    @pulumi.getter(name="consecutiveDown")
+    def consecutive_down(self) -> pulumi.Output[Optional[int]]:
+        """
+        To be marked unhealthy the monitored origin must fail this healthcheck N consecutive times. Defaults to `0`.
+        """
+        return pulumi.get(self, "consecutive_down")
+
+    @property
+    @pulumi.getter(name="consecutiveUp")
+    def consecutive_up(self) -> pulumi.Output[Optional[int]]:
+        """
+        To be marked healthy the monitored origin must pass this healthcheck N consecutive times. Defaults to `0`.
+        """
+        return pulumi.get(self, "consecutive_up")
 
     @property
     @pulumi.getter(name="createdOn")

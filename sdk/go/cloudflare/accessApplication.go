@@ -90,8 +90,10 @@ type AccessApplication struct {
 	CorsHeaders AccessApplicationCorsHeaderArrayOutput `pulumi:"corsHeaders"`
 	// Option that returns a custom error message when a user is denied access to the application.
 	CustomDenyMessage pulumi.StringPtrOutput `pulumi:"customDenyMessage"`
-	// Option that redirects to a custom URL when a user is denied access to the application.
+	// Option that redirects to a custom URL when a user is denied access to the application via identity based rules.
 	CustomDenyUrl pulumi.StringPtrOutput `pulumi:"customDenyUrl"`
+	// Option that redirects to a custom URL when a user is denied access to the application via non identity rules.
+	CustomNonIdentityDenyUrl pulumi.StringPtrOutput `pulumi:"customNonIdentityDenyUrl"`
 	// The custom pages selected for the application.
 	CustomPages pulumi.StringArrayOutput `pulumi:"customPages"`
 	// The primary hostname and path that Access will secure. If the app is visible in the App Launcher dashboard, this is the domain that will be displayed.
@@ -169,8 +171,10 @@ type accessApplicationState struct {
 	CorsHeaders []AccessApplicationCorsHeader `pulumi:"corsHeaders"`
 	// Option that returns a custom error message when a user is denied access to the application.
 	CustomDenyMessage *string `pulumi:"customDenyMessage"`
-	// Option that redirects to a custom URL when a user is denied access to the application.
+	// Option that redirects to a custom URL when a user is denied access to the application via identity based rules.
 	CustomDenyUrl *string `pulumi:"customDenyUrl"`
+	// Option that redirects to a custom URL when a user is denied access to the application via non identity rules.
+	CustomNonIdentityDenyUrl *string `pulumi:"customNonIdentityDenyUrl"`
 	// The custom pages selected for the application.
 	CustomPages []string `pulumi:"customPages"`
 	// The primary hostname and path that Access will secure. If the app is visible in the App Launcher dashboard, this is the domain that will be displayed.
@@ -216,8 +220,10 @@ type AccessApplicationState struct {
 	CorsHeaders AccessApplicationCorsHeaderArrayInput
 	// Option that returns a custom error message when a user is denied access to the application.
 	CustomDenyMessage pulumi.StringPtrInput
-	// Option that redirects to a custom URL when a user is denied access to the application.
+	// Option that redirects to a custom URL when a user is denied access to the application via identity based rules.
 	CustomDenyUrl pulumi.StringPtrInput
+	// Option that redirects to a custom URL when a user is denied access to the application via non identity rules.
+	CustomNonIdentityDenyUrl pulumi.StringPtrInput
 	// The custom pages selected for the application.
 	CustomPages pulumi.StringArrayInput
 	// The primary hostname and path that Access will secure. If the app is visible in the App Launcher dashboard, this is the domain that will be displayed.
@@ -265,8 +271,10 @@ type accessApplicationArgs struct {
 	CorsHeaders []AccessApplicationCorsHeader `pulumi:"corsHeaders"`
 	// Option that returns a custom error message when a user is denied access to the application.
 	CustomDenyMessage *string `pulumi:"customDenyMessage"`
-	// Option that redirects to a custom URL when a user is denied access to the application.
+	// Option that redirects to a custom URL when a user is denied access to the application via identity based rules.
 	CustomDenyUrl *string `pulumi:"customDenyUrl"`
+	// Option that redirects to a custom URL when a user is denied access to the application via non identity rules.
+	CustomNonIdentityDenyUrl *string `pulumi:"customNonIdentityDenyUrl"`
 	// The custom pages selected for the application.
 	CustomPages []string `pulumi:"customPages"`
 	// The primary hostname and path that Access will secure. If the app is visible in the App Launcher dashboard, this is the domain that will be displayed.
@@ -311,8 +319,10 @@ type AccessApplicationArgs struct {
 	CorsHeaders AccessApplicationCorsHeaderArrayInput
 	// Option that returns a custom error message when a user is denied access to the application.
 	CustomDenyMessage pulumi.StringPtrInput
-	// Option that redirects to a custom URL when a user is denied access to the application.
+	// Option that redirects to a custom URL when a user is denied access to the application via identity based rules.
 	CustomDenyUrl pulumi.StringPtrInput
+	// Option that redirects to a custom URL when a user is denied access to the application via non identity rules.
+	CustomNonIdentityDenyUrl pulumi.StringPtrInput
 	// The custom pages selected for the application.
 	CustomPages pulumi.StringArrayInput
 	// The primary hostname and path that Access will secure. If the app is visible in the App Launcher dashboard, this is the domain that will be displayed.
@@ -465,9 +475,14 @@ func (o AccessApplicationOutput) CustomDenyMessage() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AccessApplication) pulumi.StringPtrOutput { return v.CustomDenyMessage }).(pulumi.StringPtrOutput)
 }
 
-// Option that redirects to a custom URL when a user is denied access to the application.
+// Option that redirects to a custom URL when a user is denied access to the application via identity based rules.
 func (o AccessApplicationOutput) CustomDenyUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AccessApplication) pulumi.StringPtrOutput { return v.CustomDenyUrl }).(pulumi.StringPtrOutput)
+}
+
+// Option that redirects to a custom URL when a user is denied access to the application via non identity rules.
+func (o AccessApplicationOutput) CustomNonIdentityDenyUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccessApplication) pulumi.StringPtrOutput { return v.CustomNonIdentityDenyUrl }).(pulumi.StringPtrOutput)
 }
 
 // The custom pages selected for the application.

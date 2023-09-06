@@ -215,14 +215,14 @@ public final class WaitingRoomArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * HTTP status code returned to a user while in the queue.
+     * HTTP status code returned to a user while in the queue. Defaults to `200`.
      * 
      */
     @Import(name="queueingStatusCode")
     private @Nullable Output<Integer> queueingStatusCode;
 
     /**
-     * @return HTTP status code returned to a user while in the queue.
+     * @return HTTP status code returned to a user while in the queue. Defaults to `200`.
      * 
      */
     public Optional<Output<Integer>> queueingStatusCode() {
@@ -614,7 +614,7 @@ public final class WaitingRoomArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param queueingStatusCode HTTP status code returned to a user while in the queue.
+         * @param queueingStatusCode HTTP status code returned to a user while in the queue. Defaults to `200`.
          * 
          * @return builder
          * 
@@ -625,7 +625,7 @@ public final class WaitingRoomArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param queueingStatusCode HTTP status code returned to a user while in the queue.
+         * @param queueingStatusCode HTTP status code returned to a user while in the queue. Defaults to `200`.
          * 
          * @return builder
          * 

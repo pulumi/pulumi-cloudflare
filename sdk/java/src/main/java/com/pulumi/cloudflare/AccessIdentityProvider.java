@@ -129,14 +129,14 @@ public class AccessIdentityProvider extends com.pulumi.resources.CustomResource 
      * 
      */
     @Export(name="configs", refs={List.class,AccessIdentityProviderConfig.class}, tree="[0,1]")
-    private Output</* @Nullable */ List<AccessIdentityProviderConfig>> configs;
+    private Output<List<AccessIdentityProviderConfig>> configs;
 
     /**
      * @return Provider configuration from the [developer documentation](https://developers.cloudflare.com/access/configuring-identity-providers/).
      * 
      */
-    public Output<Optional<List<AccessIdentityProviderConfig>>> configs() {
-        return Codegen.optional(this.configs);
+    public Output<List<AccessIdentityProviderConfig>> configs() {
+        return this.configs;
     }
     /**
      * Friendly name of the Access Identity Provider configuration.
@@ -157,14 +157,14 @@ public class AccessIdentityProvider extends com.pulumi.resources.CustomResource 
      * 
      */
     @Export(name="scimConfigs", refs={List.class,AccessIdentityProviderScimConfig.class}, tree="[0,1]")
-    private Output</* @Nullable */ List<AccessIdentityProviderScimConfig>> scimConfigs;
+    private Output<List<AccessIdentityProviderScimConfig>> scimConfigs;
 
     /**
      * @return Configuration for SCIM settings for a given IDP.
      * 
      */
-    public Output<Optional<List<AccessIdentityProviderScimConfig>>> scimConfigs() {
-        return Codegen.optional(this.scimConfigs);
+    public Output<List<AccessIdentityProviderScimConfig>> scimConfigs() {
+        return this.scimConfigs;
     }
     /**
      * The provider type to use. Available values: `centrify`, `facebook`, `google-apps`, `oidc`, `github`, `google`, `saml`, `linkedin`, `azureAD`, `okta`, `onetimepin`, `onelogin`, `yandex`.

@@ -181,18 +181,32 @@ public class AccessApplication extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.customDenyMessage);
     }
     /**
-     * Option that redirects to a custom URL when a user is denied access to the application.
+     * Option that redirects to a custom URL when a user is denied access to the application via identity based rules.
      * 
      */
     @Export(name="customDenyUrl", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> customDenyUrl;
 
     /**
-     * @return Option that redirects to a custom URL when a user is denied access to the application.
+     * @return Option that redirects to a custom URL when a user is denied access to the application via identity based rules.
      * 
      */
     public Output<Optional<String>> customDenyUrl() {
         return Codegen.optional(this.customDenyUrl);
+    }
+    /**
+     * Option that redirects to a custom URL when a user is denied access to the application via non identity rules.
+     * 
+     */
+    @Export(name="customNonIdentityDenyUrl", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> customNonIdentityDenyUrl;
+
+    /**
+     * @return Option that redirects to a custom URL when a user is denied access to the application via non identity rules.
+     * 
+     */
+    public Output<Optional<String>> customNonIdentityDenyUrl() {
+        return Codegen.optional(this.customNonIdentityDenyUrl);
     }
     /**
      * The custom pages selected for the application.

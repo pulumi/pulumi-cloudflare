@@ -129,16 +129,32 @@ public final class AccessGroupIncludeArgs extends com.pulumi.resources.ResourceA
         return Optional.ofNullable(this.gsuites);
     }
 
+    /**
+     * The ID of an existing IP list to reference.
+     * 
+     */
     @Import(name="ipLists")
     private @Nullable Output<List<String>> ipLists;
 
+    /**
+     * @return The ID of an existing IP list to reference.
+     * 
+     */
     public Optional<Output<List<String>>> ipLists() {
         return Optional.ofNullable(this.ipLists);
     }
 
+    /**
+     * An IPv4 or IPv6 CIDR block.
+     * 
+     */
     @Import(name="ips")
     private @Nullable Output<List<String>> ips;
 
+    /**
+     * @return An IPv4 or IPv6 CIDR block.
+     * 
+     */
     public Optional<Output<List<String>>> ips() {
         return Optional.ofNullable(this.ips);
     }
@@ -386,28 +402,64 @@ public final class AccessGroupIncludeArgs extends com.pulumi.resources.ResourceA
             return gsuites(List.of(gsuites));
         }
 
+        /**
+         * @param ipLists The ID of an existing IP list to reference.
+         * 
+         * @return builder
+         * 
+         */
         public Builder ipLists(@Nullable Output<List<String>> ipLists) {
             $.ipLists = ipLists;
             return this;
         }
 
+        /**
+         * @param ipLists The ID of an existing IP list to reference.
+         * 
+         * @return builder
+         * 
+         */
         public Builder ipLists(List<String> ipLists) {
             return ipLists(Output.of(ipLists));
         }
 
+        /**
+         * @param ipLists The ID of an existing IP list to reference.
+         * 
+         * @return builder
+         * 
+         */
         public Builder ipLists(String... ipLists) {
             return ipLists(List.of(ipLists));
         }
 
+        /**
+         * @param ips An IPv4 or IPv6 CIDR block.
+         * 
+         * @return builder
+         * 
+         */
         public Builder ips(@Nullable Output<List<String>> ips) {
             $.ips = ips;
             return this;
         }
 
+        /**
+         * @param ips An IPv4 or IPv6 CIDR block.
+         * 
+         * @return builder
+         * 
+         */
         public Builder ips(List<String> ips) {
             return ips(Output.of(ips));
         }
 
+        /**
+         * @param ips An IPv4 or IPv6 CIDR block.
+         * 
+         * @return builder
+         * 
+         */
         public Builder ips(String... ips) {
             return ips(List.of(ips));
         }

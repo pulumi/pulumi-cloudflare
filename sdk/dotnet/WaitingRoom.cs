@@ -140,7 +140,7 @@ namespace Pulumi.Cloudflare
         public Output<string?> QueueingMethod { get; private set; } = null!;
 
         /// <summary>
-        /// HTTP status code returned to a user while in the queue.
+        /// HTTP status code returned to a user while in the queue. Defaults to `200`.
         /// </summary>
         [Output("queueingStatusCode")]
         public Output<int?> QueueingStatusCode { get; private set; } = null!;
@@ -300,7 +300,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? QueueingMethod { get; set; }
 
         /// <summary>
-        /// HTTP status code returned to a user while in the queue.
+        /// HTTP status code returned to a user while in the queue. Defaults to `200`.
         /// </summary>
         [Input("queueingStatusCode")]
         public Input<int>? QueueingStatusCode { get; set; }
@@ -422,7 +422,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? QueueingMethod { get; set; }
 
         /// <summary>
-        /// HTTP status code returned to a user while in the queue.
+        /// HTTP status code returned to a user while in the queue. Defaults to `200`.
         /// </summary>
         [Input("queueingStatusCode")]
         public Input<int>? QueueingStatusCode { get; set; }

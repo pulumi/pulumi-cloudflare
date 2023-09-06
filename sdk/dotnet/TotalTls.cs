@@ -31,6 +31,12 @@ namespace Pulumi.Cloudflare
     /// 
     /// });
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// ```sh
+    ///  $ pulumi import cloudflare:index/totalTls:TotalTls example &lt;zone_id&gt;
+    /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/totalTls:TotalTls")]
     public partial class TotalTls : global::Pulumi.CustomResource

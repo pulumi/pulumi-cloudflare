@@ -99,6 +99,34 @@ public class LoadBalancerMonitor extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.allowInsecure);
     }
     /**
+     * To be marked unhealthy the monitored origin must fail this healthcheck N consecutive times. Defaults to `0`.
+     * 
+     */
+    @Export(name="consecutiveDown", refs={Integer.class}, tree="[0]")
+    private Output</* @Nullable */ Integer> consecutiveDown;
+
+    /**
+     * @return To be marked unhealthy the monitored origin must fail this healthcheck N consecutive times. Defaults to `0`.
+     * 
+     */
+    public Output<Optional<Integer>> consecutiveDown() {
+        return Codegen.optional(this.consecutiveDown);
+    }
+    /**
+     * To be marked healthy the monitored origin must pass this healthcheck N consecutive times. Defaults to `0`.
+     * 
+     */
+    @Export(name="consecutiveUp", refs={Integer.class}, tree="[0]")
+    private Output</* @Nullable */ Integer> consecutiveUp;
+
+    /**
+     * @return To be marked healthy the monitored origin must pass this healthcheck N consecutive times. Defaults to `0`.
+     * 
+     */
+    public Output<Optional<Integer>> consecutiveUp() {
+        return Codegen.optional(this.consecutiveUp);
+    }
+    /**
      * The RFC3339 timestamp of when the load balancer monitor was created.
      * 
      */

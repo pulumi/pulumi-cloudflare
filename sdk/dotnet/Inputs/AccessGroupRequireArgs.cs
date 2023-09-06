@@ -104,6 +104,10 @@ namespace Pulumi.Cloudflare.Inputs
 
         [Input("ipLists")]
         private InputList<string>? _ipLists;
+
+        /// <summary>
+        /// The ID of an existing IP list to reference.
+        /// </summary>
         public InputList<string> IpLists
         {
             get => _ipLists ?? (_ipLists = new InputList<string>());
@@ -112,6 +116,10 @@ namespace Pulumi.Cloudflare.Inputs
 
         [Input("ips")]
         private InputList<string>? _ips;
+
+        /// <summary>
+        /// An IPv4 or IPv6 CIDR block.
+        /// </summary>
         public InputList<string> Ips
         {
             get => _ips ?? (_ips = new InputList<string>());

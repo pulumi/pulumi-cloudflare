@@ -126,7 +126,7 @@ export class WaitingRoom extends pulumi.CustomResource {
      */
     public readonly queueingMethod!: pulumi.Output<string | undefined>;
     /**
-     * HTTP status code returned to a user while in the queue.
+     * HTTP status code returned to a user while in the queue. Defaults to `200`.
      */
     public readonly queueingStatusCode!: pulumi.Output<number | undefined>;
     /**
@@ -275,7 +275,7 @@ export interface WaitingRoomState {
      */
     queueingMethod?: pulumi.Input<string>;
     /**
-     * HTTP status code returned to a user while in the queue.
+     * HTTP status code returned to a user while in the queue. Defaults to `200`.
      */
     queueingStatusCode?: pulumi.Input<number>;
     /**
@@ -353,7 +353,7 @@ export interface WaitingRoomArgs {
      */
     queueingMethod?: pulumi.Input<string>;
     /**
-     * HTTP status code returned to a user while in the queue.
+     * HTTP status code returned to a user while in the queue. Defaults to `200`.
      */
     queueingStatusCode?: pulumi.Input<number>;
     /**

@@ -19,6 +19,12 @@ import * as utilities from "./utilities";
  *     zoneId: "0da42c8d2132a9ddaf714f9e7c920711",
  * });
  * ```
+ *
+ * ## Import
+ *
+ * ```sh
+ *  $ pulumi import cloudflare:index/totalTls:TotalTls example <zone_id>
+ * ```
  */
 export class TotalTls extends pulumi.CustomResource {
     /**

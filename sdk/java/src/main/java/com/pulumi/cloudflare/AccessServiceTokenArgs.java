@@ -32,14 +32,14 @@ public final class AccessServiceTokenArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * Length of time the service token is valid for. Available values: `8760h`, `17520h`, `43800h`, `87600h`, `forever`
+     * Length of time the service token is valid for. Available values: `8760h`, `17520h`, `43800h`, `87600h`, `forever`.
      * 
      */
     @Import(name="duration")
     private @Nullable Output<String> duration;
 
     /**
-     * @return Length of time the service token is valid for. Available values: `8760h`, `17520h`, `43800h`, `87600h`, `forever`
+     * @return Length of time the service token is valid for. Available values: `8760h`, `17520h`, `43800h`, `87600h`, `forever`.
      * 
      */
     public Optional<Output<String>> duration() {
@@ -141,7 +141,7 @@ public final class AccessServiceTokenArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param duration Length of time the service token is valid for. Available values: `8760h`, `17520h`, `43800h`, `87600h`, `forever`
+         * @param duration Length of time the service token is valid for. Available values: `8760h`, `17520h`, `43800h`, `87600h`, `forever`.
          * 
          * @return builder
          * 
@@ -152,7 +152,7 @@ public final class AccessServiceTokenArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param duration Length of time the service token is valid for. Available values: `8760h`, `17520h`, `43800h`, `87600h`, `forever`
+         * @param duration Length of time the service token is valid for. Available values: `8760h`, `17520h`, `43800h`, `87600h`, `forever`.
          * 
          * @return builder
          * 

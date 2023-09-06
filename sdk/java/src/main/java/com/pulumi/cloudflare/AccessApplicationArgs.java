@@ -110,18 +110,33 @@ public final class AccessApplicationArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Option that redirects to a custom URL when a user is denied access to the application.
+     * Option that redirects to a custom URL when a user is denied access to the application via identity based rules.
      * 
      */
     @Import(name="customDenyUrl")
     private @Nullable Output<String> customDenyUrl;
 
     /**
-     * @return Option that redirects to a custom URL when a user is denied access to the application.
+     * @return Option that redirects to a custom URL when a user is denied access to the application via identity based rules.
      * 
      */
     public Optional<Output<String>> customDenyUrl() {
         return Optional.ofNullable(this.customDenyUrl);
+    }
+
+    /**
+     * Option that redirects to a custom URL when a user is denied access to the application via non identity rules.
+     * 
+     */
+    @Import(name="customNonIdentityDenyUrl")
+    private @Nullable Output<String> customNonIdentityDenyUrl;
+
+    /**
+     * @return Option that redirects to a custom URL when a user is denied access to the application via non identity rules.
+     * 
+     */
+    public Optional<Output<String>> customNonIdentityDenyUrl() {
+        return Optional.ofNullable(this.customNonIdentityDenyUrl);
     }
 
     /**
@@ -344,6 +359,7 @@ public final class AccessApplicationArgs extends com.pulumi.resources.ResourceAr
         this.corsHeaders = $.corsHeaders;
         this.customDenyMessage = $.customDenyMessage;
         this.customDenyUrl = $.customDenyUrl;
+        this.customNonIdentityDenyUrl = $.customNonIdentityDenyUrl;
         this.customPages = $.customPages;
         this.domain = $.domain;
         this.enableBindingCookie = $.enableBindingCookie;
@@ -525,7 +541,7 @@ public final class AccessApplicationArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param customDenyUrl Option that redirects to a custom URL when a user is denied access to the application.
+         * @param customDenyUrl Option that redirects to a custom URL when a user is denied access to the application via identity based rules.
          * 
          * @return builder
          * 
@@ -536,13 +552,34 @@ public final class AccessApplicationArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param customDenyUrl Option that redirects to a custom URL when a user is denied access to the application.
+         * @param customDenyUrl Option that redirects to a custom URL when a user is denied access to the application via identity based rules.
          * 
          * @return builder
          * 
          */
         public Builder customDenyUrl(String customDenyUrl) {
             return customDenyUrl(Output.of(customDenyUrl));
+        }
+
+        /**
+         * @param customNonIdentityDenyUrl Option that redirects to a custom URL when a user is denied access to the application via non identity rules.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder customNonIdentityDenyUrl(@Nullable Output<String> customNonIdentityDenyUrl) {
+            $.customNonIdentityDenyUrl = customNonIdentityDenyUrl;
+            return this;
+        }
+
+        /**
+         * @param customNonIdentityDenyUrl Option that redirects to a custom URL when a user is denied access to the application via non identity rules.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder customNonIdentityDenyUrl(String customNonIdentityDenyUrl) {
+            return customNonIdentityDenyUrl(Output.of(customNonIdentityDenyUrl));
         }
 
         /**

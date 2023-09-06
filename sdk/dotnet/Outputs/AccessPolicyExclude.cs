@@ -28,7 +28,13 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly ImmutableArray<Outputs.AccessPolicyExcludeGithub> Githubs;
         public readonly ImmutableArray<string> Groups;
         public readonly ImmutableArray<Outputs.AccessPolicyExcludeGsuite> Gsuites;
+        /// <summary>
+        /// The ID of an existing IP list to reference.
+        /// </summary>
         public readonly ImmutableArray<string> IpLists;
+        /// <summary>
+        /// An IPv4 or IPv6 CIDR block.
+        /// </summary>
         public readonly ImmutableArray<string> Ips;
         public readonly ImmutableArray<string> LoginMethods;
         public readonly ImmutableArray<Outputs.AccessPolicyExcludeOkta> Oktas;

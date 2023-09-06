@@ -74,6 +74,14 @@ export class LoadBalancerMonitor extends pulumi.CustomResource {
      */
     public readonly allowInsecure!: pulumi.Output<boolean | undefined>;
     /**
+     * To be marked unhealthy the monitored origin must fail this healthcheck N consecutive times. Defaults to `0`.
+     */
+    public readonly consecutiveDown!: pulumi.Output<number | undefined>;
+    /**
+     * To be marked healthy the monitored origin must pass this healthcheck N consecutive times. Defaults to `0`.
+     */
+    public readonly consecutiveUp!: pulumi.Output<number | undefined>;
+    /**
      * The RFC3339 timestamp of when the load balancer monitor was created.
      */
     public /*out*/ readonly createdOn!: pulumi.Output<string>;
@@ -149,6 +157,8 @@ export class LoadBalancerMonitor extends pulumi.CustomResource {
             const state = argsOrState as LoadBalancerMonitorState | undefined;
             resourceInputs["accountId"] = state ? state.accountId : undefined;
             resourceInputs["allowInsecure"] = state ? state.allowInsecure : undefined;
+            resourceInputs["consecutiveDown"] = state ? state.consecutiveDown : undefined;
+            resourceInputs["consecutiveUp"] = state ? state.consecutiveUp : undefined;
             resourceInputs["createdOn"] = state ? state.createdOn : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["expectedBody"] = state ? state.expectedBody : undefined;
@@ -171,6 +181,8 @@ export class LoadBalancerMonitor extends pulumi.CustomResource {
             }
             resourceInputs["accountId"] = args ? args.accountId : undefined;
             resourceInputs["allowInsecure"] = args ? args.allowInsecure : undefined;
+            resourceInputs["consecutiveDown"] = args ? args.consecutiveDown : undefined;
+            resourceInputs["consecutiveUp"] = args ? args.consecutiveUp : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["expectedBody"] = args ? args.expectedBody : undefined;
             resourceInputs["expectedCodes"] = args ? args.expectedCodes : undefined;
@@ -204,6 +216,14 @@ export interface LoadBalancerMonitorState {
      * Do not validate the certificate when monitor use HTTPS.  Only valid if `type` is "http" or "https".
      */
     allowInsecure?: pulumi.Input<boolean>;
+    /**
+     * To be marked unhealthy the monitored origin must fail this healthcheck N consecutive times. Defaults to `0`.
+     */
+    consecutiveDown?: pulumi.Input<number>;
+    /**
+     * To be marked healthy the monitored origin must pass this healthcheck N consecutive times. Defaults to `0`.
+     */
+    consecutiveUp?: pulumi.Input<number>;
     /**
      * The RFC3339 timestamp of when the load balancer monitor was created.
      */
@@ -278,6 +298,14 @@ export interface LoadBalancerMonitorArgs {
      * Do not validate the certificate when monitor use HTTPS.  Only valid if `type` is "http" or "https".
      */
     allowInsecure?: pulumi.Input<boolean>;
+    /**
+     * To be marked unhealthy the monitored origin must fail this healthcheck N consecutive times. Defaults to `0`.
+     */
+    consecutiveDown?: pulumi.Input<number>;
+    /**
+     * To be marked healthy the monitored origin must pass this healthcheck N consecutive times. Defaults to `0`.
+     */
+    consecutiveUp?: pulumi.Input<number>;
     /**
      * Free text description.
      */

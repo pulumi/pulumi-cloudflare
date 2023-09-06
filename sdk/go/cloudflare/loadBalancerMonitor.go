@@ -64,6 +64,10 @@ type LoadBalancerMonitor struct {
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
 	// Do not validate the certificate when monitor use HTTPS.  Only valid if `type` is "http" or "https".
 	AllowInsecure pulumi.BoolPtrOutput `pulumi:"allowInsecure"`
+	// To be marked unhealthy the monitored origin must fail this healthcheck N consecutive times. Defaults to `0`.
+	ConsecutiveDown pulumi.IntPtrOutput `pulumi:"consecutiveDown"`
+	// To be marked healthy the monitored origin must pass this healthcheck N consecutive times. Defaults to `0`.
+	ConsecutiveUp pulumi.IntPtrOutput `pulumi:"consecutiveUp"`
 	// The RFC3339 timestamp of when the load balancer monitor was created.
 	CreatedOn pulumi.StringOutput `pulumi:"createdOn"`
 	// Free text description.
@@ -133,6 +137,10 @@ type loadBalancerMonitorState struct {
 	AccountId *string `pulumi:"accountId"`
 	// Do not validate the certificate when monitor use HTTPS.  Only valid if `type` is "http" or "https".
 	AllowInsecure *bool `pulumi:"allowInsecure"`
+	// To be marked unhealthy the monitored origin must fail this healthcheck N consecutive times. Defaults to `0`.
+	ConsecutiveDown *int `pulumi:"consecutiveDown"`
+	// To be marked healthy the monitored origin must pass this healthcheck N consecutive times. Defaults to `0`.
+	ConsecutiveUp *int `pulumi:"consecutiveUp"`
 	// The RFC3339 timestamp of when the load balancer monitor was created.
 	CreatedOn *string `pulumi:"createdOn"`
 	// Free text description.
@@ -170,6 +178,10 @@ type LoadBalancerMonitorState struct {
 	AccountId pulumi.StringPtrInput
 	// Do not validate the certificate when monitor use HTTPS.  Only valid if `type` is "http" or "https".
 	AllowInsecure pulumi.BoolPtrInput
+	// To be marked unhealthy the monitored origin must fail this healthcheck N consecutive times. Defaults to `0`.
+	ConsecutiveDown pulumi.IntPtrInput
+	// To be marked healthy the monitored origin must pass this healthcheck N consecutive times. Defaults to `0`.
+	ConsecutiveUp pulumi.IntPtrInput
 	// The RFC3339 timestamp of when the load balancer monitor was created.
 	CreatedOn pulumi.StringPtrInput
 	// Free text description.
@@ -211,6 +223,10 @@ type loadBalancerMonitorArgs struct {
 	AccountId string `pulumi:"accountId"`
 	// Do not validate the certificate when monitor use HTTPS.  Only valid if `type` is "http" or "https".
 	AllowInsecure *bool `pulumi:"allowInsecure"`
+	// To be marked unhealthy the monitored origin must fail this healthcheck N consecutive times. Defaults to `0`.
+	ConsecutiveDown *int `pulumi:"consecutiveDown"`
+	// To be marked healthy the monitored origin must pass this healthcheck N consecutive times. Defaults to `0`.
+	ConsecutiveUp *int `pulumi:"consecutiveUp"`
 	// Free text description.
 	Description *string `pulumi:"description"`
 	// A case-insensitive sub-string to look for in the response body. If this string is not found, the origin will be marked as unhealthy. Only valid if `type` is "http" or "https".
@@ -245,6 +261,10 @@ type LoadBalancerMonitorArgs struct {
 	AccountId pulumi.StringInput
 	// Do not validate the certificate when monitor use HTTPS.  Only valid if `type` is "http" or "https".
 	AllowInsecure pulumi.BoolPtrInput
+	// To be marked unhealthy the monitored origin must fail this healthcheck N consecutive times. Defaults to `0`.
+	ConsecutiveDown pulumi.IntPtrInput
+	// To be marked healthy the monitored origin must pass this healthcheck N consecutive times. Defaults to `0`.
+	ConsecutiveUp pulumi.IntPtrInput
 	// Free text description.
 	Description pulumi.StringPtrInput
 	// A case-insensitive sub-string to look for in the response body. If this string is not found, the origin will be marked as unhealthy. Only valid if `type` is "http" or "https".
@@ -368,6 +388,16 @@ func (o LoadBalancerMonitorOutput) AccountId() pulumi.StringOutput {
 // Do not validate the certificate when monitor use HTTPS.  Only valid if `type` is "http" or "https".
 func (o LoadBalancerMonitorOutput) AllowInsecure() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *LoadBalancerMonitor) pulumi.BoolPtrOutput { return v.AllowInsecure }).(pulumi.BoolPtrOutput)
+}
+
+// To be marked unhealthy the monitored origin must fail this healthcheck N consecutive times. Defaults to `0`.
+func (o LoadBalancerMonitorOutput) ConsecutiveDown() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *LoadBalancerMonitor) pulumi.IntPtrOutput { return v.ConsecutiveDown }).(pulumi.IntPtrOutput)
+}
+
+// To be marked healthy the monitored origin must pass this healthcheck N consecutive times. Defaults to `0`.
+func (o LoadBalancerMonitorOutput) ConsecutiveUp() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *LoadBalancerMonitor) pulumi.IntPtrOutput { return v.ConsecutiveUp }).(pulumi.IntPtrOutput)
 }
 
 // The RFC3339 timestamp of when the load balancer monitor was created.

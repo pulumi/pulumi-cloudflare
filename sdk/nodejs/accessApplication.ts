@@ -106,9 +106,13 @@ export class AccessApplication extends pulumi.CustomResource {
      */
     public readonly customDenyMessage!: pulumi.Output<string | undefined>;
     /**
-     * Option that redirects to a custom URL when a user is denied access to the application.
+     * Option that redirects to a custom URL when a user is denied access to the application via identity based rules.
      */
     public readonly customDenyUrl!: pulumi.Output<string | undefined>;
+    /**
+     * Option that redirects to a custom URL when a user is denied access to the application via non identity rules.
+     */
+    public readonly customNonIdentityDenyUrl!: pulumi.Output<string | undefined>;
     /**
      * The custom pages selected for the application.
      */
@@ -187,6 +191,7 @@ export class AccessApplication extends pulumi.CustomResource {
             resourceInputs["corsHeaders"] = state ? state.corsHeaders : undefined;
             resourceInputs["customDenyMessage"] = state ? state.customDenyMessage : undefined;
             resourceInputs["customDenyUrl"] = state ? state.customDenyUrl : undefined;
+            resourceInputs["customNonIdentityDenyUrl"] = state ? state.customNonIdentityDenyUrl : undefined;
             resourceInputs["customPages"] = state ? state.customPages : undefined;
             resourceInputs["domain"] = state ? state.domain : undefined;
             resourceInputs["enableBindingCookie"] = state ? state.enableBindingCookie : undefined;
@@ -213,6 +218,7 @@ export class AccessApplication extends pulumi.CustomResource {
             resourceInputs["corsHeaders"] = args ? args.corsHeaders : undefined;
             resourceInputs["customDenyMessage"] = args ? args.customDenyMessage : undefined;
             resourceInputs["customDenyUrl"] = args ? args.customDenyUrl : undefined;
+            resourceInputs["customNonIdentityDenyUrl"] = args ? args.customNonIdentityDenyUrl : undefined;
             resourceInputs["customPages"] = args ? args.customPages : undefined;
             resourceInputs["domain"] = args ? args.domain : undefined;
             resourceInputs["enableBindingCookie"] = args ? args.enableBindingCookie : undefined;
@@ -267,9 +273,13 @@ export interface AccessApplicationState {
      */
     customDenyMessage?: pulumi.Input<string>;
     /**
-     * Option that redirects to a custom URL when a user is denied access to the application.
+     * Option that redirects to a custom URL when a user is denied access to the application via identity based rules.
      */
     customDenyUrl?: pulumi.Input<string>;
+    /**
+     * Option that redirects to a custom URL when a user is denied access to the application via non identity rules.
+     */
+    customNonIdentityDenyUrl?: pulumi.Input<string>;
     /**
      * The custom pages selected for the application.
      */
@@ -357,9 +367,13 @@ export interface AccessApplicationArgs {
      */
     customDenyMessage?: pulumi.Input<string>;
     /**
-     * Option that redirects to a custom URL when a user is denied access to the application.
+     * Option that redirects to a custom URL when a user is denied access to the application via identity based rules.
      */
     customDenyUrl?: pulumi.Input<string>;
+    /**
+     * Option that redirects to a custom URL when a user is denied access to the application via non identity rules.
+     */
+    customNonIdentityDenyUrl?: pulumi.Input<string>;
     /**
      * The custom pages selected for the application.
      */

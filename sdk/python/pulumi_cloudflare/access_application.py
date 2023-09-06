@@ -24,6 +24,7 @@ class AccessApplicationArgs:
                  cors_headers: Optional[pulumi.Input[Sequence[pulumi.Input['AccessApplicationCorsHeaderArgs']]]] = None,
                  custom_deny_message: Optional[pulumi.Input[str]] = None,
                  custom_deny_url: Optional[pulumi.Input[str]] = None,
+                 custom_non_identity_deny_url: Optional[pulumi.Input[str]] = None,
                  custom_pages: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  domain: Optional[pulumi.Input[str]] = None,
                  enable_binding_cookie: Optional[pulumi.Input[bool]] = None,
@@ -46,7 +47,8 @@ class AccessApplicationArgs:
         :param pulumi.Input[bool] auto_redirect_to_identity: Option to skip identity provider selection if only one is configured in `allowed_idps`. Defaults to `false`.
         :param pulumi.Input[Sequence[pulumi.Input['AccessApplicationCorsHeaderArgs']]] cors_headers: CORS configuration for the Access Application. See below for reference structure.
         :param pulumi.Input[str] custom_deny_message: Option that returns a custom error message when a user is denied access to the application.
-        :param pulumi.Input[str] custom_deny_url: Option that redirects to a custom URL when a user is denied access to the application.
+        :param pulumi.Input[str] custom_deny_url: Option that redirects to a custom URL when a user is denied access to the application via identity based rules.
+        :param pulumi.Input[str] custom_non_identity_deny_url: Option that redirects to a custom URL when a user is denied access to the application via non identity rules.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] custom_pages: The custom pages selected for the application.
         :param pulumi.Input[str] domain: The primary hostname and path that Access will secure. If the app is visible in the App Launcher dashboard, this is the domain that will be displayed.
         :param pulumi.Input[bool] enable_binding_cookie: Option to provide increased security against compromised authorization tokens and CSRF attacks by requiring an additional "binding" cookie on requests. Defaults to `false`.
@@ -76,6 +78,8 @@ class AccessApplicationArgs:
             pulumi.set(__self__, "custom_deny_message", custom_deny_message)
         if custom_deny_url is not None:
             pulumi.set(__self__, "custom_deny_url", custom_deny_url)
+        if custom_non_identity_deny_url is not None:
+            pulumi.set(__self__, "custom_non_identity_deny_url", custom_non_identity_deny_url)
         if custom_pages is not None:
             pulumi.set(__self__, "custom_pages", custom_pages)
         if domain is not None:
@@ -191,13 +195,25 @@ class AccessApplicationArgs:
     @pulumi.getter(name="customDenyUrl")
     def custom_deny_url(self) -> Optional[pulumi.Input[str]]:
         """
-        Option that redirects to a custom URL when a user is denied access to the application.
+        Option that redirects to a custom URL when a user is denied access to the application via identity based rules.
         """
         return pulumi.get(self, "custom_deny_url")
 
     @custom_deny_url.setter
     def custom_deny_url(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "custom_deny_url", value)
+
+    @property
+    @pulumi.getter(name="customNonIdentityDenyUrl")
+    def custom_non_identity_deny_url(self) -> Optional[pulumi.Input[str]]:
+        """
+        Option that redirects to a custom URL when a user is denied access to the application via non identity rules.
+        """
+        return pulumi.get(self, "custom_non_identity_deny_url")
+
+    @custom_non_identity_deny_url.setter
+    def custom_non_identity_deny_url(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "custom_non_identity_deny_url", value)
 
     @property
     @pulumi.getter(name="customPages")
@@ -367,6 +383,7 @@ class _AccessApplicationState:
                  cors_headers: Optional[pulumi.Input[Sequence[pulumi.Input['AccessApplicationCorsHeaderArgs']]]] = None,
                  custom_deny_message: Optional[pulumi.Input[str]] = None,
                  custom_deny_url: Optional[pulumi.Input[str]] = None,
+                 custom_non_identity_deny_url: Optional[pulumi.Input[str]] = None,
                  custom_pages: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  domain: Optional[pulumi.Input[str]] = None,
                  enable_binding_cookie: Optional[pulumi.Input[bool]] = None,
@@ -390,7 +407,8 @@ class _AccessApplicationState:
         :param pulumi.Input[bool] auto_redirect_to_identity: Option to skip identity provider selection if only one is configured in `allowed_idps`. Defaults to `false`.
         :param pulumi.Input[Sequence[pulumi.Input['AccessApplicationCorsHeaderArgs']]] cors_headers: CORS configuration for the Access Application. See below for reference structure.
         :param pulumi.Input[str] custom_deny_message: Option that returns a custom error message when a user is denied access to the application.
-        :param pulumi.Input[str] custom_deny_url: Option that redirects to a custom URL when a user is denied access to the application.
+        :param pulumi.Input[str] custom_deny_url: Option that redirects to a custom URL when a user is denied access to the application via identity based rules.
+        :param pulumi.Input[str] custom_non_identity_deny_url: Option that redirects to a custom URL when a user is denied access to the application via non identity rules.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] custom_pages: The custom pages selected for the application.
         :param pulumi.Input[str] domain: The primary hostname and path that Access will secure. If the app is visible in the App Launcher dashboard, this is the domain that will be displayed.
         :param pulumi.Input[bool] enable_binding_cookie: Option to provide increased security against compromised authorization tokens and CSRF attacks by requiring an additional "binding" cookie on requests. Defaults to `false`.
@@ -422,6 +440,8 @@ class _AccessApplicationState:
             pulumi.set(__self__, "custom_deny_message", custom_deny_message)
         if custom_deny_url is not None:
             pulumi.set(__self__, "custom_deny_url", custom_deny_url)
+        if custom_non_identity_deny_url is not None:
+            pulumi.set(__self__, "custom_non_identity_deny_url", custom_non_identity_deny_url)
         if custom_pages is not None:
             pulumi.set(__self__, "custom_pages", custom_pages)
         if domain is not None:
@@ -539,13 +559,25 @@ class _AccessApplicationState:
     @pulumi.getter(name="customDenyUrl")
     def custom_deny_url(self) -> Optional[pulumi.Input[str]]:
         """
-        Option that redirects to a custom URL when a user is denied access to the application.
+        Option that redirects to a custom URL when a user is denied access to the application via identity based rules.
         """
         return pulumi.get(self, "custom_deny_url")
 
     @custom_deny_url.setter
     def custom_deny_url(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "custom_deny_url", value)
+
+    @property
+    @pulumi.getter(name="customNonIdentityDenyUrl")
+    def custom_non_identity_deny_url(self) -> Optional[pulumi.Input[str]]:
+        """
+        Option that redirects to a custom URL when a user is denied access to the application via non identity rules.
+        """
+        return pulumi.get(self, "custom_non_identity_deny_url")
+
+    @custom_non_identity_deny_url.setter
+    def custom_non_identity_deny_url(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "custom_non_identity_deny_url", value)
 
     @property
     @pulumi.getter(name="customPages")
@@ -728,6 +760,7 @@ class AccessApplication(pulumi.CustomResource):
                  cors_headers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessApplicationCorsHeaderArgs']]]]] = None,
                  custom_deny_message: Optional[pulumi.Input[str]] = None,
                  custom_deny_url: Optional[pulumi.Input[str]] = None,
+                 custom_non_identity_deny_url: Optional[pulumi.Input[str]] = None,
                  custom_pages: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  domain: Optional[pulumi.Input[str]] = None,
                  enable_binding_cookie: Optional[pulumi.Input[bool]] = None,
@@ -793,7 +826,8 @@ class AccessApplication(pulumi.CustomResource):
         :param pulumi.Input[bool] auto_redirect_to_identity: Option to skip identity provider selection if only one is configured in `allowed_idps`. Defaults to `false`.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessApplicationCorsHeaderArgs']]]] cors_headers: CORS configuration for the Access Application. See below for reference structure.
         :param pulumi.Input[str] custom_deny_message: Option that returns a custom error message when a user is denied access to the application.
-        :param pulumi.Input[str] custom_deny_url: Option that redirects to a custom URL when a user is denied access to the application.
+        :param pulumi.Input[str] custom_deny_url: Option that redirects to a custom URL when a user is denied access to the application via identity based rules.
+        :param pulumi.Input[str] custom_non_identity_deny_url: Option that redirects to a custom URL when a user is denied access to the application via non identity rules.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] custom_pages: The custom pages selected for the application.
         :param pulumi.Input[str] domain: The primary hostname and path that Access will secure. If the app is visible in the App Launcher dashboard, this is the domain that will be displayed.
         :param pulumi.Input[bool] enable_binding_cookie: Option to provide increased security against compromised authorization tokens and CSRF attacks by requiring an additional "binding" cookie on requests. Defaults to `false`.
@@ -879,6 +913,7 @@ class AccessApplication(pulumi.CustomResource):
                  cors_headers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessApplicationCorsHeaderArgs']]]]] = None,
                  custom_deny_message: Optional[pulumi.Input[str]] = None,
                  custom_deny_url: Optional[pulumi.Input[str]] = None,
+                 custom_non_identity_deny_url: Optional[pulumi.Input[str]] = None,
                  custom_pages: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  domain: Optional[pulumi.Input[str]] = None,
                  enable_binding_cookie: Optional[pulumi.Input[bool]] = None,
@@ -909,6 +944,7 @@ class AccessApplication(pulumi.CustomResource):
             __props__.__dict__["cors_headers"] = cors_headers
             __props__.__dict__["custom_deny_message"] = custom_deny_message
             __props__.__dict__["custom_deny_url"] = custom_deny_url
+            __props__.__dict__["custom_non_identity_deny_url"] = custom_non_identity_deny_url
             __props__.__dict__["custom_pages"] = custom_pages
             __props__.__dict__["domain"] = domain
             __props__.__dict__["enable_binding_cookie"] = enable_binding_cookie
@@ -944,6 +980,7 @@ class AccessApplication(pulumi.CustomResource):
             cors_headers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessApplicationCorsHeaderArgs']]]]] = None,
             custom_deny_message: Optional[pulumi.Input[str]] = None,
             custom_deny_url: Optional[pulumi.Input[str]] = None,
+            custom_non_identity_deny_url: Optional[pulumi.Input[str]] = None,
             custom_pages: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             domain: Optional[pulumi.Input[str]] = None,
             enable_binding_cookie: Optional[pulumi.Input[bool]] = None,
@@ -972,7 +1009,8 @@ class AccessApplication(pulumi.CustomResource):
         :param pulumi.Input[bool] auto_redirect_to_identity: Option to skip identity provider selection if only one is configured in `allowed_idps`. Defaults to `false`.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessApplicationCorsHeaderArgs']]]] cors_headers: CORS configuration for the Access Application. See below for reference structure.
         :param pulumi.Input[str] custom_deny_message: Option that returns a custom error message when a user is denied access to the application.
-        :param pulumi.Input[str] custom_deny_url: Option that redirects to a custom URL when a user is denied access to the application.
+        :param pulumi.Input[str] custom_deny_url: Option that redirects to a custom URL when a user is denied access to the application via identity based rules.
+        :param pulumi.Input[str] custom_non_identity_deny_url: Option that redirects to a custom URL when a user is denied access to the application via non identity rules.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] custom_pages: The custom pages selected for the application.
         :param pulumi.Input[str] domain: The primary hostname and path that Access will secure. If the app is visible in the App Launcher dashboard, this is the domain that will be displayed.
         :param pulumi.Input[bool] enable_binding_cookie: Option to provide increased security against compromised authorization tokens and CSRF attacks by requiring an additional "binding" cookie on requests. Defaults to `false`.
@@ -1000,6 +1038,7 @@ class AccessApplication(pulumi.CustomResource):
         __props__.__dict__["cors_headers"] = cors_headers
         __props__.__dict__["custom_deny_message"] = custom_deny_message
         __props__.__dict__["custom_deny_url"] = custom_deny_url
+        __props__.__dict__["custom_non_identity_deny_url"] = custom_non_identity_deny_url
         __props__.__dict__["custom_pages"] = custom_pages
         __props__.__dict__["domain"] = domain
         __props__.__dict__["enable_binding_cookie"] = enable_binding_cookie
@@ -1076,9 +1115,17 @@ class AccessApplication(pulumi.CustomResource):
     @pulumi.getter(name="customDenyUrl")
     def custom_deny_url(self) -> pulumi.Output[Optional[str]]:
         """
-        Option that redirects to a custom URL when a user is denied access to the application.
+        Option that redirects to a custom URL when a user is denied access to the application via identity based rules.
         """
         return pulumi.get(self, "custom_deny_url")
+
+    @property
+    @pulumi.getter(name="customNonIdentityDenyUrl")
+    def custom_non_identity_deny_url(self) -> pulumi.Output[Optional[str]]:
+        """
+        Option that redirects to a custom URL when a user is denied access to the application via non identity rules.
+        """
+        return pulumi.get(self, "custom_non_identity_deny_url")
 
     @property
     @pulumi.getter(name="customPages")
