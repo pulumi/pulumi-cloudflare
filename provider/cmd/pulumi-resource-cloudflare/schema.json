@@ -316,13 +316,15 @@
                     "type": "array",
                     "items": {
                         "type": "string"
-                    }
+                    },
+                    "description": "The ID of an existing IP list to reference.\n"
                 },
                 "ips": {
                     "type": "array",
                     "items": {
                         "type": "string"
-                    }
+                    },
+                    "description": "An IPv4 or IPv6 CIDR block.\n"
                 },
                 "loginMethods": {
                     "type": "array",
@@ -534,13 +536,15 @@
                     "type": "array",
                     "items": {
                         "type": "string"
-                    }
+                    },
+                    "description": "The ID of an existing IP list to reference.\n"
                 },
                 "ips": {
                     "type": "array",
                     "items": {
                         "type": "string"
-                    }
+                    },
+                    "description": "An IPv4 or IPv6 CIDR block.\n"
                 },
                 "loginMethods": {
                     "type": "array",
@@ -752,13 +756,15 @@
                     "type": "array",
                     "items": {
                         "type": "string"
-                    }
+                    },
+                    "description": "The ID of an existing IP list to reference.\n"
                 },
                 "ips": {
                     "type": "array",
                     "items": {
                         "type": "string"
-                    }
+                    },
+                    "description": "An IPv4 or IPv6 CIDR block.\n"
                 },
                 "loginMethods": {
                     "type": "array",
@@ -1153,13 +1159,15 @@
                     "type": "array",
                     "items": {
                         "type": "string"
-                    }
+                    },
+                    "description": "The ID of an existing IP list to reference.\n"
                 },
                 "ips": {
                     "type": "array",
                     "items": {
                         "type": "string"
-                    }
+                    },
+                    "description": "An IPv4 or IPv6 CIDR block.\n"
                 },
                 "loginMethods": {
                     "type": "array",
@@ -1373,13 +1381,15 @@
                     "type": "array",
                     "items": {
                         "type": "string"
-                    }
+                    },
+                    "description": "The ID of an existing IP list to reference.\n"
                 },
                 "ips": {
                     "type": "array",
                     "items": {
                         "type": "string"
-                    }
+                    },
+                    "description": "An IPv4 or IPv6 CIDR block.\n"
                 },
                 "loginMethods": {
                     "type": "array",
@@ -1593,13 +1603,15 @@
                     "type": "array",
                     "items": {
                         "type": "string"
-                    }
+                    },
+                    "description": "The ID of an existing IP list to reference.\n"
                 },
                 "ips": {
                     "type": "array",
                     "items": {
                         "type": "string"
-                    }
+                    },
+                    "description": "An IPv4 or IPv6 CIDR block.\n"
                 },
                 "loginMethods": {
                     "type": "array",
@@ -7871,7 +7883,11 @@
                 },
                 "customDenyUrl": {
                     "type": "string",
-                    "description": "Option that redirects to a custom URL when a user is denied access to the application.\n"
+                    "description": "Option that redirects to a custom URL when a user is denied access to the application via identity based rules.\n"
+                },
+                "customNonIdentityDenyUrl": {
+                    "type": "string",
+                    "description": "Option that redirects to a custom URL when a user is denied access to the application via non identity rules.\n"
                 },
                 "customPages": {
                     "type": "array",
@@ -7976,7 +7992,11 @@
                 },
                 "customDenyUrl": {
                     "type": "string",
-                    "description": "Option that redirects to a custom URL when a user is denied access to the application.\n"
+                    "description": "Option that redirects to a custom URL when a user is denied access to the application via identity based rules.\n"
+                },
+                "customNonIdentityDenyUrl": {
+                    "type": "string",
+                    "description": "Option that redirects to a custom URL when a user is denied access to the application via non identity rules.\n"
                 },
                 "customPages": {
                     "type": "array",
@@ -8083,7 +8103,11 @@
                     },
                     "customDenyUrl": {
                         "type": "string",
-                        "description": "Option that redirects to a custom URL when a user is denied access to the application.\n"
+                        "description": "Option that redirects to a custom URL when a user is denied access to the application via identity based rules.\n"
+                    },
+                    "customNonIdentityDenyUrl": {
+                        "type": "string",
+                        "description": "Option that redirects to a custom URL when a user is denied access to the application via non identity rules.\n"
                     },
                     "customPages": {
                         "type": "array",
@@ -8469,7 +8493,9 @@
                 }
             },
             "required": [
+                "configs",
                 "name",
+                "scimConfigs",
                 "type"
             ],
             "inputProperties": {
@@ -9179,7 +9205,7 @@
                 },
                 "duration": {
                     "type": "string",
-                    "description": "Length of time the service token is valid for. Available values: `8760h`, `17520h`, `43800h`, `87600h`, `forever`\n"
+                    "description": "Length of time the service token is valid for. Available values: `8760h`, `17520h`, `43800h`, `87600h`, `forever`.\n"
                 },
                 "expiresAt": {
                     "type": "string",
@@ -9212,7 +9238,7 @@
                 },
                 "duration": {
                     "type": "string",
-                    "description": "Length of time the service token is valid for. Available values: `8760h`, `17520h`, `43800h`, `87600h`, `forever`\n"
+                    "description": "Length of time the service token is valid for. Available values: `8760h`, `17520h`, `43800h`, `87600h`, `forever`.\n"
                 },
                 "minDaysForRenewal": {
                     "type": "integer",
@@ -9250,7 +9276,7 @@
                     },
                     "duration": {
                         "type": "string",
-                        "description": "Length of time the service token is valid for. Available values: `8760h`, `17520h`, `43800h`, `87600h`, `forever`\n"
+                        "description": "Length of time the service token is valid for. Available values: `8760h`, `17520h`, `43800h`, `87600h`, `forever`.\n"
                     },
                     "expiresAt": {
                         "type": "string",
@@ -13809,6 +13835,14 @@
                     "type": "boolean",
                     "description": "Do not validate the certificate when monitor use HTTPS.  Only valid if `type` is \"http\" or \"https\".\n"
                 },
+                "consecutiveDown": {
+                    "type": "integer",
+                    "description": "To be marked unhealthy the monitored origin must fail this healthcheck N consecutive times. Defaults to `0`.\n"
+                },
+                "consecutiveUp": {
+                    "type": "integer",
+                    "description": "To be marked healthy the monitored origin must pass this healthcheck N consecutive times. Defaults to `0`.\n"
+                },
                 "createdOn": {
                     "type": "string",
                     "description": "The RFC3339 timestamp of when the load balancer monitor was created.\n"
@@ -13889,6 +13923,14 @@
                     "type": "boolean",
                     "description": "Do not validate the certificate when monitor use HTTPS.  Only valid if `type` is \"http\" or \"https\".\n"
                 },
+                "consecutiveDown": {
+                    "type": "integer",
+                    "description": "To be marked unhealthy the monitored origin must fail this healthcheck N consecutive times. Defaults to `0`.\n"
+                },
+                "consecutiveUp": {
+                    "type": "integer",
+                    "description": "To be marked healthy the monitored origin must pass this healthcheck N consecutive times. Defaults to `0`.\n"
+                },
                 "description": {
                     "type": "string",
                     "description": "Free text description.\n"
@@ -13958,6 +14000,14 @@
                     "allowInsecure": {
                         "type": "boolean",
                         "description": "Do not validate the certificate when monitor use HTTPS.  Only valid if `type` is \"http\" or \"https\".\n"
+                    },
+                    "consecutiveDown": {
+                        "type": "integer",
+                        "description": "To be marked unhealthy the monitored origin must fail this healthcheck N consecutive times. Defaults to `0`.\n"
+                    },
+                    "consecutiveUp": {
+                        "type": "integer",
+                        "description": "To be marked healthy the monitored origin must pass this healthcheck N consecutive times. Defaults to `0`.\n"
                     },
                     "createdOn": {
                         "type": "string",
@@ -14563,7 +14613,7 @@
             }
         },
         "cloudflare:index/magicFirewallRuleset:MagicFirewallRuleset": {
-            "description": "Magic Firewall is a network-level firewall to protect networks that are onboarded to Cloudflare's Magic Transit. This resource\ncreates a root ruleset on the account level and contains one or more rules. Rules can be crafted in Wireshark syntax and\nare evaluated in order, with the first rule having the highest priority.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as cloudflare from \"@pulumi/cloudflare\";\n\nconst example = new cloudflare.MagicFirewallRuleset(\"example\", {\n    accountId: \"d41d8cd98f00b204e9800998ecf8427e\",\n    description: \"Global mitigations\",\n    name: \"Magic Transit Ruleset\",\n    rules: [\n        {\n            action: \"allow\",\n            description: \"Allow TCP Ephemeral Ports\",\n            enabled: \"true\",\n            expression: \"tcp.dstport in { 32768..65535 }\",\n        },\n        {\n            action: \"block\",\n            description: \"Block all\",\n            enabled: \"true\",\n            expression: \"ip.len \u003e= 0\",\n        },\n    ],\n});\n```\n```python\nimport pulumi\nimport pulumi_cloudflare as cloudflare\n\nexample = cloudflare.MagicFirewallRuleset(\"example\",\n    account_id=\"d41d8cd98f00b204e9800998ecf8427e\",\n    description=\"Global mitigations\",\n    name=\"Magic Transit Ruleset\",\n    rules=[\n        {\n            \"action\": \"allow\",\n            \"description\": \"Allow TCP Ephemeral Ports\",\n            \"enabled\": \"true\",\n            \"expression\": \"tcp.dstport in { 32768..65535 }\",\n        },\n        {\n            \"action\": \"block\",\n            \"description\": \"Block all\",\n            \"enabled\": \"true\",\n            \"expression\": \"ip.len \u003e= 0\",\n        },\n    ])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Cloudflare = Pulumi.Cloudflare;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = new Cloudflare.MagicFirewallRuleset(\"example\", new()\n    {\n        AccountId = \"d41d8cd98f00b204e9800998ecf8427e\",\n        Description = \"Global mitigations\",\n        Name = \"Magic Transit Ruleset\",\n        Rules = new[]\n        {\n            \n            {\n                { \"action\", \"allow\" },\n                { \"description\", \"Allow TCP Ephemeral Ports\" },\n                { \"enabled\", \"true\" },\n                { \"expression\", \"tcp.dstport in { 32768..65535 }\" },\n            },\n            \n            {\n                { \"action\", \"block\" },\n                { \"description\", \"Block all\" },\n                { \"enabled\", \"true\" },\n                { \"expression\", \"ip.len \u003e= 0\" },\n            },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := cloudflare.NewMagicFirewallRuleset(ctx, \"example\", \u0026cloudflare.MagicFirewallRulesetArgs{\n\t\t\tAccountId:   pulumi.String(\"d41d8cd98f00b204e9800998ecf8427e\"),\n\t\t\tDescription: pulumi.String(\"Global mitigations\"),\n\t\t\tName:        pulumi.String(\"Magic Transit Ruleset\"),\n\t\t\tRules: pulumi.StringMapArray{\n\t\t\t\tpulumi.StringMap{\n\t\t\t\t\t\"action\":      pulumi.String(\"allow\"),\n\t\t\t\t\t\"description\": pulumi.String(\"Allow TCP Ephemeral Ports\"),\n\t\t\t\t\t\"enabled\":     pulumi.String(\"true\"),\n\t\t\t\t\t\"expression\":  pulumi.String(\"tcp.dstport in { 32768..65535 }\"),\n\t\t\t\t},\n\t\t\t\tpulumi.StringMap{\n\t\t\t\t\t\"action\":      pulumi.String(\"block\"),\n\t\t\t\t\t\"description\": pulumi.String(\"Block all\"),\n\t\t\t\t\t\"enabled\":     pulumi.String(\"true\"),\n\t\t\t\t\t\"expression\":  pulumi.String(\"ip.len \u003e= 0\"),\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.cloudflare.MagicFirewallRuleset;\nimport com.pulumi.cloudflare.MagicFirewallRulesetArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var example = new MagicFirewallRuleset(\"example\", MagicFirewallRulesetArgs.builder()        \n            .accountId(\"d41d8cd98f00b204e9800998ecf8427e\")\n            .description(\"Global mitigations\")\n            .name(\"Magic Transit Ruleset\")\n            .rules(            \n                Map.ofEntries(\n                    Map.entry(\"action\", \"allow\"),\n                    Map.entry(\"description\", \"Allow TCP Ephemeral Ports\"),\n                    Map.entry(\"enabled\", \"true\"),\n                    Map.entry(\"expression\", \"tcp.dstport in { 32768..65535 }\")\n                ),\n                Map.ofEntries(\n                    Map.entry(\"action\", \"block\"),\n                    Map.entry(\"description\", \"Block all\"),\n                    Map.entry(\"enabled\", \"true\"),\n                    Map.entry(\"expression\", \"ip.len \u003e= 0\")\n                ))\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  example:\n    type: cloudflare:MagicFirewallRuleset\n    properties:\n      accountId: d41d8cd98f00b204e9800998ecf8427e\n      description: Global mitigations\n      name: Magic Transit Ruleset\n      rules:\n        - action: allow\n          description: Allow TCP Ephemeral Ports\n          enabled: 'true'\n          expression: tcp.dstport in { 32768..65535 }\n        - action: block\n          description: Block all\n          enabled: 'true'\n          expression: ip.len \u003e= 0\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nAn existing Magic Firewall Ruleset can be imported using the account ID and ruleset ID\n\n```sh\n $ pulumi import cloudflare:index/magicFirewallRuleset:MagicFirewallRuleset example d41d8cd98f00b204e9800998ecf8427e/cb029e245cfdd66dc8d2e570d5dd3322\n```\n\n ",
+            "description": "Magic Firewall is a network-level firewall to protect networks that are onboarded to Cloudflare's Magic Transit. This resource\ncreates a root ruleset on the account level and contains one or more rules. Rules can be crafted in Wireshark syntax and\nare evaluated in order, with the first rule having the highest priority.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as cloudflare from \"@pulumi/cloudflare\";\n\nconst example = new cloudflare.MagicFirewallRuleset(\"example\", {\n    accountId: \"d41d8cd98f00b204e9800998ecf8427e\",\n    description: \"Global mitigations\",\n    name: \"Magic Transit Ruleset\",\n    rules: [\n        {\n            action: \"allow\",\n            description: \"Allow TCP Ephemeral Ports\",\n            enabled: \"true\",\n            expression: \"tcp.dstport in { 32768..65535 }\",\n        },\n        {\n            action: \"block\",\n            description: \"Block all\",\n            enabled: \"true\",\n            expression: \"ip.len \u003e= 0\",\n        },\n    ],\n});\n```\n```python\nimport pulumi\nimport pulumi_cloudflare as cloudflare\n\nexample = cloudflare.MagicFirewallRuleset(\"example\",\n    account_id=\"d41d8cd98f00b204e9800998ecf8427e\",\n    description=\"Global mitigations\",\n    name=\"Magic Transit Ruleset\",\n    rules=[\n        {\n            \"action\": \"allow\",\n            \"description\": \"Allow TCP Ephemeral Ports\",\n            \"enabled\": \"true\",\n            \"expression\": \"tcp.dstport in { 32768..65535 }\",\n        },\n        {\n            \"action\": \"block\",\n            \"description\": \"Block all\",\n            \"enabled\": \"true\",\n            \"expression\": \"ip.len \u003e= 0\",\n        },\n    ])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Cloudflare = Pulumi.Cloudflare;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = new Cloudflare.MagicFirewallRuleset(\"example\", new()\n    {\n        AccountId = \"d41d8cd98f00b204e9800998ecf8427e\",\n        Description = \"Global mitigations\",\n        Name = \"Magic Transit Ruleset\",\n        Rules = new[]\n        {\n            \n            {\n                { \"action\", \"allow\" },\n                { \"description\", \"Allow TCP Ephemeral Ports\" },\n                { \"enabled\", \"true\" },\n                { \"expression\", \"tcp.dstport in { 32768..65535 }\" },\n            },\n            \n            {\n                { \"action\", \"block\" },\n                { \"description\", \"Block all\" },\n                { \"enabled\", \"true\" },\n                { \"expression\", \"ip.len \u003e= 0\" },\n            },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := cloudflare.NewMagicFirewallRuleset(ctx, \"example\", \u0026cloudflare.MagicFirewallRulesetArgs{\n\t\t\tAccountId:   pulumi.String(\"d41d8cd98f00b204e9800998ecf8427e\"),\n\t\t\tDescription: pulumi.String(\"Global mitigations\"),\n\t\t\tName:        pulumi.String(\"Magic Transit Ruleset\"),\n\t\t\tRules: pulumi.StringMapArray{\n\t\t\t\tpulumi.StringMap{\n\t\t\t\t\t\"action\":      pulumi.String(\"allow\"),\n\t\t\t\t\t\"description\": pulumi.String(\"Allow TCP Ephemeral Ports\"),\n\t\t\t\t\t\"enabled\":     pulumi.String(\"true\"),\n\t\t\t\t\t\"expression\":  pulumi.String(\"tcp.dstport in { 32768..65535 }\"),\n\t\t\t\t},\n\t\t\t\tpulumi.StringMap{\n\t\t\t\t\t\"action\":      pulumi.String(\"block\"),\n\t\t\t\t\t\"description\": pulumi.String(\"Block all\"),\n\t\t\t\t\t\"enabled\":     pulumi.String(\"true\"),\n\t\t\t\t\t\"expression\":  pulumi.String(\"ip.len \u003e= 0\"),\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.cloudflare.MagicFirewallRuleset;\nimport com.pulumi.cloudflare.MagicFirewallRulesetArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var example = new MagicFirewallRuleset(\"example\", MagicFirewallRulesetArgs.builder()        \n            .accountId(\"d41d8cd98f00b204e9800998ecf8427e\")\n            .description(\"Global mitigations\")\n            .name(\"Magic Transit Ruleset\")\n            .rules(            \n                Map.ofEntries(\n                    Map.entry(\"action\", \"allow\"),\n                    Map.entry(\"description\", \"Allow TCP Ephemeral Ports\"),\n                    Map.entry(\"enabled\", \"true\"),\n                    Map.entry(\"expression\", \"tcp.dstport in { 32768..65535 }\")\n                ),\n                Map.ofEntries(\n                    Map.entry(\"action\", \"block\"),\n                    Map.entry(\"description\", \"Block all\"),\n                    Map.entry(\"enabled\", \"true\"),\n                    Map.entry(\"expression\", \"ip.len \u003e= 0\")\n                ))\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  example:\n    type: cloudflare:MagicFirewallRuleset\n    properties:\n      accountId: d41d8cd98f00b204e9800998ecf8427e\n      description: Global mitigations\n      name: Magic Transit Ruleset\n      rules:\n        - action: allow\n          description: Allow TCP Ephemeral Ports\n          enabled: 'true'\n          expression: tcp.dstport in { 32768..65535 }\n        - action: block\n          description: Block all\n          enabled: 'true'\n          expression: ip.len \u003e= 0\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nAn existing Magic Firewall Ruleset can be imported using the account ID and ruleset ID\n\n```sh\n $ pulumi import cloudflare:index/magicFirewallRuleset:MagicFirewallRuleset example d41d8cd98f00b204e9800998ecf8427e/cb029e245cfdd66dc8d2e570d5dd3322\n```\n ",
             "properties": {
                 "accountId": {
                     "type": "string",
@@ -15267,7 +15317,7 @@
             }
         },
         "cloudflare:index/pageRule:PageRule": {
-            "description": "Provides a Cloudflare page rule resource.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as cloudflare from \"@pulumi/cloudflare\";\n\n// Add a page rule to the domain\nconst foobar = new cloudflare.PageRule(\"foobar\", {\n    zoneId: _var.cloudflare_zone_id,\n    target: `sub.${_var.cloudflare_zone}/page`,\n    priority: 1,\n    actions: {\n        ssl: \"flexible\",\n        emailObfuscation: \"on\",\n        minifies: [{\n            html: \"off\",\n            css: \"on\",\n            js: \"on\",\n        }],\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_cloudflare as cloudflare\n\n# Add a page rule to the domain\nfoobar = cloudflare.PageRule(\"foobar\",\n    zone_id=var[\"cloudflare_zone_id\"],\n    target=f\"sub.{var['cloudflare_zone']}/page\",\n    priority=1,\n    actions=cloudflare.PageRuleActionsArgs(\n        ssl=\"flexible\",\n        email_obfuscation=\"on\",\n        minifies=[cloudflare.PageRuleActionsMinifyArgs(\n            html=\"off\",\n            css=\"on\",\n            js=\"on\",\n        )],\n    ))\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Cloudflare = Pulumi.Cloudflare;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    // Add a page rule to the domain\n    var foobar = new Cloudflare.PageRule(\"foobar\", new()\n    {\n        ZoneId = @var.Cloudflare_zone_id,\n        Target = $\"sub.{@var.Cloudflare_zone}/page\",\n        Priority = 1,\n        Actions = new Cloudflare.Inputs.PageRuleActionsArgs\n        {\n            Ssl = \"flexible\",\n            EmailObfuscation = \"on\",\n            Minifies = new[]\n            {\n                new Cloudflare.Inputs.PageRuleActionsMinifyArgs\n                {\n                    Html = \"off\",\n                    Css = \"on\",\n                    Js = \"on\",\n                },\n            },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"fmt\"\n\n\t\"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := cloudflare.NewPageRule(ctx, \"foobar\", \u0026cloudflare.PageRuleArgs{\n\t\t\tZoneId:   pulumi.Any(_var.Cloudflare_zone_id),\n\t\t\tTarget:   pulumi.String(fmt.Sprintf(\"sub.%v/page\", _var.Cloudflare_zone)),\n\t\t\tPriority: pulumi.Int(1),\n\t\t\tActions: \u0026cloudflare.PageRuleActionsArgs{\n\t\t\t\tSsl:              pulumi.String(\"flexible\"),\n\t\t\t\tEmailObfuscation: pulumi.String(\"on\"),\n\t\t\t\tMinifies: cloudflare.PageRuleActionsMinifyArray{\n\t\t\t\t\t\u0026cloudflare.PageRuleActionsMinifyArgs{\n\t\t\t\t\t\tHtml: pulumi.String(\"off\"),\n\t\t\t\t\t\tCss:  pulumi.String(\"on\"),\n\t\t\t\t\t\tJs:   pulumi.String(\"on\"),\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.cloudflare.PageRule;\nimport com.pulumi.cloudflare.PageRuleArgs;\nimport com.pulumi.cloudflare.inputs.PageRuleActionsArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var foobar = new PageRule(\"foobar\", PageRuleArgs.builder()        \n            .zoneId(var_.cloudflare_zone_id())\n            .target(String.format(\"sub.%s/page\", var_.cloudflare_zone()))\n            .priority(1)\n            .actions(PageRuleActionsArgs.builder()\n                .ssl(\"flexible\")\n                .emailObfuscation(\"on\")\n                .minifies(PageRuleActionsMinifyArgs.builder()\n                    .html(\"off\")\n                    .css(\"on\")\n                    .js(\"on\")\n                    .build())\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  # Add a page rule to the domain\n  foobar:\n    type: cloudflare:PageRule\n    properties:\n      zoneId: ${var.cloudflare_zone_id}\n      target: sub.${var.cloudflare_zone}/page\n      priority: 1\n      actions:\n        ssl: flexible\n        emailObfuscation: on\n        minifies:\n          - html: off\n            css: on\n            js: on\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nPage rules can be imported using a composite ID formed of zone ID and page rule ID, e.g.\n\n```sh\n $ pulumi import cloudflare:index/pageRule:PageRule default d41d8cd98f00b204e9800998ecf8427e/ch8374ftwdghsif43\n```\n\n ",
+            "description": "Provides a Cloudflare page rule resource.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as cloudflare from \"@pulumi/cloudflare\";\n\n// Add a page rule to the domain\nconst foobar = new cloudflare.PageRule(\"foobar\", {\n    zoneId: _var.cloudflare_zone_id,\n    target: `sub.${_var.cloudflare_zone}/page`,\n    priority: 1,\n    actions: {\n        ssl: \"flexible\",\n        emailObfuscation: \"on\",\n        minifies: [{\n            html: \"off\",\n            css: \"on\",\n            js: \"on\",\n        }],\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_cloudflare as cloudflare\n\n# Add a page rule to the domain\nfoobar = cloudflare.PageRule(\"foobar\",\n    zone_id=var[\"cloudflare_zone_id\"],\n    target=f\"sub.{var['cloudflare_zone']}/page\",\n    priority=1,\n    actions=cloudflare.PageRuleActionsArgs(\n        ssl=\"flexible\",\n        email_obfuscation=\"on\",\n        minifies=[cloudflare.PageRuleActionsMinifyArgs(\n            html=\"off\",\n            css=\"on\",\n            js=\"on\",\n        )],\n    ))\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Cloudflare = Pulumi.Cloudflare;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    // Add a page rule to the domain\n    var foobar = new Cloudflare.PageRule(\"foobar\", new()\n    {\n        ZoneId = @var.Cloudflare_zone_id,\n        Target = $\"sub.{@var.Cloudflare_zone}/page\",\n        Priority = 1,\n        Actions = new Cloudflare.Inputs.PageRuleActionsArgs\n        {\n            Ssl = \"flexible\",\n            EmailObfuscation = \"on\",\n            Minifies = new[]\n            {\n                new Cloudflare.Inputs.PageRuleActionsMinifyArgs\n                {\n                    Html = \"off\",\n                    Css = \"on\",\n                    Js = \"on\",\n                },\n            },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"fmt\"\n\n\t\"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := cloudflare.NewPageRule(ctx, \"foobar\", \u0026cloudflare.PageRuleArgs{\n\t\t\tZoneId:   pulumi.Any(_var.Cloudflare_zone_id),\n\t\t\tTarget:   pulumi.String(fmt.Sprintf(\"sub.%v/page\", _var.Cloudflare_zone)),\n\t\t\tPriority: pulumi.Int(1),\n\t\t\tActions: \u0026cloudflare.PageRuleActionsArgs{\n\t\t\t\tSsl:              pulumi.String(\"flexible\"),\n\t\t\t\tEmailObfuscation: pulumi.String(\"on\"),\n\t\t\t\tMinifies: cloudflare.PageRuleActionsMinifyArray{\n\t\t\t\t\t\u0026cloudflare.PageRuleActionsMinifyArgs{\n\t\t\t\t\t\tHtml: pulumi.String(\"off\"),\n\t\t\t\t\t\tCss:  pulumi.String(\"on\"),\n\t\t\t\t\t\tJs:   pulumi.String(\"on\"),\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.cloudflare.PageRule;\nimport com.pulumi.cloudflare.PageRuleArgs;\nimport com.pulumi.cloudflare.inputs.PageRuleActionsArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var foobar = new PageRule(\"foobar\", PageRuleArgs.builder()        \n            .zoneId(var_.cloudflare_zone_id())\n            .target(String.format(\"sub.%s/page\", var_.cloudflare_zone()))\n            .priority(1)\n            .actions(PageRuleActionsArgs.builder()\n                .ssl(\"flexible\")\n                .emailObfuscation(\"on\")\n                .minifies(PageRuleActionsMinifyArgs.builder()\n                    .html(\"off\")\n                    .css(\"on\")\n                    .js(\"on\")\n                    .build())\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  # Add a page rule to the domain\n  foobar:\n    type: cloudflare:PageRule\n    properties:\n      zoneId: ${var.cloudflare_zone_id}\n      target: sub.${var.cloudflare_zone}/page\n      priority: 1\n      actions:\n        ssl: flexible\n        emailObfuscation: on\n        minifies:\n          - html: off\n            css: on\n            js: on\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nPage rules can be imported using a composite ID formed of zone ID and page rule ID, e.g.\n\n```sh\n $ pulumi import cloudflare:index/pageRule:PageRule default d41d8cd98f00b204e9800998ecf8427e/ch8374ftwdghsif43\n```\n ",
             "properties": {
                 "actions": {
                     "$ref": "#/types/cloudflare:index/PageRuleActions:PageRuleActions",
@@ -17328,7 +17378,7 @@
             }
         },
         "cloudflare:index/totalTls:TotalTls": {
-            "description": "Provides a resource which manages Total TLS for a zone.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as cloudflare from \"@pulumi/cloudflare\";\n\nconst example = new cloudflare.TotalTls(\"example\", {\n    certificateAuthority: \"lets_encrypt\",\n    enabled: true,\n    zoneId: \"0da42c8d2132a9ddaf714f9e7c920711\",\n});\n```\n```python\nimport pulumi\nimport pulumi_cloudflare as cloudflare\n\nexample = cloudflare.TotalTls(\"example\",\n    certificate_authority=\"lets_encrypt\",\n    enabled=True,\n    zone_id=\"0da42c8d2132a9ddaf714f9e7c920711\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Cloudflare = Pulumi.Cloudflare;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = new Cloudflare.TotalTls(\"example\", new()\n    {\n        CertificateAuthority = \"lets_encrypt\",\n        Enabled = true,\n        ZoneId = \"0da42c8d2132a9ddaf714f9e7c920711\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := cloudflare.NewTotalTls(ctx, \"example\", \u0026cloudflare.TotalTlsArgs{\n\t\t\tCertificateAuthority: pulumi.String(\"lets_encrypt\"),\n\t\t\tEnabled:              pulumi.Bool(true),\n\t\t\tZoneId:               pulumi.String(\"0da42c8d2132a9ddaf714f9e7c920711\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.cloudflare.TotalTls;\nimport com.pulumi.cloudflare.TotalTlsArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var example = new TotalTls(\"example\", TotalTlsArgs.builder()        \n            .certificateAuthority(\"lets_encrypt\")\n            .enabled(true)\n            .zoneId(\"0da42c8d2132a9ddaf714f9e7c920711\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  example:\n    type: cloudflare:TotalTls\n    properties:\n      certificateAuthority: lets_encrypt\n      enabled: true\n      zoneId: 0da42c8d2132a9ddaf714f9e7c920711\n```\n{{% /example %}}\n{{% /examples %}}",
+            "description": "Provides a resource which manages Total TLS for a zone.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as cloudflare from \"@pulumi/cloudflare\";\n\nconst example = new cloudflare.TotalTls(\"example\", {\n    certificateAuthority: \"lets_encrypt\",\n    enabled: true,\n    zoneId: \"0da42c8d2132a9ddaf714f9e7c920711\",\n});\n```\n```python\nimport pulumi\nimport pulumi_cloudflare as cloudflare\n\nexample = cloudflare.TotalTls(\"example\",\n    certificate_authority=\"lets_encrypt\",\n    enabled=True,\n    zone_id=\"0da42c8d2132a9ddaf714f9e7c920711\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Cloudflare = Pulumi.Cloudflare;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = new Cloudflare.TotalTls(\"example\", new()\n    {\n        CertificateAuthority = \"lets_encrypt\",\n        Enabled = true,\n        ZoneId = \"0da42c8d2132a9ddaf714f9e7c920711\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := cloudflare.NewTotalTls(ctx, \"example\", \u0026cloudflare.TotalTlsArgs{\n\t\t\tCertificateAuthority: pulumi.String(\"lets_encrypt\"),\n\t\t\tEnabled:              pulumi.Bool(true),\n\t\t\tZoneId:               pulumi.String(\"0da42c8d2132a9ddaf714f9e7c920711\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.cloudflare.TotalTls;\nimport com.pulumi.cloudflare.TotalTlsArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var example = new TotalTls(\"example\", TotalTlsArgs.builder()        \n            .certificateAuthority(\"lets_encrypt\")\n            .enabled(true)\n            .zoneId(\"0da42c8d2132a9ddaf714f9e7c920711\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  example:\n    type: cloudflare:TotalTls\n    properties:\n      certificateAuthority: lets_encrypt\n      enabled: true\n      zoneId: 0da42c8d2132a9ddaf714f9e7c920711\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\n\n\n```sh\n $ pulumi import cloudflare:index/totalTls:TotalTls example \u003czone_id\u003e\n```\n\n ",
             "properties": {
                 "certificateAuthority": {
                     "type": "string",
@@ -18047,7 +18097,7 @@
                 },
                 "queueingStatusCode": {
                     "type": "integer",
-                    "description": "HTTP status code returned to a user while in the queue.\n"
+                    "description": "HTTP status code returned to a user while in the queue. Defaults to `200`.\n"
                 },
                 "sessionDuration": {
                     "type": "integer",
@@ -18132,7 +18182,7 @@
                 },
                 "queueingStatusCode": {
                     "type": "integer",
-                    "description": "HTTP status code returned to a user while in the queue.\n"
+                    "description": "HTTP status code returned to a user while in the queue. Defaults to `200`.\n"
                 },
                 "sessionDuration": {
                     "type": "integer",
@@ -18220,7 +18270,7 @@
                     },
                     "queueingStatusCode": {
                         "type": "integer",
-                        "description": "HTTP status code returned to a user while in the queue.\n"
+                        "description": "HTTP status code returned to a user while in the queue. Defaults to `200`.\n"
                     },
                     "sessionDuration": {
                         "type": "integer",
@@ -18698,6 +18748,237 @@
                     "zoneId": {
                         "type": "string",
                         "description": "The zone identifier to target for the resource.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "cloudflare:index/webAnalyticsRule:WebAnalyticsRule": {
+            "description": "Provides a Cloudflare Web Analytics Rule resource.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as cloudflare from \"@pulumi/cloudflare\";\n\nconst exampleWebAnalyticsSite = new cloudflare.WebAnalyticsSite(\"exampleWebAnalyticsSite\", {\n    accountId: \"f037e56e89293a057740de681ac9abbe\",\n    zoneTag: \"0da42c8d2132a9ddaf714f9e7c920711\",\n    autoInstall: true,\n});\nconst exampleWebAnalyticsRule = new cloudflare.WebAnalyticsRule(\"exampleWebAnalyticsRule\", {\n    accountId: \"f037e56e89293a057740de681ac9abbe\",\n    rulesetId: exampleWebAnalyticsSite.rulesetId,\n    host: \"*\",\n    paths: [\"/excluded\"],\n    inclusive: false,\n    isPaused: false,\n}, {\n    dependsOn: [exampleWebAnalyticsSite],\n});\n```\n```python\nimport pulumi\nimport pulumi_cloudflare as cloudflare\n\nexample_web_analytics_site = cloudflare.WebAnalyticsSite(\"exampleWebAnalyticsSite\",\n    account_id=\"f037e56e89293a057740de681ac9abbe\",\n    zone_tag=\"0da42c8d2132a9ddaf714f9e7c920711\",\n    auto_install=True)\nexample_web_analytics_rule = cloudflare.WebAnalyticsRule(\"exampleWebAnalyticsRule\",\n    account_id=\"f037e56e89293a057740de681ac9abbe\",\n    ruleset_id=example_web_analytics_site.ruleset_id,\n    host=\"*\",\n    paths=[\"/excluded\"],\n    inclusive=False,\n    is_paused=False,\n    opts=pulumi.ResourceOptions(depends_on=[example_web_analytics_site]))\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Cloudflare = Pulumi.Cloudflare;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var exampleWebAnalyticsSite = new Cloudflare.WebAnalyticsSite(\"exampleWebAnalyticsSite\", new()\n    {\n        AccountId = \"f037e56e89293a057740de681ac9abbe\",\n        ZoneTag = \"0da42c8d2132a9ddaf714f9e7c920711\",\n        AutoInstall = true,\n    });\n\n    var exampleWebAnalyticsRule = new Cloudflare.WebAnalyticsRule(\"exampleWebAnalyticsRule\", new()\n    {\n        AccountId = \"f037e56e89293a057740de681ac9abbe\",\n        RulesetId = exampleWebAnalyticsSite.RulesetId,\n        Host = \"*\",\n        Paths = new[]\n        {\n            \"/excluded\",\n        },\n        Inclusive = false,\n        IsPaused = false,\n    }, new CustomResourceOptions\n    {\n        DependsOn = new[]\n        {\n            exampleWebAnalyticsSite,\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\texampleWebAnalyticsSite, err := cloudflare.NewWebAnalyticsSite(ctx, \"exampleWebAnalyticsSite\", \u0026cloudflare.WebAnalyticsSiteArgs{\n\t\t\tAccountId:   pulumi.String(\"f037e56e89293a057740de681ac9abbe\"),\n\t\t\tZoneTag:     pulumi.String(\"0da42c8d2132a9ddaf714f9e7c920711\"),\n\t\t\tAutoInstall: pulumi.Bool(true),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = cloudflare.NewWebAnalyticsRule(ctx, \"exampleWebAnalyticsRule\", \u0026cloudflare.WebAnalyticsRuleArgs{\n\t\t\tAccountId: pulumi.String(\"f037e56e89293a057740de681ac9abbe\"),\n\t\t\tRulesetId: exampleWebAnalyticsSite.RulesetId,\n\t\t\tHost:      pulumi.String(\"*\"),\n\t\t\tPaths: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"/excluded\"),\n\t\t\t},\n\t\t\tInclusive: pulumi.Bool(false),\n\t\t\tIsPaused:  pulumi.Bool(false),\n\t\t}, pulumi.DependsOn([]pulumi.Resource{\n\t\t\texampleWebAnalyticsSite,\n\t\t}))\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.cloudflare.WebAnalyticsSite;\nimport com.pulumi.cloudflare.WebAnalyticsSiteArgs;\nimport com.pulumi.cloudflare.WebAnalyticsRule;\nimport com.pulumi.cloudflare.WebAnalyticsRuleArgs;\nimport com.pulumi.resources.CustomResourceOptions;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var exampleWebAnalyticsSite = new WebAnalyticsSite(\"exampleWebAnalyticsSite\", WebAnalyticsSiteArgs.builder()        \n            .accountId(\"f037e56e89293a057740de681ac9abbe\")\n            .zoneTag(\"0da42c8d2132a9ddaf714f9e7c920711\")\n            .autoInstall(true)\n            .build());\n\n        var exampleWebAnalyticsRule = new WebAnalyticsRule(\"exampleWebAnalyticsRule\", WebAnalyticsRuleArgs.builder()        \n            .accountId(\"f037e56e89293a057740de681ac9abbe\")\n            .rulesetId(exampleWebAnalyticsSite.rulesetId())\n            .host(\"*\")\n            .paths(\"/excluded\")\n            .inclusive(false)\n            .isPaused(false)\n            .build(), CustomResourceOptions.builder()\n                .dependsOn(exampleWebAnalyticsSite)\n                .build());\n\n    }\n}\n```\n```yaml\nresources:\n  exampleWebAnalyticsSite:\n    type: cloudflare:WebAnalyticsSite\n    properties:\n      accountId: f037e56e89293a057740de681ac9abbe\n      zoneTag: 0da42c8d2132a9ddaf714f9e7c920711\n      autoInstall: true\n  exampleWebAnalyticsRule:\n    type: cloudflare:WebAnalyticsRule\n    properties:\n      accountId: f037e56e89293a057740de681ac9abbe\n      rulesetId: ${exampleWebAnalyticsSite.rulesetId}\n      host: '*'\n      paths:\n        - /excluded\n      inclusive: false\n      isPaused: false\n    options:\n      dependson:\n        - ${exampleWebAnalyticsSite}\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\n\n\n```sh\n $ pulumi import cloudflare:index/webAnalyticsRule:WebAnalyticsRule example \u003caccount_id\u003e/\u003cruleset_id\u003e/\u003crule_id\u003e\n```\n\n ",
+            "properties": {
+                "accountId": {
+                    "type": "string",
+                    "description": "The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**\n"
+                },
+                "host": {
+                    "type": "string",
+                    "description": "The host to apply the rule to.\n"
+                },
+                "inclusive": {
+                    "type": "boolean",
+                    "description": "Whether the rule includes or excludes the matched traffic from being measured in Web Analytics.\n"
+                },
+                "isPaused": {
+                    "type": "boolean",
+                    "description": "Whether the rule is paused or not.\n"
+                },
+                "paths": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "A list of paths to apply the rule to.\n"
+                },
+                "rulesetId": {
+                    "type": "string",
+                    "description": "The Web Analytics ruleset id. **Modifying this attribute will force creation of a new resource.**\n"
+                }
+            },
+            "required": [
+                "accountId",
+                "host",
+                "inclusive",
+                "isPaused",
+                "paths",
+                "rulesetId"
+            ],
+            "inputProperties": {
+                "accountId": {
+                    "type": "string",
+                    "description": "The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**\n",
+                    "willReplaceOnChanges": true
+                },
+                "host": {
+                    "type": "string",
+                    "description": "The host to apply the rule to.\n"
+                },
+                "inclusive": {
+                    "type": "boolean",
+                    "description": "Whether the rule includes or excludes the matched traffic from being measured in Web Analytics.\n"
+                },
+                "isPaused": {
+                    "type": "boolean",
+                    "description": "Whether the rule is paused or not.\n"
+                },
+                "paths": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "A list of paths to apply the rule to.\n"
+                },
+                "rulesetId": {
+                    "type": "string",
+                    "description": "The Web Analytics ruleset id. **Modifying this attribute will force creation of a new resource.**\n",
+                    "willReplaceOnChanges": true
+                }
+            },
+            "requiredInputs": [
+                "accountId",
+                "host",
+                "inclusive",
+                "isPaused",
+                "paths",
+                "rulesetId"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering WebAnalyticsRule resources.\n",
+                "properties": {
+                    "accountId": {
+                        "type": "string",
+                        "description": "The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "host": {
+                        "type": "string",
+                        "description": "The host to apply the rule to.\n"
+                    },
+                    "inclusive": {
+                        "type": "boolean",
+                        "description": "Whether the rule includes or excludes the matched traffic from being measured in Web Analytics.\n"
+                    },
+                    "isPaused": {
+                        "type": "boolean",
+                        "description": "Whether the rule is paused or not.\n"
+                    },
+                    "paths": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "A list of paths to apply the rule to.\n"
+                    },
+                    "rulesetId": {
+                        "type": "string",
+                        "description": "The Web Analytics ruleset id. **Modifying this attribute will force creation of a new resource.**\n",
+                        "willReplaceOnChanges": true
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "cloudflare:index/webAnalyticsSite:WebAnalyticsSite": {
+            "description": "Provides a Cloudflare Web Analytics Site resource.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as cloudflare from \"@pulumi/cloudflare\";\n\nconst example = new cloudflare.WebAnalyticsSite(\"example\", {\n    accountId: \"f037e56e89293a057740de681ac9abbe\",\n    autoInstall: true,\n    zoneTag: \"0da42c8d2132a9ddaf714f9e7c920711\",\n});\n```\n```python\nimport pulumi\nimport pulumi_cloudflare as cloudflare\n\nexample = cloudflare.WebAnalyticsSite(\"example\",\n    account_id=\"f037e56e89293a057740de681ac9abbe\",\n    auto_install=True,\n    zone_tag=\"0da42c8d2132a9ddaf714f9e7c920711\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Cloudflare = Pulumi.Cloudflare;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = new Cloudflare.WebAnalyticsSite(\"example\", new()\n    {\n        AccountId = \"f037e56e89293a057740de681ac9abbe\",\n        AutoInstall = true,\n        ZoneTag = \"0da42c8d2132a9ddaf714f9e7c920711\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := cloudflare.NewWebAnalyticsSite(ctx, \"example\", \u0026cloudflare.WebAnalyticsSiteArgs{\n\t\t\tAccountId:   pulumi.String(\"f037e56e89293a057740de681ac9abbe\"),\n\t\t\tAutoInstall: pulumi.Bool(true),\n\t\t\tZoneTag:     pulumi.String(\"0da42c8d2132a9ddaf714f9e7c920711\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.cloudflare.WebAnalyticsSite;\nimport com.pulumi.cloudflare.WebAnalyticsSiteArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var example = new WebAnalyticsSite(\"example\", WebAnalyticsSiteArgs.builder()        \n            .accountId(\"f037e56e89293a057740de681ac9abbe\")\n            .autoInstall(true)\n            .zoneTag(\"0da42c8d2132a9ddaf714f9e7c920711\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  example:\n    type: cloudflare:WebAnalyticsSite\n    properties:\n      accountId: f037e56e89293a057740de681ac9abbe\n      autoInstall: true\n      zoneTag: 0da42c8d2132a9ddaf714f9e7c920711\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\n\n\n```sh\n $ pulumi import cloudflare:index/webAnalyticsSite:WebAnalyticsSite example \u003caccount_id\u003e/\u003csite_tag\u003e\n```\n\n ",
+            "properties": {
+                "accountId": {
+                    "type": "string",
+                    "description": "The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**\n"
+                },
+                "autoInstall": {
+                    "type": "boolean",
+                    "description": "Whether Cloudflare will automatically inject the JavaScript snippet for orange-clouded sites. **Modifying this attribute will force creation of a new resource.**\n"
+                },
+                "host": {
+                    "type": "string",
+                    "description": "The hostname to use for gray-clouded sites. Must provide only one of `zone_tag`. **Modifying this attribute will force creation of a new resource.**\n"
+                },
+                "rulesetId": {
+                    "type": "string",
+                    "description": "The ID for the ruleset associated to this Web Analytics Site.\n"
+                },
+                "siteTag": {
+                    "type": "string",
+                    "description": "The Web Analytics site tag.\n"
+                },
+                "siteToken": {
+                    "type": "string",
+                    "description": "The token for the Web Analytics site.\n",
+                    "secret": true
+                },
+                "snippet": {
+                    "type": "string",
+                    "description": "The encoded JS snippet to add to your site's HTML page if auto_install is false.\n",
+                    "secret": true
+                },
+                "zoneTag": {
+                    "type": "string",
+                    "description": "The zone identifier for orange-clouded sites. Must provide only one of `host`. **Modifying this attribute will force creation of a new resource.**\n"
+                }
+            },
+            "required": [
+                "accountId",
+                "autoInstall",
+                "rulesetId",
+                "siteTag",
+                "siteToken",
+                "snippet"
+            ],
+            "inputProperties": {
+                "accountId": {
+                    "type": "string",
+                    "description": "The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**\n",
+                    "willReplaceOnChanges": true
+                },
+                "autoInstall": {
+                    "type": "boolean",
+                    "description": "Whether Cloudflare will automatically inject the JavaScript snippet for orange-clouded sites. **Modifying this attribute will force creation of a new resource.**\n",
+                    "willReplaceOnChanges": true
+                },
+                "host": {
+                    "type": "string",
+                    "description": "The hostname to use for gray-clouded sites. Must provide only one of `zone_tag`. **Modifying this attribute will force creation of a new resource.**\n",
+                    "willReplaceOnChanges": true
+                },
+                "zoneTag": {
+                    "type": "string",
+                    "description": "The zone identifier for orange-clouded sites. Must provide only one of `host`. **Modifying this attribute will force creation of a new resource.**\n",
+                    "willReplaceOnChanges": true
+                }
+            },
+            "requiredInputs": [
+                "accountId",
+                "autoInstall"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering WebAnalyticsSite resources.\n",
+                "properties": {
+                    "accountId": {
+                        "type": "string",
+                        "description": "The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "autoInstall": {
+                        "type": "boolean",
+                        "description": "Whether Cloudflare will automatically inject the JavaScript snippet for orange-clouded sites. **Modifying this attribute will force creation of a new resource.**\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "host": {
+                        "type": "string",
+                        "description": "The hostname to use for gray-clouded sites. Must provide only one of `zone_tag`. **Modifying this attribute will force creation of a new resource.**\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "rulesetId": {
+                        "type": "string",
+                        "description": "The ID for the ruleset associated to this Web Analytics Site.\n"
+                    },
+                    "siteTag": {
+                        "type": "string",
+                        "description": "The Web Analytics site tag.\n"
+                    },
+                    "siteToken": {
+                        "type": "string",
+                        "description": "The token for the Web Analytics site.\n",
+                        "secret": true
+                    },
+                    "snippet": {
+                        "type": "string",
+                        "description": "The encoded JS snippet to add to your site's HTML page if auto_install is false.\n",
+                        "secret": true
+                    },
+                    "zoneTag": {
+                        "type": "string",
+                        "description": "The zone identifier for orange-clouded sites. Must provide only one of `host`. **Modifying this attribute will force creation of a new resource.**\n",
+                        "willReplaceOnChanges": true
                     }
                 },
                 "type": "object"
