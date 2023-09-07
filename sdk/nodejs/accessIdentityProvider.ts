@@ -112,7 +112,7 @@ export class AccessIdentityProvider extends pulumi.CustomResource {
     /**
      * Provider configuration from the [developer documentation](https://developers.cloudflare.com/access/configuring-identity-providers/).
      */
-    public readonly configs!: pulumi.Output<outputs.AccessIdentityProviderConfig[] | undefined>;
+    public readonly configs!: pulumi.Output<outputs.AccessIdentityProviderConfig[]>;
     /**
      * Friendly name of the Access Identity Provider configuration.
      */
@@ -120,7 +120,7 @@ export class AccessIdentityProvider extends pulumi.CustomResource {
     /**
      * Configuration for SCIM settings for a given IDP.
      */
-    public readonly scimConfigs!: pulumi.Output<outputs.AccessIdentityProviderScimConfig[] | undefined>;
+    public readonly scimConfigs!: pulumi.Output<outputs.AccessIdentityProviderScimConfig[]>;
     /**
      * The provider type to use. Available values: `centrify`, `facebook`, `google-apps`, `oidc`, `github`, `google`, `saml`, `linkedin`, `azureAD`, `okta`, `onetimepin`, `onelogin`, `yandex`.
      */

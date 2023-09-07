@@ -94,7 +94,7 @@ type WaitingRoom struct {
 	QueueAll pulumi.BoolPtrOutput `pulumi:"queueAll"`
 	// The queueing method used by the waiting room. Available values: `fifo`, `random`, `passthrough`, `reject`. Defaults to `fifo`.
 	QueueingMethod pulumi.StringPtrOutput `pulumi:"queueingMethod"`
-	// HTTP status code returned to a user while in the queue.
+	// HTTP status code returned to a user while in the queue. Defaults to `200`.
 	QueueingStatusCode pulumi.IntPtrOutput `pulumi:"queueingStatusCode"`
 	// Lifetime of a cookie (in minutes) set by Cloudflare for users who get access to the origin. Defaults to `5`.
 	SessionDuration pulumi.IntPtrOutput `pulumi:"sessionDuration"`
@@ -177,7 +177,7 @@ type waitingRoomState struct {
 	QueueAll *bool `pulumi:"queueAll"`
 	// The queueing method used by the waiting room. Available values: `fifo`, `random`, `passthrough`, `reject`. Defaults to `fifo`.
 	QueueingMethod *string `pulumi:"queueingMethod"`
-	// HTTP status code returned to a user while in the queue.
+	// HTTP status code returned to a user while in the queue. Defaults to `200`.
 	QueueingStatusCode *int `pulumi:"queueingStatusCode"`
 	// Lifetime of a cookie (in minutes) set by Cloudflare for users who get access to the origin. Defaults to `5`.
 	SessionDuration *int `pulumi:"sessionDuration"`
@@ -216,7 +216,7 @@ type WaitingRoomState struct {
 	QueueAll pulumi.BoolPtrInput
 	// The queueing method used by the waiting room. Available values: `fifo`, `random`, `passthrough`, `reject`. Defaults to `fifo`.
 	QueueingMethod pulumi.StringPtrInput
-	// HTTP status code returned to a user while in the queue.
+	// HTTP status code returned to a user while in the queue. Defaults to `200`.
 	QueueingStatusCode pulumi.IntPtrInput
 	// Lifetime of a cookie (in minutes) set by Cloudflare for users who get access to the origin. Defaults to `5`.
 	SessionDuration pulumi.IntPtrInput
@@ -259,7 +259,7 @@ type waitingRoomArgs struct {
 	QueueAll *bool `pulumi:"queueAll"`
 	// The queueing method used by the waiting room. Available values: `fifo`, `random`, `passthrough`, `reject`. Defaults to `fifo`.
 	QueueingMethod *string `pulumi:"queueingMethod"`
-	// HTTP status code returned to a user while in the queue.
+	// HTTP status code returned to a user while in the queue. Defaults to `200`.
 	QueueingStatusCode *int `pulumi:"queueingStatusCode"`
 	// Lifetime of a cookie (in minutes) set by Cloudflare for users who get access to the origin. Defaults to `5`.
 	SessionDuration *int `pulumi:"sessionDuration"`
@@ -299,7 +299,7 @@ type WaitingRoomArgs struct {
 	QueueAll pulumi.BoolPtrInput
 	// The queueing method used by the waiting room. Available values: `fifo`, `random`, `passthrough`, `reject`. Defaults to `fifo`.
 	QueueingMethod pulumi.StringPtrInput
-	// HTTP status code returned to a user while in the queue.
+	// HTTP status code returned to a user while in the queue. Defaults to `200`.
 	QueueingStatusCode pulumi.IntPtrInput
 	// Lifetime of a cookie (in minutes) set by Cloudflare for users who get access to the origin. Defaults to `5`.
 	SessionDuration pulumi.IntPtrInput
@@ -463,7 +463,7 @@ func (o WaitingRoomOutput) QueueingMethod() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WaitingRoom) pulumi.StringPtrOutput { return v.QueueingMethod }).(pulumi.StringPtrOutput)
 }
 
-// HTTP status code returned to a user while in the queue.
+// HTTP status code returned to a user while in the queue. Defaults to `200`.
 func (o WaitingRoomOutput) QueueingStatusCode() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *WaitingRoom) pulumi.IntPtrOutput { return v.QueueingStatusCode }).(pulumi.IntPtrOutput)
 }

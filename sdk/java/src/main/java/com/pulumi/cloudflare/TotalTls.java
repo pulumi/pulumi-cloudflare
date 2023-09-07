@@ -50,6 +50,12 @@ import javax.annotation.Nullable;
  * }
  * ```
  * 
+ * ## Import
+ * 
+ * ```sh
+ *  $ pulumi import cloudflare:index/totalTls:TotalTls example &lt;zone_id&gt;
+ * ```
+ * 
  */
 @ResourceType(type="cloudflare:index/totalTls:TotalTls")
 public class TotalTls extends com.pulumi.resources.CustomResource {

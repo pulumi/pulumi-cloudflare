@@ -115,6 +115,8 @@ from .waiting_room_event import *
 from .waiting_room_rules import *
 from .waiting_room_settings import *
 from .web3_hostname import *
+from .web_analytics_rule import *
+from .web_analytics_site import *
 from .worker_cron_trigger import *
 from .worker_domain import *
 from .worker_route import *
@@ -867,6 +869,22 @@ _utilities.register(
   "fqn": "pulumi_cloudflare",
   "classes": {
    "cloudflare:index/web3Hostname:Web3Hostname": "Web3Hostname"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "index/webAnalyticsRule",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/webAnalyticsRule:WebAnalyticsRule": "WebAnalyticsRule"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "index/webAnalyticsSite",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/webAnalyticsSite:WebAnalyticsSite": "WebAnalyticsSite"
   }
  },
  {

@@ -145,6 +145,12 @@ class TotalTls(pulumi.CustomResource):
             zone_id="0da42c8d2132a9ddaf714f9e7c920711")
         ```
 
+        ## Import
+
+        ```sh
+         $ pulumi import cloudflare:index/totalTls:TotalTls example <zone_id>
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] certificate_authority: The Certificate Authority that Total TLS certificates will be issued through. Available values: `google`, `lets_encrypt`.
@@ -170,6 +176,12 @@ class TotalTls(pulumi.CustomResource):
             certificate_authority="lets_encrypt",
             enabled=True,
             zone_id="0da42c8d2132a9ddaf714f9e7c920711")
+        ```
+
+        ## Import
+
+        ```sh
+         $ pulumi import cloudflare:index/totalTls:TotalTls example <zone_id>
         ```
 
         :param str resource_name: The name of the resource.

@@ -61,7 +61,7 @@ type AccessServiceToken struct {
 	ClientId pulumi.StringOutput `pulumi:"clientId"`
 	// A secret for interacting with Access protocols. **Modifying this attribute will force creation of a new resource.**
 	ClientSecret pulumi.StringOutput `pulumi:"clientSecret"`
-	// Length of time the service token is valid for. Available values: `8760h`, `17520h`, `43800h`, `87600h`, `forever`
+	// Length of time the service token is valid for. Available values: `8760h`, `17520h`, `43800h`, `87600h`, `forever`.
 	Duration pulumi.StringOutput `pulumi:"duration"`
 	// Date when the token expires.
 	ExpiresAt pulumi.StringOutput `pulumi:"expiresAt"`
@@ -116,7 +116,7 @@ type accessServiceTokenState struct {
 	ClientId *string `pulumi:"clientId"`
 	// A secret for interacting with Access protocols. **Modifying this attribute will force creation of a new resource.**
 	ClientSecret *string `pulumi:"clientSecret"`
-	// Length of time the service token is valid for. Available values: `8760h`, `17520h`, `43800h`, `87600h`, `forever`
+	// Length of time the service token is valid for. Available values: `8760h`, `17520h`, `43800h`, `87600h`, `forever`.
 	Duration *string `pulumi:"duration"`
 	// Date when the token expires.
 	ExpiresAt *string `pulumi:"expiresAt"`
@@ -135,7 +135,7 @@ type AccessServiceTokenState struct {
 	ClientId pulumi.StringPtrInput
 	// A secret for interacting with Access protocols. **Modifying this attribute will force creation of a new resource.**
 	ClientSecret pulumi.StringPtrInput
-	// Length of time the service token is valid for. Available values: `8760h`, `17520h`, `43800h`, `87600h`, `forever`
+	// Length of time the service token is valid for. Available values: `8760h`, `17520h`, `43800h`, `87600h`, `forever`.
 	Duration pulumi.StringPtrInput
 	// Date when the token expires.
 	ExpiresAt pulumi.StringPtrInput
@@ -154,7 +154,7 @@ func (AccessServiceTokenState) ElementType() reflect.Type {
 type accessServiceTokenArgs struct {
 	// The account identifier to target for the resource. Conflicts with `zoneId`.
 	AccountId *string `pulumi:"accountId"`
-	// Length of time the service token is valid for. Available values: `8760h`, `17520h`, `43800h`, `87600h`, `forever`
+	// Length of time the service token is valid for. Available values: `8760h`, `17520h`, `43800h`, `87600h`, `forever`.
 	Duration *string `pulumi:"duration"`
 	// Refresh the token if terraform is run within the specified amount of days before expiration
 	MinDaysForRenewal *int `pulumi:"minDaysForRenewal"`
@@ -168,7 +168,7 @@ type accessServiceTokenArgs struct {
 type AccessServiceTokenArgs struct {
 	// The account identifier to target for the resource. Conflicts with `zoneId`.
 	AccountId pulumi.StringPtrInput
-	// Length of time the service token is valid for. Available values: `8760h`, `17520h`, `43800h`, `87600h`, `forever`
+	// Length of time the service token is valid for. Available values: `8760h`, `17520h`, `43800h`, `87600h`, `forever`.
 	Duration pulumi.StringPtrInput
 	// Refresh the token if terraform is run within the specified amount of days before expiration
 	MinDaysForRenewal pulumi.IntPtrInput
@@ -280,7 +280,7 @@ func (o AccessServiceTokenOutput) ClientSecret() pulumi.StringOutput {
 	return o.ApplyT(func(v *AccessServiceToken) pulumi.StringOutput { return v.ClientSecret }).(pulumi.StringOutput)
 }
 
-// Length of time the service token is valid for. Available values: `8760h`, `17520h`, `43800h`, `87600h`, `forever`
+// Length of time the service token is valid for. Available values: `8760h`, `17520h`, `43800h`, `87600h`, `forever`.
 func (o AccessServiceTokenOutput) Duration() pulumi.StringOutput {
 	return o.ApplyT(func(v *AccessServiceToken) pulumi.StringOutput { return v.Duration }).(pulumi.StringOutput)
 }

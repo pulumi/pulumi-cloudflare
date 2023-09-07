@@ -646,6 +646,10 @@ class AccessGroupExclude(dict):
                  oktas: Optional[Sequence['outputs.AccessGroupExcludeOkta']] = None,
                  samls: Optional[Sequence['outputs.AccessGroupExcludeSaml']] = None,
                  service_tokens: Optional[Sequence[str]] = None):
+        """
+        :param Sequence[str] ip_lists: The ID of an existing IP list to reference.
+        :param Sequence[str] ips: An IPv4 or IPv6 CIDR block.
+        """
         if any_valid_service_token is not None:
             pulumi.set(__self__, "any_valid_service_token", any_valid_service_token)
         if auth_contexts is not None:
@@ -767,11 +771,17 @@ class AccessGroupExclude(dict):
     @property
     @pulumi.getter(name="ipLists")
     def ip_lists(self) -> Optional[Sequence[str]]:
+        """
+        The ID of an existing IP list to reference.
+        """
         return pulumi.get(self, "ip_lists")
 
     @property
     @pulumi.getter
     def ips(self) -> Optional[Sequence[str]]:
+        """
+        An IPv4 or IPv6 CIDR block.
+        """
         return pulumi.get(self, "ips")
 
     @property
@@ -1161,6 +1171,10 @@ class AccessGroupInclude(dict):
                  oktas: Optional[Sequence['outputs.AccessGroupIncludeOkta']] = None,
                  samls: Optional[Sequence['outputs.AccessGroupIncludeSaml']] = None,
                  service_tokens: Optional[Sequence[str]] = None):
+        """
+        :param Sequence[str] ip_lists: The ID of an existing IP list to reference.
+        :param Sequence[str] ips: An IPv4 or IPv6 CIDR block.
+        """
         if any_valid_service_token is not None:
             pulumi.set(__self__, "any_valid_service_token", any_valid_service_token)
         if auth_contexts is not None:
@@ -1282,11 +1296,17 @@ class AccessGroupInclude(dict):
     @property
     @pulumi.getter(name="ipLists")
     def ip_lists(self) -> Optional[Sequence[str]]:
+        """
+        The ID of an existing IP list to reference.
+        """
         return pulumi.get(self, "ip_lists")
 
     @property
     @pulumi.getter
     def ips(self) -> Optional[Sequence[str]]:
+        """
+        An IPv4 or IPv6 CIDR block.
+        """
         return pulumi.get(self, "ips")
 
     @property
@@ -1676,6 +1696,10 @@ class AccessGroupRequire(dict):
                  oktas: Optional[Sequence['outputs.AccessGroupRequireOkta']] = None,
                  samls: Optional[Sequence['outputs.AccessGroupRequireSaml']] = None,
                  service_tokens: Optional[Sequence[str]] = None):
+        """
+        :param Sequence[str] ip_lists: The ID of an existing IP list to reference.
+        :param Sequence[str] ips: An IPv4 or IPv6 CIDR block.
+        """
         if any_valid_service_token is not None:
             pulumi.set(__self__, "any_valid_service_token", any_valid_service_token)
         if auth_contexts is not None:
@@ -1797,11 +1821,17 @@ class AccessGroupRequire(dict):
     @property
     @pulumi.getter(name="ipLists")
     def ip_lists(self) -> Optional[Sequence[str]]:
+        """
+        The ID of an existing IP list to reference.
+        """
         return pulumi.get(self, "ip_lists")
 
     @property
     @pulumi.getter
     def ips(self) -> Optional[Sequence[str]]:
+        """
+        An IPv4 or IPv6 CIDR block.
+        """
         return pulumi.get(self, "ips")
 
     @property
@@ -2710,6 +2740,10 @@ class AccessPolicyExclude(dict):
                  oktas: Optional[Sequence['outputs.AccessPolicyExcludeOkta']] = None,
                  samls: Optional[Sequence['outputs.AccessPolicyExcludeSaml']] = None,
                  service_tokens: Optional[Sequence[str]] = None):
+        """
+        :param Sequence[str] ip_lists: The ID of an existing IP list to reference.
+        :param Sequence[str] ips: An IPv4 or IPv6 CIDR block.
+        """
         if any_valid_service_token is not None:
             pulumi.set(__self__, "any_valid_service_token", any_valid_service_token)
         if auth_contexts is not None:
@@ -2831,11 +2865,17 @@ class AccessPolicyExclude(dict):
     @property
     @pulumi.getter(name="ipLists")
     def ip_lists(self) -> Optional[Sequence[str]]:
+        """
+        The ID of an existing IP list to reference.
+        """
         return pulumi.get(self, "ip_lists")
 
     @property
     @pulumi.getter
     def ips(self) -> Optional[Sequence[str]]:
+        """
+        An IPv4 or IPv6 CIDR block.
+        """
         return pulumi.get(self, "ips")
 
     @property
@@ -3237,6 +3277,10 @@ class AccessPolicyInclude(dict):
                  oktas: Optional[Sequence['outputs.AccessPolicyIncludeOkta']] = None,
                  samls: Optional[Sequence['outputs.AccessPolicyIncludeSaml']] = None,
                  service_tokens: Optional[Sequence[str]] = None):
+        """
+        :param Sequence[str] ip_lists: The ID of an existing IP list to reference.
+        :param Sequence[str] ips: An IPv4 or IPv6 CIDR block.
+        """
         if any_valid_service_token is not None:
             pulumi.set(__self__, "any_valid_service_token", any_valid_service_token)
         if auth_contexts is not None:
@@ -3358,11 +3402,17 @@ class AccessPolicyInclude(dict):
     @property
     @pulumi.getter(name="ipLists")
     def ip_lists(self) -> Optional[Sequence[str]]:
+        """
+        The ID of an existing IP list to reference.
+        """
         return pulumi.get(self, "ip_lists")
 
     @property
     @pulumi.getter
     def ips(self) -> Optional[Sequence[str]]:
+        """
+        An IPv4 or IPv6 CIDR block.
+        """
         return pulumi.get(self, "ips")
 
     @property
@@ -3764,6 +3814,10 @@ class AccessPolicyRequire(dict):
                  oktas: Optional[Sequence['outputs.AccessPolicyRequireOkta']] = None,
                  samls: Optional[Sequence['outputs.AccessPolicyRequireSaml']] = None,
                  service_tokens: Optional[Sequence[str]] = None):
+        """
+        :param Sequence[str] ip_lists: The ID of an existing IP list to reference.
+        :param Sequence[str] ips: An IPv4 or IPv6 CIDR block.
+        """
         if any_valid_service_token is not None:
             pulumi.set(__self__, "any_valid_service_token", any_valid_service_token)
         if auth_contexts is not None:
@@ -3885,11 +3939,17 @@ class AccessPolicyRequire(dict):
     @property
     @pulumi.getter(name="ipLists")
     def ip_lists(self) -> Optional[Sequence[str]]:
+        """
+        The ID of an existing IP list to reference.
+        """
         return pulumi.get(self, "ip_lists")
 
     @property
     @pulumi.getter
     def ips(self) -> Optional[Sequence[str]]:
+        """
+        An IPv4 or IPv6 CIDR block.
+        """
         return pulumi.get(self, "ips")
 
     @property

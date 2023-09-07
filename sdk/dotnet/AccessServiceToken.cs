@@ -64,7 +64,7 @@ namespace Pulumi.Cloudflare
         public Output<string> ClientSecret { get; private set; } = null!;
 
         /// <summary>
-        /// Length of time the service token is valid for. Available values: `8760h`, `17520h`, `43800h`, `87600h`, `forever`
+        /// Length of time the service token is valid for. Available values: `8760h`, `17520h`, `43800h`, `87600h`, `forever`.
         /// </summary>
         [Output("duration")]
         public Output<string> Duration { get; private set; } = null!;
@@ -150,7 +150,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? AccountId { get; set; }
 
         /// <summary>
-        /// Length of time the service token is valid for. Available values: `8760h`, `17520h`, `43800h`, `87600h`, `forever`
+        /// Length of time the service token is valid for. Available values: `8760h`, `17520h`, `43800h`, `87600h`, `forever`.
         /// </summary>
         [Input("duration")]
         public Input<string>? Duration { get; set; }
@@ -210,7 +210,7 @@ namespace Pulumi.Cloudflare
         }
 
         /// <summary>
-        /// Length of time the service token is valid for. Available values: `8760h`, `17520h`, `43800h`, `87600h`, `forever`
+        /// Length of time the service token is valid for. Available values: `8760h`, `17520h`, `43800h`, `87600h`, `forever`.
         /// </summary>
         [Input("duration")]
         public Input<string>? Duration { get; set; }

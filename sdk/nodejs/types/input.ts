@@ -93,7 +93,13 @@ export interface AccessGroupExclude {
     githubs?: pulumi.Input<pulumi.Input<inputs.AccessGroupExcludeGithub>[]>;
     groups?: pulumi.Input<pulumi.Input<string>[]>;
     gsuites?: pulumi.Input<pulumi.Input<inputs.AccessGroupExcludeGsuite>[]>;
+    /**
+     * The ID of an existing IP list to reference.
+     */
     ipLists?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * An IPv4 or IPv6 CIDR block.
+     */
     ips?: pulumi.Input<pulumi.Input<string>[]>;
     loginMethods?: pulumi.Input<pulumi.Input<string>[]>;
     oktas?: pulumi.Input<pulumi.Input<inputs.AccessGroupExcludeOkta>[]>;
@@ -161,7 +167,13 @@ export interface AccessGroupInclude {
     githubs?: pulumi.Input<pulumi.Input<inputs.AccessGroupIncludeGithub>[]>;
     groups?: pulumi.Input<pulumi.Input<string>[]>;
     gsuites?: pulumi.Input<pulumi.Input<inputs.AccessGroupIncludeGsuite>[]>;
+    /**
+     * The ID of an existing IP list to reference.
+     */
     ipLists?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * An IPv4 or IPv6 CIDR block.
+     */
     ips?: pulumi.Input<pulumi.Input<string>[]>;
     loginMethods?: pulumi.Input<pulumi.Input<string>[]>;
     oktas?: pulumi.Input<pulumi.Input<inputs.AccessGroupIncludeOkta>[]>;
@@ -229,7 +241,13 @@ export interface AccessGroupRequire {
     githubs?: pulumi.Input<pulumi.Input<inputs.AccessGroupRequireGithub>[]>;
     groups?: pulumi.Input<pulumi.Input<string>[]>;
     gsuites?: pulumi.Input<pulumi.Input<inputs.AccessGroupRequireGsuite>[]>;
+    /**
+     * The ID of an existing IP list to reference.
+     */
     ipLists?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * An IPv4 or IPv6 CIDR block.
+     */
     ips?: pulumi.Input<pulumi.Input<string>[]>;
     loginMethods?: pulumi.Input<pulumi.Input<string>[]>;
     oktas?: pulumi.Input<pulumi.Input<inputs.AccessGroupRequireOkta>[]>;
@@ -378,7 +396,13 @@ export interface AccessPolicyExclude {
     githubs?: pulumi.Input<pulumi.Input<inputs.AccessPolicyExcludeGithub>[]>;
     groups?: pulumi.Input<pulumi.Input<string>[]>;
     gsuites?: pulumi.Input<pulumi.Input<inputs.AccessPolicyExcludeGsuite>[]>;
+    /**
+     * The ID of an existing IP list to reference.
+     */
     ipLists?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * An IPv4 or IPv6 CIDR block.
+     */
     ips?: pulumi.Input<pulumi.Input<string>[]>;
     loginMethods?: pulumi.Input<pulumi.Input<string>[]>;
     oktas?: pulumi.Input<pulumi.Input<inputs.AccessPolicyExcludeOkta>[]>;
@@ -452,7 +476,13 @@ export interface AccessPolicyInclude {
     githubs?: pulumi.Input<pulumi.Input<inputs.AccessPolicyIncludeGithub>[]>;
     groups?: pulumi.Input<pulumi.Input<string>[]>;
     gsuites?: pulumi.Input<pulumi.Input<inputs.AccessPolicyIncludeGsuite>[]>;
+    /**
+     * The ID of an existing IP list to reference.
+     */
     ipLists?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * An IPv4 or IPv6 CIDR block.
+     */
     ips?: pulumi.Input<pulumi.Input<string>[]>;
     loginMethods?: pulumi.Input<pulumi.Input<string>[]>;
     oktas?: pulumi.Input<pulumi.Input<inputs.AccessPolicyIncludeOkta>[]>;
@@ -526,7 +556,13 @@ export interface AccessPolicyRequire {
     githubs?: pulumi.Input<pulumi.Input<inputs.AccessPolicyRequireGithub>[]>;
     groups?: pulumi.Input<pulumi.Input<string>[]>;
     gsuites?: pulumi.Input<pulumi.Input<inputs.AccessPolicyRequireGsuite>[]>;
+    /**
+     * The ID of an existing IP list to reference.
+     */
     ipLists?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * An IPv4 or IPv6 CIDR block.
+     */
     ips?: pulumi.Input<pulumi.Input<string>[]>;
     loginMethods?: pulumi.Input<pulumi.Input<string>[]>;
     oktas?: pulumi.Input<pulumi.Input<inputs.AccessPolicyRequireOkta>[]>;

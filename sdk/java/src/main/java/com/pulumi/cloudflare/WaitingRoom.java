@@ -261,14 +261,14 @@ public class WaitingRoom extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.queueingMethod);
     }
     /**
-     * HTTP status code returned to a user while in the queue.
+     * HTTP status code returned to a user while in the queue. Defaults to `200`.
      * 
      */
     @Export(name="queueingStatusCode", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> queueingStatusCode;
 
     /**
-     * @return HTTP status code returned to a user while in the queue.
+     * @return HTTP status code returned to a user while in the queue. Defaults to `200`.
      * 
      */
     public Output<Optional<Integer>> queueingStatusCode() {

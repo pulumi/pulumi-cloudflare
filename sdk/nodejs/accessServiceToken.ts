@@ -71,7 +71,7 @@ export class AccessServiceToken extends pulumi.CustomResource {
      */
     public /*out*/ readonly clientSecret!: pulumi.Output<string>;
     /**
-     * Length of time the service token is valid for. Available values: `8760h`, `17520h`, `43800h`, `87600h`, `forever`
+     * Length of time the service token is valid for. Available values: `8760h`, `17520h`, `43800h`, `87600h`, `forever`.
      */
     public readonly duration!: pulumi.Output<string>;
     /**
@@ -150,7 +150,7 @@ export interface AccessServiceTokenState {
      */
     clientSecret?: pulumi.Input<string>;
     /**
-     * Length of time the service token is valid for. Available values: `8760h`, `17520h`, `43800h`, `87600h`, `forever`
+     * Length of time the service token is valid for. Available values: `8760h`, `17520h`, `43800h`, `87600h`, `forever`.
      */
     duration?: pulumi.Input<string>;
     /**
@@ -180,7 +180,7 @@ export interface AccessServiceTokenArgs {
      */
     accountId?: pulumi.Input<string>;
     /**
-     * Length of time the service token is valid for. Available values: `8760h`, `17520h`, `43800h`, `87600h`, `forever`
+     * Length of time the service token is valid for. Available values: `8760h`, `17520h`, `43800h`, `87600h`, `forever`.
      */
     duration?: pulumi.Input<string>;
     /**

@@ -472,7 +472,7 @@ class AccessIdentityProvider(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def configs(self) -> pulumi.Output[Optional[Sequence['outputs.AccessIdentityProviderConfig']]]:
+    def configs(self) -> pulumi.Output[Sequence['outputs.AccessIdentityProviderConfig']]:
         """
         Provider configuration from the [developer documentation](https://developers.cloudflare.com/access/configuring-identity-providers/).
         """
@@ -488,7 +488,7 @@ class AccessIdentityProvider(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="scimConfigs")
-    def scim_configs(self) -> pulumi.Output[Optional[Sequence['outputs.AccessIdentityProviderScimConfig']]]:
+    def scim_configs(self) -> pulumi.Output[Sequence['outputs.AccessIdentityProviderScimConfig']]:
         """
         Configuration for SCIM settings for a given IDP.
         """

@@ -130,6 +130,8 @@
         "waitingRoomRules.ts",
         "waitingRoomSettings.ts",
         "web3Hostname.ts",
+        "webAnalyticsRule.ts",
+        "webAnalyticsSite.ts",
         "workerCronTrigger.ts",
         "workerDomain.ts",
         "workerRoute.ts",

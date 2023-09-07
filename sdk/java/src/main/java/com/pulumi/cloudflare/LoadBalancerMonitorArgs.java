@@ -50,6 +50,36 @@ public final class LoadBalancerMonitorArgs extends com.pulumi.resources.Resource
     }
 
     /**
+     * To be marked unhealthy the monitored origin must fail this healthcheck N consecutive times. Defaults to `0`.
+     * 
+     */
+    @Import(name="consecutiveDown")
+    private @Nullable Output<Integer> consecutiveDown;
+
+    /**
+     * @return To be marked unhealthy the monitored origin must fail this healthcheck N consecutive times. Defaults to `0`.
+     * 
+     */
+    public Optional<Output<Integer>> consecutiveDown() {
+        return Optional.ofNullable(this.consecutiveDown);
+    }
+
+    /**
+     * To be marked healthy the monitored origin must pass this healthcheck N consecutive times. Defaults to `0`.
+     * 
+     */
+    @Import(name="consecutiveUp")
+    private @Nullable Output<Integer> consecutiveUp;
+
+    /**
+     * @return To be marked healthy the monitored origin must pass this healthcheck N consecutive times. Defaults to `0`.
+     * 
+     */
+    public Optional<Output<Integer>> consecutiveUp() {
+        return Optional.ofNullable(this.consecutiveUp);
+    }
+
+    /**
      * Free text description.
      * 
      */
@@ -249,6 +279,8 @@ public final class LoadBalancerMonitorArgs extends com.pulumi.resources.Resource
     private LoadBalancerMonitorArgs(LoadBalancerMonitorArgs $) {
         this.accountId = $.accountId;
         this.allowInsecure = $.allowInsecure;
+        this.consecutiveDown = $.consecutiveDown;
+        this.consecutiveUp = $.consecutiveUp;
         this.description = $.description;
         this.expectedBody = $.expectedBody;
         this.expectedCodes = $.expectedCodes;
@@ -322,6 +354,48 @@ public final class LoadBalancerMonitorArgs extends com.pulumi.resources.Resource
          */
         public Builder allowInsecure(Boolean allowInsecure) {
             return allowInsecure(Output.of(allowInsecure));
+        }
+
+        /**
+         * @param consecutiveDown To be marked unhealthy the monitored origin must fail this healthcheck N consecutive times. Defaults to `0`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder consecutiveDown(@Nullable Output<Integer> consecutiveDown) {
+            $.consecutiveDown = consecutiveDown;
+            return this;
+        }
+
+        /**
+         * @param consecutiveDown To be marked unhealthy the monitored origin must fail this healthcheck N consecutive times. Defaults to `0`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder consecutiveDown(Integer consecutiveDown) {
+            return consecutiveDown(Output.of(consecutiveDown));
+        }
+
+        /**
+         * @param consecutiveUp To be marked healthy the monitored origin must pass this healthcheck N consecutive times. Defaults to `0`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder consecutiveUp(@Nullable Output<Integer> consecutiveUp) {
+            $.consecutiveUp = consecutiveUp;
+            return this;
+        }
+
+        /**
+         * @param consecutiveUp To be marked healthy the monitored origin must pass this healthcheck N consecutive times. Defaults to `0`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder consecutiveUp(Integer consecutiveUp) {
+            return consecutiveUp(Output.of(consecutiveUp));
         }
 
         /**

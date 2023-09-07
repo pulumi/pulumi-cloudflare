@@ -41,6 +41,14 @@ import (
 //	}
 //
 // ```
+//
+// ## Import
+//
+// ```sh
+//
+//	$ pulumi import cloudflare:index/totalTls:TotalTls example <zone_id>
+//
+// ```
 type TotalTls struct {
 	pulumi.CustomResourceState
 
