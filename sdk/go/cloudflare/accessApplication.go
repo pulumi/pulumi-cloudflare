@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Cloudflare Access Application resource. Access
@@ -376,6 +377,12 @@ func (i *AccessApplication) ToAccessApplicationOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(AccessApplicationOutput)
 }
 
+func (i *AccessApplication) ToOutput(ctx context.Context) pulumix.Output[*AccessApplication] {
+	return pulumix.Output[*AccessApplication]{
+		OutputState: i.ToAccessApplicationOutputWithContext(ctx).OutputState,
+	}
+}
+
 // AccessApplicationArrayInput is an input type that accepts AccessApplicationArray and AccessApplicationArrayOutput values.
 // You can construct a concrete instance of `AccessApplicationArrayInput` via:
 //
@@ -399,6 +406,12 @@ func (i AccessApplicationArray) ToAccessApplicationArrayOutput() AccessApplicati
 
 func (i AccessApplicationArray) ToAccessApplicationArrayOutputWithContext(ctx context.Context) AccessApplicationArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AccessApplicationArrayOutput)
+}
+
+func (i AccessApplicationArray) ToOutput(ctx context.Context) pulumix.Output[[]*AccessApplication] {
+	return pulumix.Output[[]*AccessApplication]{
+		OutputState: i.ToAccessApplicationArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // AccessApplicationMapInput is an input type that accepts AccessApplicationMap and AccessApplicationMapOutput values.
@@ -426,6 +439,12 @@ func (i AccessApplicationMap) ToAccessApplicationMapOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(AccessApplicationMapOutput)
 }
 
+func (i AccessApplicationMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*AccessApplication] {
+	return pulumix.Output[map[string]*AccessApplication]{
+		OutputState: i.ToAccessApplicationMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type AccessApplicationOutput struct{ *pulumi.OutputState }
 
 func (AccessApplicationOutput) ElementType() reflect.Type {
@@ -438,6 +457,12 @@ func (o AccessApplicationOutput) ToAccessApplicationOutput() AccessApplicationOu
 
 func (o AccessApplicationOutput) ToAccessApplicationOutputWithContext(ctx context.Context) AccessApplicationOutput {
 	return o
+}
+
+func (o AccessApplicationOutput) ToOutput(ctx context.Context) pulumix.Output[*AccessApplication] {
+	return pulumix.Output[*AccessApplication]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The account identifier to target for the resource. Conflicts with `zoneId`.
@@ -569,6 +594,12 @@ func (o AccessApplicationArrayOutput) ToAccessApplicationArrayOutputWithContext(
 	return o
 }
 
+func (o AccessApplicationArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*AccessApplication] {
+	return pulumix.Output[[]*AccessApplication]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o AccessApplicationArrayOutput) Index(i pulumi.IntInput) AccessApplicationOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *AccessApplication {
 		return vs[0].([]*AccessApplication)[vs[1].(int)]
@@ -587,6 +618,12 @@ func (o AccessApplicationMapOutput) ToAccessApplicationMapOutput() AccessApplica
 
 func (o AccessApplicationMapOutput) ToAccessApplicationMapOutputWithContext(ctx context.Context) AccessApplicationMapOutput {
 	return o
+}
+
+func (o AccessApplicationMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*AccessApplication] {
+	return pulumix.Output[map[string]*AccessApplication]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AccessApplicationMapOutput) MapIndex(k pulumi.StringInput) AccessApplicationOutput {

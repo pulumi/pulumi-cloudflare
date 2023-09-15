@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Cloudflare Authenticated Origin Pulls resource. A `AuthenticatedOriginPulls`
@@ -223,6 +224,12 @@ func (i *AuthenticatedOriginPulls) ToAuthenticatedOriginPullsOutputWithContext(c
 	return pulumi.ToOutputWithContext(ctx, i).(AuthenticatedOriginPullsOutput)
 }
 
+func (i *AuthenticatedOriginPulls) ToOutput(ctx context.Context) pulumix.Output[*AuthenticatedOriginPulls] {
+	return pulumix.Output[*AuthenticatedOriginPulls]{
+		OutputState: i.ToAuthenticatedOriginPullsOutputWithContext(ctx).OutputState,
+	}
+}
+
 // AuthenticatedOriginPullsArrayInput is an input type that accepts AuthenticatedOriginPullsArray and AuthenticatedOriginPullsArrayOutput values.
 // You can construct a concrete instance of `AuthenticatedOriginPullsArrayInput` via:
 //
@@ -246,6 +253,12 @@ func (i AuthenticatedOriginPullsArray) ToAuthenticatedOriginPullsArrayOutput() A
 
 func (i AuthenticatedOriginPullsArray) ToAuthenticatedOriginPullsArrayOutputWithContext(ctx context.Context) AuthenticatedOriginPullsArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AuthenticatedOriginPullsArrayOutput)
+}
+
+func (i AuthenticatedOriginPullsArray) ToOutput(ctx context.Context) pulumix.Output[[]*AuthenticatedOriginPulls] {
+	return pulumix.Output[[]*AuthenticatedOriginPulls]{
+		OutputState: i.ToAuthenticatedOriginPullsArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // AuthenticatedOriginPullsMapInput is an input type that accepts AuthenticatedOriginPullsMap and AuthenticatedOriginPullsMapOutput values.
@@ -273,6 +286,12 @@ func (i AuthenticatedOriginPullsMap) ToAuthenticatedOriginPullsMapOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(AuthenticatedOriginPullsMapOutput)
 }
 
+func (i AuthenticatedOriginPullsMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*AuthenticatedOriginPulls] {
+	return pulumix.Output[map[string]*AuthenticatedOriginPulls]{
+		OutputState: i.ToAuthenticatedOriginPullsMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type AuthenticatedOriginPullsOutput struct{ *pulumi.OutputState }
 
 func (AuthenticatedOriginPullsOutput) ElementType() reflect.Type {
@@ -285,6 +304,12 @@ func (o AuthenticatedOriginPullsOutput) ToAuthenticatedOriginPullsOutput() Authe
 
 func (o AuthenticatedOriginPullsOutput) ToAuthenticatedOriginPullsOutputWithContext(ctx context.Context) AuthenticatedOriginPullsOutput {
 	return o
+}
+
+func (o AuthenticatedOriginPullsOutput) ToOutput(ctx context.Context) pulumix.Output[*AuthenticatedOriginPulls] {
+	return pulumix.Output[*AuthenticatedOriginPulls]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The ID of an uploaded Authenticated Origin Pulls certificate. If no hostname is provided, this certificate will be used zone wide as Per-Zone Authenticated Origin Pulls.
@@ -321,6 +346,12 @@ func (o AuthenticatedOriginPullsArrayOutput) ToAuthenticatedOriginPullsArrayOutp
 	return o
 }
 
+func (o AuthenticatedOriginPullsArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*AuthenticatedOriginPulls] {
+	return pulumix.Output[[]*AuthenticatedOriginPulls]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o AuthenticatedOriginPullsArrayOutput) Index(i pulumi.IntInput) AuthenticatedOriginPullsOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *AuthenticatedOriginPulls {
 		return vs[0].([]*AuthenticatedOriginPulls)[vs[1].(int)]
@@ -339,6 +370,12 @@ func (o AuthenticatedOriginPullsMapOutput) ToAuthenticatedOriginPullsMapOutput()
 
 func (o AuthenticatedOriginPullsMapOutput) ToAuthenticatedOriginPullsMapOutputWithContext(ctx context.Context) AuthenticatedOriginPullsMapOutput {
 	return o
+}
+
+func (o AuthenticatedOriginPullsMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*AuthenticatedOriginPulls] {
+	return pulumix.Output[map[string]*AuthenticatedOriginPulls]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AuthenticatedOriginPullsMapOutput) MapIndex(k pulumi.StringInput) AuthenticatedOriginPullsOutput {

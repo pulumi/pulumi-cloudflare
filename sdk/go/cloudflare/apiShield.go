@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a resource to manage API Shield configurations.
@@ -142,6 +143,12 @@ func (i *ApiShield) ToApiShieldOutputWithContext(ctx context.Context) ApiShieldO
 	return pulumi.ToOutputWithContext(ctx, i).(ApiShieldOutput)
 }
 
+func (i *ApiShield) ToOutput(ctx context.Context) pulumix.Output[*ApiShield] {
+	return pulumix.Output[*ApiShield]{
+		OutputState: i.ToApiShieldOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ApiShieldArrayInput is an input type that accepts ApiShieldArray and ApiShieldArrayOutput values.
 // You can construct a concrete instance of `ApiShieldArrayInput` via:
 //
@@ -165,6 +172,12 @@ func (i ApiShieldArray) ToApiShieldArrayOutput() ApiShieldArrayOutput {
 
 func (i ApiShieldArray) ToApiShieldArrayOutputWithContext(ctx context.Context) ApiShieldArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ApiShieldArrayOutput)
+}
+
+func (i ApiShieldArray) ToOutput(ctx context.Context) pulumix.Output[[]*ApiShield] {
+	return pulumix.Output[[]*ApiShield]{
+		OutputState: i.ToApiShieldArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // ApiShieldMapInput is an input type that accepts ApiShieldMap and ApiShieldMapOutput values.
@@ -192,6 +205,12 @@ func (i ApiShieldMap) ToApiShieldMapOutputWithContext(ctx context.Context) ApiSh
 	return pulumi.ToOutputWithContext(ctx, i).(ApiShieldMapOutput)
 }
 
+func (i ApiShieldMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ApiShield] {
+	return pulumix.Output[map[string]*ApiShield]{
+		OutputState: i.ToApiShieldMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ApiShieldOutput struct{ *pulumi.OutputState }
 
 func (ApiShieldOutput) ElementType() reflect.Type {
@@ -204,6 +223,12 @@ func (o ApiShieldOutput) ToApiShieldOutput() ApiShieldOutput {
 
 func (o ApiShieldOutput) ToApiShieldOutputWithContext(ctx context.Context) ApiShieldOutput {
 	return o
+}
+
+func (o ApiShieldOutput) ToOutput(ctx context.Context) pulumix.Output[*ApiShield] {
+	return pulumix.Output[*ApiShield]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Characteristics define properties across which auth-ids can be computed in a privacy-preserving manner.
@@ -230,6 +255,12 @@ func (o ApiShieldArrayOutput) ToApiShieldArrayOutputWithContext(ctx context.Cont
 	return o
 }
 
+func (o ApiShieldArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ApiShield] {
+	return pulumix.Output[[]*ApiShield]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ApiShieldArrayOutput) Index(i pulumi.IntInput) ApiShieldOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ApiShield {
 		return vs[0].([]*ApiShield)[vs[1].(int)]
@@ -248,6 +279,12 @@ func (o ApiShieldMapOutput) ToApiShieldMapOutput() ApiShieldMapOutput {
 
 func (o ApiShieldMapOutput) ToApiShieldMapOutputWithContext(ctx context.Context) ApiShieldMapOutput {
 	return o
+}
+
+func (o ApiShieldMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ApiShield] {
+	return pulumix.Output[map[string]*ApiShield]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ApiShieldMapOutput) MapIndex(k pulumi.StringInput) ApiShieldOutput {

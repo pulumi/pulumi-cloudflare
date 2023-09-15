@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Cloudflare Fallback Domain resource. Fallback domains are
@@ -131,6 +132,12 @@ func (i *FallbackDomain) ToFallbackDomainOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(FallbackDomainOutput)
 }
 
+func (i *FallbackDomain) ToOutput(ctx context.Context) pulumix.Output[*FallbackDomain] {
+	return pulumix.Output[*FallbackDomain]{
+		OutputState: i.ToFallbackDomainOutputWithContext(ctx).OutputState,
+	}
+}
+
 // FallbackDomainArrayInput is an input type that accepts FallbackDomainArray and FallbackDomainArrayOutput values.
 // You can construct a concrete instance of `FallbackDomainArrayInput` via:
 //
@@ -154,6 +161,12 @@ func (i FallbackDomainArray) ToFallbackDomainArrayOutput() FallbackDomainArrayOu
 
 func (i FallbackDomainArray) ToFallbackDomainArrayOutputWithContext(ctx context.Context) FallbackDomainArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(FallbackDomainArrayOutput)
+}
+
+func (i FallbackDomainArray) ToOutput(ctx context.Context) pulumix.Output[[]*FallbackDomain] {
+	return pulumix.Output[[]*FallbackDomain]{
+		OutputState: i.ToFallbackDomainArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // FallbackDomainMapInput is an input type that accepts FallbackDomainMap and FallbackDomainMapOutput values.
@@ -181,6 +194,12 @@ func (i FallbackDomainMap) ToFallbackDomainMapOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(FallbackDomainMapOutput)
 }
 
+func (i FallbackDomainMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*FallbackDomain] {
+	return pulumix.Output[map[string]*FallbackDomain]{
+		OutputState: i.ToFallbackDomainMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type FallbackDomainOutput struct{ *pulumi.OutputState }
 
 func (FallbackDomainOutput) ElementType() reflect.Type {
@@ -193,6 +212,12 @@ func (o FallbackDomainOutput) ToFallbackDomainOutput() FallbackDomainOutput {
 
 func (o FallbackDomainOutput) ToFallbackDomainOutputWithContext(ctx context.Context) FallbackDomainOutput {
 	return o
+}
+
+func (o FallbackDomainOutput) ToOutput(ctx context.Context) pulumix.Output[*FallbackDomain] {
+	return pulumix.Output[*FallbackDomain]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The account identifier to target for the resource.
@@ -223,6 +248,12 @@ func (o FallbackDomainArrayOutput) ToFallbackDomainArrayOutputWithContext(ctx co
 	return o
 }
 
+func (o FallbackDomainArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*FallbackDomain] {
+	return pulumix.Output[[]*FallbackDomain]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o FallbackDomainArrayOutput) Index(i pulumi.IntInput) FallbackDomainOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *FallbackDomain {
 		return vs[0].([]*FallbackDomain)[vs[1].(int)]
@@ -241,6 +272,12 @@ func (o FallbackDomainMapOutput) ToFallbackDomainMapOutput() FallbackDomainMapOu
 
 func (o FallbackDomainMapOutput) ToFallbackDomainMapOutputWithContext(ctx context.Context) FallbackDomainMapOutput {
 	return o
+}
+
+func (o FallbackDomainMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*FallbackDomain] {
+	return pulumix.Output[map[string]*FallbackDomain]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o FallbackDomainMapOutput) MapIndex(k pulumi.StringInput) FallbackDomainOutput {

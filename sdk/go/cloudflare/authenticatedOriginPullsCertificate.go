@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Cloudflare Authenticated Origin Pulls certificate
@@ -231,6 +232,12 @@ func (i *AuthenticatedOriginPullsCertificate) ToAuthenticatedOriginPullsCertific
 	return pulumi.ToOutputWithContext(ctx, i).(AuthenticatedOriginPullsCertificateOutput)
 }
 
+func (i *AuthenticatedOriginPullsCertificate) ToOutput(ctx context.Context) pulumix.Output[*AuthenticatedOriginPullsCertificate] {
+	return pulumix.Output[*AuthenticatedOriginPullsCertificate]{
+		OutputState: i.ToAuthenticatedOriginPullsCertificateOutputWithContext(ctx).OutputState,
+	}
+}
+
 // AuthenticatedOriginPullsCertificateArrayInput is an input type that accepts AuthenticatedOriginPullsCertificateArray and AuthenticatedOriginPullsCertificateArrayOutput values.
 // You can construct a concrete instance of `AuthenticatedOriginPullsCertificateArrayInput` via:
 //
@@ -254,6 +261,12 @@ func (i AuthenticatedOriginPullsCertificateArray) ToAuthenticatedOriginPullsCert
 
 func (i AuthenticatedOriginPullsCertificateArray) ToAuthenticatedOriginPullsCertificateArrayOutputWithContext(ctx context.Context) AuthenticatedOriginPullsCertificateArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AuthenticatedOriginPullsCertificateArrayOutput)
+}
+
+func (i AuthenticatedOriginPullsCertificateArray) ToOutput(ctx context.Context) pulumix.Output[[]*AuthenticatedOriginPullsCertificate] {
+	return pulumix.Output[[]*AuthenticatedOriginPullsCertificate]{
+		OutputState: i.ToAuthenticatedOriginPullsCertificateArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // AuthenticatedOriginPullsCertificateMapInput is an input type that accepts AuthenticatedOriginPullsCertificateMap and AuthenticatedOriginPullsCertificateMapOutput values.
@@ -281,6 +294,12 @@ func (i AuthenticatedOriginPullsCertificateMap) ToAuthenticatedOriginPullsCertif
 	return pulumi.ToOutputWithContext(ctx, i).(AuthenticatedOriginPullsCertificateMapOutput)
 }
 
+func (i AuthenticatedOriginPullsCertificateMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*AuthenticatedOriginPullsCertificate] {
+	return pulumix.Output[map[string]*AuthenticatedOriginPullsCertificate]{
+		OutputState: i.ToAuthenticatedOriginPullsCertificateMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type AuthenticatedOriginPullsCertificateOutput struct{ *pulumi.OutputState }
 
 func (AuthenticatedOriginPullsCertificateOutput) ElementType() reflect.Type {
@@ -293,6 +312,12 @@ func (o AuthenticatedOriginPullsCertificateOutput) ToAuthenticatedOriginPullsCer
 
 func (o AuthenticatedOriginPullsCertificateOutput) ToAuthenticatedOriginPullsCertificateOutputWithContext(ctx context.Context) AuthenticatedOriginPullsCertificateOutput {
 	return o
+}
+
+func (o AuthenticatedOriginPullsCertificateOutput) ToOutput(ctx context.Context) pulumix.Output[*AuthenticatedOriginPullsCertificate] {
+	return pulumix.Output[*AuthenticatedOriginPullsCertificate]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The public client certificate. **Modifying this attribute will force creation of a new resource.**
@@ -359,6 +384,12 @@ func (o AuthenticatedOriginPullsCertificateArrayOutput) ToAuthenticatedOriginPul
 	return o
 }
 
+func (o AuthenticatedOriginPullsCertificateArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*AuthenticatedOriginPullsCertificate] {
+	return pulumix.Output[[]*AuthenticatedOriginPullsCertificate]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o AuthenticatedOriginPullsCertificateArrayOutput) Index(i pulumi.IntInput) AuthenticatedOriginPullsCertificateOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *AuthenticatedOriginPullsCertificate {
 		return vs[0].([]*AuthenticatedOriginPullsCertificate)[vs[1].(int)]
@@ -377,6 +408,12 @@ func (o AuthenticatedOriginPullsCertificateMapOutput) ToAuthenticatedOriginPulls
 
 func (o AuthenticatedOriginPullsCertificateMapOutput) ToAuthenticatedOriginPullsCertificateMapOutputWithContext(ctx context.Context) AuthenticatedOriginPullsCertificateMapOutput {
 	return o
+}
+
+func (o AuthenticatedOriginPullsCertificateMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*AuthenticatedOriginPullsCertificate] {
+	return pulumix.Output[map[string]*AuthenticatedOriginPullsCertificate]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AuthenticatedOriginPullsCertificateMapOutput) MapIndex(k pulumi.StringInput) AuthenticatedOriginPullsCertificateOutput {

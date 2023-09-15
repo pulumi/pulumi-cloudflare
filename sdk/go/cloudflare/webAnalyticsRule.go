@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Cloudflare Web Analytics Rule resource.
@@ -216,6 +217,12 @@ func (i *WebAnalyticsRule) ToWebAnalyticsRuleOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(WebAnalyticsRuleOutput)
 }
 
+func (i *WebAnalyticsRule) ToOutput(ctx context.Context) pulumix.Output[*WebAnalyticsRule] {
+	return pulumix.Output[*WebAnalyticsRule]{
+		OutputState: i.ToWebAnalyticsRuleOutputWithContext(ctx).OutputState,
+	}
+}
+
 // WebAnalyticsRuleArrayInput is an input type that accepts WebAnalyticsRuleArray and WebAnalyticsRuleArrayOutput values.
 // You can construct a concrete instance of `WebAnalyticsRuleArrayInput` via:
 //
@@ -239,6 +246,12 @@ func (i WebAnalyticsRuleArray) ToWebAnalyticsRuleArrayOutput() WebAnalyticsRuleA
 
 func (i WebAnalyticsRuleArray) ToWebAnalyticsRuleArrayOutputWithContext(ctx context.Context) WebAnalyticsRuleArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(WebAnalyticsRuleArrayOutput)
+}
+
+func (i WebAnalyticsRuleArray) ToOutput(ctx context.Context) pulumix.Output[[]*WebAnalyticsRule] {
+	return pulumix.Output[[]*WebAnalyticsRule]{
+		OutputState: i.ToWebAnalyticsRuleArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // WebAnalyticsRuleMapInput is an input type that accepts WebAnalyticsRuleMap and WebAnalyticsRuleMapOutput values.
@@ -266,6 +279,12 @@ func (i WebAnalyticsRuleMap) ToWebAnalyticsRuleMapOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(WebAnalyticsRuleMapOutput)
 }
 
+func (i WebAnalyticsRuleMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*WebAnalyticsRule] {
+	return pulumix.Output[map[string]*WebAnalyticsRule]{
+		OutputState: i.ToWebAnalyticsRuleMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type WebAnalyticsRuleOutput struct{ *pulumi.OutputState }
 
 func (WebAnalyticsRuleOutput) ElementType() reflect.Type {
@@ -278,6 +297,12 @@ func (o WebAnalyticsRuleOutput) ToWebAnalyticsRuleOutput() WebAnalyticsRuleOutpu
 
 func (o WebAnalyticsRuleOutput) ToWebAnalyticsRuleOutputWithContext(ctx context.Context) WebAnalyticsRuleOutput {
 	return o
+}
+
+func (o WebAnalyticsRuleOutput) ToOutput(ctx context.Context) pulumix.Output[*WebAnalyticsRule] {
+	return pulumix.Output[*WebAnalyticsRule]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
@@ -324,6 +349,12 @@ func (o WebAnalyticsRuleArrayOutput) ToWebAnalyticsRuleArrayOutputWithContext(ct
 	return o
 }
 
+func (o WebAnalyticsRuleArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*WebAnalyticsRule] {
+	return pulumix.Output[[]*WebAnalyticsRule]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o WebAnalyticsRuleArrayOutput) Index(i pulumi.IntInput) WebAnalyticsRuleOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *WebAnalyticsRule {
 		return vs[0].([]*WebAnalyticsRule)[vs[1].(int)]
@@ -342,6 +373,12 @@ func (o WebAnalyticsRuleMapOutput) ToWebAnalyticsRuleMapOutput() WebAnalyticsRul
 
 func (o WebAnalyticsRuleMapOutput) ToWebAnalyticsRuleMapOutputWithContext(ctx context.Context) WebAnalyticsRuleMapOutput {
 	return o
+}
+
+func (o WebAnalyticsRuleMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*WebAnalyticsRule] {
+	return pulumix.Output[map[string]*WebAnalyticsRule]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o WebAnalyticsRuleMapOutput) MapIndex(k pulumi.StringInput) WebAnalyticsRuleOutput {

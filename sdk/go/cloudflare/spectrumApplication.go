@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Cloudflare Spectrum Application. You can extend the power
@@ -278,6 +279,12 @@ func (i *SpectrumApplication) ToSpectrumApplicationOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(SpectrumApplicationOutput)
 }
 
+func (i *SpectrumApplication) ToOutput(ctx context.Context) pulumix.Output[*SpectrumApplication] {
+	return pulumix.Output[*SpectrumApplication]{
+		OutputState: i.ToSpectrumApplicationOutputWithContext(ctx).OutputState,
+	}
+}
+
 // SpectrumApplicationArrayInput is an input type that accepts SpectrumApplicationArray and SpectrumApplicationArrayOutput values.
 // You can construct a concrete instance of `SpectrumApplicationArrayInput` via:
 //
@@ -301,6 +308,12 @@ func (i SpectrumApplicationArray) ToSpectrumApplicationArrayOutput() SpectrumApp
 
 func (i SpectrumApplicationArray) ToSpectrumApplicationArrayOutputWithContext(ctx context.Context) SpectrumApplicationArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SpectrumApplicationArrayOutput)
+}
+
+func (i SpectrumApplicationArray) ToOutput(ctx context.Context) pulumix.Output[[]*SpectrumApplication] {
+	return pulumix.Output[[]*SpectrumApplication]{
+		OutputState: i.ToSpectrumApplicationArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // SpectrumApplicationMapInput is an input type that accepts SpectrumApplicationMap and SpectrumApplicationMapOutput values.
@@ -328,6 +341,12 @@ func (i SpectrumApplicationMap) ToSpectrumApplicationMapOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(SpectrumApplicationMapOutput)
 }
 
+func (i SpectrumApplicationMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*SpectrumApplication] {
+	return pulumix.Output[map[string]*SpectrumApplication]{
+		OutputState: i.ToSpectrumApplicationMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type SpectrumApplicationOutput struct{ *pulumi.OutputState }
 
 func (SpectrumApplicationOutput) ElementType() reflect.Type {
@@ -340,6 +359,12 @@ func (o SpectrumApplicationOutput) ToSpectrumApplicationOutput() SpectrumApplica
 
 func (o SpectrumApplicationOutput) ToSpectrumApplicationOutputWithContext(ctx context.Context) SpectrumApplicationOutput {
 	return o
+}
+
+func (o SpectrumApplicationOutput) ToOutput(ctx context.Context) pulumix.Output[*SpectrumApplication] {
+	return pulumix.Output[*SpectrumApplication]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Enables Argo Smart Routing. Defaults to `false`.
@@ -421,6 +446,12 @@ func (o SpectrumApplicationArrayOutput) ToSpectrumApplicationArrayOutputWithCont
 	return o
 }
 
+func (o SpectrumApplicationArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*SpectrumApplication] {
+	return pulumix.Output[[]*SpectrumApplication]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o SpectrumApplicationArrayOutput) Index(i pulumi.IntInput) SpectrumApplicationOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *SpectrumApplication {
 		return vs[0].([]*SpectrumApplication)[vs[1].(int)]
@@ -439,6 +470,12 @@ func (o SpectrumApplicationMapOutput) ToSpectrumApplicationMapOutput() SpectrumA
 
 func (o SpectrumApplicationMapOutput) ToSpectrumApplicationMapOutputWithContext(ctx context.Context) SpectrumApplicationMapOutput {
 	return o
+}
+
+func (o SpectrumApplicationMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*SpectrumApplication] {
+	return pulumix.Output[map[string]*SpectrumApplication]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SpectrumApplicationMapOutput) MapIndex(k pulumi.StringInput) SpectrumApplicationOutput {

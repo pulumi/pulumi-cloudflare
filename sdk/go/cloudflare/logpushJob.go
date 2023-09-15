@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // ## Import
@@ -249,6 +250,12 @@ func (i *LogpushJob) ToLogpushJobOutputWithContext(ctx context.Context) LogpushJ
 	return pulumi.ToOutputWithContext(ctx, i).(LogpushJobOutput)
 }
 
+func (i *LogpushJob) ToOutput(ctx context.Context) pulumix.Output[*LogpushJob] {
+	return pulumix.Output[*LogpushJob]{
+		OutputState: i.ToLogpushJobOutputWithContext(ctx).OutputState,
+	}
+}
+
 // LogpushJobArrayInput is an input type that accepts LogpushJobArray and LogpushJobArrayOutput values.
 // You can construct a concrete instance of `LogpushJobArrayInput` via:
 //
@@ -272,6 +279,12 @@ func (i LogpushJobArray) ToLogpushJobArrayOutput() LogpushJobArrayOutput {
 
 func (i LogpushJobArray) ToLogpushJobArrayOutputWithContext(ctx context.Context) LogpushJobArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(LogpushJobArrayOutput)
+}
+
+func (i LogpushJobArray) ToOutput(ctx context.Context) pulumix.Output[[]*LogpushJob] {
+	return pulumix.Output[[]*LogpushJob]{
+		OutputState: i.ToLogpushJobArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // LogpushJobMapInput is an input type that accepts LogpushJobMap and LogpushJobMapOutput values.
@@ -299,6 +312,12 @@ func (i LogpushJobMap) ToLogpushJobMapOutputWithContext(ctx context.Context) Log
 	return pulumi.ToOutputWithContext(ctx, i).(LogpushJobMapOutput)
 }
 
+func (i LogpushJobMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*LogpushJob] {
+	return pulumix.Output[map[string]*LogpushJob]{
+		OutputState: i.ToLogpushJobMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type LogpushJobOutput struct{ *pulumi.OutputState }
 
 func (LogpushJobOutput) ElementType() reflect.Type {
@@ -311,6 +330,12 @@ func (o LogpushJobOutput) ToLogpushJobOutput() LogpushJobOutput {
 
 func (o LogpushJobOutput) ToLogpushJobOutputWithContext(ctx context.Context) LogpushJobOutput {
 	return o
+}
+
+func (o LogpushJobOutput) ToOutput(ctx context.Context) pulumix.Output[*LogpushJob] {
+	return pulumix.Output[*LogpushJob]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The account identifier to target for the resource. Must provide only one of `accountId`, `zoneId`.
@@ -397,6 +422,12 @@ func (o LogpushJobArrayOutput) ToLogpushJobArrayOutputWithContext(ctx context.Co
 	return o
 }
 
+func (o LogpushJobArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*LogpushJob] {
+	return pulumix.Output[[]*LogpushJob]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o LogpushJobArrayOutput) Index(i pulumi.IntInput) LogpushJobOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *LogpushJob {
 		return vs[0].([]*LogpushJob)[vs[1].(int)]
@@ -415,6 +446,12 @@ func (o LogpushJobMapOutput) ToLogpushJobMapOutput() LogpushJobMapOutput {
 
 func (o LogpushJobMapOutput) ToLogpushJobMapOutputWithContext(ctx context.Context) LogpushJobMapOutput {
 	return o
+}
+
+func (o LogpushJobMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*LogpushJob] {
+	return pulumix.Output[map[string]*LogpushJob]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o LogpushJobMapOutput) MapIndex(k pulumi.StringInput) LogpushJobOutput {

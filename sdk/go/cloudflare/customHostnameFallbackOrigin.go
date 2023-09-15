@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Cloudflare custom hostname fallback origin resource.
@@ -154,6 +155,12 @@ func (i *CustomHostnameFallbackOrigin) ToCustomHostnameFallbackOriginOutputWithC
 	return pulumi.ToOutputWithContext(ctx, i).(CustomHostnameFallbackOriginOutput)
 }
 
+func (i *CustomHostnameFallbackOrigin) ToOutput(ctx context.Context) pulumix.Output[*CustomHostnameFallbackOrigin] {
+	return pulumix.Output[*CustomHostnameFallbackOrigin]{
+		OutputState: i.ToCustomHostnameFallbackOriginOutputWithContext(ctx).OutputState,
+	}
+}
+
 // CustomHostnameFallbackOriginArrayInput is an input type that accepts CustomHostnameFallbackOriginArray and CustomHostnameFallbackOriginArrayOutput values.
 // You can construct a concrete instance of `CustomHostnameFallbackOriginArrayInput` via:
 //
@@ -177,6 +184,12 @@ func (i CustomHostnameFallbackOriginArray) ToCustomHostnameFallbackOriginArrayOu
 
 func (i CustomHostnameFallbackOriginArray) ToCustomHostnameFallbackOriginArrayOutputWithContext(ctx context.Context) CustomHostnameFallbackOriginArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(CustomHostnameFallbackOriginArrayOutput)
+}
+
+func (i CustomHostnameFallbackOriginArray) ToOutput(ctx context.Context) pulumix.Output[[]*CustomHostnameFallbackOrigin] {
+	return pulumix.Output[[]*CustomHostnameFallbackOrigin]{
+		OutputState: i.ToCustomHostnameFallbackOriginArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // CustomHostnameFallbackOriginMapInput is an input type that accepts CustomHostnameFallbackOriginMap and CustomHostnameFallbackOriginMapOutput values.
@@ -204,6 +217,12 @@ func (i CustomHostnameFallbackOriginMap) ToCustomHostnameFallbackOriginMapOutput
 	return pulumi.ToOutputWithContext(ctx, i).(CustomHostnameFallbackOriginMapOutput)
 }
 
+func (i CustomHostnameFallbackOriginMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*CustomHostnameFallbackOrigin] {
+	return pulumix.Output[map[string]*CustomHostnameFallbackOrigin]{
+		OutputState: i.ToCustomHostnameFallbackOriginMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type CustomHostnameFallbackOriginOutput struct{ *pulumi.OutputState }
 
 func (CustomHostnameFallbackOriginOutput) ElementType() reflect.Type {
@@ -216,6 +235,12 @@ func (o CustomHostnameFallbackOriginOutput) ToCustomHostnameFallbackOriginOutput
 
 func (o CustomHostnameFallbackOriginOutput) ToCustomHostnameFallbackOriginOutputWithContext(ctx context.Context) CustomHostnameFallbackOriginOutput {
 	return o
+}
+
+func (o CustomHostnameFallbackOriginOutput) ToOutput(ctx context.Context) pulumix.Output[*CustomHostnameFallbackOrigin] {
+	return pulumix.Output[*CustomHostnameFallbackOrigin]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Hostname you intend to fallback requests to. Origin must be a proxied A/AAAA/CNAME DNS record within Clouldflare.
@@ -247,6 +272,12 @@ func (o CustomHostnameFallbackOriginArrayOutput) ToCustomHostnameFallbackOriginA
 	return o
 }
 
+func (o CustomHostnameFallbackOriginArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*CustomHostnameFallbackOrigin] {
+	return pulumix.Output[[]*CustomHostnameFallbackOrigin]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o CustomHostnameFallbackOriginArrayOutput) Index(i pulumi.IntInput) CustomHostnameFallbackOriginOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *CustomHostnameFallbackOrigin {
 		return vs[0].([]*CustomHostnameFallbackOrigin)[vs[1].(int)]
@@ -265,6 +296,12 @@ func (o CustomHostnameFallbackOriginMapOutput) ToCustomHostnameFallbackOriginMap
 
 func (o CustomHostnameFallbackOriginMapOutput) ToCustomHostnameFallbackOriginMapOutputWithContext(ctx context.Context) CustomHostnameFallbackOriginMapOutput {
 	return o
+}
+
+func (o CustomHostnameFallbackOriginMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*CustomHostnameFallbackOrigin] {
+	return pulumix.Output[map[string]*CustomHostnameFallbackOrigin]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CustomHostnameFallbackOriginMapOutput) MapIndex(k pulumi.StringInput) CustomHostnameFallbackOriginOutput {

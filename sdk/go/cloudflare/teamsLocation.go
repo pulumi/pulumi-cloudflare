@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Cloudflare Teams Location resource. Teams Locations are
@@ -205,6 +206,12 @@ func (i *TeamsLocation) ToTeamsLocationOutputWithContext(ctx context.Context) Te
 	return pulumi.ToOutputWithContext(ctx, i).(TeamsLocationOutput)
 }
 
+func (i *TeamsLocation) ToOutput(ctx context.Context) pulumix.Output[*TeamsLocation] {
+	return pulumix.Output[*TeamsLocation]{
+		OutputState: i.ToTeamsLocationOutputWithContext(ctx).OutputState,
+	}
+}
+
 // TeamsLocationArrayInput is an input type that accepts TeamsLocationArray and TeamsLocationArrayOutput values.
 // You can construct a concrete instance of `TeamsLocationArrayInput` via:
 //
@@ -228,6 +235,12 @@ func (i TeamsLocationArray) ToTeamsLocationArrayOutput() TeamsLocationArrayOutpu
 
 func (i TeamsLocationArray) ToTeamsLocationArrayOutputWithContext(ctx context.Context) TeamsLocationArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(TeamsLocationArrayOutput)
+}
+
+func (i TeamsLocationArray) ToOutput(ctx context.Context) pulumix.Output[[]*TeamsLocation] {
+	return pulumix.Output[[]*TeamsLocation]{
+		OutputState: i.ToTeamsLocationArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // TeamsLocationMapInput is an input type that accepts TeamsLocationMap and TeamsLocationMapOutput values.
@@ -255,6 +268,12 @@ func (i TeamsLocationMap) ToTeamsLocationMapOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(TeamsLocationMapOutput)
 }
 
+func (i TeamsLocationMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*TeamsLocation] {
+	return pulumix.Output[map[string]*TeamsLocation]{
+		OutputState: i.ToTeamsLocationMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type TeamsLocationOutput struct{ *pulumi.OutputState }
 
 func (TeamsLocationOutput) ElementType() reflect.Type {
@@ -267,6 +286,12 @@ func (o TeamsLocationOutput) ToTeamsLocationOutput() TeamsLocationOutput {
 
 func (o TeamsLocationOutput) ToTeamsLocationOutputWithContext(ctx context.Context) TeamsLocationOutput {
 	return o
+}
+
+func (o TeamsLocationOutput) ToOutput(ctx context.Context) pulumix.Output[*TeamsLocation] {
+	return pulumix.Output[*TeamsLocation]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The account identifier to target for the resource.
@@ -327,6 +352,12 @@ func (o TeamsLocationArrayOutput) ToTeamsLocationArrayOutputWithContext(ctx cont
 	return o
 }
 
+func (o TeamsLocationArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*TeamsLocation] {
+	return pulumix.Output[[]*TeamsLocation]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o TeamsLocationArrayOutput) Index(i pulumi.IntInput) TeamsLocationOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *TeamsLocation {
 		return vs[0].([]*TeamsLocation)[vs[1].(int)]
@@ -345,6 +376,12 @@ func (o TeamsLocationMapOutput) ToTeamsLocationMapOutput() TeamsLocationMapOutpu
 
 func (o TeamsLocationMapOutput) ToTeamsLocationMapOutputWithContext(ctx context.Context) TeamsLocationMapOutput {
 	return o
+}
+
+func (o TeamsLocationMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*TeamsLocation] {
+	return pulumix.Output[map[string]*TeamsLocation]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o TeamsLocationMapOutput) MapIndex(k pulumi.StringInput) TeamsLocationOutput {

@@ -51,7 +51,7 @@ namespace Pulumi.Cloudflare
     ///     });
     /// 
     ///     var config = new Config();
-    ///     var myOffice = config.GetObject&lt;dynamic&gt;("myOffice") ?? new[]
+    ///     var myOffice = config.GetObject&lt;string[]&gt;("myOffice") ?? new[]
     ///     {
     ///         "192.0.2.0/24",
     ///         "198.51.100.0/24",

@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a resource to manage URL Normalization Settings.
@@ -154,6 +155,12 @@ func (i *UrlNormalizationSettings) ToUrlNormalizationSettingsOutputWithContext(c
 	return pulumi.ToOutputWithContext(ctx, i).(UrlNormalizationSettingsOutput)
 }
 
+func (i *UrlNormalizationSettings) ToOutput(ctx context.Context) pulumix.Output[*UrlNormalizationSettings] {
+	return pulumix.Output[*UrlNormalizationSettings]{
+		OutputState: i.ToUrlNormalizationSettingsOutputWithContext(ctx).OutputState,
+	}
+}
+
 // UrlNormalizationSettingsArrayInput is an input type that accepts UrlNormalizationSettingsArray and UrlNormalizationSettingsArrayOutput values.
 // You can construct a concrete instance of `UrlNormalizationSettingsArrayInput` via:
 //
@@ -177,6 +184,12 @@ func (i UrlNormalizationSettingsArray) ToUrlNormalizationSettingsArrayOutput() U
 
 func (i UrlNormalizationSettingsArray) ToUrlNormalizationSettingsArrayOutputWithContext(ctx context.Context) UrlNormalizationSettingsArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(UrlNormalizationSettingsArrayOutput)
+}
+
+func (i UrlNormalizationSettingsArray) ToOutput(ctx context.Context) pulumix.Output[[]*UrlNormalizationSettings] {
+	return pulumix.Output[[]*UrlNormalizationSettings]{
+		OutputState: i.ToUrlNormalizationSettingsArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // UrlNormalizationSettingsMapInput is an input type that accepts UrlNormalizationSettingsMap and UrlNormalizationSettingsMapOutput values.
@@ -204,6 +217,12 @@ func (i UrlNormalizationSettingsMap) ToUrlNormalizationSettingsMapOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(UrlNormalizationSettingsMapOutput)
 }
 
+func (i UrlNormalizationSettingsMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*UrlNormalizationSettings] {
+	return pulumix.Output[map[string]*UrlNormalizationSettings]{
+		OutputState: i.ToUrlNormalizationSettingsMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type UrlNormalizationSettingsOutput struct{ *pulumi.OutputState }
 
 func (UrlNormalizationSettingsOutput) ElementType() reflect.Type {
@@ -216,6 +235,12 @@ func (o UrlNormalizationSettingsOutput) ToUrlNormalizationSettingsOutput() UrlNo
 
 func (o UrlNormalizationSettingsOutput) ToUrlNormalizationSettingsOutputWithContext(ctx context.Context) UrlNormalizationSettingsOutput {
 	return o
+}
+
+func (o UrlNormalizationSettingsOutput) ToOutput(ctx context.Context) pulumix.Output[*UrlNormalizationSettings] {
+	return pulumix.Output[*UrlNormalizationSettings]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The scope of the URL normalization.
@@ -247,6 +272,12 @@ func (o UrlNormalizationSettingsArrayOutput) ToUrlNormalizationSettingsArrayOutp
 	return o
 }
 
+func (o UrlNormalizationSettingsArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*UrlNormalizationSettings] {
+	return pulumix.Output[[]*UrlNormalizationSettings]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o UrlNormalizationSettingsArrayOutput) Index(i pulumi.IntInput) UrlNormalizationSettingsOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *UrlNormalizationSettings {
 		return vs[0].([]*UrlNormalizationSettings)[vs[1].(int)]
@@ -265,6 +296,12 @@ func (o UrlNormalizationSettingsMapOutput) ToUrlNormalizationSettingsMapOutput()
 
 func (o UrlNormalizationSettingsMapOutput) ToUrlNormalizationSettingsMapOutputWithContext(ctx context.Context) UrlNormalizationSettingsMapOutput {
 	return o
+}
+
+func (o UrlNormalizationSettingsMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*UrlNormalizationSettings] {
+	return pulumix.Output[map[string]*UrlNormalizationSettings]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o UrlNormalizationSettingsMapOutput) MapIndex(k pulumi.StringInput) UrlNormalizationSettingsOutput {

@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Allows management of the Logpull Retention settings used to control whether or not to retain HTTP request logs.
@@ -148,6 +149,12 @@ func (i *LogpullRetention) ToLogpullRetentionOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(LogpullRetentionOutput)
 }
 
+func (i *LogpullRetention) ToOutput(ctx context.Context) pulumix.Output[*LogpullRetention] {
+	return pulumix.Output[*LogpullRetention]{
+		OutputState: i.ToLogpullRetentionOutputWithContext(ctx).OutputState,
+	}
+}
+
 // LogpullRetentionArrayInput is an input type that accepts LogpullRetentionArray and LogpullRetentionArrayOutput values.
 // You can construct a concrete instance of `LogpullRetentionArrayInput` via:
 //
@@ -171,6 +178,12 @@ func (i LogpullRetentionArray) ToLogpullRetentionArrayOutput() LogpullRetentionA
 
 func (i LogpullRetentionArray) ToLogpullRetentionArrayOutputWithContext(ctx context.Context) LogpullRetentionArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(LogpullRetentionArrayOutput)
+}
+
+func (i LogpullRetentionArray) ToOutput(ctx context.Context) pulumix.Output[[]*LogpullRetention] {
+	return pulumix.Output[[]*LogpullRetention]{
+		OutputState: i.ToLogpullRetentionArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // LogpullRetentionMapInput is an input type that accepts LogpullRetentionMap and LogpullRetentionMapOutput values.
@@ -198,6 +211,12 @@ func (i LogpullRetentionMap) ToLogpullRetentionMapOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(LogpullRetentionMapOutput)
 }
 
+func (i LogpullRetentionMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*LogpullRetention] {
+	return pulumix.Output[map[string]*LogpullRetention]{
+		OutputState: i.ToLogpullRetentionMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type LogpullRetentionOutput struct{ *pulumi.OutputState }
 
 func (LogpullRetentionOutput) ElementType() reflect.Type {
@@ -210,6 +229,12 @@ func (o LogpullRetentionOutput) ToLogpullRetentionOutput() LogpullRetentionOutpu
 
 func (o LogpullRetentionOutput) ToLogpullRetentionOutputWithContext(ctx context.Context) LogpullRetentionOutput {
 	return o
+}
+
+func (o LogpullRetentionOutput) ToOutput(ctx context.Context) pulumix.Output[*LogpullRetention] {
+	return pulumix.Output[*LogpullRetention]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Whether you wish to retain logs or not.
@@ -236,6 +261,12 @@ func (o LogpullRetentionArrayOutput) ToLogpullRetentionArrayOutputWithContext(ct
 	return o
 }
 
+func (o LogpullRetentionArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*LogpullRetention] {
+	return pulumix.Output[[]*LogpullRetention]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o LogpullRetentionArrayOutput) Index(i pulumi.IntInput) LogpullRetentionOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *LogpullRetention {
 		return vs[0].([]*LogpullRetention)[vs[1].(int)]
@@ -254,6 +285,12 @@ func (o LogpullRetentionMapOutput) ToLogpullRetentionMapOutput() LogpullRetentio
 
 func (o LogpullRetentionMapOutput) ToLogpullRetentionMapOutputWithContext(ctx context.Context) LogpullRetentionMapOutput {
 	return o
+}
+
+func (o LogpullRetentionMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*LogpullRetention] {
+	return pulumix.Output[map[string]*LogpullRetention]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o LogpullRetentionMapOutput) MapIndex(k pulumi.StringInput) LogpullRetentionOutput {

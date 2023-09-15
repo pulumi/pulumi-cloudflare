@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Use this data source to look up [zone](https://api.cloudflare.com/#zone-properties)
@@ -136,6 +137,12 @@ func (o LookupZoneResultOutput) ToLookupZoneResultOutput() LookupZoneResultOutpu
 
 func (o LookupZoneResultOutput) ToLookupZoneResultOutputWithContext(ctx context.Context) LookupZoneResultOutput {
 	return o
+}
+
+func (o LookupZoneResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupZoneResult] {
+	return pulumix.Output[LookupZoneResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The account identifier to target for the resource.

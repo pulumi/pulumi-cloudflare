@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Cloudflare Access Identity Provider resource. Identity
@@ -247,6 +248,12 @@ func (i *AccessIdentityProvider) ToAccessIdentityProviderOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(AccessIdentityProviderOutput)
 }
 
+func (i *AccessIdentityProvider) ToOutput(ctx context.Context) pulumix.Output[*AccessIdentityProvider] {
+	return pulumix.Output[*AccessIdentityProvider]{
+		OutputState: i.ToAccessIdentityProviderOutputWithContext(ctx).OutputState,
+	}
+}
+
 // AccessIdentityProviderArrayInput is an input type that accepts AccessIdentityProviderArray and AccessIdentityProviderArrayOutput values.
 // You can construct a concrete instance of `AccessIdentityProviderArrayInput` via:
 //
@@ -270,6 +277,12 @@ func (i AccessIdentityProviderArray) ToAccessIdentityProviderArrayOutput() Acces
 
 func (i AccessIdentityProviderArray) ToAccessIdentityProviderArrayOutputWithContext(ctx context.Context) AccessIdentityProviderArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AccessIdentityProviderArrayOutput)
+}
+
+func (i AccessIdentityProviderArray) ToOutput(ctx context.Context) pulumix.Output[[]*AccessIdentityProvider] {
+	return pulumix.Output[[]*AccessIdentityProvider]{
+		OutputState: i.ToAccessIdentityProviderArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // AccessIdentityProviderMapInput is an input type that accepts AccessIdentityProviderMap and AccessIdentityProviderMapOutput values.
@@ -297,6 +310,12 @@ func (i AccessIdentityProviderMap) ToAccessIdentityProviderMapOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(AccessIdentityProviderMapOutput)
 }
 
+func (i AccessIdentityProviderMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*AccessIdentityProvider] {
+	return pulumix.Output[map[string]*AccessIdentityProvider]{
+		OutputState: i.ToAccessIdentityProviderMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type AccessIdentityProviderOutput struct{ *pulumi.OutputState }
 
 func (AccessIdentityProviderOutput) ElementType() reflect.Type {
@@ -309,6 +328,12 @@ func (o AccessIdentityProviderOutput) ToAccessIdentityProviderOutput() AccessIde
 
 func (o AccessIdentityProviderOutput) ToAccessIdentityProviderOutputWithContext(ctx context.Context) AccessIdentityProviderOutput {
 	return o
+}
+
+func (o AccessIdentityProviderOutput) ToOutput(ctx context.Context) pulumix.Output[*AccessIdentityProvider] {
+	return pulumix.Output[*AccessIdentityProvider]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The account identifier to target for the resource. Conflicts with `zoneId`. **Modifying this attribute will force creation of a new resource.**
@@ -355,6 +380,12 @@ func (o AccessIdentityProviderArrayOutput) ToAccessIdentityProviderArrayOutputWi
 	return o
 }
 
+func (o AccessIdentityProviderArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*AccessIdentityProvider] {
+	return pulumix.Output[[]*AccessIdentityProvider]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o AccessIdentityProviderArrayOutput) Index(i pulumi.IntInput) AccessIdentityProviderOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *AccessIdentityProvider {
 		return vs[0].([]*AccessIdentityProvider)[vs[1].(int)]
@@ -373,6 +404,12 @@ func (o AccessIdentityProviderMapOutput) ToAccessIdentityProviderMapOutput() Acc
 
 func (o AccessIdentityProviderMapOutput) ToAccessIdentityProviderMapOutputWithContext(ctx context.Context) AccessIdentityProviderMapOutput {
 	return o
+}
+
+func (o AccessIdentityProviderMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*AccessIdentityProvider] {
+	return pulumix.Output[map[string]*AccessIdentityProvider]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AccessIdentityProviderMapOutput) MapIndex(k pulumi.StringInput) AccessIdentityProviderOutput {

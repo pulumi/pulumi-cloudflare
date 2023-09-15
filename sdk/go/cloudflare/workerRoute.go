@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Cloudflare worker route resource. A route will also require a `WorkerScript`.
@@ -163,6 +164,12 @@ func (i *WorkerRoute) ToWorkerRouteOutputWithContext(ctx context.Context) Worker
 	return pulumi.ToOutputWithContext(ctx, i).(WorkerRouteOutput)
 }
 
+func (i *WorkerRoute) ToOutput(ctx context.Context) pulumix.Output[*WorkerRoute] {
+	return pulumix.Output[*WorkerRoute]{
+		OutputState: i.ToWorkerRouteOutputWithContext(ctx).OutputState,
+	}
+}
+
 // WorkerRouteArrayInput is an input type that accepts WorkerRouteArray and WorkerRouteArrayOutput values.
 // You can construct a concrete instance of `WorkerRouteArrayInput` via:
 //
@@ -186,6 +193,12 @@ func (i WorkerRouteArray) ToWorkerRouteArrayOutput() WorkerRouteArrayOutput {
 
 func (i WorkerRouteArray) ToWorkerRouteArrayOutputWithContext(ctx context.Context) WorkerRouteArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(WorkerRouteArrayOutput)
+}
+
+func (i WorkerRouteArray) ToOutput(ctx context.Context) pulumix.Output[[]*WorkerRoute] {
+	return pulumix.Output[[]*WorkerRoute]{
+		OutputState: i.ToWorkerRouteArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // WorkerRouteMapInput is an input type that accepts WorkerRouteMap and WorkerRouteMapOutput values.
@@ -213,6 +226,12 @@ func (i WorkerRouteMap) ToWorkerRouteMapOutputWithContext(ctx context.Context) W
 	return pulumi.ToOutputWithContext(ctx, i).(WorkerRouteMapOutput)
 }
 
+func (i WorkerRouteMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*WorkerRoute] {
+	return pulumix.Output[map[string]*WorkerRoute]{
+		OutputState: i.ToWorkerRouteMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type WorkerRouteOutput struct{ *pulumi.OutputState }
 
 func (WorkerRouteOutput) ElementType() reflect.Type {
@@ -225,6 +244,12 @@ func (o WorkerRouteOutput) ToWorkerRouteOutput() WorkerRouteOutput {
 
 func (o WorkerRouteOutput) ToWorkerRouteOutputWithContext(ctx context.Context) WorkerRouteOutput {
 	return o
+}
+
+func (o WorkerRouteOutput) ToOutput(ctx context.Context) pulumix.Output[*WorkerRoute] {
+	return pulumix.Output[*WorkerRoute]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The [route pattern](https://developers.cloudflare.com/workers/about/routes/) to associate the Worker with.
@@ -256,6 +281,12 @@ func (o WorkerRouteArrayOutput) ToWorkerRouteArrayOutputWithContext(ctx context.
 	return o
 }
 
+func (o WorkerRouteArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*WorkerRoute] {
+	return pulumix.Output[[]*WorkerRoute]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o WorkerRouteArrayOutput) Index(i pulumi.IntInput) WorkerRouteOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *WorkerRoute {
 		return vs[0].([]*WorkerRoute)[vs[1].(int)]
@@ -274,6 +305,12 @@ func (o WorkerRouteMapOutput) ToWorkerRouteMapOutput() WorkerRouteMapOutput {
 
 func (o WorkerRouteMapOutput) ToWorkerRouteMapOutputWithContext(ctx context.Context) WorkerRouteMapOutput {
 	return o
+}
+
+func (o WorkerRouteMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*WorkerRoute] {
+	return pulumix.Output[map[string]*WorkerRoute]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o WorkerRouteMapOutput) MapIndex(k pulumi.StringInput) WorkerRouteOutput {

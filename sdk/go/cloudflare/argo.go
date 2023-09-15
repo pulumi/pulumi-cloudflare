@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Cloudflare Argo controls the routing to your origin and tiered
@@ -157,6 +158,12 @@ func (i *Argo) ToArgoOutputWithContext(ctx context.Context) ArgoOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ArgoOutput)
 }
 
+func (i *Argo) ToOutput(ctx context.Context) pulumix.Output[*Argo] {
+	return pulumix.Output[*Argo]{
+		OutputState: i.ToArgoOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ArgoArrayInput is an input type that accepts ArgoArray and ArgoArrayOutput values.
 // You can construct a concrete instance of `ArgoArrayInput` via:
 //
@@ -180,6 +187,12 @@ func (i ArgoArray) ToArgoArrayOutput() ArgoArrayOutput {
 
 func (i ArgoArray) ToArgoArrayOutputWithContext(ctx context.Context) ArgoArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ArgoArrayOutput)
+}
+
+func (i ArgoArray) ToOutput(ctx context.Context) pulumix.Output[[]*Argo] {
+	return pulumix.Output[[]*Argo]{
+		OutputState: i.ToArgoArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // ArgoMapInput is an input type that accepts ArgoMap and ArgoMapOutput values.
@@ -207,6 +220,12 @@ func (i ArgoMap) ToArgoMapOutputWithContext(ctx context.Context) ArgoMapOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ArgoMapOutput)
 }
 
+func (i ArgoMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*Argo] {
+	return pulumix.Output[map[string]*Argo]{
+		OutputState: i.ToArgoMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ArgoOutput struct{ *pulumi.OutputState }
 
 func (ArgoOutput) ElementType() reflect.Type {
@@ -219,6 +238,12 @@ func (o ArgoOutput) ToArgoOutput() ArgoOutput {
 
 func (o ArgoOutput) ToArgoOutputWithContext(ctx context.Context) ArgoOutput {
 	return o
+}
+
+func (o ArgoOutput) ToOutput(ctx context.Context) pulumix.Output[*Argo] {
+	return pulumix.Output[*Argo]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Whether smart routing is enabled. Available values: `on`, `off`.
@@ -250,6 +275,12 @@ func (o ArgoArrayOutput) ToArgoArrayOutputWithContext(ctx context.Context) ArgoA
 	return o
 }
 
+func (o ArgoArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*Argo] {
+	return pulumix.Output[[]*Argo]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ArgoArrayOutput) Index(i pulumi.IntInput) ArgoOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Argo {
 		return vs[0].([]*Argo)[vs[1].(int)]
@@ -268,6 +299,12 @@ func (o ArgoMapOutput) ToArgoMapOutput() ArgoMapOutput {
 
 func (o ArgoMapOutput) ToArgoMapOutputWithContext(ctx context.Context) ArgoMapOutput {
 	return o
+}
+
+func (o ArgoMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*Argo] {
+	return pulumix.Output[map[string]*Argo]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ArgoMapOutput) MapIndex(k pulumi.StringInput) ArgoOutput {

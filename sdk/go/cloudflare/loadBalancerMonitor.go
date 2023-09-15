@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // If Cloudflare's Load Balancing to load-balance across multiple
@@ -316,6 +317,12 @@ func (i *LoadBalancerMonitor) ToLoadBalancerMonitorOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(LoadBalancerMonitorOutput)
 }
 
+func (i *LoadBalancerMonitor) ToOutput(ctx context.Context) pulumix.Output[*LoadBalancerMonitor] {
+	return pulumix.Output[*LoadBalancerMonitor]{
+		OutputState: i.ToLoadBalancerMonitorOutputWithContext(ctx).OutputState,
+	}
+}
+
 // LoadBalancerMonitorArrayInput is an input type that accepts LoadBalancerMonitorArray and LoadBalancerMonitorArrayOutput values.
 // You can construct a concrete instance of `LoadBalancerMonitorArrayInput` via:
 //
@@ -339,6 +346,12 @@ func (i LoadBalancerMonitorArray) ToLoadBalancerMonitorArrayOutput() LoadBalance
 
 func (i LoadBalancerMonitorArray) ToLoadBalancerMonitorArrayOutputWithContext(ctx context.Context) LoadBalancerMonitorArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(LoadBalancerMonitorArrayOutput)
+}
+
+func (i LoadBalancerMonitorArray) ToOutput(ctx context.Context) pulumix.Output[[]*LoadBalancerMonitor] {
+	return pulumix.Output[[]*LoadBalancerMonitor]{
+		OutputState: i.ToLoadBalancerMonitorArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // LoadBalancerMonitorMapInput is an input type that accepts LoadBalancerMonitorMap and LoadBalancerMonitorMapOutput values.
@@ -366,6 +379,12 @@ func (i LoadBalancerMonitorMap) ToLoadBalancerMonitorMapOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(LoadBalancerMonitorMapOutput)
 }
 
+func (i LoadBalancerMonitorMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*LoadBalancerMonitor] {
+	return pulumix.Output[map[string]*LoadBalancerMonitor]{
+		OutputState: i.ToLoadBalancerMonitorMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type LoadBalancerMonitorOutput struct{ *pulumi.OutputState }
 
 func (LoadBalancerMonitorOutput) ElementType() reflect.Type {
@@ -378,6 +397,12 @@ func (o LoadBalancerMonitorOutput) ToLoadBalancerMonitorOutput() LoadBalancerMon
 
 func (o LoadBalancerMonitorOutput) ToLoadBalancerMonitorOutputWithContext(ctx context.Context) LoadBalancerMonitorOutput {
 	return o
+}
+
+func (o LoadBalancerMonitorOutput) ToOutput(ctx context.Context) pulumix.Output[*LoadBalancerMonitor] {
+	return pulumix.Output[*LoadBalancerMonitor]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The account identifier to target for the resource.
@@ -489,6 +514,12 @@ func (o LoadBalancerMonitorArrayOutput) ToLoadBalancerMonitorArrayOutputWithCont
 	return o
 }
 
+func (o LoadBalancerMonitorArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*LoadBalancerMonitor] {
+	return pulumix.Output[[]*LoadBalancerMonitor]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o LoadBalancerMonitorArrayOutput) Index(i pulumi.IntInput) LoadBalancerMonitorOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *LoadBalancerMonitor {
 		return vs[0].([]*LoadBalancerMonitor)[vs[1].(int)]
@@ -507,6 +538,12 @@ func (o LoadBalancerMonitorMapOutput) ToLoadBalancerMonitorMapOutput() LoadBalan
 
 func (o LoadBalancerMonitorMapOutput) ToLoadBalancerMonitorMapOutputWithContext(ctx context.Context) LoadBalancerMonitorMapOutput {
 	return o
+}
+
+func (o LoadBalancerMonitorMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*LoadBalancerMonitor] {
+	return pulumix.Output[map[string]*LoadBalancerMonitor]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o LoadBalancerMonitorMapOutput) MapIndex(k pulumi.StringInput) LoadBalancerMonitorOutput {

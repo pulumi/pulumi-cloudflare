@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Creates a Worker Custom Domain.
@@ -186,6 +187,12 @@ func (i *WorkerDomain) ToWorkerDomainOutputWithContext(ctx context.Context) Work
 	return pulumi.ToOutputWithContext(ctx, i).(WorkerDomainOutput)
 }
 
+func (i *WorkerDomain) ToOutput(ctx context.Context) pulumix.Output[*WorkerDomain] {
+	return pulumix.Output[*WorkerDomain]{
+		OutputState: i.ToWorkerDomainOutputWithContext(ctx).OutputState,
+	}
+}
+
 // WorkerDomainArrayInput is an input type that accepts WorkerDomainArray and WorkerDomainArrayOutput values.
 // You can construct a concrete instance of `WorkerDomainArrayInput` via:
 //
@@ -209,6 +216,12 @@ func (i WorkerDomainArray) ToWorkerDomainArrayOutput() WorkerDomainArrayOutput {
 
 func (i WorkerDomainArray) ToWorkerDomainArrayOutputWithContext(ctx context.Context) WorkerDomainArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(WorkerDomainArrayOutput)
+}
+
+func (i WorkerDomainArray) ToOutput(ctx context.Context) pulumix.Output[[]*WorkerDomain] {
+	return pulumix.Output[[]*WorkerDomain]{
+		OutputState: i.ToWorkerDomainArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // WorkerDomainMapInput is an input type that accepts WorkerDomainMap and WorkerDomainMapOutput values.
@@ -236,6 +249,12 @@ func (i WorkerDomainMap) ToWorkerDomainMapOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(WorkerDomainMapOutput)
 }
 
+func (i WorkerDomainMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*WorkerDomain] {
+	return pulumix.Output[map[string]*WorkerDomain]{
+		OutputState: i.ToWorkerDomainMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type WorkerDomainOutput struct{ *pulumi.OutputState }
 
 func (WorkerDomainOutput) ElementType() reflect.Type {
@@ -248,6 +267,12 @@ func (o WorkerDomainOutput) ToWorkerDomainOutput() WorkerDomainOutput {
 
 func (o WorkerDomainOutput) ToWorkerDomainOutputWithContext(ctx context.Context) WorkerDomainOutput {
 	return o
+}
+
+func (o WorkerDomainOutput) ToOutput(ctx context.Context) pulumix.Output[*WorkerDomain] {
+	return pulumix.Output[*WorkerDomain]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
@@ -289,6 +314,12 @@ func (o WorkerDomainArrayOutput) ToWorkerDomainArrayOutputWithContext(ctx contex
 	return o
 }
 
+func (o WorkerDomainArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*WorkerDomain] {
+	return pulumix.Output[[]*WorkerDomain]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o WorkerDomainArrayOutput) Index(i pulumi.IntInput) WorkerDomainOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *WorkerDomain {
 		return vs[0].([]*WorkerDomain)[vs[1].(int)]
@@ -307,6 +338,12 @@ func (o WorkerDomainMapOutput) ToWorkerDomainMapOutput() WorkerDomainMapOutput {
 
 func (o WorkerDomainMapOutput) ToWorkerDomainMapOutputWithContext(ctx context.Context) WorkerDomainMapOutput {
 	return o
+}
+
+func (o WorkerDomainMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*WorkerDomain] {
+	return pulumix.Output[map[string]*WorkerDomain]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o WorkerDomainMapOutput) MapIndex(k pulumi.StringInput) WorkerDomainOutput {

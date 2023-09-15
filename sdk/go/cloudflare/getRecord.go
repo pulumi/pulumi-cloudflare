@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Use this data source to lookup a single [DNS Record](https://api.cloudflare.com/#dns-records-for-a-zone-properties).
@@ -129,6 +130,12 @@ func (o LookupRecordResultOutput) ToLookupRecordResultOutput() LookupRecordResul
 
 func (o LookupRecordResultOutput) ToLookupRecordResultOutputWithContext(ctx context.Context) LookupRecordResultOutput {
 	return o
+}
+
+func (o LookupRecordResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupRecordResult] {
+	return pulumix.Output[LookupRecordResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Hostname to filter DNS record results on.

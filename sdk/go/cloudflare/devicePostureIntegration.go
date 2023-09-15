@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Cloudflare Device Posture Integration resource. Device
@@ -198,6 +199,12 @@ func (i *DevicePostureIntegration) ToDevicePostureIntegrationOutputWithContext(c
 	return pulumi.ToOutputWithContext(ctx, i).(DevicePostureIntegrationOutput)
 }
 
+func (i *DevicePostureIntegration) ToOutput(ctx context.Context) pulumix.Output[*DevicePostureIntegration] {
+	return pulumix.Output[*DevicePostureIntegration]{
+		OutputState: i.ToDevicePostureIntegrationOutputWithContext(ctx).OutputState,
+	}
+}
+
 // DevicePostureIntegrationArrayInput is an input type that accepts DevicePostureIntegrationArray and DevicePostureIntegrationArrayOutput values.
 // You can construct a concrete instance of `DevicePostureIntegrationArrayInput` via:
 //
@@ -221,6 +228,12 @@ func (i DevicePostureIntegrationArray) ToDevicePostureIntegrationArrayOutput() D
 
 func (i DevicePostureIntegrationArray) ToDevicePostureIntegrationArrayOutputWithContext(ctx context.Context) DevicePostureIntegrationArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DevicePostureIntegrationArrayOutput)
+}
+
+func (i DevicePostureIntegrationArray) ToOutput(ctx context.Context) pulumix.Output[[]*DevicePostureIntegration] {
+	return pulumix.Output[[]*DevicePostureIntegration]{
+		OutputState: i.ToDevicePostureIntegrationArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // DevicePostureIntegrationMapInput is an input type that accepts DevicePostureIntegrationMap and DevicePostureIntegrationMapOutput values.
@@ -248,6 +261,12 @@ func (i DevicePostureIntegrationMap) ToDevicePostureIntegrationMapOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(DevicePostureIntegrationMapOutput)
 }
 
+func (i DevicePostureIntegrationMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*DevicePostureIntegration] {
+	return pulumix.Output[map[string]*DevicePostureIntegration]{
+		OutputState: i.ToDevicePostureIntegrationMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type DevicePostureIntegrationOutput struct{ *pulumi.OutputState }
 
 func (DevicePostureIntegrationOutput) ElementType() reflect.Type {
@@ -260,6 +279,12 @@ func (o DevicePostureIntegrationOutput) ToDevicePostureIntegrationOutput() Devic
 
 func (o DevicePostureIntegrationOutput) ToDevicePostureIntegrationOutputWithContext(ctx context.Context) DevicePostureIntegrationOutput {
 	return o
+}
+
+func (o DevicePostureIntegrationOutput) ToOutput(ctx context.Context) pulumix.Output[*DevicePostureIntegration] {
+	return pulumix.Output[*DevicePostureIntegration]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The account identifier to target for the resource.
@@ -305,6 +330,12 @@ func (o DevicePostureIntegrationArrayOutput) ToDevicePostureIntegrationArrayOutp
 	return o
 }
 
+func (o DevicePostureIntegrationArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*DevicePostureIntegration] {
+	return pulumix.Output[[]*DevicePostureIntegration]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o DevicePostureIntegrationArrayOutput) Index(i pulumi.IntInput) DevicePostureIntegrationOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *DevicePostureIntegration {
 		return vs[0].([]*DevicePostureIntegration)[vs[1].(int)]
@@ -323,6 +354,12 @@ func (o DevicePostureIntegrationMapOutput) ToDevicePostureIntegrationMapOutput()
 
 func (o DevicePostureIntegrationMapOutput) ToDevicePostureIntegrationMapOutputWithContext(ctx context.Context) DevicePostureIntegrationMapOutput {
 	return o
+}
+
+func (o DevicePostureIntegrationMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*DevicePostureIntegration] {
+	return pulumix.Output[map[string]*DevicePostureIntegration]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o DevicePostureIntegrationMapOutput) MapIndex(k pulumi.StringInput) DevicePostureIntegrationOutput {

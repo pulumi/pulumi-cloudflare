@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Cloudflare resource to create and modify zone DNSSEC settings.
@@ -210,6 +211,12 @@ func (i *ZoneDnssec) ToZoneDnssecOutputWithContext(ctx context.Context) ZoneDnss
 	return pulumi.ToOutputWithContext(ctx, i).(ZoneDnssecOutput)
 }
 
+func (i *ZoneDnssec) ToOutput(ctx context.Context) pulumix.Output[*ZoneDnssec] {
+	return pulumix.Output[*ZoneDnssec]{
+		OutputState: i.ToZoneDnssecOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ZoneDnssecArrayInput is an input type that accepts ZoneDnssecArray and ZoneDnssecArrayOutput values.
 // You can construct a concrete instance of `ZoneDnssecArrayInput` via:
 //
@@ -233,6 +240,12 @@ func (i ZoneDnssecArray) ToZoneDnssecArrayOutput() ZoneDnssecArrayOutput {
 
 func (i ZoneDnssecArray) ToZoneDnssecArrayOutputWithContext(ctx context.Context) ZoneDnssecArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ZoneDnssecArrayOutput)
+}
+
+func (i ZoneDnssecArray) ToOutput(ctx context.Context) pulumix.Output[[]*ZoneDnssec] {
+	return pulumix.Output[[]*ZoneDnssec]{
+		OutputState: i.ToZoneDnssecArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // ZoneDnssecMapInput is an input type that accepts ZoneDnssecMap and ZoneDnssecMapOutput values.
@@ -260,6 +273,12 @@ func (i ZoneDnssecMap) ToZoneDnssecMapOutputWithContext(ctx context.Context) Zon
 	return pulumi.ToOutputWithContext(ctx, i).(ZoneDnssecMapOutput)
 }
 
+func (i ZoneDnssecMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ZoneDnssec] {
+	return pulumix.Output[map[string]*ZoneDnssec]{
+		OutputState: i.ToZoneDnssecMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ZoneDnssecOutput struct{ *pulumi.OutputState }
 
 func (ZoneDnssecOutput) ElementType() reflect.Type {
@@ -272,6 +291,12 @@ func (o ZoneDnssecOutput) ToZoneDnssecOutput() ZoneDnssecOutput {
 
 func (o ZoneDnssecOutput) ToZoneDnssecOutputWithContext(ctx context.Context) ZoneDnssecOutput {
 	return o
+}
+
+func (o ZoneDnssecOutput) ToOutput(ctx context.Context) pulumix.Output[*ZoneDnssec] {
+	return pulumix.Output[*ZoneDnssec]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Zone DNSSEC algorithm.
@@ -348,6 +373,12 @@ func (o ZoneDnssecArrayOutput) ToZoneDnssecArrayOutputWithContext(ctx context.Co
 	return o
 }
 
+func (o ZoneDnssecArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ZoneDnssec] {
+	return pulumix.Output[[]*ZoneDnssec]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ZoneDnssecArrayOutput) Index(i pulumi.IntInput) ZoneDnssecOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ZoneDnssec {
 		return vs[0].([]*ZoneDnssec)[vs[1].(int)]
@@ -366,6 +397,12 @@ func (o ZoneDnssecMapOutput) ToZoneDnssecMapOutput() ZoneDnssecMapOutput {
 
 func (o ZoneDnssecMapOutput) ToZoneDnssecMapOutputWithContext(ctx context.Context) ZoneDnssecMapOutput {
 	return o
+}
+
+func (o ZoneDnssecMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ZoneDnssec] {
+	return pulumix.Output[map[string]*ZoneDnssec]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ZoneDnssecMapOutput) MapIndex(k pulumi.StringInput) ZoneDnssecOutput {

@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a resource, that manages Cloudflare static routes for Magic
@@ -223,6 +224,12 @@ func (i *StaticRoute) ToStaticRouteOutputWithContext(ctx context.Context) Static
 	return pulumi.ToOutputWithContext(ctx, i).(StaticRouteOutput)
 }
 
+func (i *StaticRoute) ToOutput(ctx context.Context) pulumix.Output[*StaticRoute] {
+	return pulumix.Output[*StaticRoute]{
+		OutputState: i.ToStaticRouteOutputWithContext(ctx).OutputState,
+	}
+}
+
 // StaticRouteArrayInput is an input type that accepts StaticRouteArray and StaticRouteArrayOutput values.
 // You can construct a concrete instance of `StaticRouteArrayInput` via:
 //
@@ -246,6 +253,12 @@ func (i StaticRouteArray) ToStaticRouteArrayOutput() StaticRouteArrayOutput {
 
 func (i StaticRouteArray) ToStaticRouteArrayOutputWithContext(ctx context.Context) StaticRouteArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(StaticRouteArrayOutput)
+}
+
+func (i StaticRouteArray) ToOutput(ctx context.Context) pulumix.Output[[]*StaticRoute] {
+	return pulumix.Output[[]*StaticRoute]{
+		OutputState: i.ToStaticRouteArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // StaticRouteMapInput is an input type that accepts StaticRouteMap and StaticRouteMapOutput values.
@@ -273,6 +286,12 @@ func (i StaticRouteMap) ToStaticRouteMapOutputWithContext(ctx context.Context) S
 	return pulumi.ToOutputWithContext(ctx, i).(StaticRouteMapOutput)
 }
 
+func (i StaticRouteMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*StaticRoute] {
+	return pulumix.Output[map[string]*StaticRoute]{
+		OutputState: i.ToStaticRouteMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type StaticRouteOutput struct{ *pulumi.OutputState }
 
 func (StaticRouteOutput) ElementType() reflect.Type {
@@ -285,6 +304,12 @@ func (o StaticRouteOutput) ToStaticRouteOutput() StaticRouteOutput {
 
 func (o StaticRouteOutput) ToStaticRouteOutputWithContext(ctx context.Context) StaticRouteOutput {
 	return o
+}
+
+func (o StaticRouteOutput) ToOutput(ctx context.Context) pulumix.Output[*StaticRoute] {
+	return pulumix.Output[*StaticRoute]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
@@ -341,6 +366,12 @@ func (o StaticRouteArrayOutput) ToStaticRouteArrayOutputWithContext(ctx context.
 	return o
 }
 
+func (o StaticRouteArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*StaticRoute] {
+	return pulumix.Output[[]*StaticRoute]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o StaticRouteArrayOutput) Index(i pulumi.IntInput) StaticRouteOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *StaticRoute {
 		return vs[0].([]*StaticRoute)[vs[1].(int)]
@@ -359,6 +390,12 @@ func (o StaticRouteMapOutput) ToStaticRouteMapOutput() StaticRouteMapOutput {
 
 func (o StaticRouteMapOutput) ToStaticRouteMapOutputWithContext(ctx context.Context) StaticRouteMapOutput {
 	return o
+}
+
+func (o StaticRouteMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*StaticRoute] {
+	return pulumix.Output[map[string]*StaticRoute]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o StaticRouteMapOutput) MapIndex(k pulumi.StringInput) StaticRouteOutput {

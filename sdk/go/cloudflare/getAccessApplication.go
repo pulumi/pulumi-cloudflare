@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Use this data source to lookup a single [Access Application](https://developers.cloudflare.com/cloudflare-one/applications/)
@@ -92,6 +93,12 @@ func (o LookupAccessApplicationResultOutput) ToLookupAccessApplicationResultOutp
 
 func (o LookupAccessApplicationResultOutput) ToLookupAccessApplicationResultOutputWithContext(ctx context.Context) LookupAccessApplicationResultOutput {
 	return o
+}
+
+func (o LookupAccessApplicationResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupAccessApplicationResult] {
+	return pulumix.Output[LookupAccessApplicationResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The account identifier to target for the resource. Must provide only one of `zoneId`, `accountId`.

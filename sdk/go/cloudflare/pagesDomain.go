@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a resource for managing Cloudflare Pages domains.
@@ -170,6 +171,12 @@ func (i *PagesDomain) ToPagesDomainOutputWithContext(ctx context.Context) PagesD
 	return pulumi.ToOutputWithContext(ctx, i).(PagesDomainOutput)
 }
 
+func (i *PagesDomain) ToOutput(ctx context.Context) pulumix.Output[*PagesDomain] {
+	return pulumix.Output[*PagesDomain]{
+		OutputState: i.ToPagesDomainOutputWithContext(ctx).OutputState,
+	}
+}
+
 // PagesDomainArrayInput is an input type that accepts PagesDomainArray and PagesDomainArrayOutput values.
 // You can construct a concrete instance of `PagesDomainArrayInput` via:
 //
@@ -193,6 +200,12 @@ func (i PagesDomainArray) ToPagesDomainArrayOutput() PagesDomainArrayOutput {
 
 func (i PagesDomainArray) ToPagesDomainArrayOutputWithContext(ctx context.Context) PagesDomainArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(PagesDomainArrayOutput)
+}
+
+func (i PagesDomainArray) ToOutput(ctx context.Context) pulumix.Output[[]*PagesDomain] {
+	return pulumix.Output[[]*PagesDomain]{
+		OutputState: i.ToPagesDomainArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // PagesDomainMapInput is an input type that accepts PagesDomainMap and PagesDomainMapOutput values.
@@ -220,6 +233,12 @@ func (i PagesDomainMap) ToPagesDomainMapOutputWithContext(ctx context.Context) P
 	return pulumi.ToOutputWithContext(ctx, i).(PagesDomainMapOutput)
 }
 
+func (i PagesDomainMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*PagesDomain] {
+	return pulumix.Output[map[string]*PagesDomain]{
+		OutputState: i.ToPagesDomainMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type PagesDomainOutput struct{ *pulumi.OutputState }
 
 func (PagesDomainOutput) ElementType() reflect.Type {
@@ -232,6 +251,12 @@ func (o PagesDomainOutput) ToPagesDomainOutput() PagesDomainOutput {
 
 func (o PagesDomainOutput) ToPagesDomainOutputWithContext(ctx context.Context) PagesDomainOutput {
 	return o
+}
+
+func (o PagesDomainOutput) ToOutput(ctx context.Context) pulumix.Output[*PagesDomain] {
+	return pulumix.Output[*PagesDomain]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
@@ -268,6 +293,12 @@ func (o PagesDomainArrayOutput) ToPagesDomainArrayOutputWithContext(ctx context.
 	return o
 }
 
+func (o PagesDomainArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*PagesDomain] {
+	return pulumix.Output[[]*PagesDomain]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o PagesDomainArrayOutput) Index(i pulumi.IntInput) PagesDomainOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *PagesDomain {
 		return vs[0].([]*PagesDomain)[vs[1].(int)]
@@ -286,6 +317,12 @@ func (o PagesDomainMapOutput) ToPagesDomainMapOutput() PagesDomainMapOutput {
 
 func (o PagesDomainMapOutput) ToPagesDomainMapOutputWithContext(ctx context.Context) PagesDomainMapOutput {
 	return o
+}
+
+func (o PagesDomainMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*PagesDomain] {
+	return pulumix.Output[map[string]*PagesDomain]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o PagesDomainMapOutput) MapIndex(k pulumi.StringInput) PagesDomainOutput {

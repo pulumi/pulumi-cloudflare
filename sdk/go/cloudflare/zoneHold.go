@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Cloudflare Zone Hold resource that prevents adding
@@ -169,6 +170,12 @@ func (i *ZoneHold) ToZoneHoldOutputWithContext(ctx context.Context) ZoneHoldOutp
 	return pulumi.ToOutputWithContext(ctx, i).(ZoneHoldOutput)
 }
 
+func (i *ZoneHold) ToOutput(ctx context.Context) pulumix.Output[*ZoneHold] {
+	return pulumix.Output[*ZoneHold]{
+		OutputState: i.ToZoneHoldOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ZoneHoldArrayInput is an input type that accepts ZoneHoldArray and ZoneHoldArrayOutput values.
 // You can construct a concrete instance of `ZoneHoldArrayInput` via:
 //
@@ -192,6 +199,12 @@ func (i ZoneHoldArray) ToZoneHoldArrayOutput() ZoneHoldArrayOutput {
 
 func (i ZoneHoldArray) ToZoneHoldArrayOutputWithContext(ctx context.Context) ZoneHoldArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ZoneHoldArrayOutput)
+}
+
+func (i ZoneHoldArray) ToOutput(ctx context.Context) pulumix.Output[[]*ZoneHold] {
+	return pulumix.Output[[]*ZoneHold]{
+		OutputState: i.ToZoneHoldArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // ZoneHoldMapInput is an input type that accepts ZoneHoldMap and ZoneHoldMapOutput values.
@@ -219,6 +232,12 @@ func (i ZoneHoldMap) ToZoneHoldMapOutputWithContext(ctx context.Context) ZoneHol
 	return pulumi.ToOutputWithContext(ctx, i).(ZoneHoldMapOutput)
 }
 
+func (i ZoneHoldMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ZoneHold] {
+	return pulumix.Output[map[string]*ZoneHold]{
+		OutputState: i.ToZoneHoldMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ZoneHoldOutput struct{ *pulumi.OutputState }
 
 func (ZoneHoldOutput) ElementType() reflect.Type {
@@ -231,6 +250,12 @@ func (o ZoneHoldOutput) ToZoneHoldOutput() ZoneHoldOutput {
 
 func (o ZoneHoldOutput) ToZoneHoldOutputWithContext(ctx context.Context) ZoneHoldOutput {
 	return o
+}
+
+func (o ZoneHoldOutput) ToOutput(ctx context.Context) pulumix.Output[*ZoneHold] {
+	return pulumix.Output[*ZoneHold]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Enablement status of the zone hold.
@@ -267,6 +292,12 @@ func (o ZoneHoldArrayOutput) ToZoneHoldArrayOutputWithContext(ctx context.Contex
 	return o
 }
 
+func (o ZoneHoldArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ZoneHold] {
+	return pulumix.Output[[]*ZoneHold]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ZoneHoldArrayOutput) Index(i pulumi.IntInput) ZoneHoldOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ZoneHold {
 		return vs[0].([]*ZoneHold)[vs[1].(int)]
@@ -285,6 +316,12 @@ func (o ZoneHoldMapOutput) ToZoneHoldMapOutput() ZoneHoldMapOutput {
 
 func (o ZoneHoldMapOutput) ToZoneHoldMapOutputWithContext(ctx context.Context) ZoneHoldMapOutput {
 	return o
+}
+
+func (o ZoneHoldMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ZoneHold] {
+	return pulumix.Output[map[string]*ZoneHold]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ZoneHoldMapOutput) MapIndex(k pulumi.StringInput) ZoneHoldOutput {

@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // ## Example Usage
@@ -239,6 +240,12 @@ func (i *CertificatePack) ToCertificatePackOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(CertificatePackOutput)
 }
 
+func (i *CertificatePack) ToOutput(ctx context.Context) pulumix.Output[*CertificatePack] {
+	return pulumix.Output[*CertificatePack]{
+		OutputState: i.ToCertificatePackOutputWithContext(ctx).OutputState,
+	}
+}
+
 // CertificatePackArrayInput is an input type that accepts CertificatePackArray and CertificatePackArrayOutput values.
 // You can construct a concrete instance of `CertificatePackArrayInput` via:
 //
@@ -262,6 +269,12 @@ func (i CertificatePackArray) ToCertificatePackArrayOutput() CertificatePackArra
 
 func (i CertificatePackArray) ToCertificatePackArrayOutputWithContext(ctx context.Context) CertificatePackArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(CertificatePackArrayOutput)
+}
+
+func (i CertificatePackArray) ToOutput(ctx context.Context) pulumix.Output[[]*CertificatePack] {
+	return pulumix.Output[[]*CertificatePack]{
+		OutputState: i.ToCertificatePackArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // CertificatePackMapInput is an input type that accepts CertificatePackMap and CertificatePackMapOutput values.
@@ -289,6 +302,12 @@ func (i CertificatePackMap) ToCertificatePackMapOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(CertificatePackMapOutput)
 }
 
+func (i CertificatePackMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*CertificatePack] {
+	return pulumix.Output[map[string]*CertificatePack]{
+		OutputState: i.ToCertificatePackMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type CertificatePackOutput struct{ *pulumi.OutputState }
 
 func (CertificatePackOutput) ElementType() reflect.Type {
@@ -301,6 +320,12 @@ func (o CertificatePackOutput) ToCertificatePackOutput() CertificatePackOutput {
 
 func (o CertificatePackOutput) ToCertificatePackOutputWithContext(ctx context.Context) CertificatePackOutput {
 	return o
+}
+
+func (o CertificatePackOutput) ToOutput(ctx context.Context) pulumix.Output[*CertificatePack] {
+	return pulumix.Output[*CertificatePack]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Which certificate authority to issue the certificate pack. Available values: `digicert`, `letsEncrypt`, `google`. **Modifying this attribute will force creation of a new resource.**
@@ -365,6 +390,12 @@ func (o CertificatePackArrayOutput) ToCertificatePackArrayOutputWithContext(ctx 
 	return o
 }
 
+func (o CertificatePackArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*CertificatePack] {
+	return pulumix.Output[[]*CertificatePack]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o CertificatePackArrayOutput) Index(i pulumi.IntInput) CertificatePackOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *CertificatePack {
 		return vs[0].([]*CertificatePack)[vs[1].(int)]
@@ -383,6 +414,12 @@ func (o CertificatePackMapOutput) ToCertificatePackMapOutput() CertificatePackMa
 
 func (o CertificatePackMapOutput) ToCertificatePackMapOutputWithContext(ctx context.Context) CertificatePackMapOutput {
 	return o
+}
+
+func (o CertificatePackMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*CertificatePack] {
+	return pulumix.Output[map[string]*CertificatePack]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CertificatePackMapOutput) MapIndex(k pulumi.StringInput) CertificatePackOutput {

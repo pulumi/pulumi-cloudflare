@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a resource which customizes Cloudflare zone settings.
@@ -169,6 +170,12 @@ func (i *ZoneSettingsOverride) ToZoneSettingsOverrideOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(ZoneSettingsOverrideOutput)
 }
 
+func (i *ZoneSettingsOverride) ToOutput(ctx context.Context) pulumix.Output[*ZoneSettingsOverride] {
+	return pulumix.Output[*ZoneSettingsOverride]{
+		OutputState: i.ToZoneSettingsOverrideOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ZoneSettingsOverrideArrayInput is an input type that accepts ZoneSettingsOverrideArray and ZoneSettingsOverrideArrayOutput values.
 // You can construct a concrete instance of `ZoneSettingsOverrideArrayInput` via:
 //
@@ -192,6 +199,12 @@ func (i ZoneSettingsOverrideArray) ToZoneSettingsOverrideArrayOutput() ZoneSetti
 
 func (i ZoneSettingsOverrideArray) ToZoneSettingsOverrideArrayOutputWithContext(ctx context.Context) ZoneSettingsOverrideArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ZoneSettingsOverrideArrayOutput)
+}
+
+func (i ZoneSettingsOverrideArray) ToOutput(ctx context.Context) pulumix.Output[[]*ZoneSettingsOverride] {
+	return pulumix.Output[[]*ZoneSettingsOverride]{
+		OutputState: i.ToZoneSettingsOverrideArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // ZoneSettingsOverrideMapInput is an input type that accepts ZoneSettingsOverrideMap and ZoneSettingsOverrideMapOutput values.
@@ -219,6 +232,12 @@ func (i ZoneSettingsOverrideMap) ToZoneSettingsOverrideMapOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(ZoneSettingsOverrideMapOutput)
 }
 
+func (i ZoneSettingsOverrideMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ZoneSettingsOverride] {
+	return pulumix.Output[map[string]*ZoneSettingsOverride]{
+		OutputState: i.ToZoneSettingsOverrideMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ZoneSettingsOverrideOutput struct{ *pulumi.OutputState }
 
 func (ZoneSettingsOverrideOutput) ElementType() reflect.Type {
@@ -231,6 +250,12 @@ func (o ZoneSettingsOverrideOutput) ToZoneSettingsOverrideOutput() ZoneSettingsO
 
 func (o ZoneSettingsOverrideOutput) ToZoneSettingsOverrideOutputWithContext(ctx context.Context) ZoneSettingsOverrideOutput {
 	return o
+}
+
+func (o ZoneSettingsOverrideOutput) ToOutput(ctx context.Context) pulumix.Output[*ZoneSettingsOverride] {
+	return pulumix.Output[*ZoneSettingsOverride]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ZoneSettingsOverrideOutput) InitialSettings() ZoneSettingsOverrideInitialSettingArrayOutput {
@@ -276,6 +301,12 @@ func (o ZoneSettingsOverrideArrayOutput) ToZoneSettingsOverrideArrayOutputWithCo
 	return o
 }
 
+func (o ZoneSettingsOverrideArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ZoneSettingsOverride] {
+	return pulumix.Output[[]*ZoneSettingsOverride]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ZoneSettingsOverrideArrayOutput) Index(i pulumi.IntInput) ZoneSettingsOverrideOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ZoneSettingsOverride {
 		return vs[0].([]*ZoneSettingsOverride)[vs[1].(int)]
@@ -294,6 +325,12 @@ func (o ZoneSettingsOverrideMapOutput) ToZoneSettingsOverrideMapOutput() ZoneSet
 
 func (o ZoneSettingsOverrideMapOutput) ToZoneSettingsOverrideMapOutputWithContext(ctx context.Context) ZoneSettingsOverrideMapOutput {
 	return o
+}
+
+func (o ZoneSettingsOverrideMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ZoneSettingsOverride] {
+	return pulumix.Output[map[string]*ZoneSettingsOverride]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ZoneSettingsOverrideMapOutput) MapIndex(k pulumi.StringInput) ZoneSettingsOverrideOutput {

@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a resource, that manages a notification policy for
@@ -211,6 +212,12 @@ func (i *NotificationPolicy) ToNotificationPolicyOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(NotificationPolicyOutput)
 }
 
+func (i *NotificationPolicy) ToOutput(ctx context.Context) pulumix.Output[*NotificationPolicy] {
+	return pulumix.Output[*NotificationPolicy]{
+		OutputState: i.ToNotificationPolicyOutputWithContext(ctx).OutputState,
+	}
+}
+
 // NotificationPolicyArrayInput is an input type that accepts NotificationPolicyArray and NotificationPolicyArrayOutput values.
 // You can construct a concrete instance of `NotificationPolicyArrayInput` via:
 //
@@ -234,6 +241,12 @@ func (i NotificationPolicyArray) ToNotificationPolicyArrayOutput() NotificationP
 
 func (i NotificationPolicyArray) ToNotificationPolicyArrayOutputWithContext(ctx context.Context) NotificationPolicyArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(NotificationPolicyArrayOutput)
+}
+
+func (i NotificationPolicyArray) ToOutput(ctx context.Context) pulumix.Output[[]*NotificationPolicy] {
+	return pulumix.Output[[]*NotificationPolicy]{
+		OutputState: i.ToNotificationPolicyArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // NotificationPolicyMapInput is an input type that accepts NotificationPolicyMap and NotificationPolicyMapOutput values.
@@ -261,6 +274,12 @@ func (i NotificationPolicyMap) ToNotificationPolicyMapOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(NotificationPolicyMapOutput)
 }
 
+func (i NotificationPolicyMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*NotificationPolicy] {
+	return pulumix.Output[map[string]*NotificationPolicy]{
+		OutputState: i.ToNotificationPolicyMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type NotificationPolicyOutput struct{ *pulumi.OutputState }
 
 func (NotificationPolicyOutput) ElementType() reflect.Type {
@@ -273,6 +292,12 @@ func (o NotificationPolicyOutput) ToNotificationPolicyOutput() NotificationPolic
 
 func (o NotificationPolicyOutput) ToNotificationPolicyOutputWithContext(ctx context.Context) NotificationPolicyOutput {
 	return o
+}
+
+func (o NotificationPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[*NotificationPolicy] {
+	return pulumix.Output[*NotificationPolicy]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The account identifier to target for the resource.
@@ -348,6 +373,12 @@ func (o NotificationPolicyArrayOutput) ToNotificationPolicyArrayOutputWithContex
 	return o
 }
 
+func (o NotificationPolicyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*NotificationPolicy] {
+	return pulumix.Output[[]*NotificationPolicy]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o NotificationPolicyArrayOutput) Index(i pulumi.IntInput) NotificationPolicyOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *NotificationPolicy {
 		return vs[0].([]*NotificationPolicy)[vs[1].(int)]
@@ -366,6 +397,12 @@ func (o NotificationPolicyMapOutput) ToNotificationPolicyMapOutput() Notificatio
 
 func (o NotificationPolicyMapOutput) ToNotificationPolicyMapOutputWithContext(ctx context.Context) NotificationPolicyMapOutput {
 	return o
+}
+
+func (o NotificationPolicyMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*NotificationPolicy] {
+	return pulumix.Output[map[string]*NotificationPolicy]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o NotificationPolicyMapOutput) MapIndex(k pulumi.StringInput) NotificationPolicyOutput {

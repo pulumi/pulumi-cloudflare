@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Cloudflare Access Mutual TLS Certificate resource.
@@ -203,6 +204,12 @@ func (i *AccessMutualTlsCertificate) ToAccessMutualTlsCertificateOutputWithConte
 	return pulumi.ToOutputWithContext(ctx, i).(AccessMutualTlsCertificateOutput)
 }
 
+func (i *AccessMutualTlsCertificate) ToOutput(ctx context.Context) pulumix.Output[*AccessMutualTlsCertificate] {
+	return pulumix.Output[*AccessMutualTlsCertificate]{
+		OutputState: i.ToAccessMutualTlsCertificateOutputWithContext(ctx).OutputState,
+	}
+}
+
 // AccessMutualTlsCertificateArrayInput is an input type that accepts AccessMutualTlsCertificateArray and AccessMutualTlsCertificateArrayOutput values.
 // You can construct a concrete instance of `AccessMutualTlsCertificateArrayInput` via:
 //
@@ -226,6 +233,12 @@ func (i AccessMutualTlsCertificateArray) ToAccessMutualTlsCertificateArrayOutput
 
 func (i AccessMutualTlsCertificateArray) ToAccessMutualTlsCertificateArrayOutputWithContext(ctx context.Context) AccessMutualTlsCertificateArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AccessMutualTlsCertificateArrayOutput)
+}
+
+func (i AccessMutualTlsCertificateArray) ToOutput(ctx context.Context) pulumix.Output[[]*AccessMutualTlsCertificate] {
+	return pulumix.Output[[]*AccessMutualTlsCertificate]{
+		OutputState: i.ToAccessMutualTlsCertificateArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // AccessMutualTlsCertificateMapInput is an input type that accepts AccessMutualTlsCertificateMap and AccessMutualTlsCertificateMapOutput values.
@@ -253,6 +266,12 @@ func (i AccessMutualTlsCertificateMap) ToAccessMutualTlsCertificateMapOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(AccessMutualTlsCertificateMapOutput)
 }
 
+func (i AccessMutualTlsCertificateMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*AccessMutualTlsCertificate] {
+	return pulumix.Output[map[string]*AccessMutualTlsCertificate]{
+		OutputState: i.ToAccessMutualTlsCertificateMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type AccessMutualTlsCertificateOutput struct{ *pulumi.OutputState }
 
 func (AccessMutualTlsCertificateOutput) ElementType() reflect.Type {
@@ -265,6 +284,12 @@ func (o AccessMutualTlsCertificateOutput) ToAccessMutualTlsCertificateOutput() A
 
 func (o AccessMutualTlsCertificateOutput) ToAccessMutualTlsCertificateOutputWithContext(ctx context.Context) AccessMutualTlsCertificateOutput {
 	return o
+}
+
+func (o AccessMutualTlsCertificateOutput) ToOutput(ctx context.Context) pulumix.Output[*AccessMutualTlsCertificate] {
+	return pulumix.Output[*AccessMutualTlsCertificate]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The account identifier to target for the resource. Conflicts with `zoneId`.
@@ -310,6 +335,12 @@ func (o AccessMutualTlsCertificateArrayOutput) ToAccessMutualTlsCertificateArray
 	return o
 }
 
+func (o AccessMutualTlsCertificateArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*AccessMutualTlsCertificate] {
+	return pulumix.Output[[]*AccessMutualTlsCertificate]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o AccessMutualTlsCertificateArrayOutput) Index(i pulumi.IntInput) AccessMutualTlsCertificateOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *AccessMutualTlsCertificate {
 		return vs[0].([]*AccessMutualTlsCertificate)[vs[1].(int)]
@@ -328,6 +359,12 @@ func (o AccessMutualTlsCertificateMapOutput) ToAccessMutualTlsCertificateMapOutp
 
 func (o AccessMutualTlsCertificateMapOutput) ToAccessMutualTlsCertificateMapOutputWithContext(ctx context.Context) AccessMutualTlsCertificateMapOutput {
 	return o
+}
+
+func (o AccessMutualTlsCertificateMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*AccessMutualTlsCertificate] {
+	return pulumix.Output[map[string]*AccessMutualTlsCertificate]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AccessMutualTlsCertificateMapOutput) MapIndex(k pulumi.StringInput) AccessMutualTlsCertificateOutput {

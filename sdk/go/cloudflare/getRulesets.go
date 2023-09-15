@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Use this datasource to lookup Rulesets in an account or zone.
@@ -117,6 +118,12 @@ func (o GetRulesetsResultOutput) ToGetRulesetsResultOutput() GetRulesetsResultOu
 
 func (o GetRulesetsResultOutput) ToGetRulesetsResultOutputWithContext(ctx context.Context) GetRulesetsResultOutput {
 	return o
+}
+
+func (o GetRulesetsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetRulesetsResult] {
+	return pulumix.Output[GetRulesetsResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The account identifier to target for the resource. Must provide only one of `zoneId`, `accountId`.

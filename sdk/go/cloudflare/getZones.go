@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Use this data source to look up Zone results for use in other resources.
@@ -103,6 +104,12 @@ func (o GetZonesResultOutput) ToGetZonesResultOutput() GetZonesResultOutput {
 
 func (o GetZonesResultOutput) ToGetZonesResultOutputWithContext(ctx context.Context) GetZonesResultOutput {
 	return o
+}
+
+func (o GetZonesResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetZonesResult] {
+	return pulumix.Output[GetZonesResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // One or more values used to look up zone records. If more than one value is given all values must match in order to be included.

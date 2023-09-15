@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Use this data source to lookup [Lists](https://developers.cloudflare.com/api/operations/lists-get-lists).
@@ -99,6 +100,12 @@ func (o GetListsResultOutput) ToGetListsResultOutput() GetListsResultOutput {
 
 func (o GetListsResultOutput) ToGetListsResultOutputWithContext(ctx context.Context) GetListsResultOutput {
 	return o
+}
+
+func (o GetListsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetListsResult] {
+	return pulumix.Output[GetListsResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The account identifier to target for the resource.
