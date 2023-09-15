@@ -145,7 +145,6 @@ jobs:
         repository: ${{ github.event.client_payload.github.payload.repository.full_name }}
         token: ${{ secrets.PULUMI_BOT_TOKEN }}
   lint:
-    container: golangci/golangci-lint:v1.54.1
     if: github.event_name == 'repository_dispatch' ||
       github.event.pull_request.head.repo.full_name == github.repository
     name: lint
@@ -155,28 +154,24 @@ jobs:
       uses: actions/checkout@v3
       with:
         ref: ${{ env.PR_COMMIT_SHA }}
-    - name: Checkout Scripts Repo
-      uses: actions/checkout@v3
-      with:
-        path: ci-scripts
-        repository: pulumi/scripts
-    - name: Mark repo as safe directory
-      run: git config --global --add safe.directory /__w/pulumi-${{ env.PROVIDER }}/pulumi-${{ env.PROVIDER }}
-    - name: Unshallow clone for tags
-      run: git fetch --prune --unshallow --tags
-    - name: Install Go
+    - name: disarm go:embed directives to enable lint
+      run: |
+        git grep -l 'go:embed' -- provider | xargs sed -i 's/go:embed/ goembed/g'
+    - name: prepare upstream
+      continue-on-error: true
+      run: make upstream
+    - name: Install go
       uses: actions/setup-go@v4
       with:
-        cache-dependency-path: |
-            sdk/go.sum
-        go-version: 1.21.x
-    - name: Install pulumictl
-      uses: jaxxstorm/action-install-gh-release@v1.5.0
+        # The versions of golangci-lint and setup-go here cross-depend and need to update together.
+        go-version: 1.21
+        # Either this action or golangci-lint needs to disable the cache
+        cache: false
+    - name: golangci-lint
+      uses: golangci/golangci-lint-action@v3
       with:
-        repo: pulumi/pulumictl
-    - name: Install Pulumi CLI
-      uses: pulumi/action-install-pulumi-cli@v2
-    - run: make lint_provider
+        version: v1.54.1
+        working-directory: provider
     - if: failure() && github.event_name == 'push'
       name: Notify Slack
       uses: 8398a7/action-slack@v3

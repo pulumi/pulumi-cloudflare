@@ -138,34 +138,28 @@ jobs:
       run: pulumictl create docs-build pulumi-${{ env.PROVIDER }}
         "${GITHUB_REF#refs/tags/}"
   lint:
-    container: golangci/golangci-lint:v1.54.1
     name: lint
     runs-on: ubuntu-latest
     steps:
     - name: Checkout Repo
       uses: actions/checkout@v3
-    - name: Checkout Scripts Repo
-      uses: actions/checkout@v3
-      with:
-        path: ci-scripts
-        repository: pulumi/scripts
-    - name: Mark repo as safe directory
-      run: git config --global --add safe.directory /__w/pulumi-${{ env.PROVIDER }}/pulumi-${{ env.PROVIDER }}
-    - name: Unshallow clone for tags
-      run: git fetch --prune --unshallow --tags
     - name: Install Go
       uses: actions/setup-go@v4
       with:
         cache-dependency-path: |
             sdk/go.sum
         go-version: 1.21.x
-    - name: Install pulumictl
-      uses: jaxxstorm/action-install-gh-release@v1.5.0
+    - name: disarm go:embed directives to enable lint
+      run: |
+        git grep -l 'go:embed' -- provider | xargs sed -i 's/go:embed/ goembed/g'
+    - name: prepare upstream
+      continue-on-error: true
+      run: make upstream
+    - name: golangci-lint
+      uses: golangci/golangci-lint-action@v3
       with:
-        repo: pulumi/pulumictl
-    - name: Install Pulumi CLI
-      uses: pulumi/action-install-pulumi-cli@v2
-    - run: make lint_provider
+        version: v1.54.1
+        working-directory: provider
     - if: failure() && github.event_name == 'push'
       name: Notify Slack
       uses: 8398a7/action-slack@v3
