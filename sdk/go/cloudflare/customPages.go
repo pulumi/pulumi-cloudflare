@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a resource which manages Cloudflare custom error pages.
@@ -180,6 +181,12 @@ func (i *CustomPages) ToCustomPagesOutputWithContext(ctx context.Context) Custom
 	return pulumi.ToOutputWithContext(ctx, i).(CustomPagesOutput)
 }
 
+func (i *CustomPages) ToOutput(ctx context.Context) pulumix.Output[*CustomPages] {
+	return pulumix.Output[*CustomPages]{
+		OutputState: i.ToCustomPagesOutputWithContext(ctx).OutputState,
+	}
+}
+
 // CustomPagesArrayInput is an input type that accepts CustomPagesArray and CustomPagesArrayOutput values.
 // You can construct a concrete instance of `CustomPagesArrayInput` via:
 //
@@ -203,6 +210,12 @@ func (i CustomPagesArray) ToCustomPagesArrayOutput() CustomPagesArrayOutput {
 
 func (i CustomPagesArray) ToCustomPagesArrayOutputWithContext(ctx context.Context) CustomPagesArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(CustomPagesArrayOutput)
+}
+
+func (i CustomPagesArray) ToOutput(ctx context.Context) pulumix.Output[[]*CustomPages] {
+	return pulumix.Output[[]*CustomPages]{
+		OutputState: i.ToCustomPagesArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // CustomPagesMapInput is an input type that accepts CustomPagesMap and CustomPagesMapOutput values.
@@ -230,6 +243,12 @@ func (i CustomPagesMap) ToCustomPagesMapOutputWithContext(ctx context.Context) C
 	return pulumi.ToOutputWithContext(ctx, i).(CustomPagesMapOutput)
 }
 
+func (i CustomPagesMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*CustomPages] {
+	return pulumix.Output[map[string]*CustomPages]{
+		OutputState: i.ToCustomPagesMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type CustomPagesOutput struct{ *pulumi.OutputState }
 
 func (CustomPagesOutput) ElementType() reflect.Type {
@@ -242,6 +261,12 @@ func (o CustomPagesOutput) ToCustomPagesOutput() CustomPagesOutput {
 
 func (o CustomPagesOutput) ToCustomPagesOutputWithContext(ctx context.Context) CustomPagesOutput {
 	return o
+}
+
+func (o CustomPagesOutput) ToOutput(ctx context.Context) pulumix.Output[*CustomPages] {
+	return pulumix.Output[*CustomPages]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The account identifier to target for the resource. Conflicts with `zoneId`.
@@ -283,6 +308,12 @@ func (o CustomPagesArrayOutput) ToCustomPagesArrayOutputWithContext(ctx context.
 	return o
 }
 
+func (o CustomPagesArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*CustomPages] {
+	return pulumix.Output[[]*CustomPages]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o CustomPagesArrayOutput) Index(i pulumi.IntInput) CustomPagesOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *CustomPages {
 		return vs[0].([]*CustomPages)[vs[1].(int)]
@@ -301,6 +332,12 @@ func (o CustomPagesMapOutput) ToCustomPagesMapOutput() CustomPagesMapOutput {
 
 func (o CustomPagesMapOutput) ToCustomPagesMapOutputWithContext(ctx context.Context) CustomPagesMapOutput {
 	return o
+}
+
+func (o CustomPagesMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*CustomPages] {
+	return pulumix.Output[map[string]*CustomPages]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o CustomPagesMapOutput) MapIndex(k pulumi.StringInput) CustomPagesOutput {

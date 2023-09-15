@@ -50,3 +50,28 @@ export interface GetUserResult {
      */
     readonly username: string;
 }
+/**
+ * Use this data source to retrieve information about the currently authenticated user.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as cloudflare from "@pulumi/cloudflare";
+ *
+ * const me = cloudflare.getUser({});
+ * const all = cloudflare.getApiTokenPermissionGroups({});
+ * const example = new cloudflare.ApiToken("example", {
+ *     name: "Terraform Cloud (Terraform)",
+ *     policies: [{
+ *         permissionGroups: [all.then(all => all.user?.["User Details Read"])],
+ *         resources: me.then(me => {
+ *             [`com.cloudflare.api.user.${me.id}`]: "*",
+ *         }),
+ *     }],
+ * });
+ * ```
+ */
+export function getUserOutput(opts?: pulumi.InvokeOptions): pulumi.Output<GetUserResult> {
+    return pulumi.output(getUser(opts))
+}

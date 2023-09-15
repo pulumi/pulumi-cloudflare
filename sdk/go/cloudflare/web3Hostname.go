@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Manages Web3 hostnames for IPFS and Ethereum gateways.
@@ -164,6 +165,12 @@ func (i *Web3Hostname) ToWeb3HostnameOutputWithContext(ctx context.Context) Web3
 	return pulumi.ToOutputWithContext(ctx, i).(Web3HostnameOutput)
 }
 
+func (i *Web3Hostname) ToOutput(ctx context.Context) pulumix.Output[*Web3Hostname] {
+	return pulumix.Output[*Web3Hostname]{
+		OutputState: i.ToWeb3HostnameOutputWithContext(ctx).OutputState,
+	}
+}
+
 // Web3HostnameArrayInput is an input type that accepts Web3HostnameArray and Web3HostnameArrayOutput values.
 // You can construct a concrete instance of `Web3HostnameArrayInput` via:
 //
@@ -187,6 +194,12 @@ func (i Web3HostnameArray) ToWeb3HostnameArrayOutput() Web3HostnameArrayOutput {
 
 func (i Web3HostnameArray) ToWeb3HostnameArrayOutputWithContext(ctx context.Context) Web3HostnameArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(Web3HostnameArrayOutput)
+}
+
+func (i Web3HostnameArray) ToOutput(ctx context.Context) pulumix.Output[[]*Web3Hostname] {
+	return pulumix.Output[[]*Web3Hostname]{
+		OutputState: i.ToWeb3HostnameArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // Web3HostnameMapInput is an input type that accepts Web3HostnameMap and Web3HostnameMapOutput values.
@@ -214,6 +227,12 @@ func (i Web3HostnameMap) ToWeb3HostnameMapOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(Web3HostnameMapOutput)
 }
 
+func (i Web3HostnameMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*Web3Hostname] {
+	return pulumix.Output[map[string]*Web3Hostname]{
+		OutputState: i.ToWeb3HostnameMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type Web3HostnameOutput struct{ *pulumi.OutputState }
 
 func (Web3HostnameOutput) ElementType() reflect.Type {
@@ -226,6 +245,12 @@ func (o Web3HostnameOutput) ToWeb3HostnameOutput() Web3HostnameOutput {
 
 func (o Web3HostnameOutput) ToWeb3HostnameOutputWithContext(ctx context.Context) Web3HostnameOutput {
 	return o
+}
+
+func (o Web3HostnameOutput) ToOutput(ctx context.Context) pulumix.Output[*Web3Hostname] {
+	return pulumix.Output[*Web3Hostname]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Creation time.
@@ -282,6 +307,12 @@ func (o Web3HostnameArrayOutput) ToWeb3HostnameArrayOutputWithContext(ctx contex
 	return o
 }
 
+func (o Web3HostnameArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*Web3Hostname] {
+	return pulumix.Output[[]*Web3Hostname]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o Web3HostnameArrayOutput) Index(i pulumi.IntInput) Web3HostnameOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Web3Hostname {
 		return vs[0].([]*Web3Hostname)[vs[1].(int)]
@@ -300,6 +331,12 @@ func (o Web3HostnameMapOutput) ToWeb3HostnameMapOutput() Web3HostnameMapOutput {
 
 func (o Web3HostnameMapOutput) ToWeb3HostnameMapOutputWithContext(ctx context.Context) Web3HostnameMapOutput {
 	return o
+}
+
+func (o Web3HostnameMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*Web3Hostname] {
+	return pulumix.Output[map[string]*Web3Hostname]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o Web3HostnameMapOutput) MapIndex(k pulumi.StringInput) Web3HostnameOutput {

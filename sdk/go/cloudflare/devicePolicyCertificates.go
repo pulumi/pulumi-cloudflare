@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Cloudflare device policy certificates resource. Device
@@ -150,6 +151,12 @@ func (i *DevicePolicyCertificates) ToDevicePolicyCertificatesOutputWithContext(c
 	return pulumi.ToOutputWithContext(ctx, i).(DevicePolicyCertificatesOutput)
 }
 
+func (i *DevicePolicyCertificates) ToOutput(ctx context.Context) pulumix.Output[*DevicePolicyCertificates] {
+	return pulumix.Output[*DevicePolicyCertificates]{
+		OutputState: i.ToDevicePolicyCertificatesOutputWithContext(ctx).OutputState,
+	}
+}
+
 // DevicePolicyCertificatesArrayInput is an input type that accepts DevicePolicyCertificatesArray and DevicePolicyCertificatesArrayOutput values.
 // You can construct a concrete instance of `DevicePolicyCertificatesArrayInput` via:
 //
@@ -173,6 +180,12 @@ func (i DevicePolicyCertificatesArray) ToDevicePolicyCertificatesArrayOutput() D
 
 func (i DevicePolicyCertificatesArray) ToDevicePolicyCertificatesArrayOutputWithContext(ctx context.Context) DevicePolicyCertificatesArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DevicePolicyCertificatesArrayOutput)
+}
+
+func (i DevicePolicyCertificatesArray) ToOutput(ctx context.Context) pulumix.Output[[]*DevicePolicyCertificates] {
+	return pulumix.Output[[]*DevicePolicyCertificates]{
+		OutputState: i.ToDevicePolicyCertificatesArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // DevicePolicyCertificatesMapInput is an input type that accepts DevicePolicyCertificatesMap and DevicePolicyCertificatesMapOutput values.
@@ -200,6 +213,12 @@ func (i DevicePolicyCertificatesMap) ToDevicePolicyCertificatesMapOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(DevicePolicyCertificatesMapOutput)
 }
 
+func (i DevicePolicyCertificatesMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*DevicePolicyCertificates] {
+	return pulumix.Output[map[string]*DevicePolicyCertificates]{
+		OutputState: i.ToDevicePolicyCertificatesMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type DevicePolicyCertificatesOutput struct{ *pulumi.OutputState }
 
 func (DevicePolicyCertificatesOutput) ElementType() reflect.Type {
@@ -212,6 +231,12 @@ func (o DevicePolicyCertificatesOutput) ToDevicePolicyCertificatesOutput() Devic
 
 func (o DevicePolicyCertificatesOutput) ToDevicePolicyCertificatesOutputWithContext(ctx context.Context) DevicePolicyCertificatesOutput {
 	return o
+}
+
+func (o DevicePolicyCertificatesOutput) ToOutput(ctx context.Context) pulumix.Output[*DevicePolicyCertificates] {
+	return pulumix.Output[*DevicePolicyCertificates]{
+		OutputState: o.OutputState,
+	}
 }
 
 // `true` if certificate generation is enabled.
@@ -238,6 +263,12 @@ func (o DevicePolicyCertificatesArrayOutput) ToDevicePolicyCertificatesArrayOutp
 	return o
 }
 
+func (o DevicePolicyCertificatesArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*DevicePolicyCertificates] {
+	return pulumix.Output[[]*DevicePolicyCertificates]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o DevicePolicyCertificatesArrayOutput) Index(i pulumi.IntInput) DevicePolicyCertificatesOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *DevicePolicyCertificates {
 		return vs[0].([]*DevicePolicyCertificates)[vs[1].(int)]
@@ -256,6 +287,12 @@ func (o DevicePolicyCertificatesMapOutput) ToDevicePolicyCertificatesMapOutput()
 
 func (o DevicePolicyCertificatesMapOutput) ToDevicePolicyCertificatesMapOutputWithContext(ctx context.Context) DevicePolicyCertificatesMapOutput {
 	return o
+}
+
+func (o DevicePolicyCertificatesMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*DevicePolicyCertificates] {
+	return pulumix.Output[map[string]*DevicePolicyCertificates]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o DevicePolicyCertificatesMapOutput) MapIndex(k pulumi.StringInput) DevicePolicyCertificatesOutput {

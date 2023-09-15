@@ -63,7 +63,7 @@ public class NotificationPolicyWebhooks extends com.pulumi.resources.CustomResou
      * The account identifier to target for the resource.
      * 
      */
-    @Export(name="accountId", refs={String.class}, tree="[0]")
+    @Export(name="accountId", type=String.class, parameters={})
     private Output<String> accountId;
 
     /**
@@ -77,7 +77,7 @@ public class NotificationPolicyWebhooks extends com.pulumi.resources.CustomResou
      * Timestamp of when the notification webhook was created.
      * 
      */
-    @Export(name="createdAt", refs={String.class}, tree="[0]")
+    @Export(name="createdAt", type=String.class, parameters={})
     private Output<String> createdAt;
 
     /**
@@ -91,7 +91,7 @@ public class NotificationPolicyWebhooks extends com.pulumi.resources.CustomResou
      * Timestamp of when the notification webhook last faiuled.
      * 
      */
-    @Export(name="lastFailure", refs={String.class}, tree="[0]")
+    @Export(name="lastFailure", type=String.class, parameters={})
     private Output<String> lastFailure;
 
     /**
@@ -105,7 +105,7 @@ public class NotificationPolicyWebhooks extends com.pulumi.resources.CustomResou
      * Timestamp of when the notification webhook was last successful.
      * 
      */
-    @Export(name="lastSuccess", refs={String.class}, tree="[0]")
+    @Export(name="lastSuccess", type=String.class, parameters={})
     private Output<String> lastSuccess;
 
     /**
@@ -119,7 +119,7 @@ public class NotificationPolicyWebhooks extends com.pulumi.resources.CustomResou
      * The name of the webhook destination.
      * 
      */
-    @Export(name="name", refs={String.class}, tree="[0]")
+    @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
@@ -133,7 +133,7 @@ public class NotificationPolicyWebhooks extends com.pulumi.resources.CustomResou
      * An optional secret can be provided that will be passed in the `cf-webhook-auth` header when dispatching a webhook notification. Secrets are not returned in any API response body. Refer to the [documentation](https://api.cloudflare.com/#notification-webhooks-create-webhook) for more details.
      * 
      */
-    @Export(name="secret", refs={String.class}, tree="[0]")
+    @Export(name="secret", type=String.class, parameters={})
     private Output</* @Nullable */ String> secret;
 
     /**
@@ -143,7 +143,7 @@ public class NotificationPolicyWebhooks extends com.pulumi.resources.CustomResou
     public Output<Optional<String>> secret() {
         return Codegen.optional(this.secret);
     }
-    @Export(name="type", refs={String.class}, tree="[0]")
+    @Export(name="type", type=String.class, parameters={})
     private Output<String> type;
 
     public Output<String> type() {
@@ -153,7 +153,7 @@ public class NotificationPolicyWebhooks extends com.pulumi.resources.CustomResou
      * The URL of the webhook destinations. **Modifying this attribute will force creation of a new resource.**
      * 
      */
-    @Export(name="url", refs={String.class}, tree="[0]")
+    @Export(name="url", type=String.class, parameters={})
     private Output</* @Nullable */ String> url;
 
     /**

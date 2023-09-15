@@ -65,7 +65,7 @@ public class Tunnel extends com.pulumi.resources.CustomResource {
      * The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
      * 
      */
-    @Export(name="accountId", refs={String.class}, tree="[0]")
+    @Export(name="accountId", type=String.class, parameters={})
     private Output<String> accountId;
 
     /**
@@ -79,7 +79,7 @@ public class Tunnel extends com.pulumi.resources.CustomResource {
      * Usable CNAME for accessing the Tunnel.
      * 
      */
-    @Export(name="cname", refs={String.class}, tree="[0]")
+    @Export(name="cname", type=String.class, parameters={})
     private Output<String> cname;
 
     /**
@@ -93,7 +93,7 @@ public class Tunnel extends com.pulumi.resources.CustomResource {
      * Indicates if this is a locally or remotely configured tunnel. If `local`, manage the tunnel using a YAML file on the origin machine. If `cloudflare`, manage the tunnel on the Zero Trust dashboard or using tunnel*config, tunnel*route or tunnel*virtual*network resources. Available values: `local`, `cloudflare`. **Modifying this attribute will force creation of a new resource.**
      * 
      */
-    @Export(name="configSrc", refs={String.class}, tree="[0]")
+    @Export(name="configSrc", type=String.class, parameters={})
     private Output</* @Nullable */ String> configSrc;
 
     /**
@@ -107,7 +107,7 @@ public class Tunnel extends com.pulumi.resources.CustomResource {
      * A user-friendly name chosen when the tunnel is created. **Modifying this attribute will force creation of a new resource.**
      * 
      */
-    @Export(name="name", refs={String.class}, tree="[0]")
+    @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
@@ -121,7 +121,7 @@ public class Tunnel extends com.pulumi.resources.CustomResource {
      * 32 or more bytes, encoded as a base64 string. The Create Argo Tunnel endpoint sets this as the tunnel&#39;s password. Anyone wishing to run the tunnel needs this password. **Modifying this attribute will force creation of a new resource.**
      * 
      */
-    @Export(name="secret", refs={String.class}, tree="[0]")
+    @Export(name="secret", type=String.class, parameters={})
     private Output<String> secret;
 
     /**
@@ -135,7 +135,7 @@ public class Tunnel extends com.pulumi.resources.CustomResource {
      * Token used by a connector to authenticate and run the tunnel.
      * 
      */
-    @Export(name="tunnelToken", refs={String.class}, tree="[0]")
+    @Export(name="tunnelToken", type=String.class, parameters={})
     private Output<String> tunnelToken;
 
     /**

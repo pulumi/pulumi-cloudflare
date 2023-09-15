@@ -55,7 +55,7 @@ public class TieredCache extends com.pulumi.resources.CustomResource {
      * The typed of tiered cache to utilize on the zone. Available values: `generic`, `smart`, `off`.
      * 
      */
-    @Export(name="cacheType", refs={String.class}, tree="[0]")
+    @Export(name="cacheType", type=String.class, parameters={})
     private Output<String> cacheType;
 
     /**
@@ -69,7 +69,7 @@ public class TieredCache extends com.pulumi.resources.CustomResource {
      * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
      * 
      */
-    @Export(name="zoneId", refs={String.class}, tree="[0]")
+    @Export(name="zoneId", type=String.class, parameters={})
     private Output<String> zoneId;
 
     /**

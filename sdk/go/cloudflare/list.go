@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // ## Import
@@ -147,6 +148,12 @@ func (i *List) ToListOutputWithContext(ctx context.Context) ListOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ListOutput)
 }
 
+func (i *List) ToOutput(ctx context.Context) pulumix.Output[*List] {
+	return pulumix.Output[*List]{
+		OutputState: i.ToListOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ListArrayInput is an input type that accepts ListArray and ListArrayOutput values.
 // You can construct a concrete instance of `ListArrayInput` via:
 //
@@ -170,6 +177,12 @@ func (i ListArray) ToListArrayOutput() ListArrayOutput {
 
 func (i ListArray) ToListArrayOutputWithContext(ctx context.Context) ListArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ListArrayOutput)
+}
+
+func (i ListArray) ToOutput(ctx context.Context) pulumix.Output[[]*List] {
+	return pulumix.Output[[]*List]{
+		OutputState: i.ToListArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // ListMapInput is an input type that accepts ListMap and ListMapOutput values.
@@ -197,6 +210,12 @@ func (i ListMap) ToListMapOutputWithContext(ctx context.Context) ListMapOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ListMapOutput)
 }
 
+func (i ListMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*List] {
+	return pulumix.Output[map[string]*List]{
+		OutputState: i.ToListMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ListOutput struct{ *pulumi.OutputState }
 
 func (ListOutput) ElementType() reflect.Type {
@@ -209,6 +228,12 @@ func (o ListOutput) ToListOutput() ListOutput {
 
 func (o ListOutput) ToListOutputWithContext(ctx context.Context) ListOutput {
 	return o
+}
+
+func (o ListOutput) ToOutput(ctx context.Context) pulumix.Output[*List] {
+	return pulumix.Output[*List]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The account identifier to target for the resource.
@@ -249,6 +274,12 @@ func (o ListArrayOutput) ToListArrayOutputWithContext(ctx context.Context) ListA
 	return o
 }
 
+func (o ListArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*List] {
+	return pulumix.Output[[]*List]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ListArrayOutput) Index(i pulumi.IntInput) ListOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *List {
 		return vs[0].([]*List)[vs[1].(int)]
@@ -267,6 +298,12 @@ func (o ListMapOutput) ToListMapOutput() ListMapOutput {
 
 func (o ListMapOutput) ToListMapOutputWithContext(ctx context.Context) ListMapOutput {
 	return o
+}
+
+func (o ListMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*List] {
+	return pulumix.Output[map[string]*List]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ListMapOutput) MapIndex(k pulumi.StringInput) ListOutput {

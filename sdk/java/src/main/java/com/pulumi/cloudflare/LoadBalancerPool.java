@@ -40,7 +40,7 @@ public class LoadBalancerPool extends com.pulumi.resources.CustomResource {
      * The account identifier to target for the resource.
      * 
      */
-    @Export(name="accountId", refs={String.class}, tree="[0]")
+    @Export(name="accountId", type=String.class, parameters={})
     private Output<String> accountId;
 
     /**
@@ -54,7 +54,7 @@ public class LoadBalancerPool extends com.pulumi.resources.CustomResource {
      * A list of regions (specified by region code) from which to run health checks. Empty means every Cloudflare data center (the default), but requires an Enterprise plan. Region codes can be found [here](https://developers.cloudflare.com/load-balancing/reference/region-mapping-api).
      * 
      */
-    @Export(name="checkRegions", refs={List.class,String.class}, tree="[0,1]")
+    @Export(name="checkRegions", type=List.class, parameters={String.class})
     private Output<List<String>> checkRegions;
 
     /**
@@ -68,7 +68,7 @@ public class LoadBalancerPool extends com.pulumi.resources.CustomResource {
      * The RFC3339 timestamp of when the load balancer was created.
      * 
      */
-    @Export(name="createdOn", refs={String.class}, tree="[0]")
+    @Export(name="createdOn", type=String.class, parameters={})
     private Output<String> createdOn;
 
     /**
@@ -82,7 +82,7 @@ public class LoadBalancerPool extends com.pulumi.resources.CustomResource {
      * Free text description.
      * 
      */
-    @Export(name="description", refs={String.class}, tree="[0]")
+    @Export(name="description", type=String.class, parameters={})
     private Output</* @Nullable */ String> description;
 
     /**
@@ -96,7 +96,7 @@ public class LoadBalancerPool extends com.pulumi.resources.CustomResource {
      * Whether to enable (the default) this pool. Disabled pools will not receive traffic and are excluded from health checks. Disabling a pool will cause any load balancers using it to failover to the next pool (if any). Defaults to `true`.
      * 
      */
-    @Export(name="enabled", refs={Boolean.class}, tree="[0]")
+    @Export(name="enabled", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> enabled;
 
     /**
@@ -110,7 +110,7 @@ public class LoadBalancerPool extends com.pulumi.resources.CustomResource {
      * The latitude this pool is physically located at; used for proximity steering.
      * 
      */
-    @Export(name="latitude", refs={Double.class}, tree="[0]")
+    @Export(name="latitude", type=Double.class, parameters={})
     private Output</* @Nullable */ Double> latitude;
 
     /**
@@ -124,7 +124,7 @@ public class LoadBalancerPool extends com.pulumi.resources.CustomResource {
      * Setting for controlling load shedding for this pool.
      * 
      */
-    @Export(name="loadSheddings", refs={List.class,LoadBalancerPoolLoadShedding.class}, tree="[0,1]")
+    @Export(name="loadSheddings", type=List.class, parameters={LoadBalancerPoolLoadShedding.class})
     private Output</* @Nullable */ List<LoadBalancerPoolLoadShedding>> loadSheddings;
 
     /**
@@ -138,7 +138,7 @@ public class LoadBalancerPool extends com.pulumi.resources.CustomResource {
      * The longitude this pool is physically located at; used for proximity steering.
      * 
      */
-    @Export(name="longitude", refs={Double.class}, tree="[0]")
+    @Export(name="longitude", type=Double.class, parameters={})
     private Output</* @Nullable */ Double> longitude;
 
     /**
@@ -152,7 +152,7 @@ public class LoadBalancerPool extends com.pulumi.resources.CustomResource {
      * The minimum number of origins that must be healthy for this pool to serve traffic. If the number of healthy origins falls below this number, the pool will be marked unhealthy and we will failover to the next available pool. Defaults to `1`.
      * 
      */
-    @Export(name="minimumOrigins", refs={Integer.class}, tree="[0]")
+    @Export(name="minimumOrigins", type=Integer.class, parameters={})
     private Output</* @Nullable */ Integer> minimumOrigins;
 
     /**
@@ -166,7 +166,7 @@ public class LoadBalancerPool extends com.pulumi.resources.CustomResource {
      * The RFC3339 timestamp of when the load balancer was last modified.
      * 
      */
-    @Export(name="modifiedOn", refs={String.class}, tree="[0]")
+    @Export(name="modifiedOn", type=String.class, parameters={})
     private Output<String> modifiedOn;
 
     /**
@@ -180,7 +180,7 @@ public class LoadBalancerPool extends com.pulumi.resources.CustomResource {
      * The ID of the Monitor to use for health checking origins within this pool.
      * 
      */
-    @Export(name="monitor", refs={String.class}, tree="[0]")
+    @Export(name="monitor", type=String.class, parameters={})
     private Output</* @Nullable */ String> monitor;
 
     /**
@@ -194,7 +194,7 @@ public class LoadBalancerPool extends com.pulumi.resources.CustomResource {
      * A short name (tag) for the pool.
      * 
      */
-    @Export(name="name", refs={String.class}, tree="[0]")
+    @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
@@ -208,7 +208,7 @@ public class LoadBalancerPool extends com.pulumi.resources.CustomResource {
      * The email address to send health status notifications to. This can be an individual mailbox or a mailing list. Multiple emails can be supplied as a comma delimited list.
      * 
      */
-    @Export(name="notificationEmail", refs={String.class}, tree="[0]")
+    @Export(name="notificationEmail", type=String.class, parameters={})
     private Output</* @Nullable */ String> notificationEmail;
 
     /**
@@ -222,7 +222,7 @@ public class LoadBalancerPool extends com.pulumi.resources.CustomResource {
      * Set an origin steering policy to control origin selection within a pool.
      * 
      */
-    @Export(name="originSteerings", refs={List.class,LoadBalancerPoolOriginSteering.class}, tree="[0,1]")
+    @Export(name="originSteerings", type=List.class, parameters={LoadBalancerPoolOriginSteering.class})
     private Output</* @Nullable */ List<LoadBalancerPoolOriginSteering>> originSteerings;
 
     /**
@@ -236,7 +236,7 @@ public class LoadBalancerPool extends com.pulumi.resources.CustomResource {
      * The list of origins within this pool. Traffic directed at this pool is balanced across all currently healthy origins, provided the pool itself is healthy.
      * 
      */
-    @Export(name="origins", refs={List.class,LoadBalancerPoolOrigin.class}, tree="[0,1]")
+    @Export(name="origins", type=List.class, parameters={LoadBalancerPoolOrigin.class})
     private Output<List<LoadBalancerPoolOrigin>> origins;
 
     /**

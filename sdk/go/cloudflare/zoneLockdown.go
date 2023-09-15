@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Cloudflare Zone Lockdown resource. Zone Lockdown allows
@@ -200,6 +201,12 @@ func (i *ZoneLockdown) ToZoneLockdownOutputWithContext(ctx context.Context) Zone
 	return pulumi.ToOutputWithContext(ctx, i).(ZoneLockdownOutput)
 }
 
+func (i *ZoneLockdown) ToOutput(ctx context.Context) pulumix.Output[*ZoneLockdown] {
+	return pulumix.Output[*ZoneLockdown]{
+		OutputState: i.ToZoneLockdownOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ZoneLockdownArrayInput is an input type that accepts ZoneLockdownArray and ZoneLockdownArrayOutput values.
 // You can construct a concrete instance of `ZoneLockdownArrayInput` via:
 //
@@ -223,6 +230,12 @@ func (i ZoneLockdownArray) ToZoneLockdownArrayOutput() ZoneLockdownArrayOutput {
 
 func (i ZoneLockdownArray) ToZoneLockdownArrayOutputWithContext(ctx context.Context) ZoneLockdownArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ZoneLockdownArrayOutput)
+}
+
+func (i ZoneLockdownArray) ToOutput(ctx context.Context) pulumix.Output[[]*ZoneLockdown] {
+	return pulumix.Output[[]*ZoneLockdown]{
+		OutputState: i.ToZoneLockdownArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // ZoneLockdownMapInput is an input type that accepts ZoneLockdownMap and ZoneLockdownMapOutput values.
@@ -250,6 +263,12 @@ func (i ZoneLockdownMap) ToZoneLockdownMapOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(ZoneLockdownMapOutput)
 }
 
+func (i ZoneLockdownMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ZoneLockdown] {
+	return pulumix.Output[map[string]*ZoneLockdown]{
+		OutputState: i.ToZoneLockdownMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ZoneLockdownOutput struct{ *pulumi.OutputState }
 
 func (ZoneLockdownOutput) ElementType() reflect.Type {
@@ -262,6 +281,12 @@ func (o ZoneLockdownOutput) ToZoneLockdownOutput() ZoneLockdownOutput {
 
 func (o ZoneLockdownOutput) ToZoneLockdownOutputWithContext(ctx context.Context) ZoneLockdownOutput {
 	return o
+}
+
+func (o ZoneLockdownOutput) ToOutput(ctx context.Context) pulumix.Output[*ZoneLockdown] {
+	return pulumix.Output[*ZoneLockdown]{
+		OutputState: o.OutputState,
+	}
 }
 
 // A list of IP addresses or IP ranges to match the request against specified in target, value pairs.
@@ -307,6 +332,12 @@ func (o ZoneLockdownArrayOutput) ToZoneLockdownArrayOutputWithContext(ctx contex
 	return o
 }
 
+func (o ZoneLockdownArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ZoneLockdown] {
+	return pulumix.Output[[]*ZoneLockdown]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ZoneLockdownArrayOutput) Index(i pulumi.IntInput) ZoneLockdownOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ZoneLockdown {
 		return vs[0].([]*ZoneLockdown)[vs[1].(int)]
@@ -325,6 +356,12 @@ func (o ZoneLockdownMapOutput) ToZoneLockdownMapOutput() ZoneLockdownMapOutput {
 
 func (o ZoneLockdownMapOutput) ToZoneLockdownMapOutputWithContext(ctx context.Context) ZoneLockdownMapOutput {
 	return o
+}
+
+func (o ZoneLockdownMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ZoneLockdown] {
+	return pulumix.Output[map[string]*ZoneLockdown]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ZoneLockdownMapOutput) MapIndex(k pulumi.StringInput) ZoneLockdownOutput {

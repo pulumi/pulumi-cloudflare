@@ -73,7 +73,7 @@ public class BotManagement extends com.pulumi.resources.CustomResource {
      * Automatically update to the newest bot detection models created by Cloudflare as they are released. [Learn more.](https://developers.cloudflare.com/bots/reference/machine-learning-models#model-versions-and-release-notes).
      * 
      */
-    @Export(name="autoUpdateModel", refs={Boolean.class}, tree="[0]")
+    @Export(name="autoUpdateModel", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> autoUpdateModel;
 
     /**
@@ -87,7 +87,7 @@ public class BotManagement extends com.pulumi.resources.CustomResource {
      * Use lightweight, invisible JavaScript detections to improve Bot Management. [Learn more about JavaScript Detections](https://developers.cloudflare.com/bots/reference/javascript-detections/).
      * 
      */
-    @Export(name="enableJs", refs={Boolean.class}, tree="[0]")
+    @Export(name="enableJs", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> enableJs;
 
     /**
@@ -101,7 +101,7 @@ public class BotManagement extends com.pulumi.resources.CustomResource {
      * Whether to enable Bot Fight Mode.
      * 
      */
-    @Export(name="fightMode", refs={Boolean.class}, tree="[0]")
+    @Export(name="fightMode", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> fightMode;
 
     /**
@@ -115,7 +115,7 @@ public class BotManagement extends com.pulumi.resources.CustomResource {
      * Whether to optimize Super Bot Fight Mode protections for Wordpress.
      * 
      */
-    @Export(name="optimizeWordpress", refs={Boolean.class}, tree="[0]")
+    @Export(name="optimizeWordpress", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> optimizeWordpress;
 
     /**
@@ -129,7 +129,7 @@ public class BotManagement extends com.pulumi.resources.CustomResource {
      * Super Bot Fight Mode (SBFM) action to take on definitely automated requests.
      * 
      */
-    @Export(name="sbfmDefinitelyAutomated", refs={String.class}, tree="[0]")
+    @Export(name="sbfmDefinitelyAutomated", type=String.class, parameters={})
     private Output</* @Nullable */ String> sbfmDefinitelyAutomated;
 
     /**
@@ -143,7 +143,7 @@ public class BotManagement extends com.pulumi.resources.CustomResource {
      * Super Bot Fight Mode (SBFM) action to take on likely automated requests.
      * 
      */
-    @Export(name="sbfmLikelyAutomated", refs={String.class}, tree="[0]")
+    @Export(name="sbfmLikelyAutomated", type=String.class, parameters={})
     private Output</* @Nullable */ String> sbfmLikelyAutomated;
 
     /**
@@ -157,7 +157,7 @@ public class BotManagement extends com.pulumi.resources.CustomResource {
      * Super Bot Fight Mode (SBFM) to enable static resource protection. Enable if static resources on your application need bot protection. Note: Static resource protection can also result in legitimate traffic being blocked.
      * 
      */
-    @Export(name="sbfmStaticResourceProtection", refs={Boolean.class}, tree="[0]")
+    @Export(name="sbfmStaticResourceProtection", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> sbfmStaticResourceProtection;
 
     /**
@@ -171,7 +171,7 @@ public class BotManagement extends com.pulumi.resources.CustomResource {
      * Super Bot Fight Mode (SBFM) action to take on verified bots requests.
      * 
      */
-    @Export(name="sbfmVerifiedBots", refs={String.class}, tree="[0]")
+    @Export(name="sbfmVerifiedBots", type=String.class, parameters={})
     private Output</* @Nullable */ String> sbfmVerifiedBots;
 
     /**
@@ -185,7 +185,7 @@ public class BotManagement extends com.pulumi.resources.CustomResource {
      * Whether to disable tracking the highest bot score for a session in the Bot Management cookie.
      * 
      */
-    @Export(name="suppressSessionScore", refs={Boolean.class}, tree="[0]")
+    @Export(name="suppressSessionScore", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> suppressSessionScore;
 
     /**
@@ -199,7 +199,7 @@ public class BotManagement extends com.pulumi.resources.CustomResource {
      * A read-only field that indicates whether the zone currently is running the latest ML model.
      * 
      */
-    @Export(name="usingLatestModel", refs={Boolean.class}, tree="[0]")
+    @Export(name="usingLatestModel", type=Boolean.class, parameters={})
     private Output<Boolean> usingLatestModel;
 
     /**
@@ -213,7 +213,7 @@ public class BotManagement extends com.pulumi.resources.CustomResource {
      * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
      * 
      */
-    @Export(name="zoneId", refs={String.class}, tree="[0]")
+    @Export(name="zoneId", type=String.class, parameters={})
     private Output<String> zoneId;
 
     /**

@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a resource, that manages Cloudflare tunnel virtual networks
@@ -172,6 +173,12 @@ func (i *TunnelVirtualNetwork) ToTunnelVirtualNetworkOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(TunnelVirtualNetworkOutput)
 }
 
+func (i *TunnelVirtualNetwork) ToOutput(ctx context.Context) pulumix.Output[*TunnelVirtualNetwork] {
+	return pulumix.Output[*TunnelVirtualNetwork]{
+		OutputState: i.ToTunnelVirtualNetworkOutputWithContext(ctx).OutputState,
+	}
+}
+
 // TunnelVirtualNetworkArrayInput is an input type that accepts TunnelVirtualNetworkArray and TunnelVirtualNetworkArrayOutput values.
 // You can construct a concrete instance of `TunnelVirtualNetworkArrayInput` via:
 //
@@ -195,6 +202,12 @@ func (i TunnelVirtualNetworkArray) ToTunnelVirtualNetworkArrayOutput() TunnelVir
 
 func (i TunnelVirtualNetworkArray) ToTunnelVirtualNetworkArrayOutputWithContext(ctx context.Context) TunnelVirtualNetworkArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(TunnelVirtualNetworkArrayOutput)
+}
+
+func (i TunnelVirtualNetworkArray) ToOutput(ctx context.Context) pulumix.Output[[]*TunnelVirtualNetwork] {
+	return pulumix.Output[[]*TunnelVirtualNetwork]{
+		OutputState: i.ToTunnelVirtualNetworkArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // TunnelVirtualNetworkMapInput is an input type that accepts TunnelVirtualNetworkMap and TunnelVirtualNetworkMapOutput values.
@@ -222,6 +235,12 @@ func (i TunnelVirtualNetworkMap) ToTunnelVirtualNetworkMapOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(TunnelVirtualNetworkMapOutput)
 }
 
+func (i TunnelVirtualNetworkMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*TunnelVirtualNetwork] {
+	return pulumix.Output[map[string]*TunnelVirtualNetwork]{
+		OutputState: i.ToTunnelVirtualNetworkMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type TunnelVirtualNetworkOutput struct{ *pulumi.OutputState }
 
 func (TunnelVirtualNetworkOutput) ElementType() reflect.Type {
@@ -234,6 +253,12 @@ func (o TunnelVirtualNetworkOutput) ToTunnelVirtualNetworkOutput() TunnelVirtual
 
 func (o TunnelVirtualNetworkOutput) ToTunnelVirtualNetworkOutputWithContext(ctx context.Context) TunnelVirtualNetworkOutput {
 	return o
+}
+
+func (o TunnelVirtualNetworkOutput) ToOutput(ctx context.Context) pulumix.Output[*TunnelVirtualNetwork] {
+	return pulumix.Output[*TunnelVirtualNetwork]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
@@ -270,6 +295,12 @@ func (o TunnelVirtualNetworkArrayOutput) ToTunnelVirtualNetworkArrayOutputWithCo
 	return o
 }
 
+func (o TunnelVirtualNetworkArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*TunnelVirtualNetwork] {
+	return pulumix.Output[[]*TunnelVirtualNetwork]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o TunnelVirtualNetworkArrayOutput) Index(i pulumi.IntInput) TunnelVirtualNetworkOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *TunnelVirtualNetwork {
 		return vs[0].([]*TunnelVirtualNetwork)[vs[1].(int)]
@@ -288,6 +319,12 @@ func (o TunnelVirtualNetworkMapOutput) ToTunnelVirtualNetworkMapOutput() TunnelV
 
 func (o TunnelVirtualNetworkMapOutput) ToTunnelVirtualNetworkMapOutputWithContext(ctx context.Context) TunnelVirtualNetworkMapOutput {
 	return o
+}
+
+func (o TunnelVirtualNetworkMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*TunnelVirtualNetwork] {
+	return pulumix.Output[map[string]*TunnelVirtualNetwork]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o TunnelVirtualNetworkMapOutput) MapIndex(k pulumi.StringInput) TunnelVirtualNetworkOutput {

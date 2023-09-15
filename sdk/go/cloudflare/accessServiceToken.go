@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Access Service Tokens are used for service-to-service communication
@@ -201,6 +202,12 @@ func (i *AccessServiceToken) ToAccessServiceTokenOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(AccessServiceTokenOutput)
 }
 
+func (i *AccessServiceToken) ToOutput(ctx context.Context) pulumix.Output[*AccessServiceToken] {
+	return pulumix.Output[*AccessServiceToken]{
+		OutputState: i.ToAccessServiceTokenOutputWithContext(ctx).OutputState,
+	}
+}
+
 // AccessServiceTokenArrayInput is an input type that accepts AccessServiceTokenArray and AccessServiceTokenArrayOutput values.
 // You can construct a concrete instance of `AccessServiceTokenArrayInput` via:
 //
@@ -224,6 +231,12 @@ func (i AccessServiceTokenArray) ToAccessServiceTokenArrayOutput() AccessService
 
 func (i AccessServiceTokenArray) ToAccessServiceTokenArrayOutputWithContext(ctx context.Context) AccessServiceTokenArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AccessServiceTokenArrayOutput)
+}
+
+func (i AccessServiceTokenArray) ToOutput(ctx context.Context) pulumix.Output[[]*AccessServiceToken] {
+	return pulumix.Output[[]*AccessServiceToken]{
+		OutputState: i.ToAccessServiceTokenArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // AccessServiceTokenMapInput is an input type that accepts AccessServiceTokenMap and AccessServiceTokenMapOutput values.
@@ -251,6 +264,12 @@ func (i AccessServiceTokenMap) ToAccessServiceTokenMapOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(AccessServiceTokenMapOutput)
 }
 
+func (i AccessServiceTokenMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*AccessServiceToken] {
+	return pulumix.Output[map[string]*AccessServiceToken]{
+		OutputState: i.ToAccessServiceTokenMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type AccessServiceTokenOutput struct{ *pulumi.OutputState }
 
 func (AccessServiceTokenOutput) ElementType() reflect.Type {
@@ -263,6 +282,12 @@ func (o AccessServiceTokenOutput) ToAccessServiceTokenOutput() AccessServiceToke
 
 func (o AccessServiceTokenOutput) ToAccessServiceTokenOutputWithContext(ctx context.Context) AccessServiceTokenOutput {
 	return o
+}
+
+func (o AccessServiceTokenOutput) ToOutput(ctx context.Context) pulumix.Output[*AccessServiceToken] {
+	return pulumix.Output[*AccessServiceToken]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The account identifier to target for the resource. Conflicts with `zoneId`.
@@ -319,6 +344,12 @@ func (o AccessServiceTokenArrayOutput) ToAccessServiceTokenArrayOutputWithContex
 	return o
 }
 
+func (o AccessServiceTokenArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*AccessServiceToken] {
+	return pulumix.Output[[]*AccessServiceToken]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o AccessServiceTokenArrayOutput) Index(i pulumi.IntInput) AccessServiceTokenOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *AccessServiceToken {
 		return vs[0].([]*AccessServiceToken)[vs[1].(int)]
@@ -337,6 +368,12 @@ func (o AccessServiceTokenMapOutput) ToAccessServiceTokenMapOutput() AccessServi
 
 func (o AccessServiceTokenMapOutput) ToAccessServiceTokenMapOutputWithContext(ctx context.Context) AccessServiceTokenMapOutput {
 	return o
+}
+
+func (o AccessServiceTokenMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*AccessServiceToken] {
+	return pulumix.Output[map[string]*AccessServiceToken]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AccessServiceTokenMapOutput) MapIndex(k pulumi.StringInput) AccessServiceTokenOutput {

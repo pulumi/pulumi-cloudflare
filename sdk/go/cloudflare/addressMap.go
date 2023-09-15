@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides the ability to manage IP addresses that can be used by DNS records when
@@ -221,6 +222,12 @@ func (i *AddressMap) ToAddressMapOutputWithContext(ctx context.Context) AddressM
 	return pulumi.ToOutputWithContext(ctx, i).(AddressMapOutput)
 }
 
+func (i *AddressMap) ToOutput(ctx context.Context) pulumix.Output[*AddressMap] {
+	return pulumix.Output[*AddressMap]{
+		OutputState: i.ToAddressMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 // AddressMapArrayInput is an input type that accepts AddressMapArray and AddressMapArrayOutput values.
 // You can construct a concrete instance of `AddressMapArrayInput` via:
 //
@@ -244,6 +251,12 @@ func (i AddressMapArray) ToAddressMapArrayOutput() AddressMapArrayOutput {
 
 func (i AddressMapArray) ToAddressMapArrayOutputWithContext(ctx context.Context) AddressMapArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AddressMapArrayOutput)
+}
+
+func (i AddressMapArray) ToOutput(ctx context.Context) pulumix.Output[[]*AddressMap] {
+	return pulumix.Output[[]*AddressMap]{
+		OutputState: i.ToAddressMapArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // AddressMapMapInput is an input type that accepts AddressMapMap and AddressMapMapOutput values.
@@ -271,6 +284,12 @@ func (i AddressMapMap) ToAddressMapMapOutputWithContext(ctx context.Context) Add
 	return pulumi.ToOutputWithContext(ctx, i).(AddressMapMapOutput)
 }
 
+func (i AddressMapMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*AddressMap] {
+	return pulumix.Output[map[string]*AddressMap]{
+		OutputState: i.ToAddressMapMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type AddressMapOutput struct{ *pulumi.OutputState }
 
 func (AddressMapOutput) ElementType() reflect.Type {
@@ -283,6 +302,12 @@ func (o AddressMapOutput) ToAddressMapOutput() AddressMapOutput {
 
 func (o AddressMapOutput) ToAddressMapOutputWithContext(ctx context.Context) AddressMapOutput {
 	return o
+}
+
+func (o AddressMapOutput) ToOutput(ctx context.Context) pulumix.Output[*AddressMap] {
+	return pulumix.Output[*AddressMap]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The account identifier to target for the resource.
@@ -339,6 +364,12 @@ func (o AddressMapArrayOutput) ToAddressMapArrayOutputWithContext(ctx context.Co
 	return o
 }
 
+func (o AddressMapArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*AddressMap] {
+	return pulumix.Output[[]*AddressMap]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o AddressMapArrayOutput) Index(i pulumi.IntInput) AddressMapOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *AddressMap {
 		return vs[0].([]*AddressMap)[vs[1].(int)]
@@ -357,6 +388,12 @@ func (o AddressMapMapOutput) ToAddressMapMapOutput() AddressMapMapOutput {
 
 func (o AddressMapMapOutput) ToAddressMapMapOutputWithContext(ctx context.Context) AddressMapMapOutput {
 	return o
+}
+
+func (o AddressMapMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*AddressMap] {
+	return pulumix.Output[map[string]*AddressMap]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AddressMapMapOutput) MapIndex(k pulumi.StringInput) AddressMapOutput {

@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Cloudflare per-hostname TLS setting resource, specifically for ciphers suites. Used to set ciphers suites for hostnames under the specified zone.
@@ -180,6 +181,12 @@ func (i *HostnameTlsSettingCiphers) ToHostnameTlsSettingCiphersOutputWithContext
 	return pulumi.ToOutputWithContext(ctx, i).(HostnameTlsSettingCiphersOutput)
 }
 
+func (i *HostnameTlsSettingCiphers) ToOutput(ctx context.Context) pulumix.Output[*HostnameTlsSettingCiphers] {
+	return pulumix.Output[*HostnameTlsSettingCiphers]{
+		OutputState: i.ToHostnameTlsSettingCiphersOutputWithContext(ctx).OutputState,
+	}
+}
+
 // HostnameTlsSettingCiphersArrayInput is an input type that accepts HostnameTlsSettingCiphersArray and HostnameTlsSettingCiphersArrayOutput values.
 // You can construct a concrete instance of `HostnameTlsSettingCiphersArrayInput` via:
 //
@@ -203,6 +210,12 @@ func (i HostnameTlsSettingCiphersArray) ToHostnameTlsSettingCiphersArrayOutput()
 
 func (i HostnameTlsSettingCiphersArray) ToHostnameTlsSettingCiphersArrayOutputWithContext(ctx context.Context) HostnameTlsSettingCiphersArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(HostnameTlsSettingCiphersArrayOutput)
+}
+
+func (i HostnameTlsSettingCiphersArray) ToOutput(ctx context.Context) pulumix.Output[[]*HostnameTlsSettingCiphers] {
+	return pulumix.Output[[]*HostnameTlsSettingCiphers]{
+		OutputState: i.ToHostnameTlsSettingCiphersArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // HostnameTlsSettingCiphersMapInput is an input type that accepts HostnameTlsSettingCiphersMap and HostnameTlsSettingCiphersMapOutput values.
@@ -230,6 +243,12 @@ func (i HostnameTlsSettingCiphersMap) ToHostnameTlsSettingCiphersMapOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(HostnameTlsSettingCiphersMapOutput)
 }
 
+func (i HostnameTlsSettingCiphersMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*HostnameTlsSettingCiphers] {
+	return pulumix.Output[map[string]*HostnameTlsSettingCiphers]{
+		OutputState: i.ToHostnameTlsSettingCiphersMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type HostnameTlsSettingCiphersOutput struct{ *pulumi.OutputState }
 
 func (HostnameTlsSettingCiphersOutput) ElementType() reflect.Type {
@@ -242,6 +261,12 @@ func (o HostnameTlsSettingCiphersOutput) ToHostnameTlsSettingCiphersOutput() Hos
 
 func (o HostnameTlsSettingCiphersOutput) ToHostnameTlsSettingCiphersOutputWithContext(ctx context.Context) HostnameTlsSettingCiphersOutput {
 	return o
+}
+
+func (o HostnameTlsSettingCiphersOutput) ToOutput(ctx context.Context) pulumix.Output[*HostnameTlsSettingCiphers] {
+	return pulumix.Output[*HostnameTlsSettingCiphers]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o HostnameTlsSettingCiphersOutput) CreatedAt() pulumi.StringOutput {
@@ -286,6 +311,12 @@ func (o HostnameTlsSettingCiphersArrayOutput) ToHostnameTlsSettingCiphersArrayOu
 	return o
 }
 
+func (o HostnameTlsSettingCiphersArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*HostnameTlsSettingCiphers] {
+	return pulumix.Output[[]*HostnameTlsSettingCiphers]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o HostnameTlsSettingCiphersArrayOutput) Index(i pulumi.IntInput) HostnameTlsSettingCiphersOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *HostnameTlsSettingCiphers {
 		return vs[0].([]*HostnameTlsSettingCiphers)[vs[1].(int)]
@@ -304,6 +335,12 @@ func (o HostnameTlsSettingCiphersMapOutput) ToHostnameTlsSettingCiphersMapOutput
 
 func (o HostnameTlsSettingCiphersMapOutput) ToHostnameTlsSettingCiphersMapOutputWithContext(ctx context.Context) HostnameTlsSettingCiphersMapOutput {
 	return o
+}
+
+func (o HostnameTlsSettingCiphersMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*HostnameTlsSettingCiphers] {
+	return pulumix.Output[map[string]*HostnameTlsSettingCiphers]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o HostnameTlsSettingCiphersMapOutput) MapIndex(k pulumi.StringInput) HostnameTlsSettingCiphersOutput {

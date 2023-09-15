@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a resource to manage User Agent Blocking Rules.
@@ -206,6 +207,12 @@ func (i *UserAgentBlockingRule) ToUserAgentBlockingRuleOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(UserAgentBlockingRuleOutput)
 }
 
+func (i *UserAgentBlockingRule) ToOutput(ctx context.Context) pulumix.Output[*UserAgentBlockingRule] {
+	return pulumix.Output[*UserAgentBlockingRule]{
+		OutputState: i.ToUserAgentBlockingRuleOutputWithContext(ctx).OutputState,
+	}
+}
+
 // UserAgentBlockingRuleArrayInput is an input type that accepts UserAgentBlockingRuleArray and UserAgentBlockingRuleArrayOutput values.
 // You can construct a concrete instance of `UserAgentBlockingRuleArrayInput` via:
 //
@@ -229,6 +236,12 @@ func (i UserAgentBlockingRuleArray) ToUserAgentBlockingRuleArrayOutput() UserAge
 
 func (i UserAgentBlockingRuleArray) ToUserAgentBlockingRuleArrayOutputWithContext(ctx context.Context) UserAgentBlockingRuleArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(UserAgentBlockingRuleArrayOutput)
+}
+
+func (i UserAgentBlockingRuleArray) ToOutput(ctx context.Context) pulumix.Output[[]*UserAgentBlockingRule] {
+	return pulumix.Output[[]*UserAgentBlockingRule]{
+		OutputState: i.ToUserAgentBlockingRuleArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // UserAgentBlockingRuleMapInput is an input type that accepts UserAgentBlockingRuleMap and UserAgentBlockingRuleMapOutput values.
@@ -256,6 +269,12 @@ func (i UserAgentBlockingRuleMap) ToUserAgentBlockingRuleMapOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(UserAgentBlockingRuleMapOutput)
 }
 
+func (i UserAgentBlockingRuleMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*UserAgentBlockingRule] {
+	return pulumix.Output[map[string]*UserAgentBlockingRule]{
+		OutputState: i.ToUserAgentBlockingRuleMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type UserAgentBlockingRuleOutput struct{ *pulumi.OutputState }
 
 func (UserAgentBlockingRuleOutput) ElementType() reflect.Type {
@@ -268,6 +287,12 @@ func (o UserAgentBlockingRuleOutput) ToUserAgentBlockingRuleOutput() UserAgentBl
 
 func (o UserAgentBlockingRuleOutput) ToUserAgentBlockingRuleOutputWithContext(ctx context.Context) UserAgentBlockingRuleOutput {
 	return o
+}
+
+func (o UserAgentBlockingRuleOutput) ToOutput(ctx context.Context) pulumix.Output[*UserAgentBlockingRule] {
+	return pulumix.Output[*UserAgentBlockingRule]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The configuration object for the current rule.
@@ -309,6 +334,12 @@ func (o UserAgentBlockingRuleArrayOutput) ToUserAgentBlockingRuleArrayOutputWith
 	return o
 }
 
+func (o UserAgentBlockingRuleArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*UserAgentBlockingRule] {
+	return pulumix.Output[[]*UserAgentBlockingRule]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o UserAgentBlockingRuleArrayOutput) Index(i pulumi.IntInput) UserAgentBlockingRuleOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *UserAgentBlockingRule {
 		return vs[0].([]*UserAgentBlockingRule)[vs[1].(int)]
@@ -327,6 +358,12 @@ func (o UserAgentBlockingRuleMapOutput) ToUserAgentBlockingRuleMapOutput() UserA
 
 func (o UserAgentBlockingRuleMapOutput) ToUserAgentBlockingRuleMapOutputWithContext(ctx context.Context) UserAgentBlockingRuleMapOutput {
 	return o
+}
+
+func (o UserAgentBlockingRuleMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*UserAgentBlockingRule] {
+	return pulumix.Output[map[string]*UserAgentBlockingRule]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o UserAgentBlockingRuleMapOutput) MapIndex(k pulumi.StringInput) UserAgentBlockingRuleOutput {

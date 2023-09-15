@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Cloudflare Device Settings Policy resource. Device policies configure settings applied to WARP devices.
@@ -329,6 +330,12 @@ func (i *DeviceSettingsPolicy) ToDeviceSettingsPolicyOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(DeviceSettingsPolicyOutput)
 }
 
+func (i *DeviceSettingsPolicy) ToOutput(ctx context.Context) pulumix.Output[*DeviceSettingsPolicy] {
+	return pulumix.Output[*DeviceSettingsPolicy]{
+		OutputState: i.ToDeviceSettingsPolicyOutputWithContext(ctx).OutputState,
+	}
+}
+
 // DeviceSettingsPolicyArrayInput is an input type that accepts DeviceSettingsPolicyArray and DeviceSettingsPolicyArrayOutput values.
 // You can construct a concrete instance of `DeviceSettingsPolicyArrayInput` via:
 //
@@ -352,6 +359,12 @@ func (i DeviceSettingsPolicyArray) ToDeviceSettingsPolicyArrayOutput() DeviceSet
 
 func (i DeviceSettingsPolicyArray) ToDeviceSettingsPolicyArrayOutputWithContext(ctx context.Context) DeviceSettingsPolicyArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DeviceSettingsPolicyArrayOutput)
+}
+
+func (i DeviceSettingsPolicyArray) ToOutput(ctx context.Context) pulumix.Output[[]*DeviceSettingsPolicy] {
+	return pulumix.Output[[]*DeviceSettingsPolicy]{
+		OutputState: i.ToDeviceSettingsPolicyArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // DeviceSettingsPolicyMapInput is an input type that accepts DeviceSettingsPolicyMap and DeviceSettingsPolicyMapOutput values.
@@ -379,6 +392,12 @@ func (i DeviceSettingsPolicyMap) ToDeviceSettingsPolicyMapOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(DeviceSettingsPolicyMapOutput)
 }
 
+func (i DeviceSettingsPolicyMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*DeviceSettingsPolicy] {
+	return pulumix.Output[map[string]*DeviceSettingsPolicy]{
+		OutputState: i.ToDeviceSettingsPolicyMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type DeviceSettingsPolicyOutput struct{ *pulumi.OutputState }
 
 func (DeviceSettingsPolicyOutput) ElementType() reflect.Type {
@@ -391,6 +410,12 @@ func (o DeviceSettingsPolicyOutput) ToDeviceSettingsPolicyOutput() DeviceSetting
 
 func (o DeviceSettingsPolicyOutput) ToDeviceSettingsPolicyOutputWithContext(ctx context.Context) DeviceSettingsPolicyOutput {
 	return o
+}
+
+func (o DeviceSettingsPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[*DeviceSettingsPolicy] {
+	return pulumix.Output[*DeviceSettingsPolicy]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The account identifier to target for the resource.
@@ -497,6 +522,12 @@ func (o DeviceSettingsPolicyArrayOutput) ToDeviceSettingsPolicyArrayOutputWithCo
 	return o
 }
 
+func (o DeviceSettingsPolicyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*DeviceSettingsPolicy] {
+	return pulumix.Output[[]*DeviceSettingsPolicy]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o DeviceSettingsPolicyArrayOutput) Index(i pulumi.IntInput) DeviceSettingsPolicyOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *DeviceSettingsPolicy {
 		return vs[0].([]*DeviceSettingsPolicy)[vs[1].(int)]
@@ -515,6 +546,12 @@ func (o DeviceSettingsPolicyMapOutput) ToDeviceSettingsPolicyMapOutput() DeviceS
 
 func (o DeviceSettingsPolicyMapOutput) ToDeviceSettingsPolicyMapOutputWithContext(ctx context.Context) DeviceSettingsPolicyMapOutput {
 	return o
+}
+
+func (o DeviceSettingsPolicyMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*DeviceSettingsPolicy] {
+	return pulumix.Output[map[string]*DeviceSettingsPolicy]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o DeviceSettingsPolicyMapOutput) MapIndex(k pulumi.StringInput) DeviceSettingsPolicyOutput {

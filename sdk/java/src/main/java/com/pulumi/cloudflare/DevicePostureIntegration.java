@@ -74,7 +74,7 @@ public class DevicePostureIntegration extends com.pulumi.resources.CustomResourc
      * The account identifier to target for the resource.
      * 
      */
-    @Export(name="accountId", refs={String.class}, tree="[0]")
+    @Export(name="accountId", type=String.class, parameters={})
     private Output<String> accountId;
 
     /**
@@ -88,7 +88,7 @@ public class DevicePostureIntegration extends com.pulumi.resources.CustomResourc
      * The device posture integration&#39;s connection authorization parameters.
      * 
      */
-    @Export(name="configs", refs={List.class,DevicePostureIntegrationConfig.class}, tree="[0,1]")
+    @Export(name="configs", type=List.class, parameters={DevicePostureIntegrationConfig.class})
     private Output</* @Nullable */ List<DevicePostureIntegrationConfig>> configs;
 
     /**
@@ -98,7 +98,7 @@ public class DevicePostureIntegration extends com.pulumi.resources.CustomResourc
     public Output<Optional<List<DevicePostureIntegrationConfig>>> configs() {
         return Codegen.optional(this.configs);
     }
-    @Export(name="identifier", refs={String.class}, tree="[0]")
+    @Export(name="identifier", type=String.class, parameters={})
     private Output</* @Nullable */ String> identifier;
 
     public Output<Optional<String>> identifier() {
@@ -108,7 +108,7 @@ public class DevicePostureIntegration extends com.pulumi.resources.CustomResourc
      * Indicates the frequency with which to poll the third-party API. Must be in the format `1h` or `30m`.
      * 
      */
-    @Export(name="interval", refs={String.class}, tree="[0]")
+    @Export(name="interval", type=String.class, parameters={})
     private Output</* @Nullable */ String> interval;
 
     /**
@@ -122,7 +122,7 @@ public class DevicePostureIntegration extends com.pulumi.resources.CustomResourc
      * Name of the device posture integration.
      * 
      */
-    @Export(name="name", refs={String.class}, tree="[0]")
+    @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
@@ -136,7 +136,7 @@ public class DevicePostureIntegration extends com.pulumi.resources.CustomResourc
      * The device posture integration type. Available values: `workspace_one`, `uptycs`, `crowdstrike_s2s`, `intune`, `kolide`, `sentinelone_s2s`, `tanium_s2s`.
      * 
      */
-    @Export(name="type", refs={String.class}, tree="[0]")
+    @Export(name="type", type=String.class, parameters={})
     private Output<String> type;
 
     /**

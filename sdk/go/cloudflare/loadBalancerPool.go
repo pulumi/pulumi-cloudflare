@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Cloudflare Load Balancer pool resource. This provides a
@@ -320,6 +321,12 @@ func (i *LoadBalancerPool) ToLoadBalancerPoolOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(LoadBalancerPoolOutput)
 }
 
+func (i *LoadBalancerPool) ToOutput(ctx context.Context) pulumix.Output[*LoadBalancerPool] {
+	return pulumix.Output[*LoadBalancerPool]{
+		OutputState: i.ToLoadBalancerPoolOutputWithContext(ctx).OutputState,
+	}
+}
+
 // LoadBalancerPoolArrayInput is an input type that accepts LoadBalancerPoolArray and LoadBalancerPoolArrayOutput values.
 // You can construct a concrete instance of `LoadBalancerPoolArrayInput` via:
 //
@@ -343,6 +350,12 @@ func (i LoadBalancerPoolArray) ToLoadBalancerPoolArrayOutput() LoadBalancerPoolA
 
 func (i LoadBalancerPoolArray) ToLoadBalancerPoolArrayOutputWithContext(ctx context.Context) LoadBalancerPoolArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(LoadBalancerPoolArrayOutput)
+}
+
+func (i LoadBalancerPoolArray) ToOutput(ctx context.Context) pulumix.Output[[]*LoadBalancerPool] {
+	return pulumix.Output[[]*LoadBalancerPool]{
+		OutputState: i.ToLoadBalancerPoolArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // LoadBalancerPoolMapInput is an input type that accepts LoadBalancerPoolMap and LoadBalancerPoolMapOutput values.
@@ -370,6 +383,12 @@ func (i LoadBalancerPoolMap) ToLoadBalancerPoolMapOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(LoadBalancerPoolMapOutput)
 }
 
+func (i LoadBalancerPoolMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*LoadBalancerPool] {
+	return pulumix.Output[map[string]*LoadBalancerPool]{
+		OutputState: i.ToLoadBalancerPoolMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type LoadBalancerPoolOutput struct{ *pulumi.OutputState }
 
 func (LoadBalancerPoolOutput) ElementType() reflect.Type {
@@ -382,6 +401,12 @@ func (o LoadBalancerPoolOutput) ToLoadBalancerPoolOutput() LoadBalancerPoolOutpu
 
 func (o LoadBalancerPoolOutput) ToLoadBalancerPoolOutputWithContext(ctx context.Context) LoadBalancerPoolOutput {
 	return o
+}
+
+func (o LoadBalancerPoolOutput) ToOutput(ctx context.Context) pulumix.Output[*LoadBalancerPool] {
+	return pulumix.Output[*LoadBalancerPool]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The account identifier to target for the resource.
@@ -473,6 +498,12 @@ func (o LoadBalancerPoolArrayOutput) ToLoadBalancerPoolArrayOutputWithContext(ct
 	return o
 }
 
+func (o LoadBalancerPoolArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*LoadBalancerPool] {
+	return pulumix.Output[[]*LoadBalancerPool]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o LoadBalancerPoolArrayOutput) Index(i pulumi.IntInput) LoadBalancerPoolOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *LoadBalancerPool {
 		return vs[0].([]*LoadBalancerPool)[vs[1].(int)]
@@ -491,6 +522,12 @@ func (o LoadBalancerPoolMapOutput) ToLoadBalancerPoolMapOutput() LoadBalancerPoo
 
 func (o LoadBalancerPoolMapOutput) ToLoadBalancerPoolMapOutputWithContext(ctx context.Context) LoadBalancerPoolMapOutput {
 	return o
+}
+
+func (o LoadBalancerPoolMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*LoadBalancerPool] {
+	return pulumix.Output[map[string]*LoadBalancerPool]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o LoadBalancerPoolMapOutput) MapIndex(k pulumi.StringInput) LoadBalancerPoolOutput {

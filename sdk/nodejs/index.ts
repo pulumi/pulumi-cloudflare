@@ -227,7 +227,8 @@ utilities.lazyLoad(exports, ["getAccounts","getAccountsOutput"], () => require("
 
 export { GetApiTokenPermissionGroupsResult } from "./getApiTokenPermissionGroups";
 export const getApiTokenPermissionGroups: typeof import("./getApiTokenPermissionGroups").getApiTokenPermissionGroups = null as any;
-utilities.lazyLoad(exports, ["getApiTokenPermissionGroups"], () => require("./getApiTokenPermissionGroups"));
+export const getApiTokenPermissionGroupsOutput: typeof import("./getApiTokenPermissionGroups").getApiTokenPermissionGroupsOutput = null as any;
+utilities.lazyLoad(exports, ["getApiTokenPermissionGroups","getApiTokenPermissionGroupsOutput"], () => require("./getApiTokenPermissionGroups"));
 
 export { GetDevicesArgs, GetDevicesResult, GetDevicesOutputArgs } from "./getDevices";
 export const getDevices: typeof import("./getDevices").getDevices = null as any;
@@ -236,7 +237,8 @@ utilities.lazyLoad(exports, ["getDevices","getDevicesOutput"], () => require("./
 
 export { GetIpRangesResult } from "./getIpRanges";
 export const getIpRanges: typeof import("./getIpRanges").getIpRanges = null as any;
-utilities.lazyLoad(exports, ["getIpRanges"], () => require("./getIpRanges"));
+export const getIpRangesOutput: typeof import("./getIpRanges").getIpRangesOutput = null as any;
+utilities.lazyLoad(exports, ["getIpRanges","getIpRangesOutput"], () => require("./getIpRanges"));
 
 export { GetListArgs, GetListResult, GetListOutputArgs } from "./getList";
 export const getList: typeof import("./getList").getList = null as any;
@@ -270,7 +272,8 @@ utilities.lazyLoad(exports, ["getRulesets","getRulesetsOutput"], () => require("
 
 export { GetUserResult } from "./getUser";
 export const getUser: typeof import("./getUser").getUser = null as any;
-utilities.lazyLoad(exports, ["getUser"], () => require("./getUser"));
+export const getUserOutput: typeof import("./getUser").getUserOutput = null as any;
+utilities.lazyLoad(exports, ["getUser","getUserOutput"], () => require("./getUser"));
 
 export { GetZoneArgs, GetZoneResult, GetZoneOutputArgs } from "./getZone";
 export const getZone: typeof import("./getZone").getZone = null as any;

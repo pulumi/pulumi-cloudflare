@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Data source for looking up Cloudflare Accounts.
@@ -99,6 +100,12 @@ func (o GetAccountsResultOutput) ToGetAccountsResultOutput() GetAccountsResultOu
 
 func (o GetAccountsResultOutput) ToGetAccountsResultOutputWithContext(ctx context.Context) GetAccountsResultOutput {
 	return o
+}
+
+func (o GetAccountsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetAccountsResult] {
+	return pulumix.Output[GetAccountsResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GetAccountsResultOutput) Accounts() GetAccountsAccountArrayOutput {

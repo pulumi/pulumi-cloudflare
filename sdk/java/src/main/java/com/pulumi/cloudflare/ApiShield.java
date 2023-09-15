@@ -61,7 +61,7 @@ public class ApiShield extends com.pulumi.resources.CustomResource {
      * Characteristics define properties across which auth-ids can be computed in a privacy-preserving manner.
      * 
      */
-    @Export(name="authIdCharacteristics", refs={List.class,ApiShieldAuthIdCharacteristic.class}, tree="[0,1]")
+    @Export(name="authIdCharacteristics", type=List.class, parameters={ApiShieldAuthIdCharacteristic.class})
     private Output</* @Nullable */ List<ApiShieldAuthIdCharacteristic>> authIdCharacteristics;
 
     /**
@@ -75,7 +75,7 @@ public class ApiShield extends com.pulumi.resources.CustomResource {
      * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
      * 
      */
-    @Export(name="zoneId", refs={String.class}, tree="[0]")
+    @Export(name="zoneId", type=String.class, parameters={})
     private Output<String> zoneId;
 
     /**

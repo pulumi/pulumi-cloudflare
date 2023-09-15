@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a resource, that manages GRE tunnels for Magic Transit.
@@ -253,6 +254,12 @@ func (i *GreTunnel) ToGreTunnelOutputWithContext(ctx context.Context) GreTunnelO
 	return pulumi.ToOutputWithContext(ctx, i).(GreTunnelOutput)
 }
 
+func (i *GreTunnel) ToOutput(ctx context.Context) pulumix.Output[*GreTunnel] {
+	return pulumix.Output[*GreTunnel]{
+		OutputState: i.ToGreTunnelOutputWithContext(ctx).OutputState,
+	}
+}
+
 // GreTunnelArrayInput is an input type that accepts GreTunnelArray and GreTunnelArrayOutput values.
 // You can construct a concrete instance of `GreTunnelArrayInput` via:
 //
@@ -276,6 +283,12 @@ func (i GreTunnelArray) ToGreTunnelArrayOutput() GreTunnelArrayOutput {
 
 func (i GreTunnelArray) ToGreTunnelArrayOutputWithContext(ctx context.Context) GreTunnelArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(GreTunnelArrayOutput)
+}
+
+func (i GreTunnelArray) ToOutput(ctx context.Context) pulumix.Output[[]*GreTunnel] {
+	return pulumix.Output[[]*GreTunnel]{
+		OutputState: i.ToGreTunnelArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // GreTunnelMapInput is an input type that accepts GreTunnelMap and GreTunnelMapOutput values.
@@ -303,6 +316,12 @@ func (i GreTunnelMap) ToGreTunnelMapOutputWithContext(ctx context.Context) GreTu
 	return pulumi.ToOutputWithContext(ctx, i).(GreTunnelMapOutput)
 }
 
+func (i GreTunnelMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*GreTunnel] {
+	return pulumix.Output[map[string]*GreTunnel]{
+		OutputState: i.ToGreTunnelMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type GreTunnelOutput struct{ *pulumi.OutputState }
 
 func (GreTunnelOutput) ElementType() reflect.Type {
@@ -315,6 +334,12 @@ func (o GreTunnelOutput) ToGreTunnelOutput() GreTunnelOutput {
 
 func (o GreTunnelOutput) ToGreTunnelOutputWithContext(ctx context.Context) GreTunnelOutput {
 	return o
+}
+
+func (o GreTunnelOutput) ToOutput(ctx context.Context) pulumix.Output[*GreTunnel] {
+	return pulumix.Output[*GreTunnel]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
@@ -386,6 +411,12 @@ func (o GreTunnelArrayOutput) ToGreTunnelArrayOutputWithContext(ctx context.Cont
 	return o
 }
 
+func (o GreTunnelArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*GreTunnel] {
+	return pulumix.Output[[]*GreTunnel]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o GreTunnelArrayOutput) Index(i pulumi.IntInput) GreTunnelOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *GreTunnel {
 		return vs[0].([]*GreTunnel)[vs[1].(int)]
@@ -404,6 +435,12 @@ func (o GreTunnelMapOutput) ToGreTunnelMapOutput() GreTunnelMapOutput {
 
 func (o GreTunnelMapOutput) ToGreTunnelMapOutputWithContext(ctx context.Context) GreTunnelMapOutput {
 	return o
+}
+
+func (o GreTunnelMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*GreTunnel] {
+	return pulumix.Output[map[string]*GreTunnel]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o GreTunnelMapOutput) MapIndex(k pulumi.StringInput) GreTunnelOutput {

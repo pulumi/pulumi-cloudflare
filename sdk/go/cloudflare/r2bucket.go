@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // ## Example Usage
@@ -159,6 +160,12 @@ func (i *R2Bucket) ToR2BucketOutputWithContext(ctx context.Context) R2BucketOutp
 	return pulumi.ToOutputWithContext(ctx, i).(R2BucketOutput)
 }
 
+func (i *R2Bucket) ToOutput(ctx context.Context) pulumix.Output[*R2Bucket] {
+	return pulumix.Output[*R2Bucket]{
+		OutputState: i.ToR2BucketOutputWithContext(ctx).OutputState,
+	}
+}
+
 // R2BucketArrayInput is an input type that accepts R2BucketArray and R2BucketArrayOutput values.
 // You can construct a concrete instance of `R2BucketArrayInput` via:
 //
@@ -182,6 +189,12 @@ func (i R2BucketArray) ToR2BucketArrayOutput() R2BucketArrayOutput {
 
 func (i R2BucketArray) ToR2BucketArrayOutputWithContext(ctx context.Context) R2BucketArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(R2BucketArrayOutput)
+}
+
+func (i R2BucketArray) ToOutput(ctx context.Context) pulumix.Output[[]*R2Bucket] {
+	return pulumix.Output[[]*R2Bucket]{
+		OutputState: i.ToR2BucketArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // R2BucketMapInput is an input type that accepts R2BucketMap and R2BucketMapOutput values.
@@ -209,6 +222,12 @@ func (i R2BucketMap) ToR2BucketMapOutputWithContext(ctx context.Context) R2Bucke
 	return pulumi.ToOutputWithContext(ctx, i).(R2BucketMapOutput)
 }
 
+func (i R2BucketMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*R2Bucket] {
+	return pulumix.Output[map[string]*R2Bucket]{
+		OutputState: i.ToR2BucketMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type R2BucketOutput struct{ *pulumi.OutputState }
 
 func (R2BucketOutput) ElementType() reflect.Type {
@@ -221,6 +240,12 @@ func (o R2BucketOutput) ToR2BucketOutput() R2BucketOutput {
 
 func (o R2BucketOutput) ToR2BucketOutputWithContext(ctx context.Context) R2BucketOutput {
 	return o
+}
+
+func (o R2BucketOutput) ToOutput(ctx context.Context) pulumix.Output[*R2Bucket] {
+	return pulumix.Output[*R2Bucket]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The account identifier to target for the resource.
@@ -252,6 +277,12 @@ func (o R2BucketArrayOutput) ToR2BucketArrayOutputWithContext(ctx context.Contex
 	return o
 }
 
+func (o R2BucketArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*R2Bucket] {
+	return pulumix.Output[[]*R2Bucket]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o R2BucketArrayOutput) Index(i pulumi.IntInput) R2BucketOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *R2Bucket {
 		return vs[0].([]*R2Bucket)[vs[1].(int)]
@@ -270,6 +301,12 @@ func (o R2BucketMapOutput) ToR2BucketMapOutput() R2BucketMapOutput {
 
 func (o R2BucketMapOutput) ToR2BucketMapOutputWithContext(ctx context.Context) R2BucketMapOutput {
 	return o
+}
+
+func (o R2BucketMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*R2Bucket] {
+	return pulumix.Output[map[string]*R2Bucket]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o R2BucketMapOutput) MapIndex(k pulumi.StringInput) R2BucketOutput {

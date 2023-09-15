@@ -66,7 +66,7 @@ public class TunnelVirtualNetwork extends com.pulumi.resources.CustomResource {
      * The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
      * 
      */
-    @Export(name="accountId", refs={String.class}, tree="[0]")
+    @Export(name="accountId", type=String.class, parameters={})
     private Output<String> accountId;
 
     /**
@@ -80,7 +80,7 @@ public class TunnelVirtualNetwork extends com.pulumi.resources.CustomResource {
      * Description of the tunnel virtual network.
      * 
      */
-    @Export(name="comment", refs={String.class}, tree="[0]")
+    @Export(name="comment", type=String.class, parameters={})
     private Output</* @Nullable */ String> comment;
 
     /**
@@ -94,7 +94,7 @@ public class TunnelVirtualNetwork extends com.pulumi.resources.CustomResource {
      * Whether this virtual network is the default one for the account. This means IP Routes belong to this virtual network and Teams Clients in the account route through this virtual network, unless specified otherwise for each case.
      * 
      */
-    @Export(name="isDefaultNetwork", refs={Boolean.class}, tree="[0]")
+    @Export(name="isDefaultNetwork", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> isDefaultNetwork;
 
     /**
@@ -108,7 +108,7 @@ public class TunnelVirtualNetwork extends com.pulumi.resources.CustomResource {
      * A user-friendly name chosen when the virtual network is created.
      * 
      */
-    @Export(name="name", refs={String.class}, tree="[0]")
+    @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**

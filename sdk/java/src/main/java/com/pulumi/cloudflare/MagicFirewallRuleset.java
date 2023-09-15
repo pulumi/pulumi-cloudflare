@@ -81,7 +81,7 @@ public class MagicFirewallRuleset extends com.pulumi.resources.CustomResource {
      * The ID of the account where the ruleset is being created.
      * 
      */
-    @Export(name="accountId", refs={String.class}, tree="[0]")
+    @Export(name="accountId", type=String.class, parameters={})
     private Output<String> accountId;
 
     /**
@@ -95,7 +95,7 @@ public class MagicFirewallRuleset extends com.pulumi.resources.CustomResource {
      * A note that can be used to annotate the rule.
      * 
      */
-    @Export(name="description", refs={String.class}, tree="[0]")
+    @Export(name="description", type=String.class, parameters={})
     private Output</* @Nullable */ String> description;
 
     /**
@@ -109,7 +109,7 @@ public class MagicFirewallRuleset extends com.pulumi.resources.CustomResource {
      * The name of the ruleset.
      * 
      */
-    @Export(name="name", refs={String.class}, tree="[0]")
+    @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
@@ -119,7 +119,7 @@ public class MagicFirewallRuleset extends com.pulumi.resources.CustomResource {
     public Output<String> name() {
         return this.name;
     }
-    @Export(name="rules", refs={List.class,Map.class,String.class}, tree="[0,[1,2,2]]")
+    @Export(name="rules", type=List.class, parameters={Map.class})
     private Output</* @Nullable */ List<Map<String,String>>> rules;
 
     public Output<Optional<List<Map<String,String>>>> rules() {

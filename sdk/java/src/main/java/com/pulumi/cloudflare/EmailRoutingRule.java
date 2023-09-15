@@ -72,7 +72,7 @@ public class EmailRoutingRule extends com.pulumi.resources.CustomResource {
      * List actions patterns.
      * 
      */
-    @Export(name="actions", refs={List.class,EmailRoutingRuleAction.class}, tree="[0,1]")
+    @Export(name="actions", type=List.class, parameters={EmailRoutingRuleAction.class})
     private Output<List<EmailRoutingRuleAction>> actions;
 
     /**
@@ -86,7 +86,7 @@ public class EmailRoutingRule extends com.pulumi.resources.CustomResource {
      * Routing rule status.
      * 
      */
-    @Export(name="enabled", refs={Boolean.class}, tree="[0]")
+    @Export(name="enabled", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> enabled;
 
     /**
@@ -100,7 +100,7 @@ public class EmailRoutingRule extends com.pulumi.resources.CustomResource {
      * Matching patterns to forward to your actions.
      * 
      */
-    @Export(name="matchers", refs={List.class,EmailRoutingRuleMatcher.class}, tree="[0,1]")
+    @Export(name="matchers", type=List.class, parameters={EmailRoutingRuleMatcher.class})
     private Output<List<EmailRoutingRuleMatcher>> matchers;
 
     /**
@@ -114,7 +114,7 @@ public class EmailRoutingRule extends com.pulumi.resources.CustomResource {
      * Routing rule name.
      * 
      */
-    @Export(name="name", refs={String.class}, tree="[0]")
+    @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
@@ -128,7 +128,7 @@ public class EmailRoutingRule extends com.pulumi.resources.CustomResource {
      * Priority of the routing rule.
      * 
      */
-    @Export(name="priority", refs={Integer.class}, tree="[0]")
+    @Export(name="priority", type=Integer.class, parameters={})
     private Output<Integer> priority;
 
     /**
@@ -142,7 +142,7 @@ public class EmailRoutingRule extends com.pulumi.resources.CustomResource {
      * Routing rule identifier.
      * 
      */
-    @Export(name="tag", refs={String.class}, tree="[0]")
+    @Export(name="tag", type=String.class, parameters={})
     private Output<String> tag;
 
     /**
@@ -156,7 +156,7 @@ public class EmailRoutingRule extends com.pulumi.resources.CustomResource {
      * The zone identifier to target for the resource.
      * 
      */
-    @Export(name="zoneId", refs={String.class}, tree="[0]")
+    @Export(name="zoneId", type=String.class, parameters={})
     private Output<String> zoneId;
 
     /**

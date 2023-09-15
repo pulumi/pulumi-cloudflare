@@ -76,7 +76,7 @@ public class PageRule extends com.pulumi.resources.CustomResource {
      * The actions taken by the page rule, options given below.
      * 
      */
-    @Export(name="actions", refs={PageRuleActions.class}, tree="[0]")
+    @Export(name="actions", type=PageRuleActions.class, parameters={})
     private Output<PageRuleActions> actions;
 
     /**
@@ -90,7 +90,7 @@ public class PageRule extends com.pulumi.resources.CustomResource {
      * The priority of the page rule among others for this target, the higher the number the higher the priority as per [API documentation](https://api.cloudflare.com/#page-rules-for-a-zone-create-page-rule).
      * 
      */
-    @Export(name="priority", refs={Integer.class}, tree="[0]")
+    @Export(name="priority", type=Integer.class, parameters={})
     private Output</* @Nullable */ Integer> priority;
 
     /**
@@ -104,7 +104,7 @@ public class PageRule extends com.pulumi.resources.CustomResource {
      * Whether the page rule is active or disabled.
      * 
      */
-    @Export(name="status", refs={String.class}, tree="[0]")
+    @Export(name="status", type=String.class, parameters={})
     private Output</* @Nullable */ String> status;
 
     /**
@@ -118,7 +118,7 @@ public class PageRule extends com.pulumi.resources.CustomResource {
      * The URL pattern to target with the page rule.
      * 
      */
-    @Export(name="target", refs={String.class}, tree="[0]")
+    @Export(name="target", type=String.class, parameters={})
     private Output<String> target;
 
     /**
@@ -132,7 +132,7 @@ public class PageRule extends com.pulumi.resources.CustomResource {
      * The DNS zone ID to which the page rule should be added.
      * 
      */
-    @Export(name="zoneId", refs={String.class}, tree="[0]")
+    @Export(name="zoneId", type=String.class, parameters={})
     private Output<String> zoneId;
 
     /**

@@ -72,7 +72,7 @@ public class CustomSsl extends com.pulumi.resources.CustomResource {
      * The certificate associated parameters. **Modifying this attribute will force creation of a new resource.**
      * 
      */
-    @Export(name="customSslOptions", refs={CustomSslCustomSslOptions.class}, tree="[0]")
+    @Export(name="customSslOptions", type=CustomSslCustomSslOptions.class, parameters={})
     private Output</* @Nullable */ CustomSslCustomSslOptions> customSslOptions;
 
     /**
@@ -82,55 +82,55 @@ public class CustomSsl extends com.pulumi.resources.CustomResource {
     public Output<Optional<CustomSslCustomSslOptions>> customSslOptions() {
         return Codegen.optional(this.customSslOptions);
     }
-    @Export(name="customSslPriorities", refs={List.class,CustomSslCustomSslPriority.class}, tree="[0,1]")
+    @Export(name="customSslPriorities", type=List.class, parameters={CustomSslCustomSslPriority.class})
     private Output</* @Nullable */ List<CustomSslCustomSslPriority>> customSslPriorities;
 
     public Output<Optional<List<CustomSslCustomSslPriority>>> customSslPriorities() {
         return Codegen.optional(this.customSslPriorities);
     }
-    @Export(name="expiresOn", refs={String.class}, tree="[0]")
+    @Export(name="expiresOn", type=String.class, parameters={})
     private Output<String> expiresOn;
 
     public Output<String> expiresOn() {
         return this.expiresOn;
     }
-    @Export(name="hosts", refs={List.class,String.class}, tree="[0,1]")
+    @Export(name="hosts", type=List.class, parameters={String.class})
     private Output<List<String>> hosts;
 
     public Output<List<String>> hosts() {
         return this.hosts;
     }
-    @Export(name="issuer", refs={String.class}, tree="[0]")
+    @Export(name="issuer", type=String.class, parameters={})
     private Output<String> issuer;
 
     public Output<String> issuer() {
         return this.issuer;
     }
-    @Export(name="modifiedOn", refs={String.class}, tree="[0]")
+    @Export(name="modifiedOn", type=String.class, parameters={})
     private Output<String> modifiedOn;
 
     public Output<String> modifiedOn() {
         return this.modifiedOn;
     }
-    @Export(name="priority", refs={Integer.class}, tree="[0]")
+    @Export(name="priority", type=Integer.class, parameters={})
     private Output<Integer> priority;
 
     public Output<Integer> priority() {
         return this.priority;
     }
-    @Export(name="signature", refs={String.class}, tree="[0]")
+    @Export(name="signature", type=String.class, parameters={})
     private Output<String> signature;
 
     public Output<String> signature() {
         return this.signature;
     }
-    @Export(name="status", refs={String.class}, tree="[0]")
+    @Export(name="status", type=String.class, parameters={})
     private Output<String> status;
 
     public Output<String> status() {
         return this.status;
     }
-    @Export(name="uploadedOn", refs={String.class}, tree="[0]")
+    @Export(name="uploadedOn", type=String.class, parameters={})
     private Output<String> uploadedOn;
 
     public Output<String> uploadedOn() {
@@ -140,7 +140,7 @@ public class CustomSsl extends com.pulumi.resources.CustomResource {
      * The zone identifier to target for the resource.
      * 
      */
-    @Export(name="zoneId", refs={String.class}, tree="[0]")
+    @Export(name="zoneId", type=String.class, parameters={})
     private Output<String> zoneId;
 
     /**

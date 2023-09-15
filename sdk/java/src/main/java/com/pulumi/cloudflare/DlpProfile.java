@@ -35,7 +35,7 @@ public class DlpProfile extends com.pulumi.resources.CustomResource {
      * The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
      * 
      */
-    @Export(name="accountId", refs={String.class}, tree="[0]")
+    @Export(name="accountId", type=String.class, parameters={})
     private Output<String> accountId;
 
     /**
@@ -49,7 +49,7 @@ public class DlpProfile extends com.pulumi.resources.CustomResource {
      * Related DLP policies will trigger when the match count exceeds the number set.
      * 
      */
-    @Export(name="allowedMatchCount", refs={Integer.class}, tree="[0]")
+    @Export(name="allowedMatchCount", type=Integer.class, parameters={})
     private Output<Integer> allowedMatchCount;
 
     /**
@@ -63,7 +63,7 @@ public class DlpProfile extends com.pulumi.resources.CustomResource {
      * Brief summary of the profile and its intended use.
      * 
      */
-    @Export(name="description", refs={String.class}, tree="[0]")
+    @Export(name="description", type=String.class, parameters={})
     private Output</* @Nullable */ String> description;
 
     /**
@@ -77,7 +77,7 @@ public class DlpProfile extends com.pulumi.resources.CustomResource {
      * List of entries to apply to the profile.
      * 
      */
-    @Export(name="entries", refs={List.class,DlpProfileEntry.class}, tree="[0,1]")
+    @Export(name="entries", type=List.class, parameters={DlpProfileEntry.class})
     private Output<List<DlpProfileEntry>> entries;
 
     /**
@@ -91,7 +91,7 @@ public class DlpProfile extends com.pulumi.resources.CustomResource {
      * Name of the profile. **Modifying this attribute will force creation of a new resource.**
      * 
      */
-    @Export(name="name", refs={String.class}, tree="[0]")
+    @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
@@ -105,7 +105,7 @@ public class DlpProfile extends com.pulumi.resources.CustomResource {
      * The type of the profile. Available values: `custom`, `predefined`. **Modifying this attribute will force creation of a new resource.**
      * 
      */
-    @Export(name="type", refs={String.class}, tree="[0]")
+    @Export(name="type", type=String.class, parameters={})
     private Output<String> type;
 
     /**

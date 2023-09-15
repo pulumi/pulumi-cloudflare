@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Cloudflare Waiting Room resource.
@@ -334,6 +335,12 @@ func (i *WaitingRoom) ToWaitingRoomOutputWithContext(ctx context.Context) Waitin
 	return pulumi.ToOutputWithContext(ctx, i).(WaitingRoomOutput)
 }
 
+func (i *WaitingRoom) ToOutput(ctx context.Context) pulumix.Output[*WaitingRoom] {
+	return pulumix.Output[*WaitingRoom]{
+		OutputState: i.ToWaitingRoomOutputWithContext(ctx).OutputState,
+	}
+}
+
 // WaitingRoomArrayInput is an input type that accepts WaitingRoomArray and WaitingRoomArrayOutput values.
 // You can construct a concrete instance of `WaitingRoomArrayInput` via:
 //
@@ -357,6 +364,12 @@ func (i WaitingRoomArray) ToWaitingRoomArrayOutput() WaitingRoomArrayOutput {
 
 func (i WaitingRoomArray) ToWaitingRoomArrayOutputWithContext(ctx context.Context) WaitingRoomArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(WaitingRoomArrayOutput)
+}
+
+func (i WaitingRoomArray) ToOutput(ctx context.Context) pulumix.Output[[]*WaitingRoom] {
+	return pulumix.Output[[]*WaitingRoom]{
+		OutputState: i.ToWaitingRoomArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // WaitingRoomMapInput is an input type that accepts WaitingRoomMap and WaitingRoomMapOutput values.
@@ -384,6 +397,12 @@ func (i WaitingRoomMap) ToWaitingRoomMapOutputWithContext(ctx context.Context) W
 	return pulumi.ToOutputWithContext(ctx, i).(WaitingRoomMapOutput)
 }
 
+func (i WaitingRoomMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*WaitingRoom] {
+	return pulumix.Output[map[string]*WaitingRoom]{
+		OutputState: i.ToWaitingRoomMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type WaitingRoomOutput struct{ *pulumi.OutputState }
 
 func (WaitingRoomOutput) ElementType() reflect.Type {
@@ -396,6 +415,12 @@ func (o WaitingRoomOutput) ToWaitingRoomOutput() WaitingRoomOutput {
 
 func (o WaitingRoomOutput) ToWaitingRoomOutputWithContext(ctx context.Context) WaitingRoomOutput {
 	return o
+}
+
+func (o WaitingRoomOutput) ToOutput(ctx context.Context) pulumix.Output[*WaitingRoom] {
+	return pulumix.Output[*WaitingRoom]{
+		OutputState: o.OutputState,
+	}
 }
 
 // A list of additional hostname and paths combination to be applied on the waiting room.
@@ -502,6 +527,12 @@ func (o WaitingRoomArrayOutput) ToWaitingRoomArrayOutputWithContext(ctx context.
 	return o
 }
 
+func (o WaitingRoomArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*WaitingRoom] {
+	return pulumix.Output[[]*WaitingRoom]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o WaitingRoomArrayOutput) Index(i pulumi.IntInput) WaitingRoomOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *WaitingRoom {
 		return vs[0].([]*WaitingRoom)[vs[1].(int)]
@@ -520,6 +551,12 @@ func (o WaitingRoomMapOutput) ToWaitingRoomMapOutput() WaitingRoomMapOutput {
 
 func (o WaitingRoomMapOutput) ToWaitingRoomMapOutputWithContext(ctx context.Context) WaitingRoomMapOutput {
 	return o
+}
+
+func (o WaitingRoomMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*WaitingRoom] {
+	return pulumix.Output[map[string]*WaitingRoom]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o WaitingRoomMapOutput) MapIndex(k pulumi.StringInput) WaitingRoomOutput {

@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a resource which manages Cloudflare Logpush ownership
@@ -156,6 +157,12 @@ func (i *LogpushOwnershipChallenge) ToLogpushOwnershipChallengeOutputWithContext
 	return pulumi.ToOutputWithContext(ctx, i).(LogpushOwnershipChallengeOutput)
 }
 
+func (i *LogpushOwnershipChallenge) ToOutput(ctx context.Context) pulumix.Output[*LogpushOwnershipChallenge] {
+	return pulumix.Output[*LogpushOwnershipChallenge]{
+		OutputState: i.ToLogpushOwnershipChallengeOutputWithContext(ctx).OutputState,
+	}
+}
+
 // LogpushOwnershipChallengeArrayInput is an input type that accepts LogpushOwnershipChallengeArray and LogpushOwnershipChallengeArrayOutput values.
 // You can construct a concrete instance of `LogpushOwnershipChallengeArrayInput` via:
 //
@@ -179,6 +186,12 @@ func (i LogpushOwnershipChallengeArray) ToLogpushOwnershipChallengeArrayOutput()
 
 func (i LogpushOwnershipChallengeArray) ToLogpushOwnershipChallengeArrayOutputWithContext(ctx context.Context) LogpushOwnershipChallengeArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(LogpushOwnershipChallengeArrayOutput)
+}
+
+func (i LogpushOwnershipChallengeArray) ToOutput(ctx context.Context) pulumix.Output[[]*LogpushOwnershipChallenge] {
+	return pulumix.Output[[]*LogpushOwnershipChallenge]{
+		OutputState: i.ToLogpushOwnershipChallengeArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // LogpushOwnershipChallengeMapInput is an input type that accepts LogpushOwnershipChallengeMap and LogpushOwnershipChallengeMapOutput values.
@@ -206,6 +219,12 @@ func (i LogpushOwnershipChallengeMap) ToLogpushOwnershipChallengeMapOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, i).(LogpushOwnershipChallengeMapOutput)
 }
 
+func (i LogpushOwnershipChallengeMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*LogpushOwnershipChallenge] {
+	return pulumix.Output[map[string]*LogpushOwnershipChallenge]{
+		OutputState: i.ToLogpushOwnershipChallengeMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type LogpushOwnershipChallengeOutput struct{ *pulumi.OutputState }
 
 func (LogpushOwnershipChallengeOutput) ElementType() reflect.Type {
@@ -218,6 +237,12 @@ func (o LogpushOwnershipChallengeOutput) ToLogpushOwnershipChallengeOutput() Log
 
 func (o LogpushOwnershipChallengeOutput) ToLogpushOwnershipChallengeOutputWithContext(ctx context.Context) LogpushOwnershipChallengeOutput {
 	return o
+}
+
+func (o LogpushOwnershipChallengeOutput) ToOutput(ctx context.Context) pulumix.Output[*LogpushOwnershipChallenge] {
+	return pulumix.Output[*LogpushOwnershipChallenge]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The account identifier to target for the resource. Must provide only one of `accountId`, `zoneId`.
@@ -254,6 +279,12 @@ func (o LogpushOwnershipChallengeArrayOutput) ToLogpushOwnershipChallengeArrayOu
 	return o
 }
 
+func (o LogpushOwnershipChallengeArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*LogpushOwnershipChallenge] {
+	return pulumix.Output[[]*LogpushOwnershipChallenge]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o LogpushOwnershipChallengeArrayOutput) Index(i pulumi.IntInput) LogpushOwnershipChallengeOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *LogpushOwnershipChallenge {
 		return vs[0].([]*LogpushOwnershipChallenge)[vs[1].(int)]
@@ -272,6 +303,12 @@ func (o LogpushOwnershipChallengeMapOutput) ToLogpushOwnershipChallengeMapOutput
 
 func (o LogpushOwnershipChallengeMapOutput) ToLogpushOwnershipChallengeMapOutputWithContext(ctx context.Context) LogpushOwnershipChallengeMapOutput {
 	return o
+}
+
+func (o LogpushOwnershipChallengeMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*LogpushOwnershipChallenge] {
+	return pulumix.Output[map[string]*LogpushOwnershipChallenge]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o LogpushOwnershipChallengeMapOutput) MapIndex(k pulumi.StringInput) LogpushOwnershipChallengeOutput {

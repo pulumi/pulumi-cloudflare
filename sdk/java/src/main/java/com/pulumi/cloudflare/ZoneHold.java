@@ -63,7 +63,7 @@ public class ZoneHold extends com.pulumi.resources.CustomResource {
      * Enablement status of the zone hold.
      * 
      */
-    @Export(name="hold", refs={Boolean.class}, tree="[0]")
+    @Export(name="hold", type=Boolean.class, parameters={})
     private Output<Boolean> hold;
 
     /**
@@ -77,7 +77,7 @@ public class ZoneHold extends com.pulumi.resources.CustomResource {
      * The RFC3339 compatible timestamp when to automatically re-enable the zone hold.
      * 
      */
-    @Export(name="holdAfter", refs={String.class}, tree="[0]")
+    @Export(name="holdAfter", type=String.class, parameters={})
     private Output<String> holdAfter;
 
     /**
@@ -91,7 +91,7 @@ public class ZoneHold extends com.pulumi.resources.CustomResource {
      * Whether to extend to block any subdomain of the given zone.
      * 
      */
-    @Export(name="includeSubdomains", refs={Boolean.class}, tree="[0]")
+    @Export(name="includeSubdomains", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> includeSubdomains;
 
     /**
@@ -105,7 +105,7 @@ public class ZoneHold extends com.pulumi.resources.CustomResource {
      * The zone identifier to target for the resource.
      * 
      */
-    @Export(name="zoneId", refs={String.class}, tree="[0]")
+    @Export(name="zoneId", type=String.class, parameters={})
     private Output<String> zoneId;
 
     /**

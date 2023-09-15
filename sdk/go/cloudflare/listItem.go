@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides individual list items (IPs, Redirects) to be used in Edge Rules Engine
@@ -259,6 +260,12 @@ func (i *ListItem) ToListItemOutputWithContext(ctx context.Context) ListItemOutp
 	return pulumi.ToOutputWithContext(ctx, i).(ListItemOutput)
 }
 
+func (i *ListItem) ToOutput(ctx context.Context) pulumix.Output[*ListItem] {
+	return pulumix.Output[*ListItem]{
+		OutputState: i.ToListItemOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ListItemArrayInput is an input type that accepts ListItemArray and ListItemArrayOutput values.
 // You can construct a concrete instance of `ListItemArrayInput` via:
 //
@@ -282,6 +289,12 @@ func (i ListItemArray) ToListItemArrayOutput() ListItemArrayOutput {
 
 func (i ListItemArray) ToListItemArrayOutputWithContext(ctx context.Context) ListItemArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ListItemArrayOutput)
+}
+
+func (i ListItemArray) ToOutput(ctx context.Context) pulumix.Output[[]*ListItem] {
+	return pulumix.Output[[]*ListItem]{
+		OutputState: i.ToListItemArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // ListItemMapInput is an input type that accepts ListItemMap and ListItemMapOutput values.
@@ -309,6 +322,12 @@ func (i ListItemMap) ToListItemMapOutputWithContext(ctx context.Context) ListIte
 	return pulumi.ToOutputWithContext(ctx, i).(ListItemMapOutput)
 }
 
+func (i ListItemMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ListItem] {
+	return pulumix.Output[map[string]*ListItem]{
+		OutputState: i.ToListItemMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ListItemOutput struct{ *pulumi.OutputState }
 
 func (ListItemOutput) ElementType() reflect.Type {
@@ -321,6 +340,12 @@ func (o ListItemOutput) ToListItemOutput() ListItemOutput {
 
 func (o ListItemOutput) ToListItemOutputWithContext(ctx context.Context) ListItemOutput {
 	return o
+}
+
+func (o ListItemOutput) ToOutput(ctx context.Context) pulumix.Output[*ListItem] {
+	return pulumix.Output[*ListItem]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The account identifier to target for the resource.
@@ -372,6 +397,12 @@ func (o ListItemArrayOutput) ToListItemArrayOutputWithContext(ctx context.Contex
 	return o
 }
 
+func (o ListItemArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ListItem] {
+	return pulumix.Output[[]*ListItem]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ListItemArrayOutput) Index(i pulumi.IntInput) ListItemOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ListItem {
 		return vs[0].([]*ListItem)[vs[1].(int)]
@@ -390,6 +421,12 @@ func (o ListItemMapOutput) ToListItemMapOutput() ListItemMapOutput {
 
 func (o ListItemMapOutput) ToListItemMapOutputWithContext(ctx context.Context) ListItemMapOutput {
 	return o
+}
+
+func (o ListItemMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ListItem] {
+	return pulumix.Output[map[string]*ListItem]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ListItemMapOutput) MapIndex(k pulumi.StringInput) ListItemOutput {

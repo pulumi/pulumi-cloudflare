@@ -64,7 +64,7 @@ public class WebAnalyticsSite extends com.pulumi.resources.CustomResource {
      * The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
      * 
      */
-    @Export(name="accountId", refs={String.class}, tree="[0]")
+    @Export(name="accountId", type=String.class, parameters={})
     private Output<String> accountId;
 
     /**
@@ -78,7 +78,7 @@ public class WebAnalyticsSite extends com.pulumi.resources.CustomResource {
      * Whether Cloudflare will automatically inject the JavaScript snippet for orange-clouded sites. **Modifying this attribute will force creation of a new resource.**
      * 
      */
-    @Export(name="autoInstall", refs={Boolean.class}, tree="[0]")
+    @Export(name="autoInstall", type=Boolean.class, parameters={})
     private Output<Boolean> autoInstall;
 
     /**
@@ -92,7 +92,7 @@ public class WebAnalyticsSite extends com.pulumi.resources.CustomResource {
      * The hostname to use for gray-clouded sites. Must provide only one of `zone_tag`. **Modifying this attribute will force creation of a new resource.**
      * 
      */
-    @Export(name="host", refs={String.class}, tree="[0]")
+    @Export(name="host", type=String.class, parameters={})
     private Output</* @Nullable */ String> host;
 
     /**
@@ -106,7 +106,7 @@ public class WebAnalyticsSite extends com.pulumi.resources.CustomResource {
      * The ID for the ruleset associated to this Web Analytics Site.
      * 
      */
-    @Export(name="rulesetId", refs={String.class}, tree="[0]")
+    @Export(name="rulesetId", type=String.class, parameters={})
     private Output<String> rulesetId;
 
     /**
@@ -120,7 +120,7 @@ public class WebAnalyticsSite extends com.pulumi.resources.CustomResource {
      * The Web Analytics site tag.
      * 
      */
-    @Export(name="siteTag", refs={String.class}, tree="[0]")
+    @Export(name="siteTag", type=String.class, parameters={})
     private Output<String> siteTag;
 
     /**
@@ -134,7 +134,7 @@ public class WebAnalyticsSite extends com.pulumi.resources.CustomResource {
      * The token for the Web Analytics site.
      * 
      */
-    @Export(name="siteToken", refs={String.class}, tree="[0]")
+    @Export(name="siteToken", type=String.class, parameters={})
     private Output<String> siteToken;
 
     /**
@@ -148,7 +148,7 @@ public class WebAnalyticsSite extends com.pulumi.resources.CustomResource {
      * The encoded JS snippet to add to your site&#39;s HTML page if auto_install is false.
      * 
      */
-    @Export(name="snippet", refs={String.class}, tree="[0]")
+    @Export(name="snippet", type=String.class, parameters={})
     private Output<String> snippet;
 
     /**
@@ -162,7 +162,7 @@ public class WebAnalyticsSite extends com.pulumi.resources.CustomResource {
      * The zone identifier for orange-clouded sites. Must provide only one of `host`. **Modifying this attribute will force creation of a new resource.**
      * 
      */
-    @Export(name="zoneTag", refs={String.class}, tree="[0]")
+    @Export(name="zoneTag", type=String.class, parameters={})
     private Output</* @Nullable */ String> zoneTag;
 
     /**

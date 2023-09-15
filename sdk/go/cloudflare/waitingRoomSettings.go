@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Configure zone-wide settings for Cloudflare waiting rooms.
@@ -145,6 +146,12 @@ func (i *WaitingRoomSettings) ToWaitingRoomSettingsOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(WaitingRoomSettingsOutput)
 }
 
+func (i *WaitingRoomSettings) ToOutput(ctx context.Context) pulumix.Output[*WaitingRoomSettings] {
+	return pulumix.Output[*WaitingRoomSettings]{
+		OutputState: i.ToWaitingRoomSettingsOutputWithContext(ctx).OutputState,
+	}
+}
+
 // WaitingRoomSettingsArrayInput is an input type that accepts WaitingRoomSettingsArray and WaitingRoomSettingsArrayOutput values.
 // You can construct a concrete instance of `WaitingRoomSettingsArrayInput` via:
 //
@@ -168,6 +175,12 @@ func (i WaitingRoomSettingsArray) ToWaitingRoomSettingsArrayOutput() WaitingRoom
 
 func (i WaitingRoomSettingsArray) ToWaitingRoomSettingsArrayOutputWithContext(ctx context.Context) WaitingRoomSettingsArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(WaitingRoomSettingsArrayOutput)
+}
+
+func (i WaitingRoomSettingsArray) ToOutput(ctx context.Context) pulumix.Output[[]*WaitingRoomSettings] {
+	return pulumix.Output[[]*WaitingRoomSettings]{
+		OutputState: i.ToWaitingRoomSettingsArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // WaitingRoomSettingsMapInput is an input type that accepts WaitingRoomSettingsMap and WaitingRoomSettingsMapOutput values.
@@ -195,6 +208,12 @@ func (i WaitingRoomSettingsMap) ToWaitingRoomSettingsMapOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(WaitingRoomSettingsMapOutput)
 }
 
+func (i WaitingRoomSettingsMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*WaitingRoomSettings] {
+	return pulumix.Output[map[string]*WaitingRoomSettings]{
+		OutputState: i.ToWaitingRoomSettingsMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type WaitingRoomSettingsOutput struct{ *pulumi.OutputState }
 
 func (WaitingRoomSettingsOutput) ElementType() reflect.Type {
@@ -207,6 +226,12 @@ func (o WaitingRoomSettingsOutput) ToWaitingRoomSettingsOutput() WaitingRoomSett
 
 func (o WaitingRoomSettingsOutput) ToWaitingRoomSettingsOutputWithContext(ctx context.Context) WaitingRoomSettingsOutput {
 	return o
+}
+
+func (o WaitingRoomSettingsOutput) ToOutput(ctx context.Context) pulumix.Output[*WaitingRoomSettings] {
+	return pulumix.Output[*WaitingRoomSettings]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Whether to allow verified search engine crawlers to bypass all waiting rooms on this zone. Defaults to `false`.
@@ -233,6 +258,12 @@ func (o WaitingRoomSettingsArrayOutput) ToWaitingRoomSettingsArrayOutputWithCont
 	return o
 }
 
+func (o WaitingRoomSettingsArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*WaitingRoomSettings] {
+	return pulumix.Output[[]*WaitingRoomSettings]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o WaitingRoomSettingsArrayOutput) Index(i pulumi.IntInput) WaitingRoomSettingsOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *WaitingRoomSettings {
 		return vs[0].([]*WaitingRoomSettings)[vs[1].(int)]
@@ -251,6 +282,12 @@ func (o WaitingRoomSettingsMapOutput) ToWaitingRoomSettingsMapOutput() WaitingRo
 
 func (o WaitingRoomSettingsMapOutput) ToWaitingRoomSettingsMapOutputWithContext(ctx context.Context) WaitingRoomSettingsMapOutput {
 	return o
+}
+
+func (o WaitingRoomSettingsMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*WaitingRoomSettings] {
+	return pulumix.Output[map[string]*WaitingRoomSettings]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o WaitingRoomSettingsMapOutput) MapIndex(k pulumi.StringInput) WaitingRoomSettingsOutput {

@@ -59,7 +59,7 @@ public class AccessCustomPage extends com.pulumi.resources.CustomResource {
      * The account identifier to target for the resource. Conflicts with `zone_id`. **Modifying this attribute will force creation of a new resource.**
      * 
      */
-    @Export(name="accountId", refs={String.class}, tree="[0]")
+    @Export(name="accountId", type=String.class, parameters={})
     private Output</* @Nullable */ String> accountId;
 
     /**
@@ -73,7 +73,7 @@ public class AccessCustomPage extends com.pulumi.resources.CustomResource {
      * Number of apps to display on the custom page.
      * 
      */
-    @Export(name="appCount", refs={Integer.class}, tree="[0]")
+    @Export(name="appCount", type=Integer.class, parameters={})
     private Output</* @Nullable */ Integer> appCount;
 
     /**
@@ -87,7 +87,7 @@ public class AccessCustomPage extends com.pulumi.resources.CustomResource {
      * Custom HTML to display on the custom page.
      * 
      */
-    @Export(name="customHtml", refs={String.class}, tree="[0]")
+    @Export(name="customHtml", type=String.class, parameters={})
     private Output</* @Nullable */ String> customHtml;
 
     /**
@@ -101,7 +101,7 @@ public class AccessCustomPage extends com.pulumi.resources.CustomResource {
      * Friendly name of the Access Custom Page configuration.
      * 
      */
-    @Export(name="name", refs={String.class}, tree="[0]")
+    @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
@@ -115,7 +115,7 @@ public class AccessCustomPage extends com.pulumi.resources.CustomResource {
      * Type of Access custom page to create. Available values: `identity_denied`, `forbidden`.
      * 
      */
-    @Export(name="type", refs={String.class}, tree="[0]")
+    @Export(name="type", type=String.class, parameters={})
     private Output<String> type;
 
     /**
@@ -129,7 +129,7 @@ public class AccessCustomPage extends com.pulumi.resources.CustomResource {
      * The zone identifier to target for the resource. Conflicts with `account_id`. **Modifying this attribute will force creation of a new resource.**
      * 
      */
-    @Export(name="zoneId", refs={String.class}, tree="[0]")
+    @Export(name="zoneId", type=String.class, parameters={})
     private Output</* @Nullable */ String> zoneId;
 
     /**

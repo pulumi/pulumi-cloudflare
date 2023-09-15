@@ -60,7 +60,7 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="cloudflare:index/hostnameTlsSettingCiphers:HostnameTlsSettingCiphers")
 public class HostnameTlsSettingCiphers extends com.pulumi.resources.CustomResource {
-    @Export(name="createdAt", refs={String.class}, tree="[0]")
+    @Export(name="createdAt", type=String.class, parameters={})
     private Output<String> createdAt;
 
     public Output<String> createdAt() {
@@ -70,7 +70,7 @@ public class HostnameTlsSettingCiphers extends com.pulumi.resources.CustomResour
      * Hostname that belongs to this zone name. **Modifying this attribute will force creation of a new resource.**
      * 
      */
-    @Export(name="hostname", refs={String.class}, tree="[0]")
+    @Export(name="hostname", type=String.class, parameters={})
     private Output<String> hostname;
 
     /**
@@ -84,7 +84,7 @@ public class HostnameTlsSettingCiphers extends com.pulumi.resources.CustomResour
      * Ports to use within the IP rule.
      * 
      */
-    @Export(name="ports", refs={List.class,Integer.class}, tree="[0,1]")
+    @Export(name="ports", type=List.class, parameters={Integer.class})
     private Output</* @Nullable */ List<Integer>> ports;
 
     /**
@@ -94,7 +94,7 @@ public class HostnameTlsSettingCiphers extends com.pulumi.resources.CustomResour
     public Output<Optional<List<Integer>>> ports() {
         return Codegen.optional(this.ports);
     }
-    @Export(name="updatedAt", refs={String.class}, tree="[0]")
+    @Export(name="updatedAt", type=String.class, parameters={})
     private Output<String> updatedAt;
 
     public Output<String> updatedAt() {
@@ -104,7 +104,7 @@ public class HostnameTlsSettingCiphers extends com.pulumi.resources.CustomResour
      * Ciphers suites value.
      * 
      */
-    @Export(name="values", refs={List.class,String.class}, tree="[0,1]")
+    @Export(name="values", type=List.class, parameters={String.class})
     private Output<List<String>> values;
 
     /**
@@ -118,7 +118,7 @@ public class HostnameTlsSettingCiphers extends com.pulumi.resources.CustomResour
      * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
      * 
      */
-    @Export(name="zoneId", refs={String.class}, tree="[0]")
+    @Export(name="zoneId", type=String.class, parameters={})
     private Output<String> zoneId;
 
     /**

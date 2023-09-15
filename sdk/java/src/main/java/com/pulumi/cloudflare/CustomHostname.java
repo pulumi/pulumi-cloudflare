@@ -69,7 +69,7 @@ public class CustomHostname extends com.pulumi.resources.CustomResource {
      * Custom metadata associated with custom hostname. Only supports primitive string values, all other values are accessible via the API directly.
      * 
      */
-    @Export(name="customMetadata", refs={Map.class,String.class}, tree="[0,1,1]")
+    @Export(name="customMetadata", type=Map.class, parameters={String.class, String.class})
     private Output</* @Nullable */ Map<String,String>> customMetadata;
 
     /**
@@ -83,7 +83,7 @@ public class CustomHostname extends com.pulumi.resources.CustomResource {
      * The custom origin server used for certificates.
      * 
      */
-    @Export(name="customOriginServer", refs={String.class}, tree="[0]")
+    @Export(name="customOriginServer", type=String.class, parameters={})
     private Output</* @Nullable */ String> customOriginServer;
 
     /**
@@ -97,7 +97,7 @@ public class CustomHostname extends com.pulumi.resources.CustomResource {
      * The [custom origin SNI](https://developers.cloudflare.com/ssl/ssl-for-saas/hostname-specific-behavior/custom-origin) used for certificates.
      * 
      */
-    @Export(name="customOriginSni", refs={String.class}, tree="[0]")
+    @Export(name="customOriginSni", type=String.class, parameters={})
     private Output</* @Nullable */ String> customOriginSni;
 
     /**
@@ -111,7 +111,7 @@ public class CustomHostname extends com.pulumi.resources.CustomResource {
      * Hostname you intend to request a certificate for. **Modifying this attribute will force creation of a new resource.**
      * 
      */
-    @Export(name="hostname", refs={String.class}, tree="[0]")
+    @Export(name="hostname", type=String.class, parameters={})
     private Output<String> hostname;
 
     /**
@@ -121,13 +121,13 @@ public class CustomHostname extends com.pulumi.resources.CustomResource {
     public Output<String> hostname() {
         return this.hostname;
     }
-    @Export(name="ownershipVerification", refs={Map.class,String.class}, tree="[0,1,1]")
+    @Export(name="ownershipVerification", type=Map.class, parameters={String.class, String.class})
     private Output<Map<String,String>> ownershipVerification;
 
     public Output<Map<String,String>> ownershipVerification() {
         return this.ownershipVerification;
     }
-    @Export(name="ownershipVerificationHttp", refs={Map.class,String.class}, tree="[0,1,1]")
+    @Export(name="ownershipVerificationHttp", type=Map.class, parameters={String.class, String.class})
     private Output<Map<String,String>> ownershipVerificationHttp;
 
     public Output<Map<String,String>> ownershipVerificationHttp() {
@@ -137,7 +137,7 @@ public class CustomHostname extends com.pulumi.resources.CustomResource {
      * SSL properties used when creating the custom hostname.
      * 
      */
-    @Export(name="ssls", refs={List.class,CustomHostnameSsl.class}, tree="[0,1]")
+    @Export(name="ssls", type=List.class, parameters={CustomHostnameSsl.class})
     private Output</* @Nullable */ List<CustomHostnameSsl>> ssls;
 
     /**
@@ -151,7 +151,7 @@ public class CustomHostname extends com.pulumi.resources.CustomResource {
      * Status of the certificate.
      * 
      */
-    @Export(name="status", refs={String.class}, tree="[0]")
+    @Export(name="status", type=String.class, parameters={})
     private Output<String> status;
 
     /**
@@ -165,7 +165,7 @@ public class CustomHostname extends com.pulumi.resources.CustomResource {
      * Whether to wait for a custom hostname SSL sub-object to reach status `pending_validation` during creation. Defaults to `false`.
      * 
      */
-    @Export(name="waitForSslPendingValidation", refs={Boolean.class}, tree="[0]")
+    @Export(name="waitForSslPendingValidation", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> waitForSslPendingValidation;
 
     /**
@@ -179,7 +179,7 @@ public class CustomHostname extends com.pulumi.resources.CustomResource {
      * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
      * 
      */
-    @Export(name="zoneId", refs={String.class}, tree="[0]")
+    @Export(name="zoneId", type=String.class, parameters={})
     private Output<String> zoneId;
 
     /**

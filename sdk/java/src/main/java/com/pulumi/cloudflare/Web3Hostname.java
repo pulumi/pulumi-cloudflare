@@ -24,7 +24,7 @@ public class Web3Hostname extends com.pulumi.resources.CustomResource {
      * Creation time.
      * 
      */
-    @Export(name="createdOn", refs={String.class}, tree="[0]")
+    @Export(name="createdOn", type=String.class, parameters={})
     private Output<String> createdOn;
 
     /**
@@ -38,7 +38,7 @@ public class Web3Hostname extends com.pulumi.resources.CustomResource {
      * An optional description of the hostname.
      * 
      */
-    @Export(name="description", refs={String.class}, tree="[0]")
+    @Export(name="description", type=String.class, parameters={})
     private Output</* @Nullable */ String> description;
 
     /**
@@ -52,7 +52,7 @@ public class Web3Hostname extends com.pulumi.resources.CustomResource {
      * DNSLink value used if the target is ipfs.
      * 
      */
-    @Export(name="dnslink", refs={String.class}, tree="[0]")
+    @Export(name="dnslink", type=String.class, parameters={})
     private Output</* @Nullable */ String> dnslink;
 
     /**
@@ -66,7 +66,7 @@ public class Web3Hostname extends com.pulumi.resources.CustomResource {
      * Last modification time.
      * 
      */
-    @Export(name="modifiedOn", refs={String.class}, tree="[0]")
+    @Export(name="modifiedOn", type=String.class, parameters={})
     private Output<String> modifiedOn;
 
     /**
@@ -80,7 +80,7 @@ public class Web3Hostname extends com.pulumi.resources.CustomResource {
      * The hostname that will point to the target gateway via CNAME.
      * 
      */
-    @Export(name="name", refs={String.class}, tree="[0]")
+    @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
@@ -94,7 +94,7 @@ public class Web3Hostname extends com.pulumi.resources.CustomResource {
      * Status of the hostname&#39;s activation.
      * 
      */
-    @Export(name="status", refs={String.class}, tree="[0]")
+    @Export(name="status", type=String.class, parameters={})
     private Output<String> status;
 
     /**
@@ -108,7 +108,7 @@ public class Web3Hostname extends com.pulumi.resources.CustomResource {
      * Target gateway of the hostname.
      * 
      */
-    @Export(name="target", refs={String.class}, tree="[0]")
+    @Export(name="target", type=String.class, parameters={})
     private Output<String> target;
 
     /**
@@ -122,7 +122,7 @@ public class Web3Hostname extends com.pulumi.resources.CustomResource {
      * The zone identifier to target for the resource.
      * 
      */
-    @Export(name="zoneId", refs={String.class}, tree="[0]")
+    @Export(name="zoneId", type=String.class, parameters={})
     private Output<String> zoneId;
 
     /**
