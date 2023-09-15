@@ -120,7 +120,7 @@ public class LoadBalancer extends com.pulumi.resources.CustomResource {
      * Controls features that modify the routing of requests to pools and origins in response to dynamic conditions, such as during the interval between active health monitoring requests.
      * 
      */
-    @Export(name="adaptiveRoutings", type=List.class, parameters={LoadBalancerAdaptiveRouting.class})
+    @Export(name="adaptiveRoutings", refs={List.class,LoadBalancerAdaptiveRouting.class}, tree="[0,1]")
     private Output</* @Nullable */ List<LoadBalancerAdaptiveRouting>> adaptiveRoutings;
 
     /**
@@ -134,7 +134,7 @@ public class LoadBalancer extends com.pulumi.resources.CustomResource {
      * A set containing mappings of country codes to a list of pool IDs (ordered by their failover priority) for the given country.
      * 
      */
-    @Export(name="countryPools", type=List.class, parameters={LoadBalancerCountryPool.class})
+    @Export(name="countryPools", refs={List.class,LoadBalancerCountryPool.class}, tree="[0,1]")
     private Output</* @Nullable */ List<LoadBalancerCountryPool>> countryPools;
 
     /**
@@ -148,7 +148,7 @@ public class LoadBalancer extends com.pulumi.resources.CustomResource {
      * The RFC3339 timestamp of when the load balancer was created.
      * 
      */
-    @Export(name="createdOn", type=String.class, parameters={})
+    @Export(name="createdOn", refs={String.class}, tree="[0]")
     private Output<String> createdOn;
 
     /**
@@ -162,7 +162,7 @@ public class LoadBalancer extends com.pulumi.resources.CustomResource {
      * A list of pool IDs ordered by their failover priority. Used whenever `pop_pools`/`country_pools`/`region_pools` are not defined.
      * 
      */
-    @Export(name="defaultPoolIds", type=List.class, parameters={String.class})
+    @Export(name="defaultPoolIds", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> defaultPoolIds;
 
     /**
@@ -176,7 +176,7 @@ public class LoadBalancer extends com.pulumi.resources.CustomResource {
      * Free text description.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -190,7 +190,7 @@ public class LoadBalancer extends com.pulumi.resources.CustomResource {
      * Enable or disable the load balancer. Defaults to `true`.
      * 
      */
-    @Export(name="enabled", type=Boolean.class, parameters={})
+    @Export(name="enabled", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> enabled;
 
     /**
@@ -204,7 +204,7 @@ public class LoadBalancer extends com.pulumi.resources.CustomResource {
      * The pool ID to use when all other pools are detected as unhealthy.
      * 
      */
-    @Export(name="fallbackPoolId", type=String.class, parameters={})
+    @Export(name="fallbackPoolId", refs={String.class}, tree="[0]")
     private Output<String> fallbackPoolId;
 
     /**
@@ -218,7 +218,7 @@ public class LoadBalancer extends com.pulumi.resources.CustomResource {
      * Controls location-based steering for non-proxied requests.
      * 
      */
-    @Export(name="locationStrategies", type=List.class, parameters={LoadBalancerLocationStrategy.class})
+    @Export(name="locationStrategies", refs={List.class,LoadBalancerLocationStrategy.class}, tree="[0,1]")
     private Output</* @Nullable */ List<LoadBalancerLocationStrategy>> locationStrategies;
 
     /**
@@ -232,7 +232,7 @@ public class LoadBalancer extends com.pulumi.resources.CustomResource {
      * The RFC3339 timestamp of when the load balancer was last modified.
      * 
      */
-    @Export(name="modifiedOn", type=String.class, parameters={})
+    @Export(name="modifiedOn", refs={String.class}, tree="[0]")
     private Output<String> modifiedOn;
 
     /**
@@ -246,7 +246,7 @@ public class LoadBalancer extends com.pulumi.resources.CustomResource {
      * The DNS hostname to associate with your load balancer. If this hostname already exists as a DNS record in Cloudflare&#39;s DNS, the load balancer will take precedence and the DNS record will not be used.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -260,7 +260,7 @@ public class LoadBalancer extends com.pulumi.resources.CustomResource {
      * A set containing mappings of Cloudflare Point-of-Presence (PoP) identifiers to a list of pool IDs (ordered by their failover priority) for the PoP (datacenter). This feature is only available to enterprise customers.
      * 
      */
-    @Export(name="popPools", type=List.class, parameters={LoadBalancerPopPool.class})
+    @Export(name="popPools", refs={List.class,LoadBalancerPopPool.class}, tree="[0,1]")
     private Output</* @Nullable */ List<LoadBalancerPopPool>> popPools;
 
     /**
@@ -274,7 +274,7 @@ public class LoadBalancer extends com.pulumi.resources.CustomResource {
      * Whether the hostname gets Cloudflare&#39;s origin protection. Defaults to `false`. Conflicts with `ttl`.
      * 
      */
-    @Export(name="proxied", type=Boolean.class, parameters={})
+    @Export(name="proxied", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> proxied;
 
     /**
@@ -288,7 +288,7 @@ public class LoadBalancer extends com.pulumi.resources.CustomResource {
      * Configures pool weights. When `steering_policy=&#34;random&#34;`, a random pool is selected with probability proportional to pool weights. When `steering_policy=&#34;least_outstanding_requests&#34;`, pool weights are used to scale each pool&#39;s outstanding requests.
      * 
      */
-    @Export(name="randomSteerings", type=List.class, parameters={LoadBalancerRandomSteering.class})
+    @Export(name="randomSteerings", refs={List.class,LoadBalancerRandomSteering.class}, tree="[0,1]")
     private Output</* @Nullable */ List<LoadBalancerRandomSteering>> randomSteerings;
 
     /**
@@ -302,7 +302,7 @@ public class LoadBalancer extends com.pulumi.resources.CustomResource {
      * A set containing mappings of region codes to a list of pool IDs (ordered by their failover priority) for the given region.
      * 
      */
-    @Export(name="regionPools", type=List.class, parameters={LoadBalancerRegionPool.class})
+    @Export(name="regionPools", refs={List.class,LoadBalancerRegionPool.class}, tree="[0,1]")
     private Output</* @Nullable */ List<LoadBalancerRegionPool>> regionPools;
 
     /**
@@ -316,7 +316,7 @@ public class LoadBalancer extends com.pulumi.resources.CustomResource {
      * A list of rules for this load balancer to execute.
      * 
      */
-    @Export(name="rules", type=List.class, parameters={LoadBalancerRule.class})
+    @Export(name="rules", refs={List.class,LoadBalancerRule.class}, tree="[0,1]")
     private Output</* @Nullable */ List<LoadBalancerRule>> rules;
 
     /**
@@ -330,7 +330,7 @@ public class LoadBalancer extends com.pulumi.resources.CustomResource {
      * Specifies the type of session affinity the load balancer should use unless specified as `none` or `&#34;&#34;` (default). With value `cookie`, on the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy then a new origin server is calculated and used. Value `ip_cookie` behaves the same as `cookie` except the initial origin selection is stable and based on the client&#39;s IP address. Available values: `&#34;&#34;`, `none`, `cookie`, `ip_cookie`, `header`. Defaults to `none`.
      * 
      */
-    @Export(name="sessionAffinity", type=String.class, parameters={})
+    @Export(name="sessionAffinity", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> sessionAffinity;
 
     /**
@@ -344,7 +344,7 @@ public class LoadBalancer extends com.pulumi.resources.CustomResource {
      * Configure attributes for session affinity.
      * 
      */
-    @Export(name="sessionAffinityAttributes", type=List.class, parameters={LoadBalancerSessionAffinityAttribute.class})
+    @Export(name="sessionAffinityAttributes", refs={List.class,LoadBalancerSessionAffinityAttribute.class}, tree="[0,1]")
     private Output</* @Nullable */ List<LoadBalancerSessionAffinityAttribute>> sessionAffinityAttributes;
 
     /**
@@ -358,7 +358,7 @@ public class LoadBalancer extends com.pulumi.resources.CustomResource {
      * Time, in seconds, until this load balancer&#39;s session affinity cookie expires after being created. This parameter is ignored unless a supported session affinity policy is set. The current default of `82800` (23 hours) will be used unless `session_affinity_ttl` is explicitly set. Once the expiry time has been reached, subsequent requests may get sent to a different origin server. Valid values are between `1800` and `604800`.
      * 
      */
-    @Export(name="sessionAffinityTtl", type=Integer.class, parameters={})
+    @Export(name="sessionAffinityTtl", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> sessionAffinityTtl;
 
     /**
@@ -372,7 +372,7 @@ public class LoadBalancer extends com.pulumi.resources.CustomResource {
      * The method the load balancer uses to determine the route to your origin. Value `off` uses `default_pool_ids`. Value `geo` uses `pop_pools`/`country_pools`/`region_pools`. For non-proxied requests, the `country` for `country_pools` is determined by `location_strategy`. Value `random` selects a pool randomly. Value `dynamic_latency` uses round trip time to select the closest pool in `default_pool_ids` (requires pool health checks). Value `proximity` uses the pools&#39; latitude and longitude to select the closest pool using the Cloudflare PoP location for proxied requests or the location determined by `location_strategy` for non-proxied requests. Value `least_outstanding_requests` selects a pool by taking into consideration `random_steering` weights, as well as each pool&#39;s number of outstanding requests. Pools with more pending requests are weighted proportionately less relative to others. Value `&#34;&#34;` maps to `geo` if you use `pop_pools`/`country_pools`/`region_pools` otherwise `off`. Available values: `off`, `geo`, `dynamic_latency`, `random`, `proximity`, `least_outstanding_requests`, `&#34;&#34;` Defaults to `&#34;&#34;`.
      * 
      */
-    @Export(name="steeringPolicy", type=String.class, parameters={})
+    @Export(name="steeringPolicy", refs={String.class}, tree="[0]")
     private Output<String> steeringPolicy;
 
     /**
@@ -386,7 +386,7 @@ public class LoadBalancer extends com.pulumi.resources.CustomResource {
      * Time to live (TTL) of the DNS entry for the IP address returned by this load balancer. This cannot be set for proxied load balancers. Defaults to `30`. Conflicts with `proxied`.
      * 
      */
-    @Export(name="ttl", type=Integer.class, parameters={})
+    @Export(name="ttl", refs={Integer.class}, tree="[0]")
     private Output<Integer> ttl;
 
     /**
@@ -400,7 +400,7 @@ public class LoadBalancer extends com.pulumi.resources.CustomResource {
      * The zone ID to add the load balancer to. **Modifying this attribute will force creation of a new resource.**
      * 
      */
-    @Export(name="zoneId", type=String.class, parameters={})
+    @Export(name="zoneId", refs={String.class}, tree="[0]")
     private Output<String> zoneId;
 
     /**

@@ -63,7 +63,7 @@ public class TotalTls extends com.pulumi.resources.CustomResource {
      * The Certificate Authority that Total TLS certificates will be issued through. Available values: `google`, `lets_encrypt`.
      * 
      */
-    @Export(name="certificateAuthority", type=String.class, parameters={})
+    @Export(name="certificateAuthority", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> certificateAuthority;
 
     /**
@@ -77,7 +77,7 @@ public class TotalTls extends com.pulumi.resources.CustomResource {
      * Enable Total TLS for the zone.
      * 
      */
-    @Export(name="enabled", type=Boolean.class, parameters={})
+    @Export(name="enabled", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> enabled;
 
     /**
@@ -91,7 +91,7 @@ public class TotalTls extends com.pulumi.resources.CustomResource {
      * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
      * 
      */
-    @Export(name="zoneId", type=String.class, parameters={})
+    @Export(name="zoneId", refs={String.class}, tree="[0]")
     private Output<String> zoneId;
 
     /**

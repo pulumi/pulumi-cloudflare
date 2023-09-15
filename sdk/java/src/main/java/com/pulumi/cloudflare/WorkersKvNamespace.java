@@ -60,7 +60,7 @@ public class WorkersKvNamespace extends com.pulumi.resources.CustomResource {
      * The account identifier to target for the resource.
      * 
      */
-    @Export(name="accountId", type=String.class, parameters={})
+    @Export(name="accountId", refs={String.class}, tree="[0]")
     private Output<String> accountId;
 
     /**
@@ -74,7 +74,7 @@ public class WorkersKvNamespace extends com.pulumi.resources.CustomResource {
      * Title value of the Worker KV Namespace.
      * 
      */
-    @Export(name="title", type=String.class, parameters={})
+    @Export(name="title", refs={String.class}, tree="[0]")
     private Output<String> title;
 
     /**

@@ -55,7 +55,7 @@ public class EmailRoutingSettings extends com.pulumi.resources.CustomResource {
      * The date and time the settings have been created.
      * 
      */
-    @Export(name="created", type=String.class, parameters={})
+    @Export(name="created", refs={String.class}, tree="[0]")
     private Output<String> created;
 
     /**
@@ -69,7 +69,7 @@ public class EmailRoutingSettings extends com.pulumi.resources.CustomResource {
      * State of the zone settings for Email Routing. **Modifying this attribute will force creation of a new resource.**
      * 
      */
-    @Export(name="enabled", type=Boolean.class, parameters={})
+    @Export(name="enabled", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> enabled;
 
     /**
@@ -83,7 +83,7 @@ public class EmailRoutingSettings extends com.pulumi.resources.CustomResource {
      * The date and time the settings have been modified.
      * 
      */
-    @Export(name="modified", type=String.class, parameters={})
+    @Export(name="modified", refs={String.class}, tree="[0]")
     private Output<String> modified;
 
     /**
@@ -97,7 +97,7 @@ public class EmailRoutingSettings extends com.pulumi.resources.CustomResource {
      * Domain of your zone.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -111,7 +111,7 @@ public class EmailRoutingSettings extends com.pulumi.resources.CustomResource {
      * Flag to check if the user skipped the configuration wizard.
      * 
      */
-    @Export(name="skipWizard", type=Boolean.class, parameters={})
+    @Export(name="skipWizard", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> skipWizard;
 
     /**
@@ -125,7 +125,7 @@ public class EmailRoutingSettings extends com.pulumi.resources.CustomResource {
      * Show the state of your account, and the type or configuration error.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
@@ -139,7 +139,7 @@ public class EmailRoutingSettings extends com.pulumi.resources.CustomResource {
      * Email Routing settings identifier.
      * 
      */
-    @Export(name="tag", type=String.class, parameters={})
+    @Export(name="tag", refs={String.class}, tree="[0]")
     private Output<String> tag;
 
     /**
@@ -153,7 +153,7 @@ public class EmailRoutingSettings extends com.pulumi.resources.CustomResource {
      * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
      * 
      */
-    @Export(name="zoneId", type=String.class, parameters={})
+    @Export(name="zoneId", refs={String.class}, tree="[0]")
     private Output<String> zoneId;
 
     /**

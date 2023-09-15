@@ -109,7 +109,7 @@ public class AccessPolicy extends com.pulumi.resources.CustomResource {
      * The account identifier to target for the resource. Conflicts with `zone_id`.
      * 
      */
-    @Export(name="accountId", type=String.class, parameters={})
+    @Export(name="accountId", refs={String.class}, tree="[0]")
     private Output<String> accountId;
 
     /**
@@ -123,7 +123,7 @@ public class AccessPolicy extends com.pulumi.resources.CustomResource {
      * The ID of the application the policy is associated with.
      * 
      */
-    @Export(name="applicationId", type=String.class, parameters={})
+    @Export(name="applicationId", refs={String.class}, tree="[0]")
     private Output<String> applicationId;
 
     /**
@@ -133,13 +133,13 @@ public class AccessPolicy extends com.pulumi.resources.CustomResource {
     public Output<String> applicationId() {
         return this.applicationId;
     }
-    @Export(name="approvalGroups", type=List.class, parameters={AccessPolicyApprovalGroup.class})
+    @Export(name="approvalGroups", refs={List.class,AccessPolicyApprovalGroup.class}, tree="[0,1]")
     private Output</* @Nullable */ List<AccessPolicyApprovalGroup>> approvalGroups;
 
     public Output<Optional<List<AccessPolicyApprovalGroup>>> approvalGroups() {
         return Codegen.optional(this.approvalGroups);
     }
-    @Export(name="approvalRequired", type=Boolean.class, parameters={})
+    @Export(name="approvalRequired", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> approvalRequired;
 
     public Output<Optional<Boolean>> approvalRequired() {
@@ -149,7 +149,7 @@ public class AccessPolicy extends com.pulumi.resources.CustomResource {
      * Defines the action Access will take if the policy matches the user. Available values: `allow`, `deny`, `non_identity`, `bypass`.
      * 
      */
-    @Export(name="decision", type=String.class, parameters={})
+    @Export(name="decision", refs={String.class}, tree="[0]")
     private Output<String> decision;
 
     /**
@@ -163,7 +163,7 @@ public class AccessPolicy extends com.pulumi.resources.CustomResource {
      * A series of access conditions, see Access Groups.
      * 
      */
-    @Export(name="excludes", type=List.class, parameters={AccessPolicyExclude.class})
+    @Export(name="excludes", refs={List.class,AccessPolicyExclude.class}, tree="[0,1]")
     private Output</* @Nullable */ List<AccessPolicyExclude>> excludes;
 
     /**
@@ -177,7 +177,7 @@ public class AccessPolicy extends com.pulumi.resources.CustomResource {
      * A series of access conditions, see Access Groups.
      * 
      */
-    @Export(name="includes", type=List.class, parameters={AccessPolicyInclude.class})
+    @Export(name="includes", refs={List.class,AccessPolicyInclude.class}, tree="[0,1]")
     private Output<List<AccessPolicyInclude>> includes;
 
     /**
@@ -191,7 +191,7 @@ public class AccessPolicy extends com.pulumi.resources.CustomResource {
      * Require this application to be served in an isolated browser for users matching this policy.
      * 
      */
-    @Export(name="isolationRequired", type=Boolean.class, parameters={})
+    @Export(name="isolationRequired", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> isolationRequired;
 
     /**
@@ -205,7 +205,7 @@ public class AccessPolicy extends com.pulumi.resources.CustomResource {
      * Friendly name of the Access Policy.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -219,7 +219,7 @@ public class AccessPolicy extends com.pulumi.resources.CustomResource {
      * The unique precedence for policies on a single application.
      * 
      */
-    @Export(name="precedence", type=Integer.class, parameters={})
+    @Export(name="precedence", refs={Integer.class}, tree="[0]")
     private Output<Integer> precedence;
 
     /**
@@ -233,7 +233,7 @@ public class AccessPolicy extends com.pulumi.resources.CustomResource {
      * The prompt to display to the user for a justification for accessing the resource. Required when using `purpose_justification_required`.
      * 
      */
-    @Export(name="purposeJustificationPrompt", type=String.class, parameters={})
+    @Export(name="purposeJustificationPrompt", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> purposeJustificationPrompt;
 
     /**
@@ -247,7 +247,7 @@ public class AccessPolicy extends com.pulumi.resources.CustomResource {
      * Whether to prompt the user for a justification for accessing the resource.
      * 
      */
-    @Export(name="purposeJustificationRequired", type=Boolean.class, parameters={})
+    @Export(name="purposeJustificationRequired", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> purposeJustificationRequired;
 
     /**
@@ -261,7 +261,7 @@ public class AccessPolicy extends com.pulumi.resources.CustomResource {
      * A series of access conditions, see Access Groups.
      * 
      */
-    @Export(name="requires", type=List.class, parameters={AccessPolicyRequire.class})
+    @Export(name="requires", refs={List.class,AccessPolicyRequire.class}, tree="[0,1]")
     private Output</* @Nullable */ List<AccessPolicyRequire>> requires;
 
     /**
@@ -275,7 +275,7 @@ public class AccessPolicy extends com.pulumi.resources.CustomResource {
      * The zone identifier to target for the resource. Conflicts with `account_id`.
      * 
      */
-    @Export(name="zoneId", type=String.class, parameters={})
+    @Export(name="zoneId", refs={String.class}, tree="[0]")
     private Output<String> zoneId;
 
     /**

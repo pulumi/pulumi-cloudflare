@@ -77,7 +77,7 @@ public class WebAnalyticsRule extends com.pulumi.resources.CustomResource {
      * The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
      * 
      */
-    @Export(name="accountId", type=String.class, parameters={})
+    @Export(name="accountId", refs={String.class}, tree="[0]")
     private Output<String> accountId;
 
     /**
@@ -91,7 +91,7 @@ public class WebAnalyticsRule extends com.pulumi.resources.CustomResource {
      * The host to apply the rule to.
      * 
      */
-    @Export(name="host", type=String.class, parameters={})
+    @Export(name="host", refs={String.class}, tree="[0]")
     private Output<String> host;
 
     /**
@@ -105,7 +105,7 @@ public class WebAnalyticsRule extends com.pulumi.resources.CustomResource {
      * Whether the rule includes or excludes the matched traffic from being measured in Web Analytics.
      * 
      */
-    @Export(name="inclusive", type=Boolean.class, parameters={})
+    @Export(name="inclusive", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> inclusive;
 
     /**
@@ -119,7 +119,7 @@ public class WebAnalyticsRule extends com.pulumi.resources.CustomResource {
      * Whether the rule is paused or not.
      * 
      */
-    @Export(name="isPaused", type=Boolean.class, parameters={})
+    @Export(name="isPaused", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> isPaused;
 
     /**
@@ -133,7 +133,7 @@ public class WebAnalyticsRule extends com.pulumi.resources.CustomResource {
      * A list of paths to apply the rule to.
      * 
      */
-    @Export(name="paths", type=List.class, parameters={String.class})
+    @Export(name="paths", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> paths;
 
     /**
@@ -147,7 +147,7 @@ public class WebAnalyticsRule extends com.pulumi.resources.CustomResource {
      * The Web Analytics ruleset id. **Modifying this attribute will force creation of a new resource.**
      * 
      */
-    @Export(name="rulesetId", type=String.class, parameters={})
+    @Export(name="rulesetId", refs={String.class}, tree="[0]")
     private Output<String> rulesetId;
 
     /**

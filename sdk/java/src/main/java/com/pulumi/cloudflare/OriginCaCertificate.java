@@ -80,7 +80,7 @@ public class OriginCaCertificate extends com.pulumi.resources.CustomResource {
      * The Origin CA certificate.
      * 
      */
-    @Export(name="certificate", type=String.class, parameters={})
+    @Export(name="certificate", refs={String.class}, tree="[0]")
     private Output<String> certificate;
 
     /**
@@ -94,7 +94,7 @@ public class OriginCaCertificate extends com.pulumi.resources.CustomResource {
      * The Certificate Signing Request. Must be newline-encoded. **Modifying this attribute will force creation of a new resource.**
      * 
      */
-    @Export(name="csr", type=String.class, parameters={})
+    @Export(name="csr", refs={String.class}, tree="[0]")
     private Output<String> csr;
 
     /**
@@ -108,7 +108,7 @@ public class OriginCaCertificate extends com.pulumi.resources.CustomResource {
      * The datetime when the certificate will expire.
      * 
      */
-    @Export(name="expiresOn", type=String.class, parameters={})
+    @Export(name="expiresOn", refs={String.class}, tree="[0]")
     private Output<String> expiresOn;
 
     /**
@@ -122,7 +122,7 @@ public class OriginCaCertificate extends com.pulumi.resources.CustomResource {
      * A list of hostnames or wildcard names bound to the certificate. **Modifying this attribute will force creation of a new resource.**
      * 
      */
-    @Export(name="hostnames", type=List.class, parameters={String.class})
+    @Export(name="hostnames", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> hostnames;
 
     /**
@@ -136,7 +136,7 @@ public class OriginCaCertificate extends com.pulumi.resources.CustomResource {
      * Number of days prior to the expiry to trigger a renewal of the certificate if a Terraform operation is run.
      * 
      */
-    @Export(name="minDaysForRenewal", type=Integer.class, parameters={})
+    @Export(name="minDaysForRenewal", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> minDaysForRenewal;
 
     /**
@@ -150,7 +150,7 @@ public class OriginCaCertificate extends com.pulumi.resources.CustomResource {
      * The signature type desired on the certificate. Available values: `origin-rsa`, `origin-ecc`, `keyless-certificate`. **Modifying this attribute will force creation of a new resource.**
      * 
      */
-    @Export(name="requestType", type=String.class, parameters={})
+    @Export(name="requestType", refs={String.class}, tree="[0]")
     private Output<String> requestType;
 
     /**
@@ -164,7 +164,7 @@ public class OriginCaCertificate extends com.pulumi.resources.CustomResource {
      * The number of days for which the certificate should be valid. Available values: `7`, `30`, `90`, `365`, `730`, `1095`, `5475`. **Modifying this attribute will force creation of a new resource.**
      * 
      */
-    @Export(name="requestedValidity", type=Integer.class, parameters={})
+    @Export(name="requestedValidity", refs={Integer.class}, tree="[0]")
     private Output<Integer> requestedValidity;
 
     /**

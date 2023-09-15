@@ -67,7 +67,7 @@ public class AccessServiceToken extends com.pulumi.resources.CustomResource {
      * The account identifier to target for the resource. Conflicts with `zone_id`.
      * 
      */
-    @Export(name="accountId", type=String.class, parameters={})
+    @Export(name="accountId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> accountId;
 
     /**
@@ -81,7 +81,7 @@ public class AccessServiceToken extends com.pulumi.resources.CustomResource {
      * UUID client ID associated with the Service Token. **Modifying this attribute will force creation of a new resource.**
      * 
      */
-    @Export(name="clientId", type=String.class, parameters={})
+    @Export(name="clientId", refs={String.class}, tree="[0]")
     private Output<String> clientId;
 
     /**
@@ -95,7 +95,7 @@ public class AccessServiceToken extends com.pulumi.resources.CustomResource {
      * A secret for interacting with Access protocols. **Modifying this attribute will force creation of a new resource.**
      * 
      */
-    @Export(name="clientSecret", type=String.class, parameters={})
+    @Export(name="clientSecret", refs={String.class}, tree="[0]")
     private Output<String> clientSecret;
 
     /**
@@ -109,7 +109,7 @@ public class AccessServiceToken extends com.pulumi.resources.CustomResource {
      * Length of time the service token is valid for. Available values: `8760h`, `17520h`, `43800h`, `87600h`, `forever`.
      * 
      */
-    @Export(name="duration", type=String.class, parameters={})
+    @Export(name="duration", refs={String.class}, tree="[0]")
     private Output<String> duration;
 
     /**
@@ -123,7 +123,7 @@ public class AccessServiceToken extends com.pulumi.resources.CustomResource {
      * Date when the token expires.
      * 
      */
-    @Export(name="expiresAt", type=String.class, parameters={})
+    @Export(name="expiresAt", refs={String.class}, tree="[0]")
     private Output<String> expiresAt;
 
     /**
@@ -137,7 +137,7 @@ public class AccessServiceToken extends com.pulumi.resources.CustomResource {
      * Refresh the token if terraform is run within the specified amount of days before expiration
      * 
      */
-    @Export(name="minDaysForRenewal", type=Integer.class, parameters={})
+    @Export(name="minDaysForRenewal", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> minDaysForRenewal;
 
     /**
@@ -151,7 +151,7 @@ public class AccessServiceToken extends com.pulumi.resources.CustomResource {
      * Friendly name of the token&#39;s intent.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -165,7 +165,7 @@ public class AccessServiceToken extends com.pulumi.resources.CustomResource {
      * The zone identifier to target for the resource. Conflicts with `account_id`.
      * 
      */
-    @Export(name="zoneId", type=String.class, parameters={})
+    @Export(name="zoneId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> zoneId;
 
     /**

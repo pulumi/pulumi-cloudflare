@@ -88,7 +88,7 @@ public class Record extends com.pulumi.resources.CustomResource {
      * from overwriting this record. **This configuration is not recommended for most environments**
      * 
      */
-    @Export(name="allowOverwrite", type=Boolean.class, parameters={})
+    @Export(name="allowOverwrite", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> allowOverwrite;
 
     /**
@@ -104,7 +104,7 @@ public class Record extends com.pulumi.resources.CustomResource {
      * Comments or notes about the DNS record. This field has no effect on DNS responses.
      * 
      */
-    @Export(name="comment", type=String.class, parameters={})
+    @Export(name="comment", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> comment;
 
     /**
@@ -118,7 +118,7 @@ public class Record extends com.pulumi.resources.CustomResource {
      * The RFC3339 timestamp of when the record was created.
      * 
      */
-    @Export(name="createdOn", type=String.class, parameters={})
+    @Export(name="createdOn", refs={String.class}, tree="[0]")
     private Output<String> createdOn;
 
     /**
@@ -132,7 +132,7 @@ public class Record extends com.pulumi.resources.CustomResource {
      * Map of attributes that constitute the record value. Conflicts with `value`.
      * 
      */
-    @Export(name="data", type=RecordData.class, parameters={})
+    @Export(name="data", refs={RecordData.class}, tree="[0]")
     private Output</* @Nullable */ RecordData> data;
 
     /**
@@ -146,7 +146,7 @@ public class Record extends com.pulumi.resources.CustomResource {
      * The FQDN of the record.
      * 
      */
-    @Export(name="hostname", type=String.class, parameters={})
+    @Export(name="hostname", refs={String.class}, tree="[0]")
     private Output<String> hostname;
 
     /**
@@ -160,7 +160,7 @@ public class Record extends com.pulumi.resources.CustomResource {
      * A key-value map of string metadata Cloudflare associates with the record.
      * 
      */
-    @Export(name="metadata", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="metadata", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output<Map<String,Object>> metadata;
 
     /**
@@ -174,7 +174,7 @@ public class Record extends com.pulumi.resources.CustomResource {
      * The RFC3339 timestamp of when the record was last modified.
      * 
      */
-    @Export(name="modifiedOn", type=String.class, parameters={})
+    @Export(name="modifiedOn", refs={String.class}, tree="[0]")
     private Output<String> modifiedOn;
 
     /**
@@ -188,7 +188,7 @@ public class Record extends com.pulumi.resources.CustomResource {
      * The name of the record. **Modifying this attribute will force creation of a new resource.**
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -202,7 +202,7 @@ public class Record extends com.pulumi.resources.CustomResource {
      * The priority of the record.
      * 
      */
-    @Export(name="priority", type=Integer.class, parameters={})
+    @Export(name="priority", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> priority;
 
     /**
@@ -216,7 +216,7 @@ public class Record extends com.pulumi.resources.CustomResource {
      * Shows whether this record can be proxied.
      * 
      */
-    @Export(name="proxiable", type=Boolean.class, parameters={})
+    @Export(name="proxiable", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> proxiable;
 
     /**
@@ -230,7 +230,7 @@ public class Record extends com.pulumi.resources.CustomResource {
      * Whether the record gets Cloudflare&#39;s origin protection.
      * 
      */
-    @Export(name="proxied", type=Boolean.class, parameters={})
+    @Export(name="proxied", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> proxied;
 
     /**
@@ -244,7 +244,7 @@ public class Record extends com.pulumi.resources.CustomResource {
      * Custom tags for the DNS record.
      * 
      */
-    @Export(name="tags", type=List.class, parameters={String.class})
+    @Export(name="tags", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> tags;
 
     /**
@@ -258,7 +258,7 @@ public class Record extends com.pulumi.resources.CustomResource {
      * The TTL of the record.
      * 
      */
-    @Export(name="ttl", type=Integer.class, parameters={})
+    @Export(name="ttl", refs={Integer.class}, tree="[0]")
     private Output<Integer> ttl;
 
     /**
@@ -272,7 +272,7 @@ public class Record extends com.pulumi.resources.CustomResource {
      * The type of the record. Available values: `A`, `AAAA`, `CAA`, `CNAME`, `TXT`, `SRV`, `LOC`, `MX`, `NS`, `SPF`, `CERT`, `DNSKEY`, `DS`, `NAPTR`, `SMIMEA`, `SSHFP`, `TLSA`, `URI`, `PTR`, `HTTPS`, `SVCB`. **Modifying this attribute will force creation of a new resource.**
      * 
      */
-    @Export(name="type", type=String.class, parameters={})
+    @Export(name="type", refs={String.class}, tree="[0]")
     private Output<String> type;
 
     /**
@@ -286,7 +286,7 @@ public class Record extends com.pulumi.resources.CustomResource {
      * The value of the record. Conflicts with `data`.
      * 
      */
-    @Export(name="value", type=String.class, parameters={})
+    @Export(name="value", refs={String.class}, tree="[0]")
     private Output<String> value;
 
     /**
@@ -300,7 +300,7 @@ public class Record extends com.pulumi.resources.CustomResource {
      * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
      * 
      */
-    @Export(name="zoneId", type=String.class, parameters={})
+    @Export(name="zoneId", refs={String.class}, tree="[0]")
     private Output<String> zoneId;
 
     /**

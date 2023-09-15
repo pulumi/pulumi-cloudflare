@@ -63,7 +63,7 @@ public class WorkerDomain extends com.pulumi.resources.CustomResource {
      * The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
      * 
      */
-    @Export(name="accountId", type=String.class, parameters={})
+    @Export(name="accountId", refs={String.class}, tree="[0]")
     private Output<String> accountId;
 
     /**
@@ -77,7 +77,7 @@ public class WorkerDomain extends com.pulumi.resources.CustomResource {
      * The name of the Worker environment. Defaults to `production`.
      * 
      */
-    @Export(name="environment", type=String.class, parameters={})
+    @Export(name="environment", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> environment;
 
     /**
@@ -91,7 +91,7 @@ public class WorkerDomain extends com.pulumi.resources.CustomResource {
      * Hostname of the Worker Domain.
      * 
      */
-    @Export(name="hostname", type=String.class, parameters={})
+    @Export(name="hostname", refs={String.class}, tree="[0]")
     private Output<String> hostname;
 
     /**
@@ -105,7 +105,7 @@ public class WorkerDomain extends com.pulumi.resources.CustomResource {
      * Name of worker script to attach the domain to.
      * 
      */
-    @Export(name="service", type=String.class, parameters={})
+    @Export(name="service", refs={String.class}, tree="[0]")
     private Output<String> service;
 
     /**
@@ -119,7 +119,7 @@ public class WorkerDomain extends com.pulumi.resources.CustomResource {
      * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
      * 
      */
-    @Export(name="zoneId", type=String.class, parameters={})
+    @Export(name="zoneId", refs={String.class}, tree="[0]")
     private Output<String> zoneId;
 
     /**

@@ -69,7 +69,7 @@ public class EmailRoutingCatchAll extends com.pulumi.resources.CustomResource {
      * List actions patterns.
      * 
      */
-    @Export(name="actions", type=List.class, parameters={EmailRoutingCatchAllAction.class})
+    @Export(name="actions", refs={List.class,EmailRoutingCatchAllAction.class}, tree="[0,1]")
     private Output<List<EmailRoutingCatchAllAction>> actions;
 
     /**
@@ -83,7 +83,7 @@ public class EmailRoutingCatchAll extends com.pulumi.resources.CustomResource {
      * Routing rule status.
      * 
      */
-    @Export(name="enabled", type=Boolean.class, parameters={})
+    @Export(name="enabled", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> enabled;
 
     /**
@@ -97,7 +97,7 @@ public class EmailRoutingCatchAll extends com.pulumi.resources.CustomResource {
      * Matching patterns to forward to your actions.
      * 
      */
-    @Export(name="matchers", type=List.class, parameters={EmailRoutingCatchAllMatcher.class})
+    @Export(name="matchers", refs={List.class,EmailRoutingCatchAllMatcher.class}, tree="[0,1]")
     private Output<List<EmailRoutingCatchAllMatcher>> matchers;
 
     /**
@@ -111,7 +111,7 @@ public class EmailRoutingCatchAll extends com.pulumi.resources.CustomResource {
      * Routing rule name.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -125,7 +125,7 @@ public class EmailRoutingCatchAll extends com.pulumi.resources.CustomResource {
      * Routing rule identifier.
      * 
      */
-    @Export(name="tag", type=String.class, parameters={})
+    @Export(name="tag", refs={String.class}, tree="[0]")
     private Output<String> tag;
 
     /**
@@ -139,7 +139,7 @@ public class EmailRoutingCatchAll extends com.pulumi.resources.CustomResource {
      * The zone identifier to target for the resource.
      * 
      */
-    @Export(name="zoneId", type=String.class, parameters={})
+    @Export(name="zoneId", refs={String.class}, tree="[0]")
     private Output<String> zoneId;
 
     /**

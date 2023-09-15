@@ -63,7 +63,7 @@ public class Argo extends com.pulumi.resources.CustomResource {
      * Whether smart routing is enabled. Available values: `on`, `off`.
      * 
      */
-    @Export(name="smartRouting", type=String.class, parameters={})
+    @Export(name="smartRouting", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> smartRouting;
 
     /**
@@ -77,7 +77,7 @@ public class Argo extends com.pulumi.resources.CustomResource {
      * Whether tiered caching is enabled. Available values: `on`, `off`.
      * 
      */
-    @Export(name="tieredCaching", type=String.class, parameters={})
+    @Export(name="tieredCaching", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> tieredCaching;
 
     /**
@@ -91,7 +91,7 @@ public class Argo extends com.pulumi.resources.CustomResource {
      * The zone identifier to target for the resource.
      * 
      */
-    @Export(name="zoneId", type=String.class, parameters={})
+    @Export(name="zoneId", refs={String.class}, tree="[0]")
     private Output<String> zoneId;
 
     /**

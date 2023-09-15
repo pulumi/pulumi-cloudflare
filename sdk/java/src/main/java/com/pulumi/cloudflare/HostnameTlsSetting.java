@@ -58,7 +58,7 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="cloudflare:index/hostnameTlsSetting:HostnameTlsSetting")
 public class HostnameTlsSetting extends com.pulumi.resources.CustomResource {
-    @Export(name="createdAt", type=String.class, parameters={})
+    @Export(name="createdAt", refs={String.class}, tree="[0]")
     private Output<String> createdAt;
 
     public Output<String> createdAt() {
@@ -68,7 +68,7 @@ public class HostnameTlsSetting extends com.pulumi.resources.CustomResource {
      * Hostname that belongs to this zone name. **Modifying this attribute will force creation of a new resource.**
      * 
      */
-    @Export(name="hostname", type=String.class, parameters={})
+    @Export(name="hostname", refs={String.class}, tree="[0]")
     private Output<String> hostname;
 
     /**
@@ -82,7 +82,7 @@ public class HostnameTlsSetting extends com.pulumi.resources.CustomResource {
      * TLS setting name. **Modifying this attribute will force creation of a new resource.**
      * 
      */
-    @Export(name="setting", type=String.class, parameters={})
+    @Export(name="setting", refs={String.class}, tree="[0]")
     private Output<String> setting;
 
     /**
@@ -92,7 +92,7 @@ public class HostnameTlsSetting extends com.pulumi.resources.CustomResource {
     public Output<String> setting() {
         return this.setting;
     }
-    @Export(name="updatedAt", type=String.class, parameters={})
+    @Export(name="updatedAt", refs={String.class}, tree="[0]")
     private Output<String> updatedAt;
 
     public Output<String> updatedAt() {
@@ -102,7 +102,7 @@ public class HostnameTlsSetting extends com.pulumi.resources.CustomResource {
      * TLS setting value.
      * 
      */
-    @Export(name="value", type=String.class, parameters={})
+    @Export(name="value", refs={String.class}, tree="[0]")
     private Output<String> value;
 
     /**
@@ -116,7 +116,7 @@ public class HostnameTlsSetting extends com.pulumi.resources.CustomResource {
      * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
      * 
      */
-    @Export(name="zoneId", type=String.class, parameters={})
+    @Export(name="zoneId", refs={String.class}, tree="[0]")
     private Output<String> zoneId;
 
     /**
