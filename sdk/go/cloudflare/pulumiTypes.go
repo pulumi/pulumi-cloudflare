@@ -4184,6 +4184,7 @@ type AccessIdentityProviderConfig struct {
 	AppsDomain               *string  `pulumi:"appsDomain"`
 	Attributes               []string `pulumi:"attributes"`
 	AuthUrl                  *string  `pulumi:"authUrl"`
+	AuthorizationServerId    *string  `pulumi:"authorizationServerId"`
 	CentrifyAccount          *string  `pulumi:"centrifyAccount"`
 	CentrifyAppId            *string  `pulumi:"centrifyAppId"`
 	CertsUrl                 *string  `pulumi:"certsUrl"`
@@ -4193,10 +4194,12 @@ type AccessIdentityProviderConfig struct {
 	ConditionalAccessEnabled *bool    `pulumi:"conditionalAccessEnabled"`
 	DirectoryId              *string  `pulumi:"directoryId"`
 	EmailAttributeName       *string  `pulumi:"emailAttributeName"`
+	EmailClaimName           *string  `pulumi:"emailClaimName"`
 	IdpPublicCert            *string  `pulumi:"idpPublicCert"`
 	IssuerUrl                *string  `pulumi:"issuerUrl"`
 	OktaAccount              *string  `pulumi:"oktaAccount"`
 	OneloginAccount          *string  `pulumi:"oneloginAccount"`
+	PingEnvId                *string  `pulumi:"pingEnvId"`
 	PkceEnabled              *bool    `pulumi:"pkceEnabled"`
 	RedirectUrl              *string  `pulumi:"redirectUrl"`
 	Scopes                   []string `pulumi:"scopes"`
@@ -4222,6 +4225,7 @@ type AccessIdentityProviderConfigArgs struct {
 	AppsDomain               pulumi.StringPtrInput   `pulumi:"appsDomain"`
 	Attributes               pulumi.StringArrayInput `pulumi:"attributes"`
 	AuthUrl                  pulumi.StringPtrInput   `pulumi:"authUrl"`
+	AuthorizationServerId    pulumi.StringPtrInput   `pulumi:"authorizationServerId"`
 	CentrifyAccount          pulumi.StringPtrInput   `pulumi:"centrifyAccount"`
 	CentrifyAppId            pulumi.StringPtrInput   `pulumi:"centrifyAppId"`
 	CertsUrl                 pulumi.StringPtrInput   `pulumi:"certsUrl"`
@@ -4231,10 +4235,12 @@ type AccessIdentityProviderConfigArgs struct {
 	ConditionalAccessEnabled pulumi.BoolPtrInput     `pulumi:"conditionalAccessEnabled"`
 	DirectoryId              pulumi.StringPtrInput   `pulumi:"directoryId"`
 	EmailAttributeName       pulumi.StringPtrInput   `pulumi:"emailAttributeName"`
+	EmailClaimName           pulumi.StringPtrInput   `pulumi:"emailClaimName"`
 	IdpPublicCert            pulumi.StringPtrInput   `pulumi:"idpPublicCert"`
 	IssuerUrl                pulumi.StringPtrInput   `pulumi:"issuerUrl"`
 	OktaAccount              pulumi.StringPtrInput   `pulumi:"oktaAccount"`
 	OneloginAccount          pulumi.StringPtrInput   `pulumi:"oneloginAccount"`
+	PingEnvId                pulumi.StringPtrInput   `pulumi:"pingEnvId"`
 	PkceEnabled              pulumi.BoolPtrInput     `pulumi:"pkceEnabled"`
 	RedirectUrl              pulumi.StringPtrInput   `pulumi:"redirectUrl"`
 	Scopes                   pulumi.StringArrayInput `pulumi:"scopes"`
@@ -4329,6 +4335,10 @@ func (o AccessIdentityProviderConfigOutput) AuthUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AccessIdentityProviderConfig) *string { return v.AuthUrl }).(pulumi.StringPtrOutput)
 }
 
+func (o AccessIdentityProviderConfigOutput) AuthorizationServerId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AccessIdentityProviderConfig) *string { return v.AuthorizationServerId }).(pulumi.StringPtrOutput)
+}
+
 func (o AccessIdentityProviderConfigOutput) CentrifyAccount() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AccessIdentityProviderConfig) *string { return v.CentrifyAccount }).(pulumi.StringPtrOutput)
 }
@@ -4365,6 +4375,10 @@ func (o AccessIdentityProviderConfigOutput) EmailAttributeName() pulumi.StringPt
 	return o.ApplyT(func(v AccessIdentityProviderConfig) *string { return v.EmailAttributeName }).(pulumi.StringPtrOutput)
 }
 
+func (o AccessIdentityProviderConfigOutput) EmailClaimName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AccessIdentityProviderConfig) *string { return v.EmailClaimName }).(pulumi.StringPtrOutput)
+}
+
 func (o AccessIdentityProviderConfigOutput) IdpPublicCert() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AccessIdentityProviderConfig) *string { return v.IdpPublicCert }).(pulumi.StringPtrOutput)
 }
@@ -4379,6 +4393,10 @@ func (o AccessIdentityProviderConfigOutput) OktaAccount() pulumi.StringPtrOutput
 
 func (o AccessIdentityProviderConfigOutput) OneloginAccount() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AccessIdentityProviderConfig) *string { return v.OneloginAccount }).(pulumi.StringPtrOutput)
+}
+
+func (o AccessIdentityProviderConfigOutput) PingEnvId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AccessIdentityProviderConfig) *string { return v.PingEnvId }).(pulumi.StringPtrOutput)
 }
 
 func (o AccessIdentityProviderConfigOutput) PkceEnabled() pulumi.BoolPtrOutput {
@@ -25248,11 +25266,13 @@ type RulesetRuleActionParameters struct {
 	Mirage                  *bool                                   `pulumi:"mirage"`
 	OpportunisticEncryption *bool                                   `pulumi:"opportunisticEncryption"`
 	Origin                  *RulesetRuleActionParametersOrigin      `pulumi:"origin"`
+	OriginCacheControl      *bool                                   `pulumi:"originCacheControl"`
 	OriginErrorPagePassthru *bool                                   `pulumi:"originErrorPagePassthru"`
 	Overrides               *RulesetRuleActionParametersOverrides   `pulumi:"overrides"`
 	Phases                  []string                                `pulumi:"phases"`
 	Polish                  *string                                 `pulumi:"polish"`
 	Products                []string                                `pulumi:"products"`
+	ReadTimeout             *int                                    `pulumi:"readTimeout"`
 	RequestFields           []string                                `pulumi:"requestFields"`
 	RespectStrongEtags      *bool                                   `pulumi:"respectStrongEtags"`
 	ResponseFields          []string                                `pulumi:"responseFields"`
@@ -25312,11 +25332,13 @@ type RulesetRuleActionParametersArgs struct {
 	Mirage                  pulumi.BoolPtrInput                            `pulumi:"mirage"`
 	OpportunisticEncryption pulumi.BoolPtrInput                            `pulumi:"opportunisticEncryption"`
 	Origin                  RulesetRuleActionParametersOriginPtrInput      `pulumi:"origin"`
+	OriginCacheControl      pulumi.BoolPtrInput                            `pulumi:"originCacheControl"`
 	OriginErrorPagePassthru pulumi.BoolPtrInput                            `pulumi:"originErrorPagePassthru"`
 	Overrides               RulesetRuleActionParametersOverridesPtrInput   `pulumi:"overrides"`
 	Phases                  pulumi.StringArrayInput                        `pulumi:"phases"`
 	Polish                  pulumi.StringPtrInput                          `pulumi:"polish"`
 	Products                pulumi.StringArrayInput                        `pulumi:"products"`
+	ReadTimeout             pulumi.IntPtrInput                             `pulumi:"readTimeout"`
 	RequestFields           pulumi.StringArrayInput                        `pulumi:"requestFields"`
 	RespectStrongEtags      pulumi.BoolPtrInput                            `pulumi:"respectStrongEtags"`
 	ResponseFields          pulumi.StringArrayInput                        `pulumi:"responseFields"`
@@ -25537,6 +25559,10 @@ func (o RulesetRuleActionParametersOutput) Origin() RulesetRuleActionParametersO
 	return o.ApplyT(func(v RulesetRuleActionParameters) *RulesetRuleActionParametersOrigin { return v.Origin }).(RulesetRuleActionParametersOriginPtrOutput)
 }
 
+func (o RulesetRuleActionParametersOutput) OriginCacheControl() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v RulesetRuleActionParameters) *bool { return v.OriginCacheControl }).(pulumi.BoolPtrOutput)
+}
+
 func (o RulesetRuleActionParametersOutput) OriginErrorPagePassthru() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v RulesetRuleActionParameters) *bool { return v.OriginErrorPagePassthru }).(pulumi.BoolPtrOutput)
 }
@@ -25555,6 +25581,10 @@ func (o RulesetRuleActionParametersOutput) Polish() pulumi.StringPtrOutput {
 
 func (o RulesetRuleActionParametersOutput) Products() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v RulesetRuleActionParameters) []string { return v.Products }).(pulumi.StringArrayOutput)
+}
+
+func (o RulesetRuleActionParametersOutput) ReadTimeout() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v RulesetRuleActionParameters) *int { return v.ReadTimeout }).(pulumi.IntPtrOutput)
 }
 
 func (o RulesetRuleActionParametersOutput) RequestFields() pulumi.StringArrayOutput {
@@ -25891,6 +25921,15 @@ func (o RulesetRuleActionParametersPtrOutput) Origin() RulesetRuleActionParamete
 	}).(RulesetRuleActionParametersOriginPtrOutput)
 }
 
+func (o RulesetRuleActionParametersPtrOutput) OriginCacheControl() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *RulesetRuleActionParameters) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.OriginCacheControl
+	}).(pulumi.BoolPtrOutput)
+}
+
 func (o RulesetRuleActionParametersPtrOutput) OriginErrorPagePassthru() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *RulesetRuleActionParameters) *bool {
 		if v == nil {
@@ -25934,6 +25973,15 @@ func (o RulesetRuleActionParametersPtrOutput) Products() pulumi.StringArrayOutpu
 		}
 		return v.Products
 	}).(pulumi.StringArrayOutput)
+}
+
+func (o RulesetRuleActionParametersPtrOutput) ReadTimeout() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *RulesetRuleActionParameters) *int {
+		if v == nil {
+			return nil
+		}
+		return v.ReadTimeout
+	}).(pulumi.IntPtrOutput)
 }
 
 func (o RulesetRuleActionParametersPtrOutput) RequestFields() pulumi.StringArrayOutput {
@@ -44185,11 +44233,13 @@ type GetRulesetsRulesetRuleActionParameters struct {
 	Mirage                  *bool                                              `pulumi:"mirage"`
 	OpportunisticEncryption *bool                                              `pulumi:"opportunisticEncryption"`
 	Origin                  *GetRulesetsRulesetRuleActionParametersOrigin      `pulumi:"origin"`
+	OriginCacheControl      *bool                                              `pulumi:"originCacheControl"`
 	OriginErrorPagePassthru *bool                                              `pulumi:"originErrorPagePassthru"`
 	Overrides               *GetRulesetsRulesetRuleActionParametersOverrides   `pulumi:"overrides"`
 	Phases                  []string                                           `pulumi:"phases"`
 	Polish                  *string                                            `pulumi:"polish"`
 	Products                []string                                           `pulumi:"products"`
+	ReadTimeout             *int                                               `pulumi:"readTimeout"`
 	RequestFields           []string                                           `pulumi:"requestFields"`
 	RespectStrongEtags      *bool                                              `pulumi:"respectStrongEtags"`
 	ResponseFields          []string                                           `pulumi:"responseFields"`
@@ -44247,11 +44297,13 @@ type GetRulesetsRulesetRuleActionParametersArgs struct {
 	Mirage                  pulumi.BoolPtrInput                                       `pulumi:"mirage"`
 	OpportunisticEncryption pulumi.BoolPtrInput                                       `pulumi:"opportunisticEncryption"`
 	Origin                  GetRulesetsRulesetRuleActionParametersOriginPtrInput      `pulumi:"origin"`
+	OriginCacheControl      pulumi.BoolPtrInput                                       `pulumi:"originCacheControl"`
 	OriginErrorPagePassthru pulumi.BoolPtrInput                                       `pulumi:"originErrorPagePassthru"`
 	Overrides               GetRulesetsRulesetRuleActionParametersOverridesPtrInput   `pulumi:"overrides"`
 	Phases                  pulumi.StringArrayInput                                   `pulumi:"phases"`
 	Polish                  pulumi.StringPtrInput                                     `pulumi:"polish"`
 	Products                pulumi.StringArrayInput                                   `pulumi:"products"`
+	ReadTimeout             pulumi.IntPtrInput                                        `pulumi:"readTimeout"`
 	RequestFields           pulumi.StringArrayInput                                   `pulumi:"requestFields"`
 	RespectStrongEtags      pulumi.BoolPtrInput                                       `pulumi:"respectStrongEtags"`
 	ResponseFields          pulumi.StringArrayInput                                   `pulumi:"responseFields"`
@@ -44485,6 +44537,10 @@ func (o GetRulesetsRulesetRuleActionParametersOutput) Origin() GetRulesetsRulese
 	}).(GetRulesetsRulesetRuleActionParametersOriginPtrOutput)
 }
 
+func (o GetRulesetsRulesetRuleActionParametersOutput) OriginCacheControl() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetRulesetsRulesetRuleActionParameters) *bool { return v.OriginCacheControl }).(pulumi.BoolPtrOutput)
+}
+
 func (o GetRulesetsRulesetRuleActionParametersOutput) OriginErrorPagePassthru() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetRulesetsRulesetRuleActionParameters) *bool { return v.OriginErrorPagePassthru }).(pulumi.BoolPtrOutput)
 }
@@ -44505,6 +44561,10 @@ func (o GetRulesetsRulesetRuleActionParametersOutput) Polish() pulumi.StringPtrO
 
 func (o GetRulesetsRulesetRuleActionParametersOutput) Products() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetRulesetsRulesetRuleActionParameters) []string { return v.Products }).(pulumi.StringArrayOutput)
+}
+
+func (o GetRulesetsRulesetRuleActionParametersOutput) ReadTimeout() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetRulesetsRulesetRuleActionParameters) *int { return v.ReadTimeout }).(pulumi.IntPtrOutput)
 }
 
 func (o GetRulesetsRulesetRuleActionParametersOutput) RequestFields() pulumi.StringArrayOutput {
@@ -44839,6 +44899,15 @@ func (o GetRulesetsRulesetRuleActionParametersPtrOutput) Origin() GetRulesetsRul
 	}).(GetRulesetsRulesetRuleActionParametersOriginPtrOutput)
 }
 
+func (o GetRulesetsRulesetRuleActionParametersPtrOutput) OriginCacheControl() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetRulesetsRulesetRuleActionParameters) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.OriginCacheControl
+	}).(pulumi.BoolPtrOutput)
+}
+
 func (o GetRulesetsRulesetRuleActionParametersPtrOutput) OriginErrorPagePassthru() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *GetRulesetsRulesetRuleActionParameters) *bool {
 		if v == nil {
@@ -44882,6 +44951,15 @@ func (o GetRulesetsRulesetRuleActionParametersPtrOutput) Products() pulumi.Strin
 		}
 		return v.Products
 	}).(pulumi.StringArrayOutput)
+}
+
+func (o GetRulesetsRulesetRuleActionParametersPtrOutput) ReadTimeout() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetRulesetsRulesetRuleActionParameters) *int {
+		if v == nil {
+			return nil
+		}
+		return v.ReadTimeout
+	}).(pulumi.IntPtrOutput)
 }
 
 func (o GetRulesetsRulesetRuleActionParametersPtrOutput) RequestFields() pulumi.StringArrayOutput {

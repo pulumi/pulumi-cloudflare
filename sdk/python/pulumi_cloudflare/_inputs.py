@@ -2099,6 +2099,7 @@ class AccessIdentityProviderConfigArgs:
                  apps_domain: Optional[pulumi.Input[str]] = None,
                  attributes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  auth_url: Optional[pulumi.Input[str]] = None,
+                 authorization_server_id: Optional[pulumi.Input[str]] = None,
                  centrify_account: Optional[pulumi.Input[str]] = None,
                  centrify_app_id: Optional[pulumi.Input[str]] = None,
                  certs_url: Optional[pulumi.Input[str]] = None,
@@ -2108,10 +2109,12 @@ class AccessIdentityProviderConfigArgs:
                  conditional_access_enabled: Optional[pulumi.Input[bool]] = None,
                  directory_id: Optional[pulumi.Input[str]] = None,
                  email_attribute_name: Optional[pulumi.Input[str]] = None,
+                 email_claim_name: Optional[pulumi.Input[str]] = None,
                  idp_public_cert: Optional[pulumi.Input[str]] = None,
                  issuer_url: Optional[pulumi.Input[str]] = None,
                  okta_account: Optional[pulumi.Input[str]] = None,
                  onelogin_account: Optional[pulumi.Input[str]] = None,
+                 ping_env_id: Optional[pulumi.Input[str]] = None,
                  pkce_enabled: Optional[pulumi.Input[bool]] = None,
                  redirect_url: Optional[pulumi.Input[str]] = None,
                  scopes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -2127,6 +2130,8 @@ class AccessIdentityProviderConfigArgs:
             pulumi.set(__self__, "attributes", attributes)
         if auth_url is not None:
             pulumi.set(__self__, "auth_url", auth_url)
+        if authorization_server_id is not None:
+            pulumi.set(__self__, "authorization_server_id", authorization_server_id)
         if centrify_account is not None:
             pulumi.set(__self__, "centrify_account", centrify_account)
         if centrify_app_id is not None:
@@ -2145,6 +2150,8 @@ class AccessIdentityProviderConfigArgs:
             pulumi.set(__self__, "directory_id", directory_id)
         if email_attribute_name is not None:
             pulumi.set(__self__, "email_attribute_name", email_attribute_name)
+        if email_claim_name is not None:
+            pulumi.set(__self__, "email_claim_name", email_claim_name)
         if idp_public_cert is not None:
             pulumi.set(__self__, "idp_public_cert", idp_public_cert)
         if issuer_url is not None:
@@ -2153,6 +2160,8 @@ class AccessIdentityProviderConfigArgs:
             pulumi.set(__self__, "okta_account", okta_account)
         if onelogin_account is not None:
             pulumi.set(__self__, "onelogin_account", onelogin_account)
+        if ping_env_id is not None:
+            pulumi.set(__self__, "ping_env_id", ping_env_id)
         if pkce_enabled is not None:
             pulumi.set(__self__, "pkce_enabled", pkce_enabled)
         if redirect_url is not None:
@@ -2203,6 +2212,15 @@ class AccessIdentityProviderConfigArgs:
     @auth_url.setter
     def auth_url(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "auth_url", value)
+
+    @property
+    @pulumi.getter(name="authorizationServerId")
+    def authorization_server_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "authorization_server_id")
+
+    @authorization_server_id.setter
+    def authorization_server_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "authorization_server_id", value)
 
     @property
     @pulumi.getter(name="centrifyAccount")
@@ -2286,6 +2304,15 @@ class AccessIdentityProviderConfigArgs:
         pulumi.set(self, "email_attribute_name", value)
 
     @property
+    @pulumi.getter(name="emailClaimName")
+    def email_claim_name(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "email_claim_name")
+
+    @email_claim_name.setter
+    def email_claim_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "email_claim_name", value)
+
+    @property
     @pulumi.getter(name="idpPublicCert")
     def idp_public_cert(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "idp_public_cert")
@@ -2320,6 +2347,15 @@ class AccessIdentityProviderConfigArgs:
     @onelogin_account.setter
     def onelogin_account(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "onelogin_account", value)
+
+    @property
+    @pulumi.getter(name="pingEnvId")
+    def ping_env_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "ping_env_id")
+
+    @ping_env_id.setter
+    def ping_env_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ping_env_id", value)
 
     @property
     @pulumi.getter(name="pkceEnabled")
@@ -10999,11 +11035,13 @@ class RulesetRuleActionParametersArgs:
                  mirage: Optional[pulumi.Input[bool]] = None,
                  opportunistic_encryption: Optional[pulumi.Input[bool]] = None,
                  origin: Optional[pulumi.Input['RulesetRuleActionParametersOriginArgs']] = None,
+                 origin_cache_control: Optional[pulumi.Input[bool]] = None,
                  origin_error_page_passthru: Optional[pulumi.Input[bool]] = None,
                  overrides: Optional[pulumi.Input['RulesetRuleActionParametersOverridesArgs']] = None,
                  phases: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  polish: Optional[pulumi.Input[str]] = None,
                  products: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 read_timeout: Optional[pulumi.Input[int]] = None,
                  request_fields: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  respect_strong_etags: Optional[pulumi.Input[bool]] = None,
                  response_fields: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -11077,6 +11115,8 @@ class RulesetRuleActionParametersArgs:
             pulumi.set(__self__, "opportunistic_encryption", opportunistic_encryption)
         if origin is not None:
             pulumi.set(__self__, "origin", origin)
+        if origin_cache_control is not None:
+            pulumi.set(__self__, "origin_cache_control", origin_cache_control)
         if origin_error_page_passthru is not None:
             pulumi.set(__self__, "origin_error_page_passthru", origin_error_page_passthru)
         if overrides is not None:
@@ -11087,6 +11127,8 @@ class RulesetRuleActionParametersArgs:
             pulumi.set(__self__, "polish", polish)
         if products is not None:
             pulumi.set(__self__, "products", products)
+        if read_timeout is not None:
+            pulumi.set(__self__, "read_timeout", read_timeout)
         if request_fields is not None:
             pulumi.set(__self__, "request_fields", request_fields)
         if respect_strong_etags is not None:
@@ -11360,6 +11402,15 @@ class RulesetRuleActionParametersArgs:
         pulumi.set(self, "origin", value)
 
     @property
+    @pulumi.getter(name="originCacheControl")
+    def origin_cache_control(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "origin_cache_control")
+
+    @origin_cache_control.setter
+    def origin_cache_control(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "origin_cache_control", value)
+
+    @property
     @pulumi.getter(name="originErrorPagePassthru")
     def origin_error_page_passthru(self) -> Optional[pulumi.Input[bool]]:
         return pulumi.get(self, "origin_error_page_passthru")
@@ -11403,6 +11454,15 @@ class RulesetRuleActionParametersArgs:
     @products.setter
     def products(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "products", value)
+
+    @property
+    @pulumi.getter(name="readTimeout")
+    def read_timeout(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "read_timeout")
+
+    @read_timeout.setter
+    def read_timeout(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "read_timeout", value)
 
     @property
     @pulumi.getter(name="requestFields")

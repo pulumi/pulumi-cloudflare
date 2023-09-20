@@ -25,7 +25,7 @@ class AccessIdentityProviderArgs:
         """
         The set of arguments for constructing a AccessIdentityProvider resource.
         :param pulumi.Input[str] name: Friendly name of the Access Identity Provider configuration.
-        :param pulumi.Input[str] type: The provider type to use. Available values: `centrify`, `facebook`, `google-apps`, `oidc`, `github`, `google`, `saml`, `linkedin`, `azureAD`, `okta`, `onetimepin`, `onelogin`, `yandex`.
+        :param pulumi.Input[str] type: The provider type to use. Available values: `azureAD`, `centrify`, `facebook`, `github`, `google`, `google-apps`, `linkedin`, `oidc`, `okta`, `onelogin`, `onetimepin`, `pingone`, `saml`, `yandex`.
         :param pulumi.Input[str] account_id: The account identifier to target for the resource. Conflicts with `zone_id`. **Modifying this attribute will force creation of a new resource.**
         :param pulumi.Input[Sequence[pulumi.Input['AccessIdentityProviderConfigArgs']]] configs: Provider configuration from the [developer documentation](https://developers.cloudflare.com/access/configuring-identity-providers/).
         :param pulumi.Input[Sequence[pulumi.Input['AccessIdentityProviderScimConfigArgs']]] scim_configs: Configuration for SCIM settings for a given IDP.
@@ -58,7 +58,7 @@ class AccessIdentityProviderArgs:
     @pulumi.getter
     def type(self) -> pulumi.Input[str]:
         """
-        The provider type to use. Available values: `centrify`, `facebook`, `google-apps`, `oidc`, `github`, `google`, `saml`, `linkedin`, `azureAD`, `okta`, `onetimepin`, `onelogin`, `yandex`.
+        The provider type to use. Available values: `azureAD`, `centrify`, `facebook`, `github`, `google`, `google-apps`, `linkedin`, `oidc`, `okta`, `onelogin`, `onetimepin`, `pingone`, `saml`, `yandex`.
         """
         return pulumi.get(self, "type")
 
@@ -130,7 +130,7 @@ class _AccessIdentityProviderState:
         :param pulumi.Input[Sequence[pulumi.Input['AccessIdentityProviderConfigArgs']]] configs: Provider configuration from the [developer documentation](https://developers.cloudflare.com/access/configuring-identity-providers/).
         :param pulumi.Input[str] name: Friendly name of the Access Identity Provider configuration.
         :param pulumi.Input[Sequence[pulumi.Input['AccessIdentityProviderScimConfigArgs']]] scim_configs: Configuration for SCIM settings for a given IDP.
-        :param pulumi.Input[str] type: The provider type to use. Available values: `centrify`, `facebook`, `google-apps`, `oidc`, `github`, `google`, `saml`, `linkedin`, `azureAD`, `okta`, `onetimepin`, `onelogin`, `yandex`.
+        :param pulumi.Input[str] type: The provider type to use. Available values: `azureAD`, `centrify`, `facebook`, `github`, `google`, `google-apps`, `linkedin`, `oidc`, `okta`, `onelogin`, `onetimepin`, `pingone`, `saml`, `yandex`.
         :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. Conflicts with `account_id`. **Modifying this attribute will force creation of a new resource.**
         """
         if account_id is not None:
@@ -198,7 +198,7 @@ class _AccessIdentityProviderState:
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[str]]:
         """
-        The provider type to use. Available values: `centrify`, `facebook`, `google-apps`, `oidc`, `github`, `google`, `saml`, `linkedin`, `azureAD`, `okta`, `onetimepin`, `onelogin`, `yandex`.
+        The provider type to use. Available values: `azureAD`, `centrify`, `facebook`, `github`, `google`, `google-apps`, `linkedin`, `oidc`, `okta`, `onelogin`, `onetimepin`, `pingone`, `saml`, `yandex`.
         """
         return pulumi.get(self, "type")
 
@@ -304,7 +304,7 @@ class AccessIdentityProvider(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessIdentityProviderConfigArgs']]]] configs: Provider configuration from the [developer documentation](https://developers.cloudflare.com/access/configuring-identity-providers/).
         :param pulumi.Input[str] name: Friendly name of the Access Identity Provider configuration.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessIdentityProviderScimConfigArgs']]]] scim_configs: Configuration for SCIM settings for a given IDP.
-        :param pulumi.Input[str] type: The provider type to use. Available values: `centrify`, `facebook`, `google-apps`, `oidc`, `github`, `google`, `saml`, `linkedin`, `azureAD`, `okta`, `onetimepin`, `onelogin`, `yandex`.
+        :param pulumi.Input[str] type: The provider type to use. Available values: `azureAD`, `centrify`, `facebook`, `github`, `google`, `google-apps`, `linkedin`, `oidc`, `okta`, `onelogin`, `onetimepin`, `pingone`, `saml`, `yandex`.
         :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. Conflicts with `account_id`. **Modifying this attribute will force creation of a new resource.**
         """
         ...
@@ -447,7 +447,7 @@ class AccessIdentityProvider(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessIdentityProviderConfigArgs']]]] configs: Provider configuration from the [developer documentation](https://developers.cloudflare.com/access/configuring-identity-providers/).
         :param pulumi.Input[str] name: Friendly name of the Access Identity Provider configuration.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessIdentityProviderScimConfigArgs']]]] scim_configs: Configuration for SCIM settings for a given IDP.
-        :param pulumi.Input[str] type: The provider type to use. Available values: `centrify`, `facebook`, `google-apps`, `oidc`, `github`, `google`, `saml`, `linkedin`, `azureAD`, `okta`, `onetimepin`, `onelogin`, `yandex`.
+        :param pulumi.Input[str] type: The provider type to use. Available values: `azureAD`, `centrify`, `facebook`, `github`, `google`, `google-apps`, `linkedin`, `oidc`, `okta`, `onelogin`, `onetimepin`, `pingone`, `saml`, `yandex`.
         :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. Conflicts with `account_id`. **Modifying this attribute will force creation of a new resource.**
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -498,7 +498,7 @@ class AccessIdentityProvider(pulumi.CustomResource):
     @pulumi.getter
     def type(self) -> pulumi.Output[str]:
         """
-        The provider type to use. Available values: `centrify`, `facebook`, `google-apps`, `oidc`, `github`, `google`, `saml`, `linkedin`, `azureAD`, `okta`, `onetimepin`, `onelogin`, `yandex`.
+        The provider type to use. Available values: `azureAD`, `centrify`, `facebook`, `github`, `google`, `google-apps`, `linkedin`, `oidc`, `okta`, `onelogin`, `onetimepin`, `pingone`, `saml`, `yandex`.
         """
         return pulumi.get(self, "type")
 

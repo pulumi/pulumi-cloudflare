@@ -2173,6 +2173,8 @@ class AccessIdentityProviderConfig(dict):
             suggest = "apps_domain"
         elif key == "authUrl":
             suggest = "auth_url"
+        elif key == "authorizationServerId":
+            suggest = "authorization_server_id"
         elif key == "centrifyAccount":
             suggest = "centrify_account"
         elif key == "centrifyAppId":
@@ -2189,6 +2191,8 @@ class AccessIdentityProviderConfig(dict):
             suggest = "directory_id"
         elif key == "emailAttributeName":
             suggest = "email_attribute_name"
+        elif key == "emailClaimName":
+            suggest = "email_claim_name"
         elif key == "idpPublicCert":
             suggest = "idp_public_cert"
         elif key == "issuerUrl":
@@ -2197,6 +2201,8 @@ class AccessIdentityProviderConfig(dict):
             suggest = "okta_account"
         elif key == "oneloginAccount":
             suggest = "onelogin_account"
+        elif key == "pingEnvId":
+            suggest = "ping_env_id"
         elif key == "pkceEnabled":
             suggest = "pkce_enabled"
         elif key == "redirectUrl":
@@ -2226,6 +2232,7 @@ class AccessIdentityProviderConfig(dict):
                  apps_domain: Optional[str] = None,
                  attributes: Optional[Sequence[str]] = None,
                  auth_url: Optional[str] = None,
+                 authorization_server_id: Optional[str] = None,
                  centrify_account: Optional[str] = None,
                  centrify_app_id: Optional[str] = None,
                  certs_url: Optional[str] = None,
@@ -2235,10 +2242,12 @@ class AccessIdentityProviderConfig(dict):
                  conditional_access_enabled: Optional[bool] = None,
                  directory_id: Optional[str] = None,
                  email_attribute_name: Optional[str] = None,
+                 email_claim_name: Optional[str] = None,
                  idp_public_cert: Optional[str] = None,
                  issuer_url: Optional[str] = None,
                  okta_account: Optional[str] = None,
                  onelogin_account: Optional[str] = None,
+                 ping_env_id: Optional[str] = None,
                  pkce_enabled: Optional[bool] = None,
                  redirect_url: Optional[str] = None,
                  scopes: Optional[Sequence[str]] = None,
@@ -2254,6 +2263,8 @@ class AccessIdentityProviderConfig(dict):
             pulumi.set(__self__, "attributes", attributes)
         if auth_url is not None:
             pulumi.set(__self__, "auth_url", auth_url)
+        if authorization_server_id is not None:
+            pulumi.set(__self__, "authorization_server_id", authorization_server_id)
         if centrify_account is not None:
             pulumi.set(__self__, "centrify_account", centrify_account)
         if centrify_app_id is not None:
@@ -2272,6 +2283,8 @@ class AccessIdentityProviderConfig(dict):
             pulumi.set(__self__, "directory_id", directory_id)
         if email_attribute_name is not None:
             pulumi.set(__self__, "email_attribute_name", email_attribute_name)
+        if email_claim_name is not None:
+            pulumi.set(__self__, "email_claim_name", email_claim_name)
         if idp_public_cert is not None:
             pulumi.set(__self__, "idp_public_cert", idp_public_cert)
         if issuer_url is not None:
@@ -2280,6 +2293,8 @@ class AccessIdentityProviderConfig(dict):
             pulumi.set(__self__, "okta_account", okta_account)
         if onelogin_account is not None:
             pulumi.set(__self__, "onelogin_account", onelogin_account)
+        if ping_env_id is not None:
+            pulumi.set(__self__, "ping_env_id", ping_env_id)
         if pkce_enabled is not None:
             pulumi.set(__self__, "pkce_enabled", pkce_enabled)
         if redirect_url is not None:
@@ -2314,6 +2329,11 @@ class AccessIdentityProviderConfig(dict):
     @pulumi.getter(name="authUrl")
     def auth_url(self) -> Optional[str]:
         return pulumi.get(self, "auth_url")
+
+    @property
+    @pulumi.getter(name="authorizationServerId")
+    def authorization_server_id(self) -> Optional[str]:
+        return pulumi.get(self, "authorization_server_id")
 
     @property
     @pulumi.getter(name="centrifyAccount")
@@ -2361,6 +2381,11 @@ class AccessIdentityProviderConfig(dict):
         return pulumi.get(self, "email_attribute_name")
 
     @property
+    @pulumi.getter(name="emailClaimName")
+    def email_claim_name(self) -> Optional[str]:
+        return pulumi.get(self, "email_claim_name")
+
+    @property
     @pulumi.getter(name="idpPublicCert")
     def idp_public_cert(self) -> Optional[str]:
         return pulumi.get(self, "idp_public_cert")
@@ -2379,6 +2404,11 @@ class AccessIdentityProviderConfig(dict):
     @pulumi.getter(name="oneloginAccount")
     def onelogin_account(self) -> Optional[str]:
         return pulumi.get(self, "onelogin_account")
+
+    @property
+    @pulumi.getter(name="pingEnvId")
+    def ping_env_id(self) -> Optional[str]:
+        return pulumi.get(self, "ping_env_id")
 
     @property
     @pulumi.getter(name="pkceEnabled")
@@ -10605,8 +10635,12 @@ class RulesetRuleActionParameters(dict):
             suggest = "matched_data"
         elif key == "opportunisticEncryption":
             suggest = "opportunistic_encryption"
+        elif key == "originCacheControl":
+            suggest = "origin_cache_control"
         elif key == "originErrorPagePassthru":
             suggest = "origin_error_page_passthru"
+        elif key == "readTimeout":
+            suggest = "read_timeout"
         elif key == "requestFields":
             suggest = "request_fields"
         elif key == "respectStrongEtags":
@@ -10662,11 +10696,13 @@ class RulesetRuleActionParameters(dict):
                  mirage: Optional[bool] = None,
                  opportunistic_encryption: Optional[bool] = None,
                  origin: Optional['outputs.RulesetRuleActionParametersOrigin'] = None,
+                 origin_cache_control: Optional[bool] = None,
                  origin_error_page_passthru: Optional[bool] = None,
                  overrides: Optional['outputs.RulesetRuleActionParametersOverrides'] = None,
                  phases: Optional[Sequence[str]] = None,
                  polish: Optional[str] = None,
                  products: Optional[Sequence[str]] = None,
+                 read_timeout: Optional[int] = None,
                  request_fields: Optional[Sequence[str]] = None,
                  respect_strong_etags: Optional[bool] = None,
                  response_fields: Optional[Sequence[str]] = None,
@@ -10740,6 +10776,8 @@ class RulesetRuleActionParameters(dict):
             pulumi.set(__self__, "opportunistic_encryption", opportunistic_encryption)
         if origin is not None:
             pulumi.set(__self__, "origin", origin)
+        if origin_cache_control is not None:
+            pulumi.set(__self__, "origin_cache_control", origin_cache_control)
         if origin_error_page_passthru is not None:
             pulumi.set(__self__, "origin_error_page_passthru", origin_error_page_passthru)
         if overrides is not None:
@@ -10750,6 +10788,8 @@ class RulesetRuleActionParameters(dict):
             pulumi.set(__self__, "polish", polish)
         if products is not None:
             pulumi.set(__self__, "products", products)
+        if read_timeout is not None:
+            pulumi.set(__self__, "read_timeout", read_timeout)
         if request_fields is not None:
             pulumi.set(__self__, "request_fields", request_fields)
         if respect_strong_etags is not None:
@@ -10919,6 +10959,11 @@ class RulesetRuleActionParameters(dict):
         return pulumi.get(self, "origin")
 
     @property
+    @pulumi.getter(name="originCacheControl")
+    def origin_cache_control(self) -> Optional[bool]:
+        return pulumi.get(self, "origin_cache_control")
+
+    @property
     @pulumi.getter(name="originErrorPagePassthru")
     def origin_error_page_passthru(self) -> Optional[bool]:
         return pulumi.get(self, "origin_error_page_passthru")
@@ -10942,6 +10987,11 @@ class RulesetRuleActionParameters(dict):
     @pulumi.getter
     def products(self) -> Optional[Sequence[str]]:
         return pulumi.get(self, "products")
+
+    @property
+    @pulumi.getter(name="readTimeout")
+    def read_timeout(self) -> Optional[int]:
+        return pulumi.get(self, "read_timeout")
 
     @property
     @pulumi.getter(name="requestFields")
@@ -16671,11 +16721,13 @@ class GetRulesetsRulesetRuleActionParametersResult(dict):
                  mirage: Optional[bool] = None,
                  opportunistic_encryption: Optional[bool] = None,
                  origin: Optional['outputs.GetRulesetsRulesetRuleActionParametersOriginResult'] = None,
+                 origin_cache_control: Optional[bool] = None,
                  origin_error_page_passthru: Optional[bool] = None,
                  overrides: Optional['outputs.GetRulesetsRulesetRuleActionParametersOverridesResult'] = None,
                  phases: Optional[Sequence[str]] = None,
                  polish: Optional[str] = None,
                  products: Optional[Sequence[str]] = None,
+                 read_timeout: Optional[int] = None,
                  request_fields: Optional[Sequence[str]] = None,
                  respect_strong_etags: Optional[bool] = None,
                  response_fields: Optional[Sequence[str]] = None,
@@ -16746,6 +16798,8 @@ class GetRulesetsRulesetRuleActionParametersResult(dict):
             pulumi.set(__self__, "opportunistic_encryption", opportunistic_encryption)
         if origin is not None:
             pulumi.set(__self__, "origin", origin)
+        if origin_cache_control is not None:
+            pulumi.set(__self__, "origin_cache_control", origin_cache_control)
         if origin_error_page_passthru is not None:
             pulumi.set(__self__, "origin_error_page_passthru", origin_error_page_passthru)
         if overrides is not None:
@@ -16756,6 +16810,8 @@ class GetRulesetsRulesetRuleActionParametersResult(dict):
             pulumi.set(__self__, "polish", polish)
         if products is not None:
             pulumi.set(__self__, "products", products)
+        if read_timeout is not None:
+            pulumi.set(__self__, "read_timeout", read_timeout)
         if request_fields is not None:
             pulumi.set(__self__, "request_fields", request_fields)
         if respect_strong_etags is not None:
@@ -16923,6 +16979,11 @@ class GetRulesetsRulesetRuleActionParametersResult(dict):
         return pulumi.get(self, "origin")
 
     @property
+    @pulumi.getter(name="originCacheControl")
+    def origin_cache_control(self) -> Optional[bool]:
+        return pulumi.get(self, "origin_cache_control")
+
+    @property
     @pulumi.getter(name="originErrorPagePassthru")
     def origin_error_page_passthru(self) -> Optional[bool]:
         return pulumi.get(self, "origin_error_page_passthru")
@@ -16946,6 +17007,11 @@ class GetRulesetsRulesetRuleActionParametersResult(dict):
     @pulumi.getter
     def products(self) -> Optional[Sequence[str]]:
         return pulumi.get(self, "products")
+
+    @property
+    @pulumi.getter(name="readTimeout")
+    def read_timeout(self) -> Optional[int]:
+        return pulumi.get(self, "read_timeout")
 
     @property
     @pulumi.getter(name="requestFields")

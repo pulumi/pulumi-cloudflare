@@ -45,6 +45,13 @@ public final class AccessIdentityProviderConfigArgs extends com.pulumi.resources
         return Optional.ofNullable(this.authUrl);
     }
 
+    @Import(name="authorizationServerId")
+    private @Nullable Output<String> authorizationServerId;
+
+    public Optional<Output<String>> authorizationServerId() {
+        return Optional.ofNullable(this.authorizationServerId);
+    }
+
     @Import(name="centrifyAccount")
     private @Nullable Output<String> centrifyAccount;
 
@@ -108,6 +115,13 @@ public final class AccessIdentityProviderConfigArgs extends com.pulumi.resources
         return Optional.ofNullable(this.emailAttributeName);
     }
 
+    @Import(name="emailClaimName")
+    private @Nullable Output<String> emailClaimName;
+
+    public Optional<Output<String>> emailClaimName() {
+        return Optional.ofNullable(this.emailClaimName);
+    }
+
     @Import(name="idpPublicCert")
     private @Nullable Output<String> idpPublicCert;
 
@@ -134,6 +148,13 @@ public final class AccessIdentityProviderConfigArgs extends com.pulumi.resources
 
     public Optional<Output<String>> oneloginAccount() {
         return Optional.ofNullable(this.oneloginAccount);
+    }
+
+    @Import(name="pingEnvId")
+    private @Nullable Output<String> pingEnvId;
+
+    public Optional<Output<String>> pingEnvId() {
+        return Optional.ofNullable(this.pingEnvId);
     }
 
     @Import(name="pkceEnabled")
@@ -192,6 +213,7 @@ public final class AccessIdentityProviderConfigArgs extends com.pulumi.resources
         this.appsDomain = $.appsDomain;
         this.attributes = $.attributes;
         this.authUrl = $.authUrl;
+        this.authorizationServerId = $.authorizationServerId;
         this.centrifyAccount = $.centrifyAccount;
         this.centrifyAppId = $.centrifyAppId;
         this.certsUrl = $.certsUrl;
@@ -201,10 +223,12 @@ public final class AccessIdentityProviderConfigArgs extends com.pulumi.resources
         this.conditionalAccessEnabled = $.conditionalAccessEnabled;
         this.directoryId = $.directoryId;
         this.emailAttributeName = $.emailAttributeName;
+        this.emailClaimName = $.emailClaimName;
         this.idpPublicCert = $.idpPublicCert;
         this.issuerUrl = $.issuerUrl;
         this.oktaAccount = $.oktaAccount;
         this.oneloginAccount = $.oneloginAccount;
+        this.pingEnvId = $.pingEnvId;
         this.pkceEnabled = $.pkceEnabled;
         this.redirectUrl = $.redirectUrl;
         this.scopes = $.scopes;
@@ -270,6 +294,15 @@ public final class AccessIdentityProviderConfigArgs extends com.pulumi.resources
 
         public Builder authUrl(String authUrl) {
             return authUrl(Output.of(authUrl));
+        }
+
+        public Builder authorizationServerId(@Nullable Output<String> authorizationServerId) {
+            $.authorizationServerId = authorizationServerId;
+            return this;
+        }
+
+        public Builder authorizationServerId(String authorizationServerId) {
+            return authorizationServerId(Output.of(authorizationServerId));
         }
 
         public Builder centrifyAccount(@Nullable Output<String> centrifyAccount) {
@@ -357,6 +390,15 @@ public final class AccessIdentityProviderConfigArgs extends com.pulumi.resources
             return emailAttributeName(Output.of(emailAttributeName));
         }
 
+        public Builder emailClaimName(@Nullable Output<String> emailClaimName) {
+            $.emailClaimName = emailClaimName;
+            return this;
+        }
+
+        public Builder emailClaimName(String emailClaimName) {
+            return emailClaimName(Output.of(emailClaimName));
+        }
+
         public Builder idpPublicCert(@Nullable Output<String> idpPublicCert) {
             $.idpPublicCert = idpPublicCert;
             return this;
@@ -391,6 +433,15 @@ public final class AccessIdentityProviderConfigArgs extends com.pulumi.resources
 
         public Builder oneloginAccount(String oneloginAccount) {
             return oneloginAccount(Output.of(oneloginAccount));
+        }
+
+        public Builder pingEnvId(@Nullable Output<String> pingEnvId) {
+            $.pingEnvId = pingEnvId;
+            return this;
+        }
+
+        public Builder pingEnvId(String pingEnvId) {
+            return pingEnvId(Output.of(pingEnvId));
         }
 
         public Builder pkceEnabled(@Nullable Output<Boolean> pkceEnabled) {

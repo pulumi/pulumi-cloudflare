@@ -304,6 +304,7 @@ export interface AccessIdentityProviderConfig {
     appsDomain?: pulumi.Input<string>;
     attributes?: pulumi.Input<pulumi.Input<string>[]>;
     authUrl?: pulumi.Input<string>;
+    authorizationServerId?: pulumi.Input<string>;
     centrifyAccount?: pulumi.Input<string>;
     centrifyAppId?: pulumi.Input<string>;
     certsUrl?: pulumi.Input<string>;
@@ -313,10 +314,12 @@ export interface AccessIdentityProviderConfig {
     conditionalAccessEnabled?: pulumi.Input<boolean>;
     directoryId?: pulumi.Input<string>;
     emailAttributeName?: pulumi.Input<string>;
+    emailClaimName?: pulumi.Input<string>;
     idpPublicCert?: pulumi.Input<string>;
     issuerUrl?: pulumi.Input<string>;
     oktaAccount?: pulumi.Input<string>;
     oneloginAccount?: pulumi.Input<string>;
+    pingEnvId?: pulumi.Input<string>;
     pkceEnabled?: pulumi.Input<boolean>;
     redirectUrl?: pulumi.Input<string>;
     scopes?: pulumi.Input<pulumi.Input<string>[]>;
@@ -2504,11 +2507,13 @@ export interface RulesetRuleActionParameters {
     mirage?: pulumi.Input<boolean>;
     opportunisticEncryption?: pulumi.Input<boolean>;
     origin?: pulumi.Input<inputs.RulesetRuleActionParametersOrigin>;
+    originCacheControl?: pulumi.Input<boolean>;
     originErrorPagePassthru?: pulumi.Input<boolean>;
     overrides?: pulumi.Input<inputs.RulesetRuleActionParametersOverrides>;
     phases?: pulumi.Input<pulumi.Input<string>[]>;
     polish?: pulumi.Input<string>;
     products?: pulumi.Input<pulumi.Input<string>[]>;
+    readTimeout?: pulumi.Input<number>;
     requestFields?: pulumi.Input<pulumi.Input<string>[]>;
     respectStrongEtags?: pulumi.Input<boolean>;
     responseFields?: pulumi.Input<pulumi.Input<string>[]>;

@@ -17,6 +17,7 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly string? AppsDomain;
         public readonly ImmutableArray<string> Attributes;
         public readonly string? AuthUrl;
+        public readonly string? AuthorizationServerId;
         public readonly string? CentrifyAccount;
         public readonly string? CentrifyAppId;
         public readonly string? CertsUrl;
@@ -26,10 +27,12 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly bool? ConditionalAccessEnabled;
         public readonly string? DirectoryId;
         public readonly string? EmailAttributeName;
+        public readonly string? EmailClaimName;
         public readonly string? IdpPublicCert;
         public readonly string? IssuerUrl;
         public readonly string? OktaAccount;
         public readonly string? OneloginAccount;
+        public readonly string? PingEnvId;
         public readonly bool? PkceEnabled;
         public readonly string? RedirectUrl;
         public readonly ImmutableArray<string> Scopes;
@@ -47,6 +50,8 @@ namespace Pulumi.Cloudflare.Outputs
             ImmutableArray<string> attributes,
 
             string? authUrl,
+
+            string? authorizationServerId,
 
             string? centrifyAccount,
 
@@ -66,6 +71,8 @@ namespace Pulumi.Cloudflare.Outputs
 
             string? emailAttributeName,
 
+            string? emailClaimName,
+
             string? idpPublicCert,
 
             string? issuerUrl,
@@ -73,6 +80,8 @@ namespace Pulumi.Cloudflare.Outputs
             string? oktaAccount,
 
             string? oneloginAccount,
+
+            string? pingEnvId,
 
             bool? pkceEnabled,
 
@@ -92,6 +101,7 @@ namespace Pulumi.Cloudflare.Outputs
             AppsDomain = appsDomain;
             Attributes = attributes;
             AuthUrl = authUrl;
+            AuthorizationServerId = authorizationServerId;
             CentrifyAccount = centrifyAccount;
             CentrifyAppId = centrifyAppId;
             CertsUrl = certsUrl;
@@ -101,10 +111,12 @@ namespace Pulumi.Cloudflare.Outputs
             ConditionalAccessEnabled = conditionalAccessEnabled;
             DirectoryId = directoryId;
             EmailAttributeName = emailAttributeName;
+            EmailClaimName = emailClaimName;
             IdpPublicCert = idpPublicCert;
             IssuerUrl = issuerUrl;
             OktaAccount = oktaAccount;
             OneloginAccount = oneloginAccount;
+            PingEnvId = pingEnvId;
             PkceEnabled = pkceEnabled;
             RedirectUrl = redirectUrl;
             Scopes = scopes;

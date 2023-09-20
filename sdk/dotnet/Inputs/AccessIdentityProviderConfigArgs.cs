@@ -29,6 +29,9 @@ namespace Pulumi.Cloudflare.Inputs
         [Input("authUrl")]
         public Input<string>? AuthUrl { get; set; }
 
+        [Input("authorizationServerId")]
+        public Input<string>? AuthorizationServerId { get; set; }
+
         [Input("centrifyAccount")]
         public Input<string>? CentrifyAccount { get; set; }
 
@@ -61,6 +64,9 @@ namespace Pulumi.Cloudflare.Inputs
         [Input("emailAttributeName")]
         public Input<string>? EmailAttributeName { get; set; }
 
+        [Input("emailClaimName")]
+        public Input<string>? EmailClaimName { get; set; }
+
         [Input("idpPublicCert")]
         public Input<string>? IdpPublicCert { get; set; }
 
@@ -72,6 +78,9 @@ namespace Pulumi.Cloudflare.Inputs
 
         [Input("oneloginAccount")]
         public Input<string>? OneloginAccount { get; set; }
+
+        [Input("pingEnvId")]
+        public Input<string>? PingEnvId { get; set; }
 
         [Input("pkceEnabled")]
         public Input<bool>? PkceEnabled { get; set; }

@@ -224,6 +224,13 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
         return Optional.ofNullable(this.origin);
     }
 
+    @Import(name="originCacheControl")
+    private @Nullable Output<Boolean> originCacheControl;
+
+    public Optional<Output<Boolean>> originCacheControl() {
+        return Optional.ofNullable(this.originCacheControl);
+    }
+
     @Import(name="originErrorPagePassthru")
     private @Nullable Output<Boolean> originErrorPagePassthru;
 
@@ -257,6 +264,13 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
 
     public Optional<Output<List<String>>> products() {
         return Optional.ofNullable(this.products);
+    }
+
+    @Import(name="readTimeout")
+    private @Nullable Output<Integer> readTimeout;
+
+    public Optional<Output<Integer>> readTimeout() {
+        return Optional.ofNullable(this.readTimeout);
     }
 
     @Import(name="requestFields")
@@ -415,11 +429,13 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
         this.mirage = $.mirage;
         this.opportunisticEncryption = $.opportunisticEncryption;
         this.origin = $.origin;
+        this.originCacheControl = $.originCacheControl;
         this.originErrorPagePassthru = $.originErrorPagePassthru;
         this.overrides = $.overrides;
         this.phases = $.phases;
         this.polish = $.polish;
         this.products = $.products;
+        this.readTimeout = $.readTimeout;
         this.requestFields = $.requestFields;
         this.respectStrongEtags = $.respectStrongEtags;
         this.responseFields = $.responseFields;
@@ -719,6 +735,15 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
             return origin(Output.of(origin));
         }
 
+        public Builder originCacheControl(@Nullable Output<Boolean> originCacheControl) {
+            $.originCacheControl = originCacheControl;
+            return this;
+        }
+
+        public Builder originCacheControl(Boolean originCacheControl) {
+            return originCacheControl(Output.of(originCacheControl));
+        }
+
         public Builder originErrorPagePassthru(@Nullable Output<Boolean> originErrorPagePassthru) {
             $.originErrorPagePassthru = originErrorPagePassthru;
             return this;
@@ -770,6 +795,15 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
 
         public Builder products(String... products) {
             return products(List.of(products));
+        }
+
+        public Builder readTimeout(@Nullable Output<Integer> readTimeout) {
+            $.readTimeout = readTimeout;
+            return this;
+        }
+
+        public Builder readTimeout(Integer readTimeout) {
+            return readTimeout(Output.of(readTimeout));
         }
 
         public Builder requestFields(@Nullable Output<List<String>> requestFields) {
