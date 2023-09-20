@@ -113,6 +113,9 @@ namespace Pulumi.Cloudflare.Inputs
         [Input("origin")]
         public Input<Inputs.RulesetRuleActionParametersOriginGetArgs>? Origin { get; set; }
 
+        [Input("originCacheControl")]
+        public Input<bool>? OriginCacheControl { get; set; }
+
         [Input("originErrorPagePassthru")]
         public Input<bool>? OriginErrorPagePassthru { get; set; }
 
@@ -137,6 +140,9 @@ namespace Pulumi.Cloudflare.Inputs
             get => _products ?? (_products = new InputList<string>());
             set => _products = value;
         }
+
+        [Input("readTimeout")]
+        public Input<int>? ReadTimeout { get; set; }
 
         [Input("requestFields")]
         private InputList<string>? _requestFields;

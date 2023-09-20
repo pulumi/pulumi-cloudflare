@@ -304,6 +304,7 @@ export interface AccessIdentityProviderConfig {
     appsDomain?: string;
     attributes: string[];
     authUrl?: string;
+    authorizationServerId?: string;
     centrifyAccount?: string;
     centrifyAppId?: string;
     certsUrl?: string;
@@ -313,10 +314,12 @@ export interface AccessIdentityProviderConfig {
     conditionalAccessEnabled?: boolean;
     directoryId?: string;
     emailAttributeName?: string;
+    emailClaimName?: string;
     idpPublicCert?: string;
     issuerUrl?: string;
     oktaAccount?: string;
     oneloginAccount?: string;
+    pingEnvId?: string;
     pkceEnabled?: boolean;
     redirectUrl: string;
     scopes: string[];
@@ -1292,11 +1295,13 @@ export interface GetRulesetsRulesetRuleActionParameters {
     mirage?: boolean;
     opportunisticEncryption?: boolean;
     origin?: outputs.GetRulesetsRulesetRuleActionParametersOrigin;
+    originCacheControl?: boolean;
     originErrorPagePassthru?: boolean;
     overrides?: outputs.GetRulesetsRulesetRuleActionParametersOverrides;
     phases?: string[];
     polish?: string;
     products?: string[];
+    readTimeout?: number;
     requestFields?: string[];
     respectStrongEtags?: boolean;
     responseFields?: string[];
@@ -2712,11 +2717,13 @@ export interface RulesetRuleActionParameters {
     mirage?: boolean;
     opportunisticEncryption?: boolean;
     origin?: outputs.RulesetRuleActionParametersOrigin;
+    originCacheControl?: boolean;
     originErrorPagePassthru?: boolean;
     overrides?: outputs.RulesetRuleActionParametersOverrides;
     phases?: string[];
     polish?: string;
     products?: string[];
+    readTimeout?: number;
     requestFields?: string[];
     respectStrongEtags?: boolean;
     responseFields?: string[];

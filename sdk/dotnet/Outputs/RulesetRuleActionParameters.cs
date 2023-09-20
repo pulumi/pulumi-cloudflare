@@ -42,11 +42,13 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly bool? Mirage;
         public readonly bool? OpportunisticEncryption;
         public readonly Outputs.RulesetRuleActionParametersOrigin? Origin;
+        public readonly bool? OriginCacheControl;
         public readonly bool? OriginErrorPagePassthru;
         public readonly Outputs.RulesetRuleActionParametersOverrides? Overrides;
         public readonly ImmutableArray<string> Phases;
         public readonly string? Polish;
         public readonly ImmutableArray<string> Products;
+        public readonly int? ReadTimeout;
         public readonly ImmutableArray<string> RequestFields;
         public readonly bool? RespectStrongEtags;
         public readonly ImmutableArray<string> ResponseFields;
@@ -122,6 +124,8 @@ namespace Pulumi.Cloudflare.Outputs
 
             Outputs.RulesetRuleActionParametersOrigin? origin,
 
+            bool? originCacheControl,
+
             bool? originErrorPagePassthru,
 
             Outputs.RulesetRuleActionParametersOverrides? overrides,
@@ -131,6 +135,8 @@ namespace Pulumi.Cloudflare.Outputs
             string? polish,
 
             ImmutableArray<string> products,
+
+            int? readTimeout,
 
             ImmutableArray<string> requestFields,
 
@@ -192,11 +198,13 @@ namespace Pulumi.Cloudflare.Outputs
             Mirage = mirage;
             OpportunisticEncryption = opportunisticEncryption;
             Origin = origin;
+            OriginCacheControl = originCacheControl;
             OriginErrorPagePassthru = originErrorPagePassthru;
             Overrides = overrides;
             Phases = phases;
             Polish = polish;
             Products = products;
+            ReadTimeout = readTimeout;
             RequestFields = requestFields;
             RespectStrongEtags = respectStrongEtags;
             ResponseFields = responseFields;

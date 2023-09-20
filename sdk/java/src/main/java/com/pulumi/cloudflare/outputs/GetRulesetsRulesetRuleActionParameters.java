@@ -58,11 +58,13 @@ public final class GetRulesetsRulesetRuleActionParameters {
     private @Nullable Boolean mirage;
     private @Nullable Boolean opportunisticEncryption;
     private @Nullable GetRulesetsRulesetRuleActionParametersOrigin origin;
+    private @Nullable Boolean originCacheControl;
     private @Nullable Boolean originErrorPagePassthru;
     private @Nullable GetRulesetsRulesetRuleActionParametersOverrides overrides;
     private @Nullable List<String> phases;
     private @Nullable String polish;
     private @Nullable List<String> products;
+    private @Nullable Integer readTimeout;
     private @Nullable List<String> requestFields;
     private @Nullable Boolean respectStrongEtags;
     private @Nullable List<String> responseFields;
@@ -161,6 +163,9 @@ public final class GetRulesetsRulesetRuleActionParameters {
     public Optional<GetRulesetsRulesetRuleActionParametersOrigin> origin() {
         return Optional.ofNullable(this.origin);
     }
+    public Optional<Boolean> originCacheControl() {
+        return Optional.ofNullable(this.originCacheControl);
+    }
     public Optional<Boolean> originErrorPagePassthru() {
         return Optional.ofNullable(this.originErrorPagePassthru);
     }
@@ -175,6 +180,9 @@ public final class GetRulesetsRulesetRuleActionParameters {
     }
     public List<String> products() {
         return this.products == null ? List.of() : this.products;
+    }
+    public Optional<Integer> readTimeout() {
+        return Optional.ofNullable(this.readTimeout);
     }
     public List<String> requestFields() {
         return this.requestFields == null ? List.of() : this.requestFields;
@@ -262,11 +270,13 @@ public final class GetRulesetsRulesetRuleActionParameters {
         private @Nullable Boolean mirage;
         private @Nullable Boolean opportunisticEncryption;
         private @Nullable GetRulesetsRulesetRuleActionParametersOrigin origin;
+        private @Nullable Boolean originCacheControl;
         private @Nullable Boolean originErrorPagePassthru;
         private @Nullable GetRulesetsRulesetRuleActionParametersOverrides overrides;
         private @Nullable List<String> phases;
         private @Nullable String polish;
         private @Nullable List<String> products;
+        private @Nullable Integer readTimeout;
         private @Nullable List<String> requestFields;
         private @Nullable Boolean respectStrongEtags;
         private @Nullable List<String> responseFields;
@@ -312,11 +322,13 @@ public final class GetRulesetsRulesetRuleActionParameters {
     	      this.mirage = defaults.mirage;
     	      this.opportunisticEncryption = defaults.opportunisticEncryption;
     	      this.origin = defaults.origin;
+    	      this.originCacheControl = defaults.originCacheControl;
     	      this.originErrorPagePassthru = defaults.originErrorPagePassthru;
     	      this.overrides = defaults.overrides;
     	      this.phases = defaults.phases;
     	      this.polish = defaults.polish;
     	      this.products = defaults.products;
+    	      this.readTimeout = defaults.readTimeout;
     	      this.requestFields = defaults.requestFields;
     	      this.respectStrongEtags = defaults.respectStrongEtags;
     	      this.responseFields = defaults.responseFields;
@@ -471,6 +483,11 @@ public final class GetRulesetsRulesetRuleActionParameters {
             return this;
         }
         @CustomType.Setter
+        public Builder originCacheControl(@Nullable Boolean originCacheControl) {
+            this.originCacheControl = originCacheControl;
+            return this;
+        }
+        @CustomType.Setter
         public Builder originErrorPagePassthru(@Nullable Boolean originErrorPagePassthru) {
             this.originErrorPagePassthru = originErrorPagePassthru;
             return this;
@@ -500,6 +517,11 @@ public final class GetRulesetsRulesetRuleActionParameters {
         }
         public Builder products(String... products) {
             return products(List.of(products));
+        }
+        @CustomType.Setter
+        public Builder readTimeout(@Nullable Integer readTimeout) {
+            this.readTimeout = readTimeout;
+            return this;
         }
         @CustomType.Setter
         public Builder requestFields(@Nullable List<String> requestFields) {
@@ -625,11 +647,13 @@ public final class GetRulesetsRulesetRuleActionParameters {
             o.mirage = mirage;
             o.opportunisticEncryption = opportunisticEncryption;
             o.origin = origin;
+            o.originCacheControl = originCacheControl;
             o.originErrorPagePassthru = originErrorPagePassthru;
             o.overrides = overrides;
             o.phases = phases;
             o.polish = polish;
             o.products = products;
+            o.readTimeout = readTimeout;
             o.requestFields = requestFields;
             o.respectStrongEtags = respectStrongEtags;
             o.responseFields = responseFields;

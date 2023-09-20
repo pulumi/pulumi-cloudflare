@@ -122,7 +122,7 @@ export class AccessIdentityProvider extends pulumi.CustomResource {
      */
     public readonly scimConfigs!: pulumi.Output<outputs.AccessIdentityProviderScimConfig[]>;
     /**
-     * The provider type to use. Available values: `centrify`, `facebook`, `google-apps`, `oidc`, `github`, `google`, `saml`, `linkedin`, `azureAD`, `okta`, `onetimepin`, `onelogin`, `yandex`.
+     * The provider type to use. Available values: `azureAD`, `centrify`, `facebook`, `github`, `google`, `google-apps`, `linkedin`, `oidc`, `okta`, `onelogin`, `onetimepin`, `pingone`, `saml`, `yandex`.
      */
     public readonly type!: pulumi.Output<string>;
     /**
@@ -190,7 +190,7 @@ export interface AccessIdentityProviderState {
      */
     scimConfigs?: pulumi.Input<pulumi.Input<inputs.AccessIdentityProviderScimConfig>[]>;
     /**
-     * The provider type to use. Available values: `centrify`, `facebook`, `google-apps`, `oidc`, `github`, `google`, `saml`, `linkedin`, `azureAD`, `okta`, `onetimepin`, `onelogin`, `yandex`.
+     * The provider type to use. Available values: `azureAD`, `centrify`, `facebook`, `github`, `google`, `google-apps`, `linkedin`, `oidc`, `okta`, `onelogin`, `onetimepin`, `pingone`, `saml`, `yandex`.
      */
     type?: pulumi.Input<string>;
     /**
@@ -220,7 +220,7 @@ export interface AccessIdentityProviderArgs {
      */
     scimConfigs?: pulumi.Input<pulumi.Input<inputs.AccessIdentityProviderScimConfig>[]>;
     /**
-     * The provider type to use. Available values: `centrify`, `facebook`, `google-apps`, `oidc`, `github`, `google`, `saml`, `linkedin`, `azureAD`, `okta`, `onetimepin`, `onelogin`, `yandex`.
+     * The provider type to use. Available values: `azureAD`, `centrify`, `facebook`, `github`, `google`, `google-apps`, `linkedin`, `oidc`, `okta`, `onelogin`, `onetimepin`, `pingone`, `saml`, `yandex`.
      */
     type: pulumi.Input<string>;
     /**

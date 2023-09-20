@@ -17,6 +17,7 @@ public final class AccessIdentityProviderConfig {
     private @Nullable String appsDomain;
     private @Nullable List<String> attributes;
     private @Nullable String authUrl;
+    private @Nullable String authorizationServerId;
     private @Nullable String centrifyAccount;
     private @Nullable String centrifyAppId;
     private @Nullable String certsUrl;
@@ -26,10 +27,12 @@ public final class AccessIdentityProviderConfig {
     private @Nullable Boolean conditionalAccessEnabled;
     private @Nullable String directoryId;
     private @Nullable String emailAttributeName;
+    private @Nullable String emailClaimName;
     private @Nullable String idpPublicCert;
     private @Nullable String issuerUrl;
     private @Nullable String oktaAccount;
     private @Nullable String oneloginAccount;
+    private @Nullable String pingEnvId;
     private @Nullable Boolean pkceEnabled;
     private @Nullable String redirectUrl;
     private @Nullable List<String> scopes;
@@ -50,6 +53,9 @@ public final class AccessIdentityProviderConfig {
     }
     public Optional<String> authUrl() {
         return Optional.ofNullable(this.authUrl);
+    }
+    public Optional<String> authorizationServerId() {
+        return Optional.ofNullable(this.authorizationServerId);
     }
     public Optional<String> centrifyAccount() {
         return Optional.ofNullable(this.centrifyAccount);
@@ -78,6 +84,9 @@ public final class AccessIdentityProviderConfig {
     public Optional<String> emailAttributeName() {
         return Optional.ofNullable(this.emailAttributeName);
     }
+    public Optional<String> emailClaimName() {
+        return Optional.ofNullable(this.emailClaimName);
+    }
     public Optional<String> idpPublicCert() {
         return Optional.ofNullable(this.idpPublicCert);
     }
@@ -89,6 +98,9 @@ public final class AccessIdentityProviderConfig {
     }
     public Optional<String> oneloginAccount() {
         return Optional.ofNullable(this.oneloginAccount);
+    }
+    public Optional<String> pingEnvId() {
+        return Optional.ofNullable(this.pingEnvId);
     }
     public Optional<Boolean> pkceEnabled() {
         return Optional.ofNullable(this.pkceEnabled);
@@ -125,6 +137,7 @@ public final class AccessIdentityProviderConfig {
         private @Nullable String appsDomain;
         private @Nullable List<String> attributes;
         private @Nullable String authUrl;
+        private @Nullable String authorizationServerId;
         private @Nullable String centrifyAccount;
         private @Nullable String centrifyAppId;
         private @Nullable String certsUrl;
@@ -134,10 +147,12 @@ public final class AccessIdentityProviderConfig {
         private @Nullable Boolean conditionalAccessEnabled;
         private @Nullable String directoryId;
         private @Nullable String emailAttributeName;
+        private @Nullable String emailClaimName;
         private @Nullable String idpPublicCert;
         private @Nullable String issuerUrl;
         private @Nullable String oktaAccount;
         private @Nullable String oneloginAccount;
+        private @Nullable String pingEnvId;
         private @Nullable Boolean pkceEnabled;
         private @Nullable String redirectUrl;
         private @Nullable List<String> scopes;
@@ -152,6 +167,7 @@ public final class AccessIdentityProviderConfig {
     	      this.appsDomain = defaults.appsDomain;
     	      this.attributes = defaults.attributes;
     	      this.authUrl = defaults.authUrl;
+    	      this.authorizationServerId = defaults.authorizationServerId;
     	      this.centrifyAccount = defaults.centrifyAccount;
     	      this.centrifyAppId = defaults.centrifyAppId;
     	      this.certsUrl = defaults.certsUrl;
@@ -161,10 +177,12 @@ public final class AccessIdentityProviderConfig {
     	      this.conditionalAccessEnabled = defaults.conditionalAccessEnabled;
     	      this.directoryId = defaults.directoryId;
     	      this.emailAttributeName = defaults.emailAttributeName;
+    	      this.emailClaimName = defaults.emailClaimName;
     	      this.idpPublicCert = defaults.idpPublicCert;
     	      this.issuerUrl = defaults.issuerUrl;
     	      this.oktaAccount = defaults.oktaAccount;
     	      this.oneloginAccount = defaults.oneloginAccount;
+    	      this.pingEnvId = defaults.pingEnvId;
     	      this.pkceEnabled = defaults.pkceEnabled;
     	      this.redirectUrl = defaults.redirectUrl;
     	      this.scopes = defaults.scopes;
@@ -195,6 +213,11 @@ public final class AccessIdentityProviderConfig {
         @CustomType.Setter
         public Builder authUrl(@Nullable String authUrl) {
             this.authUrl = authUrl;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder authorizationServerId(@Nullable String authorizationServerId) {
+            this.authorizationServerId = authorizationServerId;
             return this;
         }
         @CustomType.Setter
@@ -246,6 +269,11 @@ public final class AccessIdentityProviderConfig {
             return this;
         }
         @CustomType.Setter
+        public Builder emailClaimName(@Nullable String emailClaimName) {
+            this.emailClaimName = emailClaimName;
+            return this;
+        }
+        @CustomType.Setter
         public Builder idpPublicCert(@Nullable String idpPublicCert) {
             this.idpPublicCert = idpPublicCert;
             return this;
@@ -263,6 +291,11 @@ public final class AccessIdentityProviderConfig {
         @CustomType.Setter
         public Builder oneloginAccount(@Nullable String oneloginAccount) {
             this.oneloginAccount = oneloginAccount;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder pingEnvId(@Nullable String pingEnvId) {
+            this.pingEnvId = pingEnvId;
             return this;
         }
         @CustomType.Setter
@@ -309,6 +342,7 @@ public final class AccessIdentityProviderConfig {
             o.appsDomain = appsDomain;
             o.attributes = attributes;
             o.authUrl = authUrl;
+            o.authorizationServerId = authorizationServerId;
             o.centrifyAccount = centrifyAccount;
             o.centrifyAppId = centrifyAppId;
             o.certsUrl = certsUrl;
@@ -318,10 +352,12 @@ public final class AccessIdentityProviderConfig {
             o.conditionalAccessEnabled = conditionalAccessEnabled;
             o.directoryId = directoryId;
             o.emailAttributeName = emailAttributeName;
+            o.emailClaimName = emailClaimName;
             o.idpPublicCert = idpPublicCert;
             o.issuerUrl = issuerUrl;
             o.oktaAccount = oktaAccount;
             o.oneloginAccount = oneloginAccount;
+            o.pingEnvId = pingEnvId;
             o.pkceEnabled = pkceEnabled;
             o.redirectUrl = redirectUrl;
             o.scopes = scopes;
