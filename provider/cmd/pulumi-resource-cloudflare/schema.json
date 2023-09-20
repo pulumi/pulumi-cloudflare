@@ -915,6 +915,9 @@
                 "authUrl": {
                     "type": "string"
                 },
+                "authorizationServerId": {
+                    "type": "string"
+                },
                 "centrifyAccount": {
                     "type": "string"
                 },
@@ -945,6 +948,9 @@
                 "emailAttributeName": {
                     "type": "string"
                 },
+                "emailClaimName": {
+                    "type": "string"
+                },
                 "idpPublicCert": {
                     "type": "string"
                 },
@@ -955,6 +961,9 @@
                     "type": "string"
                 },
                 "oneloginAccount": {
+                    "type": "string"
+                },
+                "pingEnvId": {
                     "type": "string"
                 },
                 "pkceEnabled": {
@@ -4041,7 +4050,8 @@
                     "type": "boolean"
                 },
                 "owner": {
-                    "type": "string"
+                    "type": "string",
+                    "willReplaceOnChanges": true
                 },
                 "prCommentsEnabled": {
                     "type": "boolean"
@@ -4069,7 +4079,8 @@
                     "type": "boolean"
                 },
                 "repoName": {
-                    "type": "string"
+                    "type": "string",
+                    "willReplaceOnChanges": true
                 }
             },
             "type": "object",
@@ -4490,6 +4501,9 @@
                 "origin": {
                     "$ref": "#/types/cloudflare:index/RulesetRuleActionParametersOrigin:RulesetRuleActionParametersOrigin"
                 },
+                "originCacheControl": {
+                    "type": "boolean"
+                },
                 "originErrorPagePassthru": {
                     "type": "boolean"
                 },
@@ -4510,6 +4524,9 @@
                     "items": {
                         "type": "string"
                     }
+                },
+                "readTimeout": {
+                    "type": "integer"
                 },
                 "requestFields": {
                     "type": "array",
@@ -7096,6 +7113,9 @@
                 "origin": {
                     "$ref": "#/types/cloudflare:index/getRulesetsRulesetRuleActionParametersOrigin:getRulesetsRulesetRuleActionParametersOrigin"
                 },
+                "originCacheControl": {
+                    "type": "boolean"
+                },
                 "originErrorPagePassthru": {
                     "type": "boolean"
                 },
@@ -7116,6 +7136,9 @@
                     "items": {
                         "type": "string"
                     }
+                },
+                "readTimeout": {
+                    "type": "integer"
                 },
                 "requestFields": {
                     "type": "array",
@@ -8485,7 +8508,7 @@
                 },
                 "type": {
                     "type": "string",
-                    "description": "The provider type to use. Available values: `centrify`, `facebook`, `google-apps`, `oidc`, `github`, `google`, `saml`, `linkedin`, `azureAD`, `okta`, `onetimepin`, `onelogin`, `yandex`.\n"
+                    "description": "The provider type to use. Available values: `azureAD`, `centrify`, `facebook`, `github`, `google`, `google-apps`, `linkedin`, `oidc`, `okta`, `onelogin`, `onetimepin`, `pingone`, `saml`, `yandex`.\n"
                 },
                 "zoneId": {
                     "type": "string",
@@ -8524,7 +8547,7 @@
                 },
                 "type": {
                     "type": "string",
-                    "description": "The provider type to use. Available values: `centrify`, `facebook`, `google-apps`, `oidc`, `github`, `google`, `saml`, `linkedin`, `azureAD`, `okta`, `onetimepin`, `onelogin`, `yandex`.\n"
+                    "description": "The provider type to use. Available values: `azureAD`, `centrify`, `facebook`, `github`, `google`, `google-apps`, `linkedin`, `oidc`, `okta`, `onelogin`, `onetimepin`, `pingone`, `saml`, `yandex`.\n"
                 },
                 "zoneId": {
                     "type": "string",
@@ -8564,7 +8587,7 @@
                     },
                     "type": {
                         "type": "string",
-                        "description": "The provider type to use. Available values: `centrify`, `facebook`, `google-apps`, `oidc`, `github`, `google`, `saml`, `linkedin`, `azureAD`, `okta`, `onetimepin`, `onelogin`, `yandex`.\n"
+                        "description": "The provider type to use. Available values: `azureAD`, `centrify`, `facebook`, `github`, `google`, `google-apps`, `linkedin`, `oidc`, `okta`, `onelogin`, `onetimepin`, `pingone`, `saml`, `yandex`.\n"
                     },
                     "zoneId": {
                         "type": "string",
