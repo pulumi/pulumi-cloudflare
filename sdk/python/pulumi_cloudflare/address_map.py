@@ -129,7 +129,7 @@ class _AddressMapState:
         """
         Input properties used for looking up and filtering AddressMap resources.
         :param pulumi.Input[str] account_id: The account identifier to target for the resource.
-        :param pulumi.Input[bool] can_delete: If set to false, then the Address Map cannot be deleted via API. This is true for Cloudflare-managed maps.
+        :param pulumi.Input[bool] can_delete: Controls whether the membership can be deleted via the API or not.
         :param pulumi.Input[bool] can_modify_ips: If set to false, then the IPs on the Address Map cannot be modified via the API. This is true for Cloudflare-managed maps.
         :param pulumi.Input[str] default_sni: If you have legacy TLS clients which do not send the TLS server name indicator, then you can specify one default SNI on the map.
         :param pulumi.Input[str] description: Description of the address map.
@@ -170,7 +170,7 @@ class _AddressMapState:
     @pulumi.getter(name="canDelete")
     def can_delete(self) -> Optional[pulumi.Input[bool]]:
         """
-        If set to false, then the Address Map cannot be deleted via API. This is true for Cloudflare-managed maps.
+        Controls whether the membership can be deleted via the API or not.
         """
         return pulumi.get(self, "can_delete")
 
@@ -428,7 +428,7 @@ class AddressMap(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_id: The account identifier to target for the resource.
-        :param pulumi.Input[bool] can_delete: If set to false, then the Address Map cannot be deleted via API. This is true for Cloudflare-managed maps.
+        :param pulumi.Input[bool] can_delete: Controls whether the membership can be deleted via the API or not.
         :param pulumi.Input[bool] can_modify_ips: If set to false, then the IPs on the Address Map cannot be modified via the API. This is true for Cloudflare-managed maps.
         :param pulumi.Input[str] default_sni: If you have legacy TLS clients which do not send the TLS server name indicator, then you can specify one default SNI on the map.
         :param pulumi.Input[str] description: Description of the address map.
@@ -462,7 +462,7 @@ class AddressMap(pulumi.CustomResource):
     @pulumi.getter(name="canDelete")
     def can_delete(self) -> pulumi.Output[bool]:
         """
-        If set to false, then the Address Map cannot be deleted via API. This is true for Cloudflare-managed maps.
+        Controls whether the membership can be deleted via the API or not.
         """
         return pulumi.get(self, "can_delete")
 

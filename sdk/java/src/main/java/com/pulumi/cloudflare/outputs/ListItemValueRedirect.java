@@ -12,33 +12,89 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ListItemValueRedirect {
+    /**
+     * @return Whether the redirect also matches subdomains of the source url. Available values: `disabled`, `enabled`.
+     * 
+     */
     private @Nullable String includeSubdomains;
+    /**
+     * @return Whether to preserve the path suffix when doing subpath matching. Available values: `disabled`, `enabled`.
+     * 
+     */
     private @Nullable String preservePathSuffix;
+    /**
+     * @return Whether the redirect target url should keep the query string of the request&#39;s url. Available values: `disabled`, `enabled`.
+     * 
+     */
     private @Nullable String preserveQueryString;
+    /**
+     * @return The source url of the redirect.
+     * 
+     */
     private String sourceUrl;
+    /**
+     * @return The status code to be used when redirecting a request.
+     * 
+     */
     private @Nullable Integer statusCode;
+    /**
+     * @return Whether the redirect also matches subpaths of the source url. Available values: `disabled`, `enabled`.
+     * 
+     */
     private @Nullable String subpathMatching;
+    /**
+     * @return The target url of the redirect.
+     * 
+     */
     private String targetUrl;
 
     private ListItemValueRedirect() {}
+    /**
+     * @return Whether the redirect also matches subdomains of the source url. Available values: `disabled`, `enabled`.
+     * 
+     */
     public Optional<String> includeSubdomains() {
         return Optional.ofNullable(this.includeSubdomains);
     }
+    /**
+     * @return Whether to preserve the path suffix when doing subpath matching. Available values: `disabled`, `enabled`.
+     * 
+     */
     public Optional<String> preservePathSuffix() {
         return Optional.ofNullable(this.preservePathSuffix);
     }
+    /**
+     * @return Whether the redirect target url should keep the query string of the request&#39;s url. Available values: `disabled`, `enabled`.
+     * 
+     */
     public Optional<String> preserveQueryString() {
         return Optional.ofNullable(this.preserveQueryString);
     }
+    /**
+     * @return The source url of the redirect.
+     * 
+     */
     public String sourceUrl() {
         return this.sourceUrl;
     }
+    /**
+     * @return The status code to be used when redirecting a request.
+     * 
+     */
     public Optional<Integer> statusCode() {
         return Optional.ofNullable(this.statusCode);
     }
+    /**
+     * @return Whether the redirect also matches subpaths of the source url. Available values: `disabled`, `enabled`.
+     * 
+     */
     public Optional<String> subpathMatching() {
         return Optional.ofNullable(this.subpathMatching);
     }
+    /**
+     * @return The target url of the redirect.
+     * 
+     */
     public String targetUrl() {
         return this.targetUrl;
     }

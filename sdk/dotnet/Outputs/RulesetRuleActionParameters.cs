@@ -13,61 +13,196 @@ namespace Pulumi.Cloudflare.Outputs
     [OutputType]
     public sealed class RulesetRuleActionParameters
     {
+        /// <summary>
+        /// Compression algorithms to use in order of preference.
+        /// </summary>
         public readonly ImmutableArray<Outputs.RulesetRuleActionParametersAlgorithm> Algorithms;
+        /// <summary>
+        /// Turn on or off Cloudflare Automatic HTTPS rewrites.
+        /// </summary>
         public readonly bool? AutomaticHttpsRewrites;
+        /// <summary>
+        /// Indicate which file extensions to minify automatically.
+        /// </summary>
         public readonly ImmutableArray<Outputs.RulesetRuleActionParametersAutominify> Autominifies;
+        /// <summary>
+        /// Inspect the visitor's browser for headers commonly associated with spammers and certain bots.
+        /// </summary>
         public readonly bool? Bic;
+        /// <summary>
+        /// List of browser TTL parameters to apply to the request.
+        /// </summary>
         public readonly Outputs.RulesetRuleActionParametersBrowserTtl? BrowserTtl;
+        /// <summary>
+        /// Whether to cache if expression matches.
+        /// </summary>
         public readonly bool? Cache;
+        /// <summary>
+        /// List of cache key parameters to apply to the request.
+        /// </summary>
         public readonly Outputs.RulesetRuleActionParametersCacheKey? CacheKey;
+        /// <summary>
+        /// Content of the custom error response.
+        /// </summary>
         public readonly string? Content;
+        /// <summary>
+        /// Content-Type of the custom error response.
+        /// </summary>
         public readonly string? ContentType;
+        /// <summary>
+        /// List of cookie values to include as part of custom fields logging.
+        /// </summary>
         public readonly ImmutableArray<string> CookieFields;
+        /// <summary>
+        /// Turn off all active Cloudflare Apps.
+        /// </summary>
         public readonly bool? DisableApps;
+        /// <summary>
+        /// Turn off railgun feature of the Cloudflare Speed app.
+        /// </summary>
         public readonly bool? DisableRailgun;
+        /// <summary>
+        /// Turn off zaraz feature.
+        /// </summary>
         public readonly bool? DisableZaraz;
+        /// <summary>
+        /// List of edge TTL parameters to apply to the request.
+        /// </summary>
         public readonly Outputs.RulesetRuleActionParametersEdgeTtl? EdgeTtl;
+        /// <summary>
+        /// Turn on or off the Cloudflare Email Obfuscation feature of the Cloudflare Scrape Shield app.
+        /// </summary>
         public readonly bool? EmailObfuscation;
+        /// <summary>
+        /// Use a list to lookup information for the action.
+        /// </summary>
         public readonly Outputs.RulesetRuleActionParametersFromList? FromList;
+        /// <summary>
+        /// Use a value to lookup information for the action.
+        /// </summary>
         public readonly Outputs.RulesetRuleActionParametersFromValue? FromValue;
+        /// <summary>
+        /// List of HTTP header modifications to perform in the ruleset rule. Note: Headers are order dependent and must be provided sorted alphabetically ascending based on the `name` value.
+        /// </summary>
         public readonly ImmutableArray<Outputs.RulesetRuleActionParametersHeader> Headers;
+        /// <summary>
+        /// Host Header that request origin receives.
+        /// </summary>
         public readonly string? HostHeader;
+        /// <summary>
+        /// Turn on or off the hotlink protection feature.
+        /// </summary>
         public readonly bool? HotlinkProtection;
         /// <summary>
-        /// The identifier of this resource.
+        /// Identifier of the action parameter to modify.
         /// </summary>
         public readonly string? Id;
         public readonly int? Increment;
+        /// <summary>
+        /// List of properties to configure WAF payload logging.
+        /// </summary>
         public readonly Outputs.RulesetRuleActionParametersMatchedData? MatchedData;
+        /// <summary>
+        /// Turn on or off Cloudflare Mirage of the Cloudflare Speed app.
+        /// </summary>
         public readonly bool? Mirage;
+        /// <summary>
+        /// Turn on or off the Cloudflare Opportunistic Encryption feature of the Edge Certificates tab in the Cloudflare SSL/TLS app.
+        /// </summary>
         public readonly bool? OpportunisticEncryption;
+        /// <summary>
+        /// List of properties to change request origin.
+        /// </summary>
         public readonly Outputs.RulesetRuleActionParametersOrigin? Origin;
         public readonly bool? OriginCacheControl;
+        /// <summary>
+        /// Pass-through error page for origin.
+        /// </summary>
         public readonly bool? OriginErrorPagePassthru;
+        /// <summary>
+        /// List of override configurations to apply to the ruleset.
+        /// </summary>
         public readonly Outputs.RulesetRuleActionParametersOverrides? Overrides;
+        /// <summary>
+        /// Point in the request/response lifecycle where the ruleset will be created. Available values: `ddos_l4`, `ddos_l7`, `http_config_settings`, `http_custom_errors`, `http_log_custom_fields`, `http_ratelimit`, `http_request_cache_settings`, `http_request_dynamic_redirect`, `http_request_firewall_custom`, `http_request_firewall_managed`, `http_request_late_transform`, `http_request_origin`, `http_request_redirect`, `http_request_sanitize`, `http_request_sbfm`, `http_request_transform`, `http_response_compression`, `http_response_firewall_managed`, `http_response_headers_transform`, `magic_transit`.
+        /// </summary>
         public readonly ImmutableArray<string> Phases;
+        /// <summary>
+        /// Apply options from the Polish feature of the Cloudflare Speed app.
+        /// </summary>
         public readonly string? Polish;
+        /// <summary>
+        /// Products to target with the actions. Available values: `bic`, `hot`, `ratelimit`, `securityLevel`, `uablock`, `waf`, `zonelockdown`.
+        /// </summary>
         public readonly ImmutableArray<string> Products;
         public readonly int? ReadTimeout;
+        /// <summary>
+        /// List of request headers to include as part of custom fields logging, in lowercase.
+        /// </summary>
         public readonly ImmutableArray<string> RequestFields;
+        /// <summary>
+        /// Respect strong ETags.
+        /// </summary>
         public readonly bool? RespectStrongEtags;
+        /// <summary>
+        /// List of response headers to include as part of custom fields logging, in lowercase.
+        /// </summary>
         public readonly ImmutableArray<string> ResponseFields;
+        /// <summary>
+        /// List of parameters that configure the response given to end users.
+        /// </summary>
         public readonly ImmutableArray<Outputs.RulesetRuleActionParametersResponse> Responses;
+        /// <summary>
+        /// Turn on or off Cloudflare Rocket Loader in the Cloudflare Speed app.
+        /// </summary>
         public readonly bool? RocketLoader;
         /// <summary>
-        /// List of rules to apply to the ruleset.
+        /// List of rule-based overrides.
         /// </summary>
         public readonly ImmutableDictionary<string, string>? Rules;
+        /// <summary>
+        /// Which ruleset ID to target.
+        /// </summary>
         public readonly string? Ruleset;
+        /// <summary>
+        /// List of managed WAF rule IDs to target. Only valid when the `"action"` is set to skip.
+        /// </summary>
         public readonly ImmutableArray<string> Rulesets;
+        /// <summary>
+        /// Control options for the Security Level feature from the Security app.
+        /// </summary>
         public readonly string? SecurityLevel;
+        /// <summary>
+        /// List of serve stale parameters to apply to the request.
+        /// </summary>
         public readonly Outputs.RulesetRuleActionParametersServeStale? ServeStale;
+        /// <summary>
+        /// Turn on or off the Server Side Excludes feature of the Cloudflare Scrape Shield app.
+        /// </summary>
         public readonly bool? ServerSideExcludes;
+        /// <summary>
+        /// List of properties to manange Server Name Indication.
+        /// </summary>
         public readonly Outputs.RulesetRuleActionParametersSni? Sni;
+        /// <summary>
+        /// Control options for the SSL feature of the Edge Certificates tab in the Cloudflare SSL/TLS app.
+        /// </summary>
         public readonly string? Ssl;
+        /// <summary>
+        /// Status code for which the edge TTL is applied.
+        /// </summary>
         public readonly int? StatusCode;
+        /// <summary>
+        /// Turn on or off the SXG feature.
+        /// </summary>
         public readonly bool? Sxg;
+        /// <summary>
+        /// List of URI properties to configure for the ruleset rule when performing URL rewrite transformations.
+        /// </summary>
         public readonly Outputs.RulesetRuleActionParametersUri? Uri;
+        /// <summary>
+        /// Version of the ruleset to deploy.
+        /// </summary>
         public readonly string? Version;
 
         [OutputConstructor]

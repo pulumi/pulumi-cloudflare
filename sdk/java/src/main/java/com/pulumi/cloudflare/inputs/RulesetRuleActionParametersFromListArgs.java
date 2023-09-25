@@ -15,22 +15,30 @@ public final class RulesetRuleActionParametersFromListArgs extends com.pulumi.re
 
     public static final RulesetRuleActionParametersFromListArgs Empty = new RulesetRuleActionParametersFromListArgs();
 
+    /**
+     * Expression to use for the list lookup.
+     * 
+     */
     @Import(name="key")
     private @Nullable Output<String> key;
 
+    /**
+     * @return Expression to use for the list lookup.
+     * 
+     */
     public Optional<Output<String>> key() {
         return Optional.ofNullable(this.key);
     }
 
     /**
-     * Name of the ruleset.
+     * Name of the compression algorithm to use. Available values: `gzip`, `brotli`, `auto`, `default`, `none`
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return Name of the ruleset.
+     * @return Name of the compression algorithm to use. Available values: `gzip`, `brotli`, `auto`, `default`, `none`
      * 
      */
     public Optional<Output<String>> name() {
@@ -62,17 +70,29 @@ public final class RulesetRuleActionParametersFromListArgs extends com.pulumi.re
             $ = new RulesetRuleActionParametersFromListArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param key Expression to use for the list lookup.
+         * 
+         * @return builder
+         * 
+         */
         public Builder key(@Nullable Output<String> key) {
             $.key = key;
             return this;
         }
 
+        /**
+         * @param key Expression to use for the list lookup.
+         * 
+         * @return builder
+         * 
+         */
         public Builder key(String key) {
             return key(Output.of(key));
         }
 
         /**
-         * @param name Name of the ruleset.
+         * @param name Name of the compression algorithm to use. Available values: `gzip`, `brotli`, `auto`, `default`, `none`
          * 
          * @return builder
          * 
@@ -83,7 +103,7 @@ public final class RulesetRuleActionParametersFromListArgs extends com.pulumi.re
         }
 
         /**
-         * @param name Name of the ruleset.
+         * @param name Name of the compression algorithm to use. Available values: `gzip`, `brotli`, `auto`, `default`, `none`
          * 
          * @return builder
          * 

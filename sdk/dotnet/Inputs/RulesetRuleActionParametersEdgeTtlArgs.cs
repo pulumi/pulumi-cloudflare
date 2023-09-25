@@ -12,14 +12,24 @@ namespace Pulumi.Cloudflare.Inputs
 
     public sealed class RulesetRuleActionParametersEdgeTtlArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Default browser TTL. This value is required when override_origin is set
+        /// </summary>
         [Input("default")]
         public Input<int>? Default { get; set; }
 
+        /// <summary>
+        /// Mode of the browser TTL. Available values: `override_origin`, `respect_origin`, `bypass`
+        /// </summary>
         [Input("mode", required: true)]
         public Input<string> Mode { get; set; } = null!;
 
         [Input("statusCodeTtls")]
         private InputList<Inputs.RulesetRuleActionParametersEdgeTtlStatusCodeTtlArgs>? _statusCodeTtls;
+
+        /// <summary>
+        /// Edge TTL for the status codes.
+        /// </summary>
         public InputList<Inputs.RulesetRuleActionParametersEdgeTtlStatusCodeTtlArgs> StatusCodeTtls
         {
             get => _statusCodeTtls ?? (_statusCodeTtls = new InputList<Inputs.RulesetRuleActionParametersEdgeTtlStatusCodeTtlArgs>());

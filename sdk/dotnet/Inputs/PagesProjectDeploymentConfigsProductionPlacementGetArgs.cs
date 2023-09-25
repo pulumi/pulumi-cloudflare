@@ -12,6 +12,9 @@ namespace Pulumi.Cloudflare.Inputs
 
     public sealed class PagesProjectDeploymentConfigsProductionPlacementGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Placement Mode for the Pages Function.
+        /// </summary>
         [Input("mode")]
         public Input<string>? Mode { get; set; }
 

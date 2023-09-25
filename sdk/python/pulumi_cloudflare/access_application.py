@@ -40,7 +40,7 @@ class AccessApplicationArgs:
                  zone_id: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a AccessApplication resource.
-        :param pulumi.Input[str] name: Friendly name of the Access Application.
+        :param pulumi.Input[str] name: The name of the attribute as provided to the SaaS app.
         :param pulumi.Input[str] account_id: The account identifier to target for the resource. Conflicts with `zone_id`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_idps: The identity providers selected for the application.
         :param pulumi.Input[bool] app_launcher_visible: Option to show/hide applications in App Launcher. Defaults to `true`.
@@ -111,7 +111,7 @@ class AccessApplicationArgs:
     @pulumi.getter
     def name(self) -> pulumi.Input[str]:
         """
-        Friendly name of the Access Application.
+        The name of the attribute as provided to the SaaS app.
         """
         return pulumi.get(self, "name")
 
@@ -414,7 +414,7 @@ class _AccessApplicationState:
         :param pulumi.Input[bool] enable_binding_cookie: Option to provide increased security against compromised authorization tokens and CSRF attacks by requiring an additional "binding" cookie on requests. Defaults to `false`.
         :param pulumi.Input[bool] http_only_cookie_attribute: Option to add the `HttpOnly` cookie flag to access tokens.
         :param pulumi.Input[str] logo_url: Image URL for the logo shown in the app launcher dashboard.
-        :param pulumi.Input[str] name: Friendly name of the Access Application.
+        :param pulumi.Input[str] name: The name of the attribute as provided to the SaaS app.
         :param pulumi.Input['AccessApplicationSaasAppArgs'] saas_app: SaaS configuration for the Access Application.
         :param pulumi.Input[str] same_site_cookie_attribute: Defines the same-site cookie setting for access tokens. Available values: `none`, `lax`, `strict`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] self_hosted_domains: List of domains that access will secure. Only present for self_hosted, vnc, and ssh applications. Always includes the value set as `domain`.
@@ -643,7 +643,7 @@ class _AccessApplicationState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Friendly name of the Access Application.
+        The name of the attribute as provided to the SaaS app.
         """
         return pulumi.get(self, "name")
 
@@ -833,7 +833,7 @@ class AccessApplication(pulumi.CustomResource):
         :param pulumi.Input[bool] enable_binding_cookie: Option to provide increased security against compromised authorization tokens and CSRF attacks by requiring an additional "binding" cookie on requests. Defaults to `false`.
         :param pulumi.Input[bool] http_only_cookie_attribute: Option to add the `HttpOnly` cookie flag to access tokens.
         :param pulumi.Input[str] logo_url: Image URL for the logo shown in the app launcher dashboard.
-        :param pulumi.Input[str] name: Friendly name of the Access Application.
+        :param pulumi.Input[str] name: The name of the attribute as provided to the SaaS app.
         :param pulumi.Input[pulumi.InputType['AccessApplicationSaasAppArgs']] saas_app: SaaS configuration for the Access Application.
         :param pulumi.Input[str] same_site_cookie_attribute: Defines the same-site cookie setting for access tokens. Available values: `none`, `lax`, `strict`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] self_hosted_domains: List of domains that access will secure. Only present for self_hosted, vnc, and ssh applications. Always includes the value set as `domain`.
@@ -1016,7 +1016,7 @@ class AccessApplication(pulumi.CustomResource):
         :param pulumi.Input[bool] enable_binding_cookie: Option to provide increased security against compromised authorization tokens and CSRF attacks by requiring an additional "binding" cookie on requests. Defaults to `false`.
         :param pulumi.Input[bool] http_only_cookie_attribute: Option to add the `HttpOnly` cookie flag to access tokens.
         :param pulumi.Input[str] logo_url: Image URL for the logo shown in the app launcher dashboard.
-        :param pulumi.Input[str] name: Friendly name of the Access Application.
+        :param pulumi.Input[str] name: The name of the attribute as provided to the SaaS app.
         :param pulumi.Input[pulumi.InputType['AccessApplicationSaasAppArgs']] saas_app: SaaS configuration for the Access Application.
         :param pulumi.Input[str] same_site_cookie_attribute: Defines the same-site cookie setting for access tokens. Available values: `none`, `lax`, `strict`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] self_hosted_domains: List of domains that access will secure. Only present for self_hosted, vnc, and ssh applications. Always includes the value set as `domain`.
@@ -1171,7 +1171,7 @@ class AccessApplication(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        Friendly name of the Access Application.
+        The name of the attribute as provided to the SaaS app.
         """
         return pulumi.get(self, "name")
 

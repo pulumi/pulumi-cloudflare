@@ -14,17 +14,41 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class TunnelConfigConfigIngressRuleOriginRequestIpRule {
+    /**
+     * @return Whether to allow the IP prefix.
+     * 
+     */
     private @Nullable Boolean allow;
+    /**
+     * @return Ports to use within the IP rule.
+     * 
+     */
     private @Nullable List<Integer> ports;
+    /**
+     * @return IP rule prefix.
+     * 
+     */
     private @Nullable String prefix;
 
     private TunnelConfigConfigIngressRuleOriginRequestIpRule() {}
+    /**
+     * @return Whether to allow the IP prefix.
+     * 
+     */
     public Optional<Boolean> allow() {
         return Optional.ofNullable(this.allow);
     }
+    /**
+     * @return Ports to use within the IP rule.
+     * 
+     */
     public List<Integer> ports() {
         return this.ports == null ? List.of() : this.ports;
     }
+    /**
+     * @return IP rule prefix.
+     * 
+     */
     public Optional<String> prefix() {
         return Optional.ofNullable(this.prefix);
     }

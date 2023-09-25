@@ -16,9 +16,17 @@ public final class AccessGroupIncludeOktaArgs extends com.pulumi.resources.Resou
 
     public static final AccessGroupIncludeOktaArgs Empty = new AccessGroupIncludeOktaArgs();
 
+    /**
+     * The ID of the Azure Identity provider.
+     * 
+     */
     @Import(name="identityProviderId")
     private @Nullable Output<String> identityProviderId;
 
+    /**
+     * @return The ID of the Azure Identity provider.
+     * 
+     */
     public Optional<Output<String>> identityProviderId() {
         return Optional.ofNullable(this.identityProviderId);
     }
@@ -55,11 +63,23 @@ public final class AccessGroupIncludeOktaArgs extends com.pulumi.resources.Resou
             $ = new AccessGroupIncludeOktaArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param identityProviderId The ID of the Azure Identity provider.
+         * 
+         * @return builder
+         * 
+         */
         public Builder identityProviderId(@Nullable Output<String> identityProviderId) {
             $.identityProviderId = identityProviderId;
             return this;
         }
 
+        /**
+         * @param identityProviderId The ID of the Azure Identity provider.
+         * 
+         * @return builder
+         * 
+         */
         public Builder identityProviderId(String identityProviderId) {
             return identityProviderId(Output.of(identityProviderId));
         }

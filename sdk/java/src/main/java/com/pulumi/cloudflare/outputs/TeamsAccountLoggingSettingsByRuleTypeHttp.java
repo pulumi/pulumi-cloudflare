@@ -9,10 +9,18 @@ import java.util.Objects;
 
 @CustomType
 public final class TeamsAccountLoggingSettingsByRuleTypeHttp {
+    /**
+     * @return Whether to log all activity.
+     * 
+     */
     private Boolean logAll;
     private Boolean logBlocks;
 
     private TeamsAccountLoggingSettingsByRuleTypeHttp() {}
+    /**
+     * @return Whether to log all activity.
+     * 
+     */
     public Boolean logAll() {
         return this.logAll;
     }

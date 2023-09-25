@@ -11,13 +11,29 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class RulesetRuleActionParametersCacheKeyCustomKeyQueryString {
+    /**
+     * @return List of query string parameters to exclude from the custom key.
+     * 
+     */
     private @Nullable List<String> excludes;
+    /**
+     * @return List of cookies to include in the custom key.
+     * 
+     */
     private @Nullable List<String> includes;
 
     private RulesetRuleActionParametersCacheKeyCustomKeyQueryString() {}
+    /**
+     * @return List of query string parameters to exclude from the custom key.
+     * 
+     */
     public List<String> excludes() {
         return this.excludes == null ? List.of() : this.excludes;
     }
+    /**
+     * @return List of cookies to include in the custom key.
+     * 
+     */
     public List<String> includes() {
         return this.includes == null ? List.of() : this.includes;
     }

@@ -14,6 +14,10 @@ namespace Pulumi.Cloudflare.Inputs
     {
         [Input("methods")]
         private InputList<string>? _methods;
+
+        /// <summary>
+        /// HTTP Methods to match traffic on. Available values: `GET`, `POST`, `PUT`, `DELETE`, `PATCH`, `HEAD`, `_ALL_`.
+        /// </summary>
         public InputList<string> Methods
         {
             get => _methods ?? (_methods = new InputList<string>());
@@ -22,12 +26,19 @@ namespace Pulumi.Cloudflare.Inputs
 
         [Input("schemes")]
         private InputList<string>? _schemes;
+
+        /// <summary>
+        /// HTTP schemes to match traffic on. Available values: `HTTP`, `HTTPS`, `_ALL_`.
+        /// </summary>
         public InputList<string> Schemes
         {
             get => _schemes ?? (_schemes = new InputList<string>());
             set => _schemes = value;
         }
 
+        /// <summary>
+        /// The URL pattern to match comprised of the host and path, i.e. example.org/path. Wildcard are expanded to match applicable traffic, query strings are not matched. Use _ for all traffic to your zone.
+        /// </summary>
         [Input("urlPattern")]
         public Input<string>? UrlPattern { get; set; }
 

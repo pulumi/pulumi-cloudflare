@@ -13,8 +13,17 @@ namespace Pulumi.Cloudflare.Outputs
     [OutputType]
     public sealed class RulesetRuleActionParametersUri
     {
+        /// <summary>
+        /// List of properties to change request origin.
+        /// </summary>
         public readonly bool? Origin;
+        /// <summary>
+        /// URI path configuration when performing a URL rewrite.
+        /// </summary>
         public readonly Outputs.RulesetRuleActionParametersUriPath? Path;
+        /// <summary>
+        /// Query string configuration when performing a URL rewrite.
+        /// </summary>
         public readonly Outputs.RulesetRuleActionParametersUriQuery? Query;
 
         [OutputConstructor]

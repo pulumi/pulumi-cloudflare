@@ -14,17 +14,41 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class RulesetRuleActionParametersEdgeTtl {
+    /**
+     * @return Default browser TTL. This value is required when override_origin is set
+     * 
+     */
     private @Nullable Integer default_;
+    /**
+     * @return Mode of the browser TTL. Available values: `override_origin`, `respect_origin`, `bypass`
+     * 
+     */
     private String mode;
+    /**
+     * @return Edge TTL for the status codes.
+     * 
+     */
     private @Nullable List<RulesetRuleActionParametersEdgeTtlStatusCodeTtl> statusCodeTtls;
 
     private RulesetRuleActionParametersEdgeTtl() {}
+    /**
+     * @return Default browser TTL. This value is required when override_origin is set
+     * 
+     */
     public Optional<Integer> default_() {
         return Optional.ofNullable(this.default_);
     }
+    /**
+     * @return Mode of the browser TTL. Available values: `override_origin`, `respect_origin`, `bypass`
+     * 
+     */
     public String mode() {
         return this.mode;
     }
+    /**
+     * @return Edge TTL for the status codes.
+     * 
+     */
     public List<RulesetRuleActionParametersEdgeTtlStatusCodeTtl> statusCodeTtls() {
         return this.statusCodeTtls == null ? List.of() : this.statusCodeTtls;
     }

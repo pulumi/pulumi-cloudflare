@@ -71,9 +71,6 @@ namespace Pulumi.Cloudflare
 
     public sealed class GetAccountsArgs : global::Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// The account name to target for the resource.
-        /// </summary>
         [Input("name")]
         public string? Name { get; set; }
 
@@ -85,9 +82,6 @@ namespace Pulumi.Cloudflare
 
     public sealed class GetAccountsInvokeArgs : global::Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// The account name to target for the resource.
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 

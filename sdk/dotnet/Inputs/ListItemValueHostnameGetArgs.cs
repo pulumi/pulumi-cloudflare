@@ -12,6 +12,9 @@ namespace Pulumi.Cloudflare.Inputs
 
     public sealed class ListItemValueHostnameGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The FQDN to match on. Wildcard sub-domain matching is allowed. Eg. *.abc.com.
+        /// </summary>
         [Input("urlHostname", required: true)]
         public Input<string> UrlHostname { get; set; } = null!;
 

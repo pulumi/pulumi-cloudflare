@@ -29,13 +29,10 @@ namespace Pulumi.Cloudflare
     ///     var exampleCertRequest = new Tls.CertRequest("exampleCertRequest", new()
     ///     {
     ///         PrivateKeyPem = examplePrivateKey.PrivateKeyPem,
-    ///         Subjects = new[]
+    ///         Subject = new Tls.Inputs.CertRequestSubjectArgs
     ///         {
-    ///             new Tls.Inputs.CertRequestSubjectArgs
-    ///             {
-    ///                 CommonName = "",
-    ///                 Organization = "Terraform Test",
-    ///             },
+    ///             CommonName = "",
+    ///             Organization = "Terraform Test",
     ///         },
     ///     });
     /// 

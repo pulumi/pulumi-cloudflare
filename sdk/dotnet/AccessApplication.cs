@@ -155,7 +155,7 @@ namespace Pulumi.Cloudflare
         public Output<string?> LogoUrl { get; private set; } = null!;
 
         /// <summary>
-        /// Friendly name of the Access Application.
+        /// The name of the attribute as provided to the SaaS app.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -351,7 +351,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? LogoUrl { get; set; }
 
         /// <summary>
-        /// Friendly name of the Access Application.
+        /// The name of the attribute as provided to the SaaS app.
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
@@ -521,7 +521,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? LogoUrl { get; set; }
 
         /// <summary>
-        /// Friendly name of the Access Application.
+        /// The name of the attribute as provided to the SaaS app.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

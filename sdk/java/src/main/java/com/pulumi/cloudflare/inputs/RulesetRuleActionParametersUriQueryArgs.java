@@ -15,16 +15,32 @@ public final class RulesetRuleActionParametersUriQueryArgs extends com.pulumi.re
 
     public static final RulesetRuleActionParametersUriQueryArgs Empty = new RulesetRuleActionParametersUriQueryArgs();
 
+    /**
+     * Use a value dynamically determined by the Firewall Rules expression language based on Wireshark display filters. Refer to the [Firewall Rules language](https://developers.cloudflare.com/firewall/cf-firewall-language) documentation for all available fields, operators, and functions.
+     * 
+     */
     @Import(name="expression")
     private @Nullable Output<String> expression;
 
+    /**
+     * @return Use a value dynamically determined by the Firewall Rules expression language based on Wireshark display filters. Refer to the [Firewall Rules language](https://developers.cloudflare.com/firewall/cf-firewall-language) documentation for all available fields, operators, and functions.
+     * 
+     */
     public Optional<Output<String>> expression() {
         return Optional.ofNullable(this.expression);
     }
 
+    /**
+     * Status code edge TTL value.
+     * 
+     */
     @Import(name="value")
     private @Nullable Output<String> value;
 
+    /**
+     * @return Status code edge TTL value.
+     * 
+     */
     public Optional<Output<String>> value() {
         return Optional.ofNullable(this.value);
     }
@@ -54,20 +70,44 @@ public final class RulesetRuleActionParametersUriQueryArgs extends com.pulumi.re
             $ = new RulesetRuleActionParametersUriQueryArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param expression Use a value dynamically determined by the Firewall Rules expression language based on Wireshark display filters. Refer to the [Firewall Rules language](https://developers.cloudflare.com/firewall/cf-firewall-language) documentation for all available fields, operators, and functions.
+         * 
+         * @return builder
+         * 
+         */
         public Builder expression(@Nullable Output<String> expression) {
             $.expression = expression;
             return this;
         }
 
+        /**
+         * @param expression Use a value dynamically determined by the Firewall Rules expression language based on Wireshark display filters. Refer to the [Firewall Rules language](https://developers.cloudflare.com/firewall/cf-firewall-language) documentation for all available fields, operators, and functions.
+         * 
+         * @return builder
+         * 
+         */
         public Builder expression(String expression) {
             return expression(Output.of(expression));
         }
 
+        /**
+         * @param value Status code edge TTL value.
+         * 
+         * @return builder
+         * 
+         */
         public Builder value(@Nullable Output<String> value) {
             $.value = value;
             return this;
         }
 
+        /**
+         * @param value Status code edge TTL value.
+         * 
+         * @return builder
+         * 
+         */
         public Builder value(String value) {
             return value(Output.of(value));
         }

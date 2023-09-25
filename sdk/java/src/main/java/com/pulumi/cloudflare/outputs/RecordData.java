@@ -31,20 +31,12 @@ public final class RecordData {
     private @Nullable Integer longMinutes;
     private @Nullable Double longSeconds;
     private @Nullable Integer matchingType;
-    /**
-     * @return The name of the record. **Modifying this attribute will force creation of a new resource.**
-     * 
-     */
     private @Nullable String name;
     private @Nullable Integer order;
     private @Nullable Integer port;
     private @Nullable Double precisionHorz;
     private @Nullable Double precisionVert;
     private @Nullable Integer preference;
-    /**
-     * @return The priority of the record.
-     * 
-     */
     private @Nullable Integer priority;
     private @Nullable String proto;
     private @Nullable Integer protocol;
@@ -56,16 +48,8 @@ public final class RecordData {
     private @Nullable Double size;
     private @Nullable String tag;
     private @Nullable String target;
-    /**
-     * @return The type of the record. Available values: `A`, `AAAA`, `CAA`, `CNAME`, `TXT`, `SRV`, `LOC`, `MX`, `NS`, `SPF`, `CERT`, `DNSKEY`, `DS`, `NAPTR`, `SMIMEA`, `SSHFP`, `TLSA`, `URI`, `PTR`, `HTTPS`, `SVCB`. **Modifying this attribute will force creation of a new resource.**
-     * 
-     */
     private @Nullable Integer type;
     private @Nullable Integer usage;
-    /**
-     * @return The value of the record. Conflicts with `data`.
-     * 
-     */
     private @Nullable String value;
     private @Nullable Integer weight;
 
@@ -124,10 +108,6 @@ public final class RecordData {
     public Optional<Integer> matchingType() {
         return Optional.ofNullable(this.matchingType);
     }
-    /**
-     * @return The name of the record. **Modifying this attribute will force creation of a new resource.**
-     * 
-     */
     public Optional<String> name() {
         return Optional.ofNullable(this.name);
     }
@@ -146,10 +126,6 @@ public final class RecordData {
     public Optional<Integer> preference() {
         return Optional.ofNullable(this.preference);
     }
-    /**
-     * @return The priority of the record.
-     * 
-     */
     public Optional<Integer> priority() {
         return Optional.ofNullable(this.priority);
     }
@@ -183,20 +159,12 @@ public final class RecordData {
     public Optional<String> target() {
         return Optional.ofNullable(this.target);
     }
-    /**
-     * @return The type of the record. Available values: `A`, `AAAA`, `CAA`, `CNAME`, `TXT`, `SRV`, `LOC`, `MX`, `NS`, `SPF`, `CERT`, `DNSKEY`, `DS`, `NAPTR`, `SMIMEA`, `SSHFP`, `TLSA`, `URI`, `PTR`, `HTTPS`, `SVCB`. **Modifying this attribute will force creation of a new resource.**
-     * 
-     */
     public Optional<Integer> type() {
         return Optional.ofNullable(this.type);
     }
     public Optional<Integer> usage() {
         return Optional.ofNullable(this.usage);
     }
-    /**
-     * @return The value of the record. Conflicts with `data`.
-     * 
-     */
     public Optional<String> value() {
         return Optional.ofNullable(this.value);
     }

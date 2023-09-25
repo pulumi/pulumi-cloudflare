@@ -16,23 +16,47 @@ public final class RateLimitMatchRequestArgs extends com.pulumi.resources.Resour
 
     public static final RateLimitMatchRequestArgs Empty = new RateLimitMatchRequestArgs();
 
+    /**
+     * HTTP Methods to match traffic on. Available values: `GET`, `POST`, `PUT`, `DELETE`, `PATCH`, `HEAD`, `_ALL_`.
+     * 
+     */
     @Import(name="methods")
     private @Nullable Output<List<String>> methods;
 
+    /**
+     * @return HTTP Methods to match traffic on. Available values: `GET`, `POST`, `PUT`, `DELETE`, `PATCH`, `HEAD`, `_ALL_`.
+     * 
+     */
     public Optional<Output<List<String>>> methods() {
         return Optional.ofNullable(this.methods);
     }
 
+    /**
+     * HTTP schemes to match traffic on. Available values: `HTTP`, `HTTPS`, `_ALL_`.
+     * 
+     */
     @Import(name="schemes")
     private @Nullable Output<List<String>> schemes;
 
+    /**
+     * @return HTTP schemes to match traffic on. Available values: `HTTP`, `HTTPS`, `_ALL_`.
+     * 
+     */
     public Optional<Output<List<String>>> schemes() {
         return Optional.ofNullable(this.schemes);
     }
 
+    /**
+     * The URL pattern to match comprised of the host and path, i.e. example.org/path. Wildcard are expanded to match applicable traffic, query strings are not matched. Use _ for all traffic to your zone.
+     * 
+     */
     @Import(name="urlPattern")
     private @Nullable Output<String> urlPattern;
 
+    /**
+     * @return The URL pattern to match comprised of the host and path, i.e. example.org/path. Wildcard are expanded to match applicable traffic, query strings are not matched. Use _ for all traffic to your zone.
+     * 
+     */
     public Optional<Output<String>> urlPattern() {
         return Optional.ofNullable(this.urlPattern);
     }
@@ -63,37 +87,85 @@ public final class RateLimitMatchRequestArgs extends com.pulumi.resources.Resour
             $ = new RateLimitMatchRequestArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param methods HTTP Methods to match traffic on. Available values: `GET`, `POST`, `PUT`, `DELETE`, `PATCH`, `HEAD`, `_ALL_`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder methods(@Nullable Output<List<String>> methods) {
             $.methods = methods;
             return this;
         }
 
+        /**
+         * @param methods HTTP Methods to match traffic on. Available values: `GET`, `POST`, `PUT`, `DELETE`, `PATCH`, `HEAD`, `_ALL_`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder methods(List<String> methods) {
             return methods(Output.of(methods));
         }
 
+        /**
+         * @param methods HTTP Methods to match traffic on. Available values: `GET`, `POST`, `PUT`, `DELETE`, `PATCH`, `HEAD`, `_ALL_`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder methods(String... methods) {
             return methods(List.of(methods));
         }
 
+        /**
+         * @param schemes HTTP schemes to match traffic on. Available values: `HTTP`, `HTTPS`, `_ALL_`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder schemes(@Nullable Output<List<String>> schemes) {
             $.schemes = schemes;
             return this;
         }
 
+        /**
+         * @param schemes HTTP schemes to match traffic on. Available values: `HTTP`, `HTTPS`, `_ALL_`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder schemes(List<String> schemes) {
             return schemes(Output.of(schemes));
         }
 
+        /**
+         * @param schemes HTTP schemes to match traffic on. Available values: `HTTP`, `HTTPS`, `_ALL_`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder schemes(String... schemes) {
             return schemes(List.of(schemes));
         }
 
+        /**
+         * @param urlPattern The URL pattern to match comprised of the host and path, i.e. example.org/path. Wildcard are expanded to match applicable traffic, query strings are not matched. Use _ for all traffic to your zone.
+         * 
+         * @return builder
+         * 
+         */
         public Builder urlPattern(@Nullable Output<String> urlPattern) {
             $.urlPattern = urlPattern;
             return this;
         }
 
+        /**
+         * @param urlPattern The URL pattern to match comprised of the host and path, i.e. example.org/path. Wildcard are expanded to match applicable traffic, query strings are not matched. Use _ for all traffic to your zone.
+         * 
+         * @return builder
+         * 
+         */
         public Builder urlPattern(String urlPattern) {
             return urlPattern(Output.of(urlPattern));
         }

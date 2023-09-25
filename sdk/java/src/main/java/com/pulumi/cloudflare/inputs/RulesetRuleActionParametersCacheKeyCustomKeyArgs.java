@@ -19,37 +19,77 @@ public final class RulesetRuleActionParametersCacheKeyCustomKeyArgs extends com.
 
     public static final RulesetRuleActionParametersCacheKeyCustomKeyArgs Empty = new RulesetRuleActionParametersCacheKeyCustomKeyArgs();
 
+    /**
+     * Cookie parameters for the custom key.
+     * 
+     */
     @Import(name="cookie")
     private @Nullable Output<RulesetRuleActionParametersCacheKeyCustomKeyCookieArgs> cookie;
 
+    /**
+     * @return Cookie parameters for the custom key.
+     * 
+     */
     public Optional<Output<RulesetRuleActionParametersCacheKeyCustomKeyCookieArgs>> cookie() {
         return Optional.ofNullable(this.cookie);
     }
 
+    /**
+     * Header parameters for the custom key.
+     * 
+     */
     @Import(name="header")
     private @Nullable Output<RulesetRuleActionParametersCacheKeyCustomKeyHeaderArgs> header;
 
+    /**
+     * @return Header parameters for the custom key.
+     * 
+     */
     public Optional<Output<RulesetRuleActionParametersCacheKeyCustomKeyHeaderArgs>> header() {
         return Optional.ofNullable(this.header);
     }
 
+    /**
+     * Host parameters for the custom key.
+     * 
+     */
     @Import(name="host")
     private @Nullable Output<RulesetRuleActionParametersCacheKeyCustomKeyHostArgs> host;
 
+    /**
+     * @return Host parameters for the custom key.
+     * 
+     */
     public Optional<Output<RulesetRuleActionParametersCacheKeyCustomKeyHostArgs>> host() {
         return Optional.ofNullable(this.host);
     }
 
+    /**
+     * Query string parameters for the custom key.
+     * 
+     */
     @Import(name="queryString")
     private @Nullable Output<RulesetRuleActionParametersCacheKeyCustomKeyQueryStringArgs> queryString;
 
+    /**
+     * @return Query string parameters for the custom key.
+     * 
+     */
     public Optional<Output<RulesetRuleActionParametersCacheKeyCustomKeyQueryStringArgs>> queryString() {
         return Optional.ofNullable(this.queryString);
     }
 
+    /**
+     * User parameters for the custom key.
+     * 
+     */
     @Import(name="user")
     private @Nullable Output<RulesetRuleActionParametersCacheKeyCustomKeyUserArgs> user;
 
+    /**
+     * @return User parameters for the custom key.
+     * 
+     */
     public Optional<Output<RulesetRuleActionParametersCacheKeyCustomKeyUserArgs>> user() {
         return Optional.ofNullable(this.user);
     }
@@ -82,47 +122,107 @@ public final class RulesetRuleActionParametersCacheKeyCustomKeyArgs extends com.
             $ = new RulesetRuleActionParametersCacheKeyCustomKeyArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param cookie Cookie parameters for the custom key.
+         * 
+         * @return builder
+         * 
+         */
         public Builder cookie(@Nullable Output<RulesetRuleActionParametersCacheKeyCustomKeyCookieArgs> cookie) {
             $.cookie = cookie;
             return this;
         }
 
+        /**
+         * @param cookie Cookie parameters for the custom key.
+         * 
+         * @return builder
+         * 
+         */
         public Builder cookie(RulesetRuleActionParametersCacheKeyCustomKeyCookieArgs cookie) {
             return cookie(Output.of(cookie));
         }
 
+        /**
+         * @param header Header parameters for the custom key.
+         * 
+         * @return builder
+         * 
+         */
         public Builder header(@Nullable Output<RulesetRuleActionParametersCacheKeyCustomKeyHeaderArgs> header) {
             $.header = header;
             return this;
         }
 
+        /**
+         * @param header Header parameters for the custom key.
+         * 
+         * @return builder
+         * 
+         */
         public Builder header(RulesetRuleActionParametersCacheKeyCustomKeyHeaderArgs header) {
             return header(Output.of(header));
         }
 
+        /**
+         * @param host Host parameters for the custom key.
+         * 
+         * @return builder
+         * 
+         */
         public Builder host(@Nullable Output<RulesetRuleActionParametersCacheKeyCustomKeyHostArgs> host) {
             $.host = host;
             return this;
         }
 
+        /**
+         * @param host Host parameters for the custom key.
+         * 
+         * @return builder
+         * 
+         */
         public Builder host(RulesetRuleActionParametersCacheKeyCustomKeyHostArgs host) {
             return host(Output.of(host));
         }
 
+        /**
+         * @param queryString Query string parameters for the custom key.
+         * 
+         * @return builder
+         * 
+         */
         public Builder queryString(@Nullable Output<RulesetRuleActionParametersCacheKeyCustomKeyQueryStringArgs> queryString) {
             $.queryString = queryString;
             return this;
         }
 
+        /**
+         * @param queryString Query string parameters for the custom key.
+         * 
+         * @return builder
+         * 
+         */
         public Builder queryString(RulesetRuleActionParametersCacheKeyCustomKeyQueryStringArgs queryString) {
             return queryString(Output.of(queryString));
         }
 
+        /**
+         * @param user User parameters for the custom key.
+         * 
+         * @return builder
+         * 
+         */
         public Builder user(@Nullable Output<RulesetRuleActionParametersCacheKeyCustomKeyUserArgs> user) {
             $.user = user;
             return this;
         }
 
+        /**
+         * @param user User parameters for the custom key.
+         * 
+         * @return builder
+         * 
+         */
         public Builder user(RulesetRuleActionParametersCacheKeyCustomKeyUserArgs user) {
             return user(Output.of(user));
         }

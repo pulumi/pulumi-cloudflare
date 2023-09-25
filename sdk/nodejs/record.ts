@@ -105,7 +105,7 @@ export class Record extends pulumi.CustomResource {
      */
     public /*out*/ readonly modifiedOn!: pulumi.Output<string>;
     /**
-     * The name of the record. **Modifying this attribute will force creation of a new resource.**
+     * The name of the record.
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -129,11 +129,12 @@ export class Record extends pulumi.CustomResource {
      */
     public readonly ttl!: pulumi.Output<number>;
     /**
-     * The type of the record. Available values: `A`, `AAAA`, `CAA`, `CNAME`, `TXT`, `SRV`, `LOC`, `MX`, `NS`, `SPF`, `CERT`, `DNSKEY`, `DS`, `NAPTR`, `SMIMEA`, `SSHFP`, `TLSA`, `URI`, `PTR`, `HTTPS`, `SVCB`. **Modifying this attribute will force creation of a new resource.**
+     * The type of the record. Available values: `A`, `AAAA`, `CAA`, `CNAME`, `TXT`, `SRV`, `LOC`, `MX`, `NS`, `SPF`, `CERT`,
+     * `DNSKEY`, `DS`, `NAPTR`, `SMIMEA`, `SSHFP`, `TLSA`, `URI`, `PTR`, `HTTPS`, `SVCB`
      */
     public readonly type!: pulumi.Output<string>;
     /**
-     * The value of the record. Conflicts with `data`.
+     * The value of the record.
      */
     public readonly value!: pulumi.Output<string>;
     /**
@@ -238,7 +239,7 @@ export interface RecordState {
      */
     modifiedOn?: pulumi.Input<string>;
     /**
-     * The name of the record. **Modifying this attribute will force creation of a new resource.**
+     * The name of the record.
      */
     name?: pulumi.Input<string>;
     /**
@@ -262,11 +263,12 @@ export interface RecordState {
      */
     ttl?: pulumi.Input<number>;
     /**
-     * The type of the record. Available values: `A`, `AAAA`, `CAA`, `CNAME`, `TXT`, `SRV`, `LOC`, `MX`, `NS`, `SPF`, `CERT`, `DNSKEY`, `DS`, `NAPTR`, `SMIMEA`, `SSHFP`, `TLSA`, `URI`, `PTR`, `HTTPS`, `SVCB`. **Modifying this attribute will force creation of a new resource.**
+     * The type of the record. Available values: `A`, `AAAA`, `CAA`, `CNAME`, `TXT`, `SRV`, `LOC`, `MX`, `NS`, `SPF`, `CERT`,
+     * `DNSKEY`, `DS`, `NAPTR`, `SMIMEA`, `SSHFP`, `TLSA`, `URI`, `PTR`, `HTTPS`, `SVCB`
      */
     type?: pulumi.Input<string>;
     /**
-     * The value of the record. Conflicts with `data`.
+     * The value of the record.
      */
     value?: pulumi.Input<string>;
     /**
@@ -294,7 +296,7 @@ export interface RecordArgs {
      */
     data?: pulumi.Input<inputs.RecordData>;
     /**
-     * The name of the record. **Modifying this attribute will force creation of a new resource.**
+     * The name of the record.
      */
     name: pulumi.Input<string>;
     /**
@@ -314,11 +316,12 @@ export interface RecordArgs {
      */
     ttl?: pulumi.Input<number>;
     /**
-     * The type of the record. Available values: `A`, `AAAA`, `CAA`, `CNAME`, `TXT`, `SRV`, `LOC`, `MX`, `NS`, `SPF`, `CERT`, `DNSKEY`, `DS`, `NAPTR`, `SMIMEA`, `SSHFP`, `TLSA`, `URI`, `PTR`, `HTTPS`, `SVCB`. **Modifying this attribute will force creation of a new resource.**
+     * The type of the record. Available values: `A`, `AAAA`, `CAA`, `CNAME`, `TXT`, `SRV`, `LOC`, `MX`, `NS`, `SPF`, `CERT`,
+     * `DNSKEY`, `DS`, `NAPTR`, `SMIMEA`, `SSHFP`, `TLSA`, `URI`, `PTR`, `HTTPS`, `SVCB`
      */
     type: pulumi.Input<string>;
     /**
-     * The value of the record. Conflicts with `data`.
+     * The value of the record.
      */
     value?: pulumi.Input<string>;
     /**

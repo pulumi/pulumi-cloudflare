@@ -23,7 +23,7 @@ public final class GetRulesetsRulesetRule {
     private @Nullable GetRulesetsRulesetRuleExposedCredentialCheck exposedCredentialCheck;
     private String expression;
     /**
-     * @return The ID of this resource.
+     * @return The ID of the Ruleset to target.
      * 
      */
     private String id;
@@ -31,6 +31,10 @@ public final class GetRulesetsRulesetRule {
     private @Nullable GetRulesetsRulesetRuleLogging logging;
     private @Nullable GetRulesetsRulesetRuleRatelimit ratelimit;
     private String ref;
+    /**
+     * @return Version of the ruleset to filter on.
+     * 
+     */
     private String version;
 
     private GetRulesetsRulesetRule() {}
@@ -53,7 +57,7 @@ public final class GetRulesetsRulesetRule {
         return this.expression;
     }
     /**
-     * @return The ID of this resource.
+     * @return The ID of the Ruleset to target.
      * 
      */
     public String id() {
@@ -71,6 +75,10 @@ public final class GetRulesetsRulesetRule {
     public String ref() {
         return this.ref;
     }
+    /**
+     * @return Version of the ruleset to filter on.
+     * 
+     */
     public String version() {
         return this.version;
     }

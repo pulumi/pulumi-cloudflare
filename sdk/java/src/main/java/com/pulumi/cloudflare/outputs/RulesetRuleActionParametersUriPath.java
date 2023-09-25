@@ -11,13 +11,29 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class RulesetRuleActionParametersUriPath {
+    /**
+     * @return Use a value dynamically determined by the Firewall Rules expression language based on Wireshark display filters. Refer to the [Firewall Rules language](https://developers.cloudflare.com/firewall/cf-firewall-language) documentation for all available fields, operators, and functions.
+     * 
+     */
     private @Nullable String expression;
+    /**
+     * @return Status code edge TTL value.
+     * 
+     */
     private @Nullable String value;
 
     private RulesetRuleActionParametersUriPath() {}
+    /**
+     * @return Use a value dynamically determined by the Firewall Rules expression language based on Wireshark display filters. Refer to the [Firewall Rules language](https://developers.cloudflare.com/firewall/cf-firewall-language) documentation for all available fields, operators, and functions.
+     * 
+     */
     public Optional<String> expression() {
         return Optional.ofNullable(this.expression);
     }
+    /**
+     * @return Status code edge TTL value.
+     * 
+     */
     public Optional<String> value() {
         return Optional.ofNullable(this.value);
     }

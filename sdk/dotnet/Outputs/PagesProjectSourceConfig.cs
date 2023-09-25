@@ -13,17 +13,41 @@ namespace Pulumi.Cloudflare.Outputs
     [OutputType]
     public sealed class PagesProjectSourceConfig
     {
+        /// <summary>
+        /// Toggle deployments on this repo. Defaults to `true`.
+        /// </summary>
         public readonly bool? DeploymentsEnabled;
+        /// <summary>
+        /// Project owner username. **Modifying this attribute will force creation of a new resource.**
+        /// </summary>
         public readonly string? Owner;
+        /// <summary>
+        /// Enable Pages to comment on Pull Requests. Defaults to `true`.
+        /// </summary>
         public readonly bool? PrCommentsEnabled;
+        /// <summary>
+        /// Branches will be excluded from automatic deployment.
+        /// </summary>
         public readonly ImmutableArray<string> PreviewBranchExcludes;
+        /// <summary>
+        /// Branches will be included for automatic deployment.
+        /// </summary>
         public readonly ImmutableArray<string> PreviewBranchIncludes;
+        /// <summary>
+        /// Preview Deployment Setting. Defaults to `all`.
+        /// </summary>
         public readonly string? PreviewDeploymentSetting;
         /// <summary>
-        /// The name of the branch that is used for the production environment.
+        /// Project production branch name.
         /// </summary>
         public readonly string ProductionBranch;
+        /// <summary>
+        /// Enable production deployments. Defaults to `true`.
+        /// </summary>
         public readonly bool? ProductionDeploymentEnabled;
+        /// <summary>
+        /// Project repository name. **Modifying this attribute will force creation of a new resource.**
+        /// </summary>
         public readonly string? RepoName;
 
         [OutputConstructor]

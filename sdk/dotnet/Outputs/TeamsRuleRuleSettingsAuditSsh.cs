@@ -13,6 +13,9 @@ namespace Pulumi.Cloudflare.Outputs
     [OutputType]
     public sealed class TeamsRuleRuleSettingsAuditSsh
     {
+        /// <summary>
+        /// Log all SSH commands.
+        /// </summary>
         public readonly bool CommandLogging;
 
         [OutputConstructor]

@@ -12,12 +12,21 @@ namespace Pulumi.Cloudflare.Inputs
 
     public sealed class RulesetRuleActionParametersResponseArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Content of the custom error response.
+        /// </summary>
         [Input("content")]
         public Input<string>? Content { get; set; }
 
+        /// <summary>
+        /// Content-Type of the custom error response.
+        /// </summary>
         [Input("contentType")]
         public Input<string>? ContentType { get; set; }
 
+        /// <summary>
+        /// Status code for which the edge TTL is applied.
+        /// </summary>
         [Input("statusCode")]
         public Input<int>? StatusCode { get; set; }
 

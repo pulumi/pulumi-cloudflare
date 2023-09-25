@@ -12,6 +12,9 @@ namespace Pulumi.Cloudflare.Inputs
 
     public sealed class TeamsRuleRuleSettingsAuditSshGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Log all SSH commands.
+        /// </summary>
         [Input("commandLogging", required: true)]
         public Input<bool> CommandLogging { get; set; } = null!;
 

@@ -30,17 +30,9 @@ public final class NotificationPolicyWebhooksIntegrationArgs extends com.pulumi.
         return this.id;
     }
 
-    /**
-     * The name of the notification policy.
-     * 
-     */
     @Import(name="name")
     private @Nullable Output<String> name;
 
-    /**
-     * @return The name of the notification policy.
-     * 
-     */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
     }
@@ -91,23 +83,11 @@ public final class NotificationPolicyWebhooksIntegrationArgs extends com.pulumi.
             return id(Output.of(id));
         }
 
-        /**
-         * @param name The name of the notification policy.
-         * 
-         * @return builder
-         * 
-         */
         public Builder name(@Nullable Output<String> name) {
             $.name = name;
             return this;
         }
 
-        /**
-         * @param name The name of the notification policy.
-         * 
-         * @return builder
-         * 
-         */
         public Builder name(String name) {
             return name(Output.of(name));
         }

@@ -12,21 +12,45 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class TunnelConfigConfigIngressRule {
+    /**
+     * @return Hostname to match the incoming request with. If the hostname matches, the request will be sent to the service.
+     * 
+     */
     private @Nullable String hostname;
     private @Nullable TunnelConfigConfigIngressRuleOriginRequest originRequest;
+    /**
+     * @return Path of the incoming request. If the path matches, the request will be sent to the local service.
+     * 
+     */
     private @Nullable String path;
+    /**
+     * @return Name of the service to which the request will be sent.
+     * 
+     */
     private String service;
 
     private TunnelConfigConfigIngressRule() {}
+    /**
+     * @return Hostname to match the incoming request with. If the hostname matches, the request will be sent to the service.
+     * 
+     */
     public Optional<String> hostname() {
         return Optional.ofNullable(this.hostname);
     }
     public Optional<TunnelConfigConfigIngressRuleOriginRequest> originRequest() {
         return Optional.ofNullable(this.originRequest);
     }
+    /**
+     * @return Path of the incoming request. If the path matches, the request will be sent to the local service.
+     * 
+     */
     public Optional<String> path() {
         return Optional.ofNullable(this.path);
     }
+    /**
+     * @return Name of the service to which the request will be sent.
+     * 
+     */
     public String service() {
         return this.service;
     }

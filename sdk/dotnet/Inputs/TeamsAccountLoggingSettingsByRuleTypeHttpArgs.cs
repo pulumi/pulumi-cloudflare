@@ -12,6 +12,9 @@ namespace Pulumi.Cloudflare.Inputs
 
     public sealed class TeamsAccountLoggingSettingsByRuleTypeHttpArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Whether to log all activity.
+        /// </summary>
         [Input("logAll", required: true)]
         public Input<bool> LogAll { get; set; } = null!;
 

@@ -98,7 +98,7 @@ export class WaitingRoom extends pulumi.CustomResource {
      */
     public readonly disableSessionRenewal!: pulumi.Output<boolean | undefined>;
     /**
-     * Host name for which the waiting room will be applied (no wildcards).
+     * The additional host name for which the waiting room to be applied on (no wildcards).
      */
     public readonly host!: pulumi.Output<string>;
     /**
@@ -114,7 +114,7 @@ export class WaitingRoom extends pulumi.CustomResource {
      */
     public readonly newUsersPerMinute!: pulumi.Output<number>;
     /**
-     * The path within the host to enable the waiting room on. Defaults to `/`.
+     * The path within the additional host to enable the waiting room on. Defaults to `/`.
      */
     public readonly path!: pulumi.Output<string | undefined>;
     /**
@@ -247,7 +247,7 @@ export interface WaitingRoomState {
      */
     disableSessionRenewal?: pulumi.Input<boolean>;
     /**
-     * Host name for which the waiting room will be applied (no wildcards).
+     * The additional host name for which the waiting room to be applied on (no wildcards).
      */
     host?: pulumi.Input<string>;
     /**
@@ -263,7 +263,7 @@ export interface WaitingRoomState {
      */
     newUsersPerMinute?: pulumi.Input<number>;
     /**
-     * The path within the host to enable the waiting room on. Defaults to `/`.
+     * The path within the additional host to enable the waiting room on. Defaults to `/`.
      */
     path?: pulumi.Input<string>;
     /**
@@ -325,7 +325,7 @@ export interface WaitingRoomArgs {
      */
     disableSessionRenewal?: pulumi.Input<boolean>;
     /**
-     * Host name for which the waiting room will be applied (no wildcards).
+     * The additional host name for which the waiting room to be applied on (no wildcards).
      */
     host: pulumi.Input<string>;
     /**
@@ -341,7 +341,7 @@ export interface WaitingRoomArgs {
      */
     newUsersPerMinute: pulumi.Input<number>;
     /**
-     * The path within the host to enable the waiting room on. Defaults to `/`.
+     * The path within the additional host to enable the waiting room on. Defaults to `/`.
      */
     path?: pulumi.Input<string>;
     /**

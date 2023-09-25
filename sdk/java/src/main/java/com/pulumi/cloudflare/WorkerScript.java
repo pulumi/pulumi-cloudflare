@@ -194,28 +194,28 @@ public class WorkerScript extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.logpush);
     }
     /**
-     * Whether to upload Worker as a module.
+     * The base64 encoded wasm module you want to store.
      * 
      */
     @Export(name="module", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> module;
 
     /**
-     * @return Whether to upload Worker as a module.
+     * @return The base64 encoded wasm module you want to store.
      * 
      */
     public Output<Optional<Boolean>> module() {
         return Codegen.optional(this.module);
     }
     /**
-     * The name for the script. **Modifying this attribute will force creation of a new resource.**
+     * The global variable for the binding in your Worker code.
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return The name for the script. **Modifying this attribute will force creation of a new resource.**
+     * @return The global variable for the binding in your Worker code.
      * 
      */
     public Output<String> name() {

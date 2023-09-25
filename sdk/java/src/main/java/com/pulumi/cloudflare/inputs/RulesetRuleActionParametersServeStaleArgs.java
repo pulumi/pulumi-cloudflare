@@ -15,9 +15,17 @@ public final class RulesetRuleActionParametersServeStaleArgs extends com.pulumi.
 
     public static final RulesetRuleActionParametersServeStaleArgs Empty = new RulesetRuleActionParametersServeStaleArgs();
 
+    /**
+     * Disable stale while updating.
+     * 
+     */
     @Import(name="disableStaleWhileUpdating")
     private @Nullable Output<Boolean> disableStaleWhileUpdating;
 
+    /**
+     * @return Disable stale while updating.
+     * 
+     */
     public Optional<Output<Boolean>> disableStaleWhileUpdating() {
         return Optional.ofNullable(this.disableStaleWhileUpdating);
     }
@@ -46,11 +54,23 @@ public final class RulesetRuleActionParametersServeStaleArgs extends com.pulumi.
             $ = new RulesetRuleActionParametersServeStaleArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param disableStaleWhileUpdating Disable stale while updating.
+         * 
+         * @return builder
+         * 
+         */
         public Builder disableStaleWhileUpdating(@Nullable Output<Boolean> disableStaleWhileUpdating) {
             $.disableStaleWhileUpdating = disableStaleWhileUpdating;
             return this;
         }
 
+        /**
+         * @param disableStaleWhileUpdating Disable stale while updating.
+         * 
+         * @return builder
+         * 
+         */
         public Builder disableStaleWhileUpdating(Boolean disableStaleWhileUpdating) {
             return disableStaleWhileUpdating(Output.of(disableStaleWhileUpdating));
         }

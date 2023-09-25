@@ -11,13 +11,29 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class RulesetRuleActionParametersCacheKeyCustomKeyCookie {
+    /**
+     * @return List of cookies to check for presence in the custom key.
+     * 
+     */
     private @Nullable List<String> checkPresences;
+    /**
+     * @return List of cookies to include in the custom key.
+     * 
+     */
     private @Nullable List<String> includes;
 
     private RulesetRuleActionParametersCacheKeyCustomKeyCookie() {}
+    /**
+     * @return List of cookies to check for presence in the custom key.
+     * 
+     */
     public List<String> checkPresences() {
         return this.checkPresences == null ? List.of() : this.checkPresences;
     }
+    /**
+     * @return List of cookies to include in the custom key.
+     * 
+     */
     public List<String> includes() {
         return this.includes == null ? List.of() : this.includes;
     }

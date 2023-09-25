@@ -10,12 +10,20 @@ import java.util.Objects;
 @CustomType
 public final class GetRulesetsRulesetRuleActionParametersFromList {
     private String key;
+    /**
+     * @return Name of the ruleset.
+     * 
+     */
     private String name;
 
     private GetRulesetsRulesetRuleActionParametersFromList() {}
     public String key() {
         return this.key;
     }
+    /**
+     * @return Name of the ruleset.
+     * 
+     */
     public String name() {
         return this.name;
     }

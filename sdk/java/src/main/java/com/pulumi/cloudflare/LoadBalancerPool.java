@@ -93,14 +93,14 @@ public class LoadBalancerPool extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.description);
     }
     /**
-     * Whether to enable (the default) this pool. Disabled pools will not receive traffic and are excluded from health checks. Disabling a pool will cause any load balancers using it to failover to the next pool (if any). Defaults to `true`.
+     * Whether this origin is enabled. Disabled origins will not receive traffic and are excluded from health checks. Defaults to `true`.
      * 
      */
     @Export(name="enabled", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> enabled;
 
     /**
-     * @return Whether to enable (the default) this pool. Disabled pools will not receive traffic and are excluded from health checks. Disabling a pool will cause any load balancers using it to failover to the next pool (if any). Defaults to `true`.
+     * @return Whether this origin is enabled. Disabled origins will not receive traffic and are excluded from health checks. Defaults to `true`.
      * 
      */
     public Output<Optional<Boolean>> enabled() {
@@ -191,14 +191,14 @@ public class LoadBalancerPool extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.monitor);
     }
     /**
-     * A short name (tag) for the pool.
+     * A human-identifiable name for the origin.
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return A short name (tag) for the pool.
+     * @return A human-identifiable name for the origin.
      * 
      */
     public Output<String> name() {

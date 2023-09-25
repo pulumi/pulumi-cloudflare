@@ -11,25 +11,41 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class PagesProjectDeploymentConfigsPreviewServiceBinding {
+    /**
+     * @return The name of the Worker environment to bind to.
+     * 
+     */
     private @Nullable String environment;
     /**
-     * @return Name of the project.
+     * @return The global variable for the binding in your Worker code.
      * 
      */
     private String name;
+    /**
+     * @return The name of the Worker to bind to.
+     * 
+     */
     private String service;
 
     private PagesProjectDeploymentConfigsPreviewServiceBinding() {}
+    /**
+     * @return The name of the Worker environment to bind to.
+     * 
+     */
     public Optional<String> environment() {
         return Optional.ofNullable(this.environment);
     }
     /**
-     * @return Name of the project.
+     * @return The global variable for the binding in your Worker code.
      * 
      */
     public String name() {
         return this.name;
     }
+    /**
+     * @return The name of the Worker to bind to.
+     * 
+     */
     public String service() {
         return this.service;
     }

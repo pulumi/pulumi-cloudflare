@@ -11,13 +11,29 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRange {
+    /**
+     * @return From status code.
+     * 
+     */
     private @Nullable Integer from;
+    /**
+     * @return To status code.
+     * 
+     */
     private @Nullable Integer to;
 
     private RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRange() {}
+    /**
+     * @return From status code.
+     * 
+     */
     public Optional<Integer> from() {
         return Optional.ofNullable(this.from);
     }
+    /**
+     * @return To status code.
+     * 
+     */
     public Optional<Integer> to() {
         return Optional.ofNullable(this.to);
     }

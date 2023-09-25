@@ -79,14 +79,14 @@ public final class DlpProfileArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Name of the profile. **Modifying this attribute will force creation of a new resource.**
+     * Name of the entry to deploy.
      * 
      */
     @Import(name="name", required=true)
     private Output<String> name;
 
     /**
-     * @return Name of the profile. **Modifying this attribute will force creation of a new resource.**
+     * @return Name of the entry to deploy.
      * 
      */
     public Output<String> name() {
@@ -232,7 +232,7 @@ public final class DlpProfileArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Name of the profile. **Modifying this attribute will force creation of a new resource.**
+         * @param name Name of the entry to deploy.
          * 
          * @return builder
          * 
@@ -243,7 +243,7 @@ public final class DlpProfileArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Name of the profile. **Modifying this attribute will force creation of a new resource.**
+         * @param name Name of the entry to deploy.
          * 
          * @return builder
          * 

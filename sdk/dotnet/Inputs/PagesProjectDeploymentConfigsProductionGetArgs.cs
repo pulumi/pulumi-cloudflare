@@ -12,14 +12,24 @@ namespace Pulumi.Cloudflare.Inputs
 
     public sealed class PagesProjectDeploymentConfigsProductionGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Use latest compatibility date for Pages Functions. Defaults to `false`.
+        /// </summary>
         [Input("alwaysUseLatestCompatibilityDate")]
         public Input<bool>? AlwaysUseLatestCompatibilityDate { get; set; }
 
+        /// <summary>
+        /// Compatibility date used for Pages Functions.
+        /// </summary>
         [Input("compatibilityDate")]
         public Input<string>? CompatibilityDate { get; set; }
 
         [Input("compatibilityFlags")]
         private InputList<string>? _compatibilityFlags;
+
+        /// <summary>
+        /// Compatibility flags used for Pages Functions.
+        /// </summary>
         public InputList<string> CompatibilityFlags
         {
             get => _compatibilityFlags ?? (_compatibilityFlags = new InputList<string>());
@@ -28,6 +38,10 @@ namespace Pulumi.Cloudflare.Inputs
 
         [Input("d1Databases")]
         private InputMap<object>? _d1Databases;
+
+        /// <summary>
+        /// D1 Databases used for Pages Functions. Defaults to `map[]`.
+        /// </summary>
         public InputMap<object> D1Databases
         {
             get => _d1Databases ?? (_d1Databases = new InputMap<object>());
@@ -36,6 +50,10 @@ namespace Pulumi.Cloudflare.Inputs
 
         [Input("durableObjectNamespaces")]
         private InputMap<object>? _durableObjectNamespaces;
+
+        /// <summary>
+        /// Durable Object namespaces used for Pages Functions. Defaults to `map[]`.
+        /// </summary>
         public InputMap<object> DurableObjectNamespaces
         {
             get => _durableObjectNamespaces ?? (_durableObjectNamespaces = new InputMap<object>());
@@ -44,28 +62,46 @@ namespace Pulumi.Cloudflare.Inputs
 
         [Input("environmentVariables")]
         private InputMap<object>? _environmentVariables;
+
+        /// <summary>
+        /// Environment variables for Pages Functions. Defaults to `map[]`.
+        /// </summary>
         public InputMap<object> EnvironmentVariables
         {
             get => _environmentVariables ?? (_environmentVariables = new InputMap<object>());
             set => _environmentVariables = value;
         }
 
+        /// <summary>
+        /// Fail open used for Pages Functions. Defaults to `false`.
+        /// </summary>
         [Input("failOpen")]
         public Input<bool>? FailOpen { get; set; }
 
         [Input("kvNamespaces")]
         private InputMap<object>? _kvNamespaces;
+
+        /// <summary>
+        /// KV namespaces used for Pages Functions. Defaults to `map[]`.
+        /// </summary>
         public InputMap<object> KvNamespaces
         {
             get => _kvNamespaces ?? (_kvNamespaces = new InputMap<object>());
             set => _kvNamespaces = value;
         }
 
+        /// <summary>
+        /// Configuration for placement in the Cloudflare Pages project.
+        /// </summary>
         [Input("placement")]
         public Input<Inputs.PagesProjectDeploymentConfigsProductionPlacementGetArgs>? Placement { get; set; }
 
         [Input("r2Buckets")]
         private InputMap<object>? _r2Buckets;
+
+        /// <summary>
+        /// R2 Buckets used for Pages Functions. Defaults to `map[]`.
+        /// </summary>
         public InputMap<object> R2Buckets
         {
             get => _r2Buckets ?? (_r2Buckets = new InputMap<object>());
@@ -74,6 +110,10 @@ namespace Pulumi.Cloudflare.Inputs
 
         [Input("secrets")]
         private InputMap<object>? _secrets;
+
+        /// <summary>
+        /// Encrypted environment variables for Pages Functions. Defaults to `map[]`.
+        /// </summary>
         public InputMap<object> Secrets
         {
             get => _secrets ?? (_secrets = new InputMap<object>());
@@ -86,12 +126,19 @@ namespace Pulumi.Cloudflare.Inputs
 
         [Input("serviceBindings")]
         private InputList<Inputs.PagesProjectDeploymentConfigsProductionServiceBindingGetArgs>? _serviceBindings;
+
+        /// <summary>
+        /// Services used for Pages Functions.
+        /// </summary>
         public InputList<Inputs.PagesProjectDeploymentConfigsProductionServiceBindingGetArgs> ServiceBindings
         {
             get => _serviceBindings ?? (_serviceBindings = new InputList<Inputs.PagesProjectDeploymentConfigsProductionServiceBindingGetArgs>());
             set => _serviceBindings = value;
         }
 
+        /// <summary>
+        /// Usage model used for Pages Functions. Defaults to `bundled`.
+        /// </summary>
         [Input("usageModel")]
         public Input<string>? UsageModel { get; set; }
 

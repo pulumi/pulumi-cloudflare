@@ -17,38 +17,62 @@ public final class AccessApplicationSaasAppCustomAttributeArgs extends com.pulum
 
     public static final AccessApplicationSaasAppCustomAttributeArgs Empty = new AccessApplicationSaasAppCustomAttributeArgs();
 
+    /**
+     * A friendly name for the attribute as provided to the SaaS app.
+     * 
+     */
     @Import(name="friendlyName")
     private @Nullable Output<String> friendlyName;
 
+    /**
+     * @return A friendly name for the attribute as provided to the SaaS app.
+     * 
+     */
     public Optional<Output<String>> friendlyName() {
         return Optional.ofNullable(this.friendlyName);
     }
 
     /**
-     * Friendly name of the Access Application.
+     * The name of the attribute as provided to the SaaS app.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return Friendly name of the Access Application.
+     * @return The name of the attribute as provided to the SaaS app.
      * 
      */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
     }
 
+    /**
+     * A globally unique name for an identity or service provider.
+     * 
+     */
     @Import(name="nameFormat")
     private @Nullable Output<String> nameFormat;
 
+    /**
+     * @return A globally unique name for an identity or service provider.
+     * 
+     */
     public Optional<Output<String>> nameFormat() {
         return Optional.ofNullable(this.nameFormat);
     }
 
+    /**
+     * True if the attribute must be always present.
+     * 
+     */
     @Import(name="required")
     private @Nullable Output<Boolean> required;
 
+    /**
+     * @return True if the attribute must be always present.
+     * 
+     */
     public Optional<Output<Boolean>> required() {
         return Optional.ofNullable(this.required);
     }
@@ -88,17 +112,29 @@ public final class AccessApplicationSaasAppCustomAttributeArgs extends com.pulum
             $ = new AccessApplicationSaasAppCustomAttributeArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param friendlyName A friendly name for the attribute as provided to the SaaS app.
+         * 
+         * @return builder
+         * 
+         */
         public Builder friendlyName(@Nullable Output<String> friendlyName) {
             $.friendlyName = friendlyName;
             return this;
         }
 
+        /**
+         * @param friendlyName A friendly name for the attribute as provided to the SaaS app.
+         * 
+         * @return builder
+         * 
+         */
         public Builder friendlyName(String friendlyName) {
             return friendlyName(Output.of(friendlyName));
         }
 
         /**
-         * @param name Friendly name of the Access Application.
+         * @param name The name of the attribute as provided to the SaaS app.
          * 
          * @return builder
          * 
@@ -109,7 +145,7 @@ public final class AccessApplicationSaasAppCustomAttributeArgs extends com.pulum
         }
 
         /**
-         * @param name Friendly name of the Access Application.
+         * @param name The name of the attribute as provided to the SaaS app.
          * 
          * @return builder
          * 
@@ -118,20 +154,44 @@ public final class AccessApplicationSaasAppCustomAttributeArgs extends com.pulum
             return name(Output.of(name));
         }
 
+        /**
+         * @param nameFormat A globally unique name for an identity or service provider.
+         * 
+         * @return builder
+         * 
+         */
         public Builder nameFormat(@Nullable Output<String> nameFormat) {
             $.nameFormat = nameFormat;
             return this;
         }
 
+        /**
+         * @param nameFormat A globally unique name for an identity or service provider.
+         * 
+         * @return builder
+         * 
+         */
         public Builder nameFormat(String nameFormat) {
             return nameFormat(Output.of(nameFormat));
         }
 
+        /**
+         * @param required True if the attribute must be always present.
+         * 
+         * @return builder
+         * 
+         */
         public Builder required(@Nullable Output<Boolean> required) {
             $.required = required;
             return this;
         }
 
+        /**
+         * @param required True if the attribute must be always present.
+         * 
+         * @return builder
+         * 
+         */
         public Builder required(Boolean required) {
             return required(Output.of(required));
         }

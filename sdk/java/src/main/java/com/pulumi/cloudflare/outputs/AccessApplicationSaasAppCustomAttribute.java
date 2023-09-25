@@ -13,30 +13,54 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class AccessApplicationSaasAppCustomAttribute {
+    /**
+     * @return A friendly name for the attribute as provided to the SaaS app.
+     * 
+     */
     private @Nullable String friendlyName;
     /**
-     * @return Friendly name of the Access Application.
+     * @return The name of the attribute as provided to the SaaS app.
      * 
      */
     private @Nullable String name;
+    /**
+     * @return A globally unique name for an identity or service provider.
+     * 
+     */
     private @Nullable String nameFormat;
+    /**
+     * @return True if the attribute must be always present.
+     * 
+     */
     private @Nullable Boolean required;
     private AccessApplicationSaasAppCustomAttributeSource source;
 
     private AccessApplicationSaasAppCustomAttribute() {}
+    /**
+     * @return A friendly name for the attribute as provided to the SaaS app.
+     * 
+     */
     public Optional<String> friendlyName() {
         return Optional.ofNullable(this.friendlyName);
     }
     /**
-     * @return Friendly name of the Access Application.
+     * @return The name of the attribute as provided to the SaaS app.
      * 
      */
     public Optional<String> name() {
         return Optional.ofNullable(this.name);
     }
+    /**
+     * @return A globally unique name for an identity or service provider.
+     * 
+     */
     public Optional<String> nameFormat() {
         return Optional.ofNullable(this.nameFormat);
     }
+    /**
+     * @return True if the attribute must be always present.
+     * 
+     */
     public Optional<Boolean> required() {
         return Optional.ofNullable(this.required);
     }

@@ -12,15 +12,21 @@ namespace Pulumi.Cloudflare.Inputs
 
     public sealed class AccessGroupRequireAuthContextArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The ACID of the Authentication Context.
+        /// </summary>
         [Input("acId", required: true)]
         public Input<string> AcId { get; set; } = null!;
 
         /// <summary>
-        /// The ID of this resource.
+        /// The ID of the Authentication Context.
         /// </summary>
         [Input("id", required: true)]
         public Input<string> Id { get; set; } = null!;
 
+        /// <summary>
+        /// The ID of the Azure Identity provider.
+        /// </summary>
         [Input("identityProviderId", required: true)]
         public Input<string> IdentityProviderId { get; set; } = null!;
 

@@ -13,18 +13,57 @@ namespace Pulumi.Cloudflare.Outputs
     [OutputType]
     public sealed class PagesProjectDeploymentConfigsProduction
     {
+        /// <summary>
+        /// Use latest compatibility date for Pages Functions. Defaults to `false`.
+        /// </summary>
         public readonly bool? AlwaysUseLatestCompatibilityDate;
+        /// <summary>
+        /// Compatibility date used for Pages Functions.
+        /// </summary>
         public readonly string? CompatibilityDate;
+        /// <summary>
+        /// Compatibility flags used for Pages Functions.
+        /// </summary>
         public readonly ImmutableArray<string> CompatibilityFlags;
+        /// <summary>
+        /// D1 Databases used for Pages Functions. Defaults to `map[]`.
+        /// </summary>
         public readonly ImmutableDictionary<string, object>? D1Databases;
+        /// <summary>
+        /// Durable Object namespaces used for Pages Functions. Defaults to `map[]`.
+        /// </summary>
         public readonly ImmutableDictionary<string, object>? DurableObjectNamespaces;
+        /// <summary>
+        /// Environment variables for Pages Functions. Defaults to `map[]`.
+        /// </summary>
         public readonly ImmutableDictionary<string, object>? EnvironmentVariables;
+        /// <summary>
+        /// Fail open used for Pages Functions. Defaults to `false`.
+        /// </summary>
         public readonly bool? FailOpen;
+        /// <summary>
+        /// KV namespaces used for Pages Functions. Defaults to `map[]`.
+        /// </summary>
         public readonly ImmutableDictionary<string, object>? KvNamespaces;
+        /// <summary>
+        /// Configuration for placement in the Cloudflare Pages project.
+        /// </summary>
         public readonly Outputs.PagesProjectDeploymentConfigsProductionPlacement? Placement;
+        /// <summary>
+        /// R2 Buckets used for Pages Functions. Defaults to `map[]`.
+        /// </summary>
         public readonly ImmutableDictionary<string, object>? R2Buckets;
+        /// <summary>
+        /// Encrypted environment variables for Pages Functions. Defaults to `map[]`.
+        /// </summary>
         public readonly ImmutableDictionary<string, object>? Secrets;
+        /// <summary>
+        /// Services used for Pages Functions.
+        /// </summary>
         public readonly ImmutableArray<Outputs.PagesProjectDeploymentConfigsProductionServiceBinding> ServiceBindings;
+        /// <summary>
+        /// Usage model used for Pages Functions. Defaults to `bundled`.
+        /// </summary>
         public readonly string? UsageModel;
 
         [OutputConstructor]

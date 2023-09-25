@@ -11,9 +11,17 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class PagesProjectDeploymentConfigsPreviewPlacement {
+    /**
+     * @return Placement Mode for the Pages Function.
+     * 
+     */
     private @Nullable String mode;
 
     private PagesProjectDeploymentConfigsPreviewPlacement() {}
+    /**
+     * @return Placement Mode for the Pages Function.
+     * 
+     */
     public Optional<String> mode() {
         return Optional.ofNullable(this.mode);
     }

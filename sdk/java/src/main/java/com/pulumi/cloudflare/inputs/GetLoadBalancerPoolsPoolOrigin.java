@@ -25,9 +25,17 @@ public final class GetLoadBalancerPoolsPoolOrigin extends com.pulumi.resources.I
         return this.address;
     }
 
+    /**
+     * Whether this pool is enabled. Disabled pools will not receive traffic and are excluded from health checks.
+     * 
+     */
     @Import(name="enabled")
     private @Nullable Boolean enabled;
 
+    /**
+     * @return Whether this pool is enabled. Disabled pools will not receive traffic and are excluded from health checks.
+     * 
+     */
     public Optional<Boolean> enabled() {
         return Optional.ofNullable(this.enabled);
     }
@@ -39,9 +47,17 @@ public final class GetLoadBalancerPoolsPoolOrigin extends com.pulumi.resources.I
         return Optional.ofNullable(this.headers);
     }
 
+    /**
+     * A regular expression matching the name of the Load Balancer pool to lookup.
+     * 
+     */
     @Import(name="name", required=true)
     private String name;
 
+    /**
+     * @return A regular expression matching the name of the Load Balancer pool to lookup.
+     * 
+     */
     public String name() {
         return this.name;
     }
@@ -86,6 +102,12 @@ public final class GetLoadBalancerPoolsPoolOrigin extends com.pulumi.resources.I
             return this;
         }
 
+        /**
+         * @param enabled Whether this pool is enabled. Disabled pools will not receive traffic and are excluded from health checks.
+         * 
+         * @return builder
+         * 
+         */
         public Builder enabled(@Nullable Boolean enabled) {
             $.enabled = enabled;
             return this;
@@ -100,6 +122,12 @@ public final class GetLoadBalancerPoolsPoolOrigin extends com.pulumi.resources.I
             return headers(List.of(headers));
         }
 
+        /**
+         * @param name A regular expression matching the name of the Load Balancer pool to lookup.
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(String name) {
             $.name = name;
             return this;

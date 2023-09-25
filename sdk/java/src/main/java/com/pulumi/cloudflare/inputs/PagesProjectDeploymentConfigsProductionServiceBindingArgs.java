@@ -15,31 +15,47 @@ public final class PagesProjectDeploymentConfigsProductionServiceBindingArgs ext
 
     public static final PagesProjectDeploymentConfigsProductionServiceBindingArgs Empty = new PagesProjectDeploymentConfigsProductionServiceBindingArgs();
 
+    /**
+     * The name of the Worker environment to bind to.
+     * 
+     */
     @Import(name="environment")
     private @Nullable Output<String> environment;
 
+    /**
+     * @return The name of the Worker environment to bind to.
+     * 
+     */
     public Optional<Output<String>> environment() {
         return Optional.ofNullable(this.environment);
     }
 
     /**
-     * Name of the project.
+     * The global variable for the binding in your Worker code.
      * 
      */
     @Import(name="name", required=true)
     private Output<String> name;
 
     /**
-     * @return Name of the project.
+     * @return The global variable for the binding in your Worker code.
      * 
      */
     public Output<String> name() {
         return this.name;
     }
 
+    /**
+     * The name of the Worker to bind to.
+     * 
+     */
     @Import(name="service", required=true)
     private Output<String> service;
 
+    /**
+     * @return The name of the Worker to bind to.
+     * 
+     */
     public Output<String> service() {
         return this.service;
     }
@@ -70,17 +86,29 @@ public final class PagesProjectDeploymentConfigsProductionServiceBindingArgs ext
             $ = new PagesProjectDeploymentConfigsProductionServiceBindingArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param environment The name of the Worker environment to bind to.
+         * 
+         * @return builder
+         * 
+         */
         public Builder environment(@Nullable Output<String> environment) {
             $.environment = environment;
             return this;
         }
 
+        /**
+         * @param environment The name of the Worker environment to bind to.
+         * 
+         * @return builder
+         * 
+         */
         public Builder environment(String environment) {
             return environment(Output.of(environment));
         }
 
         /**
-         * @param name Name of the project.
+         * @param name The global variable for the binding in your Worker code.
          * 
          * @return builder
          * 
@@ -91,7 +119,7 @@ public final class PagesProjectDeploymentConfigsProductionServiceBindingArgs ext
         }
 
         /**
-         * @param name Name of the project.
+         * @param name The global variable for the binding in your Worker code.
          * 
          * @return builder
          * 
@@ -100,11 +128,23 @@ public final class PagesProjectDeploymentConfigsProductionServiceBindingArgs ext
             return name(Output.of(name));
         }
 
+        /**
+         * @param service The name of the Worker to bind to.
+         * 
+         * @return builder
+         * 
+         */
         public Builder service(Output<String> service) {
             $.service = service;
             return this;
         }
 
+        /**
+         * @param service The name of the Worker to bind to.
+         * 
+         * @return builder
+         * 
+         */
         public Builder service(String service) {
             return service(Output.of(service));
         }

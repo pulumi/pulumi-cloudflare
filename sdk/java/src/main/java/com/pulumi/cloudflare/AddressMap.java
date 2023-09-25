@@ -97,14 +97,14 @@ public class AddressMap extends com.pulumi.resources.CustomResource {
         return this.accountId;
     }
     /**
-     * If set to false, then the Address Map cannot be deleted via API. This is true for Cloudflare-managed maps.
+     * Controls whether the membership can be deleted via the API or not.
      * 
      */
     @Export(name="canDelete", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> canDelete;
 
     /**
-     * @return If set to false, then the Address Map cannot be deleted via API. This is true for Cloudflare-managed maps.
+     * @return Controls whether the membership can be deleted via the API or not.
      * 
      */
     public Output<Boolean> canDelete() {

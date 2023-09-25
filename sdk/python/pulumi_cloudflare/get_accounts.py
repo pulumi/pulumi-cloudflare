@@ -79,9 +79,6 @@ def get_accounts(name: Optional[str] = None,
 
     example = cloudflare.get_accounts(name="example account")
     ```
-
-
-    :param str name: The account name to target for the resource.
     """
     __args__ = dict()
     __args__['name'] = name
@@ -108,8 +105,5 @@ def get_accounts_output(name: Optional[pulumi.Input[Optional[str]]] = None,
 
     example = cloudflare.get_accounts(name="example account")
     ```
-
-
-    :param str name: The account name to target for the resource.
     """
     ...

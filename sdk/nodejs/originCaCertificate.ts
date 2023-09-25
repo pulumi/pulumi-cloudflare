@@ -15,10 +15,10 @@ import * as utilities from "./utilities";
  * const examplePrivateKey = new tls.PrivateKey("examplePrivateKey", {algorithm: "RSA"});
  * const exampleCertRequest = new tls.CertRequest("exampleCertRequest", {
  *     privateKeyPem: examplePrivateKey.privateKeyPem,
- *     subjects: [{
+ *     subject: {
  *         commonName: "",
  *         organization: "Terraform Test",
- *     }],
+ *     },
  * });
  * const exampleOriginCaCertificate = new cloudflare.OriginCaCertificate("exampleOriginCaCertificate", {
  *     csr: exampleCertRequest.certRequestPem,

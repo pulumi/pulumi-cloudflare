@@ -12,12 +12,12 @@ namespace Pulumi.Cloudflare.Inputs
 
     public sealed class AccessPolicyRequireGithubGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The ID of the Azure Identity provider.
+        /// </summary>
         [Input("identityProviderId")]
         public Input<string>? IdentityProviderId { get; set; }
 
-        /// <summary>
-        /// Friendly name of the Access Policy.
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 

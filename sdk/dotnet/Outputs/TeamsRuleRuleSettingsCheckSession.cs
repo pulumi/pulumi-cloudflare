@@ -13,7 +13,13 @@ namespace Pulumi.Cloudflare.Outputs
     [OutputType]
     public sealed class TeamsRuleRuleSettingsCheckSession
     {
+        /// <summary>
+        /// Configure how fresh the session needs to be to be considered valid.
+        /// </summary>
         public readonly string Duration;
+        /// <summary>
+        /// Enable session enforcement for this rule.
+        /// </summary>
         public readonly bool Enforce;
 
         [OutputConstructor]

@@ -13,6 +13,9 @@ namespace Pulumi.Cloudflare.Outputs
     [OutputType]
     public sealed class TeamsAccountLoggingSettingsByRuleTypeL4
     {
+        /// <summary>
+        /// Whether to log all activity.
+        /// </summary>
         public readonly bool LogAll;
         public readonly bool LogBlocks;
 

@@ -17,14 +17,14 @@ public final class PageRuleActionsCacheKeyFieldsHeaderArgs extends com.pulumi.re
     public static final PageRuleActionsCacheKeyFieldsHeaderArgs Empty = new PageRuleActionsCacheKeyFieldsHeaderArgs();
 
     /**
-     * Check for presence of specified cookies, without including their actual values.
+     * Check for presence of specified HTTP headers, without including their actual values.
      * 
      */
     @Import(name="checkPresences")
     private @Nullable Output<List<String>> checkPresences;
 
     /**
-     * @return Check for presence of specified cookies, without including their actual values.
+     * @return Check for presence of specified HTTP headers, without including their actual values.
      * 
      */
     public Optional<Output<List<String>>> checkPresences() {
@@ -32,14 +32,14 @@ public final class PageRuleActionsCacheKeyFieldsHeaderArgs extends com.pulumi.re
     }
 
     /**
-     * Exclude these HTTP headers from Cache Key. Currently, only the `Origin` header can be excluded.
+     * Exclude these query string parameters from Cache Key.
      * 
      */
     @Import(name="excludes")
     private @Nullable Output<List<String>> excludes;
 
     /**
-     * @return Exclude these HTTP headers from Cache Key. Currently, only the `Origin` header can be excluded.
+     * @return Exclude these query string parameters from Cache Key.
      * 
      */
     public Optional<Output<List<String>>> excludes() {
@@ -47,14 +47,14 @@ public final class PageRuleActionsCacheKeyFieldsHeaderArgs extends com.pulumi.re
     }
 
     /**
-     * Use values of specified cookies in Cache Key.
+     * Only use values of specified query string parameters in Cache Key.
      * 
      */
     @Import(name="includes")
     private @Nullable Output<List<String>> includes;
 
     /**
-     * @return Use values of specified cookies in Cache Key.
+     * @return Only use values of specified query string parameters in Cache Key.
      * 
      */
     public Optional<Output<List<String>>> includes() {
@@ -88,7 +88,7 @@ public final class PageRuleActionsCacheKeyFieldsHeaderArgs extends com.pulumi.re
         }
 
         /**
-         * @param checkPresences Check for presence of specified cookies, without including their actual values.
+         * @param checkPresences Check for presence of specified HTTP headers, without including their actual values.
          * 
          * @return builder
          * 
@@ -99,7 +99,7 @@ public final class PageRuleActionsCacheKeyFieldsHeaderArgs extends com.pulumi.re
         }
 
         /**
-         * @param checkPresences Check for presence of specified cookies, without including their actual values.
+         * @param checkPresences Check for presence of specified HTTP headers, without including their actual values.
          * 
          * @return builder
          * 
@@ -109,7 +109,7 @@ public final class PageRuleActionsCacheKeyFieldsHeaderArgs extends com.pulumi.re
         }
 
         /**
-         * @param checkPresences Check for presence of specified cookies, without including their actual values.
+         * @param checkPresences Check for presence of specified HTTP headers, without including their actual values.
          * 
          * @return builder
          * 
@@ -119,7 +119,7 @@ public final class PageRuleActionsCacheKeyFieldsHeaderArgs extends com.pulumi.re
         }
 
         /**
-         * @param excludes Exclude these HTTP headers from Cache Key. Currently, only the `Origin` header can be excluded.
+         * @param excludes Exclude these query string parameters from Cache Key.
          * 
          * @return builder
          * 
@@ -130,7 +130,7 @@ public final class PageRuleActionsCacheKeyFieldsHeaderArgs extends com.pulumi.re
         }
 
         /**
-         * @param excludes Exclude these HTTP headers from Cache Key. Currently, only the `Origin` header can be excluded.
+         * @param excludes Exclude these query string parameters from Cache Key.
          * 
          * @return builder
          * 
@@ -140,7 +140,7 @@ public final class PageRuleActionsCacheKeyFieldsHeaderArgs extends com.pulumi.re
         }
 
         /**
-         * @param excludes Exclude these HTTP headers from Cache Key. Currently, only the `Origin` header can be excluded.
+         * @param excludes Exclude these query string parameters from Cache Key.
          * 
          * @return builder
          * 
@@ -150,7 +150,7 @@ public final class PageRuleActionsCacheKeyFieldsHeaderArgs extends com.pulumi.re
         }
 
         /**
-         * @param includes Use values of specified cookies in Cache Key.
+         * @param includes Only use values of specified query string parameters in Cache Key.
          * 
          * @return builder
          * 
@@ -161,7 +161,7 @@ public final class PageRuleActionsCacheKeyFieldsHeaderArgs extends com.pulumi.re
         }
 
         /**
-         * @param includes Use values of specified cookies in Cache Key.
+         * @param includes Only use values of specified query string parameters in Cache Key.
          * 
          * @return builder
          * 
@@ -171,7 +171,7 @@ public final class PageRuleActionsCacheKeyFieldsHeaderArgs extends com.pulumi.re
         }
 
         /**
-         * @param includes Use values of specified cookies in Cache Key.
+         * @param includes Only use values of specified query string parameters in Cache Key.
          * 
          * @return builder
          * 

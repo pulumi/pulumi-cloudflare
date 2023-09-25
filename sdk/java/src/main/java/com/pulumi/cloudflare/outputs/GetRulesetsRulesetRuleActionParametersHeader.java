@@ -12,6 +12,10 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetRulesetsRulesetRuleActionParametersHeader {
     private @Nullable String expression;
+    /**
+     * @return Name of the ruleset.
+     * 
+     */
     private @Nullable String name;
     private @Nullable String operation;
     private @Nullable String value;
@@ -20,6 +24,10 @@ public final class GetRulesetsRulesetRuleActionParametersHeader {
     public Optional<String> expression() {
         return Optional.ofNullable(this.expression);
     }
+    /**
+     * @return Name of the ruleset.
+     * 
+     */
     public Optional<String> name() {
         return Optional.ofNullable(this.name);
     }

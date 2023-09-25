@@ -17,23 +17,47 @@ public final class RulesetRuleActionParametersEdgeTtlStatusCodeTtlArgs extends c
 
     public static final RulesetRuleActionParametersEdgeTtlStatusCodeTtlArgs Empty = new RulesetRuleActionParametersEdgeTtlStatusCodeTtlArgs();
 
+    /**
+     * Status code for which the edge TTL is applied.
+     * 
+     */
     @Import(name="statusCode")
     private @Nullable Output<Integer> statusCode;
 
+    /**
+     * @return Status code for which the edge TTL is applied.
+     * 
+     */
     public Optional<Output<Integer>> statusCode() {
         return Optional.ofNullable(this.statusCode);
     }
 
+    /**
+     * Status code range for which the edge TTL is applied.
+     * 
+     */
     @Import(name="statusCodeRanges")
     private @Nullable Output<List<RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRangeArgs>> statusCodeRanges;
 
+    /**
+     * @return Status code range for which the edge TTL is applied.
+     * 
+     */
     public Optional<Output<List<RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRangeArgs>>> statusCodeRanges() {
         return Optional.ofNullable(this.statusCodeRanges);
     }
 
+    /**
+     * Status code edge TTL value.
+     * 
+     */
     @Import(name="value")
     private @Nullable Output<Integer> value;
 
+    /**
+     * @return Status code edge TTL value.
+     * 
+     */
     public Optional<Output<Integer>> value() {
         return Optional.ofNullable(this.value);
     }
@@ -64,33 +88,75 @@ public final class RulesetRuleActionParametersEdgeTtlStatusCodeTtlArgs extends c
             $ = new RulesetRuleActionParametersEdgeTtlStatusCodeTtlArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param statusCode Status code for which the edge TTL is applied.
+         * 
+         * @return builder
+         * 
+         */
         public Builder statusCode(@Nullable Output<Integer> statusCode) {
             $.statusCode = statusCode;
             return this;
         }
 
+        /**
+         * @param statusCode Status code for which the edge TTL is applied.
+         * 
+         * @return builder
+         * 
+         */
         public Builder statusCode(Integer statusCode) {
             return statusCode(Output.of(statusCode));
         }
 
+        /**
+         * @param statusCodeRanges Status code range for which the edge TTL is applied.
+         * 
+         * @return builder
+         * 
+         */
         public Builder statusCodeRanges(@Nullable Output<List<RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRangeArgs>> statusCodeRanges) {
             $.statusCodeRanges = statusCodeRanges;
             return this;
         }
 
+        /**
+         * @param statusCodeRanges Status code range for which the edge TTL is applied.
+         * 
+         * @return builder
+         * 
+         */
         public Builder statusCodeRanges(List<RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRangeArgs> statusCodeRanges) {
             return statusCodeRanges(Output.of(statusCodeRanges));
         }
 
+        /**
+         * @param statusCodeRanges Status code range for which the edge TTL is applied.
+         * 
+         * @return builder
+         * 
+         */
         public Builder statusCodeRanges(RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRangeArgs... statusCodeRanges) {
             return statusCodeRanges(List.of(statusCodeRanges));
         }
 
+        /**
+         * @param value Status code edge TTL value.
+         * 
+         * @return builder
+         * 
+         */
         public Builder value(@Nullable Output<Integer> value) {
             $.value = value;
             return this;
         }
 
+        /**
+         * @param value Status code edge TTL value.
+         * 
+         * @return builder
+         * 
+         */
         public Builder value(Integer value) {
             return value(Output.of(value));
         }

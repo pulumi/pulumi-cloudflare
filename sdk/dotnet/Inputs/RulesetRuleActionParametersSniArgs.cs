@@ -12,6 +12,9 @@ namespace Pulumi.Cloudflare.Inputs
 
     public sealed class RulesetRuleActionParametersSniArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Status code edge TTL value.
+        /// </summary>
         [Input("value")]
         public Input<string>? Value { get; set; }
 

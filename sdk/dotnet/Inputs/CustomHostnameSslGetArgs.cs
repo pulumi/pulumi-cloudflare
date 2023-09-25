@@ -51,9 +51,6 @@ namespace Pulumi.Cloudflare.Inputs
             set => _settings = value;
         }
 
-        /// <summary>
-        /// Status of the certificate.
-        /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
 

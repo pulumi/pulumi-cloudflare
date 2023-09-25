@@ -66,9 +66,6 @@ namespace Pulumi.Cloudflare.Inputs
         [Input("matchingType")]
         public Input<int>? MatchingType { get; set; }
 
-        /// <summary>
-        /// The name of the record. **Modifying this attribute will force creation of a new resource.**
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
@@ -87,9 +84,6 @@ namespace Pulumi.Cloudflare.Inputs
         [Input("preference")]
         public Input<int>? Preference { get; set; }
 
-        /// <summary>
-        /// The priority of the record.
-        /// </summary>
         [Input("priority")]
         public Input<int>? Priority { get; set; }
 
@@ -123,18 +117,12 @@ namespace Pulumi.Cloudflare.Inputs
         [Input("target")]
         public Input<string>? Target { get; set; }
 
-        /// <summary>
-        /// The type of the record. Available values: `A`, `AAAA`, `CAA`, `CNAME`, `TXT`, `SRV`, `LOC`, `MX`, `NS`, `SPF`, `CERT`, `DNSKEY`, `DS`, `NAPTR`, `SMIMEA`, `SSHFP`, `TLSA`, `URI`, `PTR`, `HTTPS`, `SVCB`. **Modifying this attribute will force creation of a new resource.**
-        /// </summary>
         [Input("type")]
         public Input<int>? Type { get; set; }
 
         [Input("usage")]
         public Input<int>? Usage { get; set; }
 
-        /// <summary>
-        /// The value of the record. Conflicts with `data`.
-        /// </summary>
         [Input("value")]
         public Input<string>? Value { get; set; }
 

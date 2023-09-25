@@ -115,14 +115,14 @@ public final class WorkerScriptState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Whether to upload Worker as a module.
+     * The base64 encoded wasm module you want to store.
      * 
      */
     @Import(name="module")
     private @Nullable Output<Boolean> module;
 
     /**
-     * @return Whether to upload Worker as a module.
+     * @return The base64 encoded wasm module you want to store.
      * 
      */
     public Optional<Output<Boolean>> module() {
@@ -130,14 +130,14 @@ public final class WorkerScriptState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The name for the script. **Modifying this attribute will force creation of a new resource.**
+     * The global variable for the binding in your Worker code.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return The name for the script. **Modifying this attribute will force creation of a new resource.**
+     * @return The global variable for the binding in your Worker code.
      * 
      */
     public Optional<Output<String>> name() {
@@ -366,7 +366,7 @@ public final class WorkerScriptState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param module Whether to upload Worker as a module.
+         * @param module The base64 encoded wasm module you want to store.
          * 
          * @return builder
          * 
@@ -377,7 +377,7 @@ public final class WorkerScriptState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param module Whether to upload Worker as a module.
+         * @param module The base64 encoded wasm module you want to store.
          * 
          * @return builder
          * 
@@ -387,7 +387,7 @@ public final class WorkerScriptState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name The name for the script. **Modifying this attribute will force creation of a new resource.**
+         * @param name The global variable for the binding in your Worker code.
          * 
          * @return builder
          * 
@@ -398,7 +398,7 @@ public final class WorkerScriptState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name The name for the script. **Modifying this attribute will force creation of a new resource.**
+         * @param name The global variable for the binding in your Worker code.
          * 
          * @return builder
          * 

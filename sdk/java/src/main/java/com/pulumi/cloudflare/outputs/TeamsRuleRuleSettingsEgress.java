@@ -11,17 +11,41 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class TeamsRuleRuleSettingsEgress {
+    /**
+     * @return The IPv4 address to be used for egress.
+     * 
+     */
     private String ipv4;
+    /**
+     * @return The IPv4 address to be used for egress in the event of an error egressing with the primary IPv4. Can be &#39;0.0.0.0&#39; to indicate local egreass via Warp IPs.
+     * 
+     */
     private @Nullable String ipv4Fallback;
+    /**
+     * @return The IPv6 range to be used for egress.
+     * 
+     */
     private String ipv6;
 
     private TeamsRuleRuleSettingsEgress() {}
+    /**
+     * @return The IPv4 address to be used for egress.
+     * 
+     */
     public String ipv4() {
         return this.ipv4;
     }
+    /**
+     * @return The IPv4 address to be used for egress in the event of an error egressing with the primary IPv4. Can be &#39;0.0.0.0&#39; to indicate local egreass via Warp IPs.
+     * 
+     */
     public Optional<String> ipv4Fallback() {
         return Optional.ofNullable(this.ipv4Fallback);
     }
+    /**
+     * @return The IPv6 range to be used for egress.
+     * 
+     */
     public String ipv6() {
         return this.ipv6;
     }

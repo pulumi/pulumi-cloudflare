@@ -13,8 +13,17 @@ namespace Pulumi.Cloudflare.Outputs
     [OutputType]
     public sealed class RulesetRuleActionParametersEdgeTtlStatusCodeTtl
     {
+        /// <summary>
+        /// Status code for which the edge TTL is applied.
+        /// </summary>
         public readonly int? StatusCode;
+        /// <summary>
+        /// Status code range for which the edge TTL is applied.
+        /// </summary>
         public readonly ImmutableArray<Outputs.RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRange> StatusCodeRanges;
+        /// <summary>
+        /// Status code edge TTL value.
+        /// </summary>
         public readonly int? Value;
 
         [OutputConstructor]

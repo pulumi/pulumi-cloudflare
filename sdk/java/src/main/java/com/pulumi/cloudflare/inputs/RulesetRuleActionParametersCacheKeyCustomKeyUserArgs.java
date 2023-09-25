@@ -15,23 +15,47 @@ public final class RulesetRuleActionParametersCacheKeyCustomKeyUserArgs extends 
 
     public static final RulesetRuleActionParametersCacheKeyCustomKeyUserArgs Empty = new RulesetRuleActionParametersCacheKeyCustomKeyUserArgs();
 
+    /**
+     * Add device type to the custom key.
+     * 
+     */
     @Import(name="deviceType")
     private @Nullable Output<Boolean> deviceType;
 
+    /**
+     * @return Add device type to the custom key.
+     * 
+     */
     public Optional<Output<Boolean>> deviceType() {
         return Optional.ofNullable(this.deviceType);
     }
 
+    /**
+     * Add geo data to the custom key.
+     * 
+     */
     @Import(name="geo")
     private @Nullable Output<Boolean> geo;
 
+    /**
+     * @return Add geo data to the custom key.
+     * 
+     */
     public Optional<Output<Boolean>> geo() {
         return Optional.ofNullable(this.geo);
     }
 
+    /**
+     * Add language data to the custom key.
+     * 
+     */
     @Import(name="lang")
     private @Nullable Output<Boolean> lang;
 
+    /**
+     * @return Add language data to the custom key.
+     * 
+     */
     public Optional<Output<Boolean>> lang() {
         return Optional.ofNullable(this.lang);
     }
@@ -62,29 +86,65 @@ public final class RulesetRuleActionParametersCacheKeyCustomKeyUserArgs extends 
             $ = new RulesetRuleActionParametersCacheKeyCustomKeyUserArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param deviceType Add device type to the custom key.
+         * 
+         * @return builder
+         * 
+         */
         public Builder deviceType(@Nullable Output<Boolean> deviceType) {
             $.deviceType = deviceType;
             return this;
         }
 
+        /**
+         * @param deviceType Add device type to the custom key.
+         * 
+         * @return builder
+         * 
+         */
         public Builder deviceType(Boolean deviceType) {
             return deviceType(Output.of(deviceType));
         }
 
+        /**
+         * @param geo Add geo data to the custom key.
+         * 
+         * @return builder
+         * 
+         */
         public Builder geo(@Nullable Output<Boolean> geo) {
             $.geo = geo;
             return this;
         }
 
+        /**
+         * @param geo Add geo data to the custom key.
+         * 
+         * @return builder
+         * 
+         */
         public Builder geo(Boolean geo) {
             return geo(Output.of(geo));
         }
 
+        /**
+         * @param lang Add language data to the custom key.
+         * 
+         * @return builder
+         * 
+         */
         public Builder lang(@Nullable Output<Boolean> lang) {
             $.lang = lang;
             return this;
         }
 
+        /**
+         * @param lang Add language data to the custom key.
+         * 
+         * @return builder
+         * 
+         */
         public Builder lang(Boolean lang) {
             return lang(Output.of(lang));
         }
