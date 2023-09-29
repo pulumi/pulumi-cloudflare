@@ -139,34 +139,8 @@ jobs:
         "${GITHUB_REF#refs/tags/}"
   lint:
     name: lint
-    runs-on: ubuntu-latest
-    steps:
-    - name: Checkout Repo
-      uses: actions/checkout@v3
-    - name: Install Go
-      uses: actions/setup-go@v4
-      with:
-        cache-dependency-path: |
-            sdk/go.sum
-        go-version: 1.21.x
-    - name: disarm go:embed directives to enable lint
-      run: |
-        git grep -l 'go:embed' -- provider | xargs sed -i 's/go:embed/ goembed/g'
-    - name: prepare upstream
-      continue-on-error: true
-      run: make upstream
-    - name: golangci-lint
-      uses: golangci/golangci-lint-action@v3
-      with:
-        version: v1.54.1
-        working-directory: provider
-    - if: failure() && github.event_name == 'push'
-      name: Notify Slack
-      uses: 8398a7/action-slack@v3
-      with:
-        author_name: Failure in linting provider
-        fields: repo,commit,author,action
-        status: ${{ job.status }}
+    uses: ./.github/workflows/lint.yml
+    secrets: inherit
   prerequisites:
     name: prerequisites
     runs-on: ubuntu-latest
