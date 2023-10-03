@@ -12,18 +12,27 @@ namespace Pulumi.Cloudflare.Inputs
 
     public sealed class AccessApplicationSaasAppCustomAttributeGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// A friendly name for the attribute as provided to the SaaS app.
+        /// </summary>
         [Input("friendlyName")]
         public Input<string>? FriendlyName { get; set; }
 
         /// <summary>
-        /// Friendly name of the Access Application.
+        /// The name of the attribute as provided to the SaaS app.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// A globally unique name for an identity or service provider.
+        /// </summary>
         [Input("nameFormat")]
         public Input<string>? NameFormat { get; set; }
 
+        /// <summary>
+        /// True if the attribute must be always present.
+        /// </summary>
         [Input("required")]
         public Input<bool>? Required { get; set; }
 

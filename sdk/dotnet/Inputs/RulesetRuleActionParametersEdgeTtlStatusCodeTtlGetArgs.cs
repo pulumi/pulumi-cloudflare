@@ -12,17 +12,27 @@ namespace Pulumi.Cloudflare.Inputs
 
     public sealed class RulesetRuleActionParametersEdgeTtlStatusCodeTtlGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Status code for which the edge TTL is applied.
+        /// </summary>
         [Input("statusCode")]
         public Input<int>? StatusCode { get; set; }
 
         [Input("statusCodeRanges")]
         private InputList<Inputs.RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRangeGetArgs>? _statusCodeRanges;
+
+        /// <summary>
+        /// Status code range for which the edge TTL is applied.
+        /// </summary>
         public InputList<Inputs.RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRangeGetArgs> StatusCodeRanges
         {
             get => _statusCodeRanges ?? (_statusCodeRanges = new InputList<Inputs.RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRangeGetArgs>());
             set => _statusCodeRanges = value;
         }
 
+        /// <summary>
+        /// Status code edge TTL value.
+        /// </summary>
         [Input("value")]
         public Input<int>? Value { get; set; }
 

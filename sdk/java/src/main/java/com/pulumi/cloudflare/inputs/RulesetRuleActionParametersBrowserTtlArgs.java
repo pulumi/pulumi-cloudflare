@@ -16,16 +16,32 @@ public final class RulesetRuleActionParametersBrowserTtlArgs extends com.pulumi.
 
     public static final RulesetRuleActionParametersBrowserTtlArgs Empty = new RulesetRuleActionParametersBrowserTtlArgs();
 
+    /**
+     * Default browser TTL. This value is required when override_origin is set
+     * 
+     */
     @Import(name="default")
     private @Nullable Output<Integer> default_;
 
+    /**
+     * @return Default browser TTL. This value is required when override_origin is set
+     * 
+     */
     public Optional<Output<Integer>> default_() {
         return Optional.ofNullable(this.default_);
     }
 
+    /**
+     * Mode of the browser TTL. Available values: `override_origin`, `respect_origin`, `bypass`
+     * 
+     */
     @Import(name="mode", required=true)
     private Output<String> mode;
 
+    /**
+     * @return Mode of the browser TTL. Available values: `override_origin`, `respect_origin`, `bypass`
+     * 
+     */
     public Output<String> mode() {
         return this.mode;
     }
@@ -55,20 +71,44 @@ public final class RulesetRuleActionParametersBrowserTtlArgs extends com.pulumi.
             $ = new RulesetRuleActionParametersBrowserTtlArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param default_ Default browser TTL. This value is required when override_origin is set
+         * 
+         * @return builder
+         * 
+         */
         public Builder default_(@Nullable Output<Integer> default_) {
             $.default_ = default_;
             return this;
         }
 
+        /**
+         * @param default_ Default browser TTL. This value is required when override_origin is set
+         * 
+         * @return builder
+         * 
+         */
         public Builder default_(Integer default_) {
             return default_(Output.of(default_));
         }
 
+        /**
+         * @param mode Mode of the browser TTL. Available values: `override_origin`, `respect_origin`, `bypass`
+         * 
+         * @return builder
+         * 
+         */
         public Builder mode(Output<String> mode) {
             $.mode = mode;
             return this;
         }
 
+        /**
+         * @param mode Mode of the browser TTL. Available values: `override_origin`, `respect_origin`, `bypass`
+         * 
+         * @return builder
+         * 
+         */
         public Builder mode(String mode) {
             return mode(Output.of(mode));
         }

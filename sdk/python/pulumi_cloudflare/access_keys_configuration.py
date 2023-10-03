@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['AccessKeysConfigurationArgs', 'AccessKeysConfiguration']
@@ -21,9 +21,20 @@ class AccessKeysConfigurationArgs:
         :param pulumi.Input[str] account_id: The account identifier to target for the resource.
         :param pulumi.Input[int] key_rotation_interval_days: Number of days to trigger a rotation of the keys.
         """
-        pulumi.set(__self__, "account_id", account_id)
+        AccessKeysConfigurationArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            account_id=account_id,
+            key_rotation_interval_days=key_rotation_interval_days,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             account_id: pulumi.Input[str],
+             key_rotation_interval_days: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("account_id", account_id)
         if key_rotation_interval_days is not None:
-            pulumi.set(__self__, "key_rotation_interval_days", key_rotation_interval_days)
+            _setter("key_rotation_interval_days", key_rotation_interval_days)
 
     @property
     @pulumi.getter(name="accountId")
@@ -60,10 +71,21 @@ class _AccessKeysConfigurationState:
         :param pulumi.Input[str] account_id: The account identifier to target for the resource.
         :param pulumi.Input[int] key_rotation_interval_days: Number of days to trigger a rotation of the keys.
         """
+        _AccessKeysConfigurationState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            account_id=account_id,
+            key_rotation_interval_days=key_rotation_interval_days,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             account_id: Optional[pulumi.Input[str]] = None,
+             key_rotation_interval_days: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if account_id is not None:
-            pulumi.set(__self__, "account_id", account_id)
+            _setter("account_id", account_id)
         if key_rotation_interval_days is not None:
-            pulumi.set(__self__, "key_rotation_interval_days", key_rotation_interval_days)
+            _setter("key_rotation_interval_days", key_rotation_interval_days)
 
     @property
     @pulumi.getter(name="accountId")
@@ -123,6 +145,10 @@ class AccessKeysConfiguration(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            AccessKeysConfigurationArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

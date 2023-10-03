@@ -12,15 +12,24 @@ namespace Pulumi.Cloudflare.Inputs
 
     public sealed class TunnelConfigConfigIngressRuleArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Hostname to match the incoming request with. If the hostname matches, the request will be sent to the service.
+        /// </summary>
         [Input("hostname")]
         public Input<string>? Hostname { get; set; }
 
         [Input("originRequest")]
         public Input<Inputs.TunnelConfigConfigIngressRuleOriginRequestArgs>? OriginRequest { get; set; }
 
+        /// <summary>
+        /// Path of the incoming request. If the path matches, the request will be sent to the local service.
+        /// </summary>
         [Input("path")]
         public Input<string>? Path { get; set; }
 
+        /// <summary>
+        /// Name of the service to which the request will be sent.
+        /// </summary>
         [Input("service", required: true)]
         public Input<string> Service { get; set; } = null!;
 

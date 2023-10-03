@@ -102,17 +102,9 @@ public final class CustomHostnameSslArgs extends com.pulumi.resources.ResourceAr
         return Optional.ofNullable(this.settings);
     }
 
-    /**
-     * Status of the certificate.
-     * 
-     */
     @Import(name="status")
     private @Nullable Output<String> status;
 
-    /**
-     * @return Status of the certificate.
-     * 
-     */
     public Optional<Output<String>> status() {
         return Optional.ofNullable(this.status);
     }
@@ -319,23 +311,11 @@ public final class CustomHostnameSslArgs extends com.pulumi.resources.ResourceAr
             return settings(List.of(settings));
         }
 
-        /**
-         * @param status Status of the certificate.
-         * 
-         * @return builder
-         * 
-         */
         public Builder status(@Nullable Output<String> status) {
             $.status = status;
             return this;
         }
 
-        /**
-         * @param status Status of the certificate.
-         * 
-         * @return builder
-         * 
-         */
         public Builder status(String status) {
             return status(Output.of(status));
         }

@@ -12,19 +12,27 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class AccessPolicyIncludeAzure {
+    /**
+     * @return The ID of the Azure Identity provider.
+     * 
+     */
     private @Nullable String identityProviderId;
     /**
-     * @return The ID of this resource.
+     * @return The ID of the Authentication Context.
      * 
      */
     private @Nullable List<String> ids;
 
     private AccessPolicyIncludeAzure() {}
+    /**
+     * @return The ID of the Azure Identity provider.
+     * 
+     */
     public Optional<String> identityProviderId() {
         return Optional.ofNullable(this.identityProviderId);
     }
     /**
-     * @return The ID of this resource.
+     * @return The ID of the Authentication Context.
      * 
      */
     public List<String> ids() {

@@ -98,7 +98,7 @@ namespace Pulumi.Cloudflare
         public Output<bool?> DisableSessionRenewal { get; private set; } = null!;
 
         /// <summary>
-        /// Host name for which the waiting room will be applied (no wildcards).
+        /// The additional host name for which the waiting room to be applied on (no wildcards).
         /// </summary>
         [Output("host")]
         public Output<string> Host { get; private set; } = null!;
@@ -122,7 +122,7 @@ namespace Pulumi.Cloudflare
         public Output<int> NewUsersPerMinute { get; private set; } = null!;
 
         /// <summary>
-        /// The path within the host to enable the waiting room on. Defaults to `/`.
+        /// The path within the additional host to enable the waiting room on. Defaults to `/`.
         /// </summary>
         [Output("path")]
         public Output<string?> Path { get; private set; } = null!;
@@ -258,7 +258,7 @@ namespace Pulumi.Cloudflare
         public Input<bool>? DisableSessionRenewal { get; set; }
 
         /// <summary>
-        /// Host name for which the waiting room will be applied (no wildcards).
+        /// The additional host name for which the waiting room to be applied on (no wildcards).
         /// </summary>
         [Input("host", required: true)]
         public Input<string> Host { get; set; } = null!;
@@ -282,7 +282,7 @@ namespace Pulumi.Cloudflare
         public Input<int> NewUsersPerMinute { get; set; } = null!;
 
         /// <summary>
-        /// The path within the host to enable the waiting room on. Defaults to `/`.
+        /// The path within the additional host to enable the waiting room on. Defaults to `/`.
         /// </summary>
         [Input("path")]
         public Input<string>? Path { get; set; }
@@ -380,7 +380,7 @@ namespace Pulumi.Cloudflare
         public Input<bool>? DisableSessionRenewal { get; set; }
 
         /// <summary>
-        /// Host name for which the waiting room will be applied (no wildcards).
+        /// The additional host name for which the waiting room to be applied on (no wildcards).
         /// </summary>
         [Input("host")]
         public Input<string>? Host { get; set; }
@@ -404,7 +404,7 @@ namespace Pulumi.Cloudflare
         public Input<int>? NewUsersPerMinute { get; set; }
 
         /// <summary>
-        /// The path within the host to enable the waiting room on. Defaults to `/`.
+        /// The path within the additional host to enable the waiting room on. Defaults to `/`.
         /// </summary>
         [Input("path")]
         public Input<string>? Path { get; set; }

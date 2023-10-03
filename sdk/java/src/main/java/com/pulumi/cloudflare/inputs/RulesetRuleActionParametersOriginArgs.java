@@ -16,16 +16,32 @@ public final class RulesetRuleActionParametersOriginArgs extends com.pulumi.reso
 
     public static final RulesetRuleActionParametersOriginArgs Empty = new RulesetRuleActionParametersOriginArgs();
 
+    /**
+     * Host parameters for the custom key.
+     * 
+     */
     @Import(name="host")
     private @Nullable Output<String> host;
 
+    /**
+     * @return Host parameters for the custom key.
+     * 
+     */
     public Optional<Output<String>> host() {
         return Optional.ofNullable(this.host);
     }
 
+    /**
+     * Origin Port where request is sent.
+     * 
+     */
     @Import(name="port")
     private @Nullable Output<Integer> port;
 
+    /**
+     * @return Origin Port where request is sent.
+     * 
+     */
     public Optional<Output<Integer>> port() {
         return Optional.ofNullable(this.port);
     }
@@ -55,20 +71,44 @@ public final class RulesetRuleActionParametersOriginArgs extends com.pulumi.reso
             $ = new RulesetRuleActionParametersOriginArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param host Host parameters for the custom key.
+         * 
+         * @return builder
+         * 
+         */
         public Builder host(@Nullable Output<String> host) {
             $.host = host;
             return this;
         }
 
+        /**
+         * @param host Host parameters for the custom key.
+         * 
+         * @return builder
+         * 
+         */
         public Builder host(String host) {
             return host(Output.of(host));
         }
 
+        /**
+         * @param port Origin Port where request is sent.
+         * 
+         * @return builder
+         * 
+         */
         public Builder port(@Nullable Output<Integer> port) {
             $.port = port;
             return this;
         }
 
+        /**
+         * @param port Origin Port where request is sent.
+         * 
+         * @return builder
+         * 
+         */
         public Builder port(Integer port) {
             return port(Output.of(port));
         }

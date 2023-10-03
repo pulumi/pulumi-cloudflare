@@ -15,16 +15,32 @@ public final class RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRang
 
     public static final RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRangeArgs Empty = new RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRangeArgs();
 
+    /**
+     * From status code.
+     * 
+     */
     @Import(name="from")
     private @Nullable Output<Integer> from;
 
+    /**
+     * @return From status code.
+     * 
+     */
     public Optional<Output<Integer>> from() {
         return Optional.ofNullable(this.from);
     }
 
+    /**
+     * To status code.
+     * 
+     */
     @Import(name="to")
     private @Nullable Output<Integer> to;
 
+    /**
+     * @return To status code.
+     * 
+     */
     public Optional<Output<Integer>> to() {
         return Optional.ofNullable(this.to);
     }
@@ -54,20 +70,44 @@ public final class RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRang
             $ = new RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRangeArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param from From status code.
+         * 
+         * @return builder
+         * 
+         */
         public Builder from(@Nullable Output<Integer> from) {
             $.from = from;
             return this;
         }
 
+        /**
+         * @param from From status code.
+         * 
+         * @return builder
+         * 
+         */
         public Builder from(Integer from) {
             return from(Output.of(from));
         }
 
+        /**
+         * @param to To status code.
+         * 
+         * @return builder
+         * 
+         */
         public Builder to(@Nullable Output<Integer> to) {
             $.to = to;
             return this;
         }
 
+        /**
+         * @param to To status code.
+         * 
+         * @return builder
+         * 
+         */
         public Builder to(Integer to) {
             return to(Output.of(to));
         }

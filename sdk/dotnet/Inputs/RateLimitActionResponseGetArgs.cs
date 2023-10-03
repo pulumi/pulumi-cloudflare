@@ -12,9 +12,15 @@ namespace Pulumi.Cloudflare.Inputs
 
     public sealed class RateLimitActionResponseGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The body to return, the content here should conform to the `content_type`.
+        /// </summary>
         [Input("body", required: true)]
         public Input<string> Body { get; set; } = null!;
 
+        /// <summary>
+        /// The content-type of the body. Available values: `text/plain`, `text/xml`, `application/json`.
+        /// </summary>
         [Input("contentType", required: true)]
         public Input<string> ContentType { get; set; } = null!;
 

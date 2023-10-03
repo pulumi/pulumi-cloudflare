@@ -13,7 +13,13 @@ namespace Pulumi.Cloudflare.Outputs
     [OutputType]
     public sealed class RulesetRuleActionParametersOrigin
     {
+        /// <summary>
+        /// Host parameters for the custom key.
+        /// </summary>
         public readonly string? Host;
+        /// <summary>
+        /// Origin Port where request is sent.
+        /// </summary>
         public readonly int? Port;
 
         [OutputConstructor]

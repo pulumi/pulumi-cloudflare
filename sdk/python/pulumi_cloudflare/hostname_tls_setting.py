@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['HostnameTlsSettingArgs', 'HostnameTlsSetting']
@@ -25,10 +25,25 @@ class HostnameTlsSettingArgs:
         :param pulumi.Input[str] value: TLS setting value.
         :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         """
-        pulumi.set(__self__, "hostname", hostname)
-        pulumi.set(__self__, "setting", setting)
-        pulumi.set(__self__, "value", value)
-        pulumi.set(__self__, "zone_id", zone_id)
+        HostnameTlsSettingArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            hostname=hostname,
+            setting=setting,
+            value=value,
+            zone_id=zone_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             hostname: pulumi.Input[str],
+             setting: pulumi.Input[str],
+             value: pulumi.Input[str],
+             zone_id: pulumi.Input[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("hostname", hostname)
+        _setter("setting", setting)
+        _setter("value", value)
+        _setter("zone_id", zone_id)
 
     @property
     @pulumi.getter
@@ -95,18 +110,37 @@ class _HostnameTlsSettingState:
         :param pulumi.Input[str] value: TLS setting value.
         :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         """
+        _HostnameTlsSettingState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            created_at=created_at,
+            hostname=hostname,
+            setting=setting,
+            updated_at=updated_at,
+            value=value,
+            zone_id=zone_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             created_at: Optional[pulumi.Input[str]] = None,
+             hostname: Optional[pulumi.Input[str]] = None,
+             setting: Optional[pulumi.Input[str]] = None,
+             updated_at: Optional[pulumi.Input[str]] = None,
+             value: Optional[pulumi.Input[str]] = None,
+             zone_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if created_at is not None:
-            pulumi.set(__self__, "created_at", created_at)
+            _setter("created_at", created_at)
         if hostname is not None:
-            pulumi.set(__self__, "hostname", hostname)
+            _setter("hostname", hostname)
         if setting is not None:
-            pulumi.set(__self__, "setting", setting)
+            _setter("setting", setting)
         if updated_at is not None:
-            pulumi.set(__self__, "updated_at", updated_at)
+            _setter("updated_at", updated_at)
         if value is not None:
-            pulumi.set(__self__, "value", value)
+            _setter("value", value)
         if zone_id is not None:
-            pulumi.set(__self__, "zone_id", zone_id)
+            _setter("zone_id", zone_id)
 
     @property
     @pulumi.getter(name="createdAt")
@@ -252,6 +286,10 @@ class HostnameTlsSetting(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            HostnameTlsSettingArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

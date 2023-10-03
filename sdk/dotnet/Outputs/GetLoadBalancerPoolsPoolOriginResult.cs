@@ -14,8 +14,14 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class GetLoadBalancerPoolsPoolOriginResult
     {
         public readonly string Address;
+        /// <summary>
+        /// Whether this pool is enabled. Disabled pools will not receive traffic and are excluded from health checks.
+        /// </summary>
         public readonly bool? Enabled;
         public readonly ImmutableArray<Outputs.GetLoadBalancerPoolsPoolOriginHeaderResult> Headers;
+        /// <summary>
+        /// A regular expression matching the name of the Load Balancer pool to lookup.
+        /// </summary>
         public readonly string Name;
         public readonly double? Weight;
 

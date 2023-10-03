@@ -20,13 +20,16 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly Outputs.GetRulesetsRulesetRuleExposedCredentialCheckResult? ExposedCredentialCheck;
         public readonly string Expression;
         /// <summary>
-        /// The ID of this resource.
+        /// The ID of the Ruleset to target.
         /// </summary>
         public readonly string Id;
         public readonly string? LastUpdated;
         public readonly Outputs.GetRulesetsRulesetRuleLoggingResult? Logging;
         public readonly Outputs.GetRulesetsRulesetRuleRatelimitResult? Ratelimit;
         public readonly string Ref;
+        /// <summary>
+        /// Version of the ruleset to filter on.
+        /// </summary>
         public readonly string Version;
 
         [OutputConstructor]

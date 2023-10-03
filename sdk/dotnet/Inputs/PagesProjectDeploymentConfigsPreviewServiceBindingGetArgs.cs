@@ -12,15 +12,21 @@ namespace Pulumi.Cloudflare.Inputs
 
     public sealed class PagesProjectDeploymentConfigsPreviewServiceBindingGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The name of the Worker environment to bind to.
+        /// </summary>
         [Input("environment")]
         public Input<string>? Environment { get; set; }
 
         /// <summary>
-        /// Name of the project.
+        /// The global variable for the binding in your Worker code.
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
+        /// <summary>
+        /// The name of the Worker to bind to.
+        /// </summary>
         [Input("service", required: true)]
         public Input<string> Service { get; set; } = null!;
 

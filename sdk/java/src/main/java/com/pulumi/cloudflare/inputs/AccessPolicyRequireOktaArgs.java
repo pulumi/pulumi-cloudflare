@@ -16,24 +16,24 @@ public final class AccessPolicyRequireOktaArgs extends com.pulumi.resources.Reso
 
     public static final AccessPolicyRequireOktaArgs Empty = new AccessPolicyRequireOktaArgs();
 
+    /**
+     * The ID of the Azure Identity provider.
+     * 
+     */
     @Import(name="identityProviderId")
     private @Nullable Output<String> identityProviderId;
 
+    /**
+     * @return The ID of the Azure Identity provider.
+     * 
+     */
     public Optional<Output<String>> identityProviderId() {
         return Optional.ofNullable(this.identityProviderId);
     }
 
-    /**
-     * Friendly name of the Access Policy.
-     * 
-     */
     @Import(name="names")
     private @Nullable Output<List<String>> names;
 
-    /**
-     * @return Friendly name of the Access Policy.
-     * 
-     */
     public Optional<Output<List<String>>> names() {
         return Optional.ofNullable(this.names);
     }
@@ -63,42 +63,36 @@ public final class AccessPolicyRequireOktaArgs extends com.pulumi.resources.Reso
             $ = new AccessPolicyRequireOktaArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param identityProviderId The ID of the Azure Identity provider.
+         * 
+         * @return builder
+         * 
+         */
         public Builder identityProviderId(@Nullable Output<String> identityProviderId) {
             $.identityProviderId = identityProviderId;
             return this;
         }
 
-        public Builder identityProviderId(String identityProviderId) {
-            return identityProviderId(Output.of(identityProviderId));
-        }
-
         /**
-         * @param names Friendly name of the Access Policy.
+         * @param identityProviderId The ID of the Azure Identity provider.
          * 
          * @return builder
          * 
          */
+        public Builder identityProviderId(String identityProviderId) {
+            return identityProviderId(Output.of(identityProviderId));
+        }
+
         public Builder names(@Nullable Output<List<String>> names) {
             $.names = names;
             return this;
         }
 
-        /**
-         * @param names Friendly name of the Access Policy.
-         * 
-         * @return builder
-         * 
-         */
         public Builder names(List<String> names) {
             return names(Output.of(names));
         }
 
-        /**
-         * @param names Friendly name of the Access Policy.
-         * 
-         * @return builder
-         * 
-         */
         public Builder names(String... names) {
             return names(List.of(names));
         }

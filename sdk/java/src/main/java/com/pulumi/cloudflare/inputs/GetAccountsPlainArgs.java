@@ -14,17 +14,9 @@ public final class GetAccountsPlainArgs extends com.pulumi.resources.InvokeArgs 
 
     public static final GetAccountsPlainArgs Empty = new GetAccountsPlainArgs();
 
-    /**
-     * The account name to target for the resource.
-     * 
-     */
     @Import(name="name")
     private @Nullable String name;
 
-    /**
-     * @return The account name to target for the resource.
-     * 
-     */
     public Optional<String> name() {
         return Optional.ofNullable(this.name);
     }
@@ -53,12 +45,6 @@ public final class GetAccountsPlainArgs extends com.pulumi.resources.InvokeArgs 
             $ = new GetAccountsPlainArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param name The account name to target for the resource.
-         * 
-         * @return builder
-         * 
-         */
         public Builder name(@Nullable String name) {
             $.name = name;
             return this;

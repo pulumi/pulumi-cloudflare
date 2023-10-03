@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -36,7 +36,7 @@ class WaitingRoomArgs:
                  suspended: Optional[pulumi.Input[bool]] = None):
         """
         The set of arguments for constructing a WaitingRoom resource.
-        :param pulumi.Input[str] host: Host name for which the waiting room will be applied (no wildcards).
+        :param pulumi.Input[str] host: The additional host name for which the waiting room to be applied on (no wildcards).
         :param pulumi.Input[str] name: A unique name to identify the waiting room. **Modifying this attribute will force creation of a new resource.**
         :param pulumi.Input[int] new_users_per_minute: The number of new users that will be let into the route every minute.
         :param pulumi.Input[int] total_active_users: The total number of active user sessions on the route at a point in time.
@@ -48,50 +48,93 @@ class WaitingRoomArgs:
         :param pulumi.Input[str] description: A description to add more details about the waiting room.
         :param pulumi.Input[bool] disable_session_renewal: Disables automatic renewal of session cookies.
         :param pulumi.Input[bool] json_response_enabled: If true, requests to the waiting room with the header `Accept: application/json` will receive a JSON response object.
-        :param pulumi.Input[str] path: The path within the host to enable the waiting room on. Defaults to `/`.
+        :param pulumi.Input[str] path: The path within the additional host to enable the waiting room on. Defaults to `/`.
         :param pulumi.Input[bool] queue_all: If queue_all is true, then all traffic will be sent to the waiting room.
         :param pulumi.Input[str] queueing_method: The queueing method used by the waiting room. Available values: `fifo`, `random`, `passthrough`, `reject`. Defaults to `fifo`.
         :param pulumi.Input[int] queueing_status_code: HTTP status code returned to a user while in the queue. Defaults to `200`.
         :param pulumi.Input[int] session_duration: Lifetime of a cookie (in minutes) set by Cloudflare for users who get access to the origin. Defaults to `5`.
         :param pulumi.Input[bool] suspended: Suspends the waiting room.
         """
-        pulumi.set(__self__, "host", host)
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "new_users_per_minute", new_users_per_minute)
-        pulumi.set(__self__, "total_active_users", total_active_users)
-        pulumi.set(__self__, "zone_id", zone_id)
+        WaitingRoomArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            host=host,
+            name=name,
+            new_users_per_minute=new_users_per_minute,
+            total_active_users=total_active_users,
+            zone_id=zone_id,
+            additional_routes=additional_routes,
+            cookie_suffix=cookie_suffix,
+            custom_page_html=custom_page_html,
+            default_template_language=default_template_language,
+            description=description,
+            disable_session_renewal=disable_session_renewal,
+            json_response_enabled=json_response_enabled,
+            path=path,
+            queue_all=queue_all,
+            queueing_method=queueing_method,
+            queueing_status_code=queueing_status_code,
+            session_duration=session_duration,
+            suspended=suspended,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             host: pulumi.Input[str],
+             name: pulumi.Input[str],
+             new_users_per_minute: pulumi.Input[int],
+             total_active_users: pulumi.Input[int],
+             zone_id: pulumi.Input[str],
+             additional_routes: Optional[pulumi.Input[Sequence[pulumi.Input['WaitingRoomAdditionalRouteArgs']]]] = None,
+             cookie_suffix: Optional[pulumi.Input[str]] = None,
+             custom_page_html: Optional[pulumi.Input[str]] = None,
+             default_template_language: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             disable_session_renewal: Optional[pulumi.Input[bool]] = None,
+             json_response_enabled: Optional[pulumi.Input[bool]] = None,
+             path: Optional[pulumi.Input[str]] = None,
+             queue_all: Optional[pulumi.Input[bool]] = None,
+             queueing_method: Optional[pulumi.Input[str]] = None,
+             queueing_status_code: Optional[pulumi.Input[int]] = None,
+             session_duration: Optional[pulumi.Input[int]] = None,
+             suspended: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("host", host)
+        _setter("name", name)
+        _setter("new_users_per_minute", new_users_per_minute)
+        _setter("total_active_users", total_active_users)
+        _setter("zone_id", zone_id)
         if additional_routes is not None:
-            pulumi.set(__self__, "additional_routes", additional_routes)
+            _setter("additional_routes", additional_routes)
         if cookie_suffix is not None:
-            pulumi.set(__self__, "cookie_suffix", cookie_suffix)
+            _setter("cookie_suffix", cookie_suffix)
         if custom_page_html is not None:
-            pulumi.set(__self__, "custom_page_html", custom_page_html)
+            _setter("custom_page_html", custom_page_html)
         if default_template_language is not None:
-            pulumi.set(__self__, "default_template_language", default_template_language)
+            _setter("default_template_language", default_template_language)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if disable_session_renewal is not None:
-            pulumi.set(__self__, "disable_session_renewal", disable_session_renewal)
+            _setter("disable_session_renewal", disable_session_renewal)
         if json_response_enabled is not None:
-            pulumi.set(__self__, "json_response_enabled", json_response_enabled)
+            _setter("json_response_enabled", json_response_enabled)
         if path is not None:
-            pulumi.set(__self__, "path", path)
+            _setter("path", path)
         if queue_all is not None:
-            pulumi.set(__self__, "queue_all", queue_all)
+            _setter("queue_all", queue_all)
         if queueing_method is not None:
-            pulumi.set(__self__, "queueing_method", queueing_method)
+            _setter("queueing_method", queueing_method)
         if queueing_status_code is not None:
-            pulumi.set(__self__, "queueing_status_code", queueing_status_code)
+            _setter("queueing_status_code", queueing_status_code)
         if session_duration is not None:
-            pulumi.set(__self__, "session_duration", session_duration)
+            _setter("session_duration", session_duration)
         if suspended is not None:
-            pulumi.set(__self__, "suspended", suspended)
+            _setter("suspended", suspended)
 
     @property
     @pulumi.getter
     def host(self) -> pulumi.Input[str]:
         """
-        Host name for which the waiting room will be applied (no wildcards).
+        The additional host name for which the waiting room to be applied on (no wildcards).
         """
         return pulumi.get(self, "host")
 
@@ -235,7 +278,7 @@ class WaitingRoomArgs:
     @pulumi.getter
     def path(self) -> Optional[pulumi.Input[str]]:
         """
-        The path within the host to enable the waiting room on. Defaults to `/`.
+        The path within the additional host to enable the waiting room on. Defaults to `/`.
         """
         return pulumi.get(self, "path")
 
@@ -333,11 +376,11 @@ class _WaitingRoomState:
         :param pulumi.Input[str] default_template_language: The language to use for the default waiting room page. Available values: `de-DE`, `es-ES`, `en-US`, `fr-FR`, `id-ID`, `it-IT`, `ja-JP`, `ko-KR`, `nl-NL`, `pl-PL`, `pt-BR`, `tr-TR`, `zh-CN`, `zh-TW`, `ru-RU`, `fa-IR`. Defaults to `en-US`.
         :param pulumi.Input[str] description: A description to add more details about the waiting room.
         :param pulumi.Input[bool] disable_session_renewal: Disables automatic renewal of session cookies.
-        :param pulumi.Input[str] host: Host name for which the waiting room will be applied (no wildcards).
+        :param pulumi.Input[str] host: The additional host name for which the waiting room to be applied on (no wildcards).
         :param pulumi.Input[bool] json_response_enabled: If true, requests to the waiting room with the header `Accept: application/json` will receive a JSON response object.
         :param pulumi.Input[str] name: A unique name to identify the waiting room. **Modifying this attribute will force creation of a new resource.**
         :param pulumi.Input[int] new_users_per_minute: The number of new users that will be let into the route every minute.
-        :param pulumi.Input[str] path: The path within the host to enable the waiting room on. Defaults to `/`.
+        :param pulumi.Input[str] path: The path within the additional host to enable the waiting room on. Defaults to `/`.
         :param pulumi.Input[bool] queue_all: If queue_all is true, then all traffic will be sent to the waiting room.
         :param pulumi.Input[str] queueing_method: The queueing method used by the waiting room. Available values: `fifo`, `random`, `passthrough`, `reject`. Defaults to `fifo`.
         :param pulumi.Input[int] queueing_status_code: HTTP status code returned to a user while in the queue. Defaults to `200`.
@@ -346,42 +389,85 @@ class _WaitingRoomState:
         :param pulumi.Input[int] total_active_users: The total number of active user sessions on the route at a point in time.
         :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         """
+        _WaitingRoomState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            additional_routes=additional_routes,
+            cookie_suffix=cookie_suffix,
+            custom_page_html=custom_page_html,
+            default_template_language=default_template_language,
+            description=description,
+            disable_session_renewal=disable_session_renewal,
+            host=host,
+            json_response_enabled=json_response_enabled,
+            name=name,
+            new_users_per_minute=new_users_per_minute,
+            path=path,
+            queue_all=queue_all,
+            queueing_method=queueing_method,
+            queueing_status_code=queueing_status_code,
+            session_duration=session_duration,
+            suspended=suspended,
+            total_active_users=total_active_users,
+            zone_id=zone_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             additional_routes: Optional[pulumi.Input[Sequence[pulumi.Input['WaitingRoomAdditionalRouteArgs']]]] = None,
+             cookie_suffix: Optional[pulumi.Input[str]] = None,
+             custom_page_html: Optional[pulumi.Input[str]] = None,
+             default_template_language: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             disable_session_renewal: Optional[pulumi.Input[bool]] = None,
+             host: Optional[pulumi.Input[str]] = None,
+             json_response_enabled: Optional[pulumi.Input[bool]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             new_users_per_minute: Optional[pulumi.Input[int]] = None,
+             path: Optional[pulumi.Input[str]] = None,
+             queue_all: Optional[pulumi.Input[bool]] = None,
+             queueing_method: Optional[pulumi.Input[str]] = None,
+             queueing_status_code: Optional[pulumi.Input[int]] = None,
+             session_duration: Optional[pulumi.Input[int]] = None,
+             suspended: Optional[pulumi.Input[bool]] = None,
+             total_active_users: Optional[pulumi.Input[int]] = None,
+             zone_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if additional_routes is not None:
-            pulumi.set(__self__, "additional_routes", additional_routes)
+            _setter("additional_routes", additional_routes)
         if cookie_suffix is not None:
-            pulumi.set(__self__, "cookie_suffix", cookie_suffix)
+            _setter("cookie_suffix", cookie_suffix)
         if custom_page_html is not None:
-            pulumi.set(__self__, "custom_page_html", custom_page_html)
+            _setter("custom_page_html", custom_page_html)
         if default_template_language is not None:
-            pulumi.set(__self__, "default_template_language", default_template_language)
+            _setter("default_template_language", default_template_language)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if disable_session_renewal is not None:
-            pulumi.set(__self__, "disable_session_renewal", disable_session_renewal)
+            _setter("disable_session_renewal", disable_session_renewal)
         if host is not None:
-            pulumi.set(__self__, "host", host)
+            _setter("host", host)
         if json_response_enabled is not None:
-            pulumi.set(__self__, "json_response_enabled", json_response_enabled)
+            _setter("json_response_enabled", json_response_enabled)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if new_users_per_minute is not None:
-            pulumi.set(__self__, "new_users_per_minute", new_users_per_minute)
+            _setter("new_users_per_minute", new_users_per_minute)
         if path is not None:
-            pulumi.set(__self__, "path", path)
+            _setter("path", path)
         if queue_all is not None:
-            pulumi.set(__self__, "queue_all", queue_all)
+            _setter("queue_all", queue_all)
         if queueing_method is not None:
-            pulumi.set(__self__, "queueing_method", queueing_method)
+            _setter("queueing_method", queueing_method)
         if queueing_status_code is not None:
-            pulumi.set(__self__, "queueing_status_code", queueing_status_code)
+            _setter("queueing_status_code", queueing_status_code)
         if session_duration is not None:
-            pulumi.set(__self__, "session_duration", session_duration)
+            _setter("session_duration", session_duration)
         if suspended is not None:
-            pulumi.set(__self__, "suspended", suspended)
+            _setter("suspended", suspended)
         if total_active_users is not None:
-            pulumi.set(__self__, "total_active_users", total_active_users)
+            _setter("total_active_users", total_active_users)
         if zone_id is not None:
-            pulumi.set(__self__, "zone_id", zone_id)
+            _setter("zone_id", zone_id)
 
     @property
     @pulumi.getter(name="additionalRoutes")
@@ -459,7 +545,7 @@ class _WaitingRoomState:
     @pulumi.getter
     def host(self) -> Optional[pulumi.Input[str]]:
         """
-        Host name for which the waiting room will be applied (no wildcards).
+        The additional host name for which the waiting room to be applied on (no wildcards).
         """
         return pulumi.get(self, "host")
 
@@ -507,7 +593,7 @@ class _WaitingRoomState:
     @pulumi.getter
     def path(self) -> Optional[pulumi.Input[str]]:
         """
-        The path within the host to enable the waiting room on. Defaults to `/`.
+        The path within the additional host to enable the waiting room on. Defaults to `/`.
         """
         return pulumi.get(self, "path")
 
@@ -670,11 +756,11 @@ class WaitingRoom(pulumi.CustomResource):
         :param pulumi.Input[str] default_template_language: The language to use for the default waiting room page. Available values: `de-DE`, `es-ES`, `en-US`, `fr-FR`, `id-ID`, `it-IT`, `ja-JP`, `ko-KR`, `nl-NL`, `pl-PL`, `pt-BR`, `tr-TR`, `zh-CN`, `zh-TW`, `ru-RU`, `fa-IR`. Defaults to `en-US`.
         :param pulumi.Input[str] description: A description to add more details about the waiting room.
         :param pulumi.Input[bool] disable_session_renewal: Disables automatic renewal of session cookies.
-        :param pulumi.Input[str] host: Host name for which the waiting room will be applied (no wildcards).
+        :param pulumi.Input[str] host: The additional host name for which the waiting room to be applied on (no wildcards).
         :param pulumi.Input[bool] json_response_enabled: If true, requests to the waiting room with the header `Accept: application/json` will receive a JSON response object.
         :param pulumi.Input[str] name: A unique name to identify the waiting room. **Modifying this attribute will force creation of a new resource.**
         :param pulumi.Input[int] new_users_per_minute: The number of new users that will be let into the route every minute.
-        :param pulumi.Input[str] path: The path within the host to enable the waiting room on. Defaults to `/`.
+        :param pulumi.Input[str] path: The path within the additional host to enable the waiting room on. Defaults to `/`.
         :param pulumi.Input[bool] queue_all: If queue_all is true, then all traffic will be sent to the waiting room.
         :param pulumi.Input[str] queueing_method: The queueing method used by the waiting room. Available values: `fifo`, `random`, `passthrough`, `reject`. Defaults to `fifo`.
         :param pulumi.Input[int] queueing_status_code: HTTP status code returned to a user while in the queue. Defaults to `200`.
@@ -737,6 +823,10 @@ class WaitingRoom(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            WaitingRoomArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -838,11 +928,11 @@ class WaitingRoom(pulumi.CustomResource):
         :param pulumi.Input[str] default_template_language: The language to use for the default waiting room page. Available values: `de-DE`, `es-ES`, `en-US`, `fr-FR`, `id-ID`, `it-IT`, `ja-JP`, `ko-KR`, `nl-NL`, `pl-PL`, `pt-BR`, `tr-TR`, `zh-CN`, `zh-TW`, `ru-RU`, `fa-IR`. Defaults to `en-US`.
         :param pulumi.Input[str] description: A description to add more details about the waiting room.
         :param pulumi.Input[bool] disable_session_renewal: Disables automatic renewal of session cookies.
-        :param pulumi.Input[str] host: Host name for which the waiting room will be applied (no wildcards).
+        :param pulumi.Input[str] host: The additional host name for which the waiting room to be applied on (no wildcards).
         :param pulumi.Input[bool] json_response_enabled: If true, requests to the waiting room with the header `Accept: application/json` will receive a JSON response object.
         :param pulumi.Input[str] name: A unique name to identify the waiting room. **Modifying this attribute will force creation of a new resource.**
         :param pulumi.Input[int] new_users_per_minute: The number of new users that will be let into the route every minute.
-        :param pulumi.Input[str] path: The path within the host to enable the waiting room on. Defaults to `/`.
+        :param pulumi.Input[str] path: The path within the additional host to enable the waiting room on. Defaults to `/`.
         :param pulumi.Input[bool] queue_all: If queue_all is true, then all traffic will be sent to the waiting room.
         :param pulumi.Input[str] queueing_method: The queueing method used by the waiting room. Available values: `fifo`, `random`, `passthrough`, `reject`. Defaults to `fifo`.
         :param pulumi.Input[int] queueing_status_code: HTTP status code returned to a user while in the queue. Defaults to `200`.
@@ -927,7 +1017,7 @@ class WaitingRoom(pulumi.CustomResource):
     @pulumi.getter
     def host(self) -> pulumi.Output[str]:
         """
-        Host name for which the waiting room will be applied (no wildcards).
+        The additional host name for which the waiting room to be applied on (no wildcards).
         """
         return pulumi.get(self, "host")
 
@@ -959,7 +1049,7 @@ class WaitingRoom(pulumi.CustomResource):
     @pulumi.getter
     def path(self) -> pulumi.Output[Optional[str]]:
         """
-        The path within the host to enable the waiting room on. Defaults to `/`.
+        The path within the additional host to enable the waiting room on. Defaults to `/`.
         """
         return pulumi.get(self, "path")
 

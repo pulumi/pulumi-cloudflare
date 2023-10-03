@@ -6,13 +6,14 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = [
     'GetApiTokenPermissionGroupsResult',
     'AwaitableGetApiTokenPermissionGroupsResult',
     'get_api_token_permission_groups',
+    'get_api_token_permission_groups_output',
 ]
 
 @pulumi.output_type
@@ -134,3 +135,24 @@ def get_api_token_permission_groups(opts: Optional[pulumi.InvokeOptions] = None)
         r2=pulumi.get(__ret__, 'r2'),
         user=pulumi.get(__ret__, 'user'),
         zone=pulumi.get(__ret__, 'zone'))
+
+
+@_utilities.lift_output_func(get_api_token_permission_groups)
+def get_api_token_permission_groups_output(opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetApiTokenPermissionGroupsResult]:
+    """
+    Use this data source to look up [API Token Permission Groups](https://developers.cloudflare.com/api/tokens/create/permissions).
+    Commonly used as references within [`cloudflare_token`](https://www.terraform.io/docs/providers/cloudflare/r/api_token.html) resources.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_cloudflare as cloudflare
+
+    all = cloudflare.get_api_token_permission_groups()
+    pulumi.export("dnsReadPermissionId", all.zone["DNS Read"])
+    pulumi.export("accountLbMonitorsAndReadId", all.account["Load Balancing: Monitors and Pools Read"])
+    pulumi.export("userMembershipsReadId", all.user["Memberships Read"])
+    ```
+    """
+    ...

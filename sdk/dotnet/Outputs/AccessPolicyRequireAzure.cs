@@ -13,9 +13,12 @@ namespace Pulumi.Cloudflare.Outputs
     [OutputType]
     public sealed class AccessPolicyRequireAzure
     {
+        /// <summary>
+        /// The ID of the Azure Identity provider.
+        /// </summary>
         public readonly string? IdentityProviderId;
         /// <summary>
-        /// The ID of this resource.
+        /// The ID of the Authentication Context.
         /// </summary>
         public readonly ImmutableArray<string> Ids;
 

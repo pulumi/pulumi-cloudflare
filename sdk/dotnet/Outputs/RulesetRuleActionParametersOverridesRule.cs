@@ -25,7 +25,13 @@ namespace Pulumi.Cloudflare.Outputs
         /// Unique rule identifier.
         /// </summary>
         public readonly string? Id;
+        /// <summary>
+        /// Anomaly score threshold to apply in the ruleset rule override. Only applicable to modsecurity-based rulesets.
+        /// </summary>
         public readonly int? ScoreThreshold;
+        /// <summary>
+        /// Sensitivity level for a ruleset rule override.
+        /// </summary>
         public readonly string? SensitivityLevel;
 
         [OutputConstructor]

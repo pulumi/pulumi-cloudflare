@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -45,29 +45,62 @@ class SpectrumApplicationArgs:
         :param pulumi.Input[str] tls: TLS configuration option for Cloudflare to connect to your origin. Available values: `off`, `flexible`, `full`, `strict`. Defaults to `off`.
         :param pulumi.Input[str] traffic_type: Sets application type. Available values: `direct`, `http`, `https`. Defaults to `direct`.
         """
-        pulumi.set(__self__, "dns", dns)
-        pulumi.set(__self__, "protocol", protocol)
-        pulumi.set(__self__, "zone_id", zone_id)
+        SpectrumApplicationArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            dns=dns,
+            protocol=protocol,
+            zone_id=zone_id,
+            argo_smart_routing=argo_smart_routing,
+            edge_ips=edge_ips,
+            ip_firewall=ip_firewall,
+            origin_directs=origin_directs,
+            origin_dns=origin_dns,
+            origin_port=origin_port,
+            origin_port_range=origin_port_range,
+            proxy_protocol=proxy_protocol,
+            tls=tls,
+            traffic_type=traffic_type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             dns: pulumi.Input['SpectrumApplicationDnsArgs'],
+             protocol: pulumi.Input[str],
+             zone_id: pulumi.Input[str],
+             argo_smart_routing: Optional[pulumi.Input[bool]] = None,
+             edge_ips: Optional[pulumi.Input['SpectrumApplicationEdgeIpsArgs']] = None,
+             ip_firewall: Optional[pulumi.Input[bool]] = None,
+             origin_directs: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             origin_dns: Optional[pulumi.Input['SpectrumApplicationOriginDnsArgs']] = None,
+             origin_port: Optional[pulumi.Input[int]] = None,
+             origin_port_range: Optional[pulumi.Input['SpectrumApplicationOriginPortRangeArgs']] = None,
+             proxy_protocol: Optional[pulumi.Input[str]] = None,
+             tls: Optional[pulumi.Input[str]] = None,
+             traffic_type: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("dns", dns)
+        _setter("protocol", protocol)
+        _setter("zone_id", zone_id)
         if argo_smart_routing is not None:
-            pulumi.set(__self__, "argo_smart_routing", argo_smart_routing)
+            _setter("argo_smart_routing", argo_smart_routing)
         if edge_ips is not None:
-            pulumi.set(__self__, "edge_ips", edge_ips)
+            _setter("edge_ips", edge_ips)
         if ip_firewall is not None:
-            pulumi.set(__self__, "ip_firewall", ip_firewall)
+            _setter("ip_firewall", ip_firewall)
         if origin_directs is not None:
-            pulumi.set(__self__, "origin_directs", origin_directs)
+            _setter("origin_directs", origin_directs)
         if origin_dns is not None:
-            pulumi.set(__self__, "origin_dns", origin_dns)
+            _setter("origin_dns", origin_dns)
         if origin_port is not None:
-            pulumi.set(__self__, "origin_port", origin_port)
+            _setter("origin_port", origin_port)
         if origin_port_range is not None:
-            pulumi.set(__self__, "origin_port_range", origin_port_range)
+            _setter("origin_port_range", origin_port_range)
         if proxy_protocol is not None:
-            pulumi.set(__self__, "proxy_protocol", proxy_protocol)
+            _setter("proxy_protocol", proxy_protocol)
         if tls is not None:
-            pulumi.set(__self__, "tls", tls)
+            _setter("tls", tls)
         if traffic_type is not None:
-            pulumi.set(__self__, "traffic_type", traffic_type)
+            _setter("traffic_type", traffic_type)
 
     @property
     @pulumi.getter
@@ -258,32 +291,65 @@ class _SpectrumApplicationState:
         :param pulumi.Input[str] traffic_type: Sets application type. Available values: `direct`, `http`, `https`. Defaults to `direct`.
         :param pulumi.Input[str] zone_id: The zone identifier to target for the resource.
         """
+        _SpectrumApplicationState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            argo_smart_routing=argo_smart_routing,
+            dns=dns,
+            edge_ips=edge_ips,
+            ip_firewall=ip_firewall,
+            origin_directs=origin_directs,
+            origin_dns=origin_dns,
+            origin_port=origin_port,
+            origin_port_range=origin_port_range,
+            protocol=protocol,
+            proxy_protocol=proxy_protocol,
+            tls=tls,
+            traffic_type=traffic_type,
+            zone_id=zone_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             argo_smart_routing: Optional[pulumi.Input[bool]] = None,
+             dns: Optional[pulumi.Input['SpectrumApplicationDnsArgs']] = None,
+             edge_ips: Optional[pulumi.Input['SpectrumApplicationEdgeIpsArgs']] = None,
+             ip_firewall: Optional[pulumi.Input[bool]] = None,
+             origin_directs: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             origin_dns: Optional[pulumi.Input['SpectrumApplicationOriginDnsArgs']] = None,
+             origin_port: Optional[pulumi.Input[int]] = None,
+             origin_port_range: Optional[pulumi.Input['SpectrumApplicationOriginPortRangeArgs']] = None,
+             protocol: Optional[pulumi.Input[str]] = None,
+             proxy_protocol: Optional[pulumi.Input[str]] = None,
+             tls: Optional[pulumi.Input[str]] = None,
+             traffic_type: Optional[pulumi.Input[str]] = None,
+             zone_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if argo_smart_routing is not None:
-            pulumi.set(__self__, "argo_smart_routing", argo_smart_routing)
+            _setter("argo_smart_routing", argo_smart_routing)
         if dns is not None:
-            pulumi.set(__self__, "dns", dns)
+            _setter("dns", dns)
         if edge_ips is not None:
-            pulumi.set(__self__, "edge_ips", edge_ips)
+            _setter("edge_ips", edge_ips)
         if ip_firewall is not None:
-            pulumi.set(__self__, "ip_firewall", ip_firewall)
+            _setter("ip_firewall", ip_firewall)
         if origin_directs is not None:
-            pulumi.set(__self__, "origin_directs", origin_directs)
+            _setter("origin_directs", origin_directs)
         if origin_dns is not None:
-            pulumi.set(__self__, "origin_dns", origin_dns)
+            _setter("origin_dns", origin_dns)
         if origin_port is not None:
-            pulumi.set(__self__, "origin_port", origin_port)
+            _setter("origin_port", origin_port)
         if origin_port_range is not None:
-            pulumi.set(__self__, "origin_port_range", origin_port_range)
+            _setter("origin_port_range", origin_port_range)
         if protocol is not None:
-            pulumi.set(__self__, "protocol", protocol)
+            _setter("protocol", protocol)
         if proxy_protocol is not None:
-            pulumi.set(__self__, "proxy_protocol", proxy_protocol)
+            _setter("proxy_protocol", proxy_protocol)
         if tls is not None:
-            pulumi.set(__self__, "tls", tls)
+            _setter("tls", tls)
         if traffic_type is not None:
-            pulumi.set(__self__, "traffic_type", traffic_type)
+            _setter("traffic_type", traffic_type)
         if zone_id is not None:
-            pulumi.set(__self__, "zone_id", zone_id)
+            _setter("zone_id", zone_id)
 
     @property
     @pulumi.getter(name="argoSmartRouting")
@@ -563,6 +629,10 @@ class SpectrumApplication(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            SpectrumApplicationArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -591,14 +661,34 @@ class SpectrumApplication(pulumi.CustomResource):
             __props__ = SpectrumApplicationArgs.__new__(SpectrumApplicationArgs)
 
             __props__.__dict__["argo_smart_routing"] = argo_smart_routing
+            if dns is not None and not isinstance(dns, SpectrumApplicationDnsArgs):
+                dns = dns or {}
+                def _setter(key, value):
+                    dns[key] = value
+                SpectrumApplicationDnsArgs._configure(_setter, **dns)
             if dns is None and not opts.urn:
                 raise TypeError("Missing required property 'dns'")
             __props__.__dict__["dns"] = dns
+            if edge_ips is not None and not isinstance(edge_ips, SpectrumApplicationEdgeIpsArgs):
+                edge_ips = edge_ips or {}
+                def _setter(key, value):
+                    edge_ips[key] = value
+                SpectrumApplicationEdgeIpsArgs._configure(_setter, **edge_ips)
             __props__.__dict__["edge_ips"] = edge_ips
             __props__.__dict__["ip_firewall"] = ip_firewall
             __props__.__dict__["origin_directs"] = origin_directs
+            if origin_dns is not None and not isinstance(origin_dns, SpectrumApplicationOriginDnsArgs):
+                origin_dns = origin_dns or {}
+                def _setter(key, value):
+                    origin_dns[key] = value
+                SpectrumApplicationOriginDnsArgs._configure(_setter, **origin_dns)
             __props__.__dict__["origin_dns"] = origin_dns
             __props__.__dict__["origin_port"] = origin_port
+            if origin_port_range is not None and not isinstance(origin_port_range, SpectrumApplicationOriginPortRangeArgs):
+                origin_port_range = origin_port_range or {}
+                def _setter(key, value):
+                    origin_port_range[key] = value
+                SpectrumApplicationOriginPortRangeArgs._configure(_setter, **origin_port_range)
             __props__.__dict__["origin_port_range"] = origin_port_range
             if protocol is None and not opts.urn:
                 raise TypeError("Missing required property 'protocol'")

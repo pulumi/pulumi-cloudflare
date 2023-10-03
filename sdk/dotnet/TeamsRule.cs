@@ -60,7 +60,7 @@ namespace Pulumi.Cloudflare
         public Output<string> AccountId { get; private set; } = null!;
 
         /// <summary>
-        /// The action executed by matched teams rule. Available values: `allow`, `block`, `safesearch`, `ytrestricted`, `on`, `off`, `scan`, `noscan`, `isolate`, `noisolate`, `override`, `l4_override`, `egress`, `audit_ssh`.
+        /// Action to be taken when the SSL certificate of upstream is invalid. Available values: `pass_through`, `block`, `error`.
         /// </summary>
         [Output("action")]
         public Output<string> Action { get; private set; } = null!;
@@ -78,7 +78,7 @@ namespace Pulumi.Cloudflare
         public Output<string?> DevicePosture { get; private set; } = null!;
 
         /// <summary>
-        /// Indicator of rule enablement.
+        /// Enable or disable DLP Payload Logging for this rule.
         /// </summary>
         [Output("enabled")]
         public Output<bool?> Enabled { get; private set; } = null!;
@@ -175,7 +175,7 @@ namespace Pulumi.Cloudflare
         public Input<string> AccountId { get; set; } = null!;
 
         /// <summary>
-        /// The action executed by matched teams rule. Available values: `allow`, `block`, `safesearch`, `ytrestricted`, `on`, `off`, `scan`, `noscan`, `isolate`, `noisolate`, `override`, `l4_override`, `egress`, `audit_ssh`.
+        /// Action to be taken when the SSL certificate of upstream is invalid. Available values: `pass_through`, `block`, `error`.
         /// </summary>
         [Input("action", required: true)]
         public Input<string> Action { get; set; } = null!;
@@ -193,7 +193,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? DevicePosture { get; set; }
 
         /// <summary>
-        /// Indicator of rule enablement.
+        /// Enable or disable DLP Payload Logging for this rule.
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
@@ -255,7 +255,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? AccountId { get; set; }
 
         /// <summary>
-        /// The action executed by matched teams rule. Available values: `allow`, `block`, `safesearch`, `ytrestricted`, `on`, `off`, `scan`, `noscan`, `isolate`, `noisolate`, `override`, `l4_override`, `egress`, `audit_ssh`.
+        /// Action to be taken when the SSL certificate of upstream is invalid. Available values: `pass_through`, `block`, `error`.
         /// </summary>
         [Input("action")]
         public Input<string>? Action { get; set; }
@@ -273,7 +273,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? DevicePosture { get; set; }
 
         /// <summary>
-        /// Indicator of rule enablement.
+        /// Enable or disable DLP Payload Logging for this rule.
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }

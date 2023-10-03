@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['PagesDomainArgs', 'PagesDomain']
@@ -23,9 +23,22 @@ class PagesDomainArgs:
         :param pulumi.Input[str] domain: Custom domain. **Modifying this attribute will force creation of a new resource.**
         :param pulumi.Input[str] project_name: Name of the Pages Project. **Modifying this attribute will force creation of a new resource.**
         """
-        pulumi.set(__self__, "account_id", account_id)
-        pulumi.set(__self__, "domain", domain)
-        pulumi.set(__self__, "project_name", project_name)
+        PagesDomainArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            account_id=account_id,
+            domain=domain,
+            project_name=project_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             account_id: pulumi.Input[str],
+             domain: pulumi.Input[str],
+             project_name: pulumi.Input[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("account_id", account_id)
+        _setter("domain", domain)
+        _setter("project_name", project_name)
 
     @property
     @pulumi.getter(name="accountId")
@@ -78,14 +91,29 @@ class _PagesDomainState:
         :param pulumi.Input[str] project_name: Name of the Pages Project. **Modifying this attribute will force creation of a new resource.**
         :param pulumi.Input[str] status: Status of the custom domain.
         """
+        _PagesDomainState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            account_id=account_id,
+            domain=domain,
+            project_name=project_name,
+            status=status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             account_id: Optional[pulumi.Input[str]] = None,
+             domain: Optional[pulumi.Input[str]] = None,
+             project_name: Optional[pulumi.Input[str]] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if account_id is not None:
-            pulumi.set(__self__, "account_id", account_id)
+            _setter("account_id", account_id)
         if domain is not None:
-            pulumi.set(__self__, "domain", domain)
+            _setter("domain", domain)
         if project_name is not None:
-            pulumi.set(__self__, "project_name", project_name)
+            _setter("project_name", project_name)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
 
     @property
     @pulumi.getter(name="accountId")
@@ -213,6 +241,10 @@ class PagesDomain(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            PagesDomainArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

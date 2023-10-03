@@ -14,15 +14,25 @@ namespace Pulumi.Cloudflare.Inputs
     {
         [Input("audTags")]
         private InputList<string>? _audTags;
+
+        /// <summary>
+        /// Audience tags of the access rule.
+        /// </summary>
         public InputList<string> AudTags
         {
             get => _audTags ?? (_audTags = new InputList<string>());
             set => _audTags = value;
         }
 
+        /// <summary>
+        /// Whether the access rule is required.
+        /// </summary>
         [Input("required")]
         public Input<bool>? Required { get; set; }
 
+        /// <summary>
+        /// Name of the team to which the access rule applies.
+        /// </summary>
         [Input("teamName")]
         public Input<string>? TeamName { get; set; }
 

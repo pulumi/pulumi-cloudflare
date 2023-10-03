@@ -13,9 +13,17 @@ public final class TeamsRuleRuleSettingsAuditSshArgs extends com.pulumi.resource
 
     public static final TeamsRuleRuleSettingsAuditSshArgs Empty = new TeamsRuleRuleSettingsAuditSshArgs();
 
+    /**
+     * Log all SSH commands.
+     * 
+     */
     @Import(name="commandLogging", required=true)
     private Output<Boolean> commandLogging;
 
+    /**
+     * @return Log all SSH commands.
+     * 
+     */
     public Output<Boolean> commandLogging() {
         return this.commandLogging;
     }
@@ -44,11 +52,23 @@ public final class TeamsRuleRuleSettingsAuditSshArgs extends com.pulumi.resource
             $ = new TeamsRuleRuleSettingsAuditSshArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param commandLogging Log all SSH commands.
+         * 
+         * @return builder
+         * 
+         */
         public Builder commandLogging(Output<Boolean> commandLogging) {
             $.commandLogging = commandLogging;
             return this;
         }
 
+        /**
+         * @param commandLogging Log all SSH commands.
+         * 
+         * @return builder
+         * 
+         */
         public Builder commandLogging(Boolean commandLogging) {
             return commandLogging(Output.of(commandLogging));
         }

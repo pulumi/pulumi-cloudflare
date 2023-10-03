@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -40,27 +40,56 @@ class TeamsAccountArgs:
         :param pulumi.Input[bool] tls_decrypt_enabled: Indicator that decryption of TLS traffic is enabled.
         :param pulumi.Input[bool] url_browser_isolation_enabled: Safely browse websites in Browser Isolation through a URL.
         """
-        pulumi.set(__self__, "account_id", account_id)
+        TeamsAccountArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            account_id=account_id,
+            activity_log_enabled=activity_log_enabled,
+            antivirus=antivirus,
+            block_page=block_page,
+            fips=fips,
+            logging=logging,
+            payload_log=payload_log,
+            protocol_detection_enabled=protocol_detection_enabled,
+            proxy=proxy,
+            tls_decrypt_enabled=tls_decrypt_enabled,
+            url_browser_isolation_enabled=url_browser_isolation_enabled,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             account_id: pulumi.Input[str],
+             activity_log_enabled: Optional[pulumi.Input[bool]] = None,
+             antivirus: Optional[pulumi.Input['TeamsAccountAntivirusArgs']] = None,
+             block_page: Optional[pulumi.Input['TeamsAccountBlockPageArgs']] = None,
+             fips: Optional[pulumi.Input['TeamsAccountFipsArgs']] = None,
+             logging: Optional[pulumi.Input['TeamsAccountLoggingArgs']] = None,
+             payload_log: Optional[pulumi.Input['TeamsAccountPayloadLogArgs']] = None,
+             protocol_detection_enabled: Optional[pulumi.Input[bool]] = None,
+             proxy: Optional[pulumi.Input['TeamsAccountProxyArgs']] = None,
+             tls_decrypt_enabled: Optional[pulumi.Input[bool]] = None,
+             url_browser_isolation_enabled: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("account_id", account_id)
         if activity_log_enabled is not None:
-            pulumi.set(__self__, "activity_log_enabled", activity_log_enabled)
+            _setter("activity_log_enabled", activity_log_enabled)
         if antivirus is not None:
-            pulumi.set(__self__, "antivirus", antivirus)
+            _setter("antivirus", antivirus)
         if block_page is not None:
-            pulumi.set(__self__, "block_page", block_page)
+            _setter("block_page", block_page)
         if fips is not None:
-            pulumi.set(__self__, "fips", fips)
+            _setter("fips", fips)
         if logging is not None:
-            pulumi.set(__self__, "logging", logging)
+            _setter("logging", logging)
         if payload_log is not None:
-            pulumi.set(__self__, "payload_log", payload_log)
+            _setter("payload_log", payload_log)
         if protocol_detection_enabled is not None:
-            pulumi.set(__self__, "protocol_detection_enabled", protocol_detection_enabled)
+            _setter("protocol_detection_enabled", protocol_detection_enabled)
         if proxy is not None:
-            pulumi.set(__self__, "proxy", proxy)
+            _setter("proxy", proxy)
         if tls_decrypt_enabled is not None:
-            pulumi.set(__self__, "tls_decrypt_enabled", tls_decrypt_enabled)
+            _setter("tls_decrypt_enabled", tls_decrypt_enabled)
         if url_browser_isolation_enabled is not None:
-            pulumi.set(__self__, "url_browser_isolation_enabled", url_browser_isolation_enabled)
+            _setter("url_browser_isolation_enabled", url_browser_isolation_enabled)
 
     @property
     @pulumi.getter(name="accountId")
@@ -219,28 +248,57 @@ class _TeamsAccountState:
         :param pulumi.Input[bool] tls_decrypt_enabled: Indicator that decryption of TLS traffic is enabled.
         :param pulumi.Input[bool] url_browser_isolation_enabled: Safely browse websites in Browser Isolation through a URL.
         """
+        _TeamsAccountState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            account_id=account_id,
+            activity_log_enabled=activity_log_enabled,
+            antivirus=antivirus,
+            block_page=block_page,
+            fips=fips,
+            logging=logging,
+            payload_log=payload_log,
+            protocol_detection_enabled=protocol_detection_enabled,
+            proxy=proxy,
+            tls_decrypt_enabled=tls_decrypt_enabled,
+            url_browser_isolation_enabled=url_browser_isolation_enabled,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             account_id: Optional[pulumi.Input[str]] = None,
+             activity_log_enabled: Optional[pulumi.Input[bool]] = None,
+             antivirus: Optional[pulumi.Input['TeamsAccountAntivirusArgs']] = None,
+             block_page: Optional[pulumi.Input['TeamsAccountBlockPageArgs']] = None,
+             fips: Optional[pulumi.Input['TeamsAccountFipsArgs']] = None,
+             logging: Optional[pulumi.Input['TeamsAccountLoggingArgs']] = None,
+             payload_log: Optional[pulumi.Input['TeamsAccountPayloadLogArgs']] = None,
+             protocol_detection_enabled: Optional[pulumi.Input[bool]] = None,
+             proxy: Optional[pulumi.Input['TeamsAccountProxyArgs']] = None,
+             tls_decrypt_enabled: Optional[pulumi.Input[bool]] = None,
+             url_browser_isolation_enabled: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if account_id is not None:
-            pulumi.set(__self__, "account_id", account_id)
+            _setter("account_id", account_id)
         if activity_log_enabled is not None:
-            pulumi.set(__self__, "activity_log_enabled", activity_log_enabled)
+            _setter("activity_log_enabled", activity_log_enabled)
         if antivirus is not None:
-            pulumi.set(__self__, "antivirus", antivirus)
+            _setter("antivirus", antivirus)
         if block_page is not None:
-            pulumi.set(__self__, "block_page", block_page)
+            _setter("block_page", block_page)
         if fips is not None:
-            pulumi.set(__self__, "fips", fips)
+            _setter("fips", fips)
         if logging is not None:
-            pulumi.set(__self__, "logging", logging)
+            _setter("logging", logging)
         if payload_log is not None:
-            pulumi.set(__self__, "payload_log", payload_log)
+            _setter("payload_log", payload_log)
         if protocol_detection_enabled is not None:
-            pulumi.set(__self__, "protocol_detection_enabled", protocol_detection_enabled)
+            _setter("protocol_detection_enabled", protocol_detection_enabled)
         if proxy is not None:
-            pulumi.set(__self__, "proxy", proxy)
+            _setter("proxy", proxy)
         if tls_decrypt_enabled is not None:
-            pulumi.set(__self__, "tls_decrypt_enabled", tls_decrypt_enabled)
+            _setter("tls_decrypt_enabled", tls_decrypt_enabled)
         if url_browser_isolation_enabled is not None:
-            pulumi.set(__self__, "url_browser_isolation_enabled", url_browser_isolation_enabled)
+            _setter("url_browser_isolation_enabled", url_browser_isolation_enabled)
 
     @property
     @pulumi.getter(name="accountId")
@@ -536,6 +594,10 @@ class TeamsAccount(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            TeamsAccountArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -565,12 +627,42 @@ class TeamsAccount(pulumi.CustomResource):
                 raise TypeError("Missing required property 'account_id'")
             __props__.__dict__["account_id"] = account_id
             __props__.__dict__["activity_log_enabled"] = activity_log_enabled
+            if antivirus is not None and not isinstance(antivirus, TeamsAccountAntivirusArgs):
+                antivirus = antivirus or {}
+                def _setter(key, value):
+                    antivirus[key] = value
+                TeamsAccountAntivirusArgs._configure(_setter, **antivirus)
             __props__.__dict__["antivirus"] = antivirus
+            if block_page is not None and not isinstance(block_page, TeamsAccountBlockPageArgs):
+                block_page = block_page or {}
+                def _setter(key, value):
+                    block_page[key] = value
+                TeamsAccountBlockPageArgs._configure(_setter, **block_page)
             __props__.__dict__["block_page"] = block_page
+            if fips is not None and not isinstance(fips, TeamsAccountFipsArgs):
+                fips = fips or {}
+                def _setter(key, value):
+                    fips[key] = value
+                TeamsAccountFipsArgs._configure(_setter, **fips)
             __props__.__dict__["fips"] = fips
+            if logging is not None and not isinstance(logging, TeamsAccountLoggingArgs):
+                logging = logging or {}
+                def _setter(key, value):
+                    logging[key] = value
+                TeamsAccountLoggingArgs._configure(_setter, **logging)
             __props__.__dict__["logging"] = logging
+            if payload_log is not None and not isinstance(payload_log, TeamsAccountPayloadLogArgs):
+                payload_log = payload_log or {}
+                def _setter(key, value):
+                    payload_log[key] = value
+                TeamsAccountPayloadLogArgs._configure(_setter, **payload_log)
             __props__.__dict__["payload_log"] = payload_log
             __props__.__dict__["protocol_detection_enabled"] = protocol_detection_enabled
+            if proxy is not None and not isinstance(proxy, TeamsAccountProxyArgs):
+                proxy = proxy or {}
+                def _setter(key, value):
+                    proxy[key] = value
+                TeamsAccountProxyArgs._configure(_setter, **proxy)
             __props__.__dict__["proxy"] = proxy
             __props__.__dict__["tls_decrypt_enabled"] = tls_decrypt_enabled
             __props__.__dict__["url_browser_isolation_enabled"] = url_browser_isolation_enabled

@@ -12,11 +12,14 @@ namespace Pulumi.Cloudflare.Inputs
 
     public sealed class RulesetRuleActionParametersFromListArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Expression to use for the list lookup.
+        /// </summary>
         [Input("key")]
         public Input<string>? Key { get; set; }
 
         /// <summary>
-        /// Name of the ruleset.
+        /// Name of the compression algorithm to use. Available values: `gzip`, `brotli`, `auto`, `default`, `none`
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

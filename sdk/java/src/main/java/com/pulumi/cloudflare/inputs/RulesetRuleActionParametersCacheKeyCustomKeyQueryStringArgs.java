@@ -16,16 +16,32 @@ public final class RulesetRuleActionParametersCacheKeyCustomKeyQueryStringArgs e
 
     public static final RulesetRuleActionParametersCacheKeyCustomKeyQueryStringArgs Empty = new RulesetRuleActionParametersCacheKeyCustomKeyQueryStringArgs();
 
+    /**
+     * List of query string parameters to exclude from the custom key.
+     * 
+     */
     @Import(name="excludes")
     private @Nullable Output<List<String>> excludes;
 
+    /**
+     * @return List of query string parameters to exclude from the custom key.
+     * 
+     */
     public Optional<Output<List<String>>> excludes() {
         return Optional.ofNullable(this.excludes);
     }
 
+    /**
+     * List of cookies to include in the custom key.
+     * 
+     */
     @Import(name="includes")
     private @Nullable Output<List<String>> includes;
 
+    /**
+     * @return List of cookies to include in the custom key.
+     * 
+     */
     public Optional<Output<List<String>>> includes() {
         return Optional.ofNullable(this.includes);
     }
@@ -55,28 +71,64 @@ public final class RulesetRuleActionParametersCacheKeyCustomKeyQueryStringArgs e
             $ = new RulesetRuleActionParametersCacheKeyCustomKeyQueryStringArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param excludes List of query string parameters to exclude from the custom key.
+         * 
+         * @return builder
+         * 
+         */
         public Builder excludes(@Nullable Output<List<String>> excludes) {
             $.excludes = excludes;
             return this;
         }
 
+        /**
+         * @param excludes List of query string parameters to exclude from the custom key.
+         * 
+         * @return builder
+         * 
+         */
         public Builder excludes(List<String> excludes) {
             return excludes(Output.of(excludes));
         }
 
+        /**
+         * @param excludes List of query string parameters to exclude from the custom key.
+         * 
+         * @return builder
+         * 
+         */
         public Builder excludes(String... excludes) {
             return excludes(List.of(excludes));
         }
 
+        /**
+         * @param includes List of cookies to include in the custom key.
+         * 
+         * @return builder
+         * 
+         */
         public Builder includes(@Nullable Output<List<String>> includes) {
             $.includes = includes;
             return this;
         }
 
+        /**
+         * @param includes List of cookies to include in the custom key.
+         * 
+         * @return builder
+         * 
+         */
         public Builder includes(List<String> includes) {
             return includes(Output.of(includes));
         }
 
+        /**
+         * @param includes List of cookies to include in the custom key.
+         * 
+         * @return builder
+         * 
+         */
         public Builder includes(String... includes) {
             return includes(List.of(includes));
         }

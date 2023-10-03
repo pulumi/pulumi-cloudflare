@@ -34,9 +34,6 @@ namespace Pulumi.Cloudflare.Outputs
         /// SSL/TLS settings for the certificate.
         /// </summary>
         public readonly ImmutableArray<Outputs.CustomHostnameSslSetting> Settings;
-        /// <summary>
-        /// Status of the certificate.
-        /// </summary>
         public readonly string? Status;
         /// <summary>
         /// Level of validation to be used for this hostname. Available values: `dv`. Defaults to `dv`.

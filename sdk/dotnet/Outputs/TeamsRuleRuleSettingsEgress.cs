@@ -13,8 +13,17 @@ namespace Pulumi.Cloudflare.Outputs
     [OutputType]
     public sealed class TeamsRuleRuleSettingsEgress
     {
+        /// <summary>
+        /// The IPv4 address to be used for egress.
+        /// </summary>
         public readonly string Ipv4;
+        /// <summary>
+        /// The IPv4 address to be used for egress in the event of an error egressing with the primary IPv4. Can be '0.0.0.0' to indicate local egreass via Warp IPs.
+        /// </summary>
         public readonly string? Ipv4Fallback;
+        /// <summary>
+        /// The IPv6 range to be used for egress.
+        /// </summary>
         public readonly string Ipv6;
 
         [OutputConstructor]

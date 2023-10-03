@@ -13,8 +13,17 @@ namespace Pulumi.Cloudflare.Outputs
     [OutputType]
     public sealed class TeamsAccountLoggingSettingsByRuleType
     {
+        /// <summary>
+        /// Logging configuration for DNS requests.
+        /// </summary>
         public readonly Outputs.TeamsAccountLoggingSettingsByRuleTypeDns Dns;
+        /// <summary>
+        /// Logging configuration for HTTP requests.
+        /// </summary>
         public readonly Outputs.TeamsAccountLoggingSettingsByRuleTypeHttp Http;
+        /// <summary>
+        /// Logging configuration for layer 4 requests.
+        /// </summary>
         public readonly Outputs.TeamsAccountLoggingSettingsByRuleTypeL4 L4;
 
         [OutputConstructor]

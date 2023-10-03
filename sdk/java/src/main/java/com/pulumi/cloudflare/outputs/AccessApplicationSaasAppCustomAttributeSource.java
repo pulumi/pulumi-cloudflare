@@ -10,14 +10,14 @@ import java.util.Objects;
 @CustomType
 public final class AccessApplicationSaasAppCustomAttributeSource {
     /**
-     * @return Friendly name of the Access Application.
+     * @return The name of the attribute as provided to the SaaS app.
      * 
      */
     private String name;
 
     private AccessApplicationSaasAppCustomAttributeSource() {}
     /**
-     * @return Friendly name of the Access Application.
+     * @return The name of the attribute as provided to the SaaS app.
      * 
      */
     public String name() {

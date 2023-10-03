@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['EmailRoutingSettingsArgs', 'EmailRoutingSettings']
@@ -23,10 +23,23 @@ class EmailRoutingSettingsArgs:
         :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         :param pulumi.Input[bool] skip_wizard: Flag to check if the user skipped the configuration wizard.
         """
-        pulumi.set(__self__, "enabled", enabled)
-        pulumi.set(__self__, "zone_id", zone_id)
+        EmailRoutingSettingsArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            enabled=enabled,
+            zone_id=zone_id,
+            skip_wizard=skip_wizard,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             enabled: pulumi.Input[bool],
+             zone_id: pulumi.Input[str],
+             skip_wizard: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("enabled", enabled)
+        _setter("zone_id", zone_id)
         if skip_wizard is not None:
-            pulumi.set(__self__, "skip_wizard", skip_wizard)
+            _setter("skip_wizard", skip_wizard)
 
     @property
     @pulumi.getter
@@ -87,22 +100,45 @@ class _EmailRoutingSettingsState:
         :param pulumi.Input[str] tag: Email Routing settings identifier.
         :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         """
+        _EmailRoutingSettingsState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            created=created,
+            enabled=enabled,
+            modified=modified,
+            name=name,
+            skip_wizard=skip_wizard,
+            status=status,
+            tag=tag,
+            zone_id=zone_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             created: Optional[pulumi.Input[str]] = None,
+             enabled: Optional[pulumi.Input[bool]] = None,
+             modified: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             skip_wizard: Optional[pulumi.Input[bool]] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             tag: Optional[pulumi.Input[str]] = None,
+             zone_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if created is not None:
-            pulumi.set(__self__, "created", created)
+            _setter("created", created)
         if enabled is not None:
-            pulumi.set(__self__, "enabled", enabled)
+            _setter("enabled", enabled)
         if modified is not None:
-            pulumi.set(__self__, "modified", modified)
+            _setter("modified", modified)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if skip_wizard is not None:
-            pulumi.set(__self__, "skip_wizard", skip_wizard)
+            _setter("skip_wizard", skip_wizard)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
         if tag is not None:
-            pulumi.set(__self__, "tag", tag)
+            _setter("tag", tag)
         if zone_id is not None:
-            pulumi.set(__self__, "zone_id", zone_id)
+            _setter("zone_id", zone_id)
 
     @property
     @pulumi.getter
@@ -260,6 +296,10 @@ class EmailRoutingSettings(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            EmailRoutingSettingsArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

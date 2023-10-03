@@ -128,7 +128,7 @@ type Healthcheck struct {
 	ExpectedCodes pulumi.StringArrayOutput `pulumi:"expectedCodes"`
 	// Follow redirects if the origin returns a 3xx status code. Defaults to `false`.
 	FollowRedirects pulumi.BoolPtrOutput `pulumi:"followRedirects"`
-	// The HTTP request headers to send in the health check. It is recommended you set a Host header by default. The User-Agent header cannot be overridden.
+	// The header name.
 	Headers HealthcheckHeaderArrayOutput `pulumi:"headers"`
 	// The interval between each health check. Shorter intervals may give quicker notifications if the origin status changes, but will increase the load on the origin as we check from multiple locations. Defaults to `60`.
 	Interval pulumi.IntPtrOutput `pulumi:"interval"`
@@ -216,7 +216,7 @@ type healthcheckState struct {
 	ExpectedCodes []string `pulumi:"expectedCodes"`
 	// Follow redirects if the origin returns a 3xx status code. Defaults to `false`.
 	FollowRedirects *bool `pulumi:"followRedirects"`
-	// The HTTP request headers to send in the health check. It is recommended you set a Host header by default. The User-Agent header cannot be overridden.
+	// The header name.
 	Headers []HealthcheckHeader `pulumi:"headers"`
 	// The interval between each health check. Shorter intervals may give quicker notifications if the origin status changes, but will increase the load on the origin as we check from multiple locations. Defaults to `60`.
 	Interval *int `pulumi:"interval"`
@@ -263,7 +263,7 @@ type HealthcheckState struct {
 	ExpectedCodes pulumi.StringArrayInput
 	// Follow redirects if the origin returns a 3xx status code. Defaults to `false`.
 	FollowRedirects pulumi.BoolPtrInput
-	// The HTTP request headers to send in the health check. It is recommended you set a Host header by default. The User-Agent header cannot be overridden.
+	// The header name.
 	Headers HealthcheckHeaderArrayInput
 	// The interval between each health check. Shorter intervals may give quicker notifications if the origin status changes, but will increase the load on the origin as we check from multiple locations. Defaults to `60`.
 	Interval pulumi.IntPtrInput
@@ -312,7 +312,7 @@ type healthcheckArgs struct {
 	ExpectedCodes []string `pulumi:"expectedCodes"`
 	// Follow redirects if the origin returns a 3xx status code. Defaults to `false`.
 	FollowRedirects *bool `pulumi:"followRedirects"`
-	// The HTTP request headers to send in the health check. It is recommended you set a Host header by default. The User-Agent header cannot be overridden.
+	// The header name.
 	Headers []HealthcheckHeader `pulumi:"headers"`
 	// The interval between each health check. Shorter intervals may give quicker notifications if the origin status changes, but will increase the load on the origin as we check from multiple locations. Defaults to `60`.
 	Interval *int `pulumi:"interval"`
@@ -356,7 +356,7 @@ type HealthcheckArgs struct {
 	ExpectedCodes pulumi.StringArrayInput
 	// Follow redirects if the origin returns a 3xx status code. Defaults to `false`.
 	FollowRedirects pulumi.BoolPtrInput
-	// The HTTP request headers to send in the health check. It is recommended you set a Host header by default. The User-Agent header cannot be overridden.
+	// The header name.
 	Headers HealthcheckHeaderArrayInput
 	// The interval between each health check. Shorter intervals may give quicker notifications if the origin status changes, but will increase the load on the origin as we check from multiple locations. Defaults to `60`.
 	Interval pulumi.IntPtrInput
@@ -541,7 +541,7 @@ func (o HealthcheckOutput) FollowRedirects() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Healthcheck) pulumi.BoolPtrOutput { return v.FollowRedirects }).(pulumi.BoolPtrOutput)
 }
 
-// The HTTP request headers to send in the health check. It is recommended you set a Host header by default. The User-Agent header cannot be overridden.
+// The header name.
 func (o HealthcheckOutput) Headers() HealthcheckHeaderArrayOutput {
 	return o.ApplyT(func(v *Healthcheck) HealthcheckHeaderArrayOutput { return v.Headers }).(HealthcheckHeaderArrayOutput)
 }

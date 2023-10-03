@@ -15,9 +15,17 @@ public final class RulesetRuleLoggingArgs extends com.pulumi.resources.ResourceA
 
     public static final RulesetRuleLoggingArgs Empty = new RulesetRuleLoggingArgs();
 
+    /**
+     * Defines if the current tag-level override enables or disables the ruleset rules with the specified tag.
+     * 
+     */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
+    /**
+     * @return Defines if the current tag-level override enables or disables the ruleset rules with the specified tag.
+     * 
+     */
     public Optional<Output<Boolean>> enabled() {
         return Optional.ofNullable(this.enabled);
     }
@@ -46,11 +54,23 @@ public final class RulesetRuleLoggingArgs extends com.pulumi.resources.ResourceA
             $ = new RulesetRuleLoggingArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param enabled Defines if the current tag-level override enables or disables the ruleset rules with the specified tag.
+         * 
+         * @return builder
+         * 
+         */
         public Builder enabled(@Nullable Output<Boolean> enabled) {
             $.enabled = enabled;
             return this;
         }
 
+        /**
+         * @param enabled Defines if the current tag-level override enables or disables the ruleset rules with the specified tag.
+         * 
+         * @return builder
+         * 
+         */
         public Builder enabled(Boolean enabled) {
             return enabled(Output.of(enabled));
         }

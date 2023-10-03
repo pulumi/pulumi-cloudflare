@@ -164,7 +164,7 @@ namespace Pulumi.Cloudflare
         public Output<bool?> FollowRedirects { get; private set; } = null!;
 
         /// <summary>
-        /// The HTTP request headers to send in the health check. It is recommended you set a Host header by default. The User-Agent header cannot be overridden.
+        /// The header name.
         /// </summary>
         [Output("headers")]
         public Output<ImmutableArray<Outputs.HealthcheckHeader>> Headers { get; private set; } = null!;
@@ -351,7 +351,7 @@ namespace Pulumi.Cloudflare
         private InputList<Inputs.HealthcheckHeaderArgs>? _headers;
 
         /// <summary>
-        /// The HTTP request headers to send in the health check. It is recommended you set a Host header by default. The User-Agent header cannot be overridden.
+        /// The header name.
         /// </summary>
         public InputList<Inputs.HealthcheckHeaderArgs> Headers
         {
@@ -503,7 +503,7 @@ namespace Pulumi.Cloudflare
         private InputList<Inputs.HealthcheckHeaderGetArgs>? _headers;
 
         /// <summary>
-        /// The HTTP request headers to send in the health check. It is recommended you set a Host header by default. The User-Agent header cannot be overridden.
+        /// The header name.
         /// </summary>
         public InputList<Inputs.HealthcheckHeaderGetArgs> Headers
         {

@@ -15,16 +15,32 @@ public final class DlpProfileEntryPatternArgs extends com.pulumi.resources.Resou
 
     public static final DlpProfileEntryPatternArgs Empty = new DlpProfileEntryPatternArgs();
 
+    /**
+     * The regex that defines the pattern.
+     * 
+     */
     @Import(name="regex", required=true)
     private Output<String> regex;
 
+    /**
+     * @return The regex that defines the pattern.
+     * 
+     */
     public Output<String> regex() {
         return this.regex;
     }
 
+    /**
+     * The validation algorithm to apply with this pattern.
+     * 
+     */
     @Import(name="validation")
     private @Nullable Output<String> validation;
 
+    /**
+     * @return The validation algorithm to apply with this pattern.
+     * 
+     */
     public Optional<Output<String>> validation() {
         return Optional.ofNullable(this.validation);
     }
@@ -54,20 +70,44 @@ public final class DlpProfileEntryPatternArgs extends com.pulumi.resources.Resou
             $ = new DlpProfileEntryPatternArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param regex The regex that defines the pattern.
+         * 
+         * @return builder
+         * 
+         */
         public Builder regex(Output<String> regex) {
             $.regex = regex;
             return this;
         }
 
+        /**
+         * @param regex The regex that defines the pattern.
+         * 
+         * @return builder
+         * 
+         */
         public Builder regex(String regex) {
             return regex(Output.of(regex));
         }
 
+        /**
+         * @param validation The validation algorithm to apply with this pattern.
+         * 
+         * @return builder
+         * 
+         */
         public Builder validation(@Nullable Output<String> validation) {
             $.validation = validation;
             return this;
         }
 
+        /**
+         * @param validation The validation algorithm to apply with this pattern.
+         * 
+         * @return builder
+         * 
+         */
         public Builder validation(String validation) {
             return validation(Output.of(validation));
         }

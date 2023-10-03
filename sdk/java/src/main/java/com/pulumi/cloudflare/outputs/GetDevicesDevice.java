@@ -15,10 +15,6 @@ public final class GetDevicesDevice {
     private @Nullable String created;
     private @Nullable Boolean deleted;
     private @Nullable String deviceType;
-    /**
-     * @return The ID of this resource.
-     * 
-     */
     private @Nullable String id;
     private @Nullable String ip;
     private @Nullable String key;
@@ -48,10 +44,6 @@ public final class GetDevicesDevice {
     public Optional<String> deviceType() {
         return Optional.ofNullable(this.deviceType);
     }
-    /**
-     * @return The ID of this resource.
-     * 
-     */
     public Optional<String> id() {
         return Optional.ofNullable(this.id);
     }

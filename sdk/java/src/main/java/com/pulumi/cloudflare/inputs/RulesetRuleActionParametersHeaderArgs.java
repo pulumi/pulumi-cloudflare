@@ -15,38 +15,62 @@ public final class RulesetRuleActionParametersHeaderArgs extends com.pulumi.reso
 
     public static final RulesetRuleActionParametersHeaderArgs Empty = new RulesetRuleActionParametersHeaderArgs();
 
+    /**
+     * Use a value dynamically determined by the Firewall Rules expression language based on Wireshark display filters. Refer to the [Firewall Rules language](https://developers.cloudflare.com/firewall/cf-firewall-language) documentation for all available fields, operators, and functions.
+     * 
+     */
     @Import(name="expression")
     private @Nullable Output<String> expression;
 
+    /**
+     * @return Use a value dynamically determined by the Firewall Rules expression language based on Wireshark display filters. Refer to the [Firewall Rules language](https://developers.cloudflare.com/firewall/cf-firewall-language) documentation for all available fields, operators, and functions.
+     * 
+     */
     public Optional<Output<String>> expression() {
         return Optional.ofNullable(this.expression);
     }
 
     /**
-     * Name of the ruleset.
+     * Name of the compression algorithm to use. Available values: `gzip`, `brotli`, `auto`, `default`, `none`
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return Name of the ruleset.
+     * @return Name of the compression algorithm to use. Available values: `gzip`, `brotli`, `auto`, `default`, `none`
      * 
      */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
     }
 
+    /**
+     * Action to perform on the HTTP request header. Available values: `remove`, `set`, `add`.
+     * 
+     */
     @Import(name="operation")
     private @Nullable Output<String> operation;
 
+    /**
+     * @return Action to perform on the HTTP request header. Available values: `remove`, `set`, `add`.
+     * 
+     */
     public Optional<Output<String>> operation() {
         return Optional.ofNullable(this.operation);
     }
 
+    /**
+     * Status code edge TTL value.
+     * 
+     */
     @Import(name="value")
     private @Nullable Output<String> value;
 
+    /**
+     * @return Status code edge TTL value.
+     * 
+     */
     public Optional<Output<String>> value() {
         return Optional.ofNullable(this.value);
     }
@@ -78,17 +102,29 @@ public final class RulesetRuleActionParametersHeaderArgs extends com.pulumi.reso
             $ = new RulesetRuleActionParametersHeaderArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param expression Use a value dynamically determined by the Firewall Rules expression language based on Wireshark display filters. Refer to the [Firewall Rules language](https://developers.cloudflare.com/firewall/cf-firewall-language) documentation for all available fields, operators, and functions.
+         * 
+         * @return builder
+         * 
+         */
         public Builder expression(@Nullable Output<String> expression) {
             $.expression = expression;
             return this;
         }
 
+        /**
+         * @param expression Use a value dynamically determined by the Firewall Rules expression language based on Wireshark display filters. Refer to the [Firewall Rules language](https://developers.cloudflare.com/firewall/cf-firewall-language) documentation for all available fields, operators, and functions.
+         * 
+         * @return builder
+         * 
+         */
         public Builder expression(String expression) {
             return expression(Output.of(expression));
         }
 
         /**
-         * @param name Name of the ruleset.
+         * @param name Name of the compression algorithm to use. Available values: `gzip`, `brotli`, `auto`, `default`, `none`
          * 
          * @return builder
          * 
@@ -99,7 +135,7 @@ public final class RulesetRuleActionParametersHeaderArgs extends com.pulumi.reso
         }
 
         /**
-         * @param name Name of the ruleset.
+         * @param name Name of the compression algorithm to use. Available values: `gzip`, `brotli`, `auto`, `default`, `none`
          * 
          * @return builder
          * 
@@ -108,20 +144,44 @@ public final class RulesetRuleActionParametersHeaderArgs extends com.pulumi.reso
             return name(Output.of(name));
         }
 
+        /**
+         * @param operation Action to perform on the HTTP request header. Available values: `remove`, `set`, `add`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder operation(@Nullable Output<String> operation) {
             $.operation = operation;
             return this;
         }
 
+        /**
+         * @param operation Action to perform on the HTTP request header. Available values: `remove`, `set`, `add`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder operation(String operation) {
             return operation(Output.of(operation));
         }
 
+        /**
+         * @param value Status code edge TTL value.
+         * 
+         * @return builder
+         * 
+         */
         public Builder value(@Nullable Output<String> value) {
             $.value = value;
             return this;
         }
 
+        /**
+         * @param value Status code edge TTL value.
+         * 
+         * @return builder
+         * 
+         */
         public Builder value(String value) {
             return value(Output.of(value));
         }

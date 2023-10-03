@@ -17,23 +17,47 @@ public final class RulesetRuleActionParametersUriArgs extends com.pulumi.resourc
 
     public static final RulesetRuleActionParametersUriArgs Empty = new RulesetRuleActionParametersUriArgs();
 
+    /**
+     * List of properties to change request origin.
+     * 
+     */
     @Import(name="origin")
     private @Nullable Output<Boolean> origin;
 
+    /**
+     * @return List of properties to change request origin.
+     * 
+     */
     public Optional<Output<Boolean>> origin() {
         return Optional.ofNullable(this.origin);
     }
 
+    /**
+     * URI path configuration when performing a URL rewrite.
+     * 
+     */
     @Import(name="path")
     private @Nullable Output<RulesetRuleActionParametersUriPathArgs> path;
 
+    /**
+     * @return URI path configuration when performing a URL rewrite.
+     * 
+     */
     public Optional<Output<RulesetRuleActionParametersUriPathArgs>> path() {
         return Optional.ofNullable(this.path);
     }
 
+    /**
+     * Query string configuration when performing a URL rewrite.
+     * 
+     */
     @Import(name="query")
     private @Nullable Output<RulesetRuleActionParametersUriQueryArgs> query;
 
+    /**
+     * @return Query string configuration when performing a URL rewrite.
+     * 
+     */
     public Optional<Output<RulesetRuleActionParametersUriQueryArgs>> query() {
         return Optional.ofNullable(this.query);
     }
@@ -64,29 +88,65 @@ public final class RulesetRuleActionParametersUriArgs extends com.pulumi.resourc
             $ = new RulesetRuleActionParametersUriArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param origin List of properties to change request origin.
+         * 
+         * @return builder
+         * 
+         */
         public Builder origin(@Nullable Output<Boolean> origin) {
             $.origin = origin;
             return this;
         }
 
+        /**
+         * @param origin List of properties to change request origin.
+         * 
+         * @return builder
+         * 
+         */
         public Builder origin(Boolean origin) {
             return origin(Output.of(origin));
         }
 
+        /**
+         * @param path URI path configuration when performing a URL rewrite.
+         * 
+         * @return builder
+         * 
+         */
         public Builder path(@Nullable Output<RulesetRuleActionParametersUriPathArgs> path) {
             $.path = path;
             return this;
         }
 
+        /**
+         * @param path URI path configuration when performing a URL rewrite.
+         * 
+         * @return builder
+         * 
+         */
         public Builder path(RulesetRuleActionParametersUriPathArgs path) {
             return path(Output.of(path));
         }
 
+        /**
+         * @param query Query string configuration when performing a URL rewrite.
+         * 
+         * @return builder
+         * 
+         */
         public Builder query(@Nullable Output<RulesetRuleActionParametersUriQueryArgs> query) {
             $.query = query;
             return this;
         }
 
+        /**
+         * @param query Query string configuration when performing a URL rewrite.
+         * 
+         * @return builder
+         * 
+         */
         public Builder query(RulesetRuleActionParametersUriQueryArgs query) {
             return query(Output.of(query));
         }

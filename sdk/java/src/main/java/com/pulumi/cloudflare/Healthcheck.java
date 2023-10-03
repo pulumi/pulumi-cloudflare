@@ -250,14 +250,14 @@ public class Healthcheck extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.followRedirects);
     }
     /**
-     * The HTTP request headers to send in the health check. It is recommended you set a Host header by default. The User-Agent header cannot be overridden.
+     * The header name.
      * 
      */
     @Export(name="headers", refs={List.class,HealthcheckHeader.class}, tree="[0,1]")
     private Output</* @Nullable */ List<HealthcheckHeader>> headers;
 
     /**
-     * @return The HTTP request headers to send in the health check. It is recommended you set a Host header by default. The User-Agent header cannot be overridden.
+     * @return The header name.
      * 
      */
     public Output<Optional<List<HealthcheckHeader>>> headers() {

@@ -20,6 +20,9 @@ namespace Pulumi.Cloudflare.Inputs
             set => _emails = value;
         }
 
+        /// <summary>
+        /// The ID of the Azure Identity provider.
+        /// </summary>
         [Input("identityProviderId")]
         public Input<string>? IdentityProviderId { get; set; }
 

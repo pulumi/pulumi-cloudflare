@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -25,10 +25,23 @@ class WaitingRoomRulesArgs:
         :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         :param pulumi.Input[Sequence[pulumi.Input['WaitingRoomRulesRuleArgs']]] rules: List of rules to apply to the ruleset.
         """
-        pulumi.set(__self__, "waiting_room_id", waiting_room_id)
-        pulumi.set(__self__, "zone_id", zone_id)
+        WaitingRoomRulesArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            waiting_room_id=waiting_room_id,
+            zone_id=zone_id,
+            rules=rules,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             waiting_room_id: pulumi.Input[str],
+             zone_id: pulumi.Input[str],
+             rules: Optional[pulumi.Input[Sequence[pulumi.Input['WaitingRoomRulesRuleArgs']]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("waiting_room_id", waiting_room_id)
+        _setter("zone_id", zone_id)
         if rules is not None:
-            pulumi.set(__self__, "rules", rules)
+            _setter("rules", rules)
 
     @property
     @pulumi.getter(name="waitingRoomId")
@@ -79,12 +92,25 @@ class _WaitingRoomRulesState:
         :param pulumi.Input[str] waiting_room_id: The Waiting Room ID the rules should apply to. **Modifying this attribute will force creation of a new resource.**
         :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         """
+        _WaitingRoomRulesState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            rules=rules,
+            waiting_room_id=waiting_room_id,
+            zone_id=zone_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             rules: Optional[pulumi.Input[Sequence[pulumi.Input['WaitingRoomRulesRuleArgs']]]] = None,
+             waiting_room_id: Optional[pulumi.Input[str]] = None,
+             zone_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if rules is not None:
-            pulumi.set(__self__, "rules", rules)
+            _setter("rules", rules)
         if waiting_room_id is not None:
-            pulumi.set(__self__, "waiting_room_id", waiting_room_id)
+            _setter("waiting_room_id", waiting_room_id)
         if zone_id is not None:
-            pulumi.set(__self__, "zone_id", zone_id)
+            _setter("zone_id", zone_id)
 
     @property
     @pulumi.getter
@@ -222,6 +248,10 @@ class WaitingRoomRules(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            WaitingRoomRulesArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

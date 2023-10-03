@@ -6,13 +6,14 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = [
     'GetUserResult',
     'AwaitableGetUserResult',
     'get_user',
+    'get_user_output',
 ]
 
 @pulumi.output_type
@@ -97,3 +98,29 @@ def get_user(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetUserRes
         email=pulumi.get(__ret__, 'email'),
         id=pulumi.get(__ret__, 'id'),
         username=pulumi.get(__ret__, 'username'))
+
+
+@_utilities.lift_output_func(get_user)
+def get_user_output(opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetUserResult]:
+    """
+    Use this data source to retrieve information about the currently authenticated user.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_cloudflare as cloudflare
+
+    me = cloudflare.get_user()
+    all = cloudflare.get_api_token_permission_groups()
+    example = cloudflare.ApiToken("example",
+        name="Terraform Cloud (Terraform)",
+        policies=[cloudflare.ApiTokenPolicyArgs(
+            permission_groups=[all.user["User Details Read"]],
+            resources={
+                f"com.cloudflare.api.user.{me.id}": "*",
+            },
+        )])
+    ```
+    """
+    ...

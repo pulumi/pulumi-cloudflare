@@ -13,8 +13,17 @@ namespace Pulumi.Cloudflare.Outputs
     [OutputType]
     public sealed class RulesetRuleActionParametersFromValue
     {
+        /// <summary>
+        /// Preserve query string for redirect URL.
+        /// </summary>
         public readonly bool? PreserveQueryString;
+        /// <summary>
+        /// Status code for which the edge TTL is applied.
+        /// </summary>
         public readonly int? StatusCode;
+        /// <summary>
+        /// Target URL for redirect.
+        /// </summary>
         public readonly Outputs.RulesetRuleActionParametersFromValueTargetUrl? TargetUrl;
 
         [OutputConstructor]

@@ -12,6 +12,9 @@ namespace Pulumi.Cloudflare.Inputs
 
     public sealed class AccessPolicyRequireAzureArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The ID of the Azure Identity provider.
+        /// </summary>
         [Input("identityProviderId")]
         public Input<string>? IdentityProviderId { get; set; }
 
@@ -19,7 +22,7 @@ namespace Pulumi.Cloudflare.Inputs
         private InputList<string>? _ids;
 
         /// <summary>
-        /// The ID of this resource.
+        /// The ID of the Authentication Context.
         /// </summary>
         public InputList<string> Ids
         {

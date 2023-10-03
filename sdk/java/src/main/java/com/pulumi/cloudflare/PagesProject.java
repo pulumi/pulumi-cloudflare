@@ -257,28 +257,28 @@ public class PagesProject extends com.pulumi.resources.CustomResource {
         return this.domains;
     }
     /**
-     * Name of the project.
+     * The global variable for the binding in your Worker code.
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return Name of the project.
+     * @return The global variable for the binding in your Worker code.
      * 
      */
     public Output<String> name() {
         return this.name;
     }
     /**
-     * The name of the branch that is used for the production environment.
+     * Project production branch name.
      * 
      */
     @Export(name="productionBranch", refs={String.class}, tree="[0]")
     private Output<String> productionBranch;
 
     /**
-     * @return The name of the branch that is used for the production environment.
+     * @return Project production branch name.
      * 
      */
     public Output<String> productionBranch() {

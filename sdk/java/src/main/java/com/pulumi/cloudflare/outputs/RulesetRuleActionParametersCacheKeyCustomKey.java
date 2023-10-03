@@ -15,25 +15,65 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class RulesetRuleActionParametersCacheKeyCustomKey {
+    /**
+     * @return Cookie parameters for the custom key.
+     * 
+     */
     private @Nullable RulesetRuleActionParametersCacheKeyCustomKeyCookie cookie;
+    /**
+     * @return Header parameters for the custom key.
+     * 
+     */
     private @Nullable RulesetRuleActionParametersCacheKeyCustomKeyHeader header;
+    /**
+     * @return Host parameters for the custom key.
+     * 
+     */
     private @Nullable RulesetRuleActionParametersCacheKeyCustomKeyHost host;
+    /**
+     * @return Query string parameters for the custom key.
+     * 
+     */
     private @Nullable RulesetRuleActionParametersCacheKeyCustomKeyQueryString queryString;
+    /**
+     * @return User parameters for the custom key.
+     * 
+     */
     private @Nullable RulesetRuleActionParametersCacheKeyCustomKeyUser user;
 
     private RulesetRuleActionParametersCacheKeyCustomKey() {}
+    /**
+     * @return Cookie parameters for the custom key.
+     * 
+     */
     public Optional<RulesetRuleActionParametersCacheKeyCustomKeyCookie> cookie() {
         return Optional.ofNullable(this.cookie);
     }
+    /**
+     * @return Header parameters for the custom key.
+     * 
+     */
     public Optional<RulesetRuleActionParametersCacheKeyCustomKeyHeader> header() {
         return Optional.ofNullable(this.header);
     }
+    /**
+     * @return Host parameters for the custom key.
+     * 
+     */
     public Optional<RulesetRuleActionParametersCacheKeyCustomKeyHost> host() {
         return Optional.ofNullable(this.host);
     }
+    /**
+     * @return Query string parameters for the custom key.
+     * 
+     */
     public Optional<RulesetRuleActionParametersCacheKeyCustomKeyQueryString> queryString() {
         return Optional.ofNullable(this.queryString);
     }
+    /**
+     * @return User parameters for the custom key.
+     * 
+     */
     public Optional<RulesetRuleActionParametersCacheKeyCustomKeyUser> user() {
         return Optional.ofNullable(this.user);
     }

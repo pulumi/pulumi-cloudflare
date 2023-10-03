@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -27,12 +27,27 @@ class TeamsLocationArgs:
         :param pulumi.Input[bool] client_default: Indicator that this is the default location.
         :param pulumi.Input[Sequence[pulumi.Input['TeamsLocationNetworkArgs']]] networks: The networks CIDRs that comprise the location.
         """
-        pulumi.set(__self__, "account_id", account_id)
-        pulumi.set(__self__, "name", name)
+        TeamsLocationArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            account_id=account_id,
+            name=name,
+            client_default=client_default,
+            networks=networks,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             account_id: pulumi.Input[str],
+             name: pulumi.Input[str],
+             client_default: Optional[pulumi.Input[bool]] = None,
+             networks: Optional[pulumi.Input[Sequence[pulumi.Input['TeamsLocationNetworkArgs']]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("account_id", account_id)
+        _setter("name", name)
         if client_default is not None:
-            pulumi.set(__self__, "client_default", client_default)
+            _setter("client_default", client_default)
         if networks is not None:
-            pulumi.set(__self__, "networks", networks)
+            _setter("networks", networks)
 
     @property
     @pulumi.getter(name="accountId")
@@ -106,24 +121,49 @@ class _TeamsLocationState:
         :param pulumi.Input[str] name: Name of the teams location.
         :param pulumi.Input[Sequence[pulumi.Input['TeamsLocationNetworkArgs']]] networks: The networks CIDRs that comprise the location.
         """
+        _TeamsLocationState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            account_id=account_id,
+            anonymized_logs_enabled=anonymized_logs_enabled,
+            client_default=client_default,
+            doh_subdomain=doh_subdomain,
+            ip=ip,
+            ipv4_destination=ipv4_destination,
+            name=name,
+            networks=networks,
+            policy_ids=policy_ids,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             account_id: Optional[pulumi.Input[str]] = None,
+             anonymized_logs_enabled: Optional[pulumi.Input[bool]] = None,
+             client_default: Optional[pulumi.Input[bool]] = None,
+             doh_subdomain: Optional[pulumi.Input[str]] = None,
+             ip: Optional[pulumi.Input[str]] = None,
+             ipv4_destination: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             networks: Optional[pulumi.Input[Sequence[pulumi.Input['TeamsLocationNetworkArgs']]]] = None,
+             policy_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if account_id is not None:
-            pulumi.set(__self__, "account_id", account_id)
+            _setter("account_id", account_id)
         if anonymized_logs_enabled is not None:
-            pulumi.set(__self__, "anonymized_logs_enabled", anonymized_logs_enabled)
+            _setter("anonymized_logs_enabled", anonymized_logs_enabled)
         if client_default is not None:
-            pulumi.set(__self__, "client_default", client_default)
+            _setter("client_default", client_default)
         if doh_subdomain is not None:
-            pulumi.set(__self__, "doh_subdomain", doh_subdomain)
+            _setter("doh_subdomain", doh_subdomain)
         if ip is not None:
-            pulumi.set(__self__, "ip", ip)
+            _setter("ip", ip)
         if ipv4_destination is not None:
-            pulumi.set(__self__, "ipv4_destination", ipv4_destination)
+            _setter("ipv4_destination", ipv4_destination)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if networks is not None:
-            pulumi.set(__self__, "networks", networks)
+            _setter("networks", networks)
         if policy_ids is not None:
-            pulumi.set(__self__, "policy_ids", policy_ids)
+            _setter("policy_ids", policy_ids)
 
     @property
     @pulumi.getter(name="accountId")
@@ -324,6 +364,10 @@ class TeamsLocation(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            TeamsLocationArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

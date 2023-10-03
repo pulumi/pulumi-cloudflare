@@ -148,13 +148,13 @@ namespace Pulumi.Cloudflare
         public Output<bool?> Logpush { get; private set; } = null!;
 
         /// <summary>
-        /// Whether to upload Worker as a module.
+        /// The base64 encoded wasm module you want to store.
         /// </summary>
         [Output("module")]
         public Output<bool?> Module { get; private set; } = null!;
 
         /// <summary>
-        /// The name for the script. **Modifying this attribute will force creation of a new resource.**
+        /// The global variable for the binding in your Worker code.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -276,13 +276,13 @@ namespace Pulumi.Cloudflare
         public Input<bool>? Logpush { get; set; }
 
         /// <summary>
-        /// Whether to upload Worker as a module.
+        /// The base64 encoded wasm module you want to store.
         /// </summary>
         [Input("module")]
         public Input<bool>? Module { get; set; }
 
         /// <summary>
-        /// The name for the script. **Modifying this attribute will force creation of a new resource.**
+        /// The global variable for the binding in your Worker code.
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
@@ -396,13 +396,13 @@ namespace Pulumi.Cloudflare
         public Input<bool>? Logpush { get; set; }
 
         /// <summary>
-        /// Whether to upload Worker as a module.
+        /// The base64 encoded wasm module you want to store.
         /// </summary>
         [Input("module")]
         public Input<bool>? Module { get; set; }
 
         /// <summary>
-        /// The name for the script. **Modifying this attribute will force creation of a new resource.**
+        /// The global variable for the binding in your Worker code.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

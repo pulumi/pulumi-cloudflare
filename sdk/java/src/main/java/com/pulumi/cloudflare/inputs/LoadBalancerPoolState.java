@@ -83,14 +83,14 @@ public final class LoadBalancerPoolState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Whether to enable (the default) this pool. Disabled pools will not receive traffic and are excluded from health checks. Disabling a pool will cause any load balancers using it to failover to the next pool (if any). Defaults to `true`.
+     * Whether this origin is enabled. Disabled origins will not receive traffic and are excluded from health checks. Defaults to `true`.
      * 
      */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
     /**
-     * @return Whether to enable (the default) this pool. Disabled pools will not receive traffic and are excluded from health checks. Disabling a pool will cause any load balancers using it to failover to the next pool (if any). Defaults to `true`.
+     * @return Whether this origin is enabled. Disabled origins will not receive traffic and are excluded from health checks. Defaults to `true`.
      * 
      */
     public Optional<Output<Boolean>> enabled() {
@@ -188,14 +188,14 @@ public final class LoadBalancerPoolState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * A short name (tag) for the pool.
+     * A human-identifiable name for the origin.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return A short name (tag) for the pool.
+     * @return A human-identifiable name for the origin.
      * 
      */
     public Optional<Output<String>> name() {
@@ -380,7 +380,7 @@ public final class LoadBalancerPoolState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param enabled Whether to enable (the default) this pool. Disabled pools will not receive traffic and are excluded from health checks. Disabling a pool will cause any load balancers using it to failover to the next pool (if any). Defaults to `true`.
+         * @param enabled Whether this origin is enabled. Disabled origins will not receive traffic and are excluded from health checks. Defaults to `true`.
          * 
          * @return builder
          * 
@@ -391,7 +391,7 @@ public final class LoadBalancerPoolState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param enabled Whether to enable (the default) this pool. Disabled pools will not receive traffic and are excluded from health checks. Disabling a pool will cause any load balancers using it to failover to the next pool (if any). Defaults to `true`.
+         * @param enabled Whether this origin is enabled. Disabled origins will not receive traffic and are excluded from health checks. Defaults to `true`.
          * 
          * @return builder
          * 
@@ -537,7 +537,7 @@ public final class LoadBalancerPoolState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param name A short name (tag) for the pool.
+         * @param name A human-identifiable name for the origin.
          * 
          * @return builder
          * 
@@ -548,7 +548,7 @@ public final class LoadBalancerPoolState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param name A short name (tag) for the pool.
+         * @param name A human-identifiable name for the origin.
          * 
          * @return builder
          * 

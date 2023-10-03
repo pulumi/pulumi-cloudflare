@@ -17,14 +17,14 @@ public final class PageRuleActionsCacheKeyFieldsCookieArgs extends com.pulumi.re
     public static final PageRuleActionsCacheKeyFieldsCookieArgs Empty = new PageRuleActionsCacheKeyFieldsCookieArgs();
 
     /**
-     * Check for presence of specified cookies, without including their actual values.
+     * Check for presence of specified HTTP headers, without including their actual values.
      * 
      */
     @Import(name="checkPresences")
     private @Nullable Output<List<String>> checkPresences;
 
     /**
-     * @return Check for presence of specified cookies, without including their actual values.
+     * @return Check for presence of specified HTTP headers, without including their actual values.
      * 
      */
     public Optional<Output<List<String>>> checkPresences() {
@@ -32,14 +32,14 @@ public final class PageRuleActionsCacheKeyFieldsCookieArgs extends com.pulumi.re
     }
 
     /**
-     * Use values of specified cookies in Cache Key.
+     * Only use values of specified query string parameters in Cache Key.
      * 
      */
     @Import(name="includes")
     private @Nullable Output<List<String>> includes;
 
     /**
-     * @return Use values of specified cookies in Cache Key.
+     * @return Only use values of specified query string parameters in Cache Key.
      * 
      */
     public Optional<Output<List<String>>> includes() {
@@ -72,7 +72,7 @@ public final class PageRuleActionsCacheKeyFieldsCookieArgs extends com.pulumi.re
         }
 
         /**
-         * @param checkPresences Check for presence of specified cookies, without including their actual values.
+         * @param checkPresences Check for presence of specified HTTP headers, without including their actual values.
          * 
          * @return builder
          * 
@@ -83,7 +83,7 @@ public final class PageRuleActionsCacheKeyFieldsCookieArgs extends com.pulumi.re
         }
 
         /**
-         * @param checkPresences Check for presence of specified cookies, without including their actual values.
+         * @param checkPresences Check for presence of specified HTTP headers, without including their actual values.
          * 
          * @return builder
          * 
@@ -93,7 +93,7 @@ public final class PageRuleActionsCacheKeyFieldsCookieArgs extends com.pulumi.re
         }
 
         /**
-         * @param checkPresences Check for presence of specified cookies, without including their actual values.
+         * @param checkPresences Check for presence of specified HTTP headers, without including their actual values.
          * 
          * @return builder
          * 
@@ -103,7 +103,7 @@ public final class PageRuleActionsCacheKeyFieldsCookieArgs extends com.pulumi.re
         }
 
         /**
-         * @param includes Use values of specified cookies in Cache Key.
+         * @param includes Only use values of specified query string parameters in Cache Key.
          * 
          * @return builder
          * 
@@ -114,7 +114,7 @@ public final class PageRuleActionsCacheKeyFieldsCookieArgs extends com.pulumi.re
         }
 
         /**
-         * @param includes Use values of specified cookies in Cache Key.
+         * @param includes Only use values of specified query string parameters in Cache Key.
          * 
          * @return builder
          * 
@@ -124,7 +124,7 @@ public final class PageRuleActionsCacheKeyFieldsCookieArgs extends com.pulumi.re
         }
 
         /**
-         * @param includes Use values of specified cookies in Cache Key.
+         * @param includes Only use values of specified query string parameters in Cache Key.
          * 
          * @return builder
          * 

@@ -12,12 +12,21 @@ namespace Pulumi.Cloudflare.Inputs
 
     public sealed class RulesetRuleActionParametersUriGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// List of properties to change request origin.
+        /// </summary>
         [Input("origin")]
         public Input<bool>? Origin { get; set; }
 
+        /// <summary>
+        /// URI path configuration when performing a URL rewrite.
+        /// </summary>
         [Input("path")]
         public Input<Inputs.RulesetRuleActionParametersUriPathGetArgs>? Path { get; set; }
 
+        /// <summary>
+        /// Query string configuration when performing a URL rewrite.
+        /// </summary>
         [Input("query")]
         public Input<Inputs.RulesetRuleActionParametersUriQueryGetArgs>? Query { get; set; }
 

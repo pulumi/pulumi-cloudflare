@@ -15,9 +15,17 @@ public final class PagesProjectDeploymentConfigsPreviewPlacementArgs extends com
 
     public static final PagesProjectDeploymentConfigsPreviewPlacementArgs Empty = new PagesProjectDeploymentConfigsPreviewPlacementArgs();
 
+    /**
+     * Placement Mode for the Pages Function.
+     * 
+     */
     @Import(name="mode")
     private @Nullable Output<String> mode;
 
+    /**
+     * @return Placement Mode for the Pages Function.
+     * 
+     */
     public Optional<Output<String>> mode() {
         return Optional.ofNullable(this.mode);
     }
@@ -46,11 +54,23 @@ public final class PagesProjectDeploymentConfigsPreviewPlacementArgs extends com
             $ = new PagesProjectDeploymentConfigsPreviewPlacementArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param mode Placement Mode for the Pages Function.
+         * 
+         * @return builder
+         * 
+         */
         public Builder mode(@Nullable Output<String> mode) {
             $.mode = mode;
             return this;
         }
 
+        /**
+         * @param mode Placement Mode for the Pages Function.
+         * 
+         * @return builder
+         * 
+         */
         public Builder mode(String mode) {
             return mode(Output.of(mode));
         }

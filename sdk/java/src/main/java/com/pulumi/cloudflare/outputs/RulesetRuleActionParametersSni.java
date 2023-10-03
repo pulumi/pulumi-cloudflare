@@ -11,9 +11,17 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class RulesetRuleActionParametersSni {
+    /**
+     * @return Status code edge TTL value.
+     * 
+     */
     private @Nullable String value;
 
     private RulesetRuleActionParametersSni() {}
+    /**
+     * @return Status code edge TTL value.
+     * 
+     */
     public Optional<String> value() {
         return Optional.ofNullable(this.value);
     }

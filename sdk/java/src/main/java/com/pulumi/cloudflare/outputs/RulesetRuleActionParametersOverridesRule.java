@@ -28,7 +28,15 @@ public final class RulesetRuleActionParametersOverridesRule {
      * 
      */
     private @Nullable String id;
+    /**
+     * @return Anomaly score threshold to apply in the ruleset rule override. Only applicable to modsecurity-based rulesets.
+     * 
+     */
     private @Nullable Integer scoreThreshold;
+    /**
+     * @return Sensitivity level for a ruleset rule override.
+     * 
+     */
     private @Nullable String sensitivityLevel;
 
     private RulesetRuleActionParametersOverridesRule() {}
@@ -53,9 +61,17 @@ public final class RulesetRuleActionParametersOverridesRule {
     public Optional<String> id() {
         return Optional.ofNullable(this.id);
     }
+    /**
+     * @return Anomaly score threshold to apply in the ruleset rule override. Only applicable to modsecurity-based rulesets.
+     * 
+     */
     public Optional<Integer> scoreThreshold() {
         return Optional.ofNullable(this.scoreThreshold);
     }
+    /**
+     * @return Sensitivity level for a ruleset rule override.
+     * 
+     */
     public Optional<String> sensitivityLevel() {
         return Optional.ofNullable(this.sensitivityLevel);
     }

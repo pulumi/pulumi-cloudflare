@@ -134,7 +134,7 @@ export class AccessApplication extends pulumi.CustomResource {
      */
     public readonly logoUrl!: pulumi.Output<string | undefined>;
     /**
-     * Friendly name of the Access Application.
+     * The name of the attribute as provided to the SaaS app.
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -301,7 +301,7 @@ export interface AccessApplicationState {
      */
     logoUrl?: pulumi.Input<string>;
     /**
-     * Friendly name of the Access Application.
+     * The name of the attribute as provided to the SaaS app.
      */
     name?: pulumi.Input<string>;
     /**
@@ -395,7 +395,7 @@ export interface AccessApplicationArgs {
      */
     logoUrl?: pulumi.Input<string>;
     /**
-     * Friendly name of the Access Application.
+     * The name of the attribute as provided to the SaaS app.
      */
     name: pulumi.Input<string>;
     /**

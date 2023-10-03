@@ -81,7 +81,7 @@ export class AddressMap extends pulumi.CustomResource {
      */
     public readonly accountId!: pulumi.Output<string>;
     /**
-     * If set to false, then the Address Map cannot be deleted via API. This is true for Cloudflare-managed maps.
+     * Controls whether the membership can be deleted via the API or not.
      */
     public /*out*/ readonly canDelete!: pulumi.Output<boolean>;
     /**
@@ -161,7 +161,7 @@ export interface AddressMapState {
      */
     accountId?: pulumi.Input<string>;
     /**
-     * If set to false, then the Address Map cannot be deleted via API. This is true for Cloudflare-managed maps.
+     * Controls whether the membership can be deleted via the API or not.
      */
     canDelete?: pulumi.Input<boolean>;
     /**

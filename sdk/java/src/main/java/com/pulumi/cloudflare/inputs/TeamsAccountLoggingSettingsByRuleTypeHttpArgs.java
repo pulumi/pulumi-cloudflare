@@ -13,9 +13,17 @@ public final class TeamsAccountLoggingSettingsByRuleTypeHttpArgs extends com.pul
 
     public static final TeamsAccountLoggingSettingsByRuleTypeHttpArgs Empty = new TeamsAccountLoggingSettingsByRuleTypeHttpArgs();
 
+    /**
+     * Whether to log all activity.
+     * 
+     */
     @Import(name="logAll", required=true)
     private Output<Boolean> logAll;
 
+    /**
+     * @return Whether to log all activity.
+     * 
+     */
     public Output<Boolean> logAll() {
         return this.logAll;
     }
@@ -52,11 +60,23 @@ public final class TeamsAccountLoggingSettingsByRuleTypeHttpArgs extends com.pul
             $ = new TeamsAccountLoggingSettingsByRuleTypeHttpArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param logAll Whether to log all activity.
+         * 
+         * @return builder
+         * 
+         */
         public Builder logAll(Output<Boolean> logAll) {
             $.logAll = logAll;
             return this;
         }
 
+        /**
+         * @param logAll Whether to log all activity.
+         * 
+         * @return builder
+         * 
+         */
         public Builder logAll(Boolean logAll) {
             return logAll(Output.of(logAll));
         }

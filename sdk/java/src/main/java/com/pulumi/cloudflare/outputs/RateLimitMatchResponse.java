@@ -15,17 +15,41 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class RateLimitMatchResponse {
+    /**
+     * @return List of HTTP headers maps to match the origin response on.
+     * 
+     */
     private @Nullable List<Map<String,String>> headers;
+    /**
+     * @return Only count traffic that has come from your origin servers. If true, cached items that Cloudflare serve will not count towards rate limiting.
+     * 
+     */
     private @Nullable Boolean originTraffic;
+    /**
+     * @return HTTP Status codes, can be one, many or indicate all by not providing this value.
+     * 
+     */
     private @Nullable List<Integer> statuses;
 
     private RateLimitMatchResponse() {}
+    /**
+     * @return List of HTTP headers maps to match the origin response on.
+     * 
+     */
     public List<Map<String,String>> headers() {
         return this.headers == null ? List.of() : this.headers;
     }
+    /**
+     * @return Only count traffic that has come from your origin servers. If true, cached items that Cloudflare serve will not count towards rate limiting.
+     * 
+     */
     public Optional<Boolean> originTraffic() {
         return Optional.ofNullable(this.originTraffic);
     }
+    /**
+     * @return HTTP Status codes, can be one, many or indicate all by not providing this value.
+     * 
+     */
     public List<Integer> statuses() {
         return this.statuses == null ? List.of() : this.statuses;
     }

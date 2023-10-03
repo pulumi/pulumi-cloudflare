@@ -9,9 +9,17 @@ import java.util.Objects;
 
 @CustomType
 public final class ListItemValueHostname {
+    /**
+     * @return The FQDN to match on. Wildcard sub-domain matching is allowed. Eg. *.abc.com.
+     * 
+     */
     private String urlHostname;
 
     private ListItemValueHostname() {}
+    /**
+     * @return The FQDN to match on. Wildcard sub-domain matching is allowed. Eg. *.abc.com.
+     * 
+     */
     public String urlHostname() {
         return this.urlHostname;
     }

@@ -6,13 +6,14 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = [
     'GetIpRangesResult',
     'AwaitableGetIpRangesResult',
     'get_ip_ranges',
+    'get_ip_ranges_output',
 ]
 
 @pulumi.output_type
@@ -136,3 +137,29 @@ def get_ip_ranges(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetIp
         id=pulumi.get(__ret__, 'id'),
         ipv4_cidr_blocks=pulumi.get(__ret__, 'ipv4_cidr_blocks'),
         ipv6_cidr_blocks=pulumi.get(__ret__, 'ipv6_cidr_blocks'))
+
+
+@_utilities.lift_output_func(get_ip_ranges)
+def get_ip_ranges_output(opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetIpRangesResult]:
+    """
+    Use this data source to get the [IP ranges](https://www.cloudflare.com/ips/) of Cloudflare network.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_cloudflare as cloudflare
+    import pulumi_example as example
+
+    cloudflare = cloudflare.get_ip_ranges()
+    example = example.index.Example_firewall_resource("example",
+        name=from-cloudflare,
+        network=default,
+        source_ranges=cloudflare.ipv4_cidr_blocks,
+        allow=[{
+            ports: 443,
+            protocol: tcp,
+        }])
+    ```
+    """
+    ...

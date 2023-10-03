@@ -243,14 +243,14 @@ public class LoadBalancer extends com.pulumi.resources.CustomResource {
         return this.modifiedOn;
     }
     /**
-     * The DNS hostname to associate with your load balancer. If this hostname already exists as a DNS record in Cloudflare&#39;s DNS, the load balancer will take precedence and the DNS record will not be used.
+     * Human readable name for this rule.
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return The DNS hostname to associate with your load balancer. If this hostname already exists as a DNS record in Cloudflare&#39;s DNS, the load balancer will take precedence and the DNS record will not be used.
+     * @return Human readable name for this rule.
      * 
      */
     public Output<String> name() {
@@ -327,28 +327,28 @@ public class LoadBalancer extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.rules);
     }
     /**
-     * Specifies the type of session affinity the load balancer should use unless specified as `none` or `&#34;&#34;` (default). With value `cookie`, on the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy then a new origin server is calculated and used. Value `ip_cookie` behaves the same as `cookie` except the initial origin selection is stable and based on the client&#39;s IP address. Available values: `&#34;&#34;`, `none`, `cookie`, `ip_cookie`, `header`. Defaults to `none`.
+     * Configure attributes for session affinity.
      * 
      */
     @Export(name="sessionAffinity", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> sessionAffinity;
 
     /**
-     * @return Specifies the type of session affinity the load balancer should use unless specified as `none` or `&#34;&#34;` (default). With value `cookie`, on the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy then a new origin server is calculated and used. Value `ip_cookie` behaves the same as `cookie` except the initial origin selection is stable and based on the client&#39;s IP address. Available values: `&#34;&#34;`, `none`, `cookie`, `ip_cookie`, `header`. Defaults to `none`.
+     * @return Configure attributes for session affinity.
      * 
      */
     public Output<Optional<String>> sessionAffinity() {
         return Codegen.optional(this.sessionAffinity);
     }
     /**
-     * Configure attributes for session affinity.
+     * Configure attributes for session affinity. Note that the property `drain_duration` is not currently supported as a rule override.
      * 
      */
     @Export(name="sessionAffinityAttributes", refs={List.class,LoadBalancerSessionAffinityAttribute.class}, tree="[0,1]")
     private Output</* @Nullable */ List<LoadBalancerSessionAffinityAttribute>> sessionAffinityAttributes;
 
     /**
-     * @return Configure attributes for session affinity.
+     * @return Configure attributes for session affinity. Note that the property `drain_duration` is not currently supported as a rule override.
      * 
      */
     public Output<Optional<List<LoadBalancerSessionAffinityAttribute>>> sessionAffinityAttributes() {
@@ -383,14 +383,14 @@ public class LoadBalancer extends com.pulumi.resources.CustomResource {
         return this.steeringPolicy;
     }
     /**
-     * Time to live (TTL) of the DNS entry for the IP address returned by this load balancer. This cannot be set for proxied load balancers. Defaults to `30`. Conflicts with `proxied`.
+     * Time to live (TTL) of the DNS entry for the IP address returned by this load balancer. This cannot be set for proxied load balancers. Defaults to `30`.
      * 
      */
     @Export(name="ttl", refs={Integer.class}, tree="[0]")
     private Output<Integer> ttl;
 
     /**
-     * @return Time to live (TTL) of the DNS entry for the IP address returned by this load balancer. This cannot be set for proxied load balancers. Defaults to `30`. Conflicts with `proxied`.
+     * @return Time to live (TTL) of the DNS entry for the IP address returned by this load balancer. This cannot be set for proxied load balancers. Defaults to `30`.
      * 
      */
     public Output<Integer> ttl() {

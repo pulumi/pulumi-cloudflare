@@ -12,25 +12,65 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class CustomHostnameSslSetting {
+    /**
+     * @return List of SSL/TLS ciphers to associate with this certificate.
+     * 
+     */
     private @Nullable List<String> ciphers;
+    /**
+     * @return Whether early hints should be supported. Available values: `on`, `off`.
+     * 
+     */
     private @Nullable String earlyHints;
+    /**
+     * @return Whether HTTP2 should be supported. Available values: `on`, `off`.
+     * 
+     */
     private @Nullable String http2;
+    /**
+     * @return Lowest version of TLS this certificate should support. Available values: `1.0`, `1.1`, `1.2`, `1.3`.
+     * 
+     */
     private @Nullable String minTlsVersion;
+    /**
+     * @return Whether TLSv1.3 should be supported. Available values: `on`, `off`.
+     * 
+     */
     private @Nullable String tls13;
 
     private CustomHostnameSslSetting() {}
+    /**
+     * @return List of SSL/TLS ciphers to associate with this certificate.
+     * 
+     */
     public List<String> ciphers() {
         return this.ciphers == null ? List.of() : this.ciphers;
     }
+    /**
+     * @return Whether early hints should be supported. Available values: `on`, `off`.
+     * 
+     */
     public Optional<String> earlyHints() {
         return Optional.ofNullable(this.earlyHints);
     }
+    /**
+     * @return Whether HTTP2 should be supported. Available values: `on`, `off`.
+     * 
+     */
     public Optional<String> http2() {
         return Optional.ofNullable(this.http2);
     }
+    /**
+     * @return Lowest version of TLS this certificate should support. Available values: `1.0`, `1.1`, `1.2`, `1.3`.
+     * 
+     */
     public Optional<String> minTlsVersion() {
         return Optional.ofNullable(this.minTlsVersion);
     }
+    /**
+     * @return Whether TLSv1.3 should be supported. Available values: `on`, `off`.
+     * 
+     */
     public Optional<String> tls13() {
         return Optional.ofNullable(this.tls13);
     }

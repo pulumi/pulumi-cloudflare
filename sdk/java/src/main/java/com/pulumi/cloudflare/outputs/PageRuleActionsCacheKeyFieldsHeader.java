@@ -12,38 +12,38 @@ import javax.annotation.Nullable;
 @CustomType
 public final class PageRuleActionsCacheKeyFieldsHeader {
     /**
-     * @return Check for presence of specified cookies, without including their actual values.
+     * @return Check for presence of specified HTTP headers, without including their actual values.
      * 
      */
     private @Nullable List<String> checkPresences;
     /**
-     * @return Exclude these HTTP headers from Cache Key. Currently, only the `Origin` header can be excluded.
+     * @return Exclude these query string parameters from Cache Key.
      * 
      */
     private @Nullable List<String> excludes;
     /**
-     * @return Use values of specified cookies in Cache Key.
+     * @return Only use values of specified query string parameters in Cache Key.
      * 
      */
     private @Nullable List<String> includes;
 
     private PageRuleActionsCacheKeyFieldsHeader() {}
     /**
-     * @return Check for presence of specified cookies, without including their actual values.
+     * @return Check for presence of specified HTTP headers, without including their actual values.
      * 
      */
     public List<String> checkPresences() {
         return this.checkPresences == null ? List.of() : this.checkPresences;
     }
     /**
-     * @return Exclude these HTTP headers from Cache Key. Currently, only the `Origin` header can be excluded.
+     * @return Exclude these query string parameters from Cache Key.
      * 
      */
     public List<String> excludes() {
         return this.excludes == null ? List.of() : this.excludes;
     }
     /**
-     * @return Use values of specified cookies in Cache Key.
+     * @return Only use values of specified query string parameters in Cache Key.
      * 
      */
     public List<String> includes() {

@@ -13,7 +13,13 @@ namespace Pulumi.Cloudflare.Outputs
     [OutputType]
     public sealed class DlpProfileEntryPattern
     {
+        /// <summary>
+        /// The regex that defines the pattern.
+        /// </summary>
         public readonly string Regex;
+        /// <summary>
+        /// The validation algorithm to apply with this pattern.
+        /// </summary>
         public readonly string? Validation;
 
         [OutputConstructor]

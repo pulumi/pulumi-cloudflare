@@ -13,6 +13,9 @@ namespace Pulumi.Cloudflare.Outputs
     [OutputType]
     public sealed class AccessGroupRequireOkta
     {
+        /// <summary>
+        /// The ID of the Azure Identity provider.
+        /// </summary>
         public readonly string? IdentityProviderId;
         public readonly ImmutableArray<string> Names;
 

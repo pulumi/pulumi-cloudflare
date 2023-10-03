@@ -12,11 +12,19 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class AccessGroupIncludeGithub {
+    /**
+     * @return The ID of the Azure Identity provider.
+     * 
+     */
     private @Nullable String identityProviderId;
     private @Nullable String name;
     private @Nullable List<String> teams;
 
     private AccessGroupIncludeGithub() {}
+    /**
+     * @return The ID of the Azure Identity provider.
+     * 
+     */
     public Optional<String> identityProviderId() {
         return Optional.ofNullable(this.identityProviderId);
     }

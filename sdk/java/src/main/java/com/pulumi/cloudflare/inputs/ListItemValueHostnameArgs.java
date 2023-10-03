@@ -13,9 +13,17 @@ public final class ListItemValueHostnameArgs extends com.pulumi.resources.Resour
 
     public static final ListItemValueHostnameArgs Empty = new ListItemValueHostnameArgs();
 
+    /**
+     * The FQDN to match on. Wildcard sub-domain matching is allowed. Eg. *.abc.com.
+     * 
+     */
     @Import(name="urlHostname", required=true)
     private Output<String> urlHostname;
 
+    /**
+     * @return The FQDN to match on. Wildcard sub-domain matching is allowed. Eg. *.abc.com.
+     * 
+     */
     public Output<String> urlHostname() {
         return this.urlHostname;
     }
@@ -44,11 +52,23 @@ public final class ListItemValueHostnameArgs extends com.pulumi.resources.Resour
             $ = new ListItemValueHostnameArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param urlHostname The FQDN to match on. Wildcard sub-domain matching is allowed. Eg. *.abc.com.
+         * 
+         * @return builder
+         * 
+         */
         public Builder urlHostname(Output<String> urlHostname) {
             $.urlHostname = urlHostname;
             return this;
         }
 
+        /**
+         * @param urlHostname The FQDN to match on. Wildcard sub-domain matching is allowed. Eg. *.abc.com.
+         * 
+         * @return builder
+         * 
+         */
         public Builder urlHostname(String urlHostname) {
             return urlHostname(Output.of(urlHostname));
         }

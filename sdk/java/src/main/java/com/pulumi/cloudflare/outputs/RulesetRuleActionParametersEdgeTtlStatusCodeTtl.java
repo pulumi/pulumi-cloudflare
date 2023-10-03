@@ -13,17 +13,41 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class RulesetRuleActionParametersEdgeTtlStatusCodeTtl {
+    /**
+     * @return Status code for which the edge TTL is applied.
+     * 
+     */
     private @Nullable Integer statusCode;
+    /**
+     * @return Status code range for which the edge TTL is applied.
+     * 
+     */
     private @Nullable List<RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRange> statusCodeRanges;
+    /**
+     * @return Status code edge TTL value.
+     * 
+     */
     private @Nullable Integer value;
 
     private RulesetRuleActionParametersEdgeTtlStatusCodeTtl() {}
+    /**
+     * @return Status code for which the edge TTL is applied.
+     * 
+     */
     public Optional<Integer> statusCode() {
         return Optional.ofNullable(this.statusCode);
     }
+    /**
+     * @return Status code range for which the edge TTL is applied.
+     * 
+     */
     public List<RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRange> statusCodeRanges() {
         return this.statusCodeRanges == null ? List.of() : this.statusCodeRanges;
     }
+    /**
+     * @return Status code edge TTL value.
+     * 
+     */
     public Optional<Integer> value() {
         return Optional.ofNullable(this.value);
     }

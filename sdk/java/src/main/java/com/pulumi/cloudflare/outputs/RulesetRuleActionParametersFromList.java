@@ -11,19 +11,27 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class RulesetRuleActionParametersFromList {
+    /**
+     * @return Expression to use for the list lookup.
+     * 
+     */
     private @Nullable String key;
     /**
-     * @return Name of the ruleset.
+     * @return Name of the compression algorithm to use. Available values: `gzip`, `brotli`, `auto`, `default`, `none`
      * 
      */
     private @Nullable String name;
 
     private RulesetRuleActionParametersFromList() {}
+    /**
+     * @return Expression to use for the list lookup.
+     * 
+     */
     public Optional<String> key() {
         return Optional.ofNullable(this.key);
     }
     /**
-     * @return Name of the ruleset.
+     * @return Name of the compression algorithm to use. Available values: `gzip`, `brotli`, `auto`, `default`, `none`
      * 
      */
     public Optional<String> name() {

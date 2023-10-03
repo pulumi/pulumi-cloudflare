@@ -14,6 +14,10 @@ namespace Pulumi.Cloudflare.Inputs
     {
         [Input("excludes")]
         private InputList<string>? _excludes;
+
+        /// <summary>
+        /// List of query string parameters to exclude from the custom key.
+        /// </summary>
         public InputList<string> Excludes
         {
             get => _excludes ?? (_excludes = new InputList<string>());
@@ -22,6 +26,10 @@ namespace Pulumi.Cloudflare.Inputs
 
         [Input("includes")]
         private InputList<string>? _includes;
+
+        /// <summary>
+        /// List of cookies to include in the custom key.
+        /// </summary>
         public InputList<string> Includes
         {
             get => _includes ?? (_includes = new InputList<string>());
