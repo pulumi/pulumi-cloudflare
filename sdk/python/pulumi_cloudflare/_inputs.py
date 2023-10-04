@@ -9917,12 +9917,14 @@ class NotificationPolicyEmailIntegrationArgs:
 @pulumi.input_type
 class NotificationPolicyFiltersArgs:
     def __init__(__self__, *,
+                 actions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  alert_trigger_preferences: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  enableds: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  environments: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  event_sources: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  event_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  events: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 group_bies: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  health_check_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  input_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  limits: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -9939,14 +9941,17 @@ class NotificationPolicyFiltersArgs:
                  statuses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  target_hostnames: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  target_zone_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 wheres: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  zones: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] actions: Targeted actions for alert.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] alert_trigger_preferences: Alert trigger preferences. Example: `slo`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] enableds: State of the pool to alert on.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] environments: Environment of pages. Available values: `ENVIRONMENT_PREVIEW`, `ENVIRONMENT_PRODUCTION`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] event_sources: Source configuration to alert on for pool or origin.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] event_types: Stream event type to alert on.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] events: Pages event to alert. Available values: `EVENT_DEPLOYMENT_STARTED`, `EVENT_DEPLOYMENT_FAILED`, `EVENT_DEPLOYMENT_SUCCESS`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] group_bies: Alert grouping.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] health_check_ids: Identifier health check. Required when using `filters.0.status`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] input_ids: Stream input id to alert on.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] limits: A numerical limit. Example: `100`.
@@ -9962,16 +9967,19 @@ class NotificationPolicyFiltersArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] statuses: Status to alert on.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] target_hostnames: Target host to alert on for dos.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] target_zone_names: Target domain to alert on.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] wheres: Filter for alert.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] zones: A list of zone identifiers.
         """
         NotificationPolicyFiltersArgs._configure(
             lambda key, value: pulumi.set(__self__, key, value),
+            actions=actions,
             alert_trigger_preferences=alert_trigger_preferences,
             enableds=enableds,
             environments=environments,
             event_sources=event_sources,
             event_types=event_types,
             events=events,
+            group_bies=group_bies,
             health_check_ids=health_check_ids,
             input_ids=input_ids,
             limits=limits,
@@ -9988,17 +9996,20 @@ class NotificationPolicyFiltersArgs:
             statuses=statuses,
             target_hostnames=target_hostnames,
             target_zone_names=target_zone_names,
+            wheres=wheres,
             zones=zones,
         )
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
+             actions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              alert_trigger_preferences: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              enableds: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              environments: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              event_sources: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              event_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              events: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             group_bies: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              health_check_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              input_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              limits: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -10015,8 +10026,11 @@ class NotificationPolicyFiltersArgs:
              statuses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              target_hostnames: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              target_zone_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             wheres: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              zones: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              opts: Optional[pulumi.ResourceOptions]=None):
+        if actions is not None:
+            _setter("actions", actions)
         if alert_trigger_preferences is not None:
             _setter("alert_trigger_preferences", alert_trigger_preferences)
         if enableds is not None:
@@ -10029,6 +10043,8 @@ class NotificationPolicyFiltersArgs:
             _setter("event_types", event_types)
         if events is not None:
             _setter("events", events)
+        if group_bies is not None:
+            _setter("group_bies", group_bies)
         if health_check_ids is not None:
             _setter("health_check_ids", health_check_ids)
         if input_ids is not None:
@@ -10061,8 +10077,22 @@ class NotificationPolicyFiltersArgs:
             _setter("target_hostnames", target_hostnames)
         if target_zone_names is not None:
             _setter("target_zone_names", target_zone_names)
+        if wheres is not None:
+            _setter("wheres", wheres)
         if zones is not None:
             _setter("zones", zones)
+
+    @property
+    @pulumi.getter
+    def actions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Targeted actions for alert.
+        """
+        return pulumi.get(self, "actions")
+
+    @actions.setter
+    def actions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "actions", value)
 
     @property
     @pulumi.getter(name="alertTriggerPreferences")
@@ -10135,6 +10165,18 @@ class NotificationPolicyFiltersArgs:
     @events.setter
     def events(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "events", value)
+
+    @property
+    @pulumi.getter(name="groupBies")
+    def group_bies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Alert grouping.
+        """
+        return pulumi.get(self, "group_bies")
+
+    @group_bies.setter
+    def group_bies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "group_bies", value)
 
     @property
     @pulumi.getter(name="healthCheckIds")
@@ -10324,6 +10366,18 @@ class NotificationPolicyFiltersArgs:
     @target_zone_names.setter
     def target_zone_names(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "target_zone_names", value)
+
+    @property
+    @pulumi.getter
+    def wheres(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Filter for alert.
+        """
+        return pulumi.get(self, "wheres")
+
+    @wheres.setter
+    def wheres(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "wheres", value)
 
     @property
     @pulumi.getter
@@ -14006,11 +14060,13 @@ class RulesetRuleActionParametersArgs:
         :param pulumi.Input[bool] mirage: Turn on or off Cloudflare Mirage of the Cloudflare Speed app.
         :param pulumi.Input[bool] opportunistic_encryption: Turn on or off the Cloudflare Opportunistic Encryption feature of the Edge Certificates tab in the Cloudflare SSL/TLS app.
         :param pulumi.Input['RulesetRuleActionParametersOriginArgs'] origin: List of properties to change request origin.
+        :param pulumi.Input[bool] origin_cache_control: Enable or disable the use of a more compliant Cache Control parsing mechanism, enabled by default for most zones.
         :param pulumi.Input[bool] origin_error_page_passthru: Pass-through error page for origin.
         :param pulumi.Input['RulesetRuleActionParametersOverridesArgs'] overrides: List of override configurations to apply to the ruleset.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] phases: Point in the request/response lifecycle where the ruleset will be created. Available values: `ddos_l4`, `ddos_l7`, `http_config_settings`, `http_custom_errors`, `http_log_custom_fields`, `http_ratelimit`, `http_request_cache_settings`, `http_request_dynamic_redirect`, `http_request_firewall_custom`, `http_request_firewall_managed`, `http_request_late_transform`, `http_request_origin`, `http_request_redirect`, `http_request_sanitize`, `http_request_sbfm`, `http_request_transform`, `http_response_compression`, `http_response_firewall_managed`, `http_response_headers_transform`, `magic_transit`.
         :param pulumi.Input[str] polish: Apply options from the Polish feature of the Cloudflare Speed app.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] products: Products to target with the actions. Available values: `bic`, `hot`, `ratelimit`, `securityLevel`, `uablock`, `waf`, `zonelockdown`.
+        :param pulumi.Input[int] read_timeout: Specifies a maximum timeout for reading content from an origin server.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] request_fields: List of request headers to include as part of custom fields logging, in lowercase.
         :param pulumi.Input[bool] respect_strong_etags: Respect strong ETags.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] response_fields: List of response headers to include as part of custom fields logging, in lowercase.
@@ -14549,6 +14605,9 @@ class RulesetRuleActionParametersArgs:
     @property
     @pulumi.getter(name="originCacheControl")
     def origin_cache_control(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enable or disable the use of a more compliant Cache Control parsing mechanism, enabled by default for most zones.
+        """
         return pulumi.get(self, "origin_cache_control")
 
     @origin_cache_control.setter
@@ -14618,6 +14677,9 @@ class RulesetRuleActionParametersArgs:
     @property
     @pulumi.getter(name="readTimeout")
     def read_timeout(self) -> Optional[pulumi.Input[int]]:
+        """
+        Specifies a maximum timeout for reading content from an origin server.
+        """
         return pulumi.get(self, "read_timeout")
 
     @read_timeout.setter
@@ -16617,47 +16679,48 @@ class RulesetRuleLoggingArgs:
 @pulumi.input_type
 class RulesetRuleRatelimitArgs:
     def __init__(__self__, *,
+                 requests_to_origin: pulumi.Input[bool],
                  characteristics: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  counting_expression: Optional[pulumi.Input[str]] = None,
                  mitigation_timeout: Optional[pulumi.Input[int]] = None,
                  period: Optional[pulumi.Input[int]] = None,
                  requests_per_period: Optional[pulumi.Input[int]] = None,
-                 requests_to_origin: Optional[pulumi.Input[bool]] = None,
                  score_per_period: Optional[pulumi.Input[int]] = None,
                  score_response_header_name: Optional[pulumi.Input[str]] = None):
         """
+        :param pulumi.Input[bool] requests_to_origin: Whether to include requests to origin within the Rate Limiting count.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] characteristics: List of parameters that define how Cloudflare tracks the request rate for this rule.
         :param pulumi.Input[str] counting_expression: Criteria for counting HTTP requests to trigger the Rate Limiting action. Uses the Firewall Rules expression language based on Wireshark display filters. Refer to the [Firewall Rules language](https://developers.cloudflare.com/firewall/cf-firewall-language) documentation for all available fields, operators, and functions.
         :param pulumi.Input[int] mitigation_timeout: Once the request rate is reached, the Rate Limiting rule blocks further requests for the period of time defined in this field.
         :param pulumi.Input[int] period: The period of time to consider (in seconds) when evaluating the request rate.
         :param pulumi.Input[int] requests_per_period: The number of requests over the period of time that will trigger the Rate Limiting rule.
-        :param pulumi.Input[bool] requests_to_origin: Whether to include requests to origin within the Rate Limiting count.
         :param pulumi.Input[int] score_per_period: The maximum aggregate score over the period of time that will trigger Rate Limiting rule.
         :param pulumi.Input[str] score_response_header_name: Name of HTTP header in the response, set by the origin server, with the score for the current request.
         """
         RulesetRuleRatelimitArgs._configure(
             lambda key, value: pulumi.set(__self__, key, value),
+            requests_to_origin=requests_to_origin,
             characteristics=characteristics,
             counting_expression=counting_expression,
             mitigation_timeout=mitigation_timeout,
             period=period,
             requests_per_period=requests_per_period,
-            requests_to_origin=requests_to_origin,
             score_per_period=score_per_period,
             score_response_header_name=score_response_header_name,
         )
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
+             requests_to_origin: pulumi.Input[bool],
              characteristics: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              counting_expression: Optional[pulumi.Input[str]] = None,
              mitigation_timeout: Optional[pulumi.Input[int]] = None,
              period: Optional[pulumi.Input[int]] = None,
              requests_per_period: Optional[pulumi.Input[int]] = None,
-             requests_to_origin: Optional[pulumi.Input[bool]] = None,
              score_per_period: Optional[pulumi.Input[int]] = None,
              score_response_header_name: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("requests_to_origin", requests_to_origin)
         if characteristics is not None:
             _setter("characteristics", characteristics)
         if counting_expression is not None:
@@ -16668,12 +16731,22 @@ class RulesetRuleRatelimitArgs:
             _setter("period", period)
         if requests_per_period is not None:
             _setter("requests_per_period", requests_per_period)
-        if requests_to_origin is not None:
-            _setter("requests_to_origin", requests_to_origin)
         if score_per_period is not None:
             _setter("score_per_period", score_per_period)
         if score_response_header_name is not None:
             _setter("score_response_header_name", score_response_header_name)
+
+    @property
+    @pulumi.getter(name="requestsToOrigin")
+    def requests_to_origin(self) -> pulumi.Input[bool]:
+        """
+        Whether to include requests to origin within the Rate Limiting count.
+        """
+        return pulumi.get(self, "requests_to_origin")
+
+    @requests_to_origin.setter
+    def requests_to_origin(self, value: pulumi.Input[bool]):
+        pulumi.set(self, "requests_to_origin", value)
 
     @property
     @pulumi.getter
@@ -16734,18 +16807,6 @@ class RulesetRuleRatelimitArgs:
     @requests_per_period.setter
     def requests_per_period(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "requests_per_period", value)
-
-    @property
-    @pulumi.getter(name="requestsToOrigin")
-    def requests_to_origin(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Whether to include requests to origin within the Rate Limiting count.
-        """
-        return pulumi.get(self, "requests_to_origin")
-
-    @requests_to_origin.setter
-    def requests_to_origin(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "requests_to_origin", value)
 
     @property
     @pulumi.getter(name="scorePerPeriod")

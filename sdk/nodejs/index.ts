@@ -80,6 +80,11 @@ export type ApiShield = import("./apiShield").ApiShield;
 export const ApiShield: typeof import("./apiShield").ApiShield = null as any;
 utilities.lazyLoad(exports, ["ApiShield"], () => require("./apiShield"));
 
+export { ApiShieldOperationArgs, ApiShieldOperationState } from "./apiShieldOperation";
+export type ApiShieldOperation = import("./apiShieldOperation").ApiShieldOperation;
+export const ApiShieldOperation: typeof import("./apiShieldOperation").ApiShieldOperation = null as any;
+utilities.lazyLoad(exports, ["ApiShieldOperation"], () => require("./apiShieldOperation"));
+
 export { ApiTokenArgs, ApiTokenState } from "./apiToken";
 export type ApiToken = import("./apiToken").ApiToken;
 export const ApiToken: typeof import("./apiToken").ApiToken = null as any;
@@ -674,6 +679,8 @@ const _module = {
                 return new AddressMap(name, <any>undefined, { urn })
             case "cloudflare:index/apiShield:ApiShield":
                 return new ApiShield(name, <any>undefined, { urn })
+            case "cloudflare:index/apiShieldOperation:ApiShieldOperation":
+                return new ApiShieldOperation(name, <any>undefined, { urn })
             case "cloudflare:index/apiToken:ApiToken":
                 return new ApiToken(name, <any>undefined, { urn })
             case "cloudflare:index/argo:Argo":
@@ -876,6 +883,7 @@ pulumi.runtime.registerResourceModule("cloudflare", "index/account", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/accountMember", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/addressMap", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/apiShield", _module)
+pulumi.runtime.registerResourceModule("cloudflare", "index/apiShieldOperation", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/apiToken", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/argo", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/authenticatedOriginPulls", _module)

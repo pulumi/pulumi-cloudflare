@@ -1975,6 +1975,10 @@ export interface NotificationPolicyEmailIntegration {
 
 export interface NotificationPolicyFilters {
     /**
+     * Targeted actions for alert.
+     */
+    actions?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
      * Alert trigger preferences. Example: `slo`.
      */
     alertTriggerPreferences?: pulumi.Input<pulumi.Input<string>[]>;
@@ -1998,6 +2002,10 @@ export interface NotificationPolicyFilters {
      * Pages event to alert. Available values: `EVENT_DEPLOYMENT_STARTED`, `EVENT_DEPLOYMENT_FAILED`, `EVENT_DEPLOYMENT_SUCCESS`.
      */
     events?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Alert grouping.
+     */
+    groupBies?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Identifier health check. Required when using `filters.0.status`.
      */
@@ -2059,6 +2067,10 @@ export interface NotificationPolicyFilters {
      * Target domain to alert on.
      */
     targetZoneNames?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Filter for alert.
+     */
+    wheres?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * A list of zone identifiers.
      */
@@ -2903,6 +2915,9 @@ export interface RulesetRuleActionParameters {
      * List of properties to change request origin.
      */
     origin?: pulumi.Input<inputs.RulesetRuleActionParametersOrigin>;
+    /**
+     * Enable or disable the use of a more compliant Cache Control parsing mechanism, enabled by default for most zones.
+     */
     originCacheControl?: pulumi.Input<boolean>;
     /**
      * Pass-through error page for origin.
@@ -2924,6 +2939,9 @@ export interface RulesetRuleActionParameters {
      * Products to target with the actions. Available values: `bic`, `hot`, `ratelimit`, `securityLevel`, `uablock`, `waf`, `zonelockdown`.
      */
     products?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Specifies a maximum timeout for reading content from an origin server.
+     */
     readTimeout?: pulumi.Input<number>;
     /**
      * List of request headers to include as part of custom fields logging, in lowercase.
@@ -3413,7 +3431,7 @@ export interface RulesetRuleRatelimit {
     /**
      * Whether to include requests to origin within the Rate Limiting count.
      */
-    requestsToOrigin?: pulumi.Input<boolean>;
+    requestsToOrigin: pulumi.Input<boolean>;
     /**
      * The maximum aggregate score over the period of time that will trigger Rate Limiting rule.
      */

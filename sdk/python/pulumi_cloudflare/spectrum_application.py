@@ -34,16 +34,16 @@ class SpectrumApplicationArgs:
         :param pulumi.Input['SpectrumApplicationDnsArgs'] dns: The name and type of DNS record for the Spectrum application.
         :param pulumi.Input[str] protocol: The port configuration at Cloudflare's edge. e.g. `tcp/22`.
         :param pulumi.Input[str] zone_id: The zone identifier to target for the resource.
-        :param pulumi.Input[bool] argo_smart_routing: Enables Argo Smart Routing. Defaults to `false`.
+        :param pulumi.Input[bool] argo_smart_routing: Enables Argo Smart Routing.
         :param pulumi.Input['SpectrumApplicationEdgeIpsArgs'] edge_ips: The anycast edge IP configuration for the hostname of this application.
-        :param pulumi.Input[bool] ip_firewall: Enables the IP Firewall for this application. Defaults to `true`.
+        :param pulumi.Input[bool] ip_firewall: Enables the IP Firewall for this application.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] origin_directs: A list of destination addresses to the origin. e.g. `tcp://192.0.2.1:22`.
         :param pulumi.Input['SpectrumApplicationOriginDnsArgs'] origin_dns: A destination DNS addresses to the origin.
         :param pulumi.Input[int] origin_port: Origin port to proxy traffice to. Conflicts with `origin_port_range`.
         :param pulumi.Input['SpectrumApplicationOriginPortRangeArgs'] origin_port_range: Origin port range to proxy traffice to. When using a range, the protocol field must also specify a range, e.g. `tcp/22-23`. Conflicts with `origin_port`.
-        :param pulumi.Input[str] proxy_protocol: Enables a proxy protocol to the origin. Available values: `off`, `v1`, `v2`, `simple`. Defaults to `off`.
-        :param pulumi.Input[str] tls: TLS configuration option for Cloudflare to connect to your origin. Available values: `off`, `flexible`, `full`, `strict`. Defaults to `off`.
-        :param pulumi.Input[str] traffic_type: Sets application type. Available values: `direct`, `http`, `https`. Defaults to `direct`.
+        :param pulumi.Input[str] proxy_protocol: Enables a proxy protocol to the origin. Available values: `off`, `v1`, `v2`, `simple`.
+        :param pulumi.Input[str] tls: TLS configuration option for Cloudflare to connect to your origin. Available values: `off`, `flexible`, `full`, `strict`.
+        :param pulumi.Input[str] traffic_type: Sets application type. Available values: `direct`, `http`, `https`.
         """
         SpectrumApplicationArgs._configure(
             lambda key, value: pulumi.set(__self__, key, value),
@@ -142,7 +142,7 @@ class SpectrumApplicationArgs:
     @pulumi.getter(name="argoSmartRouting")
     def argo_smart_routing(self) -> Optional[pulumi.Input[bool]]:
         """
-        Enables Argo Smart Routing. Defaults to `false`.
+        Enables Argo Smart Routing.
         """
         return pulumi.get(self, "argo_smart_routing")
 
@@ -166,7 +166,7 @@ class SpectrumApplicationArgs:
     @pulumi.getter(name="ipFirewall")
     def ip_firewall(self) -> Optional[pulumi.Input[bool]]:
         """
-        Enables the IP Firewall for this application. Defaults to `true`.
+        Enables the IP Firewall for this application.
         """
         return pulumi.get(self, "ip_firewall")
 
@@ -226,7 +226,7 @@ class SpectrumApplicationArgs:
     @pulumi.getter(name="proxyProtocol")
     def proxy_protocol(self) -> Optional[pulumi.Input[str]]:
         """
-        Enables a proxy protocol to the origin. Available values: `off`, `v1`, `v2`, `simple`. Defaults to `off`.
+        Enables a proxy protocol to the origin. Available values: `off`, `v1`, `v2`, `simple`.
         """
         return pulumi.get(self, "proxy_protocol")
 
@@ -238,7 +238,7 @@ class SpectrumApplicationArgs:
     @pulumi.getter
     def tls(self) -> Optional[pulumi.Input[str]]:
         """
-        TLS configuration option for Cloudflare to connect to your origin. Available values: `off`, `flexible`, `full`, `strict`. Defaults to `off`.
+        TLS configuration option for Cloudflare to connect to your origin. Available values: `off`, `flexible`, `full`, `strict`.
         """
         return pulumi.get(self, "tls")
 
@@ -250,7 +250,7 @@ class SpectrumApplicationArgs:
     @pulumi.getter(name="trafficType")
     def traffic_type(self) -> Optional[pulumi.Input[str]]:
         """
-        Sets application type. Available values: `direct`, `http`, `https`. Defaults to `direct`.
+        Sets application type. Available values: `direct`, `http`, `https`.
         """
         return pulumi.get(self, "traffic_type")
 
@@ -277,18 +277,18 @@ class _SpectrumApplicationState:
                  zone_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering SpectrumApplication resources.
-        :param pulumi.Input[bool] argo_smart_routing: Enables Argo Smart Routing. Defaults to `false`.
+        :param pulumi.Input[bool] argo_smart_routing: Enables Argo Smart Routing.
         :param pulumi.Input['SpectrumApplicationDnsArgs'] dns: The name and type of DNS record for the Spectrum application.
         :param pulumi.Input['SpectrumApplicationEdgeIpsArgs'] edge_ips: The anycast edge IP configuration for the hostname of this application.
-        :param pulumi.Input[bool] ip_firewall: Enables the IP Firewall for this application. Defaults to `true`.
+        :param pulumi.Input[bool] ip_firewall: Enables the IP Firewall for this application.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] origin_directs: A list of destination addresses to the origin. e.g. `tcp://192.0.2.1:22`.
         :param pulumi.Input['SpectrumApplicationOriginDnsArgs'] origin_dns: A destination DNS addresses to the origin.
         :param pulumi.Input[int] origin_port: Origin port to proxy traffice to. Conflicts with `origin_port_range`.
         :param pulumi.Input['SpectrumApplicationOriginPortRangeArgs'] origin_port_range: Origin port range to proxy traffice to. When using a range, the protocol field must also specify a range, e.g. `tcp/22-23`. Conflicts with `origin_port`.
         :param pulumi.Input[str] protocol: The port configuration at Cloudflare's edge. e.g. `tcp/22`.
-        :param pulumi.Input[str] proxy_protocol: Enables a proxy protocol to the origin. Available values: `off`, `v1`, `v2`, `simple`. Defaults to `off`.
-        :param pulumi.Input[str] tls: TLS configuration option for Cloudflare to connect to your origin. Available values: `off`, `flexible`, `full`, `strict`. Defaults to `off`.
-        :param pulumi.Input[str] traffic_type: Sets application type. Available values: `direct`, `http`, `https`. Defaults to `direct`.
+        :param pulumi.Input[str] proxy_protocol: Enables a proxy protocol to the origin. Available values: `off`, `v1`, `v2`, `simple`.
+        :param pulumi.Input[str] tls: TLS configuration option for Cloudflare to connect to your origin. Available values: `off`, `flexible`, `full`, `strict`.
+        :param pulumi.Input[str] traffic_type: Sets application type. Available values: `direct`, `http`, `https`.
         :param pulumi.Input[str] zone_id: The zone identifier to target for the resource.
         """
         _SpectrumApplicationState._configure(
@@ -355,7 +355,7 @@ class _SpectrumApplicationState:
     @pulumi.getter(name="argoSmartRouting")
     def argo_smart_routing(self) -> Optional[pulumi.Input[bool]]:
         """
-        Enables Argo Smart Routing. Defaults to `false`.
+        Enables Argo Smart Routing.
         """
         return pulumi.get(self, "argo_smart_routing")
 
@@ -391,7 +391,7 @@ class _SpectrumApplicationState:
     @pulumi.getter(name="ipFirewall")
     def ip_firewall(self) -> Optional[pulumi.Input[bool]]:
         """
-        Enables the IP Firewall for this application. Defaults to `true`.
+        Enables the IP Firewall for this application.
         """
         return pulumi.get(self, "ip_firewall")
 
@@ -463,7 +463,7 @@ class _SpectrumApplicationState:
     @pulumi.getter(name="proxyProtocol")
     def proxy_protocol(self) -> Optional[pulumi.Input[str]]:
         """
-        Enables a proxy protocol to the origin. Available values: `off`, `v1`, `v2`, `simple`. Defaults to `off`.
+        Enables a proxy protocol to the origin. Available values: `off`, `v1`, `v2`, `simple`.
         """
         return pulumi.get(self, "proxy_protocol")
 
@@ -475,7 +475,7 @@ class _SpectrumApplicationState:
     @pulumi.getter
     def tls(self) -> Optional[pulumi.Input[str]]:
         """
-        TLS configuration option for Cloudflare to connect to your origin. Available values: `off`, `flexible`, `full`, `strict`. Defaults to `off`.
+        TLS configuration option for Cloudflare to connect to your origin. Available values: `off`, `flexible`, `full`, `strict`.
         """
         return pulumi.get(self, "tls")
 
@@ -487,7 +487,7 @@ class _SpectrumApplicationState:
     @pulumi.getter(name="trafficType")
     def traffic_type(self) -> Optional[pulumi.Input[str]]:
         """
-        Sets application type. Available values: `direct`, `http`, `https`. Defaults to `direct`.
+        Sets application type. Available values: `direct`, `http`, `https`.
         """
         return pulumi.get(self, "traffic_type")
 
@@ -564,18 +564,18 @@ class SpectrumApplication(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[bool] argo_smart_routing: Enables Argo Smart Routing. Defaults to `false`.
+        :param pulumi.Input[bool] argo_smart_routing: Enables Argo Smart Routing.
         :param pulumi.Input[pulumi.InputType['SpectrumApplicationDnsArgs']] dns: The name and type of DNS record for the Spectrum application.
         :param pulumi.Input[pulumi.InputType['SpectrumApplicationEdgeIpsArgs']] edge_ips: The anycast edge IP configuration for the hostname of this application.
-        :param pulumi.Input[bool] ip_firewall: Enables the IP Firewall for this application. Defaults to `true`.
+        :param pulumi.Input[bool] ip_firewall: Enables the IP Firewall for this application.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] origin_directs: A list of destination addresses to the origin. e.g. `tcp://192.0.2.1:22`.
         :param pulumi.Input[pulumi.InputType['SpectrumApplicationOriginDnsArgs']] origin_dns: A destination DNS addresses to the origin.
         :param pulumi.Input[int] origin_port: Origin port to proxy traffice to. Conflicts with `origin_port_range`.
         :param pulumi.Input[pulumi.InputType['SpectrumApplicationOriginPortRangeArgs']] origin_port_range: Origin port range to proxy traffice to. When using a range, the protocol field must also specify a range, e.g. `tcp/22-23`. Conflicts with `origin_port`.
         :param pulumi.Input[str] protocol: The port configuration at Cloudflare's edge. e.g. `tcp/22`.
-        :param pulumi.Input[str] proxy_protocol: Enables a proxy protocol to the origin. Available values: `off`, `v1`, `v2`, `simple`. Defaults to `off`.
-        :param pulumi.Input[str] tls: TLS configuration option for Cloudflare to connect to your origin. Available values: `off`, `flexible`, `full`, `strict`. Defaults to `off`.
-        :param pulumi.Input[str] traffic_type: Sets application type. Available values: `direct`, `http`, `https`. Defaults to `direct`.
+        :param pulumi.Input[str] proxy_protocol: Enables a proxy protocol to the origin. Available values: `off`, `v1`, `v2`, `simple`.
+        :param pulumi.Input[str] tls: TLS configuration option for Cloudflare to connect to your origin. Available values: `off`, `flexible`, `full`, `strict`.
+        :param pulumi.Input[str] traffic_type: Sets application type. Available values: `direct`, `http`, `https`.
         :param pulumi.Input[str] zone_id: The zone identifier to target for the resource.
         """
         ...
@@ -729,18 +729,18 @@ class SpectrumApplication(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[bool] argo_smart_routing: Enables Argo Smart Routing. Defaults to `false`.
+        :param pulumi.Input[bool] argo_smart_routing: Enables Argo Smart Routing.
         :param pulumi.Input[pulumi.InputType['SpectrumApplicationDnsArgs']] dns: The name and type of DNS record for the Spectrum application.
         :param pulumi.Input[pulumi.InputType['SpectrumApplicationEdgeIpsArgs']] edge_ips: The anycast edge IP configuration for the hostname of this application.
-        :param pulumi.Input[bool] ip_firewall: Enables the IP Firewall for this application. Defaults to `true`.
+        :param pulumi.Input[bool] ip_firewall: Enables the IP Firewall for this application.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] origin_directs: A list of destination addresses to the origin. e.g. `tcp://192.0.2.1:22`.
         :param pulumi.Input[pulumi.InputType['SpectrumApplicationOriginDnsArgs']] origin_dns: A destination DNS addresses to the origin.
         :param pulumi.Input[int] origin_port: Origin port to proxy traffice to. Conflicts with `origin_port_range`.
         :param pulumi.Input[pulumi.InputType['SpectrumApplicationOriginPortRangeArgs']] origin_port_range: Origin port range to proxy traffice to. When using a range, the protocol field must also specify a range, e.g. `tcp/22-23`. Conflicts with `origin_port`.
         :param pulumi.Input[str] protocol: The port configuration at Cloudflare's edge. e.g. `tcp/22`.
-        :param pulumi.Input[str] proxy_protocol: Enables a proxy protocol to the origin. Available values: `off`, `v1`, `v2`, `simple`. Defaults to `off`.
-        :param pulumi.Input[str] tls: TLS configuration option for Cloudflare to connect to your origin. Available values: `off`, `flexible`, `full`, `strict`. Defaults to `off`.
-        :param pulumi.Input[str] traffic_type: Sets application type. Available values: `direct`, `http`, `https`. Defaults to `direct`.
+        :param pulumi.Input[str] proxy_protocol: Enables a proxy protocol to the origin. Available values: `off`, `v1`, `v2`, `simple`.
+        :param pulumi.Input[str] tls: TLS configuration option for Cloudflare to connect to your origin. Available values: `off`, `flexible`, `full`, `strict`.
+        :param pulumi.Input[str] traffic_type: Sets application type. Available values: `direct`, `http`, `https`.
         :param pulumi.Input[str] zone_id: The zone identifier to target for the resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -764,9 +764,9 @@ class SpectrumApplication(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="argoSmartRouting")
-    def argo_smart_routing(self) -> pulumi.Output[Optional[bool]]:
+    def argo_smart_routing(self) -> pulumi.Output[bool]:
         """
-        Enables Argo Smart Routing. Defaults to `false`.
+        Enables Argo Smart Routing.
         """
         return pulumi.get(self, "argo_smart_routing")
 
@@ -780,7 +780,7 @@ class SpectrumApplication(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="edgeIps")
-    def edge_ips(self) -> pulumi.Output[Optional['outputs.SpectrumApplicationEdgeIps']]:
+    def edge_ips(self) -> pulumi.Output['outputs.SpectrumApplicationEdgeIps']:
         """
         The anycast edge IP configuration for the hostname of this application.
         """
@@ -788,9 +788,9 @@ class SpectrumApplication(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="ipFirewall")
-    def ip_firewall(self) -> pulumi.Output[Optional[bool]]:
+    def ip_firewall(self) -> pulumi.Output[bool]:
         """
-        Enables the IP Firewall for this application. Defaults to `true`.
+        Enables the IP Firewall for this application.
         """
         return pulumi.get(self, "ip_firewall")
 
@@ -836,25 +836,25 @@ class SpectrumApplication(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="proxyProtocol")
-    def proxy_protocol(self) -> pulumi.Output[Optional[str]]:
+    def proxy_protocol(self) -> pulumi.Output[str]:
         """
-        Enables a proxy protocol to the origin. Available values: `off`, `v1`, `v2`, `simple`. Defaults to `off`.
+        Enables a proxy protocol to the origin. Available values: `off`, `v1`, `v2`, `simple`.
         """
         return pulumi.get(self, "proxy_protocol")
 
     @property
     @pulumi.getter
-    def tls(self) -> pulumi.Output[Optional[str]]:
+    def tls(self) -> pulumi.Output[str]:
         """
-        TLS configuration option for Cloudflare to connect to your origin. Available values: `off`, `flexible`, `full`, `strict`. Defaults to `off`.
+        TLS configuration option for Cloudflare to connect to your origin. Available values: `off`, `flexible`, `full`, `strict`.
         """
         return pulumi.get(self, "tls")
 
     @property
     @pulumi.getter(name="trafficType")
-    def traffic_type(self) -> pulumi.Output[Optional[str]]:
+    def traffic_type(self) -> pulumi.Output[str]:
         """
-        Sets application type. Available values: `direct`, `http`, `https`. Defaults to `direct`.
+        Sets application type. Available values: `direct`, `http`, `https`.
         """
         return pulumi.get(self, "traffic_type")
 

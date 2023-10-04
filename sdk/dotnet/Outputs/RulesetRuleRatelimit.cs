@@ -36,7 +36,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// <summary>
         /// Whether to include requests to origin within the Rate Limiting count.
         /// </summary>
-        public readonly bool? RequestsToOrigin;
+        public readonly bool RequestsToOrigin;
         /// <summary>
         /// The maximum aggregate score over the period of time that will trigger Rate Limiting rule.
         /// </summary>
@@ -58,7 +58,7 @@ namespace Pulumi.Cloudflare.Outputs
 
             int? requestsPerPeriod,
 
-            bool? requestsToOrigin,
+            bool requestsToOrigin,
 
             int? scorePerPeriod,
 

@@ -20,6 +20,7 @@ from .account import *
 from .account_member import *
 from .address_map import *
 from .api_shield import *
+from .api_shield_operation import *
 from .api_token import *
 from .argo import *
 from .authenticated_origin_pulls import *
@@ -261,6 +262,14 @@ _utilities.register(
   "fqn": "pulumi_cloudflare",
   "classes": {
    "cloudflare:index/apiShield:ApiShield": "ApiShield"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "index/apiShieldOperation",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/apiShieldOperation:ApiShieldOperation": "ApiShieldOperation"
   }
  },
  {

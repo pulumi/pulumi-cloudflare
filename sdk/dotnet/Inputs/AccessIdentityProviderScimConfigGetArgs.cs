@@ -22,7 +22,16 @@ namespace Pulumi.Cloudflare.Inputs
         public Input<bool>? SeatDeprovision { get; set; }
 
         [Input("secret")]
-        public Input<string>? Secret { get; set; }
+        private Input<string>? _secret;
+        public Input<string>? Secret
+        {
+            get => _secret;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _secret = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         [Input("userDeprovision")]
         public Input<bool>? UserDeprovision { get; set; }

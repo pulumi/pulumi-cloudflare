@@ -12,6 +12,18 @@ namespace Pulumi.Cloudflare.Inputs
 
     public sealed class NotificationPolicyFiltersArgs : global::Pulumi.ResourceArgs
     {
+        [Input("actions")]
+        private InputList<string>? _actions;
+
+        /// <summary>
+        /// Targeted actions for alert.
+        /// </summary>
+        public InputList<string> Actions
+        {
+            get => _actions ?? (_actions = new InputList<string>());
+            set => _actions = value;
+        }
+
         [Input("alertTriggerPreferences")]
         private InputList<string>? _alertTriggerPreferences;
 
@@ -82,6 +94,18 @@ namespace Pulumi.Cloudflare.Inputs
         {
             get => _events ?? (_events = new InputList<string>());
             set => _events = value;
+        }
+
+        [Input("groupBies")]
+        private InputList<string>? _groupBies;
+
+        /// <summary>
+        /// Alert grouping.
+        /// </summary>
+        public InputList<string> GroupBies
+        {
+            get => _groupBies ?? (_groupBies = new InputList<string>());
+            set => _groupBies = value;
         }
 
         [Input("healthCheckIds")]
@@ -270,6 +294,18 @@ namespace Pulumi.Cloudflare.Inputs
         {
             get => _targetZoneNames ?? (_targetZoneNames = new InputList<string>());
             set => _targetZoneNames = value;
+        }
+
+        [Input("wheres")]
+        private InputList<string>? _wheres;
+
+        /// <summary>
+        /// Filter for alert.
+        /// </summary>
+        public InputList<string> Wheres
+        {
+            get => _wheres ?? (_wheres = new InputList<string>());
+            set => _wheres = value;
         }
 
         [Input("zones")]

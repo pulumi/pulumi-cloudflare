@@ -114,6 +114,9 @@ namespace Pulumi.Cloudflare.Outputs
         /// List of properties to change request origin.
         /// </summary>
         public readonly Outputs.RulesetRuleActionParametersOrigin? Origin;
+        /// <summary>
+        /// Enable or disable the use of a more compliant Cache Control parsing mechanism, enabled by default for most zones.
+        /// </summary>
         public readonly bool? OriginCacheControl;
         /// <summary>
         /// Pass-through error page for origin.
@@ -135,6 +138,9 @@ namespace Pulumi.Cloudflare.Outputs
         /// Products to target with the actions. Available values: `bic`, `hot`, `ratelimit`, `securityLevel`, `uablock`, `waf`, `zonelockdown`.
         /// </summary>
         public readonly ImmutableArray<string> Products;
+        /// <summary>
+        /// Specifies a maximum timeout for reading content from an origin server.
+        /// </summary>
         public readonly int? ReadTimeout;
         /// <summary>
         /// List of request headers to include as part of custom fields logging, in lowercase.

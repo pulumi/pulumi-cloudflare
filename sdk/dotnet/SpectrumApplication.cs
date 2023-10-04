@@ -62,10 +62,10 @@ namespace Pulumi.Cloudflare
     public partial class SpectrumApplication : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Enables Argo Smart Routing. Defaults to `false`.
+        /// Enables Argo Smart Routing.
         /// </summary>
         [Output("argoSmartRouting")]
-        public Output<bool?> ArgoSmartRouting { get; private set; } = null!;
+        public Output<bool> ArgoSmartRouting { get; private set; } = null!;
 
         /// <summary>
         /// The name and type of DNS record for the Spectrum application.
@@ -77,13 +77,13 @@ namespace Pulumi.Cloudflare
         /// The anycast edge IP configuration for the hostname of this application.
         /// </summary>
         [Output("edgeIps")]
-        public Output<Outputs.SpectrumApplicationEdgeIps?> EdgeIps { get; private set; } = null!;
+        public Output<Outputs.SpectrumApplicationEdgeIps> EdgeIps { get; private set; } = null!;
 
         /// <summary>
-        /// Enables the IP Firewall for this application. Defaults to `true`.
+        /// Enables the IP Firewall for this application.
         /// </summary>
         [Output("ipFirewall")]
-        public Output<bool?> IpFirewall { get; private set; } = null!;
+        public Output<bool> IpFirewall { get; private set; } = null!;
 
         /// <summary>
         /// A list of destination addresses to the origin. e.g. `tcp://192.0.2.1:22`.
@@ -116,22 +116,22 @@ namespace Pulumi.Cloudflare
         public Output<string> Protocol { get; private set; } = null!;
 
         /// <summary>
-        /// Enables a proxy protocol to the origin. Available values: `off`, `v1`, `v2`, `simple`. Defaults to `off`.
+        /// Enables a proxy protocol to the origin. Available values: `off`, `v1`, `v2`, `simple`.
         /// </summary>
         [Output("proxyProtocol")]
-        public Output<string?> ProxyProtocol { get; private set; } = null!;
+        public Output<string> ProxyProtocol { get; private set; } = null!;
 
         /// <summary>
-        /// TLS configuration option for Cloudflare to connect to your origin. Available values: `off`, `flexible`, `full`, `strict`. Defaults to `off`.
+        /// TLS configuration option for Cloudflare to connect to your origin. Available values: `off`, `flexible`, `full`, `strict`.
         /// </summary>
         [Output("tls")]
-        public Output<string?> Tls { get; private set; } = null!;
+        public Output<string> Tls { get; private set; } = null!;
 
         /// <summary>
-        /// Sets application type. Available values: `direct`, `http`, `https`. Defaults to `direct`.
+        /// Sets application type. Available values: `direct`, `http`, `https`.
         /// </summary>
         [Output("trafficType")]
-        public Output<string?> TrafficType { get; private set; } = null!;
+        public Output<string> TrafficType { get; private set; } = null!;
 
         /// <summary>
         /// The zone identifier to target for the resource.
@@ -186,7 +186,7 @@ namespace Pulumi.Cloudflare
     public sealed class SpectrumApplicationArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Enables Argo Smart Routing. Defaults to `false`.
+        /// Enables Argo Smart Routing.
         /// </summary>
         [Input("argoSmartRouting")]
         public Input<bool>? ArgoSmartRouting { get; set; }
@@ -204,7 +204,7 @@ namespace Pulumi.Cloudflare
         public Input<Inputs.SpectrumApplicationEdgeIpsArgs>? EdgeIps { get; set; }
 
         /// <summary>
-        /// Enables the IP Firewall for this application. Defaults to `true`.
+        /// Enables the IP Firewall for this application.
         /// </summary>
         [Input("ipFirewall")]
         public Input<bool>? IpFirewall { get; set; }
@@ -246,19 +246,19 @@ namespace Pulumi.Cloudflare
         public Input<string> Protocol { get; set; } = null!;
 
         /// <summary>
-        /// Enables a proxy protocol to the origin. Available values: `off`, `v1`, `v2`, `simple`. Defaults to `off`.
+        /// Enables a proxy protocol to the origin. Available values: `off`, `v1`, `v2`, `simple`.
         /// </summary>
         [Input("proxyProtocol")]
         public Input<string>? ProxyProtocol { get; set; }
 
         /// <summary>
-        /// TLS configuration option for Cloudflare to connect to your origin. Available values: `off`, `flexible`, `full`, `strict`. Defaults to `off`.
+        /// TLS configuration option for Cloudflare to connect to your origin. Available values: `off`, `flexible`, `full`, `strict`.
         /// </summary>
         [Input("tls")]
         public Input<string>? Tls { get; set; }
 
         /// <summary>
-        /// Sets application type. Available values: `direct`, `http`, `https`. Defaults to `direct`.
+        /// Sets application type. Available values: `direct`, `http`, `https`.
         /// </summary>
         [Input("trafficType")]
         public Input<string>? TrafficType { get; set; }
@@ -278,7 +278,7 @@ namespace Pulumi.Cloudflare
     public sealed class SpectrumApplicationState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Enables Argo Smart Routing. Defaults to `false`.
+        /// Enables Argo Smart Routing.
         /// </summary>
         [Input("argoSmartRouting")]
         public Input<bool>? ArgoSmartRouting { get; set; }
@@ -296,7 +296,7 @@ namespace Pulumi.Cloudflare
         public Input<Inputs.SpectrumApplicationEdgeIpsGetArgs>? EdgeIps { get; set; }
 
         /// <summary>
-        /// Enables the IP Firewall for this application. Defaults to `true`.
+        /// Enables the IP Firewall for this application.
         /// </summary>
         [Input("ipFirewall")]
         public Input<bool>? IpFirewall { get; set; }
@@ -338,19 +338,19 @@ namespace Pulumi.Cloudflare
         public Input<string>? Protocol { get; set; }
 
         /// <summary>
-        /// Enables a proxy protocol to the origin. Available values: `off`, `v1`, `v2`, `simple`. Defaults to `off`.
+        /// Enables a proxy protocol to the origin. Available values: `off`, `v1`, `v2`, `simple`.
         /// </summary>
         [Input("proxyProtocol")]
         public Input<string>? ProxyProtocol { get; set; }
 
         /// <summary>
-        /// TLS configuration option for Cloudflare to connect to your origin. Available values: `off`, `flexible`, `full`, `strict`. Defaults to `off`.
+        /// TLS configuration option for Cloudflare to connect to your origin. Available values: `off`, `flexible`, `full`, `strict`.
         /// </summary>
         [Input("tls")]
         public Input<string>? Tls { get; set; }
 
         /// <summary>
-        /// Sets application type. Available values: `direct`, `http`, `https`. Defaults to `direct`.
+        /// Sets application type. Available values: `direct`, `http`, `https`.
         /// </summary>
         [Input("trafficType")]
         public Input<string>? TrafficType { get; set; }
