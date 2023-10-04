@@ -233,22 +233,22 @@ class AuthenticatedOriginPulls(pulumi.CustomResource):
 
         ## Import
 
-        Authenticated Origin Pull configuration
+        global
 
         ```sh
-         $ pulumi import cloudflare:index/authenticatedOriginPulls:AuthenticatedOriginPulls my_aop <zone_id>//
+         $ pulumi import cloudflare:index/authenticatedOriginPulls:AuthenticatedOriginPulls example <zone_id>
         ```
 
-         Per-Zone Authenticated Origin Pull configuration
+         per zone
 
         ```sh
-         $ pulumi import cloudflare:index/authenticatedOriginPulls:AuthenticatedOriginPulls my_per_zone_aop <zone_id>/<certificate_id>/
+         $ pulumi import cloudflare:index/authenticatedOriginPulls:AuthenticatedOriginPulls example <zone_id>/<certificate_id>
         ```
 
-         Per-Hostname Authenticated Origin Pull configuration
+         per hostname
 
         ```sh
-         $ pulumi import cloudflare:index/authenticatedOriginPulls:AuthenticatedOriginPulls my_per_hostname_aop <zone_id>/<certificate_id>/<hostname>
+         $ pulumi import cloudflare:index/authenticatedOriginPulls:AuthenticatedOriginPulls example <zone_id>/<certificate_id>/<hostname>
         ```
 
         :param str resource_name: The name of the resource.
@@ -304,22 +304,22 @@ class AuthenticatedOriginPulls(pulumi.CustomResource):
 
         ## Import
 
-        Authenticated Origin Pull configuration
+        global
 
         ```sh
-         $ pulumi import cloudflare:index/authenticatedOriginPulls:AuthenticatedOriginPulls my_aop <zone_id>//
+         $ pulumi import cloudflare:index/authenticatedOriginPulls:AuthenticatedOriginPulls example <zone_id>
         ```
 
-         Per-Zone Authenticated Origin Pull configuration
+         per zone
 
         ```sh
-         $ pulumi import cloudflare:index/authenticatedOriginPulls:AuthenticatedOriginPulls my_per_zone_aop <zone_id>/<certificate_id>/
+         $ pulumi import cloudflare:index/authenticatedOriginPulls:AuthenticatedOriginPulls example <zone_id>/<certificate_id>
         ```
 
-         Per-Hostname Authenticated Origin Pull configuration
+         per hostname
 
         ```sh
-         $ pulumi import cloudflare:index/authenticatedOriginPulls:AuthenticatedOriginPulls my_per_hostname_aop <zone_id>/<certificate_id>/<hostname>
+         $ pulumi import cloudflare:index/authenticatedOriginPulls:AuthenticatedOriginPulls example <zone_id>/<certificate_id>/<hostname>
         ```
 
         :param str resource_name: The name of the resource.

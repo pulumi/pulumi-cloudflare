@@ -48,7 +48,7 @@ namespace Pulumi.Cloudflare
     /// ## Import
     /// 
     /// ```sh
-    ///  $ pulumi import cloudflare:index/authenticatedOriginPullsCertificate:AuthenticatedOriginPullsCertificate 2458ce5a-0c35-4c7f-82c7-8e9487d3ff60 &lt;zone_id&gt;/&lt;certificate_type&gt;/&lt;certificate_id&gt;
+    ///  $ pulumi import cloudflare:index/authenticatedOriginPullsCertificate:AuthenticatedOriginPullsCertificate example &lt;zone_id&gt;/&lt;certificate_type&gt;/&lt;certificate_id&gt;
     /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/authenticatedOriginPullsCertificate:AuthenticatedOriginPullsCertificate")]

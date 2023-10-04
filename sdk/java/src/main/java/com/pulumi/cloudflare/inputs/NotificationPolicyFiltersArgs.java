@@ -17,6 +17,21 @@ public final class NotificationPolicyFiltersArgs extends com.pulumi.resources.Re
     public static final NotificationPolicyFiltersArgs Empty = new NotificationPolicyFiltersArgs();
 
     /**
+     * Targeted actions for alert.
+     * 
+     */
+    @Import(name="actions")
+    private @Nullable Output<List<String>> actions;
+
+    /**
+     * @return Targeted actions for alert.
+     * 
+     */
+    public Optional<Output<List<String>>> actions() {
+        return Optional.ofNullable(this.actions);
+    }
+
+    /**
      * Alert trigger preferences. Example: `slo`.
      * 
      */
@@ -104,6 +119,21 @@ public final class NotificationPolicyFiltersArgs extends com.pulumi.resources.Re
      */
     public Optional<Output<List<String>>> events() {
         return Optional.ofNullable(this.events);
+    }
+
+    /**
+     * Alert grouping.
+     * 
+     */
+    @Import(name="groupBies")
+    private @Nullable Output<List<String>> groupBies;
+
+    /**
+     * @return Alert grouping.
+     * 
+     */
+    public Optional<Output<List<String>>> groupBies() {
+        return Optional.ofNullable(this.groupBies);
     }
 
     /**
@@ -339,6 +369,21 @@ public final class NotificationPolicyFiltersArgs extends com.pulumi.resources.Re
     }
 
     /**
+     * Filter for alert.
+     * 
+     */
+    @Import(name="wheres")
+    private @Nullable Output<List<String>> wheres;
+
+    /**
+     * @return Filter for alert.
+     * 
+     */
+    public Optional<Output<List<String>>> wheres() {
+        return Optional.ofNullable(this.wheres);
+    }
+
+    /**
      * A list of zone identifiers.
      * 
      */
@@ -356,12 +401,14 @@ public final class NotificationPolicyFiltersArgs extends com.pulumi.resources.Re
     private NotificationPolicyFiltersArgs() {}
 
     private NotificationPolicyFiltersArgs(NotificationPolicyFiltersArgs $) {
+        this.actions = $.actions;
         this.alertTriggerPreferences = $.alertTriggerPreferences;
         this.enableds = $.enableds;
         this.environments = $.environments;
         this.eventSources = $.eventSources;
         this.eventTypes = $.eventTypes;
         this.events = $.events;
+        this.groupBies = $.groupBies;
         this.healthCheckIds = $.healthCheckIds;
         this.inputIds = $.inputIds;
         this.limits = $.limits;
@@ -378,6 +425,7 @@ public final class NotificationPolicyFiltersArgs extends com.pulumi.resources.Re
         this.statuses = $.statuses;
         this.targetHostnames = $.targetHostnames;
         this.targetZoneNames = $.targetZoneNames;
+        this.wheres = $.wheres;
         this.zones = $.zones;
     }
 
@@ -397,6 +445,37 @@ public final class NotificationPolicyFiltersArgs extends com.pulumi.resources.Re
 
         public Builder(NotificationPolicyFiltersArgs defaults) {
             $ = new NotificationPolicyFiltersArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param actions Targeted actions for alert.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder actions(@Nullable Output<List<String>> actions) {
+            $.actions = actions;
+            return this;
+        }
+
+        /**
+         * @param actions Targeted actions for alert.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder actions(List<String> actions) {
+            return actions(Output.of(actions));
+        }
+
+        /**
+         * @param actions Targeted actions for alert.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder actions(String... actions) {
+            return actions(List.of(actions));
         }
 
         /**
@@ -583,6 +662,37 @@ public final class NotificationPolicyFiltersArgs extends com.pulumi.resources.Re
          */
         public Builder events(String... events) {
             return events(List.of(events));
+        }
+
+        /**
+         * @param groupBies Alert grouping.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder groupBies(@Nullable Output<List<String>> groupBies) {
+            $.groupBies = groupBies;
+            return this;
+        }
+
+        /**
+         * @param groupBies Alert grouping.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder groupBies(List<String> groupBies) {
+            return groupBies(Output.of(groupBies));
+        }
+
+        /**
+         * @param groupBies Alert grouping.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder groupBies(String... groupBies) {
+            return groupBies(List.of(groupBies));
         }
 
         /**
@@ -1061,6 +1171,37 @@ public final class NotificationPolicyFiltersArgs extends com.pulumi.resources.Re
          */
         public Builder targetZoneNames(String... targetZoneNames) {
             return targetZoneNames(List.of(targetZoneNames));
+        }
+
+        /**
+         * @param wheres Filter for alert.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder wheres(@Nullable Output<List<String>> wheres) {
+            $.wheres = wheres;
+            return this;
+        }
+
+        /**
+         * @param wheres Filter for alert.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder wheres(List<String> wheres) {
+            return wheres(Output.of(wheres));
+        }
+
+        /**
+         * @param wheres Filter for alert.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder wheres(String... wheres) {
+            return wheres(List.of(wheres));
         }
 
         /**

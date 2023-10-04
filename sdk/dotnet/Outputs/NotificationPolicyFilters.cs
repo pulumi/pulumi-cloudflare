@@ -14,6 +14,10 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class NotificationPolicyFilters
     {
         /// <summary>
+        /// Targeted actions for alert.
+        /// </summary>
+        public readonly ImmutableArray<string> Actions;
+        /// <summary>
         /// Alert trigger preferences. Example: `slo`.
         /// </summary>
         public readonly ImmutableArray<string> AlertTriggerPreferences;
@@ -37,6 +41,10 @@ namespace Pulumi.Cloudflare.Outputs
         /// Pages event to alert. Available values: `EVENT_DEPLOYMENT_STARTED`, `EVENT_DEPLOYMENT_FAILED`, `EVENT_DEPLOYMENT_SUCCESS`.
         /// </summary>
         public readonly ImmutableArray<string> Events;
+        /// <summary>
+        /// Alert grouping.
+        /// </summary>
+        public readonly ImmutableArray<string> GroupBies;
         /// <summary>
         /// Identifier health check. Required when using `filters.0.status`.
         /// </summary>
@@ -99,12 +107,18 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly ImmutableArray<string> TargetZoneNames;
         /// <summary>
+        /// Filter for alert.
+        /// </summary>
+        public readonly ImmutableArray<string> Wheres;
+        /// <summary>
         /// A list of zone identifiers.
         /// </summary>
         public readonly ImmutableArray<string> Zones;
 
         [OutputConstructor]
         private NotificationPolicyFilters(
+            ImmutableArray<string> actions,
+
             ImmutableArray<string> alertTriggerPreferences,
 
             ImmutableArray<string> enableds,
@@ -116,6 +130,8 @@ namespace Pulumi.Cloudflare.Outputs
             ImmutableArray<string> eventTypes,
 
             ImmutableArray<string> events,
+
+            ImmutableArray<string> groupBies,
 
             ImmutableArray<string> healthCheckIds,
 
@@ -149,14 +165,18 @@ namespace Pulumi.Cloudflare.Outputs
 
             ImmutableArray<string> targetZoneNames,
 
+            ImmutableArray<string> wheres,
+
             ImmutableArray<string> zones)
         {
+            Actions = actions;
             AlertTriggerPreferences = alertTriggerPreferences;
             Enableds = enableds;
             Environments = environments;
             EventSources = eventSources;
             EventTypes = eventTypes;
             Events = events;
+            GroupBies = groupBies;
             HealthCheckIds = healthCheckIds;
             InputIds = inputIds;
             Limits = limits;
@@ -173,6 +193,7 @@ namespace Pulumi.Cloudflare.Outputs
             Statuses = statuses;
             TargetHostnames = targetHostnames;
             TargetZoneNames = targetZoneNames;
+            Wheres = wheres;
             Zones = zones;
         }
     }

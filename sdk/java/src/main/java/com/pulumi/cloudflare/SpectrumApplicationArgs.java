@@ -23,14 +23,14 @@ public final class SpectrumApplicationArgs extends com.pulumi.resources.Resource
     public static final SpectrumApplicationArgs Empty = new SpectrumApplicationArgs();
 
     /**
-     * Enables Argo Smart Routing. Defaults to `false`.
+     * Enables Argo Smart Routing.
      * 
      */
     @Import(name="argoSmartRouting")
     private @Nullable Output<Boolean> argoSmartRouting;
 
     /**
-     * @return Enables Argo Smart Routing. Defaults to `false`.
+     * @return Enables Argo Smart Routing.
      * 
      */
     public Optional<Output<Boolean>> argoSmartRouting() {
@@ -68,14 +68,14 @@ public final class SpectrumApplicationArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * Enables the IP Firewall for this application. Defaults to `true`.
+     * Enables the IP Firewall for this application.
      * 
      */
     @Import(name="ipFirewall")
     private @Nullable Output<Boolean> ipFirewall;
 
     /**
-     * @return Enables the IP Firewall for this application. Defaults to `true`.
+     * @return Enables the IP Firewall for this application.
      * 
      */
     public Optional<Output<Boolean>> ipFirewall() {
@@ -158,14 +158,14 @@ public final class SpectrumApplicationArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * Enables a proxy protocol to the origin. Available values: `off`, `v1`, `v2`, `simple`. Defaults to `off`.
+     * Enables a proxy protocol to the origin. Available values: `off`, `v1`, `v2`, `simple`.
      * 
      */
     @Import(name="proxyProtocol")
     private @Nullable Output<String> proxyProtocol;
 
     /**
-     * @return Enables a proxy protocol to the origin. Available values: `off`, `v1`, `v2`, `simple`. Defaults to `off`.
+     * @return Enables a proxy protocol to the origin. Available values: `off`, `v1`, `v2`, `simple`.
      * 
      */
     public Optional<Output<String>> proxyProtocol() {
@@ -173,14 +173,14 @@ public final class SpectrumApplicationArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * TLS configuration option for Cloudflare to connect to your origin. Available values: `off`, `flexible`, `full`, `strict`. Defaults to `off`.
+     * TLS configuration option for Cloudflare to connect to your origin. Available values: `off`, `flexible`, `full`, `strict`.
      * 
      */
     @Import(name="tls")
     private @Nullable Output<String> tls;
 
     /**
-     * @return TLS configuration option for Cloudflare to connect to your origin. Available values: `off`, `flexible`, `full`, `strict`. Defaults to `off`.
+     * @return TLS configuration option for Cloudflare to connect to your origin. Available values: `off`, `flexible`, `full`, `strict`.
      * 
      */
     public Optional<Output<String>> tls() {
@@ -188,14 +188,14 @@ public final class SpectrumApplicationArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * Sets application type. Available values: `direct`, `http`, `https`. Defaults to `direct`.
+     * Sets application type. Available values: `direct`, `http`, `https`.
      * 
      */
     @Import(name="trafficType")
     private @Nullable Output<String> trafficType;
 
     /**
-     * @return Sets application type. Available values: `direct`, `http`, `https`. Defaults to `direct`.
+     * @return Sets application type. Available values: `direct`, `http`, `https`.
      * 
      */
     public Optional<Output<String>> trafficType() {
@@ -254,7 +254,7 @@ public final class SpectrumApplicationArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param argoSmartRouting Enables Argo Smart Routing. Defaults to `false`.
+         * @param argoSmartRouting Enables Argo Smart Routing.
          * 
          * @return builder
          * 
@@ -265,7 +265,7 @@ public final class SpectrumApplicationArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param argoSmartRouting Enables Argo Smart Routing. Defaults to `false`.
+         * @param argoSmartRouting Enables Argo Smart Routing.
          * 
          * @return builder
          * 
@@ -317,7 +317,7 @@ public final class SpectrumApplicationArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param ipFirewall Enables the IP Firewall for this application. Defaults to `true`.
+         * @param ipFirewall Enables the IP Firewall for this application.
          * 
          * @return builder
          * 
@@ -328,7 +328,7 @@ public final class SpectrumApplicationArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param ipFirewall Enables the IP Firewall for this application. Defaults to `true`.
+         * @param ipFirewall Enables the IP Firewall for this application.
          * 
          * @return builder
          * 
@@ -453,7 +453,7 @@ public final class SpectrumApplicationArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param proxyProtocol Enables a proxy protocol to the origin. Available values: `off`, `v1`, `v2`, `simple`. Defaults to `off`.
+         * @param proxyProtocol Enables a proxy protocol to the origin. Available values: `off`, `v1`, `v2`, `simple`.
          * 
          * @return builder
          * 
@@ -464,7 +464,7 @@ public final class SpectrumApplicationArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param proxyProtocol Enables a proxy protocol to the origin. Available values: `off`, `v1`, `v2`, `simple`. Defaults to `off`.
+         * @param proxyProtocol Enables a proxy protocol to the origin. Available values: `off`, `v1`, `v2`, `simple`.
          * 
          * @return builder
          * 
@@ -474,7 +474,7 @@ public final class SpectrumApplicationArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param tls TLS configuration option for Cloudflare to connect to your origin. Available values: `off`, `flexible`, `full`, `strict`. Defaults to `off`.
+         * @param tls TLS configuration option for Cloudflare to connect to your origin. Available values: `off`, `flexible`, `full`, `strict`.
          * 
          * @return builder
          * 
@@ -485,7 +485,7 @@ public final class SpectrumApplicationArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param tls TLS configuration option for Cloudflare to connect to your origin. Available values: `off`, `flexible`, `full`, `strict`. Defaults to `off`.
+         * @param tls TLS configuration option for Cloudflare to connect to your origin. Available values: `off`, `flexible`, `full`, `strict`.
          * 
          * @return builder
          * 
@@ -495,7 +495,7 @@ public final class SpectrumApplicationArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param trafficType Sets application type. Available values: `direct`, `http`, `https`. Defaults to `direct`.
+         * @param trafficType Sets application type. Available values: `direct`, `http`, `https`.
          * 
          * @return builder
          * 
@@ -506,7 +506,7 @@ public final class SpectrumApplicationArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param trafficType Sets application type. Available values: `direct`, `http`, `https`. Defaults to `direct`.
+         * @param trafficType Sets application type. Available values: `direct`, `http`, `https`.
          * 
          * @return builder
          * 

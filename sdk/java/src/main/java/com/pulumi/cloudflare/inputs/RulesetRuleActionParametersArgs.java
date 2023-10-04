@@ -416,9 +416,17 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
         return Optional.ofNullable(this.origin);
     }
 
+    /**
+     * Enable or disable the use of a more compliant Cache Control parsing mechanism, enabled by default for most zones.
+     * 
+     */
     @Import(name="originCacheControl")
     private @Nullable Output<Boolean> originCacheControl;
 
+    /**
+     * @return Enable or disable the use of a more compliant Cache Control parsing mechanism, enabled by default for most zones.
+     * 
+     */
     public Optional<Output<Boolean>> originCacheControl() {
         return Optional.ofNullable(this.originCacheControl);
     }
@@ -498,9 +506,17 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
         return Optional.ofNullable(this.products);
     }
 
+    /**
+     * Specifies a maximum timeout for reading content from an origin server.
+     * 
+     */
     @Import(name="readTimeout")
     private @Nullable Output<Integer> readTimeout;
 
+    /**
+     * @return Specifies a maximum timeout for reading content from an origin server.
+     * 
+     */
     public Optional<Output<Integer>> readTimeout() {
         return Optional.ofNullable(this.readTimeout);
     }
@@ -1407,11 +1423,23 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
             return origin(Output.of(origin));
         }
 
+        /**
+         * @param originCacheControl Enable or disable the use of a more compliant Cache Control parsing mechanism, enabled by default for most zones.
+         * 
+         * @return builder
+         * 
+         */
         public Builder originCacheControl(@Nullable Output<Boolean> originCacheControl) {
             $.originCacheControl = originCacheControl;
             return this;
         }
 
+        /**
+         * @param originCacheControl Enable or disable the use of a more compliant Cache Control parsing mechanism, enabled by default for most zones.
+         * 
+         * @return builder
+         * 
+         */
         public Builder originCacheControl(Boolean originCacheControl) {
             return originCacheControl(Output.of(originCacheControl));
         }
@@ -1541,11 +1569,23 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
             return products(List.of(products));
         }
 
+        /**
+         * @param readTimeout Specifies a maximum timeout for reading content from an origin server.
+         * 
+         * @return builder
+         * 
+         */
         public Builder readTimeout(@Nullable Output<Integer> readTimeout) {
             $.readTimeout = readTimeout;
             return this;
         }
 
+        /**
+         * @param readTimeout Specifies a maximum timeout for reading content from an origin server.
+         * 
+         * @return builder
+         * 
+         */
         public Builder readTimeout(Integer readTimeout) {
             return readTimeout(Output.of(readTimeout));
         }

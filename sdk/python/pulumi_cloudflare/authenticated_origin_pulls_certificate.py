@@ -327,7 +327,7 @@ class AuthenticatedOriginPullsCertificate(pulumi.CustomResource):
         ## Import
 
         ```sh
-         $ pulumi import cloudflare:index/authenticatedOriginPullsCertificate:AuthenticatedOriginPullsCertificate 2458ce5a-0c35-4c7f-82c7-8e9487d3ff60 <zone_id>/<certificate_type>/<certificate_id>
+         $ pulumi import cloudflare:index/authenticatedOriginPullsCertificate:AuthenticatedOriginPullsCertificate example <zone_id>/<certificate_type>/<certificate_id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -371,7 +371,7 @@ class AuthenticatedOriginPullsCertificate(pulumi.CustomResource):
         ## Import
 
         ```sh
-         $ pulumi import cloudflare:index/authenticatedOriginPullsCertificate:AuthenticatedOriginPullsCertificate 2458ce5a-0c35-4c7f-82c7-8e9487d3ff60 <zone_id>/<certificate_type>/<certificate_id>
+         $ pulumi import cloudflare:index/authenticatedOriginPullsCertificate:AuthenticatedOriginPullsCertificate example <zone_id>/<certificate_type>/<certificate_id>
         ```
 
         :param str resource_name: The name of the resource.

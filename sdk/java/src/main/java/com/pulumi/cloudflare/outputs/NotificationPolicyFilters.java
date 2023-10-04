@@ -12,6 +12,11 @@ import javax.annotation.Nullable;
 @CustomType
 public final class NotificationPolicyFilters {
     /**
+     * @return Targeted actions for alert.
+     * 
+     */
+    private @Nullable List<String> actions;
+    /**
      * @return Alert trigger preferences. Example: `slo`.
      * 
      */
@@ -41,6 +46,11 @@ public final class NotificationPolicyFilters {
      * 
      */
     private @Nullable List<String> events;
+    /**
+     * @return Alert grouping.
+     * 
+     */
+    private @Nullable List<String> groupBies;
     /**
      * @return Identifier health check. Required when using `filters.0.status`.
      * 
@@ -118,12 +128,24 @@ public final class NotificationPolicyFilters {
      */
     private @Nullable List<String> targetZoneNames;
     /**
+     * @return Filter for alert.
+     * 
+     */
+    private @Nullable List<String> wheres;
+    /**
      * @return A list of zone identifiers.
      * 
      */
     private @Nullable List<String> zones;
 
     private NotificationPolicyFilters() {}
+    /**
+     * @return Targeted actions for alert.
+     * 
+     */
+    public List<String> actions() {
+        return this.actions == null ? List.of() : this.actions;
+    }
     /**
      * @return Alert trigger preferences. Example: `slo`.
      * 
@@ -165,6 +187,13 @@ public final class NotificationPolicyFilters {
      */
     public List<String> events() {
         return this.events == null ? List.of() : this.events;
+    }
+    /**
+     * @return Alert grouping.
+     * 
+     */
+    public List<String> groupBies() {
+        return this.groupBies == null ? List.of() : this.groupBies;
     }
     /**
      * @return Identifier health check. Required when using `filters.0.status`.
@@ -275,6 +304,13 @@ public final class NotificationPolicyFilters {
         return this.targetZoneNames == null ? List.of() : this.targetZoneNames;
     }
     /**
+     * @return Filter for alert.
+     * 
+     */
+    public List<String> wheres() {
+        return this.wheres == null ? List.of() : this.wheres;
+    }
+    /**
      * @return A list of zone identifiers.
      * 
      */
@@ -291,12 +327,14 @@ public final class NotificationPolicyFilters {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable List<String> actions;
         private @Nullable List<String> alertTriggerPreferences;
         private @Nullable List<String> enableds;
         private @Nullable List<String> environments;
         private @Nullable List<String> eventSources;
         private @Nullable List<String> eventTypes;
         private @Nullable List<String> events;
+        private @Nullable List<String> groupBies;
         private @Nullable List<String> healthCheckIds;
         private @Nullable List<String> inputIds;
         private @Nullable List<String> limits;
@@ -313,16 +351,19 @@ public final class NotificationPolicyFilters {
         private @Nullable List<String> statuses;
         private @Nullable List<String> targetHostnames;
         private @Nullable List<String> targetZoneNames;
+        private @Nullable List<String> wheres;
         private @Nullable List<String> zones;
         public Builder() {}
         public Builder(NotificationPolicyFilters defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.actions = defaults.actions;
     	      this.alertTriggerPreferences = defaults.alertTriggerPreferences;
     	      this.enableds = defaults.enableds;
     	      this.environments = defaults.environments;
     	      this.eventSources = defaults.eventSources;
     	      this.eventTypes = defaults.eventTypes;
     	      this.events = defaults.events;
+    	      this.groupBies = defaults.groupBies;
     	      this.healthCheckIds = defaults.healthCheckIds;
     	      this.inputIds = defaults.inputIds;
     	      this.limits = defaults.limits;
@@ -339,9 +380,18 @@ public final class NotificationPolicyFilters {
     	      this.statuses = defaults.statuses;
     	      this.targetHostnames = defaults.targetHostnames;
     	      this.targetZoneNames = defaults.targetZoneNames;
+    	      this.wheres = defaults.wheres;
     	      this.zones = defaults.zones;
         }
 
+        @CustomType.Setter
+        public Builder actions(@Nullable List<String> actions) {
+            this.actions = actions;
+            return this;
+        }
+        public Builder actions(String... actions) {
+            return actions(List.of(actions));
+        }
         @CustomType.Setter
         public Builder alertTriggerPreferences(@Nullable List<String> alertTriggerPreferences) {
             this.alertTriggerPreferences = alertTriggerPreferences;
@@ -389,6 +439,14 @@ public final class NotificationPolicyFilters {
         }
         public Builder events(String... events) {
             return events(List.of(events));
+        }
+        @CustomType.Setter
+        public Builder groupBies(@Nullable List<String> groupBies) {
+            this.groupBies = groupBies;
+            return this;
+        }
+        public Builder groupBies(String... groupBies) {
+            return groupBies(List.of(groupBies));
         }
         @CustomType.Setter
         public Builder healthCheckIds(@Nullable List<String> healthCheckIds) {
@@ -519,6 +577,14 @@ public final class NotificationPolicyFilters {
             return targetZoneNames(List.of(targetZoneNames));
         }
         @CustomType.Setter
+        public Builder wheres(@Nullable List<String> wheres) {
+            this.wheres = wheres;
+            return this;
+        }
+        public Builder wheres(String... wheres) {
+            return wheres(List.of(wheres));
+        }
+        @CustomType.Setter
         public Builder zones(@Nullable List<String> zones) {
             this.zones = zones;
             return this;
@@ -528,12 +594,14 @@ public final class NotificationPolicyFilters {
         }
         public NotificationPolicyFilters build() {
             final var o = new NotificationPolicyFilters();
+            o.actions = actions;
             o.alertTriggerPreferences = alertTriggerPreferences;
             o.enableds = enableds;
             o.environments = environments;
             o.eventSources = eventSources;
             o.eventTypes = eventTypes;
             o.events = events;
+            o.groupBies = groupBies;
             o.healthCheckIds = healthCheckIds;
             o.inputIds = inputIds;
             o.limits = limits;
@@ -550,6 +618,7 @@ public final class NotificationPolicyFilters {
             o.statuses = statuses;
             o.targetHostnames = targetHostnames;
             o.targetZoneNames = targetZoneNames;
+            o.wheres = wheres;
             o.zones = zones;
             return o;
         }

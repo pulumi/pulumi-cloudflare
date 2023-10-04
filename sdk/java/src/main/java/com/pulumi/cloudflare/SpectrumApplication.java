@@ -81,18 +81,18 @@ import javax.annotation.Nullable;
 @ResourceType(type="cloudflare:index/spectrumApplication:SpectrumApplication")
 public class SpectrumApplication extends com.pulumi.resources.CustomResource {
     /**
-     * Enables Argo Smart Routing. Defaults to `false`.
+     * Enables Argo Smart Routing.
      * 
      */
     @Export(name="argoSmartRouting", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> argoSmartRouting;
+    private Output<Boolean> argoSmartRouting;
 
     /**
-     * @return Enables Argo Smart Routing. Defaults to `false`.
+     * @return Enables Argo Smart Routing.
      * 
      */
-    public Output<Optional<Boolean>> argoSmartRouting() {
-        return Codegen.optional(this.argoSmartRouting);
+    public Output<Boolean> argoSmartRouting() {
+        return this.argoSmartRouting;
     }
     /**
      * The name and type of DNS record for the Spectrum application.
@@ -113,28 +113,28 @@ public class SpectrumApplication extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="edgeIps", refs={SpectrumApplicationEdgeIps.class}, tree="[0]")
-    private Output</* @Nullable */ SpectrumApplicationEdgeIps> edgeIps;
+    private Output<SpectrumApplicationEdgeIps> edgeIps;
 
     /**
      * @return The anycast edge IP configuration for the hostname of this application.
      * 
      */
-    public Output<Optional<SpectrumApplicationEdgeIps>> edgeIps() {
-        return Codegen.optional(this.edgeIps);
+    public Output<SpectrumApplicationEdgeIps> edgeIps() {
+        return this.edgeIps;
     }
     /**
-     * Enables the IP Firewall for this application. Defaults to `true`.
+     * Enables the IP Firewall for this application.
      * 
      */
     @Export(name="ipFirewall", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> ipFirewall;
+    private Output<Boolean> ipFirewall;
 
     /**
-     * @return Enables the IP Firewall for this application. Defaults to `true`.
+     * @return Enables the IP Firewall for this application.
      * 
      */
-    public Output<Optional<Boolean>> ipFirewall() {
-        return Codegen.optional(this.ipFirewall);
+    public Output<Boolean> ipFirewall() {
+        return this.ipFirewall;
     }
     /**
      * A list of destination addresses to the origin. e.g. `tcp://192.0.2.1:22`.
@@ -207,46 +207,46 @@ public class SpectrumApplication extends com.pulumi.resources.CustomResource {
         return this.protocol;
     }
     /**
-     * Enables a proxy protocol to the origin. Available values: `off`, `v1`, `v2`, `simple`. Defaults to `off`.
+     * Enables a proxy protocol to the origin. Available values: `off`, `v1`, `v2`, `simple`.
      * 
      */
     @Export(name="proxyProtocol", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> proxyProtocol;
+    private Output<String> proxyProtocol;
 
     /**
-     * @return Enables a proxy protocol to the origin. Available values: `off`, `v1`, `v2`, `simple`. Defaults to `off`.
+     * @return Enables a proxy protocol to the origin. Available values: `off`, `v1`, `v2`, `simple`.
      * 
      */
-    public Output<Optional<String>> proxyProtocol() {
-        return Codegen.optional(this.proxyProtocol);
+    public Output<String> proxyProtocol() {
+        return this.proxyProtocol;
     }
     /**
-     * TLS configuration option for Cloudflare to connect to your origin. Available values: `off`, `flexible`, `full`, `strict`. Defaults to `off`.
+     * TLS configuration option for Cloudflare to connect to your origin. Available values: `off`, `flexible`, `full`, `strict`.
      * 
      */
     @Export(name="tls", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> tls;
+    private Output<String> tls;
 
     /**
-     * @return TLS configuration option for Cloudflare to connect to your origin. Available values: `off`, `flexible`, `full`, `strict`. Defaults to `off`.
+     * @return TLS configuration option for Cloudflare to connect to your origin. Available values: `off`, `flexible`, `full`, `strict`.
      * 
      */
-    public Output<Optional<String>> tls() {
-        return Codegen.optional(this.tls);
+    public Output<String> tls() {
+        return this.tls;
     }
     /**
-     * Sets application type. Available values: `direct`, `http`, `https`. Defaults to `direct`.
+     * Sets application type. Available values: `direct`, `http`, `https`.
      * 
      */
     @Export(name="trafficType", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> trafficType;
+    private Output<String> trafficType;
 
     /**
-     * @return Sets application type. Available values: `direct`, `http`, `https`. Defaults to `direct`.
+     * @return Sets application type. Available values: `direct`, `http`, `https`.
      * 
      */
-    public Output<Optional<String>> trafficType() {
-        return Codegen.optional(this.trafficType);
+    public Output<String> trafficType() {
+        return this.trafficType;
     }
     /**
      * The zone identifier to target for the resource.

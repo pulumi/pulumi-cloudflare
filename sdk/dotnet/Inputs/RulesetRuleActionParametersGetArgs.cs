@@ -189,6 +189,9 @@ namespace Pulumi.Cloudflare.Inputs
         [Input("origin")]
         public Input<Inputs.RulesetRuleActionParametersOriginGetArgs>? Origin { get; set; }
 
+        /// <summary>
+        /// Enable or disable the use of a more compliant Cache Control parsing mechanism, enabled by default for most zones.
+        /// </summary>
         [Input("originCacheControl")]
         public Input<bool>? OriginCacheControl { get; set; }
 
@@ -234,6 +237,9 @@ namespace Pulumi.Cloudflare.Inputs
             set => _products = value;
         }
 
+        /// <summary>
+        /// Specifies a maximum timeout for reading content from an origin server.
+        /// </summary>
         [Input("readTimeout")]
         public Input<int>? ReadTimeout { get; set; }
 

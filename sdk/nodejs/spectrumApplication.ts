@@ -71,9 +71,9 @@ export class SpectrumApplication extends pulumi.CustomResource {
     }
 
     /**
-     * Enables Argo Smart Routing. Defaults to `false`.
+     * Enables Argo Smart Routing.
      */
-    public readonly argoSmartRouting!: pulumi.Output<boolean | undefined>;
+    public readonly argoSmartRouting!: pulumi.Output<boolean>;
     /**
      * The name and type of DNS record for the Spectrum application.
      */
@@ -81,11 +81,11 @@ export class SpectrumApplication extends pulumi.CustomResource {
     /**
      * The anycast edge IP configuration for the hostname of this application.
      */
-    public readonly edgeIps!: pulumi.Output<outputs.SpectrumApplicationEdgeIps | undefined>;
+    public readonly edgeIps!: pulumi.Output<outputs.SpectrumApplicationEdgeIps>;
     /**
-     * Enables the IP Firewall for this application. Defaults to `true`.
+     * Enables the IP Firewall for this application.
      */
-    public readonly ipFirewall!: pulumi.Output<boolean | undefined>;
+    public readonly ipFirewall!: pulumi.Output<boolean>;
     /**
      * A list of destination addresses to the origin. e.g. `tcp://192.0.2.1:22`.
      */
@@ -107,17 +107,17 @@ export class SpectrumApplication extends pulumi.CustomResource {
      */
     public readonly protocol!: pulumi.Output<string>;
     /**
-     * Enables a proxy protocol to the origin. Available values: `off`, `v1`, `v2`, `simple`. Defaults to `off`.
+     * Enables a proxy protocol to the origin. Available values: `off`, `v1`, `v2`, `simple`.
      */
-    public readonly proxyProtocol!: pulumi.Output<string | undefined>;
+    public readonly proxyProtocol!: pulumi.Output<string>;
     /**
-     * TLS configuration option for Cloudflare to connect to your origin. Available values: `off`, `flexible`, `full`, `strict`. Defaults to `off`.
+     * TLS configuration option for Cloudflare to connect to your origin. Available values: `off`, `flexible`, `full`, `strict`.
      */
-    public readonly tls!: pulumi.Output<string | undefined>;
+    public readonly tls!: pulumi.Output<string>;
     /**
-     * Sets application type. Available values: `direct`, `http`, `https`. Defaults to `direct`.
+     * Sets application type. Available values: `direct`, `http`, `https`.
      */
-    public readonly trafficType!: pulumi.Output<string | undefined>;
+    public readonly trafficType!: pulumi.Output<string>;
     /**
      * The zone identifier to target for the resource.
      */
@@ -184,7 +184,7 @@ export class SpectrumApplication extends pulumi.CustomResource {
  */
 export interface SpectrumApplicationState {
     /**
-     * Enables Argo Smart Routing. Defaults to `false`.
+     * Enables Argo Smart Routing.
      */
     argoSmartRouting?: pulumi.Input<boolean>;
     /**
@@ -196,7 +196,7 @@ export interface SpectrumApplicationState {
      */
     edgeIps?: pulumi.Input<inputs.SpectrumApplicationEdgeIps>;
     /**
-     * Enables the IP Firewall for this application. Defaults to `true`.
+     * Enables the IP Firewall for this application.
      */
     ipFirewall?: pulumi.Input<boolean>;
     /**
@@ -220,15 +220,15 @@ export interface SpectrumApplicationState {
      */
     protocol?: pulumi.Input<string>;
     /**
-     * Enables a proxy protocol to the origin. Available values: `off`, `v1`, `v2`, `simple`. Defaults to `off`.
+     * Enables a proxy protocol to the origin. Available values: `off`, `v1`, `v2`, `simple`.
      */
     proxyProtocol?: pulumi.Input<string>;
     /**
-     * TLS configuration option for Cloudflare to connect to your origin. Available values: `off`, `flexible`, `full`, `strict`. Defaults to `off`.
+     * TLS configuration option for Cloudflare to connect to your origin. Available values: `off`, `flexible`, `full`, `strict`.
      */
     tls?: pulumi.Input<string>;
     /**
-     * Sets application type. Available values: `direct`, `http`, `https`. Defaults to `direct`.
+     * Sets application type. Available values: `direct`, `http`, `https`.
      */
     trafficType?: pulumi.Input<string>;
     /**
@@ -242,7 +242,7 @@ export interface SpectrumApplicationState {
  */
 export interface SpectrumApplicationArgs {
     /**
-     * Enables Argo Smart Routing. Defaults to `false`.
+     * Enables Argo Smart Routing.
      */
     argoSmartRouting?: pulumi.Input<boolean>;
     /**
@@ -254,7 +254,7 @@ export interface SpectrumApplicationArgs {
      */
     edgeIps?: pulumi.Input<inputs.SpectrumApplicationEdgeIps>;
     /**
-     * Enables the IP Firewall for this application. Defaults to `true`.
+     * Enables the IP Firewall for this application.
      */
     ipFirewall?: pulumi.Input<boolean>;
     /**
@@ -278,15 +278,15 @@ export interface SpectrumApplicationArgs {
      */
     protocol: pulumi.Input<string>;
     /**
-     * Enables a proxy protocol to the origin. Available values: `off`, `v1`, `v2`, `simple`. Defaults to `off`.
+     * Enables a proxy protocol to the origin. Available values: `off`, `v1`, `v2`, `simple`.
      */
     proxyProtocol?: pulumi.Input<string>;
     /**
-     * TLS configuration option for Cloudflare to connect to your origin. Available values: `off`, `flexible`, `full`, `strict`. Defaults to `off`.
+     * TLS configuration option for Cloudflare to connect to your origin. Available values: `off`, `flexible`, `full`, `strict`.
      */
     tls?: pulumi.Input<string>;
     /**
-     * Sets application type. Available values: `direct`, `http`, `https`. Defaults to `direct`.
+     * Sets application type. Available values: `direct`, `http`, `https`.
      */
     trafficType?: pulumi.Input<string>;
     /**

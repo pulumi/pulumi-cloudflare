@@ -17693,6 +17693,8 @@ func (o NotificationPolicyEmailIntegrationArrayOutput) Index(i pulumi.IntInput) 
 }
 
 type NotificationPolicyFilters struct {
+	// Targeted actions for alert.
+	Actions []string `pulumi:"actions"`
 	// Alert trigger preferences. Example: `slo`.
 	AlertTriggerPreferences []string `pulumi:"alertTriggerPreferences"`
 	// State of the pool to alert on.
@@ -17705,6 +17707,8 @@ type NotificationPolicyFilters struct {
 	EventTypes []string `pulumi:"eventTypes"`
 	// Pages event to alert. Available values: `EVENT_DEPLOYMENT_STARTED`, `EVENT_DEPLOYMENT_FAILED`, `EVENT_DEPLOYMENT_SUCCESS`.
 	Events []string `pulumi:"events"`
+	// Alert grouping.
+	GroupBies []string `pulumi:"groupBies"`
 	// Identifier health check. Required when using `filters.0.status`.
 	HealthCheckIds []string `pulumi:"healthCheckIds"`
 	// Stream input id to alert on.
@@ -17736,6 +17740,8 @@ type NotificationPolicyFilters struct {
 	TargetHostnames []string `pulumi:"targetHostnames"`
 	// Target domain to alert on.
 	TargetZoneNames []string `pulumi:"targetZoneNames"`
+	// Filter for alert.
+	Wheres []string `pulumi:"wheres"`
 	// A list of zone identifiers.
 	Zones []string `pulumi:"zones"`
 }
@@ -17752,6 +17758,8 @@ type NotificationPolicyFiltersInput interface {
 }
 
 type NotificationPolicyFiltersArgs struct {
+	// Targeted actions for alert.
+	Actions pulumi.StringArrayInput `pulumi:"actions"`
 	// Alert trigger preferences. Example: `slo`.
 	AlertTriggerPreferences pulumi.StringArrayInput `pulumi:"alertTriggerPreferences"`
 	// State of the pool to alert on.
@@ -17764,6 +17772,8 @@ type NotificationPolicyFiltersArgs struct {
 	EventTypes pulumi.StringArrayInput `pulumi:"eventTypes"`
 	// Pages event to alert. Available values: `EVENT_DEPLOYMENT_STARTED`, `EVENT_DEPLOYMENT_FAILED`, `EVENT_DEPLOYMENT_SUCCESS`.
 	Events pulumi.StringArrayInput `pulumi:"events"`
+	// Alert grouping.
+	GroupBies pulumi.StringArrayInput `pulumi:"groupBies"`
 	// Identifier health check. Required when using `filters.0.status`.
 	HealthCheckIds pulumi.StringArrayInput `pulumi:"healthCheckIds"`
 	// Stream input id to alert on.
@@ -17795,6 +17805,8 @@ type NotificationPolicyFiltersArgs struct {
 	TargetHostnames pulumi.StringArrayInput `pulumi:"targetHostnames"`
 	// Target domain to alert on.
 	TargetZoneNames pulumi.StringArrayInput `pulumi:"targetZoneNames"`
+	// Filter for alert.
+	Wheres pulumi.StringArrayInput `pulumi:"wheres"`
 	// A list of zone identifiers.
 	Zones pulumi.StringArrayInput `pulumi:"zones"`
 }
@@ -17894,6 +17906,11 @@ func (o NotificationPolicyFiltersOutput) ToOutput(ctx context.Context) pulumix.O
 	}
 }
 
+// Targeted actions for alert.
+func (o NotificationPolicyFiltersOutput) Actions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v NotificationPolicyFilters) []string { return v.Actions }).(pulumi.StringArrayOutput)
+}
+
 // Alert trigger preferences. Example: `slo`.
 func (o NotificationPolicyFiltersOutput) AlertTriggerPreferences() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v NotificationPolicyFilters) []string { return v.AlertTriggerPreferences }).(pulumi.StringArrayOutput)
@@ -17922,6 +17939,11 @@ func (o NotificationPolicyFiltersOutput) EventTypes() pulumi.StringArrayOutput {
 // Pages event to alert. Available values: `EVENT_DEPLOYMENT_STARTED`, `EVENT_DEPLOYMENT_FAILED`, `EVENT_DEPLOYMENT_SUCCESS`.
 func (o NotificationPolicyFiltersOutput) Events() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v NotificationPolicyFilters) []string { return v.Events }).(pulumi.StringArrayOutput)
+}
+
+// Alert grouping.
+func (o NotificationPolicyFiltersOutput) GroupBies() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v NotificationPolicyFilters) []string { return v.GroupBies }).(pulumi.StringArrayOutput)
 }
 
 // Identifier health check. Required when using `filters.0.status`.
@@ -18003,6 +18025,11 @@ func (o NotificationPolicyFiltersOutput) TargetZoneNames() pulumi.StringArrayOut
 	return o.ApplyT(func(v NotificationPolicyFilters) []string { return v.TargetZoneNames }).(pulumi.StringArrayOutput)
 }
 
+// Filter for alert.
+func (o NotificationPolicyFiltersOutput) Wheres() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v NotificationPolicyFilters) []string { return v.Wheres }).(pulumi.StringArrayOutput)
+}
+
 // A list of zone identifiers.
 func (o NotificationPolicyFiltersOutput) Zones() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v NotificationPolicyFilters) []string { return v.Zones }).(pulumi.StringArrayOutput)
@@ -18036,6 +18063,16 @@ func (o NotificationPolicyFiltersPtrOutput) Elem() NotificationPolicyFiltersOutp
 		var ret NotificationPolicyFilters
 		return ret
 	}).(NotificationPolicyFiltersOutput)
+}
+
+// Targeted actions for alert.
+func (o NotificationPolicyFiltersPtrOutput) Actions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *NotificationPolicyFilters) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Actions
+	}).(pulumi.StringArrayOutput)
 }
 
 // Alert trigger preferences. Example: `slo`.
@@ -18095,6 +18132,16 @@ func (o NotificationPolicyFiltersPtrOutput) Events() pulumi.StringArrayOutput {
 			return nil
 		}
 		return v.Events
+	}).(pulumi.StringArrayOutput)
+}
+
+// Alert grouping.
+func (o NotificationPolicyFiltersPtrOutput) GroupBies() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *NotificationPolicyFilters) []string {
+		if v == nil {
+			return nil
+		}
+		return v.GroupBies
 	}).(pulumi.StringArrayOutput)
 }
 
@@ -18254,6 +18301,16 @@ func (o NotificationPolicyFiltersPtrOutput) TargetZoneNames() pulumi.StringArray
 			return nil
 		}
 		return v.TargetZoneNames
+	}).(pulumi.StringArrayOutput)
+}
+
+// Filter for alert.
+func (o NotificationPolicyFiltersPtrOutput) Wheres() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *NotificationPolicyFilters) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Wheres
 	}).(pulumi.StringArrayOutput)
 }
 
@@ -25649,8 +25706,9 @@ type RulesetRuleActionParameters struct {
 	// Turn on or off the Cloudflare Opportunistic Encryption feature of the Edge Certificates tab in the Cloudflare SSL/TLS app.
 	OpportunisticEncryption *bool `pulumi:"opportunisticEncryption"`
 	// List of properties to change request origin.
-	Origin             *RulesetRuleActionParametersOrigin `pulumi:"origin"`
-	OriginCacheControl *bool                              `pulumi:"originCacheControl"`
+	Origin *RulesetRuleActionParametersOrigin `pulumi:"origin"`
+	// Enable or disable the use of a more compliant Cache Control parsing mechanism, enabled by default for most zones.
+	OriginCacheControl *bool `pulumi:"originCacheControl"`
 	// Pass-through error page for origin.
 	OriginErrorPagePassthru *bool `pulumi:"originErrorPagePassthru"`
 	// List of override configurations to apply to the ruleset.
@@ -25660,8 +25718,9 @@ type RulesetRuleActionParameters struct {
 	// Apply options from the Polish feature of the Cloudflare Speed app.
 	Polish *string `pulumi:"polish"`
 	// Products to target with the actions. Available values: `bic`, `hot`, `ratelimit`, `securityLevel`, `uablock`, `waf`, `zonelockdown`.
-	Products    []string `pulumi:"products"`
-	ReadTimeout *int     `pulumi:"readTimeout"`
+	Products []string `pulumi:"products"`
+	// Specifies a maximum timeout for reading content from an origin server.
+	ReadTimeout *int `pulumi:"readTimeout"`
 	// List of request headers to include as part of custom fields logging, in lowercase.
 	RequestFields []string `pulumi:"requestFields"`
 	// Respect strong ETags.
@@ -25760,8 +25819,9 @@ type RulesetRuleActionParametersArgs struct {
 	// Turn on or off the Cloudflare Opportunistic Encryption feature of the Edge Certificates tab in the Cloudflare SSL/TLS app.
 	OpportunisticEncryption pulumi.BoolPtrInput `pulumi:"opportunisticEncryption"`
 	// List of properties to change request origin.
-	Origin             RulesetRuleActionParametersOriginPtrInput `pulumi:"origin"`
-	OriginCacheControl pulumi.BoolPtrInput                       `pulumi:"originCacheControl"`
+	Origin RulesetRuleActionParametersOriginPtrInput `pulumi:"origin"`
+	// Enable or disable the use of a more compliant Cache Control parsing mechanism, enabled by default for most zones.
+	OriginCacheControl pulumi.BoolPtrInput `pulumi:"originCacheControl"`
 	// Pass-through error page for origin.
 	OriginErrorPagePassthru pulumi.BoolPtrInput `pulumi:"originErrorPagePassthru"`
 	// List of override configurations to apply to the ruleset.
@@ -25771,8 +25831,9 @@ type RulesetRuleActionParametersArgs struct {
 	// Apply options from the Polish feature of the Cloudflare Speed app.
 	Polish pulumi.StringPtrInput `pulumi:"polish"`
 	// Products to target with the actions. Available values: `bic`, `hot`, `ratelimit`, `securityLevel`, `uablock`, `waf`, `zonelockdown`.
-	Products    pulumi.StringArrayInput `pulumi:"products"`
-	ReadTimeout pulumi.IntPtrInput      `pulumi:"readTimeout"`
+	Products pulumi.StringArrayInput `pulumi:"products"`
+	// Specifies a maximum timeout for reading content from an origin server.
+	ReadTimeout pulumi.IntPtrInput `pulumi:"readTimeout"`
 	// List of request headers to include as part of custom fields logging, in lowercase.
 	RequestFields pulumi.StringArrayInput `pulumi:"requestFields"`
 	// Respect strong ETags.
@@ -26033,6 +26094,7 @@ func (o RulesetRuleActionParametersOutput) Origin() RulesetRuleActionParametersO
 	return o.ApplyT(func(v RulesetRuleActionParameters) *RulesetRuleActionParametersOrigin { return v.Origin }).(RulesetRuleActionParametersOriginPtrOutput)
 }
 
+// Enable or disable the use of a more compliant Cache Control parsing mechanism, enabled by default for most zones.
 func (o RulesetRuleActionParametersOutput) OriginCacheControl() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v RulesetRuleActionParameters) *bool { return v.OriginCacheControl }).(pulumi.BoolPtrOutput)
 }
@@ -26062,6 +26124,7 @@ func (o RulesetRuleActionParametersOutput) Products() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v RulesetRuleActionParameters) []string { return v.Products }).(pulumi.StringArrayOutput)
 }
 
+// Specifies a maximum timeout for reading content from an origin server.
 func (o RulesetRuleActionParametersOutput) ReadTimeout() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v RulesetRuleActionParameters) *int { return v.ReadTimeout }).(pulumi.IntPtrOutput)
 }
@@ -26440,6 +26503,7 @@ func (o RulesetRuleActionParametersPtrOutput) Origin() RulesetRuleActionParamete
 	}).(RulesetRuleActionParametersOriginPtrOutput)
 }
 
+// Enable or disable the use of a more compliant Cache Control parsing mechanism, enabled by default for most zones.
 func (o RulesetRuleActionParametersPtrOutput) OriginCacheControl() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *RulesetRuleActionParameters) *bool {
 		if v == nil {
@@ -26499,6 +26563,7 @@ func (o RulesetRuleActionParametersPtrOutput) Products() pulumi.StringArrayOutpu
 	}).(pulumi.StringArrayOutput)
 }
 
+// Specifies a maximum timeout for reading content from an origin server.
 func (o RulesetRuleActionParametersPtrOutput) ReadTimeout() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *RulesetRuleActionParameters) *int {
 		if v == nil {
@@ -31936,7 +32001,7 @@ type RulesetRuleRatelimit struct {
 	// The number of requests over the period of time that will trigger the Rate Limiting rule.
 	RequestsPerPeriod *int `pulumi:"requestsPerPeriod"`
 	// Whether to include requests to origin within the Rate Limiting count.
-	RequestsToOrigin *bool `pulumi:"requestsToOrigin"`
+	RequestsToOrigin bool `pulumi:"requestsToOrigin"`
 	// The maximum aggregate score over the period of time that will trigger Rate Limiting rule.
 	ScorePerPeriod *int `pulumi:"scorePerPeriod"`
 	// Name of HTTP header in the response, set by the origin server, with the score for the current request.
@@ -31966,7 +32031,7 @@ type RulesetRuleRatelimitArgs struct {
 	// The number of requests over the period of time that will trigger the Rate Limiting rule.
 	RequestsPerPeriod pulumi.IntPtrInput `pulumi:"requestsPerPeriod"`
 	// Whether to include requests to origin within the Rate Limiting count.
-	RequestsToOrigin pulumi.BoolPtrInput `pulumi:"requestsToOrigin"`
+	RequestsToOrigin pulumi.BoolInput `pulumi:"requestsToOrigin"`
 	// The maximum aggregate score over the period of time that will trigger Rate Limiting rule.
 	ScorePerPeriod pulumi.IntPtrInput `pulumi:"scorePerPeriod"`
 	// Name of HTTP header in the response, set by the origin server, with the score for the current request.
@@ -32094,8 +32159,8 @@ func (o RulesetRuleRatelimitOutput) RequestsPerPeriod() pulumi.IntPtrOutput {
 }
 
 // Whether to include requests to origin within the Rate Limiting count.
-func (o RulesetRuleRatelimitOutput) RequestsToOrigin() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v RulesetRuleRatelimit) *bool { return v.RequestsToOrigin }).(pulumi.BoolPtrOutput)
+func (o RulesetRuleRatelimitOutput) RequestsToOrigin() pulumi.BoolOutput {
+	return o.ApplyT(func(v RulesetRuleRatelimit) bool { return v.RequestsToOrigin }).(pulumi.BoolOutput)
 }
 
 // The maximum aggregate score over the period of time that will trigger Rate Limiting rule.
@@ -32194,7 +32259,7 @@ func (o RulesetRuleRatelimitPtrOutput) RequestsToOrigin() pulumi.BoolPtrOutput {
 		if v == nil {
 			return nil
 		}
-		return v.RequestsToOrigin
+		return &v.RequestsToOrigin
 	}).(pulumi.BoolPtrOutput)
 }
 

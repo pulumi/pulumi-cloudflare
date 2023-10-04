@@ -82,22 +82,22 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Authenticated Origin Pull configuration
+ * global
  * 
  * ```sh
- *  $ pulumi import cloudflare:index/authenticatedOriginPulls:AuthenticatedOriginPulls my_aop &lt;zone_id&gt;//
+ *  $ pulumi import cloudflare:index/authenticatedOriginPulls:AuthenticatedOriginPulls example &lt;zone_id&gt;
  * ```
  * 
- *  Per-Zone Authenticated Origin Pull configuration
+ *  per zone
  * 
  * ```sh
- *  $ pulumi import cloudflare:index/authenticatedOriginPulls:AuthenticatedOriginPulls my_per_zone_aop &lt;zone_id&gt;/&lt;certificate_id&gt;/
+ *  $ pulumi import cloudflare:index/authenticatedOriginPulls:AuthenticatedOriginPulls example &lt;zone_id&gt;/&lt;certificate_id&gt;
  * ```
  * 
- *  Per-Hostname Authenticated Origin Pull configuration
+ *  per hostname
  * 
  * ```sh
- *  $ pulumi import cloudflare:index/authenticatedOriginPulls:AuthenticatedOriginPulls my_per_hostname_aop &lt;zone_id&gt;/&lt;certificate_id&gt;/&lt;hostname&gt;
+ *  $ pulumi import cloudflare:index/authenticatedOriginPulls:AuthenticatedOriginPulls example &lt;zone_id&gt;/&lt;certificate_id&gt;/&lt;hostname&gt;
  * ```
  * 
  */

@@ -156,6 +156,10 @@ public final class RulesetRuleActionParameters {
      * 
      */
     private @Nullable RulesetRuleActionParametersOrigin origin;
+    /**
+     * @return Enable or disable the use of a more compliant Cache Control parsing mechanism, enabled by default for most zones.
+     * 
+     */
     private @Nullable Boolean originCacheControl;
     /**
      * @return Pass-through error page for origin.
@@ -182,6 +186,10 @@ public final class RulesetRuleActionParameters {
      * 
      */
     private @Nullable List<String> products;
+    /**
+     * @return Specifies a maximum timeout for reading content from an origin server.
+     * 
+     */
     private @Nullable Integer readTimeout;
     /**
      * @return List of request headers to include as part of custom fields logging, in lowercase.
@@ -448,6 +456,10 @@ public final class RulesetRuleActionParameters {
     public Optional<RulesetRuleActionParametersOrigin> origin() {
         return Optional.ofNullable(this.origin);
     }
+    /**
+     * @return Enable or disable the use of a more compliant Cache Control parsing mechanism, enabled by default for most zones.
+     * 
+     */
     public Optional<Boolean> originCacheControl() {
         return Optional.ofNullable(this.originCacheControl);
     }
@@ -486,6 +498,10 @@ public final class RulesetRuleActionParameters {
     public List<String> products() {
         return this.products == null ? List.of() : this.products;
     }
+    /**
+     * @return Specifies a maximum timeout for reading content from an origin server.
+     * 
+     */
     public Optional<Integer> readTimeout() {
         return Optional.ofNullable(this.readTimeout);
     }

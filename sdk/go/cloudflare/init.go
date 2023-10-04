@@ -51,6 +51,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &AddressMap{}
 	case "cloudflare:index/apiShield:ApiShield":
 		r = &ApiShield{}
+	case "cloudflare:index/apiShieldOperation:ApiShieldOperation":
+		r = &ApiShieldOperation{}
 	case "cloudflare:index/apiToken:ApiToken":
 		r = &ApiToken{}
 	case "cloudflare:index/argo:Argo":
@@ -337,6 +339,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"cloudflare",
 		"index/apiShield",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
+		"index/apiShieldOperation",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

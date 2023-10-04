@@ -28,6 +28,7 @@
         "accountMember.ts",
         "addressMap.ts",
         "apiShield.ts",
+        "apiShieldOperation.ts",
         "apiToken.ts",
         "argo.ts",
         "authenticatedOriginPulls.ts",
