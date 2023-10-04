@@ -13,8 +13,17 @@ namespace Pulumi.Cloudflare.Outputs
     [OutputType]
     public sealed class RulesetRuleActionParametersResponse
     {
+        /// <summary>
+        /// Content of the custom error response.
+        /// </summary>
         public readonly string? Content;
+        /// <summary>
+        /// Content-Type of the custom error response.
+        /// </summary>
         public readonly string? ContentType;
+        /// <summary>
+        /// Status code for which the edge TTL is applied.
+        /// </summary>
         public readonly int? StatusCode;
 
         [OutputConstructor]

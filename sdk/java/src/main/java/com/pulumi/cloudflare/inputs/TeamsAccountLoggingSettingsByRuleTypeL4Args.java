@@ -13,9 +13,17 @@ public final class TeamsAccountLoggingSettingsByRuleTypeL4Args extends com.pulum
 
     public static final TeamsAccountLoggingSettingsByRuleTypeL4Args Empty = new TeamsAccountLoggingSettingsByRuleTypeL4Args();
 
+    /**
+     * Whether to log all activity.
+     * 
+     */
     @Import(name="logAll", required=true)
     private Output<Boolean> logAll;
 
+    /**
+     * @return Whether to log all activity.
+     * 
+     */
     public Output<Boolean> logAll() {
         return this.logAll;
     }
@@ -52,11 +60,23 @@ public final class TeamsAccountLoggingSettingsByRuleTypeL4Args extends com.pulum
             $ = new TeamsAccountLoggingSettingsByRuleTypeL4Args(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param logAll Whether to log all activity.
+         * 
+         * @return builder
+         * 
+         */
         public Builder logAll(Output<Boolean> logAll) {
             $.logAll = logAll;
             return this;
         }
 
+        /**
+         * @param logAll Whether to log all activity.
+         * 
+         * @return builder
+         * 
+         */
         public Builder logAll(Boolean logAll) {
             return logAll(Output.of(logAll));
         }

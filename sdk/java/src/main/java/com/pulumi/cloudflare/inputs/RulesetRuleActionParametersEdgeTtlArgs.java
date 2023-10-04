@@ -18,23 +18,47 @@ public final class RulesetRuleActionParametersEdgeTtlArgs extends com.pulumi.res
 
     public static final RulesetRuleActionParametersEdgeTtlArgs Empty = new RulesetRuleActionParametersEdgeTtlArgs();
 
+    /**
+     * Default browser TTL. This value is required when override_origin is set
+     * 
+     */
     @Import(name="default")
     private @Nullable Output<Integer> default_;
 
+    /**
+     * @return Default browser TTL. This value is required when override_origin is set
+     * 
+     */
     public Optional<Output<Integer>> default_() {
         return Optional.ofNullable(this.default_);
     }
 
+    /**
+     * Mode of the browser TTL. Available values: `override_origin`, `respect_origin`, `bypass`
+     * 
+     */
     @Import(name="mode", required=true)
     private Output<String> mode;
 
+    /**
+     * @return Mode of the browser TTL. Available values: `override_origin`, `respect_origin`, `bypass`
+     * 
+     */
     public Output<String> mode() {
         return this.mode;
     }
 
+    /**
+     * Edge TTL for the status codes.
+     * 
+     */
     @Import(name="statusCodeTtls")
     private @Nullable Output<List<RulesetRuleActionParametersEdgeTtlStatusCodeTtlArgs>> statusCodeTtls;
 
+    /**
+     * @return Edge TTL for the status codes.
+     * 
+     */
     public Optional<Output<List<RulesetRuleActionParametersEdgeTtlStatusCodeTtlArgs>>> statusCodeTtls() {
         return Optional.ofNullable(this.statusCodeTtls);
     }
@@ -65,33 +89,75 @@ public final class RulesetRuleActionParametersEdgeTtlArgs extends com.pulumi.res
             $ = new RulesetRuleActionParametersEdgeTtlArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param default_ Default browser TTL. This value is required when override_origin is set
+         * 
+         * @return builder
+         * 
+         */
         public Builder default_(@Nullable Output<Integer> default_) {
             $.default_ = default_;
             return this;
         }
 
+        /**
+         * @param default_ Default browser TTL. This value is required when override_origin is set
+         * 
+         * @return builder
+         * 
+         */
         public Builder default_(Integer default_) {
             return default_(Output.of(default_));
         }
 
+        /**
+         * @param mode Mode of the browser TTL. Available values: `override_origin`, `respect_origin`, `bypass`
+         * 
+         * @return builder
+         * 
+         */
         public Builder mode(Output<String> mode) {
             $.mode = mode;
             return this;
         }
 
+        /**
+         * @param mode Mode of the browser TTL. Available values: `override_origin`, `respect_origin`, `bypass`
+         * 
+         * @return builder
+         * 
+         */
         public Builder mode(String mode) {
             return mode(Output.of(mode));
         }
 
+        /**
+         * @param statusCodeTtls Edge TTL for the status codes.
+         * 
+         * @return builder
+         * 
+         */
         public Builder statusCodeTtls(@Nullable Output<List<RulesetRuleActionParametersEdgeTtlStatusCodeTtlArgs>> statusCodeTtls) {
             $.statusCodeTtls = statusCodeTtls;
             return this;
         }
 
+        /**
+         * @param statusCodeTtls Edge TTL for the status codes.
+         * 
+         * @return builder
+         * 
+         */
         public Builder statusCodeTtls(List<RulesetRuleActionParametersEdgeTtlStatusCodeTtlArgs> statusCodeTtls) {
             return statusCodeTtls(Output.of(statusCodeTtls));
         }
 
+        /**
+         * @param statusCodeTtls Edge TTL for the status codes.
+         * 
+         * @return builder
+         * 
+         */
         public Builder statusCodeTtls(RulesetRuleActionParametersEdgeTtlStatusCodeTtlArgs... statusCodeTtls) {
             return statusCodeTtls(List.of(statusCodeTtls));
         }

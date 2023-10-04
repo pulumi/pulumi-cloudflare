@@ -143,17 +143,9 @@ public final class RecordDataArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.matchingType);
     }
 
-    /**
-     * The name of the record. **Modifying this attribute will force creation of a new resource.**
-     * 
-     */
     @Import(name="name")
     private @Nullable Output<String> name;
 
-    /**
-     * @return The name of the record. **Modifying this attribute will force creation of a new resource.**
-     * 
-     */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
     }
@@ -193,17 +185,9 @@ public final class RecordDataArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.preference);
     }
 
-    /**
-     * The priority of the record.
-     * 
-     */
     @Import(name="priority")
     private @Nullable Output<Integer> priority;
 
-    /**
-     * @return The priority of the record.
-     * 
-     */
     public Optional<Output<Integer>> priority() {
         return Optional.ofNullable(this.priority);
     }
@@ -278,17 +262,9 @@ public final class RecordDataArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.target);
     }
 
-    /**
-     * The type of the record. Available values: `A`, `AAAA`, `CAA`, `CNAME`, `TXT`, `SRV`, `LOC`, `MX`, `NS`, `SPF`, `CERT`, `DNSKEY`, `DS`, `NAPTR`, `SMIMEA`, `SSHFP`, `TLSA`, `URI`, `PTR`, `HTTPS`, `SVCB`. **Modifying this attribute will force creation of a new resource.**
-     * 
-     */
     @Import(name="type")
     private @Nullable Output<Integer> type;
 
-    /**
-     * @return The type of the record. Available values: `A`, `AAAA`, `CAA`, `CNAME`, `TXT`, `SRV`, `LOC`, `MX`, `NS`, `SPF`, `CERT`, `DNSKEY`, `DS`, `NAPTR`, `SMIMEA`, `SSHFP`, `TLSA`, `URI`, `PTR`, `HTTPS`, `SVCB`. **Modifying this attribute will force creation of a new resource.**
-     * 
-     */
     public Optional<Output<Integer>> type() {
         return Optional.ofNullable(this.type);
     }
@@ -300,17 +276,9 @@ public final class RecordDataArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.usage);
     }
 
-    /**
-     * The value of the record. Conflicts with `data`.
-     * 
-     */
     @Import(name="value")
     private @Nullable Output<String> value;
 
-    /**
-     * @return The value of the record. Conflicts with `data`.
-     * 
-     */
     public Optional<Output<String>> value() {
         return Optional.ofNullable(this.value);
     }
@@ -546,23 +514,11 @@ public final class RecordDataArgs extends com.pulumi.resources.ResourceArgs {
             return matchingType(Output.of(matchingType));
         }
 
-        /**
-         * @param name The name of the record. **Modifying this attribute will force creation of a new resource.**
-         * 
-         * @return builder
-         * 
-         */
         public Builder name(@Nullable Output<String> name) {
             $.name = name;
             return this;
         }
 
-        /**
-         * @param name The name of the record. **Modifying this attribute will force creation of a new resource.**
-         * 
-         * @return builder
-         * 
-         */
         public Builder name(String name) {
             return name(Output.of(name));
         }
@@ -612,23 +568,11 @@ public final class RecordDataArgs extends com.pulumi.resources.ResourceArgs {
             return preference(Output.of(preference));
         }
 
-        /**
-         * @param priority The priority of the record.
-         * 
-         * @return builder
-         * 
-         */
         public Builder priority(@Nullable Output<Integer> priority) {
             $.priority = priority;
             return this;
         }
 
-        /**
-         * @param priority The priority of the record.
-         * 
-         * @return builder
-         * 
-         */
         public Builder priority(Integer priority) {
             return priority(Output.of(priority));
         }
@@ -723,23 +667,11 @@ public final class RecordDataArgs extends com.pulumi.resources.ResourceArgs {
             return target(Output.of(target));
         }
 
-        /**
-         * @param type The type of the record. Available values: `A`, `AAAA`, `CAA`, `CNAME`, `TXT`, `SRV`, `LOC`, `MX`, `NS`, `SPF`, `CERT`, `DNSKEY`, `DS`, `NAPTR`, `SMIMEA`, `SSHFP`, `TLSA`, `URI`, `PTR`, `HTTPS`, `SVCB`. **Modifying this attribute will force creation of a new resource.**
-         * 
-         * @return builder
-         * 
-         */
         public Builder type(@Nullable Output<Integer> type) {
             $.type = type;
             return this;
         }
 
-        /**
-         * @param type The type of the record. Available values: `A`, `AAAA`, `CAA`, `CNAME`, `TXT`, `SRV`, `LOC`, `MX`, `NS`, `SPF`, `CERT`, `DNSKEY`, `DS`, `NAPTR`, `SMIMEA`, `SSHFP`, `TLSA`, `URI`, `PTR`, `HTTPS`, `SVCB`. **Modifying this attribute will force creation of a new resource.**
-         * 
-         * @return builder
-         * 
-         */
         public Builder type(Integer type) {
             return type(Output.of(type));
         }
@@ -753,23 +685,11 @@ public final class RecordDataArgs extends com.pulumi.resources.ResourceArgs {
             return usage(Output.of(usage));
         }
 
-        /**
-         * @param value The value of the record. Conflicts with `data`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder value(@Nullable Output<String> value) {
             $.value = value;
             return this;
         }
 
-        /**
-         * @param value The value of the record. Conflicts with `data`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder value(String value) {
             return value(Output.of(value));
         }

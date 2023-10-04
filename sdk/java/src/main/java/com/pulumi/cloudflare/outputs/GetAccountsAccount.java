@@ -13,15 +13,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetAccountsAccount {
     private @Nullable Boolean enforceTwofactor;
-    /**
-     * @return The ID of this resource.
-     * 
-     */
     private @Nullable String id;
-    /**
-     * @return The account name to target for the resource.
-     * 
-     */
     private @Nullable String name;
     private @Nullable String type;
 
@@ -29,17 +21,9 @@ public final class GetAccountsAccount {
     public Optional<Boolean> enforceTwofactor() {
         return Optional.ofNullable(this.enforceTwofactor);
     }
-    /**
-     * @return The ID of this resource.
-     * 
-     */
     public Optional<String> id() {
         return Optional.ofNullable(this.id);
     }
-    /**
-     * @return The account name to target for the resource.
-     * 
-     */
     public Optional<String> name() {
         return Optional.ofNullable(this.name);
     }

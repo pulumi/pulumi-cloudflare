@@ -12,6 +12,9 @@ namespace Pulumi.Cloudflare.Inputs
 
     public sealed class RulesetRuleLoggingArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Defines if the current tag-level override enables or disables the ruleset rules with the specified tag.
+        /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 

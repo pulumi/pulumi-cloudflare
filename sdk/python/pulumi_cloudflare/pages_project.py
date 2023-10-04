@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -25,21 +25,40 @@ class PagesProjectArgs:
         """
         The set of arguments for constructing a PagesProject resource.
         :param pulumi.Input[str] account_id: The account identifier to target for the resource.
-        :param pulumi.Input[str] name: Name of the project.
-        :param pulumi.Input[str] production_branch: The name of the branch that is used for the production environment.
+        :param pulumi.Input[str] name: The global variable for the binding in your Worker code.
+        :param pulumi.Input[str] production_branch: Project production branch name.
         :param pulumi.Input['PagesProjectBuildConfigArgs'] build_config: Configuration for the project build process. Read more about the build configuration in the [developer documentation](https://developers.cloudflare.com/pages/platform/build-configuration).
         :param pulumi.Input['PagesProjectDeploymentConfigsArgs'] deployment_configs: Configuration for deployments in a project.
         :param pulumi.Input['PagesProjectSourceArgs'] source: Configuration for the project source. Read more about the source configuration in the [developer documentation](https://developers.cloudflare.com/pages/platform/branch-build-controls/).
         """
-        pulumi.set(__self__, "account_id", account_id)
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "production_branch", production_branch)
+        PagesProjectArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            account_id=account_id,
+            name=name,
+            production_branch=production_branch,
+            build_config=build_config,
+            deployment_configs=deployment_configs,
+            source=source,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             account_id: pulumi.Input[str],
+             name: pulumi.Input[str],
+             production_branch: pulumi.Input[str],
+             build_config: Optional[pulumi.Input['PagesProjectBuildConfigArgs']] = None,
+             deployment_configs: Optional[pulumi.Input['PagesProjectDeploymentConfigsArgs']] = None,
+             source: Optional[pulumi.Input['PagesProjectSourceArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("account_id", account_id)
+        _setter("name", name)
+        _setter("production_branch", production_branch)
         if build_config is not None:
-            pulumi.set(__self__, "build_config", build_config)
+            _setter("build_config", build_config)
         if deployment_configs is not None:
-            pulumi.set(__self__, "deployment_configs", deployment_configs)
+            _setter("deployment_configs", deployment_configs)
         if source is not None:
-            pulumi.set(__self__, "source", source)
+            _setter("source", source)
 
     @property
     @pulumi.getter(name="accountId")
@@ -57,7 +76,7 @@ class PagesProjectArgs:
     @pulumi.getter
     def name(self) -> pulumi.Input[str]:
         """
-        Name of the project.
+        The global variable for the binding in your Worker code.
         """
         return pulumi.get(self, "name")
 
@@ -69,7 +88,7 @@ class PagesProjectArgs:
     @pulumi.getter(name="productionBranch")
     def production_branch(self) -> pulumi.Input[str]:
         """
-        The name of the branch that is used for the production environment.
+        Project production branch name.
         """
         return pulumi.get(self, "production_branch")
 
@@ -133,29 +152,54 @@ class _PagesProjectState:
         :param pulumi.Input[str] created_on: When the project was created.
         :param pulumi.Input['PagesProjectDeploymentConfigsArgs'] deployment_configs: Configuration for deployments in a project.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] domains: A list of associated custom domains for the project.
-        :param pulumi.Input[str] name: Name of the project.
-        :param pulumi.Input[str] production_branch: The name of the branch that is used for the production environment.
+        :param pulumi.Input[str] name: The global variable for the binding in your Worker code.
+        :param pulumi.Input[str] production_branch: Project production branch name.
         :param pulumi.Input['PagesProjectSourceArgs'] source: Configuration for the project source. Read more about the source configuration in the [developer documentation](https://developers.cloudflare.com/pages/platform/branch-build-controls/).
         :param pulumi.Input[str] subdomain: The Cloudflare subdomain associated with the project.
         """
+        _PagesProjectState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            account_id=account_id,
+            build_config=build_config,
+            created_on=created_on,
+            deployment_configs=deployment_configs,
+            domains=domains,
+            name=name,
+            production_branch=production_branch,
+            source=source,
+            subdomain=subdomain,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             account_id: Optional[pulumi.Input[str]] = None,
+             build_config: Optional[pulumi.Input['PagesProjectBuildConfigArgs']] = None,
+             created_on: Optional[pulumi.Input[str]] = None,
+             deployment_configs: Optional[pulumi.Input['PagesProjectDeploymentConfigsArgs']] = None,
+             domains: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             production_branch: Optional[pulumi.Input[str]] = None,
+             source: Optional[pulumi.Input['PagesProjectSourceArgs']] = None,
+             subdomain: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if account_id is not None:
-            pulumi.set(__self__, "account_id", account_id)
+            _setter("account_id", account_id)
         if build_config is not None:
-            pulumi.set(__self__, "build_config", build_config)
+            _setter("build_config", build_config)
         if created_on is not None:
-            pulumi.set(__self__, "created_on", created_on)
+            _setter("created_on", created_on)
         if deployment_configs is not None:
-            pulumi.set(__self__, "deployment_configs", deployment_configs)
+            _setter("deployment_configs", deployment_configs)
         if domains is not None:
-            pulumi.set(__self__, "domains", domains)
+            _setter("domains", domains)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if production_branch is not None:
-            pulumi.set(__self__, "production_branch", production_branch)
+            _setter("production_branch", production_branch)
         if source is not None:
-            pulumi.set(__self__, "source", source)
+            _setter("source", source)
         if subdomain is not None:
-            pulumi.set(__self__, "subdomain", subdomain)
+            _setter("subdomain", subdomain)
 
     @property
     @pulumi.getter(name="accountId")
@@ -221,7 +265,7 @@ class _PagesProjectState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Name of the project.
+        The global variable for the binding in your Worker code.
         """
         return pulumi.get(self, "name")
 
@@ -233,7 +277,7 @@ class _PagesProjectState:
     @pulumi.getter(name="productionBranch")
     def production_branch(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the branch that is used for the production environment.
+        Project production branch name.
         """
         return pulumi.get(self, "production_branch")
 
@@ -437,8 +481,8 @@ class PagesProject(pulumi.CustomResource):
         :param pulumi.Input[str] account_id: The account identifier to target for the resource.
         :param pulumi.Input[pulumi.InputType['PagesProjectBuildConfigArgs']] build_config: Configuration for the project build process. Read more about the build configuration in the [developer documentation](https://developers.cloudflare.com/pages/platform/build-configuration).
         :param pulumi.Input[pulumi.InputType['PagesProjectDeploymentConfigsArgs']] deployment_configs: Configuration for deployments in a project.
-        :param pulumi.Input[str] name: Name of the project.
-        :param pulumi.Input[str] production_branch: The name of the branch that is used for the production environment.
+        :param pulumi.Input[str] name: The global variable for the binding in your Worker code.
+        :param pulumi.Input[str] production_branch: Project production branch name.
         :param pulumi.Input[pulumi.InputType['PagesProjectSourceArgs']] source: Configuration for the project source. Read more about the source configuration in the [developer documentation](https://developers.cloudflare.com/pages/platform/branch-build-controls/).
         """
         ...
@@ -611,6 +655,10 @@ class PagesProject(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            PagesProjectArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -634,7 +682,17 @@ class PagesProject(pulumi.CustomResource):
             if account_id is None and not opts.urn:
                 raise TypeError("Missing required property 'account_id'")
             __props__.__dict__["account_id"] = account_id
+            if build_config is not None and not isinstance(build_config, PagesProjectBuildConfigArgs):
+                build_config = build_config or {}
+                def _setter(key, value):
+                    build_config[key] = value
+                PagesProjectBuildConfigArgs._configure(_setter, **build_config)
             __props__.__dict__["build_config"] = build_config
+            if deployment_configs is not None and not isinstance(deployment_configs, PagesProjectDeploymentConfigsArgs):
+                deployment_configs = deployment_configs or {}
+                def _setter(key, value):
+                    deployment_configs[key] = value
+                PagesProjectDeploymentConfigsArgs._configure(_setter, **deployment_configs)
             __props__.__dict__["deployment_configs"] = deployment_configs
             if name is None and not opts.urn:
                 raise TypeError("Missing required property 'name'")
@@ -642,6 +700,11 @@ class PagesProject(pulumi.CustomResource):
             if production_branch is None and not opts.urn:
                 raise TypeError("Missing required property 'production_branch'")
             __props__.__dict__["production_branch"] = production_branch
+            if source is not None and not isinstance(source, PagesProjectSourceArgs):
+                source = source or {}
+                def _setter(key, value):
+                    source[key] = value
+                PagesProjectSourceArgs._configure(_setter, **source)
             __props__.__dict__["source"] = source
             __props__.__dict__["created_on"] = None
             __props__.__dict__["domains"] = None
@@ -677,8 +740,8 @@ class PagesProject(pulumi.CustomResource):
         :param pulumi.Input[str] created_on: When the project was created.
         :param pulumi.Input[pulumi.InputType['PagesProjectDeploymentConfigsArgs']] deployment_configs: Configuration for deployments in a project.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] domains: A list of associated custom domains for the project.
-        :param pulumi.Input[str] name: Name of the project.
-        :param pulumi.Input[str] production_branch: The name of the branch that is used for the production environment.
+        :param pulumi.Input[str] name: The global variable for the binding in your Worker code.
+        :param pulumi.Input[str] production_branch: Project production branch name.
         :param pulumi.Input[pulumi.InputType['PagesProjectSourceArgs']] source: Configuration for the project source. Read more about the source configuration in the [developer documentation](https://developers.cloudflare.com/pages/platform/branch-build-controls/).
         :param pulumi.Input[str] subdomain: The Cloudflare subdomain associated with the project.
         """
@@ -741,7 +804,7 @@ class PagesProject(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        Name of the project.
+        The global variable for the binding in your Worker code.
         """
         return pulumi.get(self, "name")
 
@@ -749,7 +812,7 @@ class PagesProject(pulumi.CustomResource):
     @pulumi.getter(name="productionBranch")
     def production_branch(self) -> pulumi.Output[str]:
         """
-        The name of the branch that is used for the production environment.
+        Project production branch name.
         """
         return pulumi.get(self, "production_branch")
 

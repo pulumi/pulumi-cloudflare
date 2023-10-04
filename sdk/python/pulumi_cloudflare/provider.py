@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['ProviderArgs', 'Provider']
@@ -53,38 +53,67 @@ class ProviderArgs:
         :param pulumi.Input[int] rps: RPS limit to apply when making calls to the API. Alternatively, can be configured using the `CLOUDFLARE_RPS` environment
                variable.
         """
+        ProviderArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            api_base_path=api_base_path,
+            api_client_logging=api_client_logging,
+            api_hostname=api_hostname,
+            api_key=api_key,
+            api_token=api_token,
+            api_user_service_key=api_user_service_key,
+            email=email,
+            max_backoff=max_backoff,
+            min_backoff=min_backoff,
+            retries=retries,
+            rps=rps,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             api_base_path: Optional[pulumi.Input[str]] = None,
+             api_client_logging: Optional[pulumi.Input[bool]] = None,
+             api_hostname: Optional[pulumi.Input[str]] = None,
+             api_key: Optional[pulumi.Input[str]] = None,
+             api_token: Optional[pulumi.Input[str]] = None,
+             api_user_service_key: Optional[pulumi.Input[str]] = None,
+             email: Optional[pulumi.Input[str]] = None,
+             max_backoff: Optional[pulumi.Input[int]] = None,
+             min_backoff: Optional[pulumi.Input[int]] = None,
+             retries: Optional[pulumi.Input[int]] = None,
+             rps: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if api_base_path is not None:
-            pulumi.set(__self__, "api_base_path", api_base_path)
+            _setter("api_base_path", api_base_path)
         if api_client_logging is None:
             api_client_logging = (_utilities.get_env_bool('CLOUDFLARE_API_CLIENT_LOGGING') or False)
         if api_client_logging is not None:
-            pulumi.set(__self__, "api_client_logging", api_client_logging)
+            _setter("api_client_logging", api_client_logging)
         if api_hostname is not None:
-            pulumi.set(__self__, "api_hostname", api_hostname)
+            _setter("api_hostname", api_hostname)
         if api_key is not None:
-            pulumi.set(__self__, "api_key", api_key)
+            _setter("api_key", api_key)
         if api_token is not None:
-            pulumi.set(__self__, "api_token", api_token)
+            _setter("api_token", api_token)
         if api_user_service_key is not None:
-            pulumi.set(__self__, "api_user_service_key", api_user_service_key)
+            _setter("api_user_service_key", api_user_service_key)
         if email is not None:
-            pulumi.set(__self__, "email", email)
+            _setter("email", email)
         if max_backoff is None:
             max_backoff = (_utilities.get_env_int('CLOUDFLARE_MAX_BACKOFF') or 30)
         if max_backoff is not None:
-            pulumi.set(__self__, "max_backoff", max_backoff)
+            _setter("max_backoff", max_backoff)
         if min_backoff is None:
             min_backoff = (_utilities.get_env_int('CLOUDFLARE_MIN_BACKOFF') or 1)
         if min_backoff is not None:
-            pulumi.set(__self__, "min_backoff", min_backoff)
+            _setter("min_backoff", min_backoff)
         if retries is None:
             retries = (_utilities.get_env_int('CLOUDFLARE_RETRIES') or 3)
         if retries is not None:
-            pulumi.set(__self__, "retries", retries)
+            _setter("retries", retries)
         if rps is None:
             rps = (_utilities.get_env_int('CLOUDFLARE_RPS') or 4)
         if rps is not None:
-            pulumi.set(__self__, "rps", rps)
+            _setter("rps", rps)
 
     @property
     @pulumi.getter(name="apiBasePath")
@@ -306,6 +335,10 @@ class Provider(pulumi.ProviderResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            ProviderArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

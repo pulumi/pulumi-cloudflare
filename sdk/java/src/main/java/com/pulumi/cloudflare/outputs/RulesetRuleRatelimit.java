@@ -14,37 +14,101 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class RulesetRuleRatelimit {
+    /**
+     * @return List of parameters that define how Cloudflare tracks the request rate for this rule.
+     * 
+     */
     private @Nullable List<String> characteristics;
+    /**
+     * @return Criteria for counting HTTP requests to trigger the Rate Limiting action. Uses the Firewall Rules expression language based on Wireshark display filters. Refer to the [Firewall Rules language](https://developers.cloudflare.com/firewall/cf-firewall-language) documentation for all available fields, operators, and functions.
+     * 
+     */
     private @Nullable String countingExpression;
+    /**
+     * @return Once the request rate is reached, the Rate Limiting rule blocks further requests for the period of time defined in this field.
+     * 
+     */
     private @Nullable Integer mitigationTimeout;
+    /**
+     * @return The period of time to consider (in seconds) when evaluating the request rate.
+     * 
+     */
     private @Nullable Integer period;
+    /**
+     * @return The number of requests over the period of time that will trigger the Rate Limiting rule.
+     * 
+     */
     private @Nullable Integer requestsPerPeriod;
+    /**
+     * @return Whether to include requests to origin within the Rate Limiting count.
+     * 
+     */
     private @Nullable Boolean requestsToOrigin;
+    /**
+     * @return The maximum aggregate score over the period of time that will trigger Rate Limiting rule.
+     * 
+     */
     private @Nullable Integer scorePerPeriod;
+    /**
+     * @return Name of HTTP header in the response, set by the origin server, with the score for the current request.
+     * 
+     */
     private @Nullable String scoreResponseHeaderName;
 
     private RulesetRuleRatelimit() {}
+    /**
+     * @return List of parameters that define how Cloudflare tracks the request rate for this rule.
+     * 
+     */
     public List<String> characteristics() {
         return this.characteristics == null ? List.of() : this.characteristics;
     }
+    /**
+     * @return Criteria for counting HTTP requests to trigger the Rate Limiting action. Uses the Firewall Rules expression language based on Wireshark display filters. Refer to the [Firewall Rules language](https://developers.cloudflare.com/firewall/cf-firewall-language) documentation for all available fields, operators, and functions.
+     * 
+     */
     public Optional<String> countingExpression() {
         return Optional.ofNullable(this.countingExpression);
     }
+    /**
+     * @return Once the request rate is reached, the Rate Limiting rule blocks further requests for the period of time defined in this field.
+     * 
+     */
     public Optional<Integer> mitigationTimeout() {
         return Optional.ofNullable(this.mitigationTimeout);
     }
+    /**
+     * @return The period of time to consider (in seconds) when evaluating the request rate.
+     * 
+     */
     public Optional<Integer> period() {
         return Optional.ofNullable(this.period);
     }
+    /**
+     * @return The number of requests over the period of time that will trigger the Rate Limiting rule.
+     * 
+     */
     public Optional<Integer> requestsPerPeriod() {
         return Optional.ofNullable(this.requestsPerPeriod);
     }
+    /**
+     * @return Whether to include requests to origin within the Rate Limiting count.
+     * 
+     */
     public Optional<Boolean> requestsToOrigin() {
         return Optional.ofNullable(this.requestsToOrigin);
     }
+    /**
+     * @return The maximum aggregate score over the period of time that will trigger Rate Limiting rule.
+     * 
+     */
     public Optional<Integer> scorePerPeriod() {
         return Optional.ofNullable(this.scorePerPeriod);
     }
+    /**
+     * @return Name of HTTP header in the response, set by the origin server, with the score for the current request.
+     * 
+     */
     public Optional<String> scoreResponseHeaderName() {
         return Optional.ofNullable(this.scoreResponseHeaderName);
     }

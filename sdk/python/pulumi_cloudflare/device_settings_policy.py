@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['DeviceSettingsPolicyArgs', 'DeviceSettingsPolicy']
@@ -53,39 +53,82 @@ class DeviceSettingsPolicyArgs:
         :param pulumi.Input[str] support_url: The support URL that will be opened when sending feedback.
         :param pulumi.Input[bool] switch_locked: Enablement of the ZT client switch lock.
         """
-        pulumi.set(__self__, "account_id", account_id)
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "name", name)
+        DeviceSettingsPolicyArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            account_id=account_id,
+            description=description,
+            name=name,
+            allow_mode_switch=allow_mode_switch,
+            allow_updates=allow_updates,
+            allowed_to_leave=allowed_to_leave,
+            auto_connect=auto_connect,
+            captive_portal=captive_portal,
+            default=default,
+            disable_auto_fallback=disable_auto_fallback,
+            enabled=enabled,
+            exclude_office_ips=exclude_office_ips,
+            match=match,
+            precedence=precedence,
+            service_mode_v2_mode=service_mode_v2_mode,
+            service_mode_v2_port=service_mode_v2_port,
+            support_url=support_url,
+            switch_locked=switch_locked,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             account_id: pulumi.Input[str],
+             description: pulumi.Input[str],
+             name: pulumi.Input[str],
+             allow_mode_switch: Optional[pulumi.Input[bool]] = None,
+             allow_updates: Optional[pulumi.Input[bool]] = None,
+             allowed_to_leave: Optional[pulumi.Input[bool]] = None,
+             auto_connect: Optional[pulumi.Input[int]] = None,
+             captive_portal: Optional[pulumi.Input[int]] = None,
+             default: Optional[pulumi.Input[bool]] = None,
+             disable_auto_fallback: Optional[pulumi.Input[bool]] = None,
+             enabled: Optional[pulumi.Input[bool]] = None,
+             exclude_office_ips: Optional[pulumi.Input[bool]] = None,
+             match: Optional[pulumi.Input[str]] = None,
+             precedence: Optional[pulumi.Input[int]] = None,
+             service_mode_v2_mode: Optional[pulumi.Input[str]] = None,
+             service_mode_v2_port: Optional[pulumi.Input[int]] = None,
+             support_url: Optional[pulumi.Input[str]] = None,
+             switch_locked: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("account_id", account_id)
+        _setter("description", description)
+        _setter("name", name)
         if allow_mode_switch is not None:
-            pulumi.set(__self__, "allow_mode_switch", allow_mode_switch)
+            _setter("allow_mode_switch", allow_mode_switch)
         if allow_updates is not None:
-            pulumi.set(__self__, "allow_updates", allow_updates)
+            _setter("allow_updates", allow_updates)
         if allowed_to_leave is not None:
-            pulumi.set(__self__, "allowed_to_leave", allowed_to_leave)
+            _setter("allowed_to_leave", allowed_to_leave)
         if auto_connect is not None:
-            pulumi.set(__self__, "auto_connect", auto_connect)
+            _setter("auto_connect", auto_connect)
         if captive_portal is not None:
-            pulumi.set(__self__, "captive_portal", captive_portal)
+            _setter("captive_portal", captive_portal)
         if default is not None:
-            pulumi.set(__self__, "default", default)
+            _setter("default", default)
         if disable_auto_fallback is not None:
-            pulumi.set(__self__, "disable_auto_fallback", disable_auto_fallback)
+            _setter("disable_auto_fallback", disable_auto_fallback)
         if enabled is not None:
-            pulumi.set(__self__, "enabled", enabled)
+            _setter("enabled", enabled)
         if exclude_office_ips is not None:
-            pulumi.set(__self__, "exclude_office_ips", exclude_office_ips)
+            _setter("exclude_office_ips", exclude_office_ips)
         if match is not None:
-            pulumi.set(__self__, "match", match)
+            _setter("match", match)
         if precedence is not None:
-            pulumi.set(__self__, "precedence", precedence)
+            _setter("precedence", precedence)
         if service_mode_v2_mode is not None:
-            pulumi.set(__self__, "service_mode_v2_mode", service_mode_v2_mode)
+            _setter("service_mode_v2_mode", service_mode_v2_mode)
         if service_mode_v2_port is not None:
-            pulumi.set(__self__, "service_mode_v2_port", service_mode_v2_port)
+            _setter("service_mode_v2_port", service_mode_v2_port)
         if support_url is not None:
-            pulumi.set(__self__, "support_url", support_url)
+            _setter("support_url", support_url)
         if switch_locked is not None:
-            pulumi.set(__self__, "switch_locked", switch_locked)
+            _setter("switch_locked", switch_locked)
 
     @property
     @pulumi.getter(name="accountId")
@@ -346,42 +389,85 @@ class _DeviceSettingsPolicyState:
         :param pulumi.Input[str] support_url: The support URL that will be opened when sending feedback.
         :param pulumi.Input[bool] switch_locked: Enablement of the ZT client switch lock.
         """
+        _DeviceSettingsPolicyState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            account_id=account_id,
+            allow_mode_switch=allow_mode_switch,
+            allow_updates=allow_updates,
+            allowed_to_leave=allowed_to_leave,
+            auto_connect=auto_connect,
+            captive_portal=captive_portal,
+            default=default,
+            description=description,
+            disable_auto_fallback=disable_auto_fallback,
+            enabled=enabled,
+            exclude_office_ips=exclude_office_ips,
+            match=match,
+            name=name,
+            precedence=precedence,
+            service_mode_v2_mode=service_mode_v2_mode,
+            service_mode_v2_port=service_mode_v2_port,
+            support_url=support_url,
+            switch_locked=switch_locked,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             account_id: Optional[pulumi.Input[str]] = None,
+             allow_mode_switch: Optional[pulumi.Input[bool]] = None,
+             allow_updates: Optional[pulumi.Input[bool]] = None,
+             allowed_to_leave: Optional[pulumi.Input[bool]] = None,
+             auto_connect: Optional[pulumi.Input[int]] = None,
+             captive_portal: Optional[pulumi.Input[int]] = None,
+             default: Optional[pulumi.Input[bool]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             disable_auto_fallback: Optional[pulumi.Input[bool]] = None,
+             enabled: Optional[pulumi.Input[bool]] = None,
+             exclude_office_ips: Optional[pulumi.Input[bool]] = None,
+             match: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             precedence: Optional[pulumi.Input[int]] = None,
+             service_mode_v2_mode: Optional[pulumi.Input[str]] = None,
+             service_mode_v2_port: Optional[pulumi.Input[int]] = None,
+             support_url: Optional[pulumi.Input[str]] = None,
+             switch_locked: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if account_id is not None:
-            pulumi.set(__self__, "account_id", account_id)
+            _setter("account_id", account_id)
         if allow_mode_switch is not None:
-            pulumi.set(__self__, "allow_mode_switch", allow_mode_switch)
+            _setter("allow_mode_switch", allow_mode_switch)
         if allow_updates is not None:
-            pulumi.set(__self__, "allow_updates", allow_updates)
+            _setter("allow_updates", allow_updates)
         if allowed_to_leave is not None:
-            pulumi.set(__self__, "allowed_to_leave", allowed_to_leave)
+            _setter("allowed_to_leave", allowed_to_leave)
         if auto_connect is not None:
-            pulumi.set(__self__, "auto_connect", auto_connect)
+            _setter("auto_connect", auto_connect)
         if captive_portal is not None:
-            pulumi.set(__self__, "captive_portal", captive_portal)
+            _setter("captive_portal", captive_portal)
         if default is not None:
-            pulumi.set(__self__, "default", default)
+            _setter("default", default)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if disable_auto_fallback is not None:
-            pulumi.set(__self__, "disable_auto_fallback", disable_auto_fallback)
+            _setter("disable_auto_fallback", disable_auto_fallback)
         if enabled is not None:
-            pulumi.set(__self__, "enabled", enabled)
+            _setter("enabled", enabled)
         if exclude_office_ips is not None:
-            pulumi.set(__self__, "exclude_office_ips", exclude_office_ips)
+            _setter("exclude_office_ips", exclude_office_ips)
         if match is not None:
-            pulumi.set(__self__, "match", match)
+            _setter("match", match)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if precedence is not None:
-            pulumi.set(__self__, "precedence", precedence)
+            _setter("precedence", precedence)
         if service_mode_v2_mode is not None:
-            pulumi.set(__self__, "service_mode_v2_mode", service_mode_v2_mode)
+            _setter("service_mode_v2_mode", service_mode_v2_mode)
         if service_mode_v2_port is not None:
-            pulumi.set(__self__, "service_mode_v2_port", service_mode_v2_port)
+            _setter("service_mode_v2_port", service_mode_v2_port)
         if support_url is not None:
-            pulumi.set(__self__, "support_url", support_url)
+            _setter("support_url", support_url)
         if switch_locked is not None:
-            pulumi.set(__self__, "switch_locked", switch_locked)
+            _setter("switch_locked", switch_locked)
 
     @property
     @pulumi.getter(name="accountId")
@@ -737,6 +823,10 @@ class DeviceSettingsPolicy(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            DeviceSettingsPolicyArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

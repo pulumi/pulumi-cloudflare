@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['ZoneHoldArgs', 'ZoneHold']
@@ -25,12 +25,27 @@ class ZoneHoldArgs:
         :param pulumi.Input[str] hold_after: The RFC3339 compatible timestamp when to automatically re-enable the zone hold.
         :param pulumi.Input[bool] include_subdomains: Whether to extend to block any subdomain of the given zone.
         """
-        pulumi.set(__self__, "hold", hold)
-        pulumi.set(__self__, "zone_id", zone_id)
+        ZoneHoldArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            hold=hold,
+            zone_id=zone_id,
+            hold_after=hold_after,
+            include_subdomains=include_subdomains,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             hold: pulumi.Input[bool],
+             zone_id: pulumi.Input[str],
+             hold_after: Optional[pulumi.Input[str]] = None,
+             include_subdomains: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("hold", hold)
+        _setter("zone_id", zone_id)
         if hold_after is not None:
-            pulumi.set(__self__, "hold_after", hold_after)
+            _setter("hold_after", hold_after)
         if include_subdomains is not None:
-            pulumi.set(__self__, "include_subdomains", include_subdomains)
+            _setter("include_subdomains", include_subdomains)
 
     @property
     @pulumi.getter
@@ -95,14 +110,29 @@ class _ZoneHoldState:
         :param pulumi.Input[bool] include_subdomains: Whether to extend to block any subdomain of the given zone.
         :param pulumi.Input[str] zone_id: The zone identifier to target for the resource.
         """
+        _ZoneHoldState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            hold=hold,
+            hold_after=hold_after,
+            include_subdomains=include_subdomains,
+            zone_id=zone_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             hold: Optional[pulumi.Input[bool]] = None,
+             hold_after: Optional[pulumi.Input[str]] = None,
+             include_subdomains: Optional[pulumi.Input[bool]] = None,
+             zone_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if hold is not None:
-            pulumi.set(__self__, "hold", hold)
+            _setter("hold", hold)
         if hold_after is not None:
-            pulumi.set(__self__, "hold_after", hold_after)
+            _setter("hold_after", hold_after)
         if include_subdomains is not None:
-            pulumi.set(__self__, "include_subdomains", include_subdomains)
+            _setter("include_subdomains", include_subdomains)
         if zone_id is not None:
-            pulumi.set(__self__, "zone_id", zone_id)
+            _setter("zone_id", zone_id)
 
     @property
     @pulumi.getter
@@ -228,6 +258,10 @@ class ZoneHold(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            ZoneHoldArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

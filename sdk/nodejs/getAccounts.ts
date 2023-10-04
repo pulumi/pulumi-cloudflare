@@ -33,9 +33,6 @@ export function getAccounts(args?: GetAccountsArgs, opts?: pulumi.InvokeOptions)
  * A collection of arguments for invoking getAccounts.
  */
 export interface GetAccountsArgs {
-    /**
-     * The account name to target for the resource.
-     */
     name?: string;
 }
 
@@ -75,8 +72,5 @@ export function getAccountsOutput(args?: GetAccountsOutputArgs, opts?: pulumi.In
  * A collection of arguments for invoking getAccounts.
  */
 export interface GetAccountsOutputArgs {
-    /**
-     * The account name to target for the resource.
-     */
     name?: pulumi.Input<string>;
 }

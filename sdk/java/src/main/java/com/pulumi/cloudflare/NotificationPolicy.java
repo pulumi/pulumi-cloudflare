@@ -105,14 +105,14 @@ public class NotificationPolicy extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.emailIntegrations);
     }
     /**
-     * The status of the notification policy.
+     * State of the pool to alert on.
      * 
      */
     @Export(name="enabled", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> enabled;
 
     /**
-     * @return The status of the notification policy.
+     * @return State of the pool to alert on.
      * 
      */
     public Output<Boolean> enabled() {

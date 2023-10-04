@@ -15,16 +15,32 @@ public final class RulesetRuleExposedCredentialCheckArgs extends com.pulumi.reso
 
     public static final RulesetRuleExposedCredentialCheckArgs Empty = new RulesetRuleExposedCredentialCheckArgs();
 
+    /**
+     * Firewall Rules expression language based on Wireshark display filters for where to check for the &#34;password&#34; value. Refer to the [Firewall Rules language](https://developers.cloudflare.com/firewall/cf-firewall-language).
+     * 
+     */
     @Import(name="passwordExpression")
     private @Nullable Output<String> passwordExpression;
 
+    /**
+     * @return Firewall Rules expression language based on Wireshark display filters for where to check for the &#34;password&#34; value. Refer to the [Firewall Rules language](https://developers.cloudflare.com/firewall/cf-firewall-language).
+     * 
+     */
     public Optional<Output<String>> passwordExpression() {
         return Optional.ofNullable(this.passwordExpression);
     }
 
+    /**
+     * Firewall Rules expression language based on Wireshark display filters for where to check for the &#34;username&#34; value. Refer to the [Firewall Rules language](https://developers.cloudflare.com/firewall/cf-firewall-language).
+     * 
+     */
     @Import(name="usernameExpression")
     private @Nullable Output<String> usernameExpression;
 
+    /**
+     * @return Firewall Rules expression language based on Wireshark display filters for where to check for the &#34;username&#34; value. Refer to the [Firewall Rules language](https://developers.cloudflare.com/firewall/cf-firewall-language).
+     * 
+     */
     public Optional<Output<String>> usernameExpression() {
         return Optional.ofNullable(this.usernameExpression);
     }
@@ -54,20 +70,44 @@ public final class RulesetRuleExposedCredentialCheckArgs extends com.pulumi.reso
             $ = new RulesetRuleExposedCredentialCheckArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param passwordExpression Firewall Rules expression language based on Wireshark display filters for where to check for the &#34;password&#34; value. Refer to the [Firewall Rules language](https://developers.cloudflare.com/firewall/cf-firewall-language).
+         * 
+         * @return builder
+         * 
+         */
         public Builder passwordExpression(@Nullable Output<String> passwordExpression) {
             $.passwordExpression = passwordExpression;
             return this;
         }
 
+        /**
+         * @param passwordExpression Firewall Rules expression language based on Wireshark display filters for where to check for the &#34;password&#34; value. Refer to the [Firewall Rules language](https://developers.cloudflare.com/firewall/cf-firewall-language).
+         * 
+         * @return builder
+         * 
+         */
         public Builder passwordExpression(String passwordExpression) {
             return passwordExpression(Output.of(passwordExpression));
         }
 
+        /**
+         * @param usernameExpression Firewall Rules expression language based on Wireshark display filters for where to check for the &#34;username&#34; value. Refer to the [Firewall Rules language](https://developers.cloudflare.com/firewall/cf-firewall-language).
+         * 
+         * @return builder
+         * 
+         */
         public Builder usernameExpression(@Nullable Output<String> usernameExpression) {
             $.usernameExpression = usernameExpression;
             return this;
         }
 
+        /**
+         * @param usernameExpression Firewall Rules expression language based on Wireshark display filters for where to check for the &#34;username&#34; value. Refer to the [Firewall Rules language](https://developers.cloudflare.com/firewall/cf-firewall-language).
+         * 
+         * @return builder
+         * 
+         */
         public Builder usernameExpression(String usernameExpression) {
             return usernameExpression(Output.of(usernameExpression));
         }

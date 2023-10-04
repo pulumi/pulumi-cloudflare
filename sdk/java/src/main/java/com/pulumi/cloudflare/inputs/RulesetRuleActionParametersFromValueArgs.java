@@ -17,23 +17,47 @@ public final class RulesetRuleActionParametersFromValueArgs extends com.pulumi.r
 
     public static final RulesetRuleActionParametersFromValueArgs Empty = new RulesetRuleActionParametersFromValueArgs();
 
+    /**
+     * Preserve query string for redirect URL.
+     * 
+     */
     @Import(name="preserveQueryString")
     private @Nullable Output<Boolean> preserveQueryString;
 
+    /**
+     * @return Preserve query string for redirect URL.
+     * 
+     */
     public Optional<Output<Boolean>> preserveQueryString() {
         return Optional.ofNullable(this.preserveQueryString);
     }
 
+    /**
+     * Status code for which the edge TTL is applied.
+     * 
+     */
     @Import(name="statusCode")
     private @Nullable Output<Integer> statusCode;
 
+    /**
+     * @return Status code for which the edge TTL is applied.
+     * 
+     */
     public Optional<Output<Integer>> statusCode() {
         return Optional.ofNullable(this.statusCode);
     }
 
+    /**
+     * Target URL for redirect.
+     * 
+     */
     @Import(name="targetUrl")
     private @Nullable Output<RulesetRuleActionParametersFromValueTargetUrlArgs> targetUrl;
 
+    /**
+     * @return Target URL for redirect.
+     * 
+     */
     public Optional<Output<RulesetRuleActionParametersFromValueTargetUrlArgs>> targetUrl() {
         return Optional.ofNullable(this.targetUrl);
     }
@@ -64,29 +88,65 @@ public final class RulesetRuleActionParametersFromValueArgs extends com.pulumi.r
             $ = new RulesetRuleActionParametersFromValueArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param preserveQueryString Preserve query string for redirect URL.
+         * 
+         * @return builder
+         * 
+         */
         public Builder preserveQueryString(@Nullable Output<Boolean> preserveQueryString) {
             $.preserveQueryString = preserveQueryString;
             return this;
         }
 
+        /**
+         * @param preserveQueryString Preserve query string for redirect URL.
+         * 
+         * @return builder
+         * 
+         */
         public Builder preserveQueryString(Boolean preserveQueryString) {
             return preserveQueryString(Output.of(preserveQueryString));
         }
 
+        /**
+         * @param statusCode Status code for which the edge TTL is applied.
+         * 
+         * @return builder
+         * 
+         */
         public Builder statusCode(@Nullable Output<Integer> statusCode) {
             $.statusCode = statusCode;
             return this;
         }
 
+        /**
+         * @param statusCode Status code for which the edge TTL is applied.
+         * 
+         * @return builder
+         * 
+         */
         public Builder statusCode(Integer statusCode) {
             return statusCode(Output.of(statusCode));
         }
 
+        /**
+         * @param targetUrl Target URL for redirect.
+         * 
+         * @return builder
+         * 
+         */
         public Builder targetUrl(@Nullable Output<RulesetRuleActionParametersFromValueTargetUrlArgs> targetUrl) {
             $.targetUrl = targetUrl;
             return this;
         }
 
+        /**
+         * @param targetUrl Target URL for redirect.
+         * 
+         * @return builder
+         * 
+         */
         public Builder targetUrl(RulesetRuleActionParametersFromValueTargetUrlArgs targetUrl) {
             return targetUrl(Output.of(targetUrl));
         }

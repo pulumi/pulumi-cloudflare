@@ -12,9 +12,15 @@ namespace Pulumi.Cloudflare.Inputs
 
     public sealed class RulesetRuleActionParametersFromValueTargetUrlArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Use a value dynamically determined by the Firewall Rules expression language based on Wireshark display filters. Refer to the [Firewall Rules language](https://developers.cloudflare.com/firewall/cf-firewall-language) documentation for all available fields, operators, and functions.
+        /// </summary>
         [Input("expression")]
         public Input<string>? Expression { get; set; }
 
+        /// <summary>
+        /// Status code edge TTL value.
+        /// </summary>
         [Input("value")]
         public Input<string>? Value { get; set; }
 

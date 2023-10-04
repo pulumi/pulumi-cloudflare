@@ -62,16 +62,32 @@ public final class RulesetRuleActionParametersOverridesRuleArgs extends com.pulu
         return Optional.ofNullable(this.id);
     }
 
+    /**
+     * Anomaly score threshold to apply in the ruleset rule override. Only applicable to modsecurity-based rulesets.
+     * 
+     */
     @Import(name="scoreThreshold")
     private @Nullable Output<Integer> scoreThreshold;
 
+    /**
+     * @return Anomaly score threshold to apply in the ruleset rule override. Only applicable to modsecurity-based rulesets.
+     * 
+     */
     public Optional<Output<Integer>> scoreThreshold() {
         return Optional.ofNullable(this.scoreThreshold);
     }
 
+    /**
+     * Sensitivity level for a ruleset rule override.
+     * 
+     */
     @Import(name="sensitivityLevel")
     private @Nullable Output<String> sensitivityLevel;
 
+    /**
+     * @return Sensitivity level for a ruleset rule override.
+     * 
+     */
     public Optional<Output<String>> sensitivityLevel() {
         return Optional.ofNullable(this.sensitivityLevel);
     }
@@ -167,20 +183,44 @@ public final class RulesetRuleActionParametersOverridesRuleArgs extends com.pulu
             return id(Output.of(id));
         }
 
+        /**
+         * @param scoreThreshold Anomaly score threshold to apply in the ruleset rule override. Only applicable to modsecurity-based rulesets.
+         * 
+         * @return builder
+         * 
+         */
         public Builder scoreThreshold(@Nullable Output<Integer> scoreThreshold) {
             $.scoreThreshold = scoreThreshold;
             return this;
         }
 
+        /**
+         * @param scoreThreshold Anomaly score threshold to apply in the ruleset rule override. Only applicable to modsecurity-based rulesets.
+         * 
+         * @return builder
+         * 
+         */
         public Builder scoreThreshold(Integer scoreThreshold) {
             return scoreThreshold(Output.of(scoreThreshold));
         }
 
+        /**
+         * @param sensitivityLevel Sensitivity level for a ruleset rule override.
+         * 
+         * @return builder
+         * 
+         */
         public Builder sensitivityLevel(@Nullable Output<String> sensitivityLevel) {
             $.sensitivityLevel = sensitivityLevel;
             return this;
         }
 
+        /**
+         * @param sensitivityLevel Sensitivity level for a ruleset rule override.
+         * 
+         * @return builder
+         * 
+         */
         public Builder sensitivityLevel(String sensitivityLevel) {
             return sensitivityLevel(Output.of(sensitivityLevel));
         }

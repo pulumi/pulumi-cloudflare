@@ -12,12 +12,21 @@ namespace Pulumi.Cloudflare.Inputs
 
     public sealed class TeamsAccountLoggingSettingsByRuleTypeArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Logging configuration for DNS requests.
+        /// </summary>
         [Input("dns", required: true)]
         public Input<Inputs.TeamsAccountLoggingSettingsByRuleTypeDnsArgs> Dns { get; set; } = null!;
 
+        /// <summary>
+        /// Logging configuration for HTTP requests.
+        /// </summary>
         [Input("http", required: true)]
         public Input<Inputs.TeamsAccountLoggingSettingsByRuleTypeHttpArgs> Http { get; set; } = null!;
 
+        /// <summary>
+        /// Logging configuration for layer 4 requests.
+        /// </summary>
         [Input("l4", required: true)]
         public Input<Inputs.TeamsAccountLoggingSettingsByRuleTypeL4Args> L4 { get; set; } = null!;
 

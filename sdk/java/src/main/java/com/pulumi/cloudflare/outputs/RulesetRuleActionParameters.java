@@ -30,128 +30,388 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class RulesetRuleActionParameters {
+    /**
+     * @return Compression algorithms to use in order of preference.
+     * 
+     */
     private @Nullable List<RulesetRuleActionParametersAlgorithm> algorithms;
+    /**
+     * @return Turn on or off Cloudflare Automatic HTTPS rewrites.
+     * 
+     */
     private @Nullable Boolean automaticHttpsRewrites;
+    /**
+     * @return Indicate which file extensions to minify automatically.
+     * 
+     */
     private @Nullable List<RulesetRuleActionParametersAutominify> autominifies;
+    /**
+     * @return Inspect the visitor&#39;s browser for headers commonly associated with spammers and certain bots.
+     * 
+     */
     private @Nullable Boolean bic;
+    /**
+     * @return List of browser TTL parameters to apply to the request.
+     * 
+     */
     private @Nullable RulesetRuleActionParametersBrowserTtl browserTtl;
+    /**
+     * @return Whether to cache if expression matches.
+     * 
+     */
     private @Nullable Boolean cache;
+    /**
+     * @return List of cache key parameters to apply to the request.
+     * 
+     */
     private @Nullable RulesetRuleActionParametersCacheKey cacheKey;
+    /**
+     * @return Content of the custom error response.
+     * 
+     */
     private @Nullable String content;
+    /**
+     * @return Content-Type of the custom error response.
+     * 
+     */
     private @Nullable String contentType;
+    /**
+     * @return List of cookie values to include as part of custom fields logging.
+     * 
+     */
     private @Nullable List<String> cookieFields;
+    /**
+     * @return Turn off all active Cloudflare Apps.
+     * 
+     */
     private @Nullable Boolean disableApps;
+    /**
+     * @return Turn off railgun feature of the Cloudflare Speed app.
+     * 
+     */
     private @Nullable Boolean disableRailgun;
+    /**
+     * @return Turn off zaraz feature.
+     * 
+     */
     private @Nullable Boolean disableZaraz;
+    /**
+     * @return List of edge TTL parameters to apply to the request.
+     * 
+     */
     private @Nullable RulesetRuleActionParametersEdgeTtl edgeTtl;
+    /**
+     * @return Turn on or off the Cloudflare Email Obfuscation feature of the Cloudflare Scrape Shield app.
+     * 
+     */
     private @Nullable Boolean emailObfuscation;
+    /**
+     * @return Use a list to lookup information for the action.
+     * 
+     */
     private @Nullable RulesetRuleActionParametersFromList fromList;
+    /**
+     * @return Use a value to lookup information for the action.
+     * 
+     */
     private @Nullable RulesetRuleActionParametersFromValue fromValue;
+    /**
+     * @return List of HTTP header modifications to perform in the ruleset rule. Note: Headers are order dependent and must be provided sorted alphabetically ascending based on the `name` value.
+     * 
+     */
     private @Nullable List<RulesetRuleActionParametersHeader> headers;
+    /**
+     * @return Host Header that request origin receives.
+     * 
+     */
     private @Nullable String hostHeader;
+    /**
+     * @return Turn on or off the hotlink protection feature.
+     * 
+     */
     private @Nullable Boolean hotlinkProtection;
     /**
-     * @return The identifier of this resource.
+     * @return Identifier of the action parameter to modify.
      * 
      */
     private @Nullable String id;
     private @Nullable Integer increment;
+    /**
+     * @return List of properties to configure WAF payload logging.
+     * 
+     */
     private @Nullable RulesetRuleActionParametersMatchedData matchedData;
+    /**
+     * @return Turn on or off Cloudflare Mirage of the Cloudflare Speed app.
+     * 
+     */
     private @Nullable Boolean mirage;
+    /**
+     * @return Turn on or off the Cloudflare Opportunistic Encryption feature of the Edge Certificates tab in the Cloudflare SSL/TLS app.
+     * 
+     */
     private @Nullable Boolean opportunisticEncryption;
+    /**
+     * @return List of properties to change request origin.
+     * 
+     */
     private @Nullable RulesetRuleActionParametersOrigin origin;
     private @Nullable Boolean originCacheControl;
+    /**
+     * @return Pass-through error page for origin.
+     * 
+     */
     private @Nullable Boolean originErrorPagePassthru;
+    /**
+     * @return List of override configurations to apply to the ruleset.
+     * 
+     */
     private @Nullable RulesetRuleActionParametersOverrides overrides;
+    /**
+     * @return Point in the request/response lifecycle where the ruleset will be created. Available values: `ddos_l4`, `ddos_l7`, `http_config_settings`, `http_custom_errors`, `http_log_custom_fields`, `http_ratelimit`, `http_request_cache_settings`, `http_request_dynamic_redirect`, `http_request_firewall_custom`, `http_request_firewall_managed`, `http_request_late_transform`, `http_request_origin`, `http_request_redirect`, `http_request_sanitize`, `http_request_sbfm`, `http_request_transform`, `http_response_compression`, `http_response_firewall_managed`, `http_response_headers_transform`, `magic_transit`.
+     * 
+     */
     private @Nullable List<String> phases;
+    /**
+     * @return Apply options from the Polish feature of the Cloudflare Speed app.
+     * 
+     */
     private @Nullable String polish;
+    /**
+     * @return Products to target with the actions. Available values: `bic`, `hot`, `ratelimit`, `securityLevel`, `uablock`, `waf`, `zonelockdown`.
+     * 
+     */
     private @Nullable List<String> products;
     private @Nullable Integer readTimeout;
+    /**
+     * @return List of request headers to include as part of custom fields logging, in lowercase.
+     * 
+     */
     private @Nullable List<String> requestFields;
+    /**
+     * @return Respect strong ETags.
+     * 
+     */
     private @Nullable Boolean respectStrongEtags;
+    /**
+     * @return List of response headers to include as part of custom fields logging, in lowercase.
+     * 
+     */
     private @Nullable List<String> responseFields;
+    /**
+     * @return List of parameters that configure the response given to end users.
+     * 
+     */
     private @Nullable List<RulesetRuleActionParametersResponse> responses;
+    /**
+     * @return Turn on or off Cloudflare Rocket Loader in the Cloudflare Speed app.
+     * 
+     */
     private @Nullable Boolean rocketLoader;
     /**
-     * @return List of rules to apply to the ruleset.
+     * @return List of rule-based overrides.
      * 
      */
     private @Nullable Map<String,String> rules;
+    /**
+     * @return Which ruleset ID to target.
+     * 
+     */
     private @Nullable String ruleset;
+    /**
+     * @return List of managed WAF rule IDs to target. Only valid when the `&#34;action&#34;` is set to skip.
+     * 
+     */
     private @Nullable List<String> rulesets;
+    /**
+     * @return Control options for the Security Level feature from the Security app.
+     * 
+     */
     private @Nullable String securityLevel;
+    /**
+     * @return List of serve stale parameters to apply to the request.
+     * 
+     */
     private @Nullable RulesetRuleActionParametersServeStale serveStale;
+    /**
+     * @return Turn on or off the Server Side Excludes feature of the Cloudflare Scrape Shield app.
+     * 
+     */
     private @Nullable Boolean serverSideExcludes;
+    /**
+     * @return List of properties to manange Server Name Indication.
+     * 
+     */
     private @Nullable RulesetRuleActionParametersSni sni;
+    /**
+     * @return Control options for the SSL feature of the Edge Certificates tab in the Cloudflare SSL/TLS app.
+     * 
+     */
     private @Nullable String ssl;
+    /**
+     * @return Status code for which the edge TTL is applied.
+     * 
+     */
     private @Nullable Integer statusCode;
+    /**
+     * @return Turn on or off the SXG feature.
+     * 
+     */
     private @Nullable Boolean sxg;
+    /**
+     * @return List of URI properties to configure for the ruleset rule when performing URL rewrite transformations.
+     * 
+     */
     private @Nullable RulesetRuleActionParametersUri uri;
+    /**
+     * @return Version of the ruleset to deploy.
+     * 
+     */
     private @Nullable String version;
 
     private RulesetRuleActionParameters() {}
+    /**
+     * @return Compression algorithms to use in order of preference.
+     * 
+     */
     public List<RulesetRuleActionParametersAlgorithm> algorithms() {
         return this.algorithms == null ? List.of() : this.algorithms;
     }
+    /**
+     * @return Turn on or off Cloudflare Automatic HTTPS rewrites.
+     * 
+     */
     public Optional<Boolean> automaticHttpsRewrites() {
         return Optional.ofNullable(this.automaticHttpsRewrites);
     }
+    /**
+     * @return Indicate which file extensions to minify automatically.
+     * 
+     */
     public List<RulesetRuleActionParametersAutominify> autominifies() {
         return this.autominifies == null ? List.of() : this.autominifies;
     }
+    /**
+     * @return Inspect the visitor&#39;s browser for headers commonly associated with spammers and certain bots.
+     * 
+     */
     public Optional<Boolean> bic() {
         return Optional.ofNullable(this.bic);
     }
+    /**
+     * @return List of browser TTL parameters to apply to the request.
+     * 
+     */
     public Optional<RulesetRuleActionParametersBrowserTtl> browserTtl() {
         return Optional.ofNullable(this.browserTtl);
     }
+    /**
+     * @return Whether to cache if expression matches.
+     * 
+     */
     public Optional<Boolean> cache() {
         return Optional.ofNullable(this.cache);
     }
+    /**
+     * @return List of cache key parameters to apply to the request.
+     * 
+     */
     public Optional<RulesetRuleActionParametersCacheKey> cacheKey() {
         return Optional.ofNullable(this.cacheKey);
     }
+    /**
+     * @return Content of the custom error response.
+     * 
+     */
     public Optional<String> content() {
         return Optional.ofNullable(this.content);
     }
+    /**
+     * @return Content-Type of the custom error response.
+     * 
+     */
     public Optional<String> contentType() {
         return Optional.ofNullable(this.contentType);
     }
+    /**
+     * @return List of cookie values to include as part of custom fields logging.
+     * 
+     */
     public List<String> cookieFields() {
         return this.cookieFields == null ? List.of() : this.cookieFields;
     }
+    /**
+     * @return Turn off all active Cloudflare Apps.
+     * 
+     */
     public Optional<Boolean> disableApps() {
         return Optional.ofNullable(this.disableApps);
     }
+    /**
+     * @return Turn off railgun feature of the Cloudflare Speed app.
+     * 
+     */
     public Optional<Boolean> disableRailgun() {
         return Optional.ofNullable(this.disableRailgun);
     }
+    /**
+     * @return Turn off zaraz feature.
+     * 
+     */
     public Optional<Boolean> disableZaraz() {
         return Optional.ofNullable(this.disableZaraz);
     }
+    /**
+     * @return List of edge TTL parameters to apply to the request.
+     * 
+     */
     public Optional<RulesetRuleActionParametersEdgeTtl> edgeTtl() {
         return Optional.ofNullable(this.edgeTtl);
     }
+    /**
+     * @return Turn on or off the Cloudflare Email Obfuscation feature of the Cloudflare Scrape Shield app.
+     * 
+     */
     public Optional<Boolean> emailObfuscation() {
         return Optional.ofNullable(this.emailObfuscation);
     }
+    /**
+     * @return Use a list to lookup information for the action.
+     * 
+     */
     public Optional<RulesetRuleActionParametersFromList> fromList() {
         return Optional.ofNullable(this.fromList);
     }
+    /**
+     * @return Use a value to lookup information for the action.
+     * 
+     */
     public Optional<RulesetRuleActionParametersFromValue> fromValue() {
         return Optional.ofNullable(this.fromValue);
     }
+    /**
+     * @return List of HTTP header modifications to perform in the ruleset rule. Note: Headers are order dependent and must be provided sorted alphabetically ascending based on the `name` value.
+     * 
+     */
     public List<RulesetRuleActionParametersHeader> headers() {
         return this.headers == null ? List.of() : this.headers;
     }
+    /**
+     * @return Host Header that request origin receives.
+     * 
+     */
     public Optional<String> hostHeader() {
         return Optional.ofNullable(this.hostHeader);
     }
+    /**
+     * @return Turn on or off the hotlink protection feature.
+     * 
+     */
     public Optional<Boolean> hotlinkProtection() {
         return Optional.ofNullable(this.hotlinkProtection);
     }
     /**
-     * @return The identifier of this resource.
+     * @return Identifier of the action parameter to modify.
      * 
      */
     public Optional<String> id() {
@@ -160,91 +420,191 @@ public final class RulesetRuleActionParameters {
     public Optional<Integer> increment() {
         return Optional.ofNullable(this.increment);
     }
+    /**
+     * @return List of properties to configure WAF payload logging.
+     * 
+     */
     public Optional<RulesetRuleActionParametersMatchedData> matchedData() {
         return Optional.ofNullable(this.matchedData);
     }
+    /**
+     * @return Turn on or off Cloudflare Mirage of the Cloudflare Speed app.
+     * 
+     */
     public Optional<Boolean> mirage() {
         return Optional.ofNullable(this.mirage);
     }
+    /**
+     * @return Turn on or off the Cloudflare Opportunistic Encryption feature of the Edge Certificates tab in the Cloudflare SSL/TLS app.
+     * 
+     */
     public Optional<Boolean> opportunisticEncryption() {
         return Optional.ofNullable(this.opportunisticEncryption);
     }
+    /**
+     * @return List of properties to change request origin.
+     * 
+     */
     public Optional<RulesetRuleActionParametersOrigin> origin() {
         return Optional.ofNullable(this.origin);
     }
     public Optional<Boolean> originCacheControl() {
         return Optional.ofNullable(this.originCacheControl);
     }
+    /**
+     * @return Pass-through error page for origin.
+     * 
+     */
     public Optional<Boolean> originErrorPagePassthru() {
         return Optional.ofNullable(this.originErrorPagePassthru);
     }
+    /**
+     * @return List of override configurations to apply to the ruleset.
+     * 
+     */
     public Optional<RulesetRuleActionParametersOverrides> overrides() {
         return Optional.ofNullable(this.overrides);
     }
+    /**
+     * @return Point in the request/response lifecycle where the ruleset will be created. Available values: `ddos_l4`, `ddos_l7`, `http_config_settings`, `http_custom_errors`, `http_log_custom_fields`, `http_ratelimit`, `http_request_cache_settings`, `http_request_dynamic_redirect`, `http_request_firewall_custom`, `http_request_firewall_managed`, `http_request_late_transform`, `http_request_origin`, `http_request_redirect`, `http_request_sanitize`, `http_request_sbfm`, `http_request_transform`, `http_response_compression`, `http_response_firewall_managed`, `http_response_headers_transform`, `magic_transit`.
+     * 
+     */
     public List<String> phases() {
         return this.phases == null ? List.of() : this.phases;
     }
+    /**
+     * @return Apply options from the Polish feature of the Cloudflare Speed app.
+     * 
+     */
     public Optional<String> polish() {
         return Optional.ofNullable(this.polish);
     }
+    /**
+     * @return Products to target with the actions. Available values: `bic`, `hot`, `ratelimit`, `securityLevel`, `uablock`, `waf`, `zonelockdown`.
+     * 
+     */
     public List<String> products() {
         return this.products == null ? List.of() : this.products;
     }
     public Optional<Integer> readTimeout() {
         return Optional.ofNullable(this.readTimeout);
     }
+    /**
+     * @return List of request headers to include as part of custom fields logging, in lowercase.
+     * 
+     */
     public List<String> requestFields() {
         return this.requestFields == null ? List.of() : this.requestFields;
     }
+    /**
+     * @return Respect strong ETags.
+     * 
+     */
     public Optional<Boolean> respectStrongEtags() {
         return Optional.ofNullable(this.respectStrongEtags);
     }
+    /**
+     * @return List of response headers to include as part of custom fields logging, in lowercase.
+     * 
+     */
     public List<String> responseFields() {
         return this.responseFields == null ? List.of() : this.responseFields;
     }
+    /**
+     * @return List of parameters that configure the response given to end users.
+     * 
+     */
     public List<RulesetRuleActionParametersResponse> responses() {
         return this.responses == null ? List.of() : this.responses;
     }
+    /**
+     * @return Turn on or off Cloudflare Rocket Loader in the Cloudflare Speed app.
+     * 
+     */
     public Optional<Boolean> rocketLoader() {
         return Optional.ofNullable(this.rocketLoader);
     }
     /**
-     * @return List of rules to apply to the ruleset.
+     * @return List of rule-based overrides.
      * 
      */
     public Map<String,String> rules() {
         return this.rules == null ? Map.of() : this.rules;
     }
+    /**
+     * @return Which ruleset ID to target.
+     * 
+     */
     public Optional<String> ruleset() {
         return Optional.ofNullable(this.ruleset);
     }
+    /**
+     * @return List of managed WAF rule IDs to target. Only valid when the `&#34;action&#34;` is set to skip.
+     * 
+     */
     public List<String> rulesets() {
         return this.rulesets == null ? List.of() : this.rulesets;
     }
+    /**
+     * @return Control options for the Security Level feature from the Security app.
+     * 
+     */
     public Optional<String> securityLevel() {
         return Optional.ofNullable(this.securityLevel);
     }
+    /**
+     * @return List of serve stale parameters to apply to the request.
+     * 
+     */
     public Optional<RulesetRuleActionParametersServeStale> serveStale() {
         return Optional.ofNullable(this.serveStale);
     }
+    /**
+     * @return Turn on or off the Server Side Excludes feature of the Cloudflare Scrape Shield app.
+     * 
+     */
     public Optional<Boolean> serverSideExcludes() {
         return Optional.ofNullable(this.serverSideExcludes);
     }
+    /**
+     * @return List of properties to manange Server Name Indication.
+     * 
+     */
     public Optional<RulesetRuleActionParametersSni> sni() {
         return Optional.ofNullable(this.sni);
     }
+    /**
+     * @return Control options for the SSL feature of the Edge Certificates tab in the Cloudflare SSL/TLS app.
+     * 
+     */
     public Optional<String> ssl() {
         return Optional.ofNullable(this.ssl);
     }
+    /**
+     * @return Status code for which the edge TTL is applied.
+     * 
+     */
     public Optional<Integer> statusCode() {
         return Optional.ofNullable(this.statusCode);
     }
+    /**
+     * @return Turn on or off the SXG feature.
+     * 
+     */
     public Optional<Boolean> sxg() {
         return Optional.ofNullable(this.sxg);
     }
+    /**
+     * @return List of URI properties to configure for the ruleset rule when performing URL rewrite transformations.
+     * 
+     */
     public Optional<RulesetRuleActionParametersUri> uri() {
         return Optional.ofNullable(this.uri);
     }
+    /**
+     * @return Version of the ruleset to deploy.
+     * 
+     */
     public Optional<String> version() {
         return Optional.ofNullable(this.version);
     }

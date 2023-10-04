@@ -13,6 +13,9 @@ namespace Pulumi.Cloudflare.Outputs
     [OutputType]
     public sealed class RulesetRuleActionParametersCacheKeyCustomKeyHost
     {
+        /// <summary>
+        /// Resolve hostname to IP address.
+        /// </summary>
         public readonly bool? Resolved;
 
         [OutputConstructor]

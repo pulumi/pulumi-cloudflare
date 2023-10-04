@@ -16,10 +16,6 @@ public final class NotificationPolicyWebhooksIntegration {
      * 
      */
     private String id;
-    /**
-     * @return The name of the notification policy.
-     * 
-     */
     private @Nullable String name;
 
     private NotificationPolicyWebhooksIntegration() {}
@@ -30,10 +26,6 @@ public final class NotificationPolicyWebhooksIntegration {
     public String id() {
         return this.id;
     }
-    /**
-     * @return The name of the notification policy.
-     * 
-     */
     public Optional<String> name() {
         return Optional.ofNullable(this.name);
     }

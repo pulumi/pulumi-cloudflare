@@ -13,11 +13,17 @@ namespace Pulumi.Cloudflare.Outputs
     [OutputType]
     public sealed class PagesProjectDeploymentConfigsPreviewServiceBinding
     {
+        /// <summary>
+        /// The name of the Worker environment to bind to.
+        /// </summary>
         public readonly string? Environment;
         /// <summary>
-        /// Name of the project.
+        /// The global variable for the binding in your Worker code.
         /// </summary>
         public readonly string Name;
+        /// <summary>
+        /// The name of the Worker to bind to.
+        /// </summary>
         public readonly string Service;
 
         [OutputConstructor]

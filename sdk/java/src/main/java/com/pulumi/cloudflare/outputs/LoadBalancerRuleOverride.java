@@ -30,7 +30,15 @@ public final class LoadBalancerRuleOverride {
      * 
      */
     private @Nullable List<LoadBalancerRuleOverrideCountryPool> countryPools;
+    /**
+     * @return A list of pool IDs ordered by their failover priority. Used whenever `pop_pools`/`country_pools`/`region_pools` are not defined.
+     * 
+     */
     private @Nullable List<String> defaultPools;
+    /**
+     * @return The pool ID to use when all other pools are detected as unhealthy.
+     * 
+     */
     private @Nullable String fallbackPool;
     /**
      * @return Controls location-based steering for non-proxied requests.
@@ -53,12 +61,12 @@ public final class LoadBalancerRuleOverride {
      */
     private @Nullable List<LoadBalancerRuleOverrideRegionPool> regionPools;
     /**
-     * @return Specifies the type of session affinity the load balancer should use unless specified as `none` or `&#34;&#34;` (default). With value `cookie`, on the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy then a new origin server is calculated and used. Value `ip_cookie` behaves the same as `cookie` except the initial origin selection is stable and based on the client&#39;s IP address. Available values: `&#34;&#34;`, `none`, `cookie`, `ip_cookie`, `header`. Defaults to `none`.
+     * @return Configure attributes for session affinity.
      * 
      */
     private @Nullable String sessionAffinity;
     /**
-     * @return Configure attributes for session affinity.
+     * @return Configure attributes for session affinity. Note that the property `drain_duration` is not currently supported as a rule override.
      * 
      */
     private @Nullable List<LoadBalancerRuleOverrideSessionAffinityAttribute> sessionAffinityAttributes;
@@ -73,7 +81,7 @@ public final class LoadBalancerRuleOverride {
      */
     private @Nullable String steeringPolicy;
     /**
-     * @return Time to live (TTL) of the DNS entry for the IP address returned by this load balancer. This cannot be set for proxied load balancers. Defaults to `30`. Conflicts with `proxied`.
+     * @return Time to live (TTL) of the DNS entry for the IP address returned by this load balancer. This cannot be set for proxied load balancers. Defaults to `30`.
      * 
      */
     private @Nullable Integer ttl;
@@ -93,9 +101,17 @@ public final class LoadBalancerRuleOverride {
     public List<LoadBalancerRuleOverrideCountryPool> countryPools() {
         return this.countryPools == null ? List.of() : this.countryPools;
     }
+    /**
+     * @return A list of pool IDs ordered by their failover priority. Used whenever `pop_pools`/`country_pools`/`region_pools` are not defined.
+     * 
+     */
     public List<String> defaultPools() {
         return this.defaultPools == null ? List.of() : this.defaultPools;
     }
+    /**
+     * @return The pool ID to use when all other pools are detected as unhealthy.
+     * 
+     */
     public Optional<String> fallbackPool() {
         return Optional.ofNullable(this.fallbackPool);
     }
@@ -128,14 +144,14 @@ public final class LoadBalancerRuleOverride {
         return this.regionPools == null ? List.of() : this.regionPools;
     }
     /**
-     * @return Specifies the type of session affinity the load balancer should use unless specified as `none` or `&#34;&#34;` (default). With value `cookie`, on the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy then a new origin server is calculated and used. Value `ip_cookie` behaves the same as `cookie` except the initial origin selection is stable and based on the client&#39;s IP address. Available values: `&#34;&#34;`, `none`, `cookie`, `ip_cookie`, `header`. Defaults to `none`.
+     * @return Configure attributes for session affinity.
      * 
      */
     public Optional<String> sessionAffinity() {
         return Optional.ofNullable(this.sessionAffinity);
     }
     /**
-     * @return Configure attributes for session affinity.
+     * @return Configure attributes for session affinity. Note that the property `drain_duration` is not currently supported as a rule override.
      * 
      */
     public List<LoadBalancerRuleOverrideSessionAffinityAttribute> sessionAffinityAttributes() {
@@ -156,7 +172,7 @@ public final class LoadBalancerRuleOverride {
         return Optional.ofNullable(this.steeringPolicy);
     }
     /**
-     * @return Time to live (TTL) of the DNS entry for the IP address returned by this load balancer. This cannot be set for proxied load balancers. Defaults to `30`. Conflicts with `proxied`.
+     * @return Time to live (TTL) of the DNS entry for the IP address returned by this load balancer. This cannot be set for proxied load balancers. Defaults to `30`.
      * 
      */
     public Optional<Integer> ttl() {

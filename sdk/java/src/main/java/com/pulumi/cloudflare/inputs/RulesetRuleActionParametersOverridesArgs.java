@@ -19,45 +19,77 @@ public final class RulesetRuleActionParametersOverridesArgs extends com.pulumi.r
 
     public static final RulesetRuleActionParametersOverridesArgs Empty = new RulesetRuleActionParametersOverridesArgs();
 
+    /**
+     * Action to perform in the ruleset rule. Available values: `block`, `challenge`, `compress_response`, `ddos_dynamic`, `ddos_mitigation`, `execute`, `force_connection_close`, `js_challenge`, `log`, `log_custom_field`, `managed_challenge`, `redirect`, `rewrite`, `route`, `score`, `serve_error`, `set_cache_settings`, `set_config`, `skip`.
+     * 
+     */
     @Import(name="action")
     private @Nullable Output<String> action;
 
+    /**
+     * @return Action to perform in the ruleset rule. Available values: `block`, `challenge`, `compress_response`, `ddos_dynamic`, `ddos_mitigation`, `execute`, `force_connection_close`, `js_challenge`, `log`, `log_custom_field`, `managed_challenge`, `redirect`, `rewrite`, `route`, `score`, `serve_error`, `set_cache_settings`, `set_config`, `skip`.
+     * 
+     */
     public Optional<Output<String>> action() {
         return Optional.ofNullable(this.action);
     }
 
+    /**
+     * List of tag-based overrides.
+     * 
+     */
     @Import(name="categories")
     private @Nullable Output<List<RulesetRuleActionParametersOverridesCategoryArgs>> categories;
 
+    /**
+     * @return List of tag-based overrides.
+     * 
+     */
     public Optional<Output<List<RulesetRuleActionParametersOverridesCategoryArgs>>> categories() {
         return Optional.ofNullable(this.categories);
     }
 
+    /**
+     * Defines if the current tag-level override enables or disables the ruleset rules with the specified tag.
+     * 
+     */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
+    /**
+     * @return Defines if the current tag-level override enables or disables the ruleset rules with the specified tag.
+     * 
+     */
     public Optional<Output<Boolean>> enabled() {
         return Optional.ofNullable(this.enabled);
     }
 
     /**
-     * List of rules to apply to the ruleset.
+     * List of rule-based overrides.
      * 
      */
     @Import(name="rules")
     private @Nullable Output<List<RulesetRuleActionParametersOverridesRuleArgs>> rules;
 
     /**
-     * @return List of rules to apply to the ruleset.
+     * @return List of rule-based overrides.
      * 
      */
     public Optional<Output<List<RulesetRuleActionParametersOverridesRuleArgs>>> rules() {
         return Optional.ofNullable(this.rules);
     }
 
+    /**
+     * Sensitivity level for a ruleset rule override.
+     * 
+     */
     @Import(name="sensitivityLevel")
     private @Nullable Output<String> sensitivityLevel;
 
+    /**
+     * @return Sensitivity level for a ruleset rule override.
+     * 
+     */
     public Optional<Output<String>> sensitivityLevel() {
         return Optional.ofNullable(this.sensitivityLevel);
     }
@@ -90,39 +122,81 @@ public final class RulesetRuleActionParametersOverridesArgs extends com.pulumi.r
             $ = new RulesetRuleActionParametersOverridesArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param action Action to perform in the ruleset rule. Available values: `block`, `challenge`, `compress_response`, `ddos_dynamic`, `ddos_mitigation`, `execute`, `force_connection_close`, `js_challenge`, `log`, `log_custom_field`, `managed_challenge`, `redirect`, `rewrite`, `route`, `score`, `serve_error`, `set_cache_settings`, `set_config`, `skip`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder action(@Nullable Output<String> action) {
             $.action = action;
             return this;
         }
 
+        /**
+         * @param action Action to perform in the ruleset rule. Available values: `block`, `challenge`, `compress_response`, `ddos_dynamic`, `ddos_mitigation`, `execute`, `force_connection_close`, `js_challenge`, `log`, `log_custom_field`, `managed_challenge`, `redirect`, `rewrite`, `route`, `score`, `serve_error`, `set_cache_settings`, `set_config`, `skip`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder action(String action) {
             return action(Output.of(action));
         }
 
+        /**
+         * @param categories List of tag-based overrides.
+         * 
+         * @return builder
+         * 
+         */
         public Builder categories(@Nullable Output<List<RulesetRuleActionParametersOverridesCategoryArgs>> categories) {
             $.categories = categories;
             return this;
         }
 
+        /**
+         * @param categories List of tag-based overrides.
+         * 
+         * @return builder
+         * 
+         */
         public Builder categories(List<RulesetRuleActionParametersOverridesCategoryArgs> categories) {
             return categories(Output.of(categories));
         }
 
+        /**
+         * @param categories List of tag-based overrides.
+         * 
+         * @return builder
+         * 
+         */
         public Builder categories(RulesetRuleActionParametersOverridesCategoryArgs... categories) {
             return categories(List.of(categories));
         }
 
+        /**
+         * @param enabled Defines if the current tag-level override enables or disables the ruleset rules with the specified tag.
+         * 
+         * @return builder
+         * 
+         */
         public Builder enabled(@Nullable Output<Boolean> enabled) {
             $.enabled = enabled;
             return this;
         }
 
+        /**
+         * @param enabled Defines if the current tag-level override enables or disables the ruleset rules with the specified tag.
+         * 
+         * @return builder
+         * 
+         */
         public Builder enabled(Boolean enabled) {
             return enabled(Output.of(enabled));
         }
 
         /**
-         * @param rules List of rules to apply to the ruleset.
+         * @param rules List of rule-based overrides.
          * 
          * @return builder
          * 
@@ -133,7 +207,7 @@ public final class RulesetRuleActionParametersOverridesArgs extends com.pulumi.r
         }
 
         /**
-         * @param rules List of rules to apply to the ruleset.
+         * @param rules List of rule-based overrides.
          * 
          * @return builder
          * 
@@ -143,7 +217,7 @@ public final class RulesetRuleActionParametersOverridesArgs extends com.pulumi.r
         }
 
         /**
-         * @param rules List of rules to apply to the ruleset.
+         * @param rules List of rule-based overrides.
          * 
          * @return builder
          * 
@@ -152,11 +226,23 @@ public final class RulesetRuleActionParametersOverridesArgs extends com.pulumi.r
             return rules(List.of(rules));
         }
 
+        /**
+         * @param sensitivityLevel Sensitivity level for a ruleset rule override.
+         * 
+         * @return builder
+         * 
+         */
         public Builder sensitivityLevel(@Nullable Output<String> sensitivityLevel) {
             $.sensitivityLevel = sensitivityLevel;
             return this;
         }
 
+        /**
+         * @param sensitivityLevel Sensitivity level for a ruleset rule override.
+         * 
+         * @return builder
+         * 
+         */
         public Builder sensitivityLevel(String sensitivityLevel) {
             return sensitivityLevel(Output.of(sensitivityLevel));
         }

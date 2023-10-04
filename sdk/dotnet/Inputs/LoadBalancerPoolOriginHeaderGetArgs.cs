@@ -12,11 +12,18 @@ namespace Pulumi.Cloudflare.Inputs
 
     public sealed class LoadBalancerPoolOriginHeaderGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// HTTP request headers.
+        /// </summary>
         [Input("header", required: true)]
         public Input<string> Header { get; set; } = null!;
 
         [Input("values", required: true)]
         private InputList<string>? _values;
+
+        /// <summary>
+        /// Values for the HTTP headers.
+        /// </summary>
         public InputList<string> Values
         {
             get => _values ?? (_values = new InputList<string>());

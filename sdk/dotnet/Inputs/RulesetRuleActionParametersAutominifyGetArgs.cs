@@ -12,12 +12,21 @@ namespace Pulumi.Cloudflare.Inputs
 
     public sealed class RulesetRuleActionParametersAutominifyGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// CSS minification.
+        /// </summary>
         [Input("css")]
         public Input<bool>? Css { get; set; }
 
+        /// <summary>
+        /// HTML minification.
+        /// </summary>
         [Input("html")]
         public Input<bool>? Html { get; set; }
 
+        /// <summary>
+        /// JS minification.
+        /// </summary>
         [Input("js")]
         public Input<bool>? Js { get; set; }
 

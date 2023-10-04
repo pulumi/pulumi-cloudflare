@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -25,9 +25,22 @@ class TunnelConfigArgs:
         :param pulumi.Input['TunnelConfigConfigArgs'] config: Configuration block for Tunnel Configuration.
         :param pulumi.Input[str] tunnel_id: Identifier of the Tunnel to target for this configuration.
         """
-        pulumi.set(__self__, "account_id", account_id)
-        pulumi.set(__self__, "config", config)
-        pulumi.set(__self__, "tunnel_id", tunnel_id)
+        TunnelConfigArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            account_id=account_id,
+            config=config,
+            tunnel_id=tunnel_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             account_id: pulumi.Input[str],
+             config: pulumi.Input['TunnelConfigConfigArgs'],
+             tunnel_id: pulumi.Input[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("account_id", account_id)
+        _setter("config", config)
+        _setter("tunnel_id", tunnel_id)
 
     @property
     @pulumi.getter(name="accountId")
@@ -78,12 +91,25 @@ class _TunnelConfigState:
         :param pulumi.Input['TunnelConfigConfigArgs'] config: Configuration block for Tunnel Configuration.
         :param pulumi.Input[str] tunnel_id: Identifier of the Tunnel to target for this configuration.
         """
+        _TunnelConfigState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            account_id=account_id,
+            config=config,
+            tunnel_id=tunnel_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             account_id: Optional[pulumi.Input[str]] = None,
+             config: Optional[pulumi.Input['TunnelConfigConfigArgs']] = None,
+             tunnel_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if account_id is not None:
-            pulumi.set(__self__, "account_id", account_id)
+            _setter("account_id", account_id)
         if config is not None:
-            pulumi.set(__self__, "config", config)
+            _setter("config", config)
         if tunnel_id is not None:
-            pulumi.set(__self__, "tunnel_id", tunnel_id)
+            _setter("tunnel_id", tunnel_id)
 
     @property
     @pulumi.getter(name="accountId")
@@ -301,6 +327,10 @@ class TunnelConfig(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            TunnelConfigArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -321,6 +351,11 @@ class TunnelConfig(pulumi.CustomResource):
             if account_id is None and not opts.urn:
                 raise TypeError("Missing required property 'account_id'")
             __props__.__dict__["account_id"] = account_id
+            if config is not None and not isinstance(config, TunnelConfigConfigArgs):
+                config = config or {}
+                def _setter(key, value):
+                    config[key] = value
+                TunnelConfigConfigArgs._configure(_setter, **config)
             if config is None and not opts.urn:
                 raise TypeError("Missing required property 'config'")
             __props__.__dict__["config"] = config

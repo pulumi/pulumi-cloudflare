@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['OriginCaCertificateArgs', 'OriginCaCertificate']
@@ -27,13 +27,30 @@ class OriginCaCertificateArgs:
         :param pulumi.Input[int] min_days_for_renewal: Number of days prior to the expiry to trigger a renewal of the certificate if a Terraform operation is run.
         :param pulumi.Input[int] requested_validity: The number of days for which the certificate should be valid. Available values: `7`, `30`, `90`, `365`, `730`, `1095`, `5475`. **Modifying this attribute will force creation of a new resource.**
         """
-        pulumi.set(__self__, "csr", csr)
-        pulumi.set(__self__, "hostnames", hostnames)
-        pulumi.set(__self__, "request_type", request_type)
+        OriginCaCertificateArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            csr=csr,
+            hostnames=hostnames,
+            request_type=request_type,
+            min_days_for_renewal=min_days_for_renewal,
+            requested_validity=requested_validity,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             csr: pulumi.Input[str],
+             hostnames: pulumi.Input[Sequence[pulumi.Input[str]]],
+             request_type: pulumi.Input[str],
+             min_days_for_renewal: Optional[pulumi.Input[int]] = None,
+             requested_validity: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("csr", csr)
+        _setter("hostnames", hostnames)
+        _setter("request_type", request_type)
         if min_days_for_renewal is not None:
-            pulumi.set(__self__, "min_days_for_renewal", min_days_for_renewal)
+            _setter("min_days_for_renewal", min_days_for_renewal)
         if requested_validity is not None:
-            pulumi.set(__self__, "requested_validity", requested_validity)
+            _setter("requested_validity", requested_validity)
 
     @property
     @pulumi.getter
@@ -116,20 +133,41 @@ class _OriginCaCertificateState:
         :param pulumi.Input[str] request_type: The signature type desired on the certificate. Available values: `origin-rsa`, `origin-ecc`, `keyless-certificate`. **Modifying this attribute will force creation of a new resource.**
         :param pulumi.Input[int] requested_validity: The number of days for which the certificate should be valid. Available values: `7`, `30`, `90`, `365`, `730`, `1095`, `5475`. **Modifying this attribute will force creation of a new resource.**
         """
+        _OriginCaCertificateState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            certificate=certificate,
+            csr=csr,
+            expires_on=expires_on,
+            hostnames=hostnames,
+            min_days_for_renewal=min_days_for_renewal,
+            request_type=request_type,
+            requested_validity=requested_validity,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             certificate: Optional[pulumi.Input[str]] = None,
+             csr: Optional[pulumi.Input[str]] = None,
+             expires_on: Optional[pulumi.Input[str]] = None,
+             hostnames: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             min_days_for_renewal: Optional[pulumi.Input[int]] = None,
+             request_type: Optional[pulumi.Input[str]] = None,
+             requested_validity: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if certificate is not None:
-            pulumi.set(__self__, "certificate", certificate)
+            _setter("certificate", certificate)
         if csr is not None:
-            pulumi.set(__self__, "csr", csr)
+            _setter("csr", csr)
         if expires_on is not None:
-            pulumi.set(__self__, "expires_on", expires_on)
+            _setter("expires_on", expires_on)
         if hostnames is not None:
-            pulumi.set(__self__, "hostnames", hostnames)
+            _setter("hostnames", hostnames)
         if min_days_for_renewal is not None:
-            pulumi.set(__self__, "min_days_for_renewal", min_days_for_renewal)
+            _setter("min_days_for_renewal", min_days_for_renewal)
         if request_type is not None:
-            pulumi.set(__self__, "request_type", request_type)
+            _setter("request_type", request_type)
         if requested_validity is not None:
-            pulumi.set(__self__, "requested_validity", requested_validity)
+            _setter("requested_validity", requested_validity)
 
     @property
     @pulumi.getter
@@ -307,6 +345,10 @@ class OriginCaCertificate(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            OriginCaCertificateArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

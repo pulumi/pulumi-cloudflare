@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -30,34 +30,63 @@ class TeamsRuleArgs:
         """
         The set of arguments for constructing a TeamsRule resource.
         :param pulumi.Input[str] account_id: The account identifier to target for the resource.
-        :param pulumi.Input[str] action: The action executed by matched teams rule. Available values: `allow`, `block`, `safesearch`, `ytrestricted`, `on`, `off`, `scan`, `noscan`, `isolate`, `noisolate`, `override`, `l4_override`, `egress`, `audit_ssh`.
+        :param pulumi.Input[str] action: Action to be taken when the SSL certificate of upstream is invalid. Available values: `pass_through`, `block`, `error`.
         :param pulumi.Input[str] description: The description of the teams rule.
         :param pulumi.Input[str] name: The name of the teams rule.
         :param pulumi.Input[int] precedence: The evaluation precedence of the teams rule.
         :param pulumi.Input[str] device_posture: The wirefilter expression to be used for device_posture check matching.
-        :param pulumi.Input[bool] enabled: Indicator of rule enablement.
+        :param pulumi.Input[bool] enabled: Enable or disable DLP Payload Logging for this rule.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] filters: The protocol or layer to evaluate the traffic and identity expressions.
         :param pulumi.Input[str] identity: The wirefilter expression to be used for identity matching.
         :param pulumi.Input['TeamsRuleRuleSettingsArgs'] rule_settings: Additional rule settings.
         :param pulumi.Input[str] traffic: The wirefilter expression to be used for traffic matching.
         """
-        pulumi.set(__self__, "account_id", account_id)
-        pulumi.set(__self__, "action", action)
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "precedence", precedence)
+        TeamsRuleArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            account_id=account_id,
+            action=action,
+            description=description,
+            name=name,
+            precedence=precedence,
+            device_posture=device_posture,
+            enabled=enabled,
+            filters=filters,
+            identity=identity,
+            rule_settings=rule_settings,
+            traffic=traffic,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             account_id: pulumi.Input[str],
+             action: pulumi.Input[str],
+             description: pulumi.Input[str],
+             name: pulumi.Input[str],
+             precedence: pulumi.Input[int],
+             device_posture: Optional[pulumi.Input[str]] = None,
+             enabled: Optional[pulumi.Input[bool]] = None,
+             filters: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             identity: Optional[pulumi.Input[str]] = None,
+             rule_settings: Optional[pulumi.Input['TeamsRuleRuleSettingsArgs']] = None,
+             traffic: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("account_id", account_id)
+        _setter("action", action)
+        _setter("description", description)
+        _setter("name", name)
+        _setter("precedence", precedence)
         if device_posture is not None:
-            pulumi.set(__self__, "device_posture", device_posture)
+            _setter("device_posture", device_posture)
         if enabled is not None:
-            pulumi.set(__self__, "enabled", enabled)
+            _setter("enabled", enabled)
         if filters is not None:
-            pulumi.set(__self__, "filters", filters)
+            _setter("filters", filters)
         if identity is not None:
-            pulumi.set(__self__, "identity", identity)
+            _setter("identity", identity)
         if rule_settings is not None:
-            pulumi.set(__self__, "rule_settings", rule_settings)
+            _setter("rule_settings", rule_settings)
         if traffic is not None:
-            pulumi.set(__self__, "traffic", traffic)
+            _setter("traffic", traffic)
 
     @property
     @pulumi.getter(name="accountId")
@@ -75,7 +104,7 @@ class TeamsRuleArgs:
     @pulumi.getter
     def action(self) -> pulumi.Input[str]:
         """
-        The action executed by matched teams rule. Available values: `allow`, `block`, `safesearch`, `ytrestricted`, `on`, `off`, `scan`, `noscan`, `isolate`, `noisolate`, `override`, `l4_override`, `egress`, `audit_ssh`.
+        Action to be taken when the SSL certificate of upstream is invalid. Available values: `pass_through`, `block`, `error`.
         """
         return pulumi.get(self, "action")
 
@@ -135,7 +164,7 @@ class TeamsRuleArgs:
     @pulumi.getter
     def enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        Indicator of rule enablement.
+        Enable or disable DLP Payload Logging for this rule.
         """
         return pulumi.get(self, "enabled")
 
@@ -210,10 +239,10 @@ class _TeamsRuleState:
         """
         Input properties used for looking up and filtering TeamsRule resources.
         :param pulumi.Input[str] account_id: The account identifier to target for the resource.
-        :param pulumi.Input[str] action: The action executed by matched teams rule. Available values: `allow`, `block`, `safesearch`, `ytrestricted`, `on`, `off`, `scan`, `noscan`, `isolate`, `noisolate`, `override`, `l4_override`, `egress`, `audit_ssh`.
+        :param pulumi.Input[str] action: Action to be taken when the SSL certificate of upstream is invalid. Available values: `pass_through`, `block`, `error`.
         :param pulumi.Input[str] description: The description of the teams rule.
         :param pulumi.Input[str] device_posture: The wirefilter expression to be used for device_posture check matching.
-        :param pulumi.Input[bool] enabled: Indicator of rule enablement.
+        :param pulumi.Input[bool] enabled: Enable or disable DLP Payload Logging for this rule.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] filters: The protocol or layer to evaluate the traffic and identity expressions.
         :param pulumi.Input[str] identity: The wirefilter expression to be used for identity matching.
         :param pulumi.Input[str] name: The name of the teams rule.
@@ -221,30 +250,61 @@ class _TeamsRuleState:
         :param pulumi.Input['TeamsRuleRuleSettingsArgs'] rule_settings: Additional rule settings.
         :param pulumi.Input[str] traffic: The wirefilter expression to be used for traffic matching.
         """
+        _TeamsRuleState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            account_id=account_id,
+            action=action,
+            description=description,
+            device_posture=device_posture,
+            enabled=enabled,
+            filters=filters,
+            identity=identity,
+            name=name,
+            precedence=precedence,
+            rule_settings=rule_settings,
+            traffic=traffic,
+            version=version,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             account_id: Optional[pulumi.Input[str]] = None,
+             action: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             device_posture: Optional[pulumi.Input[str]] = None,
+             enabled: Optional[pulumi.Input[bool]] = None,
+             filters: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             identity: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             precedence: Optional[pulumi.Input[int]] = None,
+             rule_settings: Optional[pulumi.Input['TeamsRuleRuleSettingsArgs']] = None,
+             traffic: Optional[pulumi.Input[str]] = None,
+             version: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if account_id is not None:
-            pulumi.set(__self__, "account_id", account_id)
+            _setter("account_id", account_id)
         if action is not None:
-            pulumi.set(__self__, "action", action)
+            _setter("action", action)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if device_posture is not None:
-            pulumi.set(__self__, "device_posture", device_posture)
+            _setter("device_posture", device_posture)
         if enabled is not None:
-            pulumi.set(__self__, "enabled", enabled)
+            _setter("enabled", enabled)
         if filters is not None:
-            pulumi.set(__self__, "filters", filters)
+            _setter("filters", filters)
         if identity is not None:
-            pulumi.set(__self__, "identity", identity)
+            _setter("identity", identity)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if precedence is not None:
-            pulumi.set(__self__, "precedence", precedence)
+            _setter("precedence", precedence)
         if rule_settings is not None:
-            pulumi.set(__self__, "rule_settings", rule_settings)
+            _setter("rule_settings", rule_settings)
         if traffic is not None:
-            pulumi.set(__self__, "traffic", traffic)
+            _setter("traffic", traffic)
         if version is not None:
-            pulumi.set(__self__, "version", version)
+            _setter("version", version)
 
     @property
     @pulumi.getter(name="accountId")
@@ -262,7 +322,7 @@ class _TeamsRuleState:
     @pulumi.getter
     def action(self) -> Optional[pulumi.Input[str]]:
         """
-        The action executed by matched teams rule. Available values: `allow`, `block`, `safesearch`, `ytrestricted`, `on`, `off`, `scan`, `noscan`, `isolate`, `noisolate`, `override`, `l4_override`, `egress`, `audit_ssh`.
+        Action to be taken when the SSL certificate of upstream is invalid. Available values: `pass_through`, `block`, `error`.
         """
         return pulumi.get(self, "action")
 
@@ -298,7 +358,7 @@ class _TeamsRuleState:
     @pulumi.getter
     def enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        Indicator of rule enablement.
+        Enable or disable DLP Payload Logging for this rule.
         """
         return pulumi.get(self, "enabled")
 
@@ -437,10 +497,10 @@ class TeamsRule(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_id: The account identifier to target for the resource.
-        :param pulumi.Input[str] action: The action executed by matched teams rule. Available values: `allow`, `block`, `safesearch`, `ytrestricted`, `on`, `off`, `scan`, `noscan`, `isolate`, `noisolate`, `override`, `l4_override`, `egress`, `audit_ssh`.
+        :param pulumi.Input[str] action: Action to be taken when the SSL certificate of upstream is invalid. Available values: `pass_through`, `block`, `error`.
         :param pulumi.Input[str] description: The description of the teams rule.
         :param pulumi.Input[str] device_posture: The wirefilter expression to be used for device_posture check matching.
-        :param pulumi.Input[bool] enabled: Indicator of rule enablement.
+        :param pulumi.Input[bool] enabled: Enable or disable DLP Payload Logging for this rule.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] filters: The protocol or layer to evaluate the traffic and identity expressions.
         :param pulumi.Input[str] identity: The wirefilter expression to be used for identity matching.
         :param pulumi.Input[str] name: The name of the teams rule.
@@ -493,6 +553,10 @@ class TeamsRule(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            TeamsRuleArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -537,6 +601,11 @@ class TeamsRule(pulumi.CustomResource):
             if precedence is None and not opts.urn:
                 raise TypeError("Missing required property 'precedence'")
             __props__.__dict__["precedence"] = precedence
+            if rule_settings is not None and not isinstance(rule_settings, TeamsRuleRuleSettingsArgs):
+                rule_settings = rule_settings or {}
+                def _setter(key, value):
+                    rule_settings[key] = value
+                TeamsRuleRuleSettingsArgs._configure(_setter, **rule_settings)
             __props__.__dict__["rule_settings"] = rule_settings
             __props__.__dict__["traffic"] = traffic
             __props__.__dict__["version"] = None
@@ -570,10 +639,10 @@ class TeamsRule(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_id: The account identifier to target for the resource.
-        :param pulumi.Input[str] action: The action executed by matched teams rule. Available values: `allow`, `block`, `safesearch`, `ytrestricted`, `on`, `off`, `scan`, `noscan`, `isolate`, `noisolate`, `override`, `l4_override`, `egress`, `audit_ssh`.
+        :param pulumi.Input[str] action: Action to be taken when the SSL certificate of upstream is invalid. Available values: `pass_through`, `block`, `error`.
         :param pulumi.Input[str] description: The description of the teams rule.
         :param pulumi.Input[str] device_posture: The wirefilter expression to be used for device_posture check matching.
-        :param pulumi.Input[bool] enabled: Indicator of rule enablement.
+        :param pulumi.Input[bool] enabled: Enable or disable DLP Payload Logging for this rule.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] filters: The protocol or layer to evaluate the traffic and identity expressions.
         :param pulumi.Input[str] identity: The wirefilter expression to be used for identity matching.
         :param pulumi.Input[str] name: The name of the teams rule.
@@ -611,7 +680,7 @@ class TeamsRule(pulumi.CustomResource):
     @pulumi.getter
     def action(self) -> pulumi.Output[str]:
         """
-        The action executed by matched teams rule. Available values: `allow`, `block`, `safesearch`, `ytrestricted`, `on`, `off`, `scan`, `noscan`, `isolate`, `noisolate`, `override`, `l4_override`, `egress`, `audit_ssh`.
+        Action to be taken when the SSL certificate of upstream is invalid. Available values: `pass_through`, `block`, `error`.
         """
         return pulumi.get(self, "action")
 
@@ -635,7 +704,7 @@ class TeamsRule(pulumi.CustomResource):
     @pulumi.getter
     def enabled(self) -> pulumi.Output[Optional[bool]]:
         """
-        Indicator of rule enablement.
+        Enable or disable DLP Payload Logging for this rule.
         """
         return pulumi.get(self, "enabled")
 

@@ -15,6 +15,9 @@ namespace Pulumi.Cloudflare.Inputs
         [Input("address", required: true)]
         public Input<string> Address { get; set; } = null!;
 
+        /// <summary>
+        /// Whether this pool is enabled. Disabled pools will not receive traffic and are excluded from health checks.
+        /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
@@ -26,6 +29,9 @@ namespace Pulumi.Cloudflare.Inputs
             set => _headers = value;
         }
 
+        /// <summary>
+        /// A regular expression matching the name of the Load Balancer pool to lookup.
+        /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 

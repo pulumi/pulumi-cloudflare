@@ -114,11 +114,11 @@ export class WorkerScript extends pulumi.CustomResource {
      */
     public readonly logpush!: pulumi.Output<boolean | undefined>;
     /**
-     * Whether to upload Worker as a module.
+     * The base64 encoded wasm module you want to store.
      */
     public readonly module!: pulumi.Output<boolean | undefined>;
     /**
-     * The name for the script. **Modifying this attribute will force creation of a new resource.**
+     * The global variable for the binding in your Worker code.
      */
     public readonly name!: pulumi.Output<string>;
     public readonly plainTextBindings!: pulumi.Output<outputs.WorkerScriptPlainTextBinding[] | undefined>;
@@ -215,11 +215,11 @@ export interface WorkerScriptState {
      */
     logpush?: pulumi.Input<boolean>;
     /**
-     * Whether to upload Worker as a module.
+     * The base64 encoded wasm module you want to store.
      */
     module?: pulumi.Input<boolean>;
     /**
-     * The name for the script. **Modifying this attribute will force creation of a new resource.**
+     * The global variable for the binding in your Worker code.
      */
     name?: pulumi.Input<string>;
     plainTextBindings?: pulumi.Input<pulumi.Input<inputs.WorkerScriptPlainTextBinding>[]>;
@@ -257,11 +257,11 @@ export interface WorkerScriptArgs {
      */
     logpush?: pulumi.Input<boolean>;
     /**
-     * Whether to upload Worker as a module.
+     * The base64 encoded wasm module you want to store.
      */
     module?: pulumi.Input<boolean>;
     /**
-     * The name for the script. **Modifying this attribute will force creation of a new resource.**
+     * The global variable for the binding in your Worker code.
      */
     name: pulumi.Input<string>;
     plainTextBindings?: pulumi.Input<pulumi.Input<inputs.WorkerScriptPlainTextBinding>[]>;

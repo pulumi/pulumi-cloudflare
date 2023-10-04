@@ -16,9 +16,6 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly string? Created;
         public readonly bool? Deleted;
         public readonly string? DeviceType;
-        /// <summary>
-        /// The ID of this resource.
-        /// </summary>
         public readonly string? Id;
         public readonly string? Ip;
         public readonly string? Key;

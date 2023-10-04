@@ -13,8 +13,17 @@ namespace Pulumi.Cloudflare.Outputs
     [OutputType]
     public sealed class TunnelConfigConfigOriginRequestAccess
     {
+        /// <summary>
+        /// Audience tags of the access rule.
+        /// </summary>
         public readonly ImmutableArray<string> AudTags;
+        /// <summary>
+        /// Whether the access rule is required.
+        /// </summary>
         public readonly bool? Required;
+        /// <summary>
+        /// Name of the team to which the access rule applies.
+        /// </summary>
         public readonly string? TeamName;
 
         [OutputConstructor]

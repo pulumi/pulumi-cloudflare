@@ -13,11 +13,17 @@ namespace Pulumi.Cloudflare.Outputs
     [OutputType]
     public sealed class AccessGroupIncludeAuthContext
     {
+        /// <summary>
+        /// The ACID of the Authentication Context.
+        /// </summary>
         public readonly string AcId;
         /// <summary>
-        /// The ID of this resource.
+        /// The ID of the Authentication Context.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// The ID of the Azure Identity provider.
+        /// </summary>
         public readonly string IdentityProviderId;
 
         [OutputConstructor]

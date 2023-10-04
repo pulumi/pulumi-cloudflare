@@ -11,13 +11,29 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class RulesetRuleExposedCredentialCheck {
+    /**
+     * @return Firewall Rules expression language based on Wireshark display filters for where to check for the &#34;password&#34; value. Refer to the [Firewall Rules language](https://developers.cloudflare.com/firewall/cf-firewall-language).
+     * 
+     */
     private @Nullable String passwordExpression;
+    /**
+     * @return Firewall Rules expression language based on Wireshark display filters for where to check for the &#34;username&#34; value. Refer to the [Firewall Rules language](https://developers.cloudflare.com/firewall/cf-firewall-language).
+     * 
+     */
     private @Nullable String usernameExpression;
 
     private RulesetRuleExposedCredentialCheck() {}
+    /**
+     * @return Firewall Rules expression language based on Wireshark display filters for where to check for the &#34;password&#34; value. Refer to the [Firewall Rules language](https://developers.cloudflare.com/firewall/cf-firewall-language).
+     * 
+     */
     public Optional<String> passwordExpression() {
         return Optional.ofNullable(this.passwordExpression);
     }
+    /**
+     * @return Firewall Rules expression language based on Wireshark display filters for where to check for the &#34;username&#34; value. Refer to the [Firewall Rules language](https://developers.cloudflare.com/firewall/cf-firewall-language).
+     * 
+     */
     public Optional<String> usernameExpression() {
         return Optional.ofNullable(this.usernameExpression);
     }

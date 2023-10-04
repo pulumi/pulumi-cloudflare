@@ -69,7 +69,7 @@ export class TeamsRule extends pulumi.CustomResource {
      */
     public readonly accountId!: pulumi.Output<string>;
     /**
-     * The action executed by matched teams rule. Available values: `allow`, `block`, `safesearch`, `ytrestricted`, `on`, `off`, `scan`, `noscan`, `isolate`, `noisolate`, `override`, `l4Override`, `egress`, `auditSsh`.
+     * Action to be taken when the SSL certificate of upstream is invalid. Available values: `passThrough`, `block`, `error`.
      */
     public readonly action!: pulumi.Output<string>;
     /**
@@ -81,7 +81,7 @@ export class TeamsRule extends pulumi.CustomResource {
      */
     public readonly devicePosture!: pulumi.Output<string | undefined>;
     /**
-     * Indicator of rule enablement.
+     * Enable or disable DLP Payload Logging for this rule.
      */
     public readonly enabled!: pulumi.Output<boolean | undefined>;
     /**
@@ -179,7 +179,7 @@ export interface TeamsRuleState {
      */
     accountId?: pulumi.Input<string>;
     /**
-     * The action executed by matched teams rule. Available values: `allow`, `block`, `safesearch`, `ytrestricted`, `on`, `off`, `scan`, `noscan`, `isolate`, `noisolate`, `override`, `l4Override`, `egress`, `auditSsh`.
+     * Action to be taken when the SSL certificate of upstream is invalid. Available values: `passThrough`, `block`, `error`.
      */
     action?: pulumi.Input<string>;
     /**
@@ -191,7 +191,7 @@ export interface TeamsRuleState {
      */
     devicePosture?: pulumi.Input<string>;
     /**
-     * Indicator of rule enablement.
+     * Enable or disable DLP Payload Logging for this rule.
      */
     enabled?: pulumi.Input<boolean>;
     /**
@@ -230,7 +230,7 @@ export interface TeamsRuleArgs {
      */
     accountId: pulumi.Input<string>;
     /**
-     * The action executed by matched teams rule. Available values: `allow`, `block`, `safesearch`, `ytrestricted`, `on`, `off`, `scan`, `noscan`, `isolate`, `noisolate`, `override`, `l4Override`, `egress`, `auditSsh`.
+     * Action to be taken when the SSL certificate of upstream is invalid. Available values: `passThrough`, `block`, `error`.
      */
     action: pulumi.Input<string>;
     /**
@@ -242,7 +242,7 @@ export interface TeamsRuleArgs {
      */
     devicePosture?: pulumi.Input<string>;
     /**
-     * Indicator of rule enablement.
+     * Enable or disable DLP Payload Logging for this rule.
      */
     enabled?: pulumi.Input<boolean>;
     /**

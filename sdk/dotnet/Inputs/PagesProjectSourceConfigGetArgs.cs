@@ -12,17 +12,30 @@ namespace Pulumi.Cloudflare.Inputs
 
     public sealed class PagesProjectSourceConfigGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Toggle deployments on this repo. Defaults to `true`.
+        /// </summary>
         [Input("deploymentsEnabled")]
         public Input<bool>? DeploymentsEnabled { get; set; }
 
+        /// <summary>
+        /// Project owner username. **Modifying this attribute will force creation of a new resource.**
+        /// </summary>
         [Input("owner")]
         public Input<string>? Owner { get; set; }
 
+        /// <summary>
+        /// Enable Pages to comment on Pull Requests. Defaults to `true`.
+        /// </summary>
         [Input("prCommentsEnabled")]
         public Input<bool>? PrCommentsEnabled { get; set; }
 
         [Input("previewBranchExcludes")]
         private InputList<string>? _previewBranchExcludes;
+
+        /// <summary>
+        /// Branches will be excluded from automatic deployment.
+        /// </summary>
         public InputList<string> PreviewBranchExcludes
         {
             get => _previewBranchExcludes ?? (_previewBranchExcludes = new InputList<string>());
@@ -31,24 +44,37 @@ namespace Pulumi.Cloudflare.Inputs
 
         [Input("previewBranchIncludes")]
         private InputList<string>? _previewBranchIncludes;
+
+        /// <summary>
+        /// Branches will be included for automatic deployment.
+        /// </summary>
         public InputList<string> PreviewBranchIncludes
         {
             get => _previewBranchIncludes ?? (_previewBranchIncludes = new InputList<string>());
             set => _previewBranchIncludes = value;
         }
 
+        /// <summary>
+        /// Preview Deployment Setting. Defaults to `all`.
+        /// </summary>
         [Input("previewDeploymentSetting")]
         public Input<string>? PreviewDeploymentSetting { get; set; }
 
         /// <summary>
-        /// The name of the branch that is used for the production environment.
+        /// Project production branch name.
         /// </summary>
         [Input("productionBranch", required: true)]
         public Input<string> ProductionBranch { get; set; } = null!;
 
+        /// <summary>
+        /// Enable production deployments. Defaults to `true`.
+        /// </summary>
         [Input("productionDeploymentEnabled")]
         public Input<bool>? ProductionDeploymentEnabled { get; set; }
 
+        /// <summary>
+        /// Project repository name. **Modifying this attribute will force creation of a new resource.**
+        /// </summary>
         [Input("repoName")]
         public Input<string>? RepoName { get; set; }
 

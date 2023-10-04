@@ -49,7 +49,7 @@ public final class GetRulesetsRulesetRuleActionParameters {
     private @Nullable String hostHeader;
     private @Nullable Boolean hotlinkProtection;
     /**
-     * @return The ID of this resource.
+     * @return The ID of the Ruleset to target.
      * 
      */
     private @Nullable String id;
@@ -81,6 +81,10 @@ public final class GetRulesetsRulesetRuleActionParameters {
     private @Nullable Integer statusCode;
     private @Nullable Boolean sxg;
     private @Nullable GetRulesetsRulesetRuleActionParametersUri uri;
+    /**
+     * @return Version of the ruleset to filter on.
+     * 
+     */
     private String version;
 
     private GetRulesetsRulesetRuleActionParameters() {}
@@ -142,7 +146,7 @@ public final class GetRulesetsRulesetRuleActionParameters {
         return Optional.ofNullable(this.hotlinkProtection);
     }
     /**
-     * @return The ID of this resource.
+     * @return The ID of the Ruleset to target.
      * 
      */
     public Optional<String> id() {
@@ -232,6 +236,10 @@ public final class GetRulesetsRulesetRuleActionParameters {
     public Optional<GetRulesetsRulesetRuleActionParametersUri> uri() {
         return Optional.ofNullable(this.uri);
     }
+    /**
+     * @return Version of the ruleset to filter on.
+     * 
+     */
     public String version() {
         return this.version;
     }

@@ -13,12 +13,21 @@ namespace Pulumi.Cloudflare.Outputs
     [OutputType]
     public sealed class AccessApplicationSaasAppCustomAttribute
     {
+        /// <summary>
+        /// A friendly name for the attribute as provided to the SaaS app.
+        /// </summary>
         public readonly string? FriendlyName;
         /// <summary>
-        /// Friendly name of the Access Application.
+        /// The name of the attribute as provided to the SaaS app.
         /// </summary>
         public readonly string? Name;
+        /// <summary>
+        /// A globally unique name for an identity or service provider.
+        /// </summary>
         public readonly string? NameFormat;
+        /// <summary>
+        /// True if the attribute must be always present.
+        /// </summary>
         public readonly bool? Required;
         public readonly Outputs.AccessApplicationSaasAppCustomAttributeSource Source;
 

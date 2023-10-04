@@ -75,7 +75,7 @@ type AddressMap struct {
 
 	// The account identifier to target for the resource.
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
-	// If set to false, then the Address Map cannot be deleted via API. This is true for Cloudflare-managed maps.
+	// Controls whether the membership can be deleted via the API or not.
 	CanDelete pulumi.BoolOutput `pulumi:"canDelete"`
 	// If set to false, then the IPs on the Address Map cannot be modified via the API. This is true for Cloudflare-managed maps.
 	CanModifyIps pulumi.BoolOutput `pulumi:"canModifyIps"`
@@ -129,7 +129,7 @@ func GetAddressMap(ctx *pulumi.Context,
 type addressMapState struct {
 	// The account identifier to target for the resource.
 	AccountId *string `pulumi:"accountId"`
-	// If set to false, then the Address Map cannot be deleted via API. This is true for Cloudflare-managed maps.
+	// Controls whether the membership can be deleted via the API or not.
 	CanDelete *bool `pulumi:"canDelete"`
 	// If set to false, then the IPs on the Address Map cannot be modified via the API. This is true for Cloudflare-managed maps.
 	CanModifyIps *bool `pulumi:"canModifyIps"`
@@ -148,7 +148,7 @@ type addressMapState struct {
 type AddressMapState struct {
 	// The account identifier to target for the resource.
 	AccountId pulumi.StringPtrInput
-	// If set to false, then the Address Map cannot be deleted via API. This is true for Cloudflare-managed maps.
+	// Controls whether the membership can be deleted via the API or not.
 	CanDelete pulumi.BoolPtrInput
 	// If set to false, then the IPs on the Address Map cannot be modified via the API. This is true for Cloudflare-managed maps.
 	CanModifyIps pulumi.BoolPtrInput
@@ -315,7 +315,7 @@ func (o AddressMapOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v *AddressMap) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
 
-// If set to false, then the Address Map cannot be deleted via API. This is true for Cloudflare-managed maps.
+// Controls whether the membership can be deleted via the API or not.
 func (o AddressMapOutput) CanDelete() pulumi.BoolOutput {
 	return o.ApplyT(func(v *AddressMap) pulumi.BoolOutput { return v.CanDelete }).(pulumi.BoolOutput)
 }

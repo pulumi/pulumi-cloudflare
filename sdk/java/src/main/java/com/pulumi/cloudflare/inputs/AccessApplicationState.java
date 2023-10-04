@@ -230,14 +230,14 @@ public final class AccessApplicationState extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * Friendly name of the Access Application.
+     * The name of the attribute as provided to the SaaS app.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return Friendly name of the Access Application.
+     * @return The name of the attribute as provided to the SaaS app.
      * 
      */
     public Optional<Output<String>> name() {
@@ -735,7 +735,7 @@ public final class AccessApplicationState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param name Friendly name of the Access Application.
+         * @param name The name of the attribute as provided to the SaaS app.
          * 
          * @return builder
          * 
@@ -746,7 +746,7 @@ public final class AccessApplicationState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param name Friendly name of the Access Application.
+         * @param name The name of the attribute as provided to the SaaS app.
          * 
          * @return builder
          * 

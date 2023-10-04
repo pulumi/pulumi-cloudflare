@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -31,14 +31,33 @@ class EmailRoutingRuleArgs:
         :param pulumi.Input[bool] enabled: Routing rule status.
         :param pulumi.Input[int] priority: Priority of the routing rule.
         """
-        pulumi.set(__self__, "actions", actions)
-        pulumi.set(__self__, "matchers", matchers)
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "zone_id", zone_id)
+        EmailRoutingRuleArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            actions=actions,
+            matchers=matchers,
+            name=name,
+            zone_id=zone_id,
+            enabled=enabled,
+            priority=priority,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             actions: pulumi.Input[Sequence[pulumi.Input['EmailRoutingRuleActionArgs']]],
+             matchers: pulumi.Input[Sequence[pulumi.Input['EmailRoutingRuleMatcherArgs']]],
+             name: pulumi.Input[str],
+             zone_id: pulumi.Input[str],
+             enabled: Optional[pulumi.Input[bool]] = None,
+             priority: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("actions", actions)
+        _setter("matchers", matchers)
+        _setter("name", name)
+        _setter("zone_id", zone_id)
         if enabled is not None:
-            pulumi.set(__self__, "enabled", enabled)
+            _setter("enabled", enabled)
         if priority is not None:
-            pulumi.set(__self__, "priority", priority)
+            _setter("priority", priority)
 
     @property
     @pulumi.getter
@@ -133,20 +152,41 @@ class _EmailRoutingRuleState:
         :param pulumi.Input[str] tag: Routing rule identifier.
         :param pulumi.Input[str] zone_id: The zone identifier to target for the resource.
         """
+        _EmailRoutingRuleState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            actions=actions,
+            enabled=enabled,
+            matchers=matchers,
+            name=name,
+            priority=priority,
+            tag=tag,
+            zone_id=zone_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             actions: Optional[pulumi.Input[Sequence[pulumi.Input['EmailRoutingRuleActionArgs']]]] = None,
+             enabled: Optional[pulumi.Input[bool]] = None,
+             matchers: Optional[pulumi.Input[Sequence[pulumi.Input['EmailRoutingRuleMatcherArgs']]]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             priority: Optional[pulumi.Input[int]] = None,
+             tag: Optional[pulumi.Input[str]] = None,
+             zone_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if actions is not None:
-            pulumi.set(__self__, "actions", actions)
+            _setter("actions", actions)
         if enabled is not None:
-            pulumi.set(__self__, "enabled", enabled)
+            _setter("enabled", enabled)
         if matchers is not None:
-            pulumi.set(__self__, "matchers", matchers)
+            _setter("matchers", matchers)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if priority is not None:
-            pulumi.set(__self__, "priority", priority)
+            _setter("priority", priority)
         if tag is not None:
-            pulumi.set(__self__, "tag", tag)
+            _setter("tag", tag)
         if zone_id is not None:
-            pulumi.set(__self__, "zone_id", zone_id)
+            _setter("zone_id", zone_id)
 
     @property
     @pulumi.getter
@@ -318,6 +358,10 @@ class EmailRoutingRule(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            EmailRoutingRuleArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

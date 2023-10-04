@@ -16,9 +16,17 @@ public final class TunnelConfigConfigIngressRuleArgs extends com.pulumi.resource
 
     public static final TunnelConfigConfigIngressRuleArgs Empty = new TunnelConfigConfigIngressRuleArgs();
 
+    /**
+     * Hostname to match the incoming request with. If the hostname matches, the request will be sent to the service.
+     * 
+     */
     @Import(name="hostname")
     private @Nullable Output<String> hostname;
 
+    /**
+     * @return Hostname to match the incoming request with. If the hostname matches, the request will be sent to the service.
+     * 
+     */
     public Optional<Output<String>> hostname() {
         return Optional.ofNullable(this.hostname);
     }
@@ -30,16 +38,32 @@ public final class TunnelConfigConfigIngressRuleArgs extends com.pulumi.resource
         return Optional.ofNullable(this.originRequest);
     }
 
+    /**
+     * Path of the incoming request. If the path matches, the request will be sent to the local service.
+     * 
+     */
     @Import(name="path")
     private @Nullable Output<String> path;
 
+    /**
+     * @return Path of the incoming request. If the path matches, the request will be sent to the local service.
+     * 
+     */
     public Optional<Output<String>> path() {
         return Optional.ofNullable(this.path);
     }
 
+    /**
+     * Name of the service to which the request will be sent.
+     * 
+     */
     @Import(name="service", required=true)
     private Output<String> service;
 
+    /**
+     * @return Name of the service to which the request will be sent.
+     * 
+     */
     public Output<String> service() {
         return this.service;
     }
@@ -71,11 +95,23 @@ public final class TunnelConfigConfigIngressRuleArgs extends com.pulumi.resource
             $ = new TunnelConfigConfigIngressRuleArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param hostname Hostname to match the incoming request with. If the hostname matches, the request will be sent to the service.
+         * 
+         * @return builder
+         * 
+         */
         public Builder hostname(@Nullable Output<String> hostname) {
             $.hostname = hostname;
             return this;
         }
 
+        /**
+         * @param hostname Hostname to match the incoming request with. If the hostname matches, the request will be sent to the service.
+         * 
+         * @return builder
+         * 
+         */
         public Builder hostname(String hostname) {
             return hostname(Output.of(hostname));
         }
@@ -89,20 +125,44 @@ public final class TunnelConfigConfigIngressRuleArgs extends com.pulumi.resource
             return originRequest(Output.of(originRequest));
         }
 
+        /**
+         * @param path Path of the incoming request. If the path matches, the request will be sent to the local service.
+         * 
+         * @return builder
+         * 
+         */
         public Builder path(@Nullable Output<String> path) {
             $.path = path;
             return this;
         }
 
+        /**
+         * @param path Path of the incoming request. If the path matches, the request will be sent to the local service.
+         * 
+         * @return builder
+         * 
+         */
         public Builder path(String path) {
             return path(Output.of(path));
         }
 
+        /**
+         * @param service Name of the service to which the request will be sent.
+         * 
+         * @return builder
+         * 
+         */
         public Builder service(Output<String> service) {
             $.service = service;
             return this;
         }
 
+        /**
+         * @param service Name of the service to which the request will be sent.
+         * 
+         * @return builder
+         * 
+         */
         public Builder service(String service) {
             return service(Output.of(service));
         }

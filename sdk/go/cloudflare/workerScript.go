@@ -134,9 +134,9 @@ type WorkerScript struct {
 	KvNamespaceBindings WorkerScriptKvNamespaceBindingArrayOutput `pulumi:"kvNamespaceBindings"`
 	// Enabling allows Worker events to be sent to a defined Logpush destination.
 	Logpush pulumi.BoolPtrOutput `pulumi:"logpush"`
-	// Whether to upload Worker as a module.
+	// The base64 encoded wasm module you want to store.
 	Module pulumi.BoolPtrOutput `pulumi:"module"`
-	// The name for the script. **Modifying this attribute will force creation of a new resource.**
+	// The global variable for the binding in your Worker code.
 	Name                pulumi.StringOutput                       `pulumi:"name"`
 	PlainTextBindings   WorkerScriptPlainTextBindingArrayOutput   `pulumi:"plainTextBindings"`
 	QueueBindings       WorkerScriptQueueBindingArrayOutput       `pulumi:"queueBindings"`
@@ -197,9 +197,9 @@ type workerScriptState struct {
 	KvNamespaceBindings []WorkerScriptKvNamespaceBinding `pulumi:"kvNamespaceBindings"`
 	// Enabling allows Worker events to be sent to a defined Logpush destination.
 	Logpush *bool `pulumi:"logpush"`
-	// Whether to upload Worker as a module.
+	// The base64 encoded wasm module you want to store.
 	Module *bool `pulumi:"module"`
-	// The name for the script. **Modifying this attribute will force creation of a new resource.**
+	// The global variable for the binding in your Worker code.
 	Name                *string                          `pulumi:"name"`
 	PlainTextBindings   []WorkerScriptPlainTextBinding   `pulumi:"plainTextBindings"`
 	QueueBindings       []WorkerScriptQueueBinding       `pulumi:"queueBindings"`
@@ -222,9 +222,9 @@ type WorkerScriptState struct {
 	KvNamespaceBindings WorkerScriptKvNamespaceBindingArrayInput
 	// Enabling allows Worker events to be sent to a defined Logpush destination.
 	Logpush pulumi.BoolPtrInput
-	// Whether to upload Worker as a module.
+	// The base64 encoded wasm module you want to store.
 	Module pulumi.BoolPtrInput
-	// The name for the script. **Modifying this attribute will force creation of a new resource.**
+	// The global variable for the binding in your Worker code.
 	Name                pulumi.StringPtrInput
 	PlainTextBindings   WorkerScriptPlainTextBindingArrayInput
 	QueueBindings       WorkerScriptQueueBindingArrayInput
@@ -251,9 +251,9 @@ type workerScriptArgs struct {
 	KvNamespaceBindings []WorkerScriptKvNamespaceBinding `pulumi:"kvNamespaceBindings"`
 	// Enabling allows Worker events to be sent to a defined Logpush destination.
 	Logpush *bool `pulumi:"logpush"`
-	// Whether to upload Worker as a module.
+	// The base64 encoded wasm module you want to store.
 	Module *bool `pulumi:"module"`
-	// The name for the script. **Modifying this attribute will force creation of a new resource.**
+	// The global variable for the binding in your Worker code.
 	Name                string                           `pulumi:"name"`
 	PlainTextBindings   []WorkerScriptPlainTextBinding   `pulumi:"plainTextBindings"`
 	QueueBindings       []WorkerScriptQueueBinding       `pulumi:"queueBindings"`
@@ -277,9 +277,9 @@ type WorkerScriptArgs struct {
 	KvNamespaceBindings WorkerScriptKvNamespaceBindingArrayInput
 	// Enabling allows Worker events to be sent to a defined Logpush destination.
 	Logpush pulumi.BoolPtrInput
-	// Whether to upload Worker as a module.
+	// The base64 encoded wasm module you want to store.
 	Module pulumi.BoolPtrInput
-	// The name for the script. **Modifying this attribute will force creation of a new resource.**
+	// The global variable for the binding in your Worker code.
 	Name                pulumi.StringInput
 	PlainTextBindings   WorkerScriptPlainTextBindingArrayInput
 	QueueBindings       WorkerScriptQueueBindingArrayInput
@@ -433,12 +433,12 @@ func (o WorkerScriptOutput) Logpush() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *WorkerScript) pulumi.BoolPtrOutput { return v.Logpush }).(pulumi.BoolPtrOutput)
 }
 
-// Whether to upload Worker as a module.
+// The base64 encoded wasm module you want to store.
 func (o WorkerScriptOutput) Module() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *WorkerScript) pulumi.BoolPtrOutput { return v.Module }).(pulumi.BoolPtrOutput)
 }
 
-// The name for the script. **Modifying this attribute will force creation of a new resource.**
+// The global variable for the binding in your Worker code.
 func (o WorkerScriptOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkerScript) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

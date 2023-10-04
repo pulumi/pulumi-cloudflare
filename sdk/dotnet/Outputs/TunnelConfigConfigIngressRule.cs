@@ -13,9 +13,18 @@ namespace Pulumi.Cloudflare.Outputs
     [OutputType]
     public sealed class TunnelConfigConfigIngressRule
     {
+        /// <summary>
+        /// Hostname to match the incoming request with. If the hostname matches, the request will be sent to the service.
+        /// </summary>
         public readonly string? Hostname;
         public readonly Outputs.TunnelConfigConfigIngressRuleOriginRequest? OriginRequest;
+        /// <summary>
+        /// Path of the incoming request. If the path matches, the request will be sent to the local service.
+        /// </summary>
         public readonly string? Path;
+        /// <summary>
+        /// Name of the service to which the request will be sent.
+        /// </summary>
         public readonly string Service;
 
         [OutputConstructor]

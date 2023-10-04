@@ -14,15 +14,15 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class PageRuleActionsCacheKeyFieldsHeader
     {
         /// <summary>
-        /// Check for presence of specified cookies, without including their actual values.
+        /// Check for presence of specified HTTP headers, without including their actual values.
         /// </summary>
         public readonly ImmutableArray<string> CheckPresences;
         /// <summary>
-        /// Exclude these HTTP headers from Cache Key. Currently, only the `Origin` header can be excluded.
+        /// Exclude these query string parameters from Cache Key.
         /// </summary>
         public readonly ImmutableArray<string> Excludes;
         /// <summary>
-        /// Use values of specified cookies in Cache Key.
+        /// Only use values of specified query string parameters in Cache Key.
         /// </summary>
         public readonly ImmutableArray<string> Includes;
 

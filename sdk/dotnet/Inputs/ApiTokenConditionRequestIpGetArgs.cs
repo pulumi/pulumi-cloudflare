@@ -14,6 +14,10 @@ namespace Pulumi.Cloudflare.Inputs
     {
         [Input("ins")]
         private InputList<string>? _ins;
+
+        /// <summary>
+        /// List of IP addresses or CIDR notation where the token may be used from. If not specified, the token will be valid for all IP addresses.
+        /// </summary>
         public InputList<string> Ins
         {
             get => _ins ?? (_ins = new InputList<string>());
@@ -22,6 +26,10 @@ namespace Pulumi.Cloudflare.Inputs
 
         [Input("notIns")]
         private InputList<string>? _notIns;
+
+        /// <summary>
+        /// List of IP addresses or CIDR notation where the token should not be used from.
+        /// </summary>
         public InputList<string> NotIns
         {
             get => _notIns ?? (_notIns = new InputList<string>());

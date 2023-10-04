@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -22,9 +22,20 @@ class ZoneSettingsOverrideArgs:
         The set of arguments for constructing a ZoneSettingsOverride resource.
         :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         """
-        pulumi.set(__self__, "zone_id", zone_id)
+        ZoneSettingsOverrideArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            zone_id=zone_id,
+            settings=settings,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             zone_id: pulumi.Input[str],
+             settings: Optional[pulumi.Input['ZoneSettingsOverrideSettingsArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("zone_id", zone_id)
         if settings is not None:
-            pulumi.set(__self__, "settings", settings)
+            _setter("settings", settings)
 
     @property
     @pulumi.getter(name="zoneId")
@@ -62,20 +73,41 @@ class _ZoneSettingsOverrideState:
         Input properties used for looking up and filtering ZoneSettingsOverride resources.
         :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         """
+        _ZoneSettingsOverrideState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            initial_settings=initial_settings,
+            initial_settings_read_at=initial_settings_read_at,
+            readonly_settings=readonly_settings,
+            settings=settings,
+            zone_id=zone_id,
+            zone_status=zone_status,
+            zone_type=zone_type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             initial_settings: Optional[pulumi.Input[Sequence[pulumi.Input['ZoneSettingsOverrideInitialSettingArgs']]]] = None,
+             initial_settings_read_at: Optional[pulumi.Input[str]] = None,
+             readonly_settings: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             settings: Optional[pulumi.Input['ZoneSettingsOverrideSettingsArgs']] = None,
+             zone_id: Optional[pulumi.Input[str]] = None,
+             zone_status: Optional[pulumi.Input[str]] = None,
+             zone_type: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if initial_settings is not None:
-            pulumi.set(__self__, "initial_settings", initial_settings)
+            _setter("initial_settings", initial_settings)
         if initial_settings_read_at is not None:
-            pulumi.set(__self__, "initial_settings_read_at", initial_settings_read_at)
+            _setter("initial_settings_read_at", initial_settings_read_at)
         if readonly_settings is not None:
-            pulumi.set(__self__, "readonly_settings", readonly_settings)
+            _setter("readonly_settings", readonly_settings)
         if settings is not None:
-            pulumi.set(__self__, "settings", settings)
+            _setter("settings", settings)
         if zone_id is not None:
-            pulumi.set(__self__, "zone_id", zone_id)
+            _setter("zone_id", zone_id)
         if zone_status is not None:
-            pulumi.set(__self__, "zone_status", zone_status)
+            _setter("zone_status", zone_status)
         if zone_type is not None:
-            pulumi.set(__self__, "zone_type", zone_type)
+            _setter("zone_type", zone_type)
 
     @property
     @pulumi.getter(name="initialSettings")
@@ -242,6 +274,10 @@ class ZoneSettingsOverride(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            ZoneSettingsOverrideArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -258,6 +294,11 @@ class ZoneSettingsOverride(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ZoneSettingsOverrideArgs.__new__(ZoneSettingsOverrideArgs)
 
+            if settings is not None and not isinstance(settings, ZoneSettingsOverrideSettingsArgs):
+                settings = settings or {}
+                def _setter(key, value):
+                    settings[key] = value
+                ZoneSettingsOverrideSettingsArgs._configure(_setter, **settings)
             __props__.__dict__["settings"] = settings
             if zone_id is None and not opts.urn:
                 raise TypeError("Missing required property 'zone_id'")

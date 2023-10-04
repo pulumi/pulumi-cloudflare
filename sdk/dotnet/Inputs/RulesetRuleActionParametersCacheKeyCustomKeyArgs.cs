@@ -12,18 +12,33 @@ namespace Pulumi.Cloudflare.Inputs
 
     public sealed class RulesetRuleActionParametersCacheKeyCustomKeyArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Cookie parameters for the custom key.
+        /// </summary>
         [Input("cookie")]
         public Input<Inputs.RulesetRuleActionParametersCacheKeyCustomKeyCookieArgs>? Cookie { get; set; }
 
+        /// <summary>
+        /// Header parameters for the custom key.
+        /// </summary>
         [Input("header")]
         public Input<Inputs.RulesetRuleActionParametersCacheKeyCustomKeyHeaderArgs>? Header { get; set; }
 
+        /// <summary>
+        /// Host parameters for the custom key.
+        /// </summary>
         [Input("host")]
         public Input<Inputs.RulesetRuleActionParametersCacheKeyCustomKeyHostArgs>? Host { get; set; }
 
+        /// <summary>
+        /// Query string parameters for the custom key.
+        /// </summary>
         [Input("queryString")]
         public Input<Inputs.RulesetRuleActionParametersCacheKeyCustomKeyQueryStringArgs>? QueryString { get; set; }
 
+        /// <summary>
+        /// User parameters for the custom key.
+        /// </summary>
         [Input("user")]
         public Input<Inputs.RulesetRuleActionParametersCacheKeyCustomKeyUserArgs>? User { get; set; }
 

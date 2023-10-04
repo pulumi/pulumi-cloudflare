@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -35,39 +35,76 @@ class WorkerScriptArgs:
         The set of arguments for constructing a WorkerScript resource.
         :param pulumi.Input[str] account_id: The account identifier to target for the resource.
         :param pulumi.Input[str] content: The script content.
-        :param pulumi.Input[str] name: The name for the script. **Modifying this attribute will force creation of a new resource.**
+        :param pulumi.Input[str] name: The global variable for the binding in your Worker code.
         :param pulumi.Input[str] compatibility_date: The date to use for the compatibility flag.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] compatibility_flags: Compatibility flags used for Worker Scripts.
         :param pulumi.Input[bool] logpush: Enabling allows Worker events to be sent to a defined Logpush destination.
-        :param pulumi.Input[bool] module: Whether to upload Worker as a module.
+        :param pulumi.Input[bool] module: The base64 encoded wasm module you want to store.
         """
-        pulumi.set(__self__, "account_id", account_id)
-        pulumi.set(__self__, "content", content)
-        pulumi.set(__self__, "name", name)
+        WorkerScriptArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            account_id=account_id,
+            content=content,
+            name=name,
+            analytics_engine_bindings=analytics_engine_bindings,
+            compatibility_date=compatibility_date,
+            compatibility_flags=compatibility_flags,
+            kv_namespace_bindings=kv_namespace_bindings,
+            logpush=logpush,
+            module=module,
+            plain_text_bindings=plain_text_bindings,
+            queue_bindings=queue_bindings,
+            r2_bucket_bindings=r2_bucket_bindings,
+            secret_text_bindings=secret_text_bindings,
+            service_bindings=service_bindings,
+            webassembly_bindings=webassembly_bindings,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             account_id: pulumi.Input[str],
+             content: pulumi.Input[str],
+             name: pulumi.Input[str],
+             analytics_engine_bindings: Optional[pulumi.Input[Sequence[pulumi.Input['WorkerScriptAnalyticsEngineBindingArgs']]]] = None,
+             compatibility_date: Optional[pulumi.Input[str]] = None,
+             compatibility_flags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             kv_namespace_bindings: Optional[pulumi.Input[Sequence[pulumi.Input['WorkerScriptKvNamespaceBindingArgs']]]] = None,
+             logpush: Optional[pulumi.Input[bool]] = None,
+             module: Optional[pulumi.Input[bool]] = None,
+             plain_text_bindings: Optional[pulumi.Input[Sequence[pulumi.Input['WorkerScriptPlainTextBindingArgs']]]] = None,
+             queue_bindings: Optional[pulumi.Input[Sequence[pulumi.Input['WorkerScriptQueueBindingArgs']]]] = None,
+             r2_bucket_bindings: Optional[pulumi.Input[Sequence[pulumi.Input['WorkerScriptR2BucketBindingArgs']]]] = None,
+             secret_text_bindings: Optional[pulumi.Input[Sequence[pulumi.Input['WorkerScriptSecretTextBindingArgs']]]] = None,
+             service_bindings: Optional[pulumi.Input[Sequence[pulumi.Input['WorkerScriptServiceBindingArgs']]]] = None,
+             webassembly_bindings: Optional[pulumi.Input[Sequence[pulumi.Input['WorkerScriptWebassemblyBindingArgs']]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("account_id", account_id)
+        _setter("content", content)
+        _setter("name", name)
         if analytics_engine_bindings is not None:
-            pulumi.set(__self__, "analytics_engine_bindings", analytics_engine_bindings)
+            _setter("analytics_engine_bindings", analytics_engine_bindings)
         if compatibility_date is not None:
-            pulumi.set(__self__, "compatibility_date", compatibility_date)
+            _setter("compatibility_date", compatibility_date)
         if compatibility_flags is not None:
-            pulumi.set(__self__, "compatibility_flags", compatibility_flags)
+            _setter("compatibility_flags", compatibility_flags)
         if kv_namespace_bindings is not None:
-            pulumi.set(__self__, "kv_namespace_bindings", kv_namespace_bindings)
+            _setter("kv_namespace_bindings", kv_namespace_bindings)
         if logpush is not None:
-            pulumi.set(__self__, "logpush", logpush)
+            _setter("logpush", logpush)
         if module is not None:
-            pulumi.set(__self__, "module", module)
+            _setter("module", module)
         if plain_text_bindings is not None:
-            pulumi.set(__self__, "plain_text_bindings", plain_text_bindings)
+            _setter("plain_text_bindings", plain_text_bindings)
         if queue_bindings is not None:
-            pulumi.set(__self__, "queue_bindings", queue_bindings)
+            _setter("queue_bindings", queue_bindings)
         if r2_bucket_bindings is not None:
-            pulumi.set(__self__, "r2_bucket_bindings", r2_bucket_bindings)
+            _setter("r2_bucket_bindings", r2_bucket_bindings)
         if secret_text_bindings is not None:
-            pulumi.set(__self__, "secret_text_bindings", secret_text_bindings)
+            _setter("secret_text_bindings", secret_text_bindings)
         if service_bindings is not None:
-            pulumi.set(__self__, "service_bindings", service_bindings)
+            _setter("service_bindings", service_bindings)
         if webassembly_bindings is not None:
-            pulumi.set(__self__, "webassembly_bindings", webassembly_bindings)
+            _setter("webassembly_bindings", webassembly_bindings)
 
     @property
     @pulumi.getter(name="accountId")
@@ -97,7 +134,7 @@ class WorkerScriptArgs:
     @pulumi.getter
     def name(self) -> pulumi.Input[str]:
         """
-        The name for the script. **Modifying this attribute will force creation of a new resource.**
+        The global variable for the binding in your Worker code.
         """
         return pulumi.get(self, "name")
 
@@ -163,7 +200,7 @@ class WorkerScriptArgs:
     @pulumi.getter
     def module(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether to upload Worker as a module.
+        The base64 encoded wasm module you want to store.
         """
         return pulumi.get(self, "module")
 
@@ -251,39 +288,76 @@ class _WorkerScriptState:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] compatibility_flags: Compatibility flags used for Worker Scripts.
         :param pulumi.Input[str] content: The script content.
         :param pulumi.Input[bool] logpush: Enabling allows Worker events to be sent to a defined Logpush destination.
-        :param pulumi.Input[bool] module: Whether to upload Worker as a module.
-        :param pulumi.Input[str] name: The name for the script. **Modifying this attribute will force creation of a new resource.**
+        :param pulumi.Input[bool] module: The base64 encoded wasm module you want to store.
+        :param pulumi.Input[str] name: The global variable for the binding in your Worker code.
         """
+        _WorkerScriptState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            account_id=account_id,
+            analytics_engine_bindings=analytics_engine_bindings,
+            compatibility_date=compatibility_date,
+            compatibility_flags=compatibility_flags,
+            content=content,
+            kv_namespace_bindings=kv_namespace_bindings,
+            logpush=logpush,
+            module=module,
+            name=name,
+            plain_text_bindings=plain_text_bindings,
+            queue_bindings=queue_bindings,
+            r2_bucket_bindings=r2_bucket_bindings,
+            secret_text_bindings=secret_text_bindings,
+            service_bindings=service_bindings,
+            webassembly_bindings=webassembly_bindings,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             account_id: Optional[pulumi.Input[str]] = None,
+             analytics_engine_bindings: Optional[pulumi.Input[Sequence[pulumi.Input['WorkerScriptAnalyticsEngineBindingArgs']]]] = None,
+             compatibility_date: Optional[pulumi.Input[str]] = None,
+             compatibility_flags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             content: Optional[pulumi.Input[str]] = None,
+             kv_namespace_bindings: Optional[pulumi.Input[Sequence[pulumi.Input['WorkerScriptKvNamespaceBindingArgs']]]] = None,
+             logpush: Optional[pulumi.Input[bool]] = None,
+             module: Optional[pulumi.Input[bool]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             plain_text_bindings: Optional[pulumi.Input[Sequence[pulumi.Input['WorkerScriptPlainTextBindingArgs']]]] = None,
+             queue_bindings: Optional[pulumi.Input[Sequence[pulumi.Input['WorkerScriptQueueBindingArgs']]]] = None,
+             r2_bucket_bindings: Optional[pulumi.Input[Sequence[pulumi.Input['WorkerScriptR2BucketBindingArgs']]]] = None,
+             secret_text_bindings: Optional[pulumi.Input[Sequence[pulumi.Input['WorkerScriptSecretTextBindingArgs']]]] = None,
+             service_bindings: Optional[pulumi.Input[Sequence[pulumi.Input['WorkerScriptServiceBindingArgs']]]] = None,
+             webassembly_bindings: Optional[pulumi.Input[Sequence[pulumi.Input['WorkerScriptWebassemblyBindingArgs']]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if account_id is not None:
-            pulumi.set(__self__, "account_id", account_id)
+            _setter("account_id", account_id)
         if analytics_engine_bindings is not None:
-            pulumi.set(__self__, "analytics_engine_bindings", analytics_engine_bindings)
+            _setter("analytics_engine_bindings", analytics_engine_bindings)
         if compatibility_date is not None:
-            pulumi.set(__self__, "compatibility_date", compatibility_date)
+            _setter("compatibility_date", compatibility_date)
         if compatibility_flags is not None:
-            pulumi.set(__self__, "compatibility_flags", compatibility_flags)
+            _setter("compatibility_flags", compatibility_flags)
         if content is not None:
-            pulumi.set(__self__, "content", content)
+            _setter("content", content)
         if kv_namespace_bindings is not None:
-            pulumi.set(__self__, "kv_namespace_bindings", kv_namespace_bindings)
+            _setter("kv_namespace_bindings", kv_namespace_bindings)
         if logpush is not None:
-            pulumi.set(__self__, "logpush", logpush)
+            _setter("logpush", logpush)
         if module is not None:
-            pulumi.set(__self__, "module", module)
+            _setter("module", module)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if plain_text_bindings is not None:
-            pulumi.set(__self__, "plain_text_bindings", plain_text_bindings)
+            _setter("plain_text_bindings", plain_text_bindings)
         if queue_bindings is not None:
-            pulumi.set(__self__, "queue_bindings", queue_bindings)
+            _setter("queue_bindings", queue_bindings)
         if r2_bucket_bindings is not None:
-            pulumi.set(__self__, "r2_bucket_bindings", r2_bucket_bindings)
+            _setter("r2_bucket_bindings", r2_bucket_bindings)
         if secret_text_bindings is not None:
-            pulumi.set(__self__, "secret_text_bindings", secret_text_bindings)
+            _setter("secret_text_bindings", secret_text_bindings)
         if service_bindings is not None:
-            pulumi.set(__self__, "service_bindings", service_bindings)
+            _setter("service_bindings", service_bindings)
         if webassembly_bindings is not None:
-            pulumi.set(__self__, "webassembly_bindings", webassembly_bindings)
+            _setter("webassembly_bindings", webassembly_bindings)
 
     @property
     @pulumi.getter(name="accountId")
@@ -367,7 +441,7 @@ class _WorkerScriptState:
     @pulumi.getter
     def module(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether to upload Worker as a module.
+        The base64 encoded wasm module you want to store.
         """
         return pulumi.get(self, "module")
 
@@ -379,7 +453,7 @@ class _WorkerScriptState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name for the script. **Modifying this attribute will force creation of a new resource.**
+        The global variable for the binding in your Worker code.
         """
         return pulumi.get(self, "name")
 
@@ -525,8 +599,8 @@ class WorkerScript(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] compatibility_flags: Compatibility flags used for Worker Scripts.
         :param pulumi.Input[str] content: The script content.
         :param pulumi.Input[bool] logpush: Enabling allows Worker events to be sent to a defined Logpush destination.
-        :param pulumi.Input[bool] module: Whether to upload Worker as a module.
-        :param pulumi.Input[str] name: The name for the script. **Modifying this attribute will force creation of a new resource.**
+        :param pulumi.Input[bool] module: The base64 encoded wasm module you want to store.
+        :param pulumi.Input[str] name: The global variable for the binding in your Worker code.
         """
         ...
     @overload
@@ -599,6 +673,10 @@ class WorkerScript(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            WorkerScriptArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -686,8 +764,8 @@ class WorkerScript(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] compatibility_flags: Compatibility flags used for Worker Scripts.
         :param pulumi.Input[str] content: The script content.
         :param pulumi.Input[bool] logpush: Enabling allows Worker events to be sent to a defined Logpush destination.
-        :param pulumi.Input[bool] module: Whether to upload Worker as a module.
-        :param pulumi.Input[str] name: The name for the script. **Modifying this attribute will force creation of a new resource.**
+        :param pulumi.Input[bool] module: The base64 encoded wasm module you want to store.
+        :param pulumi.Input[str] name: The global variable for the binding in your Worker code.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -764,7 +842,7 @@ class WorkerScript(pulumi.CustomResource):
     @pulumi.getter
     def module(self) -> pulumi.Output[Optional[bool]]:
         """
-        Whether to upload Worker as a module.
+        The base64 encoded wasm module you want to store.
         """
         return pulumi.get(self, "module")
 
@@ -772,7 +850,7 @@ class WorkerScript(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        The name for the script. **Modifying this attribute will force creation of a new resource.**
+        The global variable for the binding in your Worker code.
         """
         return pulumi.get(self, "name")
 

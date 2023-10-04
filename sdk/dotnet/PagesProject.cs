@@ -243,13 +243,13 @@ namespace Pulumi.Cloudflare
         public Output<ImmutableArray<string>> Domains { get; private set; } = null!;
 
         /// <summary>
-        /// Name of the project.
+        /// The global variable for the binding in your Worker code.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the branch that is used for the production environment.
+        /// Project production branch name.
         /// </summary>
         [Output("productionBranch")]
         public Output<string> ProductionBranch { get; private set; } = null!;
@@ -331,13 +331,13 @@ namespace Pulumi.Cloudflare
         public Input<Inputs.PagesProjectDeploymentConfigsArgs>? DeploymentConfigs { get; set; }
 
         /// <summary>
-        /// Name of the project.
+        /// The global variable for the binding in your Worker code.
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
         /// <summary>
-        /// The name of the branch that is used for the production environment.
+        /// Project production branch name.
         /// </summary>
         [Input("productionBranch", required: true)]
         public Input<string> ProductionBranch { get; set; } = null!;
@@ -393,13 +393,13 @@ namespace Pulumi.Cloudflare
         }
 
         /// <summary>
-        /// Name of the project.
+        /// The global variable for the binding in your Worker code.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The name of the branch that is used for the production environment.
+        /// Project production branch name.
         /// </summary>
         [Input("productionBranch")]
         public Input<string>? ProductionBranch { get; set; }

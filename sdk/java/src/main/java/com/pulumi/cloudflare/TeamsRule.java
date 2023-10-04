@@ -86,14 +86,14 @@ public class TeamsRule extends com.pulumi.resources.CustomResource {
         return this.accountId;
     }
     /**
-     * The action executed by matched teams rule. Available values: `allow`, `block`, `safesearch`, `ytrestricted`, `on`, `off`, `scan`, `noscan`, `isolate`, `noisolate`, `override`, `l4_override`, `egress`, `audit_ssh`.
+     * Action to be taken when the SSL certificate of upstream is invalid. Available values: `pass_through`, `block`, `error`.
      * 
      */
     @Export(name="action", refs={String.class}, tree="[0]")
     private Output<String> action;
 
     /**
-     * @return The action executed by matched teams rule. Available values: `allow`, `block`, `safesearch`, `ytrestricted`, `on`, `off`, `scan`, `noscan`, `isolate`, `noisolate`, `override`, `l4_override`, `egress`, `audit_ssh`.
+     * @return Action to be taken when the SSL certificate of upstream is invalid. Available values: `pass_through`, `block`, `error`.
      * 
      */
     public Output<String> action() {
@@ -128,14 +128,14 @@ public class TeamsRule extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.devicePosture);
     }
     /**
-     * Indicator of rule enablement.
+     * Enable or disable DLP Payload Logging for this rule.
      * 
      */
     @Export(name="enabled", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> enabled;
 
     /**
-     * @return Indicator of rule enablement.
+     * @return Enable or disable DLP Payload Logging for this rule.
      * 
      */
     public Output<Optional<Boolean>> enabled() {

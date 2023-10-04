@@ -13,6 +13,10 @@ import javax.annotation.Nullable;
 public final class AccessPolicyRequireSaml {
     private @Nullable String attributeName;
     private @Nullable String attributeValue;
+    /**
+     * @return The ID of the Azure Identity provider.
+     * 
+     */
     private @Nullable String identityProviderId;
 
     private AccessPolicyRequireSaml() {}
@@ -22,6 +26,10 @@ public final class AccessPolicyRequireSaml {
     public Optional<String> attributeValue() {
         return Optional.ofNullable(this.attributeValue);
     }
+    /**
+     * @return The ID of the Azure Identity provider.
+     * 
+     */
     public Optional<String> identityProviderId() {
         return Optional.ofNullable(this.identityProviderId);
     }

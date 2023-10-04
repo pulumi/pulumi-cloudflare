@@ -42,10 +42,6 @@ public final class CustomHostnameSsl {
      * 
      */
     private @Nullable List<CustomHostnameSslSetting> settings;
-    /**
-     * @return Status of the certificate.
-     * 
-     */
     private @Nullable String status;
     /**
      * @return Level of validation to be used for this hostname. Available values: `dv`. Defaults to `dv`.
@@ -99,10 +95,6 @@ public final class CustomHostnameSsl {
     public List<CustomHostnameSslSetting> settings() {
         return this.settings == null ? List.of() : this.settings;
     }
-    /**
-     * @return Status of the certificate.
-     * 
-     */
     public Optional<String> status() {
         return Optional.ofNullable(this.status);
     }

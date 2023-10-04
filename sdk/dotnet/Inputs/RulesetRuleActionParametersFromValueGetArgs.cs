@@ -12,12 +12,21 @@ namespace Pulumi.Cloudflare.Inputs
 
     public sealed class RulesetRuleActionParametersFromValueGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Preserve query string for redirect URL.
+        /// </summary>
         [Input("preserveQueryString")]
         public Input<bool>? PreserveQueryString { get; set; }
 
+        /// <summary>
+        /// Status code for which the edge TTL is applied.
+        /// </summary>
         [Input("statusCode")]
         public Input<int>? StatusCode { get; set; }
 
+        /// <summary>
+        /// Target URL for redirect.
+        /// </summary>
         [Input("targetUrl")]
         public Input<Inputs.RulesetRuleActionParametersFromValueTargetUrlGetArgs>? TargetUrl { get; set; }
 

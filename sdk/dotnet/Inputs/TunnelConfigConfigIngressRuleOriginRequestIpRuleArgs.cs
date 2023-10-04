@@ -12,17 +12,27 @@ namespace Pulumi.Cloudflare.Inputs
 
     public sealed class TunnelConfigConfigIngressRuleOriginRequestIpRuleArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Whether to allow the IP prefix.
+        /// </summary>
         [Input("allow")]
         public Input<bool>? Allow { get; set; }
 
         [Input("ports")]
         private InputList<int>? _ports;
+
+        /// <summary>
+        /// Ports to use within the IP rule.
+        /// </summary>
         public InputList<int> Ports
         {
             get => _ports ?? (_ports = new InputList<int>());
             set => _ports = value;
         }
 
+        /// <summary>
+        /// IP rule prefix.
+        /// </summary>
         [Input("prefix")]
         public Input<string>? Prefix { get; set; }
 

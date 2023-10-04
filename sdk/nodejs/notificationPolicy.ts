@@ -66,7 +66,7 @@ export class NotificationPolicy extends pulumi.CustomResource {
      */
     public readonly emailIntegrations!: pulumi.Output<outputs.NotificationPolicyEmailIntegration[] | undefined>;
     /**
-     * The status of the notification policy.
+     * State of the pool to alert on.
      */
     public readonly enabled!: pulumi.Output<boolean>;
     /**
@@ -170,7 +170,7 @@ export interface NotificationPolicyState {
      */
     emailIntegrations?: pulumi.Input<pulumi.Input<inputs.NotificationPolicyEmailIntegration>[]>;
     /**
-     * The status of the notification policy.
+     * State of the pool to alert on.
      */
     enabled?: pulumi.Input<boolean>;
     /**
@@ -216,7 +216,7 @@ export interface NotificationPolicyArgs {
      */
     emailIntegrations?: pulumi.Input<pulumi.Input<inputs.NotificationPolicyEmailIntegration>[]>;
     /**
-     * The status of the notification policy.
+     * State of the pool to alert on.
      */
     enabled: pulumi.Input<boolean>;
     /**

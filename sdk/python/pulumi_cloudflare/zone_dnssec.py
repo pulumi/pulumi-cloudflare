@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['ZoneDnssecArgs', 'ZoneDnssec']
@@ -21,9 +21,20 @@ class ZoneDnssecArgs:
         :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         :param pulumi.Input[str] modified_on: Zone DNSSEC updated time.
         """
-        pulumi.set(__self__, "zone_id", zone_id)
+        ZoneDnssecArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            zone_id=zone_id,
+            modified_on=modified_on,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             zone_id: pulumi.Input[str],
+             modified_on: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("zone_id", zone_id)
         if modified_on is not None:
-            pulumi.set(__self__, "modified_on", modified_on)
+            _setter("modified_on", modified_on)
 
     @property
     @pulumi.getter(name="zoneId")
@@ -80,30 +91,61 @@ class _ZoneDnssecState:
         :param pulumi.Input[str] status: The status of the Zone DNSSEC.
         :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         """
+        _ZoneDnssecState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            algorithm=algorithm,
+            digest=digest,
+            digest_algorithm=digest_algorithm,
+            digest_type=digest_type,
+            ds=ds,
+            flags=flags,
+            key_tag=key_tag,
+            key_type=key_type,
+            modified_on=modified_on,
+            public_key=public_key,
+            status=status,
+            zone_id=zone_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             algorithm: Optional[pulumi.Input[str]] = None,
+             digest: Optional[pulumi.Input[str]] = None,
+             digest_algorithm: Optional[pulumi.Input[str]] = None,
+             digest_type: Optional[pulumi.Input[str]] = None,
+             ds: Optional[pulumi.Input[str]] = None,
+             flags: Optional[pulumi.Input[int]] = None,
+             key_tag: Optional[pulumi.Input[int]] = None,
+             key_type: Optional[pulumi.Input[str]] = None,
+             modified_on: Optional[pulumi.Input[str]] = None,
+             public_key: Optional[pulumi.Input[str]] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             zone_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if algorithm is not None:
-            pulumi.set(__self__, "algorithm", algorithm)
+            _setter("algorithm", algorithm)
         if digest is not None:
-            pulumi.set(__self__, "digest", digest)
+            _setter("digest", digest)
         if digest_algorithm is not None:
-            pulumi.set(__self__, "digest_algorithm", digest_algorithm)
+            _setter("digest_algorithm", digest_algorithm)
         if digest_type is not None:
-            pulumi.set(__self__, "digest_type", digest_type)
+            _setter("digest_type", digest_type)
         if ds is not None:
-            pulumi.set(__self__, "ds", ds)
+            _setter("ds", ds)
         if flags is not None:
-            pulumi.set(__self__, "flags", flags)
+            _setter("flags", flags)
         if key_tag is not None:
-            pulumi.set(__self__, "key_tag", key_tag)
+            _setter("key_tag", key_tag)
         if key_type is not None:
-            pulumi.set(__self__, "key_type", key_type)
+            _setter("key_type", key_type)
         if modified_on is not None:
-            pulumi.set(__self__, "modified_on", modified_on)
+            _setter("modified_on", modified_on)
         if public_key is not None:
-            pulumi.set(__self__, "public_key", public_key)
+            _setter("public_key", public_key)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
         if zone_id is not None:
-            pulumi.set(__self__, "zone_id", zone_id)
+            _setter("zone_id", zone_id)
 
     @property
     @pulumi.getter
@@ -317,6 +359,10 @@ class ZoneDnssec(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            ZoneDnssecArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

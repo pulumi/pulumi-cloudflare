@@ -16,16 +16,32 @@ public final class RulesetRuleActionParametersCacheKeyCustomKeyCookieArgs extend
 
     public static final RulesetRuleActionParametersCacheKeyCustomKeyCookieArgs Empty = new RulesetRuleActionParametersCacheKeyCustomKeyCookieArgs();
 
+    /**
+     * List of cookies to check for presence in the custom key.
+     * 
+     */
     @Import(name="checkPresences")
     private @Nullable Output<List<String>> checkPresences;
 
+    /**
+     * @return List of cookies to check for presence in the custom key.
+     * 
+     */
     public Optional<Output<List<String>>> checkPresences() {
         return Optional.ofNullable(this.checkPresences);
     }
 
+    /**
+     * List of cookies to include in the custom key.
+     * 
+     */
     @Import(name="includes")
     private @Nullable Output<List<String>> includes;
 
+    /**
+     * @return List of cookies to include in the custom key.
+     * 
+     */
     public Optional<Output<List<String>>> includes() {
         return Optional.ofNullable(this.includes);
     }
@@ -55,28 +71,64 @@ public final class RulesetRuleActionParametersCacheKeyCustomKeyCookieArgs extend
             $ = new RulesetRuleActionParametersCacheKeyCustomKeyCookieArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param checkPresences List of cookies to check for presence in the custom key.
+         * 
+         * @return builder
+         * 
+         */
         public Builder checkPresences(@Nullable Output<List<String>> checkPresences) {
             $.checkPresences = checkPresences;
             return this;
         }
 
+        /**
+         * @param checkPresences List of cookies to check for presence in the custom key.
+         * 
+         * @return builder
+         * 
+         */
         public Builder checkPresences(List<String> checkPresences) {
             return checkPresences(Output.of(checkPresences));
         }
 
+        /**
+         * @param checkPresences List of cookies to check for presence in the custom key.
+         * 
+         * @return builder
+         * 
+         */
         public Builder checkPresences(String... checkPresences) {
             return checkPresences(List.of(checkPresences));
         }
 
+        /**
+         * @param includes List of cookies to include in the custom key.
+         * 
+         * @return builder
+         * 
+         */
         public Builder includes(@Nullable Output<List<String>> includes) {
             $.includes = includes;
             return this;
         }
 
+        /**
+         * @param includes List of cookies to include in the custom key.
+         * 
+         * @return builder
+         * 
+         */
         public Builder includes(List<String> includes) {
             return includes(Output.of(includes));
         }
 
+        /**
+         * @param includes List of cookies to include in the custom key.
+         * 
+         * @return builder
+         * 
+         */
         public Builder includes(String... includes) {
             return includes(List.of(includes));
         }

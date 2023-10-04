@@ -14,14 +14,14 @@ public final class RulesetRuleActionParametersAlgorithmArgs extends com.pulumi.r
     public static final RulesetRuleActionParametersAlgorithmArgs Empty = new RulesetRuleActionParametersAlgorithmArgs();
 
     /**
-     * Name of the ruleset.
+     * Name of the compression algorithm to use. Available values: `gzip`, `brotli`, `auto`, `default`, `none`
      * 
      */
     @Import(name="name", required=true)
     private Output<String> name;
 
     /**
-     * @return Name of the ruleset.
+     * @return Name of the compression algorithm to use. Available values: `gzip`, `brotli`, `auto`, `default`, `none`
      * 
      */
     public Output<String> name() {
@@ -53,7 +53,7 @@ public final class RulesetRuleActionParametersAlgorithmArgs extends com.pulumi.r
         }
 
         /**
-         * @param name Name of the ruleset.
+         * @param name Name of the compression algorithm to use. Available values: `gzip`, `brotli`, `auto`, `default`, `none`
          * 
          * @return builder
          * 
@@ -64,7 +64,7 @@ public final class RulesetRuleActionParametersAlgorithmArgs extends com.pulumi.r
         }
 
         /**
-         * @param name Name of the ruleset.
+         * @param name Name of the compression algorithm to use. Available values: `gzip`, `brotli`, `auto`, `default`, `none`
          * 
          * @return builder
          * 

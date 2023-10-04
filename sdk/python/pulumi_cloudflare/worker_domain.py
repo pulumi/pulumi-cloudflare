@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['WorkerDomainArgs', 'WorkerDomain']
@@ -27,12 +27,29 @@ class WorkerDomainArgs:
         :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         :param pulumi.Input[str] environment: The name of the Worker environment. Defaults to `production`.
         """
-        pulumi.set(__self__, "account_id", account_id)
-        pulumi.set(__self__, "hostname", hostname)
-        pulumi.set(__self__, "service", service)
-        pulumi.set(__self__, "zone_id", zone_id)
+        WorkerDomainArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            account_id=account_id,
+            hostname=hostname,
+            service=service,
+            zone_id=zone_id,
+            environment=environment,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             account_id: pulumi.Input[str],
+             hostname: pulumi.Input[str],
+             service: pulumi.Input[str],
+             zone_id: pulumi.Input[str],
+             environment: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("account_id", account_id)
+        _setter("hostname", hostname)
+        _setter("service", service)
+        _setter("zone_id", zone_id)
         if environment is not None:
-            pulumi.set(__self__, "environment", environment)
+            _setter("environment", environment)
 
     @property
     @pulumi.getter(name="accountId")
@@ -111,16 +128,33 @@ class _WorkerDomainState:
         :param pulumi.Input[str] service: Name of worker script to attach the domain to.
         :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         """
+        _WorkerDomainState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            account_id=account_id,
+            environment=environment,
+            hostname=hostname,
+            service=service,
+            zone_id=zone_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             account_id: Optional[pulumi.Input[str]] = None,
+             environment: Optional[pulumi.Input[str]] = None,
+             hostname: Optional[pulumi.Input[str]] = None,
+             service: Optional[pulumi.Input[str]] = None,
+             zone_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if account_id is not None:
-            pulumi.set(__self__, "account_id", account_id)
+            _setter("account_id", account_id)
         if environment is not None:
-            pulumi.set(__self__, "environment", environment)
+            _setter("environment", environment)
         if hostname is not None:
-            pulumi.set(__self__, "hostname", hostname)
+            _setter("hostname", hostname)
         if service is not None:
-            pulumi.set(__self__, "service", service)
+            _setter("service", service)
         if zone_id is not None:
-            pulumi.set(__self__, "zone_id", zone_id)
+            _setter("zone_id", zone_id)
 
     @property
     @pulumi.getter(name="accountId")
@@ -262,6 +296,10 @@ class WorkerDomain(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            WorkerDomainArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

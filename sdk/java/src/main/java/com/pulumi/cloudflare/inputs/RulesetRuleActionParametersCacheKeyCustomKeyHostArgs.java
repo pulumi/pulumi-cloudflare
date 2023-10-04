@@ -15,9 +15,17 @@ public final class RulesetRuleActionParametersCacheKeyCustomKeyHostArgs extends 
 
     public static final RulesetRuleActionParametersCacheKeyCustomKeyHostArgs Empty = new RulesetRuleActionParametersCacheKeyCustomKeyHostArgs();
 
+    /**
+     * Resolve hostname to IP address.
+     * 
+     */
     @Import(name="resolved")
     private @Nullable Output<Boolean> resolved;
 
+    /**
+     * @return Resolve hostname to IP address.
+     * 
+     */
     public Optional<Output<Boolean>> resolved() {
         return Optional.ofNullable(this.resolved);
     }
@@ -46,11 +54,23 @@ public final class RulesetRuleActionParametersCacheKeyCustomKeyHostArgs extends 
             $ = new RulesetRuleActionParametersCacheKeyCustomKeyHostArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param resolved Resolve hostname to IP address.
+         * 
+         * @return builder
+         * 
+         */
         public Builder resolved(@Nullable Output<Boolean> resolved) {
             $.resolved = resolved;
             return this;
         }
 
+        /**
+         * @param resolved Resolve hostname to IP address.
+         * 
+         * @return builder
+         * 
+         */
         public Builder resolved(Boolean resolved) {
             return resolved(Output.of(resolved));
         }

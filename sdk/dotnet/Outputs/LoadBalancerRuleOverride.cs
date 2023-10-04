@@ -21,7 +21,13 @@ namespace Pulumi.Cloudflare.Outputs
         /// A set containing mappings of country codes to a list of pool IDs (ordered by their failover priority) for the given country.
         /// </summary>
         public readonly ImmutableArray<Outputs.LoadBalancerRuleOverrideCountryPool> CountryPools;
+        /// <summary>
+        /// A list of pool IDs ordered by their failover priority. Used whenever `pop_pools`/`country_pools`/`region_pools` are not defined.
+        /// </summary>
         public readonly ImmutableArray<string> DefaultPools;
+        /// <summary>
+        /// The pool ID to use when all other pools are detected as unhealthy.
+        /// </summary>
         public readonly string? FallbackPool;
         /// <summary>
         /// Controls location-based steering for non-proxied requests.
@@ -40,11 +46,11 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.LoadBalancerRuleOverrideRegionPool> RegionPools;
         /// <summary>
-        /// Specifies the type of session affinity the load balancer should use unless specified as `none` or `""` (default). With value `cookie`, on the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy then a new origin server is calculated and used. Value `ip_cookie` behaves the same as `cookie` except the initial origin selection is stable and based on the client's IP address. Available values: `""`, `none`, `cookie`, `ip_cookie`, `header`. Defaults to `none`.
+        /// Configure attributes for session affinity.
         /// </summary>
         public readonly string? SessionAffinity;
         /// <summary>
-        /// Configure attributes for session affinity.
+        /// Configure attributes for session affinity. Note that the property `drain_duration` is not currently supported as a rule override.
         /// </summary>
         public readonly ImmutableArray<Outputs.LoadBalancerRuleOverrideSessionAffinityAttribute> SessionAffinityAttributes;
         /// <summary>
@@ -56,7 +62,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string? SteeringPolicy;
         /// <summary>
-        /// Time to live (TTL) of the DNS entry for the IP address returned by this load balancer. This cannot be set for proxied load balancers. Defaults to `30`. Conflicts with `proxied`.
+        /// Time to live (TTL) of the DNS entry for the IP address returned by this load balancer. This cannot be set for proxied load balancers. Defaults to `30`.
         /// </summary>
         public readonly int? Ttl;
 

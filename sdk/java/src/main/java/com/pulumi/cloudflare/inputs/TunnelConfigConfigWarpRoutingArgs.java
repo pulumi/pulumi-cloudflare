@@ -15,9 +15,17 @@ public final class TunnelConfigConfigWarpRoutingArgs extends com.pulumi.resource
 
     public static final TunnelConfigConfigWarpRoutingArgs Empty = new TunnelConfigConfigWarpRoutingArgs();
 
+    /**
+     * Whether WARP routing is enabled.
+     * 
+     */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
+    /**
+     * @return Whether WARP routing is enabled.
+     * 
+     */
     public Optional<Output<Boolean>> enabled() {
         return Optional.ofNullable(this.enabled);
     }
@@ -46,11 +54,23 @@ public final class TunnelConfigConfigWarpRoutingArgs extends com.pulumi.resource
             $ = new TunnelConfigConfigWarpRoutingArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param enabled Whether WARP routing is enabled.
+         * 
+         * @return builder
+         * 
+         */
         public Builder enabled(@Nullable Output<Boolean> enabled) {
             $.enabled = enabled;
             return this;
         }
 
+        /**
+         * @param enabled Whether WARP routing is enabled.
+         * 
+         * @return builder
+         * 
+         */
         public Builder enabled(Boolean enabled) {
             return enabled(Output.of(enabled));
         }

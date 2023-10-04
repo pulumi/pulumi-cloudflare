@@ -105,7 +105,7 @@ type AccessApplication struct {
 	HttpOnlyCookieAttribute pulumi.BoolPtrOutput `pulumi:"httpOnlyCookieAttribute"`
 	// Image URL for the logo shown in the app launcher dashboard.
 	LogoUrl pulumi.StringPtrOutput `pulumi:"logoUrl"`
-	// Friendly name of the Access Application.
+	// The name of the attribute as provided to the SaaS app.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// SaaS configuration for the Access Application.
 	SaasApp AccessApplicationSaasAppPtrOutput `pulumi:"saasApp"`
@@ -186,7 +186,7 @@ type accessApplicationState struct {
 	HttpOnlyCookieAttribute *bool `pulumi:"httpOnlyCookieAttribute"`
 	// Image URL for the logo shown in the app launcher dashboard.
 	LogoUrl *string `pulumi:"logoUrl"`
-	// Friendly name of the Access Application.
+	// The name of the attribute as provided to the SaaS app.
 	Name *string `pulumi:"name"`
 	// SaaS configuration for the Access Application.
 	SaasApp *AccessApplicationSaasApp `pulumi:"saasApp"`
@@ -235,7 +235,7 @@ type AccessApplicationState struct {
 	HttpOnlyCookieAttribute pulumi.BoolPtrInput
 	// Image URL for the logo shown in the app launcher dashboard.
 	LogoUrl pulumi.StringPtrInput
-	// Friendly name of the Access Application.
+	// The name of the attribute as provided to the SaaS app.
 	Name pulumi.StringPtrInput
 	// SaaS configuration for the Access Application.
 	SaasApp AccessApplicationSaasAppPtrInput
@@ -286,7 +286,7 @@ type accessApplicationArgs struct {
 	HttpOnlyCookieAttribute *bool `pulumi:"httpOnlyCookieAttribute"`
 	// Image URL for the logo shown in the app launcher dashboard.
 	LogoUrl *string `pulumi:"logoUrl"`
-	// Friendly name of the Access Application.
+	// The name of the attribute as provided to the SaaS app.
 	Name string `pulumi:"name"`
 	// SaaS configuration for the Access Application.
 	SaasApp *AccessApplicationSaasApp `pulumi:"saasApp"`
@@ -334,7 +334,7 @@ type AccessApplicationArgs struct {
 	HttpOnlyCookieAttribute pulumi.BoolPtrInput
 	// Image URL for the logo shown in the app launcher dashboard.
 	LogoUrl pulumi.StringPtrInput
-	// Friendly name of the Access Application.
+	// The name of the attribute as provided to the SaaS app.
 	Name pulumi.StringInput
 	// SaaS configuration for the Access Application.
 	SaasApp AccessApplicationSaasAppPtrInput
@@ -535,7 +535,7 @@ func (o AccessApplicationOutput) LogoUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AccessApplication) pulumi.StringPtrOutput { return v.LogoUrl }).(pulumi.StringPtrOutput)
 }
 
-// Friendly name of the Access Application.
+// The name of the attribute as provided to the SaaS app.
 func (o AccessApplicationOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *AccessApplication) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

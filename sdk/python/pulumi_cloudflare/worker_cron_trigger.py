@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['WorkerCronTriggerArgs', 'WorkerCronTrigger']
@@ -23,9 +23,22 @@ class WorkerCronTriggerArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] schedules: Cron expressions to execute the Worker script.
         :param pulumi.Input[str] script_name: Worker script to target for the schedules.
         """
-        pulumi.set(__self__, "account_id", account_id)
-        pulumi.set(__self__, "schedules", schedules)
-        pulumi.set(__self__, "script_name", script_name)
+        WorkerCronTriggerArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            account_id=account_id,
+            schedules=schedules,
+            script_name=script_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             account_id: pulumi.Input[str],
+             schedules: pulumi.Input[Sequence[pulumi.Input[str]]],
+             script_name: pulumi.Input[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("account_id", account_id)
+        _setter("schedules", schedules)
+        _setter("script_name", script_name)
 
     @property
     @pulumi.getter(name="accountId")
@@ -76,12 +89,25 @@ class _WorkerCronTriggerState:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] schedules: Cron expressions to execute the Worker script.
         :param pulumi.Input[str] script_name: Worker script to target for the schedules.
         """
+        _WorkerCronTriggerState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            account_id=account_id,
+            schedules=schedules,
+            script_name=script_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             account_id: Optional[pulumi.Input[str]] = None,
+             schedules: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             script_name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if account_id is not None:
-            pulumi.set(__self__, "account_id", account_id)
+            _setter("account_id", account_id)
         if schedules is not None:
-            pulumi.set(__self__, "schedules", schedules)
+            _setter("schedules", schedules)
         if script_name is not None:
-            pulumi.set(__self__, "script_name", script_name)
+            _setter("script_name", script_name)
 
     @property
     @pulumi.getter(name="accountId")
@@ -213,6 +239,10 @@ class WorkerCronTrigger(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            WorkerCronTriggerArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

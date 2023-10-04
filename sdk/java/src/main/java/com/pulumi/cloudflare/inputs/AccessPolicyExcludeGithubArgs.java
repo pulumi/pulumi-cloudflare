@@ -16,24 +16,24 @@ public final class AccessPolicyExcludeGithubArgs extends com.pulumi.resources.Re
 
     public static final AccessPolicyExcludeGithubArgs Empty = new AccessPolicyExcludeGithubArgs();
 
+    /**
+     * The ID of the Azure Identity provider.
+     * 
+     */
     @Import(name="identityProviderId")
     private @Nullable Output<String> identityProviderId;
 
+    /**
+     * @return The ID of the Azure Identity provider.
+     * 
+     */
     public Optional<Output<String>> identityProviderId() {
         return Optional.ofNullable(this.identityProviderId);
     }
 
-    /**
-     * Friendly name of the Access Policy.
-     * 
-     */
     @Import(name="name")
     private @Nullable Output<String> name;
 
-    /**
-     * @return Friendly name of the Access Policy.
-     * 
-     */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
     }
@@ -71,32 +71,32 @@ public final class AccessPolicyExcludeGithubArgs extends com.pulumi.resources.Re
             $ = new AccessPolicyExcludeGithubArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param identityProviderId The ID of the Azure Identity provider.
+         * 
+         * @return builder
+         * 
+         */
         public Builder identityProviderId(@Nullable Output<String> identityProviderId) {
             $.identityProviderId = identityProviderId;
             return this;
         }
 
-        public Builder identityProviderId(String identityProviderId) {
-            return identityProviderId(Output.of(identityProviderId));
-        }
-
         /**
-         * @param name Friendly name of the Access Policy.
+         * @param identityProviderId The ID of the Azure Identity provider.
          * 
          * @return builder
          * 
          */
+        public Builder identityProviderId(String identityProviderId) {
+            return identityProviderId(Output.of(identityProviderId));
+        }
+
         public Builder name(@Nullable Output<String> name) {
             $.name = name;
             return this;
         }
 
-        /**
-         * @param name Friendly name of the Access Policy.
-         * 
-         * @return builder
-         * 
-         */
         public Builder name(String name) {
             return name(Output.of(name));
         }

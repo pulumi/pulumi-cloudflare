@@ -10,14 +10,14 @@ import java.util.Objects;
 @CustomType
 public final class TeamsRuleRuleSettingsPayloadLog {
     /**
-     * @return Indicator of rule enablement.
+     * @return Enable or disable DLP Payload Logging for this rule.
      * 
      */
     private Boolean enabled;
 
     private TeamsRuleRuleSettingsPayloadLog() {}
     /**
-     * @return Indicator of rule enablement.
+     * @return Enable or disable DLP Payload Logging for this rule.
      * 
      */
     public Boolean enabled() {

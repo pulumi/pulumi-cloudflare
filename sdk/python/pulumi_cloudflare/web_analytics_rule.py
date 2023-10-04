@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['WebAnalyticsRuleArgs', 'WebAnalyticsRule']
@@ -29,12 +29,31 @@ class WebAnalyticsRuleArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] paths: A list of paths to apply the rule to.
         :param pulumi.Input[str] ruleset_id: The Web Analytics ruleset id. **Modifying this attribute will force creation of a new resource.**
         """
-        pulumi.set(__self__, "account_id", account_id)
-        pulumi.set(__self__, "host", host)
-        pulumi.set(__self__, "inclusive", inclusive)
-        pulumi.set(__self__, "is_paused", is_paused)
-        pulumi.set(__self__, "paths", paths)
-        pulumi.set(__self__, "ruleset_id", ruleset_id)
+        WebAnalyticsRuleArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            account_id=account_id,
+            host=host,
+            inclusive=inclusive,
+            is_paused=is_paused,
+            paths=paths,
+            ruleset_id=ruleset_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             account_id: pulumi.Input[str],
+             host: pulumi.Input[str],
+             inclusive: pulumi.Input[bool],
+             is_paused: pulumi.Input[bool],
+             paths: pulumi.Input[Sequence[pulumi.Input[str]]],
+             ruleset_id: pulumi.Input[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("account_id", account_id)
+        _setter("host", host)
+        _setter("inclusive", inclusive)
+        _setter("is_paused", is_paused)
+        _setter("paths", paths)
+        _setter("ruleset_id", ruleset_id)
 
     @property
     @pulumi.getter(name="accountId")
@@ -127,18 +146,37 @@ class _WebAnalyticsRuleState:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] paths: A list of paths to apply the rule to.
         :param pulumi.Input[str] ruleset_id: The Web Analytics ruleset id. **Modifying this attribute will force creation of a new resource.**
         """
+        _WebAnalyticsRuleState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            account_id=account_id,
+            host=host,
+            inclusive=inclusive,
+            is_paused=is_paused,
+            paths=paths,
+            ruleset_id=ruleset_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             account_id: Optional[pulumi.Input[str]] = None,
+             host: Optional[pulumi.Input[str]] = None,
+             inclusive: Optional[pulumi.Input[bool]] = None,
+             is_paused: Optional[pulumi.Input[bool]] = None,
+             paths: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             ruleset_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if account_id is not None:
-            pulumi.set(__self__, "account_id", account_id)
+            _setter("account_id", account_id)
         if host is not None:
-            pulumi.set(__self__, "host", host)
+            _setter("host", host)
         if inclusive is not None:
-            pulumi.set(__self__, "inclusive", inclusive)
+            _setter("inclusive", inclusive)
         if is_paused is not None:
-            pulumi.set(__self__, "is_paused", is_paused)
+            _setter("is_paused", is_paused)
         if paths is not None:
-            pulumi.set(__self__, "paths", paths)
+            _setter("paths", paths)
         if ruleset_id is not None:
-            pulumi.set(__self__, "ruleset_id", ruleset_id)
+            _setter("ruleset_id", ruleset_id)
 
     @property
     @pulumi.getter(name="accountId")
@@ -308,6 +346,10 @@ class WebAnalyticsRule(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            WebAnalyticsRuleArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

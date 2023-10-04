@@ -16,8 +16,16 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetLoadBalancerPoolsPoolOrigin {
     private String address;
+    /**
+     * @return Whether this pool is enabled. Disabled pools will not receive traffic and are excluded from health checks.
+     * 
+     */
     private @Nullable Boolean enabled;
     private @Nullable List<GetLoadBalancerPoolsPoolOriginHeader> headers;
+    /**
+     * @return A regular expression matching the name of the Load Balancer pool to lookup.
+     * 
+     */
     private String name;
     private @Nullable Double weight;
 
@@ -25,12 +33,20 @@ public final class GetLoadBalancerPoolsPoolOrigin {
     public String address() {
         return this.address;
     }
+    /**
+     * @return Whether this pool is enabled. Disabled pools will not receive traffic and are excluded from health checks.
+     * 
+     */
     public Optional<Boolean> enabled() {
         return Optional.ofNullable(this.enabled);
     }
     public List<GetLoadBalancerPoolsPoolOriginHeader> headers() {
         return this.headers == null ? List.of() : this.headers;
     }
+    /**
+     * @return A regular expression matching the name of the Load Balancer pool to lookup.
+     * 
+     */
     public String name() {
         return this.name;
     }

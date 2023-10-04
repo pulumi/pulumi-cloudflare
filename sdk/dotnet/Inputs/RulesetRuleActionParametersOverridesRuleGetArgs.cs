@@ -30,9 +30,15 @@ namespace Pulumi.Cloudflare.Inputs
         [Input("id")]
         public Input<string>? Id { get; set; }
 
+        /// <summary>
+        /// Anomaly score threshold to apply in the ruleset rule override. Only applicable to modsecurity-based rulesets.
+        /// </summary>
         [Input("scoreThreshold")]
         public Input<int>? ScoreThreshold { get; set; }
 
+        /// <summary>
+        /// Sensitivity level for a ruleset rule override.
+        /// </summary>
         [Input("sensitivityLevel")]
         public Input<string>? SensitivityLevel { get; set; }
 
