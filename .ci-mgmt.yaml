@@ -1,0 +1,13 @@
+provider: cloudflare
+major-version: 5
+makeTemplate: bridged
+plugins:
+  - name: gcp
+    version: "5.0.0"
+  - name: tls
+    version: "4.0.0"
+env:
+  CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+  CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+team: ecosystem
+javaGenVersion: "v0.9.3"
