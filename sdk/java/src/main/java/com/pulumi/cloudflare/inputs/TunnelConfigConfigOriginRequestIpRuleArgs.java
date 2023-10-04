@@ -18,23 +18,47 @@ public final class TunnelConfigConfigOriginRequestIpRuleArgs extends com.pulumi.
 
     public static final TunnelConfigConfigOriginRequestIpRuleArgs Empty = new TunnelConfigConfigOriginRequestIpRuleArgs();
 
+    /**
+     * Whether to allow the IP prefix.
+     * 
+     */
     @Import(name="allow")
     private @Nullable Output<Boolean> allow;
 
+    /**
+     * @return Whether to allow the IP prefix.
+     * 
+     */
     public Optional<Output<Boolean>> allow() {
         return Optional.ofNullable(this.allow);
     }
 
+    /**
+     * Ports to use within the IP rule.
+     * 
+     */
     @Import(name="ports")
     private @Nullable Output<List<Integer>> ports;
 
+    /**
+     * @return Ports to use within the IP rule.
+     * 
+     */
     public Optional<Output<List<Integer>>> ports() {
         return Optional.ofNullable(this.ports);
     }
 
+    /**
+     * IP rule prefix.
+     * 
+     */
     @Import(name="prefix")
     private @Nullable Output<String> prefix;
 
+    /**
+     * @return IP rule prefix.
+     * 
+     */
     public Optional<Output<String>> prefix() {
         return Optional.ofNullable(this.prefix);
     }
@@ -65,33 +89,75 @@ public final class TunnelConfigConfigOriginRequestIpRuleArgs extends com.pulumi.
             $ = new TunnelConfigConfigOriginRequestIpRuleArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param allow Whether to allow the IP prefix.
+         * 
+         * @return builder
+         * 
+         */
         public Builder allow(@Nullable Output<Boolean> allow) {
             $.allow = allow;
             return this;
         }
 
+        /**
+         * @param allow Whether to allow the IP prefix.
+         * 
+         * @return builder
+         * 
+         */
         public Builder allow(Boolean allow) {
             return allow(Output.of(allow));
         }
 
+        /**
+         * @param ports Ports to use within the IP rule.
+         * 
+         * @return builder
+         * 
+         */
         public Builder ports(@Nullable Output<List<Integer>> ports) {
             $.ports = ports;
             return this;
         }
 
+        /**
+         * @param ports Ports to use within the IP rule.
+         * 
+         * @return builder
+         * 
+         */
         public Builder ports(List<Integer> ports) {
             return ports(Output.of(ports));
         }
 
+        /**
+         * @param ports Ports to use within the IP rule.
+         * 
+         * @return builder
+         * 
+         */
         public Builder ports(Integer... ports) {
             return ports(List.of(ports));
         }
 
+        /**
+         * @param prefix IP rule prefix.
+         * 
+         * @return builder
+         * 
+         */
         public Builder prefix(@Nullable Output<String> prefix) {
             $.prefix = prefix;
             return this;
         }
 
+        /**
+         * @param prefix IP rule prefix.
+         * 
+         * @return builder
+         * 
+         */
         public Builder prefix(String prefix) {
             return prefix(Output.of(prefix));
         }

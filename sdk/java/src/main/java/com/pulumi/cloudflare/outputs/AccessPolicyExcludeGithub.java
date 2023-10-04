@@ -12,22 +12,22 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class AccessPolicyExcludeGithub {
-    private @Nullable String identityProviderId;
     /**
-     * @return Friendly name of the Access Policy.
+     * @return The ID of the Azure Identity provider.
      * 
      */
+    private @Nullable String identityProviderId;
     private @Nullable String name;
     private @Nullable List<String> teams;
 
     private AccessPolicyExcludeGithub() {}
+    /**
+     * @return The ID of the Azure Identity provider.
+     * 
+     */
     public Optional<String> identityProviderId() {
         return Optional.ofNullable(this.identityProviderId);
     }
-    /**
-     * @return Friendly name of the Access Policy.
-     * 
-     */
     public Optional<String> name() {
         return Optional.ofNullable(this.name);
     }

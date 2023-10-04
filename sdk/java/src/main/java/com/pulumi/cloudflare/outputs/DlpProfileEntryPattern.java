@@ -11,13 +11,29 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class DlpProfileEntryPattern {
+    /**
+     * @return The regex that defines the pattern.
+     * 
+     */
     private String regex;
+    /**
+     * @return The validation algorithm to apply with this pattern.
+     * 
+     */
     private @Nullable String validation;
 
     private DlpProfileEntryPattern() {}
+    /**
+     * @return The regex that defines the pattern.
+     * 
+     */
     public String regex() {
         return this.regex;
     }
+    /**
+     * @return The validation algorithm to apply with this pattern.
+     * 
+     */
     public Optional<String> validation() {
         return Optional.ofNullable(this.validation);
     }

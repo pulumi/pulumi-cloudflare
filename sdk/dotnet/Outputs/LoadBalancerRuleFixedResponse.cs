@@ -13,9 +13,21 @@ namespace Pulumi.Cloudflare.Outputs
     [OutputType]
     public sealed class LoadBalancerRuleFixedResponse
     {
+        /// <summary>
+        /// The value of the HTTP context-type header for this fixed response.
+        /// </summary>
         public readonly string? ContentType;
+        /// <summary>
+        /// The value of the HTTP location header for this fixed response.
+        /// </summary>
         public readonly string? Location;
+        /// <summary>
+        /// The text used as the html body for this fixed response.
+        /// </summary>
         public readonly string? MessageBody;
+        /// <summary>
+        /// The HTTP status code used for this fixed response.
+        /// </summary>
         public readonly int? StatusCode;
 
         [OutputConstructor]

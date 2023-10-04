@@ -12,6 +12,9 @@ namespace Pulumi.Cloudflare.Inputs
 
     public sealed class RulesetRuleActionParametersCacheKeyCustomKeyHostArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Resolve hostname to IP address.
+        /// </summary>
         [Input("resolved")]
         public Input<bool>? Resolved { get; set; }
 

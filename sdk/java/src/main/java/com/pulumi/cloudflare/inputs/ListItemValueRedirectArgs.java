@@ -16,51 +16,107 @@ public final class ListItemValueRedirectArgs extends com.pulumi.resources.Resour
 
     public static final ListItemValueRedirectArgs Empty = new ListItemValueRedirectArgs();
 
+    /**
+     * Whether the redirect also matches subdomains of the source url. Available values: `disabled`, `enabled`.
+     * 
+     */
     @Import(name="includeSubdomains")
     private @Nullable Output<String> includeSubdomains;
 
+    /**
+     * @return Whether the redirect also matches subdomains of the source url. Available values: `disabled`, `enabled`.
+     * 
+     */
     public Optional<Output<String>> includeSubdomains() {
         return Optional.ofNullable(this.includeSubdomains);
     }
 
+    /**
+     * Whether to preserve the path suffix when doing subpath matching. Available values: `disabled`, `enabled`.
+     * 
+     */
     @Import(name="preservePathSuffix")
     private @Nullable Output<String> preservePathSuffix;
 
+    /**
+     * @return Whether to preserve the path suffix when doing subpath matching. Available values: `disabled`, `enabled`.
+     * 
+     */
     public Optional<Output<String>> preservePathSuffix() {
         return Optional.ofNullable(this.preservePathSuffix);
     }
 
+    /**
+     * Whether the redirect target url should keep the query string of the request&#39;s url. Available values: `disabled`, `enabled`.
+     * 
+     */
     @Import(name="preserveQueryString")
     private @Nullable Output<String> preserveQueryString;
 
+    /**
+     * @return Whether the redirect target url should keep the query string of the request&#39;s url. Available values: `disabled`, `enabled`.
+     * 
+     */
     public Optional<Output<String>> preserveQueryString() {
         return Optional.ofNullable(this.preserveQueryString);
     }
 
+    /**
+     * The source url of the redirect.
+     * 
+     */
     @Import(name="sourceUrl", required=true)
     private Output<String> sourceUrl;
 
+    /**
+     * @return The source url of the redirect.
+     * 
+     */
     public Output<String> sourceUrl() {
         return this.sourceUrl;
     }
 
+    /**
+     * The status code to be used when redirecting a request.
+     * 
+     */
     @Import(name="statusCode")
     private @Nullable Output<Integer> statusCode;
 
+    /**
+     * @return The status code to be used when redirecting a request.
+     * 
+     */
     public Optional<Output<Integer>> statusCode() {
         return Optional.ofNullable(this.statusCode);
     }
 
+    /**
+     * Whether the redirect also matches subpaths of the source url. Available values: `disabled`, `enabled`.
+     * 
+     */
     @Import(name="subpathMatching")
     private @Nullable Output<String> subpathMatching;
 
+    /**
+     * @return Whether the redirect also matches subpaths of the source url. Available values: `disabled`, `enabled`.
+     * 
+     */
     public Optional<Output<String>> subpathMatching() {
         return Optional.ofNullable(this.subpathMatching);
     }
 
+    /**
+     * The target url of the redirect.
+     * 
+     */
     @Import(name="targetUrl", required=true)
     private Output<String> targetUrl;
 
+    /**
+     * @return The target url of the redirect.
+     * 
+     */
     public Output<String> targetUrl() {
         return this.targetUrl;
     }
@@ -95,65 +151,149 @@ public final class ListItemValueRedirectArgs extends com.pulumi.resources.Resour
             $ = new ListItemValueRedirectArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param includeSubdomains Whether the redirect also matches subdomains of the source url. Available values: `disabled`, `enabled`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder includeSubdomains(@Nullable Output<String> includeSubdomains) {
             $.includeSubdomains = includeSubdomains;
             return this;
         }
 
+        /**
+         * @param includeSubdomains Whether the redirect also matches subdomains of the source url. Available values: `disabled`, `enabled`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder includeSubdomains(String includeSubdomains) {
             return includeSubdomains(Output.of(includeSubdomains));
         }
 
+        /**
+         * @param preservePathSuffix Whether to preserve the path suffix when doing subpath matching. Available values: `disabled`, `enabled`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder preservePathSuffix(@Nullable Output<String> preservePathSuffix) {
             $.preservePathSuffix = preservePathSuffix;
             return this;
         }
 
+        /**
+         * @param preservePathSuffix Whether to preserve the path suffix when doing subpath matching. Available values: `disabled`, `enabled`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder preservePathSuffix(String preservePathSuffix) {
             return preservePathSuffix(Output.of(preservePathSuffix));
         }
 
+        /**
+         * @param preserveQueryString Whether the redirect target url should keep the query string of the request&#39;s url. Available values: `disabled`, `enabled`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder preserveQueryString(@Nullable Output<String> preserveQueryString) {
             $.preserveQueryString = preserveQueryString;
             return this;
         }
 
+        /**
+         * @param preserveQueryString Whether the redirect target url should keep the query string of the request&#39;s url. Available values: `disabled`, `enabled`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder preserveQueryString(String preserveQueryString) {
             return preserveQueryString(Output.of(preserveQueryString));
         }
 
+        /**
+         * @param sourceUrl The source url of the redirect.
+         * 
+         * @return builder
+         * 
+         */
         public Builder sourceUrl(Output<String> sourceUrl) {
             $.sourceUrl = sourceUrl;
             return this;
         }
 
+        /**
+         * @param sourceUrl The source url of the redirect.
+         * 
+         * @return builder
+         * 
+         */
         public Builder sourceUrl(String sourceUrl) {
             return sourceUrl(Output.of(sourceUrl));
         }
 
+        /**
+         * @param statusCode The status code to be used when redirecting a request.
+         * 
+         * @return builder
+         * 
+         */
         public Builder statusCode(@Nullable Output<Integer> statusCode) {
             $.statusCode = statusCode;
             return this;
         }
 
+        /**
+         * @param statusCode The status code to be used when redirecting a request.
+         * 
+         * @return builder
+         * 
+         */
         public Builder statusCode(Integer statusCode) {
             return statusCode(Output.of(statusCode));
         }
 
+        /**
+         * @param subpathMatching Whether the redirect also matches subpaths of the source url. Available values: `disabled`, `enabled`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder subpathMatching(@Nullable Output<String> subpathMatching) {
             $.subpathMatching = subpathMatching;
             return this;
         }
 
+        /**
+         * @param subpathMatching Whether the redirect also matches subpaths of the source url. Available values: `disabled`, `enabled`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder subpathMatching(String subpathMatching) {
             return subpathMatching(Output.of(subpathMatching));
         }
 
+        /**
+         * @param targetUrl The target url of the redirect.
+         * 
+         * @return builder
+         * 
+         */
         public Builder targetUrl(Output<String> targetUrl) {
             $.targetUrl = targetUrl;
             return this;
         }
 
+        /**
+         * @param targetUrl The target url of the redirect.
+         * 
+         * @return builder
+         * 
+         */
         public Builder targetUrl(String targetUrl) {
             return targetUrl(Output.of(targetUrl));
         }

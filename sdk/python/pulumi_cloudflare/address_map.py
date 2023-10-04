@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -31,16 +31,35 @@ class AddressMapArgs:
         :param pulumi.Input[Sequence[pulumi.Input['AddressMapIpArgs']]] ips: The set of IPs on the Address Map.
         :param pulumi.Input[Sequence[pulumi.Input['AddressMapMembershipArgs']]] memberships: Zones and Accounts which will be assigned IPs on this Address Map.
         """
-        pulumi.set(__self__, "account_id", account_id)
-        pulumi.set(__self__, "enabled", enabled)
+        AddressMapArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            account_id=account_id,
+            enabled=enabled,
+            default_sni=default_sni,
+            description=description,
+            ips=ips,
+            memberships=memberships,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             account_id: pulumi.Input[str],
+             enabled: pulumi.Input[bool],
+             default_sni: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             ips: Optional[pulumi.Input[Sequence[pulumi.Input['AddressMapIpArgs']]]] = None,
+             memberships: Optional[pulumi.Input[Sequence[pulumi.Input['AddressMapMembershipArgs']]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("account_id", account_id)
+        _setter("enabled", enabled)
         if default_sni is not None:
-            pulumi.set(__self__, "default_sni", default_sni)
+            _setter("default_sni", default_sni)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if ips is not None:
-            pulumi.set(__self__, "ips", ips)
+            _setter("ips", ips)
         if memberships is not None:
-            pulumi.set(__self__, "memberships", memberships)
+            _setter("memberships", memberships)
 
     @property
     @pulumi.getter(name="accountId")
@@ -129,7 +148,7 @@ class _AddressMapState:
         """
         Input properties used for looking up and filtering AddressMap resources.
         :param pulumi.Input[str] account_id: The account identifier to target for the resource.
-        :param pulumi.Input[bool] can_delete: If set to false, then the Address Map cannot be deleted via API. This is true for Cloudflare-managed maps.
+        :param pulumi.Input[bool] can_delete: Controls whether the membership can be deleted via the API or not.
         :param pulumi.Input[bool] can_modify_ips: If set to false, then the IPs on the Address Map cannot be modified via the API. This is true for Cloudflare-managed maps.
         :param pulumi.Input[str] default_sni: If you have legacy TLS clients which do not send the TLS server name indicator, then you can specify one default SNI on the map.
         :param pulumi.Input[str] description: Description of the address map.
@@ -137,22 +156,45 @@ class _AddressMapState:
         :param pulumi.Input[Sequence[pulumi.Input['AddressMapIpArgs']]] ips: The set of IPs on the Address Map.
         :param pulumi.Input[Sequence[pulumi.Input['AddressMapMembershipArgs']]] memberships: Zones and Accounts which will be assigned IPs on this Address Map.
         """
+        _AddressMapState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            account_id=account_id,
+            can_delete=can_delete,
+            can_modify_ips=can_modify_ips,
+            default_sni=default_sni,
+            description=description,
+            enabled=enabled,
+            ips=ips,
+            memberships=memberships,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             account_id: Optional[pulumi.Input[str]] = None,
+             can_delete: Optional[pulumi.Input[bool]] = None,
+             can_modify_ips: Optional[pulumi.Input[bool]] = None,
+             default_sni: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             enabled: Optional[pulumi.Input[bool]] = None,
+             ips: Optional[pulumi.Input[Sequence[pulumi.Input['AddressMapIpArgs']]]] = None,
+             memberships: Optional[pulumi.Input[Sequence[pulumi.Input['AddressMapMembershipArgs']]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if account_id is not None:
-            pulumi.set(__self__, "account_id", account_id)
+            _setter("account_id", account_id)
         if can_delete is not None:
-            pulumi.set(__self__, "can_delete", can_delete)
+            _setter("can_delete", can_delete)
         if can_modify_ips is not None:
-            pulumi.set(__self__, "can_modify_ips", can_modify_ips)
+            _setter("can_modify_ips", can_modify_ips)
         if default_sni is not None:
-            pulumi.set(__self__, "default_sni", default_sni)
+            _setter("default_sni", default_sni)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if enabled is not None:
-            pulumi.set(__self__, "enabled", enabled)
+            _setter("enabled", enabled)
         if ips is not None:
-            pulumi.set(__self__, "ips", ips)
+            _setter("ips", ips)
         if memberships is not None:
-            pulumi.set(__self__, "memberships", memberships)
+            _setter("memberships", memberships)
 
     @property
     @pulumi.getter(name="accountId")
@@ -170,7 +212,7 @@ class _AddressMapState:
     @pulumi.getter(name="canDelete")
     def can_delete(self) -> Optional[pulumi.Input[bool]]:
         """
-        If set to false, then the Address Map cannot be deleted via API. This is true for Cloudflare-managed maps.
+        Controls whether the membership can be deleted via the API or not.
         """
         return pulumi.get(self, "can_delete")
 
@@ -370,6 +412,10 @@ class AddressMap(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            AddressMapArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -428,7 +474,7 @@ class AddressMap(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_id: The account identifier to target for the resource.
-        :param pulumi.Input[bool] can_delete: If set to false, then the Address Map cannot be deleted via API. This is true for Cloudflare-managed maps.
+        :param pulumi.Input[bool] can_delete: Controls whether the membership can be deleted via the API or not.
         :param pulumi.Input[bool] can_modify_ips: If set to false, then the IPs on the Address Map cannot be modified via the API. This is true for Cloudflare-managed maps.
         :param pulumi.Input[str] default_sni: If you have legacy TLS clients which do not send the TLS server name indicator, then you can specify one default SNI on the map.
         :param pulumi.Input[str] description: Description of the address map.
@@ -462,7 +508,7 @@ class AddressMap(pulumi.CustomResource):
     @pulumi.getter(name="canDelete")
     def can_delete(self) -> pulumi.Output[bool]:
         """
-        If set to false, then the Address Map cannot be deleted via API. This is true for Cloudflare-managed maps.
+        Controls whether the membership can be deleted via the API or not.
         """
         return pulumi.get(self, "can_delete")
 

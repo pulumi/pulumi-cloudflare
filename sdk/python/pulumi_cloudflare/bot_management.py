@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['BotManagementArgs', 'BotManagement']
@@ -37,25 +37,52 @@ class BotManagementArgs:
         :param pulumi.Input[str] sbfm_verified_bots: Super Bot Fight Mode (SBFM) action to take on verified bots requests.
         :param pulumi.Input[bool] suppress_session_score: Whether to disable tracking the highest bot score for a session in the Bot Management cookie.
         """
-        pulumi.set(__self__, "zone_id", zone_id)
+        BotManagementArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            zone_id=zone_id,
+            auto_update_model=auto_update_model,
+            enable_js=enable_js,
+            fight_mode=fight_mode,
+            optimize_wordpress=optimize_wordpress,
+            sbfm_definitely_automated=sbfm_definitely_automated,
+            sbfm_likely_automated=sbfm_likely_automated,
+            sbfm_static_resource_protection=sbfm_static_resource_protection,
+            sbfm_verified_bots=sbfm_verified_bots,
+            suppress_session_score=suppress_session_score,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             zone_id: pulumi.Input[str],
+             auto_update_model: Optional[pulumi.Input[bool]] = None,
+             enable_js: Optional[pulumi.Input[bool]] = None,
+             fight_mode: Optional[pulumi.Input[bool]] = None,
+             optimize_wordpress: Optional[pulumi.Input[bool]] = None,
+             sbfm_definitely_automated: Optional[pulumi.Input[str]] = None,
+             sbfm_likely_automated: Optional[pulumi.Input[str]] = None,
+             sbfm_static_resource_protection: Optional[pulumi.Input[bool]] = None,
+             sbfm_verified_bots: Optional[pulumi.Input[str]] = None,
+             suppress_session_score: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("zone_id", zone_id)
         if auto_update_model is not None:
-            pulumi.set(__self__, "auto_update_model", auto_update_model)
+            _setter("auto_update_model", auto_update_model)
         if enable_js is not None:
-            pulumi.set(__self__, "enable_js", enable_js)
+            _setter("enable_js", enable_js)
         if fight_mode is not None:
-            pulumi.set(__self__, "fight_mode", fight_mode)
+            _setter("fight_mode", fight_mode)
         if optimize_wordpress is not None:
-            pulumi.set(__self__, "optimize_wordpress", optimize_wordpress)
+            _setter("optimize_wordpress", optimize_wordpress)
         if sbfm_definitely_automated is not None:
-            pulumi.set(__self__, "sbfm_definitely_automated", sbfm_definitely_automated)
+            _setter("sbfm_definitely_automated", sbfm_definitely_automated)
         if sbfm_likely_automated is not None:
-            pulumi.set(__self__, "sbfm_likely_automated", sbfm_likely_automated)
+            _setter("sbfm_likely_automated", sbfm_likely_automated)
         if sbfm_static_resource_protection is not None:
-            pulumi.set(__self__, "sbfm_static_resource_protection", sbfm_static_resource_protection)
+            _setter("sbfm_static_resource_protection", sbfm_static_resource_protection)
         if sbfm_verified_bots is not None:
-            pulumi.set(__self__, "sbfm_verified_bots", sbfm_verified_bots)
+            _setter("sbfm_verified_bots", sbfm_verified_bots)
         if suppress_session_score is not None:
-            pulumi.set(__self__, "suppress_session_score", suppress_session_score)
+            _setter("suppress_session_score", suppress_session_score)
 
     @property
     @pulumi.getter(name="zoneId")
@@ -206,28 +233,57 @@ class _BotManagementState:
         :param pulumi.Input[bool] using_latest_model: A read-only field that indicates whether the zone currently is running the latest ML model.
         :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         """
+        _BotManagementState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            auto_update_model=auto_update_model,
+            enable_js=enable_js,
+            fight_mode=fight_mode,
+            optimize_wordpress=optimize_wordpress,
+            sbfm_definitely_automated=sbfm_definitely_automated,
+            sbfm_likely_automated=sbfm_likely_automated,
+            sbfm_static_resource_protection=sbfm_static_resource_protection,
+            sbfm_verified_bots=sbfm_verified_bots,
+            suppress_session_score=suppress_session_score,
+            using_latest_model=using_latest_model,
+            zone_id=zone_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             auto_update_model: Optional[pulumi.Input[bool]] = None,
+             enable_js: Optional[pulumi.Input[bool]] = None,
+             fight_mode: Optional[pulumi.Input[bool]] = None,
+             optimize_wordpress: Optional[pulumi.Input[bool]] = None,
+             sbfm_definitely_automated: Optional[pulumi.Input[str]] = None,
+             sbfm_likely_automated: Optional[pulumi.Input[str]] = None,
+             sbfm_static_resource_protection: Optional[pulumi.Input[bool]] = None,
+             sbfm_verified_bots: Optional[pulumi.Input[str]] = None,
+             suppress_session_score: Optional[pulumi.Input[bool]] = None,
+             using_latest_model: Optional[pulumi.Input[bool]] = None,
+             zone_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if auto_update_model is not None:
-            pulumi.set(__self__, "auto_update_model", auto_update_model)
+            _setter("auto_update_model", auto_update_model)
         if enable_js is not None:
-            pulumi.set(__self__, "enable_js", enable_js)
+            _setter("enable_js", enable_js)
         if fight_mode is not None:
-            pulumi.set(__self__, "fight_mode", fight_mode)
+            _setter("fight_mode", fight_mode)
         if optimize_wordpress is not None:
-            pulumi.set(__self__, "optimize_wordpress", optimize_wordpress)
+            _setter("optimize_wordpress", optimize_wordpress)
         if sbfm_definitely_automated is not None:
-            pulumi.set(__self__, "sbfm_definitely_automated", sbfm_definitely_automated)
+            _setter("sbfm_definitely_automated", sbfm_definitely_automated)
         if sbfm_likely_automated is not None:
-            pulumi.set(__self__, "sbfm_likely_automated", sbfm_likely_automated)
+            _setter("sbfm_likely_automated", sbfm_likely_automated)
         if sbfm_static_resource_protection is not None:
-            pulumi.set(__self__, "sbfm_static_resource_protection", sbfm_static_resource_protection)
+            _setter("sbfm_static_resource_protection", sbfm_static_resource_protection)
         if sbfm_verified_bots is not None:
-            pulumi.set(__self__, "sbfm_verified_bots", sbfm_verified_bots)
+            _setter("sbfm_verified_bots", sbfm_verified_bots)
         if suppress_session_score is not None:
-            pulumi.set(__self__, "suppress_session_score", suppress_session_score)
+            _setter("suppress_session_score", suppress_session_score)
         if using_latest_model is not None:
-            pulumi.set(__self__, "using_latest_model", using_latest_model)
+            _setter("using_latest_model", using_latest_model)
         if zone_id is not None:
-            pulumi.set(__self__, "zone_id", zone_id)
+            _setter("zone_id", zone_id)
 
     @property
     @pulumi.getter(name="autoUpdateModel")
@@ -469,6 +525,10 @@ class BotManagement(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            BotManagementArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

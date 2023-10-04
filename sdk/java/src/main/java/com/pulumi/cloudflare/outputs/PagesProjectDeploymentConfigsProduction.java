@@ -17,57 +17,161 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class PagesProjectDeploymentConfigsProduction {
+    /**
+     * @return Use latest compatibility date for Pages Functions. Defaults to `false`.
+     * 
+     */
     private @Nullable Boolean alwaysUseLatestCompatibilityDate;
+    /**
+     * @return Compatibility date used for Pages Functions.
+     * 
+     */
     private @Nullable String compatibilityDate;
+    /**
+     * @return Compatibility flags used for Pages Functions.
+     * 
+     */
     private @Nullable List<String> compatibilityFlags;
+    /**
+     * @return D1 Databases used for Pages Functions. Defaults to `map[]`.
+     * 
+     */
     private @Nullable Map<String,Object> d1Databases;
+    /**
+     * @return Durable Object namespaces used for Pages Functions. Defaults to `map[]`.
+     * 
+     */
     private @Nullable Map<String,Object> durableObjectNamespaces;
+    /**
+     * @return Environment variables for Pages Functions. Defaults to `map[]`.
+     * 
+     */
     private @Nullable Map<String,Object> environmentVariables;
+    /**
+     * @return Fail open used for Pages Functions. Defaults to `false`.
+     * 
+     */
     private @Nullable Boolean failOpen;
+    /**
+     * @return KV namespaces used for Pages Functions. Defaults to `map[]`.
+     * 
+     */
     private @Nullable Map<String,Object> kvNamespaces;
+    /**
+     * @return Configuration for placement in the Cloudflare Pages project.
+     * 
+     */
     private @Nullable PagesProjectDeploymentConfigsProductionPlacement placement;
+    /**
+     * @return R2 Buckets used for Pages Functions. Defaults to `map[]`.
+     * 
+     */
     private @Nullable Map<String,Object> r2Buckets;
+    /**
+     * @return Encrypted environment variables for Pages Functions. Defaults to `map[]`.
+     * 
+     */
     private @Nullable Map<String,Object> secrets;
+    /**
+     * @return Services used for Pages Functions.
+     * 
+     */
     private @Nullable List<PagesProjectDeploymentConfigsProductionServiceBinding> serviceBindings;
+    /**
+     * @return Usage model used for Pages Functions. Defaults to `bundled`.
+     * 
+     */
     private @Nullable String usageModel;
 
     private PagesProjectDeploymentConfigsProduction() {}
+    /**
+     * @return Use latest compatibility date for Pages Functions. Defaults to `false`.
+     * 
+     */
     public Optional<Boolean> alwaysUseLatestCompatibilityDate() {
         return Optional.ofNullable(this.alwaysUseLatestCompatibilityDate);
     }
+    /**
+     * @return Compatibility date used for Pages Functions.
+     * 
+     */
     public Optional<String> compatibilityDate() {
         return Optional.ofNullable(this.compatibilityDate);
     }
+    /**
+     * @return Compatibility flags used for Pages Functions.
+     * 
+     */
     public List<String> compatibilityFlags() {
         return this.compatibilityFlags == null ? List.of() : this.compatibilityFlags;
     }
+    /**
+     * @return D1 Databases used for Pages Functions. Defaults to `map[]`.
+     * 
+     */
     public Map<String,Object> d1Databases() {
         return this.d1Databases == null ? Map.of() : this.d1Databases;
     }
+    /**
+     * @return Durable Object namespaces used for Pages Functions. Defaults to `map[]`.
+     * 
+     */
     public Map<String,Object> durableObjectNamespaces() {
         return this.durableObjectNamespaces == null ? Map.of() : this.durableObjectNamespaces;
     }
+    /**
+     * @return Environment variables for Pages Functions. Defaults to `map[]`.
+     * 
+     */
     public Map<String,Object> environmentVariables() {
         return this.environmentVariables == null ? Map.of() : this.environmentVariables;
     }
+    /**
+     * @return Fail open used for Pages Functions. Defaults to `false`.
+     * 
+     */
     public Optional<Boolean> failOpen() {
         return Optional.ofNullable(this.failOpen);
     }
+    /**
+     * @return KV namespaces used for Pages Functions. Defaults to `map[]`.
+     * 
+     */
     public Map<String,Object> kvNamespaces() {
         return this.kvNamespaces == null ? Map.of() : this.kvNamespaces;
     }
+    /**
+     * @return Configuration for placement in the Cloudflare Pages project.
+     * 
+     */
     public Optional<PagesProjectDeploymentConfigsProductionPlacement> placement() {
         return Optional.ofNullable(this.placement);
     }
+    /**
+     * @return R2 Buckets used for Pages Functions. Defaults to `map[]`.
+     * 
+     */
     public Map<String,Object> r2Buckets() {
         return this.r2Buckets == null ? Map.of() : this.r2Buckets;
     }
+    /**
+     * @return Encrypted environment variables for Pages Functions. Defaults to `map[]`.
+     * 
+     */
     public Map<String,Object> secrets() {
         return this.secrets == null ? Map.of() : this.secrets;
     }
+    /**
+     * @return Services used for Pages Functions.
+     * 
+     */
     public List<PagesProjectDeploymentConfigsProductionServiceBinding> serviceBindings() {
         return this.serviceBindings == null ? List.of() : this.serviceBindings;
     }
+    /**
+     * @return Usage model used for Pages Functions. Defaults to `bundled`.
+     * 
+     */
     public Optional<String> usageModel() {
         return Optional.ofNullable(this.usageModel);
     }

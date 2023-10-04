@@ -155,14 +155,14 @@ public final class LoadBalancerMonitorState extends com.pulumi.resources.Resourc
     }
 
     /**
-     * The HTTP request headers to send in the health check. It is recommended you set a Host header by default. The User-Agent header cannot be overridden.
+     * The header name.
      * 
      */
     @Import(name="headers")
     private @Nullable Output<List<LoadBalancerMonitorHeaderArgs>> headers;
 
     /**
-     * @return The HTTP request headers to send in the health check. It is recommended you set a Host header by default. The User-Agent header cannot be overridden.
+     * @return The header name.
      * 
      */
     public Optional<Output<List<LoadBalancerMonitorHeaderArgs>>> headers() {
@@ -536,7 +536,7 @@ public final class LoadBalancerMonitorState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param headers The HTTP request headers to send in the health check. It is recommended you set a Host header by default. The User-Agent header cannot be overridden.
+         * @param headers The header name.
          * 
          * @return builder
          * 
@@ -547,7 +547,7 @@ public final class LoadBalancerMonitorState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param headers The HTTP request headers to send in the health check. It is recommended you set a Host header by default. The User-Agent header cannot be overridden.
+         * @param headers The header name.
          * 
          * @return builder
          * 
@@ -557,7 +557,7 @@ public final class LoadBalancerMonitorState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param headers The HTTP request headers to send in the health check. It is recommended you set a Host header by default. The User-Agent header cannot be overridden.
+         * @param headers The header name.
          * 
          * @return builder
          * 

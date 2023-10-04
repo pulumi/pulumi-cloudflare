@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['ArgoArgs', 'Argo']
@@ -23,11 +23,24 @@ class ArgoArgs:
         :param pulumi.Input[str] smart_routing: Whether smart routing is enabled. Available values: `on`, `off`.
         :param pulumi.Input[str] tiered_caching: Whether tiered caching is enabled. Available values: `on`, `off`.
         """
-        pulumi.set(__self__, "zone_id", zone_id)
+        ArgoArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            zone_id=zone_id,
+            smart_routing=smart_routing,
+            tiered_caching=tiered_caching,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             zone_id: pulumi.Input[str],
+             smart_routing: Optional[pulumi.Input[str]] = None,
+             tiered_caching: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("zone_id", zone_id)
         if smart_routing is not None:
-            pulumi.set(__self__, "smart_routing", smart_routing)
+            _setter("smart_routing", smart_routing)
         if tiered_caching is not None:
-            pulumi.set(__self__, "tiered_caching", tiered_caching)
+            _setter("tiered_caching", tiered_caching)
 
     @property
     @pulumi.getter(name="zoneId")
@@ -78,12 +91,25 @@ class _ArgoState:
         :param pulumi.Input[str] tiered_caching: Whether tiered caching is enabled. Available values: `on`, `off`.
         :param pulumi.Input[str] zone_id: The zone identifier to target for the resource.
         """
+        _ArgoState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            smart_routing=smart_routing,
+            tiered_caching=tiered_caching,
+            zone_id=zone_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             smart_routing: Optional[pulumi.Input[str]] = None,
+             tiered_caching: Optional[pulumi.Input[str]] = None,
+             zone_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if smart_routing is not None:
-            pulumi.set(__self__, "smart_routing", smart_routing)
+            _setter("smart_routing", smart_routing)
         if tiered_caching is not None:
-            pulumi.set(__self__, "tiered_caching", tiered_caching)
+            _setter("tiered_caching", tiered_caching)
         if zone_id is not None:
-            pulumi.set(__self__, "zone_id", zone_id)
+            _setter("zone_id", zone_id)
 
     @property
     @pulumi.getter(name="smartRouting")
@@ -197,6 +223,10 @@ class Argo(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            ArgoArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

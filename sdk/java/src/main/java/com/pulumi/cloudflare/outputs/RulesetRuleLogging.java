@@ -11,9 +11,17 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class RulesetRuleLogging {
+    /**
+     * @return Defines if the current tag-level override enables or disables the ruleset rules with the specified tag.
+     * 
+     */
     private @Nullable Boolean enabled;
 
     private RulesetRuleLogging() {}
+    /**
+     * @return Defines if the current tag-level override enables or disables the ruleset rules with the specified tag.
+     * 
+     */
     public Optional<Boolean> enabled() {
         return Optional.ofNullable(this.enabled);
     }

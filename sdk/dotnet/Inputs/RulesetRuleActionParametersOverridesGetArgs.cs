@@ -12,17 +12,27 @@ namespace Pulumi.Cloudflare.Inputs
 
     public sealed class RulesetRuleActionParametersOverridesGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Action to perform in the ruleset rule. Available values: `block`, `challenge`, `compress_response`, `ddos_dynamic`, `ddos_mitigation`, `execute`, `force_connection_close`, `js_challenge`, `log`, `log_custom_field`, `managed_challenge`, `redirect`, `rewrite`, `route`, `score`, `serve_error`, `set_cache_settings`, `set_config`, `skip`.
+        /// </summary>
         [Input("action")]
         public Input<string>? Action { get; set; }
 
         [Input("categories")]
         private InputList<Inputs.RulesetRuleActionParametersOverridesCategoryGetArgs>? _categories;
+
+        /// <summary>
+        /// List of tag-based overrides.
+        /// </summary>
         public InputList<Inputs.RulesetRuleActionParametersOverridesCategoryGetArgs> Categories
         {
             get => _categories ?? (_categories = new InputList<Inputs.RulesetRuleActionParametersOverridesCategoryGetArgs>());
             set => _categories = value;
         }
 
+        /// <summary>
+        /// Defines if the current tag-level override enables or disables the ruleset rules with the specified tag.
+        /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
@@ -30,7 +40,7 @@ namespace Pulumi.Cloudflare.Inputs
         private InputList<Inputs.RulesetRuleActionParametersOverridesRuleGetArgs>? _rules;
 
         /// <summary>
-        /// List of rules to apply to the ruleset.
+        /// List of rule-based overrides.
         /// </summary>
         public InputList<Inputs.RulesetRuleActionParametersOverridesRuleGetArgs> Rules
         {
@@ -38,6 +48,9 @@ namespace Pulumi.Cloudflare.Inputs
             set => _rules = value;
         }
 
+        /// <summary>
+        /// Sensitivity level for a ruleset rule override.
+        /// </summary>
         [Input("sensitivityLevel")]
         public Input<string>? SensitivityLevel { get; set; }
 

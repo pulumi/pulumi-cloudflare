@@ -12,15 +12,14 @@ namespace Pulumi.Cloudflare.Inputs
 
     public sealed class AccessPolicyExcludeOktaGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The ID of the Azure Identity provider.
+        /// </summary>
         [Input("identityProviderId")]
         public Input<string>? IdentityProviderId { get; set; }
 
         [Input("names")]
         private InputList<string>? _names;
-
-        /// <summary>
-        /// Friendly name of the Access Policy.
-        /// </summary>
         public InputList<string> Names
         {
             get => _names ?? (_names = new InputList<string>());

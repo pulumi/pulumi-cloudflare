@@ -12,17 +12,41 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class RulesetRuleActionParametersOverridesCategory {
+    /**
+     * @return Action to perform in the ruleset rule. Available values: `block`, `challenge`, `compress_response`, `ddos_dynamic`, `ddos_mitigation`, `execute`, `force_connection_close`, `js_challenge`, `log`, `log_custom_field`, `managed_challenge`, `redirect`, `rewrite`, `route`, `score`, `serve_error`, `set_cache_settings`, `set_config`, `skip`.
+     * 
+     */
     private @Nullable String action;
+    /**
+     * @return Tag name to apply the ruleset rule override to.
+     * 
+     */
     private @Nullable String category;
+    /**
+     * @return Defines if the current tag-level override enables or disables the ruleset rules with the specified tag.
+     * 
+     */
     private @Nullable Boolean enabled;
 
     private RulesetRuleActionParametersOverridesCategory() {}
+    /**
+     * @return Action to perform in the ruleset rule. Available values: `block`, `challenge`, `compress_response`, `ddos_dynamic`, `ddos_mitigation`, `execute`, `force_connection_close`, `js_challenge`, `log`, `log_custom_field`, `managed_challenge`, `redirect`, `rewrite`, `route`, `score`, `serve_error`, `set_cache_settings`, `set_config`, `skip`.
+     * 
+     */
     public Optional<String> action() {
         return Optional.ofNullable(this.action);
     }
+    /**
+     * @return Tag name to apply the ruleset rule override to.
+     * 
+     */
     public Optional<String> category() {
         return Optional.ofNullable(this.category);
     }
+    /**
+     * @return Defines if the current tag-level override enables or disables the ruleset rules with the specified tag.
+     * 
+     */
     public Optional<Boolean> enabled() {
         return Optional.ofNullable(this.enabled);
     }

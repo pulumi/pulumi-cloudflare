@@ -155,14 +155,14 @@ public final class HealthcheckArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The HTTP request headers to send in the health check. It is recommended you set a Host header by default. The User-Agent header cannot be overridden.
+     * The header name.
      * 
      */
     @Import(name="headers")
     private @Nullable Output<List<HealthcheckHeaderArgs>> headers;
 
     /**
-     * @return The HTTP request headers to send in the health check. It is recommended you set a Host header by default. The User-Agent header cannot be overridden.
+     * @return The header name.
      * 
      */
     public Optional<Output<List<HealthcheckHeaderArgs>>> headers() {
@@ -572,7 +572,7 @@ public final class HealthcheckArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param headers The HTTP request headers to send in the health check. It is recommended you set a Host header by default. The User-Agent header cannot be overridden.
+         * @param headers The header name.
          * 
          * @return builder
          * 
@@ -583,7 +583,7 @@ public final class HealthcheckArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param headers The HTTP request headers to send in the health check. It is recommended you set a Host header by default. The User-Agent header cannot be overridden.
+         * @param headers The header name.
          * 
          * @return builder
          * 
@@ -593,7 +593,7 @@ public final class HealthcheckArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param headers The HTTP request headers to send in the health check. It is recommended you set a Host header by default. The User-Agent header cannot be overridden.
+         * @param headers The header name.
          * 
          * @return builder
          * 

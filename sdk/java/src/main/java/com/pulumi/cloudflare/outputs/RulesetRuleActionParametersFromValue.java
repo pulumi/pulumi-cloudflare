@@ -13,17 +13,41 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class RulesetRuleActionParametersFromValue {
+    /**
+     * @return Preserve query string for redirect URL.
+     * 
+     */
     private @Nullable Boolean preserveQueryString;
+    /**
+     * @return Status code for which the edge TTL is applied.
+     * 
+     */
     private @Nullable Integer statusCode;
+    /**
+     * @return Target URL for redirect.
+     * 
+     */
     private @Nullable RulesetRuleActionParametersFromValueTargetUrl targetUrl;
 
     private RulesetRuleActionParametersFromValue() {}
+    /**
+     * @return Preserve query string for redirect URL.
+     * 
+     */
     public Optional<Boolean> preserveQueryString() {
         return Optional.ofNullable(this.preserveQueryString);
     }
+    /**
+     * @return Status code for which the edge TTL is applied.
+     * 
+     */
     public Optional<Integer> statusCode() {
         return Optional.ofNullable(this.statusCode);
     }
+    /**
+     * @return Target URL for redirect.
+     * 
+     */
     public Optional<RulesetRuleActionParametersFromValueTargetUrl> targetUrl() {
         return Optional.ofNullable(this.targetUrl);
     }

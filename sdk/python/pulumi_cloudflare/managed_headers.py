@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -25,11 +25,24 @@ class ManagedHeadersArgs:
         :param pulumi.Input[Sequence[pulumi.Input['ManagedHeadersManagedRequestHeaderArgs']]] managed_request_headers: The list of managed request headers.
         :param pulumi.Input[Sequence[pulumi.Input['ManagedHeadersManagedResponseHeaderArgs']]] managed_response_headers: The list of managed response headers.
         """
-        pulumi.set(__self__, "zone_id", zone_id)
+        ManagedHeadersArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            zone_id=zone_id,
+            managed_request_headers=managed_request_headers,
+            managed_response_headers=managed_response_headers,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             zone_id: pulumi.Input[str],
+             managed_request_headers: Optional[pulumi.Input[Sequence[pulumi.Input['ManagedHeadersManagedRequestHeaderArgs']]]] = None,
+             managed_response_headers: Optional[pulumi.Input[Sequence[pulumi.Input['ManagedHeadersManagedResponseHeaderArgs']]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("zone_id", zone_id)
         if managed_request_headers is not None:
-            pulumi.set(__self__, "managed_request_headers", managed_request_headers)
+            _setter("managed_request_headers", managed_request_headers)
         if managed_response_headers is not None:
-            pulumi.set(__self__, "managed_response_headers", managed_response_headers)
+            _setter("managed_response_headers", managed_response_headers)
 
     @property
     @pulumi.getter(name="zoneId")
@@ -80,12 +93,25 @@ class _ManagedHeadersState:
         :param pulumi.Input[Sequence[pulumi.Input['ManagedHeadersManagedResponseHeaderArgs']]] managed_response_headers: The list of managed response headers.
         :param pulumi.Input[str] zone_id: The zone identifier to target for the resource.
         """
+        _ManagedHeadersState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            managed_request_headers=managed_request_headers,
+            managed_response_headers=managed_response_headers,
+            zone_id=zone_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             managed_request_headers: Optional[pulumi.Input[Sequence[pulumi.Input['ManagedHeadersManagedRequestHeaderArgs']]]] = None,
+             managed_response_headers: Optional[pulumi.Input[Sequence[pulumi.Input['ManagedHeadersManagedResponseHeaderArgs']]]] = None,
+             zone_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if managed_request_headers is not None:
-            pulumi.set(__self__, "managed_request_headers", managed_request_headers)
+            _setter("managed_request_headers", managed_request_headers)
         if managed_response_headers is not None:
-            pulumi.set(__self__, "managed_response_headers", managed_response_headers)
+            _setter("managed_response_headers", managed_response_headers)
         if zone_id is not None:
-            pulumi.set(__self__, "zone_id", zone_id)
+            _setter("zone_id", zone_id)
 
     @property
     @pulumi.getter(name="managedRequestHeaders")
@@ -203,6 +229,10 @@ class ManagedHeaders(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            ManagedHeadersArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

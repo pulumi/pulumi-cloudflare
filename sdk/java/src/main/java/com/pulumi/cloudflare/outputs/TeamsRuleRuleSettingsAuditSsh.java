@@ -9,9 +9,17 @@ import java.util.Objects;
 
 @CustomType
 public final class TeamsRuleRuleSettingsAuditSsh {
+    /**
+     * @return Log all SSH commands.
+     * 
+     */
     private Boolean commandLogging;
 
     private TeamsRuleRuleSettingsAuditSsh() {}
+    /**
+     * @return Log all SSH commands.
+     * 
+     */
     public Boolean commandLogging() {
         return this.commandLogging;
     }

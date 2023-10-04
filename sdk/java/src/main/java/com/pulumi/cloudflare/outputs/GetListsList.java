@@ -13,10 +13,6 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetListsList {
     private @Nullable String description;
-    /**
-     * @return The ID of this resource.
-     * 
-     */
     private @Nullable String id;
     private @Nullable String kind;
     private @Nullable String name;
@@ -26,10 +22,6 @@ public final class GetListsList {
     public Optional<String> description() {
         return Optional.ofNullable(this.description);
     }
-    /**
-     * @return The ID of this resource.
-     * 
-     */
     public Optional<String> id() {
         return Optional.ofNullable(this.id);
     }

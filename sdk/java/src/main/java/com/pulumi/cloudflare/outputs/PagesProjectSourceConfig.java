@@ -13,49 +13,113 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class PagesProjectSourceConfig {
+    /**
+     * @return Toggle deployments on this repo. Defaults to `true`.
+     * 
+     */
     private @Nullable Boolean deploymentsEnabled;
+    /**
+     * @return Project owner username. **Modifying this attribute will force creation of a new resource.**
+     * 
+     */
     private @Nullable String owner;
+    /**
+     * @return Enable Pages to comment on Pull Requests. Defaults to `true`.
+     * 
+     */
     private @Nullable Boolean prCommentsEnabled;
+    /**
+     * @return Branches will be excluded from automatic deployment.
+     * 
+     */
     private @Nullable List<String> previewBranchExcludes;
+    /**
+     * @return Branches will be included for automatic deployment.
+     * 
+     */
     private @Nullable List<String> previewBranchIncludes;
+    /**
+     * @return Preview Deployment Setting. Defaults to `all`.
+     * 
+     */
     private @Nullable String previewDeploymentSetting;
     /**
-     * @return The name of the branch that is used for the production environment.
+     * @return Project production branch name.
      * 
      */
     private String productionBranch;
+    /**
+     * @return Enable production deployments. Defaults to `true`.
+     * 
+     */
     private @Nullable Boolean productionDeploymentEnabled;
+    /**
+     * @return Project repository name. **Modifying this attribute will force creation of a new resource.**
+     * 
+     */
     private @Nullable String repoName;
 
     private PagesProjectSourceConfig() {}
+    /**
+     * @return Toggle deployments on this repo. Defaults to `true`.
+     * 
+     */
     public Optional<Boolean> deploymentsEnabled() {
         return Optional.ofNullable(this.deploymentsEnabled);
     }
+    /**
+     * @return Project owner username. **Modifying this attribute will force creation of a new resource.**
+     * 
+     */
     public Optional<String> owner() {
         return Optional.ofNullable(this.owner);
     }
+    /**
+     * @return Enable Pages to comment on Pull Requests. Defaults to `true`.
+     * 
+     */
     public Optional<Boolean> prCommentsEnabled() {
         return Optional.ofNullable(this.prCommentsEnabled);
     }
+    /**
+     * @return Branches will be excluded from automatic deployment.
+     * 
+     */
     public List<String> previewBranchExcludes() {
         return this.previewBranchExcludes == null ? List.of() : this.previewBranchExcludes;
     }
+    /**
+     * @return Branches will be included for automatic deployment.
+     * 
+     */
     public List<String> previewBranchIncludes() {
         return this.previewBranchIncludes == null ? List.of() : this.previewBranchIncludes;
     }
+    /**
+     * @return Preview Deployment Setting. Defaults to `all`.
+     * 
+     */
     public Optional<String> previewDeploymentSetting() {
         return Optional.ofNullable(this.previewDeploymentSetting);
     }
     /**
-     * @return The name of the branch that is used for the production environment.
+     * @return Project production branch name.
      * 
      */
     public String productionBranch() {
         return this.productionBranch;
     }
+    /**
+     * @return Enable production deployments. Defaults to `true`.
+     * 
+     */
     public Optional<Boolean> productionDeploymentEnabled() {
         return Optional.ofNullable(this.productionDeploymentEnabled);
     }
+    /**
+     * @return Project repository name. **Modifying this attribute will force creation of a new resource.**
+     * 
+     */
     public Optional<String> repoName() {
         return Optional.ofNullable(this.repoName);
     }

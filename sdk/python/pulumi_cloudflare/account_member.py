@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['AccountMemberArgs', 'AccountMember']
@@ -25,11 +25,26 @@ class AccountMemberArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] role_ids: List of account role IDs that you want to assign to a member.
         :param pulumi.Input[str] status: A member's status in the account. Available values: `accepted`, `pending`.
         """
-        pulumi.set(__self__, "account_id", account_id)
-        pulumi.set(__self__, "email_address", email_address)
-        pulumi.set(__self__, "role_ids", role_ids)
+        AccountMemberArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            account_id=account_id,
+            email_address=email_address,
+            role_ids=role_ids,
+            status=status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             account_id: pulumi.Input[str],
+             email_address: pulumi.Input[str],
+             role_ids: pulumi.Input[Sequence[pulumi.Input[str]]],
+             status: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("account_id", account_id)
+        _setter("email_address", email_address)
+        _setter("role_ids", role_ids)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
 
     @property
     @pulumi.getter(name="accountId")
@@ -94,14 +109,29 @@ class _AccountMemberState:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] role_ids: List of account role IDs that you want to assign to a member.
         :param pulumi.Input[str] status: A member's status in the account. Available values: `accepted`, `pending`.
         """
+        _AccountMemberState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            account_id=account_id,
+            email_address=email_address,
+            role_ids=role_ids,
+            status=status,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             account_id: Optional[pulumi.Input[str]] = None,
+             email_address: Optional[pulumi.Input[str]] = None,
+             role_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if account_id is not None:
-            pulumi.set(__self__, "account_id", account_id)
+            _setter("account_id", account_id)
         if email_address is not None:
-            pulumi.set(__self__, "email_address", email_address)
+            _setter("email_address", email_address)
         if role_ids is not None:
-            pulumi.set(__self__, "role_ids", role_ids)
+            _setter("role_ids", role_ids)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
 
     @property
     @pulumi.getter(name="accountId")
@@ -233,6 +263,10 @@ class AccountMember(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            AccountMemberArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

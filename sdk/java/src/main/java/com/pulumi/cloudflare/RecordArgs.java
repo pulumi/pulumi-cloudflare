@@ -69,14 +69,14 @@ public final class RecordArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The name of the record. **Modifying this attribute will force creation of a new resource.**
+     * The name of the record.
      * 
      */
     @Import(name="name", required=true)
     private Output<String> name;
 
     /**
-     * @return The name of the record. **Modifying this attribute will force creation of a new resource.**
+     * @return The name of the record.
      * 
      */
     public Output<String> name() {
@@ -144,14 +144,16 @@ public final class RecordArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The type of the record. Available values: `A`, `AAAA`, `CAA`, `CNAME`, `TXT`, `SRV`, `LOC`, `MX`, `NS`, `SPF`, `CERT`, `DNSKEY`, `DS`, `NAPTR`, `SMIMEA`, `SSHFP`, `TLSA`, `URI`, `PTR`, `HTTPS`, `SVCB`. **Modifying this attribute will force creation of a new resource.**
+     * The type of the record. Available values: `A`, `AAAA`, `CAA`, `CNAME`, `TXT`, `SRV`, `LOC`, `MX`, `NS`, `SPF`, `CERT`,
+     * `DNSKEY`, `DS`, `NAPTR`, `SMIMEA`, `SSHFP`, `TLSA`, `URI`, `PTR`, `HTTPS`, `SVCB`
      * 
      */
     @Import(name="type", required=true)
     private Output<String> type;
 
     /**
-     * @return The type of the record. Available values: `A`, `AAAA`, `CAA`, `CNAME`, `TXT`, `SRV`, `LOC`, `MX`, `NS`, `SPF`, `CERT`, `DNSKEY`, `DS`, `NAPTR`, `SMIMEA`, `SSHFP`, `TLSA`, `URI`, `PTR`, `HTTPS`, `SVCB`. **Modifying this attribute will force creation of a new resource.**
+     * @return The type of the record. Available values: `A`, `AAAA`, `CAA`, `CNAME`, `TXT`, `SRV`, `LOC`, `MX`, `NS`, `SPF`, `CERT`,
+     * `DNSKEY`, `DS`, `NAPTR`, `SMIMEA`, `SSHFP`, `TLSA`, `URI`, `PTR`, `HTTPS`, `SVCB`
      * 
      */
     public Output<String> type() {
@@ -159,14 +161,14 @@ public final class RecordArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The value of the record. Conflicts with `data`.
+     * The value of the record.
      * 
      */
     @Import(name="value")
     private @Nullable Output<String> value;
 
     /**
-     * @return The value of the record. Conflicts with `data`.
+     * @return The value of the record.
      * 
      */
     public Optional<Output<String>> value() {
@@ -290,7 +292,7 @@ public final class RecordArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name The name of the record. **Modifying this attribute will force creation of a new resource.**
+         * @param name The name of the record.
          * 
          * @return builder
          * 
@@ -301,7 +303,7 @@ public final class RecordArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name The name of the record. **Modifying this attribute will force creation of a new resource.**
+         * @param name The name of the record.
          * 
          * @return builder
          * 
@@ -405,7 +407,8 @@ public final class RecordArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param type The type of the record. Available values: `A`, `AAAA`, `CAA`, `CNAME`, `TXT`, `SRV`, `LOC`, `MX`, `NS`, `SPF`, `CERT`, `DNSKEY`, `DS`, `NAPTR`, `SMIMEA`, `SSHFP`, `TLSA`, `URI`, `PTR`, `HTTPS`, `SVCB`. **Modifying this attribute will force creation of a new resource.**
+         * @param type The type of the record. Available values: `A`, `AAAA`, `CAA`, `CNAME`, `TXT`, `SRV`, `LOC`, `MX`, `NS`, `SPF`, `CERT`,
+         * `DNSKEY`, `DS`, `NAPTR`, `SMIMEA`, `SSHFP`, `TLSA`, `URI`, `PTR`, `HTTPS`, `SVCB`
          * 
          * @return builder
          * 
@@ -416,7 +419,8 @@ public final class RecordArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param type The type of the record. Available values: `A`, `AAAA`, `CAA`, `CNAME`, `TXT`, `SRV`, `LOC`, `MX`, `NS`, `SPF`, `CERT`, `DNSKEY`, `DS`, `NAPTR`, `SMIMEA`, `SSHFP`, `TLSA`, `URI`, `PTR`, `HTTPS`, `SVCB`. **Modifying this attribute will force creation of a new resource.**
+         * @param type The type of the record. Available values: `A`, `AAAA`, `CAA`, `CNAME`, `TXT`, `SRV`, `LOC`, `MX`, `NS`, `SPF`, `CERT`,
+         * `DNSKEY`, `DS`, `NAPTR`, `SMIMEA`, `SSHFP`, `TLSA`, `URI`, `PTR`, `HTTPS`, `SVCB`
          * 
          * @return builder
          * 
@@ -426,7 +430,7 @@ public final class RecordArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param value The value of the record. Conflicts with `data`.
+         * @param value The value of the record.
          * 
          * @return builder
          * 
@@ -437,7 +441,7 @@ public final class RecordArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param value The value of the record. Conflicts with `data`.
+         * @param value The value of the record.
          * 
          * @return builder
          * 

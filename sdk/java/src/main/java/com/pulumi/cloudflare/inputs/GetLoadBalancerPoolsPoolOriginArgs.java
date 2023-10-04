@@ -26,9 +26,17 @@ public final class GetLoadBalancerPoolsPoolOriginArgs extends com.pulumi.resourc
         return this.address;
     }
 
+    /**
+     * Whether this pool is enabled. Disabled pools will not receive traffic and are excluded from health checks.
+     * 
+     */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
+    /**
+     * @return Whether this pool is enabled. Disabled pools will not receive traffic and are excluded from health checks.
+     * 
+     */
     public Optional<Output<Boolean>> enabled() {
         return Optional.ofNullable(this.enabled);
     }
@@ -40,9 +48,17 @@ public final class GetLoadBalancerPoolsPoolOriginArgs extends com.pulumi.resourc
         return Optional.ofNullable(this.headers);
     }
 
+    /**
+     * A regular expression matching the name of the Load Balancer pool to lookup.
+     * 
+     */
     @Import(name="name", required=true)
     private Output<String> name;
 
+    /**
+     * @return A regular expression matching the name of the Load Balancer pool to lookup.
+     * 
+     */
     public Output<String> name() {
         return this.name;
     }
@@ -91,11 +107,23 @@ public final class GetLoadBalancerPoolsPoolOriginArgs extends com.pulumi.resourc
             return address(Output.of(address));
         }
 
+        /**
+         * @param enabled Whether this pool is enabled. Disabled pools will not receive traffic and are excluded from health checks.
+         * 
+         * @return builder
+         * 
+         */
         public Builder enabled(@Nullable Output<Boolean> enabled) {
             $.enabled = enabled;
             return this;
         }
 
+        /**
+         * @param enabled Whether this pool is enabled. Disabled pools will not receive traffic and are excluded from health checks.
+         * 
+         * @return builder
+         * 
+         */
         public Builder enabled(Boolean enabled) {
             return enabled(Output.of(enabled));
         }
@@ -113,11 +141,23 @@ public final class GetLoadBalancerPoolsPoolOriginArgs extends com.pulumi.resourc
             return headers(List.of(headers));
         }
 
+        /**
+         * @param name A regular expression matching the name of the Load Balancer pool to lookup.
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(Output<String> name) {
             $.name = name;
             return this;
         }
 
+        /**
+         * @param name A regular expression matching the name of the Load Balancer pool to lookup.
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(String name) {
             return name(Output.of(name));
         }

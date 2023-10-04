@@ -16,23 +16,47 @@ public final class RulesetRuleActionParametersResponseArgs extends com.pulumi.re
 
     public static final RulesetRuleActionParametersResponseArgs Empty = new RulesetRuleActionParametersResponseArgs();
 
+    /**
+     * Content of the custom error response.
+     * 
+     */
     @Import(name="content")
     private @Nullable Output<String> content;
 
+    /**
+     * @return Content of the custom error response.
+     * 
+     */
     public Optional<Output<String>> content() {
         return Optional.ofNullable(this.content);
     }
 
+    /**
+     * Content-Type of the custom error response.
+     * 
+     */
     @Import(name="contentType")
     private @Nullable Output<String> contentType;
 
+    /**
+     * @return Content-Type of the custom error response.
+     * 
+     */
     public Optional<Output<String>> contentType() {
         return Optional.ofNullable(this.contentType);
     }
 
+    /**
+     * Status code for which the edge TTL is applied.
+     * 
+     */
     @Import(name="statusCode")
     private @Nullable Output<Integer> statusCode;
 
+    /**
+     * @return Status code for which the edge TTL is applied.
+     * 
+     */
     public Optional<Output<Integer>> statusCode() {
         return Optional.ofNullable(this.statusCode);
     }
@@ -63,29 +87,65 @@ public final class RulesetRuleActionParametersResponseArgs extends com.pulumi.re
             $ = new RulesetRuleActionParametersResponseArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param content Content of the custom error response.
+         * 
+         * @return builder
+         * 
+         */
         public Builder content(@Nullable Output<String> content) {
             $.content = content;
             return this;
         }
 
+        /**
+         * @param content Content of the custom error response.
+         * 
+         * @return builder
+         * 
+         */
         public Builder content(String content) {
             return content(Output.of(content));
         }
 
+        /**
+         * @param contentType Content-Type of the custom error response.
+         * 
+         * @return builder
+         * 
+         */
         public Builder contentType(@Nullable Output<String> contentType) {
             $.contentType = contentType;
             return this;
         }
 
+        /**
+         * @param contentType Content-Type of the custom error response.
+         * 
+         * @return builder
+         * 
+         */
         public Builder contentType(String contentType) {
             return contentType(Output.of(contentType));
         }
 
+        /**
+         * @param statusCode Status code for which the edge TTL is applied.
+         * 
+         * @return builder
+         * 
+         */
         public Builder statusCode(@Nullable Output<Integer> statusCode) {
             $.statusCode = statusCode;
             return this;
         }
 
+        /**
+         * @param statusCode Status code for which the edge TTL is applied.
+         * 
+         * @return builder
+         * 
+         */
         public Builder statusCode(Integer statusCode) {
             return statusCode(Output.of(statusCode));
         }

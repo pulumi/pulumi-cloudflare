@@ -15,23 +15,47 @@ public final class TeamsAccountLoggingSettingsByRuleTypeArgs extends com.pulumi.
 
     public static final TeamsAccountLoggingSettingsByRuleTypeArgs Empty = new TeamsAccountLoggingSettingsByRuleTypeArgs();
 
+    /**
+     * Logging configuration for DNS requests.
+     * 
+     */
     @Import(name="dns", required=true)
     private Output<TeamsAccountLoggingSettingsByRuleTypeDnsArgs> dns;
 
+    /**
+     * @return Logging configuration for DNS requests.
+     * 
+     */
     public Output<TeamsAccountLoggingSettingsByRuleTypeDnsArgs> dns() {
         return this.dns;
     }
 
+    /**
+     * Logging configuration for HTTP requests.
+     * 
+     */
     @Import(name="http", required=true)
     private Output<TeamsAccountLoggingSettingsByRuleTypeHttpArgs> http;
 
+    /**
+     * @return Logging configuration for HTTP requests.
+     * 
+     */
     public Output<TeamsAccountLoggingSettingsByRuleTypeHttpArgs> http() {
         return this.http;
     }
 
+    /**
+     * Logging configuration for layer 4 requests.
+     * 
+     */
     @Import(name="l4", required=true)
     private Output<TeamsAccountLoggingSettingsByRuleTypeL4Args> l4;
 
+    /**
+     * @return Logging configuration for layer 4 requests.
+     * 
+     */
     public Output<TeamsAccountLoggingSettingsByRuleTypeL4Args> l4() {
         return this.l4;
     }
@@ -62,29 +86,65 @@ public final class TeamsAccountLoggingSettingsByRuleTypeArgs extends com.pulumi.
             $ = new TeamsAccountLoggingSettingsByRuleTypeArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param dns Logging configuration for DNS requests.
+         * 
+         * @return builder
+         * 
+         */
         public Builder dns(Output<TeamsAccountLoggingSettingsByRuleTypeDnsArgs> dns) {
             $.dns = dns;
             return this;
         }
 
+        /**
+         * @param dns Logging configuration for DNS requests.
+         * 
+         * @return builder
+         * 
+         */
         public Builder dns(TeamsAccountLoggingSettingsByRuleTypeDnsArgs dns) {
             return dns(Output.of(dns));
         }
 
+        /**
+         * @param http Logging configuration for HTTP requests.
+         * 
+         * @return builder
+         * 
+         */
         public Builder http(Output<TeamsAccountLoggingSettingsByRuleTypeHttpArgs> http) {
             $.http = http;
             return this;
         }
 
+        /**
+         * @param http Logging configuration for HTTP requests.
+         * 
+         * @return builder
+         * 
+         */
         public Builder http(TeamsAccountLoggingSettingsByRuleTypeHttpArgs http) {
             return http(Output.of(http));
         }
 
+        /**
+         * @param l4 Logging configuration for layer 4 requests.
+         * 
+         * @return builder
+         * 
+         */
         public Builder l4(Output<TeamsAccountLoggingSettingsByRuleTypeL4Args> l4) {
             $.l4 = l4;
             return this;
         }
 
+        /**
+         * @param l4 Logging configuration for layer 4 requests.
+         * 
+         * @return builder
+         * 
+         */
         public Builder l4(TeamsAccountLoggingSettingsByRuleTypeL4Args l4) {
             return l4(Output.of(l4));
         }

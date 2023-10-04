@@ -14,17 +14,28 @@ namespace Pulumi.Cloudflare.Inputs
     {
         [Input("headers")]
         private InputList<ImmutableDictionary<string, string>>? _headers;
+
+        /// <summary>
+        /// List of HTTP headers maps to match the origin response on.
+        /// </summary>
         public InputList<ImmutableDictionary<string, string>> Headers
         {
             get => _headers ?? (_headers = new InputList<ImmutableDictionary<string, string>>());
             set => _headers = value;
         }
 
+        /// <summary>
+        /// Only count traffic that has come from your origin servers. If true, cached items that Cloudflare serve will not count towards rate limiting.
+        /// </summary>
         [Input("originTraffic")]
         public Input<bool>? OriginTraffic { get; set; }
 
         [Input("statuses")]
         private InputList<int>? _statuses;
+
+        /// <summary>
+        /// HTTP Status codes, can be one, many or indicate all by not providing this value.
+        /// </summary>
         public InputList<int> Statuses
         {
             get => _statuses ?? (_statuses = new InputList<int>());

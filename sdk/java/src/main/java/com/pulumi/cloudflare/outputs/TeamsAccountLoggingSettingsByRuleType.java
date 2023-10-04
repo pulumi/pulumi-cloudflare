@@ -11,17 +11,41 @@ import java.util.Objects;
 
 @CustomType
 public final class TeamsAccountLoggingSettingsByRuleType {
+    /**
+     * @return Logging configuration for DNS requests.
+     * 
+     */
     private TeamsAccountLoggingSettingsByRuleTypeDns dns;
+    /**
+     * @return Logging configuration for HTTP requests.
+     * 
+     */
     private TeamsAccountLoggingSettingsByRuleTypeHttp http;
+    /**
+     * @return Logging configuration for layer 4 requests.
+     * 
+     */
     private TeamsAccountLoggingSettingsByRuleTypeL4 l4;
 
     private TeamsAccountLoggingSettingsByRuleType() {}
+    /**
+     * @return Logging configuration for DNS requests.
+     * 
+     */
     public TeamsAccountLoggingSettingsByRuleTypeDns dns() {
         return this.dns;
     }
+    /**
+     * @return Logging configuration for HTTP requests.
+     * 
+     */
     public TeamsAccountLoggingSettingsByRuleTypeHttp http() {
         return this.http;
     }
+    /**
+     * @return Logging configuration for layer 4 requests.
+     * 
+     */
     public TeamsAccountLoggingSettingsByRuleTypeL4 l4() {
         return this.l4;
     }

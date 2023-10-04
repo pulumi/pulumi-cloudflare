@@ -14,7 +14,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class PageRuleActionsCacheKeyFieldsQueryString {
     /**
-     * @return Exclude these HTTP headers from Cache Key. Currently, only the `Origin` header can be excluded.
+     * @return Exclude these query string parameters from Cache Key.
      * 
      */
     private @Nullable List<String> excludes;
@@ -24,14 +24,14 @@ public final class PageRuleActionsCacheKeyFieldsQueryString {
      */
     private @Nullable Boolean ignore;
     /**
-     * @return Use values of specified cookies in Cache Key.
+     * @return Only use values of specified query string parameters in Cache Key.
      * 
      */
     private @Nullable List<String> includes;
 
     private PageRuleActionsCacheKeyFieldsQueryString() {}
     /**
-     * @return Exclude these HTTP headers from Cache Key. Currently, only the `Origin` header can be excluded.
+     * @return Exclude these query string parameters from Cache Key.
      * 
      */
     public List<String> excludes() {
@@ -45,7 +45,7 @@ public final class PageRuleActionsCacheKeyFieldsQueryString {
         return Optional.ofNullable(this.ignore);
     }
     /**
-     * @return Use values of specified cookies in Cache Key.
+     * @return Only use values of specified query string parameters in Cache Key.
      * 
      */
     public List<String> includes() {

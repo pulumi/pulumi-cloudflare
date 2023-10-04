@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['MtlsCertificateArgs', 'MtlsCertificate']
@@ -27,13 +27,30 @@ class MtlsCertificateArgs:
         :param pulumi.Input[str] name: Optional unique name for the certificate. **Modifying this attribute will force creation of a new resource.**
         :param pulumi.Input[str] private_key: The certificate's private key. **Modifying this attribute will force creation of a new resource.**
         """
-        pulumi.set(__self__, "account_id", account_id)
-        pulumi.set(__self__, "ca", ca)
-        pulumi.set(__self__, "certificates", certificates)
+        MtlsCertificateArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            account_id=account_id,
+            ca=ca,
+            certificates=certificates,
+            name=name,
+            private_key=private_key,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             account_id: pulumi.Input[str],
+             ca: pulumi.Input[bool],
+             certificates: pulumi.Input[str],
+             name: Optional[pulumi.Input[str]] = None,
+             private_key: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("account_id", account_id)
+        _setter("ca", ca)
+        _setter("certificates", certificates)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if private_key is not None:
-            pulumi.set(__self__, "private_key", private_key)
+            _setter("private_key", private_key)
 
     @property
     @pulumi.getter(name="accountId")
@@ -122,26 +139,53 @@ class _MtlsCertificateState:
         :param pulumi.Input[str] signature: **Modifying this attribute will force creation of a new resource.**
         :param pulumi.Input[str] uploaded_on: **Modifying this attribute will force creation of a new resource.**
         """
+        _MtlsCertificateState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            account_id=account_id,
+            ca=ca,
+            certificates=certificates,
+            expires_on=expires_on,
+            issuer=issuer,
+            name=name,
+            private_key=private_key,
+            serial_number=serial_number,
+            signature=signature,
+            uploaded_on=uploaded_on,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             account_id: Optional[pulumi.Input[str]] = None,
+             ca: Optional[pulumi.Input[bool]] = None,
+             certificates: Optional[pulumi.Input[str]] = None,
+             expires_on: Optional[pulumi.Input[str]] = None,
+             issuer: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             private_key: Optional[pulumi.Input[str]] = None,
+             serial_number: Optional[pulumi.Input[str]] = None,
+             signature: Optional[pulumi.Input[str]] = None,
+             uploaded_on: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if account_id is not None:
-            pulumi.set(__self__, "account_id", account_id)
+            _setter("account_id", account_id)
         if ca is not None:
-            pulumi.set(__self__, "ca", ca)
+            _setter("ca", ca)
         if certificates is not None:
-            pulumi.set(__self__, "certificates", certificates)
+            _setter("certificates", certificates)
         if expires_on is not None:
-            pulumi.set(__self__, "expires_on", expires_on)
+            _setter("expires_on", expires_on)
         if issuer is not None:
-            pulumi.set(__self__, "issuer", issuer)
+            _setter("issuer", issuer)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if private_key is not None:
-            pulumi.set(__self__, "private_key", private_key)
+            _setter("private_key", private_key)
         if serial_number is not None:
-            pulumi.set(__self__, "serial_number", serial_number)
+            _setter("serial_number", serial_number)
         if signature is not None:
-            pulumi.set(__self__, "signature", signature)
+            _setter("signature", signature)
         if uploaded_on is not None:
-            pulumi.set(__self__, "uploaded_on", uploaded_on)
+            _setter("uploaded_on", uploaded_on)
 
     @property
     @pulumi.getter(name="accountId")
@@ -357,6 +401,10 @@ class MtlsCertificate(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            MtlsCertificateArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

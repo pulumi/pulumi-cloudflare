@@ -15,23 +15,47 @@ public final class RulesetRuleActionParametersAutominifyArgs extends com.pulumi.
 
     public static final RulesetRuleActionParametersAutominifyArgs Empty = new RulesetRuleActionParametersAutominifyArgs();
 
+    /**
+     * CSS minification.
+     * 
+     */
     @Import(name="css")
     private @Nullable Output<Boolean> css;
 
+    /**
+     * @return CSS minification.
+     * 
+     */
     public Optional<Output<Boolean>> css() {
         return Optional.ofNullable(this.css);
     }
 
+    /**
+     * HTML minification.
+     * 
+     */
     @Import(name="html")
     private @Nullable Output<Boolean> html;
 
+    /**
+     * @return HTML minification.
+     * 
+     */
     public Optional<Output<Boolean>> html() {
         return Optional.ofNullable(this.html);
     }
 
+    /**
+     * JS minification.
+     * 
+     */
     @Import(name="js")
     private @Nullable Output<Boolean> js;
 
+    /**
+     * @return JS minification.
+     * 
+     */
     public Optional<Output<Boolean>> js() {
         return Optional.ofNullable(this.js);
     }
@@ -62,29 +86,65 @@ public final class RulesetRuleActionParametersAutominifyArgs extends com.pulumi.
             $ = new RulesetRuleActionParametersAutominifyArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param css CSS minification.
+         * 
+         * @return builder
+         * 
+         */
         public Builder css(@Nullable Output<Boolean> css) {
             $.css = css;
             return this;
         }
 
+        /**
+         * @param css CSS minification.
+         * 
+         * @return builder
+         * 
+         */
         public Builder css(Boolean css) {
             return css(Output.of(css));
         }
 
+        /**
+         * @param html HTML minification.
+         * 
+         * @return builder
+         * 
+         */
         public Builder html(@Nullable Output<Boolean> html) {
             $.html = html;
             return this;
         }
 
+        /**
+         * @param html HTML minification.
+         * 
+         * @return builder
+         * 
+         */
         public Builder html(Boolean html) {
             return html(Output.of(html));
         }
 
+        /**
+         * @param js JS minification.
+         * 
+         * @return builder
+         * 
+         */
         public Builder js(@Nullable Output<Boolean> js) {
             $.js = js;
             return this;
         }
 
+        /**
+         * @param js JS minification.
+         * 
+         * @return builder
+         * 
+         */
         public Builder js(Boolean js) {
             return js(Output.of(js));
         }

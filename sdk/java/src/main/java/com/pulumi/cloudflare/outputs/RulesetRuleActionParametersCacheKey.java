@@ -12,21 +12,53 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class RulesetRuleActionParametersCacheKey {
+    /**
+     * @return Cache by device type.
+     * 
+     */
     private @Nullable Boolean cacheByDeviceType;
+    /**
+     * @return Cache deception armor.
+     * 
+     */
     private @Nullable Boolean cacheDeceptionArmor;
+    /**
+     * @return Custom key parameters for the request.
+     * 
+     */
     private @Nullable RulesetRuleActionParametersCacheKeyCustomKey customKey;
+    /**
+     * @return Ignore query strings order.
+     * 
+     */
     private @Nullable Boolean ignoreQueryStringsOrder;
 
     private RulesetRuleActionParametersCacheKey() {}
+    /**
+     * @return Cache by device type.
+     * 
+     */
     public Optional<Boolean> cacheByDeviceType() {
         return Optional.ofNullable(this.cacheByDeviceType);
     }
+    /**
+     * @return Cache deception armor.
+     * 
+     */
     public Optional<Boolean> cacheDeceptionArmor() {
         return Optional.ofNullable(this.cacheDeceptionArmor);
     }
+    /**
+     * @return Custom key parameters for the request.
+     * 
+     */
     public Optional<RulesetRuleActionParametersCacheKeyCustomKey> customKey() {
         return Optional.ofNullable(this.customKey);
     }
+    /**
+     * @return Ignore query strings order.
+     * 
+     */
     public Optional<Boolean> ignoreQueryStringsOrder() {
         return Optional.ofNullable(this.ignoreQueryStringsOrder);
     }

@@ -14,9 +14,6 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class GetListsListResult
     {
         public readonly string? Description;
-        /// <summary>
-        /// The ID of this resource.
-        /// </summary>
         public readonly string? Id;
         public readonly string? Kind;
         public readonly string? Name;

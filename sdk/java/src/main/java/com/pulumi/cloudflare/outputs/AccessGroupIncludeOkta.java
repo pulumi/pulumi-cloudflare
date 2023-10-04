@@ -12,10 +12,18 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class AccessGroupIncludeOkta {
+    /**
+     * @return The ID of the Azure Identity provider.
+     * 
+     */
     private @Nullable String identityProviderId;
     private @Nullable List<String> names;
 
     private AccessGroupIncludeOkta() {}
+    /**
+     * @return The ID of the Azure Identity provider.
+     * 
+     */
     public Optional<String> identityProviderId() {
         return Optional.ofNullable(this.identityProviderId);
     }

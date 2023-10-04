@@ -33,7 +33,7 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly string? HostHeader;
         public readonly bool? HotlinkProtection;
         /// <summary>
-        /// The ID of this resource.
+        /// The ID of the Ruleset to target.
         /// </summary>
         public readonly string? Id;
         public readonly int? Increment;
@@ -64,6 +64,9 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly int? StatusCode;
         public readonly bool? Sxg;
         public readonly Outputs.GetRulesetsRulesetRuleActionParametersUriResult? Uri;
+        /// <summary>
+        /// Version of the ruleset to filter on.
+        /// </summary>
         public readonly string Version;
 
         [OutputConstructor]

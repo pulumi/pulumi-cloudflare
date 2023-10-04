@@ -16,16 +16,32 @@ public final class ApiTokenConditionRequestIpArgs extends com.pulumi.resources.R
 
     public static final ApiTokenConditionRequestIpArgs Empty = new ApiTokenConditionRequestIpArgs();
 
+    /**
+     * List of IP addresses or CIDR notation where the token may be used from. If not specified, the token will be valid for all IP addresses.
+     * 
+     */
     @Import(name="ins")
     private @Nullable Output<List<String>> ins;
 
+    /**
+     * @return List of IP addresses or CIDR notation where the token may be used from. If not specified, the token will be valid for all IP addresses.
+     * 
+     */
     public Optional<Output<List<String>>> ins() {
         return Optional.ofNullable(this.ins);
     }
 
+    /**
+     * List of IP addresses or CIDR notation where the token should not be used from.
+     * 
+     */
     @Import(name="notIns")
     private @Nullable Output<List<String>> notIns;
 
+    /**
+     * @return List of IP addresses or CIDR notation where the token should not be used from.
+     * 
+     */
     public Optional<Output<List<String>>> notIns() {
         return Optional.ofNullable(this.notIns);
     }
@@ -55,28 +71,64 @@ public final class ApiTokenConditionRequestIpArgs extends com.pulumi.resources.R
             $ = new ApiTokenConditionRequestIpArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param ins List of IP addresses or CIDR notation where the token may be used from. If not specified, the token will be valid for all IP addresses.
+         * 
+         * @return builder
+         * 
+         */
         public Builder ins(@Nullable Output<List<String>> ins) {
             $.ins = ins;
             return this;
         }
 
+        /**
+         * @param ins List of IP addresses or CIDR notation where the token may be used from. If not specified, the token will be valid for all IP addresses.
+         * 
+         * @return builder
+         * 
+         */
         public Builder ins(List<String> ins) {
             return ins(Output.of(ins));
         }
 
+        /**
+         * @param ins List of IP addresses or CIDR notation where the token may be used from. If not specified, the token will be valid for all IP addresses.
+         * 
+         * @return builder
+         * 
+         */
         public Builder ins(String... ins) {
             return ins(List.of(ins));
         }
 
+        /**
+         * @param notIns List of IP addresses or CIDR notation where the token should not be used from.
+         * 
+         * @return builder
+         * 
+         */
         public Builder notIns(@Nullable Output<List<String>> notIns) {
             $.notIns = notIns;
             return this;
         }
 
+        /**
+         * @param notIns List of IP addresses or CIDR notation where the token should not be used from.
+         * 
+         * @return builder
+         * 
+         */
         public Builder notIns(List<String> notIns) {
             return notIns(Output.of(notIns));
         }
 
+        /**
+         * @param notIns List of IP addresses or CIDR notation where the token should not be used from.
+         * 
+         * @return builder
+         * 
+         */
         public Builder notIns(String... notIns) {
             return notIns(List.of(notIns));
         }

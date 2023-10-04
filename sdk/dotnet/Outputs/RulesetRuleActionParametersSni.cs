@@ -13,6 +13,9 @@ namespace Pulumi.Cloudflare.Outputs
     [OutputType]
     public sealed class RulesetRuleActionParametersSni
     {
+        /// <summary>
+        /// Status code edge TTL value.
+        /// </summary>
         public readonly string? Value;
 
         [OutputConstructor]

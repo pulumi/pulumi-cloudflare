@@ -13,17 +13,41 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class TunnelConfigConfigIngressRuleOriginRequestAccess {
+    /**
+     * @return Audience tags of the access rule.
+     * 
+     */
     private @Nullable List<String> audTags;
+    /**
+     * @return Whether the access rule is required.
+     * 
+     */
     private @Nullable Boolean required;
+    /**
+     * @return Name of the team to which the access rule applies.
+     * 
+     */
     private @Nullable String teamName;
 
     private TunnelConfigConfigIngressRuleOriginRequestAccess() {}
+    /**
+     * @return Audience tags of the access rule.
+     * 
+     */
     public List<String> audTags() {
         return this.audTags == null ? List.of() : this.audTags;
     }
+    /**
+     * @return Whether the access rule is required.
+     * 
+     */
     public Optional<Boolean> required() {
         return Optional.ofNullable(this.required);
     }
+    /**
+     * @return Name of the team to which the access rule applies.
+     * 
+     */
     public Optional<String> teamName() {
         return Optional.ofNullable(this.teamName);
     }

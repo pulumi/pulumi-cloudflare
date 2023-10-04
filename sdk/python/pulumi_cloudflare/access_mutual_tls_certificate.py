@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['AccessMutualTlsCertificateArgs', 'AccessMutualTlsCertificate']
@@ -27,15 +27,32 @@ class AccessMutualTlsCertificateArgs:
         :param pulumi.Input[str] certificate: The Root CA for your certificates.
         :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. Conflicts with `account_id`.
         """
-        pulumi.set(__self__, "name", name)
+        AccessMutualTlsCertificateArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            name=name,
+            account_id=account_id,
+            associated_hostnames=associated_hostnames,
+            certificate=certificate,
+            zone_id=zone_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             name: pulumi.Input[str],
+             account_id: Optional[pulumi.Input[str]] = None,
+             associated_hostnames: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             certificate: Optional[pulumi.Input[str]] = None,
+             zone_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("name", name)
         if account_id is not None:
-            pulumi.set(__self__, "account_id", account_id)
+            _setter("account_id", account_id)
         if associated_hostnames is not None:
-            pulumi.set(__self__, "associated_hostnames", associated_hostnames)
+            _setter("associated_hostnames", associated_hostnames)
         if certificate is not None:
-            pulumi.set(__self__, "certificate", certificate)
+            _setter("certificate", certificate)
         if zone_id is not None:
-            pulumi.set(__self__, "zone_id", zone_id)
+            _setter("zone_id", zone_id)
 
     @property
     @pulumi.getter
@@ -115,18 +132,37 @@ class _AccessMutualTlsCertificateState:
         :param pulumi.Input[str] name: The name of the certificate.
         :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. Conflicts with `account_id`.
         """
+        _AccessMutualTlsCertificateState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            account_id=account_id,
+            associated_hostnames=associated_hostnames,
+            certificate=certificate,
+            fingerprint=fingerprint,
+            name=name,
+            zone_id=zone_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             account_id: Optional[pulumi.Input[str]] = None,
+             associated_hostnames: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             certificate: Optional[pulumi.Input[str]] = None,
+             fingerprint: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             zone_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if account_id is not None:
-            pulumi.set(__self__, "account_id", account_id)
+            _setter("account_id", account_id)
         if associated_hostnames is not None:
-            pulumi.set(__self__, "associated_hostnames", associated_hostnames)
+            _setter("associated_hostnames", associated_hostnames)
         if certificate is not None:
-            pulumi.set(__self__, "certificate", certificate)
+            _setter("certificate", certificate)
         if fingerprint is not None:
-            pulumi.set(__self__, "fingerprint", fingerprint)
+            _setter("fingerprint", fingerprint)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if zone_id is not None:
-            pulumi.set(__self__, "zone_id", zone_id)
+            _setter("zone_id", zone_id)
 
     @property
     @pulumi.getter(name="accountId")
@@ -313,6 +349,10 @@ class AccessMutualTlsCertificate(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            AccessMutualTlsCertificateArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

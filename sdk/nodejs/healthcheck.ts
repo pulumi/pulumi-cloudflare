@@ -147,7 +147,7 @@ export class Healthcheck extends pulumi.CustomResource {
      */
     public readonly followRedirects!: pulumi.Output<boolean | undefined>;
     /**
-     * The HTTP request headers to send in the health check. It is recommended you set a Host header by default. The User-Agent header cannot be overridden.
+     * The header name.
      */
     public readonly headers!: pulumi.Output<outputs.HealthcheckHeader[] | undefined>;
     /**
@@ -317,7 +317,7 @@ export interface HealthcheckState {
      */
     followRedirects?: pulumi.Input<boolean>;
     /**
-     * The HTTP request headers to send in the health check. It is recommended you set a Host header by default. The User-Agent header cannot be overridden.
+     * The header name.
      */
     headers?: pulumi.Input<pulumi.Input<inputs.HealthcheckHeader>[]>;
     /**
@@ -407,7 +407,7 @@ export interface HealthcheckArgs {
      */
     followRedirects?: pulumi.Input<boolean>;
     /**
-     * The HTTP request headers to send in the health check. It is recommended you set a Host header by default. The User-Agent header cannot be overridden.
+     * The header name.
      */
     headers?: pulumi.Input<pulumi.Input<inputs.HealthcheckHeader>[]>;
     /**

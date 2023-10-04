@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['Web3HostnameArgs', 'Web3Hostname']
@@ -27,13 +27,30 @@ class Web3HostnameArgs:
         :param pulumi.Input[str] description: An optional description of the hostname.
         :param pulumi.Input[str] dnslink: DNSLink value used if the target is ipfs.
         """
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "target", target)
-        pulumi.set(__self__, "zone_id", zone_id)
+        Web3HostnameArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            name=name,
+            target=target,
+            zone_id=zone_id,
+            description=description,
+            dnslink=dnslink,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             name: pulumi.Input[str],
+             target: pulumi.Input[str],
+             zone_id: pulumi.Input[str],
+             description: Optional[pulumi.Input[str]] = None,
+             dnslink: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("name", name)
+        _setter("target", target)
+        _setter("zone_id", zone_id)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if dnslink is not None:
-            pulumi.set(__self__, "dnslink", dnslink)
+            _setter("dnslink", dnslink)
 
     @property
     @pulumi.getter
@@ -118,22 +135,45 @@ class _Web3HostnameState:
         :param pulumi.Input[str] target: Target gateway of the hostname.
         :param pulumi.Input[str] zone_id: The zone identifier to target for the resource.
         """
+        _Web3HostnameState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            created_on=created_on,
+            description=description,
+            dnslink=dnslink,
+            modified_on=modified_on,
+            name=name,
+            status=status,
+            target=target,
+            zone_id=zone_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             created_on: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             dnslink: Optional[pulumi.Input[str]] = None,
+             modified_on: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             target: Optional[pulumi.Input[str]] = None,
+             zone_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if created_on is not None:
-            pulumi.set(__self__, "created_on", created_on)
+            _setter("created_on", created_on)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if dnslink is not None:
-            pulumi.set(__self__, "dnslink", dnslink)
+            _setter("dnslink", dnslink)
         if modified_on is not None:
-            pulumi.set(__self__, "modified_on", modified_on)
+            _setter("modified_on", modified_on)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
         if target is not None:
-            pulumi.set(__self__, "target", target)
+            _setter("target", target)
         if zone_id is not None:
-            pulumi.set(__self__, "zone_id", zone_id)
+            _setter("zone_id", zone_id)
 
     @property
     @pulumi.getter(name="createdOn")
@@ -273,6 +313,10 @@ class Web3Hostname(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            Web3HostnameArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

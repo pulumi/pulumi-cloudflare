@@ -35,14 +35,14 @@ public final class TeamsRuleState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The action executed by matched teams rule. Available values: `allow`, `block`, `safesearch`, `ytrestricted`, `on`, `off`, `scan`, `noscan`, `isolate`, `noisolate`, `override`, `l4_override`, `egress`, `audit_ssh`.
+     * Action to be taken when the SSL certificate of upstream is invalid. Available values: `pass_through`, `block`, `error`.
      * 
      */
     @Import(name="action")
     private @Nullable Output<String> action;
 
     /**
-     * @return The action executed by matched teams rule. Available values: `allow`, `block`, `safesearch`, `ytrestricted`, `on`, `off`, `scan`, `noscan`, `isolate`, `noisolate`, `override`, `l4_override`, `egress`, `audit_ssh`.
+     * @return Action to be taken when the SSL certificate of upstream is invalid. Available values: `pass_through`, `block`, `error`.
      * 
      */
     public Optional<Output<String>> action() {
@@ -80,14 +80,14 @@ public final class TeamsRuleState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Indicator of rule enablement.
+     * Enable or disable DLP Payload Logging for this rule.
      * 
      */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
     /**
-     * @return Indicator of rule enablement.
+     * @return Enable or disable DLP Payload Logging for this rule.
      * 
      */
     public Optional<Output<Boolean>> enabled() {
@@ -248,7 +248,7 @@ public final class TeamsRuleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param action The action executed by matched teams rule. Available values: `allow`, `block`, `safesearch`, `ytrestricted`, `on`, `off`, `scan`, `noscan`, `isolate`, `noisolate`, `override`, `l4_override`, `egress`, `audit_ssh`.
+         * @param action Action to be taken when the SSL certificate of upstream is invalid. Available values: `pass_through`, `block`, `error`.
          * 
          * @return builder
          * 
@@ -259,7 +259,7 @@ public final class TeamsRuleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param action The action executed by matched teams rule. Available values: `allow`, `block`, `safesearch`, `ytrestricted`, `on`, `off`, `scan`, `noscan`, `isolate`, `noisolate`, `override`, `l4_override`, `egress`, `audit_ssh`.
+         * @param action Action to be taken when the SSL certificate of upstream is invalid. Available values: `pass_through`, `block`, `error`.
          * 
          * @return builder
          * 
@@ -311,7 +311,7 @@ public final class TeamsRuleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param enabled Indicator of rule enablement.
+         * @param enabled Enable or disable DLP Payload Logging for this rule.
          * 
          * @return builder
          * 
@@ -322,7 +322,7 @@ public final class TeamsRuleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param enabled Indicator of rule enablement.
+         * @param enabled Enable or disable DLP Payload Logging for this rule.
          * 
          * @return builder
          * 

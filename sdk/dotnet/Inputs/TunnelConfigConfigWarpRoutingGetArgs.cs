@@ -12,6 +12,9 @@ namespace Pulumi.Cloudflare.Inputs
 
     public sealed class TunnelConfigConfigWarpRoutingGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Whether WARP routing is enabled.
+        /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 

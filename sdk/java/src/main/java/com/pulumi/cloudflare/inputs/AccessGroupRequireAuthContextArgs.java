@@ -13,31 +13,47 @@ public final class AccessGroupRequireAuthContextArgs extends com.pulumi.resource
 
     public static final AccessGroupRequireAuthContextArgs Empty = new AccessGroupRequireAuthContextArgs();
 
+    /**
+     * The ACID of the Authentication Context.
+     * 
+     */
     @Import(name="acId", required=true)
     private Output<String> acId;
 
+    /**
+     * @return The ACID of the Authentication Context.
+     * 
+     */
     public Output<String> acId() {
         return this.acId;
     }
 
     /**
-     * The ID of this resource.
+     * The ID of the Authentication Context.
      * 
      */
     @Import(name="id", required=true)
     private Output<String> id;
 
     /**
-     * @return The ID of this resource.
+     * @return The ID of the Authentication Context.
      * 
      */
     public Output<String> id() {
         return this.id;
     }
 
+    /**
+     * The ID of the Azure Identity provider.
+     * 
+     */
     @Import(name="identityProviderId", required=true)
     private Output<String> identityProviderId;
 
+    /**
+     * @return The ID of the Azure Identity provider.
+     * 
+     */
     public Output<String> identityProviderId() {
         return this.identityProviderId;
     }
@@ -68,17 +84,29 @@ public final class AccessGroupRequireAuthContextArgs extends com.pulumi.resource
             $ = new AccessGroupRequireAuthContextArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param acId The ACID of the Authentication Context.
+         * 
+         * @return builder
+         * 
+         */
         public Builder acId(Output<String> acId) {
             $.acId = acId;
             return this;
         }
 
+        /**
+         * @param acId The ACID of the Authentication Context.
+         * 
+         * @return builder
+         * 
+         */
         public Builder acId(String acId) {
             return acId(Output.of(acId));
         }
 
         /**
-         * @param id The ID of this resource.
+         * @param id The ID of the Authentication Context.
          * 
          * @return builder
          * 
@@ -89,7 +117,7 @@ public final class AccessGroupRequireAuthContextArgs extends com.pulumi.resource
         }
 
         /**
-         * @param id The ID of this resource.
+         * @param id The ID of the Authentication Context.
          * 
          * @return builder
          * 
@@ -98,11 +126,23 @@ public final class AccessGroupRequireAuthContextArgs extends com.pulumi.resource
             return id(Output.of(id));
         }
 
+        /**
+         * @param identityProviderId The ID of the Azure Identity provider.
+         * 
+         * @return builder
+         * 
+         */
         public Builder identityProviderId(Output<String> identityProviderId) {
             $.identityProviderId = identityProviderId;
             return this;
         }
 
+        /**
+         * @param identityProviderId The ID of the Azure Identity provider.
+         * 
+         * @return builder
+         * 
+         */
         public Builder identityProviderId(String identityProviderId) {
             return identityProviderId(Output.of(identityProviderId));
         }

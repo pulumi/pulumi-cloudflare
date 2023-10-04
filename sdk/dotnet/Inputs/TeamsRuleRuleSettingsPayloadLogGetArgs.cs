@@ -13,7 +13,7 @@ namespace Pulumi.Cloudflare.Inputs
     public sealed class TeamsRuleRuleSettingsPayloadLogGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Indicator of rule enablement.
+        /// Enable or disable DLP Payload Logging for this rule.
         /// </summary>
         [Input("enabled", required: true)]
         public Input<bool> Enabled { get; set; } = null!;

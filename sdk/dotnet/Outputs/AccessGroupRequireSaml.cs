@@ -15,6 +15,9 @@ namespace Pulumi.Cloudflare.Outputs
     {
         public readonly string? AttributeName;
         public readonly string? AttributeValue;
+        /// <summary>
+        /// The ID of the Azure Identity provider.
+        /// </summary>
         public readonly string? IdentityProviderId;
 
         [OutputConstructor]

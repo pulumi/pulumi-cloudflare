@@ -11,25 +11,65 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class TeamsRuleRuleSettingsBisoAdminControls {
+    /**
+     * @return Disable copy-paste.
+     * 
+     */
     private @Nullable Boolean disableCopyPaste;
+    /**
+     * @return Disable download.
+     * 
+     */
     private @Nullable Boolean disableDownload;
+    /**
+     * @return Disable keyboard usage.
+     * 
+     */
     private @Nullable Boolean disableKeyboard;
+    /**
+     * @return Disable printing.
+     * 
+     */
     private @Nullable Boolean disablePrinting;
+    /**
+     * @return Disable upload.
+     * 
+     */
     private @Nullable Boolean disableUpload;
 
     private TeamsRuleRuleSettingsBisoAdminControls() {}
+    /**
+     * @return Disable copy-paste.
+     * 
+     */
     public Optional<Boolean> disableCopyPaste() {
         return Optional.ofNullable(this.disableCopyPaste);
     }
+    /**
+     * @return Disable download.
+     * 
+     */
     public Optional<Boolean> disableDownload() {
         return Optional.ofNullable(this.disableDownload);
     }
+    /**
+     * @return Disable keyboard usage.
+     * 
+     */
     public Optional<Boolean> disableKeyboard() {
         return Optional.ofNullable(this.disableKeyboard);
     }
+    /**
+     * @return Disable printing.
+     * 
+     */
     public Optional<Boolean> disablePrinting() {
         return Optional.ofNullable(this.disablePrinting);
     }
+    /**
+     * @return Disable upload.
+     * 
+     */
     public Optional<Boolean> disableUpload() {
         return Optional.ofNullable(this.disableUpload);
     }

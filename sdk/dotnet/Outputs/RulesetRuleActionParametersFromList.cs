@@ -13,9 +13,12 @@ namespace Pulumi.Cloudflare.Outputs
     [OutputType]
     public sealed class RulesetRuleActionParametersFromList
     {
+        /// <summary>
+        /// Expression to use for the list lookup.
+        /// </summary>
         public readonly string? Key;
         /// <summary>
-        /// Name of the ruleset.
+        /// Name of the compression algorithm to use. Available values: `gzip`, `brotli`, `auto`, `default`, `none`
         /// </summary>
         public readonly string? Name;
 

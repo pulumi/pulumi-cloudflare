@@ -279,14 +279,14 @@ public class AccessApplication extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.logoUrl);
     }
     /**
-     * Friendly name of the Access Application.
+     * The name of the attribute as provided to the SaaS app.
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return Friendly name of the Access Application.
+     * @return The name of the attribute as provided to the SaaS app.
      * 
      */
     public Output<String> name() {

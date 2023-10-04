@@ -13,8 +13,17 @@ namespace Pulumi.Cloudflare.Outputs
     [OutputType]
     public sealed class RulesetRuleActionParametersCacheKeyCustomKeyUser
     {
+        /// <summary>
+        /// Add device type to the custom key.
+        /// </summary>
         public readonly bool? DeviceType;
+        /// <summary>
+        /// Add geo data to the custom key.
+        /// </summary>
         public readonly bool? Geo;
+        /// <summary>
+        /// Add language data to the custom key.
+        /// </summary>
         public readonly bool? Lang;
 
         [OutputConstructor]

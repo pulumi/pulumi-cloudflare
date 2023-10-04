@@ -11,13 +11,29 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ApiTokenConditionRequestIp {
+    /**
+     * @return List of IP addresses or CIDR notation where the token may be used from. If not specified, the token will be valid for all IP addresses.
+     * 
+     */
     private @Nullable List<String> ins;
+    /**
+     * @return List of IP addresses or CIDR notation where the token should not be used from.
+     * 
+     */
     private @Nullable List<String> notIns;
 
     private ApiTokenConditionRequestIp() {}
+    /**
+     * @return List of IP addresses or CIDR notation where the token may be used from. If not specified, the token will be valid for all IP addresses.
+     * 
+     */
     public List<String> ins() {
         return this.ins == null ? List.of() : this.ins;
     }
+    /**
+     * @return List of IP addresses or CIDR notation where the token should not be used from.
+     * 
+     */
     public List<String> notIns() {
         return this.notIns == null ? List.of() : this.notIns;
     }

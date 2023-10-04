@@ -107,7 +107,7 @@ type LoadBalancerPool struct {
 	CreatedOn pulumi.StringOutput `pulumi:"createdOn"`
 	// Free text description.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// Whether to enable (the default) this pool. Disabled pools will not receive traffic and are excluded from health checks. Disabling a pool will cause any load balancers using it to failover to the next pool (if any). Defaults to `true`.
+	// Whether this origin is enabled. Disabled origins will not receive traffic and are excluded from health checks. Defaults to `true`.
 	Enabled pulumi.BoolPtrOutput `pulumi:"enabled"`
 	// The latitude this pool is physically located at; used for proximity steering.
 	Latitude pulumi.Float64PtrOutput `pulumi:"latitude"`
@@ -121,7 +121,7 @@ type LoadBalancerPool struct {
 	ModifiedOn pulumi.StringOutput `pulumi:"modifiedOn"`
 	// The ID of the Monitor to use for health checking origins within this pool.
 	Monitor pulumi.StringPtrOutput `pulumi:"monitor"`
-	// A short name (tag) for the pool.
+	// A human-identifiable name for the origin.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The email address to send health status notifications to. This can be an individual mailbox or a mailing list. Multiple emails can be supplied as a comma delimited list.
 	NotificationEmail pulumi.StringPtrOutput `pulumi:"notificationEmail"`
@@ -178,7 +178,7 @@ type loadBalancerPoolState struct {
 	CreatedOn *string `pulumi:"createdOn"`
 	// Free text description.
 	Description *string `pulumi:"description"`
-	// Whether to enable (the default) this pool. Disabled pools will not receive traffic and are excluded from health checks. Disabling a pool will cause any load balancers using it to failover to the next pool (if any). Defaults to `true`.
+	// Whether this origin is enabled. Disabled origins will not receive traffic and are excluded from health checks. Defaults to `true`.
 	Enabled *bool `pulumi:"enabled"`
 	// The latitude this pool is physically located at; used for proximity steering.
 	Latitude *float64 `pulumi:"latitude"`
@@ -192,7 +192,7 @@ type loadBalancerPoolState struct {
 	ModifiedOn *string `pulumi:"modifiedOn"`
 	// The ID of the Monitor to use for health checking origins within this pool.
 	Monitor *string `pulumi:"monitor"`
-	// A short name (tag) for the pool.
+	// A human-identifiable name for the origin.
 	Name *string `pulumi:"name"`
 	// The email address to send health status notifications to. This can be an individual mailbox or a mailing list. Multiple emails can be supplied as a comma delimited list.
 	NotificationEmail *string `pulumi:"notificationEmail"`
@@ -211,7 +211,7 @@ type LoadBalancerPoolState struct {
 	CreatedOn pulumi.StringPtrInput
 	// Free text description.
 	Description pulumi.StringPtrInput
-	// Whether to enable (the default) this pool. Disabled pools will not receive traffic and are excluded from health checks. Disabling a pool will cause any load balancers using it to failover to the next pool (if any). Defaults to `true`.
+	// Whether this origin is enabled. Disabled origins will not receive traffic and are excluded from health checks. Defaults to `true`.
 	Enabled pulumi.BoolPtrInput
 	// The latitude this pool is physically located at; used for proximity steering.
 	Latitude pulumi.Float64PtrInput
@@ -225,7 +225,7 @@ type LoadBalancerPoolState struct {
 	ModifiedOn pulumi.StringPtrInput
 	// The ID of the Monitor to use for health checking origins within this pool.
 	Monitor pulumi.StringPtrInput
-	// A short name (tag) for the pool.
+	// A human-identifiable name for the origin.
 	Name pulumi.StringPtrInput
 	// The email address to send health status notifications to. This can be an individual mailbox or a mailing list. Multiple emails can be supplied as a comma delimited list.
 	NotificationEmail pulumi.StringPtrInput
@@ -246,7 +246,7 @@ type loadBalancerPoolArgs struct {
 	CheckRegions []string `pulumi:"checkRegions"`
 	// Free text description.
 	Description *string `pulumi:"description"`
-	// Whether to enable (the default) this pool. Disabled pools will not receive traffic and are excluded from health checks. Disabling a pool will cause any load balancers using it to failover to the next pool (if any). Defaults to `true`.
+	// Whether this origin is enabled. Disabled origins will not receive traffic and are excluded from health checks. Defaults to `true`.
 	Enabled *bool `pulumi:"enabled"`
 	// The latitude this pool is physically located at; used for proximity steering.
 	Latitude *float64 `pulumi:"latitude"`
@@ -258,7 +258,7 @@ type loadBalancerPoolArgs struct {
 	MinimumOrigins *int `pulumi:"minimumOrigins"`
 	// The ID of the Monitor to use for health checking origins within this pool.
 	Monitor *string `pulumi:"monitor"`
-	// A short name (tag) for the pool.
+	// A human-identifiable name for the origin.
 	Name string `pulumi:"name"`
 	// The email address to send health status notifications to. This can be an individual mailbox or a mailing list. Multiple emails can be supplied as a comma delimited list.
 	NotificationEmail *string `pulumi:"notificationEmail"`
@@ -276,7 +276,7 @@ type LoadBalancerPoolArgs struct {
 	CheckRegions pulumi.StringArrayInput
 	// Free text description.
 	Description pulumi.StringPtrInput
-	// Whether to enable (the default) this pool. Disabled pools will not receive traffic and are excluded from health checks. Disabling a pool will cause any load balancers using it to failover to the next pool (if any). Defaults to `true`.
+	// Whether this origin is enabled. Disabled origins will not receive traffic and are excluded from health checks. Defaults to `true`.
 	Enabled pulumi.BoolPtrInput
 	// The latitude this pool is physically located at; used for proximity steering.
 	Latitude pulumi.Float64PtrInput
@@ -288,7 +288,7 @@ type LoadBalancerPoolArgs struct {
 	MinimumOrigins pulumi.IntPtrInput
 	// The ID of the Monitor to use for health checking origins within this pool.
 	Monitor pulumi.StringPtrInput
-	// A short name (tag) for the pool.
+	// A human-identifiable name for the origin.
 	Name pulumi.StringInput
 	// The email address to send health status notifications to. This can be an individual mailbox or a mailing list. Multiple emails can be supplied as a comma delimited list.
 	NotificationEmail pulumi.StringPtrInput
@@ -429,7 +429,7 @@ func (o LoadBalancerPoolOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *LoadBalancerPool) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// Whether to enable (the default) this pool. Disabled pools will not receive traffic and are excluded from health checks. Disabling a pool will cause any load balancers using it to failover to the next pool (if any). Defaults to `true`.
+// Whether this origin is enabled. Disabled origins will not receive traffic and are excluded from health checks. Defaults to `true`.
 func (o LoadBalancerPoolOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *LoadBalancerPool) pulumi.BoolPtrOutput { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
@@ -464,7 +464,7 @@ func (o LoadBalancerPoolOutput) Monitor() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *LoadBalancerPool) pulumi.StringPtrOutput { return v.Monitor }).(pulumi.StringPtrOutput)
 }
 
-// A short name (tag) for the pool.
+// A human-identifiable name for the origin.
 func (o LoadBalancerPoolOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *LoadBalancerPool) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

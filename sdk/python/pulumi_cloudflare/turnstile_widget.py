@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['TurnstileWidgetArgs', 'TurnstileWidget']
@@ -31,16 +31,37 @@ class TurnstileWidgetArgs:
         :param pulumi.Input[bool] offlabel: Do not show any Cloudflare branding on the widget (Enterprise only).
         :param pulumi.Input[str] region: Region where this widget can be used.
         """
-        pulumi.set(__self__, "account_id", account_id)
-        pulumi.set(__self__, "domains", domains)
-        pulumi.set(__self__, "mode", mode)
-        pulumi.set(__self__, "name", name)
+        TurnstileWidgetArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            account_id=account_id,
+            domains=domains,
+            mode=mode,
+            name=name,
+            bot_fight_mode=bot_fight_mode,
+            offlabel=offlabel,
+            region=region,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             account_id: pulumi.Input[str],
+             domains: pulumi.Input[Sequence[pulumi.Input[str]]],
+             mode: pulumi.Input[str],
+             name: pulumi.Input[str],
+             bot_fight_mode: Optional[pulumi.Input[bool]] = None,
+             offlabel: Optional[pulumi.Input[bool]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("account_id", account_id)
+        _setter("domains", domains)
+        _setter("mode", mode)
+        _setter("name", name)
         if bot_fight_mode is not None:
-            pulumi.set(__self__, "bot_fight_mode", bot_fight_mode)
+            _setter("bot_fight_mode", bot_fight_mode)
         if offlabel is not None:
-            pulumi.set(__self__, "offlabel", offlabel)
+            _setter("offlabel", offlabel)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
 
     @property
     @pulumi.getter(name="accountId")
@@ -149,22 +170,45 @@ class _TurnstileWidgetState:
         :param pulumi.Input[str] region: Region where this widget can be used.
         :param pulumi.Input[str] secret: Secret key for this widget.
         """
+        _TurnstileWidgetState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            account_id=account_id,
+            bot_fight_mode=bot_fight_mode,
+            domains=domains,
+            mode=mode,
+            name=name,
+            offlabel=offlabel,
+            region=region,
+            secret=secret,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             account_id: Optional[pulumi.Input[str]] = None,
+             bot_fight_mode: Optional[pulumi.Input[bool]] = None,
+             domains: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             mode: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             offlabel: Optional[pulumi.Input[bool]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             secret: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if account_id is not None:
-            pulumi.set(__self__, "account_id", account_id)
+            _setter("account_id", account_id)
         if bot_fight_mode is not None:
-            pulumi.set(__self__, "bot_fight_mode", bot_fight_mode)
+            _setter("bot_fight_mode", bot_fight_mode)
         if domains is not None:
-            pulumi.set(__self__, "domains", domains)
+            _setter("domains", domains)
         if mode is not None:
-            pulumi.set(__self__, "mode", mode)
+            _setter("mode", mode)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if offlabel is not None:
-            pulumi.set(__self__, "offlabel", offlabel)
+            _setter("offlabel", offlabel)
         if region is not None:
-            pulumi.set(__self__, "region", region)
+            _setter("region", region)
         if secret is not None:
-            pulumi.set(__self__, "secret", secret)
+            _setter("secret", secret)
 
     @property
     @pulumi.getter(name="accountId")
@@ -350,6 +394,10 @@ class TurnstileWidget(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            TurnstileWidgetArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

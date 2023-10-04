@@ -16,7 +16,7 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly string? Action;
         public readonly bool? Enabled;
         /// <summary>
-        /// The ID of this resource.
+        /// The ID of the Ruleset to target.
         /// </summary>
         public readonly string? Id;
         public readonly int? ScoreThreshold;

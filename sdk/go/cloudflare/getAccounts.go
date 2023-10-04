@@ -51,7 +51,6 @@ func GetAccounts(ctx *pulumi.Context, args *GetAccountsArgs, opts ...pulumi.Invo
 
 // A collection of arguments for invoking getAccounts.
 type GetAccountsArgs struct {
-	// The account name to target for the resource.
 	Name *string `pulumi:"name"`
 }
 
@@ -79,7 +78,6 @@ func GetAccountsOutput(ctx *pulumi.Context, args GetAccountsOutputArgs, opts ...
 
 // A collection of arguments for invoking getAccounts.
 type GetAccountsOutputArgs struct {
-	// The account name to target for the resource.
 	Name pulumi.StringPtrInput `pulumi:"name"`
 }
 

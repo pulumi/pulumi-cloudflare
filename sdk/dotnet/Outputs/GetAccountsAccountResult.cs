@@ -14,13 +14,7 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class GetAccountsAccountResult
     {
         public readonly bool? EnforceTwofactor;
-        /// <summary>
-        /// The ID of this resource.
-        /// </summary>
         public readonly string? Id;
-        /// <summary>
-        /// The account name to target for the resource.
-        /// </summary>
         public readonly string? Name;
         public readonly string? Type;
 

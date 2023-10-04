@@ -12,9 +12,15 @@ namespace Pulumi.Cloudflare.Inputs
 
     public sealed class TeamsRuleRuleSettingsL4overrideGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Override IP to forward traffic to.
+        /// </summary>
         [Input("ip", required: true)]
         public Input<string> Ip { get; set; } = null!;
 
+        /// <summary>
+        /// Override Port to forward traffic to.
+        /// </summary>
         [Input("port", required: true)]
         public Input<int> Port { get; set; } = null!;
 

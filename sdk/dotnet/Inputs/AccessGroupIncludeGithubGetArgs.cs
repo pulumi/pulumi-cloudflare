@@ -12,6 +12,9 @@ namespace Pulumi.Cloudflare.Inputs
 
     public sealed class AccessGroupIncludeGithubGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The ID of the Azure Identity provider.
+        /// </summary>
         [Input("identityProviderId")]
         public Input<string>? IdentityProviderId { get; set; }
 

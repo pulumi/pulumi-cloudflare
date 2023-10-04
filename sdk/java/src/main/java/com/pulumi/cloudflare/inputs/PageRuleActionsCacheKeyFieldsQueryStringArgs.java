@@ -18,14 +18,14 @@ public final class PageRuleActionsCacheKeyFieldsQueryStringArgs extends com.pulu
     public static final PageRuleActionsCacheKeyFieldsQueryStringArgs Empty = new PageRuleActionsCacheKeyFieldsQueryStringArgs();
 
     /**
-     * Exclude these HTTP headers from Cache Key. Currently, only the `Origin` header can be excluded.
+     * Exclude these query string parameters from Cache Key.
      * 
      */
     @Import(name="excludes")
     private @Nullable Output<List<String>> excludes;
 
     /**
-     * @return Exclude these HTTP headers from Cache Key. Currently, only the `Origin` header can be excluded.
+     * @return Exclude these query string parameters from Cache Key.
      * 
      */
     public Optional<Output<List<String>>> excludes() {
@@ -48,14 +48,14 @@ public final class PageRuleActionsCacheKeyFieldsQueryStringArgs extends com.pulu
     }
 
     /**
-     * Use values of specified cookies in Cache Key.
+     * Only use values of specified query string parameters in Cache Key.
      * 
      */
     @Import(name="includes")
     private @Nullable Output<List<String>> includes;
 
     /**
-     * @return Use values of specified cookies in Cache Key.
+     * @return Only use values of specified query string parameters in Cache Key.
      * 
      */
     public Optional<Output<List<String>>> includes() {
@@ -89,7 +89,7 @@ public final class PageRuleActionsCacheKeyFieldsQueryStringArgs extends com.pulu
         }
 
         /**
-         * @param excludes Exclude these HTTP headers from Cache Key. Currently, only the `Origin` header can be excluded.
+         * @param excludes Exclude these query string parameters from Cache Key.
          * 
          * @return builder
          * 
@@ -100,7 +100,7 @@ public final class PageRuleActionsCacheKeyFieldsQueryStringArgs extends com.pulu
         }
 
         /**
-         * @param excludes Exclude these HTTP headers from Cache Key. Currently, only the `Origin` header can be excluded.
+         * @param excludes Exclude these query string parameters from Cache Key.
          * 
          * @return builder
          * 
@@ -110,7 +110,7 @@ public final class PageRuleActionsCacheKeyFieldsQueryStringArgs extends com.pulu
         }
 
         /**
-         * @param excludes Exclude these HTTP headers from Cache Key. Currently, only the `Origin` header can be excluded.
+         * @param excludes Exclude these query string parameters from Cache Key.
          * 
          * @return builder
          * 
@@ -141,7 +141,7 @@ public final class PageRuleActionsCacheKeyFieldsQueryStringArgs extends com.pulu
         }
 
         /**
-         * @param includes Use values of specified cookies in Cache Key.
+         * @param includes Only use values of specified query string parameters in Cache Key.
          * 
          * @return builder
          * 
@@ -152,7 +152,7 @@ public final class PageRuleActionsCacheKeyFieldsQueryStringArgs extends com.pulu
         }
 
         /**
-         * @param includes Use values of specified cookies in Cache Key.
+         * @param includes Only use values of specified query string parameters in Cache Key.
          * 
          * @return builder
          * 
@@ -162,7 +162,7 @@ public final class PageRuleActionsCacheKeyFieldsQueryStringArgs extends com.pulu
         }
 
         /**
-         * @param includes Use values of specified cookies in Cache Key.
+         * @param includes Only use values of specified query string parameters in Cache Key.
          * 
          * @return builder
          * 

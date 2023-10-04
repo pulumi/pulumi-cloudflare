@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['TeamsProxyEndpointArgs', 'TeamsProxyEndpoint']
@@ -23,9 +23,22 @@ class TeamsProxyEndpointArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ips: The networks CIDRs that will be allowed to initiate proxy connections.
         :param pulumi.Input[str] name: Name of the teams proxy endpoint.
         """
-        pulumi.set(__self__, "account_id", account_id)
-        pulumi.set(__self__, "ips", ips)
-        pulumi.set(__self__, "name", name)
+        TeamsProxyEndpointArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            account_id=account_id,
+            ips=ips,
+            name=name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             account_id: pulumi.Input[str],
+             ips: pulumi.Input[Sequence[pulumi.Input[str]]],
+             name: pulumi.Input[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("account_id", account_id)
+        _setter("ips", ips)
+        _setter("name", name)
 
     @property
     @pulumi.getter(name="accountId")
@@ -78,14 +91,29 @@ class _TeamsProxyEndpointState:
         :param pulumi.Input[str] name: Name of the teams proxy endpoint.
         :param pulumi.Input[str] subdomain: The FQDN that proxy clients should be pointed at.
         """
+        _TeamsProxyEndpointState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            account_id=account_id,
+            ips=ips,
+            name=name,
+            subdomain=subdomain,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             account_id: Optional[pulumi.Input[str]] = None,
+             ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             subdomain: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if account_id is not None:
-            pulumi.set(__self__, "account_id", account_id)
+            _setter("account_id", account_id)
         if ips is not None:
-            pulumi.set(__self__, "ips", ips)
+            _setter("ips", ips)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if subdomain is not None:
-            pulumi.set(__self__, "subdomain", subdomain)
+            _setter("subdomain", subdomain)
 
     @property
     @pulumi.getter(name="accountId")
@@ -213,6 +241,10 @@ class TeamsProxyEndpoint(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            TeamsProxyEndpointArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

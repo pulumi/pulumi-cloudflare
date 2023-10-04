@@ -18,9 +18,6 @@ namespace Pulumi.Cloudflare.Inputs
         [Input("id", required: true)]
         public Input<string> Id { get; set; } = null!;
 
-        /// <summary>
-        /// The name of the notification policy.
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 

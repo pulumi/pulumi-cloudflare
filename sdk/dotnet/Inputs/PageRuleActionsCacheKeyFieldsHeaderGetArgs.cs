@@ -16,7 +16,7 @@ namespace Pulumi.Cloudflare.Inputs
         private InputList<string>? _checkPresences;
 
         /// <summary>
-        /// Check for presence of specified cookies, without including their actual values.
+        /// Check for presence of specified HTTP headers, without including their actual values.
         /// </summary>
         public InputList<string> CheckPresences
         {
@@ -28,7 +28,7 @@ namespace Pulumi.Cloudflare.Inputs
         private InputList<string>? _excludes;
 
         /// <summary>
-        /// Exclude these HTTP headers from Cache Key. Currently, only the `Origin` header can be excluded.
+        /// Exclude these query string parameters from Cache Key.
         /// </summary>
         public InputList<string> Excludes
         {
@@ -40,7 +40,7 @@ namespace Pulumi.Cloudflare.Inputs
         private InputList<string>? _includes;
 
         /// <summary>
-        /// Use values of specified cookies in Cache Key.
+        /// Only use values of specified query string parameters in Cache Key.
         /// </summary>
         public InputList<string> Includes
         {

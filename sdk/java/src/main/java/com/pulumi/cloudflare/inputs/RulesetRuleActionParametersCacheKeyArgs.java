@@ -16,30 +16,62 @@ public final class RulesetRuleActionParametersCacheKeyArgs extends com.pulumi.re
 
     public static final RulesetRuleActionParametersCacheKeyArgs Empty = new RulesetRuleActionParametersCacheKeyArgs();
 
+    /**
+     * Cache by device type.
+     * 
+     */
     @Import(name="cacheByDeviceType")
     private @Nullable Output<Boolean> cacheByDeviceType;
 
+    /**
+     * @return Cache by device type.
+     * 
+     */
     public Optional<Output<Boolean>> cacheByDeviceType() {
         return Optional.ofNullable(this.cacheByDeviceType);
     }
 
+    /**
+     * Cache deception armor.
+     * 
+     */
     @Import(name="cacheDeceptionArmor")
     private @Nullable Output<Boolean> cacheDeceptionArmor;
 
+    /**
+     * @return Cache deception armor.
+     * 
+     */
     public Optional<Output<Boolean>> cacheDeceptionArmor() {
         return Optional.ofNullable(this.cacheDeceptionArmor);
     }
 
+    /**
+     * Custom key parameters for the request.
+     * 
+     */
     @Import(name="customKey")
     private @Nullable Output<RulesetRuleActionParametersCacheKeyCustomKeyArgs> customKey;
 
+    /**
+     * @return Custom key parameters for the request.
+     * 
+     */
     public Optional<Output<RulesetRuleActionParametersCacheKeyCustomKeyArgs>> customKey() {
         return Optional.ofNullable(this.customKey);
     }
 
+    /**
+     * Ignore query strings order.
+     * 
+     */
     @Import(name="ignoreQueryStringsOrder")
     private @Nullable Output<Boolean> ignoreQueryStringsOrder;
 
+    /**
+     * @return Ignore query strings order.
+     * 
+     */
     public Optional<Output<Boolean>> ignoreQueryStringsOrder() {
         return Optional.ofNullable(this.ignoreQueryStringsOrder);
     }
@@ -71,38 +103,86 @@ public final class RulesetRuleActionParametersCacheKeyArgs extends com.pulumi.re
             $ = new RulesetRuleActionParametersCacheKeyArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param cacheByDeviceType Cache by device type.
+         * 
+         * @return builder
+         * 
+         */
         public Builder cacheByDeviceType(@Nullable Output<Boolean> cacheByDeviceType) {
             $.cacheByDeviceType = cacheByDeviceType;
             return this;
         }
 
+        /**
+         * @param cacheByDeviceType Cache by device type.
+         * 
+         * @return builder
+         * 
+         */
         public Builder cacheByDeviceType(Boolean cacheByDeviceType) {
             return cacheByDeviceType(Output.of(cacheByDeviceType));
         }
 
+        /**
+         * @param cacheDeceptionArmor Cache deception armor.
+         * 
+         * @return builder
+         * 
+         */
         public Builder cacheDeceptionArmor(@Nullable Output<Boolean> cacheDeceptionArmor) {
             $.cacheDeceptionArmor = cacheDeceptionArmor;
             return this;
         }
 
+        /**
+         * @param cacheDeceptionArmor Cache deception armor.
+         * 
+         * @return builder
+         * 
+         */
         public Builder cacheDeceptionArmor(Boolean cacheDeceptionArmor) {
             return cacheDeceptionArmor(Output.of(cacheDeceptionArmor));
         }
 
+        /**
+         * @param customKey Custom key parameters for the request.
+         * 
+         * @return builder
+         * 
+         */
         public Builder customKey(@Nullable Output<RulesetRuleActionParametersCacheKeyCustomKeyArgs> customKey) {
             $.customKey = customKey;
             return this;
         }
 
+        /**
+         * @param customKey Custom key parameters for the request.
+         * 
+         * @return builder
+         * 
+         */
         public Builder customKey(RulesetRuleActionParametersCacheKeyCustomKeyArgs customKey) {
             return customKey(Output.of(customKey));
         }
 
+        /**
+         * @param ignoreQueryStringsOrder Ignore query strings order.
+         * 
+         * @return builder
+         * 
+         */
         public Builder ignoreQueryStringsOrder(@Nullable Output<Boolean> ignoreQueryStringsOrder) {
             $.ignoreQueryStringsOrder = ignoreQueryStringsOrder;
             return this;
         }
 
+        /**
+         * @param ignoreQueryStringsOrder Ignore query strings order.
+         * 
+         * @return builder
+         * 
+         */
         public Builder ignoreQueryStringsOrder(Boolean ignoreQueryStringsOrder) {
             return ignoreQueryStringsOrder(Output.of(ignoreQueryStringsOrder));
         }

@@ -13,6 +13,9 @@ namespace Pulumi.Cloudflare.Outputs
     [OutputType]
     public sealed class ListItemValueHostname
     {
+        /// <summary>
+        /// The FQDN to match on. Wildcard sub-domain matching is allowed. Eg. *.abc.com.
+        /// </summary>
         public readonly string UrlHostname;
 
         [OutputConstructor]

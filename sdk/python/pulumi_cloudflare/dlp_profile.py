@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -27,17 +27,36 @@ class DlpProfileArgs:
         :param pulumi.Input[str] account_id: The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         :param pulumi.Input[int] allowed_match_count: Related DLP policies will trigger when the match count exceeds the number set.
         :param pulumi.Input[Sequence[pulumi.Input['DlpProfileEntryArgs']]] entries: List of entries to apply to the profile.
-        :param pulumi.Input[str] name: Name of the profile. **Modifying this attribute will force creation of a new resource.**
+        :param pulumi.Input[str] name: Name of the entry to deploy.
         :param pulumi.Input[str] type: The type of the profile. Available values: `custom`, `predefined`. **Modifying this attribute will force creation of a new resource.**
         :param pulumi.Input[str] description: Brief summary of the profile and its intended use.
         """
-        pulumi.set(__self__, "account_id", account_id)
-        pulumi.set(__self__, "allowed_match_count", allowed_match_count)
-        pulumi.set(__self__, "entries", entries)
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "type", type)
+        DlpProfileArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            account_id=account_id,
+            allowed_match_count=allowed_match_count,
+            entries=entries,
+            name=name,
+            type=type,
+            description=description,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             account_id: pulumi.Input[str],
+             allowed_match_count: pulumi.Input[int],
+             entries: pulumi.Input[Sequence[pulumi.Input['DlpProfileEntryArgs']]],
+             name: pulumi.Input[str],
+             type: pulumi.Input[str],
+             description: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("account_id", account_id)
+        _setter("allowed_match_count", allowed_match_count)
+        _setter("entries", entries)
+        _setter("name", name)
+        _setter("type", type)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
 
     @property
     @pulumi.getter(name="accountId")
@@ -79,7 +98,7 @@ class DlpProfileArgs:
     @pulumi.getter
     def name(self) -> pulumi.Input[str]:
         """
-        Name of the profile. **Modifying this attribute will force creation of a new resource.**
+        Name of the entry to deploy.
         """
         return pulumi.get(self, "name")
 
@@ -127,21 +146,40 @@ class _DlpProfileState:
         :param pulumi.Input[int] allowed_match_count: Related DLP policies will trigger when the match count exceeds the number set.
         :param pulumi.Input[str] description: Brief summary of the profile and its intended use.
         :param pulumi.Input[Sequence[pulumi.Input['DlpProfileEntryArgs']]] entries: List of entries to apply to the profile.
-        :param pulumi.Input[str] name: Name of the profile. **Modifying this attribute will force creation of a new resource.**
+        :param pulumi.Input[str] name: Name of the entry to deploy.
         :param pulumi.Input[str] type: The type of the profile. Available values: `custom`, `predefined`. **Modifying this attribute will force creation of a new resource.**
         """
+        _DlpProfileState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            account_id=account_id,
+            allowed_match_count=allowed_match_count,
+            description=description,
+            entries=entries,
+            name=name,
+            type=type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             account_id: Optional[pulumi.Input[str]] = None,
+             allowed_match_count: Optional[pulumi.Input[int]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             entries: Optional[pulumi.Input[Sequence[pulumi.Input['DlpProfileEntryArgs']]]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             type: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if account_id is not None:
-            pulumi.set(__self__, "account_id", account_id)
+            _setter("account_id", account_id)
         if allowed_match_count is not None:
-            pulumi.set(__self__, "allowed_match_count", allowed_match_count)
+            _setter("allowed_match_count", allowed_match_count)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if entries is not None:
-            pulumi.set(__self__, "entries", entries)
+            _setter("entries", entries)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if type is not None:
-            pulumi.set(__self__, "type", type)
+            _setter("type", type)
 
     @property
     @pulumi.getter(name="accountId")
@@ -195,7 +233,7 @@ class _DlpProfileState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Name of the profile. **Modifying this attribute will force creation of a new resource.**
+        Name of the entry to deploy.
         """
         return pulumi.get(self, "name")
 
@@ -245,7 +283,7 @@ class DlpProfile(pulumi.CustomResource):
         :param pulumi.Input[int] allowed_match_count: Related DLP policies will trigger when the match count exceeds the number set.
         :param pulumi.Input[str] description: Brief summary of the profile and its intended use.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DlpProfileEntryArgs']]]] entries: List of entries to apply to the profile.
-        :param pulumi.Input[str] name: Name of the profile. **Modifying this attribute will force creation of a new resource.**
+        :param pulumi.Input[str] name: Name of the entry to deploy.
         :param pulumi.Input[str] type: The type of the profile. Available values: `custom`, `predefined`. **Modifying this attribute will force creation of a new resource.**
         """
         ...
@@ -275,6 +313,10 @@ class DlpProfile(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            DlpProfileArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -338,7 +380,7 @@ class DlpProfile(pulumi.CustomResource):
         :param pulumi.Input[int] allowed_match_count: Related DLP policies will trigger when the match count exceeds the number set.
         :param pulumi.Input[str] description: Brief summary of the profile and its intended use.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DlpProfileEntryArgs']]]] entries: List of entries to apply to the profile.
-        :param pulumi.Input[str] name: Name of the profile. **Modifying this attribute will force creation of a new resource.**
+        :param pulumi.Input[str] name: Name of the entry to deploy.
         :param pulumi.Input[str] type: The type of the profile. Available values: `custom`, `predefined`. **Modifying this attribute will force creation of a new resource.**
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -389,7 +431,7 @@ class DlpProfile(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        Name of the profile. **Modifying this attribute will force creation of a new resource.**
+        Name of the entry to deploy.
         """
         return pulumi.get(self, "name")
 

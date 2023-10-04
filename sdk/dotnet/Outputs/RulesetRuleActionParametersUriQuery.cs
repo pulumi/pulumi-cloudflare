@@ -13,7 +13,13 @@ namespace Pulumi.Cloudflare.Outputs
     [OutputType]
     public sealed class RulesetRuleActionParametersUriQuery
     {
+        /// <summary>
+        /// Use a value dynamically determined by the Firewall Rules expression language based on Wireshark display filters. Refer to the [Firewall Rules language](https://developers.cloudflare.com/firewall/cf-firewall-language) documentation for all available fields, operators, and functions.
+        /// </summary>
         public readonly string? Expression;
+        /// <summary>
+        /// Status code edge TTL value.
+        /// </summary>
         public readonly string? Value;
 
         [OutputConstructor]

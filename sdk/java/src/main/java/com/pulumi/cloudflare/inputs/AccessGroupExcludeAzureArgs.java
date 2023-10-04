@@ -16,22 +16,30 @@ public final class AccessGroupExcludeAzureArgs extends com.pulumi.resources.Reso
 
     public static final AccessGroupExcludeAzureArgs Empty = new AccessGroupExcludeAzureArgs();
 
+    /**
+     * The ID of the Azure Identity provider.
+     * 
+     */
     @Import(name="identityProviderId")
     private @Nullable Output<String> identityProviderId;
 
+    /**
+     * @return The ID of the Azure Identity provider.
+     * 
+     */
     public Optional<Output<String>> identityProviderId() {
         return Optional.ofNullable(this.identityProviderId);
     }
 
     /**
-     * The ID of this resource.
+     * The ID of the Authentication Context.
      * 
      */
     @Import(name="ids")
     private @Nullable Output<List<String>> ids;
 
     /**
-     * @return The ID of this resource.
+     * @return The ID of the Authentication Context.
      * 
      */
     public Optional<Output<List<String>>> ids() {
@@ -63,17 +71,29 @@ public final class AccessGroupExcludeAzureArgs extends com.pulumi.resources.Reso
             $ = new AccessGroupExcludeAzureArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param identityProviderId The ID of the Azure Identity provider.
+         * 
+         * @return builder
+         * 
+         */
         public Builder identityProviderId(@Nullable Output<String> identityProviderId) {
             $.identityProviderId = identityProviderId;
             return this;
         }
 
+        /**
+         * @param identityProviderId The ID of the Azure Identity provider.
+         * 
+         * @return builder
+         * 
+         */
         public Builder identityProviderId(String identityProviderId) {
             return identityProviderId(Output.of(identityProviderId));
         }
 
         /**
-         * @param ids The ID of this resource.
+         * @param ids The ID of the Authentication Context.
          * 
          * @return builder
          * 
@@ -84,7 +104,7 @@ public final class AccessGroupExcludeAzureArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param ids The ID of this resource.
+         * @param ids The ID of the Authentication Context.
          * 
          * @return builder
          * 
@@ -94,7 +114,7 @@ public final class AccessGroupExcludeAzureArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param ids The ID of this resource.
+         * @param ids The ID of the Authentication Context.
          * 
          * @return builder
          * 

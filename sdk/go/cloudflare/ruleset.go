@@ -43,15 +43,15 @@ type Ruleset struct {
 
 	// The account identifier to target for the resource.
 	AccountId pulumi.StringPtrOutput `pulumi:"accountId"`
-	// Brief summary of the ruleset and its intended use.
+	// Brief summary of the ruleset rule and its intended use.
 	Description pulumi.StringOutput `pulumi:"description"`
 	// Type of Ruleset to create. Available values: `custom`, `managed`, `root`, `zone`.
 	Kind pulumi.StringOutput `pulumi:"kind"`
-	// Name of the ruleset.
+	// Name of the compression algorithm to use. Available values: `gzip`, `brotli`, `auto`, `default`, `none`
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Point in the request/response lifecycle where the ruleset will be created. Available values: `ddosL4`, `ddosL7`, `httpConfigSettings`, `httpCustomErrors`, `httpLogCustomFields`, `httpRatelimit`, `httpRequestCacheSettings`, `httpRequestDynamicRedirect`, `httpRequestFirewallCustom`, `httpRequestFirewallManaged`, `httpRequestLateTransform`, `httpRequestOrigin`, `httpRequestRedirect`, `httpRequestSanitize`, `httpRequestSbfm`, `httpRequestTransform`, `httpResponseCompression`, `httpResponseFirewallManaged`, `httpResponseHeadersTransform`, `magicTransit`.
 	Phase pulumi.StringOutput `pulumi:"phase"`
-	// List of rules to apply to the ruleset.
+	// List of rule-based overrides.
 	Rules RulesetRuleArrayOutput `pulumi:"rules"`
 	// The zone identifier to target for the resource.
 	ZoneId pulumi.StringPtrOutput `pulumi:"zoneId"`
@@ -98,15 +98,15 @@ func GetRuleset(ctx *pulumi.Context,
 type rulesetState struct {
 	// The account identifier to target for the resource.
 	AccountId *string `pulumi:"accountId"`
-	// Brief summary of the ruleset and its intended use.
+	// Brief summary of the ruleset rule and its intended use.
 	Description *string `pulumi:"description"`
 	// Type of Ruleset to create. Available values: `custom`, `managed`, `root`, `zone`.
 	Kind *string `pulumi:"kind"`
-	// Name of the ruleset.
+	// Name of the compression algorithm to use. Available values: `gzip`, `brotli`, `auto`, `default`, `none`
 	Name *string `pulumi:"name"`
 	// Point in the request/response lifecycle where the ruleset will be created. Available values: `ddosL4`, `ddosL7`, `httpConfigSettings`, `httpCustomErrors`, `httpLogCustomFields`, `httpRatelimit`, `httpRequestCacheSettings`, `httpRequestDynamicRedirect`, `httpRequestFirewallCustom`, `httpRequestFirewallManaged`, `httpRequestLateTransform`, `httpRequestOrigin`, `httpRequestRedirect`, `httpRequestSanitize`, `httpRequestSbfm`, `httpRequestTransform`, `httpResponseCompression`, `httpResponseFirewallManaged`, `httpResponseHeadersTransform`, `magicTransit`.
 	Phase *string `pulumi:"phase"`
-	// List of rules to apply to the ruleset.
+	// List of rule-based overrides.
 	Rules []RulesetRule `pulumi:"rules"`
 	// The zone identifier to target for the resource.
 	ZoneId *string `pulumi:"zoneId"`
@@ -115,15 +115,15 @@ type rulesetState struct {
 type RulesetState struct {
 	// The account identifier to target for the resource.
 	AccountId pulumi.StringPtrInput
-	// Brief summary of the ruleset and its intended use.
+	// Brief summary of the ruleset rule and its intended use.
 	Description pulumi.StringPtrInput
 	// Type of Ruleset to create. Available values: `custom`, `managed`, `root`, `zone`.
 	Kind pulumi.StringPtrInput
-	// Name of the ruleset.
+	// Name of the compression algorithm to use. Available values: `gzip`, `brotli`, `auto`, `default`, `none`
 	Name pulumi.StringPtrInput
 	// Point in the request/response lifecycle where the ruleset will be created. Available values: `ddosL4`, `ddosL7`, `httpConfigSettings`, `httpCustomErrors`, `httpLogCustomFields`, `httpRatelimit`, `httpRequestCacheSettings`, `httpRequestDynamicRedirect`, `httpRequestFirewallCustom`, `httpRequestFirewallManaged`, `httpRequestLateTransform`, `httpRequestOrigin`, `httpRequestRedirect`, `httpRequestSanitize`, `httpRequestSbfm`, `httpRequestTransform`, `httpResponseCompression`, `httpResponseFirewallManaged`, `httpResponseHeadersTransform`, `magicTransit`.
 	Phase pulumi.StringPtrInput
-	// List of rules to apply to the ruleset.
+	// List of rule-based overrides.
 	Rules RulesetRuleArrayInput
 	// The zone identifier to target for the resource.
 	ZoneId pulumi.StringPtrInput
@@ -136,15 +136,15 @@ func (RulesetState) ElementType() reflect.Type {
 type rulesetArgs struct {
 	// The account identifier to target for the resource.
 	AccountId *string `pulumi:"accountId"`
-	// Brief summary of the ruleset and its intended use.
+	// Brief summary of the ruleset rule and its intended use.
 	Description *string `pulumi:"description"`
 	// Type of Ruleset to create. Available values: `custom`, `managed`, `root`, `zone`.
 	Kind string `pulumi:"kind"`
-	// Name of the ruleset.
+	// Name of the compression algorithm to use. Available values: `gzip`, `brotli`, `auto`, `default`, `none`
 	Name string `pulumi:"name"`
 	// Point in the request/response lifecycle where the ruleset will be created. Available values: `ddosL4`, `ddosL7`, `httpConfigSettings`, `httpCustomErrors`, `httpLogCustomFields`, `httpRatelimit`, `httpRequestCacheSettings`, `httpRequestDynamicRedirect`, `httpRequestFirewallCustom`, `httpRequestFirewallManaged`, `httpRequestLateTransform`, `httpRequestOrigin`, `httpRequestRedirect`, `httpRequestSanitize`, `httpRequestSbfm`, `httpRequestTransform`, `httpResponseCompression`, `httpResponseFirewallManaged`, `httpResponseHeadersTransform`, `magicTransit`.
 	Phase string `pulumi:"phase"`
-	// List of rules to apply to the ruleset.
+	// List of rule-based overrides.
 	Rules []RulesetRule `pulumi:"rules"`
 	// The zone identifier to target for the resource.
 	ZoneId *string `pulumi:"zoneId"`
@@ -154,15 +154,15 @@ type rulesetArgs struct {
 type RulesetArgs struct {
 	// The account identifier to target for the resource.
 	AccountId pulumi.StringPtrInput
-	// Brief summary of the ruleset and its intended use.
+	// Brief summary of the ruleset rule and its intended use.
 	Description pulumi.StringPtrInput
 	// Type of Ruleset to create. Available values: `custom`, `managed`, `root`, `zone`.
 	Kind pulumi.StringInput
-	// Name of the ruleset.
+	// Name of the compression algorithm to use. Available values: `gzip`, `brotli`, `auto`, `default`, `none`
 	Name pulumi.StringInput
 	// Point in the request/response lifecycle where the ruleset will be created. Available values: `ddosL4`, `ddosL7`, `httpConfigSettings`, `httpCustomErrors`, `httpLogCustomFields`, `httpRatelimit`, `httpRequestCacheSettings`, `httpRequestDynamicRedirect`, `httpRequestFirewallCustom`, `httpRequestFirewallManaged`, `httpRequestLateTransform`, `httpRequestOrigin`, `httpRequestRedirect`, `httpRequestSanitize`, `httpRequestSbfm`, `httpRequestTransform`, `httpResponseCompression`, `httpResponseFirewallManaged`, `httpResponseHeadersTransform`, `magicTransit`.
 	Phase pulumi.StringInput
-	// List of rules to apply to the ruleset.
+	// List of rule-based overrides.
 	Rules RulesetRuleArrayInput
 	// The zone identifier to target for the resource.
 	ZoneId pulumi.StringPtrInput
@@ -284,7 +284,7 @@ func (o RulesetOutput) AccountId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Ruleset) pulumi.StringPtrOutput { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
-// Brief summary of the ruleset and its intended use.
+// Brief summary of the ruleset rule and its intended use.
 func (o RulesetOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v *Ruleset) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
 }
@@ -294,7 +294,7 @@ func (o RulesetOutput) Kind() pulumi.StringOutput {
 	return o.ApplyT(func(v *Ruleset) pulumi.StringOutput { return v.Kind }).(pulumi.StringOutput)
 }
 
-// Name of the ruleset.
+// Name of the compression algorithm to use. Available values: `gzip`, `brotli`, `auto`, `default`, `none`
 func (o RulesetOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Ruleset) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -304,7 +304,7 @@ func (o RulesetOutput) Phase() pulumi.StringOutput {
 	return o.ApplyT(func(v *Ruleset) pulumi.StringOutput { return v.Phase }).(pulumi.StringOutput)
 }
 
-// List of rules to apply to the ruleset.
+// List of rule-based overrides.
 func (o RulesetOutput) Rules() RulesetRuleArrayOutput {
 	return o.ApplyT(func(v *Ruleset) RulesetRuleArrayOutput { return v.Rules }).(RulesetRuleArrayOutput)
 }

@@ -12,9 +12,15 @@ namespace Pulumi.Cloudflare.Inputs
 
     public sealed class DlpProfileEntryPatternArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The regex that defines the pattern.
+        /// </summary>
         [Input("regex", required: true)]
         public Input<string> Regex { get; set; } = null!;
 
+        /// <summary>
+        /// The validation algorithm to apply with this pattern.
+        /// </summary>
         [Input("validation")]
         public Input<string>? Validation { get; set; }
 

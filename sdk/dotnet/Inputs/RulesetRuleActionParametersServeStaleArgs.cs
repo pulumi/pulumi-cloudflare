@@ -12,6 +12,9 @@ namespace Pulumi.Cloudflare.Inputs
 
     public sealed class RulesetRuleActionParametersServeStaleArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Disable stale while updating.
+        /// </summary>
         [Input("disableStaleWhileUpdating")]
         public Input<bool>? DisableStaleWhileUpdating { get; set; }
 

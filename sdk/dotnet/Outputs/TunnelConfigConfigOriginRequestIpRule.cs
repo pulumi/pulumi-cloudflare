@@ -13,8 +13,17 @@ namespace Pulumi.Cloudflare.Outputs
     [OutputType]
     public sealed class TunnelConfigConfigOriginRequestIpRule
     {
+        /// <summary>
+        /// Whether to allow the IP prefix.
+        /// </summary>
         public readonly bool? Allow;
+        /// <summary>
+        /// Ports to use within the IP rule.
+        /// </summary>
         public readonly ImmutableArray<int> Ports;
+        /// <summary>
+        /// IP rule prefix.
+        /// </summary>
         public readonly string? Prefix;
 
         [OutputConstructor]
