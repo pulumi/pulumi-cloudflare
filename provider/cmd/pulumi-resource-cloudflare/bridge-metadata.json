@@ -674,6 +674,10 @@
                     }
                 }
             },
+            "cloudflare_api_shield_operation": {
+                "current": "cloudflare:index/apiShieldOperation:ApiShieldOperation",
+                "majorVersion": 5
+            },
             "cloudflare_api_token": {
                 "current": "cloudflare:index/apiToken:ApiToken",
                 "majorVersion": 5,
@@ -1263,6 +1267,9 @@
                         "maxItemsOne": true,
                         "elem": {
                             "fields": {
+                                "actions": {
+                                    "maxItemsOne": false
+                                },
                                 "alert_trigger_preferences": {
                                     "maxItemsOne": false
                                 },
@@ -1279,6 +1286,9 @@
                                     "maxItemsOne": false
                                 },
                                 "event_type": {
+                                    "maxItemsOne": false
+                                },
+                                "group_by": {
                                     "maxItemsOne": false
                                 },
                                 "health_check_id": {
@@ -1330,6 +1340,9 @@
                                     "maxItemsOne": false
                                 },
                                 "target_zone_name": {
+                                    "maxItemsOne": false
+                                },
+                                "where": {
                                     "maxItemsOne": false
                                 },
                                 "zones": {
@@ -2684,6 +2697,7 @@
             "cloudflare:index/accountMember:AccountMember": 0,
             "cloudflare:index/addressMap:AddressMap": 0,
             "cloudflare:index/apiShield:ApiShield": 0,
+            "cloudflare:index/apiShieldOperation:ApiShieldOperation": 0,
             "cloudflare:index/apiToken:ApiToken": 0,
             "cloudflare:index/argo:Argo": 0,
             "cloudflare:index/authenticatedOriginPulls:AuthenticatedOriginPulls": 0,
@@ -2814,6 +2828,7 @@
             "cloudflare:index/accountMember:AccountMember": "cloudflare_account_member",
             "cloudflare:index/addressMap:AddressMap": "cloudflare_address_map",
             "cloudflare:index/apiShield:ApiShield": "cloudflare_api_shield",
+            "cloudflare:index/apiShieldOperation:ApiShieldOperation": "cloudflare_api_shield_operation",
             "cloudflare:index/apiToken:ApiToken": "cloudflare_api_token",
             "cloudflare:index/argo:Argo": "cloudflare_argo",
             "cloudflare:index/authenticatedOriginPulls:AuthenticatedOriginPulls": "cloudflare_authenticated_origin_pulls",
@@ -3485,6 +3500,7 @@
                 "eventSources": "event_source",
                 "eventTypes": "event_type",
                 "events": "event",
+                "groupBies": "group_by",
                 "healthCheckIds": "health_check_id",
                 "inputIds": "input_id",
                 "limits": "limit",
@@ -3499,7 +3515,8 @@
                 "slos": "slo",
                 "statuses": "status",
                 "targetHostnames": "target_hostname",
-                "targetZoneNames": "target_zone_name"
+                "targetZoneNames": "target_zone_name",
+                "wheres": "where"
             },
             "cloudflare:index/PageRuleActions:PageRuleActions": {
                 "alwaysUseHttps": "always_use_https",
@@ -4065,6 +4082,9 @@
             },
             "cloudflare:index/apiShield:ApiShield": {
                 "authIdCharacteristics": "auth_id_characteristics",
+                "zoneId": "zone_id"
+            },
+            "cloudflare:index/apiShieldOperation:ApiShieldOperation": {
                 "zoneId": "zone_id"
             },
             "cloudflare:index/apiToken:ApiToken": {

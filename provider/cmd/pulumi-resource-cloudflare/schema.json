@@ -1041,7 +1041,8 @@
                     "type": "boolean"
                 },
                 "secret": {
-                    "type": "string"
+                    "type": "string",
+                    "secret": true
                 },
                 "userDeprovision": {
                     "type": "boolean"
@@ -3256,6 +3257,13 @@
         },
         "cloudflare:index/NotificationPolicyFilters:NotificationPolicyFilters": {
             "properties": {
+                "actions": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Targeted actions for alert.\n"
+                },
                 "alertTriggerPreferences": {
                     "type": "array",
                     "items": {
@@ -3297,6 +3305,13 @@
                         "type": "string"
                     },
                     "description": "Pages event to alert. Available values: `EVENT_DEPLOYMENT_STARTED`, `EVENT_DEPLOYMENT_FAILED`, `EVENT_DEPLOYMENT_SUCCESS`.\n"
+                },
+                "groupBies": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Alert grouping.\n"
                 },
                 "healthCheckIds": {
                     "type": "array",
@@ -3408,6 +3423,13 @@
                         "type": "string"
                     },
                     "description": "Target domain to alert on.\n"
+                },
+                "wheres": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Filter for alert.\n"
                 },
                 "zones": {
                     "type": "array",
@@ -4632,7 +4654,8 @@
                     "description": "List of properties to change request origin.\n"
                 },
                 "originCacheControl": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Enable or disable the use of a more compliant Cache Control parsing mechanism, enabled by default for most zones.\n"
                 },
                 "originErrorPagePassthru": {
                     "type": "boolean",
@@ -4661,7 +4684,8 @@
                     "description": "Products to target with the actions. Available values: `bic`, `hot`, `ratelimit`, `securityLevel`, `uablock`, `waf`, `zonelockdown`.\n"
                 },
                 "readTimeout": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "Specifies a maximum timeout for reading content from an origin server.\n"
                 },
                 "requestFields": {
                     "type": "array",
@@ -5294,7 +5318,10 @@
                     "description": "Name of HTTP header in the response, set by the origin server, with the score for the current request.\n"
                 }
             },
-            "type": "object"
+            "type": "object",
+            "required": [
+                "requestsToOrigin"
+            ]
         },
         "cloudflare:index/SpectrumApplicationDns:SpectrumApplicationDns": {
             "properties": {
@@ -9940,6 +9967,87 @@
                 "type": "object"
             }
         },
+        "cloudflare:index/apiShieldOperation:ApiShieldOperation": {
+            "description": "Provides a resource to manage an operation in API Shield Endpoint Management.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as cloudflare from \"@pulumi/cloudflare\";\n\nconst example = new cloudflare.ApiShieldOperation(\"example\", {\n    endpoint: \"/path\",\n    host: \"api.example.com\",\n    method: \"GET\",\n    zoneId: \"0da42c8d2132a9ddaf714f9e7c920711\",\n});\n```\n```python\nimport pulumi\nimport pulumi_cloudflare as cloudflare\n\nexample = cloudflare.ApiShieldOperation(\"example\",\n    endpoint=\"/path\",\n    host=\"api.example.com\",\n    method=\"GET\",\n    zone_id=\"0da42c8d2132a9ddaf714f9e7c920711\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Cloudflare = Pulumi.Cloudflare;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = new Cloudflare.ApiShieldOperation(\"example\", new()\n    {\n        Endpoint = \"/path\",\n        Host = \"api.example.com\",\n        Method = \"GET\",\n        ZoneId = \"0da42c8d2132a9ddaf714f9e7c920711\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := cloudflare.NewApiShieldOperation(ctx, \"example\", \u0026cloudflare.ApiShieldOperationArgs{\n\t\t\tEndpoint: pulumi.String(\"/path\"),\n\t\t\tHost:     pulumi.String(\"api.example.com\"),\n\t\t\tMethod:   pulumi.String(\"GET\"),\n\t\t\tZoneId:   pulumi.String(\"0da42c8d2132a9ddaf714f9e7c920711\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.cloudflare.ApiShieldOperation;\nimport com.pulumi.cloudflare.ApiShieldOperationArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var example = new ApiShieldOperation(\"example\", ApiShieldOperationArgs.builder()        \n            .endpoint(\"/path\")\n            .host(\"api.example.com\")\n            .method(\"GET\")\n            .zoneId(\"0da42c8d2132a9ddaf714f9e7c920711\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  example:\n    type: cloudflare:ApiShieldOperation\n    properties:\n      endpoint: /path\n      host: api.example.com\n      method: GET\n      zoneId: 0da42c8d2132a9ddaf714f9e7c920711\n```\n{{% /example %}}\n{{% /examples %}}",
+            "properties": {
+                "endpoint": {
+                    "type": "string",
+                    "description": "The endpoint which can contain path parameter templates in curly braces, each will be replaced from left to right with `{varN}`, starting with `{var1}`. This will then be [Cloudflare-normalized](https://developers.cloudflare.com/rules/normalization/how-it-works/). **Modifying this attribute will force creation of a new resource.**\n"
+                },
+                "host": {
+                    "type": "string",
+                    "description": "RFC3986-compliant host. **Modifying this attribute will force creation of a new resource.**\n"
+                },
+                "method": {
+                    "type": "string",
+                    "description": "The HTTP method used to access the endpoint. **Modifying this attribute will force creation of a new resource.**\n"
+                },
+                "zoneId": {
+                    "type": "string",
+                    "description": "The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**\n"
+                }
+            },
+            "required": [
+                "endpoint",
+                "host",
+                "method",
+                "zoneId"
+            ],
+            "inputProperties": {
+                "endpoint": {
+                    "type": "string",
+                    "description": "The endpoint which can contain path parameter templates in curly braces, each will be replaced from left to right with `{varN}`, starting with `{var1}`. This will then be [Cloudflare-normalized](https://developers.cloudflare.com/rules/normalization/how-it-works/). **Modifying this attribute will force creation of a new resource.**\n",
+                    "willReplaceOnChanges": true
+                },
+                "host": {
+                    "type": "string",
+                    "description": "RFC3986-compliant host. **Modifying this attribute will force creation of a new resource.**\n",
+                    "willReplaceOnChanges": true
+                },
+                "method": {
+                    "type": "string",
+                    "description": "The HTTP method used to access the endpoint. **Modifying this attribute will force creation of a new resource.**\n",
+                    "willReplaceOnChanges": true
+                },
+                "zoneId": {
+                    "type": "string",
+                    "description": "The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**\n",
+                    "willReplaceOnChanges": true
+                }
+            },
+            "requiredInputs": [
+                "endpoint",
+                "host",
+                "method",
+                "zoneId"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering ApiShieldOperation resources.\n",
+                "properties": {
+                    "endpoint": {
+                        "type": "string",
+                        "description": "The endpoint which can contain path parameter templates in curly braces, each will be replaced from left to right with `{varN}`, starting with `{var1}`. This will then be [Cloudflare-normalized](https://developers.cloudflare.com/rules/normalization/how-it-works/). **Modifying this attribute will force creation of a new resource.**\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "host": {
+                        "type": "string",
+                        "description": "RFC3986-compliant host. **Modifying this attribute will force creation of a new resource.**\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "method": {
+                        "type": "string",
+                        "description": "The HTTP method used to access the endpoint. **Modifying this attribute will force creation of a new resource.**\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "zoneId": {
+                        "type": "string",
+                        "description": "The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**\n",
+                        "willReplaceOnChanges": true
+                    }
+                },
+                "type": "object"
+            }
+        },
         "cloudflare:index/apiToken:ApiToken": {
             "description": "Provides a resource which manages Cloudflare API tokens.\n\nRead more about permission groups and their applicable scopes in the\n[developer documentation](https://developers.cloudflare.com/api/tokens/create/permissions).\n",
             "properties": {
@@ -10122,7 +10230,7 @@
             }
         },
         "cloudflare:index/authenticatedOriginPulls:AuthenticatedOriginPulls": {
-            "description": "Provides a Cloudflare Authenticated Origin Pulls resource. A `cloudflare.AuthenticatedOriginPulls`\nresource is required to use Per-Zone or Per-Hostname Authenticated\nOrigin Pulls.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as cloudflare from \"@pulumi/cloudflare\";\n\n// Authenticated Origin Pulls\nconst myAop = new cloudflare.AuthenticatedOriginPulls(\"myAop\", {\n    zoneId: \"0da42c8d2132a9ddaf714f9e7c920711\",\n    enabled: true,\n});\n// Per-Zone Authenticated Origin Pulls\nconst myPerZoneAopCert = new cloudflare.AuthenticatedOriginPullsCertificate(\"myPerZoneAopCert\", {\n    zoneId: \"0da42c8d2132a9ddaf714f9e7c920711\",\n    certificate: \"-----INSERT CERTIFICATE-----\",\n    privateKey: \"-----INSERT PRIVATE KEY-----\",\n    type: \"per-zone\",\n});\nconst myPerZoneAop = new cloudflare.AuthenticatedOriginPulls(\"myPerZoneAop\", {\n    zoneId: \"0da42c8d2132a9ddaf714f9e7c920711\",\n    authenticatedOriginPullsCertificate: myPerZoneAopCert.id,\n    enabled: true,\n});\n// Per-Hostname Authenticated Origin Pulls\nconst myPerHostnameAopCert = new cloudflare.AuthenticatedOriginPullsCertificate(\"myPerHostnameAopCert\", {\n    zoneId: \"0da42c8d2132a9ddaf714f9e7c920711\",\n    certificate: \"-----INSERT CERTIFICATE-----\",\n    privateKey: \"-----INSERT PRIVATE KEY-----\",\n    type: \"per-hostname\",\n});\nconst myPerHostnameAop = new cloudflare.AuthenticatedOriginPulls(\"myPerHostnameAop\", {\n    zoneId: \"0da42c8d2132a9ddaf714f9e7c920711\",\n    authenticatedOriginPullsCertificate: myPerHostnameAopCert.id,\n    hostname: \"aop.example.com\",\n    enabled: true,\n});\n```\n```python\nimport pulumi\nimport pulumi_cloudflare as cloudflare\n\n# Authenticated Origin Pulls\nmy_aop = cloudflare.AuthenticatedOriginPulls(\"myAop\",\n    zone_id=\"0da42c8d2132a9ddaf714f9e7c920711\",\n    enabled=True)\n# Per-Zone Authenticated Origin Pulls\nmy_per_zone_aop_cert = cloudflare.AuthenticatedOriginPullsCertificate(\"myPerZoneAopCert\",\n    zone_id=\"0da42c8d2132a9ddaf714f9e7c920711\",\n    certificate=\"-----INSERT CERTIFICATE-----\",\n    private_key=\"-----INSERT PRIVATE KEY-----\",\n    type=\"per-zone\")\nmy_per_zone_aop = cloudflare.AuthenticatedOriginPulls(\"myPerZoneAop\",\n    zone_id=\"0da42c8d2132a9ddaf714f9e7c920711\",\n    authenticated_origin_pulls_certificate=my_per_zone_aop_cert.id,\n    enabled=True)\n# Per-Hostname Authenticated Origin Pulls\nmy_per_hostname_aop_cert = cloudflare.AuthenticatedOriginPullsCertificate(\"myPerHostnameAopCert\",\n    zone_id=\"0da42c8d2132a9ddaf714f9e7c920711\",\n    certificate=\"-----INSERT CERTIFICATE-----\",\n    private_key=\"-----INSERT PRIVATE KEY-----\",\n    type=\"per-hostname\")\nmy_per_hostname_aop = cloudflare.AuthenticatedOriginPulls(\"myPerHostnameAop\",\n    zone_id=\"0da42c8d2132a9ddaf714f9e7c920711\",\n    authenticated_origin_pulls_certificate=my_per_hostname_aop_cert.id,\n    hostname=\"aop.example.com\",\n    enabled=True)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Cloudflare = Pulumi.Cloudflare;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    // Authenticated Origin Pulls\n    var myAop = new Cloudflare.AuthenticatedOriginPulls(\"myAop\", new()\n    {\n        ZoneId = \"0da42c8d2132a9ddaf714f9e7c920711\",\n        Enabled = true,\n    });\n\n    // Per-Zone Authenticated Origin Pulls\n    var myPerZoneAopCert = new Cloudflare.AuthenticatedOriginPullsCertificate(\"myPerZoneAopCert\", new()\n    {\n        ZoneId = \"0da42c8d2132a9ddaf714f9e7c920711\",\n        Certificate = \"-----INSERT CERTIFICATE-----\",\n        PrivateKey = \"-----INSERT PRIVATE KEY-----\",\n        Type = \"per-zone\",\n    });\n\n    var myPerZoneAop = new Cloudflare.AuthenticatedOriginPulls(\"myPerZoneAop\", new()\n    {\n        ZoneId = \"0da42c8d2132a9ddaf714f9e7c920711\",\n        AuthenticatedOriginPullsCertificate = myPerZoneAopCert.Id,\n        Enabled = true,\n    });\n\n    // Per-Hostname Authenticated Origin Pulls\n    var myPerHostnameAopCert = new Cloudflare.AuthenticatedOriginPullsCertificate(\"myPerHostnameAopCert\", new()\n    {\n        ZoneId = \"0da42c8d2132a9ddaf714f9e7c920711\",\n        Certificate = \"-----INSERT CERTIFICATE-----\",\n        PrivateKey = \"-----INSERT PRIVATE KEY-----\",\n        Type = \"per-hostname\",\n    });\n\n    var myPerHostnameAop = new Cloudflare.AuthenticatedOriginPulls(\"myPerHostnameAop\", new()\n    {\n        ZoneId = \"0da42c8d2132a9ddaf714f9e7c920711\",\n        AuthenticatedOriginPullsCertificate = myPerHostnameAopCert.Id,\n        Hostname = \"aop.example.com\",\n        Enabled = true,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := cloudflare.NewAuthenticatedOriginPulls(ctx, \"myAop\", \u0026cloudflare.AuthenticatedOriginPullsArgs{\n\t\t\tZoneId:  pulumi.String(\"0da42c8d2132a9ddaf714f9e7c920711\"),\n\t\t\tEnabled: pulumi.Bool(true),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tmyPerZoneAopCert, err := cloudflare.NewAuthenticatedOriginPullsCertificate(ctx, \"myPerZoneAopCert\", \u0026cloudflare.AuthenticatedOriginPullsCertificateArgs{\n\t\t\tZoneId:      pulumi.String(\"0da42c8d2132a9ddaf714f9e7c920711\"),\n\t\t\tCertificate: pulumi.String(\"-----INSERT CERTIFICATE-----\"),\n\t\t\tPrivateKey:  pulumi.String(\"-----INSERT PRIVATE KEY-----\"),\n\t\t\tType:        pulumi.String(\"per-zone\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = cloudflare.NewAuthenticatedOriginPulls(ctx, \"myPerZoneAop\", \u0026cloudflare.AuthenticatedOriginPullsArgs{\n\t\t\tZoneId:                              pulumi.String(\"0da42c8d2132a9ddaf714f9e7c920711\"),\n\t\t\tAuthenticatedOriginPullsCertificate: myPerZoneAopCert.ID(),\n\t\t\tEnabled:                             pulumi.Bool(true),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tmyPerHostnameAopCert, err := cloudflare.NewAuthenticatedOriginPullsCertificate(ctx, \"myPerHostnameAopCert\", \u0026cloudflare.AuthenticatedOriginPullsCertificateArgs{\n\t\t\tZoneId:      pulumi.String(\"0da42c8d2132a9ddaf714f9e7c920711\"),\n\t\t\tCertificate: pulumi.String(\"-----INSERT CERTIFICATE-----\"),\n\t\t\tPrivateKey:  pulumi.String(\"-----INSERT PRIVATE KEY-----\"),\n\t\t\tType:        pulumi.String(\"per-hostname\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = cloudflare.NewAuthenticatedOriginPulls(ctx, \"myPerHostnameAop\", \u0026cloudflare.AuthenticatedOriginPullsArgs{\n\t\t\tZoneId:                              pulumi.String(\"0da42c8d2132a9ddaf714f9e7c920711\"),\n\t\t\tAuthenticatedOriginPullsCertificate: myPerHostnameAopCert.ID(),\n\t\t\tHostname:                            pulumi.String(\"aop.example.com\"),\n\t\t\tEnabled:                             pulumi.Bool(true),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.cloudflare.AuthenticatedOriginPulls;\nimport com.pulumi.cloudflare.AuthenticatedOriginPullsArgs;\nimport com.pulumi.cloudflare.AuthenticatedOriginPullsCertificate;\nimport com.pulumi.cloudflare.AuthenticatedOriginPullsCertificateArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var myAop = new AuthenticatedOriginPulls(\"myAop\", AuthenticatedOriginPullsArgs.builder()        \n            .zoneId(\"0da42c8d2132a9ddaf714f9e7c920711\")\n            .enabled(true)\n            .build());\n\n        var myPerZoneAopCert = new AuthenticatedOriginPullsCertificate(\"myPerZoneAopCert\", AuthenticatedOriginPullsCertificateArgs.builder()        \n            .zoneId(\"0da42c8d2132a9ddaf714f9e7c920711\")\n            .certificate(\"-----INSERT CERTIFICATE-----\")\n            .privateKey(\"-----INSERT PRIVATE KEY-----\")\n            .type(\"per-zone\")\n            .build());\n\n        var myPerZoneAop = new AuthenticatedOriginPulls(\"myPerZoneAop\", AuthenticatedOriginPullsArgs.builder()        \n            .zoneId(\"0da42c8d2132a9ddaf714f9e7c920711\")\n            .authenticatedOriginPullsCertificate(myPerZoneAopCert.id())\n            .enabled(true)\n            .build());\n\n        var myPerHostnameAopCert = new AuthenticatedOriginPullsCertificate(\"myPerHostnameAopCert\", AuthenticatedOriginPullsCertificateArgs.builder()        \n            .zoneId(\"0da42c8d2132a9ddaf714f9e7c920711\")\n            .certificate(\"-----INSERT CERTIFICATE-----\")\n            .privateKey(\"-----INSERT PRIVATE KEY-----\")\n            .type(\"per-hostname\")\n            .build());\n\n        var myPerHostnameAop = new AuthenticatedOriginPulls(\"myPerHostnameAop\", AuthenticatedOriginPullsArgs.builder()        \n            .zoneId(\"0da42c8d2132a9ddaf714f9e7c920711\")\n            .authenticatedOriginPullsCertificate(myPerHostnameAopCert.id())\n            .hostname(\"aop.example.com\")\n            .enabled(true)\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  # Authenticated Origin Pulls\n  myAop:\n    type: cloudflare:AuthenticatedOriginPulls\n    properties:\n      zoneId: 0da42c8d2132a9ddaf714f9e7c920711\n      enabled: true\n  # Per-Zone Authenticated Origin Pulls\n  myPerZoneAopCert:\n    type: cloudflare:AuthenticatedOriginPullsCertificate\n    properties:\n      zoneId: 0da42c8d2132a9ddaf714f9e7c920711\n      certificate: '-----INSERT CERTIFICATE-----'\n      privateKey: '-----INSERT PRIVATE KEY-----'\n      type: per-zone\n  myPerZoneAop:\n    type: cloudflare:AuthenticatedOriginPulls\n    properties:\n      zoneId: 0da42c8d2132a9ddaf714f9e7c920711\n      authenticatedOriginPullsCertificate: ${myPerZoneAopCert.id}\n      enabled: true\n  # Per-Hostname Authenticated Origin Pulls\n  myPerHostnameAopCert:\n    type: cloudflare:AuthenticatedOriginPullsCertificate\n    properties:\n      zoneId: 0da42c8d2132a9ddaf714f9e7c920711\n      certificate: '-----INSERT CERTIFICATE-----'\n      privateKey: '-----INSERT PRIVATE KEY-----'\n      type: per-hostname\n  myPerHostnameAop:\n    type: cloudflare:AuthenticatedOriginPulls\n    properties:\n      zoneId: 0da42c8d2132a9ddaf714f9e7c920711\n      authenticatedOriginPullsCertificate: ${myPerHostnameAopCert.id}\n      hostname: aop.example.com\n      enabled: true\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nAuthenticated Origin Pull configuration\n\n```sh\n $ pulumi import cloudflare:index/authenticatedOriginPulls:AuthenticatedOriginPulls my_aop \u003czone_id\u003e//\n```\n\n Per-Zone Authenticated Origin Pull configuration\n\n```sh\n $ pulumi import cloudflare:index/authenticatedOriginPulls:AuthenticatedOriginPulls my_per_zone_aop \u003czone_id\u003e/\u003ccertificate_id\u003e/\n```\n\n Per-Hostname Authenticated Origin Pull configuration\n\n```sh\n $ pulumi import cloudflare:index/authenticatedOriginPulls:AuthenticatedOriginPulls my_per_hostname_aop \u003czone_id\u003e/\u003ccertificate_id\u003e/\u003chostname\u003e\n```\n\n ",
+            "description": "Provides a Cloudflare Authenticated Origin Pulls resource. A `cloudflare.AuthenticatedOriginPulls`\nresource is required to use Per-Zone or Per-Hostname Authenticated\nOrigin Pulls.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as cloudflare from \"@pulumi/cloudflare\";\n\n// Authenticated Origin Pulls\nconst myAop = new cloudflare.AuthenticatedOriginPulls(\"myAop\", {\n    zoneId: \"0da42c8d2132a9ddaf714f9e7c920711\",\n    enabled: true,\n});\n// Per-Zone Authenticated Origin Pulls\nconst myPerZoneAopCert = new cloudflare.AuthenticatedOriginPullsCertificate(\"myPerZoneAopCert\", {\n    zoneId: \"0da42c8d2132a9ddaf714f9e7c920711\",\n    certificate: \"-----INSERT CERTIFICATE-----\",\n    privateKey: \"-----INSERT PRIVATE KEY-----\",\n    type: \"per-zone\",\n});\nconst myPerZoneAop = new cloudflare.AuthenticatedOriginPulls(\"myPerZoneAop\", {\n    zoneId: \"0da42c8d2132a9ddaf714f9e7c920711\",\n    authenticatedOriginPullsCertificate: myPerZoneAopCert.id,\n    enabled: true,\n});\n// Per-Hostname Authenticated Origin Pulls\nconst myPerHostnameAopCert = new cloudflare.AuthenticatedOriginPullsCertificate(\"myPerHostnameAopCert\", {\n    zoneId: \"0da42c8d2132a9ddaf714f9e7c920711\",\n    certificate: \"-----INSERT CERTIFICATE-----\",\n    privateKey: \"-----INSERT PRIVATE KEY-----\",\n    type: \"per-hostname\",\n});\nconst myPerHostnameAop = new cloudflare.AuthenticatedOriginPulls(\"myPerHostnameAop\", {\n    zoneId: \"0da42c8d2132a9ddaf714f9e7c920711\",\n    authenticatedOriginPullsCertificate: myPerHostnameAopCert.id,\n    hostname: \"aop.example.com\",\n    enabled: true,\n});\n```\n```python\nimport pulumi\nimport pulumi_cloudflare as cloudflare\n\n# Authenticated Origin Pulls\nmy_aop = cloudflare.AuthenticatedOriginPulls(\"myAop\",\n    zone_id=\"0da42c8d2132a9ddaf714f9e7c920711\",\n    enabled=True)\n# Per-Zone Authenticated Origin Pulls\nmy_per_zone_aop_cert = cloudflare.AuthenticatedOriginPullsCertificate(\"myPerZoneAopCert\",\n    zone_id=\"0da42c8d2132a9ddaf714f9e7c920711\",\n    certificate=\"-----INSERT CERTIFICATE-----\",\n    private_key=\"-----INSERT PRIVATE KEY-----\",\n    type=\"per-zone\")\nmy_per_zone_aop = cloudflare.AuthenticatedOriginPulls(\"myPerZoneAop\",\n    zone_id=\"0da42c8d2132a9ddaf714f9e7c920711\",\n    authenticated_origin_pulls_certificate=my_per_zone_aop_cert.id,\n    enabled=True)\n# Per-Hostname Authenticated Origin Pulls\nmy_per_hostname_aop_cert = cloudflare.AuthenticatedOriginPullsCertificate(\"myPerHostnameAopCert\",\n    zone_id=\"0da42c8d2132a9ddaf714f9e7c920711\",\n    certificate=\"-----INSERT CERTIFICATE-----\",\n    private_key=\"-----INSERT PRIVATE KEY-----\",\n    type=\"per-hostname\")\nmy_per_hostname_aop = cloudflare.AuthenticatedOriginPulls(\"myPerHostnameAop\",\n    zone_id=\"0da42c8d2132a9ddaf714f9e7c920711\",\n    authenticated_origin_pulls_certificate=my_per_hostname_aop_cert.id,\n    hostname=\"aop.example.com\",\n    enabled=True)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Cloudflare = Pulumi.Cloudflare;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    // Authenticated Origin Pulls\n    var myAop = new Cloudflare.AuthenticatedOriginPulls(\"myAop\", new()\n    {\n        ZoneId = \"0da42c8d2132a9ddaf714f9e7c920711\",\n        Enabled = true,\n    });\n\n    // Per-Zone Authenticated Origin Pulls\n    var myPerZoneAopCert = new Cloudflare.AuthenticatedOriginPullsCertificate(\"myPerZoneAopCert\", new()\n    {\n        ZoneId = \"0da42c8d2132a9ddaf714f9e7c920711\",\n        Certificate = \"-----INSERT CERTIFICATE-----\",\n        PrivateKey = \"-----INSERT PRIVATE KEY-----\",\n        Type = \"per-zone\",\n    });\n\n    var myPerZoneAop = new Cloudflare.AuthenticatedOriginPulls(\"myPerZoneAop\", new()\n    {\n        ZoneId = \"0da42c8d2132a9ddaf714f9e7c920711\",\n        AuthenticatedOriginPullsCertificate = myPerZoneAopCert.Id,\n        Enabled = true,\n    });\n\n    // Per-Hostname Authenticated Origin Pulls\n    var myPerHostnameAopCert = new Cloudflare.AuthenticatedOriginPullsCertificate(\"myPerHostnameAopCert\", new()\n    {\n        ZoneId = \"0da42c8d2132a9ddaf714f9e7c920711\",\n        Certificate = \"-----INSERT CERTIFICATE-----\",\n        PrivateKey = \"-----INSERT PRIVATE KEY-----\",\n        Type = \"per-hostname\",\n    });\n\n    var myPerHostnameAop = new Cloudflare.AuthenticatedOriginPulls(\"myPerHostnameAop\", new()\n    {\n        ZoneId = \"0da42c8d2132a9ddaf714f9e7c920711\",\n        AuthenticatedOriginPullsCertificate = myPerHostnameAopCert.Id,\n        Hostname = \"aop.example.com\",\n        Enabled = true,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := cloudflare.NewAuthenticatedOriginPulls(ctx, \"myAop\", \u0026cloudflare.AuthenticatedOriginPullsArgs{\n\t\t\tZoneId:  pulumi.String(\"0da42c8d2132a9ddaf714f9e7c920711\"),\n\t\t\tEnabled: pulumi.Bool(true),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tmyPerZoneAopCert, err := cloudflare.NewAuthenticatedOriginPullsCertificate(ctx, \"myPerZoneAopCert\", \u0026cloudflare.AuthenticatedOriginPullsCertificateArgs{\n\t\t\tZoneId:      pulumi.String(\"0da42c8d2132a9ddaf714f9e7c920711\"),\n\t\t\tCertificate: pulumi.String(\"-----INSERT CERTIFICATE-----\"),\n\t\t\tPrivateKey:  pulumi.String(\"-----INSERT PRIVATE KEY-----\"),\n\t\t\tType:        pulumi.String(\"per-zone\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = cloudflare.NewAuthenticatedOriginPulls(ctx, \"myPerZoneAop\", \u0026cloudflare.AuthenticatedOriginPullsArgs{\n\t\t\tZoneId:                              pulumi.String(\"0da42c8d2132a9ddaf714f9e7c920711\"),\n\t\t\tAuthenticatedOriginPullsCertificate: myPerZoneAopCert.ID(),\n\t\t\tEnabled:                             pulumi.Bool(true),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tmyPerHostnameAopCert, err := cloudflare.NewAuthenticatedOriginPullsCertificate(ctx, \"myPerHostnameAopCert\", \u0026cloudflare.AuthenticatedOriginPullsCertificateArgs{\n\t\t\tZoneId:      pulumi.String(\"0da42c8d2132a9ddaf714f9e7c920711\"),\n\t\t\tCertificate: pulumi.String(\"-----INSERT CERTIFICATE-----\"),\n\t\t\tPrivateKey:  pulumi.String(\"-----INSERT PRIVATE KEY-----\"),\n\t\t\tType:        pulumi.String(\"per-hostname\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = cloudflare.NewAuthenticatedOriginPulls(ctx, \"myPerHostnameAop\", \u0026cloudflare.AuthenticatedOriginPullsArgs{\n\t\t\tZoneId:                              pulumi.String(\"0da42c8d2132a9ddaf714f9e7c920711\"),\n\t\t\tAuthenticatedOriginPullsCertificate: myPerHostnameAopCert.ID(),\n\t\t\tHostname:                            pulumi.String(\"aop.example.com\"),\n\t\t\tEnabled:                             pulumi.Bool(true),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.cloudflare.AuthenticatedOriginPulls;\nimport com.pulumi.cloudflare.AuthenticatedOriginPullsArgs;\nimport com.pulumi.cloudflare.AuthenticatedOriginPullsCertificate;\nimport com.pulumi.cloudflare.AuthenticatedOriginPullsCertificateArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var myAop = new AuthenticatedOriginPulls(\"myAop\", AuthenticatedOriginPullsArgs.builder()        \n            .zoneId(\"0da42c8d2132a9ddaf714f9e7c920711\")\n            .enabled(true)\n            .build());\n\n        var myPerZoneAopCert = new AuthenticatedOriginPullsCertificate(\"myPerZoneAopCert\", AuthenticatedOriginPullsCertificateArgs.builder()        \n            .zoneId(\"0da42c8d2132a9ddaf714f9e7c920711\")\n            .certificate(\"-----INSERT CERTIFICATE-----\")\n            .privateKey(\"-----INSERT PRIVATE KEY-----\")\n            .type(\"per-zone\")\n            .build());\n\n        var myPerZoneAop = new AuthenticatedOriginPulls(\"myPerZoneAop\", AuthenticatedOriginPullsArgs.builder()        \n            .zoneId(\"0da42c8d2132a9ddaf714f9e7c920711\")\n            .authenticatedOriginPullsCertificate(myPerZoneAopCert.id())\n            .enabled(true)\n            .build());\n\n        var myPerHostnameAopCert = new AuthenticatedOriginPullsCertificate(\"myPerHostnameAopCert\", AuthenticatedOriginPullsCertificateArgs.builder()        \n            .zoneId(\"0da42c8d2132a9ddaf714f9e7c920711\")\n            .certificate(\"-----INSERT CERTIFICATE-----\")\n            .privateKey(\"-----INSERT PRIVATE KEY-----\")\n            .type(\"per-hostname\")\n            .build());\n\n        var myPerHostnameAop = new AuthenticatedOriginPulls(\"myPerHostnameAop\", AuthenticatedOriginPullsArgs.builder()        \n            .zoneId(\"0da42c8d2132a9ddaf714f9e7c920711\")\n            .authenticatedOriginPullsCertificate(myPerHostnameAopCert.id())\n            .hostname(\"aop.example.com\")\n            .enabled(true)\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  # Authenticated Origin Pulls\n  myAop:\n    type: cloudflare:AuthenticatedOriginPulls\n    properties:\n      zoneId: 0da42c8d2132a9ddaf714f9e7c920711\n      enabled: true\n  # Per-Zone Authenticated Origin Pulls\n  myPerZoneAopCert:\n    type: cloudflare:AuthenticatedOriginPullsCertificate\n    properties:\n      zoneId: 0da42c8d2132a9ddaf714f9e7c920711\n      certificate: '-----INSERT CERTIFICATE-----'\n      privateKey: '-----INSERT PRIVATE KEY-----'\n      type: per-zone\n  myPerZoneAop:\n    type: cloudflare:AuthenticatedOriginPulls\n    properties:\n      zoneId: 0da42c8d2132a9ddaf714f9e7c920711\n      authenticatedOriginPullsCertificate: ${myPerZoneAopCert.id}\n      enabled: true\n  # Per-Hostname Authenticated Origin Pulls\n  myPerHostnameAopCert:\n    type: cloudflare:AuthenticatedOriginPullsCertificate\n    properties:\n      zoneId: 0da42c8d2132a9ddaf714f9e7c920711\n      certificate: '-----INSERT CERTIFICATE-----'\n      privateKey: '-----INSERT PRIVATE KEY-----'\n      type: per-hostname\n  myPerHostnameAop:\n    type: cloudflare:AuthenticatedOriginPulls\n    properties:\n      zoneId: 0da42c8d2132a9ddaf714f9e7c920711\n      authenticatedOriginPullsCertificate: ${myPerHostnameAopCert.id}\n      hostname: aop.example.com\n      enabled: true\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nglobal\n\n```sh\n $ pulumi import cloudflare:index/authenticatedOriginPulls:AuthenticatedOriginPulls example \u003czone_id\u003e\n```\n\n per zone\n\n```sh\n $ pulumi import cloudflare:index/authenticatedOriginPulls:AuthenticatedOriginPulls example \u003czone_id\u003e/\u003ccertificate_id\u003e\n```\n\n per hostname\n\n```sh\n $ pulumi import cloudflare:index/authenticatedOriginPulls:AuthenticatedOriginPulls example \u003czone_id\u003e/\u003ccertificate_id\u003e/\u003chostname\u003e\n```\n\n ",
             "properties": {
                 "authenticatedOriginPullsCertificate": {
                     "type": "string",
@@ -10193,7 +10301,7 @@
             }
         },
         "cloudflare:index/authenticatedOriginPullsCertificate:AuthenticatedOriginPullsCertificate": {
-            "description": "Provides a Cloudflare Authenticated Origin Pulls certificate\nresource. An uploaded client certificate is required to use Per-Zone\n or Per-Hostname Authenticated Origin Pulls.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as cloudflare from \"@pulumi/cloudflare\";\n\n// Per-Zone Authenticated Origin Pulls certificate\nconst myPerZoneAopCert = new cloudflare.AuthenticatedOriginPullsCertificate(\"myPerZoneAopCert\", {\n    certificate: \"-----INSERT CERTIFICATE-----\",\n    privateKey: \"-----INSERT PRIVATE KEY-----\",\n    type: \"per-zone\",\n    zoneId: \"0da42c8d2132a9ddaf714f9e7c920711\",\n});\n// Per-Hostname Authenticated Origin Pulls certificate\nconst myPerHostnameAopCert = new cloudflare.AuthenticatedOriginPullsCertificate(\"myPerHostnameAopCert\", {\n    certificate: \"-----INSERT CERTIFICATE-----\",\n    privateKey: \"-----INSERT PRIVATE KEY-----\",\n    type: \"per-hostname\",\n    zoneId: \"0da42c8d2132a9ddaf714f9e7c920711\",\n});\n```\n```python\nimport pulumi\nimport pulumi_cloudflare as cloudflare\n\n# Per-Zone Authenticated Origin Pulls certificate\nmy_per_zone_aop_cert = cloudflare.AuthenticatedOriginPullsCertificate(\"myPerZoneAopCert\",\n    certificate=\"-----INSERT CERTIFICATE-----\",\n    private_key=\"-----INSERT PRIVATE KEY-----\",\n    type=\"per-zone\",\n    zone_id=\"0da42c8d2132a9ddaf714f9e7c920711\")\n# Per-Hostname Authenticated Origin Pulls certificate\nmy_per_hostname_aop_cert = cloudflare.AuthenticatedOriginPullsCertificate(\"myPerHostnameAopCert\",\n    certificate=\"-----INSERT CERTIFICATE-----\",\n    private_key=\"-----INSERT PRIVATE KEY-----\",\n    type=\"per-hostname\",\n    zone_id=\"0da42c8d2132a9ddaf714f9e7c920711\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Cloudflare = Pulumi.Cloudflare;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    // Per-Zone Authenticated Origin Pulls certificate\n    var myPerZoneAopCert = new Cloudflare.AuthenticatedOriginPullsCertificate(\"myPerZoneAopCert\", new()\n    {\n        Certificate = \"-----INSERT CERTIFICATE-----\",\n        PrivateKey = \"-----INSERT PRIVATE KEY-----\",\n        Type = \"per-zone\",\n        ZoneId = \"0da42c8d2132a9ddaf714f9e7c920711\",\n    });\n\n    // Per-Hostname Authenticated Origin Pulls certificate\n    var myPerHostnameAopCert = new Cloudflare.AuthenticatedOriginPullsCertificate(\"myPerHostnameAopCert\", new()\n    {\n        Certificate = \"-----INSERT CERTIFICATE-----\",\n        PrivateKey = \"-----INSERT PRIVATE KEY-----\",\n        Type = \"per-hostname\",\n        ZoneId = \"0da42c8d2132a9ddaf714f9e7c920711\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := cloudflare.NewAuthenticatedOriginPullsCertificate(ctx, \"myPerZoneAopCert\", \u0026cloudflare.AuthenticatedOriginPullsCertificateArgs{\n\t\t\tCertificate: pulumi.String(\"-----INSERT CERTIFICATE-----\"),\n\t\t\tPrivateKey:  pulumi.String(\"-----INSERT PRIVATE KEY-----\"),\n\t\t\tType:        pulumi.String(\"per-zone\"),\n\t\t\tZoneId:      pulumi.String(\"0da42c8d2132a9ddaf714f9e7c920711\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = cloudflare.NewAuthenticatedOriginPullsCertificate(ctx, \"myPerHostnameAopCert\", \u0026cloudflare.AuthenticatedOriginPullsCertificateArgs{\n\t\t\tCertificate: pulumi.String(\"-----INSERT CERTIFICATE-----\"),\n\t\t\tPrivateKey:  pulumi.String(\"-----INSERT PRIVATE KEY-----\"),\n\t\t\tType:        pulumi.String(\"per-hostname\"),\n\t\t\tZoneId:      pulumi.String(\"0da42c8d2132a9ddaf714f9e7c920711\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.cloudflare.AuthenticatedOriginPullsCertificate;\nimport com.pulumi.cloudflare.AuthenticatedOriginPullsCertificateArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var myPerZoneAopCert = new AuthenticatedOriginPullsCertificate(\"myPerZoneAopCert\", AuthenticatedOriginPullsCertificateArgs.builder()        \n            .certificate(\"-----INSERT CERTIFICATE-----\")\n            .privateKey(\"-----INSERT PRIVATE KEY-----\")\n            .type(\"per-zone\")\n            .zoneId(\"0da42c8d2132a9ddaf714f9e7c920711\")\n            .build());\n\n        var myPerHostnameAopCert = new AuthenticatedOriginPullsCertificate(\"myPerHostnameAopCert\", AuthenticatedOriginPullsCertificateArgs.builder()        \n            .certificate(\"-----INSERT CERTIFICATE-----\")\n            .privateKey(\"-----INSERT PRIVATE KEY-----\")\n            .type(\"per-hostname\")\n            .zoneId(\"0da42c8d2132a9ddaf714f9e7c920711\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  # Per-Zone Authenticated Origin Pulls certificate\n  myPerZoneAopCert:\n    type: cloudflare:AuthenticatedOriginPullsCertificate\n    properties:\n      certificate: '-----INSERT CERTIFICATE-----'\n      privateKey: '-----INSERT PRIVATE KEY-----'\n      type: per-zone\n      zoneId: 0da42c8d2132a9ddaf714f9e7c920711\n  # Per-Hostname Authenticated Origin Pulls certificate\n  myPerHostnameAopCert:\n    type: cloudflare:AuthenticatedOriginPullsCertificate\n    properties:\n      certificate: '-----INSERT CERTIFICATE-----'\n      privateKey: '-----INSERT PRIVATE KEY-----'\n      type: per-hostname\n      zoneId: 0da42c8d2132a9ddaf714f9e7c920711\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\n\n\n```sh\n $ pulumi import cloudflare:index/authenticatedOriginPullsCertificate:AuthenticatedOriginPullsCertificate 2458ce5a-0c35-4c7f-82c7-8e9487d3ff60 \u003czone_id\u003e/\u003ccertificate_type\u003e/\u003ccertificate_id\u003e\n```\n\n ",
+            "description": "Provides a Cloudflare Authenticated Origin Pulls certificate\nresource. An uploaded client certificate is required to use Per-Zone\n or Per-Hostname Authenticated Origin Pulls.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as cloudflare from \"@pulumi/cloudflare\";\n\n// Per-Zone Authenticated Origin Pulls certificate\nconst myPerZoneAopCert = new cloudflare.AuthenticatedOriginPullsCertificate(\"myPerZoneAopCert\", {\n    certificate: \"-----INSERT CERTIFICATE-----\",\n    privateKey: \"-----INSERT PRIVATE KEY-----\",\n    type: \"per-zone\",\n    zoneId: \"0da42c8d2132a9ddaf714f9e7c920711\",\n});\n// Per-Hostname Authenticated Origin Pulls certificate\nconst myPerHostnameAopCert = new cloudflare.AuthenticatedOriginPullsCertificate(\"myPerHostnameAopCert\", {\n    certificate: \"-----INSERT CERTIFICATE-----\",\n    privateKey: \"-----INSERT PRIVATE KEY-----\",\n    type: \"per-hostname\",\n    zoneId: \"0da42c8d2132a9ddaf714f9e7c920711\",\n});\n```\n```python\nimport pulumi\nimport pulumi_cloudflare as cloudflare\n\n# Per-Zone Authenticated Origin Pulls certificate\nmy_per_zone_aop_cert = cloudflare.AuthenticatedOriginPullsCertificate(\"myPerZoneAopCert\",\n    certificate=\"-----INSERT CERTIFICATE-----\",\n    private_key=\"-----INSERT PRIVATE KEY-----\",\n    type=\"per-zone\",\n    zone_id=\"0da42c8d2132a9ddaf714f9e7c920711\")\n# Per-Hostname Authenticated Origin Pulls certificate\nmy_per_hostname_aop_cert = cloudflare.AuthenticatedOriginPullsCertificate(\"myPerHostnameAopCert\",\n    certificate=\"-----INSERT CERTIFICATE-----\",\n    private_key=\"-----INSERT PRIVATE KEY-----\",\n    type=\"per-hostname\",\n    zone_id=\"0da42c8d2132a9ddaf714f9e7c920711\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Cloudflare = Pulumi.Cloudflare;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    // Per-Zone Authenticated Origin Pulls certificate\n    var myPerZoneAopCert = new Cloudflare.AuthenticatedOriginPullsCertificate(\"myPerZoneAopCert\", new()\n    {\n        Certificate = \"-----INSERT CERTIFICATE-----\",\n        PrivateKey = \"-----INSERT PRIVATE KEY-----\",\n        Type = \"per-zone\",\n        ZoneId = \"0da42c8d2132a9ddaf714f9e7c920711\",\n    });\n\n    // Per-Hostname Authenticated Origin Pulls certificate\n    var myPerHostnameAopCert = new Cloudflare.AuthenticatedOriginPullsCertificate(\"myPerHostnameAopCert\", new()\n    {\n        Certificate = \"-----INSERT CERTIFICATE-----\",\n        PrivateKey = \"-----INSERT PRIVATE KEY-----\",\n        Type = \"per-hostname\",\n        ZoneId = \"0da42c8d2132a9ddaf714f9e7c920711\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := cloudflare.NewAuthenticatedOriginPullsCertificate(ctx, \"myPerZoneAopCert\", \u0026cloudflare.AuthenticatedOriginPullsCertificateArgs{\n\t\t\tCertificate: pulumi.String(\"-----INSERT CERTIFICATE-----\"),\n\t\t\tPrivateKey:  pulumi.String(\"-----INSERT PRIVATE KEY-----\"),\n\t\t\tType:        pulumi.String(\"per-zone\"),\n\t\t\tZoneId:      pulumi.String(\"0da42c8d2132a9ddaf714f9e7c920711\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = cloudflare.NewAuthenticatedOriginPullsCertificate(ctx, \"myPerHostnameAopCert\", \u0026cloudflare.AuthenticatedOriginPullsCertificateArgs{\n\t\t\tCertificate: pulumi.String(\"-----INSERT CERTIFICATE-----\"),\n\t\t\tPrivateKey:  pulumi.String(\"-----INSERT PRIVATE KEY-----\"),\n\t\t\tType:        pulumi.String(\"per-hostname\"),\n\t\t\tZoneId:      pulumi.String(\"0da42c8d2132a9ddaf714f9e7c920711\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.cloudflare.AuthenticatedOriginPullsCertificate;\nimport com.pulumi.cloudflare.AuthenticatedOriginPullsCertificateArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var myPerZoneAopCert = new AuthenticatedOriginPullsCertificate(\"myPerZoneAopCert\", AuthenticatedOriginPullsCertificateArgs.builder()        \n            .certificate(\"-----INSERT CERTIFICATE-----\")\n            .privateKey(\"-----INSERT PRIVATE KEY-----\")\n            .type(\"per-zone\")\n            .zoneId(\"0da42c8d2132a9ddaf714f9e7c920711\")\n            .build());\n\n        var myPerHostnameAopCert = new AuthenticatedOriginPullsCertificate(\"myPerHostnameAopCert\", AuthenticatedOriginPullsCertificateArgs.builder()        \n            .certificate(\"-----INSERT CERTIFICATE-----\")\n            .privateKey(\"-----INSERT PRIVATE KEY-----\")\n            .type(\"per-hostname\")\n            .zoneId(\"0da42c8d2132a9ddaf714f9e7c920711\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  # Per-Zone Authenticated Origin Pulls certificate\n  myPerZoneAopCert:\n    type: cloudflare:AuthenticatedOriginPullsCertificate\n    properties:\n      certificate: '-----INSERT CERTIFICATE-----'\n      privateKey: '-----INSERT PRIVATE KEY-----'\n      type: per-zone\n      zoneId: 0da42c8d2132a9ddaf714f9e7c920711\n  # Per-Hostname Authenticated Origin Pulls certificate\n  myPerHostnameAopCert:\n    type: cloudflare:AuthenticatedOriginPullsCertificate\n    properties:\n      certificate: '-----INSERT CERTIFICATE-----'\n      privateKey: '-----INSERT PRIVATE KEY-----'\n      type: per-hostname\n      zoneId: 0da42c8d2132a9ddaf714f9e7c920711\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\n\n\n```sh\n $ pulumi import cloudflare:index/authenticatedOriginPullsCertificate:AuthenticatedOriginPullsCertificate example \u003czone_id\u003e/\u003ccertificate_type\u003e/\u003ccertificate_id\u003e\n```\n\n ",
             "properties": {
                 "certificate": {
                     "type": "string",
@@ -15244,7 +15352,7 @@
                 },
                 "alertType": {
                     "type": "string",
-                    "description": "The event type that will trigger the dispatch of a notification. See the developer documentation for descriptions of [available alert types](https://developers.cloudflare.com/fundamentals/notifications/notification-available/). Available values: `access_custom_certificate_expiration_type`, `advanced_ddos_attack_l4_alert`, `advanced_ddos_attack_l7_alert`, `bgp_hijack_notification`, `billing_usage_alert`, `block_notification_block_removed`, `block_notification_new_block`, `block_notification_review_rejected`, `clickhouse_alert_fw_anomaly`, `clickhouse_alert_fw_ent_anomaly`, `custom_ssl_certificate_event_type`, `dedicated_ssl_certificate_event_type`, `dos_attack_l4`, `dos_attack_l7`, `expiring_service_token_alert`, `failing_logpush_job_disabled_alert`, `fbm_auto_advertisement`, `fbm_dosd_attack`, `fbm_volumetric_attack`, `health_check_status_notification`, `hostname_aop_custom_certificate_expiration_type`, `http_alert_edge_error`, `http_alert_origin_error`, `load_balancing_health_alert`, `load_balancing_pool_enablement_alert`, `real_origin_monitoring`, `scriptmonitor_alert_new_code_change_detections`, `scriptmonitor_alert_new_hosts`, `scriptmonitor_alert_new_malicious_hosts`, `scriptmonitor_alert_new_malicious_scripts`, `scriptmonitor_alert_new_malicious_url`, `scriptmonitor_alert_new_max_length_resource_url`, `scriptmonitor_alert_new_resources`, `secondary_dns_all_primaries_failing`, `secondary_dns_primaries_failing`, `secondary_dns_zone_successfully_updated`, `secondary_dns_zone_validation_warning`, `sentinel_alert`, `stream_live_notifications`, `tunnel_health_event`, `tunnel_update_event`, `universal_ssl_event_type`, `web_analytics_metrics_update`, `weekly_account_overview`, `workers_alert`, `zone_aop_custom_certificate_expiration_type`.\n"
+                    "description": "The event type that will trigger the dispatch of a notification. See the developer documentation for descriptions of [available alert types](https://developers.cloudflare.com/fundamentals/notifications/notification-available/). Available values: `advanced_http_alert_error`, `access_custom_certificate_expiration_type`, `advanced_ddos_attack_l4_alert`, `advanced_ddos_attack_l7_alert`, `bgp_hijack_notification`, `billing_usage_alert`, `block_notification_block_removed`, `block_notification_new_block`, `block_notification_review_rejected`, `clickhouse_alert_fw_anomaly`, `clickhouse_alert_fw_ent_anomaly`, `custom_ssl_certificate_event_type`, `dedicated_ssl_certificate_event_type`, `dos_attack_l4`, `dos_attack_l7`, `expiring_service_token_alert`, `failing_logpush_job_disabled_alert`, `fbm_auto_advertisement`, `fbm_dosd_attack`, `fbm_volumetric_attack`, `health_check_status_notification`, `hostname_aop_custom_certificate_expiration_type`, `http_alert_edge_error`, `http_alert_origin_error`, `load_balancing_health_alert`, `load_balancing_pool_enablement_alert`, `real_origin_monitoring`, `scriptmonitor_alert_new_code_change_detections`, `scriptmonitor_alert_new_hosts`, `scriptmonitor_alert_new_malicious_hosts`, `scriptmonitor_alert_new_malicious_scripts`, `scriptmonitor_alert_new_malicious_url`, `scriptmonitor_alert_new_max_length_resource_url`, `scriptmonitor_alert_new_resources`, `secondary_dns_all_primaries_failing`, `secondary_dns_primaries_failing`, `secondary_dns_zone_successfully_updated`, `secondary_dns_zone_validation_warning`, `sentinel_alert`, `stream_live_notifications`, `tunnel_health_event`, `tunnel_update_event`, `universal_ssl_event_type`, `web_analytics_metrics_update`, `weekly_account_overview`, `workers_alert`, `zone_aop_custom_certificate_expiration_type`.\n"
                 },
                 "created": {
                     "type": "string",
@@ -15307,7 +15415,7 @@
                 },
                 "alertType": {
                     "type": "string",
-                    "description": "The event type that will trigger the dispatch of a notification. See the developer documentation for descriptions of [available alert types](https://developers.cloudflare.com/fundamentals/notifications/notification-available/). Available values: `access_custom_certificate_expiration_type`, `advanced_ddos_attack_l4_alert`, `advanced_ddos_attack_l7_alert`, `bgp_hijack_notification`, `billing_usage_alert`, `block_notification_block_removed`, `block_notification_new_block`, `block_notification_review_rejected`, `clickhouse_alert_fw_anomaly`, `clickhouse_alert_fw_ent_anomaly`, `custom_ssl_certificate_event_type`, `dedicated_ssl_certificate_event_type`, `dos_attack_l4`, `dos_attack_l7`, `expiring_service_token_alert`, `failing_logpush_job_disabled_alert`, `fbm_auto_advertisement`, `fbm_dosd_attack`, `fbm_volumetric_attack`, `health_check_status_notification`, `hostname_aop_custom_certificate_expiration_type`, `http_alert_edge_error`, `http_alert_origin_error`, `load_balancing_health_alert`, `load_balancing_pool_enablement_alert`, `real_origin_monitoring`, `scriptmonitor_alert_new_code_change_detections`, `scriptmonitor_alert_new_hosts`, `scriptmonitor_alert_new_malicious_hosts`, `scriptmonitor_alert_new_malicious_scripts`, `scriptmonitor_alert_new_malicious_url`, `scriptmonitor_alert_new_max_length_resource_url`, `scriptmonitor_alert_new_resources`, `secondary_dns_all_primaries_failing`, `secondary_dns_primaries_failing`, `secondary_dns_zone_successfully_updated`, `secondary_dns_zone_validation_warning`, `sentinel_alert`, `stream_live_notifications`, `tunnel_health_event`, `tunnel_update_event`, `universal_ssl_event_type`, `web_analytics_metrics_update`, `weekly_account_overview`, `workers_alert`, `zone_aop_custom_certificate_expiration_type`.\n"
+                    "description": "The event type that will trigger the dispatch of a notification. See the developer documentation for descriptions of [available alert types](https://developers.cloudflare.com/fundamentals/notifications/notification-available/). Available values: `advanced_http_alert_error`, `access_custom_certificate_expiration_type`, `advanced_ddos_attack_l4_alert`, `advanced_ddos_attack_l7_alert`, `bgp_hijack_notification`, `billing_usage_alert`, `block_notification_block_removed`, `block_notification_new_block`, `block_notification_review_rejected`, `clickhouse_alert_fw_anomaly`, `clickhouse_alert_fw_ent_anomaly`, `custom_ssl_certificate_event_type`, `dedicated_ssl_certificate_event_type`, `dos_attack_l4`, `dos_attack_l7`, `expiring_service_token_alert`, `failing_logpush_job_disabled_alert`, `fbm_auto_advertisement`, `fbm_dosd_attack`, `fbm_volumetric_attack`, `health_check_status_notification`, `hostname_aop_custom_certificate_expiration_type`, `http_alert_edge_error`, `http_alert_origin_error`, `load_balancing_health_alert`, `load_balancing_pool_enablement_alert`, `real_origin_monitoring`, `scriptmonitor_alert_new_code_change_detections`, `scriptmonitor_alert_new_hosts`, `scriptmonitor_alert_new_malicious_hosts`, `scriptmonitor_alert_new_malicious_scripts`, `scriptmonitor_alert_new_malicious_url`, `scriptmonitor_alert_new_max_length_resource_url`, `scriptmonitor_alert_new_resources`, `secondary_dns_all_primaries_failing`, `secondary_dns_primaries_failing`, `secondary_dns_zone_successfully_updated`, `secondary_dns_zone_validation_warning`, `sentinel_alert`, `stream_live_notifications`, `tunnel_health_event`, `tunnel_update_event`, `universal_ssl_event_type`, `web_analytics_metrics_update`, `weekly_account_overview`, `workers_alert`, `zone_aop_custom_certificate_expiration_type`.\n"
                 },
                 "description": {
                     "type": "string",
@@ -15362,7 +15470,7 @@
                     },
                     "alertType": {
                         "type": "string",
-                        "description": "The event type that will trigger the dispatch of a notification. See the developer documentation for descriptions of [available alert types](https://developers.cloudflare.com/fundamentals/notifications/notification-available/). Available values: `access_custom_certificate_expiration_type`, `advanced_ddos_attack_l4_alert`, `advanced_ddos_attack_l7_alert`, `bgp_hijack_notification`, `billing_usage_alert`, `block_notification_block_removed`, `block_notification_new_block`, `block_notification_review_rejected`, `clickhouse_alert_fw_anomaly`, `clickhouse_alert_fw_ent_anomaly`, `custom_ssl_certificate_event_type`, `dedicated_ssl_certificate_event_type`, `dos_attack_l4`, `dos_attack_l7`, `expiring_service_token_alert`, `failing_logpush_job_disabled_alert`, `fbm_auto_advertisement`, `fbm_dosd_attack`, `fbm_volumetric_attack`, `health_check_status_notification`, `hostname_aop_custom_certificate_expiration_type`, `http_alert_edge_error`, `http_alert_origin_error`, `load_balancing_health_alert`, `load_balancing_pool_enablement_alert`, `real_origin_monitoring`, `scriptmonitor_alert_new_code_change_detections`, `scriptmonitor_alert_new_hosts`, `scriptmonitor_alert_new_malicious_hosts`, `scriptmonitor_alert_new_malicious_scripts`, `scriptmonitor_alert_new_malicious_url`, `scriptmonitor_alert_new_max_length_resource_url`, `scriptmonitor_alert_new_resources`, `secondary_dns_all_primaries_failing`, `secondary_dns_primaries_failing`, `secondary_dns_zone_successfully_updated`, `secondary_dns_zone_validation_warning`, `sentinel_alert`, `stream_live_notifications`, `tunnel_health_event`, `tunnel_update_event`, `universal_ssl_event_type`, `web_analytics_metrics_update`, `weekly_account_overview`, `workers_alert`, `zone_aop_custom_certificate_expiration_type`.\n"
+                        "description": "The event type that will trigger the dispatch of a notification. See the developer documentation for descriptions of [available alert types](https://developers.cloudflare.com/fundamentals/notifications/notification-available/). Available values: `advanced_http_alert_error`, `access_custom_certificate_expiration_type`, `advanced_ddos_attack_l4_alert`, `advanced_ddos_attack_l7_alert`, `bgp_hijack_notification`, `billing_usage_alert`, `block_notification_block_removed`, `block_notification_new_block`, `block_notification_review_rejected`, `clickhouse_alert_fw_anomaly`, `clickhouse_alert_fw_ent_anomaly`, `custom_ssl_certificate_event_type`, `dedicated_ssl_certificate_event_type`, `dos_attack_l4`, `dos_attack_l7`, `expiring_service_token_alert`, `failing_logpush_job_disabled_alert`, `fbm_auto_advertisement`, `fbm_dosd_attack`, `fbm_volumetric_attack`, `health_check_status_notification`, `hostname_aop_custom_certificate_expiration_type`, `http_alert_edge_error`, `http_alert_origin_error`, `load_balancing_health_alert`, `load_balancing_pool_enablement_alert`, `real_origin_monitoring`, `scriptmonitor_alert_new_code_change_detections`, `scriptmonitor_alert_new_hosts`, `scriptmonitor_alert_new_malicious_hosts`, `scriptmonitor_alert_new_malicious_scripts`, `scriptmonitor_alert_new_malicious_url`, `scriptmonitor_alert_new_max_length_resource_url`, `scriptmonitor_alert_new_resources`, `secondary_dns_all_primaries_failing`, `secondary_dns_primaries_failing`, `secondary_dns_zone_successfully_updated`, `secondary_dns_zone_validation_warning`, `sentinel_alert`, `stream_live_notifications`, `tunnel_health_event`, `tunnel_update_event`, `universal_ssl_event_type`, `web_analytics_metrics_update`, `weekly_account_overview`, `workers_alert`, `zone_aop_custom_certificate_expiration_type`.\n"
                     },
                     "created": {
                         "type": "string",
@@ -16628,7 +16736,7 @@
             "properties": {
                 "argoSmartRouting": {
                     "type": "boolean",
-                    "description": "Enables Argo Smart Routing. Defaults to `false`.\n"
+                    "description": "Enables Argo Smart Routing.\n"
                 },
                 "dns": {
                     "$ref": "#/types/cloudflare:index/SpectrumApplicationDns:SpectrumApplicationDns",
@@ -16640,7 +16748,7 @@
                 },
                 "ipFirewall": {
                     "type": "boolean",
-                    "description": "Enables the IP Firewall for this application. Defaults to `true`.\n"
+                    "description": "Enables the IP Firewall for this application.\n"
                 },
                 "originDirects": {
                     "type": "array",
@@ -16667,15 +16775,15 @@
                 },
                 "proxyProtocol": {
                     "type": "string",
-                    "description": "Enables a proxy protocol to the origin. Available values: `off`, `v1`, `v2`, `simple`. Defaults to `off`.\n"
+                    "description": "Enables a proxy protocol to the origin. Available values: `off`, `v1`, `v2`, `simple`.\n"
                 },
                 "tls": {
                     "type": "string",
-                    "description": "TLS configuration option for Cloudflare to connect to your origin. Available values: `off`, `flexible`, `full`, `strict`. Defaults to `off`.\n"
+                    "description": "TLS configuration option for Cloudflare to connect to your origin. Available values: `off`, `flexible`, `full`, `strict`.\n"
                 },
                 "trafficType": {
                     "type": "string",
-                    "description": "Sets application type. Available values: `direct`, `http`, `https`. Defaults to `direct`.\n"
+                    "description": "Sets application type. Available values: `direct`, `http`, `https`.\n"
                 },
                 "zoneId": {
                     "type": "string",
@@ -16683,14 +16791,20 @@
                 }
             },
             "required": [
+                "argoSmartRouting",
                 "dns",
+                "edgeIps",
+                "ipFirewall",
                 "protocol",
+                "proxyProtocol",
+                "tls",
+                "trafficType",
                 "zoneId"
             ],
             "inputProperties": {
                 "argoSmartRouting": {
                     "type": "boolean",
-                    "description": "Enables Argo Smart Routing. Defaults to `false`.\n"
+                    "description": "Enables Argo Smart Routing.\n"
                 },
                 "dns": {
                     "$ref": "#/types/cloudflare:index/SpectrumApplicationDns:SpectrumApplicationDns",
@@ -16702,7 +16816,7 @@
                 },
                 "ipFirewall": {
                     "type": "boolean",
-                    "description": "Enables the IP Firewall for this application. Defaults to `true`.\n"
+                    "description": "Enables the IP Firewall for this application.\n"
                 },
                 "originDirects": {
                     "type": "array",
@@ -16729,15 +16843,15 @@
                 },
                 "proxyProtocol": {
                     "type": "string",
-                    "description": "Enables a proxy protocol to the origin. Available values: `off`, `v1`, `v2`, `simple`. Defaults to `off`.\n"
+                    "description": "Enables a proxy protocol to the origin. Available values: `off`, `v1`, `v2`, `simple`.\n"
                 },
                 "tls": {
                     "type": "string",
-                    "description": "TLS configuration option for Cloudflare to connect to your origin. Available values: `off`, `flexible`, `full`, `strict`. Defaults to `off`.\n"
+                    "description": "TLS configuration option for Cloudflare to connect to your origin. Available values: `off`, `flexible`, `full`, `strict`.\n"
                 },
                 "trafficType": {
                     "type": "string",
-                    "description": "Sets application type. Available values: `direct`, `http`, `https`. Defaults to `direct`.\n"
+                    "description": "Sets application type. Available values: `direct`, `http`, `https`.\n"
                 },
                 "zoneId": {
                     "type": "string",
@@ -16754,7 +16868,7 @@
                 "properties": {
                     "argoSmartRouting": {
                         "type": "boolean",
-                        "description": "Enables Argo Smart Routing. Defaults to `false`.\n"
+                        "description": "Enables Argo Smart Routing.\n"
                     },
                     "dns": {
                         "$ref": "#/types/cloudflare:index/SpectrumApplicationDns:SpectrumApplicationDns",
@@ -16766,7 +16880,7 @@
                     },
                     "ipFirewall": {
                         "type": "boolean",
-                        "description": "Enables the IP Firewall for this application. Defaults to `true`.\n"
+                        "description": "Enables the IP Firewall for this application.\n"
                     },
                     "originDirects": {
                         "type": "array",
@@ -16793,15 +16907,15 @@
                     },
                     "proxyProtocol": {
                         "type": "string",
-                        "description": "Enables a proxy protocol to the origin. Available values: `off`, `v1`, `v2`, `simple`. Defaults to `off`.\n"
+                        "description": "Enables a proxy protocol to the origin. Available values: `off`, `v1`, `v2`, `simple`.\n"
                     },
                     "tls": {
                         "type": "string",
-                        "description": "TLS configuration option for Cloudflare to connect to your origin. Available values: `off`, `flexible`, `full`, `strict`. Defaults to `off`.\n"
+                        "description": "TLS configuration option for Cloudflare to connect to your origin. Available values: `off`, `flexible`, `full`, `strict`.\n"
                     },
                     "trafficType": {
                         "type": "string",
-                        "description": "Sets application type. Available values: `direct`, `http`, `https`. Defaults to `direct`.\n"
+                        "description": "Sets application type. Available values: `direct`, `http`, `https`.\n"
                     },
                     "zoneId": {
                         "type": "string",
