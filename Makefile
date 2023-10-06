@@ -12,6 +12,7 @@ JAVA_GEN := pulumi-java-gen
 JAVA_GEN_VERSION := v0.9.3
 TESTPARALLELISM := 10
 WORKING_DIR := $(shell pwd)
+PULUMI_CONVERT := 0
 
 development: install_plugins provider build_sdks install_sdks
 
@@ -93,10 +94,9 @@ install_dotnet_sdk:
 install_nodejs_sdk:
 	yarn link --cwd $(WORKING_DIR)/sdk/nodejs/bin
 
-install_plugins:
-	[ -x "$(shell command -v pulumi 2>/dev/null)" ] || curl -fsSL https://get.pulumi.com | sh
-	pulumi plugin install resource gcp 5.0.0
-	pulumi plugin install resource tls 4.0.0
+install_plugins: .pulumi/bin/pulumi
+	.pulumi/bin/pulumi plugin install resource gcp 5.0.0
+	.pulumi/bin/pulumi plugin install resource tls 4.0.0
 
 lint_provider: provider
 	cd provider && golangci-lint run -c ../.golangci.yml
@@ -109,7 +109,7 @@ test:
 
 tfgen: install_plugins upstream
 	(cd provider && go build $(PULUMI_PROVIDER_BUILD_PARALLELISM) -o $(WORKING_DIR)/bin/$(TFGEN) -ldflags "-X $(PROJECT)/$(VERSION_PATH)=$(VERSION)" $(PROJECT)/$(PROVIDER_PATH)/cmd/$(TFGEN))
-	$(WORKING_DIR)/bin/$(TFGEN) schema --out provider/cmd/$(PROVIDER)
+	PATH=${PWD}/.pulumi/bin:$$PATH PULUMI_CONVERT=$(PULUMI_CONVERT) $(WORKING_DIR)/bin/$(TFGEN) schema --out provider/cmd/$(PROVIDER)
 	(cd provider && VERSION=$(VERSION) go generate cmd/$(PROVIDER)/main.go)
 
 upstream:
@@ -139,5 +139,13 @@ ci-mgmt: .ci-mgmt.yaml
 		--template bridged-provider \
 		--config $<
 
+.pulumi/bin/pulumi: HOME := $(WORKING_DIR)
+.pulumi/bin/pulumi: .pulumi/version
+	curl -fsSL https://get.pulumi.com | sh -s -- --version $(cat .pulumi/version)
+
+# Compute the version of Pulumi to use by inspecting the Go dependencies of the provider.
+.pulumi/version:
+	@mkdir -p .pulumi
+	@cd provider && go list -f "{{slice .Version 1}}" -m github.com/pulumi/pulumi/pkg/v3 | tee ../$@
 
 .PHONY: development build build_sdks install_go_sdk install_java_sdk install_python_sdk install_sdks only_build build_dotnet build_go build_java build_nodejs build_python clean cleanup help install_dotnet_sdk install_nodejs_sdk install_plugins lint_provider provider test tfgen upstream upstream.finalize upstream.rebase ci-mgmt
