@@ -45,7 +45,13 @@ class ApiTokenArgs:
              condition: Optional[pulumi.Input['ApiTokenConditionArgs']] = None,
              expires_on: Optional[pulumi.Input[str]] = None,
              not_before: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'expiresOn' in kwargs:
+            expires_on = kwargs['expiresOn']
+        if 'notBefore' in kwargs:
+            not_before = kwargs['notBefore']
+
         _setter("name", name)
         _setter("policies", policies)
         if condition is not None:
@@ -163,7 +169,17 @@ class _ApiTokenState:
              policies: Optional[pulumi.Input[Sequence[pulumi.Input['ApiTokenPolicyArgs']]]] = None,
              status: Optional[pulumi.Input[str]] = None,
              value: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'expiresOn' in kwargs:
+            expires_on = kwargs['expiresOn']
+        if 'issuedOn' in kwargs:
+            issued_on = kwargs['issuedOn']
+        if 'modifiedOn' in kwargs:
+            modified_on = kwargs['modifiedOn']
+        if 'notBefore' in kwargs:
+            not_before = kwargs['notBefore']
+
         if condition is not None:
             _setter("condition", condition)
         if expires_on is not None:

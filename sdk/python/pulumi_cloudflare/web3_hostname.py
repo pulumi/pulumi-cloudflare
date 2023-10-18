@@ -43,7 +43,11 @@ class Web3HostnameArgs:
              zone_id: pulumi.Input[str],
              description: Optional[pulumi.Input[str]] = None,
              dnslink: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         _setter("name", name)
         _setter("target", target)
         _setter("zone_id", zone_id)
@@ -157,7 +161,15 @@ class _Web3HostnameState:
              status: Optional[pulumi.Input[str]] = None,
              target: Optional[pulumi.Input[str]] = None,
              zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'createdOn' in kwargs:
+            created_on = kwargs['createdOn']
+        if 'modifiedOn' in kwargs:
+            modified_on = kwargs['modifiedOn']
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         if created_on is not None:
             _setter("created_on", created_on)
         if description is not None:

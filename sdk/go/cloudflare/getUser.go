@@ -4,8 +4,12 @@
 package cloudflare
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Use this data source to retrieve information about the currently authenticated user.
@@ -71,4 +75,55 @@ type GetUserResult struct {
 	Id string `pulumi:"id"`
 	// The user's username.
 	Username string `pulumi:"username"`
+}
+
+func GetUserOutput(ctx *pulumi.Context, opts ...pulumi.InvokeOption) GetUserResultOutput {
+	return pulumi.ToOutput(0).ApplyT(func(int) (GetUserResult, error) {
+		r, err := GetUser(ctx, opts...)
+		var s GetUserResult
+		if r != nil {
+			s = *r
+		}
+		return s, err
+	}).(GetUserResultOutput)
+}
+
+// A collection of values returned by getUser.
+type GetUserResultOutput struct{ *pulumi.OutputState }
+
+func (GetUserResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetUserResult)(nil)).Elem()
+}
+
+func (o GetUserResultOutput) ToGetUserResultOutput() GetUserResultOutput {
+	return o
+}
+
+func (o GetUserResultOutput) ToGetUserResultOutputWithContext(ctx context.Context) GetUserResultOutput {
+	return o
+}
+
+func (o GetUserResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetUserResult] {
+	return pulumix.Output[GetUserResult]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The user's email address.
+func (o GetUserResultOutput) Email() pulumi.StringOutput {
+	return o.ApplyT(func(v GetUserResult) string { return v.Email }).(pulumi.StringOutput)
+}
+
+// The user's unique identifier.
+func (o GetUserResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetUserResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The user's username.
+func (o GetUserResultOutput) Username() pulumi.StringOutput {
+	return o.ApplyT(func(v GetUserResult) string { return v.Username }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetUserResultOutput{})
 }

@@ -105,7 +105,25 @@ class HealthcheckArgs:
              retries: Optional[pulumi.Input[int]] = None,
              suspended: Optional[pulumi.Input[bool]] = None,
              timeout: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+        if 'allowInsecure' in kwargs:
+            allow_insecure = kwargs['allowInsecure']
+        if 'checkRegions' in kwargs:
+            check_regions = kwargs['checkRegions']
+        if 'consecutiveFails' in kwargs:
+            consecutive_fails = kwargs['consecutiveFails']
+        if 'consecutiveSuccesses' in kwargs:
+            consecutive_successes = kwargs['consecutiveSuccesses']
+        if 'expectedBody' in kwargs:
+            expected_body = kwargs['expectedBody']
+        if 'expectedCodes' in kwargs:
+            expected_codes = kwargs['expectedCodes']
+        if 'followRedirects' in kwargs:
+            follow_redirects = kwargs['followRedirects']
+
         _setter("address", address)
         _setter("name", name)
         _setter("type", type)
@@ -484,7 +502,29 @@ class _HealthcheckState:
              timeout: Optional[pulumi.Input[int]] = None,
              type: Optional[pulumi.Input[str]] = None,
              zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'allowInsecure' in kwargs:
+            allow_insecure = kwargs['allowInsecure']
+        if 'checkRegions' in kwargs:
+            check_regions = kwargs['checkRegions']
+        if 'consecutiveFails' in kwargs:
+            consecutive_fails = kwargs['consecutiveFails']
+        if 'consecutiveSuccesses' in kwargs:
+            consecutive_successes = kwargs['consecutiveSuccesses']
+        if 'createdOn' in kwargs:
+            created_on = kwargs['createdOn']
+        if 'expectedBody' in kwargs:
+            expected_body = kwargs['expectedBody']
+        if 'expectedCodes' in kwargs:
+            expected_codes = kwargs['expectedCodes']
+        if 'followRedirects' in kwargs:
+            follow_redirects = kwargs['followRedirects']
+        if 'modifiedOn' in kwargs:
+            modified_on = kwargs['modifiedOn']
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         if address is not None:
             _setter("address", address)
         if allow_insecure is not None:

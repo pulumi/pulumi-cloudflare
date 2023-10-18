@@ -108,6 +108,8 @@ type TeamsAccount struct {
 	ProtocolDetectionEnabled pulumi.BoolPtrOutput `pulumi:"protocolDetectionEnabled"`
 	// Configuration block for specifying which protocols are proxied.
 	Proxy TeamsAccountProxyPtrOutput `pulumi:"proxy"`
+	// Configuration for SSH Session Logging.
+	SshSessionLog TeamsAccountSshSessionLogPtrOutput `pulumi:"sshSessionLog"`
 	// Indicator that decryption of TLS traffic is enabled.
 	TlsDecryptEnabled pulumi.BoolPtrOutput `pulumi:"tlsDecryptEnabled"`
 	// Safely browse websites in Browser Isolation through a URL.
@@ -164,6 +166,8 @@ type teamsAccountState struct {
 	ProtocolDetectionEnabled *bool `pulumi:"protocolDetectionEnabled"`
 	// Configuration block for specifying which protocols are proxied.
 	Proxy *TeamsAccountProxy `pulumi:"proxy"`
+	// Configuration for SSH Session Logging.
+	SshSessionLog *TeamsAccountSshSessionLog `pulumi:"sshSessionLog"`
 	// Indicator that decryption of TLS traffic is enabled.
 	TlsDecryptEnabled *bool `pulumi:"tlsDecryptEnabled"`
 	// Safely browse websites in Browser Isolation through a URL.
@@ -188,6 +192,8 @@ type TeamsAccountState struct {
 	ProtocolDetectionEnabled pulumi.BoolPtrInput
 	// Configuration block for specifying which protocols are proxied.
 	Proxy TeamsAccountProxyPtrInput
+	// Configuration for SSH Session Logging.
+	SshSessionLog TeamsAccountSshSessionLogPtrInput
 	// Indicator that decryption of TLS traffic is enabled.
 	TlsDecryptEnabled pulumi.BoolPtrInput
 	// Safely browse websites in Browser Isolation through a URL.
@@ -216,6 +222,8 @@ type teamsAccountArgs struct {
 	ProtocolDetectionEnabled *bool `pulumi:"protocolDetectionEnabled"`
 	// Configuration block for specifying which protocols are proxied.
 	Proxy *TeamsAccountProxy `pulumi:"proxy"`
+	// Configuration for SSH Session Logging.
+	SshSessionLog *TeamsAccountSshSessionLog `pulumi:"sshSessionLog"`
 	// Indicator that decryption of TLS traffic is enabled.
 	TlsDecryptEnabled *bool `pulumi:"tlsDecryptEnabled"`
 	// Safely browse websites in Browser Isolation through a URL.
@@ -241,6 +249,8 @@ type TeamsAccountArgs struct {
 	ProtocolDetectionEnabled pulumi.BoolPtrInput
 	// Configuration block for specifying which protocols are proxied.
 	Proxy TeamsAccountProxyPtrInput
+	// Configuration for SSH Session Logging.
+	SshSessionLog TeamsAccountSshSessionLogPtrInput
 	// Indicator that decryption of TLS traffic is enabled.
 	TlsDecryptEnabled pulumi.BoolPtrInput
 	// Safely browse websites in Browser Isolation through a URL.
@@ -400,6 +410,11 @@ func (o TeamsAccountOutput) ProtocolDetectionEnabled() pulumi.BoolPtrOutput {
 // Configuration block for specifying which protocols are proxied.
 func (o TeamsAccountOutput) Proxy() TeamsAccountProxyPtrOutput {
 	return o.ApplyT(func(v *TeamsAccount) TeamsAccountProxyPtrOutput { return v.Proxy }).(TeamsAccountProxyPtrOutput)
+}
+
+// Configuration for SSH Session Logging.
+func (o TeamsAccountOutput) SshSessionLog() TeamsAccountSshSessionLogPtrOutput {
+	return o.ApplyT(func(v *TeamsAccount) TeamsAccountSshSessionLogPtrOutput { return v.SshSessionLog }).(TeamsAccountSshSessionLogPtrOutput)
 }
 
 // Indicator that decryption of TLS traffic is enabled.

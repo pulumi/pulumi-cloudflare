@@ -43,7 +43,13 @@ class WorkerDomainArgs:
              service: pulumi.Input[str],
              zone_id: pulumi.Input[str],
              environment: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accountId' in kwargs:
+            account_id = kwargs['accountId']
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         _setter("account_id", account_id)
         _setter("hostname", hostname)
         _setter("service", service)
@@ -144,7 +150,13 @@ class _WorkerDomainState:
              hostname: Optional[pulumi.Input[str]] = None,
              service: Optional[pulumi.Input[str]] = None,
              zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accountId' in kwargs:
+            account_id = kwargs['accountId']
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         if account_id is not None:
             _setter("account_id", account_id)
         if environment is not None:

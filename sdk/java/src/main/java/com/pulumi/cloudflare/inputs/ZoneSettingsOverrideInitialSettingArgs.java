@@ -125,6 +125,13 @@ public final class ZoneSettingsOverrideInitialSettingArgs extends com.pulumi.res
         return Optional.ofNullable(this.filterLogsToCloudflare);
     }
 
+    @Import(name="fonts")
+    private @Nullable Output<String> fonts;
+
+    public Optional<Output<String>> fonts() {
+        return Optional.ofNullable(this.fonts);
+    }
+
     @Import(name="h2Prioritization")
     private @Nullable Output<String> h2Prioritization;
 
@@ -435,6 +442,7 @@ public final class ZoneSettingsOverrideInitialSettingArgs extends com.pulumi.res
         this.earlyHints = $.earlyHints;
         this.emailObfuscation = $.emailObfuscation;
         this.filterLogsToCloudflare = $.filterLogsToCloudflare;
+        this.fonts = $.fonts;
         this.h2Prioritization = $.h2Prioritization;
         this.hotlinkProtection = $.hotlinkProtection;
         this.http2 = $.http2;
@@ -632,6 +640,15 @@ public final class ZoneSettingsOverrideInitialSettingArgs extends com.pulumi.res
 
         public Builder filterLogsToCloudflare(String filterLogsToCloudflare) {
             return filterLogsToCloudflare(Output.of(filterLogsToCloudflare));
+        }
+
+        public Builder fonts(@Nullable Output<String> fonts) {
+            $.fonts = fonts;
+            return this;
+        }
+
+        public Builder fonts(String fonts) {
+            return fonts(Output.of(fonts));
         }
 
         public Builder h2Prioritization(@Nullable Output<String> h2Prioritization) {

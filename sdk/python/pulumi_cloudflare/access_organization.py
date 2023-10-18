@@ -23,6 +23,7 @@ class AccessOrganizationArgs:
                  is_ui_read_only: Optional[pulumi.Input[bool]] = None,
                  login_designs: Optional[pulumi.Input[Sequence[pulumi.Input['AccessOrganizationLoginDesignArgs']]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 session_duration: Optional[pulumi.Input[str]] = None,
                  ui_read_only_toggle_reason: Optional[pulumi.Input[str]] = None,
                  user_seat_expiration_inactive_time: Optional[pulumi.Input[str]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None):
@@ -34,6 +35,7 @@ class AccessOrganizationArgs:
         :param pulumi.Input[Sequence[pulumi.Input['AccessOrganizationCustomPageArgs']]] custom_pages: Custom pages for your Zero Trust organization.
         :param pulumi.Input[bool] is_ui_read_only: When set to true, this will disable all editing of Access resources via the Zero Trust Dashboard.
         :param pulumi.Input[str] name: The name of your Zero Trust organization.
+        :param pulumi.Input[str] session_duration: How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`. Defaults to `24h`.
         :param pulumi.Input[str] ui_read_only_toggle_reason: A description of the reason why the UI read only field is being toggled.
         :param pulumi.Input[str] user_seat_expiration_inactive_time: The amount of time a user seat is inactive before it expires. When the user seat exceeds the set time of inactivity, the user is removed as an active seat and no longer counts against your Teams seat count. Must be in the format `300ms` or `2h45m`.
         :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. Conflicts with `account_id`.
@@ -47,6 +49,7 @@ class AccessOrganizationArgs:
             is_ui_read_only=is_ui_read_only,
             login_designs=login_designs,
             name=name,
+            session_duration=session_duration,
             ui_read_only_toggle_reason=ui_read_only_toggle_reason,
             user_seat_expiration_inactive_time=user_seat_expiration_inactive_time,
             zone_id=zone_id,
@@ -61,10 +64,33 @@ class AccessOrganizationArgs:
              is_ui_read_only: Optional[pulumi.Input[bool]] = None,
              login_designs: Optional[pulumi.Input[Sequence[pulumi.Input['AccessOrganizationLoginDesignArgs']]]] = None,
              name: Optional[pulumi.Input[str]] = None,
+             session_duration: Optional[pulumi.Input[str]] = None,
              ui_read_only_toggle_reason: Optional[pulumi.Input[str]] = None,
              user_seat_expiration_inactive_time: Optional[pulumi.Input[str]] = None,
              zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'authDomain' in kwargs:
+            auth_domain = kwargs['authDomain']
+        if 'accountId' in kwargs:
+            account_id = kwargs['accountId']
+        if 'autoRedirectToIdentity' in kwargs:
+            auto_redirect_to_identity = kwargs['autoRedirectToIdentity']
+        if 'customPages' in kwargs:
+            custom_pages = kwargs['customPages']
+        if 'isUiReadOnly' in kwargs:
+            is_ui_read_only = kwargs['isUiReadOnly']
+        if 'loginDesigns' in kwargs:
+            login_designs = kwargs['loginDesigns']
+        if 'sessionDuration' in kwargs:
+            session_duration = kwargs['sessionDuration']
+        if 'uiReadOnlyToggleReason' in kwargs:
+            ui_read_only_toggle_reason = kwargs['uiReadOnlyToggleReason']
+        if 'userSeatExpirationInactiveTime' in kwargs:
+            user_seat_expiration_inactive_time = kwargs['userSeatExpirationInactiveTime']
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         _setter("auth_domain", auth_domain)
         if account_id is not None:
             _setter("account_id", account_id)
@@ -78,6 +104,8 @@ class AccessOrganizationArgs:
             _setter("login_designs", login_designs)
         if name is not None:
             _setter("name", name)
+        if session_duration is not None:
+            _setter("session_duration", session_duration)
         if ui_read_only_toggle_reason is not None:
             _setter("ui_read_only_toggle_reason", ui_read_only_toggle_reason)
         if user_seat_expiration_inactive_time is not None:
@@ -167,6 +195,18 @@ class AccessOrganizationArgs:
         pulumi.set(self, "name", value)
 
     @property
+    @pulumi.getter(name="sessionDuration")
+    def session_duration(self) -> Optional[pulumi.Input[str]]:
+        """
+        How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`. Defaults to `24h`.
+        """
+        return pulumi.get(self, "session_duration")
+
+    @session_duration.setter
+    def session_duration(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "session_duration", value)
+
+    @property
     @pulumi.getter(name="uiReadOnlyToggleReason")
     def ui_read_only_toggle_reason(self) -> Optional[pulumi.Input[str]]:
         """
@@ -213,6 +253,7 @@ class _AccessOrganizationState:
                  is_ui_read_only: Optional[pulumi.Input[bool]] = None,
                  login_designs: Optional[pulumi.Input[Sequence[pulumi.Input['AccessOrganizationLoginDesignArgs']]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 session_duration: Optional[pulumi.Input[str]] = None,
                  ui_read_only_toggle_reason: Optional[pulumi.Input[str]] = None,
                  user_seat_expiration_inactive_time: Optional[pulumi.Input[str]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None):
@@ -224,6 +265,7 @@ class _AccessOrganizationState:
         :param pulumi.Input[Sequence[pulumi.Input['AccessOrganizationCustomPageArgs']]] custom_pages: Custom pages for your Zero Trust organization.
         :param pulumi.Input[bool] is_ui_read_only: When set to true, this will disable all editing of Access resources via the Zero Trust Dashboard.
         :param pulumi.Input[str] name: The name of your Zero Trust organization.
+        :param pulumi.Input[str] session_duration: How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`. Defaults to `24h`.
         :param pulumi.Input[str] ui_read_only_toggle_reason: A description of the reason why the UI read only field is being toggled.
         :param pulumi.Input[str] user_seat_expiration_inactive_time: The amount of time a user seat is inactive before it expires. When the user seat exceeds the set time of inactivity, the user is removed as an active seat and no longer counts against your Teams seat count. Must be in the format `300ms` or `2h45m`.
         :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. Conflicts with `account_id`.
@@ -237,6 +279,7 @@ class _AccessOrganizationState:
             is_ui_read_only=is_ui_read_only,
             login_designs=login_designs,
             name=name,
+            session_duration=session_duration,
             ui_read_only_toggle_reason=ui_read_only_toggle_reason,
             user_seat_expiration_inactive_time=user_seat_expiration_inactive_time,
             zone_id=zone_id,
@@ -251,10 +294,33 @@ class _AccessOrganizationState:
              is_ui_read_only: Optional[pulumi.Input[bool]] = None,
              login_designs: Optional[pulumi.Input[Sequence[pulumi.Input['AccessOrganizationLoginDesignArgs']]]] = None,
              name: Optional[pulumi.Input[str]] = None,
+             session_duration: Optional[pulumi.Input[str]] = None,
              ui_read_only_toggle_reason: Optional[pulumi.Input[str]] = None,
              user_seat_expiration_inactive_time: Optional[pulumi.Input[str]] = None,
              zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accountId' in kwargs:
+            account_id = kwargs['accountId']
+        if 'authDomain' in kwargs:
+            auth_domain = kwargs['authDomain']
+        if 'autoRedirectToIdentity' in kwargs:
+            auto_redirect_to_identity = kwargs['autoRedirectToIdentity']
+        if 'customPages' in kwargs:
+            custom_pages = kwargs['customPages']
+        if 'isUiReadOnly' in kwargs:
+            is_ui_read_only = kwargs['isUiReadOnly']
+        if 'loginDesigns' in kwargs:
+            login_designs = kwargs['loginDesigns']
+        if 'sessionDuration' in kwargs:
+            session_duration = kwargs['sessionDuration']
+        if 'uiReadOnlyToggleReason' in kwargs:
+            ui_read_only_toggle_reason = kwargs['uiReadOnlyToggleReason']
+        if 'userSeatExpirationInactiveTime' in kwargs:
+            user_seat_expiration_inactive_time = kwargs['userSeatExpirationInactiveTime']
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         if account_id is not None:
             _setter("account_id", account_id)
         if auth_domain is not None:
@@ -269,6 +335,8 @@ class _AccessOrganizationState:
             _setter("login_designs", login_designs)
         if name is not None:
             _setter("name", name)
+        if session_duration is not None:
+            _setter("session_duration", session_duration)
         if ui_read_only_toggle_reason is not None:
             _setter("ui_read_only_toggle_reason", ui_read_only_toggle_reason)
         if user_seat_expiration_inactive_time is not None:
@@ -358,6 +426,18 @@ class _AccessOrganizationState:
         pulumi.set(self, "name", value)
 
     @property
+    @pulumi.getter(name="sessionDuration")
+    def session_duration(self) -> Optional[pulumi.Input[str]]:
+        """
+        How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`. Defaults to `24h`.
+        """
+        return pulumi.get(self, "session_duration")
+
+    @session_duration.setter
+    def session_duration(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "session_duration", value)
+
+    @property
     @pulumi.getter(name="uiReadOnlyToggleReason")
     def ui_read_only_toggle_reason(self) -> Optional[pulumi.Input[str]]:
         """
@@ -406,6 +486,7 @@ class AccessOrganization(pulumi.CustomResource):
                  is_ui_read_only: Optional[pulumi.Input[bool]] = None,
                  login_designs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessOrganizationLoginDesignArgs']]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 session_duration: Optional[pulumi.Input[str]] = None,
                  ui_read_only_toggle_reason: Optional[pulumi.Input[str]] = None,
                  user_seat_expiration_inactive_time: Optional[pulumi.Input[str]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None,
@@ -449,6 +530,7 @@ class AccessOrganization(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessOrganizationCustomPageArgs']]]] custom_pages: Custom pages for your Zero Trust organization.
         :param pulumi.Input[bool] is_ui_read_only: When set to true, this will disable all editing of Access resources via the Zero Trust Dashboard.
         :param pulumi.Input[str] name: The name of your Zero Trust organization.
+        :param pulumi.Input[str] session_duration: How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`. Defaults to `24h`.
         :param pulumi.Input[str] ui_read_only_toggle_reason: A description of the reason why the UI read only field is being toggled.
         :param pulumi.Input[str] user_seat_expiration_inactive_time: The amount of time a user seat is inactive before it expires. When the user seat exceeds the set time of inactivity, the user is removed as an active seat and no longer counts against your Teams seat count. Must be in the format `300ms` or `2h45m`.
         :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. Conflicts with `account_id`.
@@ -516,6 +598,7 @@ class AccessOrganization(pulumi.CustomResource):
                  is_ui_read_only: Optional[pulumi.Input[bool]] = None,
                  login_designs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessOrganizationLoginDesignArgs']]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 session_duration: Optional[pulumi.Input[str]] = None,
                  ui_read_only_toggle_reason: Optional[pulumi.Input[str]] = None,
                  user_seat_expiration_inactive_time: Optional[pulumi.Input[str]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None,
@@ -537,6 +620,7 @@ class AccessOrganization(pulumi.CustomResource):
             __props__.__dict__["is_ui_read_only"] = is_ui_read_only
             __props__.__dict__["login_designs"] = login_designs
             __props__.__dict__["name"] = name
+            __props__.__dict__["session_duration"] = session_duration
             __props__.__dict__["ui_read_only_toggle_reason"] = ui_read_only_toggle_reason
             __props__.__dict__["user_seat_expiration_inactive_time"] = user_seat_expiration_inactive_time
             __props__.__dict__["zone_id"] = zone_id
@@ -557,6 +641,7 @@ class AccessOrganization(pulumi.CustomResource):
             is_ui_read_only: Optional[pulumi.Input[bool]] = None,
             login_designs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessOrganizationLoginDesignArgs']]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
+            session_duration: Optional[pulumi.Input[str]] = None,
             ui_read_only_toggle_reason: Optional[pulumi.Input[str]] = None,
             user_seat_expiration_inactive_time: Optional[pulumi.Input[str]] = None,
             zone_id: Optional[pulumi.Input[str]] = None) -> 'AccessOrganization':
@@ -573,6 +658,7 @@ class AccessOrganization(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessOrganizationCustomPageArgs']]]] custom_pages: Custom pages for your Zero Trust organization.
         :param pulumi.Input[bool] is_ui_read_only: When set to true, this will disable all editing of Access resources via the Zero Trust Dashboard.
         :param pulumi.Input[str] name: The name of your Zero Trust organization.
+        :param pulumi.Input[str] session_duration: How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`. Defaults to `24h`.
         :param pulumi.Input[str] ui_read_only_toggle_reason: A description of the reason why the UI read only field is being toggled.
         :param pulumi.Input[str] user_seat_expiration_inactive_time: The amount of time a user seat is inactive before it expires. When the user seat exceeds the set time of inactivity, the user is removed as an active seat and no longer counts against your Teams seat count. Must be in the format `300ms` or `2h45m`.
         :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. Conflicts with `account_id`.
@@ -588,6 +674,7 @@ class AccessOrganization(pulumi.CustomResource):
         __props__.__dict__["is_ui_read_only"] = is_ui_read_only
         __props__.__dict__["login_designs"] = login_designs
         __props__.__dict__["name"] = name
+        __props__.__dict__["session_duration"] = session_duration
         __props__.__dict__["ui_read_only_toggle_reason"] = ui_read_only_toggle_reason
         __props__.__dict__["user_seat_expiration_inactive_time"] = user_seat_expiration_inactive_time
         __props__.__dict__["zone_id"] = zone_id
@@ -645,6 +732,14 @@ class AccessOrganization(pulumi.CustomResource):
         The name of your Zero Trust organization.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="sessionDuration")
+    def session_duration(self) -> pulumi.Output[Optional[str]]:
+        """
+        How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`. Defaults to `24h`.
+        """
+        return pulumi.get(self, "session_duration")
 
     @property
     @pulumi.getter(name="uiReadOnlyToggleReason")

@@ -33,7 +33,13 @@ class ApiShieldArgs:
              _setter: Callable[[Any, Any], None],
              zone_id: pulumi.Input[str],
              auth_id_characteristics: Optional[pulumi.Input[Sequence[pulumi.Input['ApiShieldAuthIdCharacteristicArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+        if 'authIdCharacteristics' in kwargs:
+            auth_id_characteristics = kwargs['authIdCharacteristics']
+
         _setter("zone_id", zone_id)
         if auth_id_characteristics is not None:
             _setter("auth_id_characteristics", auth_id_characteristics)
@@ -83,7 +89,13 @@ class _ApiShieldState:
              _setter: Callable[[Any, Any], None],
              auth_id_characteristics: Optional[pulumi.Input[Sequence[pulumi.Input['ApiShieldAuthIdCharacteristicArgs']]]] = None,
              zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'authIdCharacteristics' in kwargs:
+            auth_id_characteristics = kwargs['authIdCharacteristics']
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         if auth_id_characteristics is not None:
             _setter("auth_id_characteristics", auth_id_characteristics)
         if zone_id is not None:

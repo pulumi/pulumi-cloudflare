@@ -78,6 +78,8 @@ type AccessOrganization struct {
 	LoginDesigns AccessOrganizationLoginDesignArrayOutput `pulumi:"loginDesigns"`
 	// The name of your Zero Trust organization.
 	Name pulumi.StringPtrOutput `pulumi:"name"`
+	// How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`. Defaults to `24h`.
+	SessionDuration pulumi.StringPtrOutput `pulumi:"sessionDuration"`
 	// A description of the reason why the UI read only field is being toggled.
 	UiReadOnlyToggleReason pulumi.StringPtrOutput `pulumi:"uiReadOnlyToggleReason"`
 	// The amount of time a user seat is inactive before it expires. When the user seat exceeds the set time of inactivity, the user is removed as an active seat and no longer counts against your Teams seat count. Must be in the format `300ms` or `2h45m`.
@@ -132,6 +134,8 @@ type accessOrganizationState struct {
 	LoginDesigns []AccessOrganizationLoginDesign `pulumi:"loginDesigns"`
 	// The name of your Zero Trust organization.
 	Name *string `pulumi:"name"`
+	// How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`. Defaults to `24h`.
+	SessionDuration *string `pulumi:"sessionDuration"`
 	// A description of the reason why the UI read only field is being toggled.
 	UiReadOnlyToggleReason *string `pulumi:"uiReadOnlyToggleReason"`
 	// The amount of time a user seat is inactive before it expires. When the user seat exceeds the set time of inactivity, the user is removed as an active seat and no longer counts against your Teams seat count. Must be in the format `300ms` or `2h45m`.
@@ -154,6 +158,8 @@ type AccessOrganizationState struct {
 	LoginDesigns AccessOrganizationLoginDesignArrayInput
 	// The name of your Zero Trust organization.
 	Name pulumi.StringPtrInput
+	// How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`. Defaults to `24h`.
+	SessionDuration pulumi.StringPtrInput
 	// A description of the reason why the UI read only field is being toggled.
 	UiReadOnlyToggleReason pulumi.StringPtrInput
 	// The amount of time a user seat is inactive before it expires. When the user seat exceeds the set time of inactivity, the user is removed as an active seat and no longer counts against your Teams seat count. Must be in the format `300ms` or `2h45m`.
@@ -180,6 +186,8 @@ type accessOrganizationArgs struct {
 	LoginDesigns []AccessOrganizationLoginDesign `pulumi:"loginDesigns"`
 	// The name of your Zero Trust organization.
 	Name *string `pulumi:"name"`
+	// How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`. Defaults to `24h`.
+	SessionDuration *string `pulumi:"sessionDuration"`
 	// A description of the reason why the UI read only field is being toggled.
 	UiReadOnlyToggleReason *string `pulumi:"uiReadOnlyToggleReason"`
 	// The amount of time a user seat is inactive before it expires. When the user seat exceeds the set time of inactivity, the user is removed as an active seat and no longer counts against your Teams seat count. Must be in the format `300ms` or `2h45m`.
@@ -203,6 +211,8 @@ type AccessOrganizationArgs struct {
 	LoginDesigns AccessOrganizationLoginDesignArrayInput
 	// The name of your Zero Trust organization.
 	Name pulumi.StringPtrInput
+	// How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`. Defaults to `24h`.
+	SessionDuration pulumi.StringPtrInput
 	// A description of the reason why the UI read only field is being toggled.
 	UiReadOnlyToggleReason pulumi.StringPtrInput
 	// The amount of time a user seat is inactive before it expires. When the user seat exceeds the set time of inactivity, the user is removed as an active seat and no longer counts against your Teams seat count. Must be in the format `300ms` or `2h45m`.
@@ -354,6 +364,11 @@ func (o AccessOrganizationOutput) LoginDesigns() AccessOrganizationLoginDesignAr
 // The name of your Zero Trust organization.
 func (o AccessOrganizationOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AccessOrganization) pulumi.StringPtrOutput { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`. Defaults to `24h`.
+func (o AccessOrganizationOutput) SessionDuration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccessOrganization) pulumi.StringPtrOutput { return v.SessionDuration }).(pulumi.StringPtrOutput)
 }
 
 // A description of the reason why the UI read only field is being toggled.

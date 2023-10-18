@@ -31,7 +31,11 @@ class EmailRoutingAddressArgs:
              _setter: Callable[[Any, Any], None],
              account_id: pulumi.Input[str],
              email: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accountId' in kwargs:
+            account_id = kwargs['accountId']
+
         _setter("account_id", account_id)
         _setter("email", email)
 
@@ -96,7 +100,11 @@ class _EmailRoutingAddressState:
              modified: Optional[pulumi.Input[str]] = None,
              tag: Optional[pulumi.Input[str]] = None,
              verified: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accountId' in kwargs:
+            account_id = kwargs['accountId']
+
         if account_id is not None:
             _setter("account_id", account_id)
         if created is not None:

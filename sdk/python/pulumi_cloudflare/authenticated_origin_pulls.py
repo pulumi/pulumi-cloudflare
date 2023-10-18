@@ -39,7 +39,13 @@ class AuthenticatedOriginPullsArgs:
              zone_id: pulumi.Input[str],
              authenticated_origin_pulls_certificate: Optional[pulumi.Input[str]] = None,
              hostname: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+        if 'authenticatedOriginPullsCertificate' in kwargs:
+            authenticated_origin_pulls_certificate = kwargs['authenticatedOriginPullsCertificate']
+
         _setter("enabled", enabled)
         _setter("zone_id", zone_id)
         if authenticated_origin_pulls_certificate is not None:
@@ -124,7 +130,13 @@ class _AuthenticatedOriginPullsState:
              enabled: Optional[pulumi.Input[bool]] = None,
              hostname: Optional[pulumi.Input[str]] = None,
              zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'authenticatedOriginPullsCertificate' in kwargs:
+            authenticated_origin_pulls_certificate = kwargs['authenticatedOriginPullsCertificate']
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         if authenticated_origin_pulls_certificate is not None:
             _setter("authenticated_origin_pulls_certificate", authenticated_origin_pulls_certificate)
         if enabled is not None:

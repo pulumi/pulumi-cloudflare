@@ -48,6 +48,21 @@ public final class AccessApplicationSaasAppArgs extends com.pulumi.resources.Res
     }
 
     /**
+     * The unique identifier for the SaaS application.
+     * 
+     */
+    @Import(name="idpEntityId")
+    private @Nullable Output<String> idpEntityId;
+
+    /**
+     * @return The unique identifier for the SaaS application.
+     * 
+     */
+    public Optional<Output<String>> idpEntityId() {
+        return Optional.ofNullable(this.idpEntityId);
+    }
+
+    /**
      * The format of the name identifier sent to the SaaS application. Defaults to `email`.
      * 
      */
@@ -60,6 +75,21 @@ public final class AccessApplicationSaasAppArgs extends com.pulumi.resources.Res
      */
     public Optional<Output<String>> nameIdFormat() {
         return Optional.ofNullable(this.nameIdFormat);
+    }
+
+    /**
+     * The public certificate that will be used to verify identities.
+     * 
+     */
+    @Import(name="publicKey")
+    private @Nullable Output<String> publicKey;
+
+    /**
+     * @return The public certificate that will be used to verify identities.
+     * 
+     */
+    public Optional<Output<String>> publicKey() {
+        return Optional.ofNullable(this.publicKey);
     }
 
     /**
@@ -77,13 +107,31 @@ public final class AccessApplicationSaasAppArgs extends com.pulumi.resources.Res
         return this.spEntityId;
     }
 
+    /**
+     * The endpoint where the SaaS application will send login requests.
+     * 
+     */
+    @Import(name="ssoEndpoint")
+    private @Nullable Output<String> ssoEndpoint;
+
+    /**
+     * @return The endpoint where the SaaS application will send login requests.
+     * 
+     */
+    public Optional<Output<String>> ssoEndpoint() {
+        return Optional.ofNullable(this.ssoEndpoint);
+    }
+
     private AccessApplicationSaasAppArgs() {}
 
     private AccessApplicationSaasAppArgs(AccessApplicationSaasAppArgs $) {
         this.consumerServiceUrl = $.consumerServiceUrl;
         this.customAttributes = $.customAttributes;
+        this.idpEntityId = $.idpEntityId;
         this.nameIdFormat = $.nameIdFormat;
+        this.publicKey = $.publicKey;
         this.spEntityId = $.spEntityId;
+        this.ssoEndpoint = $.ssoEndpoint;
     }
 
     public static Builder builder() {
@@ -157,6 +205,27 @@ public final class AccessApplicationSaasAppArgs extends com.pulumi.resources.Res
         }
 
         /**
+         * @param idpEntityId The unique identifier for the SaaS application.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder idpEntityId(@Nullable Output<String> idpEntityId) {
+            $.idpEntityId = idpEntityId;
+            return this;
+        }
+
+        /**
+         * @param idpEntityId The unique identifier for the SaaS application.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder idpEntityId(String idpEntityId) {
+            return idpEntityId(Output.of(idpEntityId));
+        }
+
+        /**
          * @param nameIdFormat The format of the name identifier sent to the SaaS application. Defaults to `email`.
          * 
          * @return builder
@@ -178,6 +247,27 @@ public final class AccessApplicationSaasAppArgs extends com.pulumi.resources.Res
         }
 
         /**
+         * @param publicKey The public certificate that will be used to verify identities.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder publicKey(@Nullable Output<String> publicKey) {
+            $.publicKey = publicKey;
+            return this;
+        }
+
+        /**
+         * @param publicKey The public certificate that will be used to verify identities.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder publicKey(String publicKey) {
+            return publicKey(Output.of(publicKey));
+        }
+
+        /**
          * @param spEntityId A globally unique name for an identity or service provider.
          * 
          * @return builder
@@ -196,6 +286,27 @@ public final class AccessApplicationSaasAppArgs extends com.pulumi.resources.Res
          */
         public Builder spEntityId(String spEntityId) {
             return spEntityId(Output.of(spEntityId));
+        }
+
+        /**
+         * @param ssoEndpoint The endpoint where the SaaS application will send login requests.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ssoEndpoint(@Nullable Output<String> ssoEndpoint) {
+            $.ssoEndpoint = ssoEndpoint;
+            return this;
+        }
+
+        /**
+         * @param ssoEndpoint The endpoint where the SaaS application will send login requests.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ssoEndpoint(String ssoEndpoint) {
+            return ssoEndpoint(Output.of(ssoEndpoint));
         }
 
         public AccessApplicationSaasAppArgs build() {

@@ -13,6 +13,7 @@ namespace Pulumi.Cloudflare.Outputs
     [OutputType]
     public sealed class GetRulesetsRulesetRuleActionParametersResult
     {
+        public readonly ImmutableArray<int> AdditionalCacheablePorts;
         public readonly bool? AutomaticHttpsRewrites;
         public readonly ImmutableArray<Outputs.GetRulesetsRulesetRuleActionParametersAutominifyResult> Autominifies;
         public readonly bool? Bic;
@@ -71,6 +72,8 @@ namespace Pulumi.Cloudflare.Outputs
 
         [OutputConstructor]
         private GetRulesetsRulesetRuleActionParametersResult(
+            ImmutableArray<int> additionalCacheablePorts,
+
             bool? automaticHttpsRewrites,
 
             ImmutableArray<Outputs.GetRulesetsRulesetRuleActionParametersAutominifyResult> autominifies,
@@ -169,6 +172,7 @@ namespace Pulumi.Cloudflare.Outputs
 
             string version)
         {
+            AdditionalCacheablePorts = additionalCacheablePorts;
             AutomaticHttpsRewrites = automaticHttpsRewrites;
             Autominifies = autominifies;
             Bic = bic;

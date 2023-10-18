@@ -4,8 +4,12 @@
 package cloudflare
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Use this data source to look up [API Token Permission Groups](https://developers.cloudflare.com/api/tokens/create/permissions).
@@ -61,4 +65,72 @@ type GetApiTokenPermissionGroupsResult struct {
 	User map[string]string `pulumi:"user"`
 	// Map of permissions for zone level resources.
 	Zone map[string]string `pulumi:"zone"`
+}
+
+func GetApiTokenPermissionGroupsOutput(ctx *pulumi.Context, opts ...pulumi.InvokeOption) GetApiTokenPermissionGroupsResultOutput {
+	return pulumi.ToOutput(0).ApplyT(func(int) (GetApiTokenPermissionGroupsResult, error) {
+		r, err := GetApiTokenPermissionGroups(ctx, opts...)
+		var s GetApiTokenPermissionGroupsResult
+		if r != nil {
+			s = *r
+		}
+		return s, err
+	}).(GetApiTokenPermissionGroupsResultOutput)
+}
+
+// A collection of values returned by getApiTokenPermissionGroups.
+type GetApiTokenPermissionGroupsResultOutput struct{ *pulumi.OutputState }
+
+func (GetApiTokenPermissionGroupsResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetApiTokenPermissionGroupsResult)(nil)).Elem()
+}
+
+func (o GetApiTokenPermissionGroupsResultOutput) ToGetApiTokenPermissionGroupsResultOutput() GetApiTokenPermissionGroupsResultOutput {
+	return o
+}
+
+func (o GetApiTokenPermissionGroupsResultOutput) ToGetApiTokenPermissionGroupsResultOutputWithContext(ctx context.Context) GetApiTokenPermissionGroupsResultOutput {
+	return o
+}
+
+func (o GetApiTokenPermissionGroupsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetApiTokenPermissionGroupsResult] {
+	return pulumix.Output[GetApiTokenPermissionGroupsResult]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Map of permissions for account level resources.
+func (o GetApiTokenPermissionGroupsResultOutput) Account() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetApiTokenPermissionGroupsResult) map[string]string { return v.Account }).(pulumi.StringMapOutput)
+}
+
+// Checksum of permissions.
+func (o GetApiTokenPermissionGroupsResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetApiTokenPermissionGroupsResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Map of all permissions available. Should not be used as some permissions will overlap resource scope. Instead, use resource level specific attributes.
+//
+// Deprecated: Use specific account, zone or user attributes instead.
+func (o GetApiTokenPermissionGroupsResultOutput) Permissions() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetApiTokenPermissionGroupsResult) map[string]string { return v.Permissions }).(pulumi.StringMapOutput)
+}
+
+// Map of permissions for r2 level resources.
+func (o GetApiTokenPermissionGroupsResultOutput) R2() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetApiTokenPermissionGroupsResult) map[string]string { return v.R2 }).(pulumi.StringMapOutput)
+}
+
+// Map of permissions for user level resources.
+func (o GetApiTokenPermissionGroupsResultOutput) User() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetApiTokenPermissionGroupsResult) map[string]string { return v.User }).(pulumi.StringMapOutput)
+}
+
+// Map of permissions for zone level resources.
+func (o GetApiTokenPermissionGroupsResultOutput) Zone() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetApiTokenPermissionGroupsResult) map[string]string { return v.Zone }).(pulumi.StringMapOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetApiTokenPermissionGroupsResultOutput{})
 }

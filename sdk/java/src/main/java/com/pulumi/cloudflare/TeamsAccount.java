@@ -12,6 +12,7 @@ import com.pulumi.cloudflare.outputs.TeamsAccountFips;
 import com.pulumi.cloudflare.outputs.TeamsAccountLogging;
 import com.pulumi.cloudflare.outputs.TeamsAccountPayloadLog;
 import com.pulumi.cloudflare.outputs.TeamsAccountProxy;
+import com.pulumi.cloudflare.outputs.TeamsAccountSshSessionLog;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
@@ -229,6 +230,20 @@ public class TeamsAccount extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<TeamsAccountProxy>> proxy() {
         return Codegen.optional(this.proxy);
+    }
+    /**
+     * Configuration for SSH Session Logging.
+     * 
+     */
+    @Export(name="sshSessionLog", refs={TeamsAccountSshSessionLog.class}, tree="[0]")
+    private Output</* @Nullable */ TeamsAccountSshSessionLog> sshSessionLog;
+
+    /**
+     * @return Configuration for SSH Session Logging.
+     * 
+     */
+    public Output<Optional<TeamsAccountSshSessionLog>> sshSessionLog() {
+        return Codegen.optional(this.sshSessionLog);
     }
     /**
      * Indicator that decryption of TLS traffic is enabled.

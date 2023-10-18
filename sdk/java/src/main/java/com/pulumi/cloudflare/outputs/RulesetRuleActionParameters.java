@@ -31,6 +31,11 @@ import javax.annotation.Nullable;
 @CustomType
 public final class RulesetRuleActionParameters {
     /**
+     * @return Specifies uncommon ports to allow cacheable assets to be served from.
+     * 
+     */
+    private @Nullable List<Integer> additionalCacheablePorts;
+    /**
      * @return Compression algorithms to use in order of preference.
      * 
      */
@@ -278,6 +283,13 @@ public final class RulesetRuleActionParameters {
     private @Nullable String version;
 
     private RulesetRuleActionParameters() {}
+    /**
+     * @return Specifies uncommon ports to allow cacheable assets to be served from.
+     * 
+     */
+    public List<Integer> additionalCacheablePorts() {
+        return this.additionalCacheablePorts == null ? List.of() : this.additionalCacheablePorts;
+    }
     /**
      * @return Compression algorithms to use in order of preference.
      * 
@@ -634,6 +646,7 @@ public final class RulesetRuleActionParameters {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable List<Integer> additionalCacheablePorts;
         private @Nullable List<RulesetRuleActionParametersAlgorithm> algorithms;
         private @Nullable Boolean automaticHttpsRewrites;
         private @Nullable List<RulesetRuleActionParametersAutominify> autominifies;
@@ -687,6 +700,7 @@ public final class RulesetRuleActionParameters {
         public Builder() {}
         public Builder(RulesetRuleActionParameters defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.additionalCacheablePorts = defaults.additionalCacheablePorts;
     	      this.algorithms = defaults.algorithms;
     	      this.automaticHttpsRewrites = defaults.automaticHttpsRewrites;
     	      this.autominifies = defaults.autominifies;
@@ -739,6 +753,14 @@ public final class RulesetRuleActionParameters {
     	      this.version = defaults.version;
         }
 
+        @CustomType.Setter
+        public Builder additionalCacheablePorts(@Nullable List<Integer> additionalCacheablePorts) {
+            this.additionalCacheablePorts = additionalCacheablePorts;
+            return this;
+        }
+        public Builder additionalCacheablePorts(Integer... additionalCacheablePorts) {
+            return additionalCacheablePorts(List.of(additionalCacheablePorts));
+        }
         @CustomType.Setter
         public Builder algorithms(@Nullable List<RulesetRuleActionParametersAlgorithm> algorithms) {
             this.algorithms = algorithms;
@@ -1021,6 +1043,7 @@ public final class RulesetRuleActionParameters {
         }
         public RulesetRuleActionParameters build() {
             final var o = new RulesetRuleActionParameters();
+            o.additionalCacheablePorts = additionalCacheablePorts;
             o.algorithms = algorithms;
             o.automaticHttpsRewrites = automaticHttpsRewrites;
             o.autominifies = autominifies;

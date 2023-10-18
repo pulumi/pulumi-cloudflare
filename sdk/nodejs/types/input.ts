@@ -50,13 +50,25 @@ export interface AccessApplicationSaasApp {
      */
     customAttributes?: pulumi.Input<pulumi.Input<inputs.AccessApplicationSaasAppCustomAttribute>[]>;
     /**
+     * The unique identifier for the SaaS application.
+     */
+    idpEntityId?: pulumi.Input<string>;
+    /**
      * The format of the name identifier sent to the SaaS application. Defaults to `email`.
      */
     nameIdFormat?: pulumi.Input<string>;
     /**
+     * The public certificate that will be used to verify identities.
+     */
+    publicKey?: pulumi.Input<string>;
+    /**
      * A globally unique name for an identity or service provider.
      */
     spEntityId: pulumi.Input<string>;
+    /**
+     * The endpoint where the SaaS application will send login requests.
+     */
+    ssoEndpoint?: pulumi.Input<string>;
 }
 
 export interface AccessApplicationSaasAppCustomAttribute {
@@ -2796,7 +2808,7 @@ export interface RulesetRule {
      */
     lastUpdated?: pulumi.Input<string>;
     /**
-     * List parameters to configure how the rule generates logs.
+     * List parameters to configure how the rule generates logs. Only valid for skip action.
      */
     logging?: pulumi.Input<inputs.RulesetRuleLogging>;
     /**
@@ -2814,6 +2826,10 @@ export interface RulesetRule {
 }
 
 export interface RulesetRuleActionParameters {
+    /**
+     * Specifies uncommon ports to allow cacheable assets to be served from.
+     */
+    additionalCacheablePorts?: pulumi.Input<pulumi.Input<number>[]>;
     /**
      * Compression algorithms to use in order of preference.
      */
@@ -3630,6 +3646,13 @@ export interface TeamsAccountProxy {
     udp: pulumi.Input<boolean>;
 }
 
+export interface TeamsAccountSshSessionLog {
+    /**
+     * Public key used to encrypt ssh session.
+     */
+    publicKey: pulumi.Input<string>;
+}
+
 export interface TeamsLocationNetwork {
     /**
      * The ID of this resource.
@@ -4202,6 +4225,7 @@ export interface ZoneSettingsOverrideInitialSetting {
     earlyHints?: pulumi.Input<string>;
     emailObfuscation?: pulumi.Input<string>;
     filterLogsToCloudflare?: pulumi.Input<string>;
+    fonts?: pulumi.Input<string>;
     h2Prioritization?: pulumi.Input<string>;
     hotlinkProtection?: pulumi.Input<string>;
     http2?: pulumi.Input<string>;
@@ -4283,6 +4307,7 @@ export interface ZoneSettingsOverrideSettings {
     earlyHints?: pulumi.Input<string>;
     emailObfuscation?: pulumi.Input<string>;
     filterLogsToCloudflare?: pulumi.Input<string>;
+    fonts?: pulumi.Input<string>;
     h2Prioritization?: pulumi.Input<string>;
     hotlinkProtection?: pulumi.Input<string>;
     http2?: pulumi.Input<string>;

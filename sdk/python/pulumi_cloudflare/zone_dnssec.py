@@ -31,7 +31,13 @@ class ZoneDnssecArgs:
              _setter: Callable[[Any, Any], None],
              zone_id: pulumi.Input[str],
              modified_on: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+        if 'modifiedOn' in kwargs:
+            modified_on = kwargs['modifiedOn']
+
         _setter("zone_id", zone_id)
         if modified_on is not None:
             _setter("modified_on", modified_on)
@@ -121,7 +127,23 @@ class _ZoneDnssecState:
              public_key: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
              zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'digestAlgorithm' in kwargs:
+            digest_algorithm = kwargs['digestAlgorithm']
+        if 'digestType' in kwargs:
+            digest_type = kwargs['digestType']
+        if 'keyTag' in kwargs:
+            key_tag = kwargs['keyTag']
+        if 'keyType' in kwargs:
+            key_type = kwargs['keyType']
+        if 'modifiedOn' in kwargs:
+            modified_on = kwargs['modifiedOn']
+        if 'publicKey' in kwargs:
+            public_key = kwargs['publicKey']
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         if algorithm is not None:
             _setter("algorithm", algorithm)
         if digest is not None:

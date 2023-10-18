@@ -31,16 +31,34 @@ namespace Pulumi.Cloudflare.Inputs
         }
 
         /// <summary>
+        /// The unique identifier for the SaaS application.
+        /// </summary>
+        [Input("idpEntityId")]
+        public Input<string>? IdpEntityId { get; set; }
+
+        /// <summary>
         /// The format of the name identifier sent to the SaaS application. Defaults to `email`.
         /// </summary>
         [Input("nameIdFormat")]
         public Input<string>? NameIdFormat { get; set; }
 
         /// <summary>
+        /// The public certificate that will be used to verify identities.
+        /// </summary>
+        [Input("publicKey")]
+        public Input<string>? PublicKey { get; set; }
+
+        /// <summary>
         /// A globally unique name for an identity or service provider.
         /// </summary>
         [Input("spEntityId", required: true)]
         public Input<string> SpEntityId { get; set; } = null!;
+
+        /// <summary>
+        /// The endpoint where the SaaS application will send login requests.
+        /// </summary>
+        [Input("ssoEndpoint")]
+        public Input<string>? SsoEndpoint { get; set; }
 
         public AccessApplicationSaasAppGetArgs()
         {

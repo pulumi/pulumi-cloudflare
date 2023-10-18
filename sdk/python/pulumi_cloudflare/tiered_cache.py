@@ -31,7 +31,13 @@ class TieredCacheArgs:
              _setter: Callable[[Any, Any], None],
              cache_type: pulumi.Input[str],
              zone_id: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'cacheType' in kwargs:
+            cache_type = kwargs['cacheType']
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         _setter("cache_type", cache_type)
         _setter("zone_id", zone_id)
 
@@ -80,7 +86,13 @@ class _TieredCacheState:
              _setter: Callable[[Any, Any], None],
              cache_type: Optional[pulumi.Input[str]] = None,
              zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'cacheType' in kwargs:
+            cache_type = kwargs['cacheType']
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         if cache_type is not None:
             _setter("cache_type", cache_type)
         if zone_id is not None:

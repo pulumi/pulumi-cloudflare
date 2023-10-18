@@ -55,7 +55,11 @@ class DevicePostureRuleArgs:
              matches: Optional[pulumi.Input[Sequence[pulumi.Input['DevicePostureRuleMatchArgs']]]] = None,
              name: Optional[pulumi.Input[str]] = None,
              schedule: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accountId' in kwargs:
+            account_id = kwargs['accountId']
+
         _setter("account_id", account_id)
         _setter("type", type)
         if description is not None:
@@ -204,7 +208,11 @@ class _DevicePostureRuleState:
              name: Optional[pulumi.Input[str]] = None,
              schedule: Optional[pulumi.Input[str]] = None,
              type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accountId' in kwargs:
+            account_id = kwargs['accountId']
+
         if account_id is not None:
             _setter("account_id", account_id)
         if description is not None:

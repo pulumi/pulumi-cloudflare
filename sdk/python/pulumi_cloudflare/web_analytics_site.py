@@ -39,7 +39,15 @@ class WebAnalyticsSiteArgs:
              auto_install: pulumi.Input[bool],
              host: Optional[pulumi.Input[str]] = None,
              zone_tag: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accountId' in kwargs:
+            account_id = kwargs['accountId']
+        if 'autoInstall' in kwargs:
+            auto_install = kwargs['autoInstall']
+        if 'zoneTag' in kwargs:
+            zone_tag = kwargs['zoneTag']
+
         _setter("account_id", account_id)
         _setter("auto_install", auto_install)
         if host is not None:
@@ -140,7 +148,21 @@ class _WebAnalyticsSiteState:
              site_token: Optional[pulumi.Input[str]] = None,
              snippet: Optional[pulumi.Input[str]] = None,
              zone_tag: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accountId' in kwargs:
+            account_id = kwargs['accountId']
+        if 'autoInstall' in kwargs:
+            auto_install = kwargs['autoInstall']
+        if 'rulesetId' in kwargs:
+            ruleset_id = kwargs['rulesetId']
+        if 'siteTag' in kwargs:
+            site_tag = kwargs['siteTag']
+        if 'siteToken' in kwargs:
+            site_token = kwargs['siteToken']
+        if 'zoneTag' in kwargs:
+            zone_tag = kwargs['zoneTag']
+
         if account_id is not None:
             _setter("account_id", account_id)
         if auto_install is not None:

@@ -37,7 +37,15 @@ class ManagedHeadersArgs:
              zone_id: pulumi.Input[str],
              managed_request_headers: Optional[pulumi.Input[Sequence[pulumi.Input['ManagedHeadersManagedRequestHeaderArgs']]]] = None,
              managed_response_headers: Optional[pulumi.Input[Sequence[pulumi.Input['ManagedHeadersManagedResponseHeaderArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+        if 'managedRequestHeaders' in kwargs:
+            managed_request_headers = kwargs['managedRequestHeaders']
+        if 'managedResponseHeaders' in kwargs:
+            managed_response_headers = kwargs['managedResponseHeaders']
+
         _setter("zone_id", zone_id)
         if managed_request_headers is not None:
             _setter("managed_request_headers", managed_request_headers)
@@ -105,7 +113,15 @@ class _ManagedHeadersState:
              managed_request_headers: Optional[pulumi.Input[Sequence[pulumi.Input['ManagedHeadersManagedRequestHeaderArgs']]]] = None,
              managed_response_headers: Optional[pulumi.Input[Sequence[pulumi.Input['ManagedHeadersManagedResponseHeaderArgs']]]] = None,
              zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'managedRequestHeaders' in kwargs:
+            managed_request_headers = kwargs['managedRequestHeaders']
+        if 'managedResponseHeaders' in kwargs:
+            managed_response_headers = kwargs['managedResponseHeaders']
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         if managed_request_headers is not None:
             _setter("managed_request_headers", managed_request_headers)
         if managed_response_headers is not None:

@@ -31,7 +31,11 @@ class CustomHostnameFallbackOriginArgs:
              _setter: Callable[[Any, Any], None],
              origin: pulumi.Input[str],
              zone_id: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         _setter("origin", origin)
         _setter("zone_id", zone_id)
 
@@ -84,7 +88,11 @@ class _CustomHostnameFallbackOriginState:
              origin: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
              zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         if origin is not None:
             _setter("origin", origin)
         if status is not None:

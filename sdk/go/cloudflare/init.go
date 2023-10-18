@@ -43,6 +43,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &AccessRule{}
 	case "cloudflare:index/accessServiceToken:AccessServiceToken":
 		r = &AccessServiceToken{}
+	case "cloudflare:index/accessTag:AccessTag":
+		r = &AccessTag{}
 	case "cloudflare:index/account:Account":
 		r = &Account{}
 	case "cloudflare:index/accountMember:AccountMember":
@@ -53,6 +55,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ApiShield{}
 	case "cloudflare:index/apiShieldOperation:ApiShieldOperation":
 		r = &ApiShieldOperation{}
+	case "cloudflare:index/apiShieldSchema:ApiShieldSchema":
+		r = &ApiShieldSchema{}
 	case "cloudflare:index/apiToken:ApiToken":
 		r = &ApiToken{}
 	case "cloudflare:index/argo:Argo":
@@ -75,6 +79,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &CustomPages{}
 	case "cloudflare:index/customSsl:CustomSsl":
 		r = &CustomSsl{}
+	case "cloudflare:index/d1Database:D1Database":
+		r = &D1Database{}
 	case "cloudflare:index/deviceDexTest:DeviceDexTest":
 		r = &DeviceDexTest{}
 	case "cloudflare:index/deviceManagedNetworks:DeviceManagedNetworks":
@@ -139,6 +145,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &NotificationPolicy{}
 	case "cloudflare:index/notificationPolicyWebhooks:NotificationPolicyWebhooks":
 		r = &NotificationPolicyWebhooks{}
+	case "cloudflare:index/observatoryScheduledTest:ObservatoryScheduledTest":
+		r = &ObservatoryScheduledTest{}
 	case "cloudflare:index/originCaCertificate:OriginCaCertificate":
 		r = &OriginCaCertificate{}
 	case "cloudflare:index/pageRule:PageRule":
@@ -323,6 +331,11 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"cloudflare",
+		"index/accessTag",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
 		"index/account",
 		&module{version},
 	)
@@ -344,6 +357,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"cloudflare",
 		"index/apiShieldOperation",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
+		"index/apiShieldSchema",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -399,6 +417,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"cloudflare",
 		"index/customSsl",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
+		"index/d1Database",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -559,6 +582,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"cloudflare",
 		"index/notificationPolicyWebhooks",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
+		"index/observatoryScheduledTest",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

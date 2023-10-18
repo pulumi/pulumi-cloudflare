@@ -36,7 +36,15 @@ class CustomSslArgs:
              zone_id: pulumi.Input[str],
              custom_ssl_options: Optional[pulumi.Input['CustomSslCustomSslOptionsArgs']] = None,
              custom_ssl_priorities: Optional[pulumi.Input[Sequence[pulumi.Input['CustomSslCustomSslPriorityArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+        if 'customSslOptions' in kwargs:
+            custom_ssl_options = kwargs['customSslOptions']
+        if 'customSslPriorities' in kwargs:
+            custom_ssl_priorities = kwargs['customSslPriorities']
+
         _setter("zone_id", zone_id)
         if custom_ssl_options is not None:
             _setter("custom_ssl_options", custom_ssl_options)
@@ -124,7 +132,21 @@ class _CustomSslState:
              status: Optional[pulumi.Input[str]] = None,
              uploaded_on: Optional[pulumi.Input[str]] = None,
              zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'customSslOptions' in kwargs:
+            custom_ssl_options = kwargs['customSslOptions']
+        if 'customSslPriorities' in kwargs:
+            custom_ssl_priorities = kwargs['customSslPriorities']
+        if 'expiresOn' in kwargs:
+            expires_on = kwargs['expiresOn']
+        if 'modifiedOn' in kwargs:
+            modified_on = kwargs['modifiedOn']
+        if 'uploadedOn' in kwargs:
+            uploaded_on = kwargs['uploadedOn']
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         if custom_ssl_options is not None:
             _setter("custom_ssl_options", custom_ssl_options)
         if custom_ssl_priorities is not None:

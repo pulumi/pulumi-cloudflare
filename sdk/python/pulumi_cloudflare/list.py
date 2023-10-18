@@ -44,7 +44,11 @@ class ListArgs:
              name: pulumi.Input[str],
              description: Optional[pulumi.Input[str]] = None,
              items: Optional[pulumi.Input[Sequence[pulumi.Input['ListItemArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accountId' in kwargs:
+            account_id = kwargs['accountId']
+
         _setter("account_id", account_id)
         _setter("kind", kind)
         _setter("name", name)
@@ -142,7 +146,11 @@ class _ListState:
              items: Optional[pulumi.Input[Sequence[pulumi.Input['ListItemArgs']]]] = None,
              kind: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accountId' in kwargs:
+            account_id = kwargs['accountId']
+
         if account_id is not None:
             _setter("account_id", account_id)
         if description is not None:

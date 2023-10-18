@@ -71,7 +71,11 @@ class ZoneCacheVariantsArgs:
              tiffs: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              tifs: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              webps: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         _setter("zone_id", zone_id)
         if avifs is not None:
             _setter("avifs", avifs)
@@ -301,7 +305,11 @@ class _ZoneCacheVariantsState:
              tifs: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              webps: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         if avifs is not None:
             _setter("avifs", avifs)
         if bmps is not None:

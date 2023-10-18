@@ -43,7 +43,15 @@ class TunnelRouteArgs:
              tunnel_id: pulumi.Input[str],
              comment: Optional[pulumi.Input[str]] = None,
              virtual_network_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accountId' in kwargs:
+            account_id = kwargs['accountId']
+        if 'tunnelId' in kwargs:
+            tunnel_id = kwargs['tunnelId']
+        if 'virtualNetworkId' in kwargs:
+            virtual_network_id = kwargs['virtualNetworkId']
+
         _setter("account_id", account_id)
         _setter("network", network)
         _setter("tunnel_id", tunnel_id)
@@ -145,7 +153,15 @@ class _TunnelRouteState:
              network: Optional[pulumi.Input[str]] = None,
              tunnel_id: Optional[pulumi.Input[str]] = None,
              virtual_network_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accountId' in kwargs:
+            account_id = kwargs['accountId']
+        if 'tunnelId' in kwargs:
+            tunnel_id = kwargs['tunnelId']
+        if 'virtualNetworkId' in kwargs:
+            virtual_network_id = kwargs['virtualNetworkId']
+
         if account_id is not None:
             _setter("account_id", account_id)
         if comment is not None:

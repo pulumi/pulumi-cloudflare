@@ -31,7 +31,13 @@ class AccessKeysConfigurationArgs:
              _setter: Callable[[Any, Any], None],
              account_id: pulumi.Input[str],
              key_rotation_interval_days: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accountId' in kwargs:
+            account_id = kwargs['accountId']
+        if 'keyRotationIntervalDays' in kwargs:
+            key_rotation_interval_days = kwargs['keyRotationIntervalDays']
+
         _setter("account_id", account_id)
         if key_rotation_interval_days is not None:
             _setter("key_rotation_interval_days", key_rotation_interval_days)
@@ -81,7 +87,13 @@ class _AccessKeysConfigurationState:
              _setter: Callable[[Any, Any], None],
              account_id: Optional[pulumi.Input[str]] = None,
              key_rotation_interval_days: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accountId' in kwargs:
+            account_id = kwargs['accountId']
+        if 'keyRotationIntervalDays' in kwargs:
+            key_rotation_interval_days = kwargs['keyRotationIntervalDays']
+
         if account_id is not None:
             _setter("account_id", account_id)
         if key_rotation_interval_days is not None:

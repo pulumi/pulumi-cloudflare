@@ -51,7 +51,13 @@ class FirewallRuleArgs:
              paused: Optional[pulumi.Input[bool]] = None,
              priority: Optional[pulumi.Input[int]] = None,
              products: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'filterId' in kwargs:
+            filter_id = kwargs['filterId']
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         _setter("action", action)
         _setter("filter_id", filter_id)
         _setter("zone_id", zone_id)
@@ -189,7 +195,13 @@ class _FirewallRuleState:
              priority: Optional[pulumi.Input[int]] = None,
              products: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'filterId' in kwargs:
+            filter_id = kwargs['filterId']
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         if action is not None:
             _setter("action", action)
         if description is not None:

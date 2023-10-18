@@ -320,6 +320,21 @@ public final class AccessApplicationArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
+     * The itags associated with the application.
+     * 
+     */
+    @Import(name="tags")
+    private @Nullable Output<List<String>> tags;
+
+    /**
+     * @return The itags associated with the application.
+     * 
+     */
+    public Optional<Output<List<String>>> tags() {
+        return Optional.ofNullable(this.tags);
+    }
+
+    /**
      * The application type. Available values: `app_launcher`, `bookmark`, `biso`, `dash_sso`, `saas`, `self_hosted`, `ssh`, `vnc`, `warp`. Defaults to `self_hosted`.
      * 
      */
@@ -372,6 +387,7 @@ public final class AccessApplicationArgs extends com.pulumi.resources.ResourceAr
         this.serviceAuth401Redirect = $.serviceAuth401Redirect;
         this.sessionDuration = $.sessionDuration;
         this.skipInterstitial = $.skipInterstitial;
+        this.tags = $.tags;
         this.type = $.type;
         this.zoneId = $.zoneId;
     }
@@ -852,6 +868,37 @@ public final class AccessApplicationArgs extends com.pulumi.resources.ResourceAr
          */
         public Builder skipInterstitial(Boolean skipInterstitial) {
             return skipInterstitial(Output.of(skipInterstitial));
+        }
+
+        /**
+         * @param tags The itags associated with the application.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tags(@Nullable Output<List<String>> tags) {
+            $.tags = tags;
+            return this;
+        }
+
+        /**
+         * @param tags The itags associated with the application.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tags(List<String> tags) {
+            return tags(Output.of(tags));
+        }
+
+        /**
+         * @param tags The itags associated with the application.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tags(String... tags) {
+            return tags(List.of(tags));
         }
 
         /**

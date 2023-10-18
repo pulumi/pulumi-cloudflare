@@ -12,6 +12,18 @@ namespace Pulumi.Cloudflare.Inputs
 
     public sealed class RulesetRuleActionParametersGetArgs : global::Pulumi.ResourceArgs
     {
+        [Input("additionalCacheablePorts")]
+        private InputList<int>? _additionalCacheablePorts;
+
+        /// <summary>
+        /// Specifies uncommon ports to allow cacheable assets to be served from.
+        /// </summary>
+        public InputList<int> AdditionalCacheablePorts
+        {
+            get => _additionalCacheablePorts ?? (_additionalCacheablePorts = new InputList<int>());
+            set => _additionalCacheablePorts = value;
+        }
+
         [Input("algorithms")]
         private InputList<Inputs.RulesetRuleActionParametersAlgorithmGetArgs>? _algorithms;
 

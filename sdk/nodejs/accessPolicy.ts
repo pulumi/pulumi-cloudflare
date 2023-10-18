@@ -143,6 +143,10 @@ export class AccessPolicy extends pulumi.CustomResource {
      */
     public readonly requires!: pulumi.Output<outputs.AccessPolicyRequire[] | undefined>;
     /**
+     * How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`. Defaults to `24h`.
+     */
+    public readonly sessionDuration!: pulumi.Output<string | undefined>;
+    /**
      * The zone identifier to target for the resource. Conflicts with `accountId`.
      */
     public readonly zoneId!: pulumi.Output<string>;
@@ -173,6 +177,7 @@ export class AccessPolicy extends pulumi.CustomResource {
             resourceInputs["purposeJustificationPrompt"] = state ? state.purposeJustificationPrompt : undefined;
             resourceInputs["purposeJustificationRequired"] = state ? state.purposeJustificationRequired : undefined;
             resourceInputs["requires"] = state ? state.requires : undefined;
+            resourceInputs["sessionDuration"] = state ? state.sessionDuration : undefined;
             resourceInputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
             const args = argsOrState as AccessPolicyArgs | undefined;
@@ -204,6 +209,7 @@ export class AccessPolicy extends pulumi.CustomResource {
             resourceInputs["purposeJustificationPrompt"] = args ? args.purposeJustificationPrompt : undefined;
             resourceInputs["purposeJustificationRequired"] = args ? args.purposeJustificationRequired : undefined;
             resourceInputs["requires"] = args ? args.requires : undefined;
+            resourceInputs["sessionDuration"] = args ? args.sessionDuration : undefined;
             resourceInputs["zoneId"] = args ? args.zoneId : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -262,6 +268,10 @@ export interface AccessPolicyState {
      */
     requires?: pulumi.Input<pulumi.Input<inputs.AccessPolicyRequire>[]>;
     /**
+     * How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`. Defaults to `24h`.
+     */
+    sessionDuration?: pulumi.Input<string>;
+    /**
      * The zone identifier to target for the resource. Conflicts with `accountId`.
      */
     zoneId?: pulumi.Input<string>;
@@ -317,6 +327,10 @@ export interface AccessPolicyArgs {
      * A series of access conditions, see Access Groups.
      */
     requires?: pulumi.Input<pulumi.Input<inputs.AccessPolicyRequire>[]>;
+    /**
+     * How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`. Defaults to `24h`.
+     */
+    sessionDuration?: pulumi.Input<string>;
     /**
      * The zone identifier to target for the resource. Conflicts with `accountId`.
      */

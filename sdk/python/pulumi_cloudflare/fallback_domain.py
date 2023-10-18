@@ -36,7 +36,13 @@ class FallbackDomainArgs:
              account_id: pulumi.Input[str],
              domains: pulumi.Input[Sequence[pulumi.Input['FallbackDomainDomainArgs']]],
              policy_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accountId' in kwargs:
+            account_id = kwargs['accountId']
+        if 'policyId' in kwargs:
+            policy_id = kwargs['policyId']
+
         _setter("account_id", account_id)
         _setter("domains", domains)
         if policy_id is not None:
@@ -99,7 +105,13 @@ class _FallbackDomainState:
              account_id: Optional[pulumi.Input[str]] = None,
              domains: Optional[pulumi.Input[Sequence[pulumi.Input['FallbackDomainDomainArgs']]]] = None,
              policy_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accountId' in kwargs:
+            account_id = kwargs['accountId']
+        if 'policyId' in kwargs:
+            policy_id = kwargs['policyId']
+
         if account_id is not None:
             _setter("account_id", account_id)
         if domains is not None:

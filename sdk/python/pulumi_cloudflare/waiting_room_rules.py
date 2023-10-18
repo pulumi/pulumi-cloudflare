@@ -37,7 +37,13 @@ class WaitingRoomRulesArgs:
              waiting_room_id: pulumi.Input[str],
              zone_id: pulumi.Input[str],
              rules: Optional[pulumi.Input[Sequence[pulumi.Input['WaitingRoomRulesRuleArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'waitingRoomId' in kwargs:
+            waiting_room_id = kwargs['waitingRoomId']
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         _setter("waiting_room_id", waiting_room_id)
         _setter("zone_id", zone_id)
         if rules is not None:
@@ -104,7 +110,13 @@ class _WaitingRoomRulesState:
              rules: Optional[pulumi.Input[Sequence[pulumi.Input['WaitingRoomRulesRuleArgs']]]] = None,
              waiting_room_id: Optional[pulumi.Input[str]] = None,
              zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'waitingRoomId' in kwargs:
+            waiting_room_id = kwargs['waitingRoomId']
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         if rules is not None:
             _setter("rules", rules)
         if waiting_room_id is not None:

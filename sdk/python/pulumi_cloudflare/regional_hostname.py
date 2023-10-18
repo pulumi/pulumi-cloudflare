@@ -35,7 +35,13 @@ class RegionalHostnameArgs:
              hostname: pulumi.Input[str],
              region_key: pulumi.Input[str],
              zone_id: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'regionKey' in kwargs:
+            region_key = kwargs['regionKey']
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         _setter("hostname", hostname)
         _setter("region_key", region_key)
         _setter("zone_id", zone_id)
@@ -105,7 +111,15 @@ class _RegionalHostnameState:
              hostname: Optional[pulumi.Input[str]] = None,
              region_key: Optional[pulumi.Input[str]] = None,
              zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'createdOn' in kwargs:
+            created_on = kwargs['createdOn']
+        if 'regionKey' in kwargs:
+            region_key = kwargs['regionKey']
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         if created_on is not None:
             _setter("created_on", created_on)
         if hostname is not None:

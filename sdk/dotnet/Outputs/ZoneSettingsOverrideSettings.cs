@@ -28,6 +28,7 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly string? EarlyHints;
         public readonly string? EmailObfuscation;
         public readonly string? FilterLogsToCloudflare;
+        public readonly string? Fonts;
         public readonly string? H2Prioritization;
         public readonly string? HotlinkProtection;
         public readonly string? Http2;
@@ -100,6 +101,8 @@ namespace Pulumi.Cloudflare.Outputs
             string? emailObfuscation,
 
             string? filterLogsToCloudflare,
+
+            string? fonts,
 
             string? h2Prioritization,
 
@@ -196,6 +199,7 @@ namespace Pulumi.Cloudflare.Outputs
             EarlyHints = earlyHints;
             EmailObfuscation = emailObfuscation;
             FilterLogsToCloudflare = filterLogsToCloudflare;
+            Fonts = fonts;
             H2Prioritization = h2Prioritization;
             HotlinkProtection = hotlinkProtection;
             Http2 = http2;

@@ -61,7 +61,19 @@ class NotificationPolicyArgs:
              filters: Optional[pulumi.Input['NotificationPolicyFiltersArgs']] = None,
              pagerduty_integrations: Optional[pulumi.Input[Sequence[pulumi.Input['NotificationPolicyPagerdutyIntegrationArgs']]]] = None,
              webhooks_integrations: Optional[pulumi.Input[Sequence[pulumi.Input['NotificationPolicyWebhooksIntegrationArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accountId' in kwargs:
+            account_id = kwargs['accountId']
+        if 'alertType' in kwargs:
+            alert_type = kwargs['alertType']
+        if 'emailIntegrations' in kwargs:
+            email_integrations = kwargs['emailIntegrations']
+        if 'pagerdutyIntegrations' in kwargs:
+            pagerduty_integrations = kwargs['pagerdutyIntegrations']
+        if 'webhooksIntegrations' in kwargs:
+            webhooks_integrations = kwargs['webhooksIntegrations']
+
         _setter("account_id", account_id)
         _setter("alert_type", alert_type)
         _setter("enabled", enabled)
@@ -242,7 +254,19 @@ class _NotificationPolicyState:
              name: Optional[pulumi.Input[str]] = None,
              pagerduty_integrations: Optional[pulumi.Input[Sequence[pulumi.Input['NotificationPolicyPagerdutyIntegrationArgs']]]] = None,
              webhooks_integrations: Optional[pulumi.Input[Sequence[pulumi.Input['NotificationPolicyWebhooksIntegrationArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accountId' in kwargs:
+            account_id = kwargs['accountId']
+        if 'alertType' in kwargs:
+            alert_type = kwargs['alertType']
+        if 'emailIntegrations' in kwargs:
+            email_integrations = kwargs['emailIntegrations']
+        if 'pagerdutyIntegrations' in kwargs:
+            pagerduty_integrations = kwargs['pagerdutyIntegrations']
+        if 'webhooksIntegrations' in kwargs:
+            webhooks_integrations = kwargs['webhooksIntegrations']
+
         if account_id is not None:
             _setter("account_id", account_id)
         if alert_type is not None:

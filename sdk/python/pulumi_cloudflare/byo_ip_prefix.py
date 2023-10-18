@@ -39,7 +39,13 @@ class ByoIpPrefixArgs:
              prefix_id: pulumi.Input[str],
              advertisement: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accountId' in kwargs:
+            account_id = kwargs['accountId']
+        if 'prefixId' in kwargs:
+            prefix_id = kwargs['prefixId']
+
         _setter("account_id", account_id)
         _setter("prefix_id", prefix_id)
         if advertisement is not None:
@@ -124,7 +130,13 @@ class _ByoIpPrefixState:
              advertisement: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              prefix_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accountId' in kwargs:
+            account_id = kwargs['accountId']
+        if 'prefixId' in kwargs:
+            prefix_id = kwargs['prefixId']
+
         if account_id is not None:
             _setter("account_id", account_id)
         if advertisement is not None:

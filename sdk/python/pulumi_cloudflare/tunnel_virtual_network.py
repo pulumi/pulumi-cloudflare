@@ -39,7 +39,13 @@ class TunnelVirtualNetworkArgs:
              name: pulumi.Input[str],
              comment: Optional[pulumi.Input[str]] = None,
              is_default_network: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accountId' in kwargs:
+            account_id = kwargs['accountId']
+        if 'isDefaultNetwork' in kwargs:
+            is_default_network = kwargs['isDefaultNetwork']
+
         _setter("account_id", account_id)
         _setter("name", name)
         if comment is not None:
@@ -124,7 +130,13 @@ class _TunnelVirtualNetworkState:
              comment: Optional[pulumi.Input[str]] = None,
              is_default_network: Optional[pulumi.Input[bool]] = None,
              name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accountId' in kwargs:
+            account_id = kwargs['accountId']
+        if 'isDefaultNetwork' in kwargs:
+            is_default_network = kwargs['isDefaultNetwork']
+
         if account_id is not None:
             _setter("account_id", account_id)
         if comment is not None:

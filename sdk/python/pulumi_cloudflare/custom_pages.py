@@ -43,7 +43,13 @@ class CustomPagesArgs:
              account_id: Optional[pulumi.Input[str]] = None,
              state: Optional[pulumi.Input[str]] = None,
              zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accountId' in kwargs:
+            account_id = kwargs['accountId']
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         _setter("type", type)
         _setter("url", url)
         if account_id is not None:
@@ -146,7 +152,13 @@ class _CustomPagesState:
              type: Optional[pulumi.Input[str]] = None,
              url: Optional[pulumi.Input[str]] = None,
              zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accountId' in kwargs:
+            account_id = kwargs['accountId']
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         if account_id is not None:
             _setter("account_id", account_id)
         if state is not None:

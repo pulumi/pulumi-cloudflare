@@ -83,7 +83,33 @@ class WaitingRoomEventArgs:
              shuffle_at_event_start: Optional[pulumi.Input[bool]] = None,
              suspended: Optional[pulumi.Input[bool]] = None,
              total_active_users: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'eventEndTime' in kwargs:
+            event_end_time = kwargs['eventEndTime']
+        if 'eventStartTime' in kwargs:
+            event_start_time = kwargs['eventStartTime']
+        if 'waitingRoomId' in kwargs:
+            waiting_room_id = kwargs['waitingRoomId']
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+        if 'customPageHtml' in kwargs:
+            custom_page_html = kwargs['customPageHtml']
+        if 'disableSessionRenewal' in kwargs:
+            disable_session_renewal = kwargs['disableSessionRenewal']
+        if 'newUsersPerMinute' in kwargs:
+            new_users_per_minute = kwargs['newUsersPerMinute']
+        if 'prequeueStartTime' in kwargs:
+            prequeue_start_time = kwargs['prequeueStartTime']
+        if 'queueingMethod' in kwargs:
+            queueing_method = kwargs['queueingMethod']
+        if 'sessionDuration' in kwargs:
+            session_duration = kwargs['sessionDuration']
+        if 'shuffleAtEventStart' in kwargs:
+            shuffle_at_event_start = kwargs['shuffleAtEventStart']
+        if 'totalActiveUsers' in kwargs:
+            total_active_users = kwargs['totalActiveUsers']
+
         _setter("event_end_time", event_end_time)
         _setter("event_start_time", event_start_time)
         _setter("name", name)
@@ -371,7 +397,37 @@ class _WaitingRoomEventState:
              total_active_users: Optional[pulumi.Input[int]] = None,
              waiting_room_id: Optional[pulumi.Input[str]] = None,
              zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'createdOn' in kwargs:
+            created_on = kwargs['createdOn']
+        if 'customPageHtml' in kwargs:
+            custom_page_html = kwargs['customPageHtml']
+        if 'disableSessionRenewal' in kwargs:
+            disable_session_renewal = kwargs['disableSessionRenewal']
+        if 'eventEndTime' in kwargs:
+            event_end_time = kwargs['eventEndTime']
+        if 'eventStartTime' in kwargs:
+            event_start_time = kwargs['eventStartTime']
+        if 'modifiedOn' in kwargs:
+            modified_on = kwargs['modifiedOn']
+        if 'newUsersPerMinute' in kwargs:
+            new_users_per_minute = kwargs['newUsersPerMinute']
+        if 'prequeueStartTime' in kwargs:
+            prequeue_start_time = kwargs['prequeueStartTime']
+        if 'queueingMethod' in kwargs:
+            queueing_method = kwargs['queueingMethod']
+        if 'sessionDuration' in kwargs:
+            session_duration = kwargs['sessionDuration']
+        if 'shuffleAtEventStart' in kwargs:
+            shuffle_at_event_start = kwargs['shuffleAtEventStart']
+        if 'totalActiveUsers' in kwargs:
+            total_active_users = kwargs['totalActiveUsers']
+        if 'waitingRoomId' in kwargs:
+            waiting_room_id = kwargs['waitingRoomId']
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         if created_on is not None:
             _setter("created_on", created_on)
         if custom_page_html is not None:

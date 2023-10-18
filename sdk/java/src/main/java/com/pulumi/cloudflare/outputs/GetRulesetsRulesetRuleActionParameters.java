@@ -29,6 +29,7 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetRulesetsRulesetRuleActionParameters {
+    private @Nullable List<Integer> additionalCacheablePorts;
     private @Nullable Boolean automaticHttpsRewrites;
     private @Nullable List<GetRulesetsRulesetRuleActionParametersAutominify> autominifies;
     private @Nullable Boolean bic;
@@ -88,6 +89,9 @@ public final class GetRulesetsRulesetRuleActionParameters {
     private String version;
 
     private GetRulesetsRulesetRuleActionParameters() {}
+    public List<Integer> additionalCacheablePorts() {
+        return this.additionalCacheablePorts == null ? List.of() : this.additionalCacheablePorts;
+    }
     public Optional<Boolean> automaticHttpsRewrites() {
         return Optional.ofNullable(this.automaticHttpsRewrites);
     }
@@ -253,6 +257,7 @@ public final class GetRulesetsRulesetRuleActionParameters {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable List<Integer> additionalCacheablePorts;
         private @Nullable Boolean automaticHttpsRewrites;
         private @Nullable List<GetRulesetsRulesetRuleActionParametersAutominify> autominifies;
         private @Nullable Boolean bic;
@@ -305,6 +310,7 @@ public final class GetRulesetsRulesetRuleActionParameters {
         public Builder() {}
         public Builder(GetRulesetsRulesetRuleActionParameters defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.additionalCacheablePorts = defaults.additionalCacheablePorts;
     	      this.automaticHttpsRewrites = defaults.automaticHttpsRewrites;
     	      this.autominifies = defaults.autominifies;
     	      this.bic = defaults.bic;
@@ -356,6 +362,14 @@ public final class GetRulesetsRulesetRuleActionParameters {
     	      this.version = defaults.version;
         }
 
+        @CustomType.Setter
+        public Builder additionalCacheablePorts(@Nullable List<Integer> additionalCacheablePorts) {
+            this.additionalCacheablePorts = additionalCacheablePorts;
+            return this;
+        }
+        public Builder additionalCacheablePorts(Integer... additionalCacheablePorts) {
+            return additionalCacheablePorts(List.of(additionalCacheablePorts));
+        }
         @CustomType.Setter
         public Builder automaticHttpsRewrites(@Nullable Boolean automaticHttpsRewrites) {
             this.automaticHttpsRewrites = automaticHttpsRewrites;
@@ -630,6 +644,7 @@ public final class GetRulesetsRulesetRuleActionParameters {
         }
         public GetRulesetsRulesetRuleActionParameters build() {
             final var o = new GetRulesetsRulesetRuleActionParameters();
+            o.additionalCacheablePorts = additionalCacheablePorts;
             o.automaticHttpsRewrites = automaticHttpsRewrites;
             o.autominifies = autominifies;
             o.bic = bic;

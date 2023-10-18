@@ -39,7 +39,11 @@ class HostnameTlsSettingCiphersArgs:
              values: pulumi.Input[Sequence[pulumi.Input[str]]],
              zone_id: pulumi.Input[str],
              ports: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         _setter("hostname", hostname)
         _setter("values", values)
         _setter("zone_id", zone_id)
@@ -129,7 +133,15 @@ class _HostnameTlsSettingCiphersState:
              updated_at: Optional[pulumi.Input[str]] = None,
              values: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'createdAt' in kwargs:
+            created_at = kwargs['createdAt']
+        if 'updatedAt' in kwargs:
+            updated_at = kwargs['updatedAt']
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         if created_at is not None:
             _setter("created_at", created_at)
         if hostname is not None:

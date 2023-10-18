@@ -184,6 +184,12 @@ namespace Pulumi.Cloudflare
         public Output<ImmutableArray<Outputs.AccessPolicyRequire>> Requires { get; private set; } = null!;
 
         /// <summary>
+        /// How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`. Defaults to `24h`.
+        /// </summary>
+        [Output("sessionDuration")]
+        public Output<string?> SessionDuration { get; private set; } = null!;
+
+        /// <summary>
         /// The zone identifier to target for the resource. Conflicts with `account_id`.
         /// </summary>
         [Output("zoneId")]
@@ -331,6 +337,12 @@ namespace Pulumi.Cloudflare
         }
 
         /// <summary>
+        /// How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`. Defaults to `24h`.
+        /// </summary>
+        [Input("sessionDuration")]
+        public Input<string>? SessionDuration { get; set; }
+
+        /// <summary>
         /// The zone identifier to target for the resource. Conflicts with `account_id`.
         /// </summary>
         [Input("zoneId")]
@@ -438,6 +450,12 @@ namespace Pulumi.Cloudflare
             get => _requires ?? (_requires = new InputList<Inputs.AccessPolicyRequireGetArgs>());
             set => _requires = value;
         }
+
+        /// <summary>
+        /// How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`. Defaults to `24h`.
+        /// </summary>
+        [Input("sessionDuration")]
+        public Input<string>? SessionDuration { get; set; }
 
         /// <summary>
         /// The zone identifier to target for the resource. Conflicts with `account_id`.

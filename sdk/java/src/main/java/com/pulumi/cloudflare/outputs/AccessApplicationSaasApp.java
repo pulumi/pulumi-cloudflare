@@ -24,15 +24,30 @@ public final class AccessApplicationSaasApp {
      */
     private @Nullable List<AccessApplicationSaasAppCustomAttribute> customAttributes;
     /**
+     * @return The unique identifier for the SaaS application.
+     * 
+     */
+    private @Nullable String idpEntityId;
+    /**
      * @return The format of the name identifier sent to the SaaS application. Defaults to `email`.
      * 
      */
     private @Nullable String nameIdFormat;
     /**
+     * @return The public certificate that will be used to verify identities.
+     * 
+     */
+    private @Nullable String publicKey;
+    /**
      * @return A globally unique name for an identity or service provider.
      * 
      */
     private String spEntityId;
+    /**
+     * @return The endpoint where the SaaS application will send login requests.
+     * 
+     */
+    private @Nullable String ssoEndpoint;
 
     private AccessApplicationSaasApp() {}
     /**
@@ -50,6 +65,13 @@ public final class AccessApplicationSaasApp {
         return this.customAttributes == null ? List.of() : this.customAttributes;
     }
     /**
+     * @return The unique identifier for the SaaS application.
+     * 
+     */
+    public Optional<String> idpEntityId() {
+        return Optional.ofNullable(this.idpEntityId);
+    }
+    /**
      * @return The format of the name identifier sent to the SaaS application. Defaults to `email`.
      * 
      */
@@ -57,11 +79,25 @@ public final class AccessApplicationSaasApp {
         return Optional.ofNullable(this.nameIdFormat);
     }
     /**
+     * @return The public certificate that will be used to verify identities.
+     * 
+     */
+    public Optional<String> publicKey() {
+        return Optional.ofNullable(this.publicKey);
+    }
+    /**
      * @return A globally unique name for an identity or service provider.
      * 
      */
     public String spEntityId() {
         return this.spEntityId;
+    }
+    /**
+     * @return The endpoint where the SaaS application will send login requests.
+     * 
+     */
+    public Optional<String> ssoEndpoint() {
+        return Optional.ofNullable(this.ssoEndpoint);
     }
 
     public static Builder builder() {
@@ -75,15 +111,21 @@ public final class AccessApplicationSaasApp {
     public static final class Builder {
         private String consumerServiceUrl;
         private @Nullable List<AccessApplicationSaasAppCustomAttribute> customAttributes;
+        private @Nullable String idpEntityId;
         private @Nullable String nameIdFormat;
+        private @Nullable String publicKey;
         private String spEntityId;
+        private @Nullable String ssoEndpoint;
         public Builder() {}
         public Builder(AccessApplicationSaasApp defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.consumerServiceUrl = defaults.consumerServiceUrl;
     	      this.customAttributes = defaults.customAttributes;
+    	      this.idpEntityId = defaults.idpEntityId;
     	      this.nameIdFormat = defaults.nameIdFormat;
+    	      this.publicKey = defaults.publicKey;
     	      this.spEntityId = defaults.spEntityId;
+    	      this.ssoEndpoint = defaults.ssoEndpoint;
         }
 
         @CustomType.Setter
@@ -100,8 +142,18 @@ public final class AccessApplicationSaasApp {
             return customAttributes(List.of(customAttributes));
         }
         @CustomType.Setter
+        public Builder idpEntityId(@Nullable String idpEntityId) {
+            this.idpEntityId = idpEntityId;
+            return this;
+        }
+        @CustomType.Setter
         public Builder nameIdFormat(@Nullable String nameIdFormat) {
             this.nameIdFormat = nameIdFormat;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder publicKey(@Nullable String publicKey) {
+            this.publicKey = publicKey;
             return this;
         }
         @CustomType.Setter
@@ -109,12 +161,20 @@ public final class AccessApplicationSaasApp {
             this.spEntityId = Objects.requireNonNull(spEntityId);
             return this;
         }
+        @CustomType.Setter
+        public Builder ssoEndpoint(@Nullable String ssoEndpoint) {
+            this.ssoEndpoint = ssoEndpoint;
+            return this;
+        }
         public AccessApplicationSaasApp build() {
             final var o = new AccessApplicationSaasApp();
             o.consumerServiceUrl = consumerServiceUrl;
             o.customAttributes = customAttributes;
+            o.idpEntityId = idpEntityId;
             o.nameIdFormat = nameIdFormat;
+            o.publicKey = publicKey;
             o.spEntityId = spEntityId;
+            o.ssoEndpoint = ssoEndpoint;
             return o;
         }
     }

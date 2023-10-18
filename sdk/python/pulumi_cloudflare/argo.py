@@ -35,7 +35,15 @@ class ArgoArgs:
              zone_id: pulumi.Input[str],
              smart_routing: Optional[pulumi.Input[str]] = None,
              tiered_caching: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+        if 'smartRouting' in kwargs:
+            smart_routing = kwargs['smartRouting']
+        if 'tieredCaching' in kwargs:
+            tiered_caching = kwargs['tieredCaching']
+
         _setter("zone_id", zone_id)
         if smart_routing is not None:
             _setter("smart_routing", smart_routing)
@@ -103,7 +111,15 @@ class _ArgoState:
              smart_routing: Optional[pulumi.Input[str]] = None,
              tiered_caching: Optional[pulumi.Input[str]] = None,
              zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'smartRouting' in kwargs:
+            smart_routing = kwargs['smartRouting']
+        if 'tieredCaching' in kwargs:
+            tiered_caching = kwargs['tieredCaching']
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         if smart_routing is not None:
             _setter("smart_routing", smart_routing)
         if tiered_caching is not None:

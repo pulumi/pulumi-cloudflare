@@ -16,11 +16,13 @@ from .access_organization import *
 from .access_policy import *
 from .access_rule import *
 from .access_service_token import *
+from .access_tag import *
 from .account import *
 from .account_member import *
 from .address_map import *
 from .api_shield import *
 from .api_shield_operation import *
+from .api_shield_schema import *
 from .api_token import *
 from .argo import *
 from .authenticated_origin_pulls import *
@@ -32,6 +34,7 @@ from .custom_hostname import *
 from .custom_hostname_fallback_origin import *
 from .custom_pages import *
 from .custom_ssl import *
+from .d1_database import *
 from .device_dex_test import *
 from .device_managed_networks import *
 from .device_policy_certificates import *
@@ -82,6 +85,7 @@ from .managed_headers import *
 from .mtls_certificate import *
 from .notification_policy import *
 from .notification_policy_webhooks import *
+from .observatory_scheduled_test import *
 from .origin_ca_certificate import *
 from .page_rule import *
 from .pages_domain import *
@@ -234,6 +238,14 @@ _utilities.register(
  },
  {
   "pkg": "cloudflare",
+  "mod": "index/accessTag",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/accessTag:AccessTag": "AccessTag"
+  }
+ },
+ {
+  "pkg": "cloudflare",
   "mod": "index/account",
   "fqn": "pulumi_cloudflare",
   "classes": {
@@ -270,6 +282,14 @@ _utilities.register(
   "fqn": "pulumi_cloudflare",
   "classes": {
    "cloudflare:index/apiShieldOperation:ApiShieldOperation": "ApiShieldOperation"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "index/apiShieldSchema",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/apiShieldSchema:ApiShieldSchema": "ApiShieldSchema"
   }
  },
  {
@@ -358,6 +378,14 @@ _utilities.register(
   "fqn": "pulumi_cloudflare",
   "classes": {
    "cloudflare:index/customSsl:CustomSsl": "CustomSsl"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "index/d1Database",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/d1Database:D1Database": "D1Database"
   }
  },
  {
@@ -614,6 +642,14 @@ _utilities.register(
   "fqn": "pulumi_cloudflare",
   "classes": {
    "cloudflare:index/notificationPolicyWebhooks:NotificationPolicyWebhooks": "NotificationPolicyWebhooks"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "index/observatoryScheduledTest",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/observatoryScheduledTest:ObservatoryScheduledTest": "ObservatoryScheduledTest"
   }
  },
  {

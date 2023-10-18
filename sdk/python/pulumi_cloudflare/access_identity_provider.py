@@ -49,7 +49,15 @@ class AccessIdentityProviderArgs:
              configs: Optional[pulumi.Input[Sequence[pulumi.Input['AccessIdentityProviderConfigArgs']]]] = None,
              scim_configs: Optional[pulumi.Input[Sequence[pulumi.Input['AccessIdentityProviderScimConfigArgs']]]] = None,
              zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accountId' in kwargs:
+            account_id = kwargs['accountId']
+        if 'scimConfigs' in kwargs:
+            scim_configs = kwargs['scimConfigs']
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         _setter("name", name)
         _setter("type", type)
         if account_id is not None:
@@ -170,7 +178,15 @@ class _AccessIdentityProviderState:
              scim_configs: Optional[pulumi.Input[Sequence[pulumi.Input['AccessIdentityProviderScimConfigArgs']]]] = None,
              type: Optional[pulumi.Input[str]] = None,
              zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accountId' in kwargs:
+            account_id = kwargs['accountId']
+        if 'scimConfigs' in kwargs:
+            scim_configs = kwargs['scimConfigs']
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         if account_id is not None:
             _setter("account_id", account_id)
         if configs is not None:

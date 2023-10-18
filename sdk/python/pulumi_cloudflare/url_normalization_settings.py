@@ -35,7 +35,11 @@ class UrlNormalizationSettingsArgs:
              scope: pulumi.Input[str],
              type: pulumi.Input[str],
              zone_id: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         _setter("scope", scope)
         _setter("type", type)
         _setter("zone_id", zone_id)
@@ -101,7 +105,11 @@ class _UrlNormalizationSettingsState:
              scope: Optional[pulumi.Input[str]] = None,
              type: Optional[pulumi.Input[str]] = None,
              zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         if scope is not None:
             _setter("scope", scope)
         if type is not None:

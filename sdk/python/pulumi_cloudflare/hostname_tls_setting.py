@@ -39,7 +39,11 @@ class HostnameTlsSettingArgs:
              setting: pulumi.Input[str],
              value: pulumi.Input[str],
              zone_id: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         _setter("hostname", hostname)
         _setter("setting", setting)
         _setter("value", value)
@@ -128,7 +132,15 @@ class _HostnameTlsSettingState:
              updated_at: Optional[pulumi.Input[str]] = None,
              value: Optional[pulumi.Input[str]] = None,
              zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'createdAt' in kwargs:
+            created_at = kwargs['createdAt']
+        if 'updatedAt' in kwargs:
+            updated_at = kwargs['updatedAt']
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         if created_at is not None:
             _setter("created_at", created_at)
         if hostname is not None:

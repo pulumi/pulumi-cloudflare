@@ -140,6 +140,12 @@ namespace Pulumi.Cloudflare
         public Output<Outputs.TeamsAccountProxy?> Proxy { get; private set; } = null!;
 
         /// <summary>
+        /// Configuration for SSH Session Logging.
+        /// </summary>
+        [Output("sshSessionLog")]
+        public Output<Outputs.TeamsAccountSshSessionLog?> SshSessionLog { get; private set; } = null!;
+
+        /// <summary>
         /// Indicator that decryption of TLS traffic is enabled.
         /// </summary>
         [Output("tlsDecryptEnabled")]
@@ -249,6 +255,12 @@ namespace Pulumi.Cloudflare
         public Input<Inputs.TeamsAccountProxyArgs>? Proxy { get; set; }
 
         /// <summary>
+        /// Configuration for SSH Session Logging.
+        /// </summary>
+        [Input("sshSessionLog")]
+        public Input<Inputs.TeamsAccountSshSessionLogArgs>? SshSessionLog { get; set; }
+
+        /// <summary>
         /// Indicator that decryption of TLS traffic is enabled.
         /// </summary>
         [Input("tlsDecryptEnabled")]
@@ -318,6 +330,12 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("proxy")]
         public Input<Inputs.TeamsAccountProxyGetArgs>? Proxy { get; set; }
+
+        /// <summary>
+        /// Configuration for SSH Session Logging.
+        /// </summary>
+        [Input("sshSessionLog")]
+        public Input<Inputs.TeamsAccountSshSessionLogGetArgs>? SshSessionLog { get; set; }
 
         /// <summary>
         /// Indicator that decryption of TLS traffic is enabled.

@@ -197,6 +197,12 @@ namespace Pulumi.Cloudflare
         public Output<bool?> SkipInterstitial { get; private set; } = null!;
 
         /// <summary>
+        /// The itags associated with the application.
+        /// </summary>
+        [Output("tags")]
+        public Output<ImmutableArray<string>> Tags { get; private set; } = null!;
+
+        /// <summary>
         /// The application type. Available values: `app_launcher`, `bookmark`, `biso`, `dash_sso`, `saas`, `self_hosted`, `ssh`, `vnc`, `warp`. Defaults to `self_hosted`.
         /// </summary>
         [Output("type")]
@@ -398,6 +404,18 @@ namespace Pulumi.Cloudflare
         [Input("skipInterstitial")]
         public Input<bool>? SkipInterstitial { get; set; }
 
+        [Input("tags")]
+        private InputList<string>? _tags;
+
+        /// <summary>
+        /// The itags associated with the application.
+        /// </summary>
+        public InputList<string> Tags
+        {
+            get => _tags ?? (_tags = new InputList<string>());
+            set => _tags = value;
+        }
+
         /// <summary>
         /// The application type. Available values: `app_launcher`, `bookmark`, `biso`, `dash_sso`, `saas`, `self_hosted`, `ssh`, `vnc`, `warp`. Defaults to `self_hosted`.
         /// </summary>
@@ -567,6 +585,18 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("skipInterstitial")]
         public Input<bool>? SkipInterstitial { get; set; }
+
+        [Input("tags")]
+        private InputList<string>? _tags;
+
+        /// <summary>
+        /// The itags associated with the application.
+        /// </summary>
+        public InputList<string> Tags
+        {
+            get => _tags ?? (_tags = new InputList<string>());
+            set => _tags = value;
+        }
 
         /// <summary>
         /// The application type. Available values: `app_launcher`, `bookmark`, `biso`, `dash_sso`, `saas`, `self_hosted`, `ssh`, `vnc`, `warp`. Defaults to `self_hosted`.

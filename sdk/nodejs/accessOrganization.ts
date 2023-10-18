@@ -92,6 +92,10 @@ export class AccessOrganization extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string | undefined>;
     /**
+     * How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`. Defaults to `24h`.
+     */
+    public readonly sessionDuration!: pulumi.Output<string | undefined>;
+    /**
      * A description of the reason why the UI read only field is being toggled.
      */
     public readonly uiReadOnlyToggleReason!: pulumi.Output<string | undefined>;
@@ -124,6 +128,7 @@ export class AccessOrganization extends pulumi.CustomResource {
             resourceInputs["isUiReadOnly"] = state ? state.isUiReadOnly : undefined;
             resourceInputs["loginDesigns"] = state ? state.loginDesigns : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["sessionDuration"] = state ? state.sessionDuration : undefined;
             resourceInputs["uiReadOnlyToggleReason"] = state ? state.uiReadOnlyToggleReason : undefined;
             resourceInputs["userSeatExpirationInactiveTime"] = state ? state.userSeatExpirationInactiveTime : undefined;
             resourceInputs["zoneId"] = state ? state.zoneId : undefined;
@@ -139,6 +144,7 @@ export class AccessOrganization extends pulumi.CustomResource {
             resourceInputs["isUiReadOnly"] = args ? args.isUiReadOnly : undefined;
             resourceInputs["loginDesigns"] = args ? args.loginDesigns : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["sessionDuration"] = args ? args.sessionDuration : undefined;
             resourceInputs["uiReadOnlyToggleReason"] = args ? args.uiReadOnlyToggleReason : undefined;
             resourceInputs["userSeatExpirationInactiveTime"] = args ? args.userSeatExpirationInactiveTime : undefined;
             resourceInputs["zoneId"] = args ? args.zoneId : undefined;
@@ -177,6 +183,10 @@ export interface AccessOrganizationState {
      * The name of your Zero Trust organization.
      */
     name?: pulumi.Input<string>;
+    /**
+     * How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`. Defaults to `24h`.
+     */
+    sessionDuration?: pulumi.Input<string>;
     /**
      * A description of the reason why the UI read only field is being toggled.
      */
@@ -220,6 +230,10 @@ export interface AccessOrganizationArgs {
      * The name of your Zero Trust organization.
      */
     name?: pulumi.Input<string>;
+    /**
+     * How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`. Defaults to `24h`.
+     */
+    sessionDuration?: pulumi.Input<string>;
     /**
      * A description of the reason why the UI read only field is being toggled.
      */

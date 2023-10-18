@@ -128,6 +128,10 @@ export class TeamsAccount extends pulumi.CustomResource {
      */
     public readonly proxy!: pulumi.Output<outputs.TeamsAccountProxy | undefined>;
     /**
+     * Configuration for SSH Session Logging.
+     */
+    public readonly sshSessionLog!: pulumi.Output<outputs.TeamsAccountSshSessionLog | undefined>;
+    /**
      * Indicator that decryption of TLS traffic is enabled.
      */
     public readonly tlsDecryptEnabled!: pulumi.Output<boolean | undefined>;
@@ -158,6 +162,7 @@ export class TeamsAccount extends pulumi.CustomResource {
             resourceInputs["payloadLog"] = state ? state.payloadLog : undefined;
             resourceInputs["protocolDetectionEnabled"] = state ? state.protocolDetectionEnabled : undefined;
             resourceInputs["proxy"] = state ? state.proxy : undefined;
+            resourceInputs["sshSessionLog"] = state ? state.sshSessionLog : undefined;
             resourceInputs["tlsDecryptEnabled"] = state ? state.tlsDecryptEnabled : undefined;
             resourceInputs["urlBrowserIsolationEnabled"] = state ? state.urlBrowserIsolationEnabled : undefined;
         } else {
@@ -174,6 +179,7 @@ export class TeamsAccount extends pulumi.CustomResource {
             resourceInputs["payloadLog"] = args ? args.payloadLog : undefined;
             resourceInputs["protocolDetectionEnabled"] = args ? args.protocolDetectionEnabled : undefined;
             resourceInputs["proxy"] = args ? args.proxy : undefined;
+            resourceInputs["sshSessionLog"] = args ? args.sshSessionLog : undefined;
             resourceInputs["tlsDecryptEnabled"] = args ? args.tlsDecryptEnabled : undefined;
             resourceInputs["urlBrowserIsolationEnabled"] = args ? args.urlBrowserIsolationEnabled : undefined;
         }
@@ -219,6 +225,10 @@ export interface TeamsAccountState {
      * Configuration block for specifying which protocols are proxied.
      */
     proxy?: pulumi.Input<inputs.TeamsAccountProxy>;
+    /**
+     * Configuration for SSH Session Logging.
+     */
+    sshSessionLog?: pulumi.Input<inputs.TeamsAccountSshSessionLog>;
     /**
      * Indicator that decryption of TLS traffic is enabled.
      */
@@ -266,6 +276,10 @@ export interface TeamsAccountArgs {
      * Configuration block for specifying which protocols are proxied.
      */
     proxy?: pulumi.Input<inputs.TeamsAccountProxy>;
+    /**
+     * Configuration for SSH Session Logging.
+     */
+    sshSessionLog?: pulumi.Input<inputs.TeamsAccountSshSessionLog>;
     /**
      * Indicator that decryption of TLS traffic is enabled.
      */

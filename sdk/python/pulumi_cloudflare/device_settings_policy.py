@@ -95,7 +95,33 @@ class DeviceSettingsPolicyArgs:
              service_mode_v2_port: Optional[pulumi.Input[int]] = None,
              support_url: Optional[pulumi.Input[str]] = None,
              switch_locked: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accountId' in kwargs:
+            account_id = kwargs['accountId']
+        if 'allowModeSwitch' in kwargs:
+            allow_mode_switch = kwargs['allowModeSwitch']
+        if 'allowUpdates' in kwargs:
+            allow_updates = kwargs['allowUpdates']
+        if 'allowedToLeave' in kwargs:
+            allowed_to_leave = kwargs['allowedToLeave']
+        if 'autoConnect' in kwargs:
+            auto_connect = kwargs['autoConnect']
+        if 'captivePortal' in kwargs:
+            captive_portal = kwargs['captivePortal']
+        if 'disableAutoFallback' in kwargs:
+            disable_auto_fallback = kwargs['disableAutoFallback']
+        if 'excludeOfficeIps' in kwargs:
+            exclude_office_ips = kwargs['excludeOfficeIps']
+        if 'serviceModeV2Mode' in kwargs:
+            service_mode_v2_mode = kwargs['serviceModeV2Mode']
+        if 'serviceModeV2Port' in kwargs:
+            service_mode_v2_port = kwargs['serviceModeV2Port']
+        if 'supportUrl' in kwargs:
+            support_url = kwargs['supportUrl']
+        if 'switchLocked' in kwargs:
+            switch_locked = kwargs['switchLocked']
+
         _setter("account_id", account_id)
         _setter("description", description)
         _setter("name", name)
@@ -431,7 +457,33 @@ class _DeviceSettingsPolicyState:
              service_mode_v2_port: Optional[pulumi.Input[int]] = None,
              support_url: Optional[pulumi.Input[str]] = None,
              switch_locked: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accountId' in kwargs:
+            account_id = kwargs['accountId']
+        if 'allowModeSwitch' in kwargs:
+            allow_mode_switch = kwargs['allowModeSwitch']
+        if 'allowUpdates' in kwargs:
+            allow_updates = kwargs['allowUpdates']
+        if 'allowedToLeave' in kwargs:
+            allowed_to_leave = kwargs['allowedToLeave']
+        if 'autoConnect' in kwargs:
+            auto_connect = kwargs['autoConnect']
+        if 'captivePortal' in kwargs:
+            captive_portal = kwargs['captivePortal']
+        if 'disableAutoFallback' in kwargs:
+            disable_auto_fallback = kwargs['disableAutoFallback']
+        if 'excludeOfficeIps' in kwargs:
+            exclude_office_ips = kwargs['excludeOfficeIps']
+        if 'serviceModeV2Mode' in kwargs:
+            service_mode_v2_mode = kwargs['serviceModeV2Mode']
+        if 'serviceModeV2Port' in kwargs:
+            service_mode_v2_port = kwargs['serviceModeV2Port']
+        if 'supportUrl' in kwargs:
+            support_url = kwargs['supportUrl']
+        if 'switchLocked' in kwargs:
+            switch_locked = kwargs['switchLocked']
+
         if account_id is not None:
             _setter("account_id", account_id)
         if allow_mode_switch is not None:

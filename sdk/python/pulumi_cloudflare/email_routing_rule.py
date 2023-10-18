@@ -49,7 +49,11 @@ class EmailRoutingRuleArgs:
              zone_id: pulumi.Input[str],
              enabled: Optional[pulumi.Input[bool]] = None,
              priority: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         _setter("actions", actions)
         _setter("matchers", matchers)
         _setter("name", name)
@@ -172,7 +176,11 @@ class _EmailRoutingRuleState:
              priority: Optional[pulumi.Input[int]] = None,
              tag: Optional[pulumi.Input[str]] = None,
              zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         if actions is not None:
             _setter("actions", actions)
         if enabled is not None:

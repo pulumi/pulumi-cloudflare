@@ -39,7 +39,13 @@ class AuthenticatedOriginPullsCertificateArgs:
              private_key: pulumi.Input[str],
              type: pulumi.Input[str],
              zone_id: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'privateKey' in kwargs:
+            private_key = kwargs['privateKey']
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         _setter("certificate", certificate)
         _setter("private_key", private_key)
         _setter("type", type)
@@ -146,7 +152,19 @@ class _AuthenticatedOriginPullsCertificateState:
              type: Optional[pulumi.Input[str]] = None,
              uploaded_on: Optional[pulumi.Input[str]] = None,
              zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'expiresOn' in kwargs:
+            expires_on = kwargs['expiresOn']
+        if 'privateKey' in kwargs:
+            private_key = kwargs['privateKey']
+        if 'serialNumber' in kwargs:
+            serial_number = kwargs['serialNumber']
+        if 'uploadedOn' in kwargs:
+            uploaded_on = kwargs['uploadedOn']
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         if certificate is not None:
             _setter("certificate", certificate)
         if expires_on is not None:

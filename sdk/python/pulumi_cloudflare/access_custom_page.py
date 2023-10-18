@@ -47,7 +47,17 @@ class AccessCustomPageArgs:
              app_count: Optional[pulumi.Input[int]] = None,
              custom_html: Optional[pulumi.Input[str]] = None,
              zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accountId' in kwargs:
+            account_id = kwargs['accountId']
+        if 'appCount' in kwargs:
+            app_count = kwargs['appCount']
+        if 'customHtml' in kwargs:
+            custom_html = kwargs['customHtml']
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         _setter("name", name)
         _setter("type", type)
         if account_id is not None:
@@ -168,7 +178,17 @@ class _AccessCustomPageState:
              name: Optional[pulumi.Input[str]] = None,
              type: Optional[pulumi.Input[str]] = None,
              zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accountId' in kwargs:
+            account_id = kwargs['accountId']
+        if 'appCount' in kwargs:
+            app_count = kwargs['appCount']
+        if 'customHtml' in kwargs:
+            custom_html = kwargs['customHtml']
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         if account_id is not None:
             _setter("account_id", account_id)
         if app_count is not None:

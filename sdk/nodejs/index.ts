@@ -60,6 +60,11 @@ export type AccessServiceToken = import("./accessServiceToken").AccessServiceTok
 export const AccessServiceToken: typeof import("./accessServiceToken").AccessServiceToken = null as any;
 utilities.lazyLoad(exports, ["AccessServiceToken"], () => require("./accessServiceToken"));
 
+export { AccessTagArgs, AccessTagState } from "./accessTag";
+export type AccessTag = import("./accessTag").AccessTag;
+export const AccessTag: typeof import("./accessTag").AccessTag = null as any;
+utilities.lazyLoad(exports, ["AccessTag"], () => require("./accessTag"));
+
 export { AccountArgs, AccountState } from "./account";
 export type Account = import("./account").Account;
 export const Account: typeof import("./account").Account = null as any;
@@ -84,6 +89,11 @@ export { ApiShieldOperationArgs, ApiShieldOperationState } from "./apiShieldOper
 export type ApiShieldOperation = import("./apiShieldOperation").ApiShieldOperation;
 export const ApiShieldOperation: typeof import("./apiShieldOperation").ApiShieldOperation = null as any;
 utilities.lazyLoad(exports, ["ApiShieldOperation"], () => require("./apiShieldOperation"));
+
+export { ApiShieldSchemaArgs, ApiShieldSchemaState } from "./apiShieldSchema";
+export type ApiShieldSchema = import("./apiShieldSchema").ApiShieldSchema;
+export const ApiShieldSchema: typeof import("./apiShieldSchema").ApiShieldSchema = null as any;
+utilities.lazyLoad(exports, ["ApiShieldSchema"], () => require("./apiShieldSchema"));
 
 export { ApiTokenArgs, ApiTokenState } from "./apiToken";
 export type ApiToken = import("./apiToken").ApiToken;
@@ -139,6 +149,11 @@ export { CustomSslArgs, CustomSslState } from "./customSsl";
 export type CustomSsl = import("./customSsl").CustomSsl;
 export const CustomSsl: typeof import("./customSsl").CustomSsl = null as any;
 utilities.lazyLoad(exports, ["CustomSsl"], () => require("./customSsl"));
+
+export { D1DatabaseArgs, D1DatabaseState } from "./d1database";
+export type D1Database = import("./d1database").D1Database;
+export const D1Database: typeof import("./d1database").D1Database = null as any;
+utilities.lazyLoad(exports, ["D1Database"], () => require("./d1database"));
 
 export { DeviceDexTestArgs, DeviceDexTestState } from "./deviceDexTest";
 export type DeviceDexTest = import("./deviceDexTest").DeviceDexTest;
@@ -389,6 +404,11 @@ export { NotificationPolicyWebhooksArgs, NotificationPolicyWebhooksState } from 
 export type NotificationPolicyWebhooks = import("./notificationPolicyWebhooks").NotificationPolicyWebhooks;
 export const NotificationPolicyWebhooks: typeof import("./notificationPolicyWebhooks").NotificationPolicyWebhooks = null as any;
 utilities.lazyLoad(exports, ["NotificationPolicyWebhooks"], () => require("./notificationPolicyWebhooks"));
+
+export { ObservatoryScheduledTestArgs, ObservatoryScheduledTestState } from "./observatoryScheduledTest";
+export type ObservatoryScheduledTest = import("./observatoryScheduledTest").ObservatoryScheduledTest;
+export const ObservatoryScheduledTest: typeof import("./observatoryScheduledTest").ObservatoryScheduledTest = null as any;
+utilities.lazyLoad(exports, ["ObservatoryScheduledTest"], () => require("./observatoryScheduledTest"));
 
 export { OriginCaCertificateArgs, OriginCaCertificateState } from "./originCaCertificate";
 export type OriginCaCertificate = import("./originCaCertificate").OriginCaCertificate;
@@ -671,6 +691,8 @@ const _module = {
                 return new AccessRule(name, <any>undefined, { urn })
             case "cloudflare:index/accessServiceToken:AccessServiceToken":
                 return new AccessServiceToken(name, <any>undefined, { urn })
+            case "cloudflare:index/accessTag:AccessTag":
+                return new AccessTag(name, <any>undefined, { urn })
             case "cloudflare:index/account:Account":
                 return new Account(name, <any>undefined, { urn })
             case "cloudflare:index/accountMember:AccountMember":
@@ -681,6 +703,8 @@ const _module = {
                 return new ApiShield(name, <any>undefined, { urn })
             case "cloudflare:index/apiShieldOperation:ApiShieldOperation":
                 return new ApiShieldOperation(name, <any>undefined, { urn })
+            case "cloudflare:index/apiShieldSchema:ApiShieldSchema":
+                return new ApiShieldSchema(name, <any>undefined, { urn })
             case "cloudflare:index/apiToken:ApiToken":
                 return new ApiToken(name, <any>undefined, { urn })
             case "cloudflare:index/argo:Argo":
@@ -703,6 +727,8 @@ const _module = {
                 return new CustomPages(name, <any>undefined, { urn })
             case "cloudflare:index/customSsl:CustomSsl":
                 return new CustomSsl(name, <any>undefined, { urn })
+            case "cloudflare:index/d1Database:D1Database":
+                return new D1Database(name, <any>undefined, { urn })
             case "cloudflare:index/deviceDexTest:DeviceDexTest":
                 return new DeviceDexTest(name, <any>undefined, { urn })
             case "cloudflare:index/deviceManagedNetworks:DeviceManagedNetworks":
@@ -767,6 +793,8 @@ const _module = {
                 return new NotificationPolicy(name, <any>undefined, { urn })
             case "cloudflare:index/notificationPolicyWebhooks:NotificationPolicyWebhooks":
                 return new NotificationPolicyWebhooks(name, <any>undefined, { urn })
+            case "cloudflare:index/observatoryScheduledTest:ObservatoryScheduledTest":
+                return new ObservatoryScheduledTest(name, <any>undefined, { urn })
             case "cloudflare:index/originCaCertificate:OriginCaCertificate":
                 return new OriginCaCertificate(name, <any>undefined, { urn })
             case "cloudflare:index/pageRule:PageRule":
@@ -879,11 +907,13 @@ pulumi.runtime.registerResourceModule("cloudflare", "index/accessOrganization", 
 pulumi.runtime.registerResourceModule("cloudflare", "index/accessPolicy", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/accessRule", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/accessServiceToken", _module)
+pulumi.runtime.registerResourceModule("cloudflare", "index/accessTag", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/account", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/accountMember", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/addressMap", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/apiShield", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/apiShieldOperation", _module)
+pulumi.runtime.registerResourceModule("cloudflare", "index/apiShieldSchema", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/apiToken", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/argo", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/authenticatedOriginPulls", _module)
@@ -895,6 +925,7 @@ pulumi.runtime.registerResourceModule("cloudflare", "index/customHostname", _mod
 pulumi.runtime.registerResourceModule("cloudflare", "index/customHostnameFallbackOrigin", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/customPages", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/customSsl", _module)
+pulumi.runtime.registerResourceModule("cloudflare", "index/d1Database", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/deviceDexTest", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/deviceManagedNetworks", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/devicePolicyCertificates", _module)
@@ -927,6 +958,7 @@ pulumi.runtime.registerResourceModule("cloudflare", "index/managedHeaders", _mod
 pulumi.runtime.registerResourceModule("cloudflare", "index/mtlsCertificate", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/notificationPolicy", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/notificationPolicyWebhooks", _module)
+pulumi.runtime.registerResourceModule("cloudflare", "index/observatoryScheduledTest", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/originCaCertificate", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/pageRule", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/pagesDomain", _module)

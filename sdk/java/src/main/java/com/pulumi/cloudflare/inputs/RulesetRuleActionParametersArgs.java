@@ -35,6 +35,21 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
     public static final RulesetRuleActionParametersArgs Empty = new RulesetRuleActionParametersArgs();
 
     /**
+     * Specifies uncommon ports to allow cacheable assets to be served from.
+     * 
+     */
+    @Import(name="additionalCacheablePorts")
+    private @Nullable Output<List<Integer>> additionalCacheablePorts;
+
+    /**
+     * @return Specifies uncommon ports to allow cacheable assets to be served from.
+     * 
+     */
+    public Optional<Output<List<Integer>>> additionalCacheablePorts() {
+        return Optional.ofNullable(this.additionalCacheablePorts);
+    }
+
+    /**
      * Compression algorithms to use in order of preference.
      * 
      */
@@ -779,6 +794,7 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
     private RulesetRuleActionParametersArgs() {}
 
     private RulesetRuleActionParametersArgs(RulesetRuleActionParametersArgs $) {
+        this.additionalCacheablePorts = $.additionalCacheablePorts;
         this.algorithms = $.algorithms;
         this.automaticHttpsRewrites = $.automaticHttpsRewrites;
         this.autominifies = $.autominifies;
@@ -847,6 +863,37 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
 
         public Builder(RulesetRuleActionParametersArgs defaults) {
             $ = new RulesetRuleActionParametersArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param additionalCacheablePorts Specifies uncommon ports to allow cacheable assets to be served from.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder additionalCacheablePorts(@Nullable Output<List<Integer>> additionalCacheablePorts) {
+            $.additionalCacheablePorts = additionalCacheablePorts;
+            return this;
+        }
+
+        /**
+         * @param additionalCacheablePorts Specifies uncommon ports to allow cacheable assets to be served from.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder additionalCacheablePorts(List<Integer> additionalCacheablePorts) {
+            return additionalCacheablePorts(Output.of(additionalCacheablePorts));
+        }
+
+        /**
+         * @param additionalCacheablePorts Specifies uncommon ports to allow cacheable assets to be served from.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder additionalCacheablePorts(Integer... additionalCacheablePorts) {
+            return additionalCacheablePorts(List.of(additionalCacheablePorts));
         }
 
         /**

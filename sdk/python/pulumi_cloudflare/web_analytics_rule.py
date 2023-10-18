@@ -47,7 +47,15 @@ class WebAnalyticsRuleArgs:
              is_paused: pulumi.Input[bool],
              paths: pulumi.Input[Sequence[pulumi.Input[str]]],
              ruleset_id: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accountId' in kwargs:
+            account_id = kwargs['accountId']
+        if 'isPaused' in kwargs:
+            is_paused = kwargs['isPaused']
+        if 'rulesetId' in kwargs:
+            ruleset_id = kwargs['rulesetId']
+
         _setter("account_id", account_id)
         _setter("host", host)
         _setter("inclusive", inclusive)
@@ -164,7 +172,15 @@ class _WebAnalyticsRuleState:
              is_paused: Optional[pulumi.Input[bool]] = None,
              paths: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              ruleset_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accountId' in kwargs:
+            account_id = kwargs['accountId']
+        if 'isPaused' in kwargs:
+            is_paused = kwargs['isPaused']
+        if 'rulesetId' in kwargs:
+            ruleset_id = kwargs['rulesetId']
+
         if account_id is not None:
             _setter("account_id", account_id)
         if host is not None:

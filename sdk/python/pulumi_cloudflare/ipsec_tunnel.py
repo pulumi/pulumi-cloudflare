@@ -83,7 +83,33 @@ class IpsecTunnelArgs:
              psk: Optional[pulumi.Input[str]] = None,
              remote_id: Optional[pulumi.Input[str]] = None,
              user_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'cloudflareEndpoint' in kwargs:
+            cloudflare_endpoint = kwargs['cloudflareEndpoint']
+        if 'customerEndpoint' in kwargs:
+            customer_endpoint = kwargs['customerEndpoint']
+        if 'interfaceAddress' in kwargs:
+            interface_address = kwargs['interfaceAddress']
+        if 'accountId' in kwargs:
+            account_id = kwargs['accountId']
+        if 'allowNullCipher' in kwargs:
+            allow_null_cipher = kwargs['allowNullCipher']
+        if 'fqdnId' in kwargs:
+            fqdn_id = kwargs['fqdnId']
+        if 'healthCheckEnabled' in kwargs:
+            health_check_enabled = kwargs['healthCheckEnabled']
+        if 'healthCheckTarget' in kwargs:
+            health_check_target = kwargs['healthCheckTarget']
+        if 'healthCheckType' in kwargs:
+            health_check_type = kwargs['healthCheckType']
+        if 'hexId' in kwargs:
+            hex_id = kwargs['hexId']
+        if 'remoteId' in kwargs:
+            remote_id = kwargs['remoteId']
+        if 'userId' in kwargs:
+            user_id = kwargs['userId']
+
         _setter("cloudflare_endpoint", cloudflare_endpoint)
         _setter("customer_endpoint", customer_endpoint)
         _setter("interface_address", interface_address)
@@ -364,7 +390,33 @@ class _IpsecTunnelState:
              psk: Optional[pulumi.Input[str]] = None,
              remote_id: Optional[pulumi.Input[str]] = None,
              user_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accountId' in kwargs:
+            account_id = kwargs['accountId']
+        if 'allowNullCipher' in kwargs:
+            allow_null_cipher = kwargs['allowNullCipher']
+        if 'cloudflareEndpoint' in kwargs:
+            cloudflare_endpoint = kwargs['cloudflareEndpoint']
+        if 'customerEndpoint' in kwargs:
+            customer_endpoint = kwargs['customerEndpoint']
+        if 'fqdnId' in kwargs:
+            fqdn_id = kwargs['fqdnId']
+        if 'healthCheckEnabled' in kwargs:
+            health_check_enabled = kwargs['healthCheckEnabled']
+        if 'healthCheckTarget' in kwargs:
+            health_check_target = kwargs['healthCheckTarget']
+        if 'healthCheckType' in kwargs:
+            health_check_type = kwargs['healthCheckType']
+        if 'hexId' in kwargs:
+            hex_id = kwargs['hexId']
+        if 'interfaceAddress' in kwargs:
+            interface_address = kwargs['interfaceAddress']
+        if 'remoteId' in kwargs:
+            remote_id = kwargs['remoteId']
+        if 'userId' in kwargs:
+            user_id = kwargs['userId']
+
         if account_id is not None:
             _setter("account_id", account_id)
         if allow_null_cipher is not None:

@@ -162,6 +162,10 @@ export class AccessApplication extends pulumi.CustomResource {
      */
     public readonly skipInterstitial!: pulumi.Output<boolean | undefined>;
     /**
+     * The itags associated with the application.
+     */
+    public readonly tags!: pulumi.Output<string[] | undefined>;
+    /**
      * The application type. Available values: `appLauncher`, `bookmark`, `biso`, `dashSso`, `saas`, `selfHosted`, `ssh`, `vnc`, `warp`. Defaults to `selfHosted`.
      */
     public readonly type!: pulumi.Output<string | undefined>;
@@ -204,6 +208,7 @@ export class AccessApplication extends pulumi.CustomResource {
             resourceInputs["serviceAuth401Redirect"] = state ? state.serviceAuth401Redirect : undefined;
             resourceInputs["sessionDuration"] = state ? state.sessionDuration : undefined;
             resourceInputs["skipInterstitial"] = state ? state.skipInterstitial : undefined;
+            resourceInputs["tags"] = state ? state.tags : undefined;
             resourceInputs["type"] = state ? state.type : undefined;
             resourceInputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
@@ -231,6 +236,7 @@ export class AccessApplication extends pulumi.CustomResource {
             resourceInputs["serviceAuth401Redirect"] = args ? args.serviceAuth401Redirect : undefined;
             resourceInputs["sessionDuration"] = args ? args.sessionDuration : undefined;
             resourceInputs["skipInterstitial"] = args ? args.skipInterstitial : undefined;
+            resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["type"] = args ? args.type : undefined;
             resourceInputs["zoneId"] = args ? args.zoneId : undefined;
             resourceInputs["aud"] = undefined /*out*/;
@@ -329,6 +335,10 @@ export interface AccessApplicationState {
      */
     skipInterstitial?: pulumi.Input<boolean>;
     /**
+     * The itags associated with the application.
+     */
+    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
      * The application type. Available values: `appLauncher`, `bookmark`, `biso`, `dashSso`, `saas`, `selfHosted`, `ssh`, `vnc`, `warp`. Defaults to `selfHosted`.
      */
     type?: pulumi.Input<string>;
@@ -422,6 +432,10 @@ export interface AccessApplicationArgs {
      * Option to skip the authorization interstitial when using the CLI. Defaults to `false`.
      */
     skipInterstitial?: pulumi.Input<boolean>;
+    /**
+     * The itags associated with the application.
+     */
+    tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The application type. Available values: `appLauncher`, `bookmark`, `biso`, `dashSso`, `saas`, `selfHosted`, `ssh`, `vnc`, `warp`. Defaults to `selfHosted`.
      */

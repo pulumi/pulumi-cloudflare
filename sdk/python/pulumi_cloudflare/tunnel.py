@@ -39,7 +39,13 @@ class TunnelArgs:
              name: pulumi.Input[str],
              secret: pulumi.Input[str],
              config_src: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accountId' in kwargs:
+            account_id = kwargs['accountId']
+        if 'configSrc' in kwargs:
+            config_src = kwargs['configSrc']
+
         _setter("account_id", account_id)
         _setter("name", name)
         _setter("secret", secret)
@@ -131,7 +137,15 @@ class _TunnelState:
              name: Optional[pulumi.Input[str]] = None,
              secret: Optional[pulumi.Input[str]] = None,
              tunnel_token: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accountId' in kwargs:
+            account_id = kwargs['accountId']
+        if 'configSrc' in kwargs:
+            config_src = kwargs['configSrc']
+        if 'tunnelToken' in kwargs:
+            tunnel_token = kwargs['tunnelToken']
+
         if account_id is not None:
             _setter("account_id", account_id)
         if cname is not None:

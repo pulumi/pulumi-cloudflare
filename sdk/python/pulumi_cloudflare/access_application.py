@@ -36,6 +36,7 @@ class AccessApplicationArgs:
                  service_auth401_redirect: Optional[pulumi.Input[bool]] = None,
                  session_duration: Optional[pulumi.Input[str]] = None,
                  skip_interstitial: Optional[pulumi.Input[bool]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None):
         """
@@ -60,6 +61,7 @@ class AccessApplicationArgs:
         :param pulumi.Input[bool] service_auth401_redirect: Option to return a 401 status code in service authentication rules on failed requests. Defaults to `false`.
         :param pulumi.Input[str] session_duration: How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`. Defaults to `24h`.
         :param pulumi.Input[bool] skip_interstitial: Option to skip the authorization interstitial when using the CLI. Defaults to `false`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The itags associated with the application.
         :param pulumi.Input[str] type: The application type. Available values: `app_launcher`, `bookmark`, `biso`, `dash_sso`, `saas`, `self_hosted`, `ssh`, `vnc`, `warp`. Defaults to `self_hosted`.
         :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. Conflicts with `account_id`.
         """
@@ -85,6 +87,7 @@ class AccessApplicationArgs:
             service_auth401_redirect=service_auth401_redirect,
             session_duration=session_duration,
             skip_interstitial=skip_interstitial,
+            tags=tags,
             type=type,
             zone_id=zone_id,
         )
@@ -111,9 +114,50 @@ class AccessApplicationArgs:
              service_auth401_redirect: Optional[pulumi.Input[bool]] = None,
              session_duration: Optional[pulumi.Input[str]] = None,
              skip_interstitial: Optional[pulumi.Input[bool]] = None,
+             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              type: Optional[pulumi.Input[str]] = None,
              zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accountId' in kwargs:
+            account_id = kwargs['accountId']
+        if 'allowedIdps' in kwargs:
+            allowed_idps = kwargs['allowedIdps']
+        if 'appLauncherVisible' in kwargs:
+            app_launcher_visible = kwargs['appLauncherVisible']
+        if 'autoRedirectToIdentity' in kwargs:
+            auto_redirect_to_identity = kwargs['autoRedirectToIdentity']
+        if 'corsHeaders' in kwargs:
+            cors_headers = kwargs['corsHeaders']
+        if 'customDenyMessage' in kwargs:
+            custom_deny_message = kwargs['customDenyMessage']
+        if 'customDenyUrl' in kwargs:
+            custom_deny_url = kwargs['customDenyUrl']
+        if 'customNonIdentityDenyUrl' in kwargs:
+            custom_non_identity_deny_url = kwargs['customNonIdentityDenyUrl']
+        if 'customPages' in kwargs:
+            custom_pages = kwargs['customPages']
+        if 'enableBindingCookie' in kwargs:
+            enable_binding_cookie = kwargs['enableBindingCookie']
+        if 'httpOnlyCookieAttribute' in kwargs:
+            http_only_cookie_attribute = kwargs['httpOnlyCookieAttribute']
+        if 'logoUrl' in kwargs:
+            logo_url = kwargs['logoUrl']
+        if 'saasApp' in kwargs:
+            saas_app = kwargs['saasApp']
+        if 'sameSiteCookieAttribute' in kwargs:
+            same_site_cookie_attribute = kwargs['sameSiteCookieAttribute']
+        if 'selfHostedDomains' in kwargs:
+            self_hosted_domains = kwargs['selfHostedDomains']
+        if 'serviceAuth401Redirect' in kwargs:
+            service_auth401_redirect = kwargs['serviceAuth401Redirect']
+        if 'sessionDuration' in kwargs:
+            session_duration = kwargs['sessionDuration']
+        if 'skipInterstitial' in kwargs:
+            skip_interstitial = kwargs['skipInterstitial']
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         _setter("name", name)
         if account_id is not None:
             _setter("account_id", account_id)
@@ -153,6 +197,8 @@ class AccessApplicationArgs:
             _setter("session_duration", session_duration)
         if skip_interstitial is not None:
             _setter("skip_interstitial", skip_interstitial)
+        if tags is not None:
+            _setter("tags", tags)
         if type is not None:
             _setter("type", type)
         if zone_id is not None:
@@ -400,6 +446,18 @@ class AccessApplicationArgs:
 
     @property
     @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The itags associated with the application.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "tags", value)
+
+    @property
+    @pulumi.getter
     def type(self) -> Optional[pulumi.Input[str]]:
         """
         The application type. Available values: `app_launcher`, `bookmark`, `biso`, `dash_sso`, `saas`, `self_hosted`, `ssh`, `vnc`, `warp`. Defaults to `self_hosted`.
@@ -447,6 +505,7 @@ class _AccessApplicationState:
                  service_auth401_redirect: Optional[pulumi.Input[bool]] = None,
                  session_duration: Optional[pulumi.Input[str]] = None,
                  skip_interstitial: Optional[pulumi.Input[bool]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None):
         """
@@ -472,6 +531,7 @@ class _AccessApplicationState:
         :param pulumi.Input[bool] service_auth401_redirect: Option to return a 401 status code in service authentication rules on failed requests. Defaults to `false`.
         :param pulumi.Input[str] session_duration: How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`. Defaults to `24h`.
         :param pulumi.Input[bool] skip_interstitial: Option to skip the authorization interstitial when using the CLI. Defaults to `false`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The itags associated with the application.
         :param pulumi.Input[str] type: The application type. Available values: `app_launcher`, `bookmark`, `biso`, `dash_sso`, `saas`, `self_hosted`, `ssh`, `vnc`, `warp`. Defaults to `self_hosted`.
         :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. Conflicts with `account_id`.
         """
@@ -498,6 +558,7 @@ class _AccessApplicationState:
             service_auth401_redirect=service_auth401_redirect,
             session_duration=session_duration,
             skip_interstitial=skip_interstitial,
+            tags=tags,
             type=type,
             zone_id=zone_id,
         )
@@ -525,9 +586,50 @@ class _AccessApplicationState:
              service_auth401_redirect: Optional[pulumi.Input[bool]] = None,
              session_duration: Optional[pulumi.Input[str]] = None,
              skip_interstitial: Optional[pulumi.Input[bool]] = None,
+             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              type: Optional[pulumi.Input[str]] = None,
              zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accountId' in kwargs:
+            account_id = kwargs['accountId']
+        if 'allowedIdps' in kwargs:
+            allowed_idps = kwargs['allowedIdps']
+        if 'appLauncherVisible' in kwargs:
+            app_launcher_visible = kwargs['appLauncherVisible']
+        if 'autoRedirectToIdentity' in kwargs:
+            auto_redirect_to_identity = kwargs['autoRedirectToIdentity']
+        if 'corsHeaders' in kwargs:
+            cors_headers = kwargs['corsHeaders']
+        if 'customDenyMessage' in kwargs:
+            custom_deny_message = kwargs['customDenyMessage']
+        if 'customDenyUrl' in kwargs:
+            custom_deny_url = kwargs['customDenyUrl']
+        if 'customNonIdentityDenyUrl' in kwargs:
+            custom_non_identity_deny_url = kwargs['customNonIdentityDenyUrl']
+        if 'customPages' in kwargs:
+            custom_pages = kwargs['customPages']
+        if 'enableBindingCookie' in kwargs:
+            enable_binding_cookie = kwargs['enableBindingCookie']
+        if 'httpOnlyCookieAttribute' in kwargs:
+            http_only_cookie_attribute = kwargs['httpOnlyCookieAttribute']
+        if 'logoUrl' in kwargs:
+            logo_url = kwargs['logoUrl']
+        if 'saasApp' in kwargs:
+            saas_app = kwargs['saasApp']
+        if 'sameSiteCookieAttribute' in kwargs:
+            same_site_cookie_attribute = kwargs['sameSiteCookieAttribute']
+        if 'selfHostedDomains' in kwargs:
+            self_hosted_domains = kwargs['selfHostedDomains']
+        if 'serviceAuth401Redirect' in kwargs:
+            service_auth401_redirect = kwargs['serviceAuth401Redirect']
+        if 'sessionDuration' in kwargs:
+            session_duration = kwargs['sessionDuration']
+        if 'skipInterstitial' in kwargs:
+            skip_interstitial = kwargs['skipInterstitial']
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         if account_id is not None:
             _setter("account_id", account_id)
         if allowed_idps is not None:
@@ -570,6 +672,8 @@ class _AccessApplicationState:
             _setter("session_duration", session_duration)
         if skip_interstitial is not None:
             _setter("skip_interstitial", skip_interstitial)
+        if tags is not None:
+            _setter("tags", tags)
         if type is not None:
             _setter("type", type)
         if zone_id is not None:
@@ -829,6 +933,18 @@ class _AccessApplicationState:
 
     @property
     @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The itags associated with the application.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "tags", value)
+
+    @property
+    @pulumi.getter
     def type(self) -> Optional[pulumi.Input[str]]:
         """
         The application type. Available values: `app_launcher`, `bookmark`, `biso`, `dash_sso`, `saas`, `self_hosted`, `ssh`, `vnc`, `warp`. Defaults to `self_hosted`.
@@ -877,6 +993,7 @@ class AccessApplication(pulumi.CustomResource):
                  service_auth401_redirect: Optional[pulumi.Input[bool]] = None,
                  session_duration: Optional[pulumi.Input[str]] = None,
                  skip_interstitial: Optional[pulumi.Input[bool]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -944,6 +1061,7 @@ class AccessApplication(pulumi.CustomResource):
         :param pulumi.Input[bool] service_auth401_redirect: Option to return a 401 status code in service authentication rules on failed requests. Defaults to `false`.
         :param pulumi.Input[str] session_duration: How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`. Defaults to `24h`.
         :param pulumi.Input[bool] skip_interstitial: Option to skip the authorization interstitial when using the CLI. Defaults to `false`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The itags associated with the application.
         :param pulumi.Input[str] type: The application type. Available values: `app_launcher`, `bookmark`, `biso`, `dash_sso`, `saas`, `self_hosted`, `ssh`, `vnc`, `warp`. Defaults to `self_hosted`.
         :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. Conflicts with `account_id`.
         """
@@ -1034,6 +1152,7 @@ class AccessApplication(pulumi.CustomResource):
                  service_auth401_redirect: Optional[pulumi.Input[bool]] = None,
                  session_duration: Optional[pulumi.Input[str]] = None,
                  skip_interstitial: Optional[pulumi.Input[bool]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -1072,6 +1191,7 @@ class AccessApplication(pulumi.CustomResource):
             __props__.__dict__["service_auth401_redirect"] = service_auth401_redirect
             __props__.__dict__["session_duration"] = session_duration
             __props__.__dict__["skip_interstitial"] = skip_interstitial
+            __props__.__dict__["tags"] = tags
             __props__.__dict__["type"] = type
             __props__.__dict__["zone_id"] = zone_id
             __props__.__dict__["aud"] = None
@@ -1106,6 +1226,7 @@ class AccessApplication(pulumi.CustomResource):
             service_auth401_redirect: Optional[pulumi.Input[bool]] = None,
             session_duration: Optional[pulumi.Input[str]] = None,
             skip_interstitial: Optional[pulumi.Input[bool]] = None,
+            tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             type: Optional[pulumi.Input[str]] = None,
             zone_id: Optional[pulumi.Input[str]] = None) -> 'AccessApplication':
         """
@@ -1136,6 +1257,7 @@ class AccessApplication(pulumi.CustomResource):
         :param pulumi.Input[bool] service_auth401_redirect: Option to return a 401 status code in service authentication rules on failed requests. Defaults to `false`.
         :param pulumi.Input[str] session_duration: How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`. Defaults to `24h`.
         :param pulumi.Input[bool] skip_interstitial: Option to skip the authorization interstitial when using the CLI. Defaults to `false`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The itags associated with the application.
         :param pulumi.Input[str] type: The application type. Available values: `app_launcher`, `bookmark`, `biso`, `dash_sso`, `saas`, `self_hosted`, `ssh`, `vnc`, `warp`. Defaults to `self_hosted`.
         :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. Conflicts with `account_id`.
         """
@@ -1164,6 +1286,7 @@ class AccessApplication(pulumi.CustomResource):
         __props__.__dict__["service_auth401_redirect"] = service_auth401_redirect
         __props__.__dict__["session_duration"] = session_duration
         __props__.__dict__["skip_interstitial"] = skip_interstitial
+        __props__.__dict__["tags"] = tags
         __props__.__dict__["type"] = type
         __props__.__dict__["zone_id"] = zone_id
         return AccessApplication(resource_name, opts=opts, __props__=__props__)
@@ -1335,6 +1458,14 @@ class AccessApplication(pulumi.CustomResource):
         Option to skip the authorization interstitial when using the CLI. Defaults to `false`.
         """
         return pulumi.get(self, "skip_interstitial")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> pulumi.Output[Optional[Sequence[str]]]:
+        """
+        The itags associated with the application.
+        """
+        return pulumi.get(self, "tags")
 
     @property
     @pulumi.getter

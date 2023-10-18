@@ -49,7 +49,17 @@ class PagesProjectArgs:
              build_config: Optional[pulumi.Input['PagesProjectBuildConfigArgs']] = None,
              deployment_configs: Optional[pulumi.Input['PagesProjectDeploymentConfigsArgs']] = None,
              source: Optional[pulumi.Input['PagesProjectSourceArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accountId' in kwargs:
+            account_id = kwargs['accountId']
+        if 'productionBranch' in kwargs:
+            production_branch = kwargs['productionBranch']
+        if 'buildConfig' in kwargs:
+            build_config = kwargs['buildConfig']
+        if 'deploymentConfigs' in kwargs:
+            deployment_configs = kwargs['deploymentConfigs']
+
         _setter("account_id", account_id)
         _setter("name", name)
         _setter("production_branch", production_branch)
@@ -181,7 +191,19 @@ class _PagesProjectState:
              production_branch: Optional[pulumi.Input[str]] = None,
              source: Optional[pulumi.Input['PagesProjectSourceArgs']] = None,
              subdomain: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accountId' in kwargs:
+            account_id = kwargs['accountId']
+        if 'buildConfig' in kwargs:
+            build_config = kwargs['buildConfig']
+        if 'createdOn' in kwargs:
+            created_on = kwargs['createdOn']
+        if 'deploymentConfigs' in kwargs:
+            deployment_configs = kwargs['deploymentConfigs']
+        if 'productionBranch' in kwargs:
+            production_branch = kwargs['productionBranch']
+
         if account_id is not None:
             _setter("account_id", account_id)
         if build_config is not None:

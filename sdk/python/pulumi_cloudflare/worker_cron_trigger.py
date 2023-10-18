@@ -35,7 +35,13 @@ class WorkerCronTriggerArgs:
              account_id: pulumi.Input[str],
              schedules: pulumi.Input[Sequence[pulumi.Input[str]]],
              script_name: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accountId' in kwargs:
+            account_id = kwargs['accountId']
+        if 'scriptName' in kwargs:
+            script_name = kwargs['scriptName']
+
         _setter("account_id", account_id)
         _setter("schedules", schedules)
         _setter("script_name", script_name)
@@ -101,7 +107,13 @@ class _WorkerCronTriggerState:
              account_id: Optional[pulumi.Input[str]] = None,
              schedules: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              script_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accountId' in kwargs:
+            account_id = kwargs['accountId']
+        if 'scriptName' in kwargs:
+            script_name = kwargs['scriptName']
+
         if account_id is not None:
             _setter("account_id", account_id)
         if schedules is not None:

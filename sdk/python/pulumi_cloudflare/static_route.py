@@ -55,7 +55,15 @@ class StaticRouteArgs:
              colo_regions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              description: Optional[pulumi.Input[str]] = None,
              weight: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accountId' in kwargs:
+            account_id = kwargs['accountId']
+        if 'coloNames' in kwargs:
+            colo_names = kwargs['coloNames']
+        if 'coloRegions' in kwargs:
+            colo_regions = kwargs['coloRegions']
+
         _setter("nexthop", nexthop)
         _setter("prefix", prefix)
         _setter("priority", priority)
@@ -211,7 +219,15 @@ class _StaticRouteState:
              prefix: Optional[pulumi.Input[str]] = None,
              priority: Optional[pulumi.Input[int]] = None,
              weight: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accountId' in kwargs:
+            account_id = kwargs['accountId']
+        if 'coloNames' in kwargs:
+            colo_names = kwargs['coloNames']
+        if 'coloRegions' in kwargs:
+            colo_regions = kwargs['coloRegions']
+
         if account_id is not None:
             _setter("account_id", account_id)
         if colo_names is not None:

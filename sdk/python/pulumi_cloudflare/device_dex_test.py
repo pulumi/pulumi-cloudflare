@@ -49,7 +49,11 @@ class DeviceDexTestArgs:
              enabled: pulumi.Input[bool],
              interval: pulumi.Input[str],
              name: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accountId' in kwargs:
+            account_id = kwargs['accountId']
+
         _setter("account_id", account_id)
         _setter("data", data)
         _setter("description", description)
@@ -174,7 +178,11 @@ class _DeviceDexTestState:
              interval: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
              updated: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accountId' in kwargs:
+            account_id = kwargs['accountId']
+
         if account_id is not None:
             _setter("account_id", account_id)
         if created is not None:

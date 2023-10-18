@@ -77,7 +77,21 @@ class LoadBalancerPoolArgs:
              monitor: Optional[pulumi.Input[str]] = None,
              notification_email: Optional[pulumi.Input[str]] = None,
              origin_steerings: Optional[pulumi.Input[Sequence[pulumi.Input['LoadBalancerPoolOriginSteeringArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accountId' in kwargs:
+            account_id = kwargs['accountId']
+        if 'checkRegions' in kwargs:
+            check_regions = kwargs['checkRegions']
+        if 'loadSheddings' in kwargs:
+            load_sheddings = kwargs['loadSheddings']
+        if 'minimumOrigins' in kwargs:
+            minimum_origins = kwargs['minimumOrigins']
+        if 'notificationEmail' in kwargs:
+            notification_email = kwargs['notificationEmail']
+        if 'originSteerings' in kwargs:
+            origin_steerings = kwargs['originSteerings']
+
         _setter("account_id", account_id)
         _setter("name", name)
         _setter("origins", origins)
@@ -331,7 +345,25 @@ class _LoadBalancerPoolState:
              notification_email: Optional[pulumi.Input[str]] = None,
              origin_steerings: Optional[pulumi.Input[Sequence[pulumi.Input['LoadBalancerPoolOriginSteeringArgs']]]] = None,
              origins: Optional[pulumi.Input[Sequence[pulumi.Input['LoadBalancerPoolOriginArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accountId' in kwargs:
+            account_id = kwargs['accountId']
+        if 'checkRegions' in kwargs:
+            check_regions = kwargs['checkRegions']
+        if 'createdOn' in kwargs:
+            created_on = kwargs['createdOn']
+        if 'loadSheddings' in kwargs:
+            load_sheddings = kwargs['loadSheddings']
+        if 'minimumOrigins' in kwargs:
+            minimum_origins = kwargs['minimumOrigins']
+        if 'modifiedOn' in kwargs:
+            modified_on = kwargs['modifiedOn']
+        if 'notificationEmail' in kwargs:
+            notification_email = kwargs['notificationEmail']
+        if 'originSteerings' in kwargs:
+            origin_steerings = kwargs['originSteerings']
+
         if account_id is not None:
             _setter("account_id", account_id)
         if check_regions is not None:

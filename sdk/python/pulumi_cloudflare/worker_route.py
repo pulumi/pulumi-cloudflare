@@ -35,7 +35,13 @@ class WorkerRouteArgs:
              pattern: pulumi.Input[str],
              zone_id: pulumi.Input[str],
              script_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+        if 'scriptName' in kwargs:
+            script_name = kwargs['scriptName']
+
         _setter("pattern", pattern)
         _setter("zone_id", zone_id)
         if script_name is not None:
@@ -102,7 +108,13 @@ class _WorkerRouteState:
              pattern: Optional[pulumi.Input[str]] = None,
              script_name: Optional[pulumi.Input[str]] = None,
              zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'scriptName' in kwargs:
+            script_name = kwargs['scriptName']
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         if pattern is not None:
             _setter("pattern", pattern)
         if script_name is not None:

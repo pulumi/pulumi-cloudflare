@@ -43,7 +43,15 @@ class AccessServiceTokenArgs:
              duration: Optional[pulumi.Input[str]] = None,
              min_days_for_renewal: Optional[pulumi.Input[int]] = None,
              zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accountId' in kwargs:
+            account_id = kwargs['accountId']
+        if 'minDaysForRenewal' in kwargs:
+            min_days_for_renewal = kwargs['minDaysForRenewal']
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         _setter("name", name)
         if account_id is not None:
             _setter("account_id", account_id)
@@ -159,7 +167,21 @@ class _AccessServiceTokenState:
              min_days_for_renewal: Optional[pulumi.Input[int]] = None,
              name: Optional[pulumi.Input[str]] = None,
              zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accountId' in kwargs:
+            account_id = kwargs['accountId']
+        if 'clientId' in kwargs:
+            client_id = kwargs['clientId']
+        if 'clientSecret' in kwargs:
+            client_secret = kwargs['clientSecret']
+        if 'expiresAt' in kwargs:
+            expires_at = kwargs['expiresAt']
+        if 'minDaysForRenewal' in kwargs:
+            min_days_for_renewal = kwargs['minDaysForRenewal']
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         if account_id is not None:
             _setter("account_id", account_id)
         if client_id is not None:

@@ -135,6 +135,8 @@ type AccessPolicy struct {
 	PurposeJustificationRequired pulumi.BoolPtrOutput `pulumi:"purposeJustificationRequired"`
 	// A series of access conditions, see Access Groups.
 	Requires AccessPolicyRequireArrayOutput `pulumi:"requires"`
+	// How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`. Defaults to `24h`.
+	SessionDuration pulumi.StringPtrOutput `pulumi:"sessionDuration"`
 	// The zone identifier to target for the resource. Conflicts with `accountId`.
 	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
 }
@@ -208,6 +210,8 @@ type accessPolicyState struct {
 	PurposeJustificationRequired *bool `pulumi:"purposeJustificationRequired"`
 	// A series of access conditions, see Access Groups.
 	Requires []AccessPolicyRequire `pulumi:"requires"`
+	// How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`. Defaults to `24h`.
+	SessionDuration *string `pulumi:"sessionDuration"`
 	// The zone identifier to target for the resource. Conflicts with `accountId`.
 	ZoneId *string `pulumi:"zoneId"`
 }
@@ -237,6 +241,8 @@ type AccessPolicyState struct {
 	PurposeJustificationRequired pulumi.BoolPtrInput
 	// A series of access conditions, see Access Groups.
 	Requires AccessPolicyRequireArrayInput
+	// How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`. Defaults to `24h`.
+	SessionDuration pulumi.StringPtrInput
 	// The zone identifier to target for the resource. Conflicts with `accountId`.
 	ZoneId pulumi.StringPtrInput
 }
@@ -270,6 +276,8 @@ type accessPolicyArgs struct {
 	PurposeJustificationRequired *bool `pulumi:"purposeJustificationRequired"`
 	// A series of access conditions, see Access Groups.
 	Requires []AccessPolicyRequire `pulumi:"requires"`
+	// How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`. Defaults to `24h`.
+	SessionDuration *string `pulumi:"sessionDuration"`
 	// The zone identifier to target for the resource. Conflicts with `accountId`.
 	ZoneId *string `pulumi:"zoneId"`
 }
@@ -300,6 +308,8 @@ type AccessPolicyArgs struct {
 	PurposeJustificationRequired pulumi.BoolPtrInput
 	// A series of access conditions, see Access Groups.
 	Requires AccessPolicyRequireArrayInput
+	// How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`. Defaults to `24h`.
+	SessionDuration pulumi.StringPtrInput
 	// The zone identifier to target for the resource. Conflicts with `accountId`.
 	ZoneId pulumi.StringPtrInput
 }
@@ -476,6 +486,11 @@ func (o AccessPolicyOutput) PurposeJustificationRequired() pulumi.BoolPtrOutput 
 // A series of access conditions, see Access Groups.
 func (o AccessPolicyOutput) Requires() AccessPolicyRequireArrayOutput {
 	return o.ApplyT(func(v *AccessPolicy) AccessPolicyRequireArrayOutput { return v.Requires }).(AccessPolicyRequireArrayOutput)
+}
+
+// How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`. Defaults to `24h`.
+func (o AccessPolicyOutput) SessionDuration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccessPolicy) pulumi.StringPtrOutput { return v.SessionDuration }).(pulumi.StringPtrOutput)
 }
 
 // The zone identifier to target for the resource. Conflicts with `accountId`.

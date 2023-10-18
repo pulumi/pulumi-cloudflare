@@ -93,7 +93,25 @@ class LoadBalancerMonitorArgs:
              retries: Optional[pulumi.Input[int]] = None,
              timeout: Optional[pulumi.Input[int]] = None,
              type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accountId' in kwargs:
+            account_id = kwargs['accountId']
+        if 'allowInsecure' in kwargs:
+            allow_insecure = kwargs['allowInsecure']
+        if 'consecutiveDown' in kwargs:
+            consecutive_down = kwargs['consecutiveDown']
+        if 'consecutiveUp' in kwargs:
+            consecutive_up = kwargs['consecutiveUp']
+        if 'expectedBody' in kwargs:
+            expected_body = kwargs['expectedBody']
+        if 'expectedCodes' in kwargs:
+            expected_codes = kwargs['expectedCodes']
+        if 'followRedirects' in kwargs:
+            follow_redirects = kwargs['followRedirects']
+        if 'probeZone' in kwargs:
+            probe_zone = kwargs['probeZone']
+
         _setter("account_id", account_id)
         if allow_insecure is not None:
             _setter("allow_insecure", allow_insecure)
@@ -421,7 +439,29 @@ class _LoadBalancerMonitorState:
              retries: Optional[pulumi.Input[int]] = None,
              timeout: Optional[pulumi.Input[int]] = None,
              type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accountId' in kwargs:
+            account_id = kwargs['accountId']
+        if 'allowInsecure' in kwargs:
+            allow_insecure = kwargs['allowInsecure']
+        if 'consecutiveDown' in kwargs:
+            consecutive_down = kwargs['consecutiveDown']
+        if 'consecutiveUp' in kwargs:
+            consecutive_up = kwargs['consecutiveUp']
+        if 'createdOn' in kwargs:
+            created_on = kwargs['createdOn']
+        if 'expectedBody' in kwargs:
+            expected_body = kwargs['expectedBody']
+        if 'expectedCodes' in kwargs:
+            expected_codes = kwargs['expectedCodes']
+        if 'followRedirects' in kwargs:
+            follow_redirects = kwargs['followRedirects']
+        if 'modifiedOn' in kwargs:
+            modified_on = kwargs['modifiedOn']
+        if 'probeZone' in kwargs:
+            probe_zone = kwargs['probeZone']
+
         if account_id is not None:
             _setter("account_id", account_id)
         if allow_insecure is not None:

@@ -53,7 +53,13 @@ class RulesetArgs:
              description: Optional[pulumi.Input[str]] = None,
              rules: Optional[pulumi.Input[Sequence[pulumi.Input['RulesetRuleArgs']]]] = None,
              zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accountId' in kwargs:
+            account_id = kwargs['accountId']
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         _setter("kind", kind)
         _setter("name", name)
         _setter("phase", phase)
@@ -191,7 +197,13 @@ class _RulesetState:
              phase: Optional[pulumi.Input[str]] = None,
              rules: Optional[pulumi.Input[Sequence[pulumi.Input['RulesetRuleArgs']]]] = None,
              zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accountId' in kwargs:
+            account_id = kwargs['accountId']
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         if account_id is not None:
             _setter("account_id", account_id)
         if description is not None:

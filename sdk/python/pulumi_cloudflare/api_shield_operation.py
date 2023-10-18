@@ -39,7 +39,11 @@ class ApiShieldOperationArgs:
              host: pulumi.Input[str],
              method: pulumi.Input[str],
              zone_id: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         _setter("endpoint", endpoint)
         _setter("host", host)
         _setter("method", method)
@@ -122,7 +126,11 @@ class _ApiShieldOperationState:
              host: Optional[pulumi.Input[str]] = None,
              method: Optional[pulumi.Input[str]] = None,
              zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         if endpoint is not None:
             _setter("endpoint", endpoint)
         if host is not None:

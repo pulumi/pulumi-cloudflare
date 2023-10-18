@@ -45,7 +45,13 @@ class AccessGroupArgs:
              excludes: Optional[pulumi.Input[Sequence[pulumi.Input['AccessGroupExcludeArgs']]]] = None,
              requires: Optional[pulumi.Input[Sequence[pulumi.Input['AccessGroupRequireArgs']]]] = None,
              zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accountId' in kwargs:
+            account_id = kwargs['accountId']
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         _setter("includes", includes)
         _setter("name", name)
         if account_id is not None:
@@ -150,7 +156,13 @@ class _AccessGroupState:
              name: Optional[pulumi.Input[str]] = None,
              requires: Optional[pulumi.Input[Sequence[pulumi.Input['AccessGroupRequireArgs']]]] = None,
              zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accountId' in kwargs:
+            account_id = kwargs['accountId']
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         if account_id is not None:
             _setter("account_id", account_id)
         if excludes is not None:

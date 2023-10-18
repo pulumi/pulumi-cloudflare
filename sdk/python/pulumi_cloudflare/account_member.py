@@ -39,7 +39,15 @@ class AccountMemberArgs:
              email_address: pulumi.Input[str],
              role_ids: pulumi.Input[Sequence[pulumi.Input[str]]],
              status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accountId' in kwargs:
+            account_id = kwargs['accountId']
+        if 'emailAddress' in kwargs:
+            email_address = kwargs['emailAddress']
+        if 'roleIds' in kwargs:
+            role_ids = kwargs['roleIds']
+
         _setter("account_id", account_id)
         _setter("email_address", email_address)
         _setter("role_ids", role_ids)
@@ -123,7 +131,15 @@ class _AccountMemberState:
              email_address: Optional[pulumi.Input[str]] = None,
              role_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accountId' in kwargs:
+            account_id = kwargs['accountId']
+        if 'emailAddress' in kwargs:
+            email_address = kwargs['emailAddress']
+        if 'roleIds' in kwargs:
+            role_ids = kwargs['roleIds']
+
         if account_id is not None:
             _setter("account_id", account_id)
         if email_address is not None:
