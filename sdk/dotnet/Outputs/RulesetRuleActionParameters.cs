@@ -14,6 +14,10 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class RulesetRuleActionParameters
     {
         /// <summary>
+        /// Specifies uncommon ports to allow cacheable assets to be served from.
+        /// </summary>
+        public readonly ImmutableArray<int> AdditionalCacheablePorts;
+        /// <summary>
         /// Compression algorithms to use in order of preference.
         /// </summary>
         public readonly ImmutableArray<Outputs.RulesetRuleActionParametersAlgorithm> Algorithms;
@@ -213,6 +217,8 @@ namespace Pulumi.Cloudflare.Outputs
 
         [OutputConstructor]
         private RulesetRuleActionParameters(
+            ImmutableArray<int> additionalCacheablePorts,
+
             ImmutableArray<Outputs.RulesetRuleActionParametersAlgorithm> algorithms,
 
             bool? automaticHttpsRewrites,
@@ -313,6 +319,7 @@ namespace Pulumi.Cloudflare.Outputs
 
             string? version)
         {
+            AdditionalCacheablePorts = additionalCacheablePorts;
             Algorithms = algorithms;
             AutomaticHttpsRewrites = automaticHttpsRewrites;
             Autominifies = autominifies;

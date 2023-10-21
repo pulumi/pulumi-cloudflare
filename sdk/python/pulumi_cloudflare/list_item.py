@@ -53,7 +53,13 @@ class ListItemInitArgs:
              hostname: Optional[pulumi.Input['ListItemHostnameArgs']] = None,
              ip: Optional[pulumi.Input[str]] = None,
              redirect: Optional[pulumi.Input['ListItemRedirectArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accountId' in kwargs:
+            account_id = kwargs['accountId']
+        if 'listId' in kwargs:
+            list_id = kwargs['listId']
+
         _setter("account_id", account_id)
         _setter("list_id", list_id)
         if asn is not None:
@@ -192,7 +198,13 @@ class _ListItemState:
              ip: Optional[pulumi.Input[str]] = None,
              list_id: Optional[pulumi.Input[str]] = None,
              redirect: Optional[pulumi.Input['ListItemRedirectArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accountId' in kwargs:
+            account_id = kwargs['accountId']
+        if 'listId' in kwargs:
+            list_id = kwargs['listId']
+
         if account_id is not None:
             _setter("account_id", account_id)
         if asn is not None:

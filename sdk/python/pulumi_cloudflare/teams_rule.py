@@ -69,7 +69,15 @@ class TeamsRuleArgs:
              identity: Optional[pulumi.Input[str]] = None,
              rule_settings: Optional[pulumi.Input['TeamsRuleRuleSettingsArgs']] = None,
              traffic: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accountId' in kwargs:
+            account_id = kwargs['accountId']
+        if 'devicePosture' in kwargs:
+            device_posture = kwargs['devicePosture']
+        if 'ruleSettings' in kwargs:
+            rule_settings = kwargs['ruleSettings']
+
         _setter("account_id", account_id)
         _setter("action", action)
         _setter("description", description)
@@ -280,7 +288,15 @@ class _TeamsRuleState:
              rule_settings: Optional[pulumi.Input['TeamsRuleRuleSettingsArgs']] = None,
              traffic: Optional[pulumi.Input[str]] = None,
              version: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accountId' in kwargs:
+            account_id = kwargs['accountId']
+        if 'devicePosture' in kwargs:
+            device_posture = kwargs['devicePosture']
+        if 'ruleSettings' in kwargs:
+            rule_settings = kwargs['ruleSettings']
+
         if account_id is not None:
             _setter("account_id", account_id)
         if action is not None:

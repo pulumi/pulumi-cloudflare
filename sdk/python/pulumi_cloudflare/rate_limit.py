@@ -60,7 +60,13 @@ class RateLimitArgs:
              description: Optional[pulumi.Input[str]] = None,
              disabled: Optional[pulumi.Input[bool]] = None,
              match: Optional[pulumi.Input['RateLimitMatchArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+        if 'bypassUrlPatterns' in kwargs:
+            bypass_url_patterns = kwargs['bypassUrlPatterns']
+
         _setter("action", action)
         _setter("period", period)
         _setter("threshold", threshold)
@@ -229,7 +235,13 @@ class _RateLimitState:
              period: Optional[pulumi.Input[int]] = None,
              threshold: Optional[pulumi.Input[int]] = None,
              zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'bypassUrlPatterns' in kwargs:
+            bypass_url_patterns = kwargs['bypassUrlPatterns']
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         if action is not None:
             _setter("action", action)
         if bypass_url_patterns is not None:

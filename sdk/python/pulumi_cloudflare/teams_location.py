@@ -41,7 +41,13 @@ class TeamsLocationArgs:
              name: pulumi.Input[str],
              client_default: Optional[pulumi.Input[bool]] = None,
              networks: Optional[pulumi.Input[Sequence[pulumi.Input['TeamsLocationNetworkArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accountId' in kwargs:
+            account_id = kwargs['accountId']
+        if 'clientDefault' in kwargs:
+            client_default = kwargs['clientDefault']
+
         _setter("account_id", account_id)
         _setter("name", name)
         if client_default is not None:
@@ -145,7 +151,21 @@ class _TeamsLocationState:
              name: Optional[pulumi.Input[str]] = None,
              networks: Optional[pulumi.Input[Sequence[pulumi.Input['TeamsLocationNetworkArgs']]]] = None,
              policy_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accountId' in kwargs:
+            account_id = kwargs['accountId']
+        if 'anonymizedLogsEnabled' in kwargs:
+            anonymized_logs_enabled = kwargs['anonymizedLogsEnabled']
+        if 'clientDefault' in kwargs:
+            client_default = kwargs['clientDefault']
+        if 'dohSubdomain' in kwargs:
+            doh_subdomain = kwargs['dohSubdomain']
+        if 'ipv4Destination' in kwargs:
+            ipv4_destination = kwargs['ipv4Destination']
+        if 'policyIds' in kwargs:
+            policy_ids = kwargs['policyIds']
+
         if account_id is not None:
             _setter("account_id", account_id)
         if anonymized_logs_enabled is not None:

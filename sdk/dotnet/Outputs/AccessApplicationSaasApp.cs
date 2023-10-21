@@ -22,13 +22,25 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.AccessApplicationSaasAppCustomAttribute> CustomAttributes;
         /// <summary>
+        /// The unique identifier for the SaaS application.
+        /// </summary>
+        public readonly string? IdpEntityId;
+        /// <summary>
         /// The format of the name identifier sent to the SaaS application. Defaults to `email`.
         /// </summary>
         public readonly string? NameIdFormat;
         /// <summary>
+        /// The public certificate that will be used to verify identities.
+        /// </summary>
+        public readonly string? PublicKey;
+        /// <summary>
         /// A globally unique name for an identity or service provider.
         /// </summary>
         public readonly string SpEntityId;
+        /// <summary>
+        /// The endpoint where the SaaS application will send login requests.
+        /// </summary>
+        public readonly string? SsoEndpoint;
 
         [OutputConstructor]
         private AccessApplicationSaasApp(
@@ -36,14 +48,23 @@ namespace Pulumi.Cloudflare.Outputs
 
             ImmutableArray<Outputs.AccessApplicationSaasAppCustomAttribute> customAttributes,
 
+            string? idpEntityId,
+
             string? nameIdFormat,
 
-            string spEntityId)
+            string? publicKey,
+
+            string spEntityId,
+
+            string? ssoEndpoint)
         {
             ConsumerServiceUrl = consumerServiceUrl;
             CustomAttributes = customAttributes;
+            IdpEntityId = idpEntityId;
             NameIdFormat = nameIdFormat;
+            PublicKey = publicKey;
             SpEntityId = spEntityId;
+            SsoEndpoint = ssoEndpoint;
         }
     }
 }

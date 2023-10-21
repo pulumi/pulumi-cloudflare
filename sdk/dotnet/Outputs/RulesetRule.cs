@@ -46,7 +46,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string? LastUpdated;
         /// <summary>
-        /// List parameters to configure how the rule generates logs.
+        /// List parameters to configure how the rule generates logs. Only valid for skip action.
         /// </summary>
         public readonly Outputs.RulesetRuleLogging? Logging;
         /// <summary>

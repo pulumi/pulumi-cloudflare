@@ -31,7 +31,11 @@ class LogpullRetentionArgs:
              _setter: Callable[[Any, Any], None],
              enabled: pulumi.Input[bool],
              zone_id: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         _setter("enabled", enabled)
         _setter("zone_id", zone_id)
 
@@ -80,7 +84,11 @@ class _LogpullRetentionState:
              _setter: Callable[[Any, Any], None],
              enabled: Optional[pulumi.Input[bool]] = None,
              zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         if enabled is not None:
             _setter("enabled", enabled)
         if zone_id is not None:

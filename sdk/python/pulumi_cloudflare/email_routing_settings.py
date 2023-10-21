@@ -35,7 +35,13 @@ class EmailRoutingSettingsArgs:
              enabled: pulumi.Input[bool],
              zone_id: pulumi.Input[str],
              skip_wizard: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+        if 'skipWizard' in kwargs:
+            skip_wizard = kwargs['skipWizard']
+
         _setter("enabled", enabled)
         _setter("zone_id", zone_id)
         if skip_wizard is not None:
@@ -122,7 +128,13 @@ class _EmailRoutingSettingsState:
              status: Optional[pulumi.Input[str]] = None,
              tag: Optional[pulumi.Input[str]] = None,
              zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'skipWizard' in kwargs:
+            skip_wizard = kwargs['skipWizard']
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         if created is not None:
             _setter("created", created)
         if enabled is not None:

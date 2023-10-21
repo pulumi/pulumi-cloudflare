@@ -45,7 +45,11 @@ class PageRuleArgs:
              zone_id: pulumi.Input[str],
              priority: Optional[pulumi.Input[int]] = None,
              status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         _setter("actions", actions)
         _setter("target", target)
         _setter("zone_id", zone_id)
@@ -147,7 +151,11 @@ class _PageRuleState:
              status: Optional[pulumi.Input[str]] = None,
              target: Optional[pulumi.Input[str]] = None,
              zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         if actions is not None:
             _setter("actions", actions)
         if priority is not None:

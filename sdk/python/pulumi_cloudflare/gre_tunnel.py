@@ -67,7 +67,23 @@ class GreTunnelArgs:
              health_check_type: Optional[pulumi.Input[str]] = None,
              mtu: Optional[pulumi.Input[int]] = None,
              ttl: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'cloudflareGreEndpoint' in kwargs:
+            cloudflare_gre_endpoint = kwargs['cloudflareGreEndpoint']
+        if 'customerGreEndpoint' in kwargs:
+            customer_gre_endpoint = kwargs['customerGreEndpoint']
+        if 'interfaceAddress' in kwargs:
+            interface_address = kwargs['interfaceAddress']
+        if 'accountId' in kwargs:
+            account_id = kwargs['accountId']
+        if 'healthCheckEnabled' in kwargs:
+            health_check_enabled = kwargs['healthCheckEnabled']
+        if 'healthCheckTarget' in kwargs:
+            health_check_target = kwargs['healthCheckTarget']
+        if 'healthCheckType' in kwargs:
+            health_check_type = kwargs['healthCheckType']
+
         _setter("cloudflare_gre_endpoint", cloudflare_gre_endpoint)
         _setter("customer_gre_endpoint", customer_gre_endpoint)
         _setter("interface_address", interface_address)
@@ -276,7 +292,23 @@ class _GreTunnelState:
              mtu: Optional[pulumi.Input[int]] = None,
              name: Optional[pulumi.Input[str]] = None,
              ttl: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accountId' in kwargs:
+            account_id = kwargs['accountId']
+        if 'cloudflareGreEndpoint' in kwargs:
+            cloudflare_gre_endpoint = kwargs['cloudflareGreEndpoint']
+        if 'customerGreEndpoint' in kwargs:
+            customer_gre_endpoint = kwargs['customerGreEndpoint']
+        if 'healthCheckEnabled' in kwargs:
+            health_check_enabled = kwargs['healthCheckEnabled']
+        if 'healthCheckTarget' in kwargs:
+            health_check_target = kwargs['healthCheckTarget']
+        if 'healthCheckType' in kwargs:
+            health_check_type = kwargs['healthCheckType']
+        if 'interfaceAddress' in kwargs:
+            interface_address = kwargs['interfaceAddress']
+
         if account_id is not None:
             _setter("account_id", account_id)
         if cloudflare_gre_endpoint is not None:

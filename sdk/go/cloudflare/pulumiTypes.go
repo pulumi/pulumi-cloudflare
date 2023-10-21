@@ -203,10 +203,16 @@ type AccessApplicationSaasApp struct {
 	ConsumerServiceUrl string `pulumi:"consumerServiceUrl"`
 	// Custom attribute mapped from IDPs.
 	CustomAttributes []AccessApplicationSaasAppCustomAttribute `pulumi:"customAttributes"`
+	// The unique identifier for the SaaS application.
+	IdpEntityId *string `pulumi:"idpEntityId"`
 	// The format of the name identifier sent to the SaaS application. Defaults to `email`.
 	NameIdFormat *string `pulumi:"nameIdFormat"`
+	// The public certificate that will be used to verify identities.
+	PublicKey *string `pulumi:"publicKey"`
 	// A globally unique name for an identity or service provider.
 	SpEntityId string `pulumi:"spEntityId"`
+	// The endpoint where the SaaS application will send login requests.
+	SsoEndpoint *string `pulumi:"ssoEndpoint"`
 }
 
 // AccessApplicationSaasAppInput is an input type that accepts AccessApplicationSaasAppArgs and AccessApplicationSaasAppOutput values.
@@ -225,10 +231,16 @@ type AccessApplicationSaasAppArgs struct {
 	ConsumerServiceUrl pulumi.StringInput `pulumi:"consumerServiceUrl"`
 	// Custom attribute mapped from IDPs.
 	CustomAttributes AccessApplicationSaasAppCustomAttributeArrayInput `pulumi:"customAttributes"`
+	// The unique identifier for the SaaS application.
+	IdpEntityId pulumi.StringPtrInput `pulumi:"idpEntityId"`
 	// The format of the name identifier sent to the SaaS application. Defaults to `email`.
 	NameIdFormat pulumi.StringPtrInput `pulumi:"nameIdFormat"`
+	// The public certificate that will be used to verify identities.
+	PublicKey pulumi.StringPtrInput `pulumi:"publicKey"`
 	// A globally unique name for an identity or service provider.
 	SpEntityId pulumi.StringInput `pulumi:"spEntityId"`
+	// The endpoint where the SaaS application will send login requests.
+	SsoEndpoint pulumi.StringPtrInput `pulumi:"ssoEndpoint"`
 }
 
 func (AccessApplicationSaasAppArgs) ElementType() reflect.Type {
@@ -336,14 +348,29 @@ func (o AccessApplicationSaasAppOutput) CustomAttributes() AccessApplicationSaas
 	return o.ApplyT(func(v AccessApplicationSaasApp) []AccessApplicationSaasAppCustomAttribute { return v.CustomAttributes }).(AccessApplicationSaasAppCustomAttributeArrayOutput)
 }
 
+// The unique identifier for the SaaS application.
+func (o AccessApplicationSaasAppOutput) IdpEntityId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AccessApplicationSaasApp) *string { return v.IdpEntityId }).(pulumi.StringPtrOutput)
+}
+
 // The format of the name identifier sent to the SaaS application. Defaults to `email`.
 func (o AccessApplicationSaasAppOutput) NameIdFormat() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AccessApplicationSaasApp) *string { return v.NameIdFormat }).(pulumi.StringPtrOutput)
 }
 
+// The public certificate that will be used to verify identities.
+func (o AccessApplicationSaasAppOutput) PublicKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AccessApplicationSaasApp) *string { return v.PublicKey }).(pulumi.StringPtrOutput)
+}
+
 // A globally unique name for an identity or service provider.
 func (o AccessApplicationSaasAppOutput) SpEntityId() pulumi.StringOutput {
 	return o.ApplyT(func(v AccessApplicationSaasApp) string { return v.SpEntityId }).(pulumi.StringOutput)
+}
+
+// The endpoint where the SaaS application will send login requests.
+func (o AccessApplicationSaasAppOutput) SsoEndpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AccessApplicationSaasApp) *string { return v.SsoEndpoint }).(pulumi.StringPtrOutput)
 }
 
 type AccessApplicationSaasAppPtrOutput struct{ *pulumi.OutputState }
@@ -396,6 +423,16 @@ func (o AccessApplicationSaasAppPtrOutput) CustomAttributes() AccessApplicationS
 	}).(AccessApplicationSaasAppCustomAttributeArrayOutput)
 }
 
+// The unique identifier for the SaaS application.
+func (o AccessApplicationSaasAppPtrOutput) IdpEntityId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccessApplicationSaasApp) *string {
+		if v == nil {
+			return nil
+		}
+		return v.IdpEntityId
+	}).(pulumi.StringPtrOutput)
+}
+
 // The format of the name identifier sent to the SaaS application. Defaults to `email`.
 func (o AccessApplicationSaasAppPtrOutput) NameIdFormat() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AccessApplicationSaasApp) *string {
@@ -406,6 +443,16 @@ func (o AccessApplicationSaasAppPtrOutput) NameIdFormat() pulumi.StringPtrOutput
 	}).(pulumi.StringPtrOutput)
 }
 
+// The public certificate that will be used to verify identities.
+func (o AccessApplicationSaasAppPtrOutput) PublicKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccessApplicationSaasApp) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PublicKey
+	}).(pulumi.StringPtrOutput)
+}
+
 // A globally unique name for an identity or service provider.
 func (o AccessApplicationSaasAppPtrOutput) SpEntityId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AccessApplicationSaasApp) *string {
@@ -413,6 +460,16 @@ func (o AccessApplicationSaasAppPtrOutput) SpEntityId() pulumi.StringPtrOutput {
 			return nil
 		}
 		return &v.SpEntityId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The endpoint where the SaaS application will send login requests.
+func (o AccessApplicationSaasAppPtrOutput) SsoEndpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccessApplicationSaasApp) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SsoEndpoint
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -25452,7 +25509,7 @@ type RulesetRule struct {
 	Id *string `pulumi:"id"`
 	// The most recent update to this rule.
 	LastUpdated *string `pulumi:"lastUpdated"`
-	// List parameters to configure how the rule generates logs.
+	// List parameters to configure how the rule generates logs. Only valid for skip action.
 	Logging *RulesetRuleLogging `pulumi:"logging"`
 	// List of parameters that configure HTTP rate limiting behaviour.
 	Ratelimit *RulesetRuleRatelimit `pulumi:"ratelimit"`
@@ -25490,7 +25547,7 @@ type RulesetRuleArgs struct {
 	Id pulumi.StringPtrInput `pulumi:"id"`
 	// The most recent update to this rule.
 	LastUpdated pulumi.StringPtrInput `pulumi:"lastUpdated"`
-	// List parameters to configure how the rule generates logs.
+	// List parameters to configure how the rule generates logs. Only valid for skip action.
 	Logging RulesetRuleLoggingPtrInput `pulumi:"logging"`
 	// List of parameters that configure HTTP rate limiting behaviour.
 	Ratelimit RulesetRuleRatelimitPtrInput `pulumi:"ratelimit"`
@@ -25609,7 +25666,7 @@ func (o RulesetRuleOutput) LastUpdated() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RulesetRule) *string { return v.LastUpdated }).(pulumi.StringPtrOutput)
 }
 
-// List parameters to configure how the rule generates logs.
+// List parameters to configure how the rule generates logs. Only valid for skip action.
 func (o RulesetRuleOutput) Logging() RulesetRuleLoggingPtrOutput {
 	return o.ApplyT(func(v RulesetRule) *RulesetRuleLogging { return v.Logging }).(RulesetRuleLoggingPtrOutput)
 }
@@ -25656,6 +25713,8 @@ func (o RulesetRuleArrayOutput) Index(i pulumi.IntInput) RulesetRuleOutput {
 }
 
 type RulesetRuleActionParameters struct {
+	// Specifies uncommon ports to allow cacheable assets to be served from.
+	AdditionalCacheablePorts []int `pulumi:"additionalCacheablePorts"`
 	// Compression algorithms to use in order of preference.
 	Algorithms []RulesetRuleActionParametersAlgorithm `pulumi:"algorithms"`
 	// Turn on or off Cloudflare Automatic HTTPS rewrites.
@@ -25769,6 +25828,8 @@ type RulesetRuleActionParametersInput interface {
 }
 
 type RulesetRuleActionParametersArgs struct {
+	// Specifies uncommon ports to allow cacheable assets to be served from.
+	AdditionalCacheablePorts pulumi.IntArrayInput `pulumi:"additionalCacheablePorts"`
 	// Compression algorithms to use in order of preference.
 	Algorithms RulesetRuleActionParametersAlgorithmArrayInput `pulumi:"algorithms"`
 	// Turn on or off Cloudflare Automatic HTTPS rewrites.
@@ -25963,6 +26024,11 @@ func (o RulesetRuleActionParametersOutput) ToOutput(ctx context.Context) pulumix
 	return pulumix.Output[RulesetRuleActionParameters]{
 		OutputState: o.OutputState,
 	}
+}
+
+// Specifies uncommon ports to allow cacheable assets to be served from.
+func (o RulesetRuleActionParametersOutput) AdditionalCacheablePorts() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v RulesetRuleActionParameters) []int { return v.AdditionalCacheablePorts }).(pulumi.IntArrayOutput)
 }
 
 // Compression algorithms to use in order of preference.
@@ -26242,6 +26308,16 @@ func (o RulesetRuleActionParametersPtrOutput) Elem() RulesetRuleActionParameters
 		var ret RulesetRuleActionParameters
 		return ret
 	}).(RulesetRuleActionParametersOutput)
+}
+
+// Specifies uncommon ports to allow cacheable assets to be served from.
+func (o RulesetRuleActionParametersPtrOutput) AdditionalCacheablePorts() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v *RulesetRuleActionParameters) []int {
+		if v == nil {
+			return nil
+		}
+		return v.AdditionalCacheablePorts
+	}).(pulumi.IntArrayOutput)
 }
 
 // Compression algorithms to use in order of preference.
@@ -35063,6 +35139,167 @@ func (o TeamsAccountProxyPtrOutput) Udp() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
+type TeamsAccountSshSessionLog struct {
+	// Public key used to encrypt ssh session.
+	PublicKey string `pulumi:"publicKey"`
+}
+
+// TeamsAccountSshSessionLogInput is an input type that accepts TeamsAccountSshSessionLogArgs and TeamsAccountSshSessionLogOutput values.
+// You can construct a concrete instance of `TeamsAccountSshSessionLogInput` via:
+//
+//	TeamsAccountSshSessionLogArgs{...}
+type TeamsAccountSshSessionLogInput interface {
+	pulumi.Input
+
+	ToTeamsAccountSshSessionLogOutput() TeamsAccountSshSessionLogOutput
+	ToTeamsAccountSshSessionLogOutputWithContext(context.Context) TeamsAccountSshSessionLogOutput
+}
+
+type TeamsAccountSshSessionLogArgs struct {
+	// Public key used to encrypt ssh session.
+	PublicKey pulumi.StringInput `pulumi:"publicKey"`
+}
+
+func (TeamsAccountSshSessionLogArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TeamsAccountSshSessionLog)(nil)).Elem()
+}
+
+func (i TeamsAccountSshSessionLogArgs) ToTeamsAccountSshSessionLogOutput() TeamsAccountSshSessionLogOutput {
+	return i.ToTeamsAccountSshSessionLogOutputWithContext(context.Background())
+}
+
+func (i TeamsAccountSshSessionLogArgs) ToTeamsAccountSshSessionLogOutputWithContext(ctx context.Context) TeamsAccountSshSessionLogOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TeamsAccountSshSessionLogOutput)
+}
+
+func (i TeamsAccountSshSessionLogArgs) ToOutput(ctx context.Context) pulumix.Output[TeamsAccountSshSessionLog] {
+	return pulumix.Output[TeamsAccountSshSessionLog]{
+		OutputState: i.ToTeamsAccountSshSessionLogOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i TeamsAccountSshSessionLogArgs) ToTeamsAccountSshSessionLogPtrOutput() TeamsAccountSshSessionLogPtrOutput {
+	return i.ToTeamsAccountSshSessionLogPtrOutputWithContext(context.Background())
+}
+
+func (i TeamsAccountSshSessionLogArgs) ToTeamsAccountSshSessionLogPtrOutputWithContext(ctx context.Context) TeamsAccountSshSessionLogPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TeamsAccountSshSessionLogOutput).ToTeamsAccountSshSessionLogPtrOutputWithContext(ctx)
+}
+
+// TeamsAccountSshSessionLogPtrInput is an input type that accepts TeamsAccountSshSessionLogArgs, TeamsAccountSshSessionLogPtr and TeamsAccountSshSessionLogPtrOutput values.
+// You can construct a concrete instance of `TeamsAccountSshSessionLogPtrInput` via:
+//
+//	        TeamsAccountSshSessionLogArgs{...}
+//
+//	or:
+//
+//	        nil
+type TeamsAccountSshSessionLogPtrInput interface {
+	pulumi.Input
+
+	ToTeamsAccountSshSessionLogPtrOutput() TeamsAccountSshSessionLogPtrOutput
+	ToTeamsAccountSshSessionLogPtrOutputWithContext(context.Context) TeamsAccountSshSessionLogPtrOutput
+}
+
+type teamsAccountSshSessionLogPtrType TeamsAccountSshSessionLogArgs
+
+func TeamsAccountSshSessionLogPtr(v *TeamsAccountSshSessionLogArgs) TeamsAccountSshSessionLogPtrInput {
+	return (*teamsAccountSshSessionLogPtrType)(v)
+}
+
+func (*teamsAccountSshSessionLogPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TeamsAccountSshSessionLog)(nil)).Elem()
+}
+
+func (i *teamsAccountSshSessionLogPtrType) ToTeamsAccountSshSessionLogPtrOutput() TeamsAccountSshSessionLogPtrOutput {
+	return i.ToTeamsAccountSshSessionLogPtrOutputWithContext(context.Background())
+}
+
+func (i *teamsAccountSshSessionLogPtrType) ToTeamsAccountSshSessionLogPtrOutputWithContext(ctx context.Context) TeamsAccountSshSessionLogPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TeamsAccountSshSessionLogPtrOutput)
+}
+
+func (i *teamsAccountSshSessionLogPtrType) ToOutput(ctx context.Context) pulumix.Output[*TeamsAccountSshSessionLog] {
+	return pulumix.Output[*TeamsAccountSshSessionLog]{
+		OutputState: i.ToTeamsAccountSshSessionLogPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+type TeamsAccountSshSessionLogOutput struct{ *pulumi.OutputState }
+
+func (TeamsAccountSshSessionLogOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TeamsAccountSshSessionLog)(nil)).Elem()
+}
+
+func (o TeamsAccountSshSessionLogOutput) ToTeamsAccountSshSessionLogOutput() TeamsAccountSshSessionLogOutput {
+	return o
+}
+
+func (o TeamsAccountSshSessionLogOutput) ToTeamsAccountSshSessionLogOutputWithContext(ctx context.Context) TeamsAccountSshSessionLogOutput {
+	return o
+}
+
+func (o TeamsAccountSshSessionLogOutput) ToTeamsAccountSshSessionLogPtrOutput() TeamsAccountSshSessionLogPtrOutput {
+	return o.ToTeamsAccountSshSessionLogPtrOutputWithContext(context.Background())
+}
+
+func (o TeamsAccountSshSessionLogOutput) ToTeamsAccountSshSessionLogPtrOutputWithContext(ctx context.Context) TeamsAccountSshSessionLogPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TeamsAccountSshSessionLog) *TeamsAccountSshSessionLog {
+		return &v
+	}).(TeamsAccountSshSessionLogPtrOutput)
+}
+
+func (o TeamsAccountSshSessionLogOutput) ToOutput(ctx context.Context) pulumix.Output[TeamsAccountSshSessionLog] {
+	return pulumix.Output[TeamsAccountSshSessionLog]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Public key used to encrypt ssh session.
+func (o TeamsAccountSshSessionLogOutput) PublicKey() pulumi.StringOutput {
+	return o.ApplyT(func(v TeamsAccountSshSessionLog) string { return v.PublicKey }).(pulumi.StringOutput)
+}
+
+type TeamsAccountSshSessionLogPtrOutput struct{ *pulumi.OutputState }
+
+func (TeamsAccountSshSessionLogPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TeamsAccountSshSessionLog)(nil)).Elem()
+}
+
+func (o TeamsAccountSshSessionLogPtrOutput) ToTeamsAccountSshSessionLogPtrOutput() TeamsAccountSshSessionLogPtrOutput {
+	return o
+}
+
+func (o TeamsAccountSshSessionLogPtrOutput) ToTeamsAccountSshSessionLogPtrOutputWithContext(ctx context.Context) TeamsAccountSshSessionLogPtrOutput {
+	return o
+}
+
+func (o TeamsAccountSshSessionLogPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*TeamsAccountSshSessionLog] {
+	return pulumix.Output[*TeamsAccountSshSessionLog]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o TeamsAccountSshSessionLogPtrOutput) Elem() TeamsAccountSshSessionLogOutput {
+	return o.ApplyT(func(v *TeamsAccountSshSessionLog) TeamsAccountSshSessionLog {
+		if v != nil {
+			return *v
+		}
+		var ret TeamsAccountSshSessionLog
+		return ret
+	}).(TeamsAccountSshSessionLogOutput)
+}
+
+// Public key used to encrypt ssh session.
+func (o TeamsAccountSshSessionLogPtrOutput) PublicKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TeamsAccountSshSessionLog) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.PublicKey
+	}).(pulumi.StringPtrOutput)
+}
+
 type TeamsLocationNetwork struct {
 	// The ID of this resource.
 	Id *string `pulumi:"id"`
@@ -40740,6 +40977,7 @@ type ZoneSettingsOverrideInitialSetting struct {
 	EarlyHints              *string                                           `pulumi:"earlyHints"`
 	EmailObfuscation        *string                                           `pulumi:"emailObfuscation"`
 	FilterLogsToCloudflare  *string                                           `pulumi:"filterLogsToCloudflare"`
+	Fonts                   *string                                           `pulumi:"fonts"`
 	H2Prioritization        *string                                           `pulumi:"h2Prioritization"`
 	HotlinkProtection       *string                                           `pulumi:"hotlinkProtection"`
 	Http2                   *string                                           `pulumi:"http2"`
@@ -40810,6 +41048,7 @@ type ZoneSettingsOverrideInitialSettingArgs struct {
 	EarlyHints              pulumi.StringPtrInput                                    `pulumi:"earlyHints"`
 	EmailObfuscation        pulumi.StringPtrInput                                    `pulumi:"emailObfuscation"`
 	FilterLogsToCloudflare  pulumi.StringPtrInput                                    `pulumi:"filterLogsToCloudflare"`
+	Fonts                   pulumi.StringPtrInput                                    `pulumi:"fonts"`
 	H2Prioritization        pulumi.StringPtrInput                                    `pulumi:"h2Prioritization"`
 	HotlinkProtection       pulumi.StringPtrInput                                    `pulumi:"hotlinkProtection"`
 	Http2                   pulumi.StringPtrInput                                    `pulumi:"http2"`
@@ -40980,6 +41219,10 @@ func (o ZoneSettingsOverrideInitialSettingOutput) EmailObfuscation() pulumi.Stri
 
 func (o ZoneSettingsOverrideInitialSettingOutput) FilterLogsToCloudflare() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ZoneSettingsOverrideInitialSetting) *string { return v.FilterLogsToCloudflare }).(pulumi.StringPtrOutput)
+}
+
+func (o ZoneSettingsOverrideInitialSettingOutput) Fonts() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ZoneSettingsOverrideInitialSetting) *string { return v.Fonts }).(pulumi.StringPtrOutput)
 }
 
 func (o ZoneSettingsOverrideInitialSettingOutput) H2Prioritization() pulumi.StringPtrOutput {
@@ -41780,6 +42023,7 @@ type ZoneSettingsOverrideSettings struct {
 	EarlyHints              *string                                     `pulumi:"earlyHints"`
 	EmailObfuscation        *string                                     `pulumi:"emailObfuscation"`
 	FilterLogsToCloudflare  *string                                     `pulumi:"filterLogsToCloudflare"`
+	Fonts                   *string                                     `pulumi:"fonts"`
 	H2Prioritization        *string                                     `pulumi:"h2Prioritization"`
 	HotlinkProtection       *string                                     `pulumi:"hotlinkProtection"`
 	Http2                   *string                                     `pulumi:"http2"`
@@ -41850,6 +42094,7 @@ type ZoneSettingsOverrideSettingsArgs struct {
 	EarlyHints              pulumi.StringPtrInput                              `pulumi:"earlyHints"`
 	EmailObfuscation        pulumi.StringPtrInput                              `pulumi:"emailObfuscation"`
 	FilterLogsToCloudflare  pulumi.StringPtrInput                              `pulumi:"filterLogsToCloudflare"`
+	Fonts                   pulumi.StringPtrInput                              `pulumi:"fonts"`
 	H2Prioritization        pulumi.StringPtrInput                              `pulumi:"h2Prioritization"`
 	HotlinkProtection       pulumi.StringPtrInput                              `pulumi:"hotlinkProtection"`
 	Http2                   pulumi.StringPtrInput                              `pulumi:"http2"`
@@ -42046,6 +42291,10 @@ func (o ZoneSettingsOverrideSettingsOutput) EmailObfuscation() pulumi.StringPtrO
 
 func (o ZoneSettingsOverrideSettingsOutput) FilterLogsToCloudflare() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ZoneSettingsOverrideSettings) *string { return v.FilterLogsToCloudflare }).(pulumi.StringPtrOutput)
+}
+
+func (o ZoneSettingsOverrideSettingsOutput) Fonts() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ZoneSettingsOverrideSettings) *string { return v.Fonts }).(pulumi.StringPtrOutput)
 }
 
 func (o ZoneSettingsOverrideSettingsOutput) H2Prioritization() pulumi.StringPtrOutput {
@@ -42375,6 +42624,15 @@ func (o ZoneSettingsOverrideSettingsPtrOutput) FilterLogsToCloudflare() pulumi.S
 			return nil
 		}
 		return v.FilterLogsToCloudflare
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ZoneSettingsOverrideSettingsPtrOutput) Fonts() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ZoneSettingsOverrideSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Fonts
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -45367,25 +45625,26 @@ func (o GetRulesetsRulesetRuleArrayOutput) Index(i pulumi.IntInput) GetRulesetsR
 }
 
 type GetRulesetsRulesetRuleActionParameters struct {
-	AutomaticHttpsRewrites *bool                                              `pulumi:"automaticHttpsRewrites"`
-	Autominifies           []GetRulesetsRulesetRuleActionParametersAutominify `pulumi:"autominifies"`
-	Bic                    *bool                                              `pulumi:"bic"`
-	BrowserTtl             *GetRulesetsRulesetRuleActionParametersBrowserTtl  `pulumi:"browserTtl"`
-	Cache                  *bool                                              `pulumi:"cache"`
-	CacheKey               *GetRulesetsRulesetRuleActionParametersCacheKey    `pulumi:"cacheKey"`
-	Content                *string                                            `pulumi:"content"`
-	ContentType            *string                                            `pulumi:"contentType"`
-	CookieFields           []string                                           `pulumi:"cookieFields"`
-	DisableApps            *bool                                              `pulumi:"disableApps"`
-	DisableRailgun         *bool                                              `pulumi:"disableRailgun"`
-	DisableZaraz           *bool                                              `pulumi:"disableZaraz"`
-	EdgeTtl                *GetRulesetsRulesetRuleActionParametersEdgeTtl     `pulumi:"edgeTtl"`
-	EmailObfuscation       *bool                                              `pulumi:"emailObfuscation"`
-	FromList               *GetRulesetsRulesetRuleActionParametersFromList    `pulumi:"fromList"`
-	FromValue              *GetRulesetsRulesetRuleActionParametersFromValue   `pulumi:"fromValue"`
-	Headers                []GetRulesetsRulesetRuleActionParametersHeader     `pulumi:"headers"`
-	HostHeader             *string                                            `pulumi:"hostHeader"`
-	HotlinkProtection      *bool                                              `pulumi:"hotlinkProtection"`
+	AdditionalCacheablePorts []int                                              `pulumi:"additionalCacheablePorts"`
+	AutomaticHttpsRewrites   *bool                                              `pulumi:"automaticHttpsRewrites"`
+	Autominifies             []GetRulesetsRulesetRuleActionParametersAutominify `pulumi:"autominifies"`
+	Bic                      *bool                                              `pulumi:"bic"`
+	BrowserTtl               *GetRulesetsRulesetRuleActionParametersBrowserTtl  `pulumi:"browserTtl"`
+	Cache                    *bool                                              `pulumi:"cache"`
+	CacheKey                 *GetRulesetsRulesetRuleActionParametersCacheKey    `pulumi:"cacheKey"`
+	Content                  *string                                            `pulumi:"content"`
+	ContentType              *string                                            `pulumi:"contentType"`
+	CookieFields             []string                                           `pulumi:"cookieFields"`
+	DisableApps              *bool                                              `pulumi:"disableApps"`
+	DisableRailgun           *bool                                              `pulumi:"disableRailgun"`
+	DisableZaraz             *bool                                              `pulumi:"disableZaraz"`
+	EdgeTtl                  *GetRulesetsRulesetRuleActionParametersEdgeTtl     `pulumi:"edgeTtl"`
+	EmailObfuscation         *bool                                              `pulumi:"emailObfuscation"`
+	FromList                 *GetRulesetsRulesetRuleActionParametersFromList    `pulumi:"fromList"`
+	FromValue                *GetRulesetsRulesetRuleActionParametersFromValue   `pulumi:"fromValue"`
+	Headers                  []GetRulesetsRulesetRuleActionParametersHeader     `pulumi:"headers"`
+	HostHeader               *string                                            `pulumi:"hostHeader"`
+	HotlinkProtection        *bool                                              `pulumi:"hotlinkProtection"`
 	// The ID of the Ruleset to target.
 	Id                      *string                                            `pulumi:"id"`
 	Increment               *int                                               `pulumi:"increment"`
@@ -45432,25 +45691,26 @@ type GetRulesetsRulesetRuleActionParametersInput interface {
 }
 
 type GetRulesetsRulesetRuleActionParametersArgs struct {
-	AutomaticHttpsRewrites pulumi.BoolPtrInput                                        `pulumi:"automaticHttpsRewrites"`
-	Autominifies           GetRulesetsRulesetRuleActionParametersAutominifyArrayInput `pulumi:"autominifies"`
-	Bic                    pulumi.BoolPtrInput                                        `pulumi:"bic"`
-	BrowserTtl             GetRulesetsRulesetRuleActionParametersBrowserTtlPtrInput   `pulumi:"browserTtl"`
-	Cache                  pulumi.BoolPtrInput                                        `pulumi:"cache"`
-	CacheKey               GetRulesetsRulesetRuleActionParametersCacheKeyPtrInput     `pulumi:"cacheKey"`
-	Content                pulumi.StringPtrInput                                      `pulumi:"content"`
-	ContentType            pulumi.StringPtrInput                                      `pulumi:"contentType"`
-	CookieFields           pulumi.StringArrayInput                                    `pulumi:"cookieFields"`
-	DisableApps            pulumi.BoolPtrInput                                        `pulumi:"disableApps"`
-	DisableRailgun         pulumi.BoolPtrInput                                        `pulumi:"disableRailgun"`
-	DisableZaraz           pulumi.BoolPtrInput                                        `pulumi:"disableZaraz"`
-	EdgeTtl                GetRulesetsRulesetRuleActionParametersEdgeTtlPtrInput      `pulumi:"edgeTtl"`
-	EmailObfuscation       pulumi.BoolPtrInput                                        `pulumi:"emailObfuscation"`
-	FromList               GetRulesetsRulesetRuleActionParametersFromListPtrInput     `pulumi:"fromList"`
-	FromValue              GetRulesetsRulesetRuleActionParametersFromValuePtrInput    `pulumi:"fromValue"`
-	Headers                GetRulesetsRulesetRuleActionParametersHeaderArrayInput     `pulumi:"headers"`
-	HostHeader             pulumi.StringPtrInput                                      `pulumi:"hostHeader"`
-	HotlinkProtection      pulumi.BoolPtrInput                                        `pulumi:"hotlinkProtection"`
+	AdditionalCacheablePorts pulumi.IntArrayInput                                       `pulumi:"additionalCacheablePorts"`
+	AutomaticHttpsRewrites   pulumi.BoolPtrInput                                        `pulumi:"automaticHttpsRewrites"`
+	Autominifies             GetRulesetsRulesetRuleActionParametersAutominifyArrayInput `pulumi:"autominifies"`
+	Bic                      pulumi.BoolPtrInput                                        `pulumi:"bic"`
+	BrowserTtl               GetRulesetsRulesetRuleActionParametersBrowserTtlPtrInput   `pulumi:"browserTtl"`
+	Cache                    pulumi.BoolPtrInput                                        `pulumi:"cache"`
+	CacheKey                 GetRulesetsRulesetRuleActionParametersCacheKeyPtrInput     `pulumi:"cacheKey"`
+	Content                  pulumi.StringPtrInput                                      `pulumi:"content"`
+	ContentType              pulumi.StringPtrInput                                      `pulumi:"contentType"`
+	CookieFields             pulumi.StringArrayInput                                    `pulumi:"cookieFields"`
+	DisableApps              pulumi.BoolPtrInput                                        `pulumi:"disableApps"`
+	DisableRailgun           pulumi.BoolPtrInput                                        `pulumi:"disableRailgun"`
+	DisableZaraz             pulumi.BoolPtrInput                                        `pulumi:"disableZaraz"`
+	EdgeTtl                  GetRulesetsRulesetRuleActionParametersEdgeTtlPtrInput      `pulumi:"edgeTtl"`
+	EmailObfuscation         pulumi.BoolPtrInput                                        `pulumi:"emailObfuscation"`
+	FromList                 GetRulesetsRulesetRuleActionParametersFromListPtrInput     `pulumi:"fromList"`
+	FromValue                GetRulesetsRulesetRuleActionParametersFromValuePtrInput    `pulumi:"fromValue"`
+	Headers                  GetRulesetsRulesetRuleActionParametersHeaderArrayInput     `pulumi:"headers"`
+	HostHeader               pulumi.StringPtrInput                                      `pulumi:"hostHeader"`
+	HotlinkProtection        pulumi.BoolPtrInput                                        `pulumi:"hotlinkProtection"`
 	// The ID of the Ruleset to target.
 	Id                      pulumi.StringPtrInput                                     `pulumi:"id"`
 	Increment               pulumi.IntPtrInput                                        `pulumi:"increment"`
@@ -45578,6 +45838,10 @@ func (o GetRulesetsRulesetRuleActionParametersOutput) ToOutput(ctx context.Conte
 	return pulumix.Output[GetRulesetsRulesetRuleActionParameters]{
 		OutputState: o.OutputState,
 	}
+}
+
+func (o GetRulesetsRulesetRuleActionParametersOutput) AdditionalCacheablePorts() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v GetRulesetsRulesetRuleActionParameters) []int { return v.AdditionalCacheablePorts }).(pulumi.IntArrayOutput)
 }
 
 func (o GetRulesetsRulesetRuleActionParametersOutput) AutomaticHttpsRewrites() pulumi.BoolPtrOutput {
@@ -45834,6 +46098,15 @@ func (o GetRulesetsRulesetRuleActionParametersPtrOutput) Elem() GetRulesetsRules
 		var ret GetRulesetsRulesetRuleActionParameters
 		return ret
 	}).(GetRulesetsRulesetRuleActionParametersOutput)
+}
+
+func (o GetRulesetsRulesetRuleActionParametersPtrOutput) AdditionalCacheablePorts() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v *GetRulesetsRulesetRuleActionParameters) []int {
+		if v == nil {
+			return nil
+		}
+		return v.AdditionalCacheablePorts
+	}).(pulumi.IntArrayOutput)
 }
 
 func (o GetRulesetsRulesetRuleActionParametersPtrOutput) AutomaticHttpsRewrites() pulumi.BoolPtrOutput {
@@ -52083,6 +52356,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*TeamsAccountPayloadLogPtrInput)(nil)).Elem(), TeamsAccountPayloadLogArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TeamsAccountProxyInput)(nil)).Elem(), TeamsAccountProxyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TeamsAccountProxyPtrInput)(nil)).Elem(), TeamsAccountProxyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TeamsAccountSshSessionLogInput)(nil)).Elem(), TeamsAccountSshSessionLogArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TeamsAccountSshSessionLogPtrInput)(nil)).Elem(), TeamsAccountSshSessionLogArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TeamsLocationNetworkInput)(nil)).Elem(), TeamsLocationNetworkArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TeamsLocationNetworkArrayInput)(nil)).Elem(), TeamsLocationNetworkArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TeamsRuleRuleSettingsInput)(nil)).Elem(), TeamsRuleRuleSettingsArgs{})
@@ -52634,6 +52909,8 @@ func init() {
 	pulumi.RegisterOutputType(TeamsAccountPayloadLogPtrOutput{})
 	pulumi.RegisterOutputType(TeamsAccountProxyOutput{})
 	pulumi.RegisterOutputType(TeamsAccountProxyPtrOutput{})
+	pulumi.RegisterOutputType(TeamsAccountSshSessionLogOutput{})
+	pulumi.RegisterOutputType(TeamsAccountSshSessionLogPtrOutput{})
 	pulumi.RegisterOutputType(TeamsLocationNetworkOutput{})
 	pulumi.RegisterOutputType(TeamsLocationNetworkArrayOutput{})
 	pulumi.RegisterOutputType(TeamsRuleRuleSettingsOutput{})

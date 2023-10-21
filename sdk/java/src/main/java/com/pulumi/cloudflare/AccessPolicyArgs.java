@@ -202,6 +202,21 @@ public final class AccessPolicyArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`. Defaults to `24h`.
+     * 
+     */
+    @Import(name="sessionDuration")
+    private @Nullable Output<String> sessionDuration;
+
+    /**
+     * @return How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`. Defaults to `24h`.
+     * 
+     */
+    public Optional<Output<String>> sessionDuration() {
+        return Optional.ofNullable(this.sessionDuration);
+    }
+
+    /**
      * The zone identifier to target for the resource. Conflicts with `account_id`.
      * 
      */
@@ -232,6 +247,7 @@ public final class AccessPolicyArgs extends com.pulumi.resources.ResourceArgs {
         this.purposeJustificationPrompt = $.purposeJustificationPrompt;
         this.purposeJustificationRequired = $.purposeJustificationRequired;
         this.requires = $.requires;
+        this.sessionDuration = $.sessionDuration;
         this.zoneId = $.zoneId;
     }
 
@@ -534,6 +550,27 @@ public final class AccessPolicyArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder requires(AccessPolicyRequireArgs... requires) {
             return requires(List.of(requires));
+        }
+
+        /**
+         * @param sessionDuration How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`. Defaults to `24h`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sessionDuration(@Nullable Output<String> sessionDuration) {
+            $.sessionDuration = sessionDuration;
+            return this;
+        }
+
+        /**
+         * @param sessionDuration How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`. Defaults to `24h`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sessionDuration(String sessionDuration) {
+            return sessionDuration(Output.of(sessionDuration));
         }
 
         /**

@@ -272,6 +272,20 @@ public class AccessPolicy extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.requires);
     }
     /**
+     * How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`. Defaults to `24h`.
+     * 
+     */
+    @Export(name="sessionDuration", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> sessionDuration;
+
+    /**
+     * @return How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`. Defaults to `24h`.
+     * 
+     */
+    public Output<Optional<String>> sessionDuration() {
+        return Codegen.optional(this.sessionDuration);
+    }
+    /**
      * The zone identifier to target for the resource. Conflicts with `account_id`.
      * 
      */

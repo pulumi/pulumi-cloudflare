@@ -49,7 +49,13 @@ class AddressMapArgs:
              description: Optional[pulumi.Input[str]] = None,
              ips: Optional[pulumi.Input[Sequence[pulumi.Input['AddressMapIpArgs']]]] = None,
              memberships: Optional[pulumi.Input[Sequence[pulumi.Input['AddressMapMembershipArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accountId' in kwargs:
+            account_id = kwargs['accountId']
+        if 'defaultSni' in kwargs:
+            default_sni = kwargs['defaultSni']
+
         _setter("account_id", account_id)
         _setter("enabled", enabled)
         if default_sni is not None:
@@ -178,7 +184,17 @@ class _AddressMapState:
              enabled: Optional[pulumi.Input[bool]] = None,
              ips: Optional[pulumi.Input[Sequence[pulumi.Input['AddressMapIpArgs']]]] = None,
              memberships: Optional[pulumi.Input[Sequence[pulumi.Input['AddressMapMembershipArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accountId' in kwargs:
+            account_id = kwargs['accountId']
+        if 'canDelete' in kwargs:
+            can_delete = kwargs['canDelete']
+        if 'canModifyIps' in kwargs:
+            can_modify_ips = kwargs['canModifyIps']
+        if 'defaultSni' in kwargs:
+            default_sni = kwargs['defaultSni']
+
         if account_id is not None:
             _setter("account_id", account_id)
         if can_delete is not None:

@@ -39,7 +39,13 @@ class WorkersKvArgs:
              key: pulumi.Input[str],
              namespace_id: pulumi.Input[str],
              value: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accountId' in kwargs:
+            account_id = kwargs['accountId']
+        if 'namespaceId' in kwargs:
+            namespace_id = kwargs['namespaceId']
+
         _setter("account_id", account_id)
         _setter("key", key)
         _setter("namespace_id", namespace_id)
@@ -122,7 +128,13 @@ class _WorkersKvState:
              key: Optional[pulumi.Input[str]] = None,
              namespace_id: Optional[pulumi.Input[str]] = None,
              value: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accountId' in kwargs:
+            account_id = kwargs['accountId']
+        if 'namespaceId' in kwargs:
+            namespace_id = kwargs['namespaceId']
+
         if account_id is not None:
             _setter("account_id", account_id)
         if key is not None:

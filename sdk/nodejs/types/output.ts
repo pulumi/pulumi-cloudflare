@@ -50,13 +50,25 @@ export interface AccessApplicationSaasApp {
      */
     customAttributes?: outputs.AccessApplicationSaasAppCustomAttribute[];
     /**
+     * The unique identifier for the SaaS application.
+     */
+    idpEntityId: string;
+    /**
      * The format of the name identifier sent to the SaaS application. Defaults to `email`.
      */
     nameIdFormat?: string;
     /**
+     * The public certificate that will be used to verify identities.
+     */
+    publicKey: string;
+    /**
      * A globally unique name for an identity or service provider.
      */
     spEntityId: string;
+    /**
+     * The endpoint where the SaaS application will send login requests.
+     */
+    ssoEndpoint: string;
 }
 
 export interface AccessApplicationSaasAppCustomAttribute {
@@ -1399,6 +1411,7 @@ export interface GetRulesetsRulesetRule {
 }
 
 export interface GetRulesetsRulesetRuleActionParameters {
+    additionalCacheablePorts?: number[];
     automaticHttpsRewrites?: boolean;
     autominifies?: outputs.GetRulesetsRulesetRuleActionParametersAutominify[];
     bic?: boolean;
@@ -2818,11 +2831,11 @@ export interface PagesProjectSourceConfig {
     /**
      * Branches will be excluded from automatic deployment.
      */
-    previewBranchExcludes?: string[];
+    previewBranchExcludes: string[];
     /**
      * Branches will be included for automatic deployment.
      */
-    previewBranchIncludes?: string[];
+    previewBranchIncludes: string[];
     /**
      * Preview Deployment Setting. Defaults to `all`.
      */
@@ -2991,7 +3004,7 @@ export interface RulesetRule {
      */
     lastUpdated: string;
     /**
-     * List parameters to configure how the rule generates logs.
+     * List parameters to configure how the rule generates logs. Only valid for skip action.
      */
     logging?: outputs.RulesetRuleLogging;
     /**
@@ -3009,6 +3022,10 @@ export interface RulesetRule {
 }
 
 export interface RulesetRuleActionParameters {
+    /**
+     * Specifies uncommon ports to allow cacheable assets to be served from.
+     */
+    additionalCacheablePorts?: number[];
     /**
      * Compression algorithms to use in order of preference.
      */
@@ -3825,6 +3842,13 @@ export interface TeamsAccountProxy {
     udp: boolean;
 }
 
+export interface TeamsAccountSshSessionLog {
+    /**
+     * Public key used to encrypt ssh session.
+     */
+    publicKey: string;
+}
+
 export interface TeamsLocationNetwork {
     /**
      * The ID of this resource.
@@ -4397,6 +4421,7 @@ export interface ZoneSettingsOverrideInitialSetting {
     earlyHints: string;
     emailObfuscation: string;
     filterLogsToCloudflare: string;
+    fonts: string;
     h2Prioritization: string;
     hotlinkProtection: string;
     http2: string;
@@ -4478,6 +4503,7 @@ export interface ZoneSettingsOverrideSettings {
     earlyHints: string;
     emailObfuscation: string;
     filterLogsToCloudflare: string;
+    fonts: string;
     h2Prioritization: string;
     hotlinkProtection: string;
     http2: string;

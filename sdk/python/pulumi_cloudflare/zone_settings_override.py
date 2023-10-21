@@ -32,7 +32,11 @@ class ZoneSettingsOverrideArgs:
              _setter: Callable[[Any, Any], None],
              zone_id: pulumi.Input[str],
              settings: Optional[pulumi.Input['ZoneSettingsOverrideSettingsArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         _setter("zone_id", zone_id)
         if settings is not None:
             _setter("settings", settings)
@@ -93,7 +97,21 @@ class _ZoneSettingsOverrideState:
              zone_id: Optional[pulumi.Input[str]] = None,
              zone_status: Optional[pulumi.Input[str]] = None,
              zone_type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'initialSettings' in kwargs:
+            initial_settings = kwargs['initialSettings']
+        if 'initialSettingsReadAt' in kwargs:
+            initial_settings_read_at = kwargs['initialSettingsReadAt']
+        if 'readonlySettings' in kwargs:
+            readonly_settings = kwargs['readonlySettings']
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+        if 'zoneStatus' in kwargs:
+            zone_status = kwargs['zoneStatus']
+        if 'zoneType' in kwargs:
+            zone_type = kwargs['zoneType']
+
         if initial_settings is not None:
             _setter("initial_settings", initial_settings)
         if initial_settings_read_at is not None:

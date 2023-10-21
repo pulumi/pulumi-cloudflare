@@ -61,7 +61,7 @@ namespace Pulumi.Cloudflare.Inputs
         public Input<string>? LastUpdated { get; set; }
 
         /// <summary>
-        /// List parameters to configure how the rule generates logs.
+        /// List parameters to configure how the rule generates logs. Only valid for skip action.
         /// </summary>
         [Input("logging")]
         public Input<Inputs.RulesetRuleLoggingArgs>? Logging { get; set; }

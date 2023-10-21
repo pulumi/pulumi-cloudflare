@@ -51,7 +51,13 @@ class TurnstileWidgetArgs:
              bot_fight_mode: Optional[pulumi.Input[bool]] = None,
              offlabel: Optional[pulumi.Input[bool]] = None,
              region: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accountId' in kwargs:
+            account_id = kwargs['accountId']
+        if 'botFightMode' in kwargs:
+            bot_fight_mode = kwargs['botFightMode']
+
         _setter("account_id", account_id)
         _setter("domains", domains)
         _setter("mode", mode)
@@ -192,7 +198,13 @@ class _TurnstileWidgetState:
              offlabel: Optional[pulumi.Input[bool]] = None,
              region: Optional[pulumi.Input[str]] = None,
              secret: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accountId' in kwargs:
+            account_id = kwargs['accountId']
+        if 'botFightMode' in kwargs:
+            bot_fight_mode = kwargs['botFightMode']
+
         if account_id is not None:
             _setter("account_id", account_id)
         if bot_fight_mode is not None:

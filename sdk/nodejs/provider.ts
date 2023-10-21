@@ -58,6 +58,14 @@ export class Provider extends pulumi.ProviderResource {
      * variable. Required when using `api_key`. Conflicts with `api_token`.
      */
     public readonly email!: pulumi.Output<string | undefined>;
+    /**
+     * A value to append to the HTTP User Agent for all API calls. This value is not something most users need to modify
+     * however, if you are using a non-standard provider or operator configuration, this is recommended to assist in uniquely
+     * identifying your traffic. **Setting this value will remove the Terraform version from the HTTP User Agent string and may
+     * have unintended consequences**. Alternatively, can be configured using the `CLOUDFLARE_USER_AGENT_OPERATOR_SUFFIX`
+     * environment variable.
+     */
+    public readonly userAgentOperatorSuffix!: pulumi.Output<string | undefined>;
 
     /**
      * Create a Provider resource with the given unique name, arguments, and options.
@@ -81,6 +89,7 @@ export class Provider extends pulumi.ProviderResource {
             resourceInputs["minBackoff"] = pulumi.output((args ? args.minBackoff : undefined) ?? (utilities.getEnvNumber("CLOUDFLARE_MIN_BACKOFF") || 1)).apply(JSON.stringify);
             resourceInputs["retries"] = pulumi.output((args ? args.retries : undefined) ?? (utilities.getEnvNumber("CLOUDFLARE_RETRIES") || 3)).apply(JSON.stringify);
             resourceInputs["rps"] = pulumi.output((args ? args.rps : undefined) ?? (utilities.getEnvNumber("CLOUDFLARE_RPS") || 4)).apply(JSON.stringify);
+            resourceInputs["userAgentOperatorSuffix"] = args ? args.userAgentOperatorSuffix : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Provider.__pulumiType, name, resourceInputs, opts);
@@ -149,4 +158,12 @@ export interface ProviderArgs {
      * variable.
      */
     rps?: pulumi.Input<number>;
+    /**
+     * A value to append to the HTTP User Agent for all API calls. This value is not something most users need to modify
+     * however, if you are using a non-standard provider or operator configuration, this is recommended to assist in uniquely
+     * identifying your traffic. **Setting this value will remove the Terraform version from the HTTP User Agent string and may
+     * have unintended consequences**. Alternatively, can be configured using the `CLOUDFLARE_USER_AGENT_OPERATOR_SUFFIX`
+     * environment variable.
+     */
+    userAgentOperatorSuffix?: pulumi.Input<string>;
 }

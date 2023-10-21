@@ -47,7 +47,13 @@ class ZoneArgs:
              paused: Optional[pulumi.Input[bool]] = None,
              plan: Optional[pulumi.Input[str]] = None,
              type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accountId' in kwargs:
+            account_id = kwargs['accountId']
+        if 'jumpStart' in kwargs:
+            jump_start = kwargs['jumpStart']
+
         _setter("account_id", account_id)
         _setter("zone", zone)
         if jump_start is not None:
@@ -187,7 +193,19 @@ class _ZoneState:
              vanity_name_servers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              verification_key: Optional[pulumi.Input[str]] = None,
              zone: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accountId' in kwargs:
+            account_id = kwargs['accountId']
+        if 'jumpStart' in kwargs:
+            jump_start = kwargs['jumpStart']
+        if 'nameServers' in kwargs:
+            name_servers = kwargs['nameServers']
+        if 'vanityNameServers' in kwargs:
+            vanity_name_servers = kwargs['vanityNameServers']
+        if 'verificationKey' in kwargs:
+            verification_key = kwargs['verificationKey']
+
         if account_id is not None:
             _setter("account_id", account_id)
         if jump_start is not None:

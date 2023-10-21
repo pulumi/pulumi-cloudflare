@@ -37,7 +37,13 @@ class TunnelConfigArgs:
              account_id: pulumi.Input[str],
              config: pulumi.Input['TunnelConfigConfigArgs'],
              tunnel_id: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accountId' in kwargs:
+            account_id = kwargs['accountId']
+        if 'tunnelId' in kwargs:
+            tunnel_id = kwargs['tunnelId']
+
         _setter("account_id", account_id)
         _setter("config", config)
         _setter("tunnel_id", tunnel_id)
@@ -103,7 +109,13 @@ class _TunnelConfigState:
              account_id: Optional[pulumi.Input[str]] = None,
              config: Optional[pulumi.Input['TunnelConfigConfigArgs']] = None,
              tunnel_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accountId' in kwargs:
+            account_id = kwargs['accountId']
+        if 'tunnelId' in kwargs:
+            tunnel_id = kwargs['tunnelId']
+
         if account_id is not None:
             _setter("account_id", account_id)
         if config is not None:

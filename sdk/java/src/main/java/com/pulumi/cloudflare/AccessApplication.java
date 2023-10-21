@@ -377,6 +377,20 @@ public class AccessApplication extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.skipInterstitial);
     }
     /**
+     * The itags associated with the application.
+     * 
+     */
+    @Export(name="tags", refs={List.class,String.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<String>> tags;
+
+    /**
+     * @return The itags associated with the application.
+     * 
+     */
+    public Output<Optional<List<String>>> tags() {
+        return Codegen.optional(this.tags);
+    }
+    /**
      * The application type. Available values: `app_launcher`, `bookmark`, `biso`, `dash_sso`, `saas`, `self_hosted`, `ssh`, `vnc`, `warp`. Defaults to `self_hosted`.
      * 
      */

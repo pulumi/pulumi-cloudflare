@@ -24,7 +24,8 @@ class ProviderArgs:
                  max_backoff: Optional[pulumi.Input[int]] = None,
                  min_backoff: Optional[pulumi.Input[int]] = None,
                  retries: Optional[pulumi.Input[int]] = None,
-                 rps: Optional[pulumi.Input[int]] = None):
+                 rps: Optional[pulumi.Input[int]] = None,
+                 user_agent_operator_suffix: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Provider resource.
         :param pulumi.Input[str] api_base_path: Configure the base path used by the API client. Alternatively, can be configured using the `CLOUDFLARE_API_BASE_PATH`
@@ -52,6 +53,11 @@ class ProviderArgs:
                `CLOUDFLARE_RETRIES` environment variable.
         :param pulumi.Input[int] rps: RPS limit to apply when making calls to the API. Alternatively, can be configured using the `CLOUDFLARE_RPS` environment
                variable.
+        :param pulumi.Input[str] user_agent_operator_suffix: A value to append to the HTTP User Agent for all API calls. This value is not something most users need to modify
+               however, if you are using a non-standard provider or operator configuration, this is recommended to assist in uniquely
+               identifying your traffic. **Setting this value will remove the Terraform version from the HTTP User Agent string and may
+               have unintended consequences**. Alternatively, can be configured using the `CLOUDFLARE_USER_AGENT_OPERATOR_SUFFIX`
+               environment variable.
         """
         ProviderArgs._configure(
             lambda key, value: pulumi.set(__self__, key, value),
@@ -66,6 +72,7 @@ class ProviderArgs:
             min_backoff=min_backoff,
             retries=retries,
             rps=rps,
+            user_agent_operator_suffix=user_agent_operator_suffix,
         )
     @staticmethod
     def _configure(
@@ -81,7 +88,28 @@ class ProviderArgs:
              min_backoff: Optional[pulumi.Input[int]] = None,
              retries: Optional[pulumi.Input[int]] = None,
              rps: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             user_agent_operator_suffix: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'apiBasePath' in kwargs:
+            api_base_path = kwargs['apiBasePath']
+        if 'apiClientLogging' in kwargs:
+            api_client_logging = kwargs['apiClientLogging']
+        if 'apiHostname' in kwargs:
+            api_hostname = kwargs['apiHostname']
+        if 'apiKey' in kwargs:
+            api_key = kwargs['apiKey']
+        if 'apiToken' in kwargs:
+            api_token = kwargs['apiToken']
+        if 'apiUserServiceKey' in kwargs:
+            api_user_service_key = kwargs['apiUserServiceKey']
+        if 'maxBackoff' in kwargs:
+            max_backoff = kwargs['maxBackoff']
+        if 'minBackoff' in kwargs:
+            min_backoff = kwargs['minBackoff']
+        if 'userAgentOperatorSuffix' in kwargs:
+            user_agent_operator_suffix = kwargs['userAgentOperatorSuffix']
+
         if api_base_path is not None:
             _setter("api_base_path", api_base_path)
         if api_client_logging is None:
@@ -114,6 +142,8 @@ class ProviderArgs:
             rps = (_utilities.get_env_int('CLOUDFLARE_RPS') or 4)
         if rps is not None:
             _setter("rps", rps)
+        if user_agent_operator_suffix is not None:
+            _setter("user_agent_operator_suffix", user_agent_operator_suffix)
 
     @property
     @pulumi.getter(name="apiBasePath")
@@ -261,6 +291,22 @@ class ProviderArgs:
     def rps(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "rps", value)
 
+    @property
+    @pulumi.getter(name="userAgentOperatorSuffix")
+    def user_agent_operator_suffix(self) -> Optional[pulumi.Input[str]]:
+        """
+        A value to append to the HTTP User Agent for all API calls. This value is not something most users need to modify
+        however, if you are using a non-standard provider or operator configuration, this is recommended to assist in uniquely
+        identifying your traffic. **Setting this value will remove the Terraform version from the HTTP User Agent string and may
+        have unintended consequences**. Alternatively, can be configured using the `CLOUDFLARE_USER_AGENT_OPERATOR_SUFFIX`
+        environment variable.
+        """
+        return pulumi.get(self, "user_agent_operator_suffix")
+
+    @user_agent_operator_suffix.setter
+    def user_agent_operator_suffix(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "user_agent_operator_suffix", value)
+
 
 class Provider(pulumi.ProviderResource):
     @overload
@@ -278,6 +324,7 @@ class Provider(pulumi.ProviderResource):
                  min_backoff: Optional[pulumi.Input[int]] = None,
                  retries: Optional[pulumi.Input[int]] = None,
                  rps: Optional[pulumi.Input[int]] = None,
+                 user_agent_operator_suffix: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
         The provider type for the cloudflare package. By default, resources use package-wide configuration
@@ -312,6 +359,11 @@ class Provider(pulumi.ProviderResource):
                `CLOUDFLARE_RETRIES` environment variable.
         :param pulumi.Input[int] rps: RPS limit to apply when making calls to the API. Alternatively, can be configured using the `CLOUDFLARE_RPS` environment
                variable.
+        :param pulumi.Input[str] user_agent_operator_suffix: A value to append to the HTTP User Agent for all API calls. This value is not something most users need to modify
+               however, if you are using a non-standard provider or operator configuration, this is recommended to assist in uniquely
+               identifying your traffic. **Setting this value will remove the Terraform version from the HTTP User Agent string and may
+               have unintended consequences**. Alternatively, can be configured using the `CLOUDFLARE_USER_AGENT_OPERATOR_SUFFIX`
+               environment variable.
         """
         ...
     @overload
@@ -355,6 +407,7 @@ class Provider(pulumi.ProviderResource):
                  min_backoff: Optional[pulumi.Input[int]] = None,
                  retries: Optional[pulumi.Input[int]] = None,
                  rps: Optional[pulumi.Input[int]] = None,
+                 user_agent_operator_suffix: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -385,6 +438,7 @@ class Provider(pulumi.ProviderResource):
             if rps is None:
                 rps = (_utilities.get_env_int('CLOUDFLARE_RPS') or 4)
             __props__.__dict__["rps"] = pulumi.Output.from_input(rps).apply(pulumi.runtime.to_json) if rps is not None else None
+            __props__.__dict__["user_agent_operator_suffix"] = user_agent_operator_suffix
         super(Provider, __self__).__init__(
             'cloudflare',
             resource_name,
@@ -447,4 +501,16 @@ class Provider(pulumi.ProviderResource):
         variable. Required when using `api_key`. Conflicts with `api_token`.
         """
         return pulumi.get(self, "email")
+
+    @property
+    @pulumi.getter(name="userAgentOperatorSuffix")
+    def user_agent_operator_suffix(self) -> pulumi.Output[Optional[str]]:
+        """
+        A value to append to the HTTP User Agent for all API calls. This value is not something most users need to modify
+        however, if you are using a non-standard provider or operator configuration, this is recommended to assist in uniquely
+        identifying your traffic. **Setting this value will remove the Terraform version from the HTTP User Agent string and may
+        have unintended consequences**. Alternatively, can be configured using the `CLOUDFLARE_USER_AGENT_OPERATOR_SUFFIX`
+        environment variable.
+        """
+        return pulumi.get(self, "user_agent_operator_suffix")
 

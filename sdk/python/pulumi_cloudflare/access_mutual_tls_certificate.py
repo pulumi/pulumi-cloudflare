@@ -43,7 +43,15 @@ class AccessMutualTlsCertificateArgs:
              associated_hostnames: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              certificate: Optional[pulumi.Input[str]] = None,
              zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accountId' in kwargs:
+            account_id = kwargs['accountId']
+        if 'associatedHostnames' in kwargs:
+            associated_hostnames = kwargs['associatedHostnames']
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         _setter("name", name)
         if account_id is not None:
             _setter("account_id", account_id)
@@ -150,7 +158,15 @@ class _AccessMutualTlsCertificateState:
              fingerprint: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
              zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accountId' in kwargs:
+            account_id = kwargs['accountId']
+        if 'associatedHostnames' in kwargs:
+            associated_hostnames = kwargs['associatedHostnames']
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         if account_id is not None:
             _setter("account_id", account_id)
         if associated_hostnames is not None:

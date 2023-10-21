@@ -126,6 +126,10 @@
                         "CLOUDFLARE_RPS"
                     ]
                 }
+            },
+            "userAgentOperatorSuffix": {
+                "type": "string",
+                "description": "A value to append to the HTTP User Agent for all API calls. This value is not something most users need to modify\nhowever, if you are using a non-standard provider or operator configuration, this is recommended to assist in uniquely\nidentifying your traffic. **Setting this value will remove the Terraform version from the HTTP User Agent string and may\nhave unintended consequences**. Alternatively, can be configured using the `CLOUDFLARE_USER_AGENT_OPERATOR_SUFFIX`\nenvironment variable.\n"
             }
         }
     },
@@ -189,20 +193,43 @@
                     },
                     "description": "Custom attribute mapped from IDPs.\n"
                 },
+                "idpEntityId": {
+                    "type": "string",
+                    "description": "The unique identifier for the SaaS application.\n"
+                },
                 "nameIdFormat": {
                     "type": "string",
                     "description": "The format of the name identifier sent to the SaaS application. Defaults to `email`.\n"
                 },
+                "publicKey": {
+                    "type": "string",
+                    "description": "The public certificate that will be used to verify identities.\n"
+                },
                 "spEntityId": {
                     "type": "string",
                     "description": "A globally unique name for an identity or service provider.\n"
+                },
+                "ssoEndpoint": {
+                    "type": "string",
+                    "description": "The endpoint where the SaaS application will send login requests.\n"
                 }
             },
             "type": "object",
             "required": [
                 "consumerServiceUrl",
                 "spEntityId"
-            ]
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "consumerServiceUrl",
+                        "idpEntityId",
+                        "publicKey",
+                        "spEntityId",
+                        "ssoEndpoint"
+                    ]
+                }
+            }
         },
         "cloudflare:index/AccessApplicationSaasAppCustomAttribute:AccessApplicationSaasAppCustomAttribute": {
             "properties": {
@@ -4210,7 +4237,16 @@
             "type": "object",
             "required": [
                 "productionBranch"
-            ]
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "previewBranchExcludes",
+                        "previewBranchIncludes",
+                        "productionBranch"
+                    ]
+                }
+            }
         },
         "cloudflare:index/RateLimitAction:RateLimitAction": {
             "properties": {
@@ -4503,7 +4539,7 @@
                 },
                 "logging": {
                     "$ref": "#/types/cloudflare:index/RulesetRuleLogging:RulesetRuleLogging",
-                    "description": "List parameters to configure how the rule generates logs.\n"
+                    "description": "List parameters to configure how the rule generates logs. Only valid for skip action.\n"
                 },
                 "ratelimit": {
                     "$ref": "#/types/cloudflare:index/RulesetRuleRatelimit:RulesetRuleRatelimit",
@@ -4538,6 +4574,13 @@
         },
         "cloudflare:index/RulesetRuleActionParameters:RulesetRuleActionParameters": {
             "properties": {
+                "additionalCacheablePorts": {
+                    "type": "array",
+                    "items": {
+                        "type": "integer"
+                    },
+                    "description": "Specifies uncommon ports to allow cacheable assets to be served from.\n"
+                },
                 "algorithms": {
                     "type": "array",
                     "items": {
@@ -5598,6 +5641,18 @@
                 "udp"
             ]
         },
+        "cloudflare:index/TeamsAccountSshSessionLog:TeamsAccountSshSessionLog": {
+            "properties": {
+                "publicKey": {
+                    "type": "string",
+                    "description": "Public key used to encrypt ssh session.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "publicKey"
+            ]
+        },
         "cloudflare:index/TeamsLocationNetwork:TeamsLocationNetwork": {
             "properties": {
                 "id": {
@@ -6388,6 +6443,9 @@
                 "filterLogsToCloudflare": {
                     "type": "string"
                 },
+                "fonts": {
+                    "type": "string"
+                },
                 "h2Prioritization": {
                     "type": "string"
                 },
@@ -6529,6 +6587,7 @@
                         "earlyHints",
                         "emailObfuscation",
                         "filterLogsToCloudflare",
+                        "fonts",
                         "h2Prioritization",
                         "hotlinkProtection",
                         "http2",
@@ -6692,6 +6751,9 @@
                 "filterLogsToCloudflare": {
                     "type": "string"
                 },
+                "fonts": {
+                    "type": "string"
+                },
                 "h2Prioritization": {
                     "type": "string"
                 },
@@ -6833,6 +6895,7 @@
                         "earlyHints",
                         "emailObfuscation",
                         "filterLogsToCloudflare",
+                        "fonts",
                         "h2Prioritization",
                         "hotlinkProtection",
                         "http2",
@@ -7351,6 +7414,12 @@
         },
         "cloudflare:index/getRulesetsRulesetRuleActionParameters:getRulesetsRulesetRuleActionParameters": {
             "properties": {
+                "additionalCacheablePorts": {
+                    "type": "array",
+                    "items": {
+                        "type": "integer"
+                    }
+                },
                 "automaticHttpsRewrites": {
                     "type": "boolean"
                 },
@@ -8112,6 +8181,10 @@
             "rps": {
                 "type": "integer",
                 "description": "RPS limit to apply when making calls to the API. Alternatively, can be configured using the `CLOUDFLARE_RPS` environment\nvariable.\n"
+            },
+            "userAgentOperatorSuffix": {
+                "type": "string",
+                "description": "A value to append to the HTTP User Agent for all API calls. This value is not something most users need to modify\nhowever, if you are using a non-standard provider or operator configuration, this is recommended to assist in uniquely\nidentifying your traffic. **Setting this value will remove the Terraform version from the HTTP User Agent string and may\nhave unintended consequences**. Alternatively, can be configured using the `CLOUDFLARE_USER_AGENT_OPERATOR_SUFFIX`\nenvironment variable.\n"
             }
         },
         "inputProperties": {
@@ -8188,6 +8261,10 @@
                         "CLOUDFLARE_RPS"
                     ]
                 }
+            },
+            "userAgentOperatorSuffix": {
+                "type": "string",
+                "description": "A value to append to the HTTP User Agent for all API calls. This value is not something most users need to modify\nhowever, if you are using a non-standard provider or operator configuration, this is recommended to assist in uniquely\nidentifying your traffic. **Setting this value will remove the Terraform version from the HTTP User Agent string and may\nhave unintended consequences**. Alternatively, can be configured using the `CLOUDFLARE_USER_AGENT_OPERATOR_SUFFIX`\nenvironment variable.\n"
             }
         }
     },
@@ -8290,6 +8367,13 @@
                 "skipInterstitial": {
                     "type": "boolean",
                     "description": "Option to skip the authorization interstitial when using the CLI. Defaults to `false`.\n"
+                },
+                "tags": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The itags associated with the application.\n"
                 },
                 "type": {
                     "type": "string",
@@ -8399,6 +8483,13 @@
                 "skipInterstitial": {
                     "type": "boolean",
                     "description": "Option to skip the authorization interstitial when using the CLI. Defaults to `false`.\n"
+                },
+                "tags": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The itags associated with the application.\n"
                 },
                 "type": {
                     "type": "string",
@@ -8510,6 +8601,13 @@
                     "skipInterstitial": {
                         "type": "boolean",
                         "description": "Option to skip the authorization interstitial when using the CLI. Defaults to `false`.\n"
+                    },
+                    "tags": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "The itags associated with the application.\n"
                     },
                     "type": {
                         "type": "string",
@@ -9099,6 +9197,10 @@
                     "type": "string",
                     "description": "The name of your Zero Trust organization.\n"
                 },
+                "sessionDuration": {
+                    "type": "string",
+                    "description": "How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`. Defaults to `24h`.\n"
+                },
                 "uiReadOnlyToggleReason": {
                     "type": "string",
                     "description": "A description of the reason why the UI read only field is being toggled.\n"
@@ -9151,6 +9253,10 @@
                     "type": "string",
                     "description": "The name of your Zero Trust organization.\n"
                 },
+                "sessionDuration": {
+                    "type": "string",
+                    "description": "How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`. Defaults to `24h`.\n"
+                },
                 "uiReadOnlyToggleReason": {
                     "type": "string",
                     "description": "A description of the reason why the UI read only field is being toggled.\n"
@@ -9202,6 +9308,10 @@
                     "name": {
                         "type": "string",
                         "description": "The name of your Zero Trust organization.\n"
+                    },
+                    "sessionDuration": {
+                        "type": "string",
+                        "description": "How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`. Defaults to `24h`.\n"
                     },
                     "uiReadOnlyToggleReason": {
                         "type": "string",
@@ -9284,6 +9394,10 @@
                     },
                     "description": "A series of access conditions, see Access Groups.\n"
                 },
+                "sessionDuration": {
+                    "type": "string",
+                    "description": "How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`. Defaults to `24h`.\n"
+                },
                 "zoneId": {
                     "type": "string",
                     "description": "The zone identifier to target for the resource. Conflicts with `account_id`.\n"
@@ -9361,6 +9475,10 @@
                     },
                     "description": "A series of access conditions, see Access Groups.\n"
                 },
+                "sessionDuration": {
+                    "type": "string",
+                    "description": "How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`. Defaults to `24h`.\n"
+                },
                 "zoneId": {
                     "type": "string",
                     "description": "The zone identifier to target for the resource. Conflicts with `account_id`.\n"
@@ -9437,6 +9555,10 @@
                             "$ref": "#/types/cloudflare:index/AccessPolicyRequire:AccessPolicyRequire"
                         },
                         "description": "A series of access conditions, see Access Groups.\n"
+                    },
+                    "sessionDuration": {
+                        "type": "string",
+                        "description": "How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`. Defaults to `24h`.\n"
                     },
                     "zoneId": {
                         "type": "string",
@@ -9641,6 +9763,78 @@
                     "zoneId": {
                         "type": "string",
                         "description": "The zone identifier to target for the resource. Conflicts with `account_id`.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "cloudflare:index/accessTag:AccessTag": {
+            "description": "Provides a resource to customize the pages your end users will see\nwhen trying to reach applications behind Cloudflare Access.\n",
+            "properties": {
+                "accountId": {
+                    "type": "string",
+                    "description": "The account identifier to target for the resource. Conflicts with `zone_id`. **Modifying this attribute will force creation of a new resource.**\n"
+                },
+                "appCount": {
+                    "type": "integer",
+                    "description": "Number of apps associated with the tag.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Friendly name of the Access Tag.\n"
+                },
+                "zoneId": {
+                    "type": "string",
+                    "description": "The zone identifier to target for the resource. Conflicts with `account_id`. **Modifying this attribute will force creation of a new resource.**\n"
+                }
+            },
+            "required": [
+                "appCount",
+                "name"
+            ],
+            "inputProperties": {
+                "accountId": {
+                    "type": "string",
+                    "description": "The account identifier to target for the resource. Conflicts with `zone_id`. **Modifying this attribute will force creation of a new resource.**\n",
+                    "willReplaceOnChanges": true
+                },
+                "appCount": {
+                    "type": "integer",
+                    "description": "Number of apps associated with the tag.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Friendly name of the Access Tag.\n"
+                },
+                "zoneId": {
+                    "type": "string",
+                    "description": "The zone identifier to target for the resource. Conflicts with `account_id`. **Modifying this attribute will force creation of a new resource.**\n",
+                    "willReplaceOnChanges": true
+                }
+            },
+            "requiredInputs": [
+                "name"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering AccessTag resources.\n",
+                "properties": {
+                    "accountId": {
+                        "type": "string",
+                        "description": "The account identifier to target for the resource. Conflicts with `zone_id`. **Modifying this attribute will force creation of a new resource.**\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "appCount": {
+                        "type": "integer",
+                        "description": "Number of apps associated with the tag.\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "Friendly name of the Access Tag.\n"
+                    },
+                    "zoneId": {
+                        "type": "string",
+                        "description": "The zone identifier to target for the resource. Conflicts with `account_id`. **Modifying this attribute will force creation of a new resource.**\n",
+                        "willReplaceOnChanges": true
                     }
                 },
                 "type": "object"
@@ -10038,6 +10232,97 @@
                         "type": "string",
                         "description": "The HTTP method used to access the endpoint. **Modifying this attribute will force creation of a new resource.**\n",
                         "willReplaceOnChanges": true
+                    },
+                    "zoneId": {
+                        "type": "string",
+                        "description": "The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**\n",
+                        "willReplaceOnChanges": true
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "cloudflare:index/apiShieldSchema:ApiShieldSchema": {
+            "description": "Provides a resource to manage a schema in API Shield Schema Validation 2.0.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as cloudflare from \"@pulumi/cloudflare\";\nimport * as fs from \"fs\";\n\nconst petstoreSchema = new cloudflare.ApiShieldSchema(\"petstoreSchema\", {\n    zoneId: \"0da42c8d2132a9ddaf714f9e7c920711\",\n    name: \"myschema\",\n    kind: \"openapi_v3\",\n    validationEnabled: true,\n    source: fs.readFileSync(\"./schemas/petstore.json\"),\n});\n```\n```python\nimport pulumi\nimport pulumi_cloudflare as cloudflare\n\npetstore_schema = cloudflare.ApiShieldSchema(\"petstoreSchema\",\n    zone_id=\"0da42c8d2132a9ddaf714f9e7c920711\",\n    name=\"myschema\",\n    kind=\"openapi_v3\",\n    validation_enabled=True,\n    source=(lambda path: open(path).read())(\"./schemas/petstore.json\"))\n```\n```csharp\nusing System.Collections.Generic;\nusing System.IO;\nusing System.Linq;\nusing Pulumi;\nusing Cloudflare = Pulumi.Cloudflare;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var petstoreSchema = new Cloudflare.ApiShieldSchema(\"petstoreSchema\", new()\n    {\n        ZoneId = \"0da42c8d2132a9ddaf714f9e7c920711\",\n        Name = \"myschema\",\n        Kind = \"openapi_v3\",\n        ValidationEnabled = true,\n        Source = File.ReadAllText(\"./schemas/petstore.json\"),\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"os\"\n\n\t\"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc readFileOrPanic(path string) pulumi.StringPtrInput {\n\tdata, err := os.ReadFile(path)\n\tif err != nil {\n\t\tpanic(err.Error())\n\t}\n\treturn pulumi.String(string(data))\n}\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := cloudflare.NewApiShieldSchema(ctx, \"petstoreSchema\", \u0026cloudflare.ApiShieldSchemaArgs{\n\t\t\tZoneId:            pulumi.String(\"0da42c8d2132a9ddaf714f9e7c920711\"),\n\t\t\tName:              pulumi.String(\"myschema\"),\n\t\t\tKind:              pulumi.String(\"openapi_v3\"),\n\t\t\tValidationEnabled: pulumi.Bool(true),\n\t\t\tSource:            readFileOrPanic(\"./schemas/petstore.json\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.cloudflare.ApiShieldSchema;\nimport com.pulumi.cloudflare.ApiShieldSchemaArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var petstoreSchema = new ApiShieldSchema(\"petstoreSchema\", ApiShieldSchemaArgs.builder()        \n            .zoneId(\"0da42c8d2132a9ddaf714f9e7c920711\")\n            .name(\"myschema\")\n            .kind(\"openapi_v3\")\n            .validationEnabled(true)\n            .source(Files.readString(Paths.get(\"./schemas/petstore.json\")))\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  petstoreSchema:\n    type: cloudflare:ApiShieldSchema\n    properties:\n      zoneId: 0da42c8d2132a9ddaf714f9e7c920711\n      name: myschema\n      kind: openapi_v3\n      # optional\n      validationEnabled: true\n      # optional, default false\n      source:\n        fn::readFile: ./schemas/petstore.json\n```\n{{% /example %}}\n{{% /examples %}}",
+            "properties": {
+                "kind": {
+                    "type": "string",
+                    "description": "Kind of schema. Defaults to `openapi_v3`. **Modifying this attribute will force creation of a new resource.**\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name of the schema. **Modifying this attribute will force creation of a new resource.**\n"
+                },
+                "source": {
+                    "type": "string",
+                    "description": "Schema file bytes. **Modifying this attribute will force creation of a new resource.**\n"
+                },
+                "validationEnabled": {
+                    "type": "boolean",
+                    "description": "Flag whether schema is enabled for validation.\n"
+                },
+                "zoneId": {
+                    "type": "string",
+                    "description": "The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**\n"
+                }
+            },
+            "required": [
+                "name",
+                "source",
+                "zoneId"
+            ],
+            "inputProperties": {
+                "kind": {
+                    "type": "string",
+                    "description": "Kind of schema. Defaults to `openapi_v3`. **Modifying this attribute will force creation of a new resource.**\n",
+                    "willReplaceOnChanges": true
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name of the schema. **Modifying this attribute will force creation of a new resource.**\n",
+                    "willReplaceOnChanges": true
+                },
+                "source": {
+                    "type": "string",
+                    "description": "Schema file bytes. **Modifying this attribute will force creation of a new resource.**\n",
+                    "willReplaceOnChanges": true
+                },
+                "validationEnabled": {
+                    "type": "boolean",
+                    "description": "Flag whether schema is enabled for validation.\n"
+                },
+                "zoneId": {
+                    "type": "string",
+                    "description": "The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**\n",
+                    "willReplaceOnChanges": true
+                }
+            },
+            "requiredInputs": [
+                "name",
+                "source",
+                "zoneId"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering ApiShieldSchema resources.\n",
+                "properties": {
+                    "kind": {
+                        "type": "string",
+                        "description": "Kind of schema. Defaults to `openapi_v3`. **Modifying this attribute will force creation of a new resource.**\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "Name of the schema. **Modifying this attribute will force creation of a new resource.**\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "source": {
+                        "type": "string",
+                        "description": "Schema file bytes. **Modifying this attribute will force creation of a new resource.**\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "validationEnabled": {
+                        "type": "boolean",
+                        "description": "Flag whether schema is enabled for validation.\n"
                     },
                     "zoneId": {
                         "type": "string",
@@ -11274,6 +11559,60 @@
                     "zoneId": {
                         "type": "string",
                         "description": "The zone identifier to target for the resource.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "cloudflare:index/d1Database:D1Database": {
+            "description": "The [D1 Database](https://developers.cloudflare.com/d1/) resource allows you to manage Cloudflare D1 databases.\n\n!\u003e When a D1 Database is replaced all the data is lost. Please ensure you have a backup of your data before replacing a D1 Database.\n\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as cloudflare from \"@pulumi/cloudflare\";\n\nconst example = new cloudflare.D1Database(\"example\", {\n    accountId: \"f037e56e89293a057740de681ac9abbe\",\n    name: \"terraform-database\",\n});\n```\n```python\nimport pulumi\nimport pulumi_cloudflare as cloudflare\n\nexample = cloudflare.D1Database(\"example\",\n    account_id=\"f037e56e89293a057740de681ac9abbe\",\n    name=\"terraform-database\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Cloudflare = Pulumi.Cloudflare;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = new Cloudflare.D1Database(\"example\", new()\n    {\n        AccountId = \"f037e56e89293a057740de681ac9abbe\",\n        Name = \"terraform-database\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := cloudflare.NewD1Database(ctx, \"example\", \u0026cloudflare.D1DatabaseArgs{\n\t\t\tAccountId: pulumi.String(\"f037e56e89293a057740de681ac9abbe\"),\n\t\t\tName:      pulumi.String(\"terraform-database\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.cloudflare.D1Database;\nimport com.pulumi.cloudflare.D1DatabaseArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var example = new D1Database(\"example\", D1DatabaseArgs.builder()        \n            .accountId(\"f037e56e89293a057740de681ac9abbe\")\n            .name(\"terraform-database\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  example:\n    type: cloudflare:D1Database\n    properties:\n      accountId: f037e56e89293a057740de681ac9abbe\n      name: terraform-database\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\n\n\n```sh\n $ pulumi import cloudflare:index/d1Database:D1Database example \u003caccount id\u003e/\u003cdatabase id\u003e\n```\n\n ",
+            "properties": {
+                "accountId": {
+                    "type": "string",
+                    "description": "The account identifier to target for the resource.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the D1 Database.\n"
+                },
+                "version": {
+                    "type": "string",
+                    "description": "The backend version of the database.\n"
+                }
+            },
+            "required": [
+                "accountId",
+                "name",
+                "version"
+            ],
+            "inputProperties": {
+                "accountId": {
+                    "type": "string",
+                    "description": "The account identifier to target for the resource.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the D1 Database.\n"
+                }
+            },
+            "requiredInputs": [
+                "accountId",
+                "name"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering D1Database resources.\n",
+                "properties": {
+                    "accountId": {
+                        "type": "string",
+                        "description": "The account identifier to target for the resource.\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The name of the D1 Database.\n"
+                    },
+                    "version": {
+                        "type": "string",
+                        "description": "The backend version of the database.\n"
                     }
                 },
                 "type": "object"
@@ -15626,6 +15965,87 @@
                 "type": "object"
             }
         },
+        "cloudflare:index/observatoryScheduledTest:ObservatoryScheduledTest": {
+            "description": "Provides a Cloudflare Observatory Scheduled Test resource.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as cloudflare from \"@pulumi/cloudflare\";\n\nconst example = new cloudflare.ObservatoryScheduledTest(\"example\", {\n    frequency: \"WEEKLY\",\n    region: \"us-central1\",\n    url: \"example.com\",\n    zoneId: \"0da42c8d2132a9ddaf714f9e7c920711\",\n});\n```\n```python\nimport pulumi\nimport pulumi_cloudflare as cloudflare\n\nexample = cloudflare.ObservatoryScheduledTest(\"example\",\n    frequency=\"WEEKLY\",\n    region=\"us-central1\",\n    url=\"example.com\",\n    zone_id=\"0da42c8d2132a9ddaf714f9e7c920711\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Cloudflare = Pulumi.Cloudflare;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = new Cloudflare.ObservatoryScheduledTest(\"example\", new()\n    {\n        Frequency = \"WEEKLY\",\n        Region = \"us-central1\",\n        Url = \"example.com\",\n        ZoneId = \"0da42c8d2132a9ddaf714f9e7c920711\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := cloudflare.NewObservatoryScheduledTest(ctx, \"example\", \u0026cloudflare.ObservatoryScheduledTestArgs{\n\t\t\tFrequency: pulumi.String(\"WEEKLY\"),\n\t\t\tRegion:    pulumi.String(\"us-central1\"),\n\t\t\tUrl:       pulumi.String(\"example.com\"),\n\t\t\tZoneId:    pulumi.String(\"0da42c8d2132a9ddaf714f9e7c920711\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.cloudflare.ObservatoryScheduledTest;\nimport com.pulumi.cloudflare.ObservatoryScheduledTestArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var example = new ObservatoryScheduledTest(\"example\", ObservatoryScheduledTestArgs.builder()        \n            .frequency(\"WEEKLY\")\n            .region(\"us-central1\")\n            .url(\"example.com\")\n            .zoneId(\"0da42c8d2132a9ddaf714f9e7c920711\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  example:\n    type: cloudflare:ObservatoryScheduledTest\n    properties:\n      frequency: WEEKLY\n      region: us-central1\n      url: example.com\n      zoneId: 0da42c8d2132a9ddaf714f9e7c920711\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\n\n\n```sh\n $ pulumi import cloudflare:index/observatoryScheduledTest:ObservatoryScheduledTest example \u003czone_id\u003e:\u003curl\u003e:\u003cregion\u003e\n```\n\n ",
+            "properties": {
+                "frequency": {
+                    "type": "string",
+                    "description": "The frequency to run the test. Available values: `DAILY`, `WEEKLY`. **Modifying this attribute will force creation of a new resource.**\n"
+                },
+                "region": {
+                    "type": "string",
+                    "description": "The region to run the test in. Available values: `us-central1`, `us-east1`, `us-east4`, `us-south1`, `us-west1`, `southamerica-east1`, `europe-north1`, `europe-southwest1`, `europe-west1`, `europe-west2`, `europe-west3`, `europe-west4`, `europe-west8`, `europe-west9`, `asia-east1`, `asia-southeast1`, `me-west1`, `australia-southeast1`. **Modifying this attribute will force creation of a new resource.**\n"
+                },
+                "url": {
+                    "type": "string",
+                    "description": "The page to run the test on. **Modifying this attribute will force creation of a new resource.**\n"
+                },
+                "zoneId": {
+                    "type": "string",
+                    "description": "The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**\n"
+                }
+            },
+            "required": [
+                "frequency",
+                "region",
+                "url",
+                "zoneId"
+            ],
+            "inputProperties": {
+                "frequency": {
+                    "type": "string",
+                    "description": "The frequency to run the test. Available values: `DAILY`, `WEEKLY`. **Modifying this attribute will force creation of a new resource.**\n",
+                    "willReplaceOnChanges": true
+                },
+                "region": {
+                    "type": "string",
+                    "description": "The region to run the test in. Available values: `us-central1`, `us-east1`, `us-east4`, `us-south1`, `us-west1`, `southamerica-east1`, `europe-north1`, `europe-southwest1`, `europe-west1`, `europe-west2`, `europe-west3`, `europe-west4`, `europe-west8`, `europe-west9`, `asia-east1`, `asia-southeast1`, `me-west1`, `australia-southeast1`. **Modifying this attribute will force creation of a new resource.**\n",
+                    "willReplaceOnChanges": true
+                },
+                "url": {
+                    "type": "string",
+                    "description": "The page to run the test on. **Modifying this attribute will force creation of a new resource.**\n",
+                    "willReplaceOnChanges": true
+                },
+                "zoneId": {
+                    "type": "string",
+                    "description": "The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**\n",
+                    "willReplaceOnChanges": true
+                }
+            },
+            "requiredInputs": [
+                "frequency",
+                "region",
+                "url",
+                "zoneId"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering ObservatoryScheduledTest resources.\n",
+                "properties": {
+                    "frequency": {
+                        "type": "string",
+                        "description": "The frequency to run the test. Available values: `DAILY`, `WEEKLY`. **Modifying this attribute will force creation of a new resource.**\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "region": {
+                        "type": "string",
+                        "description": "The region to run the test in. Available values: `us-central1`, `us-east1`, `us-east4`, `us-south1`, `us-west1`, `southamerica-east1`, `europe-north1`, `europe-southwest1`, `europe-west1`, `europe-west2`, `europe-west3`, `europe-west4`, `europe-west8`, `europe-west9`, `asia-east1`, `asia-southeast1`, `me-west1`, `australia-southeast1`. **Modifying this attribute will force creation of a new resource.**\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "url": {
+                        "type": "string",
+                        "description": "The page to run the test on. **Modifying this attribute will force creation of a new resource.**\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "zoneId": {
+                        "type": "string",
+                        "description": "The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**\n",
+                        "willReplaceOnChanges": true
+                    }
+                },
+                "type": "object"
+            }
+        },
         "cloudflare:index/originCaCertificate:OriginCaCertificate": {
             "description": "{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as cloudflare from \"@pulumi/cloudflare\";\nimport * as tls from \"@pulumi/tls\";\n\nconst examplePrivateKey = new tls.PrivateKey(\"examplePrivateKey\", {algorithm: \"RSA\"});\nconst exampleCertRequest = new tls.CertRequest(\"exampleCertRequest\", {\n    privateKeyPem: examplePrivateKey.privateKeyPem,\n    subjects: [{\n        commonName: \"\",\n        organization: \"Terraform Test\",\n    }],\n});\nconst exampleOriginCaCertificate = new cloudflare.OriginCaCertificate(\"exampleOriginCaCertificate\", {\n    csr: exampleCertRequest.certRequestPem,\n    hostnames: [\"example.com\"],\n    requestType: \"origin-rsa\",\n    requestedValidity: 7,\n});\n```\n```python\nimport pulumi\nimport pulumi_cloudflare as cloudflare\nimport pulumi_tls as tls\n\nexample_private_key = tls.PrivateKey(\"examplePrivateKey\", algorithm=\"RSA\")\nexample_cert_request = tls.CertRequest(\"exampleCertRequest\",\n    private_key_pem=example_private_key.private_key_pem,\n    subjects=[tls.CertRequestSubjectArgs(\n        common_name=\"\",\n        organization=\"Terraform Test\",\n    )])\nexample_origin_ca_certificate = cloudflare.OriginCaCertificate(\"exampleOriginCaCertificate\",\n    csr=example_cert_request.cert_request_pem,\n    hostnames=[\"example.com\"],\n    request_type=\"origin-rsa\",\n    requested_validity=7)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Cloudflare = Pulumi.Cloudflare;\nusing Tls = Pulumi.Tls;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var examplePrivateKey = new Tls.PrivateKey(\"examplePrivateKey\", new()\n    {\n        Algorithm = \"RSA\",\n    });\n\n    var exampleCertRequest = new Tls.CertRequest(\"exampleCertRequest\", new()\n    {\n        PrivateKeyPem = examplePrivateKey.PrivateKeyPem,\n        Subjects = new[]\n        {\n            new Tls.Inputs.CertRequestSubjectArgs\n            {\n                CommonName = \"\",\n                Organization = \"Terraform Test\",\n            },\n        },\n    });\n\n    var exampleOriginCaCertificate = new Cloudflare.OriginCaCertificate(\"exampleOriginCaCertificate\", new()\n    {\n        Csr = exampleCertRequest.CertRequestPem,\n        Hostnames = new[]\n        {\n            \"example.com\",\n        },\n        RequestType = \"origin-rsa\",\n        RequestedValidity = 7,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare\"\n\t\"github.com/pulumi/pulumi-tls/sdk/v4/go/tls\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\texamplePrivateKey, err := tls.NewPrivateKey(ctx, \"examplePrivateKey\", \u0026tls.PrivateKeyArgs{\n\t\t\tAlgorithm: pulumi.String(\"RSA\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\texampleCertRequest, err := tls.NewCertRequest(ctx, \"exampleCertRequest\", \u0026tls.CertRequestArgs{\n\t\t\tPrivateKeyPem: examplePrivateKey.PrivateKeyPem,\n\t\t\tSubjects: tls.CertRequestSubjectArray{\n\t\t\t\t\u0026tls.CertRequestSubjectArgs{\n\t\t\t\t\tCommonName:   pulumi.String(\"\"),\n\t\t\t\t\tOrganization: pulumi.String(\"Terraform Test\"),\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = cloudflare.NewOriginCaCertificate(ctx, \"exampleOriginCaCertificate\", \u0026cloudflare.OriginCaCertificateArgs{\n\t\t\tCsr: exampleCertRequest.CertRequestPem,\n\t\t\tHostnames: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"example.com\"),\n\t\t\t},\n\t\t\tRequestType:       pulumi.String(\"origin-rsa\"),\n\t\t\tRequestedValidity: pulumi.Int(7),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.tls.PrivateKey;\nimport com.pulumi.tls.PrivateKeyArgs;\nimport com.pulumi.tls.CertRequest;\nimport com.pulumi.tls.CertRequestArgs;\nimport com.pulumi.tls.inputs.CertRequestSubjectArgs;\nimport com.pulumi.cloudflare.OriginCaCertificate;\nimport com.pulumi.cloudflare.OriginCaCertificateArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var examplePrivateKey = new PrivateKey(\"examplePrivateKey\", PrivateKeyArgs.builder()        \n            .algorithm(\"RSA\")\n            .build());\n\n        var exampleCertRequest = new CertRequest(\"exampleCertRequest\", CertRequestArgs.builder()        \n            .privateKeyPem(examplePrivateKey.privateKeyPem())\n            .subjects(CertRequestSubjectArgs.builder()\n                .commonName(\"\")\n                .organization(\"Terraform Test\")\n                .build())\n            .build());\n\n        var exampleOriginCaCertificate = new OriginCaCertificate(\"exampleOriginCaCertificate\", OriginCaCertificateArgs.builder()        \n            .csr(exampleCertRequest.certRequestPem())\n            .hostnames(\"example.com\")\n            .requestType(\"origin-rsa\")\n            .requestedValidity(7)\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  examplePrivateKey:\n    type: tls:PrivateKey\n    properties:\n      algorithm: RSA\n  exampleCertRequest:\n    type: tls:CertRequest\n    properties:\n      privateKeyPem: ${examplePrivateKey.privateKeyPem}\n      subjects:\n        - commonName:\n          organization: Terraform Test\n  exampleOriginCaCertificate:\n    type: cloudflare:OriginCaCertificate\n    properties:\n      csr: ${exampleCertRequest.certRequestPem}\n      hostnames:\n        - example.com\n      requestType: origin-rsa\n      requestedValidity: 7\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\n\n\n```sh\n $ pulumi import cloudflare:index/originCaCertificate:OriginCaCertificate example \u003ccertificate_id\u003e\n```\n\n ",
             "properties": {
@@ -17184,6 +17604,10 @@
                     "$ref": "#/types/cloudflare:index/TeamsAccountProxy:TeamsAccountProxy",
                     "description": "Configuration block for specifying which protocols are proxied.\n"
                 },
+                "sshSessionLog": {
+                    "$ref": "#/types/cloudflare:index/TeamsAccountSshSessionLog:TeamsAccountSshSessionLog",
+                    "description": "Configuration for SSH Session Logging.\n"
+                },
                 "tlsDecryptEnabled": {
                     "type": "boolean",
                     "description": "Indicator that decryption of TLS traffic is enabled.\n"
@@ -17231,6 +17655,10 @@
                 "proxy": {
                     "$ref": "#/types/cloudflare:index/TeamsAccountProxy:TeamsAccountProxy",
                     "description": "Configuration block for specifying which protocols are proxied.\n"
+                },
+                "sshSessionLog": {
+                    "$ref": "#/types/cloudflare:index/TeamsAccountSshSessionLog:TeamsAccountSshSessionLog",
+                    "description": "Configuration for SSH Session Logging.\n"
                 },
                 "tlsDecryptEnabled": {
                     "type": "boolean",
@@ -17281,6 +17709,10 @@
                     "proxy": {
                         "$ref": "#/types/cloudflare:index/TeamsAccountProxy:TeamsAccountProxy",
                         "description": "Configuration block for specifying which protocols are proxied.\n"
+                    },
+                    "sshSessionLog": {
+                        "$ref": "#/types/cloudflare:index/TeamsAccountSshSessionLog:TeamsAccountSshSessionLog",
+                        "description": "Configuration for SSH Session Logging.\n"
                     },
                     "tlsDecryptEnabled": {
                         "type": "boolean",

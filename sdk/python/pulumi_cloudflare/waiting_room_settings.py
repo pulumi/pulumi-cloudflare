@@ -31,7 +31,13 @@ class WaitingRoomSettingsArgs:
              _setter: Callable[[Any, Any], None],
              zone_id: pulumi.Input[str],
              search_engine_crawler_bypass: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+        if 'searchEngineCrawlerBypass' in kwargs:
+            search_engine_crawler_bypass = kwargs['searchEngineCrawlerBypass']
+
         _setter("zone_id", zone_id)
         if search_engine_crawler_bypass is not None:
             _setter("search_engine_crawler_bypass", search_engine_crawler_bypass)
@@ -81,7 +87,13 @@ class _WaitingRoomSettingsState:
              _setter: Callable[[Any, Any], None],
              search_engine_crawler_bypass: Optional[pulumi.Input[bool]] = None,
              zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'searchEngineCrawlerBypass' in kwargs:
+            search_engine_crawler_bypass = kwargs['searchEngineCrawlerBypass']
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         if search_engine_crawler_bypass is not None:
             _setter("search_engine_crawler_bypass", search_engine_crawler_bypass)
         if zone_id is not None:

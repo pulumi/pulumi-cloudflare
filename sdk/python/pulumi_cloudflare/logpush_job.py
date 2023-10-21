@@ -79,7 +79,25 @@ class LogpushJobArgs:
              name: Optional[pulumi.Input[str]] = None,
              ownership_challenge: Optional[pulumi.Input[str]] = None,
              zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'destinationConf' in kwargs:
+            destination_conf = kwargs['destinationConf']
+        if 'accountId' in kwargs:
+            account_id = kwargs['accountId']
+        if 'logpullOptions' in kwargs:
+            logpull_options = kwargs['logpullOptions']
+        if 'maxUploadBytes' in kwargs:
+            max_upload_bytes = kwargs['maxUploadBytes']
+        if 'maxUploadIntervalSeconds' in kwargs:
+            max_upload_interval_seconds = kwargs['maxUploadIntervalSeconds']
+        if 'maxUploadRecords' in kwargs:
+            max_upload_records = kwargs['maxUploadRecords']
+        if 'ownershipChallenge' in kwargs:
+            ownership_challenge = kwargs['ownershipChallenge']
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         _setter("dataset", dataset)
         _setter("destination_conf", destination_conf)
         if account_id is not None:
@@ -344,7 +362,25 @@ class _LogpushJobState:
              name: Optional[pulumi.Input[str]] = None,
              ownership_challenge: Optional[pulumi.Input[str]] = None,
              zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accountId' in kwargs:
+            account_id = kwargs['accountId']
+        if 'destinationConf' in kwargs:
+            destination_conf = kwargs['destinationConf']
+        if 'logpullOptions' in kwargs:
+            logpull_options = kwargs['logpullOptions']
+        if 'maxUploadBytes' in kwargs:
+            max_upload_bytes = kwargs['maxUploadBytes']
+        if 'maxUploadIntervalSeconds' in kwargs:
+            max_upload_interval_seconds = kwargs['maxUploadIntervalSeconds']
+        if 'maxUploadRecords' in kwargs:
+            max_upload_records = kwargs['maxUploadRecords']
+        if 'ownershipChallenge' in kwargs:
+            ownership_challenge = kwargs['ownershipChallenge']
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         if account_id is not None:
             _setter("account_id", account_id)
         if dataset is not None:

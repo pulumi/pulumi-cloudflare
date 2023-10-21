@@ -35,7 +35,13 @@ class PagesDomainArgs:
              account_id: pulumi.Input[str],
              domain: pulumi.Input[str],
              project_name: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accountId' in kwargs:
+            account_id = kwargs['accountId']
+        if 'projectName' in kwargs:
+            project_name = kwargs['projectName']
+
         _setter("account_id", account_id)
         _setter("domain", domain)
         _setter("project_name", project_name)
@@ -105,7 +111,13 @@ class _PagesDomainState:
              domain: Optional[pulumi.Input[str]] = None,
              project_name: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accountId' in kwargs:
+            account_id = kwargs['accountId']
+        if 'projectName' in kwargs:
+            project_name = kwargs['projectName']
+
         if account_id is not None:
             _setter("account_id", account_id)
         if domain is not None:

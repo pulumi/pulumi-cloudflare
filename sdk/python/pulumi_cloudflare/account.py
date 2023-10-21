@@ -35,7 +35,11 @@ class AccountArgs:
              name: pulumi.Input[str],
              enforce_twofactor: Optional[pulumi.Input[bool]] = None,
              type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'enforceTwofactor' in kwargs:
+            enforce_twofactor = kwargs['enforceTwofactor']
+
         _setter("name", name)
         if enforce_twofactor is not None:
             _setter("enforce_twofactor", enforce_twofactor)
@@ -103,7 +107,11 @@ class _AccountState:
              enforce_twofactor: Optional[pulumi.Input[bool]] = None,
              name: Optional[pulumi.Input[str]] = None,
              type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'enforceTwofactor' in kwargs:
+            enforce_twofactor = kwargs['enforceTwofactor']
+
         if enforce_twofactor is not None:
             _setter("enforce_twofactor", enforce_twofactor)
         if name is not None:

@@ -77,7 +77,31 @@ class WorkerScriptArgs:
              secret_text_bindings: Optional[pulumi.Input[Sequence[pulumi.Input['WorkerScriptSecretTextBindingArgs']]]] = None,
              service_bindings: Optional[pulumi.Input[Sequence[pulumi.Input['WorkerScriptServiceBindingArgs']]]] = None,
              webassembly_bindings: Optional[pulumi.Input[Sequence[pulumi.Input['WorkerScriptWebassemblyBindingArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accountId' in kwargs:
+            account_id = kwargs['accountId']
+        if 'analyticsEngineBindings' in kwargs:
+            analytics_engine_bindings = kwargs['analyticsEngineBindings']
+        if 'compatibilityDate' in kwargs:
+            compatibility_date = kwargs['compatibilityDate']
+        if 'compatibilityFlags' in kwargs:
+            compatibility_flags = kwargs['compatibilityFlags']
+        if 'kvNamespaceBindings' in kwargs:
+            kv_namespace_bindings = kwargs['kvNamespaceBindings']
+        if 'plainTextBindings' in kwargs:
+            plain_text_bindings = kwargs['plainTextBindings']
+        if 'queueBindings' in kwargs:
+            queue_bindings = kwargs['queueBindings']
+        if 'r2BucketBindings' in kwargs:
+            r2_bucket_bindings = kwargs['r2BucketBindings']
+        if 'secretTextBindings' in kwargs:
+            secret_text_bindings = kwargs['secretTextBindings']
+        if 'serviceBindings' in kwargs:
+            service_bindings = kwargs['serviceBindings']
+        if 'webassemblyBindings' in kwargs:
+            webassembly_bindings = kwargs['webassemblyBindings']
+
         _setter("account_id", account_id)
         _setter("content", content)
         _setter("name", name)
@@ -327,7 +351,31 @@ class _WorkerScriptState:
              secret_text_bindings: Optional[pulumi.Input[Sequence[pulumi.Input['WorkerScriptSecretTextBindingArgs']]]] = None,
              service_bindings: Optional[pulumi.Input[Sequence[pulumi.Input['WorkerScriptServiceBindingArgs']]]] = None,
              webassembly_bindings: Optional[pulumi.Input[Sequence[pulumi.Input['WorkerScriptWebassemblyBindingArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accountId' in kwargs:
+            account_id = kwargs['accountId']
+        if 'analyticsEngineBindings' in kwargs:
+            analytics_engine_bindings = kwargs['analyticsEngineBindings']
+        if 'compatibilityDate' in kwargs:
+            compatibility_date = kwargs['compatibilityDate']
+        if 'compatibilityFlags' in kwargs:
+            compatibility_flags = kwargs['compatibilityFlags']
+        if 'kvNamespaceBindings' in kwargs:
+            kv_namespace_bindings = kwargs['kvNamespaceBindings']
+        if 'plainTextBindings' in kwargs:
+            plain_text_bindings = kwargs['plainTextBindings']
+        if 'queueBindings' in kwargs:
+            queue_bindings = kwargs['queueBindings']
+        if 'r2BucketBindings' in kwargs:
+            r2_bucket_bindings = kwargs['r2BucketBindings']
+        if 'secretTextBindings' in kwargs:
+            secret_text_bindings = kwargs['secretTextBindings']
+        if 'serviceBindings' in kwargs:
+            service_bindings = kwargs['serviceBindings']
+        if 'webassemblyBindings' in kwargs:
+            webassembly_bindings = kwargs['webassemblyBindings']
+
         if account_id is not None:
             _setter("account_id", account_id)
         if analytics_engine_bindings is not None:

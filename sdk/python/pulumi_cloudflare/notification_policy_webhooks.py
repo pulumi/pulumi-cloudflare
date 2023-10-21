@@ -39,7 +39,11 @@ class NotificationPolicyWebhooksArgs:
              name: pulumi.Input[str],
              secret: Optional[pulumi.Input[str]] = None,
              url: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accountId' in kwargs:
+            account_id = kwargs['accountId']
+
         _setter("account_id", account_id)
         _setter("name", name)
         if secret is not None:
@@ -139,7 +143,17 @@ class _NotificationPolicyWebhooksState:
              secret: Optional[pulumi.Input[str]] = None,
              type: Optional[pulumi.Input[str]] = None,
              url: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accountId' in kwargs:
+            account_id = kwargs['accountId']
+        if 'createdAt' in kwargs:
+            created_at = kwargs['createdAt']
+        if 'lastFailure' in kwargs:
+            last_failure = kwargs['lastFailure']
+        if 'lastSuccess' in kwargs:
+            last_success = kwargs['lastSuccess']
+
         if account_id is not None:
             _setter("account_id", account_id)
         if created_at is not None:

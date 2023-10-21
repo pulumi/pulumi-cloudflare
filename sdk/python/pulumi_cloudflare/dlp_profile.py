@@ -49,7 +49,13 @@ class DlpProfileArgs:
              name: pulumi.Input[str],
              type: pulumi.Input[str],
              description: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accountId' in kwargs:
+            account_id = kwargs['accountId']
+        if 'allowedMatchCount' in kwargs:
+            allowed_match_count = kwargs['allowedMatchCount']
+
         _setter("account_id", account_id)
         _setter("allowed_match_count", allowed_match_count)
         _setter("entries", entries)
@@ -167,7 +173,13 @@ class _DlpProfileState:
              entries: Optional[pulumi.Input[Sequence[pulumi.Input['DlpProfileEntryArgs']]]] = None,
              name: Optional[pulumi.Input[str]] = None,
              type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accountId' in kwargs:
+            account_id = kwargs['accountId']
+        if 'allowedMatchCount' in kwargs:
+            allowed_match_count = kwargs['allowedMatchCount']
+
         if account_id is not None:
             _setter("account_id", account_id)
         if allowed_match_count is not None:

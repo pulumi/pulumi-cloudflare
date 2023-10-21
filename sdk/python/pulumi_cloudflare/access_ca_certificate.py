@@ -35,7 +35,15 @@ class AccessCaCertificateArgs:
              application_id: pulumi.Input[str],
              account_id: Optional[pulumi.Input[str]] = None,
              zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'applicationId' in kwargs:
+            application_id = kwargs['applicationId']
+        if 'accountId' in kwargs:
+            account_id = kwargs['accountId']
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         _setter("application_id", application_id)
         if account_id is not None:
             _setter("account_id", account_id)
@@ -111,7 +119,17 @@ class _AccessCaCertificateState:
              aud: Optional[pulumi.Input[str]] = None,
              public_key: Optional[pulumi.Input[str]] = None,
              zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accountId' in kwargs:
+            account_id = kwargs['accountId']
+        if 'applicationId' in kwargs:
+            application_id = kwargs['applicationId']
+        if 'publicKey' in kwargs:
+            public_key = kwargs['publicKey']
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         if account_id is not None:
             _setter("account_id", account_id)
         if application_id is not None:

@@ -31,6 +31,7 @@ public final class ZoneSettingsOverrideInitialSetting {
     private @Nullable String earlyHints;
     private @Nullable String emailObfuscation;
     private @Nullable String filterLogsToCloudflare;
+    private @Nullable String fonts;
     private @Nullable String h2Prioritization;
     private @Nullable String hotlinkProtection;
     private @Nullable String http2;
@@ -123,6 +124,9 @@ public final class ZoneSettingsOverrideInitialSetting {
     }
     public Optional<String> filterLogsToCloudflare() {
         return Optional.ofNullable(this.filterLogsToCloudflare);
+    }
+    public Optional<String> fonts() {
+        return Optional.ofNullable(this.fonts);
     }
     public Optional<String> h2Prioritization() {
         return Optional.ofNullable(this.h2Prioritization);
@@ -275,6 +279,7 @@ public final class ZoneSettingsOverrideInitialSetting {
         private @Nullable String earlyHints;
         private @Nullable String emailObfuscation;
         private @Nullable String filterLogsToCloudflare;
+        private @Nullable String fonts;
         private @Nullable String h2Prioritization;
         private @Nullable String hotlinkProtection;
         private @Nullable String http2;
@@ -333,6 +338,7 @@ public final class ZoneSettingsOverrideInitialSetting {
     	      this.earlyHints = defaults.earlyHints;
     	      this.emailObfuscation = defaults.emailObfuscation;
     	      this.filterLogsToCloudflare = defaults.filterLogsToCloudflare;
+    	      this.fonts = defaults.fonts;
     	      this.h2Prioritization = defaults.h2Prioritization;
     	      this.hotlinkProtection = defaults.hotlinkProtection;
     	      this.http2 = defaults.http2;
@@ -451,6 +457,11 @@ public final class ZoneSettingsOverrideInitialSetting {
         @CustomType.Setter
         public Builder filterLogsToCloudflare(@Nullable String filterLogsToCloudflare) {
             this.filterLogsToCloudflare = filterLogsToCloudflare;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder fonts(@Nullable String fonts) {
+            this.fonts = fonts;
             return this;
         }
         @CustomType.Setter
@@ -670,6 +681,7 @@ public final class ZoneSettingsOverrideInitialSetting {
             o.earlyHints = earlyHints;
             o.emailObfuscation = emailObfuscation;
             o.filterLogsToCloudflare = filterLogsToCloudflare;
+            o.fonts = fonts;
             o.h2Prioritization = h2Prioritization;
             o.hotlinkProtection = hotlinkProtection;
             o.http2 = http2;

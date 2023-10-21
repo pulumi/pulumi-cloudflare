@@ -41,7 +41,13 @@ class SplitTunnelArgs:
              mode: pulumi.Input[str],
              tunnels: pulumi.Input[Sequence[pulumi.Input['SplitTunnelTunnelArgs']]],
              policy_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accountId' in kwargs:
+            account_id = kwargs['accountId']
+        if 'policyId' in kwargs:
+            policy_id = kwargs['policyId']
+
         _setter("account_id", account_id)
         _setter("mode", mode)
         _setter("tunnels", tunnels)
@@ -125,7 +131,13 @@ class _SplitTunnelState:
              mode: Optional[pulumi.Input[str]] = None,
              policy_id: Optional[pulumi.Input[str]] = None,
              tunnels: Optional[pulumi.Input[Sequence[pulumi.Input['SplitTunnelTunnelArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accountId' in kwargs:
+            account_id = kwargs['accountId']
+        if 'policyId' in kwargs:
+            policy_id = kwargs['policyId']
+
         if account_id is not None:
             _setter("account_id", account_id)
         if mode is not None:

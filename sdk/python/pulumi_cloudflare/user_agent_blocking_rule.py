@@ -45,7 +45,11 @@ class UserAgentBlockingRuleArgs:
              mode: pulumi.Input[str],
              paused: pulumi.Input[bool],
              zone_id: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         _setter("configuration", configuration)
         _setter("description", description)
         _setter("mode", mode)
@@ -145,7 +149,11 @@ class _UserAgentBlockingRuleState:
              mode: Optional[pulumi.Input[str]] = None,
              paused: Optional[pulumi.Input[bool]] = None,
              zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         if configuration is not None:
             _setter("configuration", configuration)
         if description is not None:

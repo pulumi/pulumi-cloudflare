@@ -35,7 +35,13 @@ class TotalTlsArgs:
              enabled: pulumi.Input[bool],
              zone_id: pulumi.Input[str],
              certificate_authority: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+        if 'certificateAuthority' in kwargs:
+            certificate_authority = kwargs['certificateAuthority']
+
         _setter("enabled", enabled)
         _setter("zone_id", zone_id)
         if certificate_authority is not None:
@@ -102,7 +108,13 @@ class _TotalTlsState:
              certificate_authority: Optional[pulumi.Input[str]] = None,
              enabled: Optional[pulumi.Input[bool]] = None,
              zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'certificateAuthority' in kwargs:
+            certificate_authority = kwargs['certificateAuthority']
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         if certificate_authority is not None:
             _setter("certificate_authority", certificate_authority)
         if enabled is not None:

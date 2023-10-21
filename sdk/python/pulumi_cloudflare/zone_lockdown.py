@@ -48,7 +48,11 @@ class ZoneLockdownArgs:
              description: Optional[pulumi.Input[str]] = None,
              paused: Optional[pulumi.Input[bool]] = None,
              priority: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         _setter("configurations", configurations)
         _setter("urls", urls)
         _setter("zone_id", zone_id)
@@ -164,7 +168,11 @@ class _ZoneLockdownState:
              priority: Optional[pulumi.Input[int]] = None,
              urls: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         if configurations is not None:
             _setter("configurations", configurations)
         if description is not None:

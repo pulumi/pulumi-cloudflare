@@ -35,7 +35,15 @@ class LogpushOwnershipChallengeArgs:
              destination_conf: pulumi.Input[str],
              account_id: Optional[pulumi.Input[str]] = None,
              zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'destinationConf' in kwargs:
+            destination_conf = kwargs['destinationConf']
+        if 'accountId' in kwargs:
+            account_id = kwargs['accountId']
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         _setter("destination_conf", destination_conf)
         if account_id is not None:
             _setter("account_id", account_id)
@@ -107,7 +115,17 @@ class _LogpushOwnershipChallengeState:
              destination_conf: Optional[pulumi.Input[str]] = None,
              ownership_challenge_filename: Optional[pulumi.Input[str]] = None,
              zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accountId' in kwargs:
+            account_id = kwargs['accountId']
+        if 'destinationConf' in kwargs:
+            destination_conf = kwargs['destinationConf']
+        if 'ownershipChallengeFilename' in kwargs:
+            ownership_challenge_filename = kwargs['ownershipChallengeFilename']
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         if account_id is not None:
             _setter("account_id", account_id)
         if destination_conf is not None:

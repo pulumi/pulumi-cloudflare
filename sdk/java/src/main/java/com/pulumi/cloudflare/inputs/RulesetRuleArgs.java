@@ -141,14 +141,14 @@ public final class RulesetRuleArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * List parameters to configure how the rule generates logs.
+     * List parameters to configure how the rule generates logs. Only valid for skip action.
      * 
      */
     @Import(name="logging")
     private @Nullable Output<RulesetRuleLoggingArgs> logging;
 
     /**
-     * @return List parameters to configure how the rule generates logs.
+     * @return List parameters to configure how the rule generates logs. Only valid for skip action.
      * 
      */
     public Optional<Output<RulesetRuleLoggingArgs>> logging() {
@@ -404,7 +404,7 @@ public final class RulesetRuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param logging List parameters to configure how the rule generates logs.
+         * @param logging List parameters to configure how the rule generates logs. Only valid for skip action.
          * 
          * @return builder
          * 
@@ -415,7 +415,7 @@ public final class RulesetRuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param logging List parameters to configure how the rule generates logs.
+         * @param logging List parameters to configure how the rule generates logs. Only valid for skip action.
          * 
          * @return builder
          * 

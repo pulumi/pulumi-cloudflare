@@ -57,7 +57,7 @@ public final class RulesetRule {
      */
     private @Nullable String lastUpdated;
     /**
-     * @return List parameters to configure how the rule generates logs.
+     * @return List parameters to configure how the rule generates logs. Only valid for skip action.
      * 
      */
     private @Nullable RulesetRuleLogging logging;
@@ -135,7 +135,7 @@ public final class RulesetRule {
         return Optional.ofNullable(this.lastUpdated);
     }
     /**
-     * @return List parameters to configure how the rule generates logs.
+     * @return List parameters to configure how the rule generates logs. Only valid for skip action.
      * 
      */
     public Optional<RulesetRuleLogging> logging() {

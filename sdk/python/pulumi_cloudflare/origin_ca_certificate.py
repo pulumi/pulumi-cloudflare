@@ -43,7 +43,15 @@ class OriginCaCertificateArgs:
              request_type: pulumi.Input[str],
              min_days_for_renewal: Optional[pulumi.Input[int]] = None,
              requested_validity: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'requestType' in kwargs:
+            request_type = kwargs['requestType']
+        if 'minDaysForRenewal' in kwargs:
+            min_days_for_renewal = kwargs['minDaysForRenewal']
+        if 'requestedValidity' in kwargs:
+            requested_validity = kwargs['requestedValidity']
+
         _setter("csr", csr)
         _setter("hostnames", hostnames)
         _setter("request_type", request_type)
@@ -153,7 +161,17 @@ class _OriginCaCertificateState:
              min_days_for_renewal: Optional[pulumi.Input[int]] = None,
              request_type: Optional[pulumi.Input[str]] = None,
              requested_validity: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'expiresOn' in kwargs:
+            expires_on = kwargs['expiresOn']
+        if 'minDaysForRenewal' in kwargs:
+            min_days_for_renewal = kwargs['minDaysForRenewal']
+        if 'requestType' in kwargs:
+            request_type = kwargs['requestType']
+        if 'requestedValidity' in kwargs:
+            requested_validity = kwargs['requestedValidity']
+
         if certificate is not None:
             _setter("certificate", certificate)
         if csr is not None:

@@ -40,6 +40,12 @@ type Provider struct {
 	// A registered Cloudflare email address. Alternatively, can be configured using the `CLOUDFLARE_EMAIL` environment
 	// variable. Required when using `api_key`. Conflicts with `api_token`.
 	Email pulumi.StringPtrOutput `pulumi:"email"`
+	// A value to append to the HTTP User Agent for all API calls. This value is not something most users need to modify
+	// however, if you are using a non-standard provider or operator configuration, this is recommended to assist in uniquely
+	// identifying your traffic. **Setting this value will remove the Terraform version from the HTTP User Agent string and may
+	// have unintended consequences**. Alternatively, can be configured using the `CLOUDFLARE_USER_AGENT_OPERATOR_SUFFIX`
+	// environment variable.
+	UserAgentOperatorSuffix pulumi.StringPtrOutput `pulumi:"userAgentOperatorSuffix"`
 }
 
 // NewProvider registers a new resource with the given unique name, arguments, and options.
@@ -120,6 +126,12 @@ type providerArgs struct {
 	// RPS limit to apply when making calls to the API. Alternatively, can be configured using the `CLOUDFLARE_RPS` environment
 	// variable.
 	Rps *int `pulumi:"rps"`
+	// A value to append to the HTTP User Agent for all API calls. This value is not something most users need to modify
+	// however, if you are using a non-standard provider or operator configuration, this is recommended to assist in uniquely
+	// identifying your traffic. **Setting this value will remove the Terraform version from the HTTP User Agent string and may
+	// have unintended consequences**. Alternatively, can be configured using the `CLOUDFLARE_USER_AGENT_OPERATOR_SUFFIX`
+	// environment variable.
+	UserAgentOperatorSuffix *string `pulumi:"userAgentOperatorSuffix"`
 }
 
 // The set of arguments for constructing a Provider resource.
@@ -160,6 +172,12 @@ type ProviderArgs struct {
 	// RPS limit to apply when making calls to the API. Alternatively, can be configured using the `CLOUDFLARE_RPS` environment
 	// variable.
 	Rps pulumi.IntPtrInput
+	// A value to append to the HTTP User Agent for all API calls. This value is not something most users need to modify
+	// however, if you are using a non-standard provider or operator configuration, this is recommended to assist in uniquely
+	// identifying your traffic. **Setting this value will remove the Terraform version from the HTTP User Agent string and may
+	// have unintended consequences**. Alternatively, can be configured using the `CLOUDFLARE_USER_AGENT_OPERATOR_SUFFIX`
+	// environment variable.
+	UserAgentOperatorSuffix pulumi.StringPtrInput
 }
 
 func (ProviderArgs) ElementType() reflect.Type {
@@ -248,6 +266,15 @@ func (o ProviderOutput) ApiUserServiceKey() pulumi.StringPtrOutput {
 // variable. Required when using `api_key`. Conflicts with `api_token`.
 func (o ProviderOutput) Email() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.Email }).(pulumi.StringPtrOutput)
+}
+
+// A value to append to the HTTP User Agent for all API calls. This value is not something most users need to modify
+// however, if you are using a non-standard provider or operator configuration, this is recommended to assist in uniquely
+// identifying your traffic. **Setting this value will remove the Terraform version from the HTTP User Agent string and may
+// have unintended consequences**. Alternatively, can be configured using the `CLOUDFLARE_USER_AGENT_OPERATOR_SUFFIX`
+// environment variable.
+func (o ProviderOutput) UserAgentOperatorSuffix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.UserAgentOperatorSuffix }).(pulumi.StringPtrOutput)
 }
 
 func init() {

@@ -97,7 +97,35 @@ class WaitingRoomArgs:
              queueing_status_code: Optional[pulumi.Input[int]] = None,
              session_duration: Optional[pulumi.Input[int]] = None,
              suspended: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'newUsersPerMinute' in kwargs:
+            new_users_per_minute = kwargs['newUsersPerMinute']
+        if 'totalActiveUsers' in kwargs:
+            total_active_users = kwargs['totalActiveUsers']
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+        if 'additionalRoutes' in kwargs:
+            additional_routes = kwargs['additionalRoutes']
+        if 'cookieSuffix' in kwargs:
+            cookie_suffix = kwargs['cookieSuffix']
+        if 'customPageHtml' in kwargs:
+            custom_page_html = kwargs['customPageHtml']
+        if 'defaultTemplateLanguage' in kwargs:
+            default_template_language = kwargs['defaultTemplateLanguage']
+        if 'disableSessionRenewal' in kwargs:
+            disable_session_renewal = kwargs['disableSessionRenewal']
+        if 'jsonResponseEnabled' in kwargs:
+            json_response_enabled = kwargs['jsonResponseEnabled']
+        if 'queueAll' in kwargs:
+            queue_all = kwargs['queueAll']
+        if 'queueingMethod' in kwargs:
+            queueing_method = kwargs['queueingMethod']
+        if 'queueingStatusCode' in kwargs:
+            queueing_status_code = kwargs['queueingStatusCode']
+        if 'sessionDuration' in kwargs:
+            session_duration = kwargs['sessionDuration']
+
         _setter("host", host)
         _setter("name", name)
         _setter("new_users_per_minute", new_users_per_minute)
@@ -431,7 +459,35 @@ class _WaitingRoomState:
              suspended: Optional[pulumi.Input[bool]] = None,
              total_active_users: Optional[pulumi.Input[int]] = None,
              zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'additionalRoutes' in kwargs:
+            additional_routes = kwargs['additionalRoutes']
+        if 'cookieSuffix' in kwargs:
+            cookie_suffix = kwargs['cookieSuffix']
+        if 'customPageHtml' in kwargs:
+            custom_page_html = kwargs['customPageHtml']
+        if 'defaultTemplateLanguage' in kwargs:
+            default_template_language = kwargs['defaultTemplateLanguage']
+        if 'disableSessionRenewal' in kwargs:
+            disable_session_renewal = kwargs['disableSessionRenewal']
+        if 'jsonResponseEnabled' in kwargs:
+            json_response_enabled = kwargs['jsonResponseEnabled']
+        if 'newUsersPerMinute' in kwargs:
+            new_users_per_minute = kwargs['newUsersPerMinute']
+        if 'queueAll' in kwargs:
+            queue_all = kwargs['queueAll']
+        if 'queueingMethod' in kwargs:
+            queueing_method = kwargs['queueingMethod']
+        if 'queueingStatusCode' in kwargs:
+            queueing_status_code = kwargs['queueingStatusCode']
+        if 'sessionDuration' in kwargs:
+            session_duration = kwargs['sessionDuration']
+        if 'totalActiveUsers' in kwargs:
+            total_active_users = kwargs['totalActiveUsers']
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         if additional_routes is not None:
             _setter("additional_routes", additional_routes)
         if cookie_suffix is not None:

@@ -63,7 +63,25 @@ class CertificatePackArgs:
              validation_errors: Optional[pulumi.Input[Sequence[pulumi.Input['CertificatePackValidationErrorArgs']]]] = None,
              validation_records: Optional[pulumi.Input[Sequence[pulumi.Input['CertificatePackValidationRecordArgs']]]] = None,
              wait_for_active_status: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'certificateAuthority' in kwargs:
+            certificate_authority = kwargs['certificateAuthority']
+        if 'validationMethod' in kwargs:
+            validation_method = kwargs['validationMethod']
+        if 'validityDays' in kwargs:
+            validity_days = kwargs['validityDays']
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+        if 'cloudflareBranding' in kwargs:
+            cloudflare_branding = kwargs['cloudflareBranding']
+        if 'validationErrors' in kwargs:
+            validation_errors = kwargs['validationErrors']
+        if 'validationRecords' in kwargs:
+            validation_records = kwargs['validationRecords']
+        if 'waitForActiveStatus' in kwargs:
+            wait_for_active_status = kwargs['waitForActiveStatus']
+
         _setter("certificate_authority", certificate_authority)
         _setter("hosts", hosts)
         _setter("type", type)
@@ -244,7 +262,25 @@ class _CertificatePackState:
              validity_days: Optional[pulumi.Input[int]] = None,
              wait_for_active_status: Optional[pulumi.Input[bool]] = None,
              zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'certificateAuthority' in kwargs:
+            certificate_authority = kwargs['certificateAuthority']
+        if 'cloudflareBranding' in kwargs:
+            cloudflare_branding = kwargs['cloudflareBranding']
+        if 'validationErrors' in kwargs:
+            validation_errors = kwargs['validationErrors']
+        if 'validationMethod' in kwargs:
+            validation_method = kwargs['validationMethod']
+        if 'validationRecords' in kwargs:
+            validation_records = kwargs['validationRecords']
+        if 'validityDays' in kwargs:
+            validity_days = kwargs['validityDays']
+        if 'waitForActiveStatus' in kwargs:
+            wait_for_active_status = kwargs['waitForActiveStatus']
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         if certificate_authority is not None:
             _setter("certificate_authority", certificate_authority)
         if cloudflare_branding is not None:

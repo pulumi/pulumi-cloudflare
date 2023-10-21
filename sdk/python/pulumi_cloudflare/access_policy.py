@@ -29,6 +29,7 @@ class AccessPolicyArgs:
                  purpose_justification_prompt: Optional[pulumi.Input[str]] = None,
                  purpose_justification_required: Optional[pulumi.Input[bool]] = None,
                  requires: Optional[pulumi.Input[Sequence[pulumi.Input['AccessPolicyRequireArgs']]]] = None,
+                 session_duration: Optional[pulumi.Input[str]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a AccessPolicy resource.
@@ -43,6 +44,7 @@ class AccessPolicyArgs:
         :param pulumi.Input[str] purpose_justification_prompt: The prompt to display to the user for a justification for accessing the resource. Required when using `purpose_justification_required`.
         :param pulumi.Input[bool] purpose_justification_required: Whether to prompt the user for a justification for accessing the resource.
         :param pulumi.Input[Sequence[pulumi.Input['AccessPolicyRequireArgs']]] requires: A series of access conditions, see Access Groups.
+        :param pulumi.Input[str] session_duration: How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`. Defaults to `24h`.
         :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. Conflicts with `account_id`.
         """
         AccessPolicyArgs._configure(
@@ -60,6 +62,7 @@ class AccessPolicyArgs:
             purpose_justification_prompt=purpose_justification_prompt,
             purpose_justification_required=purpose_justification_required,
             requires=requires,
+            session_duration=session_duration,
             zone_id=zone_id,
         )
     @staticmethod
@@ -78,8 +81,29 @@ class AccessPolicyArgs:
              purpose_justification_prompt: Optional[pulumi.Input[str]] = None,
              purpose_justification_required: Optional[pulumi.Input[bool]] = None,
              requires: Optional[pulumi.Input[Sequence[pulumi.Input['AccessPolicyRequireArgs']]]] = None,
+             session_duration: Optional[pulumi.Input[str]] = None,
              zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'applicationId' in kwargs:
+            application_id = kwargs['applicationId']
+        if 'accountId' in kwargs:
+            account_id = kwargs['accountId']
+        if 'approvalGroups' in kwargs:
+            approval_groups = kwargs['approvalGroups']
+        if 'approvalRequired' in kwargs:
+            approval_required = kwargs['approvalRequired']
+        if 'isolationRequired' in kwargs:
+            isolation_required = kwargs['isolationRequired']
+        if 'purposeJustificationPrompt' in kwargs:
+            purpose_justification_prompt = kwargs['purposeJustificationPrompt']
+        if 'purposeJustificationRequired' in kwargs:
+            purpose_justification_required = kwargs['purposeJustificationRequired']
+        if 'sessionDuration' in kwargs:
+            session_duration = kwargs['sessionDuration']
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         _setter("application_id", application_id)
         _setter("decision", decision)
         _setter("includes", includes)
@@ -101,6 +125,8 @@ class AccessPolicyArgs:
             _setter("purpose_justification_required", purpose_justification_required)
         if requires is not None:
             _setter("requires", requires)
+        if session_duration is not None:
+            _setter("session_duration", session_duration)
         if zone_id is not None:
             _setter("zone_id", zone_id)
 
@@ -255,6 +281,18 @@ class AccessPolicyArgs:
         pulumi.set(self, "requires", value)
 
     @property
+    @pulumi.getter(name="sessionDuration")
+    def session_duration(self) -> Optional[pulumi.Input[str]]:
+        """
+        How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`. Defaults to `24h`.
+        """
+        return pulumi.get(self, "session_duration")
+
+    @session_duration.setter
+    def session_duration(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "session_duration", value)
+
+    @property
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> Optional[pulumi.Input[str]]:
         """
@@ -283,6 +321,7 @@ class _AccessPolicyState:
                  purpose_justification_prompt: Optional[pulumi.Input[str]] = None,
                  purpose_justification_required: Optional[pulumi.Input[bool]] = None,
                  requires: Optional[pulumi.Input[Sequence[pulumi.Input['AccessPolicyRequireArgs']]]] = None,
+                 session_duration: Optional[pulumi.Input[str]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering AccessPolicy resources.
@@ -297,6 +336,7 @@ class _AccessPolicyState:
         :param pulumi.Input[str] purpose_justification_prompt: The prompt to display to the user for a justification for accessing the resource. Required when using `purpose_justification_required`.
         :param pulumi.Input[bool] purpose_justification_required: Whether to prompt the user for a justification for accessing the resource.
         :param pulumi.Input[Sequence[pulumi.Input['AccessPolicyRequireArgs']]] requires: A series of access conditions, see Access Groups.
+        :param pulumi.Input[str] session_duration: How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`. Defaults to `24h`.
         :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. Conflicts with `account_id`.
         """
         _AccessPolicyState._configure(
@@ -314,6 +354,7 @@ class _AccessPolicyState:
             purpose_justification_prompt=purpose_justification_prompt,
             purpose_justification_required=purpose_justification_required,
             requires=requires,
+            session_duration=session_duration,
             zone_id=zone_id,
         )
     @staticmethod
@@ -332,8 +373,29 @@ class _AccessPolicyState:
              purpose_justification_prompt: Optional[pulumi.Input[str]] = None,
              purpose_justification_required: Optional[pulumi.Input[bool]] = None,
              requires: Optional[pulumi.Input[Sequence[pulumi.Input['AccessPolicyRequireArgs']]]] = None,
+             session_duration: Optional[pulumi.Input[str]] = None,
              zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accountId' in kwargs:
+            account_id = kwargs['accountId']
+        if 'applicationId' in kwargs:
+            application_id = kwargs['applicationId']
+        if 'approvalGroups' in kwargs:
+            approval_groups = kwargs['approvalGroups']
+        if 'approvalRequired' in kwargs:
+            approval_required = kwargs['approvalRequired']
+        if 'isolationRequired' in kwargs:
+            isolation_required = kwargs['isolationRequired']
+        if 'purposeJustificationPrompt' in kwargs:
+            purpose_justification_prompt = kwargs['purposeJustificationPrompt']
+        if 'purposeJustificationRequired' in kwargs:
+            purpose_justification_required = kwargs['purposeJustificationRequired']
+        if 'sessionDuration' in kwargs:
+            session_duration = kwargs['sessionDuration']
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         if account_id is not None:
             _setter("account_id", account_id)
         if application_id is not None:
@@ -360,6 +422,8 @@ class _AccessPolicyState:
             _setter("purpose_justification_required", purpose_justification_required)
         if requires is not None:
             _setter("requires", requires)
+        if session_duration is not None:
+            _setter("session_duration", session_duration)
         if zone_id is not None:
             _setter("zone_id", zone_id)
 
@@ -514,6 +578,18 @@ class _AccessPolicyState:
         pulumi.set(self, "requires", value)
 
     @property
+    @pulumi.getter(name="sessionDuration")
+    def session_duration(self) -> Optional[pulumi.Input[str]]:
+        """
+        How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`. Defaults to `24h`.
+        """
+        return pulumi.get(self, "session_duration")
+
+    @session_duration.setter
+    def session_duration(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "session_duration", value)
+
+    @property
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> Optional[pulumi.Input[str]]:
         """
@@ -544,6 +620,7 @@ class AccessPolicy(pulumi.CustomResource):
                  purpose_justification_prompt: Optional[pulumi.Input[str]] = None,
                  purpose_justification_required: Optional[pulumi.Input[bool]] = None,
                  requires: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessPolicyRequireArgs']]]]] = None,
+                 session_duration: Optional[pulumi.Input[str]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -619,6 +696,7 @@ class AccessPolicy(pulumi.CustomResource):
         :param pulumi.Input[str] purpose_justification_prompt: The prompt to display to the user for a justification for accessing the resource. Required when using `purpose_justification_required`.
         :param pulumi.Input[bool] purpose_justification_required: Whether to prompt the user for a justification for accessing the resource.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessPolicyRequireArgs']]]] requires: A series of access conditions, see Access Groups.
+        :param pulumi.Input[str] session_duration: How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`. Defaults to `24h`.
         :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. Conflicts with `account_id`.
         """
         ...
@@ -719,6 +797,7 @@ class AccessPolicy(pulumi.CustomResource):
                  purpose_justification_prompt: Optional[pulumi.Input[str]] = None,
                  purpose_justification_required: Optional[pulumi.Input[bool]] = None,
                  requires: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessPolicyRequireArgs']]]]] = None,
+                 session_duration: Optional[pulumi.Input[str]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -752,6 +831,7 @@ class AccessPolicy(pulumi.CustomResource):
             __props__.__dict__["purpose_justification_prompt"] = purpose_justification_prompt
             __props__.__dict__["purpose_justification_required"] = purpose_justification_required
             __props__.__dict__["requires"] = requires
+            __props__.__dict__["session_duration"] = session_duration
             __props__.__dict__["zone_id"] = zone_id
         super(AccessPolicy, __self__).__init__(
             'cloudflare:index/accessPolicy:AccessPolicy',
@@ -776,6 +856,7 @@ class AccessPolicy(pulumi.CustomResource):
             purpose_justification_prompt: Optional[pulumi.Input[str]] = None,
             purpose_justification_required: Optional[pulumi.Input[bool]] = None,
             requires: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessPolicyRequireArgs']]]]] = None,
+            session_duration: Optional[pulumi.Input[str]] = None,
             zone_id: Optional[pulumi.Input[str]] = None) -> 'AccessPolicy':
         """
         Get an existing AccessPolicy resource's state with the given name, id, and optional extra
@@ -795,6 +876,7 @@ class AccessPolicy(pulumi.CustomResource):
         :param pulumi.Input[str] purpose_justification_prompt: The prompt to display to the user for a justification for accessing the resource. Required when using `purpose_justification_required`.
         :param pulumi.Input[bool] purpose_justification_required: Whether to prompt the user for a justification for accessing the resource.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessPolicyRequireArgs']]]] requires: A series of access conditions, see Access Groups.
+        :param pulumi.Input[str] session_duration: How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`. Defaults to `24h`.
         :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. Conflicts with `account_id`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -814,6 +896,7 @@ class AccessPolicy(pulumi.CustomResource):
         __props__.__dict__["purpose_justification_prompt"] = purpose_justification_prompt
         __props__.__dict__["purpose_justification_required"] = purpose_justification_required
         __props__.__dict__["requires"] = requires
+        __props__.__dict__["session_duration"] = session_duration
         __props__.__dict__["zone_id"] = zone_id
         return AccessPolicy(resource_name, opts=opts, __props__=__props__)
 
@@ -914,6 +997,14 @@ class AccessPolicy(pulumi.CustomResource):
         A series of access conditions, see Access Groups.
         """
         return pulumi.get(self, "requires")
+
+    @property
+    @pulumi.getter(name="sessionDuration")
+    def session_duration(self) -> pulumi.Output[Optional[str]]:
+        """
+        How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`. Defaults to `24h`.
+        """
+        return pulumi.get(self, "session_duration")
 
     @property
     @pulumi.getter(name="zoneId")

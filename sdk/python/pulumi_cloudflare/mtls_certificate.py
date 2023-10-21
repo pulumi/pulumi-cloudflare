@@ -43,7 +43,13 @@ class MtlsCertificateArgs:
              certificates: pulumi.Input[str],
              name: Optional[pulumi.Input[str]] = None,
              private_key: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accountId' in kwargs:
+            account_id = kwargs['accountId']
+        if 'privateKey' in kwargs:
+            private_key = kwargs['privateKey']
+
         _setter("account_id", account_id)
         _setter("ca", ca)
         _setter("certificates", certificates)
@@ -165,7 +171,19 @@ class _MtlsCertificateState:
              serial_number: Optional[pulumi.Input[str]] = None,
              signature: Optional[pulumi.Input[str]] = None,
              uploaded_on: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accountId' in kwargs:
+            account_id = kwargs['accountId']
+        if 'expiresOn' in kwargs:
+            expires_on = kwargs['expiresOn']
+        if 'privateKey' in kwargs:
+            private_key = kwargs['privateKey']
+        if 'serialNumber' in kwargs:
+            serial_number = kwargs['serialNumber']
+        if 'uploadedOn' in kwargs:
+            uploaded_on = kwargs['uploadedOn']
+
         if account_id is not None:
             _setter("account_id", account_id)
         if ca is not None:

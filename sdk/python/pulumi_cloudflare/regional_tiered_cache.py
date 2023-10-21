@@ -31,7 +31,11 @@ class RegionalTieredCacheArgs:
              _setter: Callable[[Any, Any], None],
              value: pulumi.Input[str],
              zone_id: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         _setter("value", value)
         _setter("zone_id", zone_id)
 
@@ -80,7 +84,11 @@ class _RegionalTieredCacheState:
              _setter: Callable[[Any, Any], None],
              value: Optional[pulumi.Input[str]] = None,
              zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         if value is not None:
             _setter("value", value)
         if zone_id is not None:

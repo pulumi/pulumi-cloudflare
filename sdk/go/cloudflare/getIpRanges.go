@@ -4,8 +4,12 @@
 package cloudflare
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Use this data source to get the [IP ranges](https://www.cloudflare.com/ips/) of Cloudflare network.
@@ -72,4 +76,70 @@ type GetIpRangesResult struct {
 	Ipv4CidrBlocks []string `pulumi:"ipv4CidrBlocks"`
 	// The lexically ordered list of only the IPv6 CIDR blocks.
 	Ipv6CidrBlocks []string `pulumi:"ipv6CidrBlocks"`
+}
+
+func GetIpRangesOutput(ctx *pulumi.Context, opts ...pulumi.InvokeOption) GetIpRangesResultOutput {
+	return pulumi.ToOutput(0).ApplyT(func(int) (GetIpRangesResult, error) {
+		r, err := GetIpRanges(ctx, opts...)
+		var s GetIpRangesResult
+		if r != nil {
+			s = *r
+		}
+		return s, err
+	}).(GetIpRangesResultOutput)
+}
+
+// A collection of values returned by getIpRanges.
+type GetIpRangesResultOutput struct{ *pulumi.OutputState }
+
+func (GetIpRangesResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetIpRangesResult)(nil)).Elem()
+}
+
+func (o GetIpRangesResultOutput) ToGetIpRangesResultOutput() GetIpRangesResultOutput {
+	return o
+}
+
+func (o GetIpRangesResultOutput) ToGetIpRangesResultOutputWithContext(ctx context.Context) GetIpRangesResultOutput {
+	return o
+}
+
+func (o GetIpRangesResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetIpRangesResult] {
+	return pulumix.Output[GetIpRangesResult]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The lexically ordered list of only the IPv4 China CIDR blocks.
+func (o GetIpRangesResultOutput) ChinaIpv4CidrBlocks() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetIpRangesResult) []string { return v.ChinaIpv4CidrBlocks }).(pulumi.StringArrayOutput)
+}
+
+// The lexically ordered list of only the IPv6 China CIDR blocks.
+func (o GetIpRangesResultOutput) ChinaIpv6CidrBlocks() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetIpRangesResult) []string { return v.ChinaIpv6CidrBlocks }).(pulumi.StringArrayOutput)
+}
+
+// The lexically ordered list of all non-China CIDR blocks.
+func (o GetIpRangesResultOutput) CidrBlocks() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetIpRangesResult) []string { return v.CidrBlocks }).(pulumi.StringArrayOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetIpRangesResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIpRangesResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The lexically ordered list of only the IPv4 CIDR blocks.
+func (o GetIpRangesResultOutput) Ipv4CidrBlocks() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetIpRangesResult) []string { return v.Ipv4CidrBlocks }).(pulumi.StringArrayOutput)
+}
+
+// The lexically ordered list of only the IPv6 CIDR blocks.
+func (o GetIpRangesResultOutput) Ipv6CidrBlocks() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetIpRangesResult) []string { return v.Ipv6CidrBlocks }).(pulumi.StringArrayOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetIpRangesResultOutput{})
 }

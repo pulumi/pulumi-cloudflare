@@ -9,6 +9,7 @@ import com.pulumi.cloudflare.inputs.TeamsAccountFipsArgs;
 import com.pulumi.cloudflare.inputs.TeamsAccountLoggingArgs;
 import com.pulumi.cloudflare.inputs.TeamsAccountPayloadLogArgs;
 import com.pulumi.cloudflare.inputs.TeamsAccountProxyArgs;
+import com.pulumi.cloudflare.inputs.TeamsAccountSshSessionLogArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
@@ -150,6 +151,21 @@ public final class TeamsAccountState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Configuration for SSH Session Logging.
+     * 
+     */
+    @Import(name="sshSessionLog")
+    private @Nullable Output<TeamsAccountSshSessionLogArgs> sshSessionLog;
+
+    /**
+     * @return Configuration for SSH Session Logging.
+     * 
+     */
+    public Optional<Output<TeamsAccountSshSessionLogArgs>> sshSessionLog() {
+        return Optional.ofNullable(this.sshSessionLog);
+    }
+
+    /**
      * Indicator that decryption of TLS traffic is enabled.
      * 
      */
@@ -191,6 +207,7 @@ public final class TeamsAccountState extends com.pulumi.resources.ResourceArgs {
         this.payloadLog = $.payloadLog;
         this.protocolDetectionEnabled = $.protocolDetectionEnabled;
         this.proxy = $.proxy;
+        this.sshSessionLog = $.sshSessionLog;
         this.tlsDecryptEnabled = $.tlsDecryptEnabled;
         this.urlBrowserIsolationEnabled = $.urlBrowserIsolationEnabled;
     }
@@ -388,6 +405,27 @@ public final class TeamsAccountState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder proxy(TeamsAccountProxyArgs proxy) {
             return proxy(Output.of(proxy));
+        }
+
+        /**
+         * @param sshSessionLog Configuration for SSH Session Logging.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sshSessionLog(@Nullable Output<TeamsAccountSshSessionLogArgs> sshSessionLog) {
+            $.sshSessionLog = sshSessionLog;
+            return this;
+        }
+
+        /**
+         * @param sshSessionLog Configuration for SSH Session Logging.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sshSessionLog(TeamsAccountSshSessionLogArgs sshSessionLog) {
+            return sshSessionLog(Output.of(sshSessionLog));
         }
 
         /**

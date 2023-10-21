@@ -62,6 +62,9 @@ namespace Pulumi.Cloudflare.Inputs
         [Input("filterLogsToCloudflare")]
         public Input<string>? FilterLogsToCloudflare { get; set; }
 
+        [Input("fonts")]
+        public Input<string>? Fonts { get; set; }
+
         [Input("h2Prioritization")]
         public Input<string>? H2Prioritization { get; set; }
 

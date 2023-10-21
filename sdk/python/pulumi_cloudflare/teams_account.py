@@ -25,6 +25,7 @@ class TeamsAccountArgs:
                  payload_log: Optional[pulumi.Input['TeamsAccountPayloadLogArgs']] = None,
                  protocol_detection_enabled: Optional[pulumi.Input[bool]] = None,
                  proxy: Optional[pulumi.Input['TeamsAccountProxyArgs']] = None,
+                 ssh_session_log: Optional[pulumi.Input['TeamsAccountSshSessionLogArgs']] = None,
                  tls_decrypt_enabled: Optional[pulumi.Input[bool]] = None,
                  url_browser_isolation_enabled: Optional[pulumi.Input[bool]] = None):
         """
@@ -37,6 +38,7 @@ class TeamsAccountArgs:
         :param pulumi.Input['TeamsAccountPayloadLogArgs'] payload_log: Configuration for DLP Payload Logging.
         :param pulumi.Input[bool] protocol_detection_enabled: Indicator that protocol detection is enabled.
         :param pulumi.Input['TeamsAccountProxyArgs'] proxy: Configuration block for specifying which protocols are proxied.
+        :param pulumi.Input['TeamsAccountSshSessionLogArgs'] ssh_session_log: Configuration for SSH Session Logging.
         :param pulumi.Input[bool] tls_decrypt_enabled: Indicator that decryption of TLS traffic is enabled.
         :param pulumi.Input[bool] url_browser_isolation_enabled: Safely browse websites in Browser Isolation through a URL.
         """
@@ -51,6 +53,7 @@ class TeamsAccountArgs:
             payload_log=payload_log,
             protocol_detection_enabled=protocol_detection_enabled,
             proxy=proxy,
+            ssh_session_log=ssh_session_log,
             tls_decrypt_enabled=tls_decrypt_enabled,
             url_browser_isolation_enabled=url_browser_isolation_enabled,
         )
@@ -66,9 +69,28 @@ class TeamsAccountArgs:
              payload_log: Optional[pulumi.Input['TeamsAccountPayloadLogArgs']] = None,
              protocol_detection_enabled: Optional[pulumi.Input[bool]] = None,
              proxy: Optional[pulumi.Input['TeamsAccountProxyArgs']] = None,
+             ssh_session_log: Optional[pulumi.Input['TeamsAccountSshSessionLogArgs']] = None,
              tls_decrypt_enabled: Optional[pulumi.Input[bool]] = None,
              url_browser_isolation_enabled: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accountId' in kwargs:
+            account_id = kwargs['accountId']
+        if 'activityLogEnabled' in kwargs:
+            activity_log_enabled = kwargs['activityLogEnabled']
+        if 'blockPage' in kwargs:
+            block_page = kwargs['blockPage']
+        if 'payloadLog' in kwargs:
+            payload_log = kwargs['payloadLog']
+        if 'protocolDetectionEnabled' in kwargs:
+            protocol_detection_enabled = kwargs['protocolDetectionEnabled']
+        if 'sshSessionLog' in kwargs:
+            ssh_session_log = kwargs['sshSessionLog']
+        if 'tlsDecryptEnabled' in kwargs:
+            tls_decrypt_enabled = kwargs['tlsDecryptEnabled']
+        if 'urlBrowserIsolationEnabled' in kwargs:
+            url_browser_isolation_enabled = kwargs['urlBrowserIsolationEnabled']
+
         _setter("account_id", account_id)
         if activity_log_enabled is not None:
             _setter("activity_log_enabled", activity_log_enabled)
@@ -86,6 +108,8 @@ class TeamsAccountArgs:
             _setter("protocol_detection_enabled", protocol_detection_enabled)
         if proxy is not None:
             _setter("proxy", proxy)
+        if ssh_session_log is not None:
+            _setter("ssh_session_log", ssh_session_log)
         if tls_decrypt_enabled is not None:
             _setter("tls_decrypt_enabled", tls_decrypt_enabled)
         if url_browser_isolation_enabled is not None:
@@ -197,6 +221,18 @@ class TeamsAccountArgs:
         pulumi.set(self, "proxy", value)
 
     @property
+    @pulumi.getter(name="sshSessionLog")
+    def ssh_session_log(self) -> Optional[pulumi.Input['TeamsAccountSshSessionLogArgs']]:
+        """
+        Configuration for SSH Session Logging.
+        """
+        return pulumi.get(self, "ssh_session_log")
+
+    @ssh_session_log.setter
+    def ssh_session_log(self, value: Optional[pulumi.Input['TeamsAccountSshSessionLogArgs']]):
+        pulumi.set(self, "ssh_session_log", value)
+
+    @property
     @pulumi.getter(name="tlsDecryptEnabled")
     def tls_decrypt_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -233,6 +269,7 @@ class _TeamsAccountState:
                  payload_log: Optional[pulumi.Input['TeamsAccountPayloadLogArgs']] = None,
                  protocol_detection_enabled: Optional[pulumi.Input[bool]] = None,
                  proxy: Optional[pulumi.Input['TeamsAccountProxyArgs']] = None,
+                 ssh_session_log: Optional[pulumi.Input['TeamsAccountSshSessionLogArgs']] = None,
                  tls_decrypt_enabled: Optional[pulumi.Input[bool]] = None,
                  url_browser_isolation_enabled: Optional[pulumi.Input[bool]] = None):
         """
@@ -245,6 +282,7 @@ class _TeamsAccountState:
         :param pulumi.Input['TeamsAccountPayloadLogArgs'] payload_log: Configuration for DLP Payload Logging.
         :param pulumi.Input[bool] protocol_detection_enabled: Indicator that protocol detection is enabled.
         :param pulumi.Input['TeamsAccountProxyArgs'] proxy: Configuration block for specifying which protocols are proxied.
+        :param pulumi.Input['TeamsAccountSshSessionLogArgs'] ssh_session_log: Configuration for SSH Session Logging.
         :param pulumi.Input[bool] tls_decrypt_enabled: Indicator that decryption of TLS traffic is enabled.
         :param pulumi.Input[bool] url_browser_isolation_enabled: Safely browse websites in Browser Isolation through a URL.
         """
@@ -259,6 +297,7 @@ class _TeamsAccountState:
             payload_log=payload_log,
             protocol_detection_enabled=protocol_detection_enabled,
             proxy=proxy,
+            ssh_session_log=ssh_session_log,
             tls_decrypt_enabled=tls_decrypt_enabled,
             url_browser_isolation_enabled=url_browser_isolation_enabled,
         )
@@ -274,9 +313,28 @@ class _TeamsAccountState:
              payload_log: Optional[pulumi.Input['TeamsAccountPayloadLogArgs']] = None,
              protocol_detection_enabled: Optional[pulumi.Input[bool]] = None,
              proxy: Optional[pulumi.Input['TeamsAccountProxyArgs']] = None,
+             ssh_session_log: Optional[pulumi.Input['TeamsAccountSshSessionLogArgs']] = None,
              tls_decrypt_enabled: Optional[pulumi.Input[bool]] = None,
              url_browser_isolation_enabled: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'accountId' in kwargs:
+            account_id = kwargs['accountId']
+        if 'activityLogEnabled' in kwargs:
+            activity_log_enabled = kwargs['activityLogEnabled']
+        if 'blockPage' in kwargs:
+            block_page = kwargs['blockPage']
+        if 'payloadLog' in kwargs:
+            payload_log = kwargs['payloadLog']
+        if 'protocolDetectionEnabled' in kwargs:
+            protocol_detection_enabled = kwargs['protocolDetectionEnabled']
+        if 'sshSessionLog' in kwargs:
+            ssh_session_log = kwargs['sshSessionLog']
+        if 'tlsDecryptEnabled' in kwargs:
+            tls_decrypt_enabled = kwargs['tlsDecryptEnabled']
+        if 'urlBrowserIsolationEnabled' in kwargs:
+            url_browser_isolation_enabled = kwargs['urlBrowserIsolationEnabled']
+
         if account_id is not None:
             _setter("account_id", account_id)
         if activity_log_enabled is not None:
@@ -295,6 +353,8 @@ class _TeamsAccountState:
             _setter("protocol_detection_enabled", protocol_detection_enabled)
         if proxy is not None:
             _setter("proxy", proxy)
+        if ssh_session_log is not None:
+            _setter("ssh_session_log", ssh_session_log)
         if tls_decrypt_enabled is not None:
             _setter("tls_decrypt_enabled", tls_decrypt_enabled)
         if url_browser_isolation_enabled is not None:
@@ -406,6 +466,18 @@ class _TeamsAccountState:
         pulumi.set(self, "proxy", value)
 
     @property
+    @pulumi.getter(name="sshSessionLog")
+    def ssh_session_log(self) -> Optional[pulumi.Input['TeamsAccountSshSessionLogArgs']]:
+        """
+        Configuration for SSH Session Logging.
+        """
+        return pulumi.get(self, "ssh_session_log")
+
+    @ssh_session_log.setter
+    def ssh_session_log(self, value: Optional[pulumi.Input['TeamsAccountSshSessionLogArgs']]):
+        pulumi.set(self, "ssh_session_log", value)
+
+    @property
     @pulumi.getter(name="tlsDecryptEnabled")
     def tls_decrypt_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -444,6 +516,7 @@ class TeamsAccount(pulumi.CustomResource):
                  payload_log: Optional[pulumi.Input[pulumi.InputType['TeamsAccountPayloadLogArgs']]] = None,
                  protocol_detection_enabled: Optional[pulumi.Input[bool]] = None,
                  proxy: Optional[pulumi.Input[pulumi.InputType['TeamsAccountProxyArgs']]] = None,
+                 ssh_session_log: Optional[pulumi.Input[pulumi.InputType['TeamsAccountSshSessionLogArgs']]] = None,
                  tls_decrypt_enabled: Optional[pulumi.Input[bool]] = None,
                  url_browser_isolation_enabled: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
@@ -516,6 +589,7 @@ class TeamsAccount(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['TeamsAccountPayloadLogArgs']] payload_log: Configuration for DLP Payload Logging.
         :param pulumi.Input[bool] protocol_detection_enabled: Indicator that protocol detection is enabled.
         :param pulumi.Input[pulumi.InputType['TeamsAccountProxyArgs']] proxy: Configuration block for specifying which protocols are proxied.
+        :param pulumi.Input[pulumi.InputType['TeamsAccountSshSessionLogArgs']] ssh_session_log: Configuration for SSH Session Logging.
         :param pulumi.Input[bool] tls_decrypt_enabled: Indicator that decryption of TLS traffic is enabled.
         :param pulumi.Input[bool] url_browser_isolation_enabled: Safely browse websites in Browser Isolation through a URL.
         """
@@ -612,6 +686,7 @@ class TeamsAccount(pulumi.CustomResource):
                  payload_log: Optional[pulumi.Input[pulumi.InputType['TeamsAccountPayloadLogArgs']]] = None,
                  protocol_detection_enabled: Optional[pulumi.Input[bool]] = None,
                  proxy: Optional[pulumi.Input[pulumi.InputType['TeamsAccountProxyArgs']]] = None,
+                 ssh_session_log: Optional[pulumi.Input[pulumi.InputType['TeamsAccountSshSessionLogArgs']]] = None,
                  tls_decrypt_enabled: Optional[pulumi.Input[bool]] = None,
                  url_browser_isolation_enabled: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
@@ -664,6 +739,12 @@ class TeamsAccount(pulumi.CustomResource):
                     proxy[key] = value
                 TeamsAccountProxyArgs._configure(_setter, **proxy)
             __props__.__dict__["proxy"] = proxy
+            if ssh_session_log is not None and not isinstance(ssh_session_log, TeamsAccountSshSessionLogArgs):
+                ssh_session_log = ssh_session_log or {}
+                def _setter(key, value):
+                    ssh_session_log[key] = value
+                TeamsAccountSshSessionLogArgs._configure(_setter, **ssh_session_log)
+            __props__.__dict__["ssh_session_log"] = ssh_session_log
             __props__.__dict__["tls_decrypt_enabled"] = tls_decrypt_enabled
             __props__.__dict__["url_browser_isolation_enabled"] = url_browser_isolation_enabled
         super(TeamsAccount, __self__).__init__(
@@ -685,6 +766,7 @@ class TeamsAccount(pulumi.CustomResource):
             payload_log: Optional[pulumi.Input[pulumi.InputType['TeamsAccountPayloadLogArgs']]] = None,
             protocol_detection_enabled: Optional[pulumi.Input[bool]] = None,
             proxy: Optional[pulumi.Input[pulumi.InputType['TeamsAccountProxyArgs']]] = None,
+            ssh_session_log: Optional[pulumi.Input[pulumi.InputType['TeamsAccountSshSessionLogArgs']]] = None,
             tls_decrypt_enabled: Optional[pulumi.Input[bool]] = None,
             url_browser_isolation_enabled: Optional[pulumi.Input[bool]] = None) -> 'TeamsAccount':
         """
@@ -702,6 +784,7 @@ class TeamsAccount(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['TeamsAccountPayloadLogArgs']] payload_log: Configuration for DLP Payload Logging.
         :param pulumi.Input[bool] protocol_detection_enabled: Indicator that protocol detection is enabled.
         :param pulumi.Input[pulumi.InputType['TeamsAccountProxyArgs']] proxy: Configuration block for specifying which protocols are proxied.
+        :param pulumi.Input[pulumi.InputType['TeamsAccountSshSessionLogArgs']] ssh_session_log: Configuration for SSH Session Logging.
         :param pulumi.Input[bool] tls_decrypt_enabled: Indicator that decryption of TLS traffic is enabled.
         :param pulumi.Input[bool] url_browser_isolation_enabled: Safely browse websites in Browser Isolation through a URL.
         """
@@ -718,6 +801,7 @@ class TeamsAccount(pulumi.CustomResource):
         __props__.__dict__["payload_log"] = payload_log
         __props__.__dict__["protocol_detection_enabled"] = protocol_detection_enabled
         __props__.__dict__["proxy"] = proxy
+        __props__.__dict__["ssh_session_log"] = ssh_session_log
         __props__.__dict__["tls_decrypt_enabled"] = tls_decrypt_enabled
         __props__.__dict__["url_browser_isolation_enabled"] = url_browser_isolation_enabled
         return TeamsAccount(resource_name, opts=opts, __props__=__props__)
@@ -790,6 +874,14 @@ class TeamsAccount(pulumi.CustomResource):
         Configuration block for specifying which protocols are proxied.
         """
         return pulumi.get(self, "proxy")
+
+    @property
+    @pulumi.getter(name="sshSessionLog")
+    def ssh_session_log(self) -> pulumi.Output[Optional['outputs.TeamsAccountSshSessionLog']]:
+        """
+        Configuration for SSH Session Logging.
+        """
+        return pulumi.get(self, "ssh_session_log")
 
     @property
     @pulumi.getter(name="tlsDecryptEnabled")

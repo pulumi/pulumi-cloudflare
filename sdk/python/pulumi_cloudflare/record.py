@@ -72,7 +72,13 @@ class RecordArgs:
              tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              ttl: Optional[pulumi.Input[int]] = None,
              value: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+        if 'allowOverwrite' in kwargs:
+            allow_overwrite = kwargs['allowOverwrite']
+
         _setter("name", name)
         _setter("type", type)
         _setter("zone_id", zone_id)
@@ -308,7 +314,17 @@ class _RecordState:
              type: Optional[pulumi.Input[str]] = None,
              value: Optional[pulumi.Input[str]] = None,
              zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'allowOverwrite' in kwargs:
+            allow_overwrite = kwargs['allowOverwrite']
+        if 'createdOn' in kwargs:
+            created_on = kwargs['createdOn']
+        if 'modifiedOn' in kwargs:
+            modified_on = kwargs['modifiedOn']
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         if allow_overwrite is not None:
             _setter("allow_overwrite", allow_overwrite)
         if comment is not None:

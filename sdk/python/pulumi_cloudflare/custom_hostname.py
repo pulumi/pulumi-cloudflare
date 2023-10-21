@@ -53,7 +53,19 @@ class CustomHostnameArgs:
              custom_origin_sni: Optional[pulumi.Input[str]] = None,
              ssls: Optional[pulumi.Input[Sequence[pulumi.Input['CustomHostnameSslArgs']]]] = None,
              wait_for_ssl_pending_validation: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+        if 'customMetadata' in kwargs:
+            custom_metadata = kwargs['customMetadata']
+        if 'customOriginServer' in kwargs:
+            custom_origin_server = kwargs['customOriginServer']
+        if 'customOriginSni' in kwargs:
+            custom_origin_sni = kwargs['customOriginSni']
+        if 'waitForSslPendingValidation' in kwargs:
+            wait_for_ssl_pending_validation = kwargs['waitForSslPendingValidation']
+
         _setter("hostname", hostname)
         _setter("zone_id", zone_id)
         if custom_metadata is not None:
@@ -202,7 +214,23 @@ class _CustomHostnameState:
              status: Optional[pulumi.Input[str]] = None,
              wait_for_ssl_pending_validation: Optional[pulumi.Input[bool]] = None,
              zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if 'customMetadata' in kwargs:
+            custom_metadata = kwargs['customMetadata']
+        if 'customOriginServer' in kwargs:
+            custom_origin_server = kwargs['customOriginServer']
+        if 'customOriginSni' in kwargs:
+            custom_origin_sni = kwargs['customOriginSni']
+        if 'ownershipVerification' in kwargs:
+            ownership_verification = kwargs['ownershipVerification']
+        if 'ownershipVerificationHttp' in kwargs:
+            ownership_verification_http = kwargs['ownershipVerificationHttp']
+        if 'waitForSslPendingValidation' in kwargs:
+            wait_for_ssl_pending_validation = kwargs['waitForSslPendingValidation']
+        if 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         if custom_metadata is not None:
             _setter("custom_metadata", custom_metadata)
         if custom_origin_server is not None:
