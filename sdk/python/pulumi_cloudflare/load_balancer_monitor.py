@@ -76,7 +76,7 @@ class LoadBalancerMonitorArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             account_id: pulumi.Input[str],
+             account_id: Optional[pulumi.Input[str]] = None,
              allow_insecure: Optional[pulumi.Input[bool]] = None,
              consecutive_down: Optional[pulumi.Input[int]] = None,
              consecutive_up: Optional[pulumi.Input[int]] = None,
@@ -95,21 +95,23 @@ class LoadBalancerMonitorArgs:
              type: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'accountId' in kwargs:
+        if account_id is None and 'accountId' in kwargs:
             account_id = kwargs['accountId']
-        if 'allowInsecure' in kwargs:
+        if account_id is None:
+            raise TypeError("Missing 'account_id' argument")
+        if allow_insecure is None and 'allowInsecure' in kwargs:
             allow_insecure = kwargs['allowInsecure']
-        if 'consecutiveDown' in kwargs:
+        if consecutive_down is None and 'consecutiveDown' in kwargs:
             consecutive_down = kwargs['consecutiveDown']
-        if 'consecutiveUp' in kwargs:
+        if consecutive_up is None and 'consecutiveUp' in kwargs:
             consecutive_up = kwargs['consecutiveUp']
-        if 'expectedBody' in kwargs:
+        if expected_body is None and 'expectedBody' in kwargs:
             expected_body = kwargs['expectedBody']
-        if 'expectedCodes' in kwargs:
+        if expected_codes is None and 'expectedCodes' in kwargs:
             expected_codes = kwargs['expectedCodes']
-        if 'followRedirects' in kwargs:
+        if follow_redirects is None and 'followRedirects' in kwargs:
             follow_redirects = kwargs['followRedirects']
-        if 'probeZone' in kwargs:
+        if probe_zone is None and 'probeZone' in kwargs:
             probe_zone = kwargs['probeZone']
 
         _setter("account_id", account_id)
@@ -441,25 +443,25 @@ class _LoadBalancerMonitorState:
              type: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'accountId' in kwargs:
+        if account_id is None and 'accountId' in kwargs:
             account_id = kwargs['accountId']
-        if 'allowInsecure' in kwargs:
+        if allow_insecure is None and 'allowInsecure' in kwargs:
             allow_insecure = kwargs['allowInsecure']
-        if 'consecutiveDown' in kwargs:
+        if consecutive_down is None and 'consecutiveDown' in kwargs:
             consecutive_down = kwargs['consecutiveDown']
-        if 'consecutiveUp' in kwargs:
+        if consecutive_up is None and 'consecutiveUp' in kwargs:
             consecutive_up = kwargs['consecutiveUp']
-        if 'createdOn' in kwargs:
+        if created_on is None and 'createdOn' in kwargs:
             created_on = kwargs['createdOn']
-        if 'expectedBody' in kwargs:
+        if expected_body is None and 'expectedBody' in kwargs:
             expected_body = kwargs['expectedBody']
-        if 'expectedCodes' in kwargs:
+        if expected_codes is None and 'expectedCodes' in kwargs:
             expected_codes = kwargs['expectedCodes']
-        if 'followRedirects' in kwargs:
+        if follow_redirects is None and 'followRedirects' in kwargs:
             follow_redirects = kwargs['followRedirects']
-        if 'modifiedOn' in kwargs:
+        if modified_on is None and 'modifiedOn' in kwargs:
             modified_on = kwargs['modifiedOn']
-        if 'probeZone' in kwargs:
+        if probe_zone is None and 'probeZone' in kwargs:
             probe_zone = kwargs['probeZone']
 
         if account_id is not None:

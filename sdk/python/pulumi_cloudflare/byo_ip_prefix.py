@@ -35,16 +35,20 @@ class ByoIpPrefixArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             account_id: pulumi.Input[str],
-             prefix_id: pulumi.Input[str],
+             account_id: Optional[pulumi.Input[str]] = None,
+             prefix_id: Optional[pulumi.Input[str]] = None,
              advertisement: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'accountId' in kwargs:
+        if account_id is None and 'accountId' in kwargs:
             account_id = kwargs['accountId']
-        if 'prefixId' in kwargs:
+        if account_id is None:
+            raise TypeError("Missing 'account_id' argument")
+        if prefix_id is None and 'prefixId' in kwargs:
             prefix_id = kwargs['prefixId']
+        if prefix_id is None:
+            raise TypeError("Missing 'prefix_id' argument")
 
         _setter("account_id", account_id)
         _setter("prefix_id", prefix_id)
@@ -132,9 +136,9 @@ class _ByoIpPrefixState:
              prefix_id: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'accountId' in kwargs:
+        if account_id is None and 'accountId' in kwargs:
             account_id = kwargs['accountId']
-        if 'prefixId' in kwargs:
+        if prefix_id is None and 'prefixId' in kwargs:
             prefix_id = kwargs['prefixId']
 
         if account_id is not None:

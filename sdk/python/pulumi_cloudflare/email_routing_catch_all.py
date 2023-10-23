@@ -40,15 +40,23 @@ class EmailRoutingCatchAllArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             actions: pulumi.Input[Sequence[pulumi.Input['EmailRoutingCatchAllActionArgs']]],
-             matchers: pulumi.Input[Sequence[pulumi.Input['EmailRoutingCatchAllMatcherArgs']]],
-             name: pulumi.Input[str],
-             zone_id: pulumi.Input[str],
+             actions: Optional[pulumi.Input[Sequence[pulumi.Input['EmailRoutingCatchAllActionArgs']]]] = None,
+             matchers: Optional[pulumi.Input[Sequence[pulumi.Input['EmailRoutingCatchAllMatcherArgs']]]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             zone_id: Optional[pulumi.Input[str]] = None,
              enabled: Optional[pulumi.Input[bool]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'zoneId' in kwargs:
+        if actions is None:
+            raise TypeError("Missing 'actions' argument")
+        if matchers is None:
+            raise TypeError("Missing 'matchers' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
+        if zone_id is None:
+            raise TypeError("Missing 'zone_id' argument")
 
         _setter("actions", actions)
         _setter("matchers", matchers)
@@ -156,7 +164,7 @@ class _EmailRoutingCatchAllState:
              zone_id: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'zoneId' in kwargs:
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
 
         if actions is not None:

@@ -58,11 +58,11 @@ class TeamsRuleArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             account_id: pulumi.Input[str],
-             action: pulumi.Input[str],
-             description: pulumi.Input[str],
-             name: pulumi.Input[str],
-             precedence: pulumi.Input[int],
+             account_id: Optional[pulumi.Input[str]] = None,
+             action: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             precedence: Optional[pulumi.Input[int]] = None,
              device_posture: Optional[pulumi.Input[str]] = None,
              enabled: Optional[pulumi.Input[bool]] = None,
              filters: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -71,11 +71,21 @@ class TeamsRuleArgs:
              traffic: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'accountId' in kwargs:
+        if account_id is None and 'accountId' in kwargs:
             account_id = kwargs['accountId']
-        if 'devicePosture' in kwargs:
+        if account_id is None:
+            raise TypeError("Missing 'account_id' argument")
+        if action is None:
+            raise TypeError("Missing 'action' argument")
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if precedence is None:
+            raise TypeError("Missing 'precedence' argument")
+        if device_posture is None and 'devicePosture' in kwargs:
             device_posture = kwargs['devicePosture']
-        if 'ruleSettings' in kwargs:
+        if rule_settings is None and 'ruleSettings' in kwargs:
             rule_settings = kwargs['ruleSettings']
 
         _setter("account_id", account_id)
@@ -290,11 +300,11 @@ class _TeamsRuleState:
              version: Optional[pulumi.Input[int]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'accountId' in kwargs:
+        if account_id is None and 'accountId' in kwargs:
             account_id = kwargs['accountId']
-        if 'devicePosture' in kwargs:
+        if device_posture is None and 'devicePosture' in kwargs:
             device_posture = kwargs['devicePosture']
-        if 'ruleSettings' in kwargs:
+        if rule_settings is None and 'ruleSettings' in kwargs:
             rule_settings = kwargs['ruleSettings']
 
         if account_id is not None:

@@ -46,8 +46,8 @@ class ListItemInitArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             account_id: pulumi.Input[str],
-             list_id: pulumi.Input[str],
+             account_id: Optional[pulumi.Input[str]] = None,
+             list_id: Optional[pulumi.Input[str]] = None,
              asn: Optional[pulumi.Input[int]] = None,
              comment: Optional[pulumi.Input[str]] = None,
              hostname: Optional[pulumi.Input['ListItemHostnameArgs']] = None,
@@ -55,10 +55,14 @@ class ListItemInitArgs:
              redirect: Optional[pulumi.Input['ListItemRedirectArgs']] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'accountId' in kwargs:
+        if account_id is None and 'accountId' in kwargs:
             account_id = kwargs['accountId']
-        if 'listId' in kwargs:
+        if account_id is None:
+            raise TypeError("Missing 'account_id' argument")
+        if list_id is None and 'listId' in kwargs:
             list_id = kwargs['listId']
+        if list_id is None:
+            raise TypeError("Missing 'list_id' argument")
 
         _setter("account_id", account_id)
         _setter("list_id", list_id)
@@ -200,9 +204,9 @@ class _ListItemState:
              redirect: Optional[pulumi.Input['ListItemRedirectArgs']] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'accountId' in kwargs:
+        if account_id is None and 'accountId' in kwargs:
             account_id = kwargs['accountId']
-        if 'listId' in kwargs:
+        if list_id is None and 'listId' in kwargs:
             list_id = kwargs['listId']
 
         if account_id is not None:

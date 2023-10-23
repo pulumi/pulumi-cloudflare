@@ -64,9 +64,9 @@ class LoadBalancerPoolArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             account_id: pulumi.Input[str],
-             name: pulumi.Input[str],
-             origins: pulumi.Input[Sequence[pulumi.Input['LoadBalancerPoolOriginArgs']]],
+             account_id: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             origins: Optional[pulumi.Input[Sequence[pulumi.Input['LoadBalancerPoolOriginArgs']]]] = None,
              check_regions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              description: Optional[pulumi.Input[str]] = None,
              enabled: Optional[pulumi.Input[bool]] = None,
@@ -79,17 +79,23 @@ class LoadBalancerPoolArgs:
              origin_steerings: Optional[pulumi.Input[Sequence[pulumi.Input['LoadBalancerPoolOriginSteeringArgs']]]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'accountId' in kwargs:
+        if account_id is None and 'accountId' in kwargs:
             account_id = kwargs['accountId']
-        if 'checkRegions' in kwargs:
+        if account_id is None:
+            raise TypeError("Missing 'account_id' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if origins is None:
+            raise TypeError("Missing 'origins' argument")
+        if check_regions is None and 'checkRegions' in kwargs:
             check_regions = kwargs['checkRegions']
-        if 'loadSheddings' in kwargs:
+        if load_sheddings is None and 'loadSheddings' in kwargs:
             load_sheddings = kwargs['loadSheddings']
-        if 'minimumOrigins' in kwargs:
+        if minimum_origins is None and 'minimumOrigins' in kwargs:
             minimum_origins = kwargs['minimumOrigins']
-        if 'notificationEmail' in kwargs:
+        if notification_email is None and 'notificationEmail' in kwargs:
             notification_email = kwargs['notificationEmail']
-        if 'originSteerings' in kwargs:
+        if origin_steerings is None and 'originSteerings' in kwargs:
             origin_steerings = kwargs['originSteerings']
 
         _setter("account_id", account_id)
@@ -347,21 +353,21 @@ class _LoadBalancerPoolState:
              origins: Optional[pulumi.Input[Sequence[pulumi.Input['LoadBalancerPoolOriginArgs']]]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'accountId' in kwargs:
+        if account_id is None and 'accountId' in kwargs:
             account_id = kwargs['accountId']
-        if 'checkRegions' in kwargs:
+        if check_regions is None and 'checkRegions' in kwargs:
             check_regions = kwargs['checkRegions']
-        if 'createdOn' in kwargs:
+        if created_on is None and 'createdOn' in kwargs:
             created_on = kwargs['createdOn']
-        if 'loadSheddings' in kwargs:
+        if load_sheddings is None and 'loadSheddings' in kwargs:
             load_sheddings = kwargs['loadSheddings']
-        if 'minimumOrigins' in kwargs:
+        if minimum_origins is None and 'minimumOrigins' in kwargs:
             minimum_origins = kwargs['minimumOrigins']
-        if 'modifiedOn' in kwargs:
+        if modified_on is None and 'modifiedOn' in kwargs:
             modified_on = kwargs['modifiedOn']
-        if 'notificationEmail' in kwargs:
+        if notification_email is None and 'notificationEmail' in kwargs:
             notification_email = kwargs['notificationEmail']
-        if 'originSteerings' in kwargs:
+        if origin_steerings is None and 'originSteerings' in kwargs:
             origin_steerings = kwargs['originSteerings']
 
         if account_id is not None:

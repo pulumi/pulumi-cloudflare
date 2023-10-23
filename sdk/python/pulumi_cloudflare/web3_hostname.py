@@ -38,15 +38,21 @@ class Web3HostnameArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             name: pulumi.Input[str],
-             target: pulumi.Input[str],
-             zone_id: pulumi.Input[str],
+             name: Optional[pulumi.Input[str]] = None,
+             target: Optional[pulumi.Input[str]] = None,
+             zone_id: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              dnslink: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'zoneId' in kwargs:
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if target is None:
+            raise TypeError("Missing 'target' argument")
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
+        if zone_id is None:
+            raise TypeError("Missing 'zone_id' argument")
 
         _setter("name", name)
         _setter("target", target)
@@ -163,11 +169,11 @@ class _Web3HostnameState:
              zone_id: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'createdOn' in kwargs:
+        if created_on is None and 'createdOn' in kwargs:
             created_on = kwargs['createdOn']
-        if 'modifiedOn' in kwargs:
+        if modified_on is None and 'modifiedOn' in kwargs:
             modified_on = kwargs['modifiedOn']
-        if 'zoneId' in kwargs:
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
 
         if created_on is not None:

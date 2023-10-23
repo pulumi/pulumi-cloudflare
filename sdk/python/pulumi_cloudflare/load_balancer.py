@@ -82,10 +82,10 @@ class LoadBalancerArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             default_pool_ids: pulumi.Input[Sequence[pulumi.Input[str]]],
-             fallback_pool_id: pulumi.Input[str],
-             name: pulumi.Input[str],
-             zone_id: pulumi.Input[str],
+             default_pool_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             fallback_pool_id: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             zone_id: Optional[pulumi.Input[str]] = None,
              adaptive_routings: Optional[pulumi.Input[Sequence[pulumi.Input['LoadBalancerAdaptiveRoutingArgs']]]] = None,
              country_pools: Optional[pulumi.Input[Sequence[pulumi.Input['LoadBalancerCountryPoolArgs']]]] = None,
              description: Optional[pulumi.Input[str]] = None,
@@ -103,31 +103,39 @@ class LoadBalancerArgs:
              ttl: Optional[pulumi.Input[int]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'defaultPoolIds' in kwargs:
+        if default_pool_ids is None and 'defaultPoolIds' in kwargs:
             default_pool_ids = kwargs['defaultPoolIds']
-        if 'fallbackPoolId' in kwargs:
+        if default_pool_ids is None:
+            raise TypeError("Missing 'default_pool_ids' argument")
+        if fallback_pool_id is None and 'fallbackPoolId' in kwargs:
             fallback_pool_id = kwargs['fallbackPoolId']
-        if 'zoneId' in kwargs:
+        if fallback_pool_id is None:
+            raise TypeError("Missing 'fallback_pool_id' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
-        if 'adaptiveRoutings' in kwargs:
+        if zone_id is None:
+            raise TypeError("Missing 'zone_id' argument")
+        if adaptive_routings is None and 'adaptiveRoutings' in kwargs:
             adaptive_routings = kwargs['adaptiveRoutings']
-        if 'countryPools' in kwargs:
+        if country_pools is None and 'countryPools' in kwargs:
             country_pools = kwargs['countryPools']
-        if 'locationStrategies' in kwargs:
+        if location_strategies is None and 'locationStrategies' in kwargs:
             location_strategies = kwargs['locationStrategies']
-        if 'popPools' in kwargs:
+        if pop_pools is None and 'popPools' in kwargs:
             pop_pools = kwargs['popPools']
-        if 'randomSteerings' in kwargs:
+        if random_steerings is None and 'randomSteerings' in kwargs:
             random_steerings = kwargs['randomSteerings']
-        if 'regionPools' in kwargs:
+        if region_pools is None and 'regionPools' in kwargs:
             region_pools = kwargs['regionPools']
-        if 'sessionAffinity' in kwargs:
+        if session_affinity is None and 'sessionAffinity' in kwargs:
             session_affinity = kwargs['sessionAffinity']
-        if 'sessionAffinityAttributes' in kwargs:
+        if session_affinity_attributes is None and 'sessionAffinityAttributes' in kwargs:
             session_affinity_attributes = kwargs['sessionAffinityAttributes']
-        if 'sessionAffinityTtl' in kwargs:
+        if session_affinity_ttl is None and 'sessionAffinityTtl' in kwargs:
             session_affinity_ttl = kwargs['sessionAffinityTtl']
-        if 'steeringPolicy' in kwargs:
+        if steering_policy is None and 'steeringPolicy' in kwargs:
             steering_policy = kwargs['steeringPolicy']
 
         _setter("default_pool_ids", default_pool_ids)
@@ -492,35 +500,35 @@ class _LoadBalancerState:
              zone_id: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'adaptiveRoutings' in kwargs:
+        if adaptive_routings is None and 'adaptiveRoutings' in kwargs:
             adaptive_routings = kwargs['adaptiveRoutings']
-        if 'countryPools' in kwargs:
+        if country_pools is None and 'countryPools' in kwargs:
             country_pools = kwargs['countryPools']
-        if 'createdOn' in kwargs:
+        if created_on is None and 'createdOn' in kwargs:
             created_on = kwargs['createdOn']
-        if 'defaultPoolIds' in kwargs:
+        if default_pool_ids is None and 'defaultPoolIds' in kwargs:
             default_pool_ids = kwargs['defaultPoolIds']
-        if 'fallbackPoolId' in kwargs:
+        if fallback_pool_id is None and 'fallbackPoolId' in kwargs:
             fallback_pool_id = kwargs['fallbackPoolId']
-        if 'locationStrategies' in kwargs:
+        if location_strategies is None and 'locationStrategies' in kwargs:
             location_strategies = kwargs['locationStrategies']
-        if 'modifiedOn' in kwargs:
+        if modified_on is None and 'modifiedOn' in kwargs:
             modified_on = kwargs['modifiedOn']
-        if 'popPools' in kwargs:
+        if pop_pools is None and 'popPools' in kwargs:
             pop_pools = kwargs['popPools']
-        if 'randomSteerings' in kwargs:
+        if random_steerings is None and 'randomSteerings' in kwargs:
             random_steerings = kwargs['randomSteerings']
-        if 'regionPools' in kwargs:
+        if region_pools is None and 'regionPools' in kwargs:
             region_pools = kwargs['regionPools']
-        if 'sessionAffinity' in kwargs:
+        if session_affinity is None and 'sessionAffinity' in kwargs:
             session_affinity = kwargs['sessionAffinity']
-        if 'sessionAffinityAttributes' in kwargs:
+        if session_affinity_attributes is None and 'sessionAffinityAttributes' in kwargs:
             session_affinity_attributes = kwargs['sessionAffinityAttributes']
-        if 'sessionAffinityTtl' in kwargs:
+        if session_affinity_ttl is None and 'sessionAffinityTtl' in kwargs:
             session_affinity_ttl = kwargs['sessionAffinityTtl']
-        if 'steeringPolicy' in kwargs:
+        if steering_policy is None and 'steeringPolicy' in kwargs:
             steering_policy = kwargs['steeringPolicy']
-        if 'zoneId' in kwargs:
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
 
         if adaptive_routings is not None:

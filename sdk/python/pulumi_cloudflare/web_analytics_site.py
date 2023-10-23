@@ -35,17 +35,21 @@ class WebAnalyticsSiteArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             account_id: pulumi.Input[str],
-             auto_install: pulumi.Input[bool],
+             account_id: Optional[pulumi.Input[str]] = None,
+             auto_install: Optional[pulumi.Input[bool]] = None,
              host: Optional[pulumi.Input[str]] = None,
              zone_tag: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'accountId' in kwargs:
+        if account_id is None and 'accountId' in kwargs:
             account_id = kwargs['accountId']
-        if 'autoInstall' in kwargs:
+        if account_id is None:
+            raise TypeError("Missing 'account_id' argument")
+        if auto_install is None and 'autoInstall' in kwargs:
             auto_install = kwargs['autoInstall']
-        if 'zoneTag' in kwargs:
+        if auto_install is None:
+            raise TypeError("Missing 'auto_install' argument")
+        if zone_tag is None and 'zoneTag' in kwargs:
             zone_tag = kwargs['zoneTag']
 
         _setter("account_id", account_id)
@@ -150,17 +154,17 @@ class _WebAnalyticsSiteState:
              zone_tag: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'accountId' in kwargs:
+        if account_id is None and 'accountId' in kwargs:
             account_id = kwargs['accountId']
-        if 'autoInstall' in kwargs:
+        if auto_install is None and 'autoInstall' in kwargs:
             auto_install = kwargs['autoInstall']
-        if 'rulesetId' in kwargs:
+        if ruleset_id is None and 'rulesetId' in kwargs:
             ruleset_id = kwargs['rulesetId']
-        if 'siteTag' in kwargs:
+        if site_tag is None and 'siteTag' in kwargs:
             site_tag = kwargs['siteTag']
-        if 'siteToken' in kwargs:
+        if site_token is None and 'siteToken' in kwargs:
             site_token = kwargs['siteToken']
-        if 'zoneTag' in kwargs:
+        if zone_tag is None and 'zoneTag' in kwargs:
             zone_tag = kwargs['zoneTag']
 
         if account_id is not None:

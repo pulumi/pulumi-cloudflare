@@ -31,13 +31,15 @@ class ApiShieldArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             zone_id: pulumi.Input[str],
+             zone_id: Optional[pulumi.Input[str]] = None,
              auth_id_characteristics: Optional[pulumi.Input[Sequence[pulumi.Input['ApiShieldAuthIdCharacteristicArgs']]]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'zoneId' in kwargs:
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
-        if 'authIdCharacteristics' in kwargs:
+        if zone_id is None:
+            raise TypeError("Missing 'zone_id' argument")
+        if auth_id_characteristics is None and 'authIdCharacteristics' in kwargs:
             auth_id_characteristics = kwargs['authIdCharacteristics']
 
         _setter("zone_id", zone_id)
@@ -91,9 +93,9 @@ class _ApiShieldState:
              zone_id: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'authIdCharacteristics' in kwargs:
+        if auth_id_characteristics is None and 'authIdCharacteristics' in kwargs:
             auth_id_characteristics = kwargs['authIdCharacteristics']
-        if 'zoneId' in kwargs:
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
 
         if auth_id_characteristics is not None:

@@ -41,20 +41,32 @@ class WebAnalyticsRuleArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             account_id: pulumi.Input[str],
-             host: pulumi.Input[str],
-             inclusive: pulumi.Input[bool],
-             is_paused: pulumi.Input[bool],
-             paths: pulumi.Input[Sequence[pulumi.Input[str]]],
-             ruleset_id: pulumi.Input[str],
+             account_id: Optional[pulumi.Input[str]] = None,
+             host: Optional[pulumi.Input[str]] = None,
+             inclusive: Optional[pulumi.Input[bool]] = None,
+             is_paused: Optional[pulumi.Input[bool]] = None,
+             paths: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             ruleset_id: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'accountId' in kwargs:
+        if account_id is None and 'accountId' in kwargs:
             account_id = kwargs['accountId']
-        if 'isPaused' in kwargs:
+        if account_id is None:
+            raise TypeError("Missing 'account_id' argument")
+        if host is None:
+            raise TypeError("Missing 'host' argument")
+        if inclusive is None:
+            raise TypeError("Missing 'inclusive' argument")
+        if is_paused is None and 'isPaused' in kwargs:
             is_paused = kwargs['isPaused']
-        if 'rulesetId' in kwargs:
+        if is_paused is None:
+            raise TypeError("Missing 'is_paused' argument")
+        if paths is None:
+            raise TypeError("Missing 'paths' argument")
+        if ruleset_id is None and 'rulesetId' in kwargs:
             ruleset_id = kwargs['rulesetId']
+        if ruleset_id is None:
+            raise TypeError("Missing 'ruleset_id' argument")
 
         _setter("account_id", account_id)
         _setter("host", host)
@@ -174,11 +186,11 @@ class _WebAnalyticsRuleState:
              ruleset_id: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'accountId' in kwargs:
+        if account_id is None and 'accountId' in kwargs:
             account_id = kwargs['accountId']
-        if 'isPaused' in kwargs:
+        if is_paused is None and 'isPaused' in kwargs:
             is_paused = kwargs['isPaused']
-        if 'rulesetId' in kwargs:
+        if ruleset_id is None and 'rulesetId' in kwargs:
             ruleset_id = kwargs['rulesetId']
 
         if account_id is not None:

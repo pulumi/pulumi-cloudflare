@@ -44,19 +44,25 @@ class FirewallRuleArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             action: pulumi.Input[str],
-             filter_id: pulumi.Input[str],
-             zone_id: pulumi.Input[str],
+             action: Optional[pulumi.Input[str]] = None,
+             filter_id: Optional[pulumi.Input[str]] = None,
+             zone_id: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              paused: Optional[pulumi.Input[bool]] = None,
              priority: Optional[pulumi.Input[int]] = None,
              products: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'filterId' in kwargs:
+        if action is None:
+            raise TypeError("Missing 'action' argument")
+        if filter_id is None and 'filterId' in kwargs:
             filter_id = kwargs['filterId']
-        if 'zoneId' in kwargs:
+        if filter_id is None:
+            raise TypeError("Missing 'filter_id' argument")
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
+        if zone_id is None:
+            raise TypeError("Missing 'zone_id' argument")
 
         _setter("action", action)
         _setter("filter_id", filter_id)
@@ -197,9 +203,9 @@ class _FirewallRuleState:
              zone_id: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'filterId' in kwargs:
+        if filter_id is None and 'filterId' in kwargs:
             filter_id = kwargs['filterId']
-        if 'zoneId' in kwargs:
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
 
         if action is not None:

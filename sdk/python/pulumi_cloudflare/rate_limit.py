@@ -51,10 +51,10 @@ class RateLimitArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             action: pulumi.Input['RateLimitActionArgs'],
-             period: pulumi.Input[int],
-             threshold: pulumi.Input[int],
-             zone_id: pulumi.Input[str],
+             action: Optional[pulumi.Input['RateLimitActionArgs']] = None,
+             period: Optional[pulumi.Input[int]] = None,
+             threshold: Optional[pulumi.Input[int]] = None,
+             zone_id: Optional[pulumi.Input[str]] = None,
              bypass_url_patterns: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              correlate: Optional[pulumi.Input['RateLimitCorrelateArgs']] = None,
              description: Optional[pulumi.Input[str]] = None,
@@ -62,9 +62,17 @@ class RateLimitArgs:
              match: Optional[pulumi.Input['RateLimitMatchArgs']] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'zoneId' in kwargs:
+        if action is None:
+            raise TypeError("Missing 'action' argument")
+        if period is None:
+            raise TypeError("Missing 'period' argument")
+        if threshold is None:
+            raise TypeError("Missing 'threshold' argument")
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
-        if 'bypassUrlPatterns' in kwargs:
+        if zone_id is None:
+            raise TypeError("Missing 'zone_id' argument")
+        if bypass_url_patterns is None and 'bypassUrlPatterns' in kwargs:
             bypass_url_patterns = kwargs['bypassUrlPatterns']
 
         _setter("action", action)
@@ -237,9 +245,9 @@ class _RateLimitState:
              zone_id: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'bypassUrlPatterns' in kwargs:
+        if bypass_url_patterns is None and 'bypassUrlPatterns' in kwargs:
             bypass_url_patterns = kwargs['bypassUrlPatterns']
-        if 'zoneId' in kwargs:
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
 
         if action is not None:

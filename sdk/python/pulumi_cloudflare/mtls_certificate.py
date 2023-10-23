@@ -38,16 +38,22 @@ class MtlsCertificateArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             account_id: pulumi.Input[str],
-             ca: pulumi.Input[bool],
-             certificates: pulumi.Input[str],
+             account_id: Optional[pulumi.Input[str]] = None,
+             ca: Optional[pulumi.Input[bool]] = None,
+             certificates: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
              private_key: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'accountId' in kwargs:
+        if account_id is None and 'accountId' in kwargs:
             account_id = kwargs['accountId']
-        if 'privateKey' in kwargs:
+        if account_id is None:
+            raise TypeError("Missing 'account_id' argument")
+        if ca is None:
+            raise TypeError("Missing 'ca' argument")
+        if certificates is None:
+            raise TypeError("Missing 'certificates' argument")
+        if private_key is None and 'privateKey' in kwargs:
             private_key = kwargs['privateKey']
 
         _setter("account_id", account_id)
@@ -173,15 +179,15 @@ class _MtlsCertificateState:
              uploaded_on: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'accountId' in kwargs:
+        if account_id is None and 'accountId' in kwargs:
             account_id = kwargs['accountId']
-        if 'expiresOn' in kwargs:
+        if expires_on is None and 'expiresOn' in kwargs:
             expires_on = kwargs['expiresOn']
-        if 'privateKey' in kwargs:
+        if private_key is None and 'privateKey' in kwargs:
             private_key = kwargs['privateKey']
-        if 'serialNumber' in kwargs:
+        if serial_number is None and 'serialNumber' in kwargs:
             serial_number = kwargs['serialNumber']
-        if 'uploadedOn' in kwargs:
+        if uploaded_on is None and 'uploadedOn' in kwargs:
             uploaded_on = kwargs['uploadedOn']
 
         if account_id is not None:

@@ -38,18 +38,24 @@ class OriginCaCertificateArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             csr: pulumi.Input[str],
-             hostnames: pulumi.Input[Sequence[pulumi.Input[str]]],
-             request_type: pulumi.Input[str],
+             csr: Optional[pulumi.Input[str]] = None,
+             hostnames: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             request_type: Optional[pulumi.Input[str]] = None,
              min_days_for_renewal: Optional[pulumi.Input[int]] = None,
              requested_validity: Optional[pulumi.Input[int]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'requestType' in kwargs:
+        if csr is None:
+            raise TypeError("Missing 'csr' argument")
+        if hostnames is None:
+            raise TypeError("Missing 'hostnames' argument")
+        if request_type is None and 'requestType' in kwargs:
             request_type = kwargs['requestType']
-        if 'minDaysForRenewal' in kwargs:
+        if request_type is None:
+            raise TypeError("Missing 'request_type' argument")
+        if min_days_for_renewal is None and 'minDaysForRenewal' in kwargs:
             min_days_for_renewal = kwargs['minDaysForRenewal']
-        if 'requestedValidity' in kwargs:
+        if requested_validity is None and 'requestedValidity' in kwargs:
             requested_validity = kwargs['requestedValidity']
 
         _setter("csr", csr)
@@ -163,13 +169,13 @@ class _OriginCaCertificateState:
              requested_validity: Optional[pulumi.Input[int]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'expiresOn' in kwargs:
+        if expires_on is None and 'expiresOn' in kwargs:
             expires_on = kwargs['expiresOn']
-        if 'minDaysForRenewal' in kwargs:
+        if min_days_for_renewal is None and 'minDaysForRenewal' in kwargs:
             min_days_for_renewal = kwargs['minDaysForRenewal']
-        if 'requestType' in kwargs:
+        if request_type is None and 'requestType' in kwargs:
             request_type = kwargs['requestType']
-        if 'requestedValidity' in kwargs:
+        if requested_validity is None and 'requestedValidity' in kwargs:
             requested_validity = kwargs['requestedValidity']
 
         if certificate is not None:

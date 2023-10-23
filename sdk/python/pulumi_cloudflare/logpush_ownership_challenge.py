@@ -32,16 +32,18 @@ class LogpushOwnershipChallengeArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             destination_conf: pulumi.Input[str],
+             destination_conf: Optional[pulumi.Input[str]] = None,
              account_id: Optional[pulumi.Input[str]] = None,
              zone_id: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'destinationConf' in kwargs:
+        if destination_conf is None and 'destinationConf' in kwargs:
             destination_conf = kwargs['destinationConf']
-        if 'accountId' in kwargs:
+        if destination_conf is None:
+            raise TypeError("Missing 'destination_conf' argument")
+        if account_id is None and 'accountId' in kwargs:
             account_id = kwargs['accountId']
-        if 'zoneId' in kwargs:
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
 
         _setter("destination_conf", destination_conf)
@@ -117,13 +119,13 @@ class _LogpushOwnershipChallengeState:
              zone_id: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'accountId' in kwargs:
+        if account_id is None and 'accountId' in kwargs:
             account_id = kwargs['accountId']
-        if 'destinationConf' in kwargs:
+        if destination_conf is None and 'destinationConf' in kwargs:
             destination_conf = kwargs['destinationConf']
-        if 'ownershipChallengeFilename' in kwargs:
+        if ownership_challenge_filename is None and 'ownershipChallengeFilename' in kwargs:
             ownership_challenge_filename = kwargs['ownershipChallengeFilename']
-        if 'zoneId' in kwargs:
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
 
         if account_id is not None:

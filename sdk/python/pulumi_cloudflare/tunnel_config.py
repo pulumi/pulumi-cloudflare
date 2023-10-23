@@ -34,15 +34,21 @@ class TunnelConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             account_id: pulumi.Input[str],
-             config: pulumi.Input['TunnelConfigConfigArgs'],
-             tunnel_id: pulumi.Input[str],
+             account_id: Optional[pulumi.Input[str]] = None,
+             config: Optional[pulumi.Input['TunnelConfigConfigArgs']] = None,
+             tunnel_id: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'accountId' in kwargs:
+        if account_id is None and 'accountId' in kwargs:
             account_id = kwargs['accountId']
-        if 'tunnelId' in kwargs:
+        if account_id is None:
+            raise TypeError("Missing 'account_id' argument")
+        if config is None:
+            raise TypeError("Missing 'config' argument")
+        if tunnel_id is None and 'tunnelId' in kwargs:
             tunnel_id = kwargs['tunnelId']
+        if tunnel_id is None:
+            raise TypeError("Missing 'tunnel_id' argument")
 
         _setter("account_id", account_id)
         _setter("config", config)
@@ -111,9 +117,9 @@ class _TunnelConfigState:
              tunnel_id: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'accountId' in kwargs:
+        if account_id is None and 'accountId' in kwargs:
             account_id = kwargs['accountId']
-        if 'tunnelId' in kwargs:
+        if tunnel_id is None and 'tunnelId' in kwargs:
             tunnel_id = kwargs['tunnelId']
 
         if account_id is not None:

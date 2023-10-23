@@ -77,9 +77,9 @@ class DeviceSettingsPolicyArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             account_id: pulumi.Input[str],
-             description: pulumi.Input[str],
-             name: pulumi.Input[str],
+             account_id: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
              allow_mode_switch: Optional[pulumi.Input[bool]] = None,
              allow_updates: Optional[pulumi.Input[bool]] = None,
              allowed_to_leave: Optional[pulumi.Input[bool]] = None,
@@ -97,29 +97,35 @@ class DeviceSettingsPolicyArgs:
              switch_locked: Optional[pulumi.Input[bool]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'accountId' in kwargs:
+        if account_id is None and 'accountId' in kwargs:
             account_id = kwargs['accountId']
-        if 'allowModeSwitch' in kwargs:
+        if account_id is None:
+            raise TypeError("Missing 'account_id' argument")
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if allow_mode_switch is None and 'allowModeSwitch' in kwargs:
             allow_mode_switch = kwargs['allowModeSwitch']
-        if 'allowUpdates' in kwargs:
+        if allow_updates is None and 'allowUpdates' in kwargs:
             allow_updates = kwargs['allowUpdates']
-        if 'allowedToLeave' in kwargs:
+        if allowed_to_leave is None and 'allowedToLeave' in kwargs:
             allowed_to_leave = kwargs['allowedToLeave']
-        if 'autoConnect' in kwargs:
+        if auto_connect is None and 'autoConnect' in kwargs:
             auto_connect = kwargs['autoConnect']
-        if 'captivePortal' in kwargs:
+        if captive_portal is None and 'captivePortal' in kwargs:
             captive_portal = kwargs['captivePortal']
-        if 'disableAutoFallback' in kwargs:
+        if disable_auto_fallback is None and 'disableAutoFallback' in kwargs:
             disable_auto_fallback = kwargs['disableAutoFallback']
-        if 'excludeOfficeIps' in kwargs:
+        if exclude_office_ips is None and 'excludeOfficeIps' in kwargs:
             exclude_office_ips = kwargs['excludeOfficeIps']
-        if 'serviceModeV2Mode' in kwargs:
+        if service_mode_v2_mode is None and 'serviceModeV2Mode' in kwargs:
             service_mode_v2_mode = kwargs['serviceModeV2Mode']
-        if 'serviceModeV2Port' in kwargs:
+        if service_mode_v2_port is None and 'serviceModeV2Port' in kwargs:
             service_mode_v2_port = kwargs['serviceModeV2Port']
-        if 'supportUrl' in kwargs:
+        if support_url is None and 'supportUrl' in kwargs:
             support_url = kwargs['supportUrl']
-        if 'switchLocked' in kwargs:
+        if switch_locked is None and 'switchLocked' in kwargs:
             switch_locked = kwargs['switchLocked']
 
         _setter("account_id", account_id)
@@ -459,29 +465,29 @@ class _DeviceSettingsPolicyState:
              switch_locked: Optional[pulumi.Input[bool]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'accountId' in kwargs:
+        if account_id is None and 'accountId' in kwargs:
             account_id = kwargs['accountId']
-        if 'allowModeSwitch' in kwargs:
+        if allow_mode_switch is None and 'allowModeSwitch' in kwargs:
             allow_mode_switch = kwargs['allowModeSwitch']
-        if 'allowUpdates' in kwargs:
+        if allow_updates is None and 'allowUpdates' in kwargs:
             allow_updates = kwargs['allowUpdates']
-        if 'allowedToLeave' in kwargs:
+        if allowed_to_leave is None and 'allowedToLeave' in kwargs:
             allowed_to_leave = kwargs['allowedToLeave']
-        if 'autoConnect' in kwargs:
+        if auto_connect is None and 'autoConnect' in kwargs:
             auto_connect = kwargs['autoConnect']
-        if 'captivePortal' in kwargs:
+        if captive_portal is None and 'captivePortal' in kwargs:
             captive_portal = kwargs['captivePortal']
-        if 'disableAutoFallback' in kwargs:
+        if disable_auto_fallback is None and 'disableAutoFallback' in kwargs:
             disable_auto_fallback = kwargs['disableAutoFallback']
-        if 'excludeOfficeIps' in kwargs:
+        if exclude_office_ips is None and 'excludeOfficeIps' in kwargs:
             exclude_office_ips = kwargs['excludeOfficeIps']
-        if 'serviceModeV2Mode' in kwargs:
+        if service_mode_v2_mode is None and 'serviceModeV2Mode' in kwargs:
             service_mode_v2_mode = kwargs['serviceModeV2Mode']
-        if 'serviceModeV2Port' in kwargs:
+        if service_mode_v2_port is None and 'serviceModeV2Port' in kwargs:
             service_mode_v2_port = kwargs['serviceModeV2Port']
-        if 'supportUrl' in kwargs:
+        if support_url is None and 'supportUrl' in kwargs:
             support_url = kwargs['supportUrl']
-        if 'switchLocked' in kwargs:
+        if switch_locked is None and 'switchLocked' in kwargs:
             switch_locked = kwargs['switchLocked']
 
         if account_id is not None:

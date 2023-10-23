@@ -40,16 +40,20 @@ class AccessRuleArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             configuration: pulumi.Input['AccessRuleConfigurationArgs'],
-             mode: pulumi.Input[str],
+             configuration: Optional[pulumi.Input['AccessRuleConfigurationArgs']] = None,
+             mode: Optional[pulumi.Input[str]] = None,
              account_id: Optional[pulumi.Input[str]] = None,
              notes: Optional[pulumi.Input[str]] = None,
              zone_id: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'accountId' in kwargs:
+        if configuration is None:
+            raise TypeError("Missing 'configuration' argument")
+        if mode is None:
+            raise TypeError("Missing 'mode' argument")
+        if account_id is None and 'accountId' in kwargs:
             account_id = kwargs['accountId']
-        if 'zoneId' in kwargs:
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
 
         _setter("configuration", configuration)
@@ -156,9 +160,9 @@ class _AccessRuleState:
              zone_id: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'accountId' in kwargs:
+        if account_id is None and 'accountId' in kwargs:
             account_id = kwargs['accountId']
-        if 'zoneId' in kwargs:
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
 
         if account_id is not None:

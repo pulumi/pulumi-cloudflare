@@ -61,9 +61,9 @@ class RecordArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             name: pulumi.Input[str],
-             type: pulumi.Input[str],
-             zone_id: pulumi.Input[str],
+             name: Optional[pulumi.Input[str]] = None,
+             type: Optional[pulumi.Input[str]] = None,
+             zone_id: Optional[pulumi.Input[str]] = None,
              allow_overwrite: Optional[pulumi.Input[bool]] = None,
              comment: Optional[pulumi.Input[str]] = None,
              data: Optional[pulumi.Input['RecordDataArgs']] = None,
@@ -74,9 +74,15 @@ class RecordArgs:
              value: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'zoneId' in kwargs:
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
-        if 'allowOverwrite' in kwargs:
+        if zone_id is None:
+            raise TypeError("Missing 'zone_id' argument")
+        if allow_overwrite is None and 'allowOverwrite' in kwargs:
             allow_overwrite = kwargs['allowOverwrite']
 
         _setter("name", name)
@@ -316,13 +322,13 @@ class _RecordState:
              zone_id: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'allowOverwrite' in kwargs:
+        if allow_overwrite is None and 'allowOverwrite' in kwargs:
             allow_overwrite = kwargs['allowOverwrite']
-        if 'createdOn' in kwargs:
+        if created_on is None and 'createdOn' in kwargs:
             created_on = kwargs['createdOn']
-        if 'modifiedOn' in kwargs:
+        if modified_on is None and 'modifiedOn' in kwargs:
             modified_on = kwargs['modifiedOn']
-        if 'zoneId' in kwargs:
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
 
         if allow_overwrite is not None:

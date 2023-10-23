@@ -32,12 +32,14 @@ class AccountArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             name: pulumi.Input[str],
+             name: Optional[pulumi.Input[str]] = None,
              enforce_twofactor: Optional[pulumi.Input[bool]] = None,
              type: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'enforceTwofactor' in kwargs:
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if enforce_twofactor is None and 'enforceTwofactor' in kwargs:
             enforce_twofactor = kwargs['enforceTwofactor']
 
         _setter("name", name)
@@ -109,7 +111,7 @@ class _AccountState:
              type: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'enforceTwofactor' in kwargs:
+        if enforce_twofactor is None and 'enforceTwofactor' in kwargs:
             enforce_twofactor = kwargs['enforceTwofactor']
 
         if enforce_twofactor is not None:

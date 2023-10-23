@@ -64,9 +64,9 @@ class SpectrumApplicationArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             dns: pulumi.Input['SpectrumApplicationDnsArgs'],
-             protocol: pulumi.Input[str],
-             zone_id: pulumi.Input[str],
+             dns: Optional[pulumi.Input['SpectrumApplicationDnsArgs']] = None,
+             protocol: Optional[pulumi.Input[str]] = None,
+             zone_id: Optional[pulumi.Input[str]] = None,
              argo_smart_routing: Optional[pulumi.Input[bool]] = None,
              edge_ips: Optional[pulumi.Input['SpectrumApplicationEdgeIpsArgs']] = None,
              ip_firewall: Optional[pulumi.Input[bool]] = None,
@@ -79,25 +79,31 @@ class SpectrumApplicationArgs:
              traffic_type: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'zoneId' in kwargs:
+        if dns is None:
+            raise TypeError("Missing 'dns' argument")
+        if protocol is None:
+            raise TypeError("Missing 'protocol' argument")
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
-        if 'argoSmartRouting' in kwargs:
+        if zone_id is None:
+            raise TypeError("Missing 'zone_id' argument")
+        if argo_smart_routing is None and 'argoSmartRouting' in kwargs:
             argo_smart_routing = kwargs['argoSmartRouting']
-        if 'edgeIps' in kwargs:
+        if edge_ips is None and 'edgeIps' in kwargs:
             edge_ips = kwargs['edgeIps']
-        if 'ipFirewall' in kwargs:
+        if ip_firewall is None and 'ipFirewall' in kwargs:
             ip_firewall = kwargs['ipFirewall']
-        if 'originDirects' in kwargs:
+        if origin_directs is None and 'originDirects' in kwargs:
             origin_directs = kwargs['originDirects']
-        if 'originDns' in kwargs:
+        if origin_dns is None and 'originDns' in kwargs:
             origin_dns = kwargs['originDns']
-        if 'originPort' in kwargs:
+        if origin_port is None and 'originPort' in kwargs:
             origin_port = kwargs['originPort']
-        if 'originPortRange' in kwargs:
+        if origin_port_range is None and 'originPortRange' in kwargs:
             origin_port_range = kwargs['originPortRange']
-        if 'proxyProtocol' in kwargs:
+        if proxy_protocol is None and 'proxyProtocol' in kwargs:
             proxy_protocol = kwargs['proxyProtocol']
-        if 'trafficType' in kwargs:
+        if traffic_type is None and 'trafficType' in kwargs:
             traffic_type = kwargs['trafficType']
 
         _setter("dns", dns)
@@ -347,25 +353,25 @@ class _SpectrumApplicationState:
              zone_id: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'argoSmartRouting' in kwargs:
+        if argo_smart_routing is None and 'argoSmartRouting' in kwargs:
             argo_smart_routing = kwargs['argoSmartRouting']
-        if 'edgeIps' in kwargs:
+        if edge_ips is None and 'edgeIps' in kwargs:
             edge_ips = kwargs['edgeIps']
-        if 'ipFirewall' in kwargs:
+        if ip_firewall is None and 'ipFirewall' in kwargs:
             ip_firewall = kwargs['ipFirewall']
-        if 'originDirects' in kwargs:
+        if origin_directs is None and 'originDirects' in kwargs:
             origin_directs = kwargs['originDirects']
-        if 'originDns' in kwargs:
+        if origin_dns is None and 'originDns' in kwargs:
             origin_dns = kwargs['originDns']
-        if 'originPort' in kwargs:
+        if origin_port is None and 'originPort' in kwargs:
             origin_port = kwargs['originPort']
-        if 'originPortRange' in kwargs:
+        if origin_port_range is None and 'originPortRange' in kwargs:
             origin_port_range = kwargs['originPortRange']
-        if 'proxyProtocol' in kwargs:
+        if proxy_protocol is None and 'proxyProtocol' in kwargs:
             proxy_protocol = kwargs['proxyProtocol']
-        if 'trafficType' in kwargs:
+        if traffic_type is None and 'trafficType' in kwargs:
             traffic_type = kwargs['trafficType']
-        if 'zoneId' in kwargs:
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
 
         if argo_smart_routing is not None:

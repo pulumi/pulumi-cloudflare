@@ -85,10 +85,10 @@ class HealthcheckArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             address: pulumi.Input[str],
-             name: pulumi.Input[str],
-             type: pulumi.Input[str],
-             zone_id: pulumi.Input[str],
+             address: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             type: Optional[pulumi.Input[str]] = None,
+             zone_id: Optional[pulumi.Input[str]] = None,
              allow_insecure: Optional[pulumi.Input[bool]] = None,
              check_regions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              consecutive_fails: Optional[pulumi.Input[int]] = None,
@@ -107,21 +107,29 @@ class HealthcheckArgs:
              timeout: Optional[pulumi.Input[int]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'zoneId' in kwargs:
+        if address is None:
+            raise TypeError("Missing 'address' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
-        if 'allowInsecure' in kwargs:
+        if zone_id is None:
+            raise TypeError("Missing 'zone_id' argument")
+        if allow_insecure is None and 'allowInsecure' in kwargs:
             allow_insecure = kwargs['allowInsecure']
-        if 'checkRegions' in kwargs:
+        if check_regions is None and 'checkRegions' in kwargs:
             check_regions = kwargs['checkRegions']
-        if 'consecutiveFails' in kwargs:
+        if consecutive_fails is None and 'consecutiveFails' in kwargs:
             consecutive_fails = kwargs['consecutiveFails']
-        if 'consecutiveSuccesses' in kwargs:
+        if consecutive_successes is None and 'consecutiveSuccesses' in kwargs:
             consecutive_successes = kwargs['consecutiveSuccesses']
-        if 'expectedBody' in kwargs:
+        if expected_body is None and 'expectedBody' in kwargs:
             expected_body = kwargs['expectedBody']
-        if 'expectedCodes' in kwargs:
+        if expected_codes is None and 'expectedCodes' in kwargs:
             expected_codes = kwargs['expectedCodes']
-        if 'followRedirects' in kwargs:
+        if follow_redirects is None and 'followRedirects' in kwargs:
             follow_redirects = kwargs['followRedirects']
 
         _setter("address", address)
@@ -504,25 +512,25 @@ class _HealthcheckState:
              zone_id: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'allowInsecure' in kwargs:
+        if allow_insecure is None and 'allowInsecure' in kwargs:
             allow_insecure = kwargs['allowInsecure']
-        if 'checkRegions' in kwargs:
+        if check_regions is None and 'checkRegions' in kwargs:
             check_regions = kwargs['checkRegions']
-        if 'consecutiveFails' in kwargs:
+        if consecutive_fails is None and 'consecutiveFails' in kwargs:
             consecutive_fails = kwargs['consecutiveFails']
-        if 'consecutiveSuccesses' in kwargs:
+        if consecutive_successes is None and 'consecutiveSuccesses' in kwargs:
             consecutive_successes = kwargs['consecutiveSuccesses']
-        if 'createdOn' in kwargs:
+        if created_on is None and 'createdOn' in kwargs:
             created_on = kwargs['createdOn']
-        if 'expectedBody' in kwargs:
+        if expected_body is None and 'expectedBody' in kwargs:
             expected_body = kwargs['expectedBody']
-        if 'expectedCodes' in kwargs:
+        if expected_codes is None and 'expectedCodes' in kwargs:
             expected_codes = kwargs['expectedCodes']
-        if 'followRedirects' in kwargs:
+        if follow_redirects is None and 'followRedirects' in kwargs:
             follow_redirects = kwargs['followRedirects']
-        if 'modifiedOn' in kwargs:
+        if modified_on is None and 'modifiedOn' in kwargs:
             modified_on = kwargs['modifiedOn']
-        if 'zoneId' in kwargs:
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
 
         if address is not None:

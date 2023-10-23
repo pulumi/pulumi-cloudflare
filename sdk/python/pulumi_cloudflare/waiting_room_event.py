@@ -68,11 +68,11 @@ class WaitingRoomEventArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             event_end_time: pulumi.Input[str],
-             event_start_time: pulumi.Input[str],
-             name: pulumi.Input[str],
-             waiting_room_id: pulumi.Input[str],
-             zone_id: pulumi.Input[str],
+             event_end_time: Optional[pulumi.Input[str]] = None,
+             event_start_time: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             waiting_room_id: Optional[pulumi.Input[str]] = None,
+             zone_id: Optional[pulumi.Input[str]] = None,
              custom_page_html: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              disable_session_renewal: Optional[pulumi.Input[bool]] = None,
@@ -85,29 +85,39 @@ class WaitingRoomEventArgs:
              total_active_users: Optional[pulumi.Input[int]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'eventEndTime' in kwargs:
+        if event_end_time is None and 'eventEndTime' in kwargs:
             event_end_time = kwargs['eventEndTime']
-        if 'eventStartTime' in kwargs:
+        if event_end_time is None:
+            raise TypeError("Missing 'event_end_time' argument")
+        if event_start_time is None and 'eventStartTime' in kwargs:
             event_start_time = kwargs['eventStartTime']
-        if 'waitingRoomId' in kwargs:
+        if event_start_time is None:
+            raise TypeError("Missing 'event_start_time' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if waiting_room_id is None and 'waitingRoomId' in kwargs:
             waiting_room_id = kwargs['waitingRoomId']
-        if 'zoneId' in kwargs:
+        if waiting_room_id is None:
+            raise TypeError("Missing 'waiting_room_id' argument")
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
-        if 'customPageHtml' in kwargs:
+        if zone_id is None:
+            raise TypeError("Missing 'zone_id' argument")
+        if custom_page_html is None and 'customPageHtml' in kwargs:
             custom_page_html = kwargs['customPageHtml']
-        if 'disableSessionRenewal' in kwargs:
+        if disable_session_renewal is None and 'disableSessionRenewal' in kwargs:
             disable_session_renewal = kwargs['disableSessionRenewal']
-        if 'newUsersPerMinute' in kwargs:
+        if new_users_per_minute is None and 'newUsersPerMinute' in kwargs:
             new_users_per_minute = kwargs['newUsersPerMinute']
-        if 'prequeueStartTime' in kwargs:
+        if prequeue_start_time is None and 'prequeueStartTime' in kwargs:
             prequeue_start_time = kwargs['prequeueStartTime']
-        if 'queueingMethod' in kwargs:
+        if queueing_method is None and 'queueingMethod' in kwargs:
             queueing_method = kwargs['queueingMethod']
-        if 'sessionDuration' in kwargs:
+        if session_duration is None and 'sessionDuration' in kwargs:
             session_duration = kwargs['sessionDuration']
-        if 'shuffleAtEventStart' in kwargs:
+        if shuffle_at_event_start is None and 'shuffleAtEventStart' in kwargs:
             shuffle_at_event_start = kwargs['shuffleAtEventStart']
-        if 'totalActiveUsers' in kwargs:
+        if total_active_users is None and 'totalActiveUsers' in kwargs:
             total_active_users = kwargs['totalActiveUsers']
 
         _setter("event_end_time", event_end_time)
@@ -399,33 +409,33 @@ class _WaitingRoomEventState:
              zone_id: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'createdOn' in kwargs:
+        if created_on is None and 'createdOn' in kwargs:
             created_on = kwargs['createdOn']
-        if 'customPageHtml' in kwargs:
+        if custom_page_html is None and 'customPageHtml' in kwargs:
             custom_page_html = kwargs['customPageHtml']
-        if 'disableSessionRenewal' in kwargs:
+        if disable_session_renewal is None and 'disableSessionRenewal' in kwargs:
             disable_session_renewal = kwargs['disableSessionRenewal']
-        if 'eventEndTime' in kwargs:
+        if event_end_time is None and 'eventEndTime' in kwargs:
             event_end_time = kwargs['eventEndTime']
-        if 'eventStartTime' in kwargs:
+        if event_start_time is None and 'eventStartTime' in kwargs:
             event_start_time = kwargs['eventStartTime']
-        if 'modifiedOn' in kwargs:
+        if modified_on is None and 'modifiedOn' in kwargs:
             modified_on = kwargs['modifiedOn']
-        if 'newUsersPerMinute' in kwargs:
+        if new_users_per_minute is None and 'newUsersPerMinute' in kwargs:
             new_users_per_minute = kwargs['newUsersPerMinute']
-        if 'prequeueStartTime' in kwargs:
+        if prequeue_start_time is None and 'prequeueStartTime' in kwargs:
             prequeue_start_time = kwargs['prequeueStartTime']
-        if 'queueingMethod' in kwargs:
+        if queueing_method is None and 'queueingMethod' in kwargs:
             queueing_method = kwargs['queueingMethod']
-        if 'sessionDuration' in kwargs:
+        if session_duration is None and 'sessionDuration' in kwargs:
             session_duration = kwargs['sessionDuration']
-        if 'shuffleAtEventStart' in kwargs:
+        if shuffle_at_event_start is None and 'shuffleAtEventStart' in kwargs:
             shuffle_at_event_start = kwargs['shuffleAtEventStart']
-        if 'totalActiveUsers' in kwargs:
+        if total_active_users is None and 'totalActiveUsers' in kwargs:
             total_active_users = kwargs['totalActiveUsers']
-        if 'waitingRoomId' in kwargs:
+        if waiting_room_id is None and 'waitingRoomId' in kwargs:
             waiting_room_id = kwargs['waitingRoomId']
-        if 'zoneId' in kwargs:
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
 
         if created_on is not None:

@@ -43,19 +43,23 @@ class AccessIdentityProviderArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             name: pulumi.Input[str],
-             type: pulumi.Input[str],
+             name: Optional[pulumi.Input[str]] = None,
+             type: Optional[pulumi.Input[str]] = None,
              account_id: Optional[pulumi.Input[str]] = None,
              configs: Optional[pulumi.Input[Sequence[pulumi.Input['AccessIdentityProviderConfigArgs']]]] = None,
              scim_configs: Optional[pulumi.Input[Sequence[pulumi.Input['AccessIdentityProviderScimConfigArgs']]]] = None,
              zone_id: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'accountId' in kwargs:
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+        if account_id is None and 'accountId' in kwargs:
             account_id = kwargs['accountId']
-        if 'scimConfigs' in kwargs:
+        if scim_configs is None and 'scimConfigs' in kwargs:
             scim_configs = kwargs['scimConfigs']
-        if 'zoneId' in kwargs:
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
 
         _setter("name", name)
@@ -180,11 +184,11 @@ class _AccessIdentityProviderState:
              zone_id: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'accountId' in kwargs:
+        if account_id is None and 'accountId' in kwargs:
             account_id = kwargs['accountId']
-        if 'scimConfigs' in kwargs:
+        if scim_configs is None and 'scimConfigs' in kwargs:
             scim_configs = kwargs['scimConfigs']
-        if 'zoneId' in kwargs:
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
 
         if account_id is not None:

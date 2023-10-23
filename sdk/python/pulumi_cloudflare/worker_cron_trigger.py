@@ -32,15 +32,21 @@ class WorkerCronTriggerArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             account_id: pulumi.Input[str],
-             schedules: pulumi.Input[Sequence[pulumi.Input[str]]],
-             script_name: pulumi.Input[str],
+             account_id: Optional[pulumi.Input[str]] = None,
+             schedules: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             script_name: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'accountId' in kwargs:
+        if account_id is None and 'accountId' in kwargs:
             account_id = kwargs['accountId']
-        if 'scriptName' in kwargs:
+        if account_id is None:
+            raise TypeError("Missing 'account_id' argument")
+        if schedules is None:
+            raise TypeError("Missing 'schedules' argument")
+        if script_name is None and 'scriptName' in kwargs:
             script_name = kwargs['scriptName']
+        if script_name is None:
+            raise TypeError("Missing 'script_name' argument")
 
         _setter("account_id", account_id)
         _setter("schedules", schedules)
@@ -109,9 +115,9 @@ class _WorkerCronTriggerState:
              script_name: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'accountId' in kwargs:
+        if account_id is None and 'accountId' in kwargs:
             account_id = kwargs['accountId']
-        if 'scriptName' in kwargs:
+        if script_name is None and 'scriptName' in kwargs:
             script_name = kwargs['scriptName']
 
         if account_id is not None:

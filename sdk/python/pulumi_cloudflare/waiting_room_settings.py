@@ -29,13 +29,15 @@ class WaitingRoomSettingsArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             zone_id: pulumi.Input[str],
+             zone_id: Optional[pulumi.Input[str]] = None,
              search_engine_crawler_bypass: Optional[pulumi.Input[bool]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'zoneId' in kwargs:
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
-        if 'searchEngineCrawlerBypass' in kwargs:
+        if zone_id is None:
+            raise TypeError("Missing 'zone_id' argument")
+        if search_engine_crawler_bypass is None and 'searchEngineCrawlerBypass' in kwargs:
             search_engine_crawler_bypass = kwargs['searchEngineCrawlerBypass']
 
         _setter("zone_id", zone_id)
@@ -89,9 +91,9 @@ class _WaitingRoomSettingsState:
              zone_id: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'searchEngineCrawlerBypass' in kwargs:
+        if search_engine_crawler_bypass is None and 'searchEngineCrawlerBypass' in kwargs:
             search_engine_crawler_bypass = kwargs['searchEngineCrawlerBypass']
-        if 'zoneId' in kwargs:
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
 
         if search_engine_crawler_bypass is not None:

@@ -57,7 +57,7 @@ class AccessOrganizationArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             auth_domain: pulumi.Input[str],
+             auth_domain: Optional[pulumi.Input[str]] = None,
              account_id: Optional[pulumi.Input[str]] = None,
              auto_redirect_to_identity: Optional[pulumi.Input[bool]] = None,
              custom_pages: Optional[pulumi.Input[Sequence[pulumi.Input['AccessOrganizationCustomPageArgs']]]] = None,
@@ -70,25 +70,27 @@ class AccessOrganizationArgs:
              zone_id: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'authDomain' in kwargs:
+        if auth_domain is None and 'authDomain' in kwargs:
             auth_domain = kwargs['authDomain']
-        if 'accountId' in kwargs:
+        if auth_domain is None:
+            raise TypeError("Missing 'auth_domain' argument")
+        if account_id is None and 'accountId' in kwargs:
             account_id = kwargs['accountId']
-        if 'autoRedirectToIdentity' in kwargs:
+        if auto_redirect_to_identity is None and 'autoRedirectToIdentity' in kwargs:
             auto_redirect_to_identity = kwargs['autoRedirectToIdentity']
-        if 'customPages' in kwargs:
+        if custom_pages is None and 'customPages' in kwargs:
             custom_pages = kwargs['customPages']
-        if 'isUiReadOnly' in kwargs:
+        if is_ui_read_only is None and 'isUiReadOnly' in kwargs:
             is_ui_read_only = kwargs['isUiReadOnly']
-        if 'loginDesigns' in kwargs:
+        if login_designs is None and 'loginDesigns' in kwargs:
             login_designs = kwargs['loginDesigns']
-        if 'sessionDuration' in kwargs:
+        if session_duration is None and 'sessionDuration' in kwargs:
             session_duration = kwargs['sessionDuration']
-        if 'uiReadOnlyToggleReason' in kwargs:
+        if ui_read_only_toggle_reason is None and 'uiReadOnlyToggleReason' in kwargs:
             ui_read_only_toggle_reason = kwargs['uiReadOnlyToggleReason']
-        if 'userSeatExpirationInactiveTime' in kwargs:
+        if user_seat_expiration_inactive_time is None and 'userSeatExpirationInactiveTime' in kwargs:
             user_seat_expiration_inactive_time = kwargs['userSeatExpirationInactiveTime']
-        if 'zoneId' in kwargs:
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
 
         _setter("auth_domain", auth_domain)
@@ -300,25 +302,25 @@ class _AccessOrganizationState:
              zone_id: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'accountId' in kwargs:
+        if account_id is None and 'accountId' in kwargs:
             account_id = kwargs['accountId']
-        if 'authDomain' in kwargs:
+        if auth_domain is None and 'authDomain' in kwargs:
             auth_domain = kwargs['authDomain']
-        if 'autoRedirectToIdentity' in kwargs:
+        if auto_redirect_to_identity is None and 'autoRedirectToIdentity' in kwargs:
             auto_redirect_to_identity = kwargs['autoRedirectToIdentity']
-        if 'customPages' in kwargs:
+        if custom_pages is None and 'customPages' in kwargs:
             custom_pages = kwargs['customPages']
-        if 'isUiReadOnly' in kwargs:
+        if is_ui_read_only is None and 'isUiReadOnly' in kwargs:
             is_ui_read_only = kwargs['isUiReadOnly']
-        if 'loginDesigns' in kwargs:
+        if login_designs is None and 'loginDesigns' in kwargs:
             login_designs = kwargs['loginDesigns']
-        if 'sessionDuration' in kwargs:
+        if session_duration is None and 'sessionDuration' in kwargs:
             session_duration = kwargs['sessionDuration']
-        if 'uiReadOnlyToggleReason' in kwargs:
+        if ui_read_only_toggle_reason is None and 'uiReadOnlyToggleReason' in kwargs:
             ui_read_only_toggle_reason = kwargs['uiReadOnlyToggleReason']
-        if 'userSeatExpirationInactiveTime' in kwargs:
+        if user_seat_expiration_inactive_time is None and 'userSeatExpirationInactiveTime' in kwargs:
             user_seat_expiration_inactive_time = kwargs['userSeatExpirationInactiveTime']
-        if 'zoneId' in kwargs:
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
 
         if account_id is not None:

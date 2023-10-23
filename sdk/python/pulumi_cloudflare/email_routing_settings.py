@@ -32,14 +32,18 @@ class EmailRoutingSettingsArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             enabled: pulumi.Input[bool],
-             zone_id: pulumi.Input[str],
+             enabled: Optional[pulumi.Input[bool]] = None,
+             zone_id: Optional[pulumi.Input[str]] = None,
              skip_wizard: Optional[pulumi.Input[bool]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'zoneId' in kwargs:
+        if enabled is None:
+            raise TypeError("Missing 'enabled' argument")
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
-        if 'skipWizard' in kwargs:
+        if zone_id is None:
+            raise TypeError("Missing 'zone_id' argument")
+        if skip_wizard is None and 'skipWizard' in kwargs:
             skip_wizard = kwargs['skipWizard']
 
         _setter("enabled", enabled)
@@ -130,9 +134,9 @@ class _EmailRoutingSettingsState:
              zone_id: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'skipWizard' in kwargs:
+        if skip_wizard is None and 'skipWizard' in kwargs:
             skip_wizard = kwargs['skipWizard']
-        if 'zoneId' in kwargs:
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
 
         if created is not None:

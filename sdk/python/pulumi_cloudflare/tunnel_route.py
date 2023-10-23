@@ -38,18 +38,24 @@ class TunnelRouteArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             account_id: pulumi.Input[str],
-             network: pulumi.Input[str],
-             tunnel_id: pulumi.Input[str],
+             account_id: Optional[pulumi.Input[str]] = None,
+             network: Optional[pulumi.Input[str]] = None,
+             tunnel_id: Optional[pulumi.Input[str]] = None,
              comment: Optional[pulumi.Input[str]] = None,
              virtual_network_id: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'accountId' in kwargs:
+        if account_id is None and 'accountId' in kwargs:
             account_id = kwargs['accountId']
-        if 'tunnelId' in kwargs:
+        if account_id is None:
+            raise TypeError("Missing 'account_id' argument")
+        if network is None:
+            raise TypeError("Missing 'network' argument")
+        if tunnel_id is None and 'tunnelId' in kwargs:
             tunnel_id = kwargs['tunnelId']
-        if 'virtualNetworkId' in kwargs:
+        if tunnel_id is None:
+            raise TypeError("Missing 'tunnel_id' argument")
+        if virtual_network_id is None and 'virtualNetworkId' in kwargs:
             virtual_network_id = kwargs['virtualNetworkId']
 
         _setter("account_id", account_id)
@@ -155,11 +161,11 @@ class _TunnelRouteState:
              virtual_network_id: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'accountId' in kwargs:
+        if account_id is None and 'accountId' in kwargs:
             account_id = kwargs['accountId']
-        if 'tunnelId' in kwargs:
+        if tunnel_id is None and 'tunnelId' in kwargs:
             tunnel_id = kwargs['tunnelId']
-        if 'virtualNetworkId' in kwargs:
+        if virtual_network_id is None and 'virtualNetworkId' in kwargs:
             virtual_network_id = kwargs['virtualNetworkId']
 
         if account_id is not None:

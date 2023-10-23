@@ -35,14 +35,22 @@ class ObservatoryScheduledTestArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             frequency: pulumi.Input[str],
-             region: pulumi.Input[str],
-             url: pulumi.Input[str],
-             zone_id: pulumi.Input[str],
+             frequency: Optional[pulumi.Input[str]] = None,
+             region: Optional[pulumi.Input[str]] = None,
+             url: Optional[pulumi.Input[str]] = None,
+             zone_id: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'zoneId' in kwargs:
+        if frequency is None:
+            raise TypeError("Missing 'frequency' argument")
+        if region is None:
+            raise TypeError("Missing 'region' argument")
+        if url is None:
+            raise TypeError("Missing 'url' argument")
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
+        if zone_id is None:
+            raise TypeError("Missing 'zone_id' argument")
 
         _setter("frequency", frequency)
         _setter("region", region)
@@ -128,7 +136,7 @@ class _ObservatoryScheduledTestState:
              zone_id: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'zoneId' in kwargs:
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
 
         if frequency is not None:

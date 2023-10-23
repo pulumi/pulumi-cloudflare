@@ -30,12 +30,14 @@ class ZoneSettingsOverrideArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             zone_id: pulumi.Input[str],
+             zone_id: Optional[pulumi.Input[str]] = None,
              settings: Optional[pulumi.Input['ZoneSettingsOverrideSettingsArgs']] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'zoneId' in kwargs:
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
+        if zone_id is None:
+            raise TypeError("Missing 'zone_id' argument")
 
         _setter("zone_id", zone_id)
         if settings is not None:
@@ -99,17 +101,17 @@ class _ZoneSettingsOverrideState:
              zone_type: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'initialSettings' in kwargs:
+        if initial_settings is None and 'initialSettings' in kwargs:
             initial_settings = kwargs['initialSettings']
-        if 'initialSettingsReadAt' in kwargs:
+        if initial_settings_read_at is None and 'initialSettingsReadAt' in kwargs:
             initial_settings_read_at = kwargs['initialSettingsReadAt']
-        if 'readonlySettings' in kwargs:
+        if readonly_settings is None and 'readonlySettings' in kwargs:
             readonly_settings = kwargs['readonlySettings']
-        if 'zoneId' in kwargs:
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
-        if 'zoneStatus' in kwargs:
+        if zone_status is None and 'zoneStatus' in kwargs:
             zone_status = kwargs['zoneStatus']
-        if 'zoneType' in kwargs:
+        if zone_type is None and 'zoneType' in kwargs:
             zone_type = kwargs['zoneType']
 
         if initial_settings is not None:

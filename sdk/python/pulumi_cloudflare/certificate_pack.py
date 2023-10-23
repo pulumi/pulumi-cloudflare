@@ -53,33 +53,45 @@ class CertificatePackArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             certificate_authority: pulumi.Input[str],
-             hosts: pulumi.Input[Sequence[pulumi.Input[str]]],
-             type: pulumi.Input[str],
-             validation_method: pulumi.Input[str],
-             validity_days: pulumi.Input[int],
-             zone_id: pulumi.Input[str],
+             certificate_authority: Optional[pulumi.Input[str]] = None,
+             hosts: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             type: Optional[pulumi.Input[str]] = None,
+             validation_method: Optional[pulumi.Input[str]] = None,
+             validity_days: Optional[pulumi.Input[int]] = None,
+             zone_id: Optional[pulumi.Input[str]] = None,
              cloudflare_branding: Optional[pulumi.Input[bool]] = None,
              validation_errors: Optional[pulumi.Input[Sequence[pulumi.Input['CertificatePackValidationErrorArgs']]]] = None,
              validation_records: Optional[pulumi.Input[Sequence[pulumi.Input['CertificatePackValidationRecordArgs']]]] = None,
              wait_for_active_status: Optional[pulumi.Input[bool]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'certificateAuthority' in kwargs:
+        if certificate_authority is None and 'certificateAuthority' in kwargs:
             certificate_authority = kwargs['certificateAuthority']
-        if 'validationMethod' in kwargs:
+        if certificate_authority is None:
+            raise TypeError("Missing 'certificate_authority' argument")
+        if hosts is None:
+            raise TypeError("Missing 'hosts' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+        if validation_method is None and 'validationMethod' in kwargs:
             validation_method = kwargs['validationMethod']
-        if 'validityDays' in kwargs:
+        if validation_method is None:
+            raise TypeError("Missing 'validation_method' argument")
+        if validity_days is None and 'validityDays' in kwargs:
             validity_days = kwargs['validityDays']
-        if 'zoneId' in kwargs:
+        if validity_days is None:
+            raise TypeError("Missing 'validity_days' argument")
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
-        if 'cloudflareBranding' in kwargs:
+        if zone_id is None:
+            raise TypeError("Missing 'zone_id' argument")
+        if cloudflare_branding is None and 'cloudflareBranding' in kwargs:
             cloudflare_branding = kwargs['cloudflareBranding']
-        if 'validationErrors' in kwargs:
+        if validation_errors is None and 'validationErrors' in kwargs:
             validation_errors = kwargs['validationErrors']
-        if 'validationRecords' in kwargs:
+        if validation_records is None and 'validationRecords' in kwargs:
             validation_records = kwargs['validationRecords']
-        if 'waitForActiveStatus' in kwargs:
+        if wait_for_active_status is None and 'waitForActiveStatus' in kwargs:
             wait_for_active_status = kwargs['waitForActiveStatus']
 
         _setter("certificate_authority", certificate_authority)
@@ -264,21 +276,21 @@ class _CertificatePackState:
              zone_id: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'certificateAuthority' in kwargs:
+        if certificate_authority is None and 'certificateAuthority' in kwargs:
             certificate_authority = kwargs['certificateAuthority']
-        if 'cloudflareBranding' in kwargs:
+        if cloudflare_branding is None and 'cloudflareBranding' in kwargs:
             cloudflare_branding = kwargs['cloudflareBranding']
-        if 'validationErrors' in kwargs:
+        if validation_errors is None and 'validationErrors' in kwargs:
             validation_errors = kwargs['validationErrors']
-        if 'validationMethod' in kwargs:
+        if validation_method is None and 'validationMethod' in kwargs:
             validation_method = kwargs['validationMethod']
-        if 'validationRecords' in kwargs:
+        if validation_records is None and 'validationRecords' in kwargs:
             validation_records = kwargs['validationRecords']
-        if 'validityDays' in kwargs:
+        if validity_days is None and 'validityDays' in kwargs:
             validity_days = kwargs['validityDays']
-        if 'waitForActiveStatus' in kwargs:
+        if wait_for_active_status is None and 'waitForActiveStatus' in kwargs:
             wait_for_active_status = kwargs['waitForActiveStatus']
-        if 'zoneId' in kwargs:
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
 
         if certificate_authority is not None:

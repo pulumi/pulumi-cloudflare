@@ -47,9 +47,9 @@ class StaticRouteArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             nexthop: pulumi.Input[str],
-             prefix: pulumi.Input[str],
-             priority: pulumi.Input[int],
+             nexthop: Optional[pulumi.Input[str]] = None,
+             prefix: Optional[pulumi.Input[str]] = None,
+             priority: Optional[pulumi.Input[int]] = None,
              account_id: Optional[pulumi.Input[str]] = None,
              colo_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              colo_regions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -57,11 +57,17 @@ class StaticRouteArgs:
              weight: Optional[pulumi.Input[int]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'accountId' in kwargs:
+        if nexthop is None:
+            raise TypeError("Missing 'nexthop' argument")
+        if prefix is None:
+            raise TypeError("Missing 'prefix' argument")
+        if priority is None:
+            raise TypeError("Missing 'priority' argument")
+        if account_id is None and 'accountId' in kwargs:
             account_id = kwargs['accountId']
-        if 'coloNames' in kwargs:
+        if colo_names is None and 'coloNames' in kwargs:
             colo_names = kwargs['coloNames']
-        if 'coloRegions' in kwargs:
+        if colo_regions is None and 'coloRegions' in kwargs:
             colo_regions = kwargs['coloRegions']
 
         _setter("nexthop", nexthop)
@@ -221,11 +227,11 @@ class _StaticRouteState:
              weight: Optional[pulumi.Input[int]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'accountId' in kwargs:
+        if account_id is None and 'accountId' in kwargs:
             account_id = kwargs['accountId']
-        if 'coloNames' in kwargs:
+        if colo_names is None and 'coloNames' in kwargs:
             colo_names = kwargs['coloNames']
-        if 'coloRegions' in kwargs:
+        if colo_regions is None and 'coloRegions' in kwargs:
             colo_regions = kwargs['coloRegions']
 
         if account_id is not None:

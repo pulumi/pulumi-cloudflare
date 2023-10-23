@@ -32,16 +32,18 @@ class AccessCaCertificateArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             application_id: pulumi.Input[str],
+             application_id: Optional[pulumi.Input[str]] = None,
              account_id: Optional[pulumi.Input[str]] = None,
              zone_id: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'applicationId' in kwargs:
+        if application_id is None and 'applicationId' in kwargs:
             application_id = kwargs['applicationId']
-        if 'accountId' in kwargs:
+        if application_id is None:
+            raise TypeError("Missing 'application_id' argument")
+        if account_id is None and 'accountId' in kwargs:
             account_id = kwargs['accountId']
-        if 'zoneId' in kwargs:
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
 
         _setter("application_id", application_id)
@@ -121,13 +123,13 @@ class _AccessCaCertificateState:
              zone_id: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'accountId' in kwargs:
+        if account_id is None and 'accountId' in kwargs:
             account_id = kwargs['accountId']
-        if 'applicationId' in kwargs:
+        if application_id is None and 'applicationId' in kwargs:
             application_id = kwargs['applicationId']
-        if 'publicKey' in kwargs:
+        if public_key is None and 'publicKey' in kwargs:
             public_key = kwargs['publicKey']
-        if 'zoneId' in kwargs:
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
 
         if account_id is not None:

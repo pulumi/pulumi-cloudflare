@@ -79,11 +79,11 @@ class WaitingRoomArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             host: pulumi.Input[str],
-             name: pulumi.Input[str],
-             new_users_per_minute: pulumi.Input[int],
-             total_active_users: pulumi.Input[int],
-             zone_id: pulumi.Input[str],
+             host: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             new_users_per_minute: Optional[pulumi.Input[int]] = None,
+             total_active_users: Optional[pulumi.Input[int]] = None,
+             zone_id: Optional[pulumi.Input[str]] = None,
              additional_routes: Optional[pulumi.Input[Sequence[pulumi.Input['WaitingRoomAdditionalRouteArgs']]]] = None,
              cookie_suffix: Optional[pulumi.Input[str]] = None,
              custom_page_html: Optional[pulumi.Input[str]] = None,
@@ -99,31 +99,41 @@ class WaitingRoomArgs:
              suspended: Optional[pulumi.Input[bool]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'newUsersPerMinute' in kwargs:
+        if host is None:
+            raise TypeError("Missing 'host' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if new_users_per_minute is None and 'newUsersPerMinute' in kwargs:
             new_users_per_minute = kwargs['newUsersPerMinute']
-        if 'totalActiveUsers' in kwargs:
+        if new_users_per_minute is None:
+            raise TypeError("Missing 'new_users_per_minute' argument")
+        if total_active_users is None and 'totalActiveUsers' in kwargs:
             total_active_users = kwargs['totalActiveUsers']
-        if 'zoneId' in kwargs:
+        if total_active_users is None:
+            raise TypeError("Missing 'total_active_users' argument")
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
-        if 'additionalRoutes' in kwargs:
+        if zone_id is None:
+            raise TypeError("Missing 'zone_id' argument")
+        if additional_routes is None and 'additionalRoutes' in kwargs:
             additional_routes = kwargs['additionalRoutes']
-        if 'cookieSuffix' in kwargs:
+        if cookie_suffix is None and 'cookieSuffix' in kwargs:
             cookie_suffix = kwargs['cookieSuffix']
-        if 'customPageHtml' in kwargs:
+        if custom_page_html is None and 'customPageHtml' in kwargs:
             custom_page_html = kwargs['customPageHtml']
-        if 'defaultTemplateLanguage' in kwargs:
+        if default_template_language is None and 'defaultTemplateLanguage' in kwargs:
             default_template_language = kwargs['defaultTemplateLanguage']
-        if 'disableSessionRenewal' in kwargs:
+        if disable_session_renewal is None and 'disableSessionRenewal' in kwargs:
             disable_session_renewal = kwargs['disableSessionRenewal']
-        if 'jsonResponseEnabled' in kwargs:
+        if json_response_enabled is None and 'jsonResponseEnabled' in kwargs:
             json_response_enabled = kwargs['jsonResponseEnabled']
-        if 'queueAll' in kwargs:
+        if queue_all is None and 'queueAll' in kwargs:
             queue_all = kwargs['queueAll']
-        if 'queueingMethod' in kwargs:
+        if queueing_method is None and 'queueingMethod' in kwargs:
             queueing_method = kwargs['queueingMethod']
-        if 'queueingStatusCode' in kwargs:
+        if queueing_status_code is None and 'queueingStatusCode' in kwargs:
             queueing_status_code = kwargs['queueingStatusCode']
-        if 'sessionDuration' in kwargs:
+        if session_duration is None and 'sessionDuration' in kwargs:
             session_duration = kwargs['sessionDuration']
 
         _setter("host", host)
@@ -461,31 +471,31 @@ class _WaitingRoomState:
              zone_id: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'additionalRoutes' in kwargs:
+        if additional_routes is None and 'additionalRoutes' in kwargs:
             additional_routes = kwargs['additionalRoutes']
-        if 'cookieSuffix' in kwargs:
+        if cookie_suffix is None and 'cookieSuffix' in kwargs:
             cookie_suffix = kwargs['cookieSuffix']
-        if 'customPageHtml' in kwargs:
+        if custom_page_html is None and 'customPageHtml' in kwargs:
             custom_page_html = kwargs['customPageHtml']
-        if 'defaultTemplateLanguage' in kwargs:
+        if default_template_language is None and 'defaultTemplateLanguage' in kwargs:
             default_template_language = kwargs['defaultTemplateLanguage']
-        if 'disableSessionRenewal' in kwargs:
+        if disable_session_renewal is None and 'disableSessionRenewal' in kwargs:
             disable_session_renewal = kwargs['disableSessionRenewal']
-        if 'jsonResponseEnabled' in kwargs:
+        if json_response_enabled is None and 'jsonResponseEnabled' in kwargs:
             json_response_enabled = kwargs['jsonResponseEnabled']
-        if 'newUsersPerMinute' in kwargs:
+        if new_users_per_minute is None and 'newUsersPerMinute' in kwargs:
             new_users_per_minute = kwargs['newUsersPerMinute']
-        if 'queueAll' in kwargs:
+        if queue_all is None and 'queueAll' in kwargs:
             queue_all = kwargs['queueAll']
-        if 'queueingMethod' in kwargs:
+        if queueing_method is None and 'queueingMethod' in kwargs:
             queueing_method = kwargs['queueingMethod']
-        if 'queueingStatusCode' in kwargs:
+        if queueing_status_code is None and 'queueingStatusCode' in kwargs:
             queueing_status_code = kwargs['queueingStatusCode']
-        if 'sessionDuration' in kwargs:
+        if session_duration is None and 'sessionDuration' in kwargs:
             session_duration = kwargs['sessionDuration']
-        if 'totalActiveUsers' in kwargs:
+        if total_active_users is None and 'totalActiveUsers' in kwargs:
             total_active_users = kwargs['totalActiveUsers']
-        if 'zoneId' in kwargs:
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
 
         if additional_routes is not None:

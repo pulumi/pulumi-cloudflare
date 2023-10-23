@@ -40,15 +40,21 @@ class PageRuleArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             actions: pulumi.Input['PageRuleActionsArgs'],
-             target: pulumi.Input[str],
-             zone_id: pulumi.Input[str],
+             actions: Optional[pulumi.Input['PageRuleActionsArgs']] = None,
+             target: Optional[pulumi.Input[str]] = None,
+             zone_id: Optional[pulumi.Input[str]] = None,
              priority: Optional[pulumi.Input[int]] = None,
              status: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'zoneId' in kwargs:
+        if actions is None:
+            raise TypeError("Missing 'actions' argument")
+        if target is None:
+            raise TypeError("Missing 'target' argument")
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
+        if zone_id is None:
+            raise TypeError("Missing 'zone_id' argument")
 
         _setter("actions", actions)
         _setter("target", target)
@@ -153,7 +159,7 @@ class _PageRuleState:
              zone_id: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'zoneId' in kwargs:
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
 
         if actions is not None:

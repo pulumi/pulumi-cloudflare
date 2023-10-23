@@ -43,21 +43,27 @@ class PagesProjectArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             account_id: pulumi.Input[str],
-             name: pulumi.Input[str],
-             production_branch: pulumi.Input[str],
+             account_id: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             production_branch: Optional[pulumi.Input[str]] = None,
              build_config: Optional[pulumi.Input['PagesProjectBuildConfigArgs']] = None,
              deployment_configs: Optional[pulumi.Input['PagesProjectDeploymentConfigsArgs']] = None,
              source: Optional[pulumi.Input['PagesProjectSourceArgs']] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'accountId' in kwargs:
+        if account_id is None and 'accountId' in kwargs:
             account_id = kwargs['accountId']
-        if 'productionBranch' in kwargs:
+        if account_id is None:
+            raise TypeError("Missing 'account_id' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if production_branch is None and 'productionBranch' in kwargs:
             production_branch = kwargs['productionBranch']
-        if 'buildConfig' in kwargs:
+        if production_branch is None:
+            raise TypeError("Missing 'production_branch' argument")
+        if build_config is None and 'buildConfig' in kwargs:
             build_config = kwargs['buildConfig']
-        if 'deploymentConfigs' in kwargs:
+        if deployment_configs is None and 'deploymentConfigs' in kwargs:
             deployment_configs = kwargs['deploymentConfigs']
 
         _setter("account_id", account_id)
@@ -193,15 +199,15 @@ class _PagesProjectState:
              subdomain: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'accountId' in kwargs:
+        if account_id is None and 'accountId' in kwargs:
             account_id = kwargs['accountId']
-        if 'buildConfig' in kwargs:
+        if build_config is None and 'buildConfig' in kwargs:
             build_config = kwargs['buildConfig']
-        if 'createdOn' in kwargs:
+        if created_on is None and 'createdOn' in kwargs:
             created_on = kwargs['createdOn']
-        if 'deploymentConfigs' in kwargs:
+        if deployment_configs is None and 'deploymentConfigs' in kwargs:
             deployment_configs = kwargs['deploymentConfigs']
-        if 'productionBranch' in kwargs:
+        if production_branch is None and 'productionBranch' in kwargs:
             production_branch = kwargs['productionBranch']
 
         if account_id is not None:

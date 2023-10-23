@@ -35,15 +35,19 @@ class AuthenticatedOriginPullsArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             enabled: pulumi.Input[bool],
-             zone_id: pulumi.Input[str],
+             enabled: Optional[pulumi.Input[bool]] = None,
+             zone_id: Optional[pulumi.Input[str]] = None,
              authenticated_origin_pulls_certificate: Optional[pulumi.Input[str]] = None,
              hostname: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'zoneId' in kwargs:
+        if enabled is None:
+            raise TypeError("Missing 'enabled' argument")
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
-        if 'authenticatedOriginPullsCertificate' in kwargs:
+        if zone_id is None:
+            raise TypeError("Missing 'zone_id' argument")
+        if authenticated_origin_pulls_certificate is None and 'authenticatedOriginPullsCertificate' in kwargs:
             authenticated_origin_pulls_certificate = kwargs['authenticatedOriginPullsCertificate']
 
         _setter("enabled", enabled)
@@ -132,9 +136,9 @@ class _AuthenticatedOriginPullsState:
              zone_id: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'authenticatedOriginPullsCertificate' in kwargs:
+        if authenticated_origin_pulls_certificate is None and 'authenticatedOriginPullsCertificate' in kwargs:
             authenticated_origin_pulls_certificate = kwargs['authenticatedOriginPullsCertificate']
-        if 'zoneId' in kwargs:
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
 
         if authenticated_origin_pulls_certificate is not None:

@@ -29,12 +29,16 @@ class CustomHostnameFallbackOriginArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             origin: pulumi.Input[str],
-             zone_id: pulumi.Input[str],
+             origin: Optional[pulumi.Input[str]] = None,
+             zone_id: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'zoneId' in kwargs:
+        if origin is None:
+            raise TypeError("Missing 'origin' argument")
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
+        if zone_id is None:
+            raise TypeError("Missing 'zone_id' argument")
 
         _setter("origin", origin)
         _setter("zone_id", zone_id)
@@ -90,7 +94,7 @@ class _CustomHostnameFallbackOriginState:
              zone_id: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'zoneId' in kwargs:
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
 
         if origin is not None:

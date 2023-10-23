@@ -29,13 +29,15 @@ class AccessKeysConfigurationArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             account_id: pulumi.Input[str],
+             account_id: Optional[pulumi.Input[str]] = None,
              key_rotation_interval_days: Optional[pulumi.Input[int]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'accountId' in kwargs:
+        if account_id is None and 'accountId' in kwargs:
             account_id = kwargs['accountId']
-        if 'keyRotationIntervalDays' in kwargs:
+        if account_id is None:
+            raise TypeError("Missing 'account_id' argument")
+        if key_rotation_interval_days is None and 'keyRotationIntervalDays' in kwargs:
             key_rotation_interval_days = kwargs['keyRotationIntervalDays']
 
         _setter("account_id", account_id)
@@ -89,9 +91,9 @@ class _AccessKeysConfigurationState:
              key_rotation_interval_days: Optional[pulumi.Input[int]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'accountId' in kwargs:
+        if account_id is None and 'accountId' in kwargs:
             account_id = kwargs['accountId']
-        if 'keyRotationIntervalDays' in kwargs:
+        if key_rotation_interval_days is None and 'keyRotationIntervalDays' in kwargs:
             key_rotation_interval_days = kwargs['keyRotationIntervalDays']
 
         if account_id is not None:

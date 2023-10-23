@@ -60,7 +60,7 @@ class TeamsAccountArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             account_id: pulumi.Input[str],
+             account_id: Optional[pulumi.Input[str]] = None,
              activity_log_enabled: Optional[pulumi.Input[bool]] = None,
              antivirus: Optional[pulumi.Input['TeamsAccountAntivirusArgs']] = None,
              block_page: Optional[pulumi.Input['TeamsAccountBlockPageArgs']] = None,
@@ -74,21 +74,23 @@ class TeamsAccountArgs:
              url_browser_isolation_enabled: Optional[pulumi.Input[bool]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'accountId' in kwargs:
+        if account_id is None and 'accountId' in kwargs:
             account_id = kwargs['accountId']
-        if 'activityLogEnabled' in kwargs:
+        if account_id is None:
+            raise TypeError("Missing 'account_id' argument")
+        if activity_log_enabled is None and 'activityLogEnabled' in kwargs:
             activity_log_enabled = kwargs['activityLogEnabled']
-        if 'blockPage' in kwargs:
+        if block_page is None and 'blockPage' in kwargs:
             block_page = kwargs['blockPage']
-        if 'payloadLog' in kwargs:
+        if payload_log is None and 'payloadLog' in kwargs:
             payload_log = kwargs['payloadLog']
-        if 'protocolDetectionEnabled' in kwargs:
+        if protocol_detection_enabled is None and 'protocolDetectionEnabled' in kwargs:
             protocol_detection_enabled = kwargs['protocolDetectionEnabled']
-        if 'sshSessionLog' in kwargs:
+        if ssh_session_log is None and 'sshSessionLog' in kwargs:
             ssh_session_log = kwargs['sshSessionLog']
-        if 'tlsDecryptEnabled' in kwargs:
+        if tls_decrypt_enabled is None and 'tlsDecryptEnabled' in kwargs:
             tls_decrypt_enabled = kwargs['tlsDecryptEnabled']
-        if 'urlBrowserIsolationEnabled' in kwargs:
+        if url_browser_isolation_enabled is None and 'urlBrowserIsolationEnabled' in kwargs:
             url_browser_isolation_enabled = kwargs['urlBrowserIsolationEnabled']
 
         _setter("account_id", account_id)
@@ -318,21 +320,21 @@ class _TeamsAccountState:
              url_browser_isolation_enabled: Optional[pulumi.Input[bool]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'accountId' in kwargs:
+        if account_id is None and 'accountId' in kwargs:
             account_id = kwargs['accountId']
-        if 'activityLogEnabled' in kwargs:
+        if activity_log_enabled is None and 'activityLogEnabled' in kwargs:
             activity_log_enabled = kwargs['activityLogEnabled']
-        if 'blockPage' in kwargs:
+        if block_page is None and 'blockPage' in kwargs:
             block_page = kwargs['blockPage']
-        if 'payloadLog' in kwargs:
+        if payload_log is None and 'payloadLog' in kwargs:
             payload_log = kwargs['payloadLog']
-        if 'protocolDetectionEnabled' in kwargs:
+        if protocol_detection_enabled is None and 'protocolDetectionEnabled' in kwargs:
             protocol_detection_enabled = kwargs['protocolDetectionEnabled']
-        if 'sshSessionLog' in kwargs:
+        if ssh_session_log is None and 'sshSessionLog' in kwargs:
             ssh_session_log = kwargs['sshSessionLog']
-        if 'tlsDecryptEnabled' in kwargs:
+        if tls_decrypt_enabled is None and 'tlsDecryptEnabled' in kwargs:
             tls_decrypt_enabled = kwargs['tlsDecryptEnabled']
-        if 'urlBrowserIsolationEnabled' in kwargs:
+        if url_browser_isolation_enabled is None and 'urlBrowserIsolationEnabled' in kwargs:
             url_browser_isolation_enabled = kwargs['urlBrowserIsolationEnabled']
 
         if account_id is not None:

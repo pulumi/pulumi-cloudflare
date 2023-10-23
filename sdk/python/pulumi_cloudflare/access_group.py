@@ -39,17 +39,21 @@ class AccessGroupArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             includes: pulumi.Input[Sequence[pulumi.Input['AccessGroupIncludeArgs']]],
-             name: pulumi.Input[str],
+             includes: Optional[pulumi.Input[Sequence[pulumi.Input['AccessGroupIncludeArgs']]]] = None,
+             name: Optional[pulumi.Input[str]] = None,
              account_id: Optional[pulumi.Input[str]] = None,
              excludes: Optional[pulumi.Input[Sequence[pulumi.Input['AccessGroupExcludeArgs']]]] = None,
              requires: Optional[pulumi.Input[Sequence[pulumi.Input['AccessGroupRequireArgs']]]] = None,
              zone_id: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'accountId' in kwargs:
+        if includes is None:
+            raise TypeError("Missing 'includes' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if account_id is None and 'accountId' in kwargs:
             account_id = kwargs['accountId']
-        if 'zoneId' in kwargs:
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
 
         _setter("includes", includes)
@@ -158,9 +162,9 @@ class _AccessGroupState:
              zone_id: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'accountId' in kwargs:
+        if account_id is None and 'accountId' in kwargs:
             account_id = kwargs['accountId']
-        if 'zoneId' in kwargs:
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
 
         if account_id is not None:

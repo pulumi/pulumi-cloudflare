@@ -32,13 +32,19 @@ class UrlNormalizationSettingsArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             scope: pulumi.Input[str],
-             type: pulumi.Input[str],
-             zone_id: pulumi.Input[str],
+             scope: Optional[pulumi.Input[str]] = None,
+             type: Optional[pulumi.Input[str]] = None,
+             zone_id: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'zoneId' in kwargs:
+        if scope is None:
+            raise TypeError("Missing 'scope' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
+        if zone_id is None:
+            raise TypeError("Missing 'zone_id' argument")
 
         _setter("scope", scope)
         _setter("type", type)
@@ -107,7 +113,7 @@ class _UrlNormalizationSettingsState:
              zone_id: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'zoneId' in kwargs:
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
 
         if scope is not None:

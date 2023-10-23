@@ -40,16 +40,20 @@ class ApiTokenArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             name: pulumi.Input[str],
-             policies: pulumi.Input[Sequence[pulumi.Input['ApiTokenPolicyArgs']]],
+             name: Optional[pulumi.Input[str]] = None,
+             policies: Optional[pulumi.Input[Sequence[pulumi.Input['ApiTokenPolicyArgs']]]] = None,
              condition: Optional[pulumi.Input['ApiTokenConditionArgs']] = None,
              expires_on: Optional[pulumi.Input[str]] = None,
              not_before: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'expiresOn' in kwargs:
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if policies is None:
+            raise TypeError("Missing 'policies' argument")
+        if expires_on is None and 'expiresOn' in kwargs:
             expires_on = kwargs['expiresOn']
-        if 'notBefore' in kwargs:
+        if not_before is None and 'notBefore' in kwargs:
             not_before = kwargs['notBefore']
 
         _setter("name", name)
@@ -171,13 +175,13 @@ class _ApiTokenState:
              value: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'expiresOn' in kwargs:
+        if expires_on is None and 'expiresOn' in kwargs:
             expires_on = kwargs['expiresOn']
-        if 'issuedOn' in kwargs:
+        if issued_on is None and 'issuedOn' in kwargs:
             issued_on = kwargs['issuedOn']
-        if 'modifiedOn' in kwargs:
+        if modified_on is None and 'modifiedOn' in kwargs:
             modified_on = kwargs['modifiedOn']
-        if 'notBefore' in kwargs:
+        if not_before is None and 'notBefore' in kwargs:
             not_before = kwargs['notBefore']
 
         if condition is not None:

@@ -29,13 +29,15 @@ class ZoneDnssecArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             zone_id: pulumi.Input[str],
+             zone_id: Optional[pulumi.Input[str]] = None,
              modified_on: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'zoneId' in kwargs:
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
-        if 'modifiedOn' in kwargs:
+        if zone_id is None:
+            raise TypeError("Missing 'zone_id' argument")
+        if modified_on is None and 'modifiedOn' in kwargs:
             modified_on = kwargs['modifiedOn']
 
         _setter("zone_id", zone_id)
@@ -129,19 +131,19 @@ class _ZoneDnssecState:
              zone_id: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'digestAlgorithm' in kwargs:
+        if digest_algorithm is None and 'digestAlgorithm' in kwargs:
             digest_algorithm = kwargs['digestAlgorithm']
-        if 'digestType' in kwargs:
+        if digest_type is None and 'digestType' in kwargs:
             digest_type = kwargs['digestType']
-        if 'keyTag' in kwargs:
+        if key_tag is None and 'keyTag' in kwargs:
             key_tag = kwargs['keyTag']
-        if 'keyType' in kwargs:
+        if key_type is None and 'keyType' in kwargs:
             key_type = kwargs['keyType']
-        if 'modifiedOn' in kwargs:
+        if modified_on is None and 'modifiedOn' in kwargs:
             modified_on = kwargs['modifiedOn']
-        if 'publicKey' in kwargs:
+        if public_key is None and 'publicKey' in kwargs:
             public_key = kwargs['publicKey']
-        if 'zoneId' in kwargs:
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
 
         if algorithm is not None:

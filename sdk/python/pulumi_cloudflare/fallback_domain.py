@@ -33,14 +33,18 @@ class FallbackDomainArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             account_id: pulumi.Input[str],
-             domains: pulumi.Input[Sequence[pulumi.Input['FallbackDomainDomainArgs']]],
+             account_id: Optional[pulumi.Input[str]] = None,
+             domains: Optional[pulumi.Input[Sequence[pulumi.Input['FallbackDomainDomainArgs']]]] = None,
              policy_id: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'accountId' in kwargs:
+        if account_id is None and 'accountId' in kwargs:
             account_id = kwargs['accountId']
-        if 'policyId' in kwargs:
+        if account_id is None:
+            raise TypeError("Missing 'account_id' argument")
+        if domains is None:
+            raise TypeError("Missing 'domains' argument")
+        if policy_id is None and 'policyId' in kwargs:
             policy_id = kwargs['policyId']
 
         _setter("account_id", account_id)
@@ -107,9 +111,9 @@ class _FallbackDomainState:
              policy_id: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'accountId' in kwargs:
+        if account_id is None and 'accountId' in kwargs:
             account_id = kwargs['accountId']
-        if 'policyId' in kwargs:
+        if policy_id is None and 'policyId' in kwargs:
             policy_id = kwargs['policyId']
 
         if account_id is not None:

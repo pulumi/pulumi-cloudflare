@@ -42,16 +42,22 @@ class ZoneLockdownArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             configurations: pulumi.Input[Sequence[pulumi.Input['ZoneLockdownConfigurationArgs']]],
-             urls: pulumi.Input[Sequence[pulumi.Input[str]]],
-             zone_id: pulumi.Input[str],
+             configurations: Optional[pulumi.Input[Sequence[pulumi.Input['ZoneLockdownConfigurationArgs']]]] = None,
+             urls: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             zone_id: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              paused: Optional[pulumi.Input[bool]] = None,
              priority: Optional[pulumi.Input[int]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'zoneId' in kwargs:
+        if configurations is None:
+            raise TypeError("Missing 'configurations' argument")
+        if urls is None:
+            raise TypeError("Missing 'urls' argument")
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
+        if zone_id is None:
+            raise TypeError("Missing 'zone_id' argument")
 
         _setter("configurations", configurations)
         _setter("urls", urls)
@@ -170,7 +176,7 @@ class _ZoneLockdownState:
              zone_id: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'zoneId' in kwargs:
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
 
         if configurations is not None:

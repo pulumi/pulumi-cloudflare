@@ -35,16 +35,24 @@ class WorkersKvArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             account_id: pulumi.Input[str],
-             key: pulumi.Input[str],
-             namespace_id: pulumi.Input[str],
-             value: pulumi.Input[str],
+             account_id: Optional[pulumi.Input[str]] = None,
+             key: Optional[pulumi.Input[str]] = None,
+             namespace_id: Optional[pulumi.Input[str]] = None,
+             value: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'accountId' in kwargs:
+        if account_id is None and 'accountId' in kwargs:
             account_id = kwargs['accountId']
-        if 'namespaceId' in kwargs:
+        if account_id is None:
+            raise TypeError("Missing 'account_id' argument")
+        if key is None:
+            raise TypeError("Missing 'key' argument")
+        if namespace_id is None and 'namespaceId' in kwargs:
             namespace_id = kwargs['namespaceId']
+        if namespace_id is None:
+            raise TypeError("Missing 'namespace_id' argument")
+        if value is None:
+            raise TypeError("Missing 'value' argument")
 
         _setter("account_id", account_id)
         _setter("key", key)
@@ -130,9 +138,9 @@ class _WorkersKvState:
              value: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'accountId' in kwargs:
+        if account_id is None and 'accountId' in kwargs:
             account_id = kwargs['accountId']
-        if 'namespaceId' in kwargs:
+        if namespace_id is None and 'namespaceId' in kwargs:
             namespace_id = kwargs['namespaceId']
 
         if account_id is not None:

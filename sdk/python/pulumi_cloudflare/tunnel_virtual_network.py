@@ -35,15 +35,19 @@ class TunnelVirtualNetworkArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             account_id: pulumi.Input[str],
-             name: pulumi.Input[str],
+             account_id: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
              comment: Optional[pulumi.Input[str]] = None,
              is_default_network: Optional[pulumi.Input[bool]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'accountId' in kwargs:
+        if account_id is None and 'accountId' in kwargs:
             account_id = kwargs['accountId']
-        if 'isDefaultNetwork' in kwargs:
+        if account_id is None:
+            raise TypeError("Missing 'account_id' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if is_default_network is None and 'isDefaultNetwork' in kwargs:
             is_default_network = kwargs['isDefaultNetwork']
 
         _setter("account_id", account_id)
@@ -132,9 +136,9 @@ class _TunnelVirtualNetworkState:
              name: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'accountId' in kwargs:
+        if account_id is None and 'accountId' in kwargs:
             account_id = kwargs['accountId']
-        if 'isDefaultNetwork' in kwargs:
+        if is_default_network is None and 'isDefaultNetwork' in kwargs:
             is_default_network = kwargs['isDefaultNetwork']
 
         if account_id is not None:

@@ -35,18 +35,24 @@ class AccountMemberArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             account_id: pulumi.Input[str],
-             email_address: pulumi.Input[str],
-             role_ids: pulumi.Input[Sequence[pulumi.Input[str]]],
+             account_id: Optional[pulumi.Input[str]] = None,
+             email_address: Optional[pulumi.Input[str]] = None,
+             role_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              status: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'accountId' in kwargs:
+        if account_id is None and 'accountId' in kwargs:
             account_id = kwargs['accountId']
-        if 'emailAddress' in kwargs:
+        if account_id is None:
+            raise TypeError("Missing 'account_id' argument")
+        if email_address is None and 'emailAddress' in kwargs:
             email_address = kwargs['emailAddress']
-        if 'roleIds' in kwargs:
+        if email_address is None:
+            raise TypeError("Missing 'email_address' argument")
+        if role_ids is None and 'roleIds' in kwargs:
             role_ids = kwargs['roleIds']
+        if role_ids is None:
+            raise TypeError("Missing 'role_ids' argument")
 
         _setter("account_id", account_id)
         _setter("email_address", email_address)
@@ -133,11 +139,11 @@ class _AccountMemberState:
              status: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'accountId' in kwargs:
+        if account_id is None and 'accountId' in kwargs:
             account_id = kwargs['accountId']
-        if 'emailAddress' in kwargs:
+        if email_address is None and 'emailAddress' in kwargs:
             email_address = kwargs['emailAddress']
-        if 'roleIds' in kwargs:
+        if role_ids is None and 'roleIds' in kwargs:
             role_ids = kwargs['roleIds']
 
         if account_id is not None:

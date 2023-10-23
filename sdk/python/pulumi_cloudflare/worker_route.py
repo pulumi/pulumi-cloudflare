@@ -32,14 +32,18 @@ class WorkerRouteArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             pattern: pulumi.Input[str],
-             zone_id: pulumi.Input[str],
+             pattern: Optional[pulumi.Input[str]] = None,
+             zone_id: Optional[pulumi.Input[str]] = None,
              script_name: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'zoneId' in kwargs:
+        if pattern is None:
+            raise TypeError("Missing 'pattern' argument")
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
-        if 'scriptName' in kwargs:
+        if zone_id is None:
+            raise TypeError("Missing 'zone_id' argument")
+        if script_name is None and 'scriptName' in kwargs:
             script_name = kwargs['scriptName']
 
         _setter("pattern", pattern)
@@ -110,9 +114,9 @@ class _WorkerRouteState:
              zone_id: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'scriptName' in kwargs:
+        if script_name is None and 'scriptName' in kwargs:
             script_name = kwargs['scriptName']
-        if 'zoneId' in kwargs:
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
 
         if pattern is not None:

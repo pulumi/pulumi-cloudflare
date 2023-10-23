@@ -59,7 +59,7 @@ class ZoneCacheVariantsArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             zone_id: pulumi.Input[str],
+             zone_id: Optional[pulumi.Input[str]] = None,
              avifs: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              bmps: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              gifs: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -73,8 +73,10 @@ class ZoneCacheVariantsArgs:
              webps: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'zoneId' in kwargs:
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
+        if zone_id is None:
+            raise TypeError("Missing 'zone_id' argument")
 
         _setter("zone_id", zone_id)
         if avifs is not None:
@@ -307,7 +309,7 @@ class _ZoneCacheVariantsState:
              zone_id: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'zoneId' in kwargs:
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
 
         if avifs is not None:

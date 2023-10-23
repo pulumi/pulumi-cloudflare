@@ -68,11 +68,11 @@ class AccessPolicyArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             application_id: pulumi.Input[str],
-             decision: pulumi.Input[str],
-             includes: pulumi.Input[Sequence[pulumi.Input['AccessPolicyIncludeArgs']]],
-             name: pulumi.Input[str],
-             precedence: pulumi.Input[int],
+             application_id: Optional[pulumi.Input[str]] = None,
+             decision: Optional[pulumi.Input[str]] = None,
+             includes: Optional[pulumi.Input[Sequence[pulumi.Input['AccessPolicyIncludeArgs']]]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             precedence: Optional[pulumi.Input[int]] = None,
              account_id: Optional[pulumi.Input[str]] = None,
              approval_groups: Optional[pulumi.Input[Sequence[pulumi.Input['AccessPolicyApprovalGroupArgs']]]] = None,
              approval_required: Optional[pulumi.Input[bool]] = None,
@@ -85,23 +85,33 @@ class AccessPolicyArgs:
              zone_id: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'applicationId' in kwargs:
+        if application_id is None and 'applicationId' in kwargs:
             application_id = kwargs['applicationId']
-        if 'accountId' in kwargs:
+        if application_id is None:
+            raise TypeError("Missing 'application_id' argument")
+        if decision is None:
+            raise TypeError("Missing 'decision' argument")
+        if includes is None:
+            raise TypeError("Missing 'includes' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if precedence is None:
+            raise TypeError("Missing 'precedence' argument")
+        if account_id is None and 'accountId' in kwargs:
             account_id = kwargs['accountId']
-        if 'approvalGroups' in kwargs:
+        if approval_groups is None and 'approvalGroups' in kwargs:
             approval_groups = kwargs['approvalGroups']
-        if 'approvalRequired' in kwargs:
+        if approval_required is None and 'approvalRequired' in kwargs:
             approval_required = kwargs['approvalRequired']
-        if 'isolationRequired' in kwargs:
+        if isolation_required is None and 'isolationRequired' in kwargs:
             isolation_required = kwargs['isolationRequired']
-        if 'purposeJustificationPrompt' in kwargs:
+        if purpose_justification_prompt is None and 'purposeJustificationPrompt' in kwargs:
             purpose_justification_prompt = kwargs['purposeJustificationPrompt']
-        if 'purposeJustificationRequired' in kwargs:
+        if purpose_justification_required is None and 'purposeJustificationRequired' in kwargs:
             purpose_justification_required = kwargs['purposeJustificationRequired']
-        if 'sessionDuration' in kwargs:
+        if session_duration is None and 'sessionDuration' in kwargs:
             session_duration = kwargs['sessionDuration']
-        if 'zoneId' in kwargs:
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
 
         _setter("application_id", application_id)
@@ -377,23 +387,23 @@ class _AccessPolicyState:
              zone_id: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'accountId' in kwargs:
+        if account_id is None and 'accountId' in kwargs:
             account_id = kwargs['accountId']
-        if 'applicationId' in kwargs:
+        if application_id is None and 'applicationId' in kwargs:
             application_id = kwargs['applicationId']
-        if 'approvalGroups' in kwargs:
+        if approval_groups is None and 'approvalGroups' in kwargs:
             approval_groups = kwargs['approvalGroups']
-        if 'approvalRequired' in kwargs:
+        if approval_required is None and 'approvalRequired' in kwargs:
             approval_required = kwargs['approvalRequired']
-        if 'isolationRequired' in kwargs:
+        if isolation_required is None and 'isolationRequired' in kwargs:
             isolation_required = kwargs['isolationRequired']
-        if 'purposeJustificationPrompt' in kwargs:
+        if purpose_justification_prompt is None and 'purposeJustificationPrompt' in kwargs:
             purpose_justification_prompt = kwargs['purposeJustificationPrompt']
-        if 'purposeJustificationRequired' in kwargs:
+        if purpose_justification_required is None and 'purposeJustificationRequired' in kwargs:
             purpose_justification_required = kwargs['purposeJustificationRequired']
-        if 'sessionDuration' in kwargs:
+        if session_duration is None and 'sessionDuration' in kwargs:
             session_duration = kwargs['sessionDuration']
-        if 'zoneId' in kwargs:
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
 
         if account_id is not None:

@@ -35,14 +35,22 @@ class ApiShieldOperationArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             endpoint: pulumi.Input[str],
-             host: pulumi.Input[str],
-             method: pulumi.Input[str],
-             zone_id: pulumi.Input[str],
+             endpoint: Optional[pulumi.Input[str]] = None,
+             host: Optional[pulumi.Input[str]] = None,
+             method: Optional[pulumi.Input[str]] = None,
+             zone_id: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'zoneId' in kwargs:
+        if endpoint is None:
+            raise TypeError("Missing 'endpoint' argument")
+        if host is None:
+            raise TypeError("Missing 'host' argument")
+        if method is None:
+            raise TypeError("Missing 'method' argument")
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
+        if zone_id is None:
+            raise TypeError("Missing 'zone_id' argument")
 
         _setter("endpoint", endpoint)
         _setter("host", host)
@@ -128,7 +136,7 @@ class _ApiShieldOperationState:
              zone_id: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'zoneId' in kwargs:
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
 
         if endpoint is not None:

@@ -46,8 +46,8 @@ class CustomHostnameArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             hostname: pulumi.Input[str],
-             zone_id: pulumi.Input[str],
+             hostname: Optional[pulumi.Input[str]] = None,
+             zone_id: Optional[pulumi.Input[str]] = None,
              custom_metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              custom_origin_server: Optional[pulumi.Input[str]] = None,
              custom_origin_sni: Optional[pulumi.Input[str]] = None,
@@ -55,15 +55,19 @@ class CustomHostnameArgs:
              wait_for_ssl_pending_validation: Optional[pulumi.Input[bool]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'zoneId' in kwargs:
+        if hostname is None:
+            raise TypeError("Missing 'hostname' argument")
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
-        if 'customMetadata' in kwargs:
+        if zone_id is None:
+            raise TypeError("Missing 'zone_id' argument")
+        if custom_metadata is None and 'customMetadata' in kwargs:
             custom_metadata = kwargs['customMetadata']
-        if 'customOriginServer' in kwargs:
+        if custom_origin_server is None and 'customOriginServer' in kwargs:
             custom_origin_server = kwargs['customOriginServer']
-        if 'customOriginSni' in kwargs:
+        if custom_origin_sni is None and 'customOriginSni' in kwargs:
             custom_origin_sni = kwargs['customOriginSni']
-        if 'waitForSslPendingValidation' in kwargs:
+        if wait_for_ssl_pending_validation is None and 'waitForSslPendingValidation' in kwargs:
             wait_for_ssl_pending_validation = kwargs['waitForSslPendingValidation']
 
         _setter("hostname", hostname)
@@ -216,19 +220,19 @@ class _CustomHostnameState:
              zone_id: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'customMetadata' in kwargs:
+        if custom_metadata is None and 'customMetadata' in kwargs:
             custom_metadata = kwargs['customMetadata']
-        if 'customOriginServer' in kwargs:
+        if custom_origin_server is None and 'customOriginServer' in kwargs:
             custom_origin_server = kwargs['customOriginServer']
-        if 'customOriginSni' in kwargs:
+        if custom_origin_sni is None and 'customOriginSni' in kwargs:
             custom_origin_sni = kwargs['customOriginSni']
-        if 'ownershipVerification' in kwargs:
+        if ownership_verification is None and 'ownershipVerification' in kwargs:
             ownership_verification = kwargs['ownershipVerification']
-        if 'ownershipVerificationHttp' in kwargs:
+        if ownership_verification_http is None and 'ownershipVerificationHttp' in kwargs:
             ownership_verification_http = kwargs['ownershipVerificationHttp']
-        if 'waitForSslPendingValidation' in kwargs:
+        if wait_for_ssl_pending_validation is None and 'waitForSslPendingValidation' in kwargs:
             wait_for_ssl_pending_validation = kwargs['waitForSslPendingValidation']
-        if 'zoneId' in kwargs:
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
 
         if custom_metadata is not None:

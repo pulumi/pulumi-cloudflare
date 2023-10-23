@@ -35,16 +35,24 @@ class AuthenticatedOriginPullsCertificateArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             certificate: pulumi.Input[str],
-             private_key: pulumi.Input[str],
-             type: pulumi.Input[str],
-             zone_id: pulumi.Input[str],
+             certificate: Optional[pulumi.Input[str]] = None,
+             private_key: Optional[pulumi.Input[str]] = None,
+             type: Optional[pulumi.Input[str]] = None,
+             zone_id: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'privateKey' in kwargs:
+        if certificate is None:
+            raise TypeError("Missing 'certificate' argument")
+        if private_key is None and 'privateKey' in kwargs:
             private_key = kwargs['privateKey']
-        if 'zoneId' in kwargs:
+        if private_key is None:
+            raise TypeError("Missing 'private_key' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
+        if zone_id is None:
+            raise TypeError("Missing 'zone_id' argument")
 
         _setter("certificate", certificate)
         _setter("private_key", private_key)
@@ -154,15 +162,15 @@ class _AuthenticatedOriginPullsCertificateState:
              zone_id: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'expiresOn' in kwargs:
+        if expires_on is None and 'expiresOn' in kwargs:
             expires_on = kwargs['expiresOn']
-        if 'privateKey' in kwargs:
+        if private_key is None and 'privateKey' in kwargs:
             private_key = kwargs['privateKey']
-        if 'serialNumber' in kwargs:
+        if serial_number is None and 'serialNumber' in kwargs:
             serial_number = kwargs['serialNumber']
-        if 'uploadedOn' in kwargs:
+        if uploaded_on is None and 'uploadedOn' in kwargs:
             uploaded_on = kwargs['uploadedOn']
-        if 'zoneId' in kwargs:
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
 
         if certificate is not None:

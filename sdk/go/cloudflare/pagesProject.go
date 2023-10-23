@@ -99,22 +99,22 @@ import (
 //						CompatibilityFlags: pulumi.StringArray{
 //							pulumi.String("nodejs_compat"),
 //						},
-//						D1Databases: pulumi.AnyMap{
+//						D1Databases: pulumi.Map{
 //							"D1BINDING": pulumi.Any("445e2955-951a-4358-a35b-a4d0c813f63"),
 //						},
-//						DurableObjectNamespaces: pulumi.AnyMap{
+//						DurableObjectNamespaces: pulumi.Map{
 //							"DOBINDING": pulumi.Any("5eb63bbbe01eeed093cb22bb8f5acdc3"),
 //						},
-//						EnvironmentVariables: pulumi.AnyMap{
+//						EnvironmentVariables: pulumi.Map{
 //							"ENVIRONMENT": pulumi.Any("preview"),
 //						},
-//						KvNamespaces: pulumi.AnyMap{
+//						KvNamespaces: pulumi.Map{
 //							"KVBINDING": pulumi.Any("5eb63bbbe01eeed093cb22bb8f5acdc3"),
 //						},
-//						R2Buckets: pulumi.AnyMap{
+//						R2Buckets: pulumi.Map{
 //							"R2BINDING": pulumi.Any("some-bucket"),
 //						},
-//						Secrets: pulumi.AnyMap{
+//						Secrets: pulumi.Map{
 //							"TURNSTILESECRET": pulumi.Any("1x0000000000000000000000000000000AA"),
 //						},
 //					},
@@ -124,27 +124,27 @@ import (
 //							pulumi.String("nodejs_compat"),
 //							pulumi.String("streams_enable_constructors"),
 //						},
-//						D1Databases: pulumi.AnyMap{
+//						D1Databases: pulumi.Map{
 //							"D1BINDING1": pulumi.Any("445e2955-951a-4358-a35b-a4d0c813f63"),
 //							"D1BINDING2": pulumi.Any("a399414b-c697-409a-a688-377db6433cd9"),
 //						},
-//						DurableObjectNamespaces: pulumi.AnyMap{
+//						DurableObjectNamespaces: pulumi.Map{
 //							"DOBINDING1": pulumi.Any("5eb63bbbe01eeed093cb22bb8f5acdc3"),
 //							"DOBINDING2": pulumi.Any("3cdca5f8bb22bc390deee10ebbb36be5"),
 //						},
-//						EnvironmentVariables: pulumi.AnyMap{
+//						EnvironmentVariables: pulumi.Map{
 //							"ENVIRONMENT": pulumi.Any("production"),
 //							"OTHERVALUE":  pulumi.Any("other value"),
 //						},
-//						KvNamespaces: pulumi.AnyMap{
+//						KvNamespaces: pulumi.Map{
 //							"KVBINDING1": pulumi.Any("5eb63bbbe01eeed093cb22bb8f5acdc3"),
 //							"KVBINDING2": pulumi.Any("3cdca5f8bb22bc390deee10ebbb36be5"),
 //						},
-//						R2Buckets: pulumi.AnyMap{
+//						R2Buckets: pulumi.Map{
 //							"R2BINDING1": pulumi.Any("some-bucket"),
 //							"R2BINDING2": pulumi.Any("other-bucket"),
 //						},
-//						Secrets: pulumi.AnyMap{
+//						Secrets: pulumi.Map{
 //							"TURNSTILEINVISSECRET": pulumi.Any("2x0000000000000000000000000000000AA"),
 //							"TURNSTILESECRET":      pulumi.Any("1x0000000000000000000000000000000AA"),
 //						},

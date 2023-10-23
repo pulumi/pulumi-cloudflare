@@ -38,16 +38,22 @@ class ApiShieldSchemaArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             name: pulumi.Input[str],
-             source: pulumi.Input[str],
-             zone_id: pulumi.Input[str],
+             name: Optional[pulumi.Input[str]] = None,
+             source: Optional[pulumi.Input[str]] = None,
+             zone_id: Optional[pulumi.Input[str]] = None,
              kind: Optional[pulumi.Input[str]] = None,
              validation_enabled: Optional[pulumi.Input[bool]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'zoneId' in kwargs:
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if source is None:
+            raise TypeError("Missing 'source' argument")
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
-        if 'validationEnabled' in kwargs:
+        if zone_id is None:
+            raise TypeError("Missing 'zone_id' argument")
+        if validation_enabled is None and 'validationEnabled' in kwargs:
             validation_enabled = kwargs['validationEnabled']
 
         _setter("name", name)
@@ -153,9 +159,9 @@ class _ApiShieldSchemaState:
              zone_id: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'validationEnabled' in kwargs:
+        if validation_enabled is None and 'validationEnabled' in kwargs:
             validation_enabled = kwargs['validationEnabled']
-        if 'zoneId' in kwargs:
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
 
         if kind is not None:

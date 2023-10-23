@@ -35,14 +35,18 @@ class NotificationPolicyWebhooksArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             account_id: pulumi.Input[str],
-             name: pulumi.Input[str],
+             account_id: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
              secret: Optional[pulumi.Input[str]] = None,
              url: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'accountId' in kwargs:
+        if account_id is None and 'accountId' in kwargs:
             account_id = kwargs['accountId']
+        if account_id is None:
+            raise TypeError("Missing 'account_id' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
 
         _setter("account_id", account_id)
         _setter("name", name)
@@ -145,13 +149,13 @@ class _NotificationPolicyWebhooksState:
              url: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'accountId' in kwargs:
+        if account_id is None and 'accountId' in kwargs:
             account_id = kwargs['accountId']
-        if 'createdAt' in kwargs:
+        if created_at is None and 'createdAt' in kwargs:
             created_at = kwargs['createdAt']
-        if 'lastFailure' in kwargs:
+        if last_failure is None and 'lastFailure' in kwargs:
             last_failure = kwargs['lastFailure']
-        if 'lastSuccess' in kwargs:
+        if last_success is None and 'lastSuccess' in kwargs:
             last_success = kwargs['lastSuccess']
 
         if account_id is not None:

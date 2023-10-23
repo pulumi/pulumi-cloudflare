@@ -297,21 +297,21 @@ class AccessApplicationCorsHeaderArgs:
              max_age: Optional[pulumi.Input[int]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'allowAllHeaders' in kwargs:
+        if allow_all_headers is None and 'allowAllHeaders' in kwargs:
             allow_all_headers = kwargs['allowAllHeaders']
-        if 'allowAllMethods' in kwargs:
+        if allow_all_methods is None and 'allowAllMethods' in kwargs:
             allow_all_methods = kwargs['allowAllMethods']
-        if 'allowAllOrigins' in kwargs:
+        if allow_all_origins is None and 'allowAllOrigins' in kwargs:
             allow_all_origins = kwargs['allowAllOrigins']
-        if 'allowCredentials' in kwargs:
+        if allow_credentials is None and 'allowCredentials' in kwargs:
             allow_credentials = kwargs['allowCredentials']
-        if 'allowedHeaders' in kwargs:
+        if allowed_headers is None and 'allowedHeaders' in kwargs:
             allowed_headers = kwargs['allowedHeaders']
-        if 'allowedMethods' in kwargs:
+        if allowed_methods is None and 'allowedMethods' in kwargs:
             allowed_methods = kwargs['allowedMethods']
-        if 'allowedOrigins' in kwargs:
+        if allowed_origins is None and 'allowedOrigins' in kwargs:
             allowed_origins = kwargs['allowedOrigins']
-        if 'maxAge' in kwargs:
+        if max_age is None and 'maxAge' in kwargs:
             max_age = kwargs['maxAge']
 
         if allow_all_headers is not None:
@@ -460,8 +460,8 @@ class AccessApplicationSaasAppArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             consumer_service_url: pulumi.Input[str],
-             sp_entity_id: pulumi.Input[str],
+             consumer_service_url: Optional[pulumi.Input[str]] = None,
+             sp_entity_id: Optional[pulumi.Input[str]] = None,
              custom_attributes: Optional[pulumi.Input[Sequence[pulumi.Input['AccessApplicationSaasAppCustomAttributeArgs']]]] = None,
              idp_entity_id: Optional[pulumi.Input[str]] = None,
              name_id_format: Optional[pulumi.Input[str]] = None,
@@ -469,19 +469,23 @@ class AccessApplicationSaasAppArgs:
              sso_endpoint: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'consumerServiceUrl' in kwargs:
+        if consumer_service_url is None and 'consumerServiceUrl' in kwargs:
             consumer_service_url = kwargs['consumerServiceUrl']
-        if 'spEntityId' in kwargs:
+        if consumer_service_url is None:
+            raise TypeError("Missing 'consumer_service_url' argument")
+        if sp_entity_id is None and 'spEntityId' in kwargs:
             sp_entity_id = kwargs['spEntityId']
-        if 'customAttributes' in kwargs:
+        if sp_entity_id is None:
+            raise TypeError("Missing 'sp_entity_id' argument")
+        if custom_attributes is None and 'customAttributes' in kwargs:
             custom_attributes = kwargs['customAttributes']
-        if 'idpEntityId' in kwargs:
+        if idp_entity_id is None and 'idpEntityId' in kwargs:
             idp_entity_id = kwargs['idpEntityId']
-        if 'nameIdFormat' in kwargs:
+        if name_id_format is None and 'nameIdFormat' in kwargs:
             name_id_format = kwargs['nameIdFormat']
-        if 'publicKey' in kwargs:
+        if public_key is None and 'publicKey' in kwargs:
             public_key = kwargs['publicKey']
-        if 'ssoEndpoint' in kwargs:
+        if sso_endpoint is None and 'ssoEndpoint' in kwargs:
             sso_endpoint = kwargs['ssoEndpoint']
 
         _setter("consumer_service_url", consumer_service_url)
@@ -607,16 +611,18 @@ class AccessApplicationSaasAppCustomAttributeArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             source: pulumi.Input['AccessApplicationSaasAppCustomAttributeSourceArgs'],
+             source: Optional[pulumi.Input['AccessApplicationSaasAppCustomAttributeSourceArgs']] = None,
              friendly_name: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
              name_format: Optional[pulumi.Input[str]] = None,
              required: Optional[pulumi.Input[bool]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'friendlyName' in kwargs:
+        if source is None:
+            raise TypeError("Missing 'source' argument")
+        if friendly_name is None and 'friendlyName' in kwargs:
             friendly_name = kwargs['friendlyName']
-        if 'nameFormat' in kwargs:
+        if name_format is None and 'nameFormat' in kwargs:
             name_format = kwargs['nameFormat']
 
         _setter("source", source)
@@ -701,9 +707,11 @@ class AccessApplicationSaasAppCustomAttributeSourceArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             name: pulumi.Input[str],
+             name: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
+        if name is None:
+            raise TypeError("Missing 'name' argument")
 
         _setter("name", name)
 
@@ -798,25 +806,25 @@ class AccessGroupExcludeArgs:
              service_tokens: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'anyValidServiceToken' in kwargs:
+        if any_valid_service_token is None and 'anyValidServiceToken' in kwargs:
             any_valid_service_token = kwargs['anyValidServiceToken']
-        if 'authContexts' in kwargs:
+        if auth_contexts is None and 'authContexts' in kwargs:
             auth_contexts = kwargs['authContexts']
-        if 'authMethod' in kwargs:
+        if auth_method is None and 'authMethod' in kwargs:
             auth_method = kwargs['authMethod']
-        if 'commonName' in kwargs:
+        if common_name is None and 'commonName' in kwargs:
             common_name = kwargs['commonName']
-        if 'devicePostures' in kwargs:
+        if device_postures is None and 'devicePostures' in kwargs:
             device_postures = kwargs['devicePostures']
-        if 'emailDomains' in kwargs:
+        if email_domains is None and 'emailDomains' in kwargs:
             email_domains = kwargs['emailDomains']
-        if 'externalEvaluation' in kwargs:
+        if external_evaluation is None and 'externalEvaluation' in kwargs:
             external_evaluation = kwargs['externalEvaluation']
-        if 'ipLists' in kwargs:
+        if ip_lists is None and 'ipLists' in kwargs:
             ip_lists = kwargs['ipLists']
-        if 'loginMethods' in kwargs:
+        if login_methods is None and 'loginMethods' in kwargs:
             login_methods = kwargs['loginMethods']
-        if 'serviceTokens' in kwargs:
+        if service_tokens is None and 'serviceTokens' in kwargs:
             service_tokens = kwargs['serviceTokens']
 
         if any_valid_service_token is not None:
@@ -1078,15 +1086,21 @@ class AccessGroupExcludeAuthContextArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             ac_id: pulumi.Input[str],
-             id: pulumi.Input[str],
-             identity_provider_id: pulumi.Input[str],
+             ac_id: Optional[pulumi.Input[str]] = None,
+             id: Optional[pulumi.Input[str]] = None,
+             identity_provider_id: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'acId' in kwargs:
+        if ac_id is None and 'acId' in kwargs:
             ac_id = kwargs['acId']
-        if 'identityProviderId' in kwargs:
+        if ac_id is None:
+            raise TypeError("Missing 'ac_id' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if identity_provider_id is None and 'identityProviderId' in kwargs:
             identity_provider_id = kwargs['identityProviderId']
+        if identity_provider_id is None:
+            raise TypeError("Missing 'identity_provider_id' argument")
 
         _setter("ac_id", ac_id)
         _setter("id", id)
@@ -1150,7 +1164,7 @@ class AccessGroupExcludeAzureArgs:
              ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'identityProviderId' in kwargs:
+        if identity_provider_id is None and 'identityProviderId' in kwargs:
             identity_provider_id = kwargs['identityProviderId']
 
         if identity_provider_id is not None:
@@ -1200,9 +1214,9 @@ class AccessGroupExcludeExternalEvaluationArgs:
              keys_url: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'evaluateUrl' in kwargs:
+        if evaluate_url is None and 'evaluateUrl' in kwargs:
             evaluate_url = kwargs['evaluateUrl']
-        if 'keysUrl' in kwargs:
+        if keys_url is None and 'keysUrl' in kwargs:
             keys_url = kwargs['keysUrl']
 
         if evaluate_url is not None:
@@ -1252,7 +1266,7 @@ class AccessGroupExcludeGithubArgs:
              teams: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'identityProviderId' in kwargs:
+        if identity_provider_id is None and 'identityProviderId' in kwargs:
             identity_provider_id = kwargs['identityProviderId']
 
         if identity_provider_id is not None:
@@ -1313,7 +1327,7 @@ class AccessGroupExcludeGsuiteArgs:
              identity_provider_id: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'identityProviderId' in kwargs:
+        if identity_provider_id is None and 'identityProviderId' in kwargs:
             identity_provider_id = kwargs['identityProviderId']
 
         if emails is not None:
@@ -1363,7 +1377,7 @@ class AccessGroupExcludeOktaArgs:
              names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'identityProviderId' in kwargs:
+        if identity_provider_id is None and 'identityProviderId' in kwargs:
             identity_provider_id = kwargs['identityProviderId']
 
         if identity_provider_id is not None:
@@ -1416,11 +1430,11 @@ class AccessGroupExcludeSamlArgs:
              identity_provider_id: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'attributeName' in kwargs:
+        if attribute_name is None and 'attributeName' in kwargs:
             attribute_name = kwargs['attributeName']
-        if 'attributeValue' in kwargs:
+        if attribute_value is None and 'attributeValue' in kwargs:
             attribute_value = kwargs['attributeValue']
-        if 'identityProviderId' in kwargs:
+        if identity_provider_id is None and 'identityProviderId' in kwargs:
             identity_provider_id = kwargs['identityProviderId']
 
         if attribute_name is not None:
@@ -1539,25 +1553,25 @@ class AccessGroupIncludeArgs:
              service_tokens: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'anyValidServiceToken' in kwargs:
+        if any_valid_service_token is None and 'anyValidServiceToken' in kwargs:
             any_valid_service_token = kwargs['anyValidServiceToken']
-        if 'authContexts' in kwargs:
+        if auth_contexts is None and 'authContexts' in kwargs:
             auth_contexts = kwargs['authContexts']
-        if 'authMethod' in kwargs:
+        if auth_method is None and 'authMethod' in kwargs:
             auth_method = kwargs['authMethod']
-        if 'commonName' in kwargs:
+        if common_name is None and 'commonName' in kwargs:
             common_name = kwargs['commonName']
-        if 'devicePostures' in kwargs:
+        if device_postures is None and 'devicePostures' in kwargs:
             device_postures = kwargs['devicePostures']
-        if 'emailDomains' in kwargs:
+        if email_domains is None and 'emailDomains' in kwargs:
             email_domains = kwargs['emailDomains']
-        if 'externalEvaluation' in kwargs:
+        if external_evaluation is None and 'externalEvaluation' in kwargs:
             external_evaluation = kwargs['externalEvaluation']
-        if 'ipLists' in kwargs:
+        if ip_lists is None and 'ipLists' in kwargs:
             ip_lists = kwargs['ipLists']
-        if 'loginMethods' in kwargs:
+        if login_methods is None and 'loginMethods' in kwargs:
             login_methods = kwargs['loginMethods']
-        if 'serviceTokens' in kwargs:
+        if service_tokens is None and 'serviceTokens' in kwargs:
             service_tokens = kwargs['serviceTokens']
 
         if any_valid_service_token is not None:
@@ -1819,15 +1833,21 @@ class AccessGroupIncludeAuthContextArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             ac_id: pulumi.Input[str],
-             id: pulumi.Input[str],
-             identity_provider_id: pulumi.Input[str],
+             ac_id: Optional[pulumi.Input[str]] = None,
+             id: Optional[pulumi.Input[str]] = None,
+             identity_provider_id: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'acId' in kwargs:
+        if ac_id is None and 'acId' in kwargs:
             ac_id = kwargs['acId']
-        if 'identityProviderId' in kwargs:
+        if ac_id is None:
+            raise TypeError("Missing 'ac_id' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if identity_provider_id is None and 'identityProviderId' in kwargs:
             identity_provider_id = kwargs['identityProviderId']
+        if identity_provider_id is None:
+            raise TypeError("Missing 'identity_provider_id' argument")
 
         _setter("ac_id", ac_id)
         _setter("id", id)
@@ -1891,7 +1911,7 @@ class AccessGroupIncludeAzureArgs:
              ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'identityProviderId' in kwargs:
+        if identity_provider_id is None and 'identityProviderId' in kwargs:
             identity_provider_id = kwargs['identityProviderId']
 
         if identity_provider_id is not None:
@@ -1941,9 +1961,9 @@ class AccessGroupIncludeExternalEvaluationArgs:
              keys_url: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'evaluateUrl' in kwargs:
+        if evaluate_url is None and 'evaluateUrl' in kwargs:
             evaluate_url = kwargs['evaluateUrl']
-        if 'keysUrl' in kwargs:
+        if keys_url is None and 'keysUrl' in kwargs:
             keys_url = kwargs['keysUrl']
 
         if evaluate_url is not None:
@@ -1993,7 +2013,7 @@ class AccessGroupIncludeGithubArgs:
              teams: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'identityProviderId' in kwargs:
+        if identity_provider_id is None and 'identityProviderId' in kwargs:
             identity_provider_id = kwargs['identityProviderId']
 
         if identity_provider_id is not None:
@@ -2054,7 +2074,7 @@ class AccessGroupIncludeGsuiteArgs:
              identity_provider_id: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'identityProviderId' in kwargs:
+        if identity_provider_id is None and 'identityProviderId' in kwargs:
             identity_provider_id = kwargs['identityProviderId']
 
         if emails is not None:
@@ -2104,7 +2124,7 @@ class AccessGroupIncludeOktaArgs:
              names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'identityProviderId' in kwargs:
+        if identity_provider_id is None and 'identityProviderId' in kwargs:
             identity_provider_id = kwargs['identityProviderId']
 
         if identity_provider_id is not None:
@@ -2157,11 +2177,11 @@ class AccessGroupIncludeSamlArgs:
              identity_provider_id: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'attributeName' in kwargs:
+        if attribute_name is None and 'attributeName' in kwargs:
             attribute_name = kwargs['attributeName']
-        if 'attributeValue' in kwargs:
+        if attribute_value is None and 'attributeValue' in kwargs:
             attribute_value = kwargs['attributeValue']
-        if 'identityProviderId' in kwargs:
+        if identity_provider_id is None and 'identityProviderId' in kwargs:
             identity_provider_id = kwargs['identityProviderId']
 
         if attribute_name is not None:
@@ -2280,25 +2300,25 @@ class AccessGroupRequireArgs:
              service_tokens: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'anyValidServiceToken' in kwargs:
+        if any_valid_service_token is None and 'anyValidServiceToken' in kwargs:
             any_valid_service_token = kwargs['anyValidServiceToken']
-        if 'authContexts' in kwargs:
+        if auth_contexts is None and 'authContexts' in kwargs:
             auth_contexts = kwargs['authContexts']
-        if 'authMethod' in kwargs:
+        if auth_method is None and 'authMethod' in kwargs:
             auth_method = kwargs['authMethod']
-        if 'commonName' in kwargs:
+        if common_name is None and 'commonName' in kwargs:
             common_name = kwargs['commonName']
-        if 'devicePostures' in kwargs:
+        if device_postures is None and 'devicePostures' in kwargs:
             device_postures = kwargs['devicePostures']
-        if 'emailDomains' in kwargs:
+        if email_domains is None and 'emailDomains' in kwargs:
             email_domains = kwargs['emailDomains']
-        if 'externalEvaluation' in kwargs:
+        if external_evaluation is None and 'externalEvaluation' in kwargs:
             external_evaluation = kwargs['externalEvaluation']
-        if 'ipLists' in kwargs:
+        if ip_lists is None and 'ipLists' in kwargs:
             ip_lists = kwargs['ipLists']
-        if 'loginMethods' in kwargs:
+        if login_methods is None and 'loginMethods' in kwargs:
             login_methods = kwargs['loginMethods']
-        if 'serviceTokens' in kwargs:
+        if service_tokens is None and 'serviceTokens' in kwargs:
             service_tokens = kwargs['serviceTokens']
 
         if any_valid_service_token is not None:
@@ -2560,15 +2580,21 @@ class AccessGroupRequireAuthContextArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             ac_id: pulumi.Input[str],
-             id: pulumi.Input[str],
-             identity_provider_id: pulumi.Input[str],
+             ac_id: Optional[pulumi.Input[str]] = None,
+             id: Optional[pulumi.Input[str]] = None,
+             identity_provider_id: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'acId' in kwargs:
+        if ac_id is None and 'acId' in kwargs:
             ac_id = kwargs['acId']
-        if 'identityProviderId' in kwargs:
+        if ac_id is None:
+            raise TypeError("Missing 'ac_id' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if identity_provider_id is None and 'identityProviderId' in kwargs:
             identity_provider_id = kwargs['identityProviderId']
+        if identity_provider_id is None:
+            raise TypeError("Missing 'identity_provider_id' argument")
 
         _setter("ac_id", ac_id)
         _setter("id", id)
@@ -2632,7 +2658,7 @@ class AccessGroupRequireAzureArgs:
              ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'identityProviderId' in kwargs:
+        if identity_provider_id is None and 'identityProviderId' in kwargs:
             identity_provider_id = kwargs['identityProviderId']
 
         if identity_provider_id is not None:
@@ -2682,9 +2708,9 @@ class AccessGroupRequireExternalEvaluationArgs:
              keys_url: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'evaluateUrl' in kwargs:
+        if evaluate_url is None and 'evaluateUrl' in kwargs:
             evaluate_url = kwargs['evaluateUrl']
-        if 'keysUrl' in kwargs:
+        if keys_url is None and 'keysUrl' in kwargs:
             keys_url = kwargs['keysUrl']
 
         if evaluate_url is not None:
@@ -2734,7 +2760,7 @@ class AccessGroupRequireGithubArgs:
              teams: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'identityProviderId' in kwargs:
+        if identity_provider_id is None and 'identityProviderId' in kwargs:
             identity_provider_id = kwargs['identityProviderId']
 
         if identity_provider_id is not None:
@@ -2795,7 +2821,7 @@ class AccessGroupRequireGsuiteArgs:
              identity_provider_id: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'identityProviderId' in kwargs:
+        if identity_provider_id is None and 'identityProviderId' in kwargs:
             identity_provider_id = kwargs['identityProviderId']
 
         if emails is not None:
@@ -2845,7 +2871,7 @@ class AccessGroupRequireOktaArgs:
              names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'identityProviderId' in kwargs:
+        if identity_provider_id is None and 'identityProviderId' in kwargs:
             identity_provider_id = kwargs['identityProviderId']
 
         if identity_provider_id is not None:
@@ -2898,11 +2924,11 @@ class AccessGroupRequireSamlArgs:
              identity_provider_id: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'attributeName' in kwargs:
+        if attribute_name is None and 'attributeName' in kwargs:
             attribute_name = kwargs['attributeName']
-        if 'attributeValue' in kwargs:
+        if attribute_value is None and 'attributeValue' in kwargs:
             attribute_value = kwargs['attributeValue']
-        if 'identityProviderId' in kwargs:
+        if identity_provider_id is None and 'identityProviderId' in kwargs:
             identity_provider_id = kwargs['identityProviderId']
 
         if attribute_name is not None:
@@ -3035,53 +3061,53 @@ class AccessIdentityProviderConfigArgs:
              token_url: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'apiToken' in kwargs:
+        if api_token is None and 'apiToken' in kwargs:
             api_token = kwargs['apiToken']
-        if 'appsDomain' in kwargs:
+        if apps_domain is None and 'appsDomain' in kwargs:
             apps_domain = kwargs['appsDomain']
-        if 'authUrl' in kwargs:
+        if auth_url is None and 'authUrl' in kwargs:
             auth_url = kwargs['authUrl']
-        if 'authorizationServerId' in kwargs:
+        if authorization_server_id is None and 'authorizationServerId' in kwargs:
             authorization_server_id = kwargs['authorizationServerId']
-        if 'centrifyAccount' in kwargs:
+        if centrify_account is None and 'centrifyAccount' in kwargs:
             centrify_account = kwargs['centrifyAccount']
-        if 'centrifyAppId' in kwargs:
+        if centrify_app_id is None and 'centrifyAppId' in kwargs:
             centrify_app_id = kwargs['centrifyAppId']
-        if 'certsUrl' in kwargs:
+        if certs_url is None and 'certsUrl' in kwargs:
             certs_url = kwargs['certsUrl']
-        if 'clientId' in kwargs:
+        if client_id is None and 'clientId' in kwargs:
             client_id = kwargs['clientId']
-        if 'clientSecret' in kwargs:
+        if client_secret is None and 'clientSecret' in kwargs:
             client_secret = kwargs['clientSecret']
-        if 'conditionalAccessEnabled' in kwargs:
+        if conditional_access_enabled is None and 'conditionalAccessEnabled' in kwargs:
             conditional_access_enabled = kwargs['conditionalAccessEnabled']
-        if 'directoryId' in kwargs:
+        if directory_id is None and 'directoryId' in kwargs:
             directory_id = kwargs['directoryId']
-        if 'emailAttributeName' in kwargs:
+        if email_attribute_name is None and 'emailAttributeName' in kwargs:
             email_attribute_name = kwargs['emailAttributeName']
-        if 'emailClaimName' in kwargs:
+        if email_claim_name is None and 'emailClaimName' in kwargs:
             email_claim_name = kwargs['emailClaimName']
-        if 'idpPublicCert' in kwargs:
+        if idp_public_cert is None and 'idpPublicCert' in kwargs:
             idp_public_cert = kwargs['idpPublicCert']
-        if 'issuerUrl' in kwargs:
+        if issuer_url is None and 'issuerUrl' in kwargs:
             issuer_url = kwargs['issuerUrl']
-        if 'oktaAccount' in kwargs:
+        if okta_account is None and 'oktaAccount' in kwargs:
             okta_account = kwargs['oktaAccount']
-        if 'oneloginAccount' in kwargs:
+        if onelogin_account is None and 'oneloginAccount' in kwargs:
             onelogin_account = kwargs['oneloginAccount']
-        if 'pingEnvId' in kwargs:
+        if ping_env_id is None and 'pingEnvId' in kwargs:
             ping_env_id = kwargs['pingEnvId']
-        if 'pkceEnabled' in kwargs:
+        if pkce_enabled is None and 'pkceEnabled' in kwargs:
             pkce_enabled = kwargs['pkceEnabled']
-        if 'redirectUrl' in kwargs:
+        if redirect_url is None and 'redirectUrl' in kwargs:
             redirect_url = kwargs['redirectUrl']
-        if 'signRequest' in kwargs:
+        if sign_request is None and 'signRequest' in kwargs:
             sign_request = kwargs['signRequest']
-        if 'ssoTargetUrl' in kwargs:
+        if sso_target_url is None and 'ssoTargetUrl' in kwargs:
             sso_target_url = kwargs['ssoTargetUrl']
-        if 'supportGroups' in kwargs:
+        if support_groups is None and 'supportGroups' in kwargs:
             support_groups = kwargs['supportGroups']
-        if 'tokenUrl' in kwargs:
+        if token_url is None and 'tokenUrl' in kwargs:
             token_url = kwargs['tokenUrl']
 
         if api_token is not None:
@@ -3409,11 +3435,11 @@ class AccessIdentityProviderScimConfigArgs:
              user_deprovision: Optional[pulumi.Input[bool]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'groupMemberDeprovision' in kwargs:
+        if group_member_deprovision is None and 'groupMemberDeprovision' in kwargs:
             group_member_deprovision = kwargs['groupMemberDeprovision']
-        if 'seatDeprovision' in kwargs:
+        if seat_deprovision is None and 'seatDeprovision' in kwargs:
             seat_deprovision = kwargs['seatDeprovision']
-        if 'userDeprovision' in kwargs:
+        if user_deprovision is None and 'userDeprovision' in kwargs:
             user_deprovision = kwargs['userDeprovision']
 
         if enabled is not None:
@@ -3494,7 +3520,7 @@ class AccessOrganizationCustomPageArgs:
              identity_denied: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'identityDenied' in kwargs:
+        if identity_denied is None and 'identityDenied' in kwargs:
             identity_denied = kwargs['identityDenied']
 
         if forbidden is not None:
@@ -3560,15 +3586,15 @@ class AccessOrganizationLoginDesignArgs:
              text_color: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'backgroundColor' in kwargs:
+        if background_color is None and 'backgroundColor' in kwargs:
             background_color = kwargs['backgroundColor']
-        if 'footerText' in kwargs:
+        if footer_text is None and 'footerText' in kwargs:
             footer_text = kwargs['footerText']
-        if 'headerText' in kwargs:
+        if header_text is None and 'headerText' in kwargs:
             header_text = kwargs['headerText']
-        if 'logoPath' in kwargs:
+        if logo_path is None and 'logoPath' in kwargs:
             logo_path = kwargs['logoPath']
-        if 'textColor' in kwargs:
+        if text_color is None and 'textColor' in kwargs:
             text_color = kwargs['textColor']
 
         if background_color is not None:
@@ -3662,16 +3688,18 @@ class AccessPolicyApprovalGroupArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             approvals_needed: pulumi.Input[int],
+             approvals_needed: Optional[pulumi.Input[int]] = None,
              email_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              email_list_uuid: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'approvalsNeeded' in kwargs:
+        if approvals_needed is None and 'approvalsNeeded' in kwargs:
             approvals_needed = kwargs['approvalsNeeded']
-        if 'emailAddresses' in kwargs:
+        if approvals_needed is None:
+            raise TypeError("Missing 'approvals_needed' argument")
+        if email_addresses is None and 'emailAddresses' in kwargs:
             email_addresses = kwargs['emailAddresses']
-        if 'emailListUuid' in kwargs:
+        if email_list_uuid is None and 'emailListUuid' in kwargs:
             email_list_uuid = kwargs['emailListUuid']
 
         _setter("approvals_needed", approvals_needed)
@@ -3792,25 +3820,25 @@ class AccessPolicyExcludeArgs:
              service_tokens: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'anyValidServiceToken' in kwargs:
+        if any_valid_service_token is None and 'anyValidServiceToken' in kwargs:
             any_valid_service_token = kwargs['anyValidServiceToken']
-        if 'authContexts' in kwargs:
+        if auth_contexts is None and 'authContexts' in kwargs:
             auth_contexts = kwargs['authContexts']
-        if 'authMethod' in kwargs:
+        if auth_method is None and 'authMethod' in kwargs:
             auth_method = kwargs['authMethod']
-        if 'commonName' in kwargs:
+        if common_name is None and 'commonName' in kwargs:
             common_name = kwargs['commonName']
-        if 'devicePostures' in kwargs:
+        if device_postures is None and 'devicePostures' in kwargs:
             device_postures = kwargs['devicePostures']
-        if 'emailDomains' in kwargs:
+        if email_domains is None and 'emailDomains' in kwargs:
             email_domains = kwargs['emailDomains']
-        if 'externalEvaluation' in kwargs:
+        if external_evaluation is None and 'externalEvaluation' in kwargs:
             external_evaluation = kwargs['externalEvaluation']
-        if 'ipLists' in kwargs:
+        if ip_lists is None and 'ipLists' in kwargs:
             ip_lists = kwargs['ipLists']
-        if 'loginMethods' in kwargs:
+        if login_methods is None and 'loginMethods' in kwargs:
             login_methods = kwargs['loginMethods']
-        if 'serviceTokens' in kwargs:
+        if service_tokens is None and 'serviceTokens' in kwargs:
             service_tokens = kwargs['serviceTokens']
 
         if any_valid_service_token is not None:
@@ -4072,15 +4100,21 @@ class AccessPolicyExcludeAuthContextArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             ac_id: pulumi.Input[str],
-             id: pulumi.Input[str],
-             identity_provider_id: pulumi.Input[str],
+             ac_id: Optional[pulumi.Input[str]] = None,
+             id: Optional[pulumi.Input[str]] = None,
+             identity_provider_id: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'acId' in kwargs:
+        if ac_id is None and 'acId' in kwargs:
             ac_id = kwargs['acId']
-        if 'identityProviderId' in kwargs:
+        if ac_id is None:
+            raise TypeError("Missing 'ac_id' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if identity_provider_id is None and 'identityProviderId' in kwargs:
             identity_provider_id = kwargs['identityProviderId']
+        if identity_provider_id is None:
+            raise TypeError("Missing 'identity_provider_id' argument")
 
         _setter("ac_id", ac_id)
         _setter("id", id)
@@ -4144,7 +4178,7 @@ class AccessPolicyExcludeAzureArgs:
              ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'identityProviderId' in kwargs:
+        if identity_provider_id is None and 'identityProviderId' in kwargs:
             identity_provider_id = kwargs['identityProviderId']
 
         if identity_provider_id is not None:
@@ -4194,9 +4228,9 @@ class AccessPolicyExcludeExternalEvaluationArgs:
              keys_url: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'evaluateUrl' in kwargs:
+        if evaluate_url is None and 'evaluateUrl' in kwargs:
             evaluate_url = kwargs['evaluateUrl']
-        if 'keysUrl' in kwargs:
+        if keys_url is None and 'keysUrl' in kwargs:
             keys_url = kwargs['keysUrl']
 
         if evaluate_url is not None:
@@ -4246,7 +4280,7 @@ class AccessPolicyExcludeGithubArgs:
              teams: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'identityProviderId' in kwargs:
+        if identity_provider_id is None and 'identityProviderId' in kwargs:
             identity_provider_id = kwargs['identityProviderId']
 
         if identity_provider_id is not None:
@@ -4307,7 +4341,7 @@ class AccessPolicyExcludeGsuiteArgs:
              identity_provider_id: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'identityProviderId' in kwargs:
+        if identity_provider_id is None and 'identityProviderId' in kwargs:
             identity_provider_id = kwargs['identityProviderId']
 
         if emails is not None:
@@ -4357,7 +4391,7 @@ class AccessPolicyExcludeOktaArgs:
              names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'identityProviderId' in kwargs:
+        if identity_provider_id is None and 'identityProviderId' in kwargs:
             identity_provider_id = kwargs['identityProviderId']
 
         if identity_provider_id is not None:
@@ -4410,11 +4444,11 @@ class AccessPolicyExcludeSamlArgs:
              identity_provider_id: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'attributeName' in kwargs:
+        if attribute_name is None and 'attributeName' in kwargs:
             attribute_name = kwargs['attributeName']
-        if 'attributeValue' in kwargs:
+        if attribute_value is None and 'attributeValue' in kwargs:
             attribute_value = kwargs['attributeValue']
-        if 'identityProviderId' in kwargs:
+        if identity_provider_id is None and 'identityProviderId' in kwargs:
             identity_provider_id = kwargs['identityProviderId']
 
         if attribute_name is not None:
@@ -4533,25 +4567,25 @@ class AccessPolicyIncludeArgs:
              service_tokens: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'anyValidServiceToken' in kwargs:
+        if any_valid_service_token is None and 'anyValidServiceToken' in kwargs:
             any_valid_service_token = kwargs['anyValidServiceToken']
-        if 'authContexts' in kwargs:
+        if auth_contexts is None and 'authContexts' in kwargs:
             auth_contexts = kwargs['authContexts']
-        if 'authMethod' in kwargs:
+        if auth_method is None and 'authMethod' in kwargs:
             auth_method = kwargs['authMethod']
-        if 'commonName' in kwargs:
+        if common_name is None and 'commonName' in kwargs:
             common_name = kwargs['commonName']
-        if 'devicePostures' in kwargs:
+        if device_postures is None and 'devicePostures' in kwargs:
             device_postures = kwargs['devicePostures']
-        if 'emailDomains' in kwargs:
+        if email_domains is None and 'emailDomains' in kwargs:
             email_domains = kwargs['emailDomains']
-        if 'externalEvaluation' in kwargs:
+        if external_evaluation is None and 'externalEvaluation' in kwargs:
             external_evaluation = kwargs['externalEvaluation']
-        if 'ipLists' in kwargs:
+        if ip_lists is None and 'ipLists' in kwargs:
             ip_lists = kwargs['ipLists']
-        if 'loginMethods' in kwargs:
+        if login_methods is None and 'loginMethods' in kwargs:
             login_methods = kwargs['loginMethods']
-        if 'serviceTokens' in kwargs:
+        if service_tokens is None and 'serviceTokens' in kwargs:
             service_tokens = kwargs['serviceTokens']
 
         if any_valid_service_token is not None:
@@ -4813,15 +4847,21 @@ class AccessPolicyIncludeAuthContextArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             ac_id: pulumi.Input[str],
-             id: pulumi.Input[str],
-             identity_provider_id: pulumi.Input[str],
+             ac_id: Optional[pulumi.Input[str]] = None,
+             id: Optional[pulumi.Input[str]] = None,
+             identity_provider_id: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'acId' in kwargs:
+        if ac_id is None and 'acId' in kwargs:
             ac_id = kwargs['acId']
-        if 'identityProviderId' in kwargs:
+        if ac_id is None:
+            raise TypeError("Missing 'ac_id' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if identity_provider_id is None and 'identityProviderId' in kwargs:
             identity_provider_id = kwargs['identityProviderId']
+        if identity_provider_id is None:
+            raise TypeError("Missing 'identity_provider_id' argument")
 
         _setter("ac_id", ac_id)
         _setter("id", id)
@@ -4885,7 +4925,7 @@ class AccessPolicyIncludeAzureArgs:
              ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'identityProviderId' in kwargs:
+        if identity_provider_id is None and 'identityProviderId' in kwargs:
             identity_provider_id = kwargs['identityProviderId']
 
         if identity_provider_id is not None:
@@ -4935,9 +4975,9 @@ class AccessPolicyIncludeExternalEvaluationArgs:
              keys_url: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'evaluateUrl' in kwargs:
+        if evaluate_url is None and 'evaluateUrl' in kwargs:
             evaluate_url = kwargs['evaluateUrl']
-        if 'keysUrl' in kwargs:
+        if keys_url is None and 'keysUrl' in kwargs:
             keys_url = kwargs['keysUrl']
 
         if evaluate_url is not None:
@@ -4987,7 +5027,7 @@ class AccessPolicyIncludeGithubArgs:
              teams: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'identityProviderId' in kwargs:
+        if identity_provider_id is None and 'identityProviderId' in kwargs:
             identity_provider_id = kwargs['identityProviderId']
 
         if identity_provider_id is not None:
@@ -5048,7 +5088,7 @@ class AccessPolicyIncludeGsuiteArgs:
              identity_provider_id: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'identityProviderId' in kwargs:
+        if identity_provider_id is None and 'identityProviderId' in kwargs:
             identity_provider_id = kwargs['identityProviderId']
 
         if emails is not None:
@@ -5098,7 +5138,7 @@ class AccessPolicyIncludeOktaArgs:
              names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'identityProviderId' in kwargs:
+        if identity_provider_id is None and 'identityProviderId' in kwargs:
             identity_provider_id = kwargs['identityProviderId']
 
         if identity_provider_id is not None:
@@ -5151,11 +5191,11 @@ class AccessPolicyIncludeSamlArgs:
              identity_provider_id: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'attributeName' in kwargs:
+        if attribute_name is None and 'attributeName' in kwargs:
             attribute_name = kwargs['attributeName']
-        if 'attributeValue' in kwargs:
+        if attribute_value is None and 'attributeValue' in kwargs:
             attribute_value = kwargs['attributeValue']
-        if 'identityProviderId' in kwargs:
+        if identity_provider_id is None and 'identityProviderId' in kwargs:
             identity_provider_id = kwargs['identityProviderId']
 
         if attribute_name is not None:
@@ -5274,25 +5314,25 @@ class AccessPolicyRequireArgs:
              service_tokens: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'anyValidServiceToken' in kwargs:
+        if any_valid_service_token is None and 'anyValidServiceToken' in kwargs:
             any_valid_service_token = kwargs['anyValidServiceToken']
-        if 'authContexts' in kwargs:
+        if auth_contexts is None and 'authContexts' in kwargs:
             auth_contexts = kwargs['authContexts']
-        if 'authMethod' in kwargs:
+        if auth_method is None and 'authMethod' in kwargs:
             auth_method = kwargs['authMethod']
-        if 'commonName' in kwargs:
+        if common_name is None and 'commonName' in kwargs:
             common_name = kwargs['commonName']
-        if 'devicePostures' in kwargs:
+        if device_postures is None and 'devicePostures' in kwargs:
             device_postures = kwargs['devicePostures']
-        if 'emailDomains' in kwargs:
+        if email_domains is None and 'emailDomains' in kwargs:
             email_domains = kwargs['emailDomains']
-        if 'externalEvaluation' in kwargs:
+        if external_evaluation is None and 'externalEvaluation' in kwargs:
             external_evaluation = kwargs['externalEvaluation']
-        if 'ipLists' in kwargs:
+        if ip_lists is None and 'ipLists' in kwargs:
             ip_lists = kwargs['ipLists']
-        if 'loginMethods' in kwargs:
+        if login_methods is None and 'loginMethods' in kwargs:
             login_methods = kwargs['loginMethods']
-        if 'serviceTokens' in kwargs:
+        if service_tokens is None and 'serviceTokens' in kwargs:
             service_tokens = kwargs['serviceTokens']
 
         if any_valid_service_token is not None:
@@ -5554,15 +5594,21 @@ class AccessPolicyRequireAuthContextArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             ac_id: pulumi.Input[str],
-             id: pulumi.Input[str],
-             identity_provider_id: pulumi.Input[str],
+             ac_id: Optional[pulumi.Input[str]] = None,
+             id: Optional[pulumi.Input[str]] = None,
+             identity_provider_id: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'acId' in kwargs:
+        if ac_id is None and 'acId' in kwargs:
             ac_id = kwargs['acId']
-        if 'identityProviderId' in kwargs:
+        if ac_id is None:
+            raise TypeError("Missing 'ac_id' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if identity_provider_id is None and 'identityProviderId' in kwargs:
             identity_provider_id = kwargs['identityProviderId']
+        if identity_provider_id is None:
+            raise TypeError("Missing 'identity_provider_id' argument")
 
         _setter("ac_id", ac_id)
         _setter("id", id)
@@ -5626,7 +5672,7 @@ class AccessPolicyRequireAzureArgs:
              ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'identityProviderId' in kwargs:
+        if identity_provider_id is None and 'identityProviderId' in kwargs:
             identity_provider_id = kwargs['identityProviderId']
 
         if identity_provider_id is not None:
@@ -5676,9 +5722,9 @@ class AccessPolicyRequireExternalEvaluationArgs:
              keys_url: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'evaluateUrl' in kwargs:
+        if evaluate_url is None and 'evaluateUrl' in kwargs:
             evaluate_url = kwargs['evaluateUrl']
-        if 'keysUrl' in kwargs:
+        if keys_url is None and 'keysUrl' in kwargs:
             keys_url = kwargs['keysUrl']
 
         if evaluate_url is not None:
@@ -5728,7 +5774,7 @@ class AccessPolicyRequireGithubArgs:
              teams: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'identityProviderId' in kwargs:
+        if identity_provider_id is None and 'identityProviderId' in kwargs:
             identity_provider_id = kwargs['identityProviderId']
 
         if identity_provider_id is not None:
@@ -5789,7 +5835,7 @@ class AccessPolicyRequireGsuiteArgs:
              identity_provider_id: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'identityProviderId' in kwargs:
+        if identity_provider_id is None and 'identityProviderId' in kwargs:
             identity_provider_id = kwargs['identityProviderId']
 
         if emails is not None:
@@ -5839,7 +5885,7 @@ class AccessPolicyRequireOktaArgs:
              names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'identityProviderId' in kwargs:
+        if identity_provider_id is None and 'identityProviderId' in kwargs:
             identity_provider_id = kwargs['identityProviderId']
 
         if identity_provider_id is not None:
@@ -5892,11 +5938,11 @@ class AccessPolicyRequireSamlArgs:
              identity_provider_id: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'attributeName' in kwargs:
+        if attribute_name is None and 'attributeName' in kwargs:
             attribute_name = kwargs['attributeName']
-        if 'attributeValue' in kwargs:
+        if attribute_value is None and 'attributeValue' in kwargs:
             attribute_value = kwargs['attributeValue']
-        if 'identityProviderId' in kwargs:
+        if identity_provider_id is None and 'identityProviderId' in kwargs:
             identity_provider_id = kwargs['identityProviderId']
 
         if attribute_name is not None:
@@ -5954,10 +6000,14 @@ class AccessRuleConfigurationArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             target: pulumi.Input[str],
-             value: pulumi.Input[str],
+             target: Optional[pulumi.Input[str]] = None,
+             value: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
+        if target is None:
+            raise TypeError("Missing 'target' argument")
+        if value is None:
+            raise TypeError("Missing 'value' argument")
 
         _setter("target", target)
         _setter("value", value)
@@ -6001,9 +6051,11 @@ class AddressMapIpArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             ip: pulumi.Input[str],
+             ip: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
+        if ip is None:
+            raise TypeError("Missing 'ip' argument")
 
         _setter("ip", ip)
 
@@ -6040,12 +6092,16 @@ class AddressMapMembershipArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             identifier: pulumi.Input[str],
-             kind: pulumi.Input[str],
+             identifier: Optional[pulumi.Input[str]] = None,
+             kind: Optional[pulumi.Input[str]] = None,
              can_delete: Optional[pulumi.Input[bool]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'canDelete' in kwargs:
+        if identifier is None:
+            raise TypeError("Missing 'identifier' argument")
+        if kind is None:
+            raise TypeError("Missing 'kind' argument")
+        if can_delete is None and 'canDelete' in kwargs:
             can_delete = kwargs['canDelete']
 
         _setter("identifier", identifier)
@@ -6159,7 +6215,7 @@ class ApiTokenConditionArgs:
              request_ip: Optional[pulumi.Input['ApiTokenConditionRequestIpArgs']] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'requestIp' in kwargs:
+        if request_ip is None and 'requestIp' in kwargs:
             request_ip = kwargs['requestIp']
 
         if request_ip is not None:
@@ -6199,7 +6255,7 @@ class ApiTokenConditionRequestIpArgs:
              not_ins: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'notIns' in kwargs:
+        if not_ins is None and 'notIns' in kwargs:
             not_ins = kwargs['notIns']
 
         if ins is not None:
@@ -6252,13 +6308,17 @@ class ApiTokenPolicyArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             permission_groups: pulumi.Input[Sequence[pulumi.Input[str]]],
-             resources: pulumi.Input[Mapping[str, pulumi.Input[str]]],
+             permission_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             resources: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
              effect: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'permissionGroups' in kwargs:
+        if permission_groups is None and 'permissionGroups' in kwargs:
             permission_groups = kwargs['permissionGroups']
+        if permission_groups is None:
+            raise TypeError("Missing 'permission_groups' argument")
+        if resources is None:
+            raise TypeError("Missing 'resources' argument")
 
         _setter("permission_groups", permission_groups)
         _setter("resources", resources)
@@ -6362,17 +6422,17 @@ class CertificatePackValidationRecordArgs:
              txt_value: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'cnameName' in kwargs:
+        if cname_name is None and 'cnameName' in kwargs:
             cname_name = kwargs['cnameName']
-        if 'cnameTarget' in kwargs:
+        if cname_target is None and 'cnameTarget' in kwargs:
             cname_target = kwargs['cnameTarget']
-        if 'httpBody' in kwargs:
+        if http_body is None and 'httpBody' in kwargs:
             http_body = kwargs['httpBody']
-        if 'httpUrl' in kwargs:
+        if http_url is None and 'httpUrl' in kwargs:
             http_url = kwargs['httpUrl']
-        if 'txtName' in kwargs:
+        if txt_name is None and 'txtName' in kwargs:
             txt_name = kwargs['txtName']
-        if 'txtValue' in kwargs:
+        if txt_value is None and 'txtValue' in kwargs:
             txt_value = kwargs['txtValue']
 
         if cname_name is not None:
@@ -6507,17 +6567,17 @@ class CustomHostnameSslArgs:
              wildcard: Optional[pulumi.Input[bool]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'bundleMethod' in kwargs:
+        if bundle_method is None and 'bundleMethod' in kwargs:
             bundle_method = kwargs['bundleMethod']
-        if 'certificateAuthority' in kwargs:
+        if certificate_authority is None and 'certificateAuthority' in kwargs:
             certificate_authority = kwargs['certificateAuthority']
-        if 'customCertificate' in kwargs:
+        if custom_certificate is None and 'customCertificate' in kwargs:
             custom_certificate = kwargs['customCertificate']
-        if 'customKey' in kwargs:
+        if custom_key is None and 'customKey' in kwargs:
             custom_key = kwargs['customKey']
-        if 'validationErrors' in kwargs:
+        if validation_errors is None and 'validationErrors' in kwargs:
             validation_errors = kwargs['validationErrors']
-        if 'validationRecords' in kwargs:
+        if validation_records is None and 'validationRecords' in kwargs:
             validation_records = kwargs['validationRecords']
 
         if bundle_method is not None:
@@ -6697,9 +6757,9 @@ class CustomHostnameSslSettingArgs:
              tls13: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'earlyHints' in kwargs:
+        if early_hints is None and 'earlyHints' in kwargs:
             early_hints = kwargs['earlyHints']
-        if 'minTlsVersion' in kwargs:
+        if min_tls_version is None and 'minTlsVersion' in kwargs:
             min_tls_version = kwargs['minTlsVersion']
 
         if ciphers is not None:
@@ -6834,17 +6894,17 @@ class CustomHostnameSslValidationRecordArgs:
              txt_value: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'cnameName' in kwargs:
+        if cname_name is None and 'cnameName' in kwargs:
             cname_name = kwargs['cnameName']
-        if 'cnameTarget' in kwargs:
+        if cname_target is None and 'cnameTarget' in kwargs:
             cname_target = kwargs['cnameTarget']
-        if 'httpBody' in kwargs:
+        if http_body is None and 'httpBody' in kwargs:
             http_body = kwargs['httpBody']
-        if 'httpUrl' in kwargs:
+        if http_url is None and 'httpUrl' in kwargs:
             http_url = kwargs['httpUrl']
-        if 'txtName' in kwargs:
+        if txt_name is None and 'txtName' in kwargs:
             txt_name = kwargs['txtName']
-        if 'txtValue' in kwargs:
+        if txt_value is None and 'txtValue' in kwargs:
             txt_value = kwargs['txtValue']
 
         if cname_name is not None:
@@ -6959,11 +7019,11 @@ class CustomSslCustomSslOptionsArgs:
              type: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'bundleMethod' in kwargs:
+        if bundle_method is None and 'bundleMethod' in kwargs:
             bundle_method = kwargs['bundleMethod']
-        if 'geoRestrictions' in kwargs:
+        if geo_restrictions is None and 'geoRestrictions' in kwargs:
             geo_restrictions = kwargs['geoRestrictions']
-        if 'privateKey' in kwargs:
+        if private_key is None and 'privateKey' in kwargs:
             private_key = kwargs['privateKey']
 
         if bundle_method is not None:
@@ -7106,11 +7166,15 @@ class DeviceDexTestDataArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             host: pulumi.Input[str],
-             kind: pulumi.Input[str],
+             host: Optional[pulumi.Input[str]] = None,
+             kind: Optional[pulumi.Input[str]] = None,
              method: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
+        if host is None:
+            raise TypeError("Missing 'host' argument")
+        if kind is None:
+            raise TypeError("Missing 'kind' argument")
 
         _setter("host", host)
         _setter("kind", kind)
@@ -7171,12 +7235,16 @@ class DeviceManagedNetworksConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             sha256: pulumi.Input[str],
-             tls_sockaddr: pulumi.Input[str],
+             sha256: Optional[pulumi.Input[str]] = None,
+             tls_sockaddr: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'tlsSockaddr' in kwargs:
+        if sha256 is None:
+            raise TypeError("Missing 'sha256' argument")
+        if tls_sockaddr is None and 'tlsSockaddr' in kwargs:
             tls_sockaddr = kwargs['tlsSockaddr']
+        if tls_sockaddr is None:
+            raise TypeError("Missing 'tls_sockaddr' argument")
 
         _setter("sha256", sha256)
         _setter("tls_sockaddr", tls_sockaddr)
@@ -7243,17 +7311,17 @@ class DevicePostureIntegrationConfigArgs:
              customer_id: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'apiUrl' in kwargs:
+        if api_url is None and 'apiUrl' in kwargs:
             api_url = kwargs['apiUrl']
-        if 'authUrl' in kwargs:
+        if auth_url is None and 'authUrl' in kwargs:
             auth_url = kwargs['authUrl']
-        if 'clientId' in kwargs:
+        if client_id is None and 'clientId' in kwargs:
             client_id = kwargs['clientId']
-        if 'clientKey' in kwargs:
+        if client_key is None and 'clientKey' in kwargs:
             client_key = kwargs['clientKey']
-        if 'clientSecret' in kwargs:
+        if client_secret is None and 'clientSecret' in kwargs:
             client_secret = kwargs['clientSecret']
-        if 'customerId' in kwargs:
+        if customer_id is None and 'customerId' in kwargs:
             customer_id = kwargs['customerId']
 
         if api_url is not None:
@@ -7479,39 +7547,39 @@ class DevicePostureRuleInputArgs:
              version_operator: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'activeThreats' in kwargs:
+        if active_threats is None and 'activeThreats' in kwargs:
             active_threats = kwargs['activeThreats']
-        if 'certificateId' in kwargs:
+        if certificate_id is None and 'certificateId' in kwargs:
             certificate_id = kwargs['certificateId']
-        if 'checkDisks' in kwargs:
+        if check_disks is None and 'checkDisks' in kwargs:
             check_disks = kwargs['checkDisks']
-        if 'complianceStatus' in kwargs:
+        if compliance_status is None and 'complianceStatus' in kwargs:
             compliance_status = kwargs['complianceStatus']
-        if 'connectionId' in kwargs:
+        if connection_id is None and 'connectionId' in kwargs:
             connection_id = kwargs['connectionId']
-        if 'countOperator' in kwargs:
+        if count_operator is None and 'countOperator' in kwargs:
             count_operator = kwargs['countOperator']
-        if 'eidLastSeen' in kwargs:
+        if eid_last_seen is None and 'eidLastSeen' in kwargs:
             eid_last_seen = kwargs['eidLastSeen']
-        if 'isActive' in kwargs:
+        if is_active is None and 'isActive' in kwargs:
             is_active = kwargs['isActive']
-        if 'issueCount' in kwargs:
+        if issue_count is None and 'issueCount' in kwargs:
             issue_count = kwargs['issueCount']
-        if 'networkStatus' in kwargs:
+        if network_status is None and 'networkStatus' in kwargs:
             network_status = kwargs['networkStatus']
-        if 'osDistroName' in kwargs:
+        if os_distro_name is None and 'osDistroName' in kwargs:
             os_distro_name = kwargs['osDistroName']
-        if 'osDistroRevision' in kwargs:
+        if os_distro_revision is None and 'osDistroRevision' in kwargs:
             os_distro_revision = kwargs['osDistroRevision']
-        if 'requireAll' in kwargs:
+        if require_all is None and 'requireAll' in kwargs:
             require_all = kwargs['requireAll']
-        if 'riskLevel' in kwargs:
+        if risk_level is None and 'riskLevel' in kwargs:
             risk_level = kwargs['riskLevel']
-        if 'sensorConfig' in kwargs:
+        if sensor_config is None and 'sensorConfig' in kwargs:
             sensor_config = kwargs['sensorConfig']
-        if 'totalScore' in kwargs:
+        if total_score is None and 'totalScore' in kwargs:
             total_score = kwargs['totalScore']
-        if 'versionOperator' in kwargs:
+        if version_operator is None and 'versionOperator' in kwargs:
             version_operator = kwargs['versionOperator']
 
         if active_threats is not None:
@@ -8006,12 +8074,14 @@ class DlpProfileEntryArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             name: pulumi.Input[str],
+             name: Optional[pulumi.Input[str]] = None,
              enabled: Optional[pulumi.Input[bool]] = None,
              id: Optional[pulumi.Input[str]] = None,
              pattern: Optional[pulumi.Input['DlpProfileEntryPatternArgs']] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
+        if name is None:
+            raise TypeError("Missing 'name' argument")
 
         _setter("name", name)
         if enabled is not None:
@@ -8084,10 +8154,12 @@ class DlpProfileEntryPatternArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             regex: pulumi.Input[str],
+             regex: Optional[pulumi.Input[str]] = None,
              validation: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
+        if regex is None:
+            raise TypeError("Missing 'regex' argument")
 
         _setter("regex", regex)
         if validation is not None:
@@ -8135,10 +8207,14 @@ class EmailRoutingCatchAllActionArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             type: pulumi.Input[str],
-             values: pulumi.Input[Sequence[pulumi.Input[str]]],
+             type: Optional[pulumi.Input[str]] = None,
+             values: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+        if values is None:
+            raise TypeError("Missing 'values' argument")
 
         _setter("type", type)
         _setter("values", values)
@@ -8182,9 +8258,11 @@ class EmailRoutingCatchAllMatcherArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             type: pulumi.Input[str],
+             type: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
+        if type is None:
+            raise TypeError("Missing 'type' argument")
 
         _setter("type", type)
 
@@ -8218,10 +8296,14 @@ class EmailRoutingRuleActionArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             type: pulumi.Input[str],
-             values: pulumi.Input[Sequence[pulumi.Input[str]]],
+             type: Optional[pulumi.Input[str]] = None,
+             values: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+        if values is None:
+            raise TypeError("Missing 'values' argument")
 
         _setter("type", type)
         _setter("values", values)
@@ -8271,11 +8353,13 @@ class EmailRoutingRuleMatcherArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             type: pulumi.Input[str],
+             type: Optional[pulumi.Input[str]] = None,
              field: Optional[pulumi.Input[str]] = None,
              value: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
+        if type is None:
+            raise TypeError("Missing 'type' argument")
 
         _setter("type", type)
         if field is not None:
@@ -8345,7 +8429,7 @@ class FallbackDomainDomainArgs:
              suffix: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'dnsServers' in kwargs:
+        if dns_servers is None and 'dnsServers' in kwargs:
             dns_servers = kwargs['dnsServers']
 
         if description is not None:
@@ -8409,10 +8493,14 @@ class HealthcheckHeaderArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             header: pulumi.Input[str],
-             values: pulumi.Input[Sequence[pulumi.Input[str]]],
+             header: Optional[pulumi.Input[str]] = None,
+             values: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
+        if header is None:
+            raise TypeError("Missing 'header' argument")
+        if values is None:
+            raise TypeError("Missing 'values' argument")
 
         _setter("header", header)
         _setter("values", values)
@@ -8458,10 +8546,12 @@ class ListItemArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             value: pulumi.Input['ListItemValueArgs'],
+             value: Optional[pulumi.Input['ListItemValueArgs']] = None,
              comment: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
+        if value is None:
+            raise TypeError("Missing 'value' argument")
 
         _setter("value", value)
         if comment is not None:
@@ -8503,11 +8593,13 @@ class ListItemHostnameArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             url_hostname: pulumi.Input[str],
+             url_hostname: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'urlHostname' in kwargs:
+        if url_hostname is None and 'urlHostname' in kwargs:
             url_hostname = kwargs['urlHostname']
+        if url_hostname is None:
+            raise TypeError("Missing 'url_hostname' argument")
 
         _setter("url_hostname", url_hostname)
 
@@ -8556,8 +8648,8 @@ class ListItemRedirectArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             source_url: pulumi.Input[str],
-             target_url: pulumi.Input[str],
+             source_url: Optional[pulumi.Input[str]] = None,
+             target_url: Optional[pulumi.Input[str]] = None,
              include_subdomains: Optional[pulumi.Input[str]] = None,
              preserve_path_suffix: Optional[pulumi.Input[str]] = None,
              preserve_query_string: Optional[pulumi.Input[str]] = None,
@@ -8565,19 +8657,23 @@ class ListItemRedirectArgs:
              subpath_matching: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'sourceUrl' in kwargs:
+        if source_url is None and 'sourceUrl' in kwargs:
             source_url = kwargs['sourceUrl']
-        if 'targetUrl' in kwargs:
+        if source_url is None:
+            raise TypeError("Missing 'source_url' argument")
+        if target_url is None and 'targetUrl' in kwargs:
             target_url = kwargs['targetUrl']
-        if 'includeSubdomains' in kwargs:
+        if target_url is None:
+            raise TypeError("Missing 'target_url' argument")
+        if include_subdomains is None and 'includeSubdomains' in kwargs:
             include_subdomains = kwargs['includeSubdomains']
-        if 'preservePathSuffix' in kwargs:
+        if preserve_path_suffix is None and 'preservePathSuffix' in kwargs:
             preserve_path_suffix = kwargs['preservePathSuffix']
-        if 'preserveQueryString' in kwargs:
+        if preserve_query_string is None and 'preserveQueryString' in kwargs:
             preserve_query_string = kwargs['preserveQueryString']
-        if 'statusCode' in kwargs:
+        if status_code is None and 'statusCode' in kwargs:
             status_code = kwargs['statusCode']
-        if 'subpathMatching' in kwargs:
+        if subpath_matching is None and 'subpathMatching' in kwargs:
             subpath_matching = kwargs['subpathMatching']
 
         _setter("source_url", source_url)
@@ -8762,11 +8858,13 @@ class ListItemValueHostnameArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             url_hostname: pulumi.Input[str],
+             url_hostname: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'urlHostname' in kwargs:
+        if url_hostname is None and 'urlHostname' in kwargs:
             url_hostname = kwargs['urlHostname']
+        if url_hostname is None:
+            raise TypeError("Missing 'url_hostname' argument")
 
         _setter("url_hostname", url_hostname)
 
@@ -8815,8 +8913,8 @@ class ListItemValueRedirectArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             source_url: pulumi.Input[str],
-             target_url: pulumi.Input[str],
+             source_url: Optional[pulumi.Input[str]] = None,
+             target_url: Optional[pulumi.Input[str]] = None,
              include_subdomains: Optional[pulumi.Input[str]] = None,
              preserve_path_suffix: Optional[pulumi.Input[str]] = None,
              preserve_query_string: Optional[pulumi.Input[str]] = None,
@@ -8824,19 +8922,23 @@ class ListItemValueRedirectArgs:
              subpath_matching: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'sourceUrl' in kwargs:
+        if source_url is None and 'sourceUrl' in kwargs:
             source_url = kwargs['sourceUrl']
-        if 'targetUrl' in kwargs:
+        if source_url is None:
+            raise TypeError("Missing 'source_url' argument")
+        if target_url is None and 'targetUrl' in kwargs:
             target_url = kwargs['targetUrl']
-        if 'includeSubdomains' in kwargs:
+        if target_url is None:
+            raise TypeError("Missing 'target_url' argument")
+        if include_subdomains is None and 'includeSubdomains' in kwargs:
             include_subdomains = kwargs['includeSubdomains']
-        if 'preservePathSuffix' in kwargs:
+        if preserve_path_suffix is None and 'preservePathSuffix' in kwargs:
             preserve_path_suffix = kwargs['preservePathSuffix']
-        if 'preserveQueryString' in kwargs:
+        if preserve_query_string is None and 'preserveQueryString' in kwargs:
             preserve_query_string = kwargs['preserveQueryString']
-        if 'statusCode' in kwargs:
+        if status_code is None and 'statusCode' in kwargs:
             status_code = kwargs['statusCode']
-        if 'subpathMatching' in kwargs:
+        if subpath_matching is None and 'subpathMatching' in kwargs:
             subpath_matching = kwargs['subpathMatching']
 
         _setter("source_url", source_url)
@@ -8954,7 +9056,7 @@ class LoadBalancerAdaptiveRoutingArgs:
              failover_across_pools: Optional[pulumi.Input[bool]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'failoverAcrossPools' in kwargs:
+        if failover_across_pools is None and 'failoverAcrossPools' in kwargs:
             failover_across_pools = kwargs['failoverAcrossPools']
 
         if failover_across_pools is not None:
@@ -8990,12 +9092,16 @@ class LoadBalancerCountryPoolArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             country: pulumi.Input[str],
-             pool_ids: pulumi.Input[Sequence[pulumi.Input[str]]],
+             country: Optional[pulumi.Input[str]] = None,
+             pool_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'poolIds' in kwargs:
+        if country is None:
+            raise TypeError("Missing 'country' argument")
+        if pool_ids is None and 'poolIds' in kwargs:
             pool_ids = kwargs['poolIds']
+        if pool_ids is None:
+            raise TypeError("Missing 'pool_ids' argument")
 
         _setter("country", country)
         _setter("pool_ids", pool_ids)
@@ -9046,7 +9152,7 @@ class LoadBalancerLocationStrategyArgs:
              prefer_ecs: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'preferEcs' in kwargs:
+        if prefer_ecs is None and 'preferEcs' in kwargs:
             prefer_ecs = kwargs['preferEcs']
 
         if mode is not None:
@@ -9096,10 +9202,14 @@ class LoadBalancerMonitorHeaderArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             header: pulumi.Input[str],
-             values: pulumi.Input[Sequence[pulumi.Input[str]]],
+             header: Optional[pulumi.Input[str]] = None,
+             values: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
+        if header is None:
+            raise TypeError("Missing 'header' argument")
+        if values is None:
+            raise TypeError("Missing 'values' argument")
 
         _setter("header", header)
         _setter("values", values)
@@ -9158,13 +9268,13 @@ class LoadBalancerPoolLoadSheddingArgs:
              session_policy: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'defaultPercent' in kwargs:
+        if default_percent is None and 'defaultPercent' in kwargs:
             default_percent = kwargs['defaultPercent']
-        if 'defaultPolicy' in kwargs:
+        if default_policy is None and 'defaultPolicy' in kwargs:
             default_policy = kwargs['defaultPolicy']
-        if 'sessionPercent' in kwargs:
+        if session_percent is None and 'sessionPercent' in kwargs:
             session_percent = kwargs['sessionPercent']
-        if 'sessionPolicy' in kwargs:
+        if session_policy is None and 'sessionPolicy' in kwargs:
             session_policy = kwargs['sessionPolicy']
 
         if default_percent is not None:
@@ -9251,13 +9361,17 @@ class LoadBalancerPoolOriginArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             address: pulumi.Input[str],
-             name: pulumi.Input[str],
+             address: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
              enabled: Optional[pulumi.Input[bool]] = None,
              headers: Optional[pulumi.Input[Sequence[pulumi.Input['LoadBalancerPoolOriginHeaderArgs']]]] = None,
              weight: Optional[pulumi.Input[float]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
+        if address is None:
+            raise TypeError("Missing 'address' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
 
         _setter("address", address)
         _setter("name", name)
@@ -9346,10 +9460,14 @@ class LoadBalancerPoolOriginHeaderArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             header: pulumi.Input[str],
-             values: pulumi.Input[Sequence[pulumi.Input[str]]],
+             header: Optional[pulumi.Input[str]] = None,
+             values: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
+        if header is None:
+            raise TypeError("Missing 'header' argument")
+        if values is None:
+            raise TypeError("Missing 'values' argument")
 
         _setter("header", header)
         _setter("values", values)
@@ -9430,12 +9548,16 @@ class LoadBalancerPopPoolArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             pool_ids: pulumi.Input[Sequence[pulumi.Input[str]]],
-             pop: pulumi.Input[str],
+             pool_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             pop: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'poolIds' in kwargs:
+        if pool_ids is None and 'poolIds' in kwargs:
             pool_ids = kwargs['poolIds']
+        if pool_ids is None:
+            raise TypeError("Missing 'pool_ids' argument")
+        if pop is None:
+            raise TypeError("Missing 'pop' argument")
 
         _setter("pool_ids", pool_ids)
         _setter("pop", pop)
@@ -9486,9 +9608,9 @@ class LoadBalancerRandomSteeringArgs:
              pool_weights: Optional[pulumi.Input[Mapping[str, pulumi.Input[float]]]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'defaultWeight' in kwargs:
+        if default_weight is None and 'defaultWeight' in kwargs:
             default_weight = kwargs['defaultWeight']
-        if 'poolWeights' in kwargs:
+        if pool_weights is None and 'poolWeights' in kwargs:
             pool_weights = kwargs['poolWeights']
 
         if default_weight is not None:
@@ -9538,12 +9660,16 @@ class LoadBalancerRegionPoolArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             pool_ids: pulumi.Input[Sequence[pulumi.Input[str]]],
-             region: pulumi.Input[str],
+             pool_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             region: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'poolIds' in kwargs:
+        if pool_ids is None and 'poolIds' in kwargs:
             pool_ids = kwargs['poolIds']
+        if pool_ids is None:
+            raise TypeError("Missing 'pool_ids' argument")
+        if region is None:
+            raise TypeError("Missing 'region' argument")
 
         _setter("pool_ids", pool_ids)
         _setter("region", region)
@@ -9605,7 +9731,7 @@ class LoadBalancerRuleArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             name: pulumi.Input[str],
+             name: Optional[pulumi.Input[str]] = None,
              condition: Optional[pulumi.Input[str]] = None,
              disabled: Optional[pulumi.Input[bool]] = None,
              fixed_response: Optional[pulumi.Input['LoadBalancerRuleFixedResponseArgs']] = None,
@@ -9614,7 +9740,9 @@ class LoadBalancerRuleArgs:
              terminates: Optional[pulumi.Input[bool]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'fixedResponse' in kwargs:
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if fixed_response is None and 'fixedResponse' in kwargs:
             fixed_response = kwargs['fixedResponse']
 
         _setter("name", name)
@@ -9745,11 +9873,11 @@ class LoadBalancerRuleFixedResponseArgs:
              status_code: Optional[pulumi.Input[int]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'contentType' in kwargs:
+        if content_type is None and 'contentType' in kwargs:
             content_type = kwargs['contentType']
-        if 'messageBody' in kwargs:
+        if message_body is None and 'messageBody' in kwargs:
             message_body = kwargs['messageBody']
-        if 'statusCode' in kwargs:
+        if status_code is None and 'statusCode' in kwargs:
             status_code = kwargs['statusCode']
 
         if content_type is not None:
@@ -9875,29 +10003,29 @@ class LoadBalancerRuleOverrideArgs:
              ttl: Optional[pulumi.Input[int]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'adaptiveRoutings' in kwargs:
+        if adaptive_routings is None and 'adaptiveRoutings' in kwargs:
             adaptive_routings = kwargs['adaptiveRoutings']
-        if 'countryPools' in kwargs:
+        if country_pools is None and 'countryPools' in kwargs:
             country_pools = kwargs['countryPools']
-        if 'defaultPools' in kwargs:
+        if default_pools is None and 'defaultPools' in kwargs:
             default_pools = kwargs['defaultPools']
-        if 'fallbackPool' in kwargs:
+        if fallback_pool is None and 'fallbackPool' in kwargs:
             fallback_pool = kwargs['fallbackPool']
-        if 'locationStrategies' in kwargs:
+        if location_strategies is None and 'locationStrategies' in kwargs:
             location_strategies = kwargs['locationStrategies']
-        if 'popPools' in kwargs:
+        if pop_pools is None and 'popPools' in kwargs:
             pop_pools = kwargs['popPools']
-        if 'randomSteerings' in kwargs:
+        if random_steerings is None and 'randomSteerings' in kwargs:
             random_steerings = kwargs['randomSteerings']
-        if 'regionPools' in kwargs:
+        if region_pools is None and 'regionPools' in kwargs:
             region_pools = kwargs['regionPools']
-        if 'sessionAffinity' in kwargs:
+        if session_affinity is None and 'sessionAffinity' in kwargs:
             session_affinity = kwargs['sessionAffinity']
-        if 'sessionAffinityAttributes' in kwargs:
+        if session_affinity_attributes is None and 'sessionAffinityAttributes' in kwargs:
             session_affinity_attributes = kwargs['sessionAffinityAttributes']
-        if 'sessionAffinityTtl' in kwargs:
+        if session_affinity_ttl is None and 'sessionAffinityTtl' in kwargs:
             session_affinity_ttl = kwargs['sessionAffinityTtl']
-        if 'steeringPolicy' in kwargs:
+        if steering_policy is None and 'steeringPolicy' in kwargs:
             steering_policy = kwargs['steeringPolicy']
 
         if adaptive_routings is not None:
@@ -10101,7 +10229,7 @@ class LoadBalancerRuleOverrideAdaptiveRoutingArgs:
              failover_across_pools: Optional[pulumi.Input[bool]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'failoverAcrossPools' in kwargs:
+        if failover_across_pools is None and 'failoverAcrossPools' in kwargs:
             failover_across_pools = kwargs['failoverAcrossPools']
 
         if failover_across_pools is not None:
@@ -10137,12 +10265,16 @@ class LoadBalancerRuleOverrideCountryPoolArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             country: pulumi.Input[str],
-             pool_ids: pulumi.Input[Sequence[pulumi.Input[str]]],
+             country: Optional[pulumi.Input[str]] = None,
+             pool_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'poolIds' in kwargs:
+        if country is None:
+            raise TypeError("Missing 'country' argument")
+        if pool_ids is None and 'poolIds' in kwargs:
             pool_ids = kwargs['poolIds']
+        if pool_ids is None:
+            raise TypeError("Missing 'pool_ids' argument")
 
         _setter("country", country)
         _setter("pool_ids", pool_ids)
@@ -10193,7 +10325,7 @@ class LoadBalancerRuleOverrideLocationStrategyArgs:
              prefer_ecs: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'preferEcs' in kwargs:
+        if prefer_ecs is None and 'preferEcs' in kwargs:
             prefer_ecs = kwargs['preferEcs']
 
         if mode is not None:
@@ -10243,12 +10375,16 @@ class LoadBalancerRuleOverridePopPoolArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             pool_ids: pulumi.Input[Sequence[pulumi.Input[str]]],
-             pop: pulumi.Input[str],
+             pool_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             pop: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'poolIds' in kwargs:
+        if pool_ids is None and 'poolIds' in kwargs:
             pool_ids = kwargs['poolIds']
+        if pool_ids is None:
+            raise TypeError("Missing 'pool_ids' argument")
+        if pop is None:
+            raise TypeError("Missing 'pop' argument")
 
         _setter("pool_ids", pool_ids)
         _setter("pop", pop)
@@ -10299,9 +10435,9 @@ class LoadBalancerRuleOverrideRandomSteeringArgs:
              pool_weights: Optional[pulumi.Input[Mapping[str, pulumi.Input[float]]]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'defaultWeight' in kwargs:
+        if default_weight is None and 'defaultWeight' in kwargs:
             default_weight = kwargs['defaultWeight']
-        if 'poolWeights' in kwargs:
+        if pool_weights is None and 'poolWeights' in kwargs:
             pool_weights = kwargs['poolWeights']
 
         if default_weight is not None:
@@ -10351,12 +10487,16 @@ class LoadBalancerRuleOverrideRegionPoolArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             pool_ids: pulumi.Input[Sequence[pulumi.Input[str]]],
-             region: pulumi.Input[str],
+             pool_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             region: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'poolIds' in kwargs:
+        if pool_ids is None and 'poolIds' in kwargs:
             pool_ids = kwargs['poolIds']
+        if pool_ids is None:
+            raise TypeError("Missing 'pool_ids' argument")
+        if region is None:
+            raise TypeError("Missing 'region' argument")
 
         _setter("pool_ids", pool_ids)
         _setter("region", region)
@@ -10419,9 +10559,9 @@ class LoadBalancerRuleOverrideSessionAffinityAttributeArgs:
              zero_downtime_failover: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'requireAllHeaders' in kwargs:
+        if require_all_headers is None and 'requireAllHeaders' in kwargs:
             require_all_headers = kwargs['requireAllHeaders']
-        if 'zeroDowntimeFailover' in kwargs:
+        if zero_downtime_failover is None and 'zeroDowntimeFailover' in kwargs:
             zero_downtime_failover = kwargs['zeroDowntimeFailover']
 
         if headers is not None:
@@ -10533,11 +10673,11 @@ class LoadBalancerSessionAffinityAttributeArgs:
              zero_downtime_failover: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'drainDuration' in kwargs:
+        if drain_duration is None and 'drainDuration' in kwargs:
             drain_duration = kwargs['drainDuration']
-        if 'requireAllHeaders' in kwargs:
+        if require_all_headers is None and 'requireAllHeaders' in kwargs:
             require_all_headers = kwargs['requireAllHeaders']
-        if 'zeroDowntimeFailover' in kwargs:
+        if zero_downtime_failover is None and 'zeroDowntimeFailover' in kwargs:
             zero_downtime_failover = kwargs['zeroDowntimeFailover']
 
         if drain_duration is not None:
@@ -10643,10 +10783,14 @@ class ManagedHeadersManagedRequestHeaderArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             enabled: pulumi.Input[bool],
-             id: pulumi.Input[str],
+             enabled: Optional[pulumi.Input[bool]] = None,
+             id: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
+        if enabled is None:
+            raise TypeError("Missing 'enabled' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
 
         _setter("enabled", enabled)
         _setter("id", id)
@@ -10693,10 +10837,14 @@ class ManagedHeadersManagedResponseHeaderArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             enabled: pulumi.Input[bool],
-             id: pulumi.Input[str],
+             enabled: Optional[pulumi.Input[bool]] = None,
+             id: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
+        if enabled is None:
+            raise TypeError("Missing 'enabled' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
 
         _setter("enabled", enabled)
         _setter("id", id)
@@ -10742,10 +10890,12 @@ class NotificationPolicyEmailIntegrationArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             id: pulumi.Input[str],
+             id: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
+        if id is None:
+            raise TypeError("Missing 'id' argument")
 
         _setter("id", id)
         if name is not None:
@@ -10889,33 +11039,33 @@ class NotificationPolicyFiltersArgs:
              zones: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'alertTriggerPreferences' in kwargs:
+        if alert_trigger_preferences is None and 'alertTriggerPreferences' in kwargs:
             alert_trigger_preferences = kwargs['alertTriggerPreferences']
-        if 'eventSources' in kwargs:
+        if event_sources is None and 'eventSources' in kwargs:
             event_sources = kwargs['eventSources']
-        if 'eventTypes' in kwargs:
+        if event_types is None and 'eventTypes' in kwargs:
             event_types = kwargs['eventTypes']
-        if 'groupBies' in kwargs:
+        if group_bies is None and 'groupBies' in kwargs:
             group_bies = kwargs['groupBies']
-        if 'healthCheckIds' in kwargs:
+        if health_check_ids is None and 'healthCheckIds' in kwargs:
             health_check_ids = kwargs['healthCheckIds']
-        if 'inputIds' in kwargs:
+        if input_ids is None and 'inputIds' in kwargs:
             input_ids = kwargs['inputIds']
-        if 'megabitsPerSeconds' in kwargs:
+        if megabits_per_seconds is None and 'megabitsPerSeconds' in kwargs:
             megabits_per_seconds = kwargs['megabitsPerSeconds']
-        if 'newHealths' in kwargs:
+        if new_healths is None and 'newHealths' in kwargs:
             new_healths = kwargs['newHealths']
-        if 'packetsPerSeconds' in kwargs:
+        if packets_per_seconds is None and 'packetsPerSeconds' in kwargs:
             packets_per_seconds = kwargs['packetsPerSeconds']
-        if 'poolIds' in kwargs:
+        if pool_ids is None and 'poolIds' in kwargs:
             pool_ids = kwargs['poolIds']
-        if 'projectIds' in kwargs:
+        if project_ids is None and 'projectIds' in kwargs:
             project_ids = kwargs['projectIds']
-        if 'requestsPerSeconds' in kwargs:
+        if requests_per_seconds is None and 'requestsPerSeconds' in kwargs:
             requests_per_seconds = kwargs['requestsPerSeconds']
-        if 'targetHostnames' in kwargs:
+        if target_hostnames is None and 'targetHostnames' in kwargs:
             target_hostnames = kwargs['targetHostnames']
-        if 'targetZoneNames' in kwargs:
+        if target_zone_names is None and 'targetZoneNames' in kwargs:
             target_zone_names = kwargs['targetZoneNames']
 
         if actions is not None:
@@ -11297,10 +11447,12 @@ class NotificationPolicyPagerdutyIntegrationArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             id: pulumi.Input[str],
+             id: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
+        if id is None:
+            raise TypeError("Missing 'id' argument")
 
         _setter("id", id)
         if name is not None:
@@ -11344,10 +11496,12 @@ class NotificationPolicyWebhooksIntegrationArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             id: pulumi.Input[str],
+             id: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
+        if id is None:
+            raise TypeError("Missing 'id' argument")
 
         _setter("id", id)
         if name is not None:
@@ -11536,69 +11690,69 @@ class PageRuleActionsArgs:
              waf: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'alwaysUseHttps' in kwargs:
+        if always_use_https is None and 'alwaysUseHttps' in kwargs:
             always_use_https = kwargs['alwaysUseHttps']
-        if 'automaticHttpsRewrites' in kwargs:
+        if automatic_https_rewrites is None and 'automaticHttpsRewrites' in kwargs:
             automatic_https_rewrites = kwargs['automaticHttpsRewrites']
-        if 'browserCacheTtl' in kwargs:
+        if browser_cache_ttl is None and 'browserCacheTtl' in kwargs:
             browser_cache_ttl = kwargs['browserCacheTtl']
-        if 'browserCheck' in kwargs:
+        if browser_check is None and 'browserCheck' in kwargs:
             browser_check = kwargs['browserCheck']
-        if 'bypassCacheOnCookie' in kwargs:
+        if bypass_cache_on_cookie is None and 'bypassCacheOnCookie' in kwargs:
             bypass_cache_on_cookie = kwargs['bypassCacheOnCookie']
-        if 'cacheByDeviceType' in kwargs:
+        if cache_by_device_type is None and 'cacheByDeviceType' in kwargs:
             cache_by_device_type = kwargs['cacheByDeviceType']
-        if 'cacheDeceptionArmor' in kwargs:
+        if cache_deception_armor is None and 'cacheDeceptionArmor' in kwargs:
             cache_deception_armor = kwargs['cacheDeceptionArmor']
-        if 'cacheKeyFields' in kwargs:
+        if cache_key_fields is None and 'cacheKeyFields' in kwargs:
             cache_key_fields = kwargs['cacheKeyFields']
-        if 'cacheLevel' in kwargs:
+        if cache_level is None and 'cacheLevel' in kwargs:
             cache_level = kwargs['cacheLevel']
-        if 'cacheOnCookie' in kwargs:
+        if cache_on_cookie is None and 'cacheOnCookie' in kwargs:
             cache_on_cookie = kwargs['cacheOnCookie']
-        if 'cacheTtlByStatuses' in kwargs:
+        if cache_ttl_by_statuses is None and 'cacheTtlByStatuses' in kwargs:
             cache_ttl_by_statuses = kwargs['cacheTtlByStatuses']
-        if 'disableApps' in kwargs:
+        if disable_apps is None and 'disableApps' in kwargs:
             disable_apps = kwargs['disableApps']
-        if 'disablePerformance' in kwargs:
+        if disable_performance is None and 'disablePerformance' in kwargs:
             disable_performance = kwargs['disablePerformance']
-        if 'disableRailgun' in kwargs:
+        if disable_railgun is None and 'disableRailgun' in kwargs:
             disable_railgun = kwargs['disableRailgun']
-        if 'disableSecurity' in kwargs:
+        if disable_security is None and 'disableSecurity' in kwargs:
             disable_security = kwargs['disableSecurity']
-        if 'disableZaraz' in kwargs:
+        if disable_zaraz is None and 'disableZaraz' in kwargs:
             disable_zaraz = kwargs['disableZaraz']
-        if 'edgeCacheTtl' in kwargs:
+        if edge_cache_ttl is None and 'edgeCacheTtl' in kwargs:
             edge_cache_ttl = kwargs['edgeCacheTtl']
-        if 'emailObfuscation' in kwargs:
+        if email_obfuscation is None and 'emailObfuscation' in kwargs:
             email_obfuscation = kwargs['emailObfuscation']
-        if 'explicitCacheControl' in kwargs:
+        if explicit_cache_control is None and 'explicitCacheControl' in kwargs:
             explicit_cache_control = kwargs['explicitCacheControl']
-        if 'forwardingUrl' in kwargs:
+        if forwarding_url is None and 'forwardingUrl' in kwargs:
             forwarding_url = kwargs['forwardingUrl']
-        if 'hostHeaderOverride' in kwargs:
+        if host_header_override is None and 'hostHeaderOverride' in kwargs:
             host_header_override = kwargs['hostHeaderOverride']
-        if 'ipGeolocation' in kwargs:
+        if ip_geolocation is None and 'ipGeolocation' in kwargs:
             ip_geolocation = kwargs['ipGeolocation']
-        if 'opportunisticEncryption' in kwargs:
+        if opportunistic_encryption is None and 'opportunisticEncryption' in kwargs:
             opportunistic_encryption = kwargs['opportunisticEncryption']
-        if 'originErrorPagePassThru' in kwargs:
+        if origin_error_page_pass_thru is None and 'originErrorPagePassThru' in kwargs:
             origin_error_page_pass_thru = kwargs['originErrorPagePassThru']
-        if 'resolveOverride' in kwargs:
+        if resolve_override is None and 'resolveOverride' in kwargs:
             resolve_override = kwargs['resolveOverride']
-        if 'respectStrongEtag' in kwargs:
+        if respect_strong_etag is None and 'respectStrongEtag' in kwargs:
             respect_strong_etag = kwargs['respectStrongEtag']
-        if 'responseBuffering' in kwargs:
+        if response_buffering is None and 'responseBuffering' in kwargs:
             response_buffering = kwargs['responseBuffering']
-        if 'rocketLoader' in kwargs:
+        if rocket_loader is None and 'rocketLoader' in kwargs:
             rocket_loader = kwargs['rocketLoader']
-        if 'securityLevel' in kwargs:
+        if security_level is None and 'securityLevel' in kwargs:
             security_level = kwargs['securityLevel']
-        if 'serverSideExclude' in kwargs:
+        if server_side_exclude is None and 'serverSideExclude' in kwargs:
             server_side_exclude = kwargs['serverSideExclude']
-        if 'sortQueryStringForCache' in kwargs:
+        if sort_query_string_for_cache is None and 'sortQueryStringForCache' in kwargs:
             sort_query_string_for_cache = kwargs['sortQueryStringForCache']
-        if 'trueClientIpHeader' in kwargs:
+        if true_client_ip_header is None and 'trueClientIpHeader' in kwargs:
             true_client_ip_header = kwargs['trueClientIpHeader']
 
         if always_use_https is not None:
@@ -12147,15 +12301,21 @@ class PageRuleActionsCacheKeyFieldsArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             host: pulumi.Input['PageRuleActionsCacheKeyFieldsHostArgs'],
-             query_string: pulumi.Input['PageRuleActionsCacheKeyFieldsQueryStringArgs'],
-             user: pulumi.Input['PageRuleActionsCacheKeyFieldsUserArgs'],
+             host: Optional[pulumi.Input['PageRuleActionsCacheKeyFieldsHostArgs']] = None,
+             query_string: Optional[pulumi.Input['PageRuleActionsCacheKeyFieldsQueryStringArgs']] = None,
+             user: Optional[pulumi.Input['PageRuleActionsCacheKeyFieldsUserArgs']] = None,
              cookie: Optional[pulumi.Input['PageRuleActionsCacheKeyFieldsCookieArgs']] = None,
              header: Optional[pulumi.Input['PageRuleActionsCacheKeyFieldsHeaderArgs']] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'queryString' in kwargs:
+        if host is None:
+            raise TypeError("Missing 'host' argument")
+        if query_string is None and 'queryString' in kwargs:
             query_string = kwargs['queryString']
+        if query_string is None:
+            raise TypeError("Missing 'query_string' argument")
+        if user is None:
+            raise TypeError("Missing 'user' argument")
 
         _setter("host", host)
         _setter("query_string", query_string)
@@ -12247,7 +12407,7 @@ class PageRuleActionsCacheKeyFieldsCookieArgs:
              includes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'checkPresences' in kwargs:
+        if check_presences is None and 'checkPresences' in kwargs:
             check_presences = kwargs['checkPresences']
 
         if check_presences is not None:
@@ -12305,7 +12465,7 @@ class PageRuleActionsCacheKeyFieldsHeaderArgs:
              includes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'checkPresences' in kwargs:
+        if check_presences is None and 'checkPresences' in kwargs:
             check_presences = kwargs['checkPresences']
 
         if check_presences is not None:
@@ -12520,7 +12680,7 @@ class PageRuleActionsCacheKeyFieldsUserArgs:
              lang: Optional[pulumi.Input[bool]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'deviceType' in kwargs:
+        if device_type is None and 'deviceType' in kwargs:
             device_type = kwargs['deviceType']
 
         if device_type is not None:
@@ -12624,10 +12784,14 @@ class PageRuleActionsCacheTtlByStatusArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             codes: pulumi.Input[str],
-             ttl: pulumi.Input[int],
+             codes: Optional[pulumi.Input[str]] = None,
+             ttl: Optional[pulumi.Input[int]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
+        if codes is None:
+            raise TypeError("Missing 'codes' argument")
+        if ttl is None:
+            raise TypeError("Missing 'ttl' argument")
 
         _setter("codes", codes)
         _setter("ttl", ttl)
@@ -12675,12 +12839,16 @@ class PageRuleActionsForwardingUrlArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             status_code: pulumi.Input[int],
-             url: pulumi.Input[str],
+             status_code: Optional[pulumi.Input[int]] = None,
+             url: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'statusCode' in kwargs:
+        if status_code is None and 'statusCode' in kwargs:
             status_code = kwargs['statusCode']
+        if status_code is None:
+            raise TypeError("Missing 'status_code' argument")
+        if url is None:
+            raise TypeError("Missing 'url' argument")
 
         _setter("status_code", status_code)
         _setter("url", url)
@@ -12730,11 +12898,17 @@ class PageRuleActionsMinifyArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             css: pulumi.Input[str],
-             html: pulumi.Input[str],
-             js: pulumi.Input[str],
+             css: Optional[pulumi.Input[str]] = None,
+             html: Optional[pulumi.Input[str]] = None,
+             js: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
+        if css is None:
+            raise TypeError("Missing 'css' argument")
+        if html is None:
+            raise TypeError("Missing 'html' argument")
+        if js is None:
+            raise TypeError("Missing 'js' argument")
 
         _setter("css", css)
         _setter("html", html)
@@ -12810,15 +12984,15 @@ class PagesProjectBuildConfigArgs:
              web_analytics_token: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'buildCommand' in kwargs:
+        if build_command is None and 'buildCommand' in kwargs:
             build_command = kwargs['buildCommand']
-        if 'destinationDir' in kwargs:
+        if destination_dir is None and 'destinationDir' in kwargs:
             destination_dir = kwargs['destinationDir']
-        if 'rootDir' in kwargs:
+        if root_dir is None and 'rootDir' in kwargs:
             root_dir = kwargs['rootDir']
-        if 'webAnalyticsTag' in kwargs:
+        if web_analytics_tag is None and 'webAnalyticsTag' in kwargs:
             web_analytics_tag = kwargs['webAnalyticsTag']
-        if 'webAnalyticsToken' in kwargs:
+        if web_analytics_token is None and 'webAnalyticsToken' in kwargs:
             web_analytics_token = kwargs['webAnalyticsToken']
 
         if build_command is not None:
@@ -13010,27 +13184,27 @@ class PagesProjectDeploymentConfigsPreviewArgs:
              usage_model: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'alwaysUseLatestCompatibilityDate' in kwargs:
+        if always_use_latest_compatibility_date is None and 'alwaysUseLatestCompatibilityDate' in kwargs:
             always_use_latest_compatibility_date = kwargs['alwaysUseLatestCompatibilityDate']
-        if 'compatibilityDate' in kwargs:
+        if compatibility_date is None and 'compatibilityDate' in kwargs:
             compatibility_date = kwargs['compatibilityDate']
-        if 'compatibilityFlags' in kwargs:
+        if compatibility_flags is None and 'compatibilityFlags' in kwargs:
             compatibility_flags = kwargs['compatibilityFlags']
-        if 'd1Databases' in kwargs:
+        if d1_databases is None and 'd1Databases' in kwargs:
             d1_databases = kwargs['d1Databases']
-        if 'durableObjectNamespaces' in kwargs:
+        if durable_object_namespaces is None and 'durableObjectNamespaces' in kwargs:
             durable_object_namespaces = kwargs['durableObjectNamespaces']
-        if 'environmentVariables' in kwargs:
+        if environment_variables is None and 'environmentVariables' in kwargs:
             environment_variables = kwargs['environmentVariables']
-        if 'failOpen' in kwargs:
+        if fail_open is None and 'failOpen' in kwargs:
             fail_open = kwargs['failOpen']
-        if 'kvNamespaces' in kwargs:
+        if kv_namespaces is None and 'kvNamespaces' in kwargs:
             kv_namespaces = kwargs['kvNamespaces']
-        if 'r2Buckets' in kwargs:
+        if r2_buckets is None and 'r2Buckets' in kwargs:
             r2_buckets = kwargs['r2Buckets']
-        if 'serviceBindings' in kwargs:
+        if service_bindings is None and 'serviceBindings' in kwargs:
             service_bindings = kwargs['serviceBindings']
-        if 'usageModel' in kwargs:
+        if usage_model is None and 'usageModel' in kwargs:
             usage_model = kwargs['usageModel']
 
         if always_use_latest_compatibility_date is not None:
@@ -13271,11 +13445,15 @@ class PagesProjectDeploymentConfigsPreviewServiceBindingArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             name: pulumi.Input[str],
-             service: pulumi.Input[str],
+             name: Optional[pulumi.Input[str]] = None,
+             service: Optional[pulumi.Input[str]] = None,
              environment: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if service is None:
+            raise TypeError("Missing 'service' argument")
 
         _setter("name", name)
         _setter("service", service)
@@ -13384,27 +13562,27 @@ class PagesProjectDeploymentConfigsProductionArgs:
              usage_model: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'alwaysUseLatestCompatibilityDate' in kwargs:
+        if always_use_latest_compatibility_date is None and 'alwaysUseLatestCompatibilityDate' in kwargs:
             always_use_latest_compatibility_date = kwargs['alwaysUseLatestCompatibilityDate']
-        if 'compatibilityDate' in kwargs:
+        if compatibility_date is None and 'compatibilityDate' in kwargs:
             compatibility_date = kwargs['compatibilityDate']
-        if 'compatibilityFlags' in kwargs:
+        if compatibility_flags is None and 'compatibilityFlags' in kwargs:
             compatibility_flags = kwargs['compatibilityFlags']
-        if 'd1Databases' in kwargs:
+        if d1_databases is None and 'd1Databases' in kwargs:
             d1_databases = kwargs['d1Databases']
-        if 'durableObjectNamespaces' in kwargs:
+        if durable_object_namespaces is None and 'durableObjectNamespaces' in kwargs:
             durable_object_namespaces = kwargs['durableObjectNamespaces']
-        if 'environmentVariables' in kwargs:
+        if environment_variables is None and 'environmentVariables' in kwargs:
             environment_variables = kwargs['environmentVariables']
-        if 'failOpen' in kwargs:
+        if fail_open is None and 'failOpen' in kwargs:
             fail_open = kwargs['failOpen']
-        if 'kvNamespaces' in kwargs:
+        if kv_namespaces is None and 'kvNamespaces' in kwargs:
             kv_namespaces = kwargs['kvNamespaces']
-        if 'r2Buckets' in kwargs:
+        if r2_buckets is None and 'r2Buckets' in kwargs:
             r2_buckets = kwargs['r2Buckets']
-        if 'serviceBindings' in kwargs:
+        if service_bindings is None and 'serviceBindings' in kwargs:
             service_bindings = kwargs['serviceBindings']
-        if 'usageModel' in kwargs:
+        if usage_model is None and 'usageModel' in kwargs:
             usage_model = kwargs['usageModel']
 
         if always_use_latest_compatibility_date is not None:
@@ -13645,11 +13823,15 @@ class PagesProjectDeploymentConfigsProductionServiceBindingArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             name: pulumi.Input[str],
-             service: pulumi.Input[str],
+             name: Optional[pulumi.Input[str]] = None,
+             service: Optional[pulumi.Input[str]] = None,
              environment: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if service is None:
+            raise TypeError("Missing 'service' argument")
 
         _setter("name", name)
         _setter("service", service)
@@ -13783,7 +13965,7 @@ class PagesProjectSourceConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             production_branch: pulumi.Input[str],
+             production_branch: Optional[pulumi.Input[str]] = None,
              deployments_enabled: Optional[pulumi.Input[bool]] = None,
              owner: Optional[pulumi.Input[str]] = None,
              pr_comments_enabled: Optional[pulumi.Input[bool]] = None,
@@ -13794,21 +13976,23 @@ class PagesProjectSourceConfigArgs:
              repo_name: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'productionBranch' in kwargs:
+        if production_branch is None and 'productionBranch' in kwargs:
             production_branch = kwargs['productionBranch']
-        if 'deploymentsEnabled' in kwargs:
+        if production_branch is None:
+            raise TypeError("Missing 'production_branch' argument")
+        if deployments_enabled is None and 'deploymentsEnabled' in kwargs:
             deployments_enabled = kwargs['deploymentsEnabled']
-        if 'prCommentsEnabled' in kwargs:
+        if pr_comments_enabled is None and 'prCommentsEnabled' in kwargs:
             pr_comments_enabled = kwargs['prCommentsEnabled']
-        if 'previewBranchExcludes' in kwargs:
+        if preview_branch_excludes is None and 'previewBranchExcludes' in kwargs:
             preview_branch_excludes = kwargs['previewBranchExcludes']
-        if 'previewBranchIncludes' in kwargs:
+        if preview_branch_includes is None and 'previewBranchIncludes' in kwargs:
             preview_branch_includes = kwargs['previewBranchIncludes']
-        if 'previewDeploymentSetting' in kwargs:
+        if preview_deployment_setting is None and 'previewDeploymentSetting' in kwargs:
             preview_deployment_setting = kwargs['previewDeploymentSetting']
-        if 'productionDeploymentEnabled' in kwargs:
+        if production_deployment_enabled is None and 'productionDeploymentEnabled' in kwargs:
             production_deployment_enabled = kwargs['productionDeploymentEnabled']
-        if 'repoName' in kwargs:
+        if repo_name is None and 'repoName' in kwargs:
             repo_name = kwargs['repoName']
 
         _setter("production_branch", production_branch)
@@ -13958,11 +14142,13 @@ class RateLimitActionArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             mode: pulumi.Input[str],
+             mode: Optional[pulumi.Input[str]] = None,
              response: Optional[pulumi.Input['RateLimitActionResponseArgs']] = None,
              timeout: Optional[pulumi.Input[int]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
+        if mode is None:
+            raise TypeError("Missing 'mode' argument")
 
         _setter("mode", mode)
         if response is not None:
@@ -14024,12 +14210,16 @@ class RateLimitActionResponseArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             body: pulumi.Input[str],
-             content_type: pulumi.Input[str],
+             body: Optional[pulumi.Input[str]] = None,
+             content_type: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'contentType' in kwargs:
+        if body is None:
+            raise TypeError("Missing 'body' argument")
+        if content_type is None and 'contentType' in kwargs:
             content_type = kwargs['contentType']
+        if content_type is None:
+            raise TypeError("Missing 'content_type' argument")
 
         _setter("body", body)
         _setter("content_type", content_type)
@@ -14170,7 +14360,7 @@ class RateLimitMatchRequestArgs:
              url_pattern: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'urlPattern' in kwargs:
+        if url_pattern is None and 'urlPattern' in kwargs:
             url_pattern = kwargs['urlPattern']
 
         if methods is not None:
@@ -14242,7 +14432,7 @@ class RateLimitMatchResponseArgs:
              statuses: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'originTraffic' in kwargs:
+        if origin_traffic is None and 'originTraffic' in kwargs:
             origin_traffic = kwargs['originTraffic']
 
         if headers is not None:
@@ -14417,33 +14607,33 @@ class RecordDataArgs:
              weight: Optional[pulumi.Input[int]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'digestType' in kwargs:
+        if digest_type is None and 'digestType' in kwargs:
             digest_type = kwargs['digestType']
-        if 'keyTag' in kwargs:
+        if key_tag is None and 'keyTag' in kwargs:
             key_tag = kwargs['keyTag']
-        if 'latDegrees' in kwargs:
+        if lat_degrees is None and 'latDegrees' in kwargs:
             lat_degrees = kwargs['latDegrees']
-        if 'latDirection' in kwargs:
+        if lat_direction is None and 'latDirection' in kwargs:
             lat_direction = kwargs['latDirection']
-        if 'latMinutes' in kwargs:
+        if lat_minutes is None and 'latMinutes' in kwargs:
             lat_minutes = kwargs['latMinutes']
-        if 'latSeconds' in kwargs:
+        if lat_seconds is None and 'latSeconds' in kwargs:
             lat_seconds = kwargs['latSeconds']
-        if 'longDegrees' in kwargs:
+        if long_degrees is None and 'longDegrees' in kwargs:
             long_degrees = kwargs['longDegrees']
-        if 'longDirection' in kwargs:
+        if long_direction is None and 'longDirection' in kwargs:
             long_direction = kwargs['longDirection']
-        if 'longMinutes' in kwargs:
+        if long_minutes is None and 'longMinutes' in kwargs:
             long_minutes = kwargs['longMinutes']
-        if 'longSeconds' in kwargs:
+        if long_seconds is None and 'longSeconds' in kwargs:
             long_seconds = kwargs['longSeconds']
-        if 'matchingType' in kwargs:
+        if matching_type is None and 'matchingType' in kwargs:
             matching_type = kwargs['matchingType']
-        if 'precisionHorz' in kwargs:
+        if precision_horz is None and 'precisionHorz' in kwargs:
             precision_horz = kwargs['precisionHorz']
-        if 'precisionVert' in kwargs:
+        if precision_vert is None and 'precisionVert' in kwargs:
             precision_vert = kwargs['precisionVert']
-        if 'publicKey' in kwargs:
+        if public_key is None and 'publicKey' in kwargs:
             public_key = kwargs['publicKey']
 
         if algorithm is not None:
@@ -14924,7 +15114,7 @@ class RulesetRuleArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             expression: pulumi.Input[str],
+             expression: Optional[pulumi.Input[str]] = None,
              action: Optional[pulumi.Input[str]] = None,
              action_parameters: Optional[pulumi.Input['RulesetRuleActionParametersArgs']] = None,
              description: Optional[pulumi.Input[str]] = None,
@@ -14938,11 +15128,13 @@ class RulesetRuleArgs:
              version: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'actionParameters' in kwargs:
+        if expression is None:
+            raise TypeError("Missing 'expression' argument")
+        if action_parameters is None and 'actionParameters' in kwargs:
             action_parameters = kwargs['actionParameters']
-        if 'exposedCredentialCheck' in kwargs:
+        if exposed_credential_check is None and 'exposedCredentialCheck' in kwargs:
             exposed_credential_check = kwargs['exposedCredentialCheck']
-        if 'lastUpdated' in kwargs:
+        if last_updated is None and 'lastUpdated' in kwargs:
             last_updated = kwargs['lastUpdated']
 
         _setter("expression", expression)
@@ -15330,61 +15522,61 @@ class RulesetRuleActionParametersArgs:
              version: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'additionalCacheablePorts' in kwargs:
+        if additional_cacheable_ports is None and 'additionalCacheablePorts' in kwargs:
             additional_cacheable_ports = kwargs['additionalCacheablePorts']
-        if 'automaticHttpsRewrites' in kwargs:
+        if automatic_https_rewrites is None and 'automaticHttpsRewrites' in kwargs:
             automatic_https_rewrites = kwargs['automaticHttpsRewrites']
-        if 'browserTtl' in kwargs:
+        if browser_ttl is None and 'browserTtl' in kwargs:
             browser_ttl = kwargs['browserTtl']
-        if 'cacheKey' in kwargs:
+        if cache_key is None and 'cacheKey' in kwargs:
             cache_key = kwargs['cacheKey']
-        if 'contentType' in kwargs:
+        if content_type is None and 'contentType' in kwargs:
             content_type = kwargs['contentType']
-        if 'cookieFields' in kwargs:
+        if cookie_fields is None and 'cookieFields' in kwargs:
             cookie_fields = kwargs['cookieFields']
-        if 'disableApps' in kwargs:
+        if disable_apps is None and 'disableApps' in kwargs:
             disable_apps = kwargs['disableApps']
-        if 'disableRailgun' in kwargs:
+        if disable_railgun is None and 'disableRailgun' in kwargs:
             disable_railgun = kwargs['disableRailgun']
-        if 'disableZaraz' in kwargs:
+        if disable_zaraz is None and 'disableZaraz' in kwargs:
             disable_zaraz = kwargs['disableZaraz']
-        if 'edgeTtl' in kwargs:
+        if edge_ttl is None and 'edgeTtl' in kwargs:
             edge_ttl = kwargs['edgeTtl']
-        if 'emailObfuscation' in kwargs:
+        if email_obfuscation is None and 'emailObfuscation' in kwargs:
             email_obfuscation = kwargs['emailObfuscation']
-        if 'fromList' in kwargs:
+        if from_list is None and 'fromList' in kwargs:
             from_list = kwargs['fromList']
-        if 'fromValue' in kwargs:
+        if from_value is None and 'fromValue' in kwargs:
             from_value = kwargs['fromValue']
-        if 'hostHeader' in kwargs:
+        if host_header is None and 'hostHeader' in kwargs:
             host_header = kwargs['hostHeader']
-        if 'hotlinkProtection' in kwargs:
+        if hotlink_protection is None and 'hotlinkProtection' in kwargs:
             hotlink_protection = kwargs['hotlinkProtection']
-        if 'matchedData' in kwargs:
+        if matched_data is None and 'matchedData' in kwargs:
             matched_data = kwargs['matchedData']
-        if 'opportunisticEncryption' in kwargs:
+        if opportunistic_encryption is None and 'opportunisticEncryption' in kwargs:
             opportunistic_encryption = kwargs['opportunisticEncryption']
-        if 'originCacheControl' in kwargs:
+        if origin_cache_control is None and 'originCacheControl' in kwargs:
             origin_cache_control = kwargs['originCacheControl']
-        if 'originErrorPagePassthru' in kwargs:
+        if origin_error_page_passthru is None and 'originErrorPagePassthru' in kwargs:
             origin_error_page_passthru = kwargs['originErrorPagePassthru']
-        if 'readTimeout' in kwargs:
+        if read_timeout is None and 'readTimeout' in kwargs:
             read_timeout = kwargs['readTimeout']
-        if 'requestFields' in kwargs:
+        if request_fields is None and 'requestFields' in kwargs:
             request_fields = kwargs['requestFields']
-        if 'respectStrongEtags' in kwargs:
+        if respect_strong_etags is None and 'respectStrongEtags' in kwargs:
             respect_strong_etags = kwargs['respectStrongEtags']
-        if 'responseFields' in kwargs:
+        if response_fields is None and 'responseFields' in kwargs:
             response_fields = kwargs['responseFields']
-        if 'rocketLoader' in kwargs:
+        if rocket_loader is None and 'rocketLoader' in kwargs:
             rocket_loader = kwargs['rocketLoader']
-        if 'securityLevel' in kwargs:
+        if security_level is None and 'securityLevel' in kwargs:
             security_level = kwargs['securityLevel']
-        if 'serveStale' in kwargs:
+        if serve_stale is None and 'serveStale' in kwargs:
             serve_stale = kwargs['serveStale']
-        if 'serverSideExcludes' in kwargs:
+        if server_side_excludes is None and 'serverSideExcludes' in kwargs:
             server_side_excludes = kwargs['serverSideExcludes']
-        if 'statusCode' in kwargs:
+        if status_code is None and 'statusCode' in kwargs:
             status_code = kwargs['statusCode']
 
         if additional_cacheable_ports is not None:
@@ -16114,9 +16306,11 @@ class RulesetRuleActionParametersAlgorithmArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             name: pulumi.Input[str],
+             name: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
+        if name is None:
+            raise TypeError("Missing 'name' argument")
 
         _setter("name", name)
 
@@ -16220,10 +16414,12 @@ class RulesetRuleActionParametersBrowserTtlArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             mode: pulumi.Input[str],
+             mode: Optional[pulumi.Input[str]] = None,
              default: Optional[pulumi.Input[int]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
+        if mode is None:
+            raise TypeError("Missing 'mode' argument")
 
         _setter("mode", mode)
         if default is not None:
@@ -16283,13 +16479,13 @@ class RulesetRuleActionParametersCacheKeyArgs:
              ignore_query_strings_order: Optional[pulumi.Input[bool]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'cacheByDeviceType' in kwargs:
+        if cache_by_device_type is None and 'cacheByDeviceType' in kwargs:
             cache_by_device_type = kwargs['cacheByDeviceType']
-        if 'cacheDeceptionArmor' in kwargs:
+        if cache_deception_armor is None and 'cacheDeceptionArmor' in kwargs:
             cache_deception_armor = kwargs['cacheDeceptionArmor']
-        if 'customKey' in kwargs:
+        if custom_key is None and 'customKey' in kwargs:
             custom_key = kwargs['customKey']
-        if 'ignoreQueryStringsOrder' in kwargs:
+        if ignore_query_strings_order is None and 'ignoreQueryStringsOrder' in kwargs:
             ignore_query_strings_order = kwargs['ignoreQueryStringsOrder']
 
         if cache_by_device_type is not None:
@@ -16383,7 +16579,7 @@ class RulesetRuleActionParametersCacheKeyCustomKeyArgs:
              user: Optional[pulumi.Input['RulesetRuleActionParametersCacheKeyCustomKeyUserArgs']] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'queryString' in kwargs:
+        if query_string is None and 'queryString' in kwargs:
             query_string = kwargs['queryString']
 
         if cookie is not None:
@@ -16479,7 +16675,7 @@ class RulesetRuleActionParametersCacheKeyCustomKeyCookieArgs:
              includes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'checkPresences' in kwargs:
+        if check_presences is None and 'checkPresences' in kwargs:
             check_presences = kwargs['checkPresences']
 
         if check_presences is not None:
@@ -16537,9 +16733,9 @@ class RulesetRuleActionParametersCacheKeyCustomKeyHeaderArgs:
              includes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'checkPresences' in kwargs:
+        if check_presences is None and 'checkPresences' in kwargs:
             check_presences = kwargs['checkPresences']
-        if 'excludeOrigin' in kwargs:
+        if exclude_origin is None and 'excludeOrigin' in kwargs:
             exclude_origin = kwargs['excludeOrigin']
 
         if check_presences is not None:
@@ -16697,7 +16893,7 @@ class RulesetRuleActionParametersCacheKeyCustomKeyUserArgs:
              lang: Optional[pulumi.Input[bool]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'deviceType' in kwargs:
+        if device_type is None and 'deviceType' in kwargs:
             device_type = kwargs['deviceType']
 
         if device_type is not None:
@@ -16764,12 +16960,14 @@ class RulesetRuleActionParametersEdgeTtlArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             mode: pulumi.Input[str],
+             mode: Optional[pulumi.Input[str]] = None,
              default: Optional[pulumi.Input[int]] = None,
              status_code_ttls: Optional[pulumi.Input[Sequence[pulumi.Input['RulesetRuleActionParametersEdgeTtlStatusCodeTtlArgs']]]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'statusCodeTtls' in kwargs:
+        if mode is None:
+            raise TypeError("Missing 'mode' argument")
+        if status_code_ttls is None and 'statusCodeTtls' in kwargs:
             status_code_ttls = kwargs['statusCodeTtls']
 
         _setter("mode", mode)
@@ -16840,9 +17038,9 @@ class RulesetRuleActionParametersEdgeTtlStatusCodeTtlArgs:
              value: Optional[pulumi.Input[int]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'statusCode' in kwargs:
+        if status_code is None and 'statusCode' in kwargs:
             status_code = kwargs['statusCode']
-        if 'statusCodeRanges' in kwargs:
+        if status_code_ranges is None and 'statusCodeRanges' in kwargs:
             status_code_ranges = kwargs['statusCodeRanges']
 
         if status_code is not None:
@@ -16910,7 +17108,7 @@ class RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRangeArgs:
              to: Optional[pulumi.Input[int]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'from' in kwargs:
+        if from_ is None and 'from' in kwargs:
             from_ = kwargs['from']
 
         if from_ is not None:
@@ -17020,11 +17218,11 @@ class RulesetRuleActionParametersFromValueArgs:
              target_url: Optional[pulumi.Input['RulesetRuleActionParametersFromValueTargetUrlArgs']] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'preserveQueryString' in kwargs:
+        if preserve_query_string is None and 'preserveQueryString' in kwargs:
             preserve_query_string = kwargs['preserveQueryString']
-        if 'statusCode' in kwargs:
+        if status_code is None and 'statusCode' in kwargs:
             status_code = kwargs['statusCode']
-        if 'targetUrl' in kwargs:
+        if target_url is None and 'targetUrl' in kwargs:
             target_url = kwargs['targetUrl']
 
         if preserve_query_string is not None:
@@ -17228,7 +17426,7 @@ class RulesetRuleActionParametersMatchedDataArgs:
              public_key: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'publicKey' in kwargs:
+        if public_key is None and 'publicKey' in kwargs:
             public_key = kwargs['publicKey']
 
         if public_key is not None:
@@ -17332,7 +17530,7 @@ class RulesetRuleActionParametersOverridesArgs:
              sensitivity_level: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'sensitivityLevel' in kwargs:
+        if sensitivity_level is None and 'sensitivityLevel' in kwargs:
             sensitivity_level = kwargs['sensitivityLevel']
 
         if action is not None:
@@ -17510,9 +17708,9 @@ class RulesetRuleActionParametersOverridesRuleArgs:
              sensitivity_level: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'scoreThreshold' in kwargs:
+        if score_threshold is None and 'scoreThreshold' in kwargs:
             score_threshold = kwargs['scoreThreshold']
-        if 'sensitivityLevel' in kwargs:
+        if sensitivity_level is None and 'sensitivityLevel' in kwargs:
             sensitivity_level = kwargs['sensitivityLevel']
 
         if action is not None:
@@ -17612,9 +17810,9 @@ class RulesetRuleActionParametersResponseArgs:
              status_code: Optional[pulumi.Input[int]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'contentType' in kwargs:
+        if content_type is None and 'contentType' in kwargs:
             content_type = kwargs['contentType']
-        if 'statusCode' in kwargs:
+        if status_code is None and 'statusCode' in kwargs:
             status_code = kwargs['statusCode']
 
         if content is not None:
@@ -17678,7 +17876,7 @@ class RulesetRuleActionParametersServeStaleArgs:
              disable_stale_while_updating: Optional[pulumi.Input[bool]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'disableStaleWhileUpdating' in kwargs:
+        if disable_stale_while_updating is None and 'disableStaleWhileUpdating' in kwargs:
             disable_stale_while_updating = kwargs['disableStaleWhileUpdating']
 
         if disable_stale_while_updating is not None:
@@ -17926,9 +18124,9 @@ class RulesetRuleExposedCredentialCheckArgs:
              username_expression: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'passwordExpression' in kwargs:
+        if password_expression is None and 'passwordExpression' in kwargs:
             password_expression = kwargs['passwordExpression']
-        if 'usernameExpression' in kwargs:
+        if username_expression is None and 'usernameExpression' in kwargs:
             username_expression = kwargs['usernameExpression']
 
         if password_expression is not None:
@@ -18030,7 +18228,7 @@ class RulesetRuleRatelimitArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             requests_to_origin: pulumi.Input[bool],
+             requests_to_origin: Optional[pulumi.Input[bool]] = None,
              characteristics: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              counting_expression: Optional[pulumi.Input[str]] = None,
              mitigation_timeout: Optional[pulumi.Input[int]] = None,
@@ -18040,17 +18238,19 @@ class RulesetRuleRatelimitArgs:
              score_response_header_name: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'requestsToOrigin' in kwargs:
+        if requests_to_origin is None and 'requestsToOrigin' in kwargs:
             requests_to_origin = kwargs['requestsToOrigin']
-        if 'countingExpression' in kwargs:
+        if requests_to_origin is None:
+            raise TypeError("Missing 'requests_to_origin' argument")
+        if counting_expression is None and 'countingExpression' in kwargs:
             counting_expression = kwargs['countingExpression']
-        if 'mitigationTimeout' in kwargs:
+        if mitigation_timeout is None and 'mitigationTimeout' in kwargs:
             mitigation_timeout = kwargs['mitigationTimeout']
-        if 'requestsPerPeriod' in kwargs:
+        if requests_per_period is None and 'requestsPerPeriod' in kwargs:
             requests_per_period = kwargs['requestsPerPeriod']
-        if 'scorePerPeriod' in kwargs:
+        if score_per_period is None and 'scorePerPeriod' in kwargs:
             score_per_period = kwargs['scorePerPeriod']
-        if 'scoreResponseHeaderName' in kwargs:
+        if score_response_header_name is None and 'scoreResponseHeaderName' in kwargs:
             score_response_header_name = kwargs['scoreResponseHeaderName']
 
         _setter("requests_to_origin", requests_to_origin)
@@ -18183,10 +18383,14 @@ class SpectrumApplicationDnsArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             name: pulumi.Input[str],
-             type: pulumi.Input[str],
+             name: Optional[pulumi.Input[str]] = None,
+             type: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
 
         _setter("name", name)
         _setter("type", type)
@@ -18236,11 +18440,13 @@ class SpectrumApplicationEdgeIpsArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             type: pulumi.Input[str],
+             type: Optional[pulumi.Input[str]] = None,
              connectivity: Optional[pulumi.Input[str]] = None,
              ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
+        if type is None:
+            raise TypeError("Missing 'type' argument")
 
         _setter("type", type)
         if connectivity is not None:
@@ -18299,9 +18505,11 @@ class SpectrumApplicationOriginDnsArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             name: pulumi.Input[str],
+             name: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
+        if name is None:
+            raise TypeError("Missing 'name' argument")
 
         _setter("name", name)
 
@@ -18335,10 +18543,14 @@ class SpectrumApplicationOriginPortRangeArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             end: pulumi.Input[int],
-             start: pulumi.Input[int],
+             end: Optional[pulumi.Input[int]] = None,
+             start: Optional[pulumi.Input[int]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
+        if end is None:
+            raise TypeError("Missing 'end' argument")
+        if start is None:
+            raise TypeError("Missing 'start' argument")
 
         _setter("end", end)
         _setter("start", start)
@@ -18458,17 +18670,23 @@ class TeamsAccountAntivirusArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             enabled_download_phase: pulumi.Input[bool],
-             enabled_upload_phase: pulumi.Input[bool],
-             fail_closed: pulumi.Input[bool],
+             enabled_download_phase: Optional[pulumi.Input[bool]] = None,
+             enabled_upload_phase: Optional[pulumi.Input[bool]] = None,
+             fail_closed: Optional[pulumi.Input[bool]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'enabledDownloadPhase' in kwargs:
+        if enabled_download_phase is None and 'enabledDownloadPhase' in kwargs:
             enabled_download_phase = kwargs['enabledDownloadPhase']
-        if 'enabledUploadPhase' in kwargs:
+        if enabled_download_phase is None:
+            raise TypeError("Missing 'enabled_download_phase' argument")
+        if enabled_upload_phase is None and 'enabledUploadPhase' in kwargs:
             enabled_upload_phase = kwargs['enabledUploadPhase']
-        if 'failClosed' in kwargs:
+        if enabled_upload_phase is None:
+            raise TypeError("Missing 'enabled_upload_phase' argument")
+        if fail_closed is None and 'failClosed' in kwargs:
             fail_closed = kwargs['failClosed']
+        if fail_closed is None:
+            raise TypeError("Missing 'fail_closed' argument")
 
         _setter("enabled_download_phase", enabled_download_phase)
         _setter("enabled_upload_phase", enabled_upload_phase)
@@ -18556,17 +18774,17 @@ class TeamsAccountBlockPageArgs:
              name: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'backgroundColor' in kwargs:
+        if background_color is None and 'backgroundColor' in kwargs:
             background_color = kwargs['backgroundColor']
-        if 'footerText' in kwargs:
+        if footer_text is None and 'footerText' in kwargs:
             footer_text = kwargs['footerText']
-        if 'headerText' in kwargs:
+        if header_text is None and 'headerText' in kwargs:
             header_text = kwargs['headerText']
-        if 'logoPath' in kwargs:
+        if logo_path is None and 'logoPath' in kwargs:
             logo_path = kwargs['logoPath']
-        if 'mailtoAddress' in kwargs:
+        if mailto_address is None and 'mailtoAddress' in kwargs:
             mailto_address = kwargs['mailtoAddress']
-        if 'mailtoSubject' in kwargs:
+        if mailto_subject is None and 'mailtoSubject' in kwargs:
             mailto_subject = kwargs['mailtoSubject']
 
         if background_color is not None:
@@ -18734,14 +18952,18 @@ class TeamsAccountLoggingArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             redact_pii: pulumi.Input[bool],
-             settings_by_rule_type: pulumi.Input['TeamsAccountLoggingSettingsByRuleTypeArgs'],
+             redact_pii: Optional[pulumi.Input[bool]] = None,
+             settings_by_rule_type: Optional[pulumi.Input['TeamsAccountLoggingSettingsByRuleTypeArgs']] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'redactPii' in kwargs:
+        if redact_pii is None and 'redactPii' in kwargs:
             redact_pii = kwargs['redactPii']
-        if 'settingsByRuleType' in kwargs:
+        if redact_pii is None:
+            raise TypeError("Missing 'redact_pii' argument")
+        if settings_by_rule_type is None and 'settingsByRuleType' in kwargs:
             settings_by_rule_type = kwargs['settingsByRuleType']
+        if settings_by_rule_type is None:
+            raise TypeError("Missing 'settings_by_rule_type' argument")
 
         _setter("redact_pii", redact_pii)
         _setter("settings_by_rule_type", settings_by_rule_type)
@@ -18791,11 +19013,17 @@ class TeamsAccountLoggingSettingsByRuleTypeArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             dns: pulumi.Input['TeamsAccountLoggingSettingsByRuleTypeDnsArgs'],
-             http: pulumi.Input['TeamsAccountLoggingSettingsByRuleTypeHttpArgs'],
-             l4: pulumi.Input['TeamsAccountLoggingSettingsByRuleTypeL4Args'],
+             dns: Optional[pulumi.Input['TeamsAccountLoggingSettingsByRuleTypeDnsArgs']] = None,
+             http: Optional[pulumi.Input['TeamsAccountLoggingSettingsByRuleTypeHttpArgs']] = None,
+             l4: Optional[pulumi.Input['TeamsAccountLoggingSettingsByRuleTypeL4Args']] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
+        if dns is None:
+            raise TypeError("Missing 'dns' argument")
+        if http is None:
+            raise TypeError("Missing 'http' argument")
+        if l4 is None:
+            raise TypeError("Missing 'l4' argument")
 
         _setter("dns", dns)
         _setter("http", http)
@@ -18854,14 +19082,18 @@ class TeamsAccountLoggingSettingsByRuleTypeDnsArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             log_all: pulumi.Input[bool],
-             log_blocks: pulumi.Input[bool],
+             log_all: Optional[pulumi.Input[bool]] = None,
+             log_blocks: Optional[pulumi.Input[bool]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'logAll' in kwargs:
+        if log_all is None and 'logAll' in kwargs:
             log_all = kwargs['logAll']
-        if 'logBlocks' in kwargs:
+        if log_all is None:
+            raise TypeError("Missing 'log_all' argument")
+        if log_blocks is None and 'logBlocks' in kwargs:
             log_blocks = kwargs['logBlocks']
+        if log_blocks is None:
+            raise TypeError("Missing 'log_blocks' argument")
 
         _setter("log_all", log_all)
         _setter("log_blocks", log_blocks)
@@ -18904,14 +19136,18 @@ class TeamsAccountLoggingSettingsByRuleTypeHttpArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             log_all: pulumi.Input[bool],
-             log_blocks: pulumi.Input[bool],
+             log_all: Optional[pulumi.Input[bool]] = None,
+             log_blocks: Optional[pulumi.Input[bool]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'logAll' in kwargs:
+        if log_all is None and 'logAll' in kwargs:
             log_all = kwargs['logAll']
-        if 'logBlocks' in kwargs:
+        if log_all is None:
+            raise TypeError("Missing 'log_all' argument")
+        if log_blocks is None and 'logBlocks' in kwargs:
             log_blocks = kwargs['logBlocks']
+        if log_blocks is None:
+            raise TypeError("Missing 'log_blocks' argument")
 
         _setter("log_all", log_all)
         _setter("log_blocks", log_blocks)
@@ -18954,14 +19190,18 @@ class TeamsAccountLoggingSettingsByRuleTypeL4Args:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             log_all: pulumi.Input[bool],
-             log_blocks: pulumi.Input[bool],
+             log_all: Optional[pulumi.Input[bool]] = None,
+             log_blocks: Optional[pulumi.Input[bool]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'logAll' in kwargs:
+        if log_all is None and 'logAll' in kwargs:
             log_all = kwargs['logAll']
-        if 'logBlocks' in kwargs:
+        if log_all is None:
+            raise TypeError("Missing 'log_all' argument")
+        if log_blocks is None and 'logBlocks' in kwargs:
             log_blocks = kwargs['logBlocks']
+        if log_blocks is None:
+            raise TypeError("Missing 'log_blocks' argument")
 
         _setter("log_all", log_all)
         _setter("log_blocks", log_blocks)
@@ -19002,11 +19242,13 @@ class TeamsAccountPayloadLogArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             public_key: pulumi.Input[str],
+             public_key: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'publicKey' in kwargs:
+        if public_key is None and 'publicKey' in kwargs:
             public_key = kwargs['publicKey']
+        if public_key is None:
+            raise TypeError("Missing 'public_key' argument")
 
         _setter("public_key", public_key)
 
@@ -19043,13 +19285,19 @@ class TeamsAccountProxyArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             root_ca: pulumi.Input[bool],
-             tcp: pulumi.Input[bool],
-             udp: pulumi.Input[bool],
+             root_ca: Optional[pulumi.Input[bool]] = None,
+             tcp: Optional[pulumi.Input[bool]] = None,
+             udp: Optional[pulumi.Input[bool]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'rootCa' in kwargs:
+        if root_ca is None and 'rootCa' in kwargs:
             root_ca = kwargs['rootCa']
+        if root_ca is None:
+            raise TypeError("Missing 'root_ca' argument")
+        if tcp is None:
+            raise TypeError("Missing 'tcp' argument")
+        if udp is None:
+            raise TypeError("Missing 'udp' argument")
 
         _setter("root_ca", root_ca)
         _setter("tcp", tcp)
@@ -19106,11 +19354,13 @@ class TeamsAccountSshSessionLogArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             public_key: pulumi.Input[str],
+             public_key: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'publicKey' in kwargs:
+        if public_key is None and 'publicKey' in kwargs:
             public_key = kwargs['publicKey']
+        if public_key is None:
+            raise TypeError("Missing 'public_key' argument")
 
         _setter("public_key", public_key)
 
@@ -19144,10 +19394,12 @@ class TeamsLocationNetworkArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             network: pulumi.Input[str],
+             network: Optional[pulumi.Input[str]] = None,
              id: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
+        if network is None:
+            raise TypeError("Missing 'network' argument")
 
         _setter("network", network)
         if id is not None:
@@ -19255,33 +19507,33 @@ class TeamsRuleRuleSettingsArgs:
              untrusted_cert: Optional[pulumi.Input['TeamsRuleRuleSettingsUntrustedCertArgs']] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'addHeaders' in kwargs:
+        if add_headers is None and 'addHeaders' in kwargs:
             add_headers = kwargs['addHeaders']
-        if 'allowChildBypass' in kwargs:
+        if allow_child_bypass is None and 'allowChildBypass' in kwargs:
             allow_child_bypass = kwargs['allowChildBypass']
-        if 'auditSsh' in kwargs:
+        if audit_ssh is None and 'auditSsh' in kwargs:
             audit_ssh = kwargs['auditSsh']
-        if 'bisoAdminControls' in kwargs:
+        if biso_admin_controls is None and 'bisoAdminControls' in kwargs:
             biso_admin_controls = kwargs['bisoAdminControls']
-        if 'blockPageEnabled' in kwargs:
+        if block_page_enabled is None and 'blockPageEnabled' in kwargs:
             block_page_enabled = kwargs['blockPageEnabled']
-        if 'blockPageReason' in kwargs:
+        if block_page_reason is None and 'blockPageReason' in kwargs:
             block_page_reason = kwargs['blockPageReason']
-        if 'bypassParentRule' in kwargs:
+        if bypass_parent_rule is None and 'bypassParentRule' in kwargs:
             bypass_parent_rule = kwargs['bypassParentRule']
-        if 'checkSession' in kwargs:
+        if check_session is None and 'checkSession' in kwargs:
             check_session = kwargs['checkSession']
-        if 'insecureDisableDnssecValidation' in kwargs:
+        if insecure_disable_dnssec_validation is None and 'insecureDisableDnssecValidation' in kwargs:
             insecure_disable_dnssec_validation = kwargs['insecureDisableDnssecValidation']
-        if 'ipCategories' in kwargs:
+        if ip_categories is None and 'ipCategories' in kwargs:
             ip_categories = kwargs['ipCategories']
-        if 'overrideHost' in kwargs:
+        if override_host is None and 'overrideHost' in kwargs:
             override_host = kwargs['overrideHost']
-        if 'overrideIps' in kwargs:
+        if override_ips is None and 'overrideIps' in kwargs:
             override_ips = kwargs['overrideIps']
-        if 'payloadLog' in kwargs:
+        if payload_log is None and 'payloadLog' in kwargs:
             payload_log = kwargs['payloadLog']
-        if 'untrustedCert' in kwargs:
+        if untrusted_cert is None and 'untrustedCert' in kwargs:
             untrusted_cert = kwargs['untrustedCert']
 
         if add_headers is not None:
@@ -19524,11 +19776,13 @@ class TeamsRuleRuleSettingsAuditSshArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             command_logging: pulumi.Input[bool],
+             command_logging: Optional[pulumi.Input[bool]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'commandLogging' in kwargs:
+        if command_logging is None and 'commandLogging' in kwargs:
             command_logging = kwargs['commandLogging']
+        if command_logging is None:
+            raise TypeError("Missing 'command_logging' argument")
 
         _setter("command_logging", command_logging)
 
@@ -19578,15 +19832,15 @@ class TeamsRuleRuleSettingsBisoAdminControlsArgs:
              disable_upload: Optional[pulumi.Input[bool]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'disableCopyPaste' in kwargs:
+        if disable_copy_paste is None and 'disableCopyPaste' in kwargs:
             disable_copy_paste = kwargs['disableCopyPaste']
-        if 'disableDownload' in kwargs:
+        if disable_download is None and 'disableDownload' in kwargs:
             disable_download = kwargs['disableDownload']
-        if 'disableKeyboard' in kwargs:
+        if disable_keyboard is None and 'disableKeyboard' in kwargs:
             disable_keyboard = kwargs['disableKeyboard']
-        if 'disablePrinting' in kwargs:
+        if disable_printing is None and 'disablePrinting' in kwargs:
             disable_printing = kwargs['disablePrinting']
-        if 'disableUpload' in kwargs:
+        if disable_upload is None and 'disableUpload' in kwargs:
             disable_upload = kwargs['disableUpload']
 
         if disable_copy_paste is not None:
@@ -19678,10 +19932,14 @@ class TeamsRuleRuleSettingsCheckSessionArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             duration: pulumi.Input[str],
-             enforce: pulumi.Input[bool],
+             duration: Optional[pulumi.Input[str]] = None,
+             enforce: Optional[pulumi.Input[bool]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
+        if duration is None:
+            raise TypeError("Missing 'duration' argument")
+        if enforce is None:
+            raise TypeError("Missing 'enforce' argument")
 
         _setter("duration", duration)
         _setter("enforce", enforce)
@@ -19731,12 +19989,16 @@ class TeamsRuleRuleSettingsEgressArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             ipv4: pulumi.Input[str],
-             ipv6: pulumi.Input[str],
+             ipv4: Optional[pulumi.Input[str]] = None,
+             ipv6: Optional[pulumi.Input[str]] = None,
              ipv4_fallback: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'ipv4Fallback' in kwargs:
+        if ipv4 is None:
+            raise TypeError("Missing 'ipv4' argument")
+        if ipv6 is None:
+            raise TypeError("Missing 'ipv6' argument")
+        if ipv4_fallback is None and 'ipv4Fallback' in kwargs:
             ipv4_fallback = kwargs['ipv4Fallback']
 
         _setter("ipv4", ipv4)
@@ -19798,10 +20060,14 @@ class TeamsRuleRuleSettingsL4overrideArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             ip: pulumi.Input[str],
-             port: pulumi.Input[int],
+             ip: Optional[pulumi.Input[str]] = None,
+             port: Optional[pulumi.Input[int]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
+        if ip is None:
+            raise TypeError("Missing 'ip' argument")
+        if port is None:
+            raise TypeError("Missing 'port' argument")
 
         _setter("ip", ip)
         _setter("port", port)
@@ -19845,9 +20111,11 @@ class TeamsRuleRuleSettingsPayloadLogArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             enabled: pulumi.Input[bool],
+             enabled: Optional[pulumi.Input[bool]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
+        if enabled is None:
+            raise TypeError("Missing 'enabled' argument")
 
         _setter("enabled", enabled)
 
@@ -19917,16 +20185,18 @@ class TunnelConfigConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             ingress_rules: pulumi.Input[Sequence[pulumi.Input['TunnelConfigConfigIngressRuleArgs']]],
+             ingress_rules: Optional[pulumi.Input[Sequence[pulumi.Input['TunnelConfigConfigIngressRuleArgs']]]] = None,
              origin_request: Optional[pulumi.Input['TunnelConfigConfigOriginRequestArgs']] = None,
              warp_routing: Optional[pulumi.Input['TunnelConfigConfigWarpRoutingArgs']] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'ingressRules' in kwargs:
+        if ingress_rules is None and 'ingressRules' in kwargs:
             ingress_rules = kwargs['ingressRules']
-        if 'originRequest' in kwargs:
+        if ingress_rules is None:
+            raise TypeError("Missing 'ingress_rules' argument")
+        if origin_request is None and 'originRequest' in kwargs:
             origin_request = kwargs['originRequest']
-        if 'warpRouting' in kwargs:
+        if warp_routing is None and 'warpRouting' in kwargs:
             warp_routing = kwargs['warpRouting']
 
         _setter("ingress_rules", ingress_rules)
@@ -19991,13 +20261,15 @@ class TunnelConfigConfigIngressRuleArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             service: pulumi.Input[str],
+             service: Optional[pulumi.Input[str]] = None,
              hostname: Optional[pulumi.Input[str]] = None,
              origin_request: Optional[pulumi.Input['TunnelConfigConfigIngressRuleOriginRequestArgs']] = None,
              path: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'originRequest' in kwargs:
+        if service is None:
+            raise TypeError("Missing 'service' argument")
+        if origin_request is None and 'originRequest' in kwargs:
             origin_request = kwargs['originRequest']
 
         _setter("service", service)
@@ -20139,39 +20411,39 @@ class TunnelConfigConfigIngressRuleOriginRequestArgs:
              tls_timeout: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'bastionMode' in kwargs:
+        if bastion_mode is None and 'bastionMode' in kwargs:
             bastion_mode = kwargs['bastionMode']
-        if 'caPool' in kwargs:
+        if ca_pool is None and 'caPool' in kwargs:
             ca_pool = kwargs['caPool']
-        if 'connectTimeout' in kwargs:
+        if connect_timeout is None and 'connectTimeout' in kwargs:
             connect_timeout = kwargs['connectTimeout']
-        if 'disableChunkedEncoding' in kwargs:
+        if disable_chunked_encoding is None and 'disableChunkedEncoding' in kwargs:
             disable_chunked_encoding = kwargs['disableChunkedEncoding']
-        if 'http2Origin' in kwargs:
+        if http2_origin is None and 'http2Origin' in kwargs:
             http2_origin = kwargs['http2Origin']
-        if 'httpHostHeader' in kwargs:
+        if http_host_header is None and 'httpHostHeader' in kwargs:
             http_host_header = kwargs['httpHostHeader']
-        if 'ipRules' in kwargs:
+        if ip_rules is None and 'ipRules' in kwargs:
             ip_rules = kwargs['ipRules']
-        if 'keepAliveConnections' in kwargs:
+        if keep_alive_connections is None and 'keepAliveConnections' in kwargs:
             keep_alive_connections = kwargs['keepAliveConnections']
-        if 'keepAliveTimeout' in kwargs:
+        if keep_alive_timeout is None and 'keepAliveTimeout' in kwargs:
             keep_alive_timeout = kwargs['keepAliveTimeout']
-        if 'noHappyEyeballs' in kwargs:
+        if no_happy_eyeballs is None and 'noHappyEyeballs' in kwargs:
             no_happy_eyeballs = kwargs['noHappyEyeballs']
-        if 'noTlsVerify' in kwargs:
+        if no_tls_verify is None and 'noTlsVerify' in kwargs:
             no_tls_verify = kwargs['noTlsVerify']
-        if 'originServerName' in kwargs:
+        if origin_server_name is None and 'originServerName' in kwargs:
             origin_server_name = kwargs['originServerName']
-        if 'proxyAddress' in kwargs:
+        if proxy_address is None and 'proxyAddress' in kwargs:
             proxy_address = kwargs['proxyAddress']
-        if 'proxyPort' in kwargs:
+        if proxy_port is None and 'proxyPort' in kwargs:
             proxy_port = kwargs['proxyPort']
-        if 'proxyType' in kwargs:
+        if proxy_type is None and 'proxyType' in kwargs:
             proxy_type = kwargs['proxyType']
-        if 'tcpKeepAlive' in kwargs:
+        if tcp_keep_alive is None and 'tcpKeepAlive' in kwargs:
             tcp_keep_alive = kwargs['tcpKeepAlive']
-        if 'tlsTimeout' in kwargs:
+        if tls_timeout is None and 'tlsTimeout' in kwargs:
             tls_timeout = kwargs['tlsTimeout']
 
         if access is not None:
@@ -20453,9 +20725,9 @@ class TunnelConfigConfigIngressRuleOriginRequestAccessArgs:
              team_name: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'audTags' in kwargs:
+        if aud_tags is None and 'audTags' in kwargs:
             aud_tags = kwargs['audTags']
-        if 'teamName' in kwargs:
+        if team_name is None and 'teamName' in kwargs:
             team_name = kwargs['teamName']
 
         if aud_tags is not None:
@@ -20657,39 +20929,39 @@ class TunnelConfigConfigOriginRequestArgs:
              tls_timeout: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'bastionMode' in kwargs:
+        if bastion_mode is None and 'bastionMode' in kwargs:
             bastion_mode = kwargs['bastionMode']
-        if 'caPool' in kwargs:
+        if ca_pool is None and 'caPool' in kwargs:
             ca_pool = kwargs['caPool']
-        if 'connectTimeout' in kwargs:
+        if connect_timeout is None and 'connectTimeout' in kwargs:
             connect_timeout = kwargs['connectTimeout']
-        if 'disableChunkedEncoding' in kwargs:
+        if disable_chunked_encoding is None and 'disableChunkedEncoding' in kwargs:
             disable_chunked_encoding = kwargs['disableChunkedEncoding']
-        if 'http2Origin' in kwargs:
+        if http2_origin is None and 'http2Origin' in kwargs:
             http2_origin = kwargs['http2Origin']
-        if 'httpHostHeader' in kwargs:
+        if http_host_header is None and 'httpHostHeader' in kwargs:
             http_host_header = kwargs['httpHostHeader']
-        if 'ipRules' in kwargs:
+        if ip_rules is None and 'ipRules' in kwargs:
             ip_rules = kwargs['ipRules']
-        if 'keepAliveConnections' in kwargs:
+        if keep_alive_connections is None and 'keepAliveConnections' in kwargs:
             keep_alive_connections = kwargs['keepAliveConnections']
-        if 'keepAliveTimeout' in kwargs:
+        if keep_alive_timeout is None and 'keepAliveTimeout' in kwargs:
             keep_alive_timeout = kwargs['keepAliveTimeout']
-        if 'noHappyEyeballs' in kwargs:
+        if no_happy_eyeballs is None and 'noHappyEyeballs' in kwargs:
             no_happy_eyeballs = kwargs['noHappyEyeballs']
-        if 'noTlsVerify' in kwargs:
+        if no_tls_verify is None and 'noTlsVerify' in kwargs:
             no_tls_verify = kwargs['noTlsVerify']
-        if 'originServerName' in kwargs:
+        if origin_server_name is None and 'originServerName' in kwargs:
             origin_server_name = kwargs['originServerName']
-        if 'proxyAddress' in kwargs:
+        if proxy_address is None and 'proxyAddress' in kwargs:
             proxy_address = kwargs['proxyAddress']
-        if 'proxyPort' in kwargs:
+        if proxy_port is None and 'proxyPort' in kwargs:
             proxy_port = kwargs['proxyPort']
-        if 'proxyType' in kwargs:
+        if proxy_type is None and 'proxyType' in kwargs:
             proxy_type = kwargs['proxyType']
-        if 'tcpKeepAlive' in kwargs:
+        if tcp_keep_alive is None and 'tcpKeepAlive' in kwargs:
             tcp_keep_alive = kwargs['tcpKeepAlive']
-        if 'tlsTimeout' in kwargs:
+        if tls_timeout is None and 'tlsTimeout' in kwargs:
             tls_timeout = kwargs['tlsTimeout']
 
         if access is not None:
@@ -20971,9 +21243,9 @@ class TunnelConfigConfigOriginRequestAccessArgs:
              team_name: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'audTags' in kwargs:
+        if aud_tags is None and 'audTags' in kwargs:
             aud_tags = kwargs['audTags']
-        if 'teamName' in kwargs:
+        if team_name is None and 'teamName' in kwargs:
             team_name = kwargs['teamName']
 
         if aud_tags is not None:
@@ -21141,10 +21413,14 @@ class UserAgentBlockingRuleConfigurationArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             target: pulumi.Input[str],
-             value: pulumi.Input[str],
+             target: Optional[pulumi.Input[str]] = None,
+             value: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
+        if target is None:
+            raise TypeError("Missing 'target' argument")
+        if value is None:
+            raise TypeError("Missing 'value' argument")
 
         _setter("target", target)
         _setter("value", value)
@@ -21191,10 +21467,12 @@ class WaitingRoomAdditionalRouteArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             host: pulumi.Input[str],
+             host: Optional[pulumi.Input[str]] = None,
              path: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
+        if host is None:
+            raise TypeError("Missing 'host' argument")
 
         _setter("host", host)
         if path is not None:
@@ -21254,14 +21532,18 @@ class WaitingRoomRulesRuleArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             action: pulumi.Input[str],
-             expression: pulumi.Input[str],
+             action: Optional[pulumi.Input[str]] = None,
+             expression: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              id: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
              version: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
+        if action is None:
+            raise TypeError("Missing 'action' argument")
+        if expression is None:
+            raise TypeError("Missing 'expression' argument")
 
         _setter("action", action)
         _setter("expression", expression)
@@ -21364,10 +21646,14 @@ class WorkerScriptAnalyticsEngineBindingArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             dataset: pulumi.Input[str],
-             name: pulumi.Input[str],
+             dataset: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
+        if dataset is None:
+            raise TypeError("Missing 'dataset' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
 
         _setter("dataset", dataset)
         _setter("name", name)
@@ -21414,12 +21700,16 @@ class WorkerScriptKvNamespaceBindingArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             name: pulumi.Input[str],
-             namespace_id: pulumi.Input[str],
+             name: Optional[pulumi.Input[str]] = None,
+             namespace_id: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'namespaceId' in kwargs:
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if namespace_id is None and 'namespaceId' in kwargs:
             namespace_id = kwargs['namespaceId']
+        if namespace_id is None:
+            raise TypeError("Missing 'namespace_id' argument")
 
         _setter("name", name)
         _setter("namespace_id", namespace_id)
@@ -21466,10 +21756,14 @@ class WorkerScriptPlainTextBindingArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             name: pulumi.Input[str],
-             text: pulumi.Input[str],
+             name: Optional[pulumi.Input[str]] = None,
+             text: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if text is None:
+            raise TypeError("Missing 'text' argument")
 
         _setter("name", name)
         _setter("text", text)
@@ -21516,10 +21810,14 @@ class WorkerScriptQueueBindingArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             binding: pulumi.Input[str],
-             queue: pulumi.Input[str],
+             binding: Optional[pulumi.Input[str]] = None,
+             queue: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
+        if binding is None:
+            raise TypeError("Missing 'binding' argument")
+        if queue is None:
+            raise TypeError("Missing 'queue' argument")
 
         _setter("binding", binding)
         _setter("queue", queue)
@@ -21566,12 +21864,16 @@ class WorkerScriptR2BucketBindingArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             bucket_name: pulumi.Input[str],
-             name: pulumi.Input[str],
+             bucket_name: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'bucketName' in kwargs:
+        if bucket_name is None and 'bucketName' in kwargs:
             bucket_name = kwargs['bucketName']
+        if bucket_name is None:
+            raise TypeError("Missing 'bucket_name' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
 
         _setter("bucket_name", bucket_name)
         _setter("name", name)
@@ -21618,10 +21920,14 @@ class WorkerScriptSecretTextBindingArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             name: pulumi.Input[str],
-             text: pulumi.Input[str],
+             name: Optional[pulumi.Input[str]] = None,
+             text: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if text is None:
+            raise TypeError("Missing 'text' argument")
 
         _setter("name", name)
         _setter("text", text)
@@ -21671,11 +21977,15 @@ class WorkerScriptServiceBindingArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             name: pulumi.Input[str],
-             service: pulumi.Input[str],
+             name: Optional[pulumi.Input[str]] = None,
+             service: Optional[pulumi.Input[str]] = None,
              environment: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if service is None:
+            raise TypeError("Missing 'service' argument")
 
         _setter("name", name)
         _setter("service", service)
@@ -21736,10 +22046,14 @@ class WorkerScriptWebassemblyBindingArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             module: pulumi.Input[str],
-             name: pulumi.Input[str],
+             module: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
+        if module is None:
+            raise TypeError("Missing 'module' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
 
         _setter("module", module)
         _setter("name", name)
@@ -21786,10 +22100,14 @@ class ZoneLockdownConfigurationArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             target: pulumi.Input[str],
-             value: pulumi.Input[str],
+             target: Optional[pulumi.Input[str]] = None,
+             value: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
+        if target is None:
+            raise TypeError("Missing 'target' argument")
+        if value is None:
+            raise TypeError("Missing 'value' argument")
 
         _setter("target", target)
         _setter("value", value)
@@ -21998,89 +22316,89 @@ class ZoneSettingsOverrideInitialSettingArgs:
              zero_rtt: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'alwaysOnline' in kwargs:
+        if always_online is None and 'alwaysOnline' in kwargs:
             always_online = kwargs['alwaysOnline']
-        if 'alwaysUseHttps' in kwargs:
+        if always_use_https is None and 'alwaysUseHttps' in kwargs:
             always_use_https = kwargs['alwaysUseHttps']
-        if 'automaticHttpsRewrites' in kwargs:
+        if automatic_https_rewrites is None and 'automaticHttpsRewrites' in kwargs:
             automatic_https_rewrites = kwargs['automaticHttpsRewrites']
-        if 'binaryAst' in kwargs:
+        if binary_ast is None and 'binaryAst' in kwargs:
             binary_ast = kwargs['binaryAst']
-        if 'browserCacheTtl' in kwargs:
+        if browser_cache_ttl is None and 'browserCacheTtl' in kwargs:
             browser_cache_ttl = kwargs['browserCacheTtl']
-        if 'browserCheck' in kwargs:
+        if browser_check is None and 'browserCheck' in kwargs:
             browser_check = kwargs['browserCheck']
-        if 'cacheLevel' in kwargs:
+        if cache_level is None and 'cacheLevel' in kwargs:
             cache_level = kwargs['cacheLevel']
-        if 'challengeTtl' in kwargs:
+        if challenge_ttl is None and 'challengeTtl' in kwargs:
             challenge_ttl = kwargs['challengeTtl']
-        if 'cnameFlattening' in kwargs:
+        if cname_flattening is None and 'cnameFlattening' in kwargs:
             cname_flattening = kwargs['cnameFlattening']
-        if 'developmentMode' in kwargs:
+        if development_mode is None and 'developmentMode' in kwargs:
             development_mode = kwargs['developmentMode']
-        if 'earlyHints' in kwargs:
+        if early_hints is None and 'earlyHints' in kwargs:
             early_hints = kwargs['earlyHints']
-        if 'emailObfuscation' in kwargs:
+        if email_obfuscation is None and 'emailObfuscation' in kwargs:
             email_obfuscation = kwargs['emailObfuscation']
-        if 'filterLogsToCloudflare' in kwargs:
+        if filter_logs_to_cloudflare is None and 'filterLogsToCloudflare' in kwargs:
             filter_logs_to_cloudflare = kwargs['filterLogsToCloudflare']
-        if 'h2Prioritization' in kwargs:
+        if h2_prioritization is None and 'h2Prioritization' in kwargs:
             h2_prioritization = kwargs['h2Prioritization']
-        if 'hotlinkProtection' in kwargs:
+        if hotlink_protection is None and 'hotlinkProtection' in kwargs:
             hotlink_protection = kwargs['hotlinkProtection']
-        if 'imageResizing' in kwargs:
+        if image_resizing is None and 'imageResizing' in kwargs:
             image_resizing = kwargs['imageResizing']
-        if 'ipGeolocation' in kwargs:
+        if ip_geolocation is None and 'ipGeolocation' in kwargs:
             ip_geolocation = kwargs['ipGeolocation']
-        if 'logToCloudflare' in kwargs:
+        if log_to_cloudflare is None and 'logToCloudflare' in kwargs:
             log_to_cloudflare = kwargs['logToCloudflare']
-        if 'maxUpload' in kwargs:
+        if max_upload is None and 'maxUpload' in kwargs:
             max_upload = kwargs['maxUpload']
-        if 'minTlsVersion' in kwargs:
+        if min_tls_version is None and 'minTlsVersion' in kwargs:
             min_tls_version = kwargs['minTlsVersion']
-        if 'mobileRedirect' in kwargs:
+        if mobile_redirect is None and 'mobileRedirect' in kwargs:
             mobile_redirect = kwargs['mobileRedirect']
-        if 'opportunisticEncryption' in kwargs:
+        if opportunistic_encryption is None and 'opportunisticEncryption' in kwargs:
             opportunistic_encryption = kwargs['opportunisticEncryption']
-        if 'opportunisticOnion' in kwargs:
+        if opportunistic_onion is None and 'opportunisticOnion' in kwargs:
             opportunistic_onion = kwargs['opportunisticOnion']
-        if 'orangeToOrange' in kwargs:
+        if orange_to_orange is None and 'orangeToOrange' in kwargs:
             orange_to_orange = kwargs['orangeToOrange']
-        if 'originErrorPagePassThru' in kwargs:
+        if origin_error_page_pass_thru is None and 'originErrorPagePassThru' in kwargs:
             origin_error_page_pass_thru = kwargs['originErrorPagePassThru']
-        if 'originMaxHttpVersion' in kwargs:
+        if origin_max_http_version is None and 'originMaxHttpVersion' in kwargs:
             origin_max_http_version = kwargs['originMaxHttpVersion']
-        if 'prefetchPreload' in kwargs:
+        if prefetch_preload is None and 'prefetchPreload' in kwargs:
             prefetch_preload = kwargs['prefetchPreload']
-        if 'privacyPass' in kwargs:
+        if privacy_pass is None and 'privacyPass' in kwargs:
             privacy_pass = kwargs['privacyPass']
-        if 'proxyReadTimeout' in kwargs:
+        if proxy_read_timeout is None and 'proxyReadTimeout' in kwargs:
             proxy_read_timeout = kwargs['proxyReadTimeout']
-        if 'pseudoIpv4' in kwargs:
+        if pseudo_ipv4 is None and 'pseudoIpv4' in kwargs:
             pseudo_ipv4 = kwargs['pseudoIpv4']
-        if 'responseBuffering' in kwargs:
+        if response_buffering is None and 'responseBuffering' in kwargs:
             response_buffering = kwargs['responseBuffering']
-        if 'rocketLoader' in kwargs:
+        if rocket_loader is None and 'rocketLoader' in kwargs:
             rocket_loader = kwargs['rocketLoader']
-        if 'securityHeader' in kwargs:
+        if security_header is None and 'securityHeader' in kwargs:
             security_header = kwargs['securityHeader']
-        if 'securityLevel' in kwargs:
+        if security_level is None and 'securityLevel' in kwargs:
             security_level = kwargs['securityLevel']
-        if 'serverSideExclude' in kwargs:
+        if server_side_exclude is None and 'serverSideExclude' in kwargs:
             server_side_exclude = kwargs['serverSideExclude']
-        if 'sortQueryStringForCache' in kwargs:
+        if sort_query_string_for_cache is None and 'sortQueryStringForCache' in kwargs:
             sort_query_string_for_cache = kwargs['sortQueryStringForCache']
-        if 'tls12Only' in kwargs:
+        if tls12_only is None and 'tls12Only' in kwargs:
             tls12_only = kwargs['tls12Only']
-        if 'tlsClientAuth' in kwargs:
+        if tls_client_auth is None and 'tlsClientAuth' in kwargs:
             tls_client_auth = kwargs['tlsClientAuth']
-        if 'trueClientIpHeader' in kwargs:
+        if true_client_ip_header is None and 'trueClientIpHeader' in kwargs:
             true_client_ip_header = kwargs['trueClientIpHeader']
-        if 'universalSsl' in kwargs:
+        if universal_ssl is None and 'universalSsl' in kwargs:
             universal_ssl = kwargs['universalSsl']
-        if 'visitorIp' in kwargs:
+        if visitor_ip is None and 'visitorIp' in kwargs:
             visitor_ip = kwargs['visitorIp']
-        if 'zeroRtt' in kwargs:
+        if zero_rtt is None and 'zeroRtt' in kwargs:
             zero_rtt = kwargs['zeroRtt']
 
         if always_online is not None:
@@ -22722,11 +23040,17 @@ class ZoneSettingsOverrideInitialSettingMinifyArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             css: pulumi.Input[str],
-             html: pulumi.Input[str],
-             js: pulumi.Input[str],
+             css: Optional[pulumi.Input[str]] = None,
+             html: Optional[pulumi.Input[str]] = None,
+             js: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
+        if css is None:
+            raise TypeError("Missing 'css' argument")
+        if html is None:
+            raise TypeError("Missing 'html' argument")
+        if js is None:
+            raise TypeError("Missing 'js' argument")
 
         _setter("css", css)
         _setter("html", html)
@@ -22775,15 +23099,21 @@ class ZoneSettingsOverrideInitialSettingMobileRedirectArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             mobile_subdomain: pulumi.Input[str],
-             status: pulumi.Input[str],
-             strip_uri: pulumi.Input[bool],
+             mobile_subdomain: Optional[pulumi.Input[str]] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             strip_uri: Optional[pulumi.Input[bool]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'mobileSubdomain' in kwargs:
+        if mobile_subdomain is None and 'mobileSubdomain' in kwargs:
             mobile_subdomain = kwargs['mobileSubdomain']
-        if 'stripUri' in kwargs:
+        if mobile_subdomain is None:
+            raise TypeError("Missing 'mobile_subdomain' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
+        if strip_uri is None and 'stripUri' in kwargs:
             strip_uri = kwargs['stripUri']
+        if strip_uri is None:
+            raise TypeError("Missing 'strip_uri' argument")
 
         _setter("mobile_subdomain", mobile_subdomain)
         _setter("status", status)
@@ -22843,9 +23173,9 @@ class ZoneSettingsOverrideInitialSettingSecurityHeaderArgs:
              preload: Optional[pulumi.Input[bool]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'includeSubdomains' in kwargs:
+        if include_subdomains is None and 'includeSubdomains' in kwargs:
             include_subdomains = kwargs['includeSubdomains']
-        if 'maxAge' in kwargs:
+        if max_age is None and 'maxAge' in kwargs:
             max_age = kwargs['maxAge']
 
         if enabled is not None:
@@ -23084,89 +23414,89 @@ class ZoneSettingsOverrideSettingsArgs:
              zero_rtt: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'alwaysOnline' in kwargs:
+        if always_online is None and 'alwaysOnline' in kwargs:
             always_online = kwargs['alwaysOnline']
-        if 'alwaysUseHttps' in kwargs:
+        if always_use_https is None and 'alwaysUseHttps' in kwargs:
             always_use_https = kwargs['alwaysUseHttps']
-        if 'automaticHttpsRewrites' in kwargs:
+        if automatic_https_rewrites is None and 'automaticHttpsRewrites' in kwargs:
             automatic_https_rewrites = kwargs['automaticHttpsRewrites']
-        if 'binaryAst' in kwargs:
+        if binary_ast is None and 'binaryAst' in kwargs:
             binary_ast = kwargs['binaryAst']
-        if 'browserCacheTtl' in kwargs:
+        if browser_cache_ttl is None and 'browserCacheTtl' in kwargs:
             browser_cache_ttl = kwargs['browserCacheTtl']
-        if 'browserCheck' in kwargs:
+        if browser_check is None and 'browserCheck' in kwargs:
             browser_check = kwargs['browserCheck']
-        if 'cacheLevel' in kwargs:
+        if cache_level is None and 'cacheLevel' in kwargs:
             cache_level = kwargs['cacheLevel']
-        if 'challengeTtl' in kwargs:
+        if challenge_ttl is None and 'challengeTtl' in kwargs:
             challenge_ttl = kwargs['challengeTtl']
-        if 'cnameFlattening' in kwargs:
+        if cname_flattening is None and 'cnameFlattening' in kwargs:
             cname_flattening = kwargs['cnameFlattening']
-        if 'developmentMode' in kwargs:
+        if development_mode is None and 'developmentMode' in kwargs:
             development_mode = kwargs['developmentMode']
-        if 'earlyHints' in kwargs:
+        if early_hints is None and 'earlyHints' in kwargs:
             early_hints = kwargs['earlyHints']
-        if 'emailObfuscation' in kwargs:
+        if email_obfuscation is None and 'emailObfuscation' in kwargs:
             email_obfuscation = kwargs['emailObfuscation']
-        if 'filterLogsToCloudflare' in kwargs:
+        if filter_logs_to_cloudflare is None and 'filterLogsToCloudflare' in kwargs:
             filter_logs_to_cloudflare = kwargs['filterLogsToCloudflare']
-        if 'h2Prioritization' in kwargs:
+        if h2_prioritization is None and 'h2Prioritization' in kwargs:
             h2_prioritization = kwargs['h2Prioritization']
-        if 'hotlinkProtection' in kwargs:
+        if hotlink_protection is None and 'hotlinkProtection' in kwargs:
             hotlink_protection = kwargs['hotlinkProtection']
-        if 'imageResizing' in kwargs:
+        if image_resizing is None and 'imageResizing' in kwargs:
             image_resizing = kwargs['imageResizing']
-        if 'ipGeolocation' in kwargs:
+        if ip_geolocation is None and 'ipGeolocation' in kwargs:
             ip_geolocation = kwargs['ipGeolocation']
-        if 'logToCloudflare' in kwargs:
+        if log_to_cloudflare is None and 'logToCloudflare' in kwargs:
             log_to_cloudflare = kwargs['logToCloudflare']
-        if 'maxUpload' in kwargs:
+        if max_upload is None and 'maxUpload' in kwargs:
             max_upload = kwargs['maxUpload']
-        if 'minTlsVersion' in kwargs:
+        if min_tls_version is None and 'minTlsVersion' in kwargs:
             min_tls_version = kwargs['minTlsVersion']
-        if 'mobileRedirect' in kwargs:
+        if mobile_redirect is None and 'mobileRedirect' in kwargs:
             mobile_redirect = kwargs['mobileRedirect']
-        if 'opportunisticEncryption' in kwargs:
+        if opportunistic_encryption is None and 'opportunisticEncryption' in kwargs:
             opportunistic_encryption = kwargs['opportunisticEncryption']
-        if 'opportunisticOnion' in kwargs:
+        if opportunistic_onion is None and 'opportunisticOnion' in kwargs:
             opportunistic_onion = kwargs['opportunisticOnion']
-        if 'orangeToOrange' in kwargs:
+        if orange_to_orange is None and 'orangeToOrange' in kwargs:
             orange_to_orange = kwargs['orangeToOrange']
-        if 'originErrorPagePassThru' in kwargs:
+        if origin_error_page_pass_thru is None and 'originErrorPagePassThru' in kwargs:
             origin_error_page_pass_thru = kwargs['originErrorPagePassThru']
-        if 'originMaxHttpVersion' in kwargs:
+        if origin_max_http_version is None and 'originMaxHttpVersion' in kwargs:
             origin_max_http_version = kwargs['originMaxHttpVersion']
-        if 'prefetchPreload' in kwargs:
+        if prefetch_preload is None and 'prefetchPreload' in kwargs:
             prefetch_preload = kwargs['prefetchPreload']
-        if 'privacyPass' in kwargs:
+        if privacy_pass is None and 'privacyPass' in kwargs:
             privacy_pass = kwargs['privacyPass']
-        if 'proxyReadTimeout' in kwargs:
+        if proxy_read_timeout is None and 'proxyReadTimeout' in kwargs:
             proxy_read_timeout = kwargs['proxyReadTimeout']
-        if 'pseudoIpv4' in kwargs:
+        if pseudo_ipv4 is None and 'pseudoIpv4' in kwargs:
             pseudo_ipv4 = kwargs['pseudoIpv4']
-        if 'responseBuffering' in kwargs:
+        if response_buffering is None and 'responseBuffering' in kwargs:
             response_buffering = kwargs['responseBuffering']
-        if 'rocketLoader' in kwargs:
+        if rocket_loader is None and 'rocketLoader' in kwargs:
             rocket_loader = kwargs['rocketLoader']
-        if 'securityHeader' in kwargs:
+        if security_header is None and 'securityHeader' in kwargs:
             security_header = kwargs['securityHeader']
-        if 'securityLevel' in kwargs:
+        if security_level is None and 'securityLevel' in kwargs:
             security_level = kwargs['securityLevel']
-        if 'serverSideExclude' in kwargs:
+        if server_side_exclude is None and 'serverSideExclude' in kwargs:
             server_side_exclude = kwargs['serverSideExclude']
-        if 'sortQueryStringForCache' in kwargs:
+        if sort_query_string_for_cache is None and 'sortQueryStringForCache' in kwargs:
             sort_query_string_for_cache = kwargs['sortQueryStringForCache']
-        if 'tls12Only' in kwargs:
+        if tls12_only is None and 'tls12Only' in kwargs:
             tls12_only = kwargs['tls12Only']
-        if 'tlsClientAuth' in kwargs:
+        if tls_client_auth is None and 'tlsClientAuth' in kwargs:
             tls_client_auth = kwargs['tlsClientAuth']
-        if 'trueClientIpHeader' in kwargs:
+        if true_client_ip_header is None and 'trueClientIpHeader' in kwargs:
             true_client_ip_header = kwargs['trueClientIpHeader']
-        if 'universalSsl' in kwargs:
+        if universal_ssl is None and 'universalSsl' in kwargs:
             universal_ssl = kwargs['universalSsl']
-        if 'visitorIp' in kwargs:
+        if visitor_ip is None and 'visitorIp' in kwargs:
             visitor_ip = kwargs['visitorIp']
-        if 'zeroRtt' in kwargs:
+        if zero_rtt is None and 'zeroRtt' in kwargs:
             zero_rtt = kwargs['zeroRtt']
 
         if always_online is not None:
@@ -23808,11 +24138,17 @@ class ZoneSettingsOverrideSettingsMinifyArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             css: pulumi.Input[str],
-             html: pulumi.Input[str],
-             js: pulumi.Input[str],
+             css: Optional[pulumi.Input[str]] = None,
+             html: Optional[pulumi.Input[str]] = None,
+             js: Optional[pulumi.Input[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
+        if css is None:
+            raise TypeError("Missing 'css' argument")
+        if html is None:
+            raise TypeError("Missing 'html' argument")
+        if js is None:
+            raise TypeError("Missing 'js' argument")
 
         _setter("css", css)
         _setter("html", html)
@@ -23861,15 +24197,21 @@ class ZoneSettingsOverrideSettingsMobileRedirectArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             mobile_subdomain: pulumi.Input[str],
-             status: pulumi.Input[str],
-             strip_uri: pulumi.Input[bool],
+             mobile_subdomain: Optional[pulumi.Input[str]] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             strip_uri: Optional[pulumi.Input[bool]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'mobileSubdomain' in kwargs:
+        if mobile_subdomain is None and 'mobileSubdomain' in kwargs:
             mobile_subdomain = kwargs['mobileSubdomain']
-        if 'stripUri' in kwargs:
+        if mobile_subdomain is None:
+            raise TypeError("Missing 'mobile_subdomain' argument")
+        if status is None:
+            raise TypeError("Missing 'status' argument")
+        if strip_uri is None and 'stripUri' in kwargs:
             strip_uri = kwargs['stripUri']
+        if strip_uri is None:
+            raise TypeError("Missing 'strip_uri' argument")
 
         _setter("mobile_subdomain", mobile_subdomain)
         _setter("status", status)
@@ -23929,9 +24271,9 @@ class ZoneSettingsOverrideSettingsSecurityHeaderArgs:
              preload: Optional[pulumi.Input[bool]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'includeSubdomains' in kwargs:
+        if include_subdomains is None and 'includeSubdomains' in kwargs:
             include_subdomains = kwargs['includeSubdomains']
-        if 'maxAge' in kwargs:
+        if max_age is None and 'maxAge' in kwargs:
             max_age = kwargs['maxAge']
 
         if enabled is not None:
@@ -24078,34 +24420,62 @@ class GetLoadBalancerPoolsPoolArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             check_regions: Sequence[str],
-             created_on: str,
-             description: str,
-             enabled: bool,
-             id: str,
-             latitude: float,
-             load_sheddings: Sequence['GetLoadBalancerPoolsPoolLoadSheddingArgs'],
-             longitude: float,
-             minimum_origins: int,
-             modified_on: str,
-             monitor: str,
-             name: str,
-             notification_email: str,
-             origins: Sequence['GetLoadBalancerPoolsPoolOriginArgs'],
+             check_regions: Optional[Sequence[str]] = None,
+             created_on: Optional[str] = None,
+             description: Optional[str] = None,
+             enabled: Optional[bool] = None,
+             id: Optional[str] = None,
+             latitude: Optional[float] = None,
+             load_sheddings: Optional[Sequence['GetLoadBalancerPoolsPoolLoadSheddingArgs']] = None,
+             longitude: Optional[float] = None,
+             minimum_origins: Optional[int] = None,
+             modified_on: Optional[str] = None,
+             monitor: Optional[str] = None,
+             name: Optional[str] = None,
+             notification_email: Optional[str] = None,
+             origins: Optional[Sequence['GetLoadBalancerPoolsPoolOriginArgs']] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'checkRegions' in kwargs:
+        if check_regions is None and 'checkRegions' in kwargs:
             check_regions = kwargs['checkRegions']
-        if 'createdOn' in kwargs:
+        if check_regions is None:
+            raise TypeError("Missing 'check_regions' argument")
+        if created_on is None and 'createdOn' in kwargs:
             created_on = kwargs['createdOn']
-        if 'loadSheddings' in kwargs:
+        if created_on is None:
+            raise TypeError("Missing 'created_on' argument")
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if enabled is None:
+            raise TypeError("Missing 'enabled' argument")
+        if id is None:
+            raise TypeError("Missing 'id' argument")
+        if latitude is None:
+            raise TypeError("Missing 'latitude' argument")
+        if load_sheddings is None and 'loadSheddings' in kwargs:
             load_sheddings = kwargs['loadSheddings']
-        if 'minimumOrigins' in kwargs:
+        if load_sheddings is None:
+            raise TypeError("Missing 'load_sheddings' argument")
+        if longitude is None:
+            raise TypeError("Missing 'longitude' argument")
+        if minimum_origins is None and 'minimumOrigins' in kwargs:
             minimum_origins = kwargs['minimumOrigins']
-        if 'modifiedOn' in kwargs:
+        if minimum_origins is None:
+            raise TypeError("Missing 'minimum_origins' argument")
+        if modified_on is None and 'modifiedOn' in kwargs:
             modified_on = kwargs['modifiedOn']
-        if 'notificationEmail' in kwargs:
+        if modified_on is None:
+            raise TypeError("Missing 'modified_on' argument")
+        if monitor is None:
+            raise TypeError("Missing 'monitor' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if notification_email is None and 'notificationEmail' in kwargs:
             notification_email = kwargs['notificationEmail']
+        if notification_email is None:
+            raise TypeError("Missing 'notification_email' argument")
+        if origins is None:
+            raise TypeError("Missing 'origins' argument")
 
         _setter("check_regions", check_regions)
         _setter("created_on", created_on)
@@ -24314,13 +24684,13 @@ class GetLoadBalancerPoolsPoolLoadSheddingArgs:
              session_policy: Optional[str] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'defaultPercent' in kwargs:
+        if default_percent is None and 'defaultPercent' in kwargs:
             default_percent = kwargs['defaultPercent']
-        if 'defaultPolicy' in kwargs:
+        if default_policy is None and 'defaultPolicy' in kwargs:
             default_policy = kwargs['defaultPolicy']
-        if 'sessionPercent' in kwargs:
+        if session_percent is None and 'sessionPercent' in kwargs:
             session_percent = kwargs['sessionPercent']
-        if 'sessionPolicy' in kwargs:
+        if session_policy is None and 'sessionPolicy' in kwargs:
             session_policy = kwargs['sessionPolicy']
 
         if default_percent is not None:
@@ -24392,13 +24762,17 @@ class GetLoadBalancerPoolsPoolOriginArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             address: str,
-             name: str,
+             address: Optional[str] = None,
+             name: Optional[str] = None,
              enabled: Optional[bool] = None,
              headers: Optional[Sequence['GetLoadBalancerPoolsPoolOriginHeaderArgs']] = None,
              weight: Optional[float] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
+        if address is None:
+            raise TypeError("Missing 'address' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
 
         _setter("address", address)
         _setter("name", name)
@@ -24474,10 +24848,14 @@ class GetLoadBalancerPoolsPoolOriginHeaderArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             header: str,
-             values: Sequence[str],
+             header: Optional[str] = None,
+             values: Optional[Sequence[str]] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
+        if header is None:
+            raise TypeError("Missing 'header' argument")
+        if values is None:
+            raise TypeError("Missing 'values' argument")
 
         _setter("header", header)
         _setter("values", values)
@@ -24644,9 +25022,9 @@ class GetZonesFilterArgs:
              status: Optional[str] = None,
              opts: Optional[pulumi.ResourceOptions]=None,
              **kwargs):
-        if 'accountId' in kwargs:
+        if account_id is None and 'accountId' in kwargs:
             account_id = kwargs['accountId']
-        if 'lookupType' in kwargs:
+        if lookup_type is None and 'lookupType' in kwargs:
             lookup_type = kwargs['lookupType']
 
         if account_id is not None:
