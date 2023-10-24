@@ -9,24 +9,6 @@ import * as utilities from "./utilities";
 /**
  * Provides a Cloudflare custom SSL resource.
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as cloudflare from "@pulumi/cloudflare";
- *
- * const example = new cloudflare.CustomSsl("example", {
- *     customSslOptions: {
- *         bundleMethod: "ubiquitous",
- *         certificate: "-----INSERT CERTIFICATE-----",
- *         geoRestrictions: "us",
- *         privateKey: "-----INSERT PRIVATE KEY-----",
- *         type: "legacy_custom",
- *     },
- *     zoneId: "0da42c8d2132a9ddaf714f9e7c920711",
- * });
- * ```
- *
  * ## Import
  *
  * ```sh

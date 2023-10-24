@@ -15,33 +15,6 @@ import (
 
 // Provides a resource, that manages Cloudflare Tiered Cache settings.
 // This allows you to adjust topologies for your zone.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewTieredCache(ctx, "example", &cloudflare.TieredCacheArgs{
-//				CacheType: pulumi.String("smart"),
-//				ZoneId:    pulumi.String("0da42c8d2132a9ddaf714f9e7c920711"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 type TieredCache struct {
 	pulumi.CustomResourceState
 

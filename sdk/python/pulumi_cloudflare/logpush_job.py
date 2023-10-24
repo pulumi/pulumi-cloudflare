@@ -65,8 +65,8 @@ class LogpushJobArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             dataset: pulumi.Input[str],
-             destination_conf: pulumi.Input[str],
+             dataset: Optional[pulumi.Input[str]] = None,
+             destination_conf: Optional[pulumi.Input[str]] = None,
              account_id: Optional[pulumi.Input[str]] = None,
              enabled: Optional[pulumi.Input[bool]] = None,
              filter: Optional[pulumi.Input[str]] = None,
@@ -79,23 +79,27 @@ class LogpushJobArgs:
              name: Optional[pulumi.Input[str]] = None,
              ownership_challenge: Optional[pulumi.Input[str]] = None,
              zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'destinationConf' in kwargs:
+        if dataset is None:
+            raise TypeError("Missing 'dataset' argument")
+        if destination_conf is None and 'destinationConf' in kwargs:
             destination_conf = kwargs['destinationConf']
-        if 'accountId' in kwargs:
+        if destination_conf is None:
+            raise TypeError("Missing 'destination_conf' argument")
+        if account_id is None and 'accountId' in kwargs:
             account_id = kwargs['accountId']
-        if 'logpullOptions' in kwargs:
+        if logpull_options is None and 'logpullOptions' in kwargs:
             logpull_options = kwargs['logpullOptions']
-        if 'maxUploadBytes' in kwargs:
+        if max_upload_bytes is None and 'maxUploadBytes' in kwargs:
             max_upload_bytes = kwargs['maxUploadBytes']
-        if 'maxUploadIntervalSeconds' in kwargs:
+        if max_upload_interval_seconds is None and 'maxUploadIntervalSeconds' in kwargs:
             max_upload_interval_seconds = kwargs['maxUploadIntervalSeconds']
-        if 'maxUploadRecords' in kwargs:
+        if max_upload_records is None and 'maxUploadRecords' in kwargs:
             max_upload_records = kwargs['maxUploadRecords']
-        if 'ownershipChallenge' in kwargs:
+        if ownership_challenge is None and 'ownershipChallenge' in kwargs:
             ownership_challenge = kwargs['ownershipChallenge']
-        if 'zoneId' in kwargs:
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
 
         _setter("dataset", dataset)
@@ -362,23 +366,23 @@ class _LogpushJobState:
              name: Optional[pulumi.Input[str]] = None,
              ownership_challenge: Optional[pulumi.Input[str]] = None,
              zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'accountId' in kwargs:
+        if account_id is None and 'accountId' in kwargs:
             account_id = kwargs['accountId']
-        if 'destinationConf' in kwargs:
+        if destination_conf is None and 'destinationConf' in kwargs:
             destination_conf = kwargs['destinationConf']
-        if 'logpullOptions' in kwargs:
+        if logpull_options is None and 'logpullOptions' in kwargs:
             logpull_options = kwargs['logpullOptions']
-        if 'maxUploadBytes' in kwargs:
+        if max_upload_bytes is None and 'maxUploadBytes' in kwargs:
             max_upload_bytes = kwargs['maxUploadBytes']
-        if 'maxUploadIntervalSeconds' in kwargs:
+        if max_upload_interval_seconds is None and 'maxUploadIntervalSeconds' in kwargs:
             max_upload_interval_seconds = kwargs['maxUploadIntervalSeconds']
-        if 'maxUploadRecords' in kwargs:
+        if max_upload_records is None and 'maxUploadRecords' in kwargs:
             max_upload_records = kwargs['maxUploadRecords']
-        if 'ownershipChallenge' in kwargs:
+        if ownership_challenge is None and 'ownershipChallenge' in kwargs:
             ownership_challenge = kwargs['ownershipChallenge']
-        if 'zoneId' in kwargs:
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
 
         if account_id is not None:

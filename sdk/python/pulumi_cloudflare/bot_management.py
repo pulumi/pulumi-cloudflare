@@ -53,7 +53,7 @@ class BotManagementArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             zone_id: pulumi.Input[str],
+             zone_id: Optional[pulumi.Input[str]] = None,
              auto_update_model: Optional[pulumi.Input[bool]] = None,
              enable_js: Optional[pulumi.Input[bool]] = None,
              fight_mode: Optional[pulumi.Input[bool]] = None,
@@ -63,27 +63,29 @@ class BotManagementArgs:
              sbfm_static_resource_protection: Optional[pulumi.Input[bool]] = None,
              sbfm_verified_bots: Optional[pulumi.Input[str]] = None,
              suppress_session_score: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'zoneId' in kwargs:
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
-        if 'autoUpdateModel' in kwargs:
+        if zone_id is None:
+            raise TypeError("Missing 'zone_id' argument")
+        if auto_update_model is None and 'autoUpdateModel' in kwargs:
             auto_update_model = kwargs['autoUpdateModel']
-        if 'enableJs' in kwargs:
+        if enable_js is None and 'enableJs' in kwargs:
             enable_js = kwargs['enableJs']
-        if 'fightMode' in kwargs:
+        if fight_mode is None and 'fightMode' in kwargs:
             fight_mode = kwargs['fightMode']
-        if 'optimizeWordpress' in kwargs:
+        if optimize_wordpress is None and 'optimizeWordpress' in kwargs:
             optimize_wordpress = kwargs['optimizeWordpress']
-        if 'sbfmDefinitelyAutomated' in kwargs:
+        if sbfm_definitely_automated is None and 'sbfmDefinitelyAutomated' in kwargs:
             sbfm_definitely_automated = kwargs['sbfmDefinitelyAutomated']
-        if 'sbfmLikelyAutomated' in kwargs:
+        if sbfm_likely_automated is None and 'sbfmLikelyAutomated' in kwargs:
             sbfm_likely_automated = kwargs['sbfmLikelyAutomated']
-        if 'sbfmStaticResourceProtection' in kwargs:
+        if sbfm_static_resource_protection is None and 'sbfmStaticResourceProtection' in kwargs:
             sbfm_static_resource_protection = kwargs['sbfmStaticResourceProtection']
-        if 'sbfmVerifiedBots' in kwargs:
+        if sbfm_verified_bots is None and 'sbfmVerifiedBots' in kwargs:
             sbfm_verified_bots = kwargs['sbfmVerifiedBots']
-        if 'suppressSessionScore' in kwargs:
+        if suppress_session_score is None and 'suppressSessionScore' in kwargs:
             suppress_session_score = kwargs['suppressSessionScore']
 
         _setter("zone_id", zone_id)
@@ -283,29 +285,29 @@ class _BotManagementState:
              suppress_session_score: Optional[pulumi.Input[bool]] = None,
              using_latest_model: Optional[pulumi.Input[bool]] = None,
              zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'autoUpdateModel' in kwargs:
+        if auto_update_model is None and 'autoUpdateModel' in kwargs:
             auto_update_model = kwargs['autoUpdateModel']
-        if 'enableJs' in kwargs:
+        if enable_js is None and 'enableJs' in kwargs:
             enable_js = kwargs['enableJs']
-        if 'fightMode' in kwargs:
+        if fight_mode is None and 'fightMode' in kwargs:
             fight_mode = kwargs['fightMode']
-        if 'optimizeWordpress' in kwargs:
+        if optimize_wordpress is None and 'optimizeWordpress' in kwargs:
             optimize_wordpress = kwargs['optimizeWordpress']
-        if 'sbfmDefinitelyAutomated' in kwargs:
+        if sbfm_definitely_automated is None and 'sbfmDefinitelyAutomated' in kwargs:
             sbfm_definitely_automated = kwargs['sbfmDefinitelyAutomated']
-        if 'sbfmLikelyAutomated' in kwargs:
+        if sbfm_likely_automated is None and 'sbfmLikelyAutomated' in kwargs:
             sbfm_likely_automated = kwargs['sbfmLikelyAutomated']
-        if 'sbfmStaticResourceProtection' in kwargs:
+        if sbfm_static_resource_protection is None and 'sbfmStaticResourceProtection' in kwargs:
             sbfm_static_resource_protection = kwargs['sbfmStaticResourceProtection']
-        if 'sbfmVerifiedBots' in kwargs:
+        if sbfm_verified_bots is None and 'sbfmVerifiedBots' in kwargs:
             sbfm_verified_bots = kwargs['sbfmVerifiedBots']
-        if 'suppressSessionScore' in kwargs:
+        if suppress_session_score is None and 'suppressSessionScore' in kwargs:
             suppress_session_score = kwargs['suppressSessionScore']
-        if 'usingLatestModel' in kwargs:
+        if using_latest_model is None and 'usingLatestModel' in kwargs:
             using_latest_model = kwargs['usingLatestModel']
-        if 'zoneId' in kwargs:
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
 
         if auto_update_model is not None:
@@ -489,22 +491,6 @@ class BotManagement(pulumi.CustomResource):
         - **Super Bot Fight Mode**
         - **Bot Management for Enterprise**
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudflare as cloudflare
-
-        example = cloudflare.BotManagement("example",
-            enable_js=True,
-            optimize_wordpress=True,
-            sbfm_definitely_automated="block",
-            sbfm_likely_automated="managed_challenge",
-            sbfm_static_resource_protection=False,
-            sbfm_verified_bots="allow",
-            zone_id="0da42c8d2132a9ddaf714f9e7c920711")
-        ```
-
         ## Import
 
         ```sh
@@ -538,22 +524,6 @@ class BotManagement(pulumi.CustomResource):
         - **Bot Fight Mode**
         - **Super Bot Fight Mode**
         - **Bot Management for Enterprise**
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudflare as cloudflare
-
-        example = cloudflare.BotManagement("example",
-            enable_js=True,
-            optimize_wordpress=True,
-            sbfm_definitely_automated="block",
-            sbfm_likely_automated="managed_challenge",
-            sbfm_static_resource_protection=False,
-            sbfm_verified_bots="allow",
-            zone_id="0da42c8d2132a9ddaf714f9e7c920711")
-        ```
 
         ## Import
 

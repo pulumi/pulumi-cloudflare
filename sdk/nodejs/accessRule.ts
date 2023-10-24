@@ -11,52 +11,6 @@ import * as utilities from "./utilities";
  * control can be applied on basis of IP addresses, IP ranges, AS
  * numbers or countries.
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as cloudflare from "@pulumi/cloudflare";
- *
- * // Challenge requests coming from known Tor exit nodes.
- * const torExitNodes = new cloudflare.AccessRule("torExitNodes", {
- *     zoneId: "0da42c8d2132a9ddaf714f9e7c920711",
- *     notes: "Requests coming from known Tor exit nodes",
- *     mode: "challenge",
- *     configuration: {
- *         target: "country",
- *         value: "T1",
- *     },
- * });
- * // Allowlist requests coming from Antarctica, but only for single zone.
- * const antarctica = new cloudflare.AccessRule("antarctica", {
- *     zoneId: "0da42c8d2132a9ddaf714f9e7c920711",
- *     notes: "Requests coming from Antarctica",
- *     mode: "whitelist",
- *     configuration: {
- *         target: "country",
- *         value: "AQ",
- *     },
- * });
- * const config = new pulumi.Config();
- * const myOffice = config.getObject<Array<string>>("myOffice") || [
- *     "192.0.2.0/24",
- *     "198.51.100.0/24",
- *     "2001:db8::/56",
- * ];
- * const officeNetwork: cloudflare.AccessRule[] = [];
- * for (const range = {value: 0}; range.value < myOffice.length; range.value++) {
- *     officeNetwork.push(new cloudflare.AccessRule(`officeNetwork-${range.value}`, {
- *         accountId: "f037e56e89293a057740de681ac9abbe",
- *         notes: "Requests coming from office network",
- *         mode: "whitelist",
- *         configuration: {
- *             target: "ip_range",
- *             value: myOffice[count.index],
- *         },
- *     }));
- * }
- * ```
- *
  * ## Import
  *
  * User level access rule import.

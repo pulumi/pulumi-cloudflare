@@ -39,17 +39,21 @@ class AccessGroupArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             includes: pulumi.Input[Sequence[pulumi.Input['AccessGroupIncludeArgs']]],
-             name: pulumi.Input[str],
+             includes: Optional[pulumi.Input[Sequence[pulumi.Input['AccessGroupIncludeArgs']]]] = None,
+             name: Optional[pulumi.Input[str]] = None,
              account_id: Optional[pulumi.Input[str]] = None,
              excludes: Optional[pulumi.Input[Sequence[pulumi.Input['AccessGroupExcludeArgs']]]] = None,
              requires: Optional[pulumi.Input[Sequence[pulumi.Input['AccessGroupRequireArgs']]]] = None,
              zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'accountId' in kwargs:
+        if includes is None:
+            raise TypeError("Missing 'includes' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if account_id is None and 'accountId' in kwargs:
             account_id = kwargs['accountId']
-        if 'zoneId' in kwargs:
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
 
         _setter("includes", includes)
@@ -156,11 +160,11 @@ class _AccessGroupState:
              name: Optional[pulumi.Input[str]] = None,
              requires: Optional[pulumi.Input[Sequence[pulumi.Input['AccessGroupRequireArgs']]]] = None,
              zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'accountId' in kwargs:
+        if account_id is None and 'accountId' in kwargs:
             account_id = kwargs['accountId']
-        if 'zoneId' in kwargs:
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
 
         if account_id is not None:
@@ -260,42 +264,6 @@ class AccessGroup(pulumi.CustomResource):
         scope. For example, an access token that is scoped to the "example.com"
         zone needs to use the `zone_id` argument.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudflare as cloudflare
-
-        # Allowing access to `test@example.com` email address only
-        example_access_group = cloudflare.AccessGroup("exampleAccessGroup",
-            account_id="f037e56e89293a057740de681ac9abbe",
-            name="staging group",
-            includes=[cloudflare.AccessGroupIncludeArgs(
-                emails=["test@example.com"],
-            )])
-        # Allowing `test@example.com` to access but only when coming from a
-        # specific IP.
-        example_index_access_group_access_group = cloudflare.AccessGroup("exampleIndex/accessGroupAccessGroup",
-            account_id="f037e56e89293a057740de681ac9abbe",
-            name="staging group",
-            includes=[cloudflare.AccessGroupIncludeArgs(
-                emails=["test@example.com"],
-            )],
-            requires=[cloudflare.AccessGroupRequireArgs(
-                ips=[var["office_ip"]],
-            )])
-        # Allow members of an Azure Group. The ID is the group UUID (id) in Azure.
-        example_cloudflare_index_access_group_access_group = cloudflare.AccessGroup("exampleCloudflareIndex/accessGroupAccessGroup",
-            account_id="f037e56e89293a057740de681ac9abbe",
-            name="test_group",
-            includes=[cloudflare.AccessGroupIncludeArgs(
-                azures=[cloudflare.AccessGroupIncludeAzureArgs(
-                    identity_provider_id="ca298b82-93b5-41bf-bc2d-10493f09b761",
-                    ids=["86773093-5feb-48dd-814b-7ccd3676ff50"],
-                )],
-            )])
-        ```
-
         ## Import
 
         ```sh
@@ -323,42 +291,6 @@ class AccessGroup(pulumi.CustomResource):
         access token, you must provide the argument that matches the token's
         scope. For example, an access token that is scoped to the "example.com"
         zone needs to use the `zone_id` argument.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudflare as cloudflare
-
-        # Allowing access to `test@example.com` email address only
-        example_access_group = cloudflare.AccessGroup("exampleAccessGroup",
-            account_id="f037e56e89293a057740de681ac9abbe",
-            name="staging group",
-            includes=[cloudflare.AccessGroupIncludeArgs(
-                emails=["test@example.com"],
-            )])
-        # Allowing `test@example.com` to access but only when coming from a
-        # specific IP.
-        example_index_access_group_access_group = cloudflare.AccessGroup("exampleIndex/accessGroupAccessGroup",
-            account_id="f037e56e89293a057740de681ac9abbe",
-            name="staging group",
-            includes=[cloudflare.AccessGroupIncludeArgs(
-                emails=["test@example.com"],
-            )],
-            requires=[cloudflare.AccessGroupRequireArgs(
-                ips=[var["office_ip"]],
-            )])
-        # Allow members of an Azure Group. The ID is the group UUID (id) in Azure.
-        example_cloudflare_index_access_group_access_group = cloudflare.AccessGroup("exampleCloudflareIndex/accessGroupAccessGroup",
-            account_id="f037e56e89293a057740de681ac9abbe",
-            name="test_group",
-            includes=[cloudflare.AccessGroupIncludeArgs(
-                azures=[cloudflare.AccessGroupIncludeAzureArgs(
-                    identity_provider_id="ca298b82-93b5-41bf-bc2d-10493f09b761",
-                    ids=["86773093-5feb-48dd-814b-7ccd3676ff50"],
-                )],
-            )])
-        ```
 
         ## Import
 

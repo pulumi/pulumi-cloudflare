@@ -15,48 +15,6 @@ import (
 
 // Provides a Cloudflare Waiting Room resource.
 //
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewWaitingRoom(ctx, "example", &cloudflare.WaitingRoomArgs{
-//				AdditionalRoutes: cloudflare.WaitingRoomAdditionalRouteArray{
-//					&cloudflare.WaitingRoomAdditionalRouteArgs{
-//						Host: pulumi.String("shop1.example.com"),
-//						Path: pulumi.String("/example-path"),
-//					},
-//					&cloudflare.WaitingRoomAdditionalRouteArgs{
-//						Host: pulumi.String("shop2.example.com"),
-//					},
-//				},
-//				CookieSuffix:       pulumi.String("queue1"),
-//				Host:               pulumi.String("foo.example.com"),
-//				Name:               pulumi.String("foo"),
-//				NewUsersPerMinute:  pulumi.Int(200),
-//				Path:               pulumi.String("/"),
-//				QueueingStatusCode: pulumi.Int(200),
-//				TotalActiveUsers:   pulumi.Int(200),
-//				ZoneId:             pulumi.String("0da42c8d2132a9ddaf714f9e7c920711"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // Use the Zone ID and Waiting Room ID to import.

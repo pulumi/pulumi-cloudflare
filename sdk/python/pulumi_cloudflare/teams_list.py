@@ -38,15 +38,21 @@ class TeamsListArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             account_id: pulumi.Input[str],
-             name: pulumi.Input[str],
-             type: pulumi.Input[str],
+             account_id: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             type: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              items: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'accountId' in kwargs:
+        if account_id is None and 'accountId' in kwargs:
             account_id = kwargs['accountId']
+        if account_id is None:
+            raise TypeError("Missing 'account_id' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
 
         _setter("account_id", account_id)
         _setter("name", name)
@@ -149,9 +155,9 @@ class _TeamsListState:
              items: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              name: Optional[pulumi.Input[str]] = None,
              type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'accountId' in kwargs:
+        if account_id is None and 'accountId' in kwargs:
             account_id = kwargs['accountId']
 
         if account_id is not None:
@@ -242,24 +248,6 @@ class TeamsList(pulumi.CustomResource):
         referenced when creating secure web gateway policies or device
         posture rules.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudflare as cloudflare
-
-        example = cloudflare.TeamsList("example",
-            account_id="f037e56e89293a057740de681ac9abbe",
-            description="Serial numbers for all corporate devices.",
-            items=[
-                "8GE8721REF",
-                "5RE8543EGG",
-                "1YE2880LNP",
-            ],
-            name="Corporate devices",
-            type="SERIAL")
-        ```
-
         ## Import
 
         ```sh
@@ -284,24 +272,6 @@ class TeamsList(pulumi.CustomResource):
         Provides a Cloudflare Teams List resource. Teams lists are
         referenced when creating secure web gateway policies or device
         posture rules.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudflare as cloudflare
-
-        example = cloudflare.TeamsList("example",
-            account_id="f037e56e89293a057740de681ac9abbe",
-            description="Serial numbers for all corporate devices.",
-            items=[
-                "8GE8721REF",
-                "5RE8543EGG",
-                "1YE2880LNP",
-            ],
-            name="Corporate devices",
-            type="SERIAL")
-        ```
 
         ## Import
 

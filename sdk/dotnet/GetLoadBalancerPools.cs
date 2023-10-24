@@ -13,64 +13,12 @@ namespace Pulumi.Cloudflare
     {
         /// <summary>
         /// A datasource to find Load Balancer Pools.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Cloudflare = Pulumi.Cloudflare;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var example = Cloudflare.GetLoadBalancerPools.Invoke(new()
-        ///     {
-        ///         AccountId = "f037e56e89293a057740de681ac9abbe",
-        ///         Filter = new Cloudflare.Inputs.GetLoadBalancerPoolsFilterInputArgs
-        ///         {
-        ///             Name = "example-lb-pool",
-        ///         },
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetLoadBalancerPoolsResult> InvokeAsync(GetLoadBalancerPoolsArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetLoadBalancerPoolsResult>("cloudflare:index/getLoadBalancerPools:getLoadBalancerPools", args ?? new GetLoadBalancerPoolsArgs(), options.WithDefaults());
 
         /// <summary>
         /// A datasource to find Load Balancer Pools.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Cloudflare = Pulumi.Cloudflare;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var example = Cloudflare.GetLoadBalancerPools.Invoke(new()
-        ///     {
-        ///         AccountId = "f037e56e89293a057740de681ac9abbe",
-        ///         Filter = new Cloudflare.Inputs.GetLoadBalancerPoolsFilterInputArgs
-        ///         {
-        ///             Name = "example-lb-pool",
-        ///         },
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Output<GetLoadBalancerPoolsResult> Invoke(GetLoadBalancerPoolsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetLoadBalancerPoolsResult>("cloudflare:index/getLoadBalancerPools:getLoadBalancerPools", args ?? new GetLoadBalancerPoolsInvokeArgs(), options.WithDefaults());

@@ -17,43 +17,6 @@ import (
 // posture integrations configure third-party data providers for device
 // posture rules.
 //
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewDevicePostureIntegration(ctx, "example", &cloudflare.DevicePostureIntegrationArgs{
-//				AccountId: pulumi.String("f037e56e89293a057740de681ac9abbe"),
-//				Configs: cloudflare.DevicePostureIntegrationConfigArray{
-//					&cloudflare.DevicePostureIntegrationConfigArgs{
-//						ApiUrl:       pulumi.String("https://example.com/api"),
-//						AuthUrl:      pulumi.String("https://example.com/connect/token"),
-//						ClientId:     pulumi.String("client-id"),
-//						ClientSecret: pulumi.String("client-secret"),
-//					},
-//				},
-//				Interval: pulumi.String("24h"),
-//				Name:     pulumi.String("Device posture integration"),
-//				Type:     pulumi.String("workspace_one"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // ```sh

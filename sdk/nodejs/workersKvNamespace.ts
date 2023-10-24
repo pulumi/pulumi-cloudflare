@@ -7,18 +7,6 @@ import * as utilities from "./utilities";
 /**
  * Provides the ability to manage Cloudflare Workers KV Namespace features.
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as cloudflare from "@pulumi/cloudflare";
- *
- * const example = new cloudflare.WorkersKvNamespace("example", {
- *     accountId: "f037e56e89293a057740de681ac9abbe",
- *     title: "test-namespace",
- * });
- * ```
- *
  * ## Import
  *
  * ```sh

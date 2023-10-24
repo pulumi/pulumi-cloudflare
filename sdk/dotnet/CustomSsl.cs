@@ -12,32 +12,6 @@ namespace Pulumi.Cloudflare
     /// <summary>
     /// Provides a Cloudflare custom SSL resource.
     /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Cloudflare = Pulumi.Cloudflare;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var example = new Cloudflare.CustomSsl("example", new()
-    ///     {
-    ///         CustomSslOptions = new Cloudflare.Inputs.CustomSslCustomSslOptionsArgs
-    ///         {
-    ///             BundleMethod = "ubiquitous",
-    ///             Certificate = "-----INSERT CERTIFICATE-----",
-    ///             GeoRestrictions = "us",
-    ///             PrivateKey = "-----INSERT PRIVATE KEY-----",
-    ///             Type = "legacy_custom",
-    ///         },
-    ///         ZoneId = "0da42c8d2132a9ddaf714f9e7c920711",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// ```sh

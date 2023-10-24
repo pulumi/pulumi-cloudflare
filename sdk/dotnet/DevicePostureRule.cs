@@ -12,47 +12,6 @@ namespace Pulumi.Cloudflare
     /// <summary>
     /// Provides a Cloudflare Device Posture Rule resource. Device posture rules configure security policies for device posture checks.
     /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Cloudflare = Pulumi.Cloudflare;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var eaxmple = new Cloudflare.DevicePostureRule("eaxmple", new()
-    ///     {
-    ///         AccountId = "f037e56e89293a057740de681ac9abbe",
-    ///         Name = "Corporate devices posture rule",
-    ///         Type = "os_version",
-    ///         Description = "Device posture rule for corporate devices.",
-    ///         Schedule = "24h",
-    ///         Expiration = "24h",
-    ///         Matches = new[]
-    ///         {
-    ///             new Cloudflare.Inputs.DevicePostureRuleMatchArgs
-    ///             {
-    ///                 Platform = "linux",
-    ///             },
-    ///         },
-    ///         Inputs = new[]
-    ///         {
-    ///             new Cloudflare.Inputs.DevicePostureRuleInputArgs
-    ///             {
-    ///                 Id = cloudflare_teams_list.Corporate_devices.Id,
-    ///                 Version = "1.0.0",
-    ///                 Operator = "&lt;",
-    ///                 OsDistroName = "ubuntu",
-    ///                 OsDistroRevision = "1.0.0",
-    ///             },
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// ```sh

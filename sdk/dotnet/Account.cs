@@ -13,26 +13,6 @@ namespace Pulumi.Cloudflare
     /// Provides a Cloudflare Account resource. Account is the basic resource for
     /// working with Cloudflare zones, teams and users.
     /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Cloudflare = Pulumi.Cloudflare;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var example = new Cloudflare.Account("example", new()
-    ///     {
-    ///         EnforceTwofactor = true,
-    ///         Name = "some-enterprise-account",
-    ///         Type = "enterprise",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// ```sh

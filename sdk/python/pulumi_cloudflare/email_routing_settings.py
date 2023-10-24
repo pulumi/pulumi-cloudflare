@@ -32,14 +32,18 @@ class EmailRoutingSettingsArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             enabled: pulumi.Input[bool],
-             zone_id: pulumi.Input[str],
+             enabled: Optional[pulumi.Input[bool]] = None,
+             zone_id: Optional[pulumi.Input[str]] = None,
              skip_wizard: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'zoneId' in kwargs:
+        if enabled is None:
+            raise TypeError("Missing 'enabled' argument")
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
-        if 'skipWizard' in kwargs:
+        if zone_id is None:
+            raise TypeError("Missing 'zone_id' argument")
+        if skip_wizard is None and 'skipWizard' in kwargs:
             skip_wizard = kwargs['skipWizard']
 
         _setter("enabled", enabled)
@@ -128,11 +132,11 @@ class _EmailRoutingSettingsState:
              status: Optional[pulumi.Input[str]] = None,
              tag: Optional[pulumi.Input[str]] = None,
              zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'skipWizard' in kwargs:
+        if skip_wizard is None and 'skipWizard' in kwargs:
             skip_wizard = kwargs['skipWizard']
-        if 'zoneId' in kwargs:
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
 
         if created is not None:
@@ -261,17 +265,6 @@ class EmailRoutingSettings(pulumi.CustomResource):
         """
         Provides a resource for managing Email Routing settings.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudflare as cloudflare
-
-        my_zone = cloudflare.EmailRoutingSettings("myZone",
-            enabled=True,
-            zone_id="0da42c8d2132a9ddaf714f9e7c920711")
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] enabled: State of the zone settings for Email Routing. **Modifying this attribute will force creation of a new resource.**
@@ -286,17 +279,6 @@ class EmailRoutingSettings(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Provides a resource for managing Email Routing settings.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudflare as cloudflare
-
-        my_zone = cloudflare.EmailRoutingSettings("myZone",
-            enabled=True,
-            zone_id="0da42c8d2132a9ddaf714f9e7c920711")
-        ```
 
         :param str resource_name: The name of the resource.
         :param EmailRoutingSettingsArgs args: The arguments to use to populate this resource's properties.

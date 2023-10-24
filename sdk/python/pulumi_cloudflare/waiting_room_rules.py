@@ -34,15 +34,19 @@ class WaitingRoomRulesArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             waiting_room_id: pulumi.Input[str],
-             zone_id: pulumi.Input[str],
+             waiting_room_id: Optional[pulumi.Input[str]] = None,
+             zone_id: Optional[pulumi.Input[str]] = None,
              rules: Optional[pulumi.Input[Sequence[pulumi.Input['WaitingRoomRulesRuleArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'waitingRoomId' in kwargs:
+        if waiting_room_id is None and 'waitingRoomId' in kwargs:
             waiting_room_id = kwargs['waitingRoomId']
-        if 'zoneId' in kwargs:
+        if waiting_room_id is None:
+            raise TypeError("Missing 'waiting_room_id' argument")
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
+        if zone_id is None:
+            raise TypeError("Missing 'zone_id' argument")
 
         _setter("waiting_room_id", waiting_room_id)
         _setter("zone_id", zone_id)
@@ -110,11 +114,11 @@ class _WaitingRoomRulesState:
              rules: Optional[pulumi.Input[Sequence[pulumi.Input['WaitingRoomRulesRuleArgs']]]] = None,
              waiting_room_id: Optional[pulumi.Input[str]] = None,
              zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'waitingRoomId' in kwargs:
+        if waiting_room_id is None and 'waitingRoomId' in kwargs:
             waiting_room_id = kwargs['waitingRoomId']
-        if 'zoneId' in kwargs:
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
 
         if rules is not None:
@@ -173,31 +177,6 @@ class WaitingRoomRules(pulumi.CustomResource):
         """
         Provides a Cloudflare Waiting Room Rules resource.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudflare as cloudflare
-
-        example = cloudflare.WaitingRoomRules("example",
-            rules=[
-                cloudflare.WaitingRoomRulesRuleArgs(
-                    action="bypass_waiting_room",
-                    description="bypass ip list",
-                    expression="src.ip in {192.0.2.0 192.0.2.1}",
-                    status="enabled",
-                ),
-                cloudflare.WaitingRoomRulesRuleArgs(
-                    action="bypass_waiting_room",
-                    description="bypass query string",
-                    expression="http.request.uri.query contains \\"bypass=true\\"",
-                    status="enabled",
-                ),
-            ],
-            waiting_room_id="d41d8cd98f00b204e9800998ecf8427e",
-            zone_id="0da42c8d2132a9ddaf714f9e7c920711")
-        ```
-
         ## Import
 
         ```sh
@@ -218,31 +197,6 @@ class WaitingRoomRules(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Provides a Cloudflare Waiting Room Rules resource.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudflare as cloudflare
-
-        example = cloudflare.WaitingRoomRules("example",
-            rules=[
-                cloudflare.WaitingRoomRulesRuleArgs(
-                    action="bypass_waiting_room",
-                    description="bypass ip list",
-                    expression="src.ip in {192.0.2.0 192.0.2.1}",
-                    status="enabled",
-                ),
-                cloudflare.WaitingRoomRulesRuleArgs(
-                    action="bypass_waiting_room",
-                    description="bypass query string",
-                    expression="http.request.uri.query contains \\"bypass=true\\"",
-                    status="enabled",
-                ),
-            ],
-            waiting_room_id="d41d8cd98f00b204e9800998ecf8427e",
-            zone_id="0da42c8d2132a9ddaf714f9e7c920711")
-        ```
 
         ## Import
 

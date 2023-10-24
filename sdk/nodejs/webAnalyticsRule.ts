@@ -7,29 +7,6 @@ import * as utilities from "./utilities";
 /**
  * Provides a Cloudflare Web Analytics Rule resource.
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as cloudflare from "@pulumi/cloudflare";
- *
- * const exampleWebAnalyticsSite = new cloudflare.WebAnalyticsSite("exampleWebAnalyticsSite", {
- *     accountId: "f037e56e89293a057740de681ac9abbe",
- *     zoneTag: "0da42c8d2132a9ddaf714f9e7c920711",
- *     autoInstall: true,
- * });
- * const exampleWebAnalyticsRule = new cloudflare.WebAnalyticsRule("exampleWebAnalyticsRule", {
- *     accountId: "f037e56e89293a057740de681ac9abbe",
- *     rulesetId: exampleWebAnalyticsSite.rulesetId,
- *     host: "*",
- *     paths: ["/excluded"],
- *     inclusive: false,
- *     isPaused: false,
- * }, {
- *     dependsOn: [exampleWebAnalyticsSite],
- * });
- * ```
- *
  * ## Import
  *
  * ```sh

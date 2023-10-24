@@ -9,32 +9,6 @@ import * as utilities from "./utilities";
 /**
  * Provides a Cloudflare Waiting Room Rules resource.
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as cloudflare from "@pulumi/cloudflare";
- *
- * const example = new cloudflare.WaitingRoomRules("example", {
- *     rules: [
- *         {
- *             action: "bypass_waiting_room",
- *             description: "bypass ip list",
- *             expression: "src.ip in {192.0.2.0 192.0.2.1}",
- *             status: "enabled",
- *         },
- *         {
- *             action: "bypass_waiting_room",
- *             description: "bypass query string",
- *             expression: "http.request.uri.query contains \"bypass=true\"",
- *             status: "enabled",
- *         },
- *     ],
- *     waitingRoomId: "d41d8cd98f00b204e9800998ecf8427e",
- *     zoneId: "0da42c8d2132a9ddaf714f9e7c920711",
- * });
- * ```
- *
  * ## Import
  *
  * ```sh

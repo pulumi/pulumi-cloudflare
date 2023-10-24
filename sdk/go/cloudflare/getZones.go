@@ -13,35 +13,6 @@ import (
 )
 
 // Use this data source to look up Zone results for use in other resources.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.GetZones(ctx, &cloudflare.GetZonesArgs{
-//				Filter: cloudflare.GetZonesFilter{
-//					AccountId: pulumi.StringRef("f037e56e89293a057740de681ac9abbe"),
-//					Status:    pulumi.StringRef("active"),
-//				},
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetZones(ctx *pulumi.Context, args *GetZonesArgs, opts ...pulumi.InvokeOption) (*GetZonesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetZonesResult

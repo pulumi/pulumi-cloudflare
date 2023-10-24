@@ -29,13 +29,15 @@ class WaitingRoomSettingsArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             zone_id: pulumi.Input[str],
+             zone_id: Optional[pulumi.Input[str]] = None,
              search_engine_crawler_bypass: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'zoneId' in kwargs:
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
-        if 'searchEngineCrawlerBypass' in kwargs:
+        if zone_id is None:
+            raise TypeError("Missing 'zone_id' argument")
+        if search_engine_crawler_bypass is None and 'searchEngineCrawlerBypass' in kwargs:
             search_engine_crawler_bypass = kwargs['searchEngineCrawlerBypass']
 
         _setter("zone_id", zone_id)
@@ -87,11 +89,11 @@ class _WaitingRoomSettingsState:
              _setter: Callable[[Any, Any], None],
              search_engine_crawler_bypass: Optional[pulumi.Input[bool]] = None,
              zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'searchEngineCrawlerBypass' in kwargs:
+        if search_engine_crawler_bypass is None and 'searchEngineCrawlerBypass' in kwargs:
             search_engine_crawler_bypass = kwargs['searchEngineCrawlerBypass']
-        if 'zoneId' in kwargs:
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
 
         if search_engine_crawler_bypass is not None:
@@ -135,17 +137,6 @@ class WaitingRoomSettings(pulumi.CustomResource):
         """
         Configure zone-wide settings for Cloudflare waiting rooms.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudflare as cloudflare
-
-        example = cloudflare.WaitingRoomSettings("example",
-            search_engine_crawler_bypass=True,
-            zone_id="0da42c8d2132a9ddaf714f9e7c920711")
-        ```
-
         ## Import
 
         ```sh
@@ -165,17 +156,6 @@ class WaitingRoomSettings(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Configure zone-wide settings for Cloudflare waiting rooms.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudflare as cloudflare
-
-        example = cloudflare.WaitingRoomSettings("example",
-            search_engine_crawler_bypass=True,
-            zone_id="0da42c8d2132a9ddaf714f9e7c920711")
-        ```
 
         ## Import
 

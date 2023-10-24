@@ -14,32 +14,6 @@ import (
 
 // Provides a Cloudflare data source to look up Cache Reserve
 // status for a given zone.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.LookupZoneCacheReserve(ctx, &cloudflare.LookupZoneCacheReserveArgs{
-//				ZoneId: "0da42c8d2132a9ddaf714f9e7c920711",
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func LookupZoneCacheReserve(ctx *pulumi.Context, args *LookupZoneCacheReserveArgs, opts ...pulumi.InvokeOption) (*LookupZoneCacheReserveResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupZoneCacheReserveResult

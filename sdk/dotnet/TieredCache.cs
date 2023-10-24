@@ -12,25 +12,6 @@ namespace Pulumi.Cloudflare
     /// <summary>
     /// Provides a resource, that manages Cloudflare Tiered Cache settings.
     /// This allows you to adjust topologies for your zone.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Cloudflare = Pulumi.Cloudflare;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var example = new Cloudflare.TieredCache("example", new()
-    ///     {
-    ///         CacheType = "smart",
-    ///         ZoneId = "0da42c8d2132a9ddaf714f9e7c920711",
-    ///     });
-    /// 
-    /// });
-    /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/tieredCache:TieredCache")]
     public partial class TieredCache : global::Pulumi.CustomResource

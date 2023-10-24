@@ -12,34 +12,6 @@ namespace Pulumi.Cloudflare
     /// <summary>
     /// Provides a resource, that manages GRE tunnels for Magic Transit.
     /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Cloudflare = Pulumi.Cloudflare;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var example = new Cloudflare.GreTunnel("example", new()
-    ///     {
-    ///         AccountId = "f037e56e89293a057740de681ac9abbe",
-    ///         CloudflareGreEndpoint = "203.0.113.2",
-    ///         CustomerGreEndpoint = "203.0.113.1",
-    ///         Description = "Tunnel for ISP X",
-    ///         HealthCheckEnabled = true,
-    ///         HealthCheckTarget = "203.0.113.1",
-    ///         HealthCheckType = "reply",
-    ///         InterfaceAddress = "192.0.2.0/31",
-    ///         Mtu = 1476,
-    ///         Name = "GRE_1",
-    ///         Ttl = 64,
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// ```sh

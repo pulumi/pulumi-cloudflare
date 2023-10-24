@@ -14,37 +14,6 @@ namespace Pulumi.Cloudflare
     /// Transit or Magic WAN. Static routes are used to route traffic
     /// through GRE tunnels.
     /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Cloudflare = Pulumi.Cloudflare;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var example = new Cloudflare.StaticRoute("example", new()
-    ///     {
-    ///         AccountId = "f037e56e89293a057740de681ac9abbe",
-    ///         ColoNames = new[]
-    ///         {
-    ///             "den01",
-    ///         },
-    ///         ColoRegions = new[]
-    ///         {
-    ///             "APAC",
-    ///         },
-    ///         Description = "New route for new prefix 192.0.2.0/24",
-    ///         Nexthop = "10.0.0.0",
-    ///         Prefix = "192.0.2.0/24",
-    ///         Priority = 100,
-    ///         Weight = 10,
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// ```sh

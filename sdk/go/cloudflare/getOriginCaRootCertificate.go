@@ -15,32 +15,6 @@ import (
 // Use this data source to get the
 // [Origin CA root certificate](https://developers.cloudflare.com/ssl/origin-configuration/origin-ca#4-required-for-some-add-cloudflare-origin-ca-root-certificates)
 // for a given algorithm."
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.GetOriginCaRootCertificate(ctx, &cloudflare.GetOriginCaRootCertificateArgs{
-//				Algorithm: "rsa",
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetOriginCaRootCertificate(ctx *pulumi.Context, args *GetOriginCaRootCertificateArgs, opts ...pulumi.InvokeOption) (*GetOriginCaRootCertificateResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetOriginCaRootCertificateResult

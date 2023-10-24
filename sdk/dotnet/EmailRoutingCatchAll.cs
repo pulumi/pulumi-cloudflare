@@ -11,44 +11,6 @@ namespace Pulumi.Cloudflare
 {
     /// <summary>
     /// Provides a resource for managing Email Routing Addresses catch all behaviour.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Cloudflare = Pulumi.Cloudflare;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var example = new Cloudflare.EmailRoutingCatchAll("example", new()
-    ///     {
-    ///         Actions = new[]
-    ///         {
-    ///             new Cloudflare.Inputs.EmailRoutingCatchAllActionArgs
-    ///             {
-    ///                 Type = "forward",
-    ///                 Values = new[]
-    ///                 {
-    ///                     "destinationaddress@example.net",
-    ///                 },
-    ///             },
-    ///         },
-    ///         Enabled = true,
-    ///         Matchers = new[]
-    ///         {
-    ///             new Cloudflare.Inputs.EmailRoutingCatchAllMatcherArgs
-    ///             {
-    ///                 Type = "all",
-    ///             },
-    ///         },
-    ///         Name = "example catch all",
-    ///         ZoneId = "0da42c8d2132a9ddaf714f9e7c920711",
-    ///     });
-    /// 
-    /// });
-    /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/emailRoutingCatchAll:EmailRoutingCatchAll")]
     public partial class EmailRoutingCatchAll : global::Pulumi.CustomResource

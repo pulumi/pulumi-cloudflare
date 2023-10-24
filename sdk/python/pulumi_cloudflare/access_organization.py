@@ -57,7 +57,7 @@ class AccessOrganizationArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             auth_domain: pulumi.Input[str],
+             auth_domain: Optional[pulumi.Input[str]] = None,
              account_id: Optional[pulumi.Input[str]] = None,
              auto_redirect_to_identity: Optional[pulumi.Input[bool]] = None,
              custom_pages: Optional[pulumi.Input[Sequence[pulumi.Input['AccessOrganizationCustomPageArgs']]]] = None,
@@ -68,27 +68,29 @@ class AccessOrganizationArgs:
              ui_read_only_toggle_reason: Optional[pulumi.Input[str]] = None,
              user_seat_expiration_inactive_time: Optional[pulumi.Input[str]] = None,
              zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'authDomain' in kwargs:
+        if auth_domain is None and 'authDomain' in kwargs:
             auth_domain = kwargs['authDomain']
-        if 'accountId' in kwargs:
+        if auth_domain is None:
+            raise TypeError("Missing 'auth_domain' argument")
+        if account_id is None and 'accountId' in kwargs:
             account_id = kwargs['accountId']
-        if 'autoRedirectToIdentity' in kwargs:
+        if auto_redirect_to_identity is None and 'autoRedirectToIdentity' in kwargs:
             auto_redirect_to_identity = kwargs['autoRedirectToIdentity']
-        if 'customPages' in kwargs:
+        if custom_pages is None and 'customPages' in kwargs:
             custom_pages = kwargs['customPages']
-        if 'isUiReadOnly' in kwargs:
+        if is_ui_read_only is None and 'isUiReadOnly' in kwargs:
             is_ui_read_only = kwargs['isUiReadOnly']
-        if 'loginDesigns' in kwargs:
+        if login_designs is None and 'loginDesigns' in kwargs:
             login_designs = kwargs['loginDesigns']
-        if 'sessionDuration' in kwargs:
+        if session_duration is None and 'sessionDuration' in kwargs:
             session_duration = kwargs['sessionDuration']
-        if 'uiReadOnlyToggleReason' in kwargs:
+        if ui_read_only_toggle_reason is None and 'uiReadOnlyToggleReason' in kwargs:
             ui_read_only_toggle_reason = kwargs['uiReadOnlyToggleReason']
-        if 'userSeatExpirationInactiveTime' in kwargs:
+        if user_seat_expiration_inactive_time is None and 'userSeatExpirationInactiveTime' in kwargs:
             user_seat_expiration_inactive_time = kwargs['userSeatExpirationInactiveTime']
-        if 'zoneId' in kwargs:
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
 
         _setter("auth_domain", auth_domain)
@@ -298,27 +300,27 @@ class _AccessOrganizationState:
              ui_read_only_toggle_reason: Optional[pulumi.Input[str]] = None,
              user_seat_expiration_inactive_time: Optional[pulumi.Input[str]] = None,
              zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'accountId' in kwargs:
+        if account_id is None and 'accountId' in kwargs:
             account_id = kwargs['accountId']
-        if 'authDomain' in kwargs:
+        if auth_domain is None and 'authDomain' in kwargs:
             auth_domain = kwargs['authDomain']
-        if 'autoRedirectToIdentity' in kwargs:
+        if auto_redirect_to_identity is None and 'autoRedirectToIdentity' in kwargs:
             auto_redirect_to_identity = kwargs['autoRedirectToIdentity']
-        if 'customPages' in kwargs:
+        if custom_pages is None and 'customPages' in kwargs:
             custom_pages = kwargs['customPages']
-        if 'isUiReadOnly' in kwargs:
+        if is_ui_read_only is None and 'isUiReadOnly' in kwargs:
             is_ui_read_only = kwargs['isUiReadOnly']
-        if 'loginDesigns' in kwargs:
+        if login_designs is None and 'loginDesigns' in kwargs:
             login_designs = kwargs['loginDesigns']
-        if 'sessionDuration' in kwargs:
+        if session_duration is None and 'sessionDuration' in kwargs:
             session_duration = kwargs['sessionDuration']
-        if 'uiReadOnlyToggleReason' in kwargs:
+        if ui_read_only_toggle_reason is None and 'uiReadOnlyToggleReason' in kwargs:
             ui_read_only_toggle_reason = kwargs['uiReadOnlyToggleReason']
-        if 'userSeatExpirationInactiveTime' in kwargs:
+        if user_seat_expiration_inactive_time is None and 'userSeatExpirationInactiveTime' in kwargs:
             user_seat_expiration_inactive_time = kwargs['userSeatExpirationInactiveTime']
-        if 'zoneId' in kwargs:
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
 
         if account_id is not None:
@@ -494,28 +496,6 @@ class AccessOrganization(pulumi.CustomResource):
         """
         A Zero Trust organization defines the user login experience.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudflare as cloudflare
-
-        example = cloudflare.AccessOrganization("example",
-            account_id="f037e56e89293a057740de681ac9abbe",
-            auth_domain="example.cloudflareaccess.com",
-            auto_redirect_to_identity=False,
-            is_ui_read_only=False,
-            login_designs=[cloudflare.AccessOrganizationLoginDesignArgs(
-                background_color="#ffffff",
-                footer_text="My footer text",
-                header_text="My header text",
-                logo_path="https://example.com/logo.png",
-                text_color="#000000",
-            )],
-            name="example.cloudflareaccess.com",
-            user_seat_expiration_inactive_time="720h")
-        ```
-
         ## Import
 
         ```sh
@@ -543,28 +523,6 @@ class AccessOrganization(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         A Zero Trust organization defines the user login experience.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudflare as cloudflare
-
-        example = cloudflare.AccessOrganization("example",
-            account_id="f037e56e89293a057740de681ac9abbe",
-            auth_domain="example.cloudflareaccess.com",
-            auto_redirect_to_identity=False,
-            is_ui_read_only=False,
-            login_designs=[cloudflare.AccessOrganizationLoginDesignArgs(
-                background_color="#ffffff",
-                footer_text="My footer text",
-                header_text="My header text",
-                logo_path="https://example.com/logo.png",
-                text_color="#000000",
-            )],
-            name="example.cloudflareaccess.com",
-            user_seat_expiration_inactive_time="720h")
-        ```
 
         ## Import
 

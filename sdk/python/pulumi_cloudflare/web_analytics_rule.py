@@ -41,20 +41,32 @@ class WebAnalyticsRuleArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             account_id: pulumi.Input[str],
-             host: pulumi.Input[str],
-             inclusive: pulumi.Input[bool],
-             is_paused: pulumi.Input[bool],
-             paths: pulumi.Input[Sequence[pulumi.Input[str]]],
-             ruleset_id: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             account_id: Optional[pulumi.Input[str]] = None,
+             host: Optional[pulumi.Input[str]] = None,
+             inclusive: Optional[pulumi.Input[bool]] = None,
+             is_paused: Optional[pulumi.Input[bool]] = None,
+             paths: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             ruleset_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'accountId' in kwargs:
+        if account_id is None and 'accountId' in kwargs:
             account_id = kwargs['accountId']
-        if 'isPaused' in kwargs:
+        if account_id is None:
+            raise TypeError("Missing 'account_id' argument")
+        if host is None:
+            raise TypeError("Missing 'host' argument")
+        if inclusive is None:
+            raise TypeError("Missing 'inclusive' argument")
+        if is_paused is None and 'isPaused' in kwargs:
             is_paused = kwargs['isPaused']
-        if 'rulesetId' in kwargs:
+        if is_paused is None:
+            raise TypeError("Missing 'is_paused' argument")
+        if paths is None:
+            raise TypeError("Missing 'paths' argument")
+        if ruleset_id is None and 'rulesetId' in kwargs:
             ruleset_id = kwargs['rulesetId']
+        if ruleset_id is None:
+            raise TypeError("Missing 'ruleset_id' argument")
 
         _setter("account_id", account_id)
         _setter("host", host)
@@ -172,13 +184,13 @@ class _WebAnalyticsRuleState:
              is_paused: Optional[pulumi.Input[bool]] = None,
              paths: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              ruleset_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'accountId' in kwargs:
+        if account_id is None and 'accountId' in kwargs:
             account_id = kwargs['accountId']
-        if 'isPaused' in kwargs:
+        if is_paused is None and 'isPaused' in kwargs:
             is_paused = kwargs['isPaused']
-        if 'rulesetId' in kwargs:
+        if ruleset_id is None and 'rulesetId' in kwargs:
             ruleset_id = kwargs['rulesetId']
 
         if account_id is not None:
@@ -282,26 +294,6 @@ class WebAnalyticsRule(pulumi.CustomResource):
         """
         Provides a Cloudflare Web Analytics Rule resource.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudflare as cloudflare
-
-        example_web_analytics_site = cloudflare.WebAnalyticsSite("exampleWebAnalyticsSite",
-            account_id="f037e56e89293a057740de681ac9abbe",
-            zone_tag="0da42c8d2132a9ddaf714f9e7c920711",
-            auto_install=True)
-        example_web_analytics_rule = cloudflare.WebAnalyticsRule("exampleWebAnalyticsRule",
-            account_id="f037e56e89293a057740de681ac9abbe",
-            ruleset_id=example_web_analytics_site.ruleset_id,
-            host="*",
-            paths=["/excluded"],
-            inclusive=False,
-            is_paused=False,
-            opts=pulumi.ResourceOptions(depends_on=[example_web_analytics_site]))
-        ```
-
         ## Import
 
         ```sh
@@ -325,26 +317,6 @@ class WebAnalyticsRule(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Provides a Cloudflare Web Analytics Rule resource.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudflare as cloudflare
-
-        example_web_analytics_site = cloudflare.WebAnalyticsSite("exampleWebAnalyticsSite",
-            account_id="f037e56e89293a057740de681ac9abbe",
-            zone_tag="0da42c8d2132a9ddaf714f9e7c920711",
-            auto_install=True)
-        example_web_analytics_rule = cloudflare.WebAnalyticsRule("exampleWebAnalyticsRule",
-            account_id="f037e56e89293a057740de681ac9abbe",
-            ruleset_id=example_web_analytics_site.ruleset_id,
-            host="*",
-            paths=["/excluded"],
-            inclusive=False,
-            is_paused=False,
-            opts=pulumi.ResourceOptions(depends_on=[example_web_analytics_site]))
-        ```
 
         ## Import
 

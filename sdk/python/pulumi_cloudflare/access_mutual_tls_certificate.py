@@ -38,18 +38,20 @@ class AccessMutualTlsCertificateArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             name: pulumi.Input[str],
+             name: Optional[pulumi.Input[str]] = None,
              account_id: Optional[pulumi.Input[str]] = None,
              associated_hostnames: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              certificate: Optional[pulumi.Input[str]] = None,
              zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'accountId' in kwargs:
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if account_id is None and 'accountId' in kwargs:
             account_id = kwargs['accountId']
-        if 'associatedHostnames' in kwargs:
+        if associated_hostnames is None and 'associatedHostnames' in kwargs:
             associated_hostnames = kwargs['associatedHostnames']
-        if 'zoneId' in kwargs:
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
 
         _setter("name", name)
@@ -158,13 +160,13 @@ class _AccessMutualTlsCertificateState:
              fingerprint: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
              zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'accountId' in kwargs:
+        if account_id is None and 'accountId' in kwargs:
             account_id = kwargs['accountId']
-        if 'associatedHostnames' in kwargs:
+        if associated_hostnames is None and 'associatedHostnames' in kwargs:
             associated_hostnames = kwargs['associatedHostnames']
-        if 'zoneId' in kwargs:
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
 
         if account_id is not None:
@@ -274,19 +276,6 @@ class AccessMutualTlsCertificate(pulumi.CustomResource):
         scope. For example, an access token that is scoped to the "example.com"
         zone needs to use the `zone_id` argument.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudflare as cloudflare
-
-        my_cert = cloudflare.AccessMutualTlsCertificate("myCert",
-            zone_id="0da42c8d2132a9ddaf714f9e7c920711",
-            name="My Root Cert",
-            certificate=var["ca_pem"],
-            associated_hostnames=["staging.example.com"])
-        ```
-
         ## Import
 
         Account level import.
@@ -327,19 +316,6 @@ class AccessMutualTlsCertificate(pulumi.CustomResource):
         access token, you must provide the argument that matches the token's
         scope. For example, an access token that is scoped to the "example.com"
         zone needs to use the `zone_id` argument.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudflare as cloudflare
-
-        my_cert = cloudflare.AccessMutualTlsCertificate("myCert",
-            zone_id="0da42c8d2132a9ddaf714f9e7c920711",
-            name="My Root Cert",
-            certificate=var["ca_pem"],
-            associated_hostnames=["staging.example.com"])
-        ```
 
         ## Import
 

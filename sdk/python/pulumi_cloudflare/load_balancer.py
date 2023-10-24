@@ -82,10 +82,10 @@ class LoadBalancerArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             default_pool_ids: pulumi.Input[Sequence[pulumi.Input[str]]],
-             fallback_pool_id: pulumi.Input[str],
-             name: pulumi.Input[str],
-             zone_id: pulumi.Input[str],
+             default_pool_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             fallback_pool_id: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             zone_id: Optional[pulumi.Input[str]] = None,
              adaptive_routings: Optional[pulumi.Input[Sequence[pulumi.Input['LoadBalancerAdaptiveRoutingArgs']]]] = None,
              country_pools: Optional[pulumi.Input[Sequence[pulumi.Input['LoadBalancerCountryPoolArgs']]]] = None,
              description: Optional[pulumi.Input[str]] = None,
@@ -101,33 +101,41 @@ class LoadBalancerArgs:
              session_affinity_ttl: Optional[pulumi.Input[int]] = None,
              steering_policy: Optional[pulumi.Input[str]] = None,
              ttl: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'defaultPoolIds' in kwargs:
+        if default_pool_ids is None and 'defaultPoolIds' in kwargs:
             default_pool_ids = kwargs['defaultPoolIds']
-        if 'fallbackPoolId' in kwargs:
+        if default_pool_ids is None:
+            raise TypeError("Missing 'default_pool_ids' argument")
+        if fallback_pool_id is None and 'fallbackPoolId' in kwargs:
             fallback_pool_id = kwargs['fallbackPoolId']
-        if 'zoneId' in kwargs:
+        if fallback_pool_id is None:
+            raise TypeError("Missing 'fallback_pool_id' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
-        if 'adaptiveRoutings' in kwargs:
+        if zone_id is None:
+            raise TypeError("Missing 'zone_id' argument")
+        if adaptive_routings is None and 'adaptiveRoutings' in kwargs:
             adaptive_routings = kwargs['adaptiveRoutings']
-        if 'countryPools' in kwargs:
+        if country_pools is None and 'countryPools' in kwargs:
             country_pools = kwargs['countryPools']
-        if 'locationStrategies' in kwargs:
+        if location_strategies is None and 'locationStrategies' in kwargs:
             location_strategies = kwargs['locationStrategies']
-        if 'popPools' in kwargs:
+        if pop_pools is None and 'popPools' in kwargs:
             pop_pools = kwargs['popPools']
-        if 'randomSteerings' in kwargs:
+        if random_steerings is None and 'randomSteerings' in kwargs:
             random_steerings = kwargs['randomSteerings']
-        if 'regionPools' in kwargs:
+        if region_pools is None and 'regionPools' in kwargs:
             region_pools = kwargs['regionPools']
-        if 'sessionAffinity' in kwargs:
+        if session_affinity is None and 'sessionAffinity' in kwargs:
             session_affinity = kwargs['sessionAffinity']
-        if 'sessionAffinityAttributes' in kwargs:
+        if session_affinity_attributes is None and 'sessionAffinityAttributes' in kwargs:
             session_affinity_attributes = kwargs['sessionAffinityAttributes']
-        if 'sessionAffinityTtl' in kwargs:
+        if session_affinity_ttl is None and 'sessionAffinityTtl' in kwargs:
             session_affinity_ttl = kwargs['sessionAffinityTtl']
-        if 'steeringPolicy' in kwargs:
+        if steering_policy is None and 'steeringPolicy' in kwargs:
             steering_policy = kwargs['steeringPolicy']
 
         _setter("default_pool_ids", default_pool_ids)
@@ -490,37 +498,37 @@ class _LoadBalancerState:
              steering_policy: Optional[pulumi.Input[str]] = None,
              ttl: Optional[pulumi.Input[int]] = None,
              zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'adaptiveRoutings' in kwargs:
+        if adaptive_routings is None and 'adaptiveRoutings' in kwargs:
             adaptive_routings = kwargs['adaptiveRoutings']
-        if 'countryPools' in kwargs:
+        if country_pools is None and 'countryPools' in kwargs:
             country_pools = kwargs['countryPools']
-        if 'createdOn' in kwargs:
+        if created_on is None and 'createdOn' in kwargs:
             created_on = kwargs['createdOn']
-        if 'defaultPoolIds' in kwargs:
+        if default_pool_ids is None and 'defaultPoolIds' in kwargs:
             default_pool_ids = kwargs['defaultPoolIds']
-        if 'fallbackPoolId' in kwargs:
+        if fallback_pool_id is None and 'fallbackPoolId' in kwargs:
             fallback_pool_id = kwargs['fallbackPoolId']
-        if 'locationStrategies' in kwargs:
+        if location_strategies is None and 'locationStrategies' in kwargs:
             location_strategies = kwargs['locationStrategies']
-        if 'modifiedOn' in kwargs:
+        if modified_on is None and 'modifiedOn' in kwargs:
             modified_on = kwargs['modifiedOn']
-        if 'popPools' in kwargs:
+        if pop_pools is None and 'popPools' in kwargs:
             pop_pools = kwargs['popPools']
-        if 'randomSteerings' in kwargs:
+        if random_steerings is None and 'randomSteerings' in kwargs:
             random_steerings = kwargs['randomSteerings']
-        if 'regionPools' in kwargs:
+        if region_pools is None and 'regionPools' in kwargs:
             region_pools = kwargs['regionPools']
-        if 'sessionAffinity' in kwargs:
+        if session_affinity is None and 'sessionAffinity' in kwargs:
             session_affinity = kwargs['sessionAffinity']
-        if 'sessionAffinityAttributes' in kwargs:
+        if session_affinity_attributes is None and 'sessionAffinityAttributes' in kwargs:
             session_affinity_attributes = kwargs['sessionAffinityAttributes']
-        if 'sessionAffinityTtl' in kwargs:
+        if session_affinity_ttl is None and 'sessionAffinityTtl' in kwargs:
             session_affinity_ttl = kwargs['sessionAffinityTtl']
-        if 'steeringPolicy' in kwargs:
+        if steering_policy is None and 'steeringPolicy' in kwargs:
             steering_policy = kwargs['steeringPolicy']
-        if 'zoneId' in kwargs:
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
 
         if adaptive_routings is not None:
@@ -851,55 +859,6 @@ class LoadBalancer(pulumi.CustomResource):
         feature must be enabled in your Cloudflare account before you can use
         this resource.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudflare as cloudflare
-
-        example_load_balancer_pool = cloudflare.LoadBalancerPool("exampleLoadBalancerPool",
-            name="example-lb-pool",
-            origins=[cloudflare.LoadBalancerPoolOriginArgs(
-                name="example-1",
-                address="192.0.2.1",
-                enabled=False,
-            )])
-        # Define a load balancer which always points to a pool we define below.
-        # In normal usage, would have different pools set for different pops
-        # (cloudflare points-of-presence) and/or for different regions.
-        # Within each pop or region we can define multiple pools in failover order.
-        example_load_balancer = cloudflare.LoadBalancer("exampleLoadBalancer",
-            zone_id="0da42c8d2132a9ddaf714f9e7c920711",
-            name="example-load-balancer.example.com",
-            fallback_pool_id=example_load_balancer_pool.id,
-            default_pool_ids=[example_load_balancer_pool.id],
-            description="example load balancer using geo-balancing",
-            proxied=True,
-            steering_policy="geo",
-            pop_pools=[cloudflare.LoadBalancerPopPoolArgs(
-                pop="LAX",
-                pool_ids=[example_load_balancer_pool.id],
-            )],
-            country_pools=[cloudflare.LoadBalancerCountryPoolArgs(
-                country="US",
-                pool_ids=[example_load_balancer_pool.id],
-            )],
-            region_pools=[cloudflare.LoadBalancerRegionPoolArgs(
-                region="WNAM",
-                pool_ids=[example_load_balancer_pool.id],
-            )],
-            rules=[cloudflare.LoadBalancerRuleArgs(
-                name="example rule",
-                condition="http.request.uri.path contains \\"testing\\"",
-                fixed_response=cloudflare.LoadBalancerRuleFixedResponseArgs(
-                    message_body="hello",
-                    status_code=200,
-                    content_type="html",
-                    location="www.example.com",
-                ),
-            )])
-        ```
-
         ## Import
 
         ```sh
@@ -940,55 +899,6 @@ class LoadBalancer(pulumi.CustomResource):
         for geographically-aware load balancing. Note that the load balancing
         feature must be enabled in your Cloudflare account before you can use
         this resource.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudflare as cloudflare
-
-        example_load_balancer_pool = cloudflare.LoadBalancerPool("exampleLoadBalancerPool",
-            name="example-lb-pool",
-            origins=[cloudflare.LoadBalancerPoolOriginArgs(
-                name="example-1",
-                address="192.0.2.1",
-                enabled=False,
-            )])
-        # Define a load balancer which always points to a pool we define below.
-        # In normal usage, would have different pools set for different pops
-        # (cloudflare points-of-presence) and/or for different regions.
-        # Within each pop or region we can define multiple pools in failover order.
-        example_load_balancer = cloudflare.LoadBalancer("exampleLoadBalancer",
-            zone_id="0da42c8d2132a9ddaf714f9e7c920711",
-            name="example-load-balancer.example.com",
-            fallback_pool_id=example_load_balancer_pool.id,
-            default_pool_ids=[example_load_balancer_pool.id],
-            description="example load balancer using geo-balancing",
-            proxied=True,
-            steering_policy="geo",
-            pop_pools=[cloudflare.LoadBalancerPopPoolArgs(
-                pop="LAX",
-                pool_ids=[example_load_balancer_pool.id],
-            )],
-            country_pools=[cloudflare.LoadBalancerCountryPoolArgs(
-                country="US",
-                pool_ids=[example_load_balancer_pool.id],
-            )],
-            region_pools=[cloudflare.LoadBalancerRegionPoolArgs(
-                region="WNAM",
-                pool_ids=[example_load_balancer_pool.id],
-            )],
-            rules=[cloudflare.LoadBalancerRuleArgs(
-                name="example rule",
-                condition="http.request.uri.path contains \\"testing\\"",
-                fixed_response=cloudflare.LoadBalancerRuleFixedResponseArgs(
-                    message_body="hello",
-                    status_code=200,
-                    content_type="html",
-                    location="www.example.com",
-                ),
-            )])
-        ```
 
         ## Import
 

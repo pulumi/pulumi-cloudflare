@@ -14,68 +14,6 @@ namespace Pulumi.Cloudflare
     /// control can be applied on basis of IP addresses, IP ranges, AS
     /// numbers or countries.
     /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Cloudflare = Pulumi.Cloudflare;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     // Challenge requests coming from known Tor exit nodes.
-    ///     var torExitNodes = new Cloudflare.AccessRule("torExitNodes", new()
-    ///     {
-    ///         ZoneId = "0da42c8d2132a9ddaf714f9e7c920711",
-    ///         Notes = "Requests coming from known Tor exit nodes",
-    ///         Mode = "challenge",
-    ///         Configuration = new Cloudflare.Inputs.AccessRuleConfigurationArgs
-    ///         {
-    ///             Target = "country",
-    ///             Value = "T1",
-    ///         },
-    ///     });
-    /// 
-    ///     // Allowlist requests coming from Antarctica, but only for single zone.
-    ///     var antarctica = new Cloudflare.AccessRule("antarctica", new()
-    ///     {
-    ///         ZoneId = "0da42c8d2132a9ddaf714f9e7c920711",
-    ///         Notes = "Requests coming from Antarctica",
-    ///         Mode = "whitelist",
-    ///         Configuration = new Cloudflare.Inputs.AccessRuleConfigurationArgs
-    ///         {
-    ///             Target = "country",
-    ///             Value = "AQ",
-    ///         },
-    ///     });
-    /// 
-    ///     var config = new Config();
-    ///     var myOffice = config.GetObject&lt;string[]&gt;("myOffice") ?? new[]
-    ///     {
-    ///         "192.0.2.0/24",
-    ///         "198.51.100.0/24",
-    ///         "2001:db8::/56",
-    ///     };
-    ///     var officeNetwork = new List&lt;Cloudflare.AccessRule&gt;();
-    ///     for (var rangeIndex = 0; rangeIndex &lt; myOffice.Length; rangeIndex++)
-    ///     {
-    ///         var range = new { Value = rangeIndex };
-    ///         officeNetwork.Add(new Cloudflare.AccessRule($"officeNetwork-{range.Value}", new()
-    ///         {
-    ///             AccountId = "f037e56e89293a057740de681ac9abbe",
-    ///             Notes = "Requests coming from office network",
-    ///             Mode = "whitelist",
-    ///             Configuration = new Cloudflare.Inputs.AccessRuleConfigurationArgs
-    ///             {
-    ///                 Target = "ip_range",
-    ///                 Value = myOffice[count.Index],
-    ///             },
-    ///         }));
-    ///     }
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// User level access rule import.

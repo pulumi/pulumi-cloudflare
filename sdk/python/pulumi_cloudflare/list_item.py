@@ -46,19 +46,23 @@ class ListItemInitArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             account_id: pulumi.Input[str],
-             list_id: pulumi.Input[str],
+             account_id: Optional[pulumi.Input[str]] = None,
+             list_id: Optional[pulumi.Input[str]] = None,
              asn: Optional[pulumi.Input[int]] = None,
              comment: Optional[pulumi.Input[str]] = None,
              hostname: Optional[pulumi.Input['ListItemHostnameArgs']] = None,
              ip: Optional[pulumi.Input[str]] = None,
              redirect: Optional[pulumi.Input['ListItemRedirectArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'accountId' in kwargs:
+        if account_id is None and 'accountId' in kwargs:
             account_id = kwargs['accountId']
-        if 'listId' in kwargs:
+        if account_id is None:
+            raise TypeError("Missing 'account_id' argument")
+        if list_id is None and 'listId' in kwargs:
             list_id = kwargs['listId']
+        if list_id is None:
+            raise TypeError("Missing 'list_id' argument")
 
         _setter("account_id", account_id)
         _setter("list_id", list_id)
@@ -198,11 +202,11 @@ class _ListItemState:
              ip: Optional[pulumi.Input[str]] = None,
              list_id: Optional[pulumi.Input[str]] = None,
              redirect: Optional[pulumi.Input['ListItemRedirectArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'accountId' in kwargs:
+        if account_id is None and 'accountId' in kwargs:
             account_id = kwargs['accountId']
-        if 'listId' in kwargs:
+        if list_id is None and 'listId' in kwargs:
             list_id = kwargs['listId']
 
         if account_id is not None:
@@ -322,59 +326,6 @@ class ListItem(pulumi.CustomResource):
         Provides individual list items (IPs, Redirects) to be used in Edge Rules Engine
         across all zones within the same account.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudflare as cloudflare
-
-        example_ip_list = cloudflare.List("exampleIpList",
-            account_id="f037e56e89293a057740de681ac9abbe",
-            name="example_list",
-            description="example IPs for a list",
-            kind="ip")
-        # IP List Item
-        example_ip_item = cloudflare.ListItem("exampleIpItem",
-            account_id="f037e56e89293a057740de681ac9abbe",
-            list_id=example_ip_list.id,
-            comment="List Item Comment",
-            ip="192.0.2.0")
-        # Redirect List Item
-        test_two = cloudflare.ListItem("testTwo",
-            account_id="f037e56e89293a057740de681ac9abbe",
-            list_id=example_ip_list.id,
-            redirect=cloudflare.ListItemRedirectArgs(
-                source_url="https://source.tld",
-                target_url="https://target.tld",
-                status_code=302,
-                subpath_matching="enabled",
-            ))
-        # ASN list
-        example_asn_list = cloudflare.List("exampleAsnList",
-            account_id="f037e56e89293a057740de681ac9abbe",
-            name="example_asn_list",
-            description="example ASNs for a list",
-            kind="asn")
-        # ASN List Item
-        example_asn_item = cloudflare.ListItem("exampleAsnItem",
-            account_id="f037e56e89293a057740de681ac9abbe",
-            list_id=example_asn_list.id,
-            comment="List Item Comment",
-            asn=6789)
-        # Hostname list
-        example_hostname_list = cloudflare.List("exampleHostnameList",
-            account_id="f037e56e89293a057740de681ac9abbe",
-            name="example_hostname_list",
-            description="example Hostnames for a list",
-            kind="hostname")
-        # Hostname List Item
-        example_hostname_item = cloudflare.ListItem("exampleHostnameItem",
-            account_id="f037e56e89293a057740de681ac9abbe",
-            list_id=example_hostname_list.id,
-            comment="List Item Comment",
-            asn="example.com")
-        ```
-
         ## Import
 
         ```sh
@@ -400,59 +351,6 @@ class ListItem(pulumi.CustomResource):
         """
         Provides individual list items (IPs, Redirects) to be used in Edge Rules Engine
         across all zones within the same account.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudflare as cloudflare
-
-        example_ip_list = cloudflare.List("exampleIpList",
-            account_id="f037e56e89293a057740de681ac9abbe",
-            name="example_list",
-            description="example IPs for a list",
-            kind="ip")
-        # IP List Item
-        example_ip_item = cloudflare.ListItem("exampleIpItem",
-            account_id="f037e56e89293a057740de681ac9abbe",
-            list_id=example_ip_list.id,
-            comment="List Item Comment",
-            ip="192.0.2.0")
-        # Redirect List Item
-        test_two = cloudflare.ListItem("testTwo",
-            account_id="f037e56e89293a057740de681ac9abbe",
-            list_id=example_ip_list.id,
-            redirect=cloudflare.ListItemRedirectArgs(
-                source_url="https://source.tld",
-                target_url="https://target.tld",
-                status_code=302,
-                subpath_matching="enabled",
-            ))
-        # ASN list
-        example_asn_list = cloudflare.List("exampleAsnList",
-            account_id="f037e56e89293a057740de681ac9abbe",
-            name="example_asn_list",
-            description="example ASNs for a list",
-            kind="asn")
-        # ASN List Item
-        example_asn_item = cloudflare.ListItem("exampleAsnItem",
-            account_id="f037e56e89293a057740de681ac9abbe",
-            list_id=example_asn_list.id,
-            comment="List Item Comment",
-            asn=6789)
-        # Hostname list
-        example_hostname_list = cloudflare.List("exampleHostnameList",
-            account_id="f037e56e89293a057740de681ac9abbe",
-            name="example_hostname_list",
-            description="example Hostnames for a list",
-            kind="hostname")
-        # Hostname List Item
-        example_hostname_item = cloudflare.ListItem("exampleHostnameItem",
-            account_id="f037e56e89293a057740de681ac9abbe",
-            list_id=example_hostname_list.id,
-            comment="List Item Comment",
-            asn="example.com")
-        ```
 
         ## Import
 
@@ -500,21 +398,13 @@ class ListItem(pulumi.CustomResource):
             __props__.__dict__["account_id"] = account_id
             __props__.__dict__["asn"] = asn
             __props__.__dict__["comment"] = comment
-            if hostname is not None and not isinstance(hostname, ListItemHostnameArgs):
-                hostname = hostname or {}
-                def _setter(key, value):
-                    hostname[key] = value
-                ListItemHostnameArgs._configure(_setter, **hostname)
+            hostname = _utilities.configure(hostname, ListItemHostnameArgs, True)
             __props__.__dict__["hostname"] = hostname
             __props__.__dict__["ip"] = ip
             if list_id is None and not opts.urn:
                 raise TypeError("Missing required property 'list_id'")
             __props__.__dict__["list_id"] = list_id
-            if redirect is not None and not isinstance(redirect, ListItemRedirectArgs):
-                redirect = redirect or {}
-                def _setter(key, value):
-                    redirect[key] = value
-                ListItemRedirectArgs._configure(_setter, **redirect)
+            redirect = _utilities.configure(redirect, ListItemRedirectArgs, True)
             __props__.__dict__["redirect"] = redirect
         super(ListItem, __self__).__init__(
             'cloudflare:index/listItem:ListItem',

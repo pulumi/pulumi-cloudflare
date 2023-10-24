@@ -13,56 +13,12 @@ namespace Pulumi.Cloudflare
     {
         /// <summary>
         /// Use this data source to lookup [Lists](https://developers.cloudflare.com/api/operations/lists-get-lists).
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Cloudflare = Pulumi.Cloudflare;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var example = Cloudflare.GetLists.Invoke(new()
-        ///     {
-        ///         AccountId = "f037e56e89293a057740de681ac9abbe",
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetListsResult> InvokeAsync(GetListsArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetListsResult>("cloudflare:index/getLists:getLists", args ?? new GetListsArgs(), options.WithDefaults());
 
         /// <summary>
         /// Use this data source to lookup [Lists](https://developers.cloudflare.com/api/operations/lists-get-lists).
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Cloudflare = Pulumi.Cloudflare;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var example = Cloudflare.GetLists.Invoke(new()
-        ///     {
-        ///         AccountId = "f037e56e89293a057740de681ac9abbe",
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Output<GetListsResult> Invoke(GetListsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetListsResult>("cloudflare:index/getLists:getLists", args ?? new GetListsInvokeArgs(), options.WithDefaults());

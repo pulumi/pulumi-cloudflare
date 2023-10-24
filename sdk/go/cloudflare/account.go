@@ -16,34 +16,6 @@ import (
 // Provides a Cloudflare Account resource. Account is the basic resource for
 // working with Cloudflare zones, teams and users.
 //
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewAccount(ctx, "example", &cloudflare.AccountArgs{
-//				EnforceTwofactor: pulumi.Bool(true),
-//				Name:             pulumi.String("some-enterprise-account"),
-//				Type:             pulumi.String("enterprise"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // ```sh

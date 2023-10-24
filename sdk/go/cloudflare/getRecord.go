@@ -13,33 +13,6 @@ import (
 )
 
 // Use this data source to lookup a single [DNS Record](https://api.cloudflare.com/#dns-records-for-a-zone-properties).
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.LookupRecord(ctx, &cloudflare.LookupRecordArgs{
-//				Hostname: "example.com",
-//				ZoneId:   "0da42c8d2132a9ddaf714f9e7c920711",
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func LookupRecord(ctx *pulumi.Context, args *LookupRecordArgs, opts ...pulumi.InvokeOption) (*LookupRecordResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupRecordResult

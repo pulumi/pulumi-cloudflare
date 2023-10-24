@@ -7,18 +7,6 @@ import * as utilities from "./utilities";
 /**
  * Provides a resource, that manages Cloudflare Tiered Cache settings.
  * This allows you to adjust topologies for your zone.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as cloudflare from "@pulumi/cloudflare";
- *
- * const example = new cloudflare.TieredCache("example", {
- *     cacheType: "smart",
- *     zoneId: "0da42c8d2132a9ddaf714f9e7c920711",
- * });
- * ```
  */
 export class TieredCache extends pulumi.CustomResource {
     /**

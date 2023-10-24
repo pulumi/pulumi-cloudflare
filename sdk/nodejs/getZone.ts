@@ -12,24 +12,6 @@ import * as utilities from "./utilities";
  * accounts to have the same zone created but in different states. If you are
  * using this setup, it is advised to use the `accountId` attribute on this
  * resource or swap to `cloudflare.getZones` to further filter the results.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as cloudflare from "@pulumi/cloudflare";
- *
- * const exampleZone = cloudflare.getZone({
- *     name: "example.com",
- * });
- * const exampleRecord = new cloudflare.Record("exampleRecord", {
- *     zoneId: exampleZone.then(exampleZone => exampleZone.id),
- *     name: "www",
- *     value: "203.0.113.1",
- *     type: "A",
- *     proxied: true,
- * });
- * ```
  */
 export function getZone(args?: GetZoneArgs, opts?: pulumi.InvokeOptions): Promise<GetZoneResult> {
     args = args || {};
@@ -109,24 +91,6 @@ export interface GetZoneResult {
  * accounts to have the same zone created but in different states. If you are
  * using this setup, it is advised to use the `accountId` attribute on this
  * resource or swap to `cloudflare.getZones` to further filter the results.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as cloudflare from "@pulumi/cloudflare";
- *
- * const exampleZone = cloudflare.getZone({
- *     name: "example.com",
- * });
- * const exampleRecord = new cloudflare.Record("exampleRecord", {
- *     zoneId: exampleZone.then(exampleZone => exampleZone.id),
- *     name: "www",
- *     value: "203.0.113.1",
- *     type: "A",
- *     proxied: true,
- * });
- * ```
  */
 export function getZoneOutput(args?: GetZoneOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetZoneResult> {
     return pulumi.output(args).apply((a: any) => getZone(a, opts))

@@ -51,20 +51,28 @@ class RateLimitArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             action: pulumi.Input['RateLimitActionArgs'],
-             period: pulumi.Input[int],
-             threshold: pulumi.Input[int],
-             zone_id: pulumi.Input[str],
+             action: Optional[pulumi.Input['RateLimitActionArgs']] = None,
+             period: Optional[pulumi.Input[int]] = None,
+             threshold: Optional[pulumi.Input[int]] = None,
+             zone_id: Optional[pulumi.Input[str]] = None,
              bypass_url_patterns: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              correlate: Optional[pulumi.Input['RateLimitCorrelateArgs']] = None,
              description: Optional[pulumi.Input[str]] = None,
              disabled: Optional[pulumi.Input[bool]] = None,
              match: Optional[pulumi.Input['RateLimitMatchArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'zoneId' in kwargs:
+        if action is None:
+            raise TypeError("Missing 'action' argument")
+        if period is None:
+            raise TypeError("Missing 'period' argument")
+        if threshold is None:
+            raise TypeError("Missing 'threshold' argument")
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
-        if 'bypassUrlPatterns' in kwargs:
+        if zone_id is None:
+            raise TypeError("Missing 'zone_id' argument")
+        if bypass_url_patterns is None and 'bypassUrlPatterns' in kwargs:
             bypass_url_patterns = kwargs['bypassUrlPatterns']
 
         _setter("action", action)
@@ -235,11 +243,11 @@ class _RateLimitState:
              period: Optional[pulumi.Input[int]] = None,
              threshold: Optional[pulumi.Input[int]] = None,
              zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'bypassUrlPatterns' in kwargs:
+        if bypass_url_patterns is None and 'bypassUrlPatterns' in kwargs:
             bypass_url_patterns = kwargs['bypassUrlPatterns']
-        if 'zoneId' in kwargs:
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
 
         if action is not None:
@@ -387,74 +395,6 @@ class RateLimit(pulumi.CustomResource):
         be used to limit the traffic you receive zone-wide, or matching more
         specific types of requests/responses.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudflare as cloudflare
-
-        example = cloudflare.RateLimit("example",
-            action=cloudflare.RateLimitActionArgs(
-                mode="simulate",
-                response=cloudflare.RateLimitActionResponseArgs(
-                    body="custom response body",
-                    content_type="text/plain",
-                ),
-                timeout=43200,
-            ),
-            bypass_url_patterns=[
-                "example.com/bypass1",
-                "example.com/bypass2",
-            ],
-            correlate=cloudflare.RateLimitCorrelateArgs(
-                by="nat",
-            ),
-            description="example rate limit for a zone",
-            disabled=False,
-            match=cloudflare.RateLimitMatchArgs(
-                request=cloudflare.RateLimitMatchRequestArgs(
-                    methods=[
-                        "GET",
-                        "POST",
-                        "PUT",
-                        "DELETE",
-                        "PATCH",
-                        "HEAD",
-                    ],
-                    schemes=[
-                        "HTTP",
-                        "HTTPS",
-                    ],
-                    url_pattern=f"{var['cloudflare_zone']}/*",
-                ),
-                response=cloudflare.RateLimitMatchResponseArgs(
-                    headers=[
-                        {
-                            "name": "Host",
-                            "op": "eq",
-                            "value": "localhost",
-                        },
-                        {
-                            "name": "X-Example",
-                            "op": "ne",
-                            "value": "my-example",
-                        },
-                    ],
-                    origin_traffic=False,
-                    statuses=[
-                        200,
-                        201,
-                        202,
-                        301,
-                        429,
-                    ],
-                ),
-            ),
-            period=2,
-            threshold=2000,
-            zone_id="0da42c8d2132a9ddaf714f9e7c920711")
-        ```
-
         ## Import
 
         ```sh
@@ -482,74 +422,6 @@ class RateLimit(pulumi.CustomResource):
         Provides a Cloudflare rate limit resource for a given zone. This can
         be used to limit the traffic you receive zone-wide, or matching more
         specific types of requests/responses.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudflare as cloudflare
-
-        example = cloudflare.RateLimit("example",
-            action=cloudflare.RateLimitActionArgs(
-                mode="simulate",
-                response=cloudflare.RateLimitActionResponseArgs(
-                    body="custom response body",
-                    content_type="text/plain",
-                ),
-                timeout=43200,
-            ),
-            bypass_url_patterns=[
-                "example.com/bypass1",
-                "example.com/bypass2",
-            ],
-            correlate=cloudflare.RateLimitCorrelateArgs(
-                by="nat",
-            ),
-            description="example rate limit for a zone",
-            disabled=False,
-            match=cloudflare.RateLimitMatchArgs(
-                request=cloudflare.RateLimitMatchRequestArgs(
-                    methods=[
-                        "GET",
-                        "POST",
-                        "PUT",
-                        "DELETE",
-                        "PATCH",
-                        "HEAD",
-                    ],
-                    schemes=[
-                        "HTTP",
-                        "HTTPS",
-                    ],
-                    url_pattern=f"{var['cloudflare_zone']}/*",
-                ),
-                response=cloudflare.RateLimitMatchResponseArgs(
-                    headers=[
-                        {
-                            "name": "Host",
-                            "op": "eq",
-                            "value": "localhost",
-                        },
-                        {
-                            "name": "X-Example",
-                            "op": "ne",
-                            "value": "my-example",
-                        },
-                    ],
-                    origin_traffic=False,
-                    statuses=[
-                        200,
-                        201,
-                        202,
-                        301,
-                        429,
-                    ],
-                ),
-            ),
-            period=2,
-            threshold=2000,
-            zone_id="0da42c8d2132a9ddaf714f9e7c920711")
-        ```
 
         ## Import
 
@@ -594,28 +466,16 @@ class RateLimit(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = RateLimitArgs.__new__(RateLimitArgs)
 
-            if action is not None and not isinstance(action, RateLimitActionArgs):
-                action = action or {}
-                def _setter(key, value):
-                    action[key] = value
-                RateLimitActionArgs._configure(_setter, **action)
+            action = _utilities.configure(action, RateLimitActionArgs, True)
             if action is None and not opts.urn:
                 raise TypeError("Missing required property 'action'")
             __props__.__dict__["action"] = action
             __props__.__dict__["bypass_url_patterns"] = bypass_url_patterns
-            if correlate is not None and not isinstance(correlate, RateLimitCorrelateArgs):
-                correlate = correlate or {}
-                def _setter(key, value):
-                    correlate[key] = value
-                RateLimitCorrelateArgs._configure(_setter, **correlate)
+            correlate = _utilities.configure(correlate, RateLimitCorrelateArgs, True)
             __props__.__dict__["correlate"] = correlate
             __props__.__dict__["description"] = description
             __props__.__dict__["disabled"] = disabled
-            if match is not None and not isinstance(match, RateLimitMatchArgs):
-                match = match or {}
-                def _setter(key, value):
-                    match[key] = value
-                RateLimitMatchArgs._configure(_setter, **match)
+            match = _utilities.configure(match, RateLimitMatchArgs, True)
             __props__.__dict__["match"] = match
             if period is None and not opts.urn:
                 raise TypeError("Missing required property 'period'")

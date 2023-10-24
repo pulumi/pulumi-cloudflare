@@ -44,19 +44,25 @@ class FirewallRuleArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             action: pulumi.Input[str],
-             filter_id: pulumi.Input[str],
-             zone_id: pulumi.Input[str],
+             action: Optional[pulumi.Input[str]] = None,
+             filter_id: Optional[pulumi.Input[str]] = None,
+             zone_id: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              paused: Optional[pulumi.Input[bool]] = None,
              priority: Optional[pulumi.Input[int]] = None,
              products: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'filterId' in kwargs:
+        if action is None:
+            raise TypeError("Missing 'action' argument")
+        if filter_id is None and 'filterId' in kwargs:
             filter_id = kwargs['filterId']
-        if 'zoneId' in kwargs:
+        if filter_id is None:
+            raise TypeError("Missing 'filter_id' argument")
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
+        if zone_id is None:
+            raise TypeError("Missing 'zone_id' argument")
 
         _setter("action", action)
         _setter("filter_id", filter_id)
@@ -195,11 +201,11 @@ class _FirewallRuleState:
              priority: Optional[pulumi.Input[int]] = None,
              products: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'filterId' in kwargs:
+        if filter_id is None and 'filterId' in kwargs:
             filter_id = kwargs['filterId']
-        if 'zoneId' in kwargs:
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
 
         if action is not None:
@@ -316,23 +322,6 @@ class FirewallRule(pulumi.CustomResource):
                  zone_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudflare as cloudflare
-
-        wordpress_filter = cloudflare.Filter("wordpressFilter",
-            zone_id="0da42c8d2132a9ddaf714f9e7c920711",
-            description="Wordpress break-in attempts that are outside of the office",
-            expression="(http.request.uri.path ~ \\".*wp-login.php\\" or http.request.uri.path ~ \\".*xmlrpc.php\\") and ip.src ne 192.0.2.1")
-        wordpress_firewall_rule = cloudflare.FirewallRule("wordpressFirewallRule",
-            zone_id="0da42c8d2132a9ddaf714f9e7c920711",
-            description="Block wordpress break-in attempts",
-            filter_id=wordpress_filter.id,
-            action="block")
-        ```
-
         ## Import
 
         ```sh
@@ -356,23 +345,6 @@ class FirewallRule(pulumi.CustomResource):
                  args: FirewallRuleArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudflare as cloudflare
-
-        wordpress_filter = cloudflare.Filter("wordpressFilter",
-            zone_id="0da42c8d2132a9ddaf714f9e7c920711",
-            description="Wordpress break-in attempts that are outside of the office",
-            expression="(http.request.uri.path ~ \\".*wp-login.php\\" or http.request.uri.path ~ \\".*xmlrpc.php\\") and ip.src ne 192.0.2.1")
-        wordpress_firewall_rule = cloudflare.FirewallRule("wordpressFirewallRule",
-            zone_id="0da42c8d2132a9ddaf714f9e7c920711",
-            description="Block wordpress break-in attempts",
-            filter_id=wordpress_filter.id,
-            action="block")
-        ```
-
         ## Import
 
         ```sh

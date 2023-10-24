@@ -41,21 +41,25 @@ class AccessCustomPageArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             name: pulumi.Input[str],
-             type: pulumi.Input[str],
+             name: Optional[pulumi.Input[str]] = None,
+             type: Optional[pulumi.Input[str]] = None,
              account_id: Optional[pulumi.Input[str]] = None,
              app_count: Optional[pulumi.Input[int]] = None,
              custom_html: Optional[pulumi.Input[str]] = None,
              zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'accountId' in kwargs:
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+        if account_id is None and 'accountId' in kwargs:
             account_id = kwargs['accountId']
-        if 'appCount' in kwargs:
+        if app_count is None and 'appCount' in kwargs:
             app_count = kwargs['appCount']
-        if 'customHtml' in kwargs:
+        if custom_html is None and 'customHtml' in kwargs:
             custom_html = kwargs['customHtml']
-        if 'zoneId' in kwargs:
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
 
         _setter("name", name)
@@ -178,15 +182,15 @@ class _AccessCustomPageState:
              name: Optional[pulumi.Input[str]] = None,
              type: Optional[pulumi.Input[str]] = None,
              zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'accountId' in kwargs:
+        if account_id is None and 'accountId' in kwargs:
             account_id = kwargs['accountId']
-        if 'appCount' in kwargs:
+        if app_count is None and 'appCount' in kwargs:
             app_count = kwargs['appCount']
-        if 'customHtml' in kwargs:
+        if custom_html is None and 'customHtml' in kwargs:
             custom_html = kwargs['customHtml']
-        if 'zoneId' in kwargs:
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
 
         if account_id is not None:
@@ -291,19 +295,6 @@ class AccessCustomPage(pulumi.CustomResource):
         Provides a resource to customize the pages your end users will see
         when trying to reach applications behind Cloudflare Access.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudflare as cloudflare
-
-        example = cloudflare.AccessCustomPage("example",
-            custom_html="<html><body><h1>Forbidden</h1></body></html>",
-            name="example",
-            type="forbidden",
-            zone_id="0da42c8d2132a9ddaf714f9e7c920711")
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_id: The account identifier to target for the resource. Conflicts with `zone_id`. **Modifying this attribute will force creation of a new resource.**
@@ -322,19 +313,6 @@ class AccessCustomPage(pulumi.CustomResource):
         """
         Provides a resource to customize the pages your end users will see
         when trying to reach applications behind Cloudflare Access.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudflare as cloudflare
-
-        example = cloudflare.AccessCustomPage("example",
-            custom_html="<html><body><h1>Forbidden</h1></body></html>",
-            name="example",
-            type="forbidden",
-            zone_id="0da42c8d2132a9ddaf714f9e7c920711")
-        ```
 
         :param str resource_name: The name of the resource.
         :param AccessCustomPageArgs args: The arguments to use to populate this resource's properties.

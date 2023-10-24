@@ -8,20 +8,6 @@ import * as utilities from "./utilities";
  * Provides the ability to manage Bring-Your-Own-IP prefixes (BYOIP)
  * which are used with or without Magic Transit.
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as cloudflare from "@pulumi/cloudflare";
- *
- * const example = new cloudflare.ByoIpPrefix("example", {
- *     accountId: "f037e56e89293a057740de681ac9abbe",
- *     advertisement: "on",
- *     description: "Example IP Prefix",
- *     prefixId: "d41d8cd98f00b204e9800998ecf8427e",
- * });
- * ```
- *
  * ## Import
  *
  * ```sh

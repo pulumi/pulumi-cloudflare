@@ -75,15 +75,6 @@ def get_origin_ca_root_certificate(algorithm: Optional[str] = None,
     [Origin CA root certificate](https://developers.cloudflare.com/ssl/origin-configuration/origin-ca#4-required-for-some-add-cloudflare-origin-ca-root-certificates)
     for a given algorithm."
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_cloudflare as cloudflare
-
-    example = cloudflare.get_origin_ca_root_certificate(algorithm="rsa")
-    ```
-
 
     :param str algorithm: The name of the algorithm used when creating an Origin CA certificate. Available values: `rsa`, `ecc`.
     """
@@ -105,15 +96,6 @@ def get_origin_ca_root_certificate_output(algorithm: Optional[pulumi.Input[str]]
     Use this data source to get the
     [Origin CA root certificate](https://developers.cloudflare.com/ssl/origin-configuration/origin-ca#4-required-for-some-add-cloudflare-origin-ca-root-certificates)
     for a given algorithm."
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_cloudflare as cloudflare
-
-    example = cloudflare.get_origin_ca_root_certificate(algorithm="rsa")
-    ```
 
 
     :param str algorithm: The name of the algorithm used when creating an Origin CA certificate. Available values: `rsa`, `ecc`.

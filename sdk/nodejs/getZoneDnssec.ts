@@ -6,17 +6,6 @@ import * as utilities from "./utilities";
 
 /**
  * Use this data source to look up Zone DNSSEC settings.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as cloudflare from "@pulumi/cloudflare";
- *
- * const example = cloudflare.getZoneDnssec({
- *     zoneId: "0da42c8d2132a9ddaf714f9e7c920711",
- * });
- * ```
  */
 export function getZoneDnssec(args: GetZoneDnssecArgs, opts?: pulumi.InvokeOptions): Promise<GetZoneDnssecResult> {
 
@@ -91,17 +80,6 @@ export interface GetZoneDnssecResult {
 }
 /**
  * Use this data source to look up Zone DNSSEC settings.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as cloudflare from "@pulumi/cloudflare";
- *
- * const example = cloudflare.getZoneDnssec({
- *     zoneId: "0da42c8d2132a9ddaf714f9e7c920711",
- * });
- * ```
  */
 export function getZoneDnssecOutput(args: GetZoneDnssecOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetZoneDnssecResult> {
     return pulumi.output(args).apply((a: any) => getZoneDnssec(a, opts))

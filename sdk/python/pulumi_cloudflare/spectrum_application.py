@@ -64,9 +64,9 @@ class SpectrumApplicationArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             dns: pulumi.Input['SpectrumApplicationDnsArgs'],
-             protocol: pulumi.Input[str],
-             zone_id: pulumi.Input[str],
+             dns: Optional[pulumi.Input['SpectrumApplicationDnsArgs']] = None,
+             protocol: Optional[pulumi.Input[str]] = None,
+             zone_id: Optional[pulumi.Input[str]] = None,
              argo_smart_routing: Optional[pulumi.Input[bool]] = None,
              edge_ips: Optional[pulumi.Input['SpectrumApplicationEdgeIpsArgs']] = None,
              ip_firewall: Optional[pulumi.Input[bool]] = None,
@@ -77,27 +77,33 @@ class SpectrumApplicationArgs:
              proxy_protocol: Optional[pulumi.Input[str]] = None,
              tls: Optional[pulumi.Input[str]] = None,
              traffic_type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'zoneId' in kwargs:
+        if dns is None:
+            raise TypeError("Missing 'dns' argument")
+        if protocol is None:
+            raise TypeError("Missing 'protocol' argument")
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
-        if 'argoSmartRouting' in kwargs:
+        if zone_id is None:
+            raise TypeError("Missing 'zone_id' argument")
+        if argo_smart_routing is None and 'argoSmartRouting' in kwargs:
             argo_smart_routing = kwargs['argoSmartRouting']
-        if 'edgeIps' in kwargs:
+        if edge_ips is None and 'edgeIps' in kwargs:
             edge_ips = kwargs['edgeIps']
-        if 'ipFirewall' in kwargs:
+        if ip_firewall is None and 'ipFirewall' in kwargs:
             ip_firewall = kwargs['ipFirewall']
-        if 'originDirects' in kwargs:
+        if origin_directs is None and 'originDirects' in kwargs:
             origin_directs = kwargs['originDirects']
-        if 'originDns' in kwargs:
+        if origin_dns is None and 'originDns' in kwargs:
             origin_dns = kwargs['originDns']
-        if 'originPort' in kwargs:
+        if origin_port is None and 'originPort' in kwargs:
             origin_port = kwargs['originPort']
-        if 'originPortRange' in kwargs:
+        if origin_port_range is None and 'originPortRange' in kwargs:
             origin_port_range = kwargs['originPortRange']
-        if 'proxyProtocol' in kwargs:
+        if proxy_protocol is None and 'proxyProtocol' in kwargs:
             proxy_protocol = kwargs['proxyProtocol']
-        if 'trafficType' in kwargs:
+        if traffic_type is None and 'trafficType' in kwargs:
             traffic_type = kwargs['trafficType']
 
         _setter("dns", dns)
@@ -345,27 +351,27 @@ class _SpectrumApplicationState:
              tls: Optional[pulumi.Input[str]] = None,
              traffic_type: Optional[pulumi.Input[str]] = None,
              zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'argoSmartRouting' in kwargs:
+        if argo_smart_routing is None and 'argoSmartRouting' in kwargs:
             argo_smart_routing = kwargs['argoSmartRouting']
-        if 'edgeIps' in kwargs:
+        if edge_ips is None and 'edgeIps' in kwargs:
             edge_ips = kwargs['edgeIps']
-        if 'ipFirewall' in kwargs:
+        if ip_firewall is None and 'ipFirewall' in kwargs:
             ip_firewall = kwargs['ipFirewall']
-        if 'originDirects' in kwargs:
+        if origin_directs is None and 'originDirects' in kwargs:
             origin_directs = kwargs['originDirects']
-        if 'originDns' in kwargs:
+        if origin_dns is None and 'originDns' in kwargs:
             origin_dns = kwargs['originDns']
-        if 'originPort' in kwargs:
+        if origin_port is None and 'originPort' in kwargs:
             origin_port = kwargs['originPort']
-        if 'originPortRange' in kwargs:
+        if origin_port_range is None and 'originPortRange' in kwargs:
             origin_port_range = kwargs['originPortRange']
-        if 'proxyProtocol' in kwargs:
+        if proxy_protocol is None and 'proxyProtocol' in kwargs:
             proxy_protocol = kwargs['proxyProtocol']
-        if 'trafficType' in kwargs:
+        if traffic_type is None and 'trafficType' in kwargs:
             traffic_type = kwargs['trafficType']
-        if 'zoneId' in kwargs:
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
 
         if argo_smart_routing is not None:
@@ -576,30 +582,6 @@ class SpectrumApplication(pulumi.CustomResource):
         of Cloudflare's DDoS, TLS, and IP Firewall to your other TCP-based
         services.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudflare as cloudflare
-
-        example = cloudflare.SpectrumApplication("example",
-            dns=cloudflare.SpectrumApplicationDnsArgs(
-                name="ssh.example.com",
-                type="CNAME",
-            ),
-            edge_ips=cloudflare.SpectrumApplicationEdgeIpsArgs(
-                ips=[
-                    "203.0.113.1",
-                    "203.0.113.2",
-                ],
-                type="static",
-            ),
-            origin_directs=["tcp://192.0.2.1:22"],
-            protocol="tcp/22",
-            traffic_type="direct",
-            zone_id="0da42c8d2132a9ddaf714f9e7c920711")
-        ```
-
         ## Import
 
         ```sh
@@ -632,30 +614,6 @@ class SpectrumApplication(pulumi.CustomResource):
         Provides a Cloudflare Spectrum Application. You can extend the power
         of Cloudflare's DDoS, TLS, and IP Firewall to your other TCP-based
         services.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudflare as cloudflare
-
-        example = cloudflare.SpectrumApplication("example",
-            dns=cloudflare.SpectrumApplicationDnsArgs(
-                name="ssh.example.com",
-                type="CNAME",
-            ),
-            edge_ips=cloudflare.SpectrumApplicationEdgeIpsArgs(
-                ips=[
-                    "203.0.113.1",
-                    "203.0.113.2",
-                ],
-                type="static",
-            ),
-            origin_directs=["tcp://192.0.2.1:22"],
-            protocol="tcp/22",
-            traffic_type="direct",
-            zone_id="0da42c8d2132a9ddaf714f9e7c920711")
-        ```
 
         ## Import
 
@@ -705,34 +663,18 @@ class SpectrumApplication(pulumi.CustomResource):
             __props__ = SpectrumApplicationArgs.__new__(SpectrumApplicationArgs)
 
             __props__.__dict__["argo_smart_routing"] = argo_smart_routing
-            if dns is not None and not isinstance(dns, SpectrumApplicationDnsArgs):
-                dns = dns or {}
-                def _setter(key, value):
-                    dns[key] = value
-                SpectrumApplicationDnsArgs._configure(_setter, **dns)
+            dns = _utilities.configure(dns, SpectrumApplicationDnsArgs, True)
             if dns is None and not opts.urn:
                 raise TypeError("Missing required property 'dns'")
             __props__.__dict__["dns"] = dns
-            if edge_ips is not None and not isinstance(edge_ips, SpectrumApplicationEdgeIpsArgs):
-                edge_ips = edge_ips or {}
-                def _setter(key, value):
-                    edge_ips[key] = value
-                SpectrumApplicationEdgeIpsArgs._configure(_setter, **edge_ips)
+            edge_ips = _utilities.configure(edge_ips, SpectrumApplicationEdgeIpsArgs, True)
             __props__.__dict__["edge_ips"] = edge_ips
             __props__.__dict__["ip_firewall"] = ip_firewall
             __props__.__dict__["origin_directs"] = origin_directs
-            if origin_dns is not None and not isinstance(origin_dns, SpectrumApplicationOriginDnsArgs):
-                origin_dns = origin_dns or {}
-                def _setter(key, value):
-                    origin_dns[key] = value
-                SpectrumApplicationOriginDnsArgs._configure(_setter, **origin_dns)
+            origin_dns = _utilities.configure(origin_dns, SpectrumApplicationOriginDnsArgs, True)
             __props__.__dict__["origin_dns"] = origin_dns
             __props__.__dict__["origin_port"] = origin_port
-            if origin_port_range is not None and not isinstance(origin_port_range, SpectrumApplicationOriginPortRangeArgs):
-                origin_port_range = origin_port_range or {}
-                def _setter(key, value):
-                    origin_port_range[key] = value
-                SpectrumApplicationOriginPortRangeArgs._configure(_setter, **origin_port_range)
+            origin_port_range = _utilities.configure(origin_port_range, SpectrumApplicationOriginPortRangeArgs, True)
             __props__.__dict__["origin_port_range"] = origin_port_range
             if protocol is None and not opts.urn:
                 raise TypeError("Missing required property 'protocol'")

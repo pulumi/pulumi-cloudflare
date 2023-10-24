@@ -15,39 +15,6 @@ import (
 
 // The [Turnstile Widget](https://developers.cloudflare.com/turnstile/) resource allows you to manage Cloudflare Turnstile Widgets.
 //
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewTurnstileWidget(ctx, "example", &cloudflare.TurnstileWidgetArgs{
-//				AccountId:    pulumi.String("f037e56e89293a057740de681ac9abbe"),
-//				BotFightMode: pulumi.Bool(false),
-//				Domains: pulumi.StringArray{
-//					pulumi.String("example.com"),
-//				},
-//				Mode:   pulumi.String("invisible"),
-//				Name:   pulumi.String("example widget"),
-//				Region: pulumi.String("world"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // ```sh

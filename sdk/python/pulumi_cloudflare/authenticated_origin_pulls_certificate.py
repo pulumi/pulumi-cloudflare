@@ -35,16 +35,24 @@ class AuthenticatedOriginPullsCertificateArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             certificate: pulumi.Input[str],
-             private_key: pulumi.Input[str],
-             type: pulumi.Input[str],
-             zone_id: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             certificate: Optional[pulumi.Input[str]] = None,
+             private_key: Optional[pulumi.Input[str]] = None,
+             type: Optional[pulumi.Input[str]] = None,
+             zone_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'privateKey' in kwargs:
+        if certificate is None:
+            raise TypeError("Missing 'certificate' argument")
+        if private_key is None and 'privateKey' in kwargs:
             private_key = kwargs['privateKey']
-        if 'zoneId' in kwargs:
+        if private_key is None:
+            raise TypeError("Missing 'private_key' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
+        if zone_id is None:
+            raise TypeError("Missing 'zone_id' argument")
 
         _setter("certificate", certificate)
         _setter("private_key", private_key)
@@ -152,17 +160,17 @@ class _AuthenticatedOriginPullsCertificateState:
              type: Optional[pulumi.Input[str]] = None,
              uploaded_on: Optional[pulumi.Input[str]] = None,
              zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'expiresOn' in kwargs:
+        if expires_on is None and 'expiresOn' in kwargs:
             expires_on = kwargs['expiresOn']
-        if 'privateKey' in kwargs:
+        if private_key is None and 'privateKey' in kwargs:
             private_key = kwargs['privateKey']
-        if 'serialNumber' in kwargs:
+        if serial_number is None and 'serialNumber' in kwargs:
             serial_number = kwargs['serialNumber']
-        if 'uploadedOn' in kwargs:
+        if uploaded_on is None and 'uploadedOn' in kwargs:
             uploaded_on = kwargs['uploadedOn']
-        if 'zoneId' in kwargs:
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
 
         if certificate is not None:
@@ -322,26 +330,6 @@ class AuthenticatedOriginPullsCertificate(pulumi.CustomResource):
         resource. An uploaded client certificate is required to use Per-Zone
          or Per-Hostname Authenticated Origin Pulls.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudflare as cloudflare
-
-        # Per-Zone Authenticated Origin Pulls certificate
-        my_per_zone_aop_cert = cloudflare.AuthenticatedOriginPullsCertificate("myPerZoneAopCert",
-            certificate="-----INSERT CERTIFICATE-----",
-            private_key="-----INSERT PRIVATE KEY-----",
-            type="per-zone",
-            zone_id="0da42c8d2132a9ddaf714f9e7c920711")
-        # Per-Hostname Authenticated Origin Pulls certificate
-        my_per_hostname_aop_cert = cloudflare.AuthenticatedOriginPullsCertificate("myPerHostnameAopCert",
-            certificate="-----INSERT CERTIFICATE-----",
-            private_key="-----INSERT PRIVATE KEY-----",
-            type="per-hostname",
-            zone_id="0da42c8d2132a9ddaf714f9e7c920711")
-        ```
-
         ## Import
 
         ```sh
@@ -365,26 +353,6 @@ class AuthenticatedOriginPullsCertificate(pulumi.CustomResource):
         Provides a Cloudflare Authenticated Origin Pulls certificate
         resource. An uploaded client certificate is required to use Per-Zone
          or Per-Hostname Authenticated Origin Pulls.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudflare as cloudflare
-
-        # Per-Zone Authenticated Origin Pulls certificate
-        my_per_zone_aop_cert = cloudflare.AuthenticatedOriginPullsCertificate("myPerZoneAopCert",
-            certificate="-----INSERT CERTIFICATE-----",
-            private_key="-----INSERT PRIVATE KEY-----",
-            type="per-zone",
-            zone_id="0da42c8d2132a9ddaf714f9e7c920711")
-        # Per-Hostname Authenticated Origin Pulls certificate
-        my_per_hostname_aop_cert = cloudflare.AuthenticatedOriginPullsCertificate("myPerHostnameAopCert",
-            certificate="-----INSERT CERTIFICATE-----",
-            private_key="-----INSERT PRIVATE KEY-----",
-            type="per-hostname",
-            zone_id="0da42c8d2132a9ddaf714f9e7c920711")
-        ```
 
         ## Import
 

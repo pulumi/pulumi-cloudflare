@@ -10,26 +10,6 @@ import * as utilities from "./utilities";
  * The [Cloudflare Managed Headers](https://developers.cloudflare.com/rules/transform/managed-transforms/)
  * allows you to add or remove some predefined headers to one's
  * requests or origin responses.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as cloudflare from "@pulumi/cloudflare";
- *
- * // Enable security headers using Managed Meaders
- * const example = new cloudflare.ManagedHeaders("example", {
- *     managedRequestHeaders: [{
- *         enabled: true,
- *         id: "add_true_client_ip_headers",
- *     }],
- *     managedResponseHeaders: [{
- *         enabled: true,
- *         id: "remove_x-powered-by_header",
- *     }],
- *     zoneId: "0da42c8d2132a9ddaf714f9e7c920711",
- * });
- * ```
  */
 export class ManagedHeaders extends pulumi.CustomResource {
     /**

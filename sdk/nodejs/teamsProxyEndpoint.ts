@@ -9,19 +9,6 @@ import * as utilities from "./utilities";
  * Endpoints are used for pointing proxy clients at Cloudflare Secure
  * Gateway.
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as cloudflare from "@pulumi/cloudflare";
- *
- * const example = new cloudflare.TeamsProxyEndpoint("example", {
- *     accountId: "f037e56e89293a057740de681ac9abbe",
- *     ips: ["192.0.2.0/24"],
- *     name: "office",
- * });
- * ```
- *
  * ## Import
  *
  * ```sh

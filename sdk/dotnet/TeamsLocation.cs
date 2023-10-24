@@ -13,37 +13,6 @@ namespace Pulumi.Cloudflare
     /// Provides a Cloudflare Teams Location resource. Teams Locations are
     /// referenced when creating secure web gateway policies.
     /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Cloudflare = Pulumi.Cloudflare;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var example = new Cloudflare.TeamsLocation("example", new()
-    ///     {
-    ///         AccountId = "f037e56e89293a057740de681ac9abbe",
-    ///         ClientDefault = true,
-    ///         Name = "office",
-    ///         Networks = new[]
-    ///         {
-    ///             new Cloudflare.Inputs.TeamsLocationNetworkArgs
-    ///             {
-    ///                 Network = "203.0.113.1/32",
-    ///             },
-    ///             new Cloudflare.Inputs.TeamsLocationNetworkArgs
-    ///             {
-    ///                 Network = "203.0.113.2/32",
-    ///             },
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// ```sh

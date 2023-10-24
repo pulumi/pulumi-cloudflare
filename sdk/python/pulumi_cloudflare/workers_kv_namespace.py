@@ -29,12 +29,16 @@ class WorkersKvNamespaceArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             account_id: pulumi.Input[str],
-             title: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             account_id: Optional[pulumi.Input[str]] = None,
+             title: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'accountId' in kwargs:
+        if account_id is None and 'accountId' in kwargs:
             account_id = kwargs['accountId']
+        if account_id is None:
+            raise TypeError("Missing 'account_id' argument")
+        if title is None:
+            raise TypeError("Missing 'title' argument")
 
         _setter("account_id", account_id)
         _setter("title", title)
@@ -84,9 +88,9 @@ class _WorkersKvNamespaceState:
              _setter: Callable[[Any, Any], None],
              account_id: Optional[pulumi.Input[str]] = None,
              title: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'accountId' in kwargs:
+        if account_id is None and 'accountId' in kwargs:
             account_id = kwargs['accountId']
 
         if account_id is not None:
@@ -130,17 +134,6 @@ class WorkersKvNamespace(pulumi.CustomResource):
         """
         Provides the ability to manage Cloudflare Workers KV Namespace features.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudflare as cloudflare
-
-        example = cloudflare.WorkersKvNamespace("example",
-            account_id="f037e56e89293a057740de681ac9abbe",
-            title="test-namespace")
-        ```
-
         ## Import
 
         ```sh
@@ -160,17 +153,6 @@ class WorkersKvNamespace(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Provides the ability to manage Cloudflare Workers KV Namespace features.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudflare as cloudflare
-
-        example = cloudflare.WorkersKvNamespace("example",
-            account_id="f037e56e89293a057740de681ac9abbe",
-            title="test-namespace")
-        ```
 
         ## Import
 

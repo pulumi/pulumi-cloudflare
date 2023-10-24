@@ -44,18 +44,26 @@ class TurnstileWidgetArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             account_id: pulumi.Input[str],
-             domains: pulumi.Input[Sequence[pulumi.Input[str]]],
-             mode: pulumi.Input[str],
-             name: pulumi.Input[str],
+             account_id: Optional[pulumi.Input[str]] = None,
+             domains: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             mode: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
              bot_fight_mode: Optional[pulumi.Input[bool]] = None,
              offlabel: Optional[pulumi.Input[bool]] = None,
              region: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'accountId' in kwargs:
+        if account_id is None and 'accountId' in kwargs:
             account_id = kwargs['accountId']
-        if 'botFightMode' in kwargs:
+        if account_id is None:
+            raise TypeError("Missing 'account_id' argument")
+        if domains is None:
+            raise TypeError("Missing 'domains' argument")
+        if mode is None:
+            raise TypeError("Missing 'mode' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if bot_fight_mode is None and 'botFightMode' in kwargs:
             bot_fight_mode = kwargs['botFightMode']
 
         _setter("account_id", account_id)
@@ -198,11 +206,11 @@ class _TurnstileWidgetState:
              offlabel: Optional[pulumi.Input[bool]] = None,
              region: Optional[pulumi.Input[str]] = None,
              secret: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'accountId' in kwargs:
+        if account_id is None and 'accountId' in kwargs:
             account_id = kwargs['accountId']
-        if 'botFightMode' in kwargs:
+        if bot_fight_mode is None and 'botFightMode' in kwargs:
             bot_fight_mode = kwargs['botFightMode']
 
         if account_id is not None:
@@ -335,21 +343,6 @@ class TurnstileWidget(pulumi.CustomResource):
         """
         The [Turnstile Widget](https://developers.cloudflare.com/turnstile/) resource allows you to manage Cloudflare Turnstile Widgets.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudflare as cloudflare
-
-        example = cloudflare.TurnstileWidget("example",
-            account_id="f037e56e89293a057740de681ac9abbe",
-            bot_fight_mode=False,
-            domains=["example.com"],
-            mode="invisible",
-            name="example widget",
-            region="world")
-        ```
-
         ## Import
 
         ```sh
@@ -374,21 +367,6 @@ class TurnstileWidget(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         The [Turnstile Widget](https://developers.cloudflare.com/turnstile/) resource allows you to manage Cloudflare Turnstile Widgets.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudflare as cloudflare
-
-        example = cloudflare.TurnstileWidget("example",
-            account_id="f037e56e89293a057740de681ac9abbe",
-            bot_fight_mode=False,
-            domains=["example.com"],
-            mode="invisible",
-            name="example widget",
-            region="world")
-        ```
 
         ## Import
 

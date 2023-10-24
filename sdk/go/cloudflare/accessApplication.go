@@ -23,50 +23,6 @@ import (
 // scope. For example, an access token that is scoped to the "example.com"
 // zone needs to use the `zoneId` argument.
 //
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewAccessApplication(ctx, "stagingApp", &cloudflare.AccessApplicationArgs{
-//				CorsHeaders: cloudflare.AccessApplicationCorsHeaderArray{
-//					&cloudflare.AccessApplicationCorsHeaderArgs{
-//						AllowCredentials: pulumi.Bool(true),
-//						AllowedMethods: pulumi.StringArray{
-//							pulumi.String("GET"),
-//							pulumi.String("POST"),
-//							pulumi.String("OPTIONS"),
-//						},
-//						AllowedOrigins: pulumi.StringArray{
-//							pulumi.String("https://example.com"),
-//						},
-//						MaxAge: pulumi.Int(10),
-//					},
-//				},
-//				Domain:          pulumi.String("staging.example.com"),
-//				Name:            pulumi.String("staging application"),
-//				SessionDuration: pulumi.String("24h"),
-//				Type:            pulumi.String("self_hosted"),
-//				ZoneId:          pulumi.String("0da42c8d2132a9ddaf714f9e7c920711"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // ```sh

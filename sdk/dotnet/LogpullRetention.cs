@@ -12,25 +12,6 @@ namespace Pulumi.Cloudflare
     /// <summary>
     /// Allows management of the Logpull Retention settings used to control whether or not to retain HTTP request logs.
     /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Cloudflare = Pulumi.Cloudflare;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var example = new Cloudflare.LogpullRetention("example", new()
-    ///     {
-    ///         Enabled = true,
-    ///         ZoneId = "0da42c8d2132a9ddaf714f9e7c920711",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// ```sh

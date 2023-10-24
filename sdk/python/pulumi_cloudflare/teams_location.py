@@ -37,15 +37,19 @@ class TeamsLocationArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             account_id: pulumi.Input[str],
-             name: pulumi.Input[str],
+             account_id: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
              client_default: Optional[pulumi.Input[bool]] = None,
              networks: Optional[pulumi.Input[Sequence[pulumi.Input['TeamsLocationNetworkArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'accountId' in kwargs:
+        if account_id is None and 'accountId' in kwargs:
             account_id = kwargs['accountId']
-        if 'clientDefault' in kwargs:
+        if account_id is None:
+            raise TypeError("Missing 'account_id' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if client_default is None and 'clientDefault' in kwargs:
             client_default = kwargs['clientDefault']
 
         _setter("account_id", account_id)
@@ -151,19 +155,19 @@ class _TeamsLocationState:
              name: Optional[pulumi.Input[str]] = None,
              networks: Optional[pulumi.Input[Sequence[pulumi.Input['TeamsLocationNetworkArgs']]]] = None,
              policy_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'accountId' in kwargs:
+        if account_id is None and 'accountId' in kwargs:
             account_id = kwargs['accountId']
-        if 'anonymizedLogsEnabled' in kwargs:
+        if anonymized_logs_enabled is None and 'anonymizedLogsEnabled' in kwargs:
             anonymized_logs_enabled = kwargs['anonymizedLogsEnabled']
-        if 'clientDefault' in kwargs:
+        if client_default is None and 'clientDefault' in kwargs:
             client_default = kwargs['clientDefault']
-        if 'dohSubdomain' in kwargs:
+        if doh_subdomain is None and 'dohSubdomain' in kwargs:
             doh_subdomain = kwargs['dohSubdomain']
-        if 'ipv4Destination' in kwargs:
+        if ipv4_destination is None and 'ipv4Destination' in kwargs:
             ipv4_destination = kwargs['ipv4Destination']
-        if 'policyIds' in kwargs:
+        if policy_ids is None and 'policyIds' in kwargs:
             policy_ids = kwargs['policyIds']
 
         if account_id is not None:
@@ -305,26 +309,6 @@ class TeamsLocation(pulumi.CustomResource):
         Provides a Cloudflare Teams Location resource. Teams Locations are
         referenced when creating secure web gateway policies.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudflare as cloudflare
-
-        example = cloudflare.TeamsLocation("example",
-            account_id="f037e56e89293a057740de681ac9abbe",
-            client_default=True,
-            name="office",
-            networks=[
-                cloudflare.TeamsLocationNetworkArgs(
-                    network="203.0.113.1/32",
-                ),
-                cloudflare.TeamsLocationNetworkArgs(
-                    network="203.0.113.2/32",
-                ),
-            ])
-        ```
-
         ## Import
 
         ```sh
@@ -347,26 +331,6 @@ class TeamsLocation(pulumi.CustomResource):
         """
         Provides a Cloudflare Teams Location resource. Teams Locations are
         referenced when creating secure web gateway policies.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudflare as cloudflare
-
-        example = cloudflare.TeamsLocation("example",
-            account_id="f037e56e89293a057740de681ac9abbe",
-            client_default=True,
-            name="office",
-            networks=[
-                cloudflare.TeamsLocationNetworkArgs(
-                    network="203.0.113.1/32",
-                ),
-                cloudflare.TeamsLocationNetworkArgs(
-                    network="203.0.113.2/32",
-                ),
-            ])
-        ```
 
         ## Import
 

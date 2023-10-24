@@ -94,7 +94,7 @@ class AccessApplicationArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             name: pulumi.Input[str],
+             name: Optional[pulumi.Input[str]] = None,
              account_id: Optional[pulumi.Input[str]] = None,
              allowed_idps: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              app_launcher_visible: Optional[pulumi.Input[bool]] = None,
@@ -117,45 +117,47 @@ class AccessApplicationArgs:
              tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              type: Optional[pulumi.Input[str]] = None,
              zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'accountId' in kwargs:
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if account_id is None and 'accountId' in kwargs:
             account_id = kwargs['accountId']
-        if 'allowedIdps' in kwargs:
+        if allowed_idps is None and 'allowedIdps' in kwargs:
             allowed_idps = kwargs['allowedIdps']
-        if 'appLauncherVisible' in kwargs:
+        if app_launcher_visible is None and 'appLauncherVisible' in kwargs:
             app_launcher_visible = kwargs['appLauncherVisible']
-        if 'autoRedirectToIdentity' in kwargs:
+        if auto_redirect_to_identity is None and 'autoRedirectToIdentity' in kwargs:
             auto_redirect_to_identity = kwargs['autoRedirectToIdentity']
-        if 'corsHeaders' in kwargs:
+        if cors_headers is None and 'corsHeaders' in kwargs:
             cors_headers = kwargs['corsHeaders']
-        if 'customDenyMessage' in kwargs:
+        if custom_deny_message is None and 'customDenyMessage' in kwargs:
             custom_deny_message = kwargs['customDenyMessage']
-        if 'customDenyUrl' in kwargs:
+        if custom_deny_url is None and 'customDenyUrl' in kwargs:
             custom_deny_url = kwargs['customDenyUrl']
-        if 'customNonIdentityDenyUrl' in kwargs:
+        if custom_non_identity_deny_url is None and 'customNonIdentityDenyUrl' in kwargs:
             custom_non_identity_deny_url = kwargs['customNonIdentityDenyUrl']
-        if 'customPages' in kwargs:
+        if custom_pages is None and 'customPages' in kwargs:
             custom_pages = kwargs['customPages']
-        if 'enableBindingCookie' in kwargs:
+        if enable_binding_cookie is None and 'enableBindingCookie' in kwargs:
             enable_binding_cookie = kwargs['enableBindingCookie']
-        if 'httpOnlyCookieAttribute' in kwargs:
+        if http_only_cookie_attribute is None and 'httpOnlyCookieAttribute' in kwargs:
             http_only_cookie_attribute = kwargs['httpOnlyCookieAttribute']
-        if 'logoUrl' in kwargs:
+        if logo_url is None and 'logoUrl' in kwargs:
             logo_url = kwargs['logoUrl']
-        if 'saasApp' in kwargs:
+        if saas_app is None and 'saasApp' in kwargs:
             saas_app = kwargs['saasApp']
-        if 'sameSiteCookieAttribute' in kwargs:
+        if same_site_cookie_attribute is None and 'sameSiteCookieAttribute' in kwargs:
             same_site_cookie_attribute = kwargs['sameSiteCookieAttribute']
-        if 'selfHostedDomains' in kwargs:
+        if self_hosted_domains is None and 'selfHostedDomains' in kwargs:
             self_hosted_domains = kwargs['selfHostedDomains']
-        if 'serviceAuth401Redirect' in kwargs:
+        if service_auth401_redirect is None and 'serviceAuth401Redirect' in kwargs:
             service_auth401_redirect = kwargs['serviceAuth401Redirect']
-        if 'sessionDuration' in kwargs:
+        if session_duration is None and 'sessionDuration' in kwargs:
             session_duration = kwargs['sessionDuration']
-        if 'skipInterstitial' in kwargs:
+        if skip_interstitial is None and 'skipInterstitial' in kwargs:
             skip_interstitial = kwargs['skipInterstitial']
-        if 'zoneId' in kwargs:
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
 
         _setter("name", name)
@@ -589,45 +591,45 @@ class _AccessApplicationState:
              tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              type: Optional[pulumi.Input[str]] = None,
              zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'accountId' in kwargs:
+        if account_id is None and 'accountId' in kwargs:
             account_id = kwargs['accountId']
-        if 'allowedIdps' in kwargs:
+        if allowed_idps is None and 'allowedIdps' in kwargs:
             allowed_idps = kwargs['allowedIdps']
-        if 'appLauncherVisible' in kwargs:
+        if app_launcher_visible is None and 'appLauncherVisible' in kwargs:
             app_launcher_visible = kwargs['appLauncherVisible']
-        if 'autoRedirectToIdentity' in kwargs:
+        if auto_redirect_to_identity is None and 'autoRedirectToIdentity' in kwargs:
             auto_redirect_to_identity = kwargs['autoRedirectToIdentity']
-        if 'corsHeaders' in kwargs:
+        if cors_headers is None and 'corsHeaders' in kwargs:
             cors_headers = kwargs['corsHeaders']
-        if 'customDenyMessage' in kwargs:
+        if custom_deny_message is None and 'customDenyMessage' in kwargs:
             custom_deny_message = kwargs['customDenyMessage']
-        if 'customDenyUrl' in kwargs:
+        if custom_deny_url is None and 'customDenyUrl' in kwargs:
             custom_deny_url = kwargs['customDenyUrl']
-        if 'customNonIdentityDenyUrl' in kwargs:
+        if custom_non_identity_deny_url is None and 'customNonIdentityDenyUrl' in kwargs:
             custom_non_identity_deny_url = kwargs['customNonIdentityDenyUrl']
-        if 'customPages' in kwargs:
+        if custom_pages is None and 'customPages' in kwargs:
             custom_pages = kwargs['customPages']
-        if 'enableBindingCookie' in kwargs:
+        if enable_binding_cookie is None and 'enableBindingCookie' in kwargs:
             enable_binding_cookie = kwargs['enableBindingCookie']
-        if 'httpOnlyCookieAttribute' in kwargs:
+        if http_only_cookie_attribute is None and 'httpOnlyCookieAttribute' in kwargs:
             http_only_cookie_attribute = kwargs['httpOnlyCookieAttribute']
-        if 'logoUrl' in kwargs:
+        if logo_url is None and 'logoUrl' in kwargs:
             logo_url = kwargs['logoUrl']
-        if 'saasApp' in kwargs:
+        if saas_app is None and 'saasApp' in kwargs:
             saas_app = kwargs['saasApp']
-        if 'sameSiteCookieAttribute' in kwargs:
+        if same_site_cookie_attribute is None and 'sameSiteCookieAttribute' in kwargs:
             same_site_cookie_attribute = kwargs['sameSiteCookieAttribute']
-        if 'selfHostedDomains' in kwargs:
+        if self_hosted_domains is None and 'selfHostedDomains' in kwargs:
             self_hosted_domains = kwargs['selfHostedDomains']
-        if 'serviceAuth401Redirect' in kwargs:
+        if service_auth401_redirect is None and 'serviceAuth401Redirect' in kwargs:
             service_auth401_redirect = kwargs['serviceAuth401Redirect']
-        if 'sessionDuration' in kwargs:
+        if session_duration is None and 'sessionDuration' in kwargs:
             session_duration = kwargs['sessionDuration']
-        if 'skipInterstitial' in kwargs:
+        if skip_interstitial is None and 'skipInterstitial' in kwargs:
             skip_interstitial = kwargs['skipInterstitial']
-        if 'zoneId' in kwargs:
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
 
         if account_id is not None:
@@ -1008,31 +1010,6 @@ class AccessApplication(pulumi.CustomResource):
         scope. For example, an access token that is scoped to the "example.com"
         zone needs to use the `zone_id` argument.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudflare as cloudflare
-
-        # With CORS configuration
-        staging_app = cloudflare.AccessApplication("stagingApp",
-            cors_headers=[cloudflare.AccessApplicationCorsHeaderArgs(
-                allow_credentials=True,
-                allowed_methods=[
-                    "GET",
-                    "POST",
-                    "OPTIONS",
-                ],
-                allowed_origins=["https://example.com"],
-                max_age=10,
-            )],
-            domain="staging.example.com",
-            name="staging application",
-            session_duration="24h",
-            type="self_hosted",
-            zone_id="0da42c8d2132a9ddaf714f9e7c920711")
-        ```
-
         ## Import
 
         ```sh
@@ -1081,31 +1058,6 @@ class AccessApplication(pulumi.CustomResource):
         access token, you must provide the argument that matches the token's
         scope. For example, an access token that is scoped to the "example.com"
         zone needs to use the `zone_id` argument.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudflare as cloudflare
-
-        # With CORS configuration
-        staging_app = cloudflare.AccessApplication("stagingApp",
-            cors_headers=[cloudflare.AccessApplicationCorsHeaderArgs(
-                allow_credentials=True,
-                allowed_methods=[
-                    "GET",
-                    "POST",
-                    "OPTIONS",
-                ],
-                allowed_origins=["https://example.com"],
-                max_age=10,
-            )],
-            domain="staging.example.com",
-            name="staging application",
-            session_duration="24h",
-            type="self_hosted",
-            zone_id="0da42c8d2132a9ddaf714f9e7c920711")
-        ```
 
         ## Import
 
@@ -1180,11 +1132,7 @@ class AccessApplication(pulumi.CustomResource):
             if name is None and not opts.urn:
                 raise TypeError("Missing required property 'name'")
             __props__.__dict__["name"] = name
-            if saas_app is not None and not isinstance(saas_app, AccessApplicationSaasAppArgs):
-                saas_app = saas_app or {}
-                def _setter(key, value):
-                    saas_app[key] = value
-                AccessApplicationSaasAppArgs._configure(_setter, **saas_app)
+            saas_app = _utilities.configure(saas_app, AccessApplicationSaasAppArgs, True)
             __props__.__dict__["saas_app"] = saas_app
             __props__.__dict__["same_site_cookie_attribute"] = same_site_cookie_attribute
             __props__.__dict__["self_hosted_domains"] = self_hosted_domains

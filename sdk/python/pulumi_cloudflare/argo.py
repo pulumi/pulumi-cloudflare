@@ -32,16 +32,18 @@ class ArgoArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             zone_id: pulumi.Input[str],
+             zone_id: Optional[pulumi.Input[str]] = None,
              smart_routing: Optional[pulumi.Input[str]] = None,
              tiered_caching: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'zoneId' in kwargs:
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
-        if 'smartRouting' in kwargs:
+        if zone_id is None:
+            raise TypeError("Missing 'zone_id' argument")
+        if smart_routing is None and 'smartRouting' in kwargs:
             smart_routing = kwargs['smartRouting']
-        if 'tieredCaching' in kwargs:
+        if tiered_caching is None and 'tieredCaching' in kwargs:
             tiered_caching = kwargs['tieredCaching']
 
         _setter("zone_id", zone_id)
@@ -111,13 +113,13 @@ class _ArgoState:
              smart_routing: Optional[pulumi.Input[str]] = None,
              tiered_caching: Optional[pulumi.Input[str]] = None,
              zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'smartRouting' in kwargs:
+        if smart_routing is None and 'smartRouting' in kwargs:
             smart_routing = kwargs['smartRouting']
-        if 'tieredCaching' in kwargs:
+        if tiered_caching is None and 'tieredCaching' in kwargs:
             tiered_caching = kwargs['tieredCaching']
-        if 'zoneId' in kwargs:
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
 
         if smart_routing is not None:
@@ -177,18 +179,6 @@ class Argo(pulumi.CustomResource):
         Cloudflare Argo controls the routing to your origin and tiered
         caching options to speed up your website browsing experience.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudflare as cloudflare
-
-        example = cloudflare.Argo("example",
-            smart_routing="on",
-            tiered_caching="on",
-            zone_id="0da42c8d2132a9ddaf714f9e7c920711")
-        ```
-
         ## Import
 
         ```sh
@@ -210,18 +200,6 @@ class Argo(pulumi.CustomResource):
         """
         Cloudflare Argo controls the routing to your origin and tiered
         caching options to speed up your website browsing experience.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudflare as cloudflare
-
-        example = cloudflare.Argo("example",
-            smart_routing="on",
-            tiered_caching="on",
-            zone_id="0da42c8d2132a9ddaf714f9e7c920711")
-        ```
 
         ## Import
 

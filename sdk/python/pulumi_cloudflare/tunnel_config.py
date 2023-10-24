@@ -34,15 +34,21 @@ class TunnelConfigArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             account_id: pulumi.Input[str],
-             config: pulumi.Input['TunnelConfigConfigArgs'],
-             tunnel_id: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             account_id: Optional[pulumi.Input[str]] = None,
+             config: Optional[pulumi.Input['TunnelConfigConfigArgs']] = None,
+             tunnel_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'accountId' in kwargs:
+        if account_id is None and 'accountId' in kwargs:
             account_id = kwargs['accountId']
-        if 'tunnelId' in kwargs:
+        if account_id is None:
+            raise TypeError("Missing 'account_id' argument")
+        if config is None:
+            raise TypeError("Missing 'config' argument")
+        if tunnel_id is None and 'tunnelId' in kwargs:
             tunnel_id = kwargs['tunnelId']
+        if tunnel_id is None:
+            raise TypeError("Missing 'tunnel_id' argument")
 
         _setter("account_id", account_id)
         _setter("config", config)
@@ -109,11 +115,11 @@ class _TunnelConfigState:
              account_id: Optional[pulumi.Input[str]] = None,
              config: Optional[pulumi.Input['TunnelConfigConfigArgs']] = None,
              tunnel_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'accountId' in kwargs:
+        if account_id is None and 'accountId' in kwargs:
             account_id = kwargs['accountId']
-        if 'tunnelId' in kwargs:
+        if tunnel_id is None and 'tunnelId' in kwargs:
             tunnel_id = kwargs['tunnelId']
 
         if account_id is not None:
@@ -174,69 +180,6 @@ class TunnelConfig(pulumi.CustomResource):
 
         !> When you delete a tunnel configuration, the tunnel will be deleted. You need to make sure that the tunnel is not in use before deleting the configuration.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudflare as cloudflare
-
-        example_tunnel = cloudflare.Tunnel("exampleTunnel",
-            account_id="f037e56e89293a057740de681ac9abbe",
-            name="example_tunnel",
-            secret="<32 character secret>")
-        example_config = cloudflare.TunnelConfig("exampleConfig",
-            account_id="f037e56e89293a057740de681ac9abbe",
-            tunnel_id=example_tunnel.id,
-            config=cloudflare.TunnelConfigConfigArgs(
-                warp_routing=cloudflare.TunnelConfigConfigWarpRoutingArgs(
-                    enabled=True,
-                ),
-                origin_request=cloudflare.TunnelConfigConfigOriginRequestArgs(
-                    connect_timeout="1m0s",
-                    tls_timeout="1m0s",
-                    tcp_keep_alive="1m0s",
-                    no_happy_eyeballs=False,
-                    keep_alive_connections=1024,
-                    keep_alive_timeout="1m0s",
-                    http_host_header="baz",
-                    origin_server_name="foobar",
-                    ca_pool="/path/to/unsigned/ca/pool",
-                    no_tls_verify=False,
-                    disable_chunked_encoding=False,
-                    bastion_mode=False,
-                    proxy_address="10.0.0.1",
-                    proxy_port=8123,
-                    proxy_type="socks",
-                    ip_rules=[cloudflare.TunnelConfigConfigOriginRequestIpRuleArgs(
-                        prefix="/web",
-                        ports=[
-                            80,
-                            443,
-                        ],
-                        allow=False,
-                    )],
-                ),
-                ingress_rules=[
-                    cloudflare.TunnelConfigConfigIngressRuleArgs(
-                        hostname="foo",
-                        path="/bar",
-                        service="http://10.0.0.2:8080",
-                        origin_request=cloudflare.TunnelConfigConfigIngressRuleOriginRequestArgs(
-                            connect_timeout="2m0s",
-                            access=cloudflare.TunnelConfigConfigIngressRuleOriginRequestAccessArgs(
-                                required=True,
-                                team_name="terraform",
-                                aud_tags=["AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"],
-                            ),
-                        ),
-                    ),
-                    cloudflare.TunnelConfigConfigIngressRuleArgs(
-                        service="https://10.0.0.3:8081",
-                    ),
-                ],
-            ))
-        ```
-
         ## Import
 
         ```sh
@@ -259,69 +202,6 @@ class TunnelConfig(pulumi.CustomResource):
         Provides a Cloudflare Tunnel configuration resource.
 
         !> When you delete a tunnel configuration, the tunnel will be deleted. You need to make sure that the tunnel is not in use before deleting the configuration.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudflare as cloudflare
-
-        example_tunnel = cloudflare.Tunnel("exampleTunnel",
-            account_id="f037e56e89293a057740de681ac9abbe",
-            name="example_tunnel",
-            secret="<32 character secret>")
-        example_config = cloudflare.TunnelConfig("exampleConfig",
-            account_id="f037e56e89293a057740de681ac9abbe",
-            tunnel_id=example_tunnel.id,
-            config=cloudflare.TunnelConfigConfigArgs(
-                warp_routing=cloudflare.TunnelConfigConfigWarpRoutingArgs(
-                    enabled=True,
-                ),
-                origin_request=cloudflare.TunnelConfigConfigOriginRequestArgs(
-                    connect_timeout="1m0s",
-                    tls_timeout="1m0s",
-                    tcp_keep_alive="1m0s",
-                    no_happy_eyeballs=False,
-                    keep_alive_connections=1024,
-                    keep_alive_timeout="1m0s",
-                    http_host_header="baz",
-                    origin_server_name="foobar",
-                    ca_pool="/path/to/unsigned/ca/pool",
-                    no_tls_verify=False,
-                    disable_chunked_encoding=False,
-                    bastion_mode=False,
-                    proxy_address="10.0.0.1",
-                    proxy_port=8123,
-                    proxy_type="socks",
-                    ip_rules=[cloudflare.TunnelConfigConfigOriginRequestIpRuleArgs(
-                        prefix="/web",
-                        ports=[
-                            80,
-                            443,
-                        ],
-                        allow=False,
-                    )],
-                ),
-                ingress_rules=[
-                    cloudflare.TunnelConfigConfigIngressRuleArgs(
-                        hostname="foo",
-                        path="/bar",
-                        service="http://10.0.0.2:8080",
-                        origin_request=cloudflare.TunnelConfigConfigIngressRuleOriginRequestArgs(
-                            connect_timeout="2m0s",
-                            access=cloudflare.TunnelConfigConfigIngressRuleOriginRequestAccessArgs(
-                                required=True,
-                                team_name="terraform",
-                                aud_tags=["AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"],
-                            ),
-                        ),
-                    ),
-                    cloudflare.TunnelConfigConfigIngressRuleArgs(
-                        service="https://10.0.0.3:8081",
-                    ),
-                ],
-            ))
-        ```
 
         ## Import
 
@@ -363,11 +243,7 @@ class TunnelConfig(pulumi.CustomResource):
             if account_id is None and not opts.urn:
                 raise TypeError("Missing required property 'account_id'")
             __props__.__dict__["account_id"] = account_id
-            if config is not None and not isinstance(config, TunnelConfigConfigArgs):
-                config = config or {}
-                def _setter(key, value):
-                    config[key] = value
-                TunnelConfigConfigArgs._configure(_setter, **config)
+            config = _utilities.configure(config, TunnelConfigConfigArgs, True)
             if config is None and not opts.urn:
                 raise TypeError("Missing required property 'config'")
             __props__.__dict__["config"] = config
