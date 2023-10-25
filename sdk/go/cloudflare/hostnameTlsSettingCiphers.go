@@ -15,36 +15,6 @@ import (
 
 // Provides a Cloudflare per-hostname TLS setting resource, specifically for ciphers suites. Used to set ciphers suites for hostnames under the specified zone.
 //
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewHostnameTlsSettingCiphers(ctx, "example", &cloudflare.HostnameTlsSettingCiphersArgs{
-//				Hostname: pulumi.String("sub.example.com"),
-//				Values: pulumi.StringArray{
-//					pulumi.String("ECDHE-RSA-AES128-GCM-SHA256"),
-//				},
-//				ZoneId: pulumi.String("0da42c8d2132a9ddaf714f9e7c920711"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // ```sh

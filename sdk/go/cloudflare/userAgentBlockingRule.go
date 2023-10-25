@@ -15,52 +15,6 @@ import (
 
 // Provides a resource to manage User Agent Blocking Rules.
 //
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewUserAgentBlockingRule(ctx, "example1", &cloudflare.UserAgentBlockingRuleArgs{
-//				Configuration: &cloudflare.UserAgentBlockingRuleConfigurationArgs{
-//					Target: pulumi.String("ua"),
-//					Value:  pulumi.String("Chrome"),
-//				},
-//				Description: pulumi.String("My description 1"),
-//				Mode:        pulumi.String("js_challenge"),
-//				Paused:      pulumi.Bool(false),
-//				ZoneId:      pulumi.String("0da42c8d2132a9ddaf714f9e7c920711"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = cloudflare.NewUserAgentBlockingRule(ctx, "example2", &cloudflare.UserAgentBlockingRuleArgs{
-//				Configuration: &cloudflare.UserAgentBlockingRuleConfigurationArgs{
-//					Target: pulumi.String("ua"),
-//					Value:  pulumi.String("Mozilla"),
-//				},
-//				Description: pulumi.String("My description 22"),
-//				Mode:        pulumi.String("challenge"),
-//				Paused:      pulumi.Bool(true),
-//				ZoneId:      pulumi.String("0da42c8d2132a9ddaf714f9e7c920711"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // ```sh

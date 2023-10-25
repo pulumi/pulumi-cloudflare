@@ -15,35 +15,6 @@ import (
 
 // Provides a resource which manages Cloudflare custom error pages.
 //
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewCustomPages(ctx, "example", &cloudflare.CustomPagesArgs{
-//				State:  pulumi.String("customized"),
-//				Type:   pulumi.String("basic_challenge"),
-//				Url:    pulumi.String("https://example.com/challenge.html"),
-//				ZoneId: pulumi.String("0da42c8d2132a9ddaf714f9e7c920711"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // ```sh

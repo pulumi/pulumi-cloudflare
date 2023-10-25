@@ -18,44 +18,6 @@ import (
 //
 //	or Per-Hostname Authenticated Origin Pulls.
 //
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewAuthenticatedOriginPullsCertificate(ctx, "myPerZoneAopCert", &cloudflare.AuthenticatedOriginPullsCertificateArgs{
-//				Certificate: pulumi.String("-----INSERT CERTIFICATE-----"),
-//				PrivateKey:  pulumi.String("-----INSERT PRIVATE KEY-----"),
-//				Type:        pulumi.String("per-zone"),
-//				ZoneId:      pulumi.String("0da42c8d2132a9ddaf714f9e7c920711"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = cloudflare.NewAuthenticatedOriginPullsCertificate(ctx, "myPerHostnameAopCert", &cloudflare.AuthenticatedOriginPullsCertificateArgs{
-//				Certificate: pulumi.String("-----INSERT CERTIFICATE-----"),
-//				PrivateKey:  pulumi.String("-----INSERT PRIVATE KEY-----"),
-//				Type:        pulumi.String("per-hostname"),
-//				ZoneId:      pulumi.String("0da42c8d2132a9ddaf714f9e7c920711"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // ```sh

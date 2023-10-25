@@ -52,26 +52,34 @@ class NotificationPolicyArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             account_id: pulumi.Input[str],
-             alert_type: pulumi.Input[str],
-             enabled: pulumi.Input[bool],
-             name: pulumi.Input[str],
+             account_id: Optional[pulumi.Input[str]] = None,
+             alert_type: Optional[pulumi.Input[str]] = None,
+             enabled: Optional[pulumi.Input[bool]] = None,
+             name: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              email_integrations: Optional[pulumi.Input[Sequence[pulumi.Input['NotificationPolicyEmailIntegrationArgs']]]] = None,
              filters: Optional[pulumi.Input['NotificationPolicyFiltersArgs']] = None,
              pagerduty_integrations: Optional[pulumi.Input[Sequence[pulumi.Input['NotificationPolicyPagerdutyIntegrationArgs']]]] = None,
              webhooks_integrations: Optional[pulumi.Input[Sequence[pulumi.Input['NotificationPolicyWebhooksIntegrationArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'accountId' in kwargs:
+        if account_id is None and 'accountId' in kwargs:
             account_id = kwargs['accountId']
-        if 'alertType' in kwargs:
+        if account_id is None:
+            raise TypeError("Missing 'account_id' argument")
+        if alert_type is None and 'alertType' in kwargs:
             alert_type = kwargs['alertType']
-        if 'emailIntegrations' in kwargs:
+        if alert_type is None:
+            raise TypeError("Missing 'alert_type' argument")
+        if enabled is None:
+            raise TypeError("Missing 'enabled' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if email_integrations is None and 'emailIntegrations' in kwargs:
             email_integrations = kwargs['emailIntegrations']
-        if 'pagerdutyIntegrations' in kwargs:
+        if pagerduty_integrations is None and 'pagerdutyIntegrations' in kwargs:
             pagerduty_integrations = kwargs['pagerdutyIntegrations']
-        if 'webhooksIntegrations' in kwargs:
+        if webhooks_integrations is None and 'webhooksIntegrations' in kwargs:
             webhooks_integrations = kwargs['webhooksIntegrations']
 
         _setter("account_id", account_id)
@@ -254,17 +262,17 @@ class _NotificationPolicyState:
              name: Optional[pulumi.Input[str]] = None,
              pagerduty_integrations: Optional[pulumi.Input[Sequence[pulumi.Input['NotificationPolicyPagerdutyIntegrationArgs']]]] = None,
              webhooks_integrations: Optional[pulumi.Input[Sequence[pulumi.Input['NotificationPolicyWebhooksIntegrationArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'accountId' in kwargs:
+        if account_id is None and 'accountId' in kwargs:
             account_id = kwargs['accountId']
-        if 'alertType' in kwargs:
+        if alert_type is None and 'alertType' in kwargs:
             alert_type = kwargs['alertType']
-        if 'emailIntegrations' in kwargs:
+        if email_integrations is None and 'emailIntegrations' in kwargs:
             email_integrations = kwargs['emailIntegrations']
-        if 'pagerdutyIntegrations' in kwargs:
+        if pagerduty_integrations is None and 'pagerdutyIntegrations' in kwargs:
             pagerduty_integrations = kwargs['pagerdutyIntegrations']
-        if 'webhooksIntegrations' in kwargs:
+        if webhooks_integrations is None and 'webhooksIntegrations' in kwargs:
             webhooks_integrations = kwargs['webhooksIntegrations']
 
         if account_id is not None:
@@ -526,11 +534,7 @@ class NotificationPolicy(pulumi.CustomResource):
             if enabled is None and not opts.urn:
                 raise TypeError("Missing required property 'enabled'")
             __props__.__dict__["enabled"] = enabled
-            if filters is not None and not isinstance(filters, NotificationPolicyFiltersArgs):
-                filters = filters or {}
-                def _setter(key, value):
-                    filters[key] = value
-                NotificationPolicyFiltersArgs._configure(_setter, **filters)
+            filters = _utilities.configure(filters, NotificationPolicyFiltersArgs, True)
             __props__.__dict__["filters"] = filters
             if name is None and not opts.urn:
                 raise TypeError("Missing required property 'name'")

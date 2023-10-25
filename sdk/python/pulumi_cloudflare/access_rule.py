@@ -40,16 +40,20 @@ class AccessRuleArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             configuration: pulumi.Input['AccessRuleConfigurationArgs'],
-             mode: pulumi.Input[str],
+             configuration: Optional[pulumi.Input['AccessRuleConfigurationArgs']] = None,
+             mode: Optional[pulumi.Input[str]] = None,
              account_id: Optional[pulumi.Input[str]] = None,
              notes: Optional[pulumi.Input[str]] = None,
              zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'accountId' in kwargs:
+        if configuration is None:
+            raise TypeError("Missing 'configuration' argument")
+        if mode is None:
+            raise TypeError("Missing 'mode' argument")
+        if account_id is None and 'accountId' in kwargs:
             account_id = kwargs['accountId']
-        if 'zoneId' in kwargs:
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
 
         _setter("configuration", configuration)
@@ -154,11 +158,11 @@ class _AccessRuleState:
              mode: Optional[pulumi.Input[str]] = None,
              notes: Optional[pulumi.Input[str]] = None,
              zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'accountId' in kwargs:
+        if account_id is None and 'accountId' in kwargs:
             account_id = kwargs['accountId']
-        if 'zoneId' in kwargs:
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
 
         if account_id is not None:
@@ -249,50 +253,6 @@ class AccessRule(pulumi.CustomResource):
         control can be applied on basis of IP addresses, IP ranges, AS
         numbers or countries.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudflare as cloudflare
-
-        # Challenge requests coming from known Tor exit nodes.
-        tor_exit_nodes = cloudflare.AccessRule("torExitNodes",
-            zone_id="0da42c8d2132a9ddaf714f9e7c920711",
-            notes="Requests coming from known Tor exit nodes",
-            mode="challenge",
-            configuration=cloudflare.AccessRuleConfigurationArgs(
-                target="country",
-                value="T1",
-            ))
-        # Allowlist requests coming from Antarctica, but only for single zone.
-        antarctica = cloudflare.AccessRule("antarctica",
-            zone_id="0da42c8d2132a9ddaf714f9e7c920711",
-            notes="Requests coming from Antarctica",
-            mode="whitelist",
-            configuration=cloudflare.AccessRuleConfigurationArgs(
-                target="country",
-                value="AQ",
-            ))
-        config = pulumi.Config()
-        my_office = config.get_object("myOffice")
-        if my_office is None:
-            my_office = [
-                "192.0.2.0/24",
-                "198.51.100.0/24",
-                "2001:db8::/56",
-            ]
-        office_network = []
-        for range in [{"value": i} for i in range(0, len(my_office))]:
-            office_network.append(cloudflare.AccessRule(f"officeNetwork-{range['value']}",
-                account_id="f037e56e89293a057740de681ac9abbe",
-                notes="Requests coming from office network",
-                mode="whitelist",
-                configuration=cloudflare.AccessRuleConfigurationArgs(
-                    target="ip_range",
-                    value=my_office[count["index"]],
-                )))
-        ```
-
         ## Import
 
         User level access rule import.
@@ -331,50 +291,6 @@ class AccessRule(pulumi.CustomResource):
         Provides a Cloudflare IP Firewall Access Rule resource. Access
         control can be applied on basis of IP addresses, IP ranges, AS
         numbers or countries.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudflare as cloudflare
-
-        # Challenge requests coming from known Tor exit nodes.
-        tor_exit_nodes = cloudflare.AccessRule("torExitNodes",
-            zone_id="0da42c8d2132a9ddaf714f9e7c920711",
-            notes="Requests coming from known Tor exit nodes",
-            mode="challenge",
-            configuration=cloudflare.AccessRuleConfigurationArgs(
-                target="country",
-                value="T1",
-            ))
-        # Allowlist requests coming from Antarctica, but only for single zone.
-        antarctica = cloudflare.AccessRule("antarctica",
-            zone_id="0da42c8d2132a9ddaf714f9e7c920711",
-            notes="Requests coming from Antarctica",
-            mode="whitelist",
-            configuration=cloudflare.AccessRuleConfigurationArgs(
-                target="country",
-                value="AQ",
-            ))
-        config = pulumi.Config()
-        my_office = config.get_object("myOffice")
-        if my_office is None:
-            my_office = [
-                "192.0.2.0/24",
-                "198.51.100.0/24",
-                "2001:db8::/56",
-            ]
-        office_network = []
-        for range in [{"value": i} for i in range(0, len(my_office))]:
-            office_network.append(cloudflare.AccessRule(f"officeNetwork-{range['value']}",
-                account_id="f037e56e89293a057740de681ac9abbe",
-                notes="Requests coming from office network",
-                mode="whitelist",
-                configuration=cloudflare.AccessRuleConfigurationArgs(
-                    target="ip_range",
-                    value=my_office[count["index"]],
-                )))
-        ```
 
         ## Import
 
@@ -430,11 +346,7 @@ class AccessRule(pulumi.CustomResource):
             __props__ = AccessRuleArgs.__new__(AccessRuleArgs)
 
             __props__.__dict__["account_id"] = account_id
-            if configuration is not None and not isinstance(configuration, AccessRuleConfigurationArgs):
-                configuration = configuration or {}
-                def _setter(key, value):
-                    configuration[key] = value
-                AccessRuleConfigurationArgs._configure(_setter, **configuration)
+            configuration = _utilities.configure(configuration, AccessRuleConfigurationArgs, True)
             if configuration is None and not opts.urn:
                 raise TypeError("Missing required property 'configuration'")
             __props__.__dict__["configuration"] = configuration

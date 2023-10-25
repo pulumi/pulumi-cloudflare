@@ -14,49 +14,6 @@ import (
 )
 
 // Provides a resource for managing Email Routing rules.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewEmailRoutingRule(ctx, "main", &cloudflare.EmailRoutingRuleArgs{
-//				Actions: cloudflare.EmailRoutingRuleActionArray{
-//					&cloudflare.EmailRoutingRuleActionArgs{
-//						Type: pulumi.String("forward"),
-//						Values: pulumi.StringArray{
-//							pulumi.String("destinationaddress@example.net"),
-//						},
-//					},
-//				},
-//				Enabled: pulumi.Bool(true),
-//				Matchers: cloudflare.EmailRoutingRuleMatcherArray{
-//					&cloudflare.EmailRoutingRuleMatcherArgs{
-//						Field: pulumi.String("to"),
-//						Type:  pulumi.String("literal"),
-//						Value: pulumi.String("test@example.com"),
-//					},
-//				},
-//				Name:   pulumi.String("terraform rule"),
-//				ZoneId: pulumi.String("0da42c8d2132a9ddaf714f9e7c920711"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 type EmailRoutingRule struct {
 	pulumi.CustomResourceState
 

@@ -41,17 +41,21 @@ class ZoneArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             account_id: pulumi.Input[str],
-             zone: pulumi.Input[str],
+             account_id: Optional[pulumi.Input[str]] = None,
+             zone: Optional[pulumi.Input[str]] = None,
              jump_start: Optional[pulumi.Input[bool]] = None,
              paused: Optional[pulumi.Input[bool]] = None,
              plan: Optional[pulumi.Input[str]] = None,
              type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'accountId' in kwargs:
+        if account_id is None and 'accountId' in kwargs:
             account_id = kwargs['accountId']
-        if 'jumpStart' in kwargs:
+        if account_id is None:
+            raise TypeError("Missing 'account_id' argument")
+        if zone is None:
+            raise TypeError("Missing 'zone' argument")
+        if jump_start is None and 'jumpStart' in kwargs:
             jump_start = kwargs['jumpStart']
 
         _setter("account_id", account_id)
@@ -193,17 +197,17 @@ class _ZoneState:
              vanity_name_servers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              verification_key: Optional[pulumi.Input[str]] = None,
              zone: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'accountId' in kwargs:
+        if account_id is None and 'accountId' in kwargs:
             account_id = kwargs['accountId']
-        if 'jumpStart' in kwargs:
+        if jump_start is None and 'jumpStart' in kwargs:
             jump_start = kwargs['jumpStart']
-        if 'nameServers' in kwargs:
+        if name_servers is None and 'nameServers' in kwargs:
             name_servers = kwargs['nameServers']
-        if 'vanityNameServers' in kwargs:
+        if vanity_name_servers is None and 'vanityNameServers' in kwargs:
             vanity_name_servers = kwargs['vanityNameServers']
-        if 'verificationKey' in kwargs:
+        if verification_key is None and 'verificationKey' in kwargs:
             verification_key = kwargs['verificationKey']
 
         if account_id is not None:
@@ -378,17 +382,6 @@ class Zone(pulumi.CustomResource):
 
         > If you are attempting to sign up a subdomain of a zone you must first have Subdomain Support entitlement for your account.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudflare as cloudflare
-
-        example = cloudflare.Zone("example",
-            account_id="f037e56e89293a057740de681ac9abbe",
-            zone="example.com")
-        ```
-
         ## Import
 
         ```sh
@@ -416,17 +409,6 @@ class Zone(pulumi.CustomResource):
         that the user purchases.
 
         > If you are attempting to sign up a subdomain of a zone you must first have Subdomain Support entitlement for your account.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudflare as cloudflare
-
-        example = cloudflare.Zone("example",
-            account_id="f037e56e89293a057740de681ac9abbe",
-            zone="example.com")
-        ```
 
         ## Import
 

@@ -32,14 +32,18 @@ class TotalTlsArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             enabled: pulumi.Input[bool],
-             zone_id: pulumi.Input[str],
+             enabled: Optional[pulumi.Input[bool]] = None,
+             zone_id: Optional[pulumi.Input[str]] = None,
              certificate_authority: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'zoneId' in kwargs:
+        if enabled is None:
+            raise TypeError("Missing 'enabled' argument")
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
-        if 'certificateAuthority' in kwargs:
+        if zone_id is None:
+            raise TypeError("Missing 'zone_id' argument")
+        if certificate_authority is None and 'certificateAuthority' in kwargs:
             certificate_authority = kwargs['certificateAuthority']
 
         _setter("enabled", enabled)
@@ -108,11 +112,11 @@ class _TotalTlsState:
              certificate_authority: Optional[pulumi.Input[str]] = None,
              enabled: Optional[pulumi.Input[bool]] = None,
              zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'certificateAuthority' in kwargs:
+        if certificate_authority is None and 'certificateAuthority' in kwargs:
             certificate_authority = kwargs['certificateAuthority']
-        if 'zoneId' in kwargs:
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
 
         if certificate_authority is not None:
@@ -171,18 +175,6 @@ class TotalTls(pulumi.CustomResource):
         """
         Provides a resource which manages Total TLS for a zone.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudflare as cloudflare
-
-        example = cloudflare.TotalTls("example",
-            certificate_authority="lets_encrypt",
-            enabled=True,
-            zone_id="0da42c8d2132a9ddaf714f9e7c920711")
-        ```
-
         ## Import
 
         ```sh
@@ -203,18 +195,6 @@ class TotalTls(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Provides a resource which manages Total TLS for a zone.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudflare as cloudflare
-
-        example = cloudflare.TotalTls("example",
-            certificate_authority="lets_encrypt",
-            enabled=True,
-            zone_id="0da42c8d2132a9ddaf714f9e7c920711")
-        ```
 
         ## Import
 

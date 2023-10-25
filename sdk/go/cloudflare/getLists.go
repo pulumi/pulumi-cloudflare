@@ -13,32 +13,6 @@ import (
 )
 
 // Use this data source to lookup [Lists](https://developers.cloudflare.com/api/operations/lists-get-lists).
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.GetLists(ctx, &cloudflare.GetListsArgs{
-//				AccountId: "f037e56e89293a057740de681ac9abbe",
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetLists(ctx *pulumi.Context, args *GetListsArgs, opts ...pulumi.InvokeOption) (*GetListsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetListsResult

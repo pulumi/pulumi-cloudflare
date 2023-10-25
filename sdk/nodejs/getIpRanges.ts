@@ -6,25 +6,6 @@ import * as utilities from "./utilities";
 
 /**
  * Use this data source to get the [IP ranges](https://www.cloudflare.com/ips/) of Cloudflare network.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as cloudflare from "@pulumi/cloudflare";
- * import * as example from "@pulumi/example";
- *
- * const cloudflare = cloudflare.getIpRanges({});
- * const example = new example.index.Example_firewall_resource("example", {
- *     name: "from-cloudflare",
- *     network: "default",
- *     sourceRanges: cloudflare.ipv4CidrBlocks,
- *     allow: [{
- *         ports: "443",
- *         protocol: "tcp",
- *     }],
- * });
- * ```
  */
 export function getIpRanges(opts?: pulumi.InvokeOptions): Promise<GetIpRangesResult> {
 
@@ -64,25 +45,6 @@ export interface GetIpRangesResult {
 }
 /**
  * Use this data source to get the [IP ranges](https://www.cloudflare.com/ips/) of Cloudflare network.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as cloudflare from "@pulumi/cloudflare";
- * import * as example from "@pulumi/example";
- *
- * const cloudflare = cloudflare.getIpRanges({});
- * const example = new example.index.Example_firewall_resource("example", {
- *     name: "from-cloudflare",
- *     network: "default",
- *     sourceRanges: cloudflare.ipv4CidrBlocks,
- *     allow: [{
- *         ports: "443",
- *         protocol: "tcp",
- *     }],
- * });
- * ```
  */
 export function getIpRangesOutput(opts?: pulumi.InvokeOptions): pulumi.Output<GetIpRangesResult> {
     return pulumi.output(getIpRanges(opts))

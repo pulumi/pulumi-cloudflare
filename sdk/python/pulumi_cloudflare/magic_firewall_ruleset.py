@@ -34,14 +34,18 @@ class MagicFirewallRulesetArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             account_id: pulumi.Input[str],
-             name: pulumi.Input[str],
+             account_id: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              rules: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'accountId' in kwargs:
+        if account_id is None and 'accountId' in kwargs:
             account_id = kwargs['accountId']
+        if account_id is None:
+            raise TypeError("Missing 'account_id' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
 
         _setter("account_id", account_id)
         _setter("name", name)
@@ -123,9 +127,9 @@ class _MagicFirewallRulesetState:
              description: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
              rules: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'accountId' in kwargs:
+        if account_id is None and 'accountId' in kwargs:
             account_id = kwargs['accountId']
 
         if account_id is not None:
@@ -198,32 +202,6 @@ class MagicFirewallRuleset(pulumi.CustomResource):
         creates a root ruleset on the account level and contains one or more rules. Rules can be crafted in Wireshark syntax and
         are evaluated in order, with the first rule having the highest priority.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudflare as cloudflare
-
-        example = cloudflare.MagicFirewallRuleset("example",
-            account_id="d41d8cd98f00b204e9800998ecf8427e",
-            description="Global mitigations",
-            name="Magic Transit Ruleset",
-            rules=[
-                {
-                    "action": "allow",
-                    "description": "Allow TCP Ephemeral Ports",
-                    "enabled": "true",
-                    "expression": "tcp.dstport in { 32768..65535 }",
-                },
-                {
-                    "action": "block",
-                    "description": "Block all",
-                    "enabled": "true",
-                    "expression": "ip.len >= 0",
-                },
-            ])
-        ```
-
         ## Import
 
         An existing Magic Firewall Ruleset can be imported using the account ID and ruleset ID
@@ -248,32 +226,6 @@ class MagicFirewallRuleset(pulumi.CustomResource):
         Magic Firewall is a network-level firewall to protect networks that are onboarded to Cloudflare's Magic Transit. This resource
         creates a root ruleset on the account level and contains one or more rules. Rules can be crafted in Wireshark syntax and
         are evaluated in order, with the first rule having the highest priority.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudflare as cloudflare
-
-        example = cloudflare.MagicFirewallRuleset("example",
-            account_id="d41d8cd98f00b204e9800998ecf8427e",
-            description="Global mitigations",
-            name="Magic Transit Ruleset",
-            rules=[
-                {
-                    "action": "allow",
-                    "description": "Allow TCP Ephemeral Ports",
-                    "enabled": "true",
-                    "expression": "tcp.dstport in { 32768..65535 }",
-                },
-                {
-                    "action": "block",
-                    "description": "Block all",
-                    "enabled": "true",
-                    "expression": "ip.len >= 0",
-                },
-            ])
-        ```
 
         ## Import
 

@@ -13,32 +13,6 @@ import (
 )
 
 // Use this data source to look up Zone DNSSEC settings.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.LookupZoneDnssec(ctx, &cloudflare.LookupZoneDnssecArgs{
-//				ZoneId: "0da42c8d2132a9ddaf714f9e7c920711",
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func LookupZoneDnssec(ctx *pulumi.Context, args *LookupZoneDnssecArgs, opts ...pulumi.InvokeOption) (*LookupZoneDnssecResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupZoneDnssecResult

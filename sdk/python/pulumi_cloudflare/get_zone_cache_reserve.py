@@ -74,15 +74,6 @@ def get_zone_cache_reserve(zone_id: Optional[str] = None,
     Provides a Cloudflare data source to look up Cache Reserve
     status for a given zone.
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_cloudflare as cloudflare
-
-    example = cloudflare.get_zone_cache_reserve(zone_id="0da42c8d2132a9ddaf714f9e7c920711")
-    ```
-
 
     :param str zone_id: The zone identifier to target for the resource.
     """
@@ -103,15 +94,6 @@ def get_zone_cache_reserve_output(zone_id: Optional[pulumi.Input[str]] = None,
     """
     Provides a Cloudflare data source to look up Cache Reserve
     status for a given zone.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_cloudflare as cloudflare
-
-    example = cloudflare.get_zone_cache_reserve(zone_id="0da42c8d2132a9ddaf714f9e7c920711")
-    ```
 
 
     :param str zone_id: The zone identifier to target for the resource.

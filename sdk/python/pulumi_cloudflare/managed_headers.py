@@ -34,16 +34,18 @@ class ManagedHeadersArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             zone_id: pulumi.Input[str],
+             zone_id: Optional[pulumi.Input[str]] = None,
              managed_request_headers: Optional[pulumi.Input[Sequence[pulumi.Input['ManagedHeadersManagedRequestHeaderArgs']]]] = None,
              managed_response_headers: Optional[pulumi.Input[Sequence[pulumi.Input['ManagedHeadersManagedResponseHeaderArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'zoneId' in kwargs:
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
-        if 'managedRequestHeaders' in kwargs:
+        if zone_id is None:
+            raise TypeError("Missing 'zone_id' argument")
+        if managed_request_headers is None and 'managedRequestHeaders' in kwargs:
             managed_request_headers = kwargs['managedRequestHeaders']
-        if 'managedResponseHeaders' in kwargs:
+        if managed_response_headers is None and 'managedResponseHeaders' in kwargs:
             managed_response_headers = kwargs['managedResponseHeaders']
 
         _setter("zone_id", zone_id)
@@ -113,13 +115,13 @@ class _ManagedHeadersState:
              managed_request_headers: Optional[pulumi.Input[Sequence[pulumi.Input['ManagedHeadersManagedRequestHeaderArgs']]]] = None,
              managed_response_headers: Optional[pulumi.Input[Sequence[pulumi.Input['ManagedHeadersManagedResponseHeaderArgs']]]] = None,
              zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'managedRequestHeaders' in kwargs:
+        if managed_request_headers is None and 'managedRequestHeaders' in kwargs:
             managed_request_headers = kwargs['managedRequestHeaders']
-        if 'managedResponseHeaders' in kwargs:
+        if managed_response_headers is None and 'managedResponseHeaders' in kwargs:
             managed_response_headers = kwargs['managedResponseHeaders']
-        if 'zoneId' in kwargs:
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
 
         if managed_request_headers is not None:
@@ -180,25 +182,6 @@ class ManagedHeaders(pulumi.CustomResource):
         allows you to add or remove some predefined headers to one's
         requests or origin responses.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudflare as cloudflare
-
-        # Enable security headers using Managed Meaders
-        example = cloudflare.ManagedHeaders("example",
-            managed_request_headers=[cloudflare.ManagedHeadersManagedRequestHeaderArgs(
-                enabled=True,
-                id="add_true_client_ip_headers",
-            )],
-            managed_response_headers=[cloudflare.ManagedHeadersManagedResponseHeaderArgs(
-                enabled=True,
-                id="remove_x-powered-by_header",
-            )],
-            zone_id="0da42c8d2132a9ddaf714f9e7c920711")
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ManagedHeadersManagedRequestHeaderArgs']]]] managed_request_headers: The list of managed request headers.
@@ -215,25 +198,6 @@ class ManagedHeaders(pulumi.CustomResource):
         The [Cloudflare Managed Headers](https://developers.cloudflare.com/rules/transform/managed-transforms/)
         allows you to add or remove some predefined headers to one's
         requests or origin responses.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudflare as cloudflare
-
-        # Enable security headers using Managed Meaders
-        example = cloudflare.ManagedHeaders("example",
-            managed_request_headers=[cloudflare.ManagedHeadersManagedRequestHeaderArgs(
-                enabled=True,
-                id="add_true_client_ip_headers",
-            )],
-            managed_response_headers=[cloudflare.ManagedHeadersManagedResponseHeaderArgs(
-                enabled=True,
-                id="remove_x-powered-by_header",
-            )],
-            zone_id="0da42c8d2132a9ddaf714f9e7c920711")
-        ```
 
         :param str resource_name: The name of the resource.
         :param ManagedHeadersArgs args: The arguments to use to populate this resource's properties.

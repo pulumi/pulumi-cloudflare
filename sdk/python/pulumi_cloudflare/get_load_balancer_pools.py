@@ -89,18 +89,6 @@ def get_load_balancer_pools(account_id: Optional[str] = None,
     """
     A datasource to find Load Balancer Pools.
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_cloudflare as cloudflare
-
-    example = cloudflare.get_load_balancer_pools(account_id="f037e56e89293a057740de681ac9abbe",
-        filter=cloudflare.GetLoadBalancerPoolsFilterArgs(
-            name="example-lb-pool",
-        ))
-    ```
-
 
     :param str account_id: The account identifier to target for the datasource lookups.
     :param pulumi.InputType['GetLoadBalancerPoolsFilterArgs'] filter: One or more values used to look up Load Balancer pools. If more than one value is given all values must match in order to be included.
@@ -127,18 +115,6 @@ def get_load_balancer_pools_output(account_id: Optional[pulumi.Input[str]] = Non
                                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetLoadBalancerPoolsResult]:
     """
     A datasource to find Load Balancer Pools.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_cloudflare as cloudflare
-
-    example = cloudflare.get_load_balancer_pools(account_id="f037e56e89293a057740de681ac9abbe",
-        filter=cloudflare.GetLoadBalancerPoolsFilterArgs(
-            name="example-lb-pool",
-        ))
-    ```
 
 
     :param str account_id: The account identifier to target for the datasource lookups.

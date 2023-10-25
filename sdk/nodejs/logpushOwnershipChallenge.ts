@@ -9,18 +9,6 @@ import * as utilities from "./utilities";
  * challenges to use in a Logpush Job. On it's own, doesn't do much
  * however this resource should be used in conjunction to create
  * Logpush jobs.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as cloudflare from "@pulumi/cloudflare";
- *
- * const example = new cloudflare.LogpushOwnershipChallenge("example", {
- *     destinationConf: "s3://my-bucket-path?region=us-west-2",
- *     zoneId: "0da42c8d2132a9ddaf714f9e7c920711",
- * });
- * ```
  */
 export class LogpushOwnershipChallenge extends pulumi.CustomResource {
     /**

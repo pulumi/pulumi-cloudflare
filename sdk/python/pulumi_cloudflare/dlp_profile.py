@@ -43,18 +43,28 @@ class DlpProfileArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             account_id: pulumi.Input[str],
-             allowed_match_count: pulumi.Input[int],
-             entries: pulumi.Input[Sequence[pulumi.Input['DlpProfileEntryArgs']]],
-             name: pulumi.Input[str],
-             type: pulumi.Input[str],
+             account_id: Optional[pulumi.Input[str]] = None,
+             allowed_match_count: Optional[pulumi.Input[int]] = None,
+             entries: Optional[pulumi.Input[Sequence[pulumi.Input['DlpProfileEntryArgs']]]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             type: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'accountId' in kwargs:
+        if account_id is None and 'accountId' in kwargs:
             account_id = kwargs['accountId']
-        if 'allowedMatchCount' in kwargs:
+        if account_id is None:
+            raise TypeError("Missing 'account_id' argument")
+        if allowed_match_count is None and 'allowedMatchCount' in kwargs:
             allowed_match_count = kwargs['allowedMatchCount']
+        if allowed_match_count is None:
+            raise TypeError("Missing 'allowed_match_count' argument")
+        if entries is None:
+            raise TypeError("Missing 'entries' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
 
         _setter("account_id", account_id)
         _setter("allowed_match_count", allowed_match_count)
@@ -173,11 +183,11 @@ class _DlpProfileState:
              entries: Optional[pulumi.Input[Sequence[pulumi.Input['DlpProfileEntryArgs']]]] = None,
              name: Optional[pulumi.Input[str]] = None,
              type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'accountId' in kwargs:
+        if account_id is None and 'accountId' in kwargs:
             account_id = kwargs['accountId']
-        if 'allowedMatchCount' in kwargs:
+        if allowed_match_count is None and 'allowedMatchCount' in kwargs:
             allowed_match_count = kwargs['allowedMatchCount']
 
         if account_id is not None:

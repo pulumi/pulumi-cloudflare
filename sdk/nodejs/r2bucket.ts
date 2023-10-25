@@ -5,21 +5,6 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as cloudflare from "@pulumi/cloudflare";
- *
- * const example = new cloudflare.R2Bucket("example", {
- *     accountId: "f037e56e89293a057740de681ac9abbe",
- *     location: "enam",
- *     name: "terraform-bucket",
- * });
- * ```
- *
- * > Available location values can be found in the [R2 documentation](https://developers.cloudflare.com/r2/buckets/data-location/#available-hints).
- *
  * ## Import
  *
  * ```sh

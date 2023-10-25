@@ -12,45 +12,6 @@ namespace Pulumi.Cloudflare
     /// <summary>
     /// Provides a resource to manage User Agent Blocking Rules.
     /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Cloudflare = Pulumi.Cloudflare;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var example1 = new Cloudflare.UserAgentBlockingRule("example1", new()
-    ///     {
-    ///         Configuration = new Cloudflare.Inputs.UserAgentBlockingRuleConfigurationArgs
-    ///         {
-    ///             Target = "ua",
-    ///             Value = "Chrome",
-    ///         },
-    ///         Description = "My description 1",
-    ///         Mode = "js_challenge",
-    ///         Paused = false,
-    ///         ZoneId = "0da42c8d2132a9ddaf714f9e7c920711",
-    ///     });
-    /// 
-    ///     var example2 = new Cloudflare.UserAgentBlockingRule("example2", new()
-    ///     {
-    ///         Configuration = new Cloudflare.Inputs.UserAgentBlockingRuleConfigurationArgs
-    ///         {
-    ///             Target = "ua",
-    ///             Value = "Mozilla",
-    ///         },
-    ///         Description = "My description 22",
-    ///         Mode = "challenge",
-    ///         Paused = true,
-    ///         ZoneId = "0da42c8d2132a9ddaf714f9e7c920711",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// ```sh

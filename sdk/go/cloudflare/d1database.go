@@ -17,33 +17,6 @@ import (
 //
 // !> When a D1 Database is replaced all the data is lost. Please ensure you have a backup of your data before replacing a D1 Database.
 //
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewD1Database(ctx, "example", &cloudflare.D1DatabaseArgs{
-//				AccountId: pulumi.String("f037e56e89293a057740de681ac9abbe"),
-//				Name:      pulumi.String("terraform-database"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // ```sh

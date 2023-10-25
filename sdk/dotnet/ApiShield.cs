@@ -11,32 +11,6 @@ namespace Pulumi.Cloudflare
 {
     /// <summary>
     /// Provides a resource to manage API Shield configurations.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Cloudflare = Pulumi.Cloudflare;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var example = new Cloudflare.ApiShield("example", new()
-    ///     {
-    ///         AuthIdCharacteristics = new[]
-    ///         {
-    ///             new Cloudflare.Inputs.ApiShieldAuthIdCharacteristicArgs
-    ///             {
-    ///                 Name = "my-example-header",
-    ///                 Type = "header",
-    ///             },
-    ///         },
-    ///         ZoneId = "0da42c8d2132a9ddaf714f9e7c920711",
-    ///     });
-    /// 
-    /// });
-    /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/apiShield:ApiShield")]
     public partial class ApiShield : global::Pulumi.CustomResource

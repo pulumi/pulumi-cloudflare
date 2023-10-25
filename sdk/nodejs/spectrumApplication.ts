@@ -11,31 +11,6 @@ import * as utilities from "./utilities";
  * of Cloudflare's DDoS, TLS, and IP Firewall to your other TCP-based
  * services.
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as cloudflare from "@pulumi/cloudflare";
- *
- * const example = new cloudflare.SpectrumApplication("example", {
- *     dns: {
- *         name: "ssh.example.com",
- *         type: "CNAME",
- *     },
- *     edgeIps: {
- *         ips: [
- *             "203.0.113.1",
- *             "203.0.113.2",
- *         ],
- *         type: "static",
- *     },
- *     originDirects: ["tcp://192.0.2.1:22"],
- *     protocol: "tcp/22",
- *     trafficType: "direct",
- *     zoneId: "0da42c8d2132a9ddaf714f9e7c920711",
- * });
- * ```
- *
  * ## Import
  *
  * ```sh

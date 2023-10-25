@@ -10,28 +10,6 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare
 {
     /// <summary>
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Cloudflare = Pulumi.Cloudflare;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var example = new Cloudflare.R2Bucket("example", new()
-    ///     {
-    ///         AccountId = "f037e56e89293a057740de681ac9abbe",
-    ///         Location = "enam",
-    ///         Name = "terraform-bucket",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
-    /// &gt; Available location values can be found in the [R2 documentation](https://developers.cloudflare.com/r2/buckets/data-location/#available-hints).
-    /// 
     /// ## Import
     /// 
     /// ```sh

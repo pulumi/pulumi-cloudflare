@@ -32,13 +32,19 @@ class TeamsProxyEndpointArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             account_id: pulumi.Input[str],
-             ips: pulumi.Input[Sequence[pulumi.Input[str]]],
-             name: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             account_id: Optional[pulumi.Input[str]] = None,
+             ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'accountId' in kwargs:
+        if account_id is None and 'accountId' in kwargs:
             account_id = kwargs['accountId']
+        if account_id is None:
+            raise TypeError("Missing 'account_id' argument")
+        if ips is None:
+            raise TypeError("Missing 'ips' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
 
         _setter("account_id", account_id)
         _setter("ips", ips)
@@ -109,9 +115,9 @@ class _TeamsProxyEndpointState:
              ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              name: Optional[pulumi.Input[str]] = None,
              subdomain: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'accountId' in kwargs:
+        if account_id is None and 'accountId' in kwargs:
             account_id = kwargs['accountId']
 
         if account_id is not None:
@@ -186,18 +192,6 @@ class TeamsProxyEndpoint(pulumi.CustomResource):
         Endpoints are used for pointing proxy clients at Cloudflare Secure
         Gateway.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudflare as cloudflare
-
-        example = cloudflare.TeamsProxyEndpoint("example",
-            account_id="f037e56e89293a057740de681ac9abbe",
-            ips=["192.0.2.0/24"],
-            name="office")
-        ```
-
         ## Import
 
         ```sh
@@ -220,18 +214,6 @@ class TeamsProxyEndpoint(pulumi.CustomResource):
         Provides a Cloudflare Teams Proxy Endpoint resource. Teams Proxy
         Endpoints are used for pointing proxy clients at Cloudflare Secure
         Gateway.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudflare as cloudflare
-
-        example = cloudflare.TeamsProxyEndpoint("example",
-            account_id="f037e56e89293a057740de681ac9abbe",
-            ips=["192.0.2.0/24"],
-            name="office")
-        ```
 
         ## Import
 

@@ -9,18 +9,6 @@ import * as utilities from "./utilities";
  *
  * !> When a D1 Database is replaced all the data is lost. Please ensure you have a backup of your data before replacing a D1 Database.
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as cloudflare from "@pulumi/cloudflare";
- *
- * const example = new cloudflare.D1Database("example", {
- *     accountId: "f037e56e89293a057740de681ac9abbe",
- *     name: "terraform-database",
- * });
- * ```
- *
  * ## Import
  *
  * ```sh

@@ -38,15 +38,19 @@ class FilterArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             expression: pulumi.Input[str],
-             zone_id: pulumi.Input[str],
+             expression: Optional[pulumi.Input[str]] = None,
+             zone_id: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              paused: Optional[pulumi.Input[bool]] = None,
              ref: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'zoneId' in kwargs:
+        if expression is None:
+            raise TypeError("Missing 'expression' argument")
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
+        if zone_id is None:
+            raise TypeError("Missing 'zone_id' argument")
 
         _setter("expression", expression)
         _setter("zone_id", zone_id)
@@ -150,9 +154,9 @@ class _FilterState:
              paused: Optional[pulumi.Input[bool]] = None,
              ref: Optional[pulumi.Input[str]] = None,
              zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'zoneId' in kwargs:
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
 
         if description is not None:
@@ -239,18 +243,6 @@ class Filter(pulumi.CustomResource):
                  zone_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudflare as cloudflare
-
-        wordpress = cloudflare.Filter("wordpress",
-            description="Wordpress break-in attempts that are outside of the office",
-            expression="(http.request.uri.path ~ \\".*wp-login.php\\" or http.request.uri.path ~ \\".*xmlrpc.php\\") and ip.src ne 192.0.2.1",
-            zone_id="0da42c8d2132a9ddaf714f9e7c920711")
-        ```
-
         ## Import
 
         ```sh
@@ -272,18 +264,6 @@ class Filter(pulumi.CustomResource):
                  args: FilterArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudflare as cloudflare
-
-        wordpress = cloudflare.Filter("wordpress",
-            description="Wordpress break-in attempts that are outside of the office",
-            expression="(http.request.uri.path ~ \\".*wp-login.php\\" or http.request.uri.path ~ \\".*xmlrpc.php\\") and ip.src ne 192.0.2.1",
-            zone_id="0da42c8d2132a9ddaf714f9e7c920711")
-        ```
-
         ## Import
 
         ```sh

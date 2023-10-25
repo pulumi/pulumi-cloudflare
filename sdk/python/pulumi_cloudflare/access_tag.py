@@ -35,17 +35,19 @@ class AccessTagArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             name: pulumi.Input[str],
+             name: Optional[pulumi.Input[str]] = None,
              account_id: Optional[pulumi.Input[str]] = None,
              app_count: Optional[pulumi.Input[int]] = None,
              zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'accountId' in kwargs:
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if account_id is None and 'accountId' in kwargs:
             account_id = kwargs['accountId']
-        if 'appCount' in kwargs:
+        if app_count is None and 'appCount' in kwargs:
             app_count = kwargs['appCount']
-        if 'zoneId' in kwargs:
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
 
         _setter("name", name)
@@ -133,13 +135,13 @@ class _AccessTagState:
              app_count: Optional[pulumi.Input[int]] = None,
              name: Optional[pulumi.Input[str]] = None,
              zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'accountId' in kwargs:
+        if account_id is None and 'accountId' in kwargs:
             account_id = kwargs['accountId']
-        if 'appCount' in kwargs:
+        if app_count is None and 'appCount' in kwargs:
             app_count = kwargs['appCount']
-        if 'zoneId' in kwargs:
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
 
         if account_id is not None:

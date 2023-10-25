@@ -40,15 +40,23 @@ class EmailRoutingCatchAllArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             actions: pulumi.Input[Sequence[pulumi.Input['EmailRoutingCatchAllActionArgs']]],
-             matchers: pulumi.Input[Sequence[pulumi.Input['EmailRoutingCatchAllMatcherArgs']]],
-             name: pulumi.Input[str],
-             zone_id: pulumi.Input[str],
+             actions: Optional[pulumi.Input[Sequence[pulumi.Input['EmailRoutingCatchAllActionArgs']]]] = None,
+             matchers: Optional[pulumi.Input[Sequence[pulumi.Input['EmailRoutingCatchAllMatcherArgs']]]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             zone_id: Optional[pulumi.Input[str]] = None,
              enabled: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'zoneId' in kwargs:
+        if actions is None:
+            raise TypeError("Missing 'actions' argument")
+        if matchers is None:
+            raise TypeError("Missing 'matchers' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
+        if zone_id is None:
+            raise TypeError("Missing 'zone_id' argument")
 
         _setter("actions", actions)
         _setter("matchers", matchers)
@@ -154,9 +162,9 @@ class _EmailRoutingCatchAllState:
              name: Optional[pulumi.Input[str]] = None,
              tag: Optional[pulumi.Input[str]] = None,
              zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'zoneId' in kwargs:
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
 
         if actions is not None:
@@ -259,25 +267,6 @@ class EmailRoutingCatchAll(pulumi.CustomResource):
         """
         Provides a resource for managing Email Routing Addresses catch all behaviour.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudflare as cloudflare
-
-        example = cloudflare.EmailRoutingCatchAll("example",
-            actions=[cloudflare.EmailRoutingCatchAllActionArgs(
-                type="forward",
-                values=["destinationaddress@example.net"],
-            )],
-            enabled=True,
-            matchers=[cloudflare.EmailRoutingCatchAllMatcherArgs(
-                type="all",
-            )],
-            name="example catch all",
-            zone_id="0da42c8d2132a9ddaf714f9e7c920711")
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EmailRoutingCatchAllActionArgs']]]] actions: List actions patterns.
@@ -294,25 +283,6 @@ class EmailRoutingCatchAll(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Provides a resource for managing Email Routing Addresses catch all behaviour.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudflare as cloudflare
-
-        example = cloudflare.EmailRoutingCatchAll("example",
-            actions=[cloudflare.EmailRoutingCatchAllActionArgs(
-                type="forward",
-                values=["destinationaddress@example.net"],
-            )],
-            enabled=True,
-            matchers=[cloudflare.EmailRoutingCatchAllMatcherArgs(
-                type="all",
-            )],
-            name="example catch all",
-            zone_id="0da42c8d2132a9ddaf714f9e7c920711")
-        ```
 
         :param str resource_name: The name of the resource.
         :param EmailRoutingCatchAllArgs args: The arguments to use to populate this resource's properties.

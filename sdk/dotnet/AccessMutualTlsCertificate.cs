@@ -22,30 +22,6 @@ namespace Pulumi.Cloudflare
     /// scope. For example, an access token that is scoped to the "example.com"
     /// zone needs to use the `zone_id` argument.
     /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Cloudflare = Pulumi.Cloudflare;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var myCert = new Cloudflare.AccessMutualTlsCertificate("myCert", new()
-    ///     {
-    ///         ZoneId = "0da42c8d2132a9ddaf714f9e7c920711",
-    ///         Name = "My Root Cert",
-    ///         Certificate = @var.Ca_pem,
-    ///         AssociatedHostnames = new[]
-    ///         {
-    ///             "staging.example.com",
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// Account level import.

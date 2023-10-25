@@ -15,49 +15,6 @@ import (
 
 // Provides a Cloudflare Web Analytics Rule resource.
 //
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			exampleWebAnalyticsSite, err := cloudflare.NewWebAnalyticsSite(ctx, "exampleWebAnalyticsSite", &cloudflare.WebAnalyticsSiteArgs{
-//				AccountId:   pulumi.String("f037e56e89293a057740de681ac9abbe"),
-//				ZoneTag:     pulumi.String("0da42c8d2132a9ddaf714f9e7c920711"),
-//				AutoInstall: pulumi.Bool(true),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = cloudflare.NewWebAnalyticsRule(ctx, "exampleWebAnalyticsRule", &cloudflare.WebAnalyticsRuleArgs{
-//				AccountId: pulumi.String("f037e56e89293a057740de681ac9abbe"),
-//				RulesetId: exampleWebAnalyticsSite.RulesetId,
-//				Host:      pulumi.String("*"),
-//				Paths: pulumi.StringArray{
-//					pulumi.String("/excluded"),
-//				},
-//				Inclusive: pulumi.Bool(false),
-//				IsPaused:  pulumi.Bool(false),
-//			}, pulumi.DependsOn([]pulumi.Resource{
-//				exampleWebAnalyticsSite,
-//			}))
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // ```sh

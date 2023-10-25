@@ -12,27 +12,6 @@ namespace Pulumi.Cloudflare
     /// <summary>
     /// Provides a Cloudflare per-hostname TLS setting resource. Used to set TLS settings for hostnames under the specified zone.
     /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Cloudflare = Pulumi.Cloudflare;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var example = new Cloudflare.HostnameTlsSetting("example", new()
-    ///     {
-    ///         Hostname = "sub.example.com",
-    ///         Setting = "min_tls_version",
-    ///         Value = "1.2",
-    ///         ZoneId = "0da42c8d2132a9ddaf714f9e7c920711",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// ```sh

@@ -8,20 +8,6 @@ import * as utilities from "./utilities";
 
 /**
  * A datasource to find Load Balancer Pools.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as cloudflare from "@pulumi/cloudflare";
- *
- * const example = cloudflare.getLoadBalancerPools({
- *     accountId: "f037e56e89293a057740de681ac9abbe",
- *     filter: {
- *         name: "example-lb-pool",
- *     },
- * });
- * ```
  */
 export function getLoadBalancerPools(args: GetLoadBalancerPoolsArgs, opts?: pulumi.InvokeOptions): Promise<GetLoadBalancerPoolsResult> {
 
@@ -74,20 +60,6 @@ export interface GetLoadBalancerPoolsResult {
 }
 /**
  * A datasource to find Load Balancer Pools.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as cloudflare from "@pulumi/cloudflare";
- *
- * const example = cloudflare.getLoadBalancerPools({
- *     accountId: "f037e56e89293a057740de681ac9abbe",
- *     filter: {
- *         name: "example-lb-pool",
- *     },
- * });
- * ```
  */
 export function getLoadBalancerPoolsOutput(args: GetLoadBalancerPoolsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetLoadBalancerPoolsResult> {
     return pulumi.output(args).apply((a: any) => getLoadBalancerPools(a, opts))

@@ -32,15 +32,21 @@ class WorkerCronTriggerArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             account_id: pulumi.Input[str],
-             schedules: pulumi.Input[Sequence[pulumi.Input[str]]],
-             script_name: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             account_id: Optional[pulumi.Input[str]] = None,
+             schedules: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             script_name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'accountId' in kwargs:
+        if account_id is None and 'accountId' in kwargs:
             account_id = kwargs['accountId']
-        if 'scriptName' in kwargs:
+        if account_id is None:
+            raise TypeError("Missing 'account_id' argument")
+        if schedules is None:
+            raise TypeError("Missing 'schedules' argument")
+        if script_name is None and 'scriptName' in kwargs:
             script_name = kwargs['scriptName']
+        if script_name is None:
+            raise TypeError("Missing 'script_name' argument")
 
         _setter("account_id", account_id)
         _setter("schedules", schedules)
@@ -107,11 +113,11 @@ class _WorkerCronTriggerState:
              account_id: Optional[pulumi.Input[str]] = None,
              schedules: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              script_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'accountId' in kwargs:
+        if account_id is None and 'accountId' in kwargs:
             account_id = kwargs['accountId']
-        if 'scriptName' in kwargs:
+        if script_name is None and 'scriptName' in kwargs:
             script_name = kwargs['scriptName']
 
         if account_id is not None:
@@ -173,25 +179,6 @@ class WorkerCronTrigger(pulumi.CustomResource):
         schedule. Worker Cron Triggers are ideal for running periodic jobs for
         maintenance or calling third-party APIs to collect up-to-date data.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudflare as cloudflare
-
-        example_script = cloudflare.WorkerScript("exampleScript",
-            account_id="f037e56e89293a057740de681ac9abbe",
-            name="example-script",
-            content=(lambda path: open(path).read())("path/to/my.js"))
-        example_trigger = cloudflare.WorkerCronTrigger("exampleTrigger",
-            account_id="f037e56e89293a057740de681ac9abbe",
-            script_name=example_script.name,
-            schedules=[
-                "*/5 * * * *",
-                "10 7 * * mon-fri",
-            ])
-        ```
-
         ## Import
 
         ```sh
@@ -215,25 +202,6 @@ class WorkerCronTrigger(pulumi.CustomResource):
         using a `ScheduledEvent` listener that enables Workers to be executed on a
         schedule. Worker Cron Triggers are ideal for running periodic jobs for
         maintenance or calling third-party APIs to collect up-to-date data.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudflare as cloudflare
-
-        example_script = cloudflare.WorkerScript("exampleScript",
-            account_id="f037e56e89293a057740de681ac9abbe",
-            name="example-script",
-            content=(lambda path: open(path).read())("path/to/my.js"))
-        example_trigger = cloudflare.WorkerCronTrigger("exampleTrigger",
-            account_id="f037e56e89293a057740de681ac9abbe",
-            script_name=example_script.name,
-            schedules=[
-                "*/5 * * * *",
-                "10 7 * * mon-fri",
-            ])
-        ```
 
         ## Import
 

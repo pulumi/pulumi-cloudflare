@@ -15,47 +15,6 @@ import (
 
 // Provides a Cloudflare Waiting Room Rules resource.
 //
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewWaitingRoomRules(ctx, "example", &cloudflare.WaitingRoomRulesArgs{
-//				Rules: cloudflare.WaitingRoomRulesRuleArray{
-//					&cloudflare.WaitingRoomRulesRuleArgs{
-//						Action:      pulumi.String("bypass_waiting_room"),
-//						Description: pulumi.String("bypass ip list"),
-//						Expression:  pulumi.String("src.ip in {192.0.2.0 192.0.2.1}"),
-//						Status:      pulumi.String("enabled"),
-//					},
-//					&cloudflare.WaitingRoomRulesRuleArgs{
-//						Action:      pulumi.String("bypass_waiting_room"),
-//						Description: pulumi.String("bypass query string"),
-//						Expression:  pulumi.String("http.request.uri.query contains \"bypass=true\""),
-//						Status:      pulumi.String("enabled"),
-//					},
-//				},
-//				WaitingRoomId: pulumi.String("d41d8cd98f00b204e9800998ecf8427e"),
-//				ZoneId:        pulumi.String("0da42c8d2132a9ddaf714f9e7c920711"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // ```sh

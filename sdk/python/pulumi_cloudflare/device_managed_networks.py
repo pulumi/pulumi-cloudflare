@@ -37,14 +37,22 @@ class DeviceManagedNetworksArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             account_id: pulumi.Input[str],
-             config: pulumi.Input['DeviceManagedNetworksConfigArgs'],
-             name: pulumi.Input[str],
-             type: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             account_id: Optional[pulumi.Input[str]] = None,
+             config: Optional[pulumi.Input['DeviceManagedNetworksConfigArgs']] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             type: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'accountId' in kwargs:
+        if account_id is None and 'accountId' in kwargs:
             account_id = kwargs['accountId']
+        if account_id is None:
+            raise TypeError("Missing 'account_id' argument")
+        if config is None:
+            raise TypeError("Missing 'config' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
 
         _setter("account_id", account_id)
         _setter("config", config)
@@ -128,9 +136,9 @@ class _DeviceManagedNetworksState:
              config: Optional[pulumi.Input['DeviceManagedNetworksConfigArgs']] = None,
              name: Optional[pulumi.Input[str]] = None,
              type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'accountId' in kwargs:
+        if account_id is None and 'accountId' in kwargs:
             account_id = kwargs['accountId']
 
         if account_id is not None:
@@ -204,22 +212,6 @@ class DeviceManagedNetworks(pulumi.CustomResource):
         """
         Provides a Cloudflare Device Managed Network resource. Device managed networks allow for building location-aware device settings policies.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudflare as cloudflare
-
-        managed_networks = cloudflare.DeviceManagedNetworks("managedNetworks",
-            account_id="f037e56e89293a057740de681ac9abbe",
-            config=cloudflare.DeviceManagedNetworksConfigArgs(
-                sha256="b5bb9d8014a0f9b1d61e21e796d78dccdf1352f23cd32812f4850b878ae4944c",
-                tls_sockaddr="foobar:1234",
-            ),
-            name="managed-network-1",
-            type="tls")
-        ```
-
         ## Import
 
         ```sh
@@ -241,22 +233,6 @@ class DeviceManagedNetworks(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Provides a Cloudflare Device Managed Network resource. Device managed networks allow for building location-aware device settings policies.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudflare as cloudflare
-
-        managed_networks = cloudflare.DeviceManagedNetworks("managedNetworks",
-            account_id="f037e56e89293a057740de681ac9abbe",
-            config=cloudflare.DeviceManagedNetworksConfigArgs(
-                sha256="b5bb9d8014a0f9b1d61e21e796d78dccdf1352f23cd32812f4850b878ae4944c",
-                tls_sockaddr="foobar:1234",
-            ),
-            name="managed-network-1",
-            type="tls")
-        ```
 
         ## Import
 
@@ -299,11 +275,7 @@ class DeviceManagedNetworks(pulumi.CustomResource):
             if account_id is None and not opts.urn:
                 raise TypeError("Missing required property 'account_id'")
             __props__.__dict__["account_id"] = account_id
-            if config is not None and not isinstance(config, DeviceManagedNetworksConfigArgs):
-                config = config or {}
-                def _setter(key, value):
-                    config[key] = value
-                DeviceManagedNetworksConfigArgs._configure(_setter, **config)
+            config = _utilities.configure(config, DeviceManagedNetworksConfigArgs, True)
             if config is None and not opts.urn:
                 raise TypeError("Missing required property 'config'")
             __props__.__dict__["config"] = config

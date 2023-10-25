@@ -17,60 +17,6 @@ import * as utilities from "./utilities";
  * scope. For example, an access token that is scoped to the "example.com"
  * zone needs to use the `zoneId` argument.
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as cloudflare from "@pulumi/cloudflare";
- *
- * // one time pin
- * const pinLogin = new cloudflare.AccessIdentityProvider("pinLogin", {
- *     accountId: "f037e56e89293a057740de681ac9abbe",
- *     name: "PIN login",
- *     type: "onetimepin",
- * });
- * // oauth
- * const githubOauth = new cloudflare.AccessIdentityProvider("githubOauth", {
- *     accountId: "f037e56e89293a057740de681ac9abbe",
- *     configs: [{
- *         clientId: "example",
- *         clientSecret: "secret_key",
- *     }],
- *     name: "GitHub OAuth",
- *     type: "github",
- * });
- * // saml
- * const jumpcloudSaml = new cloudflare.AccessIdentityProvider("jumpcloudSaml", {
- *     accountId: "f037e56e89293a057740de681ac9abbe",
- *     configs: [{
- *         attributes: [
- *             "email",
- *             "username",
- *         ],
- *         idpPublicCert: `MIIDpDCCAoygAwIBAgIGAV2ka+55MA0GCSqGSIb3DQEBCwUAMIGSMQswCQ...GF/Q2/MHadws97cZg
- * uTnQyuOqPuHbnN83d/2l1NSYKCbHt24o
- * `,
- *         issuerUrl: "jumpcloud",
- *         signRequest: false,
- *         ssoTargetUrl: "https://sso.myexample.jumpcloud.com/saml2/cloudflareaccess",
- *     }],
- *     name: "JumpCloud SAML",
- *     type: "saml",
- * });
- * // okta
- * const okta = new cloudflare.AccessIdentityProvider("okta", {
- *     accountId: "f037e56e89293a057740de681ac9abbe",
- *     configs: [{
- *         apiToken: "okta_api_token",
- *         clientId: "example",
- *         clientSecret: "secret_key",
- *         oktaAccount: "https://example.com",
- *     }],
- *     name: "Okta",
- *     type: "okta",
- * });
- * ```
- *
  * ## Import
  *
  * ```sh

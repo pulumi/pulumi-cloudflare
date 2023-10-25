@@ -18,30 +18,6 @@ namespace Pulumi.Cloudflare
     /// - **Super Bot Fight Mode**
     /// - **Bot Management for Enterprise**
     /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Cloudflare = Pulumi.Cloudflare;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var example = new Cloudflare.BotManagement("example", new()
-    ///     {
-    ///         EnableJs = true,
-    ///         OptimizeWordpress = true,
-    ///         SbfmDefinitelyAutomated = "block",
-    ///         SbfmLikelyAutomated = "managed_challenge",
-    ///         SbfmStaticResourceProtection = false,
-    ///         SbfmVerifiedBots = "allow",
-    ///         ZoneId = "0da42c8d2132a9ddaf714f9e7c920711",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// ```sh

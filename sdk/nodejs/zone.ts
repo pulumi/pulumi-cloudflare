@@ -11,18 +11,6 @@ import * as utilities from "./utilities";
  *
  * > If you are attempting to sign up a subdomain of a zone you must first have Subdomain Support entitlement for your account.
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as cloudflare from "@pulumi/cloudflare";
- *
- * const example = new cloudflare.Zone("example", {
- *     accountId: "f037e56e89293a057740de681ac9abbe",
- *     zone: "example.com",
- * });
- * ```
- *
  * ## Import
  *
  * ```sh

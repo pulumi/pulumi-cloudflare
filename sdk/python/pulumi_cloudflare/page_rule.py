@@ -40,15 +40,21 @@ class PageRuleArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             actions: pulumi.Input['PageRuleActionsArgs'],
-             target: pulumi.Input[str],
-             zone_id: pulumi.Input[str],
+             actions: Optional[pulumi.Input['PageRuleActionsArgs']] = None,
+             target: Optional[pulumi.Input[str]] = None,
+             zone_id: Optional[pulumi.Input[str]] = None,
              priority: Optional[pulumi.Input[int]] = None,
              status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'zoneId' in kwargs:
+        if actions is None:
+            raise TypeError("Missing 'actions' argument")
+        if target is None:
+            raise TypeError("Missing 'target' argument")
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
+        if zone_id is None:
+            raise TypeError("Missing 'zone_id' argument")
 
         _setter("actions", actions)
         _setter("target", target)
@@ -151,9 +157,9 @@ class _PageRuleState:
              status: Optional[pulumi.Input[str]] = None,
              target: Optional[pulumi.Input[str]] = None,
              zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'zoneId' in kwargs:
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
 
         if actions is not None:
@@ -242,28 +248,6 @@ class PageRule(pulumi.CustomResource):
         """
         Provides a Cloudflare page rule resource.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudflare as cloudflare
-
-        # Add a page rule to the domain
-        foobar = cloudflare.PageRule("foobar",
-            zone_id=var["cloudflare_zone_id"],
-            target=f"sub.{var['cloudflare_zone']}/page",
-            priority=1,
-            actions=cloudflare.PageRuleActionsArgs(
-                ssl="flexible",
-                email_obfuscation="on",
-                minifies=[cloudflare.PageRuleActionsMinifyArgs(
-                    html="off",
-                    css="on",
-                    js="on",
-                )],
-            ))
-        ```
-
         ## Import
 
         Page rules can be imported using a composite ID formed of zone ID and page rule ID, e.g.
@@ -288,28 +272,6 @@ class PageRule(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Provides a Cloudflare page rule resource.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudflare as cloudflare
-
-        # Add a page rule to the domain
-        foobar = cloudflare.PageRule("foobar",
-            zone_id=var["cloudflare_zone_id"],
-            target=f"sub.{var['cloudflare_zone']}/page",
-            priority=1,
-            actions=cloudflare.PageRuleActionsArgs(
-                ssl="flexible",
-                email_obfuscation="on",
-                minifies=[cloudflare.PageRuleActionsMinifyArgs(
-                    html="off",
-                    css="on",
-                    js="on",
-                )],
-            ))
-        ```
 
         ## Import
 
@@ -352,11 +314,7 @@ class PageRule(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = PageRuleArgs.__new__(PageRuleArgs)
 
-            if actions is not None and not isinstance(actions, PageRuleActionsArgs):
-                actions = actions or {}
-                def _setter(key, value):
-                    actions[key] = value
-                PageRuleActionsArgs._configure(_setter, **actions)
+            actions = _utilities.configure(actions, PageRuleActionsArgs, True)
             if actions is None and not opts.urn:
                 raise TypeError("Missing required property 'actions'")
             __props__.__dict__["actions"] = actions

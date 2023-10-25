@@ -17,34 +17,6 @@ import (
 // network with an internet connection without manually adding DNS
 // records or configuring a firewall or router.
 //
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewTunnel(ctx, "example", &cloudflare.TunnelArgs{
-//				AccountId: pulumi.String("f037e56e89293a057740de681ac9abbe"),
-//				Name:      pulumi.String("my-tunnel"),
-//				Secret:    pulumi.String("AQIDBAUGBwgBAgMEBQYHCAECAwQFBgcIAQIDBAUGBwg="),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // ```sh

@@ -13,35 +13,6 @@ import (
 )
 
 // A datasource to find Load Balancer Pools.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.GetLoadBalancerPools(ctx, &cloudflare.GetLoadBalancerPoolsArgs{
-//				AccountId: "f037e56e89293a057740de681ac9abbe",
-//				Filter: cloudflare.GetLoadBalancerPoolsFilter{
-//					Name: pulumi.StringRef("example-lb-pool"),
-//				},
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetLoadBalancerPools(ctx *pulumi.Context, args *GetLoadBalancerPoolsArgs, opts ...pulumi.InvokeOption) (*GetLoadBalancerPoolsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetLoadBalancerPoolsResult

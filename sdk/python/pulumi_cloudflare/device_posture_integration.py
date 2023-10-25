@@ -42,16 +42,22 @@ class DevicePostureIntegrationArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             account_id: pulumi.Input[str],
-             name: pulumi.Input[str],
-             type: pulumi.Input[str],
+             account_id: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             type: Optional[pulumi.Input[str]] = None,
              configs: Optional[pulumi.Input[Sequence[pulumi.Input['DevicePostureIntegrationConfigArgs']]]] = None,
              identifier: Optional[pulumi.Input[str]] = None,
              interval: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'accountId' in kwargs:
+        if account_id is None and 'accountId' in kwargs:
             account_id = kwargs['accountId']
+        if account_id is None:
+            raise TypeError("Missing 'account_id' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
 
         _setter("account_id", account_id)
         _setter("name", name)
@@ -168,9 +174,9 @@ class _DevicePostureIntegrationState:
              interval: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
              type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'accountId' in kwargs:
+        if account_id is None and 'accountId' in kwargs:
             account_id = kwargs['accountId']
 
         if account_id is not None:
@@ -273,25 +279,6 @@ class DevicePostureIntegration(pulumi.CustomResource):
         posture integrations configure third-party data providers for device
         posture rules.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudflare as cloudflare
-
-        example = cloudflare.DevicePostureIntegration("example",
-            account_id="f037e56e89293a057740de681ac9abbe",
-            configs=[cloudflare.DevicePostureIntegrationConfigArgs(
-                api_url="https://example.com/api",
-                auth_url="https://example.com/connect/token",
-                client_id="client-id",
-                client_secret="client-secret",
-            )],
-            interval="24h",
-            name="Device posture integration",
-            type="workspace_one")
-        ```
-
         ## Import
 
         ```sh
@@ -316,25 +303,6 @@ class DevicePostureIntegration(pulumi.CustomResource):
         Provides a Cloudflare Device Posture Integration resource. Device
         posture integrations configure third-party data providers for device
         posture rules.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudflare as cloudflare
-
-        example = cloudflare.DevicePostureIntegration("example",
-            account_id="f037e56e89293a057740de681ac9abbe",
-            configs=[cloudflare.DevicePostureIntegrationConfigArgs(
-                api_url="https://example.com/api",
-                auth_url="https://example.com/connect/token",
-                client_id="client-id",
-                client_secret="client-secret",
-            )],
-            interval="24h",
-            name="Device posture integration",
-            type="workspace_one")
-        ```
 
         ## Import
 

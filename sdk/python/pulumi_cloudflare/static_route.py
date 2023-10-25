@@ -47,21 +47,27 @@ class StaticRouteArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             nexthop: pulumi.Input[str],
-             prefix: pulumi.Input[str],
-             priority: pulumi.Input[int],
+             nexthop: Optional[pulumi.Input[str]] = None,
+             prefix: Optional[pulumi.Input[str]] = None,
+             priority: Optional[pulumi.Input[int]] = None,
              account_id: Optional[pulumi.Input[str]] = None,
              colo_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              colo_regions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              description: Optional[pulumi.Input[str]] = None,
              weight: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'accountId' in kwargs:
+        if nexthop is None:
+            raise TypeError("Missing 'nexthop' argument")
+        if prefix is None:
+            raise TypeError("Missing 'prefix' argument")
+        if priority is None:
+            raise TypeError("Missing 'priority' argument")
+        if account_id is None and 'accountId' in kwargs:
             account_id = kwargs['accountId']
-        if 'coloNames' in kwargs:
+        if colo_names is None and 'coloNames' in kwargs:
             colo_names = kwargs['coloNames']
-        if 'coloRegions' in kwargs:
+        if colo_regions is None and 'coloRegions' in kwargs:
             colo_regions = kwargs['coloRegions']
 
         _setter("nexthop", nexthop)
@@ -219,13 +225,13 @@ class _StaticRouteState:
              prefix: Optional[pulumi.Input[str]] = None,
              priority: Optional[pulumi.Input[int]] = None,
              weight: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'accountId' in kwargs:
+        if account_id is None and 'accountId' in kwargs:
             account_id = kwargs['accountId']
-        if 'coloNames' in kwargs:
+        if colo_names is None and 'coloNames' in kwargs:
             colo_names = kwargs['coloNames']
-        if 'coloRegions' in kwargs:
+        if colo_regions is None and 'coloRegions' in kwargs:
             colo_regions = kwargs['coloRegions']
 
         if account_id is not None:
@@ -361,23 +367,6 @@ class StaticRoute(pulumi.CustomResource):
         Transit or Magic WAN. Static routes are used to route traffic
         through GRE tunnels.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudflare as cloudflare
-
-        example = cloudflare.StaticRoute("example",
-            account_id="f037e56e89293a057740de681ac9abbe",
-            colo_names=["den01"],
-            colo_regions=["APAC"],
-            description="New route for new prefix 192.0.2.0/24",
-            nexthop="10.0.0.0",
-            prefix="192.0.2.0/24",
-            priority=100,
-            weight=10)
-        ```
-
         ## Import
 
         ```sh
@@ -405,23 +394,6 @@ class StaticRoute(pulumi.CustomResource):
         Provides a resource, that manages Cloudflare static routes for Magic
         Transit or Magic WAN. Static routes are used to route traffic
         through GRE tunnels.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudflare as cloudflare
-
-        example = cloudflare.StaticRoute("example",
-            account_id="f037e56e89293a057740de681ac9abbe",
-            colo_names=["den01"],
-            colo_regions=["APAC"],
-            description="New route for new prefix 192.0.2.0/24",
-            nexthop="10.0.0.0",
-            prefix="192.0.2.0/24",
-            priority=100,
-            weight=10)
-        ```
 
         ## Import
 

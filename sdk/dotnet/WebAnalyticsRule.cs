@@ -12,45 +12,6 @@ namespace Pulumi.Cloudflare
     /// <summary>
     /// Provides a Cloudflare Web Analytics Rule resource.
     /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Cloudflare = Pulumi.Cloudflare;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var exampleWebAnalyticsSite = new Cloudflare.WebAnalyticsSite("exampleWebAnalyticsSite", new()
-    ///     {
-    ///         AccountId = "f037e56e89293a057740de681ac9abbe",
-    ///         ZoneTag = "0da42c8d2132a9ddaf714f9e7c920711",
-    ///         AutoInstall = true,
-    ///     });
-    /// 
-    ///     var exampleWebAnalyticsRule = new Cloudflare.WebAnalyticsRule("exampleWebAnalyticsRule", new()
-    ///     {
-    ///         AccountId = "f037e56e89293a057740de681ac9abbe",
-    ///         RulesetId = exampleWebAnalyticsSite.RulesetId,
-    ///         Host = "*",
-    ///         Paths = new[]
-    ///         {
-    ///             "/excluded",
-    ///         },
-    ///         Inclusive = false,
-    ///         IsPaused = false,
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         DependsOn = new[]
-    ///         {
-    ///             exampleWebAnalyticsSite,
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// ```sh

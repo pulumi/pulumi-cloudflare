@@ -61,9 +61,9 @@ class RecordArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             name: pulumi.Input[str],
-             type: pulumi.Input[str],
-             zone_id: pulumi.Input[str],
+             name: Optional[pulumi.Input[str]] = None,
+             type: Optional[pulumi.Input[str]] = None,
+             zone_id: Optional[pulumi.Input[str]] = None,
              allow_overwrite: Optional[pulumi.Input[bool]] = None,
              comment: Optional[pulumi.Input[str]] = None,
              data: Optional[pulumi.Input['RecordDataArgs']] = None,
@@ -72,11 +72,17 @@ class RecordArgs:
              tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              ttl: Optional[pulumi.Input[int]] = None,
              value: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'zoneId' in kwargs:
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
-        if 'allowOverwrite' in kwargs:
+        if zone_id is None:
+            raise TypeError("Missing 'zone_id' argument")
+        if allow_overwrite is None and 'allowOverwrite' in kwargs:
             allow_overwrite = kwargs['allowOverwrite']
 
         _setter("name", name)
@@ -314,15 +320,15 @@ class _RecordState:
              type: Optional[pulumi.Input[str]] = None,
              value: Optional[pulumi.Input[str]] = None,
              zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'allowOverwrite' in kwargs:
+        if allow_overwrite is None and 'allowOverwrite' in kwargs:
             allow_overwrite = kwargs['allowOverwrite']
-        if 'createdOn' in kwargs:
+        if created_on is None and 'createdOn' in kwargs:
             created_on = kwargs['createdOn']
-        if 'modifiedOn' in kwargs:
+        if modified_on is None and 'modifiedOn' in kwargs:
             modified_on = kwargs['modifiedOn']
-        if 'zoneId' in kwargs:
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
 
         if allow_overwrite is not None:
@@ -574,35 +580,6 @@ class Record(pulumi.CustomResource):
         """
         Provides a Cloudflare record resource.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudflare as cloudflare
-
-        # Add a record to the domain
-        example = cloudflare.Record("example",
-            zone_id=var["cloudflare_zone_id"],
-            name="example",
-            value="192.0.2.1",
-            type="A",
-            ttl=3600)
-        # Add a record requiring a data map
-        _sip_tls = cloudflare.Record("_sipTls",
-            zone_id=var["cloudflare_zone_id"],
-            name="_sip._tls",
-            type="SRV",
-            data=cloudflare.RecordDataArgs(
-                service="_sip",
-                proto="_tls",
-                name="example-srv",
-                priority=0,
-                weight=0,
-                port=443,
-                target="example.com",
-            ))
-        ```
-
         ## Import
 
         ```sh
@@ -634,35 +611,6 @@ class Record(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Provides a Cloudflare record resource.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudflare as cloudflare
-
-        # Add a record to the domain
-        example = cloudflare.Record("example",
-            zone_id=var["cloudflare_zone_id"],
-            name="example",
-            value="192.0.2.1",
-            type="A",
-            ttl=3600)
-        # Add a record requiring a data map
-        _sip_tls = cloudflare.Record("_sipTls",
-            zone_id=var["cloudflare_zone_id"],
-            name="_sip._tls",
-            type="SRV",
-            data=cloudflare.RecordDataArgs(
-                service="_sip",
-                proto="_tls",
-                name="example-srv",
-                priority=0,
-                weight=0,
-                port=443,
-                target="example.com",
-            ))
-        ```
 
         ## Import
 
@@ -711,11 +659,7 @@ class Record(pulumi.CustomResource):
 
             __props__.__dict__["allow_overwrite"] = allow_overwrite
             __props__.__dict__["comment"] = comment
-            if data is not None and not isinstance(data, RecordDataArgs):
-                data = data or {}
-                def _setter(key, value):
-                    data[key] = value
-                RecordDataArgs._configure(_setter, **data)
+            data = _utilities.configure(data, RecordDataArgs, True)
             __props__.__dict__["data"] = data
             if name is None and not opts.urn:
                 raise TypeError("Missing required property 'name'")

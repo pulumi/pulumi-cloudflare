@@ -40,15 +40,25 @@ class UserAgentBlockingRuleArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             configuration: pulumi.Input['UserAgentBlockingRuleConfigurationArgs'],
-             description: pulumi.Input[str],
-             mode: pulumi.Input[str],
-             paused: pulumi.Input[bool],
-             zone_id: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             configuration: Optional[pulumi.Input['UserAgentBlockingRuleConfigurationArgs']] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             mode: Optional[pulumi.Input[str]] = None,
+             paused: Optional[pulumi.Input[bool]] = None,
+             zone_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'zoneId' in kwargs:
+        if configuration is None:
+            raise TypeError("Missing 'configuration' argument")
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if mode is None:
+            raise TypeError("Missing 'mode' argument")
+        if paused is None:
+            raise TypeError("Missing 'paused' argument")
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
+        if zone_id is None:
+            raise TypeError("Missing 'zone_id' argument")
 
         _setter("configuration", configuration)
         _setter("description", description)
@@ -149,9 +159,9 @@ class _UserAgentBlockingRuleState:
              mode: Optional[pulumi.Input[str]] = None,
              paused: Optional[pulumi.Input[bool]] = None,
              zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'zoneId' in kwargs:
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
 
         if configuration is not None:
@@ -240,32 +250,6 @@ class UserAgentBlockingRule(pulumi.CustomResource):
         """
         Provides a resource to manage User Agent Blocking Rules.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudflare as cloudflare
-
-        example1 = cloudflare.UserAgentBlockingRule("example1",
-            configuration=cloudflare.UserAgentBlockingRuleConfigurationArgs(
-                target="ua",
-                value="Chrome",
-            ),
-            description="My description 1",
-            mode="js_challenge",
-            paused=False,
-            zone_id="0da42c8d2132a9ddaf714f9e7c920711")
-        example2 = cloudflare.UserAgentBlockingRule("example2",
-            configuration=cloudflare.UserAgentBlockingRuleConfigurationArgs(
-                target="ua",
-                value="Mozilla",
-            ),
-            description="My description 22",
-            mode="challenge",
-            paused=True,
-            zone_id="0da42c8d2132a9ddaf714f9e7c920711")
-        ```
-
         ## Import
 
         ```sh
@@ -288,32 +272,6 @@ class UserAgentBlockingRule(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Provides a resource to manage User Agent Blocking Rules.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudflare as cloudflare
-
-        example1 = cloudflare.UserAgentBlockingRule("example1",
-            configuration=cloudflare.UserAgentBlockingRuleConfigurationArgs(
-                target="ua",
-                value="Chrome",
-            ),
-            description="My description 1",
-            mode="js_challenge",
-            paused=False,
-            zone_id="0da42c8d2132a9ddaf714f9e7c920711")
-        example2 = cloudflare.UserAgentBlockingRule("example2",
-            configuration=cloudflare.UserAgentBlockingRuleConfigurationArgs(
-                target="ua",
-                value="Mozilla",
-            ),
-            description="My description 22",
-            mode="challenge",
-            paused=True,
-            zone_id="0da42c8d2132a9ddaf714f9e7c920711")
-        ```
 
         ## Import
 
@@ -354,11 +312,7 @@ class UserAgentBlockingRule(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = UserAgentBlockingRuleArgs.__new__(UserAgentBlockingRuleArgs)
 
-            if configuration is not None and not isinstance(configuration, UserAgentBlockingRuleConfigurationArgs):
-                configuration = configuration or {}
-                def _setter(key, value):
-                    configuration[key] = value
-                UserAgentBlockingRuleConfigurationArgs._configure(_setter, **configuration)
+            configuration = _utilities.configure(configuration, UserAgentBlockingRuleConfigurationArgs, True)
             if configuration is None and not opts.urn:
                 raise TypeError("Missing required property 'configuration'")
             __props__.__dict__["configuration"] = configuration

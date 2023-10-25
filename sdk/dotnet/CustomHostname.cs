@@ -12,32 +12,6 @@ namespace Pulumi.Cloudflare
     /// <summary>
     /// Provides a Cloudflare custom hostname (also known as SSL for SaaS) resource.
     /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Cloudflare = Pulumi.Cloudflare;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var example = new Cloudflare.CustomHostname("example", new()
-    ///     {
-    ///         Hostname = "hostname.example.com",
-    ///         Ssls = new[]
-    ///         {
-    ///             new Cloudflare.Inputs.CustomHostnameSslArgs
-    ///             {
-    ///                 Method = "txt",
-    ///             },
-    ///         },
-    ///         ZoneId = "0da42c8d2132a9ddaf714f9e7c920711",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// ```sh

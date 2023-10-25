@@ -15,38 +15,6 @@ import (
 
 // Provides a Cloudflare worker route resource. A route will also require a `WorkerScript`.
 //
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			myScript, err := cloudflare.NewWorkerScript(ctx, "myScript", nil)
-//			if err != nil {
-//				return err
-//			}
-//			_, err = cloudflare.NewWorkerRoute(ctx, "myRoute", &cloudflare.WorkerRouteArgs{
-//				ZoneId:     pulumi.String("0da42c8d2132a9ddaf714f9e7c920711"),
-//				Pattern:    pulumi.String("example.com/*"),
-//				ScriptName: myScript.Name,
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // ```sh

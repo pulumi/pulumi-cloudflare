@@ -71,15 +71,6 @@ def get_lists(account_id: Optional[str] = None,
     """
     Use this data source to lookup [Lists](https://developers.cloudflare.com/api/operations/lists-get-lists).
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_cloudflare as cloudflare
-
-    example = cloudflare.get_lists(account_id="f037e56e89293a057740de681ac9abbe")
-    ```
-
 
     :param str account_id: The account identifier to target for the resource.
     """
@@ -99,15 +90,6 @@ def get_lists_output(account_id: Optional[pulumi.Input[str]] = None,
                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetListsResult]:
     """
     Use this data source to lookup [Lists](https://developers.cloudflare.com/api/operations/lists-get-lists).
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_cloudflare as cloudflare
-
-    example = cloudflare.get_lists(account_id="f037e56e89293a057740de681ac9abbe")
-    ```
 
 
     :param str account_id: The account identifier to target for the resource.

@@ -17,32 +17,6 @@ import * as utilities from "./utilities";
  * scope. For example, an access token that is scoped to the "example.com"
  * zone needs to use the `zoneId` argument.
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as cloudflare from "@pulumi/cloudflare";
- *
- * // With CORS configuration
- * const stagingApp = new cloudflare.AccessApplication("stagingApp", {
- *     corsHeaders: [{
- *         allowCredentials: true,
- *         allowedMethods: [
- *             "GET",
- *             "POST",
- *             "OPTIONS",
- *         ],
- *         allowedOrigins: ["https://example.com"],
- *         maxAge: 10,
- *     }],
- *     domain: "staging.example.com",
- *     name: "staging application",
- *     sessionDuration: "24h",
- *     type: "self_hosted",
- *     zoneId: "0da42c8d2132a9ddaf714f9e7c920711",
- * });
- * ```
- *
  * ## Import
  *
  * ```sh

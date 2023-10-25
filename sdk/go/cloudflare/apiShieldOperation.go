@@ -14,35 +14,6 @@ import (
 )
 
 // Provides a resource to manage an operation in API Shield Endpoint Management.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewApiShieldOperation(ctx, "example", &cloudflare.ApiShieldOperationArgs{
-//				Endpoint: pulumi.String("/path"),
-//				Host:     pulumi.String("api.example.com"),
-//				Method:   pulumi.String("GET"),
-//				ZoneId:   pulumi.String("0da42c8d2132a9ddaf714f9e7c920711"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 type ApiShieldOperation struct {
 	pulumi.CustomResourceState
 

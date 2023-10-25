@@ -10,66 +10,6 @@ import * as utilities from "./utilities";
  * Standalone Health Checks provide a way to monitor origin servers
  * without needing a Cloudflare Load Balancer.
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as cloudflare from "@pulumi/cloudflare";
- *
- * // HTTPS Healthcheck
- * const httpHealthCheck = new cloudflare.Healthcheck("httpHealthCheck", {
- *     zoneId: _var.cloudflare_zone_id,
- *     name: "http-health-check",
- *     description: "example http health check",
- *     address: "example.com",
- *     suspended: false,
- *     checkRegions: [
- *         "WEU",
- *         "EEU",
- *     ],
- *     type: "HTTPS",
- *     port: 443,
- *     method: "GET",
- *     path: "/health",
- *     expectedBody: "alive",
- *     expectedCodes: [
- *         "2xx",
- *         "301",
- *     ],
- *     followRedirects: true,
- *     allowInsecure: false,
- *     headers: [{
- *         header: "Host",
- *         values: ["example.com"],
- *     }],
- *     timeout: 10,
- *     retries: 2,
- *     interval: 60,
- *     consecutiveFails: 3,
- *     consecutiveSuccesses: 2,
- * });
- * // TCP Healthcheck
- * const tcpHealthCheck = new cloudflare.Healthcheck("tcpHealthCheck", {
- *     zoneId: _var.cloudflare_zone_id,
- *     name: "tcp-health-check",
- *     description: "example tcp health check",
- *     address: "example.com",
- *     suspended: false,
- *     checkRegions: [
- *         "WEU",
- *         "EEU",
- *     ],
- *     type: "TCP",
- *     port: 22,
- *     method: "connection_established",
- *     timeout: 10,
- *     retries: 2,
- *     interval: 60,
- *     consecutiveFails: 3,
- *     consecutiveSuccesses: 2,
- * });
- * ```
- *
  * ## Import
  *
  * Use the Zone ID and Healthcheck ID to import.

@@ -11,26 +11,6 @@ import * as utilities from "./utilities";
  * posture integrations configure third-party data providers for device
  * posture rules.
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as cloudflare from "@pulumi/cloudflare";
- *
- * const example = new cloudflare.DevicePostureIntegration("example", {
- *     accountId: "f037e56e89293a057740de681ac9abbe",
- *     configs: [{
- *         apiUrl: "https://example.com/api",
- *         authUrl: "https://example.com/connect/token",
- *         clientId: "client-id",
- *         clientSecret: "client-secret",
- *     }],
- *     interval: "24h",
- *     name: "Device posture integration",
- *     type: "workspace_one",
- * });
- * ```
- *
  * ## Import
  *
  * ```sh

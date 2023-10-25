@@ -11,29 +11,6 @@ namespace Pulumi.Cloudflare
 {
     /// <summary>
     /// Provides a resource to manage a schema in API Shield Schema Validation 2.0.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.IO;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Cloudflare = Pulumi.Cloudflare;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var petstoreSchema = new Cloudflare.ApiShieldSchema("petstoreSchema", new()
-    ///     {
-    ///         ZoneId = "0da42c8d2132a9ddaf714f9e7c920711",
-    ///         Name = "myschema",
-    ///         Kind = "openapi_v3",
-    ///         ValidationEnabled = true,
-    ///         Source = File.ReadAllText("./schemas/petstore.json"),
-    ///     });
-    /// 
-    /// });
-    /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/apiShieldSchema:ApiShieldSchema")]
     public partial class ApiShieldSchema : global::Pulumi.CustomResource

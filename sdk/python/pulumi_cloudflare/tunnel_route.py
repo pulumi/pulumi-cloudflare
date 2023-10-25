@@ -38,18 +38,24 @@ class TunnelRouteArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             account_id: pulumi.Input[str],
-             network: pulumi.Input[str],
-             tunnel_id: pulumi.Input[str],
+             account_id: Optional[pulumi.Input[str]] = None,
+             network: Optional[pulumi.Input[str]] = None,
+             tunnel_id: Optional[pulumi.Input[str]] = None,
              comment: Optional[pulumi.Input[str]] = None,
              virtual_network_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'accountId' in kwargs:
+        if account_id is None and 'accountId' in kwargs:
             account_id = kwargs['accountId']
-        if 'tunnelId' in kwargs:
+        if account_id is None:
+            raise TypeError("Missing 'account_id' argument")
+        if network is None:
+            raise TypeError("Missing 'network' argument")
+        if tunnel_id is None and 'tunnelId' in kwargs:
             tunnel_id = kwargs['tunnelId']
-        if 'virtualNetworkId' in kwargs:
+        if tunnel_id is None:
+            raise TypeError("Missing 'tunnel_id' argument")
+        if virtual_network_id is None and 'virtualNetworkId' in kwargs:
             virtual_network_id = kwargs['virtualNetworkId']
 
         _setter("account_id", account_id)
@@ -153,13 +159,13 @@ class _TunnelRouteState:
              network: Optional[pulumi.Input[str]] = None,
              tunnel_id: Optional[pulumi.Input[str]] = None,
              virtual_network_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'accountId' in kwargs:
+        if account_id is None and 'accountId' in kwargs:
             account_id = kwargs['accountId']
-        if 'tunnelId' in kwargs:
+        if tunnel_id is None and 'tunnelId' in kwargs:
             tunnel_id = kwargs['tunnelId']
-        if 'virtualNetworkId' in kwargs:
+        if virtual_network_id is None and 'virtualNetworkId' in kwargs:
             virtual_network_id = kwargs['virtualNetworkId']
 
         if account_id is not None:
@@ -250,32 +256,6 @@ class TunnelRoute(pulumi.CustomResource):
         Trust. Tunnel routes are used to direct IP traffic through
         Cloudflare Tunnels.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudflare as cloudflare
-
-        # Tunnel route
-        example_tunnel_route = cloudflare.TunnelRoute("exampleTunnelRoute",
-            account_id="f037e56e89293a057740de681ac9abbe",
-            tunnel_id="f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
-            network="192.0.2.24/32",
-            comment="New tunnel route for documentation",
-            virtual_network_id="bdc39a3c-3104-4c23-8ac0-9f455dda691a")
-        # Tunnel with tunnel route
-        tunnel = cloudflare.Tunnel("tunnel",
-            account_id="f037e56e89293a057740de681ac9abbe",
-            name="my_tunnel",
-            secret="AQIDBAUGBwgBAgMEBQYHCAECAwQFBgcIAQIDBAUGBwg=")
-        example_index_tunnel_route_tunnel_route = cloudflare.TunnelRoute("exampleIndex/tunnelRouteTunnelRoute",
-            account_id="f037e56e89293a057740de681ac9abbe",
-            tunnel_id=tunnel.id,
-            network="192.0.2.24/32",
-            comment="New tunnel route for documentation",
-            virtual_network_id="bdc39a3c-3104-4c23-8ac0-9f455dda691a")
-        ```
-
         ## Import
 
         ```sh
@@ -300,32 +280,6 @@ class TunnelRoute(pulumi.CustomResource):
         Provides a resource, that manages Cloudflare tunnel routes for Zero
         Trust. Tunnel routes are used to direct IP traffic through
         Cloudflare Tunnels.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudflare as cloudflare
-
-        # Tunnel route
-        example_tunnel_route = cloudflare.TunnelRoute("exampleTunnelRoute",
-            account_id="f037e56e89293a057740de681ac9abbe",
-            tunnel_id="f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
-            network="192.0.2.24/32",
-            comment="New tunnel route for documentation",
-            virtual_network_id="bdc39a3c-3104-4c23-8ac0-9f455dda691a")
-        # Tunnel with tunnel route
-        tunnel = cloudflare.Tunnel("tunnel",
-            account_id="f037e56e89293a057740de681ac9abbe",
-            name="my_tunnel",
-            secret="AQIDBAUGBwgBAgMEBQYHCAECAwQFBgcIAQIDBAUGBwg=")
-        example_index_tunnel_route_tunnel_route = cloudflare.TunnelRoute("exampleIndex/tunnelRouteTunnelRoute",
-            account_id="f037e56e89293a057740de681ac9abbe",
-            tunnel_id=tunnel.id,
-            network="192.0.2.24/32",
-            comment="New tunnel route for documentation",
-            virtual_network_id="bdc39a3c-3104-4c23-8ac0-9f455dda691a")
-        ```
 
         ## Import
 

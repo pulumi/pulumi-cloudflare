@@ -13,64 +13,12 @@ namespace Pulumi.Cloudflare
     {
         /// <summary>
         /// Use this datasource to lookup Rulesets in an account or zone.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Cloudflare = Pulumi.Cloudflare;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var example = Cloudflare.GetRulesets.Invoke(new()
-        ///     {
-        ///         Filter = new Cloudflare.Inputs.GetRulesetsFilterInputArgs
-        ///         {
-        ///             Name = ".*OWASP.*",
-        ///         },
-        ///         ZoneId = "0da42c8d2132a9ddaf714f9e7c920711",
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetRulesetsResult> InvokeAsync(GetRulesetsArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetRulesetsResult>("cloudflare:index/getRulesets:getRulesets", args ?? new GetRulesetsArgs(), options.WithDefaults());
 
         /// <summary>
         /// Use this datasource to lookup Rulesets in an account or zone.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Cloudflare = Pulumi.Cloudflare;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var example = Cloudflare.GetRulesets.Invoke(new()
-        ///     {
-        ///         Filter = new Cloudflare.Inputs.GetRulesetsFilterInputArgs
-        ///         {
-        ///             Name = ".*OWASP.*",
-        ///         },
-        ///         ZoneId = "0da42c8d2132a9ddaf714f9e7c920711",
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Output<GetRulesetsResult> Invoke(GetRulesetsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetRulesetsResult>("cloudflare:index/getRulesets:getRulesets", args ?? new GetRulesetsInvokeArgs(), options.WithDefaults());

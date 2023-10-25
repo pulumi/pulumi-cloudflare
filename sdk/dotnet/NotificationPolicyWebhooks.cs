@@ -12,27 +12,6 @@ namespace Pulumi.Cloudflare
     /// <summary>
     /// Provides a resource, that manages a webhook destination. These destinations can be tied to the notification policies created for Cloudflare's products.
     /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Cloudflare = Pulumi.Cloudflare;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var example = new Cloudflare.NotificationPolicyWebhooks("example", new()
-    ///     {
-    ///         AccountId = "f037e56e89293a057740de681ac9abbe",
-    ///         Name = "Webhooks destination",
-    ///         Secret = "my-secret",
-    ///         Url = "https://example.com",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// ```sh

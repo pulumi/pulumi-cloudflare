@@ -99,24 +99,6 @@ def get_access_identity_provider(account_id: Optional[str] = None,
     """
     Use this data source to lookup a single [Access Identity Provider](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration) by name.
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_cloudflare as cloudflare
-
-    example_access_identity_provider = cloudflare.get_access_identity_provider(name="Google SSO",
-        account_id="f037e56e89293a057740de681ac9abbe")
-    example_access_application = cloudflare.AccessApplication("exampleAccessApplication",
-        zone_id="0da42c8d2132a9ddaf714f9e7c920711",
-        name="name",
-        domain="name.example.com",
-        type="self_hosted",
-        session_duration="24h",
-        allowed_idps=[example_access_identity_provider.id],
-        auto_redirect_to_identity=True)
-    ```
-
 
     :param str account_id: The account identifier to target for the resource. Must provide only one of `zone_id`, `account_id`.
     :param str name: Access Identity Provider name to search for.
@@ -144,24 +126,6 @@ def get_access_identity_provider_output(account_id: Optional[pulumi.Input[Option
                                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAccessIdentityProviderResult]:
     """
     Use this data source to lookup a single [Access Identity Provider](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration) by name.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_cloudflare as cloudflare
-
-    example_access_identity_provider = cloudflare.get_access_identity_provider(name="Google SSO",
-        account_id="f037e56e89293a057740de681ac9abbe")
-    example_access_application = cloudflare.AccessApplication("exampleAccessApplication",
-        zone_id="0da42c8d2132a9ddaf714f9e7c920711",
-        name="name",
-        domain="name.example.com",
-        type="self_hosted",
-        session_duration="24h",
-        allowed_idps=[example_access_identity_provider.id],
-        auto_redirect_to_identity=True)
-    ```
 
 
     :param str account_id: The account identifier to target for the resource. Must provide only one of `zone_id`, `account_id`.

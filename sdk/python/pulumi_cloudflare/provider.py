@@ -89,25 +89,25 @@ class ProviderArgs:
              retries: Optional[pulumi.Input[int]] = None,
              rps: Optional[pulumi.Input[int]] = None,
              user_agent_operator_suffix: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'apiBasePath' in kwargs:
+        if api_base_path is None and 'apiBasePath' in kwargs:
             api_base_path = kwargs['apiBasePath']
-        if 'apiClientLogging' in kwargs:
+        if api_client_logging is None and 'apiClientLogging' in kwargs:
             api_client_logging = kwargs['apiClientLogging']
-        if 'apiHostname' in kwargs:
+        if api_hostname is None and 'apiHostname' in kwargs:
             api_hostname = kwargs['apiHostname']
-        if 'apiKey' in kwargs:
+        if api_key is None and 'apiKey' in kwargs:
             api_key = kwargs['apiKey']
-        if 'apiToken' in kwargs:
+        if api_token is None and 'apiToken' in kwargs:
             api_token = kwargs['apiToken']
-        if 'apiUserServiceKey' in kwargs:
+        if api_user_service_key is None and 'apiUserServiceKey' in kwargs:
             api_user_service_key = kwargs['apiUserServiceKey']
-        if 'maxBackoff' in kwargs:
+        if max_backoff is None and 'maxBackoff' in kwargs:
             max_backoff = kwargs['maxBackoff']
-        if 'minBackoff' in kwargs:
+        if min_backoff is None and 'minBackoff' in kwargs:
             min_backoff = kwargs['minBackoff']
-        if 'userAgentOperatorSuffix' in kwargs:
+        if user_agent_operator_suffix is None and 'userAgentOperatorSuffix' in kwargs:
             user_agent_operator_suffix = kwargs['userAgentOperatorSuffix']
 
         if api_base_path is not None:

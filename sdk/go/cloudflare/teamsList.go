@@ -17,40 +17,6 @@ import (
 // referenced when creating secure web gateway policies or device
 // posture rules.
 //
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewTeamsList(ctx, "example", &cloudflare.TeamsListArgs{
-//				AccountId:   pulumi.String("f037e56e89293a057740de681ac9abbe"),
-//				Description: pulumi.String("Serial numbers for all corporate devices."),
-//				Items: pulumi.StringArray{
-//					pulumi.String("8GE8721REF"),
-//					pulumi.String("5RE8543EGG"),
-//					pulumi.String("1YE2880LNP"),
-//				},
-//				Name: pulumi.String("Corporate devices"),
-//				Type: pulumi.String("SERIAL"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // ```sh

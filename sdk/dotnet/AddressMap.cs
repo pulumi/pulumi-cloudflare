@@ -13,51 +13,6 @@ namespace Pulumi.Cloudflare
     /// Provides the ability to manage IP addresses that can be used by DNS records when
     /// they are proxied through Cloudflare.
     /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Cloudflare = Pulumi.Cloudflare;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var example = new Cloudflare.AddressMap("example", new()
-    ///     {
-    ///         AccountId = "f037e56e89293a057740de681ac9abbe",
-    ///         DefaultSni = "*.example.com",
-    ///         Description = "My address map",
-    ///         Enabled = true,
-    ///         Ips = new[]
-    ///         {
-    ///             new Cloudflare.Inputs.AddressMapIpArgs
-    ///             {
-    ///                 Ip = "192.0.2.1",
-    ///             },
-    ///             new Cloudflare.Inputs.AddressMapIpArgs
-    ///             {
-    ///                 Ip = "203.0.113.1",
-    ///             },
-    ///         },
-    ///         Memberships = new[]
-    ///         {
-    ///             new Cloudflare.Inputs.AddressMapMembershipArgs
-    ///             {
-    ///                 Identifier = "92f17202ed8bd63d69a66b86a49a8f6b",
-    ///                 Kind = "account",
-    ///             },
-    ///             new Cloudflare.Inputs.AddressMapMembershipArgs
-    ///             {
-    ///                 Identifier = "023e105f4ecef8ad9ca31a8372d0c353",
-    ///                 Kind = "zone",
-    ///             },
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// ```sh

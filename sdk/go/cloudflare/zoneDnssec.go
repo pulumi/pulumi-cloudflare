@@ -15,38 +15,6 @@ import (
 
 // Provides a Cloudflare resource to create and modify zone DNSSEC settings.
 //
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			exampleZone, err := cloudflare.NewZone(ctx, "exampleZone", &cloudflare.ZoneArgs{
-//				Zone: pulumi.String("example.com"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = cloudflare.NewZoneDnssec(ctx, "exampleZoneDnssec", &cloudflare.ZoneDnssecArgs{
-//				ZoneId: exampleZone.ID(),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // ```sh

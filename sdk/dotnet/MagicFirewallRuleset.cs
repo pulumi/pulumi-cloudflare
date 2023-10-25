@@ -14,43 +14,6 @@ namespace Pulumi.Cloudflare
     /// creates a root ruleset on the account level and contains one or more rules. Rules can be crafted in Wireshark syntax and
     /// are evaluated in order, with the first rule having the highest priority.
     /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Cloudflare = Pulumi.Cloudflare;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var example = new Cloudflare.MagicFirewallRuleset("example", new()
-    ///     {
-    ///         AccountId = "d41d8cd98f00b204e9800998ecf8427e",
-    ///         Description = "Global mitigations",
-    ///         Name = "Magic Transit Ruleset",
-    ///         Rules = new[]
-    ///         {
-    ///             
-    ///             {
-    ///                 { "action", "allow" },
-    ///                 { "description", "Allow TCP Ephemeral Ports" },
-    ///                 { "enabled", "true" },
-    ///                 { "expression", "tcp.dstport in { 32768..65535 }" },
-    ///             },
-    ///             
-    ///             {
-    ///                 { "action", "block" },
-    ///                 { "description", "Block all" },
-    ///                 { "enabled", "true" },
-    ///                 { "expression", "ip.len &gt;= 0" },
-    ///             },
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// An existing Magic Firewall Ruleset can be imported using the account ID and ruleset ID

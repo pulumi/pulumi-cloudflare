@@ -56,10 +56,10 @@ class GreTunnelArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             cloudflare_gre_endpoint: pulumi.Input[str],
-             customer_gre_endpoint: pulumi.Input[str],
-             interface_address: pulumi.Input[str],
-             name: pulumi.Input[str],
+             cloudflare_gre_endpoint: Optional[pulumi.Input[str]] = None,
+             customer_gre_endpoint: Optional[pulumi.Input[str]] = None,
+             interface_address: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
              account_id: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              health_check_enabled: Optional[pulumi.Input[bool]] = None,
@@ -67,21 +67,29 @@ class GreTunnelArgs:
              health_check_type: Optional[pulumi.Input[str]] = None,
              mtu: Optional[pulumi.Input[int]] = None,
              ttl: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'cloudflareGreEndpoint' in kwargs:
+        if cloudflare_gre_endpoint is None and 'cloudflareGreEndpoint' in kwargs:
             cloudflare_gre_endpoint = kwargs['cloudflareGreEndpoint']
-        if 'customerGreEndpoint' in kwargs:
+        if cloudflare_gre_endpoint is None:
+            raise TypeError("Missing 'cloudflare_gre_endpoint' argument")
+        if customer_gre_endpoint is None and 'customerGreEndpoint' in kwargs:
             customer_gre_endpoint = kwargs['customerGreEndpoint']
-        if 'interfaceAddress' in kwargs:
+        if customer_gre_endpoint is None:
+            raise TypeError("Missing 'customer_gre_endpoint' argument")
+        if interface_address is None and 'interfaceAddress' in kwargs:
             interface_address = kwargs['interfaceAddress']
-        if 'accountId' in kwargs:
+        if interface_address is None:
+            raise TypeError("Missing 'interface_address' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if account_id is None and 'accountId' in kwargs:
             account_id = kwargs['accountId']
-        if 'healthCheckEnabled' in kwargs:
+        if health_check_enabled is None and 'healthCheckEnabled' in kwargs:
             health_check_enabled = kwargs['healthCheckEnabled']
-        if 'healthCheckTarget' in kwargs:
+        if health_check_target is None and 'healthCheckTarget' in kwargs:
             health_check_target = kwargs['healthCheckTarget']
-        if 'healthCheckType' in kwargs:
+        if health_check_type is None and 'healthCheckType' in kwargs:
             health_check_type = kwargs['healthCheckType']
 
         _setter("cloudflare_gre_endpoint", cloudflare_gre_endpoint)
@@ -292,21 +300,21 @@ class _GreTunnelState:
              mtu: Optional[pulumi.Input[int]] = None,
              name: Optional[pulumi.Input[str]] = None,
              ttl: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'accountId' in kwargs:
+        if account_id is None and 'accountId' in kwargs:
             account_id = kwargs['accountId']
-        if 'cloudflareGreEndpoint' in kwargs:
+        if cloudflare_gre_endpoint is None and 'cloudflareGreEndpoint' in kwargs:
             cloudflare_gre_endpoint = kwargs['cloudflareGreEndpoint']
-        if 'customerGreEndpoint' in kwargs:
+        if customer_gre_endpoint is None and 'customerGreEndpoint' in kwargs:
             customer_gre_endpoint = kwargs['customerGreEndpoint']
-        if 'healthCheckEnabled' in kwargs:
+        if health_check_enabled is None and 'healthCheckEnabled' in kwargs:
             health_check_enabled = kwargs['healthCheckEnabled']
-        if 'healthCheckTarget' in kwargs:
+        if health_check_target is None and 'healthCheckTarget' in kwargs:
             health_check_target = kwargs['healthCheckTarget']
-        if 'healthCheckType' in kwargs:
+        if health_check_type is None and 'healthCheckType' in kwargs:
             health_check_type = kwargs['healthCheckType']
-        if 'interfaceAddress' in kwargs:
+        if interface_address is None and 'interfaceAddress' in kwargs:
             interface_address = kwargs['interfaceAddress']
 
         if account_id is not None:
@@ -485,26 +493,6 @@ class GreTunnel(pulumi.CustomResource):
         """
         Provides a resource, that manages GRE tunnels for Magic Transit.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudflare as cloudflare
-
-        example = cloudflare.GreTunnel("example",
-            account_id="f037e56e89293a057740de681ac9abbe",
-            cloudflare_gre_endpoint="203.0.113.2",
-            customer_gre_endpoint="203.0.113.1",
-            description="Tunnel for ISP X",
-            health_check_enabled=True,
-            health_check_target="203.0.113.1",
-            health_check_type="reply",
-            interface_address="192.0.2.0/31",
-            mtu=1476,
-            name="GRE_1",
-            ttl=64)
-        ```
-
         ## Import
 
         ```sh
@@ -533,26 +521,6 @@ class GreTunnel(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Provides a resource, that manages GRE tunnels for Magic Transit.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudflare as cloudflare
-
-        example = cloudflare.GreTunnel("example",
-            account_id="f037e56e89293a057740de681ac9abbe",
-            cloudflare_gre_endpoint="203.0.113.2",
-            customer_gre_endpoint="203.0.113.1",
-            description="Tunnel for ISP X",
-            health_check_enabled=True,
-            health_check_target="203.0.113.1",
-            health_check_type="reply",
-            interface_address="192.0.2.0/31",
-            mtu=1476,
-            name="GRE_1",
-            ttl=64)
-        ```
 
         ## Import
 
