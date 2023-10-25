@@ -17,45 +17,6 @@ import * as utilities from "./utilities";
  * scope. For example, an access token that is scoped to the "example.com"
  * zone needs to use the `zoneId` argument.
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as cloudflare from "@pulumi/cloudflare";
- *
- * // Allowing access to `test@example.com` email address only
- * const exampleAccessGroup = new cloudflare.AccessGroup("exampleAccessGroup", {
- *     accountId: "f037e56e89293a057740de681ac9abbe",
- *     name: "staging group",
- *     includes: [{
- *         emails: ["test@example.com"],
- *     }],
- * });
- * // Allowing `test@example.com` to access but only when coming from a
- * // specific IP.
- * const exampleIndex_accessGroupAccessGroup = new cloudflare.AccessGroup("exampleIndex/accessGroupAccessGroup", {
- *     accountId: "f037e56e89293a057740de681ac9abbe",
- *     name: "staging group",
- *     includes: [{
- *         emails: ["test@example.com"],
- *     }],
- *     requires: [{
- *         ips: [_var.office_ip],
- *     }],
- * });
- * // Allow members of an Azure Group. The ID is the group UUID (id) in Azure.
- * const exampleCloudflareIndex_accessGroupAccessGroup = new cloudflare.AccessGroup("exampleCloudflareIndex/accessGroupAccessGroup", {
- *     accountId: "f037e56e89293a057740de681ac9abbe",
- *     name: "test_group",
- *     includes: [{
- *         azures: [{
- *             identityProviderId: "ca298b82-93b5-41bf-bc2d-10493f09b761",
- *             ids: ["86773093-5feb-48dd-814b-7ccd3676ff50"],
- *         }],
- *     }],
- * });
- * ```
- *
  * ## Import
  *
  * ```sh

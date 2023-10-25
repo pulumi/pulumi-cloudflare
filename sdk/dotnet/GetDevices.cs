@@ -13,56 +13,12 @@ namespace Pulumi.Cloudflare
     {
         /// <summary>
         /// Use this data source to lookup [Devices](https://api.cloudflare.com/#devices-list-devices).
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Cloudflare = Pulumi.Cloudflare;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var example = Cloudflare.GetDevices.Invoke(new()
-        ///     {
-        ///         AccountId = "f037e56e89293a057740de681ac9abbe",
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Task<GetDevicesResult> InvokeAsync(GetDevicesArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetDevicesResult>("cloudflare:index/getDevices:getDevices", args ?? new GetDevicesArgs(), options.WithDefaults());
 
         /// <summary>
         /// Use this data source to lookup [Devices](https://api.cloudflare.com/#devices-list-devices).
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using Cloudflare = Pulumi.Cloudflare;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var example = Cloudflare.GetDevices.Invoke(new()
-        ///     {
-        ///         AccountId = "f037e56e89293a057740de681ac9abbe",
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
         /// </summary>
         public static Output<GetDevicesResult> Invoke(GetDevicesInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetDevicesResult>("cloudflare:index/getDevices:getDevices", args ?? new GetDevicesInvokeArgs(), options.WithDefaults());

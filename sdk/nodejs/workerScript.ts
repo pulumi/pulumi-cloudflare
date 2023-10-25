@@ -9,54 +9,6 @@ import * as utilities from "./utilities";
 /**
  * Provides a Cloudflare worker script resource. In order for a script to be active, you'll also need to setup a `cloudflare.WorkerRoute`.
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as cloudflare from "@pulumi/cloudflare";
- * import * as fs from "fs";
- *
- * const myNamespace = new cloudflare.WorkersKvNamespace("myNamespace", {
- *     accountId: "f037e56e89293a057740de681ac9abbe",
- *     title: "example",
- * });
- * // Sets the script with the name "script_1"
- * const myScript = new cloudflare.WorkerScript("myScript", {
- *     accountId: "f037e56e89293a057740de681ac9abbe",
- *     name: "script_1",
- *     content: fs.readFileSync("script.js"),
- *     kvNamespaceBindings: [{
- *         name: "MY_EXAMPLE_KV_NAMESPACE",
- *         namespaceId: myNamespace.id,
- *     }],
- *     plainTextBindings: [{
- *         name: "MY_EXAMPLE_PLAIN_TEXT",
- *         text: "foobar",
- *     }],
- *     secretTextBindings: [{
- *         name: "MY_EXAMPLE_SECRET_TEXT",
- *         text: _var.secret_foo_value,
- *     }],
- *     webassemblyBindings: [{
- *         name: "MY_EXAMPLE_WASM",
- *         module: Buffer.from(fs.readFileSync("example.wasm"), 'binary').toString('base64'),
- *     }],
- *     serviceBindings: [{
- *         name: "MY_SERVICE_BINDING",
- *         service: "MY_SERVICE",
- *         environment: "production",
- *     }],
- *     r2BucketBindings: [{
- *         name: "MY_BUCKET",
- *         bucketName: "MY_BUCKET_NAME",
- *     }],
- *     analyticsEngineBindings: [{
- *         name: "MY_DATASET",
- *         dataset: "dataset1",
- *     }],
- * });
- * ```
- *
  * ## Import
  *
  * ```sh

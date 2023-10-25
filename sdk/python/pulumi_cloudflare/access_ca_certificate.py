@@ -32,16 +32,18 @@ class AccessCaCertificateArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             application_id: pulumi.Input[str],
+             application_id: Optional[pulumi.Input[str]] = None,
              account_id: Optional[pulumi.Input[str]] = None,
              zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'applicationId' in kwargs:
+        if application_id is None and 'applicationId' in kwargs:
             application_id = kwargs['applicationId']
-        if 'accountId' in kwargs:
+        if application_id is None:
+            raise TypeError("Missing 'application_id' argument")
+        if account_id is None and 'accountId' in kwargs:
             account_id = kwargs['accountId']
-        if 'zoneId' in kwargs:
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
 
         _setter("application_id", application_id)
@@ -119,15 +121,15 @@ class _AccessCaCertificateState:
              aud: Optional[pulumi.Input[str]] = None,
              public_key: Optional[pulumi.Input[str]] = None,
              zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'accountId' in kwargs:
+        if account_id is None and 'accountId' in kwargs:
             account_id = kwargs['accountId']
-        if 'applicationId' in kwargs:
+        if application_id is None and 'applicationId' in kwargs:
             application_id = kwargs['applicationId']
-        if 'publicKey' in kwargs:
+        if public_key is None and 'publicKey' in kwargs:
             public_key = kwargs['publicKey']
-        if 'zoneId' in kwargs:
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
 
         if account_id is not None:
@@ -222,22 +224,6 @@ class AccessCaCertificate(pulumi.CustomResource):
         scope. For example, an access token that is scoped to the "example.com"
         zone needs to use the `zone_id` argument.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudflare as cloudflare
-
-        # account level
-        example = cloudflare.AccessCaCertificate("example",
-            account_id="f037e56e89293a057740de681ac9abbe",
-            application_id="6cd6cea3-3ef2-4542-9aea-85a0bbcd5414")
-        # zone level
-        another_example = cloudflare.AccessCaCertificate("anotherExample",
-            application_id="fe2be0ff-7f13-4350-8c8e-a9b9795fe3c2",
-            zone_id="0da42c8d2132a9ddaf714f9e7c920711")
-        ```
-
         ## Import
 
         Account level CA certificate import.
@@ -274,22 +260,6 @@ class AccessCaCertificate(pulumi.CustomResource):
         access token, you must provide the argument that matches the token's
         scope. For example, an access token that is scoped to the "example.com"
         zone needs to use the `zone_id` argument.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudflare as cloudflare
-
-        # account level
-        example = cloudflare.AccessCaCertificate("example",
-            account_id="f037e56e89293a057740de681ac9abbe",
-            application_id="6cd6cea3-3ef2-4542-9aea-85a0bbcd5414")
-        # zone level
-        another_example = cloudflare.AccessCaCertificate("anotherExample",
-            application_id="fe2be0ff-7f13-4350-8c8e-a9b9795fe3c2",
-            zone_id="0da42c8d2132a9ddaf714f9e7c920711")
-        ```
 
         ## Import
 

@@ -7,28 +7,6 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as cloudflare from "@pulumi/cloudflare";
- *
- * // Advanced certificate manager for Let's Encrypt
- * const example = new cloudflare.CertificatePack("example", {
- *     certificateAuthority: "lets_encrypt",
- *     cloudflareBranding: false,
- *     hosts: [
- *         "example.com",
- *         "*.example.com",
- *     ],
- *     type: "advanced",
- *     validationMethod: "http",
- *     validityDays: 90,
- *     waitForActiveStatus: true,
- *     zoneId: "0da42c8d2132a9ddaf714f9e7c920711",
- * });
- * ```
- *
  * ## Import
  *
  * ```sh

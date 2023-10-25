@@ -7,34 +7,6 @@ import * as utilities from "./utilities";
 /**
  * Provides a Cloudflare Device Settings Policy resource. Device policies configure settings applied to WARP devices.
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as cloudflare from "@pulumi/cloudflare";
- *
- * const developerWarpPolicy = new cloudflare.DeviceSettingsPolicy("developerWarpPolicy", {
- *     accountId: "f037e56e89293a057740de681ac9abbe",
- *     allowModeSwitch: true,
- *     allowUpdates: true,
- *     allowedToLeave: true,
- *     autoConnect: 0,
- *     captivePortal: 5,
- *     "default": false,
- *     description: "Developers WARP settings policy description",
- *     disableAutoFallback: true,
- *     enabled: true,
- *     excludeOfficeIps: false,
- *     match: "any(identity.groups.name[*] in {\"Developers\"})",
- *     name: "Developers WARP settings policy",
- *     precedence: 10,
- *     serviceModeV2Mode: "warp",
- *     serviceModeV2Port: 3000,
- *     supportUrl: "https://cloudflare.com",
- *     switchLocked: true,
- * });
- * ```
- *
  * ## Import
  *
  * For default device settings policies you must use "default" as the policy ID.

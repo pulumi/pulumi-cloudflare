@@ -38,16 +38,22 @@ class ApiShieldSchemaArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             name: pulumi.Input[str],
-             source: pulumi.Input[str],
-             zone_id: pulumi.Input[str],
+             name: Optional[pulumi.Input[str]] = None,
+             source: Optional[pulumi.Input[str]] = None,
+             zone_id: Optional[pulumi.Input[str]] = None,
              kind: Optional[pulumi.Input[str]] = None,
              validation_enabled: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'zoneId' in kwargs:
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if source is None:
+            raise TypeError("Missing 'source' argument")
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
-        if 'validationEnabled' in kwargs:
+        if zone_id is None:
+            raise TypeError("Missing 'zone_id' argument")
+        if validation_enabled is None and 'validationEnabled' in kwargs:
             validation_enabled = kwargs['validationEnabled']
 
         _setter("name", name)
@@ -151,11 +157,11 @@ class _ApiShieldSchemaState:
              source: Optional[pulumi.Input[str]] = None,
              validation_enabled: Optional[pulumi.Input[bool]] = None,
              zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'validationEnabled' in kwargs:
+        if validation_enabled is None and 'validationEnabled' in kwargs:
             validation_enabled = kwargs['validationEnabled']
-        if 'zoneId' in kwargs:
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
 
         if kind is not None:
@@ -244,20 +250,6 @@ class ApiShieldSchema(pulumi.CustomResource):
         """
         Provides a resource to manage a schema in API Shield Schema Validation 2.0.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudflare as cloudflare
-
-        petstore_schema = cloudflare.ApiShieldSchema("petstoreSchema",
-            zone_id="0da42c8d2132a9ddaf714f9e7c920711",
-            name="myschema",
-            kind="openapi_v3",
-            validation_enabled=True,
-            source=(lambda path: open(path).read())("./schemas/petstore.json"))
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] kind: Kind of schema. Defaults to `openapi_v3`. **Modifying this attribute will force creation of a new resource.**
@@ -274,20 +266,6 @@ class ApiShieldSchema(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Provides a resource to manage a schema in API Shield Schema Validation 2.0.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudflare as cloudflare
-
-        petstore_schema = cloudflare.ApiShieldSchema("petstoreSchema",
-            zone_id="0da42c8d2132a9ddaf714f9e7c920711",
-            name="myschema",
-            kind="openapi_v3",
-            validation_enabled=True,
-            source=(lambda path: open(path).read())("./schemas/petstore.json"))
-        ```
 
         :param str resource_name: The name of the resource.
         :param ApiShieldSchemaArgs args: The arguments to use to populate this resource's properties.

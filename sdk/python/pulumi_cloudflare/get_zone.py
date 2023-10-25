@@ -153,21 +153,6 @@ def get_zone(account_id: Optional[str] = None,
     using this setup, it is advised to use the `account_id` attribute on this
     resource or swap to `get_zones` to further filter the results.
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_cloudflare as cloudflare
-
-    example_zone = cloudflare.get_zone(name="example.com")
-    example_record = cloudflare.Record("exampleRecord",
-        zone_id=example_zone.id,
-        name="www",
-        value="203.0.113.1",
-        type="A",
-        proxied=True)
-    ```
-
 
     :param str account_id: The account identifier to target for the resource.
     :param str name: The name of the zone. Must provide only one of `zone_id`, `name`.
@@ -205,21 +190,6 @@ def get_zone_output(account_id: Optional[pulumi.Input[Optional[str]]] = None,
     accounts to have the same zone created but in different states. If you are
     using this setup, it is advised to use the `account_id` attribute on this
     resource or swap to `get_zones` to further filter the results.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_cloudflare as cloudflare
-
-    example_zone = cloudflare.get_zone(name="example.com")
-    example_record = cloudflare.Record("exampleRecord",
-        zone_id=example_zone.id,
-        name="www",
-        value="203.0.113.1",
-        type="A",
-        proxied=True)
-    ```
 
 
     :param str account_id: The account identifier to target for the resource.

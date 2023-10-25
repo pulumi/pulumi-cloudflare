@@ -6,18 +6,6 @@ import * as utilities from "./utilities";
 
 /**
  * Use this data source to lookup a single [DNS Record](https://api.cloudflare.com/#dns-records-for-a-zone-properties).
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as cloudflare from "@pulumi/cloudflare";
- *
- * const example = cloudflare.getRecord({
- *     hostname: "example.com",
- *     zoneId: "0da42c8d2132a9ddaf714f9e7c920711",
- * });
- * ```
  */
 export function getRecord(args: GetRecordArgs, opts?: pulumi.InvokeOptions): Promise<GetRecordResult> {
 
@@ -103,18 +91,6 @@ export interface GetRecordResult {
 }
 /**
  * Use this data source to lookup a single [DNS Record](https://api.cloudflare.com/#dns-records-for-a-zone-properties).
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as cloudflare from "@pulumi/cloudflare";
- *
- * const example = cloudflare.getRecord({
- *     hostname: "example.com",
- *     zoneId: "0da42c8d2132a9ddaf714f9e7c920711",
- * });
- * ```
  */
 export function getRecordOutput(args: GetRecordOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRecordResult> {
     return pulumi.output(args).apply((a: any) => getRecord(a, opts))

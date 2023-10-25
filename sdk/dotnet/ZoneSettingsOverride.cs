@@ -16,44 +16,6 @@ namespace Pulumi.Cloudflare
     ///   resource is only intended to override those which you do not want the default.
     ///   Attempting to manage all settings will result in problems with the resource
     ///   applying in a consistent manner.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Cloudflare = Pulumi.Cloudflare;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var test = new Cloudflare.ZoneSettingsOverride("test", new()
-    ///     {
-    ///         ZoneId = d41d8cd98f00b204e9800998ecf8427e,
-    ///         Settings = new Cloudflare.Inputs.ZoneSettingsOverrideSettingsArgs
-    ///         {
-    ///             Brotli = "on",
-    ///             ChallengeTtl = 2700,
-    ///             SecurityLevel = "high",
-    ///             OpportunisticEncryption = "on",
-    ///             AutomaticHttpsRewrites = "on",
-    ///             Mirage = "on",
-    ///             Waf = "on",
-    ///             Minify = new Cloudflare.Inputs.ZoneSettingsOverrideSettingsMinifyArgs
-    ///             {
-    ///                 Css = "on",
-    ///                 Js = "off",
-    ///                 Html = "off",
-    ///             },
-    ///             SecurityHeader = new Cloudflare.Inputs.ZoneSettingsOverrideSettingsSecurityHeaderArgs
-    ///             {
-    ///                 Enabled = true,
-    ///             },
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/zoneSettingsOverride:ZoneSettingsOverride")]
     public partial class ZoneSettingsOverride : global::Pulumi.CustomResource

@@ -7,27 +7,6 @@ import * as utilities from "./utilities";
 /**
  * Provides a resource, that manages GRE tunnels for Magic Transit.
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as cloudflare from "@pulumi/cloudflare";
- *
- * const example = new cloudflare.GreTunnel("example", {
- *     accountId: "f037e56e89293a057740de681ac9abbe",
- *     cloudflareGreEndpoint: "203.0.113.2",
- *     customerGreEndpoint: "203.0.113.1",
- *     description: "Tunnel for ISP X",
- *     healthCheckEnabled: true,
- *     healthCheckTarget: "203.0.113.1",
- *     healthCheckType: "reply",
- *     interfaceAddress: "192.0.2.0/31",
- *     mtu: 1476,
- *     name: "GRE_1",
- *     ttl: 64,
- * });
- * ```
- *
  * ## Import
  *
  * ```sh

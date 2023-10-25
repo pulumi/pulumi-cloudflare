@@ -12,40 +12,6 @@ namespace Pulumi.Cloudflare
     /// <summary>
     /// A Zero Trust organization defines the user login experience.
     /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Cloudflare = Pulumi.Cloudflare;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var example = new Cloudflare.AccessOrganization("example", new()
-    ///     {
-    ///         AccountId = "f037e56e89293a057740de681ac9abbe",
-    ///         AuthDomain = "example.cloudflareaccess.com",
-    ///         AutoRedirectToIdentity = false,
-    ///         IsUiReadOnly = false,
-    ///         LoginDesigns = new[]
-    ///         {
-    ///             new Cloudflare.Inputs.AccessOrganizationLoginDesignArgs
-    ///             {
-    ///                 BackgroundColor = "#ffffff",
-    ///                 FooterText = "My footer text",
-    ///                 HeaderText = "My header text",
-    ///                 LogoPath = "https://example.com/logo.png",
-    ///                 TextColor = "#000000",
-    ///             },
-    ///         },
-    ///         Name = "example.cloudflareaccess.com",
-    ///         UserSeatExpirationInactiveTime = "720h",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// ```sh

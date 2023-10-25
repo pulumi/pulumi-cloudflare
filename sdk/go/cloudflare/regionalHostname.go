@@ -14,44 +14,6 @@ import (
 )
 
 // Provides a Data Localization Suite Regional Hostname.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewRecord(ctx, "exampleRecord", &cloudflare.RecordArgs{
-//				Name:   pulumi.String("example.com"),
-//				Ttl:    pulumi.Int(3600),
-//				Type:   pulumi.String("A"),
-//				Value:  pulumi.String("192.0.2.1"),
-//				ZoneId: pulumi.String("0da42c8d2132a9ddaf714f9e7c920711"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = cloudflare.NewRegionalHostname(ctx, "exampleRegionalHostname", &cloudflare.RegionalHostnameArgs{
-//				Hostname:  pulumi.String("example.com"),
-//				RegionKey: pulumi.String("eu"),
-//				ZoneId:    pulumi.String("0da42c8d2132a9ddaf714f9e7c920711"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 type RegionalHostname struct {
 	pulumi.CustomResourceState
 

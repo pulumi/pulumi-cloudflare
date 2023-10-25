@@ -43,21 +43,27 @@ class PagesProjectArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             account_id: pulumi.Input[str],
-             name: pulumi.Input[str],
-             production_branch: pulumi.Input[str],
+             account_id: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             production_branch: Optional[pulumi.Input[str]] = None,
              build_config: Optional[pulumi.Input['PagesProjectBuildConfigArgs']] = None,
              deployment_configs: Optional[pulumi.Input['PagesProjectDeploymentConfigsArgs']] = None,
              source: Optional[pulumi.Input['PagesProjectSourceArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'accountId' in kwargs:
+        if account_id is None and 'accountId' in kwargs:
             account_id = kwargs['accountId']
-        if 'productionBranch' in kwargs:
+        if account_id is None:
+            raise TypeError("Missing 'account_id' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if production_branch is None and 'productionBranch' in kwargs:
             production_branch = kwargs['productionBranch']
-        if 'buildConfig' in kwargs:
+        if production_branch is None:
+            raise TypeError("Missing 'production_branch' argument")
+        if build_config is None and 'buildConfig' in kwargs:
             build_config = kwargs['buildConfig']
-        if 'deploymentConfigs' in kwargs:
+        if deployment_configs is None and 'deploymentConfigs' in kwargs:
             deployment_configs = kwargs['deploymentConfigs']
 
         _setter("account_id", account_id)
@@ -191,17 +197,17 @@ class _PagesProjectState:
              production_branch: Optional[pulumi.Input[str]] = None,
              source: Optional[pulumi.Input['PagesProjectSourceArgs']] = None,
              subdomain: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'accountId' in kwargs:
+        if account_id is None and 'accountId' in kwargs:
             account_id = kwargs['accountId']
-        if 'buildConfig' in kwargs:
+        if build_config is None and 'buildConfig' in kwargs:
             build_config = kwargs['buildConfig']
-        if 'createdOn' in kwargs:
+        if created_on is None and 'createdOn' in kwargs:
             created_on = kwargs['createdOn']
-        if 'deploymentConfigs' in kwargs:
+        if deployment_configs is None and 'deploymentConfigs' in kwargs:
             deployment_configs = kwargs['deploymentConfigs']
-        if 'productionBranch' in kwargs:
+        if production_branch is None and 'productionBranch' in kwargs:
             production_branch = kwargs['productionBranch']
 
         if account_id is not None:
@@ -351,143 +357,6 @@ class PagesProject(pulumi.CustomResource):
         connected GitHub or GitLab account connected to Cloudflare. See the
         [Getting Started with Pages] documentation on how to link your accounts.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudflare as cloudflare
-
-        # Direct upload Pages project
-        basic_project = cloudflare.PagesProject("basicProject",
-            account_id="f037e56e89293a057740de681ac9abbe",
-            name="this-is-my-project-01",
-            production_branch="main")
-        # Pages project with managing build config
-        build_config = cloudflare.PagesProject("buildConfig",
-            account_id="f037e56e89293a057740de681ac9abbe",
-            build_config=cloudflare.PagesProjectBuildConfigArgs(
-                build_command="npm run build",
-                destination_dir="build",
-                root_dir="",
-                web_analytics_tag="cee1c73f6e4743d0b5e6bb1a0bcaabcc",
-                web_analytics_token="021e1057c18547eca7b79f2516f06o7x",
-            ),
-            name="this-is-my-project-01",
-            production_branch="main")
-        # Pages project managing project source
-        source_config = cloudflare.PagesProject("sourceConfig",
-            account_id="f037e56e89293a057740de681ac9abbe",
-            name="this-is-my-project-01",
-            production_branch="main",
-            source=cloudflare.PagesProjectSourceArgs(
-                config=cloudflare.PagesProjectSourceConfigArgs(
-                    deployments_enabled=True,
-                    owner="cloudflare",
-                    pr_comments_enabled=True,
-                    preview_branch_excludes=[
-                        "main",
-                        "prod",
-                    ],
-                    preview_branch_includes=[
-                        "dev",
-                        "preview",
-                    ],
-                    preview_deployment_setting="custom",
-                    production_branch="main",
-                    production_deployment_enabled=True,
-                    repo_name="ninjakittens",
-                ),
-                type="github",
-            ))
-        # Pages project managing all configs
-        deployment_configs = cloudflare.PagesProject("deploymentConfigs",
-            account_id="f037e56e89293a057740de681ac9abbe",
-            build_config=cloudflare.PagesProjectBuildConfigArgs(
-                build_command="npm run build",
-                destination_dir="build",
-                root_dir="",
-                web_analytics_tag="cee1c73f6e4743d0b5e6bb1a0bcaabcc",
-                web_analytics_token="021e1057c18547eca7b79f2516f06o7x",
-            ),
-            deployment_configs=cloudflare.PagesProjectDeploymentConfigsArgs(
-                preview=cloudflare.PagesProjectDeploymentConfigsPreviewArgs(
-                    compatibility_date="2022-08-15",
-                    compatibility_flags=["nodejs_compat"],
-                    d1_databases={
-                        "D1BINDING": "445e2955-951a-4358-a35b-a4d0c813f63",
-                    },
-                    durable_object_namespaces={
-                        "DOBINDING": "5eb63bbbe01eeed093cb22bb8f5acdc3",
-                    },
-                    environment_variables={
-                        "ENVIRONMENT": "preview",
-                    },
-                    kv_namespaces={
-                        "KVBINDING": "5eb63bbbe01eeed093cb22bb8f5acdc3",
-                    },
-                    r2_buckets={
-                        "R2BINDING": "some-bucket",
-                    },
-                    secrets={
-                        "TURNSTILESECRET": "1x0000000000000000000000000000000AA",
-                    },
-                ),
-                production=cloudflare.PagesProjectDeploymentConfigsProductionArgs(
-                    compatibility_date="2022-08-16",
-                    compatibility_flags=[
-                        "nodejs_compat",
-                        "streams_enable_constructors",
-                    ],
-                    d1_databases={
-                        "D1BINDING1": "445e2955-951a-4358-a35b-a4d0c813f63",
-                        "D1BINDING2": "a399414b-c697-409a-a688-377db6433cd9",
-                    },
-                    durable_object_namespaces={
-                        "DOBINDING1": "5eb63bbbe01eeed093cb22bb8f5acdc3",
-                        "DOBINDING2": "3cdca5f8bb22bc390deee10ebbb36be5",
-                    },
-                    environment_variables={
-                        "ENVIRONMENT": "production",
-                        "OTHERVALUE": "other value",
-                    },
-                    kv_namespaces={
-                        "KVBINDING1": "5eb63bbbe01eeed093cb22bb8f5acdc3",
-                        "KVBINDING2": "3cdca5f8bb22bc390deee10ebbb36be5",
-                    },
-                    r2_buckets={
-                        "R2BINDING1": "some-bucket",
-                        "R2BINDING2": "other-bucket",
-                    },
-                    secrets={
-                        "TURNSTILEINVISSECRET": "2x0000000000000000000000000000000AA",
-                        "TURNSTILESECRET": "1x0000000000000000000000000000000AA",
-                    },
-                ),
-            ),
-            name="this-is-my-project-01",
-            production_branch="main",
-            source=cloudflare.PagesProjectSourceArgs(
-                config=cloudflare.PagesProjectSourceConfigArgs(
-                    deployments_enabled=True,
-                    owner="cloudflare",
-                    pr_comments_enabled=True,
-                    preview_branch_excludes=[
-                        "main",
-                        "prod",
-                    ],
-                    preview_branch_includes=[
-                        "dev",
-                        "preview",
-                    ],
-                    preview_deployment_setting="custom",
-                    production_branch="main",
-                    production_deployment_enabled=True,
-                    repo_name="ninjakittens",
-                ),
-                type="github",
-            ))
-        ```
-
         ## Import
 
         !> It is not possible to import a pages project with secret environment variables. If you have a secret environment variable, you must remove it from your project before importing it.
@@ -519,143 +388,6 @@ class PagesProject(pulumi.CustomResource):
         > If you are using a `source` block configuration, you must first have a
         connected GitHub or GitLab account connected to Cloudflare. See the
         [Getting Started with Pages] documentation on how to link your accounts.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudflare as cloudflare
-
-        # Direct upload Pages project
-        basic_project = cloudflare.PagesProject("basicProject",
-            account_id="f037e56e89293a057740de681ac9abbe",
-            name="this-is-my-project-01",
-            production_branch="main")
-        # Pages project with managing build config
-        build_config = cloudflare.PagesProject("buildConfig",
-            account_id="f037e56e89293a057740de681ac9abbe",
-            build_config=cloudflare.PagesProjectBuildConfigArgs(
-                build_command="npm run build",
-                destination_dir="build",
-                root_dir="",
-                web_analytics_tag="cee1c73f6e4743d0b5e6bb1a0bcaabcc",
-                web_analytics_token="021e1057c18547eca7b79f2516f06o7x",
-            ),
-            name="this-is-my-project-01",
-            production_branch="main")
-        # Pages project managing project source
-        source_config = cloudflare.PagesProject("sourceConfig",
-            account_id="f037e56e89293a057740de681ac9abbe",
-            name="this-is-my-project-01",
-            production_branch="main",
-            source=cloudflare.PagesProjectSourceArgs(
-                config=cloudflare.PagesProjectSourceConfigArgs(
-                    deployments_enabled=True,
-                    owner="cloudflare",
-                    pr_comments_enabled=True,
-                    preview_branch_excludes=[
-                        "main",
-                        "prod",
-                    ],
-                    preview_branch_includes=[
-                        "dev",
-                        "preview",
-                    ],
-                    preview_deployment_setting="custom",
-                    production_branch="main",
-                    production_deployment_enabled=True,
-                    repo_name="ninjakittens",
-                ),
-                type="github",
-            ))
-        # Pages project managing all configs
-        deployment_configs = cloudflare.PagesProject("deploymentConfigs",
-            account_id="f037e56e89293a057740de681ac9abbe",
-            build_config=cloudflare.PagesProjectBuildConfigArgs(
-                build_command="npm run build",
-                destination_dir="build",
-                root_dir="",
-                web_analytics_tag="cee1c73f6e4743d0b5e6bb1a0bcaabcc",
-                web_analytics_token="021e1057c18547eca7b79f2516f06o7x",
-            ),
-            deployment_configs=cloudflare.PagesProjectDeploymentConfigsArgs(
-                preview=cloudflare.PagesProjectDeploymentConfigsPreviewArgs(
-                    compatibility_date="2022-08-15",
-                    compatibility_flags=["nodejs_compat"],
-                    d1_databases={
-                        "D1BINDING": "445e2955-951a-4358-a35b-a4d0c813f63",
-                    },
-                    durable_object_namespaces={
-                        "DOBINDING": "5eb63bbbe01eeed093cb22bb8f5acdc3",
-                    },
-                    environment_variables={
-                        "ENVIRONMENT": "preview",
-                    },
-                    kv_namespaces={
-                        "KVBINDING": "5eb63bbbe01eeed093cb22bb8f5acdc3",
-                    },
-                    r2_buckets={
-                        "R2BINDING": "some-bucket",
-                    },
-                    secrets={
-                        "TURNSTILESECRET": "1x0000000000000000000000000000000AA",
-                    },
-                ),
-                production=cloudflare.PagesProjectDeploymentConfigsProductionArgs(
-                    compatibility_date="2022-08-16",
-                    compatibility_flags=[
-                        "nodejs_compat",
-                        "streams_enable_constructors",
-                    ],
-                    d1_databases={
-                        "D1BINDING1": "445e2955-951a-4358-a35b-a4d0c813f63",
-                        "D1BINDING2": "a399414b-c697-409a-a688-377db6433cd9",
-                    },
-                    durable_object_namespaces={
-                        "DOBINDING1": "5eb63bbbe01eeed093cb22bb8f5acdc3",
-                        "DOBINDING2": "3cdca5f8bb22bc390deee10ebbb36be5",
-                    },
-                    environment_variables={
-                        "ENVIRONMENT": "production",
-                        "OTHERVALUE": "other value",
-                    },
-                    kv_namespaces={
-                        "KVBINDING1": "5eb63bbbe01eeed093cb22bb8f5acdc3",
-                        "KVBINDING2": "3cdca5f8bb22bc390deee10ebbb36be5",
-                    },
-                    r2_buckets={
-                        "R2BINDING1": "some-bucket",
-                        "R2BINDING2": "other-bucket",
-                    },
-                    secrets={
-                        "TURNSTILEINVISSECRET": "2x0000000000000000000000000000000AA",
-                        "TURNSTILESECRET": "1x0000000000000000000000000000000AA",
-                    },
-                ),
-            ),
-            name="this-is-my-project-01",
-            production_branch="main",
-            source=cloudflare.PagesProjectSourceArgs(
-                config=cloudflare.PagesProjectSourceConfigArgs(
-                    deployments_enabled=True,
-                    owner="cloudflare",
-                    pr_comments_enabled=True,
-                    preview_branch_excludes=[
-                        "main",
-                        "prod",
-                    ],
-                    preview_branch_includes=[
-                        "dev",
-                        "preview",
-                    ],
-                    preview_deployment_setting="custom",
-                    production_branch="main",
-                    production_deployment_enabled=True,
-                    repo_name="ninjakittens",
-                ),
-                type="github",
-            ))
-        ```
 
         ## Import
 
@@ -704,17 +436,9 @@ class PagesProject(pulumi.CustomResource):
             if account_id is None and not opts.urn:
                 raise TypeError("Missing required property 'account_id'")
             __props__.__dict__["account_id"] = account_id
-            if build_config is not None and not isinstance(build_config, PagesProjectBuildConfigArgs):
-                build_config = build_config or {}
-                def _setter(key, value):
-                    build_config[key] = value
-                PagesProjectBuildConfigArgs._configure(_setter, **build_config)
+            build_config = _utilities.configure(build_config, PagesProjectBuildConfigArgs, True)
             __props__.__dict__["build_config"] = build_config
-            if deployment_configs is not None and not isinstance(deployment_configs, PagesProjectDeploymentConfigsArgs):
-                deployment_configs = deployment_configs or {}
-                def _setter(key, value):
-                    deployment_configs[key] = value
-                PagesProjectDeploymentConfigsArgs._configure(_setter, **deployment_configs)
+            deployment_configs = _utilities.configure(deployment_configs, PagesProjectDeploymentConfigsArgs, True)
             __props__.__dict__["deployment_configs"] = deployment_configs
             if name is None and not opts.urn:
                 raise TypeError("Missing required property 'name'")
@@ -722,11 +446,7 @@ class PagesProject(pulumi.CustomResource):
             if production_branch is None and not opts.urn:
                 raise TypeError("Missing required property 'production_branch'")
             __props__.__dict__["production_branch"] = production_branch
-            if source is not None and not isinstance(source, PagesProjectSourceArgs):
-                source = source or {}
-                def _setter(key, value):
-                    source[key] = value
-                PagesProjectSourceArgs._configure(_setter, **source)
+            source = _utilities.configure(source, PagesProjectSourceArgs, True)
             __props__.__dict__["source"] = source
             __props__.__dict__["created_on"] = None
             __props__.__dict__["domains"] = None

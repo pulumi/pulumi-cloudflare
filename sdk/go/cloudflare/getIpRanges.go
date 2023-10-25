@@ -13,45 +13,6 @@ import (
 )
 
 // Use this data source to get the [IP ranges](https://www.cloudflare.com/ips/) of Cloudflare network.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare"
-//	"github.com/pulumi/pulumi-example/sdk/v1/go/example"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cloudflare, err := cloudflare.GetIpRanges(ctx, nil, nil)
-//			if err != nil {
-//				return err
-//			}
-//			_, err = index.NewExample_firewall_resource(ctx, "example", &index.Example_firewall_resourceArgs{
-//				Name:         "from-cloudflare",
-//				Network:      "default",
-//				SourceRanges: cloudflare.Ipv4CidrBlocks,
-//				Allow: []map[string]interface{}{
-//					map[string]interface{}{
-//						"ports":    "443",
-//						"protocol": "tcp",
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetIpRanges(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*GetIpRangesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetIpRangesResult

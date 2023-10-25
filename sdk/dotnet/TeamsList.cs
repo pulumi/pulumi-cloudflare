@@ -14,33 +14,6 @@ namespace Pulumi.Cloudflare
     /// referenced when creating secure web gateway policies or device
     /// posture rules.
     /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Cloudflare = Pulumi.Cloudflare;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var example = new Cloudflare.TeamsList("example", new()
-    ///     {
-    ///         AccountId = "f037e56e89293a057740de681ac9abbe",
-    ///         Description = "Serial numbers for all corporate devices.",
-    ///         Items = new[]
-    ///         {
-    ///             "8GE8721REF",
-    ///             "5RE8543EGG",
-    ///             "1YE2880LNP",
-    ///         },
-    ///         Name = "Corporate devices",
-    ///         Type = "SERIAL",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// ```sh

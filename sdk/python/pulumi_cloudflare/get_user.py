@@ -71,24 +71,6 @@ class AwaitableGetUserResult(GetUserResult):
 def get_user(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetUserResult:
     """
     Use this data source to retrieve information about the currently authenticated user.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_cloudflare as cloudflare
-
-    me = cloudflare.get_user()
-    all = cloudflare.get_api_token_permission_groups()
-    example = cloudflare.ApiToken("example",
-        name="Terraform Cloud (Terraform)",
-        policies=[cloudflare.ApiTokenPolicyArgs(
-            permission_groups=[all.user["User Details Read"]],
-            resources={
-                f"com.cloudflare.api.user.{me.id}": "*",
-            },
-        )])
-    ```
     """
     __args__ = dict()
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
@@ -104,23 +86,5 @@ def get_user(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetUserRes
 def get_user_output(opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetUserResult]:
     """
     Use this data source to retrieve information about the currently authenticated user.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_cloudflare as cloudflare
-
-    me = cloudflare.get_user()
-    all = cloudflare.get_api_token_permission_groups()
-    example = cloudflare.ApiToken("example",
-        name="Terraform Cloud (Terraform)",
-        policies=[cloudflare.ApiTokenPolicyArgs(
-            permission_groups=[all.user["User Details Read"]],
-            resources={
-                f"com.cloudflare.api.user.{me.id}": "*",
-            },
-        )])
-    ```
     """
     ...

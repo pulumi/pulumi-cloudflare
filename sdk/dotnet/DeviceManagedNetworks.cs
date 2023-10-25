@@ -12,31 +12,6 @@ namespace Pulumi.Cloudflare
     /// <summary>
     /// Provides a Cloudflare Device Managed Network resource. Device managed networks allow for building location-aware device settings policies.
     /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Cloudflare = Pulumi.Cloudflare;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var managedNetworks = new Cloudflare.DeviceManagedNetworks("managedNetworks", new()
-    ///     {
-    ///         AccountId = "f037e56e89293a057740de681ac9abbe",
-    ///         Config = new Cloudflare.Inputs.DeviceManagedNetworksConfigArgs
-    ///         {
-    ///             Sha256 = "b5bb9d8014a0f9b1d61e21e796d78dccdf1352f23cd32812f4850b878ae4944c",
-    ///             TlsSockaddr = "foobar:1234",
-    ///         },
-    ///         Name = "managed-network-1",
-    ///         Type = "tls",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// ```sh

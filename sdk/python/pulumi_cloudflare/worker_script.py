@@ -62,9 +62,9 @@ class WorkerScriptArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             account_id: pulumi.Input[str],
-             content: pulumi.Input[str],
-             name: pulumi.Input[str],
+             account_id: Optional[pulumi.Input[str]] = None,
+             content: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
              analytics_engine_bindings: Optional[pulumi.Input[Sequence[pulumi.Input['WorkerScriptAnalyticsEngineBindingArgs']]]] = None,
              compatibility_date: Optional[pulumi.Input[str]] = None,
              compatibility_flags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -77,29 +77,35 @@ class WorkerScriptArgs:
              secret_text_bindings: Optional[pulumi.Input[Sequence[pulumi.Input['WorkerScriptSecretTextBindingArgs']]]] = None,
              service_bindings: Optional[pulumi.Input[Sequence[pulumi.Input['WorkerScriptServiceBindingArgs']]]] = None,
              webassembly_bindings: Optional[pulumi.Input[Sequence[pulumi.Input['WorkerScriptWebassemblyBindingArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'accountId' in kwargs:
+        if account_id is None and 'accountId' in kwargs:
             account_id = kwargs['accountId']
-        if 'analyticsEngineBindings' in kwargs:
+        if account_id is None:
+            raise TypeError("Missing 'account_id' argument")
+        if content is None:
+            raise TypeError("Missing 'content' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if analytics_engine_bindings is None and 'analyticsEngineBindings' in kwargs:
             analytics_engine_bindings = kwargs['analyticsEngineBindings']
-        if 'compatibilityDate' in kwargs:
+        if compatibility_date is None and 'compatibilityDate' in kwargs:
             compatibility_date = kwargs['compatibilityDate']
-        if 'compatibilityFlags' in kwargs:
+        if compatibility_flags is None and 'compatibilityFlags' in kwargs:
             compatibility_flags = kwargs['compatibilityFlags']
-        if 'kvNamespaceBindings' in kwargs:
+        if kv_namespace_bindings is None and 'kvNamespaceBindings' in kwargs:
             kv_namespace_bindings = kwargs['kvNamespaceBindings']
-        if 'plainTextBindings' in kwargs:
+        if plain_text_bindings is None and 'plainTextBindings' in kwargs:
             plain_text_bindings = kwargs['plainTextBindings']
-        if 'queueBindings' in kwargs:
+        if queue_bindings is None and 'queueBindings' in kwargs:
             queue_bindings = kwargs['queueBindings']
-        if 'r2BucketBindings' in kwargs:
+        if r2_bucket_bindings is None and 'r2BucketBindings' in kwargs:
             r2_bucket_bindings = kwargs['r2BucketBindings']
-        if 'secretTextBindings' in kwargs:
+        if secret_text_bindings is None and 'secretTextBindings' in kwargs:
             secret_text_bindings = kwargs['secretTextBindings']
-        if 'serviceBindings' in kwargs:
+        if service_bindings is None and 'serviceBindings' in kwargs:
             service_bindings = kwargs['serviceBindings']
-        if 'webassemblyBindings' in kwargs:
+        if webassembly_bindings is None and 'webassemblyBindings' in kwargs:
             webassembly_bindings = kwargs['webassemblyBindings']
 
         _setter("account_id", account_id)
@@ -351,29 +357,29 @@ class _WorkerScriptState:
              secret_text_bindings: Optional[pulumi.Input[Sequence[pulumi.Input['WorkerScriptSecretTextBindingArgs']]]] = None,
              service_bindings: Optional[pulumi.Input[Sequence[pulumi.Input['WorkerScriptServiceBindingArgs']]]] = None,
              webassembly_bindings: Optional[pulumi.Input[Sequence[pulumi.Input['WorkerScriptWebassemblyBindingArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'accountId' in kwargs:
+        if account_id is None and 'accountId' in kwargs:
             account_id = kwargs['accountId']
-        if 'analyticsEngineBindings' in kwargs:
+        if analytics_engine_bindings is None and 'analyticsEngineBindings' in kwargs:
             analytics_engine_bindings = kwargs['analyticsEngineBindings']
-        if 'compatibilityDate' in kwargs:
+        if compatibility_date is None and 'compatibilityDate' in kwargs:
             compatibility_date = kwargs['compatibilityDate']
-        if 'compatibilityFlags' in kwargs:
+        if compatibility_flags is None and 'compatibilityFlags' in kwargs:
             compatibility_flags = kwargs['compatibilityFlags']
-        if 'kvNamespaceBindings' in kwargs:
+        if kv_namespace_bindings is None and 'kvNamespaceBindings' in kwargs:
             kv_namespace_bindings = kwargs['kvNamespaceBindings']
-        if 'plainTextBindings' in kwargs:
+        if plain_text_bindings is None and 'plainTextBindings' in kwargs:
             plain_text_bindings = kwargs['plainTextBindings']
-        if 'queueBindings' in kwargs:
+        if queue_bindings is None and 'queueBindings' in kwargs:
             queue_bindings = kwargs['queueBindings']
-        if 'r2BucketBindings' in kwargs:
+        if r2_bucket_bindings is None and 'r2BucketBindings' in kwargs:
             r2_bucket_bindings = kwargs['r2BucketBindings']
-        if 'secretTextBindings' in kwargs:
+        if secret_text_bindings is None and 'secretTextBindings' in kwargs:
             secret_text_bindings = kwargs['secretTextBindings']
-        if 'serviceBindings' in kwargs:
+        if service_bindings is None and 'serviceBindings' in kwargs:
             service_bindings = kwargs['serviceBindings']
-        if 'webassemblyBindings' in kwargs:
+        if webassembly_bindings is None and 'webassemblyBindings' in kwargs:
             webassembly_bindings = kwargs['webassemblyBindings']
 
         if account_id is not None:
@@ -588,52 +594,6 @@ class WorkerScript(pulumi.CustomResource):
         """
         Provides a Cloudflare worker script resource. In order for a script to be active, you'll also need to setup a `WorkerRoute`.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import base64
-        import pulumi_cloudflare as cloudflare
-
-        my_namespace = cloudflare.WorkersKvNamespace("myNamespace",
-            account_id="f037e56e89293a057740de681ac9abbe",
-            title="example")
-        # Sets the script with the name "script_1"
-        my_script = cloudflare.WorkerScript("myScript",
-            account_id="f037e56e89293a057740de681ac9abbe",
-            name="script_1",
-            content=(lambda path: open(path).read())("script.js"),
-            kv_namespace_bindings=[cloudflare.WorkerScriptKvNamespaceBindingArgs(
-                name="MY_EXAMPLE_KV_NAMESPACE",
-                namespace_id=my_namespace.id,
-            )],
-            plain_text_bindings=[cloudflare.WorkerScriptPlainTextBindingArgs(
-                name="MY_EXAMPLE_PLAIN_TEXT",
-                text="foobar",
-            )],
-            secret_text_bindings=[cloudflare.WorkerScriptSecretTextBindingArgs(
-                name="MY_EXAMPLE_SECRET_TEXT",
-                text=var["secret_foo_value"],
-            )],
-            webassembly_bindings=[cloudflare.WorkerScriptWebassemblyBindingArgs(
-                name="MY_EXAMPLE_WASM",
-                module=(lambda path: base64.b64encode(open(path).read().encode()).decode())("example.wasm"),
-            )],
-            service_bindings=[cloudflare.WorkerScriptServiceBindingArgs(
-                name="MY_SERVICE_BINDING",
-                service="MY_SERVICE",
-                environment="production",
-            )],
-            r2_bucket_bindings=[cloudflare.WorkerScriptR2BucketBindingArgs(
-                name="MY_BUCKET",
-                bucket_name="MY_BUCKET_NAME",
-            )],
-            analytics_engine_bindings=[cloudflare.WorkerScriptAnalyticsEngineBindingArgs(
-                name="MY_DATASET",
-                dataset="dataset1",
-            )])
-        ```
-
         ## Import
 
         ```sh
@@ -658,52 +618,6 @@ class WorkerScript(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Provides a Cloudflare worker script resource. In order for a script to be active, you'll also need to setup a `WorkerRoute`.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import base64
-        import pulumi_cloudflare as cloudflare
-
-        my_namespace = cloudflare.WorkersKvNamespace("myNamespace",
-            account_id="f037e56e89293a057740de681ac9abbe",
-            title="example")
-        # Sets the script with the name "script_1"
-        my_script = cloudflare.WorkerScript("myScript",
-            account_id="f037e56e89293a057740de681ac9abbe",
-            name="script_1",
-            content=(lambda path: open(path).read())("script.js"),
-            kv_namespace_bindings=[cloudflare.WorkerScriptKvNamespaceBindingArgs(
-                name="MY_EXAMPLE_KV_NAMESPACE",
-                namespace_id=my_namespace.id,
-            )],
-            plain_text_bindings=[cloudflare.WorkerScriptPlainTextBindingArgs(
-                name="MY_EXAMPLE_PLAIN_TEXT",
-                text="foobar",
-            )],
-            secret_text_bindings=[cloudflare.WorkerScriptSecretTextBindingArgs(
-                name="MY_EXAMPLE_SECRET_TEXT",
-                text=var["secret_foo_value"],
-            )],
-            webassembly_bindings=[cloudflare.WorkerScriptWebassemblyBindingArgs(
-                name="MY_EXAMPLE_WASM",
-                module=(lambda path: base64.b64encode(open(path).read().encode()).decode())("example.wasm"),
-            )],
-            service_bindings=[cloudflare.WorkerScriptServiceBindingArgs(
-                name="MY_SERVICE_BINDING",
-                service="MY_SERVICE",
-                environment="production",
-            )],
-            r2_bucket_bindings=[cloudflare.WorkerScriptR2BucketBindingArgs(
-                name="MY_BUCKET",
-                bucket_name="MY_BUCKET_NAME",
-            )],
-            analytics_engine_bindings=[cloudflare.WorkerScriptAnalyticsEngineBindingArgs(
-                name="MY_DATASET",
-                dataset="dataset1",
-            )])
-        ```
 
         ## Import
 

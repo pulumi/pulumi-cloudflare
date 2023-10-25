@@ -6,30 +6,6 @@ import * as utilities from "./utilities";
 
 /**
  * Provides a Data Localization Suite Regional Hostname.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as cloudflare from "@pulumi/cloudflare";
- *
- * // Regionalized hostname record resources are managed independently from the
- * // Regionalized Hostname resources.
- * const exampleRecord = new cloudflare.Record("exampleRecord", {
- *     name: "example.com",
- *     ttl: 3600,
- *     type: "A",
- *     value: "192.0.2.1",
- *     zoneId: "0da42c8d2132a9ddaf714f9e7c920711",
- * });
- * // The cloudflare_regional_hostname resource may exist with or without its
- * // corresponding record resource.
- * const exampleRegionalHostname = new cloudflare.RegionalHostname("exampleRegionalHostname", {
- *     hostname: "example.com",
- *     regionKey: "eu",
- *     zoneId: "0da42c8d2132a9ddaf714f9e7c920711",
- * });
- * ```
  */
 export class RegionalHostname extends pulumi.CustomResource {
     /**

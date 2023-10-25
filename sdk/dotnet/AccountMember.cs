@@ -12,30 +12,6 @@ namespace Pulumi.Cloudflare
     /// <summary>
     /// Provides a resource which manages Cloudflare account members.
     /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Cloudflare = Pulumi.Cloudflare;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var example = new Cloudflare.AccountMember("example", new()
-    ///     {
-    ///         AccountId = "f037e56e89293a057740de681ac9abbe",
-    ///         EmailAddress = "user@example.com",
-    ///         RoleIds = new[]
-    ///         {
-    ///             "68b329da9893e34099c7d8ad5cb9c940",
-    ///             "d784fa8b6d98d27699781bd9a7cf19f0",
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// ```sh

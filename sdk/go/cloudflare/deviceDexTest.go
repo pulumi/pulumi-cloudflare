@@ -15,41 +15,6 @@ import (
 
 // Provides a Cloudflare Device Dex Test resource. Device Dex Tests allow for building location-aware device settings policies.
 //
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewDeviceDexTest(ctx, "example", &cloudflare.DeviceDexTestArgs{
-//				AccountId: pulumi.String("f037e56e89293a057740de681ac9abbe"),
-//				Data: &cloudflare.DeviceDexTestDataArgs{
-//					Host:   pulumi.String("https://example.com/home"),
-//					Kind:   pulumi.String("http"),
-//					Method: pulumi.String("GET"),
-//				},
-//				Description: pulumi.String("Send a HTTP GET request to the home endpoint every half hour."),
-//				Enabled:     pulumi.Bool(true),
-//				Interval:    pulumi.String("0h30m0s"),
-//				Name:        pulumi.String("GET homepage"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // ```sh

@@ -7,27 +7,6 @@ import * as utilities from "./utilities";
 /**
  * Provides a resource, that manages IPsec tunnels for Magic Transit.
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as cloudflare from "@pulumi/cloudflare";
- *
- * const example = new cloudflare.IpsecTunnel("example", {
- *     accountId: "f037e56e89293a057740de681ac9abbe",
- *     allowNullCipher: false,
- *     cloudflareEndpoint: "203.0.113.1",
- *     customerEndpoint: "203.0.113.1",
- *     description: "Tunnel for ISP X",
- *     healthCheckEnabled: true,
- *     healthCheckTarget: "203.0.113.1",
- *     healthCheckType: "reply",
- *     interfaceAddress: "192.0.2.0/31",
- *     name: "IPsec_1",
- *     psk: "asdf12341234",
- * });
- * ```
- *
  * ## Import
  *
  * ```sh

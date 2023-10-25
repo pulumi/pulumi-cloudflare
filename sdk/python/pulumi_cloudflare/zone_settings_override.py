@@ -30,12 +30,14 @@ class ZoneSettingsOverrideArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             zone_id: pulumi.Input[str],
+             zone_id: Optional[pulumi.Input[str]] = None,
              settings: Optional[pulumi.Input['ZoneSettingsOverrideSettingsArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'zoneId' in kwargs:
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
+        if zone_id is None:
+            raise TypeError("Missing 'zone_id' argument")
 
         _setter("zone_id", zone_id)
         if settings is not None:
@@ -97,19 +99,19 @@ class _ZoneSettingsOverrideState:
              zone_id: Optional[pulumi.Input[str]] = None,
              zone_status: Optional[pulumi.Input[str]] = None,
              zone_type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'initialSettings' in kwargs:
+        if initial_settings is None and 'initialSettings' in kwargs:
             initial_settings = kwargs['initialSettings']
-        if 'initialSettingsReadAt' in kwargs:
+        if initial_settings_read_at is None and 'initialSettingsReadAt' in kwargs:
             initial_settings_read_at = kwargs['initialSettingsReadAt']
-        if 'readonlySettings' in kwargs:
+        if readonly_settings is None and 'readonlySettings' in kwargs:
             readonly_settings = kwargs['readonlySettings']
-        if 'zoneId' in kwargs:
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
-        if 'zoneStatus' in kwargs:
+        if zone_status is None and 'zoneStatus' in kwargs:
             zone_status = kwargs['zoneStatus']
-        if 'zoneType' in kwargs:
+        if zone_type is None and 'zoneType' in kwargs:
             zone_type = kwargs['zoneType']
 
         if initial_settings is not None:
@@ -210,33 +212,6 @@ class ZoneSettingsOverride(pulumi.CustomResource):
           Attempting to manage all settings will result in problems with the resource
           applying in a consistent manner.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudflare as cloudflare
-
-        test = cloudflare.ZoneSettingsOverride("test",
-            zone_id=d41d8cd98f00b204e9800998ecf8427e,
-            settings=cloudflare.ZoneSettingsOverrideSettingsArgs(
-                brotli="on",
-                challenge_ttl=2700,
-                security_level="high",
-                opportunistic_encryption="on",
-                automatic_https_rewrites="on",
-                mirage="on",
-                waf="on",
-                minify=cloudflare.ZoneSettingsOverrideSettingsMinifyArgs(
-                    css="on",
-                    js="off",
-                    html="off",
-                ),
-                security_header=cloudflare.ZoneSettingsOverrideSettingsSecurityHeaderArgs(
-                    enabled=True,
-                ),
-            ))
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
@@ -254,33 +229,6 @@ class ZoneSettingsOverride(pulumi.CustomResource):
           resource is only intended to override those which you do not want the default.
           Attempting to manage all settings will result in problems with the resource
           applying in a consistent manner.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudflare as cloudflare
-
-        test = cloudflare.ZoneSettingsOverride("test",
-            zone_id=d41d8cd98f00b204e9800998ecf8427e,
-            settings=cloudflare.ZoneSettingsOverrideSettingsArgs(
-                brotli="on",
-                challenge_ttl=2700,
-                security_level="high",
-                opportunistic_encryption="on",
-                automatic_https_rewrites="on",
-                mirage="on",
-                waf="on",
-                minify=cloudflare.ZoneSettingsOverrideSettingsMinifyArgs(
-                    css="on",
-                    js="off",
-                    html="off",
-                ),
-                security_header=cloudflare.ZoneSettingsOverrideSettingsSecurityHeaderArgs(
-                    enabled=True,
-                ),
-            ))
-        ```
 
         :param str resource_name: The name of the resource.
         :param ZoneSettingsOverrideArgs args: The arguments to use to populate this resource's properties.
@@ -312,11 +260,7 @@ class ZoneSettingsOverride(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ZoneSettingsOverrideArgs.__new__(ZoneSettingsOverrideArgs)
 
-            if settings is not None and not isinstance(settings, ZoneSettingsOverrideSettingsArgs):
-                settings = settings or {}
-                def _setter(key, value):
-                    settings[key] = value
-                ZoneSettingsOverrideSettingsArgs._configure(_setter, **settings)
+            settings = _utilities.configure(settings, ZoneSettingsOverrideSettingsArgs, True)
             __props__.__dict__["settings"] = settings
             if zone_id is None and not opts.urn:
                 raise TypeError("Missing required property 'zone_id'")

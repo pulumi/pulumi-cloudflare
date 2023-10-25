@@ -35,17 +35,21 @@ class ZoneHoldArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             hold: pulumi.Input[bool],
-             zone_id: pulumi.Input[str],
+             hold: Optional[pulumi.Input[bool]] = None,
+             zone_id: Optional[pulumi.Input[str]] = None,
              hold_after: Optional[pulumi.Input[str]] = None,
              include_subdomains: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'zoneId' in kwargs:
+        if hold is None:
+            raise TypeError("Missing 'hold' argument")
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
-        if 'holdAfter' in kwargs:
+        if zone_id is None:
+            raise TypeError("Missing 'zone_id' argument")
+        if hold_after is None and 'holdAfter' in kwargs:
             hold_after = kwargs['holdAfter']
-        if 'includeSubdomains' in kwargs:
+        if include_subdomains is None and 'includeSubdomains' in kwargs:
             include_subdomains = kwargs['includeSubdomains']
 
         _setter("hold", hold)
@@ -132,13 +136,13 @@ class _ZoneHoldState:
              hold_after: Optional[pulumi.Input[str]] = None,
              include_subdomains: Optional[pulumi.Input[bool]] = None,
              zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'holdAfter' in kwargs:
+        if hold_after is None and 'holdAfter' in kwargs:
             hold_after = kwargs['holdAfter']
-        if 'includeSubdomains' in kwargs:
+        if include_subdomains is None and 'includeSubdomains' in kwargs:
             include_subdomains = kwargs['includeSubdomains']
-        if 'zoneId' in kwargs:
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
 
         if hold is not None:
@@ -213,17 +217,6 @@ class ZoneHold(pulumi.CustomResource):
         Provides a Cloudflare Zone Hold resource that prevents adding
         the hostname to another account for use.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudflare as cloudflare
-
-        example = cloudflare.ZoneHold("example",
-            hold=True,
-            zone_id="0da42c8d2132a9ddaf714f9e7c920711")
-        ```
-
         ## Import
 
         ```sh
@@ -246,17 +239,6 @@ class ZoneHold(pulumi.CustomResource):
         """
         Provides a Cloudflare Zone Hold resource that prevents adding
         the hostname to another account for use.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudflare as cloudflare
-
-        example = cloudflare.ZoneHold("example",
-            hold=True,
-            zone_id="0da42c8d2132a9ddaf714f9e7c920711")
-        ```
 
         ## Import
 

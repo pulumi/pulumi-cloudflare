@@ -14,37 +14,6 @@ namespace Pulumi.Cloudflare
     /// resource. An uploaded client certificate is required to use Per-Zone
     ///  or Per-Hostname Authenticated Origin Pulls.
     /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Cloudflare = Pulumi.Cloudflare;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     // Per-Zone Authenticated Origin Pulls certificate
-    ///     var myPerZoneAopCert = new Cloudflare.AuthenticatedOriginPullsCertificate("myPerZoneAopCert", new()
-    ///     {
-    ///         Certificate = "-----INSERT CERTIFICATE-----",
-    ///         PrivateKey = "-----INSERT PRIVATE KEY-----",
-    ///         Type = "per-zone",
-    ///         ZoneId = "0da42c8d2132a9ddaf714f9e7c920711",
-    ///     });
-    /// 
-    ///     // Per-Hostname Authenticated Origin Pulls certificate
-    ///     var myPerHostnameAopCert = new Cloudflare.AuthenticatedOriginPullsCertificate("myPerHostnameAopCert", new()
-    ///     {
-    ///         Certificate = "-----INSERT CERTIFICATE-----",
-    ///         PrivateKey = "-----INSERT PRIVATE KEY-----",
-    ///         Type = "per-hostname",
-    ///         ZoneId = "0da42c8d2132a9ddaf714f9e7c920711",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// ```sh

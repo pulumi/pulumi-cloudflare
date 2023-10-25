@@ -70,15 +70,6 @@ def get_accounts(name: Optional[str] = None,
                  opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAccountsResult:
     """
     Data source for looking up Cloudflare Accounts.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_cloudflare as cloudflare
-
-    example = cloudflare.get_accounts(name="example account")
-    ```
     """
     __args__ = dict()
     __args__['name'] = name
@@ -96,14 +87,5 @@ def get_accounts_output(name: Optional[pulumi.Input[Optional[str]]] = None,
                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAccountsResult]:
     """
     Data source for looking up Cloudflare Accounts.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_cloudflare as cloudflare
-
-    example = cloudflare.get_accounts(name="example account")
-    ```
     """
     ...

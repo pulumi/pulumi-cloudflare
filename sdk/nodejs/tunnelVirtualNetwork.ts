@@ -10,19 +10,6 @@ import * as utilities from "./utilities";
  * Tunnel IP Routes via Virtualized Networks to handle overlapping
  * private IPs in your origins.
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as cloudflare from "@pulumi/cloudflare";
- *
- * const example = new cloudflare.TunnelVirtualNetwork("example", {
- *     accountId: "f037e56e89293a057740de681ac9abbe",
- *     comment: "New tunnel virtual network for documentation",
- *     name: "vnet-for-documentation",
- * });
- * ```
- *
  * ## Import
  *
  * ```sh

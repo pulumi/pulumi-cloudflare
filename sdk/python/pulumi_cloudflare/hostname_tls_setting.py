@@ -35,14 +35,22 @@ class HostnameTlsSettingArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             hostname: pulumi.Input[str],
-             setting: pulumi.Input[str],
-             value: pulumi.Input[str],
-             zone_id: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             hostname: Optional[pulumi.Input[str]] = None,
+             setting: Optional[pulumi.Input[str]] = None,
+             value: Optional[pulumi.Input[str]] = None,
+             zone_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'zoneId' in kwargs:
+        if hostname is None:
+            raise TypeError("Missing 'hostname' argument")
+        if setting is None:
+            raise TypeError("Missing 'setting' argument")
+        if value is None:
+            raise TypeError("Missing 'value' argument")
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
+        if zone_id is None:
+            raise TypeError("Missing 'zone_id' argument")
 
         _setter("hostname", hostname)
         _setter("setting", setting)
@@ -132,13 +140,13 @@ class _HostnameTlsSettingState:
              updated_at: Optional[pulumi.Input[str]] = None,
              value: Optional[pulumi.Input[str]] = None,
              zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'createdAt' in kwargs:
+        if created_at is None and 'createdAt' in kwargs:
             created_at = kwargs['createdAt']
-        if 'updatedAt' in kwargs:
+        if updated_at is None and 'updatedAt' in kwargs:
             updated_at = kwargs['updatedAt']
-        if 'zoneId' in kwargs:
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
 
         if created_at is not None:
@@ -234,19 +242,6 @@ class HostnameTlsSetting(pulumi.CustomResource):
         """
         Provides a Cloudflare per-hostname TLS setting resource. Used to set TLS settings for hostnames under the specified zone.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudflare as cloudflare
-
-        example = cloudflare.HostnameTlsSetting("example",
-            hostname="sub.example.com",
-            setting="min_tls_version",
-            value="1.2",
-            zone_id="0da42c8d2132a9ddaf714f9e7c920711")
-        ```
-
         ## Import
 
         ```sh
@@ -268,19 +263,6 @@ class HostnameTlsSetting(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Provides a Cloudflare per-hostname TLS setting resource. Used to set TLS settings for hostnames under the specified zone.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudflare as cloudflare
-
-        example = cloudflare.HostnameTlsSetting("example",
-            hostname="sub.example.com",
-            setting="min_tls_version",
-            value="1.2",
-            zone_id="0da42c8d2132a9ddaf714f9e7c920711")
-        ```
 
         ## Import
 

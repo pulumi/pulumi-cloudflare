@@ -17,33 +17,6 @@ import (
 // challenges to use in a Logpush Job. On it's own, doesn't do much
 // however this resource should be used in conjunction to create
 // Logpush jobs.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewLogpushOwnershipChallenge(ctx, "example", &cloudflare.LogpushOwnershipChallengeArgs{
-//				DestinationConf: pulumi.String("s3://my-bucket-path?region=us-west-2"),
-//				ZoneId:          pulumi.String("0da42c8d2132a9ddaf714f9e7c920711"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 type LogpushOwnershipChallenge struct {
 	pulumi.CustomResourceState
 

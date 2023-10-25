@@ -6,19 +6,6 @@ import * as utilities from "./utilities";
 
 /**
  * Provides a resource to manage URL Normalization Settings.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as cloudflare from "@pulumi/cloudflare";
- *
- * const example = new cloudflare.UrlNormalizationSettings("example", {
- *     scope: "incoming",
- *     type: "cloudflare",
- *     zoneId: "0da42c8d2132a9ddaf714f9e7c920711",
- * });
- * ```
  */
 export class UrlNormalizationSettings extends pulumi.CustomResource {
     /**

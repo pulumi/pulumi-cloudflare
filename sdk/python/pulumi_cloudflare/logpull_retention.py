@@ -29,12 +29,16 @@ class LogpullRetentionArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             enabled: pulumi.Input[bool],
-             zone_id: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             enabled: Optional[pulumi.Input[bool]] = None,
+             zone_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'zoneId' in kwargs:
+        if enabled is None:
+            raise TypeError("Missing 'enabled' argument")
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
+        if zone_id is None:
+            raise TypeError("Missing 'zone_id' argument")
 
         _setter("enabled", enabled)
         _setter("zone_id", zone_id)
@@ -84,9 +88,9 @@ class _LogpullRetentionState:
              _setter: Callable[[Any, Any], None],
              enabled: Optional[pulumi.Input[bool]] = None,
              zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'zoneId' in kwargs:
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
 
         if enabled is not None:
@@ -130,17 +134,6 @@ class LogpullRetention(pulumi.CustomResource):
         """
         Allows management of the Logpull Retention settings used to control whether or not to retain HTTP request logs.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudflare as cloudflare
-
-        example = cloudflare.LogpullRetention("example",
-            enabled=True,
-            zone_id="0da42c8d2132a9ddaf714f9e7c920711")
-        ```
-
         ## Import
 
         ```sh
@@ -160,17 +153,6 @@ class LogpullRetention(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Allows management of the Logpull Retention settings used to control whether or not to retain HTTP request logs.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudflare as cloudflare
-
-        example = cloudflare.LogpullRetention("example",
-            enabled=True,
-            zone_id="0da42c8d2132a9ddaf714f9e7c920711")
-        ```
 
         ## Import
 

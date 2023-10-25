@@ -8,17 +8,6 @@ import * as utilities from "./utilities";
 
 /**
  * Use this data source to lookup [Lists](https://developers.cloudflare.com/api/operations/lists-get-lists).
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as cloudflare from "@pulumi/cloudflare";
- *
- * const example = cloudflare.getLists({
- *     accountId: "f037e56e89293a057740de681ac9abbe",
- * });
- * ```
  */
 export function getLists(args: GetListsArgs, opts?: pulumi.InvokeOptions): Promise<GetListsResult> {
 
@@ -54,17 +43,6 @@ export interface GetListsResult {
 }
 /**
  * Use this data source to lookup [Lists](https://developers.cloudflare.com/api/operations/lists-get-lists).
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as cloudflare from "@pulumi/cloudflare";
- *
- * const example = cloudflare.getLists({
- *     accountId: "f037e56e89293a057740de681ac9abbe",
- * });
- * ```
  */
 export function getListsOutput(args: GetListsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetListsResult> {
     return pulumi.output(args).apply((a: any) => getLists(a, opts))

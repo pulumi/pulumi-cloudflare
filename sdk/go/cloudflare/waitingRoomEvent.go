@@ -15,36 +15,6 @@ import (
 
 // Provides a Cloudflare Waiting Room Event resource.
 //
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewWaitingRoomEvent(ctx, "example", &cloudflare.WaitingRoomEventArgs{
-//				EventEndTime:   pulumi.String("2006-01-02T20:04:05Z"),
-//				EventStartTime: pulumi.String("2006-01-02T15:04:05Z"),
-//				Name:           pulumi.String("foo"),
-//				WaitingRoomId:  pulumi.String("d41d8cd98f00b204e9800998ecf8427e"),
-//				ZoneId:         pulumi.String("0da42c8d2132a9ddaf714f9e7c920711"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // Use the Zone ID, Waiting Room ID, and Event ID to import.

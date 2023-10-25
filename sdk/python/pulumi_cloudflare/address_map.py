@@ -43,17 +43,21 @@ class AddressMapArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             account_id: pulumi.Input[str],
-             enabled: pulumi.Input[bool],
+             account_id: Optional[pulumi.Input[str]] = None,
+             enabled: Optional[pulumi.Input[bool]] = None,
              default_sni: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              ips: Optional[pulumi.Input[Sequence[pulumi.Input['AddressMapIpArgs']]]] = None,
              memberships: Optional[pulumi.Input[Sequence[pulumi.Input['AddressMapMembershipArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'accountId' in kwargs:
+        if account_id is None and 'accountId' in kwargs:
             account_id = kwargs['accountId']
-        if 'defaultSni' in kwargs:
+        if account_id is None:
+            raise TypeError("Missing 'account_id' argument")
+        if enabled is None:
+            raise TypeError("Missing 'enabled' argument")
+        if default_sni is None and 'defaultSni' in kwargs:
             default_sni = kwargs['defaultSni']
 
         _setter("account_id", account_id)
@@ -184,15 +188,15 @@ class _AddressMapState:
              enabled: Optional[pulumi.Input[bool]] = None,
              ips: Optional[pulumi.Input[Sequence[pulumi.Input['AddressMapIpArgs']]]] = None,
              memberships: Optional[pulumi.Input[Sequence[pulumi.Input['AddressMapMembershipArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'accountId' in kwargs:
+        if account_id is None and 'accountId' in kwargs:
             account_id = kwargs['accountId']
-        if 'canDelete' in kwargs:
+        if can_delete is None and 'canDelete' in kwargs:
             can_delete = kwargs['canDelete']
-        if 'canModifyIps' in kwargs:
+        if can_modify_ips is None and 'canModifyIps' in kwargs:
             can_modify_ips = kwargs['canModifyIps']
-        if 'defaultSni' in kwargs:
+        if default_sni is None and 'defaultSni' in kwargs:
             default_sni = kwargs['defaultSni']
 
         if account_id is not None:
@@ -325,37 +329,6 @@ class AddressMap(pulumi.CustomResource):
         Provides the ability to manage IP addresses that can be used by DNS records when
         they are proxied through Cloudflare.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudflare as cloudflare
-
-        example = cloudflare.AddressMap("example",
-            account_id="f037e56e89293a057740de681ac9abbe",
-            default_sni="*.example.com",
-            description="My address map",
-            enabled=True,
-            ips=[
-                cloudflare.AddressMapIpArgs(
-                    ip="192.0.2.1",
-                ),
-                cloudflare.AddressMapIpArgs(
-                    ip="203.0.113.1",
-                ),
-            ],
-            memberships=[
-                cloudflare.AddressMapMembershipArgs(
-                    identifier="92f17202ed8bd63d69a66b86a49a8f6b",
-                    kind="account",
-                ),
-                cloudflare.AddressMapMembershipArgs(
-                    identifier="023e105f4ecef8ad9ca31a8372d0c353",
-                    kind="zone",
-                ),
-            ])
-        ```
-
         ## Import
 
         ```sh
@@ -380,37 +353,6 @@ class AddressMap(pulumi.CustomResource):
         """
         Provides the ability to manage IP addresses that can be used by DNS records when
         they are proxied through Cloudflare.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudflare as cloudflare
-
-        example = cloudflare.AddressMap("example",
-            account_id="f037e56e89293a057740de681ac9abbe",
-            default_sni="*.example.com",
-            description="My address map",
-            enabled=True,
-            ips=[
-                cloudflare.AddressMapIpArgs(
-                    ip="192.0.2.1",
-                ),
-                cloudflare.AddressMapIpArgs(
-                    ip="203.0.113.1",
-                ),
-            ],
-            memberships=[
-                cloudflare.AddressMapMembershipArgs(
-                    identifier="92f17202ed8bd63d69a66b86a49a8f6b",
-                    kind="account",
-                ),
-                cloudflare.AddressMapMembershipArgs(
-                    identifier="023e105f4ecef8ad9ca31a8372d0c353",
-                    kind="zone",
-                ),
-            ])
-        ```
 
         ## Import
 

@@ -29,14 +29,18 @@ class TieredCacheArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             cache_type: pulumi.Input[str],
-             zone_id: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             cache_type: Optional[pulumi.Input[str]] = None,
+             zone_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'cacheType' in kwargs:
+        if cache_type is None and 'cacheType' in kwargs:
             cache_type = kwargs['cacheType']
-        if 'zoneId' in kwargs:
+        if cache_type is None:
+            raise TypeError("Missing 'cache_type' argument")
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
+        if zone_id is None:
+            raise TypeError("Missing 'zone_id' argument")
 
         _setter("cache_type", cache_type)
         _setter("zone_id", zone_id)
@@ -86,11 +90,11 @@ class _TieredCacheState:
              _setter: Callable[[Any, Any], None],
              cache_type: Optional[pulumi.Input[str]] = None,
              zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'cacheType' in kwargs:
+        if cache_type is None and 'cacheType' in kwargs:
             cache_type = kwargs['cacheType']
-        if 'zoneId' in kwargs:
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
 
         if cache_type is not None:
@@ -135,17 +139,6 @@ class TieredCache(pulumi.CustomResource):
         Provides a resource, that manages Cloudflare Tiered Cache settings.
         This allows you to adjust topologies for your zone.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudflare as cloudflare
-
-        example = cloudflare.TieredCache("example",
-            cache_type="smart",
-            zone_id="0da42c8d2132a9ddaf714f9e7c920711")
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] cache_type: The typed of tiered cache to utilize on the zone. Available values: `generic`, `smart`, `off`.
@@ -160,17 +153,6 @@ class TieredCache(pulumi.CustomResource):
         """
         Provides a resource, that manages Cloudflare Tiered Cache settings.
         This allows you to adjust topologies for your zone.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudflare as cloudflare
-
-        example = cloudflare.TieredCache("example",
-            cache_type="smart",
-            zone_id="0da42c8d2132a9ddaf714f9e7c920711")
-        ```
 
         :param str resource_name: The name of the resource.
         :param TieredCacheArgs args: The arguments to use to populate this resource's properties.

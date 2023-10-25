@@ -29,12 +29,16 @@ class D1DatabaseArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             account_id: pulumi.Input[str],
-             name: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             account_id: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'accountId' in kwargs:
+        if account_id is None and 'accountId' in kwargs:
             account_id = kwargs['accountId']
+        if account_id is None:
+            raise TypeError("Missing 'account_id' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
 
         _setter("account_id", account_id)
         _setter("name", name)
@@ -88,9 +92,9 @@ class _D1DatabaseState:
              account_id: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
              version: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'accountId' in kwargs:
+        if account_id is None and 'accountId' in kwargs:
             account_id = kwargs['accountId']
 
         if account_id is not None:
@@ -150,17 +154,6 @@ class D1Database(pulumi.CustomResource):
 
         !> When a D1 Database is replaced all the data is lost. Please ensure you have a backup of your data before replacing a D1 Database.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudflare as cloudflare
-
-        example = cloudflare.D1Database("example",
-            account_id="f037e56e89293a057740de681ac9abbe",
-            name="terraform-database")
-        ```
-
         ## Import
 
         ```sh
@@ -182,17 +175,6 @@ class D1Database(pulumi.CustomResource):
         The [D1 Database](https://developers.cloudflare.com/d1/) resource allows you to manage Cloudflare D1 databases.
 
         !> When a D1 Database is replaced all the data is lost. Please ensure you have a backup of your data before replacing a D1 Database.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudflare as cloudflare
-
-        example = cloudflare.D1Database("example",
-            account_id="f037e56e89293a057740de681ac9abbe",
-            name="terraform-database")
-        ```
 
         ## Import
 

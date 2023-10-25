@@ -31,13 +31,15 @@ class ApiShieldArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             zone_id: pulumi.Input[str],
+             zone_id: Optional[pulumi.Input[str]] = None,
              auth_id_characteristics: Optional[pulumi.Input[Sequence[pulumi.Input['ApiShieldAuthIdCharacteristicArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'zoneId' in kwargs:
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
-        if 'authIdCharacteristics' in kwargs:
+        if zone_id is None:
+            raise TypeError("Missing 'zone_id' argument")
+        if auth_id_characteristics is None and 'authIdCharacteristics' in kwargs:
             auth_id_characteristics = kwargs['authIdCharacteristics']
 
         _setter("zone_id", zone_id)
@@ -89,11 +91,11 @@ class _ApiShieldState:
              _setter: Callable[[Any, Any], None],
              auth_id_characteristics: Optional[pulumi.Input[Sequence[pulumi.Input['ApiShieldAuthIdCharacteristicArgs']]]] = None,
              zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'authIdCharacteristics' in kwargs:
+        if auth_id_characteristics is None and 'authIdCharacteristics' in kwargs:
             auth_id_characteristics = kwargs['authIdCharacteristics']
-        if 'zoneId' in kwargs:
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
 
         if auth_id_characteristics is not None:
@@ -137,20 +139,6 @@ class ApiShield(pulumi.CustomResource):
         """
         Provides a resource to manage API Shield configurations.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudflare as cloudflare
-
-        example = cloudflare.ApiShield("example",
-            auth_id_characteristics=[cloudflare.ApiShieldAuthIdCharacteristicArgs(
-                name="my-example-header",
-                type="header",
-            )],
-            zone_id="0da42c8d2132a9ddaf714f9e7c920711")
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApiShieldAuthIdCharacteristicArgs']]]] auth_id_characteristics: Characteristics define properties across which auth-ids can be computed in a privacy-preserving manner.
@@ -164,20 +152,6 @@ class ApiShield(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Provides a resource to manage API Shield configurations.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudflare as cloudflare
-
-        example = cloudflare.ApiShield("example",
-            auth_id_characteristics=[cloudflare.ApiShieldAuthIdCharacteristicArgs(
-                name="my-example-header",
-                type="header",
-            )],
-            zone_id="0da42c8d2132a9ddaf714f9e7c920711")
-        ```
 
         :param str resource_name: The name of the resource.
         :param ApiShieldArgs args: The arguments to use to populate this resource's properties.

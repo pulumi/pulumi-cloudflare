@@ -13,23 +13,6 @@ import * as utilities from "./utilities";
  * - **Super Bot Fight Mode**
  * - **Bot Management for Enterprise**
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as cloudflare from "@pulumi/cloudflare";
- *
- * const example = new cloudflare.BotManagement("example", {
- *     enableJs: true,
- *     optimizeWordpress: true,
- *     sbfmDefinitelyAutomated: "block",
- *     sbfmLikelyAutomated: "managed_challenge",
- *     sbfmStaticResourceProtection: false,
- *     sbfmVerifiedBots: "allow",
- *     zoneId: "0da42c8d2132a9ddaf714f9e7c920711",
- * });
- * ```
- *
  * ## Import
  *
  * ```sh

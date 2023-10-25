@@ -14,33 +14,6 @@ import (
 )
 
 // Provides a resource for managing Email Routing settings.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewEmailRoutingSettings(ctx, "myZone", &cloudflare.EmailRoutingSettingsArgs{
-//				Enabled: pulumi.Bool(true),
-//				ZoneId:  pulumi.String("0da42c8d2132a9ddaf714f9e7c920711"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 type EmailRoutingSettings struct {
 	pulumi.CustomResourceState
 

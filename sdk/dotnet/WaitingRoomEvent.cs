@@ -12,29 +12,6 @@ namespace Pulumi.Cloudflare
     /// <summary>
     /// Provides a Cloudflare Waiting Room Event resource.
     /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Cloudflare = Pulumi.Cloudflare;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     // Waiting Room Event
-    ///     var example = new Cloudflare.WaitingRoomEvent("example", new()
-    ///     {
-    ///         EventEndTime = "2006-01-02T20:04:05Z",
-    ///         EventStartTime = "2006-01-02T15:04:05Z",
-    ///         Name = "foo",
-    ///         WaitingRoomId = "d41d8cd98f00b204e9800998ecf8427e",
-    ///         ZoneId = "0da42c8d2132a9ddaf714f9e7c920711",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// Use the Zone ID, Waiting Room ID, and Event ID to import.

@@ -38,16 +38,22 @@ class MtlsCertificateArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             account_id: pulumi.Input[str],
-             ca: pulumi.Input[bool],
-             certificates: pulumi.Input[str],
+             account_id: Optional[pulumi.Input[str]] = None,
+             ca: Optional[pulumi.Input[bool]] = None,
+             certificates: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
              private_key: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'accountId' in kwargs:
+        if account_id is None and 'accountId' in kwargs:
             account_id = kwargs['accountId']
-        if 'privateKey' in kwargs:
+        if account_id is None:
+            raise TypeError("Missing 'account_id' argument")
+        if ca is None:
+            raise TypeError("Missing 'ca' argument")
+        if certificates is None:
+            raise TypeError("Missing 'certificates' argument")
+        if private_key is None and 'privateKey' in kwargs:
             private_key = kwargs['privateKey']
 
         _setter("account_id", account_id)
@@ -171,17 +177,17 @@ class _MtlsCertificateState:
              serial_number: Optional[pulumi.Input[str]] = None,
              signature: Optional[pulumi.Input[str]] = None,
              uploaded_on: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'accountId' in kwargs:
+        if account_id is None and 'accountId' in kwargs:
             account_id = kwargs['accountId']
-        if 'expiresOn' in kwargs:
+        if expires_on is None and 'expiresOn' in kwargs:
             expires_on = kwargs['expiresOn']
-        if 'privateKey' in kwargs:
+        if private_key is None and 'privateKey' in kwargs:
             private_key = kwargs['privateKey']
-        if 'serialNumber' in kwargs:
+        if serial_number is None and 'serialNumber' in kwargs:
             serial_number = kwargs['serialNumber']
-        if 'uploadedOn' in kwargs:
+        if uploaded_on is None and 'uploadedOn' in kwargs:
             uploaded_on = kwargs['uploadedOn']
 
         if account_id is not None:
@@ -340,26 +346,6 @@ class MtlsCertificate(pulumi.CustomResource):
         """
         Provides a Cloudflare mTLS certificate resource. These certificates may be used with mTLS enabled Cloudflare services.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudflare as cloudflare
-
-        example = cloudflare.MtlsCertificate("example",
-            account_id="f037e56e89293a057740de681ac9abbe",
-            ca=True,
-            certificates=\"\"\"-----BEGIN CERTIFICATE-----
-        MIIDmDCCAoCgAwIBAgIUKTOAZNj...i4JhqeoTewsxndhDDE
-        -----END CERTIFICATE-----
-        \"\"\",
-            name="example",
-            private_key=\"\"\"-----BEGIN PRIVATE KEY-----
-        MIIEvQIBADANBgkqhkiG9w0BAQE...1IS3EnQRrz6WMYA=
-        -----END PRIVATE KEY-----
-        \"\"\")
-        ```
-
         ## Import
 
         ```sh
@@ -382,26 +368,6 @@ class MtlsCertificate(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Provides a Cloudflare mTLS certificate resource. These certificates may be used with mTLS enabled Cloudflare services.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudflare as cloudflare
-
-        example = cloudflare.MtlsCertificate("example",
-            account_id="f037e56e89293a057740de681ac9abbe",
-            ca=True,
-            certificates=\"\"\"-----BEGIN CERTIFICATE-----
-        MIIDmDCCAoCgAwIBAgIUKTOAZNj...i4JhqeoTewsxndhDDE
-        -----END CERTIFICATE-----
-        \"\"\",
-            name="example",
-            private_key=\"\"\"-----BEGIN PRIVATE KEY-----
-        MIIEvQIBADANBgkqhkiG9w0BAQE...1IS3EnQRrz6WMYA=
-        -----END PRIVATE KEY-----
-        \"\"\")
-        ```
 
         ## Import
 

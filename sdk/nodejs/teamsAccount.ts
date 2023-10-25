@@ -10,56 +10,6 @@ import * as utilities from "./utilities";
  * Provides a Cloudflare Teams Account resource. The Teams Account
  * resource defines configuration for secure web gateway.
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as cloudflare from "@pulumi/cloudflare";
- *
- * const example = new cloudflare.TeamsAccount("example", {
- *     accountId: "f037e56e89293a057740de681ac9abbe",
- *     antivirus: {
- *         enabledDownloadPhase: true,
- *         enabledUploadPhase: false,
- *         failClosed: true,
- *     },
- *     blockPage: {
- *         backgroundColor: "#000000",
- *         footerText: "hello",
- *         headerText: "hello",
- *         logoPath: "https://example.com/logo.jpg",
- *     },
- *     fips: {
- *         tls: true,
- *     },
- *     logging: {
- *         redactPii: true,
- *         settingsByRuleType: {
- *             dns: {
- *                 logAll: false,
- *                 logBlocks: true,
- *             },
- *             http: {
- *                 logAll: true,
- *                 logBlocks: true,
- *             },
- *             l4: {
- *                 logAll: false,
- *                 logBlocks: true,
- *             },
- *         },
- *     },
- *     protocolDetectionEnabled: true,
- *     proxy: {
- *         rootCa: true,
- *         tcp: true,
- *         udp: true,
- *     },
- *     tlsDecryptEnabled: true,
- *     urlBrowserIsolationEnabled: true,
- * });
- * ```
- *
  * ## Import
  *
  * ```sh

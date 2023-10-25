@@ -38,17 +38,25 @@ class WorkerDomainArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             account_id: pulumi.Input[str],
-             hostname: pulumi.Input[str],
-             service: pulumi.Input[str],
-             zone_id: pulumi.Input[str],
+             account_id: Optional[pulumi.Input[str]] = None,
+             hostname: Optional[pulumi.Input[str]] = None,
+             service: Optional[pulumi.Input[str]] = None,
+             zone_id: Optional[pulumi.Input[str]] = None,
              environment: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'accountId' in kwargs:
+        if account_id is None and 'accountId' in kwargs:
             account_id = kwargs['accountId']
-        if 'zoneId' in kwargs:
+        if account_id is None:
+            raise TypeError("Missing 'account_id' argument")
+        if hostname is None:
+            raise TypeError("Missing 'hostname' argument")
+        if service is None:
+            raise TypeError("Missing 'service' argument")
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
+        if zone_id is None:
+            raise TypeError("Missing 'zone_id' argument")
 
         _setter("account_id", account_id)
         _setter("hostname", hostname)
@@ -150,11 +158,11 @@ class _WorkerDomainState:
              hostname: Optional[pulumi.Input[str]] = None,
              service: Optional[pulumi.Input[str]] = None,
              zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'accountId' in kwargs:
+        if account_id is None and 'accountId' in kwargs:
             account_id = kwargs['accountId']
-        if 'zoneId' in kwargs:
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
 
         if account_id is not None:
@@ -243,19 +251,6 @@ class WorkerDomain(pulumi.CustomResource):
         """
         Creates a Worker Custom Domain.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudflare as cloudflare
-
-        example = cloudflare.WorkerDomain("example",
-            account_id="f037e56e89293a057740de681ac9abbe",
-            hostname="subdomain.example.com",
-            service="my-service",
-            zone_id="0da42c8d2132a9ddaf714f9e7c920711")
-        ```
-
         ## Import
 
         ```sh
@@ -278,19 +273,6 @@ class WorkerDomain(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Creates a Worker Custom Domain.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudflare as cloudflare
-
-        example = cloudflare.WorkerDomain("example",
-            account_id="f037e56e89293a057740de681ac9abbe",
-            hostname="subdomain.example.com",
-            service="my-service",
-            zone_id="0da42c8d2132a9ddaf714f9e7c920711")
-        ```
 
         ## Import
 

@@ -9,34 +9,6 @@ import * as utilities from "./utilities";
 /**
  * Provides a Cloudflare Waiting Room resource.
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as cloudflare from "@pulumi/cloudflare";
- *
- * // Waiting Room
- * const example = new cloudflare.WaitingRoom("example", {
- *     additionalRoutes: [
- *         {
- *             host: "shop1.example.com",
- *             path: "/example-path",
- *         },
- *         {
- *             host: "shop2.example.com",
- *         },
- *     ],
- *     cookieSuffix: "queue1",
- *     host: "foo.example.com",
- *     name: "foo",
- *     newUsersPerMinute: 200,
- *     path: "/",
- *     queueingStatusCode: 200,
- *     totalActiveUsers: 200,
- *     zoneId: "0da42c8d2132a9ddaf714f9e7c920711",
- * });
- * ```
- *
  * ## Import
  *
  * Use the Zone ID and Waiting Room ID to import.

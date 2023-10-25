@@ -32,15 +32,21 @@ class RegionalHostnameArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             hostname: pulumi.Input[str],
-             region_key: pulumi.Input[str],
-             zone_id: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             hostname: Optional[pulumi.Input[str]] = None,
+             region_key: Optional[pulumi.Input[str]] = None,
+             zone_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'regionKey' in kwargs:
+        if hostname is None:
+            raise TypeError("Missing 'hostname' argument")
+        if region_key is None and 'regionKey' in kwargs:
             region_key = kwargs['regionKey']
-        if 'zoneId' in kwargs:
+        if region_key is None:
+            raise TypeError("Missing 'region_key' argument")
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
+        if zone_id is None:
+            raise TypeError("Missing 'zone_id' argument")
 
         _setter("hostname", hostname)
         _setter("region_key", region_key)
@@ -111,13 +117,13 @@ class _RegionalHostnameState:
              hostname: Optional[pulumi.Input[str]] = None,
              region_key: Optional[pulumi.Input[str]] = None,
              zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'createdOn' in kwargs:
+        if created_on is None and 'createdOn' in kwargs:
             created_on = kwargs['createdOn']
-        if 'regionKey' in kwargs:
+        if region_key is None and 'regionKey' in kwargs:
             region_key = kwargs['regionKey']
-        if 'zoneId' in kwargs:
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
 
         if created_on is not None:
@@ -190,28 +196,6 @@ class RegionalHostname(pulumi.CustomResource):
         """
         Provides a Data Localization Suite Regional Hostname.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudflare as cloudflare
-
-        # Regionalized hostname record resources are managed independently from the
-        # Regionalized Hostname resources.
-        example_record = cloudflare.Record("exampleRecord",
-            name="example.com",
-            ttl=3600,
-            type="A",
-            value="192.0.2.1",
-            zone_id="0da42c8d2132a9ddaf714f9e7c920711")
-        # The cloudflare_regional_hostname resource may exist with or without its
-        # corresponding record resource.
-        example_regional_hostname = cloudflare.RegionalHostname("exampleRegionalHostname",
-            hostname="example.com",
-            region_key="eu",
-            zone_id="0da42c8d2132a9ddaf714f9e7c920711")
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] hostname: The hostname to regionalize.
@@ -226,28 +210,6 @@ class RegionalHostname(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Provides a Data Localization Suite Regional Hostname.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudflare as cloudflare
-
-        # Regionalized hostname record resources are managed independently from the
-        # Regionalized Hostname resources.
-        example_record = cloudflare.Record("exampleRecord",
-            name="example.com",
-            ttl=3600,
-            type="A",
-            value="192.0.2.1",
-            zone_id="0da42c8d2132a9ddaf714f9e7c920711")
-        # The cloudflare_regional_hostname resource may exist with or without its
-        # corresponding record resource.
-        example_regional_hostname = cloudflare.RegionalHostname("exampleRegionalHostname",
-            hostname="example.com",
-            region_key="eu",
-            zone_id="0da42c8d2132a9ddaf714f9e7c920711")
-        ```
 
         :param str resource_name: The name of the resource.
         :param RegionalHostnameArgs args: The arguments to use to populate this resource's properties.

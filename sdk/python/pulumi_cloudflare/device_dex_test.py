@@ -43,16 +43,28 @@ class DeviceDexTestArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             account_id: pulumi.Input[str],
-             data: pulumi.Input['DeviceDexTestDataArgs'],
-             description: pulumi.Input[str],
-             enabled: pulumi.Input[bool],
-             interval: pulumi.Input[str],
-             name: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             account_id: Optional[pulumi.Input[str]] = None,
+             data: Optional[pulumi.Input['DeviceDexTestDataArgs']] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             enabled: Optional[pulumi.Input[bool]] = None,
+             interval: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'accountId' in kwargs:
+        if account_id is None and 'accountId' in kwargs:
             account_id = kwargs['accountId']
+        if account_id is None:
+            raise TypeError("Missing 'account_id' argument")
+        if data is None:
+            raise TypeError("Missing 'data' argument")
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if enabled is None:
+            raise TypeError("Missing 'enabled' argument")
+        if interval is None:
+            raise TypeError("Missing 'interval' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
 
         _setter("account_id", account_id)
         _setter("data", data)
@@ -178,9 +190,9 @@ class _DeviceDexTestState:
              interval: Optional[pulumi.Input[str]] = None,
              name: Optional[pulumi.Input[str]] = None,
              updated: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'accountId' in kwargs:
+        if account_id is None and 'accountId' in kwargs:
             account_id = kwargs['accountId']
 
         if account_id is not None:
@@ -312,25 +324,6 @@ class DeviceDexTest(pulumi.CustomResource):
         """
         Provides a Cloudflare Device Dex Test resource. Device Dex Tests allow for building location-aware device settings policies.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudflare as cloudflare
-
-        example = cloudflare.DeviceDexTest("example",
-            account_id="f037e56e89293a057740de681ac9abbe",
-            data=cloudflare.DeviceDexTestDataArgs(
-                host="https://example.com/home",
-                kind="http",
-                method="GET",
-            ),
-            description="Send a HTTP GET request to the home endpoint every half hour.",
-            enabled=True,
-            interval="0h30m0s",
-            name="GET homepage")
-        ```
-
         ## Import
 
         ```sh
@@ -354,25 +347,6 @@ class DeviceDexTest(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Provides a Cloudflare Device Dex Test resource. Device Dex Tests allow for building location-aware device settings policies.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudflare as cloudflare
-
-        example = cloudflare.DeviceDexTest("example",
-            account_id="f037e56e89293a057740de681ac9abbe",
-            data=cloudflare.DeviceDexTestDataArgs(
-                host="https://example.com/home",
-                kind="http",
-                method="GET",
-            ),
-            description="Send a HTTP GET request to the home endpoint every half hour.",
-            enabled=True,
-            interval="0h30m0s",
-            name="GET homepage")
-        ```
 
         ## Import
 
@@ -417,11 +391,7 @@ class DeviceDexTest(pulumi.CustomResource):
             if account_id is None and not opts.urn:
                 raise TypeError("Missing required property 'account_id'")
             __props__.__dict__["account_id"] = account_id
-            if data is not None and not isinstance(data, DeviceDexTestDataArgs):
-                data = data or {}
-                def _setter(key, value):
-                    data[key] = value
-                DeviceDexTestDataArgs._configure(_setter, **data)
+            data = _utilities.configure(data, DeviceDexTestDataArgs, True)
             if data is None and not opts.urn:
                 raise TypeError("Missing required property 'data'")
             __props__.__dict__["data"] = data

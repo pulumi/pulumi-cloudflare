@@ -32,15 +32,21 @@ class PagesDomainArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             account_id: pulumi.Input[str],
-             domain: pulumi.Input[str],
-             project_name: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             account_id: Optional[pulumi.Input[str]] = None,
+             domain: Optional[pulumi.Input[str]] = None,
+             project_name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'accountId' in kwargs:
+        if account_id is None and 'accountId' in kwargs:
             account_id = kwargs['accountId']
-        if 'projectName' in kwargs:
+        if account_id is None:
+            raise TypeError("Missing 'account_id' argument")
+        if domain is None:
+            raise TypeError("Missing 'domain' argument")
+        if project_name is None and 'projectName' in kwargs:
             project_name = kwargs['projectName']
+        if project_name is None:
+            raise TypeError("Missing 'project_name' argument")
 
         _setter("account_id", account_id)
         _setter("domain", domain)
@@ -111,11 +117,11 @@ class _PagesDomainState:
              domain: Optional[pulumi.Input[str]] = None,
              project_name: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'accountId' in kwargs:
+        if account_id is None and 'accountId' in kwargs:
             account_id = kwargs['accountId']
-        if 'projectName' in kwargs:
+        if project_name is None and 'projectName' in kwargs:
             project_name = kwargs['projectName']
 
         if account_id is not None:
@@ -190,18 +196,6 @@ class PagesDomain(pulumi.CustomResource):
 
         > A DNS record for the domain is not automatically created. You need to create a `Record` resource for the domain you want to use.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudflare as cloudflare
-
-        my_domain = cloudflare.PagesDomain("my-domain",
-            account_id="f037e56e89293a057740de681ac9abbe",
-            domain="example.com",
-            project_name="my-example-project")
-        ```
-
         ## Import
 
         ```sh
@@ -224,18 +218,6 @@ class PagesDomain(pulumi.CustomResource):
         Provides a resource for managing Cloudflare Pages domains.
 
         > A DNS record for the domain is not automatically created. You need to create a `Record` resource for the domain you want to use.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudflare as cloudflare
-
-        my_domain = cloudflare.PagesDomain("my-domain",
-            account_id="f037e56e89293a057740de681ac9abbe",
-            domain="example.com",
-            project_name="my-example-project")
-        ```
 
         ## Import
 

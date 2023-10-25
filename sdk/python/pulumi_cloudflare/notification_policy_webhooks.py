@@ -35,14 +35,18 @@ class NotificationPolicyWebhooksArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             account_id: pulumi.Input[str],
-             name: pulumi.Input[str],
+             account_id: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
              secret: Optional[pulumi.Input[str]] = None,
              url: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'accountId' in kwargs:
+        if account_id is None and 'accountId' in kwargs:
             account_id = kwargs['accountId']
+        if account_id is None:
+            raise TypeError("Missing 'account_id' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
 
         _setter("account_id", account_id)
         _setter("name", name)
@@ -143,15 +147,15 @@ class _NotificationPolicyWebhooksState:
              secret: Optional[pulumi.Input[str]] = None,
              type: Optional[pulumi.Input[str]] = None,
              url: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'accountId' in kwargs:
+        if account_id is None and 'accountId' in kwargs:
             account_id = kwargs['accountId']
-        if 'createdAt' in kwargs:
+        if created_at is None and 'createdAt' in kwargs:
             created_at = kwargs['createdAt']
-        if 'lastFailure' in kwargs:
+        if last_failure is None and 'lastFailure' in kwargs:
             last_failure = kwargs['lastFailure']
-        if 'lastSuccess' in kwargs:
+        if last_success is None and 'lastSuccess' in kwargs:
             last_success = kwargs['lastSuccess']
 
         if account_id is not None:
@@ -278,19 +282,6 @@ class NotificationPolicyWebhooks(pulumi.CustomResource):
         """
         Provides a resource, that manages a webhook destination. These destinations can be tied to the notification policies created for Cloudflare's products.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudflare as cloudflare
-
-        example = cloudflare.NotificationPolicyWebhooks("example",
-            account_id="f037e56e89293a057740de681ac9abbe",
-            name="Webhooks destination",
-            secret="my-secret",
-            url="https://example.com")
-        ```
-
         ## Import
 
         ```sh
@@ -312,19 +303,6 @@ class NotificationPolicyWebhooks(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Provides a resource, that manages a webhook destination. These destinations can be tied to the notification policies created for Cloudflare's products.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudflare as cloudflare
-
-        example = cloudflare.NotificationPolicyWebhooks("example",
-            account_id="f037e56e89293a057740de681ac9abbe",
-            name="Webhooks destination",
-            secret="my-secret",
-            url="https://example.com")
-        ```
 
         ## Import
 

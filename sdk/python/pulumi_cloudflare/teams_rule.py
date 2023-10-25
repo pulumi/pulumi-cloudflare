@@ -58,24 +58,34 @@ class TeamsRuleArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             account_id: pulumi.Input[str],
-             action: pulumi.Input[str],
-             description: pulumi.Input[str],
-             name: pulumi.Input[str],
-             precedence: pulumi.Input[int],
+             account_id: Optional[pulumi.Input[str]] = None,
+             action: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             precedence: Optional[pulumi.Input[int]] = None,
              device_posture: Optional[pulumi.Input[str]] = None,
              enabled: Optional[pulumi.Input[bool]] = None,
              filters: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              identity: Optional[pulumi.Input[str]] = None,
              rule_settings: Optional[pulumi.Input['TeamsRuleRuleSettingsArgs']] = None,
              traffic: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'accountId' in kwargs:
+        if account_id is None and 'accountId' in kwargs:
             account_id = kwargs['accountId']
-        if 'devicePosture' in kwargs:
+        if account_id is None:
+            raise TypeError("Missing 'account_id' argument")
+        if action is None:
+            raise TypeError("Missing 'action' argument")
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if precedence is None:
+            raise TypeError("Missing 'precedence' argument")
+        if device_posture is None and 'devicePosture' in kwargs:
             device_posture = kwargs['devicePosture']
-        if 'ruleSettings' in kwargs:
+        if rule_settings is None and 'ruleSettings' in kwargs:
             rule_settings = kwargs['ruleSettings']
 
         _setter("account_id", account_id)
@@ -288,13 +298,13 @@ class _TeamsRuleState:
              rule_settings: Optional[pulumi.Input['TeamsRuleRuleSettingsArgs']] = None,
              traffic: Optional[pulumi.Input[str]] = None,
              version: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'accountId' in kwargs:
+        if account_id is None and 'accountId' in kwargs:
             account_id = kwargs['accountId']
-        if 'devicePosture' in kwargs:
+        if device_posture is None and 'devicePosture' in kwargs:
             device_posture = kwargs['devicePosture']
-        if 'ruleSettings' in kwargs:
+        if rule_settings is None and 'ruleSettings' in kwargs:
             rule_settings = kwargs['ruleSettings']
 
         if account_id is not None:
@@ -484,26 +494,6 @@ class TeamsRule(pulumi.CustomResource):
         """
         Provides a Cloudflare Teams rule resource. Teams rules comprise secure web gateway policies.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudflare as cloudflare
-
-        example = cloudflare.TeamsRule("example",
-            account_id="f037e56e89293a057740de681ac9abbe",
-            action="block",
-            description="desc",
-            filters=["http"],
-            name="office",
-            precedence=1,
-            rule_settings=cloudflare.TeamsRuleRuleSettingsArgs(
-                block_page_enabled=True,
-                block_page_reason="access not permitted",
-            ),
-            traffic="http.request.uri == \\"https://www.example.com/malicious\\"")
-        ```
-
         ## Import
 
         ```sh
@@ -532,26 +522,6 @@ class TeamsRule(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Provides a Cloudflare Teams rule resource. Teams rules comprise secure web gateway policies.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudflare as cloudflare
-
-        example = cloudflare.TeamsRule("example",
-            account_id="f037e56e89293a057740de681ac9abbe",
-            action="block",
-            description="desc",
-            filters=["http"],
-            name="office",
-            precedence=1,
-            rule_settings=cloudflare.TeamsRuleRuleSettingsArgs(
-                block_page_enabled=True,
-                block_page_reason="access not permitted",
-            ),
-            traffic="http.request.uri == \\"https://www.example.com/malicious\\"")
-        ```
 
         ## Import
 
@@ -617,11 +587,7 @@ class TeamsRule(pulumi.CustomResource):
             if precedence is None and not opts.urn:
                 raise TypeError("Missing required property 'precedence'")
             __props__.__dict__["precedence"] = precedence
-            if rule_settings is not None and not isinstance(rule_settings, TeamsRuleRuleSettingsArgs):
-                rule_settings = rule_settings or {}
-                def _setter(key, value):
-                    rule_settings[key] = value
-                TeamsRuleRuleSettingsArgs._configure(_setter, **rule_settings)
+            rule_settings = _utilities.configure(rule_settings, TeamsRuleRuleSettingsArgs, True)
             __props__.__dict__["rule_settings"] = rule_settings
             __props__.__dict__["traffic"] = traffic
             __props__.__dict__["version"] = None

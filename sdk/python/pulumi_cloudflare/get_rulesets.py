@@ -108,18 +108,6 @@ def get_rulesets(account_id: Optional[str] = None,
     """
     Use this datasource to lookup Rulesets in an account or zone.
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_cloudflare as cloudflare
-
-    example = cloudflare.get_rulesets(filter=cloudflare.GetRulesetsFilterArgs(
-            name=".*OWASP.*",
-        ),
-        zone_id="0da42c8d2132a9ddaf714f9e7c920711")
-    ```
-
 
     :param str account_id: The account identifier to target for the resource. Must provide only one of `zone_id`, `account_id`.
     :param bool include_rules: Include rule data in response.
@@ -150,18 +138,6 @@ def get_rulesets_output(account_id: Optional[pulumi.Input[Optional[str]]] = None
                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetRulesetsResult]:
     """
     Use this datasource to lookup Rulesets in an account or zone.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_cloudflare as cloudflare
-
-    example = cloudflare.get_rulesets(filter=cloudflare.GetRulesetsFilterArgs(
-            name=".*OWASP.*",
-        ),
-        zone_id="0da42c8d2132a9ddaf714f9e7c920711")
-    ```
 
 
     :param str account_id: The account identifier to target for the resource. Must provide only one of `zone_id`, `account_id`.

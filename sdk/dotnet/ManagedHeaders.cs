@@ -13,41 +13,6 @@ namespace Pulumi.Cloudflare
     /// The [Cloudflare Managed Headers](https://developers.cloudflare.com/rules/transform/managed-transforms/)
     /// allows you to add or remove some predefined headers to one's
     /// requests or origin responses.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Cloudflare = Pulumi.Cloudflare;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     // Enable security headers using Managed Meaders
-    ///     var example = new Cloudflare.ManagedHeaders("example", new()
-    ///     {
-    ///         ManagedRequestHeaders = new[]
-    ///         {
-    ///             new Cloudflare.Inputs.ManagedHeadersManagedRequestHeaderArgs
-    ///             {
-    ///                 Enabled = true,
-    ///                 Id = "add_true_client_ip_headers",
-    ///             },
-    ///         },
-    ///         ManagedResponseHeaders = new[]
-    ///         {
-    ///             new Cloudflare.Inputs.ManagedHeadersManagedResponseHeaderArgs
-    ///             {
-    ///                 Enabled = true,
-    ///                 Id = "remove_x-powered-by_header",
-    ///             },
-    ///         },
-    ///         ZoneId = "0da42c8d2132a9ddaf714f9e7c920711",
-    ///     });
-    /// 
-    /// });
-    /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/managedHeaders:ManagedHeaders")]
     public partial class ManagedHeaders : global::Pulumi.CustomResource

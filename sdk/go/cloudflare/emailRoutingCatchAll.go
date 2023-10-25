@@ -14,47 +14,6 @@ import (
 )
 
 // Provides a resource for managing Email Routing Addresses catch all behaviour.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewEmailRoutingCatchAll(ctx, "example", &cloudflare.EmailRoutingCatchAllArgs{
-//				Actions: cloudflare.EmailRoutingCatchAllActionArray{
-//					&cloudflare.EmailRoutingCatchAllActionArgs{
-//						Type: pulumi.String("forward"),
-//						Values: pulumi.StringArray{
-//							pulumi.String("destinationaddress@example.net"),
-//						},
-//					},
-//				},
-//				Enabled: pulumi.Bool(true),
-//				Matchers: cloudflare.EmailRoutingCatchAllMatcherArray{
-//					&cloudflare.EmailRoutingCatchAllMatcherArgs{
-//						Type: pulumi.String("all"),
-//					},
-//				},
-//				Name:   pulumi.String("example catch all"),
-//				ZoneId: pulumi.String("0da42c8d2132a9ddaf714f9e7c920711"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 type EmailRoutingCatchAll struct {
 	pulumi.CustomResourceState
 

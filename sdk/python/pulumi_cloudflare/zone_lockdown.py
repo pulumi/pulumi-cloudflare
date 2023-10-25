@@ -42,16 +42,22 @@ class ZoneLockdownArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             configurations: pulumi.Input[Sequence[pulumi.Input['ZoneLockdownConfigurationArgs']]],
-             urls: pulumi.Input[Sequence[pulumi.Input[str]]],
-             zone_id: pulumi.Input[str],
+             configurations: Optional[pulumi.Input[Sequence[pulumi.Input['ZoneLockdownConfigurationArgs']]]] = None,
+             urls: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             zone_id: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              paused: Optional[pulumi.Input[bool]] = None,
              priority: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'zoneId' in kwargs:
+        if configurations is None:
+            raise TypeError("Missing 'configurations' argument")
+        if urls is None:
+            raise TypeError("Missing 'urls' argument")
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
+        if zone_id is None:
+            raise TypeError("Missing 'zone_id' argument")
 
         _setter("configurations", configurations)
         _setter("urls", urls)
@@ -168,9 +174,9 @@ class _ZoneLockdownState:
              priority: Optional[pulumi.Input[int]] = None,
              urls: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'zoneId' in kwargs:
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
 
         if configurations is not None:
@@ -275,24 +281,6 @@ class ZoneLockdown(pulumi.CustomResource):
         from an IP address that matches a safelist of one or more IP
         addresses and/or IP ranges.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudflare as cloudflare
-
-        # Restrict access to these endpoints to requests from a known IP address range.
-        example = cloudflare.ZoneLockdown("example",
-            configurations=[cloudflare.ZoneLockdownConfigurationArgs(
-                target="ip_range",
-                value="192.0.2.0/24",
-            )],
-            description="Restrict access to these endpoints to requests from a known IP address range",
-            paused=False,
-            urls=["api.mysite.com/some/endpoint*"],
-            zone_id="0da42c8d2132a9ddaf714f9e7c920711")
-        ```
-
         ## Import
 
         ```sh
@@ -319,24 +307,6 @@ class ZoneLockdown(pulumi.CustomResource):
         or path) that will only permit access if the request originates
         from an IP address that matches a safelist of one or more IP
         addresses and/or IP ranges.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudflare as cloudflare
-
-        # Restrict access to these endpoints to requests from a known IP address range.
-        example = cloudflare.ZoneLockdown("example",
-            configurations=[cloudflare.ZoneLockdownConfigurationArgs(
-                target="ip_range",
-                value="192.0.2.0/24",
-            )],
-            description="Restrict access to these endpoints to requests from a known IP address range",
-            paused=False,
-            urls=["api.mysite.com/some/endpoint*"],
-            zone_id="0da42c8d2132a9ddaf714f9e7c920711")
-        ```
 
         ## Import
 

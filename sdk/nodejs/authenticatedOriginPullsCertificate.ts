@@ -9,28 +9,6 @@ import * as utilities from "./utilities";
  * resource. An uploaded client certificate is required to use Per-Zone
  *  or Per-Hostname Authenticated Origin Pulls.
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as cloudflare from "@pulumi/cloudflare";
- *
- * // Per-Zone Authenticated Origin Pulls certificate
- * const myPerZoneAopCert = new cloudflare.AuthenticatedOriginPullsCertificate("myPerZoneAopCert", {
- *     certificate: "-----INSERT CERTIFICATE-----",
- *     privateKey: "-----INSERT PRIVATE KEY-----",
- *     type: "per-zone",
- *     zoneId: "0da42c8d2132a9ddaf714f9e7c920711",
- * });
- * // Per-Hostname Authenticated Origin Pulls certificate
- * const myPerHostnameAopCert = new cloudflare.AuthenticatedOriginPullsCertificate("myPerHostnameAopCert", {
- *     certificate: "-----INSERT CERTIFICATE-----",
- *     privateKey: "-----INSERT PRIVATE KEY-----",
- *     type: "per-hostname",
- *     zoneId: "0da42c8d2132a9ddaf714f9e7c920711",
- * });
- * ```
- *
  * ## Import
  *
  * ```sh

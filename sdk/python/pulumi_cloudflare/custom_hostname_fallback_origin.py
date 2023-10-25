@@ -29,12 +29,16 @@ class CustomHostnameFallbackOriginArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             origin: pulumi.Input[str],
-             zone_id: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None,
+             origin: Optional[pulumi.Input[str]] = None,
+             zone_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'zoneId' in kwargs:
+        if origin is None:
+            raise TypeError("Missing 'origin' argument")
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
+        if zone_id is None:
+            raise TypeError("Missing 'zone_id' argument")
 
         _setter("origin", origin)
         _setter("zone_id", zone_id)
@@ -88,9 +92,9 @@ class _CustomHostnameFallbackOriginState:
              origin: Optional[pulumi.Input[str]] = None,
              status: Optional[pulumi.Input[str]] = None,
              zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'zoneId' in kwargs:
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
 
         if origin is not None:
@@ -148,17 +152,6 @@ class CustomHostnameFallbackOrigin(pulumi.CustomResource):
         """
         Provides a Cloudflare custom hostname fallback origin resource.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudflare as cloudflare
-
-        example = cloudflare.CustomHostnameFallbackOrigin("example",
-            origin="fallback.example.com",
-            zone_id="0da42c8d2132a9ddaf714f9e7c920711")
-        ```
-
         ## Import
 
         ```sh
@@ -178,17 +171,6 @@ class CustomHostnameFallbackOrigin(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Provides a Cloudflare custom hostname fallback origin resource.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudflare as cloudflare
-
-        example = cloudflare.CustomHostnameFallbackOrigin("example",
-            origin="fallback.example.com",
-            zone_id="0da42c8d2132a9ddaf714f9e7c920711")
-        ```
 
         ## Import
 

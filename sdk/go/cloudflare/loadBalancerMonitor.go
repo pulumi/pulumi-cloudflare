@@ -18,39 +18,6 @@ import (
 // to actively check the availability of those servers over HTTP(S) or
 // TCP.
 //
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewLoadBalancerMonitor(ctx, "example", &cloudflare.LoadBalancerMonitorArgs{
-//				AccountId:   pulumi.String("f037e56e89293a057740de681ac9abbe"),
-//				Description: pulumi.String("example tcp load balancer"),
-//				Interval:    pulumi.Int(60),
-//				Method:      pulumi.String("connection_established"),
-//				Port:        pulumi.Int(8080),
-//				Retries:     pulumi.Int(5),
-//				Timeout:     pulumi.Int(7),
-//				Type:        pulumi.String("tcp"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // ```sh

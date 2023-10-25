@@ -12,25 +12,6 @@ namespace Pulumi.Cloudflare
     /// <summary>
     /// Configure zone-wide settings for Cloudflare waiting rooms.
     /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Cloudflare = Pulumi.Cloudflare;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var example = new Cloudflare.WaitingRoomSettings("example", new()
-    ///     {
-    ///         SearchEngineCrawlerBypass = true,
-    ///         ZoneId = "0da42c8d2132a9ddaf714f9e7c920711",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// ```sh

@@ -14,25 +14,6 @@ namespace Pulumi.Cloudflare
     /// challenges to use in a Logpush Job. On it's own, doesn't do much
     /// however this resource should be used in conjunction to create
     /// Logpush jobs.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Cloudflare = Pulumi.Cloudflare;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var example = new Cloudflare.LogpushOwnershipChallenge("example", new()
-    ///     {
-    ///         DestinationConf = "s3://my-bucket-path?region=us-west-2",
-    ///         ZoneId = "0da42c8d2132a9ddaf714f9e7c920711",
-    ///     });
-    /// 
-    /// });
-    /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/logpushOwnershipChallenge:LogpushOwnershipChallenge")]
     public partial class LogpushOwnershipChallenge : global::Pulumi.CustomResource

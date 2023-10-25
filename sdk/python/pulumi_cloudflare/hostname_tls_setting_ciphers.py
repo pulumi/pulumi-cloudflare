@@ -35,14 +35,20 @@ class HostnameTlsSettingCiphersArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             hostname: pulumi.Input[str],
-             values: pulumi.Input[Sequence[pulumi.Input[str]]],
-             zone_id: pulumi.Input[str],
+             hostname: Optional[pulumi.Input[str]] = None,
+             values: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             zone_id: Optional[pulumi.Input[str]] = None,
              ports: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'zoneId' in kwargs:
+        if hostname is None:
+            raise TypeError("Missing 'hostname' argument")
+        if values is None:
+            raise TypeError("Missing 'values' argument")
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
+        if zone_id is None:
+            raise TypeError("Missing 'zone_id' argument")
 
         _setter("hostname", hostname)
         _setter("values", values)
@@ -133,13 +139,13 @@ class _HostnameTlsSettingCiphersState:
              updated_at: Optional[pulumi.Input[str]] = None,
              values: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
              zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'createdAt' in kwargs:
+        if created_at is None and 'createdAt' in kwargs:
             created_at = kwargs['createdAt']
-        if 'updatedAt' in kwargs:
+        if updated_at is None and 'updatedAt' in kwargs:
             updated_at = kwargs['updatedAt']
-        if 'zoneId' in kwargs:
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
 
         if created_at is not None:
@@ -235,18 +241,6 @@ class HostnameTlsSettingCiphers(pulumi.CustomResource):
         """
         Provides a Cloudflare per-hostname TLS setting resource, specifically for ciphers suites. Used to set ciphers suites for hostnames under the specified zone.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudflare as cloudflare
-
-        example = cloudflare.HostnameTlsSettingCiphers("example",
-            hostname="sub.example.com",
-            values=["ECDHE-RSA-AES128-GCM-SHA256"],
-            zone_id="0da42c8d2132a9ddaf714f9e7c920711")
-        ```
-
         ## Import
 
         ```sh
@@ -268,18 +262,6 @@ class HostnameTlsSettingCiphers(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Provides a Cloudflare per-hostname TLS setting resource, specifically for ciphers suites. Used to set ciphers suites for hostnames under the specified zone.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudflare as cloudflare
-
-        example = cloudflare.HostnameTlsSettingCiphers("example",
-            hostname="sub.example.com",
-            values=["ECDHE-RSA-AES128-GCM-SHA256"],
-            zone_id="0da42c8d2132a9ddaf714f9e7c920711")
-        ```
 
         ## Import
 

@@ -35,15 +35,21 @@ class TunnelArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             account_id: pulumi.Input[str],
-             name: pulumi.Input[str],
-             secret: pulumi.Input[str],
+             account_id: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             secret: Optional[pulumi.Input[str]] = None,
              config_src: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'accountId' in kwargs:
+        if account_id is None and 'accountId' in kwargs:
             account_id = kwargs['accountId']
-        if 'configSrc' in kwargs:
+        if account_id is None:
+            raise TypeError("Missing 'account_id' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if secret is None:
+            raise TypeError("Missing 'secret' argument")
+        if config_src is None and 'configSrc' in kwargs:
             config_src = kwargs['configSrc']
 
         _setter("account_id", account_id)
@@ -137,13 +143,13 @@ class _TunnelState:
              name: Optional[pulumi.Input[str]] = None,
              secret: Optional[pulumi.Input[str]] = None,
              tunnel_token: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'accountId' in kwargs:
+        if account_id is None and 'accountId' in kwargs:
             account_id = kwargs['accountId']
-        if 'configSrc' in kwargs:
+        if config_src is None and 'configSrc' in kwargs:
             config_src = kwargs['configSrc']
-        if 'tunnelToken' in kwargs:
+        if tunnel_token is None and 'tunnelToken' in kwargs:
             tunnel_token = kwargs['tunnelToken']
 
         if account_id is not None:
@@ -247,18 +253,6 @@ class Tunnel(pulumi.CustomResource):
         network with an internet connection without manually adding DNS
         records or configuring a firewall or router.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudflare as cloudflare
-
-        example = cloudflare.Tunnel("example",
-            account_id="f037e56e89293a057740de681ac9abbe",
-            name="my-tunnel",
-            secret="AQIDBAUGBwgBAgMEBQYHCAECAwQFBgcIAQIDBAUGBwg=")
-        ```
-
         ## Import
 
         ```sh
@@ -282,18 +276,6 @@ class Tunnel(pulumi.CustomResource):
         Tunnel exposes applications running on your local web server on any
         network with an internet connection without manually adding DNS
         records or configuring a firewall or router.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudflare as cloudflare
-
-        example = cloudflare.Tunnel("example",
-            account_id="f037e56e89293a057740de681ac9abbe",
-            name="my-tunnel",
-            secret="AQIDBAUGBwgBAgMEBQYHCAECAwQFBgcIAQIDBAUGBwg=")
-        ```
 
         ## Import
 

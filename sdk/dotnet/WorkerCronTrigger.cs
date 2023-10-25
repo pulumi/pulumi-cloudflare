@@ -15,38 +15,6 @@ namespace Pulumi.Cloudflare
     /// schedule. Worker Cron Triggers are ideal for running periodic jobs for
     /// maintenance or calling third-party APIs to collect up-to-date data.
     /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.IO;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Cloudflare = Pulumi.Cloudflare;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var exampleScript = new Cloudflare.WorkerScript("exampleScript", new()
-    ///     {
-    ///         AccountId = "f037e56e89293a057740de681ac9abbe",
-    ///         Name = "example-script",
-    ///         Content = File.ReadAllText("path/to/my.js"),
-    ///     });
-    /// 
-    ///     var exampleTrigger = new Cloudflare.WorkerCronTrigger("exampleTrigger", new()
-    ///     {
-    ///         AccountId = "f037e56e89293a057740de681ac9abbe",
-    ///         ScriptName = exampleScript.Name,
-    ///         Schedules = new[]
-    ///         {
-    ///             "*/5 * * * *",
-    ///             "10 7 * * mon-fri",
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// ```sh

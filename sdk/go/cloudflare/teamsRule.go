@@ -15,44 +15,6 @@ import (
 
 // Provides a Cloudflare Teams rule resource. Teams rules comprise secure web gateway policies.
 //
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewTeamsRule(ctx, "example", &cloudflare.TeamsRuleArgs{
-//				AccountId:   pulumi.String("f037e56e89293a057740de681ac9abbe"),
-//				Action:      pulumi.String("block"),
-//				Description: pulumi.String("desc"),
-//				Filters: pulumi.StringArray{
-//					pulumi.String("http"),
-//				},
-//				Name:       pulumi.String("office"),
-//				Precedence: pulumi.Int(1),
-//				RuleSettings: &cloudflare.TeamsRuleRuleSettingsArgs{
-//					BlockPageEnabled: pulumi.Bool(true),
-//					BlockPageReason:  pulumi.String("access not permitted"),
-//				},
-//				Traffic: pulumi.String("http.request.uri == \"https://www.example.com/malicious\""),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // ```sh

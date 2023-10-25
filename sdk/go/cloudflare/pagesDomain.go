@@ -17,34 +17,6 @@ import (
 //
 // > A DNS record for the domain is not automatically created. You need to create a `Record` resource for the domain you want to use.
 //
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewPagesDomain(ctx, "my-domain", &cloudflare.PagesDomainArgs{
-//				AccountId:   pulumi.String("f037e56e89293a057740de681ac9abbe"),
-//				Domain:      pulumi.String("example.com"),
-//				ProjectName: pulumi.String("my-example-project"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // ```sh

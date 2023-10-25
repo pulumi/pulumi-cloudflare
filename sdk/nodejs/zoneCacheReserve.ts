@@ -11,18 +11,6 @@ import * as utilities from "./utilities";
  *
  * Note: Using Cache Reserve without Tiered Cache is not recommended.
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as cloudflare from "@pulumi/cloudflare";
- *
- * const example = new cloudflare.ZoneCacheReserve("example", {
- *     enabled: true,
- *     zoneId: "0da42c8d2132a9ddaf714f9e7c920711",
- * });
- * ```
- *
  * ## Import
  *
  * ```sh

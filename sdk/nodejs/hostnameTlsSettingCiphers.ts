@@ -7,19 +7,6 @@ import * as utilities from "./utilities";
 /**
  * Provides a Cloudflare per-hostname TLS setting resource, specifically for ciphers suites. Used to set ciphers suites for hostnames under the specified zone.
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as cloudflare from "@pulumi/cloudflare";
- *
- * const example = new cloudflare.HostnameTlsSettingCiphers("example", {
- *     hostname: "sub.example.com",
- *     values: ["ECDHE-RSA-AES128-GCM-SHA256"],
- *     zoneId: "0da42c8d2132a9ddaf714f9e7c920711",
- * });
- * ```
- *
  * ## Import
  *
  * ```sh

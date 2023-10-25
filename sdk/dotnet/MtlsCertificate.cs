@@ -12,34 +12,6 @@ namespace Pulumi.Cloudflare
     /// <summary>
     /// Provides a Cloudflare mTLS certificate resource. These certificates may be used with mTLS enabled Cloudflare services.
     /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Cloudflare = Pulumi.Cloudflare;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var example = new Cloudflare.MtlsCertificate("example", new()
-    ///     {
-    ///         AccountId = "f037e56e89293a057740de681ac9abbe",
-    ///         Ca = true,
-    ///         Certificates = @"-----BEGIN CERTIFICATE-----
-    /// MIIDmDCCAoCgAwIBAgIUKTOAZNj...i4JhqeoTewsxndhDDE
-    /// -----END CERTIFICATE-----
-    /// ",
-    ///         Name = "example",
-    ///         PrivateKey = @"-----BEGIN PRIVATE KEY-----
-    /// MIIEvQIBADANBgkqhkiG9w0BAQE...1IS3EnQRrz6WMYA=
-    /// -----END PRIVATE KEY-----
-    /// ",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// ```sh

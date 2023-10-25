@@ -68,10 +68,10 @@ class IpsecTunnelArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             cloudflare_endpoint: pulumi.Input[str],
-             customer_endpoint: pulumi.Input[str],
-             interface_address: pulumi.Input[str],
-             name: pulumi.Input[str],
+             cloudflare_endpoint: Optional[pulumi.Input[str]] = None,
+             customer_endpoint: Optional[pulumi.Input[str]] = None,
+             interface_address: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
              account_id: Optional[pulumi.Input[str]] = None,
              allow_null_cipher: Optional[pulumi.Input[bool]] = None,
              description: Optional[pulumi.Input[str]] = None,
@@ -83,31 +83,39 @@ class IpsecTunnelArgs:
              psk: Optional[pulumi.Input[str]] = None,
              remote_id: Optional[pulumi.Input[str]] = None,
              user_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'cloudflareEndpoint' in kwargs:
+        if cloudflare_endpoint is None and 'cloudflareEndpoint' in kwargs:
             cloudflare_endpoint = kwargs['cloudflareEndpoint']
-        if 'customerEndpoint' in kwargs:
+        if cloudflare_endpoint is None:
+            raise TypeError("Missing 'cloudflare_endpoint' argument")
+        if customer_endpoint is None and 'customerEndpoint' in kwargs:
             customer_endpoint = kwargs['customerEndpoint']
-        if 'interfaceAddress' in kwargs:
+        if customer_endpoint is None:
+            raise TypeError("Missing 'customer_endpoint' argument")
+        if interface_address is None and 'interfaceAddress' in kwargs:
             interface_address = kwargs['interfaceAddress']
-        if 'accountId' in kwargs:
+        if interface_address is None:
+            raise TypeError("Missing 'interface_address' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if account_id is None and 'accountId' in kwargs:
             account_id = kwargs['accountId']
-        if 'allowNullCipher' in kwargs:
+        if allow_null_cipher is None and 'allowNullCipher' in kwargs:
             allow_null_cipher = kwargs['allowNullCipher']
-        if 'fqdnId' in kwargs:
+        if fqdn_id is None and 'fqdnId' in kwargs:
             fqdn_id = kwargs['fqdnId']
-        if 'healthCheckEnabled' in kwargs:
+        if health_check_enabled is None and 'healthCheckEnabled' in kwargs:
             health_check_enabled = kwargs['healthCheckEnabled']
-        if 'healthCheckTarget' in kwargs:
+        if health_check_target is None and 'healthCheckTarget' in kwargs:
             health_check_target = kwargs['healthCheckTarget']
-        if 'healthCheckType' in kwargs:
+        if health_check_type is None and 'healthCheckType' in kwargs:
             health_check_type = kwargs['healthCheckType']
-        if 'hexId' in kwargs:
+        if hex_id is None and 'hexId' in kwargs:
             hex_id = kwargs['hexId']
-        if 'remoteId' in kwargs:
+        if remote_id is None and 'remoteId' in kwargs:
             remote_id = kwargs['remoteId']
-        if 'userId' in kwargs:
+        if user_id is None and 'userId' in kwargs:
             user_id = kwargs['userId']
 
         _setter("cloudflare_endpoint", cloudflare_endpoint)
@@ -390,31 +398,31 @@ class _IpsecTunnelState:
              psk: Optional[pulumi.Input[str]] = None,
              remote_id: Optional[pulumi.Input[str]] = None,
              user_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'accountId' in kwargs:
+        if account_id is None and 'accountId' in kwargs:
             account_id = kwargs['accountId']
-        if 'allowNullCipher' in kwargs:
+        if allow_null_cipher is None and 'allowNullCipher' in kwargs:
             allow_null_cipher = kwargs['allowNullCipher']
-        if 'cloudflareEndpoint' in kwargs:
+        if cloudflare_endpoint is None and 'cloudflareEndpoint' in kwargs:
             cloudflare_endpoint = kwargs['cloudflareEndpoint']
-        if 'customerEndpoint' in kwargs:
+        if customer_endpoint is None and 'customerEndpoint' in kwargs:
             customer_endpoint = kwargs['customerEndpoint']
-        if 'fqdnId' in kwargs:
+        if fqdn_id is None and 'fqdnId' in kwargs:
             fqdn_id = kwargs['fqdnId']
-        if 'healthCheckEnabled' in kwargs:
+        if health_check_enabled is None and 'healthCheckEnabled' in kwargs:
             health_check_enabled = kwargs['healthCheckEnabled']
-        if 'healthCheckTarget' in kwargs:
+        if health_check_target is None and 'healthCheckTarget' in kwargs:
             health_check_target = kwargs['healthCheckTarget']
-        if 'healthCheckType' in kwargs:
+        if health_check_type is None and 'healthCheckType' in kwargs:
             health_check_type = kwargs['healthCheckType']
-        if 'hexId' in kwargs:
+        if hex_id is None and 'hexId' in kwargs:
             hex_id = kwargs['hexId']
-        if 'interfaceAddress' in kwargs:
+        if interface_address is None and 'interfaceAddress' in kwargs:
             interface_address = kwargs['interfaceAddress']
-        if 'remoteId' in kwargs:
+        if remote_id is None and 'remoteId' in kwargs:
             remote_id = kwargs['remoteId']
-        if 'userId' in kwargs:
+        if user_id is None and 'userId' in kwargs:
             user_id = kwargs['userId']
 
         if account_id is not None:
@@ -653,26 +661,6 @@ class IpsecTunnel(pulumi.CustomResource):
         """
         Provides a resource, that manages IPsec tunnels for Magic Transit.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudflare as cloudflare
-
-        example = cloudflare.IpsecTunnel("example",
-            account_id="f037e56e89293a057740de681ac9abbe",
-            allow_null_cipher=False,
-            cloudflare_endpoint="203.0.113.1",
-            customer_endpoint="203.0.113.1",
-            description="Tunnel for ISP X",
-            health_check_enabled=True,
-            health_check_target="203.0.113.1",
-            health_check_type="reply",
-            interface_address="192.0.2.0/31",
-            name="IPsec_1",
-            psk="asdf12341234")
-        ```
-
         ## Import
 
         ```sh
@@ -705,26 +693,6 @@ class IpsecTunnel(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Provides a resource, that manages IPsec tunnels for Magic Transit.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudflare as cloudflare
-
-        example = cloudflare.IpsecTunnel("example",
-            account_id="f037e56e89293a057740de681ac9abbe",
-            allow_null_cipher=False,
-            cloudflare_endpoint="203.0.113.1",
-            customer_endpoint="203.0.113.1",
-            description="Tunnel for ISP X",
-            health_check_enabled=True,
-            health_check_target="203.0.113.1",
-            health_check_type="reply",
-            interface_address="192.0.2.0/31",
-            name="IPsec_1",
-            psk="asdf12341234")
-        ```
 
         ## Import
 

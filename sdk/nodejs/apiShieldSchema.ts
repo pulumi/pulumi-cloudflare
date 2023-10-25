@@ -6,22 +6,6 @@ import * as utilities from "./utilities";
 
 /**
  * Provides a resource to manage a schema in API Shield Schema Validation 2.0.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as cloudflare from "@pulumi/cloudflare";
- * import * as fs from "fs";
- *
- * const petstoreSchema = new cloudflare.ApiShieldSchema("petstoreSchema", {
- *     zoneId: "0da42c8d2132a9ddaf714f9e7c920711",
- *     name: "myschema",
- *     kind: "openapi_v3",
- *     validationEnabled: true,
- *     source: fs.readFileSync("./schemas/petstore.json"),
- * });
- * ```
  */
 export class ApiShieldSchema extends pulumi.CustomResource {
     /**

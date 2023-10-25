@@ -13,27 +13,6 @@ namespace Pulumi.Cloudflare
     /// Provides the ability to manage Bring-Your-Own-IP prefixes (BYOIP)
     /// which are used with or without Magic Transit.
     /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Cloudflare = Pulumi.Cloudflare;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var example = new Cloudflare.ByoIpPrefix("example", new()
-    ///     {
-    ///         AccountId = "f037e56e89293a057740de681ac9abbe",
-    ///         Advertisement = "on",
-    ///         Description = "Example IP Prefix",
-    ///         PrefixId = "d41d8cd98f00b204e9800998ecf8427e",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// ```sh

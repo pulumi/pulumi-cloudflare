@@ -35,16 +35,20 @@ class ByoIpPrefixArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             account_id: pulumi.Input[str],
-             prefix_id: pulumi.Input[str],
+             account_id: Optional[pulumi.Input[str]] = None,
+             prefix_id: Optional[pulumi.Input[str]] = None,
              advertisement: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'accountId' in kwargs:
+        if account_id is None and 'accountId' in kwargs:
             account_id = kwargs['accountId']
-        if 'prefixId' in kwargs:
+        if account_id is None:
+            raise TypeError("Missing 'account_id' argument")
+        if prefix_id is None and 'prefixId' in kwargs:
             prefix_id = kwargs['prefixId']
+        if prefix_id is None:
+            raise TypeError("Missing 'prefix_id' argument")
 
         _setter("account_id", account_id)
         _setter("prefix_id", prefix_id)
@@ -130,11 +134,11 @@ class _ByoIpPrefixState:
              advertisement: Optional[pulumi.Input[str]] = None,
              description: Optional[pulumi.Input[str]] = None,
              prefix_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'accountId' in kwargs:
+        if account_id is None and 'accountId' in kwargs:
             account_id = kwargs['accountId']
-        if 'prefixId' in kwargs:
+        if prefix_id is None and 'prefixId' in kwargs:
             prefix_id = kwargs['prefixId']
 
         if account_id is not None:
@@ -209,19 +213,6 @@ class ByoIpPrefix(pulumi.CustomResource):
         Provides the ability to manage Bring-Your-Own-IP prefixes (BYOIP)
         which are used with or without Magic Transit.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudflare as cloudflare
-
-        example = cloudflare.ByoIpPrefix("example",
-            account_id="f037e56e89293a057740de681ac9abbe",
-            advertisement="on",
-            description="Example IP Prefix",
-            prefix_id="d41d8cd98f00b204e9800998ecf8427e")
-        ```
-
         ## Import
 
         ```sh
@@ -244,19 +235,6 @@ class ByoIpPrefix(pulumi.CustomResource):
         """
         Provides the ability to manage Bring-Your-Own-IP prefixes (BYOIP)
         which are used with or without Magic Transit.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudflare as cloudflare
-
-        example = cloudflare.ByoIpPrefix("example",
-            account_id="f037e56e89293a057740de681ac9abbe",
-            advertisement="on",
-            description="Example IP Prefix",
-            prefix_id="d41d8cd98f00b204e9800998ecf8427e")
-        ```
 
         ## Import
 

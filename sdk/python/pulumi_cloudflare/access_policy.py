@@ -68,11 +68,11 @@ class AccessPolicyArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             application_id: pulumi.Input[str],
-             decision: pulumi.Input[str],
-             includes: pulumi.Input[Sequence[pulumi.Input['AccessPolicyIncludeArgs']]],
-             name: pulumi.Input[str],
-             precedence: pulumi.Input[int],
+             application_id: Optional[pulumi.Input[str]] = None,
+             decision: Optional[pulumi.Input[str]] = None,
+             includes: Optional[pulumi.Input[Sequence[pulumi.Input['AccessPolicyIncludeArgs']]]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             precedence: Optional[pulumi.Input[int]] = None,
              account_id: Optional[pulumi.Input[str]] = None,
              approval_groups: Optional[pulumi.Input[Sequence[pulumi.Input['AccessPolicyApprovalGroupArgs']]]] = None,
              approval_required: Optional[pulumi.Input[bool]] = None,
@@ -83,25 +83,35 @@ class AccessPolicyArgs:
              requires: Optional[pulumi.Input[Sequence[pulumi.Input['AccessPolicyRequireArgs']]]] = None,
              session_duration: Optional[pulumi.Input[str]] = None,
              zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'applicationId' in kwargs:
+        if application_id is None and 'applicationId' in kwargs:
             application_id = kwargs['applicationId']
-        if 'accountId' in kwargs:
+        if application_id is None:
+            raise TypeError("Missing 'application_id' argument")
+        if decision is None:
+            raise TypeError("Missing 'decision' argument")
+        if includes is None:
+            raise TypeError("Missing 'includes' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if precedence is None:
+            raise TypeError("Missing 'precedence' argument")
+        if account_id is None and 'accountId' in kwargs:
             account_id = kwargs['accountId']
-        if 'approvalGroups' in kwargs:
+        if approval_groups is None and 'approvalGroups' in kwargs:
             approval_groups = kwargs['approvalGroups']
-        if 'approvalRequired' in kwargs:
+        if approval_required is None and 'approvalRequired' in kwargs:
             approval_required = kwargs['approvalRequired']
-        if 'isolationRequired' in kwargs:
+        if isolation_required is None and 'isolationRequired' in kwargs:
             isolation_required = kwargs['isolationRequired']
-        if 'purposeJustificationPrompt' in kwargs:
+        if purpose_justification_prompt is None and 'purposeJustificationPrompt' in kwargs:
             purpose_justification_prompt = kwargs['purposeJustificationPrompt']
-        if 'purposeJustificationRequired' in kwargs:
+        if purpose_justification_required is None and 'purposeJustificationRequired' in kwargs:
             purpose_justification_required = kwargs['purposeJustificationRequired']
-        if 'sessionDuration' in kwargs:
+        if session_duration is None and 'sessionDuration' in kwargs:
             session_duration = kwargs['sessionDuration']
-        if 'zoneId' in kwargs:
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
 
         _setter("application_id", application_id)
@@ -375,25 +385,25 @@ class _AccessPolicyState:
              requires: Optional[pulumi.Input[Sequence[pulumi.Input['AccessPolicyRequireArgs']]]] = None,
              session_duration: Optional[pulumi.Input[str]] = None,
              zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None,
+             opts: Optional[pulumi.ResourceOptions] = None,
              **kwargs):
-        if 'accountId' in kwargs:
+        if account_id is None and 'accountId' in kwargs:
             account_id = kwargs['accountId']
-        if 'applicationId' in kwargs:
+        if application_id is None and 'applicationId' in kwargs:
             application_id = kwargs['applicationId']
-        if 'approvalGroups' in kwargs:
+        if approval_groups is None and 'approvalGroups' in kwargs:
             approval_groups = kwargs['approvalGroups']
-        if 'approvalRequired' in kwargs:
+        if approval_required is None and 'approvalRequired' in kwargs:
             approval_required = kwargs['approvalRequired']
-        if 'isolationRequired' in kwargs:
+        if isolation_required is None and 'isolationRequired' in kwargs:
             isolation_required = kwargs['isolationRequired']
-        if 'purposeJustificationPrompt' in kwargs:
+        if purpose_justification_prompt is None and 'purposeJustificationPrompt' in kwargs:
             purpose_justification_prompt = kwargs['purposeJustificationPrompt']
-        if 'purposeJustificationRequired' in kwargs:
+        if purpose_justification_required is None and 'purposeJustificationRequired' in kwargs:
             purpose_justification_required = kwargs['purposeJustificationRequired']
-        if 'sessionDuration' in kwargs:
+        if session_duration is None and 'sessionDuration' in kwargs:
             session_duration = kwargs['sessionDuration']
-        if 'zoneId' in kwargs:
+        if zone_id is None and 'zoneId' in kwargs:
             zone_id = kwargs['zoneId']
 
         if account_id is not None:
@@ -634,41 +644,6 @@ class AccessPolicy(pulumi.CustomResource):
         scope. For example, an access token that is scoped to the "example.com"
         zone needs to use the `zone_id` argument.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudflare as cloudflare
-
-        # Allowing access to `test@example.com` email address only
-        test_policy_access_policy = cloudflare.AccessPolicy("testPolicyAccessPolicy",
-            application_id="cb029e245cfdd66dc8d2e570d5dd3322",
-            zone_id="0da42c8d2132a9ddaf714f9e7c920711",
-            name="staging policy",
-            precedence=1,
-            decision="allow",
-            includes=[cloudflare.AccessPolicyIncludeArgs(
-                emails=["test@example.com"],
-            )],
-            requires=[cloudflare.AccessPolicyRequireArgs(
-                emails=["test@example.com"],
-            )])
-        # Allowing `test@example.com` to access but only when coming from a
-        # specific IP.
-        test_policy_index_access_policy_access_policy = cloudflare.AccessPolicy("testPolicyIndex/accessPolicyAccessPolicy",
-            application_id="cb029e245cfdd66dc8d2e570d5dd3322",
-            zone_id="0da42c8d2132a9ddaf714f9e7c920711",
-            name="staging policy",
-            precedence=1,
-            decision="allow",
-            includes=[cloudflare.AccessPolicyIncludeArgs(
-                emails=["test@example.com"],
-            )],
-            requires=[cloudflare.AccessPolicyRequireArgs(
-                ips=[var["office_ip"]],
-            )])
-        ```
-
         ## Import
 
         Account level import.
@@ -715,41 +690,6 @@ class AccessPolicy(pulumi.CustomResource):
         access token, you must provide the argument that matches the token's
         scope. For example, an access token that is scoped to the "example.com"
         zone needs to use the `zone_id` argument.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_cloudflare as cloudflare
-
-        # Allowing access to `test@example.com` email address only
-        test_policy_access_policy = cloudflare.AccessPolicy("testPolicyAccessPolicy",
-            application_id="cb029e245cfdd66dc8d2e570d5dd3322",
-            zone_id="0da42c8d2132a9ddaf714f9e7c920711",
-            name="staging policy",
-            precedence=1,
-            decision="allow",
-            includes=[cloudflare.AccessPolicyIncludeArgs(
-                emails=["test@example.com"],
-            )],
-            requires=[cloudflare.AccessPolicyRequireArgs(
-                emails=["test@example.com"],
-            )])
-        # Allowing `test@example.com` to access but only when coming from a
-        # specific IP.
-        test_policy_index_access_policy_access_policy = cloudflare.AccessPolicy("testPolicyIndex/accessPolicyAccessPolicy",
-            application_id="cb029e245cfdd66dc8d2e570d5dd3322",
-            zone_id="0da42c8d2132a9ddaf714f9e7c920711",
-            name="staging policy",
-            precedence=1,
-            decision="allow",
-            includes=[cloudflare.AccessPolicyIncludeArgs(
-                emails=["test@example.com"],
-            )],
-            requires=[cloudflare.AccessPolicyRequireArgs(
-                ips=[var["office_ip"]],
-            )])
-        ```
 
         ## Import
 

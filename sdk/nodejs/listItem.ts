@@ -10,66 +10,6 @@ import * as utilities from "./utilities";
  * Provides individual list items (IPs, Redirects) to be used in Edge Rules Engine
  * across all zones within the same account.
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as cloudflare from "@pulumi/cloudflare";
- *
- * const exampleIpList = new cloudflare.List("exampleIpList", {
- *     accountId: "f037e56e89293a057740de681ac9abbe",
- *     name: "example_list",
- *     description: "example IPs for a list",
- *     kind: "ip",
- * });
- * // IP List Item
- * const exampleIpItem = new cloudflare.ListItem("exampleIpItem", {
- *     accountId: "f037e56e89293a057740de681ac9abbe",
- *     listId: exampleIpList.id,
- *     comment: "List Item Comment",
- *     ip: "192.0.2.0",
- * });
- * // Redirect List Item
- * const testTwo = new cloudflare.ListItem("testTwo", {
- *     accountId: "f037e56e89293a057740de681ac9abbe",
- *     listId: exampleIpList.id,
- *     redirect: {
- *         sourceUrl: "https://source.tld",
- *         targetUrl: "https://target.tld",
- *         statusCode: 302,
- *         subpathMatching: "enabled",
- *     },
- * });
- * // ASN list
- * const exampleAsnList = new cloudflare.List("exampleAsnList", {
- *     accountId: "f037e56e89293a057740de681ac9abbe",
- *     name: "example_asn_list",
- *     description: "example ASNs for a list",
- *     kind: "asn",
- * });
- * // ASN List Item
- * const exampleAsnItem = new cloudflare.ListItem("exampleAsnItem", {
- *     accountId: "f037e56e89293a057740de681ac9abbe",
- *     listId: exampleAsnList.id,
- *     comment: "List Item Comment",
- *     asn: 6789,
- * });
- * // Hostname list
- * const exampleHostnameList = new cloudflare.List("exampleHostnameList", {
- *     accountId: "f037e56e89293a057740de681ac9abbe",
- *     name: "example_hostname_list",
- *     description: "example Hostnames for a list",
- *     kind: "hostname",
- * });
- * // Hostname List Item
- * const exampleHostnameItem = new cloudflare.ListItem("exampleHostnameItem", {
- *     accountId: "f037e56e89293a057740de681ac9abbe",
- *     listId: exampleHostnameList.id,
- *     comment: "List Item Comment",
- *     asn: "example.com",
- * });
- * ```
- *
  * ## Import
  *
  * ```sh
