@@ -7,6 +7,18 @@ import * as utilities from "./utilities";
 /**
  * Use this data source to look up [API Token Permission Groups](https://developers.cloudflare.com/api/tokens/create/permissions).
  * Commonly used as references within [`cloudflareToken`](https://www.terraform.io/docs/providers/cloudflare/r/api_token.html) resources.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as cloudflare from "@pulumi/cloudflare";
+ *
+ * const all = cloudflare.getApiTokenPermissionGroups({});
+ * export const dnsReadPermissionId = all.then(all => all.zone?.["DNS Read"]);
+ * export const accountLbMonitorsAndReadId = all.then(all => all.account?.["Load Balancing: Monitors and Pools Read"]);
+ * export const userMembershipsReadId = all.then(all => all.user?.["Memberships Read"]);
+ * ```
  */
 export function getApiTokenPermissionGroups(opts?: pulumi.InvokeOptions): Promise<GetApiTokenPermissionGroupsResult> {
 
@@ -49,6 +61,18 @@ export interface GetApiTokenPermissionGroupsResult {
 /**
  * Use this data source to look up [API Token Permission Groups](https://developers.cloudflare.com/api/tokens/create/permissions).
  * Commonly used as references within [`cloudflareToken`](https://www.terraform.io/docs/providers/cloudflare/r/api_token.html) resources.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as cloudflare from "@pulumi/cloudflare";
+ *
+ * const all = cloudflare.getApiTokenPermissionGroups({});
+ * export const dnsReadPermissionId = all.then(all => all.zone?.["DNS Read"]);
+ * export const accountLbMonitorsAndReadId = all.then(all => all.account?.["Load Balancing: Monitors and Pools Read"]);
+ * export const userMembershipsReadId = all.then(all => all.user?.["Memberships Read"]);
+ * ```
  */
 export function getApiTokenPermissionGroupsOutput(opts?: pulumi.InvokeOptions): pulumi.Output<GetApiTokenPermissionGroupsResult> {
     return pulumi.output(getApiTokenPermissionGroups(opts))

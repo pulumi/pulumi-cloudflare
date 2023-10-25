@@ -330,6 +330,26 @@ class AuthenticatedOriginPullsCertificate(pulumi.CustomResource):
         resource. An uploaded client certificate is required to use Per-Zone
          or Per-Hostname Authenticated Origin Pulls.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        # Per-Zone Authenticated Origin Pulls certificate
+        my_per_zone_aop_cert = cloudflare.AuthenticatedOriginPullsCertificate("myPerZoneAopCert",
+            certificate="-----INSERT CERTIFICATE-----",
+            private_key="-----INSERT PRIVATE KEY-----",
+            type="per-zone",
+            zone_id="0da42c8d2132a9ddaf714f9e7c920711")
+        # Per-Hostname Authenticated Origin Pulls certificate
+        my_per_hostname_aop_cert = cloudflare.AuthenticatedOriginPullsCertificate("myPerHostnameAopCert",
+            certificate="-----INSERT CERTIFICATE-----",
+            private_key="-----INSERT PRIVATE KEY-----",
+            type="per-hostname",
+            zone_id="0da42c8d2132a9ddaf714f9e7c920711")
+        ```
+
         ## Import
 
         ```sh
@@ -353,6 +373,26 @@ class AuthenticatedOriginPullsCertificate(pulumi.CustomResource):
         Provides a Cloudflare Authenticated Origin Pulls certificate
         resource. An uploaded client certificate is required to use Per-Zone
          or Per-Hostname Authenticated Origin Pulls.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        # Per-Zone Authenticated Origin Pulls certificate
+        my_per_zone_aop_cert = cloudflare.AuthenticatedOriginPullsCertificate("myPerZoneAopCert",
+            certificate="-----INSERT CERTIFICATE-----",
+            private_key="-----INSERT PRIVATE KEY-----",
+            type="per-zone",
+            zone_id="0da42c8d2132a9ddaf714f9e7c920711")
+        # Per-Hostname Authenticated Origin Pulls certificate
+        my_per_hostname_aop_cert = cloudflare.AuthenticatedOriginPullsCertificate("myPerHostnameAopCert",
+            certificate="-----INSERT CERTIFICATE-----",
+            private_key="-----INSERT PRIVATE KEY-----",
+            type="per-hostname",
+            zone_id="0da42c8d2132a9ddaf714f9e7c920711")
+        ```
 
         ## Import
 

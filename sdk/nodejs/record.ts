@@ -9,6 +9,37 @@ import * as utilities from "./utilities";
 /**
  * Provides a Cloudflare record resource.
  *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as cloudflare from "@pulumi/cloudflare";
+ *
+ * // Add a record to the domain
+ * const example = new cloudflare.Record("example", {
+ *     zoneId: _var.cloudflare_zone_id,
+ *     name: "example",
+ *     value: "192.0.2.1",
+ *     type: "A",
+ *     ttl: 3600,
+ * });
+ * // Add a record requiring a data map
+ * const _sipTls = new cloudflare.Record("_sipTls", {
+ *     zoneId: _var.cloudflare_zone_id,
+ *     name: "_sip._tls",
+ *     type: "SRV",
+ *     data: {
+ *         service: "_sip",
+ *         proto: "_tls",
+ *         name: "example-srv",
+ *         priority: 0,
+ *         weight: 0,
+ *         port: 443,
+ *         target: "example.com",
+ *     },
+ * });
+ * ```
+ *
  * ## Import
  *
  * ```sh

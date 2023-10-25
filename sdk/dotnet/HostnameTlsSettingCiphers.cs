@@ -12,6 +12,29 @@ namespace Pulumi.Cloudflare
     /// <summary>
     /// Provides a Cloudflare per-hostname TLS setting resource, specifically for ciphers suites. Used to set ciphers suites for hostnames under the specified zone.
     /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Cloudflare = Pulumi.Cloudflare;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var example = new Cloudflare.HostnameTlsSettingCiphers("example", new()
+    ///     {
+    ///         Hostname = "sub.example.com",
+    ///         Values = new[]
+    ///         {
+    ///             "ECDHE-RSA-AES128-GCM-SHA256",
+    ///         },
+    ///         ZoneId = "0da42c8d2132a9ddaf714f9e7c920711",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// ```sh

@@ -241,6 +241,18 @@ class HostnameTlsSettingCiphers(pulumi.CustomResource):
         """
         Provides a Cloudflare per-hostname TLS setting resource, specifically for ciphers suites. Used to set ciphers suites for hostnames under the specified zone.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        example = cloudflare.HostnameTlsSettingCiphers("example",
+            hostname="sub.example.com",
+            values=["ECDHE-RSA-AES128-GCM-SHA256"],
+            zone_id="0da42c8d2132a9ddaf714f9e7c920711")
+        ```
+
         ## Import
 
         ```sh
@@ -262,6 +274,18 @@ class HostnameTlsSettingCiphers(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Provides a Cloudflare per-hostname TLS setting resource, specifically for ciphers suites. Used to set ciphers suites for hostnames under the specified zone.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        example = cloudflare.HostnameTlsSettingCiphers("example",
+            hostname="sub.example.com",
+            values=["ECDHE-RSA-AES128-GCM-SHA256"],
+            zone_id="0da42c8d2132a9ddaf714f9e7c920711")
+        ```
 
         ## Import
 

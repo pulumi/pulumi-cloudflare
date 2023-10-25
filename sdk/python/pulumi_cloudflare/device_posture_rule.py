@@ -342,6 +342,31 @@ class DevicePostureRule(pulumi.CustomResource):
         """
         Provides a Cloudflare Device Posture Rule resource. Device posture rules configure security policies for device posture checks.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        eaxmple = cloudflare.DevicePostureRule("eaxmple",
+            account_id="f037e56e89293a057740de681ac9abbe",
+            name="Corporate devices posture rule",
+            type="os_version",
+            description="Device posture rule for corporate devices.",
+            schedule="24h",
+            expiration="24h",
+            matches=[cloudflare.DevicePostureRuleMatchArgs(
+                platform="linux",
+            )],
+            inputs=[cloudflare.DevicePostureRuleInputArgs(
+                id=cloudflare_teams_list["corporate_devices"]["id"],
+                version="1.0.0",
+                operator="<",
+                os_distro_name="ubuntu",
+                os_distro_revision="1.0.0",
+            )])
+        ```
+
         ## Import
 
         ```sh
@@ -365,6 +390,31 @@ class DevicePostureRule(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Provides a Cloudflare Device Posture Rule resource. Device posture rules configure security policies for device posture checks.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        eaxmple = cloudflare.DevicePostureRule("eaxmple",
+            account_id="f037e56e89293a057740de681ac9abbe",
+            name="Corporate devices posture rule",
+            type="os_version",
+            description="Device posture rule for corporate devices.",
+            schedule="24h",
+            expiration="24h",
+            matches=[cloudflare.DevicePostureRuleMatchArgs(
+                platform="linux",
+            )],
+            inputs=[cloudflare.DevicePostureRuleInputArgs(
+                id=cloudflare_teams_list["corporate_devices"]["id"],
+                version="1.0.0",
+                operator="<",
+                os_distro_name="ubuntu",
+                os_distro_revision="1.0.0",
+            )])
+        ```
 
         ## Import
 

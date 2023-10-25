@@ -171,6 +171,18 @@ class Account(pulumi.CustomResource):
         Provides a Cloudflare Account resource. Account is the basic resource for
         working with Cloudflare zones, teams and users.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        example = cloudflare.Account("example",
+            enforce_twofactor=True,
+            name="some-enterprise-account",
+            type="enterprise")
+        ```
+
         ## Import
 
         ```sh
@@ -192,6 +204,18 @@ class Account(pulumi.CustomResource):
         """
         Provides a Cloudflare Account resource. Account is the basic resource for
         working with Cloudflare zones, teams and users.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        example = cloudflare.Account("example",
+            enforce_twofactor=True,
+            name="some-enterprise-account",
+            type="enterprise")
+        ```
 
         ## Import
 

@@ -8,6 +8,20 @@ import * as utilities from "./utilities";
 
 /**
  * Use this datasource to lookup Rulesets in an account or zone.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as cloudflare from "@pulumi/cloudflare";
+ *
+ * const example = cloudflare.getRulesets({
+ *     filter: {
+ *         name: ".*OWASP.*",
+ *     },
+ *     zoneId: "0da42c8d2132a9ddaf714f9e7c920711",
+ * });
+ * ```
  */
 export function getRulesets(args?: GetRulesetsArgs, opts?: pulumi.InvokeOptions): Promise<GetRulesetsResult> {
     args = args || {};
@@ -65,6 +79,20 @@ export interface GetRulesetsResult {
 }
 /**
  * Use this datasource to lookup Rulesets in an account or zone.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as cloudflare from "@pulumi/cloudflare";
+ *
+ * const example = cloudflare.getRulesets({
+ *     filter: {
+ *         name: ".*OWASP.*",
+ *     },
+ *     zoneId: "0da42c8d2132a9ddaf714f9e7c920711",
+ * });
+ * ```
  */
 export function getRulesetsOutput(args?: GetRulesetsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRulesetsResult> {
     return pulumi.output(args).apply((a: any) => getRulesets(a, opts))

@@ -8,6 +8,19 @@ import * as utilities from "./utilities";
  * Cloudflare Argo controls the routing to your origin and tiered
  * caching options to speed up your website browsing experience.
  *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as cloudflare from "@pulumi/cloudflare";
+ *
+ * const example = new cloudflare.Argo("example", {
+ *     smartRouting: "on",
+ *     tieredCaching: "on",
+ *     zoneId: "0da42c8d2132a9ddaf714f9e7c920711",
+ * });
+ * ```
+ *
  * ## Import
  *
  * ```sh

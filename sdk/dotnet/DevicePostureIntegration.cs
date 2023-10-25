@@ -14,6 +14,37 @@ namespace Pulumi.Cloudflare
     /// posture integrations configure third-party data providers for device
     /// posture rules.
     /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Cloudflare = Pulumi.Cloudflare;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var example = new Cloudflare.DevicePostureIntegration("example", new()
+    ///     {
+    ///         AccountId = "f037e56e89293a057740de681ac9abbe",
+    ///         Configs = new[]
+    ///         {
+    ///             new Cloudflare.Inputs.DevicePostureIntegrationConfigArgs
+    ///             {
+    ///                 ApiUrl = "https://example.com/api",
+    ///                 AuthUrl = "https://example.com/connect/token",
+    ///                 ClientId = "client-id",
+    ///                 ClientSecret = "client-secret",
+    ///             },
+    ///         },
+    ///         Interval = "24h",
+    ///         Name = "Device posture integration",
+    ///         Type = "workspace_one",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// ```sh

@@ -15,6 +15,46 @@ import (
 
 // A Zero Trust organization defines the user login experience.
 //
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cloudflare.NewAccessOrganization(ctx, "example", &cloudflare.AccessOrganizationArgs{
+//				AccountId:              pulumi.String("f037e56e89293a057740de681ac9abbe"),
+//				AuthDomain:             pulumi.String("example.cloudflareaccess.com"),
+//				AutoRedirectToIdentity: pulumi.Bool(false),
+//				IsUiReadOnly:           pulumi.Bool(false),
+//				LoginDesigns: cloudflare.AccessOrganizationLoginDesignArray{
+//					&cloudflare.AccessOrganizationLoginDesignArgs{
+//						BackgroundColor: pulumi.String("#ffffff"),
+//						FooterText:      pulumi.String("My footer text"),
+//						HeaderText:      pulumi.String("My header text"),
+//						LogoPath:        pulumi.String("https://example.com/logo.png"),
+//						TextColor:       pulumi.String("#000000"),
+//					},
+//				},
+//				Name:                           pulumi.String("example.cloudflareaccess.com"),
+//				UserSeatExpirationInactiveTime: pulumi.String("720h"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // ```sh

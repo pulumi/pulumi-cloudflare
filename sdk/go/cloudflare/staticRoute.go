@@ -17,6 +17,43 @@ import (
 // Transit or Magic WAN. Static routes are used to route traffic
 // through GRE tunnels.
 //
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cloudflare.NewStaticRoute(ctx, "example", &cloudflare.StaticRouteArgs{
+//				AccountId: pulumi.String("f037e56e89293a057740de681ac9abbe"),
+//				ColoNames: pulumi.StringArray{
+//					pulumi.String("den01"),
+//				},
+//				ColoRegions: pulumi.StringArray{
+//					pulumi.String("APAC"),
+//				},
+//				Description: pulumi.String("New route for new prefix 192.0.2.0/24"),
+//				Nexthop:     pulumi.String("10.0.0.0"),
+//				Prefix:      pulumi.String("192.0.2.0/24"),
+//				Priority:    pulumi.Int(100),
+//				Weight:      pulumi.Int(10),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // ```sh

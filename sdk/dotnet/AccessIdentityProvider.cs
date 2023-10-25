@@ -20,6 +20,86 @@ namespace Pulumi.Cloudflare
     /// scope. For example, an access token that is scoped to the "example.com"
     /// zone needs to use the `zone_id` argument.
     /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Cloudflare = Pulumi.Cloudflare;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     // one time pin
+    ///     var pinLogin = new Cloudflare.AccessIdentityProvider("pinLogin", new()
+    ///     {
+    ///         AccountId = "f037e56e89293a057740de681ac9abbe",
+    ///         Name = "PIN login",
+    ///         Type = "onetimepin",
+    ///     });
+    /// 
+    ///     // oauth
+    ///     var githubOauth = new Cloudflare.AccessIdentityProvider("githubOauth", new()
+    ///     {
+    ///         AccountId = "f037e56e89293a057740de681ac9abbe",
+    ///         Configs = new[]
+    ///         {
+    ///             new Cloudflare.Inputs.AccessIdentityProviderConfigArgs
+    ///             {
+    ///                 ClientId = "example",
+    ///                 ClientSecret = "secret_key",
+    ///             },
+    ///         },
+    ///         Name = "GitHub OAuth",
+    ///         Type = "github",
+    ///     });
+    /// 
+    ///     // saml
+    ///     var jumpcloudSaml = new Cloudflare.AccessIdentityProvider("jumpcloudSaml", new()
+    ///     {
+    ///         AccountId = "f037e56e89293a057740de681ac9abbe",
+    ///         Configs = new[]
+    ///         {
+    ///             new Cloudflare.Inputs.AccessIdentityProviderConfigArgs
+    ///             {
+    ///                 Attributes = new[]
+    ///                 {
+    ///                     "email",
+    ///                     "username",
+    ///                 },
+    ///                 IdpPublicCert = @"MIIDpDCCAoygAwIBAgIGAV2ka+55MA0GCSqGSIb3DQEBCwUAMIGSMQswCQ...GF/Q2/MHadws97cZg
+    /// uTnQyuOqPuHbnN83d/2l1NSYKCbHt24o
+    /// ",
+    ///                 IssuerUrl = "jumpcloud",
+    ///                 SignRequest = false,
+    ///                 SsoTargetUrl = "https://sso.myexample.jumpcloud.com/saml2/cloudflareaccess",
+    ///             },
+    ///         },
+    ///         Name = "JumpCloud SAML",
+    ///         Type = "saml",
+    ///     });
+    /// 
+    ///     // okta
+    ///     var okta = new Cloudflare.AccessIdentityProvider("okta", new()
+    ///     {
+    ///         AccountId = "f037e56e89293a057740de681ac9abbe",
+    ///         Configs = new[]
+    ///         {
+    ///             new Cloudflare.Inputs.AccessIdentityProviderConfigArgs
+    ///             {
+    ///                 ApiToken = "okta_api_token",
+    ///                 ClientId = "example",
+    ///                 ClientSecret = "secret_key",
+    ///                 OktaAccount = "https://example.com",
+    ///             },
+    ///         },
+    ///         Name = "Okta",
+    ///         Type = "okta",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// ```sh

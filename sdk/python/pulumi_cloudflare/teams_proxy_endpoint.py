@@ -192,6 +192,18 @@ class TeamsProxyEndpoint(pulumi.CustomResource):
         Endpoints are used for pointing proxy clients at Cloudflare Secure
         Gateway.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        example = cloudflare.TeamsProxyEndpoint("example",
+            account_id="f037e56e89293a057740de681ac9abbe",
+            ips=["192.0.2.0/24"],
+            name="office")
+        ```
+
         ## Import
 
         ```sh
@@ -214,6 +226,18 @@ class TeamsProxyEndpoint(pulumi.CustomResource):
         Provides a Cloudflare Teams Proxy Endpoint resource. Teams Proxy
         Endpoints are used for pointing proxy clients at Cloudflare Secure
         Gateway.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        example = cloudflare.TeamsProxyEndpoint("example",
+            account_id="f037e56e89293a057740de681ac9abbe",
+            ips=["192.0.2.0/24"],
+            name="office")
+        ```
 
         ## Import
 

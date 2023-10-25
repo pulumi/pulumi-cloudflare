@@ -13,6 +13,47 @@ import (
 )
 
 // Use this data source to lookup a single [Access Identity Provider](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration) by name.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			exampleAccessIdentityProvider, err := cloudflare.LookupAccessIdentityProvider(ctx, &cloudflare.LookupAccessIdentityProviderArgs{
+//				Name:      "Google SSO",
+//				AccountId: pulumi.StringRef("f037e56e89293a057740de681ac9abbe"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = cloudflare.NewAccessApplication(ctx, "exampleAccessApplication", &cloudflare.AccessApplicationArgs{
+//				ZoneId:          pulumi.String("0da42c8d2132a9ddaf714f9e7c920711"),
+//				Name:            pulumi.String("name"),
+//				Domain:          pulumi.String("name.example.com"),
+//				Type:            pulumi.String("self_hosted"),
+//				SessionDuration: pulumi.String("24h"),
+//				AllowedIdps: pulumi.StringArray{
+//					*pulumi.String(exampleAccessIdentityProvider.Id),
+//				},
+//				AutoRedirectToIdentity: pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupAccessIdentityProvider(ctx *pulumi.Context, args *LookupAccessIdentityProviderArgs, opts ...pulumi.InvokeOption) (*LookupAccessIdentityProviderResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupAccessIdentityProviderResult

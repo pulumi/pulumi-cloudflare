@@ -661,6 +661,26 @@ class IpsecTunnel(pulumi.CustomResource):
         """
         Provides a resource, that manages IPsec tunnels for Magic Transit.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        example = cloudflare.IpsecTunnel("example",
+            account_id="f037e56e89293a057740de681ac9abbe",
+            allow_null_cipher=False,
+            cloudflare_endpoint="203.0.113.1",
+            customer_endpoint="203.0.113.1",
+            description="Tunnel for ISP X",
+            health_check_enabled=True,
+            health_check_target="203.0.113.1",
+            health_check_type="reply",
+            interface_address="192.0.2.0/31",
+            name="IPsec_1",
+            psk="asdf12341234")
+        ```
+
         ## Import
 
         ```sh
@@ -693,6 +713,26 @@ class IpsecTunnel(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Provides a resource, that manages IPsec tunnels for Magic Transit.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        example = cloudflare.IpsecTunnel("example",
+            account_id="f037e56e89293a057740de681ac9abbe",
+            allow_null_cipher=False,
+            cloudflare_endpoint="203.0.113.1",
+            customer_endpoint="203.0.113.1",
+            description="Tunnel for ISP X",
+            health_check_enabled=True,
+            health_check_target="203.0.113.1",
+            health_check_type="reply",
+            interface_address="192.0.2.0/31",
+            name="IPsec_1",
+            psk="asdf12341234")
+        ```
 
         ## Import
 

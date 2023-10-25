@@ -8,6 +8,20 @@ import * as utilities from "./utilities";
 
 /**
  * Use this data source to look up Zone results for use in other resources.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as cloudflare from "@pulumi/cloudflare";
+ *
+ * const example = cloudflare.getZones({
+ *     filter: {
+ *         accountId: "f037e56e89293a057740de681ac9abbe",
+ *         status: "active",
+ *     },
+ * });
+ * ```
  */
 export function getZones(args: GetZonesArgs, opts?: pulumi.InvokeOptions): Promise<GetZonesResult> {
 
@@ -46,6 +60,20 @@ export interface GetZonesResult {
 }
 /**
  * Use this data source to look up Zone results for use in other resources.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as cloudflare from "@pulumi/cloudflare";
+ *
+ * const example = cloudflare.getZones({
+ *     filter: {
+ *         accountId: "f037e56e89293a057740de681ac9abbe",
+ *         status: "active",
+ *     },
+ * });
+ * ```
  */
 export function getZonesOutput(args: GetZonesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetZonesResult> {
     return pulumi.output(args).apply((a: any) => getZones(a, opts))

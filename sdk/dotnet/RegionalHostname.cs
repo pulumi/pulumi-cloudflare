@@ -11,6 +11,39 @@ namespace Pulumi.Cloudflare
 {
     /// <summary>
     /// Provides a Data Localization Suite Regional Hostname.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Cloudflare = Pulumi.Cloudflare;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     // Regionalized hostname record resources are managed independently from the
+    ///     // Regionalized Hostname resources.
+    ///     var exampleRecord = new Cloudflare.Record("exampleRecord", new()
+    ///     {
+    ///         Name = "example.com",
+    ///         Ttl = 3600,
+    ///         Type = "A",
+    ///         Value = "192.0.2.1",
+    ///         ZoneId = "0da42c8d2132a9ddaf714f9e7c920711",
+    ///     });
+    /// 
+    ///     // The cloudflare_regional_hostname resource may exist with or without its
+    ///     // corresponding record resource.
+    ///     var exampleRegionalHostname = new Cloudflare.RegionalHostname("exampleRegionalHostname", new()
+    ///     {
+    ///         Hostname = "example.com",
+    ///         RegionKey = "eu",
+    ///         ZoneId = "0da42c8d2132a9ddaf714f9e7c920711",
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/regionalHostname:RegionalHostname")]
     public partial class RegionalHostname : global::Pulumi.CustomResource

@@ -134,6 +134,17 @@ class Queue(pulumi.CustomResource):
         """
         Provides the ability to manage Cloudflare Workers Queue features.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        example = cloudflare.Queue("example",
+            account_id="f037e56e89293a057740de681ac9abbe",
+            name="my-queue")
+        ```
+
         ## Import
 
         ```sh
@@ -153,6 +164,17 @@ class Queue(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Provides the ability to manage Cloudflare Workers Queue features.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        example = cloudflare.Queue("example",
+            account_id="f037e56e89293a057740de681ac9abbe",
+            name="my-queue")
+        ```
 
         ## Import
 

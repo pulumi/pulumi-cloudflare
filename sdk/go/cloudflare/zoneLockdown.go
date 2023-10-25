@@ -19,6 +19,43 @@ import (
 // from an IP address that matches a safelist of one or more IP
 // addresses and/or IP ranges.
 //
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cloudflare.NewZoneLockdown(ctx, "example", &cloudflare.ZoneLockdownArgs{
+//				Configurations: cloudflare.ZoneLockdownConfigurationArray{
+//					&cloudflare.ZoneLockdownConfigurationArgs{
+//						Target: pulumi.String("ip_range"),
+//						Value:  pulumi.String("192.0.2.0/24"),
+//					},
+//				},
+//				Description: pulumi.String("Restrict access to these endpoints to requests from a known IP address range"),
+//				Paused:      pulumi.Bool(false),
+//				Urls: pulumi.StringArray{
+//					pulumi.String("api.mysite.com/some/endpoint*"),
+//				},
+//				ZoneId: pulumi.String("0da42c8d2132a9ddaf714f9e7c920711"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // ```sh

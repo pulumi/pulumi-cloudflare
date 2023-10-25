@@ -276,6 +276,19 @@ class AccessMutualTlsCertificate(pulumi.CustomResource):
         scope. For example, an access token that is scoped to the "example.com"
         zone needs to use the `zone_id` argument.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        my_cert = cloudflare.AccessMutualTlsCertificate("myCert",
+            zone_id="0da42c8d2132a9ddaf714f9e7c920711",
+            name="My Root Cert",
+            certificate=var["ca_pem"],
+            associated_hostnames=["staging.example.com"])
+        ```
+
         ## Import
 
         Account level import.
@@ -316,6 +329,19 @@ class AccessMutualTlsCertificate(pulumi.CustomResource):
         access token, you must provide the argument that matches the token's
         scope. For example, an access token that is scoped to the "example.com"
         zone needs to use the `zone_id` argument.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        my_cert = cloudflare.AccessMutualTlsCertificate("myCert",
+            zone_id="0da42c8d2132a9ddaf714f9e7c920711",
+            name="My Root Cert",
+            certificate=var["ca_pem"],
+            associated_hostnames=["staging.example.com"])
+        ```
 
         ## Import
 

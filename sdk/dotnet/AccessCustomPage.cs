@@ -12,6 +12,27 @@ namespace Pulumi.Cloudflare
     /// <summary>
     /// Provides a resource to customize the pages your end users will see
     /// when trying to reach applications behind Cloudflare Access.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Cloudflare = Pulumi.Cloudflare;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var example = new Cloudflare.AccessCustomPage("example", new()
+    ///     {
+    ///         CustomHtml = "&lt;html&gt;&lt;body&gt;&lt;h1&gt;Forbidden&lt;/h1&gt;&lt;/body&gt;&lt;/html&gt;",
+    ///         Name = "example",
+    ///         Type = "forbidden",
+    ///         ZoneId = "0da42c8d2132a9ddaf714f9e7c920711",
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/accessCustomPage:AccessCustomPage")]
     public partial class AccessCustomPage : global::Pulumi.CustomResource

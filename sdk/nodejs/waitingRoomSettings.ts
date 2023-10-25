@@ -7,6 +7,18 @@ import * as utilities from "./utilities";
 /**
  * Configure zone-wide settings for Cloudflare waiting rooms.
  *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as cloudflare from "@pulumi/cloudflare";
+ *
+ * const example = new cloudflare.WaitingRoomSettings("example", {
+ *     searchEngineCrawlerBypass: true,
+ *     zoneId: "0da42c8d2132a9ddaf714f9e7c920711",
+ * });
+ * ```
+ *
  * ## Import
  *
  * ```sh

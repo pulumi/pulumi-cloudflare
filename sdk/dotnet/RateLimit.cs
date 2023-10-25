@@ -14,6 +14,95 @@ namespace Pulumi.Cloudflare
     /// be used to limit the traffic you receive zone-wide, or matching more
     /// specific types of requests/responses.
     /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Cloudflare = Pulumi.Cloudflare;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var example = new Cloudflare.RateLimit("example", new()
+    ///     {
+    ///         Action = new Cloudflare.Inputs.RateLimitActionArgs
+    ///         {
+    ///             Mode = "simulate",
+    ///             Response = new Cloudflare.Inputs.RateLimitActionResponseArgs
+    ///             {
+    ///                 Body = "custom response body",
+    ///                 ContentType = "text/plain",
+    ///             },
+    ///             Timeout = 43200,
+    ///         },
+    ///         BypassUrlPatterns = new[]
+    ///         {
+    ///             "example.com/bypass1",
+    ///             "example.com/bypass2",
+    ///         },
+    ///         Correlate = new Cloudflare.Inputs.RateLimitCorrelateArgs
+    ///         {
+    ///             By = "nat",
+    ///         },
+    ///         Description = "example rate limit for a zone",
+    ///         Disabled = false,
+    ///         Match = new Cloudflare.Inputs.RateLimitMatchArgs
+    ///         {
+    ///             Request = new Cloudflare.Inputs.RateLimitMatchRequestArgs
+    ///             {
+    ///                 Methods = new[]
+    ///                 {
+    ///                     "GET",
+    ///                     "POST",
+    ///                     "PUT",
+    ///                     "DELETE",
+    ///                     "PATCH",
+    ///                     "HEAD",
+    ///                 },
+    ///                 Schemes = new[]
+    ///                 {
+    ///                     "HTTP",
+    ///                     "HTTPS",
+    ///                 },
+    ///                 UrlPattern = $"{@var.Cloudflare_zone}/*",
+    ///             },
+    ///             Response = new Cloudflare.Inputs.RateLimitMatchResponseArgs
+    ///             {
+    ///                 Headers = new[]
+    ///                 {
+    ///                     
+    ///                     {
+    ///                         { "name", "Host" },
+    ///                         { "op", "eq" },
+    ///                         { "value", "localhost" },
+    ///                     },
+    ///                     
+    ///                     {
+    ///                         { "name", "X-Example" },
+    ///                         { "op", "ne" },
+    ///                         { "value", "my-example" },
+    ///                     },
+    ///                 },
+    ///                 OriginTraffic = false,
+    ///                 Statuses = new[]
+    ///                 {
+    ///                     200,
+    ///                     201,
+    ///                     202,
+    ///                     301,
+    ///                     429,
+    ///                 },
+    ///             },
+    ///         },
+    ///         Period = 2,
+    ///         Threshold = 2000,
+    ///         ZoneId = "0da42c8d2132a9ddaf714f9e7c920711",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// ```sh

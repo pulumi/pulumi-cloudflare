@@ -12,6 +12,30 @@ namespace Pulumi.Cloudflare
     /// <summary>
     /// Provides a Cloudflare worker route resource. A route will also require a `cloudflare.WorkerScript`.
     /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Cloudflare = Pulumi.Cloudflare;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var myScript = new Cloudflare.WorkerScript("myScript");
+    /// 
+    ///     // see "cloudflare_worker_script" documentation ...
+    ///     // Runs the specified worker script for all URLs that match `example.com/*`
+    ///     var myRoute = new Cloudflare.WorkerRoute("myRoute", new()
+    ///     {
+    ///         ZoneId = "0da42c8d2132a9ddaf714f9e7c920711",
+    ///         Pattern = "example.com/*",
+    ///         ScriptName = myScript.Name,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// ```sh

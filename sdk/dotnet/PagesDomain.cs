@@ -14,6 +14,26 @@ namespace Pulumi.Cloudflare
     /// 
     /// &gt; A DNS record for the domain is not automatically created. You need to create a `cloudflare.Record` resource for the domain you want to use.
     /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Cloudflare = Pulumi.Cloudflare;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var my_domain = new Cloudflare.PagesDomain("my-domain", new()
+    ///     {
+    ///         AccountId = "f037e56e89293a057740de681ac9abbe",
+    ///         Domain = "example.com",
+    ///         ProjectName = "my-example-project",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// ```sh

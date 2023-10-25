@@ -265,6 +265,17 @@ class EmailRoutingSettings(pulumi.CustomResource):
         """
         Provides a resource for managing Email Routing settings.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        my_zone = cloudflare.EmailRoutingSettings("myZone",
+            enabled=True,
+            zone_id="0da42c8d2132a9ddaf714f9e7c920711")
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] enabled: State of the zone settings for Email Routing. **Modifying this attribute will force creation of a new resource.**
@@ -279,6 +290,17 @@ class EmailRoutingSettings(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Provides a resource for managing Email Routing settings.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        my_zone = cloudflare.EmailRoutingSettings("myZone",
+            enabled=True,
+            zone_id="0da42c8d2132a9ddaf714f9e7c920711")
+        ```
 
         :param str resource_name: The name of the resource.
         :param EmailRoutingSettingsArgs args: The arguments to use to populate this resource's properties.

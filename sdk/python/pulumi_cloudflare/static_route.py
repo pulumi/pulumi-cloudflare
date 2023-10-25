@@ -367,6 +367,23 @@ class StaticRoute(pulumi.CustomResource):
         Transit or Magic WAN. Static routes are used to route traffic
         through GRE tunnels.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        example = cloudflare.StaticRoute("example",
+            account_id="f037e56e89293a057740de681ac9abbe",
+            colo_names=["den01"],
+            colo_regions=["APAC"],
+            description="New route for new prefix 192.0.2.0/24",
+            nexthop="10.0.0.0",
+            prefix="192.0.2.0/24",
+            priority=100,
+            weight=10)
+        ```
+
         ## Import
 
         ```sh
@@ -394,6 +411,23 @@ class StaticRoute(pulumi.CustomResource):
         Provides a resource, that manages Cloudflare static routes for Magic
         Transit or Magic WAN. Static routes are used to route traffic
         through GRE tunnels.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        example = cloudflare.StaticRoute("example",
+            account_id="f037e56e89293a057740de681ac9abbe",
+            colo_names=["den01"],
+            colo_regions=["APAC"],
+            description="New route for new prefix 192.0.2.0/24",
+            nexthop="10.0.0.0",
+            prefix="192.0.2.0/24",
+            priority=100,
+            weight=10)
+        ```
 
         ## Import
 

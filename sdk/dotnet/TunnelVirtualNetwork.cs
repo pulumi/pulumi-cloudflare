@@ -15,6 +15,26 @@ namespace Pulumi.Cloudflare
     /// Tunnel IP Routes via Virtualized Networks to handle overlapping
     /// private IPs in your origins.
     /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Cloudflare = Pulumi.Cloudflare;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var example = new Cloudflare.TunnelVirtualNetwork("example", new()
+    ///     {
+    ///         AccountId = "f037e56e89293a057740de681ac9abbe",
+    ///         Comment = "New tunnel virtual network for documentation",
+    ///         Name = "vnet-for-documentation",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// ```sh

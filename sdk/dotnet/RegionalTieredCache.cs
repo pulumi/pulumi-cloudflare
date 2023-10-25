@@ -13,6 +13,25 @@ namespace Pulumi.Cloudflare
     /// Instructs Cloudflare to check a regional hub data center on the way to your upper tier.
     /// This can help improve performance for smart and custom tiered cache topologies.
     /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Cloudflare = Pulumi.Cloudflare;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var example = new Cloudflare.RegionalTieredCache("example", new()
+    ///     {
+    ///         Value = "on",
+    ///         ZoneId = "0da42c8d2132a9ddaf714f9e7c920711",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// ```sh

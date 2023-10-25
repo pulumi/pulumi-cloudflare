@@ -8,6 +8,26 @@ import * as utilities from "./utilities";
 
 /**
  * Provides a resource for managing Email Routing Addresses catch all behaviour.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as cloudflare from "@pulumi/cloudflare";
+ *
+ * const example = new cloudflare.EmailRoutingCatchAll("example", {
+ *     actions: [{
+ *         type: "forward",
+ *         values: ["destinationaddress@example.net"],
+ *     }],
+ *     enabled: true,
+ *     matchers: [{
+ *         type: "all",
+ *     }],
+ *     name: "example catch all",
+ *     zoneId: "0da42c8d2132a9ddaf714f9e7c920711",
+ * });
+ * ```
  */
 export class EmailRoutingCatchAll extends pulumi.CustomResource {
     /**

@@ -526,6 +526,55 @@ class TeamsAccount(pulumi.CustomResource):
         Provides a Cloudflare Teams Account resource. The Teams Account
         resource defines configuration for secure web gateway.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        example = cloudflare.TeamsAccount("example",
+            account_id="f037e56e89293a057740de681ac9abbe",
+            antivirus=cloudflare.TeamsAccountAntivirusArgs(
+                enabled_download_phase=True,
+                enabled_upload_phase=False,
+                fail_closed=True,
+            ),
+            block_page=cloudflare.TeamsAccountBlockPageArgs(
+                background_color="#000000",
+                footer_text="hello",
+                header_text="hello",
+                logo_path="https://example.com/logo.jpg",
+            ),
+            fips=cloudflare.TeamsAccountFipsArgs(
+                tls=True,
+            ),
+            logging=cloudflare.TeamsAccountLoggingArgs(
+                redact_pii=True,
+                settings_by_rule_type=cloudflare.TeamsAccountLoggingSettingsByRuleTypeArgs(
+                    dns=cloudflare.TeamsAccountLoggingSettingsByRuleTypeDnsArgs(
+                        log_all=False,
+                        log_blocks=True,
+                    ),
+                    http=cloudflare.TeamsAccountLoggingSettingsByRuleTypeHttpArgs(
+                        log_all=True,
+                        log_blocks=True,
+                    ),
+                    l4=cloudflare.TeamsAccountLoggingSettingsByRuleTypeL4Args(
+                        log_all=False,
+                        log_blocks=True,
+                    ),
+                ),
+            ),
+            protocol_detection_enabled=True,
+            proxy=cloudflare.TeamsAccountProxyArgs(
+                root_ca=True,
+                tcp=True,
+                udp=True,
+            ),
+            tls_decrypt_enabled=True,
+            url_browser_isolation_enabled=True)
+        ```
+
         ## Import
 
         ```sh
@@ -555,6 +604,55 @@ class TeamsAccount(pulumi.CustomResource):
         """
         Provides a Cloudflare Teams Account resource. The Teams Account
         resource defines configuration for secure web gateway.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        example = cloudflare.TeamsAccount("example",
+            account_id="f037e56e89293a057740de681ac9abbe",
+            antivirus=cloudflare.TeamsAccountAntivirusArgs(
+                enabled_download_phase=True,
+                enabled_upload_phase=False,
+                fail_closed=True,
+            ),
+            block_page=cloudflare.TeamsAccountBlockPageArgs(
+                background_color="#000000",
+                footer_text="hello",
+                header_text="hello",
+                logo_path="https://example.com/logo.jpg",
+            ),
+            fips=cloudflare.TeamsAccountFipsArgs(
+                tls=True,
+            ),
+            logging=cloudflare.TeamsAccountLoggingArgs(
+                redact_pii=True,
+                settings_by_rule_type=cloudflare.TeamsAccountLoggingSettingsByRuleTypeArgs(
+                    dns=cloudflare.TeamsAccountLoggingSettingsByRuleTypeDnsArgs(
+                        log_all=False,
+                        log_blocks=True,
+                    ),
+                    http=cloudflare.TeamsAccountLoggingSettingsByRuleTypeHttpArgs(
+                        log_all=True,
+                        log_blocks=True,
+                    ),
+                    l4=cloudflare.TeamsAccountLoggingSettingsByRuleTypeL4Args(
+                        log_all=False,
+                        log_blocks=True,
+                    ),
+                ),
+            ),
+            protocol_detection_enabled=True,
+            proxy=cloudflare.TeamsAccountProxyArgs(
+                root_ca=True,
+                tcp=True,
+                udp=True,
+            ),
+            tls_decrypt_enabled=True,
+            url_browser_isolation_enabled=True)
+        ```
 
         ## Import
 

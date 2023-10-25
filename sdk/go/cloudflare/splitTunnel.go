@@ -16,6 +16,90 @@ import (
 // Provides a Cloudflare Split Tunnel resource. Split tunnels are used to either
 // include or exclude lists of routes from the WARP client's tunnel.
 //
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cloudflare.NewSplitTunnel(ctx, "exampleSplitTunnelExclude", &cloudflare.SplitTunnelArgs{
+//				AccountId: pulumi.String("f037e56e89293a057740de681ac9abbe"),
+//				Mode:      pulumi.String("exclude"),
+//				Tunnels: cloudflare.SplitTunnelTunnelArray{
+//					&cloudflare.SplitTunnelTunnelArgs{
+//						Host:        pulumi.String("*.example.com"),
+//						Description: pulumi.String("example domain"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = cloudflare.NewSplitTunnel(ctx, "exampleSplitTunnelIncludeSplitTunnel", &cloudflare.SplitTunnelArgs{
+//				AccountId: pulumi.String("f037e56e89293a057740de681ac9abbe"),
+//				Mode:      pulumi.String("include"),
+//				Tunnels: cloudflare.SplitTunnelTunnelArray{
+//					&cloudflare.SplitTunnelTunnelArgs{
+//						Host:        pulumi.String("*.example.com"),
+//						Description: pulumi.String("example domain"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			developerWarpPolicy, err := cloudflare.NewDeviceSettingsPolicy(ctx, "developerWarpPolicy", &cloudflare.DeviceSettingsPolicyArgs{
+//				AccountId:    pulumi.String("f037e56e89293a057740de681ac9abbe"),
+//				Name:         pulumi.String("Developers"),
+//				Precedence:   pulumi.Int(10),
+//				Match:        pulumi.String("any(identity.groups.name[*] in {\"Developers\"})"),
+//				SwitchLocked: pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = cloudflare.NewSplitTunnel(ctx, "exampleDeviceSettingsPolicySplitTunnelExclude", &cloudflare.SplitTunnelArgs{
+//				AccountId: pulumi.String("f037e56e89293a057740de681ac9abbe"),
+//				PolicyId:  developerWarpPolicy.ID(),
+//				Mode:      pulumi.String("exclude"),
+//				Tunnels: cloudflare.SplitTunnelTunnelArray{
+//					&cloudflare.SplitTunnelTunnelArgs{
+//						Host:        pulumi.String("*.example.com"),
+//						Description: pulumi.String("example domain"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = cloudflare.NewSplitTunnel(ctx, "exampleSplitTunnelIncludeIndex/splitTunnelSplitTunnel", &cloudflare.SplitTunnelArgs{
+//				AccountId: pulumi.String("f037e56e89293a057740de681ac9abbe"),
+//				PolicyId:  pulumi.Any(cloudflare_device_policy.Developer_warp_policy.Id),
+//				Mode:      pulumi.String("include"),
+//				Tunnels: cloudflare.SplitTunnelTunnelArray{
+//					&cloudflare.SplitTunnelTunnelArgs{
+//						Host:        pulumi.String("*.example.com"),
+//						Description: pulumi.String("example domain"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // Split Tunnels for default device policies must use "default" as the policy ID.

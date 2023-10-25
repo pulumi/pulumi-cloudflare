@@ -326,6 +326,59 @@ class ListItem(pulumi.CustomResource):
         Provides individual list items (IPs, Redirects) to be used in Edge Rules Engine
         across all zones within the same account.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        example_ip_list = cloudflare.List("exampleIpList",
+            account_id="f037e56e89293a057740de681ac9abbe",
+            name="example_list",
+            description="example IPs for a list",
+            kind="ip")
+        # IP List Item
+        example_ip_item = cloudflare.ListItem("exampleIpItem",
+            account_id="f037e56e89293a057740de681ac9abbe",
+            list_id=example_ip_list.id,
+            comment="List Item Comment",
+            ip="192.0.2.0")
+        # Redirect List Item
+        test_two = cloudflare.ListItem("testTwo",
+            account_id="f037e56e89293a057740de681ac9abbe",
+            list_id=example_ip_list.id,
+            redirect=cloudflare.ListItemRedirectArgs(
+                source_url="https://source.tld",
+                target_url="https://target.tld",
+                status_code=302,
+                subpath_matching="enabled",
+            ))
+        # ASN list
+        example_asn_list = cloudflare.List("exampleAsnList",
+            account_id="f037e56e89293a057740de681ac9abbe",
+            name="example_asn_list",
+            description="example ASNs for a list",
+            kind="asn")
+        # ASN List Item
+        example_asn_item = cloudflare.ListItem("exampleAsnItem",
+            account_id="f037e56e89293a057740de681ac9abbe",
+            list_id=example_asn_list.id,
+            comment="List Item Comment",
+            asn=6789)
+        # Hostname list
+        example_hostname_list = cloudflare.List("exampleHostnameList",
+            account_id="f037e56e89293a057740de681ac9abbe",
+            name="example_hostname_list",
+            description="example Hostnames for a list",
+            kind="hostname")
+        # Hostname List Item
+        example_hostname_item = cloudflare.ListItem("exampleHostnameItem",
+            account_id="f037e56e89293a057740de681ac9abbe",
+            list_id=example_hostname_list.id,
+            comment="List Item Comment",
+            asn="example.com")
+        ```
+
         ## Import
 
         ```sh
@@ -351,6 +404,59 @@ class ListItem(pulumi.CustomResource):
         """
         Provides individual list items (IPs, Redirects) to be used in Edge Rules Engine
         across all zones within the same account.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        example_ip_list = cloudflare.List("exampleIpList",
+            account_id="f037e56e89293a057740de681ac9abbe",
+            name="example_list",
+            description="example IPs for a list",
+            kind="ip")
+        # IP List Item
+        example_ip_item = cloudflare.ListItem("exampleIpItem",
+            account_id="f037e56e89293a057740de681ac9abbe",
+            list_id=example_ip_list.id,
+            comment="List Item Comment",
+            ip="192.0.2.0")
+        # Redirect List Item
+        test_two = cloudflare.ListItem("testTwo",
+            account_id="f037e56e89293a057740de681ac9abbe",
+            list_id=example_ip_list.id,
+            redirect=cloudflare.ListItemRedirectArgs(
+                source_url="https://source.tld",
+                target_url="https://target.tld",
+                status_code=302,
+                subpath_matching="enabled",
+            ))
+        # ASN list
+        example_asn_list = cloudflare.List("exampleAsnList",
+            account_id="f037e56e89293a057740de681ac9abbe",
+            name="example_asn_list",
+            description="example ASNs for a list",
+            kind="asn")
+        # ASN List Item
+        example_asn_item = cloudflare.ListItem("exampleAsnItem",
+            account_id="f037e56e89293a057740de681ac9abbe",
+            list_id=example_asn_list.id,
+            comment="List Item Comment",
+            asn=6789)
+        # Hostname list
+        example_hostname_list = cloudflare.List("exampleHostnameList",
+            account_id="f037e56e89293a057740de681ac9abbe",
+            name="example_hostname_list",
+            description="example Hostnames for a list",
+            kind="hostname")
+        # Hostname List Item
+        example_hostname_item = cloudflare.ListItem("exampleHostnameItem",
+            account_id="f037e56e89293a057740de681ac9abbe",
+            list_id=example_hostname_list.id,
+            comment="List Item Comment",
+            asn="example.com")
+        ```
 
         ## Import
 

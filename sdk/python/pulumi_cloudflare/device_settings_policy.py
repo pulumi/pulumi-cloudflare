@@ -771,6 +771,33 @@ class DeviceSettingsPolicy(pulumi.CustomResource):
         """
         Provides a Cloudflare Device Settings Policy resource. Device policies configure settings applied to WARP devices.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        developer_warp_policy = cloudflare.DeviceSettingsPolicy("developerWarpPolicy",
+            account_id="f037e56e89293a057740de681ac9abbe",
+            allow_mode_switch=True,
+            allow_updates=True,
+            allowed_to_leave=True,
+            auto_connect=0,
+            captive_portal=5,
+            default=False,
+            description="Developers WARP settings policy description",
+            disable_auto_fallback=True,
+            enabled=True,
+            exclude_office_ips=False,
+            match="any(identity.groups.name[*] in {\\"Developers\\"})",
+            name="Developers WARP settings policy",
+            precedence=10,
+            service_mode_v2_mode="warp",
+            service_mode_v2_port=3000,
+            support_url="https://cloudflare.com",
+            switch_locked=True)
+        ```
+
         ## Import
 
         For default device settings policies you must use "default" as the policy ID.
@@ -808,6 +835,33 @@ class DeviceSettingsPolicy(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Provides a Cloudflare Device Settings Policy resource. Device policies configure settings applied to WARP devices.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        developer_warp_policy = cloudflare.DeviceSettingsPolicy("developerWarpPolicy",
+            account_id="f037e56e89293a057740de681ac9abbe",
+            allow_mode_switch=True,
+            allow_updates=True,
+            allowed_to_leave=True,
+            auto_connect=0,
+            captive_portal=5,
+            default=False,
+            description="Developers WARP settings policy description",
+            disable_auto_fallback=True,
+            enabled=True,
+            exclude_office_ips=False,
+            match="any(identity.groups.name[*] in {\\"Developers\\"})",
+            name="Developers WARP settings policy",
+            precedence=10,
+            service_mode_v2_mode="warp",
+            service_mode_v2_port=3000,
+            support_url="https://cloudflare.com",
+            switch_locked=True)
+        ```
 
         ## Import
 

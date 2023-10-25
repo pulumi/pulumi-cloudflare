@@ -23,6 +23,80 @@ import (
 // scope. For example, an access token that is scoped to the "example.com"
 // zone needs to use the `zoneId` argument.
 //
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cloudflare.NewAccessGroup(ctx, "exampleAccessGroup", &cloudflare.AccessGroupArgs{
+//				AccountId: pulumi.String("f037e56e89293a057740de681ac9abbe"),
+//				Name:      pulumi.String("staging group"),
+//				Includes: cloudflare.AccessGroupIncludeArray{
+//					&cloudflare.AccessGroupIncludeArgs{
+//						Emails: pulumi.StringArray{
+//							pulumi.String("test@example.com"),
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = cloudflare.NewAccessGroup(ctx, "exampleIndex/accessGroupAccessGroup", &cloudflare.AccessGroupArgs{
+//				AccountId: pulumi.String("f037e56e89293a057740de681ac9abbe"),
+//				Name:      pulumi.String("staging group"),
+//				Includes: cloudflare.AccessGroupIncludeArray{
+//					&cloudflare.AccessGroupIncludeArgs{
+//						Emails: pulumi.StringArray{
+//							pulumi.String("test@example.com"),
+//						},
+//					},
+//				},
+//				Requires: cloudflare.AccessGroupRequireArray{
+//					&cloudflare.AccessGroupRequireArgs{
+//						Ips: pulumi.StringArray{
+//							_var.Office_ip,
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = cloudflare.NewAccessGroup(ctx, "exampleCloudflareIndex/accessGroupAccessGroup", &cloudflare.AccessGroupArgs{
+//				AccountId: pulumi.String("f037e56e89293a057740de681ac9abbe"),
+//				Name:      pulumi.String("test_group"),
+//				Includes: cloudflare.AccessGroupIncludeArray{
+//					&cloudflare.AccessGroupIncludeArgs{
+//						Azures: cloudflare.AccessGroupIncludeAzureArray{
+//							&cloudflare.AccessGroupIncludeAzureArgs{
+//								IdentityProviderId: pulumi.String("ca298b82-93b5-41bf-bc2d-10493f09b761"),
+//								Ids: pulumi.StringArray{
+//									pulumi.String("86773093-5feb-48dd-814b-7ccd3676ff50"),
+//								},
+//							},
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // ```sh

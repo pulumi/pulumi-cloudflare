@@ -15,6 +15,103 @@ import (
 
 // Provides a Cloudflare worker script resource. In order for a script to be active, you'll also need to setup a `WorkerRoute`.
 //
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"encoding/base64"
+//	"os"
+//
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func filebase64OrPanic(path string) pulumi.StringPtrInput {
+//		if fileData, err := os.ReadFile(path); err == nil {
+//			return pulumi.String(base64.StdEncoding.EncodeToString(fileData[:]))
+//		} else {
+//			panic(err.Error())
+//		}
+//	}
+//
+//	func readFileOrPanic(path string) pulumi.StringPtrInput {
+//		data, err := os.ReadFile(path)
+//		if err != nil {
+//			panic(err.Error())
+//		}
+//		return pulumi.String(string(data))
+//	}
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			myNamespace, err := cloudflare.NewWorkersKvNamespace(ctx, "myNamespace", &cloudflare.WorkersKvNamespaceArgs{
+//				AccountId: pulumi.String("f037e56e89293a057740de681ac9abbe"),
+//				Title:     pulumi.String("example"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = cloudflare.NewWorkerScript(ctx, "myScript", &cloudflare.WorkerScriptArgs{
+//				AccountId: pulumi.String("f037e56e89293a057740de681ac9abbe"),
+//				Name:      pulumi.String("script_1"),
+//				Content:   readFileOrPanic("script.js"),
+//				KvNamespaceBindings: cloudflare.WorkerScriptKvNamespaceBindingArray{
+//					&cloudflare.WorkerScriptKvNamespaceBindingArgs{
+//						Name:        pulumi.String("MY_EXAMPLE_KV_NAMESPACE"),
+//						NamespaceId: myNamespace.ID(),
+//					},
+//				},
+//				PlainTextBindings: cloudflare.WorkerScriptPlainTextBindingArray{
+//					&cloudflare.WorkerScriptPlainTextBindingArgs{
+//						Name: pulumi.String("MY_EXAMPLE_PLAIN_TEXT"),
+//						Text: pulumi.String("foobar"),
+//					},
+//				},
+//				SecretTextBindings: cloudflare.WorkerScriptSecretTextBindingArray{
+//					&cloudflare.WorkerScriptSecretTextBindingArgs{
+//						Name: pulumi.String("MY_EXAMPLE_SECRET_TEXT"),
+//						Text: pulumi.Any(_var.Secret_foo_value),
+//					},
+//				},
+//				WebassemblyBindings: cloudflare.WorkerScriptWebassemblyBindingArray{
+//					&cloudflare.WorkerScriptWebassemblyBindingArgs{
+//						Name:   pulumi.String("MY_EXAMPLE_WASM"),
+//						Module: filebase64OrPanic("example.wasm"),
+//					},
+//				},
+//				ServiceBindings: cloudflare.WorkerScriptServiceBindingArray{
+//					&cloudflare.WorkerScriptServiceBindingArgs{
+//						Name:        pulumi.String("MY_SERVICE_BINDING"),
+//						Service:     pulumi.String("MY_SERVICE"),
+//						Environment: pulumi.String("production"),
+//					},
+//				},
+//				R2BucketBindings: cloudflare.WorkerScriptR2BucketBindingArray{
+//					&cloudflare.WorkerScriptR2BucketBindingArgs{
+//						Name:       pulumi.String("MY_BUCKET"),
+//						BucketName: pulumi.String("MY_BUCKET_NAME"),
+//					},
+//				},
+//				AnalyticsEngineBindings: cloudflare.WorkerScriptAnalyticsEngineBindingArray{
+//					&cloudflare.WorkerScriptAnalyticsEngineBindingArgs{
+//						Name:    pulumi.String("MY_DATASET"),
+//						Dataset: pulumi.String("dataset1"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // ```sh

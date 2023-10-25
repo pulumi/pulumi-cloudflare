@@ -250,6 +250,20 @@ class ApiShieldSchema(pulumi.CustomResource):
         """
         Provides a resource to manage a schema in API Shield Schema Validation 2.0.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        petstore_schema = cloudflare.ApiShieldSchema("petstoreSchema",
+            zone_id="0da42c8d2132a9ddaf714f9e7c920711",
+            name="myschema",
+            kind="openapi_v3",
+            validation_enabled=True,
+            source=(lambda path: open(path).read())("./schemas/petstore.json"))
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] kind: Kind of schema. Defaults to `openapi_v3`. **Modifying this attribute will force creation of a new resource.**
@@ -266,6 +280,20 @@ class ApiShieldSchema(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Provides a resource to manage a schema in API Shield Schema Validation 2.0.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        petstore_schema = cloudflare.ApiShieldSchema("petstoreSchema",
+            zone_id="0da42c8d2132a9ddaf714f9e7c920711",
+            name="myschema",
+            kind="openapi_v3",
+            validation_enabled=True,
+            source=(lambda path: open(path).read())("./schemas/petstore.json"))
+        ```
 
         :param str resource_name: The name of the resource.
         :param ApiShieldSchemaArgs args: The arguments to use to populate this resource's properties.

@@ -13,6 +13,50 @@ import (
 )
 
 // Use this data source to retrieve information about the currently authenticated user.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+// func main() {
+// pulumi.Run(func(ctx *pulumi.Context) error {
+// me, err := cloudflare.GetUser(ctx, nil, nil);
+// if err != nil {
+// return err
+// }
+// all, err := cloudflare.GetApiTokenPermissionGroups(ctx, nil, nil);
+// if err != nil {
+// return err
+// }
+// _, err = cloudflare.NewApiToken(ctx, "example", &cloudflare.ApiTokenArgs{
+// Name: pulumi.String("Terraform Cloud (Terraform)"),
+// Policies: cloudflare.ApiTokenPolicyArray{
+// &cloudflare.ApiTokenPolicyArgs{
+// PermissionGroups: pulumi.StringArray{
+// *pulumi.String(all.User.User Details Read),
+// },
+// Resources: pulumi.StringMap{
+// fmt.Sprintf("com.cloudflare.api.user.%v", me.Id): pulumi.String("*"),
+// },
+// },
+// },
+// })
+// if err != nil {
+// return err
+// }
+// return nil
+// })
+// }
+// ```
 func GetUser(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*GetUserResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetUserResult

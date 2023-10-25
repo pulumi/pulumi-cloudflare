@@ -12,6 +12,33 @@ namespace Pulumi.Cloudflare
     /// <summary>
     /// Provides a resource to manage a Cloudflare Workers KV Pair.
     /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Cloudflare = Pulumi.Cloudflare;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var exampleNs = new Cloudflare.WorkersKvNamespace("exampleNs", new()
+    ///     {
+    ///         AccountId = "f037e56e89293a057740de681ac9abbe",
+    ///         Title = "test-namespace",
+    ///     });
+    /// 
+    ///     var example = new Cloudflare.WorkersKv("example", new()
+    ///     {
+    ///         AccountId = "f037e56e89293a057740de681ac9abbe",
+    ///         NamespaceId = exampleNs.Id,
+    ///         Key = "test-key",
+    ///         Value = "test value",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// ```sh

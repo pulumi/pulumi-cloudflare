@@ -250,6 +250,32 @@ class UserAgentBlockingRule(pulumi.CustomResource):
         """
         Provides a resource to manage User Agent Blocking Rules.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        example1 = cloudflare.UserAgentBlockingRule("example1",
+            configuration=cloudflare.UserAgentBlockingRuleConfigurationArgs(
+                target="ua",
+                value="Chrome",
+            ),
+            description="My description 1",
+            mode="js_challenge",
+            paused=False,
+            zone_id="0da42c8d2132a9ddaf714f9e7c920711")
+        example2 = cloudflare.UserAgentBlockingRule("example2",
+            configuration=cloudflare.UserAgentBlockingRuleConfigurationArgs(
+                target="ua",
+                value="Mozilla",
+            ),
+            description="My description 22",
+            mode="challenge",
+            paused=True,
+            zone_id="0da42c8d2132a9ddaf714f9e7c920711")
+        ```
+
         ## Import
 
         ```sh
@@ -272,6 +298,32 @@ class UserAgentBlockingRule(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Provides a resource to manage User Agent Blocking Rules.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        example1 = cloudflare.UserAgentBlockingRule("example1",
+            configuration=cloudflare.UserAgentBlockingRuleConfigurationArgs(
+                target="ua",
+                value="Chrome",
+            ),
+            description="My description 1",
+            mode="js_challenge",
+            paused=False,
+            zone_id="0da42c8d2132a9ddaf714f9e7c920711")
+        example2 = cloudflare.UserAgentBlockingRule("example2",
+            configuration=cloudflare.UserAgentBlockingRuleConfigurationArgs(
+                target="ua",
+                value="Mozilla",
+            ),
+            description="My description 22",
+            mode="challenge",
+            paused=True,
+            zone_id="0da42c8d2132a9ddaf714f9e7c920711")
+        ```
 
         ## Import
 

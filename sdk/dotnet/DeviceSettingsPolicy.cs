@@ -12,6 +12,41 @@ namespace Pulumi.Cloudflare
     /// <summary>
     /// Provides a Cloudflare Device Settings Policy resource. Device policies configure settings applied to WARP devices.
     /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Cloudflare = Pulumi.Cloudflare;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var developerWarpPolicy = new Cloudflare.DeviceSettingsPolicy("developerWarpPolicy", new()
+    ///     {
+    ///         AccountId = "f037e56e89293a057740de681ac9abbe",
+    ///         AllowModeSwitch = true,
+    ///         AllowUpdates = true,
+    ///         AllowedToLeave = true,
+    ///         AutoConnect = 0,
+    ///         CaptivePortal = 5,
+    ///         Default = false,
+    ///         Description = "Developers WARP settings policy description",
+    ///         DisableAutoFallback = true,
+    ///         Enabled = true,
+    ///         ExcludeOfficeIps = false,
+    ///         Match = "any(identity.groups.name[*] in {\"Developers\"})",
+    ///         Name = "Developers WARP settings policy",
+    ///         Precedence = 10,
+    ///         ServiceModeV2Mode = "warp",
+    ///         ServiceModeV2Port = 3000,
+    ///         SupportUrl = "https://cloudflare.com",
+    ///         SwitchLocked = true,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// For default device settings policies you must use "default" as the policy ID.

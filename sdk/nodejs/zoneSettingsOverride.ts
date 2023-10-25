@@ -13,6 +13,34 @@ import * as utilities from "./utilities";
  *   resource is only intended to override those which you do not want the default.
  *   Attempting to manage all settings will result in problems with the resource
  *   applying in a consistent manner.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as cloudflare from "@pulumi/cloudflare";
+ *
+ * const test = new cloudflare.ZoneSettingsOverride("test", {
+ *     zoneId: d41d8cd98f00b204e9800998ecf8427e,
+ *     settings: {
+ *         brotli: "on",
+ *         challengeTtl: 2700,
+ *         securityLevel: "high",
+ *         opportunisticEncryption: "on",
+ *         automaticHttpsRewrites: "on",
+ *         mirage: "on",
+ *         waf: "on",
+ *         minify: {
+ *             css: "on",
+ *             js: "off",
+ *             html: "off",
+ *         },
+ *         securityHeader: {
+ *             enabled: true,
+ *         },
+ *     },
+ * });
+ * ```
  */
 export class ZoneSettingsOverride extends pulumi.CustomResource {
     /**

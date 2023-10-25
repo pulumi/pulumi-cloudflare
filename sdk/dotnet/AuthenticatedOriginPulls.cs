@@ -14,6 +14,59 @@ namespace Pulumi.Cloudflare
     /// resource is required to use Per-Zone or Per-Hostname Authenticated
     /// Origin Pulls.
     /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Cloudflare = Pulumi.Cloudflare;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     // Authenticated Origin Pulls
+    ///     var myAop = new Cloudflare.AuthenticatedOriginPulls("myAop", new()
+    ///     {
+    ///         ZoneId = "0da42c8d2132a9ddaf714f9e7c920711",
+    ///         Enabled = true,
+    ///     });
+    /// 
+    ///     // Per-Zone Authenticated Origin Pulls
+    ///     var myPerZoneAopCert = new Cloudflare.AuthenticatedOriginPullsCertificate("myPerZoneAopCert", new()
+    ///     {
+    ///         ZoneId = "0da42c8d2132a9ddaf714f9e7c920711",
+    ///         Certificate = "-----INSERT CERTIFICATE-----",
+    ///         PrivateKey = "-----INSERT PRIVATE KEY-----",
+    ///         Type = "per-zone",
+    ///     });
+    /// 
+    ///     var myPerZoneAop = new Cloudflare.AuthenticatedOriginPulls("myPerZoneAop", new()
+    ///     {
+    ///         ZoneId = "0da42c8d2132a9ddaf714f9e7c920711",
+    ///         AuthenticatedOriginPullsCertificate = myPerZoneAopCert.Id,
+    ///         Enabled = true,
+    ///     });
+    /// 
+    ///     // Per-Hostname Authenticated Origin Pulls
+    ///     var myPerHostnameAopCert = new Cloudflare.AuthenticatedOriginPullsCertificate("myPerHostnameAopCert", new()
+    ///     {
+    ///         ZoneId = "0da42c8d2132a9ddaf714f9e7c920711",
+    ///         Certificate = "-----INSERT CERTIFICATE-----",
+    ///         PrivateKey = "-----INSERT PRIVATE KEY-----",
+    ///         Type = "per-hostname",
+    ///     });
+    /// 
+    ///     var myPerHostnameAop = new Cloudflare.AuthenticatedOriginPulls("myPerHostnameAop", new()
+    ///     {
+    ///         ZoneId = "0da42c8d2132a9ddaf714f9e7c920711",
+    ///         AuthenticatedOriginPullsCertificate = myPerHostnameAopCert.Id,
+    ///         Hostname = "aop.example.com",
+    ///         Enabled = true,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// global

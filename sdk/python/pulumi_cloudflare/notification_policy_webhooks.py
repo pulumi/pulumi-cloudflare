@@ -282,6 +282,19 @@ class NotificationPolicyWebhooks(pulumi.CustomResource):
         """
         Provides a resource, that manages a webhook destination. These destinations can be tied to the notification policies created for Cloudflare's products.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        example = cloudflare.NotificationPolicyWebhooks("example",
+            account_id="f037e56e89293a057740de681ac9abbe",
+            name="Webhooks destination",
+            secret="my-secret",
+            url="https://example.com")
+        ```
+
         ## Import
 
         ```sh
@@ -303,6 +316,19 @@ class NotificationPolicyWebhooks(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Provides a resource, that manages a webhook destination. These destinations can be tied to the notification policies created for Cloudflare's products.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        example = cloudflare.NotificationPolicyWebhooks("example",
+            account_id="f037e56e89293a057740de681ac9abbe",
+            name="Webhooks destination",
+            secret="my-secret",
+            url="https://example.com")
+        ```
 
         ## Import
 

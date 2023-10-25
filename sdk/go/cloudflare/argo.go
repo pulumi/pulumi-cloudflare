@@ -16,6 +16,34 @@ import (
 // Cloudflare Argo controls the routing to your origin and tiered
 // caching options to speed up your website browsing experience.
 //
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cloudflare.NewArgo(ctx, "example", &cloudflare.ArgoArgs{
+//				SmartRouting:  pulumi.String("on"),
+//				TieredCaching: pulumi.String("on"),
+//				ZoneId:        pulumi.String("0da42c8d2132a9ddaf714f9e7c920711"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // ```sh

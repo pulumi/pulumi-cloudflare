@@ -23,6 +23,84 @@ import (
 // scope. For example, an access token that is scoped to the "example.com"
 // zone needs to use the `zoneId` argument.
 //
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cloudflare.NewAccessIdentityProvider(ctx, "pinLogin", &cloudflare.AccessIdentityProviderArgs{
+//				AccountId: pulumi.String("f037e56e89293a057740de681ac9abbe"),
+//				Name:      pulumi.String("PIN login"),
+//				Type:      pulumi.String("onetimepin"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = cloudflare.NewAccessIdentityProvider(ctx, "githubOauth", &cloudflare.AccessIdentityProviderArgs{
+//				AccountId: pulumi.String("f037e56e89293a057740de681ac9abbe"),
+//				Configs: cloudflare.AccessIdentityProviderConfigArray{
+//					&cloudflare.AccessIdentityProviderConfigArgs{
+//						ClientId:     pulumi.String("example"),
+//						ClientSecret: pulumi.String("secret_key"),
+//					},
+//				},
+//				Name: pulumi.String("GitHub OAuth"),
+//				Type: pulumi.String("github"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = cloudflare.NewAccessIdentityProvider(ctx, "jumpcloudSaml", &cloudflare.AccessIdentityProviderArgs{
+//				AccountId: pulumi.String("f037e56e89293a057740de681ac9abbe"),
+//				Configs: cloudflare.AccessIdentityProviderConfigArray{
+//					&cloudflare.AccessIdentityProviderConfigArgs{
+//						Attributes: pulumi.StringArray{
+//							pulumi.String("email"),
+//							pulumi.String("username"),
+//						},
+//						IdpPublicCert: pulumi.String("MIIDpDCCAoygAwIBAgIGAV2ka+55MA0GCSqGSIb3DQEBCwUAMIGSMQswCQ...GF/Q2/MHadws97cZg\nuTnQyuOqPuHbnN83d/2l1NSYKCbHt24o\n"),
+//						IssuerUrl:     pulumi.String("jumpcloud"),
+//						SignRequest:   pulumi.Bool(false),
+//						SsoTargetUrl:  pulumi.String("https://sso.myexample.jumpcloud.com/saml2/cloudflareaccess"),
+//					},
+//				},
+//				Name: pulumi.String("JumpCloud SAML"),
+//				Type: pulumi.String("saml"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = cloudflare.NewAccessIdentityProvider(ctx, "okta", &cloudflare.AccessIdentityProviderArgs{
+//				AccountId: pulumi.String("f037e56e89293a057740de681ac9abbe"),
+//				Configs: cloudflare.AccessIdentityProviderConfigArray{
+//					&cloudflare.AccessIdentityProviderConfigArgs{
+//						ApiToken:     pulumi.String("okta_api_token"),
+//						ClientId:     pulumi.String("example"),
+//						ClientSecret: pulumi.String("secret_key"),
+//						OktaAccount:  pulumi.String("https://example.com"),
+//					},
+//				},
+//				Name: pulumi.String("Okta"),
+//				Type: pulumi.String("okta"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // ```sh

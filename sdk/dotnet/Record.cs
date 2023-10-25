@@ -12,6 +12,47 @@ namespace Pulumi.Cloudflare
     /// <summary>
     /// Provides a Cloudflare record resource.
     /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Cloudflare = Pulumi.Cloudflare;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     // Add a record to the domain
+    ///     var example = new Cloudflare.Record("example", new()
+    ///     {
+    ///         ZoneId = @var.Cloudflare_zone_id,
+    ///         Name = "example",
+    ///         Value = "192.0.2.1",
+    ///         Type = "A",
+    ///         Ttl = 3600,
+    ///     });
+    /// 
+    ///     // Add a record requiring a data map
+    ///     var _sipTls = new Cloudflare.Record("_sipTls", new()
+    ///     {
+    ///         ZoneId = @var.Cloudflare_zone_id,
+    ///         Name = "_sip._tls",
+    ///         Type = "SRV",
+    ///         Data = new Cloudflare.Inputs.RecordDataArgs
+    ///         {
+    ///             Service = "_sip",
+    ///             Proto = "_tls",
+    ///             Name = "example-srv",
+    ///             Priority = 0,
+    ///             Weight = 0,
+    ///             Port = 443,
+    ///             Target = "example.com",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// ```sh

@@ -313,6 +313,19 @@ class AccessServiceToken(pulumi.CustomResource):
         Access Service Tokens are used for service-to-service communication
         when an application is behind Cloudflare Access.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        # Generate a service token that will renew if terraform is ran within 30 days of expiration
+        my_app = cloudflare.AccessServiceToken("myApp",
+            account_id="f037e56e89293a057740de681ac9abbe",
+            min_days_for_renewal=30,
+            name="CI/CD app renewed")
+        ```
+
         ## Import
 
         If you are importing an Access Service Token you will not have the client_secret available in the state for use. The client_secret is only available once, at creation. In most cases, it is better to just create a new resource should you need to reference it in other resources.
@@ -338,6 +351,19 @@ class AccessServiceToken(pulumi.CustomResource):
         """
         Access Service Tokens are used for service-to-service communication
         when an application is behind Cloudflare Access.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        # Generate a service token that will renew if terraform is ran within 30 days of expiration
+        my_app = cloudflare.AccessServiceToken("myApp",
+            account_id="f037e56e89293a057740de681ac9abbe",
+            min_days_for_renewal=30,
+            name="CI/CD app renewed")
+        ```
 
         ## Import
 

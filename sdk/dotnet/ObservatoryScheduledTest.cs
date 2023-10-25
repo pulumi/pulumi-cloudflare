@@ -12,6 +12,27 @@ namespace Pulumi.Cloudflare
     /// <summary>
     /// Provides a Cloudflare Observatory Scheduled Test resource.
     /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Cloudflare = Pulumi.Cloudflare;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var example = new Cloudflare.ObservatoryScheduledTest("example", new()
+    ///     {
+    ///         Frequency = "WEEKLY",
+    ///         Region = "us-central1",
+    ///         Url = "example.com",
+    ///         ZoneId = "0da42c8d2132a9ddaf714f9e7c920711",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// ```sh

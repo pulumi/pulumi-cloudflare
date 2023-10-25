@@ -202,6 +202,32 @@ class MagicFirewallRuleset(pulumi.CustomResource):
         creates a root ruleset on the account level and contains one or more rules. Rules can be crafted in Wireshark syntax and
         are evaluated in order, with the first rule having the highest priority.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        example = cloudflare.MagicFirewallRuleset("example",
+            account_id="d41d8cd98f00b204e9800998ecf8427e",
+            description="Global mitigations",
+            name="Magic Transit Ruleset",
+            rules=[
+                {
+                    "action": "allow",
+                    "description": "Allow TCP Ephemeral Ports",
+                    "enabled": "true",
+                    "expression": "tcp.dstport in { 32768..65535 }",
+                },
+                {
+                    "action": "block",
+                    "description": "Block all",
+                    "enabled": "true",
+                    "expression": "ip.len >= 0",
+                },
+            ])
+        ```
+
         ## Import
 
         An existing Magic Firewall Ruleset can be imported using the account ID and ruleset ID
@@ -226,6 +252,32 @@ class MagicFirewallRuleset(pulumi.CustomResource):
         Magic Firewall is a network-level firewall to protect networks that are onboarded to Cloudflare's Magic Transit. This resource
         creates a root ruleset on the account level and contains one or more rules. Rules can be crafted in Wireshark syntax and
         are evaluated in order, with the first rule having the highest priority.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        example = cloudflare.MagicFirewallRuleset("example",
+            account_id="d41d8cd98f00b204e9800998ecf8427e",
+            description="Global mitigations",
+            name="Magic Transit Ruleset",
+            rules=[
+                {
+                    "action": "allow",
+                    "description": "Allow TCP Ephemeral Ports",
+                    "enabled": "true",
+                    "expression": "tcp.dstport in { 32768..65535 }",
+                },
+                {
+                    "action": "block",
+                    "description": "Block all",
+                    "enabled": "true",
+                    "expression": "ip.len >= 0",
+                },
+            ])
+        ```
 
         ## Import
 

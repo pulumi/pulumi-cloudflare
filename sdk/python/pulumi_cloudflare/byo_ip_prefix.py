@@ -213,6 +213,19 @@ class ByoIpPrefix(pulumi.CustomResource):
         Provides the ability to manage Bring-Your-Own-IP prefixes (BYOIP)
         which are used with or without Magic Transit.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        example = cloudflare.ByoIpPrefix("example",
+            account_id="f037e56e89293a057740de681ac9abbe",
+            advertisement="on",
+            description="Example IP Prefix",
+            prefix_id="d41d8cd98f00b204e9800998ecf8427e")
+        ```
+
         ## Import
 
         ```sh
@@ -235,6 +248,19 @@ class ByoIpPrefix(pulumi.CustomResource):
         """
         Provides the ability to manage Bring-Your-Own-IP prefixes (BYOIP)
         which are used with or without Magic Transit.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        example = cloudflare.ByoIpPrefix("example",
+            account_id="f037e56e89293a057740de681ac9abbe",
+            advertisement="on",
+            description="Example IP Prefix",
+            prefix_id="d41d8cd98f00b204e9800998ecf8427e")
+        ```
 
         ## Import
 

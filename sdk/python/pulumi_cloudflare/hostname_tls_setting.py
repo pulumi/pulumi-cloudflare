@@ -242,6 +242,19 @@ class HostnameTlsSetting(pulumi.CustomResource):
         """
         Provides a Cloudflare per-hostname TLS setting resource. Used to set TLS settings for hostnames under the specified zone.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        example = cloudflare.HostnameTlsSetting("example",
+            hostname="sub.example.com",
+            setting="min_tls_version",
+            value="1.2",
+            zone_id="0da42c8d2132a9ddaf714f9e7c920711")
+        ```
+
         ## Import
 
         ```sh
@@ -263,6 +276,19 @@ class HostnameTlsSetting(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Provides a Cloudflare per-hostname TLS setting resource. Used to set TLS settings for hostnames under the specified zone.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        example = cloudflare.HostnameTlsSetting("example",
+            hostname="sub.example.com",
+            setting="min_tls_version",
+            value="1.2",
+            zone_id="0da42c8d2132a9ddaf714f9e7c920711")
+        ```
 
         ## Import
 

@@ -14,6 +14,29 @@ namespace Pulumi.Cloudflare
     /// Endpoints are used for pointing proxy clients at Cloudflare Secure
     /// Gateway.
     /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Cloudflare = Pulumi.Cloudflare;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var example = new Cloudflare.TeamsProxyEndpoint("example", new()
+    ///     {
+    ///         AccountId = "f037e56e89293a057740de681ac9abbe",
+    ///         Ips = new[]
+    ///         {
+    ///             "192.0.2.0/24",
+    ///         },
+    ///         Name = "office",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// ```sh

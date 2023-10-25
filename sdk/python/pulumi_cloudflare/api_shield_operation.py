@@ -210,6 +210,19 @@ class ApiShieldOperation(pulumi.CustomResource):
         """
         Provides a resource to manage an operation in API Shield Endpoint Management.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        example = cloudflare.ApiShieldOperation("example",
+            endpoint="/path",
+            host="api.example.com",
+            method="GET",
+            zone_id="0da42c8d2132a9ddaf714f9e7c920711")
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] endpoint: The endpoint which can contain path parameter templates in curly braces, each will be replaced from left to right with `{varN}`, starting with `{var1}`. This will then be [Cloudflare-normalized](https://developers.cloudflare.com/rules/normalization/how-it-works/). **Modifying this attribute will force creation of a new resource.**
@@ -225,6 +238,19 @@ class ApiShieldOperation(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Provides a resource to manage an operation in API Shield Endpoint Management.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        example = cloudflare.ApiShieldOperation("example",
+            endpoint="/path",
+            host="api.example.com",
+            method="GET",
+            zone_id="0da42c8d2132a9ddaf714f9e7c920711")
+        ```
 
         :param str resource_name: The name of the resource.
         :param ApiShieldOperationArgs args: The arguments to use to populate this resource's properties.

@@ -7,6 +7,17 @@ import * as utilities from "./utilities";
 /**
  * Provides a Cloudflare data source to look up Cache Reserve
  * status for a given zone.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as cloudflare from "@pulumi/cloudflare";
+ *
+ * const example = cloudflare.getZoneCacheReserve({
+ *     zoneId: "0da42c8d2132a9ddaf714f9e7c920711",
+ * });
+ * ```
  */
 export function getZoneCacheReserve(args: GetZoneCacheReserveArgs, opts?: pulumi.InvokeOptions): Promise<GetZoneCacheReserveResult> {
 
@@ -46,6 +57,17 @@ export interface GetZoneCacheReserveResult {
 /**
  * Provides a Cloudflare data source to look up Cache Reserve
  * status for a given zone.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as cloudflare from "@pulumi/cloudflare";
+ *
+ * const example = cloudflare.getZoneCacheReserve({
+ *     zoneId: "0da42c8d2132a9ddaf714f9e7c920711",
+ * });
+ * ```
  */
 export function getZoneCacheReserveOutput(args: GetZoneCacheReserveOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetZoneCacheReserveResult> {
     return pulumi.output(args).apply((a: any) => getZoneCacheReserve(a, opts))

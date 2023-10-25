@@ -300,6 +300,56 @@ class AccessIdentityProvider(pulumi.CustomResource):
         scope. For example, an access token that is scoped to the "example.com"
         zone needs to use the `zone_id` argument.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        # one time pin
+        pin_login = cloudflare.AccessIdentityProvider("pinLogin",
+            account_id="f037e56e89293a057740de681ac9abbe",
+            name="PIN login",
+            type="onetimepin")
+        # oauth
+        github_oauth = cloudflare.AccessIdentityProvider("githubOauth",
+            account_id="f037e56e89293a057740de681ac9abbe",
+            configs=[cloudflare.AccessIdentityProviderConfigArgs(
+                client_id="example",
+                client_secret="secret_key",
+            )],
+            name="GitHub OAuth",
+            type="github")
+        # saml
+        jumpcloud_saml = cloudflare.AccessIdentityProvider("jumpcloudSaml",
+            account_id="f037e56e89293a057740de681ac9abbe",
+            configs=[cloudflare.AccessIdentityProviderConfigArgs(
+                attributes=[
+                    "email",
+                    "username",
+                ],
+                idp_public_cert=\"\"\"MIIDpDCCAoygAwIBAgIGAV2ka+55MA0GCSqGSIb3DQEBCwUAMIGSMQswCQ...GF/Q2/MHadws97cZg
+        uTnQyuOqPuHbnN83d/2l1NSYKCbHt24o
+        \"\"\",
+                issuer_url="jumpcloud",
+                sign_request=False,
+                sso_target_url="https://sso.myexample.jumpcloud.com/saml2/cloudflareaccess",
+            )],
+            name="JumpCloud SAML",
+            type="saml")
+        # okta
+        okta = cloudflare.AccessIdentityProvider("okta",
+            account_id="f037e56e89293a057740de681ac9abbe",
+            configs=[cloudflare.AccessIdentityProviderConfigArgs(
+                api_token="okta_api_token",
+                client_id="example",
+                client_secret="secret_key",
+                okta_account="https://example.com",
+            )],
+            name="Okta",
+            type="okta")
+        ```
+
         ## Import
 
         ```sh
@@ -331,6 +381,56 @@ class AccessIdentityProvider(pulumi.CustomResource):
         access token, you must provide the argument that matches the token's
         scope. For example, an access token that is scoped to the "example.com"
         zone needs to use the `zone_id` argument.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        # one time pin
+        pin_login = cloudflare.AccessIdentityProvider("pinLogin",
+            account_id="f037e56e89293a057740de681ac9abbe",
+            name="PIN login",
+            type="onetimepin")
+        # oauth
+        github_oauth = cloudflare.AccessIdentityProvider("githubOauth",
+            account_id="f037e56e89293a057740de681ac9abbe",
+            configs=[cloudflare.AccessIdentityProviderConfigArgs(
+                client_id="example",
+                client_secret="secret_key",
+            )],
+            name="GitHub OAuth",
+            type="github")
+        # saml
+        jumpcloud_saml = cloudflare.AccessIdentityProvider("jumpcloudSaml",
+            account_id="f037e56e89293a057740de681ac9abbe",
+            configs=[cloudflare.AccessIdentityProviderConfigArgs(
+                attributes=[
+                    "email",
+                    "username",
+                ],
+                idp_public_cert=\"\"\"MIIDpDCCAoygAwIBAgIGAV2ka+55MA0GCSqGSIb3DQEBCwUAMIGSMQswCQ...GF/Q2/MHadws97cZg
+        uTnQyuOqPuHbnN83d/2l1NSYKCbHt24o
+        \"\"\",
+                issuer_url="jumpcloud",
+                sign_request=False,
+                sso_target_url="https://sso.myexample.jumpcloud.com/saml2/cloudflareaccess",
+            )],
+            name="JumpCloud SAML",
+            type="saml")
+        # okta
+        okta = cloudflare.AccessIdentityProvider("okta",
+            account_id="f037e56e89293a057740de681ac9abbe",
+            configs=[cloudflare.AccessIdentityProviderConfigArgs(
+                api_token="okta_api_token",
+                client_id="example",
+                client_secret="secret_key",
+                okta_account="https://example.com",
+            )],
+            name="Okta",
+            type="okta")
+        ```
 
         ## Import
 

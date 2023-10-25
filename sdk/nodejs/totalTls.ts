@@ -7,6 +7,19 @@ import * as utilities from "./utilities";
 /**
  * Provides a resource which manages Total TLS for a zone.
  *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as cloudflare from "@pulumi/cloudflare";
+ *
+ * const example = new cloudflare.TotalTls("example", {
+ *     certificateAuthority: "lets_encrypt",
+ *     enabled: true,
+ *     zoneId: "0da42c8d2132a9ddaf714f9e7c920711",
+ * });
+ * ```
+ *
  * ## Import
  *
  * ```sh

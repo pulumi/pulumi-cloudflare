@@ -172,6 +172,16 @@ def get_record(hostname: Optional[str] = None,
     """
     Use this data source to lookup a single [DNS Record](https://api.cloudflare.com/#dns-records-for-a-zone-properties).
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_cloudflare as cloudflare
+
+    example = cloudflare.get_record(hostname="example.com",
+        zone_id="0da42c8d2132a9ddaf714f9e7c920711")
+    ```
+
 
     :param str hostname: Hostname to filter DNS record results on.
     :param int priority: DNS priority to filter record results on.
@@ -208,6 +218,16 @@ def get_record_output(hostname: Optional[pulumi.Input[str]] = None,
                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetRecordResult]:
     """
     Use this data source to lookup a single [DNS Record](https://api.cloudflare.com/#dns-records-for-a-zone-properties).
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_cloudflare as cloudflare
+
+    example = cloudflare.get_record(hostname="example.com",
+        zone_id="0da42c8d2132a9ddaf714f9e7c920711")
+    ```
 
 
     :param str hostname: Hostname to filter DNS record results on.

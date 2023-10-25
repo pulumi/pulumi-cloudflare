@@ -206,6 +206,17 @@ class EmailRoutingAddress(pulumi.CustomResource):
         """
         Provides a resource for managing Email Routing Addresses.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        example = cloudflare.EmailRoutingAddress("example",
+            account_id="f037e56e89293a057740de681ac9abbe",
+            email="user@example.com")
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_id: The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
@@ -219,6 +230,17 @@ class EmailRoutingAddress(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Provides a resource for managing Email Routing Addresses.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        example = cloudflare.EmailRoutingAddress("example",
+            account_id="f037e56e89293a057740de681ac9abbe",
+            email="user@example.com")
+        ```
 
         :param str resource_name: The name of the resource.
         :param EmailRoutingAddressArgs args: The arguments to use to populate this resource's properties.

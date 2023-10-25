@@ -139,6 +139,17 @@ class TieredCache(pulumi.CustomResource):
         Provides a resource, that manages Cloudflare Tiered Cache settings.
         This allows you to adjust topologies for your zone.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        example = cloudflare.TieredCache("example",
+            cache_type="smart",
+            zone_id="0da42c8d2132a9ddaf714f9e7c920711")
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] cache_type: The typed of tiered cache to utilize on the zone. Available values: `generic`, `smart`, `off`.
@@ -153,6 +164,17 @@ class TieredCache(pulumi.CustomResource):
         """
         Provides a resource, that manages Cloudflare Tiered Cache settings.
         This allows you to adjust topologies for your zone.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        example = cloudflare.TieredCache("example",
+            cache_type="smart",
+            zone_id="0da42c8d2132a9ddaf714f9e7c920711")
+        ```
 
         :param str resource_name: The name of the resource.
         :param TieredCacheArgs args: The arguments to use to populate this resource's properties.

@@ -13,6 +13,25 @@ import * as utilities from "./utilities";
  * from an IP address that matches a safelist of one or more IP
  * addresses and/or IP ranges.
  *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as cloudflare from "@pulumi/cloudflare";
+ *
+ * // Restrict access to these endpoints to requests from a known IP address range.
+ * const example = new cloudflare.ZoneLockdown("example", {
+ *     configurations: [{
+ *         target: "ip_range",
+ *         value: "192.0.2.0/24",
+ *     }],
+ *     description: "Restrict access to these endpoints to requests from a known IP address range",
+ *     paused: false,
+ *     urls: ["api.mysite.com/some/endpoint*"],
+ *     zoneId: "0da42c8d2132a9ddaf714f9e7c920711",
+ * });
+ * ```
+ *
  * ## Import
  *
  * ```sh

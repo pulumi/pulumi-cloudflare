@@ -10,6 +10,60 @@ import * as utilities from "./utilities";
  * Provides a Cloudflare Split Tunnel resource. Split tunnels are used to either
  * include or exclude lists of routes from the WARP client's tunnel.
  *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as cloudflare from "@pulumi/cloudflare";
+ *
+ * // Excluding *.example.com from WARP routes
+ * const exampleSplitTunnelExclude = new cloudflare.SplitTunnel("exampleSplitTunnelExclude", {
+ *     accountId: "f037e56e89293a057740de681ac9abbe",
+ *     mode: "exclude",
+ *     tunnels: [{
+ *         host: "*.example.com",
+ *         description: "example domain",
+ *     }],
+ * });
+ * // Including *.example.com in WARP routes
+ * const exampleSplitTunnelIncludeSplitTunnel = new cloudflare.SplitTunnel("exampleSplitTunnelIncludeSplitTunnel", {
+ *     accountId: "f037e56e89293a057740de681ac9abbe",
+ *     mode: "include",
+ *     tunnels: [{
+ *         host: "*.example.com",
+ *         description: "example domain",
+ *     }],
+ * });
+ * // Create a device policy
+ * const developerWarpPolicy = new cloudflare.DeviceSettingsPolicy("developerWarpPolicy", {
+ *     accountId: "f037e56e89293a057740de681ac9abbe",
+ *     name: "Developers",
+ *     precedence: 10,
+ *     match: "any(identity.groups.name[*] in {\"Developers\"})",
+ *     switchLocked: true,
+ * });
+ * // Excluding *.example.com from WARP routes for a particular device policy
+ * const exampleDeviceSettingsPolicySplitTunnelExclude = new cloudflare.SplitTunnel("exampleDeviceSettingsPolicySplitTunnelExclude", {
+ *     accountId: "f037e56e89293a057740de681ac9abbe",
+ *     policyId: developerWarpPolicy.id,
+ *     mode: "exclude",
+ *     tunnels: [{
+ *         host: "*.example.com",
+ *         description: "example domain",
+ *     }],
+ * });
+ * // Including *.example.com in WARP routes for a particular device policy
+ * const exampleSplitTunnelIncludeIndex_splitTunnelSplitTunnel = new cloudflare.SplitTunnel("exampleSplitTunnelIncludeIndex/splitTunnelSplitTunnel", {
+ *     accountId: "f037e56e89293a057740de681ac9abbe",
+ *     policyId: cloudflare_device_policy.developer_warp_policy.id,
+ *     mode: "include",
+ *     tunnels: [{
+ *         host: "*.example.com",
+ *         description: "example domain",
+ *     }],
+ * });
+ * ```
+ *
  * ## Import
  *
  * Split Tunnels for default device policies must use "default" as the policy ID.

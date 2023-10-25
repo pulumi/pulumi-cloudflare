@@ -6,6 +6,18 @@ import * as utilities from "./utilities";
 
 /**
  * Provides a resource for managing Email Routing Addresses.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as cloudflare from "@pulumi/cloudflare";
+ *
+ * const example = new cloudflare.EmailRoutingAddress("example", {
+ *     accountId: "f037e56e89293a057740de681ac9abbe",
+ *     email: "user@example.com",
+ * });
+ * ```
  */
 export class EmailRoutingAddress extends pulumi.CustomResource {
     /**

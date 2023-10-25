@@ -9,6 +9,24 @@ import * as utilities from "./utilities";
  * Transit or Magic WAN. Static routes are used to route traffic
  * through GRE tunnels.
  *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as cloudflare from "@pulumi/cloudflare";
+ *
+ * const example = new cloudflare.StaticRoute("example", {
+ *     accountId: "f037e56e89293a057740de681ac9abbe",
+ *     coloNames: ["den01"],
+ *     coloRegions: ["APAC"],
+ *     description: "New route for new prefix 192.0.2.0/24",
+ *     nexthop: "10.0.0.0",
+ *     prefix: "192.0.2.0/24",
+ *     priority: 100,
+ *     weight: 10,
+ * });
+ * ```
+ *
  * ## Import
  *
  * ```sh

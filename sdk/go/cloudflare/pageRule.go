@@ -15,6 +15,47 @@ import (
 
 // Provides a Cloudflare page rule resource.
 //
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cloudflare.NewPageRule(ctx, "foobar", &cloudflare.PageRuleArgs{
+//				ZoneId:   pulumi.Any(_var.Cloudflare_zone_id),
+//				Target:   pulumi.String(fmt.Sprintf("sub.%v/page", _var.Cloudflare_zone)),
+//				Priority: pulumi.Int(1),
+//				Actions: &cloudflare.PageRuleActionsArgs{
+//					Ssl:              pulumi.String("flexible"),
+//					EmailObfuscation: pulumi.String("on"),
+//					Minifies: cloudflare.PageRuleActionsMinifyArray{
+//						&cloudflare.PageRuleActionsMinifyArgs{
+//							Html: pulumi.String("off"),
+//							Css:  pulumi.String("on"),
+//							Js:   pulumi.String("on"),
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // Page rules can be imported using a composite ID formed of zone ID and page rule ID, e.g.

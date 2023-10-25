@@ -494,6 +494,26 @@ class TeamsRule(pulumi.CustomResource):
         """
         Provides a Cloudflare Teams rule resource. Teams rules comprise secure web gateway policies.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        example = cloudflare.TeamsRule("example",
+            account_id="f037e56e89293a057740de681ac9abbe",
+            action="block",
+            description="desc",
+            filters=["http"],
+            name="office",
+            precedence=1,
+            rule_settings=cloudflare.TeamsRuleRuleSettingsArgs(
+                block_page_enabled=True,
+                block_page_reason="access not permitted",
+            ),
+            traffic="http.request.uri == \\"https://www.example.com/malicious\\"")
+        ```
+
         ## Import
 
         ```sh
@@ -522,6 +542,26 @@ class TeamsRule(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Provides a Cloudflare Teams rule resource. Teams rules comprise secure web gateway policies.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        example = cloudflare.TeamsRule("example",
+            account_id="f037e56e89293a057740de681ac9abbe",
+            action="block",
+            description="desc",
+            filters=["http"],
+            name="office",
+            precedence=1,
+            rule_settings=cloudflare.TeamsRuleRuleSettingsArgs(
+                block_page_enabled=True,
+                block_page_reason="access not permitted",
+            ),
+            traffic="http.request.uri == \\"https://www.example.com/malicious\\"")
+        ```
 
         ## Import
 

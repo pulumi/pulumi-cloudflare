@@ -107,6 +107,24 @@ class AwaitableGetIpRangesResult(GetIpRangesResult):
 def get_ip_ranges(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetIpRangesResult:
     """
     Use this data source to get the [IP ranges](https://www.cloudflare.com/ips/) of Cloudflare network.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_cloudflare as cloudflare
+    import pulumi_example as example
+
+    cloudflare = cloudflare.get_ip_ranges()
+    example = example.index.Example_firewall_resource("example",
+        name=from-cloudflare,
+        network=default,
+        source_ranges=cloudflare.ipv4_cidr_blocks,
+        allow=[{
+            ports: 443,
+            protocol: tcp,
+        }])
+    ```
     """
     __args__ = dict()
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
@@ -125,5 +143,23 @@ def get_ip_ranges(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetIp
 def get_ip_ranges_output(opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetIpRangesResult]:
     """
     Use this data source to get the [IP ranges](https://www.cloudflare.com/ips/) of Cloudflare network.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_cloudflare as cloudflare
+    import pulumi_example as example
+
+    cloudflare = cloudflare.get_ip_ranges()
+    example = example.index.Example_firewall_resource("example",
+        name=from-cloudflare,
+        network=default,
+        source_ranges=cloudflare.ipv4_cidr_blocks,
+        allow=[{
+            ports: 443,
+            protocol: tcp,
+        }])
+    ```
     """
     ...

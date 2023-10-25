@@ -20,6 +20,80 @@ namespace Pulumi.Cloudflare
     /// scope. For example, an access token that is scoped to the "example.com"
     /// zone needs to use the `zone_id` argument.
     /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Cloudflare = Pulumi.Cloudflare;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     // Allowing access to `test@example.com` email address only
+    ///     var testPolicyAccessPolicy = new Cloudflare.AccessPolicy("testPolicyAccessPolicy", new()
+    ///     {
+    ///         ApplicationId = "cb029e245cfdd66dc8d2e570d5dd3322",
+    ///         ZoneId = "0da42c8d2132a9ddaf714f9e7c920711",
+    ///         Name = "staging policy",
+    ///         Precedence = 1,
+    ///         Decision = "allow",
+    ///         Includes = new[]
+    ///         {
+    ///             new Cloudflare.Inputs.AccessPolicyIncludeArgs
+    ///             {
+    ///                 Emails = new[]
+    ///                 {
+    ///                     "test@example.com",
+    ///                 },
+    ///             },
+    ///         },
+    ///         Requires = new[]
+    ///         {
+    ///             new Cloudflare.Inputs.AccessPolicyRequireArgs
+    ///             {
+    ///                 Emails = new[]
+    ///                 {
+    ///                     "test@example.com",
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     // Allowing `test@example.com` to access but only when coming from a
+    ///     // specific IP.
+    ///     var testPolicyIndex_accessPolicyAccessPolicy = new Cloudflare.AccessPolicy("testPolicyIndex/accessPolicyAccessPolicy", new()
+    ///     {
+    ///         ApplicationId = "cb029e245cfdd66dc8d2e570d5dd3322",
+    ///         ZoneId = "0da42c8d2132a9ddaf714f9e7c920711",
+    ///         Name = "staging policy",
+    ///         Precedence = 1,
+    ///         Decision = "allow",
+    ///         Includes = new[]
+    ///         {
+    ///             new Cloudflare.Inputs.AccessPolicyIncludeArgs
+    ///             {
+    ///                 Emails = new[]
+    ///                 {
+    ///                     "test@example.com",
+    ///                 },
+    ///             },
+    ///         },
+    ///         Requires = new[]
+    ///         {
+    ///             new Cloudflare.Inputs.AccessPolicyRequireArgs
+    ///             {
+    ///                 Ips = new[]
+    ///                 {
+    ///                     @var.Office_ip,
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Account level import.

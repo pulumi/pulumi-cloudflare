@@ -20,6 +20,47 @@ namespace Pulumi.Cloudflare
     /// scope. For example, an access token that is scoped to the "example.com"
     /// zone needs to use the `zone_id` argument.
     /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Cloudflare = Pulumi.Cloudflare;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     // With CORS configuration
+    ///     var stagingApp = new Cloudflare.AccessApplication("stagingApp", new()
+    ///     {
+    ///         CorsHeaders = new[]
+    ///         {
+    ///             new Cloudflare.Inputs.AccessApplicationCorsHeaderArgs
+    ///             {
+    ///                 AllowCredentials = true,
+    ///                 AllowedMethods = new[]
+    ///                 {
+    ///                     "GET",
+    ///                     "POST",
+    ///                     "OPTIONS",
+    ///                 },
+    ///                 AllowedOrigins = new[]
+    ///                 {
+    ///                     "https://example.com",
+    ///                 },
+    ///                 MaxAge = 10,
+    ///             },
+    ///         },
+    ///         Domain = "staging.example.com",
+    ///         Name = "staging application",
+    ///         SessionDuration = "24h",
+    ///         Type = "self_hosted",
+    ///         ZoneId = "0da42c8d2132a9ddaf714f9e7c920711",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// ```sh

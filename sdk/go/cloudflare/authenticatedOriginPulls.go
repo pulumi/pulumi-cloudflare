@@ -17,6 +17,68 @@ import (
 // resource is required to use Per-Zone or Per-Hostname Authenticated
 // Origin Pulls.
 //
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cloudflare.NewAuthenticatedOriginPulls(ctx, "myAop", &cloudflare.AuthenticatedOriginPullsArgs{
+//				ZoneId:  pulumi.String("0da42c8d2132a9ddaf714f9e7c920711"),
+//				Enabled: pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			myPerZoneAopCert, err := cloudflare.NewAuthenticatedOriginPullsCertificate(ctx, "myPerZoneAopCert", &cloudflare.AuthenticatedOriginPullsCertificateArgs{
+//				ZoneId:      pulumi.String("0da42c8d2132a9ddaf714f9e7c920711"),
+//				Certificate: pulumi.String("-----INSERT CERTIFICATE-----"),
+//				PrivateKey:  pulumi.String("-----INSERT PRIVATE KEY-----"),
+//				Type:        pulumi.String("per-zone"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = cloudflare.NewAuthenticatedOriginPulls(ctx, "myPerZoneAop", &cloudflare.AuthenticatedOriginPullsArgs{
+//				ZoneId:                              pulumi.String("0da42c8d2132a9ddaf714f9e7c920711"),
+//				AuthenticatedOriginPullsCertificate: myPerZoneAopCert.ID(),
+//				Enabled:                             pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			myPerHostnameAopCert, err := cloudflare.NewAuthenticatedOriginPullsCertificate(ctx, "myPerHostnameAopCert", &cloudflare.AuthenticatedOriginPullsCertificateArgs{
+//				ZoneId:      pulumi.String("0da42c8d2132a9ddaf714f9e7c920711"),
+//				Certificate: pulumi.String("-----INSERT CERTIFICATE-----"),
+//				PrivateKey:  pulumi.String("-----INSERT PRIVATE KEY-----"),
+//				Type:        pulumi.String("per-hostname"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = cloudflare.NewAuthenticatedOriginPulls(ctx, "myPerHostnameAop", &cloudflare.AuthenticatedOriginPullsArgs{
+//				ZoneId:                              pulumi.String("0da42c8d2132a9ddaf714f9e7c920711"),
+//				AuthenticatedOriginPullsCertificate: myPerHostnameAopCert.ID(),
+//				Hostname:                            pulumi.String("aop.example.com"),
+//				Enabled:                             pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // global

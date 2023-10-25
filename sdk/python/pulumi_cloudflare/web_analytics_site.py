@@ -294,6 +294,18 @@ class WebAnalyticsSite(pulumi.CustomResource):
         """
         Provides a Cloudflare Web Analytics Site resource.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        example = cloudflare.WebAnalyticsSite("example",
+            account_id="f037e56e89293a057740de681ac9abbe",
+            auto_install=True,
+            zone_tag="0da42c8d2132a9ddaf714f9e7c920711")
+        ```
+
         ## Import
 
         ```sh
@@ -315,6 +327,18 @@ class WebAnalyticsSite(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Provides a Cloudflare Web Analytics Site resource.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        example = cloudflare.WebAnalyticsSite("example",
+            account_id="f037e56e89293a057740de681ac9abbe",
+            auto_install=True,
+            zone_tag="0da42c8d2132a9ddaf714f9e7c920711")
+        ```
 
         ## Import
 

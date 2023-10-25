@@ -172,6 +172,18 @@ class UrlNormalizationSettings(pulumi.CustomResource):
         """
         Provides a resource to manage URL Normalization Settings.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        example = cloudflare.UrlNormalizationSettings("example",
+            scope="incoming",
+            type="cloudflare",
+            zone_id="0da42c8d2132a9ddaf714f9e7c920711")
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] scope: The scope of the URL normalization.
@@ -186,6 +198,18 @@ class UrlNormalizationSettings(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Provides a resource to manage URL Normalization Settings.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        example = cloudflare.UrlNormalizationSettings("example",
+            scope="incoming",
+            type="cloudflare",
+            zone_id="0da42c8d2132a9ddaf714f9e7c920711")
+        ```
 
         :param str resource_name: The name of the resource.
         :param UrlNormalizationSettingsArgs args: The arguments to use to populate this resource's properties.

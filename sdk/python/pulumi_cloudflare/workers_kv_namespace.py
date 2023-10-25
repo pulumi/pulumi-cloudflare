@@ -134,6 +134,17 @@ class WorkersKvNamespace(pulumi.CustomResource):
         """
         Provides the ability to manage Cloudflare Workers KV Namespace features.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        example = cloudflare.WorkersKvNamespace("example",
+            account_id="f037e56e89293a057740de681ac9abbe",
+            title="test-namespace")
+        ```
+
         ## Import
 
         ```sh
@@ -153,6 +164,17 @@ class WorkersKvNamespace(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Provides the ability to manage Cloudflare Workers KV Namespace features.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        example = cloudflare.WorkersKvNamespace("example",
+            account_id="f037e56e89293a057740de681ac9abbe",
+            title="test-namespace")
+        ```
 
         ## Import
 

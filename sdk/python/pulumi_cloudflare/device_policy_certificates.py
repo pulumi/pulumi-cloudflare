@@ -136,6 +136,17 @@ class DevicePolicyCertificates(pulumi.CustomResource):
         policy certificate resources enable client device certificate
         generation.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        example = cloudflare.DevicePolicyCertificates("example",
+            enabled=True,
+            zone_id="0da42c8d2132a9ddaf714f9e7c920711")
+        ```
+
         ## Import
 
         ```sh
@@ -157,6 +168,17 @@ class DevicePolicyCertificates(pulumi.CustomResource):
         Provides a Cloudflare device policy certificates resource. Device
         policy certificate resources enable client device certificate
         generation.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        example = cloudflare.DevicePolicyCertificates("example",
+            enabled=True,
+            zone_id="0da42c8d2132a9ddaf714f9e7c920711")
+        ```
 
         ## Import
 

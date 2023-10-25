@@ -382,6 +382,17 @@ class Zone(pulumi.CustomResource):
 
         > If you are attempting to sign up a subdomain of a zone you must first have Subdomain Support entitlement for your account.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        example = cloudflare.Zone("example",
+            account_id="f037e56e89293a057740de681ac9abbe",
+            zone="example.com")
+        ```
+
         ## Import
 
         ```sh
@@ -409,6 +420,17 @@ class Zone(pulumi.CustomResource):
         that the user purchases.
 
         > If you are attempting to sign up a subdomain of a zone you must first have Subdomain Support entitlement for your account.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        example = cloudflare.Zone("example",
+            account_id="f037e56e89293a057740de681ac9abbe",
+            zone="example.com")
+        ```
 
         ## Import
 

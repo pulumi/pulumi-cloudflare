@@ -7,6 +7,24 @@ import * as utilities from "./utilities";
 /**
  * Provides a resource to manage a Cloudflare Workers KV Pair.
  *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as cloudflare from "@pulumi/cloudflare";
+ *
+ * const exampleNs = new cloudflare.WorkersKvNamespace("exampleNs", {
+ *     accountId: "f037e56e89293a057740de681ac9abbe",
+ *     title: "test-namespace",
+ * });
+ * const example = new cloudflare.WorkersKv("example", {
+ *     accountId: "f037e56e89293a057740de681ac9abbe",
+ *     namespaceId: exampleNs.id,
+ *     key: "test-key",
+ *     value: "test value",
+ * });
+ * ```
+ *
  * ## Import
  *
  * ```sh

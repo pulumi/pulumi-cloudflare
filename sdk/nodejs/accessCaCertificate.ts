@@ -15,6 +15,24 @@ import * as utilities from "./utilities";
  * scope. For example, an access token that is scoped to the "example.com"
  * zone needs to use the `zoneId` argument.
  *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as cloudflare from "@pulumi/cloudflare";
+ *
+ * // account level
+ * const example = new cloudflare.AccessCaCertificate("example", {
+ *     accountId: "f037e56e89293a057740de681ac9abbe",
+ *     applicationId: "6cd6cea3-3ef2-4542-9aea-85a0bbcd5414",
+ * });
+ * // zone level
+ * const anotherExample = new cloudflare.AccessCaCertificate("anotherExample", {
+ *     applicationId: "fe2be0ff-7f13-4350-8c8e-a9b9795fe3c2",
+ *     zoneId: "0da42c8d2132a9ddaf714f9e7c920711",
+ * });
+ * ```
+ *
  * ## Import
  *
  * Account level CA certificate import.

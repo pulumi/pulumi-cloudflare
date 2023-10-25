@@ -210,6 +210,19 @@ class ObservatoryScheduledTest(pulumi.CustomResource):
         """
         Provides a Cloudflare Observatory Scheduled Test resource.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        example = cloudflare.ObservatoryScheduledTest("example",
+            frequency="WEEKLY",
+            region="us-central1",
+            url="example.com",
+            zone_id="0da42c8d2132a9ddaf714f9e7c920711")
+        ```
+
         ## Import
 
         ```sh
@@ -231,6 +244,19 @@ class ObservatoryScheduledTest(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Provides a Cloudflare Observatory Scheduled Test resource.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        example = cloudflare.ObservatoryScheduledTest("example",
+            frequency="WEEKLY",
+            region="us-central1",
+            url="example.com",
+            zone_id="0da42c8d2132a9ddaf714f9e7c920711")
+        ```
 
         ## Import
 

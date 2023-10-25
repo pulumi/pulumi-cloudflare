@@ -15,6 +15,42 @@ import (
 
 // Provides a resource to manage a Cloudflare Workers KV Pair.
 //
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			exampleNs, err := cloudflare.NewWorkersKvNamespace(ctx, "exampleNs", &cloudflare.WorkersKvNamespaceArgs{
+//				AccountId: pulumi.String("f037e56e89293a057740de681ac9abbe"),
+//				Title:     pulumi.String("test-namespace"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = cloudflare.NewWorkersKv(ctx, "example", &cloudflare.WorkersKvArgs{
+//				AccountId:   pulumi.String("f037e56e89293a057740de681ac9abbe"),
+//				NamespaceId: exampleNs.ID(),
+//				Key:         pulumi.String("test-key"),
+//				Value:       pulumi.String("test value"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // ```sh

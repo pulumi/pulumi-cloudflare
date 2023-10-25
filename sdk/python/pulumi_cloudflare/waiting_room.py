@@ -779,6 +779,33 @@ class WaitingRoom(pulumi.CustomResource):
         """
         Provides a Cloudflare Waiting Room resource.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        # Waiting Room
+        example = cloudflare.WaitingRoom("example",
+            additional_routes=[
+                cloudflare.WaitingRoomAdditionalRouteArgs(
+                    host="shop1.example.com",
+                    path="/example-path",
+                ),
+                cloudflare.WaitingRoomAdditionalRouteArgs(
+                    host="shop2.example.com",
+                ),
+            ],
+            cookie_suffix="queue1",
+            host="foo.example.com",
+            name="foo",
+            new_users_per_minute=200,
+            path="/",
+            queueing_status_code=200,
+            total_active_users=200,
+            zone_id="0da42c8d2132a9ddaf714f9e7c920711")
+        ```
+
         ## Import
 
         Use the Zone ID and Waiting Room ID to import.
@@ -816,6 +843,33 @@ class WaitingRoom(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Provides a Cloudflare Waiting Room resource.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        # Waiting Room
+        example = cloudflare.WaitingRoom("example",
+            additional_routes=[
+                cloudflare.WaitingRoomAdditionalRouteArgs(
+                    host="shop1.example.com",
+                    path="/example-path",
+                ),
+                cloudflare.WaitingRoomAdditionalRouteArgs(
+                    host="shop2.example.com",
+                ),
+            ],
+            cookie_suffix="queue1",
+            host="foo.example.com",
+            name="foo",
+            new_users_per_minute=200,
+            path="/",
+            queueing_status_code=200,
+            total_active_users=200,
+            zone_id="0da42c8d2132a9ddaf714f9e7c920711")
+        ```
 
         ## Import
 

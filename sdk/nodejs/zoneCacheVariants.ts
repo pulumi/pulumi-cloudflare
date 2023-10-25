@@ -6,6 +6,61 @@ import * as utilities from "./utilities";
 
 /**
  * Provides a resource which customizes Cloudflare zone cache variants.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as cloudflare from "@pulumi/cloudflare";
+ *
+ * const example = new cloudflare.ZoneCacheVariants("example", {
+ *     avifs: [
+ *         "image/avif",
+ *         "image/webp",
+ *     ],
+ *     bmps: [
+ *         "image/bmp",
+ *         "image/webp",
+ *     ],
+ *     gifs: [
+ *         "image/gif",
+ *         "image/webp",
+ *     ],
+ *     jp2s: [
+ *         "image/jp2",
+ *         "image/webp",
+ *     ],
+ *     jpegs: [
+ *         "image/jpeg",
+ *         "image/webp",
+ *     ],
+ *     jpgs: [
+ *         "image/jpg",
+ *         "image/webp",
+ *     ],
+ *     jpg2s: [
+ *         "image/jpg2",
+ *         "image/webp",
+ *     ],
+ *     pngs: [
+ *         "image/png",
+ *         "image/webp",
+ *     ],
+ *     tifs: [
+ *         "image/tif",
+ *         "image/webp",
+ *     ],
+ *     tiffs: [
+ *         "image/tiff",
+ *         "image/webp",
+ *     ],
+ *     webps: [
+ *         "image/jpeg",
+ *         "image/webp",
+ *     ],
+ *     zoneId: "0da42c8d2132a9ddaf714f9e7c920711",
+ * });
+ * ```
  */
 export class ZoneCacheVariants extends pulumi.CustomResource {
     /**

@@ -7,6 +7,18 @@ import * as utilities from "./utilities";
 /**
  * Allows management of the Logpull Retention settings used to control whether or not to retain HTTP request logs.
  *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as cloudflare from "@pulumi/cloudflare";
+ *
+ * const example = new cloudflare.LogpullRetention("example", {
+ *     enabled: true,
+ *     zoneId: "0da42c8d2132a9ddaf714f9e7c920711",
+ * });
+ * ```
+ *
  * ## Import
  *
  * ```sh

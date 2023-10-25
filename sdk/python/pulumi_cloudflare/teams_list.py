@@ -248,6 +248,24 @@ class TeamsList(pulumi.CustomResource):
         referenced when creating secure web gateway policies or device
         posture rules.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        example = cloudflare.TeamsList("example",
+            account_id="f037e56e89293a057740de681ac9abbe",
+            description="Serial numbers for all corporate devices.",
+            items=[
+                "8GE8721REF",
+                "5RE8543EGG",
+                "1YE2880LNP",
+            ],
+            name="Corporate devices",
+            type="SERIAL")
+        ```
+
         ## Import
 
         ```sh
@@ -272,6 +290,24 @@ class TeamsList(pulumi.CustomResource):
         Provides a Cloudflare Teams List resource. Teams lists are
         referenced when creating secure web gateway policies or device
         posture rules.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        example = cloudflare.TeamsList("example",
+            account_id="f037e56e89293a057740de681ac9abbe",
+            description="Serial numbers for all corporate devices.",
+            items=[
+                "8GE8721REF",
+                "5RE8543EGG",
+                "1YE2880LNP",
+            ],
+            name="Corporate devices",
+            type="SERIAL")
+        ```
 
         ## Import
 

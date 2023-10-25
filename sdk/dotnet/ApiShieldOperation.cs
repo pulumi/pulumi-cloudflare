@@ -11,6 +11,27 @@ namespace Pulumi.Cloudflare
 {
     /// <summary>
     /// Provides a resource to manage an operation in API Shield Endpoint Management.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Cloudflare = Pulumi.Cloudflare;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var example = new Cloudflare.ApiShieldOperation("example", new()
+    ///     {
+    ///         Endpoint = "/path",
+    ///         Host = "api.example.com",
+    ///         Method = "GET",
+    ///         ZoneId = "0da42c8d2132a9ddaf714f9e7c920711",
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/apiShieldOperation:ApiShieldOperation")]
     public partial class ApiShieldOperation : global::Pulumi.CustomResource

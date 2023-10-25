@@ -12,6 +12,29 @@ namespace Pulumi.Cloudflare
     /// <summary>
     /// Provides a Cloudflare resource to create and modify zone DNSSEC settings.
     /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Cloudflare = Pulumi.Cloudflare;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var exampleZone = new Cloudflare.Zone("exampleZone", new()
+    ///     {
+    ///         ZoneName = "example.com",
+    ///     });
+    /// 
+    ///     var exampleZoneDnssec = new Cloudflare.ZoneDnssec("exampleZoneDnssec", new()
+    ///     {
+    ///         ZoneId = exampleZone.Id,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// ```sh

@@ -582,6 +582,30 @@ class SpectrumApplication(pulumi.CustomResource):
         of Cloudflare's DDoS, TLS, and IP Firewall to your other TCP-based
         services.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        example = cloudflare.SpectrumApplication("example",
+            dns=cloudflare.SpectrumApplicationDnsArgs(
+                name="ssh.example.com",
+                type="CNAME",
+            ),
+            edge_ips=cloudflare.SpectrumApplicationEdgeIpsArgs(
+                ips=[
+                    "203.0.113.1",
+                    "203.0.113.2",
+                ],
+                type="static",
+            ),
+            origin_directs=["tcp://192.0.2.1:22"],
+            protocol="tcp/22",
+            traffic_type="direct",
+            zone_id="0da42c8d2132a9ddaf714f9e7c920711")
+        ```
+
         ## Import
 
         ```sh
@@ -614,6 +638,30 @@ class SpectrumApplication(pulumi.CustomResource):
         Provides a Cloudflare Spectrum Application. You can extend the power
         of Cloudflare's DDoS, TLS, and IP Firewall to your other TCP-based
         services.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        example = cloudflare.SpectrumApplication("example",
+            dns=cloudflare.SpectrumApplicationDnsArgs(
+                name="ssh.example.com",
+                type="CNAME",
+            ),
+            edge_ips=cloudflare.SpectrumApplicationEdgeIpsArgs(
+                ips=[
+                    "203.0.113.1",
+                    "203.0.113.2",
+                ],
+                type="static",
+            ),
+            origin_directs=["tcp://192.0.2.1:22"],
+            protocol="tcp/22",
+            traffic_type="direct",
+            zone_id="0da42c8d2132a9ddaf714f9e7c920711")
+        ```
 
         ## Import
 

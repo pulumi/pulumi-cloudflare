@@ -264,6 +264,42 @@ class AccessGroup(pulumi.CustomResource):
         scope. For example, an access token that is scoped to the "example.com"
         zone needs to use the `zone_id` argument.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        # Allowing access to `test@example.com` email address only
+        example_access_group = cloudflare.AccessGroup("exampleAccessGroup",
+            account_id="f037e56e89293a057740de681ac9abbe",
+            name="staging group",
+            includes=[cloudflare.AccessGroupIncludeArgs(
+                emails=["test@example.com"],
+            )])
+        # Allowing `test@example.com` to access but only when coming from a
+        # specific IP.
+        example_index_access_group_access_group = cloudflare.AccessGroup("exampleIndex/accessGroupAccessGroup",
+            account_id="f037e56e89293a057740de681ac9abbe",
+            name="staging group",
+            includes=[cloudflare.AccessGroupIncludeArgs(
+                emails=["test@example.com"],
+            )],
+            requires=[cloudflare.AccessGroupRequireArgs(
+                ips=[var["office_ip"]],
+            )])
+        # Allow members of an Azure Group. The ID is the group UUID (id) in Azure.
+        example_cloudflare_index_access_group_access_group = cloudflare.AccessGroup("exampleCloudflareIndex/accessGroupAccessGroup",
+            account_id="f037e56e89293a057740de681ac9abbe",
+            name="test_group",
+            includes=[cloudflare.AccessGroupIncludeArgs(
+                azures=[cloudflare.AccessGroupIncludeAzureArgs(
+                    identity_provider_id="ca298b82-93b5-41bf-bc2d-10493f09b761",
+                    ids=["86773093-5feb-48dd-814b-7ccd3676ff50"],
+                )],
+            )])
+        ```
+
         ## Import
 
         ```sh
@@ -291,6 +327,42 @@ class AccessGroup(pulumi.CustomResource):
         access token, you must provide the argument that matches the token's
         scope. For example, an access token that is scoped to the "example.com"
         zone needs to use the `zone_id` argument.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        # Allowing access to `test@example.com` email address only
+        example_access_group = cloudflare.AccessGroup("exampleAccessGroup",
+            account_id="f037e56e89293a057740de681ac9abbe",
+            name="staging group",
+            includes=[cloudflare.AccessGroupIncludeArgs(
+                emails=["test@example.com"],
+            )])
+        # Allowing `test@example.com` to access but only when coming from a
+        # specific IP.
+        example_index_access_group_access_group = cloudflare.AccessGroup("exampleIndex/accessGroupAccessGroup",
+            account_id="f037e56e89293a057740de681ac9abbe",
+            name="staging group",
+            includes=[cloudflare.AccessGroupIncludeArgs(
+                emails=["test@example.com"],
+            )],
+            requires=[cloudflare.AccessGroupRequireArgs(
+                ips=[var["office_ip"]],
+            )])
+        # Allow members of an Azure Group. The ID is the group UUID (id) in Azure.
+        example_cloudflare_index_access_group_access_group = cloudflare.AccessGroup("exampleCloudflareIndex/accessGroupAccessGroup",
+            account_id="f037e56e89293a057740de681ac9abbe",
+            name="test_group",
+            includes=[cloudflare.AccessGroupIncludeArgs(
+                azures=[cloudflare.AccessGroupIncludeAzureArgs(
+                    identity_provider_id="ca298b82-93b5-41bf-bc2d-10493f09b761",
+                    ids=["86773093-5feb-48dd-814b-7ccd3676ff50"],
+                )],
+            )])
+        ```
 
         ## Import
 

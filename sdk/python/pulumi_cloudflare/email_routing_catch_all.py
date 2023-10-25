@@ -267,6 +267,25 @@ class EmailRoutingCatchAll(pulumi.CustomResource):
         """
         Provides a resource for managing Email Routing Addresses catch all behaviour.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        example = cloudflare.EmailRoutingCatchAll("example",
+            actions=[cloudflare.EmailRoutingCatchAllActionArgs(
+                type="forward",
+                values=["destinationaddress@example.net"],
+            )],
+            enabled=True,
+            matchers=[cloudflare.EmailRoutingCatchAllMatcherArgs(
+                type="all",
+            )],
+            name="example catch all",
+            zone_id="0da42c8d2132a9ddaf714f9e7c920711")
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EmailRoutingCatchAllActionArgs']]]] actions: List actions patterns.
@@ -283,6 +302,25 @@ class EmailRoutingCatchAll(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Provides a resource for managing Email Routing Addresses catch all behaviour.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        example = cloudflare.EmailRoutingCatchAll("example",
+            actions=[cloudflare.EmailRoutingCatchAllActionArgs(
+                type="forward",
+                values=["destinationaddress@example.net"],
+            )],
+            enabled=True,
+            matchers=[cloudflare.EmailRoutingCatchAllMatcherArgs(
+                type="all",
+            )],
+            name="example catch all",
+            zone_id="0da42c8d2132a9ddaf714f9e7c920711")
+        ```
 
         :param str resource_name: The name of the resource.
         :param EmailRoutingCatchAllArgs args: The arguments to use to populate this resource's properties.

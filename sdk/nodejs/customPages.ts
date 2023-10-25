@@ -7,6 +7,20 @@ import * as utilities from "./utilities";
 /**
  * Provides a resource which manages Cloudflare custom error pages.
  *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as cloudflare from "@pulumi/cloudflare";
+ *
+ * const example = new cloudflare.CustomPages("example", {
+ *     state: "customized",
+ *     type: "basic_challenge",
+ *     url: "https://example.com/challenge.html",
+ *     zoneId: "0da42c8d2132a9ddaf714f9e7c920711",
+ * });
+ * ```
+ *
  * ## Import
  *
  * ```sh

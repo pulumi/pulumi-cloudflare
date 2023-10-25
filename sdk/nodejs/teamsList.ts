@@ -9,6 +9,25 @@ import * as utilities from "./utilities";
  * referenced when creating secure web gateway policies or device
  * posture rules.
  *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as cloudflare from "@pulumi/cloudflare";
+ *
+ * const example = new cloudflare.TeamsList("example", {
+ *     accountId: "f037e56e89293a057740de681ac9abbe",
+ *     description: "Serial numbers for all corporate devices.",
+ *     items: [
+ *         "8GE8721REF",
+ *         "5RE8543EGG",
+ *         "1YE2880LNP",
+ *     ],
+ *     name: "Corporate devices",
+ *     type: "SERIAL",
+ * });
+ * ```
+ *
  * ## Import
  *
  * ```sh

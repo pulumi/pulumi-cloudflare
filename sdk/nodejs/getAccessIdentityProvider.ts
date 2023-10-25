@@ -6,6 +6,27 @@ import * as utilities from "./utilities";
 
 /**
  * Use this data source to lookup a single [Access Identity Provider](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration) by name.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as cloudflare from "@pulumi/cloudflare";
+ *
+ * const exampleAccessIdentityProvider = cloudflare.getAccessIdentityProvider({
+ *     name: "Google SSO",
+ *     accountId: "f037e56e89293a057740de681ac9abbe",
+ * });
+ * const exampleAccessApplication = new cloudflare.AccessApplication("exampleAccessApplication", {
+ *     zoneId: "0da42c8d2132a9ddaf714f9e7c920711",
+ *     name: "name",
+ *     domain: "name.example.com",
+ *     type: "self_hosted",
+ *     sessionDuration: "24h",
+ *     allowedIdps: [exampleAccessIdentityProvider.then(exampleAccessIdentityProvider => exampleAccessIdentityProvider.id)],
+ *     autoRedirectToIdentity: true,
+ * });
+ * ```
  */
 export function getAccessIdentityProvider(args: GetAccessIdentityProviderArgs, opts?: pulumi.InvokeOptions): Promise<GetAccessIdentityProviderResult> {
 
@@ -62,6 +83,27 @@ export interface GetAccessIdentityProviderResult {
 }
 /**
  * Use this data source to lookup a single [Access Identity Provider](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration) by name.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as cloudflare from "@pulumi/cloudflare";
+ *
+ * const exampleAccessIdentityProvider = cloudflare.getAccessIdentityProvider({
+ *     name: "Google SSO",
+ *     accountId: "f037e56e89293a057740de681ac9abbe",
+ * });
+ * const exampleAccessApplication = new cloudflare.AccessApplication("exampleAccessApplication", {
+ *     zoneId: "0da42c8d2132a9ddaf714f9e7c920711",
+ *     name: "name",
+ *     domain: "name.example.com",
+ *     type: "self_hosted",
+ *     sessionDuration: "24h",
+ *     allowedIdps: [exampleAccessIdentityProvider.then(exampleAccessIdentityProvider => exampleAccessIdentityProvider.id)],
+ *     autoRedirectToIdentity: true,
+ * });
+ * ```
  */
 export function getAccessIdentityProviderOutput(args: GetAccessIdentityProviderOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAccessIdentityProviderResult> {
     return pulumi.output(args).apply((a: any) => getAccessIdentityProvider(a, opts))

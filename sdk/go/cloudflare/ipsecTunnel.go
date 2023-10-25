@@ -15,6 +15,42 @@ import (
 
 // Provides a resource, that manages IPsec tunnels for Magic Transit.
 //
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cloudflare.NewIpsecTunnel(ctx, "example", &cloudflare.IpsecTunnelArgs{
+//				AccountId:          pulumi.String("f037e56e89293a057740de681ac9abbe"),
+//				AllowNullCipher:    pulumi.Bool(false),
+//				CloudflareEndpoint: pulumi.String("203.0.113.1"),
+//				CustomerEndpoint:   pulumi.String("203.0.113.1"),
+//				Description:        pulumi.String("Tunnel for ISP X"),
+//				HealthCheckEnabled: pulumi.Bool(true),
+//				HealthCheckTarget:  pulumi.String("203.0.113.1"),
+//				HealthCheckType:    pulumi.String("reply"),
+//				InterfaceAddress:   pulumi.String("192.0.2.0/31"),
+//				Name:               pulumi.String("IPsec_1"),
+//				Psk:                pulumi.String("asdf12341234"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // ```sh

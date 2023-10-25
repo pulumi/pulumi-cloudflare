@@ -135,6 +135,17 @@ class RegionalTieredCache(pulumi.CustomResource):
         Instructs Cloudflare to check a regional hub data center on the way to your upper tier.
         This can help improve performance for smart and custom tiered cache topologies.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        example = cloudflare.RegionalTieredCache("example",
+            value="on",
+            zone_id="0da42c8d2132a9ddaf714f9e7c920711")
+        ```
+
         ## Import
 
         ```sh
@@ -155,6 +166,17 @@ class RegionalTieredCache(pulumi.CustomResource):
         """
         Instructs Cloudflare to check a regional hub data center on the way to your upper tier.
         This can help improve performance for smart and custom tiered cache topologies.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        example = cloudflare.RegionalTieredCache("example",
+            value="on",
+            zone_id="0da42c8d2132a9ddaf714f9e7c920711")
+        ```
 
         ## Import
 

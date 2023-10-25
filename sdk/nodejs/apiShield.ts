@@ -8,6 +8,21 @@ import * as utilities from "./utilities";
 
 /**
  * Provides a resource to manage API Shield configurations.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as cloudflare from "@pulumi/cloudflare";
+ *
+ * const example = new cloudflare.ApiShield("example", {
+ *     authIdCharacteristics: [{
+ *         name: "my-example-header",
+ *         type: "header",
+ *     }],
+ *     zoneId: "0da42c8d2132a9ddaf714f9e7c920711",
+ * });
+ * ```
  */
 export class ApiShield extends pulumi.CustomResource {
     /**

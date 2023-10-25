@@ -594,6 +594,52 @@ class WorkerScript(pulumi.CustomResource):
         """
         Provides a Cloudflare worker script resource. In order for a script to be active, you'll also need to setup a `WorkerRoute`.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import base64
+        import pulumi_cloudflare as cloudflare
+
+        my_namespace = cloudflare.WorkersKvNamespace("myNamespace",
+            account_id="f037e56e89293a057740de681ac9abbe",
+            title="example")
+        # Sets the script with the name "script_1"
+        my_script = cloudflare.WorkerScript("myScript",
+            account_id="f037e56e89293a057740de681ac9abbe",
+            name="script_1",
+            content=(lambda path: open(path).read())("script.js"),
+            kv_namespace_bindings=[cloudflare.WorkerScriptKvNamespaceBindingArgs(
+                name="MY_EXAMPLE_KV_NAMESPACE",
+                namespace_id=my_namespace.id,
+            )],
+            plain_text_bindings=[cloudflare.WorkerScriptPlainTextBindingArgs(
+                name="MY_EXAMPLE_PLAIN_TEXT",
+                text="foobar",
+            )],
+            secret_text_bindings=[cloudflare.WorkerScriptSecretTextBindingArgs(
+                name="MY_EXAMPLE_SECRET_TEXT",
+                text=var["secret_foo_value"],
+            )],
+            webassembly_bindings=[cloudflare.WorkerScriptWebassemblyBindingArgs(
+                name="MY_EXAMPLE_WASM",
+                module=(lambda path: base64.b64encode(open(path).read().encode()).decode())("example.wasm"),
+            )],
+            service_bindings=[cloudflare.WorkerScriptServiceBindingArgs(
+                name="MY_SERVICE_BINDING",
+                service="MY_SERVICE",
+                environment="production",
+            )],
+            r2_bucket_bindings=[cloudflare.WorkerScriptR2BucketBindingArgs(
+                name="MY_BUCKET",
+                bucket_name="MY_BUCKET_NAME",
+            )],
+            analytics_engine_bindings=[cloudflare.WorkerScriptAnalyticsEngineBindingArgs(
+                name="MY_DATASET",
+                dataset="dataset1",
+            )])
+        ```
+
         ## Import
 
         ```sh
@@ -618,6 +664,52 @@ class WorkerScript(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Provides a Cloudflare worker script resource. In order for a script to be active, you'll also need to setup a `WorkerRoute`.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import base64
+        import pulumi_cloudflare as cloudflare
+
+        my_namespace = cloudflare.WorkersKvNamespace("myNamespace",
+            account_id="f037e56e89293a057740de681ac9abbe",
+            title="example")
+        # Sets the script with the name "script_1"
+        my_script = cloudflare.WorkerScript("myScript",
+            account_id="f037e56e89293a057740de681ac9abbe",
+            name="script_1",
+            content=(lambda path: open(path).read())("script.js"),
+            kv_namespace_bindings=[cloudflare.WorkerScriptKvNamespaceBindingArgs(
+                name="MY_EXAMPLE_KV_NAMESPACE",
+                namespace_id=my_namespace.id,
+            )],
+            plain_text_bindings=[cloudflare.WorkerScriptPlainTextBindingArgs(
+                name="MY_EXAMPLE_PLAIN_TEXT",
+                text="foobar",
+            )],
+            secret_text_bindings=[cloudflare.WorkerScriptSecretTextBindingArgs(
+                name="MY_EXAMPLE_SECRET_TEXT",
+                text=var["secret_foo_value"],
+            )],
+            webassembly_bindings=[cloudflare.WorkerScriptWebassemblyBindingArgs(
+                name="MY_EXAMPLE_WASM",
+                module=(lambda path: base64.b64encode(open(path).read().encode()).decode())("example.wasm"),
+            )],
+            service_bindings=[cloudflare.WorkerScriptServiceBindingArgs(
+                name="MY_SERVICE_BINDING",
+                service="MY_SERVICE",
+                environment="production",
+            )],
+            r2_bucket_bindings=[cloudflare.WorkerScriptR2BucketBindingArgs(
+                name="MY_BUCKET",
+                bucket_name="MY_BUCKET_NAME",
+            )],
+            analytics_engine_bindings=[cloudflare.WorkerScriptAnalyticsEngineBindingArgs(
+                name="MY_DATASET",
+                dataset="dataset1",
+            )])
+        ```
 
         ## Import
 

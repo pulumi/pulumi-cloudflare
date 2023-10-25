@@ -249,6 +249,19 @@ class CustomPages(pulumi.CustomResource):
         """
         Provides a resource which manages Cloudflare custom error pages.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        example = cloudflare.CustomPages("example",
+            state="customized",
+            type="basic_challenge",
+            url="https://example.com/challenge.html",
+            zone_id="0da42c8d2132a9ddaf714f9e7c920711")
+        ```
+
         ## Import
 
         ```sh
@@ -271,6 +284,19 @@ class CustomPages(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Provides a resource which manages Cloudflare custom error pages.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        example = cloudflare.CustomPages("example",
+            state="customized",
+            type="basic_challenge",
+            url="https://example.com/challenge.html",
+            zone_id="0da42c8d2132a9ddaf714f9e7c920711")
+        ```
 
         ## Import
 
