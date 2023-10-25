@@ -9,6 +9,21 @@ import * as utilities from "./utilities";
 /**
  * Provides a Cloudflare custom hostname (also known as SSL for SaaS) resource.
  *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as cloudflare from "@pulumi/cloudflare";
+ *
+ * const example = new cloudflare.CustomHostname("example", {
+ *     hostname: "hostname.example.com",
+ *     ssls: [{
+ *         method: "txt",
+ *     }],
+ *     zoneId: "0da42c8d2132a9ddaf714f9e7c920711",
+ * });
+ * ```
+ *
  * ## Import
  *
  * ```sh

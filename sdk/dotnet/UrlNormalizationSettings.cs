@@ -11,6 +11,26 @@ namespace Pulumi.Cloudflare
 {
     /// <summary>
     /// Provides a resource to manage URL Normalization Settings.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Cloudflare = Pulumi.Cloudflare;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var example = new Cloudflare.UrlNormalizationSettings("example", new()
+    ///     {
+    ///         Scope = "incoming",
+    ///         Type = "cloudflare",
+    ///         ZoneId = "0da42c8d2132a9ddaf714f9e7c920711",
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/urlNormalizationSettings:UrlNormalizationSettings")]
     public partial class UrlNormalizationSettings : global::Pulumi.CustomResource

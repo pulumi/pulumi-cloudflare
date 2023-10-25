@@ -10,6 +10,49 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare
 {
     /// <summary>
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Cloudflare = Pulumi.Cloudflare;
+    /// using Tls = Pulumi.Tls;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var examplePrivateKey = new Tls.PrivateKey("examplePrivateKey", new()
+    ///     {
+    ///         Algorithm = "RSA",
+    ///     });
+    /// 
+    ///     var exampleCertRequest = new Tls.CertRequest("exampleCertRequest", new()
+    ///     {
+    ///         PrivateKeyPem = examplePrivateKey.PrivateKeyPem,
+    ///         Subjects = new[]
+    ///         {
+    ///             new Tls.Inputs.CertRequestSubjectArgs
+    ///             {
+    ///                 CommonName = "",
+    ///                 Organization = "Terraform Test",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var exampleOriginCaCertificate = new Cloudflare.OriginCaCertificate("exampleOriginCaCertificate", new()
+    ///     {
+    ///         Csr = exampleCertRequest.CertRequestPem,
+    ///         Hostnames = new[]
+    ///         {
+    ///             "example.com",
+    ///         },
+    ///         RequestType = "origin-rsa",
+    ///         RequestedValidity = 7,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// ```sh

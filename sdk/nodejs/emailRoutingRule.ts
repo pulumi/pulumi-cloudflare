@@ -8,6 +8,28 @@ import * as utilities from "./utilities";
 
 /**
  * Provides a resource for managing Email Routing rules.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as cloudflare from "@pulumi/cloudflare";
+ *
+ * const main = new cloudflare.EmailRoutingRule("main", {
+ *     actions: [{
+ *         type: "forward",
+ *         values: ["destinationaddress@example.net"],
+ *     }],
+ *     enabled: true,
+ *     matchers: [{
+ *         field: "to",
+ *         type: "literal",
+ *         value: "test@example.com",
+ *     }],
+ *     name: "terraform rule",
+ *     zoneId: "0da42c8d2132a9ddaf714f9e7c920711",
+ * });
+ * ```
  */
 export class EmailRoutingRule extends pulumi.CustomResource {
     /**

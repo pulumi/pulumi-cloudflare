@@ -14,6 +14,33 @@ import (
 )
 
 // Provides a resource for managing Email Routing Addresses.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cloudflare.NewEmailRoutingAddress(ctx, "example", &cloudflare.EmailRoutingAddressArgs{
+//				AccountId: pulumi.String("f037e56e89293a057740de681ac9abbe"),
+//				Email:     pulumi.String("user@example.com"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 type EmailRoutingAddress struct {
 	pulumi.CustomResourceState
 

@@ -346,6 +346,26 @@ class MtlsCertificate(pulumi.CustomResource):
         """
         Provides a Cloudflare mTLS certificate resource. These certificates may be used with mTLS enabled Cloudflare services.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        example = cloudflare.MtlsCertificate("example",
+            account_id="f037e56e89293a057740de681ac9abbe",
+            ca=True,
+            certificates=\"\"\"-----BEGIN CERTIFICATE-----
+        MIIDmDCCAoCgAwIBAgIUKTOAZNj...i4JhqeoTewsxndhDDE
+        -----END CERTIFICATE-----
+        \"\"\",
+            name="example",
+            private_key=\"\"\"-----BEGIN PRIVATE KEY-----
+        MIIEvQIBADANBgkqhkiG9w0BAQE...1IS3EnQRrz6WMYA=
+        -----END PRIVATE KEY-----
+        \"\"\")
+        ```
+
         ## Import
 
         ```sh
@@ -368,6 +388,26 @@ class MtlsCertificate(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Provides a Cloudflare mTLS certificate resource. These certificates may be used with mTLS enabled Cloudflare services.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        example = cloudflare.MtlsCertificate("example",
+            account_id="f037e56e89293a057740de681ac9abbe",
+            ca=True,
+            certificates=\"\"\"-----BEGIN CERTIFICATE-----
+        MIIDmDCCAoCgAwIBAgIUKTOAZNj...i4JhqeoTewsxndhDDE
+        -----END CERTIFICATE-----
+        \"\"\",
+            name="example",
+            private_key=\"\"\"-----BEGIN PRIVATE KEY-----
+        MIIEvQIBADANBgkqhkiG9w0BAQE...1IS3EnQRrz6WMYA=
+        -----END PRIVATE KEY-----
+        \"\"\")
+        ```
 
         ## Import
 

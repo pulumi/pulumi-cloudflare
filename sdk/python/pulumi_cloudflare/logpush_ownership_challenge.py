@@ -201,6 +201,17 @@ class LogpushOwnershipChallenge(pulumi.CustomResource):
         however this resource should be used in conjunction to create
         Logpush jobs.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        example = cloudflare.LogpushOwnershipChallenge("example",
+            destination_conf="s3://my-bucket-path?region=us-west-2",
+            zone_id="0da42c8d2132a9ddaf714f9e7c920711")
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_id: The account identifier to target for the resource. Must provide only one of `account_id`, `zone_id`.
@@ -218,6 +229,17 @@ class LogpushOwnershipChallenge(pulumi.CustomResource):
         challenges to use in a Logpush Job. On it's own, doesn't do much
         however this resource should be used in conjunction to create
         Logpush jobs.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        example = cloudflare.LogpushOwnershipChallenge("example",
+            destination_conf="s3://my-bucket-path?region=us-west-2",
+            zone_id="0da42c8d2132a9ddaf714f9e7c920711")
+        ```
 
         :param str resource_name: The name of the resource.
         :param LogpushOwnershipChallengeArgs args: The arguments to use to populate this resource's properties.

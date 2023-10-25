@@ -9,6 +9,29 @@ import * as utilities from "./utilities";
 /**
  * A Zero Trust organization defines the user login experience.
  *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as cloudflare from "@pulumi/cloudflare";
+ *
+ * const example = new cloudflare.AccessOrganization("example", {
+ *     accountId: "f037e56e89293a057740de681ac9abbe",
+ *     authDomain: "example.cloudflareaccess.com",
+ *     autoRedirectToIdentity: false,
+ *     isUiReadOnly: false,
+ *     loginDesigns: [{
+ *         backgroundColor: "#ffffff",
+ *         footerText: "My footer text",
+ *         headerText: "My header text",
+ *         logoPath: "https://example.com/logo.png",
+ *         textColor: "#000000",
+ *     }],
+ *     name: "example.cloudflareaccess.com",
+ *     userSeatExpirationInactiveTime: "720h",
+ * });
+ * ```
+ *
  * ## Import
  *
  * ```sh

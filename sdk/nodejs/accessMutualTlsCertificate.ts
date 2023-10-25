@@ -17,6 +17,20 @@ import * as utilities from "./utilities";
  * scope. For example, an access token that is scoped to the "example.com"
  * zone needs to use the `zoneId` argument.
  *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as cloudflare from "@pulumi/cloudflare";
+ *
+ * const myCert = new cloudflare.AccessMutualTlsCertificate("myCert", {
+ *     zoneId: "0da42c8d2132a9ddaf714f9e7c920711",
+ *     name: "My Root Cert",
+ *     certificate: _var.ca_pem,
+ *     associatedHostnames: ["staging.example.com"],
+ * });
+ * ```
+ *
  * ## Import
  *
  * Account level import.

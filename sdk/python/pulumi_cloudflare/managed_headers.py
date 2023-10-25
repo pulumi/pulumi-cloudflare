@@ -182,6 +182,25 @@ class ManagedHeaders(pulumi.CustomResource):
         allows you to add or remove some predefined headers to one's
         requests or origin responses.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        # Enable security headers using Managed Meaders
+        example = cloudflare.ManagedHeaders("example",
+            managed_request_headers=[cloudflare.ManagedHeadersManagedRequestHeaderArgs(
+                enabled=True,
+                id="add_true_client_ip_headers",
+            )],
+            managed_response_headers=[cloudflare.ManagedHeadersManagedResponseHeaderArgs(
+                enabled=True,
+                id="remove_x-powered-by_header",
+            )],
+            zone_id="0da42c8d2132a9ddaf714f9e7c920711")
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ManagedHeadersManagedRequestHeaderArgs']]]] managed_request_headers: The list of managed request headers.
@@ -198,6 +217,25 @@ class ManagedHeaders(pulumi.CustomResource):
         The [Cloudflare Managed Headers](https://developers.cloudflare.com/rules/transform/managed-transforms/)
         allows you to add or remove some predefined headers to one's
         requests or origin responses.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        # Enable security headers using Managed Meaders
+        example = cloudflare.ManagedHeaders("example",
+            managed_request_headers=[cloudflare.ManagedHeadersManagedRequestHeaderArgs(
+                enabled=True,
+                id="add_true_client_ip_headers",
+            )],
+            managed_response_headers=[cloudflare.ManagedHeadersManagedResponseHeaderArgs(
+                enabled=True,
+                id="remove_x-powered-by_header",
+            )],
+            zone_id="0da42c8d2132a9ddaf714f9e7c920711")
+        ```
 
         :param str resource_name: The name of the resource.
         :param ManagedHeadersArgs args: The arguments to use to populate this resource's properties.

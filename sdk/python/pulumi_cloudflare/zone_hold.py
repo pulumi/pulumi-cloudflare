@@ -217,6 +217,17 @@ class ZoneHold(pulumi.CustomResource):
         Provides a Cloudflare Zone Hold resource that prevents adding
         the hostname to another account for use.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        example = cloudflare.ZoneHold("example",
+            hold=True,
+            zone_id="0da42c8d2132a9ddaf714f9e7c920711")
+        ```
+
         ## Import
 
         ```sh
@@ -239,6 +250,17 @@ class ZoneHold(pulumi.CustomResource):
         """
         Provides a Cloudflare Zone Hold resource that prevents adding
         the hostname to another account for use.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        example = cloudflare.ZoneHold("example",
+            hold=True,
+            zone_id="0da42c8d2132a9ddaf714f9e7c920711")
+        ```
 
         ## Import
 

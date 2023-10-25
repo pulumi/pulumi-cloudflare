@@ -491,6 +491,22 @@ class BotManagement(pulumi.CustomResource):
         - **Super Bot Fight Mode**
         - **Bot Management for Enterprise**
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        example = cloudflare.BotManagement("example",
+            enable_js=True,
+            optimize_wordpress=True,
+            sbfm_definitely_automated="block",
+            sbfm_likely_automated="managed_challenge",
+            sbfm_static_resource_protection=False,
+            sbfm_verified_bots="allow",
+            zone_id="0da42c8d2132a9ddaf714f9e7c920711")
+        ```
+
         ## Import
 
         ```sh
@@ -524,6 +540,22 @@ class BotManagement(pulumi.CustomResource):
         - **Bot Fight Mode**
         - **Super Bot Fight Mode**
         - **Bot Management for Enterprise**
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        example = cloudflare.BotManagement("example",
+            enable_js=True,
+            optimize_wordpress=True,
+            sbfm_definitely_automated="block",
+            sbfm_likely_automated="managed_challenge",
+            sbfm_static_resource_protection=False,
+            sbfm_verified_bots="allow",
+            zone_id="0da42c8d2132a9ddaf714f9e7c920711")
+        ```
 
         ## Import
 

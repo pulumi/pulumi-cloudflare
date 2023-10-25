@@ -387,6 +387,20 @@ class CustomHostname(pulumi.CustomResource):
         """
         Provides a Cloudflare custom hostname (also known as SSL for SaaS) resource.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        example = cloudflare.CustomHostname("example",
+            hostname="hostname.example.com",
+            ssls=[cloudflare.CustomHostnameSslArgs(
+                method="txt",
+            )],
+            zone_id="0da42c8d2132a9ddaf714f9e7c920711")
+        ```
+
         ## Import
 
         ```sh
@@ -411,6 +425,20 @@ class CustomHostname(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Provides a Cloudflare custom hostname (also known as SSL for SaaS) resource.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        example = cloudflare.CustomHostname("example",
+            hostname="hostname.example.com",
+            ssls=[cloudflare.CustomHostnameSslArgs(
+                method="txt",
+            )],
+            zone_id="0da42c8d2132a9ddaf714f9e7c920711")
+        ```
 
         ## Import
 

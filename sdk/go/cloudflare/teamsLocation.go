@@ -16,6 +16,42 @@ import (
 // Provides a Cloudflare Teams Location resource. Teams Locations are
 // referenced when creating secure web gateway policies.
 //
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cloudflare.NewTeamsLocation(ctx, "example", &cloudflare.TeamsLocationArgs{
+//				AccountId:     pulumi.String("f037e56e89293a057740de681ac9abbe"),
+//				ClientDefault: pulumi.Bool(true),
+//				Name:          pulumi.String("office"),
+//				Networks: cloudflare.TeamsLocationNetworkArray{
+//					&cloudflare.TeamsLocationNetworkArgs{
+//						Network: pulumi.String("203.0.113.1/32"),
+//					},
+//					&cloudflare.TeamsLocationNetworkArgs{
+//						Network: pulumi.String("203.0.113.2/32"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // ```sh

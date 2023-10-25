@@ -7,6 +7,16 @@ import * as utilities from "./utilities";
 /**
  * Provides a Cloudflare resource to create and modify zone DNSSEC settings.
  *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as cloudflare from "@pulumi/cloudflare";
+ *
+ * const exampleZone = new cloudflare.Zone("exampleZone", {zone: "example.com"});
+ * const exampleZoneDnssec = new cloudflare.ZoneDnssec("exampleZoneDnssec", {zoneId: exampleZone.id});
+ * ```
+ *
  * ## Import
  *
  * ```sh

@@ -214,6 +214,39 @@ class AuthenticatedOriginPulls(pulumi.CustomResource):
         resource is required to use Per-Zone or Per-Hostname Authenticated
         Origin Pulls.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        # Authenticated Origin Pulls
+        my_aop = cloudflare.AuthenticatedOriginPulls("myAop",
+            zone_id="0da42c8d2132a9ddaf714f9e7c920711",
+            enabled=True)
+        # Per-Zone Authenticated Origin Pulls
+        my_per_zone_aop_cert = cloudflare.AuthenticatedOriginPullsCertificate("myPerZoneAopCert",
+            zone_id="0da42c8d2132a9ddaf714f9e7c920711",
+            certificate="-----INSERT CERTIFICATE-----",
+            private_key="-----INSERT PRIVATE KEY-----",
+            type="per-zone")
+        my_per_zone_aop = cloudflare.AuthenticatedOriginPulls("myPerZoneAop",
+            zone_id="0da42c8d2132a9ddaf714f9e7c920711",
+            authenticated_origin_pulls_certificate=my_per_zone_aop_cert.id,
+            enabled=True)
+        # Per-Hostname Authenticated Origin Pulls
+        my_per_hostname_aop_cert = cloudflare.AuthenticatedOriginPullsCertificate("myPerHostnameAopCert",
+            zone_id="0da42c8d2132a9ddaf714f9e7c920711",
+            certificate="-----INSERT CERTIFICATE-----",
+            private_key="-----INSERT PRIVATE KEY-----",
+            type="per-hostname")
+        my_per_hostname_aop = cloudflare.AuthenticatedOriginPulls("myPerHostnameAop",
+            zone_id="0da42c8d2132a9ddaf714f9e7c920711",
+            authenticated_origin_pulls_certificate=my_per_hostname_aop_cert.id,
+            hostname="aop.example.com",
+            enabled=True)
+        ```
+
         ## Import
 
         global
@@ -251,6 +284,39 @@ class AuthenticatedOriginPulls(pulumi.CustomResource):
         Provides a Cloudflare Authenticated Origin Pulls resource. A `AuthenticatedOriginPulls`
         resource is required to use Per-Zone or Per-Hostname Authenticated
         Origin Pulls.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        # Authenticated Origin Pulls
+        my_aop = cloudflare.AuthenticatedOriginPulls("myAop",
+            zone_id="0da42c8d2132a9ddaf714f9e7c920711",
+            enabled=True)
+        # Per-Zone Authenticated Origin Pulls
+        my_per_zone_aop_cert = cloudflare.AuthenticatedOriginPullsCertificate("myPerZoneAopCert",
+            zone_id="0da42c8d2132a9ddaf714f9e7c920711",
+            certificate="-----INSERT CERTIFICATE-----",
+            private_key="-----INSERT PRIVATE KEY-----",
+            type="per-zone")
+        my_per_zone_aop = cloudflare.AuthenticatedOriginPulls("myPerZoneAop",
+            zone_id="0da42c8d2132a9ddaf714f9e7c920711",
+            authenticated_origin_pulls_certificate=my_per_zone_aop_cert.id,
+            enabled=True)
+        # Per-Hostname Authenticated Origin Pulls
+        my_per_hostname_aop_cert = cloudflare.AuthenticatedOriginPullsCertificate("myPerHostnameAopCert",
+            zone_id="0da42c8d2132a9ddaf714f9e7c920711",
+            certificate="-----INSERT CERTIFICATE-----",
+            private_key="-----INSERT PRIVATE KEY-----",
+            type="per-hostname")
+        my_per_hostname_aop = cloudflare.AuthenticatedOriginPulls("myPerHostnameAop",
+            zone_id="0da42c8d2132a9ddaf714f9e7c920711",
+            authenticated_origin_pulls_certificate=my_per_hostname_aop_cert.id,
+            hostname="aop.example.com",
+            enabled=True)
+        ```
 
         ## Import
 

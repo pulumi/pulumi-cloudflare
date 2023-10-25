@@ -179,6 +179,25 @@ class WorkerCronTrigger(pulumi.CustomResource):
         schedule. Worker Cron Triggers are ideal for running periodic jobs for
         maintenance or calling third-party APIs to collect up-to-date data.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        example_script = cloudflare.WorkerScript("exampleScript",
+            account_id="f037e56e89293a057740de681ac9abbe",
+            name="example-script",
+            content=(lambda path: open(path).read())("path/to/my.js"))
+        example_trigger = cloudflare.WorkerCronTrigger("exampleTrigger",
+            account_id="f037e56e89293a057740de681ac9abbe",
+            script_name=example_script.name,
+            schedules=[
+                "*/5 * * * *",
+                "10 7 * * mon-fri",
+            ])
+        ```
+
         ## Import
 
         ```sh
@@ -202,6 +221,25 @@ class WorkerCronTrigger(pulumi.CustomResource):
         using a `ScheduledEvent` listener that enables Workers to be executed on a
         schedule. Worker Cron Triggers are ideal for running periodic jobs for
         maintenance or calling third-party APIs to collect up-to-date data.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        example_script = cloudflare.WorkerScript("exampleScript",
+            account_id="f037e56e89293a057740de681ac9abbe",
+            name="example-script",
+            content=(lambda path: open(path).read())("path/to/my.js"))
+        example_trigger = cloudflare.WorkerCronTrigger("exampleTrigger",
+            account_id="f037e56e89293a057740de681ac9abbe",
+            script_name=example_script.name,
+            schedules=[
+                "*/5 * * * *",
+                "10 7 * * mon-fri",
+            ])
+        ```
 
         ## Import
 

@@ -19,6 +19,37 @@ namespace Pulumi.Cloudflare
         /// accounts to have the same zone created but in different states. If you are
         /// using this setup, it is advised to use the `account_id` attribute on this
         /// resource or swap to `cloudflare.getZones` to further filter the results.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Cloudflare = Pulumi.Cloudflare;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var exampleZone = Cloudflare.GetZone.Invoke(new()
+        ///     {
+        ///         Name = "example.com",
+        ///     });
+        /// 
+        ///     var exampleRecord = new Cloudflare.Record("exampleRecord", new()
+        ///     {
+        ///         ZoneId = exampleZone.Apply(getZoneResult =&gt; getZoneResult.Id),
+        ///         Name = "www",
+        ///         Value = "203.0.113.1",
+        ///         Type = "A",
+        ///         Proxied = true,
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetZoneResult> InvokeAsync(GetZoneArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetZoneResult>("cloudflare:index/getZone:getZone", args ?? new GetZoneArgs(), options.WithDefaults());
@@ -31,6 +62,37 @@ namespace Pulumi.Cloudflare
         /// accounts to have the same zone created but in different states. If you are
         /// using this setup, it is advised to use the `account_id` attribute on this
         /// resource or swap to `cloudflare.getZones` to further filter the results.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Cloudflare = Pulumi.Cloudflare;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var exampleZone = Cloudflare.GetZone.Invoke(new()
+        ///     {
+        ///         Name = "example.com",
+        ///     });
+        /// 
+        ///     var exampleRecord = new Cloudflare.Record("exampleRecord", new()
+        ///     {
+        ///         ZoneId = exampleZone.Apply(getZoneResult =&gt; getZoneResult.Id),
+        ///         Name = "www",
+        ///         Value = "203.0.113.1",
+        ///         Type = "A",
+        ///         Proxied = true,
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Output<GetZoneResult> Invoke(GetZoneInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetZoneResult>("cloudflare:index/getZone:getZone", args ?? new GetZoneInvokeArgs(), options.WithDefaults());

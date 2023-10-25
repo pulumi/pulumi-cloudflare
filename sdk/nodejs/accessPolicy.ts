@@ -17,6 +17,43 @@ import * as utilities from "./utilities";
  * scope. For example, an access token that is scoped to the "example.com"
  * zone needs to use the `zoneId` argument.
  *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as cloudflare from "@pulumi/cloudflare";
+ *
+ * // Allowing access to `test@example.com` email address only
+ * const testPolicyAccessPolicy = new cloudflare.AccessPolicy("testPolicyAccessPolicy", {
+ *     applicationId: "cb029e245cfdd66dc8d2e570d5dd3322",
+ *     zoneId: "0da42c8d2132a9ddaf714f9e7c920711",
+ *     name: "staging policy",
+ *     precedence: 1,
+ *     decision: "allow",
+ *     includes: [{
+ *         emails: ["test@example.com"],
+ *     }],
+ *     requires: [{
+ *         emails: ["test@example.com"],
+ *     }],
+ * });
+ * // Allowing `test@example.com` to access but only when coming from a
+ * // specific IP.
+ * const testPolicyIndex_accessPolicyAccessPolicy = new cloudflare.AccessPolicy("testPolicyIndex/accessPolicyAccessPolicy", {
+ *     applicationId: "cb029e245cfdd66dc8d2e570d5dd3322",
+ *     zoneId: "0da42c8d2132a9ddaf714f9e7c920711",
+ *     name: "staging policy",
+ *     precedence: 1,
+ *     decision: "allow",
+ *     includes: [{
+ *         emails: ["test@example.com"],
+ *     }],
+ *     requires: [{
+ *         ips: [_var.office_ip],
+ *     }],
+ * });
+ * ```
+ *
  * ## Import
  *
  * Account level import.

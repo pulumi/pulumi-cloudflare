@@ -19,6 +19,33 @@ import (
 //
 // > If you are attempting to sign up a subdomain of a zone you must first have Subdomain Support entitlement for your account.
 //
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cloudflare.NewZone(ctx, "example", &cloudflare.ZoneArgs{
+//				AccountId: pulumi.String("f037e56e89293a057740de681ac9abbe"),
+//				Zone:      pulumi.String("example.com"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // ```sh

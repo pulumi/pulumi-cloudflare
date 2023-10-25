@@ -7,6 +7,22 @@ import * as utilities from "./utilities";
 /**
  * The [Turnstile Widget](https://developers.cloudflare.com/turnstile/) resource allows you to manage Cloudflare Turnstile Widgets.
  *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as cloudflare from "@pulumi/cloudflare";
+ *
+ * const example = new cloudflare.TurnstileWidget("example", {
+ *     accountId: "f037e56e89293a057740de681ac9abbe",
+ *     botFightMode: false,
+ *     domains: ["example.com"],
+ *     mode: "invisible",
+ *     name: "example widget",
+ *     region: "world",
+ * });
+ * ```
+ *
  * ## Import
  *
  * ```sh

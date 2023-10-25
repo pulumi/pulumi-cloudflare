@@ -309,6 +309,26 @@ class TeamsLocation(pulumi.CustomResource):
         Provides a Cloudflare Teams Location resource. Teams Locations are
         referenced when creating secure web gateway policies.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        example = cloudflare.TeamsLocation("example",
+            account_id="f037e56e89293a057740de681ac9abbe",
+            client_default=True,
+            name="office",
+            networks=[
+                cloudflare.TeamsLocationNetworkArgs(
+                    network="203.0.113.1/32",
+                ),
+                cloudflare.TeamsLocationNetworkArgs(
+                    network="203.0.113.2/32",
+                ),
+            ])
+        ```
+
         ## Import
 
         ```sh
@@ -331,6 +351,26 @@ class TeamsLocation(pulumi.CustomResource):
         """
         Provides a Cloudflare Teams Location resource. Teams Locations are
         referenced when creating secure web gateway policies.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        example = cloudflare.TeamsLocation("example",
+            account_id="f037e56e89293a057740de681ac9abbe",
+            client_default=True,
+            name="office",
+            networks=[
+                cloudflare.TeamsLocationNetworkArgs(
+                    network="203.0.113.1/32",
+                ),
+                cloudflare.TeamsLocationNetworkArgs(
+                    network="203.0.113.2/32",
+                ),
+            ])
+        ```
 
         ## Import
 

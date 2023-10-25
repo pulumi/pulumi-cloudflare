@@ -9,6 +9,18 @@ import * as utilities from "./utilities";
  * policy certificate resources enable client device certificate
  * generation.
  *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as cloudflare from "@pulumi/cloudflare";
+ *
+ * const example = new cloudflare.DevicePolicyCertificates("example", {
+ *     enabled: true,
+ *     zoneId: "0da42c8d2132a9ddaf714f9e7c920711",
+ * });
+ * ```
+ *
  * ## Import
  *
  * ```sh

@@ -9,6 +9,27 @@ import * as utilities from "./utilities";
 /**
  * Provides a Cloudflare Teams rule resource. Teams rules comprise secure web gateway policies.
  *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as cloudflare from "@pulumi/cloudflare";
+ *
+ * const example = new cloudflare.TeamsRule("example", {
+ *     accountId: "f037e56e89293a057740de681ac9abbe",
+ *     action: "block",
+ *     description: "desc",
+ *     filters: ["http"],
+ *     name: "office",
+ *     precedence: 1,
+ *     ruleSettings: {
+ *         blockPageEnabled: true,
+ *         blockPageReason: "access not permitted",
+ *     },
+ *     traffic: "http.request.uri == \"https://www.example.com/malicious\"",
+ * });
+ * ```
+ *
  * ## Import
  *
  * ```sh

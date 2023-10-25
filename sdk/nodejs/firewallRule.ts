@@ -5,6 +5,25 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as cloudflare from "@pulumi/cloudflare";
+ *
+ * const wordpressFilter = new cloudflare.Filter("wordpressFilter", {
+ *     zoneId: "0da42c8d2132a9ddaf714f9e7c920711",
+ *     description: "Wordpress break-in attempts that are outside of the office",
+ *     expression: "(http.request.uri.path ~ \".*wp-login.php\" or http.request.uri.path ~ \".*xmlrpc.php\") and ip.src ne 192.0.2.1",
+ * });
+ * const wordpressFirewallRule = new cloudflare.FirewallRule("wordpressFirewallRule", {
+ *     zoneId: "0da42c8d2132a9ddaf714f9e7c920711",
+ *     description: "Block wordpress break-in attempts",
+ *     filterId: wordpressFilter.id,
+ *     action: "block",
+ * });
+ * ```
+ *
  * ## Import
  *
  * ```sh

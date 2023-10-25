@@ -134,6 +134,17 @@ class LogpullRetention(pulumi.CustomResource):
         """
         Allows management of the Logpull Retention settings used to control whether or not to retain HTTP request logs.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        example = cloudflare.LogpullRetention("example",
+            enabled=True,
+            zone_id="0da42c8d2132a9ddaf714f9e7c920711")
+        ```
+
         ## Import
 
         ```sh
@@ -153,6 +164,17 @@ class LogpullRetention(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Allows management of the Logpull Retention settings used to control whether or not to retain HTTP request logs.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        example = cloudflare.LogpullRetention("example",
+            enabled=True,
+            zone_id="0da42c8d2132a9ddaf714f9e7c920711")
+        ```
 
         ## Import
 

@@ -16,6 +16,93 @@ import (
 // Provides individual list items (IPs, Redirects) to be used in Edge Rules Engine
 // across all zones within the same account.
 //
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			exampleIpList, err := cloudflare.NewList(ctx, "exampleIpList", &cloudflare.ListArgs{
+//				AccountId:   pulumi.String("f037e56e89293a057740de681ac9abbe"),
+//				Name:        pulumi.String("example_list"),
+//				Description: pulumi.String("example IPs for a list"),
+//				Kind:        pulumi.String("ip"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = cloudflare.NewListItem(ctx, "exampleIpItem", &cloudflare.ListItemArgs{
+//				AccountId: pulumi.String("f037e56e89293a057740de681ac9abbe"),
+//				ListId:    exampleIpList.ID(),
+//				Comment:   pulumi.String("List Item Comment"),
+//				Ip:        pulumi.String("192.0.2.0"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = cloudflare.NewListItem(ctx, "testTwo", &cloudflare.ListItemArgs{
+//				AccountId: pulumi.String("f037e56e89293a057740de681ac9abbe"),
+//				ListId:    exampleIpList.ID(),
+//				Redirect: &cloudflare.ListItemRedirectArgs{
+//					SourceUrl:       pulumi.String("https://source.tld"),
+//					TargetUrl:       pulumi.String("https://target.tld"),
+//					StatusCode:      pulumi.Int(302),
+//					SubpathMatching: pulumi.String("enabled"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			exampleAsnList, err := cloudflare.NewList(ctx, "exampleAsnList", &cloudflare.ListArgs{
+//				AccountId:   pulumi.String("f037e56e89293a057740de681ac9abbe"),
+//				Name:        pulumi.String("example_asn_list"),
+//				Description: pulumi.String("example ASNs for a list"),
+//				Kind:        pulumi.String("asn"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = cloudflare.NewListItem(ctx, "exampleAsnItem", &cloudflare.ListItemArgs{
+//				AccountId: pulumi.String("f037e56e89293a057740de681ac9abbe"),
+//				ListId:    exampleAsnList.ID(),
+//				Comment:   pulumi.String("List Item Comment"),
+//				Asn:       pulumi.Int(6789),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			exampleHostnameList, err := cloudflare.NewList(ctx, "exampleHostnameList", &cloudflare.ListArgs{
+//				AccountId:   pulumi.String("f037e56e89293a057740de681ac9abbe"),
+//				Name:        pulumi.String("example_hostname_list"),
+//				Description: pulumi.String("example Hostnames for a list"),
+//				Kind:        pulumi.String("hostname"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = cloudflare.NewListItem(ctx, "exampleHostnameItem", &cloudflare.ListItemArgs{
+//				AccountId: pulumi.String("f037e56e89293a057740de681ac9abbe"),
+//				ListId:    exampleHostnameList.ID(),
+//				Comment:   pulumi.String("List Item Comment"),
+//				Asn:       pulumi.Int("example.com"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // ```sh

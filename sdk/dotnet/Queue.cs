@@ -12,6 +12,25 @@ namespace Pulumi.Cloudflare
     /// <summary>
     /// Provides the ability to manage Cloudflare Workers Queue features.
     /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Cloudflare = Pulumi.Cloudflare;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var example = new Cloudflare.Queue("example", new()
+    ///     {
+    ///         AccountId = "f037e56e89293a057740de681ac9abbe",
+    ///         Name = "my-queue",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// ```sh

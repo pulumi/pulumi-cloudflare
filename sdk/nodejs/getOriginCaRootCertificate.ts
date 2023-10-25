@@ -8,6 +8,17 @@ import * as utilities from "./utilities";
  * Use this data source to get the
  * [Origin CA root certificate](https://developers.cloudflare.com/ssl/origin-configuration/origin-ca#4-required-for-some-add-cloudflare-origin-ca-root-certificates)
  * for a given algorithm."
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as cloudflare from "@pulumi/cloudflare";
+ *
+ * const example = cloudflare.getOriginCaRootCertificate({
+ *     algorithm: "rsa",
+ * });
+ * ```
  */
 export function getOriginCaRootCertificate(args: GetOriginCaRootCertificateArgs, opts?: pulumi.InvokeOptions): Promise<GetOriginCaRootCertificateResult> {
 
@@ -48,6 +59,17 @@ export interface GetOriginCaRootCertificateResult {
  * Use this data source to get the
  * [Origin CA root certificate](https://developers.cloudflare.com/ssl/origin-configuration/origin-ca#4-required-for-some-add-cloudflare-origin-ca-root-certificates)
  * for a given algorithm."
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as cloudflare from "@pulumi/cloudflare";
+ *
+ * const example = cloudflare.getOriginCaRootCertificate({
+ *     algorithm: "rsa",
+ * });
+ * ```
  */
 export function getOriginCaRootCertificateOutput(args: GetOriginCaRootCertificateOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetOriginCaRootCertificateResult> {
     return pulumi.output(args).apply((a: any) => getOriginCaRootCertificate(a, opts))

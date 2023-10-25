@@ -13,12 +13,86 @@ namespace Pulumi.Cloudflare
     {
         /// <summary>
         /// Use this data source to lookup a single [Access Identity Provider](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration) by name.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Cloudflare = Pulumi.Cloudflare;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var exampleAccessIdentityProvider = Cloudflare.GetAccessIdentityProvider.Invoke(new()
+        ///     {
+        ///         Name = "Google SSO",
+        ///         AccountId = "f037e56e89293a057740de681ac9abbe",
+        ///     });
+        /// 
+        ///     var exampleAccessApplication = new Cloudflare.AccessApplication("exampleAccessApplication", new()
+        ///     {
+        ///         ZoneId = "0da42c8d2132a9ddaf714f9e7c920711",
+        ///         Name = "name",
+        ///         Domain = "name.example.com",
+        ///         Type = "self_hosted",
+        ///         SessionDuration = "24h",
+        ///         AllowedIdps = new[]
+        ///         {
+        ///             exampleAccessIdentityProvider.Apply(getAccessIdentityProviderResult =&gt; getAccessIdentityProviderResult.Id),
+        ///         },
+        ///         AutoRedirectToIdentity = true,
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetAccessIdentityProviderResult> InvokeAsync(GetAccessIdentityProviderArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetAccessIdentityProviderResult>("cloudflare:index/getAccessIdentityProvider:getAccessIdentityProvider", args ?? new GetAccessIdentityProviderArgs(), options.WithDefaults());
 
         /// <summary>
         /// Use this data source to lookup a single [Access Identity Provider](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration) by name.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Cloudflare = Pulumi.Cloudflare;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var exampleAccessIdentityProvider = Cloudflare.GetAccessIdentityProvider.Invoke(new()
+        ///     {
+        ///         Name = "Google SSO",
+        ///         AccountId = "f037e56e89293a057740de681ac9abbe",
+        ///     });
+        /// 
+        ///     var exampleAccessApplication = new Cloudflare.AccessApplication("exampleAccessApplication", new()
+        ///     {
+        ///         ZoneId = "0da42c8d2132a9ddaf714f9e7c920711",
+        ///         Name = "name",
+        ///         Domain = "name.example.com",
+        ///         Type = "self_hosted",
+        ///         SessionDuration = "24h",
+        ///         AllowedIdps = new[]
+        ///         {
+        ///             exampleAccessIdentityProvider.Apply(getAccessIdentityProviderResult =&gt; getAccessIdentityProviderResult.Id),
+        ///         },
+        ///         AutoRedirectToIdentity = true,
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Output<GetAccessIdentityProviderResult> Invoke(GetAccessIdentityProviderInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAccessIdentityProviderResult>("cloudflare:index/getAccessIdentityProvider:getAccessIdentityProvider", args ?? new GetAccessIdentityProviderInvokeArgs(), options.WithDefaults());

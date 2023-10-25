@@ -253,6 +253,18 @@ class Tunnel(pulumi.CustomResource):
         network with an internet connection without manually adding DNS
         records or configuring a firewall or router.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        example = cloudflare.Tunnel("example",
+            account_id="f037e56e89293a057740de681ac9abbe",
+            name="my-tunnel",
+            secret="AQIDBAUGBwgBAgMEBQYHCAECAwQFBgcIAQIDBAUGBwg=")
+        ```
+
         ## Import
 
         ```sh
@@ -276,6 +288,18 @@ class Tunnel(pulumi.CustomResource):
         Tunnel exposes applications running on your local web server on any
         network with an internet connection without manually adding DNS
         records or configuring a firewall or router.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        example = cloudflare.Tunnel("example",
+            account_id="f037e56e89293a057740de681ac9abbe",
+            name="my-tunnel",
+            secret="AQIDBAUGBwgBAgMEBQYHCAECAwQFBgcIAQIDBAUGBwg=")
+        ```
 
         ## Import
 

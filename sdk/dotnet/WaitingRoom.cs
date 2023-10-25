@@ -12,6 +12,44 @@ namespace Pulumi.Cloudflare
     /// <summary>
     /// Provides a Cloudflare Waiting Room resource.
     /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Cloudflare = Pulumi.Cloudflare;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     // Waiting Room
+    ///     var example = new Cloudflare.WaitingRoom("example", new()
+    ///     {
+    ///         AdditionalRoutes = new[]
+    ///         {
+    ///             new Cloudflare.Inputs.WaitingRoomAdditionalRouteArgs
+    ///             {
+    ///                 Host = "shop1.example.com",
+    ///                 Path = "/example-path",
+    ///             },
+    ///             new Cloudflare.Inputs.WaitingRoomAdditionalRouteArgs
+    ///             {
+    ///                 Host = "shop2.example.com",
+    ///             },
+    ///         },
+    ///         CookieSuffix = "queue1",
+    ///         Host = "foo.example.com",
+    ///         Name = "foo",
+    ///         NewUsersPerMinute = 200,
+    ///         Path = "/",
+    ///         QueueingStatusCode = 200,
+    ///         TotalActiveUsers = 200,
+    ///         ZoneId = "0da42c8d2132a9ddaf714f9e7c920711",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Use the Zone ID and Waiting Room ID to import.

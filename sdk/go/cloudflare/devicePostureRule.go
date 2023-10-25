@@ -15,6 +15,51 @@ import (
 
 // Provides a Cloudflare Device Posture Rule resource. Device posture rules configure security policies for device posture checks.
 //
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cloudflare.NewDevicePostureRule(ctx, "eaxmple", &cloudflare.DevicePostureRuleArgs{
+//				AccountId:   pulumi.String("f037e56e89293a057740de681ac9abbe"),
+//				Name:        pulumi.String("Corporate devices posture rule"),
+//				Type:        pulumi.String("os_version"),
+//				Description: pulumi.String("Device posture rule for corporate devices."),
+//				Schedule:    pulumi.String("24h"),
+//				Expiration:  pulumi.String("24h"),
+//				Matches: cloudflare.DevicePostureRuleMatchArray{
+//					&cloudflare.DevicePostureRuleMatchArgs{
+//						Platform: pulumi.String("linux"),
+//					},
+//				},
+//				Inputs: cloudflare.DevicePostureRuleInputTypeArray{
+//					&cloudflare.DevicePostureRuleInputTypeArgs{
+//						Id:               pulumi.Any(cloudflare_teams_list.Corporate_devices.Id),
+//						Version:          pulumi.String("1.0.0"),
+//						Operator:         pulumi.String("<"),
+//						OsDistroName:     pulumi.String("ubuntu"),
+//						OsDistroRevision: pulumi.String("1.0.0"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // ```sh

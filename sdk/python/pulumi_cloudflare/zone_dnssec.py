@@ -327,6 +327,16 @@ class ZoneDnssec(pulumi.CustomResource):
         """
         Provides a Cloudflare resource to create and modify zone DNSSEC settings.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        example_zone = cloudflare.Zone("exampleZone", zone="example.com")
+        example_zone_dnssec = cloudflare.ZoneDnssec("exampleZoneDnssec", zone_id=example_zone.id)
+        ```
+
         ## Import
 
         ```sh
@@ -346,6 +356,16 @@ class ZoneDnssec(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Provides a Cloudflare resource to create and modify zone DNSSEC settings.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        example_zone = cloudflare.Zone("exampleZone", zone="example.com")
+        example_zone_dnssec = cloudflare.ZoneDnssec("exampleZoneDnssec", zone_id=example_zone.id)
+        ```
 
         ## Import
 

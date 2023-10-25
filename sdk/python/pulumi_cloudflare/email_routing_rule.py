@@ -304,6 +304,27 @@ class EmailRoutingRule(pulumi.CustomResource):
         """
         Provides a resource for managing Email Routing rules.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        main = cloudflare.EmailRoutingRule("main",
+            actions=[cloudflare.EmailRoutingRuleActionArgs(
+                type="forward",
+                values=["destinationaddress@example.net"],
+            )],
+            enabled=True,
+            matchers=[cloudflare.EmailRoutingRuleMatcherArgs(
+                field="to",
+                type="literal",
+                value="test@example.com",
+            )],
+            name="terraform rule",
+            zone_id="0da42c8d2132a9ddaf714f9e7c920711")
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EmailRoutingRuleActionArgs']]]] actions: List actions patterns.
@@ -321,6 +342,27 @@ class EmailRoutingRule(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Provides a resource for managing Email Routing rules.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        main = cloudflare.EmailRoutingRule("main",
+            actions=[cloudflare.EmailRoutingRuleActionArgs(
+                type="forward",
+                values=["destinationaddress@example.net"],
+            )],
+            enabled=True,
+            matchers=[cloudflare.EmailRoutingRuleMatcherArgs(
+                field="to",
+                type="literal",
+                value="test@example.com",
+            )],
+            name="terraform rule",
+            zone_id="0da42c8d2132a9ddaf714f9e7c920711")
+        ```
 
         :param str resource_name: The name of the resource.
         :param EmailRoutingRuleArgs args: The arguments to use to populate this resource's properties.

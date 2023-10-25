@@ -21,6 +21,38 @@ import (
 // - **Super Bot Fight Mode**
 // - **Bot Management for Enterprise**
 //
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cloudflare.NewBotManagement(ctx, "example", &cloudflare.BotManagementArgs{
+//				EnableJs:                     pulumi.Bool(true),
+//				OptimizeWordpress:            pulumi.Bool(true),
+//				SbfmDefinitelyAutomated:      pulumi.String("block"),
+//				SbfmLikelyAutomated:          pulumi.String("managed_challenge"),
+//				SbfmStaticResourceProtection: pulumi.Bool(false),
+//				SbfmVerifiedBots:             pulumi.String("allow"),
+//				ZoneId:                       pulumi.String("0da42c8d2132a9ddaf714f9e7c920711"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // ```sh

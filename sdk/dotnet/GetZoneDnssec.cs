@@ -13,12 +13,56 @@ namespace Pulumi.Cloudflare
     {
         /// <summary>
         /// Use this data source to look up Zone DNSSEC settings.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Cloudflare = Pulumi.Cloudflare;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = Cloudflare.GetZoneDnssec.Invoke(new()
+        ///     {
+        ///         ZoneId = "0da42c8d2132a9ddaf714f9e7c920711",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetZoneDnssecResult> InvokeAsync(GetZoneDnssecArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetZoneDnssecResult>("cloudflare:index/getZoneDnssec:getZoneDnssec", args ?? new GetZoneDnssecArgs(), options.WithDefaults());
 
         /// <summary>
         /// Use this data source to look up Zone DNSSEC settings.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Cloudflare = Pulumi.Cloudflare;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = Cloudflare.GetZoneDnssec.Invoke(new()
+        ///     {
+        ///         ZoneId = "0da42c8d2132a9ddaf714f9e7c920711",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Output<GetZoneDnssecResult> Invoke(GetZoneDnssecInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetZoneDnssecResult>("cloudflare:index/getZoneDnssec:getZoneDnssec", args ?? new GetZoneDnssecInvokeArgs(), options.WithDefaults());

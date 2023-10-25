@@ -12,6 +12,41 @@ namespace Pulumi.Cloudflare
     /// <summary>
     /// Provides a Cloudflare page rule resource.
     /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Cloudflare = Pulumi.Cloudflare;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     // Add a page rule to the domain
+    ///     var foobar = new Cloudflare.PageRule("foobar", new()
+    ///     {
+    ///         ZoneId = @var.Cloudflare_zone_id,
+    ///         Target = $"sub.{@var.Cloudflare_zone}/page",
+    ///         Priority = 1,
+    ///         Actions = new Cloudflare.Inputs.PageRuleActionsArgs
+    ///         {
+    ///             Ssl = "flexible",
+    ///             EmailObfuscation = "on",
+    ///             Minifies = new[]
+    ///             {
+    ///                 new Cloudflare.Inputs.PageRuleActionsMinifyArgs
+    ///                 {
+    ///                     Html = "off",
+    ///                     Css = "on",
+    ///                     Js = "on",
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Page rules can be imported using a composite ID formed of zone ID and page rule ID, e.g.

@@ -196,6 +196,18 @@ class PagesDomain(pulumi.CustomResource):
 
         > A DNS record for the domain is not automatically created. You need to create a `Record` resource for the domain you want to use.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        my_domain = cloudflare.PagesDomain("my-domain",
+            account_id="f037e56e89293a057740de681ac9abbe",
+            domain="example.com",
+            project_name="my-example-project")
+        ```
+
         ## Import
 
         ```sh
@@ -218,6 +230,18 @@ class PagesDomain(pulumi.CustomResource):
         Provides a resource for managing Cloudflare Pages domains.
 
         > A DNS record for the domain is not automatically created. You need to create a `Record` resource for the domain you want to use.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        my_domain = cloudflare.PagesDomain("my-domain",
+            account_id="f037e56e89293a057740de681ac9abbe",
+            domain="example.com",
+            project_name="my-example-project")
+        ```
 
         ## Import
 

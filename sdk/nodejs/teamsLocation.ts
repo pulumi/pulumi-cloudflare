@@ -10,6 +10,27 @@ import * as utilities from "./utilities";
  * Provides a Cloudflare Teams Location resource. Teams Locations are
  * referenced when creating secure web gateway policies.
  *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as cloudflare from "@pulumi/cloudflare";
+ *
+ * const example = new cloudflare.TeamsLocation("example", {
+ *     accountId: "f037e56e89293a057740de681ac9abbe",
+ *     clientDefault: true,
+ *     name: "office",
+ *     networks: [
+ *         {
+ *             network: "203.0.113.1/32",
+ *         },
+ *         {
+ *             network: "203.0.113.2/32",
+ *         },
+ *     ],
+ * });
+ * ```
+ *
  * ## Import
  *
  * ```sh

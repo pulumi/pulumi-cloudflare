@@ -12,6 +12,38 @@ namespace Pulumi.Cloudflare
     /// <summary>
     /// Provides a Cloudflare Teams rule resource. Teams rules comprise secure web gateway policies.
     /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Cloudflare = Pulumi.Cloudflare;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var example = new Cloudflare.TeamsRule("example", new()
+    ///     {
+    ///         AccountId = "f037e56e89293a057740de681ac9abbe",
+    ///         Action = "block",
+    ///         Description = "desc",
+    ///         Filters = new[]
+    ///         {
+    ///             "http",
+    ///         },
+    ///         Name = "office",
+    ///         Precedence = 1,
+    ///         RuleSettings = new Cloudflare.Inputs.TeamsRuleRuleSettingsArgs
+    ///         {
+    ///             BlockPageEnabled = true,
+    ///             BlockPageReason = "access not permitted",
+    ///         },
+    ///         Traffic = "http.request.uri == \"https://www.example.com/malicious\"",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// ```sh

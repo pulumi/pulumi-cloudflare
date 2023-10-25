@@ -20,6 +20,88 @@ namespace Pulumi.Cloudflare
     /// scope. For example, an access token that is scoped to the "example.com"
     /// zone needs to use the `zone_id` argument.
     /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Cloudflare = Pulumi.Cloudflare;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     // Allowing access to `test@example.com` email address only
+    ///     var exampleAccessGroup = new Cloudflare.AccessGroup("exampleAccessGroup", new()
+    ///     {
+    ///         AccountId = "f037e56e89293a057740de681ac9abbe",
+    ///         Name = "staging group",
+    ///         Includes = new[]
+    ///         {
+    ///             new Cloudflare.Inputs.AccessGroupIncludeArgs
+    ///             {
+    ///                 Emails = new[]
+    ///                 {
+    ///                     "test@example.com",
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     // Allowing `test@example.com` to access but only when coming from a
+    ///     // specific IP.
+    ///     var exampleIndex_accessGroupAccessGroup = new Cloudflare.AccessGroup("exampleIndex/accessGroupAccessGroup", new()
+    ///     {
+    ///         AccountId = "f037e56e89293a057740de681ac9abbe",
+    ///         Name = "staging group",
+    ///         Includes = new[]
+    ///         {
+    ///             new Cloudflare.Inputs.AccessGroupIncludeArgs
+    ///             {
+    ///                 Emails = new[]
+    ///                 {
+    ///                     "test@example.com",
+    ///                 },
+    ///             },
+    ///         },
+    ///         Requires = new[]
+    ///         {
+    ///             new Cloudflare.Inputs.AccessGroupRequireArgs
+    ///             {
+    ///                 Ips = new[]
+    ///                 {
+    ///                     @var.Office_ip,
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     // Allow members of an Azure Group. The ID is the group UUID (id) in Azure.
+    ///     var exampleCloudflareIndex_accessGroupAccessGroup = new Cloudflare.AccessGroup("exampleCloudflareIndex/accessGroupAccessGroup", new()
+    ///     {
+    ///         AccountId = "f037e56e89293a057740de681ac9abbe",
+    ///         Name = "test_group",
+    ///         Includes = new[]
+    ///         {
+    ///             new Cloudflare.Inputs.AccessGroupIncludeArgs
+    ///             {
+    ///                 Azures = new[]
+    ///                 {
+    ///                     new Cloudflare.Inputs.AccessGroupIncludeAzureArgs
+    ///                     {
+    ///                         IdentityProviderId = "ca298b82-93b5-41bf-bc2d-10493f09b761",
+    ///                         Ids = new[]
+    ///                         {
+    ///                             "86773093-5feb-48dd-814b-7ccd3676ff50",
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// ```sh

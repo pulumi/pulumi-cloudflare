@@ -12,6 +12,26 @@ namespace Pulumi.Cloudflare
     /// <summary>
     /// Provides a Cloudflare Web Analytics Site resource.
     /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Cloudflare = Pulumi.Cloudflare;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var example = new Cloudflare.WebAnalyticsSite("example", new()
+    ///     {
+    ///         AccountId = "f037e56e89293a057740de681ac9abbe",
+    ///         AutoInstall = true,
+    ///         ZoneTag = "0da42c8d2132a9ddaf714f9e7c920711",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// ```sh

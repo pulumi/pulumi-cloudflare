@@ -15,6 +15,49 @@ import (
 
 // Provides a Cloudflare Device Settings Policy resource. Device policies configure settings applied to WARP devices.
 //
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cloudflare.NewDeviceSettingsPolicy(ctx, "developerWarpPolicy", &cloudflare.DeviceSettingsPolicyArgs{
+//				AccountId:           pulumi.String("f037e56e89293a057740de681ac9abbe"),
+//				AllowModeSwitch:     pulumi.Bool(true),
+//				AllowUpdates:        pulumi.Bool(true),
+//				AllowedToLeave:      pulumi.Bool(true),
+//				AutoConnect:         pulumi.Int(0),
+//				CaptivePortal:       pulumi.Int(5),
+//				Default:             pulumi.Bool(false),
+//				Description:         pulumi.String("Developers WARP settings policy description"),
+//				DisableAutoFallback: pulumi.Bool(true),
+//				Enabled:             pulumi.Bool(true),
+//				ExcludeOfficeIps:    pulumi.Bool(false),
+//				Match:               pulumi.String("any(identity.groups.name[*] in {\"Developers\"})"),
+//				Name:                pulumi.String("Developers WARP settings policy"),
+//				Precedence:          pulumi.Int(10),
+//				ServiceModeV2Mode:   pulumi.String("warp"),
+//				ServiceModeV2Port:   pulumi.Int(3000),
+//				SupportUrl:          pulumi.String("https://cloudflare.com"),
+//				SwitchLocked:        pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // For default device settings policies you must use "default" as the policy ID.

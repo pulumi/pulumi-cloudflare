@@ -152,6 +152,17 @@ class CustomHostnameFallbackOrigin(pulumi.CustomResource):
         """
         Provides a Cloudflare custom hostname fallback origin resource.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        example = cloudflare.CustomHostnameFallbackOrigin("example",
+            origin="fallback.example.com",
+            zone_id="0da42c8d2132a9ddaf714f9e7c920711")
+        ```
+
         ## Import
 
         ```sh
@@ -171,6 +182,17 @@ class CustomHostnameFallbackOrigin(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Provides a Cloudflare custom hostname fallback origin resource.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        example = cloudflare.CustomHostnameFallbackOrigin("example",
+            origin="fallback.example.com",
+            zone_id="0da42c8d2132a9ddaf714f9e7c920711")
+        ```
 
         ## Import
 

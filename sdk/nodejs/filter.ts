@@ -5,6 +5,19 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as cloudflare from "@pulumi/cloudflare";
+ *
+ * const wordpress = new cloudflare.Filter("wordpress", {
+ *     description: "Wordpress break-in attempts that are outside of the office",
+ *     expression: "(http.request.uri.path ~ \".*wp-login.php\" or http.request.uri.path ~ \".*xmlrpc.php\") and ip.src ne 192.0.2.1",
+ *     zoneId: "0da42c8d2132a9ddaf714f9e7c920711",
+ * });
+ * ```
+ *
  * ## Import
  *
  * ```sh

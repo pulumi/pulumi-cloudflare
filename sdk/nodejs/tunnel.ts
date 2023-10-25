@@ -9,6 +9,19 @@ import * as utilities from "./utilities";
  * network with an internet connection without manually adding DNS
  * records or configuring a firewall or router.
  *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as cloudflare from "@pulumi/cloudflare";
+ *
+ * const example = new cloudflare.Tunnel("example", {
+ *     accountId: "f037e56e89293a057740de681ac9abbe",
+ *     name: "my-tunnel",
+ *     secret: "AQIDBAUGBwgBAgMEBQYHCAECAwQFBgcIAQIDBAUGBwg=",
+ * });
+ * ```
+ *
  * ## Import
  *
  * ```sh

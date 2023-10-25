@@ -71,6 +71,15 @@ def get_devices(account_id: Optional[str] = None,
     """
     Use this data source to lookup [Devices](https://api.cloudflare.com/#devices-list-devices).
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_cloudflare as cloudflare
+
+    example = cloudflare.get_devices(account_id="f037e56e89293a057740de681ac9abbe")
+    ```
+
 
     :param str account_id: The account identifier to target for the resource.
     """
@@ -90,6 +99,15 @@ def get_devices_output(account_id: Optional[pulumi.Input[str]] = None,
                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDevicesResult]:
     """
     Use this data source to lookup [Devices](https://api.cloudflare.com/#devices-list-devices).
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_cloudflare as cloudflare
+
+    example = cloudflare.get_devices(account_id="f037e56e89293a057740de681ac9abbe")
+    ```
 
 
     :param str account_id: The account identifier to target for the resource.

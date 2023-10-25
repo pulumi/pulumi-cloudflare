@@ -9,6 +9,33 @@ import * as utilities from "./utilities";
  * creates a root ruleset on the account level and contains one or more rules. Rules can be crafted in Wireshark syntax and
  * are evaluated in order, with the first rule having the highest priority.
  *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as cloudflare from "@pulumi/cloudflare";
+ *
+ * const example = new cloudflare.MagicFirewallRuleset("example", {
+ *     accountId: "d41d8cd98f00b204e9800998ecf8427e",
+ *     description: "Global mitigations",
+ *     name: "Magic Transit Ruleset",
+ *     rules: [
+ *         {
+ *             action: "allow",
+ *             description: "Allow TCP Ephemeral Ports",
+ *             enabled: "true",
+ *             expression: "tcp.dstport in { 32768..65535 }",
+ *         },
+ *         {
+ *             action: "block",
+ *             description: "Block all",
+ *             enabled: "true",
+ *             expression: "ip.len >= 0",
+ *         },
+ *     ],
+ * });
+ * ```
+ *
  * ## Import
  *
  * An existing Magic Firewall Ruleset can be imported using the account ID and ruleset ID

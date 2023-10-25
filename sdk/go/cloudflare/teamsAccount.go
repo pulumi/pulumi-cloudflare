@@ -16,6 +16,71 @@ import (
 // Provides a Cloudflare Teams Account resource. The Teams Account
 // resource defines configuration for secure web gateway.
 //
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cloudflare.NewTeamsAccount(ctx, "example", &cloudflare.TeamsAccountArgs{
+//				AccountId: pulumi.String("f037e56e89293a057740de681ac9abbe"),
+//				Antivirus: &cloudflare.TeamsAccountAntivirusArgs{
+//					EnabledDownloadPhase: pulumi.Bool(true),
+//					EnabledUploadPhase:   pulumi.Bool(false),
+//					FailClosed:           pulumi.Bool(true),
+//				},
+//				BlockPage: &cloudflare.TeamsAccountBlockPageArgs{
+//					BackgroundColor: pulumi.String("#000000"),
+//					FooterText:      pulumi.String("hello"),
+//					HeaderText:      pulumi.String("hello"),
+//					LogoPath:        pulumi.String("https://example.com/logo.jpg"),
+//				},
+//				Fips: &cloudflare.TeamsAccountFipsArgs{
+//					Tls: pulumi.Bool(true),
+//				},
+//				Logging: &cloudflare.TeamsAccountLoggingArgs{
+//					RedactPii: pulumi.Bool(true),
+//					SettingsByRuleType: &cloudflare.TeamsAccountLoggingSettingsByRuleTypeArgs{
+//						Dns: &cloudflare.TeamsAccountLoggingSettingsByRuleTypeDnsArgs{
+//							LogAll:    pulumi.Bool(false),
+//							LogBlocks: pulumi.Bool(true),
+//						},
+//						Http: &cloudflare.TeamsAccountLoggingSettingsByRuleTypeHttpArgs{
+//							LogAll:    pulumi.Bool(true),
+//							LogBlocks: pulumi.Bool(true),
+//						},
+//						L4: &cloudflare.TeamsAccountLoggingSettingsByRuleTypeL4Args{
+//							LogAll:    pulumi.Bool(false),
+//							LogBlocks: pulumi.Bool(true),
+//						},
+//					},
+//				},
+//				ProtocolDetectionEnabled: pulumi.Bool(true),
+//				Proxy: &cloudflare.TeamsAccountProxyArgs{
+//					RootCa: pulumi.Bool(true),
+//					Tcp:    pulumi.Bool(true),
+//					Udp:    pulumi.Bool(true),
+//				},
+//				TlsDecryptEnabled:          pulumi.Bool(true),
+//				UrlBrowserIsolationEnabled: pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // ```sh

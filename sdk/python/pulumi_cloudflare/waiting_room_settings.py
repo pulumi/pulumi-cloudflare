@@ -137,6 +137,17 @@ class WaitingRoomSettings(pulumi.CustomResource):
         """
         Configure zone-wide settings for Cloudflare waiting rooms.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        example = cloudflare.WaitingRoomSettings("example",
+            search_engine_crawler_bypass=True,
+            zone_id="0da42c8d2132a9ddaf714f9e7c920711")
+        ```
+
         ## Import
 
         ```sh
@@ -156,6 +167,17 @@ class WaitingRoomSettings(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Configure zone-wide settings for Cloudflare waiting rooms.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        example = cloudflare.WaitingRoomSettings("example",
+            search_engine_crawler_bypass=True,
+            zone_id="0da42c8d2132a9ddaf714f9e7c920711")
+        ```
 
         ## Import
 

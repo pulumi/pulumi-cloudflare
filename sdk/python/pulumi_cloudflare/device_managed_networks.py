@@ -212,6 +212,22 @@ class DeviceManagedNetworks(pulumi.CustomResource):
         """
         Provides a Cloudflare Device Managed Network resource. Device managed networks allow for building location-aware device settings policies.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        managed_networks = cloudflare.DeviceManagedNetworks("managedNetworks",
+            account_id="f037e56e89293a057740de681ac9abbe",
+            config=cloudflare.DeviceManagedNetworksConfigArgs(
+                sha256="b5bb9d8014a0f9b1d61e21e796d78dccdf1352f23cd32812f4850b878ae4944c",
+                tls_sockaddr="foobar:1234",
+            ),
+            name="managed-network-1",
+            type="tls")
+        ```
+
         ## Import
 
         ```sh
@@ -233,6 +249,22 @@ class DeviceManagedNetworks(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Provides a Cloudflare Device Managed Network resource. Device managed networks allow for building location-aware device settings policies.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        managed_networks = cloudflare.DeviceManagedNetworks("managedNetworks",
+            account_id="f037e56e89293a057740de681ac9abbe",
+            config=cloudflare.DeviceManagedNetworksConfigArgs(
+                sha256="b5bb9d8014a0f9b1d61e21e796d78dccdf1352f23cd32812f4850b878ae4944c",
+                tls_sockaddr="foobar:1234",
+            ),
+            name="managed-network-1",
+            type="tls")
+        ```
 
         ## Import
 

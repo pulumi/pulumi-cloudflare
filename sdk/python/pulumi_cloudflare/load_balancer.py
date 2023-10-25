@@ -859,6 +859,55 @@ class LoadBalancer(pulumi.CustomResource):
         feature must be enabled in your Cloudflare account before you can use
         this resource.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        example_load_balancer_pool = cloudflare.LoadBalancerPool("exampleLoadBalancerPool",
+            name="example-lb-pool",
+            origins=[cloudflare.LoadBalancerPoolOriginArgs(
+                name="example-1",
+                address="192.0.2.1",
+                enabled=False,
+            )])
+        # Define a load balancer which always points to a pool we define below.
+        # In normal usage, would have different pools set for different pops
+        # (cloudflare points-of-presence) and/or for different regions.
+        # Within each pop or region we can define multiple pools in failover order.
+        example_load_balancer = cloudflare.LoadBalancer("exampleLoadBalancer",
+            zone_id="0da42c8d2132a9ddaf714f9e7c920711",
+            name="example-load-balancer.example.com",
+            fallback_pool_id=example_load_balancer_pool.id,
+            default_pool_ids=[example_load_balancer_pool.id],
+            description="example load balancer using geo-balancing",
+            proxied=True,
+            steering_policy="geo",
+            pop_pools=[cloudflare.LoadBalancerPopPoolArgs(
+                pop="LAX",
+                pool_ids=[example_load_balancer_pool.id],
+            )],
+            country_pools=[cloudflare.LoadBalancerCountryPoolArgs(
+                country="US",
+                pool_ids=[example_load_balancer_pool.id],
+            )],
+            region_pools=[cloudflare.LoadBalancerRegionPoolArgs(
+                region="WNAM",
+                pool_ids=[example_load_balancer_pool.id],
+            )],
+            rules=[cloudflare.LoadBalancerRuleArgs(
+                name="example rule",
+                condition="http.request.uri.path contains \\"testing\\"",
+                fixed_response=cloudflare.LoadBalancerRuleFixedResponseArgs(
+                    message_body="hello",
+                    status_code=200,
+                    content_type="html",
+                    location="www.example.com",
+                ),
+            )])
+        ```
+
         ## Import
 
         ```sh
@@ -899,6 +948,55 @@ class LoadBalancer(pulumi.CustomResource):
         for geographically-aware load balancing. Note that the load balancing
         feature must be enabled in your Cloudflare account before you can use
         this resource.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        example_load_balancer_pool = cloudflare.LoadBalancerPool("exampleLoadBalancerPool",
+            name="example-lb-pool",
+            origins=[cloudflare.LoadBalancerPoolOriginArgs(
+                name="example-1",
+                address="192.0.2.1",
+                enabled=False,
+            )])
+        # Define a load balancer which always points to a pool we define below.
+        # In normal usage, would have different pools set for different pops
+        # (cloudflare points-of-presence) and/or for different regions.
+        # Within each pop or region we can define multiple pools in failover order.
+        example_load_balancer = cloudflare.LoadBalancer("exampleLoadBalancer",
+            zone_id="0da42c8d2132a9ddaf714f9e7c920711",
+            name="example-load-balancer.example.com",
+            fallback_pool_id=example_load_balancer_pool.id,
+            default_pool_ids=[example_load_balancer_pool.id],
+            description="example load balancer using geo-balancing",
+            proxied=True,
+            steering_policy="geo",
+            pop_pools=[cloudflare.LoadBalancerPopPoolArgs(
+                pop="LAX",
+                pool_ids=[example_load_balancer_pool.id],
+            )],
+            country_pools=[cloudflare.LoadBalancerCountryPoolArgs(
+                country="US",
+                pool_ids=[example_load_balancer_pool.id],
+            )],
+            region_pools=[cloudflare.LoadBalancerRegionPoolArgs(
+                region="WNAM",
+                pool_ids=[example_load_balancer_pool.id],
+            )],
+            rules=[cloudflare.LoadBalancerRuleArgs(
+                name="example rule",
+                condition="http.request.uri.path contains \\"testing\\"",
+                fixed_response=cloudflare.LoadBalancerRuleFixedResponseArgs(
+                    message_body="hello",
+                    status_code=200,
+                    content_type="html",
+                    location="www.example.com",
+                ),
+            )])
+        ```
 
         ## Import
 

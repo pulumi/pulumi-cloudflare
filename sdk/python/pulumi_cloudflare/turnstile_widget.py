@@ -343,6 +343,21 @@ class TurnstileWidget(pulumi.CustomResource):
         """
         The [Turnstile Widget](https://developers.cloudflare.com/turnstile/) resource allows you to manage Cloudflare Turnstile Widgets.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        example = cloudflare.TurnstileWidget("example",
+            account_id="f037e56e89293a057740de681ac9abbe",
+            bot_fight_mode=False,
+            domains=["example.com"],
+            mode="invisible",
+            name="example widget",
+            region="world")
+        ```
+
         ## Import
 
         ```sh
@@ -367,6 +382,21 @@ class TurnstileWidget(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         The [Turnstile Widget](https://developers.cloudflare.com/turnstile/) resource allows you to manage Cloudflare Turnstile Widgets.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        example = cloudflare.TurnstileWidget("example",
+            account_id="f037e56e89293a057740de681ac9abbe",
+            bot_fight_mode=False,
+            domains=["example.com"],
+            mode="invisible",
+            name="example widget",
+            region="world")
+        ```
 
         ## Import
 

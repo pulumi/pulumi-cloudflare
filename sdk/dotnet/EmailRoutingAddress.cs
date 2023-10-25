@@ -11,6 +11,25 @@ namespace Pulumi.Cloudflare
 {
     /// <summary>
     /// Provides a resource for managing Email Routing Addresses.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Cloudflare = Pulumi.Cloudflare;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var example = new Cloudflare.EmailRoutingAddress("example", new()
+    ///     {
+    ///         AccountId = "f037e56e89293a057740de681ac9abbe",
+    ///         Email = "user@example.com",
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/emailRoutingAddress:EmailRoutingAddress")]
     public partial class EmailRoutingAddress : global::Pulumi.CustomResource

@@ -8,6 +8,18 @@ import * as utilities from "./utilities";
  * Instructs Cloudflare to check a regional hub data center on the way to your upper tier.
  * This can help improve performance for smart and custom tiered cache topologies.
  *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as cloudflare from "@pulumi/cloudflare";
+ *
+ * const example = new cloudflare.RegionalTieredCache("example", {
+ *     value: "on",
+ *     zoneId: "0da42c8d2132a9ddaf714f9e7c920711",
+ * });
+ * ```
+ *
  * ## Import
  *
  * ```sh

@@ -329,6 +329,37 @@ class AddressMap(pulumi.CustomResource):
         Provides the ability to manage IP addresses that can be used by DNS records when
         they are proxied through Cloudflare.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        example = cloudflare.AddressMap("example",
+            account_id="f037e56e89293a057740de681ac9abbe",
+            default_sni="*.example.com",
+            description="My address map",
+            enabled=True,
+            ips=[
+                cloudflare.AddressMapIpArgs(
+                    ip="192.0.2.1",
+                ),
+                cloudflare.AddressMapIpArgs(
+                    ip="203.0.113.1",
+                ),
+            ],
+            memberships=[
+                cloudflare.AddressMapMembershipArgs(
+                    identifier="92f17202ed8bd63d69a66b86a49a8f6b",
+                    kind="account",
+                ),
+                cloudflare.AddressMapMembershipArgs(
+                    identifier="023e105f4ecef8ad9ca31a8372d0c353",
+                    kind="zone",
+                ),
+            ])
+        ```
+
         ## Import
 
         ```sh
@@ -353,6 +384,37 @@ class AddressMap(pulumi.CustomResource):
         """
         Provides the ability to manage IP addresses that can be used by DNS records when
         they are proxied through Cloudflare.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        example = cloudflare.AddressMap("example",
+            account_id="f037e56e89293a057740de681ac9abbe",
+            default_sni="*.example.com",
+            description="My address map",
+            enabled=True,
+            ips=[
+                cloudflare.AddressMapIpArgs(
+                    ip="192.0.2.1",
+                ),
+                cloudflare.AddressMapIpArgs(
+                    ip="203.0.113.1",
+                ),
+            ],
+            memberships=[
+                cloudflare.AddressMapMembershipArgs(
+                    identifier="92f17202ed8bd63d69a66b86a49a8f6b",
+                    kind="account",
+                ),
+                cloudflare.AddressMapMembershipArgs(
+                    identifier="023e105f4ecef8ad9ca31a8372d0c353",
+                    kind="zone",
+                ),
+            ])
+        ```
 
         ## Import
 

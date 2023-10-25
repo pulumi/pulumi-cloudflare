@@ -294,6 +294,26 @@ class WebAnalyticsRule(pulumi.CustomResource):
         """
         Provides a Cloudflare Web Analytics Rule resource.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        example_web_analytics_site = cloudflare.WebAnalyticsSite("exampleWebAnalyticsSite",
+            account_id="f037e56e89293a057740de681ac9abbe",
+            zone_tag="0da42c8d2132a9ddaf714f9e7c920711",
+            auto_install=True)
+        example_web_analytics_rule = cloudflare.WebAnalyticsRule("exampleWebAnalyticsRule",
+            account_id="f037e56e89293a057740de681ac9abbe",
+            ruleset_id=example_web_analytics_site.ruleset_id,
+            host="*",
+            paths=["/excluded"],
+            inclusive=False,
+            is_paused=False,
+            opts=pulumi.ResourceOptions(depends_on=[example_web_analytics_site]))
+        ```
+
         ## Import
 
         ```sh
@@ -317,6 +337,26 @@ class WebAnalyticsRule(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Provides a Cloudflare Web Analytics Rule resource.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        example_web_analytics_site = cloudflare.WebAnalyticsSite("exampleWebAnalyticsSite",
+            account_id="f037e56e89293a057740de681ac9abbe",
+            zone_tag="0da42c8d2132a9ddaf714f9e7c920711",
+            auto_install=True)
+        example_web_analytics_rule = cloudflare.WebAnalyticsRule("exampleWebAnalyticsRule",
+            account_id="f037e56e89293a057740de681ac9abbe",
+            ruleset_id=example_web_analytics_site.ruleset_id,
+            host="*",
+            paths=["/excluded"],
+            inclusive=False,
+            is_paused=False,
+            opts=pulumi.ResourceOptions(depends_on=[example_web_analytics_site]))
+        ```
 
         ## Import
 

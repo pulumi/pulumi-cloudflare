@@ -14,6 +14,44 @@ namespace Pulumi.Cloudflare
     /// of Cloudflare's DDoS, TLS, and IP Firewall to your other TCP-based
     /// services.
     /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Cloudflare = Pulumi.Cloudflare;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var example = new Cloudflare.SpectrumApplication("example", new()
+    ///     {
+    ///         Dns = new Cloudflare.Inputs.SpectrumApplicationDnsArgs
+    ///         {
+    ///             Name = "ssh.example.com",
+    ///             Type = "CNAME",
+    ///         },
+    ///         EdgeIps = new Cloudflare.Inputs.SpectrumApplicationEdgeIpsArgs
+    ///         {
+    ///             Ips = new[]
+    ///             {
+    ///                 "203.0.113.1",
+    ///                 "203.0.113.2",
+    ///             },
+    ///             Type = "static",
+    ///         },
+    ///         OriginDirects = new[]
+    ///         {
+    ///             "tcp://192.0.2.1:22",
+    ///         },
+    ///         Protocol = "tcp/22",
+    ///         TrafficType = "direct",
+    ///         ZoneId = "0da42c8d2132a9ddaf714f9e7c920711",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// ```sh

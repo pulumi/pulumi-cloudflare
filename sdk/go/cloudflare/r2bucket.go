@@ -13,6 +13,36 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cloudflare.NewR2Bucket(ctx, "example", &cloudflare.R2BucketArgs{
+//				AccountId: pulumi.String("f037e56e89293a057740de681ac9abbe"),
+//				Location:  pulumi.String("enam"),
+//				Name:      pulumi.String("terraform-bucket"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// > Available location values can be found in the [R2 documentation](https://developers.cloudflare.com/r2/buckets/data-location/#available-hints).
+//
 // ## Import
 //
 // ```sh

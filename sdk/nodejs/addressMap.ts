@@ -10,6 +10,38 @@ import * as utilities from "./utilities";
  * Provides the ability to manage IP addresses that can be used by DNS records when
  * they are proxied through Cloudflare.
  *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as cloudflare from "@pulumi/cloudflare";
+ *
+ * const example = new cloudflare.AddressMap("example", {
+ *     accountId: "f037e56e89293a057740de681ac9abbe",
+ *     defaultSni: "*.example.com",
+ *     description: "My address map",
+ *     enabled: true,
+ *     ips: [
+ *         {
+ *             ip: "192.0.2.1",
+ *         },
+ *         {
+ *             ip: "203.0.113.1",
+ *         },
+ *     ],
+ *     memberships: [
+ *         {
+ *             identifier: "92f17202ed8bd63d69a66b86a49a8f6b",
+ *             kind: "account",
+ *         },
+ *         {
+ *             identifier: "023e105f4ecef8ad9ca31a8372d0c353",
+ *             kind: "zone",
+ *         },
+ *     ],
+ * });
+ * ```
+ *
  * ## Import
  *
  * ```sh

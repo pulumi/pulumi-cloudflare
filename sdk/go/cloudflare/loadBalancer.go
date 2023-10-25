@@ -19,6 +19,89 @@ import (
 // feature must be enabled in your Cloudflare account before you can use
 // this resource.
 //
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			exampleLoadBalancerPool, err := cloudflare.NewLoadBalancerPool(ctx, "exampleLoadBalancerPool", &cloudflare.LoadBalancerPoolArgs{
+//				Name: pulumi.String("example-lb-pool"),
+//				Origins: cloudflare.LoadBalancerPoolOriginArray{
+//					&cloudflare.LoadBalancerPoolOriginArgs{
+//						Name:    pulumi.String("example-1"),
+//						Address: pulumi.String("192.0.2.1"),
+//						Enabled: pulumi.Bool(false),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = cloudflare.NewLoadBalancer(ctx, "exampleLoadBalancer", &cloudflare.LoadBalancerArgs{
+//				ZoneId:         pulumi.String("0da42c8d2132a9ddaf714f9e7c920711"),
+//				Name:           pulumi.String("example-load-balancer.example.com"),
+//				FallbackPoolId: exampleLoadBalancerPool.ID(),
+//				DefaultPoolIds: pulumi.StringArray{
+//					exampleLoadBalancerPool.ID(),
+//				},
+//				Description:    pulumi.String("example load balancer using geo-balancing"),
+//				Proxied:        pulumi.Bool(true),
+//				SteeringPolicy: pulumi.String("geo"),
+//				PopPools: cloudflare.LoadBalancerPopPoolArray{
+//					&cloudflare.LoadBalancerPopPoolArgs{
+//						Pop: pulumi.String("LAX"),
+//						PoolIds: pulumi.StringArray{
+//							exampleLoadBalancerPool.ID(),
+//						},
+//					},
+//				},
+//				CountryPools: cloudflare.LoadBalancerCountryPoolArray{
+//					&cloudflare.LoadBalancerCountryPoolArgs{
+//						Country: pulumi.String("US"),
+//						PoolIds: pulumi.StringArray{
+//							exampleLoadBalancerPool.ID(),
+//						},
+//					},
+//				},
+//				RegionPools: cloudflare.LoadBalancerRegionPoolArray{
+//					&cloudflare.LoadBalancerRegionPoolArgs{
+//						Region: pulumi.String("WNAM"),
+//						PoolIds: pulumi.StringArray{
+//							exampleLoadBalancerPool.ID(),
+//						},
+//					},
+//				},
+//				Rules: cloudflare.LoadBalancerRuleArray{
+//					&cloudflare.LoadBalancerRuleArgs{
+//						Name:      pulumi.String("example rule"),
+//						Condition: pulumi.String("http.request.uri.path contains \"testing\""),
+//						FixedResponse: &cloudflare.LoadBalancerRuleFixedResponseArgs{
+//							MessageBody: pulumi.String("hello"),
+//							StatusCode:  pulumi.Int(200),
+//							ContentType: pulumi.String("html"),
+//							Location:    pulumi.String("www.example.com"),
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // ```sh

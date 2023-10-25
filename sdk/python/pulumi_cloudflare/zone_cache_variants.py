@@ -503,6 +503,60 @@ class ZoneCacheVariants(pulumi.CustomResource):
         """
         Provides a resource which customizes Cloudflare zone cache variants.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        example = cloudflare.ZoneCacheVariants("example",
+            avifs=[
+                "image/avif",
+                "image/webp",
+            ],
+            bmps=[
+                "image/bmp",
+                "image/webp",
+            ],
+            gifs=[
+                "image/gif",
+                "image/webp",
+            ],
+            jp2s=[
+                "image/jp2",
+                "image/webp",
+            ],
+            jpegs=[
+                "image/jpeg",
+                "image/webp",
+            ],
+            jpgs=[
+                "image/jpg",
+                "image/webp",
+            ],
+            jpg2s=[
+                "image/jpg2",
+                "image/webp",
+            ],
+            pngs=[
+                "image/png",
+                "image/webp",
+            ],
+            tifs=[
+                "image/tif",
+                "image/webp",
+            ],
+            tiffs=[
+                "image/tiff",
+                "image/webp",
+            ],
+            webps=[
+                "image/jpeg",
+                "image/webp",
+            ],
+            zone_id="0da42c8d2132a9ddaf714f9e7c920711")
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] avifs: List of strings with the MIME types of all the variants that should be served for avif.
@@ -526,6 +580,60 @@ class ZoneCacheVariants(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Provides a resource which customizes Cloudflare zone cache variants.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        example = cloudflare.ZoneCacheVariants("example",
+            avifs=[
+                "image/avif",
+                "image/webp",
+            ],
+            bmps=[
+                "image/bmp",
+                "image/webp",
+            ],
+            gifs=[
+                "image/gif",
+                "image/webp",
+            ],
+            jp2s=[
+                "image/jp2",
+                "image/webp",
+            ],
+            jpegs=[
+                "image/jpeg",
+                "image/webp",
+            ],
+            jpgs=[
+                "image/jpg",
+                "image/webp",
+            ],
+            jpg2s=[
+                "image/jpg2",
+                "image/webp",
+            ],
+            pngs=[
+                "image/png",
+                "image/webp",
+            ],
+            tifs=[
+                "image/tif",
+                "image/webp",
+            ],
+            tiffs=[
+                "image/tiff",
+                "image/webp",
+            ],
+            webps=[
+                "image/jpeg",
+                "image/webp",
+            ],
+            zone_id="0da42c8d2132a9ddaf714f9e7c920711")
+        ```
 
         :param str resource_name: The name of the resource.
         :param ZoneCacheVariantsArgs args: The arguments to use to populate this resource's properties.

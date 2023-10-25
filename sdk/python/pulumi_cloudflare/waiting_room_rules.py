@@ -177,6 +177,31 @@ class WaitingRoomRules(pulumi.CustomResource):
         """
         Provides a Cloudflare Waiting Room Rules resource.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        example = cloudflare.WaitingRoomRules("example",
+            rules=[
+                cloudflare.WaitingRoomRulesRuleArgs(
+                    action="bypass_waiting_room",
+                    description="bypass ip list",
+                    expression="src.ip in {192.0.2.0 192.0.2.1}",
+                    status="enabled",
+                ),
+                cloudflare.WaitingRoomRulesRuleArgs(
+                    action="bypass_waiting_room",
+                    description="bypass query string",
+                    expression="http.request.uri.query contains \\"bypass=true\\"",
+                    status="enabled",
+                ),
+            ],
+            waiting_room_id="d41d8cd98f00b204e9800998ecf8427e",
+            zone_id="0da42c8d2132a9ddaf714f9e7c920711")
+        ```
+
         ## Import
 
         ```sh
@@ -197,6 +222,31 @@ class WaitingRoomRules(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Provides a Cloudflare Waiting Room Rules resource.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        example = cloudflare.WaitingRoomRules("example",
+            rules=[
+                cloudflare.WaitingRoomRulesRuleArgs(
+                    action="bypass_waiting_room",
+                    description="bypass ip list",
+                    expression="src.ip in {192.0.2.0 192.0.2.1}",
+                    status="enabled",
+                ),
+                cloudflare.WaitingRoomRulesRuleArgs(
+                    action="bypass_waiting_room",
+                    description="bypass query string",
+                    expression="http.request.uri.query contains \\"bypass=true\\"",
+                    status="enabled",
+                ),
+            ],
+            waiting_room_id="d41d8cd98f00b204e9800998ecf8427e",
+            zone_id="0da42c8d2132a9ddaf714f9e7c920711")
+        ```
 
         ## Import
 

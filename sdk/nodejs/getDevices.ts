@@ -8,6 +8,17 @@ import * as utilities from "./utilities";
 
 /**
  * Use this data source to lookup [Devices](https://api.cloudflare.com/#devices-list-devices).
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as cloudflare from "@pulumi/cloudflare";
+ *
+ * const example = cloudflare.getDevices({
+ *     accountId: "f037e56e89293a057740de681ac9abbe",
+ * });
+ * ```
  */
 export function getDevices(args: GetDevicesArgs, opts?: pulumi.InvokeOptions): Promise<GetDevicesResult> {
 
@@ -43,6 +54,17 @@ export interface GetDevicesResult {
 }
 /**
  * Use this data source to lookup [Devices](https://api.cloudflare.com/#devices-list-devices).
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as cloudflare from "@pulumi/cloudflare";
+ *
+ * const example = cloudflare.getDevices({
+ *     accountId: "f037e56e89293a057740de681ac9abbe",
+ * });
+ * ```
  */
 export function getDevicesOutput(args: GetDevicesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDevicesResult> {
     return pulumi.output(args).apply((a: any) => getDevices(a, opts))

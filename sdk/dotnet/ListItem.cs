@@ -13,6 +13,86 @@ namespace Pulumi.Cloudflare
     /// Provides individual list items (IPs, Redirects) to be used in Edge Rules Engine
     /// across all zones within the same account.
     /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Cloudflare = Pulumi.Cloudflare;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var exampleIpList = new Cloudflare.List("exampleIpList", new()
+    ///     {
+    ///         AccountId = "f037e56e89293a057740de681ac9abbe",
+    ///         Name = "example_list",
+    ///         Description = "example IPs for a list",
+    ///         Kind = "ip",
+    ///     });
+    /// 
+    ///     // IP List Item
+    ///     var exampleIpItem = new Cloudflare.ListItem("exampleIpItem", new()
+    ///     {
+    ///         AccountId = "f037e56e89293a057740de681ac9abbe",
+    ///         ListId = exampleIpList.Id,
+    ///         Comment = "List Item Comment",
+    ///         Ip = "192.0.2.0",
+    ///     });
+    /// 
+    ///     // Redirect List Item
+    ///     var testTwo = new Cloudflare.ListItem("testTwo", new()
+    ///     {
+    ///         AccountId = "f037e56e89293a057740de681ac9abbe",
+    ///         ListId = exampleIpList.Id,
+    ///         Redirect = new Cloudflare.Inputs.ListItemRedirectArgs
+    ///         {
+    ///             SourceUrl = "https://source.tld",
+    ///             TargetUrl = "https://target.tld",
+    ///             StatusCode = 302,
+    ///             SubpathMatching = "enabled",
+    ///         },
+    ///     });
+    /// 
+    ///     // ASN list
+    ///     var exampleAsnList = new Cloudflare.List("exampleAsnList", new()
+    ///     {
+    ///         AccountId = "f037e56e89293a057740de681ac9abbe",
+    ///         Name = "example_asn_list",
+    ///         Description = "example ASNs for a list",
+    ///         Kind = "asn",
+    ///     });
+    /// 
+    ///     // ASN List Item
+    ///     var exampleAsnItem = new Cloudflare.ListItem("exampleAsnItem", new()
+    ///     {
+    ///         AccountId = "f037e56e89293a057740de681ac9abbe",
+    ///         ListId = exampleAsnList.Id,
+    ///         Comment = "List Item Comment",
+    ///         Asn = 6789,
+    ///     });
+    /// 
+    ///     // Hostname list
+    ///     var exampleHostnameList = new Cloudflare.List("exampleHostnameList", new()
+    ///     {
+    ///         AccountId = "f037e56e89293a057740de681ac9abbe",
+    ///         Name = "example_hostname_list",
+    ///         Description = "example Hostnames for a list",
+    ///         Kind = "hostname",
+    ///     });
+    /// 
+    ///     // Hostname List Item
+    ///     var exampleHostnameItem = new Cloudflare.ListItem("exampleHostnameItem", new()
+    ///     {
+    ///         AccountId = "f037e56e89293a057740de681ac9abbe",
+    ///         ListId = exampleHostnameList.Id,
+    ///         Comment = "List Item Comment",
+    ///         Asn = "example.com",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// ```sh

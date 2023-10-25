@@ -154,6 +154,17 @@ class D1Database(pulumi.CustomResource):
 
         !> When a D1 Database is replaced all the data is lost. Please ensure you have a backup of your data before replacing a D1 Database.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        example = cloudflare.D1Database("example",
+            account_id="f037e56e89293a057740de681ac9abbe",
+            name="terraform-database")
+        ```
+
         ## Import
 
         ```sh
@@ -175,6 +186,17 @@ class D1Database(pulumi.CustomResource):
         The [D1 Database](https://developers.cloudflare.com/d1/) resource allows you to manage Cloudflare D1 databases.
 
         !> When a D1 Database is replaced all the data is lost. Please ensure you have a backup of your data before replacing a D1 Database.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        example = cloudflare.D1Database("example",
+            account_id="f037e56e89293a057740de681ac9abbe",
+            name="terraform-database")
+        ```
 
         ## Import
 

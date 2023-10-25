@@ -9,6 +9,26 @@ import * as utilities from "./utilities";
 /**
  * Provides a Cloudflare Device Dex Test resource. Device Dex Tests allow for building location-aware device settings policies.
  *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as cloudflare from "@pulumi/cloudflare";
+ *
+ * const example = new cloudflare.DeviceDexTest("example", {
+ *     accountId: "f037e56e89293a057740de681ac9abbe",
+ *     data: {
+ *         host: "https://example.com/home",
+ *         kind: "http",
+ *         method: "GET",
+ *     },
+ *     description: "Send a HTTP GET request to the home endpoint every half hour.",
+ *     enabled: true,
+ *     interval: "0h30m0s",
+ *     name: "GET homepage",
+ * });
+ * ```
+ *
  * ## Import
  *
  * ```sh

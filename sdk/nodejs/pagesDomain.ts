@@ -9,6 +9,19 @@ import * as utilities from "./utilities";
  *
  * > A DNS record for the domain is not automatically created. You need to create a `cloudflare.Record` resource for the domain you want to use.
  *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as cloudflare from "@pulumi/cloudflare";
+ *
+ * const my_domain = new cloudflare.PagesDomain("my-domain", {
+ *     accountId: "f037e56e89293a057740de681ac9abbe",
+ *     domain: "example.com",
+ *     projectName: "my-example-project",
+ * });
+ * ```
+ *
  * ## Import
  *
  * ```sh

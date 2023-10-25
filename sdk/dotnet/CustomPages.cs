@@ -12,6 +12,27 @@ namespace Pulumi.Cloudflare
     /// <summary>
     /// Provides a resource which manages Cloudflare custom error pages.
     /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Cloudflare = Pulumi.Cloudflare;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var example = new Cloudflare.CustomPages("example", new()
+    ///     {
+    ///         State = "customized",
+    ///         Type = "basic_challenge",
+    ///         Url = "https://example.com/challenge.html",
+    ///         ZoneId = "0da42c8d2132a9ddaf714f9e7c920711",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// ```sh

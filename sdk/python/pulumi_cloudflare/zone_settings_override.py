@@ -212,6 +212,33 @@ class ZoneSettingsOverride(pulumi.CustomResource):
           Attempting to manage all settings will result in problems with the resource
           applying in a consistent manner.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        test = cloudflare.ZoneSettingsOverride("test",
+            zone_id=d41d8cd98f00b204e9800998ecf8427e,
+            settings=cloudflare.ZoneSettingsOverrideSettingsArgs(
+                brotli="on",
+                challenge_ttl=2700,
+                security_level="high",
+                opportunistic_encryption="on",
+                automatic_https_rewrites="on",
+                mirage="on",
+                waf="on",
+                minify=cloudflare.ZoneSettingsOverrideSettingsMinifyArgs(
+                    css="on",
+                    js="off",
+                    html="off",
+                ),
+                security_header=cloudflare.ZoneSettingsOverrideSettingsSecurityHeaderArgs(
+                    enabled=True,
+                ),
+            ))
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
@@ -229,6 +256,33 @@ class ZoneSettingsOverride(pulumi.CustomResource):
           resource is only intended to override those which you do not want the default.
           Attempting to manage all settings will result in problems with the resource
           applying in a consistent manner.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        test = cloudflare.ZoneSettingsOverride("test",
+            zone_id=d41d8cd98f00b204e9800998ecf8427e,
+            settings=cloudflare.ZoneSettingsOverrideSettingsArgs(
+                brotli="on",
+                challenge_ttl=2700,
+                security_level="high",
+                opportunistic_encryption="on",
+                automatic_https_rewrites="on",
+                mirage="on",
+                waf="on",
+                minify=cloudflare.ZoneSettingsOverrideSettingsMinifyArgs(
+                    css="on",
+                    js="off",
+                    html="off",
+                ),
+                security_header=cloudflare.ZoneSettingsOverrideSettingsSecurityHeaderArgs(
+                    enabled=True,
+                ),
+            ))
+        ```
 
         :param str resource_name: The name of the resource.
         :param ZoneSettingsOverrideArgs args: The arguments to use to populate this resource's properties.

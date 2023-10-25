@@ -290,6 +290,27 @@ class OriginCaCertificate(pulumi.CustomResource):
                  requested_validity: Optional[pulumi.Input[int]] = None,
                  __props__=None):
         """
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+        import pulumi_tls as tls
+
+        example_private_key = tls.PrivateKey("examplePrivateKey", algorithm="RSA")
+        example_cert_request = tls.CertRequest("exampleCertRequest",
+            private_key_pem=example_private_key.private_key_pem,
+            subjects=[tls.CertRequestSubjectArgs(
+                common_name="",
+                organization="Terraform Test",
+            )])
+        example_origin_ca_certificate = cloudflare.OriginCaCertificate("exampleOriginCaCertificate",
+            csr=example_cert_request.cert_request_pem,
+            hostnames=["example.com"],
+            request_type="origin-rsa",
+            requested_validity=7)
+        ```
+
         ## Import
 
         ```sh
@@ -311,6 +332,27 @@ class OriginCaCertificate(pulumi.CustomResource):
                  args: OriginCaCertificateArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+        import pulumi_tls as tls
+
+        example_private_key = tls.PrivateKey("examplePrivateKey", algorithm="RSA")
+        example_cert_request = tls.CertRequest("exampleCertRequest",
+            private_key_pem=example_private_key.private_key_pem,
+            subjects=[tls.CertRequestSubjectArgs(
+                common_name="",
+                organization="Terraform Test",
+            )])
+        example_origin_ca_certificate = cloudflare.OriginCaCertificate("exampleOriginCaCertificate",
+            csr=example_cert_request.cert_request_pem,
+            hostnames=["example.com"],
+            request_type="origin-rsa",
+            requested_validity=7)
+        ```
+
         ## Import
 
         ```sh

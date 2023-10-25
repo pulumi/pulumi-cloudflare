@@ -324,6 +324,25 @@ class DeviceDexTest(pulumi.CustomResource):
         """
         Provides a Cloudflare Device Dex Test resource. Device Dex Tests allow for building location-aware device settings policies.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        example = cloudflare.DeviceDexTest("example",
+            account_id="f037e56e89293a057740de681ac9abbe",
+            data=cloudflare.DeviceDexTestDataArgs(
+                host="https://example.com/home",
+                kind="http",
+                method="GET",
+            ),
+            description="Send a HTTP GET request to the home endpoint every half hour.",
+            enabled=True,
+            interval="0h30m0s",
+            name="GET homepage")
+        ```
+
         ## Import
 
         ```sh
@@ -347,6 +366,25 @@ class DeviceDexTest(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Provides a Cloudflare Device Dex Test resource. Device Dex Tests allow for building location-aware device settings policies.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        example = cloudflare.DeviceDexTest("example",
+            account_id="f037e56e89293a057740de681ac9abbe",
+            data=cloudflare.DeviceDexTestDataArgs(
+                host="https://example.com/home",
+                kind="http",
+                method="GET",
+            ),
+            description="Send a HTTP GET request to the home endpoint every half hour.",
+            enabled=True,
+            interval="0h30m0s",
+            name="GET homepage")
+        ```
 
         ## Import
 

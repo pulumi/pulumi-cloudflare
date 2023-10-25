@@ -138,6 +138,17 @@ class ZoneCacheReserve(pulumi.CustomResource):
 
         Note: Using Cache Reserve without Tiered Cache is not recommended.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        example = cloudflare.ZoneCacheReserve("example",
+            enabled=True,
+            zone_id="0da42c8d2132a9ddaf714f9e7c920711")
+        ```
+
         ## Import
 
         ```sh
@@ -161,6 +172,17 @@ class ZoneCacheReserve(pulumi.CustomResource):
         files in Cloudflare's persistent object storage buckets.
 
         Note: Using Cache Reserve without Tiered Cache is not recommended.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        example = cloudflare.ZoneCacheReserve("example",
+            enabled=True,
+            zone_id="0da42c8d2132a9ddaf714f9e7c920711")
+        ```
 
         ## Import
 

@@ -19,6 +19,42 @@ import (
 // accounts to have the same zone created but in different states. If you are
 // using this setup, it is advised to use the `accountId` attribute on this
 // resource or swap to `getZones` to further filter the results.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			exampleZone, err := cloudflare.LookupZone(ctx, &cloudflare.LookupZoneArgs{
+//				Name: pulumi.StringRef("example.com"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = cloudflare.NewRecord(ctx, "exampleRecord", &cloudflare.RecordArgs{
+//				ZoneId:  *pulumi.String(exampleZone.Id),
+//				Name:    pulumi.String("www"),
+//				Value:   pulumi.String("203.0.113.1"),
+//				Type:    pulumi.String("A"),
+//				Proxied: pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupZone(ctx *pulumi.Context, args *LookupZoneArgs, opts ...pulumi.InvokeOption) (*LookupZoneResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupZoneResult

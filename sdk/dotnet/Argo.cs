@@ -13,6 +13,26 @@ namespace Pulumi.Cloudflare
     /// Cloudflare Argo controls the routing to your origin and tiered
     /// caching options to speed up your website browsing experience.
     /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Cloudflare = Pulumi.Cloudflare;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var example = new Cloudflare.Argo("example", new()
+    ///     {
+    ///         SmartRouting = "on",
+    ///         TieredCaching = "on",
+    ///         ZoneId = "0da42c8d2132a9ddaf714f9e7c920711",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// ```sh

@@ -251,6 +251,19 @@ class WorkerDomain(pulumi.CustomResource):
         """
         Creates a Worker Custom Domain.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        example = cloudflare.WorkerDomain("example",
+            account_id="f037e56e89293a057740de681ac9abbe",
+            hostname="subdomain.example.com",
+            service="my-service",
+            zone_id="0da42c8d2132a9ddaf714f9e7c920711")
+        ```
+
         ## Import
 
         ```sh
@@ -273,6 +286,19 @@ class WorkerDomain(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Creates a Worker Custom Domain.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        example = cloudflare.WorkerDomain("example",
+            account_id="f037e56e89293a057740de681ac9abbe",
+            hostname="subdomain.example.com",
+            service="my-service",
+            zone_id="0da42c8d2132a9ddaf714f9e7c920711")
+        ```
 
         ## Import
 

@@ -295,6 +295,19 @@ class AccessCustomPage(pulumi.CustomResource):
         Provides a resource to customize the pages your end users will see
         when trying to reach applications behind Cloudflare Access.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        example = cloudflare.AccessCustomPage("example",
+            custom_html="<html><body><h1>Forbidden</h1></body></html>",
+            name="example",
+            type="forbidden",
+            zone_id="0da42c8d2132a9ddaf714f9e7c920711")
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_id: The account identifier to target for the resource. Conflicts with `zone_id`. **Modifying this attribute will force creation of a new resource.**
@@ -313,6 +326,19 @@ class AccessCustomPage(pulumi.CustomResource):
         """
         Provides a resource to customize the pages your end users will see
         when trying to reach applications behind Cloudflare Access.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        example = cloudflare.AccessCustomPage("example",
+            custom_html="<html><body><h1>Forbidden</h1></body></html>",
+            name="example",
+            type="forbidden",
+            zone_id="0da42c8d2132a9ddaf714f9e7c920711")
+        ```
 
         :param str resource_name: The name of the resource.
         :param AccessCustomPageArgs args: The arguments to use to populate this resource's properties.

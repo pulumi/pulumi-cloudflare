@@ -873,6 +873,64 @@ class Healthcheck(pulumi.CustomResource):
         Standalone Health Checks provide a way to monitor origin servers
         without needing a Cloudflare Load Balancer.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        # HTTPS Healthcheck
+        http_health_check = cloudflare.Healthcheck("httpHealthCheck",
+            zone_id=var["cloudflare_zone_id"],
+            name="http-health-check",
+            description="example http health check",
+            address="example.com",
+            suspended=False,
+            check_regions=[
+                "WEU",
+                "EEU",
+            ],
+            type="HTTPS",
+            port=443,
+            method="GET",
+            path="/health",
+            expected_body="alive",
+            expected_codes=[
+                "2xx",
+                "301",
+            ],
+            follow_redirects=True,
+            allow_insecure=False,
+            headers=[cloudflare.HealthcheckHeaderArgs(
+                header="Host",
+                values=["example.com"],
+            )],
+            timeout=10,
+            retries=2,
+            interval=60,
+            consecutive_fails=3,
+            consecutive_successes=2)
+        # TCP Healthcheck
+        tcp_health_check = cloudflare.Healthcheck("tcpHealthCheck",
+            zone_id=var["cloudflare_zone_id"],
+            name="tcp-health-check",
+            description="example tcp health check",
+            address="example.com",
+            suspended=False,
+            check_regions=[
+                "WEU",
+                "EEU",
+            ],
+            type="TCP",
+            port=22,
+            method="connection_established",
+            timeout=10,
+            retries=2,
+            interval=60,
+            consecutive_fails=3,
+            consecutive_successes=2)
+        ```
+
         ## Import
 
         Use the Zone ID and Healthcheck ID to import.
@@ -913,6 +971,64 @@ class Healthcheck(pulumi.CustomResource):
         """
         Standalone Health Checks provide a way to monitor origin servers
         without needing a Cloudflare Load Balancer.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        # HTTPS Healthcheck
+        http_health_check = cloudflare.Healthcheck("httpHealthCheck",
+            zone_id=var["cloudflare_zone_id"],
+            name="http-health-check",
+            description="example http health check",
+            address="example.com",
+            suspended=False,
+            check_regions=[
+                "WEU",
+                "EEU",
+            ],
+            type="HTTPS",
+            port=443,
+            method="GET",
+            path="/health",
+            expected_body="alive",
+            expected_codes=[
+                "2xx",
+                "301",
+            ],
+            follow_redirects=True,
+            allow_insecure=False,
+            headers=[cloudflare.HealthcheckHeaderArgs(
+                header="Host",
+                values=["example.com"],
+            )],
+            timeout=10,
+            retries=2,
+            interval=60,
+            consecutive_fails=3,
+            consecutive_successes=2)
+        # TCP Healthcheck
+        tcp_health_check = cloudflare.Healthcheck("tcpHealthCheck",
+            zone_id=var["cloudflare_zone_id"],
+            name="tcp-health-check",
+            description="example tcp health check",
+            address="example.com",
+            suspended=False,
+            check_regions=[
+                "WEU",
+                "EEU",
+            ],
+            type="TCP",
+            port=22,
+            method="connection_established",
+            timeout=10,
+            retries=2,
+            interval=60,
+            consecutive_fails=3,
+            consecutive_successes=2)
+        ```
 
         ## Import
 

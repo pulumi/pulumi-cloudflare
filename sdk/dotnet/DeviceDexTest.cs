@@ -12,6 +12,34 @@ namespace Pulumi.Cloudflare
     /// <summary>
     /// Provides a Cloudflare Device Dex Test resource. Device Dex Tests allow for building location-aware device settings policies.
     /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Cloudflare = Pulumi.Cloudflare;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var example = new Cloudflare.DeviceDexTest("example", new()
+    ///     {
+    ///         AccountId = "f037e56e89293a057740de681ac9abbe",
+    ///         Data = new Cloudflare.Inputs.DeviceDexTestDataArgs
+    ///         {
+    ///             Host = "https://example.com/home",
+    ///             Kind = "http",
+    ///             Method = "GET",
+    ///         },
+    ///         Description = "Send a HTTP GET request to the home endpoint every half hour.",
+    ///         Enabled = true,
+    ///         Interval = "0h30m0s",
+    ///         Name = "GET homepage",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// ```sh

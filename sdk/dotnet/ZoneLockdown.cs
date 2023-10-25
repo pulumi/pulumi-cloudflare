@@ -16,6 +16,39 @@ namespace Pulumi.Cloudflare
     /// from an IP address that matches a safelist of one or more IP
     /// addresses and/or IP ranges.
     /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Cloudflare = Pulumi.Cloudflare;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     // Restrict access to these endpoints to requests from a known IP address range.
+    ///     var example = new Cloudflare.ZoneLockdown("example", new()
+    ///     {
+    ///         Configurations = new[]
+    ///         {
+    ///             new Cloudflare.Inputs.ZoneLockdownConfigurationArgs
+    ///             {
+    ///                 Target = "ip_range",
+    ///                 Value = "192.0.2.0/24",
+    ///             },
+    ///         },
+    ///         Description = "Restrict access to these endpoints to requests from a known IP address range",
+    ///         Paused = false,
+    ///         Urls = new[]
+    ///         {
+    ///             "api.mysite.com/some/endpoint*",
+    ///         },
+    ///         ZoneId = "0da42c8d2132a9ddaf714f9e7c920711",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// ```sh

@@ -175,6 +175,18 @@ class TotalTls(pulumi.CustomResource):
         """
         Provides a resource which manages Total TLS for a zone.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        example = cloudflare.TotalTls("example",
+            certificate_authority="lets_encrypt",
+            enabled=True,
+            zone_id="0da42c8d2132a9ddaf714f9e7c920711")
+        ```
+
         ## Import
 
         ```sh
@@ -195,6 +207,18 @@ class TotalTls(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Provides a resource which manages Total TLS for a zone.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        example = cloudflare.TotalTls("example",
+            certificate_authority="lets_encrypt",
+            enabled=True,
+            zone_id="0da42c8d2132a9ddaf714f9e7c920711")
+        ```
 
         ## Import
 

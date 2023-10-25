@@ -702,6 +702,21 @@ class WaitingRoomEvent(pulumi.CustomResource):
         """
         Provides a Cloudflare Waiting Room Event resource.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        # Waiting Room Event
+        example = cloudflare.WaitingRoomEvent("example",
+            event_end_time="2006-01-02T20:04:05Z",
+            event_start_time="2006-01-02T15:04:05Z",
+            name="foo",
+            waiting_room_id="d41d8cd98f00b204e9800998ecf8427e",
+            zone_id="0da42c8d2132a9ddaf714f9e7c920711")
+        ```
+
         ## Import
 
         Use the Zone ID, Waiting Room ID, and Event ID to import.
@@ -736,6 +751,21 @@ class WaitingRoomEvent(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Provides a Cloudflare Waiting Room Event resource.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        # Waiting Room Event
+        example = cloudflare.WaitingRoomEvent("example",
+            event_end_time="2006-01-02T20:04:05Z",
+            event_start_time="2006-01-02T15:04:05Z",
+            name="foo",
+            waiting_room_id="d41d8cd98f00b204e9800998ecf8427e",
+            zone_id="0da42c8d2132a9ddaf714f9e7c920711")
+        ```
 
         ## Import
 

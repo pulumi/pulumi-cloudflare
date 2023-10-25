@@ -13,6 +13,35 @@ import (
 )
 
 // Use this datasource to lookup Rulesets in an account or zone.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cloudflare.GetRulesets(ctx, &cloudflare.GetRulesetsArgs{
+//				Filter: cloudflare.GetRulesetsFilter{
+//					Name: pulumi.StringRef(".*OWASP.*"),
+//				},
+//				ZoneId: pulumi.StringRef("0da42c8d2132a9ddaf714f9e7c920711"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetRulesets(ctx *pulumi.Context, args *GetRulesetsArgs, opts ...pulumi.InvokeOption) (*GetRulesetsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetRulesetsResult

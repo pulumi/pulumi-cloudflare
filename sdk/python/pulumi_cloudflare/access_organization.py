@@ -496,6 +496,28 @@ class AccessOrganization(pulumi.CustomResource):
         """
         A Zero Trust organization defines the user login experience.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        example = cloudflare.AccessOrganization("example",
+            account_id="f037e56e89293a057740de681ac9abbe",
+            auth_domain="example.cloudflareaccess.com",
+            auto_redirect_to_identity=False,
+            is_ui_read_only=False,
+            login_designs=[cloudflare.AccessOrganizationLoginDesignArgs(
+                background_color="#ffffff",
+                footer_text="My footer text",
+                header_text="My header text",
+                logo_path="https://example.com/logo.png",
+                text_color="#000000",
+            )],
+            name="example.cloudflareaccess.com",
+            user_seat_expiration_inactive_time="720h")
+        ```
+
         ## Import
 
         ```sh
@@ -523,6 +545,28 @@ class AccessOrganization(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         A Zero Trust organization defines the user login experience.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        example = cloudflare.AccessOrganization("example",
+            account_id="f037e56e89293a057740de681ac9abbe",
+            auth_domain="example.cloudflareaccess.com",
+            auto_redirect_to_identity=False,
+            is_ui_read_only=False,
+            login_designs=[cloudflare.AccessOrganizationLoginDesignArgs(
+                background_color="#ffffff",
+                footer_text="My footer text",
+                header_text="My header text",
+                logo_path="https://example.com/logo.png",
+                text_color="#000000",
+            )],
+            name="example.cloudflareaccess.com",
+            user_seat_expiration_inactive_time="720h")
+        ```
 
         ## Import
 

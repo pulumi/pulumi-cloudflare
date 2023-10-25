@@ -7,6 +7,22 @@ import * as utilities from "./utilities";
 /**
  * Provides a Cloudflare worker route resource. A route will also require a `cloudflare.WorkerScript`.
  *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as cloudflare from "@pulumi/cloudflare";
+ *
+ * const myScript = new cloudflare.WorkerScript("myScript", {});
+ * // see "cloudflare_worker_script" documentation ...
+ * // Runs the specified worker script for all URLs that match `example.com/*`
+ * const myRoute = new cloudflare.WorkerRoute("myRoute", {
+ *     zoneId: "0da42c8d2132a9ddaf714f9e7c920711",
+ *     pattern: "example.com/*",
+ *     scriptName: myScript.name,
+ * });
+ * ```
+ *
  * ## Import
  *
  * ```sh

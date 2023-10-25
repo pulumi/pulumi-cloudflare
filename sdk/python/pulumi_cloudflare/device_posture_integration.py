@@ -279,6 +279,25 @@ class DevicePostureIntegration(pulumi.CustomResource):
         posture integrations configure third-party data providers for device
         posture rules.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        example = cloudflare.DevicePostureIntegration("example",
+            account_id="f037e56e89293a057740de681ac9abbe",
+            configs=[cloudflare.DevicePostureIntegrationConfigArgs(
+                api_url="https://example.com/api",
+                auth_url="https://example.com/connect/token",
+                client_id="client-id",
+                client_secret="client-secret",
+            )],
+            interval="24h",
+            name="Device posture integration",
+            type="workspace_one")
+        ```
+
         ## Import
 
         ```sh
@@ -303,6 +322,25 @@ class DevicePostureIntegration(pulumi.CustomResource):
         Provides a Cloudflare Device Posture Integration resource. Device
         posture integrations configure third-party data providers for device
         posture rules.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        example = cloudflare.DevicePostureIntegration("example",
+            account_id="f037e56e89293a057740de681ac9abbe",
+            configs=[cloudflare.DevicePostureIntegrationConfigArgs(
+                api_url="https://example.com/api",
+                auth_url="https://example.com/connect/token",
+                client_id="client-id",
+                client_secret="client-secret",
+            )],
+            interval="24h",
+            name="Device posture integration",
+            type="workspace_one")
+        ```
 
         ## Import
 

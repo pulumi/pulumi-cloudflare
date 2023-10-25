@@ -12,6 +12,34 @@ namespace Pulumi.Cloudflare
     /// <summary>
     /// Provides a resource, that manages IPsec tunnels for Magic Transit.
     /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Cloudflare = Pulumi.Cloudflare;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var example = new Cloudflare.IpsecTunnel("example", new()
+    ///     {
+    ///         AccountId = "f037e56e89293a057740de681ac9abbe",
+    ///         AllowNullCipher = false,
+    ///         CloudflareEndpoint = "203.0.113.1",
+    ///         CustomerEndpoint = "203.0.113.1",
+    ///         Description = "Tunnel for ISP X",
+    ///         HealthCheckEnabled = true,
+    ///         HealthCheckTarget = "203.0.113.1",
+    ///         HealthCheckType = "reply",
+    ///         InterfaceAddress = "192.0.2.0/31",
+    ///         Name = "IPsec_1",
+    ///         Psk = "asdf12341234",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// ```sh

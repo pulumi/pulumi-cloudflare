@@ -13,12 +13,58 @@ namespace Pulumi.Cloudflare
     {
         /// <summary>
         /// Use this data source to lookup a single [DNS Record](https://api.cloudflare.com/#dns-records-for-a-zone-properties).
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Cloudflare = Pulumi.Cloudflare;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = Cloudflare.GetRecord.Invoke(new()
+        ///     {
+        ///         Hostname = "example.com",
+        ///         ZoneId = "0da42c8d2132a9ddaf714f9e7c920711",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetRecordResult> InvokeAsync(GetRecordArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetRecordResult>("cloudflare:index/getRecord:getRecord", args ?? new GetRecordArgs(), options.WithDefaults());
 
         /// <summary>
         /// Use this data source to lookup a single [DNS Record](https://api.cloudflare.com/#dns-records-for-a-zone-properties).
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Cloudflare = Pulumi.Cloudflare;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = Cloudflare.GetRecord.Invoke(new()
+        ///     {
+        ///         Hostname = "example.com",
+        ///         ZoneId = "0da42c8d2132a9ddaf714f9e7c920711",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Output<GetRecordResult> Invoke(GetRecordInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetRecordResult>("cloudflare:index/getRecord:getRecord", args ?? new GetRecordInvokeArgs(), options.WithDefaults());

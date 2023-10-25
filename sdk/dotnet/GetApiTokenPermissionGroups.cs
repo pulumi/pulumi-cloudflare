@@ -14,6 +14,31 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Use this data source to look up [API Token Permission Groups](https://developers.cloudflare.com/api/tokens/create/permissions).
         /// Commonly used as references within [`cloudflare_token`](https://www.terraform.io/docs/providers/cloudflare/r/api_token.html) resources.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Cloudflare = Pulumi.Cloudflare;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var all = Cloudflare.GetApiTokenPermissionGroups.Invoke();
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["dnsReadPermissionId"] = all.Apply(getApiTokenPermissionGroupsResult =&gt; getApiTokenPermissionGroupsResult.Zone?.DNS_Read),
+        ///         ["accountLbMonitorsAndReadId"] = all.Apply(getApiTokenPermissionGroupsResult =&gt; getApiTokenPermissionGroupsResult.Account?.Load_Balancing__Monitors_and_Pools_Read),
+        ///         ["userMembershipsReadId"] = all.Apply(getApiTokenPermissionGroupsResult =&gt; getApiTokenPermissionGroupsResult.User?.Memberships_Read),
+        ///     };
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetApiTokenPermissionGroupsResult> InvokeAsync(InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetApiTokenPermissionGroupsResult>("cloudflare:index/getApiTokenPermissionGroups:getApiTokenPermissionGroups", InvokeArgs.Empty, options.WithDefaults());
@@ -21,6 +46,31 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Use this data source to look up [API Token Permission Groups](https://developers.cloudflare.com/api/tokens/create/permissions).
         /// Commonly used as references within [`cloudflare_token`](https://www.terraform.io/docs/providers/cloudflare/r/api_token.html) resources.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Cloudflare = Pulumi.Cloudflare;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var all = Cloudflare.GetApiTokenPermissionGroups.Invoke();
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["dnsReadPermissionId"] = all.Apply(getApiTokenPermissionGroupsResult =&gt; getApiTokenPermissionGroupsResult.Zone?.DNS_Read),
+        ///         ["accountLbMonitorsAndReadId"] = all.Apply(getApiTokenPermissionGroupsResult =&gt; getApiTokenPermissionGroupsResult.Account?.Load_Balancing__Monitors_and_Pools_Read),
+        ///         ["userMembershipsReadId"] = all.Apply(getApiTokenPermissionGroupsResult =&gt; getApiTokenPermissionGroupsResult.User?.Memberships_Read),
+        ///     };
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Output<GetApiTokenPermissionGroupsResult> Invoke(InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetApiTokenPermissionGroupsResult>("cloudflare:index/getApiTokenPermissionGroups:getApiTokenPermissionGroups", InvokeArgs.Empty, options.WithDefaults());

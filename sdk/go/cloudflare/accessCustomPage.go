@@ -15,6 +15,35 @@ import (
 
 // Provides a resource to customize the pages your end users will see
 // when trying to reach applications behind Cloudflare Access.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cloudflare.NewAccessCustomPage(ctx, "example", &cloudflare.AccessCustomPageArgs{
+//				CustomHtml: pulumi.String("<html><body><h1>Forbidden</h1></body></html>"),
+//				Name:       pulumi.String("example"),
+//				Type:       pulumi.String("forbidden"),
+//				ZoneId:     pulumi.String("0da42c8d2132a9ddaf714f9e7c920711"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 type AccessCustomPage struct {
 	pulumi.CustomResourceState
 

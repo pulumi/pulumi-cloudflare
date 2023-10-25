@@ -7,6 +7,20 @@ import * as utilities from "./utilities";
 /**
  * Provides a resource to customize the pages your end users will see
  * when trying to reach applications behind Cloudflare Access.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as cloudflare from "@pulumi/cloudflare";
+ *
+ * const example = new cloudflare.AccessCustomPage("example", {
+ *     customHtml: "<html><body><h1>Forbidden</h1></body></html>",
+ *     name: "example",
+ *     type: "forbidden",
+ *     zoneId: "0da42c8d2132a9ddaf714f9e7c920711",
+ * });
+ * ```
  */
 export class AccessCustomPage extends pulumi.CustomResource {
     /**

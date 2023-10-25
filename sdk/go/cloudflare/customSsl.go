@@ -15,6 +15,39 @@ import (
 
 // Provides a Cloudflare custom SSL resource.
 //
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cloudflare.NewCustomSsl(ctx, "example", &cloudflare.CustomSslArgs{
+//				CustomSslOptions: &cloudflare.CustomSslCustomSslOptionsArgs{
+//					BundleMethod:    pulumi.String("ubiquitous"),
+//					Certificate:     pulumi.String("-----INSERT CERTIFICATE-----"),
+//					GeoRestrictions: pulumi.String("us"),
+//					PrivateKey:      pulumi.String("-----INSERT PRIVATE KEY-----"),
+//					Type:            pulumi.String("legacy_custom"),
+//				},
+//				ZoneId: pulumi.String("0da42c8d2132a9ddaf714f9e7c920711"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // ```sh

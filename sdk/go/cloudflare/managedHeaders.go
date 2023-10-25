@@ -16,6 +16,44 @@ import (
 // The [Cloudflare Managed Headers](https://developers.cloudflare.com/rules/transform/managed-transforms/)
 // allows you to add or remove some predefined headers to one's
 // requests or origin responses.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cloudflare.NewManagedHeaders(ctx, "example", &cloudflare.ManagedHeadersArgs{
+//				ManagedRequestHeaders: cloudflare.ManagedHeadersManagedRequestHeaderArray{
+//					&cloudflare.ManagedHeadersManagedRequestHeaderArgs{
+//						Enabled: pulumi.Bool(true),
+//						Id:      pulumi.String("add_true_client_ip_headers"),
+//					},
+//				},
+//				ManagedResponseHeaders: cloudflare.ManagedHeadersManagedResponseHeaderArray{
+//					&cloudflare.ManagedHeadersManagedResponseHeaderArgs{
+//						Enabled: pulumi.Bool(true),
+//						Id:      pulumi.String("remove_x-powered-by_header"),
+//					},
+//				},
+//				ZoneId: pulumi.String("0da42c8d2132a9ddaf714f9e7c920711"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 type ManagedHeaders struct {
 	pulumi.CustomResourceState
 

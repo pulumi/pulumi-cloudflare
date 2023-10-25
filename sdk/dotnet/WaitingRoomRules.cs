@@ -12,6 +12,42 @@ namespace Pulumi.Cloudflare
     /// <summary>
     /// Provides a Cloudflare Waiting Room Rules resource.
     /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Cloudflare = Pulumi.Cloudflare;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var example = new Cloudflare.WaitingRoomRules("example", new()
+    ///     {
+    ///         Rules = new[]
+    ///         {
+    ///             new Cloudflare.Inputs.WaitingRoomRulesRuleArgs
+    ///             {
+    ///                 Action = "bypass_waiting_room",
+    ///                 Description = "bypass ip list",
+    ///                 Expression = "src.ip in {192.0.2.0 192.0.2.1}",
+    ///                 Status = "enabled",
+    ///             },
+    ///             new Cloudflare.Inputs.WaitingRoomRulesRuleArgs
+    ///             {
+    ///                 Action = "bypass_waiting_room",
+    ///                 Description = "bypass query string",
+    ///                 Expression = "http.request.uri.query contains \"bypass=true\"",
+    ///                 Status = "enabled",
+    ///             },
+    ///         },
+    ///         WaitingRoomId = "d41d8cd98f00b204e9800998ecf8427e",
+    ///         ZoneId = "0da42c8d2132a9ddaf714f9e7c920711",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// ```sh

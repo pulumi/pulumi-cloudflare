@@ -17,6 +17,36 @@ import (
 // Endpoints are used for pointing proxy clients at Cloudflare Secure
 // Gateway.
 //
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cloudflare.NewTeamsProxyEndpoint(ctx, "example", &cloudflare.TeamsProxyEndpointArgs{
+//				AccountId: pulumi.String("f037e56e89293a057740de681ac9abbe"),
+//				Ips: pulumi.StringArray{
+//					pulumi.String("192.0.2.0/24"),
+//				},
+//				Name: pulumi.String("office"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // ```sh

@@ -290,6 +290,23 @@ class CustomSsl(pulumi.CustomResource):
         """
         Provides a Cloudflare custom SSL resource.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        example = cloudflare.CustomSsl("example",
+            custom_ssl_options=cloudflare.CustomSslCustomSslOptionsArgs(
+                bundle_method="ubiquitous",
+                certificate="-----INSERT CERTIFICATE-----",
+                geo_restrictions="us",
+                private_key="-----INSERT PRIVATE KEY-----",
+                type="legacy_custom",
+            ),
+            zone_id="0da42c8d2132a9ddaf714f9e7c920711")
+        ```
+
         ## Import
 
         ```sh
@@ -309,6 +326,23 @@ class CustomSsl(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Provides a Cloudflare custom SSL resource.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        example = cloudflare.CustomSsl("example",
+            custom_ssl_options=cloudflare.CustomSslCustomSslOptionsArgs(
+                bundle_method="ubiquitous",
+                certificate="-----INSERT CERTIFICATE-----",
+                geo_restrictions="us",
+                private_key="-----INSERT PRIVATE KEY-----",
+                type="legacy_custom",
+            ),
+            zone_id="0da42c8d2132a9ddaf714f9e7c920711")
+        ```
 
         ## Import
 

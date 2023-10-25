@@ -20,6 +20,49 @@ import (
 //	resource is only intended to override those which you do not want the default.
 //	Attempting to manage all settings will result in problems with the resource
 //	applying in a consistent manner.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cloudflare.NewZoneSettingsOverride(ctx, "test", &cloudflare.ZoneSettingsOverrideArgs{
+//				ZoneId: pulumi.Any(d41d8cd98f00b204e9800998ecf8427e),
+//				Settings: &cloudflare.ZoneSettingsOverrideSettingsArgs{
+//					Brotli:                  pulumi.String("on"),
+//					ChallengeTtl:            pulumi.Int(2700),
+//					SecurityLevel:           pulumi.String("high"),
+//					OpportunisticEncryption: pulumi.String("on"),
+//					AutomaticHttpsRewrites:  pulumi.String("on"),
+//					Mirage:                  pulumi.String("on"),
+//					Waf:                     pulumi.String("on"),
+//					Minify: &cloudflare.ZoneSettingsOverrideSettingsMinifyArgs{
+//						Css:  pulumi.String("on"),
+//						Js:   pulumi.String("off"),
+//						Html: pulumi.String("off"),
+//					},
+//					SecurityHeader: &cloudflare.ZoneSettingsOverrideSettingsSecurityHeaderArgs{
+//						Enabled: pulumi.Bool(true),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 type ZoneSettingsOverride struct {
 	pulumi.CustomResourceState
 

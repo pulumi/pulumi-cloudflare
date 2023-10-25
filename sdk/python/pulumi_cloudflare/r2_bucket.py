@@ -169,6 +169,20 @@ class R2Bucket(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        example = cloudflare.R2Bucket("example",
+            account_id="f037e56e89293a057740de681ac9abbe",
+            location="enam",
+            name="terraform-bucket")
+        ```
+
+        > Available location values can be found in the [R2 documentation](https://developers.cloudflare.com/r2/buckets/data-location/#available-hints).
+
         ## Import
 
         ```sh
@@ -188,6 +202,20 @@ class R2Bucket(pulumi.CustomResource):
                  args: R2BucketArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        example = cloudflare.R2Bucket("example",
+            account_id="f037e56e89293a057740de681ac9abbe",
+            location="enam",
+            name="terraform-bucket")
+        ```
+
+        > Available location values can be found in the [R2 documentation](https://developers.cloudflare.com/r2/buckets/data-location/#available-hints).
+
         ## Import
 
         ```sh

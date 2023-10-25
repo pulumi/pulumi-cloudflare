@@ -5,6 +5,29 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as cloudflare from "@pulumi/cloudflare";
+ * import * as tls from "@pulumi/tls";
+ *
+ * const examplePrivateKey = new tls.PrivateKey("examplePrivateKey", {algorithm: "RSA"});
+ * const exampleCertRequest = new tls.CertRequest("exampleCertRequest", {
+ *     privateKeyPem: examplePrivateKey.privateKeyPem,
+ *     subjects: [{
+ *         commonName: "",
+ *         organization: "Terraform Test",
+ *     }],
+ * });
+ * const exampleOriginCaCertificate = new cloudflare.OriginCaCertificate("exampleOriginCaCertificate", {
+ *     csr: exampleCertRequest.certRequestPem,
+ *     hostnames: ["example.com"],
+ *     requestType: "origin-rsa",
+ *     requestedValidity: 7,
+ * });
+ * ```
+ *
  * ## Import
  *
  * ```sh

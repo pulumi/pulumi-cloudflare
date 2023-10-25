@@ -214,6 +214,22 @@ class WorkersKv(pulumi.CustomResource):
         """
         Provides a resource to manage a Cloudflare Workers KV Pair.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        example_ns = cloudflare.WorkersKvNamespace("exampleNs",
+            account_id="f037e56e89293a057740de681ac9abbe",
+            title="test-namespace")
+        example = cloudflare.WorkersKv("example",
+            account_id="f037e56e89293a057740de681ac9abbe",
+            namespace_id=example_ns.id,
+            key="test-key",
+            value="test value")
+        ```
+
         ## Import
 
         ```sh
@@ -235,6 +251,22 @@ class WorkersKv(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Provides a resource to manage a Cloudflare Workers KV Pair.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        example_ns = cloudflare.WorkersKvNamespace("exampleNs",
+            account_id="f037e56e89293a057740de681ac9abbe",
+            title="test-namespace")
+        example = cloudflare.WorkersKv("example",
+            account_id="f037e56e89293a057740de681ac9abbe",
+            namespace_id=example_ns.id,
+            key="test-key",
+            value="test value")
+        ```
 
         ## Import
 

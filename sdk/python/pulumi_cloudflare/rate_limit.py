@@ -395,6 +395,74 @@ class RateLimit(pulumi.CustomResource):
         be used to limit the traffic you receive zone-wide, or matching more
         specific types of requests/responses.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        example = cloudflare.RateLimit("example",
+            action=cloudflare.RateLimitActionArgs(
+                mode="simulate",
+                response=cloudflare.RateLimitActionResponseArgs(
+                    body="custom response body",
+                    content_type="text/plain",
+                ),
+                timeout=43200,
+            ),
+            bypass_url_patterns=[
+                "example.com/bypass1",
+                "example.com/bypass2",
+            ],
+            correlate=cloudflare.RateLimitCorrelateArgs(
+                by="nat",
+            ),
+            description="example rate limit for a zone",
+            disabled=False,
+            match=cloudflare.RateLimitMatchArgs(
+                request=cloudflare.RateLimitMatchRequestArgs(
+                    methods=[
+                        "GET",
+                        "POST",
+                        "PUT",
+                        "DELETE",
+                        "PATCH",
+                        "HEAD",
+                    ],
+                    schemes=[
+                        "HTTP",
+                        "HTTPS",
+                    ],
+                    url_pattern=f"{var['cloudflare_zone']}/*",
+                ),
+                response=cloudflare.RateLimitMatchResponseArgs(
+                    headers=[
+                        {
+                            "name": "Host",
+                            "op": "eq",
+                            "value": "localhost",
+                        },
+                        {
+                            "name": "X-Example",
+                            "op": "ne",
+                            "value": "my-example",
+                        },
+                    ],
+                    origin_traffic=False,
+                    statuses=[
+                        200,
+                        201,
+                        202,
+                        301,
+                        429,
+                    ],
+                ),
+            ),
+            period=2,
+            threshold=2000,
+            zone_id="0da42c8d2132a9ddaf714f9e7c920711")
+        ```
+
         ## Import
 
         ```sh
@@ -422,6 +490,74 @@ class RateLimit(pulumi.CustomResource):
         Provides a Cloudflare rate limit resource for a given zone. This can
         be used to limit the traffic you receive zone-wide, or matching more
         specific types of requests/responses.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        example = cloudflare.RateLimit("example",
+            action=cloudflare.RateLimitActionArgs(
+                mode="simulate",
+                response=cloudflare.RateLimitActionResponseArgs(
+                    body="custom response body",
+                    content_type="text/plain",
+                ),
+                timeout=43200,
+            ),
+            bypass_url_patterns=[
+                "example.com/bypass1",
+                "example.com/bypass2",
+            ],
+            correlate=cloudflare.RateLimitCorrelateArgs(
+                by="nat",
+            ),
+            description="example rate limit for a zone",
+            disabled=False,
+            match=cloudflare.RateLimitMatchArgs(
+                request=cloudflare.RateLimitMatchRequestArgs(
+                    methods=[
+                        "GET",
+                        "POST",
+                        "PUT",
+                        "DELETE",
+                        "PATCH",
+                        "HEAD",
+                    ],
+                    schemes=[
+                        "HTTP",
+                        "HTTPS",
+                    ],
+                    url_pattern=f"{var['cloudflare_zone']}/*",
+                ),
+                response=cloudflare.RateLimitMatchResponseArgs(
+                    headers=[
+                        {
+                            "name": "Host",
+                            "op": "eq",
+                            "value": "localhost",
+                        },
+                        {
+                            "name": "X-Example",
+                            "op": "ne",
+                            "value": "my-example",
+                        },
+                    ],
+                    origin_traffic=False,
+                    statuses=[
+                        200,
+                        201,
+                        202,
+                        301,
+                        429,
+                    ],
+                ),
+            ),
+            period=2,
+            threshold=2000,
+            zone_id="0da42c8d2132a9ddaf714f9e7c920711")
+        ```
 
         ## Import
 

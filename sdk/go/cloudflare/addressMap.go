@@ -16,6 +16,53 @@ import (
 // Provides the ability to manage IP addresses that can be used by DNS records when
 // they are proxied through Cloudflare.
 //
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cloudflare.NewAddressMap(ctx, "example", &cloudflare.AddressMapArgs{
+//				AccountId:   pulumi.String("f037e56e89293a057740de681ac9abbe"),
+//				DefaultSni:  pulumi.String("*.example.com"),
+//				Description: pulumi.String("My address map"),
+//				Enabled:     pulumi.Bool(true),
+//				Ips: cloudflare.AddressMapIpArray{
+//					&cloudflare.AddressMapIpArgs{
+//						Ip: pulumi.String("192.0.2.1"),
+//					},
+//					&cloudflare.AddressMapIpArgs{
+//						Ip: pulumi.String("203.0.113.1"),
+//					},
+//				},
+//				Memberships: cloudflare.AddressMapMembershipArray{
+//					&cloudflare.AddressMapMembershipArgs{
+//						Identifier: pulumi.String("92f17202ed8bd63d69a66b86a49a8f6b"),
+//						Kind:       pulumi.String("account"),
+//					},
+//					&cloudflare.AddressMapMembershipArgs{
+//						Identifier: pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
+//						Kind:       pulumi.String("zone"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // ```sh

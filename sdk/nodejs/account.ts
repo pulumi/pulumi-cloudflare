@@ -8,6 +8,19 @@ import * as utilities from "./utilities";
  * Provides a Cloudflare Account resource. Account is the basic resource for
  * working with Cloudflare zones, teams and users.
  *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as cloudflare from "@pulumi/cloudflare";
+ *
+ * const example = new cloudflare.Account("example", {
+ *     enforceTwofactor: true,
+ *     name: "some-enterprise-account",
+ *     type: "enterprise",
+ * });
+ * ```
+ *
  * ## Import
  *
  * ```sh
