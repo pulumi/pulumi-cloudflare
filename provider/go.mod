@@ -4,8 +4,8 @@ go 1.21
 
 require (
 	github.com/cloudflare/terraform-provider-cloudflare v1.18.2-0.20220823222840-b2cee3be8c57
-	github.com/pulumi/pulumi-terraform-bridge/pf v0.18.2
-	github.com/pulumi/pulumi-terraform-bridge/v3 v3.63.1
+	github.com/pulumi/pulumi-terraform-bridge/pf v0.18.3-0.20231027211323-cefb369296c9
+	github.com/pulumi/pulumi-terraform-bridge/v3 v3.63.2-0.20231027211323-cefb369296c9
 )
 
 replace github.com/cloudflare/terraform-provider-cloudflare => ../upstream
@@ -182,7 +182,7 @@ require (
 	github.com/pulumi/pulumi-terraform-bridge/x/muxer v0.0.6 // indirect
 	github.com/pulumi/pulumi-yaml v1.2.2 // indirect
 	github.com/pulumi/pulumi/pkg/v3 v3.90.1 // indirect
-	github.com/pulumi/pulumi/sdk/v3 v3.90.1 // indirect
+	github.com/pulumi/pulumi/sdk/v3 v3.91.0 // indirect
 	github.com/pulumi/schema-tools v0.1.2 // indirect
 	github.com/pulumi/terraform-diff-reader v0.0.2 // indirect
 	github.com/rivo/uniseg v0.4.4 // indirect
@@ -248,3 +248,7 @@ replace (
 	github.com/cloudflare/terraform-provider-cloudflare/shim => ./shim
 	github.com/hashicorp/terraform-plugin-sdk/v2 => github.com/pulumi/terraform-plugin-sdk/v2 v2.0.0-20230912190043-e6d96b3b8f7e
 )
+
+replace github.com/pulumi/pulumi/pkg/v3 => github.com/pulumi/pulumi/pkg/v3 v3.78.2-0.20231027191454-9941f901c988
+
+replace github.com/pulumi/pulumi/sdk/v3 => github.com/pulumi/pulumi/sdk/v3 v3.91.1-0.20231027191454-9941f901c988
