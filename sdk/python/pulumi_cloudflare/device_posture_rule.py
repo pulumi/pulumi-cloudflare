@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -33,51 +33,20 @@ class DevicePostureRuleArgs:
         :param pulumi.Input[str] name: Name of the device posture rule.
         :param pulumi.Input[str] schedule: Tells the client when to run the device posture check. Must be in the format `1h` or `30m`. Valid units are `h` and `m`.
         """
-        DevicePostureRuleArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            account_id=account_id,
-            type=type,
-            description=description,
-            expiration=expiration,
-            inputs=inputs,
-            matches=matches,
-            name=name,
-            schedule=schedule,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             account_id: Optional[pulumi.Input[str]] = None,
-             type: Optional[pulumi.Input[str]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             expiration: Optional[pulumi.Input[str]] = None,
-             inputs: Optional[pulumi.Input[Sequence[pulumi.Input['DevicePostureRuleInputArgs']]]] = None,
-             matches: Optional[pulumi.Input[Sequence[pulumi.Input['DevicePostureRuleMatchArgs']]]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             schedule: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if account_id is None and 'accountId' in kwargs:
-            account_id = kwargs['accountId']
-        if account_id is None:
-            raise TypeError("Missing 'account_id' argument")
-        if type is None:
-            raise TypeError("Missing 'type' argument")
-
-        _setter("account_id", account_id)
-        _setter("type", type)
+        pulumi.set(__self__, "account_id", account_id)
+        pulumi.set(__self__, "type", type)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if expiration is not None:
-            _setter("expiration", expiration)
+            pulumi.set(__self__, "expiration", expiration)
         if inputs is not None:
-            _setter("inputs", inputs)
+            pulumi.set(__self__, "inputs", inputs)
         if matches is not None:
-            _setter("matches", matches)
+            pulumi.set(__self__, "matches", matches)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if schedule is not None:
-            _setter("schedule", schedule)
+            pulumi.set(__self__, "schedule", schedule)
 
     @property
     @pulumi.getter(name="accountId")
@@ -190,49 +159,22 @@ class _DevicePostureRuleState:
         :param pulumi.Input[str] schedule: Tells the client when to run the device posture check. Must be in the format `1h` or `30m`. Valid units are `h` and `m`.
         :param pulumi.Input[str] type: The device posture rule type. Available values: `serial_number`, `file`, `application`, `gateway`, `warp`, `domain_joined`, `os_version`, `disk_encryption`, `firewall`, `client_certificate`, `workspace_one`, `unique_client_id`, `crowdstrike_s2s`, `sentinelone`, `kolide`, `tanium_s2s`, `intune`, `sentinelone_s2s`.
         """
-        _DevicePostureRuleState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            account_id=account_id,
-            description=description,
-            expiration=expiration,
-            inputs=inputs,
-            matches=matches,
-            name=name,
-            schedule=schedule,
-            type=type,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             account_id: Optional[pulumi.Input[str]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             expiration: Optional[pulumi.Input[str]] = None,
-             inputs: Optional[pulumi.Input[Sequence[pulumi.Input['DevicePostureRuleInputArgs']]]] = None,
-             matches: Optional[pulumi.Input[Sequence[pulumi.Input['DevicePostureRuleMatchArgs']]]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             schedule: Optional[pulumi.Input[str]] = None,
-             type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if account_id is None and 'accountId' in kwargs:
-            account_id = kwargs['accountId']
-
         if account_id is not None:
-            _setter("account_id", account_id)
+            pulumi.set(__self__, "account_id", account_id)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if expiration is not None:
-            _setter("expiration", expiration)
+            pulumi.set(__self__, "expiration", expiration)
         if inputs is not None:
-            _setter("inputs", inputs)
+            pulumi.set(__self__, "inputs", inputs)
         if matches is not None:
-            _setter("matches", matches)
+            pulumi.set(__self__, "matches", matches)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if schedule is not None:
-            _setter("schedule", schedule)
+            pulumi.set(__self__, "schedule", schedule)
         if type is not None:
-            _setter("type", type)
+            pulumi.set(__self__, "type", type)
 
     @property
     @pulumi.getter(name="accountId")
@@ -432,10 +374,6 @@ class DevicePostureRule(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            DevicePostureRuleArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

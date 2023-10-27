@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -29,40 +29,13 @@ class PageRuleArgs:
         :param pulumi.Input[int] priority: The priority of the page rule among others for this target, the higher the number the higher the priority as per [API documentation](https://api.cloudflare.com/#page-rules-for-a-zone-create-page-rule).
         :param pulumi.Input[str] status: Whether the page rule is active or disabled.
         """
-        PageRuleArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            actions=actions,
-            target=target,
-            zone_id=zone_id,
-            priority=priority,
-            status=status,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             actions: Optional[pulumi.Input['PageRuleActionsArgs']] = None,
-             target: Optional[pulumi.Input[str]] = None,
-             zone_id: Optional[pulumi.Input[str]] = None,
-             priority: Optional[pulumi.Input[int]] = None,
-             status: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if actions is None:
-            raise TypeError("Missing 'actions' argument")
-        if target is None:
-            raise TypeError("Missing 'target' argument")
-        if zone_id is None and 'zoneId' in kwargs:
-            zone_id = kwargs['zoneId']
-        if zone_id is None:
-            raise TypeError("Missing 'zone_id' argument")
-
-        _setter("actions", actions)
-        _setter("target", target)
-        _setter("zone_id", zone_id)
+        pulumi.set(__self__, "actions", actions)
+        pulumi.set(__self__, "target", target)
+        pulumi.set(__self__, "zone_id", zone_id)
         if priority is not None:
-            _setter("priority", priority)
+            pulumi.set(__self__, "priority", priority)
         if status is not None:
-            _setter("status", status)
+            pulumi.set(__self__, "status", status)
 
     @property
     @pulumi.getter
@@ -141,37 +114,16 @@ class _PageRuleState:
         :param pulumi.Input[str] target: The URL pattern to target with the page rule.
         :param pulumi.Input[str] zone_id: The DNS zone ID to which the page rule should be added.
         """
-        _PageRuleState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            actions=actions,
-            priority=priority,
-            status=status,
-            target=target,
-            zone_id=zone_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             actions: Optional[pulumi.Input['PageRuleActionsArgs']] = None,
-             priority: Optional[pulumi.Input[int]] = None,
-             status: Optional[pulumi.Input[str]] = None,
-             target: Optional[pulumi.Input[str]] = None,
-             zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if zone_id is None and 'zoneId' in kwargs:
-            zone_id = kwargs['zoneId']
-
         if actions is not None:
-            _setter("actions", actions)
+            pulumi.set(__self__, "actions", actions)
         if priority is not None:
-            _setter("priority", priority)
+            pulumi.set(__self__, "priority", priority)
         if status is not None:
-            _setter("status", status)
+            pulumi.set(__self__, "status", status)
         if target is not None:
-            _setter("target", target)
+            pulumi.set(__self__, "target", target)
         if zone_id is not None:
-            _setter("zone_id", zone_id)
+            pulumi.set(__self__, "zone_id", zone_id)
 
     @property
     @pulumi.getter
@@ -335,10 +287,6 @@ class PageRule(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            PageRuleArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -358,7 +306,6 @@ class PageRule(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = PageRuleArgs.__new__(PageRuleArgs)
 
-            actions = _utilities.configure(actions, PageRuleActionsArgs, True)
             if actions is None and not opts.urn:
                 raise TypeError("Missing required property 'actions'")
             __props__.__dict__["actions"] = actions

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['TieredCacheArgs', 'TieredCache']
@@ -21,29 +21,8 @@ class TieredCacheArgs:
         :param pulumi.Input[str] cache_type: The typed of tiered cache to utilize on the zone. Available values: `generic`, `smart`, `off`.
         :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         """
-        TieredCacheArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            cache_type=cache_type,
-            zone_id=zone_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             cache_type: Optional[pulumi.Input[str]] = None,
-             zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if cache_type is None and 'cacheType' in kwargs:
-            cache_type = kwargs['cacheType']
-        if cache_type is None:
-            raise TypeError("Missing 'cache_type' argument")
-        if zone_id is None and 'zoneId' in kwargs:
-            zone_id = kwargs['zoneId']
-        if zone_id is None:
-            raise TypeError("Missing 'zone_id' argument")
-
-        _setter("cache_type", cache_type)
-        _setter("zone_id", zone_id)
+        pulumi.set(__self__, "cache_type", cache_type)
+        pulumi.set(__self__, "zone_id", zone_id)
 
     @property
     @pulumi.getter(name="cacheType")
@@ -80,27 +59,10 @@ class _TieredCacheState:
         :param pulumi.Input[str] cache_type: The typed of tiered cache to utilize on the zone. Available values: `generic`, `smart`, `off`.
         :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         """
-        _TieredCacheState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            cache_type=cache_type,
-            zone_id=zone_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             cache_type: Optional[pulumi.Input[str]] = None,
-             zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if cache_type is None and 'cacheType' in kwargs:
-            cache_type = kwargs['cacheType']
-        if zone_id is None and 'zoneId' in kwargs:
-            zone_id = kwargs['zoneId']
-
         if cache_type is not None:
-            _setter("cache_type", cache_type)
+            pulumi.set(__self__, "cache_type", cache_type)
         if zone_id is not None:
-            _setter("zone_id", zone_id)
+            pulumi.set(__self__, "zone_id", zone_id)
 
     @property
     @pulumi.getter(name="cacheType")
@@ -186,10 +148,6 @@ class TieredCache(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            TieredCacheArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

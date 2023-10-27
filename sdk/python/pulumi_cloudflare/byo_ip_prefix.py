@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['ByoIpPrefixArgs', 'ByoIpPrefix']
@@ -25,37 +25,12 @@ class ByoIpPrefixArgs:
         :param pulumi.Input[str] advertisement: Whether or not the prefix shall be announced. A prefix can be activated or deactivated once every 15 minutes (attempting more regular updates will trigger rate limiting). Available values: `on`, `off`.
         :param pulumi.Input[str] description: Description of the BYO IP prefix.
         """
-        ByoIpPrefixArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            account_id=account_id,
-            prefix_id=prefix_id,
-            advertisement=advertisement,
-            description=description,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             account_id: Optional[pulumi.Input[str]] = None,
-             prefix_id: Optional[pulumi.Input[str]] = None,
-             advertisement: Optional[pulumi.Input[str]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if account_id is None and 'accountId' in kwargs:
-            account_id = kwargs['accountId']
-        if account_id is None:
-            raise TypeError("Missing 'account_id' argument")
-        if prefix_id is None and 'prefixId' in kwargs:
-            prefix_id = kwargs['prefixId']
-        if prefix_id is None:
-            raise TypeError("Missing 'prefix_id' argument")
-
-        _setter("account_id", account_id)
-        _setter("prefix_id", prefix_id)
+        pulumi.set(__self__, "account_id", account_id)
+        pulumi.set(__self__, "prefix_id", prefix_id)
         if advertisement is not None:
-            _setter("advertisement", advertisement)
+            pulumi.set(__self__, "advertisement", advertisement)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
 
     @property
     @pulumi.getter(name="accountId")
@@ -120,35 +95,14 @@ class _ByoIpPrefixState:
         :param pulumi.Input[str] description: Description of the BYO IP prefix.
         :param pulumi.Input[str] prefix_id: The assigned Bring-Your-Own-IP prefix ID. **Modifying this attribute will force creation of a new resource.**
         """
-        _ByoIpPrefixState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            account_id=account_id,
-            advertisement=advertisement,
-            description=description,
-            prefix_id=prefix_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             account_id: Optional[pulumi.Input[str]] = None,
-             advertisement: Optional[pulumi.Input[str]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             prefix_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if account_id is None and 'accountId' in kwargs:
-            account_id = kwargs['accountId']
-        if prefix_id is None and 'prefixId' in kwargs:
-            prefix_id = kwargs['prefixId']
-
         if account_id is not None:
-            _setter("account_id", account_id)
+            pulumi.set(__self__, "account_id", account_id)
         if advertisement is not None:
-            _setter("advertisement", advertisement)
+            pulumi.set(__self__, "advertisement", advertisement)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if prefix_id is not None:
-            _setter("prefix_id", prefix_id)
+            pulumi.set(__self__, "prefix_id", prefix_id)
 
     @property
     @pulumi.getter(name="accountId")
@@ -278,10 +232,6 @@ class ByoIpPrefix(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            ByoIpPrefixArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

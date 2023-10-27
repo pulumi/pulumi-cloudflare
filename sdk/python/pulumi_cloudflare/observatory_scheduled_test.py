@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['ObservatoryScheduledTestArgs', 'ObservatoryScheduledTest']
@@ -25,37 +25,10 @@ class ObservatoryScheduledTestArgs:
         :param pulumi.Input[str] url: The page to run the test on. **Modifying this attribute will force creation of a new resource.**
         :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         """
-        ObservatoryScheduledTestArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            frequency=frequency,
-            region=region,
-            url=url,
-            zone_id=zone_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             frequency: Optional[pulumi.Input[str]] = None,
-             region: Optional[pulumi.Input[str]] = None,
-             url: Optional[pulumi.Input[str]] = None,
-             zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if frequency is None:
-            raise TypeError("Missing 'frequency' argument")
-        if region is None:
-            raise TypeError("Missing 'region' argument")
-        if url is None:
-            raise TypeError("Missing 'url' argument")
-        if zone_id is None and 'zoneId' in kwargs:
-            zone_id = kwargs['zoneId']
-        if zone_id is None:
-            raise TypeError("Missing 'zone_id' argument")
-
-        _setter("frequency", frequency)
-        _setter("region", region)
-        _setter("url", url)
-        _setter("zone_id", zone_id)
+        pulumi.set(__self__, "frequency", frequency)
+        pulumi.set(__self__, "region", region)
+        pulumi.set(__self__, "url", url)
+        pulumi.set(__self__, "zone_id", zone_id)
 
     @property
     @pulumi.getter
@@ -120,33 +93,14 @@ class _ObservatoryScheduledTestState:
         :param pulumi.Input[str] url: The page to run the test on. **Modifying this attribute will force creation of a new resource.**
         :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         """
-        _ObservatoryScheduledTestState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            frequency=frequency,
-            region=region,
-            url=url,
-            zone_id=zone_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             frequency: Optional[pulumi.Input[str]] = None,
-             region: Optional[pulumi.Input[str]] = None,
-             url: Optional[pulumi.Input[str]] = None,
-             zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if zone_id is None and 'zoneId' in kwargs:
-            zone_id = kwargs['zoneId']
-
         if frequency is not None:
-            _setter("frequency", frequency)
+            pulumi.set(__self__, "frequency", frequency)
         if region is not None:
-            _setter("region", region)
+            pulumi.set(__self__, "region", region)
         if url is not None:
-            _setter("url", url)
+            pulumi.set(__self__, "url", url)
         if zone_id is not None:
-            _setter("zone_id", zone_id)
+            pulumi.set(__self__, "zone_id", zone_id)
 
     @property
     @pulumi.getter
@@ -274,10 +228,6 @@ class ObservatoryScheduledTest(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            ObservatoryScheduledTestArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

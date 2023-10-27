@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['CustomHostnameFallbackOriginArgs', 'CustomHostnameFallbackOrigin']
@@ -21,27 +21,8 @@ class CustomHostnameFallbackOriginArgs:
         :param pulumi.Input[str] origin: Hostname you intend to fallback requests to. Origin must be a proxied A/AAAA/CNAME DNS record within Clouldflare.
         :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         """
-        CustomHostnameFallbackOriginArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            origin=origin,
-            zone_id=zone_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             origin: Optional[pulumi.Input[str]] = None,
-             zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if origin is None:
-            raise TypeError("Missing 'origin' argument")
-        if zone_id is None and 'zoneId' in kwargs:
-            zone_id = kwargs['zoneId']
-        if zone_id is None:
-            raise TypeError("Missing 'zone_id' argument")
-
-        _setter("origin", origin)
-        _setter("zone_id", zone_id)
+        pulumi.set(__self__, "origin", origin)
+        pulumi.set(__self__, "zone_id", zone_id)
 
     @property
     @pulumi.getter
@@ -80,29 +61,12 @@ class _CustomHostnameFallbackOriginState:
         :param pulumi.Input[str] status: Status of the fallback origin's activation.
         :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         """
-        _CustomHostnameFallbackOriginState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            origin=origin,
-            status=status,
-            zone_id=zone_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             origin: Optional[pulumi.Input[str]] = None,
-             status: Optional[pulumi.Input[str]] = None,
-             zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if zone_id is None and 'zoneId' in kwargs:
-            zone_id = kwargs['zoneId']
-
         if origin is not None:
-            _setter("origin", origin)
+            pulumi.set(__self__, "origin", origin)
         if status is not None:
-            _setter("status", status)
+            pulumi.set(__self__, "status", status)
         if zone_id is not None:
-            _setter("zone_id", zone_id)
+            pulumi.set(__self__, "zone_id", zone_id)
 
     @property
     @pulumi.getter
@@ -210,10 +174,6 @@ class CustomHostnameFallbackOrigin(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            CustomHostnameFallbackOriginArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

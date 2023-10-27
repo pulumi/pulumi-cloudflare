@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -40,80 +40,27 @@ class AccessOrganizationArgs:
         :param pulumi.Input[str] user_seat_expiration_inactive_time: The amount of time a user seat is inactive before it expires. When the user seat exceeds the set time of inactivity, the user is removed as an active seat and no longer counts against your Teams seat count. Must be in the format `300ms` or `2h45m`.
         :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. Conflicts with `account_id`.
         """
-        AccessOrganizationArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            auth_domain=auth_domain,
-            account_id=account_id,
-            auto_redirect_to_identity=auto_redirect_to_identity,
-            custom_pages=custom_pages,
-            is_ui_read_only=is_ui_read_only,
-            login_designs=login_designs,
-            name=name,
-            session_duration=session_duration,
-            ui_read_only_toggle_reason=ui_read_only_toggle_reason,
-            user_seat_expiration_inactive_time=user_seat_expiration_inactive_time,
-            zone_id=zone_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             auth_domain: Optional[pulumi.Input[str]] = None,
-             account_id: Optional[pulumi.Input[str]] = None,
-             auto_redirect_to_identity: Optional[pulumi.Input[bool]] = None,
-             custom_pages: Optional[pulumi.Input[Sequence[pulumi.Input['AccessOrganizationCustomPageArgs']]]] = None,
-             is_ui_read_only: Optional[pulumi.Input[bool]] = None,
-             login_designs: Optional[pulumi.Input[Sequence[pulumi.Input['AccessOrganizationLoginDesignArgs']]]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             session_duration: Optional[pulumi.Input[str]] = None,
-             ui_read_only_toggle_reason: Optional[pulumi.Input[str]] = None,
-             user_seat_expiration_inactive_time: Optional[pulumi.Input[str]] = None,
-             zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if auth_domain is None and 'authDomain' in kwargs:
-            auth_domain = kwargs['authDomain']
-        if auth_domain is None:
-            raise TypeError("Missing 'auth_domain' argument")
-        if account_id is None and 'accountId' in kwargs:
-            account_id = kwargs['accountId']
-        if auto_redirect_to_identity is None and 'autoRedirectToIdentity' in kwargs:
-            auto_redirect_to_identity = kwargs['autoRedirectToIdentity']
-        if custom_pages is None and 'customPages' in kwargs:
-            custom_pages = kwargs['customPages']
-        if is_ui_read_only is None and 'isUiReadOnly' in kwargs:
-            is_ui_read_only = kwargs['isUiReadOnly']
-        if login_designs is None and 'loginDesigns' in kwargs:
-            login_designs = kwargs['loginDesigns']
-        if session_duration is None and 'sessionDuration' in kwargs:
-            session_duration = kwargs['sessionDuration']
-        if ui_read_only_toggle_reason is None and 'uiReadOnlyToggleReason' in kwargs:
-            ui_read_only_toggle_reason = kwargs['uiReadOnlyToggleReason']
-        if user_seat_expiration_inactive_time is None and 'userSeatExpirationInactiveTime' in kwargs:
-            user_seat_expiration_inactive_time = kwargs['userSeatExpirationInactiveTime']
-        if zone_id is None and 'zoneId' in kwargs:
-            zone_id = kwargs['zoneId']
-
-        _setter("auth_domain", auth_domain)
+        pulumi.set(__self__, "auth_domain", auth_domain)
         if account_id is not None:
-            _setter("account_id", account_id)
+            pulumi.set(__self__, "account_id", account_id)
         if auto_redirect_to_identity is not None:
-            _setter("auto_redirect_to_identity", auto_redirect_to_identity)
+            pulumi.set(__self__, "auto_redirect_to_identity", auto_redirect_to_identity)
         if custom_pages is not None:
-            _setter("custom_pages", custom_pages)
+            pulumi.set(__self__, "custom_pages", custom_pages)
         if is_ui_read_only is not None:
-            _setter("is_ui_read_only", is_ui_read_only)
+            pulumi.set(__self__, "is_ui_read_only", is_ui_read_only)
         if login_designs is not None:
-            _setter("login_designs", login_designs)
+            pulumi.set(__self__, "login_designs", login_designs)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if session_duration is not None:
-            _setter("session_duration", session_duration)
+            pulumi.set(__self__, "session_duration", session_duration)
         if ui_read_only_toggle_reason is not None:
-            _setter("ui_read_only_toggle_reason", ui_read_only_toggle_reason)
+            pulumi.set(__self__, "ui_read_only_toggle_reason", ui_read_only_toggle_reason)
         if user_seat_expiration_inactive_time is not None:
-            _setter("user_seat_expiration_inactive_time", user_seat_expiration_inactive_time)
+            pulumi.set(__self__, "user_seat_expiration_inactive_time", user_seat_expiration_inactive_time)
         if zone_id is not None:
-            _setter("zone_id", zone_id)
+            pulumi.set(__self__, "zone_id", zone_id)
 
     @property
     @pulumi.getter(name="authDomain")
@@ -272,79 +219,28 @@ class _AccessOrganizationState:
         :param pulumi.Input[str] user_seat_expiration_inactive_time: The amount of time a user seat is inactive before it expires. When the user seat exceeds the set time of inactivity, the user is removed as an active seat and no longer counts against your Teams seat count. Must be in the format `300ms` or `2h45m`.
         :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. Conflicts with `account_id`.
         """
-        _AccessOrganizationState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            account_id=account_id,
-            auth_domain=auth_domain,
-            auto_redirect_to_identity=auto_redirect_to_identity,
-            custom_pages=custom_pages,
-            is_ui_read_only=is_ui_read_only,
-            login_designs=login_designs,
-            name=name,
-            session_duration=session_duration,
-            ui_read_only_toggle_reason=ui_read_only_toggle_reason,
-            user_seat_expiration_inactive_time=user_seat_expiration_inactive_time,
-            zone_id=zone_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             account_id: Optional[pulumi.Input[str]] = None,
-             auth_domain: Optional[pulumi.Input[str]] = None,
-             auto_redirect_to_identity: Optional[pulumi.Input[bool]] = None,
-             custom_pages: Optional[pulumi.Input[Sequence[pulumi.Input['AccessOrganizationCustomPageArgs']]]] = None,
-             is_ui_read_only: Optional[pulumi.Input[bool]] = None,
-             login_designs: Optional[pulumi.Input[Sequence[pulumi.Input['AccessOrganizationLoginDesignArgs']]]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             session_duration: Optional[pulumi.Input[str]] = None,
-             ui_read_only_toggle_reason: Optional[pulumi.Input[str]] = None,
-             user_seat_expiration_inactive_time: Optional[pulumi.Input[str]] = None,
-             zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if account_id is None and 'accountId' in kwargs:
-            account_id = kwargs['accountId']
-        if auth_domain is None and 'authDomain' in kwargs:
-            auth_domain = kwargs['authDomain']
-        if auto_redirect_to_identity is None and 'autoRedirectToIdentity' in kwargs:
-            auto_redirect_to_identity = kwargs['autoRedirectToIdentity']
-        if custom_pages is None and 'customPages' in kwargs:
-            custom_pages = kwargs['customPages']
-        if is_ui_read_only is None and 'isUiReadOnly' in kwargs:
-            is_ui_read_only = kwargs['isUiReadOnly']
-        if login_designs is None and 'loginDesigns' in kwargs:
-            login_designs = kwargs['loginDesigns']
-        if session_duration is None and 'sessionDuration' in kwargs:
-            session_duration = kwargs['sessionDuration']
-        if ui_read_only_toggle_reason is None and 'uiReadOnlyToggleReason' in kwargs:
-            ui_read_only_toggle_reason = kwargs['uiReadOnlyToggleReason']
-        if user_seat_expiration_inactive_time is None and 'userSeatExpirationInactiveTime' in kwargs:
-            user_seat_expiration_inactive_time = kwargs['userSeatExpirationInactiveTime']
-        if zone_id is None and 'zoneId' in kwargs:
-            zone_id = kwargs['zoneId']
-
         if account_id is not None:
-            _setter("account_id", account_id)
+            pulumi.set(__self__, "account_id", account_id)
         if auth_domain is not None:
-            _setter("auth_domain", auth_domain)
+            pulumi.set(__self__, "auth_domain", auth_domain)
         if auto_redirect_to_identity is not None:
-            _setter("auto_redirect_to_identity", auto_redirect_to_identity)
+            pulumi.set(__self__, "auto_redirect_to_identity", auto_redirect_to_identity)
         if custom_pages is not None:
-            _setter("custom_pages", custom_pages)
+            pulumi.set(__self__, "custom_pages", custom_pages)
         if is_ui_read_only is not None:
-            _setter("is_ui_read_only", is_ui_read_only)
+            pulumi.set(__self__, "is_ui_read_only", is_ui_read_only)
         if login_designs is not None:
-            _setter("login_designs", login_designs)
+            pulumi.set(__self__, "login_designs", login_designs)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if session_duration is not None:
-            _setter("session_duration", session_duration)
+            pulumi.set(__self__, "session_duration", session_duration)
         if ui_read_only_toggle_reason is not None:
-            _setter("ui_read_only_toggle_reason", ui_read_only_toggle_reason)
+            pulumi.set(__self__, "ui_read_only_toggle_reason", ui_read_only_toggle_reason)
         if user_seat_expiration_inactive_time is not None:
-            _setter("user_seat_expiration_inactive_time", user_seat_expiration_inactive_time)
+            pulumi.set(__self__, "user_seat_expiration_inactive_time", user_seat_expiration_inactive_time)
         if zone_id is not None:
-            _setter("zone_id", zone_id)
+            pulumi.set(__self__, "zone_id", zone_id)
 
     @property
     @pulumi.getter(name="accountId")
@@ -584,10 +480,6 @@ class AccessOrganization(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            AccessOrganizationArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -44,66 +44,25 @@ class RecordArgs:
         :param pulumi.Input[int] ttl: The TTL of the record.
         :param pulumi.Input[str] value: The value of the record.
         """
-        RecordArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            name=name,
-            type=type,
-            zone_id=zone_id,
-            allow_overwrite=allow_overwrite,
-            comment=comment,
-            data=data,
-            priority=priority,
-            proxied=proxied,
-            tags=tags,
-            ttl=ttl,
-            value=value,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             name: Optional[pulumi.Input[str]] = None,
-             type: Optional[pulumi.Input[str]] = None,
-             zone_id: Optional[pulumi.Input[str]] = None,
-             allow_overwrite: Optional[pulumi.Input[bool]] = None,
-             comment: Optional[pulumi.Input[str]] = None,
-             data: Optional[pulumi.Input['RecordDataArgs']] = None,
-             priority: Optional[pulumi.Input[int]] = None,
-             proxied: Optional[pulumi.Input[bool]] = None,
-             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             ttl: Optional[pulumi.Input[int]] = None,
-             value: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if name is None:
-            raise TypeError("Missing 'name' argument")
-        if type is None:
-            raise TypeError("Missing 'type' argument")
-        if zone_id is None and 'zoneId' in kwargs:
-            zone_id = kwargs['zoneId']
-        if zone_id is None:
-            raise TypeError("Missing 'zone_id' argument")
-        if allow_overwrite is None and 'allowOverwrite' in kwargs:
-            allow_overwrite = kwargs['allowOverwrite']
-
-        _setter("name", name)
-        _setter("type", type)
-        _setter("zone_id", zone_id)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "type", type)
+        pulumi.set(__self__, "zone_id", zone_id)
         if allow_overwrite is not None:
-            _setter("allow_overwrite", allow_overwrite)
+            pulumi.set(__self__, "allow_overwrite", allow_overwrite)
         if comment is not None:
-            _setter("comment", comment)
+            pulumi.set(__self__, "comment", comment)
         if data is not None:
-            _setter("data", data)
+            pulumi.set(__self__, "data", data)
         if priority is not None:
-            _setter("priority", priority)
+            pulumi.set(__self__, "priority", priority)
         if proxied is not None:
-            _setter("proxied", proxied)
+            pulumi.set(__self__, "proxied", proxied)
         if tags is not None:
-            _setter("tags", tags)
+            pulumi.set(__self__, "tags", tags)
         if ttl is not None:
-            _setter("ttl", ttl)
+            pulumi.set(__self__, "ttl", ttl)
         if value is not None:
-            _setter("value", value)
+            pulumi.set(__self__, "value", value)
 
     @property
     @pulumi.getter
@@ -282,87 +241,38 @@ class _RecordState:
         :param pulumi.Input[str] value: The value of the record.
         :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         """
-        _RecordState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            allow_overwrite=allow_overwrite,
-            comment=comment,
-            created_on=created_on,
-            data=data,
-            hostname=hostname,
-            metadata=metadata,
-            modified_on=modified_on,
-            name=name,
-            priority=priority,
-            proxiable=proxiable,
-            proxied=proxied,
-            tags=tags,
-            ttl=ttl,
-            type=type,
-            value=value,
-            zone_id=zone_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             allow_overwrite: Optional[pulumi.Input[bool]] = None,
-             comment: Optional[pulumi.Input[str]] = None,
-             created_on: Optional[pulumi.Input[str]] = None,
-             data: Optional[pulumi.Input['RecordDataArgs']] = None,
-             hostname: Optional[pulumi.Input[str]] = None,
-             metadata: Optional[pulumi.Input[Mapping[str, Any]]] = None,
-             modified_on: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             priority: Optional[pulumi.Input[int]] = None,
-             proxiable: Optional[pulumi.Input[bool]] = None,
-             proxied: Optional[pulumi.Input[bool]] = None,
-             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             ttl: Optional[pulumi.Input[int]] = None,
-             type: Optional[pulumi.Input[str]] = None,
-             value: Optional[pulumi.Input[str]] = None,
-             zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if allow_overwrite is None and 'allowOverwrite' in kwargs:
-            allow_overwrite = kwargs['allowOverwrite']
-        if created_on is None and 'createdOn' in kwargs:
-            created_on = kwargs['createdOn']
-        if modified_on is None and 'modifiedOn' in kwargs:
-            modified_on = kwargs['modifiedOn']
-        if zone_id is None and 'zoneId' in kwargs:
-            zone_id = kwargs['zoneId']
-
         if allow_overwrite is not None:
-            _setter("allow_overwrite", allow_overwrite)
+            pulumi.set(__self__, "allow_overwrite", allow_overwrite)
         if comment is not None:
-            _setter("comment", comment)
+            pulumi.set(__self__, "comment", comment)
         if created_on is not None:
-            _setter("created_on", created_on)
+            pulumi.set(__self__, "created_on", created_on)
         if data is not None:
-            _setter("data", data)
+            pulumi.set(__self__, "data", data)
         if hostname is not None:
-            _setter("hostname", hostname)
+            pulumi.set(__self__, "hostname", hostname)
         if metadata is not None:
-            _setter("metadata", metadata)
+            pulumi.set(__self__, "metadata", metadata)
         if modified_on is not None:
-            _setter("modified_on", modified_on)
+            pulumi.set(__self__, "modified_on", modified_on)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if priority is not None:
-            _setter("priority", priority)
+            pulumi.set(__self__, "priority", priority)
         if proxiable is not None:
-            _setter("proxiable", proxiable)
+            pulumi.set(__self__, "proxiable", proxiable)
         if proxied is not None:
-            _setter("proxied", proxied)
+            pulumi.set(__self__, "proxied", proxied)
         if tags is not None:
-            _setter("tags", tags)
+            pulumi.set(__self__, "tags", tags)
         if ttl is not None:
-            _setter("ttl", ttl)
+            pulumi.set(__self__, "ttl", ttl)
         if type is not None:
-            _setter("type", type)
+            pulumi.set(__self__, "type", type)
         if value is not None:
-            _setter("value", value)
+            pulumi.set(__self__, "value", value)
         if zone_id is not None:
-            _setter("zone_id", zone_id)
+            pulumi.set(__self__, "zone_id", zone_id)
 
     @property
     @pulumi.getter(name="allowOverwrite")
@@ -686,10 +596,6 @@ class Record(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            RecordArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -717,7 +623,6 @@ class Record(pulumi.CustomResource):
 
             __props__.__dict__["allow_overwrite"] = allow_overwrite
             __props__.__dict__["comment"] = comment
-            data = _utilities.configure(data, RecordDataArgs, True)
             __props__.__dict__["data"] = data
             if name is None and not opts.urn:
                 raise TypeError("Missing required property 'name'")

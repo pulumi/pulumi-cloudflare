@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -25,34 +25,9 @@ class TunnelConfigArgs:
         :param pulumi.Input['TunnelConfigConfigArgs'] config: Configuration block for Tunnel Configuration.
         :param pulumi.Input[str] tunnel_id: Identifier of the Tunnel to target for this configuration.
         """
-        TunnelConfigArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            account_id=account_id,
-            config=config,
-            tunnel_id=tunnel_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             account_id: Optional[pulumi.Input[str]] = None,
-             config: Optional[pulumi.Input['TunnelConfigConfigArgs']] = None,
-             tunnel_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if account_id is None and 'accountId' in kwargs:
-            account_id = kwargs['accountId']
-        if account_id is None:
-            raise TypeError("Missing 'account_id' argument")
-        if config is None:
-            raise TypeError("Missing 'config' argument")
-        if tunnel_id is None and 'tunnelId' in kwargs:
-            tunnel_id = kwargs['tunnelId']
-        if tunnel_id is None:
-            raise TypeError("Missing 'tunnel_id' argument")
-
-        _setter("account_id", account_id)
-        _setter("config", config)
-        _setter("tunnel_id", tunnel_id)
+        pulumi.set(__self__, "account_id", account_id)
+        pulumi.set(__self__, "config", config)
+        pulumi.set(__self__, "tunnel_id", tunnel_id)
 
     @property
     @pulumi.getter(name="accountId")
@@ -103,31 +78,12 @@ class _TunnelConfigState:
         :param pulumi.Input['TunnelConfigConfigArgs'] config: Configuration block for Tunnel Configuration.
         :param pulumi.Input[str] tunnel_id: Identifier of the Tunnel to target for this configuration.
         """
-        _TunnelConfigState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            account_id=account_id,
-            config=config,
-            tunnel_id=tunnel_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             account_id: Optional[pulumi.Input[str]] = None,
-             config: Optional[pulumi.Input['TunnelConfigConfigArgs']] = None,
-             tunnel_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if account_id is None and 'accountId' in kwargs:
-            account_id = kwargs['accountId']
-        if tunnel_id is None and 'tunnelId' in kwargs:
-            tunnel_id = kwargs['tunnelId']
-
         if account_id is not None:
-            _setter("account_id", account_id)
+            pulumi.set(__self__, "account_id", account_id)
         if config is not None:
-            _setter("config", config)
+            pulumi.set(__self__, "config", config)
         if tunnel_id is not None:
-            _setter("tunnel_id", tunnel_id)
+            pulumi.set(__self__, "tunnel_id", tunnel_id)
 
     @property
     @pulumi.getter(name="accountId")
@@ -345,10 +301,6 @@ class TunnelConfig(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            TunnelConfigArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -369,7 +321,6 @@ class TunnelConfig(pulumi.CustomResource):
             if account_id is None and not opts.urn:
                 raise TypeError("Missing required property 'account_id'")
             __props__.__dict__["account_id"] = account_id
-            config = _utilities.configure(config, TunnelConfigConfigArgs, True)
             if config is None and not opts.urn:
                 raise TypeError("Missing required property 'config'")
             __props__.__dict__["config"] = config

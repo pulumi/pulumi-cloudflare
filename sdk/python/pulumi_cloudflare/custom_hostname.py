@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -33,55 +33,18 @@ class CustomHostnameArgs:
         :param pulumi.Input[Sequence[pulumi.Input['CustomHostnameSslArgs']]] ssls: SSL properties used when creating the custom hostname.
         :param pulumi.Input[bool] wait_for_ssl_pending_validation: Whether to wait for a custom hostname SSL sub-object to reach status `pending_validation` during creation. Defaults to `false`.
         """
-        CustomHostnameArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            hostname=hostname,
-            zone_id=zone_id,
-            custom_metadata=custom_metadata,
-            custom_origin_server=custom_origin_server,
-            custom_origin_sni=custom_origin_sni,
-            ssls=ssls,
-            wait_for_ssl_pending_validation=wait_for_ssl_pending_validation,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             hostname: Optional[pulumi.Input[str]] = None,
-             zone_id: Optional[pulumi.Input[str]] = None,
-             custom_metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             custom_origin_server: Optional[pulumi.Input[str]] = None,
-             custom_origin_sni: Optional[pulumi.Input[str]] = None,
-             ssls: Optional[pulumi.Input[Sequence[pulumi.Input['CustomHostnameSslArgs']]]] = None,
-             wait_for_ssl_pending_validation: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if hostname is None:
-            raise TypeError("Missing 'hostname' argument")
-        if zone_id is None and 'zoneId' in kwargs:
-            zone_id = kwargs['zoneId']
-        if zone_id is None:
-            raise TypeError("Missing 'zone_id' argument")
-        if custom_metadata is None and 'customMetadata' in kwargs:
-            custom_metadata = kwargs['customMetadata']
-        if custom_origin_server is None and 'customOriginServer' in kwargs:
-            custom_origin_server = kwargs['customOriginServer']
-        if custom_origin_sni is None and 'customOriginSni' in kwargs:
-            custom_origin_sni = kwargs['customOriginSni']
-        if wait_for_ssl_pending_validation is None and 'waitForSslPendingValidation' in kwargs:
-            wait_for_ssl_pending_validation = kwargs['waitForSslPendingValidation']
-
-        _setter("hostname", hostname)
-        _setter("zone_id", zone_id)
+        pulumi.set(__self__, "hostname", hostname)
+        pulumi.set(__self__, "zone_id", zone_id)
         if custom_metadata is not None:
-            _setter("custom_metadata", custom_metadata)
+            pulumi.set(__self__, "custom_metadata", custom_metadata)
         if custom_origin_server is not None:
-            _setter("custom_origin_server", custom_origin_server)
+            pulumi.set(__self__, "custom_origin_server", custom_origin_server)
         if custom_origin_sni is not None:
-            _setter("custom_origin_sni", custom_origin_sni)
+            pulumi.set(__self__, "custom_origin_sni", custom_origin_sni)
         if ssls is not None:
-            _setter("ssls", ssls)
+            pulumi.set(__self__, "ssls", ssls)
         if wait_for_ssl_pending_validation is not None:
-            _setter("wait_for_ssl_pending_validation", wait_for_ssl_pending_validation)
+            pulumi.set(__self__, "wait_for_ssl_pending_validation", wait_for_ssl_pending_validation)
 
     @property
     @pulumi.getter
@@ -192,69 +155,26 @@ class _CustomHostnameState:
         :param pulumi.Input[bool] wait_for_ssl_pending_validation: Whether to wait for a custom hostname SSL sub-object to reach status `pending_validation` during creation. Defaults to `false`.
         :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         """
-        _CustomHostnameState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            custom_metadata=custom_metadata,
-            custom_origin_server=custom_origin_server,
-            custom_origin_sni=custom_origin_sni,
-            hostname=hostname,
-            ownership_verification=ownership_verification,
-            ownership_verification_http=ownership_verification_http,
-            ssls=ssls,
-            status=status,
-            wait_for_ssl_pending_validation=wait_for_ssl_pending_validation,
-            zone_id=zone_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             custom_metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             custom_origin_server: Optional[pulumi.Input[str]] = None,
-             custom_origin_sni: Optional[pulumi.Input[str]] = None,
-             hostname: Optional[pulumi.Input[str]] = None,
-             ownership_verification: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             ownership_verification_http: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-             ssls: Optional[pulumi.Input[Sequence[pulumi.Input['CustomHostnameSslArgs']]]] = None,
-             status: Optional[pulumi.Input[str]] = None,
-             wait_for_ssl_pending_validation: Optional[pulumi.Input[bool]] = None,
-             zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if custom_metadata is None and 'customMetadata' in kwargs:
-            custom_metadata = kwargs['customMetadata']
-        if custom_origin_server is None and 'customOriginServer' in kwargs:
-            custom_origin_server = kwargs['customOriginServer']
-        if custom_origin_sni is None and 'customOriginSni' in kwargs:
-            custom_origin_sni = kwargs['customOriginSni']
-        if ownership_verification is None and 'ownershipVerification' in kwargs:
-            ownership_verification = kwargs['ownershipVerification']
-        if ownership_verification_http is None and 'ownershipVerificationHttp' in kwargs:
-            ownership_verification_http = kwargs['ownershipVerificationHttp']
-        if wait_for_ssl_pending_validation is None and 'waitForSslPendingValidation' in kwargs:
-            wait_for_ssl_pending_validation = kwargs['waitForSslPendingValidation']
-        if zone_id is None and 'zoneId' in kwargs:
-            zone_id = kwargs['zoneId']
-
         if custom_metadata is not None:
-            _setter("custom_metadata", custom_metadata)
+            pulumi.set(__self__, "custom_metadata", custom_metadata)
         if custom_origin_server is not None:
-            _setter("custom_origin_server", custom_origin_server)
+            pulumi.set(__self__, "custom_origin_server", custom_origin_server)
         if custom_origin_sni is not None:
-            _setter("custom_origin_sni", custom_origin_sni)
+            pulumi.set(__self__, "custom_origin_sni", custom_origin_sni)
         if hostname is not None:
-            _setter("hostname", hostname)
+            pulumi.set(__self__, "hostname", hostname)
         if ownership_verification is not None:
-            _setter("ownership_verification", ownership_verification)
+            pulumi.set(__self__, "ownership_verification", ownership_verification)
         if ownership_verification_http is not None:
-            _setter("ownership_verification_http", ownership_verification_http)
+            pulumi.set(__self__, "ownership_verification_http", ownership_verification_http)
         if ssls is not None:
-            _setter("ssls", ssls)
+            pulumi.set(__self__, "ssls", ssls)
         if status is not None:
-            _setter("status", status)
+            pulumi.set(__self__, "status", status)
         if wait_for_ssl_pending_validation is not None:
-            _setter("wait_for_ssl_pending_validation", wait_for_ssl_pending_validation)
+            pulumi.set(__self__, "wait_for_ssl_pending_validation", wait_for_ssl_pending_validation)
         if zone_id is not None:
-            _setter("zone_id", zone_id)
+            pulumi.set(__self__, "zone_id", zone_id)
 
     @property
     @pulumi.getter(name="customMetadata")
@@ -456,10 +376,6 @@ class CustomHostname(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            CustomHostnameArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['LogpushOwnershipChallengeArgs', 'LogpushOwnershipChallenge']
@@ -23,34 +23,11 @@ class LogpushOwnershipChallengeArgs:
         :param pulumi.Input[str] account_id: The account identifier to target for the resource. Must provide only one of `account_id`, `zone_id`.
         :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. Must provide only one of `account_id`, `zone_id`.
         """
-        LogpushOwnershipChallengeArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            destination_conf=destination_conf,
-            account_id=account_id,
-            zone_id=zone_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             destination_conf: Optional[pulumi.Input[str]] = None,
-             account_id: Optional[pulumi.Input[str]] = None,
-             zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if destination_conf is None and 'destinationConf' in kwargs:
-            destination_conf = kwargs['destinationConf']
-        if destination_conf is None:
-            raise TypeError("Missing 'destination_conf' argument")
-        if account_id is None and 'accountId' in kwargs:
-            account_id = kwargs['accountId']
-        if zone_id is None and 'zoneId' in kwargs:
-            zone_id = kwargs['zoneId']
-
-        _setter("destination_conf", destination_conf)
+        pulumi.set(__self__, "destination_conf", destination_conf)
         if account_id is not None:
-            _setter("account_id", account_id)
+            pulumi.set(__self__, "account_id", account_id)
         if zone_id is not None:
-            _setter("zone_id", zone_id)
+            pulumi.set(__self__, "zone_id", zone_id)
 
     @property
     @pulumi.getter(name="destinationConf")
@@ -103,39 +80,14 @@ class _LogpushOwnershipChallengeState:
         :param pulumi.Input[str] ownership_challenge_filename: The filename of the ownership challenge which	contains the contents required for Logpush Job creation.
         :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. Must provide only one of `account_id`, `zone_id`.
         """
-        _LogpushOwnershipChallengeState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            account_id=account_id,
-            destination_conf=destination_conf,
-            ownership_challenge_filename=ownership_challenge_filename,
-            zone_id=zone_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             account_id: Optional[pulumi.Input[str]] = None,
-             destination_conf: Optional[pulumi.Input[str]] = None,
-             ownership_challenge_filename: Optional[pulumi.Input[str]] = None,
-             zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if account_id is None and 'accountId' in kwargs:
-            account_id = kwargs['accountId']
-        if destination_conf is None and 'destinationConf' in kwargs:
-            destination_conf = kwargs['destinationConf']
-        if ownership_challenge_filename is None and 'ownershipChallengeFilename' in kwargs:
-            ownership_challenge_filename = kwargs['ownershipChallengeFilename']
-        if zone_id is None and 'zoneId' in kwargs:
-            zone_id = kwargs['zoneId']
-
         if account_id is not None:
-            _setter("account_id", account_id)
+            pulumi.set(__self__, "account_id", account_id)
         if destination_conf is not None:
-            _setter("destination_conf", destination_conf)
+            pulumi.set(__self__, "destination_conf", destination_conf)
         if ownership_challenge_filename is not None:
-            _setter("ownership_challenge_filename", ownership_challenge_filename)
+            pulumi.set(__self__, "ownership_challenge_filename", ownership_challenge_filename)
         if zone_id is not None:
-            _setter("zone_id", zone_id)
+            pulumi.set(__self__, "zone_id", zone_id)
 
     @property
     @pulumi.getter(name="accountId")
@@ -251,10 +203,6 @@ class LogpushOwnershipChallenge(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            LogpushOwnershipChallengeArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

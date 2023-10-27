@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -28,40 +28,13 @@ class ListArgs:
         :param pulumi.Input[str] name: The name of the list. **Modifying this attribute will force creation of a new resource.**
         :param pulumi.Input[str] description: An optional description of the list.
         """
-        ListArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            account_id=account_id,
-            kind=kind,
-            name=name,
-            description=description,
-            items=items,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             account_id: Optional[pulumi.Input[str]] = None,
-             kind: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             items: Optional[pulumi.Input[Sequence[pulumi.Input['ListItemArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if account_id is None and 'accountId' in kwargs:
-            account_id = kwargs['accountId']
-        if account_id is None:
-            raise TypeError("Missing 'account_id' argument")
-        if kind is None:
-            raise TypeError("Missing 'kind' argument")
-        if name is None:
-            raise TypeError("Missing 'name' argument")
-
-        _setter("account_id", account_id)
-        _setter("kind", kind)
-        _setter("name", name)
+        pulumi.set(__self__, "account_id", account_id)
+        pulumi.set(__self__, "kind", kind)
+        pulumi.set(__self__, "name", name)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if items is not None:
-            _setter("items", items)
+            pulumi.set(__self__, "items", items)
 
     @property
     @pulumi.getter(name="accountId")
@@ -136,37 +109,16 @@ class _ListState:
         :param pulumi.Input[str] kind: The type of items the list will contain. Available values: `ip`, `redirect`, `hostname`, `asn`. **Modifying this attribute will force creation of a new resource.**
         :param pulumi.Input[str] name: The name of the list. **Modifying this attribute will force creation of a new resource.**
         """
-        _ListState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            account_id=account_id,
-            description=description,
-            items=items,
-            kind=kind,
-            name=name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             account_id: Optional[pulumi.Input[str]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             items: Optional[pulumi.Input[Sequence[pulumi.Input['ListItemArgs']]]] = None,
-             kind: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if account_id is None and 'accountId' in kwargs:
-            account_id = kwargs['accountId']
-
         if account_id is not None:
-            _setter("account_id", account_id)
+            pulumi.set(__self__, "account_id", account_id)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if items is not None:
-            _setter("items", items)
+            pulumi.set(__self__, "items", items)
         if kind is not None:
-            _setter("kind", kind)
+            pulumi.set(__self__, "kind", kind)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
 
     @property
     @pulumi.getter(name="accountId")
@@ -274,10 +226,6 @@ class List(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            ListArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

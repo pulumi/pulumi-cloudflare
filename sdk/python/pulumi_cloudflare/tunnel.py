@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['TunnelArgs', 'Tunnel']
@@ -25,38 +25,11 @@ class TunnelArgs:
         :param pulumi.Input[str] secret: 32 or more bytes, encoded as a base64 string. The Create Argo Tunnel endpoint sets this as the tunnel's password. Anyone wishing to run the tunnel needs this password. **Modifying this attribute will force creation of a new resource.**
         :param pulumi.Input[str] config_src: Indicates if this is a locally or remotely configured tunnel. If `local`, manage the tunnel using a YAML file on the origin machine. If `cloudflare`, manage the tunnel on the Zero Trust dashboard or using tunnel*config, tunnel*route or tunnel*virtual*network resources. Available values: `local`, `cloudflare`. **Modifying this attribute will force creation of a new resource.**
         """
-        TunnelArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            account_id=account_id,
-            name=name,
-            secret=secret,
-            config_src=config_src,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             account_id: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             secret: Optional[pulumi.Input[str]] = None,
-             config_src: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if account_id is None and 'accountId' in kwargs:
-            account_id = kwargs['accountId']
-        if account_id is None:
-            raise TypeError("Missing 'account_id' argument")
-        if name is None:
-            raise TypeError("Missing 'name' argument")
-        if secret is None:
-            raise TypeError("Missing 'secret' argument")
-        if config_src is None and 'configSrc' in kwargs:
-            config_src = kwargs['configSrc']
-
-        _setter("account_id", account_id)
-        _setter("name", name)
-        _setter("secret", secret)
+        pulumi.set(__self__, "account_id", account_id)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "secret", secret)
         if config_src is not None:
-            _setter("config_src", config_src)
+            pulumi.set(__self__, "config_src", config_src)
 
     @property
     @pulumi.getter(name="accountId")
@@ -125,45 +98,18 @@ class _TunnelState:
         :param pulumi.Input[str] secret: 32 or more bytes, encoded as a base64 string. The Create Argo Tunnel endpoint sets this as the tunnel's password. Anyone wishing to run the tunnel needs this password. **Modifying this attribute will force creation of a new resource.**
         :param pulumi.Input[str] tunnel_token: Token used by a connector to authenticate and run the tunnel.
         """
-        _TunnelState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            account_id=account_id,
-            cname=cname,
-            config_src=config_src,
-            name=name,
-            secret=secret,
-            tunnel_token=tunnel_token,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             account_id: Optional[pulumi.Input[str]] = None,
-             cname: Optional[pulumi.Input[str]] = None,
-             config_src: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             secret: Optional[pulumi.Input[str]] = None,
-             tunnel_token: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if account_id is None and 'accountId' in kwargs:
-            account_id = kwargs['accountId']
-        if config_src is None and 'configSrc' in kwargs:
-            config_src = kwargs['configSrc']
-        if tunnel_token is None and 'tunnelToken' in kwargs:
-            tunnel_token = kwargs['tunnelToken']
-
         if account_id is not None:
-            _setter("account_id", account_id)
+            pulumi.set(__self__, "account_id", account_id)
         if cname is not None:
-            _setter("cname", cname)
+            pulumi.set(__self__, "cname", cname)
         if config_src is not None:
-            _setter("config_src", config_src)
+            pulumi.set(__self__, "config_src", config_src)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if secret is not None:
-            _setter("secret", secret)
+            pulumi.set(__self__, "secret", secret)
         if tunnel_token is not None:
-            _setter("tunnel_token", tunnel_token)
+            pulumi.set(__self__, "tunnel_token", tunnel_token)
 
     @property
     @pulumi.getter(name="accountId")
@@ -317,10 +263,6 @@ class Tunnel(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            TunnelArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

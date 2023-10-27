@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['WaitingRoomEventArgs', 'WaitingRoomEvent']
@@ -47,104 +47,31 @@ class WaitingRoomEventArgs:
         :param pulumi.Input[bool] suspended: If suspended, the event is ignored and traffic will be handled based on the waiting room configuration.
         :param pulumi.Input[int] total_active_users: The total number of active user sessions on the route at a point in time.
         """
-        WaitingRoomEventArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            event_end_time=event_end_time,
-            event_start_time=event_start_time,
-            name=name,
-            waiting_room_id=waiting_room_id,
-            zone_id=zone_id,
-            custom_page_html=custom_page_html,
-            description=description,
-            disable_session_renewal=disable_session_renewal,
-            new_users_per_minute=new_users_per_minute,
-            prequeue_start_time=prequeue_start_time,
-            queueing_method=queueing_method,
-            session_duration=session_duration,
-            shuffle_at_event_start=shuffle_at_event_start,
-            suspended=suspended,
-            total_active_users=total_active_users,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             event_end_time: Optional[pulumi.Input[str]] = None,
-             event_start_time: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             waiting_room_id: Optional[pulumi.Input[str]] = None,
-             zone_id: Optional[pulumi.Input[str]] = None,
-             custom_page_html: Optional[pulumi.Input[str]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             disable_session_renewal: Optional[pulumi.Input[bool]] = None,
-             new_users_per_minute: Optional[pulumi.Input[int]] = None,
-             prequeue_start_time: Optional[pulumi.Input[str]] = None,
-             queueing_method: Optional[pulumi.Input[str]] = None,
-             session_duration: Optional[pulumi.Input[int]] = None,
-             shuffle_at_event_start: Optional[pulumi.Input[bool]] = None,
-             suspended: Optional[pulumi.Input[bool]] = None,
-             total_active_users: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if event_end_time is None and 'eventEndTime' in kwargs:
-            event_end_time = kwargs['eventEndTime']
-        if event_end_time is None:
-            raise TypeError("Missing 'event_end_time' argument")
-        if event_start_time is None and 'eventStartTime' in kwargs:
-            event_start_time = kwargs['eventStartTime']
-        if event_start_time is None:
-            raise TypeError("Missing 'event_start_time' argument")
-        if name is None:
-            raise TypeError("Missing 'name' argument")
-        if waiting_room_id is None and 'waitingRoomId' in kwargs:
-            waiting_room_id = kwargs['waitingRoomId']
-        if waiting_room_id is None:
-            raise TypeError("Missing 'waiting_room_id' argument")
-        if zone_id is None and 'zoneId' in kwargs:
-            zone_id = kwargs['zoneId']
-        if zone_id is None:
-            raise TypeError("Missing 'zone_id' argument")
-        if custom_page_html is None and 'customPageHtml' in kwargs:
-            custom_page_html = kwargs['customPageHtml']
-        if disable_session_renewal is None and 'disableSessionRenewal' in kwargs:
-            disable_session_renewal = kwargs['disableSessionRenewal']
-        if new_users_per_minute is None and 'newUsersPerMinute' in kwargs:
-            new_users_per_minute = kwargs['newUsersPerMinute']
-        if prequeue_start_time is None and 'prequeueStartTime' in kwargs:
-            prequeue_start_time = kwargs['prequeueStartTime']
-        if queueing_method is None and 'queueingMethod' in kwargs:
-            queueing_method = kwargs['queueingMethod']
-        if session_duration is None and 'sessionDuration' in kwargs:
-            session_duration = kwargs['sessionDuration']
-        if shuffle_at_event_start is None and 'shuffleAtEventStart' in kwargs:
-            shuffle_at_event_start = kwargs['shuffleAtEventStart']
-        if total_active_users is None and 'totalActiveUsers' in kwargs:
-            total_active_users = kwargs['totalActiveUsers']
-
-        _setter("event_end_time", event_end_time)
-        _setter("event_start_time", event_start_time)
-        _setter("name", name)
-        _setter("waiting_room_id", waiting_room_id)
-        _setter("zone_id", zone_id)
+        pulumi.set(__self__, "event_end_time", event_end_time)
+        pulumi.set(__self__, "event_start_time", event_start_time)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "waiting_room_id", waiting_room_id)
+        pulumi.set(__self__, "zone_id", zone_id)
         if custom_page_html is not None:
-            _setter("custom_page_html", custom_page_html)
+            pulumi.set(__self__, "custom_page_html", custom_page_html)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if disable_session_renewal is not None:
-            _setter("disable_session_renewal", disable_session_renewal)
+            pulumi.set(__self__, "disable_session_renewal", disable_session_renewal)
         if new_users_per_minute is not None:
-            _setter("new_users_per_minute", new_users_per_minute)
+            pulumi.set(__self__, "new_users_per_minute", new_users_per_minute)
         if prequeue_start_time is not None:
-            _setter("prequeue_start_time", prequeue_start_time)
+            pulumi.set(__self__, "prequeue_start_time", prequeue_start_time)
         if queueing_method is not None:
-            _setter("queueing_method", queueing_method)
+            pulumi.set(__self__, "queueing_method", queueing_method)
         if session_duration is not None:
-            _setter("session_duration", session_duration)
+            pulumi.set(__self__, "session_duration", session_duration)
         if shuffle_at_event_start is not None:
-            _setter("shuffle_at_event_start", shuffle_at_event_start)
+            pulumi.set(__self__, "shuffle_at_event_start", shuffle_at_event_start)
         if suspended is not None:
-            _setter("suspended", suspended)
+            pulumi.set(__self__, "suspended", suspended)
         if total_active_users is not None:
-            _setter("total_active_users", total_active_users)
+            pulumi.set(__self__, "total_active_users", total_active_users)
 
     @property
     @pulumi.getter(name="eventEndTime")
@@ -367,111 +294,40 @@ class _WaitingRoomEventState:
         :param pulumi.Input[str] waiting_room_id: The Waiting Room ID the event should apply to. **Modifying this attribute will force creation of a new resource.**
         :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         """
-        _WaitingRoomEventState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            created_on=created_on,
-            custom_page_html=custom_page_html,
-            description=description,
-            disable_session_renewal=disable_session_renewal,
-            event_end_time=event_end_time,
-            event_start_time=event_start_time,
-            modified_on=modified_on,
-            name=name,
-            new_users_per_minute=new_users_per_minute,
-            prequeue_start_time=prequeue_start_time,
-            queueing_method=queueing_method,
-            session_duration=session_duration,
-            shuffle_at_event_start=shuffle_at_event_start,
-            suspended=suspended,
-            total_active_users=total_active_users,
-            waiting_room_id=waiting_room_id,
-            zone_id=zone_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             created_on: Optional[pulumi.Input[str]] = None,
-             custom_page_html: Optional[pulumi.Input[str]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             disable_session_renewal: Optional[pulumi.Input[bool]] = None,
-             event_end_time: Optional[pulumi.Input[str]] = None,
-             event_start_time: Optional[pulumi.Input[str]] = None,
-             modified_on: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             new_users_per_minute: Optional[pulumi.Input[int]] = None,
-             prequeue_start_time: Optional[pulumi.Input[str]] = None,
-             queueing_method: Optional[pulumi.Input[str]] = None,
-             session_duration: Optional[pulumi.Input[int]] = None,
-             shuffle_at_event_start: Optional[pulumi.Input[bool]] = None,
-             suspended: Optional[pulumi.Input[bool]] = None,
-             total_active_users: Optional[pulumi.Input[int]] = None,
-             waiting_room_id: Optional[pulumi.Input[str]] = None,
-             zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if created_on is None and 'createdOn' in kwargs:
-            created_on = kwargs['createdOn']
-        if custom_page_html is None and 'customPageHtml' in kwargs:
-            custom_page_html = kwargs['customPageHtml']
-        if disable_session_renewal is None and 'disableSessionRenewal' in kwargs:
-            disable_session_renewal = kwargs['disableSessionRenewal']
-        if event_end_time is None and 'eventEndTime' in kwargs:
-            event_end_time = kwargs['eventEndTime']
-        if event_start_time is None and 'eventStartTime' in kwargs:
-            event_start_time = kwargs['eventStartTime']
-        if modified_on is None and 'modifiedOn' in kwargs:
-            modified_on = kwargs['modifiedOn']
-        if new_users_per_minute is None and 'newUsersPerMinute' in kwargs:
-            new_users_per_minute = kwargs['newUsersPerMinute']
-        if prequeue_start_time is None and 'prequeueStartTime' in kwargs:
-            prequeue_start_time = kwargs['prequeueStartTime']
-        if queueing_method is None and 'queueingMethod' in kwargs:
-            queueing_method = kwargs['queueingMethod']
-        if session_duration is None and 'sessionDuration' in kwargs:
-            session_duration = kwargs['sessionDuration']
-        if shuffle_at_event_start is None and 'shuffleAtEventStart' in kwargs:
-            shuffle_at_event_start = kwargs['shuffleAtEventStart']
-        if total_active_users is None and 'totalActiveUsers' in kwargs:
-            total_active_users = kwargs['totalActiveUsers']
-        if waiting_room_id is None and 'waitingRoomId' in kwargs:
-            waiting_room_id = kwargs['waitingRoomId']
-        if zone_id is None and 'zoneId' in kwargs:
-            zone_id = kwargs['zoneId']
-
         if created_on is not None:
-            _setter("created_on", created_on)
+            pulumi.set(__self__, "created_on", created_on)
         if custom_page_html is not None:
-            _setter("custom_page_html", custom_page_html)
+            pulumi.set(__self__, "custom_page_html", custom_page_html)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if disable_session_renewal is not None:
-            _setter("disable_session_renewal", disable_session_renewal)
+            pulumi.set(__self__, "disable_session_renewal", disable_session_renewal)
         if event_end_time is not None:
-            _setter("event_end_time", event_end_time)
+            pulumi.set(__self__, "event_end_time", event_end_time)
         if event_start_time is not None:
-            _setter("event_start_time", event_start_time)
+            pulumi.set(__self__, "event_start_time", event_start_time)
         if modified_on is not None:
-            _setter("modified_on", modified_on)
+            pulumi.set(__self__, "modified_on", modified_on)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if new_users_per_minute is not None:
-            _setter("new_users_per_minute", new_users_per_minute)
+            pulumi.set(__self__, "new_users_per_minute", new_users_per_minute)
         if prequeue_start_time is not None:
-            _setter("prequeue_start_time", prequeue_start_time)
+            pulumi.set(__self__, "prequeue_start_time", prequeue_start_time)
         if queueing_method is not None:
-            _setter("queueing_method", queueing_method)
+            pulumi.set(__self__, "queueing_method", queueing_method)
         if session_duration is not None:
-            _setter("session_duration", session_duration)
+            pulumi.set(__self__, "session_duration", session_duration)
         if shuffle_at_event_start is not None:
-            _setter("shuffle_at_event_start", shuffle_at_event_start)
+            pulumi.set(__self__, "shuffle_at_event_start", shuffle_at_event_start)
         if suspended is not None:
-            _setter("suspended", suspended)
+            pulumi.set(__self__, "suspended", suspended)
         if total_active_users is not None:
-            _setter("total_active_users", total_active_users)
+            pulumi.set(__self__, "total_active_users", total_active_users)
         if waiting_room_id is not None:
-            _setter("waiting_room_id", waiting_room_id)
+            pulumi.set(__self__, "waiting_room_id", waiting_room_id)
         if zone_id is not None:
-            _setter("zone_id", zone_id)
+            pulumi.set(__self__, "zone_id", zone_id)
 
     @property
     @pulumi.getter(name="createdOn")
@@ -785,10 +641,6 @@ class WaitingRoomEvent(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            WaitingRoomEventArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

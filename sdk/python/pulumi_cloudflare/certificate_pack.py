@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -37,77 +37,20 @@ class CertificatePackArgs:
         :param pulumi.Input[bool] cloudflare_branding: Whether or not to include Cloudflare branding. This will add `sni.cloudflaressl.com` as the Common Name if set to `true`. **Modifying this attribute will force creation of a new resource.**
         :param pulumi.Input[bool] wait_for_active_status: Whether or not to wait for a certificate pack to reach status `active` during creation. Defaults to `false`. **Modifying this attribute will force creation of a new resource.**
         """
-        CertificatePackArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            certificate_authority=certificate_authority,
-            hosts=hosts,
-            type=type,
-            validation_method=validation_method,
-            validity_days=validity_days,
-            zone_id=zone_id,
-            cloudflare_branding=cloudflare_branding,
-            validation_errors=validation_errors,
-            validation_records=validation_records,
-            wait_for_active_status=wait_for_active_status,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             certificate_authority: Optional[pulumi.Input[str]] = None,
-             hosts: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             type: Optional[pulumi.Input[str]] = None,
-             validation_method: Optional[pulumi.Input[str]] = None,
-             validity_days: Optional[pulumi.Input[int]] = None,
-             zone_id: Optional[pulumi.Input[str]] = None,
-             cloudflare_branding: Optional[pulumi.Input[bool]] = None,
-             validation_errors: Optional[pulumi.Input[Sequence[pulumi.Input['CertificatePackValidationErrorArgs']]]] = None,
-             validation_records: Optional[pulumi.Input[Sequence[pulumi.Input['CertificatePackValidationRecordArgs']]]] = None,
-             wait_for_active_status: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if certificate_authority is None and 'certificateAuthority' in kwargs:
-            certificate_authority = kwargs['certificateAuthority']
-        if certificate_authority is None:
-            raise TypeError("Missing 'certificate_authority' argument")
-        if hosts is None:
-            raise TypeError("Missing 'hosts' argument")
-        if type is None:
-            raise TypeError("Missing 'type' argument")
-        if validation_method is None and 'validationMethod' in kwargs:
-            validation_method = kwargs['validationMethod']
-        if validation_method is None:
-            raise TypeError("Missing 'validation_method' argument")
-        if validity_days is None and 'validityDays' in kwargs:
-            validity_days = kwargs['validityDays']
-        if validity_days is None:
-            raise TypeError("Missing 'validity_days' argument")
-        if zone_id is None and 'zoneId' in kwargs:
-            zone_id = kwargs['zoneId']
-        if zone_id is None:
-            raise TypeError("Missing 'zone_id' argument")
-        if cloudflare_branding is None and 'cloudflareBranding' in kwargs:
-            cloudflare_branding = kwargs['cloudflareBranding']
-        if validation_errors is None and 'validationErrors' in kwargs:
-            validation_errors = kwargs['validationErrors']
-        if validation_records is None and 'validationRecords' in kwargs:
-            validation_records = kwargs['validationRecords']
-        if wait_for_active_status is None and 'waitForActiveStatus' in kwargs:
-            wait_for_active_status = kwargs['waitForActiveStatus']
-
-        _setter("certificate_authority", certificate_authority)
-        _setter("hosts", hosts)
-        _setter("type", type)
-        _setter("validation_method", validation_method)
-        _setter("validity_days", validity_days)
-        _setter("zone_id", zone_id)
+        pulumi.set(__self__, "certificate_authority", certificate_authority)
+        pulumi.set(__self__, "hosts", hosts)
+        pulumi.set(__self__, "type", type)
+        pulumi.set(__self__, "validation_method", validation_method)
+        pulumi.set(__self__, "validity_days", validity_days)
+        pulumi.set(__self__, "zone_id", zone_id)
         if cloudflare_branding is not None:
-            _setter("cloudflare_branding", cloudflare_branding)
+            pulumi.set(__self__, "cloudflare_branding", cloudflare_branding)
         if validation_errors is not None:
-            _setter("validation_errors", validation_errors)
+            pulumi.set(__self__, "validation_errors", validation_errors)
         if validation_records is not None:
-            _setter("validation_records", validation_records)
+            pulumi.set(__self__, "validation_records", validation_records)
         if wait_for_active_status is not None:
-            _setter("wait_for_active_status", wait_for_active_status)
+            pulumi.set(__self__, "wait_for_active_status", wait_for_active_status)
 
     @property
     @pulumi.getter(name="certificateAuthority")
@@ -248,71 +191,26 @@ class _CertificatePackState:
         :param pulumi.Input[bool] wait_for_active_status: Whether or not to wait for a certificate pack to reach status `active` during creation. Defaults to `false`. **Modifying this attribute will force creation of a new resource.**
         :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         """
-        _CertificatePackState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            certificate_authority=certificate_authority,
-            cloudflare_branding=cloudflare_branding,
-            hosts=hosts,
-            type=type,
-            validation_errors=validation_errors,
-            validation_method=validation_method,
-            validation_records=validation_records,
-            validity_days=validity_days,
-            wait_for_active_status=wait_for_active_status,
-            zone_id=zone_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             certificate_authority: Optional[pulumi.Input[str]] = None,
-             cloudflare_branding: Optional[pulumi.Input[bool]] = None,
-             hosts: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             type: Optional[pulumi.Input[str]] = None,
-             validation_errors: Optional[pulumi.Input[Sequence[pulumi.Input['CertificatePackValidationErrorArgs']]]] = None,
-             validation_method: Optional[pulumi.Input[str]] = None,
-             validation_records: Optional[pulumi.Input[Sequence[pulumi.Input['CertificatePackValidationRecordArgs']]]] = None,
-             validity_days: Optional[pulumi.Input[int]] = None,
-             wait_for_active_status: Optional[pulumi.Input[bool]] = None,
-             zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if certificate_authority is None and 'certificateAuthority' in kwargs:
-            certificate_authority = kwargs['certificateAuthority']
-        if cloudflare_branding is None and 'cloudflareBranding' in kwargs:
-            cloudflare_branding = kwargs['cloudflareBranding']
-        if validation_errors is None and 'validationErrors' in kwargs:
-            validation_errors = kwargs['validationErrors']
-        if validation_method is None and 'validationMethod' in kwargs:
-            validation_method = kwargs['validationMethod']
-        if validation_records is None and 'validationRecords' in kwargs:
-            validation_records = kwargs['validationRecords']
-        if validity_days is None and 'validityDays' in kwargs:
-            validity_days = kwargs['validityDays']
-        if wait_for_active_status is None and 'waitForActiveStatus' in kwargs:
-            wait_for_active_status = kwargs['waitForActiveStatus']
-        if zone_id is None and 'zoneId' in kwargs:
-            zone_id = kwargs['zoneId']
-
         if certificate_authority is not None:
-            _setter("certificate_authority", certificate_authority)
+            pulumi.set(__self__, "certificate_authority", certificate_authority)
         if cloudflare_branding is not None:
-            _setter("cloudflare_branding", cloudflare_branding)
+            pulumi.set(__self__, "cloudflare_branding", cloudflare_branding)
         if hosts is not None:
-            _setter("hosts", hosts)
+            pulumi.set(__self__, "hosts", hosts)
         if type is not None:
-            _setter("type", type)
+            pulumi.set(__self__, "type", type)
         if validation_errors is not None:
-            _setter("validation_errors", validation_errors)
+            pulumi.set(__self__, "validation_errors", validation_errors)
         if validation_method is not None:
-            _setter("validation_method", validation_method)
+            pulumi.set(__self__, "validation_method", validation_method)
         if validation_records is not None:
-            _setter("validation_records", validation_records)
+            pulumi.set(__self__, "validation_records", validation_records)
         if validity_days is not None:
-            _setter("validity_days", validity_days)
+            pulumi.set(__self__, "validity_days", validity_days)
         if wait_for_active_status is not None:
-            _setter("wait_for_active_status", wait_for_active_status)
+            pulumi.set(__self__, "wait_for_active_status", wait_for_active_status)
         if zone_id is not None:
-            _setter("zone_id", zone_id)
+            pulumi.set(__self__, "zone_id", zone_id)
 
     @property
     @pulumi.getter(name="certificateAuthority")
@@ -532,10 +430,6 @@ class CertificatePack(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            CertificatePackArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

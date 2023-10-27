@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['FirewallRuleArgs', 'FirewallRule']
@@ -31,50 +31,17 @@ class FirewallRuleArgs:
         :param pulumi.Input[int] priority: The priority of the rule to allow control of processing order. A lower number indicates high priority. If not provided, any rules with a priority will be sequenced before those without.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] products: List of products to bypass for a request when the bypass action is used. Available values: `zoneLockdown`, `uaBlock`, `bic`, `hot`, `securityLevel`, `rateLimit`, `waf`.
         """
-        FirewallRuleArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            action=action,
-            filter_id=filter_id,
-            zone_id=zone_id,
-            description=description,
-            paused=paused,
-            priority=priority,
-            products=products,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             action: Optional[pulumi.Input[str]] = None,
-             filter_id: Optional[pulumi.Input[str]] = None,
-             zone_id: Optional[pulumi.Input[str]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             paused: Optional[pulumi.Input[bool]] = None,
-             priority: Optional[pulumi.Input[int]] = None,
-             products: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if action is None:
-            raise TypeError("Missing 'action' argument")
-        if filter_id is None and 'filterId' in kwargs:
-            filter_id = kwargs['filterId']
-        if filter_id is None:
-            raise TypeError("Missing 'filter_id' argument")
-        if zone_id is None and 'zoneId' in kwargs:
-            zone_id = kwargs['zoneId']
-        if zone_id is None:
-            raise TypeError("Missing 'zone_id' argument")
-
-        _setter("action", action)
-        _setter("filter_id", filter_id)
-        _setter("zone_id", zone_id)
+        pulumi.set(__self__, "action", action)
+        pulumi.set(__self__, "filter_id", filter_id)
+        pulumi.set(__self__, "zone_id", zone_id)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if paused is not None:
-            _setter("paused", paused)
+            pulumi.set(__self__, "paused", paused)
         if priority is not None:
-            _setter("priority", priority)
+            pulumi.set(__self__, "priority", priority)
         if products is not None:
-            _setter("products", products)
+            pulumi.set(__self__, "products", products)
 
     @property
     @pulumi.getter
@@ -181,47 +148,20 @@ class _FirewallRuleState:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] products: List of products to bypass for a request when the bypass action is used. Available values: `zoneLockdown`, `uaBlock`, `bic`, `hot`, `securityLevel`, `rateLimit`, `waf`.
         :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         """
-        _FirewallRuleState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            action=action,
-            description=description,
-            filter_id=filter_id,
-            paused=paused,
-            priority=priority,
-            products=products,
-            zone_id=zone_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             action: Optional[pulumi.Input[str]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             filter_id: Optional[pulumi.Input[str]] = None,
-             paused: Optional[pulumi.Input[bool]] = None,
-             priority: Optional[pulumi.Input[int]] = None,
-             products: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if filter_id is None and 'filterId' in kwargs:
-            filter_id = kwargs['filterId']
-        if zone_id is None and 'zoneId' in kwargs:
-            zone_id = kwargs['zoneId']
-
         if action is not None:
-            _setter("action", action)
+            pulumi.set(__self__, "action", action)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if filter_id is not None:
-            _setter("filter_id", filter_id)
+            pulumi.set(__self__, "filter_id", filter_id)
         if paused is not None:
-            _setter("paused", paused)
+            pulumi.set(__self__, "paused", paused)
         if priority is not None:
-            _setter("priority", priority)
+            pulumi.set(__self__, "priority", priority)
         if products is not None:
-            _setter("products", products)
+            pulumi.set(__self__, "products", products)
         if zone_id is not None:
-            _setter("zone_id", zone_id)
+            pulumi.set(__self__, "zone_id", zone_id)
 
     @property
     @pulumi.getter
@@ -395,10 +335,6 @@ class FirewallRule(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            FirewallRuleArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

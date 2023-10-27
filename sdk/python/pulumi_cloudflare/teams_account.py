@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -42,80 +42,29 @@ class TeamsAccountArgs:
         :param pulumi.Input[bool] tls_decrypt_enabled: Indicator that decryption of TLS traffic is enabled.
         :param pulumi.Input[bool] url_browser_isolation_enabled: Safely browse websites in Browser Isolation through a URL.
         """
-        TeamsAccountArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            account_id=account_id,
-            activity_log_enabled=activity_log_enabled,
-            antivirus=antivirus,
-            block_page=block_page,
-            fips=fips,
-            logging=logging,
-            payload_log=payload_log,
-            protocol_detection_enabled=protocol_detection_enabled,
-            proxy=proxy,
-            ssh_session_log=ssh_session_log,
-            tls_decrypt_enabled=tls_decrypt_enabled,
-            url_browser_isolation_enabled=url_browser_isolation_enabled,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             account_id: Optional[pulumi.Input[str]] = None,
-             activity_log_enabled: Optional[pulumi.Input[bool]] = None,
-             antivirus: Optional[pulumi.Input['TeamsAccountAntivirusArgs']] = None,
-             block_page: Optional[pulumi.Input['TeamsAccountBlockPageArgs']] = None,
-             fips: Optional[pulumi.Input['TeamsAccountFipsArgs']] = None,
-             logging: Optional[pulumi.Input['TeamsAccountLoggingArgs']] = None,
-             payload_log: Optional[pulumi.Input['TeamsAccountPayloadLogArgs']] = None,
-             protocol_detection_enabled: Optional[pulumi.Input[bool]] = None,
-             proxy: Optional[pulumi.Input['TeamsAccountProxyArgs']] = None,
-             ssh_session_log: Optional[pulumi.Input['TeamsAccountSshSessionLogArgs']] = None,
-             tls_decrypt_enabled: Optional[pulumi.Input[bool]] = None,
-             url_browser_isolation_enabled: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if account_id is None and 'accountId' in kwargs:
-            account_id = kwargs['accountId']
-        if account_id is None:
-            raise TypeError("Missing 'account_id' argument")
-        if activity_log_enabled is None and 'activityLogEnabled' in kwargs:
-            activity_log_enabled = kwargs['activityLogEnabled']
-        if block_page is None and 'blockPage' in kwargs:
-            block_page = kwargs['blockPage']
-        if payload_log is None and 'payloadLog' in kwargs:
-            payload_log = kwargs['payloadLog']
-        if protocol_detection_enabled is None and 'protocolDetectionEnabled' in kwargs:
-            protocol_detection_enabled = kwargs['protocolDetectionEnabled']
-        if ssh_session_log is None and 'sshSessionLog' in kwargs:
-            ssh_session_log = kwargs['sshSessionLog']
-        if tls_decrypt_enabled is None and 'tlsDecryptEnabled' in kwargs:
-            tls_decrypt_enabled = kwargs['tlsDecryptEnabled']
-        if url_browser_isolation_enabled is None and 'urlBrowserIsolationEnabled' in kwargs:
-            url_browser_isolation_enabled = kwargs['urlBrowserIsolationEnabled']
-
-        _setter("account_id", account_id)
+        pulumi.set(__self__, "account_id", account_id)
         if activity_log_enabled is not None:
-            _setter("activity_log_enabled", activity_log_enabled)
+            pulumi.set(__self__, "activity_log_enabled", activity_log_enabled)
         if antivirus is not None:
-            _setter("antivirus", antivirus)
+            pulumi.set(__self__, "antivirus", antivirus)
         if block_page is not None:
-            _setter("block_page", block_page)
+            pulumi.set(__self__, "block_page", block_page)
         if fips is not None:
-            _setter("fips", fips)
+            pulumi.set(__self__, "fips", fips)
         if logging is not None:
-            _setter("logging", logging)
+            pulumi.set(__self__, "logging", logging)
         if payload_log is not None:
-            _setter("payload_log", payload_log)
+            pulumi.set(__self__, "payload_log", payload_log)
         if protocol_detection_enabled is not None:
-            _setter("protocol_detection_enabled", protocol_detection_enabled)
+            pulumi.set(__self__, "protocol_detection_enabled", protocol_detection_enabled)
         if proxy is not None:
-            _setter("proxy", proxy)
+            pulumi.set(__self__, "proxy", proxy)
         if ssh_session_log is not None:
-            _setter("ssh_session_log", ssh_session_log)
+            pulumi.set(__self__, "ssh_session_log", ssh_session_log)
         if tls_decrypt_enabled is not None:
-            _setter("tls_decrypt_enabled", tls_decrypt_enabled)
+            pulumi.set(__self__, "tls_decrypt_enabled", tls_decrypt_enabled)
         if url_browser_isolation_enabled is not None:
-            _setter("url_browser_isolation_enabled", url_browser_isolation_enabled)
+            pulumi.set(__self__, "url_browser_isolation_enabled", url_browser_isolation_enabled)
 
     @property
     @pulumi.getter(name="accountId")
@@ -288,79 +237,30 @@ class _TeamsAccountState:
         :param pulumi.Input[bool] tls_decrypt_enabled: Indicator that decryption of TLS traffic is enabled.
         :param pulumi.Input[bool] url_browser_isolation_enabled: Safely browse websites in Browser Isolation through a URL.
         """
-        _TeamsAccountState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            account_id=account_id,
-            activity_log_enabled=activity_log_enabled,
-            antivirus=antivirus,
-            block_page=block_page,
-            fips=fips,
-            logging=logging,
-            payload_log=payload_log,
-            protocol_detection_enabled=protocol_detection_enabled,
-            proxy=proxy,
-            ssh_session_log=ssh_session_log,
-            tls_decrypt_enabled=tls_decrypt_enabled,
-            url_browser_isolation_enabled=url_browser_isolation_enabled,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             account_id: Optional[pulumi.Input[str]] = None,
-             activity_log_enabled: Optional[pulumi.Input[bool]] = None,
-             antivirus: Optional[pulumi.Input['TeamsAccountAntivirusArgs']] = None,
-             block_page: Optional[pulumi.Input['TeamsAccountBlockPageArgs']] = None,
-             fips: Optional[pulumi.Input['TeamsAccountFipsArgs']] = None,
-             logging: Optional[pulumi.Input['TeamsAccountLoggingArgs']] = None,
-             payload_log: Optional[pulumi.Input['TeamsAccountPayloadLogArgs']] = None,
-             protocol_detection_enabled: Optional[pulumi.Input[bool]] = None,
-             proxy: Optional[pulumi.Input['TeamsAccountProxyArgs']] = None,
-             ssh_session_log: Optional[pulumi.Input['TeamsAccountSshSessionLogArgs']] = None,
-             tls_decrypt_enabled: Optional[pulumi.Input[bool]] = None,
-             url_browser_isolation_enabled: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if account_id is None and 'accountId' in kwargs:
-            account_id = kwargs['accountId']
-        if activity_log_enabled is None and 'activityLogEnabled' in kwargs:
-            activity_log_enabled = kwargs['activityLogEnabled']
-        if block_page is None and 'blockPage' in kwargs:
-            block_page = kwargs['blockPage']
-        if payload_log is None and 'payloadLog' in kwargs:
-            payload_log = kwargs['payloadLog']
-        if protocol_detection_enabled is None and 'protocolDetectionEnabled' in kwargs:
-            protocol_detection_enabled = kwargs['protocolDetectionEnabled']
-        if ssh_session_log is None and 'sshSessionLog' in kwargs:
-            ssh_session_log = kwargs['sshSessionLog']
-        if tls_decrypt_enabled is None and 'tlsDecryptEnabled' in kwargs:
-            tls_decrypt_enabled = kwargs['tlsDecryptEnabled']
-        if url_browser_isolation_enabled is None and 'urlBrowserIsolationEnabled' in kwargs:
-            url_browser_isolation_enabled = kwargs['urlBrowserIsolationEnabled']
-
         if account_id is not None:
-            _setter("account_id", account_id)
+            pulumi.set(__self__, "account_id", account_id)
         if activity_log_enabled is not None:
-            _setter("activity_log_enabled", activity_log_enabled)
+            pulumi.set(__self__, "activity_log_enabled", activity_log_enabled)
         if antivirus is not None:
-            _setter("antivirus", antivirus)
+            pulumi.set(__self__, "antivirus", antivirus)
         if block_page is not None:
-            _setter("block_page", block_page)
+            pulumi.set(__self__, "block_page", block_page)
         if fips is not None:
-            _setter("fips", fips)
+            pulumi.set(__self__, "fips", fips)
         if logging is not None:
-            _setter("logging", logging)
+            pulumi.set(__self__, "logging", logging)
         if payload_log is not None:
-            _setter("payload_log", payload_log)
+            pulumi.set(__self__, "payload_log", payload_log)
         if protocol_detection_enabled is not None:
-            _setter("protocol_detection_enabled", protocol_detection_enabled)
+            pulumi.set(__self__, "protocol_detection_enabled", protocol_detection_enabled)
         if proxy is not None:
-            _setter("proxy", proxy)
+            pulumi.set(__self__, "proxy", proxy)
         if ssh_session_log is not None:
-            _setter("ssh_session_log", ssh_session_log)
+            pulumi.set(__self__, "ssh_session_log", ssh_session_log)
         if tls_decrypt_enabled is not None:
-            _setter("tls_decrypt_enabled", tls_decrypt_enabled)
+            pulumi.set(__self__, "tls_decrypt_enabled", tls_decrypt_enabled)
         if url_browser_isolation_enabled is not None:
-            _setter("url_browser_isolation_enabled", url_browser_isolation_enabled)
+            pulumi.set(__self__, "url_browser_isolation_enabled", url_browser_isolation_enabled)
 
     @property
     @pulumi.getter(name="accountId")
@@ -670,10 +570,6 @@ class TeamsAccount(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            TeamsAccountArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -704,20 +600,13 @@ class TeamsAccount(pulumi.CustomResource):
                 raise TypeError("Missing required property 'account_id'")
             __props__.__dict__["account_id"] = account_id
             __props__.__dict__["activity_log_enabled"] = activity_log_enabled
-            antivirus = _utilities.configure(antivirus, TeamsAccountAntivirusArgs, True)
             __props__.__dict__["antivirus"] = antivirus
-            block_page = _utilities.configure(block_page, TeamsAccountBlockPageArgs, True)
             __props__.__dict__["block_page"] = block_page
-            fips = _utilities.configure(fips, TeamsAccountFipsArgs, True)
             __props__.__dict__["fips"] = fips
-            logging = _utilities.configure(logging, TeamsAccountLoggingArgs, True)
             __props__.__dict__["logging"] = logging
-            payload_log = _utilities.configure(payload_log, TeamsAccountPayloadLogArgs, True)
             __props__.__dict__["payload_log"] = payload_log
             __props__.__dict__["protocol_detection_enabled"] = protocol_detection_enabled
-            proxy = _utilities.configure(proxy, TeamsAccountProxyArgs, True)
             __props__.__dict__["proxy"] = proxy
-            ssh_session_log = _utilities.configure(ssh_session_log, TeamsAccountSshSessionLogArgs, True)
             __props__.__dict__["ssh_session_log"] = ssh_session_log
             __props__.__dict__["tls_decrypt_enabled"] = tls_decrypt_enabled
             __props__.__dict__["url_browser_isolation_enabled"] = url_browser_isolation_enabled

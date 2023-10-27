@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['WebAnalyticsSiteArgs', 'WebAnalyticsSite']
@@ -25,39 +25,12 @@ class WebAnalyticsSiteArgs:
         :param pulumi.Input[str] host: The hostname to use for gray-clouded sites. Must provide only one of `zone_tag`. **Modifying this attribute will force creation of a new resource.**
         :param pulumi.Input[str] zone_tag: The zone identifier for orange-clouded sites. Must provide only one of `host`. **Modifying this attribute will force creation of a new resource.**
         """
-        WebAnalyticsSiteArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            account_id=account_id,
-            auto_install=auto_install,
-            host=host,
-            zone_tag=zone_tag,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             account_id: Optional[pulumi.Input[str]] = None,
-             auto_install: Optional[pulumi.Input[bool]] = None,
-             host: Optional[pulumi.Input[str]] = None,
-             zone_tag: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if account_id is None and 'accountId' in kwargs:
-            account_id = kwargs['accountId']
-        if account_id is None:
-            raise TypeError("Missing 'account_id' argument")
-        if auto_install is None and 'autoInstall' in kwargs:
-            auto_install = kwargs['autoInstall']
-        if auto_install is None:
-            raise TypeError("Missing 'auto_install' argument")
-        if zone_tag is None and 'zoneTag' in kwargs:
-            zone_tag = kwargs['zoneTag']
-
-        _setter("account_id", account_id)
-        _setter("auto_install", auto_install)
+        pulumi.set(__self__, "account_id", account_id)
+        pulumi.set(__self__, "auto_install", auto_install)
         if host is not None:
-            _setter("host", host)
+            pulumi.set(__self__, "host", host)
         if zone_tag is not None:
-            _setter("zone_tag", zone_tag)
+            pulumi.set(__self__, "zone_tag", zone_tag)
 
     @property
     @pulumi.getter(name="accountId")
@@ -130,59 +103,22 @@ class _WebAnalyticsSiteState:
         :param pulumi.Input[str] snippet: The encoded JS snippet to add to your site's HTML page if auto_install is false.
         :param pulumi.Input[str] zone_tag: The zone identifier for orange-clouded sites. Must provide only one of `host`. **Modifying this attribute will force creation of a new resource.**
         """
-        _WebAnalyticsSiteState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            account_id=account_id,
-            auto_install=auto_install,
-            host=host,
-            ruleset_id=ruleset_id,
-            site_tag=site_tag,
-            site_token=site_token,
-            snippet=snippet,
-            zone_tag=zone_tag,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             account_id: Optional[pulumi.Input[str]] = None,
-             auto_install: Optional[pulumi.Input[bool]] = None,
-             host: Optional[pulumi.Input[str]] = None,
-             ruleset_id: Optional[pulumi.Input[str]] = None,
-             site_tag: Optional[pulumi.Input[str]] = None,
-             site_token: Optional[pulumi.Input[str]] = None,
-             snippet: Optional[pulumi.Input[str]] = None,
-             zone_tag: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if account_id is None and 'accountId' in kwargs:
-            account_id = kwargs['accountId']
-        if auto_install is None and 'autoInstall' in kwargs:
-            auto_install = kwargs['autoInstall']
-        if ruleset_id is None and 'rulesetId' in kwargs:
-            ruleset_id = kwargs['rulesetId']
-        if site_tag is None and 'siteTag' in kwargs:
-            site_tag = kwargs['siteTag']
-        if site_token is None and 'siteToken' in kwargs:
-            site_token = kwargs['siteToken']
-        if zone_tag is None and 'zoneTag' in kwargs:
-            zone_tag = kwargs['zoneTag']
-
         if account_id is not None:
-            _setter("account_id", account_id)
+            pulumi.set(__self__, "account_id", account_id)
         if auto_install is not None:
-            _setter("auto_install", auto_install)
+            pulumi.set(__self__, "auto_install", auto_install)
         if host is not None:
-            _setter("host", host)
+            pulumi.set(__self__, "host", host)
         if ruleset_id is not None:
-            _setter("ruleset_id", ruleset_id)
+            pulumi.set(__self__, "ruleset_id", ruleset_id)
         if site_tag is not None:
-            _setter("site_tag", site_tag)
+            pulumi.set(__self__, "site_tag", site_tag)
         if site_token is not None:
-            _setter("site_token", site_token)
+            pulumi.set(__self__, "site_token", site_token)
         if snippet is not None:
-            _setter("snippet", snippet)
+            pulumi.set(__self__, "snippet", snippet)
         if zone_tag is not None:
-            _setter("zone_tag", zone_tag)
+            pulumi.set(__self__, "zone_tag", zone_tag)
 
     @property
     @pulumi.getter(name="accountId")
@@ -356,10 +292,6 @@ class WebAnalyticsSite(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            WebAnalyticsSiteArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
