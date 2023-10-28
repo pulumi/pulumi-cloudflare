@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['AuthenticatedOriginPullsArgs', 'AuthenticatedOriginPulls']
@@ -25,37 +25,12 @@ class AuthenticatedOriginPullsArgs:
         :param pulumi.Input[str] authenticated_origin_pulls_certificate: The ID of an uploaded Authenticated Origin Pulls certificate. If no hostname is provided, this certificate will be used zone wide as Per-Zone Authenticated Origin Pulls.
         :param pulumi.Input[str] hostname: Specify a hostname to enable Per-Hostname Authenticated Origin Pulls on, using the provided certificate.
         """
-        AuthenticatedOriginPullsArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            enabled=enabled,
-            zone_id=zone_id,
-            authenticated_origin_pulls_certificate=authenticated_origin_pulls_certificate,
-            hostname=hostname,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             enabled: Optional[pulumi.Input[bool]] = None,
-             zone_id: Optional[pulumi.Input[str]] = None,
-             authenticated_origin_pulls_certificate: Optional[pulumi.Input[str]] = None,
-             hostname: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if enabled is None:
-            raise TypeError("Missing 'enabled' argument")
-        if zone_id is None and 'zoneId' in kwargs:
-            zone_id = kwargs['zoneId']
-        if zone_id is None:
-            raise TypeError("Missing 'zone_id' argument")
-        if authenticated_origin_pulls_certificate is None and 'authenticatedOriginPullsCertificate' in kwargs:
-            authenticated_origin_pulls_certificate = kwargs['authenticatedOriginPullsCertificate']
-
-        _setter("enabled", enabled)
-        _setter("zone_id", zone_id)
+        pulumi.set(__self__, "enabled", enabled)
+        pulumi.set(__self__, "zone_id", zone_id)
         if authenticated_origin_pulls_certificate is not None:
-            _setter("authenticated_origin_pulls_certificate", authenticated_origin_pulls_certificate)
+            pulumi.set(__self__, "authenticated_origin_pulls_certificate", authenticated_origin_pulls_certificate)
         if hostname is not None:
-            _setter("hostname", hostname)
+            pulumi.set(__self__, "hostname", hostname)
 
     @property
     @pulumi.getter
@@ -120,35 +95,14 @@ class _AuthenticatedOriginPullsState:
         :param pulumi.Input[str] hostname: Specify a hostname to enable Per-Hostname Authenticated Origin Pulls on, using the provided certificate.
         :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         """
-        _AuthenticatedOriginPullsState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            authenticated_origin_pulls_certificate=authenticated_origin_pulls_certificate,
-            enabled=enabled,
-            hostname=hostname,
-            zone_id=zone_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             authenticated_origin_pulls_certificate: Optional[pulumi.Input[str]] = None,
-             enabled: Optional[pulumi.Input[bool]] = None,
-             hostname: Optional[pulumi.Input[str]] = None,
-             zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if authenticated_origin_pulls_certificate is None and 'authenticatedOriginPullsCertificate' in kwargs:
-            authenticated_origin_pulls_certificate = kwargs['authenticatedOriginPullsCertificate']
-        if zone_id is None and 'zoneId' in kwargs:
-            zone_id = kwargs['zoneId']
-
         if authenticated_origin_pulls_certificate is not None:
-            _setter("authenticated_origin_pulls_certificate", authenticated_origin_pulls_certificate)
+            pulumi.set(__self__, "authenticated_origin_pulls_certificate", authenticated_origin_pulls_certificate)
         if enabled is not None:
-            _setter("enabled", enabled)
+            pulumi.set(__self__, "enabled", enabled)
         if hostname is not None:
-            _setter("hostname", hostname)
+            pulumi.set(__self__, "hostname", hostname)
         if zone_id is not None:
-            _setter("zone_id", zone_id)
+            pulumi.set(__self__, "zone_id", zone_id)
 
     @property
     @pulumi.getter(name="authenticatedOriginPullsCertificate")
@@ -348,10 +302,6 @@ class AuthenticatedOriginPulls(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            AuthenticatedOriginPullsArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

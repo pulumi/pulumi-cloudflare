@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['RegionalTieredCacheArgs', 'RegionalTieredCache']
@@ -21,27 +21,8 @@ class RegionalTieredCacheArgs:
         :param pulumi.Input[str] value: Value of the Regional Tiered Cache zone setting.
         :param pulumi.Input[str] zone_id: The zone identifier to target for the resource.
         """
-        RegionalTieredCacheArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            value=value,
-            zone_id=zone_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             value: Optional[pulumi.Input[str]] = None,
-             zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if value is None:
-            raise TypeError("Missing 'value' argument")
-        if zone_id is None and 'zoneId' in kwargs:
-            zone_id = kwargs['zoneId']
-        if zone_id is None:
-            raise TypeError("Missing 'zone_id' argument")
-
-        _setter("value", value)
-        _setter("zone_id", zone_id)
+        pulumi.set(__self__, "value", value)
+        pulumi.set(__self__, "zone_id", zone_id)
 
     @property
     @pulumi.getter
@@ -78,25 +59,10 @@ class _RegionalTieredCacheState:
         :param pulumi.Input[str] value: Value of the Regional Tiered Cache zone setting.
         :param pulumi.Input[str] zone_id: The zone identifier to target for the resource.
         """
-        _RegionalTieredCacheState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            value=value,
-            zone_id=zone_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             value: Optional[pulumi.Input[str]] = None,
-             zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if zone_id is None and 'zoneId' in kwargs:
-            zone_id = kwargs['zoneId']
-
         if value is not None:
-            _setter("value", value)
+            pulumi.set(__self__, "value", value)
         if zone_id is not None:
-            _setter("zone_id", zone_id)
+            pulumi.set(__self__, "zone_id", zone_id)
 
     @property
     @pulumi.getter
@@ -194,10 +160,6 @@ class RegionalTieredCache(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            RegionalTieredCacheArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

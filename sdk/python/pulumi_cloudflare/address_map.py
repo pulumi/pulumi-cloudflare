@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -31,45 +31,16 @@ class AddressMapArgs:
         :param pulumi.Input[Sequence[pulumi.Input['AddressMapIpArgs']]] ips: The set of IPs on the Address Map.
         :param pulumi.Input[Sequence[pulumi.Input['AddressMapMembershipArgs']]] memberships: Zones and Accounts which will be assigned IPs on this Address Map.
         """
-        AddressMapArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            account_id=account_id,
-            enabled=enabled,
-            default_sni=default_sni,
-            description=description,
-            ips=ips,
-            memberships=memberships,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             account_id: Optional[pulumi.Input[str]] = None,
-             enabled: Optional[pulumi.Input[bool]] = None,
-             default_sni: Optional[pulumi.Input[str]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             ips: Optional[pulumi.Input[Sequence[pulumi.Input['AddressMapIpArgs']]]] = None,
-             memberships: Optional[pulumi.Input[Sequence[pulumi.Input['AddressMapMembershipArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if account_id is None and 'accountId' in kwargs:
-            account_id = kwargs['accountId']
-        if account_id is None:
-            raise TypeError("Missing 'account_id' argument")
-        if enabled is None:
-            raise TypeError("Missing 'enabled' argument")
-        if default_sni is None and 'defaultSni' in kwargs:
-            default_sni = kwargs['defaultSni']
-
-        _setter("account_id", account_id)
-        _setter("enabled", enabled)
+        pulumi.set(__self__, "account_id", account_id)
+        pulumi.set(__self__, "enabled", enabled)
         if default_sni is not None:
-            _setter("default_sni", default_sni)
+            pulumi.set(__self__, "default_sni", default_sni)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if ips is not None:
-            _setter("ips", ips)
+            pulumi.set(__self__, "ips", ips)
         if memberships is not None:
-            _setter("memberships", memberships)
+            pulumi.set(__self__, "memberships", memberships)
 
     @property
     @pulumi.getter(name="accountId")
@@ -166,55 +137,22 @@ class _AddressMapState:
         :param pulumi.Input[Sequence[pulumi.Input['AddressMapIpArgs']]] ips: The set of IPs on the Address Map.
         :param pulumi.Input[Sequence[pulumi.Input['AddressMapMembershipArgs']]] memberships: Zones and Accounts which will be assigned IPs on this Address Map.
         """
-        _AddressMapState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            account_id=account_id,
-            can_delete=can_delete,
-            can_modify_ips=can_modify_ips,
-            default_sni=default_sni,
-            description=description,
-            enabled=enabled,
-            ips=ips,
-            memberships=memberships,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             account_id: Optional[pulumi.Input[str]] = None,
-             can_delete: Optional[pulumi.Input[bool]] = None,
-             can_modify_ips: Optional[pulumi.Input[bool]] = None,
-             default_sni: Optional[pulumi.Input[str]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             enabled: Optional[pulumi.Input[bool]] = None,
-             ips: Optional[pulumi.Input[Sequence[pulumi.Input['AddressMapIpArgs']]]] = None,
-             memberships: Optional[pulumi.Input[Sequence[pulumi.Input['AddressMapMembershipArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if account_id is None and 'accountId' in kwargs:
-            account_id = kwargs['accountId']
-        if can_delete is None and 'canDelete' in kwargs:
-            can_delete = kwargs['canDelete']
-        if can_modify_ips is None and 'canModifyIps' in kwargs:
-            can_modify_ips = kwargs['canModifyIps']
-        if default_sni is None and 'defaultSni' in kwargs:
-            default_sni = kwargs['defaultSni']
-
         if account_id is not None:
-            _setter("account_id", account_id)
+            pulumi.set(__self__, "account_id", account_id)
         if can_delete is not None:
-            _setter("can_delete", can_delete)
+            pulumi.set(__self__, "can_delete", can_delete)
         if can_modify_ips is not None:
-            _setter("can_modify_ips", can_modify_ips)
+            pulumi.set(__self__, "can_modify_ips", can_modify_ips)
         if default_sni is not None:
-            _setter("default_sni", default_sni)
+            pulumi.set(__self__, "default_sni", default_sni)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if enabled is not None:
-            _setter("enabled", enabled)
+            pulumi.set(__self__, "enabled", enabled)
         if ips is not None:
-            _setter("ips", ips)
+            pulumi.set(__self__, "ips", ips)
         if memberships is not None:
-            _setter("memberships", memberships)
+            pulumi.set(__self__, "memberships", memberships)
 
     @property
     @pulumi.getter(name="accountId")
@@ -432,10 +370,6 @@ class AddressMap(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            AddressMapArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

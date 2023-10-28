@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['GreTunnelArgs', 'GreTunnel']
@@ -39,77 +39,24 @@ class GreTunnelArgs:
         :param pulumi.Input[int] mtu: Maximum Transmission Unit (MTU) in bytes for the GRE tunnel.
         :param pulumi.Input[int] ttl: Time To Live (TTL) in number of hops of the GRE tunnel.
         """
-        GreTunnelArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            cloudflare_gre_endpoint=cloudflare_gre_endpoint,
-            customer_gre_endpoint=customer_gre_endpoint,
-            interface_address=interface_address,
-            name=name,
-            account_id=account_id,
-            description=description,
-            health_check_enabled=health_check_enabled,
-            health_check_target=health_check_target,
-            health_check_type=health_check_type,
-            mtu=mtu,
-            ttl=ttl,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             cloudflare_gre_endpoint: Optional[pulumi.Input[str]] = None,
-             customer_gre_endpoint: Optional[pulumi.Input[str]] = None,
-             interface_address: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             account_id: Optional[pulumi.Input[str]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             health_check_enabled: Optional[pulumi.Input[bool]] = None,
-             health_check_target: Optional[pulumi.Input[str]] = None,
-             health_check_type: Optional[pulumi.Input[str]] = None,
-             mtu: Optional[pulumi.Input[int]] = None,
-             ttl: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if cloudflare_gre_endpoint is None and 'cloudflareGreEndpoint' in kwargs:
-            cloudflare_gre_endpoint = kwargs['cloudflareGreEndpoint']
-        if cloudflare_gre_endpoint is None:
-            raise TypeError("Missing 'cloudflare_gre_endpoint' argument")
-        if customer_gre_endpoint is None and 'customerGreEndpoint' in kwargs:
-            customer_gre_endpoint = kwargs['customerGreEndpoint']
-        if customer_gre_endpoint is None:
-            raise TypeError("Missing 'customer_gre_endpoint' argument")
-        if interface_address is None and 'interfaceAddress' in kwargs:
-            interface_address = kwargs['interfaceAddress']
-        if interface_address is None:
-            raise TypeError("Missing 'interface_address' argument")
-        if name is None:
-            raise TypeError("Missing 'name' argument")
-        if account_id is None and 'accountId' in kwargs:
-            account_id = kwargs['accountId']
-        if health_check_enabled is None and 'healthCheckEnabled' in kwargs:
-            health_check_enabled = kwargs['healthCheckEnabled']
-        if health_check_target is None and 'healthCheckTarget' in kwargs:
-            health_check_target = kwargs['healthCheckTarget']
-        if health_check_type is None and 'healthCheckType' in kwargs:
-            health_check_type = kwargs['healthCheckType']
-
-        _setter("cloudflare_gre_endpoint", cloudflare_gre_endpoint)
-        _setter("customer_gre_endpoint", customer_gre_endpoint)
-        _setter("interface_address", interface_address)
-        _setter("name", name)
+        pulumi.set(__self__, "cloudflare_gre_endpoint", cloudflare_gre_endpoint)
+        pulumi.set(__self__, "customer_gre_endpoint", customer_gre_endpoint)
+        pulumi.set(__self__, "interface_address", interface_address)
+        pulumi.set(__self__, "name", name)
         if account_id is not None:
-            _setter("account_id", account_id)
+            pulumi.set(__self__, "account_id", account_id)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if health_check_enabled is not None:
-            _setter("health_check_enabled", health_check_enabled)
+            pulumi.set(__self__, "health_check_enabled", health_check_enabled)
         if health_check_target is not None:
-            _setter("health_check_target", health_check_target)
+            pulumi.set(__self__, "health_check_target", health_check_target)
         if health_check_type is not None:
-            _setter("health_check_type", health_check_type)
+            pulumi.set(__self__, "health_check_type", health_check_type)
         if mtu is not None:
-            _setter("mtu", mtu)
+            pulumi.set(__self__, "mtu", mtu)
         if ttl is not None:
-            _setter("ttl", ttl)
+            pulumi.set(__self__, "ttl", ttl)
 
     @property
     @pulumi.getter(name="cloudflareGreEndpoint")
@@ -272,73 +219,28 @@ class _GreTunnelState:
         :param pulumi.Input[str] name: Name of the GRE tunnel.
         :param pulumi.Input[int] ttl: Time To Live (TTL) in number of hops of the GRE tunnel.
         """
-        _GreTunnelState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            account_id=account_id,
-            cloudflare_gre_endpoint=cloudflare_gre_endpoint,
-            customer_gre_endpoint=customer_gre_endpoint,
-            description=description,
-            health_check_enabled=health_check_enabled,
-            health_check_target=health_check_target,
-            health_check_type=health_check_type,
-            interface_address=interface_address,
-            mtu=mtu,
-            name=name,
-            ttl=ttl,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             account_id: Optional[pulumi.Input[str]] = None,
-             cloudflare_gre_endpoint: Optional[pulumi.Input[str]] = None,
-             customer_gre_endpoint: Optional[pulumi.Input[str]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             health_check_enabled: Optional[pulumi.Input[bool]] = None,
-             health_check_target: Optional[pulumi.Input[str]] = None,
-             health_check_type: Optional[pulumi.Input[str]] = None,
-             interface_address: Optional[pulumi.Input[str]] = None,
-             mtu: Optional[pulumi.Input[int]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             ttl: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if account_id is None and 'accountId' in kwargs:
-            account_id = kwargs['accountId']
-        if cloudflare_gre_endpoint is None and 'cloudflareGreEndpoint' in kwargs:
-            cloudflare_gre_endpoint = kwargs['cloudflareGreEndpoint']
-        if customer_gre_endpoint is None and 'customerGreEndpoint' in kwargs:
-            customer_gre_endpoint = kwargs['customerGreEndpoint']
-        if health_check_enabled is None and 'healthCheckEnabled' in kwargs:
-            health_check_enabled = kwargs['healthCheckEnabled']
-        if health_check_target is None and 'healthCheckTarget' in kwargs:
-            health_check_target = kwargs['healthCheckTarget']
-        if health_check_type is None and 'healthCheckType' in kwargs:
-            health_check_type = kwargs['healthCheckType']
-        if interface_address is None and 'interfaceAddress' in kwargs:
-            interface_address = kwargs['interfaceAddress']
-
         if account_id is not None:
-            _setter("account_id", account_id)
+            pulumi.set(__self__, "account_id", account_id)
         if cloudflare_gre_endpoint is not None:
-            _setter("cloudflare_gre_endpoint", cloudflare_gre_endpoint)
+            pulumi.set(__self__, "cloudflare_gre_endpoint", cloudflare_gre_endpoint)
         if customer_gre_endpoint is not None:
-            _setter("customer_gre_endpoint", customer_gre_endpoint)
+            pulumi.set(__self__, "customer_gre_endpoint", customer_gre_endpoint)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if health_check_enabled is not None:
-            _setter("health_check_enabled", health_check_enabled)
+            pulumi.set(__self__, "health_check_enabled", health_check_enabled)
         if health_check_target is not None:
-            _setter("health_check_target", health_check_target)
+            pulumi.set(__self__, "health_check_target", health_check_target)
         if health_check_type is not None:
-            _setter("health_check_type", health_check_type)
+            pulumi.set(__self__, "health_check_type", health_check_type)
         if interface_address is not None:
-            _setter("interface_address", interface_address)
+            pulumi.set(__self__, "interface_address", interface_address)
         if mtu is not None:
-            _setter("mtu", mtu)
+            pulumi.set(__self__, "mtu", mtu)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if ttl is not None:
-            _setter("ttl", ttl)
+            pulumi.set(__self__, "ttl", ttl)
 
     @property
     @pulumi.getter(name="accountId")
@@ -578,10 +480,6 @@ class GreTunnel(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            GreTunnelArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

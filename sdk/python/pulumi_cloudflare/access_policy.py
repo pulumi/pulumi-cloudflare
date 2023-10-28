@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -47,98 +47,31 @@ class AccessPolicyArgs:
         :param pulumi.Input[str] session_duration: How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`. Defaults to `24h`.
         :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. Conflicts with `account_id`.
         """
-        AccessPolicyArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            application_id=application_id,
-            decision=decision,
-            includes=includes,
-            name=name,
-            precedence=precedence,
-            account_id=account_id,
-            approval_groups=approval_groups,
-            approval_required=approval_required,
-            excludes=excludes,
-            isolation_required=isolation_required,
-            purpose_justification_prompt=purpose_justification_prompt,
-            purpose_justification_required=purpose_justification_required,
-            requires=requires,
-            session_duration=session_duration,
-            zone_id=zone_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             application_id: Optional[pulumi.Input[str]] = None,
-             decision: Optional[pulumi.Input[str]] = None,
-             includes: Optional[pulumi.Input[Sequence[pulumi.Input['AccessPolicyIncludeArgs']]]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             precedence: Optional[pulumi.Input[int]] = None,
-             account_id: Optional[pulumi.Input[str]] = None,
-             approval_groups: Optional[pulumi.Input[Sequence[pulumi.Input['AccessPolicyApprovalGroupArgs']]]] = None,
-             approval_required: Optional[pulumi.Input[bool]] = None,
-             excludes: Optional[pulumi.Input[Sequence[pulumi.Input['AccessPolicyExcludeArgs']]]] = None,
-             isolation_required: Optional[pulumi.Input[bool]] = None,
-             purpose_justification_prompt: Optional[pulumi.Input[str]] = None,
-             purpose_justification_required: Optional[pulumi.Input[bool]] = None,
-             requires: Optional[pulumi.Input[Sequence[pulumi.Input['AccessPolicyRequireArgs']]]] = None,
-             session_duration: Optional[pulumi.Input[str]] = None,
-             zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if application_id is None and 'applicationId' in kwargs:
-            application_id = kwargs['applicationId']
-        if application_id is None:
-            raise TypeError("Missing 'application_id' argument")
-        if decision is None:
-            raise TypeError("Missing 'decision' argument")
-        if includes is None:
-            raise TypeError("Missing 'includes' argument")
-        if name is None:
-            raise TypeError("Missing 'name' argument")
-        if precedence is None:
-            raise TypeError("Missing 'precedence' argument")
-        if account_id is None and 'accountId' in kwargs:
-            account_id = kwargs['accountId']
-        if approval_groups is None and 'approvalGroups' in kwargs:
-            approval_groups = kwargs['approvalGroups']
-        if approval_required is None and 'approvalRequired' in kwargs:
-            approval_required = kwargs['approvalRequired']
-        if isolation_required is None and 'isolationRequired' in kwargs:
-            isolation_required = kwargs['isolationRequired']
-        if purpose_justification_prompt is None and 'purposeJustificationPrompt' in kwargs:
-            purpose_justification_prompt = kwargs['purposeJustificationPrompt']
-        if purpose_justification_required is None and 'purposeJustificationRequired' in kwargs:
-            purpose_justification_required = kwargs['purposeJustificationRequired']
-        if session_duration is None and 'sessionDuration' in kwargs:
-            session_duration = kwargs['sessionDuration']
-        if zone_id is None and 'zoneId' in kwargs:
-            zone_id = kwargs['zoneId']
-
-        _setter("application_id", application_id)
-        _setter("decision", decision)
-        _setter("includes", includes)
-        _setter("name", name)
-        _setter("precedence", precedence)
+        pulumi.set(__self__, "application_id", application_id)
+        pulumi.set(__self__, "decision", decision)
+        pulumi.set(__self__, "includes", includes)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "precedence", precedence)
         if account_id is not None:
-            _setter("account_id", account_id)
+            pulumi.set(__self__, "account_id", account_id)
         if approval_groups is not None:
-            _setter("approval_groups", approval_groups)
+            pulumi.set(__self__, "approval_groups", approval_groups)
         if approval_required is not None:
-            _setter("approval_required", approval_required)
+            pulumi.set(__self__, "approval_required", approval_required)
         if excludes is not None:
-            _setter("excludes", excludes)
+            pulumi.set(__self__, "excludes", excludes)
         if isolation_required is not None:
-            _setter("isolation_required", isolation_required)
+            pulumi.set(__self__, "isolation_required", isolation_required)
         if purpose_justification_prompt is not None:
-            _setter("purpose_justification_prompt", purpose_justification_prompt)
+            pulumi.set(__self__, "purpose_justification_prompt", purpose_justification_prompt)
         if purpose_justification_required is not None:
-            _setter("purpose_justification_required", purpose_justification_required)
+            pulumi.set(__self__, "purpose_justification_required", purpose_justification_required)
         if requires is not None:
-            _setter("requires", requires)
+            pulumi.set(__self__, "requires", requires)
         if session_duration is not None:
-            _setter("session_duration", session_duration)
+            pulumi.set(__self__, "session_duration", session_duration)
         if zone_id is not None:
-            _setter("zone_id", zone_id)
+            pulumi.set(__self__, "zone_id", zone_id)
 
     @property
     @pulumi.getter(name="applicationId")
@@ -349,93 +282,36 @@ class _AccessPolicyState:
         :param pulumi.Input[str] session_duration: How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`. Defaults to `24h`.
         :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. Conflicts with `account_id`.
         """
-        _AccessPolicyState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            account_id=account_id,
-            application_id=application_id,
-            approval_groups=approval_groups,
-            approval_required=approval_required,
-            decision=decision,
-            excludes=excludes,
-            includes=includes,
-            isolation_required=isolation_required,
-            name=name,
-            precedence=precedence,
-            purpose_justification_prompt=purpose_justification_prompt,
-            purpose_justification_required=purpose_justification_required,
-            requires=requires,
-            session_duration=session_duration,
-            zone_id=zone_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             account_id: Optional[pulumi.Input[str]] = None,
-             application_id: Optional[pulumi.Input[str]] = None,
-             approval_groups: Optional[pulumi.Input[Sequence[pulumi.Input['AccessPolicyApprovalGroupArgs']]]] = None,
-             approval_required: Optional[pulumi.Input[bool]] = None,
-             decision: Optional[pulumi.Input[str]] = None,
-             excludes: Optional[pulumi.Input[Sequence[pulumi.Input['AccessPolicyExcludeArgs']]]] = None,
-             includes: Optional[pulumi.Input[Sequence[pulumi.Input['AccessPolicyIncludeArgs']]]] = None,
-             isolation_required: Optional[pulumi.Input[bool]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             precedence: Optional[pulumi.Input[int]] = None,
-             purpose_justification_prompt: Optional[pulumi.Input[str]] = None,
-             purpose_justification_required: Optional[pulumi.Input[bool]] = None,
-             requires: Optional[pulumi.Input[Sequence[pulumi.Input['AccessPolicyRequireArgs']]]] = None,
-             session_duration: Optional[pulumi.Input[str]] = None,
-             zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if account_id is None and 'accountId' in kwargs:
-            account_id = kwargs['accountId']
-        if application_id is None and 'applicationId' in kwargs:
-            application_id = kwargs['applicationId']
-        if approval_groups is None and 'approvalGroups' in kwargs:
-            approval_groups = kwargs['approvalGroups']
-        if approval_required is None and 'approvalRequired' in kwargs:
-            approval_required = kwargs['approvalRequired']
-        if isolation_required is None and 'isolationRequired' in kwargs:
-            isolation_required = kwargs['isolationRequired']
-        if purpose_justification_prompt is None and 'purposeJustificationPrompt' in kwargs:
-            purpose_justification_prompt = kwargs['purposeJustificationPrompt']
-        if purpose_justification_required is None and 'purposeJustificationRequired' in kwargs:
-            purpose_justification_required = kwargs['purposeJustificationRequired']
-        if session_duration is None and 'sessionDuration' in kwargs:
-            session_duration = kwargs['sessionDuration']
-        if zone_id is None and 'zoneId' in kwargs:
-            zone_id = kwargs['zoneId']
-
         if account_id is not None:
-            _setter("account_id", account_id)
+            pulumi.set(__self__, "account_id", account_id)
         if application_id is not None:
-            _setter("application_id", application_id)
+            pulumi.set(__self__, "application_id", application_id)
         if approval_groups is not None:
-            _setter("approval_groups", approval_groups)
+            pulumi.set(__self__, "approval_groups", approval_groups)
         if approval_required is not None:
-            _setter("approval_required", approval_required)
+            pulumi.set(__self__, "approval_required", approval_required)
         if decision is not None:
-            _setter("decision", decision)
+            pulumi.set(__self__, "decision", decision)
         if excludes is not None:
-            _setter("excludes", excludes)
+            pulumi.set(__self__, "excludes", excludes)
         if includes is not None:
-            _setter("includes", includes)
+            pulumi.set(__self__, "includes", includes)
         if isolation_required is not None:
-            _setter("isolation_required", isolation_required)
+            pulumi.set(__self__, "isolation_required", isolation_required)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if precedence is not None:
-            _setter("precedence", precedence)
+            pulumi.set(__self__, "precedence", precedence)
         if purpose_justification_prompt is not None:
-            _setter("purpose_justification_prompt", purpose_justification_prompt)
+            pulumi.set(__self__, "purpose_justification_prompt", purpose_justification_prompt)
         if purpose_justification_required is not None:
-            _setter("purpose_justification_required", purpose_justification_required)
+            pulumi.set(__self__, "purpose_justification_required", purpose_justification_required)
         if requires is not None:
-            _setter("requires", requires)
+            pulumi.set(__self__, "requires", requires)
         if session_duration is not None:
-            _setter("session_duration", session_duration)
+            pulumi.set(__self__, "session_duration", session_duration)
         if zone_id is not None:
-            _setter("zone_id", zone_id)
+            pulumi.set(__self__, "zone_id", zone_id)
 
     @property
     @pulumi.getter(name="accountId")
@@ -785,10 +661,6 @@ class AccessPolicy(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            AccessPolicyArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

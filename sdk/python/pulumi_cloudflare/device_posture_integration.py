@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -30,44 +30,15 @@ class DevicePostureIntegrationArgs:
         :param pulumi.Input[Sequence[pulumi.Input['DevicePostureIntegrationConfigArgs']]] configs: The device posture integration's connection authorization parameters.
         :param pulumi.Input[str] interval: Indicates the frequency with which to poll the third-party API. Must be in the format `1h` or `30m`.
         """
-        DevicePostureIntegrationArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            account_id=account_id,
-            name=name,
-            type=type,
-            configs=configs,
-            identifier=identifier,
-            interval=interval,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             account_id: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             type: Optional[pulumi.Input[str]] = None,
-             configs: Optional[pulumi.Input[Sequence[pulumi.Input['DevicePostureIntegrationConfigArgs']]]] = None,
-             identifier: Optional[pulumi.Input[str]] = None,
-             interval: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if account_id is None and 'accountId' in kwargs:
-            account_id = kwargs['accountId']
-        if account_id is None:
-            raise TypeError("Missing 'account_id' argument")
-        if name is None:
-            raise TypeError("Missing 'name' argument")
-        if type is None:
-            raise TypeError("Missing 'type' argument")
-
-        _setter("account_id", account_id)
-        _setter("name", name)
-        _setter("type", type)
+        pulumi.set(__self__, "account_id", account_id)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "type", type)
         if configs is not None:
-            _setter("configs", configs)
+            pulumi.set(__self__, "configs", configs)
         if identifier is not None:
-            _setter("identifier", identifier)
+            pulumi.set(__self__, "identifier", identifier)
         if interval is not None:
-            _setter("interval", interval)
+            pulumi.set(__self__, "interval", interval)
 
     @property
     @pulumi.getter(name="accountId")
@@ -156,41 +127,18 @@ class _DevicePostureIntegrationState:
         :param pulumi.Input[str] name: Name of the device posture integration.
         :param pulumi.Input[str] type: The device posture integration type. Available values: `workspace_one`, `uptycs`, `crowdstrike_s2s`, `intune`, `kolide`, `sentinelone_s2s`, `tanium_s2s`.
         """
-        _DevicePostureIntegrationState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            account_id=account_id,
-            configs=configs,
-            identifier=identifier,
-            interval=interval,
-            name=name,
-            type=type,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             account_id: Optional[pulumi.Input[str]] = None,
-             configs: Optional[pulumi.Input[Sequence[pulumi.Input['DevicePostureIntegrationConfigArgs']]]] = None,
-             identifier: Optional[pulumi.Input[str]] = None,
-             interval: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             type: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if account_id is None and 'accountId' in kwargs:
-            account_id = kwargs['accountId']
-
         if account_id is not None:
-            _setter("account_id", account_id)
+            pulumi.set(__self__, "account_id", account_id)
         if configs is not None:
-            _setter("configs", configs)
+            pulumi.set(__self__, "configs", configs)
         if identifier is not None:
-            _setter("identifier", identifier)
+            pulumi.set(__self__, "identifier", identifier)
         if interval is not None:
-            _setter("interval", interval)
+            pulumi.set(__self__, "interval", interval)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if type is not None:
-            _setter("type", type)
+            pulumi.set(__self__, "type", type)
 
     @property
     @pulumi.getter(name="accountId")
@@ -358,10 +306,6 @@ class DevicePostureIntegration(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            DevicePostureIntegrationArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

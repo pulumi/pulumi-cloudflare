@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['ProviderArgs', 'Provider']
@@ -59,91 +59,40 @@ class ProviderArgs:
                have unintended consequences**. Alternatively, can be configured using the `CLOUDFLARE_USER_AGENT_OPERATOR_SUFFIX`
                environment variable.
         """
-        ProviderArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            api_base_path=api_base_path,
-            api_client_logging=api_client_logging,
-            api_hostname=api_hostname,
-            api_key=api_key,
-            api_token=api_token,
-            api_user_service_key=api_user_service_key,
-            email=email,
-            max_backoff=max_backoff,
-            min_backoff=min_backoff,
-            retries=retries,
-            rps=rps,
-            user_agent_operator_suffix=user_agent_operator_suffix,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             api_base_path: Optional[pulumi.Input[str]] = None,
-             api_client_logging: Optional[pulumi.Input[bool]] = None,
-             api_hostname: Optional[pulumi.Input[str]] = None,
-             api_key: Optional[pulumi.Input[str]] = None,
-             api_token: Optional[pulumi.Input[str]] = None,
-             api_user_service_key: Optional[pulumi.Input[str]] = None,
-             email: Optional[pulumi.Input[str]] = None,
-             max_backoff: Optional[pulumi.Input[int]] = None,
-             min_backoff: Optional[pulumi.Input[int]] = None,
-             retries: Optional[pulumi.Input[int]] = None,
-             rps: Optional[pulumi.Input[int]] = None,
-             user_agent_operator_suffix: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if api_base_path is None and 'apiBasePath' in kwargs:
-            api_base_path = kwargs['apiBasePath']
-        if api_client_logging is None and 'apiClientLogging' in kwargs:
-            api_client_logging = kwargs['apiClientLogging']
-        if api_hostname is None and 'apiHostname' in kwargs:
-            api_hostname = kwargs['apiHostname']
-        if api_key is None and 'apiKey' in kwargs:
-            api_key = kwargs['apiKey']
-        if api_token is None and 'apiToken' in kwargs:
-            api_token = kwargs['apiToken']
-        if api_user_service_key is None and 'apiUserServiceKey' in kwargs:
-            api_user_service_key = kwargs['apiUserServiceKey']
-        if max_backoff is None and 'maxBackoff' in kwargs:
-            max_backoff = kwargs['maxBackoff']
-        if min_backoff is None and 'minBackoff' in kwargs:
-            min_backoff = kwargs['minBackoff']
-        if user_agent_operator_suffix is None and 'userAgentOperatorSuffix' in kwargs:
-            user_agent_operator_suffix = kwargs['userAgentOperatorSuffix']
-
         if api_base_path is not None:
-            _setter("api_base_path", api_base_path)
+            pulumi.set(__self__, "api_base_path", api_base_path)
         if api_client_logging is None:
             api_client_logging = (_utilities.get_env_bool('CLOUDFLARE_API_CLIENT_LOGGING') or False)
         if api_client_logging is not None:
-            _setter("api_client_logging", api_client_logging)
+            pulumi.set(__self__, "api_client_logging", api_client_logging)
         if api_hostname is not None:
-            _setter("api_hostname", api_hostname)
+            pulumi.set(__self__, "api_hostname", api_hostname)
         if api_key is not None:
-            _setter("api_key", api_key)
+            pulumi.set(__self__, "api_key", api_key)
         if api_token is not None:
-            _setter("api_token", api_token)
+            pulumi.set(__self__, "api_token", api_token)
         if api_user_service_key is not None:
-            _setter("api_user_service_key", api_user_service_key)
+            pulumi.set(__self__, "api_user_service_key", api_user_service_key)
         if email is not None:
-            _setter("email", email)
+            pulumi.set(__self__, "email", email)
         if max_backoff is None:
             max_backoff = (_utilities.get_env_int('CLOUDFLARE_MAX_BACKOFF') or 30)
         if max_backoff is not None:
-            _setter("max_backoff", max_backoff)
+            pulumi.set(__self__, "max_backoff", max_backoff)
         if min_backoff is None:
             min_backoff = (_utilities.get_env_int('CLOUDFLARE_MIN_BACKOFF') or 1)
         if min_backoff is not None:
-            _setter("min_backoff", min_backoff)
+            pulumi.set(__self__, "min_backoff", min_backoff)
         if retries is None:
             retries = (_utilities.get_env_int('CLOUDFLARE_RETRIES') or 3)
         if retries is not None:
-            _setter("retries", retries)
+            pulumi.set(__self__, "retries", retries)
         if rps is None:
             rps = (_utilities.get_env_int('CLOUDFLARE_RPS') or 4)
         if rps is not None:
-            _setter("rps", rps)
+            pulumi.set(__self__, "rps", rps)
         if user_agent_operator_suffix is not None:
-            _setter("user_agent_operator_suffix", user_agent_operator_suffix)
+            pulumi.set(__self__, "user_agent_operator_suffix", user_agent_operator_suffix)
 
     @property
     @pulumi.getter(name="apiBasePath")
@@ -387,10 +336,6 @@ class Provider(pulumi.ProviderResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            ProviderArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

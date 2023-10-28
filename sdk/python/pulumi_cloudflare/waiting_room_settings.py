@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['WaitingRoomSettingsArgs', 'WaitingRoomSettings']
@@ -21,28 +21,9 @@ class WaitingRoomSettingsArgs:
         :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         :param pulumi.Input[bool] search_engine_crawler_bypass: Whether to allow verified search engine crawlers to bypass all waiting rooms on this zone. Defaults to `false`.
         """
-        WaitingRoomSettingsArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            zone_id=zone_id,
-            search_engine_crawler_bypass=search_engine_crawler_bypass,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             zone_id: Optional[pulumi.Input[str]] = None,
-             search_engine_crawler_bypass: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if zone_id is None and 'zoneId' in kwargs:
-            zone_id = kwargs['zoneId']
-        if zone_id is None:
-            raise TypeError("Missing 'zone_id' argument")
-        if search_engine_crawler_bypass is None and 'searchEngineCrawlerBypass' in kwargs:
-            search_engine_crawler_bypass = kwargs['searchEngineCrawlerBypass']
-
-        _setter("zone_id", zone_id)
+        pulumi.set(__self__, "zone_id", zone_id)
         if search_engine_crawler_bypass is not None:
-            _setter("search_engine_crawler_bypass", search_engine_crawler_bypass)
+            pulumi.set(__self__, "search_engine_crawler_bypass", search_engine_crawler_bypass)
 
     @property
     @pulumi.getter(name="zoneId")
@@ -79,27 +60,10 @@ class _WaitingRoomSettingsState:
         :param pulumi.Input[bool] search_engine_crawler_bypass: Whether to allow verified search engine crawlers to bypass all waiting rooms on this zone. Defaults to `false`.
         :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         """
-        _WaitingRoomSettingsState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            search_engine_crawler_bypass=search_engine_crawler_bypass,
-            zone_id=zone_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             search_engine_crawler_bypass: Optional[pulumi.Input[bool]] = None,
-             zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if search_engine_crawler_bypass is None and 'searchEngineCrawlerBypass' in kwargs:
-            search_engine_crawler_bypass = kwargs['searchEngineCrawlerBypass']
-        if zone_id is None and 'zoneId' in kwargs:
-            zone_id = kwargs['zoneId']
-
         if search_engine_crawler_bypass is not None:
-            _setter("search_engine_crawler_bypass", search_engine_crawler_bypass)
+            pulumi.set(__self__, "search_engine_crawler_bypass", search_engine_crawler_bypass)
         if zone_id is not None:
-            _setter("zone_id", zone_id)
+            pulumi.set(__self__, "zone_id", zone_id)
 
     @property
     @pulumi.getter(name="searchEngineCrawlerBypass")
@@ -195,10 +159,6 @@ class WaitingRoomSettings(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            WaitingRoomSettingsArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

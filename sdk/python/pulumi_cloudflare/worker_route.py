@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['WorkerRouteArgs', 'WorkerRoute']
@@ -23,33 +23,10 @@ class WorkerRouteArgs:
         :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         :param pulumi.Input[str] script_name: Worker script name to invoke for requests that match the route pattern.
         """
-        WorkerRouteArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            pattern=pattern,
-            zone_id=zone_id,
-            script_name=script_name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             pattern: Optional[pulumi.Input[str]] = None,
-             zone_id: Optional[pulumi.Input[str]] = None,
-             script_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if pattern is None:
-            raise TypeError("Missing 'pattern' argument")
-        if zone_id is None and 'zoneId' in kwargs:
-            zone_id = kwargs['zoneId']
-        if zone_id is None:
-            raise TypeError("Missing 'zone_id' argument")
-        if script_name is None and 'scriptName' in kwargs:
-            script_name = kwargs['scriptName']
-
-        _setter("pattern", pattern)
-        _setter("zone_id", zone_id)
+        pulumi.set(__self__, "pattern", pattern)
+        pulumi.set(__self__, "zone_id", zone_id)
         if script_name is not None:
-            _setter("script_name", script_name)
+            pulumi.set(__self__, "script_name", script_name)
 
     @property
     @pulumi.getter
@@ -100,31 +77,12 @@ class _WorkerRouteState:
         :param pulumi.Input[str] script_name: Worker script name to invoke for requests that match the route pattern.
         :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         """
-        _WorkerRouteState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            pattern=pattern,
-            script_name=script_name,
-            zone_id=zone_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             pattern: Optional[pulumi.Input[str]] = None,
-             script_name: Optional[pulumi.Input[str]] = None,
-             zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if script_name is None and 'scriptName' in kwargs:
-            script_name = kwargs['scriptName']
-        if zone_id is None and 'zoneId' in kwargs:
-            zone_id = kwargs['zoneId']
-
         if pattern is not None:
-            _setter("pattern", pattern)
+            pulumi.set(__self__, "pattern", pattern)
         if script_name is not None:
-            _setter("script_name", script_name)
+            pulumi.set(__self__, "script_name", script_name)
         if zone_id is not None:
-            _setter("zone_id", zone_id)
+            pulumi.set(__self__, "zone_id", zone_id)
 
     @property
     @pulumi.getter
@@ -242,10 +200,6 @@ class WorkerRoute(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            WorkerRouteArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

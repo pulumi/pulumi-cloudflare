@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -65,146 +65,51 @@ class AccessApplicationArgs:
         :param pulumi.Input[str] type: The application type. Available values: `app_launcher`, `bookmark`, `biso`, `dash_sso`, `saas`, `self_hosted`, `ssh`, `vnc`, `warp`. Defaults to `self_hosted`.
         :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. Conflicts with `account_id`.
         """
-        AccessApplicationArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            name=name,
-            account_id=account_id,
-            allowed_idps=allowed_idps,
-            app_launcher_visible=app_launcher_visible,
-            auto_redirect_to_identity=auto_redirect_to_identity,
-            cors_headers=cors_headers,
-            custom_deny_message=custom_deny_message,
-            custom_deny_url=custom_deny_url,
-            custom_non_identity_deny_url=custom_non_identity_deny_url,
-            custom_pages=custom_pages,
-            domain=domain,
-            enable_binding_cookie=enable_binding_cookie,
-            http_only_cookie_attribute=http_only_cookie_attribute,
-            logo_url=logo_url,
-            saas_app=saas_app,
-            same_site_cookie_attribute=same_site_cookie_attribute,
-            self_hosted_domains=self_hosted_domains,
-            service_auth401_redirect=service_auth401_redirect,
-            session_duration=session_duration,
-            skip_interstitial=skip_interstitial,
-            tags=tags,
-            type=type,
-            zone_id=zone_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             name: Optional[pulumi.Input[str]] = None,
-             account_id: Optional[pulumi.Input[str]] = None,
-             allowed_idps: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             app_launcher_visible: Optional[pulumi.Input[bool]] = None,
-             auto_redirect_to_identity: Optional[pulumi.Input[bool]] = None,
-             cors_headers: Optional[pulumi.Input[Sequence[pulumi.Input['AccessApplicationCorsHeaderArgs']]]] = None,
-             custom_deny_message: Optional[pulumi.Input[str]] = None,
-             custom_deny_url: Optional[pulumi.Input[str]] = None,
-             custom_non_identity_deny_url: Optional[pulumi.Input[str]] = None,
-             custom_pages: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             domain: Optional[pulumi.Input[str]] = None,
-             enable_binding_cookie: Optional[pulumi.Input[bool]] = None,
-             http_only_cookie_attribute: Optional[pulumi.Input[bool]] = None,
-             logo_url: Optional[pulumi.Input[str]] = None,
-             saas_app: Optional[pulumi.Input['AccessApplicationSaasAppArgs']] = None,
-             same_site_cookie_attribute: Optional[pulumi.Input[str]] = None,
-             self_hosted_domains: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             service_auth401_redirect: Optional[pulumi.Input[bool]] = None,
-             session_duration: Optional[pulumi.Input[str]] = None,
-             skip_interstitial: Optional[pulumi.Input[bool]] = None,
-             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             type: Optional[pulumi.Input[str]] = None,
-             zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if name is None:
-            raise TypeError("Missing 'name' argument")
-        if account_id is None and 'accountId' in kwargs:
-            account_id = kwargs['accountId']
-        if allowed_idps is None and 'allowedIdps' in kwargs:
-            allowed_idps = kwargs['allowedIdps']
-        if app_launcher_visible is None and 'appLauncherVisible' in kwargs:
-            app_launcher_visible = kwargs['appLauncherVisible']
-        if auto_redirect_to_identity is None and 'autoRedirectToIdentity' in kwargs:
-            auto_redirect_to_identity = kwargs['autoRedirectToIdentity']
-        if cors_headers is None and 'corsHeaders' in kwargs:
-            cors_headers = kwargs['corsHeaders']
-        if custom_deny_message is None and 'customDenyMessage' in kwargs:
-            custom_deny_message = kwargs['customDenyMessage']
-        if custom_deny_url is None and 'customDenyUrl' in kwargs:
-            custom_deny_url = kwargs['customDenyUrl']
-        if custom_non_identity_deny_url is None and 'customNonIdentityDenyUrl' in kwargs:
-            custom_non_identity_deny_url = kwargs['customNonIdentityDenyUrl']
-        if custom_pages is None and 'customPages' in kwargs:
-            custom_pages = kwargs['customPages']
-        if enable_binding_cookie is None and 'enableBindingCookie' in kwargs:
-            enable_binding_cookie = kwargs['enableBindingCookie']
-        if http_only_cookie_attribute is None and 'httpOnlyCookieAttribute' in kwargs:
-            http_only_cookie_attribute = kwargs['httpOnlyCookieAttribute']
-        if logo_url is None and 'logoUrl' in kwargs:
-            logo_url = kwargs['logoUrl']
-        if saas_app is None and 'saasApp' in kwargs:
-            saas_app = kwargs['saasApp']
-        if same_site_cookie_attribute is None and 'sameSiteCookieAttribute' in kwargs:
-            same_site_cookie_attribute = kwargs['sameSiteCookieAttribute']
-        if self_hosted_domains is None and 'selfHostedDomains' in kwargs:
-            self_hosted_domains = kwargs['selfHostedDomains']
-        if service_auth401_redirect is None and 'serviceAuth401Redirect' in kwargs:
-            service_auth401_redirect = kwargs['serviceAuth401Redirect']
-        if session_duration is None and 'sessionDuration' in kwargs:
-            session_duration = kwargs['sessionDuration']
-        if skip_interstitial is None and 'skipInterstitial' in kwargs:
-            skip_interstitial = kwargs['skipInterstitial']
-        if zone_id is None and 'zoneId' in kwargs:
-            zone_id = kwargs['zoneId']
-
-        _setter("name", name)
+        pulumi.set(__self__, "name", name)
         if account_id is not None:
-            _setter("account_id", account_id)
+            pulumi.set(__self__, "account_id", account_id)
         if allowed_idps is not None:
-            _setter("allowed_idps", allowed_idps)
+            pulumi.set(__self__, "allowed_idps", allowed_idps)
         if app_launcher_visible is not None:
-            _setter("app_launcher_visible", app_launcher_visible)
+            pulumi.set(__self__, "app_launcher_visible", app_launcher_visible)
         if auto_redirect_to_identity is not None:
-            _setter("auto_redirect_to_identity", auto_redirect_to_identity)
+            pulumi.set(__self__, "auto_redirect_to_identity", auto_redirect_to_identity)
         if cors_headers is not None:
-            _setter("cors_headers", cors_headers)
+            pulumi.set(__self__, "cors_headers", cors_headers)
         if custom_deny_message is not None:
-            _setter("custom_deny_message", custom_deny_message)
+            pulumi.set(__self__, "custom_deny_message", custom_deny_message)
         if custom_deny_url is not None:
-            _setter("custom_deny_url", custom_deny_url)
+            pulumi.set(__self__, "custom_deny_url", custom_deny_url)
         if custom_non_identity_deny_url is not None:
-            _setter("custom_non_identity_deny_url", custom_non_identity_deny_url)
+            pulumi.set(__self__, "custom_non_identity_deny_url", custom_non_identity_deny_url)
         if custom_pages is not None:
-            _setter("custom_pages", custom_pages)
+            pulumi.set(__self__, "custom_pages", custom_pages)
         if domain is not None:
-            _setter("domain", domain)
+            pulumi.set(__self__, "domain", domain)
         if enable_binding_cookie is not None:
-            _setter("enable_binding_cookie", enable_binding_cookie)
+            pulumi.set(__self__, "enable_binding_cookie", enable_binding_cookie)
         if http_only_cookie_attribute is not None:
-            _setter("http_only_cookie_attribute", http_only_cookie_attribute)
+            pulumi.set(__self__, "http_only_cookie_attribute", http_only_cookie_attribute)
         if logo_url is not None:
-            _setter("logo_url", logo_url)
+            pulumi.set(__self__, "logo_url", logo_url)
         if saas_app is not None:
-            _setter("saas_app", saas_app)
+            pulumi.set(__self__, "saas_app", saas_app)
         if same_site_cookie_attribute is not None:
-            _setter("same_site_cookie_attribute", same_site_cookie_attribute)
+            pulumi.set(__self__, "same_site_cookie_attribute", same_site_cookie_attribute)
         if self_hosted_domains is not None:
-            _setter("self_hosted_domains", self_hosted_domains)
+            pulumi.set(__self__, "self_hosted_domains", self_hosted_domains)
         if service_auth401_redirect is not None:
-            _setter("service_auth401_redirect", service_auth401_redirect)
+            pulumi.set(__self__, "service_auth401_redirect", service_auth401_redirect)
         if session_duration is not None:
-            _setter("session_duration", session_duration)
+            pulumi.set(__self__, "session_duration", session_duration)
         if skip_interstitial is not None:
-            _setter("skip_interstitial", skip_interstitial)
+            pulumi.set(__self__, "skip_interstitial", skip_interstitial)
         if tags is not None:
-            _setter("tags", tags)
+            pulumi.set(__self__, "tags", tags)
         if type is not None:
-            _setter("type", type)
+            pulumi.set(__self__, "type", type)
         if zone_id is not None:
-            _setter("zone_id", zone_id)
+            pulumi.set(__self__, "zone_id", zone_id)
 
     @property
     @pulumi.getter
@@ -537,149 +442,54 @@ class _AccessApplicationState:
         :param pulumi.Input[str] type: The application type. Available values: `app_launcher`, `bookmark`, `biso`, `dash_sso`, `saas`, `self_hosted`, `ssh`, `vnc`, `warp`. Defaults to `self_hosted`.
         :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. Conflicts with `account_id`.
         """
-        _AccessApplicationState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            account_id=account_id,
-            allowed_idps=allowed_idps,
-            app_launcher_visible=app_launcher_visible,
-            aud=aud,
-            auto_redirect_to_identity=auto_redirect_to_identity,
-            cors_headers=cors_headers,
-            custom_deny_message=custom_deny_message,
-            custom_deny_url=custom_deny_url,
-            custom_non_identity_deny_url=custom_non_identity_deny_url,
-            custom_pages=custom_pages,
-            domain=domain,
-            enable_binding_cookie=enable_binding_cookie,
-            http_only_cookie_attribute=http_only_cookie_attribute,
-            logo_url=logo_url,
-            name=name,
-            saas_app=saas_app,
-            same_site_cookie_attribute=same_site_cookie_attribute,
-            self_hosted_domains=self_hosted_domains,
-            service_auth401_redirect=service_auth401_redirect,
-            session_duration=session_duration,
-            skip_interstitial=skip_interstitial,
-            tags=tags,
-            type=type,
-            zone_id=zone_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             account_id: Optional[pulumi.Input[str]] = None,
-             allowed_idps: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             app_launcher_visible: Optional[pulumi.Input[bool]] = None,
-             aud: Optional[pulumi.Input[str]] = None,
-             auto_redirect_to_identity: Optional[pulumi.Input[bool]] = None,
-             cors_headers: Optional[pulumi.Input[Sequence[pulumi.Input['AccessApplicationCorsHeaderArgs']]]] = None,
-             custom_deny_message: Optional[pulumi.Input[str]] = None,
-             custom_deny_url: Optional[pulumi.Input[str]] = None,
-             custom_non_identity_deny_url: Optional[pulumi.Input[str]] = None,
-             custom_pages: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             domain: Optional[pulumi.Input[str]] = None,
-             enable_binding_cookie: Optional[pulumi.Input[bool]] = None,
-             http_only_cookie_attribute: Optional[pulumi.Input[bool]] = None,
-             logo_url: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             saas_app: Optional[pulumi.Input['AccessApplicationSaasAppArgs']] = None,
-             same_site_cookie_attribute: Optional[pulumi.Input[str]] = None,
-             self_hosted_domains: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             service_auth401_redirect: Optional[pulumi.Input[bool]] = None,
-             session_duration: Optional[pulumi.Input[str]] = None,
-             skip_interstitial: Optional[pulumi.Input[bool]] = None,
-             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             type: Optional[pulumi.Input[str]] = None,
-             zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if account_id is None and 'accountId' in kwargs:
-            account_id = kwargs['accountId']
-        if allowed_idps is None and 'allowedIdps' in kwargs:
-            allowed_idps = kwargs['allowedIdps']
-        if app_launcher_visible is None and 'appLauncherVisible' in kwargs:
-            app_launcher_visible = kwargs['appLauncherVisible']
-        if auto_redirect_to_identity is None and 'autoRedirectToIdentity' in kwargs:
-            auto_redirect_to_identity = kwargs['autoRedirectToIdentity']
-        if cors_headers is None and 'corsHeaders' in kwargs:
-            cors_headers = kwargs['corsHeaders']
-        if custom_deny_message is None and 'customDenyMessage' in kwargs:
-            custom_deny_message = kwargs['customDenyMessage']
-        if custom_deny_url is None and 'customDenyUrl' in kwargs:
-            custom_deny_url = kwargs['customDenyUrl']
-        if custom_non_identity_deny_url is None and 'customNonIdentityDenyUrl' in kwargs:
-            custom_non_identity_deny_url = kwargs['customNonIdentityDenyUrl']
-        if custom_pages is None and 'customPages' in kwargs:
-            custom_pages = kwargs['customPages']
-        if enable_binding_cookie is None and 'enableBindingCookie' in kwargs:
-            enable_binding_cookie = kwargs['enableBindingCookie']
-        if http_only_cookie_attribute is None and 'httpOnlyCookieAttribute' in kwargs:
-            http_only_cookie_attribute = kwargs['httpOnlyCookieAttribute']
-        if logo_url is None and 'logoUrl' in kwargs:
-            logo_url = kwargs['logoUrl']
-        if saas_app is None and 'saasApp' in kwargs:
-            saas_app = kwargs['saasApp']
-        if same_site_cookie_attribute is None and 'sameSiteCookieAttribute' in kwargs:
-            same_site_cookie_attribute = kwargs['sameSiteCookieAttribute']
-        if self_hosted_domains is None and 'selfHostedDomains' in kwargs:
-            self_hosted_domains = kwargs['selfHostedDomains']
-        if service_auth401_redirect is None and 'serviceAuth401Redirect' in kwargs:
-            service_auth401_redirect = kwargs['serviceAuth401Redirect']
-        if session_duration is None and 'sessionDuration' in kwargs:
-            session_duration = kwargs['sessionDuration']
-        if skip_interstitial is None and 'skipInterstitial' in kwargs:
-            skip_interstitial = kwargs['skipInterstitial']
-        if zone_id is None and 'zoneId' in kwargs:
-            zone_id = kwargs['zoneId']
-
         if account_id is not None:
-            _setter("account_id", account_id)
+            pulumi.set(__self__, "account_id", account_id)
         if allowed_idps is not None:
-            _setter("allowed_idps", allowed_idps)
+            pulumi.set(__self__, "allowed_idps", allowed_idps)
         if app_launcher_visible is not None:
-            _setter("app_launcher_visible", app_launcher_visible)
+            pulumi.set(__self__, "app_launcher_visible", app_launcher_visible)
         if aud is not None:
-            _setter("aud", aud)
+            pulumi.set(__self__, "aud", aud)
         if auto_redirect_to_identity is not None:
-            _setter("auto_redirect_to_identity", auto_redirect_to_identity)
+            pulumi.set(__self__, "auto_redirect_to_identity", auto_redirect_to_identity)
         if cors_headers is not None:
-            _setter("cors_headers", cors_headers)
+            pulumi.set(__self__, "cors_headers", cors_headers)
         if custom_deny_message is not None:
-            _setter("custom_deny_message", custom_deny_message)
+            pulumi.set(__self__, "custom_deny_message", custom_deny_message)
         if custom_deny_url is not None:
-            _setter("custom_deny_url", custom_deny_url)
+            pulumi.set(__self__, "custom_deny_url", custom_deny_url)
         if custom_non_identity_deny_url is not None:
-            _setter("custom_non_identity_deny_url", custom_non_identity_deny_url)
+            pulumi.set(__self__, "custom_non_identity_deny_url", custom_non_identity_deny_url)
         if custom_pages is not None:
-            _setter("custom_pages", custom_pages)
+            pulumi.set(__self__, "custom_pages", custom_pages)
         if domain is not None:
-            _setter("domain", domain)
+            pulumi.set(__self__, "domain", domain)
         if enable_binding_cookie is not None:
-            _setter("enable_binding_cookie", enable_binding_cookie)
+            pulumi.set(__self__, "enable_binding_cookie", enable_binding_cookie)
         if http_only_cookie_attribute is not None:
-            _setter("http_only_cookie_attribute", http_only_cookie_attribute)
+            pulumi.set(__self__, "http_only_cookie_attribute", http_only_cookie_attribute)
         if logo_url is not None:
-            _setter("logo_url", logo_url)
+            pulumi.set(__self__, "logo_url", logo_url)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if saas_app is not None:
-            _setter("saas_app", saas_app)
+            pulumi.set(__self__, "saas_app", saas_app)
         if same_site_cookie_attribute is not None:
-            _setter("same_site_cookie_attribute", same_site_cookie_attribute)
+            pulumi.set(__self__, "same_site_cookie_attribute", same_site_cookie_attribute)
         if self_hosted_domains is not None:
-            _setter("self_hosted_domains", self_hosted_domains)
+            pulumi.set(__self__, "self_hosted_domains", self_hosted_domains)
         if service_auth401_redirect is not None:
-            _setter("service_auth401_redirect", service_auth401_redirect)
+            pulumi.set(__self__, "service_auth401_redirect", service_auth401_redirect)
         if session_duration is not None:
-            _setter("session_duration", session_duration)
+            pulumi.set(__self__, "session_duration", session_duration)
         if skip_interstitial is not None:
-            _setter("skip_interstitial", skip_interstitial)
+            pulumi.set(__self__, "skip_interstitial", skip_interstitial)
         if tags is not None:
-            _setter("tags", tags)
+            pulumi.set(__self__, "tags", tags)
         if type is not None:
-            _setter("type", type)
+            pulumi.set(__self__, "type", type)
         if zone_id is not None:
-            _setter("zone_id", zone_id)
+            pulumi.set(__self__, "zone_id", zone_id)
 
     @property
     @pulumi.getter(name="accountId")
@@ -1125,10 +935,6 @@ class AccessApplication(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            AccessApplicationArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -1182,7 +988,6 @@ class AccessApplication(pulumi.CustomResource):
             if name is None and not opts.urn:
                 raise TypeError("Missing required property 'name'")
             __props__.__dict__["name"] = name
-            saas_app = _utilities.configure(saas_app, AccessApplicationSaasAppArgs, True)
             __props__.__dict__["saas_app"] = saas_app
             __props__.__dict__["same_site_cookie_attribute"] = same_site_cookie_attribute
             __props__.__dict__["self_hosted_domains"] = self_hosted_domains

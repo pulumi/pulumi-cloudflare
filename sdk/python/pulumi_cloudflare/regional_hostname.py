@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['RegionalHostnameArgs', 'RegionalHostname']
@@ -23,34 +23,9 @@ class RegionalHostnameArgs:
         :param pulumi.Input[str] region_key: The region key. See [the full region list](https://developers.cloudflare.com/data-localization/regional-services/get-started/).
         :param pulumi.Input[str] zone_id: The zone identifier to target for the resource.
         """
-        RegionalHostnameArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            hostname=hostname,
-            region_key=region_key,
-            zone_id=zone_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             hostname: Optional[pulumi.Input[str]] = None,
-             region_key: Optional[pulumi.Input[str]] = None,
-             zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if hostname is None:
-            raise TypeError("Missing 'hostname' argument")
-        if region_key is None and 'regionKey' in kwargs:
-            region_key = kwargs['regionKey']
-        if region_key is None:
-            raise TypeError("Missing 'region_key' argument")
-        if zone_id is None and 'zoneId' in kwargs:
-            zone_id = kwargs['zoneId']
-        if zone_id is None:
-            raise TypeError("Missing 'zone_id' argument")
-
-        _setter("hostname", hostname)
-        _setter("region_key", region_key)
-        _setter("zone_id", zone_id)
+        pulumi.set(__self__, "hostname", hostname)
+        pulumi.set(__self__, "region_key", region_key)
+        pulumi.set(__self__, "zone_id", zone_id)
 
     @property
     @pulumi.getter
@@ -103,37 +78,14 @@ class _RegionalHostnameState:
         :param pulumi.Input[str] region_key: The region key. See [the full region list](https://developers.cloudflare.com/data-localization/regional-services/get-started/).
         :param pulumi.Input[str] zone_id: The zone identifier to target for the resource.
         """
-        _RegionalHostnameState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            created_on=created_on,
-            hostname=hostname,
-            region_key=region_key,
-            zone_id=zone_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             created_on: Optional[pulumi.Input[str]] = None,
-             hostname: Optional[pulumi.Input[str]] = None,
-             region_key: Optional[pulumi.Input[str]] = None,
-             zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if created_on is None and 'createdOn' in kwargs:
-            created_on = kwargs['createdOn']
-        if region_key is None and 'regionKey' in kwargs:
-            region_key = kwargs['regionKey']
-        if zone_id is None and 'zoneId' in kwargs:
-            zone_id = kwargs['zoneId']
-
         if created_on is not None:
-            _setter("created_on", created_on)
+            pulumi.set(__self__, "created_on", created_on)
         if hostname is not None:
-            _setter("hostname", hostname)
+            pulumi.set(__self__, "hostname", hostname)
         if region_key is not None:
-            _setter("region_key", region_key)
+            pulumi.set(__self__, "region_key", region_key)
         if zone_id is not None:
-            _setter("zone_id", zone_id)
+            pulumi.set(__self__, "zone_id", zone_id)
 
     @property
     @pulumi.getter(name="createdOn")
@@ -265,10 +217,6 @@ class RegionalHostname(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            RegionalHostnameArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

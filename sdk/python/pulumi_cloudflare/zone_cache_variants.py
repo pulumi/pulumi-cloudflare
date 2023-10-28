@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['ZoneCacheVariantsArgs', 'ZoneCacheVariants']
@@ -41,66 +41,29 @@ class ZoneCacheVariantsArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tifs: List of strings with the MIME types of all the variants that should be served for tif.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] webps: List of strings with the MIME types of all the variants that should be served for webp.
         """
-        ZoneCacheVariantsArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            zone_id=zone_id,
-            avifs=avifs,
-            bmps=bmps,
-            gifs=gifs,
-            jp2s=jp2s,
-            jpegs=jpegs,
-            jpg2s=jpg2s,
-            jpgs=jpgs,
-            pngs=pngs,
-            tiffs=tiffs,
-            tifs=tifs,
-            webps=webps,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             zone_id: Optional[pulumi.Input[str]] = None,
-             avifs: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             bmps: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             gifs: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             jp2s: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             jpegs: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             jpg2s: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             jpgs: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             pngs: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             tiffs: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             tifs: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             webps: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if zone_id is None and 'zoneId' in kwargs:
-            zone_id = kwargs['zoneId']
-        if zone_id is None:
-            raise TypeError("Missing 'zone_id' argument")
-
-        _setter("zone_id", zone_id)
+        pulumi.set(__self__, "zone_id", zone_id)
         if avifs is not None:
-            _setter("avifs", avifs)
+            pulumi.set(__self__, "avifs", avifs)
         if bmps is not None:
-            _setter("bmps", bmps)
+            pulumi.set(__self__, "bmps", bmps)
         if gifs is not None:
-            _setter("gifs", gifs)
+            pulumi.set(__self__, "gifs", gifs)
         if jp2s is not None:
-            _setter("jp2s", jp2s)
+            pulumi.set(__self__, "jp2s", jp2s)
         if jpegs is not None:
-            _setter("jpegs", jpegs)
+            pulumi.set(__self__, "jpegs", jpegs)
         if jpg2s is not None:
-            _setter("jpg2s", jpg2s)
+            pulumi.set(__self__, "jpg2s", jpg2s)
         if jpgs is not None:
-            _setter("jpgs", jpgs)
+            pulumi.set(__self__, "jpgs", jpgs)
         if pngs is not None:
-            _setter("pngs", pngs)
+            pulumi.set(__self__, "pngs", pngs)
         if tiffs is not None:
-            _setter("tiffs", tiffs)
+            pulumi.set(__self__, "tiffs", tiffs)
         if tifs is not None:
-            _setter("tifs", tifs)
+            pulumi.set(__self__, "tifs", tifs)
         if webps is not None:
-            _setter("webps", webps)
+            pulumi.set(__self__, "webps", webps)
 
     @property
     @pulumi.getter(name="zoneId")
@@ -277,65 +240,30 @@ class _ZoneCacheVariantsState:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] webps: List of strings with the MIME types of all the variants that should be served for webp.
         :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         """
-        _ZoneCacheVariantsState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            avifs=avifs,
-            bmps=bmps,
-            gifs=gifs,
-            jp2s=jp2s,
-            jpegs=jpegs,
-            jpg2s=jpg2s,
-            jpgs=jpgs,
-            pngs=pngs,
-            tiffs=tiffs,
-            tifs=tifs,
-            webps=webps,
-            zone_id=zone_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             avifs: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             bmps: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             gifs: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             jp2s: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             jpegs: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             jpg2s: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             jpgs: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             pngs: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             tiffs: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             tifs: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             webps: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if zone_id is None and 'zoneId' in kwargs:
-            zone_id = kwargs['zoneId']
-
         if avifs is not None:
-            _setter("avifs", avifs)
+            pulumi.set(__self__, "avifs", avifs)
         if bmps is not None:
-            _setter("bmps", bmps)
+            pulumi.set(__self__, "bmps", bmps)
         if gifs is not None:
-            _setter("gifs", gifs)
+            pulumi.set(__self__, "gifs", gifs)
         if jp2s is not None:
-            _setter("jp2s", jp2s)
+            pulumi.set(__self__, "jp2s", jp2s)
         if jpegs is not None:
-            _setter("jpegs", jpegs)
+            pulumi.set(__self__, "jpegs", jpegs)
         if jpg2s is not None:
-            _setter("jpg2s", jpg2s)
+            pulumi.set(__self__, "jpg2s", jpg2s)
         if jpgs is not None:
-            _setter("jpgs", jpgs)
+            pulumi.set(__self__, "jpgs", jpgs)
         if pngs is not None:
-            _setter("pngs", pngs)
+            pulumi.set(__self__, "pngs", pngs)
         if tiffs is not None:
-            _setter("tiffs", tiffs)
+            pulumi.set(__self__, "tiffs", tiffs)
         if tifs is not None:
-            _setter("tifs", tifs)
+            pulumi.set(__self__, "tifs", tifs)
         if webps is not None:
-            _setter("webps", webps)
+            pulumi.set(__self__, "webps", webps)
         if zone_id is not None:
-            _setter("zone_id", zone_id)
+            pulumi.set(__self__, "zone_id", zone_id)
 
     @property
     @pulumi.getter
@@ -645,10 +573,6 @@ class ZoneCacheVariants(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            ZoneCacheVariantsArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['AccessServiceTokenArgs', 'AccessServiceToken']
@@ -27,42 +27,15 @@ class AccessServiceTokenArgs:
         :param pulumi.Input[int] min_days_for_renewal: Refresh the token if terraform is run within the specified amount of days before expiration
         :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. Conflicts with `account_id`.
         """
-        AccessServiceTokenArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            name=name,
-            account_id=account_id,
-            duration=duration,
-            min_days_for_renewal=min_days_for_renewal,
-            zone_id=zone_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             name: Optional[pulumi.Input[str]] = None,
-             account_id: Optional[pulumi.Input[str]] = None,
-             duration: Optional[pulumi.Input[str]] = None,
-             min_days_for_renewal: Optional[pulumi.Input[int]] = None,
-             zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if name is None:
-            raise TypeError("Missing 'name' argument")
-        if account_id is None and 'accountId' in kwargs:
-            account_id = kwargs['accountId']
-        if min_days_for_renewal is None and 'minDaysForRenewal' in kwargs:
-            min_days_for_renewal = kwargs['minDaysForRenewal']
-        if zone_id is None and 'zoneId' in kwargs:
-            zone_id = kwargs['zoneId']
-
-        _setter("name", name)
+        pulumi.set(__self__, "name", name)
         if account_id is not None:
-            _setter("account_id", account_id)
+            pulumi.set(__self__, "account_id", account_id)
         if duration is not None:
-            _setter("duration", duration)
+            pulumi.set(__self__, "duration", duration)
         if min_days_for_renewal is not None:
-            _setter("min_days_for_renewal", min_days_for_renewal)
+            pulumi.set(__self__, "min_days_for_renewal", min_days_for_renewal)
         if zone_id is not None:
-            _setter("zone_id", zone_id)
+            pulumi.set(__self__, "zone_id", zone_id)
 
     @property
     @pulumi.getter
@@ -147,59 +120,22 @@ class _AccessServiceTokenState:
         :param pulumi.Input[str] name: Friendly name of the token's intent.
         :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. Conflicts with `account_id`.
         """
-        _AccessServiceTokenState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            account_id=account_id,
-            client_id=client_id,
-            client_secret=client_secret,
-            duration=duration,
-            expires_at=expires_at,
-            min_days_for_renewal=min_days_for_renewal,
-            name=name,
-            zone_id=zone_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             account_id: Optional[pulumi.Input[str]] = None,
-             client_id: Optional[pulumi.Input[str]] = None,
-             client_secret: Optional[pulumi.Input[str]] = None,
-             duration: Optional[pulumi.Input[str]] = None,
-             expires_at: Optional[pulumi.Input[str]] = None,
-             min_days_for_renewal: Optional[pulumi.Input[int]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if account_id is None and 'accountId' in kwargs:
-            account_id = kwargs['accountId']
-        if client_id is None and 'clientId' in kwargs:
-            client_id = kwargs['clientId']
-        if client_secret is None and 'clientSecret' in kwargs:
-            client_secret = kwargs['clientSecret']
-        if expires_at is None and 'expiresAt' in kwargs:
-            expires_at = kwargs['expiresAt']
-        if min_days_for_renewal is None and 'minDaysForRenewal' in kwargs:
-            min_days_for_renewal = kwargs['minDaysForRenewal']
-        if zone_id is None and 'zoneId' in kwargs:
-            zone_id = kwargs['zoneId']
-
         if account_id is not None:
-            _setter("account_id", account_id)
+            pulumi.set(__self__, "account_id", account_id)
         if client_id is not None:
-            _setter("client_id", client_id)
+            pulumi.set(__self__, "client_id", client_id)
         if client_secret is not None:
-            _setter("client_secret", client_secret)
+            pulumi.set(__self__, "client_secret", client_secret)
         if duration is not None:
-            _setter("duration", duration)
+            pulumi.set(__self__, "duration", duration)
         if expires_at is not None:
-            _setter("expires_at", expires_at)
+            pulumi.set(__self__, "expires_at", expires_at)
         if min_days_for_renewal is not None:
-            _setter("min_days_for_renewal", min_days_for_renewal)
+            pulumi.set(__self__, "min_days_for_renewal", min_days_for_renewal)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if zone_id is not None:
-            _setter("zone_id", zone_id)
+            pulumi.set(__self__, "zone_id", zone_id)
 
     @property
     @pulumi.getter(name="accountId")
@@ -383,10 +319,6 @@ class AccessServiceToken(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            AccessServiceTokenArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
