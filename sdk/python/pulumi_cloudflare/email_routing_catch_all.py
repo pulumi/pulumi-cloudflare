@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -29,41 +29,12 @@ class EmailRoutingCatchAllArgs:
         :param pulumi.Input[str] zone_id: The zone identifier to target for the resource.
         :param pulumi.Input[bool] enabled: Routing rule status.
         """
-        EmailRoutingCatchAllArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            actions=actions,
-            matchers=matchers,
-            name=name,
-            zone_id=zone_id,
-            enabled=enabled,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             actions: Optional[pulumi.Input[Sequence[pulumi.Input['EmailRoutingCatchAllActionArgs']]]] = None,
-             matchers: Optional[pulumi.Input[Sequence[pulumi.Input['EmailRoutingCatchAllMatcherArgs']]]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             zone_id: Optional[pulumi.Input[str]] = None,
-             enabled: Optional[pulumi.Input[bool]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if actions is None:
-            raise TypeError("Missing 'actions' argument")
-        if matchers is None:
-            raise TypeError("Missing 'matchers' argument")
-        if name is None:
-            raise TypeError("Missing 'name' argument")
-        if zone_id is None and 'zoneId' in kwargs:
-            zone_id = kwargs['zoneId']
-        if zone_id is None:
-            raise TypeError("Missing 'zone_id' argument")
-
-        _setter("actions", actions)
-        _setter("matchers", matchers)
-        _setter("name", name)
-        _setter("zone_id", zone_id)
+        pulumi.set(__self__, "actions", actions)
+        pulumi.set(__self__, "matchers", matchers)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "zone_id", zone_id)
         if enabled is not None:
-            _setter("enabled", enabled)
+            pulumi.set(__self__, "enabled", enabled)
 
     @property
     @pulumi.getter
@@ -144,41 +115,18 @@ class _EmailRoutingCatchAllState:
         :param pulumi.Input[str] tag: Routing rule identifier.
         :param pulumi.Input[str] zone_id: The zone identifier to target for the resource.
         """
-        _EmailRoutingCatchAllState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            actions=actions,
-            enabled=enabled,
-            matchers=matchers,
-            name=name,
-            tag=tag,
-            zone_id=zone_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             actions: Optional[pulumi.Input[Sequence[pulumi.Input['EmailRoutingCatchAllActionArgs']]]] = None,
-             enabled: Optional[pulumi.Input[bool]] = None,
-             matchers: Optional[pulumi.Input[Sequence[pulumi.Input['EmailRoutingCatchAllMatcherArgs']]]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             tag: Optional[pulumi.Input[str]] = None,
-             zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if zone_id is None and 'zoneId' in kwargs:
-            zone_id = kwargs['zoneId']
-
         if actions is not None:
-            _setter("actions", actions)
+            pulumi.set(__self__, "actions", actions)
         if enabled is not None:
-            _setter("enabled", enabled)
+            pulumi.set(__self__, "enabled", enabled)
         if matchers is not None:
-            _setter("matchers", matchers)
+            pulumi.set(__self__, "matchers", matchers)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if tag is not None:
-            _setter("tag", tag)
+            pulumi.set(__self__, "tag", tag)
         if zone_id is not None:
-            _setter("zone_id", zone_id)
+            pulumi.set(__self__, "zone_id", zone_id)
 
     @property
     @pulumi.getter
@@ -332,10 +280,6 @@ class EmailRoutingCatchAll(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            EmailRoutingCatchAllArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -57,121 +57,40 @@ class LoadBalancerArgs:
         :param pulumi.Input[str] steering_policy: The method the load balancer uses to determine the route to your origin. Value `off` uses `default_pool_ids`. Value `geo` uses `pop_pools`/`country_pools`/`region_pools`. For non-proxied requests, the `country` for `country_pools` is determined by `location_strategy`. Value `random` selects a pool randomly. Value `dynamic_latency` uses round trip time to select the closest pool in `default_pool_ids` (requires pool health checks). Value `proximity` uses the pools' latitude and longitude to select the closest pool using the Cloudflare PoP location for proxied requests or the location determined by `location_strategy` for non-proxied requests. Value `least_outstanding_requests` selects a pool by taking into consideration `random_steering` weights, as well as each pool's number of outstanding requests. Pools with more pending requests are weighted proportionately less relative to others. Value `""` maps to `geo` if you use `pop_pools`/`country_pools`/`region_pools` otherwise `off`. Available values: `off`, `geo`, `dynamic_latency`, `random`, `proximity`, `least_outstanding_requests`, `""` Defaults to `""`.
         :param pulumi.Input[int] ttl: Time to live (TTL) of the DNS entry for the IP address returned by this load balancer. This cannot be set for proxied load balancers. Defaults to `30`.
         """
-        LoadBalancerArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            default_pool_ids=default_pool_ids,
-            fallback_pool_id=fallback_pool_id,
-            name=name,
-            zone_id=zone_id,
-            adaptive_routings=adaptive_routings,
-            country_pools=country_pools,
-            description=description,
-            enabled=enabled,
-            location_strategies=location_strategies,
-            pop_pools=pop_pools,
-            proxied=proxied,
-            random_steerings=random_steerings,
-            region_pools=region_pools,
-            rules=rules,
-            session_affinity=session_affinity,
-            session_affinity_attributes=session_affinity_attributes,
-            session_affinity_ttl=session_affinity_ttl,
-            steering_policy=steering_policy,
-            ttl=ttl,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             default_pool_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             fallback_pool_id: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             zone_id: Optional[pulumi.Input[str]] = None,
-             adaptive_routings: Optional[pulumi.Input[Sequence[pulumi.Input['LoadBalancerAdaptiveRoutingArgs']]]] = None,
-             country_pools: Optional[pulumi.Input[Sequence[pulumi.Input['LoadBalancerCountryPoolArgs']]]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             enabled: Optional[pulumi.Input[bool]] = None,
-             location_strategies: Optional[pulumi.Input[Sequence[pulumi.Input['LoadBalancerLocationStrategyArgs']]]] = None,
-             pop_pools: Optional[pulumi.Input[Sequence[pulumi.Input['LoadBalancerPopPoolArgs']]]] = None,
-             proxied: Optional[pulumi.Input[bool]] = None,
-             random_steerings: Optional[pulumi.Input[Sequence[pulumi.Input['LoadBalancerRandomSteeringArgs']]]] = None,
-             region_pools: Optional[pulumi.Input[Sequence[pulumi.Input['LoadBalancerRegionPoolArgs']]]] = None,
-             rules: Optional[pulumi.Input[Sequence[pulumi.Input['LoadBalancerRuleArgs']]]] = None,
-             session_affinity: Optional[pulumi.Input[str]] = None,
-             session_affinity_attributes: Optional[pulumi.Input[Sequence[pulumi.Input['LoadBalancerSessionAffinityAttributeArgs']]]] = None,
-             session_affinity_ttl: Optional[pulumi.Input[int]] = None,
-             steering_policy: Optional[pulumi.Input[str]] = None,
-             ttl: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if default_pool_ids is None and 'defaultPoolIds' in kwargs:
-            default_pool_ids = kwargs['defaultPoolIds']
-        if default_pool_ids is None:
-            raise TypeError("Missing 'default_pool_ids' argument")
-        if fallback_pool_id is None and 'fallbackPoolId' in kwargs:
-            fallback_pool_id = kwargs['fallbackPoolId']
-        if fallback_pool_id is None:
-            raise TypeError("Missing 'fallback_pool_id' argument")
-        if name is None:
-            raise TypeError("Missing 'name' argument")
-        if zone_id is None and 'zoneId' in kwargs:
-            zone_id = kwargs['zoneId']
-        if zone_id is None:
-            raise TypeError("Missing 'zone_id' argument")
-        if adaptive_routings is None and 'adaptiveRoutings' in kwargs:
-            adaptive_routings = kwargs['adaptiveRoutings']
-        if country_pools is None and 'countryPools' in kwargs:
-            country_pools = kwargs['countryPools']
-        if location_strategies is None and 'locationStrategies' in kwargs:
-            location_strategies = kwargs['locationStrategies']
-        if pop_pools is None and 'popPools' in kwargs:
-            pop_pools = kwargs['popPools']
-        if random_steerings is None and 'randomSteerings' in kwargs:
-            random_steerings = kwargs['randomSteerings']
-        if region_pools is None and 'regionPools' in kwargs:
-            region_pools = kwargs['regionPools']
-        if session_affinity is None and 'sessionAffinity' in kwargs:
-            session_affinity = kwargs['sessionAffinity']
-        if session_affinity_attributes is None and 'sessionAffinityAttributes' in kwargs:
-            session_affinity_attributes = kwargs['sessionAffinityAttributes']
-        if session_affinity_ttl is None and 'sessionAffinityTtl' in kwargs:
-            session_affinity_ttl = kwargs['sessionAffinityTtl']
-        if steering_policy is None and 'steeringPolicy' in kwargs:
-            steering_policy = kwargs['steeringPolicy']
-
-        _setter("default_pool_ids", default_pool_ids)
-        _setter("fallback_pool_id", fallback_pool_id)
-        _setter("name", name)
-        _setter("zone_id", zone_id)
+        pulumi.set(__self__, "default_pool_ids", default_pool_ids)
+        pulumi.set(__self__, "fallback_pool_id", fallback_pool_id)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "zone_id", zone_id)
         if adaptive_routings is not None:
-            _setter("adaptive_routings", adaptive_routings)
+            pulumi.set(__self__, "adaptive_routings", adaptive_routings)
         if country_pools is not None:
-            _setter("country_pools", country_pools)
+            pulumi.set(__self__, "country_pools", country_pools)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if enabled is not None:
-            _setter("enabled", enabled)
+            pulumi.set(__self__, "enabled", enabled)
         if location_strategies is not None:
-            _setter("location_strategies", location_strategies)
+            pulumi.set(__self__, "location_strategies", location_strategies)
         if pop_pools is not None:
-            _setter("pop_pools", pop_pools)
+            pulumi.set(__self__, "pop_pools", pop_pools)
         if proxied is not None:
-            _setter("proxied", proxied)
+            pulumi.set(__self__, "proxied", proxied)
         if random_steerings is not None:
-            _setter("random_steerings", random_steerings)
+            pulumi.set(__self__, "random_steerings", random_steerings)
         if region_pools is not None:
-            _setter("region_pools", region_pools)
+            pulumi.set(__self__, "region_pools", region_pools)
         if rules is not None:
-            _setter("rules", rules)
+            pulumi.set(__self__, "rules", rules)
         if session_affinity is not None:
-            _setter("session_affinity", session_affinity)
+            pulumi.set(__self__, "session_affinity", session_affinity)
         if session_affinity_attributes is not None:
-            _setter("session_affinity_attributes", session_affinity_attributes)
+            pulumi.set(__self__, "session_affinity_attributes", session_affinity_attributes)
         if session_affinity_ttl is not None:
-            _setter("session_affinity_ttl", session_affinity_ttl)
+            pulumi.set(__self__, "session_affinity_ttl", session_affinity_ttl)
         if steering_policy is not None:
-            _setter("steering_policy", steering_policy)
+            pulumi.set(__self__, "steering_policy", steering_policy)
         if ttl is not None:
-            _setter("ttl", ttl)
+            pulumi.set(__self__, "ttl", ttl)
 
     @property
     @pulumi.getter(name="defaultPoolIds")
@@ -450,129 +369,48 @@ class _LoadBalancerState:
         :param pulumi.Input[int] ttl: Time to live (TTL) of the DNS entry for the IP address returned by this load balancer. This cannot be set for proxied load balancers. Defaults to `30`.
         :param pulumi.Input[str] zone_id: The zone ID to add the load balancer to. **Modifying this attribute will force creation of a new resource.**
         """
-        _LoadBalancerState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            adaptive_routings=adaptive_routings,
-            country_pools=country_pools,
-            created_on=created_on,
-            default_pool_ids=default_pool_ids,
-            description=description,
-            enabled=enabled,
-            fallback_pool_id=fallback_pool_id,
-            location_strategies=location_strategies,
-            modified_on=modified_on,
-            name=name,
-            pop_pools=pop_pools,
-            proxied=proxied,
-            random_steerings=random_steerings,
-            region_pools=region_pools,
-            rules=rules,
-            session_affinity=session_affinity,
-            session_affinity_attributes=session_affinity_attributes,
-            session_affinity_ttl=session_affinity_ttl,
-            steering_policy=steering_policy,
-            ttl=ttl,
-            zone_id=zone_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             adaptive_routings: Optional[pulumi.Input[Sequence[pulumi.Input['LoadBalancerAdaptiveRoutingArgs']]]] = None,
-             country_pools: Optional[pulumi.Input[Sequence[pulumi.Input['LoadBalancerCountryPoolArgs']]]] = None,
-             created_on: Optional[pulumi.Input[str]] = None,
-             default_pool_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             enabled: Optional[pulumi.Input[bool]] = None,
-             fallback_pool_id: Optional[pulumi.Input[str]] = None,
-             location_strategies: Optional[pulumi.Input[Sequence[pulumi.Input['LoadBalancerLocationStrategyArgs']]]] = None,
-             modified_on: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             pop_pools: Optional[pulumi.Input[Sequence[pulumi.Input['LoadBalancerPopPoolArgs']]]] = None,
-             proxied: Optional[pulumi.Input[bool]] = None,
-             random_steerings: Optional[pulumi.Input[Sequence[pulumi.Input['LoadBalancerRandomSteeringArgs']]]] = None,
-             region_pools: Optional[pulumi.Input[Sequence[pulumi.Input['LoadBalancerRegionPoolArgs']]]] = None,
-             rules: Optional[pulumi.Input[Sequence[pulumi.Input['LoadBalancerRuleArgs']]]] = None,
-             session_affinity: Optional[pulumi.Input[str]] = None,
-             session_affinity_attributes: Optional[pulumi.Input[Sequence[pulumi.Input['LoadBalancerSessionAffinityAttributeArgs']]]] = None,
-             session_affinity_ttl: Optional[pulumi.Input[int]] = None,
-             steering_policy: Optional[pulumi.Input[str]] = None,
-             ttl: Optional[pulumi.Input[int]] = None,
-             zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if adaptive_routings is None and 'adaptiveRoutings' in kwargs:
-            adaptive_routings = kwargs['adaptiveRoutings']
-        if country_pools is None and 'countryPools' in kwargs:
-            country_pools = kwargs['countryPools']
-        if created_on is None and 'createdOn' in kwargs:
-            created_on = kwargs['createdOn']
-        if default_pool_ids is None and 'defaultPoolIds' in kwargs:
-            default_pool_ids = kwargs['defaultPoolIds']
-        if fallback_pool_id is None and 'fallbackPoolId' in kwargs:
-            fallback_pool_id = kwargs['fallbackPoolId']
-        if location_strategies is None and 'locationStrategies' in kwargs:
-            location_strategies = kwargs['locationStrategies']
-        if modified_on is None and 'modifiedOn' in kwargs:
-            modified_on = kwargs['modifiedOn']
-        if pop_pools is None and 'popPools' in kwargs:
-            pop_pools = kwargs['popPools']
-        if random_steerings is None and 'randomSteerings' in kwargs:
-            random_steerings = kwargs['randomSteerings']
-        if region_pools is None and 'regionPools' in kwargs:
-            region_pools = kwargs['regionPools']
-        if session_affinity is None and 'sessionAffinity' in kwargs:
-            session_affinity = kwargs['sessionAffinity']
-        if session_affinity_attributes is None and 'sessionAffinityAttributes' in kwargs:
-            session_affinity_attributes = kwargs['sessionAffinityAttributes']
-        if session_affinity_ttl is None and 'sessionAffinityTtl' in kwargs:
-            session_affinity_ttl = kwargs['sessionAffinityTtl']
-        if steering_policy is None and 'steeringPolicy' in kwargs:
-            steering_policy = kwargs['steeringPolicy']
-        if zone_id is None and 'zoneId' in kwargs:
-            zone_id = kwargs['zoneId']
-
         if adaptive_routings is not None:
-            _setter("adaptive_routings", adaptive_routings)
+            pulumi.set(__self__, "adaptive_routings", adaptive_routings)
         if country_pools is not None:
-            _setter("country_pools", country_pools)
+            pulumi.set(__self__, "country_pools", country_pools)
         if created_on is not None:
-            _setter("created_on", created_on)
+            pulumi.set(__self__, "created_on", created_on)
         if default_pool_ids is not None:
-            _setter("default_pool_ids", default_pool_ids)
+            pulumi.set(__self__, "default_pool_ids", default_pool_ids)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if enabled is not None:
-            _setter("enabled", enabled)
+            pulumi.set(__self__, "enabled", enabled)
         if fallback_pool_id is not None:
-            _setter("fallback_pool_id", fallback_pool_id)
+            pulumi.set(__self__, "fallback_pool_id", fallback_pool_id)
         if location_strategies is not None:
-            _setter("location_strategies", location_strategies)
+            pulumi.set(__self__, "location_strategies", location_strategies)
         if modified_on is not None:
-            _setter("modified_on", modified_on)
+            pulumi.set(__self__, "modified_on", modified_on)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if pop_pools is not None:
-            _setter("pop_pools", pop_pools)
+            pulumi.set(__self__, "pop_pools", pop_pools)
         if proxied is not None:
-            _setter("proxied", proxied)
+            pulumi.set(__self__, "proxied", proxied)
         if random_steerings is not None:
-            _setter("random_steerings", random_steerings)
+            pulumi.set(__self__, "random_steerings", random_steerings)
         if region_pools is not None:
-            _setter("region_pools", region_pools)
+            pulumi.set(__self__, "region_pools", region_pools)
         if rules is not None:
-            _setter("rules", rules)
+            pulumi.set(__self__, "rules", rules)
         if session_affinity is not None:
-            _setter("session_affinity", session_affinity)
+            pulumi.set(__self__, "session_affinity", session_affinity)
         if session_affinity_attributes is not None:
-            _setter("session_affinity_attributes", session_affinity_attributes)
+            pulumi.set(__self__, "session_affinity_attributes", session_affinity_attributes)
         if session_affinity_ttl is not None:
-            _setter("session_affinity_ttl", session_affinity_ttl)
+            pulumi.set(__self__, "session_affinity_ttl", session_affinity_ttl)
         if steering_policy is not None:
-            _setter("steering_policy", steering_policy)
+            pulumi.set(__self__, "steering_policy", steering_policy)
         if ttl is not None:
-            _setter("ttl", ttl)
+            pulumi.set(__self__, "ttl", ttl)
         if zone_id is not None:
-            _setter("zone_id", zone_id)
+            pulumi.set(__self__, "zone_id", zone_id)
 
     @property
     @pulumi.getter(name="adaptiveRoutings")
@@ -1014,10 +852,6 @@ class LoadBalancer(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            LoadBalancerArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

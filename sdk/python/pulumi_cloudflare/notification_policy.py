@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -37,65 +37,20 @@ class NotificationPolicyArgs:
         :param pulumi.Input[Sequence[pulumi.Input['NotificationPolicyPagerdutyIntegrationArgs']]] pagerduty_integrations: The unique id of a configured pagerduty endpoint to which the notification should be dispatched. One of email, webhooks, or PagerDuty mechanisms is required.
         :param pulumi.Input[Sequence[pulumi.Input['NotificationPolicyWebhooksIntegrationArgs']]] webhooks_integrations: The unique id of a configured webhooks endpoint to which the notification should be dispatched. One of email, webhooks, or PagerDuty mechanisms is required.
         """
-        NotificationPolicyArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            account_id=account_id,
-            alert_type=alert_type,
-            enabled=enabled,
-            name=name,
-            description=description,
-            email_integrations=email_integrations,
-            filters=filters,
-            pagerduty_integrations=pagerduty_integrations,
-            webhooks_integrations=webhooks_integrations,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             account_id: Optional[pulumi.Input[str]] = None,
-             alert_type: Optional[pulumi.Input[str]] = None,
-             enabled: Optional[pulumi.Input[bool]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             email_integrations: Optional[pulumi.Input[Sequence[pulumi.Input['NotificationPolicyEmailIntegrationArgs']]]] = None,
-             filters: Optional[pulumi.Input['NotificationPolicyFiltersArgs']] = None,
-             pagerduty_integrations: Optional[pulumi.Input[Sequence[pulumi.Input['NotificationPolicyPagerdutyIntegrationArgs']]]] = None,
-             webhooks_integrations: Optional[pulumi.Input[Sequence[pulumi.Input['NotificationPolicyWebhooksIntegrationArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if account_id is None and 'accountId' in kwargs:
-            account_id = kwargs['accountId']
-        if account_id is None:
-            raise TypeError("Missing 'account_id' argument")
-        if alert_type is None and 'alertType' in kwargs:
-            alert_type = kwargs['alertType']
-        if alert_type is None:
-            raise TypeError("Missing 'alert_type' argument")
-        if enabled is None:
-            raise TypeError("Missing 'enabled' argument")
-        if name is None:
-            raise TypeError("Missing 'name' argument")
-        if email_integrations is None and 'emailIntegrations' in kwargs:
-            email_integrations = kwargs['emailIntegrations']
-        if pagerduty_integrations is None and 'pagerdutyIntegrations' in kwargs:
-            pagerduty_integrations = kwargs['pagerdutyIntegrations']
-        if webhooks_integrations is None and 'webhooksIntegrations' in kwargs:
-            webhooks_integrations = kwargs['webhooksIntegrations']
-
-        _setter("account_id", account_id)
-        _setter("alert_type", alert_type)
-        _setter("enabled", enabled)
-        _setter("name", name)
+        pulumi.set(__self__, "account_id", account_id)
+        pulumi.set(__self__, "alert_type", alert_type)
+        pulumi.set(__self__, "enabled", enabled)
+        pulumi.set(__self__, "name", name)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if email_integrations is not None:
-            _setter("email_integrations", email_integrations)
+            pulumi.set(__self__, "email_integrations", email_integrations)
         if filters is not None:
-            _setter("filters", filters)
+            pulumi.set(__self__, "filters", filters)
         if pagerduty_integrations is not None:
-            _setter("pagerduty_integrations", pagerduty_integrations)
+            pulumi.set(__self__, "pagerduty_integrations", pagerduty_integrations)
         if webhooks_integrations is not None:
-            _setter("webhooks_integrations", webhooks_integrations)
+            pulumi.set(__self__, "webhooks_integrations", webhooks_integrations)
 
     @property
     @pulumi.getter(name="accountId")
@@ -234,69 +189,28 @@ class _NotificationPolicyState:
         :param pulumi.Input[Sequence[pulumi.Input['NotificationPolicyPagerdutyIntegrationArgs']]] pagerduty_integrations: The unique id of a configured pagerduty endpoint to which the notification should be dispatched. One of email, webhooks, or PagerDuty mechanisms is required.
         :param pulumi.Input[Sequence[pulumi.Input['NotificationPolicyWebhooksIntegrationArgs']]] webhooks_integrations: The unique id of a configured webhooks endpoint to which the notification should be dispatched. One of email, webhooks, or PagerDuty mechanisms is required.
         """
-        _NotificationPolicyState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            account_id=account_id,
-            alert_type=alert_type,
-            created=created,
-            description=description,
-            email_integrations=email_integrations,
-            enabled=enabled,
-            filters=filters,
-            modified=modified,
-            name=name,
-            pagerduty_integrations=pagerduty_integrations,
-            webhooks_integrations=webhooks_integrations,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             account_id: Optional[pulumi.Input[str]] = None,
-             alert_type: Optional[pulumi.Input[str]] = None,
-             created: Optional[pulumi.Input[str]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             email_integrations: Optional[pulumi.Input[Sequence[pulumi.Input['NotificationPolicyEmailIntegrationArgs']]]] = None,
-             enabled: Optional[pulumi.Input[bool]] = None,
-             filters: Optional[pulumi.Input['NotificationPolicyFiltersArgs']] = None,
-             modified: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             pagerduty_integrations: Optional[pulumi.Input[Sequence[pulumi.Input['NotificationPolicyPagerdutyIntegrationArgs']]]] = None,
-             webhooks_integrations: Optional[pulumi.Input[Sequence[pulumi.Input['NotificationPolicyWebhooksIntegrationArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if account_id is None and 'accountId' in kwargs:
-            account_id = kwargs['accountId']
-        if alert_type is None and 'alertType' in kwargs:
-            alert_type = kwargs['alertType']
-        if email_integrations is None and 'emailIntegrations' in kwargs:
-            email_integrations = kwargs['emailIntegrations']
-        if pagerduty_integrations is None and 'pagerdutyIntegrations' in kwargs:
-            pagerduty_integrations = kwargs['pagerdutyIntegrations']
-        if webhooks_integrations is None and 'webhooksIntegrations' in kwargs:
-            webhooks_integrations = kwargs['webhooksIntegrations']
-
         if account_id is not None:
-            _setter("account_id", account_id)
+            pulumi.set(__self__, "account_id", account_id)
         if alert_type is not None:
-            _setter("alert_type", alert_type)
+            pulumi.set(__self__, "alert_type", alert_type)
         if created is not None:
-            _setter("created", created)
+            pulumi.set(__self__, "created", created)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if email_integrations is not None:
-            _setter("email_integrations", email_integrations)
+            pulumi.set(__self__, "email_integrations", email_integrations)
         if enabled is not None:
-            _setter("enabled", enabled)
+            pulumi.set(__self__, "enabled", enabled)
         if filters is not None:
-            _setter("filters", filters)
+            pulumi.set(__self__, "filters", filters)
         if modified is not None:
-            _setter("modified", modified)
+            pulumi.set(__self__, "modified", modified)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if pagerduty_integrations is not None:
-            _setter("pagerduty_integrations", pagerduty_integrations)
+            pulumi.set(__self__, "pagerduty_integrations", pagerduty_integrations)
         if webhooks_integrations is not None:
-            _setter("webhooks_integrations", webhooks_integrations)
+            pulumi.set(__self__, "webhooks_integrations", webhooks_integrations)
 
     @property
     @pulumi.getter(name="accountId")
@@ -496,10 +410,6 @@ class NotificationPolicy(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            NotificationPolicyArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -534,7 +444,6 @@ class NotificationPolicy(pulumi.CustomResource):
             if enabled is None and not opts.urn:
                 raise TypeError("Missing required property 'enabled'")
             __props__.__dict__["enabled"] = enabled
-            filters = _utilities.configure(filters, NotificationPolicyFiltersArgs, True)
             __props__.__dict__["filters"] = filters
             if name is None and not opts.urn:
                 raise TypeError("Missing required property 'name'")

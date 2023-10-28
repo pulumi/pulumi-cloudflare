@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['UrlNormalizationSettingsArgs', 'UrlNormalizationSettings']
@@ -23,32 +23,9 @@ class UrlNormalizationSettingsArgs:
         :param pulumi.Input[str] type: The type of URL normalization performed by Cloudflare.
         :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         """
-        UrlNormalizationSettingsArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            scope=scope,
-            type=type,
-            zone_id=zone_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             scope: Optional[pulumi.Input[str]] = None,
-             type: Optional[pulumi.Input[str]] = None,
-             zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if scope is None:
-            raise TypeError("Missing 'scope' argument")
-        if type is None:
-            raise TypeError("Missing 'type' argument")
-        if zone_id is None and 'zoneId' in kwargs:
-            zone_id = kwargs['zoneId']
-        if zone_id is None:
-            raise TypeError("Missing 'zone_id' argument")
-
-        _setter("scope", scope)
-        _setter("type", type)
-        _setter("zone_id", zone_id)
+        pulumi.set(__self__, "scope", scope)
+        pulumi.set(__self__, "type", type)
+        pulumi.set(__self__, "zone_id", zone_id)
 
     @property
     @pulumi.getter
@@ -99,29 +76,12 @@ class _UrlNormalizationSettingsState:
         :param pulumi.Input[str] type: The type of URL normalization performed by Cloudflare.
         :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         """
-        _UrlNormalizationSettingsState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            scope=scope,
-            type=type,
-            zone_id=zone_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             scope: Optional[pulumi.Input[str]] = None,
-             type: Optional[pulumi.Input[str]] = None,
-             zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if zone_id is None and 'zoneId' in kwargs:
-            zone_id = kwargs['zoneId']
-
         if scope is not None:
-            _setter("scope", scope)
+            pulumi.set(__self__, "scope", scope)
         if type is not None:
-            _setter("type", type)
+            pulumi.set(__self__, "type", type)
         if zone_id is not None:
-            _setter("zone_id", zone_id)
+            pulumi.set(__self__, "zone_id", zone_id)
 
     @property
     @pulumi.getter
@@ -221,10 +181,6 @@ class UrlNormalizationSettings(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            UrlNormalizationSettingsArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

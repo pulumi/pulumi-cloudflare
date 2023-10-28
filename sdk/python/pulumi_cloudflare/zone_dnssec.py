@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['ZoneDnssecArgs', 'ZoneDnssec']
@@ -21,28 +21,9 @@ class ZoneDnssecArgs:
         :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         :param pulumi.Input[str] modified_on: Zone DNSSEC updated time.
         """
-        ZoneDnssecArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            zone_id=zone_id,
-            modified_on=modified_on,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             zone_id: Optional[pulumi.Input[str]] = None,
-             modified_on: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if zone_id is None and 'zoneId' in kwargs:
-            zone_id = kwargs['zoneId']
-        if zone_id is None:
-            raise TypeError("Missing 'zone_id' argument")
-        if modified_on is None and 'modifiedOn' in kwargs:
-            modified_on = kwargs['modifiedOn']
-
-        _setter("zone_id", zone_id)
+        pulumi.set(__self__, "zone_id", zone_id)
         if modified_on is not None:
-            _setter("modified_on", modified_on)
+            pulumi.set(__self__, "modified_on", modified_on)
 
     @property
     @pulumi.getter(name="zoneId")
@@ -99,77 +80,30 @@ class _ZoneDnssecState:
         :param pulumi.Input[str] status: The status of the Zone DNSSEC.
         :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         """
-        _ZoneDnssecState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            algorithm=algorithm,
-            digest=digest,
-            digest_algorithm=digest_algorithm,
-            digest_type=digest_type,
-            ds=ds,
-            flags=flags,
-            key_tag=key_tag,
-            key_type=key_type,
-            modified_on=modified_on,
-            public_key=public_key,
-            status=status,
-            zone_id=zone_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             algorithm: Optional[pulumi.Input[str]] = None,
-             digest: Optional[pulumi.Input[str]] = None,
-             digest_algorithm: Optional[pulumi.Input[str]] = None,
-             digest_type: Optional[pulumi.Input[str]] = None,
-             ds: Optional[pulumi.Input[str]] = None,
-             flags: Optional[pulumi.Input[int]] = None,
-             key_tag: Optional[pulumi.Input[int]] = None,
-             key_type: Optional[pulumi.Input[str]] = None,
-             modified_on: Optional[pulumi.Input[str]] = None,
-             public_key: Optional[pulumi.Input[str]] = None,
-             status: Optional[pulumi.Input[str]] = None,
-             zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if digest_algorithm is None and 'digestAlgorithm' in kwargs:
-            digest_algorithm = kwargs['digestAlgorithm']
-        if digest_type is None and 'digestType' in kwargs:
-            digest_type = kwargs['digestType']
-        if key_tag is None and 'keyTag' in kwargs:
-            key_tag = kwargs['keyTag']
-        if key_type is None and 'keyType' in kwargs:
-            key_type = kwargs['keyType']
-        if modified_on is None and 'modifiedOn' in kwargs:
-            modified_on = kwargs['modifiedOn']
-        if public_key is None and 'publicKey' in kwargs:
-            public_key = kwargs['publicKey']
-        if zone_id is None and 'zoneId' in kwargs:
-            zone_id = kwargs['zoneId']
-
         if algorithm is not None:
-            _setter("algorithm", algorithm)
+            pulumi.set(__self__, "algorithm", algorithm)
         if digest is not None:
-            _setter("digest", digest)
+            pulumi.set(__self__, "digest", digest)
         if digest_algorithm is not None:
-            _setter("digest_algorithm", digest_algorithm)
+            pulumi.set(__self__, "digest_algorithm", digest_algorithm)
         if digest_type is not None:
-            _setter("digest_type", digest_type)
+            pulumi.set(__self__, "digest_type", digest_type)
         if ds is not None:
-            _setter("ds", ds)
+            pulumi.set(__self__, "ds", ds)
         if flags is not None:
-            _setter("flags", flags)
+            pulumi.set(__self__, "flags", flags)
         if key_tag is not None:
-            _setter("key_tag", key_tag)
+            pulumi.set(__self__, "key_tag", key_tag)
         if key_type is not None:
-            _setter("key_type", key_type)
+            pulumi.set(__self__, "key_type", key_type)
         if modified_on is not None:
-            _setter("modified_on", modified_on)
+            pulumi.set(__self__, "modified_on", modified_on)
         if public_key is not None:
-            _setter("public_key", public_key)
+            pulumi.set(__self__, "public_key", public_key)
         if status is not None:
-            _setter("status", status)
+            pulumi.set(__self__, "status", status)
         if zone_id is not None:
-            _setter("zone_id", zone_id)
+            pulumi.set(__self__, "zone_id", zone_id)
 
     @property
     @pulumi.getter
@@ -383,10 +317,6 @@ class ZoneDnssec(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            ZoneDnssecArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['D1DatabaseArgs', 'D1Database']
@@ -21,27 +21,8 @@ class D1DatabaseArgs:
         :param pulumi.Input[str] account_id: The account identifier to target for the resource.
         :param pulumi.Input[str] name: The name of the D1 Database.
         """
-        D1DatabaseArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            account_id=account_id,
-            name=name,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             account_id: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if account_id is None and 'accountId' in kwargs:
-            account_id = kwargs['accountId']
-        if account_id is None:
-            raise TypeError("Missing 'account_id' argument")
-        if name is None:
-            raise TypeError("Missing 'name' argument")
-
-        _setter("account_id", account_id)
-        _setter("name", name)
+        pulumi.set(__self__, "account_id", account_id)
+        pulumi.set(__self__, "name", name)
 
     @property
     @pulumi.getter(name="accountId")
@@ -80,29 +61,12 @@ class _D1DatabaseState:
         :param pulumi.Input[str] name: The name of the D1 Database.
         :param pulumi.Input[str] version: The backend version of the database.
         """
-        _D1DatabaseState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            account_id=account_id,
-            name=name,
-            version=version,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             account_id: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             version: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if account_id is None and 'accountId' in kwargs:
-            account_id = kwargs['accountId']
-
         if account_id is not None:
-            _setter("account_id", account_id)
+            pulumi.set(__self__, "account_id", account_id)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if version is not None:
-            _setter("version", version)
+            pulumi.set(__self__, "version", version)
 
     @property
     @pulumi.getter(name="accountId")
@@ -214,10 +178,6 @@ class D1Database(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            D1DatabaseArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

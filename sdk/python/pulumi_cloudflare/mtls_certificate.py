@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['MtlsCertificateArgs', 'MtlsCertificate']
@@ -27,42 +27,13 @@ class MtlsCertificateArgs:
         :param pulumi.Input[str] name: Optional unique name for the certificate. **Modifying this attribute will force creation of a new resource.**
         :param pulumi.Input[str] private_key: The certificate's private key. **Modifying this attribute will force creation of a new resource.**
         """
-        MtlsCertificateArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            account_id=account_id,
-            ca=ca,
-            certificates=certificates,
-            name=name,
-            private_key=private_key,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             account_id: Optional[pulumi.Input[str]] = None,
-             ca: Optional[pulumi.Input[bool]] = None,
-             certificates: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             private_key: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if account_id is None and 'accountId' in kwargs:
-            account_id = kwargs['accountId']
-        if account_id is None:
-            raise TypeError("Missing 'account_id' argument")
-        if ca is None:
-            raise TypeError("Missing 'ca' argument")
-        if certificates is None:
-            raise TypeError("Missing 'certificates' argument")
-        if private_key is None and 'privateKey' in kwargs:
-            private_key = kwargs['privateKey']
-
-        _setter("account_id", account_id)
-        _setter("ca", ca)
-        _setter("certificates", certificates)
+        pulumi.set(__self__, "account_id", account_id)
+        pulumi.set(__self__, "ca", ca)
+        pulumi.set(__self__, "certificates", certificates)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if private_key is not None:
-            _setter("private_key", private_key)
+            pulumi.set(__self__, "private_key", private_key)
 
     @property
     @pulumi.getter(name="accountId")
@@ -151,65 +122,26 @@ class _MtlsCertificateState:
         :param pulumi.Input[str] signature: **Modifying this attribute will force creation of a new resource.**
         :param pulumi.Input[str] uploaded_on: **Modifying this attribute will force creation of a new resource.**
         """
-        _MtlsCertificateState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            account_id=account_id,
-            ca=ca,
-            certificates=certificates,
-            expires_on=expires_on,
-            issuer=issuer,
-            name=name,
-            private_key=private_key,
-            serial_number=serial_number,
-            signature=signature,
-            uploaded_on=uploaded_on,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             account_id: Optional[pulumi.Input[str]] = None,
-             ca: Optional[pulumi.Input[bool]] = None,
-             certificates: Optional[pulumi.Input[str]] = None,
-             expires_on: Optional[pulumi.Input[str]] = None,
-             issuer: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             private_key: Optional[pulumi.Input[str]] = None,
-             serial_number: Optional[pulumi.Input[str]] = None,
-             signature: Optional[pulumi.Input[str]] = None,
-             uploaded_on: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if account_id is None and 'accountId' in kwargs:
-            account_id = kwargs['accountId']
-        if expires_on is None and 'expiresOn' in kwargs:
-            expires_on = kwargs['expiresOn']
-        if private_key is None and 'privateKey' in kwargs:
-            private_key = kwargs['privateKey']
-        if serial_number is None and 'serialNumber' in kwargs:
-            serial_number = kwargs['serialNumber']
-        if uploaded_on is None and 'uploadedOn' in kwargs:
-            uploaded_on = kwargs['uploadedOn']
-
         if account_id is not None:
-            _setter("account_id", account_id)
+            pulumi.set(__self__, "account_id", account_id)
         if ca is not None:
-            _setter("ca", ca)
+            pulumi.set(__self__, "ca", ca)
         if certificates is not None:
-            _setter("certificates", certificates)
+            pulumi.set(__self__, "certificates", certificates)
         if expires_on is not None:
-            _setter("expires_on", expires_on)
+            pulumi.set(__self__, "expires_on", expires_on)
         if issuer is not None:
-            _setter("issuer", issuer)
+            pulumi.set(__self__, "issuer", issuer)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if private_key is not None:
-            _setter("private_key", private_key)
+            pulumi.set(__self__, "private_key", private_key)
         if serial_number is not None:
-            _setter("serial_number", serial_number)
+            pulumi.set(__self__, "serial_number", serial_number)
         if signature is not None:
-            _setter("signature", signature)
+            pulumi.set(__self__, "signature", signature)
         if uploaded_on is not None:
-            _setter("uploaded_on", uploaded_on)
+            pulumi.set(__self__, "uploaded_on", uploaded_on)
 
     @property
     @pulumi.getter(name="accountId")
@@ -425,10 +357,6 @@ class MtlsCertificate(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            MtlsCertificateArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

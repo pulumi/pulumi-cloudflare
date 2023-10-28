@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -24,33 +24,10 @@ class FallbackDomainArgs:
         :param pulumi.Input[str] account_id: The account identifier to target for the resource.
         :param pulumi.Input[str] policy_id: The settings policy for which to configure this fallback domain policy.
         """
-        FallbackDomainArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            account_id=account_id,
-            domains=domains,
-            policy_id=policy_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             account_id: Optional[pulumi.Input[str]] = None,
-             domains: Optional[pulumi.Input[Sequence[pulumi.Input['FallbackDomainDomainArgs']]]] = None,
-             policy_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if account_id is None and 'accountId' in kwargs:
-            account_id = kwargs['accountId']
-        if account_id is None:
-            raise TypeError("Missing 'account_id' argument")
-        if domains is None:
-            raise TypeError("Missing 'domains' argument")
-        if policy_id is None and 'policyId' in kwargs:
-            policy_id = kwargs['policyId']
-
-        _setter("account_id", account_id)
-        _setter("domains", domains)
+        pulumi.set(__self__, "account_id", account_id)
+        pulumi.set(__self__, "domains", domains)
         if policy_id is not None:
-            _setter("policy_id", policy_id)
+            pulumi.set(__self__, "policy_id", policy_id)
 
     @property
     @pulumi.getter(name="accountId")
@@ -97,31 +74,12 @@ class _FallbackDomainState:
         :param pulumi.Input[str] account_id: The account identifier to target for the resource.
         :param pulumi.Input[str] policy_id: The settings policy for which to configure this fallback domain policy.
         """
-        _FallbackDomainState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            account_id=account_id,
-            domains=domains,
-            policy_id=policy_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             account_id: Optional[pulumi.Input[str]] = None,
-             domains: Optional[pulumi.Input[Sequence[pulumi.Input['FallbackDomainDomainArgs']]]] = None,
-             policy_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if account_id is None and 'accountId' in kwargs:
-            account_id = kwargs['accountId']
-        if policy_id is None and 'policyId' in kwargs:
-            policy_id = kwargs['policyId']
-
         if account_id is not None:
-            _setter("account_id", account_id)
+            pulumi.set(__self__, "account_id", account_id)
         if domains is not None:
-            _setter("domains", domains)
+            pulumi.set(__self__, "domains", domains)
         if policy_id is not None:
-            _setter("policy_id", policy_id)
+            pulumi.set(__self__, "policy_id", policy_id)
 
     @property
     @pulumi.getter(name="accountId")
@@ -215,10 +173,6 @@ class FallbackDomain(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            FallbackDomainArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

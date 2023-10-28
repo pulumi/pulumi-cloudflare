@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['StaticRouteArgs', 'StaticRoute']
@@ -33,56 +33,19 @@ class StaticRouteArgs:
         :param pulumi.Input[str] description: Description of the static route.
         :param pulumi.Input[int] weight: The optional weight for ECMP routes. **Modifying this attribute will force creation of a new resource.**
         """
-        StaticRouteArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            nexthop=nexthop,
-            prefix=prefix,
-            priority=priority,
-            account_id=account_id,
-            colo_names=colo_names,
-            colo_regions=colo_regions,
-            description=description,
-            weight=weight,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             nexthop: Optional[pulumi.Input[str]] = None,
-             prefix: Optional[pulumi.Input[str]] = None,
-             priority: Optional[pulumi.Input[int]] = None,
-             account_id: Optional[pulumi.Input[str]] = None,
-             colo_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             colo_regions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             weight: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if nexthop is None:
-            raise TypeError("Missing 'nexthop' argument")
-        if prefix is None:
-            raise TypeError("Missing 'prefix' argument")
-        if priority is None:
-            raise TypeError("Missing 'priority' argument")
-        if account_id is None and 'accountId' in kwargs:
-            account_id = kwargs['accountId']
-        if colo_names is None and 'coloNames' in kwargs:
-            colo_names = kwargs['coloNames']
-        if colo_regions is None and 'coloRegions' in kwargs:
-            colo_regions = kwargs['coloRegions']
-
-        _setter("nexthop", nexthop)
-        _setter("prefix", prefix)
-        _setter("priority", priority)
+        pulumi.set(__self__, "nexthop", nexthop)
+        pulumi.set(__self__, "prefix", prefix)
+        pulumi.set(__self__, "priority", priority)
         if account_id is not None:
-            _setter("account_id", account_id)
+            pulumi.set(__self__, "account_id", account_id)
         if colo_names is not None:
-            _setter("colo_names", colo_names)
+            pulumi.set(__self__, "colo_names", colo_names)
         if colo_regions is not None:
-            _setter("colo_regions", colo_regions)
+            pulumi.set(__self__, "colo_regions", colo_regions)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if weight is not None:
-            _setter("weight", weight)
+            pulumi.set(__self__, "weight", weight)
 
     @property
     @pulumi.getter
@@ -203,53 +166,22 @@ class _StaticRouteState:
         :param pulumi.Input[int] priority: The priority for the static route.
         :param pulumi.Input[int] weight: The optional weight for ECMP routes. **Modifying this attribute will force creation of a new resource.**
         """
-        _StaticRouteState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            account_id=account_id,
-            colo_names=colo_names,
-            colo_regions=colo_regions,
-            description=description,
-            nexthop=nexthop,
-            prefix=prefix,
-            priority=priority,
-            weight=weight,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             account_id: Optional[pulumi.Input[str]] = None,
-             colo_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             colo_regions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             nexthop: Optional[pulumi.Input[str]] = None,
-             prefix: Optional[pulumi.Input[str]] = None,
-             priority: Optional[pulumi.Input[int]] = None,
-             weight: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if account_id is None and 'accountId' in kwargs:
-            account_id = kwargs['accountId']
-        if colo_names is None and 'coloNames' in kwargs:
-            colo_names = kwargs['coloNames']
-        if colo_regions is None and 'coloRegions' in kwargs:
-            colo_regions = kwargs['coloRegions']
-
         if account_id is not None:
-            _setter("account_id", account_id)
+            pulumi.set(__self__, "account_id", account_id)
         if colo_names is not None:
-            _setter("colo_names", colo_names)
+            pulumi.set(__self__, "colo_names", colo_names)
         if colo_regions is not None:
-            _setter("colo_regions", colo_regions)
+            pulumi.set(__self__, "colo_regions", colo_regions)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if nexthop is not None:
-            _setter("nexthop", nexthop)
+            pulumi.set(__self__, "nexthop", nexthop)
         if prefix is not None:
-            _setter("prefix", prefix)
+            pulumi.set(__self__, "prefix", prefix)
         if priority is not None:
-            _setter("priority", priority)
+            pulumi.set(__self__, "priority", priority)
         if weight is not None:
-            _setter("weight", weight)
+            pulumi.set(__self__, "weight", weight)
 
     @property
     @pulumi.getter(name="accountId")
@@ -445,10 +377,6 @@ class StaticRoute(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            StaticRouteArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

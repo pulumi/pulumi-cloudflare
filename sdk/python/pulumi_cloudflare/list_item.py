@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -33,49 +33,18 @@ class ListItemInitArgs:
         :param pulumi.Input[str] ip: IP address to include in the list. Must provide only one of `ip`, `redirect`, `hostname`, `asn`. **Modifying this attribute will force creation of a new resource.**
         :param pulumi.Input['ListItemRedirectArgs'] redirect: Redirect configuration to store in the list. Must provide only one of `ip`, `redirect`, `hostname`, `asn`. **Modifying this attribute will force creation of a new resource.**
         """
-        ListItemInitArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            account_id=account_id,
-            list_id=list_id,
-            asn=asn,
-            comment=comment,
-            hostname=hostname,
-            ip=ip,
-            redirect=redirect,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             account_id: Optional[pulumi.Input[str]] = None,
-             list_id: Optional[pulumi.Input[str]] = None,
-             asn: Optional[pulumi.Input[int]] = None,
-             comment: Optional[pulumi.Input[str]] = None,
-             hostname: Optional[pulumi.Input['ListItemHostnameArgs']] = None,
-             ip: Optional[pulumi.Input[str]] = None,
-             redirect: Optional[pulumi.Input['ListItemRedirectArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if account_id is None and 'accountId' in kwargs:
-            account_id = kwargs['accountId']
-        if account_id is None:
-            raise TypeError("Missing 'account_id' argument")
-        if list_id is None and 'listId' in kwargs:
-            list_id = kwargs['listId']
-        if list_id is None:
-            raise TypeError("Missing 'list_id' argument")
-
-        _setter("account_id", account_id)
-        _setter("list_id", list_id)
+        pulumi.set(__self__, "account_id", account_id)
+        pulumi.set(__self__, "list_id", list_id)
         if asn is not None:
-            _setter("asn", asn)
+            pulumi.set(__self__, "asn", asn)
         if comment is not None:
-            _setter("comment", comment)
+            pulumi.set(__self__, "comment", comment)
         if hostname is not None:
-            _setter("hostname", hostname)
+            pulumi.set(__self__, "hostname", hostname)
         if ip is not None:
-            _setter("ip", ip)
+            pulumi.set(__self__, "ip", ip)
         if redirect is not None:
-            _setter("redirect", redirect)
+            pulumi.set(__self__, "redirect", redirect)
 
     @property
     @pulumi.getter(name="accountId")
@@ -182,47 +151,20 @@ class _ListItemState:
         :param pulumi.Input[str] list_id: The list identifier to target for the resource.
         :param pulumi.Input['ListItemRedirectArgs'] redirect: Redirect configuration to store in the list. Must provide only one of `ip`, `redirect`, `hostname`, `asn`. **Modifying this attribute will force creation of a new resource.**
         """
-        _ListItemState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            account_id=account_id,
-            asn=asn,
-            comment=comment,
-            hostname=hostname,
-            ip=ip,
-            list_id=list_id,
-            redirect=redirect,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             account_id: Optional[pulumi.Input[str]] = None,
-             asn: Optional[pulumi.Input[int]] = None,
-             comment: Optional[pulumi.Input[str]] = None,
-             hostname: Optional[pulumi.Input['ListItemHostnameArgs']] = None,
-             ip: Optional[pulumi.Input[str]] = None,
-             list_id: Optional[pulumi.Input[str]] = None,
-             redirect: Optional[pulumi.Input['ListItemRedirectArgs']] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if account_id is None and 'accountId' in kwargs:
-            account_id = kwargs['accountId']
-        if list_id is None and 'listId' in kwargs:
-            list_id = kwargs['listId']
-
         if account_id is not None:
-            _setter("account_id", account_id)
+            pulumi.set(__self__, "account_id", account_id)
         if asn is not None:
-            _setter("asn", asn)
+            pulumi.set(__self__, "asn", asn)
         if comment is not None:
-            _setter("comment", comment)
+            pulumi.set(__self__, "comment", comment)
         if hostname is not None:
-            _setter("hostname", hostname)
+            pulumi.set(__self__, "hostname", hostname)
         if ip is not None:
-            _setter("ip", ip)
+            pulumi.set(__self__, "ip", ip)
         if list_id is not None:
-            _setter("list_id", list_id)
+            pulumi.set(__self__, "list_id", list_id)
         if redirect is not None:
-            _setter("redirect", redirect)
+            pulumi.set(__self__, "redirect", redirect)
 
     @property
     @pulumi.getter(name="accountId")
@@ -474,10 +416,6 @@ class ListItem(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            ListItemInitArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -504,13 +442,11 @@ class ListItem(pulumi.CustomResource):
             __props__.__dict__["account_id"] = account_id
             __props__.__dict__["asn"] = asn
             __props__.__dict__["comment"] = comment
-            hostname = _utilities.configure(hostname, ListItemHostnameArgs, True)
             __props__.__dict__["hostname"] = hostname
             __props__.__dict__["ip"] = ip
             if list_id is None and not opts.urn:
                 raise TypeError("Missing required property 'list_id'")
             __props__.__dict__["list_id"] = list_id
-            redirect = _utilities.configure(redirect, ListItemRedirectArgs, True)
             __props__.__dict__["redirect"] = redirect
         super(ListItem, __self__).__init__(
             'cloudflare:index/listItem:ListItem',

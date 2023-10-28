@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -29,42 +29,11 @@ class UserAgentBlockingRuleArgs:
         :param pulumi.Input[bool] paused: When true, indicates that the rule is currently paused.
         :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         """
-        UserAgentBlockingRuleArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            configuration=configuration,
-            description=description,
-            mode=mode,
-            paused=paused,
-            zone_id=zone_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             configuration: Optional[pulumi.Input['UserAgentBlockingRuleConfigurationArgs']] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             mode: Optional[pulumi.Input[str]] = None,
-             paused: Optional[pulumi.Input[bool]] = None,
-             zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if configuration is None:
-            raise TypeError("Missing 'configuration' argument")
-        if description is None:
-            raise TypeError("Missing 'description' argument")
-        if mode is None:
-            raise TypeError("Missing 'mode' argument")
-        if paused is None:
-            raise TypeError("Missing 'paused' argument")
-        if zone_id is None and 'zoneId' in kwargs:
-            zone_id = kwargs['zoneId']
-        if zone_id is None:
-            raise TypeError("Missing 'zone_id' argument")
-
-        _setter("configuration", configuration)
-        _setter("description", description)
-        _setter("mode", mode)
-        _setter("paused", paused)
-        _setter("zone_id", zone_id)
+        pulumi.set(__self__, "configuration", configuration)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "mode", mode)
+        pulumi.set(__self__, "paused", paused)
+        pulumi.set(__self__, "zone_id", zone_id)
 
     @property
     @pulumi.getter
@@ -143,37 +112,16 @@ class _UserAgentBlockingRuleState:
         :param pulumi.Input[bool] paused: When true, indicates that the rule is currently paused.
         :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         """
-        _UserAgentBlockingRuleState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            configuration=configuration,
-            description=description,
-            mode=mode,
-            paused=paused,
-            zone_id=zone_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             configuration: Optional[pulumi.Input['UserAgentBlockingRuleConfigurationArgs']] = None,
-             description: Optional[pulumi.Input[str]] = None,
-             mode: Optional[pulumi.Input[str]] = None,
-             paused: Optional[pulumi.Input[bool]] = None,
-             zone_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if zone_id is None and 'zoneId' in kwargs:
-            zone_id = kwargs['zoneId']
-
         if configuration is not None:
-            _setter("configuration", configuration)
+            pulumi.set(__self__, "configuration", configuration)
         if description is not None:
-            _setter("description", description)
+            pulumi.set(__self__, "description", description)
         if mode is not None:
-            _setter("mode", mode)
+            pulumi.set(__self__, "mode", mode)
         if paused is not None:
-            _setter("paused", paused)
+            pulumi.set(__self__, "paused", paused)
         if zone_id is not None:
-            _setter("zone_id", zone_id)
+            pulumi.set(__self__, "zone_id", zone_id)
 
     @property
     @pulumi.getter
@@ -341,10 +289,6 @@ class UserAgentBlockingRule(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            UserAgentBlockingRuleArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -364,7 +308,6 @@ class UserAgentBlockingRule(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = UserAgentBlockingRuleArgs.__new__(UserAgentBlockingRuleArgs)
 
-            configuration = _utilities.configure(configuration, UserAgentBlockingRuleConfigurationArgs, True)
             if configuration is None and not opts.urn:
                 raise TypeError("Missing required property 'configuration'")
             __props__.__dict__["configuration"] = configuration

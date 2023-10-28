@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -27,38 +27,11 @@ class SplitTunnelArgs:
         :param pulumi.Input[Sequence[pulumi.Input['SplitTunnelTunnelArgs']]] tunnels: The value of the tunnel attributes.
         :param pulumi.Input[str] policy_id: The settings policy for which to configure this split tunnel policy.
         """
-        SplitTunnelArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            account_id=account_id,
-            mode=mode,
-            tunnels=tunnels,
-            policy_id=policy_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             account_id: Optional[pulumi.Input[str]] = None,
-             mode: Optional[pulumi.Input[str]] = None,
-             tunnels: Optional[pulumi.Input[Sequence[pulumi.Input['SplitTunnelTunnelArgs']]]] = None,
-             policy_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if account_id is None and 'accountId' in kwargs:
-            account_id = kwargs['accountId']
-        if account_id is None:
-            raise TypeError("Missing 'account_id' argument")
-        if mode is None:
-            raise TypeError("Missing 'mode' argument")
-        if tunnels is None:
-            raise TypeError("Missing 'tunnels' argument")
-        if policy_id is None and 'policyId' in kwargs:
-            policy_id = kwargs['policyId']
-
-        _setter("account_id", account_id)
-        _setter("mode", mode)
-        _setter("tunnels", tunnels)
+        pulumi.set(__self__, "account_id", account_id)
+        pulumi.set(__self__, "mode", mode)
+        pulumi.set(__self__, "tunnels", tunnels)
         if policy_id is not None:
-            _setter("policy_id", policy_id)
+            pulumi.set(__self__, "policy_id", policy_id)
 
     @property
     @pulumi.getter(name="accountId")
@@ -123,35 +96,14 @@ class _SplitTunnelState:
         :param pulumi.Input[str] policy_id: The settings policy for which to configure this split tunnel policy.
         :param pulumi.Input[Sequence[pulumi.Input['SplitTunnelTunnelArgs']]] tunnels: The value of the tunnel attributes.
         """
-        _SplitTunnelState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            account_id=account_id,
-            mode=mode,
-            policy_id=policy_id,
-            tunnels=tunnels,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             account_id: Optional[pulumi.Input[str]] = None,
-             mode: Optional[pulumi.Input[str]] = None,
-             policy_id: Optional[pulumi.Input[str]] = None,
-             tunnels: Optional[pulumi.Input[Sequence[pulumi.Input['SplitTunnelTunnelArgs']]]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if account_id is None and 'accountId' in kwargs:
-            account_id = kwargs['accountId']
-        if policy_id is None and 'policyId' in kwargs:
-            policy_id = kwargs['policyId']
-
         if account_id is not None:
-            _setter("account_id", account_id)
+            pulumi.set(__self__, "account_id", account_id)
         if mode is not None:
-            _setter("mode", mode)
+            pulumi.set(__self__, "mode", mode)
         if policy_id is not None:
-            _setter("policy_id", policy_id)
+            pulumi.set(__self__, "policy_id", policy_id)
         if tunnels is not None:
-            _setter("tunnels", tunnels)
+            pulumi.set(__self__, "tunnels", tunnels)
 
     @property
     @pulumi.getter(name="accountId")
@@ -357,10 +309,6 @@ class SplitTunnel(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            SplitTunnelArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
