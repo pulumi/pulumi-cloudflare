@@ -2822,7 +2822,7 @@
                 },
                 "weight": {
                     "type": "number",
-                    "description": "The weight (0.01 - 1.00) of this origin, relative to other origins in the pool. Equal values mean equal weighting. A weight of 0 means traffic will not be sent to this origin, but health is still checked. When `origin_steering.policy=\"least_outstanding_requests\"`, weight is used to scale the origin's outstanding requests. Defaults to `1`.\n"
+                    "description": "The weight (0.01 - 1.00) of this origin, relative to other origins in the pool. Equal values mean equal weighting. A weight of 0 means traffic will not be sent to this origin, but health is still checked. When `origin_steering.policy=\"least_outstanding_requests\"`, weight is used to scale the origin's outstanding requests. When `origin_steering.policy=\"least_connections\"`, weight is used to scale the origin's open connections. Defaults to `1`.\n"
                 }
             },
             "type": "object",
@@ -2855,7 +2855,7 @@
             "properties": {
                 "policy": {
                     "type": "string",
-                    "description": "Origin steering policy to be used. Value `random` selects an origin randomly. Value `hash` selects an origin by computing a hash over the CF-Connecting-IP address. Value `least_outstanding_requests` selects an origin by taking into consideration origin weights, as well as each origin's number of outstanding requests. Origins with more pending requests are weighted proportionately less relative to others. Available values: `\"\"`, `hash`, `random`, `least_outstanding_requests`. Defaults to `random`.\n"
+                    "description": "Origin steering policy to be used. Value `random` selects an origin randomly. Value `hash` selects an origin by computing a hash over the CF-Connecting-IP address. Value `least_outstanding_requests` selects an origin by taking into consideration origin weights, as well as each origin's number of outstanding requests. Origins with more pending requests are weighted proportionately less relative to others. Value `least_connections` selects an origin by taking into consideration origin weights, as well as each origin's number of open connections. Origins with more open connections are weighted proportionately less relative to others. Supported for HTTP/1 and HTTP/2 connections. Available values: `\"\"`, `hash`, `random`, `least_outstanding_requests`, `least_connections`. Defaults to `random`.\n"
                 }
             },
             "type": "object"
@@ -3031,7 +3031,7 @@
                     "items": {
                         "$ref": "#/types/cloudflare:index/LoadBalancerRuleOverrideRandomSteering:LoadBalancerRuleOverrideRandomSteering"
                     },
-                    "description": "Configures pool weights. When `steering_policy=\"random\"`, a random pool is selected with probability proportional to pool weights. When `steering_policy=\"least_outstanding_requests\"`, pool weights are used to scale each pool's outstanding requests.\n"
+                    "description": "Configures pool weights. When `steering_policy=\"random\"`, a random pool is selected with probability proportional to pool weights. When `steering_policy=\"least_outstanding_requests\"`, pool weights are used to scale each pool's outstanding requests. When `steering_policy=\"least_connections\"`, pool weights are used to scale each pool's open connections.\n"
                 },
                 "regionPools": {
                     "type": "array",
@@ -3057,7 +3057,7 @@
                 },
                 "steeringPolicy": {
                     "type": "string",
-                    "description": "The method the load balancer uses to determine the route to your origin. Value `off` uses `default_pool_ids`. Value `geo` uses `pop_pools`/`country_pools`/`region_pools`. For non-proxied requests, the `country` for `country_pools` is determined by `location_strategy`. Value `random` selects a pool randomly. Value `dynamic_latency` uses round trip time to select the closest pool in `default_pool_ids` (requires pool health checks). Value `proximity` uses the pools' latitude and longitude to select the closest pool using the Cloudflare PoP location for proxied requests or the location determined by `location_strategy` for non-proxied requests. Value `least_outstanding_requests` selects a pool by taking into consideration `random_steering` weights, as well as each pool's number of outstanding requests. Pools with more pending requests are weighted proportionately less relative to others. Value `\"\"` maps to `geo` if you use `pop_pools`/`country_pools`/`region_pools` otherwise `off`. Available values: `off`, `geo`, `dynamic_latency`, `random`, `proximity`, `least_outstanding_requests`, `\"\"` Defaults to `\"\"`.\n"
+                    "description": "The method the load balancer uses to determine the route to your origin. Value `off` uses `default_pool_ids`. Value `geo` uses `pop_pools`/`country_pools`/`region_pools`. For non-proxied requests, the `country` for `country_pools` is determined by `location_strategy`. Value `random` selects a pool randomly. Value `dynamic_latency` uses round trip time to select the closest pool in `default_pool_ids` (requires pool health checks). Value `proximity` uses the pools' latitude and longitude to select the closest pool using the Cloudflare PoP location for proxied requests or the location determined by `location_strategy` for non-proxied requests. Value `least_outstanding_requests` selects a pool by taking into consideration `random_steering` weights, as well as each pool's number of outstanding requests. Pools with more pending requests are weighted proportionately less relative to others. Value `least_connections` selects a pool by taking into consideration `random_steering` weights, as well as each pool's number of open connections. Pools with more open connections are weighted proportionately less relative to others. Supported for HTTP/1 and HTTP/2 connections. Value `\"\"` maps to `geo` if you use `pop_pools`/`country_pools`/`region_pools` otherwise `off`. Available values: `off`, `geo`, `dynamic_latency`, `random`, `proximity`, `least_outstanding_requests`, `least_connections`, `\"\"` Defaults to `\"\"`.\n"
                 },
                 "ttl": {
                     "type": "integer",
@@ -5511,6 +5511,18 @@
             },
             "type": "object"
         },
+        "cloudflare:index/TeamsAccountBodyScanning:TeamsAccountBodyScanning": {
+            "properties": {
+                "inspectionMode": {
+                    "type": "string",
+                    "description": "Body scanning inspection mode. Available values: `deep`, `shallow`.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "inspectionMode"
+            ]
+        },
         "cloudflare:index/TeamsAccountFips:TeamsAccountFips": {
             "properties": {
                 "tls": {
@@ -6267,6 +6279,18 @@
             "required": [
                 "name",
                 "namespaceId"
+            ]
+        },
+        "cloudflare:index/WorkerScriptPlacement:WorkerScriptPlacement": {
+            "properties": {
+                "mode": {
+                    "type": "string",
+                    "description": "The placement mode for the Worker. Available values: `smart`.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "mode"
             ]
         },
         "cloudflare:index/WorkerScriptPlainTextBinding:WorkerScriptPlainTextBinding": {
@@ -7039,6 +7063,38 @@
                 }
             },
             "type": "object"
+        },
+        "cloudflare:index/getDevicePostureRulesRule:getDevicePostureRulesRule": {
+            "properties": {
+                "description": {
+                    "type": "string"
+                },
+                "expiration": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "schedule": {
+                    "type": "string"
+                },
+                "type": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "id",
+                "type"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
         },
         "cloudflare:index/getDevicesDevice:getDevicesDevice": {
             "properties": {
@@ -10242,6 +10298,67 @@
                 "type": "object"
             }
         },
+        "cloudflare:index/apiShieldOperationSchemaValidationSettings:ApiShieldOperationSchemaValidationSettings": {
+            "description": "Provides a resource to manage operation-level settings in API Shield Schema Validation 2.0.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as cloudflare from \"@pulumi/cloudflare\";\n\nconst exampleApiShieldOperation = new cloudflare.ApiShieldOperation(\"exampleApiShieldOperation\", {\n    zoneId: \"0da42c8d2132a9ddaf714f9e7c920711\",\n    method: \"GET\",\n    host: \"api.example.com\",\n    endpoint: \"/path\",\n});\nconst exampleApiShieldOperationSchemaValidationSettings = new cloudflare.ApiShieldOperationSchemaValidationSettings(\"exampleApiShieldOperationSchemaValidationSettings\", {\n    zoneId: \"0da42c8d2132a9ddaf714f9e7c920711\",\n    operationId: exampleApiShieldOperation.id,\n    mitigationAction: \"block\",\n});\n```\n```python\nimport pulumi\nimport pulumi_cloudflare as cloudflare\n\nexample_api_shield_operation = cloudflare.ApiShieldOperation(\"exampleApiShieldOperation\",\n    zone_id=\"0da42c8d2132a9ddaf714f9e7c920711\",\n    method=\"GET\",\n    host=\"api.example.com\",\n    endpoint=\"/path\")\nexample_api_shield_operation_schema_validation_settings = cloudflare.ApiShieldOperationSchemaValidationSettings(\"exampleApiShieldOperationSchemaValidationSettings\",\n    zone_id=\"0da42c8d2132a9ddaf714f9e7c920711\",\n    operation_id=example_api_shield_operation.id,\n    mitigation_action=\"block\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Cloudflare = Pulumi.Cloudflare;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var exampleApiShieldOperation = new Cloudflare.ApiShieldOperation(\"exampleApiShieldOperation\", new()\n    {\n        ZoneId = \"0da42c8d2132a9ddaf714f9e7c920711\",\n        Method = \"GET\",\n        Host = \"api.example.com\",\n        Endpoint = \"/path\",\n    });\n\n    var exampleApiShieldOperationSchemaValidationSettings = new Cloudflare.ApiShieldOperationSchemaValidationSettings(\"exampleApiShieldOperationSchemaValidationSettings\", new()\n    {\n        ZoneId = \"0da42c8d2132a9ddaf714f9e7c920711\",\n        OperationId = exampleApiShieldOperation.Id,\n        MitigationAction = \"block\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\texampleApiShieldOperation, err := cloudflare.NewApiShieldOperation(ctx, \"exampleApiShieldOperation\", \u0026cloudflare.ApiShieldOperationArgs{\n\t\t\tZoneId:   pulumi.String(\"0da42c8d2132a9ddaf714f9e7c920711\"),\n\t\t\tMethod:   pulumi.String(\"GET\"),\n\t\t\tHost:     pulumi.String(\"api.example.com\"),\n\t\t\tEndpoint: pulumi.String(\"/path\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = cloudflare.NewApiShieldOperationSchemaValidationSettings(ctx, \"exampleApiShieldOperationSchemaValidationSettings\", \u0026cloudflare.ApiShieldOperationSchemaValidationSettingsArgs{\n\t\t\tZoneId:           pulumi.String(\"0da42c8d2132a9ddaf714f9e7c920711\"),\n\t\t\tOperationId:      exampleApiShieldOperation.ID(),\n\t\t\tMitigationAction: pulumi.String(\"block\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.cloudflare.ApiShieldOperation;\nimport com.pulumi.cloudflare.ApiShieldOperationArgs;\nimport com.pulumi.cloudflare.ApiShieldOperationSchemaValidationSettings;\nimport com.pulumi.cloudflare.ApiShieldOperationSchemaValidationSettingsArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var exampleApiShieldOperation = new ApiShieldOperation(\"exampleApiShieldOperation\", ApiShieldOperationArgs.builder()        \n            .zoneId(\"0da42c8d2132a9ddaf714f9e7c920711\")\n            .method(\"GET\")\n            .host(\"api.example.com\")\n            .endpoint(\"/path\")\n            .build());\n\n        var exampleApiShieldOperationSchemaValidationSettings = new ApiShieldOperationSchemaValidationSettings(\"exampleApiShieldOperationSchemaValidationSettings\", ApiShieldOperationSchemaValidationSettingsArgs.builder()        \n            .zoneId(\"0da42c8d2132a9ddaf714f9e7c920711\")\n            .operationId(exampleApiShieldOperation.id())\n            .mitigationAction(\"block\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  exampleApiShieldOperation:\n    type: cloudflare:ApiShieldOperation\n    properties:\n      zoneId: 0da42c8d2132a9ddaf714f9e7c920711\n      method: GET\n      host: api.example.com\n      endpoint: /path\n  exampleApiShieldOperationSchemaValidationSettings:\n    type: cloudflare:ApiShieldOperationSchemaValidationSettings\n    properties:\n      zoneId: 0da42c8d2132a9ddaf714f9e7c920711\n      operationId: ${exampleApiShieldOperation.id}\n      mitigationAction: block\n```\n{{% /example %}}\n{{% /examples %}}",
+            "properties": {
+                "mitigationAction": {
+                    "type": "string",
+                    "description": "The mitigation action to apply to this operation.\n"
+                },
+                "operationId": {
+                    "type": "string",
+                    "description": "Operation ID these settings should apply to. **Modifying this attribute will force creation of a new resource.**\n"
+                },
+                "zoneId": {
+                    "type": "string",
+                    "description": "The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**\n"
+                }
+            },
+            "required": [
+                "operationId",
+                "zoneId"
+            ],
+            "inputProperties": {
+                "mitigationAction": {
+                    "type": "string",
+                    "description": "The mitigation action to apply to this operation.\n"
+                },
+                "operationId": {
+                    "type": "string",
+                    "description": "Operation ID these settings should apply to. **Modifying this attribute will force creation of a new resource.**\n",
+                    "willReplaceOnChanges": true
+                },
+                "zoneId": {
+                    "type": "string",
+                    "description": "The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**\n",
+                    "willReplaceOnChanges": true
+                }
+            },
+            "requiredInputs": [
+                "operationId",
+                "zoneId"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering ApiShieldOperationSchemaValidationSettings resources.\n",
+                "properties": {
+                    "mitigationAction": {
+                        "type": "string",
+                        "description": "The mitigation action to apply to this operation.\n"
+                    },
+                    "operationId": {
+                        "type": "string",
+                        "description": "Operation ID these settings should apply to. **Modifying this attribute will force creation of a new resource.**\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "zoneId": {
+                        "type": "string",
+                        "description": "The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**\n",
+                        "willReplaceOnChanges": true
+                    }
+                },
+                "type": "object"
+            }
+        },
         "cloudflare:index/apiShieldSchema:ApiShieldSchema": {
             "description": "Provides a resource to manage a schema in API Shield Schema Validation 2.0.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as cloudflare from \"@pulumi/cloudflare\";\nimport * as fs from \"fs\";\n\nconst petstoreSchema = new cloudflare.ApiShieldSchema(\"petstoreSchema\", {\n    zoneId: \"0da42c8d2132a9ddaf714f9e7c920711\",\n    name: \"myschema\",\n    kind: \"openapi_v3\",\n    validationEnabled: true,\n    source: fs.readFileSync(\"./schemas/petstore.json\"),\n});\n```\n```python\nimport pulumi\nimport pulumi_cloudflare as cloudflare\n\npetstore_schema = cloudflare.ApiShieldSchema(\"petstoreSchema\",\n    zone_id=\"0da42c8d2132a9ddaf714f9e7c920711\",\n    name=\"myschema\",\n    kind=\"openapi_v3\",\n    validation_enabled=True,\n    source=(lambda path: open(path).read())(\"./schemas/petstore.json\"))\n```\n```csharp\nusing System.Collections.Generic;\nusing System.IO;\nusing System.Linq;\nusing Pulumi;\nusing Cloudflare = Pulumi.Cloudflare;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var petstoreSchema = new Cloudflare.ApiShieldSchema(\"petstoreSchema\", new()\n    {\n        ZoneId = \"0da42c8d2132a9ddaf714f9e7c920711\",\n        Name = \"myschema\",\n        Kind = \"openapi_v3\",\n        ValidationEnabled = true,\n        Source = File.ReadAllText(\"./schemas/petstore.json\"),\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"os\"\n\n\t\"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc readFileOrPanic(path string) pulumi.StringPtrInput {\n\tdata, err := os.ReadFile(path)\n\tif err != nil {\n\t\tpanic(err.Error())\n\t}\n\treturn pulumi.String(string(data))\n}\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := cloudflare.NewApiShieldSchema(ctx, \"petstoreSchema\", \u0026cloudflare.ApiShieldSchemaArgs{\n\t\t\tZoneId:            pulumi.String(\"0da42c8d2132a9ddaf714f9e7c920711\"),\n\t\t\tName:              pulumi.String(\"myschema\"),\n\t\t\tKind:              pulumi.String(\"openapi_v3\"),\n\t\t\tValidationEnabled: pulumi.Bool(true),\n\t\t\tSource:            readFileOrPanic(\"./schemas/petstore.json\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.cloudflare.ApiShieldSchema;\nimport com.pulumi.cloudflare.ApiShieldSchemaArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var petstoreSchema = new ApiShieldSchema(\"petstoreSchema\", ApiShieldSchemaArgs.builder()        \n            .zoneId(\"0da42c8d2132a9ddaf714f9e7c920711\")\n            .name(\"myschema\")\n            .kind(\"openapi_v3\")\n            .validationEnabled(true)\n            .source(Files.readString(Paths.get(\"./schemas/petstore.json\")))\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  petstoreSchema:\n    type: cloudflare:ApiShieldSchema\n    properties:\n      zoneId: 0da42c8d2132a9ddaf714f9e7c920711\n      name: myschema\n      kind: openapi_v3\n      # optional\n      validationEnabled: true\n      # optional, default false\n      source:\n        fn::readFile: ./schemas/petstore.json\n```\n{{% /example %}}\n{{% /examples %}}",
             "properties": {
@@ -10323,6 +10440,65 @@
                     "validationEnabled": {
                         "type": "boolean",
                         "description": "Flag whether schema is enabled for validation.\n"
+                    },
+                    "zoneId": {
+                        "type": "string",
+                        "description": "The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**\n",
+                        "willReplaceOnChanges": true
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "cloudflare:index/apiShieldSchemaValidationSettings:ApiShieldSchemaValidationSettings": {
+            "description": "Provides a resource to manage settings in API Shield Schema Validation 2.0.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as cloudflare from \"@pulumi/cloudflare\";\n\nconst example = new cloudflare.ApiShieldSchemaValidationSettings(\"example\", {\n    validationDefaultMitigationAction: \"log\",\n    validationOverrideMitigationAction: \"none\",\n    zoneId: \"0da42c8d2132a9ddaf714f9e7c920711\",\n});\n```\n```python\nimport pulumi\nimport pulumi_cloudflare as cloudflare\n\nexample = cloudflare.ApiShieldSchemaValidationSettings(\"example\",\n    validation_default_mitigation_action=\"log\",\n    validation_override_mitigation_action=\"none\",\n    zone_id=\"0da42c8d2132a9ddaf714f9e7c920711\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Cloudflare = Pulumi.Cloudflare;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = new Cloudflare.ApiShieldSchemaValidationSettings(\"example\", new()\n    {\n        ValidationDefaultMitigationAction = \"log\",\n        ValidationOverrideMitigationAction = \"none\",\n        ZoneId = \"0da42c8d2132a9ddaf714f9e7c920711\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := cloudflare.NewApiShieldSchemaValidationSettings(ctx, \"example\", \u0026cloudflare.ApiShieldSchemaValidationSettingsArgs{\n\t\t\tValidationDefaultMitigationAction:  pulumi.String(\"log\"),\n\t\t\tValidationOverrideMitigationAction: pulumi.String(\"none\"),\n\t\t\tZoneId:                             pulumi.String(\"0da42c8d2132a9ddaf714f9e7c920711\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.cloudflare.ApiShieldSchemaValidationSettings;\nimport com.pulumi.cloudflare.ApiShieldSchemaValidationSettingsArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var example = new ApiShieldSchemaValidationSettings(\"example\", ApiShieldSchemaValidationSettingsArgs.builder()        \n            .validationDefaultMitigationAction(\"log\")\n            .validationOverrideMitigationAction(\"none\")\n            .zoneId(\"0da42c8d2132a9ddaf714f9e7c920711\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  example:\n    type: cloudflare:ApiShieldSchemaValidationSettings\n    properties:\n      validationDefaultMitigationAction: log\n      validationOverrideMitigationAction: none\n      zoneId: 0da42c8d2132a9ddaf714f9e7c920711\n```\n{{% /example %}}\n{{% /examples %}}",
+            "properties": {
+                "validationDefaultMitigationAction": {
+                    "type": "string",
+                    "description": "The default mitigation action used when there is no mitigation action defined on the operation.\n"
+                },
+                "validationOverrideMitigationAction": {
+                    "type": "string",
+                    "description": "When set, this overrides both zone level and operation level mitigation actions.\n"
+                },
+                "zoneId": {
+                    "type": "string",
+                    "description": "The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**\n"
+                }
+            },
+            "required": [
+                "validationDefaultMitigationAction",
+                "zoneId"
+            ],
+            "inputProperties": {
+                "validationDefaultMitigationAction": {
+                    "type": "string",
+                    "description": "The default mitigation action used when there is no mitigation action defined on the operation.\n"
+                },
+                "validationOverrideMitigationAction": {
+                    "type": "string",
+                    "description": "When set, this overrides both zone level and operation level mitigation actions.\n"
+                },
+                "zoneId": {
+                    "type": "string",
+                    "description": "The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**\n",
+                    "willReplaceOnChanges": true
+                }
+            },
+            "requiredInputs": [
+                "validationDefaultMitigationAction",
+                "zoneId"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering ApiShieldSchemaValidationSettings resources.\n",
+                "properties": {
+                    "validationDefaultMitigationAction": {
+                        "type": "string",
+                        "description": "The default mitigation action used when there is no mitigation action defined on the operation.\n"
+                    },
+                    "validationOverrideMitigationAction": {
+                        "type": "string",
+                        "description": "When set, this overrides both zone level and operation level mitigation actions.\n"
                     },
                     "zoneId": {
                         "type": "string",
@@ -14307,7 +14483,7 @@
                     "items": {
                         "$ref": "#/types/cloudflare:index/LoadBalancerRandomSteering:LoadBalancerRandomSteering"
                     },
-                    "description": "Configures pool weights. When `steering_policy=\"random\"`, a random pool is selected with probability proportional to pool weights. When `steering_policy=\"least_outstanding_requests\"`, pool weights are used to scale each pool's outstanding requests.\n"
+                    "description": "Configures pool weights. When `steering_policy=\"random\"`, a random pool is selected with probability proportional to pool weights. When `steering_policy=\"least_outstanding_requests\"`, pool weights are used to scale each pool's outstanding requests. When `steering_policy=\"least_connections\"`, pool weights are used to scale each pool's open connections.\n"
                 },
                 "regionPools": {
                     "type": "array",
@@ -14340,7 +14516,7 @@
                 },
                 "steeringPolicy": {
                     "type": "string",
-                    "description": "The method the load balancer uses to determine the route to your origin. Value `off` uses `default_pool_ids`. Value `geo` uses `pop_pools`/`country_pools`/`region_pools`. For non-proxied requests, the `country` for `country_pools` is determined by `location_strategy`. Value `random` selects a pool randomly. Value `dynamic_latency` uses round trip time to select the closest pool in `default_pool_ids` (requires pool health checks). Value `proximity` uses the pools' latitude and longitude to select the closest pool using the Cloudflare PoP location for proxied requests or the location determined by `location_strategy` for non-proxied requests. Value `least_outstanding_requests` selects a pool by taking into consideration `random_steering` weights, as well as each pool's number of outstanding requests. Pools with more pending requests are weighted proportionately less relative to others. Value `\"\"` maps to `geo` if you use `pop_pools`/`country_pools`/`region_pools` otherwise `off`. Available values: `off`, `geo`, `dynamic_latency`, `random`, `proximity`, `least_outstanding_requests`, `\"\"` Defaults to `\"\"`.\n"
+                    "description": "The method the load balancer uses to determine the route to your origin. Value `off` uses `default_pool_ids`. Value `geo` uses `pop_pools`/`country_pools`/`region_pools`. For non-proxied requests, the `country` for `country_pools` is determined by `location_strategy`. Value `random` selects a pool randomly. Value `dynamic_latency` uses round trip time to select the closest pool in `default_pool_ids` (requires pool health checks). Value `proximity` uses the pools' latitude and longitude to select the closest pool using the Cloudflare PoP location for proxied requests or the location determined by `location_strategy` for non-proxied requests. Value `least_outstanding_requests` selects a pool by taking into consideration `random_steering` weights, as well as each pool's number of outstanding requests. Pools with more pending requests are weighted proportionately less relative to others. Value `least_connections` selects a pool by taking into consideration `random_steering` weights, as well as each pool's number of open connections. Pools with more open connections are weighted proportionately less relative to others. Supported for HTTP/1 and HTTP/2 connections. Value `\"\"` maps to `geo` if you use `pop_pools`/`country_pools`/`region_pools` otherwise `off`. Available values: `off`, `geo`, `dynamic_latency`, `random`, `proximity`, `least_outstanding_requests`, `least_connections`, `\"\"` Defaults to `\"\"`.\n"
                 },
                 "ttl": {
                     "type": "integer",
@@ -14422,7 +14598,7 @@
                     "items": {
                         "$ref": "#/types/cloudflare:index/LoadBalancerRandomSteering:LoadBalancerRandomSteering"
                     },
-                    "description": "Configures pool weights. When `steering_policy=\"random\"`, a random pool is selected with probability proportional to pool weights. When `steering_policy=\"least_outstanding_requests\"`, pool weights are used to scale each pool's outstanding requests.\n"
+                    "description": "Configures pool weights. When `steering_policy=\"random\"`, a random pool is selected with probability proportional to pool weights. When `steering_policy=\"least_outstanding_requests\"`, pool weights are used to scale each pool's outstanding requests. When `steering_policy=\"least_connections\"`, pool weights are used to scale each pool's open connections.\n"
                 },
                 "regionPools": {
                     "type": "array",
@@ -14455,7 +14631,7 @@
                 },
                 "steeringPolicy": {
                     "type": "string",
-                    "description": "The method the load balancer uses to determine the route to your origin. Value `off` uses `default_pool_ids`. Value `geo` uses `pop_pools`/`country_pools`/`region_pools`. For non-proxied requests, the `country` for `country_pools` is determined by `location_strategy`. Value `random` selects a pool randomly. Value `dynamic_latency` uses round trip time to select the closest pool in `default_pool_ids` (requires pool health checks). Value `proximity` uses the pools' latitude and longitude to select the closest pool using the Cloudflare PoP location for proxied requests or the location determined by `location_strategy` for non-proxied requests. Value `least_outstanding_requests` selects a pool by taking into consideration `random_steering` weights, as well as each pool's number of outstanding requests. Pools with more pending requests are weighted proportionately less relative to others. Value `\"\"` maps to `geo` if you use `pop_pools`/`country_pools`/`region_pools` otherwise `off`. Available values: `off`, `geo`, `dynamic_latency`, `random`, `proximity`, `least_outstanding_requests`, `\"\"` Defaults to `\"\"`.\n"
+                    "description": "The method the load balancer uses to determine the route to your origin. Value `off` uses `default_pool_ids`. Value `geo` uses `pop_pools`/`country_pools`/`region_pools`. For non-proxied requests, the `country` for `country_pools` is determined by `location_strategy`. Value `random` selects a pool randomly. Value `dynamic_latency` uses round trip time to select the closest pool in `default_pool_ids` (requires pool health checks). Value `proximity` uses the pools' latitude and longitude to select the closest pool using the Cloudflare PoP location for proxied requests or the location determined by `location_strategy` for non-proxied requests. Value `least_outstanding_requests` selects a pool by taking into consideration `random_steering` weights, as well as each pool's number of outstanding requests. Pools with more pending requests are weighted proportionately less relative to others. Value `least_connections` selects a pool by taking into consideration `random_steering` weights, as well as each pool's number of open connections. Pools with more open connections are weighted proportionately less relative to others. Supported for HTTP/1 and HTTP/2 connections. Value `\"\"` maps to `geo` if you use `pop_pools`/`country_pools`/`region_pools` otherwise `off`. Available values: `off`, `geo`, `dynamic_latency`, `random`, `proximity`, `least_outstanding_requests`, `least_connections`, `\"\"` Defaults to `\"\"`.\n"
                 },
                 "ttl": {
                     "type": "integer",
@@ -14544,7 +14720,7 @@
                         "items": {
                             "$ref": "#/types/cloudflare:index/LoadBalancerRandomSteering:LoadBalancerRandomSteering"
                         },
-                        "description": "Configures pool weights. When `steering_policy=\"random\"`, a random pool is selected with probability proportional to pool weights. When `steering_policy=\"least_outstanding_requests\"`, pool weights are used to scale each pool's outstanding requests.\n"
+                        "description": "Configures pool weights. When `steering_policy=\"random\"`, a random pool is selected with probability proportional to pool weights. When `steering_policy=\"least_outstanding_requests\"`, pool weights are used to scale each pool's outstanding requests. When `steering_policy=\"least_connections\"`, pool weights are used to scale each pool's open connections.\n"
                     },
                     "regionPools": {
                         "type": "array",
@@ -14577,7 +14753,7 @@
                     },
                     "steeringPolicy": {
                         "type": "string",
-                        "description": "The method the load balancer uses to determine the route to your origin. Value `off` uses `default_pool_ids`. Value `geo` uses `pop_pools`/`country_pools`/`region_pools`. For non-proxied requests, the `country` for `country_pools` is determined by `location_strategy`. Value `random` selects a pool randomly. Value `dynamic_latency` uses round trip time to select the closest pool in `default_pool_ids` (requires pool health checks). Value `proximity` uses the pools' latitude and longitude to select the closest pool using the Cloudflare PoP location for proxied requests or the location determined by `location_strategy` for non-proxied requests. Value `least_outstanding_requests` selects a pool by taking into consideration `random_steering` weights, as well as each pool's number of outstanding requests. Pools with more pending requests are weighted proportionately less relative to others. Value `\"\"` maps to `geo` if you use `pop_pools`/`country_pools`/`region_pools` otherwise `off`. Available values: `off`, `geo`, `dynamic_latency`, `random`, `proximity`, `least_outstanding_requests`, `\"\"` Defaults to `\"\"`.\n"
+                        "description": "The method the load balancer uses to determine the route to your origin. Value `off` uses `default_pool_ids`. Value `geo` uses `pop_pools`/`country_pools`/`region_pools`. For non-proxied requests, the `country` for `country_pools` is determined by `location_strategy`. Value `random` selects a pool randomly. Value `dynamic_latency` uses round trip time to select the closest pool in `default_pool_ids` (requires pool health checks). Value `proximity` uses the pools' latitude and longitude to select the closest pool using the Cloudflare PoP location for proxied requests or the location determined by `location_strategy` for non-proxied requests. Value `least_outstanding_requests` selects a pool by taking into consideration `random_steering` weights, as well as each pool's number of outstanding requests. Pools with more pending requests are weighted proportionately less relative to others. Value `least_connections` selects a pool by taking into consideration `random_steering` weights, as well as each pool's number of open connections. Pools with more open connections are weighted proportionately less relative to others. Supported for HTTP/1 and HTTP/2 connections. Value `\"\"` maps to `geo` if you use `pop_pools`/`country_pools`/`region_pools` otherwise `off`. Available values: `off`, `geo`, `dynamic_latency`, `random`, `proximity`, `least_outstanding_requests`, `least_connections`, `\"\"` Defaults to `\"\"`.\n"
                     },
                     "ttl": {
                         "type": "integer",
@@ -15134,7 +15310,7 @@
                 },
                 "dataset": {
                     "type": "string",
-                    "description": "The kind of the dataset to use with the logpush job. Available values: `access_requests`, `firewall_events`, `http_requests`, `spectrum_events`, `nel_reports`, `audit_logs`, `gateway_dns`, `gateway_http`, `gateway_network`, `dns_logs`, `network_analytics_logs`, `workers_trace_events`, `device_posture_results`, `zero_trust_network_sessions`.\n"
+                    "description": "The kind of the dataset to use with the logpush job. Available values: `access_requests`, `casb_findings`, `firewall_events`, `http_requests`, `spectrum_events`, `nel_reports`, `audit_logs`, `gateway_dns`, `gateway_http`, `gateway_network`, `dns_logs`, `network_analytics_logs`, `workers_trace_events`, `device_posture_results`, `zero_trust_network_sessions`.\n"
                 },
                 "destinationConf": {
                     "type": "string",
@@ -15196,7 +15372,7 @@
                 },
                 "dataset": {
                     "type": "string",
-                    "description": "The kind of the dataset to use with the logpush job. Available values: `access_requests`, `firewall_events`, `http_requests`, `spectrum_events`, `nel_reports`, `audit_logs`, `gateway_dns`, `gateway_http`, `gateway_network`, `dns_logs`, `network_analytics_logs`, `workers_trace_events`, `device_posture_results`, `zero_trust_network_sessions`.\n"
+                    "description": "The kind of the dataset to use with the logpush job. Available values: `access_requests`, `casb_findings`, `firewall_events`, `http_requests`, `spectrum_events`, `nel_reports`, `audit_logs`, `gateway_dns`, `gateway_http`, `gateway_network`, `dns_logs`, `network_analytics_logs`, `workers_trace_events`, `device_posture_results`, `zero_trust_network_sessions`.\n"
                 },
                 "destinationConf": {
                     "type": "string",
@@ -15260,7 +15436,7 @@
                     },
                     "dataset": {
                         "type": "string",
-                        "description": "The kind of the dataset to use with the logpush job. Available values: `access_requests`, `firewall_events`, `http_requests`, `spectrum_events`, `nel_reports`, `audit_logs`, `gateway_dns`, `gateway_http`, `gateway_network`, `dns_logs`, `network_analytics_logs`, `workers_trace_events`, `device_posture_results`, `zero_trust_network_sessions`.\n"
+                        "description": "The kind of the dataset to use with the logpush job. Available values: `access_requests`, `casb_findings`, `firewall_events`, `http_requests`, `spectrum_events`, `nel_reports`, `audit_logs`, `gateway_dns`, `gateway_http`, `gateway_network`, `dns_logs`, `network_analytics_logs`, `workers_trace_events`, `device_posture_results`, `zero_trust_network_sessions`.\n"
                     },
                     "destinationConf": {
                         "type": "string",
@@ -15974,7 +16150,7 @@
                 },
                 "region": {
                     "type": "string",
-                    "description": "The region to run the test in. Available values: `us-central1`, `us-east1`, `us-east4`, `us-south1`, `us-west1`, `southamerica-east1`, `europe-north1`, `europe-southwest1`, `europe-west1`, `europe-west2`, `europe-west3`, `europe-west4`, `europe-west8`, `europe-west9`, `asia-east1`, `asia-southeast1`, `me-west1`, `australia-southeast1`. **Modifying this attribute will force creation of a new resource.**\n"
+                    "description": "The region to run the test in. Available values: `us-central1`, `us-east1`, `us-east4`, `us-south1`, `us-west1`, `southamerica-east1`, `europe-north1`, `europe-southwest1`, `europe-west1`, `europe-west2`, `europe-west3`, `europe-west4`, `europe-west8`, `europe-west9`, `asia-east1`, `asia-south1`, `asia-southeast1`, `me-west1`, `australia-southeast1`. **Modifying this attribute will force creation of a new resource.**\n"
                 },
                 "url": {
                     "type": "string",
@@ -15999,7 +16175,7 @@
                 },
                 "region": {
                     "type": "string",
-                    "description": "The region to run the test in. Available values: `us-central1`, `us-east1`, `us-east4`, `us-south1`, `us-west1`, `southamerica-east1`, `europe-north1`, `europe-southwest1`, `europe-west1`, `europe-west2`, `europe-west3`, `europe-west4`, `europe-west8`, `europe-west9`, `asia-east1`, `asia-southeast1`, `me-west1`, `australia-southeast1`. **Modifying this attribute will force creation of a new resource.**\n",
+                    "description": "The region to run the test in. Available values: `us-central1`, `us-east1`, `us-east4`, `us-south1`, `us-west1`, `southamerica-east1`, `europe-north1`, `europe-southwest1`, `europe-west1`, `europe-west2`, `europe-west3`, `europe-west4`, `europe-west8`, `europe-west9`, `asia-east1`, `asia-south1`, `asia-southeast1`, `me-west1`, `australia-southeast1`. **Modifying this attribute will force creation of a new resource.**\n",
                     "willReplaceOnChanges": true
                 },
                 "url": {
@@ -16029,7 +16205,7 @@
                     },
                     "region": {
                         "type": "string",
-                        "description": "The region to run the test in. Available values: `us-central1`, `us-east1`, `us-east4`, `us-south1`, `us-west1`, `southamerica-east1`, `europe-north1`, `europe-southwest1`, `europe-west1`, `europe-west2`, `europe-west3`, `europe-west4`, `europe-west8`, `europe-west9`, `asia-east1`, `asia-southeast1`, `me-west1`, `australia-southeast1`. **Modifying this attribute will force creation of a new resource.**\n",
+                        "description": "The region to run the test in. Available values: `us-central1`, `us-east1`, `us-east4`, `us-south1`, `us-west1`, `southamerica-east1`, `europe-north1`, `europe-southwest1`, `europe-west1`, `europe-west2`, `europe-west3`, `europe-west4`, `europe-west8`, `europe-west9`, `asia-east1`, `asia-south1`, `asia-southeast1`, `me-west1`, `australia-southeast1`. **Modifying this attribute will force creation of a new resource.**\n",
                         "willReplaceOnChanges": true
                     },
                     "url": {
@@ -17567,7 +17743,7 @@
             }
         },
         "cloudflare:index/teamsAccount:TeamsAccount": {
-            "description": "Provides a Cloudflare Teams Account resource. The Teams Account\nresource defines configuration for secure web gateway.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as cloudflare from \"@pulumi/cloudflare\";\n\nconst example = new cloudflare.TeamsAccount(\"example\", {\n    accountId: \"f037e56e89293a057740de681ac9abbe\",\n    antivirus: {\n        enabledDownloadPhase: true,\n        enabledUploadPhase: false,\n        failClosed: true,\n    },\n    blockPage: {\n        backgroundColor: \"#000000\",\n        footerText: \"hello\",\n        headerText: \"hello\",\n        logoPath: \"https://example.com/logo.jpg\",\n    },\n    fips: {\n        tls: true,\n    },\n    logging: {\n        redactPii: true,\n        settingsByRuleType: {\n            dns: {\n                logAll: false,\n                logBlocks: true,\n            },\n            http: {\n                logAll: true,\n                logBlocks: true,\n            },\n            l4: {\n                logAll: false,\n                logBlocks: true,\n            },\n        },\n    },\n    protocolDetectionEnabled: true,\n    proxy: {\n        rootCa: true,\n        tcp: true,\n        udp: true,\n    },\n    tlsDecryptEnabled: true,\n    urlBrowserIsolationEnabled: true,\n});\n```\n```python\nimport pulumi\nimport pulumi_cloudflare as cloudflare\n\nexample = cloudflare.TeamsAccount(\"example\",\n    account_id=\"f037e56e89293a057740de681ac9abbe\",\n    antivirus=cloudflare.TeamsAccountAntivirusArgs(\n        enabled_download_phase=True,\n        enabled_upload_phase=False,\n        fail_closed=True,\n    ),\n    block_page=cloudflare.TeamsAccountBlockPageArgs(\n        background_color=\"#000000\",\n        footer_text=\"hello\",\n        header_text=\"hello\",\n        logo_path=\"https://example.com/logo.jpg\",\n    ),\n    fips=cloudflare.TeamsAccountFipsArgs(\n        tls=True,\n    ),\n    logging=cloudflare.TeamsAccountLoggingArgs(\n        redact_pii=True,\n        settings_by_rule_type=cloudflare.TeamsAccountLoggingSettingsByRuleTypeArgs(\n            dns=cloudflare.TeamsAccountLoggingSettingsByRuleTypeDnsArgs(\n                log_all=False,\n                log_blocks=True,\n            ),\n            http=cloudflare.TeamsAccountLoggingSettingsByRuleTypeHttpArgs(\n                log_all=True,\n                log_blocks=True,\n            ),\n            l4=cloudflare.TeamsAccountLoggingSettingsByRuleTypeL4Args(\n                log_all=False,\n                log_blocks=True,\n            ),\n        ),\n    ),\n    protocol_detection_enabled=True,\n    proxy=cloudflare.TeamsAccountProxyArgs(\n        root_ca=True,\n        tcp=True,\n        udp=True,\n    ),\n    tls_decrypt_enabled=True,\n    url_browser_isolation_enabled=True)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Cloudflare = Pulumi.Cloudflare;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = new Cloudflare.TeamsAccount(\"example\", new()\n    {\n        AccountId = \"f037e56e89293a057740de681ac9abbe\",\n        Antivirus = new Cloudflare.Inputs.TeamsAccountAntivirusArgs\n        {\n            EnabledDownloadPhase = true,\n            EnabledUploadPhase = false,\n            FailClosed = true,\n        },\n        BlockPage = new Cloudflare.Inputs.TeamsAccountBlockPageArgs\n        {\n            BackgroundColor = \"#000000\",\n            FooterText = \"hello\",\n            HeaderText = \"hello\",\n            LogoPath = \"https://example.com/logo.jpg\",\n        },\n        Fips = new Cloudflare.Inputs.TeamsAccountFipsArgs\n        {\n            Tls = true,\n        },\n        Logging = new Cloudflare.Inputs.TeamsAccountLoggingArgs\n        {\n            RedactPii = true,\n            SettingsByRuleType = new Cloudflare.Inputs.TeamsAccountLoggingSettingsByRuleTypeArgs\n            {\n                Dns = new Cloudflare.Inputs.TeamsAccountLoggingSettingsByRuleTypeDnsArgs\n                {\n                    LogAll = false,\n                    LogBlocks = true,\n                },\n                Http = new Cloudflare.Inputs.TeamsAccountLoggingSettingsByRuleTypeHttpArgs\n                {\n                    LogAll = true,\n                    LogBlocks = true,\n                },\n                L4 = new Cloudflare.Inputs.TeamsAccountLoggingSettingsByRuleTypeL4Args\n                {\n                    LogAll = false,\n                    LogBlocks = true,\n                },\n            },\n        },\n        ProtocolDetectionEnabled = true,\n        Proxy = new Cloudflare.Inputs.TeamsAccountProxyArgs\n        {\n            RootCa = true,\n            Tcp = true,\n            Udp = true,\n        },\n        TlsDecryptEnabled = true,\n        UrlBrowserIsolationEnabled = true,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := cloudflare.NewTeamsAccount(ctx, \"example\", \u0026cloudflare.TeamsAccountArgs{\n\t\t\tAccountId: pulumi.String(\"f037e56e89293a057740de681ac9abbe\"),\n\t\t\tAntivirus: \u0026cloudflare.TeamsAccountAntivirusArgs{\n\t\t\t\tEnabledDownloadPhase: pulumi.Bool(true),\n\t\t\t\tEnabledUploadPhase:   pulumi.Bool(false),\n\t\t\t\tFailClosed:           pulumi.Bool(true),\n\t\t\t},\n\t\t\tBlockPage: \u0026cloudflare.TeamsAccountBlockPageArgs{\n\t\t\t\tBackgroundColor: pulumi.String(\"#000000\"),\n\t\t\t\tFooterText:      pulumi.String(\"hello\"),\n\t\t\t\tHeaderText:      pulumi.String(\"hello\"),\n\t\t\t\tLogoPath:        pulumi.String(\"https://example.com/logo.jpg\"),\n\t\t\t},\n\t\t\tFips: \u0026cloudflare.TeamsAccountFipsArgs{\n\t\t\t\tTls: pulumi.Bool(true),\n\t\t\t},\n\t\t\tLogging: \u0026cloudflare.TeamsAccountLoggingArgs{\n\t\t\t\tRedactPii: pulumi.Bool(true),\n\t\t\t\tSettingsByRuleType: \u0026cloudflare.TeamsAccountLoggingSettingsByRuleTypeArgs{\n\t\t\t\t\tDns: \u0026cloudflare.TeamsAccountLoggingSettingsByRuleTypeDnsArgs{\n\t\t\t\t\t\tLogAll:    pulumi.Bool(false),\n\t\t\t\t\t\tLogBlocks: pulumi.Bool(true),\n\t\t\t\t\t},\n\t\t\t\t\tHttp: \u0026cloudflare.TeamsAccountLoggingSettingsByRuleTypeHttpArgs{\n\t\t\t\t\t\tLogAll:    pulumi.Bool(true),\n\t\t\t\t\t\tLogBlocks: pulumi.Bool(true),\n\t\t\t\t\t},\n\t\t\t\t\tL4: \u0026cloudflare.TeamsAccountLoggingSettingsByRuleTypeL4Args{\n\t\t\t\t\t\tLogAll:    pulumi.Bool(false),\n\t\t\t\t\t\tLogBlocks: pulumi.Bool(true),\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t\tProtocolDetectionEnabled: pulumi.Bool(true),\n\t\t\tProxy: \u0026cloudflare.TeamsAccountProxyArgs{\n\t\t\t\tRootCa: pulumi.Bool(true),\n\t\t\t\tTcp:    pulumi.Bool(true),\n\t\t\t\tUdp:    pulumi.Bool(true),\n\t\t\t},\n\t\t\tTlsDecryptEnabled:          pulumi.Bool(true),\n\t\t\tUrlBrowserIsolationEnabled: pulumi.Bool(true),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.cloudflare.TeamsAccount;\nimport com.pulumi.cloudflare.TeamsAccountArgs;\nimport com.pulumi.cloudflare.inputs.TeamsAccountAntivirusArgs;\nimport com.pulumi.cloudflare.inputs.TeamsAccountBlockPageArgs;\nimport com.pulumi.cloudflare.inputs.TeamsAccountFipsArgs;\nimport com.pulumi.cloudflare.inputs.TeamsAccountLoggingArgs;\nimport com.pulumi.cloudflare.inputs.TeamsAccountLoggingSettingsByRuleTypeArgs;\nimport com.pulumi.cloudflare.inputs.TeamsAccountLoggingSettingsByRuleTypeDnsArgs;\nimport com.pulumi.cloudflare.inputs.TeamsAccountLoggingSettingsByRuleTypeHttpArgs;\nimport com.pulumi.cloudflare.inputs.TeamsAccountLoggingSettingsByRuleTypeL4Args;\nimport com.pulumi.cloudflare.inputs.TeamsAccountProxyArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var example = new TeamsAccount(\"example\", TeamsAccountArgs.builder()        \n            .accountId(\"f037e56e89293a057740de681ac9abbe\")\n            .antivirus(TeamsAccountAntivirusArgs.builder()\n                .enabledDownloadPhase(true)\n                .enabledUploadPhase(false)\n                .failClosed(true)\n                .build())\n            .blockPage(TeamsAccountBlockPageArgs.builder()\n                .backgroundColor(\"#000000\")\n                .footerText(\"hello\")\n                .headerText(\"hello\")\n                .logoPath(\"https://example.com/logo.jpg\")\n                .build())\n            .fips(TeamsAccountFipsArgs.builder()\n                .tls(true)\n                .build())\n            .logging(TeamsAccountLoggingArgs.builder()\n                .redactPii(true)\n                .settingsByRuleType(TeamsAccountLoggingSettingsByRuleTypeArgs.builder()\n                    .dns(TeamsAccountLoggingSettingsByRuleTypeDnsArgs.builder()\n                        .logAll(false)\n                        .logBlocks(true)\n                        .build())\n                    .http(TeamsAccountLoggingSettingsByRuleTypeHttpArgs.builder()\n                        .logAll(true)\n                        .logBlocks(true)\n                        .build())\n                    .l4(TeamsAccountLoggingSettingsByRuleTypeL4Args.builder()\n                        .logAll(false)\n                        .logBlocks(true)\n                        .build())\n                    .build())\n                .build())\n            .protocolDetectionEnabled(true)\n            .proxy(TeamsAccountProxyArgs.builder()\n                .rootCa(true)\n                .tcp(true)\n                .udp(true)\n                .build())\n            .tlsDecryptEnabled(true)\n            .urlBrowserIsolationEnabled(true)\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  example:\n    type: cloudflare:TeamsAccount\n    properties:\n      accountId: f037e56e89293a057740de681ac9abbe\n      antivirus:\n        enabledDownloadPhase: true\n        enabledUploadPhase: false\n        failClosed: true\n      blockPage:\n        backgroundColor: '#000000'\n        footerText: hello\n        headerText: hello\n        logoPath: https://example.com/logo.jpg\n      fips:\n        tls: true\n      logging:\n        redactPii: true\n        settingsByRuleType:\n          dns:\n            logAll: false\n            logBlocks: true\n          http:\n            logAll: true\n            logBlocks: true\n          l4:\n            logAll: false\n            logBlocks: true\n      protocolDetectionEnabled: true\n      proxy:\n        rootCa: true\n        tcp: true\n        udp: true\n      tlsDecryptEnabled: true\n      urlBrowserIsolationEnabled: true\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\n\n\n```sh\n $ pulumi import cloudflare:index/teamsAccount:TeamsAccount example \u003caccount_id\u003e\n```\n\n ",
+            "description": "Provides a Cloudflare Teams Account resource. The Teams Account\nresource defines configuration for secure web gateway.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as cloudflare from \"@pulumi/cloudflare\";\n\nconst example = new cloudflare.TeamsAccount(\"example\", {\n    accountId: \"f037e56e89293a057740de681ac9abbe\",\n    antivirus: {\n        enabledDownloadPhase: true,\n        enabledUploadPhase: false,\n        failClosed: true,\n    },\n    blockPage: {\n        backgroundColor: \"#000000\",\n        footerText: \"hello\",\n        headerText: \"hello\",\n        logoPath: \"https://example.com/logo.jpg\",\n    },\n    bodyScanning: {\n        inspectionMode: \"deep\",\n    },\n    fips: {\n        tls: true,\n    },\n    logging: {\n        redactPii: true,\n        settingsByRuleType: {\n            dns: {\n                logAll: false,\n                logBlocks: true,\n            },\n            http: {\n                logAll: true,\n                logBlocks: true,\n            },\n            l4: {\n                logAll: false,\n                logBlocks: true,\n            },\n        },\n    },\n    protocolDetectionEnabled: true,\n    proxy: {\n        rootCa: true,\n        tcp: true,\n        udp: true,\n    },\n    tlsDecryptEnabled: true,\n    urlBrowserIsolationEnabled: true,\n});\n```\n```python\nimport pulumi\nimport pulumi_cloudflare as cloudflare\n\nexample = cloudflare.TeamsAccount(\"example\",\n    account_id=\"f037e56e89293a057740de681ac9abbe\",\n    antivirus=cloudflare.TeamsAccountAntivirusArgs(\n        enabled_download_phase=True,\n        enabled_upload_phase=False,\n        fail_closed=True,\n    ),\n    block_page=cloudflare.TeamsAccountBlockPageArgs(\n        background_color=\"#000000\",\n        footer_text=\"hello\",\n        header_text=\"hello\",\n        logo_path=\"https://example.com/logo.jpg\",\n    ),\n    body_scanning=cloudflare.TeamsAccountBodyScanningArgs(\n        inspection_mode=\"deep\",\n    ),\n    fips=cloudflare.TeamsAccountFipsArgs(\n        tls=True,\n    ),\n    logging=cloudflare.TeamsAccountLoggingArgs(\n        redact_pii=True,\n        settings_by_rule_type=cloudflare.TeamsAccountLoggingSettingsByRuleTypeArgs(\n            dns=cloudflare.TeamsAccountLoggingSettingsByRuleTypeDnsArgs(\n                log_all=False,\n                log_blocks=True,\n            ),\n            http=cloudflare.TeamsAccountLoggingSettingsByRuleTypeHttpArgs(\n                log_all=True,\n                log_blocks=True,\n            ),\n            l4=cloudflare.TeamsAccountLoggingSettingsByRuleTypeL4Args(\n                log_all=False,\n                log_blocks=True,\n            ),\n        ),\n    ),\n    protocol_detection_enabled=True,\n    proxy=cloudflare.TeamsAccountProxyArgs(\n        root_ca=True,\n        tcp=True,\n        udp=True,\n    ),\n    tls_decrypt_enabled=True,\n    url_browser_isolation_enabled=True)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Cloudflare = Pulumi.Cloudflare;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = new Cloudflare.TeamsAccount(\"example\", new()\n    {\n        AccountId = \"f037e56e89293a057740de681ac9abbe\",\n        Antivirus = new Cloudflare.Inputs.TeamsAccountAntivirusArgs\n        {\n            EnabledDownloadPhase = true,\n            EnabledUploadPhase = false,\n            FailClosed = true,\n        },\n        BlockPage = new Cloudflare.Inputs.TeamsAccountBlockPageArgs\n        {\n            BackgroundColor = \"#000000\",\n            FooterText = \"hello\",\n            HeaderText = \"hello\",\n            LogoPath = \"https://example.com/logo.jpg\",\n        },\n        BodyScanning = new Cloudflare.Inputs.TeamsAccountBodyScanningArgs\n        {\n            InspectionMode = \"deep\",\n        },\n        Fips = new Cloudflare.Inputs.TeamsAccountFipsArgs\n        {\n            Tls = true,\n        },\n        Logging = new Cloudflare.Inputs.TeamsAccountLoggingArgs\n        {\n            RedactPii = true,\n            SettingsByRuleType = new Cloudflare.Inputs.TeamsAccountLoggingSettingsByRuleTypeArgs\n            {\n                Dns = new Cloudflare.Inputs.TeamsAccountLoggingSettingsByRuleTypeDnsArgs\n                {\n                    LogAll = false,\n                    LogBlocks = true,\n                },\n                Http = new Cloudflare.Inputs.TeamsAccountLoggingSettingsByRuleTypeHttpArgs\n                {\n                    LogAll = true,\n                    LogBlocks = true,\n                },\n                L4 = new Cloudflare.Inputs.TeamsAccountLoggingSettingsByRuleTypeL4Args\n                {\n                    LogAll = false,\n                    LogBlocks = true,\n                },\n            },\n        },\n        ProtocolDetectionEnabled = true,\n        Proxy = new Cloudflare.Inputs.TeamsAccountProxyArgs\n        {\n            RootCa = true,\n            Tcp = true,\n            Udp = true,\n        },\n        TlsDecryptEnabled = true,\n        UrlBrowserIsolationEnabled = true,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := cloudflare.NewTeamsAccount(ctx, \"example\", \u0026cloudflare.TeamsAccountArgs{\n\t\t\tAccountId: pulumi.String(\"f037e56e89293a057740de681ac9abbe\"),\n\t\t\tAntivirus: \u0026cloudflare.TeamsAccountAntivirusArgs{\n\t\t\t\tEnabledDownloadPhase: pulumi.Bool(true),\n\t\t\t\tEnabledUploadPhase:   pulumi.Bool(false),\n\t\t\t\tFailClosed:           pulumi.Bool(true),\n\t\t\t},\n\t\t\tBlockPage: \u0026cloudflare.TeamsAccountBlockPageArgs{\n\t\t\t\tBackgroundColor: pulumi.String(\"#000000\"),\n\t\t\t\tFooterText:      pulumi.String(\"hello\"),\n\t\t\t\tHeaderText:      pulumi.String(\"hello\"),\n\t\t\t\tLogoPath:        pulumi.String(\"https://example.com/logo.jpg\"),\n\t\t\t},\n\t\t\tBodyScanning: \u0026cloudflare.TeamsAccountBodyScanningArgs{\n\t\t\t\tInspectionMode: pulumi.String(\"deep\"),\n\t\t\t},\n\t\t\tFips: \u0026cloudflare.TeamsAccountFipsArgs{\n\t\t\t\tTls: pulumi.Bool(true),\n\t\t\t},\n\t\t\tLogging: \u0026cloudflare.TeamsAccountLoggingArgs{\n\t\t\t\tRedactPii: pulumi.Bool(true),\n\t\t\t\tSettingsByRuleType: \u0026cloudflare.TeamsAccountLoggingSettingsByRuleTypeArgs{\n\t\t\t\t\tDns: \u0026cloudflare.TeamsAccountLoggingSettingsByRuleTypeDnsArgs{\n\t\t\t\t\t\tLogAll:    pulumi.Bool(false),\n\t\t\t\t\t\tLogBlocks: pulumi.Bool(true),\n\t\t\t\t\t},\n\t\t\t\t\tHttp: \u0026cloudflare.TeamsAccountLoggingSettingsByRuleTypeHttpArgs{\n\t\t\t\t\t\tLogAll:    pulumi.Bool(true),\n\t\t\t\t\t\tLogBlocks: pulumi.Bool(true),\n\t\t\t\t\t},\n\t\t\t\t\tL4: \u0026cloudflare.TeamsAccountLoggingSettingsByRuleTypeL4Args{\n\t\t\t\t\t\tLogAll:    pulumi.Bool(false),\n\t\t\t\t\t\tLogBlocks: pulumi.Bool(true),\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t\tProtocolDetectionEnabled: pulumi.Bool(true),\n\t\t\tProxy: \u0026cloudflare.TeamsAccountProxyArgs{\n\t\t\t\tRootCa: pulumi.Bool(true),\n\t\t\t\tTcp:    pulumi.Bool(true),\n\t\t\t\tUdp:    pulumi.Bool(true),\n\t\t\t},\n\t\t\tTlsDecryptEnabled:          pulumi.Bool(true),\n\t\t\tUrlBrowserIsolationEnabled: pulumi.Bool(true),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.cloudflare.TeamsAccount;\nimport com.pulumi.cloudflare.TeamsAccountArgs;\nimport com.pulumi.cloudflare.inputs.TeamsAccountAntivirusArgs;\nimport com.pulumi.cloudflare.inputs.TeamsAccountBlockPageArgs;\nimport com.pulumi.cloudflare.inputs.TeamsAccountBodyScanningArgs;\nimport com.pulumi.cloudflare.inputs.TeamsAccountFipsArgs;\nimport com.pulumi.cloudflare.inputs.TeamsAccountLoggingArgs;\nimport com.pulumi.cloudflare.inputs.TeamsAccountLoggingSettingsByRuleTypeArgs;\nimport com.pulumi.cloudflare.inputs.TeamsAccountLoggingSettingsByRuleTypeDnsArgs;\nimport com.pulumi.cloudflare.inputs.TeamsAccountLoggingSettingsByRuleTypeHttpArgs;\nimport com.pulumi.cloudflare.inputs.TeamsAccountLoggingSettingsByRuleTypeL4Args;\nimport com.pulumi.cloudflare.inputs.TeamsAccountProxyArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var example = new TeamsAccount(\"example\", TeamsAccountArgs.builder()        \n            .accountId(\"f037e56e89293a057740de681ac9abbe\")\n            .antivirus(TeamsAccountAntivirusArgs.builder()\n                .enabledDownloadPhase(true)\n                .enabledUploadPhase(false)\n                .failClosed(true)\n                .build())\n            .blockPage(TeamsAccountBlockPageArgs.builder()\n                .backgroundColor(\"#000000\")\n                .footerText(\"hello\")\n                .headerText(\"hello\")\n                .logoPath(\"https://example.com/logo.jpg\")\n                .build())\n            .bodyScanning(TeamsAccountBodyScanningArgs.builder()\n                .inspectionMode(\"deep\")\n                .build())\n            .fips(TeamsAccountFipsArgs.builder()\n                .tls(true)\n                .build())\n            .logging(TeamsAccountLoggingArgs.builder()\n                .redactPii(true)\n                .settingsByRuleType(TeamsAccountLoggingSettingsByRuleTypeArgs.builder()\n                    .dns(TeamsAccountLoggingSettingsByRuleTypeDnsArgs.builder()\n                        .logAll(false)\n                        .logBlocks(true)\n                        .build())\n                    .http(TeamsAccountLoggingSettingsByRuleTypeHttpArgs.builder()\n                        .logAll(true)\n                        .logBlocks(true)\n                        .build())\n                    .l4(TeamsAccountLoggingSettingsByRuleTypeL4Args.builder()\n                        .logAll(false)\n                        .logBlocks(true)\n                        .build())\n                    .build())\n                .build())\n            .protocolDetectionEnabled(true)\n            .proxy(TeamsAccountProxyArgs.builder()\n                .rootCa(true)\n                .tcp(true)\n                .udp(true)\n                .build())\n            .tlsDecryptEnabled(true)\n            .urlBrowserIsolationEnabled(true)\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  example:\n    type: cloudflare:TeamsAccount\n    properties:\n      accountId: f037e56e89293a057740de681ac9abbe\n      antivirus:\n        enabledDownloadPhase: true\n        enabledUploadPhase: false\n        failClosed: true\n      blockPage:\n        backgroundColor: '#000000'\n        footerText: hello\n        headerText: hello\n        logoPath: https://example.com/logo.jpg\n      bodyScanning:\n        inspectionMode: deep\n      fips:\n        tls: true\n      logging:\n        redactPii: true\n        settingsByRuleType:\n          dns:\n            logAll: false\n            logBlocks: true\n          http:\n            logAll: true\n            logBlocks: true\n          l4:\n            logAll: false\n            logBlocks: true\n      protocolDetectionEnabled: true\n      proxy:\n        rootCa: true\n        tcp: true\n        udp: true\n      tlsDecryptEnabled: true\n      urlBrowserIsolationEnabled: true\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\n\n\n```sh\n $ pulumi import cloudflare:index/teamsAccount:TeamsAccount example \u003caccount_id\u003e\n```\n\n ",
             "properties": {
                 "accountId": {
                     "type": "string",
@@ -17585,12 +17761,20 @@
                     "$ref": "#/types/cloudflare:index/TeamsAccountBlockPage:TeamsAccountBlockPage",
                     "description": "Configuration for a custom block page.\n"
                 },
+                "bodyScanning": {
+                    "$ref": "#/types/cloudflare:index/TeamsAccountBodyScanning:TeamsAccountBodyScanning",
+                    "description": "Configuration for body scanning.\n"
+                },
                 "fips": {
                     "$ref": "#/types/cloudflare:index/TeamsAccountFips:TeamsAccountFips",
                     "description": "Configure compliance with Federal Information Processing Standards.\n"
                 },
                 "logging": {
                     "$ref": "#/types/cloudflare:index/TeamsAccountLogging:TeamsAccountLogging"
+                },
+                "nonIdentityBrowserIsolationEnabled": {
+                    "type": "boolean",
+                    "description": "Enable non-identity onramp for Browser Isolation. Defaults to `false`.\n"
                 },
                 "payloadLog": {
                     "$ref": "#/types/cloudflare:index/TeamsAccountPayloadLog:TeamsAccountPayloadLog",
@@ -17614,7 +17798,7 @@
                 },
                 "urlBrowserIsolationEnabled": {
                     "type": "boolean",
-                    "description": "Safely browse websites in Browser Isolation through a URL.\n"
+                    "description": "Safely browse websites in Browser Isolation through a URL. Defaults to `false`.\n"
                 }
             },
             "required": [
@@ -17637,12 +17821,20 @@
                     "$ref": "#/types/cloudflare:index/TeamsAccountBlockPage:TeamsAccountBlockPage",
                     "description": "Configuration for a custom block page.\n"
                 },
+                "bodyScanning": {
+                    "$ref": "#/types/cloudflare:index/TeamsAccountBodyScanning:TeamsAccountBodyScanning",
+                    "description": "Configuration for body scanning.\n"
+                },
                 "fips": {
                     "$ref": "#/types/cloudflare:index/TeamsAccountFips:TeamsAccountFips",
                     "description": "Configure compliance with Federal Information Processing Standards.\n"
                 },
                 "logging": {
                     "$ref": "#/types/cloudflare:index/TeamsAccountLogging:TeamsAccountLogging"
+                },
+                "nonIdentityBrowserIsolationEnabled": {
+                    "type": "boolean",
+                    "description": "Enable non-identity onramp for Browser Isolation. Defaults to `false`.\n"
                 },
                 "payloadLog": {
                     "$ref": "#/types/cloudflare:index/TeamsAccountPayloadLog:TeamsAccountPayloadLog",
@@ -17666,7 +17858,7 @@
                 },
                 "urlBrowserIsolationEnabled": {
                     "type": "boolean",
-                    "description": "Safely browse websites in Browser Isolation through a URL.\n"
+                    "description": "Safely browse websites in Browser Isolation through a URL. Defaults to `false`.\n"
                 }
             },
             "requiredInputs": [
@@ -17691,12 +17883,20 @@
                         "$ref": "#/types/cloudflare:index/TeamsAccountBlockPage:TeamsAccountBlockPage",
                         "description": "Configuration for a custom block page.\n"
                     },
+                    "bodyScanning": {
+                        "$ref": "#/types/cloudflare:index/TeamsAccountBodyScanning:TeamsAccountBodyScanning",
+                        "description": "Configuration for body scanning.\n"
+                    },
                     "fips": {
                         "$ref": "#/types/cloudflare:index/TeamsAccountFips:TeamsAccountFips",
                         "description": "Configure compliance with Federal Information Processing Standards.\n"
                     },
                     "logging": {
                         "$ref": "#/types/cloudflare:index/TeamsAccountLogging:TeamsAccountLogging"
+                    },
+                    "nonIdentityBrowserIsolationEnabled": {
+                        "type": "boolean",
+                        "description": "Enable non-identity onramp for Browser Isolation. Defaults to `false`.\n"
                     },
                     "payloadLog": {
                         "$ref": "#/types/cloudflare:index/TeamsAccountPayloadLog:TeamsAccountPayloadLog",
@@ -17720,7 +17920,7 @@
                     },
                     "urlBrowserIsolationEnabled": {
                         "type": "boolean",
-                        "description": "Safely browse websites in Browser Isolation through a URL.\n"
+                        "description": "Safely browse websites in Browser Isolation through a URL. Defaults to `false`.\n"
                     }
                 },
                 "type": "object"
@@ -20113,6 +20313,12 @@
                     "type": "string",
                     "description": "The global variable for the binding in your Worker code.\n"
                 },
+                "placements": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/cloudflare:index/WorkerScriptPlacement:WorkerScriptPlacement"
+                    }
+                },
                 "plainTextBindings": {
                     "type": "array",
                     "items": {
@@ -20200,6 +20406,12 @@
                     "type": "string",
                     "description": "The global variable for the binding in your Worker code.\n",
                     "willReplaceOnChanges": true
+                },
+                "placements": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/cloudflare:index/WorkerScriptPlacement:WorkerScriptPlacement"
+                    }
                 },
                 "plainTextBindings": {
                     "type": "array",
@@ -20289,6 +20501,12 @@
                         "type": "string",
                         "description": "The global variable for the binding in your Worker code.\n",
                         "willReplaceOnChanges": true
+                    },
+                    "placements": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/cloudflare:index/WorkerScriptPlacement:WorkerScriptPlacement"
+                        }
                     },
                     "plainTextBindings": {
                         "type": "array",
@@ -21596,6 +21814,62 @@
                 ]
             }
         },
+        "cloudflare:index/getDevicePostureRules:getDevicePostureRules": {
+            "description": "Use this data source to lookup a list of [Device Posture Rule](https://developers.cloudflare.com/cloudflare-one/identity/devices)\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as cloudflare from \"@pulumi/cloudflare\";\n\nconst example = cloudflare.getDevicePostureRules({\n    accountId: \"f037e56e89293a057740de681ac9abbe\",\n    name: \"check for /dev/random\",\n    type: \"file\",\n});\n```\n```python\nimport pulumi\nimport pulumi_cloudflare as cloudflare\n\nexample = cloudflare.get_device_posture_rules(account_id=\"f037e56e89293a057740de681ac9abbe\",\n    name=\"check for /dev/random\",\n    type=\"file\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Cloudflare = Pulumi.Cloudflare;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = Cloudflare.GetDevicePostureRules.Invoke(new()\n    {\n        AccountId = \"f037e56e89293a057740de681ac9abbe\",\n        Name = \"check for /dev/random\",\n        Type = \"file\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := cloudflare.GetDevicePostureRules(ctx, \u0026cloudflare.GetDevicePostureRulesArgs{\n\t\t\tAccountId: \"f037e56e89293a057740de681ac9abbe\",\n\t\t\tName:      pulumi.StringRef(\"check for /dev/random\"),\n\t\t\tType:      pulumi.StringRef(\"file\"),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.cloudflare.CloudflareFunctions;\nimport com.pulumi.cloudflare.inputs.GetDevicePostureRulesArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var example = CloudflareFunctions.getDevicePostureRules(GetDevicePostureRulesArgs.builder()\n            .accountId(\"f037e56e89293a057740de681ac9abbe\")\n            .name(\"check for /dev/random\")\n            .type(\"file\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  example:\n    fn::invoke:\n      Function: cloudflare:getDevicePostureRules\n      Arguments:\n        accountId: f037e56e89293a057740de681ac9abbe\n        name: check for /dev/random\n        type: file\n```\n{{% /example %}}\n{{% /examples %}}",
+            "inputs": {
+                "description": "A collection of arguments for invoking getDevicePostureRules.\n",
+                "properties": {
+                    "accountId": {
+                        "type": "string",
+                        "description": "The account identifier to target for the resource.\n"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "type": {
+                        "type": "string"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "accountId"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getDevicePostureRules.\n",
+                "properties": {
+                    "accountId": {
+                        "type": "string",
+                        "description": "The account identifier to target for the resource.\n"
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "Name of the Device Posture Rule.\n"
+                    },
+                    "rules": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/cloudflare:index/getDevicePostureRulesRule:getDevicePostureRulesRule"
+                        },
+                        "description": "A list of matching Device Posture Rules.\n"
+                    },
+                    "type": {
+                        "type": "string",
+                        "description": "The device posture rule type. Available values: `serial_number`, `file`, `application`, `gateway`, `warp`, `domain_joined`, `os_version`, `disk_encryption`, `firewall`, `client_certificate`, `workspace_one`, `unique_client_id`, `crowdstrike_s2s`, `sentinelone`, `kolide`, `tanium_s2s`, `intune`, `sentinelone_s2s`.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "accountId",
+                    "rules",
+                    "id"
+                ]
+            }
+        },
         "cloudflare:index/getDevices:getDevices": {
             "description": "Use this data source to lookup [Devices](https://api.cloudflare.com/#devices-list-devices).\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as cloudflare from \"@pulumi/cloudflare\";\n\nconst example = cloudflare.getDevices({\n    accountId: \"f037e56e89293a057740de681ac9abbe\",\n});\n```\n```python\nimport pulumi\nimport pulumi_cloudflare as cloudflare\n\nexample = cloudflare.get_devices(account_id=\"f037e56e89293a057740de681ac9abbe\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Cloudflare = Pulumi.Cloudflare;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = Cloudflare.GetDevices.Invoke(new()\n    {\n        AccountId = \"f037e56e89293a057740de681ac9abbe\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := cloudflare.GetDevices(ctx, \u0026cloudflare.GetDevicesArgs{\n\t\t\tAccountId: \"f037e56e89293a057740de681ac9abbe\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.cloudflare.CloudflareFunctions;\nimport com.pulumi.cloudflare.inputs.GetDevicesArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var example = CloudflareFunctions.getDevices(GetDevicesArgs.builder()\n            .accountId(\"f037e56e89293a057740de681ac9abbe\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  example:\n    fn::invoke:\n      Function: cloudflare:getDevices\n      Arguments:\n        accountId: f037e56e89293a057740de681ac9abbe\n```\n{{% /example %}}\n{{% /examples %}}",
             "inputs": {
@@ -22034,6 +22308,121 @@
                 "type": "object",
                 "required": [
                     "rulesets",
+                    "id"
+                ]
+            }
+        },
+        "cloudflare:index/getTunnel:getTunnel": {
+            "description": "Use this datasource to lookup a tunnel in an account.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as cloudflare from \"@pulumi/cloudflare\";\n\nconst example = cloudflare.getTunnel({\n    accountId: \"f037e56e89293a057740de681ac9abbe\",\n    name: \"my-tunnel\",\n});\n```\n```python\nimport pulumi\nimport pulumi_cloudflare as cloudflare\n\nexample = cloudflare.get_tunnel(account_id=\"f037e56e89293a057740de681ac9abbe\",\n    name=\"my-tunnel\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Cloudflare = Pulumi.Cloudflare;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = Cloudflare.GetTunnel.Invoke(new()\n    {\n        AccountId = \"f037e56e89293a057740de681ac9abbe\",\n        Name = \"my-tunnel\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := cloudflare.LookupTunnel(ctx, \u0026cloudflare.LookupTunnelArgs{\n\t\t\tAccountId: \"f037e56e89293a057740de681ac9abbe\",\n\t\t\tName:      \"my-tunnel\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.cloudflare.CloudflareFunctions;\nimport com.pulumi.cloudflare.inputs.GetTunnelArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var example = CloudflareFunctions.getTunnel(GetTunnelArgs.builder()\n            .accountId(\"f037e56e89293a057740de681ac9abbe\")\n            .name(\"my-tunnel\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  example:\n    fn::invoke:\n      Function: cloudflare:getTunnel\n      Arguments:\n        accountId: f037e56e89293a057740de681ac9abbe\n        name: my-tunnel\n```\n{{% /example %}}\n{{% /examples %}}",
+            "inputs": {
+                "description": "A collection of arguments for invoking getTunnel.\n",
+                "properties": {
+                    "accountId": {
+                        "type": "string",
+                        "description": "The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "Name of the tunnel. **Modifying this attribute will force creation of a new resource.**\n",
+                        "willReplaceOnChanges": true
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "accountId",
+                    "name"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getTunnel.\n",
+                "properties": {
+                    "accountId": {
+                        "type": "string",
+                        "description": "The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**\n"
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "ID of the tunnel.\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "Name of the tunnel. **Modifying this attribute will force creation of a new resource.**\n"
+                    },
+                    "remoteConfig": {
+                        "type": "boolean",
+                        "description": "Whether the tunnel can be configured remotely from the Zero Trust dashboard.\n"
+                    },
+                    "status": {
+                        "type": "string",
+                        "description": "The status of the tunnel. Available values: `inactive`, `degraded`, `healthy`, `down`.\n"
+                    },
+                    "tunnelType": {
+                        "type": "string",
+                        "description": "The type of the tunnel. Available values: `cfd_tunnel`, `warp_connector`.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "accountId",
+                    "id",
+                    "name",
+                    "remoteConfig",
+                    "status",
+                    "tunnelType"
+                ]
+            }
+        },
+        "cloudflare:index/getTunnelVirtualNetwork:getTunnelVirtualNetwork": {
+            "description": "Use this datasource to lookup a tunnel virtual network in an account.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as cloudflare from \"@pulumi/cloudflare\";\n\nconst example = cloudflare.getTunnelVirtualNetwork({\n    accountId: \"f037e56e89293a057740de681ac9abbe\",\n    name: \"example\",\n});\n```\n```python\nimport pulumi\nimport pulumi_cloudflare as cloudflare\n\nexample = cloudflare.get_tunnel_virtual_network(account_id=\"f037e56e89293a057740de681ac9abbe\",\n    name=\"example\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Cloudflare = Pulumi.Cloudflare;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = Cloudflare.GetTunnelVirtualNetwork.Invoke(new()\n    {\n        AccountId = \"f037e56e89293a057740de681ac9abbe\",\n        Name = \"example\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := cloudflare.LookupTunnelVirtualNetwork(ctx, \u0026cloudflare.LookupTunnelVirtualNetworkArgs{\n\t\t\tAccountId: \"f037e56e89293a057740de681ac9abbe\",\n\t\t\tName:      \"example\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.cloudflare.CloudflareFunctions;\nimport com.pulumi.cloudflare.inputs.GetTunnelVirtualNetworkArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var example = CloudflareFunctions.getTunnelVirtualNetwork(GetTunnelVirtualNetworkArgs.builder()\n            .accountId(\"f037e56e89293a057740de681ac9abbe\")\n            .name(\"example\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  example:\n    fn::invoke:\n      Function: cloudflare:getTunnelVirtualNetwork\n      Arguments:\n        accountId: f037e56e89293a057740de681ac9abbe\n        name: example\n```\n{{% /example %}}\n{{% /examples %}}",
+            "inputs": {
+                "description": "A collection of arguments for invoking getTunnelVirtualNetwork.\n",
+                "properties": {
+                    "accountId": {
+                        "type": "string",
+                        "description": "The account identifier to target for the resource.\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The Virtual Network Name.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "accountId",
+                    "name"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getTunnelVirtualNetwork.\n",
+                "properties": {
+                    "accountId": {
+                        "type": "string",
+                        "description": "The account identifier to target for the resource.\n"
+                    },
+                    "comment": {
+                        "type": "string",
+                        "description": "The Virtual Network Comment.\n"
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                    },
+                    "isDefault": {
+                        "type": "boolean",
+                        "description": "If true, only include deleted virtual networks. If false, exclude deleted virtual networks. If empty, all virtual networks will be included.\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The Virtual Network Name.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "accountId",
+                    "comment",
+                    "isDefault",
+                    "name",
                     "id"
                 ]
             }
