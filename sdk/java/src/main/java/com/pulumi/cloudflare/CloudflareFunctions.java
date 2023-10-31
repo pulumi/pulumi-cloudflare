@@ -12,6 +12,8 @@ import com.pulumi.cloudflare.inputs.GetAccountRolesArgs;
 import com.pulumi.cloudflare.inputs.GetAccountRolesPlainArgs;
 import com.pulumi.cloudflare.inputs.GetAccountsArgs;
 import com.pulumi.cloudflare.inputs.GetAccountsPlainArgs;
+import com.pulumi.cloudflare.inputs.GetDevicePostureRulesArgs;
+import com.pulumi.cloudflare.inputs.GetDevicePostureRulesPlainArgs;
 import com.pulumi.cloudflare.inputs.GetDevicesArgs;
 import com.pulumi.cloudflare.inputs.GetDevicesPlainArgs;
 import com.pulumi.cloudflare.inputs.GetListArgs;
@@ -26,6 +28,10 @@ import com.pulumi.cloudflare.inputs.GetRecordArgs;
 import com.pulumi.cloudflare.inputs.GetRecordPlainArgs;
 import com.pulumi.cloudflare.inputs.GetRulesetsArgs;
 import com.pulumi.cloudflare.inputs.GetRulesetsPlainArgs;
+import com.pulumi.cloudflare.inputs.GetTunnelArgs;
+import com.pulumi.cloudflare.inputs.GetTunnelPlainArgs;
+import com.pulumi.cloudflare.inputs.GetTunnelVirtualNetworkArgs;
+import com.pulumi.cloudflare.inputs.GetTunnelVirtualNetworkPlainArgs;
 import com.pulumi.cloudflare.inputs.GetZoneArgs;
 import com.pulumi.cloudflare.inputs.GetZoneCacheReserveArgs;
 import com.pulumi.cloudflare.inputs.GetZoneCacheReservePlainArgs;
@@ -39,6 +45,7 @@ import com.pulumi.cloudflare.outputs.GetAccessIdentityProviderResult;
 import com.pulumi.cloudflare.outputs.GetAccountRolesResult;
 import com.pulumi.cloudflare.outputs.GetAccountsResult;
 import com.pulumi.cloudflare.outputs.GetApiTokenPermissionGroupsResult;
+import com.pulumi.cloudflare.outputs.GetDevicePostureRulesResult;
 import com.pulumi.cloudflare.outputs.GetDevicesResult;
 import com.pulumi.cloudflare.outputs.GetIpRangesResult;
 import com.pulumi.cloudflare.outputs.GetListResult;
@@ -47,6 +54,8 @@ import com.pulumi.cloudflare.outputs.GetLoadBalancerPoolsResult;
 import com.pulumi.cloudflare.outputs.GetOriginCaRootCertificateResult;
 import com.pulumi.cloudflare.outputs.GetRecordResult;
 import com.pulumi.cloudflare.outputs.GetRulesetsResult;
+import com.pulumi.cloudflare.outputs.GetTunnelResult;
+import com.pulumi.cloudflare.outputs.GetTunnelVirtualNetworkResult;
 import com.pulumi.cloudflare.outputs.GetUserResult;
 import com.pulumi.cloudflare.outputs.GetZoneCacheReserveResult;
 import com.pulumi.cloudflare.outputs.GetZoneDnssecResult;
@@ -779,6 +788,162 @@ public final class CloudflareFunctions {
      */
     public static CompletableFuture<GetApiTokenPermissionGroupsResult> getApiTokenPermissionGroupsPlain(InvokeArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("cloudflare:index/getApiTokenPermissionGroups:getApiTokenPermissionGroups", TypeShape.of(GetApiTokenPermissionGroupsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to lookup a list of [Device Posture Rule](https://developers.cloudflare.com/cloudflare-one/identity/devices)
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetDevicePostureRulesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = CloudflareFunctions.getDevicePostureRules(GetDevicePostureRulesArgs.builder()
+     *             .accountId(&#34;f037e56e89293a057740de681ac9abbe&#34;)
+     *             .name(&#34;check for /dev/random&#34;)
+     *             .type(&#34;file&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetDevicePostureRulesResult> getDevicePostureRules(GetDevicePostureRulesArgs args) {
+        return getDevicePostureRules(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to lookup a list of [Device Posture Rule](https://developers.cloudflare.com/cloudflare-one/identity/devices)
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetDevicePostureRulesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = CloudflareFunctions.getDevicePostureRules(GetDevicePostureRulesArgs.builder()
+     *             .accountId(&#34;f037e56e89293a057740de681ac9abbe&#34;)
+     *             .name(&#34;check for /dev/random&#34;)
+     *             .type(&#34;file&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetDevicePostureRulesResult> getDevicePostureRulesPlain(GetDevicePostureRulesPlainArgs args) {
+        return getDevicePostureRulesPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to lookup a list of [Device Posture Rule](https://developers.cloudflare.com/cloudflare-one/identity/devices)
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetDevicePostureRulesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = CloudflareFunctions.getDevicePostureRules(GetDevicePostureRulesArgs.builder()
+     *             .accountId(&#34;f037e56e89293a057740de681ac9abbe&#34;)
+     *             .name(&#34;check for /dev/random&#34;)
+     *             .type(&#34;file&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetDevicePostureRulesResult> getDevicePostureRules(GetDevicePostureRulesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("cloudflare:index/getDevicePostureRules:getDevicePostureRules", TypeShape.of(GetDevicePostureRulesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to lookup a list of [Device Posture Rule](https://developers.cloudflare.com/cloudflare-one/identity/devices)
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetDevicePostureRulesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = CloudflareFunctions.getDevicePostureRules(GetDevicePostureRulesArgs.builder()
+     *             .accountId(&#34;f037e56e89293a057740de681ac9abbe&#34;)
+     *             .name(&#34;check for /dev/random&#34;)
+     *             .type(&#34;file&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetDevicePostureRulesResult> getDevicePostureRulesPlain(GetDevicePostureRulesPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("cloudflare:index/getDevicePostureRules:getDevicePostureRules", TypeShape.of(GetDevicePostureRulesResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Use this data source to lookup [Devices](https://api.cloudflare.com/#devices-list-devices).
@@ -2203,6 +2368,310 @@ public final class CloudflareFunctions {
      */
     public static CompletableFuture<GetRulesetsResult> getRulesetsPlain(GetRulesetsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("cloudflare:index/getRulesets:getRulesets", TypeShape.of(GetRulesetsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this datasource to lookup a tunnel in an account.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetTunnelArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = CloudflareFunctions.getTunnel(GetTunnelArgs.builder()
+     *             .accountId(&#34;f037e56e89293a057740de681ac9abbe&#34;)
+     *             .name(&#34;my-tunnel&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetTunnelResult> getTunnel(GetTunnelArgs args) {
+        return getTunnel(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this datasource to lookup a tunnel in an account.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetTunnelArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = CloudflareFunctions.getTunnel(GetTunnelArgs.builder()
+     *             .accountId(&#34;f037e56e89293a057740de681ac9abbe&#34;)
+     *             .name(&#34;my-tunnel&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetTunnelResult> getTunnelPlain(GetTunnelPlainArgs args) {
+        return getTunnelPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this datasource to lookup a tunnel in an account.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetTunnelArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = CloudflareFunctions.getTunnel(GetTunnelArgs.builder()
+     *             .accountId(&#34;f037e56e89293a057740de681ac9abbe&#34;)
+     *             .name(&#34;my-tunnel&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetTunnelResult> getTunnel(GetTunnelArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("cloudflare:index/getTunnel:getTunnel", TypeShape.of(GetTunnelResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this datasource to lookup a tunnel in an account.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetTunnelArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = CloudflareFunctions.getTunnel(GetTunnelArgs.builder()
+     *             .accountId(&#34;f037e56e89293a057740de681ac9abbe&#34;)
+     *             .name(&#34;my-tunnel&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetTunnelResult> getTunnelPlain(GetTunnelPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("cloudflare:index/getTunnel:getTunnel", TypeShape.of(GetTunnelResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this datasource to lookup a tunnel virtual network in an account.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetTunnelVirtualNetworkArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = CloudflareFunctions.getTunnelVirtualNetwork(GetTunnelVirtualNetworkArgs.builder()
+     *             .accountId(&#34;f037e56e89293a057740de681ac9abbe&#34;)
+     *             .name(&#34;example&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetTunnelVirtualNetworkResult> getTunnelVirtualNetwork(GetTunnelVirtualNetworkArgs args) {
+        return getTunnelVirtualNetwork(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this datasource to lookup a tunnel virtual network in an account.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetTunnelVirtualNetworkArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = CloudflareFunctions.getTunnelVirtualNetwork(GetTunnelVirtualNetworkArgs.builder()
+     *             .accountId(&#34;f037e56e89293a057740de681ac9abbe&#34;)
+     *             .name(&#34;example&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetTunnelVirtualNetworkResult> getTunnelVirtualNetworkPlain(GetTunnelVirtualNetworkPlainArgs args) {
+        return getTunnelVirtualNetworkPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this datasource to lookup a tunnel virtual network in an account.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetTunnelVirtualNetworkArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = CloudflareFunctions.getTunnelVirtualNetwork(GetTunnelVirtualNetworkArgs.builder()
+     *             .accountId(&#34;f037e56e89293a057740de681ac9abbe&#34;)
+     *             .name(&#34;example&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetTunnelVirtualNetworkResult> getTunnelVirtualNetwork(GetTunnelVirtualNetworkArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("cloudflare:index/getTunnelVirtualNetwork:getTunnelVirtualNetwork", TypeShape.of(GetTunnelVirtualNetworkResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this datasource to lookup a tunnel virtual network in an account.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetTunnelVirtualNetworkArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = CloudflareFunctions.getTunnelVirtualNetwork(GetTunnelVirtualNetworkArgs.builder()
+     *             .accountId(&#34;f037e56e89293a057740de681ac9abbe&#34;)
+     *             .name(&#34;example&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetTunnelVirtualNetworkResult> getTunnelVirtualNetworkPlain(GetTunnelVirtualNetworkPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("cloudflare:index/getTunnelVirtualNetwork:getTunnelVirtualNetwork", TypeShape.of(GetTunnelVirtualNetworkResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Use this data source to retrieve information about the currently authenticated user.

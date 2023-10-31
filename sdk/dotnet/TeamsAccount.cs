@@ -39,6 +39,10 @@ namespace Pulumi.Cloudflare
     ///             HeaderText = "hello",
     ///             LogoPath = "https://example.com/logo.jpg",
     ///         },
+    ///         BodyScanning = new Cloudflare.Inputs.TeamsAccountBodyScanningArgs
+    ///         {
+    ///             InspectionMode = "deep",
+    ///         },
     ///         Fips = new Cloudflare.Inputs.TeamsAccountFipsArgs
     ///         {
     ///             Tls = true,
@@ -113,6 +117,12 @@ namespace Pulumi.Cloudflare
         public Output<Outputs.TeamsAccountBlockPage?> BlockPage { get; private set; } = null!;
 
         /// <summary>
+        /// Configuration for body scanning.
+        /// </summary>
+        [Output("bodyScanning")]
+        public Output<Outputs.TeamsAccountBodyScanning?> BodyScanning { get; private set; } = null!;
+
+        /// <summary>
         /// Configure compliance with Federal Information Processing Standards.
         /// </summary>
         [Output("fips")]
@@ -120,6 +130,12 @@ namespace Pulumi.Cloudflare
 
         [Output("logging")]
         public Output<Outputs.TeamsAccountLogging?> Logging { get; private set; } = null!;
+
+        /// <summary>
+        /// Enable non-identity onramp for Browser Isolation. Defaults to `false`.
+        /// </summary>
+        [Output("nonIdentityBrowserIsolationEnabled")]
+        public Output<bool?> NonIdentityBrowserIsolationEnabled { get; private set; } = null!;
 
         /// <summary>
         /// Configuration for DLP Payload Logging.
@@ -152,7 +168,7 @@ namespace Pulumi.Cloudflare
         public Output<bool?> TlsDecryptEnabled { get; private set; } = null!;
 
         /// <summary>
-        /// Safely browse websites in Browser Isolation through a URL.
+        /// Safely browse websites in Browser Isolation through a URL. Defaults to `false`.
         /// </summary>
         [Output("urlBrowserIsolationEnabled")]
         public Output<bool?> UrlBrowserIsolationEnabled { get; private set; } = null!;
@@ -228,6 +244,12 @@ namespace Pulumi.Cloudflare
         public Input<Inputs.TeamsAccountBlockPageArgs>? BlockPage { get; set; }
 
         /// <summary>
+        /// Configuration for body scanning.
+        /// </summary>
+        [Input("bodyScanning")]
+        public Input<Inputs.TeamsAccountBodyScanningArgs>? BodyScanning { get; set; }
+
+        /// <summary>
         /// Configure compliance with Federal Information Processing Standards.
         /// </summary>
         [Input("fips")]
@@ -235,6 +257,12 @@ namespace Pulumi.Cloudflare
 
         [Input("logging")]
         public Input<Inputs.TeamsAccountLoggingArgs>? Logging { get; set; }
+
+        /// <summary>
+        /// Enable non-identity onramp for Browser Isolation. Defaults to `false`.
+        /// </summary>
+        [Input("nonIdentityBrowserIsolationEnabled")]
+        public Input<bool>? NonIdentityBrowserIsolationEnabled { get; set; }
 
         /// <summary>
         /// Configuration for DLP Payload Logging.
@@ -267,7 +295,7 @@ namespace Pulumi.Cloudflare
         public Input<bool>? TlsDecryptEnabled { get; set; }
 
         /// <summary>
-        /// Safely browse websites in Browser Isolation through a URL.
+        /// Safely browse websites in Browser Isolation through a URL. Defaults to `false`.
         /// </summary>
         [Input("urlBrowserIsolationEnabled")]
         public Input<bool>? UrlBrowserIsolationEnabled { get; set; }
@@ -305,6 +333,12 @@ namespace Pulumi.Cloudflare
         public Input<Inputs.TeamsAccountBlockPageGetArgs>? BlockPage { get; set; }
 
         /// <summary>
+        /// Configuration for body scanning.
+        /// </summary>
+        [Input("bodyScanning")]
+        public Input<Inputs.TeamsAccountBodyScanningGetArgs>? BodyScanning { get; set; }
+
+        /// <summary>
         /// Configure compliance with Federal Information Processing Standards.
         /// </summary>
         [Input("fips")]
@@ -312,6 +346,12 @@ namespace Pulumi.Cloudflare
 
         [Input("logging")]
         public Input<Inputs.TeamsAccountLoggingGetArgs>? Logging { get; set; }
+
+        /// <summary>
+        /// Enable non-identity onramp for Browser Isolation. Defaults to `false`.
+        /// </summary>
+        [Input("nonIdentityBrowserIsolationEnabled")]
+        public Input<bool>? NonIdentityBrowserIsolationEnabled { get; set; }
 
         /// <summary>
         /// Configuration for DLP Payload Logging.
@@ -344,7 +384,7 @@ namespace Pulumi.Cloudflare
         public Input<bool>? TlsDecryptEnabled { get; set; }
 
         /// <summary>
-        /// Safely browse websites in Browser Isolation through a URL.
+        /// Safely browse websites in Browser Isolation through a URL. Defaults to `false`.
         /// </summary>
         [Input("urlBrowserIsolationEnabled")]
         public Input<bool>? UrlBrowserIsolationEnabled { get; set; }

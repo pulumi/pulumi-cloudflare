@@ -5,6 +5,7 @@ package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.cloudflare.inputs.TeamsAccountAntivirusArgs;
 import com.pulumi.cloudflare.inputs.TeamsAccountBlockPageArgs;
+import com.pulumi.cloudflare.inputs.TeamsAccountBodyScanningArgs;
 import com.pulumi.cloudflare.inputs.TeamsAccountFipsArgs;
 import com.pulumi.cloudflare.inputs.TeamsAccountLoggingArgs;
 import com.pulumi.cloudflare.inputs.TeamsAccountPayloadLogArgs;
@@ -84,6 +85,21 @@ public final class TeamsAccountState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Configuration for body scanning.
+     * 
+     */
+    @Import(name="bodyScanning")
+    private @Nullable Output<TeamsAccountBodyScanningArgs> bodyScanning;
+
+    /**
+     * @return Configuration for body scanning.
+     * 
+     */
+    public Optional<Output<TeamsAccountBodyScanningArgs>> bodyScanning() {
+        return Optional.ofNullable(this.bodyScanning);
+    }
+
+    /**
      * Configure compliance with Federal Information Processing Standards.
      * 
      */
@@ -103,6 +119,21 @@ public final class TeamsAccountState extends com.pulumi.resources.ResourceArgs {
 
     public Optional<Output<TeamsAccountLoggingArgs>> logging() {
         return Optional.ofNullable(this.logging);
+    }
+
+    /**
+     * Enable non-identity onramp for Browser Isolation. Defaults to `false`.
+     * 
+     */
+    @Import(name="nonIdentityBrowserIsolationEnabled")
+    private @Nullable Output<Boolean> nonIdentityBrowserIsolationEnabled;
+
+    /**
+     * @return Enable non-identity onramp for Browser Isolation. Defaults to `false`.
+     * 
+     */
+    public Optional<Output<Boolean>> nonIdentityBrowserIsolationEnabled() {
+        return Optional.ofNullable(this.nonIdentityBrowserIsolationEnabled);
     }
 
     /**
@@ -181,14 +212,14 @@ public final class TeamsAccountState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Safely browse websites in Browser Isolation through a URL.
+     * Safely browse websites in Browser Isolation through a URL. Defaults to `false`.
      * 
      */
     @Import(name="urlBrowserIsolationEnabled")
     private @Nullable Output<Boolean> urlBrowserIsolationEnabled;
 
     /**
-     * @return Safely browse websites in Browser Isolation through a URL.
+     * @return Safely browse websites in Browser Isolation through a URL. Defaults to `false`.
      * 
      */
     public Optional<Output<Boolean>> urlBrowserIsolationEnabled() {
@@ -202,8 +233,10 @@ public final class TeamsAccountState extends com.pulumi.resources.ResourceArgs {
         this.activityLogEnabled = $.activityLogEnabled;
         this.antivirus = $.antivirus;
         this.blockPage = $.blockPage;
+        this.bodyScanning = $.bodyScanning;
         this.fips = $.fips;
         this.logging = $.logging;
+        this.nonIdentityBrowserIsolationEnabled = $.nonIdentityBrowserIsolationEnabled;
         this.payloadLog = $.payloadLog;
         this.protocolDetectionEnabled = $.protocolDetectionEnabled;
         this.proxy = $.proxy;
@@ -315,6 +348,27 @@ public final class TeamsAccountState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param bodyScanning Configuration for body scanning.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder bodyScanning(@Nullable Output<TeamsAccountBodyScanningArgs> bodyScanning) {
+            $.bodyScanning = bodyScanning;
+            return this;
+        }
+
+        /**
+         * @param bodyScanning Configuration for body scanning.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder bodyScanning(TeamsAccountBodyScanningArgs bodyScanning) {
+            return bodyScanning(Output.of(bodyScanning));
+        }
+
+        /**
          * @param fips Configure compliance with Federal Information Processing Standards.
          * 
          * @return builder
@@ -342,6 +396,27 @@ public final class TeamsAccountState extends com.pulumi.resources.ResourceArgs {
 
         public Builder logging(TeamsAccountLoggingArgs logging) {
             return logging(Output.of(logging));
+        }
+
+        /**
+         * @param nonIdentityBrowserIsolationEnabled Enable non-identity onramp for Browser Isolation. Defaults to `false`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder nonIdentityBrowserIsolationEnabled(@Nullable Output<Boolean> nonIdentityBrowserIsolationEnabled) {
+            $.nonIdentityBrowserIsolationEnabled = nonIdentityBrowserIsolationEnabled;
+            return this;
+        }
+
+        /**
+         * @param nonIdentityBrowserIsolationEnabled Enable non-identity onramp for Browser Isolation. Defaults to `false`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder nonIdentityBrowserIsolationEnabled(Boolean nonIdentityBrowserIsolationEnabled) {
+            return nonIdentityBrowserIsolationEnabled(Output.of(nonIdentityBrowserIsolationEnabled));
         }
 
         /**
@@ -450,7 +525,7 @@ public final class TeamsAccountState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param urlBrowserIsolationEnabled Safely browse websites in Browser Isolation through a URL.
+         * @param urlBrowserIsolationEnabled Safely browse websites in Browser Isolation through a URL. Defaults to `false`.
          * 
          * @return builder
          * 
@@ -461,7 +536,7 @@ public final class TeamsAccountState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param urlBrowserIsolationEnabled Safely browse websites in Browser Isolation through a URL.
+         * @param urlBrowserIsolationEnabled Safely browse websites in Browser Isolation through a URL. Defaults to `false`.
          * 
          * @return builder
          * 

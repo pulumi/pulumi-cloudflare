@@ -5,6 +5,7 @@ package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.cloudflare.inputs.WorkerScriptAnalyticsEngineBindingArgs;
 import com.pulumi.cloudflare.inputs.WorkerScriptKvNamespaceBindingArgs;
+import com.pulumi.cloudflare.inputs.WorkerScriptPlacementArgs;
 import com.pulumi.cloudflare.inputs.WorkerScriptPlainTextBindingArgs;
 import com.pulumi.cloudflare.inputs.WorkerScriptQueueBindingArgs;
 import com.pulumi.cloudflare.inputs.WorkerScriptR2BucketBindingArgs;
@@ -144,6 +145,13 @@ public final class WorkerScriptState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.name);
     }
 
+    @Import(name="placements")
+    private @Nullable Output<List<WorkerScriptPlacementArgs>> placements;
+
+    public Optional<Output<List<WorkerScriptPlacementArgs>>> placements() {
+        return Optional.ofNullable(this.placements);
+    }
+
     @Import(name="plainTextBindings")
     private @Nullable Output<List<WorkerScriptPlainTextBindingArgs>> plainTextBindings;
 
@@ -198,6 +206,7 @@ public final class WorkerScriptState extends com.pulumi.resources.ResourceArgs {
         this.logpush = $.logpush;
         this.module = $.module;
         this.name = $.name;
+        this.placements = $.placements;
         this.plainTextBindings = $.plainTextBindings;
         this.queueBindings = $.queueBindings;
         this.r2BucketBindings = $.r2BucketBindings;
@@ -405,6 +414,19 @@ public final class WorkerScriptState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder name(String name) {
             return name(Output.of(name));
+        }
+
+        public Builder placements(@Nullable Output<List<WorkerScriptPlacementArgs>> placements) {
+            $.placements = placements;
+            return this;
+        }
+
+        public Builder placements(List<WorkerScriptPlacementArgs> placements) {
+            return placements(Output.of(placements));
+        }
+
+        public Builder placements(WorkerScriptPlacementArgs... placements) {
+            return placements(List.of(placements));
         }
 
         public Builder plainTextBindings(@Nullable Output<List<WorkerScriptPlainTextBindingArgs>> plainTextBindings) {

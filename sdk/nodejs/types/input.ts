@@ -1682,7 +1682,7 @@ export interface LoadBalancerPoolOrigin {
      */
     name: pulumi.Input<string>;
     /**
-     * The weight (0.01 - 1.00) of this origin, relative to other origins in the pool. Equal values mean equal weighting. A weight of 0 means traffic will not be sent to this origin, but health is still checked. When `origin_steering.policy="leastOutstandingRequests"`, weight is used to scale the origin's outstanding requests. Defaults to `1`.
+     * The weight (0.01 - 1.00) of this origin, relative to other origins in the pool. Equal values mean equal weighting. A weight of 0 means traffic will not be sent to this origin, but health is still checked. When `origin_steering.policy="leastOutstandingRequests"`, weight is used to scale the origin's outstanding requests. When `origin_steering.policy="leastConnections"`, weight is used to scale the origin's open connections. Defaults to `1`.
      */
     weight?: pulumi.Input<number>;
 }
@@ -1700,7 +1700,7 @@ export interface LoadBalancerPoolOriginHeader {
 
 export interface LoadBalancerPoolOriginSteering {
     /**
-     * Origin steering policy to be used. Value `random` selects an origin randomly. Value `hash` selects an origin by computing a hash over the CF-Connecting-IP address. Value `leastOutstandingRequests` selects an origin by taking into consideration origin weights, as well as each origin's number of outstanding requests. Origins with more pending requests are weighted proportionately less relative to others. Available values: `""`, `hash`, `random`, `leastOutstandingRequests`. Defaults to `random`.
+     * Origin steering policy to be used. Value `random` selects an origin randomly. Value `hash` selects an origin by computing a hash over the CF-Connecting-IP address. Value `leastOutstandingRequests` selects an origin by taking into consideration origin weights, as well as each origin's number of outstanding requests. Origins with more pending requests are weighted proportionately less relative to others. Value `leastConnections` selects an origin by taking into consideration origin weights, as well as each origin's number of open connections. Origins with more open connections are weighted proportionately less relative to others. Supported for HTTP/1 and HTTP/2 connections. Available values: `""`, `hash`, `random`, `leastOutstandingRequests`, `leastConnections`. Defaults to `random`.
      */
     policy?: pulumi.Input<string>;
 }
@@ -1814,7 +1814,7 @@ export interface LoadBalancerRuleOverride {
      */
     popPools?: pulumi.Input<pulumi.Input<inputs.LoadBalancerRuleOverridePopPool>[]>;
     /**
-     * Configures pool weights. When `steering_policy="random"`, a random pool is selected with probability proportional to pool weights. When `steering_policy="leastOutstandingRequests"`, pool weights are used to scale each pool's outstanding requests.
+     * Configures pool weights. When `steering_policy="random"`, a random pool is selected with probability proportional to pool weights. When `steering_policy="leastOutstandingRequests"`, pool weights are used to scale each pool's outstanding requests. When `steering_policy="leastConnections"`, pool weights are used to scale each pool's open connections.
      */
     randomSteerings?: pulumi.Input<pulumi.Input<inputs.LoadBalancerRuleOverrideRandomSteering>[]>;
     /**
@@ -1834,7 +1834,7 @@ export interface LoadBalancerRuleOverride {
      */
     sessionAffinityTtl?: pulumi.Input<number>;
     /**
-     * The method the load balancer uses to determine the route to your origin. Value `off` uses `defaultPoolIds`. Value `geo` uses `popPools`/`countryPools`/`regionPools`. For non-proxied requests, the `country` for `countryPools` is determined by `locationStrategy`. Value `random` selects a pool randomly. Value `dynamicLatency` uses round trip time to select the closest pool in `defaultPoolIds` (requires pool health checks). Value `proximity` uses the pools' latitude and longitude to select the closest pool using the Cloudflare PoP location for proxied requests or the location determined by `locationStrategy` for non-proxied requests. Value `leastOutstandingRequests` selects a pool by taking into consideration `randomSteering` weights, as well as each pool's number of outstanding requests. Pools with more pending requests are weighted proportionately less relative to others. Value `""` maps to `geo` if you use `popPools`/`countryPools`/`regionPools` otherwise `off`. Available values: `off`, `geo`, `dynamicLatency`, `random`, `proximity`, `leastOutstandingRequests`, `""` Defaults to `""`.
+     * The method the load balancer uses to determine the route to your origin. Value `off` uses `defaultPoolIds`. Value `geo` uses `popPools`/`countryPools`/`regionPools`. For non-proxied requests, the `country` for `countryPools` is determined by `locationStrategy`. Value `random` selects a pool randomly. Value `dynamicLatency` uses round trip time to select the closest pool in `defaultPoolIds` (requires pool health checks). Value `proximity` uses the pools' latitude and longitude to select the closest pool using the Cloudflare PoP location for proxied requests or the location determined by `locationStrategy` for non-proxied requests. Value `leastOutstandingRequests` selects a pool by taking into consideration `randomSteering` weights, as well as each pool's number of outstanding requests. Pools with more pending requests are weighted proportionately less relative to others. Value `leastConnections` selects a pool by taking into consideration `randomSteering` weights, as well as each pool's number of open connections. Pools with more open connections are weighted proportionately less relative to others. Supported for HTTP/1 and HTTP/2 connections. Value `""` maps to `geo` if you use `popPools`/`countryPools`/`regionPools` otherwise `off`. Available values: `off`, `geo`, `dynamicLatency`, `random`, `proximity`, `leastOutstandingRequests`, `leastConnections`, `""` Defaults to `""`.
      */
     steeringPolicy?: pulumi.Input<string>;
     /**
@@ -3567,6 +3567,13 @@ export interface TeamsAccountBlockPage {
     name?: pulumi.Input<string>;
 }
 
+export interface TeamsAccountBodyScanning {
+    /**
+     * Body scanning inspection mode. Available values: `deep`, `shallow`.
+     */
+    inspectionMode: pulumi.Input<string>;
+}
+
 export interface TeamsAccountFips {
     /**
      * Only allow FIPS-compliant TLS configuration.
@@ -4126,6 +4133,13 @@ export interface WorkerScriptKvNamespaceBinding {
      * ID of the KV namespace you want to use.
      */
     namespaceId: pulumi.Input<string>;
+}
+
+export interface WorkerScriptPlacement {
+    /**
+     * The placement mode for the Worker. Available values: `smart`.
+     */
+    mode: pulumi.Input<string>;
 }
 
 export interface WorkerScriptPlainTextBinding {

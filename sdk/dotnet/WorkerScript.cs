@@ -159,6 +159,9 @@ namespace Pulumi.Cloudflare
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
+        [Output("placements")]
+        public Output<ImmutableArray<Outputs.WorkerScriptPlacement>> Placements { get; private set; } = null!;
+
         [Output("plainTextBindings")]
         public Output<ImmutableArray<Outputs.WorkerScriptPlainTextBinding>> PlainTextBindings { get; private set; } = null!;
 
@@ -287,6 +290,14 @@ namespace Pulumi.Cloudflare
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
+        [Input("placements")]
+        private InputList<Inputs.WorkerScriptPlacementArgs>? _placements;
+        public InputList<Inputs.WorkerScriptPlacementArgs> Placements
+        {
+            get => _placements ?? (_placements = new InputList<Inputs.WorkerScriptPlacementArgs>());
+            set => _placements = value;
+        }
+
         [Input("plainTextBindings")]
         private InputList<Inputs.WorkerScriptPlainTextBindingArgs>? _plainTextBindings;
         public InputList<Inputs.WorkerScriptPlainTextBindingArgs> PlainTextBindings
@@ -406,6 +417,14 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        [Input("placements")]
+        private InputList<Inputs.WorkerScriptPlacementGetArgs>? _placements;
+        public InputList<Inputs.WorkerScriptPlacementGetArgs> Placements
+        {
+            get => _placements ?? (_placements = new InputList<Inputs.WorkerScriptPlacementGetArgs>());
+            set => _placements = value;
+        }
 
         [Input("plainTextBindings")]
         private InputList<Inputs.WorkerScriptPlainTextBindingGetArgs>? _plainTextBindings;

@@ -22,7 +22,9 @@ from .account_member import *
 from .address_map import *
 from .api_shield import *
 from .api_shield_operation import *
+from .api_shield_operation_schema_validation_settings import *
 from .api_shield_schema import *
+from .api_shield_schema_validation_settings import *
 from .api_token import *
 from .argo import *
 from .authenticated_origin_pulls import *
@@ -54,6 +56,7 @@ from .get_access_identity_provider import *
 from .get_account_roles import *
 from .get_accounts import *
 from .get_api_token_permission_groups import *
+from .get_device_posture_rules import *
 from .get_devices import *
 from .get_ip_ranges import *
 from .get_list import *
@@ -62,6 +65,8 @@ from .get_load_balancer_pools import *
 from .get_origin_ca_root_certificate import *
 from .get_record import *
 from .get_rulesets import *
+from .get_tunnel import *
+from .get_tunnel_virtual_network import *
 from .get_user import *
 from .get_zone import *
 from .get_zone_cache_reserve import *
@@ -286,10 +291,26 @@ _utilities.register(
  },
  {
   "pkg": "cloudflare",
+  "mod": "index/apiShieldOperationSchemaValidationSettings",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/apiShieldOperationSchemaValidationSettings:ApiShieldOperationSchemaValidationSettings": "ApiShieldOperationSchemaValidationSettings"
+  }
+ },
+ {
+  "pkg": "cloudflare",
   "mod": "index/apiShieldSchema",
   "fqn": "pulumi_cloudflare",
   "classes": {
    "cloudflare:index/apiShieldSchema:ApiShieldSchema": "ApiShieldSchema"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "index/apiShieldSchemaValidationSettings",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/apiShieldSchemaValidationSettings:ApiShieldSchemaValidationSettings": "ApiShieldSchemaValidationSettings"
   }
  },
  {

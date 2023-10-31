@@ -8,6 +8,7 @@ import com.pulumi.cloudflare.Utilities;
 import com.pulumi.cloudflare.inputs.TeamsAccountState;
 import com.pulumi.cloudflare.outputs.TeamsAccountAntivirus;
 import com.pulumi.cloudflare.outputs.TeamsAccountBlockPage;
+import com.pulumi.cloudflare.outputs.TeamsAccountBodyScanning;
 import com.pulumi.cloudflare.outputs.TeamsAccountFips;
 import com.pulumi.cloudflare.outputs.TeamsAccountLogging;
 import com.pulumi.cloudflare.outputs.TeamsAccountPayloadLog;
@@ -37,6 +38,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.cloudflare.TeamsAccountArgs;
  * import com.pulumi.cloudflare.inputs.TeamsAccountAntivirusArgs;
  * import com.pulumi.cloudflare.inputs.TeamsAccountBlockPageArgs;
+ * import com.pulumi.cloudflare.inputs.TeamsAccountBodyScanningArgs;
  * import com.pulumi.cloudflare.inputs.TeamsAccountFipsArgs;
  * import com.pulumi.cloudflare.inputs.TeamsAccountLoggingArgs;
  * import com.pulumi.cloudflare.inputs.TeamsAccountLoggingSettingsByRuleTypeArgs;
@@ -69,6 +71,9 @@ import javax.annotation.Nullable;
  *                 .footerText(&#34;hello&#34;)
  *                 .headerText(&#34;hello&#34;)
  *                 .logoPath(&#34;https://example.com/logo.jpg&#34;)
+ *                 .build())
+ *             .bodyScanning(TeamsAccountBodyScanningArgs.builder()
+ *                 .inspectionMode(&#34;deep&#34;)
  *                 .build())
  *             .fips(TeamsAccountFipsArgs.builder()
  *                 .tls(true)
@@ -170,6 +175,20 @@ public class TeamsAccount extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.blockPage);
     }
     /**
+     * Configuration for body scanning.
+     * 
+     */
+    @Export(name="bodyScanning", refs={TeamsAccountBodyScanning.class}, tree="[0]")
+    private Output</* @Nullable */ TeamsAccountBodyScanning> bodyScanning;
+
+    /**
+     * @return Configuration for body scanning.
+     * 
+     */
+    public Output<Optional<TeamsAccountBodyScanning>> bodyScanning() {
+        return Codegen.optional(this.bodyScanning);
+    }
+    /**
      * Configure compliance with Federal Information Processing Standards.
      * 
      */
@@ -188,6 +207,20 @@ public class TeamsAccount extends com.pulumi.resources.CustomResource {
 
     public Output<Optional<TeamsAccountLogging>> logging() {
         return Codegen.optional(this.logging);
+    }
+    /**
+     * Enable non-identity onramp for Browser Isolation. Defaults to `false`.
+     * 
+     */
+    @Export(name="nonIdentityBrowserIsolationEnabled", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> nonIdentityBrowserIsolationEnabled;
+
+    /**
+     * @return Enable non-identity onramp for Browser Isolation. Defaults to `false`.
+     * 
+     */
+    public Output<Optional<Boolean>> nonIdentityBrowserIsolationEnabled() {
+        return Codegen.optional(this.nonIdentityBrowserIsolationEnabled);
     }
     /**
      * Configuration for DLP Payload Logging.
@@ -260,14 +293,14 @@ public class TeamsAccount extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.tlsDecryptEnabled);
     }
     /**
-     * Safely browse websites in Browser Isolation through a URL.
+     * Safely browse websites in Browser Isolation through a URL. Defaults to `false`.
      * 
      */
     @Export(name="urlBrowserIsolationEnabled", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> urlBrowserIsolationEnabled;
 
     /**
-     * @return Safely browse websites in Browser Isolation through a URL.
+     * @return Safely browse websites in Browser Isolation through a URL. Defaults to `false`.
      * 
      */
     public Output<Optional<Boolean>> urlBrowserIsolationEnabled() {

@@ -197,6 +197,7 @@ __all__ = [
     'SplitTunnelTunnel',
     'TeamsAccountAntivirus',
     'TeamsAccountBlockPage',
+    'TeamsAccountBodyScanning',
     'TeamsAccountFips',
     'TeamsAccountLogging',
     'TeamsAccountLoggingSettingsByRuleType',
@@ -229,6 +230,7 @@ __all__ = [
     'WaitingRoomRulesRule',
     'WorkerScriptAnalyticsEngineBinding',
     'WorkerScriptKvNamespaceBinding',
+    'WorkerScriptPlacement',
     'WorkerScriptPlainTextBinding',
     'WorkerScriptQueueBinding',
     'WorkerScriptR2BucketBinding',
@@ -246,6 +248,7 @@ __all__ = [
     'ZoneSettingsOverrideSettingsSecurityHeader',
     'GetAccountRolesRoleResult',
     'GetAccountsAccountResult',
+    'GetDevicePostureRulesRuleResult',
     'GetDevicesDeviceResult',
     'GetListsListResult',
     'GetLoadBalancerPoolsFilterResult',
@@ -6934,7 +6937,7 @@ class LoadBalancerPoolOrigin(dict):
         :param str name: A human-identifiable name for the origin.
         :param bool enabled: Whether this origin is enabled. Disabled origins will not receive traffic and are excluded from health checks. Defaults to `true`.
         :param Sequence['LoadBalancerPoolOriginHeaderArgs'] headers: HTTP request headers.
-        :param float weight: The weight (0.01 - 1.00) of this origin, relative to other origins in the pool. Equal values mean equal weighting. A weight of 0 means traffic will not be sent to this origin, but health is still checked. When `origin_steering.policy="least_outstanding_requests"`, weight is used to scale the origin's outstanding requests. Defaults to `1`.
+        :param float weight: The weight (0.01 - 1.00) of this origin, relative to other origins in the pool. Equal values mean equal weighting. A weight of 0 means traffic will not be sent to this origin, but health is still checked. When `origin_steering.policy="least_outstanding_requests"`, weight is used to scale the origin's outstanding requests. When `origin_steering.policy="least_connections"`, weight is used to scale the origin's open connections. Defaults to `1`.
         """
         pulumi.set(__self__, "address", address)
         pulumi.set(__self__, "name", name)
@@ -6981,7 +6984,7 @@ class LoadBalancerPoolOrigin(dict):
     @pulumi.getter
     def weight(self) -> Optional[float]:
         """
-        The weight (0.01 - 1.00) of this origin, relative to other origins in the pool. Equal values mean equal weighting. A weight of 0 means traffic will not be sent to this origin, but health is still checked. When `origin_steering.policy="least_outstanding_requests"`, weight is used to scale the origin's outstanding requests. Defaults to `1`.
+        The weight (0.01 - 1.00) of this origin, relative to other origins in the pool. Equal values mean equal weighting. A weight of 0 means traffic will not be sent to this origin, but health is still checked. When `origin_steering.policy="least_outstanding_requests"`, weight is used to scale the origin's outstanding requests. When `origin_steering.policy="least_connections"`, weight is used to scale the origin's open connections. Defaults to `1`.
         """
         return pulumi.get(self, "weight")
 
@@ -7020,7 +7023,7 @@ class LoadBalancerPoolOriginSteering(dict):
     def __init__(__self__, *,
                  policy: Optional[str] = None):
         """
-        :param str policy: Origin steering policy to be used. Value `random` selects an origin randomly. Value `hash` selects an origin by computing a hash over the CF-Connecting-IP address. Value `least_outstanding_requests` selects an origin by taking into consideration origin weights, as well as each origin's number of outstanding requests. Origins with more pending requests are weighted proportionately less relative to others. Available values: `""`, `hash`, `random`, `least_outstanding_requests`. Defaults to `random`.
+        :param str policy: Origin steering policy to be used. Value `random` selects an origin randomly. Value `hash` selects an origin by computing a hash over the CF-Connecting-IP address. Value `least_outstanding_requests` selects an origin by taking into consideration origin weights, as well as each origin's number of outstanding requests. Origins with more pending requests are weighted proportionately less relative to others. Value `least_connections` selects an origin by taking into consideration origin weights, as well as each origin's number of open connections. Origins with more open connections are weighted proportionately less relative to others. Supported for HTTP/1 and HTTP/2 connections. Available values: `""`, `hash`, `random`, `least_outstanding_requests`, `least_connections`. Defaults to `random`.
         """
         if policy is not None:
             pulumi.set(__self__, "policy", policy)
@@ -7029,7 +7032,7 @@ class LoadBalancerPoolOriginSteering(dict):
     @pulumi.getter
     def policy(self) -> Optional[str]:
         """
-        Origin steering policy to be used. Value `random` selects an origin randomly. Value `hash` selects an origin by computing a hash over the CF-Connecting-IP address. Value `least_outstanding_requests` selects an origin by taking into consideration origin weights, as well as each origin's number of outstanding requests. Origins with more pending requests are weighted proportionately less relative to others. Available values: `""`, `hash`, `random`, `least_outstanding_requests`. Defaults to `random`.
+        Origin steering policy to be used. Value `random` selects an origin randomly. Value `hash` selects an origin by computing a hash over the CF-Connecting-IP address. Value `least_outstanding_requests` selects an origin by taking into consideration origin weights, as well as each origin's number of outstanding requests. Origins with more pending requests are weighted proportionately less relative to others. Value `least_connections` selects an origin by taking into consideration origin weights, as well as each origin's number of open connections. Origins with more open connections are weighted proportionately less relative to others. Supported for HTTP/1 and HTTP/2 connections. Available values: `""`, `hash`, `random`, `least_outstanding_requests`, `least_connections`. Defaults to `random`.
         """
         return pulumi.get(self, "policy")
 
@@ -7421,12 +7424,12 @@ class LoadBalancerRuleOverride(dict):
         :param str fallback_pool: The pool ID to use when all other pools are detected as unhealthy.
         :param Sequence['LoadBalancerRuleOverrideLocationStrategyArgs'] location_strategies: Controls location-based steering for non-proxied requests.
         :param Sequence['LoadBalancerRuleOverridePopPoolArgs'] pop_pools: A set containing mappings of Cloudflare Point-of-Presence (PoP) identifiers to a list of pool IDs (ordered by their failover priority) for the PoP (datacenter). This feature is only available to enterprise customers.
-        :param Sequence['LoadBalancerRuleOverrideRandomSteeringArgs'] random_steerings: Configures pool weights. When `steering_policy="random"`, a random pool is selected with probability proportional to pool weights. When `steering_policy="least_outstanding_requests"`, pool weights are used to scale each pool's outstanding requests.
+        :param Sequence['LoadBalancerRuleOverrideRandomSteeringArgs'] random_steerings: Configures pool weights. When `steering_policy="random"`, a random pool is selected with probability proportional to pool weights. When `steering_policy="least_outstanding_requests"`, pool weights are used to scale each pool's outstanding requests. When `steering_policy="least_connections"`, pool weights are used to scale each pool's open connections.
         :param Sequence['LoadBalancerRuleOverrideRegionPoolArgs'] region_pools: A set containing mappings of region codes to a list of pool IDs (ordered by their failover priority) for the given region.
         :param str session_affinity: Configure attributes for session affinity.
         :param Sequence['LoadBalancerRuleOverrideSessionAffinityAttributeArgs'] session_affinity_attributes: Configure attributes for session affinity. Note that the property `drain_duration` is not currently supported as a rule override.
         :param int session_affinity_ttl: Time, in seconds, until this load balancer's session affinity cookie expires after being created. This parameter is ignored unless a supported session affinity policy is set. The current default of `82800` (23 hours) will be used unless `session_affinity_ttl` is explicitly set. Once the expiry time has been reached, subsequent requests may get sent to a different origin server. Valid values are between `1800` and `604800`.
-        :param str steering_policy: The method the load balancer uses to determine the route to your origin. Value `off` uses `default_pool_ids`. Value `geo` uses `pop_pools`/`country_pools`/`region_pools`. For non-proxied requests, the `country` for `country_pools` is determined by `location_strategy`. Value `random` selects a pool randomly. Value `dynamic_latency` uses round trip time to select the closest pool in `default_pool_ids` (requires pool health checks). Value `proximity` uses the pools' latitude and longitude to select the closest pool using the Cloudflare PoP location for proxied requests or the location determined by `location_strategy` for non-proxied requests. Value `least_outstanding_requests` selects a pool by taking into consideration `random_steering` weights, as well as each pool's number of outstanding requests. Pools with more pending requests are weighted proportionately less relative to others. Value `""` maps to `geo` if you use `pop_pools`/`country_pools`/`region_pools` otherwise `off`. Available values: `off`, `geo`, `dynamic_latency`, `random`, `proximity`, `least_outstanding_requests`, `""` Defaults to `""`.
+        :param str steering_policy: The method the load balancer uses to determine the route to your origin. Value `off` uses `default_pool_ids`. Value `geo` uses `pop_pools`/`country_pools`/`region_pools`. For non-proxied requests, the `country` for `country_pools` is determined by `location_strategy`. Value `random` selects a pool randomly. Value `dynamic_latency` uses round trip time to select the closest pool in `default_pool_ids` (requires pool health checks). Value `proximity` uses the pools' latitude and longitude to select the closest pool using the Cloudflare PoP location for proxied requests or the location determined by `location_strategy` for non-proxied requests. Value `least_outstanding_requests` selects a pool by taking into consideration `random_steering` weights, as well as each pool's number of outstanding requests. Pools with more pending requests are weighted proportionately less relative to others. Value `least_connections` selects a pool by taking into consideration `random_steering` weights, as well as each pool's number of open connections. Pools with more open connections are weighted proportionately less relative to others. Supported for HTTP/1 and HTTP/2 connections. Value `""` maps to `geo` if you use `pop_pools`/`country_pools`/`region_pools` otherwise `off`. Available values: `off`, `geo`, `dynamic_latency`, `random`, `proximity`, `least_outstanding_requests`, `least_connections`, `""` Defaults to `""`.
         :param int ttl: Time to live (TTL) of the DNS entry for the IP address returned by this load balancer. This cannot be set for proxied load balancers. Defaults to `30`.
         """
         if adaptive_routings is not None:
@@ -7508,7 +7511,7 @@ class LoadBalancerRuleOverride(dict):
     @pulumi.getter(name="randomSteerings")
     def random_steerings(self) -> Optional[Sequence['outputs.LoadBalancerRuleOverrideRandomSteering']]:
         """
-        Configures pool weights. When `steering_policy="random"`, a random pool is selected with probability proportional to pool weights. When `steering_policy="least_outstanding_requests"`, pool weights are used to scale each pool's outstanding requests.
+        Configures pool weights. When `steering_policy="random"`, a random pool is selected with probability proportional to pool weights. When `steering_policy="least_outstanding_requests"`, pool weights are used to scale each pool's outstanding requests. When `steering_policy="least_connections"`, pool weights are used to scale each pool's open connections.
         """
         return pulumi.get(self, "random_steerings")
 
@@ -7548,7 +7551,7 @@ class LoadBalancerRuleOverride(dict):
     @pulumi.getter(name="steeringPolicy")
     def steering_policy(self) -> Optional[str]:
         """
-        The method the load balancer uses to determine the route to your origin. Value `off` uses `default_pool_ids`. Value `geo` uses `pop_pools`/`country_pools`/`region_pools`. For non-proxied requests, the `country` for `country_pools` is determined by `location_strategy`. Value `random` selects a pool randomly. Value `dynamic_latency` uses round trip time to select the closest pool in `default_pool_ids` (requires pool health checks). Value `proximity` uses the pools' latitude and longitude to select the closest pool using the Cloudflare PoP location for proxied requests or the location determined by `location_strategy` for non-proxied requests. Value `least_outstanding_requests` selects a pool by taking into consideration `random_steering` weights, as well as each pool's number of outstanding requests. Pools with more pending requests are weighted proportionately less relative to others. Value `""` maps to `geo` if you use `pop_pools`/`country_pools`/`region_pools` otherwise `off`. Available values: `off`, `geo`, `dynamic_latency`, `random`, `proximity`, `least_outstanding_requests`, `""` Defaults to `""`.
+        The method the load balancer uses to determine the route to your origin. Value `off` uses `default_pool_ids`. Value `geo` uses `pop_pools`/`country_pools`/`region_pools`. For non-proxied requests, the `country` for `country_pools` is determined by `location_strategy`. Value `random` selects a pool randomly. Value `dynamic_latency` uses round trip time to select the closest pool in `default_pool_ids` (requires pool health checks). Value `proximity` uses the pools' latitude and longitude to select the closest pool using the Cloudflare PoP location for proxied requests or the location determined by `location_strategy` for non-proxied requests. Value `least_outstanding_requests` selects a pool by taking into consideration `random_steering` weights, as well as each pool's number of outstanding requests. Pools with more pending requests are weighted proportionately less relative to others. Value `least_connections` selects a pool by taking into consideration `random_steering` weights, as well as each pool's number of open connections. Pools with more open connections are weighted proportionately less relative to others. Supported for HTTP/1 and HTTP/2 connections. Value `""` maps to `geo` if you use `pop_pools`/`country_pools`/`region_pools` otherwise `off`. Available values: `off`, `geo`, `dynamic_latency`, `random`, `proximity`, `least_outstanding_requests`, `least_connections`, `""` Defaults to `""`.
         """
         return pulumi.get(self, "steering_policy")
 
@@ -13719,6 +13722,41 @@ class TeamsAccountBlockPage(dict):
 
 
 @pulumi.output_type
+class TeamsAccountBodyScanning(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "inspectionMode":
+            suggest = "inspection_mode"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in TeamsAccountBodyScanning. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        TeamsAccountBodyScanning.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        TeamsAccountBodyScanning.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 inspection_mode: str):
+        """
+        :param str inspection_mode: Body scanning inspection mode. Available values: `deep`, `shallow`.
+        """
+        pulumi.set(__self__, "inspection_mode", inspection_mode)
+
+    @property
+    @pulumi.getter(name="inspectionMode")
+    def inspection_mode(self) -> str:
+        """
+        Body scanning inspection mode. Available values: `deep`, `shallow`.
+        """
+        return pulumi.get(self, "inspection_mode")
+
+
+@pulumi.output_type
 class TeamsAccountFips(dict):
     def __init__(__self__, *,
                  tls: Optional[bool] = None):
@@ -15747,6 +15785,24 @@ class WorkerScriptKvNamespaceBinding(dict):
 
 
 @pulumi.output_type
+class WorkerScriptPlacement(dict):
+    def __init__(__self__, *,
+                 mode: str):
+        """
+        :param str mode: The placement mode for the Worker. Available values: `smart`.
+        """
+        pulumi.set(__self__, "mode", mode)
+
+    @property
+    @pulumi.getter
+    def mode(self) -> str:
+        """
+        The placement mode for the Worker. Available values: `smart`.
+        """
+        return pulumi.get(self, "mode")
+
+
+@pulumi.output_type
 class WorkerScriptPlainTextBinding(dict):
     def __init__(__self__, *,
                  name: str,
@@ -17422,6 +17478,57 @@ class GetAccountsAccountResult(dict):
     @pulumi.getter
     def type(self) -> Optional[str]:
         return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class GetDevicePostureRulesRuleResult(dict):
+    def __init__(__self__, *,
+                 id: str,
+                 type: str,
+                 description: Optional[str] = None,
+                 expiration: Optional[str] = None,
+                 name: Optional[str] = None,
+                 schedule: Optional[str] = None):
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "type", type)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if expiration is not None:
+            pulumi.set(__self__, "expiration", expiration)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if schedule is not None:
+            pulumi.set(__self__, "schedule", schedule)
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def expiration(self) -> Optional[str]:
+        return pulumi.get(self, "expiration")
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def schedule(self) -> Optional[str]:
+        return pulumi.get(self, "schedule")
 
 
 @pulumi.output_type

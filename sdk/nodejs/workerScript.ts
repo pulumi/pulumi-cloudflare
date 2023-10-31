@@ -121,6 +121,7 @@ export class WorkerScript extends pulumi.CustomResource {
      * The global variable for the binding in your Worker code.
      */
     public readonly name!: pulumi.Output<string>;
+    public readonly placements!: pulumi.Output<outputs.WorkerScriptPlacement[] | undefined>;
     public readonly plainTextBindings!: pulumi.Output<outputs.WorkerScriptPlainTextBinding[] | undefined>;
     public readonly queueBindings!: pulumi.Output<outputs.WorkerScriptQueueBinding[] | undefined>;
     public readonly r2BucketBindings!: pulumi.Output<outputs.WorkerScriptR2BucketBinding[] | undefined>;
@@ -150,6 +151,7 @@ export class WorkerScript extends pulumi.CustomResource {
             resourceInputs["logpush"] = state ? state.logpush : undefined;
             resourceInputs["module"] = state ? state.module : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["placements"] = state ? state.placements : undefined;
             resourceInputs["plainTextBindings"] = state ? state.plainTextBindings : undefined;
             resourceInputs["queueBindings"] = state ? state.queueBindings : undefined;
             resourceInputs["r2BucketBindings"] = state ? state.r2BucketBindings : undefined;
@@ -176,6 +178,7 @@ export class WorkerScript extends pulumi.CustomResource {
             resourceInputs["logpush"] = args ? args.logpush : undefined;
             resourceInputs["module"] = args ? args.module : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["placements"] = args ? args.placements : undefined;
             resourceInputs["plainTextBindings"] = args ? args.plainTextBindings : undefined;
             resourceInputs["queueBindings"] = args ? args.queueBindings : undefined;
             resourceInputs["r2BucketBindings"] = args ? args.r2BucketBindings : undefined;
@@ -222,6 +225,7 @@ export interface WorkerScriptState {
      * The global variable for the binding in your Worker code.
      */
     name?: pulumi.Input<string>;
+    placements?: pulumi.Input<pulumi.Input<inputs.WorkerScriptPlacement>[]>;
     plainTextBindings?: pulumi.Input<pulumi.Input<inputs.WorkerScriptPlainTextBinding>[]>;
     queueBindings?: pulumi.Input<pulumi.Input<inputs.WorkerScriptQueueBinding>[]>;
     r2BucketBindings?: pulumi.Input<pulumi.Input<inputs.WorkerScriptR2BucketBinding>[]>;
@@ -264,6 +268,7 @@ export interface WorkerScriptArgs {
      * The global variable for the binding in your Worker code.
      */
     name: pulumi.Input<string>;
+    placements?: pulumi.Input<pulumi.Input<inputs.WorkerScriptPlacement>[]>;
     plainTextBindings?: pulumi.Input<pulumi.Input<inputs.WorkerScriptPlainTextBinding>[]>;
     queueBindings?: pulumi.Input<pulumi.Input<inputs.WorkerScriptQueueBinding>[]>;
     r2BucketBindings?: pulumi.Input<pulumi.Input<inputs.WorkerScriptR2BucketBinding>[]>;

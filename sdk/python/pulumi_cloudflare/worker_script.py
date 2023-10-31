@@ -25,6 +25,7 @@ class WorkerScriptArgs:
                  kv_namespace_bindings: Optional[pulumi.Input[Sequence[pulumi.Input['WorkerScriptKvNamespaceBindingArgs']]]] = None,
                  logpush: Optional[pulumi.Input[bool]] = None,
                  module: Optional[pulumi.Input[bool]] = None,
+                 placements: Optional[pulumi.Input[Sequence[pulumi.Input['WorkerScriptPlacementArgs']]]] = None,
                  plain_text_bindings: Optional[pulumi.Input[Sequence[pulumi.Input['WorkerScriptPlainTextBindingArgs']]]] = None,
                  queue_bindings: Optional[pulumi.Input[Sequence[pulumi.Input['WorkerScriptQueueBindingArgs']]]] = None,
                  r2_bucket_bindings: Optional[pulumi.Input[Sequence[pulumi.Input['WorkerScriptR2BucketBindingArgs']]]] = None,
@@ -56,6 +57,8 @@ class WorkerScriptArgs:
             pulumi.set(__self__, "logpush", logpush)
         if module is not None:
             pulumi.set(__self__, "module", module)
+        if placements is not None:
+            pulumi.set(__self__, "placements", placements)
         if plain_text_bindings is not None:
             pulumi.set(__self__, "plain_text_bindings", plain_text_bindings)
         if queue_bindings is not None:
@@ -172,6 +175,15 @@ class WorkerScriptArgs:
         pulumi.set(self, "module", value)
 
     @property
+    @pulumi.getter
+    def placements(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['WorkerScriptPlacementArgs']]]]:
+        return pulumi.get(self, "placements")
+
+    @placements.setter
+    def placements(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['WorkerScriptPlacementArgs']]]]):
+        pulumi.set(self, "placements", value)
+
+    @property
     @pulumi.getter(name="plainTextBindings")
     def plain_text_bindings(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['WorkerScriptPlainTextBindingArgs']]]]:
         return pulumi.get(self, "plain_text_bindings")
@@ -238,6 +250,7 @@ class _WorkerScriptState:
                  logpush: Optional[pulumi.Input[bool]] = None,
                  module: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 placements: Optional[pulumi.Input[Sequence[pulumi.Input['WorkerScriptPlacementArgs']]]] = None,
                  plain_text_bindings: Optional[pulumi.Input[Sequence[pulumi.Input['WorkerScriptPlainTextBindingArgs']]]] = None,
                  queue_bindings: Optional[pulumi.Input[Sequence[pulumi.Input['WorkerScriptQueueBindingArgs']]]] = None,
                  r2_bucket_bindings: Optional[pulumi.Input[Sequence[pulumi.Input['WorkerScriptR2BucketBindingArgs']]]] = None,
@@ -272,6 +285,8 @@ class _WorkerScriptState:
             pulumi.set(__self__, "module", module)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if placements is not None:
+            pulumi.set(__self__, "placements", placements)
         if plain_text_bindings is not None:
             pulumi.set(__self__, "plain_text_bindings", plain_text_bindings)
         if queue_bindings is not None:
@@ -388,6 +403,15 @@ class _WorkerScriptState:
         pulumi.set(self, "name", value)
 
     @property
+    @pulumi.getter
+    def placements(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['WorkerScriptPlacementArgs']]]]:
+        return pulumi.get(self, "placements")
+
+    @placements.setter
+    def placements(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['WorkerScriptPlacementArgs']]]]):
+        pulumi.set(self, "placements", value)
+
+    @property
     @pulumi.getter(name="plainTextBindings")
     def plain_text_bindings(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['WorkerScriptPlainTextBindingArgs']]]]:
         return pulumi.get(self, "plain_text_bindings")
@@ -456,6 +480,7 @@ class WorkerScript(pulumi.CustomResource):
                  logpush: Optional[pulumi.Input[bool]] = None,
                  module: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 placements: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WorkerScriptPlacementArgs']]]]] = None,
                  plain_text_bindings: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WorkerScriptPlainTextBindingArgs']]]]] = None,
                  queue_bindings: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WorkerScriptQueueBindingArgs']]]]] = None,
                  r2_bucket_bindings: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WorkerScriptR2BucketBindingArgs']]]]] = None,
@@ -613,6 +638,7 @@ class WorkerScript(pulumi.CustomResource):
                  logpush: Optional[pulumi.Input[bool]] = None,
                  module: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 placements: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WorkerScriptPlacementArgs']]]]] = None,
                  plain_text_bindings: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WorkerScriptPlainTextBindingArgs']]]]] = None,
                  queue_bindings: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WorkerScriptQueueBindingArgs']]]]] = None,
                  r2_bucket_bindings: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WorkerScriptR2BucketBindingArgs']]]]] = None,
@@ -643,6 +669,7 @@ class WorkerScript(pulumi.CustomResource):
             if name is None and not opts.urn:
                 raise TypeError("Missing required property 'name'")
             __props__.__dict__["name"] = name
+            __props__.__dict__["placements"] = placements
             __props__.__dict__["plain_text_bindings"] = plain_text_bindings
             __props__.__dict__["queue_bindings"] = queue_bindings
             __props__.__dict__["r2_bucket_bindings"] = r2_bucket_bindings
@@ -668,6 +695,7 @@ class WorkerScript(pulumi.CustomResource):
             logpush: Optional[pulumi.Input[bool]] = None,
             module: Optional[pulumi.Input[bool]] = None,
             name: Optional[pulumi.Input[str]] = None,
+            placements: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WorkerScriptPlacementArgs']]]]] = None,
             plain_text_bindings: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WorkerScriptPlainTextBindingArgs']]]]] = None,
             queue_bindings: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WorkerScriptQueueBindingArgs']]]]] = None,
             r2_bucket_bindings: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WorkerScriptR2BucketBindingArgs']]]]] = None,
@@ -702,6 +730,7 @@ class WorkerScript(pulumi.CustomResource):
         __props__.__dict__["logpush"] = logpush
         __props__.__dict__["module"] = module
         __props__.__dict__["name"] = name
+        __props__.__dict__["placements"] = placements
         __props__.__dict__["plain_text_bindings"] = plain_text_bindings
         __props__.__dict__["queue_bindings"] = queue_bindings
         __props__.__dict__["r2_bucket_bindings"] = r2_bucket_bindings
@@ -775,6 +804,11 @@ class WorkerScript(pulumi.CustomResource):
         The global variable for the binding in your Worker code.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def placements(self) -> pulumi.Output[Optional[Sequence['outputs.WorkerScriptPlacement']]]:
+        return pulumi.get(self, "placements")
 
     @property
     @pulumi.getter(name="plainTextBindings")

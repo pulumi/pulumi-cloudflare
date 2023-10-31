@@ -55,8 +55,12 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ApiShield{}
 	case "cloudflare:index/apiShieldOperation:ApiShieldOperation":
 		r = &ApiShieldOperation{}
+	case "cloudflare:index/apiShieldOperationSchemaValidationSettings:ApiShieldOperationSchemaValidationSettings":
+		r = &ApiShieldOperationSchemaValidationSettings{}
 	case "cloudflare:index/apiShieldSchema:ApiShieldSchema":
 		r = &ApiShieldSchema{}
+	case "cloudflare:index/apiShieldSchemaValidationSettings:ApiShieldSchemaValidationSettings":
+		r = &ApiShieldSchemaValidationSettings{}
 	case "cloudflare:index/apiToken:ApiToken":
 		r = &ApiToken{}
 	case "cloudflare:index/argo:Argo":
@@ -361,7 +365,17 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"cloudflare",
+		"index/apiShieldOperationSchemaValidationSettings",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
 		"index/apiShieldSchema",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
+		"index/apiShieldSchemaValidationSettings",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
