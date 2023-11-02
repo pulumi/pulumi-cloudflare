@@ -14853,7 +14853,7 @@ type LoadBalancerPoolOrigin struct {
 	Headers []LoadBalancerPoolOriginHeader `pulumi:"headers"`
 	// A human-identifiable name for the origin.
 	Name string `pulumi:"name"`
-	// The weight (0.01 - 1.00) of this origin, relative to other origins in the pool. Equal values mean equal weighting. A weight of 0 means traffic will not be sent to this origin, but health is still checked. When `origin_steering.policy="leastOutstandingRequests"`, weight is used to scale the origin's outstanding requests. Defaults to `1`.
+	// The weight (0.01 - 1.00) of this origin, relative to other origins in the pool. Equal values mean equal weighting. A weight of 0 means traffic will not be sent to this origin, but health is still checked. When `origin_steering.policy="leastOutstandingRequests"`, weight is used to scale the origin's outstanding requests. When `origin_steering.policy="leastConnections"`, weight is used to scale the origin's open connections. Defaults to `1`.
 	Weight *float64 `pulumi:"weight"`
 }
 
@@ -14877,7 +14877,7 @@ type LoadBalancerPoolOriginArgs struct {
 	Headers LoadBalancerPoolOriginHeaderArrayInput `pulumi:"headers"`
 	// A human-identifiable name for the origin.
 	Name pulumi.StringInput `pulumi:"name"`
-	// The weight (0.01 - 1.00) of this origin, relative to other origins in the pool. Equal values mean equal weighting. A weight of 0 means traffic will not be sent to this origin, but health is still checked. When `origin_steering.policy="leastOutstandingRequests"`, weight is used to scale the origin's outstanding requests. Defaults to `1`.
+	// The weight (0.01 - 1.00) of this origin, relative to other origins in the pool. Equal values mean equal weighting. A weight of 0 means traffic will not be sent to this origin, but health is still checked. When `origin_steering.policy="leastOutstandingRequests"`, weight is used to scale the origin's outstanding requests. When `origin_steering.policy="leastConnections"`, weight is used to scale the origin's open connections. Defaults to `1`.
 	Weight pulumi.Float64PtrInput `pulumi:"weight"`
 }
 
@@ -14970,7 +14970,7 @@ func (o LoadBalancerPoolOriginOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LoadBalancerPoolOrigin) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// The weight (0.01 - 1.00) of this origin, relative to other origins in the pool. Equal values mean equal weighting. A weight of 0 means traffic will not be sent to this origin, but health is still checked. When `origin_steering.policy="leastOutstandingRequests"`, weight is used to scale the origin's outstanding requests. Defaults to `1`.
+// The weight (0.01 - 1.00) of this origin, relative to other origins in the pool. Equal values mean equal weighting. A weight of 0 means traffic will not be sent to this origin, but health is still checked. When `origin_steering.policy="leastOutstandingRequests"`, weight is used to scale the origin's outstanding requests. When `origin_steering.policy="leastConnections"`, weight is used to scale the origin's open connections. Defaults to `1`.
 func (o LoadBalancerPoolOriginOutput) Weight() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v LoadBalancerPoolOrigin) *float64 { return v.Weight }).(pulumi.Float64PtrOutput)
 }
@@ -15132,7 +15132,7 @@ func (o LoadBalancerPoolOriginHeaderArrayOutput) Index(i pulumi.IntInput) LoadBa
 }
 
 type LoadBalancerPoolOriginSteering struct {
-	// Origin steering policy to be used. Value `random` selects an origin randomly. Value `hash` selects an origin by computing a hash over the CF-Connecting-IP address. Value `leastOutstandingRequests` selects an origin by taking into consideration origin weights, as well as each origin's number of outstanding requests. Origins with more pending requests are weighted proportionately less relative to others. Available values: `""`, `hash`, `random`, `leastOutstandingRequests`. Defaults to `random`.
+	// Origin steering policy to be used. Value `random` selects an origin randomly. Value `hash` selects an origin by computing a hash over the CF-Connecting-IP address. Value `leastOutstandingRequests` selects an origin by taking into consideration origin weights, as well as each origin's number of outstanding requests. Origins with more pending requests are weighted proportionately less relative to others. Value `leastConnections` selects an origin by taking into consideration origin weights, as well as each origin's number of open connections. Origins with more open connections are weighted proportionately less relative to others. Supported for HTTP/1 and HTTP/2 connections. Available values: `""`, `hash`, `random`, `leastOutstandingRequests`, `leastConnections`. Defaults to `random`.
 	Policy *string `pulumi:"policy"`
 }
 
@@ -15148,7 +15148,7 @@ type LoadBalancerPoolOriginSteeringInput interface {
 }
 
 type LoadBalancerPoolOriginSteeringArgs struct {
-	// Origin steering policy to be used. Value `random` selects an origin randomly. Value `hash` selects an origin by computing a hash over the CF-Connecting-IP address. Value `leastOutstandingRequests` selects an origin by taking into consideration origin weights, as well as each origin's number of outstanding requests. Origins with more pending requests are weighted proportionately less relative to others. Available values: `""`, `hash`, `random`, `leastOutstandingRequests`. Defaults to `random`.
+	// Origin steering policy to be used. Value `random` selects an origin randomly. Value `hash` selects an origin by computing a hash over the CF-Connecting-IP address. Value `leastOutstandingRequests` selects an origin by taking into consideration origin weights, as well as each origin's number of outstanding requests. Origins with more pending requests are weighted proportionately less relative to others. Value `leastConnections` selects an origin by taking into consideration origin weights, as well as each origin's number of open connections. Origins with more open connections are weighted proportionately less relative to others. Supported for HTTP/1 and HTTP/2 connections. Available values: `""`, `hash`, `random`, `leastOutstandingRequests`, `leastConnections`. Defaults to `random`.
 	Policy pulumi.StringPtrInput `pulumi:"policy"`
 }
 
@@ -15221,7 +15221,7 @@ func (o LoadBalancerPoolOriginSteeringOutput) ToOutput(ctx context.Context) pulu
 	}
 }
 
-// Origin steering policy to be used. Value `random` selects an origin randomly. Value `hash` selects an origin by computing a hash over the CF-Connecting-IP address. Value `leastOutstandingRequests` selects an origin by taking into consideration origin weights, as well as each origin's number of outstanding requests. Origins with more pending requests are weighted proportionately less relative to others. Available values: `""`, `hash`, `random`, `leastOutstandingRequests`. Defaults to `random`.
+// Origin steering policy to be used. Value `random` selects an origin randomly. Value `hash` selects an origin by computing a hash over the CF-Connecting-IP address. Value `leastOutstandingRequests` selects an origin by taking into consideration origin weights, as well as each origin's number of outstanding requests. Origins with more pending requests are weighted proportionately less relative to others. Value `leastConnections` selects an origin by taking into consideration origin weights, as well as each origin's number of open connections. Origins with more open connections are weighted proportionately less relative to others. Supported for HTTP/1 and HTTP/2 connections. Available values: `""`, `hash`, `random`, `leastOutstandingRequests`, `leastConnections`. Defaults to `random`.
 func (o LoadBalancerPoolOriginSteeringOutput) Policy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LoadBalancerPoolOriginSteering) *string { return v.Policy }).(pulumi.StringPtrOutput)
 }
@@ -16048,7 +16048,7 @@ type LoadBalancerRuleOverride struct {
 	LocationStrategies []LoadBalancerRuleOverrideLocationStrategy `pulumi:"locationStrategies"`
 	// A set containing mappings of Cloudflare Point-of-Presence (PoP) identifiers to a list of pool IDs (ordered by their failover priority) for the PoP (datacenter). This feature is only available to enterprise customers.
 	PopPools []LoadBalancerRuleOverridePopPool `pulumi:"popPools"`
-	// Configures pool weights. When `steering_policy="random"`, a random pool is selected with probability proportional to pool weights. When `steering_policy="leastOutstandingRequests"`, pool weights are used to scale each pool's outstanding requests.
+	// Configures pool weights. When `steering_policy="random"`, a random pool is selected with probability proportional to pool weights. When `steering_policy="leastOutstandingRequests"`, pool weights are used to scale each pool's outstanding requests. When `steering_policy="leastConnections"`, pool weights are used to scale each pool's open connections.
 	RandomSteerings []LoadBalancerRuleOverrideRandomSteering `pulumi:"randomSteerings"`
 	// A set containing mappings of region codes to a list of pool IDs (ordered by their failover priority) for the given region.
 	RegionPools []LoadBalancerRuleOverrideRegionPool `pulumi:"regionPools"`
@@ -16058,7 +16058,7 @@ type LoadBalancerRuleOverride struct {
 	SessionAffinityAttributes []LoadBalancerRuleOverrideSessionAffinityAttribute `pulumi:"sessionAffinityAttributes"`
 	// Time, in seconds, until this load balancer's session affinity cookie expires after being created. This parameter is ignored unless a supported session affinity policy is set. The current default of `82800` (23 hours) will be used unless `sessionAffinityTtl` is explicitly set. Once the expiry time has been reached, subsequent requests may get sent to a different origin server. Valid values are between `1800` and `604800`.
 	SessionAffinityTtl *int `pulumi:"sessionAffinityTtl"`
-	// The method the load balancer uses to determine the route to your origin. Value `off` uses `defaultPoolIds`. Value `geo` uses `popPools`/`countryPools`/`regionPools`. For non-proxied requests, the `country` for `countryPools` is determined by `locationStrategy`. Value `random` selects a pool randomly. Value `dynamicLatency` uses round trip time to select the closest pool in `defaultPoolIds` (requires pool health checks). Value `proximity` uses the pools' latitude and longitude to select the closest pool using the Cloudflare PoP location for proxied requests or the location determined by `locationStrategy` for non-proxied requests. Value `leastOutstandingRequests` selects a pool by taking into consideration `randomSteering` weights, as well as each pool's number of outstanding requests. Pools with more pending requests are weighted proportionately less relative to others. Value `""` maps to `geo` if you use `popPools`/`countryPools`/`regionPools` otherwise `off`. Available values: `off`, `geo`, `dynamicLatency`, `random`, `proximity`, `leastOutstandingRequests`, `""` Defaults to `""`.
+	// The method the load balancer uses to determine the route to your origin. Value `off` uses `defaultPoolIds`. Value `geo` uses `popPools`/`countryPools`/`regionPools`. For non-proxied requests, the `country` for `countryPools` is determined by `locationStrategy`. Value `random` selects a pool randomly. Value `dynamicLatency` uses round trip time to select the closest pool in `defaultPoolIds` (requires pool health checks). Value `proximity` uses the pools' latitude and longitude to select the closest pool using the Cloudflare PoP location for proxied requests or the location determined by `locationStrategy` for non-proxied requests. Value `leastOutstandingRequests` selects a pool by taking into consideration `randomSteering` weights, as well as each pool's number of outstanding requests. Pools with more pending requests are weighted proportionately less relative to others. Value `leastConnections` selects a pool by taking into consideration `randomSteering` weights, as well as each pool's number of open connections. Pools with more open connections are weighted proportionately less relative to others. Supported for HTTP/1 and HTTP/2 connections. Value `""` maps to `geo` if you use `popPools`/`countryPools`/`regionPools` otherwise `off`. Available values: `off`, `geo`, `dynamicLatency`, `random`, `proximity`, `leastOutstandingRequests`, `leastConnections`, `""` Defaults to `""`.
 	SteeringPolicy *string `pulumi:"steeringPolicy"`
 	// Time to live (TTL) of the DNS entry for the IP address returned by this load balancer. This cannot be set for proxied load balancers. Defaults to `30`.
 	Ttl *int `pulumi:"ttl"`
@@ -16088,7 +16088,7 @@ type LoadBalancerRuleOverrideArgs struct {
 	LocationStrategies LoadBalancerRuleOverrideLocationStrategyArrayInput `pulumi:"locationStrategies"`
 	// A set containing mappings of Cloudflare Point-of-Presence (PoP) identifiers to a list of pool IDs (ordered by their failover priority) for the PoP (datacenter). This feature is only available to enterprise customers.
 	PopPools LoadBalancerRuleOverridePopPoolArrayInput `pulumi:"popPools"`
-	// Configures pool weights. When `steering_policy="random"`, a random pool is selected with probability proportional to pool weights. When `steering_policy="leastOutstandingRequests"`, pool weights are used to scale each pool's outstanding requests.
+	// Configures pool weights. When `steering_policy="random"`, a random pool is selected with probability proportional to pool weights. When `steering_policy="leastOutstandingRequests"`, pool weights are used to scale each pool's outstanding requests. When `steering_policy="leastConnections"`, pool weights are used to scale each pool's open connections.
 	RandomSteerings LoadBalancerRuleOverrideRandomSteeringArrayInput `pulumi:"randomSteerings"`
 	// A set containing mappings of region codes to a list of pool IDs (ordered by their failover priority) for the given region.
 	RegionPools LoadBalancerRuleOverrideRegionPoolArrayInput `pulumi:"regionPools"`
@@ -16098,7 +16098,7 @@ type LoadBalancerRuleOverrideArgs struct {
 	SessionAffinityAttributes LoadBalancerRuleOverrideSessionAffinityAttributeArrayInput `pulumi:"sessionAffinityAttributes"`
 	// Time, in seconds, until this load balancer's session affinity cookie expires after being created. This parameter is ignored unless a supported session affinity policy is set. The current default of `82800` (23 hours) will be used unless `sessionAffinityTtl` is explicitly set. Once the expiry time has been reached, subsequent requests may get sent to a different origin server. Valid values are between `1800` and `604800`.
 	SessionAffinityTtl pulumi.IntPtrInput `pulumi:"sessionAffinityTtl"`
-	// The method the load balancer uses to determine the route to your origin. Value `off` uses `defaultPoolIds`. Value `geo` uses `popPools`/`countryPools`/`regionPools`. For non-proxied requests, the `country` for `countryPools` is determined by `locationStrategy`. Value `random` selects a pool randomly. Value `dynamicLatency` uses round trip time to select the closest pool in `defaultPoolIds` (requires pool health checks). Value `proximity` uses the pools' latitude and longitude to select the closest pool using the Cloudflare PoP location for proxied requests or the location determined by `locationStrategy` for non-proxied requests. Value `leastOutstandingRequests` selects a pool by taking into consideration `randomSteering` weights, as well as each pool's number of outstanding requests. Pools with more pending requests are weighted proportionately less relative to others. Value `""` maps to `geo` if you use `popPools`/`countryPools`/`regionPools` otherwise `off`. Available values: `off`, `geo`, `dynamicLatency`, `random`, `proximity`, `leastOutstandingRequests`, `""` Defaults to `""`.
+	// The method the load balancer uses to determine the route to your origin. Value `off` uses `defaultPoolIds`. Value `geo` uses `popPools`/`countryPools`/`regionPools`. For non-proxied requests, the `country` for `countryPools` is determined by `locationStrategy`. Value `random` selects a pool randomly. Value `dynamicLatency` uses round trip time to select the closest pool in `defaultPoolIds` (requires pool health checks). Value `proximity` uses the pools' latitude and longitude to select the closest pool using the Cloudflare PoP location for proxied requests or the location determined by `locationStrategy` for non-proxied requests. Value `leastOutstandingRequests` selects a pool by taking into consideration `randomSteering` weights, as well as each pool's number of outstanding requests. Pools with more pending requests are weighted proportionately less relative to others. Value `leastConnections` selects a pool by taking into consideration `randomSteering` weights, as well as each pool's number of open connections. Pools with more open connections are weighted proportionately less relative to others. Supported for HTTP/1 and HTTP/2 connections. Value `""` maps to `geo` if you use `popPools`/`countryPools`/`regionPools` otherwise `off`. Available values: `off`, `geo`, `dynamicLatency`, `random`, `proximity`, `leastOutstandingRequests`, `leastConnections`, `""` Defaults to `""`.
 	SteeringPolicy pulumi.StringPtrInput `pulumi:"steeringPolicy"`
 	// Time to live (TTL) of the DNS entry for the IP address returned by this load balancer. This cannot be set for proxied load balancers. Defaults to `30`.
 	Ttl pulumi.IntPtrInput `pulumi:"ttl"`
@@ -16205,7 +16205,7 @@ func (o LoadBalancerRuleOverrideOutput) PopPools() LoadBalancerRuleOverridePopPo
 	return o.ApplyT(func(v LoadBalancerRuleOverride) []LoadBalancerRuleOverridePopPool { return v.PopPools }).(LoadBalancerRuleOverridePopPoolArrayOutput)
 }
 
-// Configures pool weights. When `steering_policy="random"`, a random pool is selected with probability proportional to pool weights. When `steering_policy="leastOutstandingRequests"`, pool weights are used to scale each pool's outstanding requests.
+// Configures pool weights. When `steering_policy="random"`, a random pool is selected with probability proportional to pool weights. When `steering_policy="leastOutstandingRequests"`, pool weights are used to scale each pool's outstanding requests. When `steering_policy="leastConnections"`, pool weights are used to scale each pool's open connections.
 func (o LoadBalancerRuleOverrideOutput) RandomSteerings() LoadBalancerRuleOverrideRandomSteeringArrayOutput {
 	return o.ApplyT(func(v LoadBalancerRuleOverride) []LoadBalancerRuleOverrideRandomSteering { return v.RandomSteerings }).(LoadBalancerRuleOverrideRandomSteeringArrayOutput)
 }
@@ -16232,7 +16232,7 @@ func (o LoadBalancerRuleOverrideOutput) SessionAffinityTtl() pulumi.IntPtrOutput
 	return o.ApplyT(func(v LoadBalancerRuleOverride) *int { return v.SessionAffinityTtl }).(pulumi.IntPtrOutput)
 }
 
-// The method the load balancer uses to determine the route to your origin. Value `off` uses `defaultPoolIds`. Value `geo` uses `popPools`/`countryPools`/`regionPools`. For non-proxied requests, the `country` for `countryPools` is determined by `locationStrategy`. Value `random` selects a pool randomly. Value `dynamicLatency` uses round trip time to select the closest pool in `defaultPoolIds` (requires pool health checks). Value `proximity` uses the pools' latitude and longitude to select the closest pool using the Cloudflare PoP location for proxied requests or the location determined by `locationStrategy` for non-proxied requests. Value `leastOutstandingRequests` selects a pool by taking into consideration `randomSteering` weights, as well as each pool's number of outstanding requests. Pools with more pending requests are weighted proportionately less relative to others. Value `""` maps to `geo` if you use `popPools`/`countryPools`/`regionPools` otherwise `off`. Available values: `off`, `geo`, `dynamicLatency`, `random`, `proximity`, `leastOutstandingRequests`, `""` Defaults to `""`.
+// The method the load balancer uses to determine the route to your origin. Value `off` uses `defaultPoolIds`. Value `geo` uses `popPools`/`countryPools`/`regionPools`. For non-proxied requests, the `country` for `countryPools` is determined by `locationStrategy`. Value `random` selects a pool randomly. Value `dynamicLatency` uses round trip time to select the closest pool in `defaultPoolIds` (requires pool health checks). Value `proximity` uses the pools' latitude and longitude to select the closest pool using the Cloudflare PoP location for proxied requests or the location determined by `locationStrategy` for non-proxied requests. Value `leastOutstandingRequests` selects a pool by taking into consideration `randomSteering` weights, as well as each pool's number of outstanding requests. Pools with more pending requests are weighted proportionately less relative to others. Value `leastConnections` selects a pool by taking into consideration `randomSteering` weights, as well as each pool's number of open connections. Pools with more open connections are weighted proportionately less relative to others. Supported for HTTP/1 and HTTP/2 connections. Value `""` maps to `geo` if you use `popPools`/`countryPools`/`regionPools` otherwise `off`. Available values: `off`, `geo`, `dynamicLatency`, `random`, `proximity`, `leastOutstandingRequests`, `leastConnections`, `""` Defaults to `""`.
 func (o LoadBalancerRuleOverrideOutput) SteeringPolicy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LoadBalancerRuleOverride) *string { return v.SteeringPolicy }).(pulumi.StringPtrOutput)
 }
@@ -33711,6 +33711,167 @@ func (o TeamsAccountBlockPagePtrOutput) Name() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type TeamsAccountBodyScanning struct {
+	// Body scanning inspection mode. Available values: `deep`, `shallow`.
+	InspectionMode string `pulumi:"inspectionMode"`
+}
+
+// TeamsAccountBodyScanningInput is an input type that accepts TeamsAccountBodyScanningArgs and TeamsAccountBodyScanningOutput values.
+// You can construct a concrete instance of `TeamsAccountBodyScanningInput` via:
+//
+//	TeamsAccountBodyScanningArgs{...}
+type TeamsAccountBodyScanningInput interface {
+	pulumi.Input
+
+	ToTeamsAccountBodyScanningOutput() TeamsAccountBodyScanningOutput
+	ToTeamsAccountBodyScanningOutputWithContext(context.Context) TeamsAccountBodyScanningOutput
+}
+
+type TeamsAccountBodyScanningArgs struct {
+	// Body scanning inspection mode. Available values: `deep`, `shallow`.
+	InspectionMode pulumi.StringInput `pulumi:"inspectionMode"`
+}
+
+func (TeamsAccountBodyScanningArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TeamsAccountBodyScanning)(nil)).Elem()
+}
+
+func (i TeamsAccountBodyScanningArgs) ToTeamsAccountBodyScanningOutput() TeamsAccountBodyScanningOutput {
+	return i.ToTeamsAccountBodyScanningOutputWithContext(context.Background())
+}
+
+func (i TeamsAccountBodyScanningArgs) ToTeamsAccountBodyScanningOutputWithContext(ctx context.Context) TeamsAccountBodyScanningOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TeamsAccountBodyScanningOutput)
+}
+
+func (i TeamsAccountBodyScanningArgs) ToOutput(ctx context.Context) pulumix.Output[TeamsAccountBodyScanning] {
+	return pulumix.Output[TeamsAccountBodyScanning]{
+		OutputState: i.ToTeamsAccountBodyScanningOutputWithContext(ctx).OutputState,
+	}
+}
+
+func (i TeamsAccountBodyScanningArgs) ToTeamsAccountBodyScanningPtrOutput() TeamsAccountBodyScanningPtrOutput {
+	return i.ToTeamsAccountBodyScanningPtrOutputWithContext(context.Background())
+}
+
+func (i TeamsAccountBodyScanningArgs) ToTeamsAccountBodyScanningPtrOutputWithContext(ctx context.Context) TeamsAccountBodyScanningPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TeamsAccountBodyScanningOutput).ToTeamsAccountBodyScanningPtrOutputWithContext(ctx)
+}
+
+// TeamsAccountBodyScanningPtrInput is an input type that accepts TeamsAccountBodyScanningArgs, TeamsAccountBodyScanningPtr and TeamsAccountBodyScanningPtrOutput values.
+// You can construct a concrete instance of `TeamsAccountBodyScanningPtrInput` via:
+//
+//	        TeamsAccountBodyScanningArgs{...}
+//
+//	or:
+//
+//	        nil
+type TeamsAccountBodyScanningPtrInput interface {
+	pulumi.Input
+
+	ToTeamsAccountBodyScanningPtrOutput() TeamsAccountBodyScanningPtrOutput
+	ToTeamsAccountBodyScanningPtrOutputWithContext(context.Context) TeamsAccountBodyScanningPtrOutput
+}
+
+type teamsAccountBodyScanningPtrType TeamsAccountBodyScanningArgs
+
+func TeamsAccountBodyScanningPtr(v *TeamsAccountBodyScanningArgs) TeamsAccountBodyScanningPtrInput {
+	return (*teamsAccountBodyScanningPtrType)(v)
+}
+
+func (*teamsAccountBodyScanningPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TeamsAccountBodyScanning)(nil)).Elem()
+}
+
+func (i *teamsAccountBodyScanningPtrType) ToTeamsAccountBodyScanningPtrOutput() TeamsAccountBodyScanningPtrOutput {
+	return i.ToTeamsAccountBodyScanningPtrOutputWithContext(context.Background())
+}
+
+func (i *teamsAccountBodyScanningPtrType) ToTeamsAccountBodyScanningPtrOutputWithContext(ctx context.Context) TeamsAccountBodyScanningPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TeamsAccountBodyScanningPtrOutput)
+}
+
+func (i *teamsAccountBodyScanningPtrType) ToOutput(ctx context.Context) pulumix.Output[*TeamsAccountBodyScanning] {
+	return pulumix.Output[*TeamsAccountBodyScanning]{
+		OutputState: i.ToTeamsAccountBodyScanningPtrOutputWithContext(ctx).OutputState,
+	}
+}
+
+type TeamsAccountBodyScanningOutput struct{ *pulumi.OutputState }
+
+func (TeamsAccountBodyScanningOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TeamsAccountBodyScanning)(nil)).Elem()
+}
+
+func (o TeamsAccountBodyScanningOutput) ToTeamsAccountBodyScanningOutput() TeamsAccountBodyScanningOutput {
+	return o
+}
+
+func (o TeamsAccountBodyScanningOutput) ToTeamsAccountBodyScanningOutputWithContext(ctx context.Context) TeamsAccountBodyScanningOutput {
+	return o
+}
+
+func (o TeamsAccountBodyScanningOutput) ToTeamsAccountBodyScanningPtrOutput() TeamsAccountBodyScanningPtrOutput {
+	return o.ToTeamsAccountBodyScanningPtrOutputWithContext(context.Background())
+}
+
+func (o TeamsAccountBodyScanningOutput) ToTeamsAccountBodyScanningPtrOutputWithContext(ctx context.Context) TeamsAccountBodyScanningPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TeamsAccountBodyScanning) *TeamsAccountBodyScanning {
+		return &v
+	}).(TeamsAccountBodyScanningPtrOutput)
+}
+
+func (o TeamsAccountBodyScanningOutput) ToOutput(ctx context.Context) pulumix.Output[TeamsAccountBodyScanning] {
+	return pulumix.Output[TeamsAccountBodyScanning]{
+		OutputState: o.OutputState,
+	}
+}
+
+// Body scanning inspection mode. Available values: `deep`, `shallow`.
+func (o TeamsAccountBodyScanningOutput) InspectionMode() pulumi.StringOutput {
+	return o.ApplyT(func(v TeamsAccountBodyScanning) string { return v.InspectionMode }).(pulumi.StringOutput)
+}
+
+type TeamsAccountBodyScanningPtrOutput struct{ *pulumi.OutputState }
+
+func (TeamsAccountBodyScanningPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TeamsAccountBodyScanning)(nil)).Elem()
+}
+
+func (o TeamsAccountBodyScanningPtrOutput) ToTeamsAccountBodyScanningPtrOutput() TeamsAccountBodyScanningPtrOutput {
+	return o
+}
+
+func (o TeamsAccountBodyScanningPtrOutput) ToTeamsAccountBodyScanningPtrOutputWithContext(ctx context.Context) TeamsAccountBodyScanningPtrOutput {
+	return o
+}
+
+func (o TeamsAccountBodyScanningPtrOutput) ToOutput(ctx context.Context) pulumix.Output[*TeamsAccountBodyScanning] {
+	return pulumix.Output[*TeamsAccountBodyScanning]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o TeamsAccountBodyScanningPtrOutput) Elem() TeamsAccountBodyScanningOutput {
+	return o.ApplyT(func(v *TeamsAccountBodyScanning) TeamsAccountBodyScanning {
+		if v != nil {
+			return *v
+		}
+		var ret TeamsAccountBodyScanning
+		return ret
+	}).(TeamsAccountBodyScanningOutput)
+}
+
+// Body scanning inspection mode. Available values: `deep`, `shallow`.
+func (o TeamsAccountBodyScanningPtrOutput) InspectionMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TeamsAccountBodyScanning) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.InspectionMode
+	}).(pulumi.StringPtrOutput)
+}
+
 type TeamsAccountFips struct {
 	// Only allow FIPS-compliant TLS configuration.
 	Tls *bool `pulumi:"tls"`
@@ -40042,6 +40203,127 @@ func (o WorkerScriptKvNamespaceBindingArrayOutput) Index(i pulumi.IntInput) Work
 	}).(WorkerScriptKvNamespaceBindingOutput)
 }
 
+type WorkerScriptPlacement struct {
+	// The placement mode for the Worker. Available values: `smart`.
+	Mode string `pulumi:"mode"`
+}
+
+// WorkerScriptPlacementInput is an input type that accepts WorkerScriptPlacementArgs and WorkerScriptPlacementOutput values.
+// You can construct a concrete instance of `WorkerScriptPlacementInput` via:
+//
+//	WorkerScriptPlacementArgs{...}
+type WorkerScriptPlacementInput interface {
+	pulumi.Input
+
+	ToWorkerScriptPlacementOutput() WorkerScriptPlacementOutput
+	ToWorkerScriptPlacementOutputWithContext(context.Context) WorkerScriptPlacementOutput
+}
+
+type WorkerScriptPlacementArgs struct {
+	// The placement mode for the Worker. Available values: `smart`.
+	Mode pulumi.StringInput `pulumi:"mode"`
+}
+
+func (WorkerScriptPlacementArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkerScriptPlacement)(nil)).Elem()
+}
+
+func (i WorkerScriptPlacementArgs) ToWorkerScriptPlacementOutput() WorkerScriptPlacementOutput {
+	return i.ToWorkerScriptPlacementOutputWithContext(context.Background())
+}
+
+func (i WorkerScriptPlacementArgs) ToWorkerScriptPlacementOutputWithContext(ctx context.Context) WorkerScriptPlacementOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkerScriptPlacementOutput)
+}
+
+func (i WorkerScriptPlacementArgs) ToOutput(ctx context.Context) pulumix.Output[WorkerScriptPlacement] {
+	return pulumix.Output[WorkerScriptPlacement]{
+		OutputState: i.ToWorkerScriptPlacementOutputWithContext(ctx).OutputState,
+	}
+}
+
+// WorkerScriptPlacementArrayInput is an input type that accepts WorkerScriptPlacementArray and WorkerScriptPlacementArrayOutput values.
+// You can construct a concrete instance of `WorkerScriptPlacementArrayInput` via:
+//
+//	WorkerScriptPlacementArray{ WorkerScriptPlacementArgs{...} }
+type WorkerScriptPlacementArrayInput interface {
+	pulumi.Input
+
+	ToWorkerScriptPlacementArrayOutput() WorkerScriptPlacementArrayOutput
+	ToWorkerScriptPlacementArrayOutputWithContext(context.Context) WorkerScriptPlacementArrayOutput
+}
+
+type WorkerScriptPlacementArray []WorkerScriptPlacementInput
+
+func (WorkerScriptPlacementArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WorkerScriptPlacement)(nil)).Elem()
+}
+
+func (i WorkerScriptPlacementArray) ToWorkerScriptPlacementArrayOutput() WorkerScriptPlacementArrayOutput {
+	return i.ToWorkerScriptPlacementArrayOutputWithContext(context.Background())
+}
+
+func (i WorkerScriptPlacementArray) ToWorkerScriptPlacementArrayOutputWithContext(ctx context.Context) WorkerScriptPlacementArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkerScriptPlacementArrayOutput)
+}
+
+func (i WorkerScriptPlacementArray) ToOutput(ctx context.Context) pulumix.Output[[]WorkerScriptPlacement] {
+	return pulumix.Output[[]WorkerScriptPlacement]{
+		OutputState: i.ToWorkerScriptPlacementArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
+type WorkerScriptPlacementOutput struct{ *pulumi.OutputState }
+
+func (WorkerScriptPlacementOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkerScriptPlacement)(nil)).Elem()
+}
+
+func (o WorkerScriptPlacementOutput) ToWorkerScriptPlacementOutput() WorkerScriptPlacementOutput {
+	return o
+}
+
+func (o WorkerScriptPlacementOutput) ToWorkerScriptPlacementOutputWithContext(ctx context.Context) WorkerScriptPlacementOutput {
+	return o
+}
+
+func (o WorkerScriptPlacementOutput) ToOutput(ctx context.Context) pulumix.Output[WorkerScriptPlacement] {
+	return pulumix.Output[WorkerScriptPlacement]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The placement mode for the Worker. Available values: `smart`.
+func (o WorkerScriptPlacementOutput) Mode() pulumi.StringOutput {
+	return o.ApplyT(func(v WorkerScriptPlacement) string { return v.Mode }).(pulumi.StringOutput)
+}
+
+type WorkerScriptPlacementArrayOutput struct{ *pulumi.OutputState }
+
+func (WorkerScriptPlacementArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WorkerScriptPlacement)(nil)).Elem()
+}
+
+func (o WorkerScriptPlacementArrayOutput) ToWorkerScriptPlacementArrayOutput() WorkerScriptPlacementArrayOutput {
+	return o
+}
+
+func (o WorkerScriptPlacementArrayOutput) ToWorkerScriptPlacementArrayOutputWithContext(ctx context.Context) WorkerScriptPlacementArrayOutput {
+	return o
+}
+
+func (o WorkerScriptPlacementArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]WorkerScriptPlacement] {
+	return pulumix.Output[[]WorkerScriptPlacement]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o WorkerScriptPlacementArrayOutput) Index(i pulumi.IntInput) WorkerScriptPlacementOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) WorkerScriptPlacement {
+		return vs[0].([]WorkerScriptPlacement)[vs[1].(int)]
+	}).(WorkerScriptPlacementOutput)
+}
+
 type WorkerScriptPlainTextBinding struct {
 	// The global variable for the binding in your Worker code.
 	Name string `pulumi:"name"`
@@ -43852,6 +44134,154 @@ func (o GetAccountsAccountArrayOutput) Index(i pulumi.IntInput) GetAccountsAccou
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAccountsAccount {
 		return vs[0].([]GetAccountsAccount)[vs[1].(int)]
 	}).(GetAccountsAccountOutput)
+}
+
+type GetDevicePostureRulesRule struct {
+	Description *string `pulumi:"description"`
+	Expiration  *string `pulumi:"expiration"`
+	Id          string  `pulumi:"id"`
+	Name        *string `pulumi:"name"`
+	Schedule    *string `pulumi:"schedule"`
+	Type        string  `pulumi:"type"`
+}
+
+// GetDevicePostureRulesRuleInput is an input type that accepts GetDevicePostureRulesRuleArgs and GetDevicePostureRulesRuleOutput values.
+// You can construct a concrete instance of `GetDevicePostureRulesRuleInput` via:
+//
+//	GetDevicePostureRulesRuleArgs{...}
+type GetDevicePostureRulesRuleInput interface {
+	pulumi.Input
+
+	ToGetDevicePostureRulesRuleOutput() GetDevicePostureRulesRuleOutput
+	ToGetDevicePostureRulesRuleOutputWithContext(context.Context) GetDevicePostureRulesRuleOutput
+}
+
+type GetDevicePostureRulesRuleArgs struct {
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	Expiration  pulumi.StringPtrInput `pulumi:"expiration"`
+	Id          pulumi.StringInput    `pulumi:"id"`
+	Name        pulumi.StringPtrInput `pulumi:"name"`
+	Schedule    pulumi.StringPtrInput `pulumi:"schedule"`
+	Type        pulumi.StringInput    `pulumi:"type"`
+}
+
+func (GetDevicePostureRulesRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDevicePostureRulesRule)(nil)).Elem()
+}
+
+func (i GetDevicePostureRulesRuleArgs) ToGetDevicePostureRulesRuleOutput() GetDevicePostureRulesRuleOutput {
+	return i.ToGetDevicePostureRulesRuleOutputWithContext(context.Background())
+}
+
+func (i GetDevicePostureRulesRuleArgs) ToGetDevicePostureRulesRuleOutputWithContext(ctx context.Context) GetDevicePostureRulesRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDevicePostureRulesRuleOutput)
+}
+
+func (i GetDevicePostureRulesRuleArgs) ToOutput(ctx context.Context) pulumix.Output[GetDevicePostureRulesRule] {
+	return pulumix.Output[GetDevicePostureRulesRule]{
+		OutputState: i.ToGetDevicePostureRulesRuleOutputWithContext(ctx).OutputState,
+	}
+}
+
+// GetDevicePostureRulesRuleArrayInput is an input type that accepts GetDevicePostureRulesRuleArray and GetDevicePostureRulesRuleArrayOutput values.
+// You can construct a concrete instance of `GetDevicePostureRulesRuleArrayInput` via:
+//
+//	GetDevicePostureRulesRuleArray{ GetDevicePostureRulesRuleArgs{...} }
+type GetDevicePostureRulesRuleArrayInput interface {
+	pulumi.Input
+
+	ToGetDevicePostureRulesRuleArrayOutput() GetDevicePostureRulesRuleArrayOutput
+	ToGetDevicePostureRulesRuleArrayOutputWithContext(context.Context) GetDevicePostureRulesRuleArrayOutput
+}
+
+type GetDevicePostureRulesRuleArray []GetDevicePostureRulesRuleInput
+
+func (GetDevicePostureRulesRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDevicePostureRulesRule)(nil)).Elem()
+}
+
+func (i GetDevicePostureRulesRuleArray) ToGetDevicePostureRulesRuleArrayOutput() GetDevicePostureRulesRuleArrayOutput {
+	return i.ToGetDevicePostureRulesRuleArrayOutputWithContext(context.Background())
+}
+
+func (i GetDevicePostureRulesRuleArray) ToGetDevicePostureRulesRuleArrayOutputWithContext(ctx context.Context) GetDevicePostureRulesRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDevicePostureRulesRuleArrayOutput)
+}
+
+func (i GetDevicePostureRulesRuleArray) ToOutput(ctx context.Context) pulumix.Output[[]GetDevicePostureRulesRule] {
+	return pulumix.Output[[]GetDevicePostureRulesRule]{
+		OutputState: i.ToGetDevicePostureRulesRuleArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
+type GetDevicePostureRulesRuleOutput struct{ *pulumi.OutputState }
+
+func (GetDevicePostureRulesRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDevicePostureRulesRule)(nil)).Elem()
+}
+
+func (o GetDevicePostureRulesRuleOutput) ToGetDevicePostureRulesRuleOutput() GetDevicePostureRulesRuleOutput {
+	return o
+}
+
+func (o GetDevicePostureRulesRuleOutput) ToGetDevicePostureRulesRuleOutputWithContext(ctx context.Context) GetDevicePostureRulesRuleOutput {
+	return o
+}
+
+func (o GetDevicePostureRulesRuleOutput) ToOutput(ctx context.Context) pulumix.Output[GetDevicePostureRulesRule] {
+	return pulumix.Output[GetDevicePostureRulesRule]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o GetDevicePostureRulesRuleOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetDevicePostureRulesRule) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+func (o GetDevicePostureRulesRuleOutput) Expiration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetDevicePostureRulesRule) *string { return v.Expiration }).(pulumi.StringPtrOutput)
+}
+
+func (o GetDevicePostureRulesRuleOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDevicePostureRulesRule) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetDevicePostureRulesRuleOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetDevicePostureRulesRule) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+func (o GetDevicePostureRulesRuleOutput) Schedule() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetDevicePostureRulesRule) *string { return v.Schedule }).(pulumi.StringPtrOutput)
+}
+
+func (o GetDevicePostureRulesRuleOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDevicePostureRulesRule) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type GetDevicePostureRulesRuleArrayOutput struct{ *pulumi.OutputState }
+
+func (GetDevicePostureRulesRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDevicePostureRulesRule)(nil)).Elem()
+}
+
+func (o GetDevicePostureRulesRuleArrayOutput) ToGetDevicePostureRulesRuleArrayOutput() GetDevicePostureRulesRuleArrayOutput {
+	return o
+}
+
+func (o GetDevicePostureRulesRuleArrayOutput) ToGetDevicePostureRulesRuleArrayOutputWithContext(ctx context.Context) GetDevicePostureRulesRuleArrayOutput {
+	return o
+}
+
+func (o GetDevicePostureRulesRuleArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]GetDevicePostureRulesRule] {
+	return pulumix.Output[[]GetDevicePostureRulesRule]{
+		OutputState: o.OutputState,
+	}
+}
+
+func (o GetDevicePostureRulesRuleArrayOutput) Index(i pulumi.IntInput) GetDevicePostureRulesRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDevicePostureRulesRule {
+		return vs[0].([]GetDevicePostureRulesRule)[vs[1].(int)]
+	}).(GetDevicePostureRulesRuleOutput)
 }
 
 type GetDevicesDevice struct {
@@ -52340,6 +52770,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*TeamsAccountAntivirusPtrInput)(nil)).Elem(), TeamsAccountAntivirusArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TeamsAccountBlockPageInput)(nil)).Elem(), TeamsAccountBlockPageArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TeamsAccountBlockPagePtrInput)(nil)).Elem(), TeamsAccountBlockPageArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TeamsAccountBodyScanningInput)(nil)).Elem(), TeamsAccountBodyScanningArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TeamsAccountBodyScanningPtrInput)(nil)).Elem(), TeamsAccountBodyScanningArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TeamsAccountFipsInput)(nil)).Elem(), TeamsAccountFipsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TeamsAccountFipsPtrInput)(nil)).Elem(), TeamsAccountFipsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TeamsAccountLoggingInput)(nil)).Elem(), TeamsAccountLoggingArgs{})
@@ -52404,6 +52836,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkerScriptAnalyticsEngineBindingArrayInput)(nil)).Elem(), WorkerScriptAnalyticsEngineBindingArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkerScriptKvNamespaceBindingInput)(nil)).Elem(), WorkerScriptKvNamespaceBindingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkerScriptKvNamespaceBindingArrayInput)(nil)).Elem(), WorkerScriptKvNamespaceBindingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkerScriptPlacementInput)(nil)).Elem(), WorkerScriptPlacementArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkerScriptPlacementArrayInput)(nil)).Elem(), WorkerScriptPlacementArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkerScriptPlainTextBindingInput)(nil)).Elem(), WorkerScriptPlainTextBindingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkerScriptPlainTextBindingArrayInput)(nil)).Elem(), WorkerScriptPlainTextBindingArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkerScriptQueueBindingInput)(nil)).Elem(), WorkerScriptQueueBindingArgs{})
@@ -52438,6 +52872,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAccountRolesRoleArrayInput)(nil)).Elem(), GetAccountRolesRoleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAccountsAccountInput)(nil)).Elem(), GetAccountsAccountArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAccountsAccountArrayInput)(nil)).Elem(), GetAccountsAccountArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDevicePostureRulesRuleInput)(nil)).Elem(), GetDevicePostureRulesRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDevicePostureRulesRuleArrayInput)(nil)).Elem(), GetDevicePostureRulesRuleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDevicesDeviceInput)(nil)).Elem(), GetDevicesDeviceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDevicesDeviceArrayInput)(nil)).Elem(), GetDevicesDeviceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetListsListInput)(nil)).Elem(), GetListsListArgs{})
@@ -52893,6 +53329,8 @@ func init() {
 	pulumi.RegisterOutputType(TeamsAccountAntivirusPtrOutput{})
 	pulumi.RegisterOutputType(TeamsAccountBlockPageOutput{})
 	pulumi.RegisterOutputType(TeamsAccountBlockPagePtrOutput{})
+	pulumi.RegisterOutputType(TeamsAccountBodyScanningOutput{})
+	pulumi.RegisterOutputType(TeamsAccountBodyScanningPtrOutput{})
 	pulumi.RegisterOutputType(TeamsAccountFipsOutput{})
 	pulumi.RegisterOutputType(TeamsAccountFipsPtrOutput{})
 	pulumi.RegisterOutputType(TeamsAccountLoggingOutput{})
@@ -52957,6 +53395,8 @@ func init() {
 	pulumi.RegisterOutputType(WorkerScriptAnalyticsEngineBindingArrayOutput{})
 	pulumi.RegisterOutputType(WorkerScriptKvNamespaceBindingOutput{})
 	pulumi.RegisterOutputType(WorkerScriptKvNamespaceBindingArrayOutput{})
+	pulumi.RegisterOutputType(WorkerScriptPlacementOutput{})
+	pulumi.RegisterOutputType(WorkerScriptPlacementArrayOutput{})
 	pulumi.RegisterOutputType(WorkerScriptPlainTextBindingOutput{})
 	pulumi.RegisterOutputType(WorkerScriptPlainTextBindingArrayOutput{})
 	pulumi.RegisterOutputType(WorkerScriptQueueBindingOutput{})
@@ -52991,6 +53431,8 @@ func init() {
 	pulumi.RegisterOutputType(GetAccountRolesRoleArrayOutput{})
 	pulumi.RegisterOutputType(GetAccountsAccountOutput{})
 	pulumi.RegisterOutputType(GetAccountsAccountArrayOutput{})
+	pulumi.RegisterOutputType(GetDevicePostureRulesRuleOutput{})
+	pulumi.RegisterOutputType(GetDevicePostureRulesRuleArrayOutput{})
 	pulumi.RegisterOutputType(GetDevicesDeviceOutput{})
 	pulumi.RegisterOutputType(GetDevicesDeviceArrayOutput{})
 	pulumi.RegisterOutputType(GetListsListOutput{})

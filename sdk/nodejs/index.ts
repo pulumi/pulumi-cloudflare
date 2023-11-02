@@ -90,10 +90,20 @@ export type ApiShieldOperation = import("./apiShieldOperation").ApiShieldOperati
 export const ApiShieldOperation: typeof import("./apiShieldOperation").ApiShieldOperation = null as any;
 utilities.lazyLoad(exports, ["ApiShieldOperation"], () => require("./apiShieldOperation"));
 
+export { ApiShieldOperationSchemaValidationSettingsArgs, ApiShieldOperationSchemaValidationSettingsState } from "./apiShieldOperationSchemaValidationSettings";
+export type ApiShieldOperationSchemaValidationSettings = import("./apiShieldOperationSchemaValidationSettings").ApiShieldOperationSchemaValidationSettings;
+export const ApiShieldOperationSchemaValidationSettings: typeof import("./apiShieldOperationSchemaValidationSettings").ApiShieldOperationSchemaValidationSettings = null as any;
+utilities.lazyLoad(exports, ["ApiShieldOperationSchemaValidationSettings"], () => require("./apiShieldOperationSchemaValidationSettings"));
+
 export { ApiShieldSchemaArgs, ApiShieldSchemaState } from "./apiShieldSchema";
 export type ApiShieldSchema = import("./apiShieldSchema").ApiShieldSchema;
 export const ApiShieldSchema: typeof import("./apiShieldSchema").ApiShieldSchema = null as any;
 utilities.lazyLoad(exports, ["ApiShieldSchema"], () => require("./apiShieldSchema"));
+
+export { ApiShieldSchemaValidationSettingsArgs, ApiShieldSchemaValidationSettingsState } from "./apiShieldSchemaValidationSettings";
+export type ApiShieldSchemaValidationSettings = import("./apiShieldSchemaValidationSettings").ApiShieldSchemaValidationSettings;
+export const ApiShieldSchemaValidationSettings: typeof import("./apiShieldSchemaValidationSettings").ApiShieldSchemaValidationSettings = null as any;
+utilities.lazyLoad(exports, ["ApiShieldSchemaValidationSettings"], () => require("./apiShieldSchemaValidationSettings"));
 
 export { ApiTokenArgs, ApiTokenState } from "./apiToken";
 export type ApiToken = import("./apiToken").ApiToken;
@@ -250,6 +260,11 @@ export const getApiTokenPermissionGroups: typeof import("./getApiTokenPermission
 export const getApiTokenPermissionGroupsOutput: typeof import("./getApiTokenPermissionGroups").getApiTokenPermissionGroupsOutput = null as any;
 utilities.lazyLoad(exports, ["getApiTokenPermissionGroups","getApiTokenPermissionGroupsOutput"], () => require("./getApiTokenPermissionGroups"));
 
+export { GetDevicePostureRulesArgs, GetDevicePostureRulesResult, GetDevicePostureRulesOutputArgs } from "./getDevicePostureRules";
+export const getDevicePostureRules: typeof import("./getDevicePostureRules").getDevicePostureRules = null as any;
+export const getDevicePostureRulesOutput: typeof import("./getDevicePostureRules").getDevicePostureRulesOutput = null as any;
+utilities.lazyLoad(exports, ["getDevicePostureRules","getDevicePostureRulesOutput"], () => require("./getDevicePostureRules"));
+
 export { GetDevicesArgs, GetDevicesResult, GetDevicesOutputArgs } from "./getDevices";
 export const getDevices: typeof import("./getDevices").getDevices = null as any;
 export const getDevicesOutput: typeof import("./getDevices").getDevicesOutput = null as any;
@@ -289,6 +304,16 @@ export { GetRulesetsArgs, GetRulesetsResult, GetRulesetsOutputArgs } from "./get
 export const getRulesets: typeof import("./getRulesets").getRulesets = null as any;
 export const getRulesetsOutput: typeof import("./getRulesets").getRulesetsOutput = null as any;
 utilities.lazyLoad(exports, ["getRulesets","getRulesetsOutput"], () => require("./getRulesets"));
+
+export { GetTunnelArgs, GetTunnelResult, GetTunnelOutputArgs } from "./getTunnel";
+export const getTunnel: typeof import("./getTunnel").getTunnel = null as any;
+export const getTunnelOutput: typeof import("./getTunnel").getTunnelOutput = null as any;
+utilities.lazyLoad(exports, ["getTunnel","getTunnelOutput"], () => require("./getTunnel"));
+
+export { GetTunnelVirtualNetworkArgs, GetTunnelVirtualNetworkResult, GetTunnelVirtualNetworkOutputArgs } from "./getTunnelVirtualNetwork";
+export const getTunnelVirtualNetwork: typeof import("./getTunnelVirtualNetwork").getTunnelVirtualNetwork = null as any;
+export const getTunnelVirtualNetworkOutput: typeof import("./getTunnelVirtualNetwork").getTunnelVirtualNetworkOutput = null as any;
+utilities.lazyLoad(exports, ["getTunnelVirtualNetwork","getTunnelVirtualNetworkOutput"], () => require("./getTunnelVirtualNetwork"));
 
 export { GetUserResult } from "./getUser";
 export const getUser: typeof import("./getUser").getUser = null as any;
@@ -703,8 +728,12 @@ const _module = {
                 return new ApiShield(name, <any>undefined, { urn })
             case "cloudflare:index/apiShieldOperation:ApiShieldOperation":
                 return new ApiShieldOperation(name, <any>undefined, { urn })
+            case "cloudflare:index/apiShieldOperationSchemaValidationSettings:ApiShieldOperationSchemaValidationSettings":
+                return new ApiShieldOperationSchemaValidationSettings(name, <any>undefined, { urn })
             case "cloudflare:index/apiShieldSchema:ApiShieldSchema":
                 return new ApiShieldSchema(name, <any>undefined, { urn })
+            case "cloudflare:index/apiShieldSchemaValidationSettings:ApiShieldSchemaValidationSettings":
+                return new ApiShieldSchemaValidationSettings(name, <any>undefined, { urn })
             case "cloudflare:index/apiToken:ApiToken":
                 return new ApiToken(name, <any>undefined, { urn })
             case "cloudflare:index/argo:Argo":
@@ -913,7 +942,9 @@ pulumi.runtime.registerResourceModule("cloudflare", "index/accountMember", _modu
 pulumi.runtime.registerResourceModule("cloudflare", "index/addressMap", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/apiShield", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/apiShieldOperation", _module)
+pulumi.runtime.registerResourceModule("cloudflare", "index/apiShieldOperationSchemaValidationSettings", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/apiShieldSchema", _module)
+pulumi.runtime.registerResourceModule("cloudflare", "index/apiShieldSchemaValidationSettings", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/apiToken", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/argo", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/authenticatedOriginPulls", _module)

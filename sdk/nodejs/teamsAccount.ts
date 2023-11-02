@@ -29,6 +29,9 @@ import * as utilities from "./utilities";
  *         headerText: "hello",
  *         logoPath: "https://example.com/logo.jpg",
  *     },
+ *     bodyScanning: {
+ *         inspectionMode: "deep",
+ *     },
  *     fips: {
  *         tls: true,
  *     },
@@ -111,10 +114,18 @@ export class TeamsAccount extends pulumi.CustomResource {
      */
     public readonly blockPage!: pulumi.Output<outputs.TeamsAccountBlockPage | undefined>;
     /**
+     * Configuration for body scanning.
+     */
+    public readonly bodyScanning!: pulumi.Output<outputs.TeamsAccountBodyScanning | undefined>;
+    /**
      * Configure compliance with Federal Information Processing Standards.
      */
     public readonly fips!: pulumi.Output<outputs.TeamsAccountFips | undefined>;
     public readonly logging!: pulumi.Output<outputs.TeamsAccountLogging | undefined>;
+    /**
+     * Enable non-identity onramp for Browser Isolation. Defaults to `false`.
+     */
+    public readonly nonIdentityBrowserIsolationEnabled!: pulumi.Output<boolean | undefined>;
     /**
      * Configuration for DLP Payload Logging.
      */
@@ -136,7 +147,7 @@ export class TeamsAccount extends pulumi.CustomResource {
      */
     public readonly tlsDecryptEnabled!: pulumi.Output<boolean | undefined>;
     /**
-     * Safely browse websites in Browser Isolation through a URL.
+     * Safely browse websites in Browser Isolation through a URL. Defaults to `false`.
      */
     public readonly urlBrowserIsolationEnabled!: pulumi.Output<boolean | undefined>;
 
@@ -157,8 +168,10 @@ export class TeamsAccount extends pulumi.CustomResource {
             resourceInputs["activityLogEnabled"] = state ? state.activityLogEnabled : undefined;
             resourceInputs["antivirus"] = state ? state.antivirus : undefined;
             resourceInputs["blockPage"] = state ? state.blockPage : undefined;
+            resourceInputs["bodyScanning"] = state ? state.bodyScanning : undefined;
             resourceInputs["fips"] = state ? state.fips : undefined;
             resourceInputs["logging"] = state ? state.logging : undefined;
+            resourceInputs["nonIdentityBrowserIsolationEnabled"] = state ? state.nonIdentityBrowserIsolationEnabled : undefined;
             resourceInputs["payloadLog"] = state ? state.payloadLog : undefined;
             resourceInputs["protocolDetectionEnabled"] = state ? state.protocolDetectionEnabled : undefined;
             resourceInputs["proxy"] = state ? state.proxy : undefined;
@@ -174,8 +187,10 @@ export class TeamsAccount extends pulumi.CustomResource {
             resourceInputs["activityLogEnabled"] = args ? args.activityLogEnabled : undefined;
             resourceInputs["antivirus"] = args ? args.antivirus : undefined;
             resourceInputs["blockPage"] = args ? args.blockPage : undefined;
+            resourceInputs["bodyScanning"] = args ? args.bodyScanning : undefined;
             resourceInputs["fips"] = args ? args.fips : undefined;
             resourceInputs["logging"] = args ? args.logging : undefined;
+            resourceInputs["nonIdentityBrowserIsolationEnabled"] = args ? args.nonIdentityBrowserIsolationEnabled : undefined;
             resourceInputs["payloadLog"] = args ? args.payloadLog : undefined;
             resourceInputs["protocolDetectionEnabled"] = args ? args.protocolDetectionEnabled : undefined;
             resourceInputs["proxy"] = args ? args.proxy : undefined;
@@ -209,10 +224,18 @@ export interface TeamsAccountState {
      */
     blockPage?: pulumi.Input<inputs.TeamsAccountBlockPage>;
     /**
+     * Configuration for body scanning.
+     */
+    bodyScanning?: pulumi.Input<inputs.TeamsAccountBodyScanning>;
+    /**
      * Configure compliance with Federal Information Processing Standards.
      */
     fips?: pulumi.Input<inputs.TeamsAccountFips>;
     logging?: pulumi.Input<inputs.TeamsAccountLogging>;
+    /**
+     * Enable non-identity onramp for Browser Isolation. Defaults to `false`.
+     */
+    nonIdentityBrowserIsolationEnabled?: pulumi.Input<boolean>;
     /**
      * Configuration for DLP Payload Logging.
      */
@@ -234,7 +257,7 @@ export interface TeamsAccountState {
      */
     tlsDecryptEnabled?: pulumi.Input<boolean>;
     /**
-     * Safely browse websites in Browser Isolation through a URL.
+     * Safely browse websites in Browser Isolation through a URL. Defaults to `false`.
      */
     urlBrowserIsolationEnabled?: pulumi.Input<boolean>;
 }
@@ -260,10 +283,18 @@ export interface TeamsAccountArgs {
      */
     blockPage?: pulumi.Input<inputs.TeamsAccountBlockPage>;
     /**
+     * Configuration for body scanning.
+     */
+    bodyScanning?: pulumi.Input<inputs.TeamsAccountBodyScanning>;
+    /**
      * Configure compliance with Federal Information Processing Standards.
      */
     fips?: pulumi.Input<inputs.TeamsAccountFips>;
     logging?: pulumi.Input<inputs.TeamsAccountLogging>;
+    /**
+     * Enable non-identity onramp for Browser Isolation. Defaults to `false`.
+     */
+    nonIdentityBrowserIsolationEnabled?: pulumi.Input<boolean>;
     /**
      * Configuration for DLP Payload Logging.
      */
@@ -285,7 +316,7 @@ export interface TeamsAccountArgs {
      */
     tlsDecryptEnabled?: pulumi.Input<boolean>;
     /**
-     * Safely browse websites in Browser Isolation through a URL.
+     * Safely browse websites in Browser Isolation through a URL. Defaults to `false`.
      */
     urlBrowserIsolationEnabled?: pulumi.Input<boolean>;
 }

@@ -138,6 +138,7 @@ type WorkerScript struct {
 	Module pulumi.BoolPtrOutput `pulumi:"module"`
 	// The global variable for the binding in your Worker code.
 	Name                pulumi.StringOutput                       `pulumi:"name"`
+	Placements          WorkerScriptPlacementArrayOutput          `pulumi:"placements"`
 	PlainTextBindings   WorkerScriptPlainTextBindingArrayOutput   `pulumi:"plainTextBindings"`
 	QueueBindings       WorkerScriptQueueBindingArrayOutput       `pulumi:"queueBindings"`
 	R2BucketBindings    WorkerScriptR2BucketBindingArrayOutput    `pulumi:"r2BucketBindings"`
@@ -201,6 +202,7 @@ type workerScriptState struct {
 	Module *bool `pulumi:"module"`
 	// The global variable for the binding in your Worker code.
 	Name                *string                          `pulumi:"name"`
+	Placements          []WorkerScriptPlacement          `pulumi:"placements"`
 	PlainTextBindings   []WorkerScriptPlainTextBinding   `pulumi:"plainTextBindings"`
 	QueueBindings       []WorkerScriptQueueBinding       `pulumi:"queueBindings"`
 	R2BucketBindings    []WorkerScriptR2BucketBinding    `pulumi:"r2BucketBindings"`
@@ -226,6 +228,7 @@ type WorkerScriptState struct {
 	Module pulumi.BoolPtrInput
 	// The global variable for the binding in your Worker code.
 	Name                pulumi.StringPtrInput
+	Placements          WorkerScriptPlacementArrayInput
 	PlainTextBindings   WorkerScriptPlainTextBindingArrayInput
 	QueueBindings       WorkerScriptQueueBindingArrayInput
 	R2BucketBindings    WorkerScriptR2BucketBindingArrayInput
@@ -255,6 +258,7 @@ type workerScriptArgs struct {
 	Module *bool `pulumi:"module"`
 	// The global variable for the binding in your Worker code.
 	Name                string                           `pulumi:"name"`
+	Placements          []WorkerScriptPlacement          `pulumi:"placements"`
 	PlainTextBindings   []WorkerScriptPlainTextBinding   `pulumi:"plainTextBindings"`
 	QueueBindings       []WorkerScriptQueueBinding       `pulumi:"queueBindings"`
 	R2BucketBindings    []WorkerScriptR2BucketBinding    `pulumi:"r2BucketBindings"`
@@ -281,6 +285,7 @@ type WorkerScriptArgs struct {
 	Module pulumi.BoolPtrInput
 	// The global variable for the binding in your Worker code.
 	Name                pulumi.StringInput
+	Placements          WorkerScriptPlacementArrayInput
 	PlainTextBindings   WorkerScriptPlainTextBindingArrayInput
 	QueueBindings       WorkerScriptQueueBindingArrayInput
 	R2BucketBindings    WorkerScriptR2BucketBindingArrayInput
@@ -441,6 +446,10 @@ func (o WorkerScriptOutput) Module() pulumi.BoolPtrOutput {
 // The global variable for the binding in your Worker code.
 func (o WorkerScriptOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkerScript) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o WorkerScriptOutput) Placements() WorkerScriptPlacementArrayOutput {
+	return o.ApplyT(func(v *WorkerScript) WorkerScriptPlacementArrayOutput { return v.Placements }).(WorkerScriptPlacementArrayOutput)
 }
 
 func (o WorkerScriptOutput) PlainTextBindings() WorkerScriptPlainTextBindingArrayOutput {

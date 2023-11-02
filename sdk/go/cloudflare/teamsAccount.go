@@ -43,6 +43,9 @@ import (
 //					HeaderText:      pulumi.String("hello"),
 //					LogoPath:        pulumi.String("https://example.com/logo.jpg"),
 //				},
+//				BodyScanning: &cloudflare.TeamsAccountBodyScanningArgs{
+//					InspectionMode: pulumi.String("deep"),
+//				},
 //				Fips: &cloudflare.TeamsAccountFipsArgs{
 //					Tls: pulumi.Bool(true),
 //				},
@@ -99,9 +102,13 @@ type TeamsAccount struct {
 	Antivirus TeamsAccountAntivirusPtrOutput `pulumi:"antivirus"`
 	// Configuration for a custom block page.
 	BlockPage TeamsAccountBlockPagePtrOutput `pulumi:"blockPage"`
+	// Configuration for body scanning.
+	BodyScanning TeamsAccountBodyScanningPtrOutput `pulumi:"bodyScanning"`
 	// Configure compliance with Federal Information Processing Standards.
 	Fips    TeamsAccountFipsPtrOutput    `pulumi:"fips"`
 	Logging TeamsAccountLoggingPtrOutput `pulumi:"logging"`
+	// Enable non-identity onramp for Browser Isolation. Defaults to `false`.
+	NonIdentityBrowserIsolationEnabled pulumi.BoolPtrOutput `pulumi:"nonIdentityBrowserIsolationEnabled"`
 	// Configuration for DLP Payload Logging.
 	PayloadLog TeamsAccountPayloadLogPtrOutput `pulumi:"payloadLog"`
 	// Indicator that protocol detection is enabled.
@@ -112,7 +119,7 @@ type TeamsAccount struct {
 	SshSessionLog TeamsAccountSshSessionLogPtrOutput `pulumi:"sshSessionLog"`
 	// Indicator that decryption of TLS traffic is enabled.
 	TlsDecryptEnabled pulumi.BoolPtrOutput `pulumi:"tlsDecryptEnabled"`
-	// Safely browse websites in Browser Isolation through a URL.
+	// Safely browse websites in Browser Isolation through a URL. Defaults to `false`.
 	UrlBrowserIsolationEnabled pulumi.BoolPtrOutput `pulumi:"urlBrowserIsolationEnabled"`
 }
 
@@ -157,9 +164,13 @@ type teamsAccountState struct {
 	Antivirus *TeamsAccountAntivirus `pulumi:"antivirus"`
 	// Configuration for a custom block page.
 	BlockPage *TeamsAccountBlockPage `pulumi:"blockPage"`
+	// Configuration for body scanning.
+	BodyScanning *TeamsAccountBodyScanning `pulumi:"bodyScanning"`
 	// Configure compliance with Federal Information Processing Standards.
 	Fips    *TeamsAccountFips    `pulumi:"fips"`
 	Logging *TeamsAccountLogging `pulumi:"logging"`
+	// Enable non-identity onramp for Browser Isolation. Defaults to `false`.
+	NonIdentityBrowserIsolationEnabled *bool `pulumi:"nonIdentityBrowserIsolationEnabled"`
 	// Configuration for DLP Payload Logging.
 	PayloadLog *TeamsAccountPayloadLog `pulumi:"payloadLog"`
 	// Indicator that protocol detection is enabled.
@@ -170,7 +181,7 @@ type teamsAccountState struct {
 	SshSessionLog *TeamsAccountSshSessionLog `pulumi:"sshSessionLog"`
 	// Indicator that decryption of TLS traffic is enabled.
 	TlsDecryptEnabled *bool `pulumi:"tlsDecryptEnabled"`
-	// Safely browse websites in Browser Isolation through a URL.
+	// Safely browse websites in Browser Isolation through a URL. Defaults to `false`.
 	UrlBrowserIsolationEnabled *bool `pulumi:"urlBrowserIsolationEnabled"`
 }
 
@@ -183,9 +194,13 @@ type TeamsAccountState struct {
 	Antivirus TeamsAccountAntivirusPtrInput
 	// Configuration for a custom block page.
 	BlockPage TeamsAccountBlockPagePtrInput
+	// Configuration for body scanning.
+	BodyScanning TeamsAccountBodyScanningPtrInput
 	// Configure compliance with Federal Information Processing Standards.
 	Fips    TeamsAccountFipsPtrInput
 	Logging TeamsAccountLoggingPtrInput
+	// Enable non-identity onramp for Browser Isolation. Defaults to `false`.
+	NonIdentityBrowserIsolationEnabled pulumi.BoolPtrInput
 	// Configuration for DLP Payload Logging.
 	PayloadLog TeamsAccountPayloadLogPtrInput
 	// Indicator that protocol detection is enabled.
@@ -196,7 +211,7 @@ type TeamsAccountState struct {
 	SshSessionLog TeamsAccountSshSessionLogPtrInput
 	// Indicator that decryption of TLS traffic is enabled.
 	TlsDecryptEnabled pulumi.BoolPtrInput
-	// Safely browse websites in Browser Isolation through a URL.
+	// Safely browse websites in Browser Isolation through a URL. Defaults to `false`.
 	UrlBrowserIsolationEnabled pulumi.BoolPtrInput
 }
 
@@ -213,9 +228,13 @@ type teamsAccountArgs struct {
 	Antivirus *TeamsAccountAntivirus `pulumi:"antivirus"`
 	// Configuration for a custom block page.
 	BlockPage *TeamsAccountBlockPage `pulumi:"blockPage"`
+	// Configuration for body scanning.
+	BodyScanning *TeamsAccountBodyScanning `pulumi:"bodyScanning"`
 	// Configure compliance with Federal Information Processing Standards.
 	Fips    *TeamsAccountFips    `pulumi:"fips"`
 	Logging *TeamsAccountLogging `pulumi:"logging"`
+	// Enable non-identity onramp for Browser Isolation. Defaults to `false`.
+	NonIdentityBrowserIsolationEnabled *bool `pulumi:"nonIdentityBrowserIsolationEnabled"`
 	// Configuration for DLP Payload Logging.
 	PayloadLog *TeamsAccountPayloadLog `pulumi:"payloadLog"`
 	// Indicator that protocol detection is enabled.
@@ -226,7 +245,7 @@ type teamsAccountArgs struct {
 	SshSessionLog *TeamsAccountSshSessionLog `pulumi:"sshSessionLog"`
 	// Indicator that decryption of TLS traffic is enabled.
 	TlsDecryptEnabled *bool `pulumi:"tlsDecryptEnabled"`
-	// Safely browse websites in Browser Isolation through a URL.
+	// Safely browse websites in Browser Isolation through a URL. Defaults to `false`.
 	UrlBrowserIsolationEnabled *bool `pulumi:"urlBrowserIsolationEnabled"`
 }
 
@@ -240,9 +259,13 @@ type TeamsAccountArgs struct {
 	Antivirus TeamsAccountAntivirusPtrInput
 	// Configuration for a custom block page.
 	BlockPage TeamsAccountBlockPagePtrInput
+	// Configuration for body scanning.
+	BodyScanning TeamsAccountBodyScanningPtrInput
 	// Configure compliance with Federal Information Processing Standards.
 	Fips    TeamsAccountFipsPtrInput
 	Logging TeamsAccountLoggingPtrInput
+	// Enable non-identity onramp for Browser Isolation. Defaults to `false`.
+	NonIdentityBrowserIsolationEnabled pulumi.BoolPtrInput
 	// Configuration for DLP Payload Logging.
 	PayloadLog TeamsAccountPayloadLogPtrInput
 	// Indicator that protocol detection is enabled.
@@ -253,7 +276,7 @@ type TeamsAccountArgs struct {
 	SshSessionLog TeamsAccountSshSessionLogPtrInput
 	// Indicator that decryption of TLS traffic is enabled.
 	TlsDecryptEnabled pulumi.BoolPtrInput
-	// Safely browse websites in Browser Isolation through a URL.
+	// Safely browse websites in Browser Isolation through a URL. Defaults to `false`.
 	UrlBrowserIsolationEnabled pulumi.BoolPtrInput
 }
 
@@ -388,6 +411,11 @@ func (o TeamsAccountOutput) BlockPage() TeamsAccountBlockPagePtrOutput {
 	return o.ApplyT(func(v *TeamsAccount) TeamsAccountBlockPagePtrOutput { return v.BlockPage }).(TeamsAccountBlockPagePtrOutput)
 }
 
+// Configuration for body scanning.
+func (o TeamsAccountOutput) BodyScanning() TeamsAccountBodyScanningPtrOutput {
+	return o.ApplyT(func(v *TeamsAccount) TeamsAccountBodyScanningPtrOutput { return v.BodyScanning }).(TeamsAccountBodyScanningPtrOutput)
+}
+
 // Configure compliance with Federal Information Processing Standards.
 func (o TeamsAccountOutput) Fips() TeamsAccountFipsPtrOutput {
 	return o.ApplyT(func(v *TeamsAccount) TeamsAccountFipsPtrOutput { return v.Fips }).(TeamsAccountFipsPtrOutput)
@@ -395,6 +423,11 @@ func (o TeamsAccountOutput) Fips() TeamsAccountFipsPtrOutput {
 
 func (o TeamsAccountOutput) Logging() TeamsAccountLoggingPtrOutput {
 	return o.ApplyT(func(v *TeamsAccount) TeamsAccountLoggingPtrOutput { return v.Logging }).(TeamsAccountLoggingPtrOutput)
+}
+
+// Enable non-identity onramp for Browser Isolation. Defaults to `false`.
+func (o TeamsAccountOutput) NonIdentityBrowserIsolationEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *TeamsAccount) pulumi.BoolPtrOutput { return v.NonIdentityBrowserIsolationEnabled }).(pulumi.BoolPtrOutput)
 }
 
 // Configuration for DLP Payload Logging.
@@ -422,7 +455,7 @@ func (o TeamsAccountOutput) TlsDecryptEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *TeamsAccount) pulumi.BoolPtrOutput { return v.TlsDecryptEnabled }).(pulumi.BoolPtrOutput)
 }
 
-// Safely browse websites in Browser Isolation through a URL.
+// Safely browse websites in Browser Isolation through a URL. Defaults to `false`.
 func (o TeamsAccountOutput) UrlBrowserIsolationEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *TeamsAccount) pulumi.BoolPtrOutput { return v.UrlBrowserIsolationEnabled }).(pulumi.BoolPtrOutput)
 }

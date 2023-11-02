@@ -20,8 +20,10 @@ class TeamsAccountArgs:
                  activity_log_enabled: Optional[pulumi.Input[bool]] = None,
                  antivirus: Optional[pulumi.Input['TeamsAccountAntivirusArgs']] = None,
                  block_page: Optional[pulumi.Input['TeamsAccountBlockPageArgs']] = None,
+                 body_scanning: Optional[pulumi.Input['TeamsAccountBodyScanningArgs']] = None,
                  fips: Optional[pulumi.Input['TeamsAccountFipsArgs']] = None,
                  logging: Optional[pulumi.Input['TeamsAccountLoggingArgs']] = None,
+                 non_identity_browser_isolation_enabled: Optional[pulumi.Input[bool]] = None,
                  payload_log: Optional[pulumi.Input['TeamsAccountPayloadLogArgs']] = None,
                  protocol_detection_enabled: Optional[pulumi.Input[bool]] = None,
                  proxy: Optional[pulumi.Input['TeamsAccountProxyArgs']] = None,
@@ -34,13 +36,15 @@ class TeamsAccountArgs:
         :param pulumi.Input[bool] activity_log_enabled: Whether to enable the activity log.
         :param pulumi.Input['TeamsAccountAntivirusArgs'] antivirus: Configuration block for antivirus traffic scanning.
         :param pulumi.Input['TeamsAccountBlockPageArgs'] block_page: Configuration for a custom block page.
+        :param pulumi.Input['TeamsAccountBodyScanningArgs'] body_scanning: Configuration for body scanning.
         :param pulumi.Input['TeamsAccountFipsArgs'] fips: Configure compliance with Federal Information Processing Standards.
+        :param pulumi.Input[bool] non_identity_browser_isolation_enabled: Enable non-identity onramp for Browser Isolation. Defaults to `false`.
         :param pulumi.Input['TeamsAccountPayloadLogArgs'] payload_log: Configuration for DLP Payload Logging.
         :param pulumi.Input[bool] protocol_detection_enabled: Indicator that protocol detection is enabled.
         :param pulumi.Input['TeamsAccountProxyArgs'] proxy: Configuration block for specifying which protocols are proxied.
         :param pulumi.Input['TeamsAccountSshSessionLogArgs'] ssh_session_log: Configuration for SSH Session Logging.
         :param pulumi.Input[bool] tls_decrypt_enabled: Indicator that decryption of TLS traffic is enabled.
-        :param pulumi.Input[bool] url_browser_isolation_enabled: Safely browse websites in Browser Isolation through a URL.
+        :param pulumi.Input[bool] url_browser_isolation_enabled: Safely browse websites in Browser Isolation through a URL. Defaults to `false`.
         """
         pulumi.set(__self__, "account_id", account_id)
         if activity_log_enabled is not None:
@@ -49,10 +53,14 @@ class TeamsAccountArgs:
             pulumi.set(__self__, "antivirus", antivirus)
         if block_page is not None:
             pulumi.set(__self__, "block_page", block_page)
+        if body_scanning is not None:
+            pulumi.set(__self__, "body_scanning", body_scanning)
         if fips is not None:
             pulumi.set(__self__, "fips", fips)
         if logging is not None:
             pulumi.set(__self__, "logging", logging)
+        if non_identity_browser_isolation_enabled is not None:
+            pulumi.set(__self__, "non_identity_browser_isolation_enabled", non_identity_browser_isolation_enabled)
         if payload_log is not None:
             pulumi.set(__self__, "payload_log", payload_log)
         if protocol_detection_enabled is not None:
@@ -115,6 +123,18 @@ class TeamsAccountArgs:
         pulumi.set(self, "block_page", value)
 
     @property
+    @pulumi.getter(name="bodyScanning")
+    def body_scanning(self) -> Optional[pulumi.Input['TeamsAccountBodyScanningArgs']]:
+        """
+        Configuration for body scanning.
+        """
+        return pulumi.get(self, "body_scanning")
+
+    @body_scanning.setter
+    def body_scanning(self, value: Optional[pulumi.Input['TeamsAccountBodyScanningArgs']]):
+        pulumi.set(self, "body_scanning", value)
+
+    @property
     @pulumi.getter
     def fips(self) -> Optional[pulumi.Input['TeamsAccountFipsArgs']]:
         """
@@ -134,6 +154,18 @@ class TeamsAccountArgs:
     @logging.setter
     def logging(self, value: Optional[pulumi.Input['TeamsAccountLoggingArgs']]):
         pulumi.set(self, "logging", value)
+
+    @property
+    @pulumi.getter(name="nonIdentityBrowserIsolationEnabled")
+    def non_identity_browser_isolation_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enable non-identity onramp for Browser Isolation. Defaults to `false`.
+        """
+        return pulumi.get(self, "non_identity_browser_isolation_enabled")
+
+    @non_identity_browser_isolation_enabled.setter
+    def non_identity_browser_isolation_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "non_identity_browser_isolation_enabled", value)
 
     @property
     @pulumi.getter(name="payloadLog")
@@ -199,7 +231,7 @@ class TeamsAccountArgs:
     @pulumi.getter(name="urlBrowserIsolationEnabled")
     def url_browser_isolation_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        Safely browse websites in Browser Isolation through a URL.
+        Safely browse websites in Browser Isolation through a URL. Defaults to `false`.
         """
         return pulumi.get(self, "url_browser_isolation_enabled")
 
@@ -215,8 +247,10 @@ class _TeamsAccountState:
                  activity_log_enabled: Optional[pulumi.Input[bool]] = None,
                  antivirus: Optional[pulumi.Input['TeamsAccountAntivirusArgs']] = None,
                  block_page: Optional[pulumi.Input['TeamsAccountBlockPageArgs']] = None,
+                 body_scanning: Optional[pulumi.Input['TeamsAccountBodyScanningArgs']] = None,
                  fips: Optional[pulumi.Input['TeamsAccountFipsArgs']] = None,
                  logging: Optional[pulumi.Input['TeamsAccountLoggingArgs']] = None,
+                 non_identity_browser_isolation_enabled: Optional[pulumi.Input[bool]] = None,
                  payload_log: Optional[pulumi.Input['TeamsAccountPayloadLogArgs']] = None,
                  protocol_detection_enabled: Optional[pulumi.Input[bool]] = None,
                  proxy: Optional[pulumi.Input['TeamsAccountProxyArgs']] = None,
@@ -229,13 +263,15 @@ class _TeamsAccountState:
         :param pulumi.Input[bool] activity_log_enabled: Whether to enable the activity log.
         :param pulumi.Input['TeamsAccountAntivirusArgs'] antivirus: Configuration block for antivirus traffic scanning.
         :param pulumi.Input['TeamsAccountBlockPageArgs'] block_page: Configuration for a custom block page.
+        :param pulumi.Input['TeamsAccountBodyScanningArgs'] body_scanning: Configuration for body scanning.
         :param pulumi.Input['TeamsAccountFipsArgs'] fips: Configure compliance with Federal Information Processing Standards.
+        :param pulumi.Input[bool] non_identity_browser_isolation_enabled: Enable non-identity onramp for Browser Isolation. Defaults to `false`.
         :param pulumi.Input['TeamsAccountPayloadLogArgs'] payload_log: Configuration for DLP Payload Logging.
         :param pulumi.Input[bool] protocol_detection_enabled: Indicator that protocol detection is enabled.
         :param pulumi.Input['TeamsAccountProxyArgs'] proxy: Configuration block for specifying which protocols are proxied.
         :param pulumi.Input['TeamsAccountSshSessionLogArgs'] ssh_session_log: Configuration for SSH Session Logging.
         :param pulumi.Input[bool] tls_decrypt_enabled: Indicator that decryption of TLS traffic is enabled.
-        :param pulumi.Input[bool] url_browser_isolation_enabled: Safely browse websites in Browser Isolation through a URL.
+        :param pulumi.Input[bool] url_browser_isolation_enabled: Safely browse websites in Browser Isolation through a URL. Defaults to `false`.
         """
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
@@ -245,10 +281,14 @@ class _TeamsAccountState:
             pulumi.set(__self__, "antivirus", antivirus)
         if block_page is not None:
             pulumi.set(__self__, "block_page", block_page)
+        if body_scanning is not None:
+            pulumi.set(__self__, "body_scanning", body_scanning)
         if fips is not None:
             pulumi.set(__self__, "fips", fips)
         if logging is not None:
             pulumi.set(__self__, "logging", logging)
+        if non_identity_browser_isolation_enabled is not None:
+            pulumi.set(__self__, "non_identity_browser_isolation_enabled", non_identity_browser_isolation_enabled)
         if payload_log is not None:
             pulumi.set(__self__, "payload_log", payload_log)
         if protocol_detection_enabled is not None:
@@ -311,6 +351,18 @@ class _TeamsAccountState:
         pulumi.set(self, "block_page", value)
 
     @property
+    @pulumi.getter(name="bodyScanning")
+    def body_scanning(self) -> Optional[pulumi.Input['TeamsAccountBodyScanningArgs']]:
+        """
+        Configuration for body scanning.
+        """
+        return pulumi.get(self, "body_scanning")
+
+    @body_scanning.setter
+    def body_scanning(self, value: Optional[pulumi.Input['TeamsAccountBodyScanningArgs']]):
+        pulumi.set(self, "body_scanning", value)
+
+    @property
     @pulumi.getter
     def fips(self) -> Optional[pulumi.Input['TeamsAccountFipsArgs']]:
         """
@@ -330,6 +382,18 @@ class _TeamsAccountState:
     @logging.setter
     def logging(self, value: Optional[pulumi.Input['TeamsAccountLoggingArgs']]):
         pulumi.set(self, "logging", value)
+
+    @property
+    @pulumi.getter(name="nonIdentityBrowserIsolationEnabled")
+    def non_identity_browser_isolation_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enable non-identity onramp for Browser Isolation. Defaults to `false`.
+        """
+        return pulumi.get(self, "non_identity_browser_isolation_enabled")
+
+    @non_identity_browser_isolation_enabled.setter
+    def non_identity_browser_isolation_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "non_identity_browser_isolation_enabled", value)
 
     @property
     @pulumi.getter(name="payloadLog")
@@ -395,7 +459,7 @@ class _TeamsAccountState:
     @pulumi.getter(name="urlBrowserIsolationEnabled")
     def url_browser_isolation_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        Safely browse websites in Browser Isolation through a URL.
+        Safely browse websites in Browser Isolation through a URL. Defaults to `false`.
         """
         return pulumi.get(self, "url_browser_isolation_enabled")
 
@@ -413,8 +477,10 @@ class TeamsAccount(pulumi.CustomResource):
                  activity_log_enabled: Optional[pulumi.Input[bool]] = None,
                  antivirus: Optional[pulumi.Input[pulumi.InputType['TeamsAccountAntivirusArgs']]] = None,
                  block_page: Optional[pulumi.Input[pulumi.InputType['TeamsAccountBlockPageArgs']]] = None,
+                 body_scanning: Optional[pulumi.Input[pulumi.InputType['TeamsAccountBodyScanningArgs']]] = None,
                  fips: Optional[pulumi.Input[pulumi.InputType['TeamsAccountFipsArgs']]] = None,
                  logging: Optional[pulumi.Input[pulumi.InputType['TeamsAccountLoggingArgs']]] = None,
+                 non_identity_browser_isolation_enabled: Optional[pulumi.Input[bool]] = None,
                  payload_log: Optional[pulumi.Input[pulumi.InputType['TeamsAccountPayloadLogArgs']]] = None,
                  protocol_detection_enabled: Optional[pulumi.Input[bool]] = None,
                  proxy: Optional[pulumi.Input[pulumi.InputType['TeamsAccountProxyArgs']]] = None,
@@ -444,6 +510,9 @@ class TeamsAccount(pulumi.CustomResource):
                 footer_text="hello",
                 header_text="hello",
                 logo_path="https://example.com/logo.jpg",
+            ),
+            body_scanning=cloudflare.TeamsAccountBodyScanningArgs(
+                inspection_mode="deep",
             ),
             fips=cloudflare.TeamsAccountFipsArgs(
                 tls=True,
@@ -487,13 +556,15 @@ class TeamsAccount(pulumi.CustomResource):
         :param pulumi.Input[bool] activity_log_enabled: Whether to enable the activity log.
         :param pulumi.Input[pulumi.InputType['TeamsAccountAntivirusArgs']] antivirus: Configuration block for antivirus traffic scanning.
         :param pulumi.Input[pulumi.InputType['TeamsAccountBlockPageArgs']] block_page: Configuration for a custom block page.
+        :param pulumi.Input[pulumi.InputType['TeamsAccountBodyScanningArgs']] body_scanning: Configuration for body scanning.
         :param pulumi.Input[pulumi.InputType['TeamsAccountFipsArgs']] fips: Configure compliance with Federal Information Processing Standards.
+        :param pulumi.Input[bool] non_identity_browser_isolation_enabled: Enable non-identity onramp for Browser Isolation. Defaults to `false`.
         :param pulumi.Input[pulumi.InputType['TeamsAccountPayloadLogArgs']] payload_log: Configuration for DLP Payload Logging.
         :param pulumi.Input[bool] protocol_detection_enabled: Indicator that protocol detection is enabled.
         :param pulumi.Input[pulumi.InputType['TeamsAccountProxyArgs']] proxy: Configuration block for specifying which protocols are proxied.
         :param pulumi.Input[pulumi.InputType['TeamsAccountSshSessionLogArgs']] ssh_session_log: Configuration for SSH Session Logging.
         :param pulumi.Input[bool] tls_decrypt_enabled: Indicator that decryption of TLS traffic is enabled.
-        :param pulumi.Input[bool] url_browser_isolation_enabled: Safely browse websites in Browser Isolation through a URL.
+        :param pulumi.Input[bool] url_browser_isolation_enabled: Safely browse websites in Browser Isolation through a URL. Defaults to `false`.
         """
         ...
     @overload
@@ -523,6 +594,9 @@ class TeamsAccount(pulumi.CustomResource):
                 footer_text="hello",
                 header_text="hello",
                 logo_path="https://example.com/logo.jpg",
+            ),
+            body_scanning=cloudflare.TeamsAccountBodyScanningArgs(
+                inspection_mode="deep",
             ),
             fips=cloudflare.TeamsAccountFipsArgs(
                 tls=True,
@@ -579,8 +653,10 @@ class TeamsAccount(pulumi.CustomResource):
                  activity_log_enabled: Optional[pulumi.Input[bool]] = None,
                  antivirus: Optional[pulumi.Input[pulumi.InputType['TeamsAccountAntivirusArgs']]] = None,
                  block_page: Optional[pulumi.Input[pulumi.InputType['TeamsAccountBlockPageArgs']]] = None,
+                 body_scanning: Optional[pulumi.Input[pulumi.InputType['TeamsAccountBodyScanningArgs']]] = None,
                  fips: Optional[pulumi.Input[pulumi.InputType['TeamsAccountFipsArgs']]] = None,
                  logging: Optional[pulumi.Input[pulumi.InputType['TeamsAccountLoggingArgs']]] = None,
+                 non_identity_browser_isolation_enabled: Optional[pulumi.Input[bool]] = None,
                  payload_log: Optional[pulumi.Input[pulumi.InputType['TeamsAccountPayloadLogArgs']]] = None,
                  protocol_detection_enabled: Optional[pulumi.Input[bool]] = None,
                  proxy: Optional[pulumi.Input[pulumi.InputType['TeamsAccountProxyArgs']]] = None,
@@ -602,8 +678,10 @@ class TeamsAccount(pulumi.CustomResource):
             __props__.__dict__["activity_log_enabled"] = activity_log_enabled
             __props__.__dict__["antivirus"] = antivirus
             __props__.__dict__["block_page"] = block_page
+            __props__.__dict__["body_scanning"] = body_scanning
             __props__.__dict__["fips"] = fips
             __props__.__dict__["logging"] = logging
+            __props__.__dict__["non_identity_browser_isolation_enabled"] = non_identity_browser_isolation_enabled
             __props__.__dict__["payload_log"] = payload_log
             __props__.__dict__["protocol_detection_enabled"] = protocol_detection_enabled
             __props__.__dict__["proxy"] = proxy
@@ -624,8 +702,10 @@ class TeamsAccount(pulumi.CustomResource):
             activity_log_enabled: Optional[pulumi.Input[bool]] = None,
             antivirus: Optional[pulumi.Input[pulumi.InputType['TeamsAccountAntivirusArgs']]] = None,
             block_page: Optional[pulumi.Input[pulumi.InputType['TeamsAccountBlockPageArgs']]] = None,
+            body_scanning: Optional[pulumi.Input[pulumi.InputType['TeamsAccountBodyScanningArgs']]] = None,
             fips: Optional[pulumi.Input[pulumi.InputType['TeamsAccountFipsArgs']]] = None,
             logging: Optional[pulumi.Input[pulumi.InputType['TeamsAccountLoggingArgs']]] = None,
+            non_identity_browser_isolation_enabled: Optional[pulumi.Input[bool]] = None,
             payload_log: Optional[pulumi.Input[pulumi.InputType['TeamsAccountPayloadLogArgs']]] = None,
             protocol_detection_enabled: Optional[pulumi.Input[bool]] = None,
             proxy: Optional[pulumi.Input[pulumi.InputType['TeamsAccountProxyArgs']]] = None,
@@ -643,13 +723,15 @@ class TeamsAccount(pulumi.CustomResource):
         :param pulumi.Input[bool] activity_log_enabled: Whether to enable the activity log.
         :param pulumi.Input[pulumi.InputType['TeamsAccountAntivirusArgs']] antivirus: Configuration block for antivirus traffic scanning.
         :param pulumi.Input[pulumi.InputType['TeamsAccountBlockPageArgs']] block_page: Configuration for a custom block page.
+        :param pulumi.Input[pulumi.InputType['TeamsAccountBodyScanningArgs']] body_scanning: Configuration for body scanning.
         :param pulumi.Input[pulumi.InputType['TeamsAccountFipsArgs']] fips: Configure compliance with Federal Information Processing Standards.
+        :param pulumi.Input[bool] non_identity_browser_isolation_enabled: Enable non-identity onramp for Browser Isolation. Defaults to `false`.
         :param pulumi.Input[pulumi.InputType['TeamsAccountPayloadLogArgs']] payload_log: Configuration for DLP Payload Logging.
         :param pulumi.Input[bool] protocol_detection_enabled: Indicator that protocol detection is enabled.
         :param pulumi.Input[pulumi.InputType['TeamsAccountProxyArgs']] proxy: Configuration block for specifying which protocols are proxied.
         :param pulumi.Input[pulumi.InputType['TeamsAccountSshSessionLogArgs']] ssh_session_log: Configuration for SSH Session Logging.
         :param pulumi.Input[bool] tls_decrypt_enabled: Indicator that decryption of TLS traffic is enabled.
-        :param pulumi.Input[bool] url_browser_isolation_enabled: Safely browse websites in Browser Isolation through a URL.
+        :param pulumi.Input[bool] url_browser_isolation_enabled: Safely browse websites in Browser Isolation through a URL. Defaults to `false`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -659,8 +741,10 @@ class TeamsAccount(pulumi.CustomResource):
         __props__.__dict__["activity_log_enabled"] = activity_log_enabled
         __props__.__dict__["antivirus"] = antivirus
         __props__.__dict__["block_page"] = block_page
+        __props__.__dict__["body_scanning"] = body_scanning
         __props__.__dict__["fips"] = fips
         __props__.__dict__["logging"] = logging
+        __props__.__dict__["non_identity_browser_isolation_enabled"] = non_identity_browser_isolation_enabled
         __props__.__dict__["payload_log"] = payload_log
         __props__.__dict__["protocol_detection_enabled"] = protocol_detection_enabled
         __props__.__dict__["proxy"] = proxy
@@ -702,6 +786,14 @@ class TeamsAccount(pulumi.CustomResource):
         return pulumi.get(self, "block_page")
 
     @property
+    @pulumi.getter(name="bodyScanning")
+    def body_scanning(self) -> pulumi.Output[Optional['outputs.TeamsAccountBodyScanning']]:
+        """
+        Configuration for body scanning.
+        """
+        return pulumi.get(self, "body_scanning")
+
+    @property
     @pulumi.getter
     def fips(self) -> pulumi.Output[Optional['outputs.TeamsAccountFips']]:
         """
@@ -713,6 +805,14 @@ class TeamsAccount(pulumi.CustomResource):
     @pulumi.getter
     def logging(self) -> pulumi.Output[Optional['outputs.TeamsAccountLogging']]:
         return pulumi.get(self, "logging")
+
+    @property
+    @pulumi.getter(name="nonIdentityBrowserIsolationEnabled")
+    def non_identity_browser_isolation_enabled(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Enable non-identity onramp for Browser Isolation. Defaults to `false`.
+        """
+        return pulumi.get(self, "non_identity_browser_isolation_enabled")
 
     @property
     @pulumi.getter(name="payloadLog")
@@ -758,7 +858,7 @@ class TeamsAccount(pulumi.CustomResource):
     @pulumi.getter(name="urlBrowserIsolationEnabled")
     def url_browser_isolation_enabled(self) -> pulumi.Output[Optional[bool]]:
         """
-        Safely browse websites in Browser Isolation through a URL.
+        Safely browse websites in Browser Isolation through a URL. Defaults to `false`.
         """
         return pulumi.get(self, "url_browser_isolation_enabled")
 
