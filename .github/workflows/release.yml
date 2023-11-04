@@ -141,6 +141,10 @@ jobs:
     name: lint
     uses: ./.github/workflows/lint.yml
     secrets: inherit
+  license_check:
+    name: License Check
+    uses: ./.github/workflows/license.yml
+    secrets: inherit
   prerequisites:
     name: prerequisites
     runs-on: ubuntu-latest
@@ -220,7 +224,9 @@ jobs:
 
   publish:
     name: publish
-    needs: test
+    needs:
+      - test
+      - license_check
     runs-on: ubuntu-latest
     steps:
     - name: Checkout Repo
