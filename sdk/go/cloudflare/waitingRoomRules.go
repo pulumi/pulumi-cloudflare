@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Cloudflare Waiting Room Rules resource.
@@ -173,12 +172,6 @@ func (i *WaitingRoomRules) ToWaitingRoomRulesOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(WaitingRoomRulesOutput)
 }
 
-func (i *WaitingRoomRules) ToOutput(ctx context.Context) pulumix.Output[*WaitingRoomRules] {
-	return pulumix.Output[*WaitingRoomRules]{
-		OutputState: i.ToWaitingRoomRulesOutputWithContext(ctx).OutputState,
-	}
-}
-
 // WaitingRoomRulesArrayInput is an input type that accepts WaitingRoomRulesArray and WaitingRoomRulesArrayOutput values.
 // You can construct a concrete instance of `WaitingRoomRulesArrayInput` via:
 //
@@ -202,12 +195,6 @@ func (i WaitingRoomRulesArray) ToWaitingRoomRulesArrayOutput() WaitingRoomRulesA
 
 func (i WaitingRoomRulesArray) ToWaitingRoomRulesArrayOutputWithContext(ctx context.Context) WaitingRoomRulesArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(WaitingRoomRulesArrayOutput)
-}
-
-func (i WaitingRoomRulesArray) ToOutput(ctx context.Context) pulumix.Output[[]*WaitingRoomRules] {
-	return pulumix.Output[[]*WaitingRoomRules]{
-		OutputState: i.ToWaitingRoomRulesArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // WaitingRoomRulesMapInput is an input type that accepts WaitingRoomRulesMap and WaitingRoomRulesMapOutput values.
@@ -235,12 +222,6 @@ func (i WaitingRoomRulesMap) ToWaitingRoomRulesMapOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(WaitingRoomRulesMapOutput)
 }
 
-func (i WaitingRoomRulesMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*WaitingRoomRules] {
-	return pulumix.Output[map[string]*WaitingRoomRules]{
-		OutputState: i.ToWaitingRoomRulesMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type WaitingRoomRulesOutput struct{ *pulumi.OutputState }
 
 func (WaitingRoomRulesOutput) ElementType() reflect.Type {
@@ -253,12 +234,6 @@ func (o WaitingRoomRulesOutput) ToWaitingRoomRulesOutput() WaitingRoomRulesOutpu
 
 func (o WaitingRoomRulesOutput) ToWaitingRoomRulesOutputWithContext(ctx context.Context) WaitingRoomRulesOutput {
 	return o
-}
-
-func (o WaitingRoomRulesOutput) ToOutput(ctx context.Context) pulumix.Output[*WaitingRoomRules] {
-	return pulumix.Output[*WaitingRoomRules]{
-		OutputState: o.OutputState,
-	}
 }
 
 // List of rules to apply to the ruleset.
@@ -290,12 +265,6 @@ func (o WaitingRoomRulesArrayOutput) ToWaitingRoomRulesArrayOutputWithContext(ct
 	return o
 }
 
-func (o WaitingRoomRulesArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*WaitingRoomRules] {
-	return pulumix.Output[[]*WaitingRoomRules]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o WaitingRoomRulesArrayOutput) Index(i pulumi.IntInput) WaitingRoomRulesOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *WaitingRoomRules {
 		return vs[0].([]*WaitingRoomRules)[vs[1].(int)]
@@ -314,12 +283,6 @@ func (o WaitingRoomRulesMapOutput) ToWaitingRoomRulesMapOutput() WaitingRoomRule
 
 func (o WaitingRoomRulesMapOutput) ToWaitingRoomRulesMapOutputWithContext(ctx context.Context) WaitingRoomRulesMapOutput {
 	return o
-}
-
-func (o WaitingRoomRulesMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*WaitingRoomRules] {
-	return pulumix.Output[map[string]*WaitingRoomRules]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o WaitingRoomRulesMapOutput) MapIndex(k pulumi.StringInput) WaitingRoomRulesOutput {

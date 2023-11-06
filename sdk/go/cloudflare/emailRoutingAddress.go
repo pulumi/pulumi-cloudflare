@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a resource for managing Email Routing Addresses.
@@ -165,12 +164,6 @@ func (i *EmailRoutingAddress) ToEmailRoutingAddressOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(EmailRoutingAddressOutput)
 }
 
-func (i *EmailRoutingAddress) ToOutput(ctx context.Context) pulumix.Output[*EmailRoutingAddress] {
-	return pulumix.Output[*EmailRoutingAddress]{
-		OutputState: i.ToEmailRoutingAddressOutputWithContext(ctx).OutputState,
-	}
-}
-
 // EmailRoutingAddressArrayInput is an input type that accepts EmailRoutingAddressArray and EmailRoutingAddressArrayOutput values.
 // You can construct a concrete instance of `EmailRoutingAddressArrayInput` via:
 //
@@ -194,12 +187,6 @@ func (i EmailRoutingAddressArray) ToEmailRoutingAddressArrayOutput() EmailRoutin
 
 func (i EmailRoutingAddressArray) ToEmailRoutingAddressArrayOutputWithContext(ctx context.Context) EmailRoutingAddressArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(EmailRoutingAddressArrayOutput)
-}
-
-func (i EmailRoutingAddressArray) ToOutput(ctx context.Context) pulumix.Output[[]*EmailRoutingAddress] {
-	return pulumix.Output[[]*EmailRoutingAddress]{
-		OutputState: i.ToEmailRoutingAddressArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // EmailRoutingAddressMapInput is an input type that accepts EmailRoutingAddressMap and EmailRoutingAddressMapOutput values.
@@ -227,12 +214,6 @@ func (i EmailRoutingAddressMap) ToEmailRoutingAddressMapOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(EmailRoutingAddressMapOutput)
 }
 
-func (i EmailRoutingAddressMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*EmailRoutingAddress] {
-	return pulumix.Output[map[string]*EmailRoutingAddress]{
-		OutputState: i.ToEmailRoutingAddressMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type EmailRoutingAddressOutput struct{ *pulumi.OutputState }
 
 func (EmailRoutingAddressOutput) ElementType() reflect.Type {
@@ -245,12 +226,6 @@ func (o EmailRoutingAddressOutput) ToEmailRoutingAddressOutput() EmailRoutingAdd
 
 func (o EmailRoutingAddressOutput) ToEmailRoutingAddressOutputWithContext(ctx context.Context) EmailRoutingAddressOutput {
 	return o
-}
-
-func (o EmailRoutingAddressOutput) ToOutput(ctx context.Context) pulumix.Output[*EmailRoutingAddress] {
-	return pulumix.Output[*EmailRoutingAddress]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
@@ -297,12 +272,6 @@ func (o EmailRoutingAddressArrayOutput) ToEmailRoutingAddressArrayOutputWithCont
 	return o
 }
 
-func (o EmailRoutingAddressArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*EmailRoutingAddress] {
-	return pulumix.Output[[]*EmailRoutingAddress]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o EmailRoutingAddressArrayOutput) Index(i pulumi.IntInput) EmailRoutingAddressOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *EmailRoutingAddress {
 		return vs[0].([]*EmailRoutingAddress)[vs[1].(int)]
@@ -321,12 +290,6 @@ func (o EmailRoutingAddressMapOutput) ToEmailRoutingAddressMapOutput() EmailRout
 
 func (o EmailRoutingAddressMapOutput) ToEmailRoutingAddressMapOutputWithContext(ctx context.Context) EmailRoutingAddressMapOutput {
 	return o
-}
-
-func (o EmailRoutingAddressMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*EmailRoutingAddress] {
-	return pulumix.Output[map[string]*EmailRoutingAddress]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o EmailRoutingAddressMapOutput) MapIndex(k pulumi.StringInput) EmailRoutingAddressOutput {

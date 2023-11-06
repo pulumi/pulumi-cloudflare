@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Cloudflare Access can replace traditional SSH key models with
@@ -193,12 +192,6 @@ func (i *AccessCaCertificate) ToAccessCaCertificateOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(AccessCaCertificateOutput)
 }
 
-func (i *AccessCaCertificate) ToOutput(ctx context.Context) pulumix.Output[*AccessCaCertificate] {
-	return pulumix.Output[*AccessCaCertificate]{
-		OutputState: i.ToAccessCaCertificateOutputWithContext(ctx).OutputState,
-	}
-}
-
 // AccessCaCertificateArrayInput is an input type that accepts AccessCaCertificateArray and AccessCaCertificateArrayOutput values.
 // You can construct a concrete instance of `AccessCaCertificateArrayInput` via:
 //
@@ -222,12 +215,6 @@ func (i AccessCaCertificateArray) ToAccessCaCertificateArrayOutput() AccessCaCer
 
 func (i AccessCaCertificateArray) ToAccessCaCertificateArrayOutputWithContext(ctx context.Context) AccessCaCertificateArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AccessCaCertificateArrayOutput)
-}
-
-func (i AccessCaCertificateArray) ToOutput(ctx context.Context) pulumix.Output[[]*AccessCaCertificate] {
-	return pulumix.Output[[]*AccessCaCertificate]{
-		OutputState: i.ToAccessCaCertificateArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // AccessCaCertificateMapInput is an input type that accepts AccessCaCertificateMap and AccessCaCertificateMapOutput values.
@@ -255,12 +242,6 @@ func (i AccessCaCertificateMap) ToAccessCaCertificateMapOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(AccessCaCertificateMapOutput)
 }
 
-func (i AccessCaCertificateMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*AccessCaCertificate] {
-	return pulumix.Output[map[string]*AccessCaCertificate]{
-		OutputState: i.ToAccessCaCertificateMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type AccessCaCertificateOutput struct{ *pulumi.OutputState }
 
 func (AccessCaCertificateOutput) ElementType() reflect.Type {
@@ -273,12 +254,6 @@ func (o AccessCaCertificateOutput) ToAccessCaCertificateOutput() AccessCaCertifi
 
 func (o AccessCaCertificateOutput) ToAccessCaCertificateOutputWithContext(ctx context.Context) AccessCaCertificateOutput {
 	return o
-}
-
-func (o AccessCaCertificateOutput) ToOutput(ctx context.Context) pulumix.Output[*AccessCaCertificate] {
-	return pulumix.Output[*AccessCaCertificate]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The account identifier to target for the resource. Conflicts with `zoneId`.
@@ -320,12 +295,6 @@ func (o AccessCaCertificateArrayOutput) ToAccessCaCertificateArrayOutputWithCont
 	return o
 }
 
-func (o AccessCaCertificateArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*AccessCaCertificate] {
-	return pulumix.Output[[]*AccessCaCertificate]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o AccessCaCertificateArrayOutput) Index(i pulumi.IntInput) AccessCaCertificateOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *AccessCaCertificate {
 		return vs[0].([]*AccessCaCertificate)[vs[1].(int)]
@@ -344,12 +313,6 @@ func (o AccessCaCertificateMapOutput) ToAccessCaCertificateMapOutput() AccessCaC
 
 func (o AccessCaCertificateMapOutput) ToAccessCaCertificateMapOutputWithContext(ctx context.Context) AccessCaCertificateMapOutput {
 	return o
-}
-
-func (o AccessCaCertificateMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*AccessCaCertificate] {
-	return pulumix.Output[map[string]*AccessCaCertificate]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AccessCaCertificateMapOutput) MapIndex(k pulumi.StringInput) AccessCaCertificateOutput {

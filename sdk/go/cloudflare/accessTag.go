@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a resource to customize the pages your end users will see
@@ -132,12 +131,6 @@ func (i *AccessTag) ToAccessTagOutputWithContext(ctx context.Context) AccessTagO
 	return pulumi.ToOutputWithContext(ctx, i).(AccessTagOutput)
 }
 
-func (i *AccessTag) ToOutput(ctx context.Context) pulumix.Output[*AccessTag] {
-	return pulumix.Output[*AccessTag]{
-		OutputState: i.ToAccessTagOutputWithContext(ctx).OutputState,
-	}
-}
-
 // AccessTagArrayInput is an input type that accepts AccessTagArray and AccessTagArrayOutput values.
 // You can construct a concrete instance of `AccessTagArrayInput` via:
 //
@@ -161,12 +154,6 @@ func (i AccessTagArray) ToAccessTagArrayOutput() AccessTagArrayOutput {
 
 func (i AccessTagArray) ToAccessTagArrayOutputWithContext(ctx context.Context) AccessTagArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AccessTagArrayOutput)
-}
-
-func (i AccessTagArray) ToOutput(ctx context.Context) pulumix.Output[[]*AccessTag] {
-	return pulumix.Output[[]*AccessTag]{
-		OutputState: i.ToAccessTagArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // AccessTagMapInput is an input type that accepts AccessTagMap and AccessTagMapOutput values.
@@ -194,12 +181,6 @@ func (i AccessTagMap) ToAccessTagMapOutputWithContext(ctx context.Context) Acces
 	return pulumi.ToOutputWithContext(ctx, i).(AccessTagMapOutput)
 }
 
-func (i AccessTagMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*AccessTag] {
-	return pulumix.Output[map[string]*AccessTag]{
-		OutputState: i.ToAccessTagMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type AccessTagOutput struct{ *pulumi.OutputState }
 
 func (AccessTagOutput) ElementType() reflect.Type {
@@ -212,12 +193,6 @@ func (o AccessTagOutput) ToAccessTagOutput() AccessTagOutput {
 
 func (o AccessTagOutput) ToAccessTagOutputWithContext(ctx context.Context) AccessTagOutput {
 	return o
-}
-
-func (o AccessTagOutput) ToOutput(ctx context.Context) pulumix.Output[*AccessTag] {
-	return pulumix.Output[*AccessTag]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The account identifier to target for the resource. Conflicts with `zoneId`. **Modifying this attribute will force creation of a new resource.**
@@ -254,12 +229,6 @@ func (o AccessTagArrayOutput) ToAccessTagArrayOutputWithContext(ctx context.Cont
 	return o
 }
 
-func (o AccessTagArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*AccessTag] {
-	return pulumix.Output[[]*AccessTag]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o AccessTagArrayOutput) Index(i pulumi.IntInput) AccessTagOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *AccessTag {
 		return vs[0].([]*AccessTag)[vs[1].(int)]
@@ -278,12 +247,6 @@ func (o AccessTagMapOutput) ToAccessTagMapOutput() AccessTagMapOutput {
 
 func (o AccessTagMapOutput) ToAccessTagMapOutputWithContext(ctx context.Context) AccessTagMapOutput {
 	return o
-}
-
-func (o AccessTagMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*AccessTag] {
-	return pulumix.Output[map[string]*AccessTag]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AccessTagMapOutput) MapIndex(k pulumi.StringInput) AccessTagOutput {

@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // ## Example Usage
@@ -215,12 +214,6 @@ func (i *OriginCaCertificate) ToOriginCaCertificateOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(OriginCaCertificateOutput)
 }
 
-func (i *OriginCaCertificate) ToOutput(ctx context.Context) pulumix.Output[*OriginCaCertificate] {
-	return pulumix.Output[*OriginCaCertificate]{
-		OutputState: i.ToOriginCaCertificateOutputWithContext(ctx).OutputState,
-	}
-}
-
 // OriginCaCertificateArrayInput is an input type that accepts OriginCaCertificateArray and OriginCaCertificateArrayOutput values.
 // You can construct a concrete instance of `OriginCaCertificateArrayInput` via:
 //
@@ -244,12 +237,6 @@ func (i OriginCaCertificateArray) ToOriginCaCertificateArrayOutput() OriginCaCer
 
 func (i OriginCaCertificateArray) ToOriginCaCertificateArrayOutputWithContext(ctx context.Context) OriginCaCertificateArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(OriginCaCertificateArrayOutput)
-}
-
-func (i OriginCaCertificateArray) ToOutput(ctx context.Context) pulumix.Output[[]*OriginCaCertificate] {
-	return pulumix.Output[[]*OriginCaCertificate]{
-		OutputState: i.ToOriginCaCertificateArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // OriginCaCertificateMapInput is an input type that accepts OriginCaCertificateMap and OriginCaCertificateMapOutput values.
@@ -277,12 +264,6 @@ func (i OriginCaCertificateMap) ToOriginCaCertificateMapOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(OriginCaCertificateMapOutput)
 }
 
-func (i OriginCaCertificateMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*OriginCaCertificate] {
-	return pulumix.Output[map[string]*OriginCaCertificate]{
-		OutputState: i.ToOriginCaCertificateMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type OriginCaCertificateOutput struct{ *pulumi.OutputState }
 
 func (OriginCaCertificateOutput) ElementType() reflect.Type {
@@ -295,12 +276,6 @@ func (o OriginCaCertificateOutput) ToOriginCaCertificateOutput() OriginCaCertifi
 
 func (o OriginCaCertificateOutput) ToOriginCaCertificateOutputWithContext(ctx context.Context) OriginCaCertificateOutput {
 	return o
-}
-
-func (o OriginCaCertificateOutput) ToOutput(ctx context.Context) pulumix.Output[*OriginCaCertificate] {
-	return pulumix.Output[*OriginCaCertificate]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The Origin CA certificate.
@@ -352,12 +327,6 @@ func (o OriginCaCertificateArrayOutput) ToOriginCaCertificateArrayOutputWithCont
 	return o
 }
 
-func (o OriginCaCertificateArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*OriginCaCertificate] {
-	return pulumix.Output[[]*OriginCaCertificate]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o OriginCaCertificateArrayOutput) Index(i pulumi.IntInput) OriginCaCertificateOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *OriginCaCertificate {
 		return vs[0].([]*OriginCaCertificate)[vs[1].(int)]
@@ -376,12 +345,6 @@ func (o OriginCaCertificateMapOutput) ToOriginCaCertificateMapOutput() OriginCaC
 
 func (o OriginCaCertificateMapOutput) ToOriginCaCertificateMapOutputWithContext(ctx context.Context) OriginCaCertificateMapOutput {
 	return o
-}
-
-func (o OriginCaCertificateMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*OriginCaCertificate] {
-	return pulumix.Output[map[string]*OriginCaCertificate]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o OriginCaCertificateMapOutput) MapIndex(k pulumi.StringInput) OriginCaCertificateOutput {

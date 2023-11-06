@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Cloudflare Teams List resource. Teams lists are
@@ -191,12 +190,6 @@ func (i *TeamsList) ToTeamsListOutputWithContext(ctx context.Context) TeamsListO
 	return pulumi.ToOutputWithContext(ctx, i).(TeamsListOutput)
 }
 
-func (i *TeamsList) ToOutput(ctx context.Context) pulumix.Output[*TeamsList] {
-	return pulumix.Output[*TeamsList]{
-		OutputState: i.ToTeamsListOutputWithContext(ctx).OutputState,
-	}
-}
-
 // TeamsListArrayInput is an input type that accepts TeamsListArray and TeamsListArrayOutput values.
 // You can construct a concrete instance of `TeamsListArrayInput` via:
 //
@@ -220,12 +213,6 @@ func (i TeamsListArray) ToTeamsListArrayOutput() TeamsListArrayOutput {
 
 func (i TeamsListArray) ToTeamsListArrayOutputWithContext(ctx context.Context) TeamsListArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(TeamsListArrayOutput)
-}
-
-func (i TeamsListArray) ToOutput(ctx context.Context) pulumix.Output[[]*TeamsList] {
-	return pulumix.Output[[]*TeamsList]{
-		OutputState: i.ToTeamsListArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // TeamsListMapInput is an input type that accepts TeamsListMap and TeamsListMapOutput values.
@@ -253,12 +240,6 @@ func (i TeamsListMap) ToTeamsListMapOutputWithContext(ctx context.Context) Teams
 	return pulumi.ToOutputWithContext(ctx, i).(TeamsListMapOutput)
 }
 
-func (i TeamsListMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*TeamsList] {
-	return pulumix.Output[map[string]*TeamsList]{
-		OutputState: i.ToTeamsListMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type TeamsListOutput struct{ *pulumi.OutputState }
 
 func (TeamsListOutput) ElementType() reflect.Type {
@@ -271,12 +252,6 @@ func (o TeamsListOutput) ToTeamsListOutput() TeamsListOutput {
 
 func (o TeamsListOutput) ToTeamsListOutputWithContext(ctx context.Context) TeamsListOutput {
 	return o
-}
-
-func (o TeamsListOutput) ToOutput(ctx context.Context) pulumix.Output[*TeamsList] {
-	return pulumix.Output[*TeamsList]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The account identifier to target for the resource.
@@ -318,12 +293,6 @@ func (o TeamsListArrayOutput) ToTeamsListArrayOutputWithContext(ctx context.Cont
 	return o
 }
 
-func (o TeamsListArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*TeamsList] {
-	return pulumix.Output[[]*TeamsList]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o TeamsListArrayOutput) Index(i pulumi.IntInput) TeamsListOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *TeamsList {
 		return vs[0].([]*TeamsList)[vs[1].(int)]
@@ -342,12 +311,6 @@ func (o TeamsListMapOutput) ToTeamsListMapOutput() TeamsListMapOutput {
 
 func (o TeamsListMapOutput) ToTeamsListMapOutputWithContext(ctx context.Context) TeamsListMapOutput {
 	return o
-}
-
-func (o TeamsListMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*TeamsList] {
-	return pulumix.Output[map[string]*TeamsList]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o TeamsListMapOutput) MapIndex(k pulumi.StringInput) TeamsListOutput {

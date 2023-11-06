@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Use this data source to get the
@@ -103,12 +102,6 @@ func (o GetOriginCaRootCertificateResultOutput) ToGetOriginCaRootCertificateResu
 
 func (o GetOriginCaRootCertificateResultOutput) ToGetOriginCaRootCertificateResultOutputWithContext(ctx context.Context) GetOriginCaRootCertificateResultOutput {
 	return o
-}
-
-func (o GetOriginCaRootCertificateResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetOriginCaRootCertificateResult] {
-	return pulumix.Output[GetOriginCaRootCertificateResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The name of the algorithm used when creating an Origin CA certificate. Available values: `rsa`, `ecc`.

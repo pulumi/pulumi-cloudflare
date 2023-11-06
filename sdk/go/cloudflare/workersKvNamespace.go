@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides the ability to manage Cloudflare Workers KV Namespace features.
@@ -149,12 +148,6 @@ func (i *WorkersKvNamespace) ToWorkersKvNamespaceOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(WorkersKvNamespaceOutput)
 }
 
-func (i *WorkersKvNamespace) ToOutput(ctx context.Context) pulumix.Output[*WorkersKvNamespace] {
-	return pulumix.Output[*WorkersKvNamespace]{
-		OutputState: i.ToWorkersKvNamespaceOutputWithContext(ctx).OutputState,
-	}
-}
-
 // WorkersKvNamespaceArrayInput is an input type that accepts WorkersKvNamespaceArray and WorkersKvNamespaceArrayOutput values.
 // You can construct a concrete instance of `WorkersKvNamespaceArrayInput` via:
 //
@@ -178,12 +171,6 @@ func (i WorkersKvNamespaceArray) ToWorkersKvNamespaceArrayOutput() WorkersKvName
 
 func (i WorkersKvNamespaceArray) ToWorkersKvNamespaceArrayOutputWithContext(ctx context.Context) WorkersKvNamespaceArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(WorkersKvNamespaceArrayOutput)
-}
-
-func (i WorkersKvNamespaceArray) ToOutput(ctx context.Context) pulumix.Output[[]*WorkersKvNamespace] {
-	return pulumix.Output[[]*WorkersKvNamespace]{
-		OutputState: i.ToWorkersKvNamespaceArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // WorkersKvNamespaceMapInput is an input type that accepts WorkersKvNamespaceMap and WorkersKvNamespaceMapOutput values.
@@ -211,12 +198,6 @@ func (i WorkersKvNamespaceMap) ToWorkersKvNamespaceMapOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(WorkersKvNamespaceMapOutput)
 }
 
-func (i WorkersKvNamespaceMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*WorkersKvNamespace] {
-	return pulumix.Output[map[string]*WorkersKvNamespace]{
-		OutputState: i.ToWorkersKvNamespaceMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type WorkersKvNamespaceOutput struct{ *pulumi.OutputState }
 
 func (WorkersKvNamespaceOutput) ElementType() reflect.Type {
@@ -229,12 +210,6 @@ func (o WorkersKvNamespaceOutput) ToWorkersKvNamespaceOutput() WorkersKvNamespac
 
 func (o WorkersKvNamespaceOutput) ToWorkersKvNamespaceOutputWithContext(ctx context.Context) WorkersKvNamespaceOutput {
 	return o
-}
-
-func (o WorkersKvNamespaceOutput) ToOutput(ctx context.Context) pulumix.Output[*WorkersKvNamespace] {
-	return pulumix.Output[*WorkersKvNamespace]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The account identifier to target for the resource.
@@ -261,12 +236,6 @@ func (o WorkersKvNamespaceArrayOutput) ToWorkersKvNamespaceArrayOutputWithContex
 	return o
 }
 
-func (o WorkersKvNamespaceArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*WorkersKvNamespace] {
-	return pulumix.Output[[]*WorkersKvNamespace]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o WorkersKvNamespaceArrayOutput) Index(i pulumi.IntInput) WorkersKvNamespaceOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *WorkersKvNamespace {
 		return vs[0].([]*WorkersKvNamespace)[vs[1].(int)]
@@ -285,12 +254,6 @@ func (o WorkersKvNamespaceMapOutput) ToWorkersKvNamespaceMapOutput() WorkersKvNa
 
 func (o WorkersKvNamespaceMapOutput) ToWorkersKvNamespaceMapOutputWithContext(ctx context.Context) WorkersKvNamespaceMapOutput {
 	return o
-}
-
-func (o WorkersKvNamespaceMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*WorkersKvNamespace] {
-	return pulumix.Output[map[string]*WorkersKvNamespace]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o WorkersKvNamespaceMapOutput) MapIndex(k pulumi.StringInput) WorkersKvNamespaceOutput {

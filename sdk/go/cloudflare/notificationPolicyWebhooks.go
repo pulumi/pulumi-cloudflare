@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a resource, that manages a webhook destination. These destinations can be tied to the notification policies created for Cloudflare's products.
@@ -192,12 +191,6 @@ func (i *NotificationPolicyWebhooks) ToNotificationPolicyWebhooksOutputWithConte
 	return pulumi.ToOutputWithContext(ctx, i).(NotificationPolicyWebhooksOutput)
 }
 
-func (i *NotificationPolicyWebhooks) ToOutput(ctx context.Context) pulumix.Output[*NotificationPolicyWebhooks] {
-	return pulumix.Output[*NotificationPolicyWebhooks]{
-		OutputState: i.ToNotificationPolicyWebhooksOutputWithContext(ctx).OutputState,
-	}
-}
-
 // NotificationPolicyWebhooksArrayInput is an input type that accepts NotificationPolicyWebhooksArray and NotificationPolicyWebhooksArrayOutput values.
 // You can construct a concrete instance of `NotificationPolicyWebhooksArrayInput` via:
 //
@@ -221,12 +214,6 @@ func (i NotificationPolicyWebhooksArray) ToNotificationPolicyWebhooksArrayOutput
 
 func (i NotificationPolicyWebhooksArray) ToNotificationPolicyWebhooksArrayOutputWithContext(ctx context.Context) NotificationPolicyWebhooksArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(NotificationPolicyWebhooksArrayOutput)
-}
-
-func (i NotificationPolicyWebhooksArray) ToOutput(ctx context.Context) pulumix.Output[[]*NotificationPolicyWebhooks] {
-	return pulumix.Output[[]*NotificationPolicyWebhooks]{
-		OutputState: i.ToNotificationPolicyWebhooksArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // NotificationPolicyWebhooksMapInput is an input type that accepts NotificationPolicyWebhooksMap and NotificationPolicyWebhooksMapOutput values.
@@ -254,12 +241,6 @@ func (i NotificationPolicyWebhooksMap) ToNotificationPolicyWebhooksMapOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(NotificationPolicyWebhooksMapOutput)
 }
 
-func (i NotificationPolicyWebhooksMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*NotificationPolicyWebhooks] {
-	return pulumix.Output[map[string]*NotificationPolicyWebhooks]{
-		OutputState: i.ToNotificationPolicyWebhooksMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type NotificationPolicyWebhooksOutput struct{ *pulumi.OutputState }
 
 func (NotificationPolicyWebhooksOutput) ElementType() reflect.Type {
@@ -272,12 +253,6 @@ func (o NotificationPolicyWebhooksOutput) ToNotificationPolicyWebhooksOutput() N
 
 func (o NotificationPolicyWebhooksOutput) ToNotificationPolicyWebhooksOutputWithContext(ctx context.Context) NotificationPolicyWebhooksOutput {
 	return o
-}
-
-func (o NotificationPolicyWebhooksOutput) ToOutput(ctx context.Context) pulumix.Output[*NotificationPolicyWebhooks] {
-	return pulumix.Output[*NotificationPolicyWebhooks]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The account identifier to target for the resource.
@@ -333,12 +308,6 @@ func (o NotificationPolicyWebhooksArrayOutput) ToNotificationPolicyWebhooksArray
 	return o
 }
 
-func (o NotificationPolicyWebhooksArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*NotificationPolicyWebhooks] {
-	return pulumix.Output[[]*NotificationPolicyWebhooks]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o NotificationPolicyWebhooksArrayOutput) Index(i pulumi.IntInput) NotificationPolicyWebhooksOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *NotificationPolicyWebhooks {
 		return vs[0].([]*NotificationPolicyWebhooks)[vs[1].(int)]
@@ -357,12 +326,6 @@ func (o NotificationPolicyWebhooksMapOutput) ToNotificationPolicyWebhooksMapOutp
 
 func (o NotificationPolicyWebhooksMapOutput) ToNotificationPolicyWebhooksMapOutputWithContext(ctx context.Context) NotificationPolicyWebhooksMapOutput {
 	return o
-}
-
-func (o NotificationPolicyWebhooksMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*NotificationPolicyWebhooks] {
-	return pulumix.Output[map[string]*NotificationPolicyWebhooks]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o NotificationPolicyWebhooksMapOutput) MapIndex(k pulumi.StringInput) NotificationPolicyWebhooksOutput {

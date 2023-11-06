@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Cloudflare Device Dex Test resource. Device Dex Tests allow for building location-aware device settings policies.
@@ -221,12 +220,6 @@ func (i *DeviceDexTest) ToDeviceDexTestOutputWithContext(ctx context.Context) De
 	return pulumi.ToOutputWithContext(ctx, i).(DeviceDexTestOutput)
 }
 
-func (i *DeviceDexTest) ToOutput(ctx context.Context) pulumix.Output[*DeviceDexTest] {
-	return pulumix.Output[*DeviceDexTest]{
-		OutputState: i.ToDeviceDexTestOutputWithContext(ctx).OutputState,
-	}
-}
-
 // DeviceDexTestArrayInput is an input type that accepts DeviceDexTestArray and DeviceDexTestArrayOutput values.
 // You can construct a concrete instance of `DeviceDexTestArrayInput` via:
 //
@@ -250,12 +243,6 @@ func (i DeviceDexTestArray) ToDeviceDexTestArrayOutput() DeviceDexTestArrayOutpu
 
 func (i DeviceDexTestArray) ToDeviceDexTestArrayOutputWithContext(ctx context.Context) DeviceDexTestArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DeviceDexTestArrayOutput)
-}
-
-func (i DeviceDexTestArray) ToOutput(ctx context.Context) pulumix.Output[[]*DeviceDexTest] {
-	return pulumix.Output[[]*DeviceDexTest]{
-		OutputState: i.ToDeviceDexTestArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // DeviceDexTestMapInput is an input type that accepts DeviceDexTestMap and DeviceDexTestMapOutput values.
@@ -283,12 +270,6 @@ func (i DeviceDexTestMap) ToDeviceDexTestMapOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(DeviceDexTestMapOutput)
 }
 
-func (i DeviceDexTestMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*DeviceDexTest] {
-	return pulumix.Output[map[string]*DeviceDexTest]{
-		OutputState: i.ToDeviceDexTestMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DeviceDexTestOutput struct{ *pulumi.OutputState }
 
 func (DeviceDexTestOutput) ElementType() reflect.Type {
@@ -301,12 +282,6 @@ func (o DeviceDexTestOutput) ToDeviceDexTestOutput() DeviceDexTestOutput {
 
 func (o DeviceDexTestOutput) ToDeviceDexTestOutputWithContext(ctx context.Context) DeviceDexTestOutput {
 	return o
-}
-
-func (o DeviceDexTestOutput) ToOutput(ctx context.Context) pulumix.Output[*DeviceDexTest] {
-	return pulumix.Output[*DeviceDexTest]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
@@ -363,12 +338,6 @@ func (o DeviceDexTestArrayOutput) ToDeviceDexTestArrayOutputWithContext(ctx cont
 	return o
 }
 
-func (o DeviceDexTestArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*DeviceDexTest] {
-	return pulumix.Output[[]*DeviceDexTest]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o DeviceDexTestArrayOutput) Index(i pulumi.IntInput) DeviceDexTestOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *DeviceDexTest {
 		return vs[0].([]*DeviceDexTest)[vs[1].(int)]
@@ -387,12 +356,6 @@ func (o DeviceDexTestMapOutput) ToDeviceDexTestMapOutput() DeviceDexTestMapOutpu
 
 func (o DeviceDexTestMapOutput) ToDeviceDexTestMapOutputWithContext(ctx context.Context) DeviceDexTestMapOutput {
 	return o
-}
-
-func (o DeviceDexTestMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*DeviceDexTest] {
-	return pulumix.Output[map[string]*DeviceDexTest]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DeviceDexTestMapOutput) MapIndex(k pulumi.StringInput) DeviceDexTestOutput {

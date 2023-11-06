@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a resource which manages Cloudflare API tokens.
@@ -172,12 +171,6 @@ func (i *ApiToken) ToApiTokenOutputWithContext(ctx context.Context) ApiTokenOutp
 	return pulumi.ToOutputWithContext(ctx, i).(ApiTokenOutput)
 }
 
-func (i *ApiToken) ToOutput(ctx context.Context) pulumix.Output[*ApiToken] {
-	return pulumix.Output[*ApiToken]{
-		OutputState: i.ToApiTokenOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ApiTokenArrayInput is an input type that accepts ApiTokenArray and ApiTokenArrayOutput values.
 // You can construct a concrete instance of `ApiTokenArrayInput` via:
 //
@@ -201,12 +194,6 @@ func (i ApiTokenArray) ToApiTokenArrayOutput() ApiTokenArrayOutput {
 
 func (i ApiTokenArray) ToApiTokenArrayOutputWithContext(ctx context.Context) ApiTokenArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ApiTokenArrayOutput)
-}
-
-func (i ApiTokenArray) ToOutput(ctx context.Context) pulumix.Output[[]*ApiToken] {
-	return pulumix.Output[[]*ApiToken]{
-		OutputState: i.ToApiTokenArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // ApiTokenMapInput is an input type that accepts ApiTokenMap and ApiTokenMapOutput values.
@@ -234,12 +221,6 @@ func (i ApiTokenMap) ToApiTokenMapOutputWithContext(ctx context.Context) ApiToke
 	return pulumi.ToOutputWithContext(ctx, i).(ApiTokenMapOutput)
 }
 
-func (i ApiTokenMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ApiToken] {
-	return pulumix.Output[map[string]*ApiToken]{
-		OutputState: i.ToApiTokenMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ApiTokenOutput struct{ *pulumi.OutputState }
 
 func (ApiTokenOutput) ElementType() reflect.Type {
@@ -252,12 +233,6 @@ func (o ApiTokenOutput) ToApiTokenOutput() ApiTokenOutput {
 
 func (o ApiTokenOutput) ToApiTokenOutputWithContext(ctx context.Context) ApiTokenOutput {
 	return o
-}
-
-func (o ApiTokenOutput) ToOutput(ctx context.Context) pulumix.Output[*ApiToken] {
-	return pulumix.Output[*ApiToken]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Conditions under which the token should be considered valid.
@@ -318,12 +293,6 @@ func (o ApiTokenArrayOutput) ToApiTokenArrayOutputWithContext(ctx context.Contex
 	return o
 }
 
-func (o ApiTokenArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ApiToken] {
-	return pulumix.Output[[]*ApiToken]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ApiTokenArrayOutput) Index(i pulumi.IntInput) ApiTokenOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ApiToken {
 		return vs[0].([]*ApiToken)[vs[1].(int)]
@@ -342,12 +311,6 @@ func (o ApiTokenMapOutput) ToApiTokenMapOutput() ApiTokenMapOutput {
 
 func (o ApiTokenMapOutput) ToApiTokenMapOutputWithContext(ctx context.Context) ApiTokenMapOutput {
 	return o
-}
-
-func (o ApiTokenMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ApiToken] {
-	return pulumix.Output[map[string]*ApiToken]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ApiTokenMapOutput) MapIndex(k pulumi.StringInput) ApiTokenOutput {
