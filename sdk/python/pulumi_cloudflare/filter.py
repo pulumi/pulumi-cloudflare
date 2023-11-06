@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['FilterArgs', 'Filter']
@@ -27,14 +27,39 @@ class FilterArgs:
         :param pulumi.Input[bool] paused: Whether this filter is currently paused.
         :param pulumi.Input[str] ref: Short reference tag to quickly select related rules.
         """
-        pulumi.set(__self__, "expression", expression)
-        pulumi.set(__self__, "zone_id", zone_id)
+        FilterArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            expression=expression,
+            zone_id=zone_id,
+            description=description,
+            paused=paused,
+            ref=ref,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             expression: Optional[pulumi.Input[str]] = None,
+             zone_id: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             paused: Optional[pulumi.Input[bool]] = None,
+             ref: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if expression is None:
+            raise TypeError("Missing 'expression' argument")
+        if zone_id is None and 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+        if zone_id is None:
+            raise TypeError("Missing 'zone_id' argument")
+
+        _setter("expression", expression)
+        _setter("zone_id", zone_id)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if paused is not None:
-            pulumi.set(__self__, "paused", paused)
+            _setter("paused", paused)
         if ref is not None:
-            pulumi.set(__self__, "ref", ref)
+            _setter("ref", ref)
 
     @property
     @pulumi.getter
@@ -113,16 +138,37 @@ class _FilterState:
         :param pulumi.Input[str] ref: Short reference tag to quickly select related rules.
         :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         """
+        _FilterState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            description=description,
+            expression=expression,
+            paused=paused,
+            ref=ref,
+            zone_id=zone_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             description: Optional[pulumi.Input[str]] = None,
+             expression: Optional[pulumi.Input[str]] = None,
+             paused: Optional[pulumi.Input[bool]] = None,
+             ref: Optional[pulumi.Input[str]] = None,
+             zone_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if zone_id is None and 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if expression is not None:
-            pulumi.set(__self__, "expression", expression)
+            _setter("expression", expression)
         if paused is not None:
-            pulumi.set(__self__, "paused", paused)
+            _setter("paused", paused)
         if ref is not None:
-            pulumi.set(__self__, "ref", ref)
+            _setter("ref", ref)
         if zone_id is not None:
-            pulumi.set(__self__, "zone_id", zone_id)
+            _setter("zone_id", zone_id)
 
     @property
     @pulumi.getter
@@ -258,6 +304,10 @@ class Filter(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            FilterArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

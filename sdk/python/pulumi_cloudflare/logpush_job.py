@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['LogpushJobArgs', 'LogpushJob']
@@ -45,32 +45,89 @@ class LogpushJobArgs:
         :param pulumi.Input[str] ownership_challenge: Ownership challenge token to prove destination ownership, required when destination is Amazon S3, Google Cloud Storage, Microsoft Azure or Sumo Logic. See [Developer documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#usage).
         :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. Must provide only one of `account_id`, `zone_id`.
         """
-        pulumi.set(__self__, "dataset", dataset)
-        pulumi.set(__self__, "destination_conf", destination_conf)
+        LogpushJobArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            dataset=dataset,
+            destination_conf=destination_conf,
+            account_id=account_id,
+            enabled=enabled,
+            filter=filter,
+            frequency=frequency,
+            kind=kind,
+            logpull_options=logpull_options,
+            max_upload_bytes=max_upload_bytes,
+            max_upload_interval_seconds=max_upload_interval_seconds,
+            max_upload_records=max_upload_records,
+            name=name,
+            ownership_challenge=ownership_challenge,
+            zone_id=zone_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             dataset: Optional[pulumi.Input[str]] = None,
+             destination_conf: Optional[pulumi.Input[str]] = None,
+             account_id: Optional[pulumi.Input[str]] = None,
+             enabled: Optional[pulumi.Input[bool]] = None,
+             filter: Optional[pulumi.Input[str]] = None,
+             frequency: Optional[pulumi.Input[str]] = None,
+             kind: Optional[pulumi.Input[str]] = None,
+             logpull_options: Optional[pulumi.Input[str]] = None,
+             max_upload_bytes: Optional[pulumi.Input[int]] = None,
+             max_upload_interval_seconds: Optional[pulumi.Input[int]] = None,
+             max_upload_records: Optional[pulumi.Input[int]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             ownership_challenge: Optional[pulumi.Input[str]] = None,
+             zone_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if dataset is None:
+            raise TypeError("Missing 'dataset' argument")
+        if destination_conf is None and 'destinationConf' in kwargs:
+            destination_conf = kwargs['destinationConf']
+        if destination_conf is None:
+            raise TypeError("Missing 'destination_conf' argument")
+        if account_id is None and 'accountId' in kwargs:
+            account_id = kwargs['accountId']
+        if logpull_options is None and 'logpullOptions' in kwargs:
+            logpull_options = kwargs['logpullOptions']
+        if max_upload_bytes is None and 'maxUploadBytes' in kwargs:
+            max_upload_bytes = kwargs['maxUploadBytes']
+        if max_upload_interval_seconds is None and 'maxUploadIntervalSeconds' in kwargs:
+            max_upload_interval_seconds = kwargs['maxUploadIntervalSeconds']
+        if max_upload_records is None and 'maxUploadRecords' in kwargs:
+            max_upload_records = kwargs['maxUploadRecords']
+        if ownership_challenge is None and 'ownershipChallenge' in kwargs:
+            ownership_challenge = kwargs['ownershipChallenge']
+        if zone_id is None and 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
+        _setter("dataset", dataset)
+        _setter("destination_conf", destination_conf)
         if account_id is not None:
-            pulumi.set(__self__, "account_id", account_id)
+            _setter("account_id", account_id)
         if enabled is not None:
-            pulumi.set(__self__, "enabled", enabled)
+            _setter("enabled", enabled)
         if filter is not None:
-            pulumi.set(__self__, "filter", filter)
+            _setter("filter", filter)
         if frequency is not None:
-            pulumi.set(__self__, "frequency", frequency)
+            _setter("frequency", frequency)
         if kind is not None:
-            pulumi.set(__self__, "kind", kind)
+            _setter("kind", kind)
         if logpull_options is not None:
-            pulumi.set(__self__, "logpull_options", logpull_options)
+            _setter("logpull_options", logpull_options)
         if max_upload_bytes is not None:
-            pulumi.set(__self__, "max_upload_bytes", max_upload_bytes)
+            _setter("max_upload_bytes", max_upload_bytes)
         if max_upload_interval_seconds is not None:
-            pulumi.set(__self__, "max_upload_interval_seconds", max_upload_interval_seconds)
+            _setter("max_upload_interval_seconds", max_upload_interval_seconds)
         if max_upload_records is not None:
-            pulumi.set(__self__, "max_upload_records", max_upload_records)
+            _setter("max_upload_records", max_upload_records)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if ownership_challenge is not None:
-            pulumi.set(__self__, "ownership_challenge", ownership_challenge)
+            _setter("ownership_challenge", ownership_challenge)
         if zone_id is not None:
-            pulumi.set(__self__, "zone_id", zone_id)
+            _setter("zone_id", zone_id)
 
     @property
     @pulumi.getter
@@ -275,34 +332,87 @@ class _LogpushJobState:
         :param pulumi.Input[str] ownership_challenge: Ownership challenge token to prove destination ownership, required when destination is Amazon S3, Google Cloud Storage, Microsoft Azure or Sumo Logic. See [Developer documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#usage).
         :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. Must provide only one of `account_id`, `zone_id`.
         """
+        _LogpushJobState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            account_id=account_id,
+            dataset=dataset,
+            destination_conf=destination_conf,
+            enabled=enabled,
+            filter=filter,
+            frequency=frequency,
+            kind=kind,
+            logpull_options=logpull_options,
+            max_upload_bytes=max_upload_bytes,
+            max_upload_interval_seconds=max_upload_interval_seconds,
+            max_upload_records=max_upload_records,
+            name=name,
+            ownership_challenge=ownership_challenge,
+            zone_id=zone_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             account_id: Optional[pulumi.Input[str]] = None,
+             dataset: Optional[pulumi.Input[str]] = None,
+             destination_conf: Optional[pulumi.Input[str]] = None,
+             enabled: Optional[pulumi.Input[bool]] = None,
+             filter: Optional[pulumi.Input[str]] = None,
+             frequency: Optional[pulumi.Input[str]] = None,
+             kind: Optional[pulumi.Input[str]] = None,
+             logpull_options: Optional[pulumi.Input[str]] = None,
+             max_upload_bytes: Optional[pulumi.Input[int]] = None,
+             max_upload_interval_seconds: Optional[pulumi.Input[int]] = None,
+             max_upload_records: Optional[pulumi.Input[int]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             ownership_challenge: Optional[pulumi.Input[str]] = None,
+             zone_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if account_id is None and 'accountId' in kwargs:
+            account_id = kwargs['accountId']
+        if destination_conf is None and 'destinationConf' in kwargs:
+            destination_conf = kwargs['destinationConf']
+        if logpull_options is None and 'logpullOptions' in kwargs:
+            logpull_options = kwargs['logpullOptions']
+        if max_upload_bytes is None and 'maxUploadBytes' in kwargs:
+            max_upload_bytes = kwargs['maxUploadBytes']
+        if max_upload_interval_seconds is None and 'maxUploadIntervalSeconds' in kwargs:
+            max_upload_interval_seconds = kwargs['maxUploadIntervalSeconds']
+        if max_upload_records is None and 'maxUploadRecords' in kwargs:
+            max_upload_records = kwargs['maxUploadRecords']
+        if ownership_challenge is None and 'ownershipChallenge' in kwargs:
+            ownership_challenge = kwargs['ownershipChallenge']
+        if zone_id is None and 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         if account_id is not None:
-            pulumi.set(__self__, "account_id", account_id)
+            _setter("account_id", account_id)
         if dataset is not None:
-            pulumi.set(__self__, "dataset", dataset)
+            _setter("dataset", dataset)
         if destination_conf is not None:
-            pulumi.set(__self__, "destination_conf", destination_conf)
+            _setter("destination_conf", destination_conf)
         if enabled is not None:
-            pulumi.set(__self__, "enabled", enabled)
+            _setter("enabled", enabled)
         if filter is not None:
-            pulumi.set(__self__, "filter", filter)
+            _setter("filter", filter)
         if frequency is not None:
-            pulumi.set(__self__, "frequency", frequency)
+            _setter("frequency", frequency)
         if kind is not None:
-            pulumi.set(__self__, "kind", kind)
+            _setter("kind", kind)
         if logpull_options is not None:
-            pulumi.set(__self__, "logpull_options", logpull_options)
+            _setter("logpull_options", logpull_options)
         if max_upload_bytes is not None:
-            pulumi.set(__self__, "max_upload_bytes", max_upload_bytes)
+            _setter("max_upload_bytes", max_upload_bytes)
         if max_upload_interval_seconds is not None:
-            pulumi.set(__self__, "max_upload_interval_seconds", max_upload_interval_seconds)
+            _setter("max_upload_interval_seconds", max_upload_interval_seconds)
         if max_upload_records is not None:
-            pulumi.set(__self__, "max_upload_records", max_upload_records)
+            _setter("max_upload_records", max_upload_records)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if ownership_challenge is not None:
-            pulumi.set(__self__, "ownership_challenge", ownership_challenge)
+            _setter("ownership_challenge", ownership_challenge)
         if zone_id is not None:
-            pulumi.set(__self__, "zone_id", zone_id)
+            _setter("zone_id", zone_id)
 
     @property
     @pulumi.getter(name="accountId")
@@ -556,6 +666,10 @@ class LogpushJob(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            LogpushJobArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

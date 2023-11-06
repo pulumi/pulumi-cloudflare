@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -53,39 +53,100 @@ class LoadBalancerMonitorArgs:
         :param pulumi.Input[int] timeout: The timeout (in seconds) before marking the health check as failed. Defaults to `5`.
         :param pulumi.Input[str] type: The protocol to use for the healthcheck. Available values: `http`, `https`, `tcp`, `udp_icmp`, `icmp_ping`, `smtp`. Defaults to `http`.
         """
-        pulumi.set(__self__, "account_id", account_id)
+        LoadBalancerMonitorArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            account_id=account_id,
+            allow_insecure=allow_insecure,
+            consecutive_down=consecutive_down,
+            consecutive_up=consecutive_up,
+            description=description,
+            expected_body=expected_body,
+            expected_codes=expected_codes,
+            follow_redirects=follow_redirects,
+            headers=headers,
+            interval=interval,
+            method=method,
+            path=path,
+            port=port,
+            probe_zone=probe_zone,
+            retries=retries,
+            timeout=timeout,
+            type=type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             account_id: Optional[pulumi.Input[str]] = None,
+             allow_insecure: Optional[pulumi.Input[bool]] = None,
+             consecutive_down: Optional[pulumi.Input[int]] = None,
+             consecutive_up: Optional[pulumi.Input[int]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             expected_body: Optional[pulumi.Input[str]] = None,
+             expected_codes: Optional[pulumi.Input[str]] = None,
+             follow_redirects: Optional[pulumi.Input[bool]] = None,
+             headers: Optional[pulumi.Input[Sequence[pulumi.Input['LoadBalancerMonitorHeaderArgs']]]] = None,
+             interval: Optional[pulumi.Input[int]] = None,
+             method: Optional[pulumi.Input[str]] = None,
+             path: Optional[pulumi.Input[str]] = None,
+             port: Optional[pulumi.Input[int]] = None,
+             probe_zone: Optional[pulumi.Input[str]] = None,
+             retries: Optional[pulumi.Input[int]] = None,
+             timeout: Optional[pulumi.Input[int]] = None,
+             type: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if account_id is None and 'accountId' in kwargs:
+            account_id = kwargs['accountId']
+        if account_id is None:
+            raise TypeError("Missing 'account_id' argument")
+        if allow_insecure is None and 'allowInsecure' in kwargs:
+            allow_insecure = kwargs['allowInsecure']
+        if consecutive_down is None and 'consecutiveDown' in kwargs:
+            consecutive_down = kwargs['consecutiveDown']
+        if consecutive_up is None and 'consecutiveUp' in kwargs:
+            consecutive_up = kwargs['consecutiveUp']
+        if expected_body is None and 'expectedBody' in kwargs:
+            expected_body = kwargs['expectedBody']
+        if expected_codes is None and 'expectedCodes' in kwargs:
+            expected_codes = kwargs['expectedCodes']
+        if follow_redirects is None and 'followRedirects' in kwargs:
+            follow_redirects = kwargs['followRedirects']
+        if probe_zone is None and 'probeZone' in kwargs:
+            probe_zone = kwargs['probeZone']
+
+        _setter("account_id", account_id)
         if allow_insecure is not None:
-            pulumi.set(__self__, "allow_insecure", allow_insecure)
+            _setter("allow_insecure", allow_insecure)
         if consecutive_down is not None:
-            pulumi.set(__self__, "consecutive_down", consecutive_down)
+            _setter("consecutive_down", consecutive_down)
         if consecutive_up is not None:
-            pulumi.set(__self__, "consecutive_up", consecutive_up)
+            _setter("consecutive_up", consecutive_up)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if expected_body is not None:
-            pulumi.set(__self__, "expected_body", expected_body)
+            _setter("expected_body", expected_body)
         if expected_codes is not None:
-            pulumi.set(__self__, "expected_codes", expected_codes)
+            _setter("expected_codes", expected_codes)
         if follow_redirects is not None:
-            pulumi.set(__self__, "follow_redirects", follow_redirects)
+            _setter("follow_redirects", follow_redirects)
         if headers is not None:
-            pulumi.set(__self__, "headers", headers)
+            _setter("headers", headers)
         if interval is not None:
-            pulumi.set(__self__, "interval", interval)
+            _setter("interval", interval)
         if method is not None:
-            pulumi.set(__self__, "method", method)
+            _setter("method", method)
         if path is not None:
-            pulumi.set(__self__, "path", path)
+            _setter("path", path)
         if port is not None:
-            pulumi.set(__self__, "port", port)
+            _setter("port", port)
         if probe_zone is not None:
-            pulumi.set(__self__, "probe_zone", probe_zone)
+            _setter("probe_zone", probe_zone)
         if retries is not None:
-            pulumi.set(__self__, "retries", retries)
+            _setter("retries", retries)
         if timeout is not None:
-            pulumi.set(__self__, "timeout", timeout)
+            _setter("timeout", timeout)
         if type is not None:
-            pulumi.set(__self__, "type", type)
+            _setter("type", type)
 
     @property
     @pulumi.getter(name="accountId")
@@ -336,44 +397,111 @@ class _LoadBalancerMonitorState:
         :param pulumi.Input[int] timeout: The timeout (in seconds) before marking the health check as failed. Defaults to `5`.
         :param pulumi.Input[str] type: The protocol to use for the healthcheck. Available values: `http`, `https`, `tcp`, `udp_icmp`, `icmp_ping`, `smtp`. Defaults to `http`.
         """
+        _LoadBalancerMonitorState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            account_id=account_id,
+            allow_insecure=allow_insecure,
+            consecutive_down=consecutive_down,
+            consecutive_up=consecutive_up,
+            created_on=created_on,
+            description=description,
+            expected_body=expected_body,
+            expected_codes=expected_codes,
+            follow_redirects=follow_redirects,
+            headers=headers,
+            interval=interval,
+            method=method,
+            modified_on=modified_on,
+            path=path,
+            port=port,
+            probe_zone=probe_zone,
+            retries=retries,
+            timeout=timeout,
+            type=type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             account_id: Optional[pulumi.Input[str]] = None,
+             allow_insecure: Optional[pulumi.Input[bool]] = None,
+             consecutive_down: Optional[pulumi.Input[int]] = None,
+             consecutive_up: Optional[pulumi.Input[int]] = None,
+             created_on: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             expected_body: Optional[pulumi.Input[str]] = None,
+             expected_codes: Optional[pulumi.Input[str]] = None,
+             follow_redirects: Optional[pulumi.Input[bool]] = None,
+             headers: Optional[pulumi.Input[Sequence[pulumi.Input['LoadBalancerMonitorHeaderArgs']]]] = None,
+             interval: Optional[pulumi.Input[int]] = None,
+             method: Optional[pulumi.Input[str]] = None,
+             modified_on: Optional[pulumi.Input[str]] = None,
+             path: Optional[pulumi.Input[str]] = None,
+             port: Optional[pulumi.Input[int]] = None,
+             probe_zone: Optional[pulumi.Input[str]] = None,
+             retries: Optional[pulumi.Input[int]] = None,
+             timeout: Optional[pulumi.Input[int]] = None,
+             type: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if account_id is None and 'accountId' in kwargs:
+            account_id = kwargs['accountId']
+        if allow_insecure is None and 'allowInsecure' in kwargs:
+            allow_insecure = kwargs['allowInsecure']
+        if consecutive_down is None and 'consecutiveDown' in kwargs:
+            consecutive_down = kwargs['consecutiveDown']
+        if consecutive_up is None and 'consecutiveUp' in kwargs:
+            consecutive_up = kwargs['consecutiveUp']
+        if created_on is None and 'createdOn' in kwargs:
+            created_on = kwargs['createdOn']
+        if expected_body is None and 'expectedBody' in kwargs:
+            expected_body = kwargs['expectedBody']
+        if expected_codes is None and 'expectedCodes' in kwargs:
+            expected_codes = kwargs['expectedCodes']
+        if follow_redirects is None and 'followRedirects' in kwargs:
+            follow_redirects = kwargs['followRedirects']
+        if modified_on is None and 'modifiedOn' in kwargs:
+            modified_on = kwargs['modifiedOn']
+        if probe_zone is None and 'probeZone' in kwargs:
+            probe_zone = kwargs['probeZone']
+
         if account_id is not None:
-            pulumi.set(__self__, "account_id", account_id)
+            _setter("account_id", account_id)
         if allow_insecure is not None:
-            pulumi.set(__self__, "allow_insecure", allow_insecure)
+            _setter("allow_insecure", allow_insecure)
         if consecutive_down is not None:
-            pulumi.set(__self__, "consecutive_down", consecutive_down)
+            _setter("consecutive_down", consecutive_down)
         if consecutive_up is not None:
-            pulumi.set(__self__, "consecutive_up", consecutive_up)
+            _setter("consecutive_up", consecutive_up)
         if created_on is not None:
-            pulumi.set(__self__, "created_on", created_on)
+            _setter("created_on", created_on)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if expected_body is not None:
-            pulumi.set(__self__, "expected_body", expected_body)
+            _setter("expected_body", expected_body)
         if expected_codes is not None:
-            pulumi.set(__self__, "expected_codes", expected_codes)
+            _setter("expected_codes", expected_codes)
         if follow_redirects is not None:
-            pulumi.set(__self__, "follow_redirects", follow_redirects)
+            _setter("follow_redirects", follow_redirects)
         if headers is not None:
-            pulumi.set(__self__, "headers", headers)
+            _setter("headers", headers)
         if interval is not None:
-            pulumi.set(__self__, "interval", interval)
+            _setter("interval", interval)
         if method is not None:
-            pulumi.set(__self__, "method", method)
+            _setter("method", method)
         if modified_on is not None:
-            pulumi.set(__self__, "modified_on", modified_on)
+            _setter("modified_on", modified_on)
         if path is not None:
-            pulumi.set(__self__, "path", path)
+            _setter("path", path)
         if port is not None:
-            pulumi.set(__self__, "port", port)
+            _setter("port", port)
         if probe_zone is not None:
-            pulumi.set(__self__, "probe_zone", probe_zone)
+            _setter("probe_zone", probe_zone)
         if retries is not None:
-            pulumi.set(__self__, "retries", retries)
+            _setter("retries", retries)
         if timeout is not None:
-            pulumi.set(__self__, "timeout", timeout)
+            _setter("timeout", timeout)
         if type is not None:
-            pulumi.set(__self__, "type", type)
+            _setter("type", type)
 
     @property
     @pulumi.getter(name="accountId")
@@ -723,6 +851,10 @@ class LoadBalancerMonitor(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            LoadBalancerMonitorArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

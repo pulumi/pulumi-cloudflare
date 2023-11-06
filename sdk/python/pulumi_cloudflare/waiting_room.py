@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -55,37 +55,118 @@ class WaitingRoomArgs:
         :param pulumi.Input[int] session_duration: Lifetime of a cookie (in minutes) set by Cloudflare for users who get access to the origin. Defaults to `5`.
         :param pulumi.Input[bool] suspended: Suspends the waiting room.
         """
-        pulumi.set(__self__, "host", host)
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "new_users_per_minute", new_users_per_minute)
-        pulumi.set(__self__, "total_active_users", total_active_users)
-        pulumi.set(__self__, "zone_id", zone_id)
+        WaitingRoomArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            host=host,
+            name=name,
+            new_users_per_minute=new_users_per_minute,
+            total_active_users=total_active_users,
+            zone_id=zone_id,
+            additional_routes=additional_routes,
+            cookie_suffix=cookie_suffix,
+            custom_page_html=custom_page_html,
+            default_template_language=default_template_language,
+            description=description,
+            disable_session_renewal=disable_session_renewal,
+            json_response_enabled=json_response_enabled,
+            path=path,
+            queue_all=queue_all,
+            queueing_method=queueing_method,
+            queueing_status_code=queueing_status_code,
+            session_duration=session_duration,
+            suspended=suspended,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             host: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             new_users_per_minute: Optional[pulumi.Input[int]] = None,
+             total_active_users: Optional[pulumi.Input[int]] = None,
+             zone_id: Optional[pulumi.Input[str]] = None,
+             additional_routes: Optional[pulumi.Input[Sequence[pulumi.Input['WaitingRoomAdditionalRouteArgs']]]] = None,
+             cookie_suffix: Optional[pulumi.Input[str]] = None,
+             custom_page_html: Optional[pulumi.Input[str]] = None,
+             default_template_language: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             disable_session_renewal: Optional[pulumi.Input[bool]] = None,
+             json_response_enabled: Optional[pulumi.Input[bool]] = None,
+             path: Optional[pulumi.Input[str]] = None,
+             queue_all: Optional[pulumi.Input[bool]] = None,
+             queueing_method: Optional[pulumi.Input[str]] = None,
+             queueing_status_code: Optional[pulumi.Input[int]] = None,
+             session_duration: Optional[pulumi.Input[int]] = None,
+             suspended: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if host is None:
+            raise TypeError("Missing 'host' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if new_users_per_minute is None and 'newUsersPerMinute' in kwargs:
+            new_users_per_minute = kwargs['newUsersPerMinute']
+        if new_users_per_minute is None:
+            raise TypeError("Missing 'new_users_per_minute' argument")
+        if total_active_users is None and 'totalActiveUsers' in kwargs:
+            total_active_users = kwargs['totalActiveUsers']
+        if total_active_users is None:
+            raise TypeError("Missing 'total_active_users' argument")
+        if zone_id is None and 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+        if zone_id is None:
+            raise TypeError("Missing 'zone_id' argument")
+        if additional_routes is None and 'additionalRoutes' in kwargs:
+            additional_routes = kwargs['additionalRoutes']
+        if cookie_suffix is None and 'cookieSuffix' in kwargs:
+            cookie_suffix = kwargs['cookieSuffix']
+        if custom_page_html is None and 'customPageHtml' in kwargs:
+            custom_page_html = kwargs['customPageHtml']
+        if default_template_language is None and 'defaultTemplateLanguage' in kwargs:
+            default_template_language = kwargs['defaultTemplateLanguage']
+        if disable_session_renewal is None and 'disableSessionRenewal' in kwargs:
+            disable_session_renewal = kwargs['disableSessionRenewal']
+        if json_response_enabled is None and 'jsonResponseEnabled' in kwargs:
+            json_response_enabled = kwargs['jsonResponseEnabled']
+        if queue_all is None and 'queueAll' in kwargs:
+            queue_all = kwargs['queueAll']
+        if queueing_method is None and 'queueingMethod' in kwargs:
+            queueing_method = kwargs['queueingMethod']
+        if queueing_status_code is None and 'queueingStatusCode' in kwargs:
+            queueing_status_code = kwargs['queueingStatusCode']
+        if session_duration is None and 'sessionDuration' in kwargs:
+            session_duration = kwargs['sessionDuration']
+
+        _setter("host", host)
+        _setter("name", name)
+        _setter("new_users_per_minute", new_users_per_minute)
+        _setter("total_active_users", total_active_users)
+        _setter("zone_id", zone_id)
         if additional_routes is not None:
-            pulumi.set(__self__, "additional_routes", additional_routes)
+            _setter("additional_routes", additional_routes)
         if cookie_suffix is not None:
-            pulumi.set(__self__, "cookie_suffix", cookie_suffix)
+            _setter("cookie_suffix", cookie_suffix)
         if custom_page_html is not None:
-            pulumi.set(__self__, "custom_page_html", custom_page_html)
+            _setter("custom_page_html", custom_page_html)
         if default_template_language is not None:
-            pulumi.set(__self__, "default_template_language", default_template_language)
+            _setter("default_template_language", default_template_language)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if disable_session_renewal is not None:
-            pulumi.set(__self__, "disable_session_renewal", disable_session_renewal)
+            _setter("disable_session_renewal", disable_session_renewal)
         if json_response_enabled is not None:
-            pulumi.set(__self__, "json_response_enabled", json_response_enabled)
+            _setter("json_response_enabled", json_response_enabled)
         if path is not None:
-            pulumi.set(__self__, "path", path)
+            _setter("path", path)
         if queue_all is not None:
-            pulumi.set(__self__, "queue_all", queue_all)
+            _setter("queue_all", queue_all)
         if queueing_method is not None:
-            pulumi.set(__self__, "queueing_method", queueing_method)
+            _setter("queueing_method", queueing_method)
         if queueing_status_code is not None:
-            pulumi.set(__self__, "queueing_status_code", queueing_status_code)
+            _setter("queueing_status_code", queueing_status_code)
         if session_duration is not None:
-            pulumi.set(__self__, "session_duration", session_duration)
+            _setter("session_duration", session_duration)
         if suspended is not None:
-            pulumi.set(__self__, "suspended", suspended)
+            _setter("suspended", suspended)
 
     @property
     @pulumi.getter
@@ -346,42 +427,113 @@ class _WaitingRoomState:
         :param pulumi.Input[int] total_active_users: The total number of active user sessions on the route at a point in time.
         :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         """
+        _WaitingRoomState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            additional_routes=additional_routes,
+            cookie_suffix=cookie_suffix,
+            custom_page_html=custom_page_html,
+            default_template_language=default_template_language,
+            description=description,
+            disable_session_renewal=disable_session_renewal,
+            host=host,
+            json_response_enabled=json_response_enabled,
+            name=name,
+            new_users_per_minute=new_users_per_minute,
+            path=path,
+            queue_all=queue_all,
+            queueing_method=queueing_method,
+            queueing_status_code=queueing_status_code,
+            session_duration=session_duration,
+            suspended=suspended,
+            total_active_users=total_active_users,
+            zone_id=zone_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             additional_routes: Optional[pulumi.Input[Sequence[pulumi.Input['WaitingRoomAdditionalRouteArgs']]]] = None,
+             cookie_suffix: Optional[pulumi.Input[str]] = None,
+             custom_page_html: Optional[pulumi.Input[str]] = None,
+             default_template_language: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             disable_session_renewal: Optional[pulumi.Input[bool]] = None,
+             host: Optional[pulumi.Input[str]] = None,
+             json_response_enabled: Optional[pulumi.Input[bool]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             new_users_per_minute: Optional[pulumi.Input[int]] = None,
+             path: Optional[pulumi.Input[str]] = None,
+             queue_all: Optional[pulumi.Input[bool]] = None,
+             queueing_method: Optional[pulumi.Input[str]] = None,
+             queueing_status_code: Optional[pulumi.Input[int]] = None,
+             session_duration: Optional[pulumi.Input[int]] = None,
+             suspended: Optional[pulumi.Input[bool]] = None,
+             total_active_users: Optional[pulumi.Input[int]] = None,
+             zone_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if additional_routes is None and 'additionalRoutes' in kwargs:
+            additional_routes = kwargs['additionalRoutes']
+        if cookie_suffix is None and 'cookieSuffix' in kwargs:
+            cookie_suffix = kwargs['cookieSuffix']
+        if custom_page_html is None and 'customPageHtml' in kwargs:
+            custom_page_html = kwargs['customPageHtml']
+        if default_template_language is None and 'defaultTemplateLanguage' in kwargs:
+            default_template_language = kwargs['defaultTemplateLanguage']
+        if disable_session_renewal is None and 'disableSessionRenewal' in kwargs:
+            disable_session_renewal = kwargs['disableSessionRenewal']
+        if json_response_enabled is None and 'jsonResponseEnabled' in kwargs:
+            json_response_enabled = kwargs['jsonResponseEnabled']
+        if new_users_per_minute is None and 'newUsersPerMinute' in kwargs:
+            new_users_per_minute = kwargs['newUsersPerMinute']
+        if queue_all is None and 'queueAll' in kwargs:
+            queue_all = kwargs['queueAll']
+        if queueing_method is None and 'queueingMethod' in kwargs:
+            queueing_method = kwargs['queueingMethod']
+        if queueing_status_code is None and 'queueingStatusCode' in kwargs:
+            queueing_status_code = kwargs['queueingStatusCode']
+        if session_duration is None and 'sessionDuration' in kwargs:
+            session_duration = kwargs['sessionDuration']
+        if total_active_users is None and 'totalActiveUsers' in kwargs:
+            total_active_users = kwargs['totalActiveUsers']
+        if zone_id is None and 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         if additional_routes is not None:
-            pulumi.set(__self__, "additional_routes", additional_routes)
+            _setter("additional_routes", additional_routes)
         if cookie_suffix is not None:
-            pulumi.set(__self__, "cookie_suffix", cookie_suffix)
+            _setter("cookie_suffix", cookie_suffix)
         if custom_page_html is not None:
-            pulumi.set(__self__, "custom_page_html", custom_page_html)
+            _setter("custom_page_html", custom_page_html)
         if default_template_language is not None:
-            pulumi.set(__self__, "default_template_language", default_template_language)
+            _setter("default_template_language", default_template_language)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if disable_session_renewal is not None:
-            pulumi.set(__self__, "disable_session_renewal", disable_session_renewal)
+            _setter("disable_session_renewal", disable_session_renewal)
         if host is not None:
-            pulumi.set(__self__, "host", host)
+            _setter("host", host)
         if json_response_enabled is not None:
-            pulumi.set(__self__, "json_response_enabled", json_response_enabled)
+            _setter("json_response_enabled", json_response_enabled)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if new_users_per_minute is not None:
-            pulumi.set(__self__, "new_users_per_minute", new_users_per_minute)
+            _setter("new_users_per_minute", new_users_per_minute)
         if path is not None:
-            pulumi.set(__self__, "path", path)
+            _setter("path", path)
         if queue_all is not None:
-            pulumi.set(__self__, "queue_all", queue_all)
+            _setter("queue_all", queue_all)
         if queueing_method is not None:
-            pulumi.set(__self__, "queueing_method", queueing_method)
+            _setter("queueing_method", queueing_method)
         if queueing_status_code is not None:
-            pulumi.set(__self__, "queueing_status_code", queueing_status_code)
+            _setter("queueing_status_code", queueing_status_code)
         if session_duration is not None:
-            pulumi.set(__self__, "session_duration", session_duration)
+            _setter("session_duration", session_duration)
         if suspended is not None:
-            pulumi.set(__self__, "suspended", suspended)
+            _setter("suspended", suspended)
         if total_active_users is not None:
-            pulumi.set(__self__, "total_active_users", total_active_users)
+            _setter("total_active_users", total_active_users)
         if zone_id is not None:
-            pulumi.set(__self__, "zone_id", zone_id)
+            _setter("zone_id", zone_id)
 
     @property
     @pulumi.getter(name="additionalRoutes")
@@ -737,6 +889,10 @@ class WaitingRoom(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            WaitingRoomArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['TunnelRouteArgs', 'TunnelRoute']
@@ -27,13 +27,44 @@ class TunnelRouteArgs:
         :param pulumi.Input[str] comment: Description of the tunnel route.
         :param pulumi.Input[str] virtual_network_id: The ID of the virtual network for which this route is being added; uses the default virtual network of the account if none is provided. **Modifying this attribute will force creation of a new resource.**
         """
-        pulumi.set(__self__, "account_id", account_id)
-        pulumi.set(__self__, "network", network)
-        pulumi.set(__self__, "tunnel_id", tunnel_id)
+        TunnelRouteArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            account_id=account_id,
+            network=network,
+            tunnel_id=tunnel_id,
+            comment=comment,
+            virtual_network_id=virtual_network_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             account_id: Optional[pulumi.Input[str]] = None,
+             network: Optional[pulumi.Input[str]] = None,
+             tunnel_id: Optional[pulumi.Input[str]] = None,
+             comment: Optional[pulumi.Input[str]] = None,
+             virtual_network_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if account_id is None and 'accountId' in kwargs:
+            account_id = kwargs['accountId']
+        if account_id is None:
+            raise TypeError("Missing 'account_id' argument")
+        if network is None:
+            raise TypeError("Missing 'network' argument")
+        if tunnel_id is None and 'tunnelId' in kwargs:
+            tunnel_id = kwargs['tunnelId']
+        if tunnel_id is None:
+            raise TypeError("Missing 'tunnel_id' argument")
+        if virtual_network_id is None and 'virtualNetworkId' in kwargs:
+            virtual_network_id = kwargs['virtualNetworkId']
+
+        _setter("account_id", account_id)
+        _setter("network", network)
+        _setter("tunnel_id", tunnel_id)
         if comment is not None:
-            pulumi.set(__self__, "comment", comment)
+            _setter("comment", comment)
         if virtual_network_id is not None:
-            pulumi.set(__self__, "virtual_network_id", virtual_network_id)
+            _setter("virtual_network_id", virtual_network_id)
 
     @property
     @pulumi.getter(name="accountId")
@@ -112,16 +143,41 @@ class _TunnelRouteState:
         :param pulumi.Input[str] tunnel_id: The ID of the tunnel that will service the tunnel route.
         :param pulumi.Input[str] virtual_network_id: The ID of the virtual network for which this route is being added; uses the default virtual network of the account if none is provided. **Modifying this attribute will force creation of a new resource.**
         """
+        _TunnelRouteState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            account_id=account_id,
+            comment=comment,
+            network=network,
+            tunnel_id=tunnel_id,
+            virtual_network_id=virtual_network_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             account_id: Optional[pulumi.Input[str]] = None,
+             comment: Optional[pulumi.Input[str]] = None,
+             network: Optional[pulumi.Input[str]] = None,
+             tunnel_id: Optional[pulumi.Input[str]] = None,
+             virtual_network_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if account_id is None and 'accountId' in kwargs:
+            account_id = kwargs['accountId']
+        if tunnel_id is None and 'tunnelId' in kwargs:
+            tunnel_id = kwargs['tunnelId']
+        if virtual_network_id is None and 'virtualNetworkId' in kwargs:
+            virtual_network_id = kwargs['virtualNetworkId']
+
         if account_id is not None:
-            pulumi.set(__self__, "account_id", account_id)
+            _setter("account_id", account_id)
         if comment is not None:
-            pulumi.set(__self__, "comment", comment)
+            _setter("comment", comment)
         if network is not None:
-            pulumi.set(__self__, "network", network)
+            _setter("network", network)
         if tunnel_id is not None:
-            pulumi.set(__self__, "tunnel_id", tunnel_id)
+            _setter("tunnel_id", tunnel_id)
         if virtual_network_id is not None:
-            pulumi.set(__self__, "virtual_network_id", virtual_network_id)
+            _setter("virtual_network_id", virtual_network_id)
 
     @property
     @pulumi.getter(name="accountId")
@@ -293,6 +349,10 @@ class TunnelRoute(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            TunnelRouteArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

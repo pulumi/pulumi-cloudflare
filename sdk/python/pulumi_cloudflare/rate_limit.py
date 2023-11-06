@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -36,20 +36,59 @@ class RateLimitArgs:
         :param pulumi.Input[bool] disabled: Whether this ratelimit is currently disabled. Defaults to `false`.
         :param pulumi.Input['RateLimitMatchArgs'] match: Determines which traffic the rate limit counts towards the threshold. By default matches all traffic in the zone.
         """
-        pulumi.set(__self__, "action", action)
-        pulumi.set(__self__, "period", period)
-        pulumi.set(__self__, "threshold", threshold)
-        pulumi.set(__self__, "zone_id", zone_id)
+        RateLimitArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            action=action,
+            period=period,
+            threshold=threshold,
+            zone_id=zone_id,
+            bypass_url_patterns=bypass_url_patterns,
+            correlate=correlate,
+            description=description,
+            disabled=disabled,
+            match=match,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             action: Optional[pulumi.Input['RateLimitActionArgs']] = None,
+             period: Optional[pulumi.Input[int]] = None,
+             threshold: Optional[pulumi.Input[int]] = None,
+             zone_id: Optional[pulumi.Input[str]] = None,
+             bypass_url_patterns: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             correlate: Optional[pulumi.Input['RateLimitCorrelateArgs']] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             disabled: Optional[pulumi.Input[bool]] = None,
+             match: Optional[pulumi.Input['RateLimitMatchArgs']] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if action is None:
+            raise TypeError("Missing 'action' argument")
+        if period is None:
+            raise TypeError("Missing 'period' argument")
+        if threshold is None:
+            raise TypeError("Missing 'threshold' argument")
+        if zone_id is None and 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+        if zone_id is None:
+            raise TypeError("Missing 'zone_id' argument")
+        if bypass_url_patterns is None and 'bypassUrlPatterns' in kwargs:
+            bypass_url_patterns = kwargs['bypassUrlPatterns']
+
+        _setter("action", action)
+        _setter("period", period)
+        _setter("threshold", threshold)
+        _setter("zone_id", zone_id)
         if bypass_url_patterns is not None:
-            pulumi.set(__self__, "bypass_url_patterns", bypass_url_patterns)
+            _setter("bypass_url_patterns", bypass_url_patterns)
         if correlate is not None:
-            pulumi.set(__self__, "correlate", correlate)
+            _setter("correlate", correlate)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if disabled is not None:
-            pulumi.set(__self__, "disabled", disabled)
+            _setter("disabled", disabled)
         if match is not None:
-            pulumi.set(__self__, "match", match)
+            _setter("match", match)
 
     @property
     @pulumi.getter
@@ -180,24 +219,55 @@ class _RateLimitState:
         :param pulumi.Input[int] threshold: The threshold that triggers the rate limit mitigations, combine with period.
         :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         """
+        _RateLimitState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            action=action,
+            bypass_url_patterns=bypass_url_patterns,
+            correlate=correlate,
+            description=description,
+            disabled=disabled,
+            match=match,
+            period=period,
+            threshold=threshold,
+            zone_id=zone_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             action: Optional[pulumi.Input['RateLimitActionArgs']] = None,
+             bypass_url_patterns: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             correlate: Optional[pulumi.Input['RateLimitCorrelateArgs']] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             disabled: Optional[pulumi.Input[bool]] = None,
+             match: Optional[pulumi.Input['RateLimitMatchArgs']] = None,
+             period: Optional[pulumi.Input[int]] = None,
+             threshold: Optional[pulumi.Input[int]] = None,
+             zone_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if bypass_url_patterns is None and 'bypassUrlPatterns' in kwargs:
+            bypass_url_patterns = kwargs['bypassUrlPatterns']
+        if zone_id is None and 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         if action is not None:
-            pulumi.set(__self__, "action", action)
+            _setter("action", action)
         if bypass_url_patterns is not None:
-            pulumi.set(__self__, "bypass_url_patterns", bypass_url_patterns)
+            _setter("bypass_url_patterns", bypass_url_patterns)
         if correlate is not None:
-            pulumi.set(__self__, "correlate", correlate)
+            _setter("correlate", correlate)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if disabled is not None:
-            pulumi.set(__self__, "disabled", disabled)
+            _setter("disabled", disabled)
         if match is not None:
-            pulumi.set(__self__, "match", match)
+            _setter("match", match)
         if period is not None:
-            pulumi.set(__self__, "period", period)
+            _setter("period", period)
         if threshold is not None:
-            pulumi.set(__self__, "threshold", threshold)
+            _setter("threshold", threshold)
         if zone_id is not None:
-            pulumi.set(__self__, "zone_id", zone_id)
+            _setter("zone_id", zone_id)
 
     @property
     @pulumi.getter
@@ -505,6 +575,10 @@ class RateLimit(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            RateLimitArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -528,13 +602,28 @@ class RateLimit(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = RateLimitArgs.__new__(RateLimitArgs)
 
+            if action is not None and not isinstance(action, RateLimitActionArgs):
+                action = action or {}
+                def _setter(key, value):
+                    action[key] = value
+                RateLimitActionArgs._configure(_setter, **action)
             if action is None and not opts.urn:
                 raise TypeError("Missing required property 'action'")
             __props__.__dict__["action"] = action
             __props__.__dict__["bypass_url_patterns"] = bypass_url_patterns
+            if correlate is not None and not isinstance(correlate, RateLimitCorrelateArgs):
+                correlate = correlate or {}
+                def _setter(key, value):
+                    correlate[key] = value
+                RateLimitCorrelateArgs._configure(_setter, **correlate)
             __props__.__dict__["correlate"] = correlate
             __props__.__dict__["description"] = description
             __props__.__dict__["disabled"] = disabled
+            if match is not None and not isinstance(match, RateLimitMatchArgs):
+                match = match or {}
+                def _setter(key, value):
+                    match[key] = value
+                RateLimitMatchArgs._configure(_setter, **match)
             __props__.__dict__["match"] = match
             if period is None and not opts.urn:
                 raise TypeError("Missing required property 'period'")

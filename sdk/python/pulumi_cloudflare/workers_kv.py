@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['WorkersKvArgs', 'WorkersKv']
@@ -25,10 +25,39 @@ class WorkersKvArgs:
         :param pulumi.Input[str] namespace_id: The ID of the Workers KV namespace in which you want to create the KV pair. **Modifying this attribute will force creation of a new resource.**
         :param pulumi.Input[str] value: Value of the KV pair.
         """
-        pulumi.set(__self__, "account_id", account_id)
-        pulumi.set(__self__, "key", key)
-        pulumi.set(__self__, "namespace_id", namespace_id)
-        pulumi.set(__self__, "value", value)
+        WorkersKvArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            account_id=account_id,
+            key=key,
+            namespace_id=namespace_id,
+            value=value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             account_id: Optional[pulumi.Input[str]] = None,
+             key: Optional[pulumi.Input[str]] = None,
+             namespace_id: Optional[pulumi.Input[str]] = None,
+             value: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if account_id is None and 'accountId' in kwargs:
+            account_id = kwargs['accountId']
+        if account_id is None:
+            raise TypeError("Missing 'account_id' argument")
+        if key is None:
+            raise TypeError("Missing 'key' argument")
+        if namespace_id is None and 'namespaceId' in kwargs:
+            namespace_id = kwargs['namespaceId']
+        if namespace_id is None:
+            raise TypeError("Missing 'namespace_id' argument")
+        if value is None:
+            raise TypeError("Missing 'value' argument")
+
+        _setter("account_id", account_id)
+        _setter("key", key)
+        _setter("namespace_id", namespace_id)
+        _setter("value", value)
 
     @property
     @pulumi.getter(name="accountId")
@@ -93,14 +122,35 @@ class _WorkersKvState:
         :param pulumi.Input[str] namespace_id: The ID of the Workers KV namespace in which you want to create the KV pair. **Modifying this attribute will force creation of a new resource.**
         :param pulumi.Input[str] value: Value of the KV pair.
         """
+        _WorkersKvState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            account_id=account_id,
+            key=key,
+            namespace_id=namespace_id,
+            value=value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             account_id: Optional[pulumi.Input[str]] = None,
+             key: Optional[pulumi.Input[str]] = None,
+             namespace_id: Optional[pulumi.Input[str]] = None,
+             value: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if account_id is None and 'accountId' in kwargs:
+            account_id = kwargs['accountId']
+        if namespace_id is None and 'namespaceId' in kwargs:
+            namespace_id = kwargs['namespaceId']
+
         if account_id is not None:
-            pulumi.set(__self__, "account_id", account_id)
+            _setter("account_id", account_id)
         if key is not None:
-            pulumi.set(__self__, "key", key)
+            _setter("key", key)
         if namespace_id is not None:
-            pulumi.set(__self__, "namespace_id", namespace_id)
+            _setter("namespace_id", namespace_id)
         if value is not None:
-            pulumi.set(__self__, "value", value)
+            _setter("value", value)
 
     @property
     @pulumi.getter(name="accountId")
@@ -234,6 +284,10 @@ class WorkersKv(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            WorkersKvArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

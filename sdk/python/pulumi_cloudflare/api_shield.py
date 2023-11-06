@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -23,9 +23,28 @@ class ApiShieldArgs:
         :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         :param pulumi.Input[Sequence[pulumi.Input['ApiShieldAuthIdCharacteristicArgs']]] auth_id_characteristics: Characteristics define properties across which auth-ids can be computed in a privacy-preserving manner.
         """
-        pulumi.set(__self__, "zone_id", zone_id)
+        ApiShieldArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            zone_id=zone_id,
+            auth_id_characteristics=auth_id_characteristics,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             zone_id: Optional[pulumi.Input[str]] = None,
+             auth_id_characteristics: Optional[pulumi.Input[Sequence[pulumi.Input['ApiShieldAuthIdCharacteristicArgs']]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if zone_id is None and 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+        if zone_id is None:
+            raise TypeError("Missing 'zone_id' argument")
+        if auth_id_characteristics is None and 'authIdCharacteristics' in kwargs:
+            auth_id_characteristics = kwargs['authIdCharacteristics']
+
+        _setter("zone_id", zone_id)
         if auth_id_characteristics is not None:
-            pulumi.set(__self__, "auth_id_characteristics", auth_id_characteristics)
+            _setter("auth_id_characteristics", auth_id_characteristics)
 
     @property
     @pulumi.getter(name="zoneId")
@@ -62,10 +81,27 @@ class _ApiShieldState:
         :param pulumi.Input[Sequence[pulumi.Input['ApiShieldAuthIdCharacteristicArgs']]] auth_id_characteristics: Characteristics define properties across which auth-ids can be computed in a privacy-preserving manner.
         :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         """
+        _ApiShieldState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            auth_id_characteristics=auth_id_characteristics,
+            zone_id=zone_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             auth_id_characteristics: Optional[pulumi.Input[Sequence[pulumi.Input['ApiShieldAuthIdCharacteristicArgs']]]] = None,
+             zone_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if auth_id_characteristics is None and 'authIdCharacteristics' in kwargs:
+            auth_id_characteristics = kwargs['authIdCharacteristics']
+        if zone_id is None and 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         if auth_id_characteristics is not None:
-            pulumi.set(__self__, "auth_id_characteristics", auth_id_characteristics)
+            _setter("auth_id_characteristics", auth_id_characteristics)
         if zone_id is not None:
-            pulumi.set(__self__, "zone_id", zone_id)
+            _setter("zone_id", zone_id)
 
     @property
     @pulumi.getter(name="authIdCharacteristics")
@@ -155,6 +191,10 @@ class ApiShield(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            ApiShieldArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

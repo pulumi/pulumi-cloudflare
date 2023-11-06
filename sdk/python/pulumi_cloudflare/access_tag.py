@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['AccessTagArgs', 'AccessTag']
@@ -25,13 +25,38 @@ class AccessTagArgs:
         :param pulumi.Input[int] app_count: Number of apps associated with the tag.
         :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. Conflicts with `account_id`. **Modifying this attribute will force creation of a new resource.**
         """
-        pulumi.set(__self__, "name", name)
+        AccessTagArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            name=name,
+            account_id=account_id,
+            app_count=app_count,
+            zone_id=zone_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             name: Optional[pulumi.Input[str]] = None,
+             account_id: Optional[pulumi.Input[str]] = None,
+             app_count: Optional[pulumi.Input[int]] = None,
+             zone_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if account_id is None and 'accountId' in kwargs:
+            account_id = kwargs['accountId']
+        if app_count is None and 'appCount' in kwargs:
+            app_count = kwargs['appCount']
+        if zone_id is None and 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
+        _setter("name", name)
         if account_id is not None:
-            pulumi.set(__self__, "account_id", account_id)
+            _setter("account_id", account_id)
         if app_count is not None:
-            pulumi.set(__self__, "app_count", app_count)
+            _setter("app_count", app_count)
         if zone_id is not None:
-            pulumi.set(__self__, "zone_id", zone_id)
+            _setter("zone_id", zone_id)
 
     @property
     @pulumi.getter
@@ -96,14 +121,37 @@ class _AccessTagState:
         :param pulumi.Input[str] name: Friendly name of the Access Tag.
         :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. Conflicts with `account_id`. **Modifying this attribute will force creation of a new resource.**
         """
+        _AccessTagState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            account_id=account_id,
+            app_count=app_count,
+            name=name,
+            zone_id=zone_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             account_id: Optional[pulumi.Input[str]] = None,
+             app_count: Optional[pulumi.Input[int]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             zone_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if account_id is None and 'accountId' in kwargs:
+            account_id = kwargs['accountId']
+        if app_count is None and 'appCount' in kwargs:
+            app_count = kwargs['appCount']
+        if zone_id is None and 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         if account_id is not None:
-            pulumi.set(__self__, "account_id", account_id)
+            _setter("account_id", account_id)
         if app_count is not None:
-            pulumi.set(__self__, "app_count", app_count)
+            _setter("app_count", app_count)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if zone_id is not None:
-            pulumi.set(__self__, "zone_id", zone_id)
+            _setter("zone_id", zone_id)
 
     @property
     @pulumi.getter(name="accountId")
@@ -195,6 +243,10 @@ class AccessTag(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            AccessTagArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -29,14 +29,41 @@ class ApiTokenArgs:
         :param pulumi.Input[str] expires_on: The expiration time on or after which the token MUST NOT be accepted for processing.
         :param pulumi.Input[str] not_before: The time before which the token MUST NOT be accepted for processing.
         """
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "policies", policies)
+        ApiTokenArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            name=name,
+            policies=policies,
+            condition=condition,
+            expires_on=expires_on,
+            not_before=not_before,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             name: Optional[pulumi.Input[str]] = None,
+             policies: Optional[pulumi.Input[Sequence[pulumi.Input['ApiTokenPolicyArgs']]]] = None,
+             condition: Optional[pulumi.Input['ApiTokenConditionArgs']] = None,
+             expires_on: Optional[pulumi.Input[str]] = None,
+             not_before: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if policies is None:
+            raise TypeError("Missing 'policies' argument")
+        if expires_on is None and 'expiresOn' in kwargs:
+            expires_on = kwargs['expiresOn']
+        if not_before is None and 'notBefore' in kwargs:
+            not_before = kwargs['notBefore']
+
+        _setter("name", name)
+        _setter("policies", policies)
         if condition is not None:
-            pulumi.set(__self__, "condition", condition)
+            _setter("condition", condition)
         if expires_on is not None:
-            pulumi.set(__self__, "expires_on", expires_on)
+            _setter("expires_on", expires_on)
         if not_before is not None:
-            pulumi.set(__self__, "not_before", not_before)
+            _setter("not_before", not_before)
 
     @property
     @pulumi.getter
@@ -122,24 +149,59 @@ class _ApiTokenState:
         :param pulumi.Input[Sequence[pulumi.Input['ApiTokenPolicyArgs']]] policies: Permissions policy. Multiple policy blocks can be defined.
         :param pulumi.Input[str] value: The value of the API Token.
         """
+        _ApiTokenState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            condition=condition,
+            expires_on=expires_on,
+            issued_on=issued_on,
+            modified_on=modified_on,
+            name=name,
+            not_before=not_before,
+            policies=policies,
+            status=status,
+            value=value,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             condition: Optional[pulumi.Input['ApiTokenConditionArgs']] = None,
+             expires_on: Optional[pulumi.Input[str]] = None,
+             issued_on: Optional[pulumi.Input[str]] = None,
+             modified_on: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             not_before: Optional[pulumi.Input[str]] = None,
+             policies: Optional[pulumi.Input[Sequence[pulumi.Input['ApiTokenPolicyArgs']]]] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             value: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if expires_on is None and 'expiresOn' in kwargs:
+            expires_on = kwargs['expiresOn']
+        if issued_on is None and 'issuedOn' in kwargs:
+            issued_on = kwargs['issuedOn']
+        if modified_on is None and 'modifiedOn' in kwargs:
+            modified_on = kwargs['modifiedOn']
+        if not_before is None and 'notBefore' in kwargs:
+            not_before = kwargs['notBefore']
+
         if condition is not None:
-            pulumi.set(__self__, "condition", condition)
+            _setter("condition", condition)
         if expires_on is not None:
-            pulumi.set(__self__, "expires_on", expires_on)
+            _setter("expires_on", expires_on)
         if issued_on is not None:
-            pulumi.set(__self__, "issued_on", issued_on)
+            _setter("issued_on", issued_on)
         if modified_on is not None:
-            pulumi.set(__self__, "modified_on", modified_on)
+            _setter("modified_on", modified_on)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if not_before is not None:
-            pulumi.set(__self__, "not_before", not_before)
+            _setter("not_before", not_before)
         if policies is not None:
-            pulumi.set(__self__, "policies", policies)
+            _setter("policies", policies)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
         if value is not None:
-            pulumi.set(__self__, "value", value)
+            _setter("value", value)
 
     @property
     @pulumi.getter
@@ -294,6 +356,10 @@ class ApiToken(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            ApiTokenArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -313,6 +379,11 @@ class ApiToken(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ApiTokenArgs.__new__(ApiTokenArgs)
 
+            if condition is not None and not isinstance(condition, ApiTokenConditionArgs):
+                condition = condition or {}
+                def _setter(key, value):
+                    condition[key] = value
+                ApiTokenConditionArgs._configure(_setter, **condition)
             __props__.__dict__["condition"] = condition
             __props__.__dict__["expires_on"] = expires_on
             if name is None and not opts.urn:

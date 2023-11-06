@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -59,42 +59,115 @@ class HealthcheckArgs:
         :param pulumi.Input[bool] suspended: If suspended, no health checks are sent to the origin. Defaults to `false`.
         :param pulumi.Input[int] timeout: The timeout (in seconds) before marking the health check as failed. Defaults to `5`.
         """
-        pulumi.set(__self__, "address", address)
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "type", type)
-        pulumi.set(__self__, "zone_id", zone_id)
+        HealthcheckArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            address=address,
+            name=name,
+            type=type,
+            zone_id=zone_id,
+            allow_insecure=allow_insecure,
+            check_regions=check_regions,
+            consecutive_fails=consecutive_fails,
+            consecutive_successes=consecutive_successes,
+            description=description,
+            expected_body=expected_body,
+            expected_codes=expected_codes,
+            follow_redirects=follow_redirects,
+            headers=headers,
+            interval=interval,
+            method=method,
+            path=path,
+            port=port,
+            retries=retries,
+            suspended=suspended,
+            timeout=timeout,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             address: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             type: Optional[pulumi.Input[str]] = None,
+             zone_id: Optional[pulumi.Input[str]] = None,
+             allow_insecure: Optional[pulumi.Input[bool]] = None,
+             check_regions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             consecutive_fails: Optional[pulumi.Input[int]] = None,
+             consecutive_successes: Optional[pulumi.Input[int]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             expected_body: Optional[pulumi.Input[str]] = None,
+             expected_codes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             follow_redirects: Optional[pulumi.Input[bool]] = None,
+             headers: Optional[pulumi.Input[Sequence[pulumi.Input['HealthcheckHeaderArgs']]]] = None,
+             interval: Optional[pulumi.Input[int]] = None,
+             method: Optional[pulumi.Input[str]] = None,
+             path: Optional[pulumi.Input[str]] = None,
+             port: Optional[pulumi.Input[int]] = None,
+             retries: Optional[pulumi.Input[int]] = None,
+             suspended: Optional[pulumi.Input[bool]] = None,
+             timeout: Optional[pulumi.Input[int]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if address is None:
+            raise TypeError("Missing 'address' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+        if zone_id is None and 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+        if zone_id is None:
+            raise TypeError("Missing 'zone_id' argument")
+        if allow_insecure is None and 'allowInsecure' in kwargs:
+            allow_insecure = kwargs['allowInsecure']
+        if check_regions is None and 'checkRegions' in kwargs:
+            check_regions = kwargs['checkRegions']
+        if consecutive_fails is None and 'consecutiveFails' in kwargs:
+            consecutive_fails = kwargs['consecutiveFails']
+        if consecutive_successes is None and 'consecutiveSuccesses' in kwargs:
+            consecutive_successes = kwargs['consecutiveSuccesses']
+        if expected_body is None and 'expectedBody' in kwargs:
+            expected_body = kwargs['expectedBody']
+        if expected_codes is None and 'expectedCodes' in kwargs:
+            expected_codes = kwargs['expectedCodes']
+        if follow_redirects is None and 'followRedirects' in kwargs:
+            follow_redirects = kwargs['followRedirects']
+
+        _setter("address", address)
+        _setter("name", name)
+        _setter("type", type)
+        _setter("zone_id", zone_id)
         if allow_insecure is not None:
-            pulumi.set(__self__, "allow_insecure", allow_insecure)
+            _setter("allow_insecure", allow_insecure)
         if check_regions is not None:
-            pulumi.set(__self__, "check_regions", check_regions)
+            _setter("check_regions", check_regions)
         if consecutive_fails is not None:
-            pulumi.set(__self__, "consecutive_fails", consecutive_fails)
+            _setter("consecutive_fails", consecutive_fails)
         if consecutive_successes is not None:
-            pulumi.set(__self__, "consecutive_successes", consecutive_successes)
+            _setter("consecutive_successes", consecutive_successes)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if expected_body is not None:
-            pulumi.set(__self__, "expected_body", expected_body)
+            _setter("expected_body", expected_body)
         if expected_codes is not None:
-            pulumi.set(__self__, "expected_codes", expected_codes)
+            _setter("expected_codes", expected_codes)
         if follow_redirects is not None:
-            pulumi.set(__self__, "follow_redirects", follow_redirects)
+            _setter("follow_redirects", follow_redirects)
         if headers is not None:
-            pulumi.set(__self__, "headers", headers)
+            _setter("headers", headers)
         if interval is not None:
-            pulumi.set(__self__, "interval", interval)
+            _setter("interval", interval)
         if method is not None:
-            pulumi.set(__self__, "method", method)
+            _setter("method", method)
         if path is not None:
-            pulumi.set(__self__, "path", path)
+            _setter("path", path)
         if port is not None:
-            pulumi.set(__self__, "port", port)
+            _setter("port", port)
         if retries is not None:
-            pulumi.set(__self__, "retries", retries)
+            _setter("retries", retries)
         if suspended is not None:
-            pulumi.set(__self__, "suspended", suspended)
+            _setter("suspended", suspended)
         if timeout is not None:
-            pulumi.set(__self__, "timeout", timeout)
+            _setter("timeout", timeout)
 
     @property
     @pulumi.getter
@@ -387,50 +460,123 @@ class _HealthcheckState:
         :param pulumi.Input[str] type: The protocol to use for the health check. Available values: `TCP`, `HTTP`, `HTTPS`.
         :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         """
+        _HealthcheckState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            address=address,
+            allow_insecure=allow_insecure,
+            check_regions=check_regions,
+            consecutive_fails=consecutive_fails,
+            consecutive_successes=consecutive_successes,
+            created_on=created_on,
+            description=description,
+            expected_body=expected_body,
+            expected_codes=expected_codes,
+            follow_redirects=follow_redirects,
+            headers=headers,
+            interval=interval,
+            method=method,
+            modified_on=modified_on,
+            name=name,
+            path=path,
+            port=port,
+            retries=retries,
+            suspended=suspended,
+            timeout=timeout,
+            type=type,
+            zone_id=zone_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             address: Optional[pulumi.Input[str]] = None,
+             allow_insecure: Optional[pulumi.Input[bool]] = None,
+             check_regions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             consecutive_fails: Optional[pulumi.Input[int]] = None,
+             consecutive_successes: Optional[pulumi.Input[int]] = None,
+             created_on: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             expected_body: Optional[pulumi.Input[str]] = None,
+             expected_codes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             follow_redirects: Optional[pulumi.Input[bool]] = None,
+             headers: Optional[pulumi.Input[Sequence[pulumi.Input['HealthcheckHeaderArgs']]]] = None,
+             interval: Optional[pulumi.Input[int]] = None,
+             method: Optional[pulumi.Input[str]] = None,
+             modified_on: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             path: Optional[pulumi.Input[str]] = None,
+             port: Optional[pulumi.Input[int]] = None,
+             retries: Optional[pulumi.Input[int]] = None,
+             suspended: Optional[pulumi.Input[bool]] = None,
+             timeout: Optional[pulumi.Input[int]] = None,
+             type: Optional[pulumi.Input[str]] = None,
+             zone_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if allow_insecure is None and 'allowInsecure' in kwargs:
+            allow_insecure = kwargs['allowInsecure']
+        if check_regions is None and 'checkRegions' in kwargs:
+            check_regions = kwargs['checkRegions']
+        if consecutive_fails is None and 'consecutiveFails' in kwargs:
+            consecutive_fails = kwargs['consecutiveFails']
+        if consecutive_successes is None and 'consecutiveSuccesses' in kwargs:
+            consecutive_successes = kwargs['consecutiveSuccesses']
+        if created_on is None and 'createdOn' in kwargs:
+            created_on = kwargs['createdOn']
+        if expected_body is None and 'expectedBody' in kwargs:
+            expected_body = kwargs['expectedBody']
+        if expected_codes is None and 'expectedCodes' in kwargs:
+            expected_codes = kwargs['expectedCodes']
+        if follow_redirects is None and 'followRedirects' in kwargs:
+            follow_redirects = kwargs['followRedirects']
+        if modified_on is None and 'modifiedOn' in kwargs:
+            modified_on = kwargs['modifiedOn']
+        if zone_id is None and 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         if address is not None:
-            pulumi.set(__self__, "address", address)
+            _setter("address", address)
         if allow_insecure is not None:
-            pulumi.set(__self__, "allow_insecure", allow_insecure)
+            _setter("allow_insecure", allow_insecure)
         if check_regions is not None:
-            pulumi.set(__self__, "check_regions", check_regions)
+            _setter("check_regions", check_regions)
         if consecutive_fails is not None:
-            pulumi.set(__self__, "consecutive_fails", consecutive_fails)
+            _setter("consecutive_fails", consecutive_fails)
         if consecutive_successes is not None:
-            pulumi.set(__self__, "consecutive_successes", consecutive_successes)
+            _setter("consecutive_successes", consecutive_successes)
         if created_on is not None:
-            pulumi.set(__self__, "created_on", created_on)
+            _setter("created_on", created_on)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if expected_body is not None:
-            pulumi.set(__self__, "expected_body", expected_body)
+            _setter("expected_body", expected_body)
         if expected_codes is not None:
-            pulumi.set(__self__, "expected_codes", expected_codes)
+            _setter("expected_codes", expected_codes)
         if follow_redirects is not None:
-            pulumi.set(__self__, "follow_redirects", follow_redirects)
+            _setter("follow_redirects", follow_redirects)
         if headers is not None:
-            pulumi.set(__self__, "headers", headers)
+            _setter("headers", headers)
         if interval is not None:
-            pulumi.set(__self__, "interval", interval)
+            _setter("interval", interval)
         if method is not None:
-            pulumi.set(__self__, "method", method)
+            _setter("method", method)
         if modified_on is not None:
-            pulumi.set(__self__, "modified_on", modified_on)
+            _setter("modified_on", modified_on)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if path is not None:
-            pulumi.set(__self__, "path", path)
+            _setter("path", path)
         if port is not None:
-            pulumi.set(__self__, "port", port)
+            _setter("port", port)
         if retries is not None:
-            pulumi.set(__self__, "retries", retries)
+            _setter("retries", retries)
         if suspended is not None:
-            pulumi.set(__self__, "suspended", suspended)
+            _setter("suspended", suspended)
         if timeout is not None:
-            pulumi.set(__self__, "timeout", timeout)
+            _setter("timeout", timeout)
         if type is not None:
-            pulumi.set(__self__, "type", type)
+            _setter("type", type)
         if zone_id is not None:
-            pulumi.set(__self__, "zone_id", zone_id)
+            _setter("zone_id", zone_id)
 
     @property
     @pulumi.getter
@@ -902,6 +1048,10 @@ class Healthcheck(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            HealthcheckArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

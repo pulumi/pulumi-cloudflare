@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['TotalTlsArgs', 'TotalTls']
@@ -23,10 +23,33 @@ class TotalTlsArgs:
         :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         :param pulumi.Input[str] certificate_authority: The Certificate Authority that Total TLS certificates will be issued through. Available values: `google`, `lets_encrypt`.
         """
-        pulumi.set(__self__, "enabled", enabled)
-        pulumi.set(__self__, "zone_id", zone_id)
+        TotalTlsArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            enabled=enabled,
+            zone_id=zone_id,
+            certificate_authority=certificate_authority,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             enabled: Optional[pulumi.Input[bool]] = None,
+             zone_id: Optional[pulumi.Input[str]] = None,
+             certificate_authority: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if enabled is None:
+            raise TypeError("Missing 'enabled' argument")
+        if zone_id is None and 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+        if zone_id is None:
+            raise TypeError("Missing 'zone_id' argument")
+        if certificate_authority is None and 'certificateAuthority' in kwargs:
+            certificate_authority = kwargs['certificateAuthority']
+
+        _setter("enabled", enabled)
+        _setter("zone_id", zone_id)
         if certificate_authority is not None:
-            pulumi.set(__self__, "certificate_authority", certificate_authority)
+            _setter("certificate_authority", certificate_authority)
 
     @property
     @pulumi.getter
@@ -77,12 +100,31 @@ class _TotalTlsState:
         :param pulumi.Input[bool] enabled: Enable Total TLS for the zone.
         :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         """
+        _TotalTlsState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            certificate_authority=certificate_authority,
+            enabled=enabled,
+            zone_id=zone_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             certificate_authority: Optional[pulumi.Input[str]] = None,
+             enabled: Optional[pulumi.Input[bool]] = None,
+             zone_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if certificate_authority is None and 'certificateAuthority' in kwargs:
+            certificate_authority = kwargs['certificateAuthority']
+        if zone_id is None and 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         if certificate_authority is not None:
-            pulumi.set(__self__, "certificate_authority", certificate_authority)
+            _setter("certificate_authority", certificate_authority)
         if enabled is not None:
-            pulumi.set(__self__, "enabled", enabled)
+            _setter("enabled", enabled)
         if zone_id is not None:
-            pulumi.set(__self__, "zone_id", zone_id)
+            _setter("zone_id", zone_id)
 
     @property
     @pulumi.getter(name="certificateAuthority")
@@ -194,6 +236,10 @@ class TotalTls(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            TotalTlsArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

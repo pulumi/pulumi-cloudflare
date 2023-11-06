@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -24,11 +24,34 @@ class CustomSslArgs:
         :param pulumi.Input[str] zone_id: The zone identifier to target for the resource.
         :param pulumi.Input['CustomSslCustomSslOptionsArgs'] custom_ssl_options: The certificate associated parameters. **Modifying this attribute will force creation of a new resource.**
         """
-        pulumi.set(__self__, "zone_id", zone_id)
+        CustomSslArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            zone_id=zone_id,
+            custom_ssl_options=custom_ssl_options,
+            custom_ssl_priorities=custom_ssl_priorities,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             zone_id: Optional[pulumi.Input[str]] = None,
+             custom_ssl_options: Optional[pulumi.Input['CustomSslCustomSslOptionsArgs']] = None,
+             custom_ssl_priorities: Optional[pulumi.Input[Sequence[pulumi.Input['CustomSslCustomSslPriorityArgs']]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if zone_id is None and 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+        if zone_id is None:
+            raise TypeError("Missing 'zone_id' argument")
+        if custom_ssl_options is None and 'customSslOptions' in kwargs:
+            custom_ssl_options = kwargs['customSslOptions']
+        if custom_ssl_priorities is None and 'customSslPriorities' in kwargs:
+            custom_ssl_priorities = kwargs['customSslPriorities']
+
+        _setter("zone_id", zone_id)
         if custom_ssl_options is not None:
-            pulumi.set(__self__, "custom_ssl_options", custom_ssl_options)
+            _setter("custom_ssl_options", custom_ssl_options)
         if custom_ssl_priorities is not None:
-            pulumi.set(__self__, "custom_ssl_priorities", custom_ssl_priorities)
+            _setter("custom_ssl_priorities", custom_ssl_priorities)
 
     @property
     @pulumi.getter(name="zoneId")
@@ -83,28 +106,71 @@ class _CustomSslState:
         :param pulumi.Input['CustomSslCustomSslOptionsArgs'] custom_ssl_options: The certificate associated parameters. **Modifying this attribute will force creation of a new resource.**
         :param pulumi.Input[str] zone_id: The zone identifier to target for the resource.
         """
+        _CustomSslState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            custom_ssl_options=custom_ssl_options,
+            custom_ssl_priorities=custom_ssl_priorities,
+            expires_on=expires_on,
+            hosts=hosts,
+            issuer=issuer,
+            modified_on=modified_on,
+            priority=priority,
+            signature=signature,
+            status=status,
+            uploaded_on=uploaded_on,
+            zone_id=zone_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             custom_ssl_options: Optional[pulumi.Input['CustomSslCustomSslOptionsArgs']] = None,
+             custom_ssl_priorities: Optional[pulumi.Input[Sequence[pulumi.Input['CustomSslCustomSslPriorityArgs']]]] = None,
+             expires_on: Optional[pulumi.Input[str]] = None,
+             hosts: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             issuer: Optional[pulumi.Input[str]] = None,
+             modified_on: Optional[pulumi.Input[str]] = None,
+             priority: Optional[pulumi.Input[int]] = None,
+             signature: Optional[pulumi.Input[str]] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             uploaded_on: Optional[pulumi.Input[str]] = None,
+             zone_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if custom_ssl_options is None and 'customSslOptions' in kwargs:
+            custom_ssl_options = kwargs['customSslOptions']
+        if custom_ssl_priorities is None and 'customSslPriorities' in kwargs:
+            custom_ssl_priorities = kwargs['customSslPriorities']
+        if expires_on is None and 'expiresOn' in kwargs:
+            expires_on = kwargs['expiresOn']
+        if modified_on is None and 'modifiedOn' in kwargs:
+            modified_on = kwargs['modifiedOn']
+        if uploaded_on is None and 'uploadedOn' in kwargs:
+            uploaded_on = kwargs['uploadedOn']
+        if zone_id is None and 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         if custom_ssl_options is not None:
-            pulumi.set(__self__, "custom_ssl_options", custom_ssl_options)
+            _setter("custom_ssl_options", custom_ssl_options)
         if custom_ssl_priorities is not None:
-            pulumi.set(__self__, "custom_ssl_priorities", custom_ssl_priorities)
+            _setter("custom_ssl_priorities", custom_ssl_priorities)
         if expires_on is not None:
-            pulumi.set(__self__, "expires_on", expires_on)
+            _setter("expires_on", expires_on)
         if hosts is not None:
-            pulumi.set(__self__, "hosts", hosts)
+            _setter("hosts", hosts)
         if issuer is not None:
-            pulumi.set(__self__, "issuer", issuer)
+            _setter("issuer", issuer)
         if modified_on is not None:
-            pulumi.set(__self__, "modified_on", modified_on)
+            _setter("modified_on", modified_on)
         if priority is not None:
-            pulumi.set(__self__, "priority", priority)
+            _setter("priority", priority)
         if signature is not None:
-            pulumi.set(__self__, "signature", signature)
+            _setter("signature", signature)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
         if uploaded_on is not None:
-            pulumi.set(__self__, "uploaded_on", uploaded_on)
+            _setter("uploaded_on", uploaded_on)
         if zone_id is not None:
-            pulumi.set(__self__, "zone_id", zone_id)
+            _setter("zone_id", zone_id)
 
     @property
     @pulumi.getter(name="customSslOptions")
@@ -294,6 +360,10 @@ class CustomSsl(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            CustomSslArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -311,6 +381,11 @@ class CustomSsl(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = CustomSslArgs.__new__(CustomSslArgs)
 
+            if custom_ssl_options is not None and not isinstance(custom_ssl_options, CustomSslCustomSslOptionsArgs):
+                custom_ssl_options = custom_ssl_options or {}
+                def _setter(key, value):
+                    custom_ssl_options[key] = value
+                CustomSslCustomSslOptionsArgs._configure(_setter, **custom_ssl_options)
             __props__.__dict__["custom_ssl_options"] = custom_ssl_options
             __props__.__dict__["custom_ssl_priorities"] = custom_ssl_priorities
             if zone_id is None and not opts.urn:

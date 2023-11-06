@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['AccountArgs', 'Account']
@@ -23,11 +23,30 @@ class AccountArgs:
         :param pulumi.Input[bool] enforce_twofactor: Whether 2FA is enforced on the account. Defaults to `false`.
         :param pulumi.Input[str] type: Account type. Available values: `enterprise`, `standard`. Defaults to `standard`. **Modifying this attribute will force creation of a new resource.**
         """
-        pulumi.set(__self__, "name", name)
+        AccountArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            name=name,
+            enforce_twofactor=enforce_twofactor,
+            type=type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             name: Optional[pulumi.Input[str]] = None,
+             enforce_twofactor: Optional[pulumi.Input[bool]] = None,
+             type: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if enforce_twofactor is None and 'enforceTwofactor' in kwargs:
+            enforce_twofactor = kwargs['enforceTwofactor']
+
+        _setter("name", name)
         if enforce_twofactor is not None:
-            pulumi.set(__self__, "enforce_twofactor", enforce_twofactor)
+            _setter("enforce_twofactor", enforce_twofactor)
         if type is not None:
-            pulumi.set(__self__, "type", type)
+            _setter("type", type)
 
     @property
     @pulumi.getter
@@ -78,12 +97,29 @@ class _AccountState:
         :param pulumi.Input[str] name: The name of the account that is displayed in the Cloudflare dashboard.
         :param pulumi.Input[str] type: Account type. Available values: `enterprise`, `standard`. Defaults to `standard`. **Modifying this attribute will force creation of a new resource.**
         """
+        _AccountState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            enforce_twofactor=enforce_twofactor,
+            name=name,
+            type=type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             enforce_twofactor: Optional[pulumi.Input[bool]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             type: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if enforce_twofactor is None and 'enforceTwofactor' in kwargs:
+            enforce_twofactor = kwargs['enforceTwofactor']
+
         if enforce_twofactor is not None:
-            pulumi.set(__self__, "enforce_twofactor", enforce_twofactor)
+            _setter("enforce_twofactor", enforce_twofactor)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if type is not None:
-            pulumi.set(__self__, "type", type)
+            _setter("type", type)
 
     @property
     @pulumi.getter(name="enforceTwofactor")
@@ -197,6 +233,10 @@ class Account(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            AccountArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

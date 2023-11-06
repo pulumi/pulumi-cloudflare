@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['ApiShieldSchemaArgs', 'ApiShieldSchema']
@@ -27,13 +27,42 @@ class ApiShieldSchemaArgs:
         :param pulumi.Input[str] kind: Kind of schema. Defaults to `openapi_v3`. **Modifying this attribute will force creation of a new resource.**
         :param pulumi.Input[bool] validation_enabled: Flag whether schema is enabled for validation.
         """
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "source", source)
-        pulumi.set(__self__, "zone_id", zone_id)
+        ApiShieldSchemaArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            name=name,
+            source=source,
+            zone_id=zone_id,
+            kind=kind,
+            validation_enabled=validation_enabled,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             name: Optional[pulumi.Input[str]] = None,
+             source: Optional[pulumi.Input[str]] = None,
+             zone_id: Optional[pulumi.Input[str]] = None,
+             kind: Optional[pulumi.Input[str]] = None,
+             validation_enabled: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if source is None:
+            raise TypeError("Missing 'source' argument")
+        if zone_id is None and 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+        if zone_id is None:
+            raise TypeError("Missing 'zone_id' argument")
+        if validation_enabled is None and 'validationEnabled' in kwargs:
+            validation_enabled = kwargs['validationEnabled']
+
+        _setter("name", name)
+        _setter("source", source)
+        _setter("zone_id", zone_id)
         if kind is not None:
-            pulumi.set(__self__, "kind", kind)
+            _setter("kind", kind)
         if validation_enabled is not None:
-            pulumi.set(__self__, "validation_enabled", validation_enabled)
+            _setter("validation_enabled", validation_enabled)
 
     @property
     @pulumi.getter
@@ -112,16 +141,39 @@ class _ApiShieldSchemaState:
         :param pulumi.Input[bool] validation_enabled: Flag whether schema is enabled for validation.
         :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         """
+        _ApiShieldSchemaState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            kind=kind,
+            name=name,
+            source=source,
+            validation_enabled=validation_enabled,
+            zone_id=zone_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             kind: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             source: Optional[pulumi.Input[str]] = None,
+             validation_enabled: Optional[pulumi.Input[bool]] = None,
+             zone_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if validation_enabled is None and 'validationEnabled' in kwargs:
+            validation_enabled = kwargs['validationEnabled']
+        if zone_id is None and 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         if kind is not None:
-            pulumi.set(__self__, "kind", kind)
+            _setter("kind", kind)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if source is not None:
-            pulumi.set(__self__, "source", source)
+            _setter("source", source)
         if validation_enabled is not None:
-            pulumi.set(__self__, "validation_enabled", validation_enabled)
+            _setter("validation_enabled", validation_enabled)
         if zone_id is not None:
-            pulumi.set(__self__, "zone_id", zone_id)
+            _setter("zone_id", zone_id)
 
     @property
     @pulumi.getter
@@ -253,6 +305,10 @@ class ApiShieldSchema(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            ApiShieldSchemaArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

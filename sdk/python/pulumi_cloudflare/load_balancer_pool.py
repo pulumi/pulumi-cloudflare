@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -45,29 +45,82 @@ class LoadBalancerPoolArgs:
         :param pulumi.Input[str] notification_email: The email address to send health status notifications to. This can be an individual mailbox or a mailing list. Multiple emails can be supplied as a comma delimited list.
         :param pulumi.Input[Sequence[pulumi.Input['LoadBalancerPoolOriginSteeringArgs']]] origin_steerings: Set an origin steering policy to control origin selection within a pool.
         """
-        pulumi.set(__self__, "account_id", account_id)
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "origins", origins)
+        LoadBalancerPoolArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            account_id=account_id,
+            name=name,
+            origins=origins,
+            check_regions=check_regions,
+            description=description,
+            enabled=enabled,
+            latitude=latitude,
+            load_sheddings=load_sheddings,
+            longitude=longitude,
+            minimum_origins=minimum_origins,
+            monitor=monitor,
+            notification_email=notification_email,
+            origin_steerings=origin_steerings,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             account_id: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             origins: Optional[pulumi.Input[Sequence[pulumi.Input['LoadBalancerPoolOriginArgs']]]] = None,
+             check_regions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             enabled: Optional[pulumi.Input[bool]] = None,
+             latitude: Optional[pulumi.Input[float]] = None,
+             load_sheddings: Optional[pulumi.Input[Sequence[pulumi.Input['LoadBalancerPoolLoadSheddingArgs']]]] = None,
+             longitude: Optional[pulumi.Input[float]] = None,
+             minimum_origins: Optional[pulumi.Input[int]] = None,
+             monitor: Optional[pulumi.Input[str]] = None,
+             notification_email: Optional[pulumi.Input[str]] = None,
+             origin_steerings: Optional[pulumi.Input[Sequence[pulumi.Input['LoadBalancerPoolOriginSteeringArgs']]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if account_id is None and 'accountId' in kwargs:
+            account_id = kwargs['accountId']
+        if account_id is None:
+            raise TypeError("Missing 'account_id' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if origins is None:
+            raise TypeError("Missing 'origins' argument")
+        if check_regions is None and 'checkRegions' in kwargs:
+            check_regions = kwargs['checkRegions']
+        if load_sheddings is None and 'loadSheddings' in kwargs:
+            load_sheddings = kwargs['loadSheddings']
+        if minimum_origins is None and 'minimumOrigins' in kwargs:
+            minimum_origins = kwargs['minimumOrigins']
+        if notification_email is None and 'notificationEmail' in kwargs:
+            notification_email = kwargs['notificationEmail']
+        if origin_steerings is None and 'originSteerings' in kwargs:
+            origin_steerings = kwargs['originSteerings']
+
+        _setter("account_id", account_id)
+        _setter("name", name)
+        _setter("origins", origins)
         if check_regions is not None:
-            pulumi.set(__self__, "check_regions", check_regions)
+            _setter("check_regions", check_regions)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if enabled is not None:
-            pulumi.set(__self__, "enabled", enabled)
+            _setter("enabled", enabled)
         if latitude is not None:
-            pulumi.set(__self__, "latitude", latitude)
+            _setter("latitude", latitude)
         if load_sheddings is not None:
-            pulumi.set(__self__, "load_sheddings", load_sheddings)
+            _setter("load_sheddings", load_sheddings)
         if longitude is not None:
-            pulumi.set(__self__, "longitude", longitude)
+            _setter("longitude", longitude)
         if minimum_origins is not None:
-            pulumi.set(__self__, "minimum_origins", minimum_origins)
+            _setter("minimum_origins", minimum_origins)
         if monitor is not None:
-            pulumi.set(__self__, "monitor", monitor)
+            _setter("monitor", monitor)
         if notification_email is not None:
-            pulumi.set(__self__, "notification_email", notification_email)
+            _setter("notification_email", notification_email)
         if origin_steerings is not None:
-            pulumi.set(__self__, "origin_steerings", origin_steerings)
+            _setter("origin_steerings", origin_steerings)
 
     @property
     @pulumi.getter(name="accountId")
@@ -262,36 +315,91 @@ class _LoadBalancerPoolState:
         :param pulumi.Input[Sequence[pulumi.Input['LoadBalancerPoolOriginSteeringArgs']]] origin_steerings: Set an origin steering policy to control origin selection within a pool.
         :param pulumi.Input[Sequence[pulumi.Input['LoadBalancerPoolOriginArgs']]] origins: The list of origins within this pool. Traffic directed at this pool is balanced across all currently healthy origins, provided the pool itself is healthy.
         """
+        _LoadBalancerPoolState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            account_id=account_id,
+            check_regions=check_regions,
+            created_on=created_on,
+            description=description,
+            enabled=enabled,
+            latitude=latitude,
+            load_sheddings=load_sheddings,
+            longitude=longitude,
+            minimum_origins=minimum_origins,
+            modified_on=modified_on,
+            monitor=monitor,
+            name=name,
+            notification_email=notification_email,
+            origin_steerings=origin_steerings,
+            origins=origins,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             account_id: Optional[pulumi.Input[str]] = None,
+             check_regions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             created_on: Optional[pulumi.Input[str]] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             enabled: Optional[pulumi.Input[bool]] = None,
+             latitude: Optional[pulumi.Input[float]] = None,
+             load_sheddings: Optional[pulumi.Input[Sequence[pulumi.Input['LoadBalancerPoolLoadSheddingArgs']]]] = None,
+             longitude: Optional[pulumi.Input[float]] = None,
+             minimum_origins: Optional[pulumi.Input[int]] = None,
+             modified_on: Optional[pulumi.Input[str]] = None,
+             monitor: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             notification_email: Optional[pulumi.Input[str]] = None,
+             origin_steerings: Optional[pulumi.Input[Sequence[pulumi.Input['LoadBalancerPoolOriginSteeringArgs']]]] = None,
+             origins: Optional[pulumi.Input[Sequence[pulumi.Input['LoadBalancerPoolOriginArgs']]]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if account_id is None and 'accountId' in kwargs:
+            account_id = kwargs['accountId']
+        if check_regions is None and 'checkRegions' in kwargs:
+            check_regions = kwargs['checkRegions']
+        if created_on is None and 'createdOn' in kwargs:
+            created_on = kwargs['createdOn']
+        if load_sheddings is None and 'loadSheddings' in kwargs:
+            load_sheddings = kwargs['loadSheddings']
+        if minimum_origins is None and 'minimumOrigins' in kwargs:
+            minimum_origins = kwargs['minimumOrigins']
+        if modified_on is None and 'modifiedOn' in kwargs:
+            modified_on = kwargs['modifiedOn']
+        if notification_email is None and 'notificationEmail' in kwargs:
+            notification_email = kwargs['notificationEmail']
+        if origin_steerings is None and 'originSteerings' in kwargs:
+            origin_steerings = kwargs['originSteerings']
+
         if account_id is not None:
-            pulumi.set(__self__, "account_id", account_id)
+            _setter("account_id", account_id)
         if check_regions is not None:
-            pulumi.set(__self__, "check_regions", check_regions)
+            _setter("check_regions", check_regions)
         if created_on is not None:
-            pulumi.set(__self__, "created_on", created_on)
+            _setter("created_on", created_on)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if enabled is not None:
-            pulumi.set(__self__, "enabled", enabled)
+            _setter("enabled", enabled)
         if latitude is not None:
-            pulumi.set(__self__, "latitude", latitude)
+            _setter("latitude", latitude)
         if load_sheddings is not None:
-            pulumi.set(__self__, "load_sheddings", load_sheddings)
+            _setter("load_sheddings", load_sheddings)
         if longitude is not None:
-            pulumi.set(__self__, "longitude", longitude)
+            _setter("longitude", longitude)
         if minimum_origins is not None:
-            pulumi.set(__self__, "minimum_origins", minimum_origins)
+            _setter("minimum_origins", minimum_origins)
         if modified_on is not None:
-            pulumi.set(__self__, "modified_on", modified_on)
+            _setter("modified_on", modified_on)
         if monitor is not None:
-            pulumi.set(__self__, "monitor", monitor)
+            _setter("monitor", monitor)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if notification_email is not None:
-            pulumi.set(__self__, "notification_email", notification_email)
+            _setter("notification_email", notification_email)
         if origin_steerings is not None:
-            pulumi.set(__self__, "origin_steerings", origin_steerings)
+            _setter("origin_steerings", origin_steerings)
         if origins is not None:
-            pulumi.set(__self__, "origins", origins)
+            _setter("origins", origins)
 
     @property
     @pulumi.getter(name="accountId")
@@ -635,6 +743,10 @@ class LoadBalancerPool(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            LoadBalancerPoolArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

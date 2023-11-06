@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -29,14 +29,41 @@ class AccessRuleArgs:
         :param pulumi.Input[str] notes: A personal note about the rule. Typically used as a reminder or explanation for the rule.
         :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. Must provide only one of `account_id`, `zone_id`. **Modifying this attribute will force creation of a new resource.**
         """
-        pulumi.set(__self__, "configuration", configuration)
-        pulumi.set(__self__, "mode", mode)
+        AccessRuleArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            configuration=configuration,
+            mode=mode,
+            account_id=account_id,
+            notes=notes,
+            zone_id=zone_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             configuration: Optional[pulumi.Input['AccessRuleConfigurationArgs']] = None,
+             mode: Optional[pulumi.Input[str]] = None,
+             account_id: Optional[pulumi.Input[str]] = None,
+             notes: Optional[pulumi.Input[str]] = None,
+             zone_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if configuration is None:
+            raise TypeError("Missing 'configuration' argument")
+        if mode is None:
+            raise TypeError("Missing 'mode' argument")
+        if account_id is None and 'accountId' in kwargs:
+            account_id = kwargs['accountId']
+        if zone_id is None and 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
+        _setter("configuration", configuration)
+        _setter("mode", mode)
         if account_id is not None:
-            pulumi.set(__self__, "account_id", account_id)
+            _setter("account_id", account_id)
         if notes is not None:
-            pulumi.set(__self__, "notes", notes)
+            _setter("notes", notes)
         if zone_id is not None:
-            pulumi.set(__self__, "zone_id", zone_id)
+            _setter("zone_id", zone_id)
 
     @property
     @pulumi.getter
@@ -115,16 +142,39 @@ class _AccessRuleState:
         :param pulumi.Input[str] notes: A personal note about the rule. Typically used as a reminder or explanation for the rule.
         :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. Must provide only one of `account_id`, `zone_id`. **Modifying this attribute will force creation of a new resource.**
         """
+        _AccessRuleState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            account_id=account_id,
+            configuration=configuration,
+            mode=mode,
+            notes=notes,
+            zone_id=zone_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             account_id: Optional[pulumi.Input[str]] = None,
+             configuration: Optional[pulumi.Input['AccessRuleConfigurationArgs']] = None,
+             mode: Optional[pulumi.Input[str]] = None,
+             notes: Optional[pulumi.Input[str]] = None,
+             zone_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if account_id is None and 'accountId' in kwargs:
+            account_id = kwargs['accountId']
+        if zone_id is None and 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         if account_id is not None:
-            pulumi.set(__self__, "account_id", account_id)
+            _setter("account_id", account_id)
         if configuration is not None:
-            pulumi.set(__self__, "configuration", configuration)
+            _setter("configuration", configuration)
         if mode is not None:
-            pulumi.set(__self__, "mode", mode)
+            _setter("mode", mode)
         if notes is not None:
-            pulumi.set(__self__, "notes", notes)
+            _setter("notes", notes)
         if zone_id is not None:
-            pulumi.set(__self__, "zone_id", zone_id)
+            _setter("zone_id", zone_id)
 
     @property
     @pulumi.getter(name="accountId")
@@ -360,6 +410,10 @@ class AccessRule(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            AccessRuleArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -380,6 +434,11 @@ class AccessRule(pulumi.CustomResource):
             __props__ = AccessRuleArgs.__new__(AccessRuleArgs)
 
             __props__.__dict__["account_id"] = account_id
+            if configuration is not None and not isinstance(configuration, AccessRuleConfigurationArgs):
+                configuration = configuration or {}
+                def _setter(key, value):
+                    configuration[key] = value
+                AccessRuleConfigurationArgs._configure(_setter, **configuration)
             if configuration is None and not opts.urn:
                 raise TypeError("Missing required property 'configuration'")
             __props__.__dict__["configuration"] = configuration

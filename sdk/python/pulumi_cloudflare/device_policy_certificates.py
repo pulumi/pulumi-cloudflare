@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['DevicePolicyCertificatesArgs', 'DevicePolicyCertificates']
@@ -21,8 +21,27 @@ class DevicePolicyCertificatesArgs:
         :param pulumi.Input[bool] enabled: `true` if certificate generation is enabled.
         :param pulumi.Input[str] zone_id: The zone identifier to target for the resource.
         """
-        pulumi.set(__self__, "enabled", enabled)
-        pulumi.set(__self__, "zone_id", zone_id)
+        DevicePolicyCertificatesArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            enabled=enabled,
+            zone_id=zone_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             enabled: Optional[pulumi.Input[bool]] = None,
+             zone_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if enabled is None:
+            raise TypeError("Missing 'enabled' argument")
+        if zone_id is None and 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+        if zone_id is None:
+            raise TypeError("Missing 'zone_id' argument")
+
+        _setter("enabled", enabled)
+        _setter("zone_id", zone_id)
 
     @property
     @pulumi.getter
@@ -59,10 +78,25 @@ class _DevicePolicyCertificatesState:
         :param pulumi.Input[bool] enabled: `true` if certificate generation is enabled.
         :param pulumi.Input[str] zone_id: The zone identifier to target for the resource.
         """
+        _DevicePolicyCertificatesState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            enabled=enabled,
+            zone_id=zone_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             enabled: Optional[pulumi.Input[bool]] = None,
+             zone_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if zone_id is None and 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         if enabled is not None:
-            pulumi.set(__self__, "enabled", enabled)
+            _setter("enabled", enabled)
         if zone_id is not None:
-            pulumi.set(__self__, "zone_id", zone_id)
+            _setter("zone_id", zone_id)
 
     @property
     @pulumi.getter
@@ -162,6 +196,10 @@ class DevicePolicyCertificates(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            DevicePolicyCertificatesArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['EmailRoutingAddressArgs', 'EmailRoutingAddress']
@@ -21,8 +21,27 @@ class EmailRoutingAddressArgs:
         :param pulumi.Input[str] account_id: The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         :param pulumi.Input[str] email: The contact email address of the user. **Modifying this attribute will force creation of a new resource.**
         """
-        pulumi.set(__self__, "account_id", account_id)
-        pulumi.set(__self__, "email", email)
+        EmailRoutingAddressArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            account_id=account_id,
+            email=email,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             account_id: Optional[pulumi.Input[str]] = None,
+             email: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if account_id is None and 'accountId' in kwargs:
+            account_id = kwargs['accountId']
+        if account_id is None:
+            raise TypeError("Missing 'account_id' argument")
+        if email is None:
+            raise TypeError("Missing 'email' argument")
+
+        _setter("account_id", account_id)
+        _setter("email", email)
 
     @property
     @pulumi.getter(name="accountId")
@@ -67,18 +86,41 @@ class _EmailRoutingAddressState:
         :param pulumi.Input[str] tag: Destination address identifier.
         :param pulumi.Input[str] verified: The date and time the destination address has been verified. Null means not verified yet.
         """
+        _EmailRoutingAddressState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            account_id=account_id,
+            created=created,
+            email=email,
+            modified=modified,
+            tag=tag,
+            verified=verified,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             account_id: Optional[pulumi.Input[str]] = None,
+             created: Optional[pulumi.Input[str]] = None,
+             email: Optional[pulumi.Input[str]] = None,
+             modified: Optional[pulumi.Input[str]] = None,
+             tag: Optional[pulumi.Input[str]] = None,
+             verified: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if account_id is None and 'accountId' in kwargs:
+            account_id = kwargs['accountId']
+
         if account_id is not None:
-            pulumi.set(__self__, "account_id", account_id)
+            _setter("account_id", account_id)
         if created is not None:
-            pulumi.set(__self__, "created", created)
+            _setter("created", created)
         if email is not None:
-            pulumi.set(__self__, "email", email)
+            _setter("email", email)
         if modified is not None:
-            pulumi.set(__self__, "modified", modified)
+            _setter("modified", modified)
         if tag is not None:
-            pulumi.set(__self__, "tag", tag)
+            _setter("tag", tag)
         if verified is not None:
-            pulumi.set(__self__, "verified", verified)
+            _setter("verified", verified)
 
     @property
     @pulumi.getter(name="accountId")
@@ -210,6 +252,10 @@ class EmailRoutingAddress(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            EmailRoutingAddressArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

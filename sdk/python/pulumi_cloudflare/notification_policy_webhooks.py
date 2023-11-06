@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['NotificationPolicyWebhooksArgs', 'NotificationPolicyWebhooks']
@@ -25,12 +25,35 @@ class NotificationPolicyWebhooksArgs:
         :param pulumi.Input[str] secret: An optional secret can be provided that will be passed in the `cf-webhook-auth` header when dispatching a webhook notification. Secrets are not returned in any API response body. Refer to the [documentation](https://api.cloudflare.com/#notification-webhooks-create-webhook) for more details.
         :param pulumi.Input[str] url: The URL of the webhook destinations. **Modifying this attribute will force creation of a new resource.**
         """
-        pulumi.set(__self__, "account_id", account_id)
-        pulumi.set(__self__, "name", name)
+        NotificationPolicyWebhooksArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            account_id=account_id,
+            name=name,
+            secret=secret,
+            url=url,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             account_id: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             secret: Optional[pulumi.Input[str]] = None,
+             url: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if account_id is None and 'accountId' in kwargs:
+            account_id = kwargs['accountId']
+        if account_id is None:
+            raise TypeError("Missing 'account_id' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+
+        _setter("account_id", account_id)
+        _setter("name", name)
         if secret is not None:
-            pulumi.set(__self__, "secret", secret)
+            _setter("secret", secret)
         if url is not None:
-            pulumi.set(__self__, "url", url)
+            _setter("url", url)
 
     @property
     @pulumi.getter(name="accountId")
@@ -102,22 +125,55 @@ class _NotificationPolicyWebhooksState:
         :param pulumi.Input[str] secret: An optional secret can be provided that will be passed in the `cf-webhook-auth` header when dispatching a webhook notification. Secrets are not returned in any API response body. Refer to the [documentation](https://api.cloudflare.com/#notification-webhooks-create-webhook) for more details.
         :param pulumi.Input[str] url: The URL of the webhook destinations. **Modifying this attribute will force creation of a new resource.**
         """
+        _NotificationPolicyWebhooksState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            account_id=account_id,
+            created_at=created_at,
+            last_failure=last_failure,
+            last_success=last_success,
+            name=name,
+            secret=secret,
+            type=type,
+            url=url,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             account_id: Optional[pulumi.Input[str]] = None,
+             created_at: Optional[pulumi.Input[str]] = None,
+             last_failure: Optional[pulumi.Input[str]] = None,
+             last_success: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             secret: Optional[pulumi.Input[str]] = None,
+             type: Optional[pulumi.Input[str]] = None,
+             url: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if account_id is None and 'accountId' in kwargs:
+            account_id = kwargs['accountId']
+        if created_at is None and 'createdAt' in kwargs:
+            created_at = kwargs['createdAt']
+        if last_failure is None and 'lastFailure' in kwargs:
+            last_failure = kwargs['lastFailure']
+        if last_success is None and 'lastSuccess' in kwargs:
+            last_success = kwargs['lastSuccess']
+
         if account_id is not None:
-            pulumi.set(__self__, "account_id", account_id)
+            _setter("account_id", account_id)
         if created_at is not None:
-            pulumi.set(__self__, "created_at", created_at)
+            _setter("created_at", created_at)
         if last_failure is not None:
-            pulumi.set(__self__, "last_failure", last_failure)
+            _setter("last_failure", last_failure)
         if last_success is not None:
-            pulumi.set(__self__, "last_success", last_success)
+            _setter("last_success", last_success)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if secret is not None:
-            pulumi.set(__self__, "secret", secret)
+            _setter("secret", secret)
         if type is not None:
-            pulumi.set(__self__, "type", type)
+            _setter("type", type)
         if url is not None:
-            pulumi.set(__self__, "url", url)
+            _setter("url", url)
 
     @property
     @pulumi.getter(name="accountId")
@@ -290,6 +346,10 @@ class NotificationPolicyWebhooks(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            NotificationPolicyWebhooksArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

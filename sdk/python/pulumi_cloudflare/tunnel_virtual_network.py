@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['TunnelVirtualNetworkArgs', 'TunnelVirtualNetwork']
@@ -25,12 +25,37 @@ class TunnelVirtualNetworkArgs:
         :param pulumi.Input[str] comment: Description of the tunnel virtual network.
         :param pulumi.Input[bool] is_default_network: Whether this virtual network is the default one for the account. This means IP Routes belong to this virtual network and Teams Clients in the account route through this virtual network, unless specified otherwise for each case.
         """
-        pulumi.set(__self__, "account_id", account_id)
-        pulumi.set(__self__, "name", name)
+        TunnelVirtualNetworkArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            account_id=account_id,
+            name=name,
+            comment=comment,
+            is_default_network=is_default_network,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             account_id: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             comment: Optional[pulumi.Input[str]] = None,
+             is_default_network: Optional[pulumi.Input[bool]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if account_id is None and 'accountId' in kwargs:
+            account_id = kwargs['accountId']
+        if account_id is None:
+            raise TypeError("Missing 'account_id' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if is_default_network is None and 'isDefaultNetwork' in kwargs:
+            is_default_network = kwargs['isDefaultNetwork']
+
+        _setter("account_id", account_id)
+        _setter("name", name)
         if comment is not None:
-            pulumi.set(__self__, "comment", comment)
+            _setter("comment", comment)
         if is_default_network is not None:
-            pulumi.set(__self__, "is_default_network", is_default_network)
+            _setter("is_default_network", is_default_network)
 
     @property
     @pulumi.getter(name="accountId")
@@ -95,14 +120,35 @@ class _TunnelVirtualNetworkState:
         :param pulumi.Input[bool] is_default_network: Whether this virtual network is the default one for the account. This means IP Routes belong to this virtual network and Teams Clients in the account route through this virtual network, unless specified otherwise for each case.
         :param pulumi.Input[str] name: A user-friendly name chosen when the virtual network is created.
         """
+        _TunnelVirtualNetworkState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            account_id=account_id,
+            comment=comment,
+            is_default_network=is_default_network,
+            name=name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             account_id: Optional[pulumi.Input[str]] = None,
+             comment: Optional[pulumi.Input[str]] = None,
+             is_default_network: Optional[pulumi.Input[bool]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if account_id is None and 'accountId' in kwargs:
+            account_id = kwargs['accountId']
+        if is_default_network is None and 'isDefaultNetwork' in kwargs:
+            is_default_network = kwargs['isDefaultNetwork']
+
         if account_id is not None:
-            pulumi.set(__self__, "account_id", account_id)
+            _setter("account_id", account_id)
         if comment is not None:
-            pulumi.set(__self__, "comment", comment)
+            _setter("comment", comment)
         if is_default_network is not None:
-            pulumi.set(__self__, "is_default_network", is_default_network)
+            _setter("is_default_network", is_default_network)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
 
     @property
     @pulumi.getter(name="accountId")
@@ -234,6 +280,10 @@ class TunnelVirtualNetwork(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            TunnelVirtualNetworkArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

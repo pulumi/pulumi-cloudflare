@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['ZoneArgs', 'Zone']
@@ -29,16 +29,45 @@ class ZoneArgs:
         :param pulumi.Input[str] plan: The name of the commercial plan to apply to the zone. Available values: `free`, `lite`, `pro`, `pro_plus`, `business`, `enterprise`, `partners_free`, `partners_pro`, `partners_business`, `partners_enterprise`.
         :param pulumi.Input[str] type: A full zone implies that DNS is hosted with Cloudflare. A partial zone is typically a partner-hosted zone or a CNAME setup. Available values: `full`, `partial`. Defaults to `full`.
         """
-        pulumi.set(__self__, "account_id", account_id)
-        pulumi.set(__self__, "zone", zone)
+        ZoneArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            account_id=account_id,
+            zone=zone,
+            jump_start=jump_start,
+            paused=paused,
+            plan=plan,
+            type=type,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             account_id: Optional[pulumi.Input[str]] = None,
+             zone: Optional[pulumi.Input[str]] = None,
+             jump_start: Optional[pulumi.Input[bool]] = None,
+             paused: Optional[pulumi.Input[bool]] = None,
+             plan: Optional[pulumi.Input[str]] = None,
+             type: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if account_id is None and 'accountId' in kwargs:
+            account_id = kwargs['accountId']
+        if account_id is None:
+            raise TypeError("Missing 'account_id' argument")
+        if zone is None:
+            raise TypeError("Missing 'zone' argument")
+        if jump_start is None and 'jumpStart' in kwargs:
+            jump_start = kwargs['jumpStart']
+
+        _setter("account_id", account_id)
+        _setter("zone", zone)
         if jump_start is not None:
-            pulumi.set(__self__, "jump_start", jump_start)
+            _setter("jump_start", jump_start)
         if paused is not None:
-            pulumi.set(__self__, "paused", paused)
+            _setter("paused", paused)
         if plan is not None:
-            pulumi.set(__self__, "plan", plan)
+            _setter("plan", plan)
         if type is not None:
-            pulumi.set(__self__, "type", type)
+            _setter("type", type)
 
     @property
     @pulumi.getter(name="accountId")
@@ -140,28 +169,69 @@ class _ZoneState:
         :param pulumi.Input[str] verification_key: Contains the TXT record value to validate domain ownership. This is only populated for zones of type `partial`.
         :param pulumi.Input[str] zone: The DNS zone name which will be added. **Modifying this attribute will force creation of a new resource.**
         """
+        _ZoneState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            account_id=account_id,
+            jump_start=jump_start,
+            meta=meta,
+            name_servers=name_servers,
+            paused=paused,
+            plan=plan,
+            status=status,
+            type=type,
+            vanity_name_servers=vanity_name_servers,
+            verification_key=verification_key,
+            zone=zone,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             account_id: Optional[pulumi.Input[str]] = None,
+             jump_start: Optional[pulumi.Input[bool]] = None,
+             meta: Optional[pulumi.Input[Mapping[str, pulumi.Input[bool]]]] = None,
+             name_servers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             paused: Optional[pulumi.Input[bool]] = None,
+             plan: Optional[pulumi.Input[str]] = None,
+             status: Optional[pulumi.Input[str]] = None,
+             type: Optional[pulumi.Input[str]] = None,
+             vanity_name_servers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+             verification_key: Optional[pulumi.Input[str]] = None,
+             zone: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if account_id is None and 'accountId' in kwargs:
+            account_id = kwargs['accountId']
+        if jump_start is None and 'jumpStart' in kwargs:
+            jump_start = kwargs['jumpStart']
+        if name_servers is None and 'nameServers' in kwargs:
+            name_servers = kwargs['nameServers']
+        if vanity_name_servers is None and 'vanityNameServers' in kwargs:
+            vanity_name_servers = kwargs['vanityNameServers']
+        if verification_key is None and 'verificationKey' in kwargs:
+            verification_key = kwargs['verificationKey']
+
         if account_id is not None:
-            pulumi.set(__self__, "account_id", account_id)
+            _setter("account_id", account_id)
         if jump_start is not None:
-            pulumi.set(__self__, "jump_start", jump_start)
+            _setter("jump_start", jump_start)
         if meta is not None:
-            pulumi.set(__self__, "meta", meta)
+            _setter("meta", meta)
         if name_servers is not None:
-            pulumi.set(__self__, "name_servers", name_servers)
+            _setter("name_servers", name_servers)
         if paused is not None:
-            pulumi.set(__self__, "paused", paused)
+            _setter("paused", paused)
         if plan is not None:
-            pulumi.set(__self__, "plan", plan)
+            _setter("plan", plan)
         if status is not None:
-            pulumi.set(__self__, "status", status)
+            _setter("status", status)
         if type is not None:
-            pulumi.set(__self__, "type", type)
+            _setter("type", type)
         if vanity_name_servers is not None:
-            pulumi.set(__self__, "vanity_name_servers", vanity_name_servers)
+            _setter("vanity_name_servers", vanity_name_servers)
         if verification_key is not None:
-            pulumi.set(__self__, "verification_key", verification_key)
+            _setter("verification_key", verification_key)
         if zone is not None:
-            pulumi.set(__self__, "zone", zone)
+            _setter("zone", zone)
 
     @property
     @pulumi.getter(name="accountId")
@@ -378,6 +448,10 @@ class Zone(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            ZoneArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

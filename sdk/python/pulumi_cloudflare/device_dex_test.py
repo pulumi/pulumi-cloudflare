@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -31,12 +31,47 @@ class DeviceDexTestArgs:
         :param pulumi.Input[str] interval: How often the test will run.
         :param pulumi.Input[str] name: The name of the Device Dex Test. Must be unique.
         """
-        pulumi.set(__self__, "account_id", account_id)
-        pulumi.set(__self__, "data", data)
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "enabled", enabled)
-        pulumi.set(__self__, "interval", interval)
-        pulumi.set(__self__, "name", name)
+        DeviceDexTestArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            account_id=account_id,
+            data=data,
+            description=description,
+            enabled=enabled,
+            interval=interval,
+            name=name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             account_id: Optional[pulumi.Input[str]] = None,
+             data: Optional[pulumi.Input['DeviceDexTestDataArgs']] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             enabled: Optional[pulumi.Input[bool]] = None,
+             interval: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if account_id is None and 'accountId' in kwargs:
+            account_id = kwargs['accountId']
+        if account_id is None:
+            raise TypeError("Missing 'account_id' argument")
+        if data is None:
+            raise TypeError("Missing 'data' argument")
+        if description is None:
+            raise TypeError("Missing 'description' argument")
+        if enabled is None:
+            raise TypeError("Missing 'enabled' argument")
+        if interval is None:
+            raise TypeError("Missing 'interval' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+
+        _setter("account_id", account_id)
+        _setter("data", data)
+        _setter("description", description)
+        _setter("enabled", enabled)
+        _setter("interval", interval)
+        _setter("name", name)
 
     @property
     @pulumi.getter(name="accountId")
@@ -133,22 +168,49 @@ class _DeviceDexTestState:
         :param pulumi.Input[str] name: The name of the Device Dex Test. Must be unique.
         :param pulumi.Input[str] updated: Timestamp of when the Dex Test was last updated.
         """
+        _DeviceDexTestState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            account_id=account_id,
+            created=created,
+            data=data,
+            description=description,
+            enabled=enabled,
+            interval=interval,
+            name=name,
+            updated=updated,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             account_id: Optional[pulumi.Input[str]] = None,
+             created: Optional[pulumi.Input[str]] = None,
+             data: Optional[pulumi.Input['DeviceDexTestDataArgs']] = None,
+             description: Optional[pulumi.Input[str]] = None,
+             enabled: Optional[pulumi.Input[bool]] = None,
+             interval: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             updated: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if account_id is None and 'accountId' in kwargs:
+            account_id = kwargs['accountId']
+
         if account_id is not None:
-            pulumi.set(__self__, "account_id", account_id)
+            _setter("account_id", account_id)
         if created is not None:
-            pulumi.set(__self__, "created", created)
+            _setter("created", created)
         if data is not None:
-            pulumi.set(__self__, "data", data)
+            _setter("data", data)
         if description is not None:
-            pulumi.set(__self__, "description", description)
+            _setter("description", description)
         if enabled is not None:
-            pulumi.set(__self__, "enabled", enabled)
+            _setter("enabled", enabled)
         if interval is not None:
-            pulumi.set(__self__, "interval", interval)
+            _setter("interval", interval)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if updated is not None:
-            pulumi.set(__self__, "updated", updated)
+            _setter("updated", updated)
 
     @property
     @pulumi.getter(name="accountId")
@@ -340,6 +402,10 @@ class DeviceDexTest(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            DeviceDexTestArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
@@ -363,6 +429,11 @@ class DeviceDexTest(pulumi.CustomResource):
             if account_id is None and not opts.urn:
                 raise TypeError("Missing required property 'account_id'")
             __props__.__dict__["account_id"] = account_id
+            if data is not None and not isinstance(data, DeviceDexTestDataArgs):
+                data = data or {}
+                def _setter(key, value):
+                    data[key] = value
+                DeviceDexTestDataArgs._configure(_setter, **data)
             if data is None and not opts.urn:
                 raise TypeError("Missing required property 'data'")
             __props__.__dict__["data"] = data

@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['ApiShieldSchemaValidationSettingsArgs', 'ApiShieldSchemaValidationSettings']
@@ -23,10 +23,35 @@ class ApiShieldSchemaValidationSettingsArgs:
         :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         :param pulumi.Input[str] validation_override_mitigation_action: When set, this overrides both zone level and operation level mitigation actions.
         """
-        pulumi.set(__self__, "validation_default_mitigation_action", validation_default_mitigation_action)
-        pulumi.set(__self__, "zone_id", zone_id)
+        ApiShieldSchemaValidationSettingsArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            validation_default_mitigation_action=validation_default_mitigation_action,
+            zone_id=zone_id,
+            validation_override_mitigation_action=validation_override_mitigation_action,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             validation_default_mitigation_action: Optional[pulumi.Input[str]] = None,
+             zone_id: Optional[pulumi.Input[str]] = None,
+             validation_override_mitigation_action: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if validation_default_mitigation_action is None and 'validationDefaultMitigationAction' in kwargs:
+            validation_default_mitigation_action = kwargs['validationDefaultMitigationAction']
+        if validation_default_mitigation_action is None:
+            raise TypeError("Missing 'validation_default_mitigation_action' argument")
+        if zone_id is None and 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+        if zone_id is None:
+            raise TypeError("Missing 'zone_id' argument")
+        if validation_override_mitigation_action is None and 'validationOverrideMitigationAction' in kwargs:
+            validation_override_mitigation_action = kwargs['validationOverrideMitigationAction']
+
+        _setter("validation_default_mitigation_action", validation_default_mitigation_action)
+        _setter("zone_id", zone_id)
         if validation_override_mitigation_action is not None:
-            pulumi.set(__self__, "validation_override_mitigation_action", validation_override_mitigation_action)
+            _setter("validation_override_mitigation_action", validation_override_mitigation_action)
 
     @property
     @pulumi.getter(name="validationDefaultMitigationAction")
@@ -77,12 +102,33 @@ class _ApiShieldSchemaValidationSettingsState:
         :param pulumi.Input[str] validation_override_mitigation_action: When set, this overrides both zone level and operation level mitigation actions.
         :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         """
+        _ApiShieldSchemaValidationSettingsState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            validation_default_mitigation_action=validation_default_mitigation_action,
+            validation_override_mitigation_action=validation_override_mitigation_action,
+            zone_id=zone_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             validation_default_mitigation_action: Optional[pulumi.Input[str]] = None,
+             validation_override_mitigation_action: Optional[pulumi.Input[str]] = None,
+             zone_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if validation_default_mitigation_action is None and 'validationDefaultMitigationAction' in kwargs:
+            validation_default_mitigation_action = kwargs['validationDefaultMitigationAction']
+        if validation_override_mitigation_action is None and 'validationOverrideMitigationAction' in kwargs:
+            validation_override_mitigation_action = kwargs['validationOverrideMitigationAction']
+        if zone_id is None and 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         if validation_default_mitigation_action is not None:
-            pulumi.set(__self__, "validation_default_mitigation_action", validation_default_mitigation_action)
+            _setter("validation_default_mitigation_action", validation_default_mitigation_action)
         if validation_override_mitigation_action is not None:
-            pulumi.set(__self__, "validation_override_mitigation_action", validation_override_mitigation_action)
+            _setter("validation_override_mitigation_action", validation_override_mitigation_action)
         if zone_id is not None:
-            pulumi.set(__self__, "zone_id", zone_id)
+            _setter("zone_id", zone_id)
 
     @property
     @pulumi.getter(name="validationDefaultMitigationAction")
@@ -182,6 +228,10 @@ class ApiShieldSchemaValidationSettings(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            ApiShieldSchemaValidationSettingsArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

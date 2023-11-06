@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['AccessCustomPageArgs', 'AccessCustomPage']
@@ -29,16 +29,49 @@ class AccessCustomPageArgs:
         :param pulumi.Input[str] custom_html: Custom HTML to display on the custom page.
         :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. Conflicts with `account_id`. **Modifying this attribute will force creation of a new resource.**
         """
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "type", type)
+        AccessCustomPageArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            name=name,
+            type=type,
+            account_id=account_id,
+            app_count=app_count,
+            custom_html=custom_html,
+            zone_id=zone_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             name: Optional[pulumi.Input[str]] = None,
+             type: Optional[pulumi.Input[str]] = None,
+             account_id: Optional[pulumi.Input[str]] = None,
+             app_count: Optional[pulumi.Input[int]] = None,
+             custom_html: Optional[pulumi.Input[str]] = None,
+             zone_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+        if account_id is None and 'accountId' in kwargs:
+            account_id = kwargs['accountId']
+        if app_count is None and 'appCount' in kwargs:
+            app_count = kwargs['appCount']
+        if custom_html is None and 'customHtml' in kwargs:
+            custom_html = kwargs['customHtml']
+        if zone_id is None and 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
+        _setter("name", name)
+        _setter("type", type)
         if account_id is not None:
-            pulumi.set(__self__, "account_id", account_id)
+            _setter("account_id", account_id)
         if app_count is not None:
-            pulumi.set(__self__, "app_count", app_count)
+            _setter("app_count", app_count)
         if custom_html is not None:
-            pulumi.set(__self__, "custom_html", custom_html)
+            _setter("custom_html", custom_html)
         if zone_id is not None:
-            pulumi.set(__self__, "zone_id", zone_id)
+            _setter("zone_id", zone_id)
 
     @property
     @pulumi.getter
@@ -131,18 +164,47 @@ class _AccessCustomPageState:
         :param pulumi.Input[str] type: Type of Access custom page to create. Available values: `identity_denied`, `forbidden`.
         :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. Conflicts with `account_id`. **Modifying this attribute will force creation of a new resource.**
         """
+        _AccessCustomPageState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            account_id=account_id,
+            app_count=app_count,
+            custom_html=custom_html,
+            name=name,
+            type=type,
+            zone_id=zone_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             account_id: Optional[pulumi.Input[str]] = None,
+             app_count: Optional[pulumi.Input[int]] = None,
+             custom_html: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             type: Optional[pulumi.Input[str]] = None,
+             zone_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if account_id is None and 'accountId' in kwargs:
+            account_id = kwargs['accountId']
+        if app_count is None and 'appCount' in kwargs:
+            app_count = kwargs['appCount']
+        if custom_html is None and 'customHtml' in kwargs:
+            custom_html = kwargs['customHtml']
+        if zone_id is None and 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         if account_id is not None:
-            pulumi.set(__self__, "account_id", account_id)
+            _setter("account_id", account_id)
         if app_count is not None:
-            pulumi.set(__self__, "app_count", app_count)
+            _setter("app_count", app_count)
         if custom_html is not None:
-            pulumi.set(__self__, "custom_html", custom_html)
+            _setter("custom_html", custom_html)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if type is not None:
-            pulumi.set(__self__, "type", type)
+            _setter("type", type)
         if zone_id is not None:
-            pulumi.set(__self__, "zone_id", zone_id)
+            _setter("zone_id", zone_id)
 
     @property
     @pulumi.getter(name="accountId")
@@ -288,6 +350,10 @@ class AccessCustomPage(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            AccessCustomPageArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

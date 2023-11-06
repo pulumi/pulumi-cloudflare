@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['ApiShieldOperationSchemaValidationSettingsArgs', 'ApiShieldOperationSchemaValidationSettings']
@@ -23,10 +23,35 @@ class ApiShieldOperationSchemaValidationSettingsArgs:
         :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         :param pulumi.Input[str] mitigation_action: The mitigation action to apply to this operation.
         """
-        pulumi.set(__self__, "operation_id", operation_id)
-        pulumi.set(__self__, "zone_id", zone_id)
+        ApiShieldOperationSchemaValidationSettingsArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            operation_id=operation_id,
+            zone_id=zone_id,
+            mitigation_action=mitigation_action,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             operation_id: Optional[pulumi.Input[str]] = None,
+             zone_id: Optional[pulumi.Input[str]] = None,
+             mitigation_action: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if operation_id is None and 'operationId' in kwargs:
+            operation_id = kwargs['operationId']
+        if operation_id is None:
+            raise TypeError("Missing 'operation_id' argument")
+        if zone_id is None and 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+        if zone_id is None:
+            raise TypeError("Missing 'zone_id' argument")
+        if mitigation_action is None and 'mitigationAction' in kwargs:
+            mitigation_action = kwargs['mitigationAction']
+
+        _setter("operation_id", operation_id)
+        _setter("zone_id", zone_id)
         if mitigation_action is not None:
-            pulumi.set(__self__, "mitigation_action", mitigation_action)
+            _setter("mitigation_action", mitigation_action)
 
     @property
     @pulumi.getter(name="operationId")
@@ -77,12 +102,33 @@ class _ApiShieldOperationSchemaValidationSettingsState:
         :param pulumi.Input[str] operation_id: Operation ID these settings should apply to. **Modifying this attribute will force creation of a new resource.**
         :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         """
+        _ApiShieldOperationSchemaValidationSettingsState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            mitigation_action=mitigation_action,
+            operation_id=operation_id,
+            zone_id=zone_id,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             mitigation_action: Optional[pulumi.Input[str]] = None,
+             operation_id: Optional[pulumi.Input[str]] = None,
+             zone_id: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None,
+             **kwargs):
+        if mitigation_action is None and 'mitigationAction' in kwargs:
+            mitigation_action = kwargs['mitigationAction']
+        if operation_id is None and 'operationId' in kwargs:
+            operation_id = kwargs['operationId']
+        if zone_id is None and 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+
         if mitigation_action is not None:
-            pulumi.set(__self__, "mitigation_action", mitigation_action)
+            _setter("mitigation_action", mitigation_action)
         if operation_id is not None:
-            pulumi.set(__self__, "operation_id", operation_id)
+            _setter("operation_id", operation_id)
         if zone_id is not None:
-            pulumi.set(__self__, "zone_id", zone_id)
+            _setter("zone_id", zone_id)
 
     @property
     @pulumi.getter(name="mitigationAction")
@@ -192,6 +238,10 @@ class ApiShieldOperationSchemaValidationSettings(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            ApiShieldOperationSchemaValidationSettingsArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
