@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a resource to customize the pages your end users will see
@@ -184,12 +183,6 @@ func (i *AccessCustomPage) ToAccessCustomPageOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(AccessCustomPageOutput)
 }
 
-func (i *AccessCustomPage) ToOutput(ctx context.Context) pulumix.Output[*AccessCustomPage] {
-	return pulumix.Output[*AccessCustomPage]{
-		OutputState: i.ToAccessCustomPageOutputWithContext(ctx).OutputState,
-	}
-}
-
 // AccessCustomPageArrayInput is an input type that accepts AccessCustomPageArray and AccessCustomPageArrayOutput values.
 // You can construct a concrete instance of `AccessCustomPageArrayInput` via:
 //
@@ -213,12 +206,6 @@ func (i AccessCustomPageArray) ToAccessCustomPageArrayOutput() AccessCustomPageA
 
 func (i AccessCustomPageArray) ToAccessCustomPageArrayOutputWithContext(ctx context.Context) AccessCustomPageArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AccessCustomPageArrayOutput)
-}
-
-func (i AccessCustomPageArray) ToOutput(ctx context.Context) pulumix.Output[[]*AccessCustomPage] {
-	return pulumix.Output[[]*AccessCustomPage]{
-		OutputState: i.ToAccessCustomPageArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // AccessCustomPageMapInput is an input type that accepts AccessCustomPageMap and AccessCustomPageMapOutput values.
@@ -246,12 +233,6 @@ func (i AccessCustomPageMap) ToAccessCustomPageMapOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(AccessCustomPageMapOutput)
 }
 
-func (i AccessCustomPageMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*AccessCustomPage] {
-	return pulumix.Output[map[string]*AccessCustomPage]{
-		OutputState: i.ToAccessCustomPageMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type AccessCustomPageOutput struct{ *pulumi.OutputState }
 
 func (AccessCustomPageOutput) ElementType() reflect.Type {
@@ -264,12 +245,6 @@ func (o AccessCustomPageOutput) ToAccessCustomPageOutput() AccessCustomPageOutpu
 
 func (o AccessCustomPageOutput) ToAccessCustomPageOutputWithContext(ctx context.Context) AccessCustomPageOutput {
 	return o
-}
-
-func (o AccessCustomPageOutput) ToOutput(ctx context.Context) pulumix.Output[*AccessCustomPage] {
-	return pulumix.Output[*AccessCustomPage]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The account identifier to target for the resource. Conflicts with `zoneId`. **Modifying this attribute will force creation of a new resource.**
@@ -316,12 +291,6 @@ func (o AccessCustomPageArrayOutput) ToAccessCustomPageArrayOutputWithContext(ct
 	return o
 }
 
-func (o AccessCustomPageArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*AccessCustomPage] {
-	return pulumix.Output[[]*AccessCustomPage]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o AccessCustomPageArrayOutput) Index(i pulumi.IntInput) AccessCustomPageOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *AccessCustomPage {
 		return vs[0].([]*AccessCustomPage)[vs[1].(int)]
@@ -340,12 +309,6 @@ func (o AccessCustomPageMapOutput) ToAccessCustomPageMapOutput() AccessCustomPag
 
 func (o AccessCustomPageMapOutput) ToAccessCustomPageMapOutputWithContext(ctx context.Context) AccessCustomPageMapOutput {
 	return o
-}
-
-func (o AccessCustomPageMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*AccessCustomPage] {
-	return pulumix.Output[map[string]*AccessCustomPage]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AccessCustomPageMapOutput) MapIndex(k pulumi.StringInput) AccessCustomPageOutput {

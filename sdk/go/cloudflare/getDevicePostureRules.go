@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Use this data source to lookup a list of [Device Posture Rule](https://developers.cloudflare.com/cloudflare-one/identity/devices)
@@ -111,12 +110,6 @@ func (o GetDevicePostureRulesResultOutput) ToGetDevicePostureRulesResultOutput()
 
 func (o GetDevicePostureRulesResultOutput) ToGetDevicePostureRulesResultOutputWithContext(ctx context.Context) GetDevicePostureRulesResultOutput {
 	return o
-}
-
-func (o GetDevicePostureRulesResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetDevicePostureRulesResult] {
-	return pulumix.Output[GetDevicePostureRulesResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The account identifier to target for the resource.

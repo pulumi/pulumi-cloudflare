@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Use this data source to look up [API Token Permission Groups](https://developers.cloudflare.com/api/tokens/create/permissions).
@@ -91,12 +90,6 @@ func (o GetApiTokenPermissionGroupsResultOutput) ToGetApiTokenPermissionGroupsRe
 
 func (o GetApiTokenPermissionGroupsResultOutput) ToGetApiTokenPermissionGroupsResultOutputWithContext(ctx context.Context) GetApiTokenPermissionGroupsResultOutput {
 	return o
-}
-
-func (o GetApiTokenPermissionGroupsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetApiTokenPermissionGroupsResult] {
-	return pulumix.Output[GetApiTokenPermissionGroupsResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Map of permissions for account level resources.

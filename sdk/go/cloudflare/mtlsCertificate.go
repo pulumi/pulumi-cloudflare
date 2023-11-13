@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Cloudflare mTLS certificate resource. These certificates may be used with mTLS enabled Cloudflare services.
@@ -215,12 +214,6 @@ func (i *MtlsCertificate) ToMtlsCertificateOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(MtlsCertificateOutput)
 }
 
-func (i *MtlsCertificate) ToOutput(ctx context.Context) pulumix.Output[*MtlsCertificate] {
-	return pulumix.Output[*MtlsCertificate]{
-		OutputState: i.ToMtlsCertificateOutputWithContext(ctx).OutputState,
-	}
-}
-
 // MtlsCertificateArrayInput is an input type that accepts MtlsCertificateArray and MtlsCertificateArrayOutput values.
 // You can construct a concrete instance of `MtlsCertificateArrayInput` via:
 //
@@ -244,12 +237,6 @@ func (i MtlsCertificateArray) ToMtlsCertificateArrayOutput() MtlsCertificateArra
 
 func (i MtlsCertificateArray) ToMtlsCertificateArrayOutputWithContext(ctx context.Context) MtlsCertificateArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(MtlsCertificateArrayOutput)
-}
-
-func (i MtlsCertificateArray) ToOutput(ctx context.Context) pulumix.Output[[]*MtlsCertificate] {
-	return pulumix.Output[[]*MtlsCertificate]{
-		OutputState: i.ToMtlsCertificateArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // MtlsCertificateMapInput is an input type that accepts MtlsCertificateMap and MtlsCertificateMapOutput values.
@@ -277,12 +264,6 @@ func (i MtlsCertificateMap) ToMtlsCertificateMapOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(MtlsCertificateMapOutput)
 }
 
-func (i MtlsCertificateMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*MtlsCertificate] {
-	return pulumix.Output[map[string]*MtlsCertificate]{
-		OutputState: i.ToMtlsCertificateMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type MtlsCertificateOutput struct{ *pulumi.OutputState }
 
 func (MtlsCertificateOutput) ElementType() reflect.Type {
@@ -295,12 +276,6 @@ func (o MtlsCertificateOutput) ToMtlsCertificateOutput() MtlsCertificateOutput {
 
 func (o MtlsCertificateOutput) ToMtlsCertificateOutputWithContext(ctx context.Context) MtlsCertificateOutput {
 	return o
-}
-
-func (o MtlsCertificateOutput) ToOutput(ctx context.Context) pulumix.Output[*MtlsCertificate] {
-	return pulumix.Output[*MtlsCertificate]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
@@ -367,12 +342,6 @@ func (o MtlsCertificateArrayOutput) ToMtlsCertificateArrayOutputWithContext(ctx 
 	return o
 }
 
-func (o MtlsCertificateArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*MtlsCertificate] {
-	return pulumix.Output[[]*MtlsCertificate]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o MtlsCertificateArrayOutput) Index(i pulumi.IntInput) MtlsCertificateOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *MtlsCertificate {
 		return vs[0].([]*MtlsCertificate)[vs[1].(int)]
@@ -391,12 +360,6 @@ func (o MtlsCertificateMapOutput) ToMtlsCertificateMapOutput() MtlsCertificateMa
 
 func (o MtlsCertificateMapOutput) ToMtlsCertificateMapOutputWithContext(ctx context.Context) MtlsCertificateMapOutput {
 	return o
-}
-
-func (o MtlsCertificateMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*MtlsCertificate] {
-	return pulumix.Output[map[string]*MtlsCertificate]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o MtlsCertificateMapOutput) MapIndex(k pulumi.StringInput) MtlsCertificateOutput {

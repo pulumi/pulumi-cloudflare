@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Cloudflare Teams rule resource. Teams rules comprise secure web gateway policies.
@@ -262,12 +261,6 @@ func (i *TeamsRule) ToTeamsRuleOutputWithContext(ctx context.Context) TeamsRuleO
 	return pulumi.ToOutputWithContext(ctx, i).(TeamsRuleOutput)
 }
 
-func (i *TeamsRule) ToOutput(ctx context.Context) pulumix.Output[*TeamsRule] {
-	return pulumix.Output[*TeamsRule]{
-		OutputState: i.ToTeamsRuleOutputWithContext(ctx).OutputState,
-	}
-}
-
 // TeamsRuleArrayInput is an input type that accepts TeamsRuleArray and TeamsRuleArrayOutput values.
 // You can construct a concrete instance of `TeamsRuleArrayInput` via:
 //
@@ -291,12 +284,6 @@ func (i TeamsRuleArray) ToTeamsRuleArrayOutput() TeamsRuleArrayOutput {
 
 func (i TeamsRuleArray) ToTeamsRuleArrayOutputWithContext(ctx context.Context) TeamsRuleArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(TeamsRuleArrayOutput)
-}
-
-func (i TeamsRuleArray) ToOutput(ctx context.Context) pulumix.Output[[]*TeamsRule] {
-	return pulumix.Output[[]*TeamsRule]{
-		OutputState: i.ToTeamsRuleArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // TeamsRuleMapInput is an input type that accepts TeamsRuleMap and TeamsRuleMapOutput values.
@@ -324,12 +311,6 @@ func (i TeamsRuleMap) ToTeamsRuleMapOutputWithContext(ctx context.Context) Teams
 	return pulumi.ToOutputWithContext(ctx, i).(TeamsRuleMapOutput)
 }
 
-func (i TeamsRuleMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*TeamsRule] {
-	return pulumix.Output[map[string]*TeamsRule]{
-		OutputState: i.ToTeamsRuleMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type TeamsRuleOutput struct{ *pulumi.OutputState }
 
 func (TeamsRuleOutput) ElementType() reflect.Type {
@@ -342,12 +323,6 @@ func (o TeamsRuleOutput) ToTeamsRuleOutput() TeamsRuleOutput {
 
 func (o TeamsRuleOutput) ToTeamsRuleOutputWithContext(ctx context.Context) TeamsRuleOutput {
 	return o
-}
-
-func (o TeamsRuleOutput) ToOutput(ctx context.Context) pulumix.Output[*TeamsRule] {
-	return pulumix.Output[*TeamsRule]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The account identifier to target for the resource.
@@ -423,12 +398,6 @@ func (o TeamsRuleArrayOutput) ToTeamsRuleArrayOutputWithContext(ctx context.Cont
 	return o
 }
 
-func (o TeamsRuleArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*TeamsRule] {
-	return pulumix.Output[[]*TeamsRule]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o TeamsRuleArrayOutput) Index(i pulumi.IntInput) TeamsRuleOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *TeamsRule {
 		return vs[0].([]*TeamsRule)[vs[1].(int)]
@@ -447,12 +416,6 @@ func (o TeamsRuleMapOutput) ToTeamsRuleMapOutput() TeamsRuleMapOutput {
 
 func (o TeamsRuleMapOutput) ToTeamsRuleMapOutputWithContext(ctx context.Context) TeamsRuleMapOutput {
 	return o
-}
-
-func (o TeamsRuleMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*TeamsRule] {
-	return pulumix.Output[map[string]*TeamsRule]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o TeamsRuleMapOutput) MapIndex(k pulumi.StringInput) TeamsRuleOutput {

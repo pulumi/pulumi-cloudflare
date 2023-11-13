@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Cloudflare Teams Proxy Endpoint resource. Teams Proxy
@@ -173,12 +172,6 @@ func (i *TeamsProxyEndpoint) ToTeamsProxyEndpointOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(TeamsProxyEndpointOutput)
 }
 
-func (i *TeamsProxyEndpoint) ToOutput(ctx context.Context) pulumix.Output[*TeamsProxyEndpoint] {
-	return pulumix.Output[*TeamsProxyEndpoint]{
-		OutputState: i.ToTeamsProxyEndpointOutputWithContext(ctx).OutputState,
-	}
-}
-
 // TeamsProxyEndpointArrayInput is an input type that accepts TeamsProxyEndpointArray and TeamsProxyEndpointArrayOutput values.
 // You can construct a concrete instance of `TeamsProxyEndpointArrayInput` via:
 //
@@ -202,12 +195,6 @@ func (i TeamsProxyEndpointArray) ToTeamsProxyEndpointArrayOutput() TeamsProxyEnd
 
 func (i TeamsProxyEndpointArray) ToTeamsProxyEndpointArrayOutputWithContext(ctx context.Context) TeamsProxyEndpointArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(TeamsProxyEndpointArrayOutput)
-}
-
-func (i TeamsProxyEndpointArray) ToOutput(ctx context.Context) pulumix.Output[[]*TeamsProxyEndpoint] {
-	return pulumix.Output[[]*TeamsProxyEndpoint]{
-		OutputState: i.ToTeamsProxyEndpointArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // TeamsProxyEndpointMapInput is an input type that accepts TeamsProxyEndpointMap and TeamsProxyEndpointMapOutput values.
@@ -235,12 +222,6 @@ func (i TeamsProxyEndpointMap) ToTeamsProxyEndpointMapOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(TeamsProxyEndpointMapOutput)
 }
 
-func (i TeamsProxyEndpointMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*TeamsProxyEndpoint] {
-	return pulumix.Output[map[string]*TeamsProxyEndpoint]{
-		OutputState: i.ToTeamsProxyEndpointMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type TeamsProxyEndpointOutput struct{ *pulumi.OutputState }
 
 func (TeamsProxyEndpointOutput) ElementType() reflect.Type {
@@ -253,12 +234,6 @@ func (o TeamsProxyEndpointOutput) ToTeamsProxyEndpointOutput() TeamsProxyEndpoin
 
 func (o TeamsProxyEndpointOutput) ToTeamsProxyEndpointOutputWithContext(ctx context.Context) TeamsProxyEndpointOutput {
 	return o
-}
-
-func (o TeamsProxyEndpointOutput) ToOutput(ctx context.Context) pulumix.Output[*TeamsProxyEndpoint] {
-	return pulumix.Output[*TeamsProxyEndpoint]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The account identifier to target for the resource.
@@ -295,12 +270,6 @@ func (o TeamsProxyEndpointArrayOutput) ToTeamsProxyEndpointArrayOutputWithContex
 	return o
 }
 
-func (o TeamsProxyEndpointArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*TeamsProxyEndpoint] {
-	return pulumix.Output[[]*TeamsProxyEndpoint]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o TeamsProxyEndpointArrayOutput) Index(i pulumi.IntInput) TeamsProxyEndpointOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *TeamsProxyEndpoint {
 		return vs[0].([]*TeamsProxyEndpoint)[vs[1].(int)]
@@ -319,12 +288,6 @@ func (o TeamsProxyEndpointMapOutput) ToTeamsProxyEndpointMapOutput() TeamsProxyE
 
 func (o TeamsProxyEndpointMapOutput) ToTeamsProxyEndpointMapOutputWithContext(ctx context.Context) TeamsProxyEndpointMapOutput {
 	return o
-}
-
-func (o TeamsProxyEndpointMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*TeamsProxyEndpoint] {
-	return pulumix.Output[map[string]*TeamsProxyEndpoint]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o TeamsProxyEndpointMapOutput) MapIndex(k pulumi.StringInput) TeamsProxyEndpointOutput {

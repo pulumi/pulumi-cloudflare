@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a resource which manages Cloudflare Pages projects.
@@ -354,12 +353,6 @@ func (i *PagesProject) ToPagesProjectOutputWithContext(ctx context.Context) Page
 	return pulumi.ToOutputWithContext(ctx, i).(PagesProjectOutput)
 }
 
-func (i *PagesProject) ToOutput(ctx context.Context) pulumix.Output[*PagesProject] {
-	return pulumix.Output[*PagesProject]{
-		OutputState: i.ToPagesProjectOutputWithContext(ctx).OutputState,
-	}
-}
-
 // PagesProjectArrayInput is an input type that accepts PagesProjectArray and PagesProjectArrayOutput values.
 // You can construct a concrete instance of `PagesProjectArrayInput` via:
 //
@@ -383,12 +376,6 @@ func (i PagesProjectArray) ToPagesProjectArrayOutput() PagesProjectArrayOutput {
 
 func (i PagesProjectArray) ToPagesProjectArrayOutputWithContext(ctx context.Context) PagesProjectArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(PagesProjectArrayOutput)
-}
-
-func (i PagesProjectArray) ToOutput(ctx context.Context) pulumix.Output[[]*PagesProject] {
-	return pulumix.Output[[]*PagesProject]{
-		OutputState: i.ToPagesProjectArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // PagesProjectMapInput is an input type that accepts PagesProjectMap and PagesProjectMapOutput values.
@@ -416,12 +403,6 @@ func (i PagesProjectMap) ToPagesProjectMapOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(PagesProjectMapOutput)
 }
 
-func (i PagesProjectMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*PagesProject] {
-	return pulumix.Output[map[string]*PagesProject]{
-		OutputState: i.ToPagesProjectMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type PagesProjectOutput struct{ *pulumi.OutputState }
 
 func (PagesProjectOutput) ElementType() reflect.Type {
@@ -434,12 +415,6 @@ func (o PagesProjectOutput) ToPagesProjectOutput() PagesProjectOutput {
 
 func (o PagesProjectOutput) ToPagesProjectOutputWithContext(ctx context.Context) PagesProjectOutput {
 	return o
-}
-
-func (o PagesProjectOutput) ToOutput(ctx context.Context) pulumix.Output[*PagesProject] {
-	return pulumix.Output[*PagesProject]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The account identifier to target for the resource.
@@ -501,12 +476,6 @@ func (o PagesProjectArrayOutput) ToPagesProjectArrayOutputWithContext(ctx contex
 	return o
 }
 
-func (o PagesProjectArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*PagesProject] {
-	return pulumix.Output[[]*PagesProject]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o PagesProjectArrayOutput) Index(i pulumi.IntInput) PagesProjectOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *PagesProject {
 		return vs[0].([]*PagesProject)[vs[1].(int)]
@@ -525,12 +494,6 @@ func (o PagesProjectMapOutput) ToPagesProjectMapOutput() PagesProjectMapOutput {
 
 func (o PagesProjectMapOutput) ToPagesProjectMapOutputWithContext(ctx context.Context) PagesProjectMapOutput {
 	return o
-}
-
-func (o PagesProjectMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*PagesProject] {
-	return pulumix.Output[map[string]*PagesProject]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PagesProjectMapOutput) MapIndex(k pulumi.StringInput) PagesProjectOutput {

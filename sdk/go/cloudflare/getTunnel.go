@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Use this datasource to lookup a tunnel in an account.
@@ -112,12 +111,6 @@ func (o LookupTunnelResultOutput) ToLookupTunnelResultOutput() LookupTunnelResul
 
 func (o LookupTunnelResultOutput) ToLookupTunnelResultOutputWithContext(ctx context.Context) LookupTunnelResultOutput {
 	return o
-}
-
-func (o LookupTunnelResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupTunnelResult] {
-	return pulumix.Output[LookupTunnelResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**

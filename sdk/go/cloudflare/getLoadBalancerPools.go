@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // A datasource to find Load Balancer Pools.
@@ -114,12 +113,6 @@ func (o GetLoadBalancerPoolsResultOutput) ToGetLoadBalancerPoolsResultOutput() G
 
 func (o GetLoadBalancerPoolsResultOutput) ToGetLoadBalancerPoolsResultOutputWithContext(ctx context.Context) GetLoadBalancerPoolsResultOutput {
 	return o
-}
-
-func (o GetLoadBalancerPoolsResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetLoadBalancerPoolsResult] {
-	return pulumix.Output[GetLoadBalancerPoolsResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The account identifier to target for the datasource lookups.

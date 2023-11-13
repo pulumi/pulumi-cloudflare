@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a resource, that manages Cloudflare Tiered Cache settings.
@@ -142,12 +141,6 @@ func (i *TieredCache) ToTieredCacheOutputWithContext(ctx context.Context) Tiered
 	return pulumi.ToOutputWithContext(ctx, i).(TieredCacheOutput)
 }
 
-func (i *TieredCache) ToOutput(ctx context.Context) pulumix.Output[*TieredCache] {
-	return pulumix.Output[*TieredCache]{
-		OutputState: i.ToTieredCacheOutputWithContext(ctx).OutputState,
-	}
-}
-
 // TieredCacheArrayInput is an input type that accepts TieredCacheArray and TieredCacheArrayOutput values.
 // You can construct a concrete instance of `TieredCacheArrayInput` via:
 //
@@ -171,12 +164,6 @@ func (i TieredCacheArray) ToTieredCacheArrayOutput() TieredCacheArrayOutput {
 
 func (i TieredCacheArray) ToTieredCacheArrayOutputWithContext(ctx context.Context) TieredCacheArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(TieredCacheArrayOutput)
-}
-
-func (i TieredCacheArray) ToOutput(ctx context.Context) pulumix.Output[[]*TieredCache] {
-	return pulumix.Output[[]*TieredCache]{
-		OutputState: i.ToTieredCacheArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // TieredCacheMapInput is an input type that accepts TieredCacheMap and TieredCacheMapOutput values.
@@ -204,12 +191,6 @@ func (i TieredCacheMap) ToTieredCacheMapOutputWithContext(ctx context.Context) T
 	return pulumi.ToOutputWithContext(ctx, i).(TieredCacheMapOutput)
 }
 
-func (i TieredCacheMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*TieredCache] {
-	return pulumix.Output[map[string]*TieredCache]{
-		OutputState: i.ToTieredCacheMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type TieredCacheOutput struct{ *pulumi.OutputState }
 
 func (TieredCacheOutput) ElementType() reflect.Type {
@@ -222,12 +203,6 @@ func (o TieredCacheOutput) ToTieredCacheOutput() TieredCacheOutput {
 
 func (o TieredCacheOutput) ToTieredCacheOutputWithContext(ctx context.Context) TieredCacheOutput {
 	return o
-}
-
-func (o TieredCacheOutput) ToOutput(ctx context.Context) pulumix.Output[*TieredCache] {
-	return pulumix.Output[*TieredCache]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The typed of tiered cache to utilize on the zone. Available values: `generic`, `smart`, `off`.
@@ -254,12 +229,6 @@ func (o TieredCacheArrayOutput) ToTieredCacheArrayOutputWithContext(ctx context.
 	return o
 }
 
-func (o TieredCacheArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*TieredCache] {
-	return pulumix.Output[[]*TieredCache]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o TieredCacheArrayOutput) Index(i pulumi.IntInput) TieredCacheOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *TieredCache {
 		return vs[0].([]*TieredCache)[vs[1].(int)]
@@ -278,12 +247,6 @@ func (o TieredCacheMapOutput) ToTieredCacheMapOutput() TieredCacheMapOutput {
 
 func (o TieredCacheMapOutput) ToTieredCacheMapOutputWithContext(ctx context.Context) TieredCacheMapOutput {
 	return o
-}
-
-func (o TieredCacheMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*TieredCache] {
-	return pulumix.Output[map[string]*TieredCache]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o TieredCacheMapOutput) MapIndex(k pulumi.StringInput) TieredCacheOutput {

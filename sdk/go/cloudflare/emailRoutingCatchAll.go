@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a resource for managing Email Routing Addresses catch all behaviour.
@@ -197,12 +196,6 @@ func (i *EmailRoutingCatchAll) ToEmailRoutingCatchAllOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(EmailRoutingCatchAllOutput)
 }
 
-func (i *EmailRoutingCatchAll) ToOutput(ctx context.Context) pulumix.Output[*EmailRoutingCatchAll] {
-	return pulumix.Output[*EmailRoutingCatchAll]{
-		OutputState: i.ToEmailRoutingCatchAllOutputWithContext(ctx).OutputState,
-	}
-}
-
 // EmailRoutingCatchAllArrayInput is an input type that accepts EmailRoutingCatchAllArray and EmailRoutingCatchAllArrayOutput values.
 // You can construct a concrete instance of `EmailRoutingCatchAllArrayInput` via:
 //
@@ -226,12 +219,6 @@ func (i EmailRoutingCatchAllArray) ToEmailRoutingCatchAllArrayOutput() EmailRout
 
 func (i EmailRoutingCatchAllArray) ToEmailRoutingCatchAllArrayOutputWithContext(ctx context.Context) EmailRoutingCatchAllArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(EmailRoutingCatchAllArrayOutput)
-}
-
-func (i EmailRoutingCatchAllArray) ToOutput(ctx context.Context) pulumix.Output[[]*EmailRoutingCatchAll] {
-	return pulumix.Output[[]*EmailRoutingCatchAll]{
-		OutputState: i.ToEmailRoutingCatchAllArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // EmailRoutingCatchAllMapInput is an input type that accepts EmailRoutingCatchAllMap and EmailRoutingCatchAllMapOutput values.
@@ -259,12 +246,6 @@ func (i EmailRoutingCatchAllMap) ToEmailRoutingCatchAllMapOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(EmailRoutingCatchAllMapOutput)
 }
 
-func (i EmailRoutingCatchAllMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*EmailRoutingCatchAll] {
-	return pulumix.Output[map[string]*EmailRoutingCatchAll]{
-		OutputState: i.ToEmailRoutingCatchAllMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type EmailRoutingCatchAllOutput struct{ *pulumi.OutputState }
 
 func (EmailRoutingCatchAllOutput) ElementType() reflect.Type {
@@ -277,12 +258,6 @@ func (o EmailRoutingCatchAllOutput) ToEmailRoutingCatchAllOutput() EmailRoutingC
 
 func (o EmailRoutingCatchAllOutput) ToEmailRoutingCatchAllOutputWithContext(ctx context.Context) EmailRoutingCatchAllOutput {
 	return o
-}
-
-func (o EmailRoutingCatchAllOutput) ToOutput(ctx context.Context) pulumix.Output[*EmailRoutingCatchAll] {
-	return pulumix.Output[*EmailRoutingCatchAll]{
-		OutputState: o.OutputState,
-	}
 }
 
 // List actions patterns.
@@ -329,12 +304,6 @@ func (o EmailRoutingCatchAllArrayOutput) ToEmailRoutingCatchAllArrayOutputWithCo
 	return o
 }
 
-func (o EmailRoutingCatchAllArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*EmailRoutingCatchAll] {
-	return pulumix.Output[[]*EmailRoutingCatchAll]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o EmailRoutingCatchAllArrayOutput) Index(i pulumi.IntInput) EmailRoutingCatchAllOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *EmailRoutingCatchAll {
 		return vs[0].([]*EmailRoutingCatchAll)[vs[1].(int)]
@@ -353,12 +322,6 @@ func (o EmailRoutingCatchAllMapOutput) ToEmailRoutingCatchAllMapOutput() EmailRo
 
 func (o EmailRoutingCatchAllMapOutput) ToEmailRoutingCatchAllMapOutputWithContext(ctx context.Context) EmailRoutingCatchAllMapOutput {
 	return o
-}
-
-func (o EmailRoutingCatchAllMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*EmailRoutingCatchAll] {
-	return pulumix.Output[map[string]*EmailRoutingCatchAll]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o EmailRoutingCatchAllMapOutput) MapIndex(k pulumi.StringInput) EmailRoutingCatchAllOutput {

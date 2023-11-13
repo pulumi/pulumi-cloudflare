@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Cloudflare Device Managed Network resource. Device managed networks allow for building location-aware device settings policies.
@@ -180,12 +179,6 @@ func (i *DeviceManagedNetworks) ToDeviceManagedNetworksOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(DeviceManagedNetworksOutput)
 }
 
-func (i *DeviceManagedNetworks) ToOutput(ctx context.Context) pulumix.Output[*DeviceManagedNetworks] {
-	return pulumix.Output[*DeviceManagedNetworks]{
-		OutputState: i.ToDeviceManagedNetworksOutputWithContext(ctx).OutputState,
-	}
-}
-
 // DeviceManagedNetworksArrayInput is an input type that accepts DeviceManagedNetworksArray and DeviceManagedNetworksArrayOutput values.
 // You can construct a concrete instance of `DeviceManagedNetworksArrayInput` via:
 //
@@ -209,12 +202,6 @@ func (i DeviceManagedNetworksArray) ToDeviceManagedNetworksArrayOutput() DeviceM
 
 func (i DeviceManagedNetworksArray) ToDeviceManagedNetworksArrayOutputWithContext(ctx context.Context) DeviceManagedNetworksArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DeviceManagedNetworksArrayOutput)
-}
-
-func (i DeviceManagedNetworksArray) ToOutput(ctx context.Context) pulumix.Output[[]*DeviceManagedNetworks] {
-	return pulumix.Output[[]*DeviceManagedNetworks]{
-		OutputState: i.ToDeviceManagedNetworksArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // DeviceManagedNetworksMapInput is an input type that accepts DeviceManagedNetworksMap and DeviceManagedNetworksMapOutput values.
@@ -242,12 +229,6 @@ func (i DeviceManagedNetworksMap) ToDeviceManagedNetworksMapOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(DeviceManagedNetworksMapOutput)
 }
 
-func (i DeviceManagedNetworksMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*DeviceManagedNetworks] {
-	return pulumix.Output[map[string]*DeviceManagedNetworks]{
-		OutputState: i.ToDeviceManagedNetworksMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DeviceManagedNetworksOutput struct{ *pulumi.OutputState }
 
 func (DeviceManagedNetworksOutput) ElementType() reflect.Type {
@@ -260,12 +241,6 @@ func (o DeviceManagedNetworksOutput) ToDeviceManagedNetworksOutput() DeviceManag
 
 func (o DeviceManagedNetworksOutput) ToDeviceManagedNetworksOutputWithContext(ctx context.Context) DeviceManagedNetworksOutput {
 	return o
-}
-
-func (o DeviceManagedNetworksOutput) ToOutput(ctx context.Context) pulumix.Output[*DeviceManagedNetworks] {
-	return pulumix.Output[*DeviceManagedNetworks]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The account identifier to target for the resource.
@@ -302,12 +277,6 @@ func (o DeviceManagedNetworksArrayOutput) ToDeviceManagedNetworksArrayOutputWith
 	return o
 }
 
-func (o DeviceManagedNetworksArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*DeviceManagedNetworks] {
-	return pulumix.Output[[]*DeviceManagedNetworks]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o DeviceManagedNetworksArrayOutput) Index(i pulumi.IntInput) DeviceManagedNetworksOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *DeviceManagedNetworks {
 		return vs[0].([]*DeviceManagedNetworks)[vs[1].(int)]
@@ -326,12 +295,6 @@ func (o DeviceManagedNetworksMapOutput) ToDeviceManagedNetworksMapOutput() Devic
 
 func (o DeviceManagedNetworksMapOutput) ToDeviceManagedNetworksMapOutputWithContext(ctx context.Context) DeviceManagedNetworksMapOutput {
 	return o
-}
-
-func (o DeviceManagedNetworksMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*DeviceManagedNetworks] {
-	return pulumix.Output[map[string]*DeviceManagedNetworks]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DeviceManagedNetworksMapOutput) MapIndex(k pulumi.StringInput) DeviceManagedNetworksOutput {

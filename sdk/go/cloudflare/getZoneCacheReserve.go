@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Cloudflare data source to look up Cache Reserve
@@ -102,12 +101,6 @@ func (o LookupZoneCacheReserveResultOutput) ToLookupZoneCacheReserveResultOutput
 
 func (o LookupZoneCacheReserveResultOutput) ToLookupZoneCacheReserveResultOutputWithContext(ctx context.Context) LookupZoneCacheReserveResultOutput {
 	return o
-}
-
-func (o LookupZoneCacheReserveResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupZoneCacheReserveResult] {
-	return pulumix.Output[LookupZoneCacheReserveResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The status of Cache Reserve support.

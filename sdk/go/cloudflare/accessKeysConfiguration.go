@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 type AccessKeysConfiguration struct {
@@ -110,12 +109,6 @@ func (i *AccessKeysConfiguration) ToAccessKeysConfigurationOutputWithContext(ctx
 	return pulumi.ToOutputWithContext(ctx, i).(AccessKeysConfigurationOutput)
 }
 
-func (i *AccessKeysConfiguration) ToOutput(ctx context.Context) pulumix.Output[*AccessKeysConfiguration] {
-	return pulumix.Output[*AccessKeysConfiguration]{
-		OutputState: i.ToAccessKeysConfigurationOutputWithContext(ctx).OutputState,
-	}
-}
-
 // AccessKeysConfigurationArrayInput is an input type that accepts AccessKeysConfigurationArray and AccessKeysConfigurationArrayOutput values.
 // You can construct a concrete instance of `AccessKeysConfigurationArrayInput` via:
 //
@@ -139,12 +132,6 @@ func (i AccessKeysConfigurationArray) ToAccessKeysConfigurationArrayOutput() Acc
 
 func (i AccessKeysConfigurationArray) ToAccessKeysConfigurationArrayOutputWithContext(ctx context.Context) AccessKeysConfigurationArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AccessKeysConfigurationArrayOutput)
-}
-
-func (i AccessKeysConfigurationArray) ToOutput(ctx context.Context) pulumix.Output[[]*AccessKeysConfiguration] {
-	return pulumix.Output[[]*AccessKeysConfiguration]{
-		OutputState: i.ToAccessKeysConfigurationArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // AccessKeysConfigurationMapInput is an input type that accepts AccessKeysConfigurationMap and AccessKeysConfigurationMapOutput values.
@@ -172,12 +159,6 @@ func (i AccessKeysConfigurationMap) ToAccessKeysConfigurationMapOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(AccessKeysConfigurationMapOutput)
 }
 
-func (i AccessKeysConfigurationMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*AccessKeysConfiguration] {
-	return pulumix.Output[map[string]*AccessKeysConfiguration]{
-		OutputState: i.ToAccessKeysConfigurationMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type AccessKeysConfigurationOutput struct{ *pulumi.OutputState }
 
 func (AccessKeysConfigurationOutput) ElementType() reflect.Type {
@@ -190,12 +171,6 @@ func (o AccessKeysConfigurationOutput) ToAccessKeysConfigurationOutput() AccessK
 
 func (o AccessKeysConfigurationOutput) ToAccessKeysConfigurationOutputWithContext(ctx context.Context) AccessKeysConfigurationOutput {
 	return o
-}
-
-func (o AccessKeysConfigurationOutput) ToOutput(ctx context.Context) pulumix.Output[*AccessKeysConfiguration] {
-	return pulumix.Output[*AccessKeysConfiguration]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The account identifier to target for the resource.
@@ -222,12 +197,6 @@ func (o AccessKeysConfigurationArrayOutput) ToAccessKeysConfigurationArrayOutput
 	return o
 }
 
-func (o AccessKeysConfigurationArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*AccessKeysConfiguration] {
-	return pulumix.Output[[]*AccessKeysConfiguration]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o AccessKeysConfigurationArrayOutput) Index(i pulumi.IntInput) AccessKeysConfigurationOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *AccessKeysConfiguration {
 		return vs[0].([]*AccessKeysConfiguration)[vs[1].(int)]
@@ -246,12 +215,6 @@ func (o AccessKeysConfigurationMapOutput) ToAccessKeysConfigurationMapOutput() A
 
 func (o AccessKeysConfigurationMapOutput) ToAccessKeysConfigurationMapOutputWithContext(ctx context.Context) AccessKeysConfigurationMapOutput {
 	return o
-}
-
-func (o AccessKeysConfigurationMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*AccessKeysConfiguration] {
-	return pulumix.Output[map[string]*AccessKeysConfiguration]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AccessKeysConfigurationMapOutput) MapIndex(k pulumi.StringInput) AccessKeysConfigurationOutput {

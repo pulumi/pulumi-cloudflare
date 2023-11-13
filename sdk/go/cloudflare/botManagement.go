@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a resource to configure Bot Management.
@@ -243,12 +242,6 @@ func (i *BotManagement) ToBotManagementOutputWithContext(ctx context.Context) Bo
 	return pulumi.ToOutputWithContext(ctx, i).(BotManagementOutput)
 }
 
-func (i *BotManagement) ToOutput(ctx context.Context) pulumix.Output[*BotManagement] {
-	return pulumix.Output[*BotManagement]{
-		OutputState: i.ToBotManagementOutputWithContext(ctx).OutputState,
-	}
-}
-
 // BotManagementArrayInput is an input type that accepts BotManagementArray and BotManagementArrayOutput values.
 // You can construct a concrete instance of `BotManagementArrayInput` via:
 //
@@ -272,12 +265,6 @@ func (i BotManagementArray) ToBotManagementArrayOutput() BotManagementArrayOutpu
 
 func (i BotManagementArray) ToBotManagementArrayOutputWithContext(ctx context.Context) BotManagementArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(BotManagementArrayOutput)
-}
-
-func (i BotManagementArray) ToOutput(ctx context.Context) pulumix.Output[[]*BotManagement] {
-	return pulumix.Output[[]*BotManagement]{
-		OutputState: i.ToBotManagementArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // BotManagementMapInput is an input type that accepts BotManagementMap and BotManagementMapOutput values.
@@ -305,12 +292,6 @@ func (i BotManagementMap) ToBotManagementMapOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(BotManagementMapOutput)
 }
 
-func (i BotManagementMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*BotManagement] {
-	return pulumix.Output[map[string]*BotManagement]{
-		OutputState: i.ToBotManagementMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type BotManagementOutput struct{ *pulumi.OutputState }
 
 func (BotManagementOutput) ElementType() reflect.Type {
@@ -323,12 +304,6 @@ func (o BotManagementOutput) ToBotManagementOutput() BotManagementOutput {
 
 func (o BotManagementOutput) ToBotManagementOutputWithContext(ctx context.Context) BotManagementOutput {
 	return o
-}
-
-func (o BotManagementOutput) ToOutput(ctx context.Context) pulumix.Output[*BotManagement] {
-	return pulumix.Output[*BotManagement]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Automatically update to the newest bot detection models created by Cloudflare as they are released. [Learn more.](https://developers.cloudflare.com/bots/reference/machine-learning-models#model-versions-and-release-notes).
@@ -400,12 +375,6 @@ func (o BotManagementArrayOutput) ToBotManagementArrayOutputWithContext(ctx cont
 	return o
 }
 
-func (o BotManagementArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*BotManagement] {
-	return pulumix.Output[[]*BotManagement]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o BotManagementArrayOutput) Index(i pulumi.IntInput) BotManagementOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *BotManagement {
 		return vs[0].([]*BotManagement)[vs[1].(int)]
@@ -424,12 +393,6 @@ func (o BotManagementMapOutput) ToBotManagementMapOutput() BotManagementMapOutpu
 
 func (o BotManagementMapOutput) ToBotManagementMapOutputWithContext(ctx context.Context) BotManagementMapOutput {
 	return o
-}
-
-func (o BotManagementMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*BotManagement] {
-	return pulumix.Output[map[string]*BotManagement]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o BotManagementMapOutput) MapIndex(k pulumi.StringInput) BotManagementOutput {

@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a resource for managing Email Routing rules.
@@ -209,12 +208,6 @@ func (i *EmailRoutingRule) ToEmailRoutingRuleOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(EmailRoutingRuleOutput)
 }
 
-func (i *EmailRoutingRule) ToOutput(ctx context.Context) pulumix.Output[*EmailRoutingRule] {
-	return pulumix.Output[*EmailRoutingRule]{
-		OutputState: i.ToEmailRoutingRuleOutputWithContext(ctx).OutputState,
-	}
-}
-
 // EmailRoutingRuleArrayInput is an input type that accepts EmailRoutingRuleArray and EmailRoutingRuleArrayOutput values.
 // You can construct a concrete instance of `EmailRoutingRuleArrayInput` via:
 //
@@ -238,12 +231,6 @@ func (i EmailRoutingRuleArray) ToEmailRoutingRuleArrayOutput() EmailRoutingRuleA
 
 func (i EmailRoutingRuleArray) ToEmailRoutingRuleArrayOutputWithContext(ctx context.Context) EmailRoutingRuleArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(EmailRoutingRuleArrayOutput)
-}
-
-func (i EmailRoutingRuleArray) ToOutput(ctx context.Context) pulumix.Output[[]*EmailRoutingRule] {
-	return pulumix.Output[[]*EmailRoutingRule]{
-		OutputState: i.ToEmailRoutingRuleArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // EmailRoutingRuleMapInput is an input type that accepts EmailRoutingRuleMap and EmailRoutingRuleMapOutput values.
@@ -271,12 +258,6 @@ func (i EmailRoutingRuleMap) ToEmailRoutingRuleMapOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(EmailRoutingRuleMapOutput)
 }
 
-func (i EmailRoutingRuleMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*EmailRoutingRule] {
-	return pulumix.Output[map[string]*EmailRoutingRule]{
-		OutputState: i.ToEmailRoutingRuleMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type EmailRoutingRuleOutput struct{ *pulumi.OutputState }
 
 func (EmailRoutingRuleOutput) ElementType() reflect.Type {
@@ -289,12 +270,6 @@ func (o EmailRoutingRuleOutput) ToEmailRoutingRuleOutput() EmailRoutingRuleOutpu
 
 func (o EmailRoutingRuleOutput) ToEmailRoutingRuleOutputWithContext(ctx context.Context) EmailRoutingRuleOutput {
 	return o
-}
-
-func (o EmailRoutingRuleOutput) ToOutput(ctx context.Context) pulumix.Output[*EmailRoutingRule] {
-	return pulumix.Output[*EmailRoutingRule]{
-		OutputState: o.OutputState,
-	}
 }
 
 // List actions patterns.
@@ -346,12 +321,6 @@ func (o EmailRoutingRuleArrayOutput) ToEmailRoutingRuleArrayOutputWithContext(ct
 	return o
 }
 
-func (o EmailRoutingRuleArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*EmailRoutingRule] {
-	return pulumix.Output[[]*EmailRoutingRule]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o EmailRoutingRuleArrayOutput) Index(i pulumi.IntInput) EmailRoutingRuleOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *EmailRoutingRule {
 		return vs[0].([]*EmailRoutingRule)[vs[1].(int)]
@@ -370,12 +339,6 @@ func (o EmailRoutingRuleMapOutput) ToEmailRoutingRuleMapOutput() EmailRoutingRul
 
 func (o EmailRoutingRuleMapOutput) ToEmailRoutingRuleMapOutputWithContext(ctx context.Context) EmailRoutingRuleMapOutput {
 	return o
-}
-
-func (o EmailRoutingRuleMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*EmailRoutingRule] {
-	return pulumix.Output[map[string]*EmailRoutingRule]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o EmailRoutingRuleMapOutput) MapIndex(k pulumi.StringInput) EmailRoutingRuleOutput {

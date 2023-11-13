@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Worker Cron Triggers allow users to map a cron expression to a Worker script
@@ -187,12 +186,6 @@ func (i *WorkerCronTrigger) ToWorkerCronTriggerOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(WorkerCronTriggerOutput)
 }
 
-func (i *WorkerCronTrigger) ToOutput(ctx context.Context) pulumix.Output[*WorkerCronTrigger] {
-	return pulumix.Output[*WorkerCronTrigger]{
-		OutputState: i.ToWorkerCronTriggerOutputWithContext(ctx).OutputState,
-	}
-}
-
 // WorkerCronTriggerArrayInput is an input type that accepts WorkerCronTriggerArray and WorkerCronTriggerArrayOutput values.
 // You can construct a concrete instance of `WorkerCronTriggerArrayInput` via:
 //
@@ -216,12 +209,6 @@ func (i WorkerCronTriggerArray) ToWorkerCronTriggerArrayOutput() WorkerCronTrigg
 
 func (i WorkerCronTriggerArray) ToWorkerCronTriggerArrayOutputWithContext(ctx context.Context) WorkerCronTriggerArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(WorkerCronTriggerArrayOutput)
-}
-
-func (i WorkerCronTriggerArray) ToOutput(ctx context.Context) pulumix.Output[[]*WorkerCronTrigger] {
-	return pulumix.Output[[]*WorkerCronTrigger]{
-		OutputState: i.ToWorkerCronTriggerArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // WorkerCronTriggerMapInput is an input type that accepts WorkerCronTriggerMap and WorkerCronTriggerMapOutput values.
@@ -249,12 +236,6 @@ func (i WorkerCronTriggerMap) ToWorkerCronTriggerMapOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(WorkerCronTriggerMapOutput)
 }
 
-func (i WorkerCronTriggerMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*WorkerCronTrigger] {
-	return pulumix.Output[map[string]*WorkerCronTrigger]{
-		OutputState: i.ToWorkerCronTriggerMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type WorkerCronTriggerOutput struct{ *pulumi.OutputState }
 
 func (WorkerCronTriggerOutput) ElementType() reflect.Type {
@@ -267,12 +248,6 @@ func (o WorkerCronTriggerOutput) ToWorkerCronTriggerOutput() WorkerCronTriggerOu
 
 func (o WorkerCronTriggerOutput) ToWorkerCronTriggerOutputWithContext(ctx context.Context) WorkerCronTriggerOutput {
 	return o
-}
-
-func (o WorkerCronTriggerOutput) ToOutput(ctx context.Context) pulumix.Output[*WorkerCronTrigger] {
-	return pulumix.Output[*WorkerCronTrigger]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The account identifier to target for the resource.
@@ -304,12 +279,6 @@ func (o WorkerCronTriggerArrayOutput) ToWorkerCronTriggerArrayOutputWithContext(
 	return o
 }
 
-func (o WorkerCronTriggerArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*WorkerCronTrigger] {
-	return pulumix.Output[[]*WorkerCronTrigger]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o WorkerCronTriggerArrayOutput) Index(i pulumi.IntInput) WorkerCronTriggerOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *WorkerCronTrigger {
 		return vs[0].([]*WorkerCronTrigger)[vs[1].(int)]
@@ -328,12 +297,6 @@ func (o WorkerCronTriggerMapOutput) ToWorkerCronTriggerMapOutput() WorkerCronTri
 
 func (o WorkerCronTriggerMapOutput) ToWorkerCronTriggerMapOutputWithContext(ctx context.Context) WorkerCronTriggerMapOutput {
 	return o
-}
-
-func (o WorkerCronTriggerMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*WorkerCronTrigger] {
-	return pulumix.Output[map[string]*WorkerCronTrigger]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o WorkerCronTriggerMapOutput) MapIndex(k pulumi.StringInput) WorkerCronTriggerOutput {

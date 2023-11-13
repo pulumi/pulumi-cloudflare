@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a resource to manage settings in API Shield Schema Validation 2.0.
@@ -152,12 +151,6 @@ func (i *ApiShieldSchemaValidationSettings) ToApiShieldSchemaValidationSettingsO
 	return pulumi.ToOutputWithContext(ctx, i).(ApiShieldSchemaValidationSettingsOutput)
 }
 
-func (i *ApiShieldSchemaValidationSettings) ToOutput(ctx context.Context) pulumix.Output[*ApiShieldSchemaValidationSettings] {
-	return pulumix.Output[*ApiShieldSchemaValidationSettings]{
-		OutputState: i.ToApiShieldSchemaValidationSettingsOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ApiShieldSchemaValidationSettingsArrayInput is an input type that accepts ApiShieldSchemaValidationSettingsArray and ApiShieldSchemaValidationSettingsArrayOutput values.
 // You can construct a concrete instance of `ApiShieldSchemaValidationSettingsArrayInput` via:
 //
@@ -181,12 +174,6 @@ func (i ApiShieldSchemaValidationSettingsArray) ToApiShieldSchemaValidationSetti
 
 func (i ApiShieldSchemaValidationSettingsArray) ToApiShieldSchemaValidationSettingsArrayOutputWithContext(ctx context.Context) ApiShieldSchemaValidationSettingsArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ApiShieldSchemaValidationSettingsArrayOutput)
-}
-
-func (i ApiShieldSchemaValidationSettingsArray) ToOutput(ctx context.Context) pulumix.Output[[]*ApiShieldSchemaValidationSettings] {
-	return pulumix.Output[[]*ApiShieldSchemaValidationSettings]{
-		OutputState: i.ToApiShieldSchemaValidationSettingsArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // ApiShieldSchemaValidationSettingsMapInput is an input type that accepts ApiShieldSchemaValidationSettingsMap and ApiShieldSchemaValidationSettingsMapOutput values.
@@ -214,12 +201,6 @@ func (i ApiShieldSchemaValidationSettingsMap) ToApiShieldSchemaValidationSetting
 	return pulumi.ToOutputWithContext(ctx, i).(ApiShieldSchemaValidationSettingsMapOutput)
 }
 
-func (i ApiShieldSchemaValidationSettingsMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ApiShieldSchemaValidationSettings] {
-	return pulumix.Output[map[string]*ApiShieldSchemaValidationSettings]{
-		OutputState: i.ToApiShieldSchemaValidationSettingsMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ApiShieldSchemaValidationSettingsOutput struct{ *pulumi.OutputState }
 
 func (ApiShieldSchemaValidationSettingsOutput) ElementType() reflect.Type {
@@ -232,12 +213,6 @@ func (o ApiShieldSchemaValidationSettingsOutput) ToApiShieldSchemaValidationSett
 
 func (o ApiShieldSchemaValidationSettingsOutput) ToApiShieldSchemaValidationSettingsOutputWithContext(ctx context.Context) ApiShieldSchemaValidationSettingsOutput {
 	return o
-}
-
-func (o ApiShieldSchemaValidationSettingsOutput) ToOutput(ctx context.Context) pulumix.Output[*ApiShieldSchemaValidationSettings] {
-	return pulumix.Output[*ApiShieldSchemaValidationSettings]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The default mitigation action used when there is no mitigation action defined on the operation.
@@ -273,12 +248,6 @@ func (o ApiShieldSchemaValidationSettingsArrayOutput) ToApiShieldSchemaValidatio
 	return o
 }
 
-func (o ApiShieldSchemaValidationSettingsArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ApiShieldSchemaValidationSettings] {
-	return pulumix.Output[[]*ApiShieldSchemaValidationSettings]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ApiShieldSchemaValidationSettingsArrayOutput) Index(i pulumi.IntInput) ApiShieldSchemaValidationSettingsOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ApiShieldSchemaValidationSettings {
 		return vs[0].([]*ApiShieldSchemaValidationSettings)[vs[1].(int)]
@@ -297,12 +266,6 @@ func (o ApiShieldSchemaValidationSettingsMapOutput) ToApiShieldSchemaValidationS
 
 func (o ApiShieldSchemaValidationSettingsMapOutput) ToApiShieldSchemaValidationSettingsMapOutputWithContext(ctx context.Context) ApiShieldSchemaValidationSettingsMapOutput {
 	return o
-}
-
-func (o ApiShieldSchemaValidationSettingsMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ApiShieldSchemaValidationSettings] {
-	return pulumix.Output[map[string]*ApiShieldSchemaValidationSettings]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ApiShieldSchemaValidationSettingsMapOutput) MapIndex(k pulumi.StringInput) ApiShieldSchemaValidationSettingsOutput {

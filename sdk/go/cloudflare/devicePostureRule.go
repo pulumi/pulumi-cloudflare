@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Cloudflare Device Posture Rule resource. Device posture rules configure security policies for device posture checks.
@@ -217,12 +216,6 @@ func (i *DevicePostureRule) ToDevicePostureRuleOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(DevicePostureRuleOutput)
 }
 
-func (i *DevicePostureRule) ToOutput(ctx context.Context) pulumix.Output[*DevicePostureRule] {
-	return pulumix.Output[*DevicePostureRule]{
-		OutputState: i.ToDevicePostureRuleOutputWithContext(ctx).OutputState,
-	}
-}
-
 // DevicePostureRuleArrayInput is an input type that accepts DevicePostureRuleArray and DevicePostureRuleArrayOutput values.
 // You can construct a concrete instance of `DevicePostureRuleArrayInput` via:
 //
@@ -246,12 +239,6 @@ func (i DevicePostureRuleArray) ToDevicePostureRuleArrayOutput() DevicePostureRu
 
 func (i DevicePostureRuleArray) ToDevicePostureRuleArrayOutputWithContext(ctx context.Context) DevicePostureRuleArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DevicePostureRuleArrayOutput)
-}
-
-func (i DevicePostureRuleArray) ToOutput(ctx context.Context) pulumix.Output[[]*DevicePostureRule] {
-	return pulumix.Output[[]*DevicePostureRule]{
-		OutputState: i.ToDevicePostureRuleArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // DevicePostureRuleMapInput is an input type that accepts DevicePostureRuleMap and DevicePostureRuleMapOutput values.
@@ -279,12 +266,6 @@ func (i DevicePostureRuleMap) ToDevicePostureRuleMapOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(DevicePostureRuleMapOutput)
 }
 
-func (i DevicePostureRuleMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*DevicePostureRule] {
-	return pulumix.Output[map[string]*DevicePostureRule]{
-		OutputState: i.ToDevicePostureRuleMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type DevicePostureRuleOutput struct{ *pulumi.OutputState }
 
 func (DevicePostureRuleOutput) ElementType() reflect.Type {
@@ -297,12 +278,6 @@ func (o DevicePostureRuleOutput) ToDevicePostureRuleOutput() DevicePostureRuleOu
 
 func (o DevicePostureRuleOutput) ToDevicePostureRuleOutputWithContext(ctx context.Context) DevicePostureRuleOutput {
 	return o
-}
-
-func (o DevicePostureRuleOutput) ToOutput(ctx context.Context) pulumix.Output[*DevicePostureRule] {
-	return pulumix.Output[*DevicePostureRule]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The account identifier to target for the resource.
@@ -357,12 +332,6 @@ func (o DevicePostureRuleArrayOutput) ToDevicePostureRuleArrayOutputWithContext(
 	return o
 }
 
-func (o DevicePostureRuleArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*DevicePostureRule] {
-	return pulumix.Output[[]*DevicePostureRule]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o DevicePostureRuleArrayOutput) Index(i pulumi.IntInput) DevicePostureRuleOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *DevicePostureRule {
 		return vs[0].([]*DevicePostureRule)[vs[1].(int)]
@@ -381,12 +350,6 @@ func (o DevicePostureRuleMapOutput) ToDevicePostureRuleMapOutput() DevicePosture
 
 func (o DevicePostureRuleMapOutput) ToDevicePostureRuleMapOutputWithContext(ctx context.Context) DevicePostureRuleMapOutput {
 	return o
-}
-
-func (o DevicePostureRuleMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*DevicePostureRule] {
-	return pulumix.Output[map[string]*DevicePostureRule]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o DevicePostureRuleMapOutput) MapIndex(k pulumi.StringInput) DevicePostureRuleOutput {
