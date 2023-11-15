@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Tunnel exposes applications running on your local web server on any
@@ -195,12 +194,6 @@ func (i *Tunnel) ToTunnelOutputWithContext(ctx context.Context) TunnelOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(TunnelOutput)
 }
 
-func (i *Tunnel) ToOutput(ctx context.Context) pulumix.Output[*Tunnel] {
-	return pulumix.Output[*Tunnel]{
-		OutputState: i.ToTunnelOutputWithContext(ctx).OutputState,
-	}
-}
-
 // TunnelArrayInput is an input type that accepts TunnelArray and TunnelArrayOutput values.
 // You can construct a concrete instance of `TunnelArrayInput` via:
 //
@@ -224,12 +217,6 @@ func (i TunnelArray) ToTunnelArrayOutput() TunnelArrayOutput {
 
 func (i TunnelArray) ToTunnelArrayOutputWithContext(ctx context.Context) TunnelArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(TunnelArrayOutput)
-}
-
-func (i TunnelArray) ToOutput(ctx context.Context) pulumix.Output[[]*Tunnel] {
-	return pulumix.Output[[]*Tunnel]{
-		OutputState: i.ToTunnelArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // TunnelMapInput is an input type that accepts TunnelMap and TunnelMapOutput values.
@@ -257,12 +244,6 @@ func (i TunnelMap) ToTunnelMapOutputWithContext(ctx context.Context) TunnelMapOu
 	return pulumi.ToOutputWithContext(ctx, i).(TunnelMapOutput)
 }
 
-func (i TunnelMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*Tunnel] {
-	return pulumix.Output[map[string]*Tunnel]{
-		OutputState: i.ToTunnelMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type TunnelOutput struct{ *pulumi.OutputState }
 
 func (TunnelOutput) ElementType() reflect.Type {
@@ -275,12 +256,6 @@ func (o TunnelOutput) ToTunnelOutput() TunnelOutput {
 
 func (o TunnelOutput) ToTunnelOutputWithContext(ctx context.Context) TunnelOutput {
 	return o
-}
-
-func (o TunnelOutput) ToOutput(ctx context.Context) pulumix.Output[*Tunnel] {
-	return pulumix.Output[*Tunnel]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
@@ -327,12 +302,6 @@ func (o TunnelArrayOutput) ToTunnelArrayOutputWithContext(ctx context.Context) T
 	return o
 }
 
-func (o TunnelArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*Tunnel] {
-	return pulumix.Output[[]*Tunnel]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o TunnelArrayOutput) Index(i pulumi.IntInput) TunnelOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Tunnel {
 		return vs[0].([]*Tunnel)[vs[1].(int)]
@@ -351,12 +320,6 @@ func (o TunnelMapOutput) ToTunnelMapOutput() TunnelMapOutput {
 
 func (o TunnelMapOutput) ToTunnelMapOutputWithContext(ctx context.Context) TunnelMapOutput {
 	return o
-}
-
-func (o TunnelMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*Tunnel] {
-	return pulumix.Output[map[string]*Tunnel]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o TunnelMapOutput) MapIndex(k pulumi.StringInput) TunnelOutput {

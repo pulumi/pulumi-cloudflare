@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a resource which customizes Cloudflare zone cache variants.
@@ -281,12 +280,6 @@ func (i *ZoneCacheVariants) ToZoneCacheVariantsOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(ZoneCacheVariantsOutput)
 }
 
-func (i *ZoneCacheVariants) ToOutput(ctx context.Context) pulumix.Output[*ZoneCacheVariants] {
-	return pulumix.Output[*ZoneCacheVariants]{
-		OutputState: i.ToZoneCacheVariantsOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ZoneCacheVariantsArrayInput is an input type that accepts ZoneCacheVariantsArray and ZoneCacheVariantsArrayOutput values.
 // You can construct a concrete instance of `ZoneCacheVariantsArrayInput` via:
 //
@@ -310,12 +303,6 @@ func (i ZoneCacheVariantsArray) ToZoneCacheVariantsArrayOutput() ZoneCacheVarian
 
 func (i ZoneCacheVariantsArray) ToZoneCacheVariantsArrayOutputWithContext(ctx context.Context) ZoneCacheVariantsArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ZoneCacheVariantsArrayOutput)
-}
-
-func (i ZoneCacheVariantsArray) ToOutput(ctx context.Context) pulumix.Output[[]*ZoneCacheVariants] {
-	return pulumix.Output[[]*ZoneCacheVariants]{
-		OutputState: i.ToZoneCacheVariantsArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // ZoneCacheVariantsMapInput is an input type that accepts ZoneCacheVariantsMap and ZoneCacheVariantsMapOutput values.
@@ -343,12 +330,6 @@ func (i ZoneCacheVariantsMap) ToZoneCacheVariantsMapOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(ZoneCacheVariantsMapOutput)
 }
 
-func (i ZoneCacheVariantsMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ZoneCacheVariants] {
-	return pulumix.Output[map[string]*ZoneCacheVariants]{
-		OutputState: i.ToZoneCacheVariantsMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ZoneCacheVariantsOutput struct{ *pulumi.OutputState }
 
 func (ZoneCacheVariantsOutput) ElementType() reflect.Type {
@@ -361,12 +342,6 @@ func (o ZoneCacheVariantsOutput) ToZoneCacheVariantsOutput() ZoneCacheVariantsOu
 
 func (o ZoneCacheVariantsOutput) ToZoneCacheVariantsOutputWithContext(ctx context.Context) ZoneCacheVariantsOutput {
 	return o
-}
-
-func (o ZoneCacheVariantsOutput) ToOutput(ctx context.Context) pulumix.Output[*ZoneCacheVariants] {
-	return pulumix.Output[*ZoneCacheVariants]{
-		OutputState: o.OutputState,
-	}
 }
 
 // List of strings with the MIME types of all the variants that should be served for avif.
@@ -443,12 +418,6 @@ func (o ZoneCacheVariantsArrayOutput) ToZoneCacheVariantsArrayOutputWithContext(
 	return o
 }
 
-func (o ZoneCacheVariantsArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ZoneCacheVariants] {
-	return pulumix.Output[[]*ZoneCacheVariants]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ZoneCacheVariantsArrayOutput) Index(i pulumi.IntInput) ZoneCacheVariantsOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ZoneCacheVariants {
 		return vs[0].([]*ZoneCacheVariants)[vs[1].(int)]
@@ -467,12 +436,6 @@ func (o ZoneCacheVariantsMapOutput) ToZoneCacheVariantsMapOutput() ZoneCacheVari
 
 func (o ZoneCacheVariantsMapOutput) ToZoneCacheVariantsMapOutputWithContext(ctx context.Context) ZoneCacheVariantsMapOutput {
 	return o
-}
-
-func (o ZoneCacheVariantsMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ZoneCacheVariants] {
-	return pulumix.Output[map[string]*ZoneCacheVariants]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ZoneCacheVariantsMapOutput) MapIndex(k pulumi.StringInput) ZoneCacheVariantsOutput {

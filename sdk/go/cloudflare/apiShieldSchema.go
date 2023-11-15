@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a resource to manage a schema in API Shield Schema Validation 2.0.
@@ -187,12 +186,6 @@ func (i *ApiShieldSchema) ToApiShieldSchemaOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(ApiShieldSchemaOutput)
 }
 
-func (i *ApiShieldSchema) ToOutput(ctx context.Context) pulumix.Output[*ApiShieldSchema] {
-	return pulumix.Output[*ApiShieldSchema]{
-		OutputState: i.ToApiShieldSchemaOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ApiShieldSchemaArrayInput is an input type that accepts ApiShieldSchemaArray and ApiShieldSchemaArrayOutput values.
 // You can construct a concrete instance of `ApiShieldSchemaArrayInput` via:
 //
@@ -216,12 +209,6 @@ func (i ApiShieldSchemaArray) ToApiShieldSchemaArrayOutput() ApiShieldSchemaArra
 
 func (i ApiShieldSchemaArray) ToApiShieldSchemaArrayOutputWithContext(ctx context.Context) ApiShieldSchemaArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ApiShieldSchemaArrayOutput)
-}
-
-func (i ApiShieldSchemaArray) ToOutput(ctx context.Context) pulumix.Output[[]*ApiShieldSchema] {
-	return pulumix.Output[[]*ApiShieldSchema]{
-		OutputState: i.ToApiShieldSchemaArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // ApiShieldSchemaMapInput is an input type that accepts ApiShieldSchemaMap and ApiShieldSchemaMapOutput values.
@@ -249,12 +236,6 @@ func (i ApiShieldSchemaMap) ToApiShieldSchemaMapOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(ApiShieldSchemaMapOutput)
 }
 
-func (i ApiShieldSchemaMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ApiShieldSchema] {
-	return pulumix.Output[map[string]*ApiShieldSchema]{
-		OutputState: i.ToApiShieldSchemaMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ApiShieldSchemaOutput struct{ *pulumi.OutputState }
 
 func (ApiShieldSchemaOutput) ElementType() reflect.Type {
@@ -267,12 +248,6 @@ func (o ApiShieldSchemaOutput) ToApiShieldSchemaOutput() ApiShieldSchemaOutput {
 
 func (o ApiShieldSchemaOutput) ToApiShieldSchemaOutputWithContext(ctx context.Context) ApiShieldSchemaOutput {
 	return o
-}
-
-func (o ApiShieldSchemaOutput) ToOutput(ctx context.Context) pulumix.Output[*ApiShieldSchema] {
-	return pulumix.Output[*ApiShieldSchema]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Kind of schema. Defaults to `openapiV3`. **Modifying this attribute will force creation of a new resource.**
@@ -314,12 +289,6 @@ func (o ApiShieldSchemaArrayOutput) ToApiShieldSchemaArrayOutputWithContext(ctx 
 	return o
 }
 
-func (o ApiShieldSchemaArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ApiShieldSchema] {
-	return pulumix.Output[[]*ApiShieldSchema]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ApiShieldSchemaArrayOutput) Index(i pulumi.IntInput) ApiShieldSchemaOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ApiShieldSchema {
 		return vs[0].([]*ApiShieldSchema)[vs[1].(int)]
@@ -338,12 +307,6 @@ func (o ApiShieldSchemaMapOutput) ToApiShieldSchemaMapOutput() ApiShieldSchemaMa
 
 func (o ApiShieldSchemaMapOutput) ToApiShieldSchemaMapOutputWithContext(ctx context.Context) ApiShieldSchemaMapOutput {
 	return o
-}
-
-func (o ApiShieldSchemaMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ApiShieldSchema] {
-	return pulumix.Output[map[string]*ApiShieldSchema]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ApiShieldSchemaMapOutput) MapIndex(k pulumi.StringInput) ApiShieldSchemaOutput {

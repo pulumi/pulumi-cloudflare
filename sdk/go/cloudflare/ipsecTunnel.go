@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a resource, that manages IPsec tunnels for Magic Transit.
@@ -301,12 +300,6 @@ func (i *IpsecTunnel) ToIpsecTunnelOutputWithContext(ctx context.Context) IpsecT
 	return pulumi.ToOutputWithContext(ctx, i).(IpsecTunnelOutput)
 }
 
-func (i *IpsecTunnel) ToOutput(ctx context.Context) pulumix.Output[*IpsecTunnel] {
-	return pulumix.Output[*IpsecTunnel]{
-		OutputState: i.ToIpsecTunnelOutputWithContext(ctx).OutputState,
-	}
-}
-
 // IpsecTunnelArrayInput is an input type that accepts IpsecTunnelArray and IpsecTunnelArrayOutput values.
 // You can construct a concrete instance of `IpsecTunnelArrayInput` via:
 //
@@ -330,12 +323,6 @@ func (i IpsecTunnelArray) ToIpsecTunnelArrayOutput() IpsecTunnelArrayOutput {
 
 func (i IpsecTunnelArray) ToIpsecTunnelArrayOutputWithContext(ctx context.Context) IpsecTunnelArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(IpsecTunnelArrayOutput)
-}
-
-func (i IpsecTunnelArray) ToOutput(ctx context.Context) pulumix.Output[[]*IpsecTunnel] {
-	return pulumix.Output[[]*IpsecTunnel]{
-		OutputState: i.ToIpsecTunnelArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // IpsecTunnelMapInput is an input type that accepts IpsecTunnelMap and IpsecTunnelMapOutput values.
@@ -363,12 +350,6 @@ func (i IpsecTunnelMap) ToIpsecTunnelMapOutputWithContext(ctx context.Context) I
 	return pulumi.ToOutputWithContext(ctx, i).(IpsecTunnelMapOutput)
 }
 
-func (i IpsecTunnelMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*IpsecTunnel] {
-	return pulumix.Output[map[string]*IpsecTunnel]{
-		OutputState: i.ToIpsecTunnelMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type IpsecTunnelOutput struct{ *pulumi.OutputState }
 
 func (IpsecTunnelOutput) ElementType() reflect.Type {
@@ -381,12 +362,6 @@ func (o IpsecTunnelOutput) ToIpsecTunnelOutput() IpsecTunnelOutput {
 
 func (o IpsecTunnelOutput) ToIpsecTunnelOutputWithContext(ctx context.Context) IpsecTunnelOutput {
 	return o
-}
-
-func (o IpsecTunnelOutput) ToOutput(ctx context.Context) pulumix.Output[*IpsecTunnel] {
-	return pulumix.Output[*IpsecTunnel]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
@@ -478,12 +453,6 @@ func (o IpsecTunnelArrayOutput) ToIpsecTunnelArrayOutputWithContext(ctx context.
 	return o
 }
 
-func (o IpsecTunnelArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*IpsecTunnel] {
-	return pulumix.Output[[]*IpsecTunnel]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o IpsecTunnelArrayOutput) Index(i pulumi.IntInput) IpsecTunnelOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *IpsecTunnel {
 		return vs[0].([]*IpsecTunnel)[vs[1].(int)]
@@ -502,12 +471,6 @@ func (o IpsecTunnelMapOutput) ToIpsecTunnelMapOutput() IpsecTunnelMapOutput {
 
 func (o IpsecTunnelMapOutput) ToIpsecTunnelMapOutputWithContext(ctx context.Context) IpsecTunnelMapOutput {
 	return o
-}
-
-func (o IpsecTunnelMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*IpsecTunnel] {
-	return pulumix.Output[map[string]*IpsecTunnel]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o IpsecTunnelMapOutput) MapIndex(k pulumi.StringInput) IpsecTunnelOutput {

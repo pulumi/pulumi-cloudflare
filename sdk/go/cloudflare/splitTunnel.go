@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Cloudflare Split Tunnel resource. Split tunnels are used to either
@@ -232,12 +231,6 @@ func (i *SplitTunnel) ToSplitTunnelOutputWithContext(ctx context.Context) SplitT
 	return pulumi.ToOutputWithContext(ctx, i).(SplitTunnelOutput)
 }
 
-func (i *SplitTunnel) ToOutput(ctx context.Context) pulumix.Output[*SplitTunnel] {
-	return pulumix.Output[*SplitTunnel]{
-		OutputState: i.ToSplitTunnelOutputWithContext(ctx).OutputState,
-	}
-}
-
 // SplitTunnelArrayInput is an input type that accepts SplitTunnelArray and SplitTunnelArrayOutput values.
 // You can construct a concrete instance of `SplitTunnelArrayInput` via:
 //
@@ -261,12 +254,6 @@ func (i SplitTunnelArray) ToSplitTunnelArrayOutput() SplitTunnelArrayOutput {
 
 func (i SplitTunnelArray) ToSplitTunnelArrayOutputWithContext(ctx context.Context) SplitTunnelArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SplitTunnelArrayOutput)
-}
-
-func (i SplitTunnelArray) ToOutput(ctx context.Context) pulumix.Output[[]*SplitTunnel] {
-	return pulumix.Output[[]*SplitTunnel]{
-		OutputState: i.ToSplitTunnelArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // SplitTunnelMapInput is an input type that accepts SplitTunnelMap and SplitTunnelMapOutput values.
@@ -294,12 +281,6 @@ func (i SplitTunnelMap) ToSplitTunnelMapOutputWithContext(ctx context.Context) S
 	return pulumi.ToOutputWithContext(ctx, i).(SplitTunnelMapOutput)
 }
 
-func (i SplitTunnelMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*SplitTunnel] {
-	return pulumix.Output[map[string]*SplitTunnel]{
-		OutputState: i.ToSplitTunnelMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type SplitTunnelOutput struct{ *pulumi.OutputState }
 
 func (SplitTunnelOutput) ElementType() reflect.Type {
@@ -312,12 +293,6 @@ func (o SplitTunnelOutput) ToSplitTunnelOutput() SplitTunnelOutput {
 
 func (o SplitTunnelOutput) ToSplitTunnelOutputWithContext(ctx context.Context) SplitTunnelOutput {
 	return o
-}
-
-func (o SplitTunnelOutput) ToOutput(ctx context.Context) pulumix.Output[*SplitTunnel] {
-	return pulumix.Output[*SplitTunnel]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The account identifier to target for the resource.
@@ -354,12 +329,6 @@ func (o SplitTunnelArrayOutput) ToSplitTunnelArrayOutputWithContext(ctx context.
 	return o
 }
 
-func (o SplitTunnelArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*SplitTunnel] {
-	return pulumix.Output[[]*SplitTunnel]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o SplitTunnelArrayOutput) Index(i pulumi.IntInput) SplitTunnelOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *SplitTunnel {
 		return vs[0].([]*SplitTunnel)[vs[1].(int)]
@@ -378,12 +347,6 @@ func (o SplitTunnelMapOutput) ToSplitTunnelMapOutput() SplitTunnelMapOutput {
 
 func (o SplitTunnelMapOutput) ToSplitTunnelMapOutputWithContext(ctx context.Context) SplitTunnelMapOutput {
 	return o
-}
-
-func (o SplitTunnelMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*SplitTunnel] {
-	return pulumix.Output[map[string]*SplitTunnel]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o SplitTunnelMapOutput) MapIndex(k pulumi.StringInput) SplitTunnelOutput {

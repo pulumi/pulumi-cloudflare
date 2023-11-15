@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Cloudflare custom SSL resource.
@@ -181,12 +180,6 @@ func (i *CustomSsl) ToCustomSslOutputWithContext(ctx context.Context) CustomSslO
 	return pulumi.ToOutputWithContext(ctx, i).(CustomSslOutput)
 }
 
-func (i *CustomSsl) ToOutput(ctx context.Context) pulumix.Output[*CustomSsl] {
-	return pulumix.Output[*CustomSsl]{
-		OutputState: i.ToCustomSslOutputWithContext(ctx).OutputState,
-	}
-}
-
 // CustomSslArrayInput is an input type that accepts CustomSslArray and CustomSslArrayOutput values.
 // You can construct a concrete instance of `CustomSslArrayInput` via:
 //
@@ -210,12 +203,6 @@ func (i CustomSslArray) ToCustomSslArrayOutput() CustomSslArrayOutput {
 
 func (i CustomSslArray) ToCustomSslArrayOutputWithContext(ctx context.Context) CustomSslArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(CustomSslArrayOutput)
-}
-
-func (i CustomSslArray) ToOutput(ctx context.Context) pulumix.Output[[]*CustomSsl] {
-	return pulumix.Output[[]*CustomSsl]{
-		OutputState: i.ToCustomSslArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // CustomSslMapInput is an input type that accepts CustomSslMap and CustomSslMapOutput values.
@@ -243,12 +230,6 @@ func (i CustomSslMap) ToCustomSslMapOutputWithContext(ctx context.Context) Custo
 	return pulumi.ToOutputWithContext(ctx, i).(CustomSslMapOutput)
 }
 
-func (i CustomSslMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*CustomSsl] {
-	return pulumix.Output[map[string]*CustomSsl]{
-		OutputState: i.ToCustomSslMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type CustomSslOutput struct{ *pulumi.OutputState }
 
 func (CustomSslOutput) ElementType() reflect.Type {
@@ -261,12 +242,6 @@ func (o CustomSslOutput) ToCustomSslOutput() CustomSslOutput {
 
 func (o CustomSslOutput) ToCustomSslOutputWithContext(ctx context.Context) CustomSslOutput {
 	return o
-}
-
-func (o CustomSslOutput) ToOutput(ctx context.Context) pulumix.Output[*CustomSsl] {
-	return pulumix.Output[*CustomSsl]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The certificate associated parameters. **Modifying this attribute will force creation of a new resource.**
@@ -329,12 +304,6 @@ func (o CustomSslArrayOutput) ToCustomSslArrayOutputWithContext(ctx context.Cont
 	return o
 }
 
-func (o CustomSslArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*CustomSsl] {
-	return pulumix.Output[[]*CustomSsl]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o CustomSslArrayOutput) Index(i pulumi.IntInput) CustomSslOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *CustomSsl {
 		return vs[0].([]*CustomSsl)[vs[1].(int)]
@@ -353,12 +322,6 @@ func (o CustomSslMapOutput) ToCustomSslMapOutput() CustomSslMapOutput {
 
 func (o CustomSslMapOutput) ToCustomSslMapOutputWithContext(ctx context.Context) CustomSslMapOutput {
 	return o
-}
-
-func (o CustomSslMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*CustomSsl] {
-	return pulumix.Output[map[string]*CustomSsl]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CustomSslMapOutput) MapIndex(k pulumi.StringInput) CustomSslOutput {

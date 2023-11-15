@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Use this data source to lookup a single [Access Identity Provider](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration) by name.
@@ -128,12 +127,6 @@ func (o LookupAccessIdentityProviderResultOutput) ToLookupAccessIdentityProvider
 
 func (o LookupAccessIdentityProviderResultOutput) ToLookupAccessIdentityProviderResultOutputWithContext(ctx context.Context) LookupAccessIdentityProviderResultOutput {
 	return o
-}
-
-func (o LookupAccessIdentityProviderResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupAccessIdentityProviderResult] {
-	return pulumix.Output[LookupAccessIdentityProviderResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The account identifier to target for the resource. Must provide only one of `zoneId`, `accountId`.

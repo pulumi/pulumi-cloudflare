@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Cloudflare Observatory Scheduled Test resource.
@@ -177,12 +176,6 @@ func (i *ObservatoryScheduledTest) ToObservatoryScheduledTestOutputWithContext(c
 	return pulumi.ToOutputWithContext(ctx, i).(ObservatoryScheduledTestOutput)
 }
 
-func (i *ObservatoryScheduledTest) ToOutput(ctx context.Context) pulumix.Output[*ObservatoryScheduledTest] {
-	return pulumix.Output[*ObservatoryScheduledTest]{
-		OutputState: i.ToObservatoryScheduledTestOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ObservatoryScheduledTestArrayInput is an input type that accepts ObservatoryScheduledTestArray and ObservatoryScheduledTestArrayOutput values.
 // You can construct a concrete instance of `ObservatoryScheduledTestArrayInput` via:
 //
@@ -206,12 +199,6 @@ func (i ObservatoryScheduledTestArray) ToObservatoryScheduledTestArrayOutput() O
 
 func (i ObservatoryScheduledTestArray) ToObservatoryScheduledTestArrayOutputWithContext(ctx context.Context) ObservatoryScheduledTestArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ObservatoryScheduledTestArrayOutput)
-}
-
-func (i ObservatoryScheduledTestArray) ToOutput(ctx context.Context) pulumix.Output[[]*ObservatoryScheduledTest] {
-	return pulumix.Output[[]*ObservatoryScheduledTest]{
-		OutputState: i.ToObservatoryScheduledTestArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // ObservatoryScheduledTestMapInput is an input type that accepts ObservatoryScheduledTestMap and ObservatoryScheduledTestMapOutput values.
@@ -239,12 +226,6 @@ func (i ObservatoryScheduledTestMap) ToObservatoryScheduledTestMapOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(ObservatoryScheduledTestMapOutput)
 }
 
-func (i ObservatoryScheduledTestMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ObservatoryScheduledTest] {
-	return pulumix.Output[map[string]*ObservatoryScheduledTest]{
-		OutputState: i.ToObservatoryScheduledTestMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ObservatoryScheduledTestOutput struct{ *pulumi.OutputState }
 
 func (ObservatoryScheduledTestOutput) ElementType() reflect.Type {
@@ -257,12 +238,6 @@ func (o ObservatoryScheduledTestOutput) ToObservatoryScheduledTestOutput() Obser
 
 func (o ObservatoryScheduledTestOutput) ToObservatoryScheduledTestOutputWithContext(ctx context.Context) ObservatoryScheduledTestOutput {
 	return o
-}
-
-func (o ObservatoryScheduledTestOutput) ToOutput(ctx context.Context) pulumix.Output[*ObservatoryScheduledTest] {
-	return pulumix.Output[*ObservatoryScheduledTest]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The frequency to run the test. Available values: `DAILY`, `WEEKLY`. **Modifying this attribute will force creation of a new resource.**
@@ -299,12 +274,6 @@ func (o ObservatoryScheduledTestArrayOutput) ToObservatoryScheduledTestArrayOutp
 	return o
 }
 
-func (o ObservatoryScheduledTestArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ObservatoryScheduledTest] {
-	return pulumix.Output[[]*ObservatoryScheduledTest]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ObservatoryScheduledTestArrayOutput) Index(i pulumi.IntInput) ObservatoryScheduledTestOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ObservatoryScheduledTest {
 		return vs[0].([]*ObservatoryScheduledTest)[vs[1].(int)]
@@ -323,12 +292,6 @@ func (o ObservatoryScheduledTestMapOutput) ToObservatoryScheduledTestMapOutput()
 
 func (o ObservatoryScheduledTestMapOutput) ToObservatoryScheduledTestMapOutputWithContext(ctx context.Context) ObservatoryScheduledTestMapOutput {
 	return o
-}
-
-func (o ObservatoryScheduledTestMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ObservatoryScheduledTest] {
-	return pulumix.Output[map[string]*ObservatoryScheduledTest]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ObservatoryScheduledTestMapOutput) MapIndex(k pulumi.StringInput) ObservatoryScheduledTestOutput {

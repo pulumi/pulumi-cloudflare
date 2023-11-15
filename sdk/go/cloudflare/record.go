@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Cloudflare record resource.
@@ -307,12 +306,6 @@ func (i *Record) ToRecordOutputWithContext(ctx context.Context) RecordOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(RecordOutput)
 }
 
-func (i *Record) ToOutput(ctx context.Context) pulumix.Output[*Record] {
-	return pulumix.Output[*Record]{
-		OutputState: i.ToRecordOutputWithContext(ctx).OutputState,
-	}
-}
-
 // RecordArrayInput is an input type that accepts RecordArray and RecordArrayOutput values.
 // You can construct a concrete instance of `RecordArrayInput` via:
 //
@@ -336,12 +329,6 @@ func (i RecordArray) ToRecordArrayOutput() RecordArrayOutput {
 
 func (i RecordArray) ToRecordArrayOutputWithContext(ctx context.Context) RecordArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(RecordArrayOutput)
-}
-
-func (i RecordArray) ToOutput(ctx context.Context) pulumix.Output[[]*Record] {
-	return pulumix.Output[[]*Record]{
-		OutputState: i.ToRecordArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // RecordMapInput is an input type that accepts RecordMap and RecordMapOutput values.
@@ -369,12 +356,6 @@ func (i RecordMap) ToRecordMapOutputWithContext(ctx context.Context) RecordMapOu
 	return pulumi.ToOutputWithContext(ctx, i).(RecordMapOutput)
 }
 
-func (i RecordMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*Record] {
-	return pulumix.Output[map[string]*Record]{
-		OutputState: i.ToRecordMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type RecordOutput struct{ *pulumi.OutputState }
 
 func (RecordOutput) ElementType() reflect.Type {
@@ -387,12 +368,6 @@ func (o RecordOutput) ToRecordOutput() RecordOutput {
 
 func (o RecordOutput) ToRecordOutputWithContext(ctx context.Context) RecordOutput {
 	return o
-}
-
-func (o RecordOutput) ToOutput(ctx context.Context) pulumix.Output[*Record] {
-	return pulumix.Output[*Record]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Allow creation of this record in Terraform to overwrite an existing record, if any. This does not affect the ability to
@@ -492,12 +467,6 @@ func (o RecordArrayOutput) ToRecordArrayOutputWithContext(ctx context.Context) R
 	return o
 }
 
-func (o RecordArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*Record] {
-	return pulumix.Output[[]*Record]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o RecordArrayOutput) Index(i pulumi.IntInput) RecordOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Record {
 		return vs[0].([]*Record)[vs[1].(int)]
@@ -516,12 +485,6 @@ func (o RecordMapOutput) ToRecordMapOutput() RecordMapOutput {
 
 func (o RecordMapOutput) ToRecordMapOutputWithContext(ctx context.Context) RecordMapOutput {
 	return o
-}
-
-func (o RecordMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*Record] {
-	return pulumix.Output[map[string]*Record]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o RecordMapOutput) MapIndex(k pulumi.StringInput) RecordOutput {

@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Cloudflare Web Analytics Site resource.
@@ -199,12 +198,6 @@ func (i *WebAnalyticsSite) ToWebAnalyticsSiteOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(WebAnalyticsSiteOutput)
 }
 
-func (i *WebAnalyticsSite) ToOutput(ctx context.Context) pulumix.Output[*WebAnalyticsSite] {
-	return pulumix.Output[*WebAnalyticsSite]{
-		OutputState: i.ToWebAnalyticsSiteOutputWithContext(ctx).OutputState,
-	}
-}
-
 // WebAnalyticsSiteArrayInput is an input type that accepts WebAnalyticsSiteArray and WebAnalyticsSiteArrayOutput values.
 // You can construct a concrete instance of `WebAnalyticsSiteArrayInput` via:
 //
@@ -228,12 +221,6 @@ func (i WebAnalyticsSiteArray) ToWebAnalyticsSiteArrayOutput() WebAnalyticsSiteA
 
 func (i WebAnalyticsSiteArray) ToWebAnalyticsSiteArrayOutputWithContext(ctx context.Context) WebAnalyticsSiteArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(WebAnalyticsSiteArrayOutput)
-}
-
-func (i WebAnalyticsSiteArray) ToOutput(ctx context.Context) pulumix.Output[[]*WebAnalyticsSite] {
-	return pulumix.Output[[]*WebAnalyticsSite]{
-		OutputState: i.ToWebAnalyticsSiteArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // WebAnalyticsSiteMapInput is an input type that accepts WebAnalyticsSiteMap and WebAnalyticsSiteMapOutput values.
@@ -261,12 +248,6 @@ func (i WebAnalyticsSiteMap) ToWebAnalyticsSiteMapOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(WebAnalyticsSiteMapOutput)
 }
 
-func (i WebAnalyticsSiteMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*WebAnalyticsSite] {
-	return pulumix.Output[map[string]*WebAnalyticsSite]{
-		OutputState: i.ToWebAnalyticsSiteMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type WebAnalyticsSiteOutput struct{ *pulumi.OutputState }
 
 func (WebAnalyticsSiteOutput) ElementType() reflect.Type {
@@ -279,12 +260,6 @@ func (o WebAnalyticsSiteOutput) ToWebAnalyticsSiteOutput() WebAnalyticsSiteOutpu
 
 func (o WebAnalyticsSiteOutput) ToWebAnalyticsSiteOutputWithContext(ctx context.Context) WebAnalyticsSiteOutput {
 	return o
-}
-
-func (o WebAnalyticsSiteOutput) ToOutput(ctx context.Context) pulumix.Output[*WebAnalyticsSite] {
-	return pulumix.Output[*WebAnalyticsSite]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
@@ -341,12 +316,6 @@ func (o WebAnalyticsSiteArrayOutput) ToWebAnalyticsSiteArrayOutputWithContext(ct
 	return o
 }
 
-func (o WebAnalyticsSiteArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*WebAnalyticsSite] {
-	return pulumix.Output[[]*WebAnalyticsSite]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o WebAnalyticsSiteArrayOutput) Index(i pulumi.IntInput) WebAnalyticsSiteOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *WebAnalyticsSite {
 		return vs[0].([]*WebAnalyticsSite)[vs[1].(int)]
@@ -365,12 +334,6 @@ func (o WebAnalyticsSiteMapOutput) ToWebAnalyticsSiteMapOutput() WebAnalyticsSit
 
 func (o WebAnalyticsSiteMapOutput) ToWebAnalyticsSiteMapOutputWithContext(ctx context.Context) WebAnalyticsSiteMapOutput {
 	return o
-}
-
-func (o WebAnalyticsSiteMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*WebAnalyticsSite] {
-	return pulumix.Output[map[string]*WebAnalyticsSite]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o WebAnalyticsSiteMapOutput) MapIndex(k pulumi.StringInput) WebAnalyticsSiteOutput {

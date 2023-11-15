@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Data Localization Suite Regional Hostname.
@@ -171,12 +170,6 @@ func (i *RegionalHostname) ToRegionalHostnameOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(RegionalHostnameOutput)
 }
 
-func (i *RegionalHostname) ToOutput(ctx context.Context) pulumix.Output[*RegionalHostname] {
-	return pulumix.Output[*RegionalHostname]{
-		OutputState: i.ToRegionalHostnameOutputWithContext(ctx).OutputState,
-	}
-}
-
 // RegionalHostnameArrayInput is an input type that accepts RegionalHostnameArray and RegionalHostnameArrayOutput values.
 // You can construct a concrete instance of `RegionalHostnameArrayInput` via:
 //
@@ -200,12 +193,6 @@ func (i RegionalHostnameArray) ToRegionalHostnameArrayOutput() RegionalHostnameA
 
 func (i RegionalHostnameArray) ToRegionalHostnameArrayOutputWithContext(ctx context.Context) RegionalHostnameArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(RegionalHostnameArrayOutput)
-}
-
-func (i RegionalHostnameArray) ToOutput(ctx context.Context) pulumix.Output[[]*RegionalHostname] {
-	return pulumix.Output[[]*RegionalHostname]{
-		OutputState: i.ToRegionalHostnameArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // RegionalHostnameMapInput is an input type that accepts RegionalHostnameMap and RegionalHostnameMapOutput values.
@@ -233,12 +220,6 @@ func (i RegionalHostnameMap) ToRegionalHostnameMapOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(RegionalHostnameMapOutput)
 }
 
-func (i RegionalHostnameMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*RegionalHostname] {
-	return pulumix.Output[map[string]*RegionalHostname]{
-		OutputState: i.ToRegionalHostnameMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type RegionalHostnameOutput struct{ *pulumi.OutputState }
 
 func (RegionalHostnameOutput) ElementType() reflect.Type {
@@ -251,12 +232,6 @@ func (o RegionalHostnameOutput) ToRegionalHostnameOutput() RegionalHostnameOutpu
 
 func (o RegionalHostnameOutput) ToRegionalHostnameOutputWithContext(ctx context.Context) RegionalHostnameOutput {
 	return o
-}
-
-func (o RegionalHostnameOutput) ToOutput(ctx context.Context) pulumix.Output[*RegionalHostname] {
-	return pulumix.Output[*RegionalHostname]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The RFC3339 timestamp of when the hostname was created.
@@ -293,12 +268,6 @@ func (o RegionalHostnameArrayOutput) ToRegionalHostnameArrayOutputWithContext(ct
 	return o
 }
 
-func (o RegionalHostnameArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*RegionalHostname] {
-	return pulumix.Output[[]*RegionalHostname]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o RegionalHostnameArrayOutput) Index(i pulumi.IntInput) RegionalHostnameOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *RegionalHostname {
 		return vs[0].([]*RegionalHostname)[vs[1].(int)]
@@ -317,12 +286,6 @@ func (o RegionalHostnameMapOutput) ToRegionalHostnameMapOutput() RegionalHostnam
 
 func (o RegionalHostnameMapOutput) ToRegionalHostnameMapOutputWithContext(ctx context.Context) RegionalHostnameMapOutput {
 	return o
-}
-
-func (o RegionalHostnameMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*RegionalHostname] {
-	return pulumix.Output[map[string]*RegionalHostname]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o RegionalHostnameMapOutput) MapIndex(k pulumi.StringInput) RegionalHostnameOutput {

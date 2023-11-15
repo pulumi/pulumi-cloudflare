@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Use this data source to look up Zone DNSSEC settings.
@@ -119,12 +118,6 @@ func (o LookupZoneDnssecResultOutput) ToLookupZoneDnssecResultOutput() LookupZon
 
 func (o LookupZoneDnssecResultOutput) ToLookupZoneDnssecResultOutputWithContext(ctx context.Context) LookupZoneDnssecResultOutput {
 	return o
-}
-
-func (o LookupZoneDnssecResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupZoneDnssecResult] {
-	return pulumix.Output[LookupZoneDnssecResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Zone DNSSEC algorithm.

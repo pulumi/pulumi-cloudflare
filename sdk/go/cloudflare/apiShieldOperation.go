@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a resource to manage an operation in API Shield Endpoint Management.
@@ -169,12 +168,6 @@ func (i *ApiShieldOperation) ToApiShieldOperationOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(ApiShieldOperationOutput)
 }
 
-func (i *ApiShieldOperation) ToOutput(ctx context.Context) pulumix.Output[*ApiShieldOperation] {
-	return pulumix.Output[*ApiShieldOperation]{
-		OutputState: i.ToApiShieldOperationOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ApiShieldOperationArrayInput is an input type that accepts ApiShieldOperationArray and ApiShieldOperationArrayOutput values.
 // You can construct a concrete instance of `ApiShieldOperationArrayInput` via:
 //
@@ -198,12 +191,6 @@ func (i ApiShieldOperationArray) ToApiShieldOperationArrayOutput() ApiShieldOper
 
 func (i ApiShieldOperationArray) ToApiShieldOperationArrayOutputWithContext(ctx context.Context) ApiShieldOperationArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ApiShieldOperationArrayOutput)
-}
-
-func (i ApiShieldOperationArray) ToOutput(ctx context.Context) pulumix.Output[[]*ApiShieldOperation] {
-	return pulumix.Output[[]*ApiShieldOperation]{
-		OutputState: i.ToApiShieldOperationArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // ApiShieldOperationMapInput is an input type that accepts ApiShieldOperationMap and ApiShieldOperationMapOutput values.
@@ -231,12 +218,6 @@ func (i ApiShieldOperationMap) ToApiShieldOperationMapOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(ApiShieldOperationMapOutput)
 }
 
-func (i ApiShieldOperationMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ApiShieldOperation] {
-	return pulumix.Output[map[string]*ApiShieldOperation]{
-		OutputState: i.ToApiShieldOperationMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ApiShieldOperationOutput struct{ *pulumi.OutputState }
 
 func (ApiShieldOperationOutput) ElementType() reflect.Type {
@@ -249,12 +230,6 @@ func (o ApiShieldOperationOutput) ToApiShieldOperationOutput() ApiShieldOperatio
 
 func (o ApiShieldOperationOutput) ToApiShieldOperationOutputWithContext(ctx context.Context) ApiShieldOperationOutput {
 	return o
-}
-
-func (o ApiShieldOperationOutput) ToOutput(ctx context.Context) pulumix.Output[*ApiShieldOperation] {
-	return pulumix.Output[*ApiShieldOperation]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The endpoint which can contain path parameter templates in curly braces, each will be replaced from left to right with `{varN}`, starting with `{var1}`. This will then be [Cloudflare-normalized](https://developers.cloudflare.com/rules/normalization/how-it-works/). **Modifying this attribute will force creation of a new resource.**
@@ -291,12 +266,6 @@ func (o ApiShieldOperationArrayOutput) ToApiShieldOperationArrayOutputWithContex
 	return o
 }
 
-func (o ApiShieldOperationArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ApiShieldOperation] {
-	return pulumix.Output[[]*ApiShieldOperation]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ApiShieldOperationArrayOutput) Index(i pulumi.IntInput) ApiShieldOperationOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ApiShieldOperation {
 		return vs[0].([]*ApiShieldOperation)[vs[1].(int)]
@@ -315,12 +284,6 @@ func (o ApiShieldOperationMapOutput) ToApiShieldOperationMapOutput() ApiShieldOp
 
 func (o ApiShieldOperationMapOutput) ToApiShieldOperationMapOutputWithContext(ctx context.Context) ApiShieldOperationMapOutput {
 	return o
-}
-
-func (o ApiShieldOperationMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ApiShieldOperation] {
-	return pulumix.Output[map[string]*ApiShieldOperation]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ApiShieldOperationMapOutput) MapIndex(k pulumi.StringInput) ApiShieldOperationOutput {

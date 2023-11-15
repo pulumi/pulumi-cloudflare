@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Cloudflare per-hostname TLS setting resource. Used to set TLS settings for hostnames under the specified zone.
@@ -183,12 +182,6 @@ func (i *HostnameTlsSetting) ToHostnameTlsSettingOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(HostnameTlsSettingOutput)
 }
 
-func (i *HostnameTlsSetting) ToOutput(ctx context.Context) pulumix.Output[*HostnameTlsSetting] {
-	return pulumix.Output[*HostnameTlsSetting]{
-		OutputState: i.ToHostnameTlsSettingOutputWithContext(ctx).OutputState,
-	}
-}
-
 // HostnameTlsSettingArrayInput is an input type that accepts HostnameTlsSettingArray and HostnameTlsSettingArrayOutput values.
 // You can construct a concrete instance of `HostnameTlsSettingArrayInput` via:
 //
@@ -212,12 +205,6 @@ func (i HostnameTlsSettingArray) ToHostnameTlsSettingArrayOutput() HostnameTlsSe
 
 func (i HostnameTlsSettingArray) ToHostnameTlsSettingArrayOutputWithContext(ctx context.Context) HostnameTlsSettingArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(HostnameTlsSettingArrayOutput)
-}
-
-func (i HostnameTlsSettingArray) ToOutput(ctx context.Context) pulumix.Output[[]*HostnameTlsSetting] {
-	return pulumix.Output[[]*HostnameTlsSetting]{
-		OutputState: i.ToHostnameTlsSettingArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // HostnameTlsSettingMapInput is an input type that accepts HostnameTlsSettingMap and HostnameTlsSettingMapOutput values.
@@ -245,12 +232,6 @@ func (i HostnameTlsSettingMap) ToHostnameTlsSettingMapOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(HostnameTlsSettingMapOutput)
 }
 
-func (i HostnameTlsSettingMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*HostnameTlsSetting] {
-	return pulumix.Output[map[string]*HostnameTlsSetting]{
-		OutputState: i.ToHostnameTlsSettingMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type HostnameTlsSettingOutput struct{ *pulumi.OutputState }
 
 func (HostnameTlsSettingOutput) ElementType() reflect.Type {
@@ -263,12 +244,6 @@ func (o HostnameTlsSettingOutput) ToHostnameTlsSettingOutput() HostnameTlsSettin
 
 func (o HostnameTlsSettingOutput) ToHostnameTlsSettingOutputWithContext(ctx context.Context) HostnameTlsSettingOutput {
 	return o
-}
-
-func (o HostnameTlsSettingOutput) ToOutput(ctx context.Context) pulumix.Output[*HostnameTlsSetting] {
-	return pulumix.Output[*HostnameTlsSetting]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o HostnameTlsSettingOutput) CreatedAt() pulumi.StringOutput {
@@ -313,12 +288,6 @@ func (o HostnameTlsSettingArrayOutput) ToHostnameTlsSettingArrayOutputWithContex
 	return o
 }
 
-func (o HostnameTlsSettingArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*HostnameTlsSetting] {
-	return pulumix.Output[[]*HostnameTlsSetting]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o HostnameTlsSettingArrayOutput) Index(i pulumi.IntInput) HostnameTlsSettingOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *HostnameTlsSetting {
 		return vs[0].([]*HostnameTlsSetting)[vs[1].(int)]
@@ -337,12 +306,6 @@ func (o HostnameTlsSettingMapOutput) ToHostnameTlsSettingMapOutput() HostnameTls
 
 func (o HostnameTlsSettingMapOutput) ToHostnameTlsSettingMapOutputWithContext(ctx context.Context) HostnameTlsSettingMapOutput {
 	return o
-}
-
-func (o HostnameTlsSettingMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*HostnameTlsSetting] {
-	return pulumix.Output[map[string]*HostnameTlsSetting]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o HostnameTlsSettingMapOutput) MapIndex(k pulumi.StringInput) HostnameTlsSettingOutput {

@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Cloudflare Cache Reserve resource. Cache Reserve can
@@ -153,12 +152,6 @@ func (i *ZoneCacheReserve) ToZoneCacheReserveOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(ZoneCacheReserveOutput)
 }
 
-func (i *ZoneCacheReserve) ToOutput(ctx context.Context) pulumix.Output[*ZoneCacheReserve] {
-	return pulumix.Output[*ZoneCacheReserve]{
-		OutputState: i.ToZoneCacheReserveOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ZoneCacheReserveArrayInput is an input type that accepts ZoneCacheReserveArray and ZoneCacheReserveArrayOutput values.
 // You can construct a concrete instance of `ZoneCacheReserveArrayInput` via:
 //
@@ -182,12 +175,6 @@ func (i ZoneCacheReserveArray) ToZoneCacheReserveArrayOutput() ZoneCacheReserveA
 
 func (i ZoneCacheReserveArray) ToZoneCacheReserveArrayOutputWithContext(ctx context.Context) ZoneCacheReserveArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ZoneCacheReserveArrayOutput)
-}
-
-func (i ZoneCacheReserveArray) ToOutput(ctx context.Context) pulumix.Output[[]*ZoneCacheReserve] {
-	return pulumix.Output[[]*ZoneCacheReserve]{
-		OutputState: i.ToZoneCacheReserveArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // ZoneCacheReserveMapInput is an input type that accepts ZoneCacheReserveMap and ZoneCacheReserveMapOutput values.
@@ -215,12 +202,6 @@ func (i ZoneCacheReserveMap) ToZoneCacheReserveMapOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(ZoneCacheReserveMapOutput)
 }
 
-func (i ZoneCacheReserveMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ZoneCacheReserve] {
-	return pulumix.Output[map[string]*ZoneCacheReserve]{
-		OutputState: i.ToZoneCacheReserveMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ZoneCacheReserveOutput struct{ *pulumi.OutputState }
 
 func (ZoneCacheReserveOutput) ElementType() reflect.Type {
@@ -233,12 +214,6 @@ func (o ZoneCacheReserveOutput) ToZoneCacheReserveOutput() ZoneCacheReserveOutpu
 
 func (o ZoneCacheReserveOutput) ToZoneCacheReserveOutputWithContext(ctx context.Context) ZoneCacheReserveOutput {
 	return o
-}
-
-func (o ZoneCacheReserveOutput) ToOutput(ctx context.Context) pulumix.Output[*ZoneCacheReserve] {
-	return pulumix.Output[*ZoneCacheReserve]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Whether to enable or disable Cache Reserve support for a given zone.
@@ -265,12 +240,6 @@ func (o ZoneCacheReserveArrayOutput) ToZoneCacheReserveArrayOutputWithContext(ct
 	return o
 }
 
-func (o ZoneCacheReserveArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ZoneCacheReserve] {
-	return pulumix.Output[[]*ZoneCacheReserve]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ZoneCacheReserveArrayOutput) Index(i pulumi.IntInput) ZoneCacheReserveOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ZoneCacheReserve {
 		return vs[0].([]*ZoneCacheReserve)[vs[1].(int)]
@@ -289,12 +258,6 @@ func (o ZoneCacheReserveMapOutput) ToZoneCacheReserveMapOutput() ZoneCacheReserv
 
 func (o ZoneCacheReserveMapOutput) ToZoneCacheReserveMapOutputWithContext(ctx context.Context) ZoneCacheReserveMapOutput {
 	return o
-}
-
-func (o ZoneCacheReserveMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ZoneCacheReserve] {
-	return pulumix.Output[map[string]*ZoneCacheReserve]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ZoneCacheReserveMapOutput) MapIndex(k pulumi.StringInput) ZoneCacheReserveOutput {

@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Use this data source to get the [IP ranges](https://www.cloudflare.com/ips/) of Cloudflare network.
@@ -102,12 +101,6 @@ func (o GetIpRangesResultOutput) ToGetIpRangesResultOutput() GetIpRangesResultOu
 
 func (o GetIpRangesResultOutput) ToGetIpRangesResultOutputWithContext(ctx context.Context) GetIpRangesResultOutput {
 	return o
-}
-
-func (o GetIpRangesResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetIpRangesResult] {
-	return pulumix.Output[GetIpRangesResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The lexically ordered list of only the IPv4 China CIDR blocks.

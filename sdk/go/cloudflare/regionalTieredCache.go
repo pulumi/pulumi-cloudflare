@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Instructs Cloudflare to check a regional hub data center on the way to your upper tier.
@@ -150,12 +149,6 @@ func (i *RegionalTieredCache) ToRegionalTieredCacheOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(RegionalTieredCacheOutput)
 }
 
-func (i *RegionalTieredCache) ToOutput(ctx context.Context) pulumix.Output[*RegionalTieredCache] {
-	return pulumix.Output[*RegionalTieredCache]{
-		OutputState: i.ToRegionalTieredCacheOutputWithContext(ctx).OutputState,
-	}
-}
-
 // RegionalTieredCacheArrayInput is an input type that accepts RegionalTieredCacheArray and RegionalTieredCacheArrayOutput values.
 // You can construct a concrete instance of `RegionalTieredCacheArrayInput` via:
 //
@@ -179,12 +172,6 @@ func (i RegionalTieredCacheArray) ToRegionalTieredCacheArrayOutput() RegionalTie
 
 func (i RegionalTieredCacheArray) ToRegionalTieredCacheArrayOutputWithContext(ctx context.Context) RegionalTieredCacheArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(RegionalTieredCacheArrayOutput)
-}
-
-func (i RegionalTieredCacheArray) ToOutput(ctx context.Context) pulumix.Output[[]*RegionalTieredCache] {
-	return pulumix.Output[[]*RegionalTieredCache]{
-		OutputState: i.ToRegionalTieredCacheArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // RegionalTieredCacheMapInput is an input type that accepts RegionalTieredCacheMap and RegionalTieredCacheMapOutput values.
@@ -212,12 +199,6 @@ func (i RegionalTieredCacheMap) ToRegionalTieredCacheMapOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(RegionalTieredCacheMapOutput)
 }
 
-func (i RegionalTieredCacheMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*RegionalTieredCache] {
-	return pulumix.Output[map[string]*RegionalTieredCache]{
-		OutputState: i.ToRegionalTieredCacheMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type RegionalTieredCacheOutput struct{ *pulumi.OutputState }
 
 func (RegionalTieredCacheOutput) ElementType() reflect.Type {
@@ -230,12 +211,6 @@ func (o RegionalTieredCacheOutput) ToRegionalTieredCacheOutput() RegionalTieredC
 
 func (o RegionalTieredCacheOutput) ToRegionalTieredCacheOutputWithContext(ctx context.Context) RegionalTieredCacheOutput {
 	return o
-}
-
-func (o RegionalTieredCacheOutput) ToOutput(ctx context.Context) pulumix.Output[*RegionalTieredCache] {
-	return pulumix.Output[*RegionalTieredCache]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Value of the Regional Tiered Cache zone setting.
@@ -262,12 +237,6 @@ func (o RegionalTieredCacheArrayOutput) ToRegionalTieredCacheArrayOutputWithCont
 	return o
 }
 
-func (o RegionalTieredCacheArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*RegionalTieredCache] {
-	return pulumix.Output[[]*RegionalTieredCache]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o RegionalTieredCacheArrayOutput) Index(i pulumi.IntInput) RegionalTieredCacheOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *RegionalTieredCache {
 		return vs[0].([]*RegionalTieredCache)[vs[1].(int)]
@@ -286,12 +255,6 @@ func (o RegionalTieredCacheMapOutput) ToRegionalTieredCacheMapOutput() RegionalT
 
 func (o RegionalTieredCacheMapOutput) ToRegionalTieredCacheMapOutputWithContext(ctx context.Context) RegionalTieredCacheMapOutput {
 	return o
-}
-
-func (o RegionalTieredCacheMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*RegionalTieredCache] {
-	return pulumix.Output[map[string]*RegionalTieredCache]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o RegionalTieredCacheMapOutput) MapIndex(k pulumi.StringInput) RegionalTieredCacheOutput {
