@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Cloudflare worker script resource. In order for a script to be active, you'll also need to setup a `WorkerRoute`.
@@ -317,12 +316,6 @@ func (i *WorkerScript) ToWorkerScriptOutputWithContext(ctx context.Context) Work
 	return pulumi.ToOutputWithContext(ctx, i).(WorkerScriptOutput)
 }
 
-func (i *WorkerScript) ToOutput(ctx context.Context) pulumix.Output[*WorkerScript] {
-	return pulumix.Output[*WorkerScript]{
-		OutputState: i.ToWorkerScriptOutputWithContext(ctx).OutputState,
-	}
-}
-
 // WorkerScriptArrayInput is an input type that accepts WorkerScriptArray and WorkerScriptArrayOutput values.
 // You can construct a concrete instance of `WorkerScriptArrayInput` via:
 //
@@ -346,12 +339,6 @@ func (i WorkerScriptArray) ToWorkerScriptArrayOutput() WorkerScriptArrayOutput {
 
 func (i WorkerScriptArray) ToWorkerScriptArrayOutputWithContext(ctx context.Context) WorkerScriptArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(WorkerScriptArrayOutput)
-}
-
-func (i WorkerScriptArray) ToOutput(ctx context.Context) pulumix.Output[[]*WorkerScript] {
-	return pulumix.Output[[]*WorkerScript]{
-		OutputState: i.ToWorkerScriptArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // WorkerScriptMapInput is an input type that accepts WorkerScriptMap and WorkerScriptMapOutput values.
@@ -379,12 +366,6 @@ func (i WorkerScriptMap) ToWorkerScriptMapOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(WorkerScriptMapOutput)
 }
 
-func (i WorkerScriptMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*WorkerScript] {
-	return pulumix.Output[map[string]*WorkerScript]{
-		OutputState: i.ToWorkerScriptMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type WorkerScriptOutput struct{ *pulumi.OutputState }
 
 func (WorkerScriptOutput) ElementType() reflect.Type {
@@ -397,12 +378,6 @@ func (o WorkerScriptOutput) ToWorkerScriptOutput() WorkerScriptOutput {
 
 func (o WorkerScriptOutput) ToWorkerScriptOutputWithContext(ctx context.Context) WorkerScriptOutput {
 	return o
-}
-
-func (o WorkerScriptOutput) ToOutput(ctx context.Context) pulumix.Output[*WorkerScript] {
-	return pulumix.Output[*WorkerScript]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The account identifier to target for the resource.
@@ -490,12 +465,6 @@ func (o WorkerScriptArrayOutput) ToWorkerScriptArrayOutputWithContext(ctx contex
 	return o
 }
 
-func (o WorkerScriptArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*WorkerScript] {
-	return pulumix.Output[[]*WorkerScript]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o WorkerScriptArrayOutput) Index(i pulumi.IntInput) WorkerScriptOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *WorkerScript {
 		return vs[0].([]*WorkerScript)[vs[1].(int)]
@@ -514,12 +483,6 @@ func (o WorkerScriptMapOutput) ToWorkerScriptMapOutput() WorkerScriptMapOutput {
 
 func (o WorkerScriptMapOutput) ToWorkerScriptMapOutputWithContext(ctx context.Context) WorkerScriptMapOutput {
 	return o
-}
-
-func (o WorkerScriptMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*WorkerScript] {
-	return pulumix.Output[map[string]*WorkerScript]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o WorkerScriptMapOutput) MapIndex(k pulumi.StringInput) WorkerScriptOutput {

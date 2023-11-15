@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Use this data source to retrieve information about the currently authenticated user.
@@ -101,12 +100,6 @@ func (o GetUserResultOutput) ToGetUserResultOutput() GetUserResultOutput {
 
 func (o GetUserResultOutput) ToGetUserResultOutputWithContext(ctx context.Context) GetUserResultOutput {
 	return o
-}
-
-func (o GetUserResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetUserResult] {
-	return pulumix.Output[GetUserResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The user's email address.

@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // A Zero Trust organization defines the user login experience.
@@ -244,12 +243,6 @@ func (i *AccessOrganization) ToAccessOrganizationOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(AccessOrganizationOutput)
 }
 
-func (i *AccessOrganization) ToOutput(ctx context.Context) pulumix.Output[*AccessOrganization] {
-	return pulumix.Output[*AccessOrganization]{
-		OutputState: i.ToAccessOrganizationOutputWithContext(ctx).OutputState,
-	}
-}
-
 // AccessOrganizationArrayInput is an input type that accepts AccessOrganizationArray and AccessOrganizationArrayOutput values.
 // You can construct a concrete instance of `AccessOrganizationArrayInput` via:
 //
@@ -273,12 +266,6 @@ func (i AccessOrganizationArray) ToAccessOrganizationArrayOutput() AccessOrganiz
 
 func (i AccessOrganizationArray) ToAccessOrganizationArrayOutputWithContext(ctx context.Context) AccessOrganizationArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AccessOrganizationArrayOutput)
-}
-
-func (i AccessOrganizationArray) ToOutput(ctx context.Context) pulumix.Output[[]*AccessOrganization] {
-	return pulumix.Output[[]*AccessOrganization]{
-		OutputState: i.ToAccessOrganizationArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // AccessOrganizationMapInput is an input type that accepts AccessOrganizationMap and AccessOrganizationMapOutput values.
@@ -306,12 +293,6 @@ func (i AccessOrganizationMap) ToAccessOrganizationMapOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(AccessOrganizationMapOutput)
 }
 
-func (i AccessOrganizationMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*AccessOrganization] {
-	return pulumix.Output[map[string]*AccessOrganization]{
-		OutputState: i.ToAccessOrganizationMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type AccessOrganizationOutput struct{ *pulumi.OutputState }
 
 func (AccessOrganizationOutput) ElementType() reflect.Type {
@@ -324,12 +305,6 @@ func (o AccessOrganizationOutput) ToAccessOrganizationOutput() AccessOrganizatio
 
 func (o AccessOrganizationOutput) ToAccessOrganizationOutputWithContext(ctx context.Context) AccessOrganizationOutput {
 	return o
-}
-
-func (o AccessOrganizationOutput) ToOutput(ctx context.Context) pulumix.Output[*AccessOrganization] {
-	return pulumix.Output[*AccessOrganization]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The account identifier to target for the resource. Conflicts with `zoneId`.
@@ -400,12 +375,6 @@ func (o AccessOrganizationArrayOutput) ToAccessOrganizationArrayOutputWithContex
 	return o
 }
 
-func (o AccessOrganizationArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*AccessOrganization] {
-	return pulumix.Output[[]*AccessOrganization]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o AccessOrganizationArrayOutput) Index(i pulumi.IntInput) AccessOrganizationOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *AccessOrganization {
 		return vs[0].([]*AccessOrganization)[vs[1].(int)]
@@ -424,12 +393,6 @@ func (o AccessOrganizationMapOutput) ToAccessOrganizationMapOutput() AccessOrgan
 
 func (o AccessOrganizationMapOutput) ToAccessOrganizationMapOutputWithContext(ctx context.Context) AccessOrganizationMapOutput {
 	return o
-}
-
-func (o AccessOrganizationMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*AccessOrganization] {
-	return pulumix.Output[map[string]*AccessOrganization]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AccessOrganizationMapOutput) MapIndex(k pulumi.StringInput) AccessOrganizationOutput {

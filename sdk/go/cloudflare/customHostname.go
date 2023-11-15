@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Cloudflare custom hostname (also known as SSL for SaaS) resource.
@@ -216,12 +215,6 @@ func (i *CustomHostname) ToCustomHostnameOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(CustomHostnameOutput)
 }
 
-func (i *CustomHostname) ToOutput(ctx context.Context) pulumix.Output[*CustomHostname] {
-	return pulumix.Output[*CustomHostname]{
-		OutputState: i.ToCustomHostnameOutputWithContext(ctx).OutputState,
-	}
-}
-
 // CustomHostnameArrayInput is an input type that accepts CustomHostnameArray and CustomHostnameArrayOutput values.
 // You can construct a concrete instance of `CustomHostnameArrayInput` via:
 //
@@ -245,12 +238,6 @@ func (i CustomHostnameArray) ToCustomHostnameArrayOutput() CustomHostnameArrayOu
 
 func (i CustomHostnameArray) ToCustomHostnameArrayOutputWithContext(ctx context.Context) CustomHostnameArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(CustomHostnameArrayOutput)
-}
-
-func (i CustomHostnameArray) ToOutput(ctx context.Context) pulumix.Output[[]*CustomHostname] {
-	return pulumix.Output[[]*CustomHostname]{
-		OutputState: i.ToCustomHostnameArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // CustomHostnameMapInput is an input type that accepts CustomHostnameMap and CustomHostnameMapOutput values.
@@ -278,12 +265,6 @@ func (i CustomHostnameMap) ToCustomHostnameMapOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(CustomHostnameMapOutput)
 }
 
-func (i CustomHostnameMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*CustomHostname] {
-	return pulumix.Output[map[string]*CustomHostname]{
-		OutputState: i.ToCustomHostnameMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type CustomHostnameOutput struct{ *pulumi.OutputState }
 
 func (CustomHostnameOutput) ElementType() reflect.Type {
@@ -296,12 +277,6 @@ func (o CustomHostnameOutput) ToCustomHostnameOutput() CustomHostnameOutput {
 
 func (o CustomHostnameOutput) ToCustomHostnameOutputWithContext(ctx context.Context) CustomHostnameOutput {
 	return o
-}
-
-func (o CustomHostnameOutput) ToOutput(ctx context.Context) pulumix.Output[*CustomHostname] {
-	return pulumix.Output[*CustomHostname]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Custom metadata associated with custom hostname. Only supports primitive string values, all other values are accessible via the API directly.
@@ -366,12 +341,6 @@ func (o CustomHostnameArrayOutput) ToCustomHostnameArrayOutputWithContext(ctx co
 	return o
 }
 
-func (o CustomHostnameArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*CustomHostname] {
-	return pulumix.Output[[]*CustomHostname]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o CustomHostnameArrayOutput) Index(i pulumi.IntInput) CustomHostnameOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *CustomHostname {
 		return vs[0].([]*CustomHostname)[vs[1].(int)]
@@ -390,12 +359,6 @@ func (o CustomHostnameMapOutput) ToCustomHostnameMapOutput() CustomHostnameMapOu
 
 func (o CustomHostnameMapOutput) ToCustomHostnameMapOutputWithContext(ctx context.Context) CustomHostnameMapOutput {
 	return o
-}
-
-func (o CustomHostnameMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*CustomHostname] {
-	return pulumix.Output[map[string]*CustomHostname]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o CustomHostnameMapOutput) MapIndex(k pulumi.StringInput) CustomHostnameOutput {

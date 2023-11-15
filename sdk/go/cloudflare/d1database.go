@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The [D1 Database](https://developers.cloudflare.com/d1/) resource allows you to manage Cloudflare D1 databases.
@@ -157,12 +156,6 @@ func (i *D1Database) ToD1DatabaseOutputWithContext(ctx context.Context) D1Databa
 	return pulumi.ToOutputWithContext(ctx, i).(D1DatabaseOutput)
 }
 
-func (i *D1Database) ToOutput(ctx context.Context) pulumix.Output[*D1Database] {
-	return pulumix.Output[*D1Database]{
-		OutputState: i.ToD1DatabaseOutputWithContext(ctx).OutputState,
-	}
-}
-
 // D1DatabaseArrayInput is an input type that accepts D1DatabaseArray and D1DatabaseArrayOutput values.
 // You can construct a concrete instance of `D1DatabaseArrayInput` via:
 //
@@ -186,12 +179,6 @@ func (i D1DatabaseArray) ToD1DatabaseArrayOutput() D1DatabaseArrayOutput {
 
 func (i D1DatabaseArray) ToD1DatabaseArrayOutputWithContext(ctx context.Context) D1DatabaseArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(D1DatabaseArrayOutput)
-}
-
-func (i D1DatabaseArray) ToOutput(ctx context.Context) pulumix.Output[[]*D1Database] {
-	return pulumix.Output[[]*D1Database]{
-		OutputState: i.ToD1DatabaseArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // D1DatabaseMapInput is an input type that accepts D1DatabaseMap and D1DatabaseMapOutput values.
@@ -219,12 +206,6 @@ func (i D1DatabaseMap) ToD1DatabaseMapOutputWithContext(ctx context.Context) D1D
 	return pulumi.ToOutputWithContext(ctx, i).(D1DatabaseMapOutput)
 }
 
-func (i D1DatabaseMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*D1Database] {
-	return pulumix.Output[map[string]*D1Database]{
-		OutputState: i.ToD1DatabaseMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type D1DatabaseOutput struct{ *pulumi.OutputState }
 
 func (D1DatabaseOutput) ElementType() reflect.Type {
@@ -237,12 +218,6 @@ func (o D1DatabaseOutput) ToD1DatabaseOutput() D1DatabaseOutput {
 
 func (o D1DatabaseOutput) ToD1DatabaseOutputWithContext(ctx context.Context) D1DatabaseOutput {
 	return o
-}
-
-func (o D1DatabaseOutput) ToOutput(ctx context.Context) pulumix.Output[*D1Database] {
-	return pulumix.Output[*D1Database]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The account identifier to target for the resource.
@@ -274,12 +249,6 @@ func (o D1DatabaseArrayOutput) ToD1DatabaseArrayOutputWithContext(ctx context.Co
 	return o
 }
 
-func (o D1DatabaseArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*D1Database] {
-	return pulumix.Output[[]*D1Database]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o D1DatabaseArrayOutput) Index(i pulumi.IntInput) D1DatabaseOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *D1Database {
 		return vs[0].([]*D1Database)[vs[1].(int)]
@@ -298,12 +267,6 @@ func (o D1DatabaseMapOutput) ToD1DatabaseMapOutput() D1DatabaseMapOutput {
 
 func (o D1DatabaseMapOutput) ToD1DatabaseMapOutputWithContext(ctx context.Context) D1DatabaseMapOutput {
 	return o
-}
-
-func (o D1DatabaseMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*D1Database] {
-	return pulumix.Output[map[string]*D1Database]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o D1DatabaseMapOutput) MapIndex(k pulumi.StringInput) D1DatabaseOutput {

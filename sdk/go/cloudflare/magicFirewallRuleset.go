@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Magic Firewall is a network-level firewall to protect networks that are onboarded to Cloudflare's Magic Transit. This resource
@@ -183,12 +182,6 @@ func (i *MagicFirewallRuleset) ToMagicFirewallRulesetOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(MagicFirewallRulesetOutput)
 }
 
-func (i *MagicFirewallRuleset) ToOutput(ctx context.Context) pulumix.Output[*MagicFirewallRuleset] {
-	return pulumix.Output[*MagicFirewallRuleset]{
-		OutputState: i.ToMagicFirewallRulesetOutputWithContext(ctx).OutputState,
-	}
-}
-
 // MagicFirewallRulesetArrayInput is an input type that accepts MagicFirewallRulesetArray and MagicFirewallRulesetArrayOutput values.
 // You can construct a concrete instance of `MagicFirewallRulesetArrayInput` via:
 //
@@ -212,12 +205,6 @@ func (i MagicFirewallRulesetArray) ToMagicFirewallRulesetArrayOutput() MagicFire
 
 func (i MagicFirewallRulesetArray) ToMagicFirewallRulesetArrayOutputWithContext(ctx context.Context) MagicFirewallRulesetArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(MagicFirewallRulesetArrayOutput)
-}
-
-func (i MagicFirewallRulesetArray) ToOutput(ctx context.Context) pulumix.Output[[]*MagicFirewallRuleset] {
-	return pulumix.Output[[]*MagicFirewallRuleset]{
-		OutputState: i.ToMagicFirewallRulesetArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // MagicFirewallRulesetMapInput is an input type that accepts MagicFirewallRulesetMap and MagicFirewallRulesetMapOutput values.
@@ -245,12 +232,6 @@ func (i MagicFirewallRulesetMap) ToMagicFirewallRulesetMapOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(MagicFirewallRulesetMapOutput)
 }
 
-func (i MagicFirewallRulesetMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*MagicFirewallRuleset] {
-	return pulumix.Output[map[string]*MagicFirewallRuleset]{
-		OutputState: i.ToMagicFirewallRulesetMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type MagicFirewallRulesetOutput struct{ *pulumi.OutputState }
 
 func (MagicFirewallRulesetOutput) ElementType() reflect.Type {
@@ -263,12 +244,6 @@ func (o MagicFirewallRulesetOutput) ToMagicFirewallRulesetOutput() MagicFirewall
 
 func (o MagicFirewallRulesetOutput) ToMagicFirewallRulesetOutputWithContext(ctx context.Context) MagicFirewallRulesetOutput {
 	return o
-}
-
-func (o MagicFirewallRulesetOutput) ToOutput(ctx context.Context) pulumix.Output[*MagicFirewallRuleset] {
-	return pulumix.Output[*MagicFirewallRuleset]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The ID of the account where the ruleset is being created.
@@ -304,12 +279,6 @@ func (o MagicFirewallRulesetArrayOutput) ToMagicFirewallRulesetArrayOutputWithCo
 	return o
 }
 
-func (o MagicFirewallRulesetArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*MagicFirewallRuleset] {
-	return pulumix.Output[[]*MagicFirewallRuleset]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o MagicFirewallRulesetArrayOutput) Index(i pulumi.IntInput) MagicFirewallRulesetOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *MagicFirewallRuleset {
 		return vs[0].([]*MagicFirewallRuleset)[vs[1].(int)]
@@ -328,12 +297,6 @@ func (o MagicFirewallRulesetMapOutput) ToMagicFirewallRulesetMapOutput() MagicFi
 
 func (o MagicFirewallRulesetMapOutput) ToMagicFirewallRulesetMapOutputWithContext(ctx context.Context) MagicFirewallRulesetMapOutput {
 	return o
-}
-
-func (o MagicFirewallRulesetMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*MagicFirewallRuleset] {
-	return pulumix.Output[map[string]*MagicFirewallRuleset]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o MagicFirewallRulesetMapOutput) MapIndex(k pulumi.StringInput) MagicFirewallRulesetOutput {

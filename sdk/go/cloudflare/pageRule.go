@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Cloudflare page rule resource.
@@ -198,12 +197,6 @@ func (i *PageRule) ToPageRuleOutputWithContext(ctx context.Context) PageRuleOutp
 	return pulumi.ToOutputWithContext(ctx, i).(PageRuleOutput)
 }
 
-func (i *PageRule) ToOutput(ctx context.Context) pulumix.Output[*PageRule] {
-	return pulumix.Output[*PageRule]{
-		OutputState: i.ToPageRuleOutputWithContext(ctx).OutputState,
-	}
-}
-
 // PageRuleArrayInput is an input type that accepts PageRuleArray and PageRuleArrayOutput values.
 // You can construct a concrete instance of `PageRuleArrayInput` via:
 //
@@ -227,12 +220,6 @@ func (i PageRuleArray) ToPageRuleArrayOutput() PageRuleArrayOutput {
 
 func (i PageRuleArray) ToPageRuleArrayOutputWithContext(ctx context.Context) PageRuleArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(PageRuleArrayOutput)
-}
-
-func (i PageRuleArray) ToOutput(ctx context.Context) pulumix.Output[[]*PageRule] {
-	return pulumix.Output[[]*PageRule]{
-		OutputState: i.ToPageRuleArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // PageRuleMapInput is an input type that accepts PageRuleMap and PageRuleMapOutput values.
@@ -260,12 +247,6 @@ func (i PageRuleMap) ToPageRuleMapOutputWithContext(ctx context.Context) PageRul
 	return pulumi.ToOutputWithContext(ctx, i).(PageRuleMapOutput)
 }
 
-func (i PageRuleMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*PageRule] {
-	return pulumix.Output[map[string]*PageRule]{
-		OutputState: i.ToPageRuleMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type PageRuleOutput struct{ *pulumi.OutputState }
 
 func (PageRuleOutput) ElementType() reflect.Type {
@@ -278,12 +259,6 @@ func (o PageRuleOutput) ToPageRuleOutput() PageRuleOutput {
 
 func (o PageRuleOutput) ToPageRuleOutputWithContext(ctx context.Context) PageRuleOutput {
 	return o
-}
-
-func (o PageRuleOutput) ToOutput(ctx context.Context) pulumix.Output[*PageRule] {
-	return pulumix.Output[*PageRule]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The actions taken by the page rule, options given below.
@@ -325,12 +300,6 @@ func (o PageRuleArrayOutput) ToPageRuleArrayOutputWithContext(ctx context.Contex
 	return o
 }
 
-func (o PageRuleArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*PageRule] {
-	return pulumix.Output[[]*PageRule]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o PageRuleArrayOutput) Index(i pulumi.IntInput) PageRuleOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *PageRule {
 		return vs[0].([]*PageRule)[vs[1].(int)]
@@ -349,12 +318,6 @@ func (o PageRuleMapOutput) ToPageRuleMapOutput() PageRuleMapOutput {
 
 func (o PageRuleMapOutput) ToPageRuleMapOutputWithContext(ctx context.Context) PageRuleMapOutput {
 	return o
-}
-
-func (o PageRuleMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*PageRule] {
-	return pulumix.Output[map[string]*PageRule]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o PageRuleMapOutput) MapIndex(k pulumi.StringInput) PageRuleOutput {

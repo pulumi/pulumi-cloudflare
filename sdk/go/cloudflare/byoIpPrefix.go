@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides the ability to manage Bring-Your-Own-IP prefixes (BYOIP)
@@ -172,12 +171,6 @@ func (i *ByoIpPrefix) ToByoIpPrefixOutputWithContext(ctx context.Context) ByoIpP
 	return pulumi.ToOutputWithContext(ctx, i).(ByoIpPrefixOutput)
 }
 
-func (i *ByoIpPrefix) ToOutput(ctx context.Context) pulumix.Output[*ByoIpPrefix] {
-	return pulumix.Output[*ByoIpPrefix]{
-		OutputState: i.ToByoIpPrefixOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ByoIpPrefixArrayInput is an input type that accepts ByoIpPrefixArray and ByoIpPrefixArrayOutput values.
 // You can construct a concrete instance of `ByoIpPrefixArrayInput` via:
 //
@@ -201,12 +194,6 @@ func (i ByoIpPrefixArray) ToByoIpPrefixArrayOutput() ByoIpPrefixArrayOutput {
 
 func (i ByoIpPrefixArray) ToByoIpPrefixArrayOutputWithContext(ctx context.Context) ByoIpPrefixArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ByoIpPrefixArrayOutput)
-}
-
-func (i ByoIpPrefixArray) ToOutput(ctx context.Context) pulumix.Output[[]*ByoIpPrefix] {
-	return pulumix.Output[[]*ByoIpPrefix]{
-		OutputState: i.ToByoIpPrefixArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // ByoIpPrefixMapInput is an input type that accepts ByoIpPrefixMap and ByoIpPrefixMapOutput values.
@@ -234,12 +221,6 @@ func (i ByoIpPrefixMap) ToByoIpPrefixMapOutputWithContext(ctx context.Context) B
 	return pulumi.ToOutputWithContext(ctx, i).(ByoIpPrefixMapOutput)
 }
 
-func (i ByoIpPrefixMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ByoIpPrefix] {
-	return pulumix.Output[map[string]*ByoIpPrefix]{
-		OutputState: i.ToByoIpPrefixMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ByoIpPrefixOutput struct{ *pulumi.OutputState }
 
 func (ByoIpPrefixOutput) ElementType() reflect.Type {
@@ -252,12 +233,6 @@ func (o ByoIpPrefixOutput) ToByoIpPrefixOutput() ByoIpPrefixOutput {
 
 func (o ByoIpPrefixOutput) ToByoIpPrefixOutputWithContext(ctx context.Context) ByoIpPrefixOutput {
 	return o
-}
-
-func (o ByoIpPrefixOutput) ToOutput(ctx context.Context) pulumix.Output[*ByoIpPrefix] {
-	return pulumix.Output[*ByoIpPrefix]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The account identifier to target for the resource.
@@ -294,12 +269,6 @@ func (o ByoIpPrefixArrayOutput) ToByoIpPrefixArrayOutputWithContext(ctx context.
 	return o
 }
 
-func (o ByoIpPrefixArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ByoIpPrefix] {
-	return pulumix.Output[[]*ByoIpPrefix]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ByoIpPrefixArrayOutput) Index(i pulumi.IntInput) ByoIpPrefixOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ByoIpPrefix {
 		return vs[0].([]*ByoIpPrefix)[vs[1].(int)]
@@ -318,12 +287,6 @@ func (o ByoIpPrefixMapOutput) ToByoIpPrefixMapOutput() ByoIpPrefixMapOutput {
 
 func (o ByoIpPrefixMapOutput) ToByoIpPrefixMapOutputWithContext(ctx context.Context) ByoIpPrefixMapOutput {
 	return o
-}
-
-func (o ByoIpPrefixMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ByoIpPrefix] {
-	return pulumix.Output[map[string]*ByoIpPrefix]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ByoIpPrefixMapOutput) MapIndex(k pulumi.StringInput) ByoIpPrefixOutput {

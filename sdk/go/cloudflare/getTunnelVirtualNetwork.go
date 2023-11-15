@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Use this datasource to lookup a tunnel virtual network in an account.
@@ -110,12 +109,6 @@ func (o LookupTunnelVirtualNetworkResultOutput) ToLookupTunnelVirtualNetworkResu
 
 func (o LookupTunnelVirtualNetworkResultOutput) ToLookupTunnelVirtualNetworkResultOutputWithContext(ctx context.Context) LookupTunnelVirtualNetworkResultOutput {
 	return o
-}
-
-func (o LookupTunnelVirtualNetworkResultOutput) ToOutput(ctx context.Context) pulumix.Output[LookupTunnelVirtualNetworkResult] {
-	return pulumix.Output[LookupTunnelVirtualNetworkResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The account identifier to target for the resource.

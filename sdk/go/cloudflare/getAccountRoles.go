@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Use this data source to lookup [Account Roles](https://api.cloudflare.com/#account-roles-properties).
@@ -75,12 +74,6 @@ func (o GetAccountRolesResultOutput) ToGetAccountRolesResultOutput() GetAccountR
 
 func (o GetAccountRolesResultOutput) ToGetAccountRolesResultOutputWithContext(ctx context.Context) GetAccountRolesResultOutput {
 	return o
-}
-
-func (o GetAccountRolesResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetAccountRolesResult] {
-	return pulumix.Output[GetAccountRolesResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The account identifier to target for the resource.

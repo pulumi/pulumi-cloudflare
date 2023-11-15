@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Standalone Health Checks provide a way to monitor origin servers
@@ -403,12 +402,6 @@ func (i *Healthcheck) ToHealthcheckOutputWithContext(ctx context.Context) Health
 	return pulumi.ToOutputWithContext(ctx, i).(HealthcheckOutput)
 }
 
-func (i *Healthcheck) ToOutput(ctx context.Context) pulumix.Output[*Healthcheck] {
-	return pulumix.Output[*Healthcheck]{
-		OutputState: i.ToHealthcheckOutputWithContext(ctx).OutputState,
-	}
-}
-
 // HealthcheckArrayInput is an input type that accepts HealthcheckArray and HealthcheckArrayOutput values.
 // You can construct a concrete instance of `HealthcheckArrayInput` via:
 //
@@ -432,12 +425,6 @@ func (i HealthcheckArray) ToHealthcheckArrayOutput() HealthcheckArrayOutput {
 
 func (i HealthcheckArray) ToHealthcheckArrayOutputWithContext(ctx context.Context) HealthcheckArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(HealthcheckArrayOutput)
-}
-
-func (i HealthcheckArray) ToOutput(ctx context.Context) pulumix.Output[[]*Healthcheck] {
-	return pulumix.Output[[]*Healthcheck]{
-		OutputState: i.ToHealthcheckArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // HealthcheckMapInput is an input type that accepts HealthcheckMap and HealthcheckMapOutput values.
@@ -465,12 +452,6 @@ func (i HealthcheckMap) ToHealthcheckMapOutputWithContext(ctx context.Context) H
 	return pulumi.ToOutputWithContext(ctx, i).(HealthcheckMapOutput)
 }
 
-func (i HealthcheckMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*Healthcheck] {
-	return pulumix.Output[map[string]*Healthcheck]{
-		OutputState: i.ToHealthcheckMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type HealthcheckOutput struct{ *pulumi.OutputState }
 
 func (HealthcheckOutput) ElementType() reflect.Type {
@@ -483,12 +464,6 @@ func (o HealthcheckOutput) ToHealthcheckOutput() HealthcheckOutput {
 
 func (o HealthcheckOutput) ToHealthcheckOutputWithContext(ctx context.Context) HealthcheckOutput {
 	return o
-}
-
-func (o HealthcheckOutput) ToOutput(ctx context.Context) pulumix.Output[*Healthcheck] {
-	return pulumix.Output[*Healthcheck]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The hostname or IP address of the origin server to run health checks on.
@@ -615,12 +590,6 @@ func (o HealthcheckArrayOutput) ToHealthcheckArrayOutputWithContext(ctx context.
 	return o
 }
 
-func (o HealthcheckArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*Healthcheck] {
-	return pulumix.Output[[]*Healthcheck]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o HealthcheckArrayOutput) Index(i pulumi.IntInput) HealthcheckOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Healthcheck {
 		return vs[0].([]*Healthcheck)[vs[1].(int)]
@@ -639,12 +608,6 @@ func (o HealthcheckMapOutput) ToHealthcheckMapOutput() HealthcheckMapOutput {
 
 func (o HealthcheckMapOutput) ToHealthcheckMapOutputWithContext(ctx context.Context) HealthcheckMapOutput {
 	return o
-}
-
-func (o HealthcheckMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*Healthcheck] {
-	return pulumix.Output[map[string]*Healthcheck]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o HealthcheckMapOutput) MapIndex(k pulumi.StringInput) HealthcheckOutput {

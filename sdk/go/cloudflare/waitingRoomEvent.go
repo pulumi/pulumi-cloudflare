@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Cloudflare Waiting Room Event resource.
@@ -305,12 +304,6 @@ func (i *WaitingRoomEvent) ToWaitingRoomEventOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(WaitingRoomEventOutput)
 }
 
-func (i *WaitingRoomEvent) ToOutput(ctx context.Context) pulumix.Output[*WaitingRoomEvent] {
-	return pulumix.Output[*WaitingRoomEvent]{
-		OutputState: i.ToWaitingRoomEventOutputWithContext(ctx).OutputState,
-	}
-}
-
 // WaitingRoomEventArrayInput is an input type that accepts WaitingRoomEventArray and WaitingRoomEventArrayOutput values.
 // You can construct a concrete instance of `WaitingRoomEventArrayInput` via:
 //
@@ -334,12 +327,6 @@ func (i WaitingRoomEventArray) ToWaitingRoomEventArrayOutput() WaitingRoomEventA
 
 func (i WaitingRoomEventArray) ToWaitingRoomEventArrayOutputWithContext(ctx context.Context) WaitingRoomEventArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(WaitingRoomEventArrayOutput)
-}
-
-func (i WaitingRoomEventArray) ToOutput(ctx context.Context) pulumix.Output[[]*WaitingRoomEvent] {
-	return pulumix.Output[[]*WaitingRoomEvent]{
-		OutputState: i.ToWaitingRoomEventArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // WaitingRoomEventMapInput is an input type that accepts WaitingRoomEventMap and WaitingRoomEventMapOutput values.
@@ -367,12 +354,6 @@ func (i WaitingRoomEventMap) ToWaitingRoomEventMapOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(WaitingRoomEventMapOutput)
 }
 
-func (i WaitingRoomEventMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*WaitingRoomEvent] {
-	return pulumix.Output[map[string]*WaitingRoomEvent]{
-		OutputState: i.ToWaitingRoomEventMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type WaitingRoomEventOutput struct{ *pulumi.OutputState }
 
 func (WaitingRoomEventOutput) ElementType() reflect.Type {
@@ -385,12 +366,6 @@ func (o WaitingRoomEventOutput) ToWaitingRoomEventOutput() WaitingRoomEventOutpu
 
 func (o WaitingRoomEventOutput) ToWaitingRoomEventOutputWithContext(ctx context.Context) WaitingRoomEventOutput {
 	return o
-}
-
-func (o WaitingRoomEventOutput) ToOutput(ctx context.Context) pulumix.Output[*WaitingRoomEvent] {
-	return pulumix.Output[*WaitingRoomEvent]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Creation time.
@@ -492,12 +467,6 @@ func (o WaitingRoomEventArrayOutput) ToWaitingRoomEventArrayOutputWithContext(ct
 	return o
 }
 
-func (o WaitingRoomEventArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*WaitingRoomEvent] {
-	return pulumix.Output[[]*WaitingRoomEvent]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o WaitingRoomEventArrayOutput) Index(i pulumi.IntInput) WaitingRoomEventOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *WaitingRoomEvent {
 		return vs[0].([]*WaitingRoomEvent)[vs[1].(int)]
@@ -516,12 +485,6 @@ func (o WaitingRoomEventMapOutput) ToWaitingRoomEventMapOutput() WaitingRoomEven
 
 func (o WaitingRoomEventMapOutput) ToWaitingRoomEventMapOutputWithContext(ctx context.Context) WaitingRoomEventMapOutput {
 	return o
-}
-
-func (o WaitingRoomEventMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*WaitingRoomEvent] {
-	return pulumix.Output[map[string]*WaitingRoomEvent]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o WaitingRoomEventMapOutput) MapIndex(k pulumi.StringInput) WaitingRoomEventOutput {

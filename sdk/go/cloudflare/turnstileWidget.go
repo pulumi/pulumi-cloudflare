@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The [Turnstile Widget](https://developers.cloudflare.com/turnstile/) resource allows you to manage Cloudflare Turnstile Widgets.
@@ -221,12 +220,6 @@ func (i *TurnstileWidget) ToTurnstileWidgetOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(TurnstileWidgetOutput)
 }
 
-func (i *TurnstileWidget) ToOutput(ctx context.Context) pulumix.Output[*TurnstileWidget] {
-	return pulumix.Output[*TurnstileWidget]{
-		OutputState: i.ToTurnstileWidgetOutputWithContext(ctx).OutputState,
-	}
-}
-
 // TurnstileWidgetArrayInput is an input type that accepts TurnstileWidgetArray and TurnstileWidgetArrayOutput values.
 // You can construct a concrete instance of `TurnstileWidgetArrayInput` via:
 //
@@ -250,12 +243,6 @@ func (i TurnstileWidgetArray) ToTurnstileWidgetArrayOutput() TurnstileWidgetArra
 
 func (i TurnstileWidgetArray) ToTurnstileWidgetArrayOutputWithContext(ctx context.Context) TurnstileWidgetArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(TurnstileWidgetArrayOutput)
-}
-
-func (i TurnstileWidgetArray) ToOutput(ctx context.Context) pulumix.Output[[]*TurnstileWidget] {
-	return pulumix.Output[[]*TurnstileWidget]{
-		OutputState: i.ToTurnstileWidgetArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // TurnstileWidgetMapInput is an input type that accepts TurnstileWidgetMap and TurnstileWidgetMapOutput values.
@@ -283,12 +270,6 @@ func (i TurnstileWidgetMap) ToTurnstileWidgetMapOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(TurnstileWidgetMapOutput)
 }
 
-func (i TurnstileWidgetMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*TurnstileWidget] {
-	return pulumix.Output[map[string]*TurnstileWidget]{
-		OutputState: i.ToTurnstileWidgetMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type TurnstileWidgetOutput struct{ *pulumi.OutputState }
 
 func (TurnstileWidgetOutput) ElementType() reflect.Type {
@@ -301,12 +282,6 @@ func (o TurnstileWidgetOutput) ToTurnstileWidgetOutput() TurnstileWidgetOutput {
 
 func (o TurnstileWidgetOutput) ToTurnstileWidgetOutputWithContext(ctx context.Context) TurnstileWidgetOutput {
 	return o
-}
-
-func (o TurnstileWidgetOutput) ToOutput(ctx context.Context) pulumix.Output[*TurnstileWidget] {
-	return pulumix.Output[*TurnstileWidget]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The account identifier to target for the resource.
@@ -363,12 +338,6 @@ func (o TurnstileWidgetArrayOutput) ToTurnstileWidgetArrayOutputWithContext(ctx 
 	return o
 }
 
-func (o TurnstileWidgetArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*TurnstileWidget] {
-	return pulumix.Output[[]*TurnstileWidget]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o TurnstileWidgetArrayOutput) Index(i pulumi.IntInput) TurnstileWidgetOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *TurnstileWidget {
 		return vs[0].([]*TurnstileWidget)[vs[1].(int)]
@@ -387,12 +356,6 @@ func (o TurnstileWidgetMapOutput) ToTurnstileWidgetMapOutput() TurnstileWidgetMa
 
 func (o TurnstileWidgetMapOutput) ToTurnstileWidgetMapOutputWithContext(ctx context.Context) TurnstileWidgetMapOutput {
 	return o
-}
-
-func (o TurnstileWidgetMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*TurnstileWidget] {
-	return pulumix.Output[map[string]*TurnstileWidget]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o TurnstileWidgetMapOutput) MapIndex(k pulumi.StringInput) TurnstileWidgetOutput {

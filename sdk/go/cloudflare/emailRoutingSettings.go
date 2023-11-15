@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a resource for managing Email Routing settings.
@@ -181,12 +180,6 @@ func (i *EmailRoutingSettings) ToEmailRoutingSettingsOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(EmailRoutingSettingsOutput)
 }
 
-func (i *EmailRoutingSettings) ToOutput(ctx context.Context) pulumix.Output[*EmailRoutingSettings] {
-	return pulumix.Output[*EmailRoutingSettings]{
-		OutputState: i.ToEmailRoutingSettingsOutputWithContext(ctx).OutputState,
-	}
-}
-
 // EmailRoutingSettingsArrayInput is an input type that accepts EmailRoutingSettingsArray and EmailRoutingSettingsArrayOutput values.
 // You can construct a concrete instance of `EmailRoutingSettingsArrayInput` via:
 //
@@ -210,12 +203,6 @@ func (i EmailRoutingSettingsArray) ToEmailRoutingSettingsArrayOutput() EmailRout
 
 func (i EmailRoutingSettingsArray) ToEmailRoutingSettingsArrayOutputWithContext(ctx context.Context) EmailRoutingSettingsArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(EmailRoutingSettingsArrayOutput)
-}
-
-func (i EmailRoutingSettingsArray) ToOutput(ctx context.Context) pulumix.Output[[]*EmailRoutingSettings] {
-	return pulumix.Output[[]*EmailRoutingSettings]{
-		OutputState: i.ToEmailRoutingSettingsArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // EmailRoutingSettingsMapInput is an input type that accepts EmailRoutingSettingsMap and EmailRoutingSettingsMapOutput values.
@@ -243,12 +230,6 @@ func (i EmailRoutingSettingsMap) ToEmailRoutingSettingsMapOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(EmailRoutingSettingsMapOutput)
 }
 
-func (i EmailRoutingSettingsMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*EmailRoutingSettings] {
-	return pulumix.Output[map[string]*EmailRoutingSettings]{
-		OutputState: i.ToEmailRoutingSettingsMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type EmailRoutingSettingsOutput struct{ *pulumi.OutputState }
 
 func (EmailRoutingSettingsOutput) ElementType() reflect.Type {
@@ -261,12 +242,6 @@ func (o EmailRoutingSettingsOutput) ToEmailRoutingSettingsOutput() EmailRoutingS
 
 func (o EmailRoutingSettingsOutput) ToEmailRoutingSettingsOutputWithContext(ctx context.Context) EmailRoutingSettingsOutput {
 	return o
-}
-
-func (o EmailRoutingSettingsOutput) ToOutput(ctx context.Context) pulumix.Output[*EmailRoutingSettings] {
-	return pulumix.Output[*EmailRoutingSettings]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The date and time the settings have been created.
@@ -323,12 +298,6 @@ func (o EmailRoutingSettingsArrayOutput) ToEmailRoutingSettingsArrayOutputWithCo
 	return o
 }
 
-func (o EmailRoutingSettingsArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*EmailRoutingSettings] {
-	return pulumix.Output[[]*EmailRoutingSettings]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o EmailRoutingSettingsArrayOutput) Index(i pulumi.IntInput) EmailRoutingSettingsOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *EmailRoutingSettings {
 		return vs[0].([]*EmailRoutingSettings)[vs[1].(int)]
@@ -347,12 +316,6 @@ func (o EmailRoutingSettingsMapOutput) ToEmailRoutingSettingsMapOutput() EmailRo
 
 func (o EmailRoutingSettingsMapOutput) ToEmailRoutingSettingsMapOutputWithContext(ctx context.Context) EmailRoutingSettingsMapOutput {
 	return o
-}
-
-func (o EmailRoutingSettingsMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*EmailRoutingSettings] {
-	return pulumix.Output[map[string]*EmailRoutingSettings]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o EmailRoutingSettingsMapOutput) MapIndex(k pulumi.StringInput) EmailRoutingSettingsOutput {

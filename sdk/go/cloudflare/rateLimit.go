@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a Cloudflare rate limit resource for a given zone. This can
@@ -281,12 +280,6 @@ func (i *RateLimit) ToRateLimitOutputWithContext(ctx context.Context) RateLimitO
 	return pulumi.ToOutputWithContext(ctx, i).(RateLimitOutput)
 }
 
-func (i *RateLimit) ToOutput(ctx context.Context) pulumix.Output[*RateLimit] {
-	return pulumix.Output[*RateLimit]{
-		OutputState: i.ToRateLimitOutputWithContext(ctx).OutputState,
-	}
-}
-
 // RateLimitArrayInput is an input type that accepts RateLimitArray and RateLimitArrayOutput values.
 // You can construct a concrete instance of `RateLimitArrayInput` via:
 //
@@ -310,12 +303,6 @@ func (i RateLimitArray) ToRateLimitArrayOutput() RateLimitArrayOutput {
 
 func (i RateLimitArray) ToRateLimitArrayOutputWithContext(ctx context.Context) RateLimitArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(RateLimitArrayOutput)
-}
-
-func (i RateLimitArray) ToOutput(ctx context.Context) pulumix.Output[[]*RateLimit] {
-	return pulumix.Output[[]*RateLimit]{
-		OutputState: i.ToRateLimitArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // RateLimitMapInput is an input type that accepts RateLimitMap and RateLimitMapOutput values.
@@ -343,12 +330,6 @@ func (i RateLimitMap) ToRateLimitMapOutputWithContext(ctx context.Context) RateL
 	return pulumi.ToOutputWithContext(ctx, i).(RateLimitMapOutput)
 }
 
-func (i RateLimitMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*RateLimit] {
-	return pulumix.Output[map[string]*RateLimit]{
-		OutputState: i.ToRateLimitMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type RateLimitOutput struct{ *pulumi.OutputState }
 
 func (RateLimitOutput) ElementType() reflect.Type {
@@ -361,12 +342,6 @@ func (o RateLimitOutput) ToRateLimitOutput() RateLimitOutput {
 
 func (o RateLimitOutput) ToRateLimitOutputWithContext(ctx context.Context) RateLimitOutput {
 	return o
-}
-
-func (o RateLimitOutput) ToOutput(ctx context.Context) pulumix.Output[*RateLimit] {
-	return pulumix.Output[*RateLimit]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The action to be performed when the threshold of matched traffic within the period defined is exceeded.
@@ -427,12 +402,6 @@ func (o RateLimitArrayOutput) ToRateLimitArrayOutputWithContext(ctx context.Cont
 	return o
 }
 
-func (o RateLimitArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*RateLimit] {
-	return pulumix.Output[[]*RateLimit]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o RateLimitArrayOutput) Index(i pulumi.IntInput) RateLimitOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *RateLimit {
 		return vs[0].([]*RateLimit)[vs[1].(int)]
@@ -451,12 +420,6 @@ func (o RateLimitMapOutput) ToRateLimitMapOutput() RateLimitMapOutput {
 
 func (o RateLimitMapOutput) ToRateLimitMapOutputWithContext(ctx context.Context) RateLimitMapOutput {
 	return o
-}
-
-func (o RateLimitMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*RateLimit] {
-	return pulumix.Output[map[string]*RateLimit]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o RateLimitMapOutput) MapIndex(k pulumi.StringInput) RateLimitOutput {

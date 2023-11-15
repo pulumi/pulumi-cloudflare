@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // The [Cloudflare Managed Headers](https://developers.cloudflare.com/rules/transform/managed-transforms/)
@@ -161,12 +160,6 @@ func (i *ManagedHeaders) ToManagedHeadersOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedHeadersOutput)
 }
 
-func (i *ManagedHeaders) ToOutput(ctx context.Context) pulumix.Output[*ManagedHeaders] {
-	return pulumix.Output[*ManagedHeaders]{
-		OutputState: i.ToManagedHeadersOutputWithContext(ctx).OutputState,
-	}
-}
-
 // ManagedHeadersArrayInput is an input type that accepts ManagedHeadersArray and ManagedHeadersArrayOutput values.
 // You can construct a concrete instance of `ManagedHeadersArrayInput` via:
 //
@@ -190,12 +183,6 @@ func (i ManagedHeadersArray) ToManagedHeadersArrayOutput() ManagedHeadersArrayOu
 
 func (i ManagedHeadersArray) ToManagedHeadersArrayOutputWithContext(ctx context.Context) ManagedHeadersArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedHeadersArrayOutput)
-}
-
-func (i ManagedHeadersArray) ToOutput(ctx context.Context) pulumix.Output[[]*ManagedHeaders] {
-	return pulumix.Output[[]*ManagedHeaders]{
-		OutputState: i.ToManagedHeadersArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // ManagedHeadersMapInput is an input type that accepts ManagedHeadersMap and ManagedHeadersMapOutput values.
@@ -223,12 +210,6 @@ func (i ManagedHeadersMap) ToManagedHeadersMapOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedHeadersMapOutput)
 }
 
-func (i ManagedHeadersMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ManagedHeaders] {
-	return pulumix.Output[map[string]*ManagedHeaders]{
-		OutputState: i.ToManagedHeadersMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type ManagedHeadersOutput struct{ *pulumi.OutputState }
 
 func (ManagedHeadersOutput) ElementType() reflect.Type {
@@ -241,12 +222,6 @@ func (o ManagedHeadersOutput) ToManagedHeadersOutput() ManagedHeadersOutput {
 
 func (o ManagedHeadersOutput) ToManagedHeadersOutputWithContext(ctx context.Context) ManagedHeadersOutput {
 	return o
-}
-
-func (o ManagedHeadersOutput) ToOutput(ctx context.Context) pulumix.Output[*ManagedHeaders] {
-	return pulumix.Output[*ManagedHeaders]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The list of managed request headers.
@@ -280,12 +255,6 @@ func (o ManagedHeadersArrayOutput) ToManagedHeadersArrayOutputWithContext(ctx co
 	return o
 }
 
-func (o ManagedHeadersArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ManagedHeaders] {
-	return pulumix.Output[[]*ManagedHeaders]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o ManagedHeadersArrayOutput) Index(i pulumi.IntInput) ManagedHeadersOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ManagedHeaders {
 		return vs[0].([]*ManagedHeaders)[vs[1].(int)]
@@ -304,12 +273,6 @@ func (o ManagedHeadersMapOutput) ToManagedHeadersMapOutput() ManagedHeadersMapOu
 
 func (o ManagedHeadersMapOutput) ToManagedHeadersMapOutputWithContext(ctx context.Context) ManagedHeadersMapOutput {
 	return o
-}
-
-func (o ManagedHeadersMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ManagedHeaders] {
-	return pulumix.Output[map[string]*ManagedHeaders]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o ManagedHeadersMapOutput) MapIndex(k pulumi.StringInput) ManagedHeadersOutput {

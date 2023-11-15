@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a resource which manages Total TLS for a zone.
@@ -160,12 +159,6 @@ func (i *TotalTls) ToTotalTlsOutputWithContext(ctx context.Context) TotalTlsOutp
 	return pulumi.ToOutputWithContext(ctx, i).(TotalTlsOutput)
 }
 
-func (i *TotalTls) ToOutput(ctx context.Context) pulumix.Output[*TotalTls] {
-	return pulumix.Output[*TotalTls]{
-		OutputState: i.ToTotalTlsOutputWithContext(ctx).OutputState,
-	}
-}
-
 // TotalTlsArrayInput is an input type that accepts TotalTlsArray and TotalTlsArrayOutput values.
 // You can construct a concrete instance of `TotalTlsArrayInput` via:
 //
@@ -189,12 +182,6 @@ func (i TotalTlsArray) ToTotalTlsArrayOutput() TotalTlsArrayOutput {
 
 func (i TotalTlsArray) ToTotalTlsArrayOutputWithContext(ctx context.Context) TotalTlsArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(TotalTlsArrayOutput)
-}
-
-func (i TotalTlsArray) ToOutput(ctx context.Context) pulumix.Output[[]*TotalTls] {
-	return pulumix.Output[[]*TotalTls]{
-		OutputState: i.ToTotalTlsArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // TotalTlsMapInput is an input type that accepts TotalTlsMap and TotalTlsMapOutput values.
@@ -222,12 +209,6 @@ func (i TotalTlsMap) ToTotalTlsMapOutputWithContext(ctx context.Context) TotalTl
 	return pulumi.ToOutputWithContext(ctx, i).(TotalTlsMapOutput)
 }
 
-func (i TotalTlsMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*TotalTls] {
-	return pulumix.Output[map[string]*TotalTls]{
-		OutputState: i.ToTotalTlsMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type TotalTlsOutput struct{ *pulumi.OutputState }
 
 func (TotalTlsOutput) ElementType() reflect.Type {
@@ -240,12 +221,6 @@ func (o TotalTlsOutput) ToTotalTlsOutput() TotalTlsOutput {
 
 func (o TotalTlsOutput) ToTotalTlsOutputWithContext(ctx context.Context) TotalTlsOutput {
 	return o
-}
-
-func (o TotalTlsOutput) ToOutput(ctx context.Context) pulumix.Output[*TotalTls] {
-	return pulumix.Output[*TotalTls]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The Certificate Authority that Total TLS certificates will be issued through. Available values: `google`, `letsEncrypt`.
@@ -277,12 +252,6 @@ func (o TotalTlsArrayOutput) ToTotalTlsArrayOutputWithContext(ctx context.Contex
 	return o
 }
 
-func (o TotalTlsArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*TotalTls] {
-	return pulumix.Output[[]*TotalTls]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o TotalTlsArrayOutput) Index(i pulumi.IntInput) TotalTlsOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *TotalTls {
 		return vs[0].([]*TotalTls)[vs[1].(int)]
@@ -301,12 +270,6 @@ func (o TotalTlsMapOutput) ToTotalTlsMapOutput() TotalTlsMapOutput {
 
 func (o TotalTlsMapOutput) ToTotalTlsMapOutputWithContext(ctx context.Context) TotalTlsMapOutput {
 	return o
-}
-
-func (o TotalTlsMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*TotalTls] {
-	return pulumix.Output[map[string]*TotalTls]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o TotalTlsMapOutput) MapIndex(k pulumi.StringInput) TotalTlsOutput {

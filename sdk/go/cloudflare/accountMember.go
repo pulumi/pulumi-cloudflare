@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a resource which manages Cloudflare account members.
@@ -176,12 +175,6 @@ func (i *AccountMember) ToAccountMemberOutputWithContext(ctx context.Context) Ac
 	return pulumi.ToOutputWithContext(ctx, i).(AccountMemberOutput)
 }
 
-func (i *AccountMember) ToOutput(ctx context.Context) pulumix.Output[*AccountMember] {
-	return pulumix.Output[*AccountMember]{
-		OutputState: i.ToAccountMemberOutputWithContext(ctx).OutputState,
-	}
-}
-
 // AccountMemberArrayInput is an input type that accepts AccountMemberArray and AccountMemberArrayOutput values.
 // You can construct a concrete instance of `AccountMemberArrayInput` via:
 //
@@ -205,12 +198,6 @@ func (i AccountMemberArray) ToAccountMemberArrayOutput() AccountMemberArrayOutpu
 
 func (i AccountMemberArray) ToAccountMemberArrayOutputWithContext(ctx context.Context) AccountMemberArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AccountMemberArrayOutput)
-}
-
-func (i AccountMemberArray) ToOutput(ctx context.Context) pulumix.Output[[]*AccountMember] {
-	return pulumix.Output[[]*AccountMember]{
-		OutputState: i.ToAccountMemberArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // AccountMemberMapInput is an input type that accepts AccountMemberMap and AccountMemberMapOutput values.
@@ -238,12 +225,6 @@ func (i AccountMemberMap) ToAccountMemberMapOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(AccountMemberMapOutput)
 }
 
-func (i AccountMemberMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*AccountMember] {
-	return pulumix.Output[map[string]*AccountMember]{
-		OutputState: i.ToAccountMemberMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type AccountMemberOutput struct{ *pulumi.OutputState }
 
 func (AccountMemberOutput) ElementType() reflect.Type {
@@ -256,12 +237,6 @@ func (o AccountMemberOutput) ToAccountMemberOutput() AccountMemberOutput {
 
 func (o AccountMemberOutput) ToAccountMemberOutputWithContext(ctx context.Context) AccountMemberOutput {
 	return o
-}
-
-func (o AccountMemberOutput) ToOutput(ctx context.Context) pulumix.Output[*AccountMember] {
-	return pulumix.Output[*AccountMember]{
-		OutputState: o.OutputState,
-	}
 }
 
 // Account ID to create the account member in.
@@ -298,12 +273,6 @@ func (o AccountMemberArrayOutput) ToAccountMemberArrayOutputWithContext(ctx cont
 	return o
 }
 
-func (o AccountMemberArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*AccountMember] {
-	return pulumix.Output[[]*AccountMember]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o AccountMemberArrayOutput) Index(i pulumi.IntInput) AccountMemberOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *AccountMember {
 		return vs[0].([]*AccountMember)[vs[1].(int)]
@@ -322,12 +291,6 @@ func (o AccountMemberMapOutput) ToAccountMemberMapOutput() AccountMemberMapOutpu
 
 func (o AccountMemberMapOutput) ToAccountMemberMapOutputWithContext(ctx context.Context) AccountMemberMapOutput {
 	return o
-}
-
-func (o AccountMemberMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*AccountMember] {
-	return pulumix.Output[map[string]*AccountMember]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o AccountMemberMapOutput) MapIndex(k pulumi.StringInput) AccountMemberOutput {
