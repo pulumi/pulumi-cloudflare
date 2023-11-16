@@ -57,6 +57,11 @@ public final class NotificationPolicyFilters {
      */
     private @Nullable List<String> healthCheckIds;
     /**
+     * @return The incident impact level that will trigger the dispatch of a notification. Available values: `INCIDENT_IMPACT_NONE`, `INCIDENT_IMPACT_MINOR`, `INCIDENT_IMPACT_MAJOR`, `INCIDENT_IMPACT_CRITICAL`.
+     * 
+     */
+    private @Nullable List<String> incidentImpacts;
+    /**
      * @return Stream input id to alert on.
      * 
      */
@@ -203,6 +208,13 @@ public final class NotificationPolicyFilters {
         return this.healthCheckIds == null ? List.of() : this.healthCheckIds;
     }
     /**
+     * @return The incident impact level that will trigger the dispatch of a notification. Available values: `INCIDENT_IMPACT_NONE`, `INCIDENT_IMPACT_MINOR`, `INCIDENT_IMPACT_MAJOR`, `INCIDENT_IMPACT_CRITICAL`.
+     * 
+     */
+    public List<String> incidentImpacts() {
+        return this.incidentImpacts == null ? List.of() : this.incidentImpacts;
+    }
+    /**
      * @return Stream input id to alert on.
      * 
      */
@@ -336,6 +348,7 @@ public final class NotificationPolicyFilters {
         private @Nullable List<String> events;
         private @Nullable List<String> groupBies;
         private @Nullable List<String> healthCheckIds;
+        private @Nullable List<String> incidentImpacts;
         private @Nullable List<String> inputIds;
         private @Nullable List<String> limits;
         private @Nullable List<String> megabitsPerSeconds;
@@ -365,6 +378,7 @@ public final class NotificationPolicyFilters {
     	      this.events = defaults.events;
     	      this.groupBies = defaults.groupBies;
     	      this.healthCheckIds = defaults.healthCheckIds;
+    	      this.incidentImpacts = defaults.incidentImpacts;
     	      this.inputIds = defaults.inputIds;
     	      this.limits = defaults.limits;
     	      this.megabitsPerSeconds = defaults.megabitsPerSeconds;
@@ -455,6 +469,14 @@ public final class NotificationPolicyFilters {
         }
         public Builder healthCheckIds(String... healthCheckIds) {
             return healthCheckIds(List.of(healthCheckIds));
+        }
+        @CustomType.Setter
+        public Builder incidentImpacts(@Nullable List<String> incidentImpacts) {
+            this.incidentImpacts = incidentImpacts;
+            return this;
+        }
+        public Builder incidentImpacts(String... incidentImpacts) {
+            return incidentImpacts(List.of(incidentImpacts));
         }
         @CustomType.Setter
         public Builder inputIds(@Nullable List<String> inputIds) {
@@ -603,6 +625,7 @@ public final class NotificationPolicyFilters {
             o.events = events;
             o.groupBies = groupBies;
             o.healthCheckIds = healthCheckIds;
+            o.incidentImpacts = incidentImpacts;
             o.inputIds = inputIds;
             o.limits = limits;
             o.megabitsPerSeconds = megabitsPerSeconds;

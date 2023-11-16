@@ -123,6 +123,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &HostnameTlsSettingCiphers{}
 	case "cloudflare:index/ipsecTunnel:IpsecTunnel":
 		r = &IpsecTunnel{}
+	case "cloudflare:index/keylessCertificate:KeylessCertificate":
+		r = &KeylessCertificate{}
 	case "cloudflare:index/list:List":
 		r = &List{}
 	case "cloudflare:index/listItem:ListItem":
@@ -531,6 +533,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"cloudflare",
 		"index/ipsecTunnel",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
+		"index/keylessCertificate",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

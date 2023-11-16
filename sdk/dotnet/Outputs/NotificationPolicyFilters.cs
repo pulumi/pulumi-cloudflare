@@ -50,6 +50,10 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly ImmutableArray<string> HealthCheckIds;
         /// <summary>
+        /// The incident impact level that will trigger the dispatch of a notification. Available values: `INCIDENT_IMPACT_NONE`, `INCIDENT_IMPACT_MINOR`, `INCIDENT_IMPACT_MAJOR`, `INCIDENT_IMPACT_CRITICAL`.
+        /// </summary>
+        public readonly ImmutableArray<string> IncidentImpacts;
+        /// <summary>
         /// Stream input id to alert on.
         /// </summary>
         public readonly ImmutableArray<string> InputIds;
@@ -135,6 +139,8 @@ namespace Pulumi.Cloudflare.Outputs
 
             ImmutableArray<string> healthCheckIds,
 
+            ImmutableArray<string> incidentImpacts,
+
             ImmutableArray<string> inputIds,
 
             ImmutableArray<string> limits,
@@ -178,6 +184,7 @@ namespace Pulumi.Cloudflare.Outputs
             Events = events;
             GroupBies = groupBies;
             HealthCheckIds = healthCheckIds;
+            IncidentImpacts = incidentImpacts;
             InputIds = inputIds;
             Limits = limits;
             MegabitsPerSeconds = megabitsPerSeconds;

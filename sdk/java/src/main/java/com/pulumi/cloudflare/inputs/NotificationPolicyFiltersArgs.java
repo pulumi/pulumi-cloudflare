@@ -152,6 +152,21 @@ public final class NotificationPolicyFiltersArgs extends com.pulumi.resources.Re
     }
 
     /**
+     * The incident impact level that will trigger the dispatch of a notification. Available values: `INCIDENT_IMPACT_NONE`, `INCIDENT_IMPACT_MINOR`, `INCIDENT_IMPACT_MAJOR`, `INCIDENT_IMPACT_CRITICAL`.
+     * 
+     */
+    @Import(name="incidentImpacts")
+    private @Nullable Output<List<String>> incidentImpacts;
+
+    /**
+     * @return The incident impact level that will trigger the dispatch of a notification. Available values: `INCIDENT_IMPACT_NONE`, `INCIDENT_IMPACT_MINOR`, `INCIDENT_IMPACT_MAJOR`, `INCIDENT_IMPACT_CRITICAL`.
+     * 
+     */
+    public Optional<Output<List<String>>> incidentImpacts() {
+        return Optional.ofNullable(this.incidentImpacts);
+    }
+
+    /**
      * Stream input id to alert on.
      * 
      */
@@ -410,6 +425,7 @@ public final class NotificationPolicyFiltersArgs extends com.pulumi.resources.Re
         this.events = $.events;
         this.groupBies = $.groupBies;
         this.healthCheckIds = $.healthCheckIds;
+        this.incidentImpacts = $.incidentImpacts;
         this.inputIds = $.inputIds;
         this.limits = $.limits;
         this.megabitsPerSeconds = $.megabitsPerSeconds;
@@ -724,6 +740,37 @@ public final class NotificationPolicyFiltersArgs extends com.pulumi.resources.Re
          */
         public Builder healthCheckIds(String... healthCheckIds) {
             return healthCheckIds(List.of(healthCheckIds));
+        }
+
+        /**
+         * @param incidentImpacts The incident impact level that will trigger the dispatch of a notification. Available values: `INCIDENT_IMPACT_NONE`, `INCIDENT_IMPACT_MINOR`, `INCIDENT_IMPACT_MAJOR`, `INCIDENT_IMPACT_CRITICAL`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder incidentImpacts(@Nullable Output<List<String>> incidentImpacts) {
+            $.incidentImpacts = incidentImpacts;
+            return this;
+        }
+
+        /**
+         * @param incidentImpacts The incident impact level that will trigger the dispatch of a notification. Available values: `INCIDENT_IMPACT_NONE`, `INCIDENT_IMPACT_MINOR`, `INCIDENT_IMPACT_MAJOR`, `INCIDENT_IMPACT_CRITICAL`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder incidentImpacts(List<String> incidentImpacts) {
+            return incidentImpacts(Output.of(incidentImpacts));
+        }
+
+        /**
+         * @param incidentImpacts The incident impact level that will trigger the dispatch of a notification. Available values: `INCIDENT_IMPACT_NONE`, `INCIDENT_IMPACT_MINOR`, `INCIDENT_IMPACT_MAJOR`, `INCIDENT_IMPACT_CRITICAL`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder incidentImpacts(String... incidentImpacts) {
+            return incidentImpacts(List.of(incidentImpacts));
         }
 
         /**

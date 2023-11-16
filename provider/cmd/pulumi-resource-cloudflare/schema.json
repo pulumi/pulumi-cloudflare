@@ -3347,6 +3347,13 @@
                     },
                     "description": "Identifier health check. Required when using `filters.0.status`.\n"
                 },
+                "incidentImpacts": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The incident impact level that will trigger the dispatch of a notification. Available values: `INCIDENT_IMPACT_NONE`, `INCIDENT_IMPACT_MINOR`, `INCIDENT_IMPACT_MAJOR`, `INCIDENT_IMPACT_CRITICAL`.\n"
+                },
                 "inputIds": {
                     "type": "array",
                     "items": {
@@ -10644,7 +10651,8 @@
                 },
                 "tieredCaching": {
                     "type": "string",
-                    "description": "Whether tiered caching is enabled. Available values: `on`, `off`.\n"
+                    "description": "Whether tiered caching is enabled. Available values: `on`, `off`.\n",
+                    "deprecationMessage": "tiered_caching has been deprecated in favour of using `cloudflare_tiered_cache` resource instead."
                 },
                 "zoneId": {
                     "type": "string",
@@ -10661,7 +10669,8 @@
                 },
                 "tieredCaching": {
                     "type": "string",
-                    "description": "Whether tiered caching is enabled. Available values: `on`, `off`.\n"
+                    "description": "Whether tiered caching is enabled. Available values: `on`, `off`.\n",
+                    "deprecationMessage": "tiered_caching has been deprecated in favour of using `cloudflare_tiered_cache` resource instead."
                 },
                 "zoneId": {
                     "type": "string",
@@ -10680,7 +10689,8 @@
                     },
                     "tieredCaching": {
                         "type": "string",
-                        "description": "Whether tiered caching is enabled. Available values: `on`, `off`.\n"
+                        "description": "Whether tiered caching is enabled. Available values: `on`, `off`.\n",
+                        "deprecationMessage": "tiered_caching has been deprecated in favour of using `cloudflare_tiered_cache` resource instead."
                     },
                     "zoneId": {
                         "type": "string",
@@ -14206,6 +14216,126 @@
                 "type": "object"
             }
         },
+        "cloudflare:index/keylessCertificate:KeylessCertificate": {
+            "description": "Provides a resource, that manages Keyless certificates.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as cloudflare from \"@pulumi/cloudflare\";\n\nconst example = new cloudflare.KeylessCertificate(\"example\", {\n    bundleMethod: \"ubiquitous\",\n    certificate: \"-----INSERT CERTIFICATE-----\",\n    enabled: true,\n    host: \"example.com\",\n    name: \"example.com Keyless SSL\",\n    port: 24008,\n    zoneId: \"0da42c8d2132a9ddaf714f9e7c920711\",\n});\n```\n```python\nimport pulumi\nimport pulumi_cloudflare as cloudflare\n\nexample = cloudflare.KeylessCertificate(\"example\",\n    bundle_method=\"ubiquitous\",\n    certificate=\"-----INSERT CERTIFICATE-----\",\n    enabled=True,\n    host=\"example.com\",\n    name=\"example.com Keyless SSL\",\n    port=24008,\n    zone_id=\"0da42c8d2132a9ddaf714f9e7c920711\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Cloudflare = Pulumi.Cloudflare;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = new Cloudflare.KeylessCertificate(\"example\", new()\n    {\n        BundleMethod = \"ubiquitous\",\n        Certificate = \"-----INSERT CERTIFICATE-----\",\n        Enabled = true,\n        Host = \"example.com\",\n        Name = \"example.com Keyless SSL\",\n        Port = 24008,\n        ZoneId = \"0da42c8d2132a9ddaf714f9e7c920711\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := cloudflare.NewKeylessCertificate(ctx, \"example\", \u0026cloudflare.KeylessCertificateArgs{\n\t\t\tBundleMethod: pulumi.String(\"ubiquitous\"),\n\t\t\tCertificate:  pulumi.String(\"-----INSERT CERTIFICATE-----\"),\n\t\t\tEnabled:      pulumi.Bool(true),\n\t\t\tHost:         pulumi.String(\"example.com\"),\n\t\t\tName:         pulumi.String(\"example.com Keyless SSL\"),\n\t\t\tPort:         pulumi.Int(24008),\n\t\t\tZoneId:       pulumi.String(\"0da42c8d2132a9ddaf714f9e7c920711\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.cloudflare.KeylessCertificate;\nimport com.pulumi.cloudflare.KeylessCertificateArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var example = new KeylessCertificate(\"example\", KeylessCertificateArgs.builder()        \n            .bundleMethod(\"ubiquitous\")\n            .certificate(\"-----INSERT CERTIFICATE-----\")\n            .enabled(true)\n            .host(\"example.com\")\n            .name(\"example.com Keyless SSL\")\n            .port(24008)\n            .zoneId(\"0da42c8d2132a9ddaf714f9e7c920711\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  example:\n    type: cloudflare:KeylessCertificate\n    properties:\n      bundleMethod: ubiquitous\n      certificate: '-----INSERT CERTIFICATE-----'\n      enabled: true\n      host: example.com\n      name: example.com Keyless SSL\n      port: 24008\n      zoneId: 0da42c8d2132a9ddaf714f9e7c920711\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\n\n\n```sh\n $ pulumi import cloudflare:index/keylessCertificate:KeylessCertificate example \u003czone_id\u003e/\u003ckeyless_certificate_id\u003e\n```\n\n ",
+            "properties": {
+                "bundleMethod": {
+                    "type": "string",
+                    "description": "A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it. Available values: `ubiquitous`, `optimal`, `force`. Defaults to `ubiquitous`. **Modifying this attribute will force creation of a new resource.**\n"
+                },
+                "certificate": {
+                    "type": "string",
+                    "description": "The zone's SSL certificate or SSL certificate and intermediate(s). **Modifying this attribute will force creation of a new resource.**\n"
+                },
+                "enabled": {
+                    "type": "boolean",
+                    "description": "Whether the KeyLess SSL is on.\n"
+                },
+                "host": {
+                    "type": "string",
+                    "description": "The KeyLess SSL host.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The KeyLess SSL name.\n"
+                },
+                "port": {
+                    "type": "integer",
+                    "description": "The KeyLess SSL port used to communicate between Cloudflare and the client's KeyLess SSL server. Defaults to `24008`.\n"
+                },
+                "status": {
+                    "type": "string",
+                    "description": "Status of the KeyLess SSL.\n"
+                },
+                "zoneId": {
+                    "type": "string",
+                    "description": "The zone identifier to target for the resource.\n"
+                }
+            },
+            "required": [
+                "certificate",
+                "host",
+                "status",
+                "zoneId"
+            ],
+            "inputProperties": {
+                "bundleMethod": {
+                    "type": "string",
+                    "description": "A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it. Available values: `ubiquitous`, `optimal`, `force`. Defaults to `ubiquitous`. **Modifying this attribute will force creation of a new resource.**\n",
+                    "willReplaceOnChanges": true
+                },
+                "certificate": {
+                    "type": "string",
+                    "description": "The zone's SSL certificate or SSL certificate and intermediate(s). **Modifying this attribute will force creation of a new resource.**\n",
+                    "willReplaceOnChanges": true
+                },
+                "enabled": {
+                    "type": "boolean",
+                    "description": "Whether the KeyLess SSL is on.\n"
+                },
+                "host": {
+                    "type": "string",
+                    "description": "The KeyLess SSL host.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The KeyLess SSL name.\n"
+                },
+                "port": {
+                    "type": "integer",
+                    "description": "The KeyLess SSL port used to communicate between Cloudflare and the client's KeyLess SSL server. Defaults to `24008`.\n"
+                },
+                "zoneId": {
+                    "type": "string",
+                    "description": "The zone identifier to target for the resource.\n"
+                }
+            },
+            "requiredInputs": [
+                "certificate",
+                "host",
+                "zoneId"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering KeylessCertificate resources.\n",
+                "properties": {
+                    "bundleMethod": {
+                        "type": "string",
+                        "description": "A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it. Available values: `ubiquitous`, `optimal`, `force`. Defaults to `ubiquitous`. **Modifying this attribute will force creation of a new resource.**\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "certificate": {
+                        "type": "string",
+                        "description": "The zone's SSL certificate or SSL certificate and intermediate(s). **Modifying this attribute will force creation of a new resource.**\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "enabled": {
+                        "type": "boolean",
+                        "description": "Whether the KeyLess SSL is on.\n"
+                    },
+                    "host": {
+                        "type": "string",
+                        "description": "The KeyLess SSL host.\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The KeyLess SSL name.\n"
+                    },
+                    "port": {
+                        "type": "integer",
+                        "description": "The KeyLess SSL port used to communicate between Cloudflare and the client's KeyLess SSL server. Defaults to `24008`.\n"
+                    },
+                    "status": {
+                        "type": "string",
+                        "description": "Status of the KeyLess SSL.\n"
+                    },
+                    "zoneId": {
+                        "type": "string",
+                        "description": "The zone identifier to target for the resource.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
         "cloudflare:index/list:List": {
             "description": "{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.cloudflare.List;\nimport com.pulumi.cloudflare.ListArgs;\nimport com.pulumi.cloudflare.inputs.ListItemArgs;\nimport com.pulumi.cloudflare.inputs.ListItemValueArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var example = new List(\"example\", ListArgs.builder()        \n            .accountId(\"f037e56e89293a057740de681ac9abbe\")\n            .description(\"example hostnames for a list\")\n            .items(            \n                ListItemArgs.builder()\n                    .comment(\"one\")\n                    .value(ListItemValueArgs.builder()\n                        .hostname(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))\n                        .build())\n                    .build(),\n                ListItemArgs.builder()\n                    .comment(\"two\")\n                    .value(ListItemValueArgs.builder()\n                        .hostname(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))\n                        .build())\n                    .build())\n            .kind(\"hostname\")\n            .name(\"example_list\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  # Hostname list\n  example:\n    type: cloudflare:List\n    properties:\n      accountId: f037e56e89293a057740de681ac9abbe\n      description: example hostnames for a list\n      items:\n        - comment: one\n          value:\n            hostname:\n              - urlHostname: example.com\n        - comment: two\n          value:\n            hostname:\n              - urlHostname: '*.example.com'\n      kind: hostname\n      name: example_list\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\n\n\n```sh\n $ pulumi import cloudflare:index/list:List example \u003caccount_id\u003e/\u003clist_id\u003e\n```\n\n ",
             "properties": {
@@ -15867,7 +15997,7 @@
                 },
                 "alertType": {
                     "type": "string",
-                    "description": "The event type that will trigger the dispatch of a notification. See the developer documentation for descriptions of [available alert types](https://developers.cloudflare.com/fundamentals/notifications/notification-available/). Available values: `advanced_http_alert_error`, `access_custom_certificate_expiration_type`, `advanced_ddos_attack_l4_alert`, `advanced_ddos_attack_l7_alert`, `bgp_hijack_notification`, `billing_usage_alert`, `block_notification_block_removed`, `block_notification_new_block`, `block_notification_review_rejected`, `clickhouse_alert_fw_anomaly`, `clickhouse_alert_fw_ent_anomaly`, `custom_ssl_certificate_event_type`, `dedicated_ssl_certificate_event_type`, `dos_attack_l4`, `dos_attack_l7`, `expiring_service_token_alert`, `failing_logpush_job_disabled_alert`, `fbm_auto_advertisement`, `fbm_dosd_attack`, `fbm_volumetric_attack`, `health_check_status_notification`, `hostname_aop_custom_certificate_expiration_type`, `http_alert_edge_error`, `http_alert_origin_error`, `load_balancing_health_alert`, `load_balancing_pool_enablement_alert`, `real_origin_monitoring`, `scriptmonitor_alert_new_code_change_detections`, `scriptmonitor_alert_new_hosts`, `scriptmonitor_alert_new_malicious_hosts`, `scriptmonitor_alert_new_malicious_scripts`, `scriptmonitor_alert_new_malicious_url`, `scriptmonitor_alert_new_max_length_resource_url`, `scriptmonitor_alert_new_resources`, `secondary_dns_all_primaries_failing`, `secondary_dns_primaries_failing`, `secondary_dns_zone_successfully_updated`, `secondary_dns_zone_validation_warning`, `sentinel_alert`, `stream_live_notifications`, `tunnel_health_event`, `tunnel_update_event`, `universal_ssl_event_type`, `web_analytics_metrics_update`, `weekly_account_overview`, `workers_alert`, `zone_aop_custom_certificate_expiration_type`.\n"
+                    "description": "The event type that will trigger the dispatch of a notification. See the developer documentation for descriptions of [available alert types](https://developers.cloudflare.com/fundamentals/notifications/notification-available/). Available values: `advanced_http_alert_error`, `access_custom_certificate_expiration_type`, `advanced_ddos_attack_l4_alert`, `advanced_ddos_attack_l7_alert`, `bgp_hijack_notification`, `billing_usage_alert`, `block_notification_block_removed`, `block_notification_new_block`, `block_notification_review_rejected`, `clickhouse_alert_fw_anomaly`, `clickhouse_alert_fw_ent_anomaly`, `custom_ssl_certificate_event_type`, `dedicated_ssl_certificate_event_type`, `dos_attack_l4`, `dos_attack_l7`, `expiring_service_token_alert`, `failing_logpush_job_disabled_alert`, `fbm_auto_advertisement`, `fbm_dosd_attack`, `fbm_volumetric_attack`, `health_check_status_notification`, `hostname_aop_custom_certificate_expiration_type`, `http_alert_edge_error`, `http_alert_origin_error`, `incident_alert`, `load_balancing_health_alert`, `load_balancing_pool_enablement_alert`, `pages_event_alert`, `real_origin_monitoring`, `scriptmonitor_alert_new_code_change_detections`, `scriptmonitor_alert_new_hosts`, `scriptmonitor_alert_new_malicious_hosts`, `scriptmonitor_alert_new_malicious_scripts`, `scriptmonitor_alert_new_malicious_url`, `scriptmonitor_alert_new_max_length_resource_url`, `scriptmonitor_alert_new_resources`, `secondary_dns_all_primaries_failing`, `secondary_dns_primaries_failing`, `secondary_dns_zone_successfully_updated`, `secondary_dns_zone_validation_warning`, `sentinel_alert`, `stream_live_notifications`, `tunnel_health_event`, `tunnel_update_event`, `universal_ssl_event_type`, `web_analytics_metrics_update`, `weekly_account_overview`, `workers_alert`, `zone_aop_custom_certificate_expiration_type`.\n"
                 },
                 "created": {
                     "type": "string",
@@ -15930,7 +16060,7 @@
                 },
                 "alertType": {
                     "type": "string",
-                    "description": "The event type that will trigger the dispatch of a notification. See the developer documentation for descriptions of [available alert types](https://developers.cloudflare.com/fundamentals/notifications/notification-available/). Available values: `advanced_http_alert_error`, `access_custom_certificate_expiration_type`, `advanced_ddos_attack_l4_alert`, `advanced_ddos_attack_l7_alert`, `bgp_hijack_notification`, `billing_usage_alert`, `block_notification_block_removed`, `block_notification_new_block`, `block_notification_review_rejected`, `clickhouse_alert_fw_anomaly`, `clickhouse_alert_fw_ent_anomaly`, `custom_ssl_certificate_event_type`, `dedicated_ssl_certificate_event_type`, `dos_attack_l4`, `dos_attack_l7`, `expiring_service_token_alert`, `failing_logpush_job_disabled_alert`, `fbm_auto_advertisement`, `fbm_dosd_attack`, `fbm_volumetric_attack`, `health_check_status_notification`, `hostname_aop_custom_certificate_expiration_type`, `http_alert_edge_error`, `http_alert_origin_error`, `load_balancing_health_alert`, `load_balancing_pool_enablement_alert`, `real_origin_monitoring`, `scriptmonitor_alert_new_code_change_detections`, `scriptmonitor_alert_new_hosts`, `scriptmonitor_alert_new_malicious_hosts`, `scriptmonitor_alert_new_malicious_scripts`, `scriptmonitor_alert_new_malicious_url`, `scriptmonitor_alert_new_max_length_resource_url`, `scriptmonitor_alert_new_resources`, `secondary_dns_all_primaries_failing`, `secondary_dns_primaries_failing`, `secondary_dns_zone_successfully_updated`, `secondary_dns_zone_validation_warning`, `sentinel_alert`, `stream_live_notifications`, `tunnel_health_event`, `tunnel_update_event`, `universal_ssl_event_type`, `web_analytics_metrics_update`, `weekly_account_overview`, `workers_alert`, `zone_aop_custom_certificate_expiration_type`.\n"
+                    "description": "The event type that will trigger the dispatch of a notification. See the developer documentation for descriptions of [available alert types](https://developers.cloudflare.com/fundamentals/notifications/notification-available/). Available values: `advanced_http_alert_error`, `access_custom_certificate_expiration_type`, `advanced_ddos_attack_l4_alert`, `advanced_ddos_attack_l7_alert`, `bgp_hijack_notification`, `billing_usage_alert`, `block_notification_block_removed`, `block_notification_new_block`, `block_notification_review_rejected`, `clickhouse_alert_fw_anomaly`, `clickhouse_alert_fw_ent_anomaly`, `custom_ssl_certificate_event_type`, `dedicated_ssl_certificate_event_type`, `dos_attack_l4`, `dos_attack_l7`, `expiring_service_token_alert`, `failing_logpush_job_disabled_alert`, `fbm_auto_advertisement`, `fbm_dosd_attack`, `fbm_volumetric_attack`, `health_check_status_notification`, `hostname_aop_custom_certificate_expiration_type`, `http_alert_edge_error`, `http_alert_origin_error`, `incident_alert`, `load_balancing_health_alert`, `load_balancing_pool_enablement_alert`, `pages_event_alert`, `real_origin_monitoring`, `scriptmonitor_alert_new_code_change_detections`, `scriptmonitor_alert_new_hosts`, `scriptmonitor_alert_new_malicious_hosts`, `scriptmonitor_alert_new_malicious_scripts`, `scriptmonitor_alert_new_malicious_url`, `scriptmonitor_alert_new_max_length_resource_url`, `scriptmonitor_alert_new_resources`, `secondary_dns_all_primaries_failing`, `secondary_dns_primaries_failing`, `secondary_dns_zone_successfully_updated`, `secondary_dns_zone_validation_warning`, `sentinel_alert`, `stream_live_notifications`, `tunnel_health_event`, `tunnel_update_event`, `universal_ssl_event_type`, `web_analytics_metrics_update`, `weekly_account_overview`, `workers_alert`, `zone_aop_custom_certificate_expiration_type`.\n"
                 },
                 "description": {
                     "type": "string",
@@ -15985,7 +16115,7 @@
                     },
                     "alertType": {
                         "type": "string",
-                        "description": "The event type that will trigger the dispatch of a notification. See the developer documentation for descriptions of [available alert types](https://developers.cloudflare.com/fundamentals/notifications/notification-available/). Available values: `advanced_http_alert_error`, `access_custom_certificate_expiration_type`, `advanced_ddos_attack_l4_alert`, `advanced_ddos_attack_l7_alert`, `bgp_hijack_notification`, `billing_usage_alert`, `block_notification_block_removed`, `block_notification_new_block`, `block_notification_review_rejected`, `clickhouse_alert_fw_anomaly`, `clickhouse_alert_fw_ent_anomaly`, `custom_ssl_certificate_event_type`, `dedicated_ssl_certificate_event_type`, `dos_attack_l4`, `dos_attack_l7`, `expiring_service_token_alert`, `failing_logpush_job_disabled_alert`, `fbm_auto_advertisement`, `fbm_dosd_attack`, `fbm_volumetric_attack`, `health_check_status_notification`, `hostname_aop_custom_certificate_expiration_type`, `http_alert_edge_error`, `http_alert_origin_error`, `load_balancing_health_alert`, `load_balancing_pool_enablement_alert`, `real_origin_monitoring`, `scriptmonitor_alert_new_code_change_detections`, `scriptmonitor_alert_new_hosts`, `scriptmonitor_alert_new_malicious_hosts`, `scriptmonitor_alert_new_malicious_scripts`, `scriptmonitor_alert_new_malicious_url`, `scriptmonitor_alert_new_max_length_resource_url`, `scriptmonitor_alert_new_resources`, `secondary_dns_all_primaries_failing`, `secondary_dns_primaries_failing`, `secondary_dns_zone_successfully_updated`, `secondary_dns_zone_validation_warning`, `sentinel_alert`, `stream_live_notifications`, `tunnel_health_event`, `tunnel_update_event`, `universal_ssl_event_type`, `web_analytics_metrics_update`, `weekly_account_overview`, `workers_alert`, `zone_aop_custom_certificate_expiration_type`.\n"
+                        "description": "The event type that will trigger the dispatch of a notification. See the developer documentation for descriptions of [available alert types](https://developers.cloudflare.com/fundamentals/notifications/notification-available/). Available values: `advanced_http_alert_error`, `access_custom_certificate_expiration_type`, `advanced_ddos_attack_l4_alert`, `advanced_ddos_attack_l7_alert`, `bgp_hijack_notification`, `billing_usage_alert`, `block_notification_block_removed`, `block_notification_new_block`, `block_notification_review_rejected`, `clickhouse_alert_fw_anomaly`, `clickhouse_alert_fw_ent_anomaly`, `custom_ssl_certificate_event_type`, `dedicated_ssl_certificate_event_type`, `dos_attack_l4`, `dos_attack_l7`, `expiring_service_token_alert`, `failing_logpush_job_disabled_alert`, `fbm_auto_advertisement`, `fbm_dosd_attack`, `fbm_volumetric_attack`, `health_check_status_notification`, `hostname_aop_custom_certificate_expiration_type`, `http_alert_edge_error`, `http_alert_origin_error`, `incident_alert`, `load_balancing_health_alert`, `load_balancing_pool_enablement_alert`, `pages_event_alert`, `real_origin_monitoring`, `scriptmonitor_alert_new_code_change_detections`, `scriptmonitor_alert_new_hosts`, `scriptmonitor_alert_new_malicious_hosts`, `scriptmonitor_alert_new_malicious_scripts`, `scriptmonitor_alert_new_malicious_url`, `scriptmonitor_alert_new_max_length_resource_url`, `scriptmonitor_alert_new_resources`, `secondary_dns_all_primaries_failing`, `secondary_dns_primaries_failing`, `secondary_dns_zone_successfully_updated`, `secondary_dns_zone_validation_warning`, `sentinel_alert`, `stream_live_notifications`, `tunnel_health_event`, `tunnel_update_event`, `universal_ssl_event_type`, `web_analytics_metrics_update`, `weekly_account_overview`, `workers_alert`, `zone_aop_custom_certificate_expiration_type`.\n"
                     },
                     "created": {
                         "type": "string",
@@ -20708,7 +20838,7 @@
                 },
                 "type": {
                     "type": "string",
-                    "description": "A full zone implies that DNS is hosted with Cloudflare. A partial zone is typically a partner-hosted zone or a CNAME setup. Available values: `full`, `partial`. Defaults to `full`.\n"
+                    "description": "A full zone implies that DNS is hosted with Cloudflare. A partial zone is typically a partner-hosted zone or a CNAME setup. Available values: `full`, `partial`, `secondary`. Defaults to `full`.\n"
                 },
                 "vanityNameServers": {
                     "type": "array",
@@ -20760,7 +20890,7 @@
                 },
                 "type": {
                     "type": "string",
-                    "description": "A full zone implies that DNS is hosted with Cloudflare. A partial zone is typically a partner-hosted zone or a CNAME setup. Available values: `full`, `partial`. Defaults to `full`.\n"
+                    "description": "A full zone implies that DNS is hosted with Cloudflare. A partial zone is typically a partner-hosted zone or a CNAME setup. Available values: `full`, `partial`, `secondary`. Defaults to `full`.\n"
                 },
                 "zone": {
                     "type": "string",
@@ -20815,7 +20945,7 @@
                     },
                     "type": {
                         "type": "string",
-                        "description": "A full zone implies that DNS is hosted with Cloudflare. A partial zone is typically a partner-hosted zone or a CNAME setup. Available values: `full`, `partial`. Defaults to `full`.\n"
+                        "description": "A full zone implies that DNS is hosted with Cloudflare. A partial zone is typically a partner-hosted zone or a CNAME setup. Available values: `full`, `partial`, `secondary`. Defaults to `full`.\n"
                     },
                     "vanityNameServers": {
                         "type": "array",

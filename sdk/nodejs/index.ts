@@ -365,6 +365,11 @@ export type IpsecTunnel = import("./ipsecTunnel").IpsecTunnel;
 export const IpsecTunnel: typeof import("./ipsecTunnel").IpsecTunnel = null as any;
 utilities.lazyLoad(exports, ["IpsecTunnel"], () => require("./ipsecTunnel"));
 
+export { KeylessCertificateArgs, KeylessCertificateState } from "./keylessCertificate";
+export type KeylessCertificate = import("./keylessCertificate").KeylessCertificate;
+export const KeylessCertificate: typeof import("./keylessCertificate").KeylessCertificate = null as any;
+utilities.lazyLoad(exports, ["KeylessCertificate"], () => require("./keylessCertificate"));
+
 export { ListArgs, ListState } from "./list";
 export type List = import("./list").List;
 export const List: typeof import("./list").List = null as any;
@@ -796,6 +801,8 @@ const _module = {
                 return new HostnameTlsSettingCiphers(name, <any>undefined, { urn })
             case "cloudflare:index/ipsecTunnel:IpsecTunnel":
                 return new IpsecTunnel(name, <any>undefined, { urn })
+            case "cloudflare:index/keylessCertificate:KeylessCertificate":
+                return new KeylessCertificate(name, <any>undefined, { urn })
             case "cloudflare:index/list:List":
                 return new List(name, <any>undefined, { urn })
             case "cloudflare:index/listItem:ListItem":
@@ -976,6 +983,7 @@ pulumi.runtime.registerResourceModule("cloudflare", "index/healthcheck", _module
 pulumi.runtime.registerResourceModule("cloudflare", "index/hostnameTlsSetting", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/hostnameTlsSettingCiphers", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/ipsecTunnel", _module)
+pulumi.runtime.registerResourceModule("cloudflare", "index/keylessCertificate", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/list", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/listItem", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/loadBalancer", _module)

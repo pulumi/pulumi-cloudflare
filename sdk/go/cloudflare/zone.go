@@ -68,7 +68,7 @@ type Zone struct {
 	Plan pulumi.StringOutput `pulumi:"plan"`
 	// Status of the zone. Available values: `active`, `pending`, `initializing`, `moved`, `deleted`, `deactivated`.
 	Status pulumi.StringOutput `pulumi:"status"`
-	// A full zone implies that DNS is hosted with Cloudflare. A partial zone is typically a partner-hosted zone or a CNAME setup. Available values: `full`, `partial`. Defaults to `full`.
+	// A full zone implies that DNS is hosted with Cloudflare. A partial zone is typically a partner-hosted zone or a CNAME setup. Available values: `full`, `partial`, `secondary`. Defaults to `full`.
 	Type pulumi.StringPtrOutput `pulumi:"type"`
 	// List of Vanity Nameservers (if set).
 	VanityNameServers pulumi.StringArrayOutput `pulumi:"vanityNameServers"`
@@ -127,7 +127,7 @@ type zoneState struct {
 	Plan *string `pulumi:"plan"`
 	// Status of the zone. Available values: `active`, `pending`, `initializing`, `moved`, `deleted`, `deactivated`.
 	Status *string `pulumi:"status"`
-	// A full zone implies that DNS is hosted with Cloudflare. A partial zone is typically a partner-hosted zone or a CNAME setup. Available values: `full`, `partial`. Defaults to `full`.
+	// A full zone implies that DNS is hosted with Cloudflare. A partial zone is typically a partner-hosted zone or a CNAME setup. Available values: `full`, `partial`, `secondary`. Defaults to `full`.
 	Type *string `pulumi:"type"`
 	// List of Vanity Nameservers (if set).
 	VanityNameServers []string `pulumi:"vanityNameServers"`
@@ -151,7 +151,7 @@ type ZoneState struct {
 	Plan pulumi.StringPtrInput
 	// Status of the zone. Available values: `active`, `pending`, `initializing`, `moved`, `deleted`, `deactivated`.
 	Status pulumi.StringPtrInput
-	// A full zone implies that DNS is hosted with Cloudflare. A partial zone is typically a partner-hosted zone or a CNAME setup. Available values: `full`, `partial`. Defaults to `full`.
+	// A full zone implies that DNS is hosted with Cloudflare. A partial zone is typically a partner-hosted zone or a CNAME setup. Available values: `full`, `partial`, `secondary`. Defaults to `full`.
 	Type pulumi.StringPtrInput
 	// List of Vanity Nameservers (if set).
 	VanityNameServers pulumi.StringArrayInput
@@ -174,7 +174,7 @@ type zoneArgs struct {
 	Paused *bool `pulumi:"paused"`
 	// The name of the commercial plan to apply to the zone. Available values: `free`, `lite`, `pro`, `proPlus`, `business`, `enterprise`, `partnersFree`, `partnersPro`, `partnersBusiness`, `partnersEnterprise`.
 	Plan *string `pulumi:"plan"`
-	// A full zone implies that DNS is hosted with Cloudflare. A partial zone is typically a partner-hosted zone or a CNAME setup. Available values: `full`, `partial`. Defaults to `full`.
+	// A full zone implies that DNS is hosted with Cloudflare. A partial zone is typically a partner-hosted zone or a CNAME setup. Available values: `full`, `partial`, `secondary`. Defaults to `full`.
 	Type *string `pulumi:"type"`
 	// The DNS zone name which will be added. **Modifying this attribute will force creation of a new resource.**
 	Zone string `pulumi:"zone"`
@@ -190,7 +190,7 @@ type ZoneArgs struct {
 	Paused pulumi.BoolPtrInput
 	// The name of the commercial plan to apply to the zone. Available values: `free`, `lite`, `pro`, `proPlus`, `business`, `enterprise`, `partnersFree`, `partnersPro`, `partnersBusiness`, `partnersEnterprise`.
 	Plan pulumi.StringPtrInput
-	// A full zone implies that DNS is hosted with Cloudflare. A partial zone is typically a partner-hosted zone or a CNAME setup. Available values: `full`, `partial`. Defaults to `full`.
+	// A full zone implies that DNS is hosted with Cloudflare. A partial zone is typically a partner-hosted zone or a CNAME setup. Available values: `full`, `partial`, `secondary`. Defaults to `full`.
 	Type pulumi.StringPtrInput
 	// The DNS zone name which will be added. **Modifying this attribute will force creation of a new resource.**
 	Zone pulumi.StringInput
@@ -317,7 +317,7 @@ func (o ZoneOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *Zone) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }
 
-// A full zone implies that DNS is hosted with Cloudflare. A partial zone is typically a partner-hosted zone or a CNAME setup. Available values: `full`, `partial`. Defaults to `full`.
+// A full zone implies that DNS is hosted with Cloudflare. A partial zone is typically a partner-hosted zone or a CNAME setup. Available values: `full`, `partial`, `secondary`. Defaults to `full`.
 func (o ZoneOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Zone) pulumi.StringPtrOutput { return v.Type }).(pulumi.StringPtrOutput)
 }

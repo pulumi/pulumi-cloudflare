@@ -120,6 +120,18 @@ namespace Pulumi.Cloudflare.Inputs
             set => _healthCheckIds = value;
         }
 
+        [Input("incidentImpacts")]
+        private InputList<string>? _incidentImpacts;
+
+        /// <summary>
+        /// The incident impact level that will trigger the dispatch of a notification. Available values: `INCIDENT_IMPACT_NONE`, `INCIDENT_IMPACT_MINOR`, `INCIDENT_IMPACT_MAJOR`, `INCIDENT_IMPACT_CRITICAL`.
+        /// </summary>
+        public InputList<string> IncidentImpacts
+        {
+            get => _incidentImpacts ?? (_incidentImpacts = new InputList<string>());
+            set => _incidentImpacts = value;
+        }
+
         [Input("inputIds")]
         private InputList<string>? _inputIds;
 
