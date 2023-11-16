@@ -1029,6 +1029,10 @@
                 "current": "cloudflare:index/ipsecTunnel:IpsecTunnel",
                 "majorVersion": 5
             },
+            "cloudflare_keyless_certificate": {
+                "current": "cloudflare:index/keylessCertificate:KeylessCertificate",
+                "majorVersion": 5
+            },
             "cloudflare_list": {
                 "current": "cloudflare:index/list:List",
                 "majorVersion": 5,
@@ -1315,6 +1319,9 @@
                                     "maxItemsOne": false
                                 },
                                 "health_check_id": {
+                                    "maxItemsOne": false
+                                },
+                                "incident_impact": {
                                     "maxItemsOne": false
                                 },
                                 "input_id": {
@@ -2792,6 +2799,7 @@
             "cloudflare:index/hostnameTlsSetting:HostnameTlsSetting": 0,
             "cloudflare:index/hostnameTlsSettingCiphers:HostnameTlsSettingCiphers": 0,
             "cloudflare:index/ipsecTunnel:IpsecTunnel": 0,
+            "cloudflare:index/keylessCertificate:KeylessCertificate": 0,
             "cloudflare:index/list:List": 0,
             "cloudflare:index/listItem:ListItem": 0,
             "cloudflare:index/loadBalancer:LoadBalancer": 0,
@@ -2932,6 +2940,7 @@
             "cloudflare:index/hostnameTlsSetting:HostnameTlsSetting": "cloudflare_hostname_tls_setting",
             "cloudflare:index/hostnameTlsSettingCiphers:HostnameTlsSettingCiphers": "cloudflare_hostname_tls_setting_ciphers",
             "cloudflare:index/ipsecTunnel:IpsecTunnel": "cloudflare_ipsec_tunnel",
+            "cloudflare:index/keylessCertificate:KeylessCertificate": "cloudflare_keyless_certificate",
             "cloudflare:index/list:List": "cloudflare_list",
             "cloudflare:index/listItem:ListItem": "cloudflare_list_item",
             "cloudflare:index/loadBalancer:LoadBalancer": "cloudflare_load_balancer",
@@ -3582,6 +3591,7 @@
                 "events": "event",
                 "groupBies": "group_by",
                 "healthCheckIds": "health_check_id",
+                "incidentImpacts": "incident_impact",
                 "inputIds": "input_id",
                 "limits": "limit",
                 "megabitsPerSeconds": "megabits_per_second",
@@ -4595,6 +4605,10 @@
                 "interfaceAddress": "interface_address",
                 "remoteId": "remote_id",
                 "userId": "user_id"
+            },
+            "cloudflare:index/keylessCertificate:KeylessCertificate": {
+                "bundleMethod": "bundle_method",
+                "zoneId": "zone_id"
             },
             "cloudflare:index/list:List": {
                 "accountId": "account_id",
