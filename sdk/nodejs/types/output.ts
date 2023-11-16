@@ -2228,6 +2228,10 @@ export interface NotificationPolicyFilters {
      */
     healthCheckIds?: string[];
     /**
+     * The incident impact level that will trigger the dispatch of a notification. Available values: `INCIDENT_IMPACT_NONE`, `INCIDENT_IMPACT_MINOR`, `INCIDENT_IMPACT_MAJOR`, `INCIDENT_IMPACT_CRITICAL`.
+     */
+    incidentImpacts?: string[];
+    /**
      * Stream input id to alert on.
      */
     inputIds?: string[];

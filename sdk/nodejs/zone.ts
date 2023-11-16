@@ -83,7 +83,7 @@ export class Zone extends pulumi.CustomResource {
      */
     public /*out*/ readonly status!: pulumi.Output<string>;
     /**
-     * A full zone implies that DNS is hosted with Cloudflare. A partial zone is typically a partner-hosted zone or a CNAME setup. Available values: `full`, `partial`. Defaults to `full`.
+     * A full zone implies that DNS is hosted with Cloudflare. A partial zone is typically a partner-hosted zone or a CNAME setup. Available values: `full`, `partial`, `secondary`. Defaults to `full`.
      */
     public readonly type!: pulumi.Output<string | undefined>;
     /**
@@ -178,7 +178,7 @@ export interface ZoneState {
      */
     status?: pulumi.Input<string>;
     /**
-     * A full zone implies that DNS is hosted with Cloudflare. A partial zone is typically a partner-hosted zone or a CNAME setup. Available values: `full`, `partial`. Defaults to `full`.
+     * A full zone implies that DNS is hosted with Cloudflare. A partial zone is typically a partner-hosted zone or a CNAME setup. Available values: `full`, `partial`, `secondary`. Defaults to `full`.
      */
     type?: pulumi.Input<string>;
     /**
@@ -216,7 +216,7 @@ export interface ZoneArgs {
      */
     plan?: pulumi.Input<string>;
     /**
-     * A full zone implies that DNS is hosted with Cloudflare. A partial zone is typically a partner-hosted zone or a CNAME setup. Available values: `full`, `partial`. Defaults to `full`.
+     * A full zone implies that DNS is hosted with Cloudflare. A partial zone is typically a partner-hosted zone or a CNAME setup. Available values: `full`, `partial`, `secondary`. Defaults to `full`.
      */
     type?: pulumi.Input<string>;
     /**

@@ -8161,6 +8161,7 @@ class NotificationPolicyFiltersArgs:
                  events: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  group_bies: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  health_check_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 incident_impacts: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  input_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  limits: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  megabits_per_seconds: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -8188,6 +8189,7 @@ class NotificationPolicyFiltersArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] events: Pages event to alert. Available values: `EVENT_DEPLOYMENT_STARTED`, `EVENT_DEPLOYMENT_FAILED`, `EVENT_DEPLOYMENT_SUCCESS`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] group_bies: Alert grouping.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] health_check_ids: Identifier health check. Required when using `filters.0.status`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] incident_impacts: The incident impact level that will trigger the dispatch of a notification. Available values: `INCIDENT_IMPACT_NONE`, `INCIDENT_IMPACT_MINOR`, `INCIDENT_IMPACT_MAJOR`, `INCIDENT_IMPACT_CRITICAL`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] input_ids: Stream input id to alert on.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] limits: A numerical limit. Example: `100`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] megabits_per_seconds: Megabits per second threshold for dos alert.
@@ -8223,6 +8225,8 @@ class NotificationPolicyFiltersArgs:
             pulumi.set(__self__, "group_bies", group_bies)
         if health_check_ids is not None:
             pulumi.set(__self__, "health_check_ids", health_check_ids)
+        if incident_impacts is not None:
+            pulumi.set(__self__, "incident_impacts", incident_impacts)
         if input_ids is not None:
             pulumi.set(__self__, "input_ids", input_ids)
         if limits is not None:
@@ -8365,6 +8369,18 @@ class NotificationPolicyFiltersArgs:
     @health_check_ids.setter
     def health_check_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "health_check_ids", value)
+
+    @property
+    @pulumi.getter(name="incidentImpacts")
+    def incident_impacts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The incident impact level that will trigger the dispatch of a notification. Available values: `INCIDENT_IMPACT_NONE`, `INCIDENT_IMPACT_MINOR`, `INCIDENT_IMPACT_MAJOR`, `INCIDENT_IMPACT_CRITICAL`.
+        """
+        return pulumi.get(self, "incident_impacts")
+
+    @incident_impacts.setter
+    def incident_impacts(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "incident_impacts", value)
 
     @property
     @pulumi.getter(name="inputIds")

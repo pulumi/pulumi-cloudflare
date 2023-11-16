@@ -88,6 +88,7 @@
         "hostnameTlsSettingCiphers.ts",
         "index.ts",
         "ipsecTunnel.ts",
+        "keylessCertificate.ts",
         "list.ts",
         "listItem.ts",
         "loadBalancer.ts",

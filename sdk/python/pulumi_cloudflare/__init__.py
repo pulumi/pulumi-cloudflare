@@ -77,6 +77,7 @@ from .healthcheck import *
 from .hostname_tls_setting import *
 from .hostname_tls_setting_ciphers import *
 from .ipsec_tunnel import *
+from .keyless_certificate import *
 from .list import *
 from .list_item import *
 from .load_balancer import *
@@ -559,6 +560,14 @@ _utilities.register(
   "fqn": "pulumi_cloudflare",
   "classes": {
    "cloudflare:index/ipsecTunnel:IpsecTunnel": "IpsecTunnel"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "index/keylessCertificate",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/keylessCertificate:KeylessCertificate": "KeylessCertificate"
   }
  },
  {

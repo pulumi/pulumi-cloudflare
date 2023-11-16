@@ -76,7 +76,11 @@ public class Argo extends com.pulumi.resources.CustomResource {
     /**
      * Whether tiered caching is enabled. Available values: `on`, `off`.
      * 
+     * @deprecated
+     * tiered_caching has been deprecated in favour of using `cloudflare_tiered_cache` resource instead.
+     * 
      */
+    @Deprecated /* tiered_caching has been deprecated in favour of using `cloudflare_tiered_cache` resource instead. */
     @Export(name="tieredCaching", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> tieredCaching;
 

@@ -155,14 +155,14 @@ public class Zone extends com.pulumi.resources.CustomResource {
         return this.status;
     }
     /**
-     * A full zone implies that DNS is hosted with Cloudflare. A partial zone is typically a partner-hosted zone or a CNAME setup. Available values: `full`, `partial`. Defaults to `full`.
+     * A full zone implies that DNS is hosted with Cloudflare. A partial zone is typically a partner-hosted zone or a CNAME setup. Available values: `full`, `partial`, `secondary`. Defaults to `full`.
      * 
      */
     @Export(name="type", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> type;
 
     /**
-     * @return A full zone implies that DNS is hosted with Cloudflare. A partial zone is typically a partner-hosted zone or a CNAME setup. Available values: `full`, `partial`. Defaults to `full`.
+     * @return A full zone implies that DNS is hosted with Cloudflare. A partial zone is typically a partner-hosted zone or a CNAME setup. Available values: `full`, `partial`, `secondary`. Defaults to `full`.
      * 
      */
     public Output<Optional<String>> type() {

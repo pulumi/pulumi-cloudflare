@@ -61,6 +61,8 @@ export class Argo extends pulumi.CustomResource {
     public readonly smartRouting!: pulumi.Output<string | undefined>;
     /**
      * Whether tiered caching is enabled. Available values: `on`, `off`.
+     *
+     * @deprecated tiered_caching has been deprecated in favour of using `cloudflare_tiered_cache` resource instead.
      */
     public readonly tieredCaching!: pulumi.Output<string | undefined>;
     /**
@@ -108,6 +110,8 @@ export interface ArgoState {
     smartRouting?: pulumi.Input<string>;
     /**
      * Whether tiered caching is enabled. Available values: `on`, `off`.
+     *
+     * @deprecated tiered_caching has been deprecated in favour of using `cloudflare_tiered_cache` resource instead.
      */
     tieredCaching?: pulumi.Input<string>;
     /**
@@ -126,6 +130,8 @@ export interface ArgoArgs {
     smartRouting?: pulumi.Input<string>;
     /**
      * Whether tiered caching is enabled. Available values: `on`, `off`.
+     *
+     * @deprecated tiered_caching has been deprecated in favour of using `cloudflare_tiered_cache` resource instead.
      */
     tieredCaching?: pulumi.Input<string>;
     /**

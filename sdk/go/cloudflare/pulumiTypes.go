@@ -15007,6 +15007,8 @@ type NotificationPolicyFilters struct {
 	GroupBies []string `pulumi:"groupBies"`
 	// Identifier health check. Required when using `filters.0.status`.
 	HealthCheckIds []string `pulumi:"healthCheckIds"`
+	// The incident impact level that will trigger the dispatch of a notification. Available values: `INCIDENT_IMPACT_NONE`, `INCIDENT_IMPACT_MINOR`, `INCIDENT_IMPACT_MAJOR`, `INCIDENT_IMPACT_CRITICAL`.
+	IncidentImpacts []string `pulumi:"incidentImpacts"`
 	// Stream input id to alert on.
 	InputIds []string `pulumi:"inputIds"`
 	// A numerical limit. Example: `100`.
@@ -15072,6 +15074,8 @@ type NotificationPolicyFiltersArgs struct {
 	GroupBies pulumi.StringArrayInput `pulumi:"groupBies"`
 	// Identifier health check. Required when using `filters.0.status`.
 	HealthCheckIds pulumi.StringArrayInput `pulumi:"healthCheckIds"`
+	// The incident impact level that will trigger the dispatch of a notification. Available values: `INCIDENT_IMPACT_NONE`, `INCIDENT_IMPACT_MINOR`, `INCIDENT_IMPACT_MAJOR`, `INCIDENT_IMPACT_CRITICAL`.
+	IncidentImpacts pulumi.StringArrayInput `pulumi:"incidentImpacts"`
 	// Stream input id to alert on.
 	InputIds pulumi.StringArrayInput `pulumi:"inputIds"`
 	// A numerical limit. Example: `100`.
@@ -15227,6 +15231,11 @@ func (o NotificationPolicyFiltersOutput) GroupBies() pulumi.StringArrayOutput {
 // Identifier health check. Required when using `filters.0.status`.
 func (o NotificationPolicyFiltersOutput) HealthCheckIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v NotificationPolicyFilters) []string { return v.HealthCheckIds }).(pulumi.StringArrayOutput)
+}
+
+// The incident impact level that will trigger the dispatch of a notification. Available values: `INCIDENT_IMPACT_NONE`, `INCIDENT_IMPACT_MINOR`, `INCIDENT_IMPACT_MAJOR`, `INCIDENT_IMPACT_CRITICAL`.
+func (o NotificationPolicyFiltersOutput) IncidentImpacts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v NotificationPolicyFilters) []string { return v.IncidentImpacts }).(pulumi.StringArrayOutput)
 }
 
 // Stream input id to alert on.
@@ -15424,6 +15433,16 @@ func (o NotificationPolicyFiltersPtrOutput) HealthCheckIds() pulumi.StringArrayO
 			return nil
 		}
 		return v.HealthCheckIds
+	}).(pulumi.StringArrayOutput)
+}
+
+// The incident impact level that will trigger the dispatch of a notification. Available values: `INCIDENT_IMPACT_NONE`, `INCIDENT_IMPACT_MINOR`, `INCIDENT_IMPACT_MAJOR`, `INCIDENT_IMPACT_CRITICAL`.
+func (o NotificationPolicyFiltersPtrOutput) IncidentImpacts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *NotificationPolicyFilters) []string {
+		if v == nil {
+			return nil
+		}
+		return v.IncidentImpacts
 	}).(pulumi.StringArrayOutput)
 }
 
