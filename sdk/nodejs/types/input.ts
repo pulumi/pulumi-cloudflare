@@ -2285,11 +2285,11 @@ export interface PageRuleActionsCacheKeyFields {
 
 export interface PageRuleActionsCacheKeyFieldsCookie {
     /**
-     * Check for presence of specified HTTP headers, without including their actual values.
+     * Check for presence of specified cookies, without including their actual values.
      */
     checkPresences?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Only use values of specified query string parameters in Cache Key.
+     * Use values of specified cookies in Cache Key.
      */
     includes?: pulumi.Input<pulumi.Input<string>[]>;
 }
@@ -2300,11 +2300,11 @@ export interface PageRuleActionsCacheKeyFieldsHeader {
      */
     checkPresences?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Exclude these query string parameters from Cache Key.
+     * Exclude these HTTP headers from Cache Key. Currently, only the `Origin` header can be excluded.
      */
     excludes?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Only use values of specified query string parameters in Cache Key.
+     * Use values of specified HTTP headers in Cache Key. Please refer to [Support article](https://support.cloudflare.com/hc/en-us/articles/115004290387-Creating-Cache-Keys) for the list of HTTP headers that cannot be included. The `Origin` header is always included unless explicitly excluded.
      */
     includes?: pulumi.Input<pulumi.Input<string>[]>;
 }

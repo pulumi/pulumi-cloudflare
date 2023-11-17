@@ -18,11 +18,11 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly ImmutableArray<string> CheckPresences;
         /// <summary>
-        /// Exclude these query string parameters from Cache Key.
+        /// Exclude these HTTP headers from Cache Key. Currently, only the `Origin` header can be excluded.
         /// </summary>
         public readonly ImmutableArray<string> Excludes;
         /// <summary>
-        /// Only use values of specified query string parameters in Cache Key.
+        /// Use values of specified HTTP headers in Cache Key. Please refer to [Support article](https://support.cloudflare.com/hc/en-us/articles/115004290387-Creating-Cache-Keys) for the list of HTTP headers that cannot be included. The `Origin` header is always included unless explicitly excluded.
         /// </summary>
         public readonly ImmutableArray<string> Includes;
 

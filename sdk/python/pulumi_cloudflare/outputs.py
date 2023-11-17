@@ -9164,8 +9164,8 @@ class PageRuleActionsCacheKeyFieldsCookie(dict):
                  check_presences: Optional[Sequence[str]] = None,
                  includes: Optional[Sequence[str]] = None):
         """
-        :param Sequence[str] check_presences: Check for presence of specified HTTP headers, without including their actual values.
-        :param Sequence[str] includes: Only use values of specified query string parameters in Cache Key.
+        :param Sequence[str] check_presences: Check for presence of specified cookies, without including their actual values.
+        :param Sequence[str] includes: Use values of specified cookies in Cache Key.
         """
         if check_presences is not None:
             pulumi.set(__self__, "check_presences", check_presences)
@@ -9176,7 +9176,7 @@ class PageRuleActionsCacheKeyFieldsCookie(dict):
     @pulumi.getter(name="checkPresences")
     def check_presences(self) -> Optional[Sequence[str]]:
         """
-        Check for presence of specified HTTP headers, without including their actual values.
+        Check for presence of specified cookies, without including their actual values.
         """
         return pulumi.get(self, "check_presences")
 
@@ -9184,7 +9184,7 @@ class PageRuleActionsCacheKeyFieldsCookie(dict):
     @pulumi.getter
     def includes(self) -> Optional[Sequence[str]]:
         """
-        Only use values of specified query string parameters in Cache Key.
+        Use values of specified cookies in Cache Key.
         """
         return pulumi.get(self, "includes")
 
@@ -9214,8 +9214,8 @@ class PageRuleActionsCacheKeyFieldsHeader(dict):
                  includes: Optional[Sequence[str]] = None):
         """
         :param Sequence[str] check_presences: Check for presence of specified HTTP headers, without including their actual values.
-        :param Sequence[str] excludes: Exclude these query string parameters from Cache Key.
-        :param Sequence[str] includes: Only use values of specified query string parameters in Cache Key.
+        :param Sequence[str] excludes: Exclude these HTTP headers from Cache Key. Currently, only the `Origin` header can be excluded.
+        :param Sequence[str] includes: Use values of specified HTTP headers in Cache Key. Please refer to [Support article](https://support.cloudflare.com/hc/en-us/articles/115004290387-Creating-Cache-Keys) for the list of HTTP headers that cannot be included. The `Origin` header is always included unless explicitly excluded.
         """
         if check_presences is not None:
             pulumi.set(__self__, "check_presences", check_presences)
@@ -9236,7 +9236,7 @@ class PageRuleActionsCacheKeyFieldsHeader(dict):
     @pulumi.getter
     def excludes(self) -> Optional[Sequence[str]]:
         """
-        Exclude these query string parameters from Cache Key.
+        Exclude these HTTP headers from Cache Key. Currently, only the `Origin` header can be excluded.
         """
         return pulumi.get(self, "excludes")
 
@@ -9244,7 +9244,7 @@ class PageRuleActionsCacheKeyFieldsHeader(dict):
     @pulumi.getter
     def includes(self) -> Optional[Sequence[str]]:
         """
-        Only use values of specified query string parameters in Cache Key.
+        Use values of specified HTTP headers in Cache Key. Please refer to [Support article](https://support.cloudflare.com/hc/en-us/articles/115004290387-Creating-Cache-Keys) for the list of HTTP headers that cannot be included. The `Origin` header is always included unless explicitly excluded.
         """
         return pulumi.get(self, "includes")
 

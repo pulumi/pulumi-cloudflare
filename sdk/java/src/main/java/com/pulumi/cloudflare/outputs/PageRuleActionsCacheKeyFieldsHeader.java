@@ -17,12 +17,12 @@ public final class PageRuleActionsCacheKeyFieldsHeader {
      */
     private @Nullable List<String> checkPresences;
     /**
-     * @return Exclude these query string parameters from Cache Key.
+     * @return Exclude these HTTP headers from Cache Key. Currently, only the `Origin` header can be excluded.
      * 
      */
     private @Nullable List<String> excludes;
     /**
-     * @return Only use values of specified query string parameters in Cache Key.
+     * @return Use values of specified HTTP headers in Cache Key. Please refer to [Support article](https://support.cloudflare.com/hc/en-us/articles/115004290387-Creating-Cache-Keys) for the list of HTTP headers that cannot be included. The `Origin` header is always included unless explicitly excluded.
      * 
      */
     private @Nullable List<String> includes;
@@ -36,14 +36,14 @@ public final class PageRuleActionsCacheKeyFieldsHeader {
         return this.checkPresences == null ? List.of() : this.checkPresences;
     }
     /**
-     * @return Exclude these query string parameters from Cache Key.
+     * @return Exclude these HTTP headers from Cache Key. Currently, only the `Origin` header can be excluded.
      * 
      */
     public List<String> excludes() {
         return this.excludes == null ? List.of() : this.excludes;
     }
     /**
-     * @return Only use values of specified query string parameters in Cache Key.
+     * @return Use values of specified HTTP headers in Cache Key. Please refer to [Support article](https://support.cloudflare.com/hc/en-us/articles/115004290387-Creating-Cache-Keys) for the list of HTTP headers that cannot be included. The `Origin` header is always included unless explicitly excluded.
      * 
      */
     public List<String> includes() {
