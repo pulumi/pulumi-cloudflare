@@ -2,7 +2,7 @@ module github.com/pulumi/pulumi-cloudflare/examples/v4
 
 go 1.21
 
-require github.com/pulumi/pulumi/pkg/v3 v3.93.0
+require github.com/pulumi/pulumi/pkg/v3 v3.94.2
 
 replace github.com/Sirupsen/logrus => github.com/sirupsen/logrus v1.9.2
 
@@ -137,8 +137,8 @@ require (
 	github.com/pkg/errors v0.9.1 // indirect
 	github.com/pkg/term v1.1.0 // indirect
 	github.com/pmezard/go-difflib v1.0.0 // indirect
-	github.com/pulumi/esc v0.5.7-0.20231030195049-f71961c0d5fa // indirect
-	github.com/pulumi/pulumi/sdk/v3 v3.93.0 // indirect
+	github.com/pulumi/esc v0.6.0 // indirect
+	github.com/pulumi/pulumi/sdk/v3 v3.94.2 // indirect
 	github.com/rivo/uniseg v0.4.4 // indirect
 	github.com/rogpeppe/go-internal v1.11.0 // indirect
 	github.com/ryanuber/go-glob v1.0.0 // indirect
