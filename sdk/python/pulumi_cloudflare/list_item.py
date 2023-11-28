@@ -29,7 +29,7 @@ class ListItemInitArgs:
         :param pulumi.Input[str] list_id: The list identifier to target for the resource.
         :param pulumi.Input[int] asn: Autonomous system number to include in the list. Must provide only one of `ip`, `redirect`, `hostname`, `asn`. **Modifying this attribute will force creation of a new resource.**
         :param pulumi.Input[str] comment: An optional comment for the item.
-        :param pulumi.Input['ListItemHostnameArgs'] hostname: Redirect configuration to store in the list. Must provide only one of `ip`, `redirect`, `hostname`, `asn`. **Modifying this attribute will force creation of a new resource.**
+        :param pulumi.Input['ListItemHostnameArgs'] hostname: Hostname to store in the list. Must provide only one of `ip`, `redirect`, `hostname`, `asn`. **Modifying this attribute will force creation of a new resource.**
         :param pulumi.Input[str] ip: IP address to include in the list. Must provide only one of `ip`, `redirect`, `hostname`, `asn`. **Modifying this attribute will force creation of a new resource.**
         :param pulumi.Input['ListItemRedirectArgs'] redirect: Redirect configuration to store in the list. Must provide only one of `ip`, `redirect`, `hostname`, `asn`. **Modifying this attribute will force creation of a new resource.**
         """
@@ -98,7 +98,7 @@ class ListItemInitArgs:
     @pulumi.getter
     def hostname(self) -> Optional[pulumi.Input['ListItemHostnameArgs']]:
         """
-        Redirect configuration to store in the list. Must provide only one of `ip`, `redirect`, `hostname`, `asn`. **Modifying this attribute will force creation of a new resource.**
+        Hostname to store in the list. Must provide only one of `ip`, `redirect`, `hostname`, `asn`. **Modifying this attribute will force creation of a new resource.**
         """
         return pulumi.get(self, "hostname")
 
@@ -146,7 +146,7 @@ class _ListItemState:
         :param pulumi.Input[str] account_id: The account identifier to target for the resource.
         :param pulumi.Input[int] asn: Autonomous system number to include in the list. Must provide only one of `ip`, `redirect`, `hostname`, `asn`. **Modifying this attribute will force creation of a new resource.**
         :param pulumi.Input[str] comment: An optional comment for the item.
-        :param pulumi.Input['ListItemHostnameArgs'] hostname: Redirect configuration to store in the list. Must provide only one of `ip`, `redirect`, `hostname`, `asn`. **Modifying this attribute will force creation of a new resource.**
+        :param pulumi.Input['ListItemHostnameArgs'] hostname: Hostname to store in the list. Must provide only one of `ip`, `redirect`, `hostname`, `asn`. **Modifying this attribute will force creation of a new resource.**
         :param pulumi.Input[str] ip: IP address to include in the list. Must provide only one of `ip`, `redirect`, `hostname`, `asn`. **Modifying this attribute will force creation of a new resource.**
         :param pulumi.Input[str] list_id: The list identifier to target for the resource.
         :param pulumi.Input['ListItemRedirectArgs'] redirect: Redirect configuration to store in the list. Must provide only one of `ip`, `redirect`, `hostname`, `asn`. **Modifying this attribute will force creation of a new resource.**
@@ -206,7 +206,7 @@ class _ListItemState:
     @pulumi.getter
     def hostname(self) -> Optional[pulumi.Input['ListItemHostnameArgs']]:
         """
-        Redirect configuration to store in the list. Must provide only one of `ip`, `redirect`, `hostname`, `asn`. **Modifying this attribute will force creation of a new resource.**
+        Hostname to store in the list. Must provide only one of `ip`, `redirect`, `hostname`, `asn`. **Modifying this attribute will force creation of a new resource.**
         """
         return pulumi.get(self, "hostname")
 
@@ -274,6 +274,7 @@ class ListItem(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
+        # IP List
         example_ip_list = cloudflare.List("exampleIpList",
             account_id="f037e56e89293a057740de681ac9abbe",
             name="example_list",
@@ -285,8 +286,14 @@ class ListItem(pulumi.CustomResource):
             list_id=example_ip_list.id,
             comment="List Item Comment",
             ip="192.0.2.0")
+        # Redirect List
+        example_redirect_list = cloudflare.List("exampleRedirectList",
+            account_id="f037e56e89293a057740de681ac9abbe",
+            name="example_list",
+            description="example Redirects for a list",
+            kind="redirect")
         # Redirect List Item
-        test_two = cloudflare.ListItem("testTwo",
+        example_redirect_item = cloudflare.ListItem("exampleRedirectItem",
             account_id="f037e56e89293a057740de681ac9abbe",
             list_id=example_ip_list.id,
             redirect=cloudflare.ListItemRedirectArgs(
@@ -295,7 +302,7 @@ class ListItem(pulumi.CustomResource):
                 status_code=302,
                 subpath_matching="enabled",
             ))
-        # ASN list
+        # ASN List
         example_asn_list = cloudflare.List("exampleAsnList",
             account_id="f037e56e89293a057740de681ac9abbe",
             name="example_asn_list",
@@ -307,7 +314,7 @@ class ListItem(pulumi.CustomResource):
             list_id=example_asn_list.id,
             comment="List Item Comment",
             asn=6789)
-        # Hostname list
+        # Hostname List
         example_hostname_list = cloudflare.List("exampleHostnameList",
             account_id="f037e56e89293a057740de681ac9abbe",
             name="example_hostname_list",
@@ -318,7 +325,9 @@ class ListItem(pulumi.CustomResource):
             account_id="f037e56e89293a057740de681ac9abbe",
             list_id=example_hostname_list.id,
             comment="List Item Comment",
-            asn="example.com")
+            hostname=cloudflare.ListItemHostnameArgs(
+                url_hostname="example.com",
+            ))
         ```
 
         ## Import
@@ -332,7 +341,7 @@ class ListItem(pulumi.CustomResource):
         :param pulumi.Input[str] account_id: The account identifier to target for the resource.
         :param pulumi.Input[int] asn: Autonomous system number to include in the list. Must provide only one of `ip`, `redirect`, `hostname`, `asn`. **Modifying this attribute will force creation of a new resource.**
         :param pulumi.Input[str] comment: An optional comment for the item.
-        :param pulumi.Input[pulumi.InputType['ListItemHostnameArgs']] hostname: Redirect configuration to store in the list. Must provide only one of `ip`, `redirect`, `hostname`, `asn`. **Modifying this attribute will force creation of a new resource.**
+        :param pulumi.Input[pulumi.InputType['ListItemHostnameArgs']] hostname: Hostname to store in the list. Must provide only one of `ip`, `redirect`, `hostname`, `asn`. **Modifying this attribute will force creation of a new resource.**
         :param pulumi.Input[str] ip: IP address to include in the list. Must provide only one of `ip`, `redirect`, `hostname`, `asn`. **Modifying this attribute will force creation of a new resource.**
         :param pulumi.Input[str] list_id: The list identifier to target for the resource.
         :param pulumi.Input[pulumi.InputType['ListItemRedirectArgs']] redirect: Redirect configuration to store in the list. Must provide only one of `ip`, `redirect`, `hostname`, `asn`. **Modifying this attribute will force creation of a new resource.**
@@ -353,6 +362,7 @@ class ListItem(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
+        # IP List
         example_ip_list = cloudflare.List("exampleIpList",
             account_id="f037e56e89293a057740de681ac9abbe",
             name="example_list",
@@ -364,8 +374,14 @@ class ListItem(pulumi.CustomResource):
             list_id=example_ip_list.id,
             comment="List Item Comment",
             ip="192.0.2.0")
+        # Redirect List
+        example_redirect_list = cloudflare.List("exampleRedirectList",
+            account_id="f037e56e89293a057740de681ac9abbe",
+            name="example_list",
+            description="example Redirects for a list",
+            kind="redirect")
         # Redirect List Item
-        test_two = cloudflare.ListItem("testTwo",
+        example_redirect_item = cloudflare.ListItem("exampleRedirectItem",
             account_id="f037e56e89293a057740de681ac9abbe",
             list_id=example_ip_list.id,
             redirect=cloudflare.ListItemRedirectArgs(
@@ -374,7 +390,7 @@ class ListItem(pulumi.CustomResource):
                 status_code=302,
                 subpath_matching="enabled",
             ))
-        # ASN list
+        # ASN List
         example_asn_list = cloudflare.List("exampleAsnList",
             account_id="f037e56e89293a057740de681ac9abbe",
             name="example_asn_list",
@@ -386,7 +402,7 @@ class ListItem(pulumi.CustomResource):
             list_id=example_asn_list.id,
             comment="List Item Comment",
             asn=6789)
-        # Hostname list
+        # Hostname List
         example_hostname_list = cloudflare.List("exampleHostnameList",
             account_id="f037e56e89293a057740de681ac9abbe",
             name="example_hostname_list",
@@ -397,7 +413,9 @@ class ListItem(pulumi.CustomResource):
             account_id="f037e56e89293a057740de681ac9abbe",
             list_id=example_hostname_list.id,
             comment="List Item Comment",
-            asn="example.com")
+            hostname=cloudflare.ListItemHostnameArgs(
+                url_hostname="example.com",
+            ))
         ```
 
         ## Import
@@ -475,7 +493,7 @@ class ListItem(pulumi.CustomResource):
         :param pulumi.Input[str] account_id: The account identifier to target for the resource.
         :param pulumi.Input[int] asn: Autonomous system number to include in the list. Must provide only one of `ip`, `redirect`, `hostname`, `asn`. **Modifying this attribute will force creation of a new resource.**
         :param pulumi.Input[str] comment: An optional comment for the item.
-        :param pulumi.Input[pulumi.InputType['ListItemHostnameArgs']] hostname: Redirect configuration to store in the list. Must provide only one of `ip`, `redirect`, `hostname`, `asn`. **Modifying this attribute will force creation of a new resource.**
+        :param pulumi.Input[pulumi.InputType['ListItemHostnameArgs']] hostname: Hostname to store in the list. Must provide only one of `ip`, `redirect`, `hostname`, `asn`. **Modifying this attribute will force creation of a new resource.**
         :param pulumi.Input[str] ip: IP address to include in the list. Must provide only one of `ip`, `redirect`, `hostname`, `asn`. **Modifying this attribute will force creation of a new resource.**
         :param pulumi.Input[str] list_id: The list identifier to target for the resource.
         :param pulumi.Input[pulumi.InputType['ListItemRedirectArgs']] redirect: Redirect configuration to store in the list. Must provide only one of `ip`, `redirect`, `hostname`, `asn`. **Modifying this attribute will force creation of a new resource.**
@@ -521,7 +539,7 @@ class ListItem(pulumi.CustomResource):
     @pulumi.getter
     def hostname(self) -> pulumi.Output[Optional['outputs.ListItemHostname']]:
         """
-        Redirect configuration to store in the list. Must provide only one of `ip`, `redirect`, `hostname`, `asn`. **Modifying this attribute will force creation of a new resource.**
+        Hostname to store in the list. Must provide only one of `ip`, `redirect`, `hostname`, `asn`. **Modifying this attribute will force creation of a new resource.**
         """
         return pulumi.get(self, "hostname")
 

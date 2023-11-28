@@ -18,7 +18,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string? Field;
         /// <summary>
-        /// Type of matcher.
+        /// Type of matcher. Available values: `literal`, `all`.
         /// </summary>
         public readonly string Type;
         /// <summary>

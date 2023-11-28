@@ -8,6 +8,8 @@ import com.pulumi.core.annotations.Import;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class EmailRoutingRuleActionArgs extends com.pulumi.resources.ResourceArgs {
@@ -15,14 +17,14 @@ public final class EmailRoutingRuleActionArgs extends com.pulumi.resources.Resou
     public static final EmailRoutingRuleActionArgs Empty = new EmailRoutingRuleActionArgs();
 
     /**
-     * Type of supported action.
+     * Type of supported action. Available values: `forward`, `worker`, `drop`.
      * 
      */
     @Import(name="type", required=true)
     private Output<String> type;
 
     /**
-     * @return Type of supported action.
+     * @return Type of supported action. Available values: `forward`, `worker`, `drop`.
      * 
      */
     public Output<String> type() {
@@ -30,18 +32,18 @@ public final class EmailRoutingRuleActionArgs extends com.pulumi.resources.Resou
     }
 
     /**
-     * An array with items in the following form.
+     * An array with items in the following form. Only required when `type` is `forward` or `worker`.
      * 
      */
-    @Import(name="values", required=true)
-    private Output<List<String>> values;
+    @Import(name="values")
+    private @Nullable Output<List<String>> values;
 
     /**
-     * @return An array with items in the following form.
+     * @return An array with items in the following form. Only required when `type` is `forward` or `worker`.
      * 
      */
-    public Output<List<String>> values() {
-        return this.values;
+    public Optional<Output<List<String>>> values() {
+        return Optional.ofNullable(this.values);
     }
 
     private EmailRoutingRuleActionArgs() {}
@@ -70,7 +72,7 @@ public final class EmailRoutingRuleActionArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param type Type of supported action.
+         * @param type Type of supported action. Available values: `forward`, `worker`, `drop`.
          * 
          * @return builder
          * 
@@ -81,7 +83,7 @@ public final class EmailRoutingRuleActionArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param type Type of supported action.
+         * @param type Type of supported action. Available values: `forward`, `worker`, `drop`.
          * 
          * @return builder
          * 
@@ -91,18 +93,18 @@ public final class EmailRoutingRuleActionArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param values An array with items in the following form.
+         * @param values An array with items in the following form. Only required when `type` is `forward` or `worker`.
          * 
          * @return builder
          * 
          */
-        public Builder values(Output<List<String>> values) {
+        public Builder values(@Nullable Output<List<String>> values) {
             $.values = values;
             return this;
         }
 
         /**
-         * @param values An array with items in the following form.
+         * @param values An array with items in the following form. Only required when `type` is `forward` or `worker`.
          * 
          * @return builder
          * 
@@ -112,7 +114,7 @@ public final class EmailRoutingRuleActionArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param values An array with items in the following form.
+         * @param values An array with items in the following form. Only required when `type` is `forward` or `worker`.
          * 
          * @return builder
          * 
@@ -123,7 +125,6 @@ public final class EmailRoutingRuleActionArgs extends com.pulumi.resources.Resou
 
         public EmailRoutingRuleActionArgs build() {
             $.type = Objects.requireNonNull($.type, "expected parameter 'type' to be non-null");
-            $.values = Objects.requireNonNull($.values, "expected parameter 'values' to be non-null");
             return $;
         }
     }

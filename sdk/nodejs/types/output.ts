@@ -1180,13 +1180,13 @@ export interface EmailRoutingCatchAllMatcher {
 
 export interface EmailRoutingRuleAction {
     /**
-     * Type of supported action.
+     * Type of supported action. Available values: `forward`, `worker`, `drop`.
      */
     type: string;
     /**
-     * An array with items in the following form.
+     * An array with items in the following form. Only required when `type` is `forward` or `worker`.
      */
-    values: string[];
+    values?: string[];
 }
 
 export interface EmailRoutingRuleMatcher {
@@ -1195,7 +1195,7 @@ export interface EmailRoutingRuleMatcher {
      */
     field?: string;
     /**
-     * Type of matcher.
+     * Type of matcher. Available values: `literal`, `all`.
      */
     type: string;
     /**
@@ -2247,6 +2247,10 @@ export interface NotificationPolicyFilters {
      * Health status to alert on for pool or origin.
      */
     newHealths?: string[];
+    /**
+     * Tunnel health status to alert on.
+     */
+    newStatuses?: string[];
     /**
      * Packets per second threshold for dos alert.
      */

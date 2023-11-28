@@ -72,6 +72,7 @@
         "getList.ts",
         "getLists.ts",
         "getLoadBalancerPools.ts",
+        "getOriginCaCertificate.ts",
         "getOriginCaRootCertificate.ts",
         "getRecord.ts",
         "getRulesets.ts",

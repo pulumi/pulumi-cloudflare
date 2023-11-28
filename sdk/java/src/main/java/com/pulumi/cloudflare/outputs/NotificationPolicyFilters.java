@@ -82,6 +82,11 @@ public final class NotificationPolicyFilters {
      */
     private @Nullable List<String> newHealths;
     /**
+     * @return Tunnel health status to alert on.
+     * 
+     */
+    private @Nullable List<String> newStatuses;
+    /**
      * @return Packets per second threshold for dos alert.
      * 
      */
@@ -243,6 +248,13 @@ public final class NotificationPolicyFilters {
         return this.newHealths == null ? List.of() : this.newHealths;
     }
     /**
+     * @return Tunnel health status to alert on.
+     * 
+     */
+    public List<String> newStatuses() {
+        return this.newStatuses == null ? List.of() : this.newStatuses;
+    }
+    /**
      * @return Packets per second threshold for dos alert.
      * 
      */
@@ -353,6 +365,7 @@ public final class NotificationPolicyFilters {
         private @Nullable List<String> limits;
         private @Nullable List<String> megabitsPerSeconds;
         private @Nullable List<String> newHealths;
+        private @Nullable List<String> newStatuses;
         private @Nullable List<String> packetsPerSeconds;
         private @Nullable List<String> poolIds;
         private @Nullable List<String> products;
@@ -383,6 +396,7 @@ public final class NotificationPolicyFilters {
     	      this.limits = defaults.limits;
     	      this.megabitsPerSeconds = defaults.megabitsPerSeconds;
     	      this.newHealths = defaults.newHealths;
+    	      this.newStatuses = defaults.newStatuses;
     	      this.packetsPerSeconds = defaults.packetsPerSeconds;
     	      this.poolIds = defaults.poolIds;
     	      this.products = defaults.products;
@@ -511,6 +525,14 @@ public final class NotificationPolicyFilters {
             return newHealths(List.of(newHealths));
         }
         @CustomType.Setter
+        public Builder newStatuses(@Nullable List<String> newStatuses) {
+            this.newStatuses = newStatuses;
+            return this;
+        }
+        public Builder newStatuses(String... newStatuses) {
+            return newStatuses(List.of(newStatuses));
+        }
+        @CustomType.Setter
         public Builder packetsPerSeconds(@Nullable List<String> packetsPerSeconds) {
             this.packetsPerSeconds = packetsPerSeconds;
             return this;
@@ -630,6 +652,7 @@ public final class NotificationPolicyFilters {
             o.limits = limits;
             o.megabitsPerSeconds = megabitsPerSeconds;
             o.newHealths = newHealths;
+            o.newStatuses = newStatuses;
             o.packetsPerSeconds = packetsPerSeconds;
             o.poolIds = poolIds;
             o.products = products;

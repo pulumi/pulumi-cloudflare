@@ -47,7 +47,16 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = cloudflare.NewListItem(ctx, "testTwo", &cloudflare.ListItemArgs{
+//			_, err = cloudflare.NewList(ctx, "exampleRedirectList", &cloudflare.ListArgs{
+//				AccountId:   pulumi.String("f037e56e89293a057740de681ac9abbe"),
+//				Name:        pulumi.String("example_list"),
+//				Description: pulumi.String("example Redirects for a list"),
+//				Kind:        pulumi.String("redirect"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = cloudflare.NewListItem(ctx, "exampleRedirectItem", &cloudflare.ListItemArgs{
 //				AccountId: pulumi.String("f037e56e89293a057740de681ac9abbe"),
 //				ListId:    exampleIpList.ID(),
 //				Redirect: &cloudflare.ListItemRedirectArgs{
@@ -91,7 +100,9 @@ import (
 //				AccountId: pulumi.String("f037e56e89293a057740de681ac9abbe"),
 //				ListId:    exampleHostnameList.ID(),
 //				Comment:   pulumi.String("List Item Comment"),
-//				Asn:       pulumi.Int("example.com"),
+//				Hostname: &cloudflare.ListItemHostnameArgs{
+//					UrlHostname: pulumi.String("example.com"),
+//				},
 //			})
 //			if err != nil {
 //				return err
@@ -118,7 +129,7 @@ type ListItem struct {
 	Asn pulumi.IntPtrOutput `pulumi:"asn"`
 	// An optional comment for the item.
 	Comment pulumi.StringPtrOutput `pulumi:"comment"`
-	// Redirect configuration to store in the list. Must provide only one of `ip`, `redirect`, `hostname`, `asn`. **Modifying this attribute will force creation of a new resource.**
+	// Hostname to store in the list. Must provide only one of `ip`, `redirect`, `hostname`, `asn`. **Modifying this attribute will force creation of a new resource.**
 	Hostname ListItemHostnamePtrOutput `pulumi:"hostname"`
 	// IP address to include in the list. Must provide only one of `ip`, `redirect`, `hostname`, `asn`. **Modifying this attribute will force creation of a new resource.**
 	Ip pulumi.StringPtrOutput `pulumi:"ip"`
@@ -170,7 +181,7 @@ type listItemState struct {
 	Asn *int `pulumi:"asn"`
 	// An optional comment for the item.
 	Comment *string `pulumi:"comment"`
-	// Redirect configuration to store in the list. Must provide only one of `ip`, `redirect`, `hostname`, `asn`. **Modifying this attribute will force creation of a new resource.**
+	// Hostname to store in the list. Must provide only one of `ip`, `redirect`, `hostname`, `asn`. **Modifying this attribute will force creation of a new resource.**
 	Hostname *ListItemHostname `pulumi:"hostname"`
 	// IP address to include in the list. Must provide only one of `ip`, `redirect`, `hostname`, `asn`. **Modifying this attribute will force creation of a new resource.**
 	Ip *string `pulumi:"ip"`
@@ -187,7 +198,7 @@ type ListItemState struct {
 	Asn pulumi.IntPtrInput
 	// An optional comment for the item.
 	Comment pulumi.StringPtrInput
-	// Redirect configuration to store in the list. Must provide only one of `ip`, `redirect`, `hostname`, `asn`. **Modifying this attribute will force creation of a new resource.**
+	// Hostname to store in the list. Must provide only one of `ip`, `redirect`, `hostname`, `asn`. **Modifying this attribute will force creation of a new resource.**
 	Hostname ListItemHostnamePtrInput
 	// IP address to include in the list. Must provide only one of `ip`, `redirect`, `hostname`, `asn`. **Modifying this attribute will force creation of a new resource.**
 	Ip pulumi.StringPtrInput
@@ -208,7 +219,7 @@ type listItemArgs struct {
 	Asn *int `pulumi:"asn"`
 	// An optional comment for the item.
 	Comment *string `pulumi:"comment"`
-	// Redirect configuration to store in the list. Must provide only one of `ip`, `redirect`, `hostname`, `asn`. **Modifying this attribute will force creation of a new resource.**
+	// Hostname to store in the list. Must provide only one of `ip`, `redirect`, `hostname`, `asn`. **Modifying this attribute will force creation of a new resource.**
 	Hostname *ListItemHostname `pulumi:"hostname"`
 	// IP address to include in the list. Must provide only one of `ip`, `redirect`, `hostname`, `asn`. **Modifying this attribute will force creation of a new resource.**
 	Ip *string `pulumi:"ip"`
@@ -226,7 +237,7 @@ type ListItemArgs struct {
 	Asn pulumi.IntPtrInput
 	// An optional comment for the item.
 	Comment pulumi.StringPtrInput
-	// Redirect configuration to store in the list. Must provide only one of `ip`, `redirect`, `hostname`, `asn`. **Modifying this attribute will force creation of a new resource.**
+	// Hostname to store in the list. Must provide only one of `ip`, `redirect`, `hostname`, `asn`. **Modifying this attribute will force creation of a new resource.**
 	Hostname ListItemHostnamePtrInput
 	// IP address to include in the list. Must provide only one of `ip`, `redirect`, `hostname`, `asn`. **Modifying this attribute will force creation of a new resource.**
 	Ip pulumi.StringPtrInput
@@ -338,7 +349,7 @@ func (o ListItemOutput) Comment() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ListItem) pulumi.StringPtrOutput { return v.Comment }).(pulumi.StringPtrOutput)
 }
 
-// Redirect configuration to store in the list. Must provide only one of `ip`, `redirect`, `hostname`, `asn`. **Modifying this attribute will force creation of a new resource.**
+// Hostname to store in the list. Must provide only one of `ip`, `redirect`, `hostname`, `asn`. **Modifying this attribute will force creation of a new resource.**
 func (o ListItemOutput) Hostname() ListItemHostnamePtrOutput {
 	return o.ApplyT(func(v *ListItem) ListItemHostnamePtrOutput { return v.Hostname }).(ListItemHostnamePtrOutput)
 }

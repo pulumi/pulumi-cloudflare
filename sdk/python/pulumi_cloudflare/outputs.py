@@ -6162,27 +6162,28 @@ class EmailRoutingCatchAllMatcher(dict):
 class EmailRoutingRuleAction(dict):
     def __init__(__self__, *,
                  type: str,
-                 values: Sequence[str]):
+                 values: Optional[Sequence[str]] = None):
         """
-        :param str type: Type of supported action.
-        :param Sequence[str] values: An array with items in the following form.
+        :param str type: Type of supported action. Available values: `forward`, `worker`, `drop`.
+        :param Sequence[str] values: An array with items in the following form. Only required when `type` is `forward` or `worker`.
         """
         pulumi.set(__self__, "type", type)
-        pulumi.set(__self__, "values", values)
+        if values is not None:
+            pulumi.set(__self__, "values", values)
 
     @property
     @pulumi.getter
     def type(self) -> str:
         """
-        Type of supported action.
+        Type of supported action. Available values: `forward`, `worker`, `drop`.
         """
         return pulumi.get(self, "type")
 
     @property
     @pulumi.getter
-    def values(self) -> Sequence[str]:
+    def values(self) -> Optional[Sequence[str]]:
         """
-        An array with items in the following form.
+        An array with items in the following form. Only required when `type` is `forward` or `worker`.
         """
         return pulumi.get(self, "values")
 
@@ -6194,7 +6195,7 @@ class EmailRoutingRuleMatcher(dict):
                  field: Optional[str] = None,
                  value: Optional[str] = None):
         """
-        :param str type: Type of matcher.
+        :param str type: Type of matcher. Available values: `literal`, `all`.
         :param str field: Field for type matcher.
         :param str value: Value for matcher.
         """
@@ -6208,7 +6209,7 @@ class EmailRoutingRuleMatcher(dict):
     @pulumi.getter
     def type(self) -> str:
         """
-        Type of matcher.
+        Type of matcher. Available values: `literal`, `all`.
         """
         return pulumi.get(self, "type")
 
@@ -8129,6 +8130,8 @@ class NotificationPolicyFilters(dict):
             suggest = "megabits_per_seconds"
         elif key == "newHealths":
             suggest = "new_healths"
+        elif key == "newStatuses":
+            suggest = "new_statuses"
         elif key == "packetsPerSeconds":
             suggest = "packets_per_seconds"
         elif key == "poolIds":
@@ -8168,6 +8171,7 @@ class NotificationPolicyFilters(dict):
                  limits: Optional[Sequence[str]] = None,
                  megabits_per_seconds: Optional[Sequence[str]] = None,
                  new_healths: Optional[Sequence[str]] = None,
+                 new_statuses: Optional[Sequence[str]] = None,
                  packets_per_seconds: Optional[Sequence[str]] = None,
                  pool_ids: Optional[Sequence[str]] = None,
                  products: Optional[Sequence[str]] = None,
@@ -8196,6 +8200,7 @@ class NotificationPolicyFilters(dict):
         :param Sequence[str] limits: A numerical limit. Example: `100`.
         :param Sequence[str] megabits_per_seconds: Megabits per second threshold for dos alert.
         :param Sequence[str] new_healths: Health status to alert on for pool or origin.
+        :param Sequence[str] new_statuses: Tunnel health status to alert on.
         :param Sequence[str] packets_per_seconds: Packets per second threshold for dos alert.
         :param Sequence[str] pool_ids: Load balancer pool identifier.
         :param Sequence[str] products: Product name. Available values: `worker_requests`, `worker_durable_objects_requests`, `worker_durable_objects_duration`, `worker_durable_objects_data_transfer`, `worker_durable_objects_stored_data`, `worker_durable_objects_storage_deletes`, `worker_durable_objects_storage_writes`, `worker_durable_objects_storage_reads`.
@@ -8237,6 +8242,8 @@ class NotificationPolicyFilters(dict):
             pulumi.set(__self__, "megabits_per_seconds", megabits_per_seconds)
         if new_healths is not None:
             pulumi.set(__self__, "new_healths", new_healths)
+        if new_statuses is not None:
+            pulumi.set(__self__, "new_statuses", new_statuses)
         if packets_per_seconds is not None:
             pulumi.set(__self__, "packets_per_seconds", packets_per_seconds)
         if pool_ids is not None:
@@ -8375,6 +8382,14 @@ class NotificationPolicyFilters(dict):
         Health status to alert on for pool or origin.
         """
         return pulumi.get(self, "new_healths")
+
+    @property
+    @pulumi.getter(name="newStatuses")
+    def new_statuses(self) -> Optional[Sequence[str]]:
+        """
+        Tunnel health status to alert on.
+        """
+        return pulumi.get(self, "new_statuses")
 
     @property
     @pulumi.getter(name="packetsPerSeconds")
@@ -13259,14 +13274,14 @@ class RulesetRuleRatelimit(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "requestsToOrigin":
-            suggest = "requests_to_origin"
-        elif key == "countingExpression":
+        if key == "countingExpression":
             suggest = "counting_expression"
         elif key == "mitigationTimeout":
             suggest = "mitigation_timeout"
         elif key == "requestsPerPeriod":
             suggest = "requests_per_period"
+        elif key == "requestsToOrigin":
+            suggest = "requests_to_origin"
         elif key == "scorePerPeriod":
             suggest = "score_per_period"
         elif key == "scoreResponseHeaderName":
@@ -13284,25 +13299,24 @@ class RulesetRuleRatelimit(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 requests_to_origin: bool,
                  characteristics: Optional[Sequence[str]] = None,
                  counting_expression: Optional[str] = None,
                  mitigation_timeout: Optional[int] = None,
                  period: Optional[int] = None,
                  requests_per_period: Optional[int] = None,
+                 requests_to_origin: Optional[bool] = None,
                  score_per_period: Optional[int] = None,
                  score_response_header_name: Optional[str] = None):
         """
-        :param bool requests_to_origin: Whether to include requests to origin within the Rate Limiting count.
         :param Sequence[str] characteristics: List of parameters that define how Cloudflare tracks the request rate for this rule.
         :param str counting_expression: Criteria for counting HTTP requests to trigger the Rate Limiting action. Uses the Firewall Rules expression language based on Wireshark display filters. Refer to the [Firewall Rules language](https://developers.cloudflare.com/firewall/cf-firewall-language) documentation for all available fields, operators, and functions.
         :param int mitigation_timeout: Once the request rate is reached, the Rate Limiting rule blocks further requests for the period of time defined in this field.
         :param int period: The period of time to consider (in seconds) when evaluating the request rate.
         :param int requests_per_period: The number of requests over the period of time that will trigger the Rate Limiting rule.
+        :param bool requests_to_origin: Whether to include requests to origin within the Rate Limiting count.
         :param int score_per_period: The maximum aggregate score over the period of time that will trigger Rate Limiting rule.
         :param str score_response_header_name: Name of HTTP header in the response, set by the origin server, with the score for the current request.
         """
-        pulumi.set(__self__, "requests_to_origin", requests_to_origin)
         if characteristics is not None:
             pulumi.set(__self__, "characteristics", characteristics)
         if counting_expression is not None:
@@ -13313,18 +13327,12 @@ class RulesetRuleRatelimit(dict):
             pulumi.set(__self__, "period", period)
         if requests_per_period is not None:
             pulumi.set(__self__, "requests_per_period", requests_per_period)
+        if requests_to_origin is not None:
+            pulumi.set(__self__, "requests_to_origin", requests_to_origin)
         if score_per_period is not None:
             pulumi.set(__self__, "score_per_period", score_per_period)
         if score_response_header_name is not None:
             pulumi.set(__self__, "score_response_header_name", score_response_header_name)
-
-    @property
-    @pulumi.getter(name="requestsToOrigin")
-    def requests_to_origin(self) -> bool:
-        """
-        Whether to include requests to origin within the Rate Limiting count.
-        """
-        return pulumi.get(self, "requests_to_origin")
 
     @property
     @pulumi.getter
@@ -13365,6 +13373,14 @@ class RulesetRuleRatelimit(dict):
         The number of requests over the period of time that will trigger the Rate Limiting rule.
         """
         return pulumi.get(self, "requests_per_period")
+
+    @property
+    @pulumi.getter(name="requestsToOrigin")
+    def requests_to_origin(self) -> Optional[bool]:
+        """
+        Whether to include requests to origin within the Rate Limiting count.
+        """
+        return pulumi.get(self, "requests_to_origin")
 
     @property
     @pulumi.getter(name="scorePerPeriod")

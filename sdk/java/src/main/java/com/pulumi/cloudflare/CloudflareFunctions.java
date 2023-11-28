@@ -22,6 +22,8 @@ import com.pulumi.cloudflare.inputs.GetListsArgs;
 import com.pulumi.cloudflare.inputs.GetListsPlainArgs;
 import com.pulumi.cloudflare.inputs.GetLoadBalancerPoolsArgs;
 import com.pulumi.cloudflare.inputs.GetLoadBalancerPoolsPlainArgs;
+import com.pulumi.cloudflare.inputs.GetOriginCaCertificateArgs;
+import com.pulumi.cloudflare.inputs.GetOriginCaCertificatePlainArgs;
 import com.pulumi.cloudflare.inputs.GetOriginCaRootCertificateArgs;
 import com.pulumi.cloudflare.inputs.GetOriginCaRootCertificatePlainArgs;
 import com.pulumi.cloudflare.inputs.GetRecordArgs;
@@ -51,6 +53,7 @@ import com.pulumi.cloudflare.outputs.GetIpRangesResult;
 import com.pulumi.cloudflare.outputs.GetListResult;
 import com.pulumi.cloudflare.outputs.GetListsResult;
 import com.pulumi.cloudflare.outputs.GetLoadBalancerPoolsResult;
+import com.pulumi.cloudflare.outputs.GetOriginCaCertificateResult;
 import com.pulumi.cloudflare.outputs.GetOriginCaRootCertificateResult;
 import com.pulumi.cloudflare.outputs.GetRecordResult;
 import com.pulumi.cloudflare.outputs.GetRulesetsResult;
@@ -1814,6 +1817,154 @@ public final class CloudflareFunctions {
      */
     public static CompletableFuture<GetLoadBalancerPoolsResult> getLoadBalancerPoolsPlain(GetLoadBalancerPoolsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("cloudflare:index/getLoadBalancerPools:getLoadBalancerPools", TypeShape.of(GetLoadBalancerPoolsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to retrieve an existing origin ca certificate.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetOriginCaCertificateArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = CloudflareFunctions.getOriginCaCertificate(GetOriginCaCertificateArgs.builder()
+     *             .id(&#34;REPLACE_ME&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetOriginCaCertificateResult> getOriginCaCertificate(GetOriginCaCertificateArgs args) {
+        return getOriginCaCertificate(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to retrieve an existing origin ca certificate.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetOriginCaCertificateArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = CloudflareFunctions.getOriginCaCertificate(GetOriginCaCertificateArgs.builder()
+     *             .id(&#34;REPLACE_ME&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetOriginCaCertificateResult> getOriginCaCertificatePlain(GetOriginCaCertificatePlainArgs args) {
+        return getOriginCaCertificatePlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to retrieve an existing origin ca certificate.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetOriginCaCertificateArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = CloudflareFunctions.getOriginCaCertificate(GetOriginCaCertificateArgs.builder()
+     *             .id(&#34;REPLACE_ME&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetOriginCaCertificateResult> getOriginCaCertificate(GetOriginCaCertificateArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("cloudflare:index/getOriginCaCertificate:getOriginCaCertificate", TypeShape.of(GetOriginCaCertificateResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to retrieve an existing origin ca certificate.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetOriginCaCertificateArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = CloudflareFunctions.getOriginCaCertificate(GetOriginCaCertificateArgs.builder()
+     *             .id(&#34;REPLACE_ME&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetOriginCaCertificateResult> getOriginCaCertificatePlain(GetOriginCaCertificatePlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("cloudflare:index/getOriginCaCertificate:getOriginCaCertificate", TypeShape.of(GetOriginCaCertificateResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Use this data source to get the

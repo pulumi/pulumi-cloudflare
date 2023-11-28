@@ -1180,13 +1180,13 @@ export interface EmailRoutingCatchAllMatcher {
 
 export interface EmailRoutingRuleAction {
     /**
-     * Type of supported action.
+     * Type of supported action. Available values: `forward`, `worker`, `drop`.
      */
     type: pulumi.Input<string>;
     /**
-     * An array with items in the following form.
+     * An array with items in the following form. Only required when `type` is `forward` or `worker`.
      */
-    values: pulumi.Input<pulumi.Input<string>[]>;
+    values?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 export interface EmailRoutingRuleMatcher {
@@ -1195,7 +1195,7 @@ export interface EmailRoutingRuleMatcher {
      */
     field?: pulumi.Input<string>;
     /**
-     * Type of matcher.
+     * Type of matcher. Available values: `literal`, `all`.
      */
     type: pulumi.Input<string>;
     /**
@@ -2042,6 +2042,10 @@ export interface NotificationPolicyFilters {
      * Health status to alert on for pool or origin.
      */
     newHealths?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Tunnel health status to alert on.
+     */
+    newStatuses?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Packets per second threshold for dos alert.
      */
@@ -3451,7 +3455,7 @@ export interface RulesetRuleRatelimit {
     /**
      * Whether to include requests to origin within the Rate Limiting count.
      */
-    requestsToOrigin: pulumi.Input<boolean>;
+    requestsToOrigin?: pulumi.Input<boolean>;
     /**
      * The maximum aggregate score over the period of time that will trigger Rate Limiting rule.
      */

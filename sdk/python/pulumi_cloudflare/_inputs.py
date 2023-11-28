@@ -6226,19 +6226,20 @@ class EmailRoutingCatchAllMatcherArgs:
 class EmailRoutingRuleActionArgs:
     def __init__(__self__, *,
                  type: pulumi.Input[str],
-                 values: pulumi.Input[Sequence[pulumi.Input[str]]]):
+                 values: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
-        :param pulumi.Input[str] type: Type of supported action.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] values: An array with items in the following form.
+        :param pulumi.Input[str] type: Type of supported action. Available values: `forward`, `worker`, `drop`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] values: An array with items in the following form. Only required when `type` is `forward` or `worker`.
         """
         pulumi.set(__self__, "type", type)
-        pulumi.set(__self__, "values", values)
+        if values is not None:
+            pulumi.set(__self__, "values", values)
 
     @property
     @pulumi.getter
     def type(self) -> pulumi.Input[str]:
         """
-        Type of supported action.
+        Type of supported action. Available values: `forward`, `worker`, `drop`.
         """
         return pulumi.get(self, "type")
 
@@ -6248,14 +6249,14 @@ class EmailRoutingRuleActionArgs:
 
     @property
     @pulumi.getter
-    def values(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+    def values(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        An array with items in the following form.
+        An array with items in the following form. Only required when `type` is `forward` or `worker`.
         """
         return pulumi.get(self, "values")
 
     @values.setter
-    def values(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
+    def values(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "values", value)
 
 
@@ -6266,7 +6267,7 @@ class EmailRoutingRuleMatcherArgs:
                  field: Optional[pulumi.Input[str]] = None,
                  value: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] type: Type of matcher.
+        :param pulumi.Input[str] type: Type of matcher. Available values: `literal`, `all`.
         :param pulumi.Input[str] field: Field for type matcher.
         :param pulumi.Input[str] value: Value for matcher.
         """
@@ -6280,7 +6281,7 @@ class EmailRoutingRuleMatcherArgs:
     @pulumi.getter
     def type(self) -> pulumi.Input[str]:
         """
-        Type of matcher.
+        Type of matcher. Available values: `literal`, `all`.
         """
         return pulumi.get(self, "type")
 
@@ -8166,6 +8167,7 @@ class NotificationPolicyFiltersArgs:
                  limits: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  megabits_per_seconds: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  new_healths: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 new_statuses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  packets_per_seconds: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  pool_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  products: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -8194,6 +8196,7 @@ class NotificationPolicyFiltersArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] limits: A numerical limit. Example: `100`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] megabits_per_seconds: Megabits per second threshold for dos alert.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] new_healths: Health status to alert on for pool or origin.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] new_statuses: Tunnel health status to alert on.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] packets_per_seconds: Packets per second threshold for dos alert.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] pool_ids: Load balancer pool identifier.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] products: Product name. Available values: `worker_requests`, `worker_durable_objects_requests`, `worker_durable_objects_duration`, `worker_durable_objects_data_transfer`, `worker_durable_objects_stored_data`, `worker_durable_objects_storage_deletes`, `worker_durable_objects_storage_writes`, `worker_durable_objects_storage_reads`.
@@ -8235,6 +8238,8 @@ class NotificationPolicyFiltersArgs:
             pulumi.set(__self__, "megabits_per_seconds", megabits_per_seconds)
         if new_healths is not None:
             pulumi.set(__self__, "new_healths", new_healths)
+        if new_statuses is not None:
+            pulumi.set(__self__, "new_statuses", new_statuses)
         if packets_per_seconds is not None:
             pulumi.set(__self__, "packets_per_seconds", packets_per_seconds)
         if pool_ids is not None:
@@ -8429,6 +8434,18 @@ class NotificationPolicyFiltersArgs:
     @new_healths.setter
     def new_healths(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "new_healths", value)
+
+    @property
+    @pulumi.getter(name="newStatuses")
+    def new_statuses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Tunnel health status to alert on.
+        """
+        return pulumi.get(self, "new_statuses")
+
+    @new_statuses.setter
+    def new_statuses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "new_statuses", value)
 
     @property
     @pulumi.getter(name="packetsPerSeconds")
@@ -13844,25 +13861,24 @@ class RulesetRuleLoggingArgs:
 @pulumi.input_type
 class RulesetRuleRatelimitArgs:
     def __init__(__self__, *,
-                 requests_to_origin: pulumi.Input[bool],
                  characteristics: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  counting_expression: Optional[pulumi.Input[str]] = None,
                  mitigation_timeout: Optional[pulumi.Input[int]] = None,
                  period: Optional[pulumi.Input[int]] = None,
                  requests_per_period: Optional[pulumi.Input[int]] = None,
+                 requests_to_origin: Optional[pulumi.Input[bool]] = None,
                  score_per_period: Optional[pulumi.Input[int]] = None,
                  score_response_header_name: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[bool] requests_to_origin: Whether to include requests to origin within the Rate Limiting count.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] characteristics: List of parameters that define how Cloudflare tracks the request rate for this rule.
         :param pulumi.Input[str] counting_expression: Criteria for counting HTTP requests to trigger the Rate Limiting action. Uses the Firewall Rules expression language based on Wireshark display filters. Refer to the [Firewall Rules language](https://developers.cloudflare.com/firewall/cf-firewall-language) documentation for all available fields, operators, and functions.
         :param pulumi.Input[int] mitigation_timeout: Once the request rate is reached, the Rate Limiting rule blocks further requests for the period of time defined in this field.
         :param pulumi.Input[int] period: The period of time to consider (in seconds) when evaluating the request rate.
         :param pulumi.Input[int] requests_per_period: The number of requests over the period of time that will trigger the Rate Limiting rule.
+        :param pulumi.Input[bool] requests_to_origin: Whether to include requests to origin within the Rate Limiting count.
         :param pulumi.Input[int] score_per_period: The maximum aggregate score over the period of time that will trigger Rate Limiting rule.
         :param pulumi.Input[str] score_response_header_name: Name of HTTP header in the response, set by the origin server, with the score for the current request.
         """
-        pulumi.set(__self__, "requests_to_origin", requests_to_origin)
         if characteristics is not None:
             pulumi.set(__self__, "characteristics", characteristics)
         if counting_expression is not None:
@@ -13873,22 +13889,12 @@ class RulesetRuleRatelimitArgs:
             pulumi.set(__self__, "period", period)
         if requests_per_period is not None:
             pulumi.set(__self__, "requests_per_period", requests_per_period)
+        if requests_to_origin is not None:
+            pulumi.set(__self__, "requests_to_origin", requests_to_origin)
         if score_per_period is not None:
             pulumi.set(__self__, "score_per_period", score_per_period)
         if score_response_header_name is not None:
             pulumi.set(__self__, "score_response_header_name", score_response_header_name)
-
-    @property
-    @pulumi.getter(name="requestsToOrigin")
-    def requests_to_origin(self) -> pulumi.Input[bool]:
-        """
-        Whether to include requests to origin within the Rate Limiting count.
-        """
-        return pulumi.get(self, "requests_to_origin")
-
-    @requests_to_origin.setter
-    def requests_to_origin(self, value: pulumi.Input[bool]):
-        pulumi.set(self, "requests_to_origin", value)
 
     @property
     @pulumi.getter
@@ -13949,6 +13955,18 @@ class RulesetRuleRatelimitArgs:
     @requests_per_period.setter
     def requests_per_period(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "requests_per_period", value)
+
+    @property
+    @pulumi.getter(name="requestsToOrigin")
+    def requests_to_origin(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to include requests to origin within the Rate Limiting count.
+        """
+        return pulumi.get(self, "requests_to_origin")
+
+    @requests_to_origin.setter
+    def requests_to_origin(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "requests_to_origin", value)
 
     @property
     @pulumi.getter(name="scorePerPeriod")

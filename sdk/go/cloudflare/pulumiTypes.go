@@ -10777,9 +10777,9 @@ func (o EmailRoutingCatchAllMatcherArrayOutput) Index(i pulumi.IntInput) EmailRo
 }
 
 type EmailRoutingRuleAction struct {
-	// Type of supported action.
+	// Type of supported action. Available values: `forward`, `worker`, `drop`.
 	Type string `pulumi:"type"`
-	// An array with items in the following form.
+	// An array with items in the following form. Only required when `type` is `forward` or `worker`.
 	Values []string `pulumi:"values"`
 }
 
@@ -10795,9 +10795,9 @@ type EmailRoutingRuleActionInput interface {
 }
 
 type EmailRoutingRuleActionArgs struct {
-	// Type of supported action.
+	// Type of supported action. Available values: `forward`, `worker`, `drop`.
 	Type pulumi.StringInput `pulumi:"type"`
-	// An array with items in the following form.
+	// An array with items in the following form. Only required when `type` is `forward` or `worker`.
 	Values pulumi.StringArrayInput `pulumi:"values"`
 }
 
@@ -10852,12 +10852,12 @@ func (o EmailRoutingRuleActionOutput) ToEmailRoutingRuleActionOutputWithContext(
 	return o
 }
 
-// Type of supported action.
+// Type of supported action. Available values: `forward`, `worker`, `drop`.
 func (o EmailRoutingRuleActionOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v EmailRoutingRuleAction) string { return v.Type }).(pulumi.StringOutput)
 }
 
-// An array with items in the following form.
+// An array with items in the following form. Only required when `type` is `forward` or `worker`.
 func (o EmailRoutingRuleActionOutput) Values() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v EmailRoutingRuleAction) []string { return v.Values }).(pulumi.StringArrayOutput)
 }
@@ -10885,7 +10885,7 @@ func (o EmailRoutingRuleActionArrayOutput) Index(i pulumi.IntInput) EmailRouting
 type EmailRoutingRuleMatcher struct {
 	// Field for type matcher.
 	Field *string `pulumi:"field"`
-	// Type of matcher.
+	// Type of matcher. Available values: `literal`, `all`.
 	Type string `pulumi:"type"`
 	// Value for matcher.
 	Value *string `pulumi:"value"`
@@ -10905,7 +10905,7 @@ type EmailRoutingRuleMatcherInput interface {
 type EmailRoutingRuleMatcherArgs struct {
 	// Field for type matcher.
 	Field pulumi.StringPtrInput `pulumi:"field"`
-	// Type of matcher.
+	// Type of matcher. Available values: `literal`, `all`.
 	Type pulumi.StringInput `pulumi:"type"`
 	// Value for matcher.
 	Value pulumi.StringPtrInput `pulumi:"value"`
@@ -10967,7 +10967,7 @@ func (o EmailRoutingRuleMatcherOutput) Field() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EmailRoutingRuleMatcher) *string { return v.Field }).(pulumi.StringPtrOutput)
 }
 
-// Type of matcher.
+// Type of matcher. Available values: `literal`, `all`.
 func (o EmailRoutingRuleMatcherOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v EmailRoutingRuleMatcher) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -15017,6 +15017,8 @@ type NotificationPolicyFilters struct {
 	MegabitsPerSeconds []string `pulumi:"megabitsPerSeconds"`
 	// Health status to alert on for pool or origin.
 	NewHealths []string `pulumi:"newHealths"`
+	// Tunnel health status to alert on.
+	NewStatuses []string `pulumi:"newStatuses"`
 	// Packets per second threshold for dos alert.
 	PacketsPerSeconds []string `pulumi:"packetsPerSeconds"`
 	// Load balancer pool identifier.
@@ -15084,6 +15086,8 @@ type NotificationPolicyFiltersArgs struct {
 	MegabitsPerSeconds pulumi.StringArrayInput `pulumi:"megabitsPerSeconds"`
 	// Health status to alert on for pool or origin.
 	NewHealths pulumi.StringArrayInput `pulumi:"newHealths"`
+	// Tunnel health status to alert on.
+	NewStatuses pulumi.StringArrayInput `pulumi:"newStatuses"`
 	// Packets per second threshold for dos alert.
 	PacketsPerSeconds pulumi.StringArrayInput `pulumi:"packetsPerSeconds"`
 	// Load balancer pool identifier.
@@ -15256,6 +15260,11 @@ func (o NotificationPolicyFiltersOutput) MegabitsPerSeconds() pulumi.StringArray
 // Health status to alert on for pool or origin.
 func (o NotificationPolicyFiltersOutput) NewHealths() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v NotificationPolicyFilters) []string { return v.NewHealths }).(pulumi.StringArrayOutput)
+}
+
+// Tunnel health status to alert on.
+func (o NotificationPolicyFiltersOutput) NewStatuses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v NotificationPolicyFilters) []string { return v.NewStatuses }).(pulumi.StringArrayOutput)
 }
 
 // Packets per second threshold for dos alert.
@@ -15483,6 +15492,16 @@ func (o NotificationPolicyFiltersPtrOutput) NewHealths() pulumi.StringArrayOutpu
 			return nil
 		}
 		return v.NewHealths
+	}).(pulumi.StringArrayOutput)
+}
+
+// Tunnel health status to alert on.
+func (o NotificationPolicyFiltersPtrOutput) NewStatuses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *NotificationPolicyFilters) []string {
+		if v == nil {
+			return nil
+		}
+		return v.NewStatuses
 	}).(pulumi.StringArrayOutput)
 }
 
@@ -27847,7 +27866,7 @@ type RulesetRuleRatelimit struct {
 	// The number of requests over the period of time that will trigger the Rate Limiting rule.
 	RequestsPerPeriod *int `pulumi:"requestsPerPeriod"`
 	// Whether to include requests to origin within the Rate Limiting count.
-	RequestsToOrigin bool `pulumi:"requestsToOrigin"`
+	RequestsToOrigin *bool `pulumi:"requestsToOrigin"`
 	// The maximum aggregate score over the period of time that will trigger Rate Limiting rule.
 	ScorePerPeriod *int `pulumi:"scorePerPeriod"`
 	// Name of HTTP header in the response, set by the origin server, with the score for the current request.
@@ -27877,7 +27896,7 @@ type RulesetRuleRatelimitArgs struct {
 	// The number of requests over the period of time that will trigger the Rate Limiting rule.
 	RequestsPerPeriod pulumi.IntPtrInput `pulumi:"requestsPerPeriod"`
 	// Whether to include requests to origin within the Rate Limiting count.
-	RequestsToOrigin pulumi.BoolInput `pulumi:"requestsToOrigin"`
+	RequestsToOrigin pulumi.BoolPtrInput `pulumi:"requestsToOrigin"`
 	// The maximum aggregate score over the period of time that will trigger Rate Limiting rule.
 	ScorePerPeriod pulumi.IntPtrInput `pulumi:"scorePerPeriod"`
 	// Name of HTTP header in the response, set by the origin server, with the score for the current request.
@@ -27987,8 +28006,8 @@ func (o RulesetRuleRatelimitOutput) RequestsPerPeriod() pulumi.IntPtrOutput {
 }
 
 // Whether to include requests to origin within the Rate Limiting count.
-func (o RulesetRuleRatelimitOutput) RequestsToOrigin() pulumi.BoolOutput {
-	return o.ApplyT(func(v RulesetRuleRatelimit) bool { return v.RequestsToOrigin }).(pulumi.BoolOutput)
+func (o RulesetRuleRatelimitOutput) RequestsToOrigin() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v RulesetRuleRatelimit) *bool { return v.RequestsToOrigin }).(pulumi.BoolPtrOutput)
 }
 
 // The maximum aggregate score over the period of time that will trigger Rate Limiting rule.
@@ -28081,7 +28100,7 @@ func (o RulesetRuleRatelimitPtrOutput) RequestsToOrigin() pulumi.BoolPtrOutput {
 		if v == nil {
 			return nil
 		}
-		return &v.RequestsToOrigin
+		return v.RequestsToOrigin
 	}).(pulumi.BoolPtrOutput)
 }
 
