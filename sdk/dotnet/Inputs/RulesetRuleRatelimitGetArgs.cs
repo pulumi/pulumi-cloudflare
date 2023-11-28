@@ -51,8 +51,8 @@ namespace Pulumi.Cloudflare.Inputs
         /// <summary>
         /// Whether to include requests to origin within the Rate Limiting count.
         /// </summary>
-        [Input("requestsToOrigin", required: true)]
-        public Input<bool> RequestsToOrigin { get; set; } = null!;
+        [Input("requestsToOrigin")]
+        public Input<bool>? RequestsToOrigin { get; set; }
 
         /// <summary>
         /// The maximum aggregate score over the period of time that will trigger Rate Limiting rule.

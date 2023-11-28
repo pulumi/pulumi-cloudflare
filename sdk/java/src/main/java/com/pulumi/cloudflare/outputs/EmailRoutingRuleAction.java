@@ -7,34 +7,35 @@ import com.pulumi.core.annotations.CustomType;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class EmailRoutingRuleAction {
     /**
-     * @return Type of supported action.
+     * @return Type of supported action. Available values: `forward`, `worker`, `drop`.
      * 
      */
     private String type;
     /**
-     * @return An array with items in the following form.
+     * @return An array with items in the following form. Only required when `type` is `forward` or `worker`.
      * 
      */
-    private List<String> values;
+    private @Nullable List<String> values;
 
     private EmailRoutingRuleAction() {}
     /**
-     * @return Type of supported action.
+     * @return Type of supported action. Available values: `forward`, `worker`, `drop`.
      * 
      */
     public String type() {
         return this.type;
     }
     /**
-     * @return An array with items in the following form.
+     * @return An array with items in the following form. Only required when `type` is `forward` or `worker`.
      * 
      */
     public List<String> values() {
-        return this.values;
+        return this.values == null ? List.of() : this.values;
     }
 
     public static Builder builder() {
@@ -47,7 +48,7 @@ public final class EmailRoutingRuleAction {
     @CustomType.Builder
     public static final class Builder {
         private String type;
-        private List<String> values;
+        private @Nullable List<String> values;
         public Builder() {}
         public Builder(EmailRoutingRuleAction defaults) {
     	      Objects.requireNonNull(defaults);
@@ -61,8 +62,8 @@ public final class EmailRoutingRuleAction {
             return this;
         }
         @CustomType.Setter
-        public Builder values(List<String> values) {
-            this.values = Objects.requireNonNull(values);
+        public Builder values(@Nullable List<String> values) {
+            this.values = values;
             return this;
         }
         public Builder values(String... values) {

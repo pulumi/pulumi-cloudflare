@@ -227,6 +227,21 @@ public final class NotificationPolicyFiltersArgs extends com.pulumi.resources.Re
     }
 
     /**
+     * Tunnel health status to alert on.
+     * 
+     */
+    @Import(name="newStatuses")
+    private @Nullable Output<List<String>> newStatuses;
+
+    /**
+     * @return Tunnel health status to alert on.
+     * 
+     */
+    public Optional<Output<List<String>>> newStatuses() {
+        return Optional.ofNullable(this.newStatuses);
+    }
+
+    /**
      * Packets per second threshold for dos alert.
      * 
      */
@@ -430,6 +445,7 @@ public final class NotificationPolicyFiltersArgs extends com.pulumi.resources.Re
         this.limits = $.limits;
         this.megabitsPerSeconds = $.megabitsPerSeconds;
         this.newHealths = $.newHealths;
+        this.newStatuses = $.newStatuses;
         this.packetsPerSeconds = $.packetsPerSeconds;
         this.poolIds = $.poolIds;
         this.products = $.products;
@@ -895,6 +911,37 @@ public final class NotificationPolicyFiltersArgs extends com.pulumi.resources.Re
          */
         public Builder newHealths(String... newHealths) {
             return newHealths(List.of(newHealths));
+        }
+
+        /**
+         * @param newStatuses Tunnel health status to alert on.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder newStatuses(@Nullable Output<List<String>> newStatuses) {
+            $.newStatuses = newStatuses;
+            return this;
+        }
+
+        /**
+         * @param newStatuses Tunnel health status to alert on.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder newStatuses(List<String> newStatuses) {
+            return newStatuses(Output.of(newStatuses));
+        }
+
+        /**
+         * @param newStatuses Tunnel health status to alert on.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder newStatuses(String... newStatuses) {
+            return newStatuses(List.of(newStatuses));
         }
 
         /**

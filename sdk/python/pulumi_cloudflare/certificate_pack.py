@@ -368,7 +368,7 @@ class CertificatePack(pulumi.CustomResource):
         ## Import
 
         ```sh
-         $ pulumi import cloudflare:index/certificatePack:CertificatePack example 1d5fdc9e88c8a8c4518b068cd94331fe/8fda82e2-6af9-4eb2-992a-5ab65b792ef1
+         $ pulumi import cloudflare:index/certificatePack:CertificatePack example <zone_id>/<certificate_pack_id>
         ```
 
          While supported, importing isn't recommended and it is advised to replace the certificate entirely instead.
@@ -415,7 +415,7 @@ class CertificatePack(pulumi.CustomResource):
         ## Import
 
         ```sh
-         $ pulumi import cloudflare:index/certificatePack:CertificatePack example 1d5fdc9e88c8a8c4518b068cd94331fe/8fda82e2-6af9-4eb2-992a-5ab65b792ef1
+         $ pulumi import cloudflare:index/certificatePack:CertificatePack example <zone_id>/<certificate_pack_id>
         ```
 
          While supported, importing isn't recommended and it is advised to replace the certificate entirely instead.

@@ -97,15 +97,15 @@ public final class RulesetRuleRatelimitArgs extends com.pulumi.resources.Resourc
      * Whether to include requests to origin within the Rate Limiting count.
      * 
      */
-    @Import(name="requestsToOrigin", required=true)
-    private Output<Boolean> requestsToOrigin;
+    @Import(name="requestsToOrigin")
+    private @Nullable Output<Boolean> requestsToOrigin;
 
     /**
      * @return Whether to include requests to origin within the Rate Limiting count.
      * 
      */
-    public Output<Boolean> requestsToOrigin() {
-        return this.requestsToOrigin;
+    public Optional<Output<Boolean>> requestsToOrigin() {
+        return Optional.ofNullable(this.requestsToOrigin);
     }
 
     /**
@@ -290,7 +290,7 @@ public final class RulesetRuleRatelimitArgs extends com.pulumi.resources.Resourc
          * @return builder
          * 
          */
-        public Builder requestsToOrigin(Output<Boolean> requestsToOrigin) {
+        public Builder requestsToOrigin(@Nullable Output<Boolean> requestsToOrigin) {
             $.requestsToOrigin = requestsToOrigin;
             return this;
         }
@@ -348,7 +348,6 @@ public final class RulesetRuleRatelimitArgs extends com.pulumi.resources.Resourc
         }
 
         public RulesetRuleRatelimitArgs build() {
-            $.requestsToOrigin = Objects.requireNonNull($.requestsToOrigin, "expected parameter 'requestsToOrigin' to be non-null");
             return $;
         }
     }

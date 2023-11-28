@@ -43,7 +43,7 @@ public final class RulesetRuleRatelimit {
      * @return Whether to include requests to origin within the Rate Limiting count.
      * 
      */
-    private Boolean requestsToOrigin;
+    private @Nullable Boolean requestsToOrigin;
     /**
      * @return The maximum aggregate score over the period of time that will trigger Rate Limiting rule.
      * 
@@ -95,8 +95,8 @@ public final class RulesetRuleRatelimit {
      * @return Whether to include requests to origin within the Rate Limiting count.
      * 
      */
-    public Boolean requestsToOrigin() {
-        return this.requestsToOrigin;
+    public Optional<Boolean> requestsToOrigin() {
+        return Optional.ofNullable(this.requestsToOrigin);
     }
     /**
      * @return The maximum aggregate score over the period of time that will trigger Rate Limiting rule.
@@ -127,7 +127,7 @@ public final class RulesetRuleRatelimit {
         private @Nullable Integer mitigationTimeout;
         private @Nullable Integer period;
         private @Nullable Integer requestsPerPeriod;
-        private Boolean requestsToOrigin;
+        private @Nullable Boolean requestsToOrigin;
         private @Nullable Integer scorePerPeriod;
         private @Nullable String scoreResponseHeaderName;
         public Builder() {}
@@ -172,8 +172,8 @@ public final class RulesetRuleRatelimit {
             return this;
         }
         @CustomType.Setter
-        public Builder requestsToOrigin(Boolean requestsToOrigin) {
-            this.requestsToOrigin = Objects.requireNonNull(requestsToOrigin);
+        public Builder requestsToOrigin(@Nullable Boolean requestsToOrigin) {
+            this.requestsToOrigin = requestsToOrigin;
             return this;
         }
         @CustomType.Setter

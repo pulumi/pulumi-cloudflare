@@ -180,6 +180,18 @@ namespace Pulumi.Cloudflare.Inputs
             set => _newHealths = value;
         }
 
+        [Input("newStatuses")]
+        private InputList<string>? _newStatuses;
+
+        /// <summary>
+        /// Tunnel health status to alert on.
+        /// </summary>
+        public InputList<string> NewStatuses
+        {
+            get => _newStatuses ?? (_newStatuses = new InputList<string>());
+            set => _newStatuses = value;
+        }
+
         [Input("packetsPerSeconds")]
         private InputList<string>? _packetsPerSeconds;
 

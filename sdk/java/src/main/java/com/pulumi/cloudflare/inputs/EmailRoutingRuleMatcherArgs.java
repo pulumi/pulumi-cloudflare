@@ -31,14 +31,14 @@ public final class EmailRoutingRuleMatcherArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * Type of matcher.
+     * Type of matcher. Available values: `literal`, `all`.
      * 
      */
     @Import(name="type", required=true)
     private Output<String> type;
 
     /**
-     * @return Type of matcher.
+     * @return Type of matcher. Available values: `literal`, `all`.
      * 
      */
     public Output<String> type() {
@@ -108,7 +108,7 @@ public final class EmailRoutingRuleMatcherArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param type Type of matcher.
+         * @param type Type of matcher. Available values: `literal`, `all`.
          * 
          * @return builder
          * 
@@ -119,7 +119,7 @@ public final class EmailRoutingRuleMatcherArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param type Type of matcher.
+         * @param type Type of matcher. Available values: `literal`, `all`.
          * 
          * @return builder
          * 

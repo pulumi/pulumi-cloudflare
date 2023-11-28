@@ -62,6 +62,7 @@ from .get_ip_ranges import *
 from .get_list import *
 from .get_lists import *
 from .get_load_balancer_pools import *
+from .get_origin_ca_certificate import *
 from .get_origin_ca_root_certificate import *
 from .get_record import *
 from .get_rulesets import *

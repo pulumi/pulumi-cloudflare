@@ -290,6 +290,11 @@ export const getLoadBalancerPools: typeof import("./getLoadBalancerPools").getLo
 export const getLoadBalancerPoolsOutput: typeof import("./getLoadBalancerPools").getLoadBalancerPoolsOutput = null as any;
 utilities.lazyLoad(exports, ["getLoadBalancerPools","getLoadBalancerPoolsOutput"], () => require("./getLoadBalancerPools"));
 
+export { GetOriginCaCertificateArgs, GetOriginCaCertificateResult, GetOriginCaCertificateOutputArgs } from "./getOriginCaCertificate";
+export const getOriginCaCertificate: typeof import("./getOriginCaCertificate").getOriginCaCertificate = null as any;
+export const getOriginCaCertificateOutput: typeof import("./getOriginCaCertificate").getOriginCaCertificateOutput = null as any;
+utilities.lazyLoad(exports, ["getOriginCaCertificate","getOriginCaCertificateOutput"], () => require("./getOriginCaCertificate"));
+
 export { GetOriginCaRootCertificateArgs, GetOriginCaRootCertificateResult, GetOriginCaRootCertificateOutputArgs } from "./getOriginCaRootCertificate";
 export const getOriginCaRootCertificate: typeof import("./getOriginCaRootCertificate").getOriginCaRootCertificate = null as any;
 export const getOriginCaRootCertificateOutput: typeof import("./getOriginCaRootCertificate").getOriginCaRootCertificateOutput = null as any;

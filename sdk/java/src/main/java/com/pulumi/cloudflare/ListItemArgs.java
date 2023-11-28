@@ -64,14 +64,14 @@ public final class ListItemArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Redirect configuration to store in the list. Must provide only one of `ip`, `redirect`, `hostname`, `asn`. **Modifying this attribute will force creation of a new resource.**
+     * Hostname to store in the list. Must provide only one of `ip`, `redirect`, `hostname`, `asn`. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     @Import(name="hostname")
     private @Nullable Output<ListItemHostnameArgs> hostname;
 
     /**
-     * @return Redirect configuration to store in the list. Must provide only one of `ip`, `redirect`, `hostname`, `asn`. **Modifying this attribute will force creation of a new resource.**
+     * @return Hostname to store in the list. Must provide only one of `ip`, `redirect`, `hostname`, `asn`. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     public Optional<Output<ListItemHostnameArgs>> hostname() {
@@ -217,7 +217,7 @@ public final class ListItemArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param hostname Redirect configuration to store in the list. Must provide only one of `ip`, `redirect`, `hostname`, `asn`. **Modifying this attribute will force creation of a new resource.**
+         * @param hostname Hostname to store in the list. Must provide only one of `ip`, `redirect`, `hostname`, `asn`. **Modifying this attribute will force creation of a new resource.**
          * 
          * @return builder
          * 
@@ -228,7 +228,7 @@ public final class ListItemArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param hostname Redirect configuration to store in the list. Must provide only one of `ip`, `redirect`, `hostname`, `asn`. **Modifying this attribute will force creation of a new resource.**
+         * @param hostname Hostname to store in the list. Must provide only one of `ip`, `redirect`, `hostname`, `asn`. **Modifying this attribute will force creation of a new resource.**
          * 
          * @return builder
          * 

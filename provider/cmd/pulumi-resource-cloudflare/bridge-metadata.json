@@ -1336,6 +1336,9 @@
                                 "new_health": {
                                     "maxItemsOne": false
                                 },
+                                "new_status": {
+                                    "maxItemsOne": false
+                                },
                                 "packets_per_second": {
                                     "maxItemsOne": false
                                 },
@@ -2477,6 +2480,15 @@
                     }
                 }
             },
+            "cloudflare_origin_ca_certificate": {
+                "current": "cloudflare:index/getOriginCaCertificate:getOriginCaCertificate",
+                "majorVersion": 5,
+                "fields": {
+                    "hostnames": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "cloudflare_origin_ca_root_certificate": {
                 "current": "cloudflare:index/getOriginCaRootCertificate:getOriginCaRootCertificate",
                 "majorVersion": 5
@@ -2875,6 +2887,7 @@
             "cloudflare:index/getList:getList": 0,
             "cloudflare:index/getLists:getLists": 0,
             "cloudflare:index/getLoadBalancerPools:getLoadBalancerPools": 0,
+            "cloudflare:index/getOriginCaCertificate:getOriginCaCertificate": 1,
             "cloudflare:index/getOriginCaRootCertificate:getOriginCaRootCertificate": 0,
             "cloudflare:index/getRecord:getRecord": 0,
             "cloudflare:index/getRulesets:getRulesets": 0,
@@ -3016,6 +3029,7 @@
             "cloudflare:index/getList:getList": "cloudflare_list",
             "cloudflare:index/getLists:getLists": "cloudflare_lists",
             "cloudflare:index/getLoadBalancerPools:getLoadBalancerPools": "cloudflare_load_balancer_pools",
+            "cloudflare:index/getOriginCaCertificate:getOriginCaCertificate": "cloudflare_origin_ca_certificate",
             "cloudflare:index/getOriginCaRootCertificate:getOriginCaRootCertificate": "cloudflare_origin_ca_root_certificate",
             "cloudflare:index/getRecord:getRecord": "cloudflare_record",
             "cloudflare:index/getRulesets:getRulesets": "cloudflare_rulesets",
@@ -3596,6 +3610,7 @@
                 "limits": "limit",
                 "megabitsPerSeconds": "megabits_per_second",
                 "newHealths": "new_health",
+                "newStatuses": "new_status",
                 "packetsPerSeconds": "packets_per_second",
                 "poolIds": "pool_id",
                 "products": "product",
@@ -4413,6 +4428,11 @@
             },
             "cloudflare:index/getLoadBalancerPoolsPoolOrigin:getLoadBalancerPoolsPoolOrigin": {
                 "headers": "header"
+            },
+            "cloudflare:index/getOriginCaCertificate:getOriginCaCertificate": {
+                "expiresOn": "expires_on",
+                "requestType": "request_type",
+                "revokedAt": "revoked_at"
             },
             "cloudflare:index/getOriginCaRootCertificate:getOriginCaRootCertificate": {
                 "certPem": "cert_pem"

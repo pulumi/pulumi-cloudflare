@@ -23,6 +23,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
+    ///     // IP List
     ///     var exampleIpList = new Cloudflare.List("exampleIpList", new()
     ///     {
     ///         AccountId = "f037e56e89293a057740de681ac9abbe",
@@ -40,8 +41,17 @@ namespace Pulumi.Cloudflare
     ///         Ip = "192.0.2.0",
     ///     });
     /// 
+    ///     // Redirect List
+    ///     var exampleRedirectList = new Cloudflare.List("exampleRedirectList", new()
+    ///     {
+    ///         AccountId = "f037e56e89293a057740de681ac9abbe",
+    ///         Name = "example_list",
+    ///         Description = "example Redirects for a list",
+    ///         Kind = "redirect",
+    ///     });
+    /// 
     ///     // Redirect List Item
-    ///     var testTwo = new Cloudflare.ListItem("testTwo", new()
+    ///     var exampleRedirectItem = new Cloudflare.ListItem("exampleRedirectItem", new()
     ///     {
     ///         AccountId = "f037e56e89293a057740de681ac9abbe",
     ///         ListId = exampleIpList.Id,
@@ -54,7 +64,7 @@ namespace Pulumi.Cloudflare
     ///         },
     ///     });
     /// 
-    ///     // ASN list
+    ///     // ASN List
     ///     var exampleAsnList = new Cloudflare.List("exampleAsnList", new()
     ///     {
     ///         AccountId = "f037e56e89293a057740de681ac9abbe",
@@ -72,7 +82,7 @@ namespace Pulumi.Cloudflare
     ///         Asn = 6789,
     ///     });
     /// 
-    ///     // Hostname list
+    ///     // Hostname List
     ///     var exampleHostnameList = new Cloudflare.List("exampleHostnameList", new()
     ///     {
     ///         AccountId = "f037e56e89293a057740de681ac9abbe",
@@ -87,7 +97,10 @@ namespace Pulumi.Cloudflare
     ///         AccountId = "f037e56e89293a057740de681ac9abbe",
     ///         ListId = exampleHostnameList.Id,
     ///         Comment = "List Item Comment",
-    ///         Asn = "example.com",
+    ///         Hostname = new Cloudflare.Inputs.ListItemHostnameArgs
+    ///         {
+    ///             UrlHostname = "example.com",
+    ///         },
     ///     });
     /// 
     /// });
@@ -121,7 +134,7 @@ namespace Pulumi.Cloudflare
         public Output<string?> Comment { get; private set; } = null!;
 
         /// <summary>
-        /// Redirect configuration to store in the list. Must provide only one of `ip`, `redirect`, `hostname`, `asn`. **Modifying this attribute will force creation of a new resource.**
+        /// Hostname to store in the list. Must provide only one of `ip`, `redirect`, `hostname`, `asn`. **Modifying this attribute will force creation of a new resource.**
         /// </summary>
         [Output("hostname")]
         public Output<Outputs.ListItemHostname?> Hostname { get; private set; } = null!;
@@ -209,7 +222,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? Comment { get; set; }
 
         /// <summary>
-        /// Redirect configuration to store in the list. Must provide only one of `ip`, `redirect`, `hostname`, `asn`. **Modifying this attribute will force creation of a new resource.**
+        /// Hostname to store in the list. Must provide only one of `ip`, `redirect`, `hostname`, `asn`. **Modifying this attribute will force creation of a new resource.**
         /// </summary>
         [Input("hostname")]
         public Input<Inputs.ListItemHostnameArgs>? Hostname { get; set; }
@@ -259,7 +272,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? Comment { get; set; }
 
         /// <summary>
-        /// Redirect configuration to store in the list. Must provide only one of `ip`, `redirect`, `hostname`, `asn`. **Modifying this attribute will force creation of a new resource.**
+        /// Hostname to store in the list. Must provide only one of `ip`, `redirect`, `hostname`, `asn`. **Modifying this attribute will force creation of a new resource.**
         /// </summary>
         [Input("hostname")]
         public Input<Inputs.ListItemHostnameGetArgs>? Hostname { get; set; }

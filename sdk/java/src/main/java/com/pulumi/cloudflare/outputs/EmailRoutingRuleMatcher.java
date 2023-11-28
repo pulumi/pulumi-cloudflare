@@ -17,7 +17,7 @@ public final class EmailRoutingRuleMatcher {
      */
     private @Nullable String field;
     /**
-     * @return Type of matcher.
+     * @return Type of matcher. Available values: `literal`, `all`.
      * 
      */
     private String type;
@@ -36,7 +36,7 @@ public final class EmailRoutingRuleMatcher {
         return Optional.ofNullable(this.field);
     }
     /**
-     * @return Type of matcher.
+     * @return Type of matcher. Available values: `literal`, `all`.
      * 
      */
     public String type() {
