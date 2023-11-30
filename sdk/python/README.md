@@ -55,7 +55,7 @@ The following configuration points are available:
 - `cloudflare:rps` - (Optional) RPS limit to apply when making calls to the API. Default: `4`. May be set via the `CLOUDFLARE_RPS` environment variable.
 - `cloudflare:retries` - (Optional) Maximum number of retries to perform when an API request fails. Default: `3`. May be set via the `CLOUDFLARE_RETRIES` environment variable.
 - `cloudflare:minBackoff` - (Optional) Minimum backoff period in seconds after failed API calls. Default: `1`. May be set via the `CLOUDFLARE_MIN_BACKOFF` environment variable.
-- `cloudflare:minBackoff` - (Optional) Maximum backoff period in seconds after failed API calls. Default: `30`. May be set via the `CLOUDFLARE_MAX_BACKOFF` environment variable.
+- `cloudflare:maxBackoff` - (Optional) Maximum backoff period in seconds after failed API calls. Default: `30`. May be set via the `CLOUDFLARE_MAX_BACKOFF` environment variable.
 - `cloudflare:apiClientLogging` - (Optional) Whether to print logs from the API client (using the default log library logger). Default: `false`. May be set via the `CLOUDFLARE_API_CLIENT_LOGGING` environment variable.
 - `cloudflare:apiUserServiceKey` - (Optional) The Cloudflare API User Service Key. This is used for a specific set of endpoints, such as creating Origin CA certificates. May be set via the `CLOUDFLARE_API_USER_SERVICE_KEY` environment variable.
 
