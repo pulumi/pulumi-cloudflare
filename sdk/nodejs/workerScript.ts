@@ -24,7 +24,7 @@ import * as utilities from "./utilities";
  * const myScript = new cloudflare.WorkerScript("myScript", {
  *     accountId: "f037e56e89293a057740de681ac9abbe",
  *     name: "script_1",
- *     content: fs.readFileSync("script.js"),
+ *     content: fs.readFileSync("script.js", "utf8"),
  *     kvNamespaceBindings: [{
  *         name: "MY_EXAMPLE_KV_NAMESPACE",
  *         namespaceId: myNamespace.id,
