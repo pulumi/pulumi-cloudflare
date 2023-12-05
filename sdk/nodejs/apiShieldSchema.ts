@@ -19,7 +19,7 @@ import * as utilities from "./utilities";
  *     name: "myschema",
  *     kind: "openapi_v3",
  *     validationEnabled: true,
- *     source: fs.readFileSync("./schemas/petstore.json"),
+ *     source: fs.readFileSync("./schemas/petstore.json", "utf8"),
  * });
  * ```
  */
