@@ -84,11 +84,11 @@ public final class AccessGroupExcludeAuthContext {
             return this;
         }
         public AccessGroupExcludeAuthContext build() {
-            final var o = new AccessGroupExcludeAuthContext();
-            o.acId = acId;
-            o.id = id;
-            o.identityProviderId = identityProviderId;
-            return o;
+            final var _resultValue = new AccessGroupExcludeAuthContext();
+            _resultValue.acId = acId;
+            _resultValue.id = id;
+            _resultValue.identityProviderId = identityProviderId;
+            return _resultValue;
         }
     }
 }

@@ -74,11 +74,11 @@ public final class AccessPolicyRequireGithub {
             return teams(List.of(teams));
         }
         public AccessPolicyRequireGithub build() {
-            final var o = new AccessPolicyRequireGithub();
-            o.identityProviderId = identityProviderId;
-            o.name = name;
-            o.teams = teams;
-            return o;
+            final var _resultValue = new AccessPolicyRequireGithub();
+            _resultValue.identityProviderId = identityProviderId;
+            _resultValue.name = name;
+            _resultValue.teams = teams;
+            return _resultValue;
         }
     }
 }

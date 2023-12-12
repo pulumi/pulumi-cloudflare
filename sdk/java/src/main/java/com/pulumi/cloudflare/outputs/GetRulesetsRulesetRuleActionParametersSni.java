@@ -40,9 +40,9 @@ public final class GetRulesetsRulesetRuleActionParametersSni {
             return this;
         }
         public GetRulesetsRulesetRuleActionParametersSni build() {
-            final var o = new GetRulesetsRulesetRuleActionParametersSni();
-            o.value = value;
-            return o;
+            final var _resultValue = new GetRulesetsRulesetRuleActionParametersSni();
+            _resultValue.value = value;
+            return _resultValue;
         }
     }
 }

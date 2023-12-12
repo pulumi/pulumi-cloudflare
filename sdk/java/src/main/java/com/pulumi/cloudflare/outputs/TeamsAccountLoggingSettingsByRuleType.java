@@ -86,11 +86,11 @@ public final class TeamsAccountLoggingSettingsByRuleType {
             return this;
         }
         public TeamsAccountLoggingSettingsByRuleType build() {
-            final var o = new TeamsAccountLoggingSettingsByRuleType();
-            o.dns = dns;
-            o.http = http;
-            o.l4 = l4;
-            return o;
+            final var _resultValue = new TeamsAccountLoggingSettingsByRuleType();
+            _resultValue.dns = dns;
+            _resultValue.http = http;
+            _resultValue.l4 = l4;
+            return _resultValue;
         }
     }
 }

@@ -84,11 +84,11 @@ public final class AccessPolicyExcludeAuthContext {
             return this;
         }
         public AccessPolicyExcludeAuthContext build() {
-            final var o = new AccessPolicyExcludeAuthContext();
-            o.acId = acId;
-            o.id = id;
-            o.identityProviderId = identityProviderId;
-            return o;
+            final var _resultValue = new AccessPolicyExcludeAuthContext();
+            _resultValue.acId = acId;
+            _resultValue.id = id;
+            _resultValue.identityProviderId = identityProviderId;
+            return _resultValue;
         }
     }
 }

@@ -57,10 +57,10 @@ public final class TeamsAccountLoggingSettingsByRuleTypeHttp {
             return this;
         }
         public TeamsAccountLoggingSettingsByRuleTypeHttp build() {
-            final var o = new TeamsAccountLoggingSettingsByRuleTypeHttp();
-            o.logAll = logAll;
-            o.logBlocks = logBlocks;
-            return o;
+            final var _resultValue = new TeamsAccountLoggingSettingsByRuleTypeHttp();
+            _resultValue.logAll = logAll;
+            _resultValue.logBlocks = logBlocks;
+            return _resultValue;
         }
     }
 }

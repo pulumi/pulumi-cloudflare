@@ -63,11 +63,11 @@ public final class GetRulesetsRulesetRuleActionParametersResponse {
             return this;
         }
         public GetRulesetsRulesetRuleActionParametersResponse build() {
-            final var o = new GetRulesetsRulesetRuleActionParametersResponse();
-            o.content = content;
-            o.contentType = contentType;
-            o.statusCode = statusCode;
-            return o;
+            final var _resultValue = new GetRulesetsRulesetRuleActionParametersResponse();
+            _resultValue.content = content;
+            _resultValue.contentType = contentType;
+            _resultValue.statusCode = statusCode;
+            return _resultValue;
         }
     }
 }

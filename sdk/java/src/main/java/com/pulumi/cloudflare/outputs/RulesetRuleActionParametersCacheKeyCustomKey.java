@@ -128,13 +128,13 @@ public final class RulesetRuleActionParametersCacheKeyCustomKey {
             return this;
         }
         public RulesetRuleActionParametersCacheKeyCustomKey build() {
-            final var o = new RulesetRuleActionParametersCacheKeyCustomKey();
-            o.cookie = cookie;
-            o.header = header;
-            o.host = host;
-            o.queryString = queryString;
-            o.user = user;
-            return o;
+            final var _resultValue = new RulesetRuleActionParametersCacheKeyCustomKey();
+            _resultValue.cookie = cookie;
+            _resultValue.header = header;
+            _resultValue.host = host;
+            _resultValue.queryString = queryString;
+            _resultValue.user = user;
+            return _resultValue;
         }
     }
 }

@@ -157,14 +157,14 @@ public final class GetIpRangesResult {
             return ipv6CidrBlocks(List.of(ipv6CidrBlocks));
         }
         public GetIpRangesResult build() {
-            final var o = new GetIpRangesResult();
-            o.chinaIpv4CidrBlocks = chinaIpv4CidrBlocks;
-            o.chinaIpv6CidrBlocks = chinaIpv6CidrBlocks;
-            o.cidrBlocks = cidrBlocks;
-            o.id = id;
-            o.ipv4CidrBlocks = ipv4CidrBlocks;
-            o.ipv6CidrBlocks = ipv6CidrBlocks;
-            return o;
+            final var _resultValue = new GetIpRangesResult();
+            _resultValue.chinaIpv4CidrBlocks = chinaIpv4CidrBlocks;
+            _resultValue.chinaIpv6CidrBlocks = chinaIpv6CidrBlocks;
+            _resultValue.cidrBlocks = cidrBlocks;
+            _resultValue.id = id;
+            _resultValue.ipv4CidrBlocks = ipv4CidrBlocks;
+            _resultValue.ipv6CidrBlocks = ipv6CidrBlocks;
+            return _resultValue;
         }
     }
 }

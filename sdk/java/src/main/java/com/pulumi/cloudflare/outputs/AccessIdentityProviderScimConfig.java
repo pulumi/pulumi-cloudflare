@@ -85,13 +85,13 @@ public final class AccessIdentityProviderScimConfig {
             return this;
         }
         public AccessIdentityProviderScimConfig build() {
-            final var o = new AccessIdentityProviderScimConfig();
-            o.enabled = enabled;
-            o.groupMemberDeprovision = groupMemberDeprovision;
-            o.seatDeprovision = seatDeprovision;
-            o.secret = secret;
-            o.userDeprovision = userDeprovision;
-            return o;
+            final var _resultValue = new AccessIdentityProviderScimConfig();
+            _resultValue.enabled = enabled;
+            _resultValue.groupMemberDeprovision = groupMemberDeprovision;
+            _resultValue.seatDeprovision = seatDeprovision;
+            _resultValue.secret = secret;
+            _resultValue.userDeprovision = userDeprovision;
+            return _resultValue;
         }
     }
 }

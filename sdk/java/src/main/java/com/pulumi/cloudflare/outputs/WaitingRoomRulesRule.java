@@ -143,14 +143,14 @@ public final class WaitingRoomRulesRule {
             return this;
         }
         public WaitingRoomRulesRule build() {
-            final var o = new WaitingRoomRulesRule();
-            o.action = action;
-            o.description = description;
-            o.expression = expression;
-            o.id = id;
-            o.status = status;
-            o.version = version;
-            return o;
+            final var _resultValue = new WaitingRoomRulesRule();
+            _resultValue.action = action;
+            _resultValue.description = description;
+            _resultValue.expression = expression;
+            _resultValue.id = id;
+            _resultValue.status = status;
+            _resultValue.version = version;
+            return _resultValue;
         }
     }
 }

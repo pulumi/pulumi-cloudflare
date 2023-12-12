@@ -86,11 +86,11 @@ public final class PagesProjectDeploymentConfigsPreviewServiceBinding {
             return this;
         }
         public PagesProjectDeploymentConfigsPreviewServiceBinding build() {
-            final var o = new PagesProjectDeploymentConfigsPreviewServiceBinding();
-            o.environment = environment;
-            o.name = name;
-            o.service = service;
-            return o;
+            final var _resultValue = new PagesProjectDeploymentConfigsPreviewServiceBinding();
+            _resultValue.environment = environment;
+            _resultValue.name = name;
+            _resultValue.service = service;
+            return _resultValue;
         }
     }
 }

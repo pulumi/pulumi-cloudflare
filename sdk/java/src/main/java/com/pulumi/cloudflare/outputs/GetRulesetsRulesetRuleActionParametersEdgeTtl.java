@@ -68,11 +68,11 @@ public final class GetRulesetsRulesetRuleActionParametersEdgeTtl {
             return statusCodeTtls(List.of(statusCodeTtls));
         }
         public GetRulesetsRulesetRuleActionParametersEdgeTtl build() {
-            final var o = new GetRulesetsRulesetRuleActionParametersEdgeTtl();
-            o.default_ = default_;
-            o.mode = mode;
-            o.statusCodeTtls = statusCodeTtls;
-            return o;
+            final var _resultValue = new GetRulesetsRulesetRuleActionParametersEdgeTtl();
+            _resultValue.default_ = default_;
+            _resultValue.mode = mode;
+            _resultValue.statusCodeTtls = statusCodeTtls;
+            return _resultValue;
         }
     }
 }

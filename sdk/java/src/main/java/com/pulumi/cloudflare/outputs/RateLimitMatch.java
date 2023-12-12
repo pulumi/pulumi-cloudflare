@@ -68,10 +68,10 @@ public final class RateLimitMatch {
             return this;
         }
         public RateLimitMatch build() {
-            final var o = new RateLimitMatch();
-            o.request = request;
-            o.response = response;
-            return o;
+            final var _resultValue = new RateLimitMatch();
+            _resultValue.request = request;
+            _resultValue.response = response;
+            return _resultValue;
         }
     }
 }

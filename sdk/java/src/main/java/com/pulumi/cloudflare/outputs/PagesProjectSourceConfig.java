@@ -208,17 +208,17 @@ public final class PagesProjectSourceConfig {
             return this;
         }
         public PagesProjectSourceConfig build() {
-            final var o = new PagesProjectSourceConfig();
-            o.deploymentsEnabled = deploymentsEnabled;
-            o.owner = owner;
-            o.prCommentsEnabled = prCommentsEnabled;
-            o.previewBranchExcludes = previewBranchExcludes;
-            o.previewBranchIncludes = previewBranchIncludes;
-            o.previewDeploymentSetting = previewDeploymentSetting;
-            o.productionBranch = productionBranch;
-            o.productionDeploymentEnabled = productionDeploymentEnabled;
-            o.repoName = repoName;
-            return o;
+            final var _resultValue = new PagesProjectSourceConfig();
+            _resultValue.deploymentsEnabled = deploymentsEnabled;
+            _resultValue.owner = owner;
+            _resultValue.prCommentsEnabled = prCommentsEnabled;
+            _resultValue.previewBranchExcludes = previewBranchExcludes;
+            _resultValue.previewBranchIncludes = previewBranchIncludes;
+            _resultValue.previewDeploymentSetting = previewDeploymentSetting;
+            _resultValue.productionBranch = productionBranch;
+            _resultValue.productionDeploymentEnabled = productionDeploymentEnabled;
+            _resultValue.repoName = repoName;
+            return _resultValue;
         }
     }
 }

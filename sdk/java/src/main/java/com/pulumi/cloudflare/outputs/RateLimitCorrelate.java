@@ -48,9 +48,9 @@ public final class RateLimitCorrelate {
             return this;
         }
         public RateLimitCorrelate build() {
-            final var o = new RateLimitCorrelate();
-            o.by = by;
-            return o;
+            final var _resultValue = new RateLimitCorrelate();
+            _resultValue.by = by;
+            return _resultValue;
         }
     }
 }

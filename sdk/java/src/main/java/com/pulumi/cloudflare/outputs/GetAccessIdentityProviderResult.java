@@ -124,13 +124,13 @@ public final class GetAccessIdentityProviderResult {
             return this;
         }
         public GetAccessIdentityProviderResult build() {
-            final var o = new GetAccessIdentityProviderResult();
-            o.accountId = accountId;
-            o.id = id;
-            o.name = name;
-            o.type = type;
-            o.zoneId = zoneId;
-            return o;
+            final var _resultValue = new GetAccessIdentityProviderResult();
+            _resultValue.accountId = accountId;
+            _resultValue.id = id;
+            _resultValue.name = name;
+            _resultValue.type = type;
+            _resultValue.zoneId = zoneId;
+            return _resultValue;
         }
     }
 }

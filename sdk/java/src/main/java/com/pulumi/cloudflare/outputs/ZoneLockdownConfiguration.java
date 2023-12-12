@@ -65,10 +65,10 @@ public final class ZoneLockdownConfiguration {
             return this;
         }
         public ZoneLockdownConfiguration build() {
-            final var o = new ZoneLockdownConfiguration();
-            o.target = target;
-            o.value = value;
-            return o;
+            final var _resultValue = new ZoneLockdownConfiguration();
+            _resultValue.target = target;
+            _resultValue.value = value;
+            return _resultValue;
         }
     }
 }

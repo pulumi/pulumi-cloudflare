@@ -107,13 +107,13 @@ public final class GetLoadBalancerPoolsPoolOrigin {
             return this;
         }
         public GetLoadBalancerPoolsPoolOrigin build() {
-            final var o = new GetLoadBalancerPoolsPoolOrigin();
-            o.address = address;
-            o.enabled = enabled;
-            o.headers = headers;
-            o.name = name;
-            o.weight = weight;
-            return o;
+            final var _resultValue = new GetLoadBalancerPoolsPoolOrigin();
+            _resultValue.address = address;
+            _resultValue.enabled = enabled;
+            _resultValue.headers = headers;
+            _resultValue.name = name;
+            _resultValue.weight = weight;
+            return _resultValue;
         }
     }
 }

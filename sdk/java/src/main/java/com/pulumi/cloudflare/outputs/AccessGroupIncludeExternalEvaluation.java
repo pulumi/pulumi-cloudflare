@@ -51,10 +51,10 @@ public final class AccessGroupIncludeExternalEvaluation {
             return this;
         }
         public AccessGroupIncludeExternalEvaluation build() {
-            final var o = new AccessGroupIncludeExternalEvaluation();
-            o.evaluateUrl = evaluateUrl;
-            o.keysUrl = keysUrl;
-            return o;
+            final var _resultValue = new AccessGroupIncludeExternalEvaluation();
+            _resultValue.evaluateUrl = evaluateUrl;
+            _resultValue.keysUrl = keysUrl;
+            return _resultValue;
         }
     }
 }

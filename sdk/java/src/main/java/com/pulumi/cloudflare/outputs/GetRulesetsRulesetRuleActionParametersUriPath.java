@@ -51,10 +51,10 @@ public final class GetRulesetsRulesetRuleActionParametersUriPath {
             return this;
         }
         public GetRulesetsRulesetRuleActionParametersUriPath build() {
-            final var o = new GetRulesetsRulesetRuleActionParametersUriPath();
-            o.expression = expression;
-            o.value = value;
-            return o;
+            final var _resultValue = new GetRulesetsRulesetRuleActionParametersUriPath();
+            _resultValue.expression = expression;
+            _resultValue.value = value;
+            return _resultValue;
         }
     }
 }

@@ -90,11 +90,11 @@ public final class SpectrumApplicationEdgeIps {
             return this;
         }
         public SpectrumApplicationEdgeIps build() {
-            final var o = new SpectrumApplicationEdgeIps();
-            o.connectivity = connectivity;
-            o.ips = ips;
-            o.type = type;
-            return o;
+            final var _resultValue = new SpectrumApplicationEdgeIps();
+            _resultValue.connectivity = connectivity;
+            _resultValue.ips = ips;
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

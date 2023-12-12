@@ -81,11 +81,11 @@ public final class GetListsResult {
             return lists(List.of(lists));
         }
         public GetListsResult build() {
-            final var o = new GetListsResult();
-            o.accountId = accountId;
-            o.id = id;
-            o.lists = lists;
-            return o;
+            final var _resultValue = new GetListsResult();
+            _resultValue.accountId = accountId;
+            _resultValue.id = id;
+            _resultValue.lists = lists;
+            return _resultValue;
         }
     }
 }

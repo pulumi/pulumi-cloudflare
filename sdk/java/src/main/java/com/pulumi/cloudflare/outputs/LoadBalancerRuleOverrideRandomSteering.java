@@ -69,10 +69,10 @@ public final class LoadBalancerRuleOverrideRandomSteering {
             return this;
         }
         public LoadBalancerRuleOverrideRandomSteering build() {
-            final var o = new LoadBalancerRuleOverrideRandomSteering();
-            o.defaultWeight = defaultWeight;
-            o.poolWeights = poolWeights;
-            return o;
+            final var _resultValue = new LoadBalancerRuleOverrideRandomSteering();
+            _resultValue.defaultWeight = defaultWeight;
+            _resultValue.poolWeights = poolWeights;
+            return _resultValue;
         }
     }
 }

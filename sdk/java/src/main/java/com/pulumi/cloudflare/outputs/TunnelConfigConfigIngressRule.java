@@ -98,12 +98,12 @@ public final class TunnelConfigConfigIngressRule {
             return this;
         }
         public TunnelConfigConfigIngressRule build() {
-            final var o = new TunnelConfigConfigIngressRule();
-            o.hostname = hostname;
-            o.originRequest = originRequest;
-            o.path = path;
-            o.service = service;
-            return o;
+            final var _resultValue = new TunnelConfigConfigIngressRule();
+            _resultValue.hostname = hostname;
+            _resultValue.originRequest = originRequest;
+            _resultValue.path = path;
+            _resultValue.service = service;
+            return _resultValue;
         }
     }
 }

@@ -94,11 +94,11 @@ public final class PageRuleActionsCacheKeyFieldsQueryString {
             return includes(List.of(includes));
         }
         public PageRuleActionsCacheKeyFieldsQueryString build() {
-            final var o = new PageRuleActionsCacheKeyFieldsQueryString();
-            o.excludes = excludes;
-            o.ignore = ignore;
-            o.includes = includes;
-            return o;
+            final var _resultValue = new PageRuleActionsCacheKeyFieldsQueryString();
+            _resultValue.excludes = excludes;
+            _resultValue.ignore = ignore;
+            _resultValue.includes = includes;
+            return _resultValue;
         }
     }
 }

@@ -85,13 +85,13 @@ public final class GetListsList {
             return this;
         }
         public GetListsList build() {
-            final var o = new GetListsList();
-            o.description = description;
-            o.id = id;
-            o.kind = kind;
-            o.name = name;
-            o.numitems = numitems;
-            return o;
+            final var _resultValue = new GetListsList();
+            _resultValue.description = description;
+            _resultValue.id = id;
+            _resultValue.kind = kind;
+            _resultValue.name = name;
+            _resultValue.numitems = numitems;
+            return _resultValue;
         }
     }
 }

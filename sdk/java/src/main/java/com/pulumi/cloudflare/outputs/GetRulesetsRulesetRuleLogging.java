@@ -64,10 +64,10 @@ public final class GetRulesetsRulesetRuleLogging {
             return this;
         }
         public GetRulesetsRulesetRuleLogging build() {
-            final var o = new GetRulesetsRulesetRuleLogging();
-            o.enabled = enabled;
-            o.status = status;
-            return o;
+            final var _resultValue = new GetRulesetsRulesetRuleLogging();
+            _resultValue.enabled = enabled;
+            _resultValue.status = status;
+            return _resultValue;
         }
     }
 }

@@ -71,10 +71,10 @@ public final class AccessGroupExcludeAzure {
             return ids(List.of(ids));
         }
         public AccessGroupExcludeAzure build() {
-            final var o = new AccessGroupExcludeAzure();
-            o.identityProviderId = identityProviderId;
-            o.ids = ids;
-            return o;
+            final var _resultValue = new AccessGroupExcludeAzure();
+            _resultValue.identityProviderId = identityProviderId;
+            _resultValue.ids = ids;
+            return _resultValue;
         }
     }
 }

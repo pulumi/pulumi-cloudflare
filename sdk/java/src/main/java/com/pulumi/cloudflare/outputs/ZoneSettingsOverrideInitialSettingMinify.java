@@ -60,11 +60,11 @@ public final class ZoneSettingsOverrideInitialSettingMinify {
             return this;
         }
         public ZoneSettingsOverrideInitialSettingMinify build() {
-            final var o = new ZoneSettingsOverrideInitialSettingMinify();
-            o.css = css;
-            o.html = html;
-            o.js = js;
-            return o;
+            final var _resultValue = new ZoneSettingsOverrideInitialSettingMinify();
+            _resultValue.css = css;
+            _resultValue.html = html;
+            _resultValue.js = js;
+            return _resultValue;
         }
     }
 }

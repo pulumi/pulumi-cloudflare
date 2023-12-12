@@ -57,10 +57,10 @@ public final class GetRulesetsRulesetRuleActionParametersCacheKeyCustomKeyQueryS
             return includes(List.of(includes));
         }
         public GetRulesetsRulesetRuleActionParametersCacheKeyCustomKeyQueryString build() {
-            final var o = new GetRulesetsRulesetRuleActionParametersCacheKeyCustomKeyQueryString();
-            o.excludes = excludes;
-            o.includes = includes;
-            return o;
+            final var _resultValue = new GetRulesetsRulesetRuleActionParametersCacheKeyCustomKeyQueryString();
+            _resultValue.excludes = excludes;
+            _resultValue.includes = includes;
+            return _resultValue;
         }
     }
 }

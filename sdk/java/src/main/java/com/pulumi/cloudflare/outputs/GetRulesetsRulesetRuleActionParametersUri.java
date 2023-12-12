@@ -64,11 +64,11 @@ public final class GetRulesetsRulesetRuleActionParametersUri {
             return this;
         }
         public GetRulesetsRulesetRuleActionParametersUri build() {
-            final var o = new GetRulesetsRulesetRuleActionParametersUri();
-            o.origin = origin;
-            o.path = path;
-            o.query = query;
-            return o;
+            final var _resultValue = new GetRulesetsRulesetRuleActionParametersUri();
+            _resultValue.origin = origin;
+            _resultValue.path = path;
+            _resultValue.query = query;
+            return _resultValue;
         }
     }
 }

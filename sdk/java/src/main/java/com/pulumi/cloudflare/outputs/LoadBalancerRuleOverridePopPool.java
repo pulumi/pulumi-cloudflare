@@ -69,10 +69,10 @@ public final class LoadBalancerRuleOverridePopPool {
             return this;
         }
         public LoadBalancerRuleOverridePopPool build() {
-            final var o = new LoadBalancerRuleOverridePopPool();
-            o.poolIds = poolIds;
-            o.pop = pop;
-            return o;
+            final var _resultValue = new LoadBalancerRuleOverridePopPool();
+            _resultValue.poolIds = poolIds;
+            _resultValue.pop = pop;
+            return _resultValue;
         }
     }
 }

@@ -46,9 +46,9 @@ public final class SpectrumApplicationOriginDns {
             return this;
         }
         public SpectrumApplicationOriginDns build() {
-            final var o = new SpectrumApplicationOriginDns();
-            o.name = name;
-            return o;
+            final var _resultValue = new SpectrumApplicationOriginDns();
+            _resultValue.name = name;
+            return _resultValue;
         }
     }
 }

@@ -65,10 +65,10 @@ public final class DeviceManagedNetworksConfig {
             return this;
         }
         public DeviceManagedNetworksConfig build() {
-            final var o = new DeviceManagedNetworksConfig();
-            o.sha256 = sha256;
-            o.tlsSockaddr = tlsSockaddr;
-            return o;
+            final var _resultValue = new DeviceManagedNetworksConfig();
+            _resultValue.sha256 = sha256;
+            _resultValue.tlsSockaddr = tlsSockaddr;
+            return _resultValue;
         }
     }
 }

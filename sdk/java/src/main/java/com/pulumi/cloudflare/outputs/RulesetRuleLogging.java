@@ -48,9 +48,9 @@ public final class RulesetRuleLogging {
             return this;
         }
         public RulesetRuleLogging build() {
-            final var o = new RulesetRuleLogging();
-            o.enabled = enabled;
-            return o;
+            final var _resultValue = new RulesetRuleLogging();
+            _resultValue.enabled = enabled;
+            return _resultValue;
         }
     }
 }

@@ -129,13 +129,13 @@ public final class GetDevicePostureRulesResult {
             return this;
         }
         public GetDevicePostureRulesResult build() {
-            final var o = new GetDevicePostureRulesResult();
-            o.accountId = accountId;
-            o.id = id;
-            o.name = name;
-            o.rules = rules;
-            o.type = type;
-            return o;
+            final var _resultValue = new GetDevicePostureRulesResult();
+            _resultValue.accountId = accountId;
+            _resultValue.id = id;
+            _resultValue.name = name;
+            _resultValue.rules = rules;
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

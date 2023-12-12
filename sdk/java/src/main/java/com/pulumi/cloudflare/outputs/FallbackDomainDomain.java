@@ -90,11 +90,11 @@ public final class FallbackDomainDomain {
             return this;
         }
         public FallbackDomainDomain build() {
-            final var o = new FallbackDomainDomain();
-            o.description = description;
-            o.dnsServers = dnsServers;
-            o.suffix = suffix;
-            return o;
+            final var _resultValue = new FallbackDomainDomain();
+            _resultValue.description = description;
+            _resultValue.dnsServers = dnsServers;
+            _resultValue.suffix = suffix;
+            return _resultValue;
         }
     }
 }

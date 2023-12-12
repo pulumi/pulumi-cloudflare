@@ -69,10 +69,10 @@ public final class LoadBalancerRuleOverrideRegionPool {
             return this;
         }
         public LoadBalancerRuleOverrideRegionPool build() {
-            final var o = new LoadBalancerRuleOverrideRegionPool();
-            o.poolIds = poolIds;
-            o.region = region;
-            return o;
+            final var _resultValue = new LoadBalancerRuleOverrideRegionPool();
+            _resultValue.poolIds = poolIds;
+            _resultValue.region = region;
+            return _resultValue;
         }
     }
 }

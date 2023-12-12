@@ -59,10 +59,10 @@ public final class NotificationPolicyEmailIntegration {
             return this;
         }
         public NotificationPolicyEmailIntegration build() {
-            final var o = new NotificationPolicyEmailIntegration();
-            o.id = id;
-            o.name = name;
-            return o;
+            final var _resultValue = new NotificationPolicyEmailIntegration();
+            _resultValue.id = id;
+            _resultValue.name = name;
+            return _resultValue;
         }
     }
 }

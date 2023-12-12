@@ -71,10 +71,10 @@ public final class AccessPolicyRequireAzure {
             return ids(List.of(ids));
         }
         public AccessPolicyRequireAzure build() {
-            final var o = new AccessPolicyRequireAzure();
-            o.identityProviderId = identityProviderId;
-            o.ids = ids;
-            return o;
+            final var _resultValue = new AccessPolicyRequireAzure();
+            _resultValue.identityProviderId = identityProviderId;
+            _resultValue.ids = ids;
+            return _resultValue;
         }
     }
 }

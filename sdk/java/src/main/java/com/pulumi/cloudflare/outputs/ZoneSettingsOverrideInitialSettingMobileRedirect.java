@@ -61,11 +61,11 @@ public final class ZoneSettingsOverrideInitialSettingMobileRedirect {
             return this;
         }
         public ZoneSettingsOverrideInitialSettingMobileRedirect build() {
-            final var o = new ZoneSettingsOverrideInitialSettingMobileRedirect();
-            o.mobileSubdomain = mobileSubdomain;
-            o.status = status;
-            o.stripUri = stripUri;
-            return o;
+            final var _resultValue = new ZoneSettingsOverrideInitialSettingMobileRedirect();
+            _resultValue.mobileSubdomain = mobileSubdomain;
+            _resultValue.status = status;
+            _resultValue.stripUri = stripUri;
+            return _resultValue;
         }
     }
 }

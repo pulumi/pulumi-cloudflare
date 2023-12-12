@@ -67,10 +67,10 @@ public final class RulesetRuleActionParametersFromValueTargetUrl {
             return this;
         }
         public RulesetRuleActionParametersFromValueTargetUrl build() {
-            final var o = new RulesetRuleActionParametersFromValueTargetUrl();
-            o.expression = expression;
-            o.value = value;
-            return o;
+            final var _resultValue = new RulesetRuleActionParametersFromValueTargetUrl();
+            _resultValue.expression = expression;
+            _resultValue.value = value;
+            return _resultValue;
         }
     }
 }

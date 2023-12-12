@@ -84,11 +84,11 @@ public final class TeamsAccountAntivirus {
             return this;
         }
         public TeamsAccountAntivirus build() {
-            final var o = new TeamsAccountAntivirus();
-            o.enabledDownloadPhase = enabledDownloadPhase;
-            o.enabledUploadPhase = enabledUploadPhase;
-            o.failClosed = failClosed;
-            return o;
+            final var _resultValue = new TeamsAccountAntivirus();
+            _resultValue.enabledDownloadPhase = enabledDownloadPhase;
+            _resultValue.enabledUploadPhase = enabledUploadPhase;
+            _resultValue.failClosed = failClosed;
+            return _resultValue;
         }
     }
 }

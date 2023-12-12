@@ -48,9 +48,9 @@ public final class PageRuleActionsCacheKeyFieldsHost {
             return this;
         }
         public PageRuleActionsCacheKeyFieldsHost build() {
-            final var o = new PageRuleActionsCacheKeyFieldsHost();
-            o.resolved = resolved;
-            return o;
+            final var _resultValue = new PageRuleActionsCacheKeyFieldsHost();
+            _resultValue.resolved = resolved;
+            return _resultValue;
         }
     }
 }

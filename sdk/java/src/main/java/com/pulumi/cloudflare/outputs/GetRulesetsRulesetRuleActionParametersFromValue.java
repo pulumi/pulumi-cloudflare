@@ -64,11 +64,11 @@ public final class GetRulesetsRulesetRuleActionParametersFromValue {
             return this;
         }
         public GetRulesetsRulesetRuleActionParametersFromValue build() {
-            final var o = new GetRulesetsRulesetRuleActionParametersFromValue();
-            o.preserveQueryString = preserveQueryString;
-            o.statusCode = statusCode;
-            o.targetUrl = targetUrl;
-            return o;
+            final var _resultValue = new GetRulesetsRulesetRuleActionParametersFromValue();
+            _resultValue.preserveQueryString = preserveQueryString;
+            _resultValue.statusCode = statusCode;
+            _resultValue.targetUrl = targetUrl;
+            return _resultValue;
         }
     }
 }

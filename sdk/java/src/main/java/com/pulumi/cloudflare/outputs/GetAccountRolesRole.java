@@ -62,11 +62,11 @@ public final class GetAccountRolesRole {
             return this;
         }
         public GetAccountRolesRole build() {
-            final var o = new GetAccountRolesRole();
-            o.description = description;
-            o.id = id;
-            o.name = name;
-            return o;
+            final var _resultValue = new GetAccountRolesRole();
+            _resultValue.description = description;
+            _resultValue.id = id;
+            _resultValue.name = name;
+            return _resultValue;
         }
     }
 }

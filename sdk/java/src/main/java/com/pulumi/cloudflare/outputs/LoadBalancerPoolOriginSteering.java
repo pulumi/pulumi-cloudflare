@@ -48,9 +48,9 @@ public final class LoadBalancerPoolOriginSteering {
             return this;
         }
         public LoadBalancerPoolOriginSteering build() {
-            final var o = new LoadBalancerPoolOriginSteering();
-            o.policy = policy;
-            return o;
+            final var _resultValue = new LoadBalancerPoolOriginSteering();
+            _resultValue.policy = policy;
+            return _resultValue;
         }
     }
 }

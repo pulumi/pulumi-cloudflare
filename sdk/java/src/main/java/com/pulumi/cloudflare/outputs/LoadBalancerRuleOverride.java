@@ -309,21 +309,21 @@ public final class LoadBalancerRuleOverride {
             return this;
         }
         public LoadBalancerRuleOverride build() {
-            final var o = new LoadBalancerRuleOverride();
-            o.adaptiveRoutings = adaptiveRoutings;
-            o.countryPools = countryPools;
-            o.defaultPools = defaultPools;
-            o.fallbackPool = fallbackPool;
-            o.locationStrategies = locationStrategies;
-            o.popPools = popPools;
-            o.randomSteerings = randomSteerings;
-            o.regionPools = regionPools;
-            o.sessionAffinity = sessionAffinity;
-            o.sessionAffinityAttributes = sessionAffinityAttributes;
-            o.sessionAffinityTtl = sessionAffinityTtl;
-            o.steeringPolicy = steeringPolicy;
-            o.ttl = ttl;
-            return o;
+            final var _resultValue = new LoadBalancerRuleOverride();
+            _resultValue.adaptiveRoutings = adaptiveRoutings;
+            _resultValue.countryPools = countryPools;
+            _resultValue.defaultPools = defaultPools;
+            _resultValue.fallbackPool = fallbackPool;
+            _resultValue.locationStrategies = locationStrategies;
+            _resultValue.popPools = popPools;
+            _resultValue.randomSteerings = randomSteerings;
+            _resultValue.regionPools = regionPools;
+            _resultValue.sessionAffinity = sessionAffinity;
+            _resultValue.sessionAffinityAttributes = sessionAffinityAttributes;
+            _resultValue.sessionAffinityTtl = sessionAffinityTtl;
+            _resultValue.steeringPolicy = steeringPolicy;
+            _resultValue.ttl = ttl;
+            return _resultValue;
         }
     }
 }

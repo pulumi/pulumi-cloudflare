@@ -73,10 +73,10 @@ public final class PageRuleActionsCacheKeyFieldsCookie {
             return includes(List.of(includes));
         }
         public PageRuleActionsCacheKeyFieldsCookie build() {
-            final var o = new PageRuleActionsCacheKeyFieldsCookie();
-            o.checkPresences = checkPresences;
-            o.includes = includes;
-            return o;
+            final var _resultValue = new PageRuleActionsCacheKeyFieldsCookie();
+            _resultValue.checkPresences = checkPresences;
+            _resultValue.includes = includes;
+            return _resultValue;
         }
     }
 }

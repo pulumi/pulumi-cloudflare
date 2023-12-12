@@ -66,10 +66,10 @@ public final class TeamsAccountLogging {
             return this;
         }
         public TeamsAccountLogging build() {
-            final var o = new TeamsAccountLogging();
-            o.redactPii = redactPii;
-            o.settingsByRuleType = settingsByRuleType;
-            return o;
+            final var _resultValue = new TeamsAccountLogging();
+            _resultValue.redactPii = redactPii;
+            _resultValue.settingsByRuleType = settingsByRuleType;
+            return _resultValue;
         }
     }
 }

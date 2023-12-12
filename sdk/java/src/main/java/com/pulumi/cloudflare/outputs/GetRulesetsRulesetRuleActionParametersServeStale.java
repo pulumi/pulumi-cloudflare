@@ -40,9 +40,9 @@ public final class GetRulesetsRulesetRuleActionParametersServeStale {
             return this;
         }
         public GetRulesetsRulesetRuleActionParametersServeStale build() {
-            final var o = new GetRulesetsRulesetRuleActionParametersServeStale();
-            o.disableStaleWhileUpdating = disableStaleWhileUpdating;
-            return o;
+            final var _resultValue = new GetRulesetsRulesetRuleActionParametersServeStale();
+            _resultValue.disableStaleWhileUpdating = disableStaleWhileUpdating;
+            return _resultValue;
         }
     }
 }

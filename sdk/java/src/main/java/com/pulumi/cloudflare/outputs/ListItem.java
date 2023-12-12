@@ -60,10 +60,10 @@ public final class ListItem {
             return this;
         }
         public ListItem build() {
-            final var o = new ListItem();
-            o.comment = comment;
-            o.value = value;
-            return o;
+            final var _resultValue = new ListItem();
+            _resultValue.comment = comment;
+            _resultValue.value = value;
+            return _resultValue;
         }
     }
 }

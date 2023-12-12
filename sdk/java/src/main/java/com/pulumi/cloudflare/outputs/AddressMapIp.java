@@ -46,9 +46,9 @@ public final class AddressMapIp {
             return this;
         }
         public AddressMapIp build() {
-            final var o = new AddressMapIp();
-            o.ip = ip;
-            return o;
+            final var _resultValue = new AddressMapIp();
+            _resultValue.ip = ip;
+            return _resultValue;
         }
     }
 }

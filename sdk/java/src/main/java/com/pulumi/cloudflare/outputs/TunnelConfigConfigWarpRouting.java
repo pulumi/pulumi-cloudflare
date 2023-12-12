@@ -48,9 +48,9 @@ public final class TunnelConfigConfigWarpRouting {
             return this;
         }
         public TunnelConfigConfigWarpRouting build() {
-            final var o = new TunnelConfigConfigWarpRouting();
-            o.enabled = enabled;
-            return o;
+            final var _resultValue = new TunnelConfigConfigWarpRouting();
+            _resultValue.enabled = enabled;
+            return _resultValue;
         }
     }
 }

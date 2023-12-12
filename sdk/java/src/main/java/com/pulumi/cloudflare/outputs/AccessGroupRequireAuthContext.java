@@ -84,11 +84,11 @@ public final class AccessGroupRequireAuthContext {
             return this;
         }
         public AccessGroupRequireAuthContext build() {
-            final var o = new AccessGroupRequireAuthContext();
-            o.acId = acId;
-            o.id = id;
-            o.identityProviderId = identityProviderId;
-            return o;
+            final var _resultValue = new AccessGroupRequireAuthContext();
+            _resultValue.acId = acId;
+            _resultValue.id = id;
+            _resultValue.identityProviderId = identityProviderId;
+            return _resultValue;
         }
     }
 }

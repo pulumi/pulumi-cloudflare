@@ -40,9 +40,9 @@ public final class GetRulesetsRulesetRuleActionParametersMatchedData {
             return this;
         }
         public GetRulesetsRulesetRuleActionParametersMatchedData build() {
-            final var o = new GetRulesetsRulesetRuleActionParametersMatchedData();
-            o.publicKey = publicKey;
-            return o;
+            final var _resultValue = new GetRulesetsRulesetRuleActionParametersMatchedData();
+            _resultValue.publicKey = publicKey;
+            return _resultValue;
         }
     }
 }

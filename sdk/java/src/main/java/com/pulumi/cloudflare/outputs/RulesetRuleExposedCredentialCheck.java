@@ -67,10 +67,10 @@ public final class RulesetRuleExposedCredentialCheck {
             return this;
         }
         public RulesetRuleExposedCredentialCheck build() {
-            final var o = new RulesetRuleExposedCredentialCheck();
-            o.passwordExpression = passwordExpression;
-            o.usernameExpression = usernameExpression;
-            return o;
+            final var _resultValue = new RulesetRuleExposedCredentialCheck();
+            _resultValue.passwordExpression = passwordExpression;
+            _resultValue.usernameExpression = usernameExpression;
+            return _resultValue;
         }
     }
 }

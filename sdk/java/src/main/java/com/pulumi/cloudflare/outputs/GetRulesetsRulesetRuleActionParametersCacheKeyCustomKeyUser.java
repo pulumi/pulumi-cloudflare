@@ -62,11 +62,11 @@ public final class GetRulesetsRulesetRuleActionParametersCacheKeyCustomKeyUser {
             return this;
         }
         public GetRulesetsRulesetRuleActionParametersCacheKeyCustomKeyUser build() {
-            final var o = new GetRulesetsRulesetRuleActionParametersCacheKeyCustomKeyUser();
-            o.deviceType = deviceType;
-            o.geo = geo;
-            o.lang = lang;
-            return o;
+            final var _resultValue = new GetRulesetsRulesetRuleActionParametersCacheKeyCustomKeyUser();
+            _resultValue.deviceType = deviceType;
+            _resultValue.geo = geo;
+            _resultValue.lang = lang;
+            return _resultValue;
         }
     }
 }

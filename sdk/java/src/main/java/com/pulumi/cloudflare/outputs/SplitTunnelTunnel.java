@@ -86,11 +86,11 @@ public final class SplitTunnelTunnel {
             return this;
         }
         public SplitTunnelTunnel build() {
-            final var o = new SplitTunnelTunnel();
-            o.address = address;
-            o.description = description;
-            o.host = host;
-            return o;
+            final var _resultValue = new SplitTunnelTunnel();
+            _resultValue.address = address;
+            _resultValue.description = description;
+            _resultValue.host = host;
+            return _resultValue;
         }
     }
 }

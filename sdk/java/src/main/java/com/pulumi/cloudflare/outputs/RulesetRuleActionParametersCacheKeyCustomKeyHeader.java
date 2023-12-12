@@ -94,11 +94,11 @@ public final class RulesetRuleActionParametersCacheKeyCustomKeyHeader {
             return includes(List.of(includes));
         }
         public RulesetRuleActionParametersCacheKeyCustomKeyHeader build() {
-            final var o = new RulesetRuleActionParametersCacheKeyCustomKeyHeader();
-            o.checkPresences = checkPresences;
-            o.excludeOrigin = excludeOrigin;
-            o.includes = includes;
-            return o;
+            final var _resultValue = new RulesetRuleActionParametersCacheKeyCustomKeyHeader();
+            _resultValue.checkPresences = checkPresences;
+            _resultValue.excludeOrigin = excludeOrigin;
+            _resultValue.includes = includes;
+            return _resultValue;
         }
     }
 }

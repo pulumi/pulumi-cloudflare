@@ -65,10 +65,10 @@ public final class WorkerScriptKvNamespaceBinding {
             return this;
         }
         public WorkerScriptKvNamespaceBinding build() {
-            final var o = new WorkerScriptKvNamespaceBinding();
-            o.name = name;
-            o.namespaceId = namespaceId;
-            return o;
+            final var _resultValue = new WorkerScriptKvNamespaceBinding();
+            _resultValue.name = name;
+            _resultValue.namespaceId = namespaceId;
+            return _resultValue;
         }
     }
 }

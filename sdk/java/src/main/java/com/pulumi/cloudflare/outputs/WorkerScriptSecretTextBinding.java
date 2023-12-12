@@ -65,10 +65,10 @@ public final class WorkerScriptSecretTextBinding {
             return this;
         }
         public WorkerScriptSecretTextBinding build() {
-            final var o = new WorkerScriptSecretTextBinding();
-            o.name = name;
-            o.text = text;
-            return o;
+            final var _resultValue = new WorkerScriptSecretTextBinding();
+            _resultValue.name = name;
+            _resultValue.text = text;
+            return _resultValue;
         }
     }
 }

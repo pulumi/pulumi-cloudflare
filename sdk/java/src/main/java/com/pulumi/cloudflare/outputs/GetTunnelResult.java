@@ -142,14 +142,14 @@ public final class GetTunnelResult {
             return this;
         }
         public GetTunnelResult build() {
-            final var o = new GetTunnelResult();
-            o.accountId = accountId;
-            o.id = id;
-            o.name = name;
-            o.remoteConfig = remoteConfig;
-            o.status = status;
-            o.tunnelType = tunnelType;
-            return o;
+            final var _resultValue = new GetTunnelResult();
+            _resultValue.accountId = accountId;
+            _resultValue.id = id;
+            _resultValue.name = name;
+            _resultValue.remoteConfig = remoteConfig;
+            _resultValue.status = status;
+            _resultValue.tunnelType = tunnelType;
+            return _resultValue;
         }
     }
 }

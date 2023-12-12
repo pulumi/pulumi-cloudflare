@@ -51,10 +51,10 @@ public final class GetRulesetsRulesetRuleActionParametersFromValueTargetUrl {
             return this;
         }
         public GetRulesetsRulesetRuleActionParametersFromValueTargetUrl build() {
-            final var o = new GetRulesetsRulesetRuleActionParametersFromValueTargetUrl();
-            o.expression = expression;
-            o.value = value;
-            return o;
+            final var _resultValue = new GetRulesetsRulesetRuleActionParametersFromValueTargetUrl();
+            _resultValue.expression = expression;
+            _resultValue.value = value;
+            return _resultValue;
         }
     }
 }

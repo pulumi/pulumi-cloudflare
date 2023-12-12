@@ -63,10 +63,10 @@ public final class AccessPolicyRequireOkta {
             return names(List.of(names));
         }
         public AccessPolicyRequireOkta build() {
-            final var o = new AccessPolicyRequireOkta();
-            o.identityProviderId = identityProviderId;
-            o.names = names;
-            return o;
+            final var _resultValue = new AccessPolicyRequireOkta();
+            _resultValue.identityProviderId = identityProviderId;
+            _resultValue.names = names;
+            return _resultValue;
         }
     }
 }

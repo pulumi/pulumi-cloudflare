@@ -167,15 +167,15 @@ public final class AccessApplicationSaasApp {
             return this;
         }
         public AccessApplicationSaasApp build() {
-            final var o = new AccessApplicationSaasApp();
-            o.consumerServiceUrl = consumerServiceUrl;
-            o.customAttributes = customAttributes;
-            o.idpEntityId = idpEntityId;
-            o.nameIdFormat = nameIdFormat;
-            o.publicKey = publicKey;
-            o.spEntityId = spEntityId;
-            o.ssoEndpoint = ssoEndpoint;
-            return o;
+            final var _resultValue = new AccessApplicationSaasApp();
+            _resultValue.consumerServiceUrl = consumerServiceUrl;
+            _resultValue.customAttributes = customAttributes;
+            _resultValue.idpEntityId = idpEntityId;
+            _resultValue.nameIdFormat = nameIdFormat;
+            _resultValue.publicKey = publicKey;
+            _resultValue.spEntityId = spEntityId;
+            _resultValue.ssoEndpoint = ssoEndpoint;
+            return _resultValue;
         }
     }
 }

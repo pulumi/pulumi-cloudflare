@@ -70,11 +70,11 @@ public final class GetRulesetsRulesetRuleActionParametersCacheKeyCustomKeyHeader
             return includes(List.of(includes));
         }
         public GetRulesetsRulesetRuleActionParametersCacheKeyCustomKeyHeader build() {
-            final var o = new GetRulesetsRulesetRuleActionParametersCacheKeyCustomKeyHeader();
-            o.checkPresences = checkPresences;
-            o.excludeOrigin = excludeOrigin;
-            o.includes = includes;
-            return o;
+            final var _resultValue = new GetRulesetsRulesetRuleActionParametersCacheKeyCustomKeyHeader();
+            _resultValue.checkPresences = checkPresences;
+            _resultValue.excludeOrigin = excludeOrigin;
+            _resultValue.includes = includes;
+            return _resultValue;
         }
     }
 }

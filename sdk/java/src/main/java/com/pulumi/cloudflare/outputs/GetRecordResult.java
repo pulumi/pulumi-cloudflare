@@ -240,19 +240,19 @@ public final class GetRecordResult {
             return this;
         }
         public GetRecordResult build() {
-            final var o = new GetRecordResult();
-            o.hostname = hostname;
-            o.id = id;
-            o.locked = locked;
-            o.priority = priority;
-            o.proxiable = proxiable;
-            o.proxied = proxied;
-            o.ttl = ttl;
-            o.type = type;
-            o.value = value;
-            o.zoneId = zoneId;
-            o.zoneName = zoneName;
-            return o;
+            final var _resultValue = new GetRecordResult();
+            _resultValue.hostname = hostname;
+            _resultValue.id = id;
+            _resultValue.locked = locked;
+            _resultValue.priority = priority;
+            _resultValue.proxiable = proxiable;
+            _resultValue.proxied = proxied;
+            _resultValue.ttl = ttl;
+            _resultValue.type = type;
+            _resultValue.value = value;
+            _resultValue.zoneId = zoneId;
+            _resultValue.zoneName = zoneName;
+            return _resultValue;
         }
     }
 }

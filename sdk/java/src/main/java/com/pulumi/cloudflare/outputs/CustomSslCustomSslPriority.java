@@ -60,10 +60,10 @@ public final class CustomSslCustomSslPriority {
             return this;
         }
         public CustomSslCustomSslPriority build() {
-            final var o = new CustomSslCustomSslPriority();
-            o.id = id;
-            o.priority = priority;
-            return o;
+            final var _resultValue = new CustomSslCustomSslPriority();
+            _resultValue.id = id;
+            _resultValue.priority = priority;
+            return _resultValue;
         }
     }
 }

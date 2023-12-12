@@ -87,11 +87,11 @@ public final class RulesetRuleActionParametersResponse {
             return this;
         }
         public RulesetRuleActionParametersResponse build() {
-            final var o = new RulesetRuleActionParametersResponse();
-            o.content = content;
-            o.contentType = contentType;
-            o.statusCode = statusCode;
-            return o;
+            final var _resultValue = new RulesetRuleActionParametersResponse();
+            _resultValue.content = content;
+            _resultValue.contentType = contentType;
+            _resultValue.statusCode = statusCode;
+            return _resultValue;
         }
     }
 }

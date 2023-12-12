@@ -48,9 +48,9 @@ public final class TeamsAccountFips {
             return this;
         }
         public TeamsAccountFips build() {
-            final var o = new TeamsAccountFips();
-            o.tls = tls;
-            return o;
+            final var _resultValue = new TeamsAccountFips();
+            _resultValue.tls = tls;
+            return _resultValue;
         }
     }
 }

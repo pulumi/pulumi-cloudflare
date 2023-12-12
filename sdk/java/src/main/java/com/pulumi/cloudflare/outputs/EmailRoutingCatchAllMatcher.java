@@ -46,9 +46,9 @@ public final class EmailRoutingCatchAllMatcher {
             return this;
         }
         public EmailRoutingCatchAllMatcher build() {
-            final var o = new EmailRoutingCatchAllMatcher();
-            o.type = type;
-            return o;
+            final var _resultValue = new EmailRoutingCatchAllMatcher();
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

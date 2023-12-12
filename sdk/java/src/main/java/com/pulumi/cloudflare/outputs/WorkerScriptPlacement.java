@@ -46,9 +46,9 @@ public final class WorkerScriptPlacement {
             return this;
         }
         public WorkerScriptPlacement build() {
-            final var o = new WorkerScriptPlacement();
-            o.mode = mode;
-            return o;
+            final var _resultValue = new WorkerScriptPlacement();
+            _resultValue.mode = mode;
+            return _resultValue;
         }
     }
 }

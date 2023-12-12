@@ -187,16 +187,16 @@ public final class RulesetRuleRatelimit {
             return this;
         }
         public RulesetRuleRatelimit build() {
-            final var o = new RulesetRuleRatelimit();
-            o.characteristics = characteristics;
-            o.countingExpression = countingExpression;
-            o.mitigationTimeout = mitigationTimeout;
-            o.period = period;
-            o.requestsPerPeriod = requestsPerPeriod;
-            o.requestsToOrigin = requestsToOrigin;
-            o.scorePerPeriod = scorePerPeriod;
-            o.scoreResponseHeaderName = scoreResponseHeaderName;
-            return o;
+            final var _resultValue = new RulesetRuleRatelimit();
+            _resultValue.characteristics = characteristics;
+            _resultValue.countingExpression = countingExpression;
+            _resultValue.mitigationTimeout = mitigationTimeout;
+            _resultValue.period = period;
+            _resultValue.requestsPerPeriod = requestsPerPeriod;
+            _resultValue.requestsToOrigin = requestsToOrigin;
+            _resultValue.scorePerPeriod = scorePerPeriod;
+            _resultValue.scoreResponseHeaderName = scoreResponseHeaderName;
+            return _resultValue;
         }
     }
 }

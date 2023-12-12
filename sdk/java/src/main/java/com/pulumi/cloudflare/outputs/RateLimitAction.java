@@ -88,11 +88,11 @@ public final class RateLimitAction {
             return this;
         }
         public RateLimitAction build() {
-            final var o = new RateLimitAction();
-            o.mode = mode;
-            o.response = response;
-            o.timeout = timeout;
-            return o;
+            final var _resultValue = new RateLimitAction();
+            _resultValue.mode = mode;
+            _resultValue.response = response;
+            _resultValue.timeout = timeout;
+            return _resultValue;
         }
     }
 }

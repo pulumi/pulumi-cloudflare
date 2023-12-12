@@ -84,11 +84,11 @@ public final class TunnelConfigConfig {
             return this;
         }
         public TunnelConfigConfig build() {
-            final var o = new TunnelConfigConfig();
-            o.ingressRules = ingressRules;
-            o.originRequest = originRequest;
-            o.warpRouting = warpRouting;
-            return o;
+            final var _resultValue = new TunnelConfigConfig();
+            _resultValue.ingressRules = ingressRules;
+            _resultValue.originRequest = originRequest;
+            _resultValue.warpRouting = warpRouting;
+            return _resultValue;
         }
     }
 }

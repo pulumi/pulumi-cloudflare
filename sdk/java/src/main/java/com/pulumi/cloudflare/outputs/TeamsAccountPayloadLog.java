@@ -46,9 +46,9 @@ public final class TeamsAccountPayloadLog {
             return this;
         }
         public TeamsAccountPayloadLog build() {
-            final var o = new TeamsAccountPayloadLog();
-            o.publicKey = publicKey;
-            return o;
+            final var _resultValue = new TeamsAccountPayloadLog();
+            _resultValue.publicKey = publicKey;
+            return _resultValue;
         }
     }
 }

@@ -129,13 +129,13 @@ public final class LoadBalancerRuleOverrideSessionAffinityAttribute {
             return this;
         }
         public LoadBalancerRuleOverrideSessionAffinityAttribute build() {
-            final var o = new LoadBalancerRuleOverrideSessionAffinityAttribute();
-            o.headers = headers;
-            o.requireAllHeaders = requireAllHeaders;
-            o.samesite = samesite;
-            o.secure = secure;
-            o.zeroDowntimeFailover = zeroDowntimeFailover;
-            return o;
+            final var _resultValue = new LoadBalancerRuleOverrideSessionAffinityAttribute();
+            _resultValue.headers = headers;
+            _resultValue.requireAllHeaders = requireAllHeaders;
+            _resultValue.samesite = samesite;
+            _resultValue.secure = secure;
+            _resultValue.zeroDowntimeFailover = zeroDowntimeFailover;
+            return _resultValue;
         }
     }
 }

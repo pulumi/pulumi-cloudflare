@@ -206,17 +206,17 @@ public final class GetZoneResult {
             return this;
         }
         public GetZoneResult build() {
-            final var o = new GetZoneResult();
-            o.accountId = accountId;
-            o.id = id;
-            o.name = name;
-            o.nameServers = nameServers;
-            o.paused = paused;
-            o.plan = plan;
-            o.status = status;
-            o.vanityNameServers = vanityNameServers;
-            o.zoneId = zoneId;
-            return o;
+            final var _resultValue = new GetZoneResult();
+            _resultValue.accountId = accountId;
+            _resultValue.id = id;
+            _resultValue.name = name;
+            _resultValue.nameServers = nameServers;
+            _resultValue.paused = paused;
+            _resultValue.plan = plan;
+            _resultValue.status = status;
+            _resultValue.vanityNameServers = vanityNameServers;
+            _resultValue.zoneId = zoneId;
+            return _resultValue;
         }
     }
 }

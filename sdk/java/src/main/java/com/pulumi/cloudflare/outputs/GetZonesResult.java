@@ -90,11 +90,11 @@ public final class GetZonesResult {
             return zones(List.of(zones));
         }
         public GetZonesResult build() {
-            final var o = new GetZonesResult();
-            o.filter = filter;
-            o.id = id;
-            o.zones = zones;
-            return o;
+            final var _resultValue = new GetZonesResult();
+            _resultValue.filter = filter;
+            _resultValue.id = id;
+            _resultValue.zones = zones;
+            return _resultValue;
         }
     }
 }

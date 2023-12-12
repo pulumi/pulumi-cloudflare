@@ -337,35 +337,35 @@ public final class AccessIdentityProviderConfig {
             return this;
         }
         public AccessIdentityProviderConfig build() {
-            final var o = new AccessIdentityProviderConfig();
-            o.apiToken = apiToken;
-            o.appsDomain = appsDomain;
-            o.attributes = attributes;
-            o.authUrl = authUrl;
-            o.authorizationServerId = authorizationServerId;
-            o.centrifyAccount = centrifyAccount;
-            o.centrifyAppId = centrifyAppId;
-            o.certsUrl = certsUrl;
-            o.claims = claims;
-            o.clientId = clientId;
-            o.clientSecret = clientSecret;
-            o.conditionalAccessEnabled = conditionalAccessEnabled;
-            o.directoryId = directoryId;
-            o.emailAttributeName = emailAttributeName;
-            o.emailClaimName = emailClaimName;
-            o.idpPublicCert = idpPublicCert;
-            o.issuerUrl = issuerUrl;
-            o.oktaAccount = oktaAccount;
-            o.oneloginAccount = oneloginAccount;
-            o.pingEnvId = pingEnvId;
-            o.pkceEnabled = pkceEnabled;
-            o.redirectUrl = redirectUrl;
-            o.scopes = scopes;
-            o.signRequest = signRequest;
-            o.ssoTargetUrl = ssoTargetUrl;
-            o.supportGroups = supportGroups;
-            o.tokenUrl = tokenUrl;
-            return o;
+            final var _resultValue = new AccessIdentityProviderConfig();
+            _resultValue.apiToken = apiToken;
+            _resultValue.appsDomain = appsDomain;
+            _resultValue.attributes = attributes;
+            _resultValue.authUrl = authUrl;
+            _resultValue.authorizationServerId = authorizationServerId;
+            _resultValue.centrifyAccount = centrifyAccount;
+            _resultValue.centrifyAppId = centrifyAppId;
+            _resultValue.certsUrl = certsUrl;
+            _resultValue.claims = claims;
+            _resultValue.clientId = clientId;
+            _resultValue.clientSecret = clientSecret;
+            _resultValue.conditionalAccessEnabled = conditionalAccessEnabled;
+            _resultValue.directoryId = directoryId;
+            _resultValue.emailAttributeName = emailAttributeName;
+            _resultValue.emailClaimName = emailClaimName;
+            _resultValue.idpPublicCert = idpPublicCert;
+            _resultValue.issuerUrl = issuerUrl;
+            _resultValue.oktaAccount = oktaAccount;
+            _resultValue.oneloginAccount = oneloginAccount;
+            _resultValue.pingEnvId = pingEnvId;
+            _resultValue.pkceEnabled = pkceEnabled;
+            _resultValue.redirectUrl = redirectUrl;
+            _resultValue.scopes = scopes;
+            _resultValue.signRequest = signRequest;
+            _resultValue.ssoTargetUrl = ssoTargetUrl;
+            _resultValue.supportGroups = supportGroups;
+            _resultValue.tokenUrl = tokenUrl;
+            return _resultValue;
         }
     }
 }

@@ -220,19 +220,19 @@ public final class CustomHostnameSsl {
             return this;
         }
         public CustomHostnameSsl build() {
-            final var o = new CustomHostnameSsl();
-            o.bundleMethod = bundleMethod;
-            o.certificateAuthority = certificateAuthority;
-            o.customCertificate = customCertificate;
-            o.customKey = customKey;
-            o.method = method;
-            o.settings = settings;
-            o.status = status;
-            o.type = type;
-            o.validationErrors = validationErrors;
-            o.validationRecords = validationRecords;
-            o.wildcard = wildcard;
-            return o;
+            final var _resultValue = new CustomHostnameSsl();
+            _resultValue.bundleMethod = bundleMethod;
+            _resultValue.certificateAuthority = certificateAuthority;
+            _resultValue.customCertificate = customCertificate;
+            _resultValue.customKey = customKey;
+            _resultValue.method = method;
+            _resultValue.settings = settings;
+            _resultValue.status = status;
+            _resultValue.type = type;
+            _resultValue.validationErrors = validationErrors;
+            _resultValue.validationRecords = validationRecords;
+            _resultValue.wildcard = wildcard;
+            return _resultValue;
         }
     }
 }

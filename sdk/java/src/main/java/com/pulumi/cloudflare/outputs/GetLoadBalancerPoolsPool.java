@@ -308,22 +308,22 @@ public final class GetLoadBalancerPoolsPool {
             return origins(List.of(origins));
         }
         public GetLoadBalancerPoolsPool build() {
-            final var o = new GetLoadBalancerPoolsPool();
-            o.checkRegions = checkRegions;
-            o.createdOn = createdOn;
-            o.description = description;
-            o.enabled = enabled;
-            o.id = id;
-            o.latitude = latitude;
-            o.loadSheddings = loadSheddings;
-            o.longitude = longitude;
-            o.minimumOrigins = minimumOrigins;
-            o.modifiedOn = modifiedOn;
-            o.monitor = monitor;
-            o.name = name;
-            o.notificationEmail = notificationEmail;
-            o.origins = origins;
-            return o;
+            final var _resultValue = new GetLoadBalancerPoolsPool();
+            _resultValue.checkRegions = checkRegions;
+            _resultValue.createdOn = createdOn;
+            _resultValue.description = description;
+            _resultValue.enabled = enabled;
+            _resultValue.id = id;
+            _resultValue.latitude = latitude;
+            _resultValue.loadSheddings = loadSheddings;
+            _resultValue.longitude = longitude;
+            _resultValue.minimumOrigins = minimumOrigins;
+            _resultValue.modifiedOn = modifiedOn;
+            _resultValue.monitor = monitor;
+            _resultValue.name = name;
+            _resultValue.notificationEmail = notificationEmail;
+            _resultValue.origins = origins;
+            return _resultValue;
         }
     }
 }

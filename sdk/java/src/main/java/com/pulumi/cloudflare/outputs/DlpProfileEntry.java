@@ -99,12 +99,12 @@ public final class DlpProfileEntry {
             return this;
         }
         public DlpProfileEntry build() {
-            final var o = new DlpProfileEntry();
-            o.enabled = enabled;
-            o.id = id;
-            o.name = name;
-            o.pattern = pattern;
-            return o;
+            final var _resultValue = new DlpProfileEntry();
+            _resultValue.enabled = enabled;
+            _resultValue.id = id;
+            _resultValue.name = name;
+            _resultValue.pattern = pattern;
+            return _resultValue;
         }
     }
 }

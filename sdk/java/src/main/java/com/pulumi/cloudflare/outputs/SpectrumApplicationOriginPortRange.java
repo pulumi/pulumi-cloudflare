@@ -65,10 +65,10 @@ public final class SpectrumApplicationOriginPortRange {
             return this;
         }
         public SpectrumApplicationOriginPortRange build() {
-            final var o = new SpectrumApplicationOriginPortRange();
-            o.end = end;
-            o.start = start;
-            return o;
+            final var _resultValue = new SpectrumApplicationOriginPortRange();
+            _resultValue.end = end;
+            _resultValue.start = start;
+            return _resultValue;
         }
     }
 }

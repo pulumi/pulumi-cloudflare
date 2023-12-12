@@ -67,10 +67,10 @@ public final class LoadBalancerLocationStrategy {
             return this;
         }
         public LoadBalancerLocationStrategy build() {
-            final var o = new LoadBalancerLocationStrategy();
-            o.mode = mode;
-            o.preferEcs = preferEcs;
-            return o;
+            final var _resultValue = new LoadBalancerLocationStrategy();
+            _resultValue.mode = mode;
+            _resultValue.preferEcs = preferEcs;
+            return _resultValue;
         }
     }
 }

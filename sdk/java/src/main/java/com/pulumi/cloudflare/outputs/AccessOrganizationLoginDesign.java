@@ -124,13 +124,13 @@ public final class AccessOrganizationLoginDesign {
             return this;
         }
         public AccessOrganizationLoginDesign build() {
-            final var o = new AccessOrganizationLoginDesign();
-            o.backgroundColor = backgroundColor;
-            o.footerText = footerText;
-            o.headerText = headerText;
-            o.logoPath = logoPath;
-            o.textColor = textColor;
-            return o;
+            final var _resultValue = new AccessOrganizationLoginDesign();
+            _resultValue.backgroundColor = backgroundColor;
+            _resultValue.footerText = footerText;
+            _resultValue.headerText = headerText;
+            _resultValue.logoPath = logoPath;
+            _resultValue.textColor = textColor;
+            return _resultValue;
         }
     }
 }

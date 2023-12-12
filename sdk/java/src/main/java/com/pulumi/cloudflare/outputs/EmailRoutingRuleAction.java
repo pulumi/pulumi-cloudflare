@@ -70,10 +70,10 @@ public final class EmailRoutingRuleAction {
             return values(List.of(values));
         }
         public EmailRoutingRuleAction build() {
-            final var o = new EmailRoutingRuleAction();
-            o.type = type;
-            o.values = values;
-            return o;
+            final var _resultValue = new EmailRoutingRuleAction();
+            _resultValue.type = type;
+            _resultValue.values = values;
+            return _resultValue;
         }
     }
 }

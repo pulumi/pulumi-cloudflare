@@ -73,10 +73,10 @@ public final class RulesetRuleActionParametersCacheKeyCustomKeyQueryString {
             return includes(List.of(includes));
         }
         public RulesetRuleActionParametersCacheKeyCustomKeyQueryString build() {
-            final var o = new RulesetRuleActionParametersCacheKeyCustomKeyQueryString();
-            o.excludes = excludes;
-            o.includes = includes;
-            return o;
+            final var _resultValue = new RulesetRuleActionParametersCacheKeyCustomKeyQueryString();
+            _resultValue.excludes = excludes;
+            _resultValue.includes = includes;
+            return _resultValue;
         }
     }
 }

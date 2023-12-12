@@ -67,11 +67,11 @@ public final class GetRulesetsRulesetRuleActionParametersEdgeTtlStatusCodeTtl {
             return this;
         }
         public GetRulesetsRulesetRuleActionParametersEdgeTtlStatusCodeTtl build() {
-            final var o = new GetRulesetsRulesetRuleActionParametersEdgeTtlStatusCodeTtl();
-            o.statusCode = statusCode;
-            o.statusCodeRanges = statusCodeRanges;
-            o.value = value;
-            return o;
+            final var _resultValue = new GetRulesetsRulesetRuleActionParametersEdgeTtlStatusCodeTtl();
+            _resultValue.statusCode = statusCode;
+            _resultValue.statusCodeRanges = statusCodeRanges;
+            _resultValue.value = value;
+            return _resultValue;
         }
     }
 }

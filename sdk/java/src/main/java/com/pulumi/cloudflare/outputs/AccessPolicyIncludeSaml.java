@@ -70,11 +70,11 @@ public final class AccessPolicyIncludeSaml {
             return this;
         }
         public AccessPolicyIncludeSaml build() {
-            final var o = new AccessPolicyIncludeSaml();
-            o.attributeName = attributeName;
-            o.attributeValue = attributeValue;
-            o.identityProviderId = identityProviderId;
-            return o;
+            final var _resultValue = new AccessPolicyIncludeSaml();
+            _resultValue.attributeName = attributeName;
+            _resultValue.attributeValue = attributeValue;
+            _resultValue.identityProviderId = identityProviderId;
+            return _resultValue;
         }
     }
 }

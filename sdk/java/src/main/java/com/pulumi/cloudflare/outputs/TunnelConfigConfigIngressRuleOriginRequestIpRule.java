@@ -92,11 +92,11 @@ public final class TunnelConfigConfigIngressRuleOriginRequestIpRule {
             return this;
         }
         public TunnelConfigConfigIngressRuleOriginRequestIpRule build() {
-            final var o = new TunnelConfigConfigIngressRuleOriginRequestIpRule();
-            o.allow = allow;
-            o.ports = ports;
-            o.prefix = prefix;
-            return o;
+            final var _resultValue = new TunnelConfigConfigIngressRuleOriginRequestIpRule();
+            _resultValue.allow = allow;
+            _resultValue.ports = ports;
+            _resultValue.prefix = prefix;
+            return _resultValue;
         }
     }
 }

@@ -68,10 +68,10 @@ public final class PagesProjectDeploymentConfigs {
             return this;
         }
         public PagesProjectDeploymentConfigs build() {
-            final var o = new PagesProjectDeploymentConfigs();
-            o.preview = preview;
-            o.production = production;
-            return o;
+            final var _resultValue = new PagesProjectDeploymentConfigs();
+            _resultValue.preview = preview;
+            _resultValue.production = production;
+            return _resultValue;
         }
     }
 }

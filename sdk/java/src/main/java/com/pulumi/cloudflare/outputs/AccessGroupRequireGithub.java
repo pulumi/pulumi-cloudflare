@@ -74,11 +74,11 @@ public final class AccessGroupRequireGithub {
             return teams(List.of(teams));
         }
         public AccessGroupRequireGithub build() {
-            final var o = new AccessGroupRequireGithub();
-            o.identityProviderId = identityProviderId;
-            o.name = name;
-            o.teams = teams;
-            return o;
+            final var _resultValue = new AccessGroupRequireGithub();
+            _resultValue.identityProviderId = identityProviderId;
+            _resultValue.name = name;
+            _resultValue.teams = teams;
+            return _resultValue;
         }
     }
 }

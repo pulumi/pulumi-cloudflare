@@ -63,10 +63,10 @@ public final class AccessPolicyExcludeOkta {
             return names(List.of(names));
         }
         public AccessPolicyExcludeOkta build() {
-            final var o = new AccessPolicyExcludeOkta();
-            o.identityProviderId = identityProviderId;
-            o.names = names;
-            return o;
+            final var _resultValue = new AccessPolicyExcludeOkta();
+            _resultValue.identityProviderId = identityProviderId;
+            _resultValue.names = names;
+            return _resultValue;
         }
     }
 }

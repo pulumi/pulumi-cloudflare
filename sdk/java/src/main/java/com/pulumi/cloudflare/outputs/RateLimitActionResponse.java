@@ -65,10 +65,10 @@ public final class RateLimitActionResponse {
             return this;
         }
         public RateLimitActionResponse build() {
-            final var o = new RateLimitActionResponse();
-            o.body = body;
-            o.contentType = contentType;
-            return o;
+            final var _resultValue = new RateLimitActionResponse();
+            _resultValue.body = body;
+            _resultValue.contentType = contentType;
+            return _resultValue;
         }
     }
 }

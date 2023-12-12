@@ -69,10 +69,10 @@ public final class LoadBalancerPoolOriginHeader {
             return values(List.of(values));
         }
         public LoadBalancerPoolOriginHeader build() {
-            final var o = new LoadBalancerPoolOriginHeader();
-            o.header = header;
-            o.values = values;
-            return o;
+            final var _resultValue = new LoadBalancerPoolOriginHeader();
+            _resultValue.header = header;
+            _resultValue.values = values;
+            return _resultValue;
         }
     }
 }

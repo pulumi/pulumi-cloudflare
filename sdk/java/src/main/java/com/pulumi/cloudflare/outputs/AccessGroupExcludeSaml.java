@@ -70,11 +70,11 @@ public final class AccessGroupExcludeSaml {
             return this;
         }
         public AccessGroupExcludeSaml build() {
-            final var o = new AccessGroupExcludeSaml();
-            o.attributeName = attributeName;
-            o.attributeValue = attributeValue;
-            o.identityProviderId = identityProviderId;
-            return o;
+            final var _resultValue = new AccessGroupExcludeSaml();
+            _resultValue.attributeName = attributeName;
+            _resultValue.attributeValue = attributeValue;
+            _resultValue.identityProviderId = identityProviderId;
+            return _resultValue;
         }
     }
 }

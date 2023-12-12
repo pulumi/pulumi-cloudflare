@@ -46,9 +46,9 @@ public final class TeamsRuleRuleSettingsPayloadLog {
             return this;
         }
         public TeamsRuleRuleSettingsPayloadLog build() {
-            final var o = new TeamsRuleRuleSettingsPayloadLog();
-            o.enabled = enabled;
-            return o;
+            final var _resultValue = new TeamsRuleRuleSettingsPayloadLog();
+            _resultValue.enabled = enabled;
+            return _resultValue;
         }
     }
 }

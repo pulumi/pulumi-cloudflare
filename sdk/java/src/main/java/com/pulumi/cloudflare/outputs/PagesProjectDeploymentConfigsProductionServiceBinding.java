@@ -86,11 +86,11 @@ public final class PagesProjectDeploymentConfigsProductionServiceBinding {
             return this;
         }
         public PagesProjectDeploymentConfigsProductionServiceBinding build() {
-            final var o = new PagesProjectDeploymentConfigsProductionServiceBinding();
-            o.environment = environment;
-            o.name = name;
-            o.service = service;
-            return o;
+            final var _resultValue = new PagesProjectDeploymentConfigsProductionServiceBinding();
+            _resultValue.environment = environment;
+            _resultValue.name = name;
+            _resultValue.service = service;
+            return _resultValue;
         }
     }
 }

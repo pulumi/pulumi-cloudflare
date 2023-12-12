@@ -86,11 +86,11 @@ public final class TeamsRuleRuleSettingsEgress {
             return this;
         }
         public TeamsRuleRuleSettingsEgress build() {
-            final var o = new TeamsRuleRuleSettingsEgress();
-            o.ipv4 = ipv4;
-            o.ipv4Fallback = ipv4Fallback;
-            o.ipv6 = ipv6;
-            return o;
+            final var _resultValue = new TeamsRuleRuleSettingsEgress();
+            _resultValue.ipv4 = ipv4;
+            _resultValue.ipv4Fallback = ipv4Fallback;
+            _resultValue.ipv6 = ipv6;
+            return _resultValue;
         }
     }
 }

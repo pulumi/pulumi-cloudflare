@@ -46,9 +46,9 @@ public final class TeamsAccountBodyScanning {
             return this;
         }
         public TeamsAccountBodyScanning build() {
-            final var o = new TeamsAccountBodyScanning();
-            o.inspectionMode = inspectionMode;
-            return o;
+            final var _resultValue = new TeamsAccountBodyScanning();
+            _resultValue.inspectionMode = inspectionMode;
+            return _resultValue;
         }
     }
 }

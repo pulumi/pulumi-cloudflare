@@ -51,10 +51,10 @@ public final class GetRulesetsRulesetRuleExposedCredentialCheck {
             return this;
         }
         public GetRulesetsRulesetRuleExposedCredentialCheck build() {
-            final var o = new GetRulesetsRulesetRuleExposedCredentialCheck();
-            o.passwordExpression = passwordExpression;
-            o.usernameExpression = usernameExpression;
-            return o;
+            final var _resultValue = new GetRulesetsRulesetRuleExposedCredentialCheck();
+            _resultValue.passwordExpression = passwordExpression;
+            _resultValue.usernameExpression = usernameExpression;
+            return _resultValue;
         }
     }
 }

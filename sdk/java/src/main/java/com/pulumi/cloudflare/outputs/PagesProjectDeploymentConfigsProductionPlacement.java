@@ -48,9 +48,9 @@ public final class PagesProjectDeploymentConfigsProductionPlacement {
             return this;
         }
         public PagesProjectDeploymentConfigsProductionPlacement build() {
-            final var o = new PagesProjectDeploymentConfigsProductionPlacement();
-            o.mode = mode;
-            return o;
+            final var _resultValue = new PagesProjectDeploymentConfigsProductionPlacement();
+            _resultValue.mode = mode;
+            return _resultValue;
         }
     }
 }

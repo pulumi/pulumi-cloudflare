@@ -87,11 +87,11 @@ public final class AddressMapMembership {
             return this;
         }
         public AddressMapMembership build() {
-            final var o = new AddressMapMembership();
-            o.canDelete = canDelete;
-            o.identifier = identifier;
-            o.kind = kind;
-            return o;
+            final var _resultValue = new AddressMapMembership();
+            _resultValue.canDelete = canDelete;
+            _resultValue.identifier = identifier;
+            _resultValue.kind = kind;
+            return _resultValue;
         }
     }
 }

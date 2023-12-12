@@ -65,10 +65,10 @@ public final class WorkerScriptR2BucketBinding {
             return this;
         }
         public WorkerScriptR2BucketBinding build() {
-            final var o = new WorkerScriptR2BucketBinding();
-            o.bucketName = bucketName;
-            o.name = name;
-            return o;
+            final var _resultValue = new WorkerScriptR2BucketBinding();
+            _resultValue.bucketName = bucketName;
+            _resultValue.name = name;
+            return _resultValue;
         }
     }
 }

@@ -85,11 +85,11 @@ public final class GetZoneCacheReserveResult {
             return this;
         }
         public GetZoneCacheReserveResult build() {
-            final var o = new GetZoneCacheReserveResult();
-            o.enabled = enabled;
-            o.id = id;
-            o.zoneId = zoneId;
-            return o;
+            final var _resultValue = new GetZoneCacheReserveResult();
+            _resultValue.enabled = enabled;
+            _resultValue.id = id;
+            _resultValue.zoneId = zoneId;
+            return _resultValue;
         }
     }
 }

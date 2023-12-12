@@ -65,10 +65,10 @@ public final class UserAgentBlockingRuleConfiguration {
             return this;
         }
         public UserAgentBlockingRuleConfiguration build() {
-            final var o = new UserAgentBlockingRuleConfiguration();
-            o.target = target;
-            o.value = value;
-            return o;
+            final var _resultValue = new UserAgentBlockingRuleConfiguration();
+            _resultValue.target = target;
+            _resultValue.value = value;
+            return _resultValue;
         }
     }
 }

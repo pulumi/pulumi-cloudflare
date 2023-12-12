@@ -65,10 +65,10 @@ public final class WorkerScriptWebassemblyBinding {
             return this;
         }
         public WorkerScriptWebassemblyBinding build() {
-            final var o = new WorkerScriptWebassemblyBinding();
-            o.module = module;
-            o.name = name;
-            return o;
+            final var _resultValue = new WorkerScriptWebassemblyBinding();
+            _resultValue.module = module;
+            _resultValue.name = name;
+            return _resultValue;
         }
     }
 }

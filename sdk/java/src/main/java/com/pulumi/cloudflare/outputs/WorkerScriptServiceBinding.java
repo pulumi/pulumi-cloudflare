@@ -86,11 +86,11 @@ public final class WorkerScriptServiceBinding {
             return this;
         }
         public WorkerScriptServiceBinding build() {
-            final var o = new WorkerScriptServiceBinding();
-            o.environment = environment;
-            o.name = name;
-            o.service = service;
-            return o;
+            final var _resultValue = new WorkerScriptServiceBinding();
+            _resultValue.environment = environment;
+            _resultValue.name = name;
+            _resultValue.service = service;
+            return _resultValue;
         }
     }
 }

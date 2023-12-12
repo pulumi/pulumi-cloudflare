@@ -57,10 +57,10 @@ public final class TeamsAccountLoggingSettingsByRuleTypeDns {
             return this;
         }
         public TeamsAccountLoggingSettingsByRuleTypeDns build() {
-            final var o = new TeamsAccountLoggingSettingsByRuleTypeDns();
-            o.logAll = logAll;
-            o.logBlocks = logBlocks;
-            return o;
+            final var _resultValue = new TeamsAccountLoggingSettingsByRuleTypeDns();
+            _resultValue.logAll = logAll;
+            _resultValue.logBlocks = logBlocks;
+            return _resultValue;
         }
     }
 }

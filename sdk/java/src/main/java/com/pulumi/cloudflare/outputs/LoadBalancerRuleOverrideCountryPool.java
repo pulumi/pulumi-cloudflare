@@ -69,10 +69,10 @@ public final class LoadBalancerRuleOverrideCountryPool {
             return poolIds(List.of(poolIds));
         }
         public LoadBalancerRuleOverrideCountryPool build() {
-            final var o = new LoadBalancerRuleOverrideCountryPool();
-            o.country = country;
-            o.poolIds = poolIds;
-            return o;
+            final var _resultValue = new LoadBalancerRuleOverrideCountryPool();
+            _resultValue.country = country;
+            _resultValue.poolIds = poolIds;
+            return _resultValue;
         }
     }
 }

@@ -51,10 +51,10 @@ public final class GetRulesetsRulesetRuleActionParametersEdgeTtlStatusCodeTtlSta
             return this;
         }
         public GetRulesetsRulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRange build() {
-            final var o = new GetRulesetsRulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRange();
-            o.from = from;
-            o.to = to;
-            return o;
+            final var _resultValue = new GetRulesetsRulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRange();
+            _resultValue.from = from;
+            _resultValue.to = to;
+            return _resultValue;
         }
     }
 }

@@ -46,9 +46,9 @@ public final class TeamsRuleRuleSettingsAuditSsh {
             return this;
         }
         public TeamsRuleRuleSettingsAuditSsh build() {
-            final var o = new TeamsRuleRuleSettingsAuditSsh();
-            o.commandLogging = commandLogging;
-            return o;
+            final var _resultValue = new TeamsRuleRuleSettingsAuditSsh();
+            _resultValue.commandLogging = commandLogging;
+            return _resultValue;
         }
     }
 }

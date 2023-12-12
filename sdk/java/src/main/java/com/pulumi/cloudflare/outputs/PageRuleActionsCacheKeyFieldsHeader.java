@@ -95,11 +95,11 @@ public final class PageRuleActionsCacheKeyFieldsHeader {
             return includes(List.of(includes));
         }
         public PageRuleActionsCacheKeyFieldsHeader build() {
-            final var o = new PageRuleActionsCacheKeyFieldsHeader();
-            o.checkPresences = checkPresences;
-            o.excludes = excludes;
-            o.includes = includes;
-            return o;
+            final var _resultValue = new PageRuleActionsCacheKeyFieldsHeader();
+            _resultValue.checkPresences = checkPresences;
+            _resultValue.excludes = excludes;
+            _resultValue.includes = includes;
+            return _resultValue;
         }
     }
 }

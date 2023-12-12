@@ -145,14 +145,14 @@ public final class GetOriginCaCertificateResult {
             return this;
         }
         public GetOriginCaCertificateResult build() {
-            final var o = new GetOriginCaCertificateResult();
-            o.certificate = certificate;
-            o.expiresOn = expiresOn;
-            o.hostnames = hostnames;
-            o.id = id;
-            o.requestType = requestType;
-            o.revokedAt = revokedAt;
-            return o;
+            final var _resultValue = new GetOriginCaCertificateResult();
+            _resultValue.certificate = certificate;
+            _resultValue.expiresOn = expiresOn;
+            _resultValue.hostnames = hostnames;
+            _resultValue.id = id;
+            _resultValue.requestType = requestType;
+            _resultValue.revokedAt = revokedAt;
+            return _resultValue;
         }
     }
 }

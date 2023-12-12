@@ -95,14 +95,14 @@ public final class GetDevicePostureRulesRule {
             return this;
         }
         public GetDevicePostureRulesRule build() {
-            final var o = new GetDevicePostureRulesRule();
-            o.description = description;
-            o.expiration = expiration;
-            o.id = id;
-            o.name = name;
-            o.schedule = schedule;
-            o.type = type;
-            return o;
+            final var _resultValue = new GetDevicePostureRulesRule();
+            _resultValue.description = description;
+            _resultValue.expiration = expiration;
+            _resultValue.id = id;
+            _resultValue.name = name;
+            _resultValue.schedule = schedule;
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

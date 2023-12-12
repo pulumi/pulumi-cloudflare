@@ -66,10 +66,10 @@ public final class TeamsRuleRuleSettingsL4override {
             return this;
         }
         public TeamsRuleRuleSettingsL4override build() {
-            final var o = new TeamsRuleRuleSettingsL4override();
-            o.ip = ip;
-            o.port = port;
-            return o;
+            final var _resultValue = new TeamsRuleRuleSettingsL4override();
+            _resultValue.ip = ip;
+            _resultValue.port = port;
+            return _resultValue;
         }
     }
 }

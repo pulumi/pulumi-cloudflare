@@ -118,13 +118,13 @@ public final class AccessApplicationSaasAppCustomAttribute {
             return this;
         }
         public AccessApplicationSaasAppCustomAttribute build() {
-            final var o = new AccessApplicationSaasAppCustomAttribute();
-            o.friendlyName = friendlyName;
-            o.name = name;
-            o.nameFormat = nameFormat;
-            o.required = required;
-            o.source = source;
-            return o;
+            final var _resultValue = new AccessApplicationSaasAppCustomAttribute();
+            _resultValue.friendlyName = friendlyName;
+            _resultValue.name = name;
+            _resultValue.nameFormat = nameFormat;
+            _resultValue.required = required;
+            _resultValue.source = source;
+            return _resultValue;
         }
     }
 }

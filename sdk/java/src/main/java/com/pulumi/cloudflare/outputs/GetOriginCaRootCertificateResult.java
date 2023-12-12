@@ -84,11 +84,11 @@ public final class GetOriginCaRootCertificateResult {
             return this;
         }
         public GetOriginCaRootCertificateResult build() {
-            final var o = new GetOriginCaRootCertificateResult();
-            o.algorithm = algorithm;
-            o.certPem = certPem;
-            o.id = id;
-            return o;
+            final var _resultValue = new GetOriginCaRootCertificateResult();
+            _resultValue.algorithm = algorithm;
+            _resultValue.certPem = certPem;
+            _resultValue.id = id;
+            return _resultValue;
         }
     }
 }

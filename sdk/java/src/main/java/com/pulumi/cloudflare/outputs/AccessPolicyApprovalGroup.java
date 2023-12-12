@@ -83,11 +83,11 @@ public final class AccessPolicyApprovalGroup {
             return this;
         }
         public AccessPolicyApprovalGroup build() {
-            final var o = new AccessPolicyApprovalGroup();
-            o.approvalsNeeded = approvalsNeeded;
-            o.emailAddresses = emailAddresses;
-            o.emailListUuid = emailListUuid;
-            return o;
+            final var _resultValue = new AccessPolicyApprovalGroup();
+            _resultValue.approvalsNeeded = approvalsNeeded;
+            _resultValue.emailAddresses = emailAddresses;
+            _resultValue.emailListUuid = emailListUuid;
+            return _resultValue;
         }
     }
 }

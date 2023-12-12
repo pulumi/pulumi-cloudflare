@@ -57,10 +57,10 @@ public final class GetRulesetsRulesetRuleActionParametersFromList {
             return this;
         }
         public GetRulesetsRulesetRuleActionParametersFromList build() {
-            final var o = new GetRulesetsRulesetRuleActionParametersFromList();
-            o.key = key;
-            o.name = name;
-            return o;
+            final var _resultValue = new GetRulesetsRulesetRuleActionParametersFromList();
+            _resultValue.key = key;
+            _resultValue.name = name;
+            return _resultValue;
         }
     }
 }

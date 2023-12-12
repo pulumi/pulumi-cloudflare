@@ -346,24 +346,24 @@ public final class TeamsRuleRuleSettings {
             return this;
         }
         public TeamsRuleRuleSettings build() {
-            final var o = new TeamsRuleRuleSettings();
-            o.addHeaders = addHeaders;
-            o.allowChildBypass = allowChildBypass;
-            o.auditSsh = auditSsh;
-            o.bisoAdminControls = bisoAdminControls;
-            o.blockPageEnabled = blockPageEnabled;
-            o.blockPageReason = blockPageReason;
-            o.bypassParentRule = bypassParentRule;
-            o.checkSession = checkSession;
-            o.egress = egress;
-            o.insecureDisableDnssecValidation = insecureDisableDnssecValidation;
-            o.ipCategories = ipCategories;
-            o.l4override = l4override;
-            o.overrideHost = overrideHost;
-            o.overrideIps = overrideIps;
-            o.payloadLog = payloadLog;
-            o.untrustedCert = untrustedCert;
-            return o;
+            final var _resultValue = new TeamsRuleRuleSettings();
+            _resultValue.addHeaders = addHeaders;
+            _resultValue.allowChildBypass = allowChildBypass;
+            _resultValue.auditSsh = auditSsh;
+            _resultValue.bisoAdminControls = bisoAdminControls;
+            _resultValue.blockPageEnabled = blockPageEnabled;
+            _resultValue.blockPageReason = blockPageReason;
+            _resultValue.bypassParentRule = bypassParentRule;
+            _resultValue.checkSession = checkSession;
+            _resultValue.egress = egress;
+            _resultValue.insecureDisableDnssecValidation = insecureDisableDnssecValidation;
+            _resultValue.ipCategories = ipCategories;
+            _resultValue.l4override = l4override;
+            _resultValue.overrideHost = overrideHost;
+            _resultValue.overrideIps = overrideIps;
+            _resultValue.payloadLog = payloadLog;
+            _resultValue.untrustedCert = untrustedCert;
+            return _resultValue;
         }
     }
 }

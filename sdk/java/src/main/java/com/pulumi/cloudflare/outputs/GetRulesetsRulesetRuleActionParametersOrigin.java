@@ -52,10 +52,10 @@ public final class GetRulesetsRulesetRuleActionParametersOrigin {
             return this;
         }
         public GetRulesetsRulesetRuleActionParametersOrigin build() {
-            final var o = new GetRulesetsRulesetRuleActionParametersOrigin();
-            o.host = host;
-            o.port = port;
-            return o;
+            final var _resultValue = new GetRulesetsRulesetRuleActionParametersOrigin();
+            _resultValue.host = host;
+            _resultValue.port = port;
+            return _resultValue;
         }
     }
 }

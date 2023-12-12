@@ -68,10 +68,10 @@ public final class RulesetRuleActionParametersOrigin {
             return this;
         }
         public RulesetRuleActionParametersOrigin build() {
-            final var o = new RulesetRuleActionParametersOrigin();
-            o.host = host;
-            o.port = port;
-            return o;
+            final var _resultValue = new RulesetRuleActionParametersOrigin();
+            _resultValue.host = host;
+            _resultValue.port = port;
+            return _resultValue;
         }
     }
 }

@@ -46,9 +46,9 @@ public final class TeamsAccountSshSessionLog {
             return this;
         }
         public TeamsAccountSshSessionLog build() {
-            final var o = new TeamsAccountSshSessionLog();
-            o.publicKey = publicKey;
-            return o;
+            final var _resultValue = new TeamsAccountSshSessionLog();
+            _resultValue.publicKey = publicKey;
+            return _resultValue;
         }
     }
 }
