@@ -1366,9 +1366,6 @@
                                 "status": {
                                     "maxItemsOne": false
                                 },
-                                "target_host": {
-                                    "maxItemsOne": false
-                                },
                                 "target_hostname": {
                                     "maxItemsOne": false
                                 },
@@ -2715,15 +2712,6 @@
                 "current": "cloudflare:index/getUser:getUser",
                 "majorVersion": 5
             },
-            "cloudflare_waf_groups": {
-                "current": "cloudflare:index/getWafGroups:getWafGroups"
-            },
-            "cloudflare_waf_packages": {
-                "current": "cloudflare:index/getWafPackages:getWafPackages"
-            },
-            "cloudflare_waf_rules": {
-                "current": "cloudflare:index/getWafRules:getWafRules"
-            },
             "cloudflare_zone": {
                 "current": "cloudflare:index/getZone:getZone",
                 "majorVersion": 5,
@@ -2754,6 +2742,17 @@
                     "zones": {
                         "maxItemsOne": false
                     }
+                }
+            }
+        }
+    },
+    "auto-settings": {
+        "resources": {
+            "cloudflare_ruleset": {
+                "maxItemsOneOverrides": {
+                    "rules.$.action_parameters.$.autominify": false,
+                    "rules.$.action_parameters.$.edge_ttl.$.status_code_ttl.$.status_code_range": false,
+                    "rules.$.action_parameters.$.response": false
                 }
             }
         }
