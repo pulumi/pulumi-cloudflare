@@ -124,13 +124,13 @@ public final class PagesProjectBuildConfig {
             return this;
         }
         public PagesProjectBuildConfig build() {
-            final var o = new PagesProjectBuildConfig();
-            o.buildCommand = buildCommand;
-            o.destinationDir = destinationDir;
-            o.rootDir = rootDir;
-            o.webAnalyticsTag = webAnalyticsTag;
-            o.webAnalyticsToken = webAnalyticsToken;
-            return o;
+            final var _resultValue = new PagesProjectBuildConfig();
+            _resultValue.buildCommand = buildCommand;
+            _resultValue.destinationDir = destinationDir;
+            _resultValue.rootDir = rootDir;
+            _resultValue.webAnalyticsTag = webAnalyticsTag;
+            _resultValue.webAnalyticsToken = webAnalyticsToken;
+            return _resultValue;
         }
     }
 }

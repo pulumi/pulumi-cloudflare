@@ -144,14 +144,14 @@ public final class GetZonesFilter {
             return this;
         }
         public GetZonesFilter build() {
-            final var o = new GetZonesFilter();
-            o.accountId = accountId;
-            o.lookupType = lookupType;
-            o.match = match;
-            o.name = name;
-            o.paused = paused;
-            o.status = status;
-            return o;
+            final var _resultValue = new GetZonesFilter();
+            _resultValue.accountId = accountId;
+            _resultValue.lookupType = lookupType;
+            _resultValue.match = match;
+            _resultValue.name = name;
+            _resultValue.paused = paused;
+            _resultValue.status = status;
+            return _resultValue;
         }
     }
 }

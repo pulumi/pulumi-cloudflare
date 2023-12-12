@@ -51,10 +51,10 @@ public final class AccessPolicyRequireExternalEvaluation {
             return this;
         }
         public AccessPolicyRequireExternalEvaluation build() {
-            final var o = new AccessPolicyRequireExternalEvaluation();
-            o.evaluateUrl = evaluateUrl;
-            o.keysUrl = keysUrl;
-            return o;
+            final var _resultValue = new AccessPolicyRequireExternalEvaluation();
+            _resultValue.evaluateUrl = evaluateUrl;
+            _resultValue.keysUrl = keysUrl;
+            return _resultValue;
         }
     }
 }

@@ -110,15 +110,15 @@ public final class CertificatePackValidationRecord {
             return this;
         }
         public CertificatePackValidationRecord build() {
-            final var o = new CertificatePackValidationRecord();
-            o.cnameName = cnameName;
-            o.cnameTarget = cnameTarget;
-            o.emails = emails;
-            o.httpBody = httpBody;
-            o.httpUrl = httpUrl;
-            o.txtName = txtName;
-            o.txtValue = txtValue;
-            return o;
+            final var _resultValue = new CertificatePackValidationRecord();
+            _resultValue.cnameName = cnameName;
+            _resultValue.cnameTarget = cnameTarget;
+            _resultValue.emails = emails;
+            _resultValue.httpBody = httpBody;
+            _resultValue.httpUrl = httpUrl;
+            _resultValue.txtName = txtName;
+            _resultValue.txtValue = txtValue;
+            return _resultValue;
         }
     }
 }

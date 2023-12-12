@@ -84,11 +84,11 @@ public final class TeamsAccountProxy {
             return this;
         }
         public TeamsAccountProxy build() {
-            final var o = new TeamsAccountProxy();
-            o.rootCa = rootCa;
-            o.tcp = tcp;
-            o.udp = udp;
-            return o;
+            final var _resultValue = new TeamsAccountProxy();
+            _resultValue.rootCa = rootCa;
+            _resultValue.tcp = tcp;
+            _resultValue.udp = udp;
+            return _resultValue;
         }
     }
 }

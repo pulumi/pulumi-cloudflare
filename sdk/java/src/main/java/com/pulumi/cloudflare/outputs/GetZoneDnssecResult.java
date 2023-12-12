@@ -256,20 +256,20 @@ public final class GetZoneDnssecResult {
             return this;
         }
         public GetZoneDnssecResult build() {
-            final var o = new GetZoneDnssecResult();
-            o.algorithm = algorithm;
-            o.digest = digest;
-            o.digestAlgorithm = digestAlgorithm;
-            o.digestType = digestType;
-            o.ds = ds;
-            o.flags = flags;
-            o.id = id;
-            o.keyTag = keyTag;
-            o.keyType = keyType;
-            o.publicKey = publicKey;
-            o.status = status;
-            o.zoneId = zoneId;
-            return o;
+            final var _resultValue = new GetZoneDnssecResult();
+            _resultValue.algorithm = algorithm;
+            _resultValue.digest = digest;
+            _resultValue.digestAlgorithm = digestAlgorithm;
+            _resultValue.digestType = digestType;
+            _resultValue.ds = ds;
+            _resultValue.flags = flags;
+            _resultValue.id = id;
+            _resultValue.keyTag = keyTag;
+            _resultValue.keyType = keyType;
+            _resultValue.publicKey = publicKey;
+            _resultValue.status = status;
+            _resultValue.zoneId = zoneId;
+            return _resultValue;
         }
     }
 }

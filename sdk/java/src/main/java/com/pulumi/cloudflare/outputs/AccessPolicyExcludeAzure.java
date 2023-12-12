@@ -71,10 +71,10 @@ public final class AccessPolicyExcludeAzure {
             return ids(List.of(ids));
         }
         public AccessPolicyExcludeAzure build() {
-            final var o = new AccessPolicyExcludeAzure();
-            o.identityProviderId = identityProviderId;
-            o.ids = ids;
-            return o;
+            final var _resultValue = new AccessPolicyExcludeAzure();
+            _resultValue.identityProviderId = identityProviderId;
+            _resultValue.ids = ids;
+            return _resultValue;
         }
     }
 }

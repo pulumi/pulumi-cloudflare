@@ -73,10 +73,10 @@ public final class ApiTokenConditionRequestIp {
             return notIns(List.of(notIns));
         }
         public ApiTokenConditionRequestIp build() {
-            final var o = new ApiTokenConditionRequestIp();
-            o.ins = ins;
-            o.notIns = notIns;
-            return o;
+            final var _resultValue = new ApiTokenConditionRequestIp();
+            _resultValue.ins = ins;
+            _resultValue.notIns = notIns;
+            return _resultValue;
         }
     }
 }

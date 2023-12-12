@@ -67,10 +67,10 @@ public final class TeamsLocationNetwork {
             return this;
         }
         public TeamsLocationNetwork build() {
-            final var o = new TeamsLocationNetwork();
-            o.id = id;
-            o.network = network;
-            return o;
+            final var _resultValue = new TeamsLocationNetwork();
+            _resultValue.id = id;
+            _resultValue.network = network;
+            return _resultValue;
         }
     }
 }

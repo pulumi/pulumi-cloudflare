@@ -261,29 +261,29 @@ public final class GetDevicesDevice {
             return this;
         }
         public GetDevicesDevice build() {
-            final var o = new GetDevicesDevice();
-            o.created = created;
-            o.deleted = deleted;
-            o.deviceType = deviceType;
-            o.id = id;
-            o.ip = ip;
-            o.key = key;
-            o.lastSeen = lastSeen;
-            o.macAddress = macAddress;
-            o.manufacturer = manufacturer;
-            o.model = model;
-            o.name = name;
-            o.osDistroName = osDistroName;
-            o.osDistroRevision = osDistroRevision;
-            o.osVersion = osVersion;
-            o.revokedAt = revokedAt;
-            o.serialNumber = serialNumber;
-            o.updated = updated;
-            o.userEmail = userEmail;
-            o.userId = userId;
-            o.userName = userName;
-            o.version = version;
-            return o;
+            final var _resultValue = new GetDevicesDevice();
+            _resultValue.created = created;
+            _resultValue.deleted = deleted;
+            _resultValue.deviceType = deviceType;
+            _resultValue.id = id;
+            _resultValue.ip = ip;
+            _resultValue.key = key;
+            _resultValue.lastSeen = lastSeen;
+            _resultValue.macAddress = macAddress;
+            _resultValue.manufacturer = manufacturer;
+            _resultValue.model = model;
+            _resultValue.name = name;
+            _resultValue.osDistroName = osDistroName;
+            _resultValue.osDistroRevision = osDistroRevision;
+            _resultValue.osVersion = osVersion;
+            _resultValue.revokedAt = revokedAt;
+            _resultValue.serialNumber = serialNumber;
+            _resultValue.updated = updated;
+            _resultValue.userEmail = userEmail;
+            _resultValue.userId = userId;
+            _resultValue.userName = userName;
+            _resultValue.version = version;
+            return _resultValue;
         }
     }
 }

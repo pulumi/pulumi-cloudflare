@@ -69,10 +69,10 @@ public final class LoadBalancerPopPool {
             return this;
         }
         public LoadBalancerPopPool build() {
-            final var o = new LoadBalancerPopPool();
-            o.poolIds = poolIds;
-            o.pop = pop;
-            return o;
+            final var _resultValue = new LoadBalancerPopPool();
+            _resultValue.poolIds = poolIds;
+            _resultValue.pop = pop;
+            return _resultValue;
         }
     }
 }

@@ -71,10 +71,10 @@ public final class AccessGroupRequireAzure {
             return ids(List.of(ids));
         }
         public AccessGroupRequireAzure build() {
-            final var o = new AccessGroupRequireAzure();
-            o.identityProviderId = identityProviderId;
-            o.ids = ids;
-            return o;
+            final var _resultValue = new AccessGroupRequireAzure();
+            _resultValue.identityProviderId = identityProviderId;
+            _resultValue.ids = ids;
+            return _resultValue;
         }
     }
 }

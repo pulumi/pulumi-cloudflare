@@ -62,11 +62,11 @@ public final class GetRulesetsRulesetRuleActionParametersAutominify {
             return this;
         }
         public GetRulesetsRulesetRuleActionParametersAutominify build() {
-            final var o = new GetRulesetsRulesetRuleActionParametersAutominify();
-            o.css = css;
-            o.html = html;
-            o.js = js;
-            return o;
+            final var _resultValue = new GetRulesetsRulesetRuleActionParametersAutominify();
+            _resultValue.css = css;
+            _resultValue.html = html;
+            _resultValue.js = js;
+            return _resultValue;
         }
     }
 }

@@ -48,9 +48,9 @@ public final class RulesetRuleActionParametersSni {
             return this;
         }
         public RulesetRuleActionParametersSni build() {
-            final var o = new RulesetRuleActionParametersSni();
-            o.value = value;
-            return o;
+            final var _resultValue = new RulesetRuleActionParametersSni();
+            _resultValue.value = value;
+            return _resultValue;
         }
     }
 }

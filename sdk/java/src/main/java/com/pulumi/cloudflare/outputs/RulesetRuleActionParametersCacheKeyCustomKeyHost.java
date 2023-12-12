@@ -48,9 +48,9 @@ public final class RulesetRuleActionParametersCacheKeyCustomKeyHost {
             return this;
         }
         public RulesetRuleActionParametersCacheKeyCustomKeyHost build() {
-            final var o = new RulesetRuleActionParametersCacheKeyCustomKeyHost();
-            o.resolved = resolved;
-            return o;
+            final var _resultValue = new RulesetRuleActionParametersCacheKeyCustomKeyHost();
+            _resultValue.resolved = resolved;
+            return _resultValue;
         }
     }
 }

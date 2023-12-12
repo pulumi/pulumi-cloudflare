@@ -142,14 +142,14 @@ public final class GetListResult {
             return this;
         }
         public GetListResult build() {
-            final var o = new GetListResult();
-            o.accountId = accountId;
-            o.description = description;
-            o.id = id;
-            o.kind = kind;
-            o.name = name;
-            o.numitems = numitems;
-            return o;
+            final var _resultValue = new GetListResult();
+            _resultValue.accountId = accountId;
+            _resultValue.description = description;
+            _resultValue.id = id;
+            _resultValue.kind = kind;
+            _resultValue.name = name;
+            _resultValue.numitems = numitems;
+            return _resultValue;
         }
     }
 }

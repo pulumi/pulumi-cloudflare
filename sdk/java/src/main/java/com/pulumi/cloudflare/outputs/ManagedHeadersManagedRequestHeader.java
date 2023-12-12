@@ -66,10 +66,10 @@ public final class ManagedHeadersManagedRequestHeader {
             return this;
         }
         public ManagedHeadersManagedRequestHeader build() {
-            final var o = new ManagedHeadersManagedRequestHeader();
-            o.enabled = enabled;
-            o.id = id;
-            return o;
+            final var _resultValue = new ManagedHeadersManagedRequestHeader();
+            _resultValue.enabled = enabled;
+            _resultValue.id = id;
+            return _resultValue;
         }
     }
 }

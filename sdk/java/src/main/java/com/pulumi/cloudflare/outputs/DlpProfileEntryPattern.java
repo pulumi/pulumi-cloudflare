@@ -67,10 +67,10 @@ public final class DlpProfileEntryPattern {
             return this;
         }
         public DlpProfileEntryPattern build() {
-            final var o = new DlpProfileEntryPattern();
-            o.regex = regex;
-            o.validation = validation;
-            return o;
+            final var _resultValue = new DlpProfileEntryPattern();
+            _resultValue.regex = regex;
+            _resultValue.validation = validation;
+            return _resultValue;
         }
     }
 }

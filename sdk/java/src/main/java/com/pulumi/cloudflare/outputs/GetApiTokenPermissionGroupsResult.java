@@ -150,14 +150,14 @@ public final class GetApiTokenPermissionGroupsResult {
             return this;
         }
         public GetApiTokenPermissionGroupsResult build() {
-            final var o = new GetApiTokenPermissionGroupsResult();
-            o.account = account;
-            o.id = id;
-            o.permissions = permissions;
-            o.r2 = r2;
-            o.user = user;
-            o.zone = zone;
-            return o;
+            final var _resultValue = new GetApiTokenPermissionGroupsResult();
+            _resultValue.account = account;
+            _resultValue.id = id;
+            _resultValue.permissions = permissions;
+            _resultValue.r2 = r2;
+            _resultValue.user = user;
+            _resultValue.zone = zone;
+            return _resultValue;
         }
     }
 }

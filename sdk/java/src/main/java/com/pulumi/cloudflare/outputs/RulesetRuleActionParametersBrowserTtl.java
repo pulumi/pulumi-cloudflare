@@ -68,10 +68,10 @@ public final class RulesetRuleActionParametersBrowserTtl {
             return this;
         }
         public RulesetRuleActionParametersBrowserTtl build() {
-            final var o = new RulesetRuleActionParametersBrowserTtl();
-            o.default_ = default_;
-            o.mode = mode;
-            return o;
+            final var _resultValue = new RulesetRuleActionParametersBrowserTtl();
+            _resultValue.default_ = default_;
+            _resultValue.mode = mode;
+            return _resultValue;
         }
     }
 }

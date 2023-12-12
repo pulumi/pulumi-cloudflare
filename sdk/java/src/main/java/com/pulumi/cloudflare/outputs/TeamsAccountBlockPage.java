@@ -182,16 +182,16 @@ public final class TeamsAccountBlockPage {
             return this;
         }
         public TeamsAccountBlockPage build() {
-            final var o = new TeamsAccountBlockPage();
-            o.backgroundColor = backgroundColor;
-            o.enabled = enabled;
-            o.footerText = footerText;
-            o.headerText = headerText;
-            o.logoPath = logoPath;
-            o.mailtoAddress = mailtoAddress;
-            o.mailtoSubject = mailtoSubject;
-            o.name = name;
-            return o;
+            final var _resultValue = new TeamsAccountBlockPage();
+            _resultValue.backgroundColor = backgroundColor;
+            _resultValue.enabled = enabled;
+            _resultValue.footerText = footerText;
+            _resultValue.headerText = headerText;
+            _resultValue.logoPath = logoPath;
+            _resultValue.mailtoAddress = mailtoAddress;
+            _resultValue.mailtoSubject = mailtoSubject;
+            _resultValue.name = name;
+            return _resultValue;
         }
     }
 }

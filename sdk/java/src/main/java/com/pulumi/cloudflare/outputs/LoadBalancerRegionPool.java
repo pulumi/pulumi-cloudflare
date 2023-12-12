@@ -69,10 +69,10 @@ public final class LoadBalancerRegionPool {
             return this;
         }
         public LoadBalancerRegionPool build() {
-            final var o = new LoadBalancerRegionPool();
-            o.poolIds = poolIds;
-            o.region = region;
-            return o;
+            final var _resultValue = new LoadBalancerRegionPool();
+            _resultValue.poolIds = poolIds;
+            _resultValue.region = region;
+            return _resultValue;
         }
     }
 }

@@ -68,10 +68,10 @@ public final class PagesProjectSource {
             return this;
         }
         public PagesProjectSource build() {
-            final var o = new PagesProjectSource();
-            o.config = config;
-            o.type = type;
-            return o;
+            final var _resultValue = new PagesProjectSource();
+            _resultValue.config = config;
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

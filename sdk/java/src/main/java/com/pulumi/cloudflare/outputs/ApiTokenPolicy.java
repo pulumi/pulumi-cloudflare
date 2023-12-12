@@ -91,11 +91,11 @@ public final class ApiTokenPolicy {
             return this;
         }
         public ApiTokenPolicy build() {
-            final var o = new ApiTokenPolicy();
-            o.effect = effect;
-            o.permissionGroups = permissionGroups;
-            o.resources = resources;
-            return o;
+            final var _resultValue = new ApiTokenPolicy();
+            _resultValue.effect = effect;
+            _resultValue.permissionGroups = permissionGroups;
+            _resultValue.resources = resources;
+            return _resultValue;
         }
     }
 }

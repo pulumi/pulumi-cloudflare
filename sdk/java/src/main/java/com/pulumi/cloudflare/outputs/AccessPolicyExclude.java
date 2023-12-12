@@ -330,29 +330,29 @@ public final class AccessPolicyExclude {
             return serviceTokens(List.of(serviceTokens));
         }
         public AccessPolicyExclude build() {
-            final var o = new AccessPolicyExclude();
-            o.anyValidServiceToken = anyValidServiceToken;
-            o.authContexts = authContexts;
-            o.authMethod = authMethod;
-            o.azures = azures;
-            o.certificate = certificate;
-            o.commonName = commonName;
-            o.devicePostures = devicePostures;
-            o.emailDomains = emailDomains;
-            o.emails = emails;
-            o.everyone = everyone;
-            o.externalEvaluation = externalEvaluation;
-            o.geos = geos;
-            o.githubs = githubs;
-            o.groups = groups;
-            o.gsuites = gsuites;
-            o.ipLists = ipLists;
-            o.ips = ips;
-            o.loginMethods = loginMethods;
-            o.oktas = oktas;
-            o.samls = samls;
-            o.serviceTokens = serviceTokens;
-            return o;
+            final var _resultValue = new AccessPolicyExclude();
+            _resultValue.anyValidServiceToken = anyValidServiceToken;
+            _resultValue.authContexts = authContexts;
+            _resultValue.authMethod = authMethod;
+            _resultValue.azures = azures;
+            _resultValue.certificate = certificate;
+            _resultValue.commonName = commonName;
+            _resultValue.devicePostures = devicePostures;
+            _resultValue.emailDomains = emailDomains;
+            _resultValue.emails = emails;
+            _resultValue.everyone = everyone;
+            _resultValue.externalEvaluation = externalEvaluation;
+            _resultValue.geos = geos;
+            _resultValue.githubs = githubs;
+            _resultValue.groups = groups;
+            _resultValue.gsuites = gsuites;
+            _resultValue.ipLists = ipLists;
+            _resultValue.ips = ips;
+            _resultValue.loginMethods = loginMethods;
+            _resultValue.oktas = oktas;
+            _resultValue.samls = samls;
+            _resultValue.serviceTokens = serviceTokens;
+            return _resultValue;
         }
     }
 }

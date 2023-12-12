@@ -46,9 +46,9 @@ public final class RulesetRuleActionParametersAlgorithm {
             return this;
         }
         public RulesetRuleActionParametersAlgorithm build() {
-            final var o = new RulesetRuleActionParametersAlgorithm();
-            o.name = name;
-            return o;
+            final var _resultValue = new RulesetRuleActionParametersAlgorithm();
+            _resultValue.name = name;
+            return _resultValue;
         }
     }
 }

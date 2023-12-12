@@ -128,13 +128,13 @@ public final class CustomHostnameSslSetting {
             return this;
         }
         public CustomHostnameSslSetting build() {
-            final var o = new CustomHostnameSslSetting();
-            o.ciphers = ciphers;
-            o.earlyHints = earlyHints;
-            o.http2 = http2;
-            o.minTlsVersion = minTlsVersion;
-            o.tls13 = tls13;
-            return o;
+            final var _resultValue = new CustomHostnameSslSetting();
+            _resultValue.ciphers = ciphers;
+            _resultValue.earlyHints = earlyHints;
+            _resultValue.http2 = http2;
+            _resultValue.minTlsVersion = minTlsVersion;
+            _resultValue.tls13 = tls13;
+            return _resultValue;
         }
     }
 }

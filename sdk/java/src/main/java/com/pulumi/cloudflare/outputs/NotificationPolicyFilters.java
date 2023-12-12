@@ -637,36 +637,36 @@ public final class NotificationPolicyFilters {
             return zones(List.of(zones));
         }
         public NotificationPolicyFilters build() {
-            final var o = new NotificationPolicyFilters();
-            o.actions = actions;
-            o.alertTriggerPreferences = alertTriggerPreferences;
-            o.enableds = enableds;
-            o.environments = environments;
-            o.eventSources = eventSources;
-            o.eventTypes = eventTypes;
-            o.events = events;
-            o.groupBies = groupBies;
-            o.healthCheckIds = healthCheckIds;
-            o.incidentImpacts = incidentImpacts;
-            o.inputIds = inputIds;
-            o.limits = limits;
-            o.megabitsPerSeconds = megabitsPerSeconds;
-            o.newHealths = newHealths;
-            o.newStatuses = newStatuses;
-            o.packetsPerSeconds = packetsPerSeconds;
-            o.poolIds = poolIds;
-            o.products = products;
-            o.projectIds = projectIds;
-            o.protocols = protocols;
-            o.requestsPerSeconds = requestsPerSeconds;
-            o.services = services;
-            o.slos = slos;
-            o.statuses = statuses;
-            o.targetHostnames = targetHostnames;
-            o.targetZoneNames = targetZoneNames;
-            o.wheres = wheres;
-            o.zones = zones;
-            return o;
+            final var _resultValue = new NotificationPolicyFilters();
+            _resultValue.actions = actions;
+            _resultValue.alertTriggerPreferences = alertTriggerPreferences;
+            _resultValue.enableds = enableds;
+            _resultValue.environments = environments;
+            _resultValue.eventSources = eventSources;
+            _resultValue.eventTypes = eventTypes;
+            _resultValue.events = events;
+            _resultValue.groupBies = groupBies;
+            _resultValue.healthCheckIds = healthCheckIds;
+            _resultValue.incidentImpacts = incidentImpacts;
+            _resultValue.inputIds = inputIds;
+            _resultValue.limits = limits;
+            _resultValue.megabitsPerSeconds = megabitsPerSeconds;
+            _resultValue.newHealths = newHealths;
+            _resultValue.newStatuses = newStatuses;
+            _resultValue.packetsPerSeconds = packetsPerSeconds;
+            _resultValue.poolIds = poolIds;
+            _resultValue.products = products;
+            _resultValue.projectIds = projectIds;
+            _resultValue.protocols = protocols;
+            _resultValue.requestsPerSeconds = requestsPerSeconds;
+            _resultValue.services = services;
+            _resultValue.slos = slos;
+            _resultValue.statuses = statuses;
+            _resultValue.targetHostnames = targetHostnames;
+            _resultValue.targetZoneNames = targetZoneNames;
+            _resultValue.wheres = wheres;
+            _resultValue.zones = zones;
+            return _resultValue;
         }
     }
 }

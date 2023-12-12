@@ -67,10 +67,10 @@ public final class LoadBalancerRuleOverrideLocationStrategy {
             return this;
         }
         public LoadBalancerRuleOverrideLocationStrategy build() {
-            final var o = new LoadBalancerRuleOverrideLocationStrategy();
-            o.mode = mode;
-            o.preferEcs = preferEcs;
-            return o;
+            final var _resultValue = new LoadBalancerRuleOverrideLocationStrategy();
+            _resultValue.mode = mode;
+            _resultValue.preferEcs = preferEcs;
+            return _resultValue;
         }
     }
 }

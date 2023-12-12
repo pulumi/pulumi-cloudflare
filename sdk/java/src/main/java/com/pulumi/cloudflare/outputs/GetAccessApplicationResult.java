@@ -143,14 +143,14 @@ public final class GetAccessApplicationResult {
             return this;
         }
         public GetAccessApplicationResult build() {
-            final var o = new GetAccessApplicationResult();
-            o.accountId = accountId;
-            o.aud = aud;
-            o.domain = domain;
-            o.id = id;
-            o.name = name;
-            o.zoneId = zoneId;
-            return o;
+            final var _resultValue = new GetAccessApplicationResult();
+            _resultValue.accountId = accountId;
+            _resultValue.aud = aud;
+            _resultValue.domain = domain;
+            _resultValue.id = id;
+            _resultValue.name = name;
+            _resultValue.zoneId = zoneId;
+            return _resultValue;
         }
     }
 }

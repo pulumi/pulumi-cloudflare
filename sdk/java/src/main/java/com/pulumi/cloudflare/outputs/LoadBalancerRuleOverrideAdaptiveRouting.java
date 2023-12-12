@@ -48,9 +48,9 @@ public final class LoadBalancerRuleOverrideAdaptiveRouting {
             return this;
         }
         public LoadBalancerRuleOverrideAdaptiveRouting build() {
-            final var o = new LoadBalancerRuleOverrideAdaptiveRouting();
-            o.failoverAcrossPools = failoverAcrossPools;
-            return o;
+            final var _resultValue = new LoadBalancerRuleOverrideAdaptiveRouting();
+            _resultValue.failoverAcrossPools = failoverAcrossPools;
+            return _resultValue;
         }
     }
 }

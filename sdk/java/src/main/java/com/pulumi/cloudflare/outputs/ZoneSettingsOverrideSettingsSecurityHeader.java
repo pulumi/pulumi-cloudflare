@@ -85,13 +85,13 @@ public final class ZoneSettingsOverrideSettingsSecurityHeader {
             return this;
         }
         public ZoneSettingsOverrideSettingsSecurityHeader build() {
-            final var o = new ZoneSettingsOverrideSettingsSecurityHeader();
-            o.enabled = enabled;
-            o.includeSubdomains = includeSubdomains;
-            o.maxAge = maxAge;
-            o.nosniff = nosniff;
-            o.preload = preload;
-            return o;
+            final var _resultValue = new ZoneSettingsOverrideSettingsSecurityHeader();
+            _resultValue.enabled = enabled;
+            _resultValue.includeSubdomains = includeSubdomains;
+            _resultValue.maxAge = maxAge;
+            _resultValue.nosniff = nosniff;
+            _resultValue.preload = preload;
+            return _resultValue;
         }
     }
 }

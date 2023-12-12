@@ -65,10 +65,10 @@ public final class WorkerScriptQueueBinding {
             return this;
         }
         public WorkerScriptQueueBinding build() {
-            final var o = new WorkerScriptQueueBinding();
-            o.binding = binding;
-            o.queue = queue;
-            return o;
+            final var _resultValue = new WorkerScriptQueueBinding();
+            _resultValue.binding = binding;
+            _resultValue.queue = queue;
+            return _resultValue;
         }
     }
 }

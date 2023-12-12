@@ -149,14 +149,14 @@ public final class LoadBalancerSessionAffinityAttribute {
             return this;
         }
         public LoadBalancerSessionAffinityAttribute build() {
-            final var o = new LoadBalancerSessionAffinityAttribute();
-            o.drainDuration = drainDuration;
-            o.headers = headers;
-            o.requireAllHeaders = requireAllHeaders;
-            o.samesite = samesite;
-            o.secure = secure;
-            o.zeroDowntimeFailover = zeroDowntimeFailover;
-            return o;
+            final var _resultValue = new LoadBalancerSessionAffinityAttribute();
+            _resultValue.drainDuration = drainDuration;
+            _resultValue.headers = headers;
+            _resultValue.requireAllHeaders = requireAllHeaders;
+            _resultValue.samesite = samesite;
+            _resultValue.secure = secure;
+            _resultValue.zeroDowntimeFailover = zeroDowntimeFailover;
+            return _resultValue;
         }
     }
 }

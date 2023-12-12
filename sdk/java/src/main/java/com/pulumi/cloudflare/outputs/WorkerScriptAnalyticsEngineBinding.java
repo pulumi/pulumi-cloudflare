@@ -65,10 +65,10 @@ public final class WorkerScriptAnalyticsEngineBinding {
             return this;
         }
         public WorkerScriptAnalyticsEngineBinding build() {
-            final var o = new WorkerScriptAnalyticsEngineBinding();
-            o.dataset = dataset;
-            o.name = name;
-            return o;
+            final var _resultValue = new WorkerScriptAnalyticsEngineBinding();
+            _resultValue.dataset = dataset;
+            _resultValue.name = name;
+            return _resultValue;
         }
     }
 }

@@ -81,12 +81,12 @@ public final class GetRulesetsRulesetRuleActionParametersHeader {
             return this;
         }
         public GetRulesetsRulesetRuleActionParametersHeader build() {
-            final var o = new GetRulesetsRulesetRuleActionParametersHeader();
-            o.expression = expression;
-            o.name = name;
-            o.operation = operation;
-            o.value = value;
-            return o;
+            final var _resultValue = new GetRulesetsRulesetRuleActionParametersHeader();
+            _resultValue.expression = expression;
+            _resultValue.name = name;
+            _resultValue.operation = operation;
+            _resultValue.value = value;
+            return _resultValue;
         }
     }
 }

@@ -69,10 +69,10 @@ public final class LoadBalancerRandomSteering {
             return this;
         }
         public LoadBalancerRandomSteering build() {
-            final var o = new LoadBalancerRandomSteering();
-            o.defaultWeight = defaultWeight;
-            o.poolWeights = poolWeights;
-            return o;
+            final var _resultValue = new LoadBalancerRandomSteering();
+            _resultValue.defaultWeight = defaultWeight;
+            _resultValue.poolWeights = poolWeights;
+            return _resultValue;
         }
     }
 }

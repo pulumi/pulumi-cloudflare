@@ -89,11 +89,11 @@ public final class GetAccountRolesResult {
             return roles(List.of(roles));
         }
         public GetAccountRolesResult build() {
-            final var o = new GetAccountRolesResult();
-            o.accountId = accountId;
-            o.id = id;
-            o.roles = roles;
-            return o;
+            final var _resultValue = new GetAccountRolesResult();
+            _resultValue.accountId = accountId;
+            _resultValue.id = id;
+            _resultValue.roles = roles;
+            return _resultValue;
         }
     }
 }

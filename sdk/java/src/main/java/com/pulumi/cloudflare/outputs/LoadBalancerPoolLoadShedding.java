@@ -106,12 +106,12 @@ public final class LoadBalancerPoolLoadShedding {
             return this;
         }
         public LoadBalancerPoolLoadShedding build() {
-            final var o = new LoadBalancerPoolLoadShedding();
-            o.defaultPercent = defaultPercent;
-            o.defaultPolicy = defaultPolicy;
-            o.sessionPercent = sessionPercent;
-            o.sessionPolicy = sessionPolicy;
-            return o;
+            final var _resultValue = new LoadBalancerPoolLoadShedding();
+            _resultValue.defaultPercent = defaultPercent;
+            _resultValue.defaultPolicy = defaultPolicy;
+            _resultValue.sessionPercent = sessionPercent;
+            _resultValue.sessionPolicy = sessionPolicy;
+            return _resultValue;
         }
     }
 }

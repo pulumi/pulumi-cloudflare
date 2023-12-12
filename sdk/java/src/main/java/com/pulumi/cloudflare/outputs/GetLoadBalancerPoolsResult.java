@@ -111,12 +111,12 @@ public final class GetLoadBalancerPoolsResult {
             return pools(List.of(pools));
         }
         public GetLoadBalancerPoolsResult build() {
-            final var o = new GetLoadBalancerPoolsResult();
-            o.accountId = accountId;
-            o.filter = filter;
-            o.id = id;
-            o.pools = pools;
-            return o;
+            final var _resultValue = new GetLoadBalancerPoolsResult();
+            _resultValue.accountId = accountId;
+            _resultValue.filter = filter;
+            _resultValue.id = id;
+            _resultValue.pools = pools;
+            return _resultValue;
         }
     }
 }

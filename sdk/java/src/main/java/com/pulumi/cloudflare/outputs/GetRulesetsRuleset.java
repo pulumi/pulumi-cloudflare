@@ -111,15 +111,15 @@ public final class GetRulesetsRuleset {
             return this;
         }
         public GetRulesetsRuleset build() {
-            final var o = new GetRulesetsRuleset();
-            o.description = description;
-            o.id = id;
-            o.kind = kind;
-            o.name = name;
-            o.phase = phase;
-            o.rules = rules;
-            o.version = version;
-            return o;
+            final var _resultValue = new GetRulesetsRuleset();
+            _resultValue.description = description;
+            _resultValue.id = id;
+            _resultValue.kind = kind;
+            _resultValue.name = name;
+            _resultValue.phase = phase;
+            _resultValue.rules = rules;
+            _resultValue.version = version;
+            return _resultValue;
         }
     }
 }

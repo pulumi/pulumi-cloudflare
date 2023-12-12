@@ -40,9 +40,9 @@ public final class CustomHostnameSslValidationError {
             return this;
         }
         public CustomHostnameSslValidationError build() {
-            final var o = new CustomHostnameSslValidationError();
-            o.message = message;
-            return o;
+            final var _resultValue = new CustomHostnameSslValidationError();
+            _resultValue.message = message;
+            return _resultValue;
         }
     }
 }

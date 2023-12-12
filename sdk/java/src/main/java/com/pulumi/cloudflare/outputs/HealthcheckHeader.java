@@ -69,10 +69,10 @@ public final class HealthcheckHeader {
             return values(List.of(values));
         }
         public HealthcheckHeader build() {
-            final var o = new HealthcheckHeader();
-            o.header = header;
-            o.values = values;
-            return o;
+            final var _resultValue = new HealthcheckHeader();
+            _resultValue.header = header;
+            _resultValue.values = values;
+            return _resultValue;
         }
     }
 }

@@ -65,10 +65,10 @@ public final class AccessRuleConfiguration {
             return this;
         }
         public AccessRuleConfiguration build() {
-            final var o = new AccessRuleConfiguration();
-            o.target = target;
-            o.value = value;
-            return o;
+            final var _resultValue = new AccessRuleConfiguration();
+            _resultValue.target = target;
+            _resultValue.value = value;
+            return _resultValue;
         }
     }
 }

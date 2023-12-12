@@ -67,10 +67,10 @@ public final class ApiShieldAuthIdCharacteristic {
             return this;
         }
         public ApiShieldAuthIdCharacteristic build() {
-            final var o = new ApiShieldAuthIdCharacteristic();
-            o.name = name;
-            o.type = type;
-            return o;
+            final var _resultValue = new ApiShieldAuthIdCharacteristic();
+            _resultValue.name = name;
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

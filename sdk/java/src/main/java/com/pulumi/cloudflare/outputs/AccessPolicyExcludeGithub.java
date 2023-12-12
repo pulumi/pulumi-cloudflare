@@ -74,11 +74,11 @@ public final class AccessPolicyExcludeGithub {
             return teams(List.of(teams));
         }
         public AccessPolicyExcludeGithub build() {
-            final var o = new AccessPolicyExcludeGithub();
-            o.identityProviderId = identityProviderId;
-            o.name = name;
-            o.teams = teams;
-            return o;
+            final var _resultValue = new AccessPolicyExcludeGithub();
+            _resultValue.identityProviderId = identityProviderId;
+            _resultValue.name = name;
+            _resultValue.teams = teams;
+            return _resultValue;
         }
     }
 }

@@ -51,10 +51,10 @@ public final class GetRulesetsRulesetRuleActionParametersUriQuery {
             return this;
         }
         public GetRulesetsRulesetRuleActionParametersUriQuery build() {
-            final var o = new GetRulesetsRulesetRuleActionParametersUriQuery();
-            o.expression = expression;
-            o.value = value;
-            return o;
+            final var _resultValue = new GetRulesetsRulesetRuleActionParametersUriQuery();
+            _resultValue.expression = expression;
+            _resultValue.value = value;
+            return _resultValue;
         }
     }
 }

@@ -59,10 +59,10 @@ public final class NotificationPolicyPagerdutyIntegration {
             return this;
         }
         public NotificationPolicyPagerdutyIntegration build() {
-            final var o = new NotificationPolicyPagerdutyIntegration();
-            o.id = id;
-            o.name = name;
-            return o;
+            final var _resultValue = new NotificationPolicyPagerdutyIntegration();
+            _resultValue.id = id;
+            _resultValue.name = name;
+            return _resultValue;
         }
     }
 }

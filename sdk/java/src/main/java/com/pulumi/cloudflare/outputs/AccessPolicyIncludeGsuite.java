@@ -63,10 +63,10 @@ public final class AccessPolicyIncludeGsuite {
             return this;
         }
         public AccessPolicyIncludeGsuite build() {
-            final var o = new AccessPolicyIncludeGsuite();
-            o.emails = emails;
-            o.identityProviderId = identityProviderId;
-            return o;
+            final var _resultValue = new AccessPolicyIncludeGsuite();
+            _resultValue.emails = emails;
+            _resultValue.identityProviderId = identityProviderId;
+            return _resultValue;
         }
     }
 }

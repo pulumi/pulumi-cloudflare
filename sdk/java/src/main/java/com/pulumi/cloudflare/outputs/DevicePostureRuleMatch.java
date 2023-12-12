@@ -48,9 +48,9 @@ public final class DevicePostureRuleMatch {
             return this;
         }
         public DevicePostureRuleMatch build() {
-            final var o = new DevicePostureRuleMatch();
-            o.platform = platform;
-            return o;
+            final var _resultValue = new DevicePostureRuleMatch();
+            _resultValue.platform = platform;
+            return _resultValue;
         }
     }
 }

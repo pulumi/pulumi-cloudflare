@@ -91,11 +91,11 @@ public final class TunnelConfigConfigOriginRequestAccess {
             return this;
         }
         public TunnelConfigConfigOriginRequestAccess build() {
-            final var o = new TunnelConfigConfigOriginRequestAccess();
-            o.audTags = audTags;
-            o.required = required;
-            o.teamName = teamName;
-            return o;
+            final var _resultValue = new TunnelConfigConfigOriginRequestAccess();
+            _resultValue.audTags = audTags;
+            _resultValue.required = required;
+            _resultValue.teamName = teamName;
+            return _resultValue;
         }
     }
 }

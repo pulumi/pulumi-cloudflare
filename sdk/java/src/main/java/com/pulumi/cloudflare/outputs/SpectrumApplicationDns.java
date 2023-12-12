@@ -65,10 +65,10 @@ public final class SpectrumApplicationDns {
             return this;
         }
         public SpectrumApplicationDns build() {
-            final var o = new SpectrumApplicationDns();
-            o.name = name;
-            o.type = type;
-            return o;
+            final var _resultValue = new SpectrumApplicationDns();
+            _resultValue.name = name;
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

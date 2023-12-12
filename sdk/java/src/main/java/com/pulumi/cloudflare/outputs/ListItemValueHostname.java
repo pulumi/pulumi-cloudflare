@@ -46,9 +46,9 @@ public final class ListItemValueHostname {
             return this;
         }
         public ListItemValueHostname build() {
-            final var o = new ListItemValueHostname();
-            o.urlHostname = urlHostname;
-            return o;
+            final var _resultValue = new ListItemValueHostname();
+            _resultValue.urlHostname = urlHostname;
+            return _resultValue;
         }
     }
 }

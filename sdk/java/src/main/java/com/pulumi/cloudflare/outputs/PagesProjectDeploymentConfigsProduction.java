@@ -288,21 +288,21 @@ public final class PagesProjectDeploymentConfigsProduction {
             return this;
         }
         public PagesProjectDeploymentConfigsProduction build() {
-            final var o = new PagesProjectDeploymentConfigsProduction();
-            o.alwaysUseLatestCompatibilityDate = alwaysUseLatestCompatibilityDate;
-            o.compatibilityDate = compatibilityDate;
-            o.compatibilityFlags = compatibilityFlags;
-            o.d1Databases = d1Databases;
-            o.durableObjectNamespaces = durableObjectNamespaces;
-            o.environmentVariables = environmentVariables;
-            o.failOpen = failOpen;
-            o.kvNamespaces = kvNamespaces;
-            o.placement = placement;
-            o.r2Buckets = r2Buckets;
-            o.secrets = secrets;
-            o.serviceBindings = serviceBindings;
-            o.usageModel = usageModel;
-            return o;
+            final var _resultValue = new PagesProjectDeploymentConfigsProduction();
+            _resultValue.alwaysUseLatestCompatibilityDate = alwaysUseLatestCompatibilityDate;
+            _resultValue.compatibilityDate = compatibilityDate;
+            _resultValue.compatibilityFlags = compatibilityFlags;
+            _resultValue.d1Databases = d1Databases;
+            _resultValue.durableObjectNamespaces = durableObjectNamespaces;
+            _resultValue.environmentVariables = environmentVariables;
+            _resultValue.failOpen = failOpen;
+            _resultValue.kvNamespaces = kvNamespaces;
+            _resultValue.placement = placement;
+            _resultValue.r2Buckets = r2Buckets;
+            _resultValue.secrets = secrets;
+            _resultValue.serviceBindings = serviceBindings;
+            _resultValue.usageModel = usageModel;
+            return _resultValue;
         }
     }
 }

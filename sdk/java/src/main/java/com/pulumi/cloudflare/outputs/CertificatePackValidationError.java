@@ -40,9 +40,9 @@ public final class CertificatePackValidationError {
             return this;
         }
         public CertificatePackValidationError build() {
-            final var o = new CertificatePackValidationError();
-            o.message = message;
-            return o;
+            final var _resultValue = new CertificatePackValidationError();
+            _resultValue.message = message;
+            return _resultValue;
         }
     }
 }

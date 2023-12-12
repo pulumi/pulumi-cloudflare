@@ -117,14 +117,14 @@ public final class GetRulesetsRulesetRuleActionParametersOverridesRule {
             return this;
         }
         public GetRulesetsRulesetRuleActionParametersOverridesRule build() {
-            final var o = new GetRulesetsRulesetRuleActionParametersOverridesRule();
-            o.action = action;
-            o.enabled = enabled;
-            o.id = id;
-            o.scoreThreshold = scoreThreshold;
-            o.sensitivityLevel = sensitivityLevel;
-            o.status = status;
-            return o;
+            final var _resultValue = new GetRulesetsRulesetRuleActionParametersOverridesRule();
+            _resultValue.action = action;
+            _resultValue.enabled = enabled;
+            _resultValue.id = id;
+            _resultValue.scoreThreshold = scoreThreshold;
+            _resultValue.sensitivityLevel = sensitivityLevel;
+            _resultValue.status = status;
+            return _resultValue;
         }
     }
 }

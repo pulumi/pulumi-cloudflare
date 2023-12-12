@@ -86,11 +86,11 @@ public final class DeviceDexTestData {
             return this;
         }
         public DeviceDexTestData build() {
-            final var o = new DeviceDexTestData();
-            o.host = host;
-            o.kind = kind;
-            o.method = method;
-            return o;
+            final var _resultValue = new DeviceDexTestData();
+            _resultValue.host = host;
+            _resultValue.kind = kind;
+            _resultValue.method = method;
+            return _resultValue;
         }
     }
 }

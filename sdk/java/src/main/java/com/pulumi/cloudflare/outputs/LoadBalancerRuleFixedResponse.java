@@ -106,12 +106,12 @@ public final class LoadBalancerRuleFixedResponse {
             return this;
         }
         public LoadBalancerRuleFixedResponse build() {
-            final var o = new LoadBalancerRuleFixedResponse();
-            o.contentType = contentType;
-            o.location = location;
-            o.messageBody = messageBody;
-            o.statusCode = statusCode;
-            return o;
+            final var _resultValue = new LoadBalancerRuleFixedResponse();
+            _resultValue.contentType = contentType;
+            _resultValue.location = location;
+            _resultValue.messageBody = messageBody;
+            _resultValue.statusCode = statusCode;
+            return _resultValue;
         }
     }
 }

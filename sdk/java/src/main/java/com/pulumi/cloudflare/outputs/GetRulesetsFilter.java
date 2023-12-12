@@ -124,13 +124,13 @@ public final class GetRulesetsFilter {
             return this;
         }
         public GetRulesetsFilter build() {
-            final var o = new GetRulesetsFilter();
-            o.id = id;
-            o.kind = kind;
-            o.name = name;
-            o.phase = phase;
-            o.version = version;
-            return o;
+            final var _resultValue = new GetRulesetsFilter();
+            _resultValue.id = id;
+            _resultValue.kind = kind;
+            _resultValue.name = name;
+            _resultValue.phase = phase;
+            _resultValue.version = version;
+            return _resultValue;
         }
     }
 }

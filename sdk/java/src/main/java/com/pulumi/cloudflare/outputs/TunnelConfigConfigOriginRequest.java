@@ -379,26 +379,26 @@ public final class TunnelConfigConfigOriginRequest {
             return this;
         }
         public TunnelConfigConfigOriginRequest build() {
-            final var o = new TunnelConfigConfigOriginRequest();
-            o.access = access;
-            o.bastionMode = bastionMode;
-            o.caPool = caPool;
-            o.connectTimeout = connectTimeout;
-            o.disableChunkedEncoding = disableChunkedEncoding;
-            o.http2Origin = http2Origin;
-            o.httpHostHeader = httpHostHeader;
-            o.ipRules = ipRules;
-            o.keepAliveConnections = keepAliveConnections;
-            o.keepAliveTimeout = keepAliveTimeout;
-            o.noHappyEyeballs = noHappyEyeballs;
-            o.noTlsVerify = noTlsVerify;
-            o.originServerName = originServerName;
-            o.proxyAddress = proxyAddress;
-            o.proxyPort = proxyPort;
-            o.proxyType = proxyType;
-            o.tcpKeepAlive = tcpKeepAlive;
-            o.tlsTimeout = tlsTimeout;
-            return o;
+            final var _resultValue = new TunnelConfigConfigOriginRequest();
+            _resultValue.access = access;
+            _resultValue.bastionMode = bastionMode;
+            _resultValue.caPool = caPool;
+            _resultValue.connectTimeout = connectTimeout;
+            _resultValue.disableChunkedEncoding = disableChunkedEncoding;
+            _resultValue.http2Origin = http2Origin;
+            _resultValue.httpHostHeader = httpHostHeader;
+            _resultValue.ipRules = ipRules;
+            _resultValue.keepAliveConnections = keepAliveConnections;
+            _resultValue.keepAliveTimeout = keepAliveTimeout;
+            _resultValue.noHappyEyeballs = noHappyEyeballs;
+            _resultValue.noTlsVerify = noTlsVerify;
+            _resultValue.originServerName = originServerName;
+            _resultValue.proxyAddress = proxyAddress;
+            _resultValue.proxyPort = proxyPort;
+            _resultValue.proxyType = proxyType;
+            _resultValue.tcpKeepAlive = tcpKeepAlive;
+            _resultValue.tlsTimeout = tlsTimeout;
+            return _resultValue;
         }
     }
 }

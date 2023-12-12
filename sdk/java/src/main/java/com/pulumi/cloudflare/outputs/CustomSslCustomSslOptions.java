@@ -124,13 +124,13 @@ public final class CustomSslCustomSslOptions {
             return this;
         }
         public CustomSslCustomSslOptions build() {
-            final var o = new CustomSslCustomSslOptions();
-            o.bundleMethod = bundleMethod;
-            o.certificate = certificate;
-            o.geoRestrictions = geoRestrictions;
-            o.privateKey = privateKey;
-            o.type = type;
-            return o;
+            final var _resultValue = new CustomSslCustomSslOptions();
+            _resultValue.bundleMethod = bundleMethod;
+            _resultValue.certificate = certificate;
+            _resultValue.geoRestrictions = geoRestrictions;
+            _resultValue.privateKey = privateKey;
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

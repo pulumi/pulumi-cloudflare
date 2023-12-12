@@ -70,11 +70,11 @@ public final class AccessGroupRequireSaml {
             return this;
         }
         public AccessGroupRequireSaml build() {
-            final var o = new AccessGroupRequireSaml();
-            o.attributeName = attributeName;
-            o.attributeValue = attributeValue;
-            o.identityProviderId = identityProviderId;
-            return o;
+            final var _resultValue = new AccessGroupRequireSaml();
+            _resultValue.attributeName = attributeName;
+            _resultValue.attributeValue = attributeValue;
+            _resultValue.identityProviderId = identityProviderId;
+            return _resultValue;
         }
     }
 }

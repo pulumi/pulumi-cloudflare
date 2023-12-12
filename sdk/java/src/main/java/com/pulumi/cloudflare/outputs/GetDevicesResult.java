@@ -81,11 +81,11 @@ public final class GetDevicesResult {
             return this;
         }
         public GetDevicesResult build() {
-            final var o = new GetDevicesResult();
-            o.accountId = accountId;
-            o.devices = devices;
-            o.id = id;
-            return o;
+            final var _resultValue = new GetDevicesResult();
+            _resultValue.accountId = accountId;
+            _resultValue.devices = devices;
+            _resultValue.id = id;
+            return _resultValue;
         }
     }
 }

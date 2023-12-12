@@ -48,9 +48,9 @@ public final class GetLoadBalancerPoolsFilter {
             return this;
         }
         public GetLoadBalancerPoolsFilter build() {
-            final var o = new GetLoadBalancerPoolsFilter();
-            o.name = name;
-            return o;
+            final var _resultValue = new GetLoadBalancerPoolsFilter();
+            _resultValue.name = name;
+            return _resultValue;
         }
     }
 }

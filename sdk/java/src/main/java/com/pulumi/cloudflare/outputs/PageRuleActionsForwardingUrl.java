@@ -66,10 +66,10 @@ public final class PageRuleActionsForwardingUrl {
             return this;
         }
         public PageRuleActionsForwardingUrl build() {
-            final var o = new PageRuleActionsForwardingUrl();
-            o.statusCode = statusCode;
-            o.url = url;
-            return o;
+            final var _resultValue = new PageRuleActionsForwardingUrl();
+            _resultValue.statusCode = statusCode;
+            _resultValue.url = url;
+            return _resultValue;
         }
     }
 }

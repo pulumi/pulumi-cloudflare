@@ -93,11 +93,11 @@ public final class RateLimitMatchResponse {
             return statuses(List.of(statuses));
         }
         public RateLimitMatchResponse build() {
-            final var o = new RateLimitMatchResponse();
-            o.headers = headers;
-            o.originTraffic = originTraffic;
-            o.statuses = statuses;
-            return o;
+            final var _resultValue = new RateLimitMatchResponse();
+            _resultValue.headers = headers;
+            _resultValue.originTraffic = originTraffic;
+            _resultValue.statuses = statuses;
+            return _resultValue;
         }
     }
 }

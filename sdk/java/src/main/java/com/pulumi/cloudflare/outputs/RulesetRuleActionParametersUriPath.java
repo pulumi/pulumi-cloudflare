@@ -67,10 +67,10 @@ public final class RulesetRuleActionParametersUriPath {
             return this;
         }
         public RulesetRuleActionParametersUriPath build() {
-            final var o = new RulesetRuleActionParametersUriPath();
-            o.expression = expression;
-            o.value = value;
-            return o;
+            final var _resultValue = new RulesetRuleActionParametersUriPath();
+            _resultValue.expression = expression;
+            _resultValue.value = value;
+            return _resultValue;
         }
     }
 }

@@ -66,10 +66,10 @@ public final class TeamsRuleRuleSettingsCheckSession {
             return this;
         }
         public TeamsRuleRuleSettingsCheckSession build() {
-            final var o = new TeamsRuleRuleSettingsCheckSession();
-            o.duration = duration;
-            o.enforce = enforce;
-            return o;
+            final var _resultValue = new TeamsRuleRuleSettingsCheckSession();
+            _resultValue.duration = duration;
+            _resultValue.enforce = enforce;
+            return _resultValue;
         }
     }
 }

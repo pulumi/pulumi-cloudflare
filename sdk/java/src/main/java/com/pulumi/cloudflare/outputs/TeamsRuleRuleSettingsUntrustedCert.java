@@ -48,9 +48,9 @@ public final class TeamsRuleRuleSettingsUntrustedCert {
             return this;
         }
         public TeamsRuleRuleSettingsUntrustedCert build() {
-            final var o = new TeamsRuleRuleSettingsUntrustedCert();
-            o.action = action;
-            return o;
+            final var _resultValue = new TeamsRuleRuleSettingsUntrustedCert();
+            _resultValue.action = action;
+            return _resultValue;
         }
     }
 }

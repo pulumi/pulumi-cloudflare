@@ -67,10 +67,10 @@ public final class WaitingRoomAdditionalRoute {
             return this;
         }
         public WaitingRoomAdditionalRoute build() {
-            final var o = new WaitingRoomAdditionalRoute();
-            o.host = host;
-            o.path = path;
-            return o;
+            final var _resultValue = new WaitingRoomAdditionalRoute();
+            _resultValue.host = host;
+            _resultValue.path = path;
+            return _resultValue;
         }
     }
 }

@@ -69,10 +69,10 @@ public final class EmailRoutingCatchAllAction {
             return values(List.of(values));
         }
         public EmailRoutingCatchAllAction build() {
-            final var o = new EmailRoutingCatchAllAction();
-            o.type = type;
-            o.values = values;
-            return o;
+            final var _resultValue = new EmailRoutingCatchAllAction();
+            _resultValue.type = type;
+            _resultValue.values = values;
+            return _resultValue;
         }
     }
 }

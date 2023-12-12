@@ -74,11 +74,11 @@ public final class AccessGroupExcludeGithub {
             return teams(List.of(teams));
         }
         public AccessGroupExcludeGithub build() {
-            final var o = new AccessGroupExcludeGithub();
-            o.identityProviderId = identityProviderId;
-            o.name = name;
-            o.teams = teams;
-            return o;
+            final var _resultValue = new AccessGroupExcludeGithub();
+            _resultValue.identityProviderId = identityProviderId;
+            _resultValue.name = name;
+            _resultValue.teams = teams;
+            return _resultValue;
         }
     }
 }

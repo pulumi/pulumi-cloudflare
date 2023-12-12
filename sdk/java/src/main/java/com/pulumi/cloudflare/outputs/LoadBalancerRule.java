@@ -170,15 +170,15 @@ public final class LoadBalancerRule {
             return this;
         }
         public LoadBalancerRule build() {
-            final var o = new LoadBalancerRule();
-            o.condition = condition;
-            o.disabled = disabled;
-            o.fixedResponse = fixedResponse;
-            o.name = name;
-            o.overrides = overrides;
-            o.priority = priority;
-            o.terminates = terminates;
-            return o;
+            final var _resultValue = new LoadBalancerRule();
+            _resultValue.condition = condition;
+            _resultValue.disabled = disabled;
+            _resultValue.fixedResponse = fixedResponse;
+            _resultValue.name = name;
+            _resultValue.overrides = overrides;
+            _resultValue.priority = priority;
+            _resultValue.terminates = terminates;
+            return _resultValue;
         }
     }
 }

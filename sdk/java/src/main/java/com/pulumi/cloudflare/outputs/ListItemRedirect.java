@@ -163,15 +163,15 @@ public final class ListItemRedirect {
             return this;
         }
         public ListItemRedirect build() {
-            final var o = new ListItemRedirect();
-            o.includeSubdomains = includeSubdomains;
-            o.preservePathSuffix = preservePathSuffix;
-            o.preserveQueryString = preserveQueryString;
-            o.sourceUrl = sourceUrl;
-            o.statusCode = statusCode;
-            o.subpathMatching = subpathMatching;
-            o.targetUrl = targetUrl;
-            return o;
+            final var _resultValue = new ListItemRedirect();
+            _resultValue.includeSubdomains = includeSubdomains;
+            _resultValue.preservePathSuffix = preservePathSuffix;
+            _resultValue.preserveQueryString = preserveQueryString;
+            _resultValue.sourceUrl = sourceUrl;
+            _resultValue.statusCode = statusCode;
+            _resultValue.subpathMatching = subpathMatching;
+            _resultValue.targetUrl = targetUrl;
+            return _resultValue;
         }
     }
 }

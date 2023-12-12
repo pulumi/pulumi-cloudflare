@@ -124,13 +124,13 @@ public final class TeamsRuleRuleSettingsBisoAdminControls {
             return this;
         }
         public TeamsRuleRuleSettingsBisoAdminControls build() {
-            final var o = new TeamsRuleRuleSettingsBisoAdminControls();
-            o.disableCopyPaste = disableCopyPaste;
-            o.disableDownload = disableDownload;
-            o.disableKeyboard = disableKeyboard;
-            o.disablePrinting = disablePrinting;
-            o.disableUpload = disableUpload;
-            return o;
+            final var _resultValue = new TeamsRuleRuleSettingsBisoAdminControls();
+            _resultValue.disableCopyPaste = disableCopyPaste;
+            _resultValue.disableDownload = disableDownload;
+            _resultValue.disableKeyboard = disableKeyboard;
+            _resultValue.disablePrinting = disablePrinting;
+            _resultValue.disableUpload = disableUpload;
+            return _resultValue;
         }
     }
 }

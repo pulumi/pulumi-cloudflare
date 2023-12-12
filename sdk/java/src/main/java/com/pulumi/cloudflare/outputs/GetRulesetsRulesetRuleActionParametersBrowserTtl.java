@@ -52,10 +52,10 @@ public final class GetRulesetsRulesetRuleActionParametersBrowserTtl {
             return this;
         }
         public GetRulesetsRulesetRuleActionParametersBrowserTtl build() {
-            final var o = new GetRulesetsRulesetRuleActionParametersBrowserTtl();
-            o.default_ = default_;
-            o.mode = mode;
-            return o;
+            final var _resultValue = new GetRulesetsRulesetRuleActionParametersBrowserTtl();
+            _resultValue.default_ = default_;
+            _resultValue.mode = mode;
+            return _resultValue;
         }
     }
 }

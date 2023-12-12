@@ -48,9 +48,9 @@ public final class ApiTokenCondition {
             return this;
         }
         public ApiTokenCondition build() {
-            final var o = new ApiTokenCondition();
-            o.requestIp = requestIp;
-            return o;
+            final var _resultValue = new ApiTokenCondition();
+            _resultValue.requestIp = requestIp;
+            return _resultValue;
         }
     }
 }

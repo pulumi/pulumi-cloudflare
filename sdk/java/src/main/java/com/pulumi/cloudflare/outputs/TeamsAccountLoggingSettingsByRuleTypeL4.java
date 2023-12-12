@@ -57,10 +57,10 @@ public final class TeamsAccountLoggingSettingsByRuleTypeL4 {
             return this;
         }
         public TeamsAccountLoggingSettingsByRuleTypeL4 build() {
-            final var o = new TeamsAccountLoggingSettingsByRuleTypeL4();
-            o.logAll = logAll;
-            o.logBlocks = logBlocks;
-            return o;
+            final var _resultValue = new TeamsAccountLoggingSettingsByRuleTypeL4();
+            _resultValue.logAll = logAll;
+            _resultValue.logBlocks = logBlocks;
+            return _resultValue;
         }
     }
 }

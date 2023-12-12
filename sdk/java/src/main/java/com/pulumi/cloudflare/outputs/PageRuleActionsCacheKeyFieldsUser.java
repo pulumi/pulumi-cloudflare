@@ -214,11 +214,11 @@ public final class PageRuleActionsCacheKeyFieldsUser {
             return this;
         }
         public PageRuleActionsCacheKeyFieldsUser build() {
-            final var o = new PageRuleActionsCacheKeyFieldsUser();
-            o.deviceType = deviceType;
-            o.geo = geo;
-            o.lang = lang;
-            return o;
+            final var _resultValue = new PageRuleActionsCacheKeyFieldsUser();
+            _resultValue.deviceType = deviceType;
+            _resultValue.geo = geo;
+            _resultValue.lang = lang;
+            return _resultValue;
         }
     }
 }

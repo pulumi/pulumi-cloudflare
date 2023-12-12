@@ -87,11 +87,11 @@ public final class RulesetRuleActionParametersOverridesCategory {
             return this;
         }
         public RulesetRuleActionParametersOverridesCategory build() {
-            final var o = new RulesetRuleActionParametersOverridesCategory();
-            o.action = action;
-            o.category = category;
-            o.enabled = enabled;
-            return o;
+            final var _resultValue = new RulesetRuleActionParametersOverridesCategory();
+            _resultValue.action = action;
+            _resultValue.category = category;
+            _resultValue.enabled = enabled;
+            return _resultValue;
         }
     }
 }

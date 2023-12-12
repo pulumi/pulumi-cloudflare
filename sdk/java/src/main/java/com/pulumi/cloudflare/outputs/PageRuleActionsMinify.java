@@ -84,11 +84,11 @@ public final class PageRuleActionsMinify {
             return this;
         }
         public PageRuleActionsMinify build() {
-            final var o = new PageRuleActionsMinify();
-            o.css = css;
-            o.html = html;
-            o.js = js;
-            return o;
+            final var _resultValue = new PageRuleActionsMinify();
+            _resultValue.css = css;
+            _resultValue.html = html;
+            _resultValue.js = js;
+            return _resultValue;
         }
     }
 }

@@ -143,14 +143,14 @@ public final class DevicePostureIntegrationConfig {
             return this;
         }
         public DevicePostureIntegrationConfig build() {
-            final var o = new DevicePostureIntegrationConfig();
-            o.apiUrl = apiUrl;
-            o.authUrl = authUrl;
-            o.clientId = clientId;
-            o.clientKey = clientKey;
-            o.clientSecret = clientSecret;
-            o.customerId = customerId;
-            return o;
+            final var _resultValue = new DevicePostureIntegrationConfig();
+            _resultValue.apiUrl = apiUrl;
+            _resultValue.authUrl = authUrl;
+            _resultValue.clientId = clientId;
+            _resultValue.clientKey = clientKey;
+            _resultValue.clientSecret = clientSecret;
+            _resultValue.customerId = customerId;
+            return _resultValue;
         }
     }
 }

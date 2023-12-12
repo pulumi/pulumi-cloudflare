@@ -67,10 +67,10 @@ public final class AccessOrganizationCustomPage {
             return this;
         }
         public AccessOrganizationCustomPage build() {
-            final var o = new AccessOrganizationCustomPage();
-            o.forbidden = forbidden;
-            o.identityDenied = identityDenied;
-            return o;
+            final var _resultValue = new AccessOrganizationCustomPage();
+            _resultValue.forbidden = forbidden;
+            _resultValue.identityDenied = identityDenied;
+            return _resultValue;
         }
     }
 }

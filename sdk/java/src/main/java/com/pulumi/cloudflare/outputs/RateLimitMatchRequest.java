@@ -93,11 +93,11 @@ public final class RateLimitMatchRequest {
             return this;
         }
         public RateLimitMatchRequest build() {
-            final var o = new RateLimitMatchRequest();
-            o.methods = methods;
-            o.schemes = schemes;
-            o.urlPattern = urlPattern;
-            return o;
+            final var _resultValue = new RateLimitMatchRequest();
+            _resultValue.methods = methods;
+            _resultValue.schemes = schemes;
+            _resultValue.urlPattern = urlPattern;
+            return _resultValue;
         }
     }
 }

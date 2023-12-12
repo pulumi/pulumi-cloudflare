@@ -68,10 +68,10 @@ public final class PageRuleActionsCacheTtlByStatus {
             return this;
         }
         public PageRuleActionsCacheTtlByStatus build() {
-            final var o = new PageRuleActionsCacheTtlByStatus();
-            o.codes = codes;
-            o.ttl = ttl;
-            return o;
+            final var _resultValue = new PageRuleActionsCacheTtlByStatus();
+            _resultValue.codes = codes;
+            _resultValue.ttl = ttl;
+            return _resultValue;
         }
     }
 }

@@ -86,11 +86,11 @@ public final class EmailRoutingRuleMatcher {
             return this;
         }
         public EmailRoutingRuleMatcher build() {
-            final var o = new EmailRoutingRuleMatcher();
-            o.field = field;
-            o.type = type;
-            o.value = value;
-            return o;
+            final var _resultValue = new EmailRoutingRuleMatcher();
+            _resultValue.field = field;
+            _resultValue.type = type;
+            _resultValue.value = value;
+            return _resultValue;
         }
     }
 }

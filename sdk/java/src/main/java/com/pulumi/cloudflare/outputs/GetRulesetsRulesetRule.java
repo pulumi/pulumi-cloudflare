@@ -182,20 +182,20 @@ public final class GetRulesetsRulesetRule {
             return this;
         }
         public GetRulesetsRulesetRule build() {
-            final var o = new GetRulesetsRulesetRule();
-            o.action = action;
-            o.actionParameters = actionParameters;
-            o.description = description;
-            o.enabled = enabled;
-            o.exposedCredentialCheck = exposedCredentialCheck;
-            o.expression = expression;
-            o.id = id;
-            o.lastUpdated = lastUpdated;
-            o.logging = logging;
-            o.ratelimit = ratelimit;
-            o.ref = ref;
-            o.version = version;
-            return o;
+            final var _resultValue = new GetRulesetsRulesetRule();
+            _resultValue.action = action;
+            _resultValue.actionParameters = actionParameters;
+            _resultValue.description = description;
+            _resultValue.enabled = enabled;
+            _resultValue.exposedCredentialCheck = exposedCredentialCheck;
+            _resultValue.expression = expression;
+            _resultValue.id = id;
+            _resultValue.lastUpdated = lastUpdated;
+            _resultValue.logging = logging;
+            _resultValue.ratelimit = ratelimit;
+            _resultValue.ref = ref;
+            _resultValue.version = version;
+            return _resultValue;
         }
     }
 }

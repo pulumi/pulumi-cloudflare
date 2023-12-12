@@ -84,11 +84,11 @@ public final class AccessPolicyIncludeAuthContext {
             return this;
         }
         public AccessPolicyIncludeAuthContext build() {
-            final var o = new AccessPolicyIncludeAuthContext();
-            o.acId = acId;
-            o.id = id;
-            o.identityProviderId = identityProviderId;
-            return o;
+            final var _resultValue = new AccessPolicyIncludeAuthContext();
+            _resultValue.acId = acId;
+            _resultValue.id = id;
+            _resultValue.identityProviderId = identityProviderId;
+            return _resultValue;
         }
     }
 }

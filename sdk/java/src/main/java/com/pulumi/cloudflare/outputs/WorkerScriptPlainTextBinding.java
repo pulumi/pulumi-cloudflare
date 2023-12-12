@@ -65,10 +65,10 @@ public final class WorkerScriptPlainTextBinding {
             return this;
         }
         public WorkerScriptPlainTextBinding build() {
-            final var o = new WorkerScriptPlainTextBinding();
-            o.name = name;
-            o.text = text;
-            return o;
+            final var _resultValue = new WorkerScriptPlainTextBinding();
+            _resultValue.name = name;
+            _resultValue.text = text;
+            return _resultValue;
         }
     }
 }

@@ -88,11 +88,11 @@ public final class RulesetRuleActionParametersFromValue {
             return this;
         }
         public RulesetRuleActionParametersFromValue build() {
-            final var o = new RulesetRuleActionParametersFromValue();
-            o.preserveQueryString = preserveQueryString;
-            o.statusCode = statusCode;
-            o.targetUrl = targetUrl;
-            return o;
+            final var _resultValue = new RulesetRuleActionParametersFromValue();
+            _resultValue.preserveQueryString = preserveQueryString;
+            _resultValue.statusCode = statusCode;
+            _resultValue.targetUrl = targetUrl;
+            return _resultValue;
         }
     }
 }

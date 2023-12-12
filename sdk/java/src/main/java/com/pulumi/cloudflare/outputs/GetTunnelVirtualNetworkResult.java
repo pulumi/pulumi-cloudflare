@@ -123,13 +123,13 @@ public final class GetTunnelVirtualNetworkResult {
             return this;
         }
         public GetTunnelVirtualNetworkResult build() {
-            final var o = new GetTunnelVirtualNetworkResult();
-            o.accountId = accountId;
-            o.comment = comment;
-            o.id = id;
-            o.isDefault = isDefault;
-            o.name = name;
-            return o;
+            final var _resultValue = new GetTunnelVirtualNetworkResult();
+            _resultValue.accountId = accountId;
+            _resultValue.comment = comment;
+            _resultValue.id = id;
+            _resultValue.isDefault = isDefault;
+            _resultValue.name = name;
+            return _resultValue;
         }
     }
 }

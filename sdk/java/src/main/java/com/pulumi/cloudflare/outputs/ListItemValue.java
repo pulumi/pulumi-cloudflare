@@ -83,12 +83,12 @@ public final class ListItemValue {
             return redirects(List.of(redirects));
         }
         public ListItemValue build() {
-            final var o = new ListItemValue();
-            o.asn = asn;
-            o.hostnames = hostnames;
-            o.ip = ip;
-            o.redirects = redirects;
-            return o;
+            final var _resultValue = new ListItemValue();
+            _resultValue.asn = asn;
+            _resultValue.hostnames = hostnames;
+            _resultValue.ip = ip;
+            _resultValue.redirects = redirects;
+            return _resultValue;
         }
     }
 }

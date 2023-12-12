@@ -48,9 +48,9 @@ public final class RulesetRuleActionParametersServeStale {
             return this;
         }
         public RulesetRuleActionParametersServeStale build() {
-            final var o = new RulesetRuleActionParametersServeStale();
-            o.disableStaleWhileUpdating = disableStaleWhileUpdating;
-            return o;
+            final var _resultValue = new RulesetRuleActionParametersServeStale();
+            _resultValue.disableStaleWhileUpdating = disableStaleWhileUpdating;
+            return _resultValue;
         }
     }
 }

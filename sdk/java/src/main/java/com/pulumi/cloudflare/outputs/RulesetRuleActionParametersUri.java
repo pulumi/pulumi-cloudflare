@@ -88,11 +88,11 @@ public final class RulesetRuleActionParametersUri {
             return this;
         }
         public RulesetRuleActionParametersUri build() {
-            final var o = new RulesetRuleActionParametersUri();
-            o.origin = origin;
-            o.path = path;
-            o.query = query;
-            return o;
+            final var _resultValue = new RulesetRuleActionParametersUri();
+            _resultValue.origin = origin;
+            _resultValue.path = path;
+            _resultValue.query = query;
+            return _resultValue;
         }
     }
 }

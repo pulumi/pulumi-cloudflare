@@ -193,16 +193,16 @@ public final class AccessApplicationCorsHeader {
             return this;
         }
         public AccessApplicationCorsHeader build() {
-            final var o = new AccessApplicationCorsHeader();
-            o.allowAllHeaders = allowAllHeaders;
-            o.allowAllMethods = allowAllMethods;
-            o.allowAllOrigins = allowAllOrigins;
-            o.allowCredentials = allowCredentials;
-            o.allowedHeaders = allowedHeaders;
-            o.allowedMethods = allowedMethods;
-            o.allowedOrigins = allowedOrigins;
-            o.maxAge = maxAge;
-            return o;
+            final var _resultValue = new AccessApplicationCorsHeader();
+            _resultValue.allowAllHeaders = allowAllHeaders;
+            _resultValue.allowAllMethods = allowAllMethods;
+            _resultValue.allowAllOrigins = allowAllOrigins;
+            _resultValue.allowCredentials = allowCredentials;
+            _resultValue.allowedHeaders = allowedHeaders;
+            _resultValue.allowedMethods = allowedMethods;
+            _resultValue.allowedOrigins = allowedOrigins;
+            _resultValue.maxAge = maxAge;
+            return _resultValue;
         }
     }
 }

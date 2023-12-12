@@ -69,10 +69,10 @@ public final class LoadBalancerMonitorHeader {
             return values(List.of(values));
         }
         public LoadBalancerMonitorHeader build() {
-            final var o = new LoadBalancerMonitorHeader();
-            o.header = header;
-            o.values = values;
-            return o;
+            final var _resultValue = new LoadBalancerMonitorHeader();
+            _resultValue.header = header;
+            _resultValue.values = values;
+            return _resultValue;
         }
     }
 }

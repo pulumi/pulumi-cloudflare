@@ -134,14 +134,14 @@ public final class GetRulesetsResult {
             return this;
         }
         public GetRulesetsResult build() {
-            final var o = new GetRulesetsResult();
-            o.accountId = accountId;
-            o.filter = filter;
-            o.id = id;
-            o.includeRules = includeRules;
-            o.rulesets = rulesets;
-            o.zoneId = zoneId;
-            return o;
+            final var _resultValue = new GetRulesetsResult();
+            _resultValue.accountId = accountId;
+            _resultValue.filter = filter;
+            _resultValue.id = id;
+            _resultValue.includeRules = includeRules;
+            _resultValue.rulesets = rulesets;
+            _resultValue.zoneId = zoneId;
+            return _resultValue;
         }
     }
 }

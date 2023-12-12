@@ -46,9 +46,9 @@ public final class AccessApplicationSaasAppCustomAttributeSource {
             return this;
         }
         public AccessApplicationSaasAppCustomAttributeSource build() {
-            final var o = new AccessApplicationSaasAppCustomAttributeSource();
-            o.name = name;
-            return o;
+            final var _resultValue = new AccessApplicationSaasAppCustomAttributeSource();
+            _resultValue.name = name;
+            return _resultValue;
         }
     }
 }

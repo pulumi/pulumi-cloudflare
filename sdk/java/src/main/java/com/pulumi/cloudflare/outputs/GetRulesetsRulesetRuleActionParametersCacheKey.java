@@ -74,12 +74,12 @@ public final class GetRulesetsRulesetRuleActionParametersCacheKey {
             return this;
         }
         public GetRulesetsRulesetRuleActionParametersCacheKey build() {
-            final var o = new GetRulesetsRulesetRuleActionParametersCacheKey();
-            o.cacheByDeviceType = cacheByDeviceType;
-            o.cacheDeceptionArmor = cacheDeceptionArmor;
-            o.customKey = customKey;
-            o.ignoreQueryStringsOrder = ignoreQueryStringsOrder;
-            return o;
+            final var _resultValue = new GetRulesetsRulesetRuleActionParametersCacheKey();
+            _resultValue.cacheByDeviceType = cacheByDeviceType;
+            _resultValue.cacheDeceptionArmor = cacheDeceptionArmor;
+            _resultValue.customKey = customKey;
+            _resultValue.ignoreQueryStringsOrder = ignoreQueryStringsOrder;
+            return _resultValue;
         }
     }
 }
