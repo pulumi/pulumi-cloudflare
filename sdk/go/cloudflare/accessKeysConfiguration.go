@@ -12,6 +12,8 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Access Keys Configuration defines the rotation policy for the keys
+// that access will use to sign data.
 type AccessKeysConfiguration struct {
 	pulumi.CustomResourceState
 

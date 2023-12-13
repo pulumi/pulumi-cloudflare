@@ -4,6 +4,10 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/**
+ * Access Keys Configuration defines the rotation policy for the keys
+ * that access will use to sign data.
+ */
 export class AccessKeysConfiguration extends pulumi.CustomResource {
     /**
      * Get an existing AccessKeysConfiguration resource's state with the given name, ID, and optional extra

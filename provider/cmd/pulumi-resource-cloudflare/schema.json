@@ -9095,6 +9095,7 @@
             }
         },
         "cloudflare:index/accessKeysConfiguration:AccessKeysConfiguration": {
+            "description": "Access Keys Configuration defines the rotation policy for the keys\nthat access will use to sign data.\n",
             "properties": {
                 "accountId": {
                     "type": "string",
