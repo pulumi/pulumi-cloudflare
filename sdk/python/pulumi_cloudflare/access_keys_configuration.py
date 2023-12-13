@@ -99,7 +99,9 @@ class AccessKeysConfiguration(pulumi.CustomResource):
                  key_rotation_interval_days: Optional[pulumi.Input[int]] = None,
                  __props__=None):
         """
-        Create a AccessKeysConfiguration resource with the given unique name, props, and options.
+        Access Keys Configuration defines the rotation policy for the keys
+        that access will use to sign data.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_id: The account identifier to target for the resource.
@@ -112,7 +114,9 @@ class AccessKeysConfiguration(pulumi.CustomResource):
                  args: AccessKeysConfigurationArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a AccessKeysConfiguration resource with the given unique name, props, and options.
+        Access Keys Configuration defines the rotation policy for the keys
+        that access will use to sign data.
+
         :param str resource_name: The name of the resource.
         :param AccessKeysConfigurationArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.

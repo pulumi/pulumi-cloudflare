@@ -9,6 +9,10 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Cloudflare
 {
+    /// <summary>
+    /// Access Keys Configuration defines the rotation policy for the keys
+    /// that access will use to sign data.
+    /// </summary>
     [CloudflareResourceType("cloudflare:index/accessKeysConfiguration:AccessKeysConfiguration")]
     public partial class AccessKeysConfiguration : global::Pulumi.CustomResource
     {

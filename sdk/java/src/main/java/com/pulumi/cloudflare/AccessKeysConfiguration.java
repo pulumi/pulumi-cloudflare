@@ -14,6 +14,11 @@ import java.lang.Integer;
 import java.lang.String;
 import javax.annotation.Nullable;
 
+/**
+ * Access Keys Configuration defines the rotation policy for the keys
+ * that access will use to sign data.
+ * 
+ */
 @ResourceType(type="cloudflare:index/accessKeysConfiguration:AccessKeysConfiguration")
 public class AccessKeysConfiguration extends com.pulumi.resources.CustomResource {
     /**
