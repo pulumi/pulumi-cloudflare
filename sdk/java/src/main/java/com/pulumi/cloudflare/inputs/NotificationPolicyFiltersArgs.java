@@ -331,6 +331,21 @@ public final class NotificationPolicyFiltersArgs extends com.pulumi.resources.Re
         return Optional.ofNullable(this.requestsPerSeconds);
     }
 
+    /**
+     * Selectors for alert. Valid options depend on the alert type.
+     * 
+     */
+    @Import(name="selectors")
+    private @Nullable Output<List<String>> selectors;
+
+    /**
+     * @return Selectors for alert. Valid options depend on the alert type.
+     * 
+     */
+    public Optional<Output<List<String>>> selectors() {
+        return Optional.ofNullable(this.selectors);
+    }
+
     @Import(name="services")
     private @Nullable Output<List<String>> services;
 
@@ -452,6 +467,7 @@ public final class NotificationPolicyFiltersArgs extends com.pulumi.resources.Re
         this.projectIds = $.projectIds;
         this.protocols = $.protocols;
         this.requestsPerSeconds = $.requestsPerSeconds;
+        this.selectors = $.selectors;
         this.services = $.services;
         this.slos = $.slos;
         this.statuses = $.statuses;
@@ -1128,6 +1144,37 @@ public final class NotificationPolicyFiltersArgs extends com.pulumi.resources.Re
          */
         public Builder requestsPerSeconds(String... requestsPerSeconds) {
             return requestsPerSeconds(List.of(requestsPerSeconds));
+        }
+
+        /**
+         * @param selectors Selectors for alert. Valid options depend on the alert type.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder selectors(@Nullable Output<List<String>> selectors) {
+            $.selectors = selectors;
+            return this;
+        }
+
+        /**
+         * @param selectors Selectors for alert. Valid options depend on the alert type.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder selectors(List<String> selectors) {
+            return selectors(Output.of(selectors));
+        }
+
+        /**
+         * @param selectors Selectors for alert. Valid options depend on the alert type.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder selectors(String... selectors) {
+            return selectors(List.of(selectors));
         }
 
         public Builder services(@Nullable Output<List<String>> services) {

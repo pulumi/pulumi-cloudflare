@@ -12,6 +12,38 @@ namespace Pulumi.Cloudflare.Inputs
 
     public sealed class DevicePostureIntegrationConfigArgs : global::Pulumi.ResourceArgs
     {
+        [Input("accessClientId")]
+        private Input<string>? _accessClientId;
+
+        /// <summary>
+        /// The Access client ID to be used as the `Cf-Access-Client-ID` header when making a request to the `api_url`.
+        /// </summary>
+        public Input<string>? AccessClientId
+        {
+            get => _accessClientId;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _accessClientId = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        [Input("accessClientSecret")]
+        private Input<string>? _accessClientSecret;
+
+        /// <summary>
+        /// The Access client secret to be used as the `Cf-Access-Client-Secret` header when making a request to the `api_url`.
+        /// </summary>
+        public Input<string>? AccessClientSecret
+        {
+            get => _accessClientSecret;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _accessClientSecret = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
         /// <summary>
         /// The third-party API's URL.
         /// </summary>

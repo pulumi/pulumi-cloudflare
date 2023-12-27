@@ -91,6 +91,12 @@ namespace Pulumi.Cloudflare.Inputs
         public Input<Inputs.TeamsRuleRuleSettingsL4overrideGetArgs>? L4override { get; set; }
 
         /// <summary>
+        /// Notification settings on a block rule.
+        /// </summary>
+        [Input("notificationSettings")]
+        public Input<Inputs.TeamsRuleRuleSettingsNotificationSettingsGetArgs>? NotificationSettings { get; set; }
+
+        /// <summary>
         /// The host to override matching DNS queries with.
         /// </summary>
         [Input("overrideHost")]

@@ -7,6 +7,8 @@ import com.pulumi.cloudflare.AccessApplicationArgs;
 import com.pulumi.cloudflare.Utilities;
 import com.pulumi.cloudflare.inputs.AccessApplicationState;
 import com.pulumi.cloudflare.outputs.AccessApplicationCorsHeader;
+import com.pulumi.cloudflare.outputs.AccessApplicationFooterLink;
+import com.pulumi.cloudflare.outputs.AccessApplicationLandingPageDesign;
 import com.pulumi.cloudflare.outputs.AccessApplicationSaasApp;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
@@ -111,6 +113,20 @@ public class AccessApplication extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.allowedIdps);
     }
     /**
+     * The logo URL of the app launcher.
+     * 
+     */
+    @Export(name="appLauncherLogoUrl", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> appLauncherLogoUrl;
+
+    /**
+     * @return The logo URL of the app launcher.
+     * 
+     */
+    public Output<Optional<String>> appLauncherLogoUrl() {
+        return Codegen.optional(this.appLauncherLogoUrl);
+    }
+    /**
      * Option to show/hide applications in App Launcher. Defaults to `true`.
      * 
      */
@@ -151,6 +167,20 @@ public class AccessApplication extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<Boolean>> autoRedirectToIdentity() {
         return Codegen.optional(this.autoRedirectToIdentity);
+    }
+    /**
+     * The background color of the app launcher.
+     * 
+     */
+    @Export(name="bgColor", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> bgColor;
+
+    /**
+     * @return The background color of the app launcher.
+     * 
+     */
+    public Output<Optional<String>> bgColor() {
+        return Codegen.optional(this.bgColor);
     }
     /**
      * CORS configuration for the Access Application. See below for reference structure.
@@ -251,6 +281,34 @@ public class AccessApplication extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.enableBindingCookie);
     }
     /**
+     * The footer links of the app launcher.
+     * 
+     */
+    @Export(name="footerLinks", refs={List.class,AccessApplicationFooterLink.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<AccessApplicationFooterLink>> footerLinks;
+
+    /**
+     * @return The footer links of the app launcher.
+     * 
+     */
+    public Output<Optional<List<AccessApplicationFooterLink>>> footerLinks() {
+        return Codegen.optional(this.footerLinks);
+    }
+    /**
+     * The background color of the header bar in the app launcher.
+     * 
+     */
+    @Export(name="headerBgColor", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> headerBgColor;
+
+    /**
+     * @return The background color of the header bar in the app launcher.
+     * 
+     */
+    public Output<Optional<String>> headerBgColor() {
+        return Codegen.optional(this.headerBgColor);
+    }
+    /**
      * Option to add the `HttpOnly` cookie flag to access tokens.
      * 
      */
@@ -263,6 +321,20 @@ public class AccessApplication extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<Boolean>> httpOnlyCookieAttribute() {
         return Codegen.optional(this.httpOnlyCookieAttribute);
+    }
+    /**
+     * The landing page design of the app launcher.
+     * 
+     */
+    @Export(name="landingPageDesign", refs={AccessApplicationLandingPageDesign.class}, tree="[0]")
+    private Output</* @Nullable */ AccessApplicationLandingPageDesign> landingPageDesign;
+
+    /**
+     * @return The landing page design of the app launcher.
+     * 
+     */
+    public Output<Optional<AccessApplicationLandingPageDesign>> landingPageDesign() {
+        return Codegen.optional(this.landingPageDesign);
     }
     /**
      * Image URL for the logo shown in the app launcher dashboard.
@@ -279,14 +351,14 @@ public class AccessApplication extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.logoUrl);
     }
     /**
-     * The name of the attribute as provided to the SaaS app.
+     * The name of the footer link.
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return The name of the attribute as provided to the SaaS app.
+     * @return The name of the footer link.
      * 
      */
     public Output<String> name() {
@@ -431,7 +503,7 @@ public class AccessApplication extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public AccessApplication(String name, AccessApplicationArgs args) {
+    public AccessApplication(String name, @Nullable AccessApplicationArgs args) {
         this(name, args, null);
     }
     /**
@@ -440,7 +512,7 @@ public class AccessApplication extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public AccessApplication(String name, AccessApplicationArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public AccessApplication(String name, @Nullable AccessApplicationArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("cloudflare:index/accessApplication:AccessApplication", name, args == null ? AccessApplicationArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
     }
 

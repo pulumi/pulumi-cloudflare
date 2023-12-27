@@ -40,6 +40,40 @@ export interface AccessApplicationCorsHeader {
     maxAge?: number;
 }
 
+export interface AccessApplicationFooterLink {
+    /**
+     * The name of the footer link.
+     */
+    name?: string;
+    /**
+     * The URL of the footer link.
+     */
+    url?: string;
+}
+
+export interface AccessApplicationLandingPageDesign {
+    /**
+     * The button color of the landing page.
+     */
+    buttonColor?: string;
+    /**
+     * The button text color of the landing page.
+     */
+    buttonTextColor?: string;
+    /**
+     * The URL of the image to be displayed in the landing page.
+     */
+    imageUrl?: string;
+    /**
+     * The message of the landing page.
+     */
+    message?: string;
+    /**
+     * The title of the landing page.
+     */
+    title?: string;
+}
+
 export interface AccessApplicationSaasApp {
     /**
      * The service provider's endpoint that is responsible for receiving and parsing a SAML assertion.
@@ -77,7 +111,7 @@ export interface AccessApplicationSaasAppCustomAttribute {
      */
     friendlyName?: string;
     /**
-     * The name of the attribute as provided to the SaaS app.
+     * The name of the footer link.
      */
     name?: string;
     /**
@@ -93,7 +127,7 @@ export interface AccessApplicationSaasAppCustomAttribute {
 
 export interface AccessApplicationSaasAppCustomAttributeSource {
     /**
-     * The name of the attribute as provided to the SaaS app.
+     * The name of the footer link.
      */
     name: string;
 }
@@ -974,6 +1008,14 @@ export interface DeviceManagedNetworksConfig {
 
 export interface DevicePostureIntegrationConfig {
     /**
+     * The Access client ID to be used as the `Cf-Access-Client-ID` header when making a request to the `apiUrl`.
+     */
+    accessClientId?: string;
+    /**
+     * The Access client secret to be used as the `Cf-Access-Client-Secret` header when making a request to the `apiUrl`.
+     */
+    accessClientSecret?: string;
+    /**
      * The third-party API's URL.
      */
     apiUrl?: string;
@@ -1045,7 +1087,7 @@ export interface DevicePostureRuleInput {
      */
     exists: boolean;
     /**
-     * The Teams List id.
+     * The Teams List id. Required for `serialNumber` and `uniqueClientId` rule types.
      */
     id?: string;
     /**
@@ -2275,6 +2317,10 @@ export interface NotificationPolicyFilters {
      * Requests per second threshold for dos alert.
      */
     requestsPerSeconds?: string[];
+    /**
+     * Selectors for alert. Valid options depend on the alert type.
+     */
+    selectors?: string[];
     services?: string[];
     /**
      * A numerical limit. Example: `99.9`.
@@ -2717,7 +2763,7 @@ export interface PagesProjectDeploymentConfigsPreview {
      */
     serviceBindings?: outputs.PagesProjectDeploymentConfigsPreviewServiceBinding[];
     /**
-     * Usage model used for Pages Functions. Defaults to `bundled`.
+     * Usage model used for Pages Functions. Available values: `unbound`, `bundled`, `standard`. Defaults to `bundled`.
      */
     usageModel?: string;
 }
@@ -2794,7 +2840,7 @@ export interface PagesProjectDeploymentConfigsProduction {
      */
     serviceBindings?: outputs.PagesProjectDeploymentConfigsProductionServiceBinding[];
     /**
-     * Usage model used for Pages Functions. Defaults to `bundled`.
+     * Usage model used for Pages Functions. Available values: `unbound`, `bundled`, `standard`. Defaults to `bundled`.
      */
     usageModel?: string;
 }
@@ -2854,7 +2900,7 @@ export interface PagesProjectSourceConfig {
      */
     previewBranchIncludes: string[];
     /**
-     * Preview Deployment Setting. Defaults to `all`.
+     * Preview Deployment Setting. Available values: `custom`, `all`, `none`. Defaults to `all`.
      */
     previewDeploymentSetting?: string;
     /**
@@ -3934,6 +3980,10 @@ export interface TeamsRuleRuleSettings {
      */
     l4override?: outputs.TeamsRuleRuleSettingsL4override;
     /**
+     * Notification settings on a block rule.
+     */
+    notificationSettings?: outputs.TeamsRuleRuleSettingsNotificationSettings;
+    /**
      * The host to override matching DNS queries with.
      */
     overrideHost?: string;
@@ -4018,9 +4068,24 @@ export interface TeamsRuleRuleSettingsL4override {
     port: number;
 }
 
+export interface TeamsRuleRuleSettingsNotificationSettings {
+    /**
+     * Enable notification settings.
+     */
+    enabled?: boolean;
+    /**
+     * Notification content.
+     */
+    message?: string;
+    /**
+     * Support URL to show in the notification.
+     */
+    supportUrl?: boolean;
+}
+
 export interface TeamsRuleRuleSettingsPayloadLog {
     /**
-     * Enable or disable DLP Payload Logging for this rule.
+     * Enable notification settings.
      */
     enabled: boolean;
 }

@@ -12,8 +12,6 @@ namespace Pulumi.Cloudflare
     /// <summary>
     /// Provides a Cloudflare Tunnel configuration resource.
     /// 
-    /// !&gt; When you delete a tunnel configuration, the tunnel will be deleted. You need to make sure that the tunnel is not in use before deleting the configuration.
-    /// 
     /// ## Example Usage
     /// 
     /// ```csharp

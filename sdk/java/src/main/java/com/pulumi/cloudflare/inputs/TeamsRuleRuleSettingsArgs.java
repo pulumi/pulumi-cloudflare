@@ -8,6 +8,7 @@ import com.pulumi.cloudflare.inputs.TeamsRuleRuleSettingsBisoAdminControlsArgs;
 import com.pulumi.cloudflare.inputs.TeamsRuleRuleSettingsCheckSessionArgs;
 import com.pulumi.cloudflare.inputs.TeamsRuleRuleSettingsEgressArgs;
 import com.pulumi.cloudflare.inputs.TeamsRuleRuleSettingsL4overrideArgs;
+import com.pulumi.cloudflare.inputs.TeamsRuleRuleSettingsNotificationSettingsArgs;
 import com.pulumi.cloudflare.inputs.TeamsRuleRuleSettingsPayloadLogArgs;
 import com.pulumi.cloudflare.inputs.TeamsRuleRuleSettingsUntrustedCertArgs;
 import com.pulumi.core.Output;
@@ -206,6 +207,21 @@ public final class TeamsRuleRuleSettingsArgs extends com.pulumi.resources.Resour
     }
 
     /**
+     * Notification settings on a block rule.
+     * 
+     */
+    @Import(name="notificationSettings")
+    private @Nullable Output<TeamsRuleRuleSettingsNotificationSettingsArgs> notificationSettings;
+
+    /**
+     * @return Notification settings on a block rule.
+     * 
+     */
+    public Optional<Output<TeamsRuleRuleSettingsNotificationSettingsArgs>> notificationSettings() {
+        return Optional.ofNullable(this.notificationSettings);
+    }
+
+    /**
      * The host to override matching DNS queries with.
      * 
      */
@@ -280,6 +296,7 @@ public final class TeamsRuleRuleSettingsArgs extends com.pulumi.resources.Resour
         this.insecureDisableDnssecValidation = $.insecureDisableDnssecValidation;
         this.ipCategories = $.ipCategories;
         this.l4override = $.l4override;
+        this.notificationSettings = $.notificationSettings;
         this.overrideHost = $.overrideHost;
         this.overrideIps = $.overrideIps;
         this.payloadLog = $.payloadLog;
@@ -554,6 +571,27 @@ public final class TeamsRuleRuleSettingsArgs extends com.pulumi.resources.Resour
          */
         public Builder l4override(TeamsRuleRuleSettingsL4overrideArgs l4override) {
             return l4override(Output.of(l4override));
+        }
+
+        /**
+         * @param notificationSettings Notification settings on a block rule.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder notificationSettings(@Nullable Output<TeamsRuleRuleSettingsNotificationSettingsArgs> notificationSettings) {
+            $.notificationSettings = notificationSettings;
+            return this;
+        }
+
+        /**
+         * @param notificationSettings Notification settings on a block rule.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder notificationSettings(TeamsRuleRuleSettingsNotificationSettingsArgs notificationSettings) {
+            return notificationSettings(Output.of(notificationSettings));
         }
 
         /**

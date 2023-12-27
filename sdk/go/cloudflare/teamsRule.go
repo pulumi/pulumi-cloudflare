@@ -70,7 +70,7 @@ type TeamsRule struct {
 	Description pulumi.StringOutput `pulumi:"description"`
 	// The wirefilter expression to be used for devicePosture check matching.
 	DevicePosture pulumi.StringPtrOutput `pulumi:"devicePosture"`
-	// Enable or disable DLP Payload Logging for this rule.
+	// Enable notification settings.
 	Enabled pulumi.BoolPtrOutput `pulumi:"enabled"`
 	// The protocol or layer to evaluate the traffic and identity expressions.
 	Filters pulumi.StringArrayOutput `pulumi:"filters"`
@@ -140,7 +140,7 @@ type teamsRuleState struct {
 	Description *string `pulumi:"description"`
 	// The wirefilter expression to be used for devicePosture check matching.
 	DevicePosture *string `pulumi:"devicePosture"`
-	// Enable or disable DLP Payload Logging for this rule.
+	// Enable notification settings.
 	Enabled *bool `pulumi:"enabled"`
 	// The protocol or layer to evaluate the traffic and identity expressions.
 	Filters []string `pulumi:"filters"`
@@ -166,7 +166,7 @@ type TeamsRuleState struct {
 	Description pulumi.StringPtrInput
 	// The wirefilter expression to be used for devicePosture check matching.
 	DevicePosture pulumi.StringPtrInput
-	// Enable or disable DLP Payload Logging for this rule.
+	// Enable notification settings.
 	Enabled pulumi.BoolPtrInput
 	// The protocol or layer to evaluate the traffic and identity expressions.
 	Filters pulumi.StringArrayInput
@@ -196,7 +196,7 @@ type teamsRuleArgs struct {
 	Description string `pulumi:"description"`
 	// The wirefilter expression to be used for devicePosture check matching.
 	DevicePosture *string `pulumi:"devicePosture"`
-	// Enable or disable DLP Payload Logging for this rule.
+	// Enable notification settings.
 	Enabled *bool `pulumi:"enabled"`
 	// The protocol or layer to evaluate the traffic and identity expressions.
 	Filters []string `pulumi:"filters"`
@@ -222,7 +222,7 @@ type TeamsRuleArgs struct {
 	Description pulumi.StringInput
 	// The wirefilter expression to be used for devicePosture check matching.
 	DevicePosture pulumi.StringPtrInput
-	// Enable or disable DLP Payload Logging for this rule.
+	// Enable notification settings.
 	Enabled pulumi.BoolPtrInput
 	// The protocol or layer to evaluate the traffic and identity expressions.
 	Filters pulumi.StringArrayInput
@@ -345,7 +345,7 @@ func (o TeamsRuleOutput) DevicePosture() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TeamsRule) pulumi.StringPtrOutput { return v.DevicePosture }).(pulumi.StringPtrOutput)
 }
 
-// Enable or disable DLP Payload Logging for this rule.
+// Enable notification settings.
 func (o TeamsRuleOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *TeamsRule) pulumi.BoolPtrOutput { return v.Enabled }).(pulumi.BoolPtrOutput)
 }

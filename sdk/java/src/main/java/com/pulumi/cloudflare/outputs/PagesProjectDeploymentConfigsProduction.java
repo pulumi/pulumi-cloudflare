@@ -78,7 +78,7 @@ public final class PagesProjectDeploymentConfigsProduction {
      */
     private @Nullable List<PagesProjectDeploymentConfigsProductionServiceBinding> serviceBindings;
     /**
-     * @return Usage model used for Pages Functions. Defaults to `bundled`.
+     * @return Usage model used for Pages Functions. Available values: `unbound`, `bundled`, `standard`. Defaults to `bundled`.
      * 
      */
     private @Nullable String usageModel;
@@ -169,7 +169,7 @@ public final class PagesProjectDeploymentConfigsProduction {
         return this.serviceBindings == null ? List.of() : this.serviceBindings;
     }
     /**
-     * @return Usage model used for Pages Functions. Defaults to `bundled`.
+     * @return Usage model used for Pages Functions. Available values: `unbound`, `bundled`, `standard`. Defaults to `bundled`.
      * 
      */
     public Optional<String> usageModel() {

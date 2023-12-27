@@ -40,6 +40,40 @@ export interface AccessApplicationCorsHeader {
     maxAge?: pulumi.Input<number>;
 }
 
+export interface AccessApplicationFooterLink {
+    /**
+     * The name of the footer link.
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * The URL of the footer link.
+     */
+    url?: pulumi.Input<string>;
+}
+
+export interface AccessApplicationLandingPageDesign {
+    /**
+     * The button color of the landing page.
+     */
+    buttonColor?: pulumi.Input<string>;
+    /**
+     * The button text color of the landing page.
+     */
+    buttonTextColor?: pulumi.Input<string>;
+    /**
+     * The URL of the image to be displayed in the landing page.
+     */
+    imageUrl?: pulumi.Input<string>;
+    /**
+     * The message of the landing page.
+     */
+    message?: pulumi.Input<string>;
+    /**
+     * The title of the landing page.
+     */
+    title?: pulumi.Input<string>;
+}
+
 export interface AccessApplicationSaasApp {
     /**
      * The service provider's endpoint that is responsible for receiving and parsing a SAML assertion.
@@ -77,7 +111,7 @@ export interface AccessApplicationSaasAppCustomAttribute {
      */
     friendlyName?: pulumi.Input<string>;
     /**
-     * The name of the attribute as provided to the SaaS app.
+     * The name of the footer link.
      */
     name?: pulumi.Input<string>;
     /**
@@ -93,7 +127,7 @@ export interface AccessApplicationSaasAppCustomAttribute {
 
 export interface AccessApplicationSaasAppCustomAttributeSource {
     /**
-     * The name of the attribute as provided to the SaaS app.
+     * The name of the footer link.
      */
     name: pulumi.Input<string>;
 }
@@ -974,6 +1008,14 @@ export interface DeviceManagedNetworksConfig {
 
 export interface DevicePostureIntegrationConfig {
     /**
+     * The Access client ID to be used as the `Cf-Access-Client-ID` header when making a request to the `apiUrl`.
+     */
+    accessClientId?: pulumi.Input<string>;
+    /**
+     * The Access client secret to be used as the `Cf-Access-Client-Secret` header when making a request to the `apiUrl`.
+     */
+    accessClientSecret?: pulumi.Input<string>;
+    /**
      * The third-party API's URL.
      */
     apiUrl?: pulumi.Input<string>;
@@ -1045,7 +1087,7 @@ export interface DevicePostureRuleInput {
      */
     exists?: pulumi.Input<boolean>;
     /**
-     * The Teams List id.
+     * The Teams List id. Required for `serialNumber` and `uniqueClientId` rule types.
      */
     id?: pulumi.Input<string>;
     /**
@@ -2070,6 +2112,10 @@ export interface NotificationPolicyFilters {
      * Requests per second threshold for dos alert.
      */
     requestsPerSeconds?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Selectors for alert. Valid options depend on the alert type.
+     */
+    selectors?: pulumi.Input<pulumi.Input<string>[]>;
     services?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * A numerical limit. Example: `99.9`.
@@ -2512,7 +2558,7 @@ export interface PagesProjectDeploymentConfigsPreview {
      */
     serviceBindings?: pulumi.Input<pulumi.Input<inputs.PagesProjectDeploymentConfigsPreviewServiceBinding>[]>;
     /**
-     * Usage model used for Pages Functions. Defaults to `bundled`.
+     * Usage model used for Pages Functions. Available values: `unbound`, `bundled`, `standard`. Defaults to `bundled`.
      */
     usageModel?: pulumi.Input<string>;
 }
@@ -2589,7 +2635,7 @@ export interface PagesProjectDeploymentConfigsProduction {
      */
     serviceBindings?: pulumi.Input<pulumi.Input<inputs.PagesProjectDeploymentConfigsProductionServiceBinding>[]>;
     /**
-     * Usage model used for Pages Functions. Defaults to `bundled`.
+     * Usage model used for Pages Functions. Available values: `unbound`, `bundled`, `standard`. Defaults to `bundled`.
      */
     usageModel?: pulumi.Input<string>;
 }
@@ -2649,7 +2695,7 @@ export interface PagesProjectSourceConfig {
      */
     previewBranchIncludes?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Preview Deployment Setting. Defaults to `all`.
+     * Preview Deployment Setting. Available values: `custom`, `all`, `none`. Defaults to `all`.
      */
     previewDeploymentSetting?: pulumi.Input<string>;
     /**
@@ -3729,6 +3775,10 @@ export interface TeamsRuleRuleSettings {
      */
     l4override?: pulumi.Input<inputs.TeamsRuleRuleSettingsL4override>;
     /**
+     * Notification settings on a block rule.
+     */
+    notificationSettings?: pulumi.Input<inputs.TeamsRuleRuleSettingsNotificationSettings>;
+    /**
      * The host to override matching DNS queries with.
      */
     overrideHost?: pulumi.Input<string>;
@@ -3813,9 +3863,24 @@ export interface TeamsRuleRuleSettingsL4override {
     port: pulumi.Input<number>;
 }
 
+export interface TeamsRuleRuleSettingsNotificationSettings {
+    /**
+     * Enable notification settings.
+     */
+    enabled?: pulumi.Input<boolean>;
+    /**
+     * Notification content.
+     */
+    message?: pulumi.Input<string>;
+    /**
+     * Support URL to show in the notification.
+     */
+    supportUrl?: pulumi.Input<boolean>;
+}
+
 export interface TeamsRuleRuleSettingsPayloadLog {
     /**
-     * Enable or disable DLP Payload Logging for this rule.
+     * Enable notification settings.
      */
     enabled: pulumi.Input<boolean>;
 }

@@ -14,7 +14,7 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class AccessApplicationSaasAppCustomAttributeSource
     {
         /// <summary>
-        /// The name of the attribute as provided to the SaaS app.
+        /// The name of the footer link.
         /// </summary>
         public readonly string Name;
 

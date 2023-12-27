@@ -80,14 +80,14 @@ public final class TeamsRuleState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Enable or disable DLP Payload Logging for this rule.
+     * Enable notification settings.
      * 
      */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
     /**
-     * @return Enable or disable DLP Payload Logging for this rule.
+     * @return Enable notification settings.
      * 
      */
     public Optional<Output<Boolean>> enabled() {
@@ -311,7 +311,7 @@ public final class TeamsRuleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param enabled Enable or disable DLP Payload Logging for this rule.
+         * @param enabled Enable notification settings.
          * 
          * @return builder
          * 
@@ -322,7 +322,7 @@ public final class TeamsRuleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param enabled Enable or disable DLP Payload Logging for this rule.
+         * @param enabled Enable notification settings.
          * 
          * @return builder
          * 

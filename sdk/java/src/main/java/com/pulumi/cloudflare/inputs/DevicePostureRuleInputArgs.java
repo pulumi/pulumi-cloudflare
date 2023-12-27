@@ -184,14 +184,14 @@ public final class DevicePostureRuleInputArgs extends com.pulumi.resources.Resou
     }
 
     /**
-     * The Teams List id.
+     * The Teams List id. Required for `serial_number` and `unique_client_id` rule types.
      * 
      */
     @Import(name="id")
     private @Nullable Output<String> id;
 
     /**
-     * @return The Teams List id.
+     * @return The Teams List id. Required for `serial_number` and `unique_client_id` rule types.
      * 
      */
     public Optional<Output<String>> id() {
@@ -779,7 +779,7 @@ public final class DevicePostureRuleInputArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param id The Teams List id.
+         * @param id The Teams List id. Required for `serial_number` and `unique_client_id` rule types.
          * 
          * @return builder
          * 
@@ -790,7 +790,7 @@ public final class DevicePostureRuleInputArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param id The Teams List id.
+         * @param id The Teams List id. Required for `serial_number` and `unique_client_id` rule types.
          * 
          * @return builder
          * 

@@ -202,14 +202,14 @@ public final class AccessPolicyState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`. Defaults to `24h`.
+     * How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`.
      * 
      */
     @Import(name="sessionDuration")
     private @Nullable Output<String> sessionDuration;
 
     /**
-     * @return How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`. Defaults to `24h`.
+     * @return How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`.
      * 
      */
     public Optional<Output<String>> sessionDuration() {
@@ -553,7 +553,7 @@ public final class AccessPolicyState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sessionDuration How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`. Defaults to `24h`.
+         * @param sessionDuration How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`.
          * 
          * @return builder
          * 
@@ -564,7 +564,7 @@ public final class AccessPolicyState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sessionDuration How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`. Defaults to `24h`.
+         * @param sessionDuration How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`.
          * 
          * @return builder
          * 

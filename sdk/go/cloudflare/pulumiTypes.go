@@ -173,6 +173,325 @@ func (o AccessApplicationCorsHeaderArrayOutput) Index(i pulumi.IntInput) AccessA
 	}).(AccessApplicationCorsHeaderOutput)
 }
 
+type AccessApplicationFooterLink struct {
+	// The name of the footer link.
+	Name *string `pulumi:"name"`
+	// The URL of the footer link.
+	Url *string `pulumi:"url"`
+}
+
+// AccessApplicationFooterLinkInput is an input type that accepts AccessApplicationFooterLinkArgs and AccessApplicationFooterLinkOutput values.
+// You can construct a concrete instance of `AccessApplicationFooterLinkInput` via:
+//
+//	AccessApplicationFooterLinkArgs{...}
+type AccessApplicationFooterLinkInput interface {
+	pulumi.Input
+
+	ToAccessApplicationFooterLinkOutput() AccessApplicationFooterLinkOutput
+	ToAccessApplicationFooterLinkOutputWithContext(context.Context) AccessApplicationFooterLinkOutput
+}
+
+type AccessApplicationFooterLinkArgs struct {
+	// The name of the footer link.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// The URL of the footer link.
+	Url pulumi.StringPtrInput `pulumi:"url"`
+}
+
+func (AccessApplicationFooterLinkArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessApplicationFooterLink)(nil)).Elem()
+}
+
+func (i AccessApplicationFooterLinkArgs) ToAccessApplicationFooterLinkOutput() AccessApplicationFooterLinkOutput {
+	return i.ToAccessApplicationFooterLinkOutputWithContext(context.Background())
+}
+
+func (i AccessApplicationFooterLinkArgs) ToAccessApplicationFooterLinkOutputWithContext(ctx context.Context) AccessApplicationFooterLinkOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessApplicationFooterLinkOutput)
+}
+
+// AccessApplicationFooterLinkArrayInput is an input type that accepts AccessApplicationFooterLinkArray and AccessApplicationFooterLinkArrayOutput values.
+// You can construct a concrete instance of `AccessApplicationFooterLinkArrayInput` via:
+//
+//	AccessApplicationFooterLinkArray{ AccessApplicationFooterLinkArgs{...} }
+type AccessApplicationFooterLinkArrayInput interface {
+	pulumi.Input
+
+	ToAccessApplicationFooterLinkArrayOutput() AccessApplicationFooterLinkArrayOutput
+	ToAccessApplicationFooterLinkArrayOutputWithContext(context.Context) AccessApplicationFooterLinkArrayOutput
+}
+
+type AccessApplicationFooterLinkArray []AccessApplicationFooterLinkInput
+
+func (AccessApplicationFooterLinkArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AccessApplicationFooterLink)(nil)).Elem()
+}
+
+func (i AccessApplicationFooterLinkArray) ToAccessApplicationFooterLinkArrayOutput() AccessApplicationFooterLinkArrayOutput {
+	return i.ToAccessApplicationFooterLinkArrayOutputWithContext(context.Background())
+}
+
+func (i AccessApplicationFooterLinkArray) ToAccessApplicationFooterLinkArrayOutputWithContext(ctx context.Context) AccessApplicationFooterLinkArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessApplicationFooterLinkArrayOutput)
+}
+
+type AccessApplicationFooterLinkOutput struct{ *pulumi.OutputState }
+
+func (AccessApplicationFooterLinkOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessApplicationFooterLink)(nil)).Elem()
+}
+
+func (o AccessApplicationFooterLinkOutput) ToAccessApplicationFooterLinkOutput() AccessApplicationFooterLinkOutput {
+	return o
+}
+
+func (o AccessApplicationFooterLinkOutput) ToAccessApplicationFooterLinkOutputWithContext(ctx context.Context) AccessApplicationFooterLinkOutput {
+	return o
+}
+
+// The name of the footer link.
+func (o AccessApplicationFooterLinkOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AccessApplicationFooterLink) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// The URL of the footer link.
+func (o AccessApplicationFooterLinkOutput) Url() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AccessApplicationFooterLink) *string { return v.Url }).(pulumi.StringPtrOutput)
+}
+
+type AccessApplicationFooterLinkArrayOutput struct{ *pulumi.OutputState }
+
+func (AccessApplicationFooterLinkArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AccessApplicationFooterLink)(nil)).Elem()
+}
+
+func (o AccessApplicationFooterLinkArrayOutput) ToAccessApplicationFooterLinkArrayOutput() AccessApplicationFooterLinkArrayOutput {
+	return o
+}
+
+func (o AccessApplicationFooterLinkArrayOutput) ToAccessApplicationFooterLinkArrayOutputWithContext(ctx context.Context) AccessApplicationFooterLinkArrayOutput {
+	return o
+}
+
+func (o AccessApplicationFooterLinkArrayOutput) Index(i pulumi.IntInput) AccessApplicationFooterLinkOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AccessApplicationFooterLink {
+		return vs[0].([]AccessApplicationFooterLink)[vs[1].(int)]
+	}).(AccessApplicationFooterLinkOutput)
+}
+
+type AccessApplicationLandingPageDesign struct {
+	// The button color of the landing page.
+	ButtonColor *string `pulumi:"buttonColor"`
+	// The button text color of the landing page.
+	ButtonTextColor *string `pulumi:"buttonTextColor"`
+	// The URL of the image to be displayed in the landing page.
+	ImageUrl *string `pulumi:"imageUrl"`
+	// The message of the landing page.
+	Message *string `pulumi:"message"`
+	// The title of the landing page.
+	Title *string `pulumi:"title"`
+}
+
+// AccessApplicationLandingPageDesignInput is an input type that accepts AccessApplicationLandingPageDesignArgs and AccessApplicationLandingPageDesignOutput values.
+// You can construct a concrete instance of `AccessApplicationLandingPageDesignInput` via:
+//
+//	AccessApplicationLandingPageDesignArgs{...}
+type AccessApplicationLandingPageDesignInput interface {
+	pulumi.Input
+
+	ToAccessApplicationLandingPageDesignOutput() AccessApplicationLandingPageDesignOutput
+	ToAccessApplicationLandingPageDesignOutputWithContext(context.Context) AccessApplicationLandingPageDesignOutput
+}
+
+type AccessApplicationLandingPageDesignArgs struct {
+	// The button color of the landing page.
+	ButtonColor pulumi.StringPtrInput `pulumi:"buttonColor"`
+	// The button text color of the landing page.
+	ButtonTextColor pulumi.StringPtrInput `pulumi:"buttonTextColor"`
+	// The URL of the image to be displayed in the landing page.
+	ImageUrl pulumi.StringPtrInput `pulumi:"imageUrl"`
+	// The message of the landing page.
+	Message pulumi.StringPtrInput `pulumi:"message"`
+	// The title of the landing page.
+	Title pulumi.StringPtrInput `pulumi:"title"`
+}
+
+func (AccessApplicationLandingPageDesignArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessApplicationLandingPageDesign)(nil)).Elem()
+}
+
+func (i AccessApplicationLandingPageDesignArgs) ToAccessApplicationLandingPageDesignOutput() AccessApplicationLandingPageDesignOutput {
+	return i.ToAccessApplicationLandingPageDesignOutputWithContext(context.Background())
+}
+
+func (i AccessApplicationLandingPageDesignArgs) ToAccessApplicationLandingPageDesignOutputWithContext(ctx context.Context) AccessApplicationLandingPageDesignOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessApplicationLandingPageDesignOutput)
+}
+
+func (i AccessApplicationLandingPageDesignArgs) ToAccessApplicationLandingPageDesignPtrOutput() AccessApplicationLandingPageDesignPtrOutput {
+	return i.ToAccessApplicationLandingPageDesignPtrOutputWithContext(context.Background())
+}
+
+func (i AccessApplicationLandingPageDesignArgs) ToAccessApplicationLandingPageDesignPtrOutputWithContext(ctx context.Context) AccessApplicationLandingPageDesignPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessApplicationLandingPageDesignOutput).ToAccessApplicationLandingPageDesignPtrOutputWithContext(ctx)
+}
+
+// AccessApplicationLandingPageDesignPtrInput is an input type that accepts AccessApplicationLandingPageDesignArgs, AccessApplicationLandingPageDesignPtr and AccessApplicationLandingPageDesignPtrOutput values.
+// You can construct a concrete instance of `AccessApplicationLandingPageDesignPtrInput` via:
+//
+//	        AccessApplicationLandingPageDesignArgs{...}
+//
+//	or:
+//
+//	        nil
+type AccessApplicationLandingPageDesignPtrInput interface {
+	pulumi.Input
+
+	ToAccessApplicationLandingPageDesignPtrOutput() AccessApplicationLandingPageDesignPtrOutput
+	ToAccessApplicationLandingPageDesignPtrOutputWithContext(context.Context) AccessApplicationLandingPageDesignPtrOutput
+}
+
+type accessApplicationLandingPageDesignPtrType AccessApplicationLandingPageDesignArgs
+
+func AccessApplicationLandingPageDesignPtr(v *AccessApplicationLandingPageDesignArgs) AccessApplicationLandingPageDesignPtrInput {
+	return (*accessApplicationLandingPageDesignPtrType)(v)
+}
+
+func (*accessApplicationLandingPageDesignPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AccessApplicationLandingPageDesign)(nil)).Elem()
+}
+
+func (i *accessApplicationLandingPageDesignPtrType) ToAccessApplicationLandingPageDesignPtrOutput() AccessApplicationLandingPageDesignPtrOutput {
+	return i.ToAccessApplicationLandingPageDesignPtrOutputWithContext(context.Background())
+}
+
+func (i *accessApplicationLandingPageDesignPtrType) ToAccessApplicationLandingPageDesignPtrOutputWithContext(ctx context.Context) AccessApplicationLandingPageDesignPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessApplicationLandingPageDesignPtrOutput)
+}
+
+type AccessApplicationLandingPageDesignOutput struct{ *pulumi.OutputState }
+
+func (AccessApplicationLandingPageDesignOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessApplicationLandingPageDesign)(nil)).Elem()
+}
+
+func (o AccessApplicationLandingPageDesignOutput) ToAccessApplicationLandingPageDesignOutput() AccessApplicationLandingPageDesignOutput {
+	return o
+}
+
+func (o AccessApplicationLandingPageDesignOutput) ToAccessApplicationLandingPageDesignOutputWithContext(ctx context.Context) AccessApplicationLandingPageDesignOutput {
+	return o
+}
+
+func (o AccessApplicationLandingPageDesignOutput) ToAccessApplicationLandingPageDesignPtrOutput() AccessApplicationLandingPageDesignPtrOutput {
+	return o.ToAccessApplicationLandingPageDesignPtrOutputWithContext(context.Background())
+}
+
+func (o AccessApplicationLandingPageDesignOutput) ToAccessApplicationLandingPageDesignPtrOutputWithContext(ctx context.Context) AccessApplicationLandingPageDesignPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AccessApplicationLandingPageDesign) *AccessApplicationLandingPageDesign {
+		return &v
+	}).(AccessApplicationLandingPageDesignPtrOutput)
+}
+
+// The button color of the landing page.
+func (o AccessApplicationLandingPageDesignOutput) ButtonColor() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AccessApplicationLandingPageDesign) *string { return v.ButtonColor }).(pulumi.StringPtrOutput)
+}
+
+// The button text color of the landing page.
+func (o AccessApplicationLandingPageDesignOutput) ButtonTextColor() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AccessApplicationLandingPageDesign) *string { return v.ButtonTextColor }).(pulumi.StringPtrOutput)
+}
+
+// The URL of the image to be displayed in the landing page.
+func (o AccessApplicationLandingPageDesignOutput) ImageUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AccessApplicationLandingPageDesign) *string { return v.ImageUrl }).(pulumi.StringPtrOutput)
+}
+
+// The message of the landing page.
+func (o AccessApplicationLandingPageDesignOutput) Message() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AccessApplicationLandingPageDesign) *string { return v.Message }).(pulumi.StringPtrOutput)
+}
+
+// The title of the landing page.
+func (o AccessApplicationLandingPageDesignOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AccessApplicationLandingPageDesign) *string { return v.Title }).(pulumi.StringPtrOutput)
+}
+
+type AccessApplicationLandingPageDesignPtrOutput struct{ *pulumi.OutputState }
+
+func (AccessApplicationLandingPageDesignPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AccessApplicationLandingPageDesign)(nil)).Elem()
+}
+
+func (o AccessApplicationLandingPageDesignPtrOutput) ToAccessApplicationLandingPageDesignPtrOutput() AccessApplicationLandingPageDesignPtrOutput {
+	return o
+}
+
+func (o AccessApplicationLandingPageDesignPtrOutput) ToAccessApplicationLandingPageDesignPtrOutputWithContext(ctx context.Context) AccessApplicationLandingPageDesignPtrOutput {
+	return o
+}
+
+func (o AccessApplicationLandingPageDesignPtrOutput) Elem() AccessApplicationLandingPageDesignOutput {
+	return o.ApplyT(func(v *AccessApplicationLandingPageDesign) AccessApplicationLandingPageDesign {
+		if v != nil {
+			return *v
+		}
+		var ret AccessApplicationLandingPageDesign
+		return ret
+	}).(AccessApplicationLandingPageDesignOutput)
+}
+
+// The button color of the landing page.
+func (o AccessApplicationLandingPageDesignPtrOutput) ButtonColor() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccessApplicationLandingPageDesign) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ButtonColor
+	}).(pulumi.StringPtrOutput)
+}
+
+// The button text color of the landing page.
+func (o AccessApplicationLandingPageDesignPtrOutput) ButtonTextColor() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccessApplicationLandingPageDesign) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ButtonTextColor
+	}).(pulumi.StringPtrOutput)
+}
+
+// The URL of the image to be displayed in the landing page.
+func (o AccessApplicationLandingPageDesignPtrOutput) ImageUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccessApplicationLandingPageDesign) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ImageUrl
+	}).(pulumi.StringPtrOutput)
+}
+
+// The message of the landing page.
+func (o AccessApplicationLandingPageDesignPtrOutput) Message() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccessApplicationLandingPageDesign) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Message
+	}).(pulumi.StringPtrOutput)
+}
+
+// The title of the landing page.
+func (o AccessApplicationLandingPageDesignPtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccessApplicationLandingPageDesign) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Title
+	}).(pulumi.StringPtrOutput)
+}
+
 type AccessApplicationSaasApp struct {
 	// The service provider's endpoint that is responsible for receiving and parsing a SAML assertion.
 	ConsumerServiceUrl string `pulumi:"consumerServiceUrl"`
@@ -427,7 +746,7 @@ func (o AccessApplicationSaasAppPtrOutput) SsoEndpoint() pulumi.StringPtrOutput 
 type AccessApplicationSaasAppCustomAttribute struct {
 	// A friendly name for the attribute as provided to the SaaS app.
 	FriendlyName *string `pulumi:"friendlyName"`
-	// The name of the attribute as provided to the SaaS app.
+	// The name of the footer link.
 	Name *string `pulumi:"name"`
 	// A globally unique name for an identity or service provider.
 	NameFormat *string `pulumi:"nameFormat"`
@@ -450,7 +769,7 @@ type AccessApplicationSaasAppCustomAttributeInput interface {
 type AccessApplicationSaasAppCustomAttributeArgs struct {
 	// A friendly name for the attribute as provided to the SaaS app.
 	FriendlyName pulumi.StringPtrInput `pulumi:"friendlyName"`
-	// The name of the attribute as provided to the SaaS app.
+	// The name of the footer link.
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// A globally unique name for an identity or service provider.
 	NameFormat pulumi.StringPtrInput `pulumi:"nameFormat"`
@@ -515,7 +834,7 @@ func (o AccessApplicationSaasAppCustomAttributeOutput) FriendlyName() pulumi.Str
 	return o.ApplyT(func(v AccessApplicationSaasAppCustomAttribute) *string { return v.FriendlyName }).(pulumi.StringPtrOutput)
 }
 
-// The name of the attribute as provided to the SaaS app.
+// The name of the footer link.
 func (o AccessApplicationSaasAppCustomAttributeOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AccessApplicationSaasAppCustomAttribute) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
@@ -557,7 +876,7 @@ func (o AccessApplicationSaasAppCustomAttributeArrayOutput) Index(i pulumi.IntIn
 }
 
 type AccessApplicationSaasAppCustomAttributeSource struct {
-	// The name of the attribute as provided to the SaaS app.
+	// The name of the footer link.
 	Name string `pulumi:"name"`
 }
 
@@ -573,7 +892,7 @@ type AccessApplicationSaasAppCustomAttributeSourceInput interface {
 }
 
 type AccessApplicationSaasAppCustomAttributeSourceArgs struct {
-	// The name of the attribute as provided to the SaaS app.
+	// The name of the footer link.
 	Name pulumi.StringInput `pulumi:"name"`
 }
 
@@ -603,7 +922,7 @@ func (o AccessApplicationSaasAppCustomAttributeSourceOutput) ToAccessApplication
 	return o
 }
 
-// The name of the attribute as provided to the SaaS app.
+// The name of the footer link.
 func (o AccessApplicationSaasAppCustomAttributeSourceOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v AccessApplicationSaasAppCustomAttributeSource) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -9691,6 +10010,10 @@ func (o DeviceManagedNetworksConfigPtrOutput) TlsSockaddr() pulumi.StringPtrOutp
 }
 
 type DevicePostureIntegrationConfig struct {
+	// The Access client ID to be used as the `Cf-Access-Client-ID` header when making a request to the `apiUrl`.
+	AccessClientId *string `pulumi:"accessClientId"`
+	// The Access client secret to be used as the `Cf-Access-Client-Secret` header when making a request to the `apiUrl`.
+	AccessClientSecret *string `pulumi:"accessClientSecret"`
 	// The third-party API's URL.
 	ApiUrl *string `pulumi:"apiUrl"`
 	// The third-party authorization API URL.
@@ -9717,6 +10040,10 @@ type DevicePostureIntegrationConfigInput interface {
 }
 
 type DevicePostureIntegrationConfigArgs struct {
+	// The Access client ID to be used as the `Cf-Access-Client-ID` header when making a request to the `apiUrl`.
+	AccessClientId pulumi.StringPtrInput `pulumi:"accessClientId"`
+	// The Access client secret to be used as the `Cf-Access-Client-Secret` header when making a request to the `apiUrl`.
+	AccessClientSecret pulumi.StringPtrInput `pulumi:"accessClientSecret"`
 	// The third-party API's URL.
 	ApiUrl pulumi.StringPtrInput `pulumi:"apiUrl"`
 	// The third-party authorization API URL.
@@ -9780,6 +10107,16 @@ func (o DevicePostureIntegrationConfigOutput) ToDevicePostureIntegrationConfigOu
 
 func (o DevicePostureIntegrationConfigOutput) ToDevicePostureIntegrationConfigOutputWithContext(ctx context.Context) DevicePostureIntegrationConfigOutput {
 	return o
+}
+
+// The Access client ID to be used as the `Cf-Access-Client-ID` header when making a request to the `apiUrl`.
+func (o DevicePostureIntegrationConfigOutput) AccessClientId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DevicePostureIntegrationConfig) *string { return v.AccessClientId }).(pulumi.StringPtrOutput)
+}
+
+// The Access client secret to be used as the `Cf-Access-Client-Secret` header when making a request to the `apiUrl`.
+func (o DevicePostureIntegrationConfigOutput) AccessClientSecret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DevicePostureIntegrationConfig) *string { return v.AccessClientSecret }).(pulumi.StringPtrOutput)
 }
 
 // The third-party API's URL.
@@ -9855,7 +10192,7 @@ type DevicePostureRuleInputType struct {
 	Enabled *bool `pulumi:"enabled"`
 	// Checks if the file should exist.
 	Exists *bool `pulumi:"exists"`
-	// The Teams List id.
+	// The Teams List id. Required for `serialNumber` and `uniqueClientId` rule types.
 	Id *string `pulumi:"id"`
 	// True if SentinelOne device is infected.
 	Infected *bool `pulumi:"infected"`
@@ -9931,7 +10268,7 @@ type DevicePostureRuleInputTypeArgs struct {
 	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
 	// Checks if the file should exist.
 	Exists pulumi.BoolPtrInput `pulumi:"exists"`
-	// The Teams List id.
+	// The Teams List id. Required for `serialNumber` and `uniqueClientId` rule types.
 	Id pulumi.StringPtrInput `pulumi:"id"`
 	// True if SentinelOne device is infected.
 	Infected pulumi.BoolPtrInput `pulumi:"infected"`
@@ -10079,7 +10416,7 @@ func (o DevicePostureRuleInputTypeOutput) Exists() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v DevicePostureRuleInputType) *bool { return v.Exists }).(pulumi.BoolPtrOutput)
 }
 
-// The Teams List id.
+// The Teams List id. Required for `serialNumber` and `uniqueClientId` rule types.
 func (o DevicePostureRuleInputTypeOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DevicePostureRuleInputType) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
@@ -15031,7 +15368,9 @@ type NotificationPolicyFilters struct {
 	Protocols []string `pulumi:"protocols"`
 	// Requests per second threshold for dos alert.
 	RequestsPerSeconds []string `pulumi:"requestsPerSeconds"`
-	Services           []string `pulumi:"services"`
+	// Selectors for alert. Valid options depend on the alert type.
+	Selectors []string `pulumi:"selectors"`
+	Services  []string `pulumi:"services"`
 	// A numerical limit. Example: `99.9`.
 	Slos []string `pulumi:"slos"`
 	// Status to alert on.
@@ -15100,7 +15439,9 @@ type NotificationPolicyFiltersArgs struct {
 	Protocols pulumi.StringArrayInput `pulumi:"protocols"`
 	// Requests per second threshold for dos alert.
 	RequestsPerSeconds pulumi.StringArrayInput `pulumi:"requestsPerSeconds"`
-	Services           pulumi.StringArrayInput `pulumi:"services"`
+	// Selectors for alert. Valid options depend on the alert type.
+	Selectors pulumi.StringArrayInput `pulumi:"selectors"`
+	Services  pulumi.StringArrayInput `pulumi:"services"`
 	// A numerical limit. Example: `99.9`.
 	Slos pulumi.StringArrayInput `pulumi:"slos"`
 	// Status to alert on.
@@ -15295,6 +15636,11 @@ func (o NotificationPolicyFiltersOutput) Protocols() pulumi.StringArrayOutput {
 // Requests per second threshold for dos alert.
 func (o NotificationPolicyFiltersOutput) RequestsPerSeconds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v NotificationPolicyFilters) []string { return v.RequestsPerSeconds }).(pulumi.StringArrayOutput)
+}
+
+// Selectors for alert. Valid options depend on the alert type.
+func (o NotificationPolicyFiltersOutput) Selectors() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v NotificationPolicyFilters) []string { return v.Selectors }).(pulumi.StringArrayOutput)
 }
 
 func (o NotificationPolicyFiltersOutput) Services() pulumi.StringArrayOutput {
@@ -15562,6 +15908,16 @@ func (o NotificationPolicyFiltersPtrOutput) RequestsPerSeconds() pulumi.StringAr
 			return nil
 		}
 		return v.RequestsPerSeconds
+	}).(pulumi.StringArrayOutput)
+}
+
+// Selectors for alert. Valid options depend on the alert type.
+func (o NotificationPolicyFiltersPtrOutput) Selectors() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *NotificationPolicyFilters) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Selectors
 	}).(pulumi.StringArrayOutput)
 }
 
@@ -18708,7 +19064,7 @@ type PagesProjectDeploymentConfigsPreview struct {
 	Secrets map[string]interface{} `pulumi:"secrets"`
 	// Services used for Pages Functions.
 	ServiceBindings []PagesProjectDeploymentConfigsPreviewServiceBinding `pulumi:"serviceBindings"`
-	// Usage model used for Pages Functions. Defaults to `bundled`.
+	// Usage model used for Pages Functions. Available values: `unbound`, `bundled`, `standard`. Defaults to `bundled`.
 	UsageModel *string `pulumi:"usageModel"`
 }
 
@@ -18748,7 +19104,7 @@ type PagesProjectDeploymentConfigsPreviewArgs struct {
 	Secrets pulumi.MapInput `pulumi:"secrets"`
 	// Services used for Pages Functions.
 	ServiceBindings PagesProjectDeploymentConfigsPreviewServiceBindingArrayInput `pulumi:"serviceBindings"`
-	// Usage model used for Pages Functions. Defaults to `bundled`.
+	// Usage model used for Pages Functions. Available values: `unbound`, `bundled`, `standard`. Defaults to `bundled`.
 	UsageModel pulumi.StringPtrInput `pulumi:"usageModel"`
 }
 
@@ -18893,7 +19249,7 @@ func (o PagesProjectDeploymentConfigsPreviewOutput) ServiceBindings() PagesProje
 	}).(PagesProjectDeploymentConfigsPreviewServiceBindingArrayOutput)
 }
 
-// Usage model used for Pages Functions. Defaults to `bundled`.
+// Usage model used for Pages Functions. Available values: `unbound`, `bundled`, `standard`. Defaults to `bundled`.
 func (o PagesProjectDeploymentConfigsPreviewOutput) UsageModel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PagesProjectDeploymentConfigsPreview) *string { return v.UsageModel }).(pulumi.StringPtrOutput)
 }
@@ -19042,7 +19398,7 @@ func (o PagesProjectDeploymentConfigsPreviewPtrOutput) ServiceBindings() PagesPr
 	}).(PagesProjectDeploymentConfigsPreviewServiceBindingArrayOutput)
 }
 
-// Usage model used for Pages Functions. Defaults to `bundled`.
+// Usage model used for Pages Functions. Available values: `unbound`, `bundled`, `standard`. Defaults to `bundled`.
 func (o PagesProjectDeploymentConfigsPreviewPtrOutput) UsageModel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PagesProjectDeploymentConfigsPreview) *string {
 		if v == nil {
@@ -19329,7 +19685,7 @@ type PagesProjectDeploymentConfigsProduction struct {
 	Secrets map[string]interface{} `pulumi:"secrets"`
 	// Services used for Pages Functions.
 	ServiceBindings []PagesProjectDeploymentConfigsProductionServiceBinding `pulumi:"serviceBindings"`
-	// Usage model used for Pages Functions. Defaults to `bundled`.
+	// Usage model used for Pages Functions. Available values: `unbound`, `bundled`, `standard`. Defaults to `bundled`.
 	UsageModel *string `pulumi:"usageModel"`
 }
 
@@ -19369,7 +19725,7 @@ type PagesProjectDeploymentConfigsProductionArgs struct {
 	Secrets pulumi.MapInput `pulumi:"secrets"`
 	// Services used for Pages Functions.
 	ServiceBindings PagesProjectDeploymentConfigsProductionServiceBindingArrayInput `pulumi:"serviceBindings"`
-	// Usage model used for Pages Functions. Defaults to `bundled`.
+	// Usage model used for Pages Functions. Available values: `unbound`, `bundled`, `standard`. Defaults to `bundled`.
 	UsageModel pulumi.StringPtrInput `pulumi:"usageModel"`
 }
 
@@ -19516,7 +19872,7 @@ func (o PagesProjectDeploymentConfigsProductionOutput) ServiceBindings() PagesPr
 	}).(PagesProjectDeploymentConfigsProductionServiceBindingArrayOutput)
 }
 
-// Usage model used for Pages Functions. Defaults to `bundled`.
+// Usage model used for Pages Functions. Available values: `unbound`, `bundled`, `standard`. Defaults to `bundled`.
 func (o PagesProjectDeploymentConfigsProductionOutput) UsageModel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PagesProjectDeploymentConfigsProduction) *string { return v.UsageModel }).(pulumi.StringPtrOutput)
 }
@@ -19665,7 +20021,7 @@ func (o PagesProjectDeploymentConfigsProductionPtrOutput) ServiceBindings() Page
 	}).(PagesProjectDeploymentConfigsProductionServiceBindingArrayOutput)
 }
 
-// Usage model used for Pages Functions. Defaults to `bundled`.
+// Usage model used for Pages Functions. Available values: `unbound`, `bundled`, `standard`. Defaults to `bundled`.
 func (o PagesProjectDeploymentConfigsProductionPtrOutput) UsageModel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PagesProjectDeploymentConfigsProduction) *string {
 		if v == nil {
@@ -20094,7 +20450,7 @@ type PagesProjectSourceConfig struct {
 	PreviewBranchExcludes []string `pulumi:"previewBranchExcludes"`
 	// Branches will be included for automatic deployment.
 	PreviewBranchIncludes []string `pulumi:"previewBranchIncludes"`
-	// Preview Deployment Setting. Defaults to `all`.
+	// Preview Deployment Setting. Available values: `custom`, `all`, `none`. Defaults to `all`.
 	PreviewDeploymentSetting *string `pulumi:"previewDeploymentSetting"`
 	// Project production branch name.
 	ProductionBranch string `pulumi:"productionBranch"`
@@ -20126,7 +20482,7 @@ type PagesProjectSourceConfigArgs struct {
 	PreviewBranchExcludes pulumi.StringArrayInput `pulumi:"previewBranchExcludes"`
 	// Branches will be included for automatic deployment.
 	PreviewBranchIncludes pulumi.StringArrayInput `pulumi:"previewBranchIncludes"`
-	// Preview Deployment Setting. Defaults to `all`.
+	// Preview Deployment Setting. Available values: `custom`, `all`, `none`. Defaults to `all`.
 	PreviewDeploymentSetting pulumi.StringPtrInput `pulumi:"previewDeploymentSetting"`
 	// Project production branch name.
 	ProductionBranch pulumi.StringInput `pulumi:"productionBranch"`
@@ -20238,7 +20594,7 @@ func (o PagesProjectSourceConfigOutput) PreviewBranchIncludes() pulumi.StringArr
 	return o.ApplyT(func(v PagesProjectSourceConfig) []string { return v.PreviewBranchIncludes }).(pulumi.StringArrayOutput)
 }
 
-// Preview Deployment Setting. Defaults to `all`.
+// Preview Deployment Setting. Available values: `custom`, `all`, `none`. Defaults to `all`.
 func (o PagesProjectSourceConfigOutput) PreviewDeploymentSetting() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PagesProjectSourceConfig) *string { return v.PreviewDeploymentSetting }).(pulumi.StringPtrOutput)
 }
@@ -20332,7 +20688,7 @@ func (o PagesProjectSourceConfigPtrOutput) PreviewBranchIncludes() pulumi.String
 	}).(pulumi.StringArrayOutput)
 }
 
-// Preview Deployment Setting. Defaults to `all`.
+// Preview Deployment Setting. Available values: `custom`, `all`, `none`. Defaults to `all`.
 func (o PagesProjectSourceConfigPtrOutput) PreviewDeploymentSetting() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PagesProjectSourceConfig) *string {
 		if v == nil {
@@ -30949,6 +31305,8 @@ type TeamsRuleRuleSettings struct {
 	IpCategories *bool `pulumi:"ipCategories"`
 	// Settings to forward layer 4 traffic.
 	L4override *TeamsRuleRuleSettingsL4override `pulumi:"l4override"`
+	// Notification settings on a block rule.
+	NotificationSettings *TeamsRuleRuleSettingsNotificationSettings `pulumi:"notificationSettings"`
 	// The host to override matching DNS queries with.
 	OverrideHost *string `pulumi:"overrideHost"`
 	// The IPs to override matching DNS queries with.
@@ -30995,6 +31353,8 @@ type TeamsRuleRuleSettingsArgs struct {
 	IpCategories pulumi.BoolPtrInput `pulumi:"ipCategories"`
 	// Settings to forward layer 4 traffic.
 	L4override TeamsRuleRuleSettingsL4overridePtrInput `pulumi:"l4override"`
+	// Notification settings on a block rule.
+	NotificationSettings TeamsRuleRuleSettingsNotificationSettingsPtrInput `pulumi:"notificationSettings"`
 	// The host to override matching DNS queries with.
 	OverrideHost pulumi.StringPtrInput `pulumi:"overrideHost"`
 	// The IPs to override matching DNS queries with.
@@ -31140,6 +31500,13 @@ func (o TeamsRuleRuleSettingsOutput) IpCategories() pulumi.BoolPtrOutput {
 // Settings to forward layer 4 traffic.
 func (o TeamsRuleRuleSettingsOutput) L4override() TeamsRuleRuleSettingsL4overridePtrOutput {
 	return o.ApplyT(func(v TeamsRuleRuleSettings) *TeamsRuleRuleSettingsL4override { return v.L4override }).(TeamsRuleRuleSettingsL4overridePtrOutput)
+}
+
+// Notification settings on a block rule.
+func (o TeamsRuleRuleSettingsOutput) NotificationSettings() TeamsRuleRuleSettingsNotificationSettingsPtrOutput {
+	return o.ApplyT(func(v TeamsRuleRuleSettings) *TeamsRuleRuleSettingsNotificationSettings {
+		return v.NotificationSettings
+	}).(TeamsRuleRuleSettingsNotificationSettingsPtrOutput)
 }
 
 // The host to override matching DNS queries with.
@@ -31304,6 +31671,16 @@ func (o TeamsRuleRuleSettingsPtrOutput) L4override() TeamsRuleRuleSettingsL4over
 		}
 		return v.L4override
 	}).(TeamsRuleRuleSettingsL4overridePtrOutput)
+}
+
+// Notification settings on a block rule.
+func (o TeamsRuleRuleSettingsPtrOutput) NotificationSettings() TeamsRuleRuleSettingsNotificationSettingsPtrOutput {
+	return o.ApplyT(func(v *TeamsRuleRuleSettings) *TeamsRuleRuleSettingsNotificationSettings {
+		if v == nil {
+			return nil
+		}
+		return v.NotificationSettings
+	}).(TeamsRuleRuleSettingsNotificationSettingsPtrOutput)
 }
 
 // The host to override matching DNS queries with.
@@ -32183,8 +32560,183 @@ func (o TeamsRuleRuleSettingsL4overridePtrOutput) Port() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+type TeamsRuleRuleSettingsNotificationSettings struct {
+	// Enable notification settings.
+	Enabled *bool `pulumi:"enabled"`
+	// Notification content.
+	Message *string `pulumi:"message"`
+	// Support URL to show in the notification.
+	SupportUrl *bool `pulumi:"supportUrl"`
+}
+
+// TeamsRuleRuleSettingsNotificationSettingsInput is an input type that accepts TeamsRuleRuleSettingsNotificationSettingsArgs and TeamsRuleRuleSettingsNotificationSettingsOutput values.
+// You can construct a concrete instance of `TeamsRuleRuleSettingsNotificationSettingsInput` via:
+//
+//	TeamsRuleRuleSettingsNotificationSettingsArgs{...}
+type TeamsRuleRuleSettingsNotificationSettingsInput interface {
+	pulumi.Input
+
+	ToTeamsRuleRuleSettingsNotificationSettingsOutput() TeamsRuleRuleSettingsNotificationSettingsOutput
+	ToTeamsRuleRuleSettingsNotificationSettingsOutputWithContext(context.Context) TeamsRuleRuleSettingsNotificationSettingsOutput
+}
+
+type TeamsRuleRuleSettingsNotificationSettingsArgs struct {
+	// Enable notification settings.
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+	// Notification content.
+	Message pulumi.StringPtrInput `pulumi:"message"`
+	// Support URL to show in the notification.
+	SupportUrl pulumi.BoolPtrInput `pulumi:"supportUrl"`
+}
+
+func (TeamsRuleRuleSettingsNotificationSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TeamsRuleRuleSettingsNotificationSettings)(nil)).Elem()
+}
+
+func (i TeamsRuleRuleSettingsNotificationSettingsArgs) ToTeamsRuleRuleSettingsNotificationSettingsOutput() TeamsRuleRuleSettingsNotificationSettingsOutput {
+	return i.ToTeamsRuleRuleSettingsNotificationSettingsOutputWithContext(context.Background())
+}
+
+func (i TeamsRuleRuleSettingsNotificationSettingsArgs) ToTeamsRuleRuleSettingsNotificationSettingsOutputWithContext(ctx context.Context) TeamsRuleRuleSettingsNotificationSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TeamsRuleRuleSettingsNotificationSettingsOutput)
+}
+
+func (i TeamsRuleRuleSettingsNotificationSettingsArgs) ToTeamsRuleRuleSettingsNotificationSettingsPtrOutput() TeamsRuleRuleSettingsNotificationSettingsPtrOutput {
+	return i.ToTeamsRuleRuleSettingsNotificationSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i TeamsRuleRuleSettingsNotificationSettingsArgs) ToTeamsRuleRuleSettingsNotificationSettingsPtrOutputWithContext(ctx context.Context) TeamsRuleRuleSettingsNotificationSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TeamsRuleRuleSettingsNotificationSettingsOutput).ToTeamsRuleRuleSettingsNotificationSettingsPtrOutputWithContext(ctx)
+}
+
+// TeamsRuleRuleSettingsNotificationSettingsPtrInput is an input type that accepts TeamsRuleRuleSettingsNotificationSettingsArgs, TeamsRuleRuleSettingsNotificationSettingsPtr and TeamsRuleRuleSettingsNotificationSettingsPtrOutput values.
+// You can construct a concrete instance of `TeamsRuleRuleSettingsNotificationSettingsPtrInput` via:
+//
+//	        TeamsRuleRuleSettingsNotificationSettingsArgs{...}
+//
+//	or:
+//
+//	        nil
+type TeamsRuleRuleSettingsNotificationSettingsPtrInput interface {
+	pulumi.Input
+
+	ToTeamsRuleRuleSettingsNotificationSettingsPtrOutput() TeamsRuleRuleSettingsNotificationSettingsPtrOutput
+	ToTeamsRuleRuleSettingsNotificationSettingsPtrOutputWithContext(context.Context) TeamsRuleRuleSettingsNotificationSettingsPtrOutput
+}
+
+type teamsRuleRuleSettingsNotificationSettingsPtrType TeamsRuleRuleSettingsNotificationSettingsArgs
+
+func TeamsRuleRuleSettingsNotificationSettingsPtr(v *TeamsRuleRuleSettingsNotificationSettingsArgs) TeamsRuleRuleSettingsNotificationSettingsPtrInput {
+	return (*teamsRuleRuleSettingsNotificationSettingsPtrType)(v)
+}
+
+func (*teamsRuleRuleSettingsNotificationSettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TeamsRuleRuleSettingsNotificationSettings)(nil)).Elem()
+}
+
+func (i *teamsRuleRuleSettingsNotificationSettingsPtrType) ToTeamsRuleRuleSettingsNotificationSettingsPtrOutput() TeamsRuleRuleSettingsNotificationSettingsPtrOutput {
+	return i.ToTeamsRuleRuleSettingsNotificationSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *teamsRuleRuleSettingsNotificationSettingsPtrType) ToTeamsRuleRuleSettingsNotificationSettingsPtrOutputWithContext(ctx context.Context) TeamsRuleRuleSettingsNotificationSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TeamsRuleRuleSettingsNotificationSettingsPtrOutput)
+}
+
+type TeamsRuleRuleSettingsNotificationSettingsOutput struct{ *pulumi.OutputState }
+
+func (TeamsRuleRuleSettingsNotificationSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TeamsRuleRuleSettingsNotificationSettings)(nil)).Elem()
+}
+
+func (o TeamsRuleRuleSettingsNotificationSettingsOutput) ToTeamsRuleRuleSettingsNotificationSettingsOutput() TeamsRuleRuleSettingsNotificationSettingsOutput {
+	return o
+}
+
+func (o TeamsRuleRuleSettingsNotificationSettingsOutput) ToTeamsRuleRuleSettingsNotificationSettingsOutputWithContext(ctx context.Context) TeamsRuleRuleSettingsNotificationSettingsOutput {
+	return o
+}
+
+func (o TeamsRuleRuleSettingsNotificationSettingsOutput) ToTeamsRuleRuleSettingsNotificationSettingsPtrOutput() TeamsRuleRuleSettingsNotificationSettingsPtrOutput {
+	return o.ToTeamsRuleRuleSettingsNotificationSettingsPtrOutputWithContext(context.Background())
+}
+
+func (o TeamsRuleRuleSettingsNotificationSettingsOutput) ToTeamsRuleRuleSettingsNotificationSettingsPtrOutputWithContext(ctx context.Context) TeamsRuleRuleSettingsNotificationSettingsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TeamsRuleRuleSettingsNotificationSettings) *TeamsRuleRuleSettingsNotificationSettings {
+		return &v
+	}).(TeamsRuleRuleSettingsNotificationSettingsPtrOutput)
+}
+
+// Enable notification settings.
+func (o TeamsRuleRuleSettingsNotificationSettingsOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v TeamsRuleRuleSettingsNotificationSettings) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+// Notification content.
+func (o TeamsRuleRuleSettingsNotificationSettingsOutput) Message() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TeamsRuleRuleSettingsNotificationSettings) *string { return v.Message }).(pulumi.StringPtrOutput)
+}
+
+// Support URL to show in the notification.
+func (o TeamsRuleRuleSettingsNotificationSettingsOutput) SupportUrl() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v TeamsRuleRuleSettingsNotificationSettings) *bool { return v.SupportUrl }).(pulumi.BoolPtrOutput)
+}
+
+type TeamsRuleRuleSettingsNotificationSettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (TeamsRuleRuleSettingsNotificationSettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TeamsRuleRuleSettingsNotificationSettings)(nil)).Elem()
+}
+
+func (o TeamsRuleRuleSettingsNotificationSettingsPtrOutput) ToTeamsRuleRuleSettingsNotificationSettingsPtrOutput() TeamsRuleRuleSettingsNotificationSettingsPtrOutput {
+	return o
+}
+
+func (o TeamsRuleRuleSettingsNotificationSettingsPtrOutput) ToTeamsRuleRuleSettingsNotificationSettingsPtrOutputWithContext(ctx context.Context) TeamsRuleRuleSettingsNotificationSettingsPtrOutput {
+	return o
+}
+
+func (o TeamsRuleRuleSettingsNotificationSettingsPtrOutput) Elem() TeamsRuleRuleSettingsNotificationSettingsOutput {
+	return o.ApplyT(func(v *TeamsRuleRuleSettingsNotificationSettings) TeamsRuleRuleSettingsNotificationSettings {
+		if v != nil {
+			return *v
+		}
+		var ret TeamsRuleRuleSettingsNotificationSettings
+		return ret
+	}).(TeamsRuleRuleSettingsNotificationSettingsOutput)
+}
+
+// Enable notification settings.
+func (o TeamsRuleRuleSettingsNotificationSettingsPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *TeamsRuleRuleSettingsNotificationSettings) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Notification content.
+func (o TeamsRuleRuleSettingsNotificationSettingsPtrOutput) Message() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TeamsRuleRuleSettingsNotificationSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Message
+	}).(pulumi.StringPtrOutput)
+}
+
+// Support URL to show in the notification.
+func (o TeamsRuleRuleSettingsNotificationSettingsPtrOutput) SupportUrl() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *TeamsRuleRuleSettingsNotificationSettings) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.SupportUrl
+	}).(pulumi.BoolPtrOutput)
+}
+
 type TeamsRuleRuleSettingsPayloadLog struct {
-	// Enable or disable DLP Payload Logging for this rule.
+	// Enable notification settings.
 	Enabled bool `pulumi:"enabled"`
 }
 
@@ -32200,7 +32752,7 @@ type TeamsRuleRuleSettingsPayloadLogInput interface {
 }
 
 type TeamsRuleRuleSettingsPayloadLogArgs struct {
-	// Enable or disable DLP Payload Logging for this rule.
+	// Enable notification settings.
 	Enabled pulumi.BoolInput `pulumi:"enabled"`
 }
 
@@ -32281,7 +32833,7 @@ func (o TeamsRuleRuleSettingsPayloadLogOutput) ToTeamsRuleRuleSettingsPayloadLog
 	}).(TeamsRuleRuleSettingsPayloadLogPtrOutput)
 }
 
-// Enable or disable DLP Payload Logging for this rule.
+// Enable notification settings.
 func (o TeamsRuleRuleSettingsPayloadLogOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v TeamsRuleRuleSettingsPayloadLog) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
@@ -32310,7 +32862,7 @@ func (o TeamsRuleRuleSettingsPayloadLogPtrOutput) Elem() TeamsRuleRuleSettingsPa
 	}).(TeamsRuleRuleSettingsPayloadLogOutput)
 }
 
-// Enable or disable DLP Payload Logging for this rule.
+// Enable notification settings.
 func (o TeamsRuleRuleSettingsPayloadLogPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *TeamsRuleRuleSettingsPayloadLog) *bool {
 		if v == nil {
@@ -45731,6 +46283,10 @@ func (o GetZonesZoneArrayOutput) Index(i pulumi.IntInput) GetZonesZoneOutput {
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessApplicationCorsHeaderInput)(nil)).Elem(), AccessApplicationCorsHeaderArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessApplicationCorsHeaderArrayInput)(nil)).Elem(), AccessApplicationCorsHeaderArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessApplicationFooterLinkInput)(nil)).Elem(), AccessApplicationFooterLinkArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessApplicationFooterLinkArrayInput)(nil)).Elem(), AccessApplicationFooterLinkArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessApplicationLandingPageDesignInput)(nil)).Elem(), AccessApplicationLandingPageDesignArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessApplicationLandingPageDesignPtrInput)(nil)).Elem(), AccessApplicationLandingPageDesignArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessApplicationSaasAppInput)(nil)).Elem(), AccessApplicationSaasAppArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessApplicationSaasAppPtrInput)(nil)).Elem(), AccessApplicationSaasAppArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessApplicationSaasAppCustomAttributeInput)(nil)).Elem(), AccessApplicationSaasAppCustomAttributeArgs{})
@@ -46133,6 +46689,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*TeamsRuleRuleSettingsEgressPtrInput)(nil)).Elem(), TeamsRuleRuleSettingsEgressArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TeamsRuleRuleSettingsL4overrideInput)(nil)).Elem(), TeamsRuleRuleSettingsL4overrideArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TeamsRuleRuleSettingsL4overridePtrInput)(nil)).Elem(), TeamsRuleRuleSettingsL4overrideArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TeamsRuleRuleSettingsNotificationSettingsInput)(nil)).Elem(), TeamsRuleRuleSettingsNotificationSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TeamsRuleRuleSettingsNotificationSettingsPtrInput)(nil)).Elem(), TeamsRuleRuleSettingsNotificationSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TeamsRuleRuleSettingsPayloadLogInput)(nil)).Elem(), TeamsRuleRuleSettingsPayloadLogArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TeamsRuleRuleSettingsPayloadLogPtrInput)(nil)).Elem(), TeamsRuleRuleSettingsPayloadLogArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TeamsRuleRuleSettingsUntrustedCertInput)(nil)).Elem(), TeamsRuleRuleSettingsUntrustedCertArgs{})
@@ -46290,6 +46848,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetZonesZoneArrayInput)(nil)).Elem(), GetZonesZoneArray{})
 	pulumi.RegisterOutputType(AccessApplicationCorsHeaderOutput{})
 	pulumi.RegisterOutputType(AccessApplicationCorsHeaderArrayOutput{})
+	pulumi.RegisterOutputType(AccessApplicationFooterLinkOutput{})
+	pulumi.RegisterOutputType(AccessApplicationFooterLinkArrayOutput{})
+	pulumi.RegisterOutputType(AccessApplicationLandingPageDesignOutput{})
+	pulumi.RegisterOutputType(AccessApplicationLandingPageDesignPtrOutput{})
 	pulumi.RegisterOutputType(AccessApplicationSaasAppOutput{})
 	pulumi.RegisterOutputType(AccessApplicationSaasAppPtrOutput{})
 	pulumi.RegisterOutputType(AccessApplicationSaasAppCustomAttributeOutput{})
@@ -46692,6 +47254,8 @@ func init() {
 	pulumi.RegisterOutputType(TeamsRuleRuleSettingsEgressPtrOutput{})
 	pulumi.RegisterOutputType(TeamsRuleRuleSettingsL4overrideOutput{})
 	pulumi.RegisterOutputType(TeamsRuleRuleSettingsL4overridePtrOutput{})
+	pulumi.RegisterOutputType(TeamsRuleRuleSettingsNotificationSettingsOutput{})
+	pulumi.RegisterOutputType(TeamsRuleRuleSettingsNotificationSettingsPtrOutput{})
 	pulumi.RegisterOutputType(TeamsRuleRuleSettingsPayloadLogOutput{})
 	pulumi.RegisterOutputType(TeamsRuleRuleSettingsPayloadLogPtrOutput{})
 	pulumi.RegisterOutputType(TeamsRuleRuleSettingsUntrustedCertOutput{})

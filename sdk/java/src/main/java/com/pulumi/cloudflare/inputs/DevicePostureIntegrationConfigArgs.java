@@ -16,6 +16,36 @@ public final class DevicePostureIntegrationConfigArgs extends com.pulumi.resourc
     public static final DevicePostureIntegrationConfigArgs Empty = new DevicePostureIntegrationConfigArgs();
 
     /**
+     * The Access client ID to be used as the `Cf-Access-Client-ID` header when making a request to the `api_url`.
+     * 
+     */
+    @Import(name="accessClientId")
+    private @Nullable Output<String> accessClientId;
+
+    /**
+     * @return The Access client ID to be used as the `Cf-Access-Client-ID` header when making a request to the `api_url`.
+     * 
+     */
+    public Optional<Output<String>> accessClientId() {
+        return Optional.ofNullable(this.accessClientId);
+    }
+
+    /**
+     * The Access client secret to be used as the `Cf-Access-Client-Secret` header when making a request to the `api_url`.
+     * 
+     */
+    @Import(name="accessClientSecret")
+    private @Nullable Output<String> accessClientSecret;
+
+    /**
+     * @return The Access client secret to be used as the `Cf-Access-Client-Secret` header when making a request to the `api_url`.
+     * 
+     */
+    public Optional<Output<String>> accessClientSecret() {
+        return Optional.ofNullable(this.accessClientSecret);
+    }
+
+    /**
      * The third-party API&#39;s URL.
      * 
      */
@@ -108,6 +138,8 @@ public final class DevicePostureIntegrationConfigArgs extends com.pulumi.resourc
     private DevicePostureIntegrationConfigArgs() {}
 
     private DevicePostureIntegrationConfigArgs(DevicePostureIntegrationConfigArgs $) {
+        this.accessClientId = $.accessClientId;
+        this.accessClientSecret = $.accessClientSecret;
         this.apiUrl = $.apiUrl;
         this.authUrl = $.authUrl;
         this.clientId = $.clientId;
@@ -132,6 +164,48 @@ public final class DevicePostureIntegrationConfigArgs extends com.pulumi.resourc
 
         public Builder(DevicePostureIntegrationConfigArgs defaults) {
             $ = new DevicePostureIntegrationConfigArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param accessClientId The Access client ID to be used as the `Cf-Access-Client-ID` header when making a request to the `api_url`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder accessClientId(@Nullable Output<String> accessClientId) {
+            $.accessClientId = accessClientId;
+            return this;
+        }
+
+        /**
+         * @param accessClientId The Access client ID to be used as the `Cf-Access-Client-ID` header when making a request to the `api_url`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder accessClientId(String accessClientId) {
+            return accessClientId(Output.of(accessClientId));
+        }
+
+        /**
+         * @param accessClientSecret The Access client secret to be used as the `Cf-Access-Client-Secret` header when making a request to the `api_url`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder accessClientSecret(@Nullable Output<String> accessClientSecret) {
+            $.accessClientSecret = accessClientSecret;
+            return this;
+        }
+
+        /**
+         * @param accessClientSecret The Access client secret to be used as the `Cf-Access-Client-Secret` header when making a request to the `api_url`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder accessClientSecret(String accessClientSecret) {
+            return accessClientSecret(Output.of(accessClientSecret));
         }
 
         /**

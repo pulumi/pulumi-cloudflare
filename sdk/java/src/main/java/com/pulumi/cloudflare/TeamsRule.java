@@ -128,14 +128,14 @@ public class TeamsRule extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.devicePosture);
     }
     /**
-     * Enable or disable DLP Payload Logging for this rule.
+     * Enable notification settings.
      * 
      */
     @Export(name="enabled", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> enabled;
 
     /**
-     * @return Enable or disable DLP Payload Logging for this rule.
+     * @return Enable notification settings.
      * 
      */
     public Output<Optional<Boolean>> enabled() {

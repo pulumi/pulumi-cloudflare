@@ -8,6 +8,7 @@ import com.pulumi.cloudflare.outputs.TeamsRuleRuleSettingsBisoAdminControls;
 import com.pulumi.cloudflare.outputs.TeamsRuleRuleSettingsCheckSession;
 import com.pulumi.cloudflare.outputs.TeamsRuleRuleSettingsEgress;
 import com.pulumi.cloudflare.outputs.TeamsRuleRuleSettingsL4override;
+import com.pulumi.cloudflare.outputs.TeamsRuleRuleSettingsNotificationSettings;
 import com.pulumi.cloudflare.outputs.TeamsRuleRuleSettingsPayloadLog;
 import com.pulumi.cloudflare.outputs.TeamsRuleRuleSettingsUntrustedCert;
 import com.pulumi.core.annotations.CustomType;
@@ -81,6 +82,11 @@ public final class TeamsRuleRuleSettings {
      * 
      */
     private @Nullable TeamsRuleRuleSettingsL4override l4override;
+    /**
+     * @return Notification settings on a block rule.
+     * 
+     */
+    private @Nullable TeamsRuleRuleSettingsNotificationSettings notificationSettings;
     /**
      * @return The host to override matching DNS queries with.
      * 
@@ -188,6 +194,13 @@ public final class TeamsRuleRuleSettings {
         return Optional.ofNullable(this.l4override);
     }
     /**
+     * @return Notification settings on a block rule.
+     * 
+     */
+    public Optional<TeamsRuleRuleSettingsNotificationSettings> notificationSettings() {
+        return Optional.ofNullable(this.notificationSettings);
+    }
+    /**
      * @return The host to override matching DNS queries with.
      * 
      */
@@ -237,6 +250,7 @@ public final class TeamsRuleRuleSettings {
         private @Nullable Boolean insecureDisableDnssecValidation;
         private @Nullable Boolean ipCategories;
         private @Nullable TeamsRuleRuleSettingsL4override l4override;
+        private @Nullable TeamsRuleRuleSettingsNotificationSettings notificationSettings;
         private @Nullable String overrideHost;
         private @Nullable List<String> overrideIps;
         private @Nullable TeamsRuleRuleSettingsPayloadLog payloadLog;
@@ -256,6 +270,7 @@ public final class TeamsRuleRuleSettings {
     	      this.insecureDisableDnssecValidation = defaults.insecureDisableDnssecValidation;
     	      this.ipCategories = defaults.ipCategories;
     	      this.l4override = defaults.l4override;
+    	      this.notificationSettings = defaults.notificationSettings;
     	      this.overrideHost = defaults.overrideHost;
     	      this.overrideIps = defaults.overrideIps;
     	      this.payloadLog = defaults.payloadLog;
@@ -323,6 +338,11 @@ public final class TeamsRuleRuleSettings {
             return this;
         }
         @CustomType.Setter
+        public Builder notificationSettings(@Nullable TeamsRuleRuleSettingsNotificationSettings notificationSettings) {
+            this.notificationSettings = notificationSettings;
+            return this;
+        }
+        @CustomType.Setter
         public Builder overrideHost(@Nullable String overrideHost) {
             this.overrideHost = overrideHost;
             return this;
@@ -359,6 +379,7 @@ public final class TeamsRuleRuleSettings {
             _resultValue.insecureDisableDnssecValidation = insecureDisableDnssecValidation;
             _resultValue.ipCategories = ipCategories;
             _resultValue.l4override = l4override;
+            _resultValue.notificationSettings = notificationSettings;
             _resultValue.overrideHost = overrideHost;
             _resultValue.overrideIps = overrideIps;
             _resultValue.payloadLog = payloadLog;

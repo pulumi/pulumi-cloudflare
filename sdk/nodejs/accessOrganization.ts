@@ -92,7 +92,7 @@ export class AccessOrganization extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string | undefined>;
     /**
-     * How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`. Defaults to `24h`.
+     * How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`.
      */
     public readonly sessionDuration!: pulumi.Output<string | undefined>;
     /**
@@ -184,7 +184,7 @@ export interface AccessOrganizationState {
      */
     name?: pulumi.Input<string>;
     /**
-     * How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`. Defaults to `24h`.
+     * How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`.
      */
     sessionDuration?: pulumi.Input<string>;
     /**
@@ -231,7 +231,7 @@ export interface AccessOrganizationArgs {
      */
     name?: pulumi.Input<string>;
     /**
-     * How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`. Defaults to `24h`.
+     * How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`.
      */
     sessionDuration?: pulumi.Input<string>;
     /**

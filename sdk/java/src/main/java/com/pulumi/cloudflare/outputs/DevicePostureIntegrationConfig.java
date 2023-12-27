@@ -12,6 +12,16 @@ import javax.annotation.Nullable;
 @CustomType
 public final class DevicePostureIntegrationConfig {
     /**
+     * @return The Access client ID to be used as the `Cf-Access-Client-ID` header when making a request to the `api_url`.
+     * 
+     */
+    private @Nullable String accessClientId;
+    /**
+     * @return The Access client secret to be used as the `Cf-Access-Client-Secret` header when making a request to the `api_url`.
+     * 
+     */
+    private @Nullable String accessClientSecret;
+    /**
      * @return The third-party API&#39;s URL.
      * 
      */
@@ -43,6 +53,20 @@ public final class DevicePostureIntegrationConfig {
     private @Nullable String customerId;
 
     private DevicePostureIntegrationConfig() {}
+    /**
+     * @return The Access client ID to be used as the `Cf-Access-Client-ID` header when making a request to the `api_url`.
+     * 
+     */
+    public Optional<String> accessClientId() {
+        return Optional.ofNullable(this.accessClientId);
+    }
+    /**
+     * @return The Access client secret to be used as the `Cf-Access-Client-Secret` header when making a request to the `api_url`.
+     * 
+     */
+    public Optional<String> accessClientSecret() {
+        return Optional.ofNullable(this.accessClientSecret);
+    }
     /**
      * @return The third-party API&#39;s URL.
      * 
@@ -95,6 +119,8 @@ public final class DevicePostureIntegrationConfig {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable String accessClientId;
+        private @Nullable String accessClientSecret;
         private @Nullable String apiUrl;
         private @Nullable String authUrl;
         private @Nullable String clientId;
@@ -104,6 +130,8 @@ public final class DevicePostureIntegrationConfig {
         public Builder() {}
         public Builder(DevicePostureIntegrationConfig defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.accessClientId = defaults.accessClientId;
+    	      this.accessClientSecret = defaults.accessClientSecret;
     	      this.apiUrl = defaults.apiUrl;
     	      this.authUrl = defaults.authUrl;
     	      this.clientId = defaults.clientId;
@@ -112,6 +140,16 @@ public final class DevicePostureIntegrationConfig {
     	      this.customerId = defaults.customerId;
         }
 
+        @CustomType.Setter
+        public Builder accessClientId(@Nullable String accessClientId) {
+            this.accessClientId = accessClientId;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder accessClientSecret(@Nullable String accessClientSecret) {
+            this.accessClientSecret = accessClientSecret;
+            return this;
+        }
         @CustomType.Setter
         public Builder apiUrl(@Nullable String apiUrl) {
             this.apiUrl = apiUrl;
@@ -144,6 +182,8 @@ public final class DevicePostureIntegrationConfig {
         }
         public DevicePostureIntegrationConfig build() {
             final var _resultValue = new DevicePostureIntegrationConfig();
+            _resultValue.accessClientId = accessClientId;
+            _resultValue.accessClientSecret = accessClientSecret;
             _resultValue.apiUrl = apiUrl;
             _resultValue.authUrl = authUrl;
             _resultValue.clientId = clientId;

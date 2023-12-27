@@ -85,7 +85,7 @@ namespace Pulumi.Cloudflare.Inputs
         public Input<bool>? Exists { get; set; }
 
         /// <summary>
-        /// The Teams List id.
+        /// The Teams List id. Required for `serial_number` and `unique_client_id` rule types.
         /// </summary>
         [Input("id")]
         public Input<string>? Id { get; set; }

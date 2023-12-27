@@ -70,7 +70,7 @@ public final class DevicePostureRuleInput {
      */
     private @Nullable Boolean exists;
     /**
-     * @return The Teams List id.
+     * @return The Teams List id. Required for `serial_number` and `unique_client_id` rule types.
      * 
      */
     private @Nullable String id;
@@ -249,7 +249,7 @@ public final class DevicePostureRuleInput {
         return Optional.ofNullable(this.exists);
     }
     /**
-     * @return The Teams List id.
+     * @return The Teams List id. Required for `serial_number` and `unique_client_id` rule types.
      * 
      */
     public Optional<String> id() {

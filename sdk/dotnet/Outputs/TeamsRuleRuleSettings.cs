@@ -62,6 +62,10 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly Outputs.TeamsRuleRuleSettingsL4override? L4override;
         /// <summary>
+        /// Notification settings on a block rule.
+        /// </summary>
+        public readonly Outputs.TeamsRuleRuleSettingsNotificationSettings? NotificationSettings;
+        /// <summary>
         /// The host to override matching DNS queries with.
         /// </summary>
         public readonly string? OverrideHost;
@@ -104,6 +108,8 @@ namespace Pulumi.Cloudflare.Outputs
 
             Outputs.TeamsRuleRuleSettingsL4override? l4override,
 
+            Outputs.TeamsRuleRuleSettingsNotificationSettings? notificationSettings,
+
             string? overrideHost,
 
             ImmutableArray<string> overrideIps,
@@ -124,6 +130,7 @@ namespace Pulumi.Cloudflare.Outputs
             InsecureDisableDnssecValidation = insecureDisableDnssecValidation;
             IpCategories = ipCategories;
             L4override = l4override;
+            NotificationSettings = notificationSettings;
             OverrideHost = overrideHost;
             OverrideIps = overrideIps;
             PayloadLog = payloadLog;

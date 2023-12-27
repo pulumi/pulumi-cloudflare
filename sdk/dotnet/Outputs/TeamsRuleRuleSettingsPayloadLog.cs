@@ -14,7 +14,7 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class TeamsRuleRuleSettingsPayloadLog
     {
         /// <summary>
-        /// Enable or disable DLP Payload Logging for this rule.
+        /// Enable notification settings.
         /// </summary>
         public readonly bool Enabled;
 

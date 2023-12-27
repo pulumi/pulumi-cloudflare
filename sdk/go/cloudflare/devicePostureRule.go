@@ -73,8 +73,9 @@ type DevicePostureRule struct {
 	AccountId   pulumi.StringOutput    `pulumi:"accountId"`
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Expire posture results after the specified amount of time. Must be in the format `1h` or `30m`. Valid units are `h` and `m`.
-	Expiration pulumi.StringPtrOutput                `pulumi:"expiration"`
-	Inputs     DevicePostureRuleInputTypeArrayOutput `pulumi:"inputs"`
+	Expiration pulumi.StringPtrOutput `pulumi:"expiration"`
+	// Required for all rule types except `warp`, `gateway`, and `tanium`.
+	Inputs DevicePostureRuleInputTypeArrayOutput `pulumi:"inputs"`
 	// The conditions that the client must match to run the rule.
 	Matches DevicePostureRuleMatchArrayOutput `pulumi:"matches"`
 	// Name of the device posture rule.
@@ -125,8 +126,9 @@ type devicePostureRuleState struct {
 	AccountId   *string `pulumi:"accountId"`
 	Description *string `pulumi:"description"`
 	// Expire posture results after the specified amount of time. Must be in the format `1h` or `30m`. Valid units are `h` and `m`.
-	Expiration *string                      `pulumi:"expiration"`
-	Inputs     []DevicePostureRuleInputType `pulumi:"inputs"`
+	Expiration *string `pulumi:"expiration"`
+	// Required for all rule types except `warp`, `gateway`, and `tanium`.
+	Inputs []DevicePostureRuleInputType `pulumi:"inputs"`
 	// The conditions that the client must match to run the rule.
 	Matches []DevicePostureRuleMatch `pulumi:"matches"`
 	// Name of the device posture rule.
@@ -143,7 +145,8 @@ type DevicePostureRuleState struct {
 	Description pulumi.StringPtrInput
 	// Expire posture results after the specified amount of time. Must be in the format `1h` or `30m`. Valid units are `h` and `m`.
 	Expiration pulumi.StringPtrInput
-	Inputs     DevicePostureRuleInputTypeArrayInput
+	// Required for all rule types except `warp`, `gateway`, and `tanium`.
+	Inputs DevicePostureRuleInputTypeArrayInput
 	// The conditions that the client must match to run the rule.
 	Matches DevicePostureRuleMatchArrayInput
 	// Name of the device posture rule.
@@ -163,8 +166,9 @@ type devicePostureRuleArgs struct {
 	AccountId   string  `pulumi:"accountId"`
 	Description *string `pulumi:"description"`
 	// Expire posture results after the specified amount of time. Must be in the format `1h` or `30m`. Valid units are `h` and `m`.
-	Expiration *string                      `pulumi:"expiration"`
-	Inputs     []DevicePostureRuleInputType `pulumi:"inputs"`
+	Expiration *string `pulumi:"expiration"`
+	// Required for all rule types except `warp`, `gateway`, and `tanium`.
+	Inputs []DevicePostureRuleInputType `pulumi:"inputs"`
 	// The conditions that the client must match to run the rule.
 	Matches []DevicePostureRuleMatch `pulumi:"matches"`
 	// Name of the device posture rule.
@@ -182,7 +186,8 @@ type DevicePostureRuleArgs struct {
 	Description pulumi.StringPtrInput
 	// Expire posture results after the specified amount of time. Must be in the format `1h` or `30m`. Valid units are `h` and `m`.
 	Expiration pulumi.StringPtrInput
-	Inputs     DevicePostureRuleInputTypeArrayInput
+	// Required for all rule types except `warp`, `gateway`, and `tanium`.
+	Inputs DevicePostureRuleInputTypeArrayInput
 	// The conditions that the client must match to run the rule.
 	Matches DevicePostureRuleMatchArrayInput
 	// Name of the device posture rule.
@@ -294,6 +299,7 @@ func (o DevicePostureRuleOutput) Expiration() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DevicePostureRule) pulumi.StringPtrOutput { return v.Expiration }).(pulumi.StringPtrOutput)
 }
 
+// Required for all rule types except `warp`, `gateway`, and `tanium`.
 func (o DevicePostureRuleOutput) Inputs() DevicePostureRuleInputTypeArrayOutput {
 	return o.ApplyT(func(v *DevicePostureRule) DevicePostureRuleInputTypeArrayOutput { return v.Inputs }).(DevicePostureRuleInputTypeArrayOutput)
 }

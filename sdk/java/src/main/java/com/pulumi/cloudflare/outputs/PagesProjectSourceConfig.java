@@ -39,7 +39,7 @@ public final class PagesProjectSourceConfig {
      */
     private @Nullable List<String> previewBranchIncludes;
     /**
-     * @return Preview Deployment Setting. Defaults to `all`.
+     * @return Preview Deployment Setting. Available values: `custom`, `all`, `none`. Defaults to `all`.
      * 
      */
     private @Nullable String previewDeploymentSetting;
@@ -96,7 +96,7 @@ public final class PagesProjectSourceConfig {
         return this.previewBranchIncludes == null ? List.of() : this.previewBranchIncludes;
     }
     /**
-     * @return Preview Deployment Setting. Defaults to `all`.
+     * @return Preview Deployment Setting. Available values: `custom`, `all`, `none`. Defaults to `all`.
      * 
      */
     public Optional<String> previewDeploymentSetting() {

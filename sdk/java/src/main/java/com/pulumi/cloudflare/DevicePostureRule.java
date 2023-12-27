@@ -110,9 +110,17 @@ public class DevicePostureRule extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> expiration() {
         return Codegen.optional(this.expiration);
     }
+    /**
+     * Required for all rule types except `warp`, `gateway`, and `tanium`.
+     * 
+     */
     @Export(name="inputs", refs={List.class,DevicePostureRuleInput.class}, tree="[0,1]")
     private Output<List<DevicePostureRuleInput>> inputs;
 
+    /**
+     * @return Required for all rule types except `warp`, `gateway`, and `tanium`.
+     * 
+     */
     public Output<List<DevicePostureRuleInput>> inputs() {
         return this.inputs;
     }

@@ -83,6 +83,12 @@ namespace Pulumi.Cloudflare
         public Output<ImmutableArray<string>> AllowedIdps { get; private set; } = null!;
 
         /// <summary>
+        /// The logo URL of the app launcher.
+        /// </summary>
+        [Output("appLauncherLogoUrl")]
+        public Output<string?> AppLauncherLogoUrl { get; private set; } = null!;
+
+        /// <summary>
         /// Option to show/hide applications in App Launcher. Defaults to `true`.
         /// </summary>
         [Output("appLauncherVisible")]
@@ -99,6 +105,12 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Output("autoRedirectToIdentity")]
         public Output<bool?> AutoRedirectToIdentity { get; private set; } = null!;
+
+        /// <summary>
+        /// The background color of the app launcher.
+        /// </summary>
+        [Output("bgColor")]
+        public Output<string?> BgColor { get; private set; } = null!;
 
         /// <summary>
         /// CORS configuration for the Access Application. See below for reference structure.
@@ -143,10 +155,28 @@ namespace Pulumi.Cloudflare
         public Output<bool?> EnableBindingCookie { get; private set; } = null!;
 
         /// <summary>
+        /// The footer links of the app launcher.
+        /// </summary>
+        [Output("footerLinks")]
+        public Output<ImmutableArray<Outputs.AccessApplicationFooterLink>> FooterLinks { get; private set; } = null!;
+
+        /// <summary>
+        /// The background color of the header bar in the app launcher.
+        /// </summary>
+        [Output("headerBgColor")]
+        public Output<string?> HeaderBgColor { get; private set; } = null!;
+
+        /// <summary>
         /// Option to add the `HttpOnly` cookie flag to access tokens.
         /// </summary>
         [Output("httpOnlyCookieAttribute")]
         public Output<bool?> HttpOnlyCookieAttribute { get; private set; } = null!;
+
+        /// <summary>
+        /// The landing page design of the app launcher.
+        /// </summary>
+        [Output("landingPageDesign")]
+        public Output<Outputs.AccessApplicationLandingPageDesign?> LandingPageDesign { get; private set; } = null!;
 
         /// <summary>
         /// Image URL for the logo shown in the app launcher dashboard.
@@ -155,7 +185,7 @@ namespace Pulumi.Cloudflare
         public Output<string?> LogoUrl { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the attribute as provided to the SaaS app.
+        /// The name of the footer link.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -222,7 +252,7 @@ namespace Pulumi.Cloudflare
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public AccessApplication(string name, AccessApplicationArgs args, CustomResourceOptions? options = null)
+        public AccessApplication(string name, AccessApplicationArgs? args = null, CustomResourceOptions? options = null)
             : base("cloudflare:index/accessApplication:AccessApplication", name, args ?? new AccessApplicationArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -279,6 +309,12 @@ namespace Pulumi.Cloudflare
         }
 
         /// <summary>
+        /// The logo URL of the app launcher.
+        /// </summary>
+        [Input("appLauncherLogoUrl")]
+        public Input<string>? AppLauncherLogoUrl { get; set; }
+
+        /// <summary>
         /// Option to show/hide applications in App Launcher. Defaults to `true`.
         /// </summary>
         [Input("appLauncherVisible")]
@@ -289,6 +325,12 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("autoRedirectToIdentity")]
         public Input<bool>? AutoRedirectToIdentity { get; set; }
+
+        /// <summary>
+        /// The background color of the app launcher.
+        /// </summary>
+        [Input("bgColor")]
+        public Input<string>? BgColor { get; set; }
 
         [Input("corsHeaders")]
         private InputList<Inputs.AccessApplicationCorsHeaderArgs>? _corsHeaders;
@@ -344,11 +386,35 @@ namespace Pulumi.Cloudflare
         [Input("enableBindingCookie")]
         public Input<bool>? EnableBindingCookie { get; set; }
 
+        [Input("footerLinks")]
+        private InputList<Inputs.AccessApplicationFooterLinkArgs>? _footerLinks;
+
+        /// <summary>
+        /// The footer links of the app launcher.
+        /// </summary>
+        public InputList<Inputs.AccessApplicationFooterLinkArgs> FooterLinks
+        {
+            get => _footerLinks ?? (_footerLinks = new InputList<Inputs.AccessApplicationFooterLinkArgs>());
+            set => _footerLinks = value;
+        }
+
+        /// <summary>
+        /// The background color of the header bar in the app launcher.
+        /// </summary>
+        [Input("headerBgColor")]
+        public Input<string>? HeaderBgColor { get; set; }
+
         /// <summary>
         /// Option to add the `HttpOnly` cookie flag to access tokens.
         /// </summary>
         [Input("httpOnlyCookieAttribute")]
         public Input<bool>? HttpOnlyCookieAttribute { get; set; }
+
+        /// <summary>
+        /// The landing page design of the app launcher.
+        /// </summary>
+        [Input("landingPageDesign")]
+        public Input<Inputs.AccessApplicationLandingPageDesignArgs>? LandingPageDesign { get; set; }
 
         /// <summary>
         /// Image URL for the logo shown in the app launcher dashboard.
@@ -357,10 +423,10 @@ namespace Pulumi.Cloudflare
         public Input<string>? LogoUrl { get; set; }
 
         /// <summary>
-        /// The name of the attribute as provided to the SaaS app.
+        /// The name of the footer link.
         /// </summary>
-        [Input("name", required: true)]
-        public Input<string> Name { get; set; } = null!;
+        [Input("name")]
+        public Input<string>? Name { get; set; }
 
         /// <summary>
         /// SaaS configuration for the Access Application.
@@ -455,6 +521,12 @@ namespace Pulumi.Cloudflare
         }
 
         /// <summary>
+        /// The logo URL of the app launcher.
+        /// </summary>
+        [Input("appLauncherLogoUrl")]
+        public Input<string>? AppLauncherLogoUrl { get; set; }
+
+        /// <summary>
         /// Option to show/hide applications in App Launcher. Defaults to `true`.
         /// </summary>
         [Input("appLauncherVisible")]
@@ -471,6 +543,12 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("autoRedirectToIdentity")]
         public Input<bool>? AutoRedirectToIdentity { get; set; }
+
+        /// <summary>
+        /// The background color of the app launcher.
+        /// </summary>
+        [Input("bgColor")]
+        public Input<string>? BgColor { get; set; }
 
         [Input("corsHeaders")]
         private InputList<Inputs.AccessApplicationCorsHeaderGetArgs>? _corsHeaders;
@@ -526,11 +604,35 @@ namespace Pulumi.Cloudflare
         [Input("enableBindingCookie")]
         public Input<bool>? EnableBindingCookie { get; set; }
 
+        [Input("footerLinks")]
+        private InputList<Inputs.AccessApplicationFooterLinkGetArgs>? _footerLinks;
+
+        /// <summary>
+        /// The footer links of the app launcher.
+        /// </summary>
+        public InputList<Inputs.AccessApplicationFooterLinkGetArgs> FooterLinks
+        {
+            get => _footerLinks ?? (_footerLinks = new InputList<Inputs.AccessApplicationFooterLinkGetArgs>());
+            set => _footerLinks = value;
+        }
+
+        /// <summary>
+        /// The background color of the header bar in the app launcher.
+        /// </summary>
+        [Input("headerBgColor")]
+        public Input<string>? HeaderBgColor { get; set; }
+
         /// <summary>
         /// Option to add the `HttpOnly` cookie flag to access tokens.
         /// </summary>
         [Input("httpOnlyCookieAttribute")]
         public Input<bool>? HttpOnlyCookieAttribute { get; set; }
+
+        /// <summary>
+        /// The landing page design of the app launcher.
+        /// </summary>
+        [Input("landingPageDesign")]
+        public Input<Inputs.AccessApplicationLandingPageDesignGetArgs>? LandingPageDesign { get; set; }
 
         /// <summary>
         /// Image URL for the logo shown in the app launcher dashboard.
@@ -539,7 +641,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? LogoUrl { get; set; }
 
         /// <summary>
-        /// The name of the attribute as provided to the SaaS app.
+        /// The name of the footer link.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
