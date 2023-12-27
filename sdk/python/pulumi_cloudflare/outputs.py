@@ -12,6 +12,8 @@ from . import outputs
 
 __all__ = [
     'AccessApplicationCorsHeader',
+    'AccessApplicationFooterLink',
+    'AccessApplicationLandingPageDesign',
     'AccessApplicationSaasApp',
     'AccessApplicationSaasAppCustomAttribute',
     'AccessApplicationSaasAppCustomAttributeSource',
@@ -214,6 +216,7 @@ __all__ = [
     'TeamsRuleRuleSettingsCheckSession',
     'TeamsRuleRuleSettingsEgress',
     'TeamsRuleRuleSettingsL4override',
+    'TeamsRuleRuleSettingsNotificationSettings',
     'TeamsRuleRuleSettingsPayloadLog',
     'TeamsRuleRuleSettingsUntrustedCert',
     'TunnelConfigConfig',
@@ -429,6 +432,125 @@ class AccessApplicationCorsHeader(dict):
 
 
 @pulumi.output_type
+class AccessApplicationFooterLink(dict):
+    def __init__(__self__, *,
+                 name: Optional[str] = None,
+                 url: Optional[str] = None):
+        """
+        :param str name: The name of the footer link.
+        :param str url: The URL of the footer link.
+        """
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if url is not None:
+            pulumi.set(__self__, "url", url)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        """
+        The name of the footer link.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def url(self) -> Optional[str]:
+        """
+        The URL of the footer link.
+        """
+        return pulumi.get(self, "url")
+
+
+@pulumi.output_type
+class AccessApplicationLandingPageDesign(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "buttonColor":
+            suggest = "button_color"
+        elif key == "buttonTextColor":
+            suggest = "button_text_color"
+        elif key == "imageUrl":
+            suggest = "image_url"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AccessApplicationLandingPageDesign. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AccessApplicationLandingPageDesign.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AccessApplicationLandingPageDesign.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 button_color: Optional[str] = None,
+                 button_text_color: Optional[str] = None,
+                 image_url: Optional[str] = None,
+                 message: Optional[str] = None,
+                 title: Optional[str] = None):
+        """
+        :param str button_color: The button color of the landing page.
+        :param str button_text_color: The button text color of the landing page.
+        :param str image_url: The URL of the image to be displayed in the landing page.
+        :param str message: The message of the landing page.
+        :param str title: The title of the landing page.
+        """
+        if button_color is not None:
+            pulumi.set(__self__, "button_color", button_color)
+        if button_text_color is not None:
+            pulumi.set(__self__, "button_text_color", button_text_color)
+        if image_url is not None:
+            pulumi.set(__self__, "image_url", image_url)
+        if message is not None:
+            pulumi.set(__self__, "message", message)
+        if title is not None:
+            pulumi.set(__self__, "title", title)
+
+    @property
+    @pulumi.getter(name="buttonColor")
+    def button_color(self) -> Optional[str]:
+        """
+        The button color of the landing page.
+        """
+        return pulumi.get(self, "button_color")
+
+    @property
+    @pulumi.getter(name="buttonTextColor")
+    def button_text_color(self) -> Optional[str]:
+        """
+        The button text color of the landing page.
+        """
+        return pulumi.get(self, "button_text_color")
+
+    @property
+    @pulumi.getter(name="imageUrl")
+    def image_url(self) -> Optional[str]:
+        """
+        The URL of the image to be displayed in the landing page.
+        """
+        return pulumi.get(self, "image_url")
+
+    @property
+    @pulumi.getter
+    def message(self) -> Optional[str]:
+        """
+        The message of the landing page.
+        """
+        return pulumi.get(self, "message")
+
+    @property
+    @pulumi.getter
+    def title(self) -> Optional[str]:
+        """
+        The title of the landing page.
+        """
+        return pulumi.get(self, "title")
+
+
+@pulumi.output_type
 class AccessApplicationSaasApp(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -575,7 +697,7 @@ class AccessApplicationSaasAppCustomAttribute(dict):
                  required: Optional[bool] = None):
         """
         :param str friendly_name: A friendly name for the attribute as provided to the SaaS app.
-        :param str name: The name of the attribute as provided to the SaaS app.
+        :param str name: The name of the footer link.
         :param str name_format: A globally unique name for an identity or service provider.
         :param bool required: True if the attribute must be always present.
         """
@@ -606,7 +728,7 @@ class AccessApplicationSaasAppCustomAttribute(dict):
     @pulumi.getter
     def name(self) -> Optional[str]:
         """
-        The name of the attribute as provided to the SaaS app.
+        The name of the footer link.
         """
         return pulumi.get(self, "name")
 
@@ -632,7 +754,7 @@ class AccessApplicationSaasAppCustomAttributeSource(dict):
     def __init__(__self__, *,
                  name: str):
         """
-        :param str name: The name of the attribute as provided to the SaaS app.
+        :param str name: The name of the footer link.
         """
         pulumi.set(__self__, "name", name)
 
@@ -640,7 +762,7 @@ class AccessApplicationSaasAppCustomAttributeSource(dict):
     @pulumi.getter
     def name(self) -> str:
         """
-        The name of the attribute as provided to the SaaS app.
+        The name of the footer link.
         """
         return pulumi.get(self, "name")
 
@@ -5483,7 +5605,11 @@ class DevicePostureIntegrationConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "apiUrl":
+        if key == "accessClientId":
+            suggest = "access_client_id"
+        elif key == "accessClientSecret":
+            suggest = "access_client_secret"
+        elif key == "apiUrl":
             suggest = "api_url"
         elif key == "authUrl":
             suggest = "auth_url"
@@ -5508,6 +5634,8 @@ class DevicePostureIntegrationConfig(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 access_client_id: Optional[str] = None,
+                 access_client_secret: Optional[str] = None,
                  api_url: Optional[str] = None,
                  auth_url: Optional[str] = None,
                  client_id: Optional[str] = None,
@@ -5515,6 +5643,8 @@ class DevicePostureIntegrationConfig(dict):
                  client_secret: Optional[str] = None,
                  customer_id: Optional[str] = None):
         """
+        :param str access_client_id: The Access client ID to be used as the `Cf-Access-Client-ID` header when making a request to the `api_url`.
+        :param str access_client_secret: The Access client secret to be used as the `Cf-Access-Client-Secret` header when making a request to the `api_url`.
         :param str api_url: The third-party API's URL.
         :param str auth_url: The third-party authorization API URL.
         :param str client_id: The client identifier for authenticating API calls.
@@ -5522,6 +5652,10 @@ class DevicePostureIntegrationConfig(dict):
         :param str client_secret: The client secret for authenticating API calls.
         :param str customer_id: The customer identifier for authenticating API calls.
         """
+        if access_client_id is not None:
+            pulumi.set(__self__, "access_client_id", access_client_id)
+        if access_client_secret is not None:
+            pulumi.set(__self__, "access_client_secret", access_client_secret)
         if api_url is not None:
             pulumi.set(__self__, "api_url", api_url)
         if auth_url is not None:
@@ -5534,6 +5668,22 @@ class DevicePostureIntegrationConfig(dict):
             pulumi.set(__self__, "client_secret", client_secret)
         if customer_id is not None:
             pulumi.set(__self__, "customer_id", customer_id)
+
+    @property
+    @pulumi.getter(name="accessClientId")
+    def access_client_id(self) -> Optional[str]:
+        """
+        The Access client ID to be used as the `Cf-Access-Client-ID` header when making a request to the `api_url`.
+        """
+        return pulumi.get(self, "access_client_id")
+
+    @property
+    @pulumi.getter(name="accessClientSecret")
+    def access_client_secret(self) -> Optional[str]:
+        """
+        The Access client secret to be used as the `Cf-Access-Client-Secret` header when making a request to the `api_url`.
+        """
+        return pulumi.get(self, "access_client_secret")
 
     @property
     @pulumi.getter(name="apiUrl")
@@ -5679,7 +5829,7 @@ class DevicePostureRuleInput(dict):
         :param str eid_last_seen: The datetime a device last seen in RFC 3339 format from Tanium.
         :param bool enabled: True if the firewall must be enabled.
         :param bool exists: Checks if the file should exist.
-        :param str id: The Teams List id.
+        :param str id: The Teams List id. Required for `serial_number` and `unique_client_id` rule types.
         :param bool infected: True if SentinelOne device is infected.
         :param bool is_active: True if SentinelOne device is active.
         :param str issue_count: The number of issues for kolide.
@@ -5855,7 +6005,7 @@ class DevicePostureRuleInput(dict):
     @pulumi.getter
     def id(self) -> Optional[str]:
         """
-        The Teams List id.
+        The Teams List id. Required for `serial_number` and `unique_client_id` rule types.
         """
         return pulumi.get(self, "id")
 
@@ -8178,6 +8328,7 @@ class NotificationPolicyFilters(dict):
                  project_ids: Optional[Sequence[str]] = None,
                  protocols: Optional[Sequence[str]] = None,
                  requests_per_seconds: Optional[Sequence[str]] = None,
+                 selectors: Optional[Sequence[str]] = None,
                  services: Optional[Sequence[str]] = None,
                  slos: Optional[Sequence[str]] = None,
                  statuses: Optional[Sequence[str]] = None,
@@ -8207,6 +8358,7 @@ class NotificationPolicyFilters(dict):
         :param Sequence[str] project_ids: Identifier of pages project.
         :param Sequence[str] protocols: Protocol to alert on for dos.
         :param Sequence[str] requests_per_seconds: Requests per second threshold for dos alert.
+        :param Sequence[str] selectors: Selectors for alert. Valid options depend on the alert type.
         :param Sequence[str] slos: A numerical limit. Example: `99.9`.
         :param Sequence[str] statuses: Status to alert on.
         :param Sequence[str] target_hostnames: Target host to alert on for dos.
@@ -8256,6 +8408,8 @@ class NotificationPolicyFilters(dict):
             pulumi.set(__self__, "protocols", protocols)
         if requests_per_seconds is not None:
             pulumi.set(__self__, "requests_per_seconds", requests_per_seconds)
+        if selectors is not None:
+            pulumi.set(__self__, "selectors", selectors)
         if services is not None:
             pulumi.set(__self__, "services", services)
         if slos is not None:
@@ -8438,6 +8592,14 @@ class NotificationPolicyFilters(dict):
         Requests per second threshold for dos alert.
         """
         return pulumi.get(self, "requests_per_seconds")
+
+    @property
+    @pulumi.getter
+    def selectors(self) -> Optional[Sequence[str]]:
+        """
+        Selectors for alert. Valid options depend on the alert type.
+        """
+        return pulumi.get(self, "selectors")
 
     @property
     @pulumi.getter
@@ -9770,7 +9932,7 @@ class PagesProjectDeploymentConfigsPreview(dict):
         :param Mapping[str, Any] r2_buckets: R2 Buckets used for Pages Functions. Defaults to `map[]`.
         :param Mapping[str, Any] secrets: Encrypted environment variables for Pages Functions. Defaults to `map[]`.
         :param Sequence['PagesProjectDeploymentConfigsPreviewServiceBindingArgs'] service_bindings: Services used for Pages Functions.
-        :param str usage_model: Usage model used for Pages Functions. Defaults to `bundled`.
+        :param str usage_model: Usage model used for Pages Functions. Available values: `unbound`, `bundled`, `standard`. Defaults to `bundled`.
         """
         if always_use_latest_compatibility_date is not None:
             pulumi.set(__self__, "always_use_latest_compatibility_date", always_use_latest_compatibility_date)
@@ -9899,7 +10061,7 @@ class PagesProjectDeploymentConfigsPreview(dict):
     @pulumi.getter(name="usageModel")
     def usage_model(self) -> Optional[str]:
         """
-        Usage model used for Pages Functions. Defaults to `bundled`.
+        Usage model used for Pages Functions. Available values: `unbound`, `bundled`, `standard`. Defaults to `bundled`.
         """
         return pulumi.get(self, "usage_model")
 
@@ -10030,7 +10192,7 @@ class PagesProjectDeploymentConfigsProduction(dict):
         :param Mapping[str, Any] r2_buckets: R2 Buckets used for Pages Functions. Defaults to `map[]`.
         :param Mapping[str, Any] secrets: Encrypted environment variables for Pages Functions. Defaults to `map[]`.
         :param Sequence['PagesProjectDeploymentConfigsProductionServiceBindingArgs'] service_bindings: Services used for Pages Functions.
-        :param str usage_model: Usage model used for Pages Functions. Defaults to `bundled`.
+        :param str usage_model: Usage model used for Pages Functions. Available values: `unbound`, `bundled`, `standard`. Defaults to `bundled`.
         """
         if always_use_latest_compatibility_date is not None:
             pulumi.set(__self__, "always_use_latest_compatibility_date", always_use_latest_compatibility_date)
@@ -10159,7 +10321,7 @@ class PagesProjectDeploymentConfigsProduction(dict):
     @pulumi.getter(name="usageModel")
     def usage_model(self) -> Optional[str]:
         """
-        Usage model used for Pages Functions. Defaults to `bundled`.
+        Usage model used for Pages Functions. Available values: `unbound`, `bundled`, `standard`. Defaults to `bundled`.
         """
         return pulumi.get(self, "usage_model")
 
@@ -10305,7 +10467,7 @@ class PagesProjectSourceConfig(dict):
         :param bool pr_comments_enabled: Enable Pages to comment on Pull Requests. Defaults to `true`.
         :param Sequence[str] preview_branch_excludes: Branches will be excluded from automatic deployment.
         :param Sequence[str] preview_branch_includes: Branches will be included for automatic deployment.
-        :param str preview_deployment_setting: Preview Deployment Setting. Defaults to `all`.
+        :param str preview_deployment_setting: Preview Deployment Setting. Available values: `custom`, `all`, `none`. Defaults to `all`.
         :param bool production_deployment_enabled: Enable production deployments. Defaults to `true`.
         :param str repo_name: Project repository name. **Modifying this attribute will force creation of a new resource.**
         """
@@ -10379,7 +10541,7 @@ class PagesProjectSourceConfig(dict):
     @pulumi.getter(name="previewDeploymentSetting")
     def preview_deployment_setting(self) -> Optional[str]:
         """
-        Preview Deployment Setting. Defaults to `all`.
+        Preview Deployment Setting. Available values: `custom`, `all`, `none`. Defaults to `all`.
         """
         return pulumi.get(self, "preview_deployment_setting")
 
@@ -14207,6 +14369,8 @@ class TeamsRuleRuleSettings(dict):
             suggest = "insecure_disable_dnssec_validation"
         elif key == "ipCategories":
             suggest = "ip_categories"
+        elif key == "notificationSettings":
+            suggest = "notification_settings"
         elif key == "overrideHost":
             suggest = "override_host"
         elif key == "overrideIps":
@@ -14240,6 +14404,7 @@ class TeamsRuleRuleSettings(dict):
                  insecure_disable_dnssec_validation: Optional[bool] = None,
                  ip_categories: Optional[bool] = None,
                  l4override: Optional['outputs.TeamsRuleRuleSettingsL4override'] = None,
+                 notification_settings: Optional['outputs.TeamsRuleRuleSettingsNotificationSettings'] = None,
                  override_host: Optional[str] = None,
                  override_ips: Optional[Sequence[str]] = None,
                  payload_log: Optional['outputs.TeamsRuleRuleSettingsPayloadLog'] = None,
@@ -14257,6 +14422,7 @@ class TeamsRuleRuleSettings(dict):
         :param bool insecure_disable_dnssec_validation: Disable DNSSEC validation (must be Allow rule).
         :param bool ip_categories: Turns on IP category based filter on dns if the rule contains dns category checks.
         :param 'TeamsRuleRuleSettingsL4overrideArgs' l4override: Settings to forward layer 4 traffic.
+        :param 'TeamsRuleRuleSettingsNotificationSettingsArgs' notification_settings: Notification settings on a block rule.
         :param str override_host: The host to override matching DNS queries with.
         :param Sequence[str] override_ips: The IPs to override matching DNS queries with.
         :param 'TeamsRuleRuleSettingsPayloadLogArgs' payload_log: Configure DLP Payload Logging settings for this rule.
@@ -14286,6 +14452,8 @@ class TeamsRuleRuleSettings(dict):
             pulumi.set(__self__, "ip_categories", ip_categories)
         if l4override is not None:
             pulumi.set(__self__, "l4override", l4override)
+        if notification_settings is not None:
+            pulumi.set(__self__, "notification_settings", notification_settings)
         if override_host is not None:
             pulumi.set(__self__, "override_host", override_host)
         if override_ips is not None:
@@ -14390,6 +14558,14 @@ class TeamsRuleRuleSettings(dict):
         Settings to forward layer 4 traffic.
         """
         return pulumi.get(self, "l4override")
+
+    @property
+    @pulumi.getter(name="notificationSettings")
+    def notification_settings(self) -> Optional['outputs.TeamsRuleRuleSettingsNotificationSettings']:
+        """
+        Notification settings on a block rule.
+        """
+        return pulumi.get(self, "notification_settings")
 
     @property
     @pulumi.getter(name="overrideHost")
@@ -14668,11 +14844,71 @@ class TeamsRuleRuleSettingsL4override(dict):
 
 
 @pulumi.output_type
+class TeamsRuleRuleSettingsNotificationSettings(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "supportUrl":
+            suggest = "support_url"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in TeamsRuleRuleSettingsNotificationSettings. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        TeamsRuleRuleSettingsNotificationSettings.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        TeamsRuleRuleSettingsNotificationSettings.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 enabled: Optional[bool] = None,
+                 message: Optional[str] = None,
+                 support_url: Optional[bool] = None):
+        """
+        :param bool enabled: Enable notification settings.
+        :param str message: Notification content.
+        :param bool support_url: Support URL to show in the notification.
+        """
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if message is not None:
+            pulumi.set(__self__, "message", message)
+        if support_url is not None:
+            pulumi.set(__self__, "support_url", support_url)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[bool]:
+        """
+        Enable notification settings.
+        """
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter
+    def message(self) -> Optional[str]:
+        """
+        Notification content.
+        """
+        return pulumi.get(self, "message")
+
+    @property
+    @pulumi.getter(name="supportUrl")
+    def support_url(self) -> Optional[bool]:
+        """
+        Support URL to show in the notification.
+        """
+        return pulumi.get(self, "support_url")
+
+
+@pulumi.output_type
 class TeamsRuleRuleSettingsPayloadLog(dict):
     def __init__(__self__, *,
                  enabled: bool):
         """
-        :param bool enabled: Enable or disable DLP Payload Logging for this rule.
+        :param bool enabled: Enable notification settings.
         """
         pulumi.set(__self__, "enabled", enabled)
 
@@ -14680,7 +14916,7 @@ class TeamsRuleRuleSettingsPayloadLog(dict):
     @pulumi.getter
     def enabled(self) -> bool:
         """
-        Enable or disable DLP Payload Logging for this rule.
+        Enable notification settings.
         """
         return pulumi.get(self, "enabled")
 

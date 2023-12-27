@@ -81,7 +81,7 @@ export class TeamsRule extends pulumi.CustomResource {
      */
     public readonly devicePosture!: pulumi.Output<string | undefined>;
     /**
-     * Enable or disable DLP Payload Logging for this rule.
+     * Enable notification settings.
      */
     public readonly enabled!: pulumi.Output<boolean | undefined>;
     /**
@@ -191,7 +191,7 @@ export interface TeamsRuleState {
      */
     devicePosture?: pulumi.Input<string>;
     /**
-     * Enable or disable DLP Payload Logging for this rule.
+     * Enable notification settings.
      */
     enabled?: pulumi.Input<boolean>;
     /**
@@ -242,7 +242,7 @@ export interface TeamsRuleArgs {
      */
     devicePosture?: pulumi.Input<string>;
     /**
-     * Enable or disable DLP Payload Logging for this rule.
+     * Enable notification settings.
      */
     enabled?: pulumi.Input<boolean>;
     /**

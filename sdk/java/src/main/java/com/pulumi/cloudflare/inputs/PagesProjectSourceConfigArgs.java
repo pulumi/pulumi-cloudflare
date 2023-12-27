@@ -93,14 +93,14 @@ public final class PagesProjectSourceConfigArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * Preview Deployment Setting. Defaults to `all`.
+     * Preview Deployment Setting. Available values: `custom`, `all`, `none`. Defaults to `all`.
      * 
      */
     @Import(name="previewDeploymentSetting")
     private @Nullable Output<String> previewDeploymentSetting;
 
     /**
-     * @return Preview Deployment Setting. Defaults to `all`.
+     * @return Preview Deployment Setting. Available values: `custom`, `all`, `none`. Defaults to `all`.
      * 
      */
     public Optional<Output<String>> previewDeploymentSetting() {
@@ -310,7 +310,7 @@ public final class PagesProjectSourceConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param previewDeploymentSetting Preview Deployment Setting. Defaults to `all`.
+         * @param previewDeploymentSetting Preview Deployment Setting. Available values: `custom`, `all`, `none`. Defaults to `all`.
          * 
          * @return builder
          * 
@@ -321,7 +321,7 @@ public final class PagesProjectSourceConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param previewDeploymentSetting Preview Deployment Setting. Defaults to `all`.
+         * @param previewDeploymentSetting Preview Deployment Setting. Available values: `custom`, `all`, `none`. Defaults to `all`.
          * 
          * @return builder
          * 

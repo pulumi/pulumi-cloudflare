@@ -34,7 +34,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly ImmutableArray<string> PreviewBranchIncludes;
         /// <summary>
-        /// Preview Deployment Setting. Defaults to `all`.
+        /// Preview Deployment Setting. Available values: `custom`, `all`, `none`. Defaults to `all`.
         /// </summary>
         public readonly string? PreviewDeploymentSetting;
         /// <summary>

@@ -202,14 +202,14 @@ public final class PagesProjectDeploymentConfigsPreviewArgs extends com.pulumi.r
     }
 
     /**
-     * Usage model used for Pages Functions. Defaults to `bundled`.
+     * Usage model used for Pages Functions. Available values: `unbound`, `bundled`, `standard`. Defaults to `bundled`.
      * 
      */
     @Import(name="usageModel")
     private @Nullable Output<String> usageModel;
 
     /**
-     * @return Usage model used for Pages Functions. Defaults to `bundled`.
+     * @return Usage model used for Pages Functions. Available values: `unbound`, `bundled`, `standard`. Defaults to `bundled`.
      * 
      */
     public Optional<Output<String>> usageModel() {
@@ -525,7 +525,7 @@ public final class PagesProjectDeploymentConfigsPreviewArgs extends com.pulumi.r
         }
 
         /**
-         * @param usageModel Usage model used for Pages Functions. Defaults to `bundled`.
+         * @param usageModel Usage model used for Pages Functions. Available values: `unbound`, `bundled`, `standard`. Defaults to `bundled`.
          * 
          * @return builder
          * 
@@ -536,7 +536,7 @@ public final class PagesProjectDeploymentConfigsPreviewArgs extends com.pulumi.r
         }
 
         /**
-         * @param usageModel Usage model used for Pages Functions. Defaults to `bundled`.
+         * @param usageModel Usage model used for Pages Functions. Available values: `unbound`, `bundled`, `standard`. Defaults to `bundled`.
          * 
          * @return builder
          * 

@@ -86,6 +86,10 @@ export class AccessApplication extends pulumi.CustomResource {
      */
     public readonly allowedIdps!: pulumi.Output<string[] | undefined>;
     /**
+     * The logo URL of the app launcher.
+     */
+    public readonly appLauncherLogoUrl!: pulumi.Output<string | undefined>;
+    /**
      * Option to show/hide applications in App Launcher. Defaults to `true`.
      */
     public readonly appLauncherVisible!: pulumi.Output<boolean | undefined>;
@@ -97,6 +101,10 @@ export class AccessApplication extends pulumi.CustomResource {
      * Option to skip identity provider selection if only one is configured in `allowedIdps`. Defaults to `false`.
      */
     public readonly autoRedirectToIdentity!: pulumi.Output<boolean | undefined>;
+    /**
+     * The background color of the app launcher.
+     */
+    public readonly bgColor!: pulumi.Output<string | undefined>;
     /**
      * CORS configuration for the Access Application. See below for reference structure.
      */
@@ -126,15 +134,27 @@ export class AccessApplication extends pulumi.CustomResource {
      */
     public readonly enableBindingCookie!: pulumi.Output<boolean | undefined>;
     /**
+     * The footer links of the app launcher.
+     */
+    public readonly footerLinks!: pulumi.Output<outputs.AccessApplicationFooterLink[] | undefined>;
+    /**
+     * The background color of the header bar in the app launcher.
+     */
+    public readonly headerBgColor!: pulumi.Output<string | undefined>;
+    /**
      * Option to add the `HttpOnly` cookie flag to access tokens.
      */
     public readonly httpOnlyCookieAttribute!: pulumi.Output<boolean | undefined>;
+    /**
+     * The landing page design of the app launcher.
+     */
+    public readonly landingPageDesign!: pulumi.Output<outputs.AccessApplicationLandingPageDesign | undefined>;
     /**
      * Image URL for the logo shown in the app launcher dashboard.
      */
     public readonly logoUrl!: pulumi.Output<string | undefined>;
     /**
-     * The name of the attribute as provided to the SaaS app.
+     * The name of the footer link.
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -181,7 +201,7 @@ export class AccessApplication extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: AccessApplicationArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, args?: AccessApplicationArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: AccessApplicationArgs | AccessApplicationState, opts?: pulumi.CustomResourceOptions) {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
@@ -189,9 +209,11 @@ export class AccessApplication extends pulumi.CustomResource {
             const state = argsOrState as AccessApplicationState | undefined;
             resourceInputs["accountId"] = state ? state.accountId : undefined;
             resourceInputs["allowedIdps"] = state ? state.allowedIdps : undefined;
+            resourceInputs["appLauncherLogoUrl"] = state ? state.appLauncherLogoUrl : undefined;
             resourceInputs["appLauncherVisible"] = state ? state.appLauncherVisible : undefined;
             resourceInputs["aud"] = state ? state.aud : undefined;
             resourceInputs["autoRedirectToIdentity"] = state ? state.autoRedirectToIdentity : undefined;
+            resourceInputs["bgColor"] = state ? state.bgColor : undefined;
             resourceInputs["corsHeaders"] = state ? state.corsHeaders : undefined;
             resourceInputs["customDenyMessage"] = state ? state.customDenyMessage : undefined;
             resourceInputs["customDenyUrl"] = state ? state.customDenyUrl : undefined;
@@ -199,7 +221,10 @@ export class AccessApplication extends pulumi.CustomResource {
             resourceInputs["customPages"] = state ? state.customPages : undefined;
             resourceInputs["domain"] = state ? state.domain : undefined;
             resourceInputs["enableBindingCookie"] = state ? state.enableBindingCookie : undefined;
+            resourceInputs["footerLinks"] = state ? state.footerLinks : undefined;
+            resourceInputs["headerBgColor"] = state ? state.headerBgColor : undefined;
             resourceInputs["httpOnlyCookieAttribute"] = state ? state.httpOnlyCookieAttribute : undefined;
+            resourceInputs["landingPageDesign"] = state ? state.landingPageDesign : undefined;
             resourceInputs["logoUrl"] = state ? state.logoUrl : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["saasApp"] = state ? state.saasApp : undefined;
@@ -213,13 +238,12 @@ export class AccessApplication extends pulumi.CustomResource {
             resourceInputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
             const args = argsOrState as AccessApplicationArgs | undefined;
-            if ((!args || args.name === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'name'");
-            }
             resourceInputs["accountId"] = args ? args.accountId : undefined;
             resourceInputs["allowedIdps"] = args ? args.allowedIdps : undefined;
+            resourceInputs["appLauncherLogoUrl"] = args ? args.appLauncherLogoUrl : undefined;
             resourceInputs["appLauncherVisible"] = args ? args.appLauncherVisible : undefined;
             resourceInputs["autoRedirectToIdentity"] = args ? args.autoRedirectToIdentity : undefined;
+            resourceInputs["bgColor"] = args ? args.bgColor : undefined;
             resourceInputs["corsHeaders"] = args ? args.corsHeaders : undefined;
             resourceInputs["customDenyMessage"] = args ? args.customDenyMessage : undefined;
             resourceInputs["customDenyUrl"] = args ? args.customDenyUrl : undefined;
@@ -227,7 +251,10 @@ export class AccessApplication extends pulumi.CustomResource {
             resourceInputs["customPages"] = args ? args.customPages : undefined;
             resourceInputs["domain"] = args ? args.domain : undefined;
             resourceInputs["enableBindingCookie"] = args ? args.enableBindingCookie : undefined;
+            resourceInputs["footerLinks"] = args ? args.footerLinks : undefined;
+            resourceInputs["headerBgColor"] = args ? args.headerBgColor : undefined;
             resourceInputs["httpOnlyCookieAttribute"] = args ? args.httpOnlyCookieAttribute : undefined;
+            resourceInputs["landingPageDesign"] = args ? args.landingPageDesign : undefined;
             resourceInputs["logoUrl"] = args ? args.logoUrl : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["saasApp"] = args ? args.saasApp : undefined;
@@ -259,6 +286,10 @@ export interface AccessApplicationState {
      */
     allowedIdps?: pulumi.Input<pulumi.Input<string>[]>;
     /**
+     * The logo URL of the app launcher.
+     */
+    appLauncherLogoUrl?: pulumi.Input<string>;
+    /**
      * Option to show/hide applications in App Launcher. Defaults to `true`.
      */
     appLauncherVisible?: pulumi.Input<boolean>;
@@ -270,6 +301,10 @@ export interface AccessApplicationState {
      * Option to skip identity provider selection if only one is configured in `allowedIdps`. Defaults to `false`.
      */
     autoRedirectToIdentity?: pulumi.Input<boolean>;
+    /**
+     * The background color of the app launcher.
+     */
+    bgColor?: pulumi.Input<string>;
     /**
      * CORS configuration for the Access Application. See below for reference structure.
      */
@@ -299,15 +334,27 @@ export interface AccessApplicationState {
      */
     enableBindingCookie?: pulumi.Input<boolean>;
     /**
+     * The footer links of the app launcher.
+     */
+    footerLinks?: pulumi.Input<pulumi.Input<inputs.AccessApplicationFooterLink>[]>;
+    /**
+     * The background color of the header bar in the app launcher.
+     */
+    headerBgColor?: pulumi.Input<string>;
+    /**
      * Option to add the `HttpOnly` cookie flag to access tokens.
      */
     httpOnlyCookieAttribute?: pulumi.Input<boolean>;
+    /**
+     * The landing page design of the app launcher.
+     */
+    landingPageDesign?: pulumi.Input<inputs.AccessApplicationLandingPageDesign>;
     /**
      * Image URL for the logo shown in the app launcher dashboard.
      */
     logoUrl?: pulumi.Input<string>;
     /**
-     * The name of the attribute as provided to the SaaS app.
+     * The name of the footer link.
      */
     name?: pulumi.Input<string>;
     /**
@@ -361,6 +408,10 @@ export interface AccessApplicationArgs {
      */
     allowedIdps?: pulumi.Input<pulumi.Input<string>[]>;
     /**
+     * The logo URL of the app launcher.
+     */
+    appLauncherLogoUrl?: pulumi.Input<string>;
+    /**
      * Option to show/hide applications in App Launcher. Defaults to `true`.
      */
     appLauncherVisible?: pulumi.Input<boolean>;
@@ -368,6 +419,10 @@ export interface AccessApplicationArgs {
      * Option to skip identity provider selection if only one is configured in `allowedIdps`. Defaults to `false`.
      */
     autoRedirectToIdentity?: pulumi.Input<boolean>;
+    /**
+     * The background color of the app launcher.
+     */
+    bgColor?: pulumi.Input<string>;
     /**
      * CORS configuration for the Access Application. See below for reference structure.
      */
@@ -397,17 +452,29 @@ export interface AccessApplicationArgs {
      */
     enableBindingCookie?: pulumi.Input<boolean>;
     /**
+     * The footer links of the app launcher.
+     */
+    footerLinks?: pulumi.Input<pulumi.Input<inputs.AccessApplicationFooterLink>[]>;
+    /**
+     * The background color of the header bar in the app launcher.
+     */
+    headerBgColor?: pulumi.Input<string>;
+    /**
      * Option to add the `HttpOnly` cookie flag to access tokens.
      */
     httpOnlyCookieAttribute?: pulumi.Input<boolean>;
+    /**
+     * The landing page design of the app launcher.
+     */
+    landingPageDesign?: pulumi.Input<inputs.AccessApplicationLandingPageDesign>;
     /**
      * Image URL for the logo shown in the app launcher dashboard.
      */
     logoUrl?: pulumi.Input<string>;
     /**
-     * The name of the attribute as provided to the SaaS app.
+     * The name of the footer link.
      */
-    name: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * SaaS configuration for the Access Application.
      */

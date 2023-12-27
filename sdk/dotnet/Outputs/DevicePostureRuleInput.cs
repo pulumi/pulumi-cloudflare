@@ -58,7 +58,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly bool? Exists;
         /// <summary>
-        /// The Teams List id.
+        /// The Teams List id. Required for `serial_number` and `unique_client_id` rule types.
         /// </summary>
         public readonly string? Id;
         /// <summary>

@@ -116,6 +116,11 @@ public final class NotificationPolicyFilters {
      * 
      */
     private @Nullable List<String> requestsPerSeconds;
+    /**
+     * @return Selectors for alert. Valid options depend on the alert type.
+     * 
+     */
+    private @Nullable List<String> selectors;
     private @Nullable List<String> services;
     /**
      * @return A numerical limit. Example: `99.9`.
@@ -296,6 +301,13 @@ public final class NotificationPolicyFilters {
     public List<String> requestsPerSeconds() {
         return this.requestsPerSeconds == null ? List.of() : this.requestsPerSeconds;
     }
+    /**
+     * @return Selectors for alert. Valid options depend on the alert type.
+     * 
+     */
+    public List<String> selectors() {
+        return this.selectors == null ? List.of() : this.selectors;
+    }
     public List<String> services() {
         return this.services == null ? List.of() : this.services;
     }
@@ -372,6 +384,7 @@ public final class NotificationPolicyFilters {
         private @Nullable List<String> projectIds;
         private @Nullable List<String> protocols;
         private @Nullable List<String> requestsPerSeconds;
+        private @Nullable List<String> selectors;
         private @Nullable List<String> services;
         private @Nullable List<String> slos;
         private @Nullable List<String> statuses;
@@ -403,6 +416,7 @@ public final class NotificationPolicyFilters {
     	      this.projectIds = defaults.projectIds;
     	      this.protocols = defaults.protocols;
     	      this.requestsPerSeconds = defaults.requestsPerSeconds;
+    	      this.selectors = defaults.selectors;
     	      this.services = defaults.services;
     	      this.slos = defaults.slos;
     	      this.statuses = defaults.statuses;
@@ -581,6 +595,14 @@ public final class NotificationPolicyFilters {
             return requestsPerSeconds(List.of(requestsPerSeconds));
         }
         @CustomType.Setter
+        public Builder selectors(@Nullable List<String> selectors) {
+            this.selectors = selectors;
+            return this;
+        }
+        public Builder selectors(String... selectors) {
+            return selectors(List.of(selectors));
+        }
+        @CustomType.Setter
         public Builder services(@Nullable List<String> services) {
             this.services = services;
             return this;
@@ -659,6 +681,7 @@ public final class NotificationPolicyFilters {
             _resultValue.projectIds = projectIds;
             _resultValue.protocols = protocols;
             _resultValue.requestsPerSeconds = requestsPerSeconds;
+            _resultValue.selectors = selectors;
             _resultValue.services = services;
             _resultValue.slos = slos;
             _resultValue.statuses = statuses;

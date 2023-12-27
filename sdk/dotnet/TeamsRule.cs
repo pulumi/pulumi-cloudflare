@@ -78,7 +78,7 @@ namespace Pulumi.Cloudflare
         public Output<string?> DevicePosture { get; private set; } = null!;
 
         /// <summary>
-        /// Enable or disable DLP Payload Logging for this rule.
+        /// Enable notification settings.
         /// </summary>
         [Output("enabled")]
         public Output<bool?> Enabled { get; private set; } = null!;
@@ -193,7 +193,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? DevicePosture { get; set; }
 
         /// <summary>
-        /// Enable or disable DLP Payload Logging for this rule.
+        /// Enable notification settings.
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
@@ -273,7 +273,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? DevicePosture { get; set; }
 
         /// <summary>
-        /// Enable or disable DLP Payload Logging for this rule.
+        /// Enable notification settings.
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }

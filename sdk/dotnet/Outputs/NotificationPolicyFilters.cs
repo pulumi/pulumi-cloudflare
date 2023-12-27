@@ -97,6 +97,10 @@ namespace Pulumi.Cloudflare.Outputs
         /// Requests per second threshold for dos alert.
         /// </summary>
         public readonly ImmutableArray<string> RequestsPerSeconds;
+        /// <summary>
+        /// Selectors for alert. Valid options depend on the alert type.
+        /// </summary>
+        public readonly ImmutableArray<string> Selectors;
         public readonly ImmutableArray<string> Services;
         /// <summary>
         /// A numerical limit. Example: `99.9`.
@@ -167,6 +171,8 @@ namespace Pulumi.Cloudflare.Outputs
 
             ImmutableArray<string> requestsPerSeconds,
 
+            ImmutableArray<string> selectors,
+
             ImmutableArray<string> services,
 
             ImmutableArray<string> slos,
@@ -202,6 +208,7 @@ namespace Pulumi.Cloudflare.Outputs
             ProjectIds = projectIds;
             Protocols = protocols;
             RequestsPerSeconds = requestsPerSeconds;
+            Selectors = selectors;
             Services = services;
             Slos = slos;
             Statuses = statuses;

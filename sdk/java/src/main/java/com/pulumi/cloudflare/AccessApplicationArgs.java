@@ -4,6 +4,8 @@
 package com.pulumi.cloudflare;
 
 import com.pulumi.cloudflare.inputs.AccessApplicationCorsHeaderArgs;
+import com.pulumi.cloudflare.inputs.AccessApplicationFooterLinkArgs;
+import com.pulumi.cloudflare.inputs.AccessApplicationLandingPageDesignArgs;
 import com.pulumi.cloudflare.inputs.AccessApplicationSaasAppArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
@@ -50,6 +52,21 @@ public final class AccessApplicationArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
+     * The logo URL of the app launcher.
+     * 
+     */
+    @Import(name="appLauncherLogoUrl")
+    private @Nullable Output<String> appLauncherLogoUrl;
+
+    /**
+     * @return The logo URL of the app launcher.
+     * 
+     */
+    public Optional<Output<String>> appLauncherLogoUrl() {
+        return Optional.ofNullable(this.appLauncherLogoUrl);
+    }
+
+    /**
      * Option to show/hide applications in App Launcher. Defaults to `true`.
      * 
      */
@@ -77,6 +94,21 @@ public final class AccessApplicationArgs extends com.pulumi.resources.ResourceAr
      */
     public Optional<Output<Boolean>> autoRedirectToIdentity() {
         return Optional.ofNullable(this.autoRedirectToIdentity);
+    }
+
+    /**
+     * The background color of the app launcher.
+     * 
+     */
+    @Import(name="bgColor")
+    private @Nullable Output<String> bgColor;
+
+    /**
+     * @return The background color of the app launcher.
+     * 
+     */
+    public Optional<Output<String>> bgColor() {
+        return Optional.ofNullable(this.bgColor);
     }
 
     /**
@@ -185,6 +217,36 @@ public final class AccessApplicationArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
+     * The footer links of the app launcher.
+     * 
+     */
+    @Import(name="footerLinks")
+    private @Nullable Output<List<AccessApplicationFooterLinkArgs>> footerLinks;
+
+    /**
+     * @return The footer links of the app launcher.
+     * 
+     */
+    public Optional<Output<List<AccessApplicationFooterLinkArgs>>> footerLinks() {
+        return Optional.ofNullable(this.footerLinks);
+    }
+
+    /**
+     * The background color of the header bar in the app launcher.
+     * 
+     */
+    @Import(name="headerBgColor")
+    private @Nullable Output<String> headerBgColor;
+
+    /**
+     * @return The background color of the header bar in the app launcher.
+     * 
+     */
+    public Optional<Output<String>> headerBgColor() {
+        return Optional.ofNullable(this.headerBgColor);
+    }
+
+    /**
      * Option to add the `HttpOnly` cookie flag to access tokens.
      * 
      */
@@ -197,6 +259,21 @@ public final class AccessApplicationArgs extends com.pulumi.resources.ResourceAr
      */
     public Optional<Output<Boolean>> httpOnlyCookieAttribute() {
         return Optional.ofNullable(this.httpOnlyCookieAttribute);
+    }
+
+    /**
+     * The landing page design of the app launcher.
+     * 
+     */
+    @Import(name="landingPageDesign")
+    private @Nullable Output<AccessApplicationLandingPageDesignArgs> landingPageDesign;
+
+    /**
+     * @return The landing page design of the app launcher.
+     * 
+     */
+    public Optional<Output<AccessApplicationLandingPageDesignArgs>> landingPageDesign() {
+        return Optional.ofNullable(this.landingPageDesign);
     }
 
     /**
@@ -215,18 +292,18 @@ public final class AccessApplicationArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The name of the attribute as provided to the SaaS app.
+     * The name of the footer link.
      * 
      */
-    @Import(name="name", required=true)
-    private Output<String> name;
+    @Import(name="name")
+    private @Nullable Output<String> name;
 
     /**
-     * @return The name of the attribute as provided to the SaaS app.
+     * @return The name of the footer link.
      * 
      */
-    public Output<String> name() {
-        return this.name;
+    public Optional<Output<String>> name() {
+        return Optional.ofNullable(this.name);
     }
 
     /**
@@ -369,8 +446,10 @@ public final class AccessApplicationArgs extends com.pulumi.resources.ResourceAr
     private AccessApplicationArgs(AccessApplicationArgs $) {
         this.accountId = $.accountId;
         this.allowedIdps = $.allowedIdps;
+        this.appLauncherLogoUrl = $.appLauncherLogoUrl;
         this.appLauncherVisible = $.appLauncherVisible;
         this.autoRedirectToIdentity = $.autoRedirectToIdentity;
+        this.bgColor = $.bgColor;
         this.corsHeaders = $.corsHeaders;
         this.customDenyMessage = $.customDenyMessage;
         this.customDenyUrl = $.customDenyUrl;
@@ -378,7 +457,10 @@ public final class AccessApplicationArgs extends com.pulumi.resources.ResourceAr
         this.customPages = $.customPages;
         this.domain = $.domain;
         this.enableBindingCookie = $.enableBindingCookie;
+        this.footerLinks = $.footerLinks;
+        this.headerBgColor = $.headerBgColor;
         this.httpOnlyCookieAttribute = $.httpOnlyCookieAttribute;
+        this.landingPageDesign = $.landingPageDesign;
         this.logoUrl = $.logoUrl;
         this.name = $.name;
         this.saasApp = $.saasApp;
@@ -463,6 +545,27 @@ public final class AccessApplicationArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
+         * @param appLauncherLogoUrl The logo URL of the app launcher.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder appLauncherLogoUrl(@Nullable Output<String> appLauncherLogoUrl) {
+            $.appLauncherLogoUrl = appLauncherLogoUrl;
+            return this;
+        }
+
+        /**
+         * @param appLauncherLogoUrl The logo URL of the app launcher.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder appLauncherLogoUrl(String appLauncherLogoUrl) {
+            return appLauncherLogoUrl(Output.of(appLauncherLogoUrl));
+        }
+
+        /**
          * @param appLauncherVisible Option to show/hide applications in App Launcher. Defaults to `true`.
          * 
          * @return builder
@@ -502,6 +605,27 @@ public final class AccessApplicationArgs extends com.pulumi.resources.ResourceAr
          */
         public Builder autoRedirectToIdentity(Boolean autoRedirectToIdentity) {
             return autoRedirectToIdentity(Output.of(autoRedirectToIdentity));
+        }
+
+        /**
+         * @param bgColor The background color of the app launcher.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder bgColor(@Nullable Output<String> bgColor) {
+            $.bgColor = bgColor;
+            return this;
+        }
+
+        /**
+         * @param bgColor The background color of the app launcher.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder bgColor(String bgColor) {
+            return bgColor(Output.of(bgColor));
         }
 
         /**
@@ -672,6 +796,58 @@ public final class AccessApplicationArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
+         * @param footerLinks The footer links of the app launcher.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder footerLinks(@Nullable Output<List<AccessApplicationFooterLinkArgs>> footerLinks) {
+            $.footerLinks = footerLinks;
+            return this;
+        }
+
+        /**
+         * @param footerLinks The footer links of the app launcher.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder footerLinks(List<AccessApplicationFooterLinkArgs> footerLinks) {
+            return footerLinks(Output.of(footerLinks));
+        }
+
+        /**
+         * @param footerLinks The footer links of the app launcher.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder footerLinks(AccessApplicationFooterLinkArgs... footerLinks) {
+            return footerLinks(List.of(footerLinks));
+        }
+
+        /**
+         * @param headerBgColor The background color of the header bar in the app launcher.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder headerBgColor(@Nullable Output<String> headerBgColor) {
+            $.headerBgColor = headerBgColor;
+            return this;
+        }
+
+        /**
+         * @param headerBgColor The background color of the header bar in the app launcher.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder headerBgColor(String headerBgColor) {
+            return headerBgColor(Output.of(headerBgColor));
+        }
+
+        /**
          * @param httpOnlyCookieAttribute Option to add the `HttpOnly` cookie flag to access tokens.
          * 
          * @return builder
@@ -690,6 +866,27 @@ public final class AccessApplicationArgs extends com.pulumi.resources.ResourceAr
          */
         public Builder httpOnlyCookieAttribute(Boolean httpOnlyCookieAttribute) {
             return httpOnlyCookieAttribute(Output.of(httpOnlyCookieAttribute));
+        }
+
+        /**
+         * @param landingPageDesign The landing page design of the app launcher.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder landingPageDesign(@Nullable Output<AccessApplicationLandingPageDesignArgs> landingPageDesign) {
+            $.landingPageDesign = landingPageDesign;
+            return this;
+        }
+
+        /**
+         * @param landingPageDesign The landing page design of the app launcher.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder landingPageDesign(AccessApplicationLandingPageDesignArgs landingPageDesign) {
+            return landingPageDesign(Output.of(landingPageDesign));
         }
 
         /**
@@ -714,18 +911,18 @@ public final class AccessApplicationArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param name The name of the attribute as provided to the SaaS app.
+         * @param name The name of the footer link.
          * 
          * @return builder
          * 
          */
-        public Builder name(Output<String> name) {
+        public Builder name(@Nullable Output<String> name) {
             $.name = name;
             return this;
         }
 
         /**
-         * @param name The name of the attribute as provided to the SaaS app.
+         * @param name The name of the footer link.
          * 
          * @return builder
          * 
@@ -944,7 +1141,6 @@ public final class AccessApplicationArgs extends com.pulumi.resources.ResourceAr
         }
 
         public AccessApplicationArgs build() {
-            $.name = Objects.requireNonNull($.name, "expected parameter 'name' to be non-null");
             return $;
         }
     }

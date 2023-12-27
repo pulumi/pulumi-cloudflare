@@ -264,6 +264,18 @@ namespace Pulumi.Cloudflare.Inputs
             set => _requestsPerSeconds = value;
         }
 
+        [Input("selectors")]
+        private InputList<string>? _selectors;
+
+        /// <summary>
+        /// Selectors for alert. Valid options depend on the alert type.
+        /// </summary>
+        public InputList<string> Selectors
+        {
+            get => _selectors ?? (_selectors = new InputList<string>());
+            set => _selectors = value;
+        }
+
         [Input("services")]
         private InputList<string>? _services;
         public InputList<string> Services

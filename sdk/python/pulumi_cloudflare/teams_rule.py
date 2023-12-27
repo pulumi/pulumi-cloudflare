@@ -35,7 +35,7 @@ class TeamsRuleArgs:
         :param pulumi.Input[str] name: The name of the teams rule.
         :param pulumi.Input[int] precedence: The evaluation precedence of the teams rule.
         :param pulumi.Input[str] device_posture: The wirefilter expression to be used for device_posture check matching.
-        :param pulumi.Input[bool] enabled: Enable or disable DLP Payload Logging for this rule.
+        :param pulumi.Input[bool] enabled: Enable notification settings.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] filters: The protocol or layer to evaluate the traffic and identity expressions.
         :param pulumi.Input[str] identity: The wirefilter expression to be used for identity matching.
         :param pulumi.Input['TeamsRuleRuleSettingsArgs'] rule_settings: Additional rule settings.
@@ -135,7 +135,7 @@ class TeamsRuleArgs:
     @pulumi.getter
     def enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        Enable or disable DLP Payload Logging for this rule.
+        Enable notification settings.
         """
         return pulumi.get(self, "enabled")
 
@@ -213,7 +213,7 @@ class _TeamsRuleState:
         :param pulumi.Input[str] action: Action to be taken when the SSL certificate of upstream is invalid. Available values: `pass_through`, `block`, `error`.
         :param pulumi.Input[str] description: The description of the teams rule.
         :param pulumi.Input[str] device_posture: The wirefilter expression to be used for device_posture check matching.
-        :param pulumi.Input[bool] enabled: Enable or disable DLP Payload Logging for this rule.
+        :param pulumi.Input[bool] enabled: Enable notification settings.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] filters: The protocol or layer to evaluate the traffic and identity expressions.
         :param pulumi.Input[str] identity: The wirefilter expression to be used for identity matching.
         :param pulumi.Input[str] name: The name of the teams rule.
@@ -298,7 +298,7 @@ class _TeamsRuleState:
     @pulumi.getter
     def enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        Enable or disable DLP Payload Logging for this rule.
+        Enable notification settings.
         """
         return pulumi.get(self, "enabled")
 
@@ -440,7 +440,7 @@ class TeamsRule(pulumi.CustomResource):
         :param pulumi.Input[str] action: Action to be taken when the SSL certificate of upstream is invalid. Available values: `pass_through`, `block`, `error`.
         :param pulumi.Input[str] description: The description of the teams rule.
         :param pulumi.Input[str] device_posture: The wirefilter expression to be used for device_posture check matching.
-        :param pulumi.Input[bool] enabled: Enable or disable DLP Payload Logging for this rule.
+        :param pulumi.Input[bool] enabled: Enable notification settings.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] filters: The protocol or layer to evaluate the traffic and identity expressions.
         :param pulumi.Input[str] identity: The wirefilter expression to be used for identity matching.
         :param pulumi.Input[str] name: The name of the teams rule.
@@ -573,7 +573,7 @@ class TeamsRule(pulumi.CustomResource):
         :param pulumi.Input[str] action: Action to be taken when the SSL certificate of upstream is invalid. Available values: `pass_through`, `block`, `error`.
         :param pulumi.Input[str] description: The description of the teams rule.
         :param pulumi.Input[str] device_posture: The wirefilter expression to be used for device_posture check matching.
-        :param pulumi.Input[bool] enabled: Enable or disable DLP Payload Logging for this rule.
+        :param pulumi.Input[bool] enabled: Enable notification settings.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] filters: The protocol or layer to evaluate the traffic and identity expressions.
         :param pulumi.Input[str] identity: The wirefilter expression to be used for identity matching.
         :param pulumi.Input[str] name: The name of the teams rule.
@@ -635,7 +635,7 @@ class TeamsRule(pulumi.CustomResource):
     @pulumi.getter
     def enabled(self) -> pulumi.Output[Optional[bool]]:
         """
-        Enable or disable DLP Payload Logging for this rule.
+        Enable notification settings.
         """
         return pulumi.get(self, "enabled")
 

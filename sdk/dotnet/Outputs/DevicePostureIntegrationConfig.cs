@@ -14,6 +14,14 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class DevicePostureIntegrationConfig
     {
         /// <summary>
+        /// The Access client ID to be used as the `Cf-Access-Client-ID` header when making a request to the `api_url`.
+        /// </summary>
+        public readonly string? AccessClientId;
+        /// <summary>
+        /// The Access client secret to be used as the `Cf-Access-Client-Secret` header when making a request to the `api_url`.
+        /// </summary>
+        public readonly string? AccessClientSecret;
+        /// <summary>
         /// The third-party API's URL.
         /// </summary>
         public readonly string? ApiUrl;
@@ -40,6 +48,10 @@ namespace Pulumi.Cloudflare.Outputs
 
         [OutputConstructor]
         private DevicePostureIntegrationConfig(
+            string? accessClientId,
+
+            string? accessClientSecret,
+
             string? apiUrl,
 
             string? authUrl,
@@ -52,6 +64,8 @@ namespace Pulumi.Cloudflare.Outputs
 
             string? customerId)
         {
+            AccessClientId = accessClientId;
+            AccessClientSecret = accessClientSecret;
             ApiUrl = apiUrl;
             AuthUrl = authUrl;
             ClientId = clientId;

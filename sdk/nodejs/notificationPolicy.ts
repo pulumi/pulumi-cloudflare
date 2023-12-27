@@ -50,7 +50,7 @@ export class NotificationPolicy extends pulumi.CustomResource {
      */
     public readonly accountId!: pulumi.Output<string>;
     /**
-     * The event type that will trigger the dispatch of a notification. See the developer documentation for descriptions of [available alert types](https://developers.cloudflare.com/fundamentals/notifications/notification-available/). Available values: `advancedHttpAlertError`, `accessCustomCertificateExpirationType`, `advancedDdosAttackL4Alert`, `advancedDdosAttackL7Alert`, `bgpHijackNotification`, `billingUsageAlert`, `blockNotificationBlockRemoved`, `blockNotificationNewBlock`, `blockNotificationReviewRejected`, `brandProtectionAlert`, `brandProtectionDigest`, `clickhouseAlertFwAnomaly`, `clickhouseAlertFwEntAnomaly`, `customSslCertificateEventType`, `dedicatedSslCertificateEventType`, `dosAttackL4`, `dosAttackL7`, `expiringServiceTokenAlert`, `failingLogpushJobDisabledAlert`, `fbmAutoAdvertisement`, `fbmDosdAttack`, `fbmVolumetricAttack`, `healthCheckStatusNotification`, `hostnameAopCustomCertificateExpirationType`, `httpAlertEdgeError`, `httpAlertOriginError`, `incidentAlert`, `loadBalancingHealthAlert`, `loadBalancingPoolEnablementAlert`, `logoMatchAlert`, `magicTunnelHealthCheckEvent`, `maintenanceEventNotification`, `mtlsCertificateStoreCertificateExpirationType`, `pagesEventAlert`, `radarNotification`, `realOriginMonitoring`, `scriptmonitorAlertNewCodeChangeDetections`, `scriptmonitorAlertNewHosts`, `scriptmonitorAlertNewMaliciousHosts`, `scriptmonitorAlertNewMaliciousScripts`, `scriptmonitorAlertNewMaliciousUrl`, `scriptmonitorAlertNewMaxLengthResourceUrl`, `scriptmonitorAlertNewResources`, `secondaryDnsAllPrimariesFailing`, `secondaryDnsPrimariesFailing`, `secondaryDnsZoneSuccessfullyUpdated`, `secondaryDnsZoneValidationWarning`, `sentinelAlert`, `streamLiveNotifications`, `tunnelHealthEvent`, `tunnelUpdateEvent`, `universalSslEventType`, `webAnalyticsMetricsUpdate`, `weeklyAccountOverview`, `workersAlert`, `zoneAopCustomCertificateExpirationType`.
+     * The event type that will trigger the dispatch of a notification. See the developer documentation for descriptions of [available alert types](https://developers.cloudflare.com/fundamentals/notifications/notification-available/). Available values: `advancedHttpAlertError`, `accessCustomCertificateExpirationType`, `advancedDdosAttackL4Alert`, `advancedDdosAttackL7Alert`, `bgpHijackNotification`, `billingUsageAlert`, `blockNotificationBlockRemoved`, `blockNotificationNewBlock`, `blockNotificationReviewRejected`, `brandProtectionAlert`, `brandProtectionDigest`, `clickhouseAlertFwAnomaly`, `clickhouseAlertFwEntAnomaly`, `customSslCertificateEventType`, `dedicatedSslCertificateEventType`, `dosAttackL4`, `dosAttackL7`, `expiringServiceTokenAlert`, `failingLogpushJobDisabledAlert`, `fbmAutoAdvertisement`, `fbmDosdAttack`, `fbmVolumetricAttack`, `healthCheckStatusNotification`, `hostnameAopCustomCertificateExpirationType`, `httpAlertEdgeError`, `httpAlertOriginError`, `incidentAlert`, `loadBalancingHealthAlert`, `loadBalancingPoolEnablementAlert`, `logoMatchAlert`, `magicTunnelHealthCheckEvent`, `maintenanceEventNotification`, `mtlsCertificateStoreCertificateExpirationType`, `pagesEventAlert`, `radarNotification`, `realOriginMonitoring`, `scriptmonitorAlertNewCodeChangeDetections`, `scriptmonitorAlertNewHosts`, `scriptmonitorAlertNewMaliciousHosts`, `scriptmonitorAlertNewMaliciousScripts`, `scriptmonitorAlertNewMaliciousUrl`, `scriptmonitorAlertNewMaxLengthResourceUrl`, `scriptmonitorAlertNewResources`, `secondaryDnsAllPrimariesFailing`, `secondaryDnsPrimariesFailing`, `secondaryDnsZoneSuccessfullyUpdated`, `secondaryDnsZoneValidationWarning`, `sentinelAlert`, `streamLiveNotifications`, `trafficAnomaliesAlert`, `tunnelHealthEvent`, `tunnelUpdateEvent`, `universalSslEventType`, `webAnalyticsMetricsUpdate`, `weeklyAccountOverview`, `workersAlert`, `zoneAopCustomCertificateExpirationType`.
      */
     public readonly alertType!: pulumi.Output<string>;
     /**
@@ -62,7 +62,7 @@ export class NotificationPolicy extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
-     * The email id to which the notification should be dispatched. One of email, webhooks, or PagerDuty mechanisms is required.
+     * The email id to which the notification should be dispatched. One of email, webhooks, or PagerDuty mechanisms is required. Must provide only one of `emailIntegration`, `webhooksIntegration`, `pagerdutyIntegration`.
      */
     public readonly emailIntegrations!: pulumi.Output<outputs.NotificationPolicyEmailIntegration[] | undefined>;
     /**
@@ -82,11 +82,11 @@ export class NotificationPolicy extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * The unique id of a configured pagerduty endpoint to which the notification should be dispatched. One of email, webhooks, or PagerDuty mechanisms is required.
+     * The unique id of a configured pagerduty endpoint to which the notification should be dispatched. One of email, webhooks, or PagerDuty mechanisms is required. Must provide only one of `emailIntegration`, `webhooksIntegration`, `pagerdutyIntegration`.
      */
     public readonly pagerdutyIntegrations!: pulumi.Output<outputs.NotificationPolicyPagerdutyIntegration[] | undefined>;
     /**
-     * The unique id of a configured webhooks endpoint to which the notification should be dispatched. One of email, webhooks, or PagerDuty mechanisms is required.
+     * The unique id of a configured webhooks endpoint to which the notification should be dispatched. One of email, webhooks, or PagerDuty mechanisms is required. Must provide only one of `emailIntegration`, `webhooksIntegration`, `pagerdutyIntegration`.
      */
     public readonly webhooksIntegrations!: pulumi.Output<outputs.NotificationPolicyWebhooksIntegration[] | undefined>;
 
@@ -154,7 +154,7 @@ export interface NotificationPolicyState {
      */
     accountId?: pulumi.Input<string>;
     /**
-     * The event type that will trigger the dispatch of a notification. See the developer documentation for descriptions of [available alert types](https://developers.cloudflare.com/fundamentals/notifications/notification-available/). Available values: `advancedHttpAlertError`, `accessCustomCertificateExpirationType`, `advancedDdosAttackL4Alert`, `advancedDdosAttackL7Alert`, `bgpHijackNotification`, `billingUsageAlert`, `blockNotificationBlockRemoved`, `blockNotificationNewBlock`, `blockNotificationReviewRejected`, `brandProtectionAlert`, `brandProtectionDigest`, `clickhouseAlertFwAnomaly`, `clickhouseAlertFwEntAnomaly`, `customSslCertificateEventType`, `dedicatedSslCertificateEventType`, `dosAttackL4`, `dosAttackL7`, `expiringServiceTokenAlert`, `failingLogpushJobDisabledAlert`, `fbmAutoAdvertisement`, `fbmDosdAttack`, `fbmVolumetricAttack`, `healthCheckStatusNotification`, `hostnameAopCustomCertificateExpirationType`, `httpAlertEdgeError`, `httpAlertOriginError`, `incidentAlert`, `loadBalancingHealthAlert`, `loadBalancingPoolEnablementAlert`, `logoMatchAlert`, `magicTunnelHealthCheckEvent`, `maintenanceEventNotification`, `mtlsCertificateStoreCertificateExpirationType`, `pagesEventAlert`, `radarNotification`, `realOriginMonitoring`, `scriptmonitorAlertNewCodeChangeDetections`, `scriptmonitorAlertNewHosts`, `scriptmonitorAlertNewMaliciousHosts`, `scriptmonitorAlertNewMaliciousScripts`, `scriptmonitorAlertNewMaliciousUrl`, `scriptmonitorAlertNewMaxLengthResourceUrl`, `scriptmonitorAlertNewResources`, `secondaryDnsAllPrimariesFailing`, `secondaryDnsPrimariesFailing`, `secondaryDnsZoneSuccessfullyUpdated`, `secondaryDnsZoneValidationWarning`, `sentinelAlert`, `streamLiveNotifications`, `tunnelHealthEvent`, `tunnelUpdateEvent`, `universalSslEventType`, `webAnalyticsMetricsUpdate`, `weeklyAccountOverview`, `workersAlert`, `zoneAopCustomCertificateExpirationType`.
+     * The event type that will trigger the dispatch of a notification. See the developer documentation for descriptions of [available alert types](https://developers.cloudflare.com/fundamentals/notifications/notification-available/). Available values: `advancedHttpAlertError`, `accessCustomCertificateExpirationType`, `advancedDdosAttackL4Alert`, `advancedDdosAttackL7Alert`, `bgpHijackNotification`, `billingUsageAlert`, `blockNotificationBlockRemoved`, `blockNotificationNewBlock`, `blockNotificationReviewRejected`, `brandProtectionAlert`, `brandProtectionDigest`, `clickhouseAlertFwAnomaly`, `clickhouseAlertFwEntAnomaly`, `customSslCertificateEventType`, `dedicatedSslCertificateEventType`, `dosAttackL4`, `dosAttackL7`, `expiringServiceTokenAlert`, `failingLogpushJobDisabledAlert`, `fbmAutoAdvertisement`, `fbmDosdAttack`, `fbmVolumetricAttack`, `healthCheckStatusNotification`, `hostnameAopCustomCertificateExpirationType`, `httpAlertEdgeError`, `httpAlertOriginError`, `incidentAlert`, `loadBalancingHealthAlert`, `loadBalancingPoolEnablementAlert`, `logoMatchAlert`, `magicTunnelHealthCheckEvent`, `maintenanceEventNotification`, `mtlsCertificateStoreCertificateExpirationType`, `pagesEventAlert`, `radarNotification`, `realOriginMonitoring`, `scriptmonitorAlertNewCodeChangeDetections`, `scriptmonitorAlertNewHosts`, `scriptmonitorAlertNewMaliciousHosts`, `scriptmonitorAlertNewMaliciousScripts`, `scriptmonitorAlertNewMaliciousUrl`, `scriptmonitorAlertNewMaxLengthResourceUrl`, `scriptmonitorAlertNewResources`, `secondaryDnsAllPrimariesFailing`, `secondaryDnsPrimariesFailing`, `secondaryDnsZoneSuccessfullyUpdated`, `secondaryDnsZoneValidationWarning`, `sentinelAlert`, `streamLiveNotifications`, `trafficAnomaliesAlert`, `tunnelHealthEvent`, `tunnelUpdateEvent`, `universalSslEventType`, `webAnalyticsMetricsUpdate`, `weeklyAccountOverview`, `workersAlert`, `zoneAopCustomCertificateExpirationType`.
      */
     alertType?: pulumi.Input<string>;
     /**
@@ -166,7 +166,7 @@ export interface NotificationPolicyState {
      */
     description?: pulumi.Input<string>;
     /**
-     * The email id to which the notification should be dispatched. One of email, webhooks, or PagerDuty mechanisms is required.
+     * The email id to which the notification should be dispatched. One of email, webhooks, or PagerDuty mechanisms is required. Must provide only one of `emailIntegration`, `webhooksIntegration`, `pagerdutyIntegration`.
      */
     emailIntegrations?: pulumi.Input<pulumi.Input<inputs.NotificationPolicyEmailIntegration>[]>;
     /**
@@ -186,11 +186,11 @@ export interface NotificationPolicyState {
      */
     name?: pulumi.Input<string>;
     /**
-     * The unique id of a configured pagerduty endpoint to which the notification should be dispatched. One of email, webhooks, or PagerDuty mechanisms is required.
+     * The unique id of a configured pagerduty endpoint to which the notification should be dispatched. One of email, webhooks, or PagerDuty mechanisms is required. Must provide only one of `emailIntegration`, `webhooksIntegration`, `pagerdutyIntegration`.
      */
     pagerdutyIntegrations?: pulumi.Input<pulumi.Input<inputs.NotificationPolicyPagerdutyIntegration>[]>;
     /**
-     * The unique id of a configured webhooks endpoint to which the notification should be dispatched. One of email, webhooks, or PagerDuty mechanisms is required.
+     * The unique id of a configured webhooks endpoint to which the notification should be dispatched. One of email, webhooks, or PagerDuty mechanisms is required. Must provide only one of `emailIntegration`, `webhooksIntegration`, `pagerdutyIntegration`.
      */
     webhooksIntegrations?: pulumi.Input<pulumi.Input<inputs.NotificationPolicyWebhooksIntegration>[]>;
 }
@@ -204,7 +204,7 @@ export interface NotificationPolicyArgs {
      */
     accountId: pulumi.Input<string>;
     /**
-     * The event type that will trigger the dispatch of a notification. See the developer documentation for descriptions of [available alert types](https://developers.cloudflare.com/fundamentals/notifications/notification-available/). Available values: `advancedHttpAlertError`, `accessCustomCertificateExpirationType`, `advancedDdosAttackL4Alert`, `advancedDdosAttackL7Alert`, `bgpHijackNotification`, `billingUsageAlert`, `blockNotificationBlockRemoved`, `blockNotificationNewBlock`, `blockNotificationReviewRejected`, `brandProtectionAlert`, `brandProtectionDigest`, `clickhouseAlertFwAnomaly`, `clickhouseAlertFwEntAnomaly`, `customSslCertificateEventType`, `dedicatedSslCertificateEventType`, `dosAttackL4`, `dosAttackL7`, `expiringServiceTokenAlert`, `failingLogpushJobDisabledAlert`, `fbmAutoAdvertisement`, `fbmDosdAttack`, `fbmVolumetricAttack`, `healthCheckStatusNotification`, `hostnameAopCustomCertificateExpirationType`, `httpAlertEdgeError`, `httpAlertOriginError`, `incidentAlert`, `loadBalancingHealthAlert`, `loadBalancingPoolEnablementAlert`, `logoMatchAlert`, `magicTunnelHealthCheckEvent`, `maintenanceEventNotification`, `mtlsCertificateStoreCertificateExpirationType`, `pagesEventAlert`, `radarNotification`, `realOriginMonitoring`, `scriptmonitorAlertNewCodeChangeDetections`, `scriptmonitorAlertNewHosts`, `scriptmonitorAlertNewMaliciousHosts`, `scriptmonitorAlertNewMaliciousScripts`, `scriptmonitorAlertNewMaliciousUrl`, `scriptmonitorAlertNewMaxLengthResourceUrl`, `scriptmonitorAlertNewResources`, `secondaryDnsAllPrimariesFailing`, `secondaryDnsPrimariesFailing`, `secondaryDnsZoneSuccessfullyUpdated`, `secondaryDnsZoneValidationWarning`, `sentinelAlert`, `streamLiveNotifications`, `tunnelHealthEvent`, `tunnelUpdateEvent`, `universalSslEventType`, `webAnalyticsMetricsUpdate`, `weeklyAccountOverview`, `workersAlert`, `zoneAopCustomCertificateExpirationType`.
+     * The event type that will trigger the dispatch of a notification. See the developer documentation for descriptions of [available alert types](https://developers.cloudflare.com/fundamentals/notifications/notification-available/). Available values: `advancedHttpAlertError`, `accessCustomCertificateExpirationType`, `advancedDdosAttackL4Alert`, `advancedDdosAttackL7Alert`, `bgpHijackNotification`, `billingUsageAlert`, `blockNotificationBlockRemoved`, `blockNotificationNewBlock`, `blockNotificationReviewRejected`, `brandProtectionAlert`, `brandProtectionDigest`, `clickhouseAlertFwAnomaly`, `clickhouseAlertFwEntAnomaly`, `customSslCertificateEventType`, `dedicatedSslCertificateEventType`, `dosAttackL4`, `dosAttackL7`, `expiringServiceTokenAlert`, `failingLogpushJobDisabledAlert`, `fbmAutoAdvertisement`, `fbmDosdAttack`, `fbmVolumetricAttack`, `healthCheckStatusNotification`, `hostnameAopCustomCertificateExpirationType`, `httpAlertEdgeError`, `httpAlertOriginError`, `incidentAlert`, `loadBalancingHealthAlert`, `loadBalancingPoolEnablementAlert`, `logoMatchAlert`, `magicTunnelHealthCheckEvent`, `maintenanceEventNotification`, `mtlsCertificateStoreCertificateExpirationType`, `pagesEventAlert`, `radarNotification`, `realOriginMonitoring`, `scriptmonitorAlertNewCodeChangeDetections`, `scriptmonitorAlertNewHosts`, `scriptmonitorAlertNewMaliciousHosts`, `scriptmonitorAlertNewMaliciousScripts`, `scriptmonitorAlertNewMaliciousUrl`, `scriptmonitorAlertNewMaxLengthResourceUrl`, `scriptmonitorAlertNewResources`, `secondaryDnsAllPrimariesFailing`, `secondaryDnsPrimariesFailing`, `secondaryDnsZoneSuccessfullyUpdated`, `secondaryDnsZoneValidationWarning`, `sentinelAlert`, `streamLiveNotifications`, `trafficAnomaliesAlert`, `tunnelHealthEvent`, `tunnelUpdateEvent`, `universalSslEventType`, `webAnalyticsMetricsUpdate`, `weeklyAccountOverview`, `workersAlert`, `zoneAopCustomCertificateExpirationType`.
      */
     alertType: pulumi.Input<string>;
     /**
@@ -212,7 +212,7 @@ export interface NotificationPolicyArgs {
      */
     description?: pulumi.Input<string>;
     /**
-     * The email id to which the notification should be dispatched. One of email, webhooks, or PagerDuty mechanisms is required.
+     * The email id to which the notification should be dispatched. One of email, webhooks, or PagerDuty mechanisms is required. Must provide only one of `emailIntegration`, `webhooksIntegration`, `pagerdutyIntegration`.
      */
     emailIntegrations?: pulumi.Input<pulumi.Input<inputs.NotificationPolicyEmailIntegration>[]>;
     /**
@@ -228,11 +228,11 @@ export interface NotificationPolicyArgs {
      */
     name: pulumi.Input<string>;
     /**
-     * The unique id of a configured pagerduty endpoint to which the notification should be dispatched. One of email, webhooks, or PagerDuty mechanisms is required.
+     * The unique id of a configured pagerduty endpoint to which the notification should be dispatched. One of email, webhooks, or PagerDuty mechanisms is required. Must provide only one of `emailIntegration`, `webhooksIntegration`, `pagerdutyIntegration`.
      */
     pagerdutyIntegrations?: pulumi.Input<pulumi.Input<inputs.NotificationPolicyPagerdutyIntegration>[]>;
     /**
-     * The unique id of a configured webhooks endpoint to which the notification should be dispatched. One of email, webhooks, or PagerDuty mechanisms is required.
+     * The unique id of a configured webhooks endpoint to which the notification should be dispatched. One of email, webhooks, or PagerDuty mechanisms is required. Must provide only one of `emailIntegration`, `webhooksIntegration`, `pagerdutyIntegration`.
      */
     webhooksIntegrations?: pulumi.Input<pulumi.Input<inputs.NotificationPolicyWebhooksIntegration>[]>;
 }

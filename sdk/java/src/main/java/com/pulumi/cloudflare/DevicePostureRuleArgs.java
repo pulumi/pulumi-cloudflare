@@ -55,9 +55,17 @@ public final class DevicePostureRuleArgs extends com.pulumi.resources.ResourceAr
         return Optional.ofNullable(this.expiration);
     }
 
+    /**
+     * Required for all rule types except `warp`, `gateway`, and `tanium`.
+     * 
+     */
     @Import(name="inputs")
     private @Nullable Output<List<DevicePostureRuleInputArgs>> inputs;
 
+    /**
+     * @return Required for all rule types except `warp`, `gateway`, and `tanium`.
+     * 
+     */
     public Optional<Output<List<DevicePostureRuleInputArgs>>> inputs() {
         return Optional.ofNullable(this.inputs);
     }
@@ -204,15 +212,33 @@ public final class DevicePostureRuleArgs extends com.pulumi.resources.ResourceAr
             return expiration(Output.of(expiration));
         }
 
+        /**
+         * @param inputs Required for all rule types except `warp`, `gateway`, and `tanium`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder inputs(@Nullable Output<List<DevicePostureRuleInputArgs>> inputs) {
             $.inputs = inputs;
             return this;
         }
 
+        /**
+         * @param inputs Required for all rule types except `warp`, `gateway`, and `tanium`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder inputs(List<DevicePostureRuleInputArgs> inputs) {
             return inputs(Output.of(inputs));
         }
 
+        /**
+         * @param inputs Required for all rule types except `warp`, `gateway`, and `tanium`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder inputs(DevicePostureRuleInputArgs... inputs) {
             return inputs(List.of(inputs));
         }

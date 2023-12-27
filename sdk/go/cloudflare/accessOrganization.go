@@ -77,7 +77,7 @@ type AccessOrganization struct {
 	LoginDesigns AccessOrganizationLoginDesignArrayOutput `pulumi:"loginDesigns"`
 	// The name of your Zero Trust organization.
 	Name pulumi.StringPtrOutput `pulumi:"name"`
-	// How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`. Defaults to `24h`.
+	// How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`.
 	SessionDuration pulumi.StringPtrOutput `pulumi:"sessionDuration"`
 	// A description of the reason why the UI read only field is being toggled.
 	UiReadOnlyToggleReason pulumi.StringPtrOutput `pulumi:"uiReadOnlyToggleReason"`
@@ -133,7 +133,7 @@ type accessOrganizationState struct {
 	LoginDesigns []AccessOrganizationLoginDesign `pulumi:"loginDesigns"`
 	// The name of your Zero Trust organization.
 	Name *string `pulumi:"name"`
-	// How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`. Defaults to `24h`.
+	// How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`.
 	SessionDuration *string `pulumi:"sessionDuration"`
 	// A description of the reason why the UI read only field is being toggled.
 	UiReadOnlyToggleReason *string `pulumi:"uiReadOnlyToggleReason"`
@@ -157,7 +157,7 @@ type AccessOrganizationState struct {
 	LoginDesigns AccessOrganizationLoginDesignArrayInput
 	// The name of your Zero Trust organization.
 	Name pulumi.StringPtrInput
-	// How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`. Defaults to `24h`.
+	// How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`.
 	SessionDuration pulumi.StringPtrInput
 	// A description of the reason why the UI read only field is being toggled.
 	UiReadOnlyToggleReason pulumi.StringPtrInput
@@ -185,7 +185,7 @@ type accessOrganizationArgs struct {
 	LoginDesigns []AccessOrganizationLoginDesign `pulumi:"loginDesigns"`
 	// The name of your Zero Trust organization.
 	Name *string `pulumi:"name"`
-	// How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`. Defaults to `24h`.
+	// How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`.
 	SessionDuration *string `pulumi:"sessionDuration"`
 	// A description of the reason why the UI read only field is being toggled.
 	UiReadOnlyToggleReason *string `pulumi:"uiReadOnlyToggleReason"`
@@ -210,7 +210,7 @@ type AccessOrganizationArgs struct {
 	LoginDesigns AccessOrganizationLoginDesignArrayInput
 	// The name of your Zero Trust organization.
 	Name pulumi.StringPtrInput
-	// How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`. Defaults to `24h`.
+	// How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`.
 	SessionDuration pulumi.StringPtrInput
 	// A description of the reason why the UI read only field is being toggled.
 	UiReadOnlyToggleReason pulumi.StringPtrInput
@@ -341,7 +341,7 @@ func (o AccessOrganizationOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AccessOrganization) pulumi.StringPtrOutput { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-// How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`. Defaults to `24h`.
+// How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`.
 func (o AccessOrganizationOutput) SessionDuration() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AccessOrganization) pulumi.StringPtrOutput { return v.SessionDuration }).(pulumi.StringPtrOutput)
 }

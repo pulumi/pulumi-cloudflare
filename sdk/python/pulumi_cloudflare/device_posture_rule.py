@@ -29,6 +29,7 @@ class DevicePostureRuleArgs:
         :param pulumi.Input[str] account_id: The account identifier to target for the resource.
         :param pulumi.Input[str] type: The device posture rule type. Available values: `serial_number`, `file`, `application`, `gateway`, `warp`, `domain_joined`, `os_version`, `disk_encryption`, `firewall`, `client_certificate`, `workspace_one`, `unique_client_id`, `crowdstrike_s2s`, `sentinelone`, `kolide`, `tanium_s2s`, `intune`, `sentinelone_s2s`.
         :param pulumi.Input[str] expiration: Expire posture results after the specified amount of time. Must be in the format `1h` or `30m`. Valid units are `h` and `m`.
+        :param pulumi.Input[Sequence[pulumi.Input['DevicePostureRuleInputArgs']]] inputs: Required for all rule types except `warp`, `gateway`, and `tanium`.
         :param pulumi.Input[Sequence[pulumi.Input['DevicePostureRuleMatchArgs']]] matches: The conditions that the client must match to run the rule.
         :param pulumi.Input[str] name: Name of the device posture rule.
         :param pulumi.Input[str] schedule: Tells the client when to run the device posture check. Must be in the format `1h` or `30m`. Valid units are `h` and `m`.
@@ -96,6 +97,9 @@ class DevicePostureRuleArgs:
     @property
     @pulumi.getter
     def inputs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DevicePostureRuleInputArgs']]]]:
+        """
+        Required for all rule types except `warp`, `gateway`, and `tanium`.
+        """
         return pulumi.get(self, "inputs")
 
     @inputs.setter
@@ -154,6 +158,7 @@ class _DevicePostureRuleState:
         Input properties used for looking up and filtering DevicePostureRule resources.
         :param pulumi.Input[str] account_id: The account identifier to target for the resource.
         :param pulumi.Input[str] expiration: Expire posture results after the specified amount of time. Must be in the format `1h` or `30m`. Valid units are `h` and `m`.
+        :param pulumi.Input[Sequence[pulumi.Input['DevicePostureRuleInputArgs']]] inputs: Required for all rule types except `warp`, `gateway`, and `tanium`.
         :param pulumi.Input[Sequence[pulumi.Input['DevicePostureRuleMatchArgs']]] matches: The conditions that the client must match to run the rule.
         :param pulumi.Input[str] name: Name of the device posture rule.
         :param pulumi.Input[str] schedule: Tells the client when to run the device posture check. Must be in the format `1h` or `30m`. Valid units are `h` and `m`.
@@ -212,6 +217,9 @@ class _DevicePostureRuleState:
     @property
     @pulumi.getter
     def inputs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DevicePostureRuleInputArgs']]]]:
+        """
+        Required for all rule types except `warp`, `gateway`, and `tanium`.
+        """
         return pulumi.get(self, "inputs")
 
     @inputs.setter
@@ -319,6 +327,7 @@ class DevicePostureRule(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_id: The account identifier to target for the resource.
         :param pulumi.Input[str] expiration: Expire posture results after the specified amount of time. Must be in the format `1h` or `30m`. Valid units are `h` and `m`.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DevicePostureRuleInputArgs']]]] inputs: Required for all rule types except `warp`, `gateway`, and `tanium`.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DevicePostureRuleMatchArgs']]]] matches: The conditions that the client must match to run the rule.
         :param pulumi.Input[str] name: Name of the device posture rule.
         :param pulumi.Input[str] schedule: Tells the client when to run the device posture check. Must be in the format `1h` or `30m`. Valid units are `h` and `m`.
@@ -435,6 +444,7 @@ class DevicePostureRule(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_id: The account identifier to target for the resource.
         :param pulumi.Input[str] expiration: Expire posture results after the specified amount of time. Must be in the format `1h` or `30m`. Valid units are `h` and `m`.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DevicePostureRuleInputArgs']]]] inputs: Required for all rule types except `warp`, `gateway`, and `tanium`.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DevicePostureRuleMatchArgs']]]] matches: The conditions that the client must match to run the rule.
         :param pulumi.Input[str] name: Name of the device posture rule.
         :param pulumi.Input[str] schedule: Tells the client when to run the device posture check. Must be in the format `1h` or `30m`. Valid units are `h` and `m`.
@@ -478,6 +488,9 @@ class DevicePostureRule(pulumi.CustomResource):
     @property
     @pulumi.getter
     def inputs(self) -> pulumi.Output[Sequence['outputs.DevicePostureRuleInput']]:
+        """
+        Required for all rule types except `warp`, `gateway`, and `tanium`.
+        """
         return pulumi.get(self, "inputs")
 
     @property

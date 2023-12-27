@@ -55,7 +55,7 @@ namespace Pulumi.Cloudflare.Inputs
         }
 
         /// <summary>
-        /// Preview Deployment Setting. Defaults to `all`.
+        /// Preview Deployment Setting. Available values: `custom`, `all`, `none`. Defaults to `all`.
         /// </summary>
         [Input("previewDeploymentSetting")]
         public Input<string>? PreviewDeploymentSetting { get; set; }

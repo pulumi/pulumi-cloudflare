@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"errors"
 	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -80,12 +79,16 @@ type AccessApplication struct {
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
 	// The identity providers selected for the application.
 	AllowedIdps pulumi.StringArrayOutput `pulumi:"allowedIdps"`
+	// The logo URL of the app launcher.
+	AppLauncherLogoUrl pulumi.StringPtrOutput `pulumi:"appLauncherLogoUrl"`
 	// Option to show/hide applications in App Launcher. Defaults to `true`.
 	AppLauncherVisible pulumi.BoolPtrOutput `pulumi:"appLauncherVisible"`
 	// Application Audience (AUD) Tag of the application.
 	Aud pulumi.StringOutput `pulumi:"aud"`
 	// Option to skip identity provider selection if only one is configured in `allowedIdps`. Defaults to `false`.
 	AutoRedirectToIdentity pulumi.BoolPtrOutput `pulumi:"autoRedirectToIdentity"`
+	// The background color of the app launcher.
+	BgColor pulumi.StringPtrOutput `pulumi:"bgColor"`
 	// CORS configuration for the Access Application. See below for reference structure.
 	CorsHeaders AccessApplicationCorsHeaderArrayOutput `pulumi:"corsHeaders"`
 	// Option that returns a custom error message when a user is denied access to the application.
@@ -100,11 +103,17 @@ type AccessApplication struct {
 	Domain pulumi.StringOutput `pulumi:"domain"`
 	// Option to provide increased security against compromised authorization tokens and CSRF attacks by requiring an additional "binding" cookie on requests. Defaults to `false`.
 	EnableBindingCookie pulumi.BoolPtrOutput `pulumi:"enableBindingCookie"`
+	// The footer links of the app launcher.
+	FooterLinks AccessApplicationFooterLinkArrayOutput `pulumi:"footerLinks"`
+	// The background color of the header bar in the app launcher.
+	HeaderBgColor pulumi.StringPtrOutput `pulumi:"headerBgColor"`
 	// Option to add the `HttpOnly` cookie flag to access tokens.
 	HttpOnlyCookieAttribute pulumi.BoolPtrOutput `pulumi:"httpOnlyCookieAttribute"`
+	// The landing page design of the app launcher.
+	LandingPageDesign AccessApplicationLandingPageDesignPtrOutput `pulumi:"landingPageDesign"`
 	// Image URL for the logo shown in the app launcher dashboard.
 	LogoUrl pulumi.StringPtrOutput `pulumi:"logoUrl"`
-	// The name of the attribute as provided to the SaaS app.
+	// The name of the footer link.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// SaaS configuration for the Access Application.
 	SaasApp AccessApplicationSaasAppPtrOutput `pulumi:"saasApp"`
@@ -130,12 +139,9 @@ type AccessApplication struct {
 func NewAccessApplication(ctx *pulumi.Context,
 	name string, args *AccessApplicationArgs, opts ...pulumi.ResourceOption) (*AccessApplication, error) {
 	if args == nil {
-		return nil, errors.New("missing one or more required arguments")
+		args = &AccessApplicationArgs{}
 	}
 
-	if args.Name == nil {
-		return nil, errors.New("invalid value for required argument 'Name'")
-	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource AccessApplication
 	err := ctx.RegisterResource("cloudflare:index/accessApplication:AccessApplication", name, args, &resource, opts...)
@@ -163,12 +169,16 @@ type accessApplicationState struct {
 	AccountId *string `pulumi:"accountId"`
 	// The identity providers selected for the application.
 	AllowedIdps []string `pulumi:"allowedIdps"`
+	// The logo URL of the app launcher.
+	AppLauncherLogoUrl *string `pulumi:"appLauncherLogoUrl"`
 	// Option to show/hide applications in App Launcher. Defaults to `true`.
 	AppLauncherVisible *bool `pulumi:"appLauncherVisible"`
 	// Application Audience (AUD) Tag of the application.
 	Aud *string `pulumi:"aud"`
 	// Option to skip identity provider selection if only one is configured in `allowedIdps`. Defaults to `false`.
 	AutoRedirectToIdentity *bool `pulumi:"autoRedirectToIdentity"`
+	// The background color of the app launcher.
+	BgColor *string `pulumi:"bgColor"`
 	// CORS configuration for the Access Application. See below for reference structure.
 	CorsHeaders []AccessApplicationCorsHeader `pulumi:"corsHeaders"`
 	// Option that returns a custom error message when a user is denied access to the application.
@@ -183,11 +193,17 @@ type accessApplicationState struct {
 	Domain *string `pulumi:"domain"`
 	// Option to provide increased security against compromised authorization tokens and CSRF attacks by requiring an additional "binding" cookie on requests. Defaults to `false`.
 	EnableBindingCookie *bool `pulumi:"enableBindingCookie"`
+	// The footer links of the app launcher.
+	FooterLinks []AccessApplicationFooterLink `pulumi:"footerLinks"`
+	// The background color of the header bar in the app launcher.
+	HeaderBgColor *string `pulumi:"headerBgColor"`
 	// Option to add the `HttpOnly` cookie flag to access tokens.
 	HttpOnlyCookieAttribute *bool `pulumi:"httpOnlyCookieAttribute"`
+	// The landing page design of the app launcher.
+	LandingPageDesign *AccessApplicationLandingPageDesign `pulumi:"landingPageDesign"`
 	// Image URL for the logo shown in the app launcher dashboard.
 	LogoUrl *string `pulumi:"logoUrl"`
-	// The name of the attribute as provided to the SaaS app.
+	// The name of the footer link.
 	Name *string `pulumi:"name"`
 	// SaaS configuration for the Access Application.
 	SaasApp *AccessApplicationSaasApp `pulumi:"saasApp"`
@@ -214,12 +230,16 @@ type AccessApplicationState struct {
 	AccountId pulumi.StringPtrInput
 	// The identity providers selected for the application.
 	AllowedIdps pulumi.StringArrayInput
+	// The logo URL of the app launcher.
+	AppLauncherLogoUrl pulumi.StringPtrInput
 	// Option to show/hide applications in App Launcher. Defaults to `true`.
 	AppLauncherVisible pulumi.BoolPtrInput
 	// Application Audience (AUD) Tag of the application.
 	Aud pulumi.StringPtrInput
 	// Option to skip identity provider selection if only one is configured in `allowedIdps`. Defaults to `false`.
 	AutoRedirectToIdentity pulumi.BoolPtrInput
+	// The background color of the app launcher.
+	BgColor pulumi.StringPtrInput
 	// CORS configuration for the Access Application. See below for reference structure.
 	CorsHeaders AccessApplicationCorsHeaderArrayInput
 	// Option that returns a custom error message when a user is denied access to the application.
@@ -234,11 +254,17 @@ type AccessApplicationState struct {
 	Domain pulumi.StringPtrInput
 	// Option to provide increased security against compromised authorization tokens and CSRF attacks by requiring an additional "binding" cookie on requests. Defaults to `false`.
 	EnableBindingCookie pulumi.BoolPtrInput
+	// The footer links of the app launcher.
+	FooterLinks AccessApplicationFooterLinkArrayInput
+	// The background color of the header bar in the app launcher.
+	HeaderBgColor pulumi.StringPtrInput
 	// Option to add the `HttpOnly` cookie flag to access tokens.
 	HttpOnlyCookieAttribute pulumi.BoolPtrInput
+	// The landing page design of the app launcher.
+	LandingPageDesign AccessApplicationLandingPageDesignPtrInput
 	// Image URL for the logo shown in the app launcher dashboard.
 	LogoUrl pulumi.StringPtrInput
-	// The name of the attribute as provided to the SaaS app.
+	// The name of the footer link.
 	Name pulumi.StringPtrInput
 	// SaaS configuration for the Access Application.
 	SaasApp AccessApplicationSaasAppPtrInput
@@ -269,10 +295,14 @@ type accessApplicationArgs struct {
 	AccountId *string `pulumi:"accountId"`
 	// The identity providers selected for the application.
 	AllowedIdps []string `pulumi:"allowedIdps"`
+	// The logo URL of the app launcher.
+	AppLauncherLogoUrl *string `pulumi:"appLauncherLogoUrl"`
 	// Option to show/hide applications in App Launcher. Defaults to `true`.
 	AppLauncherVisible *bool `pulumi:"appLauncherVisible"`
 	// Option to skip identity provider selection if only one is configured in `allowedIdps`. Defaults to `false`.
 	AutoRedirectToIdentity *bool `pulumi:"autoRedirectToIdentity"`
+	// The background color of the app launcher.
+	BgColor *string `pulumi:"bgColor"`
 	// CORS configuration for the Access Application. See below for reference structure.
 	CorsHeaders []AccessApplicationCorsHeader `pulumi:"corsHeaders"`
 	// Option that returns a custom error message when a user is denied access to the application.
@@ -287,12 +317,18 @@ type accessApplicationArgs struct {
 	Domain *string `pulumi:"domain"`
 	// Option to provide increased security against compromised authorization tokens and CSRF attacks by requiring an additional "binding" cookie on requests. Defaults to `false`.
 	EnableBindingCookie *bool `pulumi:"enableBindingCookie"`
+	// The footer links of the app launcher.
+	FooterLinks []AccessApplicationFooterLink `pulumi:"footerLinks"`
+	// The background color of the header bar in the app launcher.
+	HeaderBgColor *string `pulumi:"headerBgColor"`
 	// Option to add the `HttpOnly` cookie flag to access tokens.
 	HttpOnlyCookieAttribute *bool `pulumi:"httpOnlyCookieAttribute"`
+	// The landing page design of the app launcher.
+	LandingPageDesign *AccessApplicationLandingPageDesign `pulumi:"landingPageDesign"`
 	// Image URL for the logo shown in the app launcher dashboard.
 	LogoUrl *string `pulumi:"logoUrl"`
-	// The name of the attribute as provided to the SaaS app.
-	Name string `pulumi:"name"`
+	// The name of the footer link.
+	Name *string `pulumi:"name"`
 	// SaaS configuration for the Access Application.
 	SaasApp *AccessApplicationSaasApp `pulumi:"saasApp"`
 	// Defines the same-site cookie setting for access tokens. Available values: `none`, `lax`, `strict`.
@@ -319,10 +355,14 @@ type AccessApplicationArgs struct {
 	AccountId pulumi.StringPtrInput
 	// The identity providers selected for the application.
 	AllowedIdps pulumi.StringArrayInput
+	// The logo URL of the app launcher.
+	AppLauncherLogoUrl pulumi.StringPtrInput
 	// Option to show/hide applications in App Launcher. Defaults to `true`.
 	AppLauncherVisible pulumi.BoolPtrInput
 	// Option to skip identity provider selection if only one is configured in `allowedIdps`. Defaults to `false`.
 	AutoRedirectToIdentity pulumi.BoolPtrInput
+	// The background color of the app launcher.
+	BgColor pulumi.StringPtrInput
 	// CORS configuration for the Access Application. See below for reference structure.
 	CorsHeaders AccessApplicationCorsHeaderArrayInput
 	// Option that returns a custom error message when a user is denied access to the application.
@@ -337,12 +377,18 @@ type AccessApplicationArgs struct {
 	Domain pulumi.StringPtrInput
 	// Option to provide increased security against compromised authorization tokens and CSRF attacks by requiring an additional "binding" cookie on requests. Defaults to `false`.
 	EnableBindingCookie pulumi.BoolPtrInput
+	// The footer links of the app launcher.
+	FooterLinks AccessApplicationFooterLinkArrayInput
+	// The background color of the header bar in the app launcher.
+	HeaderBgColor pulumi.StringPtrInput
 	// Option to add the `HttpOnly` cookie flag to access tokens.
 	HttpOnlyCookieAttribute pulumi.BoolPtrInput
+	// The landing page design of the app launcher.
+	LandingPageDesign AccessApplicationLandingPageDesignPtrInput
 	// Image URL for the logo shown in the app launcher dashboard.
 	LogoUrl pulumi.StringPtrInput
-	// The name of the attribute as provided to the SaaS app.
-	Name pulumi.StringInput
+	// The name of the footer link.
+	Name pulumi.StringPtrInput
 	// SaaS configuration for the Access Application.
 	SaasApp AccessApplicationSaasAppPtrInput
 	// Defines the same-site cookie setting for access tokens. Available values: `none`, `lax`, `strict`.
@@ -460,6 +506,11 @@ func (o AccessApplicationOutput) AllowedIdps() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *AccessApplication) pulumi.StringArrayOutput { return v.AllowedIdps }).(pulumi.StringArrayOutput)
 }
 
+// The logo URL of the app launcher.
+func (o AccessApplicationOutput) AppLauncherLogoUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccessApplication) pulumi.StringPtrOutput { return v.AppLauncherLogoUrl }).(pulumi.StringPtrOutput)
+}
+
 // Option to show/hide applications in App Launcher. Defaults to `true`.
 func (o AccessApplicationOutput) AppLauncherVisible() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *AccessApplication) pulumi.BoolPtrOutput { return v.AppLauncherVisible }).(pulumi.BoolPtrOutput)
@@ -473,6 +524,11 @@ func (o AccessApplicationOutput) Aud() pulumi.StringOutput {
 // Option to skip identity provider selection if only one is configured in `allowedIdps`. Defaults to `false`.
 func (o AccessApplicationOutput) AutoRedirectToIdentity() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *AccessApplication) pulumi.BoolPtrOutput { return v.AutoRedirectToIdentity }).(pulumi.BoolPtrOutput)
+}
+
+// The background color of the app launcher.
+func (o AccessApplicationOutput) BgColor() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccessApplication) pulumi.StringPtrOutput { return v.BgColor }).(pulumi.StringPtrOutput)
 }
 
 // CORS configuration for the Access Application. See below for reference structure.
@@ -510,9 +566,24 @@ func (o AccessApplicationOutput) EnableBindingCookie() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *AccessApplication) pulumi.BoolPtrOutput { return v.EnableBindingCookie }).(pulumi.BoolPtrOutput)
 }
 
+// The footer links of the app launcher.
+func (o AccessApplicationOutput) FooterLinks() AccessApplicationFooterLinkArrayOutput {
+	return o.ApplyT(func(v *AccessApplication) AccessApplicationFooterLinkArrayOutput { return v.FooterLinks }).(AccessApplicationFooterLinkArrayOutput)
+}
+
+// The background color of the header bar in the app launcher.
+func (o AccessApplicationOutput) HeaderBgColor() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccessApplication) pulumi.StringPtrOutput { return v.HeaderBgColor }).(pulumi.StringPtrOutput)
+}
+
 // Option to add the `HttpOnly` cookie flag to access tokens.
 func (o AccessApplicationOutput) HttpOnlyCookieAttribute() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *AccessApplication) pulumi.BoolPtrOutput { return v.HttpOnlyCookieAttribute }).(pulumi.BoolPtrOutput)
+}
+
+// The landing page design of the app launcher.
+func (o AccessApplicationOutput) LandingPageDesign() AccessApplicationLandingPageDesignPtrOutput {
+	return o.ApplyT(func(v *AccessApplication) AccessApplicationLandingPageDesignPtrOutput { return v.LandingPageDesign }).(AccessApplicationLandingPageDesignPtrOutput)
 }
 
 // Image URL for the logo shown in the app launcher dashboard.
@@ -520,7 +591,7 @@ func (o AccessApplicationOutput) LogoUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AccessApplication) pulumi.StringPtrOutput { return v.LogoUrl }).(pulumi.StringPtrOutput)
 }
 
-// The name of the attribute as provided to the SaaS app.
+// The name of the footer link.
 func (o AccessApplicationOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *AccessApplication) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

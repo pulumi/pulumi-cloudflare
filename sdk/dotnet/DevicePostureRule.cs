@@ -77,6 +77,9 @@ namespace Pulumi.Cloudflare
         [Output("expiration")]
         public Output<string?> Expiration { get; private set; } = null!;
 
+        /// <summary>
+        /// Required for all rule types except `warp`, `gateway`, and `tanium`.
+        /// </summary>
         [Output("inputs")]
         public Output<ImmutableArray<Outputs.DevicePostureRuleInput>> Inputs { get; private set; } = null!;
 
@@ -167,6 +170,10 @@ namespace Pulumi.Cloudflare
 
         [Input("inputs")]
         private InputList<Inputs.DevicePostureRuleInputArgs>? _inputs;
+
+        /// <summary>
+        /// Required for all rule types except `warp`, `gateway`, and `tanium`.
+        /// </summary>
         public InputList<Inputs.DevicePostureRuleInputArgs> Inputs
         {
             get => _inputs ?? (_inputs = new InputList<Inputs.DevicePostureRuleInputArgs>());
@@ -228,6 +235,10 @@ namespace Pulumi.Cloudflare
 
         [Input("inputs")]
         private InputList<Inputs.DevicePostureRuleInputGetArgs>? _inputs;
+
+        /// <summary>
+        /// Required for all rule types except `warp`, `gateway`, and `tanium`.
+        /// </summary>
         public InputList<Inputs.DevicePostureRuleInputGetArgs> Inputs
         {
             get => _inputs ?? (_inputs = new InputList<Inputs.DevicePostureRuleInputGetArgs>());

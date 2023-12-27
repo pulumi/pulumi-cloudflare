@@ -16,11 +16,12 @@ __all__ = ['AccessApplicationArgs', 'AccessApplication']
 @pulumi.input_type
 class AccessApplicationArgs:
     def __init__(__self__, *,
-                 name: pulumi.Input[str],
                  account_id: Optional[pulumi.Input[str]] = None,
                  allowed_idps: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 app_launcher_logo_url: Optional[pulumi.Input[str]] = None,
                  app_launcher_visible: Optional[pulumi.Input[bool]] = None,
                  auto_redirect_to_identity: Optional[pulumi.Input[bool]] = None,
+                 bg_color: Optional[pulumi.Input[str]] = None,
                  cors_headers: Optional[pulumi.Input[Sequence[pulumi.Input['AccessApplicationCorsHeaderArgs']]]] = None,
                  custom_deny_message: Optional[pulumi.Input[str]] = None,
                  custom_deny_url: Optional[pulumi.Input[str]] = None,
@@ -28,8 +29,12 @@ class AccessApplicationArgs:
                  custom_pages: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  domain: Optional[pulumi.Input[str]] = None,
                  enable_binding_cookie: Optional[pulumi.Input[bool]] = None,
+                 footer_links: Optional[pulumi.Input[Sequence[pulumi.Input['AccessApplicationFooterLinkArgs']]]] = None,
+                 header_bg_color: Optional[pulumi.Input[str]] = None,
                  http_only_cookie_attribute: Optional[pulumi.Input[bool]] = None,
+                 landing_page_design: Optional[pulumi.Input['AccessApplicationLandingPageDesignArgs']] = None,
                  logo_url: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
                  saas_app: Optional[pulumi.Input['AccessApplicationSaasAppArgs']] = None,
                  same_site_cookie_attribute: Optional[pulumi.Input[str]] = None,
                  self_hosted_domains: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -41,11 +46,12 @@ class AccessApplicationArgs:
                  zone_id: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a AccessApplication resource.
-        :param pulumi.Input[str] name: The name of the attribute as provided to the SaaS app.
         :param pulumi.Input[str] account_id: The account identifier to target for the resource. Conflicts with `zone_id`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_idps: The identity providers selected for the application.
+        :param pulumi.Input[str] app_launcher_logo_url: The logo URL of the app launcher.
         :param pulumi.Input[bool] app_launcher_visible: Option to show/hide applications in App Launcher. Defaults to `true`.
         :param pulumi.Input[bool] auto_redirect_to_identity: Option to skip identity provider selection if only one is configured in `allowed_idps`. Defaults to `false`.
+        :param pulumi.Input[str] bg_color: The background color of the app launcher.
         :param pulumi.Input[Sequence[pulumi.Input['AccessApplicationCorsHeaderArgs']]] cors_headers: CORS configuration for the Access Application. See below for reference structure.
         :param pulumi.Input[str] custom_deny_message: Option that returns a custom error message when a user is denied access to the application.
         :param pulumi.Input[str] custom_deny_url: Option that redirects to a custom URL when a user is denied access to the application via identity based rules.
@@ -53,8 +59,12 @@ class AccessApplicationArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] custom_pages: The custom pages selected for the application.
         :param pulumi.Input[str] domain: The primary hostname and path that Access will secure. If the app is visible in the App Launcher dashboard, this is the domain that will be displayed.
         :param pulumi.Input[bool] enable_binding_cookie: Option to provide increased security against compromised authorization tokens and CSRF attacks by requiring an additional "binding" cookie on requests. Defaults to `false`.
+        :param pulumi.Input[Sequence[pulumi.Input['AccessApplicationFooterLinkArgs']]] footer_links: The footer links of the app launcher.
+        :param pulumi.Input[str] header_bg_color: The background color of the header bar in the app launcher.
         :param pulumi.Input[bool] http_only_cookie_attribute: Option to add the `HttpOnly` cookie flag to access tokens.
+        :param pulumi.Input['AccessApplicationLandingPageDesignArgs'] landing_page_design: The landing page design of the app launcher.
         :param pulumi.Input[str] logo_url: Image URL for the logo shown in the app launcher dashboard.
+        :param pulumi.Input[str] name: The name of the footer link.
         :param pulumi.Input['AccessApplicationSaasAppArgs'] saas_app: SaaS configuration for the Access Application.
         :param pulumi.Input[str] same_site_cookie_attribute: Defines the same-site cookie setting for access tokens. Available values: `none`, `lax`, `strict`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] self_hosted_domains: List of domains that access will secure. Only present for self_hosted, vnc, and ssh applications. Always includes the value set as `domain`.
@@ -65,15 +75,18 @@ class AccessApplicationArgs:
         :param pulumi.Input[str] type: The application type. Available values: `app_launcher`, `bookmark`, `biso`, `dash_sso`, `saas`, `self_hosted`, `ssh`, `vnc`, `warp`. Defaults to `self_hosted`.
         :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. Conflicts with `account_id`.
         """
-        pulumi.set(__self__, "name", name)
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
         if allowed_idps is not None:
             pulumi.set(__self__, "allowed_idps", allowed_idps)
+        if app_launcher_logo_url is not None:
+            pulumi.set(__self__, "app_launcher_logo_url", app_launcher_logo_url)
         if app_launcher_visible is not None:
             pulumi.set(__self__, "app_launcher_visible", app_launcher_visible)
         if auto_redirect_to_identity is not None:
             pulumi.set(__self__, "auto_redirect_to_identity", auto_redirect_to_identity)
+        if bg_color is not None:
+            pulumi.set(__self__, "bg_color", bg_color)
         if cors_headers is not None:
             pulumi.set(__self__, "cors_headers", cors_headers)
         if custom_deny_message is not None:
@@ -88,10 +101,18 @@ class AccessApplicationArgs:
             pulumi.set(__self__, "domain", domain)
         if enable_binding_cookie is not None:
             pulumi.set(__self__, "enable_binding_cookie", enable_binding_cookie)
+        if footer_links is not None:
+            pulumi.set(__self__, "footer_links", footer_links)
+        if header_bg_color is not None:
+            pulumi.set(__self__, "header_bg_color", header_bg_color)
         if http_only_cookie_attribute is not None:
             pulumi.set(__self__, "http_only_cookie_attribute", http_only_cookie_attribute)
+        if landing_page_design is not None:
+            pulumi.set(__self__, "landing_page_design", landing_page_design)
         if logo_url is not None:
             pulumi.set(__self__, "logo_url", logo_url)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
         if saas_app is not None:
             pulumi.set(__self__, "saas_app", saas_app)
         if same_site_cookie_attribute is not None:
@@ -110,18 +131,6 @@ class AccessApplicationArgs:
             pulumi.set(__self__, "type", type)
         if zone_id is not None:
             pulumi.set(__self__, "zone_id", zone_id)
-
-    @property
-    @pulumi.getter
-    def name(self) -> pulumi.Input[str]:
-        """
-        The name of the attribute as provided to the SaaS app.
-        """
-        return pulumi.get(self, "name")
-
-    @name.setter
-    def name(self, value: pulumi.Input[str]):
-        pulumi.set(self, "name", value)
 
     @property
     @pulumi.getter(name="accountId")
@@ -148,6 +157,18 @@ class AccessApplicationArgs:
         pulumi.set(self, "allowed_idps", value)
 
     @property
+    @pulumi.getter(name="appLauncherLogoUrl")
+    def app_launcher_logo_url(self) -> Optional[pulumi.Input[str]]:
+        """
+        The logo URL of the app launcher.
+        """
+        return pulumi.get(self, "app_launcher_logo_url")
+
+    @app_launcher_logo_url.setter
+    def app_launcher_logo_url(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "app_launcher_logo_url", value)
+
+    @property
     @pulumi.getter(name="appLauncherVisible")
     def app_launcher_visible(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -170,6 +191,18 @@ class AccessApplicationArgs:
     @auto_redirect_to_identity.setter
     def auto_redirect_to_identity(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "auto_redirect_to_identity", value)
+
+    @property
+    @pulumi.getter(name="bgColor")
+    def bg_color(self) -> Optional[pulumi.Input[str]]:
+        """
+        The background color of the app launcher.
+        """
+        return pulumi.get(self, "bg_color")
+
+    @bg_color.setter
+    def bg_color(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "bg_color", value)
 
     @property
     @pulumi.getter(name="corsHeaders")
@@ -256,6 +289,30 @@ class AccessApplicationArgs:
         pulumi.set(self, "enable_binding_cookie", value)
 
     @property
+    @pulumi.getter(name="footerLinks")
+    def footer_links(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AccessApplicationFooterLinkArgs']]]]:
+        """
+        The footer links of the app launcher.
+        """
+        return pulumi.get(self, "footer_links")
+
+    @footer_links.setter
+    def footer_links(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AccessApplicationFooterLinkArgs']]]]):
+        pulumi.set(self, "footer_links", value)
+
+    @property
+    @pulumi.getter(name="headerBgColor")
+    def header_bg_color(self) -> Optional[pulumi.Input[str]]:
+        """
+        The background color of the header bar in the app launcher.
+        """
+        return pulumi.get(self, "header_bg_color")
+
+    @header_bg_color.setter
+    def header_bg_color(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "header_bg_color", value)
+
+    @property
     @pulumi.getter(name="httpOnlyCookieAttribute")
     def http_only_cookie_attribute(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -268,6 +325,18 @@ class AccessApplicationArgs:
         pulumi.set(self, "http_only_cookie_attribute", value)
 
     @property
+    @pulumi.getter(name="landingPageDesign")
+    def landing_page_design(self) -> Optional[pulumi.Input['AccessApplicationLandingPageDesignArgs']]:
+        """
+        The landing page design of the app launcher.
+        """
+        return pulumi.get(self, "landing_page_design")
+
+    @landing_page_design.setter
+    def landing_page_design(self, value: Optional[pulumi.Input['AccessApplicationLandingPageDesignArgs']]):
+        pulumi.set(self, "landing_page_design", value)
+
+    @property
     @pulumi.getter(name="logoUrl")
     def logo_url(self) -> Optional[pulumi.Input[str]]:
         """
@@ -278,6 +347,18 @@ class AccessApplicationArgs:
     @logo_url.setter
     def logo_url(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "logo_url", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the footer link.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
 
     @property
     @pulumi.getter(name="saasApp")
@@ -393,9 +474,11 @@ class _AccessApplicationState:
     def __init__(__self__, *,
                  account_id: Optional[pulumi.Input[str]] = None,
                  allowed_idps: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 app_launcher_logo_url: Optional[pulumi.Input[str]] = None,
                  app_launcher_visible: Optional[pulumi.Input[bool]] = None,
                  aud: Optional[pulumi.Input[str]] = None,
                  auto_redirect_to_identity: Optional[pulumi.Input[bool]] = None,
+                 bg_color: Optional[pulumi.Input[str]] = None,
                  cors_headers: Optional[pulumi.Input[Sequence[pulumi.Input['AccessApplicationCorsHeaderArgs']]]] = None,
                  custom_deny_message: Optional[pulumi.Input[str]] = None,
                  custom_deny_url: Optional[pulumi.Input[str]] = None,
@@ -403,7 +486,10 @@ class _AccessApplicationState:
                  custom_pages: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  domain: Optional[pulumi.Input[str]] = None,
                  enable_binding_cookie: Optional[pulumi.Input[bool]] = None,
+                 footer_links: Optional[pulumi.Input[Sequence[pulumi.Input['AccessApplicationFooterLinkArgs']]]] = None,
+                 header_bg_color: Optional[pulumi.Input[str]] = None,
                  http_only_cookie_attribute: Optional[pulumi.Input[bool]] = None,
+                 landing_page_design: Optional[pulumi.Input['AccessApplicationLandingPageDesignArgs']] = None,
                  logo_url: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  saas_app: Optional[pulumi.Input['AccessApplicationSaasAppArgs']] = None,
@@ -419,9 +505,11 @@ class _AccessApplicationState:
         Input properties used for looking up and filtering AccessApplication resources.
         :param pulumi.Input[str] account_id: The account identifier to target for the resource. Conflicts with `zone_id`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_idps: The identity providers selected for the application.
+        :param pulumi.Input[str] app_launcher_logo_url: The logo URL of the app launcher.
         :param pulumi.Input[bool] app_launcher_visible: Option to show/hide applications in App Launcher. Defaults to `true`.
         :param pulumi.Input[str] aud: Application Audience (AUD) Tag of the application.
         :param pulumi.Input[bool] auto_redirect_to_identity: Option to skip identity provider selection if only one is configured in `allowed_idps`. Defaults to `false`.
+        :param pulumi.Input[str] bg_color: The background color of the app launcher.
         :param pulumi.Input[Sequence[pulumi.Input['AccessApplicationCorsHeaderArgs']]] cors_headers: CORS configuration for the Access Application. See below for reference structure.
         :param pulumi.Input[str] custom_deny_message: Option that returns a custom error message when a user is denied access to the application.
         :param pulumi.Input[str] custom_deny_url: Option that redirects to a custom URL when a user is denied access to the application via identity based rules.
@@ -429,9 +517,12 @@ class _AccessApplicationState:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] custom_pages: The custom pages selected for the application.
         :param pulumi.Input[str] domain: The primary hostname and path that Access will secure. If the app is visible in the App Launcher dashboard, this is the domain that will be displayed.
         :param pulumi.Input[bool] enable_binding_cookie: Option to provide increased security against compromised authorization tokens and CSRF attacks by requiring an additional "binding" cookie on requests. Defaults to `false`.
+        :param pulumi.Input[Sequence[pulumi.Input['AccessApplicationFooterLinkArgs']]] footer_links: The footer links of the app launcher.
+        :param pulumi.Input[str] header_bg_color: The background color of the header bar in the app launcher.
         :param pulumi.Input[bool] http_only_cookie_attribute: Option to add the `HttpOnly` cookie flag to access tokens.
+        :param pulumi.Input['AccessApplicationLandingPageDesignArgs'] landing_page_design: The landing page design of the app launcher.
         :param pulumi.Input[str] logo_url: Image URL for the logo shown in the app launcher dashboard.
-        :param pulumi.Input[str] name: The name of the attribute as provided to the SaaS app.
+        :param pulumi.Input[str] name: The name of the footer link.
         :param pulumi.Input['AccessApplicationSaasAppArgs'] saas_app: SaaS configuration for the Access Application.
         :param pulumi.Input[str] same_site_cookie_attribute: Defines the same-site cookie setting for access tokens. Available values: `none`, `lax`, `strict`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] self_hosted_domains: List of domains that access will secure. Only present for self_hosted, vnc, and ssh applications. Always includes the value set as `domain`.
@@ -446,12 +537,16 @@ class _AccessApplicationState:
             pulumi.set(__self__, "account_id", account_id)
         if allowed_idps is not None:
             pulumi.set(__self__, "allowed_idps", allowed_idps)
+        if app_launcher_logo_url is not None:
+            pulumi.set(__self__, "app_launcher_logo_url", app_launcher_logo_url)
         if app_launcher_visible is not None:
             pulumi.set(__self__, "app_launcher_visible", app_launcher_visible)
         if aud is not None:
             pulumi.set(__self__, "aud", aud)
         if auto_redirect_to_identity is not None:
             pulumi.set(__self__, "auto_redirect_to_identity", auto_redirect_to_identity)
+        if bg_color is not None:
+            pulumi.set(__self__, "bg_color", bg_color)
         if cors_headers is not None:
             pulumi.set(__self__, "cors_headers", cors_headers)
         if custom_deny_message is not None:
@@ -466,8 +561,14 @@ class _AccessApplicationState:
             pulumi.set(__self__, "domain", domain)
         if enable_binding_cookie is not None:
             pulumi.set(__self__, "enable_binding_cookie", enable_binding_cookie)
+        if footer_links is not None:
+            pulumi.set(__self__, "footer_links", footer_links)
+        if header_bg_color is not None:
+            pulumi.set(__self__, "header_bg_color", header_bg_color)
         if http_only_cookie_attribute is not None:
             pulumi.set(__self__, "http_only_cookie_attribute", http_only_cookie_attribute)
+        if landing_page_design is not None:
+            pulumi.set(__self__, "landing_page_design", landing_page_design)
         if logo_url is not None:
             pulumi.set(__self__, "logo_url", logo_url)
         if name is not None:
@@ -516,6 +617,18 @@ class _AccessApplicationState:
         pulumi.set(self, "allowed_idps", value)
 
     @property
+    @pulumi.getter(name="appLauncherLogoUrl")
+    def app_launcher_logo_url(self) -> Optional[pulumi.Input[str]]:
+        """
+        The logo URL of the app launcher.
+        """
+        return pulumi.get(self, "app_launcher_logo_url")
+
+    @app_launcher_logo_url.setter
+    def app_launcher_logo_url(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "app_launcher_logo_url", value)
+
+    @property
     @pulumi.getter(name="appLauncherVisible")
     def app_launcher_visible(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -550,6 +663,18 @@ class _AccessApplicationState:
     @auto_redirect_to_identity.setter
     def auto_redirect_to_identity(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "auto_redirect_to_identity", value)
+
+    @property
+    @pulumi.getter(name="bgColor")
+    def bg_color(self) -> Optional[pulumi.Input[str]]:
+        """
+        The background color of the app launcher.
+        """
+        return pulumi.get(self, "bg_color")
+
+    @bg_color.setter
+    def bg_color(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "bg_color", value)
 
     @property
     @pulumi.getter(name="corsHeaders")
@@ -636,6 +761,30 @@ class _AccessApplicationState:
         pulumi.set(self, "enable_binding_cookie", value)
 
     @property
+    @pulumi.getter(name="footerLinks")
+    def footer_links(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AccessApplicationFooterLinkArgs']]]]:
+        """
+        The footer links of the app launcher.
+        """
+        return pulumi.get(self, "footer_links")
+
+    @footer_links.setter
+    def footer_links(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AccessApplicationFooterLinkArgs']]]]):
+        pulumi.set(self, "footer_links", value)
+
+    @property
+    @pulumi.getter(name="headerBgColor")
+    def header_bg_color(self) -> Optional[pulumi.Input[str]]:
+        """
+        The background color of the header bar in the app launcher.
+        """
+        return pulumi.get(self, "header_bg_color")
+
+    @header_bg_color.setter
+    def header_bg_color(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "header_bg_color", value)
+
+    @property
     @pulumi.getter(name="httpOnlyCookieAttribute")
     def http_only_cookie_attribute(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -646,6 +795,18 @@ class _AccessApplicationState:
     @http_only_cookie_attribute.setter
     def http_only_cookie_attribute(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "http_only_cookie_attribute", value)
+
+    @property
+    @pulumi.getter(name="landingPageDesign")
+    def landing_page_design(self) -> Optional[pulumi.Input['AccessApplicationLandingPageDesignArgs']]:
+        """
+        The landing page design of the app launcher.
+        """
+        return pulumi.get(self, "landing_page_design")
+
+    @landing_page_design.setter
+    def landing_page_design(self, value: Optional[pulumi.Input['AccessApplicationLandingPageDesignArgs']]):
+        pulumi.set(self, "landing_page_design", value)
 
     @property
     @pulumi.getter(name="logoUrl")
@@ -663,7 +824,7 @@ class _AccessApplicationState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the attribute as provided to the SaaS app.
+        The name of the footer link.
         """
         return pulumi.get(self, "name")
 
@@ -787,8 +948,10 @@ class AccessApplication(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: Optional[pulumi.Input[str]] = None,
                  allowed_idps: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 app_launcher_logo_url: Optional[pulumi.Input[str]] = None,
                  app_launcher_visible: Optional[pulumi.Input[bool]] = None,
                  auto_redirect_to_identity: Optional[pulumi.Input[bool]] = None,
+                 bg_color: Optional[pulumi.Input[str]] = None,
                  cors_headers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessApplicationCorsHeaderArgs']]]]] = None,
                  custom_deny_message: Optional[pulumi.Input[str]] = None,
                  custom_deny_url: Optional[pulumi.Input[str]] = None,
@@ -796,7 +959,10 @@ class AccessApplication(pulumi.CustomResource):
                  custom_pages: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  domain: Optional[pulumi.Input[str]] = None,
                  enable_binding_cookie: Optional[pulumi.Input[bool]] = None,
+                 footer_links: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessApplicationFooterLinkArgs']]]]] = None,
+                 header_bg_color: Optional[pulumi.Input[str]] = None,
                  http_only_cookie_attribute: Optional[pulumi.Input[bool]] = None,
+                 landing_page_design: Optional[pulumi.Input[pulumi.InputType['AccessApplicationLandingPageDesignArgs']]] = None,
                  logo_url: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  saas_app: Optional[pulumi.Input[pulumi.InputType['AccessApplicationSaasAppArgs']]] = None,
@@ -855,8 +1021,10 @@ class AccessApplication(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_id: The account identifier to target for the resource. Conflicts with `zone_id`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_idps: The identity providers selected for the application.
+        :param pulumi.Input[str] app_launcher_logo_url: The logo URL of the app launcher.
         :param pulumi.Input[bool] app_launcher_visible: Option to show/hide applications in App Launcher. Defaults to `true`.
         :param pulumi.Input[bool] auto_redirect_to_identity: Option to skip identity provider selection if only one is configured in `allowed_idps`. Defaults to `false`.
+        :param pulumi.Input[str] bg_color: The background color of the app launcher.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessApplicationCorsHeaderArgs']]]] cors_headers: CORS configuration for the Access Application. See below for reference structure.
         :param pulumi.Input[str] custom_deny_message: Option that returns a custom error message when a user is denied access to the application.
         :param pulumi.Input[str] custom_deny_url: Option that redirects to a custom URL when a user is denied access to the application via identity based rules.
@@ -864,9 +1032,12 @@ class AccessApplication(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] custom_pages: The custom pages selected for the application.
         :param pulumi.Input[str] domain: The primary hostname and path that Access will secure. If the app is visible in the App Launcher dashboard, this is the domain that will be displayed.
         :param pulumi.Input[bool] enable_binding_cookie: Option to provide increased security against compromised authorization tokens and CSRF attacks by requiring an additional "binding" cookie on requests. Defaults to `false`.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessApplicationFooterLinkArgs']]]] footer_links: The footer links of the app launcher.
+        :param pulumi.Input[str] header_bg_color: The background color of the header bar in the app launcher.
         :param pulumi.Input[bool] http_only_cookie_attribute: Option to add the `HttpOnly` cookie flag to access tokens.
+        :param pulumi.Input[pulumi.InputType['AccessApplicationLandingPageDesignArgs']] landing_page_design: The landing page design of the app launcher.
         :param pulumi.Input[str] logo_url: Image URL for the logo shown in the app launcher dashboard.
-        :param pulumi.Input[str] name: The name of the attribute as provided to the SaaS app.
+        :param pulumi.Input[str] name: The name of the footer link.
         :param pulumi.Input[pulumi.InputType['AccessApplicationSaasAppArgs']] saas_app: SaaS configuration for the Access Application.
         :param pulumi.Input[str] same_site_cookie_attribute: Defines the same-site cookie setting for access tokens. Available values: `none`, `lax`, `strict`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] self_hosted_domains: List of domains that access will secure. Only present for self_hosted, vnc, and ssh applications. Always includes the value set as `domain`.
@@ -881,7 +1052,7 @@ class AccessApplication(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: AccessApplicationArgs,
+                 args: Optional[AccessApplicationArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Provides a Cloudflare Access Application resource. Access
@@ -942,8 +1113,10 @@ class AccessApplication(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: Optional[pulumi.Input[str]] = None,
                  allowed_idps: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 app_launcher_logo_url: Optional[pulumi.Input[str]] = None,
                  app_launcher_visible: Optional[pulumi.Input[bool]] = None,
                  auto_redirect_to_identity: Optional[pulumi.Input[bool]] = None,
+                 bg_color: Optional[pulumi.Input[str]] = None,
                  cors_headers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessApplicationCorsHeaderArgs']]]]] = None,
                  custom_deny_message: Optional[pulumi.Input[str]] = None,
                  custom_deny_url: Optional[pulumi.Input[str]] = None,
@@ -951,7 +1124,10 @@ class AccessApplication(pulumi.CustomResource):
                  custom_pages: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  domain: Optional[pulumi.Input[str]] = None,
                  enable_binding_cookie: Optional[pulumi.Input[bool]] = None,
+                 footer_links: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessApplicationFooterLinkArgs']]]]] = None,
+                 header_bg_color: Optional[pulumi.Input[str]] = None,
                  http_only_cookie_attribute: Optional[pulumi.Input[bool]] = None,
+                 landing_page_design: Optional[pulumi.Input[pulumi.InputType['AccessApplicationLandingPageDesignArgs']]] = None,
                  logo_url: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  saas_app: Optional[pulumi.Input[pulumi.InputType['AccessApplicationSaasAppArgs']]] = None,
@@ -974,8 +1150,10 @@ class AccessApplication(pulumi.CustomResource):
 
             __props__.__dict__["account_id"] = account_id
             __props__.__dict__["allowed_idps"] = allowed_idps
+            __props__.__dict__["app_launcher_logo_url"] = app_launcher_logo_url
             __props__.__dict__["app_launcher_visible"] = app_launcher_visible
             __props__.__dict__["auto_redirect_to_identity"] = auto_redirect_to_identity
+            __props__.__dict__["bg_color"] = bg_color
             __props__.__dict__["cors_headers"] = cors_headers
             __props__.__dict__["custom_deny_message"] = custom_deny_message
             __props__.__dict__["custom_deny_url"] = custom_deny_url
@@ -983,10 +1161,11 @@ class AccessApplication(pulumi.CustomResource):
             __props__.__dict__["custom_pages"] = custom_pages
             __props__.__dict__["domain"] = domain
             __props__.__dict__["enable_binding_cookie"] = enable_binding_cookie
+            __props__.__dict__["footer_links"] = footer_links
+            __props__.__dict__["header_bg_color"] = header_bg_color
             __props__.__dict__["http_only_cookie_attribute"] = http_only_cookie_attribute
+            __props__.__dict__["landing_page_design"] = landing_page_design
             __props__.__dict__["logo_url"] = logo_url
-            if name is None and not opts.urn:
-                raise TypeError("Missing required property 'name'")
             __props__.__dict__["name"] = name
             __props__.__dict__["saas_app"] = saas_app
             __props__.__dict__["same_site_cookie_attribute"] = same_site_cookie_attribute
@@ -1010,9 +1189,11 @@ class AccessApplication(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             account_id: Optional[pulumi.Input[str]] = None,
             allowed_idps: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+            app_launcher_logo_url: Optional[pulumi.Input[str]] = None,
             app_launcher_visible: Optional[pulumi.Input[bool]] = None,
             aud: Optional[pulumi.Input[str]] = None,
             auto_redirect_to_identity: Optional[pulumi.Input[bool]] = None,
+            bg_color: Optional[pulumi.Input[str]] = None,
             cors_headers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessApplicationCorsHeaderArgs']]]]] = None,
             custom_deny_message: Optional[pulumi.Input[str]] = None,
             custom_deny_url: Optional[pulumi.Input[str]] = None,
@@ -1020,7 +1201,10 @@ class AccessApplication(pulumi.CustomResource):
             custom_pages: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             domain: Optional[pulumi.Input[str]] = None,
             enable_binding_cookie: Optional[pulumi.Input[bool]] = None,
+            footer_links: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessApplicationFooterLinkArgs']]]]] = None,
+            header_bg_color: Optional[pulumi.Input[str]] = None,
             http_only_cookie_attribute: Optional[pulumi.Input[bool]] = None,
+            landing_page_design: Optional[pulumi.Input[pulumi.InputType['AccessApplicationLandingPageDesignArgs']]] = None,
             logo_url: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             saas_app: Optional[pulumi.Input[pulumi.InputType['AccessApplicationSaasAppArgs']]] = None,
@@ -1041,9 +1225,11 @@ class AccessApplication(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_id: The account identifier to target for the resource. Conflicts with `zone_id`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_idps: The identity providers selected for the application.
+        :param pulumi.Input[str] app_launcher_logo_url: The logo URL of the app launcher.
         :param pulumi.Input[bool] app_launcher_visible: Option to show/hide applications in App Launcher. Defaults to `true`.
         :param pulumi.Input[str] aud: Application Audience (AUD) Tag of the application.
         :param pulumi.Input[bool] auto_redirect_to_identity: Option to skip identity provider selection if only one is configured in `allowed_idps`. Defaults to `false`.
+        :param pulumi.Input[str] bg_color: The background color of the app launcher.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessApplicationCorsHeaderArgs']]]] cors_headers: CORS configuration for the Access Application. See below for reference structure.
         :param pulumi.Input[str] custom_deny_message: Option that returns a custom error message when a user is denied access to the application.
         :param pulumi.Input[str] custom_deny_url: Option that redirects to a custom URL when a user is denied access to the application via identity based rules.
@@ -1051,9 +1237,12 @@ class AccessApplication(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] custom_pages: The custom pages selected for the application.
         :param pulumi.Input[str] domain: The primary hostname and path that Access will secure. If the app is visible in the App Launcher dashboard, this is the domain that will be displayed.
         :param pulumi.Input[bool] enable_binding_cookie: Option to provide increased security against compromised authorization tokens and CSRF attacks by requiring an additional "binding" cookie on requests. Defaults to `false`.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessApplicationFooterLinkArgs']]]] footer_links: The footer links of the app launcher.
+        :param pulumi.Input[str] header_bg_color: The background color of the header bar in the app launcher.
         :param pulumi.Input[bool] http_only_cookie_attribute: Option to add the `HttpOnly` cookie flag to access tokens.
+        :param pulumi.Input[pulumi.InputType['AccessApplicationLandingPageDesignArgs']] landing_page_design: The landing page design of the app launcher.
         :param pulumi.Input[str] logo_url: Image URL for the logo shown in the app launcher dashboard.
-        :param pulumi.Input[str] name: The name of the attribute as provided to the SaaS app.
+        :param pulumi.Input[str] name: The name of the footer link.
         :param pulumi.Input[pulumi.InputType['AccessApplicationSaasAppArgs']] saas_app: SaaS configuration for the Access Application.
         :param pulumi.Input[str] same_site_cookie_attribute: Defines the same-site cookie setting for access tokens. Available values: `none`, `lax`, `strict`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] self_hosted_domains: List of domains that access will secure. Only present for self_hosted, vnc, and ssh applications. Always includes the value set as `domain`.
@@ -1070,9 +1259,11 @@ class AccessApplication(pulumi.CustomResource):
 
         __props__.__dict__["account_id"] = account_id
         __props__.__dict__["allowed_idps"] = allowed_idps
+        __props__.__dict__["app_launcher_logo_url"] = app_launcher_logo_url
         __props__.__dict__["app_launcher_visible"] = app_launcher_visible
         __props__.__dict__["aud"] = aud
         __props__.__dict__["auto_redirect_to_identity"] = auto_redirect_to_identity
+        __props__.__dict__["bg_color"] = bg_color
         __props__.__dict__["cors_headers"] = cors_headers
         __props__.__dict__["custom_deny_message"] = custom_deny_message
         __props__.__dict__["custom_deny_url"] = custom_deny_url
@@ -1080,7 +1271,10 @@ class AccessApplication(pulumi.CustomResource):
         __props__.__dict__["custom_pages"] = custom_pages
         __props__.__dict__["domain"] = domain
         __props__.__dict__["enable_binding_cookie"] = enable_binding_cookie
+        __props__.__dict__["footer_links"] = footer_links
+        __props__.__dict__["header_bg_color"] = header_bg_color
         __props__.__dict__["http_only_cookie_attribute"] = http_only_cookie_attribute
+        __props__.__dict__["landing_page_design"] = landing_page_design
         __props__.__dict__["logo_url"] = logo_url
         __props__.__dict__["name"] = name
         __props__.__dict__["saas_app"] = saas_app
@@ -1111,6 +1305,14 @@ class AccessApplication(pulumi.CustomResource):
         return pulumi.get(self, "allowed_idps")
 
     @property
+    @pulumi.getter(name="appLauncherLogoUrl")
+    def app_launcher_logo_url(self) -> pulumi.Output[Optional[str]]:
+        """
+        The logo URL of the app launcher.
+        """
+        return pulumi.get(self, "app_launcher_logo_url")
+
+    @property
     @pulumi.getter(name="appLauncherVisible")
     def app_launcher_visible(self) -> pulumi.Output[Optional[bool]]:
         """
@@ -1133,6 +1335,14 @@ class AccessApplication(pulumi.CustomResource):
         Option to skip identity provider selection if only one is configured in `allowed_idps`. Defaults to `false`.
         """
         return pulumi.get(self, "auto_redirect_to_identity")
+
+    @property
+    @pulumi.getter(name="bgColor")
+    def bg_color(self) -> pulumi.Output[Optional[str]]:
+        """
+        The background color of the app launcher.
+        """
+        return pulumi.get(self, "bg_color")
 
     @property
     @pulumi.getter(name="corsHeaders")
@@ -1191,12 +1401,36 @@ class AccessApplication(pulumi.CustomResource):
         return pulumi.get(self, "enable_binding_cookie")
 
     @property
+    @pulumi.getter(name="footerLinks")
+    def footer_links(self) -> pulumi.Output[Optional[Sequence['outputs.AccessApplicationFooterLink']]]:
+        """
+        The footer links of the app launcher.
+        """
+        return pulumi.get(self, "footer_links")
+
+    @property
+    @pulumi.getter(name="headerBgColor")
+    def header_bg_color(self) -> pulumi.Output[Optional[str]]:
+        """
+        The background color of the header bar in the app launcher.
+        """
+        return pulumi.get(self, "header_bg_color")
+
+    @property
     @pulumi.getter(name="httpOnlyCookieAttribute")
     def http_only_cookie_attribute(self) -> pulumi.Output[Optional[bool]]:
         """
         Option to add the `HttpOnly` cookie flag to access tokens.
         """
         return pulumi.get(self, "http_only_cookie_attribute")
+
+    @property
+    @pulumi.getter(name="landingPageDesign")
+    def landing_page_design(self) -> pulumi.Output[Optional['outputs.AccessApplicationLandingPageDesign']]:
+        """
+        The landing page design of the app launcher.
+        """
+        return pulumi.get(self, "landing_page_design")
 
     @property
     @pulumi.getter(name="logoUrl")
@@ -1210,7 +1444,7 @@ class AccessApplication(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        The name of the attribute as provided to the SaaS app.
+        The name of the footer link.
         """
         return pulumi.get(self, "name")
 

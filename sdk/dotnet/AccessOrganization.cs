@@ -95,7 +95,7 @@ namespace Pulumi.Cloudflare
         public Output<string?> Name { get; private set; } = null!;
 
         /// <summary>
-        /// How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`. Defaults to `24h`.
+        /// How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`.
         /// </summary>
         [Output("sessionDuration")]
         public Output<string?> SessionDuration { get; private set; } = null!;
@@ -215,7 +215,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`. Defaults to `24h`.
+        /// How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`.
         /// </summary>
         [Input("sessionDuration")]
         public Input<string>? SessionDuration { get; set; }
@@ -297,7 +297,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`. Defaults to `24h`.
+        /// How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`.
         /// </summary>
         [Input("sessionDuration")]
         public Input<string>? SessionDuration { get; set; }

@@ -19,7 +19,7 @@ public final class AccessApplicationSaasAppCustomAttribute {
      */
     private @Nullable String friendlyName;
     /**
-     * @return The name of the attribute as provided to the SaaS app.
+     * @return The name of the footer link.
      * 
      */
     private @Nullable String name;
@@ -44,7 +44,7 @@ public final class AccessApplicationSaasAppCustomAttribute {
         return Optional.ofNullable(this.friendlyName);
     }
     /**
-     * @return The name of the attribute as provided to the SaaS app.
+     * @return The name of the footer link.
      * 
      */
     public Optional<String> name() {

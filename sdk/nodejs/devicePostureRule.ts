@@ -78,6 +78,9 @@ export class DevicePostureRule extends pulumi.CustomResource {
      * Expire posture results after the specified amount of time. Must be in the format `1h` or `30m`. Valid units are `h` and `m`.
      */
     public readonly expiration!: pulumi.Output<string | undefined>;
+    /**
+     * Required for all rule types except `warp`, `gateway`, and `tanium`.
+     */
     public readonly inputs!: pulumi.Output<outputs.DevicePostureRuleInput[]>;
     /**
      * The conditions that the client must match to run the rule.
@@ -152,6 +155,9 @@ export interface DevicePostureRuleState {
      * Expire posture results after the specified amount of time. Must be in the format `1h` or `30m`. Valid units are `h` and `m`.
      */
     expiration?: pulumi.Input<string>;
+    /**
+     * Required for all rule types except `warp`, `gateway`, and `tanium`.
+     */
     inputs?: pulumi.Input<pulumi.Input<inputs.DevicePostureRuleInput>[]>;
     /**
      * The conditions that the client must match to run the rule.
@@ -184,6 +190,9 @@ export interface DevicePostureRuleArgs {
      * Expire posture results after the specified amount of time. Must be in the format `1h` or `30m`. Valid units are `h` and `m`.
      */
     expiration?: pulumi.Input<string>;
+    /**
+     * Required for all rule types except `warp`, `gateway`, and `tanium`.
+     */
     inputs?: pulumi.Input<pulumi.Input<inputs.DevicePostureRuleInput>[]>;
     /**
      * The conditions that the client must match to run the rule.

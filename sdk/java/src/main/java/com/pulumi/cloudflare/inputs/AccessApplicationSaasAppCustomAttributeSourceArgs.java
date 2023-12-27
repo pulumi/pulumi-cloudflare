@@ -14,14 +14,14 @@ public final class AccessApplicationSaasAppCustomAttributeSourceArgs extends com
     public static final AccessApplicationSaasAppCustomAttributeSourceArgs Empty = new AccessApplicationSaasAppCustomAttributeSourceArgs();
 
     /**
-     * The name of the attribute as provided to the SaaS app.
+     * The name of the footer link.
      * 
      */
     @Import(name="name", required=true)
     private Output<String> name;
 
     /**
-     * @return The name of the attribute as provided to the SaaS app.
+     * @return The name of the footer link.
      * 
      */
     public Output<String> name() {
@@ -53,7 +53,7 @@ public final class AccessApplicationSaasAppCustomAttributeSourceArgs extends com
         }
 
         /**
-         * @param name The name of the attribute as provided to the SaaS app.
+         * @param name The name of the footer link.
          * 
          * @return builder
          * 
@@ -64,7 +64,7 @@ public final class AccessApplicationSaasAppCustomAttributeSourceArgs extends com
         }
 
         /**
-         * @param name The name of the attribute as provided to the SaaS app.
+         * @param name The name of the footer link.
          * 
          * @return builder
          * 

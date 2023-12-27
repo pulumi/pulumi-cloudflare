@@ -137,7 +137,7 @@ namespace Pulumi.Cloudflare.Inputs
         }
 
         /// <summary>
-        /// Usage model used for Pages Functions. Defaults to `bundled`.
+        /// Usage model used for Pages Functions. Available values: `unbound`, `bundled`, `standard`. Defaults to `bundled`.
         /// </summary>
         [Input("usageModel")]
         public Input<string>? UsageModel { get; set; }

@@ -62,7 +62,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.PagesProjectDeploymentConfigsPreviewServiceBinding> ServiceBindings;
         /// <summary>
-        /// Usage model used for Pages Functions. Defaults to `bundled`.
+        /// Usage model used for Pages Functions. Available values: `unbound`, `bundled`, `standard`. Defaults to `bundled`.
         /// </summary>
         public readonly string? UsageModel;
 
