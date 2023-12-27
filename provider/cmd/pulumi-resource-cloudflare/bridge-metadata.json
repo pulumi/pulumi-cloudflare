@@ -27,6 +27,12 @@
                     "custom_pages": {
                         "maxItemsOne": false
                     },
+                    "footer_links": {
+                        "maxItemsOne": false
+                    },
+                    "landing_page_design": {
+                        "maxItemsOne": true
+                    },
                     "saas_app": {
                         "maxItemsOne": true,
                         "elem": {
@@ -1357,6 +1363,9 @@
                                 "requests_per_second": {
                                     "maxItemsOne": false
                                 },
+                                "selectors": {
+                                    "maxItemsOne": false
+                                },
                                 "services": {
                                     "maxItemsOne": false
                                 },
@@ -1993,6 +2002,9 @@
                                     "maxItemsOne": true
                                 },
                                 "l4override": {
+                                    "maxItemsOne": true
+                                },
+                                "notification_settings": {
                                     "maxItemsOne": true
                                 },
                                 "override_ips": {
@@ -3051,6 +3063,11 @@
                 "allowedOrigins": "allowed_origins",
                 "maxAge": "max_age"
             },
+            "cloudflare:index/AccessApplicationLandingPageDesign:AccessApplicationLandingPageDesign": {
+                "buttonColor": "button_color",
+                "buttonTextColor": "button_text_color",
+                "imageUrl": "image_url"
+            },
             "cloudflare:index/AccessApplicationSaasApp:AccessApplicationSaasApp": {
                 "consumerServiceUrl": "consumer_service_url",
                 "customAttributes": "custom_attribute",
@@ -3454,6 +3471,8 @@
                 "tlsSockaddr": "tls_sockaddr"
             },
             "cloudflare:index/DevicePostureIntegrationConfig:DevicePostureIntegrationConfig": {
+                "accessClientId": "access_client_id",
+                "accessClientSecret": "access_client_secret",
                 "apiUrl": "api_url",
                 "authUrl": "auth_url",
                 "clientId": "client_id",
@@ -3902,6 +3921,7 @@
                 "checkSession": "check_session",
                 "insecureDisableDnssecValidation": "insecure_disable_dnssec_validation",
                 "ipCategories": "ip_categories",
+                "notificationSettings": "notification_settings",
                 "overrideHost": "override_host",
                 "overrideIps": "override_ips",
                 "payloadLog": "payload_log",
@@ -3919,6 +3939,9 @@
             },
             "cloudflare:index/TeamsRuleRuleSettingsEgress:TeamsRuleRuleSettingsEgress": {
                 "ipv4Fallback": "ipv4_fallback"
+            },
+            "cloudflare:index/TeamsRuleRuleSettingsNotificationSettings:TeamsRuleRuleSettingsNotificationSettings": {
+                "supportUrl": "support_url"
             },
             "cloudflare:index/TunnelConfigConfig:TunnelConfigConfig": {
                 "ingressRules": "ingress_rule",
@@ -4089,15 +4112,20 @@
             "cloudflare:index/accessApplication:AccessApplication": {
                 "accountId": "account_id",
                 "allowedIdps": "allowed_idps",
+                "appLauncherLogoUrl": "app_launcher_logo_url",
                 "appLauncherVisible": "app_launcher_visible",
                 "autoRedirectToIdentity": "auto_redirect_to_identity",
+                "bgColor": "bg_color",
                 "corsHeaders": "cors_headers",
                 "customDenyMessage": "custom_deny_message",
                 "customDenyUrl": "custom_deny_url",
                 "customNonIdentityDenyUrl": "custom_non_identity_deny_url",
                 "customPages": "custom_pages",
                 "enableBindingCookie": "enable_binding_cookie",
+                "footerLinks": "footer_links",
+                "headerBgColor": "header_bg_color",
                 "httpOnlyCookieAttribute": "http_only_cookie_attribute",
+                "landingPageDesign": "landing_page_design",
                 "logoUrl": "logo_url",
                 "saasApp": "saas_app",
                 "sameSiteCookieAttribute": "same_site_cookie_attribute",

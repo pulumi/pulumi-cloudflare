@@ -180,6 +180,44 @@
             },
             "type": "object"
         },
+        "cloudflare:index/AccessApplicationFooterLink:AccessApplicationFooterLink": {
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "description": "The name of the footer link.\n"
+                },
+                "url": {
+                    "type": "string",
+                    "description": "The URL of the footer link.\n"
+                }
+            },
+            "type": "object"
+        },
+        "cloudflare:index/AccessApplicationLandingPageDesign:AccessApplicationLandingPageDesign": {
+            "properties": {
+                "buttonColor": {
+                    "type": "string",
+                    "description": "The button color of the landing page.\n"
+                },
+                "buttonTextColor": {
+                    "type": "string",
+                    "description": "The button text color of the landing page.\n"
+                },
+                "imageUrl": {
+                    "type": "string",
+                    "description": "The URL of the image to be displayed in the landing page.\n"
+                },
+                "message": {
+                    "type": "string",
+                    "description": "The message of the landing page.\n"
+                },
+                "title": {
+                    "type": "string",
+                    "description": "The title of the landing page.\n"
+                }
+            },
+            "type": "object"
+        },
         "cloudflare:index/AccessApplicationSaasApp:AccessApplicationSaasApp": {
             "properties": {
                 "consumerServiceUrl": {
@@ -239,7 +277,7 @@
                 },
                 "name": {
                     "type": "string",
-                    "description": "The name of the attribute as provided to the SaaS app.\n"
+                    "description": "The name of the footer link.\n"
                 },
                 "nameFormat": {
                     "type": "string",
@@ -262,7 +300,7 @@
             "properties": {
                 "name": {
                     "type": "string",
-                    "description": "The name of the attribute as provided to the SaaS app.\n"
+                    "description": "The name of the footer link.\n"
                 }
             },
             "type": "object",
@@ -2239,6 +2277,16 @@
         },
         "cloudflare:index/DevicePostureIntegrationConfig:DevicePostureIntegrationConfig": {
             "properties": {
+                "accessClientId": {
+                    "type": "string",
+                    "description": "The Access client ID to be used as the `Cf-Access-Client-ID` header when making a request to the `api_url`.\n",
+                    "secret": true
+                },
+                "accessClientSecret": {
+                    "type": "string",
+                    "description": "The Access client secret to be used as the `Cf-Access-Client-Secret` header when making a request to the `api_url`.\n",
+                    "secret": true
+                },
                 "apiUrl": {
                     "type": "string",
                     "description": "The third-party API's URL.\n"
@@ -2319,7 +2367,7 @@
                 },
                 "id": {
                     "type": "string",
-                    "description": "The Teams List id.\n"
+                    "description": "The Teams List id. Required for `serial_number` and `unique_client_id` rule types.\n"
                 },
                 "infected": {
                     "type": "boolean",
@@ -3430,6 +3478,13 @@
                     },
                     "description": "Requests per second threshold for dos alert.\n"
                 },
+                "selectors": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Selectors for alert. Valid options depend on the alert type.\n"
+                },
                 "services": {
                     "type": "array",
                     "items": {
@@ -4008,7 +4063,7 @@
                 },
                 "usageModel": {
                     "type": "string",
-                    "description": "Usage model used for Pages Functions. Defaults to `bundled`.\n"
+                    "description": "Usage model used for Pages Functions. Available values: `unbound`, `bundled`, `standard`. Defaults to `bundled`.\n"
                 }
             },
             "type": "object",
@@ -4136,7 +4191,7 @@
                 },
                 "usageModel": {
                     "type": "string",
-                    "description": "Usage model used for Pages Functions. Defaults to `bundled`.\n"
+                    "description": "Usage model used for Pages Functions. Available values: `unbound`, `bundled`, `standard`. Defaults to `bundled`.\n"
                 }
             },
             "type": "object",
@@ -4231,7 +4286,7 @@
                 },
                 "previewDeploymentSetting": {
                     "type": "string",
-                    "description": "Preview Deployment Setting. Defaults to `all`.\n"
+                    "description": "Preview Deployment Setting. Available values: `custom`, `all`, `none`. Defaults to `all`.\n"
                 },
                 "productionBranch": {
                     "type": "string",
@@ -5759,6 +5814,10 @@
                     "$ref": "#/types/cloudflare:index/TeamsRuleRuleSettingsL4override:TeamsRuleRuleSettingsL4override",
                     "description": "Settings to forward layer 4 traffic.\n"
                 },
+                "notificationSettings": {
+                    "$ref": "#/types/cloudflare:index/TeamsRuleRuleSettingsNotificationSettings:TeamsRuleRuleSettingsNotificationSettings",
+                    "description": "Notification settings on a block rule.\n"
+                },
                 "overrideHost": {
                     "type": "string",
                     "description": "The host to override matching DNS queries with.\n"
@@ -5873,11 +5932,28 @@
                 "port"
             ]
         },
+        "cloudflare:index/TeamsRuleRuleSettingsNotificationSettings:TeamsRuleRuleSettingsNotificationSettings": {
+            "properties": {
+                "enabled": {
+                    "type": "boolean",
+                    "description": "Enable notification settings.\n"
+                },
+                "message": {
+                    "type": "string",
+                    "description": "Notification content.\n"
+                },
+                "supportUrl": {
+                    "type": "boolean",
+                    "description": "Support URL to show in the notification.\n"
+                }
+            },
+            "type": "object"
+        },
         "cloudflare:index/TeamsRuleRuleSettingsPayloadLog:TeamsRuleRuleSettingsPayloadLog": {
             "properties": {
                 "enabled": {
                     "type": "boolean",
-                    "description": "Enable or disable DLP Payload Logging for this rule.\n"
+                    "description": "Enable notification settings.\n"
                 }
             },
             "type": "object",
@@ -8356,6 +8432,10 @@
                     },
                     "description": "The identity providers selected for the application.\n"
                 },
+                "appLauncherLogoUrl": {
+                    "type": "string",
+                    "description": "The logo URL of the app launcher.\n"
+                },
                 "appLauncherVisible": {
                     "type": "boolean",
                     "description": "Option to show/hide applications in App Launcher. Defaults to `true`.\n"
@@ -8367,6 +8447,10 @@
                 "autoRedirectToIdentity": {
                     "type": "boolean",
                     "description": "Option to skip identity provider selection if only one is configured in `allowed_idps`. Defaults to `false`.\n"
+                },
+                "bgColor": {
+                    "type": "string",
+                    "description": "The background color of the app launcher.\n"
                 },
                 "corsHeaders": {
                     "type": "array",
@@ -8402,9 +8486,24 @@
                     "type": "boolean",
                     "description": "Option to provide increased security against compromised authorization tokens and CSRF attacks by requiring an additional \"binding\" cookie on requests. Defaults to `false`.\n"
                 },
+                "footerLinks": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/cloudflare:index/AccessApplicationFooterLink:AccessApplicationFooterLink"
+                    },
+                    "description": "The footer links of the app launcher.\n"
+                },
+                "headerBgColor": {
+                    "type": "string",
+                    "description": "The background color of the header bar in the app launcher.\n"
+                },
                 "httpOnlyCookieAttribute": {
                     "type": "boolean",
                     "description": "Option to add the `HttpOnly` cookie flag to access tokens.\n"
+                },
+                "landingPageDesign": {
+                    "$ref": "#/types/cloudflare:index/AccessApplicationLandingPageDesign:AccessApplicationLandingPageDesign",
+                    "description": "The landing page design of the app launcher.\n"
                 },
                 "logoUrl": {
                     "type": "string",
@@ -8412,7 +8511,7 @@
                 },
                 "name": {
                     "type": "string",
-                    "description": "The name of the attribute as provided to the SaaS app.\n"
+                    "description": "The name of the footer link.\n"
                 },
                 "saasApp": {
                     "$ref": "#/types/cloudflare:index/AccessApplicationSaasApp:AccessApplicationSaasApp",
@@ -8476,6 +8575,10 @@
                     },
                     "description": "The identity providers selected for the application.\n"
                 },
+                "appLauncherLogoUrl": {
+                    "type": "string",
+                    "description": "The logo URL of the app launcher.\n"
+                },
                 "appLauncherVisible": {
                     "type": "boolean",
                     "description": "Option to show/hide applications in App Launcher. Defaults to `true`.\n"
@@ -8483,6 +8586,10 @@
                 "autoRedirectToIdentity": {
                     "type": "boolean",
                     "description": "Option to skip identity provider selection if only one is configured in `allowed_idps`. Defaults to `false`.\n"
+                },
+                "bgColor": {
+                    "type": "string",
+                    "description": "The background color of the app launcher.\n"
                 },
                 "corsHeaders": {
                     "type": "array",
@@ -8518,9 +8625,24 @@
                     "type": "boolean",
                     "description": "Option to provide increased security against compromised authorization tokens and CSRF attacks by requiring an additional \"binding\" cookie on requests. Defaults to `false`.\n"
                 },
+                "footerLinks": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/cloudflare:index/AccessApplicationFooterLink:AccessApplicationFooterLink"
+                    },
+                    "description": "The footer links of the app launcher.\n"
+                },
+                "headerBgColor": {
+                    "type": "string",
+                    "description": "The background color of the header bar in the app launcher.\n"
+                },
                 "httpOnlyCookieAttribute": {
                     "type": "boolean",
                     "description": "Option to add the `HttpOnly` cookie flag to access tokens.\n"
+                },
+                "landingPageDesign": {
+                    "$ref": "#/types/cloudflare:index/AccessApplicationLandingPageDesign:AccessApplicationLandingPageDesign",
+                    "description": "The landing page design of the app launcher.\n"
                 },
                 "logoUrl": {
                     "type": "string",
@@ -8528,7 +8650,7 @@
                 },
                 "name": {
                     "type": "string",
-                    "description": "The name of the attribute as provided to the SaaS app.\n"
+                    "description": "The name of the footer link.\n"
                 },
                 "saasApp": {
                     "$ref": "#/types/cloudflare:index/AccessApplicationSaasApp:AccessApplicationSaasApp",
@@ -8573,9 +8695,6 @@
                     "description": "The zone identifier to target for the resource. Conflicts with `account_id`.\n"
                 }
             },
-            "requiredInputs": [
-                "name"
-            ],
             "stateInputs": {
                 "description": "Input properties used for looking up and filtering AccessApplication resources.\n",
                 "properties": {
@@ -8590,6 +8709,10 @@
                         },
                         "description": "The identity providers selected for the application.\n"
                     },
+                    "appLauncherLogoUrl": {
+                        "type": "string",
+                        "description": "The logo URL of the app launcher.\n"
+                    },
                     "appLauncherVisible": {
                         "type": "boolean",
                         "description": "Option to show/hide applications in App Launcher. Defaults to `true`.\n"
@@ -8601,6 +8724,10 @@
                     "autoRedirectToIdentity": {
                         "type": "boolean",
                         "description": "Option to skip identity provider selection if only one is configured in `allowed_idps`. Defaults to `false`.\n"
+                    },
+                    "bgColor": {
+                        "type": "string",
+                        "description": "The background color of the app launcher.\n"
                     },
                     "corsHeaders": {
                         "type": "array",
@@ -8636,9 +8763,24 @@
                         "type": "boolean",
                         "description": "Option to provide increased security against compromised authorization tokens and CSRF attacks by requiring an additional \"binding\" cookie on requests. Defaults to `false`.\n"
                     },
+                    "footerLinks": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/cloudflare:index/AccessApplicationFooterLink:AccessApplicationFooterLink"
+                        },
+                        "description": "The footer links of the app launcher.\n"
+                    },
+                    "headerBgColor": {
+                        "type": "string",
+                        "description": "The background color of the header bar in the app launcher.\n"
+                    },
                     "httpOnlyCookieAttribute": {
                         "type": "boolean",
                         "description": "Option to add the `HttpOnly` cookie flag to access tokens.\n"
+                    },
+                    "landingPageDesign": {
+                        "$ref": "#/types/cloudflare:index/AccessApplicationLandingPageDesign:AccessApplicationLandingPageDesign",
+                        "description": "The landing page design of the app launcher.\n"
                     },
                     "logoUrl": {
                         "type": "string",
@@ -8646,7 +8788,7 @@
                     },
                     "name": {
                         "type": "string",
-                        "description": "The name of the attribute as provided to the SaaS app.\n"
+                        "description": "The name of the footer link.\n"
                     },
                     "saasApp": {
                         "$ref": "#/types/cloudflare:index/AccessApplicationSaasApp:AccessApplicationSaasApp",
@@ -9273,7 +9415,7 @@
                 },
                 "sessionDuration": {
                     "type": "string",
-                    "description": "How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`. Defaults to `24h`.\n"
+                    "description": "How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`.\n"
                 },
                 "uiReadOnlyToggleReason": {
                     "type": "string",
@@ -9329,7 +9471,7 @@
                 },
                 "sessionDuration": {
                     "type": "string",
-                    "description": "How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`. Defaults to `24h`.\n"
+                    "description": "How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`.\n"
                 },
                 "uiReadOnlyToggleReason": {
                     "type": "string",
@@ -9385,7 +9527,7 @@
                     },
                     "sessionDuration": {
                         "type": "string",
-                        "description": "How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`. Defaults to `24h`.\n"
+                        "description": "How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`.\n"
                     },
                     "uiReadOnlyToggleReason": {
                         "type": "string",
@@ -9470,7 +9612,7 @@
                 },
                 "sessionDuration": {
                     "type": "string",
-                    "description": "How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`. Defaults to `24h`.\n"
+                    "description": "How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`.\n"
                 },
                 "zoneId": {
                     "type": "string",
@@ -9551,7 +9693,7 @@
                 },
                 "sessionDuration": {
                     "type": "string",
-                    "description": "How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`. Defaults to `24h`.\n"
+                    "description": "How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`.\n"
                 },
                 "zoneId": {
                     "type": "string",
@@ -9632,7 +9774,7 @@
                     },
                     "sessionDuration": {
                         "type": "string",
-                        "description": "How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`. Defaults to `24h`.\n"
+                        "description": "How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`.\n"
                     },
                     "zoneId": {
                         "type": "string",
@@ -12173,7 +12315,8 @@
                     "type": "array",
                     "items": {
                         "$ref": "#/types/cloudflare:index/DevicePostureRuleInput:DevicePostureRuleInput"
-                    }
+                    },
+                    "description": "Required for all rule types except `warp`, `gateway`, and `tanium`.\n"
                 },
                 "matches": {
                     "type": "array",
@@ -12216,7 +12359,8 @@
                     "type": "array",
                     "items": {
                         "$ref": "#/types/cloudflare:index/DevicePostureRuleInput:DevicePostureRuleInput"
-                    }
+                    },
+                    "description": "Required for all rule types except `warp`, `gateway`, and `tanium`.\n"
                 },
                 "matches": {
                     "type": "array",
@@ -12260,7 +12404,8 @@
                         "type": "array",
                         "items": {
                             "$ref": "#/types/cloudflare:index/DevicePostureRuleInput:DevicePostureRuleInput"
-                        }
+                        },
+                        "description": "Required for all rule types except `warp`, `gateway`, and `tanium`.\n"
                     },
                     "matches": {
                         "type": "array",
@@ -15451,7 +15596,7 @@
                 },
                 "dataset": {
                     "type": "string",
-                    "description": "The kind of the dataset to use with the logpush job. Available values: `access_requests`, `casb_findings`, `firewall_events`, `http_requests`, `spectrum_events`, `nel_reports`, `audit_logs`, `gateway_dns`, `gateway_http`, `gateway_network`, `dns_logs`, `network_analytics_logs`, `workers_trace_events`, `device_posture_results`, `zero_trust_network_sessions`.\n"
+                    "description": "The kind of the dataset to use with the logpush job. Available values: `access_requests`, `casb_findings`, `firewall_events`, `http_requests`, `spectrum_events`, `nel_reports`, `audit_logs`, `gateway_dns`, `gateway_http`, `gateway_network`, `dns_logs`, `network_analytics_logs`, `workers_trace_events`, `device_posture_results`, `zero_trust_network_sessions`, `magic_ids_detections`.\n"
                 },
                 "destinationConf": {
                     "type": "string",
@@ -15513,7 +15658,7 @@
                 },
                 "dataset": {
                     "type": "string",
-                    "description": "The kind of the dataset to use with the logpush job. Available values: `access_requests`, `casb_findings`, `firewall_events`, `http_requests`, `spectrum_events`, `nel_reports`, `audit_logs`, `gateway_dns`, `gateway_http`, `gateway_network`, `dns_logs`, `network_analytics_logs`, `workers_trace_events`, `device_posture_results`, `zero_trust_network_sessions`.\n"
+                    "description": "The kind of the dataset to use with the logpush job. Available values: `access_requests`, `casb_findings`, `firewall_events`, `http_requests`, `spectrum_events`, `nel_reports`, `audit_logs`, `gateway_dns`, `gateway_http`, `gateway_network`, `dns_logs`, `network_analytics_logs`, `workers_trace_events`, `device_posture_results`, `zero_trust_network_sessions`, `magic_ids_detections`.\n"
                 },
                 "destinationConf": {
                     "type": "string",
@@ -15577,7 +15722,7 @@
                     },
                     "dataset": {
                         "type": "string",
-                        "description": "The kind of the dataset to use with the logpush job. Available values: `access_requests`, `casb_findings`, `firewall_events`, `http_requests`, `spectrum_events`, `nel_reports`, `audit_logs`, `gateway_dns`, `gateway_http`, `gateway_network`, `dns_logs`, `network_analytics_logs`, `workers_trace_events`, `device_posture_results`, `zero_trust_network_sessions`.\n"
+                        "description": "The kind of the dataset to use with the logpush job. Available values: `access_requests`, `casb_findings`, `firewall_events`, `http_requests`, `spectrum_events`, `nel_reports`, `audit_logs`, `gateway_dns`, `gateway_http`, `gateway_network`, `dns_logs`, `network_analytics_logs`, `workers_trace_events`, `device_posture_results`, `zero_trust_network_sessions`, `magic_ids_detections`.\n"
                     },
                     "destinationConf": {
                         "type": "string",
@@ -16008,7 +16153,7 @@
                 },
                 "alertType": {
                     "type": "string",
-                    "description": "The event type that will trigger the dispatch of a notification. See the developer documentation for descriptions of [available alert types](https://developers.cloudflare.com/fundamentals/notifications/notification-available/). Available values: `advanced_http_alert_error`, `access_custom_certificate_expiration_type`, `advanced_ddos_attack_l4_alert`, `advanced_ddos_attack_l7_alert`, `bgp_hijack_notification`, `billing_usage_alert`, `block_notification_block_removed`, `block_notification_new_block`, `block_notification_review_rejected`, `brand_protection_alert`, `brand_protection_digest`, `clickhouse_alert_fw_anomaly`, `clickhouse_alert_fw_ent_anomaly`, `custom_ssl_certificate_event_type`, `dedicated_ssl_certificate_event_type`, `dos_attack_l4`, `dos_attack_l7`, `expiring_service_token_alert`, `failing_logpush_job_disabled_alert`, `fbm_auto_advertisement`, `fbm_dosd_attack`, `fbm_volumetric_attack`, `health_check_status_notification`, `hostname_aop_custom_certificate_expiration_type`, `http_alert_edge_error`, `http_alert_origin_error`, `incident_alert`, `load_balancing_health_alert`, `load_balancing_pool_enablement_alert`, `logo_match_alert`, `magic_tunnel_health_check_event`, `maintenance_event_notification`, `mtls_certificate_store_certificate_expiration_type`, `pages_event_alert`, `radar_notification`, `real_origin_monitoring`, `scriptmonitor_alert_new_code_change_detections`, `scriptmonitor_alert_new_hosts`, `scriptmonitor_alert_new_malicious_hosts`, `scriptmonitor_alert_new_malicious_scripts`, `scriptmonitor_alert_new_malicious_url`, `scriptmonitor_alert_new_max_length_resource_url`, `scriptmonitor_alert_new_resources`, `secondary_dns_all_primaries_failing`, `secondary_dns_primaries_failing`, `secondary_dns_zone_successfully_updated`, `secondary_dns_zone_validation_warning`, `sentinel_alert`, `stream_live_notifications`, `tunnel_health_event`, `tunnel_update_event`, `universal_ssl_event_type`, `web_analytics_metrics_update`, `weekly_account_overview`, `workers_alert`, `zone_aop_custom_certificate_expiration_type`.\n"
+                    "description": "The event type that will trigger the dispatch of a notification. See the developer documentation for descriptions of [available alert types](https://developers.cloudflare.com/fundamentals/notifications/notification-available/). Available values: `advanced_http_alert_error`, `access_custom_certificate_expiration_type`, `advanced_ddos_attack_l4_alert`, `advanced_ddos_attack_l7_alert`, `bgp_hijack_notification`, `billing_usage_alert`, `block_notification_block_removed`, `block_notification_new_block`, `block_notification_review_rejected`, `brand_protection_alert`, `brand_protection_digest`, `clickhouse_alert_fw_anomaly`, `clickhouse_alert_fw_ent_anomaly`, `custom_ssl_certificate_event_type`, `dedicated_ssl_certificate_event_type`, `dos_attack_l4`, `dos_attack_l7`, `expiring_service_token_alert`, `failing_logpush_job_disabled_alert`, `fbm_auto_advertisement`, `fbm_dosd_attack`, `fbm_volumetric_attack`, `health_check_status_notification`, `hostname_aop_custom_certificate_expiration_type`, `http_alert_edge_error`, `http_alert_origin_error`, `incident_alert`, `load_balancing_health_alert`, `load_balancing_pool_enablement_alert`, `logo_match_alert`, `magic_tunnel_health_check_event`, `maintenance_event_notification`, `mtls_certificate_store_certificate_expiration_type`, `pages_event_alert`, `radar_notification`, `real_origin_monitoring`, `scriptmonitor_alert_new_code_change_detections`, `scriptmonitor_alert_new_hosts`, `scriptmonitor_alert_new_malicious_hosts`, `scriptmonitor_alert_new_malicious_scripts`, `scriptmonitor_alert_new_malicious_url`, `scriptmonitor_alert_new_max_length_resource_url`, `scriptmonitor_alert_new_resources`, `secondary_dns_all_primaries_failing`, `secondary_dns_primaries_failing`, `secondary_dns_zone_successfully_updated`, `secondary_dns_zone_validation_warning`, `sentinel_alert`, `stream_live_notifications`, `traffic_anomalies_alert`, `tunnel_health_event`, `tunnel_update_event`, `universal_ssl_event_type`, `web_analytics_metrics_update`, `weekly_account_overview`, `workers_alert`, `zone_aop_custom_certificate_expiration_type`.\n"
                 },
                 "created": {
                     "type": "string",
@@ -16023,7 +16168,7 @@
                     "items": {
                         "$ref": "#/types/cloudflare:index/NotificationPolicyEmailIntegration:NotificationPolicyEmailIntegration"
                     },
-                    "description": "The email id to which the notification should be dispatched. One of email, webhooks, or PagerDuty mechanisms is required.\n"
+                    "description": "The email id to which the notification should be dispatched. One of email, webhooks, or PagerDuty mechanisms is required. Must provide only one of `email_integration`, `webhooks_integration`, `pagerduty_integration`.\n"
                 },
                 "enabled": {
                     "type": "boolean",
@@ -16046,14 +16191,14 @@
                     "items": {
                         "$ref": "#/types/cloudflare:index/NotificationPolicyPagerdutyIntegration:NotificationPolicyPagerdutyIntegration"
                     },
-                    "description": "The unique id of a configured pagerduty endpoint to which the notification should be dispatched. One of email, webhooks, or PagerDuty mechanisms is required.\n"
+                    "description": "The unique id of a configured pagerduty endpoint to which the notification should be dispatched. One of email, webhooks, or PagerDuty mechanisms is required. Must provide only one of `email_integration`, `webhooks_integration`, `pagerduty_integration`.\n"
                 },
                 "webhooksIntegrations": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/cloudflare:index/NotificationPolicyWebhooksIntegration:NotificationPolicyWebhooksIntegration"
                     },
-                    "description": "The unique id of a configured webhooks endpoint to which the notification should be dispatched. One of email, webhooks, or PagerDuty mechanisms is required.\n"
+                    "description": "The unique id of a configured webhooks endpoint to which the notification should be dispatched. One of email, webhooks, or PagerDuty mechanisms is required. Must provide only one of `email_integration`, `webhooks_integration`, `pagerduty_integration`.\n"
                 }
             },
             "required": [
@@ -16071,7 +16216,7 @@
                 },
                 "alertType": {
                     "type": "string",
-                    "description": "The event type that will trigger the dispatch of a notification. See the developer documentation for descriptions of [available alert types](https://developers.cloudflare.com/fundamentals/notifications/notification-available/). Available values: `advanced_http_alert_error`, `access_custom_certificate_expiration_type`, `advanced_ddos_attack_l4_alert`, `advanced_ddos_attack_l7_alert`, `bgp_hijack_notification`, `billing_usage_alert`, `block_notification_block_removed`, `block_notification_new_block`, `block_notification_review_rejected`, `brand_protection_alert`, `brand_protection_digest`, `clickhouse_alert_fw_anomaly`, `clickhouse_alert_fw_ent_anomaly`, `custom_ssl_certificate_event_type`, `dedicated_ssl_certificate_event_type`, `dos_attack_l4`, `dos_attack_l7`, `expiring_service_token_alert`, `failing_logpush_job_disabled_alert`, `fbm_auto_advertisement`, `fbm_dosd_attack`, `fbm_volumetric_attack`, `health_check_status_notification`, `hostname_aop_custom_certificate_expiration_type`, `http_alert_edge_error`, `http_alert_origin_error`, `incident_alert`, `load_balancing_health_alert`, `load_balancing_pool_enablement_alert`, `logo_match_alert`, `magic_tunnel_health_check_event`, `maintenance_event_notification`, `mtls_certificate_store_certificate_expiration_type`, `pages_event_alert`, `radar_notification`, `real_origin_monitoring`, `scriptmonitor_alert_new_code_change_detections`, `scriptmonitor_alert_new_hosts`, `scriptmonitor_alert_new_malicious_hosts`, `scriptmonitor_alert_new_malicious_scripts`, `scriptmonitor_alert_new_malicious_url`, `scriptmonitor_alert_new_max_length_resource_url`, `scriptmonitor_alert_new_resources`, `secondary_dns_all_primaries_failing`, `secondary_dns_primaries_failing`, `secondary_dns_zone_successfully_updated`, `secondary_dns_zone_validation_warning`, `sentinel_alert`, `stream_live_notifications`, `tunnel_health_event`, `tunnel_update_event`, `universal_ssl_event_type`, `web_analytics_metrics_update`, `weekly_account_overview`, `workers_alert`, `zone_aop_custom_certificate_expiration_type`.\n"
+                    "description": "The event type that will trigger the dispatch of a notification. See the developer documentation for descriptions of [available alert types](https://developers.cloudflare.com/fundamentals/notifications/notification-available/). Available values: `advanced_http_alert_error`, `access_custom_certificate_expiration_type`, `advanced_ddos_attack_l4_alert`, `advanced_ddos_attack_l7_alert`, `bgp_hijack_notification`, `billing_usage_alert`, `block_notification_block_removed`, `block_notification_new_block`, `block_notification_review_rejected`, `brand_protection_alert`, `brand_protection_digest`, `clickhouse_alert_fw_anomaly`, `clickhouse_alert_fw_ent_anomaly`, `custom_ssl_certificate_event_type`, `dedicated_ssl_certificate_event_type`, `dos_attack_l4`, `dos_attack_l7`, `expiring_service_token_alert`, `failing_logpush_job_disabled_alert`, `fbm_auto_advertisement`, `fbm_dosd_attack`, `fbm_volumetric_attack`, `health_check_status_notification`, `hostname_aop_custom_certificate_expiration_type`, `http_alert_edge_error`, `http_alert_origin_error`, `incident_alert`, `load_balancing_health_alert`, `load_balancing_pool_enablement_alert`, `logo_match_alert`, `magic_tunnel_health_check_event`, `maintenance_event_notification`, `mtls_certificate_store_certificate_expiration_type`, `pages_event_alert`, `radar_notification`, `real_origin_monitoring`, `scriptmonitor_alert_new_code_change_detections`, `scriptmonitor_alert_new_hosts`, `scriptmonitor_alert_new_malicious_hosts`, `scriptmonitor_alert_new_malicious_scripts`, `scriptmonitor_alert_new_malicious_url`, `scriptmonitor_alert_new_max_length_resource_url`, `scriptmonitor_alert_new_resources`, `secondary_dns_all_primaries_failing`, `secondary_dns_primaries_failing`, `secondary_dns_zone_successfully_updated`, `secondary_dns_zone_validation_warning`, `sentinel_alert`, `stream_live_notifications`, `traffic_anomalies_alert`, `tunnel_health_event`, `tunnel_update_event`, `universal_ssl_event_type`, `web_analytics_metrics_update`, `weekly_account_overview`, `workers_alert`, `zone_aop_custom_certificate_expiration_type`.\n"
                 },
                 "description": {
                     "type": "string",
@@ -16082,7 +16227,7 @@
                     "items": {
                         "$ref": "#/types/cloudflare:index/NotificationPolicyEmailIntegration:NotificationPolicyEmailIntegration"
                     },
-                    "description": "The email id to which the notification should be dispatched. One of email, webhooks, or PagerDuty mechanisms is required.\n"
+                    "description": "The email id to which the notification should be dispatched. One of email, webhooks, or PagerDuty mechanisms is required. Must provide only one of `email_integration`, `webhooks_integration`, `pagerduty_integration`.\n"
                 },
                 "enabled": {
                     "type": "boolean",
@@ -16101,14 +16246,14 @@
                     "items": {
                         "$ref": "#/types/cloudflare:index/NotificationPolicyPagerdutyIntegration:NotificationPolicyPagerdutyIntegration"
                     },
-                    "description": "The unique id of a configured pagerduty endpoint to which the notification should be dispatched. One of email, webhooks, or PagerDuty mechanisms is required.\n"
+                    "description": "The unique id of a configured pagerduty endpoint to which the notification should be dispatched. One of email, webhooks, or PagerDuty mechanisms is required. Must provide only one of `email_integration`, `webhooks_integration`, `pagerduty_integration`.\n"
                 },
                 "webhooksIntegrations": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/cloudflare:index/NotificationPolicyWebhooksIntegration:NotificationPolicyWebhooksIntegration"
                     },
-                    "description": "The unique id of a configured webhooks endpoint to which the notification should be dispatched. One of email, webhooks, or PagerDuty mechanisms is required.\n"
+                    "description": "The unique id of a configured webhooks endpoint to which the notification should be dispatched. One of email, webhooks, or PagerDuty mechanisms is required. Must provide only one of `email_integration`, `webhooks_integration`, `pagerduty_integration`.\n"
                 }
             },
             "requiredInputs": [
@@ -16126,7 +16271,7 @@
                     },
                     "alertType": {
                         "type": "string",
-                        "description": "The event type that will trigger the dispatch of a notification. See the developer documentation for descriptions of [available alert types](https://developers.cloudflare.com/fundamentals/notifications/notification-available/). Available values: `advanced_http_alert_error`, `access_custom_certificate_expiration_type`, `advanced_ddos_attack_l4_alert`, `advanced_ddos_attack_l7_alert`, `bgp_hijack_notification`, `billing_usage_alert`, `block_notification_block_removed`, `block_notification_new_block`, `block_notification_review_rejected`, `brand_protection_alert`, `brand_protection_digest`, `clickhouse_alert_fw_anomaly`, `clickhouse_alert_fw_ent_anomaly`, `custom_ssl_certificate_event_type`, `dedicated_ssl_certificate_event_type`, `dos_attack_l4`, `dos_attack_l7`, `expiring_service_token_alert`, `failing_logpush_job_disabled_alert`, `fbm_auto_advertisement`, `fbm_dosd_attack`, `fbm_volumetric_attack`, `health_check_status_notification`, `hostname_aop_custom_certificate_expiration_type`, `http_alert_edge_error`, `http_alert_origin_error`, `incident_alert`, `load_balancing_health_alert`, `load_balancing_pool_enablement_alert`, `logo_match_alert`, `magic_tunnel_health_check_event`, `maintenance_event_notification`, `mtls_certificate_store_certificate_expiration_type`, `pages_event_alert`, `radar_notification`, `real_origin_monitoring`, `scriptmonitor_alert_new_code_change_detections`, `scriptmonitor_alert_new_hosts`, `scriptmonitor_alert_new_malicious_hosts`, `scriptmonitor_alert_new_malicious_scripts`, `scriptmonitor_alert_new_malicious_url`, `scriptmonitor_alert_new_max_length_resource_url`, `scriptmonitor_alert_new_resources`, `secondary_dns_all_primaries_failing`, `secondary_dns_primaries_failing`, `secondary_dns_zone_successfully_updated`, `secondary_dns_zone_validation_warning`, `sentinel_alert`, `stream_live_notifications`, `tunnel_health_event`, `tunnel_update_event`, `universal_ssl_event_type`, `web_analytics_metrics_update`, `weekly_account_overview`, `workers_alert`, `zone_aop_custom_certificate_expiration_type`.\n"
+                        "description": "The event type that will trigger the dispatch of a notification. See the developer documentation for descriptions of [available alert types](https://developers.cloudflare.com/fundamentals/notifications/notification-available/). Available values: `advanced_http_alert_error`, `access_custom_certificate_expiration_type`, `advanced_ddos_attack_l4_alert`, `advanced_ddos_attack_l7_alert`, `bgp_hijack_notification`, `billing_usage_alert`, `block_notification_block_removed`, `block_notification_new_block`, `block_notification_review_rejected`, `brand_protection_alert`, `brand_protection_digest`, `clickhouse_alert_fw_anomaly`, `clickhouse_alert_fw_ent_anomaly`, `custom_ssl_certificate_event_type`, `dedicated_ssl_certificate_event_type`, `dos_attack_l4`, `dos_attack_l7`, `expiring_service_token_alert`, `failing_logpush_job_disabled_alert`, `fbm_auto_advertisement`, `fbm_dosd_attack`, `fbm_volumetric_attack`, `health_check_status_notification`, `hostname_aop_custom_certificate_expiration_type`, `http_alert_edge_error`, `http_alert_origin_error`, `incident_alert`, `load_balancing_health_alert`, `load_balancing_pool_enablement_alert`, `logo_match_alert`, `magic_tunnel_health_check_event`, `maintenance_event_notification`, `mtls_certificate_store_certificate_expiration_type`, `pages_event_alert`, `radar_notification`, `real_origin_monitoring`, `scriptmonitor_alert_new_code_change_detections`, `scriptmonitor_alert_new_hosts`, `scriptmonitor_alert_new_malicious_hosts`, `scriptmonitor_alert_new_malicious_scripts`, `scriptmonitor_alert_new_malicious_url`, `scriptmonitor_alert_new_max_length_resource_url`, `scriptmonitor_alert_new_resources`, `secondary_dns_all_primaries_failing`, `secondary_dns_primaries_failing`, `secondary_dns_zone_successfully_updated`, `secondary_dns_zone_validation_warning`, `sentinel_alert`, `stream_live_notifications`, `traffic_anomalies_alert`, `tunnel_health_event`, `tunnel_update_event`, `universal_ssl_event_type`, `web_analytics_metrics_update`, `weekly_account_overview`, `workers_alert`, `zone_aop_custom_certificate_expiration_type`.\n"
                     },
                     "created": {
                         "type": "string",
@@ -16141,7 +16286,7 @@
                         "items": {
                             "$ref": "#/types/cloudflare:index/NotificationPolicyEmailIntegration:NotificationPolicyEmailIntegration"
                         },
-                        "description": "The email id to which the notification should be dispatched. One of email, webhooks, or PagerDuty mechanisms is required.\n"
+                        "description": "The email id to which the notification should be dispatched. One of email, webhooks, or PagerDuty mechanisms is required. Must provide only one of `email_integration`, `webhooks_integration`, `pagerduty_integration`.\n"
                     },
                     "enabled": {
                         "type": "boolean",
@@ -16164,14 +16309,14 @@
                         "items": {
                             "$ref": "#/types/cloudflare:index/NotificationPolicyPagerdutyIntegration:NotificationPolicyPagerdutyIntegration"
                         },
-                        "description": "The unique id of a configured pagerduty endpoint to which the notification should be dispatched. One of email, webhooks, or PagerDuty mechanisms is required.\n"
+                        "description": "The unique id of a configured pagerduty endpoint to which the notification should be dispatched. One of email, webhooks, or PagerDuty mechanisms is required. Must provide only one of `email_integration`, `webhooks_integration`, `pagerduty_integration`.\n"
                     },
                     "webhooksIntegrations": {
                         "type": "array",
                         "items": {
                             "$ref": "#/types/cloudflare:index/NotificationPolicyWebhooksIntegration:NotificationPolicyWebhooksIntegration"
                         },
-                        "description": "The unique id of a configured webhooks endpoint to which the notification should be dispatched. One of email, webhooks, or PagerDuty mechanisms is required.\n"
+                        "description": "The unique id of a configured webhooks endpoint to which the notification should be dispatched. One of email, webhooks, or PagerDuty mechanisms is required. Must provide only one of `email_integration`, `webhooks_integration`, `pagerduty_integration`.\n"
                     }
                 },
                 "type": "object"
@@ -18384,7 +18529,7 @@
                 },
                 "enabled": {
                     "type": "boolean",
-                    "description": "Enable or disable DLP Payload Logging for this rule.\n"
+                    "description": "Enable notification settings.\n"
                 },
                 "filters": {
                     "type": "array",
@@ -18444,7 +18589,7 @@
                 },
                 "enabled": {
                     "type": "boolean",
-                    "description": "Enable or disable DLP Payload Logging for this rule.\n"
+                    "description": "Enable notification settings.\n"
                 },
                 "filters": {
                     "type": "array",
@@ -18502,7 +18647,7 @@
                     },
                     "enabled": {
                         "type": "boolean",
-                        "description": "Enable or disable DLP Payload Logging for this rule.\n"
+                        "description": "Enable notification settings.\n"
                     },
                     "filters": {
                         "type": "array",
@@ -18747,7 +18892,7 @@
             }
         },
         "cloudflare:index/tunnelConfig:TunnelConfig": {
-            "description": "Provides a Cloudflare Tunnel configuration resource.\n\n!\u003e When you delete a tunnel configuration, the tunnel will be deleted. You need to make sure that the tunnel is not in use before deleting the configuration.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as cloudflare from \"@pulumi/cloudflare\";\n\nconst exampleTunnel = new cloudflare.Tunnel(\"exampleTunnel\", {\n    accountId: \"f037e56e89293a057740de681ac9abbe\",\n    name: \"example_tunnel\",\n    secret: \"\u003c32 character secret\u003e\",\n});\nconst exampleConfig = new cloudflare.TunnelConfig(\"exampleConfig\", {\n    accountId: \"f037e56e89293a057740de681ac9abbe\",\n    tunnelId: exampleTunnel.id,\n    config: {\n        warpRouting: {\n            enabled: true,\n        },\n        originRequest: {\n            connectTimeout: \"1m0s\",\n            tlsTimeout: \"1m0s\",\n            tcpKeepAlive: \"1m0s\",\n            noHappyEyeballs: false,\n            keepAliveConnections: 1024,\n            keepAliveTimeout: \"1m0s\",\n            httpHostHeader: \"baz\",\n            originServerName: \"foobar\",\n            caPool: \"/path/to/unsigned/ca/pool\",\n            noTlsVerify: false,\n            disableChunkedEncoding: false,\n            bastionMode: false,\n            proxyAddress: \"10.0.0.1\",\n            proxyPort: 8123,\n            proxyType: \"socks\",\n            ipRules: [{\n                prefix: \"/web\",\n                ports: [\n                    80,\n                    443,\n                ],\n                allow: false,\n            }],\n        },\n        ingressRules: [\n            {\n                hostname: \"foo\",\n                path: \"/bar\",\n                service: \"http://10.0.0.2:8080\",\n                originRequest: {\n                    connectTimeout: \"2m0s\",\n                    access: {\n                        required: true,\n                        teamName: \"terraform\",\n                        audTags: [\"AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA\"],\n                    },\n                },\n            },\n            {\n                service: \"https://10.0.0.3:8081\",\n            },\n        ],\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_cloudflare as cloudflare\n\nexample_tunnel = cloudflare.Tunnel(\"exampleTunnel\",\n    account_id=\"f037e56e89293a057740de681ac9abbe\",\n    name=\"example_tunnel\",\n    secret=\"\u003c32 character secret\u003e\")\nexample_config = cloudflare.TunnelConfig(\"exampleConfig\",\n    account_id=\"f037e56e89293a057740de681ac9abbe\",\n    tunnel_id=example_tunnel.id,\n    config=cloudflare.TunnelConfigConfigArgs(\n        warp_routing=cloudflare.TunnelConfigConfigWarpRoutingArgs(\n            enabled=True,\n        ),\n        origin_request=cloudflare.TunnelConfigConfigOriginRequestArgs(\n            connect_timeout=\"1m0s\",\n            tls_timeout=\"1m0s\",\n            tcp_keep_alive=\"1m0s\",\n            no_happy_eyeballs=False,\n            keep_alive_connections=1024,\n            keep_alive_timeout=\"1m0s\",\n            http_host_header=\"baz\",\n            origin_server_name=\"foobar\",\n            ca_pool=\"/path/to/unsigned/ca/pool\",\n            no_tls_verify=False,\n            disable_chunked_encoding=False,\n            bastion_mode=False,\n            proxy_address=\"10.0.0.1\",\n            proxy_port=8123,\n            proxy_type=\"socks\",\n            ip_rules=[cloudflare.TunnelConfigConfigOriginRequestIpRuleArgs(\n                prefix=\"/web\",\n                ports=[\n                    80,\n                    443,\n                ],\n                allow=False,\n            )],\n        ),\n        ingress_rules=[\n            cloudflare.TunnelConfigConfigIngressRuleArgs(\n                hostname=\"foo\",\n                path=\"/bar\",\n                service=\"http://10.0.0.2:8080\",\n                origin_request=cloudflare.TunnelConfigConfigIngressRuleOriginRequestArgs(\n                    connect_timeout=\"2m0s\",\n                    access=cloudflare.TunnelConfigConfigIngressRuleOriginRequestAccessArgs(\n                        required=True,\n                        team_name=\"terraform\",\n                        aud_tags=[\"AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA\"],\n                    ),\n                ),\n            ),\n            cloudflare.TunnelConfigConfigIngressRuleArgs(\n                service=\"https://10.0.0.3:8081\",\n            ),\n        ],\n    ))\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Cloudflare = Pulumi.Cloudflare;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var exampleTunnel = new Cloudflare.Tunnel(\"exampleTunnel\", new()\n    {\n        AccountId = \"f037e56e89293a057740de681ac9abbe\",\n        Name = \"example_tunnel\",\n        Secret = \"\u003c32 character secret\u003e\",\n    });\n\n    var exampleConfig = new Cloudflare.TunnelConfig(\"exampleConfig\", new()\n    {\n        AccountId = \"f037e56e89293a057740de681ac9abbe\",\n        TunnelId = exampleTunnel.Id,\n        Config = new Cloudflare.Inputs.TunnelConfigConfigArgs\n        {\n            WarpRouting = new Cloudflare.Inputs.TunnelConfigConfigWarpRoutingArgs\n            {\n                Enabled = true,\n            },\n            OriginRequest = new Cloudflare.Inputs.TunnelConfigConfigOriginRequestArgs\n            {\n                ConnectTimeout = \"1m0s\",\n                TlsTimeout = \"1m0s\",\n                TcpKeepAlive = \"1m0s\",\n                NoHappyEyeballs = false,\n                KeepAliveConnections = 1024,\n                KeepAliveTimeout = \"1m0s\",\n                HttpHostHeader = \"baz\",\n                OriginServerName = \"foobar\",\n                CaPool = \"/path/to/unsigned/ca/pool\",\n                NoTlsVerify = false,\n                DisableChunkedEncoding = false,\n                BastionMode = false,\n                ProxyAddress = \"10.0.0.1\",\n                ProxyPort = 8123,\n                ProxyType = \"socks\",\n                IpRules = new[]\n                {\n                    new Cloudflare.Inputs.TunnelConfigConfigOriginRequestIpRuleArgs\n                    {\n                        Prefix = \"/web\",\n                        Ports = new[]\n                        {\n                            80,\n                            443,\n                        },\n                        Allow = false,\n                    },\n                },\n            },\n            IngressRules = new[]\n            {\n                new Cloudflare.Inputs.TunnelConfigConfigIngressRuleArgs\n                {\n                    Hostname = \"foo\",\n                    Path = \"/bar\",\n                    Service = \"http://10.0.0.2:8080\",\n                    OriginRequest = new Cloudflare.Inputs.TunnelConfigConfigIngressRuleOriginRequestArgs\n                    {\n                        ConnectTimeout = \"2m0s\",\n                        Access = new Cloudflare.Inputs.TunnelConfigConfigIngressRuleOriginRequestAccessArgs\n                        {\n                            Required = true,\n                            TeamName = \"terraform\",\n                            AudTags = new[]\n                            {\n                                \"AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA\",\n                            },\n                        },\n                    },\n                },\n                new Cloudflare.Inputs.TunnelConfigConfigIngressRuleArgs\n                {\n                    Service = \"https://10.0.0.3:8081\",\n                },\n            },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\texampleTunnel, err := cloudflare.NewTunnel(ctx, \"exampleTunnel\", \u0026cloudflare.TunnelArgs{\n\t\t\tAccountId: pulumi.String(\"f037e56e89293a057740de681ac9abbe\"),\n\t\t\tName:      pulumi.String(\"example_tunnel\"),\n\t\t\tSecret:    pulumi.String(\"\u003c32 character secret\u003e\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = cloudflare.NewTunnelConfig(ctx, \"exampleConfig\", \u0026cloudflare.TunnelConfigArgs{\n\t\t\tAccountId: pulumi.String(\"f037e56e89293a057740de681ac9abbe\"),\n\t\t\tTunnelId:  exampleTunnel.ID(),\n\t\t\tConfig: \u0026cloudflare.TunnelConfigConfigArgs{\n\t\t\t\tWarpRouting: \u0026cloudflare.TunnelConfigConfigWarpRoutingArgs{\n\t\t\t\t\tEnabled: pulumi.Bool(true),\n\t\t\t\t},\n\t\t\t\tOriginRequest: \u0026cloudflare.TunnelConfigConfigOriginRequestArgs{\n\t\t\t\t\tConnectTimeout:         pulumi.String(\"1m0s\"),\n\t\t\t\t\tTlsTimeout:             pulumi.String(\"1m0s\"),\n\t\t\t\t\tTcpKeepAlive:           pulumi.String(\"1m0s\"),\n\t\t\t\t\tNoHappyEyeballs:        pulumi.Bool(false),\n\t\t\t\t\tKeepAliveConnections:   pulumi.Int(1024),\n\t\t\t\t\tKeepAliveTimeout:       pulumi.String(\"1m0s\"),\n\t\t\t\t\tHttpHostHeader:         pulumi.String(\"baz\"),\n\t\t\t\t\tOriginServerName:       pulumi.String(\"foobar\"),\n\t\t\t\t\tCaPool:                 pulumi.String(\"/path/to/unsigned/ca/pool\"),\n\t\t\t\t\tNoTlsVerify:            pulumi.Bool(false),\n\t\t\t\t\tDisableChunkedEncoding: pulumi.Bool(false),\n\t\t\t\t\tBastionMode:            pulumi.Bool(false),\n\t\t\t\t\tProxyAddress:           pulumi.String(\"10.0.0.1\"),\n\t\t\t\t\tProxyPort:              pulumi.Int(8123),\n\t\t\t\t\tProxyType:              pulumi.String(\"socks\"),\n\t\t\t\t\tIpRules: cloudflare.TunnelConfigConfigOriginRequestIpRuleArray{\n\t\t\t\t\t\t\u0026cloudflare.TunnelConfigConfigOriginRequestIpRuleArgs{\n\t\t\t\t\t\t\tPrefix: pulumi.String(\"/web\"),\n\t\t\t\t\t\t\tPorts: pulumi.IntArray{\n\t\t\t\t\t\t\t\tpulumi.Int(80),\n\t\t\t\t\t\t\t\tpulumi.Int(443),\n\t\t\t\t\t\t\t},\n\t\t\t\t\t\t\tAllow: pulumi.Bool(false),\n\t\t\t\t\t\t},\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t\tIngressRules: cloudflare.TunnelConfigConfigIngressRuleArray{\n\t\t\t\t\t\u0026cloudflare.TunnelConfigConfigIngressRuleArgs{\n\t\t\t\t\t\tHostname: pulumi.String(\"foo\"),\n\t\t\t\t\t\tPath:     pulumi.String(\"/bar\"),\n\t\t\t\t\t\tService:  pulumi.String(\"http://10.0.0.2:8080\"),\n\t\t\t\t\t\tOriginRequest: \u0026cloudflare.TunnelConfigConfigIngressRuleOriginRequestArgs{\n\t\t\t\t\t\t\tConnectTimeout: pulumi.String(\"2m0s\"),\n\t\t\t\t\t\t\tAccess: \u0026cloudflare.TunnelConfigConfigIngressRuleOriginRequestAccessArgs{\n\t\t\t\t\t\t\t\tRequired: pulumi.Bool(true),\n\t\t\t\t\t\t\t\tTeamName: pulumi.String(\"terraform\"),\n\t\t\t\t\t\t\t\tAudTags: pulumi.StringArray{\n\t\t\t\t\t\t\t\t\tpulumi.String(\"AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA\"),\n\t\t\t\t\t\t\t\t},\n\t\t\t\t\t\t\t},\n\t\t\t\t\t\t},\n\t\t\t\t\t},\n\t\t\t\t\t\u0026cloudflare.TunnelConfigConfigIngressRuleArgs{\n\t\t\t\t\t\tService: pulumi.String(\"https://10.0.0.3:8081\"),\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.cloudflare.Tunnel;\nimport com.pulumi.cloudflare.TunnelArgs;\nimport com.pulumi.cloudflare.TunnelConfig;\nimport com.pulumi.cloudflare.TunnelConfigArgs;\nimport com.pulumi.cloudflare.inputs.TunnelConfigConfigArgs;\nimport com.pulumi.cloudflare.inputs.TunnelConfigConfigWarpRoutingArgs;\nimport com.pulumi.cloudflare.inputs.TunnelConfigConfigOriginRequestArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var exampleTunnel = new Tunnel(\"exampleTunnel\", TunnelArgs.builder()        \n            .accountId(\"f037e56e89293a057740de681ac9abbe\")\n            .name(\"example_tunnel\")\n            .secret(\"\u003c32 character secret\u003e\")\n            .build());\n\n        var exampleConfig = new TunnelConfig(\"exampleConfig\", TunnelConfigArgs.builder()        \n            .accountId(\"f037e56e89293a057740de681ac9abbe\")\n            .tunnelId(exampleTunnel.id())\n            .config(TunnelConfigConfigArgs.builder()\n                .warpRouting(TunnelConfigConfigWarpRoutingArgs.builder()\n                    .enabled(true)\n                    .build())\n                .originRequest(TunnelConfigConfigOriginRequestArgs.builder()\n                    .connectTimeout(\"1m0s\")\n                    .tlsTimeout(\"1m0s\")\n                    .tcpKeepAlive(\"1m0s\")\n                    .noHappyEyeballs(false)\n                    .keepAliveConnections(1024)\n                    .keepAliveTimeout(\"1m0s\")\n                    .httpHostHeader(\"baz\")\n                    .originServerName(\"foobar\")\n                    .caPool(\"/path/to/unsigned/ca/pool\")\n                    .noTlsVerify(false)\n                    .disableChunkedEncoding(false)\n                    .bastionMode(false)\n                    .proxyAddress(\"10.0.0.1\")\n                    .proxyPort(\"8123\")\n                    .proxyType(\"socks\")\n                    .ipRules(TunnelConfigConfigOriginRequestIpRuleArgs.builder()\n                        .prefix(\"/web\")\n                        .ports(                        \n                            80,\n                            443)\n                        .allow(false)\n                        .build())\n                    .build())\n                .ingressRules(                \n                    TunnelConfigConfigIngressRuleArgs.builder()\n                        .hostname(\"foo\")\n                        .path(\"/bar\")\n                        .service(\"http://10.0.0.2:8080\")\n                        .originRequest(TunnelConfigConfigIngressRuleOriginRequestArgs.builder()\n                            .connectTimeout(\"2m0s\")\n                            .access(TunnelConfigConfigIngressRuleOriginRequestAccessArgs.builder()\n                                .required(true)\n                                .teamName(\"terraform\")\n                                .audTags(\"AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA\")\n                                .build())\n                            .build())\n                        .build(),\n                    TunnelConfigConfigIngressRuleArgs.builder()\n                        .service(\"https://10.0.0.3:8081\")\n                        .build())\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  exampleTunnel:\n    type: cloudflare:Tunnel\n    properties:\n      accountId: f037e56e89293a057740de681ac9abbe\n      name: example_tunnel\n      secret: \u003c32 character secret\u003e\n  exampleConfig:\n    type: cloudflare:TunnelConfig\n    properties:\n      accountId: f037e56e89293a057740de681ac9abbe\n      tunnelId: ${exampleTunnel.id}\n      config:\n        warpRouting:\n          enabled: true\n        originRequest:\n          connectTimeout: 1m0s\n          tlsTimeout: 1m0s\n          tcpKeepAlive: 1m0s\n          noHappyEyeballs: false\n          keepAliveConnections: 1024\n          keepAliveTimeout: 1m0s\n          httpHostHeader: baz\n          originServerName: foobar\n          caPool: /path/to/unsigned/ca/pool\n          noTlsVerify: false\n          disableChunkedEncoding: false\n          bastionMode: false\n          proxyAddress: 10.0.0.1\n          proxyPort: '8123'\n          proxyType: socks\n          ipRules:\n            - prefix: /web\n              ports:\n                - 80\n                - 443\n              allow: false\n        ingressRules:\n          - hostname: foo\n            path: /bar\n            service: http://10.0.0.2:8080\n            originRequest:\n              connectTimeout: 2m0s\n              access:\n                required: true\n                teamName: terraform\n                audTags:\n                  - AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA\n          - service: https://10.0.0.3:8081\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\n\n\n```sh\n $ pulumi import cloudflare:index/tunnelConfig:TunnelConfig example \u003caccount_id\u003e/\u003ctunnel_id\u003e\n```\n\n ",
+            "description": "Provides a Cloudflare Tunnel configuration resource.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as cloudflare from \"@pulumi/cloudflare\";\n\nconst exampleTunnel = new cloudflare.Tunnel(\"exampleTunnel\", {\n    accountId: \"f037e56e89293a057740de681ac9abbe\",\n    name: \"example_tunnel\",\n    secret: \"\u003c32 character secret\u003e\",\n});\nconst exampleConfig = new cloudflare.TunnelConfig(\"exampleConfig\", {\n    accountId: \"f037e56e89293a057740de681ac9abbe\",\n    tunnelId: exampleTunnel.id,\n    config: {\n        warpRouting: {\n            enabled: true,\n        },\n        originRequest: {\n            connectTimeout: \"1m0s\",\n            tlsTimeout: \"1m0s\",\n            tcpKeepAlive: \"1m0s\",\n            noHappyEyeballs: false,\n            keepAliveConnections: 1024,\n            keepAliveTimeout: \"1m0s\",\n            httpHostHeader: \"baz\",\n            originServerName: \"foobar\",\n            caPool: \"/path/to/unsigned/ca/pool\",\n            noTlsVerify: false,\n            disableChunkedEncoding: false,\n            bastionMode: false,\n            proxyAddress: \"10.0.0.1\",\n            proxyPort: 8123,\n            proxyType: \"socks\",\n            ipRules: [{\n                prefix: \"/web\",\n                ports: [\n                    80,\n                    443,\n                ],\n                allow: false,\n            }],\n        },\n        ingressRules: [\n            {\n                hostname: \"foo\",\n                path: \"/bar\",\n                service: \"http://10.0.0.2:8080\",\n                originRequest: {\n                    connectTimeout: \"2m0s\",\n                    access: {\n                        required: true,\n                        teamName: \"terraform\",\n                        audTags: [\"AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA\"],\n                    },\n                },\n            },\n            {\n                service: \"https://10.0.0.3:8081\",\n            },\n        ],\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_cloudflare as cloudflare\n\nexample_tunnel = cloudflare.Tunnel(\"exampleTunnel\",\n    account_id=\"f037e56e89293a057740de681ac9abbe\",\n    name=\"example_tunnel\",\n    secret=\"\u003c32 character secret\u003e\")\nexample_config = cloudflare.TunnelConfig(\"exampleConfig\",\n    account_id=\"f037e56e89293a057740de681ac9abbe\",\n    tunnel_id=example_tunnel.id,\n    config=cloudflare.TunnelConfigConfigArgs(\n        warp_routing=cloudflare.TunnelConfigConfigWarpRoutingArgs(\n            enabled=True,\n        ),\n        origin_request=cloudflare.TunnelConfigConfigOriginRequestArgs(\n            connect_timeout=\"1m0s\",\n            tls_timeout=\"1m0s\",\n            tcp_keep_alive=\"1m0s\",\n            no_happy_eyeballs=False,\n            keep_alive_connections=1024,\n            keep_alive_timeout=\"1m0s\",\n            http_host_header=\"baz\",\n            origin_server_name=\"foobar\",\n            ca_pool=\"/path/to/unsigned/ca/pool\",\n            no_tls_verify=False,\n            disable_chunked_encoding=False,\n            bastion_mode=False,\n            proxy_address=\"10.0.0.1\",\n            proxy_port=8123,\n            proxy_type=\"socks\",\n            ip_rules=[cloudflare.TunnelConfigConfigOriginRequestIpRuleArgs(\n                prefix=\"/web\",\n                ports=[\n                    80,\n                    443,\n                ],\n                allow=False,\n            )],\n        ),\n        ingress_rules=[\n            cloudflare.TunnelConfigConfigIngressRuleArgs(\n                hostname=\"foo\",\n                path=\"/bar\",\n                service=\"http://10.0.0.2:8080\",\n                origin_request=cloudflare.TunnelConfigConfigIngressRuleOriginRequestArgs(\n                    connect_timeout=\"2m0s\",\n                    access=cloudflare.TunnelConfigConfigIngressRuleOriginRequestAccessArgs(\n                        required=True,\n                        team_name=\"terraform\",\n                        aud_tags=[\"AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA\"],\n                    ),\n                ),\n            ),\n            cloudflare.TunnelConfigConfigIngressRuleArgs(\n                service=\"https://10.0.0.3:8081\",\n            ),\n        ],\n    ))\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Cloudflare = Pulumi.Cloudflare;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var exampleTunnel = new Cloudflare.Tunnel(\"exampleTunnel\", new()\n    {\n        AccountId = \"f037e56e89293a057740de681ac9abbe\",\n        Name = \"example_tunnel\",\n        Secret = \"\u003c32 character secret\u003e\",\n    });\n\n    var exampleConfig = new Cloudflare.TunnelConfig(\"exampleConfig\", new()\n    {\n        AccountId = \"f037e56e89293a057740de681ac9abbe\",\n        TunnelId = exampleTunnel.Id,\n        Config = new Cloudflare.Inputs.TunnelConfigConfigArgs\n        {\n            WarpRouting = new Cloudflare.Inputs.TunnelConfigConfigWarpRoutingArgs\n            {\n                Enabled = true,\n            },\n            OriginRequest = new Cloudflare.Inputs.TunnelConfigConfigOriginRequestArgs\n            {\n                ConnectTimeout = \"1m0s\",\n                TlsTimeout = \"1m0s\",\n                TcpKeepAlive = \"1m0s\",\n                NoHappyEyeballs = false,\n                KeepAliveConnections = 1024,\n                KeepAliveTimeout = \"1m0s\",\n                HttpHostHeader = \"baz\",\n                OriginServerName = \"foobar\",\n                CaPool = \"/path/to/unsigned/ca/pool\",\n                NoTlsVerify = false,\n                DisableChunkedEncoding = false,\n                BastionMode = false,\n                ProxyAddress = \"10.0.0.1\",\n                ProxyPort = 8123,\n                ProxyType = \"socks\",\n                IpRules = new[]\n                {\n                    new Cloudflare.Inputs.TunnelConfigConfigOriginRequestIpRuleArgs\n                    {\n                        Prefix = \"/web\",\n                        Ports = new[]\n                        {\n                            80,\n                            443,\n                        },\n                        Allow = false,\n                    },\n                },\n            },\n            IngressRules = new[]\n            {\n                new Cloudflare.Inputs.TunnelConfigConfigIngressRuleArgs\n                {\n                    Hostname = \"foo\",\n                    Path = \"/bar\",\n                    Service = \"http://10.0.0.2:8080\",\n                    OriginRequest = new Cloudflare.Inputs.TunnelConfigConfigIngressRuleOriginRequestArgs\n                    {\n                        ConnectTimeout = \"2m0s\",\n                        Access = new Cloudflare.Inputs.TunnelConfigConfigIngressRuleOriginRequestAccessArgs\n                        {\n                            Required = true,\n                            TeamName = \"terraform\",\n                            AudTags = new[]\n                            {\n                                \"AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA\",\n                            },\n                        },\n                    },\n                },\n                new Cloudflare.Inputs.TunnelConfigConfigIngressRuleArgs\n                {\n                    Service = \"https://10.0.0.3:8081\",\n                },\n            },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\texampleTunnel, err := cloudflare.NewTunnel(ctx, \"exampleTunnel\", \u0026cloudflare.TunnelArgs{\n\t\t\tAccountId: pulumi.String(\"f037e56e89293a057740de681ac9abbe\"),\n\t\t\tName:      pulumi.String(\"example_tunnel\"),\n\t\t\tSecret:    pulumi.String(\"\u003c32 character secret\u003e\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = cloudflare.NewTunnelConfig(ctx, \"exampleConfig\", \u0026cloudflare.TunnelConfigArgs{\n\t\t\tAccountId: pulumi.String(\"f037e56e89293a057740de681ac9abbe\"),\n\t\t\tTunnelId:  exampleTunnel.ID(),\n\t\t\tConfig: \u0026cloudflare.TunnelConfigConfigArgs{\n\t\t\t\tWarpRouting: \u0026cloudflare.TunnelConfigConfigWarpRoutingArgs{\n\t\t\t\t\tEnabled: pulumi.Bool(true),\n\t\t\t\t},\n\t\t\t\tOriginRequest: \u0026cloudflare.TunnelConfigConfigOriginRequestArgs{\n\t\t\t\t\tConnectTimeout:         pulumi.String(\"1m0s\"),\n\t\t\t\t\tTlsTimeout:             pulumi.String(\"1m0s\"),\n\t\t\t\t\tTcpKeepAlive:           pulumi.String(\"1m0s\"),\n\t\t\t\t\tNoHappyEyeballs:        pulumi.Bool(false),\n\t\t\t\t\tKeepAliveConnections:   pulumi.Int(1024),\n\t\t\t\t\tKeepAliveTimeout:       pulumi.String(\"1m0s\"),\n\t\t\t\t\tHttpHostHeader:         pulumi.String(\"baz\"),\n\t\t\t\t\tOriginServerName:       pulumi.String(\"foobar\"),\n\t\t\t\t\tCaPool:                 pulumi.String(\"/path/to/unsigned/ca/pool\"),\n\t\t\t\t\tNoTlsVerify:            pulumi.Bool(false),\n\t\t\t\t\tDisableChunkedEncoding: pulumi.Bool(false),\n\t\t\t\t\tBastionMode:            pulumi.Bool(false),\n\t\t\t\t\tProxyAddress:           pulumi.String(\"10.0.0.1\"),\n\t\t\t\t\tProxyPort:              pulumi.Int(8123),\n\t\t\t\t\tProxyType:              pulumi.String(\"socks\"),\n\t\t\t\t\tIpRules: cloudflare.TunnelConfigConfigOriginRequestIpRuleArray{\n\t\t\t\t\t\t\u0026cloudflare.TunnelConfigConfigOriginRequestIpRuleArgs{\n\t\t\t\t\t\t\tPrefix: pulumi.String(\"/web\"),\n\t\t\t\t\t\t\tPorts: pulumi.IntArray{\n\t\t\t\t\t\t\t\tpulumi.Int(80),\n\t\t\t\t\t\t\t\tpulumi.Int(443),\n\t\t\t\t\t\t\t},\n\t\t\t\t\t\t\tAllow: pulumi.Bool(false),\n\t\t\t\t\t\t},\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t\tIngressRules: cloudflare.TunnelConfigConfigIngressRuleArray{\n\t\t\t\t\t\u0026cloudflare.TunnelConfigConfigIngressRuleArgs{\n\t\t\t\t\t\tHostname: pulumi.String(\"foo\"),\n\t\t\t\t\t\tPath:     pulumi.String(\"/bar\"),\n\t\t\t\t\t\tService:  pulumi.String(\"http://10.0.0.2:8080\"),\n\t\t\t\t\t\tOriginRequest: \u0026cloudflare.TunnelConfigConfigIngressRuleOriginRequestArgs{\n\t\t\t\t\t\t\tConnectTimeout: pulumi.String(\"2m0s\"),\n\t\t\t\t\t\t\tAccess: \u0026cloudflare.TunnelConfigConfigIngressRuleOriginRequestAccessArgs{\n\t\t\t\t\t\t\t\tRequired: pulumi.Bool(true),\n\t\t\t\t\t\t\t\tTeamName: pulumi.String(\"terraform\"),\n\t\t\t\t\t\t\t\tAudTags: pulumi.StringArray{\n\t\t\t\t\t\t\t\t\tpulumi.String(\"AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA\"),\n\t\t\t\t\t\t\t\t},\n\t\t\t\t\t\t\t},\n\t\t\t\t\t\t},\n\t\t\t\t\t},\n\t\t\t\t\t\u0026cloudflare.TunnelConfigConfigIngressRuleArgs{\n\t\t\t\t\t\tService: pulumi.String(\"https://10.0.0.3:8081\"),\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.cloudflare.Tunnel;\nimport com.pulumi.cloudflare.TunnelArgs;\nimport com.pulumi.cloudflare.TunnelConfig;\nimport com.pulumi.cloudflare.TunnelConfigArgs;\nimport com.pulumi.cloudflare.inputs.TunnelConfigConfigArgs;\nimport com.pulumi.cloudflare.inputs.TunnelConfigConfigWarpRoutingArgs;\nimport com.pulumi.cloudflare.inputs.TunnelConfigConfigOriginRequestArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var exampleTunnel = new Tunnel(\"exampleTunnel\", TunnelArgs.builder()        \n            .accountId(\"f037e56e89293a057740de681ac9abbe\")\n            .name(\"example_tunnel\")\n            .secret(\"\u003c32 character secret\u003e\")\n            .build());\n\n        var exampleConfig = new TunnelConfig(\"exampleConfig\", TunnelConfigArgs.builder()        \n            .accountId(\"f037e56e89293a057740de681ac9abbe\")\n            .tunnelId(exampleTunnel.id())\n            .config(TunnelConfigConfigArgs.builder()\n                .warpRouting(TunnelConfigConfigWarpRoutingArgs.builder()\n                    .enabled(true)\n                    .build())\n                .originRequest(TunnelConfigConfigOriginRequestArgs.builder()\n                    .connectTimeout(\"1m0s\")\n                    .tlsTimeout(\"1m0s\")\n                    .tcpKeepAlive(\"1m0s\")\n                    .noHappyEyeballs(false)\n                    .keepAliveConnections(1024)\n                    .keepAliveTimeout(\"1m0s\")\n                    .httpHostHeader(\"baz\")\n                    .originServerName(\"foobar\")\n                    .caPool(\"/path/to/unsigned/ca/pool\")\n                    .noTlsVerify(false)\n                    .disableChunkedEncoding(false)\n                    .bastionMode(false)\n                    .proxyAddress(\"10.0.0.1\")\n                    .proxyPort(\"8123\")\n                    .proxyType(\"socks\")\n                    .ipRules(TunnelConfigConfigOriginRequestIpRuleArgs.builder()\n                        .prefix(\"/web\")\n                        .ports(                        \n                            80,\n                            443)\n                        .allow(false)\n                        .build())\n                    .build())\n                .ingressRules(                \n                    TunnelConfigConfigIngressRuleArgs.builder()\n                        .hostname(\"foo\")\n                        .path(\"/bar\")\n                        .service(\"http://10.0.0.2:8080\")\n                        .originRequest(TunnelConfigConfigIngressRuleOriginRequestArgs.builder()\n                            .connectTimeout(\"2m0s\")\n                            .access(TunnelConfigConfigIngressRuleOriginRequestAccessArgs.builder()\n                                .required(true)\n                                .teamName(\"terraform\")\n                                .audTags(\"AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA\")\n                                .build())\n                            .build())\n                        .build(),\n                    TunnelConfigConfigIngressRuleArgs.builder()\n                        .service(\"https://10.0.0.3:8081\")\n                        .build())\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  exampleTunnel:\n    type: cloudflare:Tunnel\n    properties:\n      accountId: f037e56e89293a057740de681ac9abbe\n      name: example_tunnel\n      secret: \u003c32 character secret\u003e\n  exampleConfig:\n    type: cloudflare:TunnelConfig\n    properties:\n      accountId: f037e56e89293a057740de681ac9abbe\n      tunnelId: ${exampleTunnel.id}\n      config:\n        warpRouting:\n          enabled: true\n        originRequest:\n          connectTimeout: 1m0s\n          tlsTimeout: 1m0s\n          tcpKeepAlive: 1m0s\n          noHappyEyeballs: false\n          keepAliveConnections: 1024\n          keepAliveTimeout: 1m0s\n          httpHostHeader: baz\n          originServerName: foobar\n          caPool: /path/to/unsigned/ca/pool\n          noTlsVerify: false\n          disableChunkedEncoding: false\n          bastionMode: false\n          proxyAddress: 10.0.0.1\n          proxyPort: '8123'\n          proxyType: socks\n          ipRules:\n            - prefix: /web\n              ports:\n                - 80\n                - 443\n              allow: false\n        ingressRules:\n          - hostname: foo\n            path: /bar\n            service: http://10.0.0.2:8080\n            originRequest:\n              connectTimeout: 2m0s\n              access:\n                required: true\n                teamName: terraform\n                audTags:\n                  - AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA\n          - service: https://10.0.0.3:8081\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\n\n\n```sh\n $ pulumi import cloudflare:index/tunnelConfig:TunnelConfig example \u003caccount_id\u003e/\u003ctunnel_id\u003e\n```\n\n ",
             "properties": {
                 "accountId": {
                     "type": "string",
