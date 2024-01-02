@@ -13,6 +13,7 @@ import com.pulumi.cloudflare.inputs.LoadBalancerRuleArgs;
 import com.pulumi.cloudflare.inputs.LoadBalancerSessionAffinityAttributeArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -843,10 +844,18 @@ public final class LoadBalancerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public LoadBalancerArgs build() {
-            $.defaultPoolIds = Objects.requireNonNull($.defaultPoolIds, "expected parameter 'defaultPoolIds' to be non-null");
-            $.fallbackPoolId = Objects.requireNonNull($.fallbackPoolId, "expected parameter 'fallbackPoolId' to be non-null");
-            $.name = Objects.requireNonNull($.name, "expected parameter 'name' to be non-null");
-            $.zoneId = Objects.requireNonNull($.zoneId, "expected parameter 'zoneId' to be non-null");
+            if ($.defaultPoolIds == null) {
+                throw new MissingRequiredPropertyException("LoadBalancerArgs", "defaultPoolIds");
+            }
+            if ($.fallbackPoolId == null) {
+                throw new MissingRequiredPropertyException("LoadBalancerArgs", "fallbackPoolId");
+            }
+            if ($.name == null) {
+                throw new MissingRequiredPropertyException("LoadBalancerArgs", "name");
+            }
+            if ($.zoneId == null) {
+                throw new MissingRequiredPropertyException("LoadBalancerArgs", "zoneId");
+            }
             return $;
         }
     }

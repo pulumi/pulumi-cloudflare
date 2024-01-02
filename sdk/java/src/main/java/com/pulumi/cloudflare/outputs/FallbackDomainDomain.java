@@ -73,11 +73,13 @@ public final class FallbackDomainDomain {
 
         @CustomType.Setter
         public Builder description(@Nullable String description) {
+
             this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder dnsServers(@Nullable List<String> dnsServers) {
+
             this.dnsServers = dnsServers;
             return this;
         }
@@ -86,6 +88,7 @@ public final class FallbackDomainDomain {
         }
         @CustomType.Setter
         public Builder suffix(@Nullable String suffix) {
+
             this.suffix = suffix;
             return this;
         }

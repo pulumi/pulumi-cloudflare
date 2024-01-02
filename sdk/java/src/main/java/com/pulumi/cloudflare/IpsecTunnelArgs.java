@@ -5,6 +5,7 @@ package com.pulumi.cloudflare;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -595,10 +596,18 @@ public final class IpsecTunnelArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public IpsecTunnelArgs build() {
-            $.cloudflareEndpoint = Objects.requireNonNull($.cloudflareEndpoint, "expected parameter 'cloudflareEndpoint' to be non-null");
-            $.customerEndpoint = Objects.requireNonNull($.customerEndpoint, "expected parameter 'customerEndpoint' to be non-null");
-            $.interfaceAddress = Objects.requireNonNull($.interfaceAddress, "expected parameter 'interfaceAddress' to be non-null");
-            $.name = Objects.requireNonNull($.name, "expected parameter 'name' to be non-null");
+            if ($.cloudflareEndpoint == null) {
+                throw new MissingRequiredPropertyException("IpsecTunnelArgs", "cloudflareEndpoint");
+            }
+            if ($.customerEndpoint == null) {
+                throw new MissingRequiredPropertyException("IpsecTunnelArgs", "customerEndpoint");
+            }
+            if ($.interfaceAddress == null) {
+                throw new MissingRequiredPropertyException("IpsecTunnelArgs", "interfaceAddress");
+            }
+            if ($.name == null) {
+                throw new MissingRequiredPropertyException("IpsecTunnelArgs", "name");
+            }
             return $;
         }
     }

@@ -4,6 +4,7 @@
 package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.util.Objects;
 
@@ -42,7 +43,10 @@ public final class TeamsRuleRuleSettingsAuditSsh {
 
         @CustomType.Setter
         public Builder commandLogging(Boolean commandLogging) {
-            this.commandLogging = Objects.requireNonNull(commandLogging);
+            if (commandLogging == null) {
+              throw new MissingRequiredPropertyException("TeamsRuleRuleSettingsAuditSsh", "commandLogging");
+            }
+            this.commandLogging = commandLogging;
             return this;
         }
         public TeamsRuleRuleSettingsAuditSsh build() {

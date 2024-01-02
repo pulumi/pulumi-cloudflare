@@ -5,6 +5,7 @@ package com.pulumi.cloudflare;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -225,9 +226,15 @@ public final class MtlsCertificateArgs extends com.pulumi.resources.ResourceArgs
         }
 
         public MtlsCertificateArgs build() {
-            $.accountId = Objects.requireNonNull($.accountId, "expected parameter 'accountId' to be non-null");
-            $.ca = Objects.requireNonNull($.ca, "expected parameter 'ca' to be non-null");
-            $.certificates = Objects.requireNonNull($.certificates, "expected parameter 'certificates' to be non-null");
+            if ($.accountId == null) {
+                throw new MissingRequiredPropertyException("MtlsCertificateArgs", "accountId");
+            }
+            if ($.ca == null) {
+                throw new MissingRequiredPropertyException("MtlsCertificateArgs", "ca");
+            }
+            if ($.certificates == null) {
+                throw new MissingRequiredPropertyException("MtlsCertificateArgs", "certificates");
+            }
             return $;
         }
     }

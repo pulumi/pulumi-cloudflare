@@ -102,26 +102,31 @@ public final class RulesetRuleActionParametersOverridesRule {
 
         @CustomType.Setter
         public Builder action(@Nullable String action) {
+
             this.action = action;
             return this;
         }
         @CustomType.Setter
         public Builder enabled(@Nullable Boolean enabled) {
+
             this.enabled = enabled;
             return this;
         }
         @CustomType.Setter
         public Builder id(@Nullable String id) {
+
             this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder scoreThreshold(@Nullable Integer scoreThreshold) {
+
             this.scoreThreshold = scoreThreshold;
             return this;
         }
         @CustomType.Setter
         public Builder sensitivityLevel(@Nullable String sensitivityLevel) {
+
             this.sensitivityLevel = sensitivityLevel;
             return this;
         }

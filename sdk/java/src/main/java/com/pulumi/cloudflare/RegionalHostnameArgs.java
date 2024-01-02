@@ -5,6 +5,7 @@ package com.pulumi.cloudflare;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -148,9 +149,15 @@ public final class RegionalHostnameArgs extends com.pulumi.resources.ResourceArg
         }
 
         public RegionalHostnameArgs build() {
-            $.hostname = Objects.requireNonNull($.hostname, "expected parameter 'hostname' to be non-null");
-            $.regionKey = Objects.requireNonNull($.regionKey, "expected parameter 'regionKey' to be non-null");
-            $.zoneId = Objects.requireNonNull($.zoneId, "expected parameter 'zoneId' to be non-null");
+            if ($.hostname == null) {
+                throw new MissingRequiredPropertyException("RegionalHostnameArgs", "hostname");
+            }
+            if ($.regionKey == null) {
+                throw new MissingRequiredPropertyException("RegionalHostnameArgs", "regionKey");
+            }
+            if ($.zoneId == null) {
+                throw new MissingRequiredPropertyException("RegionalHostnameArgs", "zoneId");
+            }
             return $;
         }
     }

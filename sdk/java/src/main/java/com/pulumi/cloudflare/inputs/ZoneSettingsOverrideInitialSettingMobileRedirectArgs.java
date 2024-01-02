@@ -5,6 +5,7 @@ package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -89,9 +90,15 @@ public final class ZoneSettingsOverrideInitialSettingMobileRedirectArgs extends 
         }
 
         public ZoneSettingsOverrideInitialSettingMobileRedirectArgs build() {
-            $.mobileSubdomain = Objects.requireNonNull($.mobileSubdomain, "expected parameter 'mobileSubdomain' to be non-null");
-            $.status = Objects.requireNonNull($.status, "expected parameter 'status' to be non-null");
-            $.stripUri = Objects.requireNonNull($.stripUri, "expected parameter 'stripUri' to be non-null");
+            if ($.mobileSubdomain == null) {
+                throw new MissingRequiredPropertyException("ZoneSettingsOverrideInitialSettingMobileRedirectArgs", "mobileSubdomain");
+            }
+            if ($.status == null) {
+                throw new MissingRequiredPropertyException("ZoneSettingsOverrideInitialSettingMobileRedirectArgs", "status");
+            }
+            if ($.stripUri == null) {
+                throw new MissingRequiredPropertyException("ZoneSettingsOverrideInitialSettingMobileRedirectArgs", "stripUri");
+            }
             return $;
         }
     }

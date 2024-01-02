@@ -6,6 +6,7 @@ package com.pulumi.cloudflare;
 import com.pulumi.cloudflare.inputs.TeamsRuleRuleSettingsArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -460,11 +461,21 @@ public final class TeamsRuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public TeamsRuleArgs build() {
-            $.accountId = Objects.requireNonNull($.accountId, "expected parameter 'accountId' to be non-null");
-            $.action = Objects.requireNonNull($.action, "expected parameter 'action' to be non-null");
-            $.description = Objects.requireNonNull($.description, "expected parameter 'description' to be non-null");
-            $.name = Objects.requireNonNull($.name, "expected parameter 'name' to be non-null");
-            $.precedence = Objects.requireNonNull($.precedence, "expected parameter 'precedence' to be non-null");
+            if ($.accountId == null) {
+                throw new MissingRequiredPropertyException("TeamsRuleArgs", "accountId");
+            }
+            if ($.action == null) {
+                throw new MissingRequiredPropertyException("TeamsRuleArgs", "action");
+            }
+            if ($.description == null) {
+                throw new MissingRequiredPropertyException("TeamsRuleArgs", "description");
+            }
+            if ($.name == null) {
+                throw new MissingRequiredPropertyException("TeamsRuleArgs", "name");
+            }
+            if ($.precedence == null) {
+                throw new MissingRequiredPropertyException("TeamsRuleArgs", "precedence");
+            }
             return $;
         }
     }

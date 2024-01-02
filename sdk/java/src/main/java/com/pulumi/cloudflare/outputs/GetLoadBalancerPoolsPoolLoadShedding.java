@@ -55,21 +55,25 @@ public final class GetLoadBalancerPoolsPoolLoadShedding {
 
         @CustomType.Setter
         public Builder defaultPercent(@Nullable Double defaultPercent) {
+
             this.defaultPercent = defaultPercent;
             return this;
         }
         @CustomType.Setter
         public Builder defaultPolicy(@Nullable String defaultPolicy) {
+
             this.defaultPolicy = defaultPolicy;
             return this;
         }
         @CustomType.Setter
         public Builder sessionPercent(@Nullable Double sessionPercent) {
+
             this.sessionPercent = sessionPercent;
             return this;
         }
         @CustomType.Setter
         public Builder sessionPolicy(@Nullable String sessionPolicy) {
+
             this.sessionPolicy = sessionPolicy;
             return this;
         }

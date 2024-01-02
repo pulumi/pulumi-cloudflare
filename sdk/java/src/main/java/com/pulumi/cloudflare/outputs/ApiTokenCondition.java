@@ -44,6 +44,7 @@ public final class ApiTokenCondition {
 
         @CustomType.Setter
         public Builder requestIp(@Nullable ApiTokenConditionRequestIp requestIp) {
+
             this.requestIp = requestIp;
             return this;
         }

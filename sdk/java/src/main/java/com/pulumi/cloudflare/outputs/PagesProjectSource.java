@@ -59,11 +59,13 @@ public final class PagesProjectSource {
 
         @CustomType.Setter
         public Builder config(@Nullable PagesProjectSourceConfig config) {
+
             this.config = config;
             return this;
         }
         @CustomType.Setter
         public Builder type(@Nullable String type) {
+
             this.type = type;
             return this;
         }

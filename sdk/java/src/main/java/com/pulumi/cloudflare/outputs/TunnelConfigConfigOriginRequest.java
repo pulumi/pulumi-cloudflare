@@ -287,41 +287,49 @@ public final class TunnelConfigConfigOriginRequest {
 
         @CustomType.Setter
         public Builder access(@Nullable TunnelConfigConfigOriginRequestAccess access) {
+
             this.access = access;
             return this;
         }
         @CustomType.Setter
         public Builder bastionMode(@Nullable Boolean bastionMode) {
+
             this.bastionMode = bastionMode;
             return this;
         }
         @CustomType.Setter
         public Builder caPool(@Nullable String caPool) {
+
             this.caPool = caPool;
             return this;
         }
         @CustomType.Setter
         public Builder connectTimeout(@Nullable String connectTimeout) {
+
             this.connectTimeout = connectTimeout;
             return this;
         }
         @CustomType.Setter
         public Builder disableChunkedEncoding(@Nullable Boolean disableChunkedEncoding) {
+
             this.disableChunkedEncoding = disableChunkedEncoding;
             return this;
         }
         @CustomType.Setter
         public Builder http2Origin(@Nullable Boolean http2Origin) {
+
             this.http2Origin = http2Origin;
             return this;
         }
         @CustomType.Setter
         public Builder httpHostHeader(@Nullable String httpHostHeader) {
+
             this.httpHostHeader = httpHostHeader;
             return this;
         }
         @CustomType.Setter
         public Builder ipRules(@Nullable List<TunnelConfigConfigOriginRequestIpRule> ipRules) {
+
             this.ipRules = ipRules;
             return this;
         }
@@ -330,51 +338,61 @@ public final class TunnelConfigConfigOriginRequest {
         }
         @CustomType.Setter
         public Builder keepAliveConnections(@Nullable Integer keepAliveConnections) {
+
             this.keepAliveConnections = keepAliveConnections;
             return this;
         }
         @CustomType.Setter
         public Builder keepAliveTimeout(@Nullable String keepAliveTimeout) {
+
             this.keepAliveTimeout = keepAliveTimeout;
             return this;
         }
         @CustomType.Setter
         public Builder noHappyEyeballs(@Nullable Boolean noHappyEyeballs) {
+
             this.noHappyEyeballs = noHappyEyeballs;
             return this;
         }
         @CustomType.Setter
         public Builder noTlsVerify(@Nullable Boolean noTlsVerify) {
+
             this.noTlsVerify = noTlsVerify;
             return this;
         }
         @CustomType.Setter
         public Builder originServerName(@Nullable String originServerName) {
+
             this.originServerName = originServerName;
             return this;
         }
         @CustomType.Setter
         public Builder proxyAddress(@Nullable String proxyAddress) {
+
             this.proxyAddress = proxyAddress;
             return this;
         }
         @CustomType.Setter
         public Builder proxyPort(@Nullable Integer proxyPort) {
+
             this.proxyPort = proxyPort;
             return this;
         }
         @CustomType.Setter
         public Builder proxyType(@Nullable String proxyType) {
+
             this.proxyType = proxyType;
             return this;
         }
         @CustomType.Setter
         public Builder tcpKeepAlive(@Nullable String tcpKeepAlive) {
+
             this.tcpKeepAlive = tcpKeepAlive;
             return this;
         }
         @CustomType.Setter
         public Builder tlsTimeout(@Nullable String tlsTimeout) {
+
             this.tlsTimeout = tlsTimeout;
             return this;
         }

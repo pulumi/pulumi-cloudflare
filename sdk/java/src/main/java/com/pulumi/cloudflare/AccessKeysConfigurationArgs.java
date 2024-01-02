@@ -5,6 +5,7 @@ package com.pulumi.cloudflare;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -114,7 +115,9 @@ public final class AccessKeysConfigurationArgs extends com.pulumi.resources.Reso
         }
 
         public AccessKeysConfigurationArgs build() {
-            $.accountId = Objects.requireNonNull($.accountId, "expected parameter 'accountId' to be non-null");
+            if ($.accountId == null) {
+                throw new MissingRequiredPropertyException("AccessKeysConfigurationArgs", "accountId");
+            }
             return $;
         }
     }

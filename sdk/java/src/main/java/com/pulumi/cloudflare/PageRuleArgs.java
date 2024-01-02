@@ -6,6 +6,7 @@ package com.pulumi.cloudflare;
 import com.pulumi.cloudflare.inputs.PageRuleActionsArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -226,9 +227,15 @@ public final class PageRuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public PageRuleArgs build() {
-            $.actions = Objects.requireNonNull($.actions, "expected parameter 'actions' to be non-null");
-            $.target = Objects.requireNonNull($.target, "expected parameter 'target' to be non-null");
-            $.zoneId = Objects.requireNonNull($.zoneId, "expected parameter 'zoneId' to be non-null");
+            if ($.actions == null) {
+                throw new MissingRequiredPropertyException("PageRuleArgs", "actions");
+            }
+            if ($.target == null) {
+                throw new MissingRequiredPropertyException("PageRuleArgs", "target");
+            }
+            if ($.zoneId == null) {
+                throw new MissingRequiredPropertyException("PageRuleArgs", "zoneId");
+            }
             return $;
         }
     }

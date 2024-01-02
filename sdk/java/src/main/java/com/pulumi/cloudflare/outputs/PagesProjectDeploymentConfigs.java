@@ -59,11 +59,13 @@ public final class PagesProjectDeploymentConfigs {
 
         @CustomType.Setter
         public Builder preview(@Nullable PagesProjectDeploymentConfigsPreview preview) {
+
             this.preview = preview;
             return this;
         }
         @CustomType.Setter
         public Builder production(@Nullable PagesProjectDeploymentConfigsProduction production) {
+
             this.production = production;
             return this;
         }

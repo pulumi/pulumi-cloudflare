@@ -5,6 +5,7 @@ package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.cloudflare.outputs.GetRulesetsRulesetRule;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -74,31 +75,45 @@ public final class GetRulesetsRuleset {
 
         @CustomType.Setter
         public Builder description(@Nullable String description) {
+
             this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetRulesetsRuleset", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder kind(String kind) {
-            this.kind = Objects.requireNonNull(kind);
+            if (kind == null) {
+              throw new MissingRequiredPropertyException("GetRulesetsRuleset", "kind");
+            }
+            this.kind = kind;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetRulesetsRuleset", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder phase(String phase) {
-            this.phase = Objects.requireNonNull(phase);
+            if (phase == null) {
+              throw new MissingRequiredPropertyException("GetRulesetsRuleset", "phase");
+            }
+            this.phase = phase;
             return this;
         }
         @CustomType.Setter
         public Builder rules(@Nullable List<GetRulesetsRulesetRule> rules) {
+
             this.rules = rules;
             return this;
         }
@@ -107,7 +122,10 @@ public final class GetRulesetsRuleset {
         }
         @CustomType.Setter
         public Builder version(String version) {
-            this.version = Objects.requireNonNull(version);
+            if (version == null) {
+              throw new MissingRequiredPropertyException("GetRulesetsRuleset", "version");
+            }
+            this.version = version;
             return this;
         }
         public GetRulesetsRuleset build() {

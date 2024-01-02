@@ -5,6 +5,7 @@ package com.pulumi.cloudflare;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -185,10 +186,18 @@ public final class HostnameTlsSettingArgs extends com.pulumi.resources.ResourceA
         }
 
         public HostnameTlsSettingArgs build() {
-            $.hostname = Objects.requireNonNull($.hostname, "expected parameter 'hostname' to be non-null");
-            $.setting = Objects.requireNonNull($.setting, "expected parameter 'setting' to be non-null");
-            $.value = Objects.requireNonNull($.value, "expected parameter 'value' to be non-null");
-            $.zoneId = Objects.requireNonNull($.zoneId, "expected parameter 'zoneId' to be non-null");
+            if ($.hostname == null) {
+                throw new MissingRequiredPropertyException("HostnameTlsSettingArgs", "hostname");
+            }
+            if ($.setting == null) {
+                throw new MissingRequiredPropertyException("HostnameTlsSettingArgs", "setting");
+            }
+            if ($.value == null) {
+                throw new MissingRequiredPropertyException("HostnameTlsSettingArgs", "value");
+            }
+            if ($.zoneId == null) {
+                throw new MissingRequiredPropertyException("HostnameTlsSettingArgs", "zoneId");
+            }
             return $;
         }
     }

@@ -104,26 +104,31 @@ public final class RulesetRuleActionParametersCacheKeyCustomKey {
 
         @CustomType.Setter
         public Builder cookie(@Nullable RulesetRuleActionParametersCacheKeyCustomKeyCookie cookie) {
+
             this.cookie = cookie;
             return this;
         }
         @CustomType.Setter
         public Builder header(@Nullable RulesetRuleActionParametersCacheKeyCustomKeyHeader header) {
+
             this.header = header;
             return this;
         }
         @CustomType.Setter
         public Builder host(@Nullable RulesetRuleActionParametersCacheKeyCustomKeyHost host) {
+
             this.host = host;
             return this;
         }
         @CustomType.Setter
         public Builder queryString(@Nullable RulesetRuleActionParametersCacheKeyCustomKeyQueryString queryString) {
+
             this.queryString = queryString;
             return this;
         }
         @CustomType.Setter
         public Builder user(@Nullable RulesetRuleActionParametersCacheKeyCustomKeyUser user) {
+
             this.user = user;
             return this;
         }

@@ -43,11 +43,13 @@ public final class GetRulesetsRulesetRuleActionParametersOrigin {
 
         @CustomType.Setter
         public Builder host(@Nullable String host) {
+
             this.host = host;
             return this;
         }
         @CustomType.Setter
         public Builder port(@Nullable Integer port) {
+
             this.port = port;
             return this;
         }

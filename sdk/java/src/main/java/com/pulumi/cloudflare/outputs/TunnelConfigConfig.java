@@ -7,6 +7,7 @@ import com.pulumi.cloudflare.outputs.TunnelConfigConfigIngressRule;
 import com.pulumi.cloudflare.outputs.TunnelConfigConfigOriginRequest;
 import com.pulumi.cloudflare.outputs.TunnelConfigConfigWarpRouting;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
@@ -67,7 +68,10 @@ public final class TunnelConfigConfig {
 
         @CustomType.Setter
         public Builder ingressRules(List<TunnelConfigConfigIngressRule> ingressRules) {
-            this.ingressRules = Objects.requireNonNull(ingressRules);
+            if (ingressRules == null) {
+              throw new MissingRequiredPropertyException("TunnelConfigConfig", "ingressRules");
+            }
+            this.ingressRules = ingressRules;
             return this;
         }
         public Builder ingressRules(TunnelConfigConfigIngressRule... ingressRules) {
@@ -75,11 +79,13 @@ public final class TunnelConfigConfig {
         }
         @CustomType.Setter
         public Builder originRequest(@Nullable TunnelConfigConfigOriginRequest originRequest) {
+
             this.originRequest = originRequest;
             return this;
         }
         @CustomType.Setter
         public Builder warpRouting(@Nullable TunnelConfigConfigWarpRouting warpRouting) {
+
             this.warpRouting = warpRouting;
             return this;
         }

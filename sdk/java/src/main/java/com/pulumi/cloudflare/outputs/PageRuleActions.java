@@ -555,56 +555,67 @@ public final class PageRuleActions {
 
         @CustomType.Setter
         public Builder alwaysUseHttps(@Nullable Boolean alwaysUseHttps) {
+
             this.alwaysUseHttps = alwaysUseHttps;
             return this;
         }
         @CustomType.Setter
         public Builder automaticHttpsRewrites(@Nullable String automaticHttpsRewrites) {
+
             this.automaticHttpsRewrites = automaticHttpsRewrites;
             return this;
         }
         @CustomType.Setter
         public Builder browserCacheTtl(@Nullable String browserCacheTtl) {
+
             this.browserCacheTtl = browserCacheTtl;
             return this;
         }
         @CustomType.Setter
         public Builder browserCheck(@Nullable String browserCheck) {
+
             this.browserCheck = browserCheck;
             return this;
         }
         @CustomType.Setter
         public Builder bypassCacheOnCookie(@Nullable String bypassCacheOnCookie) {
+
             this.bypassCacheOnCookie = bypassCacheOnCookie;
             return this;
         }
         @CustomType.Setter
         public Builder cacheByDeviceType(@Nullable String cacheByDeviceType) {
+
             this.cacheByDeviceType = cacheByDeviceType;
             return this;
         }
         @CustomType.Setter
         public Builder cacheDeceptionArmor(@Nullable String cacheDeceptionArmor) {
+
             this.cacheDeceptionArmor = cacheDeceptionArmor;
             return this;
         }
         @CustomType.Setter
         public Builder cacheKeyFields(@Nullable PageRuleActionsCacheKeyFields cacheKeyFields) {
+
             this.cacheKeyFields = cacheKeyFields;
             return this;
         }
         @CustomType.Setter
         public Builder cacheLevel(@Nullable String cacheLevel) {
+
             this.cacheLevel = cacheLevel;
             return this;
         }
         @CustomType.Setter
         public Builder cacheOnCookie(@Nullable String cacheOnCookie) {
+
             this.cacheOnCookie = cacheOnCookie;
             return this;
         }
         @CustomType.Setter
         public Builder cacheTtlByStatuses(@Nullable List<PageRuleActionsCacheTtlByStatus> cacheTtlByStatuses) {
+
             this.cacheTtlByStatuses = cacheTtlByStatuses;
             return this;
         }
@@ -613,61 +624,73 @@ public final class PageRuleActions {
         }
         @CustomType.Setter
         public Builder disableApps(@Nullable Boolean disableApps) {
+
             this.disableApps = disableApps;
             return this;
         }
         @CustomType.Setter
         public Builder disablePerformance(@Nullable Boolean disablePerformance) {
+
             this.disablePerformance = disablePerformance;
             return this;
         }
         @CustomType.Setter
         public Builder disableRailgun(@Nullable Boolean disableRailgun) {
+
             this.disableRailgun = disableRailgun;
             return this;
         }
         @CustomType.Setter
         public Builder disableSecurity(@Nullable Boolean disableSecurity) {
+
             this.disableSecurity = disableSecurity;
             return this;
         }
         @CustomType.Setter
         public Builder disableZaraz(@Nullable Boolean disableZaraz) {
+
             this.disableZaraz = disableZaraz;
             return this;
         }
         @CustomType.Setter
         public Builder edgeCacheTtl(@Nullable Integer edgeCacheTtl) {
+
             this.edgeCacheTtl = edgeCacheTtl;
             return this;
         }
         @CustomType.Setter
         public Builder emailObfuscation(@Nullable String emailObfuscation) {
+
             this.emailObfuscation = emailObfuscation;
             return this;
         }
         @CustomType.Setter
         public Builder explicitCacheControl(@Nullable String explicitCacheControl) {
+
             this.explicitCacheControl = explicitCacheControl;
             return this;
         }
         @CustomType.Setter
         public Builder forwardingUrl(@Nullable PageRuleActionsForwardingUrl forwardingUrl) {
+
             this.forwardingUrl = forwardingUrl;
             return this;
         }
         @CustomType.Setter
         public Builder hostHeaderOverride(@Nullable String hostHeaderOverride) {
+
             this.hostHeaderOverride = hostHeaderOverride;
             return this;
         }
         @CustomType.Setter
         public Builder ipGeolocation(@Nullable String ipGeolocation) {
+
             this.ipGeolocation = ipGeolocation;
             return this;
         }
         @CustomType.Setter
         public Builder minifies(@Nullable List<PageRuleActionsMinify> minifies) {
+
             this.minifies = minifies;
             return this;
         }
@@ -676,71 +699,85 @@ public final class PageRuleActions {
         }
         @CustomType.Setter
         public Builder mirage(@Nullable String mirage) {
+
             this.mirage = mirage;
             return this;
         }
         @CustomType.Setter
         public Builder opportunisticEncryption(@Nullable String opportunisticEncryption) {
+
             this.opportunisticEncryption = opportunisticEncryption;
             return this;
         }
         @CustomType.Setter
         public Builder originErrorPagePassThru(@Nullable String originErrorPagePassThru) {
+
             this.originErrorPagePassThru = originErrorPagePassThru;
             return this;
         }
         @CustomType.Setter
         public Builder polish(@Nullable String polish) {
+
             this.polish = polish;
             return this;
         }
         @CustomType.Setter
         public Builder resolveOverride(@Nullable String resolveOverride) {
+
             this.resolveOverride = resolveOverride;
             return this;
         }
         @CustomType.Setter
         public Builder respectStrongEtag(@Nullable String respectStrongEtag) {
+
             this.respectStrongEtag = respectStrongEtag;
             return this;
         }
         @CustomType.Setter
         public Builder responseBuffering(@Nullable String responseBuffering) {
+
             this.responseBuffering = responseBuffering;
             return this;
         }
         @CustomType.Setter
         public Builder rocketLoader(@Nullable String rocketLoader) {
+
             this.rocketLoader = rocketLoader;
             return this;
         }
         @CustomType.Setter
         public Builder securityLevel(@Nullable String securityLevel) {
+
             this.securityLevel = securityLevel;
             return this;
         }
         @CustomType.Setter
         public Builder serverSideExclude(@Nullable String serverSideExclude) {
+
             this.serverSideExclude = serverSideExclude;
             return this;
         }
         @CustomType.Setter
         public Builder sortQueryStringForCache(@Nullable String sortQueryStringForCache) {
+
             this.sortQueryStringForCache = sortQueryStringForCache;
             return this;
         }
         @CustomType.Setter
         public Builder ssl(@Nullable String ssl) {
+
             this.ssl = ssl;
             return this;
         }
         @CustomType.Setter
         public Builder trueClientIpHeader(@Nullable String trueClientIpHeader) {
+
             this.trueClientIpHeader = trueClientIpHeader;
             return this;
         }
         @CustomType.Setter
         public Builder waf(@Nullable String waf) {
+
             this.waf = waf;
             return this;
         }

@@ -5,6 +5,7 @@ package com.pulumi.cloudflare;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -311,9 +312,15 @@ public final class FirewallRuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public FirewallRuleArgs build() {
-            $.action = Objects.requireNonNull($.action, "expected parameter 'action' to be non-null");
-            $.filterId = Objects.requireNonNull($.filterId, "expected parameter 'filterId' to be non-null");
-            $.zoneId = Objects.requireNonNull($.zoneId, "expected parameter 'zoneId' to be non-null");
+            if ($.action == null) {
+                throw new MissingRequiredPropertyException("FirewallRuleArgs", "action");
+            }
+            if ($.filterId == null) {
+                throw new MissingRequiredPropertyException("FirewallRuleArgs", "filterId");
+            }
+            if ($.zoneId == null) {
+                throw new MissingRequiredPropertyException("FirewallRuleArgs", "zoneId");
+            }
             return $;
         }
     }

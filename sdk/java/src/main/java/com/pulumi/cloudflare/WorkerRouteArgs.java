@@ -5,6 +5,7 @@ package com.pulumi.cloudflare;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -150,8 +151,12 @@ public final class WorkerRouteArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public WorkerRouteArgs build() {
-            $.pattern = Objects.requireNonNull($.pattern, "expected parameter 'pattern' to be non-null");
-            $.zoneId = Objects.requireNonNull($.zoneId, "expected parameter 'zoneId' to be non-null");
+            if ($.pattern == null) {
+                throw new MissingRequiredPropertyException("WorkerRouteArgs", "pattern");
+            }
+            if ($.zoneId == null) {
+                throw new MissingRequiredPropertyException("WorkerRouteArgs", "zoneId");
+            }
             return $;
         }
     }

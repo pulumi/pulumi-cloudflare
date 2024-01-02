@@ -73,16 +73,19 @@ public final class CertificatePackValidationRecord {
 
         @CustomType.Setter
         public Builder cnameName(@Nullable String cnameName) {
+
             this.cnameName = cnameName;
             return this;
         }
         @CustomType.Setter
         public Builder cnameTarget(@Nullable String cnameTarget) {
+
             this.cnameTarget = cnameTarget;
             return this;
         }
         @CustomType.Setter
         public Builder emails(@Nullable List<String> emails) {
+
             this.emails = emails;
             return this;
         }
@@ -91,21 +94,25 @@ public final class CertificatePackValidationRecord {
         }
         @CustomType.Setter
         public Builder httpBody(@Nullable String httpBody) {
+
             this.httpBody = httpBody;
             return this;
         }
         @CustomType.Setter
         public Builder httpUrl(@Nullable String httpUrl) {
+
             this.httpUrl = httpUrl;
             return this;
         }
         @CustomType.Setter
         public Builder txtName(@Nullable String txtName) {
+
             this.txtName = txtName;
             return this;
         }
         @CustomType.Setter
         public Builder txtValue(@Nullable String txtValue) {
+
             this.txtValue = txtValue;
             return this;
         }

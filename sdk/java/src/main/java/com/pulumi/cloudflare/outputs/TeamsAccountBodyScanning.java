@@ -4,6 +4,7 @@
 package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -42,7 +43,10 @@ public final class TeamsAccountBodyScanning {
 
         @CustomType.Setter
         public Builder inspectionMode(String inspectionMode) {
-            this.inspectionMode = Objects.requireNonNull(inspectionMode);
+            if (inspectionMode == null) {
+              throw new MissingRequiredPropertyException("TeamsAccountBodyScanning", "inspectionMode");
+            }
+            this.inspectionMode = inspectionMode;
             return this;
         }
         public TeamsAccountBodyScanning build() {

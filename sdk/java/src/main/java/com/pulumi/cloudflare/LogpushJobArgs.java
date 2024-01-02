@@ -5,6 +5,7 @@ package com.pulumi.cloudflare;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -559,8 +560,12 @@ public final class LogpushJobArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public LogpushJobArgs build() {
-            $.dataset = Objects.requireNonNull($.dataset, "expected parameter 'dataset' to be non-null");
-            $.destinationConf = Objects.requireNonNull($.destinationConf, "expected parameter 'destinationConf' to be non-null");
+            if ($.dataset == null) {
+                throw new MissingRequiredPropertyException("LogpushJobArgs", "dataset");
+            }
+            if ($.destinationConf == null) {
+                throw new MissingRequiredPropertyException("LogpushJobArgs", "destinationConf");
+            }
             return $;
         }
     }

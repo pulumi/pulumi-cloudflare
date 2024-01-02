@@ -5,6 +5,7 @@ package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -113,7 +114,9 @@ public final class WaitingRoomAdditionalRouteArgs extends com.pulumi.resources.R
         }
 
         public WaitingRoomAdditionalRouteArgs build() {
-            $.host = Objects.requireNonNull($.host, "expected parameter 'host' to be non-null");
+            if ($.host == null) {
+                throw new MissingRequiredPropertyException("WaitingRoomAdditionalRouteArgs", "host");
+            }
             return $;
         }
     }

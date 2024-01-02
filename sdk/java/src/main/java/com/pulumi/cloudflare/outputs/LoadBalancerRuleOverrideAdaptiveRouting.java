@@ -44,6 +44,7 @@ public final class LoadBalancerRuleOverrideAdaptiveRouting {
 
         @CustomType.Setter
         public Builder failoverAcrossPools(@Nullable Boolean failoverAcrossPools) {
+
             this.failoverAcrossPools = failoverAcrossPools;
             return this;
         }

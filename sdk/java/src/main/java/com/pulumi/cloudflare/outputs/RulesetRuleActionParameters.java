@@ -755,6 +755,7 @@ public final class RulesetRuleActionParameters {
 
         @CustomType.Setter
         public Builder additionalCacheablePorts(@Nullable List<Integer> additionalCacheablePorts) {
+
             this.additionalCacheablePorts = additionalCacheablePorts;
             return this;
         }
@@ -763,6 +764,7 @@ public final class RulesetRuleActionParameters {
         }
         @CustomType.Setter
         public Builder algorithms(@Nullable List<RulesetRuleActionParametersAlgorithm> algorithms) {
+
             this.algorithms = algorithms;
             return this;
         }
@@ -771,11 +773,13 @@ public final class RulesetRuleActionParameters {
         }
         @CustomType.Setter
         public Builder automaticHttpsRewrites(@Nullable Boolean automaticHttpsRewrites) {
+
             this.automaticHttpsRewrites = automaticHttpsRewrites;
             return this;
         }
         @CustomType.Setter
         public Builder autominifies(@Nullable List<RulesetRuleActionParametersAutominify> autominifies) {
+
             this.autominifies = autominifies;
             return this;
         }
@@ -784,36 +788,43 @@ public final class RulesetRuleActionParameters {
         }
         @CustomType.Setter
         public Builder bic(@Nullable Boolean bic) {
+
             this.bic = bic;
             return this;
         }
         @CustomType.Setter
         public Builder browserTtl(@Nullable RulesetRuleActionParametersBrowserTtl browserTtl) {
+
             this.browserTtl = browserTtl;
             return this;
         }
         @CustomType.Setter
         public Builder cache(@Nullable Boolean cache) {
+
             this.cache = cache;
             return this;
         }
         @CustomType.Setter
         public Builder cacheKey(@Nullable RulesetRuleActionParametersCacheKey cacheKey) {
+
             this.cacheKey = cacheKey;
             return this;
         }
         @CustomType.Setter
         public Builder content(@Nullable String content) {
+
             this.content = content;
             return this;
         }
         @CustomType.Setter
         public Builder contentType(@Nullable String contentType) {
+
             this.contentType = contentType;
             return this;
         }
         @CustomType.Setter
         public Builder cookieFields(@Nullable List<String> cookieFields) {
+
             this.cookieFields = cookieFields;
             return this;
         }
@@ -822,41 +833,49 @@ public final class RulesetRuleActionParameters {
         }
         @CustomType.Setter
         public Builder disableApps(@Nullable Boolean disableApps) {
+
             this.disableApps = disableApps;
             return this;
         }
         @CustomType.Setter
         public Builder disableRailgun(@Nullable Boolean disableRailgun) {
+
             this.disableRailgun = disableRailgun;
             return this;
         }
         @CustomType.Setter
         public Builder disableZaraz(@Nullable Boolean disableZaraz) {
+
             this.disableZaraz = disableZaraz;
             return this;
         }
         @CustomType.Setter
         public Builder edgeTtl(@Nullable RulesetRuleActionParametersEdgeTtl edgeTtl) {
+
             this.edgeTtl = edgeTtl;
             return this;
         }
         @CustomType.Setter
         public Builder emailObfuscation(@Nullable Boolean emailObfuscation) {
+
             this.emailObfuscation = emailObfuscation;
             return this;
         }
         @CustomType.Setter
         public Builder fromList(@Nullable RulesetRuleActionParametersFromList fromList) {
+
             this.fromList = fromList;
             return this;
         }
         @CustomType.Setter
         public Builder fromValue(@Nullable RulesetRuleActionParametersFromValue fromValue) {
+
             this.fromValue = fromValue;
             return this;
         }
         @CustomType.Setter
         public Builder headers(@Nullable List<RulesetRuleActionParametersHeader> headers) {
+
             this.headers = headers;
             return this;
         }
@@ -865,61 +884,73 @@ public final class RulesetRuleActionParameters {
         }
         @CustomType.Setter
         public Builder hostHeader(@Nullable String hostHeader) {
+
             this.hostHeader = hostHeader;
             return this;
         }
         @CustomType.Setter
         public Builder hotlinkProtection(@Nullable Boolean hotlinkProtection) {
+
             this.hotlinkProtection = hotlinkProtection;
             return this;
         }
         @CustomType.Setter
         public Builder id(@Nullable String id) {
+
             this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder increment(@Nullable Integer increment) {
+
             this.increment = increment;
             return this;
         }
         @CustomType.Setter
         public Builder matchedData(@Nullable RulesetRuleActionParametersMatchedData matchedData) {
+
             this.matchedData = matchedData;
             return this;
         }
         @CustomType.Setter
         public Builder mirage(@Nullable Boolean mirage) {
+
             this.mirage = mirage;
             return this;
         }
         @CustomType.Setter
         public Builder opportunisticEncryption(@Nullable Boolean opportunisticEncryption) {
+
             this.opportunisticEncryption = opportunisticEncryption;
             return this;
         }
         @CustomType.Setter
         public Builder origin(@Nullable RulesetRuleActionParametersOrigin origin) {
+
             this.origin = origin;
             return this;
         }
         @CustomType.Setter
         public Builder originCacheControl(@Nullable Boolean originCacheControl) {
+
             this.originCacheControl = originCacheControl;
             return this;
         }
         @CustomType.Setter
         public Builder originErrorPagePassthru(@Nullable Boolean originErrorPagePassthru) {
+
             this.originErrorPagePassthru = originErrorPagePassthru;
             return this;
         }
         @CustomType.Setter
         public Builder overrides(@Nullable RulesetRuleActionParametersOverrides overrides) {
+
             this.overrides = overrides;
             return this;
         }
         @CustomType.Setter
         public Builder phases(@Nullable List<String> phases) {
+
             this.phases = phases;
             return this;
         }
@@ -928,11 +959,13 @@ public final class RulesetRuleActionParameters {
         }
         @CustomType.Setter
         public Builder polish(@Nullable String polish) {
+
             this.polish = polish;
             return this;
         }
         @CustomType.Setter
         public Builder products(@Nullable List<String> products) {
+
             this.products = products;
             return this;
         }
@@ -941,11 +974,13 @@ public final class RulesetRuleActionParameters {
         }
         @CustomType.Setter
         public Builder readTimeout(@Nullable Integer readTimeout) {
+
             this.readTimeout = readTimeout;
             return this;
         }
         @CustomType.Setter
         public Builder requestFields(@Nullable List<String> requestFields) {
+
             this.requestFields = requestFields;
             return this;
         }
@@ -954,11 +989,13 @@ public final class RulesetRuleActionParameters {
         }
         @CustomType.Setter
         public Builder respectStrongEtags(@Nullable Boolean respectStrongEtags) {
+
             this.respectStrongEtags = respectStrongEtags;
             return this;
         }
         @CustomType.Setter
         public Builder responseFields(@Nullable List<String> responseFields) {
+
             this.responseFields = responseFields;
             return this;
         }
@@ -967,6 +1004,7 @@ public final class RulesetRuleActionParameters {
         }
         @CustomType.Setter
         public Builder responses(@Nullable List<RulesetRuleActionParametersResponse> responses) {
+
             this.responses = responses;
             return this;
         }
@@ -975,21 +1013,25 @@ public final class RulesetRuleActionParameters {
         }
         @CustomType.Setter
         public Builder rocketLoader(@Nullable Boolean rocketLoader) {
+
             this.rocketLoader = rocketLoader;
             return this;
         }
         @CustomType.Setter
         public Builder rules(@Nullable Map<String,String> rules) {
+
             this.rules = rules;
             return this;
         }
         @CustomType.Setter
         public Builder ruleset(@Nullable String ruleset) {
+
             this.ruleset = ruleset;
             return this;
         }
         @CustomType.Setter
         public Builder rulesets(@Nullable List<String> rulesets) {
+
             this.rulesets = rulesets;
             return this;
         }
@@ -998,46 +1040,55 @@ public final class RulesetRuleActionParameters {
         }
         @CustomType.Setter
         public Builder securityLevel(@Nullable String securityLevel) {
+
             this.securityLevel = securityLevel;
             return this;
         }
         @CustomType.Setter
         public Builder serveStale(@Nullable RulesetRuleActionParametersServeStale serveStale) {
+
             this.serveStale = serveStale;
             return this;
         }
         @CustomType.Setter
         public Builder serverSideExcludes(@Nullable Boolean serverSideExcludes) {
+
             this.serverSideExcludes = serverSideExcludes;
             return this;
         }
         @CustomType.Setter
         public Builder sni(@Nullable RulesetRuleActionParametersSni sni) {
+
             this.sni = sni;
             return this;
         }
         @CustomType.Setter
         public Builder ssl(@Nullable String ssl) {
+
             this.ssl = ssl;
             return this;
         }
         @CustomType.Setter
         public Builder statusCode(@Nullable Integer statusCode) {
+
             this.statusCode = statusCode;
             return this;
         }
         @CustomType.Setter
         public Builder sxg(@Nullable Boolean sxg) {
+
             this.sxg = sxg;
             return this;
         }
         @CustomType.Setter
         public Builder uri(@Nullable RulesetRuleActionParametersUri uri) {
+
             this.uri = uri;
             return this;
         }
         @CustomType.Setter
         public Builder version(@Nullable String version) {
+
             this.version = version;
             return this;
         }

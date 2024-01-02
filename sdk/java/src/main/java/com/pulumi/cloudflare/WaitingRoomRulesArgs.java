@@ -6,6 +6,7 @@ package com.pulumi.cloudflare;
 import com.pulumi.cloudflare.inputs.WaitingRoomRulesRuleArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -162,8 +163,12 @@ public final class WaitingRoomRulesArgs extends com.pulumi.resources.ResourceArg
         }
 
         public WaitingRoomRulesArgs build() {
-            $.waitingRoomId = Objects.requireNonNull($.waitingRoomId, "expected parameter 'waitingRoomId' to be non-null");
-            $.zoneId = Objects.requireNonNull($.zoneId, "expected parameter 'zoneId' to be non-null");
+            if ($.waitingRoomId == null) {
+                throw new MissingRequiredPropertyException("WaitingRoomRulesArgs", "waitingRoomId");
+            }
+            if ($.zoneId == null) {
+                throw new MissingRequiredPropertyException("WaitingRoomRulesArgs", "zoneId");
+            }
             return $;
         }
     }

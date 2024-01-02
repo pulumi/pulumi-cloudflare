@@ -8,6 +8,7 @@ import com.pulumi.cloudflare.inputs.AccessGroupIncludeArgs;
 import com.pulumi.cloudflare.inputs.AccessGroupRequireArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -197,8 +198,12 @@ public final class AccessGroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public AccessGroupArgs build() {
-            $.includes = Objects.requireNonNull($.includes, "expected parameter 'includes' to be non-null");
-            $.name = Objects.requireNonNull($.name, "expected parameter 'name' to be non-null");
+            if ($.includes == null) {
+                throw new MissingRequiredPropertyException("AccessGroupArgs", "includes");
+            }
+            if ($.name == null) {
+                throw new MissingRequiredPropertyException("AccessGroupArgs", "name");
+            }
             return $;
         }
     }

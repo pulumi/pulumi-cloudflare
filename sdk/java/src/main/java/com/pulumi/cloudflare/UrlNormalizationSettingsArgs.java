@@ -5,6 +5,7 @@ package com.pulumi.cloudflare;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -148,9 +149,15 @@ public final class UrlNormalizationSettingsArgs extends com.pulumi.resources.Res
         }
 
         public UrlNormalizationSettingsArgs build() {
-            $.scope = Objects.requireNonNull($.scope, "expected parameter 'scope' to be non-null");
-            $.type = Objects.requireNonNull($.type, "expected parameter 'type' to be non-null");
-            $.zoneId = Objects.requireNonNull($.zoneId, "expected parameter 'zoneId' to be non-null");
+            if ($.scope == null) {
+                throw new MissingRequiredPropertyException("UrlNormalizationSettingsArgs", "scope");
+            }
+            if ($.type == null) {
+                throw new MissingRequiredPropertyException("UrlNormalizationSettingsArgs", "type");
+            }
+            if ($.zoneId == null) {
+                throw new MissingRequiredPropertyException("UrlNormalizationSettingsArgs", "zoneId");
+            }
             return $;
         }
     }

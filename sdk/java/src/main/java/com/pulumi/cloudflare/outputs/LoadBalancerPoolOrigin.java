@@ -5,6 +5,7 @@ package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.cloudflare.outputs.LoadBalancerPoolOriginHeader;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Double;
 import java.lang.String;
@@ -104,16 +105,21 @@ public final class LoadBalancerPoolOrigin {
 
         @CustomType.Setter
         public Builder address(String address) {
-            this.address = Objects.requireNonNull(address);
+            if (address == null) {
+              throw new MissingRequiredPropertyException("LoadBalancerPoolOrigin", "address");
+            }
+            this.address = address;
             return this;
         }
         @CustomType.Setter
         public Builder enabled(@Nullable Boolean enabled) {
+
             this.enabled = enabled;
             return this;
         }
         @CustomType.Setter
         public Builder headers(@Nullable List<LoadBalancerPoolOriginHeader> headers) {
+
             this.headers = headers;
             return this;
         }
@@ -122,11 +128,15 @@ public final class LoadBalancerPoolOrigin {
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("LoadBalancerPoolOrigin", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder weight(@Nullable Double weight) {
+
             this.weight = weight;
             return this;
         }

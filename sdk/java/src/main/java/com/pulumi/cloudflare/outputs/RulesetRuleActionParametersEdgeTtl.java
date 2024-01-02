@@ -5,6 +5,7 @@ package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.cloudflare.outputs.RulesetRuleActionParametersEdgeTtlStatusCodeTtl;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -75,16 +76,21 @@ public final class RulesetRuleActionParametersEdgeTtl {
 
         @CustomType.Setter("default")
         public Builder default_(@Nullable Integer default_) {
+
             this.default_ = default_;
             return this;
         }
         @CustomType.Setter
         public Builder mode(String mode) {
-            this.mode = Objects.requireNonNull(mode);
+            if (mode == null) {
+              throw new MissingRequiredPropertyException("RulesetRuleActionParametersEdgeTtl", "mode");
+            }
+            this.mode = mode;
             return this;
         }
         @CustomType.Setter
         public Builder statusCodeTtls(@Nullable List<RulesetRuleActionParametersEdgeTtlStatusCodeTtl> statusCodeTtls) {
+
             this.statusCodeTtls = statusCodeTtls;
             return this;
         }

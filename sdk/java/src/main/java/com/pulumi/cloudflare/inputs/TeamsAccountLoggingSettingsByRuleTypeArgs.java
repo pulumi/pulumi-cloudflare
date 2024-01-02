@@ -8,6 +8,7 @@ import com.pulumi.cloudflare.inputs.TeamsAccountLoggingSettingsByRuleTypeHttpArg
 import com.pulumi.cloudflare.inputs.TeamsAccountLoggingSettingsByRuleTypeL4Args;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.util.Objects;
 
 
@@ -150,9 +151,15 @@ public final class TeamsAccountLoggingSettingsByRuleTypeArgs extends com.pulumi.
         }
 
         public TeamsAccountLoggingSettingsByRuleTypeArgs build() {
-            $.dns = Objects.requireNonNull($.dns, "expected parameter 'dns' to be non-null");
-            $.http = Objects.requireNonNull($.http, "expected parameter 'http' to be non-null");
-            $.l4 = Objects.requireNonNull($.l4, "expected parameter 'l4' to be non-null");
+            if ($.dns == null) {
+                throw new MissingRequiredPropertyException("TeamsAccountLoggingSettingsByRuleTypeArgs", "dns");
+            }
+            if ($.http == null) {
+                throw new MissingRequiredPropertyException("TeamsAccountLoggingSettingsByRuleTypeArgs", "http");
+            }
+            if ($.l4 == null) {
+                throw new MissingRequiredPropertyException("TeamsAccountLoggingSettingsByRuleTypeArgs", "l4");
+            }
             return $;
         }
     }

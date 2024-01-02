@@ -4,6 +4,7 @@
 package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -56,12 +57,18 @@ public final class WorkerScriptQueueBinding {
 
         @CustomType.Setter
         public Builder binding(String binding) {
-            this.binding = Objects.requireNonNull(binding);
+            if (binding == null) {
+              throw new MissingRequiredPropertyException("WorkerScriptQueueBinding", "binding");
+            }
+            this.binding = binding;
             return this;
         }
         @CustomType.Setter
         public Builder queue(String queue) {
-            this.queue = Objects.requireNonNull(queue);
+            if (queue == null) {
+              throw new MissingRequiredPropertyException("WorkerScriptQueueBinding", "queue");
+            }
+            this.queue = queue;
             return this;
         }
         public WorkerScriptQueueBinding build() {

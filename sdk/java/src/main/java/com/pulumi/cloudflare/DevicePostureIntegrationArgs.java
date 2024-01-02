@@ -6,6 +6,7 @@ package com.pulumi.cloudflare;
 import com.pulumi.cloudflare.inputs.DevicePostureIntegrationConfigArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -253,9 +254,15 @@ public final class DevicePostureIntegrationArgs extends com.pulumi.resources.Res
         }
 
         public DevicePostureIntegrationArgs build() {
-            $.accountId = Objects.requireNonNull($.accountId, "expected parameter 'accountId' to be non-null");
-            $.name = Objects.requireNonNull($.name, "expected parameter 'name' to be non-null");
-            $.type = Objects.requireNonNull($.type, "expected parameter 'type' to be non-null");
+            if ($.accountId == null) {
+                throw new MissingRequiredPropertyException("DevicePostureIntegrationArgs", "accountId");
+            }
+            if ($.name == null) {
+                throw new MissingRequiredPropertyException("DevicePostureIntegrationArgs", "name");
+            }
+            if ($.type == null) {
+                throw new MissingRequiredPropertyException("DevicePostureIntegrationArgs", "type");
+            }
             return $;
         }
     }

@@ -6,6 +6,7 @@ package com.pulumi.cloudflare;
 import com.pulumi.cloudflare.inputs.WaitingRoomAdditionalRouteArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -719,11 +720,21 @@ public final class WaitingRoomArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public WaitingRoomArgs build() {
-            $.host = Objects.requireNonNull($.host, "expected parameter 'host' to be non-null");
-            $.name = Objects.requireNonNull($.name, "expected parameter 'name' to be non-null");
-            $.newUsersPerMinute = Objects.requireNonNull($.newUsersPerMinute, "expected parameter 'newUsersPerMinute' to be non-null");
-            $.totalActiveUsers = Objects.requireNonNull($.totalActiveUsers, "expected parameter 'totalActiveUsers' to be non-null");
-            $.zoneId = Objects.requireNonNull($.zoneId, "expected parameter 'zoneId' to be non-null");
+            if ($.host == null) {
+                throw new MissingRequiredPropertyException("WaitingRoomArgs", "host");
+            }
+            if ($.name == null) {
+                throw new MissingRequiredPropertyException("WaitingRoomArgs", "name");
+            }
+            if ($.newUsersPerMinute == null) {
+                throw new MissingRequiredPropertyException("WaitingRoomArgs", "newUsersPerMinute");
+            }
+            if ($.totalActiveUsers == null) {
+                throw new MissingRequiredPropertyException("WaitingRoomArgs", "totalActiveUsers");
+            }
+            if ($.zoneId == null) {
+                throw new MissingRequiredPropertyException("WaitingRoomArgs", "zoneId");
+            }
             return $;
         }
     }

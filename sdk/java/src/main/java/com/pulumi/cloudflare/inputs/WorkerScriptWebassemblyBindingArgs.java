@@ -5,6 +5,7 @@ package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -111,8 +112,12 @@ public final class WorkerScriptWebassemblyBindingArgs extends com.pulumi.resourc
         }
 
         public WorkerScriptWebassemblyBindingArgs build() {
-            $.module = Objects.requireNonNull($.module, "expected parameter 'module' to be non-null");
-            $.name = Objects.requireNonNull($.name, "expected parameter 'name' to be non-null");
+            if ($.module == null) {
+                throw new MissingRequiredPropertyException("WorkerScriptWebassemblyBindingArgs", "module");
+            }
+            if ($.name == null) {
+                throw new MissingRequiredPropertyException("WorkerScriptWebassemblyBindingArgs", "name");
+            }
             return $;
         }
     }

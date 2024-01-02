@@ -218,16 +218,19 @@ public final class PagesProjectDeploymentConfigsProduction {
 
         @CustomType.Setter
         public Builder alwaysUseLatestCompatibilityDate(@Nullable Boolean alwaysUseLatestCompatibilityDate) {
+
             this.alwaysUseLatestCompatibilityDate = alwaysUseLatestCompatibilityDate;
             return this;
         }
         @CustomType.Setter
         public Builder compatibilityDate(@Nullable String compatibilityDate) {
+
             this.compatibilityDate = compatibilityDate;
             return this;
         }
         @CustomType.Setter
         public Builder compatibilityFlags(@Nullable List<String> compatibilityFlags) {
+
             this.compatibilityFlags = compatibilityFlags;
             return this;
         }
@@ -236,46 +239,55 @@ public final class PagesProjectDeploymentConfigsProduction {
         }
         @CustomType.Setter
         public Builder d1Databases(@Nullable Map<String,Object> d1Databases) {
+
             this.d1Databases = d1Databases;
             return this;
         }
         @CustomType.Setter
         public Builder durableObjectNamespaces(@Nullable Map<String,Object> durableObjectNamespaces) {
+
             this.durableObjectNamespaces = durableObjectNamespaces;
             return this;
         }
         @CustomType.Setter
         public Builder environmentVariables(@Nullable Map<String,Object> environmentVariables) {
+
             this.environmentVariables = environmentVariables;
             return this;
         }
         @CustomType.Setter
         public Builder failOpen(@Nullable Boolean failOpen) {
+
             this.failOpen = failOpen;
             return this;
         }
         @CustomType.Setter
         public Builder kvNamespaces(@Nullable Map<String,Object> kvNamespaces) {
+
             this.kvNamespaces = kvNamespaces;
             return this;
         }
         @CustomType.Setter
         public Builder placement(@Nullable PagesProjectDeploymentConfigsProductionPlacement placement) {
+
             this.placement = placement;
             return this;
         }
         @CustomType.Setter
         public Builder r2Buckets(@Nullable Map<String,Object> r2Buckets) {
+
             this.r2Buckets = r2Buckets;
             return this;
         }
         @CustomType.Setter
         public Builder secrets(@Nullable Map<String,Object> secrets) {
+
             this.secrets = secrets;
             return this;
         }
         @CustomType.Setter
         public Builder serviceBindings(@Nullable List<PagesProjectDeploymentConfigsProductionServiceBinding> serviceBindings) {
+
             this.serviceBindings = serviceBindings;
             return this;
         }
@@ -284,6 +296,7 @@ public final class PagesProjectDeploymentConfigsProduction {
         }
         @CustomType.Setter
         public Builder usageModel(@Nullable String usageModel) {
+
             this.usageModel = usageModel;
             return this;
         }

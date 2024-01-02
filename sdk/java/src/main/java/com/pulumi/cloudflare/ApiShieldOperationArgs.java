@@ -5,6 +5,7 @@ package com.pulumi.cloudflare;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -185,10 +186,18 @@ public final class ApiShieldOperationArgs extends com.pulumi.resources.ResourceA
         }
 
         public ApiShieldOperationArgs build() {
-            $.endpoint = Objects.requireNonNull($.endpoint, "expected parameter 'endpoint' to be non-null");
-            $.host = Objects.requireNonNull($.host, "expected parameter 'host' to be non-null");
-            $.method = Objects.requireNonNull($.method, "expected parameter 'method' to be non-null");
-            $.zoneId = Objects.requireNonNull($.zoneId, "expected parameter 'zoneId' to be non-null");
+            if ($.endpoint == null) {
+                throw new MissingRequiredPropertyException("ApiShieldOperationArgs", "endpoint");
+            }
+            if ($.host == null) {
+                throw new MissingRequiredPropertyException("ApiShieldOperationArgs", "host");
+            }
+            if ($.method == null) {
+                throw new MissingRequiredPropertyException("ApiShieldOperationArgs", "method");
+            }
+            if ($.zoneId == null) {
+                throw new MissingRequiredPropertyException("ApiShieldOperationArgs", "zoneId");
+            }
             return $;
         }
     }

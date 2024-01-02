@@ -4,6 +4,7 @@
 package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -66,11 +67,15 @@ public final class AccessPolicyApprovalGroup {
 
         @CustomType.Setter
         public Builder approvalsNeeded(Integer approvalsNeeded) {
-            this.approvalsNeeded = Objects.requireNonNull(approvalsNeeded);
+            if (approvalsNeeded == null) {
+              throw new MissingRequiredPropertyException("AccessPolicyApprovalGroup", "approvalsNeeded");
+            }
+            this.approvalsNeeded = approvalsNeeded;
             return this;
         }
         @CustomType.Setter
         public Builder emailAddresses(@Nullable List<String> emailAddresses) {
+
             this.emailAddresses = emailAddresses;
             return this;
         }
@@ -79,6 +84,7 @@ public final class AccessPolicyApprovalGroup {
         }
         @CustomType.Setter
         public Builder emailListUuid(@Nullable String emailListUuid) {
+
             this.emailListUuid = emailListUuid;
             return this;
         }

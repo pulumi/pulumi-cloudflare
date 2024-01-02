@@ -73,6 +73,7 @@ public final class RateLimitMatchRequest {
 
         @CustomType.Setter
         public Builder methods(@Nullable List<String> methods) {
+
             this.methods = methods;
             return this;
         }
@@ -81,6 +82,7 @@ public final class RateLimitMatchRequest {
         }
         @CustomType.Setter
         public Builder schemes(@Nullable List<String> schemes) {
+
             this.schemes = schemes;
             return this;
         }
@@ -89,6 +91,7 @@ public final class RateLimitMatchRequest {
         }
         @CustomType.Setter
         public Builder urlPattern(@Nullable String urlPattern) {
+
             this.urlPattern = urlPattern;
             return this;
         }

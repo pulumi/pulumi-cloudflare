@@ -61,7 +61,7 @@ import (
 //				"198.51.100.0/24",
 //				"2001:db8::/56",
 //			}
-//			if param := cfg.GetBool("myOffice"); param != nil {
+//			if param := cfg.GetObject("myOffice"); param != nil {
 //				myOffice = param
 //			}
 //			var officeNetwork []*cloudflare.AccessRule
@@ -74,7 +74,7 @@ import (
 //					Mode:      pulumi.String("whitelist"),
 //					Configuration: &cloudflare.AccessRuleConfigurationArgs{
 //						Target: pulumi.String("ip_range"),
-//						Value:  "TODO: element",
+//						Value:  "TODO: call element",
 //					},
 //				})
 //				if err != nil {

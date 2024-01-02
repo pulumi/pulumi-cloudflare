@@ -4,6 +4,7 @@
 package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -129,37 +130,48 @@ public final class ListItemRedirect {
 
         @CustomType.Setter
         public Builder includeSubdomains(@Nullable String includeSubdomains) {
+
             this.includeSubdomains = includeSubdomains;
             return this;
         }
         @CustomType.Setter
         public Builder preservePathSuffix(@Nullable String preservePathSuffix) {
+
             this.preservePathSuffix = preservePathSuffix;
             return this;
         }
         @CustomType.Setter
         public Builder preserveQueryString(@Nullable String preserveQueryString) {
+
             this.preserveQueryString = preserveQueryString;
             return this;
         }
         @CustomType.Setter
         public Builder sourceUrl(String sourceUrl) {
-            this.sourceUrl = Objects.requireNonNull(sourceUrl);
+            if (sourceUrl == null) {
+              throw new MissingRequiredPropertyException("ListItemRedirect", "sourceUrl");
+            }
+            this.sourceUrl = sourceUrl;
             return this;
         }
         @CustomType.Setter
         public Builder statusCode(@Nullable Integer statusCode) {
+
             this.statusCode = statusCode;
             return this;
         }
         @CustomType.Setter
         public Builder subpathMatching(@Nullable String subpathMatching) {
+
             this.subpathMatching = subpathMatching;
             return this;
         }
         @CustomType.Setter
         public Builder targetUrl(String targetUrl) {
-            this.targetUrl = Objects.requireNonNull(targetUrl);
+            if (targetUrl == null) {
+              throw new MissingRequiredPropertyException("ListItemRedirect", "targetUrl");
+            }
+            this.targetUrl = targetUrl;
             return this;
         }
         public ListItemRedirect build() {

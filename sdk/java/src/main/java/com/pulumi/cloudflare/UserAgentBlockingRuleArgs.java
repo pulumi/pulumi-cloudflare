@@ -6,6 +6,7 @@ package com.pulumi.cloudflare;
 import com.pulumi.cloudflare.inputs.UserAgentBlockingRuleConfigurationArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -224,11 +225,21 @@ public final class UserAgentBlockingRuleArgs extends com.pulumi.resources.Resour
         }
 
         public UserAgentBlockingRuleArgs build() {
-            $.configuration = Objects.requireNonNull($.configuration, "expected parameter 'configuration' to be non-null");
-            $.description = Objects.requireNonNull($.description, "expected parameter 'description' to be non-null");
-            $.mode = Objects.requireNonNull($.mode, "expected parameter 'mode' to be non-null");
-            $.paused = Objects.requireNonNull($.paused, "expected parameter 'paused' to be non-null");
-            $.zoneId = Objects.requireNonNull($.zoneId, "expected parameter 'zoneId' to be non-null");
+            if ($.configuration == null) {
+                throw new MissingRequiredPropertyException("UserAgentBlockingRuleArgs", "configuration");
+            }
+            if ($.description == null) {
+                throw new MissingRequiredPropertyException("UserAgentBlockingRuleArgs", "description");
+            }
+            if ($.mode == null) {
+                throw new MissingRequiredPropertyException("UserAgentBlockingRuleArgs", "mode");
+            }
+            if ($.paused == null) {
+                throw new MissingRequiredPropertyException("UserAgentBlockingRuleArgs", "paused");
+            }
+            if ($.zoneId == null) {
+                throw new MissingRequiredPropertyException("UserAgentBlockingRuleArgs", "zoneId");
+            }
             return $;
         }
     }

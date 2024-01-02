@@ -100,26 +100,31 @@ public final class AccessApplicationLandingPageDesign {
 
         @CustomType.Setter
         public Builder buttonColor(@Nullable String buttonColor) {
+
             this.buttonColor = buttonColor;
             return this;
         }
         @CustomType.Setter
         public Builder buttonTextColor(@Nullable String buttonTextColor) {
+
             this.buttonTextColor = buttonTextColor;
             return this;
         }
         @CustomType.Setter
         public Builder imageUrl(@Nullable String imageUrl) {
+
             this.imageUrl = imageUrl;
             return this;
         }
         @CustomType.Setter
         public Builder message(@Nullable String message) {
+
             this.message = message;
             return this;
         }
         @CustomType.Setter
         public Builder title(@Nullable String title) {
+
             this.title = title;
             return this;
         }

@@ -4,6 +4,7 @@
 package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.util.Objects;
 
@@ -48,12 +49,18 @@ public final class TeamsAccountLoggingSettingsByRuleTypeL4 {
 
         @CustomType.Setter
         public Builder logAll(Boolean logAll) {
-            this.logAll = Objects.requireNonNull(logAll);
+            if (logAll == null) {
+              throw new MissingRequiredPropertyException("TeamsAccountLoggingSettingsByRuleTypeL4", "logAll");
+            }
+            this.logAll = logAll;
             return this;
         }
         @CustomType.Setter
         public Builder logBlocks(Boolean logBlocks) {
-            this.logBlocks = Objects.requireNonNull(logBlocks);
+            if (logBlocks == null) {
+              throw new MissingRequiredPropertyException("TeamsAccountLoggingSettingsByRuleTypeL4", "logBlocks");
+            }
+            this.logBlocks = logBlocks;
             return this;
         }
         public TeamsAccountLoggingSettingsByRuleTypeL4 build() {

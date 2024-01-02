@@ -5,6 +5,7 @@ package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -113,7 +114,9 @@ public final class DlpProfileEntryPatternArgs extends com.pulumi.resources.Resou
         }
 
         public DlpProfileEntryPatternArgs build() {
-            $.regex = Objects.requireNonNull($.regex, "expected parameter 'regex' to be non-null");
+            if ($.regex == null) {
+                throw new MissingRequiredPropertyException("DlpProfileEntryPatternArgs", "regex");
+            }
             return $;
         }
     }

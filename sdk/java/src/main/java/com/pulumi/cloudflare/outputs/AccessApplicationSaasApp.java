@@ -5,6 +5,7 @@ package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.cloudflare.outputs.AccessApplicationSaasAppCustomAttribute;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -130,11 +131,15 @@ public final class AccessApplicationSaasApp {
 
         @CustomType.Setter
         public Builder consumerServiceUrl(String consumerServiceUrl) {
-            this.consumerServiceUrl = Objects.requireNonNull(consumerServiceUrl);
+            if (consumerServiceUrl == null) {
+              throw new MissingRequiredPropertyException("AccessApplicationSaasApp", "consumerServiceUrl");
+            }
+            this.consumerServiceUrl = consumerServiceUrl;
             return this;
         }
         @CustomType.Setter
         public Builder customAttributes(@Nullable List<AccessApplicationSaasAppCustomAttribute> customAttributes) {
+
             this.customAttributes = customAttributes;
             return this;
         }
@@ -143,26 +148,33 @@ public final class AccessApplicationSaasApp {
         }
         @CustomType.Setter
         public Builder idpEntityId(@Nullable String idpEntityId) {
+
             this.idpEntityId = idpEntityId;
             return this;
         }
         @CustomType.Setter
         public Builder nameIdFormat(@Nullable String nameIdFormat) {
+
             this.nameIdFormat = nameIdFormat;
             return this;
         }
         @CustomType.Setter
         public Builder publicKey(@Nullable String publicKey) {
+
             this.publicKey = publicKey;
             return this;
         }
         @CustomType.Setter
         public Builder spEntityId(String spEntityId) {
-            this.spEntityId = Objects.requireNonNull(spEntityId);
+            if (spEntityId == null) {
+              throw new MissingRequiredPropertyException("AccessApplicationSaasApp", "spEntityId");
+            }
+            this.spEntityId = spEntityId;
             return this;
         }
         @CustomType.Setter
         public Builder ssoEndpoint(@Nullable String ssoEndpoint) {
+
             this.ssoEndpoint = ssoEndpoint;
             return this;
         }

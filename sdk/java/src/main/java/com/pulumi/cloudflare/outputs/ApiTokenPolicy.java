@@ -4,6 +4,7 @@
 package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -74,12 +75,16 @@ public final class ApiTokenPolicy {
 
         @CustomType.Setter
         public Builder effect(@Nullable String effect) {
+
             this.effect = effect;
             return this;
         }
         @CustomType.Setter
         public Builder permissionGroups(List<String> permissionGroups) {
-            this.permissionGroups = Objects.requireNonNull(permissionGroups);
+            if (permissionGroups == null) {
+              throw new MissingRequiredPropertyException("ApiTokenPolicy", "permissionGroups");
+            }
+            this.permissionGroups = permissionGroups;
             return this;
         }
         public Builder permissionGroups(String... permissionGroups) {
@@ -87,7 +92,10 @@ public final class ApiTokenPolicy {
         }
         @CustomType.Setter
         public Builder resources(Map<String,String> resources) {
-            this.resources = Objects.requireNonNull(resources);
+            if (resources == null) {
+              throw new MissingRequiredPropertyException("ApiTokenPolicy", "resources");
+            }
+            this.resources = resources;
             return this;
         }
         public ApiTokenPolicy build() {

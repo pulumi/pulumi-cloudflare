@@ -58,11 +58,13 @@ public final class RulesetRuleExposedCredentialCheck {
 
         @CustomType.Setter
         public Builder passwordExpression(@Nullable String passwordExpression) {
+
             this.passwordExpression = passwordExpression;
             return this;
         }
         @CustomType.Setter
         public Builder usernameExpression(@Nullable String usernameExpression) {
+
             this.usernameExpression = usernameExpression;
             return this;
         }

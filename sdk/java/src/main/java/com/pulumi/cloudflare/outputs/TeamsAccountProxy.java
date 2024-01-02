@@ -4,6 +4,7 @@
 package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.util.Objects;
 
@@ -70,17 +71,26 @@ public final class TeamsAccountProxy {
 
         @CustomType.Setter
         public Builder rootCa(Boolean rootCa) {
-            this.rootCa = Objects.requireNonNull(rootCa);
+            if (rootCa == null) {
+              throw new MissingRequiredPropertyException("TeamsAccountProxy", "rootCa");
+            }
+            this.rootCa = rootCa;
             return this;
         }
         @CustomType.Setter
         public Builder tcp(Boolean tcp) {
-            this.tcp = Objects.requireNonNull(tcp);
+            if (tcp == null) {
+              throw new MissingRequiredPropertyException("TeamsAccountProxy", "tcp");
+            }
+            this.tcp = tcp;
             return this;
         }
         @CustomType.Setter
         public Builder udp(Boolean udp) {
-            this.udp = Objects.requireNonNull(udp);
+            if (udp == null) {
+              throw new MissingRequiredPropertyException("TeamsAccountProxy", "udp");
+            }
+            this.udp = udp;
             return this;
         }
         public TeamsAccountProxy build() {

@@ -4,6 +4,7 @@
 package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.util.Objects;
 
@@ -70,17 +71,26 @@ public final class TeamsAccountAntivirus {
 
         @CustomType.Setter
         public Builder enabledDownloadPhase(Boolean enabledDownloadPhase) {
-            this.enabledDownloadPhase = Objects.requireNonNull(enabledDownloadPhase);
+            if (enabledDownloadPhase == null) {
+              throw new MissingRequiredPropertyException("TeamsAccountAntivirus", "enabledDownloadPhase");
+            }
+            this.enabledDownloadPhase = enabledDownloadPhase;
             return this;
         }
         @CustomType.Setter
         public Builder enabledUploadPhase(Boolean enabledUploadPhase) {
-            this.enabledUploadPhase = Objects.requireNonNull(enabledUploadPhase);
+            if (enabledUploadPhase == null) {
+              throw new MissingRequiredPropertyException("TeamsAccountAntivirus", "enabledUploadPhase");
+            }
+            this.enabledUploadPhase = enabledUploadPhase;
             return this;
         }
         @CustomType.Setter
         public Builder failClosed(Boolean failClosed) {
-            this.failClosed = Objects.requireNonNull(failClosed);
+            if (failClosed == null) {
+              throw new MissingRequiredPropertyException("TeamsAccountAntivirus", "failClosed");
+            }
+            this.failClosed = failClosed;
             return this;
         }
         public TeamsAccountAntivirus build() {

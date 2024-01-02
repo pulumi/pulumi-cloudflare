@@ -87,21 +87,25 @@ public final class RulesetRuleActionParametersCacheKey {
 
         @CustomType.Setter
         public Builder cacheByDeviceType(@Nullable Boolean cacheByDeviceType) {
+
             this.cacheByDeviceType = cacheByDeviceType;
             return this;
         }
         @CustomType.Setter
         public Builder cacheDeceptionArmor(@Nullable Boolean cacheDeceptionArmor) {
+
             this.cacheDeceptionArmor = cacheDeceptionArmor;
             return this;
         }
         @CustomType.Setter
         public Builder customKey(@Nullable RulesetRuleActionParametersCacheKeyCustomKey customKey) {
+
             this.customKey = customKey;
             return this;
         }
         @CustomType.Setter
         public Builder ignoreQueryStringsOrder(@Nullable Boolean ignoreQueryStringsOrder) {
+
             this.ignoreQueryStringsOrder = ignoreQueryStringsOrder;
             return this;
         }

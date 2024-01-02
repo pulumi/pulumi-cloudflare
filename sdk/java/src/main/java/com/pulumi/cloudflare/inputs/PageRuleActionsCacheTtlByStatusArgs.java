@@ -5,6 +5,7 @@ package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -116,8 +117,12 @@ public final class PageRuleActionsCacheTtlByStatusArgs extends com.pulumi.resour
         }
 
         public PageRuleActionsCacheTtlByStatusArgs build() {
-            $.codes = Objects.requireNonNull($.codes, "expected parameter 'codes' to be non-null");
-            $.ttl = Objects.requireNonNull($.ttl, "expected parameter 'ttl' to be non-null");
+            if ($.codes == null) {
+                throw new MissingRequiredPropertyException("PageRuleActionsCacheTtlByStatusArgs", "codes");
+            }
+            if ($.ttl == null) {
+                throw new MissingRequiredPropertyException("PageRuleActionsCacheTtlByStatusArgs", "ttl");
+            }
             return $;
         }
     }

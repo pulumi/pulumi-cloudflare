@@ -5,6 +5,7 @@ package com.pulumi.cloudflare;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -707,9 +708,15 @@ public final class DeviceSettingsPolicyArgs extends com.pulumi.resources.Resourc
         }
 
         public DeviceSettingsPolicyArgs build() {
-            $.accountId = Objects.requireNonNull($.accountId, "expected parameter 'accountId' to be non-null");
-            $.description = Objects.requireNonNull($.description, "expected parameter 'description' to be non-null");
-            $.name = Objects.requireNonNull($.name, "expected parameter 'name' to be non-null");
+            if ($.accountId == null) {
+                throw new MissingRequiredPropertyException("DeviceSettingsPolicyArgs", "accountId");
+            }
+            if ($.description == null) {
+                throw new MissingRequiredPropertyException("DeviceSettingsPolicyArgs", "description");
+            }
+            if ($.name == null) {
+                throw new MissingRequiredPropertyException("DeviceSettingsPolicyArgs", "name");
+            }
             return $;
         }
     }

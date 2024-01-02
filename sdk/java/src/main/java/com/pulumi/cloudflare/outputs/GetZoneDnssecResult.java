@@ -4,6 +4,7 @@
 package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -197,62 +198,98 @@ public final class GetZoneDnssecResult {
 
         @CustomType.Setter
         public Builder algorithm(String algorithm) {
-            this.algorithm = Objects.requireNonNull(algorithm);
+            if (algorithm == null) {
+              throw new MissingRequiredPropertyException("GetZoneDnssecResult", "algorithm");
+            }
+            this.algorithm = algorithm;
             return this;
         }
         @CustomType.Setter
         public Builder digest(String digest) {
-            this.digest = Objects.requireNonNull(digest);
+            if (digest == null) {
+              throw new MissingRequiredPropertyException("GetZoneDnssecResult", "digest");
+            }
+            this.digest = digest;
             return this;
         }
         @CustomType.Setter
         public Builder digestAlgorithm(String digestAlgorithm) {
-            this.digestAlgorithm = Objects.requireNonNull(digestAlgorithm);
+            if (digestAlgorithm == null) {
+              throw new MissingRequiredPropertyException("GetZoneDnssecResult", "digestAlgorithm");
+            }
+            this.digestAlgorithm = digestAlgorithm;
             return this;
         }
         @CustomType.Setter
         public Builder digestType(String digestType) {
-            this.digestType = Objects.requireNonNull(digestType);
+            if (digestType == null) {
+              throw new MissingRequiredPropertyException("GetZoneDnssecResult", "digestType");
+            }
+            this.digestType = digestType;
             return this;
         }
         @CustomType.Setter
         public Builder ds(String ds) {
-            this.ds = Objects.requireNonNull(ds);
+            if (ds == null) {
+              throw new MissingRequiredPropertyException("GetZoneDnssecResult", "ds");
+            }
+            this.ds = ds;
             return this;
         }
         @CustomType.Setter
         public Builder flags(Integer flags) {
-            this.flags = Objects.requireNonNull(flags);
+            if (flags == null) {
+              throw new MissingRequiredPropertyException("GetZoneDnssecResult", "flags");
+            }
+            this.flags = flags;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetZoneDnssecResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder keyTag(Integer keyTag) {
-            this.keyTag = Objects.requireNonNull(keyTag);
+            if (keyTag == null) {
+              throw new MissingRequiredPropertyException("GetZoneDnssecResult", "keyTag");
+            }
+            this.keyTag = keyTag;
             return this;
         }
         @CustomType.Setter
         public Builder keyType(String keyType) {
-            this.keyType = Objects.requireNonNull(keyType);
+            if (keyType == null) {
+              throw new MissingRequiredPropertyException("GetZoneDnssecResult", "keyType");
+            }
+            this.keyType = keyType;
             return this;
         }
         @CustomType.Setter
         public Builder publicKey(String publicKey) {
-            this.publicKey = Objects.requireNonNull(publicKey);
+            if (publicKey == null) {
+              throw new MissingRequiredPropertyException("GetZoneDnssecResult", "publicKey");
+            }
+            this.publicKey = publicKey;
             return this;
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetZoneDnssecResult", "status");
+            }
+            this.status = status;
             return this;
         }
         @CustomType.Setter
         public Builder zoneId(String zoneId) {
-            this.zoneId = Objects.requireNonNull(zoneId);
+            if (zoneId == null) {
+              throw new MissingRequiredPropertyException("GetZoneDnssecResult", "zoneId");
+            }
+            this.zoneId = zoneId;
             return this;
         }
         public GetZoneDnssecResult build() {

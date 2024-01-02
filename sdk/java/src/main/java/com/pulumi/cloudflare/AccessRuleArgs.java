@@ -6,6 +6,7 @@ package com.pulumi.cloudflare;
 import com.pulumi.cloudflare.inputs.AccessRuleConfigurationArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -225,8 +226,12 @@ public final class AccessRuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public AccessRuleArgs build() {
-            $.configuration = Objects.requireNonNull($.configuration, "expected parameter 'configuration' to be non-null");
-            $.mode = Objects.requireNonNull($.mode, "expected parameter 'mode' to be non-null");
+            if ($.configuration == null) {
+                throw new MissingRequiredPropertyException("AccessRuleArgs", "configuration");
+            }
+            if ($.mode == null) {
+                throw new MissingRequiredPropertyException("AccessRuleArgs", "mode");
+            }
             return $;
         }
     }

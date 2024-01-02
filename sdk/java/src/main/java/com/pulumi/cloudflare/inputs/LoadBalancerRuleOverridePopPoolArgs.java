@@ -5,6 +5,7 @@ package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -122,8 +123,12 @@ public final class LoadBalancerRuleOverridePopPoolArgs extends com.pulumi.resour
         }
 
         public LoadBalancerRuleOverridePopPoolArgs build() {
-            $.poolIds = Objects.requireNonNull($.poolIds, "expected parameter 'poolIds' to be non-null");
-            $.pop = Objects.requireNonNull($.pop, "expected parameter 'pop' to be non-null");
+            if ($.poolIds == null) {
+                throw new MissingRequiredPropertyException("LoadBalancerRuleOverridePopPoolArgs", "poolIds");
+            }
+            if ($.pop == null) {
+                throw new MissingRequiredPropertyException("LoadBalancerRuleOverridePopPoolArgs", "pop");
+            }
             return $;
         }
     }

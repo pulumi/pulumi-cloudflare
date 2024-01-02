@@ -81,6 +81,7 @@ public final class GetRulesetsRulesetRuleRatelimit {
 
         @CustomType.Setter
         public Builder characteristics(@Nullable List<String> characteristics) {
+
             this.characteristics = characteristics;
             return this;
         }
@@ -89,36 +90,43 @@ public final class GetRulesetsRulesetRuleRatelimit {
         }
         @CustomType.Setter
         public Builder countingExpression(@Nullable String countingExpression) {
+
             this.countingExpression = countingExpression;
             return this;
         }
         @CustomType.Setter
         public Builder mitigationTimeout(@Nullable Integer mitigationTimeout) {
+
             this.mitigationTimeout = mitigationTimeout;
             return this;
         }
         @CustomType.Setter
         public Builder period(@Nullable Integer period) {
+
             this.period = period;
             return this;
         }
         @CustomType.Setter
         public Builder requestsPerPeriod(@Nullable Integer requestsPerPeriod) {
+
             this.requestsPerPeriod = requestsPerPeriod;
             return this;
         }
         @CustomType.Setter
         public Builder requestsToOrigin(@Nullable Boolean requestsToOrigin) {
+
             this.requestsToOrigin = requestsToOrigin;
             return this;
         }
         @CustomType.Setter
         public Builder scorePerPeriod(@Nullable Integer scorePerPeriod) {
+
             this.scorePerPeriod = scorePerPeriod;
             return this;
         }
         @CustomType.Setter
         public Builder scoreResponseHeaderName(@Nullable String scoreResponseHeaderName) {
+
             this.scoreResponseHeaderName = scoreResponseHeaderName;
             return this;
         }

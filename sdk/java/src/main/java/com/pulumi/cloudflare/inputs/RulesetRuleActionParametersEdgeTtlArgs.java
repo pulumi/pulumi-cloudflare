@@ -6,6 +6,7 @@ package com.pulumi.cloudflare.inputs;
 import com.pulumi.cloudflare.inputs.RulesetRuleActionParametersEdgeTtlStatusCodeTtlArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -163,7 +164,9 @@ public final class RulesetRuleActionParametersEdgeTtlArgs extends com.pulumi.res
         }
 
         public RulesetRuleActionParametersEdgeTtlArgs build() {
-            $.mode = Objects.requireNonNull($.mode, "expected parameter 'mode' to be non-null");
+            if ($.mode == null) {
+                throw new MissingRequiredPropertyException("RulesetRuleActionParametersEdgeTtlArgs", "mode");
+            }
             return $;
         }
     }

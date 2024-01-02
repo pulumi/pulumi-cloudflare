@@ -4,6 +4,7 @@
 package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -42,7 +43,10 @@ public final class ListItemValueHostname {
 
         @CustomType.Setter
         public Builder urlHostname(String urlHostname) {
-            this.urlHostname = Objects.requireNonNull(urlHostname);
+            if (urlHostname == null) {
+              throw new MissingRequiredPropertyException("ListItemValueHostname", "urlHostname");
+            }
+            this.urlHostname = urlHostname;
             return this;
         }
         public ListItemValueHostname build() {

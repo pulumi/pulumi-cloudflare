@@ -7,6 +7,7 @@ import com.pulumi.cloudflare.inputs.EmailRoutingRuleActionArgs;
 import com.pulumi.cloudflare.inputs.EmailRoutingRuleMatcherArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -286,10 +287,18 @@ public final class EmailRoutingRuleArgs extends com.pulumi.resources.ResourceArg
         }
 
         public EmailRoutingRuleArgs build() {
-            $.actions = Objects.requireNonNull($.actions, "expected parameter 'actions' to be non-null");
-            $.matchers = Objects.requireNonNull($.matchers, "expected parameter 'matchers' to be non-null");
-            $.name = Objects.requireNonNull($.name, "expected parameter 'name' to be non-null");
-            $.zoneId = Objects.requireNonNull($.zoneId, "expected parameter 'zoneId' to be non-null");
+            if ($.actions == null) {
+                throw new MissingRequiredPropertyException("EmailRoutingRuleArgs", "actions");
+            }
+            if ($.matchers == null) {
+                throw new MissingRequiredPropertyException("EmailRoutingRuleArgs", "matchers");
+            }
+            if ($.name == null) {
+                throw new MissingRequiredPropertyException("EmailRoutingRuleArgs", "name");
+            }
+            if ($.zoneId == null) {
+                throw new MissingRequiredPropertyException("EmailRoutingRuleArgs", "zoneId");
+            }
             return $;
         }
     }

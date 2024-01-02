@@ -5,6 +5,7 @@ package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -142,7 +143,9 @@ public final class AccessPolicyApprovalGroupArgs extends com.pulumi.resources.Re
         }
 
         public AccessPolicyApprovalGroupArgs build() {
-            $.approvalsNeeded = Objects.requireNonNull($.approvalsNeeded, "expected parameter 'approvalsNeeded' to be non-null");
+            if ($.approvalsNeeded == null) {
+                throw new MissingRequiredPropertyException("AccessPolicyApprovalGroupArgs", "approvalsNeeded");
+            }
             return $;
         }
     }

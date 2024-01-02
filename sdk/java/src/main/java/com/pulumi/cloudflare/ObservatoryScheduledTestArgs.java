@@ -5,6 +5,7 @@ package com.pulumi.cloudflare;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -185,10 +186,18 @@ public final class ObservatoryScheduledTestArgs extends com.pulumi.resources.Res
         }
 
         public ObservatoryScheduledTestArgs build() {
-            $.frequency = Objects.requireNonNull($.frequency, "expected parameter 'frequency' to be non-null");
-            $.region = Objects.requireNonNull($.region, "expected parameter 'region' to be non-null");
-            $.url = Objects.requireNonNull($.url, "expected parameter 'url' to be non-null");
-            $.zoneId = Objects.requireNonNull($.zoneId, "expected parameter 'zoneId' to be non-null");
+            if ($.frequency == null) {
+                throw new MissingRequiredPropertyException("ObservatoryScheduledTestArgs", "frequency");
+            }
+            if ($.region == null) {
+                throw new MissingRequiredPropertyException("ObservatoryScheduledTestArgs", "region");
+            }
+            if ($.url == null) {
+                throw new MissingRequiredPropertyException("ObservatoryScheduledTestArgs", "url");
+            }
+            if ($.zoneId == null) {
+                throw new MissingRequiredPropertyException("ObservatoryScheduledTestArgs", "zoneId");
+            }
             return $;
         }
     }

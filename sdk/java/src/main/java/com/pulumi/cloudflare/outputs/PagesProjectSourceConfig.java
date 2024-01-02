@@ -4,6 +4,7 @@
 package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -158,21 +159,25 @@ public final class PagesProjectSourceConfig {
 
         @CustomType.Setter
         public Builder deploymentsEnabled(@Nullable Boolean deploymentsEnabled) {
+
             this.deploymentsEnabled = deploymentsEnabled;
             return this;
         }
         @CustomType.Setter
         public Builder owner(@Nullable String owner) {
+
             this.owner = owner;
             return this;
         }
         @CustomType.Setter
         public Builder prCommentsEnabled(@Nullable Boolean prCommentsEnabled) {
+
             this.prCommentsEnabled = prCommentsEnabled;
             return this;
         }
         @CustomType.Setter
         public Builder previewBranchExcludes(@Nullable List<String> previewBranchExcludes) {
+
             this.previewBranchExcludes = previewBranchExcludes;
             return this;
         }
@@ -181,6 +186,7 @@ public final class PagesProjectSourceConfig {
         }
         @CustomType.Setter
         public Builder previewBranchIncludes(@Nullable List<String> previewBranchIncludes) {
+
             this.previewBranchIncludes = previewBranchIncludes;
             return this;
         }
@@ -189,21 +195,27 @@ public final class PagesProjectSourceConfig {
         }
         @CustomType.Setter
         public Builder previewDeploymentSetting(@Nullable String previewDeploymentSetting) {
+
             this.previewDeploymentSetting = previewDeploymentSetting;
             return this;
         }
         @CustomType.Setter
         public Builder productionBranch(String productionBranch) {
-            this.productionBranch = Objects.requireNonNull(productionBranch);
+            if (productionBranch == null) {
+              throw new MissingRequiredPropertyException("PagesProjectSourceConfig", "productionBranch");
+            }
+            this.productionBranch = productionBranch;
             return this;
         }
         @CustomType.Setter
         public Builder productionDeploymentEnabled(@Nullable Boolean productionDeploymentEnabled) {
+
             this.productionDeploymentEnabled = productionDeploymentEnabled;
             return this;
         }
         @CustomType.Setter
         public Builder repoName(@Nullable String repoName) {
+
             this.repoName = repoName;
             return this;
         }

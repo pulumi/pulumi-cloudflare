@@ -75,11 +75,13 @@ public final class TunnelConfigConfigOriginRequestIpRule {
 
         @CustomType.Setter
         public Builder allow(@Nullable Boolean allow) {
+
             this.allow = allow;
             return this;
         }
         @CustomType.Setter
         public Builder ports(@Nullable List<Integer> ports) {
+
             this.ports = ports;
             return this;
         }
@@ -88,6 +90,7 @@ public final class TunnelConfigConfigOriginRequestIpRule {
         }
         @CustomType.Setter
         public Builder prefix(@Nullable String prefix) {
+
             this.prefix = prefix;
             return this;
         }

@@ -42,11 +42,13 @@ public final class AccessGroupRequireExternalEvaluation {
 
         @CustomType.Setter
         public Builder evaluateUrl(@Nullable String evaluateUrl) {
+
             this.evaluateUrl = evaluateUrl;
             return this;
         }
         @CustomType.Setter
         public Builder keysUrl(@Nullable String keysUrl) {
+
             this.keysUrl = keysUrl;
             return this;
         }

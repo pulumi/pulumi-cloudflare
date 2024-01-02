@@ -4,6 +4,7 @@
 package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -46,17 +47,26 @@ public final class ZoneSettingsOverrideInitialSettingMinify {
 
         @CustomType.Setter
         public Builder css(String css) {
-            this.css = Objects.requireNonNull(css);
+            if (css == null) {
+              throw new MissingRequiredPropertyException("ZoneSettingsOverrideInitialSettingMinify", "css");
+            }
+            this.css = css;
             return this;
         }
         @CustomType.Setter
         public Builder html(String html) {
-            this.html = Objects.requireNonNull(html);
+            if (html == null) {
+              throw new MissingRequiredPropertyException("ZoneSettingsOverrideInitialSettingMinify", "html");
+            }
+            this.html = html;
             return this;
         }
         @CustomType.Setter
         public Builder js(String js) {
-            this.js = Objects.requireNonNull(js);
+            if (js == null) {
+              throw new MissingRequiredPropertyException("ZoneSettingsOverrideInitialSettingMinify", "js");
+            }
+            this.js = js;
             return this;
         }
         public ZoneSettingsOverrideInitialSettingMinify build() {

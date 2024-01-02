@@ -143,41 +143,49 @@ public final class TeamsAccountBlockPage {
 
         @CustomType.Setter
         public Builder backgroundColor(@Nullable String backgroundColor) {
+
             this.backgroundColor = backgroundColor;
             return this;
         }
         @CustomType.Setter
         public Builder enabled(@Nullable Boolean enabled) {
+
             this.enabled = enabled;
             return this;
         }
         @CustomType.Setter
         public Builder footerText(@Nullable String footerText) {
+
             this.footerText = footerText;
             return this;
         }
         @CustomType.Setter
         public Builder headerText(@Nullable String headerText) {
+
             this.headerText = headerText;
             return this;
         }
         @CustomType.Setter
         public Builder logoPath(@Nullable String logoPath) {
+
             this.logoPath = logoPath;
             return this;
         }
         @CustomType.Setter
         public Builder mailtoAddress(@Nullable String mailtoAddress) {
+
             this.mailtoAddress = mailtoAddress;
             return this;
         }
         @CustomType.Setter
         public Builder mailtoSubject(@Nullable String mailtoSubject) {
+
             this.mailtoSubject = mailtoSubject;
             return this;
         }
         @CustomType.Setter
         public Builder name(@Nullable String name) {
+
             this.name = name;
             return this;
         }

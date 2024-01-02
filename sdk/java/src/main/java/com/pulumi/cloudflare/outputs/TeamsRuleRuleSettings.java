@@ -279,76 +279,91 @@ public final class TeamsRuleRuleSettings {
 
         @CustomType.Setter
         public Builder addHeaders(@Nullable Map<String,String> addHeaders) {
+
             this.addHeaders = addHeaders;
             return this;
         }
         @CustomType.Setter
         public Builder allowChildBypass(@Nullable Boolean allowChildBypass) {
+
             this.allowChildBypass = allowChildBypass;
             return this;
         }
         @CustomType.Setter
         public Builder auditSsh(@Nullable TeamsRuleRuleSettingsAuditSsh auditSsh) {
+
             this.auditSsh = auditSsh;
             return this;
         }
         @CustomType.Setter
         public Builder bisoAdminControls(@Nullable TeamsRuleRuleSettingsBisoAdminControls bisoAdminControls) {
+
             this.bisoAdminControls = bisoAdminControls;
             return this;
         }
         @CustomType.Setter
         public Builder blockPageEnabled(@Nullable Boolean blockPageEnabled) {
+
             this.blockPageEnabled = blockPageEnabled;
             return this;
         }
         @CustomType.Setter
         public Builder blockPageReason(@Nullable String blockPageReason) {
+
             this.blockPageReason = blockPageReason;
             return this;
         }
         @CustomType.Setter
         public Builder bypassParentRule(@Nullable Boolean bypassParentRule) {
+
             this.bypassParentRule = bypassParentRule;
             return this;
         }
         @CustomType.Setter
         public Builder checkSession(@Nullable TeamsRuleRuleSettingsCheckSession checkSession) {
+
             this.checkSession = checkSession;
             return this;
         }
         @CustomType.Setter
         public Builder egress(@Nullable TeamsRuleRuleSettingsEgress egress) {
+
             this.egress = egress;
             return this;
         }
         @CustomType.Setter
         public Builder insecureDisableDnssecValidation(@Nullable Boolean insecureDisableDnssecValidation) {
+
             this.insecureDisableDnssecValidation = insecureDisableDnssecValidation;
             return this;
         }
         @CustomType.Setter
         public Builder ipCategories(@Nullable Boolean ipCategories) {
+
             this.ipCategories = ipCategories;
             return this;
         }
         @CustomType.Setter
         public Builder l4override(@Nullable TeamsRuleRuleSettingsL4override l4override) {
+
             this.l4override = l4override;
             return this;
         }
         @CustomType.Setter
         public Builder notificationSettings(@Nullable TeamsRuleRuleSettingsNotificationSettings notificationSettings) {
+
             this.notificationSettings = notificationSettings;
             return this;
         }
         @CustomType.Setter
         public Builder overrideHost(@Nullable String overrideHost) {
+
             this.overrideHost = overrideHost;
             return this;
         }
         @CustomType.Setter
         public Builder overrideIps(@Nullable List<String> overrideIps) {
+
             this.overrideIps = overrideIps;
             return this;
         }
@@ -357,11 +372,13 @@ public final class TeamsRuleRuleSettings {
         }
         @CustomType.Setter
         public Builder payloadLog(@Nullable TeamsRuleRuleSettingsPayloadLog payloadLog) {
+
             this.payloadLog = payloadLog;
             return this;
         }
         @CustomType.Setter
         public Builder untrustedCert(@Nullable TeamsRuleRuleSettingsUntrustedCert untrustedCert) {
+
             this.untrustedCert = untrustedCert;
             return this;
         }

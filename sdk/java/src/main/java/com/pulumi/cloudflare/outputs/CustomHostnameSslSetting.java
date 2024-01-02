@@ -101,6 +101,7 @@ public final class CustomHostnameSslSetting {
 
         @CustomType.Setter
         public Builder ciphers(@Nullable List<String> ciphers) {
+
             this.ciphers = ciphers;
             return this;
         }
@@ -109,21 +110,25 @@ public final class CustomHostnameSslSetting {
         }
         @CustomType.Setter
         public Builder earlyHints(@Nullable String earlyHints) {
+
             this.earlyHints = earlyHints;
             return this;
         }
         @CustomType.Setter
         public Builder http2(@Nullable String http2) {
+
             this.http2 = http2;
             return this;
         }
         @CustomType.Setter
         public Builder minTlsVersion(@Nullable String minTlsVersion) {
+
             this.minTlsVersion = minTlsVersion;
             return this;
         }
         @CustomType.Setter
         public Builder tls13(@Nullable String tls13) {
+
             this.tls13 = tls13;
             return this;
         }

@@ -4,6 +4,7 @@
 package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -121,32 +122,50 @@ public final class GetApiTokenPermissionGroupsResult {
 
         @CustomType.Setter
         public Builder account(Map<String,String> account) {
-            this.account = Objects.requireNonNull(account);
+            if (account == null) {
+              throw new MissingRequiredPropertyException("GetApiTokenPermissionGroupsResult", "account");
+            }
+            this.account = account;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetApiTokenPermissionGroupsResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder permissions(Map<String,String> permissions) {
-            this.permissions = Objects.requireNonNull(permissions);
+            if (permissions == null) {
+              throw new MissingRequiredPropertyException("GetApiTokenPermissionGroupsResult", "permissions");
+            }
+            this.permissions = permissions;
             return this;
         }
         @CustomType.Setter
         public Builder r2(Map<String,String> r2) {
-            this.r2 = Objects.requireNonNull(r2);
+            if (r2 == null) {
+              throw new MissingRequiredPropertyException("GetApiTokenPermissionGroupsResult", "r2");
+            }
+            this.r2 = r2;
             return this;
         }
         @CustomType.Setter
         public Builder user(Map<String,String> user) {
-            this.user = Objects.requireNonNull(user);
+            if (user == null) {
+              throw new MissingRequiredPropertyException("GetApiTokenPermissionGroupsResult", "user");
+            }
+            this.user = user;
             return this;
         }
         @CustomType.Setter
         public Builder zone(Map<String,String> zone) {
-            this.zone = Objects.requireNonNull(zone);
+            if (zone == null) {
+              throw new MissingRequiredPropertyException("GetApiTokenPermissionGroupsResult", "zone");
+            }
+            this.zone = zone;
             return this;
         }
         public GetApiTokenPermissionGroupsResult build() {

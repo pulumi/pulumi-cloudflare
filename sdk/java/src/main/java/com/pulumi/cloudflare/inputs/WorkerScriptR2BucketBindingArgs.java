@@ -5,6 +5,7 @@ package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -111,8 +112,12 @@ public final class WorkerScriptR2BucketBindingArgs extends com.pulumi.resources.
         }
 
         public WorkerScriptR2BucketBindingArgs build() {
-            $.bucketName = Objects.requireNonNull($.bucketName, "expected parameter 'bucketName' to be non-null");
-            $.name = Objects.requireNonNull($.name, "expected parameter 'name' to be non-null");
+            if ($.bucketName == null) {
+                throw new MissingRequiredPropertyException("WorkerScriptR2BucketBindingArgs", "bucketName");
+            }
+            if ($.name == null) {
+                throw new MissingRequiredPropertyException("WorkerScriptR2BucketBindingArgs", "name");
+            }
             return $;
         }
     }

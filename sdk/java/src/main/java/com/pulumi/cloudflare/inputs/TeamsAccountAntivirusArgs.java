@@ -5,6 +5,7 @@ package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.util.Objects;
 
@@ -148,9 +149,15 @@ public final class TeamsAccountAntivirusArgs extends com.pulumi.resources.Resour
         }
 
         public TeamsAccountAntivirusArgs build() {
-            $.enabledDownloadPhase = Objects.requireNonNull($.enabledDownloadPhase, "expected parameter 'enabledDownloadPhase' to be non-null");
-            $.enabledUploadPhase = Objects.requireNonNull($.enabledUploadPhase, "expected parameter 'enabledUploadPhase' to be non-null");
-            $.failClosed = Objects.requireNonNull($.failClosed, "expected parameter 'failClosed' to be non-null");
+            if ($.enabledDownloadPhase == null) {
+                throw new MissingRequiredPropertyException("TeamsAccountAntivirusArgs", "enabledDownloadPhase");
+            }
+            if ($.enabledUploadPhase == null) {
+                throw new MissingRequiredPropertyException("TeamsAccountAntivirusArgs", "enabledUploadPhase");
+            }
+            if ($.failClosed == null) {
+                throw new MissingRequiredPropertyException("TeamsAccountAntivirusArgs", "failClosed");
+            }
             return $;
         }
     }

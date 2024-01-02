@@ -157,31 +157,37 @@ public final class CustomHostnameSsl {
 
         @CustomType.Setter
         public Builder bundleMethod(@Nullable String bundleMethod) {
+
             this.bundleMethod = bundleMethod;
             return this;
         }
         @CustomType.Setter
         public Builder certificateAuthority(@Nullable String certificateAuthority) {
+
             this.certificateAuthority = certificateAuthority;
             return this;
         }
         @CustomType.Setter
         public Builder customCertificate(@Nullable String customCertificate) {
+
             this.customCertificate = customCertificate;
             return this;
         }
         @CustomType.Setter
         public Builder customKey(@Nullable String customKey) {
+
             this.customKey = customKey;
             return this;
         }
         @CustomType.Setter
         public Builder method(@Nullable String method) {
+
             this.method = method;
             return this;
         }
         @CustomType.Setter
         public Builder settings(@Nullable List<CustomHostnameSslSetting> settings) {
+
             this.settings = settings;
             return this;
         }
@@ -190,16 +196,19 @@ public final class CustomHostnameSsl {
         }
         @CustomType.Setter
         public Builder status(@Nullable String status) {
+
             this.status = status;
             return this;
         }
         @CustomType.Setter
         public Builder type(@Nullable String type) {
+
             this.type = type;
             return this;
         }
         @CustomType.Setter
         public Builder validationErrors(@Nullable List<CustomHostnameSslValidationError> validationErrors) {
+
             this.validationErrors = validationErrors;
             return this;
         }
@@ -208,6 +217,7 @@ public final class CustomHostnameSsl {
         }
         @CustomType.Setter
         public Builder validationRecords(@Nullable List<CustomHostnameSslValidationRecord> validationRecords) {
+
             this.validationRecords = validationRecords;
             return this;
         }
@@ -216,6 +226,7 @@ public final class CustomHostnameSsl {
         }
         @CustomType.Setter
         public Builder wildcard(@Nullable Boolean wildcard) {
+
             this.wildcard = wildcard;
             return this;
         }

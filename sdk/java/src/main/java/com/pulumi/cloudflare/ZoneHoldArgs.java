@@ -5,6 +5,7 @@ package com.pulumi.cloudflare;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -188,8 +189,12 @@ public final class ZoneHoldArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public ZoneHoldArgs build() {
-            $.hold = Objects.requireNonNull($.hold, "expected parameter 'hold' to be non-null");
-            $.zoneId = Objects.requireNonNull($.zoneId, "expected parameter 'zoneId' to be non-null");
+            if ($.hold == null) {
+                throw new MissingRequiredPropertyException("ZoneHoldArgs", "hold");
+            }
+            if ($.zoneId == null) {
+                throw new MissingRequiredPropertyException("ZoneHoldArgs", "zoneId");
+            }
             return $;
         }
     }

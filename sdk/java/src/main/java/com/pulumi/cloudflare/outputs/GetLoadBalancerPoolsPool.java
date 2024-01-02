@@ -6,6 +6,7 @@ package com.pulumi.cloudflare.outputs;
 import com.pulumi.cloudflare.outputs.GetLoadBalancerPoolsPoolLoadShedding;
 import com.pulumi.cloudflare.outputs.GetLoadBalancerPoolsPoolOrigin;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Double;
 import java.lang.Integer;
@@ -230,7 +231,10 @@ public final class GetLoadBalancerPoolsPool {
 
         @CustomType.Setter
         public Builder checkRegions(List<String> checkRegions) {
-            this.checkRegions = Objects.requireNonNull(checkRegions);
+            if (checkRegions == null) {
+              throw new MissingRequiredPropertyException("GetLoadBalancerPoolsPool", "checkRegions");
+            }
+            this.checkRegions = checkRegions;
             return this;
         }
         public Builder checkRegions(String... checkRegions) {
@@ -238,32 +242,50 @@ public final class GetLoadBalancerPoolsPool {
         }
         @CustomType.Setter
         public Builder createdOn(String createdOn) {
-            this.createdOn = Objects.requireNonNull(createdOn);
+            if (createdOn == null) {
+              throw new MissingRequiredPropertyException("GetLoadBalancerPoolsPool", "createdOn");
+            }
+            this.createdOn = createdOn;
             return this;
         }
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetLoadBalancerPoolsPool", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder enabled(Boolean enabled) {
-            this.enabled = Objects.requireNonNull(enabled);
+            if (enabled == null) {
+              throw new MissingRequiredPropertyException("GetLoadBalancerPoolsPool", "enabled");
+            }
+            this.enabled = enabled;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetLoadBalancerPoolsPool", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder latitude(Double latitude) {
-            this.latitude = Objects.requireNonNull(latitude);
+            if (latitude == null) {
+              throw new MissingRequiredPropertyException("GetLoadBalancerPoolsPool", "latitude");
+            }
+            this.latitude = latitude;
             return this;
         }
         @CustomType.Setter
         public Builder loadSheddings(List<GetLoadBalancerPoolsPoolLoadShedding> loadSheddings) {
-            this.loadSheddings = Objects.requireNonNull(loadSheddings);
+            if (loadSheddings == null) {
+              throw new MissingRequiredPropertyException("GetLoadBalancerPoolsPool", "loadSheddings");
+            }
+            this.loadSheddings = loadSheddings;
             return this;
         }
         public Builder loadSheddings(GetLoadBalancerPoolsPoolLoadShedding... loadSheddings) {
@@ -271,37 +293,58 @@ public final class GetLoadBalancerPoolsPool {
         }
         @CustomType.Setter
         public Builder longitude(Double longitude) {
-            this.longitude = Objects.requireNonNull(longitude);
+            if (longitude == null) {
+              throw new MissingRequiredPropertyException("GetLoadBalancerPoolsPool", "longitude");
+            }
+            this.longitude = longitude;
             return this;
         }
         @CustomType.Setter
         public Builder minimumOrigins(Integer minimumOrigins) {
-            this.minimumOrigins = Objects.requireNonNull(minimumOrigins);
+            if (minimumOrigins == null) {
+              throw new MissingRequiredPropertyException("GetLoadBalancerPoolsPool", "minimumOrigins");
+            }
+            this.minimumOrigins = minimumOrigins;
             return this;
         }
         @CustomType.Setter
         public Builder modifiedOn(String modifiedOn) {
-            this.modifiedOn = Objects.requireNonNull(modifiedOn);
+            if (modifiedOn == null) {
+              throw new MissingRequiredPropertyException("GetLoadBalancerPoolsPool", "modifiedOn");
+            }
+            this.modifiedOn = modifiedOn;
             return this;
         }
         @CustomType.Setter
         public Builder monitor(String monitor) {
-            this.monitor = Objects.requireNonNull(monitor);
+            if (monitor == null) {
+              throw new MissingRequiredPropertyException("GetLoadBalancerPoolsPool", "monitor");
+            }
+            this.monitor = monitor;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetLoadBalancerPoolsPool", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder notificationEmail(String notificationEmail) {
-            this.notificationEmail = Objects.requireNonNull(notificationEmail);
+            if (notificationEmail == null) {
+              throw new MissingRequiredPropertyException("GetLoadBalancerPoolsPool", "notificationEmail");
+            }
+            this.notificationEmail = notificationEmail;
             return this;
         }
         @CustomType.Setter
         public Builder origins(List<GetLoadBalancerPoolsPoolOrigin> origins) {
-            this.origins = Objects.requireNonNull(origins);
+            if (origins == null) {
+              throw new MissingRequiredPropertyException("GetLoadBalancerPoolsPool", "origins");
+            }
+            this.origins = origins;
             return this;
         }
         public Builder origins(GetLoadBalancerPoolsPoolOrigin... origins) {

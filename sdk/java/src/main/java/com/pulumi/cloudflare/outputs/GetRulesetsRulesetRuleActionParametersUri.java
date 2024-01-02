@@ -50,16 +50,19 @@ public final class GetRulesetsRulesetRuleActionParametersUri {
 
         @CustomType.Setter
         public Builder origin(@Nullable Boolean origin) {
+
             this.origin = origin;
             return this;
         }
         @CustomType.Setter
         public Builder path(@Nullable GetRulesetsRulesetRuleActionParametersUriPath path) {
+
             this.path = path;
             return this;
         }
         @CustomType.Setter
         public Builder query(@Nullable GetRulesetsRulesetRuleActionParametersUriQuery query) {
+
             this.query = query;
             return this;
         }

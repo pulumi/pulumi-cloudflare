@@ -4,6 +4,7 @@
 package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -70,17 +71,26 @@ public final class AccessGroupIncludeAuthContext {
 
         @CustomType.Setter
         public Builder acId(String acId) {
-            this.acId = Objects.requireNonNull(acId);
+            if (acId == null) {
+              throw new MissingRequiredPropertyException("AccessGroupIncludeAuthContext", "acId");
+            }
+            this.acId = acId;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("AccessGroupIncludeAuthContext", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder identityProviderId(String identityProviderId) {
-            this.identityProviderId = Objects.requireNonNull(identityProviderId);
+            if (identityProviderId == null) {
+              throw new MissingRequiredPropertyException("AccessGroupIncludeAuthContext", "identityProviderId");
+            }
+            this.identityProviderId = identityProviderId;
             return this;
         }
         public AccessGroupIncludeAuthContext build() {

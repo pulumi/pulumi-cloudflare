@@ -36,6 +36,7 @@ public final class CertificatePackValidationError {
 
         @CustomType.Setter
         public Builder message(@Nullable String message) {
+
             this.message = message;
             return this;
         }

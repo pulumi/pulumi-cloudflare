@@ -4,6 +4,7 @@
 package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -73,11 +74,13 @@ public final class SpectrumApplicationEdgeIps {
 
         @CustomType.Setter
         public Builder connectivity(@Nullable String connectivity) {
+
             this.connectivity = connectivity;
             return this;
         }
         @CustomType.Setter
         public Builder ips(@Nullable List<String> ips) {
+
             this.ips = ips;
             return this;
         }
@@ -86,7 +89,10 @@ public final class SpectrumApplicationEdgeIps {
         }
         @CustomType.Setter
         public Builder type(String type) {
-            this.type = Objects.requireNonNull(type);
+            if (type == null) {
+              throw new MissingRequiredPropertyException("SpectrumApplicationEdgeIps", "type");
+            }
+            this.type = type;
             return this;
         }
         public SpectrumApplicationEdgeIps build() {

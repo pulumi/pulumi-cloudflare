@@ -74,16 +74,19 @@ public final class RulesetRuleActionParametersUri {
 
         @CustomType.Setter
         public Builder origin(@Nullable Boolean origin) {
+
             this.origin = origin;
             return this;
         }
         @CustomType.Setter
         public Builder path(@Nullable RulesetRuleActionParametersUriPath path) {
+
             this.path = path;
             return this;
         }
         @CustomType.Setter
         public Builder query(@Nullable RulesetRuleActionParametersUriQuery query) {
+
             this.query = query;
             return this;
         }

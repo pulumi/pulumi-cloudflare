@@ -5,6 +5,7 @@ package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -74,7 +75,9 @@ public final class ListItemValueHostnameArgs extends com.pulumi.resources.Resour
         }
 
         public ListItemValueHostnameArgs build() {
-            $.urlHostname = Objects.requireNonNull($.urlHostname, "expected parameter 'urlHostname' to be non-null");
+            if ($.urlHostname == null) {
+                throw new MissingRequiredPropertyException("ListItemValueHostnameArgs", "urlHostname");
+            }
             return $;
         }
     }
