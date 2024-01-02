@@ -59,11 +59,13 @@ public final class RateLimitMatch {
 
         @CustomType.Setter
         public Builder request(@Nullable RateLimitMatchRequest request) {
+
             this.request = request;
             return this;
         }
         @CustomType.Setter
         public Builder response(@Nullable RateLimitMatchResponse response) {
+
             this.response = response;
             return this;
         }

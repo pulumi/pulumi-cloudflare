@@ -44,6 +44,7 @@ public final class DevicePostureRuleMatch {
 
         @CustomType.Setter
         public Builder platform(@Nullable String platform) {
+
             this.platform = platform;
             return this;
         }

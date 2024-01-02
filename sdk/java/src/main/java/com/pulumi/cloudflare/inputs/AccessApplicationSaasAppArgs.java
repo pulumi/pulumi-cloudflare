@@ -6,6 +6,7 @@ package com.pulumi.cloudflare.inputs;
 import com.pulumi.cloudflare.inputs.AccessApplicationSaasAppCustomAttributeArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -310,8 +311,12 @@ public final class AccessApplicationSaasAppArgs extends com.pulumi.resources.Res
         }
 
         public AccessApplicationSaasAppArgs build() {
-            $.consumerServiceUrl = Objects.requireNonNull($.consumerServiceUrl, "expected parameter 'consumerServiceUrl' to be non-null");
-            $.spEntityId = Objects.requireNonNull($.spEntityId, "expected parameter 'spEntityId' to be non-null");
+            if ($.consumerServiceUrl == null) {
+                throw new MissingRequiredPropertyException("AccessApplicationSaasAppArgs", "consumerServiceUrl");
+            }
+            if ($.spEntityId == null) {
+                throw new MissingRequiredPropertyException("AccessApplicationSaasAppArgs", "spEntityId");
+            }
             return $;
         }
     }

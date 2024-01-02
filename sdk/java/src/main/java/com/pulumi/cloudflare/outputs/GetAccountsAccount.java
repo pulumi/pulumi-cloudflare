@@ -55,21 +55,25 @@ public final class GetAccountsAccount {
 
         @CustomType.Setter
         public Builder enforceTwofactor(@Nullable Boolean enforceTwofactor) {
+
             this.enforceTwofactor = enforceTwofactor;
             return this;
         }
         @CustomType.Setter
         public Builder id(@Nullable String id) {
+
             this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder name(@Nullable String name) {
+
             this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder type(@Nullable String type) {
+
             this.type = type;
             return this;
         }

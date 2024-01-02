@@ -5,6 +5,7 @@ package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -111,8 +112,12 @@ public final class RateLimitActionResponseArgs extends com.pulumi.resources.Reso
         }
 
         public RateLimitActionResponseArgs build() {
-            $.body = Objects.requireNonNull($.body, "expected parameter 'body' to be non-null");
-            $.contentType = Objects.requireNonNull($.contentType, "expected parameter 'contentType' to be non-null");
+            if ($.body == null) {
+                throw new MissingRequiredPropertyException("RateLimitActionResponseArgs", "body");
+            }
+            if ($.contentType == null) {
+                throw new MissingRequiredPropertyException("RateLimitActionResponseArgs", "contentType");
+            }
             return $;
         }
     }

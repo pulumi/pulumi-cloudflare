@@ -4,6 +4,7 @@
 package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -113,7 +114,10 @@ public final class GetIpRangesResult {
 
         @CustomType.Setter
         public Builder chinaIpv4CidrBlocks(List<String> chinaIpv4CidrBlocks) {
-            this.chinaIpv4CidrBlocks = Objects.requireNonNull(chinaIpv4CidrBlocks);
+            if (chinaIpv4CidrBlocks == null) {
+              throw new MissingRequiredPropertyException("GetIpRangesResult", "chinaIpv4CidrBlocks");
+            }
+            this.chinaIpv4CidrBlocks = chinaIpv4CidrBlocks;
             return this;
         }
         public Builder chinaIpv4CidrBlocks(String... chinaIpv4CidrBlocks) {
@@ -121,7 +125,10 @@ public final class GetIpRangesResult {
         }
         @CustomType.Setter
         public Builder chinaIpv6CidrBlocks(List<String> chinaIpv6CidrBlocks) {
-            this.chinaIpv6CidrBlocks = Objects.requireNonNull(chinaIpv6CidrBlocks);
+            if (chinaIpv6CidrBlocks == null) {
+              throw new MissingRequiredPropertyException("GetIpRangesResult", "chinaIpv6CidrBlocks");
+            }
+            this.chinaIpv6CidrBlocks = chinaIpv6CidrBlocks;
             return this;
         }
         public Builder chinaIpv6CidrBlocks(String... chinaIpv6CidrBlocks) {
@@ -129,7 +136,10 @@ public final class GetIpRangesResult {
         }
         @CustomType.Setter
         public Builder cidrBlocks(List<String> cidrBlocks) {
-            this.cidrBlocks = Objects.requireNonNull(cidrBlocks);
+            if (cidrBlocks == null) {
+              throw new MissingRequiredPropertyException("GetIpRangesResult", "cidrBlocks");
+            }
+            this.cidrBlocks = cidrBlocks;
             return this;
         }
         public Builder cidrBlocks(String... cidrBlocks) {
@@ -137,12 +147,18 @@ public final class GetIpRangesResult {
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetIpRangesResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder ipv4CidrBlocks(List<String> ipv4CidrBlocks) {
-            this.ipv4CidrBlocks = Objects.requireNonNull(ipv4CidrBlocks);
+            if (ipv4CidrBlocks == null) {
+              throw new MissingRequiredPropertyException("GetIpRangesResult", "ipv4CidrBlocks");
+            }
+            this.ipv4CidrBlocks = ipv4CidrBlocks;
             return this;
         }
         public Builder ipv4CidrBlocks(String... ipv4CidrBlocks) {
@@ -150,7 +166,10 @@ public final class GetIpRangesResult {
         }
         @CustomType.Setter
         public Builder ipv6CidrBlocks(List<String> ipv6CidrBlocks) {
-            this.ipv6CidrBlocks = Objects.requireNonNull(ipv6CidrBlocks);
+            if (ipv6CidrBlocks == null) {
+              throw new MissingRequiredPropertyException("GetIpRangesResult", "ipv6CidrBlocks");
+            }
+            this.ipv6CidrBlocks = ipv6CidrBlocks;
             return this;
         }
         public Builder ipv6CidrBlocks(String... ipv6CidrBlocks) {

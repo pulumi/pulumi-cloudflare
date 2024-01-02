@@ -145,26 +145,31 @@ public final class AccessApplicationCorsHeader {
 
         @CustomType.Setter
         public Builder allowAllHeaders(@Nullable Boolean allowAllHeaders) {
+
             this.allowAllHeaders = allowAllHeaders;
             return this;
         }
         @CustomType.Setter
         public Builder allowAllMethods(@Nullable Boolean allowAllMethods) {
+
             this.allowAllMethods = allowAllMethods;
             return this;
         }
         @CustomType.Setter
         public Builder allowAllOrigins(@Nullable Boolean allowAllOrigins) {
+
             this.allowAllOrigins = allowAllOrigins;
             return this;
         }
         @CustomType.Setter
         public Builder allowCredentials(@Nullable Boolean allowCredentials) {
+
             this.allowCredentials = allowCredentials;
             return this;
         }
         @CustomType.Setter
         public Builder allowedHeaders(@Nullable List<String> allowedHeaders) {
+
             this.allowedHeaders = allowedHeaders;
             return this;
         }
@@ -173,6 +178,7 @@ public final class AccessApplicationCorsHeader {
         }
         @CustomType.Setter
         public Builder allowedMethods(@Nullable List<String> allowedMethods) {
+
             this.allowedMethods = allowedMethods;
             return this;
         }
@@ -181,6 +187,7 @@ public final class AccessApplicationCorsHeader {
         }
         @CustomType.Setter
         public Builder allowedOrigins(@Nullable List<String> allowedOrigins) {
+
             this.allowedOrigins = allowedOrigins;
             return this;
         }
@@ -189,6 +196,7 @@ public final class AccessApplicationCorsHeader {
         }
         @CustomType.Setter
         public Builder maxAge(@Nullable Integer maxAge) {
+
             this.maxAge = maxAge;
             return this;
         }

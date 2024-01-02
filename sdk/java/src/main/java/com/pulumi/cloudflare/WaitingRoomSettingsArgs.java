@@ -5,6 +5,7 @@ package com.pulumi.cloudflare;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -114,7 +115,9 @@ public final class WaitingRoomSettingsArgs extends com.pulumi.resources.Resource
         }
 
         public WaitingRoomSettingsArgs build() {
-            $.zoneId = Objects.requireNonNull($.zoneId, "expected parameter 'zoneId' to be non-null");
+            if ($.zoneId == null) {
+                throw new MissingRequiredPropertyException("WaitingRoomSettingsArgs", "zoneId");
+            }
             return $;
         }
     }

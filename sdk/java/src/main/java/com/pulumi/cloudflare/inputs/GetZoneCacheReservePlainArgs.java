@@ -4,6 +4,7 @@
 package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -63,7 +64,9 @@ public final class GetZoneCacheReservePlainArgs extends com.pulumi.resources.Inv
         }
 
         public GetZoneCacheReservePlainArgs build() {
-            $.zoneId = Objects.requireNonNull($.zoneId, "expected parameter 'zoneId' to be non-null");
+            if ($.zoneId == null) {
+                throw new MissingRequiredPropertyException("GetZoneCacheReservePlainArgs", "zoneId");
+            }
             return $;
         }
     }

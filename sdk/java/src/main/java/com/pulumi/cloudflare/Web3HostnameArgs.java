@@ -5,6 +5,7 @@ package com.pulumi.cloudflare;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -224,9 +225,15 @@ public final class Web3HostnameArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public Web3HostnameArgs build() {
-            $.name = Objects.requireNonNull($.name, "expected parameter 'name' to be non-null");
-            $.target = Objects.requireNonNull($.target, "expected parameter 'target' to be non-null");
-            $.zoneId = Objects.requireNonNull($.zoneId, "expected parameter 'zoneId' to be non-null");
+            if ($.name == null) {
+                throw new MissingRequiredPropertyException("Web3HostnameArgs", "name");
+            }
+            if ($.target == null) {
+                throw new MissingRequiredPropertyException("Web3HostnameArgs", "target");
+            }
+            if ($.zoneId == null) {
+                throw new MissingRequiredPropertyException("Web3HostnameArgs", "zoneId");
+            }
             return $;
         }
     }

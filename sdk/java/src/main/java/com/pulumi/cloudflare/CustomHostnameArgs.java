@@ -6,6 +6,7 @@ package com.pulumi.cloudflare;
 import com.pulumi.cloudflare.inputs.CustomHostnameSslArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -312,8 +313,12 @@ public final class CustomHostnameArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         public CustomHostnameArgs build() {
-            $.hostname = Objects.requireNonNull($.hostname, "expected parameter 'hostname' to be non-null");
-            $.zoneId = Objects.requireNonNull($.zoneId, "expected parameter 'zoneId' to be non-null");
+            if ($.hostname == null) {
+                throw new MissingRequiredPropertyException("CustomHostnameArgs", "hostname");
+            }
+            if ($.zoneId == null) {
+                throw new MissingRequiredPropertyException("CustomHostnameArgs", "zoneId");
+            }
             return $;
         }
     }

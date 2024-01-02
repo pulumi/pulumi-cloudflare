@@ -9,6 +9,7 @@ import com.pulumi.cloudflare.inputs.NotificationPolicyPagerdutyIntegrationArgs;
 import com.pulumi.cloudflare.inputs.NotificationPolicyWebhooksIntegrationArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -408,10 +409,18 @@ public final class NotificationPolicyArgs extends com.pulumi.resources.ResourceA
         }
 
         public NotificationPolicyArgs build() {
-            $.accountId = Objects.requireNonNull($.accountId, "expected parameter 'accountId' to be non-null");
-            $.alertType = Objects.requireNonNull($.alertType, "expected parameter 'alertType' to be non-null");
-            $.enabled = Objects.requireNonNull($.enabled, "expected parameter 'enabled' to be non-null");
-            $.name = Objects.requireNonNull($.name, "expected parameter 'name' to be non-null");
+            if ($.accountId == null) {
+                throw new MissingRequiredPropertyException("NotificationPolicyArgs", "accountId");
+            }
+            if ($.alertType == null) {
+                throw new MissingRequiredPropertyException("NotificationPolicyArgs", "alertType");
+            }
+            if ($.enabled == null) {
+                throw new MissingRequiredPropertyException("NotificationPolicyArgs", "enabled");
+            }
+            if ($.name == null) {
+                throw new MissingRequiredPropertyException("NotificationPolicyArgs", "name");
+            }
             return $;
         }
     }

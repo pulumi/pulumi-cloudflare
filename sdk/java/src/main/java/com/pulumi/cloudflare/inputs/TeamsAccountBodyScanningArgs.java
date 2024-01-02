@@ -5,6 +5,7 @@ package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -74,7 +75,9 @@ public final class TeamsAccountBodyScanningArgs extends com.pulumi.resources.Res
         }
 
         public TeamsAccountBodyScanningArgs build() {
-            $.inspectionMode = Objects.requireNonNull($.inspectionMode, "expected parameter 'inspectionMode' to be non-null");
+            if ($.inspectionMode == null) {
+                throw new MissingRequiredPropertyException("TeamsAccountBodyScanningArgs", "inspectionMode");
+            }
             return $;
         }
     }

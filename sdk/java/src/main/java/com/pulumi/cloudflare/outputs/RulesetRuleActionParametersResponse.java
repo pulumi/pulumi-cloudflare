@@ -73,16 +73,19 @@ public final class RulesetRuleActionParametersResponse {
 
         @CustomType.Setter
         public Builder content(@Nullable String content) {
+
             this.content = content;
             return this;
         }
         @CustomType.Setter
         public Builder contentType(@Nullable String contentType) {
+
             this.contentType = contentType;
             return this;
         }
         @CustomType.Setter
         public Builder statusCode(@Nullable Integer statusCode) {
+
             this.statusCode = statusCode;
             return this;
         }

@@ -181,11 +181,13 @@ public final class AccessPolicyRequire {
 
         @CustomType.Setter
         public Builder anyValidServiceToken(@Nullable Boolean anyValidServiceToken) {
+
             this.anyValidServiceToken = anyValidServiceToken;
             return this;
         }
         @CustomType.Setter
         public Builder authContexts(@Nullable List<AccessPolicyRequireAuthContext> authContexts) {
+
             this.authContexts = authContexts;
             return this;
         }
@@ -194,11 +196,13 @@ public final class AccessPolicyRequire {
         }
         @CustomType.Setter
         public Builder authMethod(@Nullable String authMethod) {
+
             this.authMethod = authMethod;
             return this;
         }
         @CustomType.Setter
         public Builder azures(@Nullable List<AccessPolicyRequireAzure> azures) {
+
             this.azures = azures;
             return this;
         }
@@ -207,16 +211,19 @@ public final class AccessPolicyRequire {
         }
         @CustomType.Setter
         public Builder certificate(@Nullable Boolean certificate) {
+
             this.certificate = certificate;
             return this;
         }
         @CustomType.Setter
         public Builder commonName(@Nullable String commonName) {
+
             this.commonName = commonName;
             return this;
         }
         @CustomType.Setter
         public Builder devicePostures(@Nullable List<String> devicePostures) {
+
             this.devicePostures = devicePostures;
             return this;
         }
@@ -225,6 +232,7 @@ public final class AccessPolicyRequire {
         }
         @CustomType.Setter
         public Builder emailDomains(@Nullable List<String> emailDomains) {
+
             this.emailDomains = emailDomains;
             return this;
         }
@@ -233,6 +241,7 @@ public final class AccessPolicyRequire {
         }
         @CustomType.Setter
         public Builder emails(@Nullable List<String> emails) {
+
             this.emails = emails;
             return this;
         }
@@ -241,16 +250,19 @@ public final class AccessPolicyRequire {
         }
         @CustomType.Setter
         public Builder everyone(@Nullable Boolean everyone) {
+
             this.everyone = everyone;
             return this;
         }
         @CustomType.Setter
         public Builder externalEvaluation(@Nullable AccessPolicyRequireExternalEvaluation externalEvaluation) {
+
             this.externalEvaluation = externalEvaluation;
             return this;
         }
         @CustomType.Setter
         public Builder geos(@Nullable List<String> geos) {
+
             this.geos = geos;
             return this;
         }
@@ -259,6 +271,7 @@ public final class AccessPolicyRequire {
         }
         @CustomType.Setter
         public Builder githubs(@Nullable List<AccessPolicyRequireGithub> githubs) {
+
             this.githubs = githubs;
             return this;
         }
@@ -267,6 +280,7 @@ public final class AccessPolicyRequire {
         }
         @CustomType.Setter
         public Builder groups(@Nullable List<String> groups) {
+
             this.groups = groups;
             return this;
         }
@@ -275,6 +289,7 @@ public final class AccessPolicyRequire {
         }
         @CustomType.Setter
         public Builder gsuites(@Nullable List<AccessPolicyRequireGsuite> gsuites) {
+
             this.gsuites = gsuites;
             return this;
         }
@@ -283,6 +298,7 @@ public final class AccessPolicyRequire {
         }
         @CustomType.Setter
         public Builder ipLists(@Nullable List<String> ipLists) {
+
             this.ipLists = ipLists;
             return this;
         }
@@ -291,6 +307,7 @@ public final class AccessPolicyRequire {
         }
         @CustomType.Setter
         public Builder ips(@Nullable List<String> ips) {
+
             this.ips = ips;
             return this;
         }
@@ -299,6 +316,7 @@ public final class AccessPolicyRequire {
         }
         @CustomType.Setter
         public Builder loginMethods(@Nullable List<String> loginMethods) {
+
             this.loginMethods = loginMethods;
             return this;
         }
@@ -307,6 +325,7 @@ public final class AccessPolicyRequire {
         }
         @CustomType.Setter
         public Builder oktas(@Nullable List<AccessPolicyRequireOkta> oktas) {
+
             this.oktas = oktas;
             return this;
         }
@@ -315,6 +334,7 @@ public final class AccessPolicyRequire {
         }
         @CustomType.Setter
         public Builder samls(@Nullable List<AccessPolicyRequireSaml> samls) {
+
             this.samls = samls;
             return this;
         }
@@ -323,6 +343,7 @@ public final class AccessPolicyRequire {
         }
         @CustomType.Setter
         public Builder serviceTokens(@Nullable List<String> serviceTokens) {
+
             this.serviceTokens = serviceTokens;
             return this;
         }

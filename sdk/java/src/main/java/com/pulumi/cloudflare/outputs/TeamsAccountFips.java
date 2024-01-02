@@ -44,6 +44,7 @@ public final class TeamsAccountFips {
 
         @CustomType.Setter
         public Builder tls(@Nullable Boolean tls) {
+
             this.tls = tls;
             return this;
         }

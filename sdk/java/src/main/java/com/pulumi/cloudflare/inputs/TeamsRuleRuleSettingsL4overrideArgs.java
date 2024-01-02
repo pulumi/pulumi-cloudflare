@@ -5,6 +5,7 @@ package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -112,8 +113,12 @@ public final class TeamsRuleRuleSettingsL4overrideArgs extends com.pulumi.resour
         }
 
         public TeamsRuleRuleSettingsL4overrideArgs build() {
-            $.ip = Objects.requireNonNull($.ip, "expected parameter 'ip' to be non-null");
-            $.port = Objects.requireNonNull($.port, "expected parameter 'port' to be non-null");
+            if ($.ip == null) {
+                throw new MissingRequiredPropertyException("TeamsRuleRuleSettingsL4overrideArgs", "ip");
+            }
+            if ($.port == null) {
+                throw new MissingRequiredPropertyException("TeamsRuleRuleSettingsL4overrideArgs", "port");
+            }
             return $;
         }
     }

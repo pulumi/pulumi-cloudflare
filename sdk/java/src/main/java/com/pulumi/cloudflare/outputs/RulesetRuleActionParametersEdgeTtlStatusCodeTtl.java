@@ -74,11 +74,13 @@ public final class RulesetRuleActionParametersEdgeTtlStatusCodeTtl {
 
         @CustomType.Setter
         public Builder statusCode(@Nullable Integer statusCode) {
+
             this.statusCode = statusCode;
             return this;
         }
         @CustomType.Setter
         public Builder statusCodeRanges(@Nullable List<RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRange> statusCodeRanges) {
+
             this.statusCodeRanges = statusCodeRanges;
             return this;
         }
@@ -87,6 +89,7 @@ public final class RulesetRuleActionParametersEdgeTtlStatusCodeTtl {
         }
         @CustomType.Setter
         public Builder value(@Nullable Integer value) {
+
             this.value = value;
             return this;
         }

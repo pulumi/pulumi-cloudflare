@@ -42,11 +42,13 @@ public final class GetRulesetsRulesetRuleActionParametersUriQuery {
 
         @CustomType.Setter
         public Builder expression(@Nullable String expression) {
+
             this.expression = expression;
             return this;
         }
         @CustomType.Setter
         public Builder value(@Nullable String value) {
+
             this.value = value;
             return this;
         }

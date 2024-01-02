@@ -7,6 +7,7 @@ import com.pulumi.cloudflare.inputs.CustomSslCustomSslOptionsArgs;
 import com.pulumi.cloudflare.inputs.CustomSslCustomSslPriorityArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -137,7 +138,9 @@ public final class CustomSslArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public CustomSslArgs build() {
-            $.zoneId = Objects.requireNonNull($.zoneId, "expected parameter 'zoneId' to be non-null");
+            if ($.zoneId == null) {
+                throw new MissingRequiredPropertyException("CustomSslArgs", "zoneId");
+            }
             return $;
         }
     }

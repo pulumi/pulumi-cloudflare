@@ -9,6 +9,7 @@ import com.pulumi.cloudflare.inputs.SpectrumApplicationOriginDnsArgs;
 import com.pulumi.cloudflare.inputs.SpectrumApplicationOriginPortRangeArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -537,9 +538,15 @@ public final class SpectrumApplicationArgs extends com.pulumi.resources.Resource
         }
 
         public SpectrumApplicationArgs build() {
-            $.dns = Objects.requireNonNull($.dns, "expected parameter 'dns' to be non-null");
-            $.protocol = Objects.requireNonNull($.protocol, "expected parameter 'protocol' to be non-null");
-            $.zoneId = Objects.requireNonNull($.zoneId, "expected parameter 'zoneId' to be non-null");
+            if ($.dns == null) {
+                throw new MissingRequiredPropertyException("SpectrumApplicationArgs", "dns");
+            }
+            if ($.protocol == null) {
+                throw new MissingRequiredPropertyException("SpectrumApplicationArgs", "protocol");
+            }
+            if ($.zoneId == null) {
+                throw new MissingRequiredPropertyException("SpectrumApplicationArgs", "zoneId");
+            }
             return $;
         }
     }

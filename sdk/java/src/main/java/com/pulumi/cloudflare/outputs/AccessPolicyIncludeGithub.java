@@ -57,16 +57,19 @@ public final class AccessPolicyIncludeGithub {
 
         @CustomType.Setter
         public Builder identityProviderId(@Nullable String identityProviderId) {
+
             this.identityProviderId = identityProviderId;
             return this;
         }
         @CustomType.Setter
         public Builder name(@Nullable String name) {
+
             this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder teams(@Nullable List<String> teams) {
+
             this.teams = teams;
             return this;
         }

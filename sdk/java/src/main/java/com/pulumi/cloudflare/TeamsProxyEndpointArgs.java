@@ -5,6 +5,7 @@ package com.pulumi.cloudflare;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -159,9 +160,15 @@ public final class TeamsProxyEndpointArgs extends com.pulumi.resources.ResourceA
         }
 
         public TeamsProxyEndpointArgs build() {
-            $.accountId = Objects.requireNonNull($.accountId, "expected parameter 'accountId' to be non-null");
-            $.ips = Objects.requireNonNull($.ips, "expected parameter 'ips' to be non-null");
-            $.name = Objects.requireNonNull($.name, "expected parameter 'name' to be non-null");
+            if ($.accountId == null) {
+                throw new MissingRequiredPropertyException("TeamsProxyEndpointArgs", "accountId");
+            }
+            if ($.ips == null) {
+                throw new MissingRequiredPropertyException("TeamsProxyEndpointArgs", "ips");
+            }
+            if ($.name == null) {
+                throw new MissingRequiredPropertyException("TeamsProxyEndpointArgs", "name");
+            }
             return $;
         }
     }

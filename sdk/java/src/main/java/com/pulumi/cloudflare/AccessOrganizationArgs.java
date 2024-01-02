@@ -7,6 +7,7 @@ import com.pulumi.cloudflare.inputs.AccessOrganizationCustomPageArgs;
 import com.pulumi.cloudflare.inputs.AccessOrganizationLoginDesignArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -444,7 +445,9 @@ public final class AccessOrganizationArgs extends com.pulumi.resources.ResourceA
         }
 
         public AccessOrganizationArgs build() {
-            $.authDomain = Objects.requireNonNull($.authDomain, "expected parameter 'authDomain' to be non-null");
+            if ($.authDomain == null) {
+                throw new MissingRequiredPropertyException("AccessOrganizationArgs", "authDomain");
+            }
             return $;
         }
     }

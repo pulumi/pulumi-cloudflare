@@ -60,11 +60,13 @@ public final class LoadBalancerRuleOverrideRandomSteering {
 
         @CustomType.Setter
         public Builder defaultWeight(@Nullable Double defaultWeight) {
+
             this.defaultWeight = defaultWeight;
             return this;
         }
         @CustomType.Setter
         public Builder poolWeights(@Nullable Map<String,Double> poolWeights) {
+
             this.poolWeights = poolWeights;
             return this;
         }

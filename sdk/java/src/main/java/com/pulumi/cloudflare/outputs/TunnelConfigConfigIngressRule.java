@@ -5,6 +5,7 @@ package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.cloudflare.outputs.TunnelConfigConfigIngressRuleOriginRequest;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -79,22 +80,28 @@ public final class TunnelConfigConfigIngressRule {
 
         @CustomType.Setter
         public Builder hostname(@Nullable String hostname) {
+
             this.hostname = hostname;
             return this;
         }
         @CustomType.Setter
         public Builder originRequest(@Nullable TunnelConfigConfigIngressRuleOriginRequest originRequest) {
+
             this.originRequest = originRequest;
             return this;
         }
         @CustomType.Setter
         public Builder path(@Nullable String path) {
+
             this.path = path;
             return this;
         }
         @CustomType.Setter
         public Builder service(String service) {
-            this.service = Objects.requireNonNull(service);
+            if (service == null) {
+              throw new MissingRequiredPropertyException("TunnelConfigConfigIngressRule", "service");
+            }
+            this.service = service;
             return this;
         }
         public TunnelConfigConfigIngressRule build() {

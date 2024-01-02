@@ -5,6 +5,7 @@ package com.pulumi.cloudflare;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -271,12 +272,24 @@ public final class WebAnalyticsRuleArgs extends com.pulumi.resources.ResourceArg
         }
 
         public WebAnalyticsRuleArgs build() {
-            $.accountId = Objects.requireNonNull($.accountId, "expected parameter 'accountId' to be non-null");
-            $.host = Objects.requireNonNull($.host, "expected parameter 'host' to be non-null");
-            $.inclusive = Objects.requireNonNull($.inclusive, "expected parameter 'inclusive' to be non-null");
-            $.isPaused = Objects.requireNonNull($.isPaused, "expected parameter 'isPaused' to be non-null");
-            $.paths = Objects.requireNonNull($.paths, "expected parameter 'paths' to be non-null");
-            $.rulesetId = Objects.requireNonNull($.rulesetId, "expected parameter 'rulesetId' to be non-null");
+            if ($.accountId == null) {
+                throw new MissingRequiredPropertyException("WebAnalyticsRuleArgs", "accountId");
+            }
+            if ($.host == null) {
+                throw new MissingRequiredPropertyException("WebAnalyticsRuleArgs", "host");
+            }
+            if ($.inclusive == null) {
+                throw new MissingRequiredPropertyException("WebAnalyticsRuleArgs", "inclusive");
+            }
+            if ($.isPaused == null) {
+                throw new MissingRequiredPropertyException("WebAnalyticsRuleArgs", "isPaused");
+            }
+            if ($.paths == null) {
+                throw new MissingRequiredPropertyException("WebAnalyticsRuleArgs", "paths");
+            }
+            if ($.rulesetId == null) {
+                throw new MissingRequiredPropertyException("WebAnalyticsRuleArgs", "rulesetId");
+            }
             return $;
         }
     }

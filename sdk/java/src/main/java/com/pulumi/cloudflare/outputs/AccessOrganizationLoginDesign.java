@@ -100,26 +100,31 @@ public final class AccessOrganizationLoginDesign {
 
         @CustomType.Setter
         public Builder backgroundColor(@Nullable String backgroundColor) {
+
             this.backgroundColor = backgroundColor;
             return this;
         }
         @CustomType.Setter
         public Builder footerText(@Nullable String footerText) {
+
             this.footerText = footerText;
             return this;
         }
         @CustomType.Setter
         public Builder headerText(@Nullable String headerText) {
+
             this.headerText = headerText;
             return this;
         }
         @CustomType.Setter
         public Builder logoPath(@Nullable String logoPath) {
+
             this.logoPath = logoPath;
             return this;
         }
         @CustomType.Setter
         public Builder textColor(@Nullable String textColor) {
+
             this.textColor = textColor;
             return this;
         }

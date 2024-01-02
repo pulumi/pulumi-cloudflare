@@ -4,6 +4,7 @@
 package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -156,22 +157,34 @@ public final class GetZoneResult {
 
         @CustomType.Setter
         public Builder accountId(String accountId) {
-            this.accountId = Objects.requireNonNull(accountId);
+            if (accountId == null) {
+              throw new MissingRequiredPropertyException("GetZoneResult", "accountId");
+            }
+            this.accountId = accountId;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetZoneResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetZoneResult", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder nameServers(List<String> nameServers) {
-            this.nameServers = Objects.requireNonNull(nameServers);
+            if (nameServers == null) {
+              throw new MissingRequiredPropertyException("GetZoneResult", "nameServers");
+            }
+            this.nameServers = nameServers;
             return this;
         }
         public Builder nameServers(String... nameServers) {
@@ -179,22 +192,34 @@ public final class GetZoneResult {
         }
         @CustomType.Setter
         public Builder paused(Boolean paused) {
-            this.paused = Objects.requireNonNull(paused);
+            if (paused == null) {
+              throw new MissingRequiredPropertyException("GetZoneResult", "paused");
+            }
+            this.paused = paused;
             return this;
         }
         @CustomType.Setter
         public Builder plan(String plan) {
-            this.plan = Objects.requireNonNull(plan);
+            if (plan == null) {
+              throw new MissingRequiredPropertyException("GetZoneResult", "plan");
+            }
+            this.plan = plan;
             return this;
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetZoneResult", "status");
+            }
+            this.status = status;
             return this;
         }
         @CustomType.Setter
         public Builder vanityNameServers(List<String> vanityNameServers) {
-            this.vanityNameServers = Objects.requireNonNull(vanityNameServers);
+            if (vanityNameServers == null) {
+              throw new MissingRequiredPropertyException("GetZoneResult", "vanityNameServers");
+            }
+            this.vanityNameServers = vanityNameServers;
             return this;
         }
         public Builder vanityNameServers(String... vanityNameServers) {
@@ -202,7 +227,10 @@ public final class GetZoneResult {
         }
         @CustomType.Setter
         public Builder zoneId(String zoneId) {
-            this.zoneId = Objects.requireNonNull(zoneId);
+            if (zoneId == null) {
+              throw new MissingRequiredPropertyException("GetZoneResult", "zoneId");
+            }
+            this.zoneId = zoneId;
             return this;
         }
         public GetZoneResult build() {

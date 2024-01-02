@@ -44,6 +44,7 @@ public final class PageRuleActionsCacheKeyFieldsHost {
 
         @CustomType.Setter
         public Builder resolved(@Nullable Boolean resolved) {
+
             this.resolved = resolved;
             return this;
         }

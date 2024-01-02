@@ -5,6 +5,7 @@ package com.pulumi.cloudflare;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -448,10 +449,18 @@ public final class GreTunnelArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public GreTunnelArgs build() {
-            $.cloudflareGreEndpoint = Objects.requireNonNull($.cloudflareGreEndpoint, "expected parameter 'cloudflareGreEndpoint' to be non-null");
-            $.customerGreEndpoint = Objects.requireNonNull($.customerGreEndpoint, "expected parameter 'customerGreEndpoint' to be non-null");
-            $.interfaceAddress = Objects.requireNonNull($.interfaceAddress, "expected parameter 'interfaceAddress' to be non-null");
-            $.name = Objects.requireNonNull($.name, "expected parameter 'name' to be non-null");
+            if ($.cloudflareGreEndpoint == null) {
+                throw new MissingRequiredPropertyException("GreTunnelArgs", "cloudflareGreEndpoint");
+            }
+            if ($.customerGreEndpoint == null) {
+                throw new MissingRequiredPropertyException("GreTunnelArgs", "customerGreEndpoint");
+            }
+            if ($.interfaceAddress == null) {
+                throw new MissingRequiredPropertyException("GreTunnelArgs", "interfaceAddress");
+            }
+            if ($.name == null) {
+                throw new MissingRequiredPropertyException("GreTunnelArgs", "name");
+            }
             return $;
         }
     }

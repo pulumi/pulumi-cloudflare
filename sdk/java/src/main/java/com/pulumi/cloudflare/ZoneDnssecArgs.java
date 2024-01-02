@@ -5,6 +5,7 @@ package com.pulumi.cloudflare;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -113,7 +114,9 @@ public final class ZoneDnssecArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public ZoneDnssecArgs build() {
-            $.zoneId = Objects.requireNonNull($.zoneId, "expected parameter 'zoneId' to be non-null");
+            if ($.zoneId == null) {
+                throw new MissingRequiredPropertyException("ZoneDnssecArgs", "zoneId");
+            }
             return $;
         }
     }

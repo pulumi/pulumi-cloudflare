@@ -5,6 +5,7 @@ package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -122,8 +123,12 @@ public final class LoadBalancerCountryPoolArgs extends com.pulumi.resources.Reso
         }
 
         public LoadBalancerCountryPoolArgs build() {
-            $.country = Objects.requireNonNull($.country, "expected parameter 'country' to be non-null");
-            $.poolIds = Objects.requireNonNull($.poolIds, "expected parameter 'poolIds' to be non-null");
+            if ($.country == null) {
+                throw new MissingRequiredPropertyException("LoadBalancerCountryPoolArgs", "country");
+            }
+            if ($.poolIds == null) {
+                throw new MissingRequiredPropertyException("LoadBalancerCountryPoolArgs", "poolIds");
+            }
             return $;
         }
     }

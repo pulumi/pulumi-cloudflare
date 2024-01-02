@@ -6,6 +6,7 @@ package com.pulumi.cloudflare;
 import com.pulumi.cloudflare.inputs.ListItemArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -210,9 +211,15 @@ public final class ListArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public ListArgs build() {
-            $.accountId = Objects.requireNonNull($.accountId, "expected parameter 'accountId' to be non-null");
-            $.kind = Objects.requireNonNull($.kind, "expected parameter 'kind' to be non-null");
-            $.name = Objects.requireNonNull($.name, "expected parameter 'name' to be non-null");
+            if ($.accountId == null) {
+                throw new MissingRequiredPropertyException("ListArgs", "accountId");
+            }
+            if ($.kind == null) {
+                throw new MissingRequiredPropertyException("ListArgs", "kind");
+            }
+            if ($.name == null) {
+                throw new MissingRequiredPropertyException("ListArgs", "name");
+            }
             return $;
         }
     }

@@ -50,6 +50,7 @@ public final class GetRulesetsRulesetRuleActionParametersCacheKeyCustomKeyHeader
 
         @CustomType.Setter
         public Builder checkPresences(@Nullable List<String> checkPresences) {
+
             this.checkPresences = checkPresences;
             return this;
         }
@@ -58,11 +59,13 @@ public final class GetRulesetsRulesetRuleActionParametersCacheKeyCustomKeyHeader
         }
         @CustomType.Setter
         public Builder excludeOrigin(@Nullable Boolean excludeOrigin) {
+
             this.excludeOrigin = excludeOrigin;
             return this;
         }
         @CustomType.Setter
         public Builder includes(@Nullable List<String> includes) {
+
             this.includes = includes;
             return this;
         }

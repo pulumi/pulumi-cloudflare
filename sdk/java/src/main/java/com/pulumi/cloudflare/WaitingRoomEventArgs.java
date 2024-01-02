@@ -5,6 +5,7 @@ package com.pulumi.cloudflare;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -596,11 +597,21 @@ public final class WaitingRoomEventArgs extends com.pulumi.resources.ResourceArg
         }
 
         public WaitingRoomEventArgs build() {
-            $.eventEndTime = Objects.requireNonNull($.eventEndTime, "expected parameter 'eventEndTime' to be non-null");
-            $.eventStartTime = Objects.requireNonNull($.eventStartTime, "expected parameter 'eventStartTime' to be non-null");
-            $.name = Objects.requireNonNull($.name, "expected parameter 'name' to be non-null");
-            $.waitingRoomId = Objects.requireNonNull($.waitingRoomId, "expected parameter 'waitingRoomId' to be non-null");
-            $.zoneId = Objects.requireNonNull($.zoneId, "expected parameter 'zoneId' to be non-null");
+            if ($.eventEndTime == null) {
+                throw new MissingRequiredPropertyException("WaitingRoomEventArgs", "eventEndTime");
+            }
+            if ($.eventStartTime == null) {
+                throw new MissingRequiredPropertyException("WaitingRoomEventArgs", "eventStartTime");
+            }
+            if ($.name == null) {
+                throw new MissingRequiredPropertyException("WaitingRoomEventArgs", "name");
+            }
+            if ($.waitingRoomId == null) {
+                throw new MissingRequiredPropertyException("WaitingRoomEventArgs", "waitingRoomId");
+            }
+            if ($.zoneId == null) {
+                throw new MissingRequiredPropertyException("WaitingRoomEventArgs", "zoneId");
+            }
             return $;
         }
     }

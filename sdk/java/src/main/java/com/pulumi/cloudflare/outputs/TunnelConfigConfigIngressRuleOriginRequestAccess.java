@@ -74,6 +74,7 @@ public final class TunnelConfigConfigIngressRuleOriginRequestAccess {
 
         @CustomType.Setter
         public Builder audTags(@Nullable List<String> audTags) {
+
             this.audTags = audTags;
             return this;
         }
@@ -82,11 +83,13 @@ public final class TunnelConfigConfigIngressRuleOriginRequestAccess {
         }
         @CustomType.Setter
         public Builder required(@Nullable Boolean required) {
+
             this.required = required;
             return this;
         }
         @CustomType.Setter
         public Builder teamName(@Nullable String teamName) {
+
             this.teamName = teamName;
             return this;
         }

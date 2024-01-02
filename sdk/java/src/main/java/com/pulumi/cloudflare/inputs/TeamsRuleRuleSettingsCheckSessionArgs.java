@@ -5,6 +5,7 @@ package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -112,8 +113,12 @@ public final class TeamsRuleRuleSettingsCheckSessionArgs extends com.pulumi.reso
         }
 
         public TeamsRuleRuleSettingsCheckSessionArgs build() {
-            $.duration = Objects.requireNonNull($.duration, "expected parameter 'duration' to be non-null");
-            $.enforce = Objects.requireNonNull($.enforce, "expected parameter 'enforce' to be non-null");
+            if ($.duration == null) {
+                throw new MissingRequiredPropertyException("TeamsRuleRuleSettingsCheckSessionArgs", "duration");
+            }
+            if ($.enforce == null) {
+                throw new MissingRequiredPropertyException("TeamsRuleRuleSettingsCheckSessionArgs", "enforce");
+            }
             return $;
         }
     }

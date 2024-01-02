@@ -58,6 +58,7 @@ public final class ApiTokenConditionRequestIp {
 
         @CustomType.Setter
         public Builder ins(@Nullable List<String> ins) {
+
             this.ins = ins;
             return this;
         }
@@ -66,6 +67,7 @@ public final class ApiTokenConditionRequestIp {
         }
         @CustomType.Setter
         public Builder notIns(@Nullable List<String> notIns) {
+
             this.notIns = notIns;
             return this;
         }

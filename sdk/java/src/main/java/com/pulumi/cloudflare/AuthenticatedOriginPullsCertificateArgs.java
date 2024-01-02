@@ -5,6 +5,7 @@ package com.pulumi.cloudflare;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -185,10 +186,18 @@ public final class AuthenticatedOriginPullsCertificateArgs extends com.pulumi.re
         }
 
         public AuthenticatedOriginPullsCertificateArgs build() {
-            $.certificate = Objects.requireNonNull($.certificate, "expected parameter 'certificate' to be non-null");
-            $.privateKey = Objects.requireNonNull($.privateKey, "expected parameter 'privateKey' to be non-null");
-            $.type = Objects.requireNonNull($.type, "expected parameter 'type' to be non-null");
-            $.zoneId = Objects.requireNonNull($.zoneId, "expected parameter 'zoneId' to be non-null");
+            if ($.certificate == null) {
+                throw new MissingRequiredPropertyException("AuthenticatedOriginPullsCertificateArgs", "certificate");
+            }
+            if ($.privateKey == null) {
+                throw new MissingRequiredPropertyException("AuthenticatedOriginPullsCertificateArgs", "privateKey");
+            }
+            if ($.type == null) {
+                throw new MissingRequiredPropertyException("AuthenticatedOriginPullsCertificateArgs", "type");
+            }
+            if ($.zoneId == null) {
+                throw new MissingRequiredPropertyException("AuthenticatedOriginPullsCertificateArgs", "zoneId");
+            }
             return $;
         }
     }

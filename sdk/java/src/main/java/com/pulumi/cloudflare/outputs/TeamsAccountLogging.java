@@ -5,6 +5,7 @@ package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.cloudflare.outputs.TeamsAccountLoggingSettingsByRuleType;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.util.Objects;
 
@@ -57,12 +58,18 @@ public final class TeamsAccountLogging {
 
         @CustomType.Setter
         public Builder redactPii(Boolean redactPii) {
-            this.redactPii = Objects.requireNonNull(redactPii);
+            if (redactPii == null) {
+              throw new MissingRequiredPropertyException("TeamsAccountLogging", "redactPii");
+            }
+            this.redactPii = redactPii;
             return this;
         }
         @CustomType.Setter
         public Builder settingsByRuleType(TeamsAccountLoggingSettingsByRuleType settingsByRuleType) {
-            this.settingsByRuleType = Objects.requireNonNull(settingsByRuleType);
+            if (settingsByRuleType == null) {
+              throw new MissingRequiredPropertyException("TeamsAccountLogging", "settingsByRuleType");
+            }
+            this.settingsByRuleType = settingsByRuleType;
             return this;
         }
         public TeamsAccountLogging build() {

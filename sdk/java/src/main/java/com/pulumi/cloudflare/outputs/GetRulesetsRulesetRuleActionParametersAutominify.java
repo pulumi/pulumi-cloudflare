@@ -48,16 +48,19 @@ public final class GetRulesetsRulesetRuleActionParametersAutominify {
 
         @CustomType.Setter
         public Builder css(@Nullable Boolean css) {
+
             this.css = css;
             return this;
         }
         @CustomType.Setter
         public Builder html(@Nullable Boolean html) {
+
             this.html = html;
             return this;
         }
         @CustomType.Setter
         public Builder js(@Nullable Boolean js) {
+
             this.js = js;
             return this;
         }

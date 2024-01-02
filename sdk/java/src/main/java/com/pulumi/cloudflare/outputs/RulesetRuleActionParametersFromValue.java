@@ -74,16 +74,19 @@ public final class RulesetRuleActionParametersFromValue {
 
         @CustomType.Setter
         public Builder preserveQueryString(@Nullable Boolean preserveQueryString) {
+
             this.preserveQueryString = preserveQueryString;
             return this;
         }
         @CustomType.Setter
         public Builder statusCode(@Nullable Integer statusCode) {
+
             this.statusCode = statusCode;
             return this;
         }
         @CustomType.Setter
         public Builder targetUrl(@Nullable RulesetRuleActionParametersFromValueTargetUrl targetUrl) {
+
             this.targetUrl = targetUrl;
             return this;
         }

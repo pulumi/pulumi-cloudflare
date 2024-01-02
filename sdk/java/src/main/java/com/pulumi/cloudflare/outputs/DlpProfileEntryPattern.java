@@ -4,6 +4,7 @@
 package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -58,11 +59,15 @@ public final class DlpProfileEntryPattern {
 
         @CustomType.Setter
         public Builder regex(String regex) {
-            this.regex = Objects.requireNonNull(regex);
+            if (regex == null) {
+              throw new MissingRequiredPropertyException("DlpProfileEntryPattern", "regex");
+            }
+            this.regex = regex;
             return this;
         }
         @CustomType.Setter
         public Builder validation(@Nullable String validation) {
+
             this.validation = validation;
             return this;
         }

@@ -7,6 +7,7 @@ import com.pulumi.cloudflare.outputs.TeamsAccountLoggingSettingsByRuleTypeDns;
 import com.pulumi.cloudflare.outputs.TeamsAccountLoggingSettingsByRuleTypeHttp;
 import com.pulumi.cloudflare.outputs.TeamsAccountLoggingSettingsByRuleTypeL4;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.util.Objects;
 
 @CustomType
@@ -72,17 +73,26 @@ public final class TeamsAccountLoggingSettingsByRuleType {
 
         @CustomType.Setter
         public Builder dns(TeamsAccountLoggingSettingsByRuleTypeDns dns) {
-            this.dns = Objects.requireNonNull(dns);
+            if (dns == null) {
+              throw new MissingRequiredPropertyException("TeamsAccountLoggingSettingsByRuleType", "dns");
+            }
+            this.dns = dns;
             return this;
         }
         @CustomType.Setter
         public Builder http(TeamsAccountLoggingSettingsByRuleTypeHttp http) {
-            this.http = Objects.requireNonNull(http);
+            if (http == null) {
+              throw new MissingRequiredPropertyException("TeamsAccountLoggingSettingsByRuleType", "http");
+            }
+            this.http = http;
             return this;
         }
         @CustomType.Setter
         public Builder l4(TeamsAccountLoggingSettingsByRuleTypeL4 l4) {
-            this.l4 = Objects.requireNonNull(l4);
+            if (l4 == null) {
+              throw new MissingRequiredPropertyException("TeamsAccountLoggingSettingsByRuleType", "l4");
+            }
+            this.l4 = l4;
             return this;
         }
         public TeamsAccountLoggingSettingsByRuleType build() {

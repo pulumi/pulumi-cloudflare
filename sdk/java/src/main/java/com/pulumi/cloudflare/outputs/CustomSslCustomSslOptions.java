@@ -100,26 +100,31 @@ public final class CustomSslCustomSslOptions {
 
         @CustomType.Setter
         public Builder bundleMethod(@Nullable String bundleMethod) {
+
             this.bundleMethod = bundleMethod;
             return this;
         }
         @CustomType.Setter
         public Builder certificate(@Nullable String certificate) {
+
             this.certificate = certificate;
             return this;
         }
         @CustomType.Setter
         public Builder geoRestrictions(@Nullable String geoRestrictions) {
+
             this.geoRestrictions = geoRestrictions;
             return this;
         }
         @CustomType.Setter
         public Builder privateKey(@Nullable String privateKey) {
+
             this.privateKey = privateKey;
             return this;
         }
         @CustomType.Setter
         public Builder type(@Nullable String type) {
+
             this.type = type;
             return this;
         }

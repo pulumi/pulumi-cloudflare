@@ -5,6 +5,7 @@ package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -151,8 +152,12 @@ public final class AddressMapMembershipArgs extends com.pulumi.resources.Resourc
         }
 
         public AddressMapMembershipArgs build() {
-            $.identifier = Objects.requireNonNull($.identifier, "expected parameter 'identifier' to be non-null");
-            $.kind = Objects.requireNonNull($.kind, "expected parameter 'kind' to be non-null");
+            if ($.identifier == null) {
+                throw new MissingRequiredPropertyException("AddressMapMembershipArgs", "identifier");
+            }
+            if ($.kind == null) {
+                throw new MissingRequiredPropertyException("AddressMapMembershipArgs", "kind");
+            }
             return $;
         }
     }

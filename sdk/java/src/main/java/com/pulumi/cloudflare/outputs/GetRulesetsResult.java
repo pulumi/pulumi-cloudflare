@@ -6,6 +6,7 @@ package com.pulumi.cloudflare.outputs;
 import com.pulumi.cloudflare.outputs.GetRulesetsFilter;
 import com.pulumi.cloudflare.outputs.GetRulesetsRuleset;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -102,27 +103,36 @@ public final class GetRulesetsResult {
 
         @CustomType.Setter
         public Builder accountId(@Nullable String accountId) {
+
             this.accountId = accountId;
             return this;
         }
         @CustomType.Setter
         public Builder filter(@Nullable GetRulesetsFilter filter) {
+
             this.filter = filter;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetRulesetsResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder includeRules(@Nullable Boolean includeRules) {
+
             this.includeRules = includeRules;
             return this;
         }
         @CustomType.Setter
         public Builder rulesets(List<GetRulesetsRuleset> rulesets) {
-            this.rulesets = Objects.requireNonNull(rulesets);
+            if (rulesets == null) {
+              throw new MissingRequiredPropertyException("GetRulesetsResult", "rulesets");
+            }
+            this.rulesets = rulesets;
             return this;
         }
         public Builder rulesets(GetRulesetsRuleset... rulesets) {
@@ -130,6 +140,7 @@ public final class GetRulesetsResult {
         }
         @CustomType.Setter
         public Builder zoneId(@Nullable String zoneId) {
+
             this.zoneId = zoneId;
             return this;
         }

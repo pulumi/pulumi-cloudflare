@@ -51,11 +51,13 @@ public final class AccessGroupIncludeOkta {
 
         @CustomType.Setter
         public Builder identityProviderId(@Nullable String identityProviderId) {
+
             this.identityProviderId = identityProviderId;
             return this;
         }
         @CustomType.Setter
         public Builder names(@Nullable List<String> names) {
+
             this.names = names;
             return this;
         }

@@ -8,6 +8,7 @@ import com.pulumi.cloudflare.inputs.TunnelConfigConfigOriginRequestArgs;
 import com.pulumi.cloudflare.inputs.TunnelConfigConfigWarpRoutingArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
@@ -143,7 +144,9 @@ public final class TunnelConfigConfigArgs extends com.pulumi.resources.ResourceA
         }
 
         public TunnelConfigConfigArgs build() {
-            $.ingressRules = Objects.requireNonNull($.ingressRules, "expected parameter 'ingressRules' to be non-null");
+            if ($.ingressRules == null) {
+                throw new MissingRequiredPropertyException("TunnelConfigConfigArgs", "ingressRules");
+            }
             return $;
         }
     }

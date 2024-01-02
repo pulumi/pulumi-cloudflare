@@ -64,26 +64,31 @@ public final class GetRulesetsRulesetRuleActionParametersCacheKeyCustomKey {
 
         @CustomType.Setter
         public Builder cookie(@Nullable GetRulesetsRulesetRuleActionParametersCacheKeyCustomKeyCookie cookie) {
+
             this.cookie = cookie;
             return this;
         }
         @CustomType.Setter
         public Builder header(@Nullable GetRulesetsRulesetRuleActionParametersCacheKeyCustomKeyHeader header) {
+
             this.header = header;
             return this;
         }
         @CustomType.Setter
         public Builder host(@Nullable GetRulesetsRulesetRuleActionParametersCacheKeyCustomKeyHost host) {
+
             this.host = host;
             return this;
         }
         @CustomType.Setter
         public Builder queryString(@Nullable GetRulesetsRulesetRuleActionParametersCacheKeyCustomKeyQueryString queryString) {
+
             this.queryString = queryString;
             return this;
         }
         @CustomType.Setter
         public Builder user(@Nullable GetRulesetsRulesetRuleActionParametersCacheKeyCustomKeyUser user) {
+
             this.user = user;
             return this;
         }

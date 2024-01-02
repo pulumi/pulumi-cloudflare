@@ -4,6 +4,7 @@
 package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -57,7 +58,10 @@ public final class LoadBalancerPopPool {
 
         @CustomType.Setter
         public Builder poolIds(List<String> poolIds) {
-            this.poolIds = Objects.requireNonNull(poolIds);
+            if (poolIds == null) {
+              throw new MissingRequiredPropertyException("LoadBalancerPopPool", "poolIds");
+            }
+            this.poolIds = poolIds;
             return this;
         }
         public Builder poolIds(String... poolIds) {
@@ -65,7 +69,10 @@ public final class LoadBalancerPopPool {
         }
         @CustomType.Setter
         public Builder pop(String pop) {
-            this.pop = Objects.requireNonNull(pop);
+            if (pop == null) {
+              throw new MissingRequiredPropertyException("LoadBalancerPopPool", "pop");
+            }
+            this.pop = pop;
             return this;
         }
         public LoadBalancerPopPool build() {

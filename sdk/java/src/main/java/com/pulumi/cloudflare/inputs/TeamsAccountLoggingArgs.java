@@ -6,6 +6,7 @@ package com.pulumi.cloudflare.inputs;
 import com.pulumi.cloudflare.inputs.TeamsAccountLoggingSettingsByRuleTypeArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.util.Objects;
 
@@ -112,8 +113,12 @@ public final class TeamsAccountLoggingArgs extends com.pulumi.resources.Resource
         }
 
         public TeamsAccountLoggingArgs build() {
-            $.redactPii = Objects.requireNonNull($.redactPii, "expected parameter 'redactPii' to be non-null");
-            $.settingsByRuleType = Objects.requireNonNull($.settingsByRuleType, "expected parameter 'settingsByRuleType' to be non-null");
+            if ($.redactPii == null) {
+                throw new MissingRequiredPropertyException("TeamsAccountLoggingArgs", "redactPii");
+            }
+            if ($.settingsByRuleType == null) {
+                throw new MissingRequiredPropertyException("TeamsAccountLoggingArgs", "settingsByRuleType");
+            }
             return $;
         }
     }

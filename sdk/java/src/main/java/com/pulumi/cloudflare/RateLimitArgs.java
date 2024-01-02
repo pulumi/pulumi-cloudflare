@@ -8,6 +8,7 @@ import com.pulumi.cloudflare.inputs.RateLimitCorrelateArgs;
 import com.pulumi.cloudflare.inputs.RateLimitMatchArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -362,10 +363,18 @@ public final class RateLimitArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public RateLimitArgs build() {
-            $.action = Objects.requireNonNull($.action, "expected parameter 'action' to be non-null");
-            $.period = Objects.requireNonNull($.period, "expected parameter 'period' to be non-null");
-            $.threshold = Objects.requireNonNull($.threshold, "expected parameter 'threshold' to be non-null");
-            $.zoneId = Objects.requireNonNull($.zoneId, "expected parameter 'zoneId' to be non-null");
+            if ($.action == null) {
+                throw new MissingRequiredPropertyException("RateLimitArgs", "action");
+            }
+            if ($.period == null) {
+                throw new MissingRequiredPropertyException("RateLimitArgs", "period");
+            }
+            if ($.threshold == null) {
+                throw new MissingRequiredPropertyException("RateLimitArgs", "threshold");
+            }
+            if ($.zoneId == null) {
+                throw new MissingRequiredPropertyException("RateLimitArgs", "zoneId");
+            }
             return $;
         }
     }

@@ -383,51 +383,61 @@ public final class ZoneSettingsOverrideSettings {
 
         @CustomType.Setter
         public Builder alwaysOnline(@Nullable String alwaysOnline) {
+
             this.alwaysOnline = alwaysOnline;
             return this;
         }
         @CustomType.Setter
         public Builder alwaysUseHttps(@Nullable String alwaysUseHttps) {
+
             this.alwaysUseHttps = alwaysUseHttps;
             return this;
         }
         @CustomType.Setter
         public Builder automaticHttpsRewrites(@Nullable String automaticHttpsRewrites) {
+
             this.automaticHttpsRewrites = automaticHttpsRewrites;
             return this;
         }
         @CustomType.Setter
         public Builder binaryAst(@Nullable String binaryAst) {
+
             this.binaryAst = binaryAst;
             return this;
         }
         @CustomType.Setter
         public Builder brotli(@Nullable String brotli) {
+
             this.brotli = brotli;
             return this;
         }
         @CustomType.Setter
         public Builder browserCacheTtl(@Nullable Integer browserCacheTtl) {
+
             this.browserCacheTtl = browserCacheTtl;
             return this;
         }
         @CustomType.Setter
         public Builder browserCheck(@Nullable String browserCheck) {
+
             this.browserCheck = browserCheck;
             return this;
         }
         @CustomType.Setter
         public Builder cacheLevel(@Nullable String cacheLevel) {
+
             this.cacheLevel = cacheLevel;
             return this;
         }
         @CustomType.Setter
         public Builder challengeTtl(@Nullable Integer challengeTtl) {
+
             this.challengeTtl = challengeTtl;
             return this;
         }
         @CustomType.Setter
         public Builder ciphers(@Nullable List<String> ciphers) {
+
             this.ciphers = ciphers;
             return this;
         }
@@ -436,231 +446,277 @@ public final class ZoneSettingsOverrideSettings {
         }
         @CustomType.Setter
         public Builder cnameFlattening(@Nullable String cnameFlattening) {
+
             this.cnameFlattening = cnameFlattening;
             return this;
         }
         @CustomType.Setter
         public Builder developmentMode(@Nullable String developmentMode) {
+
             this.developmentMode = developmentMode;
             return this;
         }
         @CustomType.Setter
         public Builder earlyHints(@Nullable String earlyHints) {
+
             this.earlyHints = earlyHints;
             return this;
         }
         @CustomType.Setter
         public Builder emailObfuscation(@Nullable String emailObfuscation) {
+
             this.emailObfuscation = emailObfuscation;
             return this;
         }
         @CustomType.Setter
         public Builder filterLogsToCloudflare(@Nullable String filterLogsToCloudflare) {
+
             this.filterLogsToCloudflare = filterLogsToCloudflare;
             return this;
         }
         @CustomType.Setter
         public Builder fonts(@Nullable String fonts) {
+
             this.fonts = fonts;
             return this;
         }
         @CustomType.Setter
         public Builder h2Prioritization(@Nullable String h2Prioritization) {
+
             this.h2Prioritization = h2Prioritization;
             return this;
         }
         @CustomType.Setter
         public Builder hotlinkProtection(@Nullable String hotlinkProtection) {
+
             this.hotlinkProtection = hotlinkProtection;
             return this;
         }
         @CustomType.Setter
         public Builder http2(@Nullable String http2) {
+
             this.http2 = http2;
             return this;
         }
         @CustomType.Setter
         public Builder http3(@Nullable String http3) {
+
             this.http3 = http3;
             return this;
         }
         @CustomType.Setter
         public Builder imageResizing(@Nullable String imageResizing) {
+
             this.imageResizing = imageResizing;
             return this;
         }
         @CustomType.Setter
         public Builder ipGeolocation(@Nullable String ipGeolocation) {
+
             this.ipGeolocation = ipGeolocation;
             return this;
         }
         @CustomType.Setter
         public Builder ipv6(@Nullable String ipv6) {
+
             this.ipv6 = ipv6;
             return this;
         }
         @CustomType.Setter
         public Builder logToCloudflare(@Nullable String logToCloudflare) {
+
             this.logToCloudflare = logToCloudflare;
             return this;
         }
         @CustomType.Setter
         public Builder maxUpload(@Nullable Integer maxUpload) {
+
             this.maxUpload = maxUpload;
             return this;
         }
         @CustomType.Setter
         public Builder minTlsVersion(@Nullable String minTlsVersion) {
+
             this.minTlsVersion = minTlsVersion;
             return this;
         }
         @CustomType.Setter
         public Builder minify(@Nullable ZoneSettingsOverrideSettingsMinify minify) {
+
             this.minify = minify;
             return this;
         }
         @CustomType.Setter
         public Builder mirage(@Nullable String mirage) {
+
             this.mirage = mirage;
             return this;
         }
         @CustomType.Setter
         public Builder mobileRedirect(@Nullable ZoneSettingsOverrideSettingsMobileRedirect mobileRedirect) {
+
             this.mobileRedirect = mobileRedirect;
             return this;
         }
         @CustomType.Setter
         public Builder opportunisticEncryption(@Nullable String opportunisticEncryption) {
+
             this.opportunisticEncryption = opportunisticEncryption;
             return this;
         }
         @CustomType.Setter
         public Builder opportunisticOnion(@Nullable String opportunisticOnion) {
+
             this.opportunisticOnion = opportunisticOnion;
             return this;
         }
         @CustomType.Setter
         public Builder orangeToOrange(@Nullable String orangeToOrange) {
+
             this.orangeToOrange = orangeToOrange;
             return this;
         }
         @CustomType.Setter
         public Builder originErrorPagePassThru(@Nullable String originErrorPagePassThru) {
+
             this.originErrorPagePassThru = originErrorPagePassThru;
             return this;
         }
         @CustomType.Setter
         public Builder originMaxHttpVersion(@Nullable String originMaxHttpVersion) {
+
             this.originMaxHttpVersion = originMaxHttpVersion;
             return this;
         }
         @CustomType.Setter
         public Builder polish(@Nullable String polish) {
+
             this.polish = polish;
             return this;
         }
         @CustomType.Setter
         public Builder prefetchPreload(@Nullable String prefetchPreload) {
+
             this.prefetchPreload = prefetchPreload;
             return this;
         }
         @CustomType.Setter
         public Builder privacyPass(@Nullable String privacyPass) {
+
             this.privacyPass = privacyPass;
             return this;
         }
         @CustomType.Setter
         public Builder proxyReadTimeout(@Nullable String proxyReadTimeout) {
+
             this.proxyReadTimeout = proxyReadTimeout;
             return this;
         }
         @CustomType.Setter
         public Builder pseudoIpv4(@Nullable String pseudoIpv4) {
+
             this.pseudoIpv4 = pseudoIpv4;
             return this;
         }
         @CustomType.Setter
         public Builder responseBuffering(@Nullable String responseBuffering) {
+
             this.responseBuffering = responseBuffering;
             return this;
         }
         @CustomType.Setter
         public Builder rocketLoader(@Nullable String rocketLoader) {
+
             this.rocketLoader = rocketLoader;
             return this;
         }
         @CustomType.Setter
         public Builder securityHeader(@Nullable ZoneSettingsOverrideSettingsSecurityHeader securityHeader) {
+
             this.securityHeader = securityHeader;
             return this;
         }
         @CustomType.Setter
         public Builder securityLevel(@Nullable String securityLevel) {
+
             this.securityLevel = securityLevel;
             return this;
         }
         @CustomType.Setter
         public Builder serverSideExclude(@Nullable String serverSideExclude) {
+
             this.serverSideExclude = serverSideExclude;
             return this;
         }
         @CustomType.Setter
         public Builder sortQueryStringForCache(@Nullable String sortQueryStringForCache) {
+
             this.sortQueryStringForCache = sortQueryStringForCache;
             return this;
         }
         @CustomType.Setter
         public Builder ssl(@Nullable String ssl) {
+
             this.ssl = ssl;
             return this;
         }
         @CustomType.Setter
         public Builder tls12Only(@Nullable String tls12Only) {
+
             this.tls12Only = tls12Only;
             return this;
         }
         @CustomType.Setter
         public Builder tls13(@Nullable String tls13) {
+
             this.tls13 = tls13;
             return this;
         }
         @CustomType.Setter
         public Builder tlsClientAuth(@Nullable String tlsClientAuth) {
+
             this.tlsClientAuth = tlsClientAuth;
             return this;
         }
         @CustomType.Setter
         public Builder trueClientIpHeader(@Nullable String trueClientIpHeader) {
+
             this.trueClientIpHeader = trueClientIpHeader;
             return this;
         }
         @CustomType.Setter
         public Builder universalSsl(@Nullable String universalSsl) {
+
             this.universalSsl = universalSsl;
             return this;
         }
         @CustomType.Setter
         public Builder visitorIp(@Nullable String visitorIp) {
+
             this.visitorIp = visitorIp;
             return this;
         }
         @CustomType.Setter
         public Builder waf(@Nullable String waf) {
+
             this.waf = waf;
             return this;
         }
         @CustomType.Setter
         public Builder webp(@Nullable String webp) {
+
             this.webp = webp;
             return this;
         }
         @CustomType.Setter
         public Builder websockets(@Nullable String websockets) {
+
             this.websockets = websockets;
             return this;
         }
         @CustomType.Setter
         public Builder zeroRtt(@Nullable String zeroRtt) {
+
             this.zeroRtt = zeroRtt;
             return this;
         }

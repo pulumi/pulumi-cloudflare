@@ -5,6 +5,7 @@ package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -111,8 +112,12 @@ public final class WorkerScriptQueueBindingArgs extends com.pulumi.resources.Res
         }
 
         public WorkerScriptQueueBindingArgs build() {
-            $.binding = Objects.requireNonNull($.binding, "expected parameter 'binding' to be non-null");
-            $.queue = Objects.requireNonNull($.queue, "expected parameter 'queue' to be non-null");
+            if ($.binding == null) {
+                throw new MissingRequiredPropertyException("WorkerScriptQueueBindingArgs", "binding");
+            }
+            if ($.queue == null) {
+                throw new MissingRequiredPropertyException("WorkerScriptQueueBindingArgs", "queue");
+            }
             return $;
         }
     }

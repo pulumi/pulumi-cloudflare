@@ -5,6 +5,7 @@ package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.cloudflare.inputs.GetLoadBalancerPoolsPoolOriginHeader;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Double;
 import java.lang.String;
@@ -139,8 +140,12 @@ public final class GetLoadBalancerPoolsPoolOrigin extends com.pulumi.resources.I
         }
 
         public GetLoadBalancerPoolsPoolOrigin build() {
-            $.address = Objects.requireNonNull($.address, "expected parameter 'address' to be non-null");
-            $.name = Objects.requireNonNull($.name, "expected parameter 'name' to be non-null");
+            if ($.address == null) {
+                throw new MissingRequiredPropertyException("GetLoadBalancerPoolsPoolOrigin", "address");
+            }
+            if ($.name == null) {
+                throw new MissingRequiredPropertyException("GetLoadBalancerPoolsPoolOrigin", "name");
+            }
             return $;
         }
     }

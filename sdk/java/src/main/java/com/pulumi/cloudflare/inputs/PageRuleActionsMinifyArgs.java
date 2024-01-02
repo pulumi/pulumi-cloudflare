@@ -5,6 +5,7 @@ package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -148,9 +149,15 @@ public final class PageRuleActionsMinifyArgs extends com.pulumi.resources.Resour
         }
 
         public PageRuleActionsMinifyArgs build() {
-            $.css = Objects.requireNonNull($.css, "expected parameter 'css' to be non-null");
-            $.html = Objects.requireNonNull($.html, "expected parameter 'html' to be non-null");
-            $.js = Objects.requireNonNull($.js, "expected parameter 'js' to be non-null");
+            if ($.css == null) {
+                throw new MissingRequiredPropertyException("PageRuleActionsMinifyArgs", "css");
+            }
+            if ($.html == null) {
+                throw new MissingRequiredPropertyException("PageRuleActionsMinifyArgs", "html");
+            }
+            if ($.js == null) {
+                throw new MissingRequiredPropertyException("PageRuleActionsMinifyArgs", "js");
+            }
             return $;
         }
     }

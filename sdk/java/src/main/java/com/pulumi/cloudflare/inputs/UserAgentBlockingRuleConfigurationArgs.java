@@ -5,6 +5,7 @@ package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -111,8 +112,12 @@ public final class UserAgentBlockingRuleConfigurationArgs extends com.pulumi.res
         }
 
         public UserAgentBlockingRuleConfigurationArgs build() {
-            $.target = Objects.requireNonNull($.target, "expected parameter 'target' to be non-null");
-            $.value = Objects.requireNonNull($.value, "expected parameter 'value' to be non-null");
+            if ($.target == null) {
+                throw new MissingRequiredPropertyException("UserAgentBlockingRuleConfigurationArgs", "target");
+            }
+            if ($.value == null) {
+                throw new MissingRequiredPropertyException("UserAgentBlockingRuleConfigurationArgs", "value");
+            }
             return $;
         }
     }

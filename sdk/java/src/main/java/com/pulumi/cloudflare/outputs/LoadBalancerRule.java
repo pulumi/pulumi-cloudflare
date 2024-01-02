@@ -6,6 +6,7 @@ package com.pulumi.cloudflare.outputs;
 import com.pulumi.cloudflare.outputs.LoadBalancerRuleFixedResponse;
 import com.pulumi.cloudflare.outputs.LoadBalancerRuleOverride;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -133,26 +134,33 @@ public final class LoadBalancerRule {
 
         @CustomType.Setter
         public Builder condition(@Nullable String condition) {
+
             this.condition = condition;
             return this;
         }
         @CustomType.Setter
         public Builder disabled(@Nullable Boolean disabled) {
+
             this.disabled = disabled;
             return this;
         }
         @CustomType.Setter
         public Builder fixedResponse(@Nullable LoadBalancerRuleFixedResponse fixedResponse) {
+
             this.fixedResponse = fixedResponse;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("LoadBalancerRule", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder overrides(@Nullable List<LoadBalancerRuleOverride> overrides) {
+
             this.overrides = overrides;
             return this;
         }
@@ -161,11 +169,13 @@ public final class LoadBalancerRule {
         }
         @CustomType.Setter
         public Builder priority(@Nullable Integer priority) {
+
             this.priority = priority;
             return this;
         }
         @CustomType.Setter
         public Builder terminates(@Nullable Boolean terminates) {
+
             this.terminates = terminates;
             return this;
         }

@@ -7,6 +7,7 @@ import com.pulumi.cloudflare.inputs.AccessIdentityProviderConfigArgs;
 import com.pulumi.cloudflare.inputs.AccessIdentityProviderScimConfigArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -284,8 +285,12 @@ public final class AccessIdentityProviderArgs extends com.pulumi.resources.Resou
         }
 
         public AccessIdentityProviderArgs build() {
-            $.name = Objects.requireNonNull($.name, "expected parameter 'name' to be non-null");
-            $.type = Objects.requireNonNull($.type, "expected parameter 'type' to be non-null");
+            if ($.name == null) {
+                throw new MissingRequiredPropertyException("AccessIdentityProviderArgs", "name");
+            }
+            if ($.type == null) {
+                throw new MissingRequiredPropertyException("AccessIdentityProviderArgs", "type");
+            }
             return $;
         }
     }

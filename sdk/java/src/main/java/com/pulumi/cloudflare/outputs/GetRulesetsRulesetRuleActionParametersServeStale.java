@@ -36,6 +36,7 @@ public final class GetRulesetsRulesetRuleActionParametersServeStale {
 
         @CustomType.Setter
         public Builder disableStaleWhileUpdating(@Nullable Boolean disableStaleWhileUpdating) {
+
             this.disableStaleWhileUpdating = disableStaleWhileUpdating;
             return this;
         }

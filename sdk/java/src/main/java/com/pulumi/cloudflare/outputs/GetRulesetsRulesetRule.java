@@ -8,6 +8,7 @@ import com.pulumi.cloudflare.outputs.GetRulesetsRulesetRuleExposedCredentialChec
 import com.pulumi.cloudflare.outputs.GetRulesetsRulesetRuleLogging;
 import com.pulumi.cloudflare.outputs.GetRulesetsRulesetRuleRatelimit;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -123,62 +124,82 @@ public final class GetRulesetsRulesetRule {
 
         @CustomType.Setter
         public Builder action(@Nullable String action) {
+
             this.action = action;
             return this;
         }
         @CustomType.Setter
         public Builder actionParameters(@Nullable GetRulesetsRulesetRuleActionParameters actionParameters) {
+
             this.actionParameters = actionParameters;
             return this;
         }
         @CustomType.Setter
         public Builder description(@Nullable String description) {
+
             this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder enabled(@Nullable Boolean enabled) {
+
             this.enabled = enabled;
             return this;
         }
         @CustomType.Setter
         public Builder exposedCredentialCheck(@Nullable GetRulesetsRulesetRuleExposedCredentialCheck exposedCredentialCheck) {
+
             this.exposedCredentialCheck = exposedCredentialCheck;
             return this;
         }
         @CustomType.Setter
         public Builder expression(String expression) {
-            this.expression = Objects.requireNonNull(expression);
+            if (expression == null) {
+              throw new MissingRequiredPropertyException("GetRulesetsRulesetRule", "expression");
+            }
+            this.expression = expression;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetRulesetsRulesetRule", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder lastUpdated(@Nullable String lastUpdated) {
+
             this.lastUpdated = lastUpdated;
             return this;
         }
         @CustomType.Setter
         public Builder logging(@Nullable GetRulesetsRulesetRuleLogging logging) {
+
             this.logging = logging;
             return this;
         }
         @CustomType.Setter
         public Builder ratelimit(@Nullable GetRulesetsRulesetRuleRatelimit ratelimit) {
+
             this.ratelimit = ratelimit;
             return this;
         }
         @CustomType.Setter
         public Builder ref(String ref) {
-            this.ref = Objects.requireNonNull(ref);
+            if (ref == null) {
+              throw new MissingRequiredPropertyException("GetRulesetsRulesetRule", "ref");
+            }
+            this.ref = ref;
             return this;
         }
         @CustomType.Setter
         public Builder version(String version) {
-            this.version = Objects.requireNonNull(version);
+            if (version == null) {
+              throw new MissingRequiredPropertyException("GetRulesetsRulesetRule", "version");
+            }
+            this.version = version;
             return this;
         }
         public GetRulesetsRulesetRule build() {

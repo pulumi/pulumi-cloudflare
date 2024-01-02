@@ -9,6 +9,7 @@ import com.pulumi.cloudflare.outputs.PageRuleActionsCacheKeyFieldsHost;
 import com.pulumi.cloudflare.outputs.PageRuleActionsCacheKeyFieldsQueryString;
 import com.pulumi.cloudflare.outputs.PageRuleActionsCacheKeyFieldsUser;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -104,27 +105,38 @@ public final class PageRuleActionsCacheKeyFields {
 
         @CustomType.Setter
         public Builder cookie(@Nullable PageRuleActionsCacheKeyFieldsCookie cookie) {
+
             this.cookie = cookie;
             return this;
         }
         @CustomType.Setter
         public Builder header(@Nullable PageRuleActionsCacheKeyFieldsHeader header) {
+
             this.header = header;
             return this;
         }
         @CustomType.Setter
         public Builder host(PageRuleActionsCacheKeyFieldsHost host) {
-            this.host = Objects.requireNonNull(host);
+            if (host == null) {
+              throw new MissingRequiredPropertyException("PageRuleActionsCacheKeyFields", "host");
+            }
+            this.host = host;
             return this;
         }
         @CustomType.Setter
         public Builder queryString(PageRuleActionsCacheKeyFieldsQueryString queryString) {
-            this.queryString = Objects.requireNonNull(queryString);
+            if (queryString == null) {
+              throw new MissingRequiredPropertyException("PageRuleActionsCacheKeyFields", "queryString");
+            }
+            this.queryString = queryString;
             return this;
         }
         @CustomType.Setter
         public Builder user(PageRuleActionsCacheKeyFieldsUser user) {
-            this.user = Objects.requireNonNull(user);
+            if (user == null) {
+              throw new MissingRequiredPropertyException("PageRuleActionsCacheKeyFields", "user");
+            }
+            this.user = user;
             return this;
         }
         public PageRuleActionsCacheKeyFields build() {

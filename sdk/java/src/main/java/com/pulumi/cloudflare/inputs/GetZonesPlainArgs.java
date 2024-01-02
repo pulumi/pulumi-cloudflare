@@ -5,6 +5,7 @@ package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.cloudflare.inputs.GetZonesFilter;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.util.Objects;
 
 
@@ -63,7 +64,9 @@ public final class GetZonesPlainArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         public GetZonesPlainArgs build() {
-            $.filter = Objects.requireNonNull($.filter, "expected parameter 'filter' to be non-null");
+            if ($.filter == null) {
+                throw new MissingRequiredPropertyException("GetZonesPlainArgs", "filter");
+            }
             return $;
         }
     }

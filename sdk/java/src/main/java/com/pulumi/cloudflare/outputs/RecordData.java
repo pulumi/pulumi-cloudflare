@@ -266,196 +266,235 @@ public final class RecordData {
 
         @CustomType.Setter
         public Builder algorithm(@Nullable Integer algorithm) {
+
             this.algorithm = algorithm;
             return this;
         }
         @CustomType.Setter
         public Builder altitude(@Nullable Double altitude) {
+
             this.altitude = altitude;
             return this;
         }
         @CustomType.Setter
         public Builder certificate(@Nullable String certificate) {
+
             this.certificate = certificate;
             return this;
         }
         @CustomType.Setter
         public Builder content(@Nullable String content) {
+
             this.content = content;
             return this;
         }
         @CustomType.Setter
         public Builder digest(@Nullable String digest) {
+
             this.digest = digest;
             return this;
         }
         @CustomType.Setter
         public Builder digestType(@Nullable Integer digestType) {
+
             this.digestType = digestType;
             return this;
         }
         @CustomType.Setter
         public Builder fingerprint(@Nullable String fingerprint) {
+
             this.fingerprint = fingerprint;
             return this;
         }
         @CustomType.Setter
         public Builder flags(@Nullable String flags) {
+
             this.flags = flags;
             return this;
         }
         @CustomType.Setter
         public Builder keyTag(@Nullable Integer keyTag) {
+
             this.keyTag = keyTag;
             return this;
         }
         @CustomType.Setter
         public Builder latDegrees(@Nullable Integer latDegrees) {
+
             this.latDegrees = latDegrees;
             return this;
         }
         @CustomType.Setter
         public Builder latDirection(@Nullable String latDirection) {
+
             this.latDirection = latDirection;
             return this;
         }
         @CustomType.Setter
         public Builder latMinutes(@Nullable Integer latMinutes) {
+
             this.latMinutes = latMinutes;
             return this;
         }
         @CustomType.Setter
         public Builder latSeconds(@Nullable Double latSeconds) {
+
             this.latSeconds = latSeconds;
             return this;
         }
         @CustomType.Setter
         public Builder longDegrees(@Nullable Integer longDegrees) {
+
             this.longDegrees = longDegrees;
             return this;
         }
         @CustomType.Setter
         public Builder longDirection(@Nullable String longDirection) {
+
             this.longDirection = longDirection;
             return this;
         }
         @CustomType.Setter
         public Builder longMinutes(@Nullable Integer longMinutes) {
+
             this.longMinutes = longMinutes;
             return this;
         }
         @CustomType.Setter
         public Builder longSeconds(@Nullable Double longSeconds) {
+
             this.longSeconds = longSeconds;
             return this;
         }
         @CustomType.Setter
         public Builder matchingType(@Nullable Integer matchingType) {
+
             this.matchingType = matchingType;
             return this;
         }
         @CustomType.Setter
         public Builder name(@Nullable String name) {
+
             this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder order(@Nullable Integer order) {
+
             this.order = order;
             return this;
         }
         @CustomType.Setter
         public Builder port(@Nullable Integer port) {
+
             this.port = port;
             return this;
         }
         @CustomType.Setter
         public Builder precisionHorz(@Nullable Double precisionHorz) {
+
             this.precisionHorz = precisionHorz;
             return this;
         }
         @CustomType.Setter
         public Builder precisionVert(@Nullable Double precisionVert) {
+
             this.precisionVert = precisionVert;
             return this;
         }
         @CustomType.Setter
         public Builder preference(@Nullable Integer preference) {
+
             this.preference = preference;
             return this;
         }
         @CustomType.Setter
         public Builder priority(@Nullable Integer priority) {
+
             this.priority = priority;
             return this;
         }
         @CustomType.Setter
         public Builder proto(@Nullable String proto) {
+
             this.proto = proto;
             return this;
         }
         @CustomType.Setter
         public Builder protocol(@Nullable Integer protocol) {
+
             this.protocol = protocol;
             return this;
         }
         @CustomType.Setter
         public Builder publicKey(@Nullable String publicKey) {
+
             this.publicKey = publicKey;
             return this;
         }
         @CustomType.Setter
         public Builder regex(@Nullable String regex) {
+
             this.regex = regex;
             return this;
         }
         @CustomType.Setter
         public Builder replacement(@Nullable String replacement) {
+
             this.replacement = replacement;
             return this;
         }
         @CustomType.Setter
         public Builder selector(@Nullable Integer selector) {
+
             this.selector = selector;
             return this;
         }
         @CustomType.Setter
         public Builder service(@Nullable String service) {
+
             this.service = service;
             return this;
         }
         @CustomType.Setter
         public Builder size(@Nullable Double size) {
+
             this.size = size;
             return this;
         }
         @CustomType.Setter
         public Builder tag(@Nullable String tag) {
+
             this.tag = tag;
             return this;
         }
         @CustomType.Setter
         public Builder target(@Nullable String target) {
+
             this.target = target;
             return this;
         }
         @CustomType.Setter
         public Builder type(@Nullable Integer type) {
+
             this.type = type;
             return this;
         }
         @CustomType.Setter
         public Builder usage(@Nullable Integer usage) {
+
             this.usage = usage;
             return this;
         }
         @CustomType.Setter
         public Builder value(@Nullable String value) {
+
             this.value = value;
             return this;
         }
         @CustomType.Setter
         public Builder weight(@Nullable Integer weight) {
+
             this.weight = weight;
             return this;
         }

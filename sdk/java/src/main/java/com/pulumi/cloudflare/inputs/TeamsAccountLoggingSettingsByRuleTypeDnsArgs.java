@@ -5,6 +5,7 @@ package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.util.Objects;
 
@@ -91,8 +92,12 @@ public final class TeamsAccountLoggingSettingsByRuleTypeDnsArgs extends com.pulu
         }
 
         public TeamsAccountLoggingSettingsByRuleTypeDnsArgs build() {
-            $.logAll = Objects.requireNonNull($.logAll, "expected parameter 'logAll' to be non-null");
-            $.logBlocks = Objects.requireNonNull($.logBlocks, "expected parameter 'logBlocks' to be non-null");
+            if ($.logAll == null) {
+                throw new MissingRequiredPropertyException("TeamsAccountLoggingSettingsByRuleTypeDnsArgs", "logAll");
+            }
+            if ($.logBlocks == null) {
+                throw new MissingRequiredPropertyException("TeamsAccountLoggingSettingsByRuleTypeDnsArgs", "logBlocks");
+            }
             return $;
         }
     }
