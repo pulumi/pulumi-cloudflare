@@ -58,11 +58,13 @@ public final class ListItemValue {
 
         @CustomType.Setter
         public Builder asn(@Nullable Integer asn) {
+
             this.asn = asn;
             return this;
         }
         @CustomType.Setter
         public Builder hostnames(@Nullable List<ListItemValueHostname> hostnames) {
+
             this.hostnames = hostnames;
             return this;
         }
@@ -71,11 +73,13 @@ public final class ListItemValue {
         }
         @CustomType.Setter
         public Builder ip(@Nullable String ip) {
+
             this.ip = ip;
             return this;
         }
         @CustomType.Setter
         public Builder redirects(@Nullable List<ListItemValueRedirect> redirects) {
+
             this.redirects = redirects;
             return this;
         }

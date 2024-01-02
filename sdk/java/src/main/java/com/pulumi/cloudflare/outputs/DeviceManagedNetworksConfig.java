@@ -4,6 +4,7 @@
 package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -56,12 +57,18 @@ public final class DeviceManagedNetworksConfig {
 
         @CustomType.Setter
         public Builder sha256(String sha256) {
-            this.sha256 = Objects.requireNonNull(sha256);
+            if (sha256 == null) {
+              throw new MissingRequiredPropertyException("DeviceManagedNetworksConfig", "sha256");
+            }
+            this.sha256 = sha256;
             return this;
         }
         @CustomType.Setter
         public Builder tlsSockaddr(String tlsSockaddr) {
-            this.tlsSockaddr = Objects.requireNonNull(tlsSockaddr);
+            if (tlsSockaddr == null) {
+              throw new MissingRequiredPropertyException("DeviceManagedNetworksConfig", "tlsSockaddr");
+            }
+            this.tlsSockaddr = tlsSockaddr;
             return this;
         }
         public DeviceManagedNetworksConfig build() {

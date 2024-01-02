@@ -58,11 +58,13 @@ public final class RulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRang
 
         @CustomType.Setter
         public Builder from(@Nullable Integer from) {
+
             this.from = from;
             return this;
         }
         @CustomType.Setter
         public Builder to(@Nullable Integer to) {
+
             this.to = to;
             return this;
         }

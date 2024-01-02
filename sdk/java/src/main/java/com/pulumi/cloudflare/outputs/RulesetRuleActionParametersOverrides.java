@@ -104,11 +104,13 @@ public final class RulesetRuleActionParametersOverrides {
 
         @CustomType.Setter
         public Builder action(@Nullable String action) {
+
             this.action = action;
             return this;
         }
         @CustomType.Setter
         public Builder categories(@Nullable List<RulesetRuleActionParametersOverridesCategory> categories) {
+
             this.categories = categories;
             return this;
         }
@@ -117,11 +119,13 @@ public final class RulesetRuleActionParametersOverrides {
         }
         @CustomType.Setter
         public Builder enabled(@Nullable Boolean enabled) {
+
             this.enabled = enabled;
             return this;
         }
         @CustomType.Setter
         public Builder rules(@Nullable List<RulesetRuleActionParametersOverridesRule> rules) {
+
             this.rules = rules;
             return this;
         }
@@ -130,6 +134,7 @@ public final class RulesetRuleActionParametersOverrides {
         }
         @CustomType.Setter
         public Builder sensitivityLevel(@Nullable String sensitivityLevel) {
+
             this.sensitivityLevel = sensitivityLevel;
             return this;
         }

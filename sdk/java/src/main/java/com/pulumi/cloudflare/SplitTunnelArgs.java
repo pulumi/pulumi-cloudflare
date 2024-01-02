@@ -6,6 +6,7 @@ package com.pulumi.cloudflare;
 import com.pulumi.cloudflare.inputs.SplitTunnelTunnelArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -199,9 +200,15 @@ public final class SplitTunnelArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public SplitTunnelArgs build() {
-            $.accountId = Objects.requireNonNull($.accountId, "expected parameter 'accountId' to be non-null");
-            $.mode = Objects.requireNonNull($.mode, "expected parameter 'mode' to be non-null");
-            $.tunnels = Objects.requireNonNull($.tunnels, "expected parameter 'tunnels' to be non-null");
+            if ($.accountId == null) {
+                throw new MissingRequiredPropertyException("SplitTunnelArgs", "accountId");
+            }
+            if ($.mode == null) {
+                throw new MissingRequiredPropertyException("SplitTunnelArgs", "mode");
+            }
+            if ($.tunnels == null) {
+                throw new MissingRequiredPropertyException("SplitTunnelArgs", "tunnels");
+            }
             return $;
         }
     }

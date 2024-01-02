@@ -5,6 +5,7 @@ package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -394,7 +395,9 @@ public final class PagesProjectSourceConfigArgs extends com.pulumi.resources.Res
         }
 
         public PagesProjectSourceConfigArgs build() {
-            $.productionBranch = Objects.requireNonNull($.productionBranch, "expected parameter 'productionBranch' to be non-null");
+            if ($.productionBranch == null) {
+                throw new MissingRequiredPropertyException("PagesProjectSourceConfigArgs", "productionBranch");
+            }
             return $;
         }
     }

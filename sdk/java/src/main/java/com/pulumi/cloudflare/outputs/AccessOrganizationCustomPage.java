@@ -58,11 +58,13 @@ public final class AccessOrganizationCustomPage {
 
         @CustomType.Setter
         public Builder forbidden(@Nullable String forbidden) {
+
             this.forbidden = forbidden;
             return this;
         }
         @CustomType.Setter
         public Builder identityDenied(@Nullable String identityDenied) {
+
             this.identityDenied = identityDenied;
             return this;
         }

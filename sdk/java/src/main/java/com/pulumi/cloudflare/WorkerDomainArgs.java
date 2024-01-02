@@ -5,6 +5,7 @@ package com.pulumi.cloudflare;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -224,10 +225,18 @@ public final class WorkerDomainArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public WorkerDomainArgs build() {
-            $.accountId = Objects.requireNonNull($.accountId, "expected parameter 'accountId' to be non-null");
-            $.hostname = Objects.requireNonNull($.hostname, "expected parameter 'hostname' to be non-null");
-            $.service = Objects.requireNonNull($.service, "expected parameter 'service' to be non-null");
-            $.zoneId = Objects.requireNonNull($.zoneId, "expected parameter 'zoneId' to be non-null");
+            if ($.accountId == null) {
+                throw new MissingRequiredPropertyException("WorkerDomainArgs", "accountId");
+            }
+            if ($.hostname == null) {
+                throw new MissingRequiredPropertyException("WorkerDomainArgs", "hostname");
+            }
+            if ($.service == null) {
+                throw new MissingRequiredPropertyException("WorkerDomainArgs", "service");
+            }
+            if ($.zoneId == null) {
+                throw new MissingRequiredPropertyException("WorkerDomainArgs", "zoneId");
+            }
             return $;
         }
     }

@@ -5,6 +5,7 @@ package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -150,8 +151,12 @@ public final class TeamsRuleRuleSettingsEgressArgs extends com.pulumi.resources.
         }
 
         public TeamsRuleRuleSettingsEgressArgs build() {
-            $.ipv4 = Objects.requireNonNull($.ipv4, "expected parameter 'ipv4' to be non-null");
-            $.ipv6 = Objects.requireNonNull($.ipv6, "expected parameter 'ipv6' to be non-null");
+            if ($.ipv4 == null) {
+                throw new MissingRequiredPropertyException("TeamsRuleRuleSettingsEgressArgs", "ipv4");
+            }
+            if ($.ipv6 == null) {
+                throw new MissingRequiredPropertyException("TeamsRuleRuleSettingsEgressArgs", "ipv6");
+            }
             return $;
         }
     }

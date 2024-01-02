@@ -9,6 +9,7 @@ import com.pulumi.cloudflare.inputs.RulesetRuleLoggingArgs;
 import com.pulumi.cloudflare.inputs.RulesetRuleRatelimitArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -488,7 +489,9 @@ public final class RulesetRuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public RulesetRuleArgs build() {
-            $.expression = Objects.requireNonNull($.expression, "expected parameter 'expression' to be non-null");
+            if ($.expression == null) {
+                throw new MissingRequiredPropertyException("RulesetRuleArgs", "expression");
+            }
             return $;
         }
     }

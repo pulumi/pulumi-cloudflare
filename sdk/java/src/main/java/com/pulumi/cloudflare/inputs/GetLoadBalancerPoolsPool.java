@@ -6,6 +6,7 @@ package com.pulumi.cloudflare.inputs;
 import com.pulumi.cloudflare.inputs.GetLoadBalancerPoolsPoolLoadShedding;
 import com.pulumi.cloudflare.inputs.GetLoadBalancerPoolsPoolOrigin;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Double;
 import java.lang.Integer;
@@ -450,20 +451,48 @@ public final class GetLoadBalancerPoolsPool extends com.pulumi.resources.InvokeA
         }
 
         public GetLoadBalancerPoolsPool build() {
-            $.checkRegions = Objects.requireNonNull($.checkRegions, "expected parameter 'checkRegions' to be non-null");
-            $.createdOn = Objects.requireNonNull($.createdOn, "expected parameter 'createdOn' to be non-null");
-            $.description = Objects.requireNonNull($.description, "expected parameter 'description' to be non-null");
-            $.enabled = Objects.requireNonNull($.enabled, "expected parameter 'enabled' to be non-null");
-            $.id = Objects.requireNonNull($.id, "expected parameter 'id' to be non-null");
-            $.latitude = Objects.requireNonNull($.latitude, "expected parameter 'latitude' to be non-null");
-            $.loadSheddings = Objects.requireNonNull($.loadSheddings, "expected parameter 'loadSheddings' to be non-null");
-            $.longitude = Objects.requireNonNull($.longitude, "expected parameter 'longitude' to be non-null");
-            $.minimumOrigins = Objects.requireNonNull($.minimumOrigins, "expected parameter 'minimumOrigins' to be non-null");
-            $.modifiedOn = Objects.requireNonNull($.modifiedOn, "expected parameter 'modifiedOn' to be non-null");
-            $.monitor = Objects.requireNonNull($.monitor, "expected parameter 'monitor' to be non-null");
-            $.name = Objects.requireNonNull($.name, "expected parameter 'name' to be non-null");
-            $.notificationEmail = Objects.requireNonNull($.notificationEmail, "expected parameter 'notificationEmail' to be non-null");
-            $.origins = Objects.requireNonNull($.origins, "expected parameter 'origins' to be non-null");
+            if ($.checkRegions == null) {
+                throw new MissingRequiredPropertyException("GetLoadBalancerPoolsPool", "checkRegions");
+            }
+            if ($.createdOn == null) {
+                throw new MissingRequiredPropertyException("GetLoadBalancerPoolsPool", "createdOn");
+            }
+            if ($.description == null) {
+                throw new MissingRequiredPropertyException("GetLoadBalancerPoolsPool", "description");
+            }
+            if ($.enabled == null) {
+                throw new MissingRequiredPropertyException("GetLoadBalancerPoolsPool", "enabled");
+            }
+            if ($.id == null) {
+                throw new MissingRequiredPropertyException("GetLoadBalancerPoolsPool", "id");
+            }
+            if ($.latitude == null) {
+                throw new MissingRequiredPropertyException("GetLoadBalancerPoolsPool", "latitude");
+            }
+            if ($.loadSheddings == null) {
+                throw new MissingRequiredPropertyException("GetLoadBalancerPoolsPool", "loadSheddings");
+            }
+            if ($.longitude == null) {
+                throw new MissingRequiredPropertyException("GetLoadBalancerPoolsPool", "longitude");
+            }
+            if ($.minimumOrigins == null) {
+                throw new MissingRequiredPropertyException("GetLoadBalancerPoolsPool", "minimumOrigins");
+            }
+            if ($.modifiedOn == null) {
+                throw new MissingRequiredPropertyException("GetLoadBalancerPoolsPool", "modifiedOn");
+            }
+            if ($.monitor == null) {
+                throw new MissingRequiredPropertyException("GetLoadBalancerPoolsPool", "monitor");
+            }
+            if ($.name == null) {
+                throw new MissingRequiredPropertyException("GetLoadBalancerPoolsPool", "name");
+            }
+            if ($.notificationEmail == null) {
+                throw new MissingRequiredPropertyException("GetLoadBalancerPoolsPool", "notificationEmail");
+            }
+            if ($.origins == null) {
+                throw new MissingRequiredPropertyException("GetLoadBalancerPoolsPool", "origins");
+            }
             return $;
         }
     }

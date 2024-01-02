@@ -5,6 +5,7 @@ package com.pulumi.cloudflare;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -187,8 +188,12 @@ public final class ByoIpPrefixArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public ByoIpPrefixArgs build() {
-            $.accountId = Objects.requireNonNull($.accountId, "expected parameter 'accountId' to be non-null");
-            $.prefixId = Objects.requireNonNull($.prefixId, "expected parameter 'prefixId' to be non-null");
+            if ($.accountId == null) {
+                throw new MissingRequiredPropertyException("ByoIpPrefixArgs", "accountId");
+            }
+            if ($.prefixId == null) {
+                throw new MissingRequiredPropertyException("ByoIpPrefixArgs", "prefixId");
+            }
             return $;
         }
     }

@@ -44,6 +44,7 @@ public final class TeamsRuleRuleSettingsUntrustedCert {
 
         @CustomType.Setter
         public Builder action(@Nullable String action) {
+
             this.action = action;
             return this;
         }

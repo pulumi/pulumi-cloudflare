@@ -5,6 +5,7 @@ package com.pulumi.cloudflare;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -185,10 +186,18 @@ public final class WorkersKvArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public WorkersKvArgs build() {
-            $.accountId = Objects.requireNonNull($.accountId, "expected parameter 'accountId' to be non-null");
-            $.key = Objects.requireNonNull($.key, "expected parameter 'key' to be non-null");
-            $.namespaceId = Objects.requireNonNull($.namespaceId, "expected parameter 'namespaceId' to be non-null");
-            $.value = Objects.requireNonNull($.value, "expected parameter 'value' to be non-null");
+            if ($.accountId == null) {
+                throw new MissingRequiredPropertyException("WorkersKvArgs", "accountId");
+            }
+            if ($.key == null) {
+                throw new MissingRequiredPropertyException("WorkersKvArgs", "key");
+            }
+            if ($.namespaceId == null) {
+                throw new MissingRequiredPropertyException("WorkersKvArgs", "namespaceId");
+            }
+            if ($.value == null) {
+                throw new MissingRequiredPropertyException("WorkersKvArgs", "value");
+            }
             return $;
         }
     }

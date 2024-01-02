@@ -194,16 +194,19 @@ public final class AccessIdentityProviderConfig {
 
         @CustomType.Setter
         public Builder apiToken(@Nullable String apiToken) {
+
             this.apiToken = apiToken;
             return this;
         }
         @CustomType.Setter
         public Builder appsDomain(@Nullable String appsDomain) {
+
             this.appsDomain = appsDomain;
             return this;
         }
         @CustomType.Setter
         public Builder attributes(@Nullable List<String> attributes) {
+
             this.attributes = attributes;
             return this;
         }
@@ -212,31 +215,37 @@ public final class AccessIdentityProviderConfig {
         }
         @CustomType.Setter
         public Builder authUrl(@Nullable String authUrl) {
+
             this.authUrl = authUrl;
             return this;
         }
         @CustomType.Setter
         public Builder authorizationServerId(@Nullable String authorizationServerId) {
+
             this.authorizationServerId = authorizationServerId;
             return this;
         }
         @CustomType.Setter
         public Builder centrifyAccount(@Nullable String centrifyAccount) {
+
             this.centrifyAccount = centrifyAccount;
             return this;
         }
         @CustomType.Setter
         public Builder centrifyAppId(@Nullable String centrifyAppId) {
+
             this.centrifyAppId = centrifyAppId;
             return this;
         }
         @CustomType.Setter
         public Builder certsUrl(@Nullable String certsUrl) {
+
             this.certsUrl = certsUrl;
             return this;
         }
         @CustomType.Setter
         public Builder claims(@Nullable List<String> claims) {
+
             this.claims = claims;
             return this;
         }
@@ -245,71 +254,85 @@ public final class AccessIdentityProviderConfig {
         }
         @CustomType.Setter
         public Builder clientId(@Nullable String clientId) {
+
             this.clientId = clientId;
             return this;
         }
         @CustomType.Setter
         public Builder clientSecret(@Nullable String clientSecret) {
+
             this.clientSecret = clientSecret;
             return this;
         }
         @CustomType.Setter
         public Builder conditionalAccessEnabled(@Nullable Boolean conditionalAccessEnabled) {
+
             this.conditionalAccessEnabled = conditionalAccessEnabled;
             return this;
         }
         @CustomType.Setter
         public Builder directoryId(@Nullable String directoryId) {
+
             this.directoryId = directoryId;
             return this;
         }
         @CustomType.Setter
         public Builder emailAttributeName(@Nullable String emailAttributeName) {
+
             this.emailAttributeName = emailAttributeName;
             return this;
         }
         @CustomType.Setter
         public Builder emailClaimName(@Nullable String emailClaimName) {
+
             this.emailClaimName = emailClaimName;
             return this;
         }
         @CustomType.Setter
         public Builder idpPublicCert(@Nullable String idpPublicCert) {
+
             this.idpPublicCert = idpPublicCert;
             return this;
         }
         @CustomType.Setter
         public Builder issuerUrl(@Nullable String issuerUrl) {
+
             this.issuerUrl = issuerUrl;
             return this;
         }
         @CustomType.Setter
         public Builder oktaAccount(@Nullable String oktaAccount) {
+
             this.oktaAccount = oktaAccount;
             return this;
         }
         @CustomType.Setter
         public Builder oneloginAccount(@Nullable String oneloginAccount) {
+
             this.oneloginAccount = oneloginAccount;
             return this;
         }
         @CustomType.Setter
         public Builder pingEnvId(@Nullable String pingEnvId) {
+
             this.pingEnvId = pingEnvId;
             return this;
         }
         @CustomType.Setter
         public Builder pkceEnabled(@Nullable Boolean pkceEnabled) {
+
             this.pkceEnabled = pkceEnabled;
             return this;
         }
         @CustomType.Setter
         public Builder redirectUrl(@Nullable String redirectUrl) {
+
             this.redirectUrl = redirectUrl;
             return this;
         }
         @CustomType.Setter
         public Builder scopes(@Nullable List<String> scopes) {
+
             this.scopes = scopes;
             return this;
         }
@@ -318,21 +341,25 @@ public final class AccessIdentityProviderConfig {
         }
         @CustomType.Setter
         public Builder signRequest(@Nullable Boolean signRequest) {
+
             this.signRequest = signRequest;
             return this;
         }
         @CustomType.Setter
         public Builder ssoTargetUrl(@Nullable String ssoTargetUrl) {
+
             this.ssoTargetUrl = ssoTargetUrl;
             return this;
         }
         @CustomType.Setter
         public Builder supportGroups(@Nullable Boolean supportGroups) {
+
             this.supportGroups = supportGroups;
             return this;
         }
         @CustomType.Setter
         public Builder tokenUrl(@Nullable String tokenUrl) {
+
             this.tokenUrl = tokenUrl;
             return this;
         }

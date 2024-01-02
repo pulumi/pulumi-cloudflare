@@ -6,6 +6,7 @@ package com.pulumi.cloudflare;
 import com.pulumi.cloudflare.inputs.DlpProfileEntryArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -274,11 +275,21 @@ public final class DlpProfileArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public DlpProfileArgs build() {
-            $.accountId = Objects.requireNonNull($.accountId, "expected parameter 'accountId' to be non-null");
-            $.allowedMatchCount = Objects.requireNonNull($.allowedMatchCount, "expected parameter 'allowedMatchCount' to be non-null");
-            $.entries = Objects.requireNonNull($.entries, "expected parameter 'entries' to be non-null");
-            $.name = Objects.requireNonNull($.name, "expected parameter 'name' to be non-null");
-            $.type = Objects.requireNonNull($.type, "expected parameter 'type' to be non-null");
+            if ($.accountId == null) {
+                throw new MissingRequiredPropertyException("DlpProfileArgs", "accountId");
+            }
+            if ($.allowedMatchCount == null) {
+                throw new MissingRequiredPropertyException("DlpProfileArgs", "allowedMatchCount");
+            }
+            if ($.entries == null) {
+                throw new MissingRequiredPropertyException("DlpProfileArgs", "entries");
+            }
+            if ($.name == null) {
+                throw new MissingRequiredPropertyException("DlpProfileArgs", "name");
+            }
+            if ($.type == null) {
+                throw new MissingRequiredPropertyException("DlpProfileArgs", "type");
+            }
             return $;
         }
     }

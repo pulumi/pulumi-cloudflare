@@ -5,6 +5,7 @@ package com.pulumi.cloudflare;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -224,9 +225,15 @@ public final class TunnelRouteArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public TunnelRouteArgs build() {
-            $.accountId = Objects.requireNonNull($.accountId, "expected parameter 'accountId' to be non-null");
-            $.network = Objects.requireNonNull($.network, "expected parameter 'network' to be non-null");
-            $.tunnelId = Objects.requireNonNull($.tunnelId, "expected parameter 'tunnelId' to be non-null");
+            if ($.accountId == null) {
+                throw new MissingRequiredPropertyException("TunnelRouteArgs", "accountId");
+            }
+            if ($.network == null) {
+                throw new MissingRequiredPropertyException("TunnelRouteArgs", "network");
+            }
+            if ($.tunnelId == null) {
+                throw new MissingRequiredPropertyException("TunnelRouteArgs", "tunnelId");
+            }
             return $;
         }
     }

@@ -6,6 +6,7 @@ package com.pulumi.cloudflare;
 import com.pulumi.cloudflare.inputs.RulesetRuleArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -310,9 +311,15 @@ public final class RulesetArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public RulesetArgs build() {
-            $.kind = Objects.requireNonNull($.kind, "expected parameter 'kind' to be non-null");
-            $.name = Objects.requireNonNull($.name, "expected parameter 'name' to be non-null");
-            $.phase = Objects.requireNonNull($.phase, "expected parameter 'phase' to be non-null");
+            if ($.kind == null) {
+                throw new MissingRequiredPropertyException("RulesetArgs", "kind");
+            }
+            if ($.name == null) {
+                throw new MissingRequiredPropertyException("RulesetArgs", "name");
+            }
+            if ($.phase == null) {
+                throw new MissingRequiredPropertyException("RulesetArgs", "phase");
+            }
             return $;
         }
     }

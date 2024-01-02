@@ -4,6 +4,7 @@
 package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -70,17 +71,26 @@ public final class GetOriginCaRootCertificateResult {
 
         @CustomType.Setter
         public Builder algorithm(String algorithm) {
-            this.algorithm = Objects.requireNonNull(algorithm);
+            if (algorithm == null) {
+              throw new MissingRequiredPropertyException("GetOriginCaRootCertificateResult", "algorithm");
+            }
+            this.algorithm = algorithm;
             return this;
         }
         @CustomType.Setter
         public Builder certPem(String certPem) {
-            this.certPem = Objects.requireNonNull(certPem);
+            if (certPem == null) {
+              throw new MissingRequiredPropertyException("GetOriginCaRootCertificateResult", "certPem");
+            }
+            this.certPem = certPem;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetOriginCaRootCertificateResult", "id");
+            }
+            this.id = id;
             return this;
         }
         public GetOriginCaRootCertificateResult build() {

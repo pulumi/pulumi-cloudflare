@@ -61,26 +61,31 @@ public final class ZoneSettingsOverrideInitialSettingSecurityHeader {
 
         @CustomType.Setter
         public Builder enabled(@Nullable Boolean enabled) {
+
             this.enabled = enabled;
             return this;
         }
         @CustomType.Setter
         public Builder includeSubdomains(@Nullable Boolean includeSubdomains) {
+
             this.includeSubdomains = includeSubdomains;
             return this;
         }
         @CustomType.Setter
         public Builder maxAge(@Nullable Integer maxAge) {
+
             this.maxAge = maxAge;
             return this;
         }
         @CustomType.Setter
         public Builder nosniff(@Nullable Boolean nosniff) {
+
             this.nosniff = nosniff;
             return this;
         }
         @CustomType.Setter
         public Builder preload(@Nullable Boolean preload) {
+
             this.preload = preload;
             return this;
         }

@@ -5,6 +5,7 @@ package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.cloudflare.outputs.AccessApplicationSaasAppCustomAttributeSource;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -94,27 +95,34 @@ public final class AccessApplicationSaasAppCustomAttribute {
 
         @CustomType.Setter
         public Builder friendlyName(@Nullable String friendlyName) {
+
             this.friendlyName = friendlyName;
             return this;
         }
         @CustomType.Setter
         public Builder name(@Nullable String name) {
+
             this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder nameFormat(@Nullable String nameFormat) {
+
             this.nameFormat = nameFormat;
             return this;
         }
         @CustomType.Setter
         public Builder required(@Nullable Boolean required) {
+
             this.required = required;
             return this;
         }
         @CustomType.Setter
         public Builder source(AccessApplicationSaasAppCustomAttributeSource source) {
-            this.source = Objects.requireNonNull(source);
+            if (source == null) {
+              throw new MissingRequiredPropertyException("AccessApplicationSaasAppCustomAttribute", "source");
+            }
+            this.source = source;
             return this;
         }
         public AccessApplicationSaasAppCustomAttribute build() {

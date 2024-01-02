@@ -100,26 +100,31 @@ public final class TeamsRuleRuleSettingsBisoAdminControls {
 
         @CustomType.Setter
         public Builder disableCopyPaste(@Nullable Boolean disableCopyPaste) {
+
             this.disableCopyPaste = disableCopyPaste;
             return this;
         }
         @CustomType.Setter
         public Builder disableDownload(@Nullable Boolean disableDownload) {
+
             this.disableDownload = disableDownload;
             return this;
         }
         @CustomType.Setter
         public Builder disableKeyboard(@Nullable Boolean disableKeyboard) {
+
             this.disableKeyboard = disableKeyboard;
             return this;
         }
         @CustomType.Setter
         public Builder disablePrinting(@Nullable Boolean disablePrinting) {
+
             this.disablePrinting = disablePrinting;
             return this;
         }
         @CustomType.Setter
         public Builder disableUpload(@Nullable Boolean disableUpload) {
+
             this.disableUpload = disableUpload;
             return this;
         }

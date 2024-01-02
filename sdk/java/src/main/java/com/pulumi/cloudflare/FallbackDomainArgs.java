@@ -6,6 +6,7 @@ package com.pulumi.cloudflare;
 import com.pulumi.cloudflare.inputs.FallbackDomainDomainArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -136,8 +137,12 @@ public final class FallbackDomainArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         public FallbackDomainArgs build() {
-            $.accountId = Objects.requireNonNull($.accountId, "expected parameter 'accountId' to be non-null");
-            $.domains = Objects.requireNonNull($.domains, "expected parameter 'domains' to be non-null");
+            if ($.accountId == null) {
+                throw new MissingRequiredPropertyException("FallbackDomainArgs", "accountId");
+            }
+            if ($.domains == null) {
+                throw new MissingRequiredPropertyException("FallbackDomainArgs", "domains");
+            }
             return $;
         }
     }

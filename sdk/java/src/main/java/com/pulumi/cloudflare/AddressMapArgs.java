@@ -7,6 +7,7 @@ import com.pulumi.cloudflare.inputs.AddressMapIpArgs;
 import com.pulumi.cloudflare.inputs.AddressMapMembershipArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -285,8 +286,12 @@ public final class AddressMapArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public AddressMapArgs build() {
-            $.accountId = Objects.requireNonNull($.accountId, "expected parameter 'accountId' to be non-null");
-            $.enabled = Objects.requireNonNull($.enabled, "expected parameter 'enabled' to be non-null");
+            if ($.accountId == null) {
+                throw new MissingRequiredPropertyException("AddressMapArgs", "accountId");
+            }
+            if ($.enabled == null) {
+                throw new MissingRequiredPropertyException("AddressMapArgs", "enabled");
+            }
             return $;
         }
     }

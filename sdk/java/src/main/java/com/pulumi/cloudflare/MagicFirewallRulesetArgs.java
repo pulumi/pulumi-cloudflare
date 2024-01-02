@@ -5,6 +5,7 @@ package com.pulumi.cloudflare;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -173,8 +174,12 @@ public final class MagicFirewallRulesetArgs extends com.pulumi.resources.Resourc
         }
 
         public MagicFirewallRulesetArgs build() {
-            $.accountId = Objects.requireNonNull($.accountId, "expected parameter 'accountId' to be non-null");
-            $.name = Objects.requireNonNull($.name, "expected parameter 'name' to be non-null");
+            if ($.accountId == null) {
+                throw new MissingRequiredPropertyException("MagicFirewallRulesetArgs", "accountId");
+            }
+            if ($.name == null) {
+                throw new MissingRequiredPropertyException("MagicFirewallRulesetArgs", "name");
+            }
             return $;
         }
     }

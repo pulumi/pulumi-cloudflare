@@ -5,6 +5,7 @@ package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -148,9 +149,15 @@ public final class AccessPolicyExcludeAuthContextArgs extends com.pulumi.resourc
         }
 
         public AccessPolicyExcludeAuthContextArgs build() {
-            $.acId = Objects.requireNonNull($.acId, "expected parameter 'acId' to be non-null");
-            $.id = Objects.requireNonNull($.id, "expected parameter 'id' to be non-null");
-            $.identityProviderId = Objects.requireNonNull($.identityProviderId, "expected parameter 'identityProviderId' to be non-null");
+            if ($.acId == null) {
+                throw new MissingRequiredPropertyException("AccessPolicyExcludeAuthContextArgs", "acId");
+            }
+            if ($.id == null) {
+                throw new MissingRequiredPropertyException("AccessPolicyExcludeAuthContextArgs", "id");
+            }
+            if ($.identityProviderId == null) {
+                throw new MissingRequiredPropertyException("AccessPolicyExcludeAuthContextArgs", "identityProviderId");
+            }
             return $;
         }
     }

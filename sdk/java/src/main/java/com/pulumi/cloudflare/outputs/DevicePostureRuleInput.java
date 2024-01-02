@@ -467,16 +467,19 @@ public final class DevicePostureRuleInput {
 
         @CustomType.Setter
         public Builder activeThreats(@Nullable Integer activeThreats) {
+
             this.activeThreats = activeThreats;
             return this;
         }
         @CustomType.Setter
         public Builder certificateId(@Nullable String certificateId) {
+
             this.certificateId = certificateId;
             return this;
         }
         @CustomType.Setter
         public Builder checkDisks(@Nullable List<String> checkDisks) {
+
             this.checkDisks = checkDisks;
             return this;
         }
@@ -485,141 +488,169 @@ public final class DevicePostureRuleInput {
         }
         @CustomType.Setter
         public Builder cn(@Nullable String cn) {
+
             this.cn = cn;
             return this;
         }
         @CustomType.Setter
         public Builder complianceStatus(@Nullable String complianceStatus) {
+
             this.complianceStatus = complianceStatus;
             return this;
         }
         @CustomType.Setter
         public Builder connectionId(@Nullable String connectionId) {
+
             this.connectionId = connectionId;
             return this;
         }
         @CustomType.Setter
         public Builder countOperator(@Nullable String countOperator) {
+
             this.countOperator = countOperator;
             return this;
         }
         @CustomType.Setter
         public Builder domain(@Nullable String domain) {
+
             this.domain = domain;
             return this;
         }
         @CustomType.Setter
         public Builder eidLastSeen(@Nullable String eidLastSeen) {
+
             this.eidLastSeen = eidLastSeen;
             return this;
         }
         @CustomType.Setter
         public Builder enabled(@Nullable Boolean enabled) {
+
             this.enabled = enabled;
             return this;
         }
         @CustomType.Setter
         public Builder exists(@Nullable Boolean exists) {
+
             this.exists = exists;
             return this;
         }
         @CustomType.Setter
         public Builder id(@Nullable String id) {
+
             this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder infected(@Nullable Boolean infected) {
+
             this.infected = infected;
             return this;
         }
         @CustomType.Setter
         public Builder isActive(@Nullable Boolean isActive) {
+
             this.isActive = isActive;
             return this;
         }
         @CustomType.Setter
         public Builder issueCount(@Nullable String issueCount) {
+
             this.issueCount = issueCount;
             return this;
         }
         @CustomType.Setter
         public Builder networkStatus(@Nullable String networkStatus) {
+
             this.networkStatus = networkStatus;
             return this;
         }
         @CustomType.Setter
         public Builder operator(@Nullable String operator) {
+
             this.operator = operator;
             return this;
         }
         @CustomType.Setter
         public Builder os(@Nullable String os) {
+
             this.os = os;
             return this;
         }
         @CustomType.Setter
         public Builder osDistroName(@Nullable String osDistroName) {
+
             this.osDistroName = osDistroName;
             return this;
         }
         @CustomType.Setter
         public Builder osDistroRevision(@Nullable String osDistroRevision) {
+
             this.osDistroRevision = osDistroRevision;
             return this;
         }
         @CustomType.Setter
         public Builder overall(@Nullable String overall) {
+
             this.overall = overall;
             return this;
         }
         @CustomType.Setter
         public Builder path(@Nullable String path) {
+
             this.path = path;
             return this;
         }
         @CustomType.Setter
         public Builder requireAll(@Nullable Boolean requireAll) {
+
             this.requireAll = requireAll;
             return this;
         }
         @CustomType.Setter
         public Builder riskLevel(@Nullable String riskLevel) {
+
             this.riskLevel = riskLevel;
             return this;
         }
         @CustomType.Setter
         public Builder running(@Nullable Boolean running) {
+
             this.running = running;
             return this;
         }
         @CustomType.Setter
         public Builder sensorConfig(@Nullable String sensorConfig) {
+
             this.sensorConfig = sensorConfig;
             return this;
         }
         @CustomType.Setter
         public Builder sha256(@Nullable String sha256) {
+
             this.sha256 = sha256;
             return this;
         }
         @CustomType.Setter
         public Builder thumbprint(@Nullable String thumbprint) {
+
             this.thumbprint = thumbprint;
             return this;
         }
         @CustomType.Setter
         public Builder totalScore(@Nullable Integer totalScore) {
+
             this.totalScore = totalScore;
             return this;
         }
         @CustomType.Setter
         public Builder version(@Nullable String version) {
+
             this.version = version;
             return this;
         }
         @CustomType.Setter
         public Builder versionOperator(@Nullable String versionOperator) {
+
             this.versionOperator = versionOperator;
             return this;
         }

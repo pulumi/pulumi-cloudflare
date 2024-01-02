@@ -100,26 +100,31 @@ public final class PagesProjectBuildConfig {
 
         @CustomType.Setter
         public Builder buildCommand(@Nullable String buildCommand) {
+
             this.buildCommand = buildCommand;
             return this;
         }
         @CustomType.Setter
         public Builder destinationDir(@Nullable String destinationDir) {
+
             this.destinationDir = destinationDir;
             return this;
         }
         @CustomType.Setter
         public Builder rootDir(@Nullable String rootDir) {
+
             this.rootDir = rootDir;
             return this;
         }
         @CustomType.Setter
         public Builder webAnalyticsTag(@Nullable String webAnalyticsTag) {
+
             this.webAnalyticsTag = webAnalyticsTag;
             return this;
         }
         @CustomType.Setter
         public Builder webAnalyticsToken(@Nullable String webAnalyticsToken) {
+
             this.webAnalyticsToken = webAnalyticsToken;
             return this;
         }

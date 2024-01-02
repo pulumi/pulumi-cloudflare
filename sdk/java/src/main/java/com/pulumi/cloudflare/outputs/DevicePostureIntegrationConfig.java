@@ -142,41 +142,49 @@ public final class DevicePostureIntegrationConfig {
 
         @CustomType.Setter
         public Builder accessClientId(@Nullable String accessClientId) {
+
             this.accessClientId = accessClientId;
             return this;
         }
         @CustomType.Setter
         public Builder accessClientSecret(@Nullable String accessClientSecret) {
+
             this.accessClientSecret = accessClientSecret;
             return this;
         }
         @CustomType.Setter
         public Builder apiUrl(@Nullable String apiUrl) {
+
             this.apiUrl = apiUrl;
             return this;
         }
         @CustomType.Setter
         public Builder authUrl(@Nullable String authUrl) {
+
             this.authUrl = authUrl;
             return this;
         }
         @CustomType.Setter
         public Builder clientId(@Nullable String clientId) {
+
             this.clientId = clientId;
             return this;
         }
         @CustomType.Setter
         public Builder clientKey(@Nullable String clientKey) {
+
             this.clientKey = clientKey;
             return this;
         }
         @CustomType.Setter
         public Builder clientSecret(@Nullable String clientSecret) {
+
             this.clientSecret = clientSecret;
             return this;
         }
         @CustomType.Setter
         public Builder customerId(@Nullable String customerId) {
+
             this.customerId = customerId;
             return this;
         }

@@ -5,6 +5,7 @@ package com.pulumi.cloudflare;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -159,9 +160,15 @@ public final class WorkerCronTriggerArgs extends com.pulumi.resources.ResourceAr
         }
 
         public WorkerCronTriggerArgs build() {
-            $.accountId = Objects.requireNonNull($.accountId, "expected parameter 'accountId' to be non-null");
-            $.schedules = Objects.requireNonNull($.schedules, "expected parameter 'schedules' to be non-null");
-            $.scriptName = Objects.requireNonNull($.scriptName, "expected parameter 'scriptName' to be non-null");
+            if ($.accountId == null) {
+                throw new MissingRequiredPropertyException("WorkerCronTriggerArgs", "accountId");
+            }
+            if ($.schedules == null) {
+                throw new MissingRequiredPropertyException("WorkerCronTriggerArgs", "schedules");
+            }
+            if ($.scriptName == null) {
+                throw new MissingRequiredPropertyException("WorkerCronTriggerArgs", "scriptName");
+            }
             return $;
         }
     }

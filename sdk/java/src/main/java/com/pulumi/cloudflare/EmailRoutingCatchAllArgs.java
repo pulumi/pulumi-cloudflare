@@ -7,6 +7,7 @@ import com.pulumi.cloudflare.inputs.EmailRoutingCatchAllActionArgs;
 import com.pulumi.cloudflare.inputs.EmailRoutingCatchAllMatcherArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -248,10 +249,18 @@ public final class EmailRoutingCatchAllArgs extends com.pulumi.resources.Resourc
         }
 
         public EmailRoutingCatchAllArgs build() {
-            $.actions = Objects.requireNonNull($.actions, "expected parameter 'actions' to be non-null");
-            $.matchers = Objects.requireNonNull($.matchers, "expected parameter 'matchers' to be non-null");
-            $.name = Objects.requireNonNull($.name, "expected parameter 'name' to be non-null");
-            $.zoneId = Objects.requireNonNull($.zoneId, "expected parameter 'zoneId' to be non-null");
+            if ($.actions == null) {
+                throw new MissingRequiredPropertyException("EmailRoutingCatchAllArgs", "actions");
+            }
+            if ($.matchers == null) {
+                throw new MissingRequiredPropertyException("EmailRoutingCatchAllArgs", "matchers");
+            }
+            if ($.name == null) {
+                throw new MissingRequiredPropertyException("EmailRoutingCatchAllArgs", "name");
+            }
+            if ($.zoneId == null) {
+                throw new MissingRequiredPropertyException("EmailRoutingCatchAllArgs", "zoneId");
+            }
             return $;
         }
     }

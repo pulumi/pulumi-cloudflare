@@ -4,6 +4,7 @@
 package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -47,17 +48,26 @@ public final class ZoneSettingsOverrideInitialSettingMobileRedirect {
 
         @CustomType.Setter
         public Builder mobileSubdomain(String mobileSubdomain) {
-            this.mobileSubdomain = Objects.requireNonNull(mobileSubdomain);
+            if (mobileSubdomain == null) {
+              throw new MissingRequiredPropertyException("ZoneSettingsOverrideInitialSettingMobileRedirect", "mobileSubdomain");
+            }
+            this.mobileSubdomain = mobileSubdomain;
             return this;
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("ZoneSettingsOverrideInitialSettingMobileRedirect", "status");
+            }
+            this.status = status;
             return this;
         }
         @CustomType.Setter
         public Builder stripUri(Boolean stripUri) {
-            this.stripUri = Objects.requireNonNull(stripUri);
+            if (stripUri == null) {
+              throw new MissingRequiredPropertyException("ZoneSettingsOverrideInitialSettingMobileRedirect", "stripUri");
+            }
+            this.stripUri = stripUri;
             return this;
         }
         public ZoneSettingsOverrideInitialSettingMobileRedirect build() {

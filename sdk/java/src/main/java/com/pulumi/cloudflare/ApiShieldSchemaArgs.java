@@ -5,6 +5,7 @@ package com.pulumi.cloudflare;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -225,9 +226,15 @@ public final class ApiShieldSchemaArgs extends com.pulumi.resources.ResourceArgs
         }
 
         public ApiShieldSchemaArgs build() {
-            $.name = Objects.requireNonNull($.name, "expected parameter 'name' to be non-null");
-            $.source = Objects.requireNonNull($.source, "expected parameter 'source' to be non-null");
-            $.zoneId = Objects.requireNonNull($.zoneId, "expected parameter 'zoneId' to be non-null");
+            if ($.name == null) {
+                throw new MissingRequiredPropertyException("ApiShieldSchemaArgs", "name");
+            }
+            if ($.source == null) {
+                throw new MissingRequiredPropertyException("ApiShieldSchemaArgs", "source");
+            }
+            if ($.zoneId == null) {
+                throw new MissingRequiredPropertyException("ApiShieldSchemaArgs", "zoneId");
+            }
             return $;
         }
     }

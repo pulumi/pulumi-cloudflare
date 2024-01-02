@@ -59,11 +59,13 @@ public final class AccessPolicyRequireAzure {
 
         @CustomType.Setter
         public Builder identityProviderId(@Nullable String identityProviderId) {
+
             this.identityProviderId = identityProviderId;
             return this;
         }
         @CustomType.Setter
         public Builder ids(@Nullable List<String> ids) {
+
             this.ids = ids;
             return this;
         }

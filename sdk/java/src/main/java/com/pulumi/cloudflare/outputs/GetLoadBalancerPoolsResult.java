@@ -6,6 +6,7 @@ package com.pulumi.cloudflare.outputs;
 import com.pulumi.cloudflare.outputs.GetLoadBalancerPoolsFilter;
 import com.pulumi.cloudflare.outputs.GetLoadBalancerPoolsPool;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -89,22 +90,32 @@ public final class GetLoadBalancerPoolsResult {
 
         @CustomType.Setter
         public Builder accountId(String accountId) {
-            this.accountId = Objects.requireNonNull(accountId);
+            if (accountId == null) {
+              throw new MissingRequiredPropertyException("GetLoadBalancerPoolsResult", "accountId");
+            }
+            this.accountId = accountId;
             return this;
         }
         @CustomType.Setter
         public Builder filter(@Nullable GetLoadBalancerPoolsFilter filter) {
+
             this.filter = filter;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetLoadBalancerPoolsResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder pools(List<GetLoadBalancerPoolsPool> pools) {
-            this.pools = Objects.requireNonNull(pools);
+            if (pools == null) {
+              throw new MissingRequiredPropertyException("GetLoadBalancerPoolsResult", "pools");
+            }
+            this.pools = pools;
             return this;
         }
         public Builder pools(GetLoadBalancerPoolsPool... pools) {

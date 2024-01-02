@@ -76,16 +76,19 @@ public final class RateLimitMatchResponse {
 
         @CustomType.Setter
         public Builder headers(@Nullable List<Map<String,String>> headers) {
+
             this.headers = headers;
             return this;
         }
         @CustomType.Setter
         public Builder originTraffic(@Nullable Boolean originTraffic) {
+
             this.originTraffic = originTraffic;
             return this;
         }
         @CustomType.Setter
         public Builder statuses(@Nullable List<Integer> statuses) {
+
             this.statuses = statuses;
             return this;
         }

@@ -200,16 +200,19 @@ public final class PageRuleActionsCacheKeyFieldsUser {
 
         @CustomType.Setter
         public Builder deviceType(@Nullable Boolean deviceType) {
+
             this.deviceType = deviceType;
             return this;
         }
         @CustomType.Setter
         public Builder geo(@Nullable Boolean geo) {
+
             this.geo = geo;
             return this;
         }
         @CustomType.Setter
         public Builder lang(@Nullable Boolean lang) {
+
             this.lang = lang;
             return this;
         }

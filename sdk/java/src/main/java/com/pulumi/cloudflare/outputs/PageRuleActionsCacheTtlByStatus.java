@@ -4,6 +4,7 @@
 package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -59,12 +60,18 @@ public final class PageRuleActionsCacheTtlByStatus {
 
         @CustomType.Setter
         public Builder codes(String codes) {
-            this.codes = Objects.requireNonNull(codes);
+            if (codes == null) {
+              throw new MissingRequiredPropertyException("PageRuleActionsCacheTtlByStatus", "codes");
+            }
+            this.codes = codes;
             return this;
         }
         @CustomType.Setter
         public Builder ttl(Integer ttl) {
-            this.ttl = Objects.requireNonNull(ttl);
+            if (ttl == null) {
+              throw new MissingRequiredPropertyException("PageRuleActionsCacheTtlByStatus", "ttl");
+            }
+            this.ttl = ttl;
             return this;
         }
         public PageRuleActionsCacheTtlByStatus build() {

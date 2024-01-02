@@ -5,6 +5,7 @@ package com.pulumi.cloudflare;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -236,9 +237,15 @@ public final class OriginCaCertificateArgs extends com.pulumi.resources.Resource
         }
 
         public OriginCaCertificateArgs build() {
-            $.csr = Objects.requireNonNull($.csr, "expected parameter 'csr' to be non-null");
-            $.hostnames = Objects.requireNonNull($.hostnames, "expected parameter 'hostnames' to be non-null");
-            $.requestType = Objects.requireNonNull($.requestType, "expected parameter 'requestType' to be non-null");
+            if ($.csr == null) {
+                throw new MissingRequiredPropertyException("OriginCaCertificateArgs", "csr");
+            }
+            if ($.hostnames == null) {
+                throw new MissingRequiredPropertyException("OriginCaCertificateArgs", "hostnames");
+            }
+            if ($.requestType == null) {
+                throw new MissingRequiredPropertyException("OriginCaCertificateArgs", "requestType");
+            }
             return $;
         }
     }

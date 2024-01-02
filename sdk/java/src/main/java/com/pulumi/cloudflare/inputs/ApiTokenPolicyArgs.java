@@ -5,6 +5,7 @@ package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -162,8 +163,12 @@ public final class ApiTokenPolicyArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         public ApiTokenPolicyArgs build() {
-            $.permissionGroups = Objects.requireNonNull($.permissionGroups, "expected parameter 'permissionGroups' to be non-null");
-            $.resources = Objects.requireNonNull($.resources, "expected parameter 'resources' to be non-null");
+            if ($.permissionGroups == null) {
+                throw new MissingRequiredPropertyException("ApiTokenPolicyArgs", "permissionGroups");
+            }
+            if ($.resources == null) {
+                throw new MissingRequiredPropertyException("ApiTokenPolicyArgs", "resources");
+            }
             return $;
         }
     }

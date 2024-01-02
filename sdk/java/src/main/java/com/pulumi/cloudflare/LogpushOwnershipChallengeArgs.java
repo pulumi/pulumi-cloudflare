@@ -5,6 +5,7 @@ package com.pulumi.cloudflare;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -150,7 +151,9 @@ public final class LogpushOwnershipChallengeArgs extends com.pulumi.resources.Re
         }
 
         public LogpushOwnershipChallengeArgs build() {
-            $.destinationConf = Objects.requireNonNull($.destinationConf, "expected parameter 'destinationConf' to be non-null");
+            if ($.destinationConf == null) {
+                throw new MissingRequiredPropertyException("LogpushOwnershipChallengeArgs", "destinationConf");
+            }
             return $;
         }
     }

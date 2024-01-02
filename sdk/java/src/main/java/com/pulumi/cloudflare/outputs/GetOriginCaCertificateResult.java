@@ -4,6 +4,7 @@
 package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -113,17 +114,26 @@ public final class GetOriginCaCertificateResult {
 
         @CustomType.Setter
         public Builder certificate(String certificate) {
-            this.certificate = Objects.requireNonNull(certificate);
+            if (certificate == null) {
+              throw new MissingRequiredPropertyException("GetOriginCaCertificateResult", "certificate");
+            }
+            this.certificate = certificate;
             return this;
         }
         @CustomType.Setter
         public Builder expiresOn(String expiresOn) {
-            this.expiresOn = Objects.requireNonNull(expiresOn);
+            if (expiresOn == null) {
+              throw new MissingRequiredPropertyException("GetOriginCaCertificateResult", "expiresOn");
+            }
+            this.expiresOn = expiresOn;
             return this;
         }
         @CustomType.Setter
         public Builder hostnames(List<String> hostnames) {
-            this.hostnames = Objects.requireNonNull(hostnames);
+            if (hostnames == null) {
+              throw new MissingRequiredPropertyException("GetOriginCaCertificateResult", "hostnames");
+            }
+            this.hostnames = hostnames;
             return this;
         }
         public Builder hostnames(String... hostnames) {
@@ -131,17 +141,26 @@ public final class GetOriginCaCertificateResult {
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetOriginCaCertificateResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder requestType(String requestType) {
-            this.requestType = Objects.requireNonNull(requestType);
+            if (requestType == null) {
+              throw new MissingRequiredPropertyException("GetOriginCaCertificateResult", "requestType");
+            }
+            this.requestType = requestType;
             return this;
         }
         @CustomType.Setter
         public Builder revokedAt(String revokedAt) {
-            this.revokedAt = Objects.requireNonNull(revokedAt);
+            if (revokedAt == null) {
+              throw new MissingRequiredPropertyException("GetOriginCaCertificateResult", "revokedAt");
+            }
+            this.revokedAt = revokedAt;
             return this;
         }
         public GetOriginCaCertificateResult build() {

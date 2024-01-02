@@ -157,106 +157,127 @@ public final class GetDevicesDevice {
 
         @CustomType.Setter
         public Builder created(@Nullable String created) {
+
             this.created = created;
             return this;
         }
         @CustomType.Setter
         public Builder deleted(@Nullable Boolean deleted) {
+
             this.deleted = deleted;
             return this;
         }
         @CustomType.Setter
         public Builder deviceType(@Nullable String deviceType) {
+
             this.deviceType = deviceType;
             return this;
         }
         @CustomType.Setter
         public Builder id(@Nullable String id) {
+
             this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder ip(@Nullable String ip) {
+
             this.ip = ip;
             return this;
         }
         @CustomType.Setter
         public Builder key(@Nullable String key) {
+
             this.key = key;
             return this;
         }
         @CustomType.Setter
         public Builder lastSeen(@Nullable String lastSeen) {
+
             this.lastSeen = lastSeen;
             return this;
         }
         @CustomType.Setter
         public Builder macAddress(@Nullable String macAddress) {
+
             this.macAddress = macAddress;
             return this;
         }
         @CustomType.Setter
         public Builder manufacturer(@Nullable String manufacturer) {
+
             this.manufacturer = manufacturer;
             return this;
         }
         @CustomType.Setter
         public Builder model(@Nullable String model) {
+
             this.model = model;
             return this;
         }
         @CustomType.Setter
         public Builder name(@Nullable String name) {
+
             this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder osDistroName(@Nullable String osDistroName) {
+
             this.osDistroName = osDistroName;
             return this;
         }
         @CustomType.Setter
         public Builder osDistroRevision(@Nullable String osDistroRevision) {
+
             this.osDistroRevision = osDistroRevision;
             return this;
         }
         @CustomType.Setter
         public Builder osVersion(@Nullable String osVersion) {
+
             this.osVersion = osVersion;
             return this;
         }
         @CustomType.Setter
         public Builder revokedAt(@Nullable String revokedAt) {
+
             this.revokedAt = revokedAt;
             return this;
         }
         @CustomType.Setter
         public Builder serialNumber(@Nullable String serialNumber) {
+
             this.serialNumber = serialNumber;
             return this;
         }
         @CustomType.Setter
         public Builder updated(@Nullable String updated) {
+
             this.updated = updated;
             return this;
         }
         @CustomType.Setter
         public Builder userEmail(@Nullable String userEmail) {
+
             this.userEmail = userEmail;
             return this;
         }
         @CustomType.Setter
         public Builder userId(@Nullable String userId) {
+
             this.userId = userId;
             return this;
         }
         @CustomType.Setter
         public Builder userName(@Nullable String userName) {
+
             this.userName = userName;
             return this;
         }
         @CustomType.Setter
         public Builder version(@Nullable String version) {
+
             this.version = version;
             return this;
         }

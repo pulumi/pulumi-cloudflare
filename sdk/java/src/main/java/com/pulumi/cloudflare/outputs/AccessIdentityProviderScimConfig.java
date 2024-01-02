@@ -61,26 +61,31 @@ public final class AccessIdentityProviderScimConfig {
 
         @CustomType.Setter
         public Builder enabled(@Nullable Boolean enabled) {
+
             this.enabled = enabled;
             return this;
         }
         @CustomType.Setter
         public Builder groupMemberDeprovision(@Nullable Boolean groupMemberDeprovision) {
+
             this.groupMemberDeprovision = groupMemberDeprovision;
             return this;
         }
         @CustomType.Setter
         public Builder seatDeprovision(@Nullable Boolean seatDeprovision) {
+
             this.seatDeprovision = seatDeprovision;
             return this;
         }
         @CustomType.Setter
         public Builder secret(@Nullable String secret) {
+
             this.secret = secret;
             return this;
         }
         @CustomType.Setter
         public Builder userDeprovision(@Nullable Boolean userDeprovision) {
+
             this.userDeprovision = userDeprovision;
             return this;
         }

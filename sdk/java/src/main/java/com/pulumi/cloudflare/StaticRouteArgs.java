@@ -5,6 +5,7 @@ package com.pulumi.cloudflare;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -357,9 +358,15 @@ public final class StaticRouteArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public StaticRouteArgs build() {
-            $.nexthop = Objects.requireNonNull($.nexthop, "expected parameter 'nexthop' to be non-null");
-            $.prefix = Objects.requireNonNull($.prefix, "expected parameter 'prefix' to be non-null");
-            $.priority = Objects.requireNonNull($.priority, "expected parameter 'priority' to be non-null");
+            if ($.nexthop == null) {
+                throw new MissingRequiredPropertyException("StaticRouteArgs", "nexthop");
+            }
+            if ($.prefix == null) {
+                throw new MissingRequiredPropertyException("StaticRouteArgs", "prefix");
+            }
+            if ($.priority == null) {
+                throw new MissingRequiredPropertyException("StaticRouteArgs", "priority");
+            }
             return $;
         }
     }

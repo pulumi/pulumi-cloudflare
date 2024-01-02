@@ -5,6 +5,7 @@ package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -76,8 +77,12 @@ public final class GetLoadBalancerPoolsPoolOriginHeaderArgs extends com.pulumi.r
         }
 
         public GetLoadBalancerPoolsPoolOriginHeaderArgs build() {
-            $.header = Objects.requireNonNull($.header, "expected parameter 'header' to be non-null");
-            $.values = Objects.requireNonNull($.values, "expected parameter 'values' to be non-null");
+            if ($.header == null) {
+                throw new MissingRequiredPropertyException("GetLoadBalancerPoolsPoolOriginHeaderArgs", "header");
+            }
+            if ($.values == null) {
+                throw new MissingRequiredPropertyException("GetLoadBalancerPoolsPoolOriginHeaderArgs", "values");
+            }
             return $;
         }
     }

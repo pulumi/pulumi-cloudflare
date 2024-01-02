@@ -7,6 +7,7 @@ import com.pulumi.cloudflare.inputs.CertificatePackValidationErrorArgs;
 import com.pulumi.cloudflare.inputs.CertificatePackValidationRecordArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -392,12 +393,24 @@ public final class CertificatePackArgs extends com.pulumi.resources.ResourceArgs
         }
 
         public CertificatePackArgs build() {
-            $.certificateAuthority = Objects.requireNonNull($.certificateAuthority, "expected parameter 'certificateAuthority' to be non-null");
-            $.hosts = Objects.requireNonNull($.hosts, "expected parameter 'hosts' to be non-null");
-            $.type = Objects.requireNonNull($.type, "expected parameter 'type' to be non-null");
-            $.validationMethod = Objects.requireNonNull($.validationMethod, "expected parameter 'validationMethod' to be non-null");
-            $.validityDays = Objects.requireNonNull($.validityDays, "expected parameter 'validityDays' to be non-null");
-            $.zoneId = Objects.requireNonNull($.zoneId, "expected parameter 'zoneId' to be non-null");
+            if ($.certificateAuthority == null) {
+                throw new MissingRequiredPropertyException("CertificatePackArgs", "certificateAuthority");
+            }
+            if ($.hosts == null) {
+                throw new MissingRequiredPropertyException("CertificatePackArgs", "hosts");
+            }
+            if ($.type == null) {
+                throw new MissingRequiredPropertyException("CertificatePackArgs", "type");
+            }
+            if ($.validationMethod == null) {
+                throw new MissingRequiredPropertyException("CertificatePackArgs", "validationMethod");
+            }
+            if ($.validityDays == null) {
+                throw new MissingRequiredPropertyException("CertificatePackArgs", "validityDays");
+            }
+            if ($.zoneId == null) {
+                throw new MissingRequiredPropertyException("CertificatePackArgs", "zoneId");
+            }
             return $;
         }
     }

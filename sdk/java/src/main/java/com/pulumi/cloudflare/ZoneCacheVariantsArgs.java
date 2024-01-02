@@ -5,6 +5,7 @@ package com.pulumi.cloudflare;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -594,7 +595,9 @@ public final class ZoneCacheVariantsArgs extends com.pulumi.resources.ResourceAr
         }
 
         public ZoneCacheVariantsArgs build() {
-            $.zoneId = Objects.requireNonNull($.zoneId, "expected parameter 'zoneId' to be non-null");
+            if ($.zoneId == null) {
+                throw new MissingRequiredPropertyException("ZoneCacheVariantsArgs", "zoneId");
+            }
             return $;
         }
     }

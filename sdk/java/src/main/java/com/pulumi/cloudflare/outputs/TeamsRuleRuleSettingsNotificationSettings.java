@@ -73,16 +73,19 @@ public final class TeamsRuleRuleSettingsNotificationSettings {
 
         @CustomType.Setter
         public Builder enabled(@Nullable Boolean enabled) {
+
             this.enabled = enabled;
             return this;
         }
         @CustomType.Setter
         public Builder message(@Nullable String message) {
+
             this.message = message;
             return this;
         }
         @CustomType.Setter
         public Builder supportUrl(@Nullable Boolean supportUrl) {
+
             this.supportUrl = supportUrl;
             return this;
         }

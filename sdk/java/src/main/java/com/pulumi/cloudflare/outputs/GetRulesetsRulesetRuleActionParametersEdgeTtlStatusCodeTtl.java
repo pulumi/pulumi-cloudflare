@@ -5,6 +5,7 @@ package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.cloudflare.outputs.GetRulesetsRulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRange;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.util.List;
 import java.util.Objects;
@@ -50,11 +51,13 @@ public final class GetRulesetsRulesetRuleActionParametersEdgeTtlStatusCodeTtl {
 
         @CustomType.Setter
         public Builder statusCode(@Nullable Integer statusCode) {
+
             this.statusCode = statusCode;
             return this;
         }
         @CustomType.Setter
         public Builder statusCodeRanges(@Nullable List<GetRulesetsRulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRange> statusCodeRanges) {
+
             this.statusCodeRanges = statusCodeRanges;
             return this;
         }
@@ -63,7 +66,10 @@ public final class GetRulesetsRulesetRuleActionParametersEdgeTtlStatusCodeTtl {
         }
         @CustomType.Setter
         public Builder value(Integer value) {
-            this.value = Objects.requireNonNull(value);
+            if (value == null) {
+              throw new MissingRequiredPropertyException("GetRulesetsRulesetRuleActionParametersEdgeTtlStatusCodeTtl", "value");
+            }
+            this.value = value;
             return this;
         }
         public GetRulesetsRulesetRuleActionParametersEdgeTtlStatusCodeTtl build() {

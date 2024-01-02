@@ -6,6 +6,7 @@ package com.pulumi.cloudflare;
 import com.pulumi.cloudflare.inputs.HealthcheckHeaderArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -813,10 +814,18 @@ public final class HealthcheckArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public HealthcheckArgs build() {
-            $.address = Objects.requireNonNull($.address, "expected parameter 'address' to be non-null");
-            $.name = Objects.requireNonNull($.name, "expected parameter 'name' to be non-null");
-            $.type = Objects.requireNonNull($.type, "expected parameter 'type' to be non-null");
-            $.zoneId = Objects.requireNonNull($.zoneId, "expected parameter 'zoneId' to be non-null");
+            if ($.address == null) {
+                throw new MissingRequiredPropertyException("HealthcheckArgs", "address");
+            }
+            if ($.name == null) {
+                throw new MissingRequiredPropertyException("HealthcheckArgs", "name");
+            }
+            if ($.type == null) {
+                throw new MissingRequiredPropertyException("HealthcheckArgs", "type");
+            }
+            if ($.zoneId == null) {
+                throw new MissingRequiredPropertyException("HealthcheckArgs", "zoneId");
+            }
             return $;
         }
     }

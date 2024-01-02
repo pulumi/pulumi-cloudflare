@@ -5,6 +5,7 @@ package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.util.Objects;
 
@@ -111,8 +112,12 @@ public final class SpectrumApplicationOriginPortRangeArgs extends com.pulumi.res
         }
 
         public SpectrumApplicationOriginPortRangeArgs build() {
-            $.end = Objects.requireNonNull($.end, "expected parameter 'end' to be non-null");
-            $.start = Objects.requireNonNull($.start, "expected parameter 'start' to be non-null");
+            if ($.end == null) {
+                throw new MissingRequiredPropertyException("SpectrumApplicationOriginPortRangeArgs", "end");
+            }
+            if ($.start == null) {
+                throw new MissingRequiredPropertyException("SpectrumApplicationOriginPortRangeArgs", "start");
+            }
             return $;
         }
     }

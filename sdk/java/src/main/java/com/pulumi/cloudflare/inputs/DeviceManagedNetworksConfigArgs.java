@@ -5,6 +5,7 @@ package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -111,8 +112,12 @@ public final class DeviceManagedNetworksConfigArgs extends com.pulumi.resources.
         }
 
         public DeviceManagedNetworksConfigArgs build() {
-            $.sha256 = Objects.requireNonNull($.sha256, "expected parameter 'sha256' to be non-null");
-            $.tlsSockaddr = Objects.requireNonNull($.tlsSockaddr, "expected parameter 'tlsSockaddr' to be non-null");
+            if ($.sha256 == null) {
+                throw new MissingRequiredPropertyException("DeviceManagedNetworksConfigArgs", "sha256");
+            }
+            if ($.tlsSockaddr == null) {
+                throw new MissingRequiredPropertyException("DeviceManagedNetworksConfigArgs", "tlsSockaddr");
+            }
             return $;
         }
     }

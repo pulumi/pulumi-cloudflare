@@ -5,6 +5,7 @@ package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -299,8 +300,12 @@ public final class ListItemValueRedirectArgs extends com.pulumi.resources.Resour
         }
 
         public ListItemValueRedirectArgs build() {
-            $.sourceUrl = Objects.requireNonNull($.sourceUrl, "expected parameter 'sourceUrl' to be non-null");
-            $.targetUrl = Objects.requireNonNull($.targetUrl, "expected parameter 'targetUrl' to be non-null");
+            if ($.sourceUrl == null) {
+                throw new MissingRequiredPropertyException("ListItemValueRedirectArgs", "sourceUrl");
+            }
+            if ($.targetUrl == null) {
+                throw new MissingRequiredPropertyException("ListItemValueRedirectArgs", "targetUrl");
+            }
             return $;
         }
     }

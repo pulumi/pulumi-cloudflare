@@ -36,6 +36,7 @@ public final class GetRulesetsRulesetRuleActionParametersMatchedData {
 
         @CustomType.Setter
         public Builder publicKey(@Nullable String publicKey) {
+
             this.publicKey = publicKey;
             return this;
         }

@@ -6,6 +6,7 @@ package com.pulumi.cloudflare;
 import com.pulumi.cloudflare.inputs.ZoneLockdownConfigurationArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -265,9 +266,15 @@ public final class ZoneLockdownArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public ZoneLockdownArgs build() {
-            $.configurations = Objects.requireNonNull($.configurations, "expected parameter 'configurations' to be non-null");
-            $.urls = Objects.requireNonNull($.urls, "expected parameter 'urls' to be non-null");
-            $.zoneId = Objects.requireNonNull($.zoneId, "expected parameter 'zoneId' to be non-null");
+            if ($.configurations == null) {
+                throw new MissingRequiredPropertyException("ZoneLockdownArgs", "configurations");
+            }
+            if ($.urls == null) {
+                throw new MissingRequiredPropertyException("ZoneLockdownArgs", "urls");
+            }
+            if ($.zoneId == null) {
+                throw new MissingRequiredPropertyException("ZoneLockdownArgs", "zoneId");
+            }
             return $;
         }
     }

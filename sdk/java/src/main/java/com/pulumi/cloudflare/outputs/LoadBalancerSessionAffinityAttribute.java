@@ -117,11 +117,13 @@ public final class LoadBalancerSessionAffinityAttribute {
 
         @CustomType.Setter
         public Builder drainDuration(@Nullable Integer drainDuration) {
+
             this.drainDuration = drainDuration;
             return this;
         }
         @CustomType.Setter
         public Builder headers(@Nullable List<String> headers) {
+
             this.headers = headers;
             return this;
         }
@@ -130,21 +132,25 @@ public final class LoadBalancerSessionAffinityAttribute {
         }
         @CustomType.Setter
         public Builder requireAllHeaders(@Nullable Boolean requireAllHeaders) {
+
             this.requireAllHeaders = requireAllHeaders;
             return this;
         }
         @CustomType.Setter
         public Builder samesite(@Nullable String samesite) {
+
             this.samesite = samesite;
             return this;
         }
         @CustomType.Setter
         public Builder secure(@Nullable String secure) {
+
             this.secure = secure;
             return this;
         }
         @CustomType.Setter
         public Builder zeroDowntimeFailover(@Nullable String zeroDowntimeFailover) {
+
             this.zeroDowntimeFailover = zeroDowntimeFailover;
             return this;
         }

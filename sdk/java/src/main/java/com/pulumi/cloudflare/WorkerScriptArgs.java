@@ -14,6 +14,7 @@ import com.pulumi.cloudflare.inputs.WorkerScriptServiceBindingArgs;
 import com.pulumi.cloudflare.inputs.WorkerScriptWebassemblyBindingArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -508,9 +509,15 @@ public final class WorkerScriptArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public WorkerScriptArgs build() {
-            $.accountId = Objects.requireNonNull($.accountId, "expected parameter 'accountId' to be non-null");
-            $.content = Objects.requireNonNull($.content, "expected parameter 'content' to be non-null");
-            $.name = Objects.requireNonNull($.name, "expected parameter 'name' to be non-null");
+            if ($.accountId == null) {
+                throw new MissingRequiredPropertyException("WorkerScriptArgs", "accountId");
+            }
+            if ($.content == null) {
+                throw new MissingRequiredPropertyException("WorkerScriptArgs", "content");
+            }
+            if ($.name == null) {
+                throw new MissingRequiredPropertyException("WorkerScriptArgs", "name");
+            }
             return $;
         }
     }

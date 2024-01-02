@@ -8,6 +8,7 @@ import com.pulumi.cloudflare.outputs.RulesetRuleExposedCredentialCheck;
 import com.pulumi.cloudflare.outputs.RulesetRuleLogging;
 import com.pulumi.cloudflare.outputs.RulesetRuleRatelimit;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -203,61 +204,75 @@ public final class RulesetRule {
 
         @CustomType.Setter
         public Builder action(@Nullable String action) {
+
             this.action = action;
             return this;
         }
         @CustomType.Setter
         public Builder actionParameters(@Nullable RulesetRuleActionParameters actionParameters) {
+
             this.actionParameters = actionParameters;
             return this;
         }
         @CustomType.Setter
         public Builder description(@Nullable String description) {
+
             this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder enabled(@Nullable Boolean enabled) {
+
             this.enabled = enabled;
             return this;
         }
         @CustomType.Setter
         public Builder exposedCredentialCheck(@Nullable RulesetRuleExposedCredentialCheck exposedCredentialCheck) {
+
             this.exposedCredentialCheck = exposedCredentialCheck;
             return this;
         }
         @CustomType.Setter
         public Builder expression(String expression) {
-            this.expression = Objects.requireNonNull(expression);
+            if (expression == null) {
+              throw new MissingRequiredPropertyException("RulesetRule", "expression");
+            }
+            this.expression = expression;
             return this;
         }
         @CustomType.Setter
         public Builder id(@Nullable String id) {
+
             this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder lastUpdated(@Nullable String lastUpdated) {
+
             this.lastUpdated = lastUpdated;
             return this;
         }
         @CustomType.Setter
         public Builder logging(@Nullable RulesetRuleLogging logging) {
+
             this.logging = logging;
             return this;
         }
         @CustomType.Setter
         public Builder ratelimit(@Nullable RulesetRuleRatelimit ratelimit) {
+
             this.ratelimit = ratelimit;
             return this;
         }
         @CustomType.Setter
         public Builder ref(@Nullable String ref) {
+
             this.ref = ref;
             return this;
         }
         @CustomType.Setter
         public Builder version(@Nullable String version) {
+
             this.version = version;
             return this;
         }

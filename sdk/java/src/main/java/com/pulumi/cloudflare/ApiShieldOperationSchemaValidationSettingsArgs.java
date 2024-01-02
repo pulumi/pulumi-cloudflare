@@ -5,6 +5,7 @@ package com.pulumi.cloudflare;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -150,8 +151,12 @@ public final class ApiShieldOperationSchemaValidationSettingsArgs extends com.pu
         }
 
         public ApiShieldOperationSchemaValidationSettingsArgs build() {
-            $.operationId = Objects.requireNonNull($.operationId, "expected parameter 'operationId' to be non-null");
-            $.zoneId = Objects.requireNonNull($.zoneId, "expected parameter 'zoneId' to be non-null");
+            if ($.operationId == null) {
+                throw new MissingRequiredPropertyException("ApiShieldOperationSchemaValidationSettingsArgs", "operationId");
+            }
+            if ($.zoneId == null) {
+                throw new MissingRequiredPropertyException("ApiShieldOperationSchemaValidationSettingsArgs", "zoneId");
+            }
             return $;
         }
     }

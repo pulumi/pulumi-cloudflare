@@ -4,6 +4,7 @@
 package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -57,12 +58,18 @@ public final class LoadBalancerRuleOverrideCountryPool {
 
         @CustomType.Setter
         public Builder country(String country) {
-            this.country = Objects.requireNonNull(country);
+            if (country == null) {
+              throw new MissingRequiredPropertyException("LoadBalancerRuleOverrideCountryPool", "country");
+            }
+            this.country = country;
             return this;
         }
         @CustomType.Setter
         public Builder poolIds(List<String> poolIds) {
-            this.poolIds = Objects.requireNonNull(poolIds);
+            if (poolIds == null) {
+              throw new MissingRequiredPropertyException("LoadBalancerRuleOverrideCountryPool", "poolIds");
+            }
+            this.poolIds = poolIds;
             return this;
         }
         public Builder poolIds(String... poolIds) {

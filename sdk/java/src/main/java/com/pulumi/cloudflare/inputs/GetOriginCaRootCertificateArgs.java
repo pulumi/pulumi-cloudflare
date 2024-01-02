@@ -5,6 +5,7 @@ package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -74,7 +75,9 @@ public final class GetOriginCaRootCertificateArgs extends com.pulumi.resources.I
         }
 
         public GetOriginCaRootCertificateArgs build() {
-            $.algorithm = Objects.requireNonNull($.algorithm, "expected parameter 'algorithm' to be non-null");
+            if ($.algorithm == null) {
+                throw new MissingRequiredPropertyException("GetOriginCaRootCertificateArgs", "algorithm");
+            }
             return $;
         }
     }

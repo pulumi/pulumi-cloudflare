@@ -10,6 +10,7 @@ import com.pulumi.cloudflare.inputs.PageRuleActionsCacheKeyFieldsQueryStringArgs
 import com.pulumi.cloudflare.inputs.PageRuleActionsCacheKeyFieldsUserArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -228,9 +229,15 @@ public final class PageRuleActionsCacheKeyFieldsArgs extends com.pulumi.resource
         }
 
         public PageRuleActionsCacheKeyFieldsArgs build() {
-            $.host = Objects.requireNonNull($.host, "expected parameter 'host' to be non-null");
-            $.queryString = Objects.requireNonNull($.queryString, "expected parameter 'queryString' to be non-null");
-            $.user = Objects.requireNonNull($.user, "expected parameter 'user' to be non-null");
+            if ($.host == null) {
+                throw new MissingRequiredPropertyException("PageRuleActionsCacheKeyFieldsArgs", "host");
+            }
+            if ($.queryString == null) {
+                throw new MissingRequiredPropertyException("PageRuleActionsCacheKeyFieldsArgs", "queryString");
+            }
+            if ($.user == null) {
+                throw new MissingRequiredPropertyException("PageRuleActionsCacheKeyFieldsArgs", "user");
+            }
             return $;
         }
     }
