@@ -148,6 +148,7 @@
         "workerDomain.ts",
         "workerRoute.ts",
         "workerScript.ts",
+        "workerSecret.ts",
         "workersKv.ts",
         "workersKvNamespace.ts",
         "zone.ts",

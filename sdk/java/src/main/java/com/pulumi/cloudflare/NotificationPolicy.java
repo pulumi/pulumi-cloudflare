@@ -91,14 +91,14 @@ public class NotificationPolicy extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.description);
     }
     /**
-     * The email id to which the notification should be dispatched. One of email, webhooks, or PagerDuty mechanisms is required. Must provide only one of `email_integration`, `webhooks_integration`, `pagerduty_integration`.
+     * The email ID to which the notification should be dispatched.
      * 
      */
     @Export(name="emailIntegrations", refs={List.class,NotificationPolicyEmailIntegration.class}, tree="[0,1]")
     private Output</* @Nullable */ List<NotificationPolicyEmailIntegration>> emailIntegrations;
 
     /**
-     * @return The email id to which the notification should be dispatched. One of email, webhooks, or PagerDuty mechanisms is required. Must provide only one of `email_integration`, `webhooks_integration`, `pagerduty_integration`.
+     * @return The email ID to which the notification should be dispatched.
      * 
      */
     public Output<Optional<List<NotificationPolicyEmailIntegration>>> emailIntegrations() {
@@ -161,28 +161,28 @@ public class NotificationPolicy extends com.pulumi.resources.CustomResource {
         return this.name;
     }
     /**
-     * The unique id of a configured pagerduty endpoint to which the notification should be dispatched. One of email, webhooks, or PagerDuty mechanisms is required. Must provide only one of `email_integration`, `webhooks_integration`, `pagerduty_integration`.
+     * The unique ID of a configured pagerduty endpoint to which the notification should be dispatched.
      * 
      */
     @Export(name="pagerdutyIntegrations", refs={List.class,NotificationPolicyPagerdutyIntegration.class}, tree="[0,1]")
     private Output</* @Nullable */ List<NotificationPolicyPagerdutyIntegration>> pagerdutyIntegrations;
 
     /**
-     * @return The unique id of a configured pagerduty endpoint to which the notification should be dispatched. One of email, webhooks, or PagerDuty mechanisms is required. Must provide only one of `email_integration`, `webhooks_integration`, `pagerduty_integration`.
+     * @return The unique ID of a configured pagerduty endpoint to which the notification should be dispatched.
      * 
      */
     public Output<Optional<List<NotificationPolicyPagerdutyIntegration>>> pagerdutyIntegrations() {
         return Codegen.optional(this.pagerdutyIntegrations);
     }
     /**
-     * The unique id of a configured webhooks endpoint to which the notification should be dispatched. One of email, webhooks, or PagerDuty mechanisms is required. Must provide only one of `email_integration`, `webhooks_integration`, `pagerduty_integration`.
+     * The unique ID of a configured webhooks endpoint to which the notification should be dispatched.
      * 
      */
     @Export(name="webhooksIntegrations", refs={List.class,NotificationPolicyWebhooksIntegration.class}, tree="[0,1]")
     private Output</* @Nullable */ List<NotificationPolicyWebhooksIntegration>> webhooksIntegrations;
 
     /**
-     * @return The unique id of a configured webhooks endpoint to which the notification should be dispatched. One of email, webhooks, or PagerDuty mechanisms is required. Must provide only one of `email_integration`, `webhooks_integration`, `pagerduty_integration`.
+     * @return The unique ID of a configured webhooks endpoint to which the notification should be dispatched.
      * 
      */
     public Output<Optional<List<NotificationPolicyWebhooksIntegration>>> webhooksIntegrations() {

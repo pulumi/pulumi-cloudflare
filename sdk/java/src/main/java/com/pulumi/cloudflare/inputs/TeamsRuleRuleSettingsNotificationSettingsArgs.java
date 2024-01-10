@@ -51,13 +51,13 @@ public final class TeamsRuleRuleSettingsNotificationSettingsArgs extends com.pul
      * 
      */
     @Import(name="supportUrl")
-    private @Nullable Output<Boolean> supportUrl;
+    private @Nullable Output<String> supportUrl;
 
     /**
      * @return Support URL to show in the notification.
      * 
      */
-    public Optional<Output<Boolean>> supportUrl() {
+    public Optional<Output<String>> supportUrl() {
         return Optional.ofNullable(this.supportUrl);
     }
 
@@ -135,7 +135,7 @@ public final class TeamsRuleRuleSettingsNotificationSettingsArgs extends com.pul
          * @return builder
          * 
          */
-        public Builder supportUrl(@Nullable Output<Boolean> supportUrl) {
+        public Builder supportUrl(@Nullable Output<String> supportUrl) {
             $.supportUrl = supportUrl;
             return this;
         }
@@ -146,7 +146,7 @@ public final class TeamsRuleRuleSettingsNotificationSettingsArgs extends com.pul
          * @return builder
          * 
          */
-        public Builder supportUrl(Boolean supportUrl) {
+        public Builder supportUrl(String supportUrl) {
             return supportUrl(Output.of(supportUrl));
         }
 

@@ -232,6 +232,7 @@ __all__ = [
     'WaitingRoomAdditionalRoute',
     'WaitingRoomRulesRule',
     'WorkerScriptAnalyticsEngineBinding',
+    'WorkerScriptD1DatabaseBinding',
     'WorkerScriptKvNamespaceBinding',
     'WorkerScriptPlacement',
     'WorkerScriptPlainTextBinding',
@@ -8294,6 +8295,8 @@ class NotificationPolicyFilters(dict):
             suggest = "target_hostnames"
         elif key == "targetZoneNames":
             suggest = "target_zone_names"
+        elif key == "tunnelIds":
+            suggest = "tunnel_ids"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in NotificationPolicyFilters. Access the value via the '{suggest}' property getter instead.")
@@ -8334,6 +8337,7 @@ class NotificationPolicyFilters(dict):
                  statuses: Optional[Sequence[str]] = None,
                  target_hostnames: Optional[Sequence[str]] = None,
                  target_zone_names: Optional[Sequence[str]] = None,
+                 tunnel_ids: Optional[Sequence[str]] = None,
                  wheres: Optional[Sequence[str]] = None,
                  zones: Optional[Sequence[str]] = None):
         """
@@ -8363,6 +8367,7 @@ class NotificationPolicyFilters(dict):
         :param Sequence[str] statuses: Status to alert on.
         :param Sequence[str] target_hostnames: Target host to alert on for dos.
         :param Sequence[str] target_zone_names: Target domain to alert on.
+        :param Sequence[str] tunnel_ids: Tunnel IDs to alert on.
         :param Sequence[str] wheres: Filter for alert.
         :param Sequence[str] zones: A list of zone identifiers.
         """
@@ -8420,6 +8425,8 @@ class NotificationPolicyFilters(dict):
             pulumi.set(__self__, "target_hostnames", target_hostnames)
         if target_zone_names is not None:
             pulumi.set(__self__, "target_zone_names", target_zone_names)
+        if tunnel_ids is not None:
+            pulumi.set(__self__, "tunnel_ids", tunnel_ids)
         if wheres is not None:
             pulumi.set(__self__, "wheres", wheres)
         if zones is not None:
@@ -8637,6 +8644,14 @@ class NotificationPolicyFilters(dict):
         Target domain to alert on.
         """
         return pulumi.get(self, "target_zone_names")
+
+    @property
+    @pulumi.getter(name="tunnelIds")
+    def tunnel_ids(self) -> Optional[Sequence[str]]:
+        """
+        Tunnel IDs to alert on.
+        """
+        return pulumi.get(self, "tunnel_ids")
 
     @property
     @pulumi.getter
@@ -14865,11 +14880,11 @@ class TeamsRuleRuleSettingsNotificationSettings(dict):
     def __init__(__self__, *,
                  enabled: Optional[bool] = None,
                  message: Optional[str] = None,
-                 support_url: Optional[bool] = None):
+                 support_url: Optional[str] = None):
         """
         :param bool enabled: Enable notification settings.
         :param str message: Notification content.
-        :param bool support_url: Support URL to show in the notification.
+        :param str support_url: Support URL to show in the notification.
         """
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
@@ -14896,7 +14911,7 @@ class TeamsRuleRuleSettingsNotificationSettings(dict):
 
     @property
     @pulumi.getter(name="supportUrl")
-    def support_url(self) -> Optional[bool]:
+    def support_url(self) -> Optional[str]:
         """
         Support URL to show in the notification.
         """
@@ -15994,6 +16009,52 @@ class WorkerScriptAnalyticsEngineBinding(dict):
         The name of the Analytics Engine dataset to write to.
         """
         return pulumi.get(self, "dataset")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The global variable for the binding in your Worker code.
+        """
+        return pulumi.get(self, "name")
+
+
+@pulumi.output_type
+class WorkerScriptD1DatabaseBinding(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "databaseId":
+            suggest = "database_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in WorkerScriptD1DatabaseBinding. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        WorkerScriptD1DatabaseBinding.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        WorkerScriptD1DatabaseBinding.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 database_id: str,
+                 name: str):
+        """
+        :param str database_id: Database ID of D1 database to use.
+        :param str name: The global variable for the binding in your Worker code.
+        """
+        pulumi.set(__self__, "database_id", database_id)
+        pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter(name="databaseId")
+    def database_id(self) -> str:
+        """
+        Database ID of D1 database to use.
+        """
+        return pulumi.get(self, "database_id")
 
     @property
     @pulumi.getter

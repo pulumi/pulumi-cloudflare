@@ -2134,6 +2134,10 @@ export interface NotificationPolicyFilters {
      */
     targetZoneNames?: pulumi.Input<pulumi.Input<string>[]>;
     /**
+     * Tunnel IDs to alert on.
+     */
+    tunnelIds?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
      * Filter for alert.
      */
     wheres?: pulumi.Input<pulumi.Input<string>[]>;
@@ -3875,7 +3879,7 @@ export interface TeamsRuleRuleSettingsNotificationSettings {
     /**
      * Support URL to show in the notification.
      */
-    supportUrl?: pulumi.Input<boolean>;
+    supportUrl?: pulumi.Input<string>;
 }
 
 export interface TeamsRuleRuleSettingsPayloadLog {
@@ -4191,6 +4195,17 @@ export interface WorkerScriptAnalyticsEngineBinding {
      * The name of the Analytics Engine dataset to write to.
      */
     dataset: pulumi.Input<string>;
+    /**
+     * The global variable for the binding in your Worker code.
+     */
+    name: pulumi.Input<string>;
+}
+
+export interface WorkerScriptD1DatabaseBinding {
+    /**
+     * Database ID of D1 database to use.
+     */
+    databaseId: pulumi.Input<string>;
     /**
      * The global variable for the binding in your Worker code.
      */

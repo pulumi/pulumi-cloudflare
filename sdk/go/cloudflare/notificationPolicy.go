@@ -34,7 +34,7 @@ type NotificationPolicy struct {
 	Created pulumi.StringOutput `pulumi:"created"`
 	// Description of the notification policy.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// The email id to which the notification should be dispatched. One of email, webhooks, or PagerDuty mechanisms is required. Must provide only one of `emailIntegration`, `webhooksIntegration`, `pagerdutyIntegration`.
+	// The email ID to which the notification should be dispatched.
 	EmailIntegrations NotificationPolicyEmailIntegrationArrayOutput `pulumi:"emailIntegrations"`
 	// State of the pool to alert on.
 	Enabled pulumi.BoolOutput `pulumi:"enabled"`
@@ -44,9 +44,9 @@ type NotificationPolicy struct {
 	Modified pulumi.StringOutput `pulumi:"modified"`
 	// The name of the notification policy.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// The unique id of a configured pagerduty endpoint to which the notification should be dispatched. One of email, webhooks, or PagerDuty mechanisms is required. Must provide only one of `emailIntegration`, `webhooksIntegration`, `pagerdutyIntegration`.
+	// The unique ID of a configured pagerduty endpoint to which the notification should be dispatched.
 	PagerdutyIntegrations NotificationPolicyPagerdutyIntegrationArrayOutput `pulumi:"pagerdutyIntegrations"`
-	// The unique id of a configured webhooks endpoint to which the notification should be dispatched. One of email, webhooks, or PagerDuty mechanisms is required. Must provide only one of `emailIntegration`, `webhooksIntegration`, `pagerdutyIntegration`.
+	// The unique ID of a configured webhooks endpoint to which the notification should be dispatched.
 	WebhooksIntegrations NotificationPolicyWebhooksIntegrationArrayOutput `pulumi:"webhooksIntegrations"`
 }
 
@@ -100,7 +100,7 @@ type notificationPolicyState struct {
 	Created *string `pulumi:"created"`
 	// Description of the notification policy.
 	Description *string `pulumi:"description"`
-	// The email id to which the notification should be dispatched. One of email, webhooks, or PagerDuty mechanisms is required. Must provide only one of `emailIntegration`, `webhooksIntegration`, `pagerdutyIntegration`.
+	// The email ID to which the notification should be dispatched.
 	EmailIntegrations []NotificationPolicyEmailIntegration `pulumi:"emailIntegrations"`
 	// State of the pool to alert on.
 	Enabled *bool `pulumi:"enabled"`
@@ -110,9 +110,9 @@ type notificationPolicyState struct {
 	Modified *string `pulumi:"modified"`
 	// The name of the notification policy.
 	Name *string `pulumi:"name"`
-	// The unique id of a configured pagerduty endpoint to which the notification should be dispatched. One of email, webhooks, or PagerDuty mechanisms is required. Must provide only one of `emailIntegration`, `webhooksIntegration`, `pagerdutyIntegration`.
+	// The unique ID of a configured pagerduty endpoint to which the notification should be dispatched.
 	PagerdutyIntegrations []NotificationPolicyPagerdutyIntegration `pulumi:"pagerdutyIntegrations"`
-	// The unique id of a configured webhooks endpoint to which the notification should be dispatched. One of email, webhooks, or PagerDuty mechanisms is required. Must provide only one of `emailIntegration`, `webhooksIntegration`, `pagerdutyIntegration`.
+	// The unique ID of a configured webhooks endpoint to which the notification should be dispatched.
 	WebhooksIntegrations []NotificationPolicyWebhooksIntegration `pulumi:"webhooksIntegrations"`
 }
 
@@ -125,7 +125,7 @@ type NotificationPolicyState struct {
 	Created pulumi.StringPtrInput
 	// Description of the notification policy.
 	Description pulumi.StringPtrInput
-	// The email id to which the notification should be dispatched. One of email, webhooks, or PagerDuty mechanisms is required. Must provide only one of `emailIntegration`, `webhooksIntegration`, `pagerdutyIntegration`.
+	// The email ID to which the notification should be dispatched.
 	EmailIntegrations NotificationPolicyEmailIntegrationArrayInput
 	// State of the pool to alert on.
 	Enabled pulumi.BoolPtrInput
@@ -135,9 +135,9 @@ type NotificationPolicyState struct {
 	Modified pulumi.StringPtrInput
 	// The name of the notification policy.
 	Name pulumi.StringPtrInput
-	// The unique id of a configured pagerduty endpoint to which the notification should be dispatched. One of email, webhooks, or PagerDuty mechanisms is required. Must provide only one of `emailIntegration`, `webhooksIntegration`, `pagerdutyIntegration`.
+	// The unique ID of a configured pagerduty endpoint to which the notification should be dispatched.
 	PagerdutyIntegrations NotificationPolicyPagerdutyIntegrationArrayInput
-	// The unique id of a configured webhooks endpoint to which the notification should be dispatched. One of email, webhooks, or PagerDuty mechanisms is required. Must provide only one of `emailIntegration`, `webhooksIntegration`, `pagerdutyIntegration`.
+	// The unique ID of a configured webhooks endpoint to which the notification should be dispatched.
 	WebhooksIntegrations NotificationPolicyWebhooksIntegrationArrayInput
 }
 
@@ -152,7 +152,7 @@ type notificationPolicyArgs struct {
 	AlertType string `pulumi:"alertType"`
 	// Description of the notification policy.
 	Description *string `pulumi:"description"`
-	// The email id to which the notification should be dispatched. One of email, webhooks, or PagerDuty mechanisms is required. Must provide only one of `emailIntegration`, `webhooksIntegration`, `pagerdutyIntegration`.
+	// The email ID to which the notification should be dispatched.
 	EmailIntegrations []NotificationPolicyEmailIntegration `pulumi:"emailIntegrations"`
 	// State of the pool to alert on.
 	Enabled bool `pulumi:"enabled"`
@@ -160,9 +160,9 @@ type notificationPolicyArgs struct {
 	Filters *NotificationPolicyFilters `pulumi:"filters"`
 	// The name of the notification policy.
 	Name string `pulumi:"name"`
-	// The unique id of a configured pagerduty endpoint to which the notification should be dispatched. One of email, webhooks, or PagerDuty mechanisms is required. Must provide only one of `emailIntegration`, `webhooksIntegration`, `pagerdutyIntegration`.
+	// The unique ID of a configured pagerduty endpoint to which the notification should be dispatched.
 	PagerdutyIntegrations []NotificationPolicyPagerdutyIntegration `pulumi:"pagerdutyIntegrations"`
-	// The unique id of a configured webhooks endpoint to which the notification should be dispatched. One of email, webhooks, or PagerDuty mechanisms is required. Must provide only one of `emailIntegration`, `webhooksIntegration`, `pagerdutyIntegration`.
+	// The unique ID of a configured webhooks endpoint to which the notification should be dispatched.
 	WebhooksIntegrations []NotificationPolicyWebhooksIntegration `pulumi:"webhooksIntegrations"`
 }
 
@@ -174,7 +174,7 @@ type NotificationPolicyArgs struct {
 	AlertType pulumi.StringInput
 	// Description of the notification policy.
 	Description pulumi.StringPtrInput
-	// The email id to which the notification should be dispatched. One of email, webhooks, or PagerDuty mechanisms is required. Must provide only one of `emailIntegration`, `webhooksIntegration`, `pagerdutyIntegration`.
+	// The email ID to which the notification should be dispatched.
 	EmailIntegrations NotificationPolicyEmailIntegrationArrayInput
 	// State of the pool to alert on.
 	Enabled pulumi.BoolInput
@@ -182,9 +182,9 @@ type NotificationPolicyArgs struct {
 	Filters NotificationPolicyFiltersPtrInput
 	// The name of the notification policy.
 	Name pulumi.StringInput
-	// The unique id of a configured pagerduty endpoint to which the notification should be dispatched. One of email, webhooks, or PagerDuty mechanisms is required. Must provide only one of `emailIntegration`, `webhooksIntegration`, `pagerdutyIntegration`.
+	// The unique ID of a configured pagerduty endpoint to which the notification should be dispatched.
 	PagerdutyIntegrations NotificationPolicyPagerdutyIntegrationArrayInput
-	// The unique id of a configured webhooks endpoint to which the notification should be dispatched. One of email, webhooks, or PagerDuty mechanisms is required. Must provide only one of `emailIntegration`, `webhooksIntegration`, `pagerdutyIntegration`.
+	// The unique ID of a configured webhooks endpoint to which the notification should be dispatched.
 	WebhooksIntegrations NotificationPolicyWebhooksIntegrationArrayInput
 }
 
@@ -295,7 +295,7 @@ func (o NotificationPolicyOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NotificationPolicy) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// The email id to which the notification should be dispatched. One of email, webhooks, or PagerDuty mechanisms is required. Must provide only one of `emailIntegration`, `webhooksIntegration`, `pagerdutyIntegration`.
+// The email ID to which the notification should be dispatched.
 func (o NotificationPolicyOutput) EmailIntegrations() NotificationPolicyEmailIntegrationArrayOutput {
 	return o.ApplyT(func(v *NotificationPolicy) NotificationPolicyEmailIntegrationArrayOutput { return v.EmailIntegrations }).(NotificationPolicyEmailIntegrationArrayOutput)
 }
@@ -320,14 +320,14 @@ func (o NotificationPolicyOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *NotificationPolicy) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// The unique id of a configured pagerduty endpoint to which the notification should be dispatched. One of email, webhooks, or PagerDuty mechanisms is required. Must provide only one of `emailIntegration`, `webhooksIntegration`, `pagerdutyIntegration`.
+// The unique ID of a configured pagerduty endpoint to which the notification should be dispatched.
 func (o NotificationPolicyOutput) PagerdutyIntegrations() NotificationPolicyPagerdutyIntegrationArrayOutput {
 	return o.ApplyT(func(v *NotificationPolicy) NotificationPolicyPagerdutyIntegrationArrayOutput {
 		return v.PagerdutyIntegrations
 	}).(NotificationPolicyPagerdutyIntegrationArrayOutput)
 }
 
-// The unique id of a configured webhooks endpoint to which the notification should be dispatched. One of email, webhooks, or PagerDuty mechanisms is required. Must provide only one of `emailIntegration`, `webhooksIntegration`, `pagerdutyIntegration`.
+// The unique ID of a configured webhooks endpoint to which the notification should be dispatched.
 func (o NotificationPolicyOutput) WebhooksIntegrations() NotificationPolicyWebhooksIntegrationArrayOutput {
 	return o.ApplyT(func(v *NotificationPolicy) NotificationPolicyWebhooksIntegrationArrayOutput {
 		return v.WebhooksIntegrations

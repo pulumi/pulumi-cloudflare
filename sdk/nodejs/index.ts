@@ -645,6 +645,11 @@ export type WorkerScript = import("./workerScript").WorkerScript;
 export const WorkerScript: typeof import("./workerScript").WorkerScript = null as any;
 utilities.lazyLoad(exports, ["WorkerScript"], () => require("./workerScript"));
 
+export { WorkerSecretArgs, WorkerSecretState } from "./workerSecret";
+export type WorkerSecret = import("./workerSecret").WorkerSecret;
+export const WorkerSecret: typeof import("./workerSecret").WorkerSecret = null as any;
+utilities.lazyLoad(exports, ["WorkerSecret"], () => require("./workerSecret"));
+
 export { WorkersKvArgs, WorkersKvState } from "./workersKv";
 export type WorkersKv = import("./workersKv").WorkersKv;
 export const WorkersKv: typeof import("./workersKv").WorkersKv = null as any;
@@ -914,6 +919,8 @@ const _module = {
                 return new WorkerRoute(name, <any>undefined, { urn })
             case "cloudflare:index/workerScript:WorkerScript":
                 return new WorkerScript(name, <any>undefined, { urn })
+            case "cloudflare:index/workerSecret:WorkerSecret":
+                return new WorkerSecret(name, <any>undefined, { urn })
             case "cloudflare:index/workersKv:WorkersKv":
                 return new WorkersKv(name, <any>undefined, { urn })
             case "cloudflare:index/workersKvNamespace:WorkersKvNamespace":
@@ -1042,6 +1049,7 @@ pulumi.runtime.registerResourceModule("cloudflare", "index/workerCronTrigger", _
 pulumi.runtime.registerResourceModule("cloudflare", "index/workerDomain", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/workerRoute", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/workerScript", _module)
+pulumi.runtime.registerResourceModule("cloudflare", "index/workerSecret", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/workersKv", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/workersKvNamespace", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/zone", _module)

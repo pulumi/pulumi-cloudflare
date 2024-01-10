@@ -15379,6 +15379,8 @@ type NotificationPolicyFilters struct {
 	TargetHostnames []string `pulumi:"targetHostnames"`
 	// Target domain to alert on.
 	TargetZoneNames []string `pulumi:"targetZoneNames"`
+	// Tunnel IDs to alert on.
+	TunnelIds []string `pulumi:"tunnelIds"`
 	// Filter for alert.
 	Wheres []string `pulumi:"wheres"`
 	// A list of zone identifiers.
@@ -15450,6 +15452,8 @@ type NotificationPolicyFiltersArgs struct {
 	TargetHostnames pulumi.StringArrayInput `pulumi:"targetHostnames"`
 	// Target domain to alert on.
 	TargetZoneNames pulumi.StringArrayInput `pulumi:"targetZoneNames"`
+	// Tunnel IDs to alert on.
+	TunnelIds pulumi.StringArrayInput `pulumi:"tunnelIds"`
 	// Filter for alert.
 	Wheres pulumi.StringArrayInput `pulumi:"wheres"`
 	// A list of zone identifiers.
@@ -15665,6 +15669,11 @@ func (o NotificationPolicyFiltersOutput) TargetHostnames() pulumi.StringArrayOut
 // Target domain to alert on.
 func (o NotificationPolicyFiltersOutput) TargetZoneNames() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v NotificationPolicyFilters) []string { return v.TargetZoneNames }).(pulumi.StringArrayOutput)
+}
+
+// Tunnel IDs to alert on.
+func (o NotificationPolicyFiltersOutput) TunnelIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v NotificationPolicyFilters) []string { return v.TunnelIds }).(pulumi.StringArrayOutput)
 }
 
 // Filter for alert.
@@ -15967,6 +15976,16 @@ func (o NotificationPolicyFiltersPtrOutput) TargetZoneNames() pulumi.StringArray
 			return nil
 		}
 		return v.TargetZoneNames
+	}).(pulumi.StringArrayOutput)
+}
+
+// Tunnel IDs to alert on.
+func (o NotificationPolicyFiltersPtrOutput) TunnelIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *NotificationPolicyFilters) []string {
+		if v == nil {
+			return nil
+		}
+		return v.TunnelIds
 	}).(pulumi.StringArrayOutput)
 }
 
@@ -32566,7 +32585,7 @@ type TeamsRuleRuleSettingsNotificationSettings struct {
 	// Notification content.
 	Message *string `pulumi:"message"`
 	// Support URL to show in the notification.
-	SupportUrl *bool `pulumi:"supportUrl"`
+	SupportUrl *string `pulumi:"supportUrl"`
 }
 
 // TeamsRuleRuleSettingsNotificationSettingsInput is an input type that accepts TeamsRuleRuleSettingsNotificationSettingsArgs and TeamsRuleRuleSettingsNotificationSettingsOutput values.
@@ -32586,7 +32605,7 @@ type TeamsRuleRuleSettingsNotificationSettingsArgs struct {
 	// Notification content.
 	Message pulumi.StringPtrInput `pulumi:"message"`
 	// Support URL to show in the notification.
-	SupportUrl pulumi.BoolPtrInput `pulumi:"supportUrl"`
+	SupportUrl pulumi.StringPtrInput `pulumi:"supportUrl"`
 }
 
 func (TeamsRuleRuleSettingsNotificationSettingsArgs) ElementType() reflect.Type {
@@ -32677,8 +32696,8 @@ func (o TeamsRuleRuleSettingsNotificationSettingsOutput) Message() pulumi.String
 }
 
 // Support URL to show in the notification.
-func (o TeamsRuleRuleSettingsNotificationSettingsOutput) SupportUrl() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v TeamsRuleRuleSettingsNotificationSettings) *bool { return v.SupportUrl }).(pulumi.BoolPtrOutput)
+func (o TeamsRuleRuleSettingsNotificationSettingsOutput) SupportUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TeamsRuleRuleSettingsNotificationSettings) *string { return v.SupportUrl }).(pulumi.StringPtrOutput)
 }
 
 type TeamsRuleRuleSettingsNotificationSettingsPtrOutput struct{ *pulumi.OutputState }
@@ -32726,13 +32745,13 @@ func (o TeamsRuleRuleSettingsNotificationSettingsPtrOutput) Message() pulumi.Str
 }
 
 // Support URL to show in the notification.
-func (o TeamsRuleRuleSettingsNotificationSettingsPtrOutput) SupportUrl() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *TeamsRuleRuleSettingsNotificationSettings) *bool {
+func (o TeamsRuleRuleSettingsNotificationSettingsPtrOutput) SupportUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TeamsRuleRuleSettingsNotificationSettings) *string {
 		if v == nil {
 			return nil
 		}
 		return v.SupportUrl
-	}).(pulumi.BoolPtrOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
 type TeamsRuleRuleSettingsPayloadLog struct {
@@ -35452,6 +35471,112 @@ func (o WorkerScriptAnalyticsEngineBindingArrayOutput) Index(i pulumi.IntInput) 
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) WorkerScriptAnalyticsEngineBinding {
 		return vs[0].([]WorkerScriptAnalyticsEngineBinding)[vs[1].(int)]
 	}).(WorkerScriptAnalyticsEngineBindingOutput)
+}
+
+type WorkerScriptD1DatabaseBinding struct {
+	// Database ID of D1 database to use.
+	DatabaseId string `pulumi:"databaseId"`
+	// The global variable for the binding in your Worker code.
+	Name string `pulumi:"name"`
+}
+
+// WorkerScriptD1DatabaseBindingInput is an input type that accepts WorkerScriptD1DatabaseBindingArgs and WorkerScriptD1DatabaseBindingOutput values.
+// You can construct a concrete instance of `WorkerScriptD1DatabaseBindingInput` via:
+//
+//	WorkerScriptD1DatabaseBindingArgs{...}
+type WorkerScriptD1DatabaseBindingInput interface {
+	pulumi.Input
+
+	ToWorkerScriptD1DatabaseBindingOutput() WorkerScriptD1DatabaseBindingOutput
+	ToWorkerScriptD1DatabaseBindingOutputWithContext(context.Context) WorkerScriptD1DatabaseBindingOutput
+}
+
+type WorkerScriptD1DatabaseBindingArgs struct {
+	// Database ID of D1 database to use.
+	DatabaseId pulumi.StringInput `pulumi:"databaseId"`
+	// The global variable for the binding in your Worker code.
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (WorkerScriptD1DatabaseBindingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkerScriptD1DatabaseBinding)(nil)).Elem()
+}
+
+func (i WorkerScriptD1DatabaseBindingArgs) ToWorkerScriptD1DatabaseBindingOutput() WorkerScriptD1DatabaseBindingOutput {
+	return i.ToWorkerScriptD1DatabaseBindingOutputWithContext(context.Background())
+}
+
+func (i WorkerScriptD1DatabaseBindingArgs) ToWorkerScriptD1DatabaseBindingOutputWithContext(ctx context.Context) WorkerScriptD1DatabaseBindingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkerScriptD1DatabaseBindingOutput)
+}
+
+// WorkerScriptD1DatabaseBindingArrayInput is an input type that accepts WorkerScriptD1DatabaseBindingArray and WorkerScriptD1DatabaseBindingArrayOutput values.
+// You can construct a concrete instance of `WorkerScriptD1DatabaseBindingArrayInput` via:
+//
+//	WorkerScriptD1DatabaseBindingArray{ WorkerScriptD1DatabaseBindingArgs{...} }
+type WorkerScriptD1DatabaseBindingArrayInput interface {
+	pulumi.Input
+
+	ToWorkerScriptD1DatabaseBindingArrayOutput() WorkerScriptD1DatabaseBindingArrayOutput
+	ToWorkerScriptD1DatabaseBindingArrayOutputWithContext(context.Context) WorkerScriptD1DatabaseBindingArrayOutput
+}
+
+type WorkerScriptD1DatabaseBindingArray []WorkerScriptD1DatabaseBindingInput
+
+func (WorkerScriptD1DatabaseBindingArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WorkerScriptD1DatabaseBinding)(nil)).Elem()
+}
+
+func (i WorkerScriptD1DatabaseBindingArray) ToWorkerScriptD1DatabaseBindingArrayOutput() WorkerScriptD1DatabaseBindingArrayOutput {
+	return i.ToWorkerScriptD1DatabaseBindingArrayOutputWithContext(context.Background())
+}
+
+func (i WorkerScriptD1DatabaseBindingArray) ToWorkerScriptD1DatabaseBindingArrayOutputWithContext(ctx context.Context) WorkerScriptD1DatabaseBindingArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkerScriptD1DatabaseBindingArrayOutput)
+}
+
+type WorkerScriptD1DatabaseBindingOutput struct{ *pulumi.OutputState }
+
+func (WorkerScriptD1DatabaseBindingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkerScriptD1DatabaseBinding)(nil)).Elem()
+}
+
+func (o WorkerScriptD1DatabaseBindingOutput) ToWorkerScriptD1DatabaseBindingOutput() WorkerScriptD1DatabaseBindingOutput {
+	return o
+}
+
+func (o WorkerScriptD1DatabaseBindingOutput) ToWorkerScriptD1DatabaseBindingOutputWithContext(ctx context.Context) WorkerScriptD1DatabaseBindingOutput {
+	return o
+}
+
+// Database ID of D1 database to use.
+func (o WorkerScriptD1DatabaseBindingOutput) DatabaseId() pulumi.StringOutput {
+	return o.ApplyT(func(v WorkerScriptD1DatabaseBinding) string { return v.DatabaseId }).(pulumi.StringOutput)
+}
+
+// The global variable for the binding in your Worker code.
+func (o WorkerScriptD1DatabaseBindingOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v WorkerScriptD1DatabaseBinding) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type WorkerScriptD1DatabaseBindingArrayOutput struct{ *pulumi.OutputState }
+
+func (WorkerScriptD1DatabaseBindingArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WorkerScriptD1DatabaseBinding)(nil)).Elem()
+}
+
+func (o WorkerScriptD1DatabaseBindingArrayOutput) ToWorkerScriptD1DatabaseBindingArrayOutput() WorkerScriptD1DatabaseBindingArrayOutput {
+	return o
+}
+
+func (o WorkerScriptD1DatabaseBindingArrayOutput) ToWorkerScriptD1DatabaseBindingArrayOutputWithContext(ctx context.Context) WorkerScriptD1DatabaseBindingArrayOutput {
+	return o
+}
+
+func (o WorkerScriptD1DatabaseBindingArrayOutput) Index(i pulumi.IntInput) WorkerScriptD1DatabaseBindingOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) WorkerScriptD1DatabaseBinding {
+		return vs[0].([]WorkerScriptD1DatabaseBinding)[vs[1].(int)]
+	}).(WorkerScriptD1DatabaseBindingOutput)
 }
 
 type WorkerScriptKvNamespaceBinding struct {
@@ -46721,6 +46846,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*WaitingRoomRulesRuleArrayInput)(nil)).Elem(), WaitingRoomRulesRuleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkerScriptAnalyticsEngineBindingInput)(nil)).Elem(), WorkerScriptAnalyticsEngineBindingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkerScriptAnalyticsEngineBindingArrayInput)(nil)).Elem(), WorkerScriptAnalyticsEngineBindingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkerScriptD1DatabaseBindingInput)(nil)).Elem(), WorkerScriptD1DatabaseBindingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkerScriptD1DatabaseBindingArrayInput)(nil)).Elem(), WorkerScriptD1DatabaseBindingArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkerScriptKvNamespaceBindingInput)(nil)).Elem(), WorkerScriptKvNamespaceBindingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkerScriptKvNamespaceBindingArrayInput)(nil)).Elem(), WorkerScriptKvNamespaceBindingArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkerScriptPlacementInput)(nil)).Elem(), WorkerScriptPlacementArgs{})
@@ -47286,6 +47413,8 @@ func init() {
 	pulumi.RegisterOutputType(WaitingRoomRulesRuleArrayOutput{})
 	pulumi.RegisterOutputType(WorkerScriptAnalyticsEngineBindingOutput{})
 	pulumi.RegisterOutputType(WorkerScriptAnalyticsEngineBindingArrayOutput{})
+	pulumi.RegisterOutputType(WorkerScriptD1DatabaseBindingOutput{})
+	pulumi.RegisterOutputType(WorkerScriptD1DatabaseBindingArrayOutput{})
 	pulumi.RegisterOutputType(WorkerScriptKvNamespaceBindingOutput{})
 	pulumi.RegisterOutputType(WorkerScriptKvNamespaceBindingArrayOutput{})
 	pulumi.RegisterOutputType(WorkerScriptPlacementOutput{})

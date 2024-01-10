@@ -108,6 +108,7 @@ export class WorkerScript extends pulumi.CustomResource {
      * The script content.
      */
     public readonly content!: pulumi.Output<string>;
+    public readonly d1DatabaseBindings!: pulumi.Output<outputs.WorkerScriptD1DatabaseBinding[] | undefined>;
     public readonly kvNamespaceBindings!: pulumi.Output<outputs.WorkerScriptKvNamespaceBinding[] | undefined>;
     /**
      * Enabling allows Worker events to be sent to a defined Logpush destination.
@@ -147,6 +148,7 @@ export class WorkerScript extends pulumi.CustomResource {
             resourceInputs["compatibilityDate"] = state ? state.compatibilityDate : undefined;
             resourceInputs["compatibilityFlags"] = state ? state.compatibilityFlags : undefined;
             resourceInputs["content"] = state ? state.content : undefined;
+            resourceInputs["d1DatabaseBindings"] = state ? state.d1DatabaseBindings : undefined;
             resourceInputs["kvNamespaceBindings"] = state ? state.kvNamespaceBindings : undefined;
             resourceInputs["logpush"] = state ? state.logpush : undefined;
             resourceInputs["module"] = state ? state.module : undefined;
@@ -174,6 +176,7 @@ export class WorkerScript extends pulumi.CustomResource {
             resourceInputs["compatibilityDate"] = args ? args.compatibilityDate : undefined;
             resourceInputs["compatibilityFlags"] = args ? args.compatibilityFlags : undefined;
             resourceInputs["content"] = args ? args.content : undefined;
+            resourceInputs["d1DatabaseBindings"] = args ? args.d1DatabaseBindings : undefined;
             resourceInputs["kvNamespaceBindings"] = args ? args.kvNamespaceBindings : undefined;
             resourceInputs["logpush"] = args ? args.logpush : undefined;
             resourceInputs["module"] = args ? args.module : undefined;
@@ -212,6 +215,7 @@ export interface WorkerScriptState {
      * The script content.
      */
     content?: pulumi.Input<string>;
+    d1DatabaseBindings?: pulumi.Input<pulumi.Input<inputs.WorkerScriptD1DatabaseBinding>[]>;
     kvNamespaceBindings?: pulumi.Input<pulumi.Input<inputs.WorkerScriptKvNamespaceBinding>[]>;
     /**
      * Enabling allows Worker events to be sent to a defined Logpush destination.
@@ -255,6 +259,7 @@ export interface WorkerScriptArgs {
      * The script content.
      */
     content: pulumi.Input<string>;
+    d1DatabaseBindings?: pulumi.Input<pulumi.Input<inputs.WorkerScriptD1DatabaseBinding>[]>;
     kvNamespaceBindings?: pulumi.Input<pulumi.Input<inputs.WorkerScriptKvNamespaceBinding>[]>;
     /**
      * Enabling allows Worker events to be sent to a defined Logpush destination.

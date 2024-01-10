@@ -26,7 +26,7 @@ public final class TeamsRuleRuleSettingsNotificationSettings {
      * @return Support URL to show in the notification.
      * 
      */
-    private @Nullable Boolean supportUrl;
+    private @Nullable String supportUrl;
 
     private TeamsRuleRuleSettingsNotificationSettings() {}
     /**
@@ -47,7 +47,7 @@ public final class TeamsRuleRuleSettingsNotificationSettings {
      * @return Support URL to show in the notification.
      * 
      */
-    public Optional<Boolean> supportUrl() {
+    public Optional<String> supportUrl() {
         return Optional.ofNullable(this.supportUrl);
     }
 
@@ -62,7 +62,7 @@ public final class TeamsRuleRuleSettingsNotificationSettings {
     public static final class Builder {
         private @Nullable Boolean enabled;
         private @Nullable String message;
-        private @Nullable Boolean supportUrl;
+        private @Nullable String supportUrl;
         public Builder() {}
         public Builder(TeamsRuleRuleSettingsNotificationSettings defaults) {
     	      Objects.requireNonNull(defaults);
@@ -84,7 +84,7 @@ public final class TeamsRuleRuleSettingsNotificationSettings {
             return this;
         }
         @CustomType.Setter
-        public Builder supportUrl(@Nullable Boolean supportUrl) {
+        public Builder supportUrl(@Nullable String supportUrl) {
 
             this.supportUrl = supportUrl;
             return this;

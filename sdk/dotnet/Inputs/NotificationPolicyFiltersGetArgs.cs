@@ -332,6 +332,18 @@ namespace Pulumi.Cloudflare.Inputs
             set => _targetZoneNames = value;
         }
 
+        [Input("tunnelIds")]
+        private InputList<string>? _tunnelIds;
+
+        /// <summary>
+        /// Tunnel IDs to alert on.
+        /// </summary>
+        public InputList<string> TunnelIds
+        {
+            get => _tunnelIds ?? (_tunnelIds = new InputList<string>());
+            set => _tunnelIds = value;
+        }
+
         [Input("wheres")]
         private InputList<string>? _wheres;
 

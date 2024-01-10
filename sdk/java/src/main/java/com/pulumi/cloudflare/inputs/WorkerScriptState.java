@@ -4,6 +4,7 @@
 package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.cloudflare.inputs.WorkerScriptAnalyticsEngineBindingArgs;
+import com.pulumi.cloudflare.inputs.WorkerScriptD1DatabaseBindingArgs;
 import com.pulumi.cloudflare.inputs.WorkerScriptKvNamespaceBindingArgs;
 import com.pulumi.cloudflare.inputs.WorkerScriptPlacementArgs;
 import com.pulumi.cloudflare.inputs.WorkerScriptPlainTextBindingArgs;
@@ -91,6 +92,13 @@ public final class WorkerScriptState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> content() {
         return Optional.ofNullable(this.content);
+    }
+
+    @Import(name="d1DatabaseBindings")
+    private @Nullable Output<List<WorkerScriptD1DatabaseBindingArgs>> d1DatabaseBindings;
+
+    public Optional<Output<List<WorkerScriptD1DatabaseBindingArgs>>> d1DatabaseBindings() {
+        return Optional.ofNullable(this.d1DatabaseBindings);
     }
 
     @Import(name="kvNamespaceBindings")
@@ -202,6 +210,7 @@ public final class WorkerScriptState extends com.pulumi.resources.ResourceArgs {
         this.compatibilityDate = $.compatibilityDate;
         this.compatibilityFlags = $.compatibilityFlags;
         this.content = $.content;
+        this.d1DatabaseBindings = $.d1DatabaseBindings;
         this.kvNamespaceBindings = $.kvNamespaceBindings;
         this.logpush = $.logpush;
         this.module = $.module;
@@ -338,6 +347,19 @@ public final class WorkerScriptState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder content(String content) {
             return content(Output.of(content));
+        }
+
+        public Builder d1DatabaseBindings(@Nullable Output<List<WorkerScriptD1DatabaseBindingArgs>> d1DatabaseBindings) {
+            $.d1DatabaseBindings = d1DatabaseBindings;
+            return this;
+        }
+
+        public Builder d1DatabaseBindings(List<WorkerScriptD1DatabaseBindingArgs> d1DatabaseBindings) {
+            return d1DatabaseBindings(Output.of(d1DatabaseBindings));
+        }
+
+        public Builder d1DatabaseBindings(WorkerScriptD1DatabaseBindingArgs... d1DatabaseBindings) {
+            return d1DatabaseBindings(List.of(d1DatabaseBindings));
         }
 
         public Builder kvNamespaceBindings(@Nullable Output<List<WorkerScriptKvNamespaceBindingArgs>> kvNamespaceBindings) {

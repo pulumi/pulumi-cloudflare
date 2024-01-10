@@ -28,7 +28,7 @@ namespace Pulumi.Cloudflare.Inputs
         /// Support URL to show in the notification.
         /// </summary>
         [Input("supportUrl")]
-        public Input<bool>? SupportUrl { get; set; }
+        public Input<string>? SupportUrl { get; set; }
 
         public TeamsRuleRuleSettingsNotificationSettingsGetArgs()
         {

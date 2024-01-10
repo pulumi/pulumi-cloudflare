@@ -140,6 +140,9 @@ namespace Pulumi.Cloudflare
         [Output("content")]
         public Output<string> Content { get; private set; } = null!;
 
+        [Output("d1DatabaseBindings")]
+        public Output<ImmutableArray<Outputs.WorkerScriptD1DatabaseBinding>> D1DatabaseBindings { get; private set; } = null!;
+
         [Output("kvNamespaceBindings")]
         public Output<ImmutableArray<Outputs.WorkerScriptKvNamespaceBinding>> KvNamespaceBindings { get; private set; } = null!;
 
@@ -265,6 +268,14 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("content", required: true)]
         public Input<string> Content { get; set; } = null!;
+
+        [Input("d1DatabaseBindings")]
+        private InputList<Inputs.WorkerScriptD1DatabaseBindingArgs>? _d1DatabaseBindings;
+        public InputList<Inputs.WorkerScriptD1DatabaseBindingArgs> D1DatabaseBindings
+        {
+            get => _d1DatabaseBindings ?? (_d1DatabaseBindings = new InputList<Inputs.WorkerScriptD1DatabaseBindingArgs>());
+            set => _d1DatabaseBindings = value;
+        }
 
         [Input("kvNamespaceBindings")]
         private InputList<Inputs.WorkerScriptKvNamespaceBindingArgs>? _kvNamespaceBindings;
@@ -393,6 +404,14 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("content")]
         public Input<string>? Content { get; set; }
+
+        [Input("d1DatabaseBindings")]
+        private InputList<Inputs.WorkerScriptD1DatabaseBindingGetArgs>? _d1DatabaseBindings;
+        public InputList<Inputs.WorkerScriptD1DatabaseBindingGetArgs> D1DatabaseBindings
+        {
+            get => _d1DatabaseBindings ?? (_d1DatabaseBindings = new InputList<Inputs.WorkerScriptD1DatabaseBindingGetArgs>());
+            set => _d1DatabaseBindings = value;
+        }
 
         [Input("kvNamespaceBindings")]
         private InputList<Inputs.WorkerScriptKvNamespaceBindingGetArgs>? _kvNamespaceBindings;
