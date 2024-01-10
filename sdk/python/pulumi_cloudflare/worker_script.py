@@ -22,6 +22,7 @@ class WorkerScriptArgs:
                  analytics_engine_bindings: Optional[pulumi.Input[Sequence[pulumi.Input['WorkerScriptAnalyticsEngineBindingArgs']]]] = None,
                  compatibility_date: Optional[pulumi.Input[str]] = None,
                  compatibility_flags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 d1_database_bindings: Optional[pulumi.Input[Sequence[pulumi.Input['WorkerScriptD1DatabaseBindingArgs']]]] = None,
                  kv_namespace_bindings: Optional[pulumi.Input[Sequence[pulumi.Input['WorkerScriptKvNamespaceBindingArgs']]]] = None,
                  logpush: Optional[pulumi.Input[bool]] = None,
                  module: Optional[pulumi.Input[bool]] = None,
@@ -51,6 +52,8 @@ class WorkerScriptArgs:
             pulumi.set(__self__, "compatibility_date", compatibility_date)
         if compatibility_flags is not None:
             pulumi.set(__self__, "compatibility_flags", compatibility_flags)
+        if d1_database_bindings is not None:
+            pulumi.set(__self__, "d1_database_bindings", d1_database_bindings)
         if kv_namespace_bindings is not None:
             pulumi.set(__self__, "kv_namespace_bindings", kv_namespace_bindings)
         if logpush is not None:
@@ -140,6 +143,15 @@ class WorkerScriptArgs:
     @compatibility_flags.setter
     def compatibility_flags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "compatibility_flags", value)
+
+    @property
+    @pulumi.getter(name="d1DatabaseBindings")
+    def d1_database_bindings(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['WorkerScriptD1DatabaseBindingArgs']]]]:
+        return pulumi.get(self, "d1_database_bindings")
+
+    @d1_database_bindings.setter
+    def d1_database_bindings(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['WorkerScriptD1DatabaseBindingArgs']]]]):
+        pulumi.set(self, "d1_database_bindings", value)
 
     @property
     @pulumi.getter(name="kvNamespaceBindings")
@@ -246,6 +258,7 @@ class _WorkerScriptState:
                  compatibility_date: Optional[pulumi.Input[str]] = None,
                  compatibility_flags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  content: Optional[pulumi.Input[str]] = None,
+                 d1_database_bindings: Optional[pulumi.Input[Sequence[pulumi.Input['WorkerScriptD1DatabaseBindingArgs']]]] = None,
                  kv_namespace_bindings: Optional[pulumi.Input[Sequence[pulumi.Input['WorkerScriptKvNamespaceBindingArgs']]]] = None,
                  logpush: Optional[pulumi.Input[bool]] = None,
                  module: Optional[pulumi.Input[bool]] = None,
@@ -277,6 +290,8 @@ class _WorkerScriptState:
             pulumi.set(__self__, "compatibility_flags", compatibility_flags)
         if content is not None:
             pulumi.set(__self__, "content", content)
+        if d1_database_bindings is not None:
+            pulumi.set(__self__, "d1_database_bindings", d1_database_bindings)
         if kv_namespace_bindings is not None:
             pulumi.set(__self__, "kv_namespace_bindings", kv_namespace_bindings)
         if logpush is not None:
@@ -356,6 +371,15 @@ class _WorkerScriptState:
     @content.setter
     def content(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "content", value)
+
+    @property
+    @pulumi.getter(name="d1DatabaseBindings")
+    def d1_database_bindings(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['WorkerScriptD1DatabaseBindingArgs']]]]:
+        return pulumi.get(self, "d1_database_bindings")
+
+    @d1_database_bindings.setter
+    def d1_database_bindings(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['WorkerScriptD1DatabaseBindingArgs']]]]):
+        pulumi.set(self, "d1_database_bindings", value)
 
     @property
     @pulumi.getter(name="kvNamespaceBindings")
@@ -476,6 +500,7 @@ class WorkerScript(pulumi.CustomResource):
                  compatibility_date: Optional[pulumi.Input[str]] = None,
                  compatibility_flags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  content: Optional[pulumi.Input[str]] = None,
+                 d1_database_bindings: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WorkerScriptD1DatabaseBindingArgs']]]]] = None,
                  kv_namespace_bindings: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WorkerScriptKvNamespaceBindingArgs']]]]] = None,
                  logpush: Optional[pulumi.Input[bool]] = None,
                  module: Optional[pulumi.Input[bool]] = None,
@@ -634,6 +659,7 @@ class WorkerScript(pulumi.CustomResource):
                  compatibility_date: Optional[pulumi.Input[str]] = None,
                  compatibility_flags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  content: Optional[pulumi.Input[str]] = None,
+                 d1_database_bindings: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WorkerScriptD1DatabaseBindingArgs']]]]] = None,
                  kv_namespace_bindings: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WorkerScriptKvNamespaceBindingArgs']]]]] = None,
                  logpush: Optional[pulumi.Input[bool]] = None,
                  module: Optional[pulumi.Input[bool]] = None,
@@ -663,6 +689,7 @@ class WorkerScript(pulumi.CustomResource):
             if content is None and not opts.urn:
                 raise TypeError("Missing required property 'content'")
             __props__.__dict__["content"] = content
+            __props__.__dict__["d1_database_bindings"] = d1_database_bindings
             __props__.__dict__["kv_namespace_bindings"] = kv_namespace_bindings
             __props__.__dict__["logpush"] = logpush
             __props__.__dict__["module"] = module
@@ -691,6 +718,7 @@ class WorkerScript(pulumi.CustomResource):
             compatibility_date: Optional[pulumi.Input[str]] = None,
             compatibility_flags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             content: Optional[pulumi.Input[str]] = None,
+            d1_database_bindings: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WorkerScriptD1DatabaseBindingArgs']]]]] = None,
             kv_namespace_bindings: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WorkerScriptKvNamespaceBindingArgs']]]]] = None,
             logpush: Optional[pulumi.Input[bool]] = None,
             module: Optional[pulumi.Input[bool]] = None,
@@ -726,6 +754,7 @@ class WorkerScript(pulumi.CustomResource):
         __props__.__dict__["compatibility_date"] = compatibility_date
         __props__.__dict__["compatibility_flags"] = compatibility_flags
         __props__.__dict__["content"] = content
+        __props__.__dict__["d1_database_bindings"] = d1_database_bindings
         __props__.__dict__["kv_namespace_bindings"] = kv_namespace_bindings
         __props__.__dict__["logpush"] = logpush
         __props__.__dict__["module"] = module
@@ -775,6 +804,11 @@ class WorkerScript(pulumi.CustomResource):
         The script content.
         """
         return pulumi.get(self, "content")
+
+    @property
+    @pulumi.getter(name="d1DatabaseBindings")
+    def d1_database_bindings(self) -> pulumi.Output[Optional[Sequence['outputs.WorkerScriptD1DatabaseBinding']]]:
+        return pulumi.get(self, "d1_database_bindings")
 
     @property
     @pulumi.getter(name="kvNamespaceBindings")

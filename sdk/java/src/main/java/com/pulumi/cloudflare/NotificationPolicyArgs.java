@@ -68,14 +68,14 @@ public final class NotificationPolicyArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The email id to which the notification should be dispatched. One of email, webhooks, or PagerDuty mechanisms is required. Must provide only one of `email_integration`, `webhooks_integration`, `pagerduty_integration`.
+     * The email ID to which the notification should be dispatched.
      * 
      */
     @Import(name="emailIntegrations")
     private @Nullable Output<List<NotificationPolicyEmailIntegrationArgs>> emailIntegrations;
 
     /**
-     * @return The email id to which the notification should be dispatched. One of email, webhooks, or PagerDuty mechanisms is required. Must provide only one of `email_integration`, `webhooks_integration`, `pagerduty_integration`.
+     * @return The email ID to which the notification should be dispatched.
      * 
      */
     public Optional<Output<List<NotificationPolicyEmailIntegrationArgs>>> emailIntegrations() {
@@ -128,14 +128,14 @@ public final class NotificationPolicyArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The unique id of a configured pagerduty endpoint to which the notification should be dispatched. One of email, webhooks, or PagerDuty mechanisms is required. Must provide only one of `email_integration`, `webhooks_integration`, `pagerduty_integration`.
+     * The unique ID of a configured pagerduty endpoint to which the notification should be dispatched.
      * 
      */
     @Import(name="pagerdutyIntegrations")
     private @Nullable Output<List<NotificationPolicyPagerdutyIntegrationArgs>> pagerdutyIntegrations;
 
     /**
-     * @return The unique id of a configured pagerduty endpoint to which the notification should be dispatched. One of email, webhooks, or PagerDuty mechanisms is required. Must provide only one of `email_integration`, `webhooks_integration`, `pagerduty_integration`.
+     * @return The unique ID of a configured pagerduty endpoint to which the notification should be dispatched.
      * 
      */
     public Optional<Output<List<NotificationPolicyPagerdutyIntegrationArgs>>> pagerdutyIntegrations() {
@@ -143,14 +143,14 @@ public final class NotificationPolicyArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The unique id of a configured webhooks endpoint to which the notification should be dispatched. One of email, webhooks, or PagerDuty mechanisms is required. Must provide only one of `email_integration`, `webhooks_integration`, `pagerduty_integration`.
+     * The unique ID of a configured webhooks endpoint to which the notification should be dispatched.
      * 
      */
     @Import(name="webhooksIntegrations")
     private @Nullable Output<List<NotificationPolicyWebhooksIntegrationArgs>> webhooksIntegrations;
 
     /**
-     * @return The unique id of a configured webhooks endpoint to which the notification should be dispatched. One of email, webhooks, or PagerDuty mechanisms is required. Must provide only one of `email_integration`, `webhooks_integration`, `pagerduty_integration`.
+     * @return The unique ID of a configured webhooks endpoint to which the notification should be dispatched.
      * 
      */
     public Optional<Output<List<NotificationPolicyWebhooksIntegrationArgs>>> webhooksIntegrations() {
@@ -253,7 +253,7 @@ public final class NotificationPolicyArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param emailIntegrations The email id to which the notification should be dispatched. One of email, webhooks, or PagerDuty mechanisms is required. Must provide only one of `email_integration`, `webhooks_integration`, `pagerduty_integration`.
+         * @param emailIntegrations The email ID to which the notification should be dispatched.
          * 
          * @return builder
          * 
@@ -264,7 +264,7 @@ public final class NotificationPolicyArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param emailIntegrations The email id to which the notification should be dispatched. One of email, webhooks, or PagerDuty mechanisms is required. Must provide only one of `email_integration`, `webhooks_integration`, `pagerduty_integration`.
+         * @param emailIntegrations The email ID to which the notification should be dispatched.
          * 
          * @return builder
          * 
@@ -274,7 +274,7 @@ public final class NotificationPolicyArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param emailIntegrations The email id to which the notification should be dispatched. One of email, webhooks, or PagerDuty mechanisms is required. Must provide only one of `email_integration`, `webhooks_integration`, `pagerduty_integration`.
+         * @param emailIntegrations The email ID to which the notification should be dispatched.
          * 
          * @return builder
          * 
@@ -347,7 +347,7 @@ public final class NotificationPolicyArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param pagerdutyIntegrations The unique id of a configured pagerduty endpoint to which the notification should be dispatched. One of email, webhooks, or PagerDuty mechanisms is required. Must provide only one of `email_integration`, `webhooks_integration`, `pagerduty_integration`.
+         * @param pagerdutyIntegrations The unique ID of a configured pagerduty endpoint to which the notification should be dispatched.
          * 
          * @return builder
          * 
@@ -358,7 +358,7 @@ public final class NotificationPolicyArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param pagerdutyIntegrations The unique id of a configured pagerduty endpoint to which the notification should be dispatched. One of email, webhooks, or PagerDuty mechanisms is required. Must provide only one of `email_integration`, `webhooks_integration`, `pagerduty_integration`.
+         * @param pagerdutyIntegrations The unique ID of a configured pagerduty endpoint to which the notification should be dispatched.
          * 
          * @return builder
          * 
@@ -368,7 +368,7 @@ public final class NotificationPolicyArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param pagerdutyIntegrations The unique id of a configured pagerduty endpoint to which the notification should be dispatched. One of email, webhooks, or PagerDuty mechanisms is required. Must provide only one of `email_integration`, `webhooks_integration`, `pagerduty_integration`.
+         * @param pagerdutyIntegrations The unique ID of a configured pagerduty endpoint to which the notification should be dispatched.
          * 
          * @return builder
          * 
@@ -378,7 +378,7 @@ public final class NotificationPolicyArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param webhooksIntegrations The unique id of a configured webhooks endpoint to which the notification should be dispatched. One of email, webhooks, or PagerDuty mechanisms is required. Must provide only one of `email_integration`, `webhooks_integration`, `pagerduty_integration`.
+         * @param webhooksIntegrations The unique ID of a configured webhooks endpoint to which the notification should be dispatched.
          * 
          * @return builder
          * 
@@ -389,7 +389,7 @@ public final class NotificationPolicyArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param webhooksIntegrations The unique id of a configured webhooks endpoint to which the notification should be dispatched. One of email, webhooks, or PagerDuty mechanisms is required. Must provide only one of `email_integration`, `webhooks_integration`, `pagerduty_integration`.
+         * @param webhooksIntegrations The unique ID of a configured webhooks endpoint to which the notification should be dispatched.
          * 
          * @return builder
          * 
@@ -399,7 +399,7 @@ public final class NotificationPolicyArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param webhooksIntegrations The unique id of a configured webhooks endpoint to which the notification should be dispatched. One of email, webhooks, or PagerDuty mechanisms is required. Must provide only one of `email_integration`, `webhooks_integration`, `pagerduty_integration`.
+         * @param webhooksIntegrations The unique ID of a configured webhooks endpoint to which the notification should be dispatched.
          * 
          * @return builder
          * 

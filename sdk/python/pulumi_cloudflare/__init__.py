@@ -133,6 +133,7 @@ from .worker_cron_trigger import *
 from .worker_domain import *
 from .worker_route import *
 from .worker_script import *
+from .worker_secret import *
 from .workers_kv import *
 from .workers_kv_namespace import *
 from .zone import *
@@ -993,6 +994,14 @@ _utilities.register(
   "fqn": "pulumi_cloudflare",
   "classes": {
    "cloudflare:index/workerScript:WorkerScript": "WorkerScript"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "index/workerSecret",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/workerSecret:WorkerSecret": "WorkerSecret"
   }
  },
  {

@@ -231,6 +231,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &WorkerRoute{}
 	case "cloudflare:index/workerScript:WorkerScript":
 		r = &WorkerScript{}
+	case "cloudflare:index/workerSecret:WorkerSecret":
+		r = &WorkerSecret{}
 	case "cloudflare:index/workersKv:WorkersKv":
 		r = &WorkersKv{}
 	case "cloudflare:index/workersKvNamespace:WorkersKvNamespace":
@@ -803,6 +805,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"cloudflare",
 		"index/workerScript",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
+		"index/workerSecret",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

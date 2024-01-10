@@ -24,7 +24,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// <summary>
         /// Support URL to show in the notification.
         /// </summary>
-        public readonly bool? SupportUrl;
+        public readonly string? SupportUrl;
 
         [OutputConstructor]
         private TeamsRuleRuleSettingsNotificationSettings(
@@ -32,7 +32,7 @@ namespace Pulumi.Cloudflare.Outputs
 
             string? message,
 
-            bool? supportUrl)
+            string? supportUrl)
         {
             Enabled = enabled;
             Message = message;

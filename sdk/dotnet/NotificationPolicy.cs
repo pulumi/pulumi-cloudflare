@@ -48,7 +48,7 @@ namespace Pulumi.Cloudflare
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// The email id to which the notification should be dispatched. One of email, webhooks, or PagerDuty mechanisms is required. Must provide only one of `email_integration`, `webhooks_integration`, `pagerduty_integration`.
+        /// The email ID to which the notification should be dispatched.
         /// </summary>
         [Output("emailIntegrations")]
         public Output<ImmutableArray<Outputs.NotificationPolicyEmailIntegration>> EmailIntegrations { get; private set; } = null!;
@@ -78,13 +78,13 @@ namespace Pulumi.Cloudflare
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// The unique id of a configured pagerduty endpoint to which the notification should be dispatched. One of email, webhooks, or PagerDuty mechanisms is required. Must provide only one of `email_integration`, `webhooks_integration`, `pagerduty_integration`.
+        /// The unique ID of a configured pagerduty endpoint to which the notification should be dispatched.
         /// </summary>
         [Output("pagerdutyIntegrations")]
         public Output<ImmutableArray<Outputs.NotificationPolicyPagerdutyIntegration>> PagerdutyIntegrations { get; private set; } = null!;
 
         /// <summary>
-        /// The unique id of a configured webhooks endpoint to which the notification should be dispatched. One of email, webhooks, or PagerDuty mechanisms is required. Must provide only one of `email_integration`, `webhooks_integration`, `pagerduty_integration`.
+        /// The unique ID of a configured webhooks endpoint to which the notification should be dispatched.
         /// </summary>
         [Output("webhooksIntegrations")]
         public Output<ImmutableArray<Outputs.NotificationPolicyWebhooksIntegration>> WebhooksIntegrations { get; private set; } = null!;
@@ -157,7 +157,7 @@ namespace Pulumi.Cloudflare
         private InputList<Inputs.NotificationPolicyEmailIntegrationArgs>? _emailIntegrations;
 
         /// <summary>
-        /// The email id to which the notification should be dispatched. One of email, webhooks, or PagerDuty mechanisms is required. Must provide only one of `email_integration`, `webhooks_integration`, `pagerduty_integration`.
+        /// The email ID to which the notification should be dispatched.
         /// </summary>
         public InputList<Inputs.NotificationPolicyEmailIntegrationArgs> EmailIntegrations
         {
@@ -187,7 +187,7 @@ namespace Pulumi.Cloudflare
         private InputList<Inputs.NotificationPolicyPagerdutyIntegrationArgs>? _pagerdutyIntegrations;
 
         /// <summary>
-        /// The unique id of a configured pagerduty endpoint to which the notification should be dispatched. One of email, webhooks, or PagerDuty mechanisms is required. Must provide only one of `email_integration`, `webhooks_integration`, `pagerduty_integration`.
+        /// The unique ID of a configured pagerduty endpoint to which the notification should be dispatched.
         /// </summary>
         public InputList<Inputs.NotificationPolicyPagerdutyIntegrationArgs> PagerdutyIntegrations
         {
@@ -199,7 +199,7 @@ namespace Pulumi.Cloudflare
         private InputList<Inputs.NotificationPolicyWebhooksIntegrationArgs>? _webhooksIntegrations;
 
         /// <summary>
-        /// The unique id of a configured webhooks endpoint to which the notification should be dispatched. One of email, webhooks, or PagerDuty mechanisms is required. Must provide only one of `email_integration`, `webhooks_integration`, `pagerduty_integration`.
+        /// The unique ID of a configured webhooks endpoint to which the notification should be dispatched.
         /// </summary>
         public InputList<Inputs.NotificationPolicyWebhooksIntegrationArgs> WebhooksIntegrations
         {
@@ -243,7 +243,7 @@ namespace Pulumi.Cloudflare
         private InputList<Inputs.NotificationPolicyEmailIntegrationGetArgs>? _emailIntegrations;
 
         /// <summary>
-        /// The email id to which the notification should be dispatched. One of email, webhooks, or PagerDuty mechanisms is required. Must provide only one of `email_integration`, `webhooks_integration`, `pagerduty_integration`.
+        /// The email ID to which the notification should be dispatched.
         /// </summary>
         public InputList<Inputs.NotificationPolicyEmailIntegrationGetArgs> EmailIntegrations
         {
@@ -279,7 +279,7 @@ namespace Pulumi.Cloudflare
         private InputList<Inputs.NotificationPolicyPagerdutyIntegrationGetArgs>? _pagerdutyIntegrations;
 
         /// <summary>
-        /// The unique id of a configured pagerduty endpoint to which the notification should be dispatched. One of email, webhooks, or PagerDuty mechanisms is required. Must provide only one of `email_integration`, `webhooks_integration`, `pagerduty_integration`.
+        /// The unique ID of a configured pagerduty endpoint to which the notification should be dispatched.
         /// </summary>
         public InputList<Inputs.NotificationPolicyPagerdutyIntegrationGetArgs> PagerdutyIntegrations
         {
@@ -291,7 +291,7 @@ namespace Pulumi.Cloudflare
         private InputList<Inputs.NotificationPolicyWebhooksIntegrationGetArgs>? _webhooksIntegrations;
 
         /// <summary>
-        /// The unique id of a configured webhooks endpoint to which the notification should be dispatched. One of email, webhooks, or PagerDuty mechanisms is required. Must provide only one of `email_integration`, `webhooks_integration`, `pagerduty_integration`.
+        /// The unique ID of a configured webhooks endpoint to which the notification should be dispatched.
         /// </summary>
         public InputList<Inputs.NotificationPolicyWebhooksIntegrationGetArgs> WebhooksIntegrations
         {

@@ -1381,6 +1381,9 @@
                                 "target_zone_name": {
                                     "maxItemsOne": false
                                 },
+                                "tunnel_id": {
+                                    "maxItemsOne": false
+                                },
                                 "where": {
                                     "maxItemsOne": false
                                 },
@@ -2210,6 +2213,9 @@
                     "compatibility_flags": {
                         "maxItemsOne": false
                     },
+                    "d1_database_binding": {
+                        "maxItemsOne": false
+                    },
                     "kv_namespace_binding": {
                         "maxItemsOne": false
                     },
@@ -2235,6 +2241,10 @@
                         "maxItemsOne": false
                     }
                 }
+            },
+            "cloudflare_worker_secret": {
+                "current": "cloudflare:index/workerSecret:WorkerSecret",
+                "majorVersion": 5
             },
             "cloudflare_workers_kv": {
                 "current": "cloudflare:index/workersKv:WorkersKv",
@@ -2876,6 +2886,7 @@
             "cloudflare:index/workerDomain:WorkerDomain": 0,
             "cloudflare:index/workerRoute:WorkerRoute": 0,
             "cloudflare:index/workerScript:WorkerScript": 0,
+            "cloudflare:index/workerSecret:WorkerSecret": 0,
             "cloudflare:index/workersKv:WorkersKv": 0,
             "cloudflare:index/workersKvNamespace:WorkersKvNamespace": 0,
             "cloudflare:index/zone:Zone": 0,
@@ -3018,6 +3029,7 @@
             "cloudflare:index/workerDomain:WorkerDomain": "cloudflare_worker_domain",
             "cloudflare:index/workerRoute:WorkerRoute": "cloudflare_worker_route",
             "cloudflare:index/workerScript:WorkerScript": "cloudflare_worker_script",
+            "cloudflare:index/workerSecret:WorkerSecret": "cloudflare_worker_secret",
             "cloudflare:index/workersKv:WorkersKv": "cloudflare_workers_kv",
             "cloudflare:index/workersKvNamespace:WorkersKvNamespace": "cloudflare_workers_kv_namespace",
             "cloudflare:index/zone:Zone": "cloudflare_zone",
@@ -3639,6 +3651,7 @@
                 "statuses": "status",
                 "targetHostnames": "target_hostname",
                 "targetZoneNames": "target_zone_name",
+                "tunnelIds": "tunnel_id",
                 "wheres": "where"
             },
             "cloudflare:index/PageRuleActions:PageRuleActions": {
@@ -3996,6 +4009,9 @@
             "cloudflare:index/TunnelConfigConfigOriginRequestAccess:TunnelConfigConfigOriginRequestAccess": {
                 "audTags": "aud_tag",
                 "teamName": "team_name"
+            },
+            "cloudflare:index/WorkerScriptD1DatabaseBinding:WorkerScriptD1DatabaseBinding": {
+                "databaseId": "database_id"
             },
             "cloudflare:index/WorkerScriptKvNamespaceBinding:WorkerScriptKvNamespaceBinding": {
                 "namespaceId": "namespace_id"
@@ -4965,6 +4981,7 @@
                 "analyticsEngineBindings": "analytics_engine_binding",
                 "compatibilityDate": "compatibility_date",
                 "compatibilityFlags": "compatibility_flags",
+                "d1DatabaseBindings": "d1_database_binding",
                 "kvNamespaceBindings": "kv_namespace_binding",
                 "placements": "placement",
                 "plainTextBindings": "plain_text_binding",
@@ -4973,6 +4990,11 @@
                 "secretTextBindings": "secret_text_binding",
                 "serviceBindings": "service_binding",
                 "webassemblyBindings": "webassembly_binding"
+            },
+            "cloudflare:index/workerSecret:WorkerSecret": {
+                "accountId": "account_id",
+                "scriptName": "script_name",
+                "secretText": "secret_text"
             },
             "cloudflare:index/workersKv:WorkersKv": {
                 "accountId": "account_id",

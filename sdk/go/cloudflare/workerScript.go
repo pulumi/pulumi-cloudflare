@@ -130,6 +130,7 @@ type WorkerScript struct {
 	CompatibilityFlags pulumi.StringArrayOutput `pulumi:"compatibilityFlags"`
 	// The script content.
 	Content             pulumi.StringOutput                       `pulumi:"content"`
+	D1DatabaseBindings  WorkerScriptD1DatabaseBindingArrayOutput  `pulumi:"d1DatabaseBindings"`
 	KvNamespaceBindings WorkerScriptKvNamespaceBindingArrayOutput `pulumi:"kvNamespaceBindings"`
 	// Enabling allows Worker events to be sent to a defined Logpush destination.
 	Logpush pulumi.BoolPtrOutput `pulumi:"logpush"`
@@ -194,6 +195,7 @@ type workerScriptState struct {
 	CompatibilityFlags []string `pulumi:"compatibilityFlags"`
 	// The script content.
 	Content             *string                          `pulumi:"content"`
+	D1DatabaseBindings  []WorkerScriptD1DatabaseBinding  `pulumi:"d1DatabaseBindings"`
 	KvNamespaceBindings []WorkerScriptKvNamespaceBinding `pulumi:"kvNamespaceBindings"`
 	// Enabling allows Worker events to be sent to a defined Logpush destination.
 	Logpush *bool `pulumi:"logpush"`
@@ -220,6 +222,7 @@ type WorkerScriptState struct {
 	CompatibilityFlags pulumi.StringArrayInput
 	// The script content.
 	Content             pulumi.StringPtrInput
+	D1DatabaseBindings  WorkerScriptD1DatabaseBindingArrayInput
 	KvNamespaceBindings WorkerScriptKvNamespaceBindingArrayInput
 	// Enabling allows Worker events to be sent to a defined Logpush destination.
 	Logpush pulumi.BoolPtrInput
@@ -250,6 +253,7 @@ type workerScriptArgs struct {
 	CompatibilityFlags []string `pulumi:"compatibilityFlags"`
 	// The script content.
 	Content             string                           `pulumi:"content"`
+	D1DatabaseBindings  []WorkerScriptD1DatabaseBinding  `pulumi:"d1DatabaseBindings"`
 	KvNamespaceBindings []WorkerScriptKvNamespaceBinding `pulumi:"kvNamespaceBindings"`
 	// Enabling allows Worker events to be sent to a defined Logpush destination.
 	Logpush *bool `pulumi:"logpush"`
@@ -277,6 +281,7 @@ type WorkerScriptArgs struct {
 	CompatibilityFlags pulumi.StringArrayInput
 	// The script content.
 	Content             pulumi.StringInput
+	D1DatabaseBindings  WorkerScriptD1DatabaseBindingArrayInput
 	KvNamespaceBindings WorkerScriptKvNamespaceBindingArrayInput
 	// Enabling allows Worker events to be sent to a defined Logpush destination.
 	Logpush pulumi.BoolPtrInput
@@ -402,6 +407,10 @@ func (o WorkerScriptOutput) CompatibilityFlags() pulumi.StringArrayOutput {
 // The script content.
 func (o WorkerScriptOutput) Content() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkerScript) pulumi.StringOutput { return v.Content }).(pulumi.StringOutput)
+}
+
+func (o WorkerScriptOutput) D1DatabaseBindings() WorkerScriptD1DatabaseBindingArrayOutput {
+	return o.ApplyT(func(v *WorkerScript) WorkerScriptD1DatabaseBindingArrayOutput { return v.D1DatabaseBindings }).(WorkerScriptD1DatabaseBindingArrayOutput)
 }
 
 func (o WorkerScriptOutput) KvNamespaceBindings() WorkerScriptKvNamespaceBindingArrayOutput {

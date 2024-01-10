@@ -231,6 +231,7 @@ __all__ = [
     'WaitingRoomAdditionalRouteArgs',
     'WaitingRoomRulesRuleArgs',
     'WorkerScriptAnalyticsEngineBindingArgs',
+    'WorkerScriptD1DatabaseBindingArgs',
     'WorkerScriptKvNamespaceBindingArgs',
     'WorkerScriptPlacementArgs',
     'WorkerScriptPlainTextBindingArgs',
@@ -8341,6 +8342,7 @@ class NotificationPolicyFiltersArgs:
                  statuses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  target_hostnames: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  target_zone_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 tunnel_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  wheres: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  zones: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
@@ -8370,6 +8372,7 @@ class NotificationPolicyFiltersArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] statuses: Status to alert on.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] target_hostnames: Target host to alert on for dos.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] target_zone_names: Target domain to alert on.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tunnel_ids: Tunnel IDs to alert on.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] wheres: Filter for alert.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] zones: A list of zone identifiers.
         """
@@ -8427,6 +8430,8 @@ class NotificationPolicyFiltersArgs:
             pulumi.set(__self__, "target_hostnames", target_hostnames)
         if target_zone_names is not None:
             pulumi.set(__self__, "target_zone_names", target_zone_names)
+        if tunnel_ids is not None:
+            pulumi.set(__self__, "tunnel_ids", tunnel_ids)
         if wheres is not None:
             pulumi.set(__self__, "wheres", wheres)
         if zones is not None:
@@ -8752,6 +8757,18 @@ class NotificationPolicyFiltersArgs:
     @target_zone_names.setter
     def target_zone_names(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "target_zone_names", value)
+
+    @property
+    @pulumi.getter(name="tunnelIds")
+    def tunnel_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Tunnel IDs to alert on.
+        """
+        return pulumi.get(self, "tunnel_ids")
+
+    @tunnel_ids.setter
+    def tunnel_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "tunnel_ids", value)
 
     @property
     @pulumi.getter
@@ -15449,11 +15466,11 @@ class TeamsRuleRuleSettingsNotificationSettingsArgs:
     def __init__(__self__, *,
                  enabled: Optional[pulumi.Input[bool]] = None,
                  message: Optional[pulumi.Input[str]] = None,
-                 support_url: Optional[pulumi.Input[bool]] = None):
+                 support_url: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[bool] enabled: Enable notification settings.
         :param pulumi.Input[str] message: Notification content.
-        :param pulumi.Input[bool] support_url: Support URL to show in the notification.
+        :param pulumi.Input[str] support_url: Support URL to show in the notification.
         """
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
@@ -15488,14 +15505,14 @@ class TeamsRuleRuleSettingsNotificationSettingsArgs:
 
     @property
     @pulumi.getter(name="supportUrl")
-    def support_url(self) -> Optional[pulumi.Input[bool]]:
+    def support_url(self) -> Optional[pulumi.Input[str]]:
         """
         Support URL to show in the notification.
         """
         return pulumi.get(self, "support_url")
 
     @support_url.setter
-    def support_url(self, value: Optional[pulumi.Input[bool]]):
+    def support_url(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "support_url", value)
 
 
@@ -16692,6 +16709,43 @@ class WorkerScriptAnalyticsEngineBindingArgs:
     @dataset.setter
     def dataset(self, value: pulumi.Input[str]):
         pulumi.set(self, "dataset", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        """
+        The global variable for the binding in your Worker code.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
+
+
+@pulumi.input_type
+class WorkerScriptD1DatabaseBindingArgs:
+    def __init__(__self__, *,
+                 database_id: pulumi.Input[str],
+                 name: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] database_id: Database ID of D1 database to use.
+        :param pulumi.Input[str] name: The global variable for the binding in your Worker code.
+        """
+        pulumi.set(__self__, "database_id", database_id)
+        pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter(name="databaseId")
+    def database_id(self) -> pulumi.Input[str]:
+        """
+        Database ID of D1 database to use.
+        """
+        return pulumi.get(self, "database_id")
+
+    @database_id.setter
+    def database_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "database_id", value)
 
     @property
     @pulumi.getter

@@ -62,7 +62,7 @@ export class NotificationPolicy extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
-     * The email id to which the notification should be dispatched. One of email, webhooks, or PagerDuty mechanisms is required. Must provide only one of `emailIntegration`, `webhooksIntegration`, `pagerdutyIntegration`.
+     * The email ID to which the notification should be dispatched.
      */
     public readonly emailIntegrations!: pulumi.Output<outputs.NotificationPolicyEmailIntegration[] | undefined>;
     /**
@@ -82,11 +82,11 @@ export class NotificationPolicy extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * The unique id of a configured pagerduty endpoint to which the notification should be dispatched. One of email, webhooks, or PagerDuty mechanisms is required. Must provide only one of `emailIntegration`, `webhooksIntegration`, `pagerdutyIntegration`.
+     * The unique ID of a configured pagerduty endpoint to which the notification should be dispatched.
      */
     public readonly pagerdutyIntegrations!: pulumi.Output<outputs.NotificationPolicyPagerdutyIntegration[] | undefined>;
     /**
-     * The unique id of a configured webhooks endpoint to which the notification should be dispatched. One of email, webhooks, or PagerDuty mechanisms is required. Must provide only one of `emailIntegration`, `webhooksIntegration`, `pagerdutyIntegration`.
+     * The unique ID of a configured webhooks endpoint to which the notification should be dispatched.
      */
     public readonly webhooksIntegrations!: pulumi.Output<outputs.NotificationPolicyWebhooksIntegration[] | undefined>;
 
@@ -166,7 +166,7 @@ export interface NotificationPolicyState {
      */
     description?: pulumi.Input<string>;
     /**
-     * The email id to which the notification should be dispatched. One of email, webhooks, or PagerDuty mechanisms is required. Must provide only one of `emailIntegration`, `webhooksIntegration`, `pagerdutyIntegration`.
+     * The email ID to which the notification should be dispatched.
      */
     emailIntegrations?: pulumi.Input<pulumi.Input<inputs.NotificationPolicyEmailIntegration>[]>;
     /**
@@ -186,11 +186,11 @@ export interface NotificationPolicyState {
      */
     name?: pulumi.Input<string>;
     /**
-     * The unique id of a configured pagerduty endpoint to which the notification should be dispatched. One of email, webhooks, or PagerDuty mechanisms is required. Must provide only one of `emailIntegration`, `webhooksIntegration`, `pagerdutyIntegration`.
+     * The unique ID of a configured pagerduty endpoint to which the notification should be dispatched.
      */
     pagerdutyIntegrations?: pulumi.Input<pulumi.Input<inputs.NotificationPolicyPagerdutyIntegration>[]>;
     /**
-     * The unique id of a configured webhooks endpoint to which the notification should be dispatched. One of email, webhooks, or PagerDuty mechanisms is required. Must provide only one of `emailIntegration`, `webhooksIntegration`, `pagerdutyIntegration`.
+     * The unique ID of a configured webhooks endpoint to which the notification should be dispatched.
      */
     webhooksIntegrations?: pulumi.Input<pulumi.Input<inputs.NotificationPolicyWebhooksIntegration>[]>;
 }
@@ -212,7 +212,7 @@ export interface NotificationPolicyArgs {
      */
     description?: pulumi.Input<string>;
     /**
-     * The email id to which the notification should be dispatched. One of email, webhooks, or PagerDuty mechanisms is required. Must provide only one of `emailIntegration`, `webhooksIntegration`, `pagerdutyIntegration`.
+     * The email ID to which the notification should be dispatched.
      */
     emailIntegrations?: pulumi.Input<pulumi.Input<inputs.NotificationPolicyEmailIntegration>[]>;
     /**
@@ -228,11 +228,11 @@ export interface NotificationPolicyArgs {
      */
     name: pulumi.Input<string>;
     /**
-     * The unique id of a configured pagerduty endpoint to which the notification should be dispatched. One of email, webhooks, or PagerDuty mechanisms is required. Must provide only one of `emailIntegration`, `webhooksIntegration`, `pagerdutyIntegration`.
+     * The unique ID of a configured pagerduty endpoint to which the notification should be dispatched.
      */
     pagerdutyIntegrations?: pulumi.Input<pulumi.Input<inputs.NotificationPolicyPagerdutyIntegration>[]>;
     /**
-     * The unique id of a configured webhooks endpoint to which the notification should be dispatched. One of email, webhooks, or PagerDuty mechanisms is required. Must provide only one of `emailIntegration`, `webhooksIntegration`, `pagerdutyIntegration`.
+     * The unique ID of a configured webhooks endpoint to which the notification should be dispatched.
      */
     webhooksIntegrations?: pulumi.Input<pulumi.Input<inputs.NotificationPolicyWebhooksIntegration>[]>;
 }

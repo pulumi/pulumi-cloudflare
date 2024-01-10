@@ -7,6 +7,7 @@ import com.pulumi.cloudflare.Utilities;
 import com.pulumi.cloudflare.WorkerScriptArgs;
 import com.pulumi.cloudflare.inputs.WorkerScriptState;
 import com.pulumi.cloudflare.outputs.WorkerScriptAnalyticsEngineBinding;
+import com.pulumi.cloudflare.outputs.WorkerScriptD1DatabaseBinding;
 import com.pulumi.cloudflare.outputs.WorkerScriptKvNamespaceBinding;
 import com.pulumi.cloudflare.outputs.WorkerScriptPlacement;
 import com.pulumi.cloudflare.outputs.WorkerScriptPlainTextBinding;
@@ -173,6 +174,12 @@ public class WorkerScript extends com.pulumi.resources.CustomResource {
      */
     public Output<String> content() {
         return this.content;
+    }
+    @Export(name="d1DatabaseBindings", refs={List.class,WorkerScriptD1DatabaseBinding.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<WorkerScriptD1DatabaseBinding>> d1DatabaseBindings;
+
+    public Output<Optional<List<WorkerScriptD1DatabaseBinding>>> d1DatabaseBindings() {
+        return Codegen.optional(this.d1DatabaseBindings);
     }
     @Export(name="kvNamespaceBindings", refs={List.class,WorkerScriptKvNamespaceBinding.class}, tree="[0,1]")
     private Output</* @Nullable */ List<WorkerScriptKvNamespaceBinding>> kvNamespaceBindings;

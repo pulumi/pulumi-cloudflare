@@ -2339,6 +2339,10 @@ export interface NotificationPolicyFilters {
      */
     targetZoneNames?: string[];
     /**
+     * Tunnel IDs to alert on.
+     */
+    tunnelIds?: string[];
+    /**
      * Filter for alert.
      */
     wheres?: string[];
@@ -4080,7 +4084,7 @@ export interface TeamsRuleRuleSettingsNotificationSettings {
     /**
      * Support URL to show in the notification.
      */
-    supportUrl?: boolean;
+    supportUrl?: string;
 }
 
 export interface TeamsRuleRuleSettingsPayloadLog {
@@ -4396,6 +4400,17 @@ export interface WorkerScriptAnalyticsEngineBinding {
      * The name of the Analytics Engine dataset to write to.
      */
     dataset: string;
+    /**
+     * The global variable for the binding in your Worker code.
+     */
+    name: string;
+}
+
+export interface WorkerScriptD1DatabaseBinding {
+    /**
+     * Database ID of D1 database to use.
+     */
+    databaseId: string;
     /**
      * The global variable for the binding in your Worker code.
      */
