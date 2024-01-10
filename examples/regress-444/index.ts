@@ -1,11 +1,18 @@
 import * as pulumi from "@pulumi/pulumi";
+import * as random from "@pulumi/random";
 import * as cloudflare from "@pulumi/cloudflare";
 
 const config = new pulumi.Config();
 const accountId = config.require("accountId");
 
+const randomStr = new random.RandomString("random", {
+    length: 8,
+    overrideSpecial: "-",
+    special: true,
+});
+
 const zone = new cloudflare.Zone("my-zone", {
-    zone: "ts-test-cloudflare-zone.com",
+    zone: randomStr.result.apply(r => `ts-test-cloudflare-${r}-zone.com`),
     accountId: accountId,
 });
 
