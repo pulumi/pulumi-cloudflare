@@ -9,6 +9,7 @@ const randomStr = new random.RandomString("random", {
     length: 8,
     overrideSpecial: "-",
     special: true,
+    upper: false,
 });
 
 const zone = new cloudflare.Zone("my-zone", {
