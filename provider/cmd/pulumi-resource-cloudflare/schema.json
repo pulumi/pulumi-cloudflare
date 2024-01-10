@@ -3519,6 +3519,13 @@
                     },
                     "description": "Target domain to alert on.\n"
                 },
+                "tunnelIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Tunnel IDs to alert on.\n"
+                },
                 "wheres": {
                     "type": "array",
                     "items": {
@@ -5943,7 +5950,7 @@
                     "description": "Notification content.\n"
                 },
                 "supportUrl": {
-                    "type": "boolean",
+                    "type": "string",
                     "description": "Support URL to show in the notification.\n"
                 }
             },
@@ -6354,6 +6361,23 @@
             "type": "object",
             "required": [
                 "dataset",
+                "name"
+            ]
+        },
+        "cloudflare:index/WorkerScriptD1DatabaseBinding:WorkerScriptD1DatabaseBinding": {
+            "properties": {
+                "databaseId": {
+                    "type": "string",
+                    "description": "Database ID of D1 database to use.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The global variable for the binding in your Worker code.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "databaseId",
                 "name"
             ]
         },
@@ -16168,7 +16192,7 @@
                     "items": {
                         "$ref": "#/types/cloudflare:index/NotificationPolicyEmailIntegration:NotificationPolicyEmailIntegration"
                     },
-                    "description": "The email id to which the notification should be dispatched. One of email, webhooks, or PagerDuty mechanisms is required. Must provide only one of `email_integration`, `webhooks_integration`, `pagerduty_integration`.\n"
+                    "description": "The email ID to which the notification should be dispatched.\n"
                 },
                 "enabled": {
                     "type": "boolean",
@@ -16191,14 +16215,14 @@
                     "items": {
                         "$ref": "#/types/cloudflare:index/NotificationPolicyPagerdutyIntegration:NotificationPolicyPagerdutyIntegration"
                     },
-                    "description": "The unique id of a configured pagerduty endpoint to which the notification should be dispatched. One of email, webhooks, or PagerDuty mechanisms is required. Must provide only one of `email_integration`, `webhooks_integration`, `pagerduty_integration`.\n"
+                    "description": "The unique ID of a configured pagerduty endpoint to which the notification should be dispatched.\n"
                 },
                 "webhooksIntegrations": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/cloudflare:index/NotificationPolicyWebhooksIntegration:NotificationPolicyWebhooksIntegration"
                     },
-                    "description": "The unique id of a configured webhooks endpoint to which the notification should be dispatched. One of email, webhooks, or PagerDuty mechanisms is required. Must provide only one of `email_integration`, `webhooks_integration`, `pagerduty_integration`.\n"
+                    "description": "The unique ID of a configured webhooks endpoint to which the notification should be dispatched.\n"
                 }
             },
             "required": [
@@ -16227,7 +16251,7 @@
                     "items": {
                         "$ref": "#/types/cloudflare:index/NotificationPolicyEmailIntegration:NotificationPolicyEmailIntegration"
                     },
-                    "description": "The email id to which the notification should be dispatched. One of email, webhooks, or PagerDuty mechanisms is required. Must provide only one of `email_integration`, `webhooks_integration`, `pagerduty_integration`.\n"
+                    "description": "The email ID to which the notification should be dispatched.\n"
                 },
                 "enabled": {
                     "type": "boolean",
@@ -16246,14 +16270,14 @@
                     "items": {
                         "$ref": "#/types/cloudflare:index/NotificationPolicyPagerdutyIntegration:NotificationPolicyPagerdutyIntegration"
                     },
-                    "description": "The unique id of a configured pagerduty endpoint to which the notification should be dispatched. One of email, webhooks, or PagerDuty mechanisms is required. Must provide only one of `email_integration`, `webhooks_integration`, `pagerduty_integration`.\n"
+                    "description": "The unique ID of a configured pagerduty endpoint to which the notification should be dispatched.\n"
                 },
                 "webhooksIntegrations": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/cloudflare:index/NotificationPolicyWebhooksIntegration:NotificationPolicyWebhooksIntegration"
                     },
-                    "description": "The unique id of a configured webhooks endpoint to which the notification should be dispatched. One of email, webhooks, or PagerDuty mechanisms is required. Must provide only one of `email_integration`, `webhooks_integration`, `pagerduty_integration`.\n"
+                    "description": "The unique ID of a configured webhooks endpoint to which the notification should be dispatched.\n"
                 }
             },
             "requiredInputs": [
@@ -16286,7 +16310,7 @@
                         "items": {
                             "$ref": "#/types/cloudflare:index/NotificationPolicyEmailIntegration:NotificationPolicyEmailIntegration"
                         },
-                        "description": "The email id to which the notification should be dispatched. One of email, webhooks, or PagerDuty mechanisms is required. Must provide only one of `email_integration`, `webhooks_integration`, `pagerduty_integration`.\n"
+                        "description": "The email ID to which the notification should be dispatched.\n"
                     },
                     "enabled": {
                         "type": "boolean",
@@ -16309,14 +16333,14 @@
                         "items": {
                             "$ref": "#/types/cloudflare:index/NotificationPolicyPagerdutyIntegration:NotificationPolicyPagerdutyIntegration"
                         },
-                        "description": "The unique id of a configured pagerduty endpoint to which the notification should be dispatched. One of email, webhooks, or PagerDuty mechanisms is required. Must provide only one of `email_integration`, `webhooks_integration`, `pagerduty_integration`.\n"
+                        "description": "The unique ID of a configured pagerduty endpoint to which the notification should be dispatched.\n"
                     },
                     "webhooksIntegrations": {
                         "type": "array",
                         "items": {
                             "$ref": "#/types/cloudflare:index/NotificationPolicyWebhooksIntegration:NotificationPolicyWebhooksIntegration"
                         },
-                        "description": "The unique id of a configured webhooks endpoint to which the notification should be dispatched. One of email, webhooks, or PagerDuty mechanisms is required. Must provide only one of `email_integration`, `webhooks_integration`, `pagerduty_integration`.\n"
+                        "description": "The unique ID of a configured webhooks endpoint to which the notification should be dispatched.\n"
                     }
                 },
                 "type": "object"
@@ -20581,6 +20605,12 @@
                     "type": "string",
                     "description": "The script content.\n"
                 },
+                "d1DatabaseBindings": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/cloudflare:index/WorkerScriptD1DatabaseBinding:WorkerScriptD1DatabaseBinding"
+                    }
+                },
                 "kvNamespaceBindings": {
                     "type": "array",
                     "items": {
@@ -20673,6 +20703,12 @@
                 "content": {
                     "type": "string",
                     "description": "The script content.\n"
+                },
+                "d1DatabaseBindings": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/cloudflare:index/WorkerScriptD1DatabaseBinding:WorkerScriptD1DatabaseBinding"
+                    }
                 },
                 "kvNamespaceBindings": {
                     "type": "array",
@@ -20769,6 +20805,12 @@
                         "type": "string",
                         "description": "The script content.\n"
                     },
+                    "d1DatabaseBindings": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/cloudflare:index/WorkerScriptD1DatabaseBinding:WorkerScriptD1DatabaseBinding"
+                        }
+                    },
                     "kvNamespaceBindings": {
                         "type": "array",
                         "items": {
@@ -20829,6 +20871,88 @@
                         "items": {
                             "$ref": "#/types/cloudflare:index/WorkerScriptWebassemblyBinding:WorkerScriptWebassemblyBinding"
                         }
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "cloudflare:index/workerSecret:WorkerSecret": {
+            "description": "Provides a Cloudflare Worker secret resource.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as cloudflare from \"@pulumi/cloudflare\";\n\nconst mySecret = new cloudflare.WorkerSecret(\"mySecret\", {\n    accountId: \"f037e56e89293a057740de681ac9abbe\",\n    name: \"MY_EXAMPLE_SECRET_TEXT\",\n    scriptName: \"script_1\",\n    secretText: \"my_secret_value\",\n});\n```\n```python\nimport pulumi\nimport pulumi_cloudflare as cloudflare\n\nmy_secret = cloudflare.WorkerSecret(\"mySecret\",\n    account_id=\"f037e56e89293a057740de681ac9abbe\",\n    name=\"MY_EXAMPLE_SECRET_TEXT\",\n    script_name=\"script_1\",\n    secret_text=\"my_secret_value\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Cloudflare = Pulumi.Cloudflare;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var mySecret = new Cloudflare.WorkerSecret(\"mySecret\", new()\n    {\n        AccountId = \"f037e56e89293a057740de681ac9abbe\",\n        Name = \"MY_EXAMPLE_SECRET_TEXT\",\n        ScriptName = \"script_1\",\n        SecretText = \"my_secret_value\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := cloudflare.NewWorkerSecret(ctx, \"mySecret\", \u0026cloudflare.WorkerSecretArgs{\n\t\t\tAccountId:  pulumi.String(\"f037e56e89293a057740de681ac9abbe\"),\n\t\t\tName:       pulumi.String(\"MY_EXAMPLE_SECRET_TEXT\"),\n\t\t\tScriptName: pulumi.String(\"script_1\"),\n\t\t\tSecretText: pulumi.String(\"my_secret_value\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.cloudflare.WorkerSecret;\nimport com.pulumi.cloudflare.WorkerSecretArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var mySecret = new WorkerSecret(\"mySecret\", WorkerSecretArgs.builder()        \n            .accountId(\"f037e56e89293a057740de681ac9abbe\")\n            .name(\"MY_EXAMPLE_SECRET_TEXT\")\n            .scriptName(\"script_1\")\n            .secretText(\"my_secret_value\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  mySecret:\n    type: cloudflare:WorkerSecret\n    properties:\n      accountId: f037e56e89293a057740de681ac9abbe\n      name: MY_EXAMPLE_SECRET_TEXT\n      scriptName: script_1\n      secretText: my_secret_value\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\n\n\n```sh\n $ pulumi import cloudflare:index/workerSecret:WorkerSecret example \u003caccount_id\u003e/\u003cscript_name\u003e/\u003csecret_name\u003e\n```\n\n ",
+            "properties": {
+                "accountId": {
+                    "type": "string",
+                    "description": "The account identifier to target for the resource.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the Worker secret. **Modifying this attribute will force creation of a new resource.**\n"
+                },
+                "scriptName": {
+                    "type": "string",
+                    "description": "The name of the Worker script to associate the secret with. **Modifying this attribute will force creation of a new resource.**\n"
+                },
+                "secretText": {
+                    "type": "string",
+                    "description": "The text of the Worker secret. **Modifying this attribute will force creation of a new resource.**\n",
+                    "secret": true
+                }
+            },
+            "required": [
+                "accountId",
+                "name",
+                "scriptName",
+                "secretText"
+            ],
+            "inputProperties": {
+                "accountId": {
+                    "type": "string",
+                    "description": "The account identifier to target for the resource.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the Worker secret. **Modifying this attribute will force creation of a new resource.**\n",
+                    "willReplaceOnChanges": true
+                },
+                "scriptName": {
+                    "type": "string",
+                    "description": "The name of the Worker script to associate the secret with. **Modifying this attribute will force creation of a new resource.**\n",
+                    "willReplaceOnChanges": true
+                },
+                "secretText": {
+                    "type": "string",
+                    "description": "The text of the Worker secret. **Modifying this attribute will force creation of a new resource.**\n",
+                    "secret": true,
+                    "willReplaceOnChanges": true
+                }
+            },
+            "requiredInputs": [
+                "accountId",
+                "name",
+                "scriptName",
+                "secretText"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering WorkerSecret resources.\n",
+                "properties": {
+                    "accountId": {
+                        "type": "string",
+                        "description": "The account identifier to target for the resource.\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The name of the Worker secret. **Modifying this attribute will force creation of a new resource.**\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "scriptName": {
+                        "type": "string",
+                        "description": "The name of the Worker script to associate the secret with. **Modifying this attribute will force creation of a new resource.**\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "secretText": {
+                        "type": "string",
+                        "description": "The text of the Worker secret. **Modifying this attribute will force creation of a new resource.**\n",
+                        "secret": true,
+                        "willReplaceOnChanges": true
                     }
                 },
                 "type": "object"
