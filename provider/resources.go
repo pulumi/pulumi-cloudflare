@@ -23,11 +23,13 @@ import (
 	_ "embed"
 
 	provShim "github.com/cloudflare/terraform-provider-cloudflare/shim"
-	"github.com/pulumi/pulumi-cloudflare/provider/v5/pkg/version"
+
 	pfbridge "github.com/pulumi/pulumi-terraform-bridge/pf/tfbridge"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
 	tfbridgetokens "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/tokens"
 	shimv2 "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/sdk-v2"
+
+	"github.com/pulumi/pulumi-cloudflare/provider/v5/pkg/version"
 )
 
 // all of the token components used below.
