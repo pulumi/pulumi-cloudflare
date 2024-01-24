@@ -25,6 +25,11 @@ public final class AccessApplicationSaasApp {
      */
     private @Nullable List<AccessApplicationSaasAppCustomAttribute> customAttributes;
     /**
+     * @return The relay state used if not provided by the identity provider.
+     * 
+     */
+    private @Nullable String defaultRelayState;
+    /**
      * @return The unique identifier for the SaaS application.
      * 
      */
@@ -64,6 +69,13 @@ public final class AccessApplicationSaasApp {
      */
     public List<AccessApplicationSaasAppCustomAttribute> customAttributes() {
         return this.customAttributes == null ? List.of() : this.customAttributes;
+    }
+    /**
+     * @return The relay state used if not provided by the identity provider.
+     * 
+     */
+    public Optional<String> defaultRelayState() {
+        return Optional.ofNullable(this.defaultRelayState);
     }
     /**
      * @return The unique identifier for the SaaS application.
@@ -112,6 +124,7 @@ public final class AccessApplicationSaasApp {
     public static final class Builder {
         private String consumerServiceUrl;
         private @Nullable List<AccessApplicationSaasAppCustomAttribute> customAttributes;
+        private @Nullable String defaultRelayState;
         private @Nullable String idpEntityId;
         private @Nullable String nameIdFormat;
         private @Nullable String publicKey;
@@ -122,6 +135,7 @@ public final class AccessApplicationSaasApp {
     	      Objects.requireNonNull(defaults);
     	      this.consumerServiceUrl = defaults.consumerServiceUrl;
     	      this.customAttributes = defaults.customAttributes;
+    	      this.defaultRelayState = defaults.defaultRelayState;
     	      this.idpEntityId = defaults.idpEntityId;
     	      this.nameIdFormat = defaults.nameIdFormat;
     	      this.publicKey = defaults.publicKey;
@@ -145,6 +159,12 @@ public final class AccessApplicationSaasApp {
         }
         public Builder customAttributes(AccessApplicationSaasAppCustomAttribute... customAttributes) {
             return customAttributes(List.of(customAttributes));
+        }
+        @CustomType.Setter
+        public Builder defaultRelayState(@Nullable String defaultRelayState) {
+
+            this.defaultRelayState = defaultRelayState;
+            return this;
         }
         @CustomType.Setter
         public Builder idpEntityId(@Nullable String idpEntityId) {
@@ -182,6 +202,7 @@ public final class AccessApplicationSaasApp {
             final var _resultValue = new AccessApplicationSaasApp();
             _resultValue.consumerServiceUrl = consumerServiceUrl;
             _resultValue.customAttributes = customAttributes;
+            _resultValue.defaultRelayState = defaultRelayState;
             _resultValue.idpEntityId = idpEntityId;
             _resultValue.nameIdFormat = nameIdFormat;
             _resultValue.publicKey = publicKey;

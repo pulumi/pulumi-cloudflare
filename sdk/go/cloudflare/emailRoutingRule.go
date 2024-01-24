@@ -12,7 +12,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a resource for managing Email Routing rules.
+// The [Email Routing Rule](https://developers.cloudflare.com/email-routing/setup/email-routing-addresses/#email-rule-actions) resource allows you to create and manage email routing rules for a zone.
 //
 // ## Example Usage
 //
@@ -56,20 +56,28 @@ import (
 //	}
 //
 // ```
+//
+// ## Import
+//
+// ```sh
+//
+//	$ pulumi import cloudflare:index/emailRoutingRule:EmailRoutingRule example <zone_id>/<email_routing_rule_id>
+//
+// ```
 type EmailRoutingRule struct {
 	pulumi.CustomResourceState
 
-	// List actions patterns.
+	// Actions to take when a match is found.
 	Actions EmailRoutingRuleActionArrayOutput `pulumi:"actions"`
-	// Routing rule status.
+	// Whether the email routing rule is enabled.
 	Enabled pulumi.BoolPtrOutput `pulumi:"enabled"`
 	// Matching patterns to forward to your actions.
 	Matchers EmailRoutingRuleMatcherArrayOutput `pulumi:"matchers"`
 	// Routing rule name.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Priority of the routing rule.
+	// The priority of the email routing rule.
 	Priority pulumi.IntOutput `pulumi:"priority"`
-	// Routing rule identifier.
+	// The tag of the email routing rule.
 	Tag pulumi.StringOutput `pulumi:"tag"`
 	// The zone identifier to target for the resource.
 	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
@@ -82,12 +90,6 @@ func NewEmailRoutingRule(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.Actions == nil {
-		return nil, errors.New("invalid value for required argument 'Actions'")
-	}
-	if args.Matchers == nil {
-		return nil, errors.New("invalid value for required argument 'Matchers'")
-	}
 	if args.Name == nil {
 		return nil, errors.New("invalid value for required argument 'Name'")
 	}
@@ -117,34 +119,34 @@ func GetEmailRoutingRule(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering EmailRoutingRule resources.
 type emailRoutingRuleState struct {
-	// List actions patterns.
+	// Actions to take when a match is found.
 	Actions []EmailRoutingRuleAction `pulumi:"actions"`
-	// Routing rule status.
+	// Whether the email routing rule is enabled.
 	Enabled *bool `pulumi:"enabled"`
 	// Matching patterns to forward to your actions.
 	Matchers []EmailRoutingRuleMatcher `pulumi:"matchers"`
 	// Routing rule name.
 	Name *string `pulumi:"name"`
-	// Priority of the routing rule.
+	// The priority of the email routing rule.
 	Priority *int `pulumi:"priority"`
-	// Routing rule identifier.
+	// The tag of the email routing rule.
 	Tag *string `pulumi:"tag"`
 	// The zone identifier to target for the resource.
 	ZoneId *string `pulumi:"zoneId"`
 }
 
 type EmailRoutingRuleState struct {
-	// List actions patterns.
+	// Actions to take when a match is found.
 	Actions EmailRoutingRuleActionArrayInput
-	// Routing rule status.
+	// Whether the email routing rule is enabled.
 	Enabled pulumi.BoolPtrInput
 	// Matching patterns to forward to your actions.
 	Matchers EmailRoutingRuleMatcherArrayInput
 	// Routing rule name.
 	Name pulumi.StringPtrInput
-	// Priority of the routing rule.
+	// The priority of the email routing rule.
 	Priority pulumi.IntPtrInput
-	// Routing rule identifier.
+	// The tag of the email routing rule.
 	Tag pulumi.StringPtrInput
 	// The zone identifier to target for the resource.
 	ZoneId pulumi.StringPtrInput
@@ -155,15 +157,15 @@ func (EmailRoutingRuleState) ElementType() reflect.Type {
 }
 
 type emailRoutingRuleArgs struct {
-	// List actions patterns.
+	// Actions to take when a match is found.
 	Actions []EmailRoutingRuleAction `pulumi:"actions"`
-	// Routing rule status.
+	// Whether the email routing rule is enabled.
 	Enabled *bool `pulumi:"enabled"`
 	// Matching patterns to forward to your actions.
 	Matchers []EmailRoutingRuleMatcher `pulumi:"matchers"`
 	// Routing rule name.
 	Name string `pulumi:"name"`
-	// Priority of the routing rule.
+	// The priority of the email routing rule.
 	Priority *int `pulumi:"priority"`
 	// The zone identifier to target for the resource.
 	ZoneId string `pulumi:"zoneId"`
@@ -171,15 +173,15 @@ type emailRoutingRuleArgs struct {
 
 // The set of arguments for constructing a EmailRoutingRule resource.
 type EmailRoutingRuleArgs struct {
-	// List actions patterns.
+	// Actions to take when a match is found.
 	Actions EmailRoutingRuleActionArrayInput
-	// Routing rule status.
+	// Whether the email routing rule is enabled.
 	Enabled pulumi.BoolPtrInput
 	// Matching patterns to forward to your actions.
 	Matchers EmailRoutingRuleMatcherArrayInput
 	// Routing rule name.
 	Name pulumi.StringInput
-	// Priority of the routing rule.
+	// The priority of the email routing rule.
 	Priority pulumi.IntPtrInput
 	// The zone identifier to target for the resource.
 	ZoneId pulumi.StringInput
@@ -272,12 +274,12 @@ func (o EmailRoutingRuleOutput) ToEmailRoutingRuleOutputWithContext(ctx context.
 	return o
 }
 
-// List actions patterns.
+// Actions to take when a match is found.
 func (o EmailRoutingRuleOutput) Actions() EmailRoutingRuleActionArrayOutput {
 	return o.ApplyT(func(v *EmailRoutingRule) EmailRoutingRuleActionArrayOutput { return v.Actions }).(EmailRoutingRuleActionArrayOutput)
 }
 
-// Routing rule status.
+// Whether the email routing rule is enabled.
 func (o EmailRoutingRuleOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *EmailRoutingRule) pulumi.BoolPtrOutput { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
@@ -292,12 +294,12 @@ func (o EmailRoutingRuleOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *EmailRoutingRule) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Priority of the routing rule.
+// The priority of the email routing rule.
 func (o EmailRoutingRuleOutput) Priority() pulumi.IntOutput {
 	return o.ApplyT(func(v *EmailRoutingRule) pulumi.IntOutput { return v.Priority }).(pulumi.IntOutput)
 }
 
-// Routing rule identifier.
+// The tag of the email routing rule.
 func (o EmailRoutingRuleOutput) Tag() pulumi.StringOutput {
 	return o.ApplyT(func(v *EmailRoutingRule) pulumi.StringOutput { return v.Tag }).(pulumi.StringOutput)
 }

@@ -562,6 +562,8 @@ class AccessApplicationSaasApp(dict):
             suggest = "sp_entity_id"
         elif key == "customAttributes":
             suggest = "custom_attributes"
+        elif key == "defaultRelayState":
+            suggest = "default_relay_state"
         elif key == "idpEntityId":
             suggest = "idp_entity_id"
         elif key == "nameIdFormat":
@@ -586,6 +588,7 @@ class AccessApplicationSaasApp(dict):
                  consumer_service_url: str,
                  sp_entity_id: str,
                  custom_attributes: Optional[Sequence['outputs.AccessApplicationSaasAppCustomAttribute']] = None,
+                 default_relay_state: Optional[str] = None,
                  idp_entity_id: Optional[str] = None,
                  name_id_format: Optional[str] = None,
                  public_key: Optional[str] = None,
@@ -594,6 +597,7 @@ class AccessApplicationSaasApp(dict):
         :param str consumer_service_url: The service provider's endpoint that is responsible for receiving and parsing a SAML assertion.
         :param str sp_entity_id: A globally unique name for an identity or service provider.
         :param Sequence['AccessApplicationSaasAppCustomAttributeArgs'] custom_attributes: Custom attribute mapped from IDPs.
+        :param str default_relay_state: The relay state used if not provided by the identity provider.
         :param str idp_entity_id: The unique identifier for the SaaS application.
         :param str name_id_format: The format of the name identifier sent to the SaaS application. Defaults to `email`.
         :param str public_key: The public certificate that will be used to verify identities.
@@ -603,6 +607,8 @@ class AccessApplicationSaasApp(dict):
         pulumi.set(__self__, "sp_entity_id", sp_entity_id)
         if custom_attributes is not None:
             pulumi.set(__self__, "custom_attributes", custom_attributes)
+        if default_relay_state is not None:
+            pulumi.set(__self__, "default_relay_state", default_relay_state)
         if idp_entity_id is not None:
             pulumi.set(__self__, "idp_entity_id", idp_entity_id)
         if name_id_format is not None:
@@ -635,6 +641,14 @@ class AccessApplicationSaasApp(dict):
         Custom attribute mapped from IDPs.
         """
         return pulumi.get(self, "custom_attributes")
+
+    @property
+    @pulumi.getter(name="defaultRelayState")
+    def default_relay_state(self) -> Optional[str]:
+        """
+        The relay state used if not provided by the identity provider.
+        """
+        return pulumi.get(self, "default_relay_state")
 
     @property
     @pulumi.getter(name="idpEntityId")
@@ -6315,8 +6329,8 @@ class EmailRoutingRuleAction(dict):
                  type: str,
                  values: Optional[Sequence[str]] = None):
         """
-        :param str type: Type of supported action. Available values: `forward`, `worker`, `drop`.
-        :param Sequence[str] values: An array with items in the following form. Only required when `type` is `forward` or `worker`.
+        :param str type: Type of action. Available values: `forward`, `worker`, `drop`
+        :param Sequence[str] values: Value to match on. Required for `type` of `literal`.
         """
         pulumi.set(__self__, "type", type)
         if values is not None:
@@ -6326,7 +6340,7 @@ class EmailRoutingRuleAction(dict):
     @pulumi.getter
     def type(self) -> str:
         """
-        Type of supported action. Available values: `forward`, `worker`, `drop`.
+        Type of action. Available values: `forward`, `worker`, `drop`
         """
         return pulumi.get(self, "type")
 
@@ -6334,7 +6348,7 @@ class EmailRoutingRuleAction(dict):
     @pulumi.getter
     def values(self) -> Optional[Sequence[str]]:
         """
-        An array with items in the following form. Only required when `type` is `forward` or `worker`.
+        Value to match on. Required for `type` of `literal`.
         """
         return pulumi.get(self, "values")
 
@@ -6346,9 +6360,9 @@ class EmailRoutingRuleMatcher(dict):
                  field: Optional[str] = None,
                  value: Optional[str] = None):
         """
-        :param str type: Type of matcher. Available values: `literal`, `all`.
-        :param str field: Field for type matcher.
-        :param str value: Value for matcher.
+        :param str type: Type of matcher. Available values: `literal`, `all`
+        :param str field: Field to match on. Required for `type` of `literal`.
+        :param str value: Value to match on. Required for `type` of `literal`.
         """
         pulumi.set(__self__, "type", type)
         if field is not None:
@@ -6360,7 +6374,7 @@ class EmailRoutingRuleMatcher(dict):
     @pulumi.getter
     def type(self) -> str:
         """
-        Type of matcher. Available values: `literal`, `all`.
+        Type of matcher. Available values: `literal`, `all`
         """
         return pulumi.get(self, "type")
 
@@ -6368,7 +6382,7 @@ class EmailRoutingRuleMatcher(dict):
     @pulumi.getter
     def field(self) -> Optional[str]:
         """
-        Field for type matcher.
+        Field to match on. Required for `type` of `literal`.
         """
         return pulumi.get(self, "field")
 
@@ -6376,7 +6390,7 @@ class EmailRoutingRuleMatcher(dict):
     @pulumi.getter
     def value(self) -> Optional[str]:
         """
-        Value for matcher.
+        Value to match on. Required for `type` of `literal`.
         """
         return pulumi.get(self, "value")
 
@@ -6565,19 +6579,19 @@ class ListItemRedirect(dict):
     def __init__(__self__, *,
                  source_url: str,
                  target_url: str,
-                 include_subdomains: Optional[str] = None,
-                 preserve_path_suffix: Optional[str] = None,
-                 preserve_query_string: Optional[str] = None,
+                 include_subdomains: Optional[bool] = None,
+                 preserve_path_suffix: Optional[bool] = None,
+                 preserve_query_string: Optional[bool] = None,
                  status_code: Optional[int] = None,
-                 subpath_matching: Optional[str] = None):
+                 subpath_matching: Optional[bool] = None):
         """
         :param str source_url: The source url of the redirect.
         :param str target_url: The target url of the redirect.
-        :param str include_subdomains: Whether the redirect also matches subdomains of the source url. Available values: `disabled`, `enabled`.
-        :param str preserve_path_suffix: Whether to preserve the path suffix when doing subpath matching. Available values: `disabled`, `enabled`.
-        :param str preserve_query_string: Whether the redirect target url should keep the query string of the request's url. Available values: `disabled`, `enabled`.
+        :param bool include_subdomains: Whether the redirect also matches subdomains of the source url.
+        :param bool preserve_path_suffix: Whether the redirect target url should keep the query string of the request's url.
+        :param bool preserve_query_string: Whether the redirect target url should keep the query string of the request's url.
         :param int status_code: The status code to be used when redirecting a request.
-        :param str subpath_matching: Whether the redirect also matches subpaths of the source url. Available values: `disabled`, `enabled`.
+        :param bool subpath_matching: Whether the redirect also matches subpaths of the source url.
         """
         pulumi.set(__self__, "source_url", source_url)
         pulumi.set(__self__, "target_url", target_url)
@@ -6610,25 +6624,25 @@ class ListItemRedirect(dict):
 
     @property
     @pulumi.getter(name="includeSubdomains")
-    def include_subdomains(self) -> Optional[str]:
+    def include_subdomains(self) -> Optional[bool]:
         """
-        Whether the redirect also matches subdomains of the source url. Available values: `disabled`, `enabled`.
+        Whether the redirect also matches subdomains of the source url.
         """
         return pulumi.get(self, "include_subdomains")
 
     @property
     @pulumi.getter(name="preservePathSuffix")
-    def preserve_path_suffix(self) -> Optional[str]:
+    def preserve_path_suffix(self) -> Optional[bool]:
         """
-        Whether to preserve the path suffix when doing subpath matching. Available values: `disabled`, `enabled`.
+        Whether the redirect target url should keep the query string of the request's url.
         """
         return pulumi.get(self, "preserve_path_suffix")
 
     @property
     @pulumi.getter(name="preserveQueryString")
-    def preserve_query_string(self) -> Optional[str]:
+    def preserve_query_string(self) -> Optional[bool]:
         """
-        Whether the redirect target url should keep the query string of the request's url. Available values: `disabled`, `enabled`.
+        Whether the redirect target url should keep the query string of the request's url.
         """
         return pulumi.get(self, "preserve_query_string")
 
@@ -6642,9 +6656,9 @@ class ListItemRedirect(dict):
 
     @property
     @pulumi.getter(name="subpathMatching")
-    def subpath_matching(self) -> Optional[str]:
+    def subpath_matching(self) -> Optional[bool]:
         """
-        Whether the redirect also matches subpaths of the source url. Available values: `disabled`, `enabled`.
+        Whether the redirect also matches subpaths of the source url.
         """
         return pulumi.get(self, "subpath_matching")
 
@@ -8263,7 +8277,9 @@ class NotificationPolicyFilters(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "alertTriggerPreferences":
+        if key == "affectedComponents":
+            suggest = "affected_components"
+        elif key == "alertTriggerPreferences":
             suggest = "alert_trigger_preferences"
         elif key == "eventSources":
             suggest = "event_sources"
@@ -8311,6 +8327,7 @@ class NotificationPolicyFilters(dict):
 
     def __init__(__self__, *,
                  actions: Optional[Sequence[str]] = None,
+                 affected_components: Optional[Sequence[str]] = None,
                  alert_trigger_preferences: Optional[Sequence[str]] = None,
                  enableds: Optional[Sequence[str]] = None,
                  environments: Optional[Sequence[str]] = None,
@@ -8342,6 +8359,7 @@ class NotificationPolicyFilters(dict):
                  zones: Optional[Sequence[str]] = None):
         """
         :param Sequence[str] actions: Targeted actions for alert.
+        :param Sequence[str] affected_components: Affected components for alert. Available values: `API`, `API Shield`, `Access`, `Always Online`, `Analytics`, `Apps Marketplace`, `Argo Smart Routing`, `Audit Logs`, `Authoritative DNS`, `Billing`, `Bot Management`, `Bring Your Own IP (BYOIP)`, `Browser Isolation`, `CDN Cache Purge`, `CDN/Cache`, `Cache Reserve`, `Challenge Platform`, `Cloud Access Security Broker (CASB)`, `Community Site`, `DNS Root Servers`, `DNS Updates`, `Dashboard`, `Data Loss Prevention (DLP)`, `Developer's Site`, `Digital Experience Monitoring (DEX)`, `Distributed Web Gateway`, `Durable Objects`, `Email Routing`, `Ethereum Gateway`, `Firewall`, `Gateway`, `Geo-Key Manager`, `Image Resizing`, `Images`, `Infrastructure`, `Lists`, `Load Balancing and Monitoring`, `Logs`, `Magic Firewall`, `Magic Transit`, `Magic WAN`, `Magic WAN Connector`, `Marketing Site`, `Mirage`, `Network`, `Notifications`, `Observatory`, `Page Shield`, `Pages`, `R2`, `Radar`, `Randomness Beacon`, `Recursive DNS`, `Registrar`, `Registration Data Access Protocol (RDAP)`, `SSL Certificate Provisioning`, `SSL for SaaS Provisioning`, `Security Center`, `Snippets`, `Spectrum`, `Speed Optimizations`, `Stream`, `Support Site`, `Time Services`, `Trace`, `Tunnel`, `Turnstile`, `WARP`, `Waiting Room`, `Web Analytics`, `Workers`, `Workers KV`, `Workers Preview`, `Zaraz`, `Zero Trust`, `Zero Trust Dashboard`, `Zone Versioning`.
         :param Sequence[str] alert_trigger_preferences: Alert trigger preferences. Example: `slo`.
         :param Sequence[str] enableds: State of the pool to alert on.
         :param Sequence[str] environments: Environment of pages. Available values: `ENVIRONMENT_PREVIEW`, `ENVIRONMENT_PRODUCTION`.
@@ -8373,6 +8391,8 @@ class NotificationPolicyFilters(dict):
         """
         if actions is not None:
             pulumi.set(__self__, "actions", actions)
+        if affected_components is not None:
+            pulumi.set(__self__, "affected_components", affected_components)
         if alert_trigger_preferences is not None:
             pulumi.set(__self__, "alert_trigger_preferences", alert_trigger_preferences)
         if enableds is not None:
@@ -8439,6 +8459,14 @@ class NotificationPolicyFilters(dict):
         Targeted actions for alert.
         """
         return pulumi.get(self, "actions")
+
+    @property
+    @pulumi.getter(name="affectedComponents")
+    def affected_components(self) -> Optional[Sequence[str]]:
+        """
+        Affected components for alert. Available values: `API`, `API Shield`, `Access`, `Always Online`, `Analytics`, `Apps Marketplace`, `Argo Smart Routing`, `Audit Logs`, `Authoritative DNS`, `Billing`, `Bot Management`, `Bring Your Own IP (BYOIP)`, `Browser Isolation`, `CDN Cache Purge`, `CDN/Cache`, `Cache Reserve`, `Challenge Platform`, `Cloud Access Security Broker (CASB)`, `Community Site`, `DNS Root Servers`, `DNS Updates`, `Dashboard`, `Data Loss Prevention (DLP)`, `Developer's Site`, `Digital Experience Monitoring (DEX)`, `Distributed Web Gateway`, `Durable Objects`, `Email Routing`, `Ethereum Gateway`, `Firewall`, `Gateway`, `Geo-Key Manager`, `Image Resizing`, `Images`, `Infrastructure`, `Lists`, `Load Balancing and Monitoring`, `Logs`, `Magic Firewall`, `Magic Transit`, `Magic WAN`, `Magic WAN Connector`, `Marketing Site`, `Mirage`, `Network`, `Notifications`, `Observatory`, `Page Shield`, `Pages`, `R2`, `Radar`, `Randomness Beacon`, `Recursive DNS`, `Registrar`, `Registration Data Access Protocol (RDAP)`, `SSL Certificate Provisioning`, `SSL for SaaS Provisioning`, `Security Center`, `Snippets`, `Spectrum`, `Speed Optimizations`, `Stream`, `Support Site`, `Time Services`, `Trace`, `Tunnel`, `Turnstile`, `WARP`, `Waiting Room`, `Web Analytics`, `Workers`, `Workers KV`, `Workers Preview`, `Zaraz`, `Zero Trust`, `Zero Trust Dashboard`, `Zone Versioning`.
+        """
+        return pulumi.get(self, "affected_components")
 
     @property
     @pulumi.getter(name="alertTriggerPreferences")

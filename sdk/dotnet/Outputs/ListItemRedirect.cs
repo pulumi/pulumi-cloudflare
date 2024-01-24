@@ -14,17 +14,17 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class ListItemRedirect
     {
         /// <summary>
-        /// Whether the redirect also matches subdomains of the source url. Available values: `disabled`, `enabled`.
+        /// Whether the redirect also matches subdomains of the source url.
         /// </summary>
-        public readonly string? IncludeSubdomains;
+        public readonly bool? IncludeSubdomains;
         /// <summary>
-        /// Whether to preserve the path suffix when doing subpath matching. Available values: `disabled`, `enabled`.
+        /// Whether the redirect target url should keep the query string of the request's url.
         /// </summary>
-        public readonly string? PreservePathSuffix;
+        public readonly bool? PreservePathSuffix;
         /// <summary>
-        /// Whether the redirect target url should keep the query string of the request's url. Available values: `disabled`, `enabled`.
+        /// Whether the redirect target url should keep the query string of the request's url.
         /// </summary>
-        public readonly string? PreserveQueryString;
+        public readonly bool? PreserveQueryString;
         /// <summary>
         /// The source url of the redirect.
         /// </summary>
@@ -34,9 +34,9 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly int? StatusCode;
         /// <summary>
-        /// Whether the redirect also matches subpaths of the source url. Available values: `disabled`, `enabled`.
+        /// Whether the redirect also matches subpaths of the source url.
         /// </summary>
-        public readonly string? SubpathMatching;
+        public readonly bool? SubpathMatching;
         /// <summary>
         /// The target url of the redirect.
         /// </summary>
@@ -44,17 +44,17 @@ namespace Pulumi.Cloudflare.Outputs
 
         [OutputConstructor]
         private ListItemRedirect(
-            string? includeSubdomains,
+            bool? includeSubdomains,
 
-            string? preservePathSuffix,
+            bool? preservePathSuffix,
 
-            string? preserveQueryString,
+            bool? preserveQueryString,
 
             string sourceUrl,
 
             int? statusCode,
 
-            string? subpathMatching,
+            bool? subpathMatching,
 
             string targetUrl)
         {

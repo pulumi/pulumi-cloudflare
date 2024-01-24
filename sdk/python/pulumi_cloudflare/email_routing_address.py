@@ -18,8 +18,8 @@ class EmailRoutingAddressArgs:
                  email: pulumi.Input[str]):
         """
         The set of arguments for constructing a EmailRoutingAddress resource.
-        :param pulumi.Input[str] account_id: The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
-        :param pulumi.Input[str] email: The contact email address of the user. **Modifying this attribute will force creation of a new resource.**
+        :param pulumi.Input[str] account_id: The account identifier to target for the resource.
+        :param pulumi.Input[str] email: The contact email address of the user.
         """
         pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "email", email)
@@ -28,7 +28,7 @@ class EmailRoutingAddressArgs:
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Input[str]:
         """
-        The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        The account identifier to target for the resource.
         """
         return pulumi.get(self, "account_id")
 
@@ -40,7 +40,7 @@ class EmailRoutingAddressArgs:
     @pulumi.getter
     def email(self) -> pulumi.Input[str]:
         """
-        The contact email address of the user. **Modifying this attribute will force creation of a new resource.**
+        The contact email address of the user.
         """
         return pulumi.get(self, "email")
 
@@ -60,10 +60,10 @@ class _EmailRoutingAddressState:
                  verified: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering EmailRoutingAddress resources.
-        :param pulumi.Input[str] account_id: The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        :param pulumi.Input[str] account_id: The account identifier to target for the resource.
         :param pulumi.Input[str] created: The date and time the destination address has been created.
-        :param pulumi.Input[str] email: The contact email address of the user. **Modifying this attribute will force creation of a new resource.**
-        :param pulumi.Input[str] modified: The date and time the destination address was last modified.
+        :param pulumi.Input[str] email: The contact email address of the user.
+        :param pulumi.Input[str] modified: The date and time the destination address has been modified.
         :param pulumi.Input[str] tag: Destination address identifier.
         :param pulumi.Input[str] verified: The date and time the destination address has been verified. Null means not verified yet.
         """
@@ -84,7 +84,7 @@ class _EmailRoutingAddressState:
     @pulumi.getter(name="accountId")
     def account_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        The account identifier to target for the resource.
         """
         return pulumi.get(self, "account_id")
 
@@ -108,7 +108,7 @@ class _EmailRoutingAddressState:
     @pulumi.getter
     def email(self) -> Optional[pulumi.Input[str]]:
         """
-        The contact email address of the user. **Modifying this attribute will force creation of a new resource.**
+        The contact email address of the user.
         """
         return pulumi.get(self, "email")
 
@@ -120,7 +120,7 @@ class _EmailRoutingAddressState:
     @pulumi.getter
     def modified(self) -> Optional[pulumi.Input[str]]:
         """
-        The date and time the destination address was last modified.
+        The date and time the destination address has been modified.
         """
         return pulumi.get(self, "modified")
 
@@ -162,7 +162,7 @@ class EmailRoutingAddress(pulumi.CustomResource):
                  email: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Provides a resource for managing Email Routing Addresses.
+        The [Email Routing Address](https://developers.cloudflare.com/email-routing/setup/email-routing-addresses/#destination-addresses) resource allows you to manage Cloudflare Email Routing Destination Addresses.
 
         ## Example Usage
 
@@ -175,10 +175,16 @@ class EmailRoutingAddress(pulumi.CustomResource):
             email="user@example.com")
         ```
 
+        ## Import
+
+        ```sh
+         $ pulumi import cloudflare:index/emailRoutingAddress:EmailRoutingAddress example <account_id>/<email_routing_id>
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] account_id: The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
-        :param pulumi.Input[str] email: The contact email address of the user. **Modifying this attribute will force creation of a new resource.**
+        :param pulumi.Input[str] account_id: The account identifier to target for the resource.
+        :param pulumi.Input[str] email: The contact email address of the user.
         """
         ...
     @overload
@@ -187,7 +193,7 @@ class EmailRoutingAddress(pulumi.CustomResource):
                  args: EmailRoutingAddressArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a resource for managing Email Routing Addresses.
+        The [Email Routing Address](https://developers.cloudflare.com/email-routing/setup/email-routing-addresses/#destination-addresses) resource allows you to manage Cloudflare Email Routing Destination Addresses.
 
         ## Example Usage
 
@@ -198,6 +204,12 @@ class EmailRoutingAddress(pulumi.CustomResource):
         example = cloudflare.EmailRoutingAddress("example",
             account_id="f037e56e89293a057740de681ac9abbe",
             email="user@example.com")
+        ```
+
+        ## Import
+
+        ```sh
+         $ pulumi import cloudflare:index/emailRoutingAddress:EmailRoutingAddress example <account_id>/<email_routing_id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -259,10 +271,10 @@ class EmailRoutingAddress(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] account_id: The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        :param pulumi.Input[str] account_id: The account identifier to target for the resource.
         :param pulumi.Input[str] created: The date and time the destination address has been created.
-        :param pulumi.Input[str] email: The contact email address of the user. **Modifying this attribute will force creation of a new resource.**
-        :param pulumi.Input[str] modified: The date and time the destination address was last modified.
+        :param pulumi.Input[str] email: The contact email address of the user.
+        :param pulumi.Input[str] modified: The date and time the destination address has been modified.
         :param pulumi.Input[str] tag: Destination address identifier.
         :param pulumi.Input[str] verified: The date and time the destination address has been verified. Null means not verified yet.
         """
@@ -282,7 +294,7 @@ class EmailRoutingAddress(pulumi.CustomResource):
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[str]:
         """
-        The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        The account identifier to target for the resource.
         """
         return pulumi.get(self, "account_id")
 
@@ -298,7 +310,7 @@ class EmailRoutingAddress(pulumi.CustomResource):
     @pulumi.getter
     def email(self) -> pulumi.Output[str]:
         """
-        The contact email address of the user. **Modifying this attribute will force creation of a new resource.**
+        The contact email address of the user.
         """
         return pulumi.get(self, "email")
 
@@ -306,7 +318,7 @@ class EmailRoutingAddress(pulumi.CustomResource):
     @pulumi.getter
     def modified(self) -> pulumi.Output[str]:
         """
-        The date and time the destination address was last modified.
+        The date and time the destination address has been modified.
         """
         return pulumi.get(self, "modified")
 

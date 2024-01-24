@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare
 {
     /// <summary>
-    /// Provides a resource for managing Email Routing rules.
+    /// The [Email Routing Rule](https://developers.cloudflare.com/email-routing/setup/email-routing-addresses/#email-rule-actions) resource allows you to create and manage email routing rules for a zone.
     /// 
     /// ## Example Usage
     /// 
@@ -51,18 +51,24 @@ namespace Pulumi.Cloudflare
     /// 
     /// });
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// ```sh
+    ///  $ pulumi import cloudflare:index/emailRoutingRule:EmailRoutingRule example &lt;zone_id&gt;/&lt;email_routing_rule_id&gt;
+    /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/emailRoutingRule:EmailRoutingRule")]
     public partial class EmailRoutingRule : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// List actions patterns.
+        /// Actions to take when a match is found.
         /// </summary>
         [Output("actions")]
         public Output<ImmutableArray<Outputs.EmailRoutingRuleAction>> Actions { get; private set; } = null!;
 
         /// <summary>
-        /// Routing rule status.
+        /// Whether the email routing rule is enabled.
         /// </summary>
         [Output("enabled")]
         public Output<bool?> Enabled { get; private set; } = null!;
@@ -80,13 +86,13 @@ namespace Pulumi.Cloudflare
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Priority of the routing rule.
+        /// The priority of the email routing rule.
         /// </summary>
         [Output("priority")]
         public Output<int> Priority { get; private set; } = null!;
 
         /// <summary>
-        /// Routing rule identifier.
+        /// The tag of the email routing rule.
         /// </summary>
         [Output("tag")]
         public Output<string> Tag { get; private set; } = null!;
@@ -143,11 +149,11 @@ namespace Pulumi.Cloudflare
 
     public sealed class EmailRoutingRuleArgs : global::Pulumi.ResourceArgs
     {
-        [Input("actions", required: true)]
+        [Input("actions")]
         private InputList<Inputs.EmailRoutingRuleActionArgs>? _actions;
 
         /// <summary>
-        /// List actions patterns.
+        /// Actions to take when a match is found.
         /// </summary>
         public InputList<Inputs.EmailRoutingRuleActionArgs> Actions
         {
@@ -156,12 +162,12 @@ namespace Pulumi.Cloudflare
         }
 
         /// <summary>
-        /// Routing rule status.
+        /// Whether the email routing rule is enabled.
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
-        [Input("matchers", required: true)]
+        [Input("matchers")]
         private InputList<Inputs.EmailRoutingRuleMatcherArgs>? _matchers;
 
         /// <summary>
@@ -180,7 +186,7 @@ namespace Pulumi.Cloudflare
         public Input<string> Name { get; set; } = null!;
 
         /// <summary>
-        /// Priority of the routing rule.
+        /// The priority of the email routing rule.
         /// </summary>
         [Input("priority")]
         public Input<int>? Priority { get; set; }
@@ -203,7 +209,7 @@ namespace Pulumi.Cloudflare
         private InputList<Inputs.EmailRoutingRuleActionGetArgs>? _actions;
 
         /// <summary>
-        /// List actions patterns.
+        /// Actions to take when a match is found.
         /// </summary>
         public InputList<Inputs.EmailRoutingRuleActionGetArgs> Actions
         {
@@ -212,7 +218,7 @@ namespace Pulumi.Cloudflare
         }
 
         /// <summary>
-        /// Routing rule status.
+        /// Whether the email routing rule is enabled.
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
@@ -236,13 +242,13 @@ namespace Pulumi.Cloudflare
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Priority of the routing rule.
+        /// The priority of the email routing rule.
         /// </summary>
         [Input("priority")]
         public Input<int>? Priority { get; set; }
 
         /// <summary>
-        /// Routing rule identifier.
+        /// The tag of the email routing rule.
         /// </summary>
         [Input("tag")]
         public Input<string>? Tag { get; set; }

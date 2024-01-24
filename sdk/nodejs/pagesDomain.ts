@@ -7,7 +7,8 @@ import * as utilities from "./utilities";
 /**
  * Provides a resource for managing Cloudflare Pages domains.
  *
- * > A DNS record for the domain is not automatically created. You need to create a `cloudflare.Record` resource for the domain you want to use.
+ * > A DNS record for the domain is not automatically created. You need to create
+ *    a `cloudflare.Record` resource for the domain you want to use.
  *
  * ## Example Usage
  *

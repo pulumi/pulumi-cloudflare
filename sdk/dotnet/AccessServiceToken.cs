@@ -52,7 +52,7 @@ namespace Pulumi.Cloudflare
         public Output<string?> AccountId { get; private set; } = null!;
 
         /// <summary>
-        /// UUID client ID associated with the Service Token. **Modifying this attribute will force creation of a new resource.**
+        /// Client ID associated with the Service Token. **Modifying this attribute will force creation of a new resource.**
         /// </summary>
         [Output("clientId")]
         public Output<string> ClientId { get; private set; } = null!;
@@ -76,7 +76,7 @@ namespace Pulumi.Cloudflare
         public Output<string> ExpiresAt { get; private set; } = null!;
 
         /// <summary>
-        /// Refresh the token if terraform is run within the specified amount of days before expiration
+        /// Refresh the token if terraform is run within the specified amount of days before expiration.
         /// </summary>
         [Output("minDaysForRenewal")]
         public Output<int?> MinDaysForRenewal { get; private set; } = null!;
@@ -156,7 +156,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? Duration { get; set; }
 
         /// <summary>
-        /// Refresh the token if terraform is run within the specified amount of days before expiration
+        /// Refresh the token if terraform is run within the specified amount of days before expiration.
         /// </summary>
         [Input("minDaysForRenewal")]
         public Input<int>? MinDaysForRenewal { get; set; }
@@ -188,7 +188,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? AccountId { get; set; }
 
         /// <summary>
-        /// UUID client ID associated with the Service Token. **Modifying this attribute will force creation of a new resource.**
+        /// Client ID associated with the Service Token. **Modifying this attribute will force creation of a new resource.**
         /// </summary>
         [Input("clientId")]
         public Input<string>? ClientId { get; set; }
@@ -222,7 +222,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? ExpiresAt { get; set; }
 
         /// <summary>
-        /// Refresh the token if terraform is run within the specified amount of days before expiration
+        /// Refresh the token if terraform is run within the specified amount of days before expiration.
         /// </summary>
         [Input("minDaysForRenewal")]
         public Input<int>? MinDaysForRenewal { get; set; }

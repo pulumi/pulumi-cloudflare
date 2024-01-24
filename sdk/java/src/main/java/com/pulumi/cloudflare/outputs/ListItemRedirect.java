@@ -5,6 +5,7 @@ package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -14,20 +15,20 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ListItemRedirect {
     /**
-     * @return Whether the redirect also matches subdomains of the source url. Available values: `disabled`, `enabled`.
+     * @return Whether the redirect also matches subdomains of the source url.
      * 
      */
-    private @Nullable String includeSubdomains;
+    private @Nullable Boolean includeSubdomains;
     /**
-     * @return Whether to preserve the path suffix when doing subpath matching. Available values: `disabled`, `enabled`.
+     * @return Whether the redirect target url should keep the query string of the request&#39;s url.
      * 
      */
-    private @Nullable String preservePathSuffix;
+    private @Nullable Boolean preservePathSuffix;
     /**
-     * @return Whether the redirect target url should keep the query string of the request&#39;s url. Available values: `disabled`, `enabled`.
+     * @return Whether the redirect target url should keep the query string of the request&#39;s url.
      * 
      */
-    private @Nullable String preserveQueryString;
+    private @Nullable Boolean preserveQueryString;
     /**
      * @return The source url of the redirect.
      * 
@@ -39,10 +40,10 @@ public final class ListItemRedirect {
      */
     private @Nullable Integer statusCode;
     /**
-     * @return Whether the redirect also matches subpaths of the source url. Available values: `disabled`, `enabled`.
+     * @return Whether the redirect also matches subpaths of the source url.
      * 
      */
-    private @Nullable String subpathMatching;
+    private @Nullable Boolean subpathMatching;
     /**
      * @return The target url of the redirect.
      * 
@@ -51,24 +52,24 @@ public final class ListItemRedirect {
 
     private ListItemRedirect() {}
     /**
-     * @return Whether the redirect also matches subdomains of the source url. Available values: `disabled`, `enabled`.
+     * @return Whether the redirect also matches subdomains of the source url.
      * 
      */
-    public Optional<String> includeSubdomains() {
+    public Optional<Boolean> includeSubdomains() {
         return Optional.ofNullable(this.includeSubdomains);
     }
     /**
-     * @return Whether to preserve the path suffix when doing subpath matching. Available values: `disabled`, `enabled`.
+     * @return Whether the redirect target url should keep the query string of the request&#39;s url.
      * 
      */
-    public Optional<String> preservePathSuffix() {
+    public Optional<Boolean> preservePathSuffix() {
         return Optional.ofNullable(this.preservePathSuffix);
     }
     /**
-     * @return Whether the redirect target url should keep the query string of the request&#39;s url. Available values: `disabled`, `enabled`.
+     * @return Whether the redirect target url should keep the query string of the request&#39;s url.
      * 
      */
-    public Optional<String> preserveQueryString() {
+    public Optional<Boolean> preserveQueryString() {
         return Optional.ofNullable(this.preserveQueryString);
     }
     /**
@@ -86,10 +87,10 @@ public final class ListItemRedirect {
         return Optional.ofNullable(this.statusCode);
     }
     /**
-     * @return Whether the redirect also matches subpaths of the source url. Available values: `disabled`, `enabled`.
+     * @return Whether the redirect also matches subpaths of the source url.
      * 
      */
-    public Optional<String> subpathMatching() {
+    public Optional<Boolean> subpathMatching() {
         return Optional.ofNullable(this.subpathMatching);
     }
     /**
@@ -109,12 +110,12 @@ public final class ListItemRedirect {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable String includeSubdomains;
-        private @Nullable String preservePathSuffix;
-        private @Nullable String preserveQueryString;
+        private @Nullable Boolean includeSubdomains;
+        private @Nullable Boolean preservePathSuffix;
+        private @Nullable Boolean preserveQueryString;
         private String sourceUrl;
         private @Nullable Integer statusCode;
-        private @Nullable String subpathMatching;
+        private @Nullable Boolean subpathMatching;
         private String targetUrl;
         public Builder() {}
         public Builder(ListItemRedirect defaults) {
@@ -129,19 +130,19 @@ public final class ListItemRedirect {
         }
 
         @CustomType.Setter
-        public Builder includeSubdomains(@Nullable String includeSubdomains) {
+        public Builder includeSubdomains(@Nullable Boolean includeSubdomains) {
 
             this.includeSubdomains = includeSubdomains;
             return this;
         }
         @CustomType.Setter
-        public Builder preservePathSuffix(@Nullable String preservePathSuffix) {
+        public Builder preservePathSuffix(@Nullable Boolean preservePathSuffix) {
 
             this.preservePathSuffix = preservePathSuffix;
             return this;
         }
         @CustomType.Setter
-        public Builder preserveQueryString(@Nullable String preserveQueryString) {
+        public Builder preserveQueryString(@Nullable Boolean preserveQueryString) {
 
             this.preserveQueryString = preserveQueryString;
             return this;
@@ -161,7 +162,7 @@ public final class ListItemRedirect {
             return this;
         }
         @CustomType.Setter
-        public Builder subpathMatching(@Nullable String subpathMatching) {
+        public Builder subpathMatching(@Nullable Boolean subpathMatching) {
 
             this.subpathMatching = subpathMatching;
             return this;

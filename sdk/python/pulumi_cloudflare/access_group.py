@@ -205,10 +205,10 @@ class AccessGroup(pulumi.CustomResource):
         particular resource based on group membership.
 
         > It's required that an `account_id` or `zone_id` is provided and in
-        most cases using either is fine. However, if you're using a scoped
-        access token, you must provide the argument that matches the token's
-        scope. For example, an access token that is scoped to the "example.com"
-        zone needs to use the `zone_id` argument.
+           most cases using either is fine. However, if you're using a scoped
+           access token, you must provide the argument that matches the token's
+           scope. For example, an access token that is scoped to the "example.com"
+           zone needs to use the `zone_id` argument.
 
         ## Example Usage
 
@@ -269,10 +269,10 @@ class AccessGroup(pulumi.CustomResource):
         particular resource based on group membership.
 
         > It's required that an `account_id` or `zone_id` is provided and in
-        most cases using either is fine. However, if you're using a scoped
-        access token, you must provide the argument that matches the token's
-        scope. For example, an access token that is scoped to the "example.com"
-        zone needs to use the `zone_id` argument.
+           most cases using either is fine. However, if you're using a scoped
+           access token, you must provide the argument that matches the token's
+           scope. For example, an access token that is scoped to the "example.com"
+           zone needs to use the `zone_id` argument.
 
         ## Example Usage
 

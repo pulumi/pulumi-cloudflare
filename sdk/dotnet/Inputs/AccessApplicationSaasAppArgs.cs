@@ -31,6 +31,12 @@ namespace Pulumi.Cloudflare.Inputs
         }
 
         /// <summary>
+        /// The relay state used if not provided by the identity provider.
+        /// </summary>
+        [Input("defaultRelayState")]
+        public Input<string>? DefaultRelayState { get; set; }
+
+        /// <summary>
         /// The unique identifier for the SaaS application.
         /// </summary>
         [Input("idpEntityId")]

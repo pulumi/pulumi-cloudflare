@@ -13,22 +13,22 @@ namespace Pulumi.Cloudflare.Inputs
     public sealed class ListItemRedirectArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Whether the redirect also matches subdomains of the source url. Available values: `disabled`, `enabled`.
+        /// Whether the redirect also matches subdomains of the source url.
         /// </summary>
         [Input("includeSubdomains")]
-        public Input<string>? IncludeSubdomains { get; set; }
+        public Input<bool>? IncludeSubdomains { get; set; }
 
         /// <summary>
-        /// Whether to preserve the path suffix when doing subpath matching. Available values: `disabled`, `enabled`.
+        /// Whether the redirect target url should keep the query string of the request's url.
         /// </summary>
         [Input("preservePathSuffix")]
-        public Input<string>? PreservePathSuffix { get; set; }
+        public Input<bool>? PreservePathSuffix { get; set; }
 
         /// <summary>
-        /// Whether the redirect target url should keep the query string of the request's url. Available values: `disabled`, `enabled`.
+        /// Whether the redirect target url should keep the query string of the request's url.
         /// </summary>
         [Input("preserveQueryString")]
-        public Input<string>? PreserveQueryString { get; set; }
+        public Input<bool>? PreserveQueryString { get; set; }
 
         /// <summary>
         /// The source url of the redirect.
@@ -43,10 +43,10 @@ namespace Pulumi.Cloudflare.Inputs
         public Input<int>? StatusCode { get; set; }
 
         /// <summary>
-        /// Whether the redirect also matches subpaths of the source url. Available values: `disabled`, `enabled`.
+        /// Whether the redirect also matches subpaths of the source url.
         /// </summary>
         [Input("subpathMatching")]
-        public Input<string>? SubpathMatching { get; set; }
+        public Input<bool>? SubpathMatching { get; set; }
 
         /// <summary>
         /// The target url of the redirect.

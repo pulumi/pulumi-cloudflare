@@ -21,14 +21,14 @@ public final class EmailRoutingRuleState extends com.pulumi.resources.ResourceAr
     public static final EmailRoutingRuleState Empty = new EmailRoutingRuleState();
 
     /**
-     * List actions patterns.
+     * Actions to take when a match is found.
      * 
      */
     @Import(name="actions")
     private @Nullable Output<List<EmailRoutingRuleActionArgs>> actions;
 
     /**
-     * @return List actions patterns.
+     * @return Actions to take when a match is found.
      * 
      */
     public Optional<Output<List<EmailRoutingRuleActionArgs>>> actions() {
@@ -36,14 +36,14 @@ public final class EmailRoutingRuleState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Routing rule status.
+     * Whether the email routing rule is enabled.
      * 
      */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
     /**
-     * @return Routing rule status.
+     * @return Whether the email routing rule is enabled.
      * 
      */
     public Optional<Output<Boolean>> enabled() {
@@ -81,14 +81,14 @@ public final class EmailRoutingRuleState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Priority of the routing rule.
+     * The priority of the email routing rule.
      * 
      */
     @Import(name="priority")
     private @Nullable Output<Integer> priority;
 
     /**
-     * @return Priority of the routing rule.
+     * @return The priority of the email routing rule.
      * 
      */
     public Optional<Output<Integer>> priority() {
@@ -96,14 +96,14 @@ public final class EmailRoutingRuleState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Routing rule identifier.
+     * The tag of the email routing rule.
      * 
      */
     @Import(name="tag")
     private @Nullable Output<String> tag;
 
     /**
-     * @return Routing rule identifier.
+     * @return The tag of the email routing rule.
      * 
      */
     public Optional<Output<String>> tag() {
@@ -156,7 +156,7 @@ public final class EmailRoutingRuleState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param actions List actions patterns.
+         * @param actions Actions to take when a match is found.
          * 
          * @return builder
          * 
@@ -167,7 +167,7 @@ public final class EmailRoutingRuleState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param actions List actions patterns.
+         * @param actions Actions to take when a match is found.
          * 
          * @return builder
          * 
@@ -177,7 +177,7 @@ public final class EmailRoutingRuleState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param actions List actions patterns.
+         * @param actions Actions to take when a match is found.
          * 
          * @return builder
          * 
@@ -187,7 +187,7 @@ public final class EmailRoutingRuleState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param enabled Routing rule status.
+         * @param enabled Whether the email routing rule is enabled.
          * 
          * @return builder
          * 
@@ -198,7 +198,7 @@ public final class EmailRoutingRuleState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param enabled Routing rule status.
+         * @param enabled Whether the email routing rule is enabled.
          * 
          * @return builder
          * 
@@ -260,7 +260,7 @@ public final class EmailRoutingRuleState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param priority Priority of the routing rule.
+         * @param priority The priority of the email routing rule.
          * 
          * @return builder
          * 
@@ -271,7 +271,7 @@ public final class EmailRoutingRuleState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param priority Priority of the routing rule.
+         * @param priority The priority of the email routing rule.
          * 
          * @return builder
          * 
@@ -281,7 +281,7 @@ public final class EmailRoutingRuleState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param tag Routing rule identifier.
+         * @param tag The tag of the email routing rule.
          * 
          * @return builder
          * 
@@ -292,7 +292,7 @@ public final class EmailRoutingRuleState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param tag Routing rule identifier.
+         * @param tag The tag of the email routing rule.
          * 
          * @return builder
          * 

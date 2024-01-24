@@ -63,7 +63,7 @@ export class AccessServiceToken extends pulumi.CustomResource {
      */
     public readonly accountId!: pulumi.Output<string | undefined>;
     /**
-     * UUID client ID associated with the Service Token. **Modifying this attribute will force creation of a new resource.**
+     * Client ID associated with the Service Token. **Modifying this attribute will force creation of a new resource.**
      */
     public /*out*/ readonly clientId!: pulumi.Output<string>;
     /**
@@ -79,7 +79,7 @@ export class AccessServiceToken extends pulumi.CustomResource {
      */
     public /*out*/ readonly expiresAt!: pulumi.Output<string>;
     /**
-     * Refresh the token if terraform is run within the specified amount of days before expiration
+     * Refresh the token if terraform is run within the specified amount of days before expiration.
      */
     public readonly minDaysForRenewal!: pulumi.Output<number | undefined>;
     /**
@@ -142,7 +142,7 @@ export interface AccessServiceTokenState {
      */
     accountId?: pulumi.Input<string>;
     /**
-     * UUID client ID associated with the Service Token. **Modifying this attribute will force creation of a new resource.**
+     * Client ID associated with the Service Token. **Modifying this attribute will force creation of a new resource.**
      */
     clientId?: pulumi.Input<string>;
     /**
@@ -158,7 +158,7 @@ export interface AccessServiceTokenState {
      */
     expiresAt?: pulumi.Input<string>;
     /**
-     * Refresh the token if terraform is run within the specified amount of days before expiration
+     * Refresh the token if terraform is run within the specified amount of days before expiration.
      */
     minDaysForRenewal?: pulumi.Input<number>;
     /**
@@ -184,7 +184,7 @@ export interface AccessServiceTokenArgs {
      */
     duration?: pulumi.Input<string>;
     /**
-     * Refresh the token if terraform is run within the specified amount of days before expiration
+     * Refresh the token if terraform is run within the specified amount of days before expiration.
      */
     minDaysForRenewal?: pulumi.Input<number>;
     /**

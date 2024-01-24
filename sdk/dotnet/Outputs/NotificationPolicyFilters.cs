@@ -18,6 +18,10 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly ImmutableArray<string> Actions;
         /// <summary>
+        /// Affected components for alert. Available values: `API`, `API Shield`, `Access`, `Always Online`, `Analytics`, `Apps Marketplace`, `Argo Smart Routing`, `Audit Logs`, `Authoritative DNS`, `Billing`, `Bot Management`, `Bring Your Own IP (BYOIP)`, `Browser Isolation`, `CDN Cache Purge`, `CDN/Cache`, `Cache Reserve`, `Challenge Platform`, `Cloud Access Security Broker (CASB)`, `Community Site`, `DNS Root Servers`, `DNS Updates`, `Dashboard`, `Data Loss Prevention (DLP)`, `Developer's Site`, `Digital Experience Monitoring (DEX)`, `Distributed Web Gateway`, `Durable Objects`, `Email Routing`, `Ethereum Gateway`, `Firewall`, `Gateway`, `Geo-Key Manager`, `Image Resizing`, `Images`, `Infrastructure`, `Lists`, `Load Balancing and Monitoring`, `Logs`, `Magic Firewall`, `Magic Transit`, `Magic WAN`, `Magic WAN Connector`, `Marketing Site`, `Mirage`, `Network`, `Notifications`, `Observatory`, `Page Shield`, `Pages`, `R2`, `Radar`, `Randomness Beacon`, `Recursive DNS`, `Registrar`, `Registration Data Access Protocol (RDAP)`, `SSL Certificate Provisioning`, `SSL for SaaS Provisioning`, `Security Center`, `Snippets`, `Spectrum`, `Speed Optimizations`, `Stream`, `Support Site`, `Time Services`, `Trace`, `Tunnel`, `Turnstile`, `WARP`, `Waiting Room`, `Web Analytics`, `Workers`, `Workers KV`, `Workers Preview`, `Zaraz`, `Zero Trust`, `Zero Trust Dashboard`, `Zone Versioning`.
+        /// </summary>
+        public readonly ImmutableArray<string> AffectedComponents;
+        /// <summary>
         /// Alert trigger preferences. Example: `slo`.
         /// </summary>
         public readonly ImmutableArray<string> AlertTriggerPreferences;
@@ -135,6 +139,8 @@ namespace Pulumi.Cloudflare.Outputs
         private NotificationPolicyFilters(
             ImmutableArray<string> actions,
 
+            ImmutableArray<string> affectedComponents,
+
             ImmutableArray<string> alertTriggerPreferences,
 
             ImmutableArray<string> enableds,
@@ -194,6 +200,7 @@ namespace Pulumi.Cloudflare.Outputs
             ImmutableArray<string> zones)
         {
             Actions = actions;
+            AffectedComponents = affectedComponents;
             AlertTriggerPreferences = alertTriggerPreferences;
             Enableds = enableds;
             Environments = environments;

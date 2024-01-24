@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare
 {
     /// <summary>
-    /// Provides a resource for managing Email Routing Addresses.
+    /// The [Email Routing Address](https://developers.cloudflare.com/email-routing/setup/email-routing-addresses/#destination-addresses) resource allows you to manage Cloudflare Email Routing Destination Addresses.
     /// 
     /// ## Example Usage
     /// 
@@ -30,12 +30,18 @@ namespace Pulumi.Cloudflare
     /// 
     /// });
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// ```sh
+    ///  $ pulumi import cloudflare:index/emailRoutingAddress:EmailRoutingAddress example &lt;account_id&gt;/&lt;email_routing_id&gt;
+    /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/emailRoutingAddress:EmailRoutingAddress")]
     public partial class EmailRoutingAddress : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        /// The account identifier to target for the resource.
         /// </summary>
         [Output("accountId")]
         public Output<string> AccountId { get; private set; } = null!;
@@ -47,13 +53,13 @@ namespace Pulumi.Cloudflare
         public Output<string> Created { get; private set; } = null!;
 
         /// <summary>
-        /// The contact email address of the user. **Modifying this attribute will force creation of a new resource.**
+        /// The contact email address of the user.
         /// </summary>
         [Output("email")]
         public Output<string> Email { get; private set; } = null!;
 
         /// <summary>
-        /// The date and time the destination address was last modified.
+        /// The date and time the destination address has been modified.
         /// </summary>
         [Output("modified")]
         public Output<string> Modified { get; private set; } = null!;
@@ -117,13 +123,13 @@ namespace Pulumi.Cloudflare
     public sealed class EmailRoutingAddressArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        /// The account identifier to target for the resource.
         /// </summary>
         [Input("accountId", required: true)]
         public Input<string> AccountId { get; set; } = null!;
 
         /// <summary>
-        /// The contact email address of the user. **Modifying this attribute will force creation of a new resource.**
+        /// The contact email address of the user.
         /// </summary>
         [Input("email", required: true)]
         public Input<string> Email { get; set; } = null!;
@@ -137,7 +143,7 @@ namespace Pulumi.Cloudflare
     public sealed class EmailRoutingAddressState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+        /// The account identifier to target for the resource.
         /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
@@ -149,13 +155,13 @@ namespace Pulumi.Cloudflare
         public Input<string>? Created { get; set; }
 
         /// <summary>
-        /// The contact email address of the user. **Modifying this attribute will force creation of a new resource.**
+        /// The contact email address of the user.
         /// </summary>
         [Input("email")]
         public Input<string>? Email { get; set; }
 
         /// <summary>
-        /// The date and time the destination address was last modified.
+        /// The date and time the destination address has been modified.
         /// </summary>
         [Input("modified")]
         public Input<string>? Modified { get; set; }

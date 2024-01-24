@@ -12,7 +12,8 @@ namespace Pulumi.Cloudflare
     /// <summary>
     /// Provides a resource for managing Cloudflare Pages domains.
     /// 
-    /// &gt; A DNS record for the domain is not automatically created. You need to create a `cloudflare.Record` resource for the domain you want to use.
+    /// &gt; A DNS record for the domain is not automatically created. You need to create
+    ///    a `cloudflare.Record` resource for the domain you want to use.
     /// 
     /// ## Example Usage
     /// 

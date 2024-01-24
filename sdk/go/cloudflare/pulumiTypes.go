@@ -497,6 +497,8 @@ type AccessApplicationSaasApp struct {
 	ConsumerServiceUrl string `pulumi:"consumerServiceUrl"`
 	// Custom attribute mapped from IDPs.
 	CustomAttributes []AccessApplicationSaasAppCustomAttribute `pulumi:"customAttributes"`
+	// The relay state used if not provided by the identity provider.
+	DefaultRelayState *string `pulumi:"defaultRelayState"`
 	// The unique identifier for the SaaS application.
 	IdpEntityId *string `pulumi:"idpEntityId"`
 	// The format of the name identifier sent to the SaaS application. Defaults to `email`.
@@ -525,6 +527,8 @@ type AccessApplicationSaasAppArgs struct {
 	ConsumerServiceUrl pulumi.StringInput `pulumi:"consumerServiceUrl"`
 	// Custom attribute mapped from IDPs.
 	CustomAttributes AccessApplicationSaasAppCustomAttributeArrayInput `pulumi:"customAttributes"`
+	// The relay state used if not provided by the identity provider.
+	DefaultRelayState pulumi.StringPtrInput `pulumi:"defaultRelayState"`
 	// The unique identifier for the SaaS application.
 	IdpEntityId pulumi.StringPtrInput `pulumi:"idpEntityId"`
 	// The format of the name identifier sent to the SaaS application. Defaults to `email`.
@@ -624,6 +628,11 @@ func (o AccessApplicationSaasAppOutput) CustomAttributes() AccessApplicationSaas
 	return o.ApplyT(func(v AccessApplicationSaasApp) []AccessApplicationSaasAppCustomAttribute { return v.CustomAttributes }).(AccessApplicationSaasAppCustomAttributeArrayOutput)
 }
 
+// The relay state used if not provided by the identity provider.
+func (o AccessApplicationSaasAppOutput) DefaultRelayState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AccessApplicationSaasApp) *string { return v.DefaultRelayState }).(pulumi.StringPtrOutput)
+}
+
 // The unique identifier for the SaaS application.
 func (o AccessApplicationSaasAppOutput) IdpEntityId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AccessApplicationSaasApp) *string { return v.IdpEntityId }).(pulumi.StringPtrOutput)
@@ -691,6 +700,16 @@ func (o AccessApplicationSaasAppPtrOutput) CustomAttributes() AccessApplicationS
 		}
 		return v.CustomAttributes
 	}).(AccessApplicationSaasAppCustomAttributeArrayOutput)
+}
+
+// The relay state used if not provided by the identity provider.
+func (o AccessApplicationSaasAppPtrOutput) DefaultRelayState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccessApplicationSaasApp) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DefaultRelayState
+	}).(pulumi.StringPtrOutput)
 }
 
 // The unique identifier for the SaaS application.
@@ -11114,9 +11133,9 @@ func (o EmailRoutingCatchAllMatcherArrayOutput) Index(i pulumi.IntInput) EmailRo
 }
 
 type EmailRoutingRuleAction struct {
-	// Type of supported action. Available values: `forward`, `worker`, `drop`.
+	// Type of action. Available values: `forward`, `worker`, `drop`
 	Type string `pulumi:"type"`
-	// An array with items in the following form. Only required when `type` is `forward` or `worker`.
+	// Value to match on. Required for `type` of `literal`.
 	Values []string `pulumi:"values"`
 }
 
@@ -11132,9 +11151,9 @@ type EmailRoutingRuleActionInput interface {
 }
 
 type EmailRoutingRuleActionArgs struct {
-	// Type of supported action. Available values: `forward`, `worker`, `drop`.
+	// Type of action. Available values: `forward`, `worker`, `drop`
 	Type pulumi.StringInput `pulumi:"type"`
-	// An array with items in the following form. Only required when `type` is `forward` or `worker`.
+	// Value to match on. Required for `type` of `literal`.
 	Values pulumi.StringArrayInput `pulumi:"values"`
 }
 
@@ -11189,12 +11208,12 @@ func (o EmailRoutingRuleActionOutput) ToEmailRoutingRuleActionOutputWithContext(
 	return o
 }
 
-// Type of supported action. Available values: `forward`, `worker`, `drop`.
+// Type of action. Available values: `forward`, `worker`, `drop`
 func (o EmailRoutingRuleActionOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v EmailRoutingRuleAction) string { return v.Type }).(pulumi.StringOutput)
 }
 
-// An array with items in the following form. Only required when `type` is `forward` or `worker`.
+// Value to match on. Required for `type` of `literal`.
 func (o EmailRoutingRuleActionOutput) Values() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v EmailRoutingRuleAction) []string { return v.Values }).(pulumi.StringArrayOutput)
 }
@@ -11220,11 +11239,11 @@ func (o EmailRoutingRuleActionArrayOutput) Index(i pulumi.IntInput) EmailRouting
 }
 
 type EmailRoutingRuleMatcher struct {
-	// Field for type matcher.
+	// Field to match on. Required for `type` of `literal`.
 	Field *string `pulumi:"field"`
-	// Type of matcher. Available values: `literal`, `all`.
+	// Type of matcher. Available values: `literal`, `all`
 	Type string `pulumi:"type"`
-	// Value for matcher.
+	// Value to match on. Required for `type` of `literal`.
 	Value *string `pulumi:"value"`
 }
 
@@ -11240,11 +11259,11 @@ type EmailRoutingRuleMatcherInput interface {
 }
 
 type EmailRoutingRuleMatcherArgs struct {
-	// Field for type matcher.
+	// Field to match on. Required for `type` of `literal`.
 	Field pulumi.StringPtrInput `pulumi:"field"`
-	// Type of matcher. Available values: `literal`, `all`.
+	// Type of matcher. Available values: `literal`, `all`
 	Type pulumi.StringInput `pulumi:"type"`
-	// Value for matcher.
+	// Value to match on. Required for `type` of `literal`.
 	Value pulumi.StringPtrInput `pulumi:"value"`
 }
 
@@ -11299,17 +11318,17 @@ func (o EmailRoutingRuleMatcherOutput) ToEmailRoutingRuleMatcherOutputWithContex
 	return o
 }
 
-// Field for type matcher.
+// Field to match on. Required for `type` of `literal`.
 func (o EmailRoutingRuleMatcherOutput) Field() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EmailRoutingRuleMatcher) *string { return v.Field }).(pulumi.StringPtrOutput)
 }
 
-// Type of matcher. Available values: `literal`, `all`.
+// Type of matcher. Available values: `literal`, `all`
 func (o EmailRoutingRuleMatcherOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v EmailRoutingRuleMatcher) string { return v.Type }).(pulumi.StringOutput)
 }
 
-// Value for matcher.
+// Value to match on. Required for `type` of `literal`.
 func (o EmailRoutingRuleMatcherOutput) Value() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EmailRoutingRuleMatcher) *string { return v.Value }).(pulumi.StringPtrOutput)
 }
@@ -11796,18 +11815,18 @@ func (o ListItemHostnamePtrOutput) UrlHostname() pulumi.StringPtrOutput {
 }
 
 type ListItemRedirect struct {
-	// Whether the redirect also matches subdomains of the source url. Available values: `disabled`, `enabled`.
-	IncludeSubdomains *string `pulumi:"includeSubdomains"`
-	// Whether to preserve the path suffix when doing subpath matching. Available values: `disabled`, `enabled`.
-	PreservePathSuffix *string `pulumi:"preservePathSuffix"`
-	// Whether the redirect target url should keep the query string of the request's url. Available values: `disabled`, `enabled`.
-	PreserveQueryString *string `pulumi:"preserveQueryString"`
+	// Whether the redirect also matches subdomains of the source url.
+	IncludeSubdomains *bool `pulumi:"includeSubdomains"`
+	// Whether the redirect target url should keep the query string of the request's url.
+	PreservePathSuffix *bool `pulumi:"preservePathSuffix"`
+	// Whether the redirect target url should keep the query string of the request's url.
+	PreserveQueryString *bool `pulumi:"preserveQueryString"`
 	// The source url of the redirect.
 	SourceUrl string `pulumi:"sourceUrl"`
 	// The status code to be used when redirecting a request.
 	StatusCode *int `pulumi:"statusCode"`
-	// Whether the redirect also matches subpaths of the source url. Available values: `disabled`, `enabled`.
-	SubpathMatching *string `pulumi:"subpathMatching"`
+	// Whether the redirect also matches subpaths of the source url.
+	SubpathMatching *bool `pulumi:"subpathMatching"`
 	// The target url of the redirect.
 	TargetUrl string `pulumi:"targetUrl"`
 }
@@ -11824,18 +11843,18 @@ type ListItemRedirectInput interface {
 }
 
 type ListItemRedirectArgs struct {
-	// Whether the redirect also matches subdomains of the source url. Available values: `disabled`, `enabled`.
-	IncludeSubdomains pulumi.StringPtrInput `pulumi:"includeSubdomains"`
-	// Whether to preserve the path suffix when doing subpath matching. Available values: `disabled`, `enabled`.
-	PreservePathSuffix pulumi.StringPtrInput `pulumi:"preservePathSuffix"`
-	// Whether the redirect target url should keep the query string of the request's url. Available values: `disabled`, `enabled`.
-	PreserveQueryString pulumi.StringPtrInput `pulumi:"preserveQueryString"`
+	// Whether the redirect also matches subdomains of the source url.
+	IncludeSubdomains pulumi.BoolPtrInput `pulumi:"includeSubdomains"`
+	// Whether the redirect target url should keep the query string of the request's url.
+	PreservePathSuffix pulumi.BoolPtrInput `pulumi:"preservePathSuffix"`
+	// Whether the redirect target url should keep the query string of the request's url.
+	PreserveQueryString pulumi.BoolPtrInput `pulumi:"preserveQueryString"`
 	// The source url of the redirect.
 	SourceUrl pulumi.StringInput `pulumi:"sourceUrl"`
 	// The status code to be used when redirecting a request.
 	StatusCode pulumi.IntPtrInput `pulumi:"statusCode"`
-	// Whether the redirect also matches subpaths of the source url. Available values: `disabled`, `enabled`.
-	SubpathMatching pulumi.StringPtrInput `pulumi:"subpathMatching"`
+	// Whether the redirect also matches subpaths of the source url.
+	SubpathMatching pulumi.BoolPtrInput `pulumi:"subpathMatching"`
 	// The target url of the redirect.
 	TargetUrl pulumi.StringInput `pulumi:"targetUrl"`
 }
@@ -11917,19 +11936,19 @@ func (o ListItemRedirectOutput) ToListItemRedirectPtrOutputWithContext(ctx conte
 	}).(ListItemRedirectPtrOutput)
 }
 
-// Whether the redirect also matches subdomains of the source url. Available values: `disabled`, `enabled`.
-func (o ListItemRedirectOutput) IncludeSubdomains() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ListItemRedirect) *string { return v.IncludeSubdomains }).(pulumi.StringPtrOutput)
+// Whether the redirect also matches subdomains of the source url.
+func (o ListItemRedirectOutput) IncludeSubdomains() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ListItemRedirect) *bool { return v.IncludeSubdomains }).(pulumi.BoolPtrOutput)
 }
 
-// Whether to preserve the path suffix when doing subpath matching. Available values: `disabled`, `enabled`.
-func (o ListItemRedirectOutput) PreservePathSuffix() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ListItemRedirect) *string { return v.PreservePathSuffix }).(pulumi.StringPtrOutput)
+// Whether the redirect target url should keep the query string of the request's url.
+func (o ListItemRedirectOutput) PreservePathSuffix() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ListItemRedirect) *bool { return v.PreservePathSuffix }).(pulumi.BoolPtrOutput)
 }
 
-// Whether the redirect target url should keep the query string of the request's url. Available values: `disabled`, `enabled`.
-func (o ListItemRedirectOutput) PreserveQueryString() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ListItemRedirect) *string { return v.PreserveQueryString }).(pulumi.StringPtrOutput)
+// Whether the redirect target url should keep the query string of the request's url.
+func (o ListItemRedirectOutput) PreserveQueryString() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ListItemRedirect) *bool { return v.PreserveQueryString }).(pulumi.BoolPtrOutput)
 }
 
 // The source url of the redirect.
@@ -11942,9 +11961,9 @@ func (o ListItemRedirectOutput) StatusCode() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ListItemRedirect) *int { return v.StatusCode }).(pulumi.IntPtrOutput)
 }
 
-// Whether the redirect also matches subpaths of the source url. Available values: `disabled`, `enabled`.
-func (o ListItemRedirectOutput) SubpathMatching() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ListItemRedirect) *string { return v.SubpathMatching }).(pulumi.StringPtrOutput)
+// Whether the redirect also matches subpaths of the source url.
+func (o ListItemRedirectOutput) SubpathMatching() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ListItemRedirect) *bool { return v.SubpathMatching }).(pulumi.BoolPtrOutput)
 }
 
 // The target url of the redirect.
@@ -11976,34 +11995,34 @@ func (o ListItemRedirectPtrOutput) Elem() ListItemRedirectOutput {
 	}).(ListItemRedirectOutput)
 }
 
-// Whether the redirect also matches subdomains of the source url. Available values: `disabled`, `enabled`.
-func (o ListItemRedirectPtrOutput) IncludeSubdomains() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ListItemRedirect) *string {
+// Whether the redirect also matches subdomains of the source url.
+func (o ListItemRedirectPtrOutput) IncludeSubdomains() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ListItemRedirect) *bool {
 		if v == nil {
 			return nil
 		}
 		return v.IncludeSubdomains
-	}).(pulumi.StringPtrOutput)
+	}).(pulumi.BoolPtrOutput)
 }
 
-// Whether to preserve the path suffix when doing subpath matching. Available values: `disabled`, `enabled`.
-func (o ListItemRedirectPtrOutput) PreservePathSuffix() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ListItemRedirect) *string {
+// Whether the redirect target url should keep the query string of the request's url.
+func (o ListItemRedirectPtrOutput) PreservePathSuffix() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ListItemRedirect) *bool {
 		if v == nil {
 			return nil
 		}
 		return v.PreservePathSuffix
-	}).(pulumi.StringPtrOutput)
+	}).(pulumi.BoolPtrOutput)
 }
 
-// Whether the redirect target url should keep the query string of the request's url. Available values: `disabled`, `enabled`.
-func (o ListItemRedirectPtrOutput) PreserveQueryString() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ListItemRedirect) *string {
+// Whether the redirect target url should keep the query string of the request's url.
+func (o ListItemRedirectPtrOutput) PreserveQueryString() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ListItemRedirect) *bool {
 		if v == nil {
 			return nil
 		}
 		return v.PreserveQueryString
-	}).(pulumi.StringPtrOutput)
+	}).(pulumi.BoolPtrOutput)
 }
 
 // The source url of the redirect.
@@ -12026,14 +12045,14 @@ func (o ListItemRedirectPtrOutput) StatusCode() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// Whether the redirect also matches subpaths of the source url. Available values: `disabled`, `enabled`.
-func (o ListItemRedirectPtrOutput) SubpathMatching() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ListItemRedirect) *string {
+// Whether the redirect also matches subpaths of the source url.
+func (o ListItemRedirectPtrOutput) SubpathMatching() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ListItemRedirect) *bool {
 		if v == nil {
 			return nil
 		}
 		return v.SubpathMatching
-	}).(pulumi.StringPtrOutput)
+	}).(pulumi.BoolPtrOutput)
 }
 
 // The target url of the redirect.
@@ -15328,6 +15347,8 @@ func (o NotificationPolicyEmailIntegrationArrayOutput) Index(i pulumi.IntInput) 
 type NotificationPolicyFilters struct {
 	// Targeted actions for alert.
 	Actions []string `pulumi:"actions"`
+	// Affected components for alert. Available values: `API`, `API Shield`, `Access`, `Always Online`, `Analytics`, `Apps Marketplace`, `Argo Smart Routing`, `Audit Logs`, `Authoritative DNS`, `Billing`, `Bot Management`, `Bring Your Own IP (BYOIP)`, `Browser Isolation`, `CDN Cache Purge`, `CDN/Cache`, `Cache Reserve`, `Challenge Platform`, `Cloud Access Security Broker (CASB)`, `Community Site`, `DNS Root Servers`, `DNS Updates`, `Dashboard`, `Data Loss Prevention (DLP)`, `Developer's Site`, `Digital Experience Monitoring (DEX)`, `Distributed Web Gateway`, `Durable Objects`, `Email Routing`, `Ethereum Gateway`, `Firewall`, `Gateway`, `Geo-Key Manager`, `Image Resizing`, `Images`, `Infrastructure`, `Lists`, `Load Balancing and Monitoring`, `Logs`, `Magic Firewall`, `Magic Transit`, `Magic WAN`, `Magic WAN Connector`, `Marketing Site`, `Mirage`, `Network`, `Notifications`, `Observatory`, `Page Shield`, `Pages`, `R2`, `Radar`, `Randomness Beacon`, `Recursive DNS`, `Registrar`, `Registration Data Access Protocol (RDAP)`, `SSL Certificate Provisioning`, `SSL for SaaS Provisioning`, `Security Center`, `Snippets`, `Spectrum`, `Speed Optimizations`, `Stream`, `Support Site`, `Time Services`, `Trace`, `Tunnel`, `Turnstile`, `WARP`, `Waiting Room`, `Web Analytics`, `Workers`, `Workers KV`, `Workers Preview`, `Zaraz`, `Zero Trust`, `Zero Trust Dashboard`, `Zone Versioning`.
+	AffectedComponents []string `pulumi:"affectedComponents"`
 	// Alert trigger preferences. Example: `slo`.
 	AlertTriggerPreferences []string `pulumi:"alertTriggerPreferences"`
 	// State of the pool to alert on.
@@ -15401,6 +15422,8 @@ type NotificationPolicyFiltersInput interface {
 type NotificationPolicyFiltersArgs struct {
 	// Targeted actions for alert.
 	Actions pulumi.StringArrayInput `pulumi:"actions"`
+	// Affected components for alert. Available values: `API`, `API Shield`, `Access`, `Always Online`, `Analytics`, `Apps Marketplace`, `Argo Smart Routing`, `Audit Logs`, `Authoritative DNS`, `Billing`, `Bot Management`, `Bring Your Own IP (BYOIP)`, `Browser Isolation`, `CDN Cache Purge`, `CDN/Cache`, `Cache Reserve`, `Challenge Platform`, `Cloud Access Security Broker (CASB)`, `Community Site`, `DNS Root Servers`, `DNS Updates`, `Dashboard`, `Data Loss Prevention (DLP)`, `Developer's Site`, `Digital Experience Monitoring (DEX)`, `Distributed Web Gateway`, `Durable Objects`, `Email Routing`, `Ethereum Gateway`, `Firewall`, `Gateway`, `Geo-Key Manager`, `Image Resizing`, `Images`, `Infrastructure`, `Lists`, `Load Balancing and Monitoring`, `Logs`, `Magic Firewall`, `Magic Transit`, `Magic WAN`, `Magic WAN Connector`, `Marketing Site`, `Mirage`, `Network`, `Notifications`, `Observatory`, `Page Shield`, `Pages`, `R2`, `Radar`, `Randomness Beacon`, `Recursive DNS`, `Registrar`, `Registration Data Access Protocol (RDAP)`, `SSL Certificate Provisioning`, `SSL for SaaS Provisioning`, `Security Center`, `Snippets`, `Spectrum`, `Speed Optimizations`, `Stream`, `Support Site`, `Time Services`, `Trace`, `Tunnel`, `Turnstile`, `WARP`, `Waiting Room`, `Web Analytics`, `Workers`, `Workers KV`, `Workers Preview`, `Zaraz`, `Zero Trust`, `Zero Trust Dashboard`, `Zone Versioning`.
+	AffectedComponents pulumi.StringArrayInput `pulumi:"affectedComponents"`
 	// Alert trigger preferences. Example: `slo`.
 	AlertTriggerPreferences pulumi.StringArrayInput `pulumi:"alertTriggerPreferences"`
 	// State of the pool to alert on.
@@ -15540,6 +15563,11 @@ func (o NotificationPolicyFiltersOutput) ToNotificationPolicyFiltersPtrOutputWit
 // Targeted actions for alert.
 func (o NotificationPolicyFiltersOutput) Actions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v NotificationPolicyFilters) []string { return v.Actions }).(pulumi.StringArrayOutput)
+}
+
+// Affected components for alert. Available values: `API`, `API Shield`, `Access`, `Always Online`, `Analytics`, `Apps Marketplace`, `Argo Smart Routing`, `Audit Logs`, `Authoritative DNS`, `Billing`, `Bot Management`, `Bring Your Own IP (BYOIP)`, `Browser Isolation`, `CDN Cache Purge`, `CDN/Cache`, `Cache Reserve`, `Challenge Platform`, `Cloud Access Security Broker (CASB)`, `Community Site`, `DNS Root Servers`, `DNS Updates`, `Dashboard`, `Data Loss Prevention (DLP)`, `Developer's Site`, `Digital Experience Monitoring (DEX)`, `Distributed Web Gateway`, `Durable Objects`, `Email Routing`, `Ethereum Gateway`, `Firewall`, `Gateway`, `Geo-Key Manager`, `Image Resizing`, `Images`, `Infrastructure`, `Lists`, `Load Balancing and Monitoring`, `Logs`, `Magic Firewall`, `Magic Transit`, `Magic WAN`, `Magic WAN Connector`, `Marketing Site`, `Mirage`, `Network`, `Notifications`, `Observatory`, `Page Shield`, `Pages`, `R2`, `Radar`, `Randomness Beacon`, `Recursive DNS`, `Registrar`, `Registration Data Access Protocol (RDAP)`, `SSL Certificate Provisioning`, `SSL for SaaS Provisioning`, `Security Center`, `Snippets`, `Spectrum`, `Speed Optimizations`, `Stream`, `Support Site`, `Time Services`, `Trace`, `Tunnel`, `Turnstile`, `WARP`, `Waiting Room`, `Web Analytics`, `Workers`, `Workers KV`, `Workers Preview`, `Zaraz`, `Zero Trust`, `Zero Trust Dashboard`, `Zone Versioning`.
+func (o NotificationPolicyFiltersOutput) AffectedComponents() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v NotificationPolicyFilters) []string { return v.AffectedComponents }).(pulumi.StringArrayOutput)
 }
 
 // Alert trigger preferences. Example: `slo`.
@@ -15717,6 +15745,16 @@ func (o NotificationPolicyFiltersPtrOutput) Actions() pulumi.StringArrayOutput {
 			return nil
 		}
 		return v.Actions
+	}).(pulumi.StringArrayOutput)
+}
+
+// Affected components for alert. Available values: `API`, `API Shield`, `Access`, `Always Online`, `Analytics`, `Apps Marketplace`, `Argo Smart Routing`, `Audit Logs`, `Authoritative DNS`, `Billing`, `Bot Management`, `Bring Your Own IP (BYOIP)`, `Browser Isolation`, `CDN Cache Purge`, `CDN/Cache`, `Cache Reserve`, `Challenge Platform`, `Cloud Access Security Broker (CASB)`, `Community Site`, `DNS Root Servers`, `DNS Updates`, `Dashboard`, `Data Loss Prevention (DLP)`, `Developer's Site`, `Digital Experience Monitoring (DEX)`, `Distributed Web Gateway`, `Durable Objects`, `Email Routing`, `Ethereum Gateway`, `Firewall`, `Gateway`, `Geo-Key Manager`, `Image Resizing`, `Images`, `Infrastructure`, `Lists`, `Load Balancing and Monitoring`, `Logs`, `Magic Firewall`, `Magic Transit`, `Magic WAN`, `Magic WAN Connector`, `Marketing Site`, `Mirage`, `Network`, `Notifications`, `Observatory`, `Page Shield`, `Pages`, `R2`, `Radar`, `Randomness Beacon`, `Recursive DNS`, `Registrar`, `Registration Data Access Protocol (RDAP)`, `SSL Certificate Provisioning`, `SSL for SaaS Provisioning`, `Security Center`, `Snippets`, `Spectrum`, `Speed Optimizations`, `Stream`, `Support Site`, `Time Services`, `Trace`, `Tunnel`, `Turnstile`, `WARP`, `Waiting Room`, `Web Analytics`, `Workers`, `Workers KV`, `Workers Preview`, `Zaraz`, `Zero Trust`, `Zero Trust Dashboard`, `Zone Versioning`.
+func (o NotificationPolicyFiltersPtrOutput) AffectedComponents() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *NotificationPolicyFilters) []string {
+		if v == nil {
+			return nil
+		}
+		return v.AffectedComponents
 	}).(pulumi.StringArrayOutput)
 }
 

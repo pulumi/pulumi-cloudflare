@@ -22,29 +22,29 @@ public final class EmailRoutingRuleArgs extends com.pulumi.resources.ResourceArg
     public static final EmailRoutingRuleArgs Empty = new EmailRoutingRuleArgs();
 
     /**
-     * List actions patterns.
+     * Actions to take when a match is found.
      * 
      */
-    @Import(name="actions", required=true)
-    private Output<List<EmailRoutingRuleActionArgs>> actions;
+    @Import(name="actions")
+    private @Nullable Output<List<EmailRoutingRuleActionArgs>> actions;
 
     /**
-     * @return List actions patterns.
+     * @return Actions to take when a match is found.
      * 
      */
-    public Output<List<EmailRoutingRuleActionArgs>> actions() {
-        return this.actions;
+    public Optional<Output<List<EmailRoutingRuleActionArgs>>> actions() {
+        return Optional.ofNullable(this.actions);
     }
 
     /**
-     * Routing rule status.
+     * Whether the email routing rule is enabled.
      * 
      */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
     /**
-     * @return Routing rule status.
+     * @return Whether the email routing rule is enabled.
      * 
      */
     public Optional<Output<Boolean>> enabled() {
@@ -55,15 +55,15 @@ public final class EmailRoutingRuleArgs extends com.pulumi.resources.ResourceArg
      * Matching patterns to forward to your actions.
      * 
      */
-    @Import(name="matchers", required=true)
-    private Output<List<EmailRoutingRuleMatcherArgs>> matchers;
+    @Import(name="matchers")
+    private @Nullable Output<List<EmailRoutingRuleMatcherArgs>> matchers;
 
     /**
      * @return Matching patterns to forward to your actions.
      * 
      */
-    public Output<List<EmailRoutingRuleMatcherArgs>> matchers() {
-        return this.matchers;
+    public Optional<Output<List<EmailRoutingRuleMatcherArgs>>> matchers() {
+        return Optional.ofNullable(this.matchers);
     }
 
     /**
@@ -82,14 +82,14 @@ public final class EmailRoutingRuleArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Priority of the routing rule.
+     * The priority of the email routing rule.
      * 
      */
     @Import(name="priority")
     private @Nullable Output<Integer> priority;
 
     /**
-     * @return Priority of the routing rule.
+     * @return The priority of the email routing rule.
      * 
      */
     public Optional<Output<Integer>> priority() {
@@ -141,18 +141,18 @@ public final class EmailRoutingRuleArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param actions List actions patterns.
+         * @param actions Actions to take when a match is found.
          * 
          * @return builder
          * 
          */
-        public Builder actions(Output<List<EmailRoutingRuleActionArgs>> actions) {
+        public Builder actions(@Nullable Output<List<EmailRoutingRuleActionArgs>> actions) {
             $.actions = actions;
             return this;
         }
 
         /**
-         * @param actions List actions patterns.
+         * @param actions Actions to take when a match is found.
          * 
          * @return builder
          * 
@@ -162,7 +162,7 @@ public final class EmailRoutingRuleArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param actions List actions patterns.
+         * @param actions Actions to take when a match is found.
          * 
          * @return builder
          * 
@@ -172,7 +172,7 @@ public final class EmailRoutingRuleArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param enabled Routing rule status.
+         * @param enabled Whether the email routing rule is enabled.
          * 
          * @return builder
          * 
@@ -183,7 +183,7 @@ public final class EmailRoutingRuleArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param enabled Routing rule status.
+         * @param enabled Whether the email routing rule is enabled.
          * 
          * @return builder
          * 
@@ -198,7 +198,7 @@ public final class EmailRoutingRuleArgs extends com.pulumi.resources.ResourceArg
          * @return builder
          * 
          */
-        public Builder matchers(Output<List<EmailRoutingRuleMatcherArgs>> matchers) {
+        public Builder matchers(@Nullable Output<List<EmailRoutingRuleMatcherArgs>> matchers) {
             $.matchers = matchers;
             return this;
         }
@@ -245,7 +245,7 @@ public final class EmailRoutingRuleArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param priority Priority of the routing rule.
+         * @param priority The priority of the email routing rule.
          * 
          * @return builder
          * 
@@ -256,7 +256,7 @@ public final class EmailRoutingRuleArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param priority Priority of the routing rule.
+         * @param priority The priority of the email routing rule.
          * 
          * @return builder
          * 
@@ -287,12 +287,6 @@ public final class EmailRoutingRuleArgs extends com.pulumi.resources.ResourceArg
         }
 
         public EmailRoutingRuleArgs build() {
-            if ($.actions == null) {
-                throw new MissingRequiredPropertyException("EmailRoutingRuleArgs", "actions");
-            }
-            if ($.matchers == null) {
-                throw new MissingRequiredPropertyException("EmailRoutingRuleArgs", "matchers");
-            }
             if ($.name == null) {
                 throw new MissingRequiredPropertyException("EmailRoutingRuleArgs", "name");
             }

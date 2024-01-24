@@ -84,6 +84,10 @@ export interface AccessApplicationSaasApp {
      */
     customAttributes?: outputs.AccessApplicationSaasAppCustomAttribute[];
     /**
+     * The relay state used if not provided by the identity provider.
+     */
+    defaultRelayState?: string;
+    /**
      * The unique identifier for the SaaS application.
      */
     idpEntityId: string;
@@ -1222,26 +1226,26 @@ export interface EmailRoutingCatchAllMatcher {
 
 export interface EmailRoutingRuleAction {
     /**
-     * Type of supported action. Available values: `forward`, `worker`, `drop`.
+     * Type of action. Available values: `forward`, `worker`, `drop`
      */
     type: string;
     /**
-     * An array with items in the following form. Only required when `type` is `forward` or `worker`.
+     * Value to match on. Required for `type` of `literal`.
      */
     values?: string[];
 }
 
 export interface EmailRoutingRuleMatcher {
     /**
-     * Field for type matcher.
+     * Field to match on. Required for `type` of `literal`.
      */
     field?: string;
     /**
-     * Type of matcher. Available values: `literal`, `all`.
+     * Type of matcher. Available values: `literal`, `all`
      */
     type: string;
     /**
-     * Value for matcher.
+     * Value to match on. Required for `type` of `literal`.
      */
     value?: string;
 }
@@ -1778,17 +1782,17 @@ export interface ListItemHostname {
 
 export interface ListItemRedirect {
     /**
-     * Whether the redirect also matches subdomains of the source url. Available values: `disabled`, `enabled`.
+     * Whether the redirect also matches subdomains of the source url.
      */
-    includeSubdomains?: string;
+    includeSubdomains?: boolean;
     /**
-     * Whether to preserve the path suffix when doing subpath matching. Available values: `disabled`, `enabled`.
+     * Whether the redirect target url should keep the query string of the request's url.
      */
-    preservePathSuffix?: string;
+    preservePathSuffix?: boolean;
     /**
-     * Whether the redirect target url should keep the query string of the request's url. Available values: `disabled`, `enabled`.
+     * Whether the redirect target url should keep the query string of the request's url.
      */
-    preserveQueryString?: string;
+    preserveQueryString?: boolean;
     /**
      * The source url of the redirect.
      */
@@ -1798,9 +1802,9 @@ export interface ListItemRedirect {
      */
     statusCode?: number;
     /**
-     * Whether the redirect also matches subpaths of the source url. Available values: `disabled`, `enabled`.
+     * Whether the redirect also matches subpaths of the source url.
      */
-    subpathMatching?: string;
+    subpathMatching?: boolean;
     /**
      * The target url of the redirect.
      */
@@ -2237,6 +2241,10 @@ export interface NotificationPolicyFilters {
      * Targeted actions for alert.
      */
     actions?: string[];
+    /**
+     * Affected components for alert. Available values: `API`, `API Shield`, `Access`, `Always Online`, `Analytics`, `Apps Marketplace`, `Argo Smart Routing`, `Audit Logs`, `Authoritative DNS`, `Billing`, `Bot Management`, `Bring Your Own IP (BYOIP)`, `Browser Isolation`, `CDN Cache Purge`, `CDN/Cache`, `Cache Reserve`, `Challenge Platform`, `Cloud Access Security Broker (CASB)`, `Community Site`, `DNS Root Servers`, `DNS Updates`, `Dashboard`, `Data Loss Prevention (DLP)`, `Developer's Site`, `Digital Experience Monitoring (DEX)`, `Distributed Web Gateway`, `Durable Objects`, `Email Routing`, `Ethereum Gateway`, `Firewall`, `Gateway`, `Geo-Key Manager`, `Image Resizing`, `Images`, `Infrastructure`, `Lists`, `Load Balancing and Monitoring`, `Logs`, `Magic Firewall`, `Magic Transit`, `Magic WAN`, `Magic WAN Connector`, `Marketing Site`, `Mirage`, `Network`, `Notifications`, `Observatory`, `Page Shield`, `Pages`, `R2`, `Radar`, `Randomness Beacon`, `Recursive DNS`, `Registrar`, `Registration Data Access Protocol (RDAP)`, `SSL Certificate Provisioning`, `SSL for SaaS Provisioning`, `Security Center`, `Snippets`, `Spectrum`, `Speed Optimizations`, `Stream`, `Support Site`, `Time Services`, `Trace`, `Tunnel`, `Turnstile`, `WARP`, `Waiting Room`, `Web Analytics`, `Workers`, `Workers KV`, `Workers Preview`, `Zaraz`, `Zero Trust`, `Zero Trust Dashboard`, `Zone Versioning`.
+     */
+    affectedComponents?: string[];
     /**
      * Alert trigger preferences. Example: `slo`.
      */

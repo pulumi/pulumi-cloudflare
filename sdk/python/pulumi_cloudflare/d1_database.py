@@ -116,7 +116,8 @@ class D1Database(pulumi.CustomResource):
         """
         The [D1 Database](https://developers.cloudflare.com/d1/) resource allows you to manage Cloudflare D1 databases.
 
-        !> When a D1 Database is replaced all the data is lost. Please ensure you have a backup of your data before replacing a D1 Database.
+        !> When a D1 Database is replaced all the data is lost. Please ensure you have a
+           backup of your data before replacing a D1 Database.
 
         ## Example Usage
 
@@ -149,7 +150,8 @@ class D1Database(pulumi.CustomResource):
         """
         The [D1 Database](https://developers.cloudflare.com/d1/) resource allows you to manage Cloudflare D1 databases.
 
-        !> When a D1 Database is replaced all the data is lost. Please ensure you have a backup of your data before replacing a D1 Database.
+        !> When a D1 Database is replaced all the data is lost. Please ensure you have a
+           backup of your data before replacing a D1 Database.
 
         ## Example Usage
 

@@ -34,14 +34,14 @@ public final class ListItemState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Autonomous system number to include in the list. Must provide only one of `ip`, `redirect`, `hostname`, `asn`. **Modifying this attribute will force creation of a new resource.**
+     * Autonomous system number to include in the list. Must provide only one of: `ip`, `asn`, `redirect`, `hostname`.
      * 
      */
     @Import(name="asn")
     private @Nullable Output<Integer> asn;
 
     /**
-     * @return Autonomous system number to include in the list. Must provide only one of `ip`, `redirect`, `hostname`, `asn`. **Modifying this attribute will force creation of a new resource.**
+     * @return Autonomous system number to include in the list. Must provide only one of: `ip`, `asn`, `redirect`, `hostname`.
      * 
      */
     public Optional<Output<Integer>> asn() {
@@ -64,14 +64,14 @@ public final class ListItemState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Hostname to store in the list. Must provide only one of `ip`, `redirect`, `hostname`, `asn`. **Modifying this attribute will force creation of a new resource.**
+     * Hostname to store in the list. Must provide only one of: `ip`, `asn`, `redirect`, `hostname`.
      * 
      */
     @Import(name="hostname")
     private @Nullable Output<ListItemHostnameArgs> hostname;
 
     /**
-     * @return Hostname to store in the list. Must provide only one of `ip`, `redirect`, `hostname`, `asn`. **Modifying this attribute will force creation of a new resource.**
+     * @return Hostname to store in the list. Must provide only one of: `ip`, `asn`, `redirect`, `hostname`.
      * 
      */
     public Optional<Output<ListItemHostnameArgs>> hostname() {
@@ -79,14 +79,14 @@ public final class ListItemState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * IP address to include in the list. Must provide only one of `ip`, `redirect`, `hostname`, `asn`. **Modifying this attribute will force creation of a new resource.**
+     * IP address to include in the list. Must provide only one of: `ip`, `asn`, `redirect`, `hostname`.
      * 
      */
     @Import(name="ip")
     private @Nullable Output<String> ip;
 
     /**
-     * @return IP address to include in the list. Must provide only one of `ip`, `redirect`, `hostname`, `asn`. **Modifying this attribute will force creation of a new resource.**
+     * @return IP address to include in the list. Must provide only one of: `ip`, `asn`, `redirect`, `hostname`.
      * 
      */
     public Optional<Output<String>> ip() {
@@ -109,14 +109,14 @@ public final class ListItemState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Redirect configuration to store in the list. Must provide only one of `ip`, `redirect`, `hostname`, `asn`. **Modifying this attribute will force creation of a new resource.**
+     * Redirect configuration to store in the list. Must provide only one of: `ip`, `asn`, `redirect`, `hostname`.
      * 
      */
     @Import(name="redirect")
     private @Nullable Output<ListItemRedirectArgs> redirect;
 
     /**
-     * @return Redirect configuration to store in the list. Must provide only one of `ip`, `redirect`, `hostname`, `asn`. **Modifying this attribute will force creation of a new resource.**
+     * @return Redirect configuration to store in the list. Must provide only one of: `ip`, `asn`, `redirect`, `hostname`.
      * 
      */
     public Optional<Output<ListItemRedirectArgs>> redirect() {
@@ -175,7 +175,7 @@ public final class ListItemState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param asn Autonomous system number to include in the list. Must provide only one of `ip`, `redirect`, `hostname`, `asn`. **Modifying this attribute will force creation of a new resource.**
+         * @param asn Autonomous system number to include in the list. Must provide only one of: `ip`, `asn`, `redirect`, `hostname`.
          * 
          * @return builder
          * 
@@ -186,7 +186,7 @@ public final class ListItemState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param asn Autonomous system number to include in the list. Must provide only one of `ip`, `redirect`, `hostname`, `asn`. **Modifying this attribute will force creation of a new resource.**
+         * @param asn Autonomous system number to include in the list. Must provide only one of: `ip`, `asn`, `redirect`, `hostname`.
          * 
          * @return builder
          * 
@@ -217,7 +217,7 @@ public final class ListItemState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param hostname Hostname to store in the list. Must provide only one of `ip`, `redirect`, `hostname`, `asn`. **Modifying this attribute will force creation of a new resource.**
+         * @param hostname Hostname to store in the list. Must provide only one of: `ip`, `asn`, `redirect`, `hostname`.
          * 
          * @return builder
          * 
@@ -228,7 +228,7 @@ public final class ListItemState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param hostname Hostname to store in the list. Must provide only one of `ip`, `redirect`, `hostname`, `asn`. **Modifying this attribute will force creation of a new resource.**
+         * @param hostname Hostname to store in the list. Must provide only one of: `ip`, `asn`, `redirect`, `hostname`.
          * 
          * @return builder
          * 
@@ -238,7 +238,7 @@ public final class ListItemState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ip IP address to include in the list. Must provide only one of `ip`, `redirect`, `hostname`, `asn`. **Modifying this attribute will force creation of a new resource.**
+         * @param ip IP address to include in the list. Must provide only one of: `ip`, `asn`, `redirect`, `hostname`.
          * 
          * @return builder
          * 
@@ -249,7 +249,7 @@ public final class ListItemState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ip IP address to include in the list. Must provide only one of `ip`, `redirect`, `hostname`, `asn`. **Modifying this attribute will force creation of a new resource.**
+         * @param ip IP address to include in the list. Must provide only one of: `ip`, `asn`, `redirect`, `hostname`.
          * 
          * @return builder
          * 
@@ -280,7 +280,7 @@ public final class ListItemState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param redirect Redirect configuration to store in the list. Must provide only one of `ip`, `redirect`, `hostname`, `asn`. **Modifying this attribute will force creation of a new resource.**
+         * @param redirect Redirect configuration to store in the list. Must provide only one of: `ip`, `asn`, `redirect`, `hostname`.
          * 
          * @return builder
          * 
@@ -291,7 +291,7 @@ public final class ListItemState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param redirect Redirect configuration to store in the list. Must provide only one of `ip`, `redirect`, `hostname`, `asn`. **Modifying this attribute will force creation of a new resource.**
+         * @param redirect Redirect configuration to store in the list. Must provide only one of: `ip`, `asn`, `redirect`, `hostname`.
          * 
          * @return builder
          * 

@@ -17,6 +17,11 @@ public final class NotificationPolicyFilters {
      */
     private @Nullable List<String> actions;
     /**
+     * @return Affected components for alert. Available values: `API`, `API Shield`, `Access`, `Always Online`, `Analytics`, `Apps Marketplace`, `Argo Smart Routing`, `Audit Logs`, `Authoritative DNS`, `Billing`, `Bot Management`, `Bring Your Own IP (BYOIP)`, `Browser Isolation`, `CDN Cache Purge`, `CDN/Cache`, `Cache Reserve`, `Challenge Platform`, `Cloud Access Security Broker (CASB)`, `Community Site`, `DNS Root Servers`, `DNS Updates`, `Dashboard`, `Data Loss Prevention (DLP)`, `Developer&#39;s Site`, `Digital Experience Monitoring (DEX)`, `Distributed Web Gateway`, `Durable Objects`, `Email Routing`, `Ethereum Gateway`, `Firewall`, `Gateway`, `Geo-Key Manager`, `Image Resizing`, `Images`, `Infrastructure`, `Lists`, `Load Balancing and Monitoring`, `Logs`, `Magic Firewall`, `Magic Transit`, `Magic WAN`, `Magic WAN Connector`, `Marketing Site`, `Mirage`, `Network`, `Notifications`, `Observatory`, `Page Shield`, `Pages`, `R2`, `Radar`, `Randomness Beacon`, `Recursive DNS`, `Registrar`, `Registration Data Access Protocol (RDAP)`, `SSL Certificate Provisioning`, `SSL for SaaS Provisioning`, `Security Center`, `Snippets`, `Spectrum`, `Speed Optimizations`, `Stream`, `Support Site`, `Time Services`, `Trace`, `Tunnel`, `Turnstile`, `WARP`, `Waiting Room`, `Web Analytics`, `Workers`, `Workers KV`, `Workers Preview`, `Zaraz`, `Zero Trust`, `Zero Trust Dashboard`, `Zone Versioning`.
+     * 
+     */
+    private @Nullable List<String> affectedComponents;
+    /**
      * @return Alert trigger preferences. Example: `slo`.
      * 
      */
@@ -165,6 +170,13 @@ public final class NotificationPolicyFilters {
      */
     public List<String> actions() {
         return this.actions == null ? List.of() : this.actions;
+    }
+    /**
+     * @return Affected components for alert. Available values: `API`, `API Shield`, `Access`, `Always Online`, `Analytics`, `Apps Marketplace`, `Argo Smart Routing`, `Audit Logs`, `Authoritative DNS`, `Billing`, `Bot Management`, `Bring Your Own IP (BYOIP)`, `Browser Isolation`, `CDN Cache Purge`, `CDN/Cache`, `Cache Reserve`, `Challenge Platform`, `Cloud Access Security Broker (CASB)`, `Community Site`, `DNS Root Servers`, `DNS Updates`, `Dashboard`, `Data Loss Prevention (DLP)`, `Developer&#39;s Site`, `Digital Experience Monitoring (DEX)`, `Distributed Web Gateway`, `Durable Objects`, `Email Routing`, `Ethereum Gateway`, `Firewall`, `Gateway`, `Geo-Key Manager`, `Image Resizing`, `Images`, `Infrastructure`, `Lists`, `Load Balancing and Monitoring`, `Logs`, `Magic Firewall`, `Magic Transit`, `Magic WAN`, `Magic WAN Connector`, `Marketing Site`, `Mirage`, `Network`, `Notifications`, `Observatory`, `Page Shield`, `Pages`, `R2`, `Radar`, `Randomness Beacon`, `Recursive DNS`, `Registrar`, `Registration Data Access Protocol (RDAP)`, `SSL Certificate Provisioning`, `SSL for SaaS Provisioning`, `Security Center`, `Snippets`, `Spectrum`, `Speed Optimizations`, `Stream`, `Support Site`, `Time Services`, `Trace`, `Tunnel`, `Turnstile`, `WARP`, `Waiting Room`, `Web Analytics`, `Workers`, `Workers KV`, `Workers Preview`, `Zaraz`, `Zero Trust`, `Zero Trust Dashboard`, `Zone Versioning`.
+     * 
+     */
+    public List<String> affectedComponents() {
+        return this.affectedComponents == null ? List.of() : this.affectedComponents;
     }
     /**
      * @return Alert trigger preferences. Example: `slo`.
@@ -376,6 +388,7 @@ public final class NotificationPolicyFilters {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable List<String> actions;
+        private @Nullable List<String> affectedComponents;
         private @Nullable List<String> alertTriggerPreferences;
         private @Nullable List<String> enableds;
         private @Nullable List<String> environments;
@@ -409,6 +422,7 @@ public final class NotificationPolicyFilters {
         public Builder(NotificationPolicyFilters defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.actions = defaults.actions;
+    	      this.affectedComponents = defaults.affectedComponents;
     	      this.alertTriggerPreferences = defaults.alertTriggerPreferences;
     	      this.enableds = defaults.enableds;
     	      this.environments = defaults.environments;
@@ -448,6 +462,15 @@ public final class NotificationPolicyFilters {
         }
         public Builder actions(String... actions) {
             return actions(List.of(actions));
+        }
+        @CustomType.Setter
+        public Builder affectedComponents(@Nullable List<String> affectedComponents) {
+
+            this.affectedComponents = affectedComponents;
+            return this;
+        }
+        public Builder affectedComponents(String... affectedComponents) {
+            return affectedComponents(List.of(affectedComponents));
         }
         @CustomType.Setter
         public Builder alertTriggerPreferences(@Nullable List<String> alertTriggerPreferences) {
@@ -713,6 +736,7 @@ public final class NotificationPolicyFilters {
         public NotificationPolicyFilters build() {
             final var _resultValue = new NotificationPolicyFilters();
             _resultValue.actions = actions;
+            _resultValue.affectedComponents = affectedComponents;
             _resultValue.alertTriggerPreferences = alertTriggerPreferences;
             _resultValue.enableds = enableds;
             _resultValue.environments = environments;

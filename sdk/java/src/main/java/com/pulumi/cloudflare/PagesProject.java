@@ -22,8 +22,8 @@ import javax.annotation.Nullable;
  * Provides a resource which manages Cloudflare Pages projects.
  * 
  * &gt; If you are using a `source` block configuration, you must first have a
- * connected GitHub or GitLab account connected to Cloudflare. See the
- * [Getting Started with Pages] documentation on how to link your accounts.
+ *    connected GitHub or GitLab account connected to Cloudflare. See the
+ *    [Getting Started with Pages] documentation on how to link your accounts.
  * 
  * ## Example Usage
  * ```java
@@ -180,8 +180,6 @@ import javax.annotation.Nullable;
  * ```sh
  *  $ pulumi import cloudflare:index/pagesProject:PagesProject example &lt;account_id&gt;/&lt;project_name&gt;
  * ```
- * 
- *  [Getting Started with Pages]https://developers.cloudflare.com/pages/get-started/#connect-your-git-provider-to-pages
  * 
  */
 @ResourceType(type="cloudflare:index/pagesProject:PagesProject")
