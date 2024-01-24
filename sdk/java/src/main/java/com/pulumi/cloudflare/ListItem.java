@@ -18,7 +18,7 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides individual list items (IPs, Redirects) to be used in Edge Rules Engine
+ * Provides individual list items (IPs, Redirects, ASNs, Hostnames) to be used in Edge Rules Engine
  * across all zones within the same account.
  * 
  * ## Example Usage
@@ -72,10 +72,10 @@ import javax.annotation.Nullable;
  *             .accountId(&#34;f037e56e89293a057740de681ac9abbe&#34;)
  *             .listId(exampleIpList.id())
  *             .redirect(ListItemRedirectArgs.builder()
- *                 .sourceUrl(&#34;https://source.tld&#34;)
+ *                 .sourceUrl(&#34;https://source.tld/&#34;)
  *                 .targetUrl(&#34;https://target.tld&#34;)
  *                 .statusCode(302)
- *                 .subpathMatching(&#34;enabled&#34;)
+ *                 .subpathMatching(true)
  *                 .build())
  *             .build());
  * 
@@ -137,14 +137,14 @@ public class ListItem extends com.pulumi.resources.CustomResource {
         return this.accountId;
     }
     /**
-     * Autonomous system number to include in the list. Must provide only one of `ip`, `redirect`, `hostname`, `asn`. **Modifying this attribute will force creation of a new resource.**
+     * Autonomous system number to include in the list. Must provide only one of: `ip`, `asn`, `redirect`, `hostname`.
      * 
      */
     @Export(name="asn", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> asn;
 
     /**
-     * @return Autonomous system number to include in the list. Must provide only one of `ip`, `redirect`, `hostname`, `asn`. **Modifying this attribute will force creation of a new resource.**
+     * @return Autonomous system number to include in the list. Must provide only one of: `ip`, `asn`, `redirect`, `hostname`.
      * 
      */
     public Output<Optional<Integer>> asn() {
@@ -165,28 +165,28 @@ public class ListItem extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.comment);
     }
     /**
-     * Hostname to store in the list. Must provide only one of `ip`, `redirect`, `hostname`, `asn`. **Modifying this attribute will force creation of a new resource.**
+     * Hostname to store in the list. Must provide only one of: `ip`, `asn`, `redirect`, `hostname`.
      * 
      */
     @Export(name="hostname", refs={ListItemHostname.class}, tree="[0]")
     private Output</* @Nullable */ ListItemHostname> hostname;
 
     /**
-     * @return Hostname to store in the list. Must provide only one of `ip`, `redirect`, `hostname`, `asn`. **Modifying this attribute will force creation of a new resource.**
+     * @return Hostname to store in the list. Must provide only one of: `ip`, `asn`, `redirect`, `hostname`.
      * 
      */
     public Output<Optional<ListItemHostname>> hostname() {
         return Codegen.optional(this.hostname);
     }
     /**
-     * IP address to include in the list. Must provide only one of `ip`, `redirect`, `hostname`, `asn`. **Modifying this attribute will force creation of a new resource.**
+     * IP address to include in the list. Must provide only one of: `ip`, `asn`, `redirect`, `hostname`.
      * 
      */
     @Export(name="ip", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> ip;
 
     /**
-     * @return IP address to include in the list. Must provide only one of `ip`, `redirect`, `hostname`, `asn`. **Modifying this attribute will force creation of a new resource.**
+     * @return IP address to include in the list. Must provide only one of: `ip`, `asn`, `redirect`, `hostname`.
      * 
      */
     public Output<Optional<String>> ip() {
@@ -207,14 +207,14 @@ public class ListItem extends com.pulumi.resources.CustomResource {
         return this.listId;
     }
     /**
-     * Redirect configuration to store in the list. Must provide only one of `ip`, `redirect`, `hostname`, `asn`. **Modifying this attribute will force creation of a new resource.**
+     * Redirect configuration to store in the list. Must provide only one of: `ip`, `asn`, `redirect`, `hostname`.
      * 
      */
     @Export(name="redirect", refs={ListItemRedirect.class}, tree="[0]")
     private Output</* @Nullable */ ListItemRedirect> redirect;
 
     /**
-     * @return Redirect configuration to store in the list. Must provide only one of `ip`, `redirect`, `hostname`, `asn`. **Modifying this attribute will force creation of a new resource.**
+     * @return Redirect configuration to store in the list. Must provide only one of: `ip`, `asn`, `redirect`, `hostname`.
      * 
      */
     public Output<Optional<ListItemRedirect>> redirect() {

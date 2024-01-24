@@ -17,14 +17,14 @@ public final class EmailRoutingRuleMatcherArgs extends com.pulumi.resources.Reso
     public static final EmailRoutingRuleMatcherArgs Empty = new EmailRoutingRuleMatcherArgs();
 
     /**
-     * Field for type matcher.
+     * Field to match on. Required for `type` of `literal`.
      * 
      */
     @Import(name="field")
     private @Nullable Output<String> field;
 
     /**
-     * @return Field for type matcher.
+     * @return Field to match on. Required for `type` of `literal`.
      * 
      */
     public Optional<Output<String>> field() {
@@ -32,14 +32,14 @@ public final class EmailRoutingRuleMatcherArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * Type of matcher. Available values: `literal`, `all`.
+     * Type of matcher. Available values: `literal`, `all`
      * 
      */
     @Import(name="type", required=true)
     private Output<String> type;
 
     /**
-     * @return Type of matcher. Available values: `literal`, `all`.
+     * @return Type of matcher. Available values: `literal`, `all`
      * 
      */
     public Output<String> type() {
@@ -47,14 +47,14 @@ public final class EmailRoutingRuleMatcherArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * Value for matcher.
+     * Value to match on. Required for `type` of `literal`.
      * 
      */
     @Import(name="value")
     private @Nullable Output<String> value;
 
     /**
-     * @return Value for matcher.
+     * @return Value to match on. Required for `type` of `literal`.
      * 
      */
     public Optional<Output<String>> value() {
@@ -88,7 +88,7 @@ public final class EmailRoutingRuleMatcherArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param field Field for type matcher.
+         * @param field Field to match on. Required for `type` of `literal`.
          * 
          * @return builder
          * 
@@ -99,7 +99,7 @@ public final class EmailRoutingRuleMatcherArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param field Field for type matcher.
+         * @param field Field to match on. Required for `type` of `literal`.
          * 
          * @return builder
          * 
@@ -109,7 +109,7 @@ public final class EmailRoutingRuleMatcherArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param type Type of matcher. Available values: `literal`, `all`.
+         * @param type Type of matcher. Available values: `literal`, `all`
          * 
          * @return builder
          * 
@@ -120,7 +120,7 @@ public final class EmailRoutingRuleMatcherArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param type Type of matcher. Available values: `literal`, `all`.
+         * @param type Type of matcher. Available values: `literal`, `all`
          * 
          * @return builder
          * 
@@ -130,7 +130,7 @@ public final class EmailRoutingRuleMatcherArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param value Value for matcher.
+         * @param value Value to match on. Required for `type` of `literal`.
          * 
          * @return builder
          * 
@@ -141,7 +141,7 @@ public final class EmailRoutingRuleMatcherArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param value Value for matcher.
+         * @param value Value to match on. Required for `type` of `literal`.
          * 
          * @return builder
          * 

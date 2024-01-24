@@ -13,38 +13,38 @@ import javax.annotation.Nullable;
 @CustomType
 public final class EmailRoutingRuleMatcher {
     /**
-     * @return Field for type matcher.
+     * @return Field to match on. Required for `type` of `literal`.
      * 
      */
     private @Nullable String field;
     /**
-     * @return Type of matcher. Available values: `literal`, `all`.
+     * @return Type of matcher. Available values: `literal`, `all`
      * 
      */
     private String type;
     /**
-     * @return Value for matcher.
+     * @return Value to match on. Required for `type` of `literal`.
      * 
      */
     private @Nullable String value;
 
     private EmailRoutingRuleMatcher() {}
     /**
-     * @return Field for type matcher.
+     * @return Field to match on. Required for `type` of `literal`.
      * 
      */
     public Optional<String> field() {
         return Optional.ofNullable(this.field);
     }
     /**
-     * @return Type of matcher. Available values: `literal`, `all`.
+     * @return Type of matcher. Available values: `literal`, `all`
      * 
      */
     public String type() {
         return this.type;
     }
     /**
-     * @return Value for matcher.
+     * @return Value to match on. Required for `type` of `literal`.
      * 
      */
     public Optional<String> value() {

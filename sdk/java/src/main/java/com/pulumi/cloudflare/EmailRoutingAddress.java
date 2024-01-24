@@ -14,7 +14,7 @@ import java.lang.String;
 import javax.annotation.Nullable;
 
 /**
- * Provides a resource for managing Email Routing Addresses.
+ * The [Email Routing Address](https://developers.cloudflare.com/email-routing/setup/email-routing-addresses/#destination-addresses) resource allows you to manage Cloudflare Email Routing Destination Addresses.
  * 
  * ## Example Usage
  * ```java
@@ -47,18 +47,24 @@ import javax.annotation.Nullable;
  * }
  * ```
  * 
+ * ## Import
+ * 
+ * ```sh
+ *  $ pulumi import cloudflare:index/emailRoutingAddress:EmailRoutingAddress example &lt;account_id&gt;/&lt;email_routing_id&gt;
+ * ```
+ * 
  */
 @ResourceType(type="cloudflare:index/emailRoutingAddress:EmailRoutingAddress")
 public class EmailRoutingAddress extends com.pulumi.resources.CustomResource {
     /**
-     * The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * The account identifier to target for the resource.
      * 
      */
     @Export(name="accountId", refs={String.class}, tree="[0]")
     private Output<String> accountId;
 
     /**
-     * @return The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * @return The account identifier to target for the resource.
      * 
      */
     public Output<String> accountId() {
@@ -79,28 +85,28 @@ public class EmailRoutingAddress extends com.pulumi.resources.CustomResource {
         return this.created;
     }
     /**
-     * The contact email address of the user. **Modifying this attribute will force creation of a new resource.**
+     * The contact email address of the user.
      * 
      */
     @Export(name="email", refs={String.class}, tree="[0]")
     private Output<String> email;
 
     /**
-     * @return The contact email address of the user. **Modifying this attribute will force creation of a new resource.**
+     * @return The contact email address of the user.
      * 
      */
     public Output<String> email() {
         return this.email;
     }
     /**
-     * The date and time the destination address was last modified.
+     * The date and time the destination address has been modified.
      * 
      */
     @Export(name="modified", refs={String.class}, tree="[0]")
     private Output<String> modified;
 
     /**
-     * @return The date and time the destination address was last modified.
+     * @return The date and time the destination address has been modified.
      * 
      */
     public Output<String> modified() {

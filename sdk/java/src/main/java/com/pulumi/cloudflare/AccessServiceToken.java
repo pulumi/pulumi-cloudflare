@@ -78,14 +78,14 @@ public class AccessServiceToken extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.accountId);
     }
     /**
-     * UUID client ID associated with the Service Token. **Modifying this attribute will force creation of a new resource.**
+     * Client ID associated with the Service Token. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     @Export(name="clientId", refs={String.class}, tree="[0]")
     private Output<String> clientId;
 
     /**
-     * @return UUID client ID associated with the Service Token. **Modifying this attribute will force creation of a new resource.**
+     * @return Client ID associated with the Service Token. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     public Output<String> clientId() {
@@ -134,14 +134,14 @@ public class AccessServiceToken extends com.pulumi.resources.CustomResource {
         return this.expiresAt;
     }
     /**
-     * Refresh the token if terraform is run within the specified amount of days before expiration
+     * Refresh the token if terraform is run within the specified amount of days before expiration.
      * 
      */
     @Export(name="minDaysForRenewal", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> minDaysForRenewal;
 
     /**
-     * @return Refresh the token if terraform is run within the specified amount of days before expiration
+     * @return Refresh the token if terraform is run within the specified amount of days before expiration.
      * 
      */
     public Output<Optional<Integer>> minDaysForRenewal() {

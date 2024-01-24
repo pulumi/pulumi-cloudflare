@@ -6,6 +6,7 @@ package com.pulumi.cloudflare.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -18,47 +19,47 @@ public final class ListItemRedirectArgs extends com.pulumi.resources.ResourceArg
     public static final ListItemRedirectArgs Empty = new ListItemRedirectArgs();
 
     /**
-     * Whether the redirect also matches subdomains of the source url. Available values: `disabled`, `enabled`.
+     * Whether the redirect also matches subdomains of the source url.
      * 
      */
     @Import(name="includeSubdomains")
-    private @Nullable Output<String> includeSubdomains;
+    private @Nullable Output<Boolean> includeSubdomains;
 
     /**
-     * @return Whether the redirect also matches subdomains of the source url. Available values: `disabled`, `enabled`.
+     * @return Whether the redirect also matches subdomains of the source url.
      * 
      */
-    public Optional<Output<String>> includeSubdomains() {
+    public Optional<Output<Boolean>> includeSubdomains() {
         return Optional.ofNullable(this.includeSubdomains);
     }
 
     /**
-     * Whether to preserve the path suffix when doing subpath matching. Available values: `disabled`, `enabled`.
+     * Whether the redirect target url should keep the query string of the request&#39;s url.
      * 
      */
     @Import(name="preservePathSuffix")
-    private @Nullable Output<String> preservePathSuffix;
+    private @Nullable Output<Boolean> preservePathSuffix;
 
     /**
-     * @return Whether to preserve the path suffix when doing subpath matching. Available values: `disabled`, `enabled`.
+     * @return Whether the redirect target url should keep the query string of the request&#39;s url.
      * 
      */
-    public Optional<Output<String>> preservePathSuffix() {
+    public Optional<Output<Boolean>> preservePathSuffix() {
         return Optional.ofNullable(this.preservePathSuffix);
     }
 
     /**
-     * Whether the redirect target url should keep the query string of the request&#39;s url. Available values: `disabled`, `enabled`.
+     * Whether the redirect target url should keep the query string of the request&#39;s url.
      * 
      */
     @Import(name="preserveQueryString")
-    private @Nullable Output<String> preserveQueryString;
+    private @Nullable Output<Boolean> preserveQueryString;
 
     /**
-     * @return Whether the redirect target url should keep the query string of the request&#39;s url. Available values: `disabled`, `enabled`.
+     * @return Whether the redirect target url should keep the query string of the request&#39;s url.
      * 
      */
-    public Optional<Output<String>> preserveQueryString() {
+    public Optional<Output<Boolean>> preserveQueryString() {
         return Optional.ofNullable(this.preserveQueryString);
     }
 
@@ -93,17 +94,17 @@ public final class ListItemRedirectArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Whether the redirect also matches subpaths of the source url. Available values: `disabled`, `enabled`.
+     * Whether the redirect also matches subpaths of the source url.
      * 
      */
     @Import(name="subpathMatching")
-    private @Nullable Output<String> subpathMatching;
+    private @Nullable Output<Boolean> subpathMatching;
 
     /**
-     * @return Whether the redirect also matches subpaths of the source url. Available values: `disabled`, `enabled`.
+     * @return Whether the redirect also matches subpaths of the source url.
      * 
      */
-    public Optional<Output<String>> subpathMatching() {
+    public Optional<Output<Boolean>> subpathMatching() {
         return Optional.ofNullable(this.subpathMatching);
     }
 
@@ -153,65 +154,65 @@ public final class ListItemRedirectArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param includeSubdomains Whether the redirect also matches subdomains of the source url. Available values: `disabled`, `enabled`.
+         * @param includeSubdomains Whether the redirect also matches subdomains of the source url.
          * 
          * @return builder
          * 
          */
-        public Builder includeSubdomains(@Nullable Output<String> includeSubdomains) {
+        public Builder includeSubdomains(@Nullable Output<Boolean> includeSubdomains) {
             $.includeSubdomains = includeSubdomains;
             return this;
         }
 
         /**
-         * @param includeSubdomains Whether the redirect also matches subdomains of the source url. Available values: `disabled`, `enabled`.
+         * @param includeSubdomains Whether the redirect also matches subdomains of the source url.
          * 
          * @return builder
          * 
          */
-        public Builder includeSubdomains(String includeSubdomains) {
+        public Builder includeSubdomains(Boolean includeSubdomains) {
             return includeSubdomains(Output.of(includeSubdomains));
         }
 
         /**
-         * @param preservePathSuffix Whether to preserve the path suffix when doing subpath matching. Available values: `disabled`, `enabled`.
+         * @param preservePathSuffix Whether the redirect target url should keep the query string of the request&#39;s url.
          * 
          * @return builder
          * 
          */
-        public Builder preservePathSuffix(@Nullable Output<String> preservePathSuffix) {
+        public Builder preservePathSuffix(@Nullable Output<Boolean> preservePathSuffix) {
             $.preservePathSuffix = preservePathSuffix;
             return this;
         }
 
         /**
-         * @param preservePathSuffix Whether to preserve the path suffix when doing subpath matching. Available values: `disabled`, `enabled`.
+         * @param preservePathSuffix Whether the redirect target url should keep the query string of the request&#39;s url.
          * 
          * @return builder
          * 
          */
-        public Builder preservePathSuffix(String preservePathSuffix) {
+        public Builder preservePathSuffix(Boolean preservePathSuffix) {
             return preservePathSuffix(Output.of(preservePathSuffix));
         }
 
         /**
-         * @param preserveQueryString Whether the redirect target url should keep the query string of the request&#39;s url. Available values: `disabled`, `enabled`.
+         * @param preserveQueryString Whether the redirect target url should keep the query string of the request&#39;s url.
          * 
          * @return builder
          * 
          */
-        public Builder preserveQueryString(@Nullable Output<String> preserveQueryString) {
+        public Builder preserveQueryString(@Nullable Output<Boolean> preserveQueryString) {
             $.preserveQueryString = preserveQueryString;
             return this;
         }
 
         /**
-         * @param preserveQueryString Whether the redirect target url should keep the query string of the request&#39;s url. Available values: `disabled`, `enabled`.
+         * @param preserveQueryString Whether the redirect target url should keep the query string of the request&#39;s url.
          * 
          * @return builder
          * 
          */
-        public Builder preserveQueryString(String preserveQueryString) {
+        public Builder preserveQueryString(Boolean preserveQueryString) {
             return preserveQueryString(Output.of(preserveQueryString));
         }
 
@@ -258,23 +259,23 @@ public final class ListItemRedirectArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param subpathMatching Whether the redirect also matches subpaths of the source url. Available values: `disabled`, `enabled`.
+         * @param subpathMatching Whether the redirect also matches subpaths of the source url.
          * 
          * @return builder
          * 
          */
-        public Builder subpathMatching(@Nullable Output<String> subpathMatching) {
+        public Builder subpathMatching(@Nullable Output<Boolean> subpathMatching) {
             $.subpathMatching = subpathMatching;
             return this;
         }
 
         /**
-         * @param subpathMatching Whether the redirect also matches subpaths of the source url. Available values: `disabled`, `enabled`.
+         * @param subpathMatching Whether the redirect also matches subpaths of the source url.
          * 
          * @return builder
          * 
          */
-        public Builder subpathMatching(String subpathMatching) {
+        public Builder subpathMatching(Boolean subpathMatching) {
             return subpathMatching(Output.of(subpathMatching));
         }
 

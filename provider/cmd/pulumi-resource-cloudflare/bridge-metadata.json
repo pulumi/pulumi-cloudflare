@@ -1303,6 +1303,9 @@
                                 "actions": {
                                     "maxItemsOne": false
                                 },
+                                "affected_components": {
+                                    "maxItemsOne": false
+                                },
                                 "alert_trigger_preferences": {
                                     "maxItemsOne": false
                                 },
@@ -2820,9 +2823,9 @@
             "cloudflare:index/devicePostureRule:DevicePostureRule": 0,
             "cloudflare:index/deviceSettingsPolicy:DeviceSettingsPolicy": 0,
             "cloudflare:index/dlpProfile:DlpProfile": 0,
-            "cloudflare:index/emailRoutingAddress:EmailRoutingAddress": 0,
+            "cloudflare:index/emailRoutingAddress:EmailRoutingAddress": 1,
             "cloudflare:index/emailRoutingCatchAll:EmailRoutingCatchAll": 0,
-            "cloudflare:index/emailRoutingRule:EmailRoutingRule": 0,
+            "cloudflare:index/emailRoutingRule:EmailRoutingRule": 1,
             "cloudflare:index/emailRoutingSettings:EmailRoutingSettings": 0,
             "cloudflare:index/fallbackDomain:FallbackDomain": 0,
             "cloudflare:index/filter:Filter": 0,
@@ -2834,7 +2837,7 @@
             "cloudflare:index/ipsecTunnel:IpsecTunnel": 0,
             "cloudflare:index/keylessCertificate:KeylessCertificate": 0,
             "cloudflare:index/list:List": 0,
-            "cloudflare:index/listItem:ListItem": 0,
+            "cloudflare:index/listItem:ListItem": 1,
             "cloudflare:index/loadBalancer:LoadBalancer": 0,
             "cloudflare:index/loadBalancerMonitor:LoadBalancerMonitor": 0,
             "cloudflare:index/loadBalancerPool:LoadBalancerPool": 0,
@@ -3083,6 +3086,7 @@
             "cloudflare:index/AccessApplicationSaasApp:AccessApplicationSaasApp": {
                 "consumerServiceUrl": "consumer_service_url",
                 "customAttributes": "custom_attribute",
+                "defaultRelayState": "default_relay_state",
                 "idpEntityId": "idp_entity_id",
                 "nameIdFormat": "name_id_format",
                 "publicKey": "public_key",
@@ -3627,6 +3631,7 @@
                 "zeroDowntimeFailover": "zero_downtime_failover"
             },
             "cloudflare:index/NotificationPolicyFilters:NotificationPolicyFilters": {
+                "affectedComponents": "affected_components",
                 "alertTriggerPreferences": "alert_trigger_preferences",
                 "enableds": "enabled",
                 "environments": "environment",

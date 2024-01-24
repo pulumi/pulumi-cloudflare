@@ -18,14 +18,14 @@ public final class EmailRoutingRuleActionArgs extends com.pulumi.resources.Resou
     public static final EmailRoutingRuleActionArgs Empty = new EmailRoutingRuleActionArgs();
 
     /**
-     * Type of supported action. Available values: `forward`, `worker`, `drop`.
+     * Type of action. Available values: `forward`, `worker`, `drop`
      * 
      */
     @Import(name="type", required=true)
     private Output<String> type;
 
     /**
-     * @return Type of supported action. Available values: `forward`, `worker`, `drop`.
+     * @return Type of action. Available values: `forward`, `worker`, `drop`
      * 
      */
     public Output<String> type() {
@@ -33,14 +33,14 @@ public final class EmailRoutingRuleActionArgs extends com.pulumi.resources.Resou
     }
 
     /**
-     * An array with items in the following form. Only required when `type` is `forward` or `worker`.
+     * Value to match on. Required for `type` of `literal`.
      * 
      */
     @Import(name="values")
     private @Nullable Output<List<String>> values;
 
     /**
-     * @return An array with items in the following form. Only required when `type` is `forward` or `worker`.
+     * @return Value to match on. Required for `type` of `literal`.
      * 
      */
     public Optional<Output<List<String>>> values() {
@@ -73,7 +73,7 @@ public final class EmailRoutingRuleActionArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param type Type of supported action. Available values: `forward`, `worker`, `drop`.
+         * @param type Type of action. Available values: `forward`, `worker`, `drop`
          * 
          * @return builder
          * 
@@ -84,7 +84,7 @@ public final class EmailRoutingRuleActionArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param type Type of supported action. Available values: `forward`, `worker`, `drop`.
+         * @param type Type of action. Available values: `forward`, `worker`, `drop`
          * 
          * @return builder
          * 
@@ -94,7 +94,7 @@ public final class EmailRoutingRuleActionArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param values An array with items in the following form. Only required when `type` is `forward` or `worker`.
+         * @param values Value to match on. Required for `type` of `literal`.
          * 
          * @return builder
          * 
@@ -105,7 +105,7 @@ public final class EmailRoutingRuleActionArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param values An array with items in the following form. Only required when `type` is `forward` or `worker`.
+         * @param values Value to match on. Required for `type` of `literal`.
          * 
          * @return builder
          * 
@@ -115,7 +115,7 @@ public final class EmailRoutingRuleActionArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param values An array with items in the following form. Only required when `type` is `forward` or `worker`.
+         * @param values Value to match on. Required for `type` of `literal`.
          * 
          * @return builder
          * 

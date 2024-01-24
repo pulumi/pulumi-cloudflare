@@ -32,14 +32,14 @@ public final class AccessServiceTokenState extends com.pulumi.resources.Resource
     }
 
     /**
-     * UUID client ID associated with the Service Token. **Modifying this attribute will force creation of a new resource.**
+     * Client ID associated with the Service Token. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     @Import(name="clientId")
     private @Nullable Output<String> clientId;
 
     /**
-     * @return UUID client ID associated with the Service Token. **Modifying this attribute will force creation of a new resource.**
+     * @return Client ID associated with the Service Token. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     public Optional<Output<String>> clientId() {
@@ -92,14 +92,14 @@ public final class AccessServiceTokenState extends com.pulumi.resources.Resource
     }
 
     /**
-     * Refresh the token if terraform is run within the specified amount of days before expiration
+     * Refresh the token if terraform is run within the specified amount of days before expiration.
      * 
      */
     @Import(name="minDaysForRenewal")
     private @Nullable Output<Integer> minDaysForRenewal;
 
     /**
-     * @return Refresh the token if terraform is run within the specified amount of days before expiration
+     * @return Refresh the token if terraform is run within the specified amount of days before expiration.
      * 
      */
     public Optional<Output<Integer>> minDaysForRenewal() {
@@ -189,7 +189,7 @@ public final class AccessServiceTokenState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param clientId UUID client ID associated with the Service Token. **Modifying this attribute will force creation of a new resource.**
+         * @param clientId Client ID associated with the Service Token. **Modifying this attribute will force creation of a new resource.**
          * 
          * @return builder
          * 
@@ -200,7 +200,7 @@ public final class AccessServiceTokenState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param clientId UUID client ID associated with the Service Token. **Modifying this attribute will force creation of a new resource.**
+         * @param clientId Client ID associated with the Service Token. **Modifying this attribute will force creation of a new resource.**
          * 
          * @return builder
          * 
@@ -273,7 +273,7 @@ public final class AccessServiceTokenState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param minDaysForRenewal Refresh the token if terraform is run within the specified amount of days before expiration
+         * @param minDaysForRenewal Refresh the token if terraform is run within the specified amount of days before expiration.
          * 
          * @return builder
          * 
@@ -284,7 +284,7 @@ public final class AccessServiceTokenState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param minDaysForRenewal Refresh the token if terraform is run within the specified amount of days before expiration
+         * @param minDaysForRenewal Refresh the token if terraform is run within the specified amount of days before expiration.
          * 
          * @return builder
          * 

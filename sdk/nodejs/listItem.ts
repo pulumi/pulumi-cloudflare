@@ -7,7 +7,7 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * Provides individual list items (IPs, Redirects) to be used in Edge Rules Engine
+ * Provides individual list items (IPs, Redirects, ASNs, Hostnames) to be used in Edge Rules Engine
  * across all zones within the same account.
  *
  * ## Example Usage
@@ -42,10 +42,10 @@ import * as utilities from "./utilities";
  *     accountId: "f037e56e89293a057740de681ac9abbe",
  *     listId: exampleIpList.id,
  *     redirect: {
- *         sourceUrl: "https://source.tld",
+ *         sourceUrl: "https://source.tld/",
  *         targetUrl: "https://target.tld",
  *         statusCode: 302,
- *         subpathMatching: "enabled",
+ *         subpathMatching: true,
  *     },
  * });
  * // ASN List
@@ -119,7 +119,7 @@ export class ListItem extends pulumi.CustomResource {
      */
     public readonly accountId!: pulumi.Output<string>;
     /**
-     * Autonomous system number to include in the list. Must provide only one of `ip`, `redirect`, `hostname`, `asn`. **Modifying this attribute will force creation of a new resource.**
+     * Autonomous system number to include in the list. Must provide only one of: `ip`, `asn`, `redirect`, `hostname`.
      */
     public readonly asn!: pulumi.Output<number | undefined>;
     /**
@@ -127,11 +127,11 @@ export class ListItem extends pulumi.CustomResource {
      */
     public readonly comment!: pulumi.Output<string | undefined>;
     /**
-     * Hostname to store in the list. Must provide only one of `ip`, `redirect`, `hostname`, `asn`. **Modifying this attribute will force creation of a new resource.**
+     * Hostname to store in the list. Must provide only one of: `ip`, `asn`, `redirect`, `hostname`.
      */
     public readonly hostname!: pulumi.Output<outputs.ListItemHostname | undefined>;
     /**
-     * IP address to include in the list. Must provide only one of `ip`, `redirect`, `hostname`, `asn`. **Modifying this attribute will force creation of a new resource.**
+     * IP address to include in the list. Must provide only one of: `ip`, `asn`, `redirect`, `hostname`.
      */
     public readonly ip!: pulumi.Output<string | undefined>;
     /**
@@ -139,7 +139,7 @@ export class ListItem extends pulumi.CustomResource {
      */
     public readonly listId!: pulumi.Output<string>;
     /**
-     * Redirect configuration to store in the list. Must provide only one of `ip`, `redirect`, `hostname`, `asn`. **Modifying this attribute will force creation of a new resource.**
+     * Redirect configuration to store in the list. Must provide only one of: `ip`, `asn`, `redirect`, `hostname`.
      */
     public readonly redirect!: pulumi.Output<outputs.ListItemRedirect | undefined>;
 
@@ -193,7 +193,7 @@ export interface ListItemState {
      */
     accountId?: pulumi.Input<string>;
     /**
-     * Autonomous system number to include in the list. Must provide only one of `ip`, `redirect`, `hostname`, `asn`. **Modifying this attribute will force creation of a new resource.**
+     * Autonomous system number to include in the list. Must provide only one of: `ip`, `asn`, `redirect`, `hostname`.
      */
     asn?: pulumi.Input<number>;
     /**
@@ -201,11 +201,11 @@ export interface ListItemState {
      */
     comment?: pulumi.Input<string>;
     /**
-     * Hostname to store in the list. Must provide only one of `ip`, `redirect`, `hostname`, `asn`. **Modifying this attribute will force creation of a new resource.**
+     * Hostname to store in the list. Must provide only one of: `ip`, `asn`, `redirect`, `hostname`.
      */
     hostname?: pulumi.Input<inputs.ListItemHostname>;
     /**
-     * IP address to include in the list. Must provide only one of `ip`, `redirect`, `hostname`, `asn`. **Modifying this attribute will force creation of a new resource.**
+     * IP address to include in the list. Must provide only one of: `ip`, `asn`, `redirect`, `hostname`.
      */
     ip?: pulumi.Input<string>;
     /**
@@ -213,7 +213,7 @@ export interface ListItemState {
      */
     listId?: pulumi.Input<string>;
     /**
-     * Redirect configuration to store in the list. Must provide only one of `ip`, `redirect`, `hostname`, `asn`. **Modifying this attribute will force creation of a new resource.**
+     * Redirect configuration to store in the list. Must provide only one of: `ip`, `asn`, `redirect`, `hostname`.
      */
     redirect?: pulumi.Input<inputs.ListItemRedirect>;
 }
@@ -227,7 +227,7 @@ export interface ListItemArgs {
      */
     accountId: pulumi.Input<string>;
     /**
-     * Autonomous system number to include in the list. Must provide only one of `ip`, `redirect`, `hostname`, `asn`. **Modifying this attribute will force creation of a new resource.**
+     * Autonomous system number to include in the list. Must provide only one of: `ip`, `asn`, `redirect`, `hostname`.
      */
     asn?: pulumi.Input<number>;
     /**
@@ -235,11 +235,11 @@ export interface ListItemArgs {
      */
     comment?: pulumi.Input<string>;
     /**
-     * Hostname to store in the list. Must provide only one of `ip`, `redirect`, `hostname`, `asn`. **Modifying this attribute will force creation of a new resource.**
+     * Hostname to store in the list. Must provide only one of: `ip`, `asn`, `redirect`, `hostname`.
      */
     hostname?: pulumi.Input<inputs.ListItemHostname>;
     /**
-     * IP address to include in the list. Must provide only one of `ip`, `redirect`, `hostname`, `asn`. **Modifying this attribute will force creation of a new resource.**
+     * IP address to include in the list. Must provide only one of: `ip`, `asn`, `redirect`, `hostname`.
      */
     ip?: pulumi.Input<string>;
     /**
@@ -247,7 +247,7 @@ export interface ListItemArgs {
      */
     listId: pulumi.Input<string>;
     /**
-     * Redirect configuration to store in the list. Must provide only one of `ip`, `redirect`, `hostname`, `asn`. **Modifying this attribute will force creation of a new resource.**
+     * Redirect configuration to store in the list. Must provide only one of: `ip`, `asn`, `redirect`, `hostname`.
      */
     redirect?: pulumi.Input<inputs.ListItemRedirect>;
 }

@@ -16,14 +16,14 @@ public final class EmailRoutingAddressState extends com.pulumi.resources.Resourc
     public static final EmailRoutingAddressState Empty = new EmailRoutingAddressState();
 
     /**
-     * The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * The account identifier to target for the resource.
      * 
      */
     @Import(name="accountId")
     private @Nullable Output<String> accountId;
 
     /**
-     * @return The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+     * @return The account identifier to target for the resource.
      * 
      */
     public Optional<Output<String>> accountId() {
@@ -46,14 +46,14 @@ public final class EmailRoutingAddressState extends com.pulumi.resources.Resourc
     }
 
     /**
-     * The contact email address of the user. **Modifying this attribute will force creation of a new resource.**
+     * The contact email address of the user.
      * 
      */
     @Import(name="email")
     private @Nullable Output<String> email;
 
     /**
-     * @return The contact email address of the user. **Modifying this attribute will force creation of a new resource.**
+     * @return The contact email address of the user.
      * 
      */
     public Optional<Output<String>> email() {
@@ -61,14 +61,14 @@ public final class EmailRoutingAddressState extends com.pulumi.resources.Resourc
     }
 
     /**
-     * The date and time the destination address was last modified.
+     * The date and time the destination address has been modified.
      * 
      */
     @Import(name="modified")
     private @Nullable Output<String> modified;
 
     /**
-     * @return The date and time the destination address was last modified.
+     * @return The date and time the destination address has been modified.
      * 
      */
     public Optional<Output<String>> modified() {
@@ -135,7 +135,7 @@ public final class EmailRoutingAddressState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param accountId The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+         * @param accountId The account identifier to target for the resource.
          * 
          * @return builder
          * 
@@ -146,7 +146,7 @@ public final class EmailRoutingAddressState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param accountId The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+         * @param accountId The account identifier to target for the resource.
          * 
          * @return builder
          * 
@@ -177,7 +177,7 @@ public final class EmailRoutingAddressState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param email The contact email address of the user. **Modifying this attribute will force creation of a new resource.**
+         * @param email The contact email address of the user.
          * 
          * @return builder
          * 
@@ -188,7 +188,7 @@ public final class EmailRoutingAddressState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param email The contact email address of the user. **Modifying this attribute will force creation of a new resource.**
+         * @param email The contact email address of the user.
          * 
          * @return builder
          * 
@@ -198,7 +198,7 @@ public final class EmailRoutingAddressState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param modified The date and time the destination address was last modified.
+         * @param modified The date and time the destination address has been modified.
          * 
          * @return builder
          * 
@@ -209,7 +209,7 @@ public final class EmailRoutingAddressState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param modified The date and time the destination address was last modified.
+         * @param modified The date and time the destination address has been modified.
          * 
          * @return builder
          * 

@@ -20,7 +20,7 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a resource for managing Email Routing rules.
+ * The [Email Routing Rule](https://developers.cloudflare.com/email-routing/setup/email-routing-addresses/#email-rule-actions) resource allows you to create and manage email routing rules for a zone.
  * 
  * ## Example Usage
  * ```java
@@ -65,32 +65,38 @@ import javax.annotation.Nullable;
  * }
  * ```
  * 
+ * ## Import
+ * 
+ * ```sh
+ *  $ pulumi import cloudflare:index/emailRoutingRule:EmailRoutingRule example &lt;zone_id&gt;/&lt;email_routing_rule_id&gt;
+ * ```
+ * 
  */
 @ResourceType(type="cloudflare:index/emailRoutingRule:EmailRoutingRule")
 public class EmailRoutingRule extends com.pulumi.resources.CustomResource {
     /**
-     * List actions patterns.
+     * Actions to take when a match is found.
      * 
      */
     @Export(name="actions", refs={List.class,EmailRoutingRuleAction.class}, tree="[0,1]")
-    private Output<List<EmailRoutingRuleAction>> actions;
+    private Output</* @Nullable */ List<EmailRoutingRuleAction>> actions;
 
     /**
-     * @return List actions patterns.
+     * @return Actions to take when a match is found.
      * 
      */
-    public Output<List<EmailRoutingRuleAction>> actions() {
-        return this.actions;
+    public Output<Optional<List<EmailRoutingRuleAction>>> actions() {
+        return Codegen.optional(this.actions);
     }
     /**
-     * Routing rule status.
+     * Whether the email routing rule is enabled.
      * 
      */
     @Export(name="enabled", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> enabled;
 
     /**
-     * @return Routing rule status.
+     * @return Whether the email routing rule is enabled.
      * 
      */
     public Output<Optional<Boolean>> enabled() {
@@ -101,14 +107,14 @@ public class EmailRoutingRule extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="matchers", refs={List.class,EmailRoutingRuleMatcher.class}, tree="[0,1]")
-    private Output<List<EmailRoutingRuleMatcher>> matchers;
+    private Output</* @Nullable */ List<EmailRoutingRuleMatcher>> matchers;
 
     /**
      * @return Matching patterns to forward to your actions.
      * 
      */
-    public Output<List<EmailRoutingRuleMatcher>> matchers() {
-        return this.matchers;
+    public Output<Optional<List<EmailRoutingRuleMatcher>>> matchers() {
+        return Codegen.optional(this.matchers);
     }
     /**
      * Routing rule name.
@@ -125,28 +131,28 @@ public class EmailRoutingRule extends com.pulumi.resources.CustomResource {
         return this.name;
     }
     /**
-     * Priority of the routing rule.
+     * The priority of the email routing rule.
      * 
      */
     @Export(name="priority", refs={Integer.class}, tree="[0]")
     private Output<Integer> priority;
 
     /**
-     * @return Priority of the routing rule.
+     * @return The priority of the email routing rule.
      * 
      */
     public Output<Integer> priority() {
         return this.priority;
     }
     /**
-     * Routing rule identifier.
+     * The tag of the email routing rule.
      * 
      */
     @Export(name="tag", refs={String.class}, tree="[0]")
     private Output<String> tag;
 
     /**
-     * @return Routing rule identifier.
+     * @return The tag of the email routing rule.
      * 
      */
     public Output<String> tag() {

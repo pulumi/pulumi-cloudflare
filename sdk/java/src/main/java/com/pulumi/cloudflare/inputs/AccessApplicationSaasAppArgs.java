@@ -49,6 +49,21 @@ public final class AccessApplicationSaasAppArgs extends com.pulumi.resources.Res
     }
 
     /**
+     * The relay state used if not provided by the identity provider.
+     * 
+     */
+    @Import(name="defaultRelayState")
+    private @Nullable Output<String> defaultRelayState;
+
+    /**
+     * @return The relay state used if not provided by the identity provider.
+     * 
+     */
+    public Optional<Output<String>> defaultRelayState() {
+        return Optional.ofNullable(this.defaultRelayState);
+    }
+
+    /**
      * The unique identifier for the SaaS application.
      * 
      */
@@ -128,6 +143,7 @@ public final class AccessApplicationSaasAppArgs extends com.pulumi.resources.Res
     private AccessApplicationSaasAppArgs(AccessApplicationSaasAppArgs $) {
         this.consumerServiceUrl = $.consumerServiceUrl;
         this.customAttributes = $.customAttributes;
+        this.defaultRelayState = $.defaultRelayState;
         this.idpEntityId = $.idpEntityId;
         this.nameIdFormat = $.nameIdFormat;
         this.publicKey = $.publicKey;
@@ -203,6 +219,27 @@ public final class AccessApplicationSaasAppArgs extends com.pulumi.resources.Res
          */
         public Builder customAttributes(AccessApplicationSaasAppCustomAttributeArgs... customAttributes) {
             return customAttributes(List.of(customAttributes));
+        }
+
+        /**
+         * @param defaultRelayState The relay state used if not provided by the identity provider.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder defaultRelayState(@Nullable Output<String> defaultRelayState) {
+            $.defaultRelayState = defaultRelayState;
+            return this;
+        }
+
+        /**
+         * @param defaultRelayState The relay state used if not provided by the identity provider.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder defaultRelayState(String defaultRelayState) {
+            return defaultRelayState(Output.of(defaultRelayState));
         }
 
         /**

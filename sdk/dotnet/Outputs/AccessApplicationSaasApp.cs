@@ -22,6 +22,10 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.AccessApplicationSaasAppCustomAttribute> CustomAttributes;
         /// <summary>
+        /// The relay state used if not provided by the identity provider.
+        /// </summary>
+        public readonly string? DefaultRelayState;
+        /// <summary>
         /// The unique identifier for the SaaS application.
         /// </summary>
         public readonly string? IdpEntityId;
@@ -48,6 +52,8 @@ namespace Pulumi.Cloudflare.Outputs
 
             ImmutableArray<Outputs.AccessApplicationSaasAppCustomAttribute> customAttributes,
 
+            string? defaultRelayState,
+
             string? idpEntityId,
 
             string? nameIdFormat,
@@ -60,6 +66,7 @@ namespace Pulumi.Cloudflare.Outputs
         {
             ConsumerServiceUrl = consumerServiceUrl;
             CustomAttributes = customAttributes;
+            DefaultRelayState = defaultRelayState;
             IdpEntityId = idpEntityId;
             NameIdFormat = nameIdFormat;
             PublicKey = publicKey;

@@ -12,7 +12,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a resource for managing Email Routing Addresses.
+// The [Email Routing Address](https://developers.cloudflare.com/email-routing/setup/email-routing-addresses/#destination-addresses) resource allows you to manage Cloudflare Email Routing Destination Addresses.
 //
 // ## Example Usage
 //
@@ -40,16 +40,24 @@ import (
 //	}
 //
 // ```
+//
+// ## Import
+//
+// ```sh
+//
+//	$ pulumi import cloudflare:index/emailRoutingAddress:EmailRoutingAddress example <account_id>/<email_routing_id>
+//
+// ```
 type EmailRoutingAddress struct {
 	pulumi.CustomResourceState
 
-	// The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+	// The account identifier to target for the resource.
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
 	// The date and time the destination address has been created.
 	Created pulumi.StringOutput `pulumi:"created"`
-	// The contact email address of the user. **Modifying this attribute will force creation of a new resource.**
+	// The contact email address of the user.
 	Email pulumi.StringOutput `pulumi:"email"`
-	// The date and time the destination address was last modified.
+	// The date and time the destination address has been modified.
 	Modified pulumi.StringOutput `pulumi:"modified"`
 	// Destination address identifier.
 	Tag pulumi.StringOutput `pulumi:"tag"`
@@ -93,13 +101,13 @@ func GetEmailRoutingAddress(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering EmailRoutingAddress resources.
 type emailRoutingAddressState struct {
-	// The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+	// The account identifier to target for the resource.
 	AccountId *string `pulumi:"accountId"`
 	// The date and time the destination address has been created.
 	Created *string `pulumi:"created"`
-	// The contact email address of the user. **Modifying this attribute will force creation of a new resource.**
+	// The contact email address of the user.
 	Email *string `pulumi:"email"`
-	// The date and time the destination address was last modified.
+	// The date and time the destination address has been modified.
 	Modified *string `pulumi:"modified"`
 	// Destination address identifier.
 	Tag *string `pulumi:"tag"`
@@ -108,13 +116,13 @@ type emailRoutingAddressState struct {
 }
 
 type EmailRoutingAddressState struct {
-	// The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+	// The account identifier to target for the resource.
 	AccountId pulumi.StringPtrInput
 	// The date and time the destination address has been created.
 	Created pulumi.StringPtrInput
-	// The contact email address of the user. **Modifying this attribute will force creation of a new resource.**
+	// The contact email address of the user.
 	Email pulumi.StringPtrInput
-	// The date and time the destination address was last modified.
+	// The date and time the destination address has been modified.
 	Modified pulumi.StringPtrInput
 	// Destination address identifier.
 	Tag pulumi.StringPtrInput
@@ -127,17 +135,17 @@ func (EmailRoutingAddressState) ElementType() reflect.Type {
 }
 
 type emailRoutingAddressArgs struct {
-	// The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+	// The account identifier to target for the resource.
 	AccountId string `pulumi:"accountId"`
-	// The contact email address of the user. **Modifying this attribute will force creation of a new resource.**
+	// The contact email address of the user.
 	Email string `pulumi:"email"`
 }
 
 // The set of arguments for constructing a EmailRoutingAddress resource.
 type EmailRoutingAddressArgs struct {
-	// The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+	// The account identifier to target for the resource.
 	AccountId pulumi.StringInput
-	// The contact email address of the user. **Modifying this attribute will force creation of a new resource.**
+	// The contact email address of the user.
 	Email pulumi.StringInput
 }
 
@@ -228,7 +236,7 @@ func (o EmailRoutingAddressOutput) ToEmailRoutingAddressOutputWithContext(ctx co
 	return o
 }
 
-// The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+// The account identifier to target for the resource.
 func (o EmailRoutingAddressOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v *EmailRoutingAddress) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
@@ -238,12 +246,12 @@ func (o EmailRoutingAddressOutput) Created() pulumi.StringOutput {
 	return o.ApplyT(func(v *EmailRoutingAddress) pulumi.StringOutput { return v.Created }).(pulumi.StringOutput)
 }
 
-// The contact email address of the user. **Modifying this attribute will force creation of a new resource.**
+// The contact email address of the user.
 func (o EmailRoutingAddressOutput) Email() pulumi.StringOutput {
 	return o.ApplyT(func(v *EmailRoutingAddress) pulumi.StringOutput { return v.Email }).(pulumi.StringOutput)
 }
 
-// The date and time the destination address was last modified.
+// The date and time the destination address has been modified.
 func (o EmailRoutingAddressOutput) Modified() pulumi.StringOutput {
 	return o.ApplyT(func(v *EmailRoutingAddress) pulumi.StringOutput { return v.Modified }).(pulumi.StringOutput)
 }

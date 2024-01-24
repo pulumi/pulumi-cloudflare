@@ -13,26 +13,26 @@ import javax.annotation.Nullable;
 @CustomType
 public final class EmailRoutingRuleAction {
     /**
-     * @return Type of supported action. Available values: `forward`, `worker`, `drop`.
+     * @return Type of action. Available values: `forward`, `worker`, `drop`
      * 
      */
     private String type;
     /**
-     * @return An array with items in the following form. Only required when `type` is `forward` or `worker`.
+     * @return Value to match on. Required for `type` of `literal`.
      * 
      */
     private @Nullable List<String> values;
 
     private EmailRoutingRuleAction() {}
     /**
-     * @return Type of supported action. Available values: `forward`, `worker`, `drop`.
+     * @return Type of action. Available values: `forward`, `worker`, `drop`
      * 
      */
     public String type() {
         return this.type;
     }
     /**
-     * @return An array with items in the following form. Only required when `type` is `forward` or `worker`.
+     * @return Value to match on. Required for `type` of `literal`.
      * 
      */
     public List<String> values() {
