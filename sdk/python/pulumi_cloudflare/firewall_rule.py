@@ -262,6 +262,20 @@ class FirewallRule(pulumi.CustomResource):
                  zone_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
+        Define Firewall rules using filter expressions for more control over
+        how traffic is matched to the rule. A filter expression permits
+        selecting traffic by multiple criteria allowing greater freedom in
+        rule creation.
+
+        Filter expressions needs to be created first before using Firewall
+        Rule.
+
+        > `FirewallRule` is in a deprecation phase that will last for one
+          year (May 1st, 2024). During this time period, this resource is still fully
+          supported but you are strongly advised  to move to the `Ruleset`
+          resource. Full details can be found in the
+          developer documentation.
+
         ## Example Usage
 
         ```python
@@ -302,6 +316,20 @@ class FirewallRule(pulumi.CustomResource):
                  args: FirewallRuleArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Define Firewall rules using filter expressions for more control over
+        how traffic is matched to the rule. A filter expression permits
+        selecting traffic by multiple criteria allowing greater freedom in
+        rule creation.
+
+        Filter expressions needs to be created first before using Firewall
+        Rule.
+
+        > `FirewallRule` is in a deprecation phase that will last for one
+          year (May 1st, 2024). During this time period, this resource is still fully
+          supported but you are strongly advised  to move to the `Ruleset`
+          resource. Full details can be found in the
+          developer documentation.
+
         ## Example Usage
 
         ```python

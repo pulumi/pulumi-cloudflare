@@ -5,6 +5,12 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
+ * Provides a Cloudflare Origin CA certificate used to protect traffic to your origin without involving a third party Certificate Authority.
+ *
+ * > Since v3.32.0
+ *    all authentication schemes are supported for managing Origin CA certificates.
+ *    Versions prior to v3.32.0 will still need to use `apiUserServiceKey`.
+ *
  * ## Example Usage
  *
  * ```typescript
