@@ -197,6 +197,16 @@ class Filter(pulumi.CustomResource):
                  zone_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
+        Filter expressions that can be referenced across multiple features,
+        e.g. Firewall Rules. See [what is a filter](https://developers.cloudflare.com/firewall/api/cf-filters/what-is-a-filter/)
+        for more details and available fields and operators.
+
+        > `Filter` is in a deprecation phase that will last for one
+          year (May 1st, 2024). During this time period, this resource is still fully
+          supported but you are strongly advised to move to the
+          `Ruleset` resource. Full details can be found in the
+          developer documentation.
+
         ## Example Usage
 
         ```python
@@ -230,6 +240,16 @@ class Filter(pulumi.CustomResource):
                  args: FilterArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Filter expressions that can be referenced across multiple features,
+        e.g. Firewall Rules. See [what is a filter](https://developers.cloudflare.com/firewall/api/cf-filters/what-is-a-filter/)
+        for more details and available fields and operators.
+
+        > `Filter` is in a deprecation phase that will last for one
+          year (May 1st, 2024). During this time period, this resource is still fully
+          supported but you are strongly advised to move to the
+          `Ruleset` resource. Full details can be found in the
+          developer documentation.
+
         ## Example Usage
 
         ```python

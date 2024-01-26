@@ -228,6 +228,12 @@ class OriginCaCertificate(pulumi.CustomResource):
                  requested_validity: Optional[pulumi.Input[int]] = None,
                  __props__=None):
         """
+        Provides a Cloudflare Origin CA certificate used to protect traffic to your origin without involving a third party Certificate Authority.
+
+        > Since v3.32.0
+           all authentication schemes are supported for managing Origin CA certificates.
+           Versions prior to v3.32.0 will still need to use `api_user_service_key`.
+
         ## Example Usage
 
         ```python
@@ -270,6 +276,12 @@ class OriginCaCertificate(pulumi.CustomResource):
                  args: OriginCaCertificateArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Provides a Cloudflare Origin CA certificate used to protect traffic to your origin without involving a third party Certificate Authority.
+
+        > Since v3.32.0
+           all authentication schemes are supported for managing Origin CA certificates.
+           Versions prior to v3.32.0 will still need to use `api_user_service_key`.
+
         ## Example Usage
 
         ```python

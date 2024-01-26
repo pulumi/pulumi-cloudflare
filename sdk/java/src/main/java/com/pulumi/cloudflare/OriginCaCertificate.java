@@ -17,6 +17,12 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * Provides a Cloudflare Origin CA certificate used to protect traffic to your origin without involving a third party Certificate Authority.
+ * 
+ * &gt; Since v3.32.0
+ *    all authentication schemes are supported for managing Origin CA certificates.
+ *    Versions prior to v3.32.0 will still need to use `api_user_service_key`.
+ * 
  * ## Example Usage
  * ```java
  * package generated_program;
