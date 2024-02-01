@@ -13,7 +13,13 @@ namespace Pulumi.Cloudflare.Outputs
     [OutputType]
     public sealed class GetRulesetsRulesetRuleActionParametersBrowserTtlResult
     {
+        /// <summary>
+        /// Default browser TTL.
+        /// </summary>
         public readonly int? Default;
+        /// <summary>
+        /// Mode of the browser TTL.
+        /// </summary>
         public readonly string Mode;
 
         [OutputConstructor]

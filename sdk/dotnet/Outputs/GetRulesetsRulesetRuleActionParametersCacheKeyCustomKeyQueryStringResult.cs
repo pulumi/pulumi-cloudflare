@@ -13,7 +13,13 @@ namespace Pulumi.Cloudflare.Outputs
     [OutputType]
     public sealed class GetRulesetsRulesetRuleActionParametersCacheKeyCustomKeyQueryStringResult
     {
+        /// <summary>
+        /// List of query string parameters to exclude from the custom key. Conflicts with "include".
+        /// </summary>
         public readonly ImmutableArray<string> Excludes;
+        /// <summary>
+        /// List of query string parameters to include in the custom key. Conflicts with "exclude".
+        /// </summary>
         public readonly ImmutableArray<string> Includes;
 
         [OutputConstructor]

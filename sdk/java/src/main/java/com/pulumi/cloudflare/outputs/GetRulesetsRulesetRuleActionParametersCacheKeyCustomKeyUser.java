@@ -11,17 +11,41 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetRulesetsRulesetRuleActionParametersCacheKeyCustomKeyUser {
+    /**
+     * @return Add device type to the custom key. Conflicts with &#34;cache_key.cache_by_device_type&#34;.
+     * 
+     */
     private @Nullable Boolean deviceType;
+    /**
+     * @return Add geo data to the custom key.
+     * 
+     */
     private @Nullable Boolean geo;
+    /**
+     * @return Add language data to the custom key.
+     * 
+     */
     private @Nullable Boolean lang;
 
     private GetRulesetsRulesetRuleActionParametersCacheKeyCustomKeyUser() {}
+    /**
+     * @return Add device type to the custom key. Conflicts with &#34;cache_key.cache_by_device_type&#34;.
+     * 
+     */
     public Optional<Boolean> deviceType() {
         return Optional.ofNullable(this.deviceType);
     }
+    /**
+     * @return Add geo data to the custom key.
+     * 
+     */
     public Optional<Boolean> geo() {
         return Optional.ofNullable(this.geo);
     }
+    /**
+     * @return Add language data to the custom key.
+     * 
+     */
     public Optional<Boolean> lang() {
         return Optional.ofNullable(this.lang);
     }

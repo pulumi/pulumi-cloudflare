@@ -12,21 +12,53 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetLoadBalancerPoolsPoolLoadShedding {
+    /**
+     * @return Percent of traffic to shed 0 - 100.
+     * 
+     */
     private @Nullable Double defaultPercent;
+    /**
+     * @return Method of shedding traffic. Available values: `&#34;&#34;`, `hash`, `random`
+     * 
+     */
     private @Nullable String defaultPolicy;
+    /**
+     * @return Percent of session traffic to shed 0 - 100.
+     * 
+     */
     private @Nullable Double sessionPercent;
+    /**
+     * @return Method of shedding traffic. Available values: `&#34;&#34;`, `hash`
+     * 
+     */
     private @Nullable String sessionPolicy;
 
     private GetLoadBalancerPoolsPoolLoadShedding() {}
+    /**
+     * @return Percent of traffic to shed 0 - 100.
+     * 
+     */
     public Optional<Double> defaultPercent() {
         return Optional.ofNullable(this.defaultPercent);
     }
+    /**
+     * @return Method of shedding traffic. Available values: `&#34;&#34;`, `hash`, `random`
+     * 
+     */
     public Optional<String> defaultPolicy() {
         return Optional.ofNullable(this.defaultPolicy);
     }
+    /**
+     * @return Percent of session traffic to shed 0 - 100.
+     * 
+     */
     public Optional<Double> sessionPercent() {
         return Optional.ofNullable(this.sessionPercent);
     }
+    /**
+     * @return Method of shedding traffic. Available values: `&#34;&#34;`, `hash`
+     * 
+     */
     public Optional<String> sessionPolicy() {
         return Optional.ofNullable(this.sessionPolicy);
     }

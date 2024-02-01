@@ -14,16 +14,32 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetRulesetsRulesetRuleActionParametersUri {
     private @Nullable Boolean origin;
+    /**
+     * @return URI path configuration when performing a URL rewrite.
+     * 
+     */
     private @Nullable GetRulesetsRulesetRuleActionParametersUriPath path;
+    /**
+     * @return Query string configuration when performing a URL rewrite.
+     * 
+     */
     private @Nullable GetRulesetsRulesetRuleActionParametersUriQuery query;
 
     private GetRulesetsRulesetRuleActionParametersUri() {}
     public Optional<Boolean> origin() {
         return Optional.ofNullable(this.origin);
     }
+    /**
+     * @return URI path configuration when performing a URL rewrite.
+     * 
+     */
     public Optional<GetRulesetsRulesetRuleActionParametersUriPath> path() {
         return Optional.ofNullable(this.path);
     }
+    /**
+     * @return Query string configuration when performing a URL rewrite.
+     * 
+     */
     public Optional<GetRulesetsRulesetRuleActionParametersUriQuery> query() {
         return Optional.ofNullable(this.query);
     }

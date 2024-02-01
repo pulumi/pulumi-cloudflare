@@ -13,7 +13,13 @@ namespace Pulumi.Cloudflare.Outputs
     [OutputType]
     public sealed class GetRulesetsRulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRangeResult
     {
+        /// <summary>
+        /// From status code.
+        /// </summary>
         public readonly int? From;
+        /// <summary>
+        /// To status code.
+        /// </summary>
         public readonly int? To;
 
         [OutputConstructor]

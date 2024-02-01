@@ -14,7 +14,13 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class GetRulesetsRulesetRuleActionParametersUriResult
     {
         public readonly bool? Origin;
+        /// <summary>
+        /// URI path configuration when performing a URL rewrite.
+        /// </summary>
         public readonly Outputs.GetRulesetsRulesetRuleActionParametersUriPathResult? Path;
+        /// <summary>
+        /// Query string configuration when performing a URL rewrite.
+        /// </summary>
         public readonly Outputs.GetRulesetsRulesetRuleActionParametersUriQueryResult? Query;
 
         [OutputConstructor]

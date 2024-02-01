@@ -13,8 +13,17 @@ namespace Pulumi.Cloudflare.Outputs
     [OutputType]
     public sealed class GetRulesetsRulesetRuleActionParametersFromValueResult
     {
+        /// <summary>
+        /// Preserve query string for redirect URL.
+        /// </summary>
         public readonly bool? PreserveQueryString;
+        /// <summary>
+        /// Status code for redirect.
+        /// </summary>
         public readonly int? StatusCode;
+        /// <summary>
+        /// Target URL for redirect.
+        /// </summary>
         public readonly Outputs.GetRulesetsRulesetRuleActionParametersFromValueTargetUrlResult? TargetUrl;
 
         [OutputConstructor]
