@@ -12,17 +12,41 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetRulesetsRulesetRuleActionParametersResponse {
+    /**
+     * @return Body content to include in the response.
+     * 
+     */
     private @Nullable String content;
+    /**
+     * @return HTTP content type to send in the response.
+     * 
+     */
     private @Nullable String contentType;
+    /**
+     * @return HTTP status code to send in the response.
+     * 
+     */
     private @Nullable Integer statusCode;
 
     private GetRulesetsRulesetRuleActionParametersResponse() {}
+    /**
+     * @return Body content to include in the response.
+     * 
+     */
     public Optional<String> content() {
         return Optional.ofNullable(this.content);
     }
+    /**
+     * @return HTTP content type to send in the response.
+     * 
+     */
     public Optional<String> contentType() {
         return Optional.ofNullable(this.contentType);
     }
+    /**
+     * @return HTTP status code to send in the response.
+     * 
+     */
     public Optional<Integer> statusCode() {
         return Optional.ofNullable(this.statusCode);
     }

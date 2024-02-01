@@ -17,20 +17,60 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetRulesetsRulesetRule {
+    /**
+     * @return Action to perform in the ruleset rule. Available values: `block`, `challenge`, `compress_response`, `ddos_dynamic`, `ddos_mitigation`, `execute`, `force_connection_close`, `js_challenge`, `log`, `log_custom_field`, `managed_challenge`, `redirect`, `rewrite`, `route`, `score`, `serve_error`, `set_cache_settings`, `set_config`, `skip`
+     * 
+     */
     private @Nullable String action;
+    /**
+     * @return List of parameters that configure the behavior of the ruleset rule action.
+     * 
+     */
     private @Nullable GetRulesetsRulesetRuleActionParameters actionParameters;
+    /**
+     * @return Brief summary of the ruleset rule and its intended use.
+     * 
+     */
     private @Nullable String description;
+    /**
+     * @return Whether the rule is active.
+     * 
+     */
     private @Nullable Boolean enabled;
+    /**
+     * @return List of parameters that configure exposed credential checks.
+     * 
+     */
     private @Nullable GetRulesetsRulesetRuleExposedCredentialCheck exposedCredentialCheck;
+    /**
+     * @return Criteria for an HTTP request to trigger the ruleset rule action. Uses the Firewall Rules expression language based on Wireshark display filters. Refer to the [Firewall Rules language](https://developers.cloudflare.com/firewall/cf-firewall-language) documentation for all available fields, operators, and functions
+     * 
+     */
     private String expression;
     /**
      * @return The ID of the Ruleset to target.
      * 
      */
     private String id;
+    /**
+     * @return The most recent update to this rule.
+     * 
+     */
     private @Nullable String lastUpdated;
+    /**
+     * @return List parameters to configure how the rule generates logs.
+     * 
+     */
     private @Nullable GetRulesetsRulesetRuleLogging logging;
+    /**
+     * @return List of parameters that configure HTTP rate limiting behaviour.
+     * 
+     */
     private @Nullable GetRulesetsRulesetRuleRatelimit ratelimit;
+    /**
+     * @return Rule reference.
+     * 
+     */
     private String ref;
     /**
      * @return Version of the ruleset to filter on.
@@ -39,21 +79,45 @@ public final class GetRulesetsRulesetRule {
     private String version;
 
     private GetRulesetsRulesetRule() {}
+    /**
+     * @return Action to perform in the ruleset rule. Available values: `block`, `challenge`, `compress_response`, `ddos_dynamic`, `ddos_mitigation`, `execute`, `force_connection_close`, `js_challenge`, `log`, `log_custom_field`, `managed_challenge`, `redirect`, `rewrite`, `route`, `score`, `serve_error`, `set_cache_settings`, `set_config`, `skip`
+     * 
+     */
     public Optional<String> action() {
         return Optional.ofNullable(this.action);
     }
+    /**
+     * @return List of parameters that configure the behavior of the ruleset rule action.
+     * 
+     */
     public Optional<GetRulesetsRulesetRuleActionParameters> actionParameters() {
         return Optional.ofNullable(this.actionParameters);
     }
+    /**
+     * @return Brief summary of the ruleset rule and its intended use.
+     * 
+     */
     public Optional<String> description() {
         return Optional.ofNullable(this.description);
     }
+    /**
+     * @return Whether the rule is active.
+     * 
+     */
     public Optional<Boolean> enabled() {
         return Optional.ofNullable(this.enabled);
     }
+    /**
+     * @return List of parameters that configure exposed credential checks.
+     * 
+     */
     public Optional<GetRulesetsRulesetRuleExposedCredentialCheck> exposedCredentialCheck() {
         return Optional.ofNullable(this.exposedCredentialCheck);
     }
+    /**
+     * @return Criteria for an HTTP request to trigger the ruleset rule action. Uses the Firewall Rules expression language based on Wireshark display filters. Refer to the [Firewall Rules language](https://developers.cloudflare.com/firewall/cf-firewall-language) documentation for all available fields, operators, and functions
+     * 
+     */
     public String expression() {
         return this.expression;
     }
@@ -64,15 +128,31 @@ public final class GetRulesetsRulesetRule {
     public String id() {
         return this.id;
     }
+    /**
+     * @return The most recent update to this rule.
+     * 
+     */
     public Optional<String> lastUpdated() {
         return Optional.ofNullable(this.lastUpdated);
     }
+    /**
+     * @return List parameters to configure how the rule generates logs.
+     * 
+     */
     public Optional<GetRulesetsRulesetRuleLogging> logging() {
         return Optional.ofNullable(this.logging);
     }
+    /**
+     * @return List of parameters that configure HTTP rate limiting behaviour.
+     * 
+     */
     public Optional<GetRulesetsRulesetRuleRatelimit> ratelimit() {
         return Optional.ofNullable(this.ratelimit);
     }
+    /**
+     * @return Rule reference.
+     * 
+     */
     public String ref() {
         return this.ref;
     }

@@ -12,6 +12,9 @@ namespace Pulumi.Cloudflare.Inputs
 
     public sealed class GetLoadBalancerPoolsPoolOriginInputArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The IP address (IPv4 or IPv6) of the origin, or the publicly addressable hostname.
+        /// </summary>
         [Input("address", required: true)]
         public Input<string> Address { get; set; } = null!;
 
@@ -23,6 +26,10 @@ namespace Pulumi.Cloudflare.Inputs
 
         [Input("headers")]
         private InputList<Inputs.GetLoadBalancerPoolsPoolOriginHeaderInputArgs>? _headers;
+
+        /// <summary>
+        /// HTTP request headers.
+        /// </summary>
         public InputList<Inputs.GetLoadBalancerPoolsPoolOriginHeaderInputArgs> Headers
         {
             get => _headers ?? (_headers = new InputList<Inputs.GetLoadBalancerPoolsPoolOriginHeaderInputArgs>());
@@ -35,6 +42,9 @@ namespace Pulumi.Cloudflare.Inputs
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
+        /// <summary>
+        /// The weight (0.01 - 1.00) of this origin, relative to other origins in the pool. Equal values mean equal weighting. A weight of 0 means traffic will not be sent to this origin, but health is still checked. When `origin_steering.policy="least_outstanding_requests"`, weight is used to scale the origin's outstanding requests. When `origin_steering.policy="least_connections"`, weight is used to scale the origin's open connections.
+        /// </summary>
         [Input("weight")]
         public Input<double>? Weight { get; set; }
 

@@ -15,25 +15,65 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetRulesetsRulesetRuleActionParametersCacheKeyCustomKey {
+    /**
+     * @return Cookie parameters for the custom key.
+     * 
+     */
     private @Nullable GetRulesetsRulesetRuleActionParametersCacheKeyCustomKeyCookie cookie;
+    /**
+     * @return Header parameters for the custom key.
+     * 
+     */
     private @Nullable GetRulesetsRulesetRuleActionParametersCacheKeyCustomKeyHeader header;
+    /**
+     * @return Host parameters for the custom key.
+     * 
+     */
     private @Nullable GetRulesetsRulesetRuleActionParametersCacheKeyCustomKeyHost host;
+    /**
+     * @return Query string parameters for the custom key.
+     * 
+     */
     private @Nullable GetRulesetsRulesetRuleActionParametersCacheKeyCustomKeyQueryString queryString;
+    /**
+     * @return User parameters for the custom key.
+     * 
+     */
     private @Nullable GetRulesetsRulesetRuleActionParametersCacheKeyCustomKeyUser user;
 
     private GetRulesetsRulesetRuleActionParametersCacheKeyCustomKey() {}
+    /**
+     * @return Cookie parameters for the custom key.
+     * 
+     */
     public Optional<GetRulesetsRulesetRuleActionParametersCacheKeyCustomKeyCookie> cookie() {
         return Optional.ofNullable(this.cookie);
     }
+    /**
+     * @return Header parameters for the custom key.
+     * 
+     */
     public Optional<GetRulesetsRulesetRuleActionParametersCacheKeyCustomKeyHeader> header() {
         return Optional.ofNullable(this.header);
     }
+    /**
+     * @return Host parameters for the custom key.
+     * 
+     */
     public Optional<GetRulesetsRulesetRuleActionParametersCacheKeyCustomKeyHost> host() {
         return Optional.ofNullable(this.host);
     }
+    /**
+     * @return Query string parameters for the custom key.
+     * 
+     */
     public Optional<GetRulesetsRulesetRuleActionParametersCacheKeyCustomKeyQueryString> queryString() {
         return Optional.ofNullable(this.queryString);
     }
+    /**
+     * @return User parameters for the custom key.
+     * 
+     */
     public Optional<GetRulesetsRulesetRuleActionParametersCacheKeyCustomKeyUser> user() {
         return Optional.ofNullable(this.user);
     }

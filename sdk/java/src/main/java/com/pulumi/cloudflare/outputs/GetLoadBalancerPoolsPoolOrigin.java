@@ -16,21 +16,37 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetLoadBalancerPoolsPoolOrigin {
+    /**
+     * @return The IP address (IPv4 or IPv6) of the origin, or the publicly addressable hostname.
+     * 
+     */
     private String address;
     /**
      * @return Whether this pool is enabled. Disabled pools will not receive traffic and are excluded from health checks.
      * 
      */
     private @Nullable Boolean enabled;
+    /**
+     * @return HTTP request headers.
+     * 
+     */
     private @Nullable List<GetLoadBalancerPoolsPoolOriginHeader> headers;
     /**
      * @return A regular expression matching the name of the Load Balancer pool to lookup.
      * 
      */
     private String name;
+    /**
+     * @return The weight (0.01 - 1.00) of this origin, relative to other origins in the pool. Equal values mean equal weighting. A weight of 0 means traffic will not be sent to this origin, but health is still checked. When `origin_steering.policy=&#34;least_outstanding_requests&#34;`, weight is used to scale the origin&#39;s outstanding requests. When `origin_steering.policy=&#34;least_connections&#34;`, weight is used to scale the origin&#39;s open connections.
+     * 
+     */
     private @Nullable Double weight;
 
     private GetLoadBalancerPoolsPoolOrigin() {}
+    /**
+     * @return The IP address (IPv4 or IPv6) of the origin, or the publicly addressable hostname.
+     * 
+     */
     public String address() {
         return this.address;
     }
@@ -41,6 +57,10 @@ public final class GetLoadBalancerPoolsPoolOrigin {
     public Optional<Boolean> enabled() {
         return Optional.ofNullable(this.enabled);
     }
+    /**
+     * @return HTTP request headers.
+     * 
+     */
     public List<GetLoadBalancerPoolsPoolOriginHeader> headers() {
         return this.headers == null ? List.of() : this.headers;
     }
@@ -51,6 +71,10 @@ public final class GetLoadBalancerPoolsPoolOrigin {
     public String name() {
         return this.name;
     }
+    /**
+     * @return The weight (0.01 - 1.00) of this origin, relative to other origins in the pool. Equal values mean equal weighting. A weight of 0 means traffic will not be sent to this origin, but health is still checked. When `origin_steering.policy=&#34;least_outstanding_requests&#34;`, weight is used to scale the origin&#39;s outstanding requests. When `origin_steering.policy=&#34;least_connections&#34;`, weight is used to scale the origin&#39;s open connections.
+     * 
+     */
     public Optional<Double> weight() {
         return Optional.ofNullable(this.weight);
     }

@@ -13,7 +13,13 @@ namespace Pulumi.Cloudflare.Outputs
     [OutputType]
     public sealed class GetRulesetsRulesetRuleLoggingResult
     {
+        /// <summary>
+        /// Override the default logging behavior when a rule is matched.
+        /// </summary>
         public readonly bool? Enabled;
+        /// <summary>
+        /// Override the default logging behavior when a rule is matched. Available values: `enabled`, `disabled`
+        /// </summary>
         public readonly string? Status;
 
         [OutputConstructor]

@@ -13,9 +13,21 @@ namespace Pulumi.Cloudflare.Outputs
     [OutputType]
     public sealed class GetRulesetsRulesetRuleActionParametersCacheKeyResult
     {
+        /// <summary>
+        /// Cache by device type. Conflicts with "custom_key.user.device_type".
+        /// </summary>
         public readonly bool? CacheByDeviceType;
+        /// <summary>
+        /// Cache deception armor.
+        /// </summary>
         public readonly bool? CacheDeceptionArmor;
+        /// <summary>
+        /// Custom key parameters for the request.
+        /// </summary>
         public readonly Outputs.GetRulesetsRulesetRuleActionParametersCacheKeyCustomKeyResult? CustomKey;
+        /// <summary>
+        /// Ignore query strings order.
+        /// </summary>
         public readonly bool? IgnoreQueryStringsOrder;
 
         [OutputConstructor]

@@ -11,16 +11,32 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetRulesetsRulesetRuleActionParametersHeader {
+    /**
+     * @return Use a value dynamically determined by the Firewall Rules expression language based on Wireshark display filters. Refer to the [Firewall Rules language](https://developers.cloudflare.com/firewall/cf-firewall-language) documentation for all available fields, operators, and functions. Conflicts with `&#34;value&#34;`.
+     * 
+     */
     private @Nullable String expression;
     /**
      * @return Name of the ruleset.
      * 
      */
     private @Nullable String name;
+    /**
+     * @return Action to perform on the HTTP request header. Available values: `remove`, `set`, `add`
+     * 
+     */
     private @Nullable String operation;
+    /**
+     * @return Static value to provide as the HTTP request header value. Conflicts with `&#34;expression&#34;`.
+     * 
+     */
     private @Nullable String value;
 
     private GetRulesetsRulesetRuleActionParametersHeader() {}
+    /**
+     * @return Use a value dynamically determined by the Firewall Rules expression language based on Wireshark display filters. Refer to the [Firewall Rules language](https://developers.cloudflare.com/firewall/cf-firewall-language) documentation for all available fields, operators, and functions. Conflicts with `&#34;value&#34;`.
+     * 
+     */
     public Optional<String> expression() {
         return Optional.ofNullable(this.expression);
     }
@@ -31,9 +47,17 @@ public final class GetRulesetsRulesetRuleActionParametersHeader {
     public Optional<String> name() {
         return Optional.ofNullable(this.name);
     }
+    /**
+     * @return Action to perform on the HTTP request header. Available values: `remove`, `set`, `add`
+     * 
+     */
     public Optional<String> operation() {
         return Optional.ofNullable(this.operation);
     }
+    /**
+     * @return Static value to provide as the HTTP request header value. Conflicts with `&#34;expression&#34;`.
+     * 
+     */
     public Optional<String> value() {
         return Optional.ofNullable(this.value);
     }

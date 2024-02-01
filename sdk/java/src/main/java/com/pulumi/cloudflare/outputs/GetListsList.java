@@ -12,25 +12,65 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetListsList {
+    /**
+     * @return List description.
+     * 
+     */
     private @Nullable String description;
+    /**
+     * @return List identifier.
+     * 
+     */
     private @Nullable String id;
+    /**
+     * @return List kind.
+     * 
+     */
     private @Nullable String kind;
+    /**
+     * @return The list name to target for the resource.
+     * 
+     */
     private @Nullable String name;
+    /**
+     * @return Number of items in list.
+     * 
+     */
     private @Nullable Integer numitems;
 
     private GetListsList() {}
+    /**
+     * @return List description.
+     * 
+     */
     public Optional<String> description() {
         return Optional.ofNullable(this.description);
     }
+    /**
+     * @return List identifier.
+     * 
+     */
     public Optional<String> id() {
         return Optional.ofNullable(this.id);
     }
+    /**
+     * @return List kind.
+     * 
+     */
     public Optional<String> kind() {
         return Optional.ofNullable(this.kind);
     }
+    /**
+     * @return The list name to target for the resource.
+     * 
+     */
     public Optional<String> name() {
         return Optional.ofNullable(this.name);
     }
+    /**
+     * @return Number of items in list.
+     * 
+     */
     public Optional<Integer> numitems() {
         return Optional.ofNullable(this.numitems);
     }

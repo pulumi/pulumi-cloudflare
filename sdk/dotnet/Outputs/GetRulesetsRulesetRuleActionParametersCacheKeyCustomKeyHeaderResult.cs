@@ -13,8 +13,17 @@ namespace Pulumi.Cloudflare.Outputs
     [OutputType]
     public sealed class GetRulesetsRulesetRuleActionParametersCacheKeyCustomKeyHeaderResult
     {
+        /// <summary>
+        /// List of headers to check for presence in the custom key.
+        /// </summary>
         public readonly ImmutableArray<string> CheckPresences;
+        /// <summary>
+        /// Exclude the origin header from the custom key.
+        /// </summary>
         public readonly bool? ExcludeOrigin;
+        /// <summary>
+        /// List of headers to include in the custom key.
+        /// </summary>
         public readonly ImmutableArray<string> Includes;
 
         [OutputConstructor]

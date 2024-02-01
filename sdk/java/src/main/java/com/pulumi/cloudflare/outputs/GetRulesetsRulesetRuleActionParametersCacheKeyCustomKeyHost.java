@@ -11,9 +11,17 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetRulesetsRulesetRuleActionParametersCacheKeyCustomKeyHost {
+    /**
+     * @return Resolve hostname to IP address.
+     * 
+     */
     private @Nullable Boolean resolved;
 
     private GetRulesetsRulesetRuleActionParametersCacheKeyCustomKeyHost() {}
+    /**
+     * @return Resolve hostname to IP address.
+     * 
+     */
     public Optional<Boolean> resolved() {
         return Optional.ofNullable(this.resolved);
     }

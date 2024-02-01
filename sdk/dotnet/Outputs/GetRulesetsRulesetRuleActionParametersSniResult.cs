@@ -13,6 +13,9 @@ namespace Pulumi.Cloudflare.Outputs
     [OutputType]
     public sealed class GetRulesetsRulesetRuleActionParametersSniResult
     {
+        /// <summary>
+        /// Value to define for SNI.
+        /// </summary>
         public readonly string? Value;
 
         [OutputConstructor]

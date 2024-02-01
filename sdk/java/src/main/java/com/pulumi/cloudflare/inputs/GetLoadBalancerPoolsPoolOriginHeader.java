@@ -14,16 +14,32 @@ public final class GetLoadBalancerPoolsPoolOriginHeader extends com.pulumi.resou
 
     public static final GetLoadBalancerPoolsPoolOriginHeader Empty = new GetLoadBalancerPoolsPoolOriginHeader();
 
+    /**
+     * HTTP Header name.
+     * 
+     */
     @Import(name="header", required=true)
     private String header;
 
+    /**
+     * @return HTTP Header name.
+     * 
+     */
     public String header() {
         return this.header;
     }
 
+    /**
+     * Values for the HTTP headers.
+     * 
+     */
     @Import(name="values", required=true)
     private List<String> values;
 
+    /**
+     * @return Values for the HTTP headers.
+     * 
+     */
     public List<String> values() {
         return this.values;
     }
@@ -53,16 +69,34 @@ public final class GetLoadBalancerPoolsPoolOriginHeader extends com.pulumi.resou
             $ = new GetLoadBalancerPoolsPoolOriginHeader(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param header HTTP Header name.
+         * 
+         * @return builder
+         * 
+         */
         public Builder header(String header) {
             $.header = header;
             return this;
         }
 
+        /**
+         * @param values Values for the HTTP headers.
+         * 
+         * @return builder
+         * 
+         */
         public Builder values(List<String> values) {
             $.values = values;
             return this;
         }
 
+        /**
+         * @param values Values for the HTTP headers.
+         * 
+         * @return builder
+         * 
+         */
         public Builder values(String... values) {
             return values(List.of(values));
         }

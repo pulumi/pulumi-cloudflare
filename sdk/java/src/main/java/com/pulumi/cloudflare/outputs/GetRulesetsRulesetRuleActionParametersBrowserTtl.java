@@ -13,13 +13,29 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetRulesetsRulesetRuleActionParametersBrowserTtl {
+    /**
+     * @return Default browser TTL.
+     * 
+     */
     private @Nullable Integer default_;
+    /**
+     * @return Mode of the browser TTL.
+     * 
+     */
     private String mode;
 
     private GetRulesetsRulesetRuleActionParametersBrowserTtl() {}
+    /**
+     * @return Default browser TTL.
+     * 
+     */
     public Optional<Integer> default_() {
         return Optional.ofNullable(this.default_);
     }
+    /**
+     * @return Mode of the browser TTL.
+     * 
+     */
     public String mode() {
         return this.mode;
     }

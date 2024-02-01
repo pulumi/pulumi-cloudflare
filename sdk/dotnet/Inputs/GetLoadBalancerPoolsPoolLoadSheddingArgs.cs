@@ -12,15 +12,27 @@ namespace Pulumi.Cloudflare.Inputs
 
     public sealed class GetLoadBalancerPoolsPoolLoadSheddingInputArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Percent of traffic to shed 0 - 100.
+        /// </summary>
         [Input("defaultPercent")]
         public Input<double>? DefaultPercent { get; set; }
 
+        /// <summary>
+        /// Method of shedding traffic. Available values: `""`, `hash`, `random`
+        /// </summary>
         [Input("defaultPolicy")]
         public Input<string>? DefaultPolicy { get; set; }
 
+        /// <summary>
+        /// Percent of session traffic to shed 0 - 100.
+        /// </summary>
         [Input("sessionPercent")]
         public Input<double>? SessionPercent { get; set; }
 
+        /// <summary>
+        /// Method of shedding traffic. Available values: `""`, `hash`
+        /// </summary>
         [Input("sessionPolicy")]
         public Input<string>? SessionPolicy { get; set; }
 

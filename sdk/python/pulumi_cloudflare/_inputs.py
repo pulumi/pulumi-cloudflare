@@ -19021,6 +19021,12 @@ class GetLoadBalancerPoolsPoolLoadSheddingArgs:
                  default_policy: Optional[str] = None,
                  session_percent: Optional[float] = None,
                  session_policy: Optional[str] = None):
+        """
+        :param float default_percent: Percent of traffic to shed 0 - 100.
+        :param str default_policy: Method of shedding traffic. Available values: `""`, `hash`, `random`
+        :param float session_percent: Percent of session traffic to shed 0 - 100.
+        :param str session_policy: Method of shedding traffic. Available values: `""`, `hash`
+        """
         if default_percent is not None:
             pulumi.set(__self__, "default_percent", default_percent)
         if default_policy is not None:
@@ -19033,6 +19039,9 @@ class GetLoadBalancerPoolsPoolLoadSheddingArgs:
     @property
     @pulumi.getter(name="defaultPercent")
     def default_percent(self) -> Optional[float]:
+        """
+        Percent of traffic to shed 0 - 100.
+        """
         return pulumi.get(self, "default_percent")
 
     @default_percent.setter
@@ -19042,6 +19051,9 @@ class GetLoadBalancerPoolsPoolLoadSheddingArgs:
     @property
     @pulumi.getter(name="defaultPolicy")
     def default_policy(self) -> Optional[str]:
+        """
+        Method of shedding traffic. Available values: `""`, `hash`, `random`
+        """
         return pulumi.get(self, "default_policy")
 
     @default_policy.setter
@@ -19051,6 +19063,9 @@ class GetLoadBalancerPoolsPoolLoadSheddingArgs:
     @property
     @pulumi.getter(name="sessionPercent")
     def session_percent(self) -> Optional[float]:
+        """
+        Percent of session traffic to shed 0 - 100.
+        """
         return pulumi.get(self, "session_percent")
 
     @session_percent.setter
@@ -19060,6 +19075,9 @@ class GetLoadBalancerPoolsPoolLoadSheddingArgs:
     @property
     @pulumi.getter(name="sessionPolicy")
     def session_policy(self) -> Optional[str]:
+        """
+        Method of shedding traffic. Available values: `""`, `hash`
+        """
         return pulumi.get(self, "session_policy")
 
     @session_policy.setter
@@ -19076,8 +19094,11 @@ class GetLoadBalancerPoolsPoolOriginArgs:
                  headers: Optional[Sequence['GetLoadBalancerPoolsPoolOriginHeaderArgs']] = None,
                  weight: Optional[float] = None):
         """
+        :param str address: The IP address (IPv4 or IPv6) of the origin, or the publicly addressable hostname.
         :param str name: A regular expression matching the name of the Load Balancer pool to lookup.
         :param bool enabled: Whether this pool is enabled. Disabled pools will not receive traffic and are excluded from health checks.
+        :param Sequence['GetLoadBalancerPoolsPoolOriginHeaderArgs'] headers: HTTP request headers.
+        :param float weight: The weight (0.01 - 1.00) of this origin, relative to other origins in the pool. Equal values mean equal weighting. A weight of 0 means traffic will not be sent to this origin, but health is still checked. When `origin_steering.policy="least_outstanding_requests"`, weight is used to scale the origin's outstanding requests. When `origin_steering.policy="least_connections"`, weight is used to scale the origin's open connections.
         """
         pulumi.set(__self__, "address", address)
         pulumi.set(__self__, "name", name)
@@ -19091,6 +19112,9 @@ class GetLoadBalancerPoolsPoolOriginArgs:
     @property
     @pulumi.getter
     def address(self) -> str:
+        """
+        The IP address (IPv4 or IPv6) of the origin, or the publicly addressable hostname.
+        """
         return pulumi.get(self, "address")
 
     @address.setter
@@ -19124,6 +19148,9 @@ class GetLoadBalancerPoolsPoolOriginArgs:
     @property
     @pulumi.getter
     def headers(self) -> Optional[Sequence['GetLoadBalancerPoolsPoolOriginHeaderArgs']]:
+        """
+        HTTP request headers.
+        """
         return pulumi.get(self, "headers")
 
     @headers.setter
@@ -19133,6 +19160,9 @@ class GetLoadBalancerPoolsPoolOriginArgs:
     @property
     @pulumi.getter
     def weight(self) -> Optional[float]:
+        """
+        The weight (0.01 - 1.00) of this origin, relative to other origins in the pool. Equal values mean equal weighting. A weight of 0 means traffic will not be sent to this origin, but health is still checked. When `origin_steering.policy="least_outstanding_requests"`, weight is used to scale the origin's outstanding requests. When `origin_steering.policy="least_connections"`, weight is used to scale the origin's open connections.
+        """
         return pulumi.get(self, "weight")
 
     @weight.setter
@@ -19145,12 +19175,19 @@ class GetLoadBalancerPoolsPoolOriginHeaderArgs:
     def __init__(__self__, *,
                  header: str,
                  values: Sequence[str]):
+        """
+        :param str header: HTTP Header name.
+        :param Sequence[str] values: Values for the HTTP headers.
+        """
         pulumi.set(__self__, "header", header)
         pulumi.set(__self__, "values", values)
 
     @property
     @pulumi.getter
     def header(self) -> str:
+        """
+        HTTP Header name.
+        """
         return pulumi.get(self, "header")
 
     @header.setter
@@ -19160,6 +19197,9 @@ class GetLoadBalancerPoolsPoolOriginHeaderArgs:
     @property
     @pulumi.getter
     def values(self) -> Sequence[str]:
+        """
+        Values for the HTTP headers.
+        """
         return pulumi.get(self, "values")
 
     @values.setter
