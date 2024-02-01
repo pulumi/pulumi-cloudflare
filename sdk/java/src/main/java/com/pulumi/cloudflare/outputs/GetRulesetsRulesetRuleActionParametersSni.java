@@ -11,9 +11,17 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetRulesetsRulesetRuleActionParametersSni {
+    /**
+     * @return Value to define for SNI.
+     * 
+     */
     private @Nullable String value;
 
     private GetRulesetsRulesetRuleActionParametersSni() {}
+    /**
+     * @return Value to define for SNI.
+     * 
+     */
     public Optional<String> value() {
         return Optional.ofNullable(this.value);
     }

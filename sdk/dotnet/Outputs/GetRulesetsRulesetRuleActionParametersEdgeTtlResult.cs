@@ -13,8 +13,17 @@ namespace Pulumi.Cloudflare.Outputs
     [OutputType]
     public sealed class GetRulesetsRulesetRuleActionParametersEdgeTtlResult
     {
+        /// <summary>
+        /// Default edge TTL
+        /// </summary>
         public readonly int? Default;
+        /// <summary>
+        /// Mode of the edge TTL.
+        /// </summary>
         public readonly string Mode;
+        /// <summary>
+        /// Edge TTL for the status codes.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetRulesetsRulesetRuleActionParametersEdgeTtlStatusCodeTtlResult> StatusCodeTtls;
 
         [OutputConstructor]

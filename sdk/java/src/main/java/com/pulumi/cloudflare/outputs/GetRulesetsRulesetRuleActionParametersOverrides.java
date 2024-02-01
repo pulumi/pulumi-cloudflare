@@ -15,27 +15,59 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetRulesetsRulesetRuleActionParametersOverrides {
+    /**
+     * @return Action to perform in the rule-level override. Available values: `block`, `challenge`, `compress_response`, `ddos_dynamic`, `ddos_mitigation`, `execute`, `force_connection_close`, `js_challenge`, `log`, `log_custom_field`, `managed_challenge`, `redirect`, `rewrite`, `route`, `score`, `serve_error`, `set_cache_settings`, `set_config`, `skip`
+     * 
+     */
     private @Nullable String action;
+    /**
+     * @return List of tag-based overrides.
+     * 
+     */
     private @Nullable List<GetRulesetsRulesetRuleActionParametersOverridesCategory> categories;
     /**
+     * @return Defines if the current ruleset-level override enables or disables the ruleset.
+     * 
      * @deprecated
      * Use `status` instead. Continuing to use `enabled` will result in an inconsistent state for your Ruleset configuration.
      * 
      */
     @Deprecated /* Use `status` instead. Continuing to use `enabled` will result in an inconsistent state for your Ruleset configuration. */
     private @Nullable Boolean enabled;
+    /**
+     * @return List of rule-based overrides.
+     * 
+     */
     private @Nullable List<GetRulesetsRulesetRuleActionParametersOverridesRule> rules;
+    /**
+     * @return Sensitivity level to override for all ruleset rules. Available values: `default`, `medium`, `low`, `eoff`
+     * 
+     */
     private @Nullable String sensitivityLevel;
+    /**
+     * @return Defines if the current ruleset-level override enables or disables the ruleset. Available values: `enabled`, `disabled`
+     * 
+     */
     private @Nullable String status;
 
     private GetRulesetsRulesetRuleActionParametersOverrides() {}
+    /**
+     * @return Action to perform in the rule-level override. Available values: `block`, `challenge`, `compress_response`, `ddos_dynamic`, `ddos_mitigation`, `execute`, `force_connection_close`, `js_challenge`, `log`, `log_custom_field`, `managed_challenge`, `redirect`, `rewrite`, `route`, `score`, `serve_error`, `set_cache_settings`, `set_config`, `skip`
+     * 
+     */
     public Optional<String> action() {
         return Optional.ofNullable(this.action);
     }
+    /**
+     * @return List of tag-based overrides.
+     * 
+     */
     public List<GetRulesetsRulesetRuleActionParametersOverridesCategory> categories() {
         return this.categories == null ? List.of() : this.categories;
     }
     /**
+     * @return Defines if the current ruleset-level override enables or disables the ruleset.
+     * 
      * @deprecated
      * Use `status` instead. Continuing to use `enabled` will result in an inconsistent state for your Ruleset configuration.
      * 
@@ -44,12 +76,24 @@ public final class GetRulesetsRulesetRuleActionParametersOverrides {
     public Optional<Boolean> enabled() {
         return Optional.ofNullable(this.enabled);
     }
+    /**
+     * @return List of rule-based overrides.
+     * 
+     */
     public List<GetRulesetsRulesetRuleActionParametersOverridesRule> rules() {
         return this.rules == null ? List.of() : this.rules;
     }
+    /**
+     * @return Sensitivity level to override for all ruleset rules. Available values: `default`, `medium`, `low`, `eoff`
+     * 
+     */
     public Optional<String> sensitivityLevel() {
         return Optional.ofNullable(this.sensitivityLevel);
     }
+    /**
+     * @return Defines if the current ruleset-level override enables or disables the ruleset. Available values: `enabled`, `disabled`
+     * 
+     */
     public Optional<String> status() {
         return Optional.ofNullable(this.status);
     }

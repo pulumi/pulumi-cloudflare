@@ -1266,56 +1266,170 @@ export interface FallbackDomainDomain {
 }
 
 export interface GetAccountRolesRole {
+    /**
+     * Description of role's permissions.
+     */
     description?: string;
+    /**
+     * Role identifier tag.
+     */
     id?: string;
+    /**
+     * Role Name.
+     */
     name?: string;
 }
 
 export interface GetAccountsAccount {
+    /**
+     * Whether 2FA is enforced on the account.
+     */
     enforceTwofactor?: boolean;
+    /**
+     * Account ID.
+     */
     id?: string;
+    /**
+     * Account name.
+     */
     name?: string;
+    /**
+     * Account subscription type.
+     */
     type?: string;
 }
 
 export interface GetDevicePostureRulesRule {
     description?: string;
+    /**
+     * Expire posture results after the specified amount of time. Must be in the format `1h` or `30m`. Valid units are `h` and `m`.
+     */
     expiration?: string;
+    /**
+     * ID of the Device Posture Rule.
+     */
     id: string;
+    /**
+     * Name of the device posture rule.
+     */
     name?: string;
+    /**
+     * Tells the client when to run the device posture check. Must be in the format `1h` or `30m`. Valid units are `h` and `m`.
+     */
     schedule?: string;
+    /**
+     * The device posture rule type. Available values: `serialNumber`, `file`, `application`, `gateway`, `warp`, `domainJoined`, `osVersion`, `diskEncryption`, `firewall`, `clientCertificate`, `workspaceOne`, `uniqueClientId`, `crowdstrikeS2s`, `sentinelone`, `kolide`, `taniumS2s`, `intune`, `sentineloneS2s`
+     */
     type: string;
 }
 
 export interface GetDevicesDevice {
+    /**
+     * When the device was created.
+     */
     created?: string;
+    /**
+     * Whether the device has been deleted.
+     */
     deleted?: boolean;
+    /**
+     * The type of the device.
+     */
     deviceType?: string;
+    /**
+     * Device ID.
+     */
     id?: string;
+    /**
+     * IPv4 or IPv6 address.
+     */
     ip?: string;
+    /**
+     * The device's public key.
+     */
     key?: string;
+    /**
+     * When the device was last seen.
+     */
     lastSeen?: string;
+    /**
+     * The device's MAC address.
+     */
     macAddress?: string;
+    /**
+     * The device manufacturer's name.
+     */
     manufacturer?: string;
+    /**
+     * The device model name.
+     */
     model?: string;
+    /**
+     * The device name.
+     */
     name?: string;
+    /**
+     * The Linux distribution name.
+     */
     osDistroName?: string;
+    /**
+     * The Linux distribution revision.
+     */
     osDistroRevision?: string;
+    /**
+     * The operating system version.
+     */
     osVersion?: string;
+    /**
+     * When the device was revoked.
+     */
     revokedAt?: string;
+    /**
+     * The device's serial number.
+     */
     serialNumber?: string;
+    /**
+     * When the device was updated.
+     */
     updated?: string;
+    /**
+     * User's email.
+     */
     userEmail?: string;
+    /**
+     * User's ID.
+     */
     userId?: string;
+    /**
+     * User's Name.
+     */
     userName?: string;
+    /**
+     * The WARP client version.
+     */
     version?: string;
 }
 
 export interface GetListsList {
+    /**
+     * List description.
+     */
     description?: string;
+    /**
+     * List identifier.
+     */
     id?: string;
+    /**
+     * List kind.
+     */
     kind?: string;
+    /**
+     * The list name to target for the resource.
+     */
     name?: string;
+    /**
+     * Number of items in list.
+     */
     numitems?: number;
 }
 
@@ -1386,28 +1500,55 @@ export interface GetLoadBalancerPoolsPool {
 }
 
 export interface GetLoadBalancerPoolsPoolLoadShedding {
+    /**
+     * Percent of traffic to shed 0 - 100.
+     */
     defaultPercent?: number;
+    /**
+     * Method of shedding traffic. Available values: `""`, `hash`, `random`
+     */
     defaultPolicy?: string;
+    /**
+     * Percent of session traffic to shed 0 - 100.
+     */
     sessionPercent?: number;
+    /**
+     * Method of shedding traffic. Available values: `""`, `hash`
+     */
     sessionPolicy?: string;
 }
 
 export interface GetLoadBalancerPoolsPoolOrigin {
+    /**
+     * The IP address (IPv4 or IPv6) of the origin, or the publicly addressable hostname.
+     */
     address: string;
     /**
      * Whether this pool is enabled. Disabled pools will not receive traffic and are excluded from health checks.
      */
     enabled?: boolean;
+    /**
+     * HTTP request headers.
+     */
     headers?: outputs.GetLoadBalancerPoolsPoolOriginHeader[];
     /**
      * A regular expression matching the name of the Load Balancer pool to lookup.
      */
     name: string;
+    /**
+     * The weight (0.01 - 1.00) of this origin, relative to other origins in the pool. Equal values mean equal weighting. A weight of 0 means traffic will not be sent to this origin, but health is still checked. When `origin_steering.policy="leastOutstandingRequests"`, weight is used to scale the origin's outstanding requests. When `origin_steering.policy="leastConnections"`, weight is used to scale the origin's open connections.
+     */
     weight?: number;
 }
 
 export interface GetLoadBalancerPoolsPoolOriginHeader {
+    /**
+     * HTTP Header name.
+     */
     header: string;
+    /**
+     * Values for the HTTP headers.
+     */
     values: string[];
 }
 
@@ -1435,29 +1576,80 @@ export interface GetRulesetsFilter {
 }
 
 export interface GetRulesetsRuleset {
+    /**
+     * Brief summary of the ruleset and its intended use.
+     */
     description?: string;
+    /**
+     * ID of the ruleset.
+     */
     id: string;
+    /**
+     * Type of Ruleset. Available values: `custom`, `managed`, `root`, `zone`
+     */
     kind: string;
+    /**
+     * Name of the ruleset.
+     */
     name: string;
+    /**
+     * Point in the request/response lifecycle where the ruleset executes. Available values: `ddosL4`, `ddosL7`, `httpConfigSettings`, `httpCustomErrors`, `httpLogCustomFields`, `httpRatelimit`, `httpRequestCacheSettings`, `httpRequestDynamicRedirect`, `httpRequestFirewallCustom`, `httpRequestFirewallManaged`, `httpRequestLateTransform`, `httpRequestOrigin`, `httpRequestRedirect`, `httpRequestSanitize`, `httpRequestSbfm`, `httpRequestTransform`, `httpResponseCompression`, `httpResponseFirewallManaged`, `httpResponseHeadersTransform`, `magicTransit`
+     */
     phase: string;
+    /**
+     * List of rules to apply to the ruleset.
+     */
     rules?: outputs.GetRulesetsRulesetRule[];
+    /**
+     * Version of the ruleset.
+     */
     version: string;
 }
 
 export interface GetRulesetsRulesetRule {
+    /**
+     * Action to perform in the ruleset rule. Available values: `block`, `challenge`, `compressResponse`, `ddosDynamic`, `ddosMitigation`, `execute`, `forceConnectionClose`, `jsChallenge`, `log`, `logCustomField`, `managedChallenge`, `redirect`, `rewrite`, `route`, `score`, `serveError`, `setCacheSettings`, `setConfig`, `skip`
+     */
     action?: string;
+    /**
+     * List of parameters that configure the behavior of the ruleset rule action.
+     */
     actionParameters?: outputs.GetRulesetsRulesetRuleActionParameters;
+    /**
+     * Brief summary of the ruleset rule and its intended use.
+     */
     description?: string;
+    /**
+     * Whether the rule is active.
+     */
     enabled?: boolean;
+    /**
+     * List of parameters that configure exposed credential checks.
+     */
     exposedCredentialCheck?: outputs.GetRulesetsRulesetRuleExposedCredentialCheck;
+    /**
+     * Criteria for an HTTP request to trigger the ruleset rule action. Uses the Firewall Rules expression language based on Wireshark display filters. Refer to the [Firewall Rules language](https://developers.cloudflare.com/firewall/cf-firewall-language) documentation for all available fields, operators, and functions
+     */
     expression: string;
     /**
      * The ID of the Ruleset to target.
      */
     id: string;
+    /**
+     * The most recent update to this rule.
+     */
     lastUpdated?: string;
+    /**
+     * List parameters to configure how the rule generates logs.
+     */
     logging?: outputs.GetRulesetsRulesetRuleLogging;
+    /**
+     * List of parameters that configure HTTP rate limiting behaviour.
+     */
     ratelimit?: outputs.GetRulesetsRulesetRuleRatelimit;
+    /**
+     * Rule reference.
+     */
     ref: string;
     /**
      * Version of the ruleset to filter on.
@@ -1466,57 +1658,198 @@ export interface GetRulesetsRulesetRule {
 }
 
 export interface GetRulesetsRulesetRuleActionParameters {
+    /**
+     * Allows for the ability to support caching on non-standard ports.
+     */
     additionalCacheablePorts?: number[];
+    /**
+     * Turn on or off Cloudflare Automatic HTTPS rewrites.
+     */
     automaticHttpsRewrites?: boolean;
+    /**
+     * Indicate which file extensions to minify automatically.
+     */
     autominifies?: outputs.GetRulesetsRulesetRuleActionParametersAutominify[];
+    /**
+     * Inspect the visitor's browser for headers commonly associated with spammers and certain bots.
+     */
     bic?: boolean;
+    /**
+     * List of browser TTL parameters to apply to the request.
+     */
     browserTtl?: outputs.GetRulesetsRulesetRuleActionParametersBrowserTtl;
+    /**
+     * Whether to cache if expression matches.
+     */
     cache?: boolean;
+    /**
+     * List of cache key parameters to apply to the request.
+     */
     cacheKey?: outputs.GetRulesetsRulesetRuleActionParametersCacheKey;
+    /**
+     * Content of the custom error response
+     */
     content?: string;
+    /**
+     * Content-Type of the custom error response
+     */
     contentType?: string;
+    /**
+     * List of cookie values to include as part of custom fields logging.
+     */
     cookieFields?: string[];
+    /**
+     * Turn off all active Cloudflare Apps.
+     */
     disableApps?: boolean;
+    /**
+     * Turn off railgun feature of the Cloudflare Speed app.
+     */
     disableRailgun?: boolean;
+    /**
+     * Turn off zaraz feature.
+     */
     disableZaraz?: boolean;
+    /**
+     * List of edge TTL parameters to apply to the request.
+     */
     edgeTtl?: outputs.GetRulesetsRulesetRuleActionParametersEdgeTtl;
+    /**
+     * Turn on or off the Cloudflare Email Obfuscation feature of the Cloudflare Scrape Shield app.
+     */
     emailObfuscation?: boolean;
+    /**
+     * Use a list to lookup information for the action.
+     */
     fromList?: outputs.GetRulesetsRulesetRuleActionParametersFromList;
+    /**
+     * Use a value to lookup information for the action.
+     */
     fromValue?: outputs.GetRulesetsRulesetRuleActionParametersFromValue;
+    /**
+     * List of HTTP header modifications to perform in the ruleset rule.
+     */
     headers?: outputs.GetRulesetsRulesetRuleActionParametersHeader[];
+    /**
+     * Host Header that request origin receives.
+     */
     hostHeader?: string;
+    /**
+     * Turn on or off the hotlink protection feature.
+     */
     hotlinkProtection?: boolean;
     /**
      * The ID of the Ruleset to target.
      */
     id?: string;
     increment?: number;
+    /**
+     * List of properties to configure WAF payload logging.
+     */
     matchedData?: outputs.GetRulesetsRulesetRuleActionParametersMatchedData;
+    /**
+     * Turn on or off Cloudflare Mirage of the Cloudflare Speed app.
+     */
     mirage?: boolean;
+    /**
+     * Turn on or off the Cloudflare Opportunistic Encryption feature of the Edge Certificates tab in the Cloudflare SSL/TLS app.
+     */
     opportunisticEncryption?: boolean;
+    /**
+     * List of properties to change request origin.
+     */
     origin?: outputs.GetRulesetsRulesetRuleActionParametersOrigin;
+    /**
+     * Sets a more compliant mode for parsing Cache Control headers
+     */
     originCacheControl?: boolean;
+    /**
+     * Pass-through error page for origin.
+     */
     originErrorPagePassthru?: boolean;
+    /**
+     * List of override configurations to apply to the ruleset.
+     */
     overrides?: outputs.GetRulesetsRulesetRuleActionParametersOverrides;
+    /**
+     * Point in the request/response lifecycle where the ruleset will be created. Available values: `ddosL4`, `ddosL7`, `httpConfigSettings`, `httpCustomErrors`, `httpLogCustomFields`, `httpRatelimit`, `httpRequestCacheSettings`, `httpRequestDynamicRedirect`, `httpRequestFirewallCustom`, `httpRequestFirewallManaged`, `httpRequestLateTransform`, `httpRequestOrigin`, `httpRequestRedirect`, `httpRequestSanitize`, `httpRequestSbfm`, `httpRequestTransform`, `httpResponseCompression`, `httpResponseFirewallManaged`, `httpResponseHeadersTransform`, `magicTransit`
+     */
     phases?: string[];
+    /**
+     * Apply options from the Polish feature of the Cloudflare Speed app.
+     */
     polish?: string;
+    /**
+     * Products to target with the actions. Available values: `bic`, `hot`, `ratelimit`, `securityLevel`, `uablock`, `waf`, `zonelockdown`
+     */
     products?: string[];
+    /**
+     * Sets the timeout value for reading content from an origin server.
+     */
     readTimeout?: number;
+    /**
+     * List of request headers to include as part of custom fields logging, in lowercase.
+     */
     requestFields?: string[];
+    /**
+     * Respect strong ETags.
+     */
     respectStrongEtags?: boolean;
+    /**
+     * List of response headers to include as part of custom fields logging, in lowercase.
+     */
     responseFields?: string[];
+    /**
+     * List of parameters that configure the response given to end users
+     */
     responses?: outputs.GetRulesetsRulesetRuleActionParametersResponse[];
+    /**
+     * Turn on or off Cloudflare Rocket Loader in the Cloudflare Speed app.
+     */
     rocketLoader?: boolean;
+    /**
+     * Map of managed WAF rule ID to comma-delimited string of ruleset rule IDs. Example: `rules = { "efb7b8c949ac4650a09736fc376e9aee" = "5de7edfa648c4d6891dc3e7f84534ffa,e3a567afc347477d9702d9047e97d760" }`
+     */
     rules?: {[key: string]: string};
+    /**
+     * Which ruleset ID to target.
+     */
     ruleset?: string;
+    /**
+     * List of managed WAF rule IDs to target. Only valid when the `"action"` is set to skip
+     */
     rulesets?: string[];
+    /**
+     * Control options for the Security Level feature from the Security app.
+     */
     securityLevel?: string;
+    /**
+     * List of serve stale parameters to apply to the request.
+     */
     serveStale?: outputs.GetRulesetsRulesetRuleActionParametersServeStale;
+    /**
+     * Turn on or off the Server Side Excludes feature of the Cloudflare Scrape Shield app.
+     */
     serverSideExcludes?: boolean;
+    /**
+     * List of properties to manange Server Name Indication.
+     */
     sni?: outputs.GetRulesetsRulesetRuleActionParametersSni;
+    /**
+     * Control options for the SSL feature of the Edge Certificates tab in the Cloudflare SSL/TLS app.
+     */
     ssl?: string;
+    /**
+     * HTTP status code of the custom error response
+     */
     statusCode?: number;
+    /**
+     * Turn on or off the SXG feature.
+     */
     sxg?: boolean;
+    /**
+     * List of URI properties to configure for the ruleset rule when performing URL rewrite transformations.
+     */
     uri?: outputs.GetRulesetsRulesetRuleActionParametersUri;
     /**
      * Version of the ruleset to filter on.
@@ -1525,75 +1858,177 @@ export interface GetRulesetsRulesetRuleActionParameters {
 }
 
 export interface GetRulesetsRulesetRuleActionParametersAutominify {
+    /**
+     * SSL minification.
+     */
     css?: boolean;
+    /**
+     * HTML minification.
+     */
     html?: boolean;
+    /**
+     * JS minification.
+     */
     js?: boolean;
 }
 
 export interface GetRulesetsRulesetRuleActionParametersBrowserTtl {
+    /**
+     * Default browser TTL.
+     */
     default?: number;
+    /**
+     * Mode of the browser TTL.
+     */
     mode: string;
 }
 
 export interface GetRulesetsRulesetRuleActionParametersCacheKey {
+    /**
+     * Cache by device type. Conflicts with "custom_key.user.device_type".
+     */
     cacheByDeviceType?: boolean;
+    /**
+     * Cache deception armor.
+     */
     cacheDeceptionArmor?: boolean;
+    /**
+     * Custom key parameters for the request.
+     */
     customKey?: outputs.GetRulesetsRulesetRuleActionParametersCacheKeyCustomKey;
+    /**
+     * Ignore query strings order.
+     */
     ignoreQueryStringsOrder?: boolean;
 }
 
 export interface GetRulesetsRulesetRuleActionParametersCacheKeyCustomKey {
+    /**
+     * Cookie parameters for the custom key.
+     */
     cookie?: outputs.GetRulesetsRulesetRuleActionParametersCacheKeyCustomKeyCookie;
+    /**
+     * Header parameters for the custom key.
+     */
     header?: outputs.GetRulesetsRulesetRuleActionParametersCacheKeyCustomKeyHeader;
+    /**
+     * Host parameters for the custom key.
+     */
     host?: outputs.GetRulesetsRulesetRuleActionParametersCacheKeyCustomKeyHost;
+    /**
+     * Query string parameters for the custom key.
+     */
     queryString?: outputs.GetRulesetsRulesetRuleActionParametersCacheKeyCustomKeyQueryString;
+    /**
+     * User parameters for the custom key.
+     */
     user?: outputs.GetRulesetsRulesetRuleActionParametersCacheKeyCustomKeyUser;
 }
 
 export interface GetRulesetsRulesetRuleActionParametersCacheKeyCustomKeyCookie {
+    /**
+     * List of cookies to check for presence in the custom key.
+     */
     checkPresences?: string[];
+    /**
+     * List of cookies to include in the custom key.
+     */
     includes?: string[];
 }
 
 export interface GetRulesetsRulesetRuleActionParametersCacheKeyCustomKeyHeader {
+    /**
+     * List of headers to check for presence in the custom key.
+     */
     checkPresences?: string[];
+    /**
+     * Exclude the origin header from the custom key.
+     */
     excludeOrigin?: boolean;
+    /**
+     * List of headers to include in the custom key.
+     */
     includes?: string[];
 }
 
 export interface GetRulesetsRulesetRuleActionParametersCacheKeyCustomKeyHost {
+    /**
+     * Resolve hostname to IP address.
+     */
     resolved?: boolean;
 }
 
 export interface GetRulesetsRulesetRuleActionParametersCacheKeyCustomKeyQueryString {
+    /**
+     * List of query string parameters to exclude from the custom key. Conflicts with "include".
+     */
     excludes?: string[];
+    /**
+     * List of query string parameters to include in the custom key. Conflicts with "exclude".
+     */
     includes?: string[];
 }
 
 export interface GetRulesetsRulesetRuleActionParametersCacheKeyCustomKeyUser {
+    /**
+     * Add device type to the custom key. Conflicts with "cache_key.cache_by_device_type".
+     */
     deviceType?: boolean;
+    /**
+     * Add geo data to the custom key.
+     */
     geo?: boolean;
+    /**
+     * Add language data to the custom key.
+     */
     lang?: boolean;
 }
 
 export interface GetRulesetsRulesetRuleActionParametersEdgeTtl {
+    /**
+     * Default edge TTL
+     */
     default?: number;
+    /**
+     * Mode of the edge TTL.
+     */
     mode: string;
+    /**
+     * Edge TTL for the status codes.
+     */
     statusCodeTtls?: outputs.GetRulesetsRulesetRuleActionParametersEdgeTtlStatusCodeTtl[];
 }
 
 export interface GetRulesetsRulesetRuleActionParametersEdgeTtlStatusCodeTtl {
+    /**
+     * Status code for which the edge TTL is applied. Conflicts with "statusCodeRange".
+     */
     statusCode?: number;
+    /**
+     * Status code range for which the edge TTL is applied. Conflicts with "statusCode".
+     */
     statusCodeRanges?: outputs.GetRulesetsRulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRange[];
+    /**
+     * Status code edge TTL value.
+     */
     value: number;
 }
 
 export interface GetRulesetsRulesetRuleActionParametersEdgeTtlStatusCodeTtlStatusCodeRange {
+    /**
+     * From status code.
+     */
     from?: number;
+    /**
+     * To status code.
+     */
     to?: number;
 }
 
 export interface GetRulesetsRulesetRuleActionParametersFromList {
+    /**
+     * Expression to use for the list lookup.
+     */
     key: string;
     /**
      * Name of the ruleset.
@@ -1602,60 +2037,126 @@ export interface GetRulesetsRulesetRuleActionParametersFromList {
 }
 
 export interface GetRulesetsRulesetRuleActionParametersFromValue {
+    /**
+     * Preserve query string for redirect URL.
+     */
     preserveQueryString?: boolean;
+    /**
+     * Status code for redirect.
+     */
     statusCode?: number;
+    /**
+     * Target URL for redirect.
+     */
     targetUrl?: outputs.GetRulesetsRulesetRuleActionParametersFromValueTargetUrl;
 }
 
 export interface GetRulesetsRulesetRuleActionParametersFromValueTargetUrl {
+    /**
+     * Use a value dynamically determined by the Firewall Rules expression language based on Wireshark display filters. Refer to the [Firewall Rules language](https://developers.cloudflare.com/firewall/cf-firewall-language) documentation for all available fields, operators, and functions. Conflicts with `"value"`.
+     */
     expression?: string;
+    /**
+     * Static value to provide as the HTTP request header value. Conflicts with `"expression"`.
+     */
     value?: string;
 }
 
 export interface GetRulesetsRulesetRuleActionParametersHeader {
+    /**
+     * Use a value dynamically determined by the Firewall Rules expression language based on Wireshark display filters. Refer to the [Firewall Rules language](https://developers.cloudflare.com/firewall/cf-firewall-language) documentation for all available fields, operators, and functions. Conflicts with `"value"`.
+     */
     expression?: string;
     /**
      * Name of the ruleset.
      */
     name?: string;
+    /**
+     * Action to perform on the HTTP request header. Available values: `remove`, `set`, `add`
+     */
     operation?: string;
+    /**
+     * Static value to provide as the HTTP request header value. Conflicts with `"expression"`.
+     */
     value?: string;
 }
 
 export interface GetRulesetsRulesetRuleActionParametersMatchedData {
+    /**
+     * Public key to use within WAF Ruleset payload logging to view the HTTP request parameters. You can generate a public key [using the `matched-data-cli` command-line tool](https://developers.cloudflare.com/waf/managed-rulesets/payload-logging/command-line/generate-key-pair) or [in the Cloudflare dashboard](https://developers.cloudflare.com/waf/managed-rulesets/payload-logging/configure)
+     */
     publicKey?: string;
 }
 
 export interface GetRulesetsRulesetRuleActionParametersOrigin {
+    /**
+     * Origin Hostname where request is sent.
+     */
     host?: string;
+    /**
+     * Origin Port where request is sent.
+     */
     port?: number;
 }
 
 export interface GetRulesetsRulesetRuleActionParametersOverrides {
+    /**
+     * Action to perform in the rule-level override. Available values: `block`, `challenge`, `compressResponse`, `ddosDynamic`, `ddosMitigation`, `execute`, `forceConnectionClose`, `jsChallenge`, `log`, `logCustomField`, `managedChallenge`, `redirect`, `rewrite`, `route`, `score`, `serveError`, `setCacheSettings`, `setConfig`, `skip`
+     */
     action?: string;
+    /**
+     * List of tag-based overrides.
+     */
     categories?: outputs.GetRulesetsRulesetRuleActionParametersOverridesCategory[];
     /**
+     * Defines if the current ruleset-level override enables or disables the ruleset.
+     *
      * @deprecated Use `status` instead. Continuing to use `enabled` will result in an inconsistent state for your Ruleset configuration.
      */
     enabled?: boolean;
+    /**
+     * List of rule-based overrides.
+     */
     rules?: outputs.GetRulesetsRulesetRuleActionParametersOverridesRule[];
+    /**
+     * Sensitivity level to override for all ruleset rules. Available values: `default`, `medium`, `low`, `eoff`
+     */
     sensitivityLevel?: string;
+    /**
+     * Defines if the current ruleset-level override enables or disables the ruleset. Available values: `enabled`, `disabled`
+     */
     status?: string;
 }
 
 export interface GetRulesetsRulesetRuleActionParametersOverridesCategory {
+    /**
+     * Action to perform in the tag-level override. Available values: `block`, `challenge`, `compressResponse`, `ddosDynamic`, `ddosMitigation`, `execute`, `forceConnectionClose`, `jsChallenge`, `log`, `logCustomField`, `managedChallenge`, `redirect`, `rewrite`, `route`, `score`, `serveError`, `setCacheSettings`, `setConfig`, `skip`
+     */
     action?: string;
+    /**
+     * Tag name to apply the ruleset rule override to.
+     */
     category?: string;
     /**
+     * Defines if the current tag-level override enables or disables the ruleset rules with the specified tag.
+     *
      * @deprecated Use `status` instead. Continuing to use `enabled` will result in an inconsistent state for your Ruleset configuration.
      */
     enabled?: boolean;
+    /**
+     * Defines if the current tag-level override enables or disables the ruleset rules with the specified tag. Available values: `enabled`, `disabled`
+     */
     status?: string;
 }
 
 export interface GetRulesetsRulesetRuleActionParametersOverridesRule {
+    /**
+     * Action to perform in the rule-level override. Available values: `block`, `challenge`, `compressResponse`, `ddosDynamic`, `ddosMitigation`, `execute`, `forceConnectionClose`, `jsChallenge`, `log`, `logCustomField`, `managedChallenge`, `redirect`, `rewrite`, `route`, `score`, `serveError`, `setCacheSettings`, `setConfig`, `skip`
+     */
     action?: string;
     /**
+     * Defines if the current rule-level override enables or disables the rule.
+     *
      * @deprecated Use `status` instead. Continuing to use `enabled` will result in an inconsistent state for your Ruleset configuration.
      */
     enabled?: boolean;
@@ -1663,62 +2164,139 @@ export interface GetRulesetsRulesetRuleActionParametersOverridesRule {
      * The ID of the Ruleset to target.
      */
     id?: string;
+    /**
+     * Anomaly score threshold to apply in the ruleset rule override. Only applicable to modsecurity-based rulesets.
+     */
     scoreThreshold?: number;
+    /**
+     * Sensitivity level for a ruleset rule override.
+     */
     sensitivityLevel?: string;
+    /**
+     * Defines if the current rule-level override enables or disables the rule. Available values: `enabled`, `disabled`
+     */
     status?: string;
 }
 
 export interface GetRulesetsRulesetRuleActionParametersResponse {
+    /**
+     * Body content to include in the response.
+     */
     content?: string;
+    /**
+     * HTTP content type to send in the response.
+     */
     contentType?: string;
+    /**
+     * HTTP status code to send in the response.
+     */
     statusCode?: number;
 }
 
 export interface GetRulesetsRulesetRuleActionParametersServeStale {
+    /**
+     * Disable stale while updating.
+     */
     disableStaleWhileUpdating?: boolean;
 }
 
 export interface GetRulesetsRulesetRuleActionParametersSni {
+    /**
+     * Value to define for SNI.
+     */
     value?: string;
 }
 
 export interface GetRulesetsRulesetRuleActionParametersUri {
     origin?: boolean;
+    /**
+     * URI path configuration when performing a URL rewrite.
+     */
     path?: outputs.GetRulesetsRulesetRuleActionParametersUriPath;
+    /**
+     * Query string configuration when performing a URL rewrite.
+     */
     query?: outputs.GetRulesetsRulesetRuleActionParametersUriQuery;
 }
 
 export interface GetRulesetsRulesetRuleActionParametersUriPath {
+    /**
+     * Expression that defines the updated (dynamic) value of the URI path or query string component. Uses the Firewall Rules expression language based on Wireshark display filters. Refer to the [Firewall Rules language](https://developers.cloudflare.com/firewall/cf-firewall-language) documentation for all available fields, operators, and functions
+     */
     expression?: string;
+    /**
+     * Static string value of the updated URI path or query string component.
+     */
     value?: string;
 }
 
 export interface GetRulesetsRulesetRuleActionParametersUriQuery {
+    /**
+     * Expression that defines the updated (dynamic) value of the URI path or query string component. Uses the Firewall Rules expression language based on Wireshark display filters. Refer to the [Firewall Rules language](https://developers.cloudflare.com/firewall/cf-firewall-language) documentation for all available fields, operators, and functions
+     */
     expression?: string;
+    /**
+     * Static string value of the updated URI path or query string component.
+     */
     value?: string;
 }
 
 export interface GetRulesetsRulesetRuleExposedCredentialCheck {
+    /**
+     * Firewall Rules expression language based on Wireshark display filters for where to check for the "password" value. Refer to the [Firewall Rules language](https://developers.cloudflare.com/firewall/cf-firewall-language).
+     */
     passwordExpression?: string;
+    /**
+     * Firewall Rules expression language based on Wireshark display filters for where to check for the "username" value. Refer to the [Firewall Rules language](https://developers.cloudflare.com/firewall/cf-firewall-language).
+     */
     usernameExpression?: string;
 }
 
 export interface GetRulesetsRulesetRuleLogging {
     /**
+     * Override the default logging behavior when a rule is matched.
+     *
      * @deprecated Use `status` instead. Continuing to use `enabled` will result in an inconsistent state for your Ruleset configuration.
      */
     enabled?: boolean;
+    /**
+     * Override the default logging behavior when a rule is matched. Available values: `enabled`, `disabled`
+     */
     status?: string;
 }
 
 export interface GetRulesetsRulesetRuleRatelimit {
+    /**
+     * List of parameters that define how Cloudflare tracks the request rate for this rule.
+     */
     characteristics?: string[];
+    /**
+     * Criteria for counting HTTP requests to trigger the Rate Limiting action. Uses the Firewall Rules expression language based on Wireshark display filters. Refer to the [Firewall Rules language](https://developers.cloudflare.com/firewall/cf-firewall-language) documentation for all available fields, operators, and functions.
+     */
     countingExpression?: string;
+    /**
+     * Once the request rate is reached, the Rate Limiting rule blocks further requests for the period of time defined in this field.
+     */
     mitigationTimeout?: number;
+    /**
+     * The period of time to consider (in seconds) when evaluating the request rate.
+     */
     period?: number;
+    /**
+     * The number of requests over the period of time that will trigger the Rate Limiting rule.
+     */
     requestsPerPeriod?: number;
+    /**
+     * Whether to include requests to origin within the Rate Limiting count.
+     */
     requestsToOrigin?: boolean;
+    /**
+     * The maximum aggregate score over the period of time that will trigger Rate Limiting rule.
+     */
     scorePerPeriod?: number;
+    /**
+     * Name of HTTP header in the response, set by the origin server, with the score for the current request.
+     */
     scoreResponseHeaderName?: string;
 }
 
@@ -1750,7 +2328,13 @@ export interface GetZonesFilter {
 }
 
 export interface GetZonesZone {
+    /**
+     * The zone ID.
+     */
     id?: string;
+    /**
+     * Zone name.
+     */
     name?: string;
 }
 

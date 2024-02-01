@@ -13,17 +13,41 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetRulesetsRulesetRuleActionParametersFromValue {
+    /**
+     * @return Preserve query string for redirect URL.
+     * 
+     */
     private @Nullable Boolean preserveQueryString;
+    /**
+     * @return Status code for redirect.
+     * 
+     */
     private @Nullable Integer statusCode;
+    /**
+     * @return Target URL for redirect.
+     * 
+     */
     private @Nullable GetRulesetsRulesetRuleActionParametersFromValueTargetUrl targetUrl;
 
     private GetRulesetsRulesetRuleActionParametersFromValue() {}
+    /**
+     * @return Preserve query string for redirect URL.
+     * 
+     */
     public Optional<Boolean> preserveQueryString() {
         return Optional.ofNullable(this.preserveQueryString);
     }
+    /**
+     * @return Status code for redirect.
+     * 
+     */
     public Optional<Integer> statusCode() {
         return Optional.ofNullable(this.statusCode);
     }
+    /**
+     * @return Target URL for redirect.
+     * 
+     */
     public Optional<GetRulesetsRulesetRuleActionParametersFromValueTargetUrl> targetUrl() {
         return Optional.ofNullable(this.targetUrl);
     }

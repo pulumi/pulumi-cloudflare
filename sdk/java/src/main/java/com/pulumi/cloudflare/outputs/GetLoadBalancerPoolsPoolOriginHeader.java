@@ -11,13 +11,29 @@ import java.util.Objects;
 
 @CustomType
 public final class GetLoadBalancerPoolsPoolOriginHeader {
+    /**
+     * @return HTTP Header name.
+     * 
+     */
     private String header;
+    /**
+     * @return Values for the HTTP headers.
+     * 
+     */
     private List<String> values;
 
     private GetLoadBalancerPoolsPoolOriginHeader() {}
+    /**
+     * @return HTTP Header name.
+     * 
+     */
     public String header() {
         return this.header;
     }
+    /**
+     * @return Values for the HTTP headers.
+     * 
+     */
     public List<String> values() {
         return this.values;
     }

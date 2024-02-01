@@ -11,13 +11,29 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetRulesetsRulesetRuleActionParametersFromValueTargetUrl {
+    /**
+     * @return Use a value dynamically determined by the Firewall Rules expression language based on Wireshark display filters. Refer to the [Firewall Rules language](https://developers.cloudflare.com/firewall/cf-firewall-language) documentation for all available fields, operators, and functions. Conflicts with `&#34;value&#34;`.
+     * 
+     */
     private @Nullable String expression;
+    /**
+     * @return Static value to provide as the HTTP request header value. Conflicts with `&#34;expression&#34;`.
+     * 
+     */
     private @Nullable String value;
 
     private GetRulesetsRulesetRuleActionParametersFromValueTargetUrl() {}
+    /**
+     * @return Use a value dynamically determined by the Firewall Rules expression language based on Wireshark display filters. Refer to the [Firewall Rules language](https://developers.cloudflare.com/firewall/cf-firewall-language) documentation for all available fields, operators, and functions. Conflicts with `&#34;value&#34;`.
+     * 
+     */
     public Optional<String> expression() {
         return Optional.ofNullable(this.expression);
     }
+    /**
+     * @return Static value to provide as the HTTP request header value. Conflicts with `&#34;expression&#34;`.
+     * 
+     */
     public Optional<String> value() {
         return Optional.ofNullable(this.value);
     }

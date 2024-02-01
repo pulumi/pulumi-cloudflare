@@ -13,9 +13,21 @@ namespace Pulumi.Cloudflare.Outputs
     [OutputType]
     public sealed class GetAccountsAccountResult
     {
+        /// <summary>
+        /// Whether 2FA is enforced on the account.
+        /// </summary>
         public readonly bool? EnforceTwofactor;
+        /// <summary>
+        /// Account ID.
+        /// </summary>
         public readonly string? Id;
+        /// <summary>
+        /// Account name.
+        /// </summary>
         public readonly string? Name;
+        /// <summary>
+        /// Account subscription type.
+        /// </summary>
         public readonly string? Type;
 
         [OutputConstructor]

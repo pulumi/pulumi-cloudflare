@@ -39,7 +39,7 @@ import * as utilities from "./utilities";
  *     }],
  *     webassemblyBindings: [{
  *         name: "MY_EXAMPLE_WASM",
- *         module: Buffer.from(fs.readFileSync("example.wasm", 'binary')).toString('base64'),
+ *         module: fs.readFileSync("example.wasm", { encoding: "base64" }),
  *     }],
  *     serviceBindings: [{
  *         name: "MY_SERVICE_BINDING",

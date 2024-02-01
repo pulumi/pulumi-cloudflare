@@ -1398,54 +1398,108 @@ export interface GetLoadBalancerPoolsPoolArgs {
 }
 
 export interface GetLoadBalancerPoolsPoolLoadShedding {
+    /**
+     * Percent of traffic to shed 0 - 100.
+     */
     defaultPercent?: number;
+    /**
+     * Method of shedding traffic. Available values: `""`, `hash`, `random`
+     */
     defaultPolicy?: string;
+    /**
+     * Percent of session traffic to shed 0 - 100.
+     */
     sessionPercent?: number;
+    /**
+     * Method of shedding traffic. Available values: `""`, `hash`
+     */
     sessionPolicy?: string;
 }
 
 export interface GetLoadBalancerPoolsPoolLoadSheddingArgs {
+    /**
+     * Percent of traffic to shed 0 - 100.
+     */
     defaultPercent?: pulumi.Input<number>;
+    /**
+     * Method of shedding traffic. Available values: `""`, `hash`, `random`
+     */
     defaultPolicy?: pulumi.Input<string>;
+    /**
+     * Percent of session traffic to shed 0 - 100.
+     */
     sessionPercent?: pulumi.Input<number>;
+    /**
+     * Method of shedding traffic. Available values: `""`, `hash`
+     */
     sessionPolicy?: pulumi.Input<string>;
 }
 
 export interface GetLoadBalancerPoolsPoolOrigin {
+    /**
+     * The IP address (IPv4 or IPv6) of the origin, or the publicly addressable hostname.
+     */
     address: string;
     /**
      * Whether this pool is enabled. Disabled pools will not receive traffic and are excluded from health checks.
      */
     enabled?: boolean;
+    /**
+     * HTTP request headers.
+     */
     headers?: inputs.GetLoadBalancerPoolsPoolOriginHeader[];
     /**
      * A regular expression matching the name of the Load Balancer pool to lookup.
      */
     name: string;
+    /**
+     * The weight (0.01 - 1.00) of this origin, relative to other origins in the pool. Equal values mean equal weighting. A weight of 0 means traffic will not be sent to this origin, but health is still checked. When `origin_steering.policy="leastOutstandingRequests"`, weight is used to scale the origin's outstanding requests. When `origin_steering.policy="leastConnections"`, weight is used to scale the origin's open connections.
+     */
     weight?: number;
 }
 
 export interface GetLoadBalancerPoolsPoolOriginArgs {
+    /**
+     * The IP address (IPv4 or IPv6) of the origin, or the publicly addressable hostname.
+     */
     address: pulumi.Input<string>;
     /**
      * Whether this pool is enabled. Disabled pools will not receive traffic and are excluded from health checks.
      */
     enabled?: pulumi.Input<boolean>;
+    /**
+     * HTTP request headers.
+     */
     headers?: pulumi.Input<pulumi.Input<inputs.GetLoadBalancerPoolsPoolOriginHeaderArgs>[]>;
     /**
      * A regular expression matching the name of the Load Balancer pool to lookup.
      */
     name: pulumi.Input<string>;
+    /**
+     * The weight (0.01 - 1.00) of this origin, relative to other origins in the pool. Equal values mean equal weighting. A weight of 0 means traffic will not be sent to this origin, but health is still checked. When `origin_steering.policy="leastOutstandingRequests"`, weight is used to scale the origin's outstanding requests. When `origin_steering.policy="leastConnections"`, weight is used to scale the origin's open connections.
+     */
     weight?: pulumi.Input<number>;
 }
 
 export interface GetLoadBalancerPoolsPoolOriginHeader {
+    /**
+     * HTTP Header name.
+     */
     header: string;
+    /**
+     * Values for the HTTP headers.
+     */
     values: string[];
 }
 
 export interface GetLoadBalancerPoolsPoolOriginHeaderArgs {
+    /**
+     * HTTP Header name.
+     */
     header: pulumi.Input<string>;
+    /**
+     * Values for the HTTP headers.
+     */
     values: pulumi.Input<pulumi.Input<string>[]>;
 }
 

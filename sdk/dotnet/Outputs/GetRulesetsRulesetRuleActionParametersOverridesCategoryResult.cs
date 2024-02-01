@@ -13,9 +13,21 @@ namespace Pulumi.Cloudflare.Outputs
     [OutputType]
     public sealed class GetRulesetsRulesetRuleActionParametersOverridesCategoryResult
     {
+        /// <summary>
+        /// Action to perform in the tag-level override. Available values: `block`, `challenge`, `compress_response`, `ddos_dynamic`, `ddos_mitigation`, `execute`, `force_connection_close`, `js_challenge`, `log`, `log_custom_field`, `managed_challenge`, `redirect`, `rewrite`, `route`, `score`, `serve_error`, `set_cache_settings`, `set_config`, `skip`
+        /// </summary>
         public readonly string? Action;
+        /// <summary>
+        /// Tag name to apply the ruleset rule override to.
+        /// </summary>
         public readonly string? Category;
+        /// <summary>
+        /// Defines if the current tag-level override enables or disables the ruleset rules with the specified tag.
+        /// </summary>
         public readonly bool? Enabled;
+        /// <summary>
+        /// Defines if the current tag-level override enables or disables the ruleset rules with the specified tag. Available values: `enabled`, `disabled`
+        /// </summary>
         public readonly string? Status;
 
         [OutputConstructor]

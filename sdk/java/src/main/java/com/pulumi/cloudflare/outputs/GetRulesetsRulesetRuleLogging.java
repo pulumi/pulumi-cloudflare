@@ -13,16 +13,24 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetRulesetsRulesetRuleLogging {
     /**
+     * @return Override the default logging behavior when a rule is matched.
+     * 
      * @deprecated
      * Use `status` instead. Continuing to use `enabled` will result in an inconsistent state for your Ruleset configuration.
      * 
      */
     @Deprecated /* Use `status` instead. Continuing to use `enabled` will result in an inconsistent state for your Ruleset configuration. */
     private @Nullable Boolean enabled;
+    /**
+     * @return Override the default logging behavior when a rule is matched. Available values: `enabled`, `disabled`
+     * 
+     */
     private @Nullable String status;
 
     private GetRulesetsRulesetRuleLogging() {}
     /**
+     * @return Override the default logging behavior when a rule is matched.
+     * 
      * @deprecated
      * Use `status` instead. Continuing to use `enabled` will result in an inconsistent state for your Ruleset configuration.
      * 
@@ -31,6 +39,10 @@ public final class GetRulesetsRulesetRuleLogging {
     public Optional<Boolean> enabled() {
         return Optional.ofNullable(this.enabled);
     }
+    /**
+     * @return Override the default logging behavior when a rule is matched. Available values: `enabled`, `disabled`
+     * 
+     */
     public Optional<String> status() {
         return Optional.ofNullable(this.status);
     }

@@ -13,17 +13,41 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetRulesetsRulesetRuleActionParametersCacheKeyCustomKeyHeader {
+    /**
+     * @return List of headers to check for presence in the custom key.
+     * 
+     */
     private @Nullable List<String> checkPresences;
+    /**
+     * @return Exclude the origin header from the custom key.
+     * 
+     */
     private @Nullable Boolean excludeOrigin;
+    /**
+     * @return List of headers to include in the custom key.
+     * 
+     */
     private @Nullable List<String> includes;
 
     private GetRulesetsRulesetRuleActionParametersCacheKeyCustomKeyHeader() {}
+    /**
+     * @return List of headers to check for presence in the custom key.
+     * 
+     */
     public List<String> checkPresences() {
         return this.checkPresences == null ? List.of() : this.checkPresences;
     }
+    /**
+     * @return Exclude the origin header from the custom key.
+     * 
+     */
     public Optional<Boolean> excludeOrigin() {
         return Optional.ofNullable(this.excludeOrigin);
     }
+    /**
+     * @return List of headers to include in the custom key.
+     * 
+     */
     public List<String> includes() {
         return this.includes == null ? List.of() : this.includes;
     }
