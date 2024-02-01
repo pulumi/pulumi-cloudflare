@@ -13,12 +13,21 @@ namespace Pulumi.Cloudflare.Outputs
     [OutputType]
     public sealed class GetRulesetsRulesetRuleActionParametersHeaderResult
     {
+        /// <summary>
+        /// Use a value dynamically determined by the Firewall Rules expression language based on Wireshark display filters. Refer to the [Firewall Rules language](https://developers.cloudflare.com/firewall/cf-firewall-language) documentation for all available fields, operators, and functions. Conflicts with `"value"`.
+        /// </summary>
         public readonly string? Expression;
         /// <summary>
         /// Name of the ruleset.
         /// </summary>
         public readonly string? Name;
+        /// <summary>
+        /// Action to perform on the HTTP request header. Available values: `remove`, `set`, `add`
+        /// </summary>
         public readonly string? Operation;
+        /// <summary>
+        /// Static value to provide as the HTTP request header value. Conflicts with `"expression"`.
+        /// </summary>
         public readonly string? Value;
 
         [OutputConstructor]

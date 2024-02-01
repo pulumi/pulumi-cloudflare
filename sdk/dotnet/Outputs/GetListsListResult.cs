@@ -13,10 +13,25 @@ namespace Pulumi.Cloudflare.Outputs
     [OutputType]
     public sealed class GetListsListResult
     {
+        /// <summary>
+        /// List description.
+        /// </summary>
         public readonly string? Description;
+        /// <summary>
+        /// List identifier.
+        /// </summary>
         public readonly string? Id;
+        /// <summary>
+        /// List kind.
+        /// </summary>
         public readonly string? Kind;
+        /// <summary>
+        /// The list name to target for the resource.
+        /// </summary>
         public readonly string? Name;
+        /// <summary>
+        /// Number of items in list.
+        /// </summary>
         public readonly int? Numitems;
 
         [OutputConstructor]

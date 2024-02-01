@@ -12,89 +12,257 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetDevicesDevice {
+    /**
+     * @return When the device was created.
+     * 
+     */
     private @Nullable String created;
+    /**
+     * @return Whether the device has been deleted.
+     * 
+     */
     private @Nullable Boolean deleted;
+    /**
+     * @return The type of the device.
+     * 
+     */
     private @Nullable String deviceType;
+    /**
+     * @return Device ID.
+     * 
+     */
     private @Nullable String id;
+    /**
+     * @return IPv4 or IPv6 address.
+     * 
+     */
     private @Nullable String ip;
+    /**
+     * @return The device&#39;s public key.
+     * 
+     */
     private @Nullable String key;
+    /**
+     * @return When the device was last seen.
+     * 
+     */
     private @Nullable String lastSeen;
+    /**
+     * @return The device&#39;s MAC address.
+     * 
+     */
     private @Nullable String macAddress;
+    /**
+     * @return The device manufacturer&#39;s name.
+     * 
+     */
     private @Nullable String manufacturer;
+    /**
+     * @return The device model name.
+     * 
+     */
     private @Nullable String model;
+    /**
+     * @return The device name.
+     * 
+     */
     private @Nullable String name;
+    /**
+     * @return The Linux distribution name.
+     * 
+     */
     private @Nullable String osDistroName;
+    /**
+     * @return The Linux distribution revision.
+     * 
+     */
     private @Nullable String osDistroRevision;
+    /**
+     * @return The operating system version.
+     * 
+     */
     private @Nullable String osVersion;
+    /**
+     * @return When the device was revoked.
+     * 
+     */
     private @Nullable String revokedAt;
+    /**
+     * @return The device&#39;s serial number.
+     * 
+     */
     private @Nullable String serialNumber;
+    /**
+     * @return When the device was updated.
+     * 
+     */
     private @Nullable String updated;
+    /**
+     * @return User&#39;s email.
+     * 
+     */
     private @Nullable String userEmail;
+    /**
+     * @return User&#39;s ID.
+     * 
+     */
     private @Nullable String userId;
+    /**
+     * @return User&#39;s Name.
+     * 
+     */
     private @Nullable String userName;
+    /**
+     * @return The WARP client version.
+     * 
+     */
     private @Nullable String version;
 
     private GetDevicesDevice() {}
+    /**
+     * @return When the device was created.
+     * 
+     */
     public Optional<String> created() {
         return Optional.ofNullable(this.created);
     }
+    /**
+     * @return Whether the device has been deleted.
+     * 
+     */
     public Optional<Boolean> deleted() {
         return Optional.ofNullable(this.deleted);
     }
+    /**
+     * @return The type of the device.
+     * 
+     */
     public Optional<String> deviceType() {
         return Optional.ofNullable(this.deviceType);
     }
+    /**
+     * @return Device ID.
+     * 
+     */
     public Optional<String> id() {
         return Optional.ofNullable(this.id);
     }
+    /**
+     * @return IPv4 or IPv6 address.
+     * 
+     */
     public Optional<String> ip() {
         return Optional.ofNullable(this.ip);
     }
+    /**
+     * @return The device&#39;s public key.
+     * 
+     */
     public Optional<String> key() {
         return Optional.ofNullable(this.key);
     }
+    /**
+     * @return When the device was last seen.
+     * 
+     */
     public Optional<String> lastSeen() {
         return Optional.ofNullable(this.lastSeen);
     }
+    /**
+     * @return The device&#39;s MAC address.
+     * 
+     */
     public Optional<String> macAddress() {
         return Optional.ofNullable(this.macAddress);
     }
+    /**
+     * @return The device manufacturer&#39;s name.
+     * 
+     */
     public Optional<String> manufacturer() {
         return Optional.ofNullable(this.manufacturer);
     }
+    /**
+     * @return The device model name.
+     * 
+     */
     public Optional<String> model() {
         return Optional.ofNullable(this.model);
     }
+    /**
+     * @return The device name.
+     * 
+     */
     public Optional<String> name() {
         return Optional.ofNullable(this.name);
     }
+    /**
+     * @return The Linux distribution name.
+     * 
+     */
     public Optional<String> osDistroName() {
         return Optional.ofNullable(this.osDistroName);
     }
+    /**
+     * @return The Linux distribution revision.
+     * 
+     */
     public Optional<String> osDistroRevision() {
         return Optional.ofNullable(this.osDistroRevision);
     }
+    /**
+     * @return The operating system version.
+     * 
+     */
     public Optional<String> osVersion() {
         return Optional.ofNullable(this.osVersion);
     }
+    /**
+     * @return When the device was revoked.
+     * 
+     */
     public Optional<String> revokedAt() {
         return Optional.ofNullable(this.revokedAt);
     }
+    /**
+     * @return The device&#39;s serial number.
+     * 
+     */
     public Optional<String> serialNumber() {
         return Optional.ofNullable(this.serialNumber);
     }
+    /**
+     * @return When the device was updated.
+     * 
+     */
     public Optional<String> updated() {
         return Optional.ofNullable(this.updated);
     }
+    /**
+     * @return User&#39;s email.
+     * 
+     */
     public Optional<String> userEmail() {
         return Optional.ofNullable(this.userEmail);
     }
+    /**
+     * @return User&#39;s ID.
+     * 
+     */
     public Optional<String> userId() {
         return Optional.ofNullable(this.userId);
     }
+    /**
+     * @return User&#39;s Name.
+     * 
+     */
     public Optional<String> userName() {
         return Optional.ofNullable(this.userName);
     }
+    /**
+     * @return The WARP client version.
+     * 
+     */
     public Optional<String> version() {
         return Optional.ofNullable(this.version);
     }

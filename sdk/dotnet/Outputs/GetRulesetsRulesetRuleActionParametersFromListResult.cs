@@ -13,6 +13,9 @@ namespace Pulumi.Cloudflare.Outputs
     [OutputType]
     public sealed class GetRulesetsRulesetRuleActionParametersFromListResult
     {
+        /// <summary>
+        /// Expression to use for the list lookup.
+        /// </summary>
         public readonly string Key;
         /// <summary>
         /// Name of the ruleset.

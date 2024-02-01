@@ -12,13 +12,29 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetRulesetsRulesetRuleActionParametersOrigin {
+    /**
+     * @return Origin Hostname where request is sent.
+     * 
+     */
     private @Nullable String host;
+    /**
+     * @return Origin Port where request is sent.
+     * 
+     */
     private @Nullable Integer port;
 
     private GetRulesetsRulesetRuleActionParametersOrigin() {}
+    /**
+     * @return Origin Hostname where request is sent.
+     * 
+     */
     public Optional<String> host() {
         return Optional.ofNullable(this.host);
     }
+    /**
+     * @return Origin Port where request is sent.
+     * 
+     */
     public Optional<Integer> port() {
         return Optional.ofNullable(this.port);
     }

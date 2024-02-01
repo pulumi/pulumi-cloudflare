@@ -11,13 +11,29 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetRulesetsRulesetRuleActionParametersUriPath {
+    /**
+     * @return Expression that defines the updated (dynamic) value of the URI path or query string component. Uses the Firewall Rules expression language based on Wireshark display filters. Refer to the [Firewall Rules language](https://developers.cloudflare.com/firewall/cf-firewall-language) documentation for all available fields, operators, and functions
+     * 
+     */
     private @Nullable String expression;
+    /**
+     * @return Static string value of the updated URI path or query string component.
+     * 
+     */
     private @Nullable String value;
 
     private GetRulesetsRulesetRuleActionParametersUriPath() {}
+    /**
+     * @return Expression that defines the updated (dynamic) value of the URI path or query string component. Uses the Firewall Rules expression language based on Wireshark display filters. Refer to the [Firewall Rules language](https://developers.cloudflare.com/firewall/cf-firewall-language) documentation for all available fields, operators, and functions
+     * 
+     */
     public Optional<String> expression() {
         return Optional.ofNullable(this.expression);
     }
+    /**
+     * @return Static string value of the updated URI path or query string component.
+     * 
+     */
     public Optional<String> value() {
         return Optional.ofNullable(this.value);
     }

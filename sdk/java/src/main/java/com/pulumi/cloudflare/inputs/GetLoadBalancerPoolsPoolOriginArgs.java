@@ -20,9 +20,17 @@ public final class GetLoadBalancerPoolsPoolOriginArgs extends com.pulumi.resourc
 
     public static final GetLoadBalancerPoolsPoolOriginArgs Empty = new GetLoadBalancerPoolsPoolOriginArgs();
 
+    /**
+     * The IP address (IPv4 or IPv6) of the origin, or the publicly addressable hostname.
+     * 
+     */
     @Import(name="address", required=true)
     private Output<String> address;
 
+    /**
+     * @return The IP address (IPv4 or IPv6) of the origin, or the publicly addressable hostname.
+     * 
+     */
     public Output<String> address() {
         return this.address;
     }
@@ -42,9 +50,17 @@ public final class GetLoadBalancerPoolsPoolOriginArgs extends com.pulumi.resourc
         return Optional.ofNullable(this.enabled);
     }
 
+    /**
+     * HTTP request headers.
+     * 
+     */
     @Import(name="headers")
     private @Nullable Output<List<GetLoadBalancerPoolsPoolOriginHeaderArgs>> headers;
 
+    /**
+     * @return HTTP request headers.
+     * 
+     */
     public Optional<Output<List<GetLoadBalancerPoolsPoolOriginHeaderArgs>>> headers() {
         return Optional.ofNullable(this.headers);
     }
@@ -64,9 +80,17 @@ public final class GetLoadBalancerPoolsPoolOriginArgs extends com.pulumi.resourc
         return this.name;
     }
 
+    /**
+     * The weight (0.01 - 1.00) of this origin, relative to other origins in the pool. Equal values mean equal weighting. A weight of 0 means traffic will not be sent to this origin, but health is still checked. When `origin_steering.policy=&#34;least_outstanding_requests&#34;`, weight is used to scale the origin&#39;s outstanding requests. When `origin_steering.policy=&#34;least_connections&#34;`, weight is used to scale the origin&#39;s open connections.
+     * 
+     */
     @Import(name="weight")
     private @Nullable Output<Double> weight;
 
+    /**
+     * @return The weight (0.01 - 1.00) of this origin, relative to other origins in the pool. Equal values mean equal weighting. A weight of 0 means traffic will not be sent to this origin, but health is still checked. When `origin_steering.policy=&#34;least_outstanding_requests&#34;`, weight is used to scale the origin&#39;s outstanding requests. When `origin_steering.policy=&#34;least_connections&#34;`, weight is used to scale the origin&#39;s open connections.
+     * 
+     */
     public Optional<Output<Double>> weight() {
         return Optional.ofNullable(this.weight);
     }
@@ -99,11 +123,23 @@ public final class GetLoadBalancerPoolsPoolOriginArgs extends com.pulumi.resourc
             $ = new GetLoadBalancerPoolsPoolOriginArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param address The IP address (IPv4 or IPv6) of the origin, or the publicly addressable hostname.
+         * 
+         * @return builder
+         * 
+         */
         public Builder address(Output<String> address) {
             $.address = address;
             return this;
         }
 
+        /**
+         * @param address The IP address (IPv4 or IPv6) of the origin, or the publicly addressable hostname.
+         * 
+         * @return builder
+         * 
+         */
         public Builder address(String address) {
             return address(Output.of(address));
         }
@@ -129,15 +165,33 @@ public final class GetLoadBalancerPoolsPoolOriginArgs extends com.pulumi.resourc
             return enabled(Output.of(enabled));
         }
 
+        /**
+         * @param headers HTTP request headers.
+         * 
+         * @return builder
+         * 
+         */
         public Builder headers(@Nullable Output<List<GetLoadBalancerPoolsPoolOriginHeaderArgs>> headers) {
             $.headers = headers;
             return this;
         }
 
+        /**
+         * @param headers HTTP request headers.
+         * 
+         * @return builder
+         * 
+         */
         public Builder headers(List<GetLoadBalancerPoolsPoolOriginHeaderArgs> headers) {
             return headers(Output.of(headers));
         }
 
+        /**
+         * @param headers HTTP request headers.
+         * 
+         * @return builder
+         * 
+         */
         public Builder headers(GetLoadBalancerPoolsPoolOriginHeaderArgs... headers) {
             return headers(List.of(headers));
         }
@@ -163,11 +217,23 @@ public final class GetLoadBalancerPoolsPoolOriginArgs extends com.pulumi.resourc
             return name(Output.of(name));
         }
 
+        /**
+         * @param weight The weight (0.01 - 1.00) of this origin, relative to other origins in the pool. Equal values mean equal weighting. A weight of 0 means traffic will not be sent to this origin, but health is still checked. When `origin_steering.policy=&#34;least_outstanding_requests&#34;`, weight is used to scale the origin&#39;s outstanding requests. When `origin_steering.policy=&#34;least_connections&#34;`, weight is used to scale the origin&#39;s open connections.
+         * 
+         * @return builder
+         * 
+         */
         public Builder weight(@Nullable Output<Double> weight) {
             $.weight = weight;
             return this;
         }
 
+        /**
+         * @param weight The weight (0.01 - 1.00) of this origin, relative to other origins in the pool. Equal values mean equal weighting. A weight of 0 means traffic will not be sent to this origin, but health is still checked. When `origin_steering.policy=&#34;least_outstanding_requests&#34;`, weight is used to scale the origin&#39;s outstanding requests. When `origin_steering.policy=&#34;least_connections&#34;`, weight is used to scale the origin&#39;s open connections.
+         * 
+         * @return builder
+         * 
+         */
         public Builder weight(Double weight) {
             return weight(Output.of(weight));
         }

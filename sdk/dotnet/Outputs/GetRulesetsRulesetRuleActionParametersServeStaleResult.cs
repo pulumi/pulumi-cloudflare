@@ -13,6 +13,9 @@ namespace Pulumi.Cloudflare.Outputs
     [OutputType]
     public sealed class GetRulesetsRulesetRuleActionParametersServeStaleResult
     {
+        /// <summary>
+        /// Disable stale while updating.
+        /// </summary>
         public readonly bool? DisableStaleWhileUpdating;
 
         [OutputConstructor]

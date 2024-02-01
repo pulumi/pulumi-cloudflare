@@ -13,7 +13,13 @@ namespace Pulumi.Cloudflare.Outputs
     [OutputType]
     public sealed class GetLoadBalancerPoolsPoolOriginHeaderResult
     {
+        /// <summary>
+        /// HTTP Header name.
+        /// </summary>
         public readonly string Header;
+        /// <summary>
+        /// Values for the HTTP headers.
+        /// </summary>
         public readonly ImmutableArray<string> Values;
 
         [OutputConstructor]

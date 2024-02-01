@@ -14,33 +14,89 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetRulesetsRuleset {
+    /**
+     * @return Brief summary of the ruleset and its intended use.
+     * 
+     */
     private @Nullable String description;
+    /**
+     * @return ID of the ruleset.
+     * 
+     */
     private String id;
+    /**
+     * @return Type of Ruleset. Available values: `custom`, `managed`, `root`, `zone`
+     * 
+     */
     private String kind;
+    /**
+     * @return Name of the ruleset.
+     * 
+     */
     private String name;
+    /**
+     * @return Point in the request/response lifecycle where the ruleset executes. Available values: `ddos_l4`, `ddos_l7`, `http_config_settings`, `http_custom_errors`, `http_log_custom_fields`, `http_ratelimit`, `http_request_cache_settings`, `http_request_dynamic_redirect`, `http_request_firewall_custom`, `http_request_firewall_managed`, `http_request_late_transform`, `http_request_origin`, `http_request_redirect`, `http_request_sanitize`, `http_request_sbfm`, `http_request_transform`, `http_response_compression`, `http_response_firewall_managed`, `http_response_headers_transform`, `magic_transit`
+     * 
+     */
     private String phase;
+    /**
+     * @return List of rules to apply to the ruleset.
+     * 
+     */
     private @Nullable List<GetRulesetsRulesetRule> rules;
+    /**
+     * @return Version of the ruleset.
+     * 
+     */
     private String version;
 
     private GetRulesetsRuleset() {}
+    /**
+     * @return Brief summary of the ruleset and its intended use.
+     * 
+     */
     public Optional<String> description() {
         return Optional.ofNullable(this.description);
     }
+    /**
+     * @return ID of the ruleset.
+     * 
+     */
     public String id() {
         return this.id;
     }
+    /**
+     * @return Type of Ruleset. Available values: `custom`, `managed`, `root`, `zone`
+     * 
+     */
     public String kind() {
         return this.kind;
     }
+    /**
+     * @return Name of the ruleset.
+     * 
+     */
     public String name() {
         return this.name;
     }
+    /**
+     * @return Point in the request/response lifecycle where the ruleset executes. Available values: `ddos_l4`, `ddos_l7`, `http_config_settings`, `http_custom_errors`, `http_log_custom_fields`, `http_ratelimit`, `http_request_cache_settings`, `http_request_dynamic_redirect`, `http_request_firewall_custom`, `http_request_firewall_managed`, `http_request_late_transform`, `http_request_origin`, `http_request_redirect`, `http_request_sanitize`, `http_request_sbfm`, `http_request_transform`, `http_response_compression`, `http_response_firewall_managed`, `http_response_headers_transform`, `magic_transit`
+     * 
+     */
     public String phase() {
         return this.phase;
     }
+    /**
+     * @return List of rules to apply to the ruleset.
+     * 
+     */
     public List<GetRulesetsRulesetRule> rules() {
         return this.rules == null ? List.of() : this.rules;
     }
+    /**
+     * @return Version of the ruleset.
+     * 
+     */
     public String version() {
         return this.version;
     }

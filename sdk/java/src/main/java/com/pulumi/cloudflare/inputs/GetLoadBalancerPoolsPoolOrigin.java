@@ -19,9 +19,17 @@ public final class GetLoadBalancerPoolsPoolOrigin extends com.pulumi.resources.I
 
     public static final GetLoadBalancerPoolsPoolOrigin Empty = new GetLoadBalancerPoolsPoolOrigin();
 
+    /**
+     * The IP address (IPv4 or IPv6) of the origin, or the publicly addressable hostname.
+     * 
+     */
     @Import(name="address", required=true)
     private String address;
 
+    /**
+     * @return The IP address (IPv4 or IPv6) of the origin, or the publicly addressable hostname.
+     * 
+     */
     public String address() {
         return this.address;
     }
@@ -41,9 +49,17 @@ public final class GetLoadBalancerPoolsPoolOrigin extends com.pulumi.resources.I
         return Optional.ofNullable(this.enabled);
     }
 
+    /**
+     * HTTP request headers.
+     * 
+     */
     @Import(name="headers")
     private @Nullable List<GetLoadBalancerPoolsPoolOriginHeader> headers;
 
+    /**
+     * @return HTTP request headers.
+     * 
+     */
     public Optional<List<GetLoadBalancerPoolsPoolOriginHeader>> headers() {
         return Optional.ofNullable(this.headers);
     }
@@ -63,9 +79,17 @@ public final class GetLoadBalancerPoolsPoolOrigin extends com.pulumi.resources.I
         return this.name;
     }
 
+    /**
+     * The weight (0.01 - 1.00) of this origin, relative to other origins in the pool. Equal values mean equal weighting. A weight of 0 means traffic will not be sent to this origin, but health is still checked. When `origin_steering.policy=&#34;least_outstanding_requests&#34;`, weight is used to scale the origin&#39;s outstanding requests. When `origin_steering.policy=&#34;least_connections&#34;`, weight is used to scale the origin&#39;s open connections.
+     * 
+     */
     @Import(name="weight")
     private @Nullable Double weight;
 
+    /**
+     * @return The weight (0.01 - 1.00) of this origin, relative to other origins in the pool. Equal values mean equal weighting. A weight of 0 means traffic will not be sent to this origin, but health is still checked. When `origin_steering.policy=&#34;least_outstanding_requests&#34;`, weight is used to scale the origin&#39;s outstanding requests. When `origin_steering.policy=&#34;least_connections&#34;`, weight is used to scale the origin&#39;s open connections.
+     * 
+     */
     public Optional<Double> weight() {
         return Optional.ofNullable(this.weight);
     }
@@ -98,6 +122,12 @@ public final class GetLoadBalancerPoolsPoolOrigin extends com.pulumi.resources.I
             $ = new GetLoadBalancerPoolsPoolOrigin(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param address The IP address (IPv4 or IPv6) of the origin, or the publicly addressable hostname.
+         * 
+         * @return builder
+         * 
+         */
         public Builder address(String address) {
             $.address = address;
             return this;
@@ -114,11 +144,23 @@ public final class GetLoadBalancerPoolsPoolOrigin extends com.pulumi.resources.I
             return this;
         }
 
+        /**
+         * @param headers HTTP request headers.
+         * 
+         * @return builder
+         * 
+         */
         public Builder headers(@Nullable List<GetLoadBalancerPoolsPoolOriginHeader> headers) {
             $.headers = headers;
             return this;
         }
 
+        /**
+         * @param headers HTTP request headers.
+         * 
+         * @return builder
+         * 
+         */
         public Builder headers(GetLoadBalancerPoolsPoolOriginHeader... headers) {
             return headers(List.of(headers));
         }
@@ -134,6 +176,12 @@ public final class GetLoadBalancerPoolsPoolOrigin extends com.pulumi.resources.I
             return this;
         }
 
+        /**
+         * @param weight The weight (0.01 - 1.00) of this origin, relative to other origins in the pool. Equal values mean equal weighting. A weight of 0 means traffic will not be sent to this origin, but health is still checked. When `origin_steering.policy=&#34;least_outstanding_requests&#34;`, weight is used to scale the origin&#39;s outstanding requests. When `origin_steering.policy=&#34;least_connections&#34;`, weight is used to scale the origin&#39;s open connections.
+         * 
+         * @return builder
+         * 
+         */
         public Builder weight(@Nullable Double weight) {
             $.weight = weight;
             return this;

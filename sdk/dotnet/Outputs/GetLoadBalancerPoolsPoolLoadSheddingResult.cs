@@ -13,9 +13,21 @@ namespace Pulumi.Cloudflare.Outputs
     [OutputType]
     public sealed class GetLoadBalancerPoolsPoolLoadSheddingResult
     {
+        /// <summary>
+        /// Percent of traffic to shed 0 - 100.
+        /// </summary>
         public readonly double? DefaultPercent;
+        /// <summary>
+        /// Method of shedding traffic. Available values: `""`, `hash`, `random`
+        /// </summary>
         public readonly string? DefaultPolicy;
+        /// <summary>
+        /// Percent of session traffic to shed 0 - 100.
+        /// </summary>
         public readonly double? SessionPercent;
+        /// <summary>
+        /// Method of shedding traffic. Available values: `""`, `hash`
+        /// </summary>
         public readonly string? SessionPolicy;
 
         [OutputConstructor]

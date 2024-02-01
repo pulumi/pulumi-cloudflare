@@ -15,16 +15,32 @@ public final class GetLoadBalancerPoolsPoolOriginHeaderArgs extends com.pulumi.r
 
     public static final GetLoadBalancerPoolsPoolOriginHeaderArgs Empty = new GetLoadBalancerPoolsPoolOriginHeaderArgs();
 
+    /**
+     * HTTP Header name.
+     * 
+     */
     @Import(name="header", required=true)
     private Output<String> header;
 
+    /**
+     * @return HTTP Header name.
+     * 
+     */
     public Output<String> header() {
         return this.header;
     }
 
+    /**
+     * Values for the HTTP headers.
+     * 
+     */
     @Import(name="values", required=true)
     private Output<List<String>> values;
 
+    /**
+     * @return Values for the HTTP headers.
+     * 
+     */
     public Output<List<String>> values() {
         return this.values;
     }
@@ -54,24 +70,54 @@ public final class GetLoadBalancerPoolsPoolOriginHeaderArgs extends com.pulumi.r
             $ = new GetLoadBalancerPoolsPoolOriginHeaderArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param header HTTP Header name.
+         * 
+         * @return builder
+         * 
+         */
         public Builder header(Output<String> header) {
             $.header = header;
             return this;
         }
 
+        /**
+         * @param header HTTP Header name.
+         * 
+         * @return builder
+         * 
+         */
         public Builder header(String header) {
             return header(Output.of(header));
         }
 
+        /**
+         * @param values Values for the HTTP headers.
+         * 
+         * @return builder
+         * 
+         */
         public Builder values(Output<List<String>> values) {
             $.values = values;
             return this;
         }
 
+        /**
+         * @param values Values for the HTTP headers.
+         * 
+         * @return builder
+         * 
+         */
         public Builder values(List<String> values) {
             return values(Output.of(values));
         }
 
+        /**
+         * @param values Values for the HTTP headers.
+         * 
+         * @return builder
+         * 
+         */
         public Builder values(String... values) {
             return values(List.of(values));
         }

@@ -13,10 +13,25 @@ namespace Pulumi.Cloudflare.Outputs
     [OutputType]
     public sealed class GetRulesetsRulesetRuleActionParametersCacheKeyCustomKeyResult
     {
+        /// <summary>
+        /// Cookie parameters for the custom key.
+        /// </summary>
         public readonly Outputs.GetRulesetsRulesetRuleActionParametersCacheKeyCustomKeyCookieResult? Cookie;
+        /// <summary>
+        /// Header parameters for the custom key.
+        /// </summary>
         public readonly Outputs.GetRulesetsRulesetRuleActionParametersCacheKeyCustomKeyHeaderResult? Header;
+        /// <summary>
+        /// Host parameters for the custom key.
+        /// </summary>
         public readonly Outputs.GetRulesetsRulesetRuleActionParametersCacheKeyCustomKeyHostResult? Host;
+        /// <summary>
+        /// Query string parameters for the custom key.
+        /// </summary>
         public readonly Outputs.GetRulesetsRulesetRuleActionParametersCacheKeyCustomKeyQueryStringResult? QueryString;
+        /// <summary>
+        /// User parameters for the custom key.
+        /// </summary>
         public readonly Outputs.GetRulesetsRulesetRuleActionParametersCacheKeyCustomKeyUserResult? User;
 
         [OutputConstructor]

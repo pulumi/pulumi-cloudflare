@@ -12,21 +12,53 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetAccountsAccount {
+    /**
+     * @return Whether 2FA is enforced on the account.
+     * 
+     */
     private @Nullable Boolean enforceTwofactor;
+    /**
+     * @return Account ID.
+     * 
+     */
     private @Nullable String id;
+    /**
+     * @return Account name.
+     * 
+     */
     private @Nullable String name;
+    /**
+     * @return Account subscription type.
+     * 
+     */
     private @Nullable String type;
 
     private GetAccountsAccount() {}
+    /**
+     * @return Whether 2FA is enforced on the account.
+     * 
+     */
     public Optional<Boolean> enforceTwofactor() {
         return Optional.ofNullable(this.enforceTwofactor);
     }
+    /**
+     * @return Account ID.
+     * 
+     */
     public Optional<String> id() {
         return Optional.ofNullable(this.id);
     }
+    /**
+     * @return Account name.
+     * 
+     */
     public Optional<String> name() {
         return Optional.ofNullable(this.name);
     }
+    /**
+     * @return Account subscription type.
+     * 
+     */
     public Optional<String> type() {
         return Optional.ofNullable(this.type);
     }

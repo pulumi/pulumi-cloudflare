@@ -15,30 +15,62 @@ public final class GetLoadBalancerPoolsPoolLoadShedding extends com.pulumi.resou
 
     public static final GetLoadBalancerPoolsPoolLoadShedding Empty = new GetLoadBalancerPoolsPoolLoadShedding();
 
+    /**
+     * Percent of traffic to shed 0 - 100.
+     * 
+     */
     @Import(name="defaultPercent")
     private @Nullable Double defaultPercent;
 
+    /**
+     * @return Percent of traffic to shed 0 - 100.
+     * 
+     */
     public Optional<Double> defaultPercent() {
         return Optional.ofNullable(this.defaultPercent);
     }
 
+    /**
+     * Method of shedding traffic. Available values: `&#34;&#34;`, `hash`, `random`
+     * 
+     */
     @Import(name="defaultPolicy")
     private @Nullable String defaultPolicy;
 
+    /**
+     * @return Method of shedding traffic. Available values: `&#34;&#34;`, `hash`, `random`
+     * 
+     */
     public Optional<String> defaultPolicy() {
         return Optional.ofNullable(this.defaultPolicy);
     }
 
+    /**
+     * Percent of session traffic to shed 0 - 100.
+     * 
+     */
     @Import(name="sessionPercent")
     private @Nullable Double sessionPercent;
 
+    /**
+     * @return Percent of session traffic to shed 0 - 100.
+     * 
+     */
     public Optional<Double> sessionPercent() {
         return Optional.ofNullable(this.sessionPercent);
     }
 
+    /**
+     * Method of shedding traffic. Available values: `&#34;&#34;`, `hash`
+     * 
+     */
     @Import(name="sessionPolicy")
     private @Nullable String sessionPolicy;
 
+    /**
+     * @return Method of shedding traffic. Available values: `&#34;&#34;`, `hash`
+     * 
+     */
     public Optional<String> sessionPolicy() {
         return Optional.ofNullable(this.sessionPolicy);
     }
@@ -70,21 +102,45 @@ public final class GetLoadBalancerPoolsPoolLoadShedding extends com.pulumi.resou
             $ = new GetLoadBalancerPoolsPoolLoadShedding(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param defaultPercent Percent of traffic to shed 0 - 100.
+         * 
+         * @return builder
+         * 
+         */
         public Builder defaultPercent(@Nullable Double defaultPercent) {
             $.defaultPercent = defaultPercent;
             return this;
         }
 
+        /**
+         * @param defaultPolicy Method of shedding traffic. Available values: `&#34;&#34;`, `hash`, `random`
+         * 
+         * @return builder
+         * 
+         */
         public Builder defaultPolicy(@Nullable String defaultPolicy) {
             $.defaultPolicy = defaultPolicy;
             return this;
         }
 
+        /**
+         * @param sessionPercent Percent of session traffic to shed 0 - 100.
+         * 
+         * @return builder
+         * 
+         */
         public Builder sessionPercent(@Nullable Double sessionPercent) {
             $.sessionPercent = sessionPercent;
             return this;
         }
 
+        /**
+         * @param sessionPolicy Method of shedding traffic. Available values: `&#34;&#34;`, `hash`
+         * 
+         * @return builder
+         * 
+         */
         public Builder sessionPolicy(@Nullable String sessionPolicy) {
             $.sessionPolicy = sessionPolicy;
             return this;

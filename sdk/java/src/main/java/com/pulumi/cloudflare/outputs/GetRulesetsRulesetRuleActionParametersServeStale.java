@@ -11,9 +11,17 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetRulesetsRulesetRuleActionParametersServeStale {
+    /**
+     * @return Disable stale while updating.
+     * 
+     */
     private @Nullable Boolean disableStaleWhileUpdating;
 
     private GetRulesetsRulesetRuleActionParametersServeStale() {}
+    /**
+     * @return Disable stale while updating.
+     * 
+     */
     public Optional<Boolean> disableStaleWhileUpdating() {
         return Optional.ofNullable(this.disableStaleWhileUpdating);
     }

@@ -10,6 +10,10 @@ import java.util.Objects;
 
 @CustomType
 public final class GetRulesetsRulesetRuleActionParametersFromList {
+    /**
+     * @return Expression to use for the list lookup.
+     * 
+     */
     private String key;
     /**
      * @return Name of the ruleset.
@@ -18,6 +22,10 @@ public final class GetRulesetsRulesetRuleActionParametersFromList {
     private String name;
 
     private GetRulesetsRulesetRuleActionParametersFromList() {}
+    /**
+     * @return Expression to use for the list lookup.
+     * 
+     */
     public String key() {
         return this.key;
     }

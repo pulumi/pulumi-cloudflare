@@ -13,28 +13,68 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetDevicePostureRulesRule {
     private @Nullable String description;
+    /**
+     * @return Expire posture results after the specified amount of time. Must be in the format `1h` or `30m`. Valid units are `h` and `m`.
+     * 
+     */
     private @Nullable String expiration;
+    /**
+     * @return ID of the Device Posture Rule.
+     * 
+     */
     private String id;
+    /**
+     * @return Name of the device posture rule.
+     * 
+     */
     private @Nullable String name;
+    /**
+     * @return Tells the client when to run the device posture check. Must be in the format `1h` or `30m`. Valid units are `h` and `m`.
+     * 
+     */
     private @Nullable String schedule;
+    /**
+     * @return The device posture rule type. Available values: `serial_number`, `file`, `application`, `gateway`, `warp`, `domain_joined`, `os_version`, `disk_encryption`, `firewall`, `client_certificate`, `workspace_one`, `unique_client_id`, `crowdstrike_s2s`, `sentinelone`, `kolide`, `tanium_s2s`, `intune`, `sentinelone_s2s`
+     * 
+     */
     private String type;
 
     private GetDevicePostureRulesRule() {}
     public Optional<String> description() {
         return Optional.ofNullable(this.description);
     }
+    /**
+     * @return Expire posture results after the specified amount of time. Must be in the format `1h` or `30m`. Valid units are `h` and `m`.
+     * 
+     */
     public Optional<String> expiration() {
         return Optional.ofNullable(this.expiration);
     }
+    /**
+     * @return ID of the Device Posture Rule.
+     * 
+     */
     public String id() {
         return this.id;
     }
+    /**
+     * @return Name of the device posture rule.
+     * 
+     */
     public Optional<String> name() {
         return Optional.ofNullable(this.name);
     }
+    /**
+     * @return Tells the client when to run the device posture check. Must be in the format `1h` or `30m`. Valid units are `h` and `m`.
+     * 
+     */
     public Optional<String> schedule() {
         return Optional.ofNullable(this.schedule);
     }
+    /**
+     * @return The device posture rule type. Available values: `serial_number`, `file`, `application`, `gateway`, `warp`, `domain_joined`, `os_version`, `disk_encryption`, `firewall`, `client_certificate`, `workspace_one`, `unique_client_id`, `crowdstrike_s2s`, `sentinelone`, `kolide`, `tanium_s2s`, `intune`, `sentinelone_s2s`
+     * 
+     */
     public String type() {
         return this.type;
     }

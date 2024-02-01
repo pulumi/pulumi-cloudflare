@@ -13,8 +13,17 @@ namespace Pulumi.Cloudflare.Outputs
     [OutputType]
     public sealed class GetRulesetsRulesetRuleActionParametersAutominifyResult
     {
+        /// <summary>
+        /// SSL minification.
+        /// </summary>
         public readonly bool? Css;
+        /// <summary>
+        /// HTML minification.
+        /// </summary>
         public readonly bool? Html;
+        /// <summary>
+        /// JS minification.
+        /// </summary>
         public readonly bool? Js;
 
         [OutputConstructor]

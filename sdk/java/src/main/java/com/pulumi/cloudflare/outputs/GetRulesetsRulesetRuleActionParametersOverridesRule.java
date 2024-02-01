@@ -13,8 +13,14 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetRulesetsRulesetRuleActionParametersOverridesRule {
+    /**
+     * @return Action to perform in the rule-level override. Available values: `block`, `challenge`, `compress_response`, `ddos_dynamic`, `ddos_mitigation`, `execute`, `force_connection_close`, `js_challenge`, `log`, `log_custom_field`, `managed_challenge`, `redirect`, `rewrite`, `route`, `score`, `serve_error`, `set_cache_settings`, `set_config`, `skip`
+     * 
+     */
     private @Nullable String action;
     /**
+     * @return Defines if the current rule-level override enables or disables the rule.
+     * 
      * @deprecated
      * Use `status` instead. Continuing to use `enabled` will result in an inconsistent state for your Ruleset configuration.
      * 
@@ -26,15 +32,33 @@ public final class GetRulesetsRulesetRuleActionParametersOverridesRule {
      * 
      */
     private @Nullable String id;
+    /**
+     * @return Anomaly score threshold to apply in the ruleset rule override. Only applicable to modsecurity-based rulesets.
+     * 
+     */
     private @Nullable Integer scoreThreshold;
+    /**
+     * @return Sensitivity level for a ruleset rule override.
+     * 
+     */
     private @Nullable String sensitivityLevel;
+    /**
+     * @return Defines if the current rule-level override enables or disables the rule. Available values: `enabled`, `disabled`
+     * 
+     */
     private @Nullable String status;
 
     private GetRulesetsRulesetRuleActionParametersOverridesRule() {}
+    /**
+     * @return Action to perform in the rule-level override. Available values: `block`, `challenge`, `compress_response`, `ddos_dynamic`, `ddos_mitigation`, `execute`, `force_connection_close`, `js_challenge`, `log`, `log_custom_field`, `managed_challenge`, `redirect`, `rewrite`, `route`, `score`, `serve_error`, `set_cache_settings`, `set_config`, `skip`
+     * 
+     */
     public Optional<String> action() {
         return Optional.ofNullable(this.action);
     }
     /**
+     * @return Defines if the current rule-level override enables or disables the rule.
+     * 
      * @deprecated
      * Use `status` instead. Continuing to use `enabled` will result in an inconsistent state for your Ruleset configuration.
      * 
@@ -50,12 +74,24 @@ public final class GetRulesetsRulesetRuleActionParametersOverridesRule {
     public Optional<String> id() {
         return Optional.ofNullable(this.id);
     }
+    /**
+     * @return Anomaly score threshold to apply in the ruleset rule override. Only applicable to modsecurity-based rulesets.
+     * 
+     */
     public Optional<Integer> scoreThreshold() {
         return Optional.ofNullable(this.scoreThreshold);
     }
+    /**
+     * @return Sensitivity level for a ruleset rule override.
+     * 
+     */
     public Optional<String> sensitivityLevel() {
         return Optional.ofNullable(this.sensitivityLevel);
     }
+    /**
+     * @return Defines if the current rule-level override enables or disables the rule. Available values: `enabled`, `disabled`
+     * 
+     */
     public Optional<String> status() {
         return Optional.ofNullable(this.status);
     }
