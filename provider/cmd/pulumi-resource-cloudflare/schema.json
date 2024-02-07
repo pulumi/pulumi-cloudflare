@@ -12681,7 +12681,7 @@
                 },
                 "autoConnect": {
                     "type": "integer",
-                    "description": "The amount of time in minutes to reconnect after having been disabled.\n"
+                    "description": "The amount of time in seconds to reconnect after having been disabled.\n"
                 },
                 "captivePortal": {
                     "type": "integer",
@@ -12760,7 +12760,7 @@
                 },
                 "autoConnect": {
                     "type": "integer",
-                    "description": "The amount of time in minutes to reconnect after having been disabled.\n"
+                    "description": "The amount of time in seconds to reconnect after having been disabled.\n"
                 },
                 "captivePortal": {
                     "type": "integer",
@@ -12841,7 +12841,7 @@
                     },
                     "autoConnect": {
                         "type": "integer",
-                        "description": "The amount of time in minutes to reconnect after having been disabled.\n"
+                        "description": "The amount of time in seconds to reconnect after having been disabled.\n"
                     },
                     "captivePortal": {
                         "type": "integer",
@@ -17175,7 +17175,7 @@
             }
         },
         "cloudflare:index/r2Bucket:R2Bucket": {
-            "description": "{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as cloudflare from \"@pulumi/cloudflare\";\n\nconst example = new cloudflare.R2Bucket(\"example\", {\n    accountId: \"f037e56e89293a057740de681ac9abbe\",\n    location: \"enam\",\n    name: \"terraform-bucket\",\n});\n```\n```python\nimport pulumi\nimport pulumi_cloudflare as cloudflare\n\nexample = cloudflare.R2Bucket(\"example\",\n    account_id=\"f037e56e89293a057740de681ac9abbe\",\n    location=\"enam\",\n    name=\"terraform-bucket\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Cloudflare = Pulumi.Cloudflare;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = new Cloudflare.R2Bucket(\"example\", new()\n    {\n        AccountId = \"f037e56e89293a057740de681ac9abbe\",\n        Location = \"enam\",\n        Name = \"terraform-bucket\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := cloudflare.NewR2Bucket(ctx, \"example\", \u0026cloudflare.R2BucketArgs{\n\t\t\tAccountId: pulumi.String(\"f037e56e89293a057740de681ac9abbe\"),\n\t\t\tLocation:  pulumi.String(\"enam\"),\n\t\t\tName:      pulumi.String(\"terraform-bucket\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.cloudflare.R2Bucket;\nimport com.pulumi.cloudflare.R2BucketArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var example = new R2Bucket(\"example\", R2BucketArgs.builder()        \n            .accountId(\"f037e56e89293a057740de681ac9abbe\")\n            .location(\"enam\")\n            .name(\"terraform-bucket\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  example:\n    type: cloudflare:R2Bucket\n    properties:\n      accountId: f037e56e89293a057740de681ac9abbe\n      location: enam\n      name: terraform-bucket\n```\n\n\u003e Available location values can be found in the [R2 documentation](https://developers.cloudflare.com/r2/buckets/data-location/#available-hints).\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\n\n\n```sh\n $ pulumi import cloudflare:index/r2Bucket:R2Bucket default \u003caccount id\u003e/\u003cbucket name\u003e\n```\n\n ",
+            "description": "{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as cloudflare from \"@pulumi/cloudflare\";\n\nconst example = new cloudflare.R2Bucket(\"example\", {\n    accountId: \"f037e56e89293a057740de681ac9abbe\",\n    location: \"enam\",\n    name: \"terraform-bucket\",\n});\n```\n```python\nimport pulumi\nimport pulumi_cloudflare as cloudflare\n\nexample = cloudflare.R2Bucket(\"example\",\n    account_id=\"f037e56e89293a057740de681ac9abbe\",\n    location=\"enam\",\n    name=\"terraform-bucket\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Cloudflare = Pulumi.Cloudflare;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = new Cloudflare.R2Bucket(\"example\", new()\n    {\n        AccountId = \"f037e56e89293a057740de681ac9abbe\",\n        Location = \"enam\",\n        Name = \"terraform-bucket\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := cloudflare.NewR2Bucket(ctx, \"example\", \u0026cloudflare.R2BucketArgs{\n\t\t\tAccountId: pulumi.String(\"f037e56e89293a057740de681ac9abbe\"),\n\t\t\tLocation:  pulumi.String(\"enam\"),\n\t\t\tName:      pulumi.String(\"terraform-bucket\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.cloudflare.R2Bucket;\nimport com.pulumi.cloudflare.R2BucketArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var example = new R2Bucket(\"example\", R2BucketArgs.builder()        \n            .accountId(\"f037e56e89293a057740de681ac9abbe\")\n            .location(\"enam\")\n            .name(\"terraform-bucket\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  example:\n    type: cloudflare:R2Bucket\n    properties:\n      accountId: f037e56e89293a057740de681ac9abbe\n      location: enam\n      name: terraform-bucket\n```\n\n\u003e Available location values can be found in the [R2 documentation](https://developers.cloudflare.com/r2/reference/data-location/#available-hints).\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\n\n\n```sh\n $ pulumi import cloudflare:index/r2Bucket:R2Bucket default \u003caccount id\u003e/\u003cbucket name\u003e\n```\n\n ",
             "properties": {
                 "accountId": {
                     "type": "string",
@@ -22825,6 +22825,10 @@
             "inputs": {
                 "description": "A collection of arguments for invoking getRecord.\n",
                 "properties": {
+                    "content": {
+                        "type": "string",
+                        "description": "Content to filter record results on.\n"
+                    },
                     "hostname": {
                         "type": "string",
                         "description": "Hostname to filter DNS record results on.\n"
@@ -22851,6 +22855,10 @@
             "outputs": {
                 "description": "A collection of values returned by getRecord.\n",
                 "properties": {
+                    "content": {
+                        "type": "string",
+                        "description": "Content to filter record results on.\n"
+                    },
                     "hostname": {
                         "type": "string",
                         "description": "Hostname to filter DNS record results on.\n"
