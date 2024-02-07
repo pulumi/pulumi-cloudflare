@@ -77,7 +77,7 @@ type DeviceSettingsPolicy struct {
 	AllowUpdates pulumi.BoolPtrOutput `pulumi:"allowUpdates"`
 	// Whether to allow devices to leave the organization. Defaults to `true`.
 	AllowedToLeave pulumi.BoolPtrOutput `pulumi:"allowedToLeave"`
-	// The amount of time in minutes to reconnect after having been disabled.
+	// The amount of time in seconds to reconnect after having been disabled.
 	AutoConnect pulumi.IntPtrOutput `pulumi:"autoConnect"`
 	// The captive portal value for this policy. Defaults to `180`.
 	CaptivePortal pulumi.IntPtrOutput `pulumi:"captivePortal"`
@@ -154,7 +154,7 @@ type deviceSettingsPolicyState struct {
 	AllowUpdates *bool `pulumi:"allowUpdates"`
 	// Whether to allow devices to leave the organization. Defaults to `true`.
 	AllowedToLeave *bool `pulumi:"allowedToLeave"`
-	// The amount of time in minutes to reconnect after having been disabled.
+	// The amount of time in seconds to reconnect after having been disabled.
 	AutoConnect *int `pulumi:"autoConnect"`
 	// The captive portal value for this policy. Defaults to `180`.
 	CaptivePortal *int `pulumi:"captivePortal"`
@@ -193,7 +193,7 @@ type DeviceSettingsPolicyState struct {
 	AllowUpdates pulumi.BoolPtrInput
 	// Whether to allow devices to leave the organization. Defaults to `true`.
 	AllowedToLeave pulumi.BoolPtrInput
-	// The amount of time in minutes to reconnect after having been disabled.
+	// The amount of time in seconds to reconnect after having been disabled.
 	AutoConnect pulumi.IntPtrInput
 	// The captive portal value for this policy. Defaults to `180`.
 	CaptivePortal pulumi.IntPtrInput
@@ -236,7 +236,7 @@ type deviceSettingsPolicyArgs struct {
 	AllowUpdates *bool `pulumi:"allowUpdates"`
 	// Whether to allow devices to leave the organization. Defaults to `true`.
 	AllowedToLeave *bool `pulumi:"allowedToLeave"`
-	// The amount of time in minutes to reconnect after having been disabled.
+	// The amount of time in seconds to reconnect after having been disabled.
 	AutoConnect *int `pulumi:"autoConnect"`
 	// The captive portal value for this policy. Defaults to `180`.
 	CaptivePortal *int `pulumi:"captivePortal"`
@@ -276,7 +276,7 @@ type DeviceSettingsPolicyArgs struct {
 	AllowUpdates pulumi.BoolPtrInput
 	// Whether to allow devices to leave the organization. Defaults to `true`.
 	AllowedToLeave pulumi.BoolPtrInput
-	// The amount of time in minutes to reconnect after having been disabled.
+	// The amount of time in seconds to reconnect after having been disabled.
 	AutoConnect pulumi.IntPtrInput
 	// The captive portal value for this policy. Defaults to `180`.
 	CaptivePortal pulumi.IntPtrInput
@@ -413,7 +413,7 @@ func (o DeviceSettingsPolicyOutput) AllowedToLeave() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *DeviceSettingsPolicy) pulumi.BoolPtrOutput { return v.AllowedToLeave }).(pulumi.BoolPtrOutput)
 }
 
-// The amount of time in minutes to reconnect after having been disabled.
+// The amount of time in seconds to reconnect after having been disabled.
 func (o DeviceSettingsPolicyOutput) AutoConnect() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *DeviceSettingsPolicy) pulumi.IntPtrOutput { return v.AutoConnect }).(pulumi.IntPtrOutput)
 }

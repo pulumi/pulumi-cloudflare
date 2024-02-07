@@ -88,7 +88,7 @@ export class DeviceSettingsPolicy extends pulumi.CustomResource {
      */
     public readonly allowedToLeave!: pulumi.Output<boolean | undefined>;
     /**
-     * The amount of time in minutes to reconnect after having been disabled.
+     * The amount of time in seconds to reconnect after having been disabled.
      */
     public readonly autoConnect!: pulumi.Output<number | undefined>;
     /**
@@ -231,7 +231,7 @@ export interface DeviceSettingsPolicyState {
      */
     allowedToLeave?: pulumi.Input<boolean>;
     /**
-     * The amount of time in minutes to reconnect after having been disabled.
+     * The amount of time in seconds to reconnect after having been disabled.
      */
     autoConnect?: pulumi.Input<number>;
     /**
@@ -309,7 +309,7 @@ export interface DeviceSettingsPolicyArgs {
      */
     allowedToLeave?: pulumi.Input<boolean>;
     /**
-     * The amount of time in minutes to reconnect after having been disabled.
+     * The amount of time in seconds to reconnect after having been disabled.
      */
     autoConnect?: pulumi.Input<number>;
     /**

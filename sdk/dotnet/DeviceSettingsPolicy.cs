@@ -83,7 +83,7 @@ namespace Pulumi.Cloudflare
         public Output<bool?> AllowedToLeave { get; private set; } = null!;
 
         /// <summary>
-        /// The amount of time in minutes to reconnect after having been disabled.
+        /// The amount of time in seconds to reconnect after having been disabled.
         /// </summary>
         [Output("autoConnect")]
         public Output<int?> AutoConnect { get; private set; } = null!;
@@ -237,7 +237,7 @@ namespace Pulumi.Cloudflare
         public Input<bool>? AllowedToLeave { get; set; }
 
         /// <summary>
-        /// The amount of time in minutes to reconnect after having been disabled.
+        /// The amount of time in seconds to reconnect after having been disabled.
         /// </summary>
         [Input("autoConnect")]
         public Input<int>? AutoConnect { get; set; }
@@ -353,7 +353,7 @@ namespace Pulumi.Cloudflare
         public Input<bool>? AllowedToLeave { get; set; }
 
         /// <summary>
-        /// The amount of time in minutes to reconnect after having been disabled.
+        /// The amount of time in seconds to reconnect after having been disabled.
         /// </summary>
         [Input("autoConnect")]
         public Input<int>? AutoConnect { get; set; }

@@ -51,6 +51,8 @@ func LookupRecord(ctx *pulumi.Context, args *LookupRecordArgs, opts ...pulumi.In
 
 // A collection of arguments for invoking getRecord.
 type LookupRecordArgs struct {
+	// Content to filter record results on.
+	Content *string `pulumi:"content"`
 	// Hostname to filter DNS record results on.
 	Hostname string `pulumi:"hostname"`
 	// DNS priority to filter record results on.
@@ -63,6 +65,8 @@ type LookupRecordArgs struct {
 
 // A collection of values returned by getRecord.
 type LookupRecordResult struct {
+	// Content to filter record results on.
+	Content *string `pulumi:"content"`
 	// Hostname to filter DNS record results on.
 	Hostname string `pulumi:"hostname"`
 	// The provider-assigned unique ID for this managed resource.
@@ -102,6 +106,8 @@ func LookupRecordOutput(ctx *pulumi.Context, args LookupRecordOutputArgs, opts .
 
 // A collection of arguments for invoking getRecord.
 type LookupRecordOutputArgs struct {
+	// Content to filter record results on.
+	Content pulumi.StringPtrInput `pulumi:"content"`
 	// Hostname to filter DNS record results on.
 	Hostname pulumi.StringInput `pulumi:"hostname"`
 	// DNS priority to filter record results on.
@@ -129,6 +135,11 @@ func (o LookupRecordResultOutput) ToLookupRecordResultOutput() LookupRecordResul
 
 func (o LookupRecordResultOutput) ToLookupRecordResultOutputWithContext(ctx context.Context) LookupRecordResultOutput {
 	return o
+}
+
+// Content to filter record results on.
+func (o LookupRecordResultOutput) Content() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupRecordResult) *string { return v.Content }).(pulumi.StringPtrOutput)
 }
 
 // Hostname to filter DNS record results on.

@@ -78,14 +78,14 @@ public final class DeviceSettingsPolicyState extends com.pulumi.resources.Resour
     }
 
     /**
-     * The amount of time in minutes to reconnect after having been disabled.
+     * The amount of time in seconds to reconnect after having been disabled.
      * 
      */
     @Import(name="autoConnect")
     private @Nullable Output<Integer> autoConnect;
 
     /**
-     * @return The amount of time in minutes to reconnect after having been disabled.
+     * @return The amount of time in seconds to reconnect after having been disabled.
      * 
      */
     public Optional<Output<Integer>> autoConnect() {
@@ -413,7 +413,7 @@ public final class DeviceSettingsPolicyState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param autoConnect The amount of time in minutes to reconnect after having been disabled.
+         * @param autoConnect The amount of time in seconds to reconnect after having been disabled.
          * 
          * @return builder
          * 
@@ -424,7 +424,7 @@ public final class DeviceSettingsPolicyState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param autoConnect The amount of time in minutes to reconnect after having been disabled.
+         * @param autoConnect The amount of time in seconds to reconnect after having been disabled.
          * 
          * @return builder
          * 

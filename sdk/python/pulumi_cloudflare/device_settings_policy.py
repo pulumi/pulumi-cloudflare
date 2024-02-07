@@ -40,7 +40,7 @@ class DeviceSettingsPolicyArgs:
         :param pulumi.Input[bool] allow_mode_switch: Whether to allow mode switch for this policy.
         :param pulumi.Input[bool] allow_updates: Whether to allow updates under this policy.
         :param pulumi.Input[bool] allowed_to_leave: Whether to allow devices to leave the organization. Defaults to `true`.
-        :param pulumi.Input[int] auto_connect: The amount of time in minutes to reconnect after having been disabled.
+        :param pulumi.Input[int] auto_connect: The amount of time in seconds to reconnect after having been disabled.
         :param pulumi.Input[int] captive_portal: The captive portal value for this policy. Defaults to `180`.
         :param pulumi.Input[bool] default: Whether the policy refers to the default account policy.
         :param pulumi.Input[bool] disable_auto_fallback: Whether to disable auto fallback for this policy.
@@ -163,7 +163,7 @@ class DeviceSettingsPolicyArgs:
     @pulumi.getter(name="autoConnect")
     def auto_connect(self) -> Optional[pulumi.Input[int]]:
         """
-        The amount of time in minutes to reconnect after having been disabled.
+        The amount of time in seconds to reconnect after having been disabled.
         """
         return pulumi.get(self, "auto_connect")
 
@@ -331,7 +331,7 @@ class _DeviceSettingsPolicyState:
         :param pulumi.Input[bool] allow_mode_switch: Whether to allow mode switch for this policy.
         :param pulumi.Input[bool] allow_updates: Whether to allow updates under this policy.
         :param pulumi.Input[bool] allowed_to_leave: Whether to allow devices to leave the organization. Defaults to `true`.
-        :param pulumi.Input[int] auto_connect: The amount of time in minutes to reconnect after having been disabled.
+        :param pulumi.Input[int] auto_connect: The amount of time in seconds to reconnect after having been disabled.
         :param pulumi.Input[int] captive_portal: The captive portal value for this policy. Defaults to `180`.
         :param pulumi.Input[bool] default: Whether the policy refers to the default account policy.
         :param pulumi.Input[str] description: Description of Policy.
@@ -435,7 +435,7 @@ class _DeviceSettingsPolicyState:
     @pulumi.getter(name="autoConnect")
     def auto_connect(self) -> Optional[pulumi.Input[int]]:
         """
-        The amount of time in minutes to reconnect after having been disabled.
+        The amount of time in seconds to reconnect after having been disabled.
         """
         return pulumi.get(self, "auto_connect")
 
@@ -668,7 +668,7 @@ class DeviceSettingsPolicy(pulumi.CustomResource):
         :param pulumi.Input[bool] allow_mode_switch: Whether to allow mode switch for this policy.
         :param pulumi.Input[bool] allow_updates: Whether to allow updates under this policy.
         :param pulumi.Input[bool] allowed_to_leave: Whether to allow devices to leave the organization. Defaults to `true`.
-        :param pulumi.Input[int] auto_connect: The amount of time in minutes to reconnect after having been disabled.
+        :param pulumi.Input[int] auto_connect: The amount of time in seconds to reconnect after having been disabled.
         :param pulumi.Input[int] captive_portal: The captive portal value for this policy. Defaults to `180`.
         :param pulumi.Input[bool] default: Whether the policy refers to the default account policy.
         :param pulumi.Input[str] description: Description of Policy.
@@ -832,7 +832,7 @@ class DeviceSettingsPolicy(pulumi.CustomResource):
         :param pulumi.Input[bool] allow_mode_switch: Whether to allow mode switch for this policy.
         :param pulumi.Input[bool] allow_updates: Whether to allow updates under this policy.
         :param pulumi.Input[bool] allowed_to_leave: Whether to allow devices to leave the organization. Defaults to `true`.
-        :param pulumi.Input[int] auto_connect: The amount of time in minutes to reconnect after having been disabled.
+        :param pulumi.Input[int] auto_connect: The amount of time in seconds to reconnect after having been disabled.
         :param pulumi.Input[int] captive_portal: The captive portal value for this policy. Defaults to `180`.
         :param pulumi.Input[bool] default: Whether the policy refers to the default account policy.
         :param pulumi.Input[str] description: Description of Policy.
@@ -907,7 +907,7 @@ class DeviceSettingsPolicy(pulumi.CustomResource):
     @pulumi.getter(name="autoConnect")
     def auto_connect(self) -> pulumi.Output[Optional[int]]:
         """
-        The amount of time in minutes to reconnect after having been disabled.
+        The amount of time in seconds to reconnect after having been disabled.
         """
         return pulumi.get(self, "auto_connect")
 

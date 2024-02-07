@@ -21,7 +21,10 @@ class GetRecordResult:
     """
     A collection of values returned by getRecord.
     """
-    def __init__(__self__, hostname=None, id=None, locked=None, priority=None, proxiable=None, proxied=None, ttl=None, type=None, value=None, zone_id=None, zone_name=None):
+    def __init__(__self__, content=None, hostname=None, id=None, locked=None, priority=None, proxiable=None, proxied=None, ttl=None, type=None, value=None, zone_id=None, zone_name=None):
+        if content and not isinstance(content, str):
+            raise TypeError("Expected argument 'content' to be a str")
+        pulumi.set(__self__, "content", content)
         if hostname and not isinstance(hostname, str):
             raise TypeError("Expected argument 'hostname' to be a str")
         pulumi.set(__self__, "hostname", hostname)
@@ -55,6 +58,14 @@ class GetRecordResult:
         if zone_name and not isinstance(zone_name, str):
             raise TypeError("Expected argument 'zone_name' to be a str")
         pulumi.set(__self__, "zone_name", zone_name)
+
+    @property
+    @pulumi.getter
+    def content(self) -> Optional[str]:
+        """
+        Content to filter record results on.
+        """
+        return pulumi.get(self, "content")
 
     @property
     @pulumi.getter
@@ -151,6 +162,7 @@ class AwaitableGetRecordResult(GetRecordResult):
         if False:
             yield self
         return GetRecordResult(
+            content=self.content,
             hostname=self.hostname,
             id=self.id,
             locked=self.locked,
@@ -164,7 +176,8 @@ class AwaitableGetRecordResult(GetRecordResult):
             zone_name=self.zone_name)
 
 
-def get_record(hostname: Optional[str] = None,
+def get_record(content: Optional[str] = None,
+               hostname: Optional[str] = None,
                priority: Optional[int] = None,
                type: Optional[str] = None,
                zone_id: Optional[str] = None,
@@ -183,12 +196,14 @@ def get_record(hostname: Optional[str] = None,
     ```
 
 
+    :param str content: Content to filter record results on.
     :param str hostname: Hostname to filter DNS record results on.
     :param int priority: DNS priority to filter record results on.
     :param str type: DNS record type to filter record results on. Defaults to `A`.
     :param str zone_id: The zone identifier to target for the resource.
     """
     __args__ = dict()
+    __args__['content'] = content
     __args__['hostname'] = hostname
     __args__['priority'] = priority
     __args__['type'] = type
@@ -197,6 +212,7 @@ def get_record(hostname: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('cloudflare:index/getRecord:getRecord', __args__, opts=opts, typ=GetRecordResult).value
 
     return AwaitableGetRecordResult(
+        content=pulumi.get(__ret__, 'content'),
         hostname=pulumi.get(__ret__, 'hostname'),
         id=pulumi.get(__ret__, 'id'),
         locked=pulumi.get(__ret__, 'locked'),
@@ -211,7 +227,8 @@ def get_record(hostname: Optional[str] = None,
 
 
 @_utilities.lift_output_func(get_record)
-def get_record_output(hostname: Optional[pulumi.Input[str]] = None,
+def get_record_output(content: Optional[pulumi.Input[Optional[str]]] = None,
+                      hostname: Optional[pulumi.Input[str]] = None,
                       priority: Optional[pulumi.Input[Optional[int]]] = None,
                       type: Optional[pulumi.Input[Optional[str]]] = None,
                       zone_id: Optional[pulumi.Input[str]] = None,
@@ -230,6 +247,7 @@ def get_record_output(hostname: Optional[pulumi.Input[str]] = None,
     ```
 
 
+    :param str content: Content to filter record results on.
     :param str hostname: Hostname to filter DNS record results on.
     :param int priority: DNS priority to filter record results on.
     :param str type: DNS record type to filter record results on. Defaults to `A`.
