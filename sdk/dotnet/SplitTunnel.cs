@@ -103,7 +103,7 @@ namespace Pulumi.Cloudflare
     /// Split Tunnels for default device policies must use "default" as the policy ID.
     /// 
     /// ```sh
-    ///  $ pulumi import cloudflare:index/splitTunnel:SplitTunnel example &lt;account_id&gt;/&lt;policy_id&gt;/&lt;mode&gt;
+    /// $ pulumi import cloudflare:index/splitTunnel:SplitTunnel example &lt;account_id&gt;/&lt;policy_id&gt;/&lt;mode&gt;
     /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/splitTunnel:SplitTunnel")]

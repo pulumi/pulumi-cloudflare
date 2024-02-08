@@ -49,9 +49,7 @@ import (
 // Use the Zone ID, Waiting Room ID, and Event ID to import.
 //
 // ```sh
-//
-//	$ pulumi import cloudflare:index/waitingRoomEvent:WaitingRoomEvent default <zone_id>/<waiting_room_id>/<waiting_room_event_id>
-//
+// $ pulumi import cloudflare:index/waitingRoomEvent:WaitingRoomEvent default <zone_id>/<waiting_room_id>/<waiting_room_event_id>
 // ```
 type WaitingRoomEvent struct {
 	pulumi.CustomResourceState

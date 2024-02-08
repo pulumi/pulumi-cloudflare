@@ -69,7 +69,7 @@ import * as utilities from "./utilities";
  * Split Tunnels for default device policies must use "default" as the policy ID.
  *
  * ```sh
- *  $ pulumi import cloudflare:index/splitTunnel:SplitTunnel example <account_id>/<policy_id>/<mode>
+ * $ pulumi import cloudflare:index/splitTunnel:SplitTunnel example <account_id>/<policy_id>/<mode>
  * ```
  */
 export class SplitTunnel extends pulumi.CustomResource {

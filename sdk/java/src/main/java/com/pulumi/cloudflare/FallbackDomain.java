@@ -27,7 +27,7 @@ import javax.annotation.Nullable;
  * Fallback Domains for default device policies must use &#34;default&#34; as the policy ID.
  * 
  * ```sh
- *  $ pulumi import cloudflare:index/fallbackDomain:FallbackDomain example &lt;account_id&gt;/&lt;policy_id&gt;
+ * $ pulumi import cloudflare:index/fallbackDomain:FallbackDomain example &lt;account_id&gt;/&lt;policy_id&gt;
  * ```
  * 
  */

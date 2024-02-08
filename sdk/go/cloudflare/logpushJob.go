@@ -17,17 +17,13 @@ import (
 // Import an account-scoped job.
 //
 // ```sh
-//
-//	$ pulumi import cloudflare:index/logpushJob:LogpushJob example account/<account_id>/<job_id>
-//
+// $ pulumi import cloudflare:index/logpushJob:LogpushJob example account/<account_id>/<job_id>
 // ```
 //
 //	Import a zone-scoped job.
 //
 // ```sh
-//
-//	$ pulumi import cloudflare:index/logpushJob:LogpushJob example zone/<zone_id>/<job_id>
-//
+// $ pulumi import cloudflare:index/logpushJob:LogpushJob example zone/<zone_id>/<job_id>
 // ```
 type LogpushJob struct {
 	pulumi.CustomResourceState

@@ -72,7 +72,7 @@ import javax.annotation.Nullable;
  * Use the Zone ID and Waiting Room ID to import.
  * 
  * ```sh
- *  $ pulumi import cloudflare:index/waitingRoom:WaitingRoom default &lt;zone_id&gt;/&lt;waiting_room_id&gt;
+ * $ pulumi import cloudflare:index/waitingRoom:WaitingRoom default &lt;zone_id&gt;/&lt;waiting_room_id&gt;
  * ```
  * 
  */

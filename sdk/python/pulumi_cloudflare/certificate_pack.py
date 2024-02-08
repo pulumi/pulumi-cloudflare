@@ -371,7 +371,9 @@ class CertificatePack(pulumi.CustomResource):
          $ pulumi import cloudflare:index/certificatePack:CertificatePack example <zone_id>/<certificate_pack_id>
         ```
 
-         While supported, importing isn't recommended and it is advised to replace the certificate entirely instead.
+         While supported, importing isn't recommended and it is advised to replace the
+
+         certificate entirely instead.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -418,7 +420,9 @@ class CertificatePack(pulumi.CustomResource):
          $ pulumi import cloudflare:index/certificatePack:CertificatePack example <zone_id>/<certificate_pack_id>
         ```
 
-         While supported, importing isn't recommended and it is advised to replace the certificate entirely instead.
+         While supported, importing isn't recommended and it is advised to replace the
+
+         certificate entirely instead.
 
         :param str resource_name: The name of the resource.
         :param CertificatePackArgs args: The arguments to use to populate this resource's properties.

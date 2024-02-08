@@ -62,17 +62,13 @@ import (
 // Account level CA certificate import.
 //
 // ```sh
-//
-//	$ pulumi import cloudflare:index/accessCaCertificate:AccessCaCertificate example account/<account_id>/<application_id>
-//
+// $ pulumi import cloudflare:index/accessCaCertificate:AccessCaCertificate example account/<account_id>/<application_id>
 // ```
 //
 //	Zone level CA certificate import.
 //
 // ```sh
-//
-//	$ pulumi import cloudflare:index/accessCaCertificate:AccessCaCertificate example account/<zone_id>/<application_id>
-//
+// $ pulumi import cloudflare:index/accessCaCertificate:AccessCaCertificate example account/<zone_id>/<application_id>
 // ```
 type AccessCaCertificate struct {
 	pulumi.CustomResourceState

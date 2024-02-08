@@ -22,9 +22,7 @@ import (
 // Fallback Domains for default device policies must use "default" as the policy ID.
 //
 // ```sh
-//
-//	$ pulumi import cloudflare:index/fallbackDomain:FallbackDomain example <account_id>/<policy_id>
-//
+// $ pulumi import cloudflare:index/fallbackDomain:FallbackDomain example <account_id>/<policy_id>
 // ```
 type FallbackDomain struct {
 	pulumi.CustomResourceState

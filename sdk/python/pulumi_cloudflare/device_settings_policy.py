@@ -659,7 +659,7 @@ class DeviceSettingsPolicy(pulumi.CustomResource):
         For default device settings policies you must use "default" as the policy ID.
 
         ```sh
-         $ pulumi import cloudflare:index/deviceSettingsPolicy:DeviceSettingsPolicy example <account_id>/<device_policy_id>
+        $ pulumi import cloudflare:index/deviceSettingsPolicy:DeviceSettingsPolicy example <account_id>/<device_policy_id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -724,7 +724,7 @@ class DeviceSettingsPolicy(pulumi.CustomResource):
         For default device settings policies you must use "default" as the policy ID.
 
         ```sh
-         $ pulumi import cloudflare:index/deviceSettingsPolicy:DeviceSettingsPolicy example <account_id>/<device_policy_id>
+        $ pulumi import cloudflare:index/deviceSettingsPolicy:DeviceSettingsPolicy example <account_id>/<device_policy_id>
         ```
 
         :param str resource_name: The name of the resource.
