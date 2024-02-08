@@ -23,6 +23,7 @@ export function getRecord(args: GetRecordArgs, opts?: pulumi.InvokeOptions): Pro
 
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getRecord:getRecord", {
+        "content": args.content,
         "hostname": args.hostname,
         "priority": args.priority,
         "type": args.type,
@@ -34,6 +35,10 @@ export function getRecord(args: GetRecordArgs, opts?: pulumi.InvokeOptions): Pro
  * A collection of arguments for invoking getRecord.
  */
 export interface GetRecordArgs {
+    /**
+     * Content to filter record results on.
+     */
+    content?: string;
     /**
      * Hostname to filter DNS record results on.
      */
@@ -56,6 +61,10 @@ export interface GetRecordArgs {
  * A collection of values returned by getRecord.
  */
 export interface GetRecordResult {
+    /**
+     * Content to filter record results on.
+     */
+    readonly content?: string;
     /**
      * Hostname to filter DNS record results on.
      */
@@ -124,6 +133,10 @@ export function getRecordOutput(args: GetRecordOutputArgs, opts?: pulumi.InvokeO
  * A collection of arguments for invoking getRecord.
  */
 export interface GetRecordOutputArgs {
+    /**
+     * Content to filter record results on.
+     */
+    content?: pulumi.Input<string>;
     /**
      * Hostname to filter DNS record results on.
      */

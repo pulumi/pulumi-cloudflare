@@ -46,7 +46,7 @@ import javax.annotation.Nullable;
  * }
  * ```
  * 
- * &gt; Available location values can be found in the [R2 documentation](https://developers.cloudflare.com/r2/buckets/data-location/#available-hints).
+ * &gt; Available location values can be found in the [R2 documentation](https://developers.cloudflare.com/r2/reference/data-location/#available-hints).
  * 
  * ## Import
  * 

@@ -18,6 +18,21 @@ public final class GetRecordArgs extends com.pulumi.resources.InvokeArgs {
     public static final GetRecordArgs Empty = new GetRecordArgs();
 
     /**
+     * Content to filter record results on.
+     * 
+     */
+    @Import(name="content")
+    private @Nullable Output<String> content;
+
+    /**
+     * @return Content to filter record results on.
+     * 
+     */
+    public Optional<Output<String>> content() {
+        return Optional.ofNullable(this.content);
+    }
+
+    /**
      * Hostname to filter DNS record results on.
      * 
      */
@@ -80,6 +95,7 @@ public final class GetRecordArgs extends com.pulumi.resources.InvokeArgs {
     private GetRecordArgs() {}
 
     private GetRecordArgs(GetRecordArgs $) {
+        this.content = $.content;
         this.hostname = $.hostname;
         this.priority = $.priority;
         this.type = $.type;
@@ -102,6 +118,27 @@ public final class GetRecordArgs extends com.pulumi.resources.InvokeArgs {
 
         public Builder(GetRecordArgs defaults) {
             $ = new GetRecordArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param content Content to filter record results on.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder content(@Nullable Output<String> content) {
+            $.content = content;
+            return this;
+        }
+
+        /**
+         * @param content Content to filter record results on.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder content(String content) {
+            return content(Output.of(content));
         }
 
         /**

@@ -134,14 +134,14 @@ public class DeviceSettingsPolicy extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.allowedToLeave);
     }
     /**
-     * The amount of time in minutes to reconnect after having been disabled.
+     * The amount of time in seconds to reconnect after having been disabled.
      * 
      */
     @Export(name="autoConnect", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> autoConnect;
 
     /**
-     * @return The amount of time in minutes to reconnect after having been disabled.
+     * @return The amount of time in seconds to reconnect after having been disabled.
      * 
      */
     public Output<Optional<Integer>> autoConnect() {

@@ -74,6 +74,12 @@ namespace Pulumi.Cloudflare
     public sealed class GetRecordArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
+        /// Content to filter record results on.
+        /// </summary>
+        [Input("content")]
+        public string? Content { get; set; }
+
+        /// <summary>
         /// Hostname to filter DNS record results on.
         /// </summary>
         [Input("hostname", required: true)]
@@ -105,6 +111,12 @@ namespace Pulumi.Cloudflare
 
     public sealed class GetRecordInvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Content to filter record results on.
+        /// </summary>
+        [Input("content")]
+        public Input<string>? Content { get; set; }
+
         /// <summary>
         /// Hostname to filter DNS record results on.
         /// </summary>
@@ -139,6 +151,10 @@ namespace Pulumi.Cloudflare
     [OutputType]
     public sealed class GetRecordResult
     {
+        /// <summary>
+        /// Content to filter record results on.
+        /// </summary>
+        public readonly string? Content;
         /// <summary>
         /// Hostname to filter DNS record results on.
         /// </summary>
@@ -186,6 +202,8 @@ namespace Pulumi.Cloudflare
 
         [OutputConstructor]
         private GetRecordResult(
+            string? content,
+
             string hostname,
 
             string id,
@@ -208,6 +226,7 @@ namespace Pulumi.Cloudflare
 
             string zoneName)
         {
+            Content = content;
             Hostname = hostname;
             Id = id;
             Locked = locked;

@@ -15,6 +15,11 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetRecordResult {
     /**
+     * @return Content to filter record results on.
+     * 
+     */
+    private @Nullable String content;
+    /**
      * @return Hostname to filter DNS record results on.
      * 
      */
@@ -71,6 +76,13 @@ public final class GetRecordResult {
     private String zoneName;
 
     private GetRecordResult() {}
+    /**
+     * @return Content to filter record results on.
+     * 
+     */
+    public Optional<String> content() {
+        return Optional.ofNullable(this.content);
+    }
     /**
      * @return Hostname to filter DNS record results on.
      * 
@@ -158,6 +170,7 @@ public final class GetRecordResult {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable String content;
         private String hostname;
         private String id;
         private Boolean locked;
@@ -172,6 +185,7 @@ public final class GetRecordResult {
         public Builder() {}
         public Builder(GetRecordResult defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.content = defaults.content;
     	      this.hostname = defaults.hostname;
     	      this.id = defaults.id;
     	      this.locked = defaults.locked;
@@ -185,6 +199,12 @@ public final class GetRecordResult {
     	      this.zoneName = defaults.zoneName;
         }
 
+        @CustomType.Setter
+        public Builder content(@Nullable String content) {
+
+            this.content = content;
+            return this;
+        }
         @CustomType.Setter
         public Builder hostname(String hostname) {
             if (hostname == null) {
@@ -271,6 +291,7 @@ public final class GetRecordResult {
         }
         public GetRecordResult build() {
             final var _resultValue = new GetRecordResult();
+            _resultValue.content = content;
             _resultValue.hostname = hostname;
             _resultValue.id = id;
             _resultValue.locked = locked;

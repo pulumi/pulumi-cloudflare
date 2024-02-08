@@ -143,7 +143,7 @@ class R2Bucket(pulumi.CustomResource):
             name="terraform-bucket")
         ```
 
-        > Available location values can be found in the [R2 documentation](https://developers.cloudflare.com/r2/buckets/data-location/#available-hints).
+        > Available location values can be found in the [R2 documentation](https://developers.cloudflare.com/r2/reference/data-location/#available-hints).
 
         ## Import
 
@@ -176,7 +176,7 @@ class R2Bucket(pulumi.CustomResource):
             name="terraform-bucket")
         ```
 
-        > Available location values can be found in the [R2 documentation](https://developers.cloudflare.com/r2/buckets/data-location/#available-hints).
+        > Available location values can be found in the [R2 documentation](https://developers.cloudflare.com/r2/reference/data-location/#available-hints).
 
         ## Import
 
