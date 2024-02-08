@@ -100,7 +100,7 @@ import javax.annotation.Nullable;
  * Split Tunnels for default device policies must use &#34;default&#34; as the policy ID.
  * 
  * ```sh
- *  $ pulumi import cloudflare:index/splitTunnel:SplitTunnel example &lt;account_id&gt;/&lt;policy_id&gt;/&lt;mode&gt;
+ * $ pulumi import cloudflare:index/splitTunnel:SplitTunnel example &lt;account_id&gt;/&lt;policy_id&gt;/&lt;mode&gt;
  * ```
  * 
  */

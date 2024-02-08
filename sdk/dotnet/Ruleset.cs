@@ -23,13 +23,13 @@ namespace Pulumi.Cloudflare
     /// Import an account scoped Ruleset configuration.
     /// 
     /// ```sh
-    ///  $ pulumi import cloudflare:index/ruleset:Ruleset example account/&lt;account_id&gt;/&lt;ruleset_id&gt;
+    /// $ pulumi import cloudflare:index/ruleset:Ruleset example account/&lt;account_id&gt;/&lt;ruleset_id&gt;
     /// ```
     /// 
     ///  Import a zone scoped Ruleset configuration.
     /// 
     /// ```sh
-    ///  $ pulumi import cloudflare:index/ruleset:Ruleset example zone/&lt;zone_id&gt;/&lt;ruleset_id&gt;
+    /// $ pulumi import cloudflare:index/ruleset:Ruleset example zone/&lt;zone_id&gt;/&lt;ruleset_id&gt;
     /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/ruleset:Ruleset")]

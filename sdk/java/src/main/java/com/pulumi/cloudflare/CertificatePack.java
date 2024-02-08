@@ -65,7 +65,9 @@ import javax.annotation.Nullable;
  *  $ pulumi import cloudflare:index/certificatePack:CertificatePack example &lt;zone_id&gt;/&lt;certificate_pack_id&gt;
  * ```
  * 
- *  While supported, importing isn&#39;t recommended and it is advised to replace the certificate entirely instead.
+ *  While supported, importing isn&#39;t recommended and it is advised to replace the
+ * 
+ *  certificate entirely instead.
  * 
  */
 @ResourceType(type="cloudflare:index/certificatePack:CertificatePack")

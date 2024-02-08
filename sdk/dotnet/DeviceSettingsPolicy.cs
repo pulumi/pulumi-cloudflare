@@ -52,7 +52,7 @@ namespace Pulumi.Cloudflare
     /// For default device settings policies you must use "default" as the policy ID.
     /// 
     /// ```sh
-    ///  $ pulumi import cloudflare:index/deviceSettingsPolicy:DeviceSettingsPolicy example &lt;account_id&gt;/&lt;device_policy_id&gt;
+    /// $ pulumi import cloudflare:index/deviceSettingsPolicy:DeviceSettingsPolicy example &lt;account_id&gt;/&lt;device_policy_id&gt;
     /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/deviceSettingsPolicy:DeviceSettingsPolicy")]

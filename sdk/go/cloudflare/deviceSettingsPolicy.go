@@ -62,9 +62,7 @@ import (
 // For default device settings policies you must use "default" as the policy ID.
 //
 // ```sh
-//
-//	$ pulumi import cloudflare:index/deviceSettingsPolicy:DeviceSettingsPolicy example <account_id>/<device_policy_id>
-//
+// $ pulumi import cloudflare:index/deviceSettingsPolicy:DeviceSettingsPolicy example <account_id>/<device_policy_id>
 // ```
 type DeviceSettingsPolicy struct {
 	pulumi.CustomResourceState

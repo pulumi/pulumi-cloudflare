@@ -71,7 +71,7 @@ import javax.annotation.Nullable;
  * For default device settings policies you must use &#34;default&#34; as the policy ID.
  * 
  * ```sh
- *  $ pulumi import cloudflare:index/deviceSettingsPolicy:DeviceSettingsPolicy example &lt;account_id&gt;/&lt;device_policy_id&gt;
+ * $ pulumi import cloudflare:index/deviceSettingsPolicy:DeviceSettingsPolicy example &lt;account_id&gt;/&lt;device_policy_id&gt;
  * ```
  * 
  */

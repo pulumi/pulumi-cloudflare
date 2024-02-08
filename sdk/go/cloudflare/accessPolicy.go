@@ -96,17 +96,13 @@ import (
 // Account level import.
 //
 // ```sh
-//
-//	$ pulumi import cloudflare:index/accessPolicy:AccessPolicy example account/<account_id>/<application_id>/<policy_id>
-//
+// $ pulumi import cloudflare:index/accessPolicy:AccessPolicy example account/<account_id>/<application_id>/<policy_id>
 // ```
 //
 //	Zone level import.
 //
 // ```sh
-//
-//	$ pulumi import cloudflare:index/accessPolicy:AccessPolicy example zone/<zone_id>/<application_id>/<policy_id>
-//
+// $ pulumi import cloudflare:index/accessPolicy:AccessPolicy example zone/<zone_id>/<application_id>/<policy_id>
 // ```
 type AccessPolicy struct {
 	pulumi.CustomResourceState

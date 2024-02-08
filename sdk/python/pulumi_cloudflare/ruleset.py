@@ -277,13 +277,13 @@ class Ruleset(pulumi.CustomResource):
         Import an account scoped Ruleset configuration.
 
         ```sh
-         $ pulumi import cloudflare:index/ruleset:Ruleset example account/<account_id>/<ruleset_id>
+        $ pulumi import cloudflare:index/ruleset:Ruleset example account/<account_id>/<ruleset_id>
         ```
 
          Import a zone scoped Ruleset configuration.
 
         ```sh
-         $ pulumi import cloudflare:index/ruleset:Ruleset example zone/<zone_id>/<ruleset_id>
+        $ pulumi import cloudflare:index/ruleset:Ruleset example zone/<zone_id>/<ruleset_id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -316,13 +316,13 @@ class Ruleset(pulumi.CustomResource):
         Import an account scoped Ruleset configuration.
 
         ```sh
-         $ pulumi import cloudflare:index/ruleset:Ruleset example account/<account_id>/<ruleset_id>
+        $ pulumi import cloudflare:index/ruleset:Ruleset example account/<account_id>/<ruleset_id>
         ```
 
          Import a zone scoped Ruleset configuration.
 
         ```sh
-         $ pulumi import cloudflare:index/ruleset:Ruleset example zone/<zone_id>/<ruleset_id>
+        $ pulumi import cloudflare:index/ruleset:Ruleset example zone/<zone_id>/<ruleset_id>
         ```
 
         :param str resource_name: The name of the resource.
