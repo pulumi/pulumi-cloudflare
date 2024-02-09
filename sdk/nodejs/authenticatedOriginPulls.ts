@@ -52,19 +52,19 @@ import * as utilities from "./utilities";
  * global
  *
  * ```sh
- *  $ pulumi import cloudflare:index/authenticatedOriginPulls:AuthenticatedOriginPulls example <zone_id>
+ * $ pulumi import cloudflare:index/authenticatedOriginPulls:AuthenticatedOriginPulls example <zone_id>
  * ```
  *
  *  per zone
  *
  * ```sh
- *  $ pulumi import cloudflare:index/authenticatedOriginPulls:AuthenticatedOriginPulls example <zone_id>/<certificate_id>
+ * $ pulumi import cloudflare:index/authenticatedOriginPulls:AuthenticatedOriginPulls example <zone_id>/<certificate_id>
  * ```
  *
  *  per hostname
  *
  * ```sh
- *  $ pulumi import cloudflare:index/authenticatedOriginPulls:AuthenticatedOriginPulls example <zone_id>/<certificate_id>/<hostname>
+ * $ pulumi import cloudflare:index/authenticatedOriginPulls:AuthenticatedOriginPulls example <zone_id>/<certificate_id>/<hostname>
  * ```
  */
 export class AuthenticatedOriginPulls extends pulumi.CustomResource {

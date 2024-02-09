@@ -790,7 +790,7 @@ class Healthcheck(pulumi.CustomResource):
         Use the Zone ID and Healthcheck ID to import.
 
         ```sh
-         $ pulumi import cloudflare:index/healthcheck:Healthcheck example <zone_id>/<healthcheck_id>
+        $ pulumi import cloudflare:index/healthcheck:Healthcheck example <zone_id>/<healthcheck_id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -889,7 +889,7 @@ class Healthcheck(pulumi.CustomResource):
         Use the Zone ID and Healthcheck ID to import.
 
         ```sh
-         $ pulumi import cloudflare:index/healthcheck:Healthcheck example <zone_id>/<healthcheck_id>
+        $ pulumi import cloudflare:index/healthcheck:Healthcheck example <zone_id>/<healthcheck_id>
         ```
 
         :param str resource_name: The name of the resource.

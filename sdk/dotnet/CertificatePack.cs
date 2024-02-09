@@ -46,7 +46,9 @@ namespace Pulumi.Cloudflare
     ///  $ pulumi import cloudflare:index/certificatePack:CertificatePack example &lt;zone_id&gt;/&lt;certificate_pack_id&gt;
     /// ```
     /// 
-    ///  While supported, importing isn't recommended and it is advised to replace the certificate entirely instead.
+    ///  While supported, importing isn't recommended and it is advised to replace the
+    /// 
+    ///  certificate entirely instead.
     /// </summary>
     [CloudflareResourceType("cloudflare:index/certificatePack:CertificatePack")]
     public partial class CertificatePack : global::Pulumi.CustomResource
