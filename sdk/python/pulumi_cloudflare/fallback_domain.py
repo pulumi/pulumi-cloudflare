@@ -135,7 +135,7 @@ class FallbackDomain(pulumi.CustomResource):
         Fallback Domains for default device policies must use "default" as the policy ID.
 
         ```sh
-         $ pulumi import cloudflare:index/fallbackDomain:FallbackDomain example <account_id>/<policy_id>
+        $ pulumi import cloudflare:index/fallbackDomain:FallbackDomain example <account_id>/<policy_id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -160,7 +160,7 @@ class FallbackDomain(pulumi.CustomResource):
         Fallback Domains for default device policies must use "default" as the policy ID.
 
         ```sh
-         $ pulumi import cloudflare:index/fallbackDomain:FallbackDomain example <account_id>/<policy_id>
+        $ pulumi import cloudflare:index/fallbackDomain:FallbackDomain example <account_id>/<policy_id>
         ```
 
         :param str resource_name: The name of the resource.

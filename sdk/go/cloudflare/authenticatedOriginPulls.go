@@ -83,25 +83,19 @@ import (
 // global
 //
 // ```sh
-//
-//	$ pulumi import cloudflare:index/authenticatedOriginPulls:AuthenticatedOriginPulls example <zone_id>
-//
+// $ pulumi import cloudflare:index/authenticatedOriginPulls:AuthenticatedOriginPulls example <zone_id>
 // ```
 //
 //	per zone
 //
 // ```sh
-//
-//	$ pulumi import cloudflare:index/authenticatedOriginPulls:AuthenticatedOriginPulls example <zone_id>/<certificate_id>
-//
+// $ pulumi import cloudflare:index/authenticatedOriginPulls:AuthenticatedOriginPulls example <zone_id>/<certificate_id>
 // ```
 //
 //	per hostname
 //
 // ```sh
-//
-//	$ pulumi import cloudflare:index/authenticatedOriginPulls:AuthenticatedOriginPulls example <zone_id>/<certificate_id>/<hostname>
-//
+// $ pulumi import cloudflare:index/authenticatedOriginPulls:AuthenticatedOriginPulls example <zone_id>/<certificate_id>/<hostname>
 // ```
 type AuthenticatedOriginPulls struct {
 	pulumi.CustomResourceState

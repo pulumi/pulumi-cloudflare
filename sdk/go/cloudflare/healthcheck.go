@@ -100,9 +100,7 @@ import (
 // Use the Zone ID and Healthcheck ID to import.
 //
 // ```sh
-//
-//	$ pulumi import cloudflare:index/healthcheck:Healthcheck example <zone_id>/<healthcheck_id>
-//
+// $ pulumi import cloudflare:index/healthcheck:Healthcheck example <zone_id>/<healthcheck_id>
 // ```
 type Healthcheck struct {
 	pulumi.CustomResourceState

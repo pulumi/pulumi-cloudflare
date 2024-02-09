@@ -22,13 +22,13 @@ import javax.annotation.Nullable;
  * Import an account-scoped job.
  * 
  * ```sh
- *  $ pulumi import cloudflare:index/logpushJob:LogpushJob example account/&lt;account_id&gt;/&lt;job_id&gt;
+ * $ pulumi import cloudflare:index/logpushJob:LogpushJob example account/&lt;account_id&gt;/&lt;job_id&gt;
  * ```
  * 
  *  Import a zone-scoped job.
  * 
  * ```sh
- *  $ pulumi import cloudflare:index/logpushJob:LogpushJob example zone/&lt;zone_id&gt;/&lt;job_id&gt;
+ * $ pulumi import cloudflare:index/logpushJob:LogpushJob example zone/&lt;zone_id&gt;/&lt;job_id&gt;
  * ```
  * 
  */

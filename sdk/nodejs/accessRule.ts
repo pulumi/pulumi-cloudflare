@@ -62,19 +62,19 @@ import * as utilities from "./utilities";
  * User level access rule import.
  *
  * ```sh
- *  $ pulumi import cloudflare:index/accessRule:AccessRule default user/<user_id>/<rule_id>
+ * $ pulumi import cloudflare:index/accessRule:AccessRule default user/<user_id>/<rule_id>
  * ```
  *
  *  Zone level access rule import.
  *
  * ```sh
- *  $ pulumi import cloudflare:index/accessRule:AccessRule default zone/<zone_id>/<rule_id>
+ * $ pulumi import cloudflare:index/accessRule:AccessRule default zone/<zone_id>/<rule_id>
  * ```
  *
  *  Account level access rule import.
  *
  * ```sh
- *  $ pulumi import cloudflare:index/accessRule:AccessRule default account/<account_id>/<rule_id>
+ * $ pulumi import cloudflare:index/accessRule:AccessRule default account/<account_id>/<rule_id>
  * ```
  */
 export class AccessRule extends pulumi.CustomResource {

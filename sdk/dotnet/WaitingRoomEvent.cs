@@ -40,7 +40,7 @@ namespace Pulumi.Cloudflare
     /// Use the Zone ID, Waiting Room ID, and Event ID to import.
     /// 
     /// ```sh
-    ///  $ pulumi import cloudflare:index/waitingRoomEvent:WaitingRoomEvent default &lt;zone_id&gt;/&lt;waiting_room_id&gt;/&lt;waiting_room_event_id&gt;
+    /// $ pulumi import cloudflare:index/waitingRoomEvent:WaitingRoomEvent default &lt;zone_id&gt;/&lt;waiting_room_id&gt;/&lt;waiting_room_event_id&gt;
     /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/waitingRoomEvent:WaitingRoomEvent")]

@@ -195,13 +195,13 @@ class AccessCaCertificate(pulumi.CustomResource):
         Account level CA certificate import.
 
         ```sh
-         $ pulumi import cloudflare:index/accessCaCertificate:AccessCaCertificate example account/<account_id>/<application_id>
+        $ pulumi import cloudflare:index/accessCaCertificate:AccessCaCertificate example account/<account_id>/<application_id>
         ```
 
          Zone level CA certificate import.
 
         ```sh
-         $ pulumi import cloudflare:index/accessCaCertificate:AccessCaCertificate example account/<zone_id>/<application_id>
+        $ pulumi import cloudflare:index/accessCaCertificate:AccessCaCertificate example account/<zone_id>/<application_id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -248,13 +248,13 @@ class AccessCaCertificate(pulumi.CustomResource):
         Account level CA certificate import.
 
         ```sh
-         $ pulumi import cloudflare:index/accessCaCertificate:AccessCaCertificate example account/<account_id>/<application_id>
+        $ pulumi import cloudflare:index/accessCaCertificate:AccessCaCertificate example account/<account_id>/<application_id>
         ```
 
          Zone level CA certificate import.
 
         ```sh
-         $ pulumi import cloudflare:index/accessCaCertificate:AccessCaCertificate example account/<zone_id>/<application_id>
+        $ pulumi import cloudflare:index/accessCaCertificate:AccessCaCertificate example account/<zone_id>/<application_id>
         ```
 
         :param str resource_name: The name of the resource.

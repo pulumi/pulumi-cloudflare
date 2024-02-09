@@ -36,13 +36,13 @@ import * as utilities from "./utilities";
  * Account level import.
  *
  * ```sh
- *  $ pulumi import cloudflare:index/accessMutualTlsCertificate:AccessMutualTlsCertificate example account/<account_id>/<mutual_tls_certificate_id>
+ * $ pulumi import cloudflare:index/accessMutualTlsCertificate:AccessMutualTlsCertificate example account/<account_id>/<mutual_tls_certificate_id>
  * ```
  *
  *  Zone level import.
  *
  * ```sh
- *  $ pulumi import cloudflare:index/accessMutualTlsCertificate:AccessMutualTlsCertificate example zone/<zone_id>/<mutual_tls_certificate_id>
+ * $ pulumi import cloudflare:index/accessMutualTlsCertificate:AccessMutualTlsCertificate example zone/<zone_id>/<mutual_tls_certificate_id>
  * ```
  */
 export class AccessMutualTlsCertificate extends pulumi.CustomResource {
