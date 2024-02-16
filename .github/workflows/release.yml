@@ -53,7 +53,7 @@ jobs:
             sdk/go.sum
         go-version: 1.21.x
     - name: Install pulumictl
-      uses: jaxxstorm/action-install-gh-release@v1.10.0
+      uses: jaxxstorm/action-install-gh-release@v1.11.0
       with:
         tag: v0.0.46
         repo: pulumi/pulumictl
@@ -135,7 +135,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Install pulumictl
-      uses: jaxxstorm/action-install-gh-release@v1.10.0
+      uses: jaxxstorm/action-install-gh-release@v1.11.0
       with:
         tag: v0.0.46
         repo: pulumi/pulumictl
@@ -173,7 +173,7 @@ jobs:
             sdk/go.sum
         go-version: 1.21.x
     - name: Install pulumictl
-      uses: jaxxstorm/action-install-gh-release@v1.10.0
+      uses: jaxxstorm/action-install-gh-release@v1.11.0
       with:
         tag: v0.0.46
         repo: pulumi/pulumictl
@@ -183,7 +183,7 @@ jobs:
         pulumi-version: ^3
     - if: github.event_name == 'pull_request'
       name: Install Schema Tools
-      uses: jaxxstorm/action-install-gh-release@v1.10.0
+      uses: jaxxstorm/action-install-gh-release@v1.11.0
       with:
         repo: pulumi/schema-tools
     - name: Build tfgen & provider binaries
@@ -251,7 +251,7 @@ jobs:
             sdk/go.sum
         go-version: 1.21.x
     - name: Install pulumictl
-      uses: jaxxstorm/action-install-gh-release@v1.10.0
+      uses: jaxxstorm/action-install-gh-release@v1.11.0
       with:
         tag: v0.0.46
         repo: pulumi/pulumictl
@@ -311,7 +311,7 @@ jobs:
     - name: Checkout Repo
       uses: actions/checkout@v4
     - name: Install pulumictl
-      uses: jaxxstorm/action-install-gh-release@v1.10.0
+      uses: jaxxstorm/action-install-gh-release@v1.11.0
       with:
         tag: v0.0.46
         repo: pulumi/pulumictl
@@ -363,7 +363,7 @@ jobs:
             sdk/go.sum
         go-version: 1.21.x
     - name: Install pulumictl
-      uses: jaxxstorm/action-install-gh-release@v1.10.0
+      uses: jaxxstorm/action-install-gh-release@v1.11.0
       with:
         tag: v0.0.46
         repo: pulumi/pulumictl
