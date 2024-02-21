@@ -13,10 +13,31 @@ namespace Pulumi.Cloudflare.Inputs
     public sealed class AccessApplicationSaasAppArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// The URL where this applications tile redirects users
+        /// </summary>
+        [Input("appLauncherUrl")]
+        public Input<string>? AppLauncherUrl { get; set; }
+
+        [Input("authType")]
+        public Input<string>? AuthType { get; set; }
+
+        /// <summary>
+        /// The application client id
+        /// </summary>
+        [Input("clientId")]
+        public Input<string>? ClientId { get; set; }
+
+        /// <summary>
+        /// The application client secret, only returned on initial apply
+        /// </summary>
+        [Input("clientSecret")]
+        public Input<string>? ClientSecret { get; set; }
+
+        /// <summary>
         /// The service provider's endpoint that is responsible for receiving and parsing a SAML assertion.
         /// </summary>
-        [Input("consumerServiceUrl", required: true)]
-        public Input<string> ConsumerServiceUrl { get; set; } = null!;
+        [Input("consumerServiceUrl")]
+        public Input<string>? ConsumerServiceUrl { get; set; }
 
         [Input("customAttributes")]
         private InputList<Inputs.AccessApplicationSaasAppCustomAttributeArgs>? _customAttributes;
@@ -36,6 +57,24 @@ namespace Pulumi.Cloudflare.Inputs
         [Input("defaultRelayState")]
         public Input<string>? DefaultRelayState { get; set; }
 
+        [Input("grantTypes")]
+        private InputList<string>? _grantTypes;
+
+        /// <summary>
+        /// The OIDC flows supported by this application
+        /// </summary>
+        public InputList<string> GrantTypes
+        {
+            get => _grantTypes ?? (_grantTypes = new InputList<string>());
+            set => _grantTypes = value;
+        }
+
+        /// <summary>
+        /// A regex to filter Cloudflare groups returned in ID token and userinfo endpoint
+        /// </summary>
+        [Input("groupFilterRegex")]
+        public Input<string>? GroupFilterRegex { get; set; }
+
         /// <summary>
         /// The unique identifier for the SaaS application.
         /// </summary>
@@ -54,11 +93,35 @@ namespace Pulumi.Cloudflare.Inputs
         [Input("publicKey")]
         public Input<string>? PublicKey { get; set; }
 
+        [Input("redirectUris")]
+        private InputList<string>? _redirectUris;
+
+        /// <summary>
+        /// The permitted URL's for Cloudflare to return Authorization codes and Access/ID tokens
+        /// </summary>
+        public InputList<string> RedirectUris
+        {
+            get => _redirectUris ?? (_redirectUris = new InputList<string>());
+            set => _redirectUris = value;
+        }
+
+        [Input("scopes")]
+        private InputList<string>? _scopes;
+
+        /// <summary>
+        /// Define the user information shared with access
+        /// </summary>
+        public InputList<string> Scopes
+        {
+            get => _scopes ?? (_scopes = new InputList<string>());
+            set => _scopes = value;
+        }
+
         /// <summary>
         /// A globally unique name for an identity or service provider.
         /// </summary>
-        [Input("spEntityId", required: true)]
-        public Input<string> SpEntityId { get; set; } = null!;
+        [Input("spEntityId")]
+        public Input<string>? SpEntityId { get; set; }
 
         /// <summary>
         /// The endpoint where the SaaS application will send login requests.

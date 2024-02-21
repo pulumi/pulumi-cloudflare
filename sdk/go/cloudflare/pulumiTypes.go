@@ -493,20 +493,35 @@ func (o AccessApplicationLandingPageDesignPtrOutput) Title() pulumi.StringPtrOut
 }
 
 type AccessApplicationSaasApp struct {
+	// The URL where this applications tile redirects users
+	AppLauncherUrl *string `pulumi:"appLauncherUrl"`
+	AuthType       *string `pulumi:"authType"`
+	// The application client id
+	ClientId *string `pulumi:"clientId"`
+	// The application client secret, only returned on initial apply
+	ClientSecret *string `pulumi:"clientSecret"`
 	// The service provider's endpoint that is responsible for receiving and parsing a SAML assertion.
-	ConsumerServiceUrl string `pulumi:"consumerServiceUrl"`
+	ConsumerServiceUrl *string `pulumi:"consumerServiceUrl"`
 	// Custom attribute mapped from IDPs.
 	CustomAttributes []AccessApplicationSaasAppCustomAttribute `pulumi:"customAttributes"`
 	// The relay state used if not provided by the identity provider.
 	DefaultRelayState *string `pulumi:"defaultRelayState"`
+	// The OIDC flows supported by this application
+	GrantTypes []string `pulumi:"grantTypes"`
+	// A regex to filter Cloudflare groups returned in ID token and userinfo endpoint
+	GroupFilterRegex *string `pulumi:"groupFilterRegex"`
 	// The unique identifier for the SaaS application.
 	IdpEntityId *string `pulumi:"idpEntityId"`
 	// The format of the name identifier sent to the SaaS application. Defaults to `email`.
 	NameIdFormat *string `pulumi:"nameIdFormat"`
 	// The public certificate that will be used to verify identities.
 	PublicKey *string `pulumi:"publicKey"`
+	// The permitted URL's for Cloudflare to return Authorization codes and Access/ID tokens
+	RedirectUris []string `pulumi:"redirectUris"`
+	// Define the user information shared with access
+	Scopes []string `pulumi:"scopes"`
 	// A globally unique name for an identity or service provider.
-	SpEntityId string `pulumi:"spEntityId"`
+	SpEntityId *string `pulumi:"spEntityId"`
 	// The endpoint where the SaaS application will send login requests.
 	SsoEndpoint *string `pulumi:"ssoEndpoint"`
 }
@@ -523,20 +538,35 @@ type AccessApplicationSaasAppInput interface {
 }
 
 type AccessApplicationSaasAppArgs struct {
+	// The URL where this applications tile redirects users
+	AppLauncherUrl pulumi.StringPtrInput `pulumi:"appLauncherUrl"`
+	AuthType       pulumi.StringPtrInput `pulumi:"authType"`
+	// The application client id
+	ClientId pulumi.StringPtrInput `pulumi:"clientId"`
+	// The application client secret, only returned on initial apply
+	ClientSecret pulumi.StringPtrInput `pulumi:"clientSecret"`
 	// The service provider's endpoint that is responsible for receiving and parsing a SAML assertion.
-	ConsumerServiceUrl pulumi.StringInput `pulumi:"consumerServiceUrl"`
+	ConsumerServiceUrl pulumi.StringPtrInput `pulumi:"consumerServiceUrl"`
 	// Custom attribute mapped from IDPs.
 	CustomAttributes AccessApplicationSaasAppCustomAttributeArrayInput `pulumi:"customAttributes"`
 	// The relay state used if not provided by the identity provider.
 	DefaultRelayState pulumi.StringPtrInput `pulumi:"defaultRelayState"`
+	// The OIDC flows supported by this application
+	GrantTypes pulumi.StringArrayInput `pulumi:"grantTypes"`
+	// A regex to filter Cloudflare groups returned in ID token and userinfo endpoint
+	GroupFilterRegex pulumi.StringPtrInput `pulumi:"groupFilterRegex"`
 	// The unique identifier for the SaaS application.
 	IdpEntityId pulumi.StringPtrInput `pulumi:"idpEntityId"`
 	// The format of the name identifier sent to the SaaS application. Defaults to `email`.
 	NameIdFormat pulumi.StringPtrInput `pulumi:"nameIdFormat"`
 	// The public certificate that will be used to verify identities.
 	PublicKey pulumi.StringPtrInput `pulumi:"publicKey"`
+	// The permitted URL's for Cloudflare to return Authorization codes and Access/ID tokens
+	RedirectUris pulumi.StringArrayInput `pulumi:"redirectUris"`
+	// Define the user information shared with access
+	Scopes pulumi.StringArrayInput `pulumi:"scopes"`
 	// A globally unique name for an identity or service provider.
-	SpEntityId pulumi.StringInput `pulumi:"spEntityId"`
+	SpEntityId pulumi.StringPtrInput `pulumi:"spEntityId"`
 	// The endpoint where the SaaS application will send login requests.
 	SsoEndpoint pulumi.StringPtrInput `pulumi:"ssoEndpoint"`
 }
@@ -618,9 +648,28 @@ func (o AccessApplicationSaasAppOutput) ToAccessApplicationSaasAppPtrOutputWithC
 	}).(AccessApplicationSaasAppPtrOutput)
 }
 
+// The URL where this applications tile redirects users
+func (o AccessApplicationSaasAppOutput) AppLauncherUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AccessApplicationSaasApp) *string { return v.AppLauncherUrl }).(pulumi.StringPtrOutput)
+}
+
+func (o AccessApplicationSaasAppOutput) AuthType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AccessApplicationSaasApp) *string { return v.AuthType }).(pulumi.StringPtrOutput)
+}
+
+// The application client id
+func (o AccessApplicationSaasAppOutput) ClientId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AccessApplicationSaasApp) *string { return v.ClientId }).(pulumi.StringPtrOutput)
+}
+
+// The application client secret, only returned on initial apply
+func (o AccessApplicationSaasAppOutput) ClientSecret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AccessApplicationSaasApp) *string { return v.ClientSecret }).(pulumi.StringPtrOutput)
+}
+
 // The service provider's endpoint that is responsible for receiving and parsing a SAML assertion.
-func (o AccessApplicationSaasAppOutput) ConsumerServiceUrl() pulumi.StringOutput {
-	return o.ApplyT(func(v AccessApplicationSaasApp) string { return v.ConsumerServiceUrl }).(pulumi.StringOutput)
+func (o AccessApplicationSaasAppOutput) ConsumerServiceUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AccessApplicationSaasApp) *string { return v.ConsumerServiceUrl }).(pulumi.StringPtrOutput)
 }
 
 // Custom attribute mapped from IDPs.
@@ -631,6 +680,16 @@ func (o AccessApplicationSaasAppOutput) CustomAttributes() AccessApplicationSaas
 // The relay state used if not provided by the identity provider.
 func (o AccessApplicationSaasAppOutput) DefaultRelayState() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AccessApplicationSaasApp) *string { return v.DefaultRelayState }).(pulumi.StringPtrOutput)
+}
+
+// The OIDC flows supported by this application
+func (o AccessApplicationSaasAppOutput) GrantTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AccessApplicationSaasApp) []string { return v.GrantTypes }).(pulumi.StringArrayOutput)
+}
+
+// A regex to filter Cloudflare groups returned in ID token and userinfo endpoint
+func (o AccessApplicationSaasAppOutput) GroupFilterRegex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AccessApplicationSaasApp) *string { return v.GroupFilterRegex }).(pulumi.StringPtrOutput)
 }
 
 // The unique identifier for the SaaS application.
@@ -648,9 +707,19 @@ func (o AccessApplicationSaasAppOutput) PublicKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AccessApplicationSaasApp) *string { return v.PublicKey }).(pulumi.StringPtrOutput)
 }
 
+// The permitted URL's for Cloudflare to return Authorization codes and Access/ID tokens
+func (o AccessApplicationSaasAppOutput) RedirectUris() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AccessApplicationSaasApp) []string { return v.RedirectUris }).(pulumi.StringArrayOutput)
+}
+
+// Define the user information shared with access
+func (o AccessApplicationSaasAppOutput) Scopes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AccessApplicationSaasApp) []string { return v.Scopes }).(pulumi.StringArrayOutput)
+}
+
 // A globally unique name for an identity or service provider.
-func (o AccessApplicationSaasAppOutput) SpEntityId() pulumi.StringOutput {
-	return o.ApplyT(func(v AccessApplicationSaasApp) string { return v.SpEntityId }).(pulumi.StringOutput)
+func (o AccessApplicationSaasAppOutput) SpEntityId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AccessApplicationSaasApp) *string { return v.SpEntityId }).(pulumi.StringPtrOutput)
 }
 
 // The endpoint where the SaaS application will send login requests.
@@ -682,13 +751,52 @@ func (o AccessApplicationSaasAppPtrOutput) Elem() AccessApplicationSaasAppOutput
 	}).(AccessApplicationSaasAppOutput)
 }
 
+// The URL where this applications tile redirects users
+func (o AccessApplicationSaasAppPtrOutput) AppLauncherUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccessApplicationSaasApp) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AppLauncherUrl
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o AccessApplicationSaasAppPtrOutput) AuthType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccessApplicationSaasApp) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AuthType
+	}).(pulumi.StringPtrOutput)
+}
+
+// The application client id
+func (o AccessApplicationSaasAppPtrOutput) ClientId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccessApplicationSaasApp) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ClientId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The application client secret, only returned on initial apply
+func (o AccessApplicationSaasAppPtrOutput) ClientSecret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccessApplicationSaasApp) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ClientSecret
+	}).(pulumi.StringPtrOutput)
+}
+
 // The service provider's endpoint that is responsible for receiving and parsing a SAML assertion.
 func (o AccessApplicationSaasAppPtrOutput) ConsumerServiceUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AccessApplicationSaasApp) *string {
 		if v == nil {
 			return nil
 		}
-		return &v.ConsumerServiceUrl
+		return v.ConsumerServiceUrl
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -709,6 +817,26 @@ func (o AccessApplicationSaasAppPtrOutput) DefaultRelayState() pulumi.StringPtrO
 			return nil
 		}
 		return v.DefaultRelayState
+	}).(pulumi.StringPtrOutput)
+}
+
+// The OIDC flows supported by this application
+func (o AccessApplicationSaasAppPtrOutput) GrantTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AccessApplicationSaasApp) []string {
+		if v == nil {
+			return nil
+		}
+		return v.GrantTypes
+	}).(pulumi.StringArrayOutput)
+}
+
+// A regex to filter Cloudflare groups returned in ID token and userinfo endpoint
+func (o AccessApplicationSaasAppPtrOutput) GroupFilterRegex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccessApplicationSaasApp) *string {
+		if v == nil {
+			return nil
+		}
+		return v.GroupFilterRegex
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -742,13 +870,33 @@ func (o AccessApplicationSaasAppPtrOutput) PublicKey() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// The permitted URL's for Cloudflare to return Authorization codes and Access/ID tokens
+func (o AccessApplicationSaasAppPtrOutput) RedirectUris() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AccessApplicationSaasApp) []string {
+		if v == nil {
+			return nil
+		}
+		return v.RedirectUris
+	}).(pulumi.StringArrayOutput)
+}
+
+// Define the user information shared with access
+func (o AccessApplicationSaasAppPtrOutput) Scopes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AccessApplicationSaasApp) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Scopes
+	}).(pulumi.StringArrayOutput)
+}
+
 // A globally unique name for an identity or service provider.
 func (o AccessApplicationSaasAppPtrOutput) SpEntityId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AccessApplicationSaasApp) *string {
 		if v == nil {
 			return nil
 		}
-		return &v.SpEntityId
+		return v.SpEntityId
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -18728,6 +18876,8 @@ func (o PageRuleActionsMinifyArrayOutput) Index(i pulumi.IntInput) PageRuleActio
 }
 
 type PagesProjectBuildConfig struct {
+	// Enable build caching for the project.
+	BuildCaching *bool `pulumi:"buildCaching"`
 	// Command used to build project.
 	BuildCommand *string `pulumi:"buildCommand"`
 	// Output directory of the build.
@@ -18752,6 +18902,8 @@ type PagesProjectBuildConfigInput interface {
 }
 
 type PagesProjectBuildConfigArgs struct {
+	// Enable build caching for the project.
+	BuildCaching pulumi.BoolPtrInput `pulumi:"buildCaching"`
 	// Command used to build project.
 	BuildCommand pulumi.StringPtrInput `pulumi:"buildCommand"`
 	// Output directory of the build.
@@ -18841,6 +18993,11 @@ func (o PagesProjectBuildConfigOutput) ToPagesProjectBuildConfigPtrOutputWithCon
 	}).(PagesProjectBuildConfigPtrOutput)
 }
 
+// Enable build caching for the project.
+func (o PagesProjectBuildConfigOutput) BuildCaching() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v PagesProjectBuildConfig) *bool { return v.BuildCaching }).(pulumi.BoolPtrOutput)
+}
+
 // Command used to build project.
 func (o PagesProjectBuildConfigOutput) BuildCommand() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PagesProjectBuildConfig) *string { return v.BuildCommand }).(pulumi.StringPtrOutput)
@@ -18888,6 +19045,16 @@ func (o PagesProjectBuildConfigPtrOutput) Elem() PagesProjectBuildConfigOutput {
 		var ret PagesProjectBuildConfig
 		return ret
 	}).(PagesProjectBuildConfigOutput)
+}
+
+// Enable build caching for the project.
+func (o PagesProjectBuildConfigPtrOutput) BuildCaching() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *PagesProjectBuildConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.BuildCaching
+	}).(pulumi.BoolPtrOutput)
 }
 
 // Command used to build project.
@@ -29283,6 +29450,8 @@ type TeamsAccountAntivirus struct {
 	EnabledUploadPhase bool `pulumi:"enabledUploadPhase"`
 	// Block requests for files that cannot be scanned.
 	FailClosed bool `pulumi:"failClosed"`
+	// Set notifications for antivirus.
+	NotificationSettings *TeamsAccountAntivirusNotificationSettings `pulumi:"notificationSettings"`
 }
 
 // TeamsAccountAntivirusInput is an input type that accepts TeamsAccountAntivirusArgs and TeamsAccountAntivirusOutput values.
@@ -29303,6 +29472,8 @@ type TeamsAccountAntivirusArgs struct {
 	EnabledUploadPhase pulumi.BoolInput `pulumi:"enabledUploadPhase"`
 	// Block requests for files that cannot be scanned.
 	FailClosed pulumi.BoolInput `pulumi:"failClosed"`
+	// Set notifications for antivirus.
+	NotificationSettings TeamsAccountAntivirusNotificationSettingsPtrInput `pulumi:"notificationSettings"`
 }
 
 func (TeamsAccountAntivirusArgs) ElementType() reflect.Type {
@@ -29397,6 +29568,13 @@ func (o TeamsAccountAntivirusOutput) FailClosed() pulumi.BoolOutput {
 	return o.ApplyT(func(v TeamsAccountAntivirus) bool { return v.FailClosed }).(pulumi.BoolOutput)
 }
 
+// Set notifications for antivirus.
+func (o TeamsAccountAntivirusOutput) NotificationSettings() TeamsAccountAntivirusNotificationSettingsPtrOutput {
+	return o.ApplyT(func(v TeamsAccountAntivirus) *TeamsAccountAntivirusNotificationSettings {
+		return v.NotificationSettings
+	}).(TeamsAccountAntivirusNotificationSettingsPtrOutput)
+}
+
 type TeamsAccountAntivirusPtrOutput struct{ *pulumi.OutputState }
 
 func (TeamsAccountAntivirusPtrOutput) ElementType() reflect.Type {
@@ -29449,6 +29627,191 @@ func (o TeamsAccountAntivirusPtrOutput) FailClosed() pulumi.BoolPtrOutput {
 		}
 		return &v.FailClosed
 	}).(pulumi.BoolPtrOutput)
+}
+
+// Set notifications for antivirus.
+func (o TeamsAccountAntivirusPtrOutput) NotificationSettings() TeamsAccountAntivirusNotificationSettingsPtrOutput {
+	return o.ApplyT(func(v *TeamsAccountAntivirus) *TeamsAccountAntivirusNotificationSettings {
+		if v == nil {
+			return nil
+		}
+		return v.NotificationSettings
+	}).(TeamsAccountAntivirusNotificationSettingsPtrOutput)
+}
+
+type TeamsAccountAntivirusNotificationSettings struct {
+	// Enable notification settings.
+	Enabled *bool `pulumi:"enabled"`
+	// Notification content.
+	Message *string `pulumi:"message"`
+	// Support URL to show in the notification.
+	SupportUrl *string `pulumi:"supportUrl"`
+}
+
+// TeamsAccountAntivirusNotificationSettingsInput is an input type that accepts TeamsAccountAntivirusNotificationSettingsArgs and TeamsAccountAntivirusNotificationSettingsOutput values.
+// You can construct a concrete instance of `TeamsAccountAntivirusNotificationSettingsInput` via:
+//
+//	TeamsAccountAntivirusNotificationSettingsArgs{...}
+type TeamsAccountAntivirusNotificationSettingsInput interface {
+	pulumi.Input
+
+	ToTeamsAccountAntivirusNotificationSettingsOutput() TeamsAccountAntivirusNotificationSettingsOutput
+	ToTeamsAccountAntivirusNotificationSettingsOutputWithContext(context.Context) TeamsAccountAntivirusNotificationSettingsOutput
+}
+
+type TeamsAccountAntivirusNotificationSettingsArgs struct {
+	// Enable notification settings.
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+	// Notification content.
+	Message pulumi.StringPtrInput `pulumi:"message"`
+	// Support URL to show in the notification.
+	SupportUrl pulumi.StringPtrInput `pulumi:"supportUrl"`
+}
+
+func (TeamsAccountAntivirusNotificationSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TeamsAccountAntivirusNotificationSettings)(nil)).Elem()
+}
+
+func (i TeamsAccountAntivirusNotificationSettingsArgs) ToTeamsAccountAntivirusNotificationSettingsOutput() TeamsAccountAntivirusNotificationSettingsOutput {
+	return i.ToTeamsAccountAntivirusNotificationSettingsOutputWithContext(context.Background())
+}
+
+func (i TeamsAccountAntivirusNotificationSettingsArgs) ToTeamsAccountAntivirusNotificationSettingsOutputWithContext(ctx context.Context) TeamsAccountAntivirusNotificationSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TeamsAccountAntivirusNotificationSettingsOutput)
+}
+
+func (i TeamsAccountAntivirusNotificationSettingsArgs) ToTeamsAccountAntivirusNotificationSettingsPtrOutput() TeamsAccountAntivirusNotificationSettingsPtrOutput {
+	return i.ToTeamsAccountAntivirusNotificationSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i TeamsAccountAntivirusNotificationSettingsArgs) ToTeamsAccountAntivirusNotificationSettingsPtrOutputWithContext(ctx context.Context) TeamsAccountAntivirusNotificationSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TeamsAccountAntivirusNotificationSettingsOutput).ToTeamsAccountAntivirusNotificationSettingsPtrOutputWithContext(ctx)
+}
+
+// TeamsAccountAntivirusNotificationSettingsPtrInput is an input type that accepts TeamsAccountAntivirusNotificationSettingsArgs, TeamsAccountAntivirusNotificationSettingsPtr and TeamsAccountAntivirusNotificationSettingsPtrOutput values.
+// You can construct a concrete instance of `TeamsAccountAntivirusNotificationSettingsPtrInput` via:
+//
+//	        TeamsAccountAntivirusNotificationSettingsArgs{...}
+//
+//	or:
+//
+//	        nil
+type TeamsAccountAntivirusNotificationSettingsPtrInput interface {
+	pulumi.Input
+
+	ToTeamsAccountAntivirusNotificationSettingsPtrOutput() TeamsAccountAntivirusNotificationSettingsPtrOutput
+	ToTeamsAccountAntivirusNotificationSettingsPtrOutputWithContext(context.Context) TeamsAccountAntivirusNotificationSettingsPtrOutput
+}
+
+type teamsAccountAntivirusNotificationSettingsPtrType TeamsAccountAntivirusNotificationSettingsArgs
+
+func TeamsAccountAntivirusNotificationSettingsPtr(v *TeamsAccountAntivirusNotificationSettingsArgs) TeamsAccountAntivirusNotificationSettingsPtrInput {
+	return (*teamsAccountAntivirusNotificationSettingsPtrType)(v)
+}
+
+func (*teamsAccountAntivirusNotificationSettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TeamsAccountAntivirusNotificationSettings)(nil)).Elem()
+}
+
+func (i *teamsAccountAntivirusNotificationSettingsPtrType) ToTeamsAccountAntivirusNotificationSettingsPtrOutput() TeamsAccountAntivirusNotificationSettingsPtrOutput {
+	return i.ToTeamsAccountAntivirusNotificationSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *teamsAccountAntivirusNotificationSettingsPtrType) ToTeamsAccountAntivirusNotificationSettingsPtrOutputWithContext(ctx context.Context) TeamsAccountAntivirusNotificationSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TeamsAccountAntivirusNotificationSettingsPtrOutput)
+}
+
+type TeamsAccountAntivirusNotificationSettingsOutput struct{ *pulumi.OutputState }
+
+func (TeamsAccountAntivirusNotificationSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TeamsAccountAntivirusNotificationSettings)(nil)).Elem()
+}
+
+func (o TeamsAccountAntivirusNotificationSettingsOutput) ToTeamsAccountAntivirusNotificationSettingsOutput() TeamsAccountAntivirusNotificationSettingsOutput {
+	return o
+}
+
+func (o TeamsAccountAntivirusNotificationSettingsOutput) ToTeamsAccountAntivirusNotificationSettingsOutputWithContext(ctx context.Context) TeamsAccountAntivirusNotificationSettingsOutput {
+	return o
+}
+
+func (o TeamsAccountAntivirusNotificationSettingsOutput) ToTeamsAccountAntivirusNotificationSettingsPtrOutput() TeamsAccountAntivirusNotificationSettingsPtrOutput {
+	return o.ToTeamsAccountAntivirusNotificationSettingsPtrOutputWithContext(context.Background())
+}
+
+func (o TeamsAccountAntivirusNotificationSettingsOutput) ToTeamsAccountAntivirusNotificationSettingsPtrOutputWithContext(ctx context.Context) TeamsAccountAntivirusNotificationSettingsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TeamsAccountAntivirusNotificationSettings) *TeamsAccountAntivirusNotificationSettings {
+		return &v
+	}).(TeamsAccountAntivirusNotificationSettingsPtrOutput)
+}
+
+// Enable notification settings.
+func (o TeamsAccountAntivirusNotificationSettingsOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v TeamsAccountAntivirusNotificationSettings) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+// Notification content.
+func (o TeamsAccountAntivirusNotificationSettingsOutput) Message() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TeamsAccountAntivirusNotificationSettings) *string { return v.Message }).(pulumi.StringPtrOutput)
+}
+
+// Support URL to show in the notification.
+func (o TeamsAccountAntivirusNotificationSettingsOutput) SupportUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TeamsAccountAntivirusNotificationSettings) *string { return v.SupportUrl }).(pulumi.StringPtrOutput)
+}
+
+type TeamsAccountAntivirusNotificationSettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (TeamsAccountAntivirusNotificationSettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TeamsAccountAntivirusNotificationSettings)(nil)).Elem()
+}
+
+func (o TeamsAccountAntivirusNotificationSettingsPtrOutput) ToTeamsAccountAntivirusNotificationSettingsPtrOutput() TeamsAccountAntivirusNotificationSettingsPtrOutput {
+	return o
+}
+
+func (o TeamsAccountAntivirusNotificationSettingsPtrOutput) ToTeamsAccountAntivirusNotificationSettingsPtrOutputWithContext(ctx context.Context) TeamsAccountAntivirusNotificationSettingsPtrOutput {
+	return o
+}
+
+func (o TeamsAccountAntivirusNotificationSettingsPtrOutput) Elem() TeamsAccountAntivirusNotificationSettingsOutput {
+	return o.ApplyT(func(v *TeamsAccountAntivirusNotificationSettings) TeamsAccountAntivirusNotificationSettings {
+		if v != nil {
+			return *v
+		}
+		var ret TeamsAccountAntivirusNotificationSettings
+		return ret
+	}).(TeamsAccountAntivirusNotificationSettingsOutput)
+}
+
+// Enable notification settings.
+func (o TeamsAccountAntivirusNotificationSettingsPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *TeamsAccountAntivirusNotificationSettings) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Notification content.
+func (o TeamsAccountAntivirusNotificationSettingsPtrOutput) Message() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TeamsAccountAntivirusNotificationSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Message
+	}).(pulumi.StringPtrOutput)
+}
+
+// Support URL to show in the notification.
+func (o TeamsAccountAntivirusNotificationSettingsPtrOutput) SupportUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TeamsAccountAntivirusNotificationSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SupportUrl
+	}).(pulumi.StringPtrOutput)
 }
 
 type TeamsAccountBlockPage struct {
@@ -29856,6 +30219,143 @@ func (o TeamsAccountBodyScanningPtrOutput) InspectionMode() pulumi.StringPtrOutp
 		}
 		return &v.InspectionMode
 	}).(pulumi.StringPtrOutput)
+}
+
+type TeamsAccountExtendedEmailMatching struct {
+	// Whether e-mails should be matched on all variants of user emails (with + or . modifiers) in Firewall policies.
+	Enabled bool `pulumi:"enabled"`
+}
+
+// TeamsAccountExtendedEmailMatchingInput is an input type that accepts TeamsAccountExtendedEmailMatchingArgs and TeamsAccountExtendedEmailMatchingOutput values.
+// You can construct a concrete instance of `TeamsAccountExtendedEmailMatchingInput` via:
+//
+//	TeamsAccountExtendedEmailMatchingArgs{...}
+type TeamsAccountExtendedEmailMatchingInput interface {
+	pulumi.Input
+
+	ToTeamsAccountExtendedEmailMatchingOutput() TeamsAccountExtendedEmailMatchingOutput
+	ToTeamsAccountExtendedEmailMatchingOutputWithContext(context.Context) TeamsAccountExtendedEmailMatchingOutput
+}
+
+type TeamsAccountExtendedEmailMatchingArgs struct {
+	// Whether e-mails should be matched on all variants of user emails (with + or . modifiers) in Firewall policies.
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+}
+
+func (TeamsAccountExtendedEmailMatchingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TeamsAccountExtendedEmailMatching)(nil)).Elem()
+}
+
+func (i TeamsAccountExtendedEmailMatchingArgs) ToTeamsAccountExtendedEmailMatchingOutput() TeamsAccountExtendedEmailMatchingOutput {
+	return i.ToTeamsAccountExtendedEmailMatchingOutputWithContext(context.Background())
+}
+
+func (i TeamsAccountExtendedEmailMatchingArgs) ToTeamsAccountExtendedEmailMatchingOutputWithContext(ctx context.Context) TeamsAccountExtendedEmailMatchingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TeamsAccountExtendedEmailMatchingOutput)
+}
+
+func (i TeamsAccountExtendedEmailMatchingArgs) ToTeamsAccountExtendedEmailMatchingPtrOutput() TeamsAccountExtendedEmailMatchingPtrOutput {
+	return i.ToTeamsAccountExtendedEmailMatchingPtrOutputWithContext(context.Background())
+}
+
+func (i TeamsAccountExtendedEmailMatchingArgs) ToTeamsAccountExtendedEmailMatchingPtrOutputWithContext(ctx context.Context) TeamsAccountExtendedEmailMatchingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TeamsAccountExtendedEmailMatchingOutput).ToTeamsAccountExtendedEmailMatchingPtrOutputWithContext(ctx)
+}
+
+// TeamsAccountExtendedEmailMatchingPtrInput is an input type that accepts TeamsAccountExtendedEmailMatchingArgs, TeamsAccountExtendedEmailMatchingPtr and TeamsAccountExtendedEmailMatchingPtrOutput values.
+// You can construct a concrete instance of `TeamsAccountExtendedEmailMatchingPtrInput` via:
+//
+//	        TeamsAccountExtendedEmailMatchingArgs{...}
+//
+//	or:
+//
+//	        nil
+type TeamsAccountExtendedEmailMatchingPtrInput interface {
+	pulumi.Input
+
+	ToTeamsAccountExtendedEmailMatchingPtrOutput() TeamsAccountExtendedEmailMatchingPtrOutput
+	ToTeamsAccountExtendedEmailMatchingPtrOutputWithContext(context.Context) TeamsAccountExtendedEmailMatchingPtrOutput
+}
+
+type teamsAccountExtendedEmailMatchingPtrType TeamsAccountExtendedEmailMatchingArgs
+
+func TeamsAccountExtendedEmailMatchingPtr(v *TeamsAccountExtendedEmailMatchingArgs) TeamsAccountExtendedEmailMatchingPtrInput {
+	return (*teamsAccountExtendedEmailMatchingPtrType)(v)
+}
+
+func (*teamsAccountExtendedEmailMatchingPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TeamsAccountExtendedEmailMatching)(nil)).Elem()
+}
+
+func (i *teamsAccountExtendedEmailMatchingPtrType) ToTeamsAccountExtendedEmailMatchingPtrOutput() TeamsAccountExtendedEmailMatchingPtrOutput {
+	return i.ToTeamsAccountExtendedEmailMatchingPtrOutputWithContext(context.Background())
+}
+
+func (i *teamsAccountExtendedEmailMatchingPtrType) ToTeamsAccountExtendedEmailMatchingPtrOutputWithContext(ctx context.Context) TeamsAccountExtendedEmailMatchingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TeamsAccountExtendedEmailMatchingPtrOutput)
+}
+
+type TeamsAccountExtendedEmailMatchingOutput struct{ *pulumi.OutputState }
+
+func (TeamsAccountExtendedEmailMatchingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TeamsAccountExtendedEmailMatching)(nil)).Elem()
+}
+
+func (o TeamsAccountExtendedEmailMatchingOutput) ToTeamsAccountExtendedEmailMatchingOutput() TeamsAccountExtendedEmailMatchingOutput {
+	return o
+}
+
+func (o TeamsAccountExtendedEmailMatchingOutput) ToTeamsAccountExtendedEmailMatchingOutputWithContext(ctx context.Context) TeamsAccountExtendedEmailMatchingOutput {
+	return o
+}
+
+func (o TeamsAccountExtendedEmailMatchingOutput) ToTeamsAccountExtendedEmailMatchingPtrOutput() TeamsAccountExtendedEmailMatchingPtrOutput {
+	return o.ToTeamsAccountExtendedEmailMatchingPtrOutputWithContext(context.Background())
+}
+
+func (o TeamsAccountExtendedEmailMatchingOutput) ToTeamsAccountExtendedEmailMatchingPtrOutputWithContext(ctx context.Context) TeamsAccountExtendedEmailMatchingPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TeamsAccountExtendedEmailMatching) *TeamsAccountExtendedEmailMatching {
+		return &v
+	}).(TeamsAccountExtendedEmailMatchingPtrOutput)
+}
+
+// Whether e-mails should be matched on all variants of user emails (with + or . modifiers) in Firewall policies.
+func (o TeamsAccountExtendedEmailMatchingOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v TeamsAccountExtendedEmailMatching) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+type TeamsAccountExtendedEmailMatchingPtrOutput struct{ *pulumi.OutputState }
+
+func (TeamsAccountExtendedEmailMatchingPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TeamsAccountExtendedEmailMatching)(nil)).Elem()
+}
+
+func (o TeamsAccountExtendedEmailMatchingPtrOutput) ToTeamsAccountExtendedEmailMatchingPtrOutput() TeamsAccountExtendedEmailMatchingPtrOutput {
+	return o
+}
+
+func (o TeamsAccountExtendedEmailMatchingPtrOutput) ToTeamsAccountExtendedEmailMatchingPtrOutputWithContext(ctx context.Context) TeamsAccountExtendedEmailMatchingPtrOutput {
+	return o
+}
+
+func (o TeamsAccountExtendedEmailMatchingPtrOutput) Elem() TeamsAccountExtendedEmailMatchingOutput {
+	return o.ApplyT(func(v *TeamsAccountExtendedEmailMatching) TeamsAccountExtendedEmailMatching {
+		if v != nil {
+			return *v
+		}
+		var ret TeamsAccountExtendedEmailMatching
+		return ret
+	}).(TeamsAccountExtendedEmailMatchingOutput)
+}
+
+// Whether e-mails should be matched on all variants of user emails (with + or . modifiers) in Firewall policies.
+func (o TeamsAccountExtendedEmailMatchingPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *TeamsAccountExtendedEmailMatching) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.Enabled
+	}).(pulumi.BoolPtrOutput)
 }
 
 type TeamsAccountFips struct {
@@ -47525,10 +48025,14 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*SplitTunnelTunnelArrayInput)(nil)).Elem(), SplitTunnelTunnelArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TeamsAccountAntivirusInput)(nil)).Elem(), TeamsAccountAntivirusArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TeamsAccountAntivirusPtrInput)(nil)).Elem(), TeamsAccountAntivirusArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TeamsAccountAntivirusNotificationSettingsInput)(nil)).Elem(), TeamsAccountAntivirusNotificationSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TeamsAccountAntivirusNotificationSettingsPtrInput)(nil)).Elem(), TeamsAccountAntivirusNotificationSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TeamsAccountBlockPageInput)(nil)).Elem(), TeamsAccountBlockPageArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TeamsAccountBlockPagePtrInput)(nil)).Elem(), TeamsAccountBlockPageArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TeamsAccountBodyScanningInput)(nil)).Elem(), TeamsAccountBodyScanningArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TeamsAccountBodyScanningPtrInput)(nil)).Elem(), TeamsAccountBodyScanningArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TeamsAccountExtendedEmailMatchingInput)(nil)).Elem(), TeamsAccountExtendedEmailMatchingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TeamsAccountExtendedEmailMatchingPtrInput)(nil)).Elem(), TeamsAccountExtendedEmailMatchingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TeamsAccountFipsInput)(nil)).Elem(), TeamsAccountFipsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TeamsAccountFipsPtrInput)(nil)).Elem(), TeamsAccountFipsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TeamsAccountLoggingInput)(nil)).Elem(), TeamsAccountLoggingArgs{})
@@ -48092,10 +48596,14 @@ func init() {
 	pulumi.RegisterOutputType(SplitTunnelTunnelArrayOutput{})
 	pulumi.RegisterOutputType(TeamsAccountAntivirusOutput{})
 	pulumi.RegisterOutputType(TeamsAccountAntivirusPtrOutput{})
+	pulumi.RegisterOutputType(TeamsAccountAntivirusNotificationSettingsOutput{})
+	pulumi.RegisterOutputType(TeamsAccountAntivirusNotificationSettingsPtrOutput{})
 	pulumi.RegisterOutputType(TeamsAccountBlockPageOutput{})
 	pulumi.RegisterOutputType(TeamsAccountBlockPagePtrOutput{})
 	pulumi.RegisterOutputType(TeamsAccountBodyScanningOutput{})
 	pulumi.RegisterOutputType(TeamsAccountBodyScanningPtrOutput{})
+	pulumi.RegisterOutputType(TeamsAccountExtendedEmailMatchingOutput{})
+	pulumi.RegisterOutputType(TeamsAccountExtendedEmailMatchingPtrOutput{})
 	pulumi.RegisterOutputType(TeamsAccountFipsOutput{})
 	pulumi.RegisterOutputType(TeamsAccountFipsPtrOutput{})
 	pulumi.RegisterOutputType(TeamsAccountLoggingOutput{})

@@ -13,6 +13,12 @@ namespace Pulumi.Cloudflare.Inputs
     public sealed class PagesProjectBuildConfigGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Enable build caching for the project.
+        /// </summary>
+        [Input("buildCaching")]
+        public Input<bool>? BuildCaching { get; set; }
+
+        /// <summary>
         /// Command used to build project.
         /// </summary>
         [Input("buildCommand")]

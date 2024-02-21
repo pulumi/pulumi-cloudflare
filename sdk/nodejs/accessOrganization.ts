@@ -71,6 +71,11 @@ export class AccessOrganization extends pulumi.CustomResource {
      */
     public readonly accountId!: pulumi.Output<string>;
     /**
+     * When set to true, users can authenticate via WARP for any application in your organization. Application settings will
+     * take precedence over this value.
+     */
+    public readonly allowAuthenticateViaWarp!: pulumi.Output<boolean | undefined>;
+    /**
      * The unique subdomain assigned to your Zero Trust organization.
      */
     public readonly authDomain!: pulumi.Output<string>;
@@ -104,6 +109,11 @@ export class AccessOrganization extends pulumi.CustomResource {
      */
     public readonly userSeatExpirationInactiveTime!: pulumi.Output<string | undefined>;
     /**
+     * The amount of time that tokens issued for applications will be valid. Must be in the format 30m or 2h45m. Valid time
+     * units are: m, h.
+     */
+    public readonly warpAuthSessionDuration!: pulumi.Output<string | undefined>;
+    /**
      * The zone identifier to target for the resource. Conflicts with `accountId`.
      */
     public readonly zoneId!: pulumi.Output<string>;
@@ -122,6 +132,7 @@ export class AccessOrganization extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as AccessOrganizationState | undefined;
             resourceInputs["accountId"] = state ? state.accountId : undefined;
+            resourceInputs["allowAuthenticateViaWarp"] = state ? state.allowAuthenticateViaWarp : undefined;
             resourceInputs["authDomain"] = state ? state.authDomain : undefined;
             resourceInputs["autoRedirectToIdentity"] = state ? state.autoRedirectToIdentity : undefined;
             resourceInputs["customPages"] = state ? state.customPages : undefined;
@@ -131,6 +142,7 @@ export class AccessOrganization extends pulumi.CustomResource {
             resourceInputs["sessionDuration"] = state ? state.sessionDuration : undefined;
             resourceInputs["uiReadOnlyToggleReason"] = state ? state.uiReadOnlyToggleReason : undefined;
             resourceInputs["userSeatExpirationInactiveTime"] = state ? state.userSeatExpirationInactiveTime : undefined;
+            resourceInputs["warpAuthSessionDuration"] = state ? state.warpAuthSessionDuration : undefined;
             resourceInputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
             const args = argsOrState as AccessOrganizationArgs | undefined;
@@ -138,6 +150,7 @@ export class AccessOrganization extends pulumi.CustomResource {
                 throw new Error("Missing required property 'authDomain'");
             }
             resourceInputs["accountId"] = args ? args.accountId : undefined;
+            resourceInputs["allowAuthenticateViaWarp"] = args ? args.allowAuthenticateViaWarp : undefined;
             resourceInputs["authDomain"] = args ? args.authDomain : undefined;
             resourceInputs["autoRedirectToIdentity"] = args ? args.autoRedirectToIdentity : undefined;
             resourceInputs["customPages"] = args ? args.customPages : undefined;
@@ -147,6 +160,7 @@ export class AccessOrganization extends pulumi.CustomResource {
             resourceInputs["sessionDuration"] = args ? args.sessionDuration : undefined;
             resourceInputs["uiReadOnlyToggleReason"] = args ? args.uiReadOnlyToggleReason : undefined;
             resourceInputs["userSeatExpirationInactiveTime"] = args ? args.userSeatExpirationInactiveTime : undefined;
+            resourceInputs["warpAuthSessionDuration"] = args ? args.warpAuthSessionDuration : undefined;
             resourceInputs["zoneId"] = args ? args.zoneId : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -162,6 +176,11 @@ export interface AccessOrganizationState {
      * The account identifier to target for the resource. Conflicts with `zoneId`.
      */
     accountId?: pulumi.Input<string>;
+    /**
+     * When set to true, users can authenticate via WARP for any application in your organization. Application settings will
+     * take precedence over this value.
+     */
+    allowAuthenticateViaWarp?: pulumi.Input<boolean>;
     /**
      * The unique subdomain assigned to your Zero Trust organization.
      */
@@ -196,6 +215,11 @@ export interface AccessOrganizationState {
      */
     userSeatExpirationInactiveTime?: pulumi.Input<string>;
     /**
+     * The amount of time that tokens issued for applications will be valid. Must be in the format 30m or 2h45m. Valid time
+     * units are: m, h.
+     */
+    warpAuthSessionDuration?: pulumi.Input<string>;
+    /**
      * The zone identifier to target for the resource. Conflicts with `accountId`.
      */
     zoneId?: pulumi.Input<string>;
@@ -209,6 +233,11 @@ export interface AccessOrganizationArgs {
      * The account identifier to target for the resource. Conflicts with `zoneId`.
      */
     accountId?: pulumi.Input<string>;
+    /**
+     * When set to true, users can authenticate via WARP for any application in your organization. Application settings will
+     * take precedence over this value.
+     */
+    allowAuthenticateViaWarp?: pulumi.Input<boolean>;
     /**
      * The unique subdomain assigned to your Zero Trust organization.
      */
@@ -242,6 +271,11 @@ export interface AccessOrganizationArgs {
      * The amount of time a user seat is inactive before it expires. When the user seat exceeds the set time of inactivity, the user is removed as an active seat and no longer counts against your Teams seat count. Must be in the format `300ms` or `2h45m`.
      */
     userSeatExpirationInactiveTime?: pulumi.Input<string>;
+    /**
+     * The amount of time that tokens issued for applications will be valid. Must be in the format 30m or 2h45m. Valid time
+     * units are: m, h.
+     */
+    warpAuthSessionDuration?: pulumi.Input<string>;
     /**
      * The zone identifier to target for the resource. Conflicts with `accountId`.
      */

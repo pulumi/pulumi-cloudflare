@@ -14,9 +14,22 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class AccessApplicationSaasApp
     {
         /// <summary>
+        /// The URL where this applications tile redirects users
+        /// </summary>
+        public readonly string? AppLauncherUrl;
+        public readonly string? AuthType;
+        /// <summary>
+        /// The application client id
+        /// </summary>
+        public readonly string? ClientId;
+        /// <summary>
+        /// The application client secret, only returned on initial apply
+        /// </summary>
+        public readonly string? ClientSecret;
+        /// <summary>
         /// The service provider's endpoint that is responsible for receiving and parsing a SAML assertion.
         /// </summary>
-        public readonly string ConsumerServiceUrl;
+        public readonly string? ConsumerServiceUrl;
         /// <summary>
         /// Custom attribute mapped from IDPs.
         /// </summary>
@@ -25,6 +38,14 @@ namespace Pulumi.Cloudflare.Outputs
         /// The relay state used if not provided by the identity provider.
         /// </summary>
         public readonly string? DefaultRelayState;
+        /// <summary>
+        /// The OIDC flows supported by this application
+        /// </summary>
+        public readonly ImmutableArray<string> GrantTypes;
+        /// <summary>
+        /// A regex to filter Cloudflare groups returned in ID token and userinfo endpoint
+        /// </summary>
+        public readonly string? GroupFilterRegex;
         /// <summary>
         /// The unique identifier for the SaaS application.
         /// </summary>
@@ -38,9 +59,17 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string? PublicKey;
         /// <summary>
+        /// The permitted URL's for Cloudflare to return Authorization codes and Access/ID tokens
+        /// </summary>
+        public readonly ImmutableArray<string> RedirectUris;
+        /// <summary>
+        /// Define the user information shared with access
+        /// </summary>
+        public readonly ImmutableArray<string> Scopes;
+        /// <summary>
         /// A globally unique name for an identity or service provider.
         /// </summary>
-        public readonly string SpEntityId;
+        public readonly string? SpEntityId;
         /// <summary>
         /// The endpoint where the SaaS application will send login requests.
         /// </summary>
@@ -48,11 +77,23 @@ namespace Pulumi.Cloudflare.Outputs
 
         [OutputConstructor]
         private AccessApplicationSaasApp(
-            string consumerServiceUrl,
+            string? appLauncherUrl,
+
+            string? authType,
+
+            string? clientId,
+
+            string? clientSecret,
+
+            string? consumerServiceUrl,
 
             ImmutableArray<Outputs.AccessApplicationSaasAppCustomAttribute> customAttributes,
 
             string? defaultRelayState,
+
+            ImmutableArray<string> grantTypes,
+
+            string? groupFilterRegex,
 
             string? idpEntityId,
 
@@ -60,16 +101,28 @@ namespace Pulumi.Cloudflare.Outputs
 
             string? publicKey,
 
-            string spEntityId,
+            ImmutableArray<string> redirectUris,
+
+            ImmutableArray<string> scopes,
+
+            string? spEntityId,
 
             string? ssoEndpoint)
         {
+            AppLauncherUrl = appLauncherUrl;
+            AuthType = authType;
+            ClientId = clientId;
+            ClientSecret = clientSecret;
             ConsumerServiceUrl = consumerServiceUrl;
             CustomAttributes = customAttributes;
             DefaultRelayState = defaultRelayState;
+            GrantTypes = grantTypes;
+            GroupFilterRegex = groupFilterRegex;
             IdpEntityId = idpEntityId;
             NameIdFormat = nameIdFormat;
             PublicKey = publicKey;
+            RedirectUris = redirectUris;
+            Scopes = scopes;
             SpEntityId = spEntityId;
             SsoEndpoint = ssoEndpoint;
         }

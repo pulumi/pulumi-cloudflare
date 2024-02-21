@@ -35,6 +35,11 @@ import (
 //					EnabledDownloadPhase: pulumi.Bool(true),
 //					EnabledUploadPhase:   pulumi.Bool(false),
 //					FailClosed:           pulumi.Bool(true),
+//					NotificationSettings: &cloudflare.TeamsAccountAntivirusNotificationSettingsArgs{
+//						Enabled:    pulumi.Bool(true),
+//						Message:    pulumi.String("you are blocked"),
+//						SupportUrl: pulumi.String("https://example.com/blocked"),
+//					},
 //				},
 //				BlockPage: &cloudflare.TeamsAccountBlockPageArgs{
 //					BackgroundColor: pulumi.String("#000000"),
@@ -44,6 +49,9 @@ import (
 //				},
 //				BodyScanning: &cloudflare.TeamsAccountBodyScanningArgs{
 //					InspectionMode: pulumi.String("deep"),
+//				},
+//				ExtendedEmailMatching: &cloudflare.TeamsAccountExtendedEmailMatchingArgs{
+//					Enabled: pulumi.Bool(true),
 //				},
 //				Fips: &cloudflare.TeamsAccountFipsArgs{
 //					Tls: pulumi.Bool(true),
@@ -103,6 +111,8 @@ type TeamsAccount struct {
 	BlockPage TeamsAccountBlockPagePtrOutput `pulumi:"blockPage"`
 	// Configuration for body scanning.
 	BodyScanning TeamsAccountBodyScanningPtrOutput `pulumi:"bodyScanning"`
+	// Configuration for extended e-mail matching.
+	ExtendedEmailMatching TeamsAccountExtendedEmailMatchingPtrOutput `pulumi:"extendedEmailMatching"`
 	// Configure compliance with Federal Information Processing Standards.
 	Fips    TeamsAccountFipsPtrOutput    `pulumi:"fips"`
 	Logging TeamsAccountLoggingPtrOutput `pulumi:"logging"`
@@ -165,6 +175,8 @@ type teamsAccountState struct {
 	BlockPage *TeamsAccountBlockPage `pulumi:"blockPage"`
 	// Configuration for body scanning.
 	BodyScanning *TeamsAccountBodyScanning `pulumi:"bodyScanning"`
+	// Configuration for extended e-mail matching.
+	ExtendedEmailMatching *TeamsAccountExtendedEmailMatching `pulumi:"extendedEmailMatching"`
 	// Configure compliance with Federal Information Processing Standards.
 	Fips    *TeamsAccountFips    `pulumi:"fips"`
 	Logging *TeamsAccountLogging `pulumi:"logging"`
@@ -195,6 +207,8 @@ type TeamsAccountState struct {
 	BlockPage TeamsAccountBlockPagePtrInput
 	// Configuration for body scanning.
 	BodyScanning TeamsAccountBodyScanningPtrInput
+	// Configuration for extended e-mail matching.
+	ExtendedEmailMatching TeamsAccountExtendedEmailMatchingPtrInput
 	// Configure compliance with Federal Information Processing Standards.
 	Fips    TeamsAccountFipsPtrInput
 	Logging TeamsAccountLoggingPtrInput
@@ -229,6 +243,8 @@ type teamsAccountArgs struct {
 	BlockPage *TeamsAccountBlockPage `pulumi:"blockPage"`
 	// Configuration for body scanning.
 	BodyScanning *TeamsAccountBodyScanning `pulumi:"bodyScanning"`
+	// Configuration for extended e-mail matching.
+	ExtendedEmailMatching *TeamsAccountExtendedEmailMatching `pulumi:"extendedEmailMatching"`
 	// Configure compliance with Federal Information Processing Standards.
 	Fips    *TeamsAccountFips    `pulumi:"fips"`
 	Logging *TeamsAccountLogging `pulumi:"logging"`
@@ -260,6 +276,8 @@ type TeamsAccountArgs struct {
 	BlockPage TeamsAccountBlockPagePtrInput
 	// Configuration for body scanning.
 	BodyScanning TeamsAccountBodyScanningPtrInput
+	// Configuration for extended e-mail matching.
+	ExtendedEmailMatching TeamsAccountExtendedEmailMatchingPtrInput
 	// Configure compliance with Federal Information Processing Standards.
 	Fips    TeamsAccountFipsPtrInput
 	Logging TeamsAccountLoggingPtrInput
@@ -389,6 +407,11 @@ func (o TeamsAccountOutput) BlockPage() TeamsAccountBlockPagePtrOutput {
 // Configuration for body scanning.
 func (o TeamsAccountOutput) BodyScanning() TeamsAccountBodyScanningPtrOutput {
 	return o.ApplyT(func(v *TeamsAccount) TeamsAccountBodyScanningPtrOutput { return v.BodyScanning }).(TeamsAccountBodyScanningPtrOutput)
+}
+
+// Configuration for extended e-mail matching.
+func (o TeamsAccountOutput) ExtendedEmailMatching() TeamsAccountExtendedEmailMatchingPtrOutput {
+	return o.ApplyT(func(v *TeamsAccount) TeamsAccountExtendedEmailMatchingPtrOutput { return v.ExtendedEmailMatching }).(TeamsAccountExtendedEmailMatchingPtrOutput)
 }
 
 // Configure compliance with Federal Information Processing Standards.

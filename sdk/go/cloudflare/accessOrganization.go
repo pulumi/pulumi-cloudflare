@@ -66,6 +66,9 @@ type AccessOrganization struct {
 
 	// The account identifier to target for the resource. Conflicts with `zoneId`.
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
+	// When set to true, users can authenticate via WARP for any application in your organization. Application settings will
+	// take precedence over this value.
+	AllowAuthenticateViaWarp pulumi.BoolPtrOutput `pulumi:"allowAuthenticateViaWarp"`
 	// The unique subdomain assigned to your Zero Trust organization.
 	AuthDomain pulumi.StringOutput `pulumi:"authDomain"`
 	// When set to true, users skip the identity provider selection step during login.
@@ -83,6 +86,9 @@ type AccessOrganization struct {
 	UiReadOnlyToggleReason pulumi.StringPtrOutput `pulumi:"uiReadOnlyToggleReason"`
 	// The amount of time a user seat is inactive before it expires. When the user seat exceeds the set time of inactivity, the user is removed as an active seat and no longer counts against your Teams seat count. Must be in the format `300ms` or `2h45m`.
 	UserSeatExpirationInactiveTime pulumi.StringPtrOutput `pulumi:"userSeatExpirationInactiveTime"`
+	// The amount of time that tokens issued for applications will be valid. Must be in the format 30m or 2h45m. Valid time
+	// units are: m, h.
+	WarpAuthSessionDuration pulumi.StringPtrOutput `pulumi:"warpAuthSessionDuration"`
 	// The zone identifier to target for the resource. Conflicts with `accountId`.
 	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
 }
@@ -122,6 +128,9 @@ func GetAccessOrganization(ctx *pulumi.Context,
 type accessOrganizationState struct {
 	// The account identifier to target for the resource. Conflicts with `zoneId`.
 	AccountId *string `pulumi:"accountId"`
+	// When set to true, users can authenticate via WARP for any application in your organization. Application settings will
+	// take precedence over this value.
+	AllowAuthenticateViaWarp *bool `pulumi:"allowAuthenticateViaWarp"`
 	// The unique subdomain assigned to your Zero Trust organization.
 	AuthDomain *string `pulumi:"authDomain"`
 	// When set to true, users skip the identity provider selection step during login.
@@ -139,6 +148,9 @@ type accessOrganizationState struct {
 	UiReadOnlyToggleReason *string `pulumi:"uiReadOnlyToggleReason"`
 	// The amount of time a user seat is inactive before it expires. When the user seat exceeds the set time of inactivity, the user is removed as an active seat and no longer counts against your Teams seat count. Must be in the format `300ms` or `2h45m`.
 	UserSeatExpirationInactiveTime *string `pulumi:"userSeatExpirationInactiveTime"`
+	// The amount of time that tokens issued for applications will be valid. Must be in the format 30m or 2h45m. Valid time
+	// units are: m, h.
+	WarpAuthSessionDuration *string `pulumi:"warpAuthSessionDuration"`
 	// The zone identifier to target for the resource. Conflicts with `accountId`.
 	ZoneId *string `pulumi:"zoneId"`
 }
@@ -146,6 +158,9 @@ type accessOrganizationState struct {
 type AccessOrganizationState struct {
 	// The account identifier to target for the resource. Conflicts with `zoneId`.
 	AccountId pulumi.StringPtrInput
+	// When set to true, users can authenticate via WARP for any application in your organization. Application settings will
+	// take precedence over this value.
+	AllowAuthenticateViaWarp pulumi.BoolPtrInput
 	// The unique subdomain assigned to your Zero Trust organization.
 	AuthDomain pulumi.StringPtrInput
 	// When set to true, users skip the identity provider selection step during login.
@@ -163,6 +178,9 @@ type AccessOrganizationState struct {
 	UiReadOnlyToggleReason pulumi.StringPtrInput
 	// The amount of time a user seat is inactive before it expires. When the user seat exceeds the set time of inactivity, the user is removed as an active seat and no longer counts against your Teams seat count. Must be in the format `300ms` or `2h45m`.
 	UserSeatExpirationInactiveTime pulumi.StringPtrInput
+	// The amount of time that tokens issued for applications will be valid. Must be in the format 30m or 2h45m. Valid time
+	// units are: m, h.
+	WarpAuthSessionDuration pulumi.StringPtrInput
 	// The zone identifier to target for the resource. Conflicts with `accountId`.
 	ZoneId pulumi.StringPtrInput
 }
@@ -174,6 +192,9 @@ func (AccessOrganizationState) ElementType() reflect.Type {
 type accessOrganizationArgs struct {
 	// The account identifier to target for the resource. Conflicts with `zoneId`.
 	AccountId *string `pulumi:"accountId"`
+	// When set to true, users can authenticate via WARP for any application in your organization. Application settings will
+	// take precedence over this value.
+	AllowAuthenticateViaWarp *bool `pulumi:"allowAuthenticateViaWarp"`
 	// The unique subdomain assigned to your Zero Trust organization.
 	AuthDomain string `pulumi:"authDomain"`
 	// When set to true, users skip the identity provider selection step during login.
@@ -191,6 +212,9 @@ type accessOrganizationArgs struct {
 	UiReadOnlyToggleReason *string `pulumi:"uiReadOnlyToggleReason"`
 	// The amount of time a user seat is inactive before it expires. When the user seat exceeds the set time of inactivity, the user is removed as an active seat and no longer counts against your Teams seat count. Must be in the format `300ms` or `2h45m`.
 	UserSeatExpirationInactiveTime *string `pulumi:"userSeatExpirationInactiveTime"`
+	// The amount of time that tokens issued for applications will be valid. Must be in the format 30m or 2h45m. Valid time
+	// units are: m, h.
+	WarpAuthSessionDuration *string `pulumi:"warpAuthSessionDuration"`
 	// The zone identifier to target for the resource. Conflicts with `accountId`.
 	ZoneId *string `pulumi:"zoneId"`
 }
@@ -199,6 +223,9 @@ type accessOrganizationArgs struct {
 type AccessOrganizationArgs struct {
 	// The account identifier to target for the resource. Conflicts with `zoneId`.
 	AccountId pulumi.StringPtrInput
+	// When set to true, users can authenticate via WARP for any application in your organization. Application settings will
+	// take precedence over this value.
+	AllowAuthenticateViaWarp pulumi.BoolPtrInput
 	// The unique subdomain assigned to your Zero Trust organization.
 	AuthDomain pulumi.StringInput
 	// When set to true, users skip the identity provider selection step during login.
@@ -216,6 +243,9 @@ type AccessOrganizationArgs struct {
 	UiReadOnlyToggleReason pulumi.StringPtrInput
 	// The amount of time a user seat is inactive before it expires. When the user seat exceeds the set time of inactivity, the user is removed as an active seat and no longer counts against your Teams seat count. Must be in the format `300ms` or `2h45m`.
 	UserSeatExpirationInactiveTime pulumi.StringPtrInput
+	// The amount of time that tokens issued for applications will be valid. Must be in the format 30m or 2h45m. Valid time
+	// units are: m, h.
+	WarpAuthSessionDuration pulumi.StringPtrInput
 	// The zone identifier to target for the resource. Conflicts with `accountId`.
 	ZoneId pulumi.StringPtrInput
 }
@@ -312,6 +342,12 @@ func (o AccessOrganizationOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v *AccessOrganization) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
 
+// When set to true, users can authenticate via WARP for any application in your organization. Application settings will
+// take precedence over this value.
+func (o AccessOrganizationOutput) AllowAuthenticateViaWarp() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AccessOrganization) pulumi.BoolPtrOutput { return v.AllowAuthenticateViaWarp }).(pulumi.BoolPtrOutput)
+}
+
 // The unique subdomain assigned to your Zero Trust organization.
 func (o AccessOrganizationOutput) AuthDomain() pulumi.StringOutput {
 	return o.ApplyT(func(v *AccessOrganization) pulumi.StringOutput { return v.AuthDomain }).(pulumi.StringOutput)
@@ -354,6 +390,12 @@ func (o AccessOrganizationOutput) UiReadOnlyToggleReason() pulumi.StringPtrOutpu
 // The amount of time a user seat is inactive before it expires. When the user seat exceeds the set time of inactivity, the user is removed as an active seat and no longer counts against your Teams seat count. Must be in the format `300ms` or `2h45m`.
 func (o AccessOrganizationOutput) UserSeatExpirationInactiveTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AccessOrganization) pulumi.StringPtrOutput { return v.UserSeatExpirationInactiveTime }).(pulumi.StringPtrOutput)
+}
+
+// The amount of time that tokens issued for applications will be valid. Must be in the format 30m or 2h45m. Valid time
+// units are: m, h.
+func (o AccessOrganizationOutput) WarpAuthSessionDuration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccessOrganization) pulumi.StringPtrOutput { return v.WarpAuthSessionDuration }).(pulumi.StringPtrOutput)
 }
 
 // The zone identifier to target for the resource. Conflicts with `accountId`.

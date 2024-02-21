@@ -21,7 +21,7 @@ class CustomPagesArgs:
                  zone_id: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a CustomPages resource.
-        :param pulumi.Input[str] type: The type of custom page you wish to update. Available values: `basic_challenge`, `waf_challenge`, `waf_block`, `ratelimit_block`, `country_challenge`, `ip_block`, `under_attack`, `500_errors`, `1000_errors`, `always_online`, `managed_challenge`.
+        :param pulumi.Input[str] type: The type of custom page you wish to update. Available values: `basic_challenge`, `waf_challenge`, `waf_block`, `ratelimit_block`, `country_challenge`, `ip_block`, `under_attack`, `500_errors`, `1000_errors`, `managed_challenge`.
         :param pulumi.Input[str] url: URL of where the custom page source is located.
         :param pulumi.Input[str] account_id: The account identifier to target for the resource. Conflicts with `zone_id`.
         :param pulumi.Input[str] state: Managed state of the custom page. Available values: `default`, `customized`.
@@ -40,7 +40,7 @@ class CustomPagesArgs:
     @pulumi.getter
     def type(self) -> pulumi.Input[str]:
         """
-        The type of custom page you wish to update. Available values: `basic_challenge`, `waf_challenge`, `waf_block`, `ratelimit_block`, `country_challenge`, `ip_block`, `under_attack`, `500_errors`, `1000_errors`, `always_online`, `managed_challenge`.
+        The type of custom page you wish to update. Available values: `basic_challenge`, `waf_challenge`, `waf_block`, `ratelimit_block`, `country_challenge`, `ip_block`, `under_attack`, `500_errors`, `1000_errors`, `managed_challenge`.
         """
         return pulumi.get(self, "type")
 
@@ -109,7 +109,7 @@ class _CustomPagesState:
         Input properties used for looking up and filtering CustomPages resources.
         :param pulumi.Input[str] account_id: The account identifier to target for the resource. Conflicts with `zone_id`.
         :param pulumi.Input[str] state: Managed state of the custom page. Available values: `default`, `customized`.
-        :param pulumi.Input[str] type: The type of custom page you wish to update. Available values: `basic_challenge`, `waf_challenge`, `waf_block`, `ratelimit_block`, `country_challenge`, `ip_block`, `under_attack`, `500_errors`, `1000_errors`, `always_online`, `managed_challenge`.
+        :param pulumi.Input[str] type: The type of custom page you wish to update. Available values: `basic_challenge`, `waf_challenge`, `waf_block`, `ratelimit_block`, `country_challenge`, `ip_block`, `under_attack`, `500_errors`, `1000_errors`, `managed_challenge`.
         :param pulumi.Input[str] url: URL of where the custom page source is located.
         :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. Conflicts with `account_id`.
         """
@@ -152,7 +152,7 @@ class _CustomPagesState:
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[str]]:
         """
-        The type of custom page you wish to update. Available values: `basic_challenge`, `waf_challenge`, `waf_block`, `ratelimit_block`, `country_challenge`, `ip_block`, `under_attack`, `500_errors`, `1000_errors`, `always_online`, `managed_challenge`.
+        The type of custom page you wish to update. Available values: `basic_challenge`, `waf_challenge`, `waf_block`, `ratelimit_block`, `country_challenge`, `ip_block`, `under_attack`, `500_errors`, `1000_errors`, `managed_challenge`.
         """
         return pulumi.get(self, "type")
 
@@ -222,7 +222,7 @@ class CustomPages(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_id: The account identifier to target for the resource. Conflicts with `zone_id`.
         :param pulumi.Input[str] state: Managed state of the custom page. Available values: `default`, `customized`.
-        :param pulumi.Input[str] type: The type of custom page you wish to update. Available values: `basic_challenge`, `waf_challenge`, `waf_block`, `ratelimit_block`, `country_challenge`, `ip_block`, `under_attack`, `500_errors`, `1000_errors`, `always_online`, `managed_challenge`.
+        :param pulumi.Input[str] type: The type of custom page you wish to update. Available values: `basic_challenge`, `waf_challenge`, `waf_block`, `ratelimit_block`, `country_challenge`, `ip_block`, `under_attack`, `500_errors`, `1000_errors`, `managed_challenge`.
         :param pulumi.Input[str] url: URL of where the custom page source is located.
         :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. Conflicts with `account_id`.
         """
@@ -316,7 +316,7 @@ class CustomPages(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_id: The account identifier to target for the resource. Conflicts with `zone_id`.
         :param pulumi.Input[str] state: Managed state of the custom page. Available values: `default`, `customized`.
-        :param pulumi.Input[str] type: The type of custom page you wish to update. Available values: `basic_challenge`, `waf_challenge`, `waf_block`, `ratelimit_block`, `country_challenge`, `ip_block`, `under_attack`, `500_errors`, `1000_errors`, `always_online`, `managed_challenge`.
+        :param pulumi.Input[str] type: The type of custom page you wish to update. Available values: `basic_challenge`, `waf_challenge`, `waf_block`, `ratelimit_block`, `country_challenge`, `ip_block`, `under_attack`, `500_errors`, `1000_errors`, `managed_challenge`.
         :param pulumi.Input[str] url: URL of where the custom page source is located.
         :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. Conflicts with `account_id`.
         """
@@ -351,7 +351,7 @@ class CustomPages(pulumi.CustomResource):
     @pulumi.getter
     def type(self) -> pulumi.Output[str]:
         """
-        The type of custom page you wish to update. Available values: `basic_challenge`, `waf_challenge`, `waf_block`, `ratelimit_block`, `country_challenge`, `ip_block`, `under_attack`, `500_errors`, `1000_errors`, `always_online`, `managed_challenge`.
+        The type of custom page you wish to update. Available values: `basic_challenge`, `waf_challenge`, `waf_block`, `ratelimit_block`, `country_challenge`, `ip_block`, `under_attack`, `500_errors`, `1000_errors`, `managed_challenge`.
         """
         return pulumi.get(self, "type")
 

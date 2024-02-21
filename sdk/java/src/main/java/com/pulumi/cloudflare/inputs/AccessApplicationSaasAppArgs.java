@@ -6,7 +6,6 @@ package com.pulumi.cloudflare.inputs;
 import com.pulumi.cloudflare.inputs.AccessApplicationSaasAppCustomAttributeArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -19,18 +18,70 @@ public final class AccessApplicationSaasAppArgs extends com.pulumi.resources.Res
     public static final AccessApplicationSaasAppArgs Empty = new AccessApplicationSaasAppArgs();
 
     /**
+     * The URL where this applications tile redirects users
+     * 
+     */
+    @Import(name="appLauncherUrl")
+    private @Nullable Output<String> appLauncherUrl;
+
+    /**
+     * @return The URL where this applications tile redirects users
+     * 
+     */
+    public Optional<Output<String>> appLauncherUrl() {
+        return Optional.ofNullable(this.appLauncherUrl);
+    }
+
+    @Import(name="authType")
+    private @Nullable Output<String> authType;
+
+    public Optional<Output<String>> authType() {
+        return Optional.ofNullable(this.authType);
+    }
+
+    /**
+     * The application client id
+     * 
+     */
+    @Import(name="clientId")
+    private @Nullable Output<String> clientId;
+
+    /**
+     * @return The application client id
+     * 
+     */
+    public Optional<Output<String>> clientId() {
+        return Optional.ofNullable(this.clientId);
+    }
+
+    /**
+     * The application client secret, only returned on initial apply
+     * 
+     */
+    @Import(name="clientSecret")
+    private @Nullable Output<String> clientSecret;
+
+    /**
+     * @return The application client secret, only returned on initial apply
+     * 
+     */
+    public Optional<Output<String>> clientSecret() {
+        return Optional.ofNullable(this.clientSecret);
+    }
+
+    /**
      * The service provider&#39;s endpoint that is responsible for receiving and parsing a SAML assertion.
      * 
      */
-    @Import(name="consumerServiceUrl", required=true)
-    private Output<String> consumerServiceUrl;
+    @Import(name="consumerServiceUrl")
+    private @Nullable Output<String> consumerServiceUrl;
 
     /**
      * @return The service provider&#39;s endpoint that is responsible for receiving and parsing a SAML assertion.
      * 
      */
-    public Output<String> consumerServiceUrl() {
-        return this.consumerServiceUrl;
+    public Optional<Output<String>> consumerServiceUrl() {
+        return Optional.ofNullable(this.consumerServiceUrl);
     }
 
     /**
@@ -61,6 +112,36 @@ public final class AccessApplicationSaasAppArgs extends com.pulumi.resources.Res
      */
     public Optional<Output<String>> defaultRelayState() {
         return Optional.ofNullable(this.defaultRelayState);
+    }
+
+    /**
+     * The OIDC flows supported by this application
+     * 
+     */
+    @Import(name="grantTypes")
+    private @Nullable Output<List<String>> grantTypes;
+
+    /**
+     * @return The OIDC flows supported by this application
+     * 
+     */
+    public Optional<Output<List<String>>> grantTypes() {
+        return Optional.ofNullable(this.grantTypes);
+    }
+
+    /**
+     * A regex to filter Cloudflare groups returned in ID token and userinfo endpoint
+     * 
+     */
+    @Import(name="groupFilterRegex")
+    private @Nullable Output<String> groupFilterRegex;
+
+    /**
+     * @return A regex to filter Cloudflare groups returned in ID token and userinfo endpoint
+     * 
+     */
+    public Optional<Output<String>> groupFilterRegex() {
+        return Optional.ofNullable(this.groupFilterRegex);
     }
 
     /**
@@ -109,18 +190,48 @@ public final class AccessApplicationSaasAppArgs extends com.pulumi.resources.Res
     }
 
     /**
+     * The permitted URL&#39;s for Cloudflare to return Authorization codes and Access/ID tokens
+     * 
+     */
+    @Import(name="redirectUris")
+    private @Nullable Output<List<String>> redirectUris;
+
+    /**
+     * @return The permitted URL&#39;s for Cloudflare to return Authorization codes and Access/ID tokens
+     * 
+     */
+    public Optional<Output<List<String>>> redirectUris() {
+        return Optional.ofNullable(this.redirectUris);
+    }
+
+    /**
+     * Define the user information shared with access
+     * 
+     */
+    @Import(name="scopes")
+    private @Nullable Output<List<String>> scopes;
+
+    /**
+     * @return Define the user information shared with access
+     * 
+     */
+    public Optional<Output<List<String>>> scopes() {
+        return Optional.ofNullable(this.scopes);
+    }
+
+    /**
      * A globally unique name for an identity or service provider.
      * 
      */
-    @Import(name="spEntityId", required=true)
-    private Output<String> spEntityId;
+    @Import(name="spEntityId")
+    private @Nullable Output<String> spEntityId;
 
     /**
      * @return A globally unique name for an identity or service provider.
      * 
      */
-    public Output<String> spEntityId() {
-        return this.spEntityId;
+    public Optional<Output<String>> spEntityId() {
+        return Optional.ofNullable(this.spEntityId);
     }
 
     /**
@@ -141,12 +252,20 @@ public final class AccessApplicationSaasAppArgs extends com.pulumi.resources.Res
     private AccessApplicationSaasAppArgs() {}
 
     private AccessApplicationSaasAppArgs(AccessApplicationSaasAppArgs $) {
+        this.appLauncherUrl = $.appLauncherUrl;
+        this.authType = $.authType;
+        this.clientId = $.clientId;
+        this.clientSecret = $.clientSecret;
         this.consumerServiceUrl = $.consumerServiceUrl;
         this.customAttributes = $.customAttributes;
         this.defaultRelayState = $.defaultRelayState;
+        this.grantTypes = $.grantTypes;
+        this.groupFilterRegex = $.groupFilterRegex;
         this.idpEntityId = $.idpEntityId;
         this.nameIdFormat = $.nameIdFormat;
         this.publicKey = $.publicKey;
+        this.redirectUris = $.redirectUris;
+        this.scopes = $.scopes;
         this.spEntityId = $.spEntityId;
         this.ssoEndpoint = $.ssoEndpoint;
     }
@@ -170,12 +289,84 @@ public final class AccessApplicationSaasAppArgs extends com.pulumi.resources.Res
         }
 
         /**
+         * @param appLauncherUrl The URL where this applications tile redirects users
+         * 
+         * @return builder
+         * 
+         */
+        public Builder appLauncherUrl(@Nullable Output<String> appLauncherUrl) {
+            $.appLauncherUrl = appLauncherUrl;
+            return this;
+        }
+
+        /**
+         * @param appLauncherUrl The URL where this applications tile redirects users
+         * 
+         * @return builder
+         * 
+         */
+        public Builder appLauncherUrl(String appLauncherUrl) {
+            return appLauncherUrl(Output.of(appLauncherUrl));
+        }
+
+        public Builder authType(@Nullable Output<String> authType) {
+            $.authType = authType;
+            return this;
+        }
+
+        public Builder authType(String authType) {
+            return authType(Output.of(authType));
+        }
+
+        /**
+         * @param clientId The application client id
+         * 
+         * @return builder
+         * 
+         */
+        public Builder clientId(@Nullable Output<String> clientId) {
+            $.clientId = clientId;
+            return this;
+        }
+
+        /**
+         * @param clientId The application client id
+         * 
+         * @return builder
+         * 
+         */
+        public Builder clientId(String clientId) {
+            return clientId(Output.of(clientId));
+        }
+
+        /**
+         * @param clientSecret The application client secret, only returned on initial apply
+         * 
+         * @return builder
+         * 
+         */
+        public Builder clientSecret(@Nullable Output<String> clientSecret) {
+            $.clientSecret = clientSecret;
+            return this;
+        }
+
+        /**
+         * @param clientSecret The application client secret, only returned on initial apply
+         * 
+         * @return builder
+         * 
+         */
+        public Builder clientSecret(String clientSecret) {
+            return clientSecret(Output.of(clientSecret));
+        }
+
+        /**
          * @param consumerServiceUrl The service provider&#39;s endpoint that is responsible for receiving and parsing a SAML assertion.
          * 
          * @return builder
          * 
          */
-        public Builder consumerServiceUrl(Output<String> consumerServiceUrl) {
+        public Builder consumerServiceUrl(@Nullable Output<String> consumerServiceUrl) {
             $.consumerServiceUrl = consumerServiceUrl;
             return this;
         }
@@ -243,6 +434,58 @@ public final class AccessApplicationSaasAppArgs extends com.pulumi.resources.Res
         }
 
         /**
+         * @param grantTypes The OIDC flows supported by this application
+         * 
+         * @return builder
+         * 
+         */
+        public Builder grantTypes(@Nullable Output<List<String>> grantTypes) {
+            $.grantTypes = grantTypes;
+            return this;
+        }
+
+        /**
+         * @param grantTypes The OIDC flows supported by this application
+         * 
+         * @return builder
+         * 
+         */
+        public Builder grantTypes(List<String> grantTypes) {
+            return grantTypes(Output.of(grantTypes));
+        }
+
+        /**
+         * @param grantTypes The OIDC flows supported by this application
+         * 
+         * @return builder
+         * 
+         */
+        public Builder grantTypes(String... grantTypes) {
+            return grantTypes(List.of(grantTypes));
+        }
+
+        /**
+         * @param groupFilterRegex A regex to filter Cloudflare groups returned in ID token and userinfo endpoint
+         * 
+         * @return builder
+         * 
+         */
+        public Builder groupFilterRegex(@Nullable Output<String> groupFilterRegex) {
+            $.groupFilterRegex = groupFilterRegex;
+            return this;
+        }
+
+        /**
+         * @param groupFilterRegex A regex to filter Cloudflare groups returned in ID token and userinfo endpoint
+         * 
+         * @return builder
+         * 
+         */
+        public Builder groupFilterRegex(String groupFilterRegex) {
+            return groupFilterRegex(Output.of(groupFilterRegex));
+        }
+
+        /**
          * @param idpEntityId The unique identifier for the SaaS application.
          * 
          * @return builder
@@ -306,12 +549,74 @@ public final class AccessApplicationSaasAppArgs extends com.pulumi.resources.Res
         }
 
         /**
+         * @param redirectUris The permitted URL&#39;s for Cloudflare to return Authorization codes and Access/ID tokens
+         * 
+         * @return builder
+         * 
+         */
+        public Builder redirectUris(@Nullable Output<List<String>> redirectUris) {
+            $.redirectUris = redirectUris;
+            return this;
+        }
+
+        /**
+         * @param redirectUris The permitted URL&#39;s for Cloudflare to return Authorization codes and Access/ID tokens
+         * 
+         * @return builder
+         * 
+         */
+        public Builder redirectUris(List<String> redirectUris) {
+            return redirectUris(Output.of(redirectUris));
+        }
+
+        /**
+         * @param redirectUris The permitted URL&#39;s for Cloudflare to return Authorization codes and Access/ID tokens
+         * 
+         * @return builder
+         * 
+         */
+        public Builder redirectUris(String... redirectUris) {
+            return redirectUris(List.of(redirectUris));
+        }
+
+        /**
+         * @param scopes Define the user information shared with access
+         * 
+         * @return builder
+         * 
+         */
+        public Builder scopes(@Nullable Output<List<String>> scopes) {
+            $.scopes = scopes;
+            return this;
+        }
+
+        /**
+         * @param scopes Define the user information shared with access
+         * 
+         * @return builder
+         * 
+         */
+        public Builder scopes(List<String> scopes) {
+            return scopes(Output.of(scopes));
+        }
+
+        /**
+         * @param scopes Define the user information shared with access
+         * 
+         * @return builder
+         * 
+         */
+        public Builder scopes(String... scopes) {
+            return scopes(List.of(scopes));
+        }
+
+        /**
          * @param spEntityId A globally unique name for an identity or service provider.
          * 
          * @return builder
          * 
          */
-        public Builder spEntityId(Output<String> spEntityId) {
+        public Builder spEntityId(@Nullable Output<String> spEntityId) {
             $.spEntityId = spEntityId;
             return this;
         }
@@ -348,12 +653,6 @@ public final class AccessApplicationSaasAppArgs extends com.pulumi.resources.Res
         }
 
         public AccessApplicationSaasAppArgs build() {
-            if ($.consumerServiceUrl == null) {
-                throw new MissingRequiredPropertyException("AccessApplicationSaasAppArgs", "consumerServiceUrl");
-            }
-            if ($.spEntityId == null) {
-                throw new MissingRequiredPropertyException("AccessApplicationSaasAppArgs", "spEntityId");
-            }
             return $;
         }
     }

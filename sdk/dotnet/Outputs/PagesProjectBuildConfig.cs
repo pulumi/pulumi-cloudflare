@@ -14,6 +14,10 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class PagesProjectBuildConfig
     {
         /// <summary>
+        /// Enable build caching for the project.
+        /// </summary>
+        public readonly bool? BuildCaching;
+        /// <summary>
         /// Command used to build project.
         /// </summary>
         public readonly string? BuildCommand;
@@ -36,6 +40,8 @@ namespace Pulumi.Cloudflare.Outputs
 
         [OutputConstructor]
         private PagesProjectBuildConfig(
+            bool? buildCaching,
+
             string? buildCommand,
 
             string? destinationDir,
@@ -46,6 +52,7 @@ namespace Pulumi.Cloudflare.Outputs
 
             string? webAnalyticsToken)
         {
+            BuildCaching = buildCaching;
             BuildCommand = buildCommand;
             DestinationDir = destinationDir;
             RootDir = rootDir;

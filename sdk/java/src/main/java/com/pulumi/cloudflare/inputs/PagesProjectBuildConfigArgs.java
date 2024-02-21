@@ -5,6 +5,7 @@ package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -14,6 +15,21 @@ import javax.annotation.Nullable;
 public final class PagesProjectBuildConfigArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final PagesProjectBuildConfigArgs Empty = new PagesProjectBuildConfigArgs();
+
+    /**
+     * Enable build caching for the project.
+     * 
+     */
+    @Import(name="buildCaching")
+    private @Nullable Output<Boolean> buildCaching;
+
+    /**
+     * @return Enable build caching for the project.
+     * 
+     */
+    public Optional<Output<Boolean>> buildCaching() {
+        return Optional.ofNullable(this.buildCaching);
+    }
 
     /**
      * Command used to build project.
@@ -93,6 +109,7 @@ public final class PagesProjectBuildConfigArgs extends com.pulumi.resources.Reso
     private PagesProjectBuildConfigArgs() {}
 
     private PagesProjectBuildConfigArgs(PagesProjectBuildConfigArgs $) {
+        this.buildCaching = $.buildCaching;
         this.buildCommand = $.buildCommand;
         this.destinationDir = $.destinationDir;
         this.rootDir = $.rootDir;
@@ -116,6 +133,27 @@ public final class PagesProjectBuildConfigArgs extends com.pulumi.resources.Reso
 
         public Builder(PagesProjectBuildConfigArgs defaults) {
             $ = new PagesProjectBuildConfigArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param buildCaching Enable build caching for the project.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder buildCaching(@Nullable Output<Boolean> buildCaching) {
+            $.buildCaching = buildCaching;
+            return this;
+        }
+
+        /**
+         * @param buildCaching Enable build caching for the project.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder buildCaching(Boolean buildCaching) {
+            return buildCaching(Output.of(buildCaching));
         }
 
         /**

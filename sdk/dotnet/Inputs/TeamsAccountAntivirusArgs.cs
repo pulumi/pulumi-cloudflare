@@ -30,6 +30,12 @@ namespace Pulumi.Cloudflare.Inputs
         [Input("failClosed", required: true)]
         public Input<bool> FailClosed { get; set; } = null!;
 
+        /// <summary>
+        /// Set notifications for antivirus.
+        /// </summary>
+        [Input("notificationSettings")]
+        public Input<Inputs.TeamsAccountAntivirusNotificationSettingsArgs>? NotificationSettings { get; set; }
+
         public TeamsAccountAntivirusArgs()
         {
         }

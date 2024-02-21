@@ -35,6 +35,23 @@ public final class AccessOrganizationState extends com.pulumi.resources.Resource
     }
 
     /**
+     * When set to true, users can authenticate via WARP for any application in your organization. Application settings will
+     * take precedence over this value.
+     * 
+     */
+    @Import(name="allowAuthenticateViaWarp")
+    private @Nullable Output<Boolean> allowAuthenticateViaWarp;
+
+    /**
+     * @return When set to true, users can authenticate via WARP for any application in your organization. Application settings will
+     * take precedence over this value.
+     * 
+     */
+    public Optional<Output<Boolean>> allowAuthenticateViaWarp() {
+        return Optional.ofNullable(this.allowAuthenticateViaWarp);
+    }
+
+    /**
      * The unique subdomain assigned to your Zero Trust organization.
      * 
      */
@@ -162,6 +179,23 @@ public final class AccessOrganizationState extends com.pulumi.resources.Resource
     }
 
     /**
+     * The amount of time that tokens issued for applications will be valid. Must be in the format 30m or 2h45m. Valid time
+     * units are: m, h.
+     * 
+     */
+    @Import(name="warpAuthSessionDuration")
+    private @Nullable Output<String> warpAuthSessionDuration;
+
+    /**
+     * @return The amount of time that tokens issued for applications will be valid. Must be in the format 30m or 2h45m. Valid time
+     * units are: m, h.
+     * 
+     */
+    public Optional<Output<String>> warpAuthSessionDuration() {
+        return Optional.ofNullable(this.warpAuthSessionDuration);
+    }
+
+    /**
      * The zone identifier to target for the resource. Conflicts with `account_id`.
      * 
      */
@@ -180,6 +214,7 @@ public final class AccessOrganizationState extends com.pulumi.resources.Resource
 
     private AccessOrganizationState(AccessOrganizationState $) {
         this.accountId = $.accountId;
+        this.allowAuthenticateViaWarp = $.allowAuthenticateViaWarp;
         this.authDomain = $.authDomain;
         this.autoRedirectToIdentity = $.autoRedirectToIdentity;
         this.customPages = $.customPages;
@@ -189,6 +224,7 @@ public final class AccessOrganizationState extends com.pulumi.resources.Resource
         this.sessionDuration = $.sessionDuration;
         this.uiReadOnlyToggleReason = $.uiReadOnlyToggleReason;
         this.userSeatExpirationInactiveTime = $.userSeatExpirationInactiveTime;
+        this.warpAuthSessionDuration = $.warpAuthSessionDuration;
         this.zoneId = $.zoneId;
     }
 
@@ -229,6 +265,29 @@ public final class AccessOrganizationState extends com.pulumi.resources.Resource
          */
         public Builder accountId(String accountId) {
             return accountId(Output.of(accountId));
+        }
+
+        /**
+         * @param allowAuthenticateViaWarp When set to true, users can authenticate via WARP for any application in your organization. Application settings will
+         * take precedence over this value.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder allowAuthenticateViaWarp(@Nullable Output<Boolean> allowAuthenticateViaWarp) {
+            $.allowAuthenticateViaWarp = allowAuthenticateViaWarp;
+            return this;
+        }
+
+        /**
+         * @param allowAuthenticateViaWarp When set to true, users can authenticate via WARP for any application in your organization. Application settings will
+         * take precedence over this value.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder allowAuthenticateViaWarp(Boolean allowAuthenticateViaWarp) {
+            return allowAuthenticateViaWarp(Output.of(allowAuthenticateViaWarp));
         }
 
         /**
@@ -420,6 +479,29 @@ public final class AccessOrganizationState extends com.pulumi.resources.Resource
          */
         public Builder userSeatExpirationInactiveTime(String userSeatExpirationInactiveTime) {
             return userSeatExpirationInactiveTime(Output.of(userSeatExpirationInactiveTime));
+        }
+
+        /**
+         * @param warpAuthSessionDuration The amount of time that tokens issued for applications will be valid. Must be in the format 30m or 2h45m. Valid time
+         * units are: m, h.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder warpAuthSessionDuration(@Nullable Output<String> warpAuthSessionDuration) {
+            $.warpAuthSessionDuration = warpAuthSessionDuration;
+            return this;
+        }
+
+        /**
+         * @param warpAuthSessionDuration The amount of time that tokens issued for applications will be valid. Must be in the format 30m or 2h45m. Valid time
+         * units are: m, h.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder warpAuthSessionDuration(String warpAuthSessionDuration) {
+            return warpAuthSessionDuration(Output.of(warpAuthSessionDuration));
         }
 
         /**
