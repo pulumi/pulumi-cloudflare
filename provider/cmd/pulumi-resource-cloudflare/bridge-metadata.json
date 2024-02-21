@@ -46,6 +46,15 @@
                                             }
                                         }
                                     }
+                                },
+                                "grant_types": {
+                                    "maxItemsOne": false
+                                },
+                                "redirect_uris": {
+                                    "maxItemsOne": false
+                                },
+                                "scopes": {
+                                    "maxItemsOne": false
                                 }
                             }
                         }
@@ -1909,12 +1918,22 @@
                 "majorVersion": 5,
                 "fields": {
                     "antivirus": {
-                        "maxItemsOne": true
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "notification_settings": {
+                                    "maxItemsOne": true
+                                }
+                            }
+                        }
                     },
                     "block_page": {
                         "maxItemsOne": true
                     },
                     "body_scanning": {
+                        "maxItemsOne": true
+                    },
+                    "extended_email_matching": {
                         "maxItemsOne": true
                     },
                     "fips": {
@@ -3084,12 +3103,19 @@
                 "imageUrl": "image_url"
             },
             "cloudflare:index/AccessApplicationSaasApp:AccessApplicationSaasApp": {
+                "appLauncherUrl": "app_launcher_url",
+                "authType": "auth_type",
+                "clientId": "client_id",
+                "clientSecret": "client_secret",
                 "consumerServiceUrl": "consumer_service_url",
                 "customAttributes": "custom_attribute",
                 "defaultRelayState": "default_relay_state",
+                "grantTypes": "grant_types",
+                "groupFilterRegex": "group_filter_regex",
                 "idpEntityId": "idp_entity_id",
                 "nameIdFormat": "name_id_format",
                 "publicKey": "public_key",
+                "redirectUris": "redirect_uris",
                 "spEntityId": "sp_entity_id",
                 "ssoEndpoint": "sso_endpoint"
             },
@@ -3717,6 +3743,7 @@
                 "statusCode": "status_code"
             },
             "cloudflare:index/PagesProjectBuildConfig:PagesProjectBuildConfig": {
+                "buildCaching": "build_caching",
                 "buildCommand": "build_command",
                 "destinationDir": "destination_dir",
                 "rootDir": "root_dir",
@@ -3890,7 +3917,11 @@
             "cloudflare:index/TeamsAccountAntivirus:TeamsAccountAntivirus": {
                 "enabledDownloadPhase": "enabled_download_phase",
                 "enabledUploadPhase": "enabled_upload_phase",
-                "failClosed": "fail_closed"
+                "failClosed": "fail_closed",
+                "notificationSettings": "notification_settings"
+            },
+            "cloudflare:index/TeamsAccountAntivirusNotificationSettings:TeamsAccountAntivirusNotificationSettings": {
+                "supportUrl": "support_url"
             },
             "cloudflare:index/TeamsAccountBlockPage:TeamsAccountBlockPage": {
                 "backgroundColor": "background_color",
@@ -4132,6 +4163,7 @@
             },
             "cloudflare:index/accessApplication:AccessApplication": {
                 "accountId": "account_id",
+                "allowAuthenticateViaWarp": "allow_authenticate_via_warp",
                 "allowedIdps": "allowed_idps",
                 "appLauncherLogoUrl": "app_launcher_logo_url",
                 "appLauncherVisible": "app_launcher_visible",
@@ -4192,6 +4224,7 @@
             },
             "cloudflare:index/accessOrganization:AccessOrganization": {
                 "accountId": "account_id",
+                "allowAuthenticateViaWarp": "allow_authenticate_via_warp",
                 "authDomain": "auth_domain",
                 "autoRedirectToIdentity": "auto_redirect_to_identity",
                 "customPages": "custom_pages",
@@ -4200,6 +4233,7 @@
                 "sessionDuration": "session_duration",
                 "uiReadOnlyToggleReason": "ui_read_only_toggle_reason",
                 "userSeatExpirationInactiveTime": "user_seat_expiration_inactive_time",
+                "warpAuthSessionDuration": "warp_auth_session_duration",
                 "zoneId": "zone_id"
             },
             "cloudflare:index/accessPolicy:AccessPolicy": {
@@ -4850,6 +4884,7 @@
                 "activityLogEnabled": "activity_log_enabled",
                 "blockPage": "block_page",
                 "bodyScanning": "body_scanning",
+                "extendedEmailMatching": "extended_email_matching",
                 "nonIdentityBrowserIsolationEnabled": "non_identity_browser_isolation_enabled",
                 "payloadLog": "payload_log",
                 "protocolDetectionEnabled": "protocol_detection_enabled",
