@@ -198,8 +198,10 @@ __all__ = [
     'SpectrumApplicationOriginPortRange',
     'SplitTunnelTunnel',
     'TeamsAccountAntivirus',
+    'TeamsAccountAntivirusNotificationSettings',
     'TeamsAccountBlockPage',
     'TeamsAccountBodyScanning',
+    'TeamsAccountExtendedEmailMatching',
     'TeamsAccountFips',
     'TeamsAccountLogging',
     'TeamsAccountLoggingSettingsByRuleType',
@@ -556,20 +558,34 @@ class AccessApplicationSaasApp(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "consumerServiceUrl":
+        if key == "appLauncherUrl":
+            suggest = "app_launcher_url"
+        elif key == "authType":
+            suggest = "auth_type"
+        elif key == "clientId":
+            suggest = "client_id"
+        elif key == "clientSecret":
+            suggest = "client_secret"
+        elif key == "consumerServiceUrl":
             suggest = "consumer_service_url"
-        elif key == "spEntityId":
-            suggest = "sp_entity_id"
         elif key == "customAttributes":
             suggest = "custom_attributes"
         elif key == "defaultRelayState":
             suggest = "default_relay_state"
+        elif key == "grantTypes":
+            suggest = "grant_types"
+        elif key == "groupFilterRegex":
+            suggest = "group_filter_regex"
         elif key == "idpEntityId":
             suggest = "idp_entity_id"
         elif key == "nameIdFormat":
             suggest = "name_id_format"
         elif key == "publicKey":
             suggest = "public_key"
+        elif key == "redirectUris":
+            suggest = "redirect_uris"
+        elif key == "spEntityId":
+            suggest = "sp_entity_id"
         elif key == "ssoEndpoint":
             suggest = "sso_endpoint"
 
@@ -585,54 +601,108 @@ class AccessApplicationSaasApp(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 consumer_service_url: str,
-                 sp_entity_id: str,
+                 app_launcher_url: Optional[str] = None,
+                 auth_type: Optional[str] = None,
+                 client_id: Optional[str] = None,
+                 client_secret: Optional[str] = None,
+                 consumer_service_url: Optional[str] = None,
                  custom_attributes: Optional[Sequence['outputs.AccessApplicationSaasAppCustomAttribute']] = None,
                  default_relay_state: Optional[str] = None,
+                 grant_types: Optional[Sequence[str]] = None,
+                 group_filter_regex: Optional[str] = None,
                  idp_entity_id: Optional[str] = None,
                  name_id_format: Optional[str] = None,
                  public_key: Optional[str] = None,
+                 redirect_uris: Optional[Sequence[str]] = None,
+                 scopes: Optional[Sequence[str]] = None,
+                 sp_entity_id: Optional[str] = None,
                  sso_endpoint: Optional[str] = None):
         """
+        :param str app_launcher_url: The URL where this applications tile redirects users
+        :param str client_id: The application client id
+        :param str client_secret: The application client secret, only returned on initial apply
         :param str consumer_service_url: The service provider's endpoint that is responsible for receiving and parsing a SAML assertion.
-        :param str sp_entity_id: A globally unique name for an identity or service provider.
         :param Sequence['AccessApplicationSaasAppCustomAttributeArgs'] custom_attributes: Custom attribute mapped from IDPs.
         :param str default_relay_state: The relay state used if not provided by the identity provider.
+        :param Sequence[str] grant_types: The OIDC flows supported by this application
+        :param str group_filter_regex: A regex to filter Cloudflare groups returned in ID token and userinfo endpoint
         :param str idp_entity_id: The unique identifier for the SaaS application.
         :param str name_id_format: The format of the name identifier sent to the SaaS application. Defaults to `email`.
         :param str public_key: The public certificate that will be used to verify identities.
+        :param Sequence[str] redirect_uris: The permitted URL's for Cloudflare to return Authorization codes and Access/ID tokens
+        :param Sequence[str] scopes: Define the user information shared with access
+        :param str sp_entity_id: A globally unique name for an identity or service provider.
         :param str sso_endpoint: The endpoint where the SaaS application will send login requests.
         """
-        pulumi.set(__self__, "consumer_service_url", consumer_service_url)
-        pulumi.set(__self__, "sp_entity_id", sp_entity_id)
+        if app_launcher_url is not None:
+            pulumi.set(__self__, "app_launcher_url", app_launcher_url)
+        if auth_type is not None:
+            pulumi.set(__self__, "auth_type", auth_type)
+        if client_id is not None:
+            pulumi.set(__self__, "client_id", client_id)
+        if client_secret is not None:
+            pulumi.set(__self__, "client_secret", client_secret)
+        if consumer_service_url is not None:
+            pulumi.set(__self__, "consumer_service_url", consumer_service_url)
         if custom_attributes is not None:
             pulumi.set(__self__, "custom_attributes", custom_attributes)
         if default_relay_state is not None:
             pulumi.set(__self__, "default_relay_state", default_relay_state)
+        if grant_types is not None:
+            pulumi.set(__self__, "grant_types", grant_types)
+        if group_filter_regex is not None:
+            pulumi.set(__self__, "group_filter_regex", group_filter_regex)
         if idp_entity_id is not None:
             pulumi.set(__self__, "idp_entity_id", idp_entity_id)
         if name_id_format is not None:
             pulumi.set(__self__, "name_id_format", name_id_format)
         if public_key is not None:
             pulumi.set(__self__, "public_key", public_key)
+        if redirect_uris is not None:
+            pulumi.set(__self__, "redirect_uris", redirect_uris)
+        if scopes is not None:
+            pulumi.set(__self__, "scopes", scopes)
+        if sp_entity_id is not None:
+            pulumi.set(__self__, "sp_entity_id", sp_entity_id)
         if sso_endpoint is not None:
             pulumi.set(__self__, "sso_endpoint", sso_endpoint)
 
     @property
+    @pulumi.getter(name="appLauncherUrl")
+    def app_launcher_url(self) -> Optional[str]:
+        """
+        The URL where this applications tile redirects users
+        """
+        return pulumi.get(self, "app_launcher_url")
+
+    @property
+    @pulumi.getter(name="authType")
+    def auth_type(self) -> Optional[str]:
+        return pulumi.get(self, "auth_type")
+
+    @property
+    @pulumi.getter(name="clientId")
+    def client_id(self) -> Optional[str]:
+        """
+        The application client id
+        """
+        return pulumi.get(self, "client_id")
+
+    @property
+    @pulumi.getter(name="clientSecret")
+    def client_secret(self) -> Optional[str]:
+        """
+        The application client secret, only returned on initial apply
+        """
+        return pulumi.get(self, "client_secret")
+
+    @property
     @pulumi.getter(name="consumerServiceUrl")
-    def consumer_service_url(self) -> str:
+    def consumer_service_url(self) -> Optional[str]:
         """
         The service provider's endpoint that is responsible for receiving and parsing a SAML assertion.
         """
         return pulumi.get(self, "consumer_service_url")
-
-    @property
-    @pulumi.getter(name="spEntityId")
-    def sp_entity_id(self) -> str:
-        """
-        A globally unique name for an identity or service provider.
-        """
-        return pulumi.get(self, "sp_entity_id")
 
     @property
     @pulumi.getter(name="customAttributes")
@@ -649,6 +719,22 @@ class AccessApplicationSaasApp(dict):
         The relay state used if not provided by the identity provider.
         """
         return pulumi.get(self, "default_relay_state")
+
+    @property
+    @pulumi.getter(name="grantTypes")
+    def grant_types(self) -> Optional[Sequence[str]]:
+        """
+        The OIDC flows supported by this application
+        """
+        return pulumi.get(self, "grant_types")
+
+    @property
+    @pulumi.getter(name="groupFilterRegex")
+    def group_filter_regex(self) -> Optional[str]:
+        """
+        A regex to filter Cloudflare groups returned in ID token and userinfo endpoint
+        """
+        return pulumi.get(self, "group_filter_regex")
 
     @property
     @pulumi.getter(name="idpEntityId")
@@ -673,6 +759,30 @@ class AccessApplicationSaasApp(dict):
         The public certificate that will be used to verify identities.
         """
         return pulumi.get(self, "public_key")
+
+    @property
+    @pulumi.getter(name="redirectUris")
+    def redirect_uris(self) -> Optional[Sequence[str]]:
+        """
+        The permitted URL's for Cloudflare to return Authorization codes and Access/ID tokens
+        """
+        return pulumi.get(self, "redirect_uris")
+
+    @property
+    @pulumi.getter
+    def scopes(self) -> Optional[Sequence[str]]:
+        """
+        Define the user information shared with access
+        """
+        return pulumi.get(self, "scopes")
+
+    @property
+    @pulumi.getter(name="spEntityId")
+    def sp_entity_id(self) -> Optional[str]:
+        """
+        A globally unique name for an identity or service provider.
+        """
+        return pulumi.get(self, "sp_entity_id")
 
     @property
     @pulumi.getter(name="ssoEndpoint")
@@ -9791,7 +9901,9 @@ class PagesProjectBuildConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "buildCommand":
+        if key == "buildCaching":
+            suggest = "build_caching"
+        elif key == "buildCommand":
             suggest = "build_command"
         elif key == "destinationDir":
             suggest = "destination_dir"
@@ -9814,18 +9926,22 @@ class PagesProjectBuildConfig(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 build_caching: Optional[bool] = None,
                  build_command: Optional[str] = None,
                  destination_dir: Optional[str] = None,
                  root_dir: Optional[str] = None,
                  web_analytics_tag: Optional[str] = None,
                  web_analytics_token: Optional[str] = None):
         """
+        :param bool build_caching: Enable build caching for the project.
         :param str build_command: Command used to build project.
         :param str destination_dir: Output directory of the build.
         :param str root_dir: Your project's root directory, where Cloudflare runs the build command. If your site is not in a subdirectory, leave this path value empty.
         :param str web_analytics_tag: The classifying tag for analytics.
         :param str web_analytics_token: The auth token for analytics.
         """
+        if build_caching is not None:
+            pulumi.set(__self__, "build_caching", build_caching)
         if build_command is not None:
             pulumi.set(__self__, "build_command", build_command)
         if destination_dir is not None:
@@ -9836,6 +9952,14 @@ class PagesProjectBuildConfig(dict):
             pulumi.set(__self__, "web_analytics_tag", web_analytics_tag)
         if web_analytics_token is not None:
             pulumi.set(__self__, "web_analytics_token", web_analytics_token)
+
+    @property
+    @pulumi.getter(name="buildCaching")
+    def build_caching(self) -> Optional[bool]:
+        """
+        Enable build caching for the project.
+        """
+        return pulumi.get(self, "build_caching")
 
     @property
     @pulumi.getter(name="buildCommand")
@@ -13776,6 +13900,8 @@ class TeamsAccountAntivirus(dict):
             suggest = "enabled_upload_phase"
         elif key == "failClosed":
             suggest = "fail_closed"
+        elif key == "notificationSettings":
+            suggest = "notification_settings"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in TeamsAccountAntivirus. Access the value via the '{suggest}' property getter instead.")
@@ -13791,15 +13917,19 @@ class TeamsAccountAntivirus(dict):
     def __init__(__self__, *,
                  enabled_download_phase: bool,
                  enabled_upload_phase: bool,
-                 fail_closed: bool):
+                 fail_closed: bool,
+                 notification_settings: Optional['outputs.TeamsAccountAntivirusNotificationSettings'] = None):
         """
         :param bool enabled_download_phase: Scan on file download.
         :param bool enabled_upload_phase: Scan on file upload.
         :param bool fail_closed: Block requests for files that cannot be scanned.
+        :param 'TeamsAccountAntivirusNotificationSettingsArgs' notification_settings: Set notifications for antivirus.
         """
         pulumi.set(__self__, "enabled_download_phase", enabled_download_phase)
         pulumi.set(__self__, "enabled_upload_phase", enabled_upload_phase)
         pulumi.set(__self__, "fail_closed", fail_closed)
+        if notification_settings is not None:
+            pulumi.set(__self__, "notification_settings", notification_settings)
 
     @property
     @pulumi.getter(name="enabledDownloadPhase")
@@ -13824,6 +13954,74 @@ class TeamsAccountAntivirus(dict):
         Block requests for files that cannot be scanned.
         """
         return pulumi.get(self, "fail_closed")
+
+    @property
+    @pulumi.getter(name="notificationSettings")
+    def notification_settings(self) -> Optional['outputs.TeamsAccountAntivirusNotificationSettings']:
+        """
+        Set notifications for antivirus.
+        """
+        return pulumi.get(self, "notification_settings")
+
+
+@pulumi.output_type
+class TeamsAccountAntivirusNotificationSettings(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "supportUrl":
+            suggest = "support_url"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in TeamsAccountAntivirusNotificationSettings. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        TeamsAccountAntivirusNotificationSettings.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        TeamsAccountAntivirusNotificationSettings.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 enabled: Optional[bool] = None,
+                 message: Optional[str] = None,
+                 support_url: Optional[str] = None):
+        """
+        :param bool enabled: Enable notification settings.
+        :param str message: Notification content.
+        :param str support_url: Support URL to show in the notification.
+        """
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if message is not None:
+            pulumi.set(__self__, "message", message)
+        if support_url is not None:
+            pulumi.set(__self__, "support_url", support_url)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[bool]:
+        """
+        Enable notification settings.
+        """
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter
+    def message(self) -> Optional[str]:
+        """
+        Notification content.
+        """
+        return pulumi.get(self, "message")
+
+    @property
+    @pulumi.getter(name="supportUrl")
+    def support_url(self) -> Optional[str]:
+        """
+        Support URL to show in the notification.
+        """
+        return pulumi.get(self, "support_url")
 
 
 @pulumi.output_type
@@ -13989,6 +14187,24 @@ class TeamsAccountBodyScanning(dict):
         Body scanning inspection mode. Available values: `deep`, `shallow`.
         """
         return pulumi.get(self, "inspection_mode")
+
+
+@pulumi.output_type
+class TeamsAccountExtendedEmailMatching(dict):
+    def __init__(__self__, *,
+                 enabled: bool):
+        """
+        :param bool enabled: Whether e-mails should be matched on all variants of user emails (with + or . modifiers) in Firewall policies.
+        """
+        pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> bool:
+        """
+        Whether e-mails should be matched on all variants of user emails (with + or . modifiers) in Firewall policies.
+        """
+        return pulumi.get(self, "enabled")
 
 
 @pulumi.output_type

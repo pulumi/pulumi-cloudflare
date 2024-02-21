@@ -31,6 +31,12 @@ namespace Pulumi.Cloudflare
     ///             EnabledDownloadPhase = true,
     ///             EnabledUploadPhase = false,
     ///             FailClosed = true,
+    ///             NotificationSettings = new Cloudflare.Inputs.TeamsAccountAntivirusNotificationSettingsArgs
+    ///             {
+    ///                 Enabled = true,
+    ///                 Message = "you are blocked",
+    ///                 SupportUrl = "https://example.com/blocked",
+    ///             },
     ///         },
     ///         BlockPage = new Cloudflare.Inputs.TeamsAccountBlockPageArgs
     ///         {
@@ -42,6 +48,10 @@ namespace Pulumi.Cloudflare
     ///         BodyScanning = new Cloudflare.Inputs.TeamsAccountBodyScanningArgs
     ///         {
     ///             InspectionMode = "deep",
+    ///         },
+    ///         ExtendedEmailMatching = new Cloudflare.Inputs.TeamsAccountExtendedEmailMatchingArgs
+    ///         {
+    ///             Enabled = true,
     ///         },
     ///         Fips = new Cloudflare.Inputs.TeamsAccountFipsArgs
     ///         {
@@ -121,6 +131,12 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Output("bodyScanning")]
         public Output<Outputs.TeamsAccountBodyScanning?> BodyScanning { get; private set; } = null!;
+
+        /// <summary>
+        /// Configuration for extended e-mail matching.
+        /// </summary>
+        [Output("extendedEmailMatching")]
+        public Output<Outputs.TeamsAccountExtendedEmailMatching?> ExtendedEmailMatching { get; private set; } = null!;
 
         /// <summary>
         /// Configure compliance with Federal Information Processing Standards.
@@ -250,6 +266,12 @@ namespace Pulumi.Cloudflare
         public Input<Inputs.TeamsAccountBodyScanningArgs>? BodyScanning { get; set; }
 
         /// <summary>
+        /// Configuration for extended e-mail matching.
+        /// </summary>
+        [Input("extendedEmailMatching")]
+        public Input<Inputs.TeamsAccountExtendedEmailMatchingArgs>? ExtendedEmailMatching { get; set; }
+
+        /// <summary>
         /// Configure compliance with Federal Information Processing Standards.
         /// </summary>
         [Input("fips")]
@@ -337,6 +359,12 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("bodyScanning")]
         public Input<Inputs.TeamsAccountBodyScanningGetArgs>? BodyScanning { get; set; }
+
+        /// <summary>
+        /// Configuration for extended e-mail matching.
+        /// </summary>
+        [Input("extendedEmailMatching")]
+        public Input<Inputs.TeamsAccountExtendedEmailMatchingGetArgs>? ExtendedEmailMatching { get; set; }
 
         /// <summary>
         /// Configure compliance with Federal Information Processing Standards.

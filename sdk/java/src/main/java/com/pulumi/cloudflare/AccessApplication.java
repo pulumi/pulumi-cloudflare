@@ -99,6 +99,24 @@ public class AccessApplication extends com.pulumi.resources.CustomResource {
         return this.accountId;
     }
     /**
+     * When set to true, users can authenticate to this application using their WARP session. When set to false this
+     * application will always require direct IdP authentication. This setting always overrides the organization setting for
+     * WARP authentication.
+     * 
+     */
+    @Export(name="allowAuthenticateViaWarp", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> allowAuthenticateViaWarp;
+
+    /**
+     * @return When set to true, users can authenticate to this application using their WARP session. When set to false this
+     * application will always require direct IdP authentication. This setting always overrides the organization setting for
+     * WARP authentication.
+     * 
+     */
+    public Output<Optional<Boolean>> allowAuthenticateViaWarp() {
+        return Codegen.optional(this.allowAuthenticateViaWarp);
+    }
+    /**
      * The identity providers selected for the application.
      * 
      */

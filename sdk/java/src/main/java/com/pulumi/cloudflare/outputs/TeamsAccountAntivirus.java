@@ -3,10 +3,13 @@
 
 package com.pulumi.cloudflare.outputs;
 
+import com.pulumi.cloudflare.outputs.TeamsAccountAntivirusNotificationSettings;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class TeamsAccountAntivirus {
@@ -25,6 +28,11 @@ public final class TeamsAccountAntivirus {
      * 
      */
     private Boolean failClosed;
+    /**
+     * @return Set notifications for antivirus.
+     * 
+     */
+    private @Nullable TeamsAccountAntivirusNotificationSettings notificationSettings;
 
     private TeamsAccountAntivirus() {}
     /**
@@ -48,6 +56,13 @@ public final class TeamsAccountAntivirus {
     public Boolean failClosed() {
         return this.failClosed;
     }
+    /**
+     * @return Set notifications for antivirus.
+     * 
+     */
+    public Optional<TeamsAccountAntivirusNotificationSettings> notificationSettings() {
+        return Optional.ofNullable(this.notificationSettings);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -61,12 +76,14 @@ public final class TeamsAccountAntivirus {
         private Boolean enabledDownloadPhase;
         private Boolean enabledUploadPhase;
         private Boolean failClosed;
+        private @Nullable TeamsAccountAntivirusNotificationSettings notificationSettings;
         public Builder() {}
         public Builder(TeamsAccountAntivirus defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.enabledDownloadPhase = defaults.enabledDownloadPhase;
     	      this.enabledUploadPhase = defaults.enabledUploadPhase;
     	      this.failClosed = defaults.failClosed;
+    	      this.notificationSettings = defaults.notificationSettings;
         }
 
         @CustomType.Setter
@@ -93,11 +110,18 @@ public final class TeamsAccountAntivirus {
             this.failClosed = failClosed;
             return this;
         }
+        @CustomType.Setter
+        public Builder notificationSettings(@Nullable TeamsAccountAntivirusNotificationSettings notificationSettings) {
+
+            this.notificationSettings = notificationSettings;
+            return this;
+        }
         public TeamsAccountAntivirus build() {
             final var _resultValue = new TeamsAccountAntivirus();
             _resultValue.enabledDownloadPhase = enabledDownloadPhase;
             _resultValue.enabledUploadPhase = enabledUploadPhase;
             _resultValue.failClosed = failClosed;
+            _resultValue.notificationSettings = notificationSettings;
             return _resultValue;
         }
     }

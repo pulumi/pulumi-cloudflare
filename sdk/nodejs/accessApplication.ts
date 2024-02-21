@@ -82,6 +82,12 @@ export class AccessApplication extends pulumi.CustomResource {
      */
     public readonly accountId!: pulumi.Output<string>;
     /**
+     * When set to true, users can authenticate to this application using their WARP session. When set to false this
+     * application will always require direct IdP authentication. This setting always overrides the organization setting for
+     * WARP authentication.
+     */
+    public readonly allowAuthenticateViaWarp!: pulumi.Output<boolean | undefined>;
+    /**
      * The identity providers selected for the application.
      */
     public readonly allowedIdps!: pulumi.Output<string[] | undefined>;
@@ -208,6 +214,7 @@ export class AccessApplication extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as AccessApplicationState | undefined;
             resourceInputs["accountId"] = state ? state.accountId : undefined;
+            resourceInputs["allowAuthenticateViaWarp"] = state ? state.allowAuthenticateViaWarp : undefined;
             resourceInputs["allowedIdps"] = state ? state.allowedIdps : undefined;
             resourceInputs["appLauncherLogoUrl"] = state ? state.appLauncherLogoUrl : undefined;
             resourceInputs["appLauncherVisible"] = state ? state.appLauncherVisible : undefined;
@@ -239,6 +246,7 @@ export class AccessApplication extends pulumi.CustomResource {
         } else {
             const args = argsOrState as AccessApplicationArgs | undefined;
             resourceInputs["accountId"] = args ? args.accountId : undefined;
+            resourceInputs["allowAuthenticateViaWarp"] = args ? args.allowAuthenticateViaWarp : undefined;
             resourceInputs["allowedIdps"] = args ? args.allowedIdps : undefined;
             resourceInputs["appLauncherLogoUrl"] = args ? args.appLauncherLogoUrl : undefined;
             resourceInputs["appLauncherVisible"] = args ? args.appLauncherVisible : undefined;
@@ -281,6 +289,12 @@ export interface AccessApplicationState {
      * The account identifier to target for the resource. Conflicts with `zoneId`.
      */
     accountId?: pulumi.Input<string>;
+    /**
+     * When set to true, users can authenticate to this application using their WARP session. When set to false this
+     * application will always require direct IdP authentication. This setting always overrides the organization setting for
+     * WARP authentication.
+     */
+    allowAuthenticateViaWarp?: pulumi.Input<boolean>;
     /**
      * The identity providers selected for the application.
      */
@@ -403,6 +417,12 @@ export interface AccessApplicationArgs {
      * The account identifier to target for the resource. Conflicts with `zoneId`.
      */
     accountId?: pulumi.Input<string>;
+    /**
+     * When set to true, users can authenticate to this application using their WARP session. When set to false this
+     * application will always require direct IdP authentication. This setting always overrides the organization setting for
+     * WARP authentication.
+     */
+    allowAuthenticateViaWarp?: pulumi.Input<boolean>;
     /**
      * The identity providers selected for the application.
      */

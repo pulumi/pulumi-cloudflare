@@ -4,6 +4,7 @@
 package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -11,6 +12,11 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class PagesProjectBuildConfig {
+    /**
+     * @return Enable build caching for the project.
+     * 
+     */
+    private @Nullable Boolean buildCaching;
     /**
      * @return Command used to build project.
      * 
@@ -38,6 +44,13 @@ public final class PagesProjectBuildConfig {
     private @Nullable String webAnalyticsToken;
 
     private PagesProjectBuildConfig() {}
+    /**
+     * @return Enable build caching for the project.
+     * 
+     */
+    public Optional<Boolean> buildCaching() {
+        return Optional.ofNullable(this.buildCaching);
+    }
     /**
      * @return Command used to build project.
      * 
@@ -83,6 +96,7 @@ public final class PagesProjectBuildConfig {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable Boolean buildCaching;
         private @Nullable String buildCommand;
         private @Nullable String destinationDir;
         private @Nullable String rootDir;
@@ -91,6 +105,7 @@ public final class PagesProjectBuildConfig {
         public Builder() {}
         public Builder(PagesProjectBuildConfig defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.buildCaching = defaults.buildCaching;
     	      this.buildCommand = defaults.buildCommand;
     	      this.destinationDir = defaults.destinationDir;
     	      this.rootDir = defaults.rootDir;
@@ -98,6 +113,12 @@ public final class PagesProjectBuildConfig {
     	      this.webAnalyticsToken = defaults.webAnalyticsToken;
         }
 
+        @CustomType.Setter
+        public Builder buildCaching(@Nullable Boolean buildCaching) {
+
+            this.buildCaching = buildCaching;
+            return this;
+        }
         @CustomType.Setter
         public Builder buildCommand(@Nullable String buildCommand) {
 
@@ -130,6 +151,7 @@ public final class PagesProjectBuildConfig {
         }
         public PagesProjectBuildConfig build() {
             final var _resultValue = new PagesProjectBuildConfig();
+            _resultValue.buildCaching = buildCaching;
             _resultValue.buildCommand = buildCommand;
             _resultValue.destinationDir = destinationDir;
             _resultValue.rootDir = rootDir;

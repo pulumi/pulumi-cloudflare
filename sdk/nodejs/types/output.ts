@@ -76,9 +76,22 @@ export interface AccessApplicationLandingPageDesign {
 
 export interface AccessApplicationSaasApp {
     /**
+     * The URL where this applications tile redirects users
+     */
+    appLauncherUrl?: string;
+    authType?: string;
+    /**
+     * The application client id
+     */
+    clientId: string;
+    /**
+     * The application client secret, only returned on initial apply
+     */
+    clientSecret: string;
+    /**
      * The service provider's endpoint that is responsible for receiving and parsing a SAML assertion.
      */
-    consumerServiceUrl: string;
+    consumerServiceUrl?: string;
     /**
      * Custom attribute mapped from IDPs.
      */
@@ -87,6 +100,14 @@ export interface AccessApplicationSaasApp {
      * The relay state used if not provided by the identity provider.
      */
     defaultRelayState?: string;
+    /**
+     * The OIDC flows supported by this application
+     */
+    grantTypes: string[];
+    /**
+     * A regex to filter Cloudflare groups returned in ID token and userinfo endpoint
+     */
+    groupFilterRegex?: string;
     /**
      * The unique identifier for the SaaS application.
      */
@@ -100,9 +121,17 @@ export interface AccessApplicationSaasApp {
      */
     publicKey: string;
     /**
+     * The permitted URL's for Cloudflare to return Authorization codes and Access/ID tokens
+     */
+    redirectUris?: string[];
+    /**
+     * Define the user information shared with access
+     */
+    scopes: string[];
+    /**
      * A globally unique name for an identity or service provider.
      */
-    spEntityId: string;
+    spEntityId?: string;
     /**
      * The endpoint where the SaaS application will send login requests.
      */
@@ -3277,6 +3306,10 @@ export interface PageRuleActionsMinify {
 
 export interface PagesProjectBuildConfig {
     /**
+     * Enable build caching for the project.
+     */
+    buildCaching?: boolean;
+    /**
      * Command used to build project.
      */
     buildCommand?: string;
@@ -4385,6 +4418,25 @@ export interface TeamsAccountAntivirus {
      * Block requests for files that cannot be scanned.
      */
     failClosed: boolean;
+    /**
+     * Set notifications for antivirus.
+     */
+    notificationSettings?: outputs.TeamsAccountAntivirusNotificationSettings;
+}
+
+export interface TeamsAccountAntivirusNotificationSettings {
+    /**
+     * Enable notification settings.
+     */
+    enabled?: boolean;
+    /**
+     * Notification content.
+     */
+    message?: string;
+    /**
+     * Support URL to show in the notification.
+     */
+    supportUrl?: string;
 }
 
 export interface TeamsAccountBlockPage {
@@ -4427,6 +4479,13 @@ export interface TeamsAccountBodyScanning {
      * Body scanning inspection mode. Available values: `deep`, `shallow`.
      */
     inspectionMode: string;
+}
+
+export interface TeamsAccountExtendedEmailMatching {
+    /**
+     * Whether e-mails should be matched on all variants of user emails (with + or . modifiers) in Firewall policies.
+     */
+    enabled: boolean;
 }
 
 export interface TeamsAccountFips {

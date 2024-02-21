@@ -3,11 +3,14 @@
 
 package com.pulumi.cloudflare.inputs;
 
+import com.pulumi.cloudflare.inputs.TeamsAccountAntivirusNotificationSettingsArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class TeamsAccountAntivirusArgs extends com.pulumi.resources.ResourceArgs {
@@ -59,12 +62,28 @@ public final class TeamsAccountAntivirusArgs extends com.pulumi.resources.Resour
         return this.failClosed;
     }
 
+    /**
+     * Set notifications for antivirus.
+     * 
+     */
+    @Import(name="notificationSettings")
+    private @Nullable Output<TeamsAccountAntivirusNotificationSettingsArgs> notificationSettings;
+
+    /**
+     * @return Set notifications for antivirus.
+     * 
+     */
+    public Optional<Output<TeamsAccountAntivirusNotificationSettingsArgs>> notificationSettings() {
+        return Optional.ofNullable(this.notificationSettings);
+    }
+
     private TeamsAccountAntivirusArgs() {}
 
     private TeamsAccountAntivirusArgs(TeamsAccountAntivirusArgs $) {
         this.enabledDownloadPhase = $.enabledDownloadPhase;
         this.enabledUploadPhase = $.enabledUploadPhase;
         this.failClosed = $.failClosed;
+        this.notificationSettings = $.notificationSettings;
     }
 
     public static Builder builder() {
@@ -146,6 +165,27 @@ public final class TeamsAccountAntivirusArgs extends com.pulumi.resources.Resour
          */
         public Builder failClosed(Boolean failClosed) {
             return failClosed(Output.of(failClosed));
+        }
+
+        /**
+         * @param notificationSettings Set notifications for antivirus.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder notificationSettings(@Nullable Output<TeamsAccountAntivirusNotificationSettingsArgs> notificationSettings) {
+            $.notificationSettings = notificationSettings;
+            return this;
+        }
+
+        /**
+         * @param notificationSettings Set notifications for antivirus.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder notificationSettings(TeamsAccountAntivirusNotificationSettingsArgs notificationSettings) {
+            return notificationSettings(Output.of(notificationSettings));
         }
 
         public TeamsAccountAntivirusArgs build() {

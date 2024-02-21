@@ -9,6 +9,7 @@ import com.pulumi.cloudflare.inputs.TeamsAccountState;
 import com.pulumi.cloudflare.outputs.TeamsAccountAntivirus;
 import com.pulumi.cloudflare.outputs.TeamsAccountBlockPage;
 import com.pulumi.cloudflare.outputs.TeamsAccountBodyScanning;
+import com.pulumi.cloudflare.outputs.TeamsAccountExtendedEmailMatching;
 import com.pulumi.cloudflare.outputs.TeamsAccountFips;
 import com.pulumi.cloudflare.outputs.TeamsAccountLogging;
 import com.pulumi.cloudflare.outputs.TeamsAccountPayloadLog;
@@ -37,8 +38,10 @@ import javax.annotation.Nullable;
  * import com.pulumi.cloudflare.TeamsAccount;
  * import com.pulumi.cloudflare.TeamsAccountArgs;
  * import com.pulumi.cloudflare.inputs.TeamsAccountAntivirusArgs;
+ * import com.pulumi.cloudflare.inputs.TeamsAccountAntivirusNotificationSettingsArgs;
  * import com.pulumi.cloudflare.inputs.TeamsAccountBlockPageArgs;
  * import com.pulumi.cloudflare.inputs.TeamsAccountBodyScanningArgs;
+ * import com.pulumi.cloudflare.inputs.TeamsAccountExtendedEmailMatchingArgs;
  * import com.pulumi.cloudflare.inputs.TeamsAccountFipsArgs;
  * import com.pulumi.cloudflare.inputs.TeamsAccountLoggingArgs;
  * import com.pulumi.cloudflare.inputs.TeamsAccountLoggingSettingsByRuleTypeArgs;
@@ -65,6 +68,11 @@ import javax.annotation.Nullable;
  *                 .enabledDownloadPhase(true)
  *                 .enabledUploadPhase(false)
  *                 .failClosed(true)
+ *                 .notificationSettings(TeamsAccountAntivirusNotificationSettingsArgs.builder()
+ *                     .enabled(true)
+ *                     .message(&#34;you are blocked&#34;)
+ *                     .supportUrl(&#34;https://example.com/blocked&#34;)
+ *                     .build())
  *                 .build())
  *             .blockPage(TeamsAccountBlockPageArgs.builder()
  *                 .backgroundColor(&#34;#000000&#34;)
@@ -74,6 +82,9 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .bodyScanning(TeamsAccountBodyScanningArgs.builder()
  *                 .inspectionMode(&#34;deep&#34;)
+ *                 .build())
+ *             .extendedEmailMatching(TeamsAccountExtendedEmailMatchingArgs.builder()
+ *                 .enabled(true)
  *                 .build())
  *             .fips(TeamsAccountFipsArgs.builder()
  *                 .tls(true)
@@ -187,6 +198,20 @@ public class TeamsAccount extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<TeamsAccountBodyScanning>> bodyScanning() {
         return Codegen.optional(this.bodyScanning);
+    }
+    /**
+     * Configuration for extended e-mail matching.
+     * 
+     */
+    @Export(name="extendedEmailMatching", refs={TeamsAccountExtendedEmailMatching.class}, tree="[0]")
+    private Output</* @Nullable */ TeamsAccountExtendedEmailMatching> extendedEmailMatching;
+
+    /**
+     * @return Configuration for extended e-mail matching.
+     * 
+     */
+    public Output<Optional<TeamsAccountExtendedEmailMatching>> extendedEmailMatching() {
+        return Codegen.optional(this.extendedEmailMatching);
     }
     /**
      * Configure compliance with Federal Information Processing Standards.

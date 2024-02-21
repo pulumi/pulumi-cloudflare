@@ -62,6 +62,13 @@ namespace Pulumi.Cloudflare
         public Output<string> AccountId { get; private set; } = null!;
 
         /// <summary>
+        /// When set to true, users can authenticate via WARP for any application in your organization. Application settings will
+        /// take precedence over this value.
+        /// </summary>
+        [Output("allowAuthenticateViaWarp")]
+        public Output<bool?> AllowAuthenticateViaWarp { get; private set; } = null!;
+
+        /// <summary>
         /// The unique subdomain assigned to your Zero Trust organization.
         /// </summary>
         [Output("authDomain")]
@@ -111,6 +118,13 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Output("userSeatExpirationInactiveTime")]
         public Output<string?> UserSeatExpirationInactiveTime { get; private set; } = null!;
+
+        /// <summary>
+        /// The amount of time that tokens issued for applications will be valid. Must be in the format 30m or 2h45m. Valid time
+        /// units are: m, h.
+        /// </summary>
+        [Output("warpAuthSessionDuration")]
+        public Output<string?> WarpAuthSessionDuration { get; private set; } = null!;
 
         /// <summary>
         /// The zone identifier to target for the resource. Conflicts with `account_id`.
@@ -169,6 +183,13 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
+
+        /// <summary>
+        /// When set to true, users can authenticate via WARP for any application in your organization. Application settings will
+        /// take precedence over this value.
+        /// </summary>
+        [Input("allowAuthenticateViaWarp")]
+        public Input<bool>? AllowAuthenticateViaWarp { get; set; }
 
         /// <summary>
         /// The unique subdomain assigned to your Zero Trust organization.
@@ -233,6 +254,13 @@ namespace Pulumi.Cloudflare
         public Input<string>? UserSeatExpirationInactiveTime { get; set; }
 
         /// <summary>
+        /// The amount of time that tokens issued for applications will be valid. Must be in the format 30m or 2h45m. Valid time
+        /// units are: m, h.
+        /// </summary>
+        [Input("warpAuthSessionDuration")]
+        public Input<string>? WarpAuthSessionDuration { get; set; }
+
+        /// <summary>
         /// The zone identifier to target for the resource. Conflicts with `account_id`.
         /// </summary>
         [Input("zoneId")]
@@ -251,6 +279,13 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
+
+        /// <summary>
+        /// When set to true, users can authenticate via WARP for any application in your organization. Application settings will
+        /// take precedence over this value.
+        /// </summary>
+        [Input("allowAuthenticateViaWarp")]
+        public Input<bool>? AllowAuthenticateViaWarp { get; set; }
 
         /// <summary>
         /// The unique subdomain assigned to your Zero Trust organization.
@@ -313,6 +348,13 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("userSeatExpirationInactiveTime")]
         public Input<string>? UserSeatExpirationInactiveTime { get; set; }
+
+        /// <summary>
+        /// The amount of time that tokens issued for applications will be valid. Must be in the format 30m or 2h45m. Valid time
+        /// units are: m, h.
+        /// </summary>
+        [Input("warpAuthSessionDuration")]
+        public Input<string>? WarpAuthSessionDuration { get; set; }
 
         /// <summary>
         /// The zone identifier to target for the resource. Conflicts with `account_id`.

@@ -76,9 +76,22 @@ export interface AccessApplicationLandingPageDesign {
 
 export interface AccessApplicationSaasApp {
     /**
+     * The URL where this applications tile redirects users
+     */
+    appLauncherUrl?: pulumi.Input<string>;
+    authType?: pulumi.Input<string>;
+    /**
+     * The application client id
+     */
+    clientId?: pulumi.Input<string>;
+    /**
+     * The application client secret, only returned on initial apply
+     */
+    clientSecret?: pulumi.Input<string>;
+    /**
      * The service provider's endpoint that is responsible for receiving and parsing a SAML assertion.
      */
-    consumerServiceUrl: pulumi.Input<string>;
+    consumerServiceUrl?: pulumi.Input<string>;
     /**
      * Custom attribute mapped from IDPs.
      */
@@ -87,6 +100,14 @@ export interface AccessApplicationSaasApp {
      * The relay state used if not provided by the identity provider.
      */
     defaultRelayState?: pulumi.Input<string>;
+    /**
+     * The OIDC flows supported by this application
+     */
+    grantTypes?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A regex to filter Cloudflare groups returned in ID token and userinfo endpoint
+     */
+    groupFilterRegex?: pulumi.Input<string>;
     /**
      * The unique identifier for the SaaS application.
      */
@@ -100,9 +121,17 @@ export interface AccessApplicationSaasApp {
      */
     publicKey?: pulumi.Input<string>;
     /**
+     * The permitted URL's for Cloudflare to return Authorization codes and Access/ID tokens
+     */
+    redirectUris?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Define the user information shared with access
+     */
+    scopes?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
      * A globally unique name for an identity or service provider.
      */
-    spEntityId: pulumi.Input<string>;
+    spEntityId?: pulumi.Input<string>;
     /**
      * The endpoint where the SaaS application will send login requests.
      */
@@ -2542,6 +2571,10 @@ export interface PageRuleActionsMinify {
 
 export interface PagesProjectBuildConfig {
     /**
+     * Enable build caching for the project.
+     */
+    buildCaching?: pulumi.Input<boolean>;
+    /**
      * Command used to build project.
      */
     buildCommand?: pulumi.Input<string>;
@@ -3650,6 +3683,25 @@ export interface TeamsAccountAntivirus {
      * Block requests for files that cannot be scanned.
      */
     failClosed: pulumi.Input<boolean>;
+    /**
+     * Set notifications for antivirus.
+     */
+    notificationSettings?: pulumi.Input<inputs.TeamsAccountAntivirusNotificationSettings>;
+}
+
+export interface TeamsAccountAntivirusNotificationSettings {
+    /**
+     * Enable notification settings.
+     */
+    enabled?: pulumi.Input<boolean>;
+    /**
+     * Notification content.
+     */
+    message?: pulumi.Input<string>;
+    /**
+     * Support URL to show in the notification.
+     */
+    supportUrl?: pulumi.Input<string>;
 }
 
 export interface TeamsAccountBlockPage {
@@ -3692,6 +3744,13 @@ export interface TeamsAccountBodyScanning {
      * Body scanning inspection mode. Available values: `deep`, `shallow`.
      */
     inspectionMode: pulumi.Input<string>;
+}
+
+export interface TeamsAccountExtendedEmailMatching {
+    /**
+     * Whether e-mails should be matched on all variants of user emails (with + or . modifiers) in Firewall policies.
+     */
+    enabled: pulumi.Input<boolean>;
 }
 
 export interface TeamsAccountFips {

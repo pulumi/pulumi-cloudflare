@@ -18,6 +18,7 @@ class AccessOrganizationArgs:
     def __init__(__self__, *,
                  auth_domain: pulumi.Input[str],
                  account_id: Optional[pulumi.Input[str]] = None,
+                 allow_authenticate_via_warp: Optional[pulumi.Input[bool]] = None,
                  auto_redirect_to_identity: Optional[pulumi.Input[bool]] = None,
                  custom_pages: Optional[pulumi.Input[Sequence[pulumi.Input['AccessOrganizationCustomPageArgs']]]] = None,
                  is_ui_read_only: Optional[pulumi.Input[bool]] = None,
@@ -26,11 +27,14 @@ class AccessOrganizationArgs:
                  session_duration: Optional[pulumi.Input[str]] = None,
                  ui_read_only_toggle_reason: Optional[pulumi.Input[str]] = None,
                  user_seat_expiration_inactive_time: Optional[pulumi.Input[str]] = None,
+                 warp_auth_session_duration: Optional[pulumi.Input[str]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a AccessOrganization resource.
         :param pulumi.Input[str] auth_domain: The unique subdomain assigned to your Zero Trust organization.
         :param pulumi.Input[str] account_id: The account identifier to target for the resource. Conflicts with `zone_id`.
+        :param pulumi.Input[bool] allow_authenticate_via_warp: When set to true, users can authenticate via WARP for any application in your organization. Application settings will
+               take precedence over this value.
         :param pulumi.Input[bool] auto_redirect_to_identity: When set to true, users skip the identity provider selection step during login.
         :param pulumi.Input[Sequence[pulumi.Input['AccessOrganizationCustomPageArgs']]] custom_pages: Custom pages for your Zero Trust organization.
         :param pulumi.Input[bool] is_ui_read_only: When set to true, this will disable all editing of Access resources via the Zero Trust Dashboard.
@@ -38,11 +42,15 @@ class AccessOrganizationArgs:
         :param pulumi.Input[str] session_duration: How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`.
         :param pulumi.Input[str] ui_read_only_toggle_reason: A description of the reason why the UI read only field is being toggled.
         :param pulumi.Input[str] user_seat_expiration_inactive_time: The amount of time a user seat is inactive before it expires. When the user seat exceeds the set time of inactivity, the user is removed as an active seat and no longer counts against your Teams seat count. Must be in the format `300ms` or `2h45m`.
+        :param pulumi.Input[str] warp_auth_session_duration: The amount of time that tokens issued for applications will be valid. Must be in the format 30m or 2h45m. Valid time
+               units are: m, h.
         :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. Conflicts with `account_id`.
         """
         pulumi.set(__self__, "auth_domain", auth_domain)
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
+        if allow_authenticate_via_warp is not None:
+            pulumi.set(__self__, "allow_authenticate_via_warp", allow_authenticate_via_warp)
         if auto_redirect_to_identity is not None:
             pulumi.set(__self__, "auto_redirect_to_identity", auto_redirect_to_identity)
         if custom_pages is not None:
@@ -59,6 +67,8 @@ class AccessOrganizationArgs:
             pulumi.set(__self__, "ui_read_only_toggle_reason", ui_read_only_toggle_reason)
         if user_seat_expiration_inactive_time is not None:
             pulumi.set(__self__, "user_seat_expiration_inactive_time", user_seat_expiration_inactive_time)
+        if warp_auth_session_duration is not None:
+            pulumi.set(__self__, "warp_auth_session_duration", warp_auth_session_duration)
         if zone_id is not None:
             pulumi.set(__self__, "zone_id", zone_id)
 
@@ -85,6 +95,19 @@ class AccessOrganizationArgs:
     @account_id.setter
     def account_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "account_id", value)
+
+    @property
+    @pulumi.getter(name="allowAuthenticateViaWarp")
+    def allow_authenticate_via_warp(self) -> Optional[pulumi.Input[bool]]:
+        """
+        When set to true, users can authenticate via WARP for any application in your organization. Application settings will
+        take precedence over this value.
+        """
+        return pulumi.get(self, "allow_authenticate_via_warp")
+
+    @allow_authenticate_via_warp.setter
+    def allow_authenticate_via_warp(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "allow_authenticate_via_warp", value)
 
     @property
     @pulumi.getter(name="autoRedirectToIdentity")
@@ -180,6 +203,19 @@ class AccessOrganizationArgs:
         pulumi.set(self, "user_seat_expiration_inactive_time", value)
 
     @property
+    @pulumi.getter(name="warpAuthSessionDuration")
+    def warp_auth_session_duration(self) -> Optional[pulumi.Input[str]]:
+        """
+        The amount of time that tokens issued for applications will be valid. Must be in the format 30m or 2h45m. Valid time
+        units are: m, h.
+        """
+        return pulumi.get(self, "warp_auth_session_duration")
+
+    @warp_auth_session_duration.setter
+    def warp_auth_session_duration(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "warp_auth_session_duration", value)
+
+    @property
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> Optional[pulumi.Input[str]]:
         """
@@ -196,6 +232,7 @@ class AccessOrganizationArgs:
 class _AccessOrganizationState:
     def __init__(__self__, *,
                  account_id: Optional[pulumi.Input[str]] = None,
+                 allow_authenticate_via_warp: Optional[pulumi.Input[bool]] = None,
                  auth_domain: Optional[pulumi.Input[str]] = None,
                  auto_redirect_to_identity: Optional[pulumi.Input[bool]] = None,
                  custom_pages: Optional[pulumi.Input[Sequence[pulumi.Input['AccessOrganizationCustomPageArgs']]]] = None,
@@ -205,10 +242,13 @@ class _AccessOrganizationState:
                  session_duration: Optional[pulumi.Input[str]] = None,
                  ui_read_only_toggle_reason: Optional[pulumi.Input[str]] = None,
                  user_seat_expiration_inactive_time: Optional[pulumi.Input[str]] = None,
+                 warp_auth_session_duration: Optional[pulumi.Input[str]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering AccessOrganization resources.
         :param pulumi.Input[str] account_id: The account identifier to target for the resource. Conflicts with `zone_id`.
+        :param pulumi.Input[bool] allow_authenticate_via_warp: When set to true, users can authenticate via WARP for any application in your organization. Application settings will
+               take precedence over this value.
         :param pulumi.Input[str] auth_domain: The unique subdomain assigned to your Zero Trust organization.
         :param pulumi.Input[bool] auto_redirect_to_identity: When set to true, users skip the identity provider selection step during login.
         :param pulumi.Input[Sequence[pulumi.Input['AccessOrganizationCustomPageArgs']]] custom_pages: Custom pages for your Zero Trust organization.
@@ -217,10 +257,14 @@ class _AccessOrganizationState:
         :param pulumi.Input[str] session_duration: How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`.
         :param pulumi.Input[str] ui_read_only_toggle_reason: A description of the reason why the UI read only field is being toggled.
         :param pulumi.Input[str] user_seat_expiration_inactive_time: The amount of time a user seat is inactive before it expires. When the user seat exceeds the set time of inactivity, the user is removed as an active seat and no longer counts against your Teams seat count. Must be in the format `300ms` or `2h45m`.
+        :param pulumi.Input[str] warp_auth_session_duration: The amount of time that tokens issued for applications will be valid. Must be in the format 30m or 2h45m. Valid time
+               units are: m, h.
         :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. Conflicts with `account_id`.
         """
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
+        if allow_authenticate_via_warp is not None:
+            pulumi.set(__self__, "allow_authenticate_via_warp", allow_authenticate_via_warp)
         if auth_domain is not None:
             pulumi.set(__self__, "auth_domain", auth_domain)
         if auto_redirect_to_identity is not None:
@@ -239,6 +283,8 @@ class _AccessOrganizationState:
             pulumi.set(__self__, "ui_read_only_toggle_reason", ui_read_only_toggle_reason)
         if user_seat_expiration_inactive_time is not None:
             pulumi.set(__self__, "user_seat_expiration_inactive_time", user_seat_expiration_inactive_time)
+        if warp_auth_session_duration is not None:
+            pulumi.set(__self__, "warp_auth_session_duration", warp_auth_session_duration)
         if zone_id is not None:
             pulumi.set(__self__, "zone_id", zone_id)
 
@@ -253,6 +299,19 @@ class _AccessOrganizationState:
     @account_id.setter
     def account_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "account_id", value)
+
+    @property
+    @pulumi.getter(name="allowAuthenticateViaWarp")
+    def allow_authenticate_via_warp(self) -> Optional[pulumi.Input[bool]]:
+        """
+        When set to true, users can authenticate via WARP for any application in your organization. Application settings will
+        take precedence over this value.
+        """
+        return pulumi.get(self, "allow_authenticate_via_warp")
+
+    @allow_authenticate_via_warp.setter
+    def allow_authenticate_via_warp(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "allow_authenticate_via_warp", value)
 
     @property
     @pulumi.getter(name="authDomain")
@@ -360,6 +419,19 @@ class _AccessOrganizationState:
         pulumi.set(self, "user_seat_expiration_inactive_time", value)
 
     @property
+    @pulumi.getter(name="warpAuthSessionDuration")
+    def warp_auth_session_duration(self) -> Optional[pulumi.Input[str]]:
+        """
+        The amount of time that tokens issued for applications will be valid. Must be in the format 30m or 2h45m. Valid time
+        units are: m, h.
+        """
+        return pulumi.get(self, "warp_auth_session_duration")
+
+    @warp_auth_session_duration.setter
+    def warp_auth_session_duration(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "warp_auth_session_duration", value)
+
+    @property
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> Optional[pulumi.Input[str]]:
         """
@@ -378,6 +450,7 @@ class AccessOrganization(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: Optional[pulumi.Input[str]] = None,
+                 allow_authenticate_via_warp: Optional[pulumi.Input[bool]] = None,
                  auth_domain: Optional[pulumi.Input[str]] = None,
                  auto_redirect_to_identity: Optional[pulumi.Input[bool]] = None,
                  custom_pages: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessOrganizationCustomPageArgs']]]]] = None,
@@ -387,6 +460,7 @@ class AccessOrganization(pulumi.CustomResource):
                  session_duration: Optional[pulumi.Input[str]] = None,
                  ui_read_only_toggle_reason: Optional[pulumi.Input[str]] = None,
                  user_seat_expiration_inactive_time: Optional[pulumi.Input[str]] = None,
+                 warp_auth_session_duration: Optional[pulumi.Input[str]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -423,6 +497,8 @@ class AccessOrganization(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_id: The account identifier to target for the resource. Conflicts with `zone_id`.
+        :param pulumi.Input[bool] allow_authenticate_via_warp: When set to true, users can authenticate via WARP for any application in your organization. Application settings will
+               take precedence over this value.
         :param pulumi.Input[str] auth_domain: The unique subdomain assigned to your Zero Trust organization.
         :param pulumi.Input[bool] auto_redirect_to_identity: When set to true, users skip the identity provider selection step during login.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessOrganizationCustomPageArgs']]]] custom_pages: Custom pages for your Zero Trust organization.
@@ -431,6 +507,8 @@ class AccessOrganization(pulumi.CustomResource):
         :param pulumi.Input[str] session_duration: How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`.
         :param pulumi.Input[str] ui_read_only_toggle_reason: A description of the reason why the UI read only field is being toggled.
         :param pulumi.Input[str] user_seat_expiration_inactive_time: The amount of time a user seat is inactive before it expires. When the user seat exceeds the set time of inactivity, the user is removed as an active seat and no longer counts against your Teams seat count. Must be in the format `300ms` or `2h45m`.
+        :param pulumi.Input[str] warp_auth_session_duration: The amount of time that tokens issued for applications will be valid. Must be in the format 30m or 2h45m. Valid time
+               units are: m, h.
         :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. Conflicts with `account_id`.
         """
         ...
@@ -486,6 +564,7 @@ class AccessOrganization(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: Optional[pulumi.Input[str]] = None,
+                 allow_authenticate_via_warp: Optional[pulumi.Input[bool]] = None,
                  auth_domain: Optional[pulumi.Input[str]] = None,
                  auto_redirect_to_identity: Optional[pulumi.Input[bool]] = None,
                  custom_pages: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessOrganizationCustomPageArgs']]]]] = None,
@@ -495,6 +574,7 @@ class AccessOrganization(pulumi.CustomResource):
                  session_duration: Optional[pulumi.Input[str]] = None,
                  ui_read_only_toggle_reason: Optional[pulumi.Input[str]] = None,
                  user_seat_expiration_inactive_time: Optional[pulumi.Input[str]] = None,
+                 warp_auth_session_duration: Optional[pulumi.Input[str]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -506,6 +586,7 @@ class AccessOrganization(pulumi.CustomResource):
             __props__ = AccessOrganizationArgs.__new__(AccessOrganizationArgs)
 
             __props__.__dict__["account_id"] = account_id
+            __props__.__dict__["allow_authenticate_via_warp"] = allow_authenticate_via_warp
             if auth_domain is None and not opts.urn:
                 raise TypeError("Missing required property 'auth_domain'")
             __props__.__dict__["auth_domain"] = auth_domain
@@ -517,6 +598,7 @@ class AccessOrganization(pulumi.CustomResource):
             __props__.__dict__["session_duration"] = session_duration
             __props__.__dict__["ui_read_only_toggle_reason"] = ui_read_only_toggle_reason
             __props__.__dict__["user_seat_expiration_inactive_time"] = user_seat_expiration_inactive_time
+            __props__.__dict__["warp_auth_session_duration"] = warp_auth_session_duration
             __props__.__dict__["zone_id"] = zone_id
         super(AccessOrganization, __self__).__init__(
             'cloudflare:index/accessOrganization:AccessOrganization',
@@ -529,6 +611,7 @@ class AccessOrganization(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             account_id: Optional[pulumi.Input[str]] = None,
+            allow_authenticate_via_warp: Optional[pulumi.Input[bool]] = None,
             auth_domain: Optional[pulumi.Input[str]] = None,
             auto_redirect_to_identity: Optional[pulumi.Input[bool]] = None,
             custom_pages: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessOrganizationCustomPageArgs']]]]] = None,
@@ -538,6 +621,7 @@ class AccessOrganization(pulumi.CustomResource):
             session_duration: Optional[pulumi.Input[str]] = None,
             ui_read_only_toggle_reason: Optional[pulumi.Input[str]] = None,
             user_seat_expiration_inactive_time: Optional[pulumi.Input[str]] = None,
+            warp_auth_session_duration: Optional[pulumi.Input[str]] = None,
             zone_id: Optional[pulumi.Input[str]] = None) -> 'AccessOrganization':
         """
         Get an existing AccessOrganization resource's state with the given name, id, and optional extra
@@ -547,6 +631,8 @@ class AccessOrganization(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_id: The account identifier to target for the resource. Conflicts with `zone_id`.
+        :param pulumi.Input[bool] allow_authenticate_via_warp: When set to true, users can authenticate via WARP for any application in your organization. Application settings will
+               take precedence over this value.
         :param pulumi.Input[str] auth_domain: The unique subdomain assigned to your Zero Trust organization.
         :param pulumi.Input[bool] auto_redirect_to_identity: When set to true, users skip the identity provider selection step during login.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessOrganizationCustomPageArgs']]]] custom_pages: Custom pages for your Zero Trust organization.
@@ -555,6 +641,8 @@ class AccessOrganization(pulumi.CustomResource):
         :param pulumi.Input[str] session_duration: How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`.
         :param pulumi.Input[str] ui_read_only_toggle_reason: A description of the reason why the UI read only field is being toggled.
         :param pulumi.Input[str] user_seat_expiration_inactive_time: The amount of time a user seat is inactive before it expires. When the user seat exceeds the set time of inactivity, the user is removed as an active seat and no longer counts against your Teams seat count. Must be in the format `300ms` or `2h45m`.
+        :param pulumi.Input[str] warp_auth_session_duration: The amount of time that tokens issued for applications will be valid. Must be in the format 30m or 2h45m. Valid time
+               units are: m, h.
         :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. Conflicts with `account_id`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -562,6 +650,7 @@ class AccessOrganization(pulumi.CustomResource):
         __props__ = _AccessOrganizationState.__new__(_AccessOrganizationState)
 
         __props__.__dict__["account_id"] = account_id
+        __props__.__dict__["allow_authenticate_via_warp"] = allow_authenticate_via_warp
         __props__.__dict__["auth_domain"] = auth_domain
         __props__.__dict__["auto_redirect_to_identity"] = auto_redirect_to_identity
         __props__.__dict__["custom_pages"] = custom_pages
@@ -571,6 +660,7 @@ class AccessOrganization(pulumi.CustomResource):
         __props__.__dict__["session_duration"] = session_duration
         __props__.__dict__["ui_read_only_toggle_reason"] = ui_read_only_toggle_reason
         __props__.__dict__["user_seat_expiration_inactive_time"] = user_seat_expiration_inactive_time
+        __props__.__dict__["warp_auth_session_duration"] = warp_auth_session_duration
         __props__.__dict__["zone_id"] = zone_id
         return AccessOrganization(resource_name, opts=opts, __props__=__props__)
 
@@ -581,6 +671,15 @@ class AccessOrganization(pulumi.CustomResource):
         The account identifier to target for the resource. Conflicts with `zone_id`.
         """
         return pulumi.get(self, "account_id")
+
+    @property
+    @pulumi.getter(name="allowAuthenticateViaWarp")
+    def allow_authenticate_via_warp(self) -> pulumi.Output[Optional[bool]]:
+        """
+        When set to true, users can authenticate via WARP for any application in your organization. Application settings will
+        take precedence over this value.
+        """
+        return pulumi.get(self, "allow_authenticate_via_warp")
 
     @property
     @pulumi.getter(name="authDomain")
@@ -650,6 +749,15 @@ class AccessOrganization(pulumi.CustomResource):
         The amount of time a user seat is inactive before it expires. When the user seat exceeds the set time of inactivity, the user is removed as an active seat and no longer counts against your Teams seat count. Must be in the format `300ms` or `2h45m`.
         """
         return pulumi.get(self, "user_seat_expiration_inactive_time")
+
+    @property
+    @pulumi.getter(name="warpAuthSessionDuration")
+    def warp_auth_session_duration(self) -> pulumi.Output[Optional[str]]:
+        """
+        The amount of time that tokens issued for applications will be valid. Must be in the format 30m or 2h45m. Valid time
+        units are: m, h.
+        """
+        return pulumi.get(self, "warp_auth_session_duration")
 
     @property
     @pulumi.getter(name="zoneId")

@@ -77,6 +77,14 @@ namespace Pulumi.Cloudflare
         public Output<string> AccountId { get; private set; } = null!;
 
         /// <summary>
+        /// When set to true, users can authenticate to this application using their WARP session. When set to false this
+        /// application will always require direct IdP authentication. This setting always overrides the organization setting for
+        /// WARP authentication.
+        /// </summary>
+        [Output("allowAuthenticateViaWarp")]
+        public Output<bool?> AllowAuthenticateViaWarp { get; private set; } = null!;
+
+        /// <summary>
         /// The identity providers selected for the application.
         /// </summary>
         [Output("allowedIdps")]
@@ -296,6 +304,14 @@ namespace Pulumi.Cloudflare
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
 
+        /// <summary>
+        /// When set to true, users can authenticate to this application using their WARP session. When set to false this
+        /// application will always require direct IdP authentication. This setting always overrides the organization setting for
+        /// WARP authentication.
+        /// </summary>
+        [Input("allowAuthenticateViaWarp")]
+        public Input<bool>? AllowAuthenticateViaWarp { get; set; }
+
         [Input("allowedIdps")]
         private InputList<string>? _allowedIdps;
 
@@ -507,6 +523,14 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
+
+        /// <summary>
+        /// When set to true, users can authenticate to this application using their WARP session. When set to false this
+        /// application will always require direct IdP authentication. This setting always overrides the organization setting for
+        /// WARP authentication.
+        /// </summary>
+        [Input("allowAuthenticateViaWarp")]
+        public Input<bool>? AllowAuthenticateViaWarp { get; set; }
 
         [Input("allowedIdps")]
         private InputList<string>? _allowedIdps;

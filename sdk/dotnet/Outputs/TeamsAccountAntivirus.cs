@@ -25,6 +25,10 @@ namespace Pulumi.Cloudflare.Outputs
         /// Block requests for files that cannot be scanned.
         /// </summary>
         public readonly bool FailClosed;
+        /// <summary>
+        /// Set notifications for antivirus.
+        /// </summary>
+        public readonly Outputs.TeamsAccountAntivirusNotificationSettings? NotificationSettings;
 
         [OutputConstructor]
         private TeamsAccountAntivirus(
@@ -32,11 +36,14 @@ namespace Pulumi.Cloudflare.Outputs
 
             bool enabledUploadPhase,
 
-            bool failClosed)
+            bool failClosed,
+
+            Outputs.TeamsAccountAntivirusNotificationSettings? notificationSettings)
         {
             EnabledDownloadPhase = enabledDownloadPhase;
             EnabledUploadPhase = enabledUploadPhase;
             FailClosed = failClosed;
+            NotificationSettings = notificationSettings;
         }
     }
 }

@@ -37,6 +37,25 @@ public final class AccessApplicationState extends com.pulumi.resources.ResourceA
     }
 
     /**
+     * When set to true, users can authenticate to this application using their WARP session. When set to false this
+     * application will always require direct IdP authentication. This setting always overrides the organization setting for
+     * WARP authentication.
+     * 
+     */
+    @Import(name="allowAuthenticateViaWarp")
+    private @Nullable Output<Boolean> allowAuthenticateViaWarp;
+
+    /**
+     * @return When set to true, users can authenticate to this application using their WARP session. When set to false this
+     * application will always require direct IdP authentication. This setting always overrides the organization setting for
+     * WARP authentication.
+     * 
+     */
+    public Optional<Output<Boolean>> allowAuthenticateViaWarp() {
+        return Optional.ofNullable(this.allowAuthenticateViaWarp);
+    }
+
+    /**
      * The identity providers selected for the application.
      * 
      */
@@ -460,6 +479,7 @@ public final class AccessApplicationState extends com.pulumi.resources.ResourceA
 
     private AccessApplicationState(AccessApplicationState $) {
         this.accountId = $.accountId;
+        this.allowAuthenticateViaWarp = $.allowAuthenticateViaWarp;
         this.allowedIdps = $.allowedIdps;
         this.appLauncherLogoUrl = $.appLauncherLogoUrl;
         this.appLauncherVisible = $.appLauncherVisible;
@@ -527,6 +547,31 @@ public final class AccessApplicationState extends com.pulumi.resources.ResourceA
          */
         public Builder accountId(String accountId) {
             return accountId(Output.of(accountId));
+        }
+
+        /**
+         * @param allowAuthenticateViaWarp When set to true, users can authenticate to this application using their WARP session. When set to false this
+         * application will always require direct IdP authentication. This setting always overrides the organization setting for
+         * WARP authentication.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder allowAuthenticateViaWarp(@Nullable Output<Boolean> allowAuthenticateViaWarp) {
+            $.allowAuthenticateViaWarp = allowAuthenticateViaWarp;
+            return this;
+        }
+
+        /**
+         * @param allowAuthenticateViaWarp When set to true, users can authenticate to this application using their WARP session. When set to false this
+         * application will always require direct IdP authentication. This setting always overrides the organization setting for
+         * WARP authentication.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder allowAuthenticateViaWarp(Boolean allowAuthenticateViaWarp) {
+            return allowAuthenticateViaWarp(Output.of(allowAuthenticateViaWarp));
         }
 
         /**

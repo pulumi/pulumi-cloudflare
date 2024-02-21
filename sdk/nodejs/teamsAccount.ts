@@ -22,6 +22,11 @@ import * as utilities from "./utilities";
  *         enabledDownloadPhase: true,
  *         enabledUploadPhase: false,
  *         failClosed: true,
+ *         notificationSettings: {
+ *             enabled: true,
+ *             message: "you are blocked",
+ *             supportUrl: "https://example.com/blocked",
+ *         },
  *     },
  *     blockPage: {
  *         backgroundColor: "#000000",
@@ -31,6 +36,9 @@ import * as utilities from "./utilities";
  *     },
  *     bodyScanning: {
  *         inspectionMode: "deep",
+ *     },
+ *     extendedEmailMatching: {
+ *         enabled: true,
  *     },
  *     fips: {
  *         tls: true,
@@ -118,6 +126,10 @@ export class TeamsAccount extends pulumi.CustomResource {
      */
     public readonly bodyScanning!: pulumi.Output<outputs.TeamsAccountBodyScanning | undefined>;
     /**
+     * Configuration for extended e-mail matching.
+     */
+    public readonly extendedEmailMatching!: pulumi.Output<outputs.TeamsAccountExtendedEmailMatching | undefined>;
+    /**
      * Configure compliance with Federal Information Processing Standards.
      */
     public readonly fips!: pulumi.Output<outputs.TeamsAccountFips | undefined>;
@@ -169,6 +181,7 @@ export class TeamsAccount extends pulumi.CustomResource {
             resourceInputs["antivirus"] = state ? state.antivirus : undefined;
             resourceInputs["blockPage"] = state ? state.blockPage : undefined;
             resourceInputs["bodyScanning"] = state ? state.bodyScanning : undefined;
+            resourceInputs["extendedEmailMatching"] = state ? state.extendedEmailMatching : undefined;
             resourceInputs["fips"] = state ? state.fips : undefined;
             resourceInputs["logging"] = state ? state.logging : undefined;
             resourceInputs["nonIdentityBrowserIsolationEnabled"] = state ? state.nonIdentityBrowserIsolationEnabled : undefined;
@@ -188,6 +201,7 @@ export class TeamsAccount extends pulumi.CustomResource {
             resourceInputs["antivirus"] = args ? args.antivirus : undefined;
             resourceInputs["blockPage"] = args ? args.blockPage : undefined;
             resourceInputs["bodyScanning"] = args ? args.bodyScanning : undefined;
+            resourceInputs["extendedEmailMatching"] = args ? args.extendedEmailMatching : undefined;
             resourceInputs["fips"] = args ? args.fips : undefined;
             resourceInputs["logging"] = args ? args.logging : undefined;
             resourceInputs["nonIdentityBrowserIsolationEnabled"] = args ? args.nonIdentityBrowserIsolationEnabled : undefined;
@@ -227,6 +241,10 @@ export interface TeamsAccountState {
      * Configuration for body scanning.
      */
     bodyScanning?: pulumi.Input<inputs.TeamsAccountBodyScanning>;
+    /**
+     * Configuration for extended e-mail matching.
+     */
+    extendedEmailMatching?: pulumi.Input<inputs.TeamsAccountExtendedEmailMatching>;
     /**
      * Configure compliance with Federal Information Processing Standards.
      */
@@ -286,6 +304,10 @@ export interface TeamsAccountArgs {
      * Configuration for body scanning.
      */
     bodyScanning?: pulumi.Input<inputs.TeamsAccountBodyScanning>;
+    /**
+     * Configuration for extended e-mail matching.
+     */
+    extendedEmailMatching?: pulumi.Input<inputs.TeamsAccountExtendedEmailMatching>;
     /**
      * Configure compliance with Federal Information Processing Standards.
      */

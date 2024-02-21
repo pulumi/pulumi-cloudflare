@@ -6,6 +6,7 @@ package com.pulumi.cloudflare;
 import com.pulumi.cloudflare.inputs.TeamsAccountAntivirusArgs;
 import com.pulumi.cloudflare.inputs.TeamsAccountBlockPageArgs;
 import com.pulumi.cloudflare.inputs.TeamsAccountBodyScanningArgs;
+import com.pulumi.cloudflare.inputs.TeamsAccountExtendedEmailMatchingArgs;
 import com.pulumi.cloudflare.inputs.TeamsAccountFipsArgs;
 import com.pulumi.cloudflare.inputs.TeamsAccountLoggingArgs;
 import com.pulumi.cloudflare.inputs.TeamsAccountPayloadLogArgs;
@@ -98,6 +99,21 @@ public final class TeamsAccountArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<TeamsAccountBodyScanningArgs>> bodyScanning() {
         return Optional.ofNullable(this.bodyScanning);
+    }
+
+    /**
+     * Configuration for extended e-mail matching.
+     * 
+     */
+    @Import(name="extendedEmailMatching")
+    private @Nullable Output<TeamsAccountExtendedEmailMatchingArgs> extendedEmailMatching;
+
+    /**
+     * @return Configuration for extended e-mail matching.
+     * 
+     */
+    public Optional<Output<TeamsAccountExtendedEmailMatchingArgs>> extendedEmailMatching() {
+        return Optional.ofNullable(this.extendedEmailMatching);
     }
 
     /**
@@ -235,6 +251,7 @@ public final class TeamsAccountArgs extends com.pulumi.resources.ResourceArgs {
         this.antivirus = $.antivirus;
         this.blockPage = $.blockPage;
         this.bodyScanning = $.bodyScanning;
+        this.extendedEmailMatching = $.extendedEmailMatching;
         this.fips = $.fips;
         this.logging = $.logging;
         this.nonIdentityBrowserIsolationEnabled = $.nonIdentityBrowserIsolationEnabled;
@@ -367,6 +384,27 @@ public final class TeamsAccountArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder bodyScanning(TeamsAccountBodyScanningArgs bodyScanning) {
             return bodyScanning(Output.of(bodyScanning));
+        }
+
+        /**
+         * @param extendedEmailMatching Configuration for extended e-mail matching.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder extendedEmailMatching(@Nullable Output<TeamsAccountExtendedEmailMatchingArgs> extendedEmailMatching) {
+            $.extendedEmailMatching = extendedEmailMatching;
+            return this;
+        }
+
+        /**
+         * @param extendedEmailMatching Configuration for extended e-mail matching.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder extendedEmailMatching(TeamsAccountExtendedEmailMatchingArgs extendedEmailMatching) {
+            return extendedEmailMatching(Output.of(extendedEmailMatching));
         }
 
         /**

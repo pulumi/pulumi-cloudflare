@@ -78,6 +78,10 @@ type AccessApplication struct {
 
 	// The account identifier to target for the resource. Conflicts with `zoneId`.
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
+	// When set to true, users can authenticate to this application using their WARP session. When set to false this
+	// application will always require direct IdP authentication. This setting always overrides the organization setting for
+	// WARP authentication.
+	AllowAuthenticateViaWarp pulumi.BoolPtrOutput `pulumi:"allowAuthenticateViaWarp"`
 	// The identity providers selected for the application.
 	AllowedIdps pulumi.StringArrayOutput `pulumi:"allowedIdps"`
 	// The logo URL of the app launcher.
@@ -168,6 +172,10 @@ func GetAccessApplication(ctx *pulumi.Context,
 type accessApplicationState struct {
 	// The account identifier to target for the resource. Conflicts with `zoneId`.
 	AccountId *string `pulumi:"accountId"`
+	// When set to true, users can authenticate to this application using their WARP session. When set to false this
+	// application will always require direct IdP authentication. This setting always overrides the organization setting for
+	// WARP authentication.
+	AllowAuthenticateViaWarp *bool `pulumi:"allowAuthenticateViaWarp"`
 	// The identity providers selected for the application.
 	AllowedIdps []string `pulumi:"allowedIdps"`
 	// The logo URL of the app launcher.
@@ -229,6 +237,10 @@ type accessApplicationState struct {
 type AccessApplicationState struct {
 	// The account identifier to target for the resource. Conflicts with `zoneId`.
 	AccountId pulumi.StringPtrInput
+	// When set to true, users can authenticate to this application using their WARP session. When set to false this
+	// application will always require direct IdP authentication. This setting always overrides the organization setting for
+	// WARP authentication.
+	AllowAuthenticateViaWarp pulumi.BoolPtrInput
 	// The identity providers selected for the application.
 	AllowedIdps pulumi.StringArrayInput
 	// The logo URL of the app launcher.
@@ -294,6 +306,10 @@ func (AccessApplicationState) ElementType() reflect.Type {
 type accessApplicationArgs struct {
 	// The account identifier to target for the resource. Conflicts with `zoneId`.
 	AccountId *string `pulumi:"accountId"`
+	// When set to true, users can authenticate to this application using their WARP session. When set to false this
+	// application will always require direct IdP authentication. This setting always overrides the organization setting for
+	// WARP authentication.
+	AllowAuthenticateViaWarp *bool `pulumi:"allowAuthenticateViaWarp"`
 	// The identity providers selected for the application.
 	AllowedIdps []string `pulumi:"allowedIdps"`
 	// The logo URL of the app launcher.
@@ -354,6 +370,10 @@ type accessApplicationArgs struct {
 type AccessApplicationArgs struct {
 	// The account identifier to target for the resource. Conflicts with `zoneId`.
 	AccountId pulumi.StringPtrInput
+	// When set to true, users can authenticate to this application using their WARP session. When set to false this
+	// application will always require direct IdP authentication. This setting always overrides the organization setting for
+	// WARP authentication.
+	AllowAuthenticateViaWarp pulumi.BoolPtrInput
 	// The identity providers selected for the application.
 	AllowedIdps pulumi.StringArrayInput
 	// The logo URL of the app launcher.
@@ -500,6 +520,13 @@ func (o AccessApplicationOutput) ToAccessApplicationOutputWithContext(ctx contex
 // The account identifier to target for the resource. Conflicts with `zoneId`.
 func (o AccessApplicationOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v *AccessApplication) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
+}
+
+// When set to true, users can authenticate to this application using their WARP session. When set to false this
+// application will always require direct IdP authentication. This setting always overrides the organization setting for
+// WARP authentication.
+func (o AccessApplicationOutput) AllowAuthenticateViaWarp() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AccessApplication) pulumi.BoolPtrOutput { return v.AllowAuthenticateViaWarp }).(pulumi.BoolPtrOutput)
 }
 
 // The identity providers selected for the application.
