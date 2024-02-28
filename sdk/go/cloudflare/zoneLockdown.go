@@ -32,6 +32,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// Restrict access to these endpoints to requests from a known IP address range.
 //			_, err := cloudflare.NewZoneLockdown(ctx, "example", &cloudflare.ZoneLockdownArgs{
 //				Configurations: cloudflare.ZoneLockdownConfigurationArray{
 //					&cloudflare.ZoneLockdownConfigurationArgs{

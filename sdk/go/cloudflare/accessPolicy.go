@@ -37,6 +37,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// Allowing access to `test@example.com` email address only
 //			_, err := cloudflare.NewAccessPolicy(ctx, "testPolicyAccessPolicy", &cloudflare.AccessPolicyArgs{
 //				ApplicationId: pulumi.String("cb029e245cfdd66dc8d2e570d5dd3322"),
 //				ZoneId:        pulumi.String("0da42c8d2132a9ddaf714f9e7c920711"),
@@ -61,6 +62,8 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			// Allowing `test@example.com` to access but only when coming from a
+//			// specific IP.
 //			_, err = cloudflare.NewAccessPolicy(ctx, "testPolicyIndex/accessPolicyAccessPolicy", &cloudflare.AccessPolicyArgs{
 //				ApplicationId: pulumi.String("cb029e245cfdd66dc8d2e570d5dd3322"),
 //				ZoneId:        pulumi.String("0da42c8d2132a9ddaf714f9e7c920711"),

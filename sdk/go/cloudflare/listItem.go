@@ -29,6 +29,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// IP List
 //			exampleIpList, err := cloudflare.NewList(ctx, "exampleIpList", &cloudflare.ListArgs{
 //				AccountId:   pulumi.String("f037e56e89293a057740de681ac9abbe"),
 //				Name:        pulumi.String("example_list"),
@@ -38,6 +39,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			// IP List Item
 //			_, err = cloudflare.NewListItem(ctx, "exampleIpItem", &cloudflare.ListItemArgs{
 //				AccountId: pulumi.String("f037e56e89293a057740de681ac9abbe"),
 //				ListId:    exampleIpList.ID(),
@@ -47,6 +49,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			// Redirect List
 //			_, err = cloudflare.NewList(ctx, "exampleRedirectList", &cloudflare.ListArgs{
 //				AccountId:   pulumi.String("f037e56e89293a057740de681ac9abbe"),
 //				Name:        pulumi.String("example_list"),
@@ -56,6 +59,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			// Redirect List Item
 //			_, err = cloudflare.NewListItem(ctx, "exampleRedirectItem", &cloudflare.ListItemArgs{
 //				AccountId: pulumi.String("f037e56e89293a057740de681ac9abbe"),
 //				ListId:    exampleIpList.ID(),
@@ -69,6 +73,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			// ASN List
 //			exampleAsnList, err := cloudflare.NewList(ctx, "exampleAsnList", &cloudflare.ListArgs{
 //				AccountId:   pulumi.String("f037e56e89293a057740de681ac9abbe"),
 //				Name:        pulumi.String("example_asn_list"),
@@ -78,6 +83,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			// ASN List Item
 //			_, err = cloudflare.NewListItem(ctx, "exampleAsnItem", &cloudflare.ListItemArgs{
 //				AccountId: pulumi.String("f037e56e89293a057740de681ac9abbe"),
 //				ListId:    exampleAsnList.ID(),
@@ -87,6 +93,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			// Hostname List
 //			exampleHostnameList, err := cloudflare.NewList(ctx, "exampleHostnameList", &cloudflare.ListArgs{
 //				AccountId:   pulumi.String("f037e56e89293a057740de681ac9abbe"),
 //				Name:        pulumi.String("example_hostname_list"),
@@ -96,6 +103,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			// Hostname List Item
 //			_, err = cloudflare.NewListItem(ctx, "exampleHostnameItem", &cloudflare.ListItemArgs{
 //				AccountId: pulumi.String("f037e56e89293a057740de681ac9abbe"),
 //				ListId:    exampleHostnameList.ID(),

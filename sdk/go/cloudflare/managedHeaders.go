@@ -30,6 +30,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// Enable security headers using Managed Meaders
 //			_, err := cloudflare.NewManagedHeaders(ctx, "example", &cloudflare.ManagedHeadersArgs{
 //				ManagedRequestHeaders: cloudflare.ManagedHeadersManagedRequestHeaderArray{
 //					&cloudflare.ManagedHeadersManagedRequestHeaderArgs{

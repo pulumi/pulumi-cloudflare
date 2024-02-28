@@ -28,6 +28,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// Waiting Room
 //			_, err := cloudflare.NewWaitingRoom(ctx, "example", &cloudflare.WaitingRoomArgs{
 //				AdditionalRoutes: cloudflare.WaitingRoomAdditionalRouteArray{
 //					&cloudflare.WaitingRoomAdditionalRouteArgs{

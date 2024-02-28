@@ -28,6 +28,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// Add a record to the domain
 //			_, err := cloudflare.NewRecord(ctx, "example", &cloudflare.RecordArgs{
 //				ZoneId: pulumi.Any(_var.Cloudflare_zone_id),
 //				Name:   pulumi.String("example"),
@@ -38,6 +39,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			// Add a record requiring a data map
 //			_, err = cloudflare.NewRecord(ctx, "_sipTls", &cloudflare.RecordArgs{
 //				ZoneId: pulumi.Any(_var.Cloudflare_zone_id),
 //				Name:   pulumi.String("_sip._tls"),

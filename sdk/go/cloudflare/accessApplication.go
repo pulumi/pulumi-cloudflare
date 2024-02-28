@@ -36,6 +36,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// With CORS configuration
 //			_, err := cloudflare.NewAccessApplication(ctx, "stagingApp", &cloudflare.AccessApplicationArgs{
 //				CorsHeaders: cloudflare.AccessApplicationCorsHeaderArray{
 //					&cloudflare.AccessApplicationCorsHeaderArgs{

@@ -26,6 +26,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// Advanced certificate manager for Let's Encrypt
 //			_, err := cloudflare.NewCertificatePack(ctx, "example", &cloudflare.CertificatePackArgs{
 //				CertificateAuthority: pulumi.String("lets_encrypt"),
 //				CloudflareBranding:   pulumi.Bool(false),

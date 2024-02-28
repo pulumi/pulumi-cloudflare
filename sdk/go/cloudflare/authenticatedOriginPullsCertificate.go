@@ -31,6 +31,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// Per-Zone Authenticated Origin Pulls certificate
 //			_, err := cloudflare.NewAuthenticatedOriginPullsCertificate(ctx, "myPerZoneAopCert", &cloudflare.AuthenticatedOriginPullsCertificateArgs{
 //				Certificate: pulumi.String("-----INSERT CERTIFICATE-----"),
 //				PrivateKey:  pulumi.String("-----INSERT PRIVATE KEY-----"),
@@ -40,6 +41,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			// Per-Hostname Authenticated Origin Pulls certificate
 //			_, err = cloudflare.NewAuthenticatedOriginPullsCertificate(ctx, "myPerHostnameAopCert", &cloudflare.AuthenticatedOriginPullsCertificateArgs{
 //				Certificate: pulumi.String("-----INSERT CERTIFICATE-----"),
 //				PrivateKey:  pulumi.String("-----INSERT PRIVATE KEY-----"),

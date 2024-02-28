@@ -31,6 +31,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// TCP Monitor
 //			_, err := cloudflare.NewLoadBalancerMonitor(ctx, "example", &cloudflare.LoadBalancerMonitorArgs{
 //				AccountId:   pulumi.String("f037e56e89293a057740de681ac9abbe"),
 //				Description: pulumi.String("example tcp load balancer"),

@@ -37,6 +37,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// account level
 //			_, err := cloudflare.NewAccessCaCertificate(ctx, "example", &cloudflare.AccessCaCertificateArgs{
 //				AccountId:     pulumi.String("f037e56e89293a057740de681ac9abbe"),
 //				ApplicationId: pulumi.String("6cd6cea3-3ef2-4542-9aea-85a0bbcd5414"),
@@ -44,6 +45,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			// zone level
 //			_, err = cloudflare.NewAccessCaCertificate(ctx, "anotherExample", &cloudflare.AccessCaCertificateArgs{
 //				ApplicationId: pulumi.String("fe2be0ff-7f13-4350-8c8e-a9b9795fe3c2"),
 //				ZoneId:        pulumi.String("0da42c8d2132a9ddaf714f9e7c920711"),

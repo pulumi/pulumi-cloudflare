@@ -28,6 +28,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// Waiting Room Event
 //			_, err := cloudflare.NewWaitingRoomEvent(ctx, "example", &cloudflare.WaitingRoomEventArgs{
 //				EventEndTime:   pulumi.String("2006-01-02T20:04:05Z"),
 //				EventStartTime: pulumi.String("2006-01-02T15:04:05Z"),

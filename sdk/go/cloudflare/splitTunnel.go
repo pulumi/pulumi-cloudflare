@@ -29,6 +29,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// Excluding *.example.com from WARP routes
 //			_, err := cloudflare.NewSplitTunnel(ctx, "exampleSplitTunnelExclude", &cloudflare.SplitTunnelArgs{
 //				AccountId: pulumi.String("f037e56e89293a057740de681ac9abbe"),
 //				Mode:      pulumi.String("exclude"),
@@ -42,6 +43,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			// Including *.example.com in WARP routes
 //			_, err = cloudflare.NewSplitTunnel(ctx, "exampleSplitTunnelIncludeSplitTunnel", &cloudflare.SplitTunnelArgs{
 //				AccountId: pulumi.String("f037e56e89293a057740de681ac9abbe"),
 //				Mode:      pulumi.String("include"),
@@ -55,6 +57,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			// Create a device policy
 //			developerWarpPolicy, err := cloudflare.NewDeviceSettingsPolicy(ctx, "developerWarpPolicy", &cloudflare.DeviceSettingsPolicyArgs{
 //				AccountId:    pulumi.String("f037e56e89293a057740de681ac9abbe"),
 //				Name:         pulumi.String("Developers"),
@@ -65,6 +68,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			// Excluding *.example.com from WARP routes for a particular device policy
 //			_, err = cloudflare.NewSplitTunnel(ctx, "exampleDeviceSettingsPolicySplitTunnelExclude", &cloudflare.SplitTunnelArgs{
 //				AccountId: pulumi.String("f037e56e89293a057740de681ac9abbe"),
 //				PolicyId:  developerWarpPolicy.ID(),
@@ -79,6 +83,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			// Including *.example.com in WARP routes for a particular device policy
 //			_, err = cloudflare.NewSplitTunnel(ctx, "exampleSplitTunnelIncludeIndex/splitTunnelSplitTunnel", &cloudflare.SplitTunnelArgs{
 //				AccountId: pulumi.String("f037e56e89293a057740de681ac9abbe"),
 //				PolicyId:  pulumi.Any(cloudflare_device_policy.Developer_warp_policy.Id),
