@@ -33,6 +33,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// Direct upload Pages project
 //			_, err := cloudflare.NewPagesProject(ctx, "basicProject", &cloudflare.PagesProjectArgs{
 //				AccountId:        pulumi.String("f037e56e89293a057740de681ac9abbe"),
 //				Name:             pulumi.String("this-is-my-project-01"),
@@ -41,6 +42,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			// Pages project with managing build config
 //			_, err = cloudflare.NewPagesProject(ctx, "buildConfig", &cloudflare.PagesProjectArgs{
 //				AccountId: pulumi.String("f037e56e89293a057740de681ac9abbe"),
 //				BuildConfig: &cloudflare.PagesProjectBuildConfigArgs{
@@ -56,6 +58,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			// Pages project managing project source
 //			_, err = cloudflare.NewPagesProject(ctx, "sourceConfig", &cloudflare.PagesProjectArgs{
 //				AccountId:        pulumi.String("f037e56e89293a057740de681ac9abbe"),
 //				Name:             pulumi.String("this-is-my-project-01"),
@@ -84,6 +87,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			// Pages project managing all configs
 //			_, err = cloudflare.NewPagesProject(ctx, "deploymentConfigs", &cloudflare.PagesProjectArgs{
 //				AccountId: pulumi.String("f037e56e89293a057740de681ac9abbe"),
 //				BuildConfig: &cloudflare.PagesProjectBuildConfigArgs{

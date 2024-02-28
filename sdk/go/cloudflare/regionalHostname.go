@@ -28,6 +28,8 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// Regionalized hostname record resources are managed independently from the
+//			// Regionalized Hostname resources.
 //			_, err := cloudflare.NewRecord(ctx, "exampleRecord", &cloudflare.RecordArgs{
 //				Name:   pulumi.String("example.com"),
 //				Ttl:    pulumi.Int(3600),
@@ -38,6 +40,8 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			// The cloudflare_regional_hostname resource may exist with or without its
+//			// corresponding record resource.
 //			_, err = cloudflare.NewRegionalHostname(ctx, "exampleRegionalHostname", &cloudflare.RegionalHostnameArgs{
 //				Hostname:  pulumi.String("example.com"),
 //				RegionKey: pulumi.String("eu"),

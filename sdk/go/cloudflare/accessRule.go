@@ -31,6 +31,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// Challenge requests coming from known Tor exit nodes.
 //			_, err := cloudflare.NewAccessRule(ctx, "torExitNodes", &cloudflare.AccessRuleArgs{
 //				ZoneId: pulumi.String("0da42c8d2132a9ddaf714f9e7c920711"),
 //				Notes:  pulumi.String("Requests coming from known Tor exit nodes"),
@@ -43,6 +44,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			// Allowlist requests coming from Antarctica, but only for single zone.
 //			_, err = cloudflare.NewAccessRule(ctx, "antarctica", &cloudflare.AccessRuleArgs{
 //				ZoneId: pulumi.String("0da42c8d2132a9ddaf714f9e7c920711"),
 //				Notes:  pulumi.String("Requests coming from Antarctica"),

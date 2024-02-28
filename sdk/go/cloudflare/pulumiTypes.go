@@ -18099,6 +18099,7 @@ type PageRuleActionsCacheKeyFieldsUser struct {
 	//
 	// func main() {
 	// 	pulumi.Run(func(ctx *pulumi.Context) error {
+	// 		// Unrealistic example with all features used
 	// 		_, err := cloudflare.NewPageRule(ctx, "foobar", &cloudflare.PageRuleArgs{
 	// 			ZoneId:   pulumi.Any(_var.Cloudflare_zone_id),
 	// 			Target:   pulumi.String(fmt.Sprintf("%v/app/*", _var.Cloudflare_zone)),
@@ -18178,6 +18179,7 @@ type PageRuleActionsCacheKeyFieldsUserArgs struct {
 	//
 	// func main() {
 	// 	pulumi.Run(func(ctx *pulumi.Context) error {
+	// 		// Unrealistic example with all features used
 	// 		_, err := cloudflare.NewPageRule(ctx, "foobar", &cloudflare.PageRuleArgs{
 	// 			ZoneId:   pulumi.Any(_var.Cloudflare_zone_id),
 	// 			Target:   pulumi.String(fmt.Sprintf("%v/app/*", _var.Cloudflare_zone)),
@@ -18330,6 +18332,7 @@ func (o PageRuleActionsCacheKeyFieldsUserOutput) Geo() pulumi.BoolPtrOutput {
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// Unrealistic example with all features used
 //			_, err := cloudflare.NewPageRule(ctx, "foobar", &cloudflare.PageRuleArgs{
 //				ZoneId:   pulumi.Any(_var.Cloudflare_zone_id),
 //				Target:   pulumi.String(fmt.Sprintf("%v/app/*", _var.Cloudflare_zone)),
@@ -18441,6 +18444,7 @@ func (o PageRuleActionsCacheKeyFieldsUserPtrOutput) Geo() pulumi.BoolPtrOutput {
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// Unrealistic example with all features used
 //			_, err := cloudflare.NewPageRule(ctx, "foobar", &cloudflare.PageRuleArgs{
 //				ZoneId:   pulumi.Any(_var.Cloudflare_zone_id),
 //				Target:   pulumi.String(fmt.Sprintf("%v/app/*", _var.Cloudflare_zone)),

@@ -37,6 +37,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// Allowing access to `test@example.com` email address only
 //			_, err := cloudflare.NewAccessGroup(ctx, "exampleAccessGroup", &cloudflare.AccessGroupArgs{
 //				AccountId: pulumi.String("f037e56e89293a057740de681ac9abbe"),
 //				Name:      pulumi.String("staging group"),
@@ -51,6 +52,8 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			// Allowing `test@example.com` to access but only when coming from a
+//			// specific IP.
 //			_, err = cloudflare.NewAccessGroup(ctx, "exampleIndex/accessGroupAccessGroup", &cloudflare.AccessGroupArgs{
 //				AccountId: pulumi.String("f037e56e89293a057740de681ac9abbe"),
 //				Name:      pulumi.String("staging group"),
@@ -72,6 +75,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			// Allow members of an Azure Group. The ID is the group UUID (id) in Azure.
 //			_, err = cloudflare.NewAccessGroup(ctx, "exampleCloudflareIndex/accessGroupAccessGroup", &cloudflare.AccessGroupArgs{
 //				AccountId: pulumi.String("f037e56e89293a057740de681ac9abbe"),
 //				Name:      pulumi.String("test_group"),

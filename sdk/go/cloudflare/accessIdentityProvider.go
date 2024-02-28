@@ -37,6 +37,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// one time pin
 //			_, err := cloudflare.NewAccessIdentityProvider(ctx, "pinLogin", &cloudflare.AccessIdentityProviderArgs{
 //				AccountId: pulumi.String("f037e56e89293a057740de681ac9abbe"),
 //				Name:      pulumi.String("PIN login"),
@@ -45,6 +46,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			// oauth
 //			_, err = cloudflare.NewAccessIdentityProvider(ctx, "githubOauth", &cloudflare.AccessIdentityProviderArgs{
 //				AccountId: pulumi.String("f037e56e89293a057740de681ac9abbe"),
 //				Configs: cloudflare.AccessIdentityProviderConfigArray{
@@ -59,6 +61,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			// saml
 //			_, err = cloudflare.NewAccessIdentityProvider(ctx, "jumpcloudSaml", &cloudflare.AccessIdentityProviderArgs{
 //				AccountId: pulumi.String("f037e56e89293a057740de681ac9abbe"),
 //				Configs: cloudflare.AccessIdentityProviderConfigArray{
@@ -79,6 +82,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			// okta
 //			_, err = cloudflare.NewAccessIdentityProvider(ctx, "okta", &cloudflare.AccessIdentityProviderArgs{
 //				AccountId: pulumi.String("f037e56e89293a057740de681ac9abbe"),
 //				Configs: cloudflare.AccessIdentityProviderConfigArray{

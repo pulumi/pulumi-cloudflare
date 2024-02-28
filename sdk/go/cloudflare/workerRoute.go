@@ -32,6 +32,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			// Runs the specified worker script for all URLs that match `example.com/*`
 //			_, err = cloudflare.NewWorkerRoute(ctx, "myRoute", &cloudflare.WorkerRouteArgs{
 //				ZoneId:     pulumi.String("0da42c8d2132a9ddaf714f9e7c920711"),
 //				Pattern:    pulumi.String("example.com/*"),

@@ -54,6 +54,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			// Sets the script with the name "script_1"
 //			_, err = cloudflare.NewWorkerScript(ctx, "myScript", &cloudflare.WorkerScriptArgs{
 //				AccountId: pulumi.String("f037e56e89293a057740de681ac9abbe"),
 //				Name:      pulumi.String("script_1"),

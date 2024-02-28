@@ -29,6 +29,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// HTTPS Healthcheck
 //			_, err := cloudflare.NewHealthcheck(ctx, "httpHealthCheck", &cloudflare.HealthcheckArgs{
 //				ZoneId:      pulumi.Any(_var.Cloudflare_zone_id),
 //				Name:        pulumi.String("http-health-check"),
@@ -67,6 +68,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			// TCP Healthcheck
 //			_, err = cloudflare.NewHealthcheck(ctx, "tcpHealthCheck", &cloudflare.HealthcheckArgs{
 //				ZoneId:      pulumi.Any(_var.Cloudflare_zone_id),
 //				Name:        pulumi.String("tcp-health-check"),
