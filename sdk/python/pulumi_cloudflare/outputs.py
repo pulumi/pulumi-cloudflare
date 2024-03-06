@@ -256,6 +256,7 @@ __all__ = [
     'GetAccountsAccountResult',
     'GetDevicePostureRulesRuleResult',
     'GetDevicesDeviceResult',
+    'GetDlpDatasetsDatasetResult',
     'GetListsListResult',
     'GetLoadBalancerPoolsFilterResult',
     'GetLoadBalancerPoolsPoolResult',
@@ -580,6 +581,8 @@ class AccessApplicationSaasApp(dict):
             suggest = "idp_entity_id"
         elif key == "nameIdFormat":
             suggest = "name_id_format"
+        elif key == "nameIdTransformJsonata":
+            suggest = "name_id_transform_jsonata"
         elif key == "publicKey":
             suggest = "public_key"
         elif key == "redirectUris":
@@ -612,6 +615,7 @@ class AccessApplicationSaasApp(dict):
                  group_filter_regex: Optional[str] = None,
                  idp_entity_id: Optional[str] = None,
                  name_id_format: Optional[str] = None,
+                 name_id_transform_jsonata: Optional[str] = None,
                  public_key: Optional[str] = None,
                  redirect_uris: Optional[Sequence[str]] = None,
                  scopes: Optional[Sequence[str]] = None,
@@ -628,6 +632,7 @@ class AccessApplicationSaasApp(dict):
         :param str group_filter_regex: A regex to filter Cloudflare groups returned in ID token and userinfo endpoint
         :param str idp_entity_id: The unique identifier for the SaaS application.
         :param str name_id_format: The format of the name identifier sent to the SaaS application. Defaults to `email`.
+        :param str name_id_transform_jsonata: A [JSONata](https://jsonata.org/) expression that transforms an application's user identities into a NameID value for its SAML assertion. This expression should evaluate to a singular string. The output of this expression can override the `name_id_format` setting.
         :param str public_key: The public certificate that will be used to verify identities.
         :param Sequence[str] redirect_uris: The permitted URL's for Cloudflare to return Authorization codes and Access/ID tokens
         :param Sequence[str] scopes: Define the user information shared with access
@@ -656,6 +661,8 @@ class AccessApplicationSaasApp(dict):
             pulumi.set(__self__, "idp_entity_id", idp_entity_id)
         if name_id_format is not None:
             pulumi.set(__self__, "name_id_format", name_id_format)
+        if name_id_transform_jsonata is not None:
+            pulumi.set(__self__, "name_id_transform_jsonata", name_id_transform_jsonata)
         if public_key is not None:
             pulumi.set(__self__, "public_key", public_key)
         if redirect_uris is not None:
@@ -751,6 +758,14 @@ class AccessApplicationSaasApp(dict):
         The format of the name identifier sent to the SaaS application. Defaults to `email`.
         """
         return pulumi.get(self, "name_id_format")
+
+    @property
+    @pulumi.getter(name="nameIdTransformJsonata")
+    def name_id_transform_jsonata(self) -> Optional[str]:
+        """
+        A [JSONata](https://jsonata.org/) expression that transforms an application's user identities into a NameID value for its SAML assertion. This expression should evaluate to a singular string. The output of this expression can override the `name_id_format` setting.
+        """
+        return pulumi.get(self, "name_id_transform_jsonata")
 
     @property
     @pulumi.getter(name="publicKey")
@@ -18413,6 +18428,46 @@ class GetDevicesDeviceResult(dict):
         The WARP client version.
         """
         return pulumi.get(self, "version")
+
+
+@pulumi.output_type
+class GetDlpDatasetsDatasetResult(dict):
+    def __init__(__self__, *,
+                 description: str,
+                 id: str,
+                 name: str,
+                 secret: bool,
+                 status: str):
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "secret", secret)
+        pulumi.set(__self__, "status", status)
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def secret(self) -> bool:
+        return pulumi.get(self, "secret")
+
+    @property
+    @pulumi.getter
+    def status(self) -> str:
+        return pulumi.get(self, "status")
 
 
 @pulumi.output_type

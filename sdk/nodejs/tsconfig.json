@@ -68,6 +68,7 @@
         "getApiTokenPermissionGroups.ts",
         "getDevicePostureRules.ts",
         "getDevices.ts",
+        "getDlpDatasets.ts",
         "getIpRanges.ts",
         "getList.ts",
         "getLists.ts",

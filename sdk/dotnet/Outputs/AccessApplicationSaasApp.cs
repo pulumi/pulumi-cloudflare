@@ -55,6 +55,10 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string? NameIdFormat;
         /// <summary>
+        /// A [JSONata](https://jsonata.org/) expression that transforms an application's user identities into a NameID value for its SAML assertion. This expression should evaluate to a singular string. The output of this expression can override the `name_id_format` setting.
+        /// </summary>
+        public readonly string? NameIdTransformJsonata;
+        /// <summary>
         /// The public certificate that will be used to verify identities.
         /// </summary>
         public readonly string? PublicKey;
@@ -99,6 +103,8 @@ namespace Pulumi.Cloudflare.Outputs
 
             string? nameIdFormat,
 
+            string? nameIdTransformJsonata,
+
             string? publicKey,
 
             ImmutableArray<string> redirectUris,
@@ -120,6 +126,7 @@ namespace Pulumi.Cloudflare.Outputs
             GroupFilterRegex = groupFilterRegex;
             IdpEntityId = idpEntityId;
             NameIdFormat = nameIdFormat;
+            NameIdTransformJsonata = nameIdTransformJsonata;
             PublicKey = publicKey;
             RedirectUris = redirectUris;
             Scopes = scopes;

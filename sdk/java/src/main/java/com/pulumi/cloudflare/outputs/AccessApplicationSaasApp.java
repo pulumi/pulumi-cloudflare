@@ -65,6 +65,11 @@ public final class AccessApplicationSaasApp {
      */
     private @Nullable String nameIdFormat;
     /**
+     * @return A [JSONata](https://jsonata.org/) expression that transforms an application&#39;s user identities into a NameID value for its SAML assertion. This expression should evaluate to a singular string. The output of this expression can override the `name_id_format` setting.
+     * 
+     */
+    private @Nullable String nameIdTransformJsonata;
+    /**
      * @return The public certificate that will be used to verify identities.
      * 
      */
@@ -165,6 +170,13 @@ public final class AccessApplicationSaasApp {
         return Optional.ofNullable(this.nameIdFormat);
     }
     /**
+     * @return A [JSONata](https://jsonata.org/) expression that transforms an application&#39;s user identities into a NameID value for its SAML assertion. This expression should evaluate to a singular string. The output of this expression can override the `name_id_format` setting.
+     * 
+     */
+    public Optional<String> nameIdTransformJsonata() {
+        return Optional.ofNullable(this.nameIdTransformJsonata);
+    }
+    /**
      * @return The public certificate that will be used to verify identities.
      * 
      */
@@ -220,6 +232,7 @@ public final class AccessApplicationSaasApp {
         private @Nullable String groupFilterRegex;
         private @Nullable String idpEntityId;
         private @Nullable String nameIdFormat;
+        private @Nullable String nameIdTransformJsonata;
         private @Nullable String publicKey;
         private @Nullable List<String> redirectUris;
         private @Nullable List<String> scopes;
@@ -239,6 +252,7 @@ public final class AccessApplicationSaasApp {
     	      this.groupFilterRegex = defaults.groupFilterRegex;
     	      this.idpEntityId = defaults.idpEntityId;
     	      this.nameIdFormat = defaults.nameIdFormat;
+    	      this.nameIdTransformJsonata = defaults.nameIdTransformJsonata;
     	      this.publicKey = defaults.publicKey;
     	      this.redirectUris = defaults.redirectUris;
     	      this.scopes = defaults.scopes;
@@ -319,6 +333,12 @@ public final class AccessApplicationSaasApp {
             return this;
         }
         @CustomType.Setter
+        public Builder nameIdTransformJsonata(@Nullable String nameIdTransformJsonata) {
+
+            this.nameIdTransformJsonata = nameIdTransformJsonata;
+            return this;
+        }
+        @CustomType.Setter
         public Builder publicKey(@Nullable String publicKey) {
 
             this.publicKey = publicKey;
@@ -367,6 +387,7 @@ public final class AccessApplicationSaasApp {
             _resultValue.groupFilterRegex = groupFilterRegex;
             _resultValue.idpEntityId = idpEntityId;
             _resultValue.nameIdFormat = nameIdFormat;
+            _resultValue.nameIdTransformJsonata = nameIdTransformJsonata;
             _resultValue.publicKey = publicKey;
             _resultValue.redirectUris = redirectUris;
             _resultValue.scopes = scopes;

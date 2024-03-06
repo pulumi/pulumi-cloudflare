@@ -117,6 +117,10 @@ export interface AccessApplicationSaasApp {
      */
     nameIdFormat?: string;
     /**
+     * A [JSONata](https://jsonata.org/) expression that transforms an application's user identities into a NameID value for its SAML assertion. This expression should evaluate to a singular string. The output of this expression can override the `nameIdFormat` setting.
+     */
+    nameIdTransformJsonata?: string;
+    /**
      * The public certificate that will be used to verify identities.
      */
     publicKey: string;
@@ -1437,6 +1441,14 @@ export interface GetDevicesDevice {
      * The WARP client version.
      */
     version?: string;
+}
+
+export interface GetDlpDatasetsDataset {
+    description: string;
+    id: string;
+    name: string;
+    secret: boolean;
+    status: string;
 }
 
 export interface GetListsList {

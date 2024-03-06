@@ -117,6 +117,10 @@ export interface AccessApplicationSaasApp {
      */
     nameIdFormat?: pulumi.Input<string>;
     /**
+     * A [JSONata](https://jsonata.org/) expression that transforms an application's user identities into a NameID value for its SAML assertion. This expression should evaluate to a singular string. The output of this expression can override the `nameIdFormat` setting.
+     */
+    nameIdTransformJsonata?: pulumi.Input<string>;
+    /**
      * The public certificate that will be used to verify identities.
      */
     publicKey?: pulumi.Input<string>;

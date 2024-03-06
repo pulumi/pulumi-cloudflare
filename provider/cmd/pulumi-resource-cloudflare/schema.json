@@ -268,6 +268,10 @@
                     "type": "string",
                     "description": "The format of the name identifier sent to the SaaS application. Defaults to `email`.\n"
                 },
+                "nameIdTransformJsonata": {
+                    "type": "string",
+                    "description": "A [JSONata](https://jsonata.org/) expression that transforms an application's user identities into a NameID value for its SAML assertion. This expression should evaluate to a singular string. The output of this expression can override the `name_id_format` setting.\n"
+                },
                 "publicKey": {
                     "type": "string",
                     "description": "The public certificate that will be used to verify identities.\n"
@@ -7398,6 +7402,38 @@
                 }
             },
             "type": "object"
+        },
+        "cloudflare:index/getDlpDatasetsDataset:getDlpDatasetsDataset": {
+            "properties": {
+                "description": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "secret": {
+                    "type": "boolean"
+                },
+                "status": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "description",
+                "id",
+                "name",
+                "secret",
+                "status"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
         },
         "cloudflare:index/getListsList:getListsList": {
             "properties": {
@@ -22630,6 +22666,48 @@
                 "required": [
                     "accountId",
                     "devices",
+                    "id"
+                ]
+            }
+        },
+        "cloudflare:index/getDlpDatasets:getDlpDatasets": {
+            "description": "Use this data source to retrieve all DLP datasets for an account.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as cloudflare from \"@pulumi/cloudflare\";\n\nconst example = cloudflare.getDlpDatasets({\n    accountId: \"f037e56e89293a057740de681ac9abbe\",\n});\n```\n```python\nimport pulumi\nimport pulumi_cloudflare as cloudflare\n\nexample = cloudflare.get_dlp_datasets(account_id=\"f037e56e89293a057740de681ac9abbe\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Cloudflare = Pulumi.Cloudflare;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = Cloudflare.GetDlpDatasets.Invoke(new()\n    {\n        AccountId = \"f037e56e89293a057740de681ac9abbe\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := cloudflare.GetDlpDatasets(ctx, \u0026cloudflare.GetDlpDatasetsArgs{\n\t\t\tAccountId: \"f037e56e89293a057740de681ac9abbe\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.cloudflare.CloudflareFunctions;\nimport com.pulumi.cloudflare.inputs.GetDlpDatasetsArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var example = CloudflareFunctions.getDlpDatasets(GetDlpDatasetsArgs.builder()\n            .accountId(\"f037e56e89293a057740de681ac9abbe\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  example:\n    fn::invoke:\n      Function: cloudflare:getDlpDatasets\n      Arguments:\n        accountId: f037e56e89293a057740de681ac9abbe\n```\n{{% /example %}}\n{{% /examples %}}",
+            "inputs": {
+                "description": "A collection of arguments for invoking getDlpDatasets.\n",
+                "properties": {
+                    "accountId": {
+                        "type": "string",
+                        "description": "The account ID to fetch DLP Datasets from.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "accountId"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getDlpDatasets.\n",
+                "properties": {
+                    "accountId": {
+                        "type": "string",
+                        "description": "The account ID to fetch DLP Datasets from.\n"
+                    },
+                    "datasets": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/cloudflare:index/getDlpDatasetsDataset:getDlpDatasetsDataset"
+                        },
+                        "description": "A list of DLP Datasets.\n"
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "accountId",
+                    "datasets",
                     "id"
                 ]
             }

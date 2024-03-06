@@ -535,6 +535,7 @@ class AccessApplicationSaasAppArgs:
                  group_filter_regex: Optional[pulumi.Input[str]] = None,
                  idp_entity_id: Optional[pulumi.Input[str]] = None,
                  name_id_format: Optional[pulumi.Input[str]] = None,
+                 name_id_transform_jsonata: Optional[pulumi.Input[str]] = None,
                  public_key: Optional[pulumi.Input[str]] = None,
                  redirect_uris: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  scopes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -551,6 +552,7 @@ class AccessApplicationSaasAppArgs:
         :param pulumi.Input[str] group_filter_regex: A regex to filter Cloudflare groups returned in ID token and userinfo endpoint
         :param pulumi.Input[str] idp_entity_id: The unique identifier for the SaaS application.
         :param pulumi.Input[str] name_id_format: The format of the name identifier sent to the SaaS application. Defaults to `email`.
+        :param pulumi.Input[str] name_id_transform_jsonata: A [JSONata](https://jsonata.org/) expression that transforms an application's user identities into a NameID value for its SAML assertion. This expression should evaluate to a singular string. The output of this expression can override the `name_id_format` setting.
         :param pulumi.Input[str] public_key: The public certificate that will be used to verify identities.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] redirect_uris: The permitted URL's for Cloudflare to return Authorization codes and Access/ID tokens
         :param pulumi.Input[Sequence[pulumi.Input[str]]] scopes: Define the user information shared with access
@@ -579,6 +581,8 @@ class AccessApplicationSaasAppArgs:
             pulumi.set(__self__, "idp_entity_id", idp_entity_id)
         if name_id_format is not None:
             pulumi.set(__self__, "name_id_format", name_id_format)
+        if name_id_transform_jsonata is not None:
+            pulumi.set(__self__, "name_id_transform_jsonata", name_id_transform_jsonata)
         if public_key is not None:
             pulumi.set(__self__, "public_key", public_key)
         if redirect_uris is not None:
@@ -718,6 +722,18 @@ class AccessApplicationSaasAppArgs:
     @name_id_format.setter
     def name_id_format(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name_id_format", value)
+
+    @property
+    @pulumi.getter(name="nameIdTransformJsonata")
+    def name_id_transform_jsonata(self) -> Optional[pulumi.Input[str]]:
+        """
+        A [JSONata](https://jsonata.org/) expression that transforms an application's user identities into a NameID value for its SAML assertion. This expression should evaluate to a singular string. The output of this expression can override the `name_id_format` setting.
+        """
+        return pulumi.get(self, "name_id_transform_jsonata")
+
+    @name_id_transform_jsonata.setter
+    def name_id_transform_jsonata(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name_id_transform_jsonata", value)
 
     @property
     @pulumi.getter(name="publicKey")
