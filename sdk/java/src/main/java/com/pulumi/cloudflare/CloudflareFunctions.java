@@ -16,6 +16,8 @@ import com.pulumi.cloudflare.inputs.GetDevicePostureRulesArgs;
 import com.pulumi.cloudflare.inputs.GetDevicePostureRulesPlainArgs;
 import com.pulumi.cloudflare.inputs.GetDevicesArgs;
 import com.pulumi.cloudflare.inputs.GetDevicesPlainArgs;
+import com.pulumi.cloudflare.inputs.GetDlpDatasetsArgs;
+import com.pulumi.cloudflare.inputs.GetDlpDatasetsPlainArgs;
 import com.pulumi.cloudflare.inputs.GetListArgs;
 import com.pulumi.cloudflare.inputs.GetListPlainArgs;
 import com.pulumi.cloudflare.inputs.GetListsArgs;
@@ -49,6 +51,7 @@ import com.pulumi.cloudflare.outputs.GetAccountsResult;
 import com.pulumi.cloudflare.outputs.GetApiTokenPermissionGroupsResult;
 import com.pulumi.cloudflare.outputs.GetDevicePostureRulesResult;
 import com.pulumi.cloudflare.outputs.GetDevicesResult;
+import com.pulumi.cloudflare.outputs.GetDlpDatasetsResult;
 import com.pulumi.cloudflare.outputs.GetIpRangesResult;
 import com.pulumi.cloudflare.outputs.GetListResult;
 import com.pulumi.cloudflare.outputs.GetListsResult;
@@ -1095,6 +1098,154 @@ public final class CloudflareFunctions {
      */
     public static CompletableFuture<GetDevicesResult> getDevicesPlain(GetDevicesPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("cloudflare:index/getDevices:getDevices", TypeShape.of(GetDevicesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to retrieve all DLP datasets for an account.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetDlpDatasetsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = CloudflareFunctions.getDlpDatasets(GetDlpDatasetsArgs.builder()
+     *             .accountId(&#34;f037e56e89293a057740de681ac9abbe&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetDlpDatasetsResult> getDlpDatasets(GetDlpDatasetsArgs args) {
+        return getDlpDatasets(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to retrieve all DLP datasets for an account.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetDlpDatasetsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = CloudflareFunctions.getDlpDatasets(GetDlpDatasetsArgs.builder()
+     *             .accountId(&#34;f037e56e89293a057740de681ac9abbe&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetDlpDatasetsResult> getDlpDatasetsPlain(GetDlpDatasetsPlainArgs args) {
+        return getDlpDatasetsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to retrieve all DLP datasets for an account.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetDlpDatasetsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = CloudflareFunctions.getDlpDatasets(GetDlpDatasetsArgs.builder()
+     *             .accountId(&#34;f037e56e89293a057740de681ac9abbe&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetDlpDatasetsResult> getDlpDatasets(GetDlpDatasetsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("cloudflare:index/getDlpDatasets:getDlpDatasets", TypeShape.of(GetDlpDatasetsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to retrieve all DLP datasets for an account.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.cloudflare.CloudflareFunctions;
+     * import com.pulumi.cloudflare.inputs.GetDlpDatasetsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = CloudflareFunctions.getDlpDatasets(GetDlpDatasetsArgs.builder()
+     *             .accountId(&#34;f037e56e89293a057740de681ac9abbe&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetDlpDatasetsResult> getDlpDatasetsPlain(GetDlpDatasetsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("cloudflare:index/getDlpDatasets:getDlpDatasets", TypeShape.of(GetDlpDatasetsResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Use this data source to get the [IP ranges](https://www.cloudflare.com/ips/) of Cloudflare network.

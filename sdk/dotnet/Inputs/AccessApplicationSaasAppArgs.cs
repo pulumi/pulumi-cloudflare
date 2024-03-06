@@ -88,6 +88,12 @@ namespace Pulumi.Cloudflare.Inputs
         public Input<string>? NameIdFormat { get; set; }
 
         /// <summary>
+        /// A [JSONata](https://jsonata.org/) expression that transforms an application's user identities into a NameID value for its SAML assertion. This expression should evaluate to a singular string. The output of this expression can override the `name_id_format` setting.
+        /// </summary>
+        [Input("nameIdTransformJsonata")]
+        public Input<string>? NameIdTransformJsonata { get; set; }
+
+        /// <summary>
         /// The public certificate that will be used to verify identities.
         /// </summary>
         [Input("publicKey")]

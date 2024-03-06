@@ -514,6 +514,8 @@ type AccessApplicationSaasApp struct {
 	IdpEntityId *string `pulumi:"idpEntityId"`
 	// The format of the name identifier sent to the SaaS application. Defaults to `email`.
 	NameIdFormat *string `pulumi:"nameIdFormat"`
+	// A [JSONata](https://jsonata.org/) expression that transforms an application's user identities into a NameID value for its SAML assertion. This expression should evaluate to a singular string. The output of this expression can override the `nameIdFormat` setting.
+	NameIdTransformJsonata *string `pulumi:"nameIdTransformJsonata"`
 	// The public certificate that will be used to verify identities.
 	PublicKey *string `pulumi:"publicKey"`
 	// The permitted URL's for Cloudflare to return Authorization codes and Access/ID tokens
@@ -559,6 +561,8 @@ type AccessApplicationSaasAppArgs struct {
 	IdpEntityId pulumi.StringPtrInput `pulumi:"idpEntityId"`
 	// The format of the name identifier sent to the SaaS application. Defaults to `email`.
 	NameIdFormat pulumi.StringPtrInput `pulumi:"nameIdFormat"`
+	// A [JSONata](https://jsonata.org/) expression that transforms an application's user identities into a NameID value for its SAML assertion. This expression should evaluate to a singular string. The output of this expression can override the `nameIdFormat` setting.
+	NameIdTransformJsonata pulumi.StringPtrInput `pulumi:"nameIdTransformJsonata"`
 	// The public certificate that will be used to verify identities.
 	PublicKey pulumi.StringPtrInput `pulumi:"publicKey"`
 	// The permitted URL's for Cloudflare to return Authorization codes and Access/ID tokens
@@ -700,6 +704,11 @@ func (o AccessApplicationSaasAppOutput) IdpEntityId() pulumi.StringPtrOutput {
 // The format of the name identifier sent to the SaaS application. Defaults to `email`.
 func (o AccessApplicationSaasAppOutput) NameIdFormat() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AccessApplicationSaasApp) *string { return v.NameIdFormat }).(pulumi.StringPtrOutput)
+}
+
+// A [JSONata](https://jsonata.org/) expression that transforms an application's user identities into a NameID value for its SAML assertion. This expression should evaluate to a singular string. The output of this expression can override the `nameIdFormat` setting.
+func (o AccessApplicationSaasAppOutput) NameIdTransformJsonata() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AccessApplicationSaasApp) *string { return v.NameIdTransformJsonata }).(pulumi.StringPtrOutput)
 }
 
 // The public certificate that will be used to verify identities.
@@ -857,6 +866,16 @@ func (o AccessApplicationSaasAppPtrOutput) NameIdFormat() pulumi.StringPtrOutput
 			return nil
 		}
 		return v.NameIdFormat
+	}).(pulumi.StringPtrOutput)
+}
+
+// A [JSONata](https://jsonata.org/) expression that transforms an application's user identities into a NameID value for its SAML assertion. This expression should evaluate to a singular string. The output of this expression can override the `nameIdFormat` setting.
+func (o AccessApplicationSaasAppPtrOutput) NameIdTransformJsonata() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccessApplicationSaasApp) *string {
+		if v == nil {
+			return nil
+		}
+		return v.NameIdTransformJsonata
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -40165,6 +40184,124 @@ func (o GetDevicesDeviceArrayOutput) Index(i pulumi.IntInput) GetDevicesDeviceOu
 	}).(GetDevicesDeviceOutput)
 }
 
+type GetDlpDatasetsDataset struct {
+	Description string `pulumi:"description"`
+	Id          string `pulumi:"id"`
+	Name        string `pulumi:"name"`
+	Secret      bool   `pulumi:"secret"`
+	Status      string `pulumi:"status"`
+}
+
+// GetDlpDatasetsDatasetInput is an input type that accepts GetDlpDatasetsDatasetArgs and GetDlpDatasetsDatasetOutput values.
+// You can construct a concrete instance of `GetDlpDatasetsDatasetInput` via:
+//
+//	GetDlpDatasetsDatasetArgs{...}
+type GetDlpDatasetsDatasetInput interface {
+	pulumi.Input
+
+	ToGetDlpDatasetsDatasetOutput() GetDlpDatasetsDatasetOutput
+	ToGetDlpDatasetsDatasetOutputWithContext(context.Context) GetDlpDatasetsDatasetOutput
+}
+
+type GetDlpDatasetsDatasetArgs struct {
+	Description pulumi.StringInput `pulumi:"description"`
+	Id          pulumi.StringInput `pulumi:"id"`
+	Name        pulumi.StringInput `pulumi:"name"`
+	Secret      pulumi.BoolInput   `pulumi:"secret"`
+	Status      pulumi.StringInput `pulumi:"status"`
+}
+
+func (GetDlpDatasetsDatasetArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDlpDatasetsDataset)(nil)).Elem()
+}
+
+func (i GetDlpDatasetsDatasetArgs) ToGetDlpDatasetsDatasetOutput() GetDlpDatasetsDatasetOutput {
+	return i.ToGetDlpDatasetsDatasetOutputWithContext(context.Background())
+}
+
+func (i GetDlpDatasetsDatasetArgs) ToGetDlpDatasetsDatasetOutputWithContext(ctx context.Context) GetDlpDatasetsDatasetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDlpDatasetsDatasetOutput)
+}
+
+// GetDlpDatasetsDatasetArrayInput is an input type that accepts GetDlpDatasetsDatasetArray and GetDlpDatasetsDatasetArrayOutput values.
+// You can construct a concrete instance of `GetDlpDatasetsDatasetArrayInput` via:
+//
+//	GetDlpDatasetsDatasetArray{ GetDlpDatasetsDatasetArgs{...} }
+type GetDlpDatasetsDatasetArrayInput interface {
+	pulumi.Input
+
+	ToGetDlpDatasetsDatasetArrayOutput() GetDlpDatasetsDatasetArrayOutput
+	ToGetDlpDatasetsDatasetArrayOutputWithContext(context.Context) GetDlpDatasetsDatasetArrayOutput
+}
+
+type GetDlpDatasetsDatasetArray []GetDlpDatasetsDatasetInput
+
+func (GetDlpDatasetsDatasetArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDlpDatasetsDataset)(nil)).Elem()
+}
+
+func (i GetDlpDatasetsDatasetArray) ToGetDlpDatasetsDatasetArrayOutput() GetDlpDatasetsDatasetArrayOutput {
+	return i.ToGetDlpDatasetsDatasetArrayOutputWithContext(context.Background())
+}
+
+func (i GetDlpDatasetsDatasetArray) ToGetDlpDatasetsDatasetArrayOutputWithContext(ctx context.Context) GetDlpDatasetsDatasetArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDlpDatasetsDatasetArrayOutput)
+}
+
+type GetDlpDatasetsDatasetOutput struct{ *pulumi.OutputState }
+
+func (GetDlpDatasetsDatasetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDlpDatasetsDataset)(nil)).Elem()
+}
+
+func (o GetDlpDatasetsDatasetOutput) ToGetDlpDatasetsDatasetOutput() GetDlpDatasetsDatasetOutput {
+	return o
+}
+
+func (o GetDlpDatasetsDatasetOutput) ToGetDlpDatasetsDatasetOutputWithContext(ctx context.Context) GetDlpDatasetsDatasetOutput {
+	return o
+}
+
+func (o GetDlpDatasetsDatasetOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDlpDatasetsDataset) string { return v.Description }).(pulumi.StringOutput)
+}
+
+func (o GetDlpDatasetsDatasetOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDlpDatasetsDataset) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetDlpDatasetsDatasetOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDlpDatasetsDataset) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o GetDlpDatasetsDatasetOutput) Secret() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetDlpDatasetsDataset) bool { return v.Secret }).(pulumi.BoolOutput)
+}
+
+func (o GetDlpDatasetsDatasetOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDlpDatasetsDataset) string { return v.Status }).(pulumi.StringOutput)
+}
+
+type GetDlpDatasetsDatasetArrayOutput struct{ *pulumi.OutputState }
+
+func (GetDlpDatasetsDatasetArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDlpDatasetsDataset)(nil)).Elem()
+}
+
+func (o GetDlpDatasetsDatasetArrayOutput) ToGetDlpDatasetsDatasetArrayOutput() GetDlpDatasetsDatasetArrayOutput {
+	return o
+}
+
+func (o GetDlpDatasetsDatasetArrayOutput) ToGetDlpDatasetsDatasetArrayOutputWithContext(ctx context.Context) GetDlpDatasetsDatasetArrayOutput {
+	return o
+}
+
+func (o GetDlpDatasetsDatasetArrayOutput) Index(i pulumi.IntInput) GetDlpDatasetsDatasetOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDlpDatasetsDataset {
+		return vs[0].([]GetDlpDatasetsDataset)[vs[1].(int)]
+	}).(GetDlpDatasetsDatasetOutput)
+}
+
 type GetListsList struct {
 	// List description.
 	Description *string `pulumi:"description"`
@@ -48145,6 +48282,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDevicePostureRulesRuleArrayInput)(nil)).Elem(), GetDevicePostureRulesRuleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDevicesDeviceInput)(nil)).Elem(), GetDevicesDeviceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDevicesDeviceArrayInput)(nil)).Elem(), GetDevicesDeviceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDlpDatasetsDatasetInput)(nil)).Elem(), GetDlpDatasetsDatasetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDlpDatasetsDatasetArrayInput)(nil)).Elem(), GetDlpDatasetsDatasetArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetListsListInput)(nil)).Elem(), GetListsListArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetListsListArrayInput)(nil)).Elem(), GetListsListArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetLoadBalancerPoolsFilterInput)(nil)).Elem(), GetLoadBalancerPoolsFilterArgs{})
@@ -48716,6 +48855,8 @@ func init() {
 	pulumi.RegisterOutputType(GetDevicePostureRulesRuleArrayOutput{})
 	pulumi.RegisterOutputType(GetDevicesDeviceOutput{})
 	pulumi.RegisterOutputType(GetDevicesDeviceArrayOutput{})
+	pulumi.RegisterOutputType(GetDlpDatasetsDatasetOutput{})
+	pulumi.RegisterOutputType(GetDlpDatasetsDatasetArrayOutput{})
 	pulumi.RegisterOutputType(GetListsListOutput{})
 	pulumi.RegisterOutputType(GetListsListArrayOutput{})
 	pulumi.RegisterOutputType(GetLoadBalancerPoolsFilterOutput{})

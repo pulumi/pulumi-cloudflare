@@ -270,6 +270,11 @@ export const getDevices: typeof import("./getDevices").getDevices = null as any;
 export const getDevicesOutput: typeof import("./getDevices").getDevicesOutput = null as any;
 utilities.lazyLoad(exports, ["getDevices","getDevicesOutput"], () => require("./getDevices"));
 
+export { GetDlpDatasetsArgs, GetDlpDatasetsResult, GetDlpDatasetsOutputArgs } from "./getDlpDatasets";
+export const getDlpDatasets: typeof import("./getDlpDatasets").getDlpDatasets = null as any;
+export const getDlpDatasetsOutput: typeof import("./getDlpDatasets").getDlpDatasetsOutput = null as any;
+utilities.lazyLoad(exports, ["getDlpDatasets","getDlpDatasetsOutput"], () => require("./getDlpDatasets"));
+
 export { GetIpRangesResult } from "./getIpRanges";
 export const getIpRanges: typeof import("./getIpRanges").getIpRanges = null as any;
 export const getIpRangesOutput: typeof import("./getIpRanges").getIpRangesOutput = null as any;

@@ -175,6 +175,21 @@ public final class AccessApplicationSaasAppArgs extends com.pulumi.resources.Res
     }
 
     /**
+     * A [JSONata](https://jsonata.org/) expression that transforms an application&#39;s user identities into a NameID value for its SAML assertion. This expression should evaluate to a singular string. The output of this expression can override the `name_id_format` setting.
+     * 
+     */
+    @Import(name="nameIdTransformJsonata")
+    private @Nullable Output<String> nameIdTransformJsonata;
+
+    /**
+     * @return A [JSONata](https://jsonata.org/) expression that transforms an application&#39;s user identities into a NameID value for its SAML assertion. This expression should evaluate to a singular string. The output of this expression can override the `name_id_format` setting.
+     * 
+     */
+    public Optional<Output<String>> nameIdTransformJsonata() {
+        return Optional.ofNullable(this.nameIdTransformJsonata);
+    }
+
+    /**
      * The public certificate that will be used to verify identities.
      * 
      */
@@ -263,6 +278,7 @@ public final class AccessApplicationSaasAppArgs extends com.pulumi.resources.Res
         this.groupFilterRegex = $.groupFilterRegex;
         this.idpEntityId = $.idpEntityId;
         this.nameIdFormat = $.nameIdFormat;
+        this.nameIdTransformJsonata = $.nameIdTransformJsonata;
         this.publicKey = $.publicKey;
         this.redirectUris = $.redirectUris;
         this.scopes = $.scopes;
@@ -525,6 +541,27 @@ public final class AccessApplicationSaasAppArgs extends com.pulumi.resources.Res
          */
         public Builder nameIdFormat(String nameIdFormat) {
             return nameIdFormat(Output.of(nameIdFormat));
+        }
+
+        /**
+         * @param nameIdTransformJsonata A [JSONata](https://jsonata.org/) expression that transforms an application&#39;s user identities into a NameID value for its SAML assertion. This expression should evaluate to a singular string. The output of this expression can override the `name_id_format` setting.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder nameIdTransformJsonata(@Nullable Output<String> nameIdTransformJsonata) {
+            $.nameIdTransformJsonata = nameIdTransformJsonata;
+            return this;
+        }
+
+        /**
+         * @param nameIdTransformJsonata A [JSONata](https://jsonata.org/) expression that transforms an application&#39;s user identities into a NameID value for its SAML assertion. This expression should evaluate to a singular string. The output of this expression can override the `name_id_format` setting.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder nameIdTransformJsonata(String nameIdTransformJsonata) {
+            return nameIdTransformJsonata(Output.of(nameIdTransformJsonata));
         }
 
         /**

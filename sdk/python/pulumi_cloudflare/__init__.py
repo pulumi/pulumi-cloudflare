@@ -58,6 +58,7 @@ from .get_accounts import *
 from .get_api_token_permission_groups import *
 from .get_device_posture_rules import *
 from .get_devices import *
+from .get_dlp_datasets import *
 from .get_ip_ranges import *
 from .get_list import *
 from .get_lists import *
