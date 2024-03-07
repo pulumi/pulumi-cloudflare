@@ -9,6 +9,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
@@ -19,11 +20,12 @@ import * as utilities from "./utilities";
  *     zoneTag: "0da42c8d2132a9ddaf714f9e7c920711",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * ```sh
- *  $ pulumi import cloudflare:index/webAnalyticsSite:WebAnalyticsSite example <account_id>/<site_tag>
+ * $ pulumi import cloudflare:index/webAnalyticsSite:WebAnalyticsSite example <account_id>/<site_tag>
  * ```
  */
 export class WebAnalyticsSite extends pulumi.CustomResource {

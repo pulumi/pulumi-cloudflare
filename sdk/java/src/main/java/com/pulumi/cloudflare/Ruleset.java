@@ -27,6 +27,7 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -443,6 +444,7 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
@@ -452,7 +454,7 @@ import javax.annotation.Nullable;
  * $ pulumi import cloudflare:index/ruleset:Ruleset example account/&lt;account_id&gt;/&lt;ruleset_id&gt;
  * ```
  * 
- *  Import a zone scoped Ruleset configuration.
+ * Import a zone scoped Ruleset configuration.
  * 
  * ```sh
  * $ pulumi import cloudflare:index/ruleset:Ruleset example zone/&lt;zone_id&gt;/&lt;ruleset_id&gt;

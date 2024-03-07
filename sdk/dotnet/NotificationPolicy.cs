@@ -14,10 +14,67 @@ namespace Pulumi.Cloudflare
     /// Cloudflare's products. The delivery mechanisms supported are email,
     /// webhooks, and PagerDuty.
     /// 
+    /// ## Example Usage
+    /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Cloudflare = Pulumi.Cloudflare;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     //## With Filters
+    ///     var example = new Cloudflare.NotificationPolicy("example", new()
+    ///     {
+    ///         AccountId = "f037e56e89293a057740de681ac9abbe",
+    ///         AlertType = "health_check_status_notification",
+    ///         Description = "Notification policy to alert on unhealthy Healthcheck status",
+    ///         EmailIntegrations = new[]
+    ///         {
+    ///             new Cloudflare.Inputs.NotificationPolicyEmailIntegrationArgs
+    ///             {
+    ///                 Id = "myemail@example.com",
+    ///             },
+    ///         },
+    ///         Enabled = true,
+    ///         Filters = new Cloudflare.Inputs.NotificationPolicyFiltersArgs
+    ///         {
+    ///             HealthCheckIds = new[]
+    ///             {
+    ///                 "699d98642c564d2e855e9661899b7252",
+    ///             },
+    ///             Statuses = new[]
+    ///             {
+    ///                 "Unhealthy",
+    ///             },
+    ///         },
+    ///         Name = "Policy for Healthcheck notification",
+    ///         PagerdutyIntegrations = new[]
+    ///         {
+    ///             new Cloudflare.Inputs.NotificationPolicyPagerdutyIntegrationArgs
+    ///             {
+    ///                 Id = "850129d136459401860572c5d964d27k",
+    ///             },
+    ///         },
+    ///         WebhooksIntegrations = new[]
+    ///         {
+    ///             new Cloudflare.Inputs.NotificationPolicyWebhooksIntegrationArgs
+    ///             {
+    ///                 Id = "1860572c5d964d27aa0f379d13645940",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
+    /// 
     /// ## Import
     /// 
     /// ```sh
-    ///  $ pulumi import cloudflare:index/notificationPolicy:NotificationPolicy example &lt;account_id&gt;/&lt;policy_id&gt;
+    /// $ pulumi import cloudflare:index/notificationPolicy:NotificationPolicy example &lt;account_id&gt;/&lt;policy_id&gt;
     /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/notificationPolicy:NotificationPolicy")]

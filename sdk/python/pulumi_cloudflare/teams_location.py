@@ -247,6 +247,7 @@ class TeamsLocation(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
@@ -264,11 +265,12 @@ class TeamsLocation(pulumi.CustomResource):
                 ),
             ])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         ```sh
-         $ pulumi import cloudflare:index/teamsLocation:TeamsLocation example <account_id>/<teams_location_id>
+        $ pulumi import cloudflare:index/teamsLocation:TeamsLocation example <account_id>/<teams_location_id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -290,6 +292,7 @@ class TeamsLocation(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
@@ -307,11 +310,12 @@ class TeamsLocation(pulumi.CustomResource):
                 ),
             ])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         ```sh
-         $ pulumi import cloudflare:index/teamsLocation:TeamsLocation example <account_id>/<teams_location_id>
+        $ pulumi import cloudflare:index/teamsLocation:TeamsLocation example <account_id>/<teams_location_id>
         ```
 
         :param str resource_name: The name of the resource.

@@ -190,10 +190,12 @@ class List(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
+        ## Example Usage
+
         ## Import
 
         ```sh
-         $ pulumi import cloudflare:index/list:List example <account_id>/<list_id>
+        $ pulumi import cloudflare:index/list:List example <account_id>/<list_id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -210,10 +212,12 @@ class List(pulumi.CustomResource):
                  args: ListArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        ## Example Usage
+
         ## Import
 
         ```sh
-         $ pulumi import cloudflare:index/list:List example <account_id>/<list_id>
+        $ pulumi import cloudflare:index/list:List example <account_id>/<list_id>
         ```
 
         :param str resource_name: The name of the resource.

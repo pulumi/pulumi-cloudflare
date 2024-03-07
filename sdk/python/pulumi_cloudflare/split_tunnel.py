@@ -170,6 +170,7 @@ class SplitTunnel(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
@@ -216,6 +217,7 @@ class SplitTunnel(pulumi.CustomResource):
                 description="example domain",
             )])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -244,6 +246,7 @@ class SplitTunnel(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
@@ -290,6 +293,7 @@ class SplitTunnel(pulumi.CustomResource):
                 description="example domain",
             )])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

@@ -166,6 +166,7 @@ class WorkerSecret(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
@@ -176,11 +177,12 @@ class WorkerSecret(pulumi.CustomResource):
             script_name="script_1",
             secret_text="my_secret_value")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         ```sh
-         $ pulumi import cloudflare:index/workerSecret:WorkerSecret example <account_id>/<script_name>/<secret_name>
+        $ pulumi import cloudflare:index/workerSecret:WorkerSecret example <account_id>/<script_name>/<secret_name>
         ```
 
         :param str resource_name: The name of the resource.
@@ -201,6 +203,7 @@ class WorkerSecret(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
@@ -211,11 +214,12 @@ class WorkerSecret(pulumi.CustomResource):
             script_name="script_1",
             secret_text="my_secret_value")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         ```sh
-         $ pulumi import cloudflare:index/workerSecret:WorkerSecret example <account_id>/<script_name>/<secret_name>
+        $ pulumi import cloudflare:index/workerSecret:WorkerSecret example <account_id>/<script_name>/<secret_name>
         ```
 
         :param str resource_name: The name of the resource.

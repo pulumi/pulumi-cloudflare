@@ -18,6 +18,8 @@ import javax.annotation.Nullable;
  * Provides a resource to manage operation-level settings in API Shield Schema Validation 2.0.
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -57,6 +59,7 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  */
 @ResourceType(type="cloudflare:index/apiShieldOperationSchemaValidationSettings:ApiShieldOperationSchemaValidationSettings")

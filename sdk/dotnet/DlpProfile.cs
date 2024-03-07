@@ -17,7 +17,7 @@ namespace Pulumi.Cloudflare
     /// ## Import
     /// 
     /// ```sh
-    ///  $ pulumi import cloudflare:index/dlpProfile:DlpProfile example &lt;account_id&gt;/&lt;dlp_profile_id&gt;
+    /// $ pulumi import cloudflare:index/dlpProfile:DlpProfile example &lt;account_id&gt;/&lt;dlp_profile_id&gt;
     /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/dlpProfile:DlpProfile")]

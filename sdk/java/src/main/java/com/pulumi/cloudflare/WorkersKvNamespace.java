@@ -17,6 +17,8 @@ import javax.annotation.Nullable;
  * Provides the ability to manage Cloudflare Workers KV Namespace features.
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -46,11 +48,12 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * ```sh
- *  $ pulumi import cloudflare:index/workersKvNamespace:WorkersKvNamespace example &lt;account_id&gt;/&lt;namespace_id&gt;
+ * $ pulumi import cloudflare:index/workersKvNamespace:WorkersKvNamespace example &lt;account_id&gt;/&lt;namespace_id&gt;
  * ```
  * 
  */

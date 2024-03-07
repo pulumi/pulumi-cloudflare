@@ -12,12 +12,12 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// ## Example Usage
+//
 // ## Import
 //
 // ```sh
-//
-//	$ pulumi import cloudflare:index/list:List example <account_id>/<list_id>
-//
+// $ pulumi import cloudflare:index/list:List example <account_id>/<list_id>
 // ```
 type List struct {
 	pulumi.CustomResourceState

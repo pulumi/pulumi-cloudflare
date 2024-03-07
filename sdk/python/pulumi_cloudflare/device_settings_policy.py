@@ -629,6 +629,7 @@ class DeviceSettingsPolicy(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
@@ -653,6 +654,7 @@ class DeviceSettingsPolicy(pulumi.CustomResource):
             support_url="https://cloudflare.com",
             switch_locked=True)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -694,6 +696,7 @@ class DeviceSettingsPolicy(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
@@ -718,6 +721,7 @@ class DeviceSettingsPolicy(pulumi.CustomResource):
             support_url="https://cloudflare.com",
             switch_locked=True)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

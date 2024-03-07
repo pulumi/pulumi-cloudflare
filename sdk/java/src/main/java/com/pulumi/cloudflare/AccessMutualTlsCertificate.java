@@ -29,6 +29,8 @@ import javax.annotation.Nullable;
  *    zone needs to use the `zone_id` argument.
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -60,6 +62,7 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
@@ -69,7 +72,7 @@ import javax.annotation.Nullable;
  * $ pulumi import cloudflare:index/accessMutualTlsCertificate:AccessMutualTlsCertificate example account/&lt;account_id&gt;/&lt;mutual_tls_certificate_id&gt;
  * ```
  * 
- *  Zone level import.
+ * Zone level import.
  * 
  * ```sh
  * $ pulumi import cloudflare:index/accessMutualTlsCertificate:AccessMutualTlsCertificate example zone/&lt;zone_id&gt;/&lt;mutual_tls_certificate_id&gt;

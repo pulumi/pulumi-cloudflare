@@ -135,6 +135,7 @@ class WorkerRoute(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
@@ -147,11 +148,12 @@ class WorkerRoute(pulumi.CustomResource):
             pattern="example.com/*",
             script_name=my_script.name)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         ```sh
-         $ pulumi import cloudflare:index/workerRoute:WorkerRoute example <zone_id>/<route_id>
+        $ pulumi import cloudflare:index/workerRoute:WorkerRoute example <zone_id>/<route_id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -171,6 +173,7 @@ class WorkerRoute(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
@@ -183,11 +186,12 @@ class WorkerRoute(pulumi.CustomResource):
             pattern="example.com/*",
             script_name=my_script.name)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         ```sh
-         $ pulumi import cloudflare:index/workerRoute:WorkerRoute example <zone_id>/<route_id>
+        $ pulumi import cloudflare:index/workerRoute:WorkerRoute example <zone_id>/<route_id>
         ```
 
         :param str resource_name: The name of the resource.

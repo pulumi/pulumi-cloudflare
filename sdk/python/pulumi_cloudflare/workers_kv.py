@@ -166,6 +166,7 @@ class WorkersKv(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
@@ -179,11 +180,12 @@ class WorkersKv(pulumi.CustomResource):
             key="test-key",
             value="test value")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         ```sh
-         $ pulumi import cloudflare:index/workersKv:WorkersKv example <account_id>/<namespace_id>/<key_name>
+        $ pulumi import cloudflare:index/workersKv:WorkersKv example <account_id>/<namespace_id>/<key_name>
         ```
 
         :param str resource_name: The name of the resource.
@@ -204,6 +206,7 @@ class WorkersKv(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
@@ -217,11 +220,12 @@ class WorkersKv(pulumi.CustomResource):
             key="test-key",
             value="test value")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         ```sh
-         $ pulumi import cloudflare:index/workersKv:WorkersKv example <account_id>/<namespace_id>/<key_name>
+        $ pulumi import cloudflare:index/workersKv:WorkersKv example <account_id>/<namespace_id>/<key_name>
         ```
 
         :param str resource_name: The name of the resource.

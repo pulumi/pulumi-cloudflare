@@ -281,6 +281,7 @@ class TurnstileWidget(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
@@ -293,11 +294,12 @@ class TurnstileWidget(pulumi.CustomResource):
             name="example widget",
             region="world")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         ```sh
-         $ pulumi import cloudflare:index/turnstileWidget:TurnstileWidget example <account_id>/<site_key>
+        $ pulumi import cloudflare:index/turnstileWidget:TurnstileWidget example <account_id>/<site_key>
         ```
 
         :param str resource_name: The name of the resource.
@@ -321,6 +323,7 @@ class TurnstileWidget(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
@@ -333,11 +336,12 @@ class TurnstileWidget(pulumi.CustomResource):
             name="example widget",
             region="world")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         ```sh
-         $ pulumi import cloudflare:index/turnstileWidget:TurnstileWidget example <account_id>/<site_key>
+        $ pulumi import cloudflare:index/turnstileWidget:TurnstileWidget example <account_id>/<site_key>
         ```
 
         :param str resource_name: The name of the resource.

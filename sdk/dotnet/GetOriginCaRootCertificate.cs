@@ -16,10 +16,9 @@ namespace Pulumi.Cloudflare
         /// [Origin CA root certificate](https://developers.cloudflare.com/ssl/origin-configuration/origin-ca#4-required-for-some-add-cloudflare-origin-ca-root-certificates)
         /// for a given algorithm."
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -35,8 +34,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetOriginCaRootCertificateResult> InvokeAsync(GetOriginCaRootCertificateArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetOriginCaRootCertificateResult>("cloudflare:index/getOriginCaRootCertificate:getOriginCaRootCertificate", args ?? new GetOriginCaRootCertificateArgs(), options.WithDefaults());
@@ -46,10 +44,9 @@ namespace Pulumi.Cloudflare
         /// [Origin CA root certificate](https://developers.cloudflare.com/ssl/origin-configuration/origin-ca#4-required-for-some-add-cloudflare-origin-ca-root-certificates)
         /// for a given algorithm."
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -65,8 +62,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetOriginCaRootCertificateResult> Invoke(GetOriginCaRootCertificateInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetOriginCaRootCertificateResult>("cloudflare:index/getOriginCaRootCertificate:getOriginCaRootCertificate", args ?? new GetOriginCaRootCertificateInvokeArgs(), options.WithDefaults());

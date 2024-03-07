@@ -14,6 +14,7 @@ import (
 
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -48,18 +49,17 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
 // ```sh
-//
-//	$ pulumi import cloudflare:index/certificatePack:CertificatePack example <zone_id>/<certificate_pack_id>
-//
+// $ pulumi import cloudflare:index/certificatePack:CertificatePack example <zone_id>/<certificate_pack_id>
 // ```
 //
-//	While supported, importing isn't recommended and it is advised to replace the
+// While supported, importing isn't recommended and it is advised to replace the
 //
-//	certificate entirely instead.
+// certificate entirely instead.
 type CertificatePack struct {
 	pulumi.CustomResourceState
 

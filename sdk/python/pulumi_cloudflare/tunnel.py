@@ -201,6 +201,7 @@ class Tunnel(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
@@ -210,11 +211,12 @@ class Tunnel(pulumi.CustomResource):
             name="my-tunnel",
             secret="AQIDBAUGBwgBAgMEBQYHCAECAwQFBgcIAQIDBAUGBwg=")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         ```sh
-         $ pulumi import cloudflare:index/tunnel:Tunnel example <account_id>/<tunnel_id>
+        $ pulumi import cloudflare:index/tunnel:Tunnel example <account_id>/<tunnel_id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -237,6 +239,7 @@ class Tunnel(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
@@ -246,11 +249,12 @@ class Tunnel(pulumi.CustomResource):
             name="my-tunnel",
             secret="AQIDBAUGBwgBAgMEBQYHCAECAwQFBgcIAQIDBAUGBwg=")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         ```sh
-         $ pulumi import cloudflare:index/tunnel:Tunnel example <account_id>/<tunnel_id>
+        $ pulumi import cloudflare:index/tunnel:Tunnel example <account_id>/<tunnel_id>
         ```
 
         :param str resource_name: The name of the resource.

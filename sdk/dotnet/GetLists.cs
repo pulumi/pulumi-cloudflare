@@ -14,10 +14,9 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Use this data source to lookup [Lists](https://developers.cloudflare.com/api/operations/lists-get-lists).
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -33,8 +32,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetListsResult> InvokeAsync(GetListsArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetListsResult>("cloudflare:index/getLists:getLists", args ?? new GetListsArgs(), options.WithDefaults());
@@ -42,10 +40,9 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Use this data source to lookup [Lists](https://developers.cloudflare.com/api/operations/lists-get-lists).
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -61,8 +58,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetListsResult> Invoke(GetListsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetListsResult>("cloudflare:index/getLists:getLists", args ?? new GetListsInvokeArgs(), options.WithDefaults());

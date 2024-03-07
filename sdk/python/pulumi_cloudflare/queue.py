@@ -102,6 +102,7 @@ class Queue(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
@@ -110,11 +111,12 @@ class Queue(pulumi.CustomResource):
             account_id="f037e56e89293a057740de681ac9abbe",
             name="my-queue")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         ```sh
-         $ pulumi import cloudflare:index/queue:Queue example <account_id>/<queue_id>
+        $ pulumi import cloudflare:index/queue:Queue example <account_id>/<queue_id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -133,6 +135,7 @@ class Queue(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
@@ -141,11 +144,12 @@ class Queue(pulumi.CustomResource):
             account_id="f037e56e89293a057740de681ac9abbe",
             name="my-queue")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         ```sh
-         $ pulumi import cloudflare:index/queue:Queue example <account_id>/<queue_id>
+        $ pulumi import cloudflare:index/queue:Queue example <account_id>/<queue_id>
         ```
 
         :param str resource_name: The name of the resource.

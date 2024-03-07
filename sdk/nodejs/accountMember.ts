@@ -9,6 +9,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
@@ -22,11 +23,12 @@ import * as utilities from "./utilities";
  *     ],
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * ```sh
- *  $ pulumi import cloudflare:index/accountMember:AccountMember example <account_id>/<member_id>
+ * $ pulumi import cloudflare:index/accountMember:AccountMember example <account_id>/<member_id>
  * ```
  */
 export class AccountMember extends pulumi.CustomResource {

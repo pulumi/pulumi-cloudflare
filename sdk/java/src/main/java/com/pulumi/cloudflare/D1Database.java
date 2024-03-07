@@ -20,6 +20,8 @@ import javax.annotation.Nullable;
  *    backup of your data before replacing a D1 Database.
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -49,11 +51,12 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * ```sh
- *  $ pulumi import cloudflare:index/d1Database:D1Database example &lt;account id&gt;/&lt;database id&gt;
+ * $ pulumi import cloudflare:index/d1Database:D1Database example &lt;account id&gt;/&lt;database id&gt;
  * ```
  * 
  */

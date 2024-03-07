@@ -18,6 +18,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -89,6 +90,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
@@ -98,13 +100,13 @@ import (
 // $ pulumi import cloudflare:index/accessRule:AccessRule default user/<user_id>/<rule_id>
 // ```
 //
-//	Zone level access rule import.
+// Zone level access rule import.
 //
 // ```sh
 // $ pulumi import cloudflare:index/accessRule:AccessRule default zone/<zone_id>/<rule_id>
 // ```
 //
-//	Account level access rule import.
+// Account level access rule import.
 //
 // ```sh
 // $ pulumi import cloudflare:index/accessRule:AccessRule default account/<account_id>/<rule_id>

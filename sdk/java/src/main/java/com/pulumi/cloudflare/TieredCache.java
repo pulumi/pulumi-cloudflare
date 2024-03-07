@@ -18,6 +18,8 @@ import javax.annotation.Nullable;
  * This allows you to adjust topologies for your zone.
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -47,6 +49,7 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  */
 @ResourceType(type="cloudflare:index/tieredCache:TieredCache")

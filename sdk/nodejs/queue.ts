@@ -9,6 +9,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
@@ -18,11 +19,12 @@ import * as utilities from "./utilities";
  *     name: "my-queue",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * ```sh
- *  $ pulumi import cloudflare:index/queue:Queue example <account_id>/<queue_id>
+ * $ pulumi import cloudflare:index/queue:Queue example <account_id>/<queue_id>
  * ```
  */
 export class Queue extends pulumi.CustomResource {

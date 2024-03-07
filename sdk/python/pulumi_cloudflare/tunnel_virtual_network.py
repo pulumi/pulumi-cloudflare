@@ -171,6 +171,7 @@ class TunnelVirtualNetwork(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
@@ -180,11 +181,12 @@ class TunnelVirtualNetwork(pulumi.CustomResource):
             comment="New tunnel virtual network for documentation",
             name="vnet-for-documentation")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         ```sh
-         $ pulumi import cloudflare:index/tunnelVirtualNetwork:TunnelVirtualNetwork example <account_id>/<vnet_id>
+        $ pulumi import cloudflare:index/tunnelVirtualNetwork:TunnelVirtualNetwork example <account_id>/<vnet_id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -208,6 +210,7 @@ class TunnelVirtualNetwork(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
@@ -217,11 +220,12 @@ class TunnelVirtualNetwork(pulumi.CustomResource):
             comment="New tunnel virtual network for documentation",
             name="vnet-for-documentation")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         ```sh
-         $ pulumi import cloudflare:index/tunnelVirtualNetwork:TunnelVirtualNetwork example <account_id>/<vnet_id>
+        $ pulumi import cloudflare:index/tunnelVirtualNetwork:TunnelVirtualNetwork example <account_id>/<vnet_id>
         ```
 
         :param str resource_name: The name of the resource.

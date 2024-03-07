@@ -229,6 +229,7 @@ class DevicePostureIntegration(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
@@ -245,11 +246,12 @@ class DevicePostureIntegration(pulumi.CustomResource):
             name="Device posture integration",
             type="workspace_one")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         ```sh
-         $ pulumi import cloudflare:index/devicePostureIntegration:DevicePostureIntegration example <account_id>/<device_posture_integration_id>
+        $ pulumi import cloudflare:index/devicePostureIntegration:DevicePostureIntegration example <account_id>/<device_posture_integration_id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -273,6 +275,7 @@ class DevicePostureIntegration(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
@@ -289,11 +292,12 @@ class DevicePostureIntegration(pulumi.CustomResource):
             name="Device posture integration",
             type="workspace_one")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         ```sh
-         $ pulumi import cloudflare:index/devicePostureIntegration:DevicePostureIntegration example <account_id>/<device_posture_integration_id>
+        $ pulumi import cloudflare:index/devicePostureIntegration:DevicePostureIntegration example <account_id>/<device_posture_integration_id>
         ```
 
         :param str resource_name: The name of the resource.

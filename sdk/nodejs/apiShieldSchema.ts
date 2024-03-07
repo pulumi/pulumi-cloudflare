@@ -9,6 +9,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
@@ -22,6 +23,7 @@ import * as utilities from "./utilities";
  *     source: fs.readFileSync("./schemas/petstore.json", "utf8"),
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export class ApiShieldSchema extends pulumi.CustomResource {
     /**

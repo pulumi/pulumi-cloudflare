@@ -282,6 +282,7 @@ class KeylessCertificate(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
@@ -295,11 +296,12 @@ class KeylessCertificate(pulumi.CustomResource):
             port=24008,
             zone_id="0da42c8d2132a9ddaf714f9e7c920711")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         ```sh
-         $ pulumi import cloudflare:index/keylessCertificate:KeylessCertificate example <zone_id>/<keyless_certificate_id>
+        $ pulumi import cloudflare:index/keylessCertificate:KeylessCertificate example <zone_id>/<keyless_certificate_id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -323,6 +325,7 @@ class KeylessCertificate(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
@@ -336,11 +339,12 @@ class KeylessCertificate(pulumi.CustomResource):
             port=24008,
             zone_id="0da42c8d2132a9ddaf714f9e7c920711")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         ```sh
-         $ pulumi import cloudflare:index/keylessCertificate:KeylessCertificate example <zone_id>/<keyless_certificate_id>
+        $ pulumi import cloudflare:index/keylessCertificate:KeylessCertificate example <zone_id>/<keyless_certificate_id>
         ```
 
         :param str resource_name: The name of the resource.

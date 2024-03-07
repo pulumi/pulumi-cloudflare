@@ -26,6 +26,8 @@ import javax.annotation.Nullable;
  * specific types of requests/responses.
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -113,11 +115,12 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * ```sh
- *  $ pulumi import cloudflare:index/rateLimit:RateLimit example &lt;zone_id&gt;/&lt;rate_limit_id&gt;
+ * $ pulumi import cloudflare:index/rateLimit:RateLimit example &lt;zone_id&gt;/&lt;rate_limit_id&gt;
  * ```
  * 
  */

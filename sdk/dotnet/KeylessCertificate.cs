@@ -14,6 +14,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// ## Example Usage
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -35,11 +36,12 @@ namespace Pulumi.Cloudflare
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
     /// ```sh
-    ///  $ pulumi import cloudflare:index/keylessCertificate:KeylessCertificate example &lt;zone_id&gt;/&lt;keyless_certificate_id&gt;
+    /// $ pulumi import cloudflare:index/keylessCertificate:KeylessCertificate example &lt;zone_id&gt;/&lt;keyless_certificate_id&gt;
     /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/keylessCertificate:KeylessCertificate")]

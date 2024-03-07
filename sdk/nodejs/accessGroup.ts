@@ -19,6 +19,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
@@ -55,11 +56,12 @@ import * as utilities from "./utilities";
  *     }],
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * ```sh
- *  $ pulumi import cloudflare:index/accessGroup:AccessGroup example <account_id>/<group_id>
+ * $ pulumi import cloudflare:index/accessGroup:AccessGroup example <account_id>/<group_id>
  * ```
  */
 export class AccessGroup extends pulumi.CustomResource {

@@ -20,6 +20,8 @@ import javax.annotation.Nullable;
  * Provides a resource, that manages Keyless certificates.
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -54,11 +56,12 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * ```sh
- *  $ pulumi import cloudflare:index/keylessCertificate:KeylessCertificate example &lt;zone_id&gt;/&lt;keyless_certificate_id&gt;
+ * $ pulumi import cloudflare:index/keylessCertificate:KeylessCertificate example &lt;zone_id&gt;/&lt;keyless_certificate_id&gt;
  * ```
  * 
  */

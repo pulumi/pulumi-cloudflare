@@ -19,9 +19,7 @@ import (
 // ## Import
 //
 // ```sh
-//
-//	$ pulumi import cloudflare:index/dlpProfile:DlpProfile example <account_id>/<dlp_profile_id>
-//
+// $ pulumi import cloudflare:index/dlpProfile:DlpProfile example <account_id>/<dlp_profile_id>
 // ```
 type DlpProfile struct {
 	pulumi.CustomResourceState

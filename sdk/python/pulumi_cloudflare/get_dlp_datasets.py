@@ -76,12 +76,14 @@ def get_dlp_datasets(account_id: Optional[str] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_cloudflare as cloudflare
 
     example = cloudflare.get_dlp_datasets(account_id="f037e56e89293a057740de681ac9abbe")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str account_id: The account ID to fetch DLP Datasets from.
@@ -105,12 +107,14 @@ def get_dlp_datasets_output(account_id: Optional[pulumi.Input[str]] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_cloudflare as cloudflare
 
     example = cloudflare.get_dlp_datasets(account_id="f037e56e89293a057740de681ac9abbe")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str account_id: The account ID to fetch DLP Datasets from.

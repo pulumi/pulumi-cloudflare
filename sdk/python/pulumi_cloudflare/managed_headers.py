@@ -140,6 +140,7 @@ class ManagedHeaders(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
@@ -156,6 +157,7 @@ class ManagedHeaders(pulumi.CustomResource):
             )],
             zone_id="0da42c8d2132a9ddaf714f9e7c920711")
         ```
+        <!--End PulumiCodeChooser -->
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -176,6 +178,7 @@ class ManagedHeaders(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
@@ -192,6 +195,7 @@ class ManagedHeaders(pulumi.CustomResource):
             )],
             zone_id="0da42c8d2132a9ddaf714f9e7c920711")
         ```
+        <!--End PulumiCodeChooser -->
 
         :param str resource_name: The name of the resource.
         :param ManagedHeadersArgs args: The arguments to use to populate this resource's properties.

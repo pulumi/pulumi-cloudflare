@@ -26,6 +26,8 @@ import javax.annotation.Nullable;
  * addresses and/or IP ranges.
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -62,11 +64,12 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * ```sh
- *  $ pulumi import cloudflare:index/zoneLockdown:ZoneLockdown example &lt;zone_id&gt;/&lt;lockdown_id&gt;
+ * $ pulumi import cloudflare:index/zoneLockdown:ZoneLockdown example &lt;zone_id&gt;/&lt;lockdown_id&gt;
  * ```
  * 
  */

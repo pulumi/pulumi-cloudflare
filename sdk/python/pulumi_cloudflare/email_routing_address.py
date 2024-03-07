@@ -166,6 +166,7 @@ class EmailRoutingAddress(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
@@ -174,11 +175,12 @@ class EmailRoutingAddress(pulumi.CustomResource):
             account_id="f037e56e89293a057740de681ac9abbe",
             email="user@example.com")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         ```sh
-         $ pulumi import cloudflare:index/emailRoutingAddress:EmailRoutingAddress example <account_id>/<email_routing_id>
+        $ pulumi import cloudflare:index/emailRoutingAddress:EmailRoutingAddress example <account_id>/<email_routing_id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -197,6 +199,7 @@ class EmailRoutingAddress(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
@@ -205,11 +208,12 @@ class EmailRoutingAddress(pulumi.CustomResource):
             account_id="f037e56e89293a057740de681ac9abbe",
             email="user@example.com")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         ```sh
-         $ pulumi import cloudflare:index/emailRoutingAddress:EmailRoutingAddress example <account_id>/<email_routing_id>
+        $ pulumi import cloudflare:index/emailRoutingAddress:EmailRoutingAddress example <account_id>/<email_routing_id>
         ```
 
         :param str resource_name: The name of the resource.

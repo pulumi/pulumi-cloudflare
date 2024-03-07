@@ -16,6 +16,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -53,13 +54,12 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
 // ```sh
-//
-//	$ pulumi import cloudflare:index/accessOrganization:AccessOrganization example <account_id>
-//
+// $ pulumi import cloudflare:index/accessOrganization:AccessOrganization example <account_id>
 // ```
 type AccessOrganization struct {
 	pulumi.CustomResourceState

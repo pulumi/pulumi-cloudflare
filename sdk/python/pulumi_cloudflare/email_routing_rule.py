@@ -252,6 +252,7 @@ class EmailRoutingRule(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
@@ -270,11 +271,12 @@ class EmailRoutingRule(pulumi.CustomResource):
             name="terraform rule",
             zone_id="0da42c8d2132a9ddaf714f9e7c920711")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         ```sh
-         $ pulumi import cloudflare:index/emailRoutingRule:EmailRoutingRule example <zone_id>/<email_routing_rule_id>
+        $ pulumi import cloudflare:index/emailRoutingRule:EmailRoutingRule example <zone_id>/<email_routing_rule_id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -297,6 +299,7 @@ class EmailRoutingRule(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
@@ -315,11 +318,12 @@ class EmailRoutingRule(pulumi.CustomResource):
             name="terraform rule",
             zone_id="0da42c8d2132a9ddaf714f9e7c920711")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         ```sh
-         $ pulumi import cloudflare:index/emailRoutingRule:EmailRoutingRule example <zone_id>/<email_routing_rule_id>
+        $ pulumi import cloudflare:index/emailRoutingRule:EmailRoutingRule example <zone_id>/<email_routing_rule_id>
         ```
 
         :param str resource_name: The name of the resource.

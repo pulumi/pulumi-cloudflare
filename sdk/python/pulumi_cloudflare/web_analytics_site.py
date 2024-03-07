@@ -232,6 +232,7 @@ class WebAnalyticsSite(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
@@ -241,11 +242,12 @@ class WebAnalyticsSite(pulumi.CustomResource):
             auto_install=True,
             zone_tag="0da42c8d2132a9ddaf714f9e7c920711")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         ```sh
-         $ pulumi import cloudflare:index/webAnalyticsSite:WebAnalyticsSite example <account_id>/<site_tag>
+        $ pulumi import cloudflare:index/webAnalyticsSite:WebAnalyticsSite example <account_id>/<site_tag>
         ```
 
         :param str resource_name: The name of the resource.
@@ -266,6 +268,7 @@ class WebAnalyticsSite(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
@@ -275,11 +278,12 @@ class WebAnalyticsSite(pulumi.CustomResource):
             auto_install=True,
             zone_tag="0da42c8d2132a9ddaf714f9e7c920711")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         ```sh
-         $ pulumi import cloudflare:index/webAnalyticsSite:WebAnalyticsSite example <account_id>/<site_tag>
+        $ pulumi import cloudflare:index/webAnalyticsSite:WebAnalyticsSite example <account_id>/<site_tag>
         ```
 
         :param str resource_name: The name of the resource.

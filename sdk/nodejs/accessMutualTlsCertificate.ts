@@ -19,6 +19,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
@@ -30,6 +31,7 @@ import * as utilities from "./utilities";
  *     associatedHostnames: ["staging.example.com"],
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
@@ -39,7 +41,7 @@ import * as utilities from "./utilities";
  * $ pulumi import cloudflare:index/accessMutualTlsCertificate:AccessMutualTlsCertificate example account/<account_id>/<mutual_tls_certificate_id>
  * ```
  *
- *  Zone level import.
+ * Zone level import.
  *
  * ```sh
  * $ pulumi import cloudflare:index/accessMutualTlsCertificate:AccessMutualTlsCertificate example zone/<zone_id>/<mutual_tls_certificate_id>

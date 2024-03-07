@@ -18,6 +18,8 @@ import javax.annotation.Nullable;
  * which are used with or without Magic Transit.
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -49,11 +51,12 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * ```sh
- *  $ pulumi import cloudflare:index/byoIpPrefix:ByoIpPrefix example &lt;account_id&gt;/&lt;prefix_id&gt;
+ * $ pulumi import cloudflare:index/byoIpPrefix:ByoIpPrefix example &lt;account_id&gt;/&lt;prefix_id&gt;
  * ```
  * 
  */

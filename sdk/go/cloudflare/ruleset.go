@@ -28,7 +28,7 @@ import (
 // $ pulumi import cloudflare:index/ruleset:Ruleset example account/<account_id>/<ruleset_id>
 // ```
 //
-//	Import a zone scoped Ruleset configuration.
+// Import a zone scoped Ruleset configuration.
 //
 // ```sh
 // $ pulumi import cloudflare:index/ruleset:Ruleset example zone/<zone_id>/<ruleset_id>

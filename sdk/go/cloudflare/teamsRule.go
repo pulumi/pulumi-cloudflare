@@ -16,6 +16,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -51,13 +52,12 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
 // ```sh
-//
-//	$ pulumi import cloudflare:index/teamsRule:TeamsRule example <account_id>/<teams_rule_id>
-//
+// $ pulumi import cloudflare:index/teamsRule:TeamsRule example <account_id>/<teams_rule_id>
 // ```
 type TeamsRule struct {
 	pulumi.CustomResourceState

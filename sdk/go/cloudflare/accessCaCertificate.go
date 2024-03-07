@@ -25,6 +25,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -58,6 +59,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
@@ -67,7 +69,7 @@ import (
 // $ pulumi import cloudflare:index/accessCaCertificate:AccessCaCertificate example account/<account_id>/<application_id>
 // ```
 //
-//	Zone level CA certificate import.
+// Zone level CA certificate import.
 //
 // ```sh
 // $ pulumi import cloudflare:index/accessCaCertificate:AccessCaCertificate example account/<zone_id>/<application_id>

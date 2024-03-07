@@ -191,6 +191,7 @@ class HostnameTlsSettingCiphers(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
@@ -200,11 +201,12 @@ class HostnameTlsSettingCiphers(pulumi.CustomResource):
             values=["ECDHE-RSA-AES128-GCM-SHA256"],
             zone_id="0da42c8d2132a9ddaf714f9e7c920711")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         ```sh
-         $ pulumi import cloudflare:index/hostnameTlsSettingCiphers:HostnameTlsSettingCiphers example <zone_id>/<hostname>
+        $ pulumi import cloudflare:index/hostnameTlsSettingCiphers:HostnameTlsSettingCiphers example <zone_id>/<hostname>
         ```
 
         :param str resource_name: The name of the resource.
@@ -225,6 +227,7 @@ class HostnameTlsSettingCiphers(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
@@ -234,11 +237,12 @@ class HostnameTlsSettingCiphers(pulumi.CustomResource):
             values=["ECDHE-RSA-AES128-GCM-SHA256"],
             zone_id="0da42c8d2132a9ddaf714f9e7c920711")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         ```sh
-         $ pulumi import cloudflare:index/hostnameTlsSettingCiphers:HostnameTlsSettingCiphers example <zone_id>/<hostname>
+        $ pulumi import cloudflare:index/hostnameTlsSettingCiphers:HostnameTlsSettingCiphers example <zone_id>/<hostname>
         ```
 
         :param str resource_name: The name of the resource.

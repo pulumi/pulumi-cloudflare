@@ -22,6 +22,8 @@ import javax.annotation.Nullable;
  * referenced when creating secure web gateway policies.
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -60,11 +62,12 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * ```sh
- *  $ pulumi import cloudflare:index/teamsLocation:TeamsLocation example &lt;account_id&gt;/&lt;teams_location_id&gt;
+ * $ pulumi import cloudflare:index/teamsLocation:TeamsLocation example &lt;account_id&gt;/&lt;teams_location_id&gt;
  * ```
  * 
  */

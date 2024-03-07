@@ -522,6 +522,7 @@ class AccessPolicy(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
@@ -554,6 +555,7 @@ class AccessPolicy(pulumi.CustomResource):
                 ips=[var["office_ip"]],
             )])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -563,7 +565,7 @@ class AccessPolicy(pulumi.CustomResource):
         $ pulumi import cloudflare:index/accessPolicy:AccessPolicy example account/<account_id>/<application_id>/<policy_id>
         ```
 
-         Zone level import.
+        Zone level import.
 
         ```sh
         $ pulumi import cloudflare:index/accessPolicy:AccessPolicy example zone/<zone_id>/<application_id>/<policy_id>
@@ -604,6 +606,7 @@ class AccessPolicy(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
@@ -636,6 +639,7 @@ class AccessPolicy(pulumi.CustomResource):
                 ips=[var["office_ip"]],
             )])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -645,7 +649,7 @@ class AccessPolicy(pulumi.CustomResource):
         $ pulumi import cloudflare:index/accessPolicy:AccessPolicy example account/<account_id>/<application_id>/<policy_id>
         ```
 
-         Zone level import.
+        Zone level import.
 
         ```sh
         $ pulumi import cloudflare:index/accessPolicy:AccessPolicy example zone/<zone_id>/<application_id>/<policy_id>

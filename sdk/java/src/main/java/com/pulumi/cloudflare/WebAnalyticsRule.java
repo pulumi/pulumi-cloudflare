@@ -19,6 +19,8 @@ import javax.annotation.Nullable;
  * Provides a Cloudflare Web Analytics Rule resource.
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -63,11 +65,12 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * ```sh
- *  $ pulumi import cloudflare:index/webAnalyticsRule:WebAnalyticsRule example &lt;account_id&gt;/&lt;ruleset_id&gt;/&lt;rule_id&gt;
+ * $ pulumi import cloudflare:index/webAnalyticsRule:WebAnalyticsRule example &lt;account_id&gt;/&lt;ruleset_id&gt;/&lt;rule_id&gt;
  * ```
  * 
  */

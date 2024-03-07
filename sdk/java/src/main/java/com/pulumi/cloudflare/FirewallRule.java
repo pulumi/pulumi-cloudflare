@@ -33,6 +33,8 @@ import javax.annotation.Nullable;
  *   developer documentation.
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -72,11 +74,12 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * ```sh
- *  $ pulumi import cloudflare:index/firewallRule:FirewallRule example &lt;zone_id&gt;/&lt;firewall_rule_id&gt;
+ * $ pulumi import cloudflare:index/firewallRule:FirewallRule example &lt;zone_id&gt;/&lt;firewall_rule_id&gt;
  * ```
  * 
  */

@@ -21,6 +21,8 @@ import javax.annotation.Nullable;
  * Provides a Cloudflare Device Posture Rule resource. Device posture rules configure security policies for device posture checks.
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -66,11 +68,12 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * ```sh
- *  $ pulumi import cloudflare:index/devicePostureRule:DevicePostureRule example &lt;account_id&gt;/&lt;device_posture_rule_id&gt;
+ * $ pulumi import cloudflare:index/devicePostureRule:DevicePostureRule example &lt;account_id&gt;/&lt;device_posture_rule_id&gt;
  * ```
  * 
  */

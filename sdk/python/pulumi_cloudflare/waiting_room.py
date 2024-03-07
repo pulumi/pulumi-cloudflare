@@ -629,6 +629,7 @@ class WaitingRoom(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
@@ -653,6 +654,7 @@ class WaitingRoom(pulumi.CustomResource):
             total_active_users=200,
             zone_id="0da42c8d2132a9ddaf714f9e7c920711")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -694,6 +696,7 @@ class WaitingRoom(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
@@ -718,6 +721,7 @@ class WaitingRoom(pulumi.CustomResource):
             total_active_users=200,
             zone_id="0da42c8d2132a9ddaf714f9e7c920711")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

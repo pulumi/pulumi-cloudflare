@@ -15,6 +15,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// ## Example Usage
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -90,11 +91,12 @@ namespace Pulumi.Cloudflare
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
     /// ```sh
-    ///  $ pulumi import cloudflare:index/loadBalancerPool:LoadBalancerPool example &lt;account_id&gt;/&lt;load_balancer_pool_id&gt;
+    /// $ pulumi import cloudflare:index/loadBalancerPool:LoadBalancerPool example &lt;account_id&gt;/&lt;load_balancer_pool_id&gt;
     /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/loadBalancerPool:LoadBalancerPool")]

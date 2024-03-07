@@ -14,6 +14,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// ## Example Usage
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -32,11 +33,12 @@ namespace Pulumi.Cloudflare
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
     /// ```sh
-    ///  $ pulumi import cloudflare:index/customPages:CustomPages example &lt;resource_level&gt;/&lt;resource_id&gt;/&lt;custom_page_type&gt;
+    /// $ pulumi import cloudflare:index/customPages:CustomPages example &lt;resource_level&gt;/&lt;resource_id&gt;/&lt;custom_page_type&gt;
     /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/customPages:CustomPages")]

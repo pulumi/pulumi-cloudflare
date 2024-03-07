@@ -209,6 +209,7 @@ class Filter(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
@@ -218,11 +219,12 @@ class Filter(pulumi.CustomResource):
             expression="(http.request.uri.path ~ \\".*wp-login.php\\" or http.request.uri.path ~ \\".*xmlrpc.php\\") and ip.src ne 192.0.2.1",
             zone_id="0da42c8d2132a9ddaf714f9e7c920711")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         ```sh
-         $ pulumi import cloudflare:index/filter:Filter example <zone_id>/<filter_id>
+        $ pulumi import cloudflare:index/filter:Filter example <zone_id>/<filter_id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -252,6 +254,7 @@ class Filter(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
@@ -261,11 +264,12 @@ class Filter(pulumi.CustomResource):
             expression="(http.request.uri.path ~ \\".*wp-login.php\\" or http.request.uri.path ~ \\".*xmlrpc.php\\") and ip.src ne 192.0.2.1",
             zone_id="0da42c8d2132a9ddaf714f9e7c920711")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         ```sh
-         $ pulumi import cloudflare:index/filter:Filter example <zone_id>/<filter_id>
+        $ pulumi import cloudflare:index/filter:Filter example <zone_id>/<filter_id>
         ```
 
         :param str resource_name: The name of the resource.
