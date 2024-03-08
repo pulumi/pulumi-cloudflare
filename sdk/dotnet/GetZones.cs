@@ -14,10 +14,9 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Use this data source to look up Zone results for use in other resources.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -37,8 +36,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetZonesResult> InvokeAsync(GetZonesArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetZonesResult>("cloudflare:index/getZones:getZones", args ?? new GetZonesArgs(), options.WithDefaults());
@@ -46,10 +44,9 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Use this data source to look up Zone results for use in other resources.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -69,8 +66,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetZonesResult> Invoke(GetZonesInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetZonesResult>("cloudflare:index/getZones:getZones", args ?? new GetZonesInvokeArgs(), options.WithDefaults());

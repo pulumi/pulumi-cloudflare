@@ -16,6 +16,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -46,13 +47,12 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
 // ```sh
-//
-//	$ pulumi import cloudflare:index/customSsl:CustomSsl example <zone_id>/<certificate_id>
-//
+// $ pulumi import cloudflare:index/customSsl:CustomSsl example <zone_id>/<certificate_id>
 // ```
 type CustomSsl struct {
 	pulumi.CustomResourceState

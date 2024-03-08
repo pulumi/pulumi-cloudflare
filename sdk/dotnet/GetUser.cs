@@ -14,10 +14,9 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Use this data source to retrieve information about the currently authenticated user.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -51,8 +50,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetUserResult> InvokeAsync(InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetUserResult>("cloudflare:index/getUser:getUser", InvokeArgs.Empty, options.WithDefaults());
@@ -60,10 +58,9 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Use this data source to retrieve information about the currently authenticated user.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -97,8 +94,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetUserResult> Invoke(InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetUserResult>("cloudflare:index/getUser:getUser", InvokeArgs.Empty, options.WithDefaults());

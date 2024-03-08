@@ -18,6 +18,8 @@ import javax.annotation.Nullable;
  * Provides a resource which manages Cloudflare account members.
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -50,11 +52,12 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * ```sh
- *  $ pulumi import cloudflare:index/accountMember:AccountMember example &lt;account_id&gt;/&lt;member_id&gt;
+ * $ pulumi import cloudflare:index/accountMember:AccountMember example &lt;account_id&gt;/&lt;member_id&gt;
  * ```
  * 
  */

@@ -121,6 +121,8 @@ public final class CloudflareFunctions {
      * Use this data source to lookup a single [Access Identity Provider](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration) by name.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -162,6 +164,7 @@ public final class CloudflareFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetAccessIdentityProviderResult> getAccessIdentityProvider(GetAccessIdentityProviderArgs args) {
@@ -171,6 +174,8 @@ public final class CloudflareFunctions {
      * Use this data source to lookup a single [Access Identity Provider](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration) by name.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -212,6 +217,7 @@ public final class CloudflareFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetAccessIdentityProviderResult> getAccessIdentityProviderPlain(GetAccessIdentityProviderPlainArgs args) {
@@ -221,6 +227,8 @@ public final class CloudflareFunctions {
      * Use this data source to lookup a single [Access Identity Provider](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration) by name.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -262,6 +270,7 @@ public final class CloudflareFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetAccessIdentityProviderResult> getAccessIdentityProvider(GetAccessIdentityProviderArgs args, InvokeOptions options) {
@@ -271,6 +280,8 @@ public final class CloudflareFunctions {
      * Use this data source to lookup a single [Access Identity Provider](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration) by name.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -312,6 +323,7 @@ public final class CloudflareFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetAccessIdentityProviderResult> getAccessIdentityProviderPlain(GetAccessIdentityProviderPlainArgs args, InvokeOptions options) {
@@ -349,6 +361,8 @@ public final class CloudflareFunctions {
      * Data source for looking up Cloudflare Accounts.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -377,6 +391,7 @@ public final class CloudflareFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetAccountsResult> getAccounts() {
@@ -386,6 +401,8 @@ public final class CloudflareFunctions {
      * Data source for looking up Cloudflare Accounts.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -414,6 +431,7 @@ public final class CloudflareFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetAccountsResult> getAccountsPlain() {
@@ -423,6 +441,8 @@ public final class CloudflareFunctions {
      * Data source for looking up Cloudflare Accounts.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -451,6 +471,7 @@ public final class CloudflareFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetAccountsResult> getAccounts(GetAccountsArgs args) {
@@ -460,6 +481,8 @@ public final class CloudflareFunctions {
      * Data source for looking up Cloudflare Accounts.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -488,6 +511,7 @@ public final class CloudflareFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetAccountsResult> getAccountsPlain(GetAccountsPlainArgs args) {
@@ -497,6 +521,8 @@ public final class CloudflareFunctions {
      * Data source for looking up Cloudflare Accounts.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -525,6 +551,7 @@ public final class CloudflareFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetAccountsResult> getAccounts(GetAccountsArgs args, InvokeOptions options) {
@@ -534,6 +561,8 @@ public final class CloudflareFunctions {
      * Data source for looking up Cloudflare Accounts.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -562,6 +591,7 @@ public final class CloudflareFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetAccountsResult> getAccountsPlain(GetAccountsPlainArgs args, InvokeOptions options) {
@@ -572,6 +602,8 @@ public final class CloudflareFunctions {
      * Commonly used as references within [`cloudflare_token`](https://www.terraform.io/docs/providers/cloudflare/r/api_token.html) resources.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -600,6 +632,7 @@ public final class CloudflareFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetApiTokenPermissionGroupsResult> getApiTokenPermissionGroups() {
@@ -610,6 +643,8 @@ public final class CloudflareFunctions {
      * Commonly used as references within [`cloudflare_token`](https://www.terraform.io/docs/providers/cloudflare/r/api_token.html) resources.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -638,6 +673,7 @@ public final class CloudflareFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetApiTokenPermissionGroupsResult> getApiTokenPermissionGroupsPlain() {
@@ -648,6 +684,8 @@ public final class CloudflareFunctions {
      * Commonly used as references within [`cloudflare_token`](https://www.terraform.io/docs/providers/cloudflare/r/api_token.html) resources.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -676,6 +714,7 @@ public final class CloudflareFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetApiTokenPermissionGroupsResult> getApiTokenPermissionGroups(InvokeArgs args) {
@@ -686,6 +725,8 @@ public final class CloudflareFunctions {
      * Commonly used as references within [`cloudflare_token`](https://www.terraform.io/docs/providers/cloudflare/r/api_token.html) resources.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -714,6 +755,7 @@ public final class CloudflareFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetApiTokenPermissionGroupsResult> getApiTokenPermissionGroupsPlain(InvokeArgs args) {
@@ -724,6 +766,8 @@ public final class CloudflareFunctions {
      * Commonly used as references within [`cloudflare_token`](https://www.terraform.io/docs/providers/cloudflare/r/api_token.html) resources.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -752,6 +796,7 @@ public final class CloudflareFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetApiTokenPermissionGroupsResult> getApiTokenPermissionGroups(InvokeArgs args, InvokeOptions options) {
@@ -762,6 +807,8 @@ public final class CloudflareFunctions {
      * Commonly used as references within [`cloudflare_token`](https://www.terraform.io/docs/providers/cloudflare/r/api_token.html) resources.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -790,6 +837,7 @@ public final class CloudflareFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetApiTokenPermissionGroupsResult> getApiTokenPermissionGroupsPlain(InvokeArgs args, InvokeOptions options) {
@@ -799,6 +847,8 @@ public final class CloudflareFunctions {
      * Use this data source to lookup a list of [Device Posture Rule](https://developers.cloudflare.com/cloudflare-one/identity/devices)
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -829,6 +879,7 @@ public final class CloudflareFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetDevicePostureRulesResult> getDevicePostureRules(GetDevicePostureRulesArgs args) {
@@ -838,6 +889,8 @@ public final class CloudflareFunctions {
      * Use this data source to lookup a list of [Device Posture Rule](https://developers.cloudflare.com/cloudflare-one/identity/devices)
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -868,6 +921,7 @@ public final class CloudflareFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetDevicePostureRulesResult> getDevicePostureRulesPlain(GetDevicePostureRulesPlainArgs args) {
@@ -877,6 +931,8 @@ public final class CloudflareFunctions {
      * Use this data source to lookup a list of [Device Posture Rule](https://developers.cloudflare.com/cloudflare-one/identity/devices)
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -907,6 +963,7 @@ public final class CloudflareFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetDevicePostureRulesResult> getDevicePostureRules(GetDevicePostureRulesArgs args, InvokeOptions options) {
@@ -916,6 +973,8 @@ public final class CloudflareFunctions {
      * Use this data source to lookup a list of [Device Posture Rule](https://developers.cloudflare.com/cloudflare-one/identity/devices)
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -946,6 +1005,7 @@ public final class CloudflareFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetDevicePostureRulesResult> getDevicePostureRulesPlain(GetDevicePostureRulesPlainArgs args, InvokeOptions options) {
@@ -955,6 +1015,8 @@ public final class CloudflareFunctions {
      * Use this data source to lookup [Devices](https://api.cloudflare.com/#devices-list-devices).
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -983,6 +1045,7 @@ public final class CloudflareFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetDevicesResult> getDevices(GetDevicesArgs args) {
@@ -992,6 +1055,8 @@ public final class CloudflareFunctions {
      * Use this data source to lookup [Devices](https://api.cloudflare.com/#devices-list-devices).
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1020,6 +1085,7 @@ public final class CloudflareFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetDevicesResult> getDevicesPlain(GetDevicesPlainArgs args) {
@@ -1029,6 +1095,8 @@ public final class CloudflareFunctions {
      * Use this data source to lookup [Devices](https://api.cloudflare.com/#devices-list-devices).
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1057,6 +1125,7 @@ public final class CloudflareFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetDevicesResult> getDevices(GetDevicesArgs args, InvokeOptions options) {
@@ -1066,6 +1135,8 @@ public final class CloudflareFunctions {
      * Use this data source to lookup [Devices](https://api.cloudflare.com/#devices-list-devices).
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1094,6 +1165,7 @@ public final class CloudflareFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetDevicesResult> getDevicesPlain(GetDevicesPlainArgs args, InvokeOptions options) {
@@ -1103,6 +1175,8 @@ public final class CloudflareFunctions {
      * Use this data source to retrieve all DLP datasets for an account.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1131,6 +1205,7 @@ public final class CloudflareFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetDlpDatasetsResult> getDlpDatasets(GetDlpDatasetsArgs args) {
@@ -1140,6 +1215,8 @@ public final class CloudflareFunctions {
      * Use this data source to retrieve all DLP datasets for an account.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1168,6 +1245,7 @@ public final class CloudflareFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetDlpDatasetsResult> getDlpDatasetsPlain(GetDlpDatasetsPlainArgs args) {
@@ -1177,6 +1255,8 @@ public final class CloudflareFunctions {
      * Use this data source to retrieve all DLP datasets for an account.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1205,6 +1285,7 @@ public final class CloudflareFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetDlpDatasetsResult> getDlpDatasets(GetDlpDatasetsArgs args, InvokeOptions options) {
@@ -1214,6 +1295,8 @@ public final class CloudflareFunctions {
      * Use this data source to retrieve all DLP datasets for an account.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1242,6 +1325,7 @@ public final class CloudflareFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetDlpDatasetsResult> getDlpDatasetsPlain(GetDlpDatasetsPlainArgs args, InvokeOptions options) {
@@ -1251,6 +1335,8 @@ public final class CloudflareFunctions {
      * Use this data source to get the [IP ranges](https://www.cloudflare.com/ips/) of Cloudflare network.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1285,6 +1371,7 @@ public final class CloudflareFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetIpRangesResult> getIpRanges() {
@@ -1294,6 +1381,8 @@ public final class CloudflareFunctions {
      * Use this data source to get the [IP ranges](https://www.cloudflare.com/ips/) of Cloudflare network.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1328,6 +1417,7 @@ public final class CloudflareFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetIpRangesResult> getIpRangesPlain() {
@@ -1337,6 +1427,8 @@ public final class CloudflareFunctions {
      * Use this data source to get the [IP ranges](https://www.cloudflare.com/ips/) of Cloudflare network.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1371,6 +1463,7 @@ public final class CloudflareFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetIpRangesResult> getIpRanges(InvokeArgs args) {
@@ -1380,6 +1473,8 @@ public final class CloudflareFunctions {
      * Use this data source to get the [IP ranges](https://www.cloudflare.com/ips/) of Cloudflare network.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1414,6 +1509,7 @@ public final class CloudflareFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetIpRangesResult> getIpRangesPlain(InvokeArgs args) {
@@ -1423,6 +1519,8 @@ public final class CloudflareFunctions {
      * Use this data source to get the [IP ranges](https://www.cloudflare.com/ips/) of Cloudflare network.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1457,6 +1555,7 @@ public final class CloudflareFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetIpRangesResult> getIpRanges(InvokeArgs args, InvokeOptions options) {
@@ -1466,6 +1565,8 @@ public final class CloudflareFunctions {
      * Use this data source to get the [IP ranges](https://www.cloudflare.com/ips/) of Cloudflare network.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1500,6 +1601,7 @@ public final class CloudflareFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetIpRangesResult> getIpRangesPlain(InvokeArgs args, InvokeOptions options) {
@@ -1509,6 +1611,8 @@ public final class CloudflareFunctions {
      * Use this data source to lookup a [List](https://developers.cloudflare.com/api/operations/lists-get-lists).
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1538,6 +1642,7 @@ public final class CloudflareFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetListResult> getList(GetListArgs args) {
@@ -1547,6 +1652,8 @@ public final class CloudflareFunctions {
      * Use this data source to lookup a [List](https://developers.cloudflare.com/api/operations/lists-get-lists).
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1576,6 +1683,7 @@ public final class CloudflareFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetListResult> getListPlain(GetListPlainArgs args) {
@@ -1585,6 +1693,8 @@ public final class CloudflareFunctions {
      * Use this data source to lookup a [List](https://developers.cloudflare.com/api/operations/lists-get-lists).
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1614,6 +1724,7 @@ public final class CloudflareFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetListResult> getList(GetListArgs args, InvokeOptions options) {
@@ -1623,6 +1734,8 @@ public final class CloudflareFunctions {
      * Use this data source to lookup a [List](https://developers.cloudflare.com/api/operations/lists-get-lists).
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1652,6 +1765,7 @@ public final class CloudflareFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetListResult> getListPlain(GetListPlainArgs args, InvokeOptions options) {
@@ -1661,6 +1775,8 @@ public final class CloudflareFunctions {
      * Use this data source to lookup [Lists](https://developers.cloudflare.com/api/operations/lists-get-lists).
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1689,6 +1805,7 @@ public final class CloudflareFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetListsResult> getLists(GetListsArgs args) {
@@ -1698,6 +1815,8 @@ public final class CloudflareFunctions {
      * Use this data source to lookup [Lists](https://developers.cloudflare.com/api/operations/lists-get-lists).
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1726,6 +1845,7 @@ public final class CloudflareFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetListsResult> getListsPlain(GetListsPlainArgs args) {
@@ -1735,6 +1855,8 @@ public final class CloudflareFunctions {
      * Use this data source to lookup [Lists](https://developers.cloudflare.com/api/operations/lists-get-lists).
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1763,6 +1885,7 @@ public final class CloudflareFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetListsResult> getLists(GetListsArgs args, InvokeOptions options) {
@@ -1772,6 +1895,8 @@ public final class CloudflareFunctions {
      * Use this data source to lookup [Lists](https://developers.cloudflare.com/api/operations/lists-get-lists).
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1800,6 +1925,7 @@ public final class CloudflareFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetListsResult> getListsPlain(GetListsPlainArgs args, InvokeOptions options) {
@@ -1809,6 +1935,8 @@ public final class CloudflareFunctions {
      * A datasource to find Load Balancer Pools.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1841,6 +1969,7 @@ public final class CloudflareFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetLoadBalancerPoolsResult> getLoadBalancerPools(GetLoadBalancerPoolsArgs args) {
@@ -1850,6 +1979,8 @@ public final class CloudflareFunctions {
      * A datasource to find Load Balancer Pools.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1882,6 +2013,7 @@ public final class CloudflareFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetLoadBalancerPoolsResult> getLoadBalancerPoolsPlain(GetLoadBalancerPoolsPlainArgs args) {
@@ -1891,6 +2023,8 @@ public final class CloudflareFunctions {
      * A datasource to find Load Balancer Pools.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1923,6 +2057,7 @@ public final class CloudflareFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetLoadBalancerPoolsResult> getLoadBalancerPools(GetLoadBalancerPoolsArgs args, InvokeOptions options) {
@@ -1932,6 +2067,8 @@ public final class CloudflareFunctions {
      * A datasource to find Load Balancer Pools.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1964,6 +2101,7 @@ public final class CloudflareFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetLoadBalancerPoolsResult> getLoadBalancerPoolsPlain(GetLoadBalancerPoolsPlainArgs args, InvokeOptions options) {
@@ -1973,6 +2111,8 @@ public final class CloudflareFunctions {
      * Use this data source to retrieve an existing origin ca certificate.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2001,6 +2141,7 @@ public final class CloudflareFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetOriginCaCertificateResult> getOriginCaCertificate(GetOriginCaCertificateArgs args) {
@@ -2010,6 +2151,8 @@ public final class CloudflareFunctions {
      * Use this data source to retrieve an existing origin ca certificate.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2038,6 +2181,7 @@ public final class CloudflareFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetOriginCaCertificateResult> getOriginCaCertificatePlain(GetOriginCaCertificatePlainArgs args) {
@@ -2047,6 +2191,8 @@ public final class CloudflareFunctions {
      * Use this data source to retrieve an existing origin ca certificate.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2075,6 +2221,7 @@ public final class CloudflareFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetOriginCaCertificateResult> getOriginCaCertificate(GetOriginCaCertificateArgs args, InvokeOptions options) {
@@ -2084,6 +2231,8 @@ public final class CloudflareFunctions {
      * Use this data source to retrieve an existing origin ca certificate.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2112,6 +2261,7 @@ public final class CloudflareFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetOriginCaCertificateResult> getOriginCaCertificatePlain(GetOriginCaCertificatePlainArgs args, InvokeOptions options) {
@@ -2123,6 +2273,8 @@ public final class CloudflareFunctions {
      * for a given algorithm.&#34;
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2151,6 +2303,7 @@ public final class CloudflareFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetOriginCaRootCertificateResult> getOriginCaRootCertificate(GetOriginCaRootCertificateArgs args) {
@@ -2162,6 +2315,8 @@ public final class CloudflareFunctions {
      * for a given algorithm.&#34;
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2190,6 +2345,7 @@ public final class CloudflareFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetOriginCaRootCertificateResult> getOriginCaRootCertificatePlain(GetOriginCaRootCertificatePlainArgs args) {
@@ -2201,6 +2357,8 @@ public final class CloudflareFunctions {
      * for a given algorithm.&#34;
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2229,6 +2387,7 @@ public final class CloudflareFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetOriginCaRootCertificateResult> getOriginCaRootCertificate(GetOriginCaRootCertificateArgs args, InvokeOptions options) {
@@ -2240,6 +2399,8 @@ public final class CloudflareFunctions {
      * for a given algorithm.&#34;
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2268,6 +2429,7 @@ public final class CloudflareFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetOriginCaRootCertificateResult> getOriginCaRootCertificatePlain(GetOriginCaRootCertificatePlainArgs args, InvokeOptions options) {
@@ -2277,6 +2439,8 @@ public final class CloudflareFunctions {
      * Use this data source to lookup a single [DNS Record](https://api.cloudflare.com/#dns-records-for-a-zone-properties).
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2306,6 +2470,7 @@ public final class CloudflareFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetRecordResult> getRecord(GetRecordArgs args) {
@@ -2315,6 +2480,8 @@ public final class CloudflareFunctions {
      * Use this data source to lookup a single [DNS Record](https://api.cloudflare.com/#dns-records-for-a-zone-properties).
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2344,6 +2511,7 @@ public final class CloudflareFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetRecordResult> getRecordPlain(GetRecordPlainArgs args) {
@@ -2353,6 +2521,8 @@ public final class CloudflareFunctions {
      * Use this data source to lookup a single [DNS Record](https://api.cloudflare.com/#dns-records-for-a-zone-properties).
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2382,6 +2552,7 @@ public final class CloudflareFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetRecordResult> getRecord(GetRecordArgs args, InvokeOptions options) {
@@ -2391,6 +2562,8 @@ public final class CloudflareFunctions {
      * Use this data source to lookup a single [DNS Record](https://api.cloudflare.com/#dns-records-for-a-zone-properties).
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2420,6 +2593,7 @@ public final class CloudflareFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetRecordResult> getRecordPlain(GetRecordPlainArgs args, InvokeOptions options) {
@@ -2429,6 +2603,8 @@ public final class CloudflareFunctions {
      * Use this datasource to lookup Rulesets in an account or zone.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2461,6 +2637,7 @@ public final class CloudflareFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetRulesetsResult> getRulesets() {
@@ -2470,6 +2647,8 @@ public final class CloudflareFunctions {
      * Use this datasource to lookup Rulesets in an account or zone.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2502,6 +2681,7 @@ public final class CloudflareFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetRulesetsResult> getRulesetsPlain() {
@@ -2511,6 +2691,8 @@ public final class CloudflareFunctions {
      * Use this datasource to lookup Rulesets in an account or zone.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2543,6 +2725,7 @@ public final class CloudflareFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetRulesetsResult> getRulesets(GetRulesetsArgs args) {
@@ -2552,6 +2735,8 @@ public final class CloudflareFunctions {
      * Use this datasource to lookup Rulesets in an account or zone.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2584,6 +2769,7 @@ public final class CloudflareFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetRulesetsResult> getRulesetsPlain(GetRulesetsPlainArgs args) {
@@ -2593,6 +2779,8 @@ public final class CloudflareFunctions {
      * Use this datasource to lookup Rulesets in an account or zone.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2625,6 +2813,7 @@ public final class CloudflareFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetRulesetsResult> getRulesets(GetRulesetsArgs args, InvokeOptions options) {
@@ -2634,6 +2823,8 @@ public final class CloudflareFunctions {
      * Use this datasource to lookup Rulesets in an account or zone.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2666,6 +2857,7 @@ public final class CloudflareFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetRulesetsResult> getRulesetsPlain(GetRulesetsPlainArgs args, InvokeOptions options) {
@@ -2675,6 +2867,8 @@ public final class CloudflareFunctions {
      * Use this datasource to lookup a tunnel in an account.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2704,6 +2898,7 @@ public final class CloudflareFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetTunnelResult> getTunnel(GetTunnelArgs args) {
@@ -2713,6 +2908,8 @@ public final class CloudflareFunctions {
      * Use this datasource to lookup a tunnel in an account.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2742,6 +2939,7 @@ public final class CloudflareFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetTunnelResult> getTunnelPlain(GetTunnelPlainArgs args) {
@@ -2751,6 +2949,8 @@ public final class CloudflareFunctions {
      * Use this datasource to lookup a tunnel in an account.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2780,6 +2980,7 @@ public final class CloudflareFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetTunnelResult> getTunnel(GetTunnelArgs args, InvokeOptions options) {
@@ -2789,6 +2990,8 @@ public final class CloudflareFunctions {
      * Use this datasource to lookup a tunnel in an account.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2818,6 +3021,7 @@ public final class CloudflareFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetTunnelResult> getTunnelPlain(GetTunnelPlainArgs args, InvokeOptions options) {
@@ -2827,6 +3031,8 @@ public final class CloudflareFunctions {
      * Use this datasource to lookup a tunnel virtual network in an account.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2856,6 +3062,7 @@ public final class CloudflareFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetTunnelVirtualNetworkResult> getTunnelVirtualNetwork(GetTunnelVirtualNetworkArgs args) {
@@ -2865,6 +3072,8 @@ public final class CloudflareFunctions {
      * Use this datasource to lookup a tunnel virtual network in an account.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2894,6 +3103,7 @@ public final class CloudflareFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetTunnelVirtualNetworkResult> getTunnelVirtualNetworkPlain(GetTunnelVirtualNetworkPlainArgs args) {
@@ -2903,6 +3113,8 @@ public final class CloudflareFunctions {
      * Use this datasource to lookup a tunnel virtual network in an account.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2932,6 +3144,7 @@ public final class CloudflareFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetTunnelVirtualNetworkResult> getTunnelVirtualNetwork(GetTunnelVirtualNetworkArgs args, InvokeOptions options) {
@@ -2941,6 +3154,8 @@ public final class CloudflareFunctions {
      * Use this datasource to lookup a tunnel virtual network in an account.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2970,6 +3185,7 @@ public final class CloudflareFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetTunnelVirtualNetworkResult> getTunnelVirtualNetworkPlain(GetTunnelVirtualNetworkPlainArgs args, InvokeOptions options) {
@@ -2979,6 +3195,8 @@ public final class CloudflareFunctions {
      * Use this data source to retrieve information about the currently authenticated user.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3017,6 +3235,7 @@ public final class CloudflareFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetUserResult> getUser() {
@@ -3026,6 +3245,8 @@ public final class CloudflareFunctions {
      * Use this data source to retrieve information about the currently authenticated user.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3064,6 +3285,7 @@ public final class CloudflareFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetUserResult> getUserPlain() {
@@ -3073,6 +3295,8 @@ public final class CloudflareFunctions {
      * Use this data source to retrieve information about the currently authenticated user.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3111,6 +3335,7 @@ public final class CloudflareFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetUserResult> getUser(InvokeArgs args) {
@@ -3120,6 +3345,8 @@ public final class CloudflareFunctions {
      * Use this data source to retrieve information about the currently authenticated user.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3158,6 +3385,7 @@ public final class CloudflareFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetUserResult> getUserPlain(InvokeArgs args) {
@@ -3167,6 +3395,8 @@ public final class CloudflareFunctions {
      * Use this data source to retrieve information about the currently authenticated user.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3205,6 +3435,7 @@ public final class CloudflareFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetUserResult> getUser(InvokeArgs args, InvokeOptions options) {
@@ -3214,6 +3445,8 @@ public final class CloudflareFunctions {
      * Use this data source to retrieve information about the currently authenticated user.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3252,6 +3485,7 @@ public final class CloudflareFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetUserResult> getUserPlain(InvokeArgs args, InvokeOptions options) {
@@ -3267,6 +3501,8 @@ public final class CloudflareFunctions {
      * resource or swap to `cloudflare.getZones` to further filter the results.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3305,6 +3541,7 @@ public final class CloudflareFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetZoneResult> getZone() {
@@ -3320,6 +3557,8 @@ public final class CloudflareFunctions {
      * resource or swap to `cloudflare.getZones` to further filter the results.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3358,6 +3597,7 @@ public final class CloudflareFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetZoneResult> getZonePlain() {
@@ -3373,6 +3613,8 @@ public final class CloudflareFunctions {
      * resource or swap to `cloudflare.getZones` to further filter the results.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3411,6 +3653,7 @@ public final class CloudflareFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetZoneResult> getZone(GetZoneArgs args) {
@@ -3426,6 +3669,8 @@ public final class CloudflareFunctions {
      * resource or swap to `cloudflare.getZones` to further filter the results.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3464,6 +3709,7 @@ public final class CloudflareFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetZoneResult> getZonePlain(GetZonePlainArgs args) {
@@ -3479,6 +3725,8 @@ public final class CloudflareFunctions {
      * resource or swap to `cloudflare.getZones` to further filter the results.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3517,6 +3765,7 @@ public final class CloudflareFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetZoneResult> getZone(GetZoneArgs args, InvokeOptions options) {
@@ -3532,6 +3781,8 @@ public final class CloudflareFunctions {
      * resource or swap to `cloudflare.getZones` to further filter the results.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3570,6 +3821,7 @@ public final class CloudflareFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetZoneResult> getZonePlain(GetZonePlainArgs args, InvokeOptions options) {
@@ -3580,6 +3832,8 @@ public final class CloudflareFunctions {
      * status for a given zone.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3608,6 +3862,7 @@ public final class CloudflareFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetZoneCacheReserveResult> getZoneCacheReserve(GetZoneCacheReserveArgs args) {
@@ -3618,6 +3873,8 @@ public final class CloudflareFunctions {
      * status for a given zone.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3646,6 +3903,7 @@ public final class CloudflareFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetZoneCacheReserveResult> getZoneCacheReservePlain(GetZoneCacheReservePlainArgs args) {
@@ -3656,6 +3914,8 @@ public final class CloudflareFunctions {
      * status for a given zone.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3684,6 +3944,7 @@ public final class CloudflareFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetZoneCacheReserveResult> getZoneCacheReserve(GetZoneCacheReserveArgs args, InvokeOptions options) {
@@ -3694,6 +3955,8 @@ public final class CloudflareFunctions {
      * status for a given zone.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3722,6 +3985,7 @@ public final class CloudflareFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetZoneCacheReserveResult> getZoneCacheReservePlain(GetZoneCacheReservePlainArgs args, InvokeOptions options) {
@@ -3731,6 +3995,8 @@ public final class CloudflareFunctions {
      * Use this data source to look up Zone DNSSEC settings.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3759,6 +4025,7 @@ public final class CloudflareFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetZoneDnssecResult> getZoneDnssec(GetZoneDnssecArgs args) {
@@ -3768,6 +4035,8 @@ public final class CloudflareFunctions {
      * Use this data source to look up Zone DNSSEC settings.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3796,6 +4065,7 @@ public final class CloudflareFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetZoneDnssecResult> getZoneDnssecPlain(GetZoneDnssecPlainArgs args) {
@@ -3805,6 +4075,8 @@ public final class CloudflareFunctions {
      * Use this data source to look up Zone DNSSEC settings.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3833,6 +4105,7 @@ public final class CloudflareFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetZoneDnssecResult> getZoneDnssec(GetZoneDnssecArgs args, InvokeOptions options) {
@@ -3842,6 +4115,8 @@ public final class CloudflareFunctions {
      * Use this data source to look up Zone DNSSEC settings.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3870,6 +4145,7 @@ public final class CloudflareFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetZoneDnssecResult> getZoneDnssecPlain(GetZoneDnssecPlainArgs args, InvokeOptions options) {
@@ -3879,6 +4155,8 @@ public final class CloudflareFunctions {
      * Use this data source to look up Zone results for use in other resources.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3911,6 +4189,7 @@ public final class CloudflareFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetZonesResult> getZones(GetZonesArgs args) {
@@ -3920,6 +4199,8 @@ public final class CloudflareFunctions {
      * Use this data source to look up Zone results for use in other resources.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3952,6 +4233,7 @@ public final class CloudflareFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetZonesResult> getZonesPlain(GetZonesPlainArgs args) {
@@ -3961,6 +4243,8 @@ public final class CloudflareFunctions {
      * Use this data source to look up Zone results for use in other resources.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3993,6 +4277,7 @@ public final class CloudflareFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetZonesResult> getZones(GetZonesArgs args, InvokeOptions options) {
@@ -4002,6 +4287,8 @@ public final class CloudflareFunctions {
      * Use this data source to look up Zone results for use in other resources.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4034,6 +4321,7 @@ public final class CloudflareFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetZonesResult> getZonesPlain(GetZonesPlainArgs args, InvokeOptions options) {

@@ -12,6 +12,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
@@ -21,11 +22,12 @@ import * as utilities from "./utilities";
  *     name: "terraform-database",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * ```sh
- *  $ pulumi import cloudflare:index/d1Database:D1Database example <account id>/<database id>
+ * $ pulumi import cloudflare:index/d1Database:D1Database example <account id>/<database id>
  * ```
  */
 export class D1Database extends pulumi.CustomResource {

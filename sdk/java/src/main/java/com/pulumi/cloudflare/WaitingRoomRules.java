@@ -20,6 +20,8 @@ import javax.annotation.Nullable;
  * Provides a Cloudflare Waiting Room Rules resource.
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -63,11 +65,12 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * ```sh
- *  $ pulumi import cloudflare:index/waitingRoomRules:WaitingRoomRules default &lt;zone_id&gt;/&lt;waiting_room_id&gt;
+ * $ pulumi import cloudflare:index/waitingRoomRules:WaitingRoomRules default &lt;zone_id&gt;/&lt;waiting_room_id&gt;
  * ```
  * 
  */

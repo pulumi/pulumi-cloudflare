@@ -18,6 +18,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -52,13 +53,12 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
 // ```sh
-//
-//	$ pulumi import cloudflare:index/staticRoute:StaticRoute example <account_id>/<static_route_id>
-//
+// $ pulumi import cloudflare:index/staticRoute:StaticRoute example <account_id>/<static_route_id>
 // ```
 type StaticRoute struct {
 	pulumi.CustomResourceState

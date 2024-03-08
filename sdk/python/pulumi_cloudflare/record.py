@@ -492,6 +492,7 @@ class Record(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
@@ -518,11 +519,12 @@ class Record(pulumi.CustomResource):
                 target="example.com",
             ))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         ```sh
-         $ pulumi import cloudflare:index/record:Record example <zone_id>/<record_id>
+        $ pulumi import cloudflare:index/record:Record example <zone_id>/<record_id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -553,6 +555,7 @@ class Record(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
@@ -579,11 +582,12 @@ class Record(pulumi.CustomResource):
                 target="example.com",
             ))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         ```sh
-         $ pulumi import cloudflare:index/record:Record example <zone_id>/<record_id>
+        $ pulumi import cloudflare:index/record:Record example <zone_id>/<record_id>
         ```
 
         :param str resource_name: The name of the resource.

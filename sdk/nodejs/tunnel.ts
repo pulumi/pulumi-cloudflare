@@ -11,6 +11,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
@@ -21,11 +22,12 @@ import * as utilities from "./utilities";
  *     secret: "AQIDBAUGBwgBAgMEBQYHCAECAwQFBgcIAQIDBAUGBwg=",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * ```sh
- *  $ pulumi import cloudflare:index/tunnel:Tunnel example <account_id>/<tunnel_id>
+ * $ pulumi import cloudflare:index/tunnel:Tunnel example <account_id>/<tunnel_id>
  * ```
  */
 export class Tunnel extends pulumi.CustomResource {

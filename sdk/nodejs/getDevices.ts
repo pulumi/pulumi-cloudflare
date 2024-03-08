@@ -11,6 +11,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
@@ -19,6 +20,7 @@ import * as utilities from "./utilities";
  *     accountId: "f037e56e89293a057740de681ac9abbe",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getDevices(args: GetDevicesArgs, opts?: pulumi.InvokeOptions): Promise<GetDevicesResult> {
 
@@ -57,6 +59,7 @@ export interface GetDevicesResult {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
@@ -65,6 +68,7 @@ export interface GetDevicesResult {
  *     accountId: "f037e56e89293a057740de681ac9abbe",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getDevicesOutput(args: GetDevicesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDevicesResult> {
     return pulumi.output(args).apply((a: any) => getDevices(a, opts))

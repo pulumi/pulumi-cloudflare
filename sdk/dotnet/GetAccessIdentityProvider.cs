@@ -14,10 +14,9 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Use this data source to lookup a single [Access Identity Provider](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration) by name.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -48,8 +47,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetAccessIdentityProviderResult> InvokeAsync(GetAccessIdentityProviderArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetAccessIdentityProviderResult>("cloudflare:index/getAccessIdentityProvider:getAccessIdentityProvider", args ?? new GetAccessIdentityProviderArgs(), options.WithDefaults());
@@ -57,10 +55,9 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Use this data source to lookup a single [Access Identity Provider](https://developers.cloudflare.com/cloudflare-one/identity/idp-integration) by name.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -91,8 +88,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetAccessIdentityProviderResult> Invoke(GetAccessIdentityProviderInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAccessIdentityProviderResult>("cloudflare:index/getAccessIdentityProvider:getAccessIdentityProvider", args ?? new GetAccessIdentityProviderInvokeArgs(), options.WithDefaults());

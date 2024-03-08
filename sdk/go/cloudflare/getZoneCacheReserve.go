@@ -16,6 +16,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -39,6 +40,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func LookupZoneCacheReserve(ctx *pulumi.Context, args *LookupZoneCacheReserveArgs, opts ...pulumi.InvokeOption) (*LookupZoneCacheReserveResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupZoneCacheReserveResult

@@ -16,12 +16,66 @@ import (
 // Cloudflare's products. The delivery mechanisms supported are email,
 // webhooks, and PagerDuty.
 //
+// ## Example Usage
+//
+// <!--Start PulumiCodeChooser -->
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// ## With Filters
+//			_, err := cloudflare.NewNotificationPolicy(ctx, "example", &cloudflare.NotificationPolicyArgs{
+//				AccountId:   pulumi.String("f037e56e89293a057740de681ac9abbe"),
+//				AlertType:   pulumi.String("health_check_status_notification"),
+//				Description: pulumi.String("Notification policy to alert on unhealthy Healthcheck status"),
+//				EmailIntegrations: cloudflare.NotificationPolicyEmailIntegrationArray{
+//					&cloudflare.NotificationPolicyEmailIntegrationArgs{
+//						Id: pulumi.String("myemail@example.com"),
+//					},
+//				},
+//				Enabled: pulumi.Bool(true),
+//				Filters: &cloudflare.NotificationPolicyFiltersArgs{
+//					HealthCheckIds: pulumi.StringArray{
+//						pulumi.String("699d98642c564d2e855e9661899b7252"),
+//					},
+//					Statuses: pulumi.StringArray{
+//						pulumi.String("Unhealthy"),
+//					},
+//				},
+//				Name: pulumi.String("Policy for Healthcheck notification"),
+//				PagerdutyIntegrations: cloudflare.NotificationPolicyPagerdutyIntegrationArray{
+//					&cloudflare.NotificationPolicyPagerdutyIntegrationArgs{
+//						Id: pulumi.String("850129d136459401860572c5d964d27k"),
+//					},
+//				},
+//				WebhooksIntegrations: cloudflare.NotificationPolicyWebhooksIntegrationArray{
+//					&cloudflare.NotificationPolicyWebhooksIntegrationArgs{
+//						Id: pulumi.String("1860572c5d964d27aa0f379d13645940"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// <!--End PulumiCodeChooser -->
+//
 // ## Import
 //
 // ```sh
-//
-//	$ pulumi import cloudflare:index/notificationPolicy:NotificationPolicy example <account_id>/<policy_id>
-//
+// $ pulumi import cloudflare:index/notificationPolicy:NotificationPolicy example <account_id>/<policy_id>
 // ```
 type NotificationPolicy struct {
 	pulumi.CustomResourceState

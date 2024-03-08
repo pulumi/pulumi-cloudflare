@@ -14,6 +14,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// ## Example Usage
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -37,11 +38,12 @@ namespace Pulumi.Cloudflare
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
     /// ```sh
-    ///  $ pulumi import cloudflare:index/turnstileWidget:TurnstileWidget example &lt;account_id&gt;/&lt;site_key&gt;
+    /// $ pulumi import cloudflare:index/turnstileWidget:TurnstileWidget example &lt;account_id&gt;/&lt;site_key&gt;
     /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/turnstileWidget:TurnstileWidget")]

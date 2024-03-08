@@ -16,6 +16,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// ## Example Usage
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -66,6 +67,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
@@ -75,13 +77,13 @@ namespace Pulumi.Cloudflare
     /// $ pulumi import cloudflare:index/authenticatedOriginPulls:AuthenticatedOriginPulls example &lt;zone_id&gt;
     /// ```
     /// 
-    ///  per zone
+    /// per zone
     /// 
     /// ```sh
     /// $ pulumi import cloudflare:index/authenticatedOriginPulls:AuthenticatedOriginPulls example &lt;zone_id&gt;/&lt;certificate_id&gt;
     /// ```
     /// 
-    ///  per hostname
+    /// per hostname
     /// 
     /// ```sh
     /// $ pulumi import cloudflare:index/authenticatedOriginPulls:AuthenticatedOriginPulls example &lt;zone_id&gt;/&lt;certificate_id&gt;/&lt;hostname&gt;

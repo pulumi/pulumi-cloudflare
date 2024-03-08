@@ -14,6 +14,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// ## Example Usage
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -51,11 +52,12 @@ namespace Pulumi.Cloudflare
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
     /// ```sh
-    ///  $ pulumi import cloudflare:index/emailRoutingRule:EmailRoutingRule example &lt;zone_id&gt;/&lt;email_routing_rule_id&gt;
+    /// $ pulumi import cloudflare:index/emailRoutingRule:EmailRoutingRule example &lt;zone_id&gt;/&lt;email_routing_rule_id&gt;
     /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/emailRoutingRule:EmailRoutingRule")]

@@ -20,6 +20,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -44,13 +45,12 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
 // ```sh
-//
-//	$ pulumi import cloudflare:index/zoneCacheReserve:ZoneCacheReserve example <zone_id>
-//
+// $ pulumi import cloudflare:index/zoneCacheReserve:ZoneCacheReserve example <zone_id>
 // ```
 type ZoneCacheReserve struct {
 	pulumi.CustomResourceState

@@ -25,6 +25,8 @@ import javax.annotation.Nullable;
  * &gt; If you are attempting to sign up a subdomain of a zone you must first have Subdomain Support entitlement for your account.
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -54,11 +56,12 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * ```sh
- *  $ pulumi import cloudflare:index/zone:Zone example &lt;zone_id&gt;
+ * $ pulumi import cloudflare:index/zone:Zone example &lt;zone_id&gt;
  * ```
  * 
  */

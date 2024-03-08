@@ -18,6 +18,8 @@ import javax.annotation.Nullable;
  * Provides a Cloudflare Device Managed Network resource. Device managed networks allow for building location-aware device settings policies.
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -53,11 +55,12 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * ```sh
- *  $ pulumi import cloudflare:index/deviceManagedNetworks:DeviceManagedNetworks example &lt;account_id&gt;/&lt;device_managed_networks_id&gt;
+ * $ pulumi import cloudflare:index/deviceManagedNetworks:DeviceManagedNetworks example &lt;account_id&gt;/&lt;device_managed_networks_id&gt;
  * ```
  * 
  */

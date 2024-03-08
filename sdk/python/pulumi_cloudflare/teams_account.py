@@ -527,6 +527,7 @@ class TeamsAccount(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
@@ -584,11 +585,12 @@ class TeamsAccount(pulumi.CustomResource):
             tls_decrypt_enabled=True,
             url_browser_isolation_enabled=True)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         ```sh
-         $ pulumi import cloudflare:index/teamsAccount:TeamsAccount example <account_id>
+        $ pulumi import cloudflare:index/teamsAccount:TeamsAccount example <account_id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -620,6 +622,7 @@ class TeamsAccount(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
@@ -677,11 +680,12 @@ class TeamsAccount(pulumi.CustomResource):
             tls_decrypt_enabled=True,
             url_browser_isolation_enabled=True)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         ```sh
-         $ pulumi import cloudflare:index/teamsAccount:TeamsAccount example <account_id>
+        $ pulumi import cloudflare:index/teamsAccount:TeamsAccount example <account_id>
         ```
 
         :param str resource_name: The name of the resource.

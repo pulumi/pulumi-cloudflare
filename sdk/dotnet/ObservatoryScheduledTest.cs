@@ -14,6 +14,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// ## Example Usage
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -32,11 +33,12 @@ namespace Pulumi.Cloudflare
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
     /// ```sh
-    ///  $ pulumi import cloudflare:index/observatoryScheduledTest:ObservatoryScheduledTest example &lt;zone_id&gt;:&lt;url&gt;:&lt;region&gt;
+    /// $ pulumi import cloudflare:index/observatoryScheduledTest:ObservatoryScheduledTest example &lt;zone_id&gt;:&lt;url&gt;:&lt;region&gt;
     /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/observatoryScheduledTest:ObservatoryScheduledTest")]

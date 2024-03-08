@@ -17,6 +17,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// ## Example Usage
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.IO;
@@ -46,11 +47,12 @@ namespace Pulumi.Cloudflare
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
     /// ```sh
-    ///  $ pulumi import cloudflare:index/workerCronTrigger:WorkerCronTrigger example &lt;account_id&gt;/&lt;script_name&gt;
+    /// $ pulumi import cloudflare:index/workerCronTrigger:WorkerCronTrigger example &lt;account_id&gt;/&lt;script_name&gt;
     /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/workerCronTrigger:WorkerCronTrigger")]

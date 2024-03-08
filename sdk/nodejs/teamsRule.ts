@@ -11,6 +11,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
@@ -29,11 +30,12 @@ import * as utilities from "./utilities";
  *     traffic: "http.request.uri == \"https://www.example.com/malicious\"",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * ```sh
- *  $ pulumi import cloudflare:index/teamsRule:TeamsRule example <account_id>/<teams_rule_id>
+ * $ pulumi import cloudflare:index/teamsRule:TeamsRule example <account_id>/<teams_rule_id>
  * ```
  */
 export class TeamsRule extends pulumi.CustomResource {

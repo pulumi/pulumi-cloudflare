@@ -280,6 +280,7 @@ class MtlsCertificate(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
@@ -297,11 +298,12 @@ class MtlsCertificate(pulumi.CustomResource):
         -----END PRIVATE KEY-----
         \"\"\")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         ```sh
-         $ pulumi import cloudflare:index/mtlsCertificate:MtlsCertificate example <account_id>/<mtls_certificate_id>
+        $ pulumi import cloudflare:index/mtlsCertificate:MtlsCertificate example <account_id>/<mtls_certificate_id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -323,6 +325,7 @@ class MtlsCertificate(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
@@ -340,11 +343,12 @@ class MtlsCertificate(pulumi.CustomResource):
         -----END PRIVATE KEY-----
         \"\"\")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         ```sh
-         $ pulumi import cloudflare:index/mtlsCertificate:MtlsCertificate example <account_id>/<mtls_certificate_id>
+        $ pulumi import cloudflare:index/mtlsCertificate:MtlsCertificate example <account_id>/<mtls_certificate_id>
         ```
 
         :param str resource_name: The name of the resource.

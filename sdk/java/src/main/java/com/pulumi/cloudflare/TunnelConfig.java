@@ -18,6 +18,8 @@ import javax.annotation.Nullable;
  * Provides a Cloudflare Tunnel configuration resource.
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -104,11 +106,12 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * ```sh
- *  $ pulumi import cloudflare:index/tunnelConfig:TunnelConfig example &lt;account_id&gt;/&lt;tunnel_id&gt;
+ * $ pulumi import cloudflare:index/tunnelConfig:TunnelConfig example &lt;account_id&gt;/&lt;tunnel_id&gt;
  * ```
  * 
  */

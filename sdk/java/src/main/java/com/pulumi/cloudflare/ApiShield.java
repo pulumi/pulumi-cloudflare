@@ -20,6 +20,8 @@ import javax.annotation.Nullable;
  * Provides a resource to manage API Shield configurations.
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -53,6 +55,7 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  */
 @ResourceType(type="cloudflare:index/apiShield:ApiShield")

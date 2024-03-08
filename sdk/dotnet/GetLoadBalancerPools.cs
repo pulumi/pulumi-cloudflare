@@ -14,10 +14,9 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// A datasource to find Load Balancer Pools.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -37,8 +36,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetLoadBalancerPoolsResult> InvokeAsync(GetLoadBalancerPoolsArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetLoadBalancerPoolsResult>("cloudflare:index/getLoadBalancerPools:getLoadBalancerPools", args ?? new GetLoadBalancerPoolsArgs(), options.WithDefaults());
@@ -46,10 +44,9 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// A datasource to find Load Balancer Pools.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -69,8 +66,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetLoadBalancerPoolsResult> Invoke(GetLoadBalancerPoolsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetLoadBalancerPoolsResult>("cloudflare:index/getLoadBalancerPools:getLoadBalancerPools", args ?? new GetLoadBalancerPoolsInvokeArgs(), options.WithDefaults());

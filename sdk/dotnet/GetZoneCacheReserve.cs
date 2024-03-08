@@ -15,10 +15,9 @@ namespace Pulumi.Cloudflare
         /// Provides a Cloudflare data source to look up Cache Reserve
         /// status for a given zone.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -34,8 +33,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetZoneCacheReserveResult> InvokeAsync(GetZoneCacheReserveArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetZoneCacheReserveResult>("cloudflare:index/getZoneCacheReserve:getZoneCacheReserve", args ?? new GetZoneCacheReserveArgs(), options.WithDefaults());
@@ -44,10 +42,9 @@ namespace Pulumi.Cloudflare
         /// Provides a Cloudflare data source to look up Cache Reserve
         /// status for a given zone.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -63,8 +60,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetZoneCacheReserveResult> Invoke(GetZoneCacheReserveInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetZoneCacheReserveResult>("cloudflare:index/getZoneCacheReserve:getZoneCacheReserve", args ?? new GetZoneCacheReserveInvokeArgs(), options.WithDefaults());

@@ -17,6 +17,8 @@ import javax.annotation.Nullable;
  * Provides a resource to manage an operation in API Shield Endpoint Management.
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -48,6 +50,7 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  */
 @ResourceType(type="cloudflare:index/apiShieldOperation:ApiShieldOperation")

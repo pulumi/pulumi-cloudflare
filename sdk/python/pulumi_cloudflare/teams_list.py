@@ -202,6 +202,7 @@ class TeamsList(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
@@ -217,11 +218,12 @@ class TeamsList(pulumi.CustomResource):
             name="Corporate devices",
             type="SERIAL")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         ```sh
-         $ pulumi import cloudflare:index/teamsList:TeamsList example <account_id>/<teams_list_id>
+        $ pulumi import cloudflare:index/teamsList:TeamsList example <account_id>/<teams_list_id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -245,6 +247,7 @@ class TeamsList(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
@@ -260,11 +263,12 @@ class TeamsList(pulumi.CustomResource):
             name="Corporate devices",
             type="SERIAL")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         ```sh
-         $ pulumi import cloudflare:index/teamsList:TeamsList example <account_id>/<teams_list_id>
+        $ pulumi import cloudflare:index/teamsList:TeamsList example <account_id>/<teams_list_id>
         ```
 
         :param str resource_name: The name of the resource.

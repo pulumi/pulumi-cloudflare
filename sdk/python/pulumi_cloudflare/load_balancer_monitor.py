@@ -635,6 +635,7 @@ class LoadBalancerMonitor(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
@@ -650,11 +651,12 @@ class LoadBalancerMonitor(pulumi.CustomResource):
             timeout=7,
             type="tcp")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         ```sh
-         $ pulumi import cloudflare:index/loadBalancerMonitor:LoadBalancerMonitor example <account_id>/<load_balancer_monitor_id>
+        $ pulumi import cloudflare:index/loadBalancerMonitor:LoadBalancerMonitor example <account_id>/<load_balancer_monitor_id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -691,6 +693,7 @@ class LoadBalancerMonitor(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
@@ -706,11 +709,12 @@ class LoadBalancerMonitor(pulumi.CustomResource):
             timeout=7,
             type="tcp")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         ```sh
-         $ pulumi import cloudflare:index/loadBalancerMonitor:LoadBalancerMonitor example <account_id>/<load_balancer_monitor_id>
+        $ pulumi import cloudflare:index/loadBalancerMonitor:LoadBalancerMonitor example <account_id>/<load_balancer_monitor_id>
         ```
 
         :param str resource_name: The name of the resource.

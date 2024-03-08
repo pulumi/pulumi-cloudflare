@@ -18,6 +18,8 @@ import javax.annotation.Nullable;
  * Provides a Cloudflare Worker secret resource.
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -49,11 +51,12 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * ```sh
- *  $ pulumi import cloudflare:index/workerSecret:WorkerSecret example &lt;account_id&gt;/&lt;script_name&gt;/&lt;secret_name&gt;
+ * $ pulumi import cloudflare:index/workerSecret:WorkerSecret example &lt;account_id&gt;/&lt;script_name&gt;/&lt;secret_name&gt;
  * ```
  * 
  */

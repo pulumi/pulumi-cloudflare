@@ -30,6 +30,8 @@ import javax.annotation.Nullable;
  *    zone needs to use the `zone_id` argument.
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -86,11 +88,12 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * ```sh
- *  $ pulumi import cloudflare:index/accessGroup:AccessGroup example &lt;account_id&gt;/&lt;group_id&gt;
+ * $ pulumi import cloudflare:index/accessGroup:AccessGroup example &lt;account_id&gt;/&lt;group_id&gt;
  * ```
  * 
  */

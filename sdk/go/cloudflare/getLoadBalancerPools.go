@@ -15,6 +15,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -41,6 +42,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func GetLoadBalancerPools(ctx *pulumi.Context, args *GetLoadBalancerPoolsArgs, opts ...pulumi.InvokeOption) (*GetLoadBalancerPoolsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetLoadBalancerPoolsResult

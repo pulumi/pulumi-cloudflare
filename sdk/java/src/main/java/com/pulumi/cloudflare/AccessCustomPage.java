@@ -20,6 +20,8 @@ import javax.annotation.Nullable;
  * when trying to reach applications behind Cloudflare Access.
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -51,6 +53,7 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  */
 @ResourceType(type="cloudflare:index/accessCustomPage:AccessCustomPage")

@@ -16,6 +16,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -46,13 +47,12 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
 // ```sh
-//
-//	$ pulumi import cloudflare:index/turnstileWidget:TurnstileWidget example <account_id>/<site_key>
-//
+// $ pulumi import cloudflare:index/turnstileWidget:TurnstileWidget example <account_id>/<site_key>
 // ```
 type TurnstileWidget struct {
 	pulumi.CustomResourceState

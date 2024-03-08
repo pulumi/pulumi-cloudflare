@@ -518,6 +518,7 @@ class WorkerScript(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import base64
@@ -561,11 +562,12 @@ class WorkerScript(pulumi.CustomResource):
                 dataset="dataset1",
             )])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         ```sh
-         $ pulumi import cloudflare:index/workerScript:WorkerScript example <account_id>/<script_name>
+        $ pulumi import cloudflare:index/workerScript:WorkerScript example <account_id>/<script_name>
         ```
 
         :param str resource_name: The name of the resource.
@@ -589,6 +591,7 @@ class WorkerScript(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import base64
@@ -632,11 +635,12 @@ class WorkerScript(pulumi.CustomResource):
                 dataset="dataset1",
             )])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         ```sh
-         $ pulumi import cloudflare:index/workerScript:WorkerScript example <account_id>/<script_name>
+        $ pulumi import cloudflare:index/workerScript:WorkerScript example <account_id>/<script_name>
         ```
 
         :param str resource_name: The name of the resource.

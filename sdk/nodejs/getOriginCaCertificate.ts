@@ -9,6 +9,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
@@ -17,6 +18,7 @@ import * as utilities from "./utilities";
  *     id: "REPLACE_ME",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getOriginCaCertificate(args: GetOriginCaCertificateArgs, opts?: pulumi.InvokeOptions): Promise<GetOriginCaCertificateResult> {
 
@@ -70,6 +72,7 @@ export interface GetOriginCaCertificateResult {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
@@ -78,6 +81,7 @@ export interface GetOriginCaCertificateResult {
  *     id: "REPLACE_ME",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getOriginCaCertificateOutput(args: GetOriginCaCertificateOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetOriginCaCertificateResult> {
     return pulumi.output(args).apply((a: any) => getOriginCaCertificate(a, opts))

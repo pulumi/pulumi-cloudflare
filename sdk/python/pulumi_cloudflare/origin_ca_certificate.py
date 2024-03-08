@@ -236,6 +236,7 @@ class OriginCaCertificate(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
@@ -254,11 +255,12 @@ class OriginCaCertificate(pulumi.CustomResource):
             request_type="origin-rsa",
             requested_validity=7)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         ```sh
-         $ pulumi import cloudflare:index/originCaCertificate:OriginCaCertificate example <certificate_id>
+        $ pulumi import cloudflare:index/originCaCertificate:OriginCaCertificate example <certificate_id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -284,6 +286,7 @@ class OriginCaCertificate(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
@@ -302,11 +305,12 @@ class OriginCaCertificate(pulumi.CustomResource):
             request_type="origin-rsa",
             requested_validity=7)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         ```sh
-         $ pulumi import cloudflare:index/originCaCertificate:OriginCaCertificate example <certificate_id>
+        $ pulumi import cloudflare:index/originCaCertificate:OriginCaCertificate example <certificate_id>
         ```
 
         :param str resource_name: The name of the resource.

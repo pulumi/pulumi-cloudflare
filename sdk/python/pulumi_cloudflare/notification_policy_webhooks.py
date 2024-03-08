@@ -228,6 +228,7 @@ class NotificationPolicyWebhooks(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
@@ -238,11 +239,12 @@ class NotificationPolicyWebhooks(pulumi.CustomResource):
             secret="my-secret",
             url="https://example.com")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         ```sh
-         $ pulumi import cloudflare:index/notificationPolicyWebhooks:NotificationPolicyWebhooks example <account_id>/<notification_webhook_id>
+        $ pulumi import cloudflare:index/notificationPolicyWebhooks:NotificationPolicyWebhooks example <account_id>/<notification_webhook_id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -263,6 +265,7 @@ class NotificationPolicyWebhooks(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
@@ -273,11 +276,12 @@ class NotificationPolicyWebhooks(pulumi.CustomResource):
             secret="my-secret",
             url="https://example.com")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         ```sh
-         $ pulumi import cloudflare:index/notificationPolicyWebhooks:NotificationPolicyWebhooks example <account_id>/<notification_webhook_id>
+        $ pulumi import cloudflare:index/notificationPolicyWebhooks:NotificationPolicyWebhooks example <account_id>/<notification_webhook_id>
         ```
 
         :param str resource_name: The name of the resource.

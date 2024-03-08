@@ -294,6 +294,7 @@ class DevicePostureRule(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
@@ -316,11 +317,12 @@ class DevicePostureRule(pulumi.CustomResource):
                 os_distro_revision="1.0.0",
             )])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         ```sh
-         $ pulumi import cloudflare:index/devicePostureRule:DevicePostureRule example <account_id>/<device_posture_rule_id>
+        $ pulumi import cloudflare:index/devicePostureRule:DevicePostureRule example <account_id>/<device_posture_rule_id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -344,6 +346,7 @@ class DevicePostureRule(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
@@ -366,11 +369,12 @@ class DevicePostureRule(pulumi.CustomResource):
                 os_distro_revision="1.0.0",
             )])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         ```sh
-         $ pulumi import cloudflare:index/devicePostureRule:DevicePostureRule example <account_id>/<device_posture_rule_id>
+        $ pulumi import cloudflare:index/devicePostureRule:DevicePostureRule example <account_id>/<device_posture_rule_id>
         ```
 
         :param str resource_name: The name of the resource.

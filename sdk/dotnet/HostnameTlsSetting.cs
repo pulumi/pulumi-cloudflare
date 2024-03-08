@@ -14,6 +14,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// ## Example Usage
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -32,11 +33,12 @@ namespace Pulumi.Cloudflare
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
     /// ```sh
-    ///  $ pulumi import cloudflare:index/hostnameTlsSetting:HostnameTlsSetting example &lt;zone_id&gt;/&lt;hostname&gt;/&lt;setting_name&gt;
+    /// $ pulumi import cloudflare:index/hostnameTlsSetting:HostnameTlsSetting example &lt;zone_id&gt;/&lt;hostname&gt;/&lt;setting_name&gt;
     /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/hostnameTlsSetting:HostnameTlsSetting")]

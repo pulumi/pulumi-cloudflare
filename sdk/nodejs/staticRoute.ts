@@ -11,6 +11,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
@@ -26,11 +27,12 @@ import * as utilities from "./utilities";
  *     weight: 10,
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * ```sh
- *  $ pulumi import cloudflare:index/staticRoute:StaticRoute example <account_id>/<static_route_id>
+ * $ pulumi import cloudflare:index/staticRoute:StaticRoute example <account_id>/<static_route_id>
  * ```
  */
 export class StaticRoute extends pulumi.CustomResource {

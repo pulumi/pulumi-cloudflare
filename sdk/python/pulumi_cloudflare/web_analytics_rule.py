@@ -230,6 +230,7 @@ class WebAnalyticsRule(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
@@ -247,11 +248,12 @@ class WebAnalyticsRule(pulumi.CustomResource):
             is_paused=False,
             opts=pulumi.ResourceOptions(depends_on=[example_web_analytics_site]))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         ```sh
-         $ pulumi import cloudflare:index/webAnalyticsRule:WebAnalyticsRule example <account_id>/<ruleset_id>/<rule_id>
+        $ pulumi import cloudflare:index/webAnalyticsRule:WebAnalyticsRule example <account_id>/<ruleset_id>/<rule_id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -274,6 +276,7 @@ class WebAnalyticsRule(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
@@ -291,11 +294,12 @@ class WebAnalyticsRule(pulumi.CustomResource):
             is_paused=False,
             opts=pulumi.ResourceOptions(depends_on=[example_web_analytics_site]))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         ```sh
-         $ pulumi import cloudflare:index/webAnalyticsRule:WebAnalyticsRule example <account_id>/<ruleset_id>/<rule_id>
+        $ pulumi import cloudflare:index/webAnalyticsRule:WebAnalyticsRule example <account_id>/<ruleset_id>/<rule_id>
         ```
 
         :param str resource_name: The name of the resource.

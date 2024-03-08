@@ -33,6 +33,8 @@ import javax.annotation.Nullable;
  *    zone needs to use the `zone_id` argument.
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -87,6 +89,7 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
@@ -96,7 +99,7 @@ import javax.annotation.Nullable;
  * $ pulumi import cloudflare:index/accessPolicy:AccessPolicy example account/&lt;account_id&gt;/&lt;application_id&gt;/&lt;policy_id&gt;
  * ```
  * 
- *  Zone level import.
+ * Zone level import.
  * 
  * ```sh
  * $ pulumi import cloudflare:index/accessPolicy:AccessPolicy example zone/&lt;zone_id&gt;/&lt;application_id&gt;/&lt;policy_id&gt;

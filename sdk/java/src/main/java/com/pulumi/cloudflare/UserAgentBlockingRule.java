@@ -19,6 +19,8 @@ import javax.annotation.Nullable;
  * Provides a resource to manage User Agent Blocking Rules.
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -66,11 +68,12 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * ```sh
- *  $ pulumi import cloudflare:index/userAgentBlockingRule:UserAgentBlockingRule example &lt;zone_id&gt;/&lt;user_agent_blocking_rule_id&gt;
+ * $ pulumi import cloudflare:index/userAgentBlockingRule:UserAgentBlockingRule example &lt;zone_id&gt;/&lt;user_agent_blocking_rule_id&gt;
  * ```
  * 
  */

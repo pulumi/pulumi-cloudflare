@@ -22,6 +22,8 @@ import javax.annotation.Nullable;
  * private IPs in your origins.
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -52,11 +54,12 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * ```sh
- *  $ pulumi import cloudflare:index/tunnelVirtualNetwork:TunnelVirtualNetwork example &lt;account_id&gt;/&lt;vnet_id&gt;
+ * $ pulumi import cloudflare:index/tunnelVirtualNetwork:TunnelVirtualNetwork example &lt;account_id&gt;/&lt;vnet_id&gt;
  * ```
  * 
  */

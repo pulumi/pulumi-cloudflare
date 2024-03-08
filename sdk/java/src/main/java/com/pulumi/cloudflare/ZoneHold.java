@@ -20,6 +20,8 @@ import javax.annotation.Nullable;
  * the hostname to another account for use.
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -49,11 +51,12 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * ```sh
- *  $ pulumi import cloudflare:index/zoneHold:ZoneHold example &lt;zone_id&gt;
+ * $ pulumi import cloudflare:index/zoneHold:ZoneHold example &lt;zone_id&gt;
  * ```
  * 
  */

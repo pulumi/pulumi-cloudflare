@@ -20,6 +20,8 @@ import javax.annotation.Nullable;
  * Provides a Cloudflare Device Settings Policy resource. Device policies configure settings applied to WARP devices.
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -65,6 +67,7 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 

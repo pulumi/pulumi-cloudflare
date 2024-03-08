@@ -23,6 +23,8 @@ import javax.annotation.Nullable;
  * The [Email Routing Rule](https://developers.cloudflare.com/email-routing/setup/email-routing-addresses/#email-rule-actions) resource allows you to create and manage email routing rules for a zone.
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -64,11 +66,12 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * ```sh
- *  $ pulumi import cloudflare:index/emailRoutingRule:EmailRoutingRule example &lt;zone_id&gt;/&lt;email_routing_rule_id&gt;
+ * $ pulumi import cloudflare:index/emailRoutingRule:EmailRoutingRule example &lt;zone_id&gt;/&lt;email_routing_rule_id&gt;
  * ```
  * 
  */

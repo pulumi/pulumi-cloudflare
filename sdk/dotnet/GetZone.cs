@@ -20,10 +20,9 @@ namespace Pulumi.Cloudflare
         /// using this setup, it is advised to use the `account_id` attribute on this
         /// resource or swap to `cloudflare.getZones` to further filter the results.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -48,8 +47,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetZoneResult> InvokeAsync(GetZoneArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetZoneResult>("cloudflare:index/getZone:getZone", args ?? new GetZoneArgs(), options.WithDefaults());
@@ -63,10 +61,9 @@ namespace Pulumi.Cloudflare
         /// using this setup, it is advised to use the `account_id` attribute on this
         /// resource or swap to `cloudflare.getZones` to further filter the results.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -91,8 +88,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetZoneResult> Invoke(GetZoneInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetZoneResult>("cloudflare:index/getZone:getZone", args ?? new GetZoneInvokeArgs(), options.WithDefaults());

@@ -14,10 +14,9 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Use this data source to retrieve all DLP datasets for an account.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -33,8 +32,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetDlpDatasetsResult> InvokeAsync(GetDlpDatasetsArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetDlpDatasetsResult>("cloudflare:index/getDlpDatasets:getDlpDatasets", args ?? new GetDlpDatasetsArgs(), options.WithDefaults());
@@ -42,10 +40,9 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// Use this data source to retrieve all DLP datasets for an account.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -61,8 +58,7 @@ namespace Pulumi.Cloudflare
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetDlpDatasetsResult> Invoke(GetDlpDatasetsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetDlpDatasetsResult>("cloudflare:index/getDlpDatasets:getDlpDatasets", args ?? new GetDlpDatasetsInvokeArgs(), options.WithDefaults());

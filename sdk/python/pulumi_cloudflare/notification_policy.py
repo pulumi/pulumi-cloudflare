@@ -365,10 +365,40 @@ class NotificationPolicy(pulumi.CustomResource):
         Cloudflare's products. The delivery mechanisms supported are email,
         webhooks, and PagerDuty.
 
+        ## Example Usage
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        ### With Filters
+        example = cloudflare.NotificationPolicy("example",
+            account_id="f037e56e89293a057740de681ac9abbe",
+            alert_type="health_check_status_notification",
+            description="Notification policy to alert on unhealthy Healthcheck status",
+            email_integrations=[cloudflare.NotificationPolicyEmailIntegrationArgs(
+                id="myemail@example.com",
+            )],
+            enabled=True,
+            filters=cloudflare.NotificationPolicyFiltersArgs(
+                health_check_ids=["699d98642c564d2e855e9661899b7252"],
+                statuses=["Unhealthy"],
+            ),
+            name="Policy for Healthcheck notification",
+            pagerduty_integrations=[cloudflare.NotificationPolicyPagerdutyIntegrationArgs(
+                id="850129d136459401860572c5d964d27k",
+            )],
+            webhooks_integrations=[cloudflare.NotificationPolicyWebhooksIntegrationArgs(
+                id="1860572c5d964d27aa0f379d13645940",
+            )])
+        ```
+        <!--End PulumiCodeChooser -->
+
         ## Import
 
         ```sh
-         $ pulumi import cloudflare:index/notificationPolicy:NotificationPolicy example <account_id>/<policy_id>
+        $ pulumi import cloudflare:index/notificationPolicy:NotificationPolicy example <account_id>/<policy_id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -394,10 +424,40 @@ class NotificationPolicy(pulumi.CustomResource):
         Cloudflare's products. The delivery mechanisms supported are email,
         webhooks, and PagerDuty.
 
+        ## Example Usage
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+
+        ### With Filters
+        example = cloudflare.NotificationPolicy("example",
+            account_id="f037e56e89293a057740de681ac9abbe",
+            alert_type="health_check_status_notification",
+            description="Notification policy to alert on unhealthy Healthcheck status",
+            email_integrations=[cloudflare.NotificationPolicyEmailIntegrationArgs(
+                id="myemail@example.com",
+            )],
+            enabled=True,
+            filters=cloudflare.NotificationPolicyFiltersArgs(
+                health_check_ids=["699d98642c564d2e855e9661899b7252"],
+                statuses=["Unhealthy"],
+            ),
+            name="Policy for Healthcheck notification",
+            pagerduty_integrations=[cloudflare.NotificationPolicyPagerdutyIntegrationArgs(
+                id="850129d136459401860572c5d964d27k",
+            )],
+            webhooks_integrations=[cloudflare.NotificationPolicyWebhooksIntegrationArgs(
+                id="1860572c5d964d27aa0f379d13645940",
+            )])
+        ```
+        <!--End PulumiCodeChooser -->
+
         ## Import
 
         ```sh
-         $ pulumi import cloudflare:index/notificationPolicy:NotificationPolicy example <account_id>/<policy_id>
+        $ pulumi import cloudflare:index/notificationPolicy:NotificationPolicy example <account_id>/<policy_id>
         ```
 
         :param str resource_name: The name of the resource.

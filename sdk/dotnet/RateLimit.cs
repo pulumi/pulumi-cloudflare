@@ -16,6 +16,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// ## Example Usage
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -102,11 +103,12 @@ namespace Pulumi.Cloudflare
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
     /// ```sh
-    ///  $ pulumi import cloudflare:index/rateLimit:RateLimit example &lt;zone_id&gt;/&lt;rate_limit_id&gt;
+    /// $ pulumi import cloudflare:index/rateLimit:RateLimit example &lt;zone_id&gt;/&lt;rate_limit_id&gt;
     /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/rateLimit:RateLimit")]
