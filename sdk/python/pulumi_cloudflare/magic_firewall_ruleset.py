@@ -162,6 +162,7 @@ class MagicFirewallRuleset(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
@@ -185,13 +186,14 @@ class MagicFirewallRuleset(pulumi.CustomResource):
                 },
             ])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         An existing Magic Firewall Ruleset can be imported using the account ID and ruleset ID
 
         ```sh
-         $ pulumi import cloudflare:index/magicFirewallRuleset:MagicFirewallRuleset example d41d8cd98f00b204e9800998ecf8427e/cb029e245cfdd66dc8d2e570d5dd3322
+        $ pulumi import cloudflare:index/magicFirewallRuleset:MagicFirewallRuleset example d41d8cd98f00b204e9800998ecf8427e/cb029e245cfdd66dc8d2e570d5dd3322
         ```
 
         :param str resource_name: The name of the resource.
@@ -213,6 +215,7 @@ class MagicFirewallRuleset(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
@@ -236,13 +239,14 @@ class MagicFirewallRuleset(pulumi.CustomResource):
                 },
             ])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         An existing Magic Firewall Ruleset can be imported using the account ID and ruleset ID
 
         ```sh
-         $ pulumi import cloudflare:index/magicFirewallRuleset:MagicFirewallRuleset example d41d8cd98f00b204e9800998ecf8427e/cb029e245cfdd66dc8d2e570d5dd3322
+        $ pulumi import cloudflare:index/magicFirewallRuleset:MagicFirewallRuleset example d41d8cd98f00b204e9800998ecf8427e/cb029e245cfdd66dc8d2e570d5dd3322
         ```
 
         :param str resource_name: The name of the resource.

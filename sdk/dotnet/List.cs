@@ -10,10 +10,12 @@ using Pulumi.Serialization;
 namespace Pulumi.Cloudflare
 {
     /// <summary>
+    /// ## Example Usage
+    /// 
     /// ## Import
     /// 
     /// ```sh
-    ///  $ pulumi import cloudflare:index/list:List example &lt;account_id&gt;/&lt;list_id&gt;
+    /// $ pulumi import cloudflare:index/list:List example &lt;account_id&gt;/&lt;list_id&gt;
     /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/list:List")]

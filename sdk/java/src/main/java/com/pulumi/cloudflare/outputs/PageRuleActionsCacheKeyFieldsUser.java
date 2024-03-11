@@ -25,6 +25,8 @@ public final class PageRuleActionsCacheKeyFieldsUser {
      * @return `true` - includes the first language code contained in the `Accept-Language` header sent by the client; defaults to `false`.
      * 
      * Example:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -87,6 +89,7 @@ public final class PageRuleActionsCacheKeyFieldsUser {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     private @Nullable Boolean lang;
@@ -110,6 +113,8 @@ public final class PageRuleActionsCacheKeyFieldsUser {
      * @return `true` - includes the first language code contained in the `Accept-Language` header sent by the client; defaults to `false`.
      * 
      * Example:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -172,6 +177,7 @@ public final class PageRuleActionsCacheKeyFieldsUser {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public Optional<Boolean> lang() {

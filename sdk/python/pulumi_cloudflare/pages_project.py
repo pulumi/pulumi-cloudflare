@@ -287,6 +287,7 @@ class PagesProject(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
@@ -421,6 +422,7 @@ class PagesProject(pulumi.CustomResource):
                 type="github",
             ))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -454,6 +456,7 @@ class PagesProject(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
@@ -588,6 +591,7 @@ class PagesProject(pulumi.CustomResource):
                 type="github",
             ))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

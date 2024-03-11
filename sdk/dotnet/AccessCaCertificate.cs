@@ -22,6 +22,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// ## Example Usage
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -46,6 +47,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
@@ -55,7 +57,7 @@ namespace Pulumi.Cloudflare
     /// $ pulumi import cloudflare:index/accessCaCertificate:AccessCaCertificate example account/&lt;account_id&gt;/&lt;application_id&gt;
     /// ```
     /// 
-    ///  Zone level CA certificate import.
+    /// Zone level CA certificate import.
     /// 
     /// ```sh
     /// $ pulumi import cloudflare:index/accessCaCertificate:AccessCaCertificate example account/&lt;zone_id&gt;/&lt;application_id&gt;

@@ -301,6 +301,7 @@ class StaticRoute(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
@@ -315,11 +316,12 @@ class StaticRoute(pulumi.CustomResource):
             priority=100,
             weight=10)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         ```sh
-         $ pulumi import cloudflare:index/staticRoute:StaticRoute example <account_id>/<static_route_id>
+        $ pulumi import cloudflare:index/staticRoute:StaticRoute example <account_id>/<static_route_id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -346,6 +348,7 @@ class StaticRoute(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
@@ -360,11 +363,12 @@ class StaticRoute(pulumi.CustomResource):
             priority=100,
             weight=10)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         ```sh
-         $ pulumi import cloudflare:index/staticRoute:StaticRoute example <account_id>/<static_route_id>
+        $ pulumi import cloudflare:index/staticRoute:StaticRoute example <account_id>/<static_route_id>
         ```
 
         :param str resource_name: The name of the resource.

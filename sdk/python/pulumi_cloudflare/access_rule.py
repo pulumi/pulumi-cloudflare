@@ -205,6 +205,7 @@ class AccessRule(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
@@ -246,6 +247,7 @@ class AccessRule(pulumi.CustomResource):
                     value=my_office[count["index"]],
                 )))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -255,13 +257,13 @@ class AccessRule(pulumi.CustomResource):
         $ pulumi import cloudflare:index/accessRule:AccessRule default user/<user_id>/<rule_id>
         ```
 
-         Zone level access rule import.
+        Zone level access rule import.
 
         ```sh
         $ pulumi import cloudflare:index/accessRule:AccessRule default zone/<zone_id>/<rule_id>
         ```
 
-         Account level access rule import.
+        Account level access rule import.
 
         ```sh
         $ pulumi import cloudflare:index/accessRule:AccessRule default account/<account_id>/<rule_id>
@@ -288,6 +290,7 @@ class AccessRule(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
@@ -329,6 +332,7 @@ class AccessRule(pulumi.CustomResource):
                     value=my_office[count["index"]],
                 )))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -338,13 +342,13 @@ class AccessRule(pulumi.CustomResource):
         $ pulumi import cloudflare:index/accessRule:AccessRule default user/<user_id>/<rule_id>
         ```
 
-         Zone level access rule import.
+        Zone level access rule import.
 
         ```sh
         $ pulumi import cloudflare:index/accessRule:AccessRule default zone/<zone_id>/<rule_id>
         ```
 
-         Account level access rule import.
+        Account level access rule import.
 
         ```sh
         $ pulumi import cloudflare:index/accessRule:AccessRule default account/<account_id>/<rule_id>

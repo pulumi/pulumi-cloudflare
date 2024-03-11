@@ -11,6 +11,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
@@ -19,6 +20,7 @@ import * as utilities from "./utilities";
  *     algorithm: "rsa",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getOriginCaRootCertificate(args: GetOriginCaRootCertificateArgs, opts?: pulumi.InvokeOptions): Promise<GetOriginCaRootCertificateResult> {
 
@@ -62,6 +64,7 @@ export interface GetOriginCaRootCertificateResult {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
@@ -70,6 +73,7 @@ export interface GetOriginCaRootCertificateResult {
  *     algorithm: "rsa",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getOriginCaRootCertificateOutput(args: GetOriginCaRootCertificateOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetOriginCaRootCertificateResult> {
     return pulumi.output(args).apply((a: any) => getOriginCaRootCertificate(a, opts))

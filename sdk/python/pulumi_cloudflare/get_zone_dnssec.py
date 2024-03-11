@@ -183,12 +183,14 @@ def get_zone_dnssec(zone_id: Optional[str] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_cloudflare as cloudflare
 
     example = cloudflare.get_zone_dnssec(zone_id="0da42c8d2132a9ddaf714f9e7c920711")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str zone_id: The zone identifier to target for the resource.
@@ -221,12 +223,14 @@ def get_zone_dnssec_output(zone_id: Optional[pulumi.Input[str]] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_cloudflare as cloudflare
 
     example = cloudflare.get_zone_dnssec(zone_id="0da42c8d2132a9ddaf714f9e7c920711")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str zone_id: The zone identifier to target for the resource.

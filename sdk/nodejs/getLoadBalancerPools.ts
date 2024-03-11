@@ -11,6 +11,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
@@ -22,6 +23,7 @@ import * as utilities from "./utilities";
  *     },
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getLoadBalancerPools(args: GetLoadBalancerPoolsArgs, opts?: pulumi.InvokeOptions): Promise<GetLoadBalancerPoolsResult> {
 
@@ -77,6 +79,7 @@ export interface GetLoadBalancerPoolsResult {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
@@ -88,6 +91,7 @@ export interface GetLoadBalancerPoolsResult {
  *     },
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getLoadBalancerPoolsOutput(args: GetLoadBalancerPoolsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetLoadBalancerPoolsResult> {
     return pulumi.output(args).apply((a: any) => getLoadBalancerPools(a, opts))

@@ -155,6 +155,7 @@ class LogpushOwnershipChallenge(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
@@ -163,6 +164,7 @@ class LogpushOwnershipChallenge(pulumi.CustomResource):
             destination_conf="s3://my-bucket-path?region=us-west-2",
             zone_id="0da42c8d2132a9ddaf714f9e7c920711")
         ```
+        <!--End PulumiCodeChooser -->
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -184,6 +186,7 @@ class LogpushOwnershipChallenge(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
@@ -192,6 +195,7 @@ class LogpushOwnershipChallenge(pulumi.CustomResource):
             destination_conf="s3://my-bucket-path?region=us-west-2",
             zone_id="0da42c8d2132a9ddaf714f9e7c920711")
         ```
+        <!--End PulumiCodeChooser -->
 
         :param str resource_name: The name of the resource.
         :param LogpushOwnershipChallengeArgs args: The arguments to use to populate this resource's properties.

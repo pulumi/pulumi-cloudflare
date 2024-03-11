@@ -15,6 +15,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// ## Example Usage
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -32,11 +33,12 @@ namespace Pulumi.Cloudflare
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
     /// ```sh
-    ///  $ pulumi import cloudflare:index/account:Account example &lt;account_id&gt;
+    /// $ pulumi import cloudflare:index/account:Account example &lt;account_id&gt;
     /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/account:Account")]

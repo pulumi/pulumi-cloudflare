@@ -25,6 +25,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -50,13 +51,12 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
 // ```sh
-//
-//	$ pulumi import cloudflare:index/filter:Filter example <zone_id>/<filter_id>
-//
+// $ pulumi import cloudflare:index/filter:Filter example <zone_id>/<filter_id>
 // ```
 type Filter struct {
 	pulumi.CustomResourceState

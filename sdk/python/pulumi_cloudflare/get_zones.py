@@ -77,6 +77,7 @@ def get_zones(filter: Optional[pulumi.InputType['GetZonesFilterArgs']] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_cloudflare as cloudflare
@@ -86,6 +87,7 @@ def get_zones(filter: Optional[pulumi.InputType['GetZonesFilterArgs']] = None,
         status="active",
     ))
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param pulumi.InputType['GetZonesFilterArgs'] filter: One or more values used to look up zone records. If more than one value is given all values must match in order to be included.
@@ -109,6 +111,7 @@ def get_zones_output(filter: Optional[pulumi.Input[pulumi.InputType['GetZonesFil
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_cloudflare as cloudflare
@@ -118,6 +121,7 @@ def get_zones_output(filter: Optional[pulumi.Input[pulumi.InputType['GetZonesFil
         status="active",
     ))
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param pulumi.InputType['GetZonesFilterArgs'] filter: One or more values used to look up zone records. If more than one value is given all values must match in order to be included.

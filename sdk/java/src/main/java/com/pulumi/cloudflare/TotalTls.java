@@ -19,6 +19,8 @@ import javax.annotation.Nullable;
  * Provides a resource which manages Total TLS for a zone.
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -49,11 +51,12 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * ```sh
- *  $ pulumi import cloudflare:index/totalTls:TotalTls example &lt;zone_id&gt;
+ * $ pulumi import cloudflare:index/totalTls:TotalTls example &lt;zone_id&gt;
  * ```
  * 
  */

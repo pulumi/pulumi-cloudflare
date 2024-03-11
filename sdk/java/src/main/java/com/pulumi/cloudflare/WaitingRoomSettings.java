@@ -19,6 +19,8 @@ import javax.annotation.Nullable;
  * Configure zone-wide settings for Cloudflare waiting rooms.
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -48,11 +50,12 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * ```sh
- *  $ pulumi import cloudflare:index/waitingRoomSettings:WaitingRoomSettings example &lt;zone_id&gt;
+ * $ pulumi import cloudflare:index/waitingRoomSettings:WaitingRoomSettings example &lt;zone_id&gt;
  * ```
  * 
  */

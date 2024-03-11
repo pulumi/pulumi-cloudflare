@@ -212,6 +212,7 @@ class AccessGroup(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
@@ -245,11 +246,12 @@ class AccessGroup(pulumi.CustomResource):
                 )],
             )])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         ```sh
-         $ pulumi import cloudflare:index/accessGroup:AccessGroup example <account_id>/<group_id>
+        $ pulumi import cloudflare:index/accessGroup:AccessGroup example <account_id>/<group_id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -276,6 +278,7 @@ class AccessGroup(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
@@ -309,11 +312,12 @@ class AccessGroup(pulumi.CustomResource):
                 )],
             )])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         ```sh
-         $ pulumi import cloudflare:index/accessGroup:AccessGroup example <account_id>/<group_id>
+        $ pulumi import cloudflare:index/accessGroup:AccessGroup example <account_id>/<group_id>
         ```
 
         :param str resource_name: The name of the resource.

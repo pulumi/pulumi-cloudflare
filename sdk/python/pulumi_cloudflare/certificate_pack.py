@@ -346,6 +346,7 @@ class CertificatePack(pulumi.CustomResource):
         """
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
@@ -364,16 +365,17 @@ class CertificatePack(pulumi.CustomResource):
             wait_for_active_status=True,
             zone_id="0da42c8d2132a9ddaf714f9e7c920711")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         ```sh
-         $ pulumi import cloudflare:index/certificatePack:CertificatePack example <zone_id>/<certificate_pack_id>
+        $ pulumi import cloudflare:index/certificatePack:CertificatePack example <zone_id>/<certificate_pack_id>
         ```
 
-         While supported, importing isn't recommended and it is advised to replace the
+        While supported, importing isn't recommended and it is advised to replace the
 
-         certificate entirely instead.
+        certificate entirely instead.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -395,6 +397,7 @@ class CertificatePack(pulumi.CustomResource):
         """
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
@@ -413,16 +416,17 @@ class CertificatePack(pulumi.CustomResource):
             wait_for_active_status=True,
             zone_id="0da42c8d2132a9ddaf714f9e7c920711")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         ```sh
-         $ pulumi import cloudflare:index/certificatePack:CertificatePack example <zone_id>/<certificate_pack_id>
+        $ pulumi import cloudflare:index/certificatePack:CertificatePack example <zone_id>/<certificate_pack_id>
         ```
 
-         While supported, importing isn't recommended and it is advised to replace the
+        While supported, importing isn't recommended and it is advised to replace the
 
-         certificate entirely instead.
+        certificate entirely instead.
 
         :param str resource_name: The name of the resource.
         :param CertificatePackArgs args: The arguments to use to populate this resource's properties.

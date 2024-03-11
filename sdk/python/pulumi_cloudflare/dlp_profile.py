@@ -236,7 +236,7 @@ class DlpProfile(pulumi.CustomResource):
         ## Import
 
         ```sh
-         $ pulumi import cloudflare:index/dlpProfile:DlpProfile example <account_id>/<dlp_profile_id>
+        $ pulumi import cloudflare:index/dlpProfile:DlpProfile example <account_id>/<dlp_profile_id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -262,7 +262,7 @@ class DlpProfile(pulumi.CustomResource):
         ## Import
 
         ```sh
-         $ pulumi import cloudflare:index/dlpProfile:DlpProfile example <account_id>/<dlp_profile_id>
+        $ pulumi import cloudflare:index/dlpProfile:DlpProfile example <account_id>/<dlp_profile_id>
         ```
 
         :param str resource_name: The name of the resource.

@@ -22,6 +22,8 @@ import javax.annotation.Nullable;
  * Provides a Cloudflare Teams rule resource. Teams rules comprise secure web gateway policies.
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -61,11 +63,12 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * ```sh
- *  $ pulumi import cloudflare:index/teamsRule:TeamsRule example &lt;account_id&gt;/&lt;teams_rule_id&gt;
+ * $ pulumi import cloudflare:index/teamsRule:TeamsRule example &lt;account_id&gt;/&lt;teams_rule_id&gt;
  * ```
  * 
  */

@@ -13,6 +13,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
@@ -56,6 +57,7 @@ import * as utilities from "./utilities";
  *     }));
  * }
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
@@ -65,13 +67,13 @@ import * as utilities from "./utilities";
  * $ pulumi import cloudflare:index/accessRule:AccessRule default user/<user_id>/<rule_id>
  * ```
  *
- *  Zone level access rule import.
+ * Zone level access rule import.
  *
  * ```sh
  * $ pulumi import cloudflare:index/accessRule:AccessRule default zone/<zone_id>/<rule_id>
  * ```
  *
- *  Account level access rule import.
+ * Account level access rule import.
  *
  * ```sh
  * $ pulumi import cloudflare:index/accessRule:AccessRule default account/<account_id>/<rule_id>

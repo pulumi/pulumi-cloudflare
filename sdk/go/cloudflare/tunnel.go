@@ -18,6 +18,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -43,13 +44,12 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
 // ```sh
-//
-//	$ pulumi import cloudflare:index/tunnel:Tunnel example <account_id>/<tunnel_id>
-//
+// $ pulumi import cloudflare:index/tunnel:Tunnel example <account_id>/<tunnel_id>
 // ```
 type Tunnel struct {
 	pulumi.CustomResourceState

@@ -202,6 +202,7 @@ class TunnelRoute(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
@@ -225,11 +226,12 @@ class TunnelRoute(pulumi.CustomResource):
             comment="New tunnel route for documentation",
             virtual_network_id="bdc39a3c-3104-4c23-8ac0-9f455dda691a")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         ```sh
-         $ pulumi import cloudflare:index/tunnelRoute:TunnelRoute example <account_id>/<network_cidr>/<virtual_network_id>
+        $ pulumi import cloudflare:index/tunnelRoute:TunnelRoute example <account_id>/<network_cidr>/<virtual_network_id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -253,6 +255,7 @@ class TunnelRoute(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
@@ -276,11 +279,12 @@ class TunnelRoute(pulumi.CustomResource):
             comment="New tunnel route for documentation",
             virtual_network_id="bdc39a3c-3104-4c23-8ac0-9f455dda691a")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         ```sh
-         $ pulumi import cloudflare:index/tunnelRoute:TunnelRoute example <account_id>/<network_cidr>/<virtual_network_id>
+        $ pulumi import cloudflare:index/tunnelRoute:TunnelRoute example <account_id>/<network_cidr>/<virtual_network_id>
         ```
 
         :param str resource_name: The name of the resource.

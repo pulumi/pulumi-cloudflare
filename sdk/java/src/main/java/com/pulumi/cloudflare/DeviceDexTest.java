@@ -19,6 +19,8 @@ import javax.annotation.Nullable;
  * Provides a Cloudflare Device Dex Test resource. Device Dex Tests allow for building location-aware device settings policies.
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -57,11 +59,12 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * ```sh
- *  $ pulumi import cloudflare:index/deviceDexTest:DeviceDexTest example &lt;account_id&gt;/&lt;device_dex_test_id&gt;
+ * $ pulumi import cloudflare:index/deviceDexTest:DeviceDexTest example &lt;account_id&gt;/&lt;device_dex_test_id&gt;
  * ```
  * 
  */

@@ -22,6 +22,8 @@ import javax.annotation.Nullable;
  * through GRE tunnels.
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -57,11 +59,12 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * ```sh
- *  $ pulumi import cloudflare:index/staticRoute:StaticRoute example &lt;account_id&gt;/&lt;static_route_id&gt;
+ * $ pulumi import cloudflare:index/staticRoute:StaticRoute example &lt;account_id&gt;/&lt;static_route_id&gt;
  * ```
  * 
  */

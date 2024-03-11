@@ -169,6 +169,7 @@ class ByoIpPrefix(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
@@ -179,11 +180,12 @@ class ByoIpPrefix(pulumi.CustomResource):
             description="Example IP Prefix",
             prefix_id="d41d8cd98f00b204e9800998ecf8427e")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         ```sh
-         $ pulumi import cloudflare:index/byoIpPrefix:ByoIpPrefix example <account_id>/<prefix_id>
+        $ pulumi import cloudflare:index/byoIpPrefix:ByoIpPrefix example <account_id>/<prefix_id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -205,6 +207,7 @@ class ByoIpPrefix(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
@@ -215,11 +218,12 @@ class ByoIpPrefix(pulumi.CustomResource):
             description="Example IP Prefix",
             prefix_id="d41d8cd98f00b204e9800998ecf8427e")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         ```sh
-         $ pulumi import cloudflare:index/byoIpPrefix:ByoIpPrefix example <account_id>/<prefix_id>
+        $ pulumi import cloudflare:index/byoIpPrefix:ByoIpPrefix example <account_id>/<prefix_id>
         ```
 
         :param str resource_name: The name of the resource.

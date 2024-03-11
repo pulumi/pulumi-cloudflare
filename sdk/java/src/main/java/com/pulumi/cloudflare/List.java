@@ -18,6 +18,7 @@ import javax.annotation.Nullable;
 /**
  * ## Example Usage
  * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -64,11 +65,12 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * ```sh
- *  $ pulumi import cloudflare:index/list:List example &lt;account_id&gt;/&lt;list_id&gt;
+ * $ pulumi import cloudflare:index/list:List example &lt;account_id&gt;/&lt;list_id&gt;
  * ```
  * 
  */

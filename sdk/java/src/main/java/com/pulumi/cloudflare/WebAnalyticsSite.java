@@ -20,6 +20,8 @@ import javax.annotation.Nullable;
  * Provides a Cloudflare Web Analytics Site resource.
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -50,11 +52,12 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * ```sh
- *  $ pulumi import cloudflare:index/webAnalyticsSite:WebAnalyticsSite example &lt;account_id&gt;/&lt;site_tag&gt;
+ * $ pulumi import cloudflare:index/webAnalyticsSite:WebAnalyticsSite example &lt;account_id&gt;/&lt;site_tag&gt;
  * ```
  * 
  */

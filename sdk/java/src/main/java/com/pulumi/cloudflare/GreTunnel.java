@@ -20,6 +20,8 @@ import javax.annotation.Nullable;
  * Provides a resource, that manages GRE tunnels for Magic Transit.
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -58,11 +60,12 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * ```sh
- *  $ pulumi import cloudflare:index/greTunnel:GreTunnel example &lt;account_id&gt;/&lt;tunnel_id&gt;
+ * $ pulumi import cloudflare:index/greTunnel:GreTunnel example &lt;account_id&gt;/&lt;tunnel_id&gt;
  * ```
  * 
  */

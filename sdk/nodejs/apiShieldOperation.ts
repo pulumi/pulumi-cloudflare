@@ -9,6 +9,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
@@ -20,6 +21,7 @@ import * as utilities from "./utilities";
  *     zoneId: "0da42c8d2132a9ddaf714f9e7c920711",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export class ApiShieldOperation extends pulumi.CustomResource {
     /**

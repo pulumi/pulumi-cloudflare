@@ -12,6 +12,7 @@ namespace Pulumi.Cloudflare
     /// <summary>
     /// ## Example Usage
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -39,16 +40,17 @@ namespace Pulumi.Cloudflare
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
     /// ```sh
-    ///  $ pulumi import cloudflare:index/certificatePack:CertificatePack example &lt;zone_id&gt;/&lt;certificate_pack_id&gt;
+    /// $ pulumi import cloudflare:index/certificatePack:CertificatePack example &lt;zone_id&gt;/&lt;certificate_pack_id&gt;
     /// ```
     /// 
-    ///  While supported, importing isn't recommended and it is advised to replace the
+    /// While supported, importing isn't recommended and it is advised to replace the
     /// 
-    ///  certificate entirely instead.
+    /// certificate entirely instead.
     /// </summary>
     [CloudflareResourceType("cloudflare:index/certificatePack:CertificatePack")]
     public partial class CertificatePack : global::Pulumi.CustomResource

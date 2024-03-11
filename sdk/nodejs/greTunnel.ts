@@ -9,6 +9,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
@@ -27,11 +28,12 @@ import * as utilities from "./utilities";
  *     ttl: 64,
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * ```sh
- *  $ pulumi import cloudflare:index/greTunnel:GreTunnel example <account_id>/<tunnel_id>
+ * $ pulumi import cloudflare:index/greTunnel:GreTunnel example <account_id>/<tunnel_id>
  * ```
  */
 export class GreTunnel extends pulumi.CustomResource {

@@ -25,6 +25,8 @@ import javax.annotation.Nullable;
  *    zone needs to use the `zone_id` argument.
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -59,6 +61,7 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
@@ -68,7 +71,7 @@ import javax.annotation.Nullable;
  * $ pulumi import cloudflare:index/accessCaCertificate:AccessCaCertificate example account/&lt;account_id&gt;/&lt;application_id&gt;
  * ```
  * 
- *  Zone level CA certificate import.
+ * Zone level CA certificate import.
  * 
  * ```sh
  * $ pulumi import cloudflare:index/accessCaCertificate:AccessCaCertificate example account/&lt;zone_id&gt;/&lt;application_id&gt;

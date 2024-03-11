@@ -29,6 +29,7 @@ namespace Pulumi.Cloudflare.Inputs
         /// 
         /// Example:
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -90,6 +91,7 @@ namespace Pulumi.Cloudflare.Inputs
         /// 
         /// });
         /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         [Input("lang")]
         public Input<bool>? Lang { get; set; }

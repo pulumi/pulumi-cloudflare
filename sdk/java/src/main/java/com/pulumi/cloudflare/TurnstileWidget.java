@@ -19,6 +19,8 @@ import javax.annotation.Nullable;
  * The [Turnstile Widget](https://developers.cloudflare.com/turnstile/) resource allows you to manage Cloudflare Turnstile Widgets.
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -52,11 +54,12 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * ```sh
- *  $ pulumi import cloudflare:index/turnstileWidget:TurnstileWidget example &lt;account_id&gt;/&lt;site_key&gt;
+ * $ pulumi import cloudflare:index/turnstileWidget:TurnstileWidget example &lt;account_id&gt;/&lt;site_key&gt;
  * ```
  * 
  */

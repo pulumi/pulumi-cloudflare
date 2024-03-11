@@ -176,6 +176,7 @@ class AccessCaCertificate(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
@@ -189,6 +190,7 @@ class AccessCaCertificate(pulumi.CustomResource):
             application_id="fe2be0ff-7f13-4350-8c8e-a9b9795fe3c2",
             zone_id="0da42c8d2132a9ddaf714f9e7c920711")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -198,7 +200,7 @@ class AccessCaCertificate(pulumi.CustomResource):
         $ pulumi import cloudflare:index/accessCaCertificate:AccessCaCertificate example account/<account_id>/<application_id>
         ```
 
-         Zone level CA certificate import.
+        Zone level CA certificate import.
 
         ```sh
         $ pulumi import cloudflare:index/accessCaCertificate:AccessCaCertificate example account/<zone_id>/<application_id>
@@ -229,6 +231,7 @@ class AccessCaCertificate(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
@@ -242,6 +245,7 @@ class AccessCaCertificate(pulumi.CustomResource):
             application_id="fe2be0ff-7f13-4350-8c8e-a9b9795fe3c2",
             zone_id="0da42c8d2132a9ddaf714f9e7c920711")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -251,7 +255,7 @@ class AccessCaCertificate(pulumi.CustomResource):
         $ pulumi import cloudflare:index/accessCaCertificate:AccessCaCertificate example account/<account_id>/<application_id>
         ```
 
-         Zone level CA certificate import.
+        Zone level CA certificate import.
 
         ```sh
         $ pulumi import cloudflare:index/accessCaCertificate:AccessCaCertificate example account/<zone_id>/<application_id>

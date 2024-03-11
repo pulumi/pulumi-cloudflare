@@ -137,6 +137,7 @@ class Account(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
@@ -146,11 +147,12 @@ class Account(pulumi.CustomResource):
             name="some-enterprise-account",
             type="enterprise")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         ```sh
-         $ pulumi import cloudflare:index/account:Account example <account_id>
+        $ pulumi import cloudflare:index/account:Account example <account_id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -171,6 +173,7 @@ class Account(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
@@ -180,11 +183,12 @@ class Account(pulumi.CustomResource):
             name="some-enterprise-account",
             type="enterprise")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         ```sh
-         $ pulumi import cloudflare:index/account:Account example <account_id>
+        $ pulumi import cloudflare:index/account:Account example <account_id>
         ```
 
         :param str resource_name: The name of the resource.

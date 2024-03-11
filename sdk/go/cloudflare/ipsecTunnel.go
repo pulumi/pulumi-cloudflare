@@ -16,6 +16,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -49,13 +50,12 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
 // ```sh
-//
-//	$ pulumi import cloudflare:index/ipsecTunnel:IpsecTunnel example <account_id>/<tunnel_id>
-//
+// $ pulumi import cloudflare:index/ipsecTunnel:IpsecTunnel example <account_id>/<tunnel_id>
 // ```
 type IpsecTunnel struct {
 	pulumi.CustomResourceState

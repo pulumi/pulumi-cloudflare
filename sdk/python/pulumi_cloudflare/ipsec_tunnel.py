@@ -529,6 +529,7 @@ class IpsecTunnel(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
@@ -546,11 +547,12 @@ class IpsecTunnel(pulumi.CustomResource):
             name="IPsec_1",
             psk="asdf12341234")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         ```sh
-         $ pulumi import cloudflare:index/ipsecTunnel:IpsecTunnel example <account_id>/<tunnel_id>
+        $ pulumi import cloudflare:index/ipsecTunnel:IpsecTunnel example <account_id>/<tunnel_id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -582,6 +584,7 @@ class IpsecTunnel(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
@@ -599,11 +602,12 @@ class IpsecTunnel(pulumi.CustomResource):
             name="IPsec_1",
             psk="asdf12341234")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         ```sh
-         $ pulumi import cloudflare:index/ipsecTunnel:IpsecTunnel example <account_id>/<tunnel_id>
+        $ pulumi import cloudflare:index/ipsecTunnel:IpsecTunnel example <account_id>/<tunnel_id>
         ```
 
         :param str resource_name: The name of the resource.

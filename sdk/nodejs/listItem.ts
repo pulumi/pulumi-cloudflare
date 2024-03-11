@@ -12,6 +12,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
@@ -79,11 +80,12 @@ import * as utilities from "./utilities";
  *     },
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * ```sh
- *  $ pulumi import cloudflare:index/listItem:ListItem example <account_id>/<list_id>/<item_id>
+ * $ pulumi import cloudflare:index/listItem:ListItem example <account_id>/<list_id>/<item_id>
  * ```
  */
 export class ListItem extends pulumi.CustomResource {

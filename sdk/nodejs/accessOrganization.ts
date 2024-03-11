@@ -11,6 +11,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
@@ -31,11 +32,12 @@ import * as utilities from "./utilities";
  *     userSeatExpirationInactiveTime: "720h",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * ```sh
- *  $ pulumi import cloudflare:index/accessOrganization:AccessOrganization example <account_id>
+ * $ pulumi import cloudflare:index/accessOrganization:AccessOrganization example <account_id>
  * ```
  */
 export class AccessOrganization extends pulumi.CustomResource {

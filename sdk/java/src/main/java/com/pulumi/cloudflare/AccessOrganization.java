@@ -22,6 +22,8 @@ import javax.annotation.Nullable;
  * A Zero Trust organization defines the user login experience.
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -63,11 +65,12 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * ```sh
- *  $ pulumi import cloudflare:index/accessOrganization:AccessOrganization example &lt;account_id&gt;
+ * $ pulumi import cloudflare:index/accessOrganization:AccessOrganization example &lt;account_id&gt;
  * ```
  * 
  */

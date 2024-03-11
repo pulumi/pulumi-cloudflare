@@ -15,6 +15,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// ## Example Usage
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -33,16 +34,17 @@ namespace Pulumi.Cloudflare
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
     /// If you are importing an Access Service Token you will not have the
     /// 
-    ///  client_secret available in the state for use. The client_secret is only
+    /// client_secret available in the state for use. The client_secret is only
     /// 
-    ///  available once, at creation. In most cases, it is better to just create a new
+    /// available once, at creation. In most cases, it is better to just create a new
     /// 
-    ///  resource should you need to reference it in other resources.
+    /// resource should you need to reference it in other resources.
     /// 
     /// ```sh
     /// $ pulumi import cloudflare:index/accessServiceToken:AccessServiceToken example &lt;account_id&gt;/&lt;service_token_id&gt;

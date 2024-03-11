@@ -17,6 +17,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -120,13 +121,12 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
 // ```sh
-//
-//	$ pulumi import cloudflare:index/listItem:ListItem example <account_id>/<list_id>/<item_id>
-//
+// $ pulumi import cloudflare:index/listItem:ListItem example <account_id>/<list_id>/<item_id>
 // ```
 type ListItem struct {
 	pulumi.CustomResourceState

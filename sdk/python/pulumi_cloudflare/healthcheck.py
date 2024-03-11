@@ -729,6 +729,7 @@ class Healthcheck(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
@@ -784,6 +785,7 @@ class Healthcheck(pulumi.CustomResource):
             consecutive_fails=3,
             consecutive_successes=2)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -828,6 +830,7 @@ class Healthcheck(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
@@ -883,6 +886,7 @@ class Healthcheck(pulumi.CustomResource):
             consecutive_fails=3,
             consecutive_successes=2)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

@@ -16,6 +16,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// ## Example Usage
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -75,6 +76,7 @@ namespace Pulumi.Cloudflare
     ///     }
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
@@ -84,13 +86,13 @@ namespace Pulumi.Cloudflare
     /// $ pulumi import cloudflare:index/accessRule:AccessRule default user/&lt;user_id&gt;/&lt;rule_id&gt;
     /// ```
     /// 
-    ///  Zone level access rule import.
+    /// Zone level access rule import.
     /// 
     /// ```sh
     /// $ pulumi import cloudflare:index/accessRule:AccessRule default zone/&lt;zone_id&gt;/&lt;rule_id&gt;
     /// ```
     /// 
-    ///  Account level access rule import.
+    /// Account level access rule import.
     /// 
     /// ```sh
     /// $ pulumi import cloudflare:index/accessRule:AccessRule default account/&lt;account_id&gt;/&lt;rule_id&gt;

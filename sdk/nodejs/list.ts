@@ -7,10 +7,12 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * ## Example Usage
+ *
  * ## Import
  *
  * ```sh
- *  $ pulumi import cloudflare:index/list:List example <account_id>/<list_id>
+ * $ pulumi import cloudflare:index/list:List example <account_id>/<list_id>
  * ```
  */
 export class List extends pulumi.CustomResource {

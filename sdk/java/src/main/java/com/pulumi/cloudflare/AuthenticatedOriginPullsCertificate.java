@@ -20,6 +20,8 @@ import javax.annotation.Nullable;
  *  or Per-Hostname Authenticated Origin Pulls.
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -58,11 +60,12 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * ```sh
- *  $ pulumi import cloudflare:index/authenticatedOriginPullsCertificate:AuthenticatedOriginPullsCertificate example &lt;zone_id&gt;/&lt;certificate_type&gt;/&lt;certificate_id&gt;
+ * $ pulumi import cloudflare:index/authenticatedOriginPullsCertificate:AuthenticatedOriginPullsCertificate example &lt;zone_id&gt;/&lt;certificate_type&gt;/&lt;certificate_id&gt;
  * ```
  * 
  */

@@ -24,6 +24,8 @@ import javax.annotation.Nullable;
  * Provides a Cloudflare record resource.
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -72,11 +74,12 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * ```sh
- *  $ pulumi import cloudflare:index/record:Record example &lt;zone_id&gt;/&lt;record_id&gt;
+ * $ pulumi import cloudflare:index/record:Record example &lt;zone_id&gt;/&lt;record_id&gt;
  * ```
  * 
  */

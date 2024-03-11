@@ -24,6 +24,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -66,13 +67,12 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
 // ```sh
-//
-//	$ pulumi import cloudflare:index/accessApplication:AccessApplication example <account_id>/<application_id>
-//
+// $ pulumi import cloudflare:index/accessApplication:AccessApplication example <account_id>/<application_id>
 // ```
 type AccessApplication struct {
 	pulumi.CustomResourceState
