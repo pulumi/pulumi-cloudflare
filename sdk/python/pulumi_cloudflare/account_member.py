@@ -167,6 +167,7 @@ class AccountMember(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
@@ -179,11 +180,12 @@ class AccountMember(pulumi.CustomResource):
                 "d784fa8b6d98d27699781bd9a7cf19f0",
             ])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         ```sh
-         $ pulumi import cloudflare:index/accountMember:AccountMember example <account_id>/<member_id>
+        $ pulumi import cloudflare:index/accountMember:AccountMember example <account_id>/<member_id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -204,6 +206,7 @@ class AccountMember(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
@@ -216,11 +219,12 @@ class AccountMember(pulumi.CustomResource):
                 "d784fa8b6d98d27699781bd9a7cf19f0",
             ])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         ```sh
-         $ pulumi import cloudflare:index/accountMember:AccountMember example <account_id>/<member_id>
+        $ pulumi import cloudflare:index/accountMember:AccountMember example <account_id>/<member_id>
         ```
 
         :param str resource_name: The name of the resource.

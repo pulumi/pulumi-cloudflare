@@ -7,6 +7,7 @@ import * as utilities from "./utilities";
 /**
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
@@ -17,13 +18,14 @@ import * as utilities from "./utilities";
  *     name: "terraform-bucket",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * > Available location values can be found in the [R2 documentation](https://developers.cloudflare.com/r2/reference/data-location/#available-hints).
  *
  * ## Import
  *
  * ```sh
- *  $ pulumi import cloudflare:index/r2Bucket:R2Bucket default <account id>/<bucket name>
+ * $ pulumi import cloudflare:index/r2Bucket:R2Bucket default <account id>/<bucket name>
  * ```
  */
 export class R2Bucket extends pulumi.CustomResource {

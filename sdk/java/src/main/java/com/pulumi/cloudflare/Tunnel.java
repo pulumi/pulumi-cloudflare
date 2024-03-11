@@ -21,6 +21,8 @@ import javax.annotation.Nullable;
  * records or configuring a firewall or router.
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -51,11 +53,12 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * ```sh
- *  $ pulumi import cloudflare:index/tunnel:Tunnel example &lt;account_id&gt;/&lt;tunnel_id&gt;
+ * $ pulumi import cloudflare:index/tunnel:Tunnel example &lt;account_id&gt;/&lt;tunnel_id&gt;
  * ```
  * 
  */

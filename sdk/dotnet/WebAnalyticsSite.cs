@@ -14,6 +14,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// ## Example Usage
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -31,11 +32,12 @@ namespace Pulumi.Cloudflare
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
     /// ```sh
-    ///  $ pulumi import cloudflare:index/webAnalyticsSite:WebAnalyticsSite example &lt;account_id&gt;/&lt;site_tag&gt;
+    /// $ pulumi import cloudflare:index/webAnalyticsSite:WebAnalyticsSite example &lt;account_id&gt;/&lt;site_tag&gt;
     /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/webAnalyticsSite:WebAnalyticsSite")]

@@ -16,6 +16,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -111,13 +112,12 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
 // ```sh
-//
-//	$ pulumi import cloudflare:index/workerScript:WorkerScript example <account_id>/<script_name>
-//
+// $ pulumi import cloudflare:index/workerScript:WorkerScript example <account_id>/<script_name>
 // ```
 type WorkerScript struct {
 	pulumi.CustomResourceState

@@ -149,6 +149,7 @@ class Argo(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
@@ -158,11 +159,12 @@ class Argo(pulumi.CustomResource):
             tiered_caching="on",
             zone_id="0da42c8d2132a9ddaf714f9e7c920711")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         ```sh
-         $ pulumi import cloudflare:index/argo:Argo example <zone_id>
+        $ pulumi import cloudflare:index/argo:Argo example <zone_id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -183,6 +185,7 @@ class Argo(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
@@ -192,11 +195,12 @@ class Argo(pulumi.CustomResource):
             tiered_caching="on",
             zone_id="0da42c8d2132a9ddaf714f9e7c920711")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         ```sh
-         $ pulumi import cloudflare:index/argo:Argo example <zone_id>
+        $ pulumi import cloudflare:index/argo:Argo example <zone_id>
         ```
 
         :param str resource_name: The name of the resource.

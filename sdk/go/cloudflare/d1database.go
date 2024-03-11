@@ -20,6 +20,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -44,13 +45,12 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
 // ```sh
-//
-//	$ pulumi import cloudflare:index/d1Database:D1Database example <account id>/<database id>
-//
+// $ pulumi import cloudflare:index/d1Database:D1Database example <account id>/<database id>
 // ```
 type D1Database struct {
 	pulumi.CustomResourceState

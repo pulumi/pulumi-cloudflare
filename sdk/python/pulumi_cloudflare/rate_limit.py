@@ -327,6 +327,7 @@ class RateLimit(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
@@ -392,11 +393,12 @@ class RateLimit(pulumi.CustomResource):
             threshold=2000,
             zone_id="0da42c8d2132a9ddaf714f9e7c920711")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         ```sh
-         $ pulumi import cloudflare:index/rateLimit:RateLimit example <zone_id>/<rate_limit_id>
+        $ pulumi import cloudflare:index/rateLimit:RateLimit example <zone_id>/<rate_limit_id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -423,6 +425,7 @@ class RateLimit(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
@@ -488,11 +491,12 @@ class RateLimit(pulumi.CustomResource):
             threshold=2000,
             zone_id="0da42c8d2132a9ddaf714f9e7c920711")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         ```sh
-         $ pulumi import cloudflare:index/rateLimit:RateLimit example <zone_id>/<rate_limit_id>
+        $ pulumi import cloudflare:index/rateLimit:RateLimit example <zone_id>/<rate_limit_id>
         ```
 
         :param str resource_name: The name of the resource.

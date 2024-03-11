@@ -21,6 +21,8 @@ import javax.annotation.Nullable;
 
 /**
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -58,16 +60,17 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * ```sh
- *  $ pulumi import cloudflare:index/certificatePack:CertificatePack example &lt;zone_id&gt;/&lt;certificate_pack_id&gt;
+ * $ pulumi import cloudflare:index/certificatePack:CertificatePack example &lt;zone_id&gt;/&lt;certificate_pack_id&gt;
  * ```
  * 
- *  While supported, importing isn&#39;t recommended and it is advised to replace the
+ * While supported, importing isn&#39;t recommended and it is advised to replace the
  * 
- *  certificate entirely instead.
+ * certificate entirely instead.
  * 
  */
 @ResourceType(type="cloudflare:index/certificatePack:CertificatePack")

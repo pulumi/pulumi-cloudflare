@@ -17,6 +17,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -40,6 +41,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func GetOriginCaRootCertificate(ctx *pulumi.Context, args *GetOriginCaRootCertificateArgs, opts ...pulumi.InvokeOption) (*GetOriginCaRootCertificateResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetOriginCaRootCertificateResult

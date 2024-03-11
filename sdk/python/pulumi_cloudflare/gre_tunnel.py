@@ -397,6 +397,7 @@ class GreTunnel(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
@@ -414,11 +415,12 @@ class GreTunnel(pulumi.CustomResource):
             name="GRE_1",
             ttl=64)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         ```sh
-         $ pulumi import cloudflare:index/greTunnel:GreTunnel example <account_id>/<tunnel_id>
+        $ pulumi import cloudflare:index/greTunnel:GreTunnel example <account_id>/<tunnel_id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -446,6 +448,7 @@ class GreTunnel(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
@@ -463,11 +466,12 @@ class GreTunnel(pulumi.CustomResource):
             name="GRE_1",
             ttl=64)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         ```sh
-         $ pulumi import cloudflare:index/greTunnel:GreTunnel example <account_id>/<tunnel_id>
+        $ pulumi import cloudflare:index/greTunnel:GreTunnel example <account_id>/<tunnel_id>
         ```
 
         :param str resource_name: The name of the resource.

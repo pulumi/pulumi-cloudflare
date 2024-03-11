@@ -17,6 +17,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
@@ -32,6 +33,7 @@ import * as utilities from "./utilities";
  *     zoneId: "0da42c8d2132a9ddaf714f9e7c920711",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
@@ -41,7 +43,7 @@ import * as utilities from "./utilities";
  * $ pulumi import cloudflare:index/accessCaCertificate:AccessCaCertificate example account/<account_id>/<application_id>
  * ```
  *
- *  Zone level CA certificate import.
+ * Zone level CA certificate import.
  *
  * ```sh
  * $ pulumi import cloudflare:index/accessCaCertificate:AccessCaCertificate example account/<zone_id>/<application_id>

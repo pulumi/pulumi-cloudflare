@@ -25,10 +25,64 @@ import javax.annotation.Nullable;
  * Cloudflare&#39;s products. The delivery mechanisms supported are email,
  * webhooks, and PagerDuty.
  * 
+ * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.cloudflare.NotificationPolicy;
+ * import com.pulumi.cloudflare.NotificationPolicyArgs;
+ * import com.pulumi.cloudflare.inputs.NotificationPolicyEmailIntegrationArgs;
+ * import com.pulumi.cloudflare.inputs.NotificationPolicyFiltersArgs;
+ * import com.pulumi.cloudflare.inputs.NotificationPolicyPagerdutyIntegrationArgs;
+ * import com.pulumi.cloudflare.inputs.NotificationPolicyWebhooksIntegrationArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var example = new NotificationPolicy(&#34;example&#34;, NotificationPolicyArgs.builder()        
+ *             .accountId(&#34;f037e56e89293a057740de681ac9abbe&#34;)
+ *             .alertType(&#34;health_check_status_notification&#34;)
+ *             .description(&#34;Notification policy to alert on unhealthy Healthcheck status&#34;)
+ *             .emailIntegrations(NotificationPolicyEmailIntegrationArgs.builder()
+ *                 .id(&#34;myemail@example.com&#34;)
+ *                 .build())
+ *             .enabled(true)
+ *             .filters(NotificationPolicyFiltersArgs.builder()
+ *                 .healthCheckIds(&#34;699d98642c564d2e855e9661899b7252&#34;)
+ *                 .statuses(&#34;Unhealthy&#34;)
+ *                 .build())
+ *             .name(&#34;Policy for Healthcheck notification&#34;)
+ *             .pagerdutyIntegrations(NotificationPolicyPagerdutyIntegrationArgs.builder()
+ *                 .id(&#34;850129d136459401860572c5d964d27k&#34;)
+ *                 .build())
+ *             .webhooksIntegrations(NotificationPolicyWebhooksIntegrationArgs.builder()
+ *                 .id(&#34;1860572c5d964d27aa0f379d13645940&#34;)
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ## Import
  * 
  * ```sh
- *  $ pulumi import cloudflare:index/notificationPolicy:NotificationPolicy example &lt;account_id&gt;/&lt;policy_id&gt;
+ * $ pulumi import cloudflare:index/notificationPolicy:NotificationPolicy example &lt;account_id&gt;/&lt;policy_id&gt;
  * ```
  * 
  */

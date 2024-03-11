@@ -16,6 +16,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -40,13 +41,12 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
 // ```sh
-//
-//	$ pulumi import cloudflare:index/queue:Queue example <account_id>/<queue_id>
-//
+// $ pulumi import cloudflare:index/queue:Queue example <account_id>/<queue_id>
 // ```
 type Queue struct {
 	pulumi.CustomResourceState

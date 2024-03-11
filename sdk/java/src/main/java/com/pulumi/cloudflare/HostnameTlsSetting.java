@@ -17,6 +17,8 @@ import javax.annotation.Nullable;
  * Provides a Cloudflare per-hostname TLS setting resource. Used to set TLS settings for hostnames under the specified zone.
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -48,11 +50,12 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * ```sh
- *  $ pulumi import cloudflare:index/hostnameTlsSetting:HostnameTlsSetting example &lt;zone_id&gt;/&lt;hostname&gt;/&lt;setting_name&gt;
+ * $ pulumi import cloudflare:index/hostnameTlsSetting:HostnameTlsSetting example &lt;zone_id&gt;/&lt;hostname&gt;/&lt;setting_name&gt;
  * ```
  * 
  */

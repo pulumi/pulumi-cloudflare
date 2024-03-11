@@ -494,6 +494,8 @@ class LogpushJob(pulumi.CustomResource):
                  zone_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
+        ## Example Usage
+
         ## Import
 
         Import an account-scoped job.
@@ -502,7 +504,7 @@ class LogpushJob(pulumi.CustomResource):
         $ pulumi import cloudflare:index/logpushJob:LogpushJob example account/<account_id>/<job_id>
         ```
 
-         Import a zone-scoped job.
+        Import a zone-scoped job.
 
         ```sh
         $ pulumi import cloudflare:index/logpushJob:LogpushJob example zone/<zone_id>/<job_id>
@@ -532,6 +534,8 @@ class LogpushJob(pulumi.CustomResource):
                  args: LogpushJobArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        ## Example Usage
+
         ## Import
 
         Import an account-scoped job.
@@ -540,7 +544,7 @@ class LogpushJob(pulumi.CustomResource):
         $ pulumi import cloudflare:index/logpushJob:LogpushJob example account/<account_id>/<job_id>
         ```
 
-         Import a zone-scoped job.
+        Import a zone-scoped job.
 
         ```sh
         $ pulumi import cloudflare:index/logpushJob:LogpushJob example zone/<zone_id>/<job_id>

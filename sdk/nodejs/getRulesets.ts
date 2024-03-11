@@ -11,6 +11,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
@@ -22,6 +23,7 @@ import * as utilities from "./utilities";
  *     zoneId: "0da42c8d2132a9ddaf714f9e7c920711",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getRulesets(args?: GetRulesetsArgs, opts?: pulumi.InvokeOptions): Promise<GetRulesetsResult> {
     args = args || {};
@@ -82,6 +84,7 @@ export interface GetRulesetsResult {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
@@ -93,6 +96,7 @@ export interface GetRulesetsResult {
  *     zoneId: "0da42c8d2132a9ddaf714f9e7c920711",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getRulesetsOutput(args?: GetRulesetsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRulesetsResult> {
     return pulumi.output(args).apply((a: any) => getRulesets(a, opts))

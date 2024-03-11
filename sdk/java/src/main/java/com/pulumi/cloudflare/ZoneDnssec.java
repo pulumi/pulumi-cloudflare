@@ -18,6 +18,8 @@ import javax.annotation.Nullable;
  * Provides a Cloudflare resource to create and modify zone DNSSEC settings.
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -52,11 +54,12 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * ```sh
- *  $ pulumi import cloudflare:index/zoneDnssec:ZoneDnssec example &lt;zone_id&gt;
+ * $ pulumi import cloudflare:index/zoneDnssec:ZoneDnssec example &lt;zone_id&gt;
  * ```
  * 
  */

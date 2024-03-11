@@ -22,6 +22,8 @@ import javax.annotation.Nullable;
  * across all zones within the same account.
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -112,11 +114,12 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * ```sh
- *  $ pulumi import cloudflare:index/listItem:ListItem example &lt;account_id&gt;/&lt;list_id&gt;/&lt;item_id&gt;
+ * $ pulumi import cloudflare:index/listItem:ListItem example &lt;account_id&gt;/&lt;list_id&gt;/&lt;item_id&gt;
  * ```
  * 
  */

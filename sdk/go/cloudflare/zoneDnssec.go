@@ -16,6 +16,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -45,13 +46,12 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
 // ```sh
-//
-//	$ pulumi import cloudflare:index/zoneDnssec:ZoneDnssec example <zone_id>
-//
+// $ pulumi import cloudflare:index/zoneDnssec:ZoneDnssec example <zone_id>
 // ```
 type ZoneDnssec struct {
 	pulumi.CustomResourceState

@@ -278,6 +278,7 @@ class FirewallRule(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
@@ -292,11 +293,12 @@ class FirewallRule(pulumi.CustomResource):
             filter_id=wordpress_filter.id,
             action="block")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         ```sh
-         $ pulumi import cloudflare:index/firewallRule:FirewallRule example <zone_id>/<firewall_rule_id>
+        $ pulumi import cloudflare:index/firewallRule:FirewallRule example <zone_id>/<firewall_rule_id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -332,6 +334,7 @@ class FirewallRule(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
@@ -346,11 +349,12 @@ class FirewallRule(pulumi.CustomResource):
             filter_id=wordpress_filter.id,
             action="block")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         ```sh
-         $ pulumi import cloudflare:index/firewallRule:FirewallRule example <zone_id>/<firewall_rule_id>
+        $ pulumi import cloudflare:index/firewallRule:FirewallRule example <zone_id>/<firewall_rule_id>
         ```
 
         :param str resource_name: The name of the resource.

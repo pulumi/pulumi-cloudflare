@@ -27,6 +27,8 @@ import javax.annotation.Nullable;
  * services.
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -70,11 +72,12 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * ```sh
- *  $ pulumi import cloudflare:index/spectrumApplication:SpectrumApplication example &lt;zone_id&gt;/&lt;spectrum_application_id&gt;
+ * $ pulumi import cloudflare:index/spectrumApplication:SpectrumApplication example &lt;zone_id&gt;/&lt;spectrum_application_id&gt;
  * ```
  * 
  */

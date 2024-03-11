@@ -224,6 +224,7 @@ class AccessMutualTlsCertificate(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
@@ -234,6 +235,7 @@ class AccessMutualTlsCertificate(pulumi.CustomResource):
             certificate=var["ca_pem"],
             associated_hostnames=["staging.example.com"])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -243,7 +245,7 @@ class AccessMutualTlsCertificate(pulumi.CustomResource):
         $ pulumi import cloudflare:index/accessMutualTlsCertificate:AccessMutualTlsCertificate example account/<account_id>/<mutual_tls_certificate_id>
         ```
 
-         Zone level import.
+        Zone level import.
 
         ```sh
         $ pulumi import cloudflare:index/accessMutualTlsCertificate:AccessMutualTlsCertificate example zone/<zone_id>/<mutual_tls_certificate_id>
@@ -278,6 +280,7 @@ class AccessMutualTlsCertificate(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
@@ -288,6 +291,7 @@ class AccessMutualTlsCertificate(pulumi.CustomResource):
             certificate=var["ca_pem"],
             associated_hostnames=["staging.example.com"])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -297,7 +301,7 @@ class AccessMutualTlsCertificate(pulumi.CustomResource):
         $ pulumi import cloudflare:index/accessMutualTlsCertificate:AccessMutualTlsCertificate example account/<account_id>/<mutual_tls_certificate_id>
         ```
 
-         Zone level import.
+        Zone level import.
 
         ```sh
         $ pulumi import cloudflare:index/accessMutualTlsCertificate:AccessMutualTlsCertificate example zone/<zone_id>/<mutual_tls_certificate_id>

@@ -9,6 +9,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
@@ -22,11 +23,12 @@ import * as utilities from "./utilities";
  *     scriptName: myScript.name,
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * ```sh
- *  $ pulumi import cloudflare:index/workerRoute:WorkerRoute example <zone_id>/<route_id>
+ * $ pulumi import cloudflare:index/workerRoute:WorkerRoute example <zone_id>/<route_id>
  * ```
  */
 export class WorkerRoute extends pulumi.CustomResource {

@@ -18,6 +18,8 @@ import javax.annotation.Nullable;
  * This can help improve performance for smart and custom tiered cache topologies.
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -47,11 +49,12 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * ```sh
- *  $ pulumi import cloudflare:index/regionalTieredCache:RegionalTieredCache example &lt;zone_id&gt;
+ * $ pulumi import cloudflare:index/regionalTieredCache:RegionalTieredCache example &lt;zone_id&gt;
  * ```
  * 
  */

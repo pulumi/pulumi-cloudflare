@@ -11,10 +11,41 @@ import * as utilities from "./utilities";
  * Cloudflare's products. The delivery mechanisms supported are email,
  * webhooks, and PagerDuty.
  *
+ * ## Example Usage
+ *
+ * <!--Start PulumiCodeChooser -->
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as cloudflare from "@pulumi/cloudflare";
+ *
+ * //## With Filters
+ * const example = new cloudflare.NotificationPolicy("example", {
+ *     accountId: "f037e56e89293a057740de681ac9abbe",
+ *     alertType: "health_check_status_notification",
+ *     description: "Notification policy to alert on unhealthy Healthcheck status",
+ *     emailIntegrations: [{
+ *         id: "myemail@example.com",
+ *     }],
+ *     enabled: true,
+ *     filters: {
+ *         healthCheckIds: ["699d98642c564d2e855e9661899b7252"],
+ *         statuses: ["Unhealthy"],
+ *     },
+ *     name: "Policy for Healthcheck notification",
+ *     pagerdutyIntegrations: [{
+ *         id: "850129d136459401860572c5d964d27k",
+ *     }],
+ *     webhooksIntegrations: [{
+ *         id: "1860572c5d964d27aa0f379d13645940",
+ *     }],
+ * });
+ * ```
+ * <!--End PulumiCodeChooser -->
+ *
  * ## Import
  *
  * ```sh
- *  $ pulumi import cloudflare:index/notificationPolicy:NotificationPolicy example <account_id>/<policy_id>
+ * $ pulumi import cloudflare:index/notificationPolicy:NotificationPolicy example <account_id>/<policy_id>
  * ```
  */
 export class NotificationPolicy extends pulumi.CustomResource {

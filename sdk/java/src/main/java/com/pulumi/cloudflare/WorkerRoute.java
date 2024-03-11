@@ -18,6 +18,8 @@ import javax.annotation.Nullable;
  * Provides a Cloudflare worker route resource. A route will also require a `cloudflare.WorkerScript`.
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -51,11 +53,12 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * ```sh
- *  $ pulumi import cloudflare:index/workerRoute:WorkerRoute example &lt;zone_id&gt;/&lt;route_id&gt;
+ * $ pulumi import cloudflare:index/workerRoute:WorkerRoute example &lt;zone_id&gt;/&lt;route_id&gt;
  * ```
  * 
  */

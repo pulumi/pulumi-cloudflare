@@ -114,6 +114,7 @@ def get_api_token_permission_groups(opts: Optional[pulumi.InvokeOptions] = None)
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_cloudflare as cloudflare
@@ -123,6 +124,7 @@ def get_api_token_permission_groups(opts: Optional[pulumi.InvokeOptions] = None)
     pulumi.export("accountLbMonitorsAndReadId", all.account["Load Balancing: Monitors and Pools Read"])
     pulumi.export("userMembershipsReadId", all.user["Memberships Read"])
     ```
+    <!--End PulumiCodeChooser -->
     """
     __args__ = dict()
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
@@ -145,6 +147,7 @@ def get_api_token_permission_groups_output(opts: Optional[pulumi.InvokeOptions] 
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_cloudflare as cloudflare
@@ -154,5 +157,6 @@ def get_api_token_permission_groups_output(opts: Optional[pulumi.InvokeOptions] 
     pulumi.export("accountLbMonitorsAndReadId", all.account["Load Balancing: Monitors and Pools Read"])
     pulumi.export("userMembershipsReadId", all.user["Memberships Read"])
     ```
+    <!--End PulumiCodeChooser -->
     """
     ...

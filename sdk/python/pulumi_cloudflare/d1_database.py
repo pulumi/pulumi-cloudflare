@@ -121,6 +121,7 @@ class D1Database(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
@@ -129,11 +130,12 @@ class D1Database(pulumi.CustomResource):
             account_id="f037e56e89293a057740de681ac9abbe",
             name="terraform-database")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         ```sh
-         $ pulumi import cloudflare:index/d1Database:D1Database example <account id>/<database id>
+        $ pulumi import cloudflare:index/d1Database:D1Database example <account id>/<database id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -155,6 +157,7 @@ class D1Database(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
@@ -163,11 +166,12 @@ class D1Database(pulumi.CustomResource):
             account_id="f037e56e89293a057740de681ac9abbe",
             name="terraform-database")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         ```sh
-         $ pulumi import cloudflare:index/d1Database:D1Database example <account id>/<database id>
+        $ pulumi import cloudflare:index/d1Database:D1Database example <account id>/<database id>
         ```
 
         :param str resource_name: The name of the resource.

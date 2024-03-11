@@ -17,6 +17,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -61,13 +62,12 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
 // ```sh
-//
-//	$ pulumi import cloudflare:index/addressMap:AddressMap example <account_id>/<address_map_id>
-//
+// $ pulumi import cloudflare:index/addressMap:AddressMap example <account_id>/<address_map_id>
 // ```
 type AddressMap struct {
 	pulumi.CustomResourceState

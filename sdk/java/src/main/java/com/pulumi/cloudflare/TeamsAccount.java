@@ -29,6 +29,8 @@ import javax.annotation.Nullable;
  * resource defines configuration for secure web gateway.
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -119,11 +121,12 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * ```sh
- *  $ pulumi import cloudflare:index/teamsAccount:TeamsAccount example &lt;account_id&gt;
+ * $ pulumi import cloudflare:index/teamsAccount:TeamsAccount example &lt;account_id&gt;
  * ```
  * 
  */

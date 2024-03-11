@@ -155,6 +155,7 @@ def get_zone(account_id: Optional[str] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_cloudflare as cloudflare
@@ -167,6 +168,7 @@ def get_zone(account_id: Optional[str] = None,
         type="A",
         proxied=True)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str account_id: The account identifier to target for the resource.
@@ -208,6 +210,7 @@ def get_zone_output(account_id: Optional[pulumi.Input[Optional[str]]] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_cloudflare as cloudflare
@@ -220,6 +223,7 @@ def get_zone_output(account_id: Optional[pulumi.Input[Optional[str]]] = None,
         type="A",
         proxied=True)
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str account_id: The account identifier to target for the resource.

@@ -263,6 +263,7 @@ class ZoneDnssec(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
@@ -270,11 +271,12 @@ class ZoneDnssec(pulumi.CustomResource):
         example_zone = cloudflare.Zone("exampleZone", zone="example.com")
         example_zone_dnssec = cloudflare.ZoneDnssec("exampleZoneDnssec", zone_id=example_zone.id)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         ```sh
-         $ pulumi import cloudflare:index/zoneDnssec:ZoneDnssec example <zone_id>
+        $ pulumi import cloudflare:index/zoneDnssec:ZoneDnssec example <zone_id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -293,6 +295,7 @@ class ZoneDnssec(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
@@ -300,11 +303,12 @@ class ZoneDnssec(pulumi.CustomResource):
         example_zone = cloudflare.Zone("exampleZone", zone="example.com")
         example_zone_dnssec = cloudflare.ZoneDnssec("exampleZoneDnssec", zone_id=example_zone.id)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         ```sh
-         $ pulumi import cloudflare:index/zoneDnssec:ZoneDnssec example <zone_id>
+        $ pulumi import cloudflare:index/zoneDnssec:ZoneDnssec example <zone_id>
         ```
 
         :param str resource_name: The name of the resource.

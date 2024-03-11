@@ -264,6 +264,7 @@ class DeviceDexTest(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
@@ -280,11 +281,12 @@ class DeviceDexTest(pulumi.CustomResource):
             interval="0h30m0s",
             name="GET homepage")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         ```sh
-         $ pulumi import cloudflare:index/deviceDexTest:DeviceDexTest example <account_id>/<device_dex_test_id>
+        $ pulumi import cloudflare:index/deviceDexTest:DeviceDexTest example <account_id>/<device_dex_test_id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -307,6 +309,7 @@ class DeviceDexTest(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
@@ -323,11 +326,12 @@ class DeviceDexTest(pulumi.CustomResource):
             interval="0h30m0s",
             name="GET homepage")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         ```sh
-         $ pulumi import cloudflare:index/deviceDexTest:DeviceDexTest example <account_id>/<device_dex_test_id>
+        $ pulumi import cloudflare:index/deviceDexTest:DeviceDexTest example <account_id>/<device_dex_test_id>
         ```
 
         :param str resource_name: The name of the resource.

@@ -12,6 +12,8 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// ## Example Usage
+//
 // ## Import
 //
 // Import an account-scoped job.
@@ -20,7 +22,7 @@ import (
 // $ pulumi import cloudflare:index/logpushJob:LogpushJob example account/<account_id>/<job_id>
 // ```
 //
-//	Import a zone-scoped job.
+// Import a zone-scoped job.
 //
 // ```sh
 // $ pulumi import cloudflare:index/logpushJob:LogpushJob example zone/<zone_id>/<job_id>

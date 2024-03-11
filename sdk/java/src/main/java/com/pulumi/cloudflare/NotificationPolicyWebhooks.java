@@ -18,6 +18,8 @@ import javax.annotation.Nullable;
  * Provides a resource, that manages a webhook destination. These destinations can be tied to the notification policies created for Cloudflare&#39;s products.
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -49,11 +51,12 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * ```sh
- *  $ pulumi import cloudflare:index/notificationPolicyWebhooks:NotificationPolicyWebhooks example &lt;account_id&gt;/&lt;notification_webhook_id&gt;
+ * $ pulumi import cloudflare:index/notificationPolicyWebhooks:NotificationPolicyWebhooks example &lt;account_id&gt;/&lt;notification_webhook_id&gt;
  * ```
  * 
  */

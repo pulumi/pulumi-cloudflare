@@ -73,12 +73,14 @@ def get_devices(account_id: Optional[str] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_cloudflare as cloudflare
 
     example = cloudflare.get_devices(account_id="f037e56e89293a057740de681ac9abbe")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str account_id: The account identifier to target for the resource.
@@ -102,12 +104,14 @@ def get_devices_output(account_id: Optional[pulumi.Input[str]] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_cloudflare as cloudflare
 
     example = cloudflare.get_devices(account_id="f037e56e89293a057740de681ac9abbe")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str account_id: The account identifier to target for the resource.

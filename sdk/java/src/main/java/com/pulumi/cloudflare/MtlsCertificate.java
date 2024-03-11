@@ -19,6 +19,8 @@ import javax.annotation.Nullable;
  * Provides a Cloudflare mTLS certificate resource. These certificates may be used with mTLS enabled Cloudflare services.
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -59,11 +61,12 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * ```sh
- *  $ pulumi import cloudflare:index/mtlsCertificate:MtlsCertificate example &lt;account_id&gt;/&lt;mtls_certificate_id&gt;
+ * $ pulumi import cloudflare:index/mtlsCertificate:MtlsCertificate example &lt;account_id&gt;/&lt;mtls_certificate_id&gt;
  * ```
  * 
  */

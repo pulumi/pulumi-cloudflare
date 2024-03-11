@@ -20,6 +20,8 @@ import javax.annotation.Nullable;
  *    a `cloudflare.Record` resource for the domain you want to use.
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -50,11 +52,12 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * ```sh
- *  $ pulumi import cloudflare:index/pagesDomain:PagesDomain example &lt;account_id&gt;/&lt;project_name&gt;/&lt;domain-name&gt;
+ * $ pulumi import cloudflare:index/pagesDomain:PagesDomain example &lt;account_id&gt;/&lt;project_name&gt;/&lt;domain-name&gt;
  * ```
  * 
  */

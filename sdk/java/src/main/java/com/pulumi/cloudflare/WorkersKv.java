@@ -17,6 +17,8 @@ import javax.annotation.Nullable;
  * Provides a resource to manage a Cloudflare Workers KV Pair.
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -55,11 +57,12 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * ```sh
- *  $ pulumi import cloudflare:index/workersKv:WorkersKv example &lt;account_id&gt;/&lt;namespace_id&gt;/&lt;key_name&gt;
+ * $ pulumi import cloudflare:index/workersKv:WorkersKv example &lt;account_id&gt;/&lt;namespace_id&gt;/&lt;key_name&gt;
  * ```
  * 
  */

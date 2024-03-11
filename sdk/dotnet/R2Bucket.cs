@@ -12,6 +12,7 @@ namespace Pulumi.Cloudflare
     /// <summary>
     /// ## Example Usage
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -29,13 +30,14 @@ namespace Pulumi.Cloudflare
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// &gt; Available location values can be found in the [R2 documentation](https://developers.cloudflare.com/r2/reference/data-location/#available-hints).
     /// 
     /// ## Import
     /// 
     /// ```sh
-    ///  $ pulumi import cloudflare:index/r2Bucket:R2Bucket default &lt;account id&gt;/&lt;bucket name&gt;
+    /// $ pulumi import cloudflare:index/r2Bucket:R2Bucket default &lt;account id&gt;/&lt;bucket name&gt;
     /// ```
     /// </summary>
     [CloudflareResourceType("cloudflare:index/r2Bucket:R2Bucket")]

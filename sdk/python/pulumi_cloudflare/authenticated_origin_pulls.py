@@ -170,6 +170,7 @@ class AuthenticatedOriginPulls(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
@@ -200,6 +201,7 @@ class AuthenticatedOriginPulls(pulumi.CustomResource):
             hostname="aop.example.com",
             enabled=True)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -209,13 +211,13 @@ class AuthenticatedOriginPulls(pulumi.CustomResource):
         $ pulumi import cloudflare:index/authenticatedOriginPulls:AuthenticatedOriginPulls example <zone_id>
         ```
 
-         per zone
+        per zone
 
         ```sh
         $ pulumi import cloudflare:index/authenticatedOriginPulls:AuthenticatedOriginPulls example <zone_id>/<certificate_id>
         ```
 
-         per hostname
+        per hostname
 
         ```sh
         $ pulumi import cloudflare:index/authenticatedOriginPulls:AuthenticatedOriginPulls example <zone_id>/<certificate_id>/<hostname>
@@ -241,6 +243,7 @@ class AuthenticatedOriginPulls(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
@@ -271,6 +274,7 @@ class AuthenticatedOriginPulls(pulumi.CustomResource):
             hostname="aop.example.com",
             enabled=True)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -280,13 +284,13 @@ class AuthenticatedOriginPulls(pulumi.CustomResource):
         $ pulumi import cloudflare:index/authenticatedOriginPulls:AuthenticatedOriginPulls example <zone_id>
         ```
 
-         per zone
+        per zone
 
         ```sh
         $ pulumi import cloudflare:index/authenticatedOriginPulls:AuthenticatedOriginPulls example <zone_id>/<certificate_id>
         ```
 
-         per hostname
+        per hostname
 
         ```sh
         $ pulumi import cloudflare:index/authenticatedOriginPulls:AuthenticatedOriginPulls example <zone_id>/<certificate_id>/<hostname>

@@ -12,6 +12,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
@@ -70,11 +71,12 @@ import * as utilities from "./utilities";
  *     urlBrowserIsolationEnabled: true,
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * ```sh
- *  $ pulumi import cloudflare:index/teamsAccount:TeamsAccount example <account_id>
+ * $ pulumi import cloudflare:index/teamsAccount:TeamsAccount example <account_id>
  * ```
  */
 export class TeamsAccount extends pulumi.CustomResource {

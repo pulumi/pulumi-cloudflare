@@ -468,6 +468,7 @@ class AccessOrganization(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
@@ -487,11 +488,12 @@ class AccessOrganization(pulumi.CustomResource):
             name="example.cloudflareaccess.com",
             user_seat_expiration_inactive_time="720h")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         ```sh
-         $ pulumi import cloudflare:index/accessOrganization:AccessOrganization example <account_id>
+        $ pulumi import cloudflare:index/accessOrganization:AccessOrganization example <account_id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -522,6 +524,7 @@ class AccessOrganization(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
@@ -541,11 +544,12 @@ class AccessOrganization(pulumi.CustomResource):
             name="example.cloudflareaccess.com",
             user_seat_expiration_inactive_time="720h")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         ```sh
-         $ pulumi import cloudflare:index/accessOrganization:AccessOrganization example <account_id>
+        $ pulumi import cloudflare:index/accessOrganization:AccessOrganization example <account_id>
         ```
 
         :param str resource_name: The name of the resource.

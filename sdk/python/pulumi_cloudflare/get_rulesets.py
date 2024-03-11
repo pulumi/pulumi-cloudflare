@@ -110,6 +110,7 @@ def get_rulesets(account_id: Optional[str] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_cloudflare as cloudflare
@@ -119,6 +120,7 @@ def get_rulesets(account_id: Optional[str] = None,
         ),
         zone_id="0da42c8d2132a9ddaf714f9e7c920711")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str account_id: The account identifier to target for the resource. Must provide only one of `zone_id`, `account_id`.
@@ -153,6 +155,7 @@ def get_rulesets_output(account_id: Optional[pulumi.Input[Optional[str]]] = None
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_cloudflare as cloudflare
@@ -162,6 +165,7 @@ def get_rulesets_output(account_id: Optional[pulumi.Input[Optional[str]]] = None
         ),
         zone_id="0da42c8d2132a9ddaf714f9e7c920711")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str account_id: The account identifier to target for the resource. Must provide only one of `zone_id`, `account_id`.

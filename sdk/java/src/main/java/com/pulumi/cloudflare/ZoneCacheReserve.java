@@ -22,6 +22,8 @@ import javax.annotation.Nullable;
  * Note: Using Cache Reserve without Tiered Cache is not recommended.
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -51,11 +53,12 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * ```sh
- *  $ pulumi import cloudflare:index/zoneCacheReserve:ZoneCacheReserve example &lt;zone_id&gt;
+ * $ pulumi import cloudflare:index/zoneCacheReserve:ZoneCacheReserve example &lt;zone_id&gt;
  * ```
  * 
  */

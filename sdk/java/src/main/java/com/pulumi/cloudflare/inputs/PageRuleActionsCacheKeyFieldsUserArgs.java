@@ -49,6 +49,8 @@ public final class PageRuleActionsCacheKeyFieldsUserArgs extends com.pulumi.reso
      * `true` - includes the first language code contained in the `Accept-Language` header sent by the client; defaults to `false`.
      * 
      * Example:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -111,6 +113,7 @@ public final class PageRuleActionsCacheKeyFieldsUserArgs extends com.pulumi.reso
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     @Import(name="lang")
@@ -120,6 +123,8 @@ public final class PageRuleActionsCacheKeyFieldsUserArgs extends com.pulumi.reso
      * @return `true` - includes the first language code contained in the `Accept-Language` header sent by the client; defaults to `false`.
      * 
      * Example:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -182,6 +187,7 @@ public final class PageRuleActionsCacheKeyFieldsUserArgs extends com.pulumi.reso
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public Optional<Output<Boolean>> lang() {
@@ -260,6 +266,8 @@ public final class PageRuleActionsCacheKeyFieldsUserArgs extends com.pulumi.reso
          * @param lang `true` - includes the first language code contained in the `Accept-Language` header sent by the client; defaults to `false`.
          * 
          * Example:
+         * 
+         * &lt;!--Start PulumiCodeChooser --&gt;
          * ```java
          * package generated_program;
          * 
@@ -322,6 +330,7 @@ public final class PageRuleActionsCacheKeyFieldsUserArgs extends com.pulumi.reso
          *     }
          * }
          * ```
+         * &lt;!--End PulumiCodeChooser --&gt;
          * 
          * @return builder
          * 
@@ -335,6 +344,8 @@ public final class PageRuleActionsCacheKeyFieldsUserArgs extends com.pulumi.reso
          * @param lang `true` - includes the first language code contained in the `Accept-Language` header sent by the client; defaults to `false`.
          * 
          * Example:
+         * 
+         * &lt;!--Start PulumiCodeChooser --&gt;
          * ```java
          * package generated_program;
          * 
@@ -397,6 +408,7 @@ public final class PageRuleActionsCacheKeyFieldsUserArgs extends com.pulumi.reso
          *     }
          * }
          * ```
+         * &lt;!--End PulumiCodeChooser --&gt;
          * 
          * @return builder
          * 

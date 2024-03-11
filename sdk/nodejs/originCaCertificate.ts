@@ -13,6 +13,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
@@ -33,11 +34,12 @@ import * as utilities from "./utilities";
  *     requestedValidity: 7,
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * ```sh
- *  $ pulumi import cloudflare:index/originCaCertificate:OriginCaCertificate example <certificate_id>
+ * $ pulumi import cloudflare:index/originCaCertificate:OriginCaCertificate example <certificate_id>
  * ```
  */
 export class OriginCaCertificate extends pulumi.CustomResource {

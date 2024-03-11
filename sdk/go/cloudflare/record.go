@@ -16,6 +16,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -62,13 +63,12 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
 // ```sh
-//
-//	$ pulumi import cloudflare:index/record:Record example <zone_id>/<record_id>
-//
+// $ pulumi import cloudflare:index/record:Record example <zone_id>/<record_id>
 // ```
 type Record struct {
 	pulumi.CustomResourceState

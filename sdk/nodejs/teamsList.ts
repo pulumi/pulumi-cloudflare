@@ -11,6 +11,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
@@ -27,11 +28,12 @@ import * as utilities from "./utilities";
  *     type: "SERIAL",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * ```sh
- *  $ pulumi import cloudflare:index/teamsList:TeamsList example <account_id>/<teams_list_id>
+ * $ pulumi import cloudflare:index/teamsList:TeamsList example <account_id>/<teams_list_id>
  * ```
  */
 export class TeamsList extends pulumi.CustomResource {

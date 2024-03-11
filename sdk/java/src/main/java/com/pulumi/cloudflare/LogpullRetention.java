@@ -18,6 +18,8 @@ import javax.annotation.Nullable;
  * Allows management of the Logpull Retention settings used to control whether or not to retain HTTP request logs.
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -47,11 +49,12 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * ```sh
- *  $ pulumi import cloudflare:index/logpullRetention:LogpullRetention example &lt;zone_id&gt;
+ * $ pulumi import cloudflare:index/logpullRetention:LogpullRetention example &lt;zone_id&gt;
  * ```
  * 
  */

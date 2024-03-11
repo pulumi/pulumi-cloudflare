@@ -137,6 +137,7 @@ class WorkerCronTrigger(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
@@ -153,11 +154,12 @@ class WorkerCronTrigger(pulumi.CustomResource):
                 "10 7 * * mon-fri",
             ])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         ```sh
-         $ pulumi import cloudflare:index/workerCronTrigger:WorkerCronTrigger example <account_id>/<script_name>
+        $ pulumi import cloudflare:index/workerCronTrigger:WorkerCronTrigger example <account_id>/<script_name>
         ```
 
         :param str resource_name: The name of the resource.
@@ -180,6 +182,7 @@ class WorkerCronTrigger(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
@@ -196,11 +199,12 @@ class WorkerCronTrigger(pulumi.CustomResource):
                 "10 7 * * mon-fri",
             ])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         ```sh
-         $ pulumi import cloudflare:index/workerCronTrigger:WorkerCronTrigger example <account_id>/<script_name>
+        $ pulumi import cloudflare:index/workerCronTrigger:WorkerCronTrigger example <account_id>/<script_name>
         ```
 
         :param str resource_name: The name of the resource.

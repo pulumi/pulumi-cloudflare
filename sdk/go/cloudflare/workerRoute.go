@@ -16,6 +16,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -46,13 +47,12 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
 // ```sh
-//
-//	$ pulumi import cloudflare:index/workerRoute:WorkerRoute example <zone_id>/<route_id>
-//
+// $ pulumi import cloudflare:index/workerRoute:WorkerRoute example <zone_id>/<route_id>
 // ```
 type WorkerRoute struct {
 	pulumi.CustomResourceState
