@@ -41,7 +41,7 @@ import (
 //				return err
 //			}
 //			_, err = cloudflare.NewRecord(ctx, "exampleRecord", &cloudflare.RecordArgs{
-//				ZoneId:  *pulumi.String(exampleZone.Id),
+//				ZoneId:  pulumi.String(exampleZone.Id),
 //				Name:    pulumi.String("www"),
 //				Value:   pulumi.String("203.0.113.1"),
 //				Type:    pulumi.String("A"),

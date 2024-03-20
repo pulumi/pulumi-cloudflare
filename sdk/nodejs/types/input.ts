@@ -4486,7 +4486,7 @@ export interface ZoneSettingsOverrideInitialSetting {
     sortQueryStringForCache?: pulumi.Input<string>;
     ssl?: pulumi.Input<string>;
     /**
-     * @deprecated tls_1_2_only has been deprecated in favour of using `min_tls_version = "1.2"` instead.
+     * @deprecated tls_1_2_only has been deprecated in favour of using `minTlsVersion = "1.2"` instead.
      */
     tls12Only?: pulumi.Input<string>;
     tls13?: pulumi.Input<string>;
@@ -4568,7 +4568,7 @@ export interface ZoneSettingsOverrideSettings {
     sortQueryStringForCache?: pulumi.Input<string>;
     ssl?: pulumi.Input<string>;
     /**
-     * @deprecated tls_1_2_only has been deprecated in favour of using `min_tls_version = "1.2"` instead.
+     * @deprecated tls_1_2_only has been deprecated in favour of using `minTlsVersion = "1.2"` instead.
      */
     tls12Only?: pulumi.Input<string>;
     tls13?: pulumi.Input<string>;

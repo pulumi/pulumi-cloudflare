@@ -42,7 +42,7 @@ import (
 //				Type:            pulumi.String("self_hosted"),
 //				SessionDuration: pulumi.String("24h"),
 //				AllowedIdps: pulumi.StringArray{
-//					*pulumi.String(exampleAccessIdentityProvider.Id),
+//					pulumi.String(exampleAccessIdentityProvider.Id),
 //				},
 //				AutoRedirectToIdentity: pulumi.Bool(true),
 //			})

@@ -37149,7 +37149,7 @@ type ZoneSettingsOverrideInitialSetting struct {
 	ServerSideExclude       *string                                           `pulumi:"serverSideExclude"`
 	SortQueryStringForCache *string                                           `pulumi:"sortQueryStringForCache"`
 	Ssl                     *string                                           `pulumi:"ssl"`
-	// Deprecated: tls_1_2_only has been deprecated in favour of using `min_tls_version = "1.2"` instead.
+	// Deprecated: tls_1_2_only has been deprecated in favour of using `minTlsVersion = "1.2"` instead.
 	Tls12Only          *string `pulumi:"tls12Only"`
 	Tls13              *string `pulumi:"tls13"`
 	TlsClientAuth      *string `pulumi:"tlsClientAuth"`
@@ -37220,7 +37220,7 @@ type ZoneSettingsOverrideInitialSettingArgs struct {
 	ServerSideExclude       pulumi.StringPtrInput                                    `pulumi:"serverSideExclude"`
 	SortQueryStringForCache pulumi.StringPtrInput                                    `pulumi:"sortQueryStringForCache"`
 	Ssl                     pulumi.StringPtrInput                                    `pulumi:"ssl"`
-	// Deprecated: tls_1_2_only has been deprecated in favour of using `min_tls_version = "1.2"` instead.
+	// Deprecated: tls_1_2_only has been deprecated in favour of using `minTlsVersion = "1.2"` instead.
 	Tls12Only          pulumi.StringPtrInput `pulumi:"tls12Only"`
 	Tls13              pulumi.StringPtrInput `pulumi:"tls13"`
 	TlsClientAuth      pulumi.StringPtrInput `pulumi:"tlsClientAuth"`
@@ -37472,7 +37472,7 @@ func (o ZoneSettingsOverrideInitialSettingOutput) Ssl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ZoneSettingsOverrideInitialSetting) *string { return v.Ssl }).(pulumi.StringPtrOutput)
 }
 
-// Deprecated: tls_1_2_only has been deprecated in favour of using `min_tls_version = "1.2"` instead.
+// Deprecated: tls_1_2_only has been deprecated in favour of using `minTlsVersion = "1.2"` instead.
 func (o ZoneSettingsOverrideInitialSettingOutput) Tls12Only() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ZoneSettingsOverrideInitialSetting) *string { return v.Tls12Only }).(pulumi.StringPtrOutput)
 }
@@ -38099,7 +38099,7 @@ type ZoneSettingsOverrideSettings struct {
 	ServerSideExclude       *string                                     `pulumi:"serverSideExclude"`
 	SortQueryStringForCache *string                                     `pulumi:"sortQueryStringForCache"`
 	Ssl                     *string                                     `pulumi:"ssl"`
-	// Deprecated: tls_1_2_only has been deprecated in favour of using `min_tls_version = "1.2"` instead.
+	// Deprecated: tls_1_2_only has been deprecated in favour of using `minTlsVersion = "1.2"` instead.
 	Tls12Only          *string `pulumi:"tls12Only"`
 	Tls13              *string `pulumi:"tls13"`
 	TlsClientAuth      *string `pulumi:"tlsClientAuth"`
@@ -38170,7 +38170,7 @@ type ZoneSettingsOverrideSettingsArgs struct {
 	ServerSideExclude       pulumi.StringPtrInput                              `pulumi:"serverSideExclude"`
 	SortQueryStringForCache pulumi.StringPtrInput                              `pulumi:"sortQueryStringForCache"`
 	Ssl                     pulumi.StringPtrInput                              `pulumi:"ssl"`
-	// Deprecated: tls_1_2_only has been deprecated in favour of using `min_tls_version = "1.2"` instead.
+	// Deprecated: tls_1_2_only has been deprecated in favour of using `minTlsVersion = "1.2"` instead.
 	Tls12Only          pulumi.StringPtrInput `pulumi:"tls12Only"`
 	Tls13              pulumi.StringPtrInput `pulumi:"tls13"`
 	TlsClientAuth      pulumi.StringPtrInput `pulumi:"tlsClientAuth"`
@@ -38448,7 +38448,7 @@ func (o ZoneSettingsOverrideSettingsOutput) Ssl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ZoneSettingsOverrideSettings) *string { return v.Ssl }).(pulumi.StringPtrOutput)
 }
 
-// Deprecated: tls_1_2_only has been deprecated in favour of using `min_tls_version = "1.2"` instead.
+// Deprecated: tls_1_2_only has been deprecated in favour of using `minTlsVersion = "1.2"` instead.
 func (o ZoneSettingsOverrideSettingsOutput) Tls12Only() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ZoneSettingsOverrideSettings) *string { return v.Tls12Only }).(pulumi.StringPtrOutput)
 }
@@ -38927,7 +38927,7 @@ func (o ZoneSettingsOverrideSettingsPtrOutput) Ssl() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Deprecated: tls_1_2_only has been deprecated in favour of using `min_tls_version = "1.2"` instead.
+// Deprecated: tls_1_2_only has been deprecated in favour of using `minTlsVersion = "1.2"` instead.
 func (o ZoneSettingsOverrideSettingsPtrOutput) Tls12Only() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ZoneSettingsOverrideSettings) *string {
 		if v == nil {

@@ -42,7 +42,7 @@ import (
 // Policies: cloudflare.ApiTokenPolicyArray{
 // &cloudflare.ApiTokenPolicyArgs{
 // PermissionGroups: pulumi.StringArray{
-// *pulumi.String(all.User.User Details Read),
+// pulumi.String(all.User.User Details Read),
 // },
 // Resources: pulumi.StringMap{
 // fmt.Sprintf("com.cloudflare.api.user.%v", me.Id): pulumi.String("*"),
