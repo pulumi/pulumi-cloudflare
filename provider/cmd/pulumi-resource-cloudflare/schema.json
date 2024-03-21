@@ -221,18 +221,19 @@
             "properties": {
                 "appLauncherUrl": {
                     "type": "string",
-                    "description": "The URL where this applications tile redirects users\n"
+                    "description": "The URL where this applications tile redirects users.\n"
                 },
                 "authType": {
                     "type": "string"
                 },
                 "clientId": {
                     "type": "string",
-                    "description": "The application client id\n"
+                    "description": "The application client id.\n"
                 },
                 "clientSecret": {
                     "type": "string",
-                    "description": "The application client secret, only returned on initial apply\n"
+                    "description": "The application client secret, only returned on initial apply.\n",
+                    "secret": true
                 },
                 "consumerServiceUrl": {
                     "type": "string",
@@ -254,11 +255,11 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "The OIDC flows supported by this application\n"
+                    "description": "The OIDC flows supported by this application.\n"
                 },
                 "groupFilterRegex": {
                     "type": "string",
-                    "description": "A regex to filter Cloudflare groups returned in ID token and userinfo endpoint\n"
+                    "description": "A regex to filter Cloudflare groups returned in ID token and userinfo endpoint.\n"
                 },
                 "idpEntityId": {
                     "type": "string",
@@ -266,7 +267,7 @@
                 },
                 "nameIdFormat": {
                     "type": "string",
-                    "description": "The format of the name identifier sent to the SaaS application. Defaults to `email`.\n"
+                    "description": "The format of the name identifier sent to the SaaS application.\n"
                 },
                 "nameIdTransformJsonata": {
                     "type": "string",
@@ -281,14 +282,14 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "The permitted URL's for Cloudflare to return Authorization codes and Access/ID tokens\n"
+                    "description": "The permitted URL's for Cloudflare to return Authorization codes and Access/ID tokens.\n"
                 },
                 "scopes": {
                     "type": "array",
                     "items": {
                         "type": "string"
                     },
-                    "description": "Define the user information shared with access\n"
+                    "description": "Define the user information shared with access.\n"
                 },
                 "spEntityId": {
                     "type": "string",
@@ -1166,6 +1167,26 @@
                     ]
                 }
             }
+        },
+        "cloudflare:index/AccessMutualTlsHostnameSettingsSetting:AccessMutualTlsHostnameSettingsSetting": {
+            "properties": {
+                "chinaNetwork": {
+                    "type": "boolean",
+                    "description": "Request client certificates for this hostname in China. Can only be set to true if this zone is china network enabled.\n"
+                },
+                "clientCertificateForwarding": {
+                    "type": "boolean",
+                    "description": "Client Certificate Forwarding is a feature that takes the client cert provided by the eyeball to the edge, and forwards it to the origin as a HTTP header to allow logging on the origin.\n"
+                },
+                "hostname": {
+                    "type": "string",
+                    "description": "The hostname that these settings apply to.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "hostname"
+            ]
         },
         "cloudflare:index/AccessOrganizationCustomPage:AccessOrganizationCustomPage": {
             "properties": {
@@ -2514,6 +2535,35 @@
             },
             "type": "object"
         },
+        "cloudflare:index/DlpProfileContextAwareness:DlpProfileContextAwareness": {
+            "properties": {
+                "enabled": {
+                    "type": "boolean",
+                    "description": "Scan the context of predefined entries to only return matches surrounded by keywords.\n"
+                },
+                "skip": {
+                    "$ref": "#/types/cloudflare:index/DlpProfileContextAwarenessSkip:DlpProfileContextAwarenessSkip",
+                    "description": "Content types to exclude from context analysis and return all matches.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "enabled",
+                "skip"
+            ]
+        },
+        "cloudflare:index/DlpProfileContextAwarenessSkip:DlpProfileContextAwarenessSkip": {
+            "properties": {
+                "files": {
+                    "type": "boolean",
+                    "description": "Return all matches, regardless of context analysis result, if the data is a file.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "files"
+            ]
+        },
         "cloudflare:index/DlpProfileEntry:DlpProfileEntry": {
             "properties": {
                 "enabled": {
@@ -2670,6 +2720,60 @@
             "required": [
                 "header",
                 "values"
+            ]
+        },
+        "cloudflare:index/HyperdriveConfigCaching:HyperdriveConfigCaching": {
+            "properties": {
+                "disabled": {
+                    "type": "boolean",
+                    "description": "Disable caching for this Hyperdrive configuration.\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "disabled"
+                    ]
+                }
+            }
+        },
+        "cloudflare:index/HyperdriveConfigOrigin:HyperdriveConfigOrigin": {
+            "properties": {
+                "database": {
+                    "type": "string",
+                    "description": "The name of your origin database.\n"
+                },
+                "host": {
+                    "type": "string",
+                    "description": "The host (hostname or IP) of your origin database.\n"
+                },
+                "password": {
+                    "type": "string",
+                    "description": "The password of the Hyperdrive configuration.\n",
+                    "secret": true
+                },
+                "port": {
+                    "type": "integer",
+                    "description": "The port (default: 5432 for Postgres) of your origin database.\n"
+                },
+                "scheme": {
+                    "type": "string",
+                    "description": "Specifies the URL scheme used to connect to your origin database.\n"
+                },
+                "user": {
+                    "type": "string",
+                    "description": "The user of your origin database.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "database",
+                "host",
+                "password",
+                "port",
+                "scheme",
+                "user"
             ]
         },
         "cloudflare:index/ListItem:ListItem": {
@@ -3325,6 +3429,62 @@
             },
             "type": "object"
         },
+        "cloudflare:index/LogpushJobOutputOptions:LogpushJobOutputOptions": {
+            "properties": {
+                "batchPrefix": {
+                    "type": "string",
+                    "description": "String to be prepended before each batch.\n"
+                },
+                "batchSuffix": {
+                    "type": "string",
+                    "description": "String to be appended after each batch.\n"
+                },
+                "cve20214428": {
+                    "type": "boolean",
+                    "description": "Mitigation for CVE-2021-44228. If set to true, will cause all occurrences of ${ in the generated files to be replaced with x{. Defaults to `false`.\n"
+                },
+                "fieldDelimiter": {
+                    "type": "string",
+                    "description": "String to join fields. This field be ignored when record_template is set. Defaults to `,`.\n"
+                },
+                "fieldNames": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "List of field names to be included in the Logpush output.\n"
+                },
+                "outputType": {
+                    "type": "string",
+                    "description": "Specifies the output type. Available values: `ndjson`, `csv`. Defaults to `ndjson`.\n"
+                },
+                "recordDelimiter": {
+                    "type": "string",
+                    "description": "String to be inserted in-between the records as separator.\n"
+                },
+                "recordPrefix": {
+                    "type": "string",
+                    "description": "String to be prepended before each record. Defaults to `{`.\n"
+                },
+                "recordSuffix": {
+                    "type": "string",
+                    "description": "String to be appended after each record. Defaults to `}`.\n"
+                },
+                "recordTemplate": {
+                    "type": "string",
+                    "description": "String to use as template for each record instead of the default comma-separated list.\n"
+                },
+                "sampleRate": {
+                    "type": "number",
+                    "description": "Specifies the sampling rate. Defaults to `1`.\n"
+                },
+                "timestampFormat": {
+                    "type": "string",
+                    "description": "Specifies the format for timestamps. Available values: `unixnano`, `unix`, `rfc3339`. Defaults to `unixnano`.\n"
+                }
+            },
+            "type": "object"
+        },
         "cloudflare:index/ManagedHeadersManagedRequestHeader:ManagedHeadersManagedRequestHeader": {
             "properties": {
                 "enabled": {
@@ -3389,6 +3549,13 @@
                         "type": "string"
                     },
                     "description": "Affected components for alert. Available values: `API`, `API Shield`, `Access`, `Always Online`, `Analytics`, `Apps Marketplace`, `Argo Smart Routing`, `Audit Logs`, `Authoritative DNS`, `Billing`, `Bot Management`, `Bring Your Own IP (BYOIP)`, `Browser Isolation`, `CDN Cache Purge`, `CDN/Cache`, `Cache Reserve`, `Challenge Platform`, `Cloud Access Security Broker (CASB)`, `Community Site`, `DNS Root Servers`, `DNS Updates`, `Dashboard`, `Data Loss Prevention (DLP)`, `Developer's Site`, `Digital Experience Monitoring (DEX)`, `Distributed Web Gateway`, `Durable Objects`, `Email Routing`, `Ethereum Gateway`, `Firewall`, `Gateway`, `Geo-Key Manager`, `Image Resizing`, `Images`, `Infrastructure`, `Lists`, `Load Balancing and Monitoring`, `Logs`, `Magic Firewall`, `Magic Transit`, `Magic WAN`, `Magic WAN Connector`, `Marketing Site`, `Mirage`, `Network`, `Notifications`, `Observatory`, `Page Shield`, `Pages`, `R2`, `Radar`, `Randomness Beacon`, `Recursive DNS`, `Registrar`, `Registration Data Access Protocol (RDAP)`, `SSL Certificate Provisioning`, `SSL for SaaS Provisioning`, `Security Center`, `Snippets`, `Spectrum`, `Speed Optimizations`, `Stream`, `Support Site`, `Time Services`, `Trace`, `Tunnel`, `Turnstile`, `WARP`, `Waiting Room`, `Web Analytics`, `Workers`, `Workers KV`, `Workers Preview`, `Zaraz`, `Zero Trust`, `Zero Trust Dashboard`, `Zone Versioning`.\n"
+                },
+                "airportCodes": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Filter on Points of Presence.\n"
                 },
                 "alertTriggerPreferences": {
                     "type": "array",
@@ -8768,7 +8935,7 @@
                 },
                 "allowAuthenticateViaWarp": {
                     "type": "boolean",
-                    "description": "When set to true, users can authenticate to this application using their WARP session. When set to false this\napplication will always require direct IdP authentication. This setting always overrides the organization setting for\nWARP authentication.\n"
+                    "description": "When set to true, users can authenticate to this application using their WARP session. When set to false this application will always require direct IdP authentication. This setting always overrides the organization setting for WARP authentication.\n"
                 },
                 "allowedIdps": {
                     "type": "array",
@@ -8915,7 +9082,7 @@
                 },
                 "allowAuthenticateViaWarp": {
                     "type": "boolean",
-                    "description": "When set to true, users can authenticate to this application using their WARP session. When set to false this\napplication will always require direct IdP authentication. This setting always overrides the organization setting for\nWARP authentication.\n"
+                    "description": "When set to true, users can authenticate to this application using their WARP session. When set to false this application will always require direct IdP authentication. This setting always overrides the organization setting for WARP authentication.\n"
                 },
                 "allowedIdps": {
                     "type": "array",
@@ -9053,7 +9220,7 @@
                     },
                     "allowAuthenticateViaWarp": {
                         "type": "boolean",
-                        "description": "When set to true, users can authenticate to this application using their WARP session. When set to false this\napplication will always require direct IdP authentication. This setting always overrides the organization setting for\nWARP authentication.\n"
+                        "description": "When set to true, users can authenticate to this application using their WARP session. When set to false this application will always require direct IdP authentication. This setting always overrides the organization setting for WARP authentication.\n"
                     },
                     "allowedIdps": {
                         "type": "array",
@@ -9730,6 +9897,61 @@
                 "type": "object"
             }
         },
+        "cloudflare:index/accessMutualTlsHostnameSettings:AccessMutualTlsHostnameSettings": {
+            "description": "Provides a Cloudflare Access Mutual TLS Certificate Settings resource.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as cloudflare from \"@pulumi/cloudflare\";\n\nconst example = new cloudflare.AccessMutualTlsHostnameSettings(\"example\", {\n    settings: [{\n        chinaNetwork: false,\n        clientCertificateForwarding: true,\n        hostname: \"example.com\",\n    }],\n    zoneId: \"0da42c8d2132a9ddaf714f9e7c920711\",\n});\n```\n```python\nimport pulumi\nimport pulumi_cloudflare as cloudflare\n\nexample = cloudflare.AccessMutualTlsHostnameSettings(\"example\",\n    settings=[cloudflare.AccessMutualTlsHostnameSettingsSettingArgs(\n        china_network=False,\n        client_certificate_forwarding=True,\n        hostname=\"example.com\",\n    )],\n    zone_id=\"0da42c8d2132a9ddaf714f9e7c920711\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Cloudflare = Pulumi.Cloudflare;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = new Cloudflare.AccessMutualTlsHostnameSettings(\"example\", new()\n    {\n        Settings = new[]\n        {\n            new Cloudflare.Inputs.AccessMutualTlsHostnameSettingsSettingArgs\n            {\n                ChinaNetwork = false,\n                ClientCertificateForwarding = true,\n                Hostname = \"example.com\",\n            },\n        },\n        ZoneId = \"0da42c8d2132a9ddaf714f9e7c920711\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := cloudflare.NewAccessMutualTlsHostnameSettings(ctx, \"example\", \u0026cloudflare.AccessMutualTlsHostnameSettingsArgs{\n\t\t\tSettings: cloudflare.AccessMutualTlsHostnameSettingsSettingArray{\n\t\t\t\t\u0026cloudflare.AccessMutualTlsHostnameSettingsSettingArgs{\n\t\t\t\t\tChinaNetwork:                pulumi.Bool(false),\n\t\t\t\t\tClientCertificateForwarding: pulumi.Bool(true),\n\t\t\t\t\tHostname:                    pulumi.String(\"example.com\"),\n\t\t\t\t},\n\t\t\t},\n\t\t\tZoneId: pulumi.String(\"0da42c8d2132a9ddaf714f9e7c920711\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.cloudflare.AccessMutualTlsHostnameSettings;\nimport com.pulumi.cloudflare.AccessMutualTlsHostnameSettingsArgs;\nimport com.pulumi.cloudflare.inputs.AccessMutualTlsHostnameSettingsSettingArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var example = new AccessMutualTlsHostnameSettings(\"example\", AccessMutualTlsHostnameSettingsArgs.builder()        \n            .settings(AccessMutualTlsHostnameSettingsSettingArgs.builder()\n                .chinaNetwork(false)\n                .clientCertificateForwarding(true)\n                .hostname(\"example.com\")\n                .build())\n            .zoneId(\"0da42c8d2132a9ddaf714f9e7c920711\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  example:\n    type: cloudflare:AccessMutualTlsHostnameSettings\n    properties:\n      settings:\n        - chinaNetwork: false\n          clientCertificateForwarding: true\n          hostname: example.com\n      zoneId: 0da42c8d2132a9ddaf714f9e7c920711\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nAccount level mTLS hostname settings import.\n\n```sh\n$ pulumi import cloudflare:index/accessMutualTlsHostnameSettings:AccessMutualTlsHostnameSettings example account/\u003caccount_id\u003e\n```\n\nZone level mTLS hostname settings import.\n\n```sh\n$ pulumi import cloudflare:index/accessMutualTlsHostnameSettings:AccessMutualTlsHostnameSettings example zone/\u003czone_id\u003e\n```\n\n",
+            "properties": {
+                "accountId": {
+                    "type": "string",
+                    "description": "The account identifier to target for the resource.\n"
+                },
+                "settings": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/cloudflare:index/AccessMutualTlsHostnameSettingsSetting:AccessMutualTlsHostnameSettingsSetting"
+                    }
+                },
+                "zoneId": {
+                    "type": "string",
+                    "description": "The zone identifier to target for the resource.\n"
+                }
+            },
+            "inputProperties": {
+                "accountId": {
+                    "type": "string",
+                    "description": "The account identifier to target for the resource.\n"
+                },
+                "settings": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/cloudflare:index/AccessMutualTlsHostnameSettingsSetting:AccessMutualTlsHostnameSettingsSetting"
+                    }
+                },
+                "zoneId": {
+                    "type": "string",
+                    "description": "The zone identifier to target for the resource.\n"
+                }
+            },
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering AccessMutualTlsHostnameSettings resources.\n",
+                "properties": {
+                    "accountId": {
+                        "type": "string",
+                        "description": "The account identifier to target for the resource.\n"
+                    },
+                    "settings": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/cloudflare:index/AccessMutualTlsHostnameSettingsSetting:AccessMutualTlsHostnameSettingsSetting"
+                        }
+                    },
+                    "zoneId": {
+                        "type": "string",
+                        "description": "The zone identifier to target for the resource.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
         "cloudflare:index/accessOrganization:AccessOrganization": {
             "description": "A Zero Trust organization defines the user login experience.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as cloudflare from \"@pulumi/cloudflare\";\n\nconst example = new cloudflare.AccessOrganization(\"example\", {\n    accountId: \"f037e56e89293a057740de681ac9abbe\",\n    authDomain: \"example.cloudflareaccess.com\",\n    autoRedirectToIdentity: false,\n    isUiReadOnly: false,\n    loginDesigns: [{\n        backgroundColor: \"#ffffff\",\n        footerText: \"My footer text\",\n        headerText: \"My header text\",\n        logoPath: \"https://example.com/logo.png\",\n        textColor: \"#000000\",\n    }],\n    name: \"example.cloudflareaccess.com\",\n    userSeatExpirationInactiveTime: \"720h\",\n});\n```\n```python\nimport pulumi\nimport pulumi_cloudflare as cloudflare\n\nexample = cloudflare.AccessOrganization(\"example\",\n    account_id=\"f037e56e89293a057740de681ac9abbe\",\n    auth_domain=\"example.cloudflareaccess.com\",\n    auto_redirect_to_identity=False,\n    is_ui_read_only=False,\n    login_designs=[cloudflare.AccessOrganizationLoginDesignArgs(\n        background_color=\"#ffffff\",\n        footer_text=\"My footer text\",\n        header_text=\"My header text\",\n        logo_path=\"https://example.com/logo.png\",\n        text_color=\"#000000\",\n    )],\n    name=\"example.cloudflareaccess.com\",\n    user_seat_expiration_inactive_time=\"720h\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Cloudflare = Pulumi.Cloudflare;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = new Cloudflare.AccessOrganization(\"example\", new()\n    {\n        AccountId = \"f037e56e89293a057740de681ac9abbe\",\n        AuthDomain = \"example.cloudflareaccess.com\",\n        AutoRedirectToIdentity = false,\n        IsUiReadOnly = false,\n        LoginDesigns = new[]\n        {\n            new Cloudflare.Inputs.AccessOrganizationLoginDesignArgs\n            {\n                BackgroundColor = \"#ffffff\",\n                FooterText = \"My footer text\",\n                HeaderText = \"My header text\",\n                LogoPath = \"https://example.com/logo.png\",\n                TextColor = \"#000000\",\n            },\n        },\n        Name = \"example.cloudflareaccess.com\",\n        UserSeatExpirationInactiveTime = \"720h\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := cloudflare.NewAccessOrganization(ctx, \"example\", \u0026cloudflare.AccessOrganizationArgs{\n\t\t\tAccountId:              pulumi.String(\"f037e56e89293a057740de681ac9abbe\"),\n\t\t\tAuthDomain:             pulumi.String(\"example.cloudflareaccess.com\"),\n\t\t\tAutoRedirectToIdentity: pulumi.Bool(false),\n\t\t\tIsUiReadOnly:           pulumi.Bool(false),\n\t\t\tLoginDesigns: cloudflare.AccessOrganizationLoginDesignArray{\n\t\t\t\t\u0026cloudflare.AccessOrganizationLoginDesignArgs{\n\t\t\t\t\tBackgroundColor: pulumi.String(\"#ffffff\"),\n\t\t\t\t\tFooterText:      pulumi.String(\"My footer text\"),\n\t\t\t\t\tHeaderText:      pulumi.String(\"My header text\"),\n\t\t\t\t\tLogoPath:        pulumi.String(\"https://example.com/logo.png\"),\n\t\t\t\t\tTextColor:       pulumi.String(\"#000000\"),\n\t\t\t\t},\n\t\t\t},\n\t\t\tName:                           pulumi.String(\"example.cloudflareaccess.com\"),\n\t\t\tUserSeatExpirationInactiveTime: pulumi.String(\"720h\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.cloudflare.AccessOrganization;\nimport com.pulumi.cloudflare.AccessOrganizationArgs;\nimport com.pulumi.cloudflare.inputs.AccessOrganizationLoginDesignArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var example = new AccessOrganization(\"example\", AccessOrganizationArgs.builder()        \n            .accountId(\"f037e56e89293a057740de681ac9abbe\")\n            .authDomain(\"example.cloudflareaccess.com\")\n            .autoRedirectToIdentity(false)\n            .isUiReadOnly(false)\n            .loginDesigns(AccessOrganizationLoginDesignArgs.builder()\n                .backgroundColor(\"#ffffff\")\n                .footerText(\"My footer text\")\n                .headerText(\"My header text\")\n                .logoPath(\"https://example.com/logo.png\")\n                .textColor(\"#000000\")\n                .build())\n            .name(\"example.cloudflareaccess.com\")\n            .userSeatExpirationInactiveTime(\"720h\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  example:\n    type: cloudflare:AccessOrganization\n    properties:\n      accountId: f037e56e89293a057740de681ac9abbe\n      authDomain: example.cloudflareaccess.com\n      autoRedirectToIdentity: false\n      isUiReadOnly: false\n      loginDesigns:\n        - backgroundColor: '#ffffff'\n          footerText: My footer text\n          headerText: My header text\n          logoPath: https://example.com/logo.png\n          textColor: '#000000'\n      name: example.cloudflareaccess.com\n      userSeatExpirationInactiveTime: 720h\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\n```sh\n$ pulumi import cloudflare:index/accessOrganization:AccessOrganization example \u003caccount_id\u003e\n```\n\n",
             "properties": {
@@ -9739,7 +9961,7 @@
                 },
                 "allowAuthenticateViaWarp": {
                     "type": "boolean",
-                    "description": "When set to true, users can authenticate via WARP for any application in your organization. Application settings will\ntake precedence over this value.\n"
+                    "description": "When set to true, users can authenticate via WARP for any application in your organization. Application settings will take precedence over this value.\n"
                 },
                 "authDomain": {
                     "type": "string",
@@ -9784,7 +10006,7 @@
                 },
                 "warpAuthSessionDuration": {
                     "type": "string",
-                    "description": "The amount of time that tokens issued for applications will be valid. Must be in the format 30m or 2h45m. Valid time\nunits are: m, h.\n"
+                    "description": "The amount of time that tokens issued for applications will be valid. Must be in the format 30m or 2h45m. Valid time units are: m, h.\n"
                 },
                 "zoneId": {
                     "type": "string",
@@ -9803,7 +10025,7 @@
                 },
                 "allowAuthenticateViaWarp": {
                     "type": "boolean",
-                    "description": "When set to true, users can authenticate via WARP for any application in your organization. Application settings will\ntake precedence over this value.\n"
+                    "description": "When set to true, users can authenticate via WARP for any application in your organization. Application settings will take precedence over this value.\n"
                 },
                 "authDomain": {
                     "type": "string",
@@ -9848,7 +10070,7 @@
                 },
                 "warpAuthSessionDuration": {
                     "type": "string",
-                    "description": "The amount of time that tokens issued for applications will be valid. Must be in the format 30m or 2h45m. Valid time\nunits are: m, h.\n"
+                    "description": "The amount of time that tokens issued for applications will be valid. Must be in the format 30m or 2h45m. Valid time units are: m, h.\n"
                 },
                 "zoneId": {
                     "type": "string",
@@ -9867,7 +10089,7 @@
                     },
                     "allowAuthenticateViaWarp": {
                         "type": "boolean",
-                        "description": "When set to true, users can authenticate via WARP for any application in your organization. Application settings will\ntake precedence over this value.\n"
+                        "description": "When set to true, users can authenticate via WARP for any application in your organization. Application settings will take precedence over this value.\n"
                     },
                     "authDomain": {
                         "type": "string",
@@ -9912,7 +10134,7 @@
                     },
                     "warpAuthSessionDuration": {
                         "type": "string",
-                        "description": "The amount of time that tokens issued for applications will be valid. Must be in the format 30m or 2h45m. Valid time\nunits are: m, h.\n"
+                        "description": "The amount of time that tokens issued for applications will be valid. Must be in the format 30m or 2h45m. Valid time units are: m, h.\n"
                     },
                     "zoneId": {
                         "type": "string",
@@ -13057,6 +13279,10 @@
                     "type": "integer",
                     "description": "Related DLP policies will trigger when the match count exceeds the number set.\n"
                 },
+                "contextAwareness": {
+                    "$ref": "#/types/cloudflare:index/DlpProfileContextAwareness:DlpProfileContextAwareness",
+                    "description": "Scan the context of predefined entries to only return matches surrounded by keywords.\n"
+                },
                 "description": {
                     "type": "string",
                     "description": "Brief summary of the profile and its intended use.\n"
@@ -13080,6 +13306,7 @@
             "required": [
                 "accountId",
                 "allowedMatchCount",
+                "contextAwareness",
                 "entries",
                 "name",
                 "type"
@@ -13093,6 +13320,10 @@
                 "allowedMatchCount": {
                     "type": "integer",
                     "description": "Related DLP policies will trigger when the match count exceeds the number set.\n"
+                },
+                "contextAwareness": {
+                    "$ref": "#/types/cloudflare:index/DlpProfileContextAwareness:DlpProfileContextAwareness",
+                    "description": "Scan the context of predefined entries to only return matches surrounded by keywords.\n"
                 },
                 "description": {
                     "type": "string",
@@ -13134,6 +13365,10 @@
                     "allowedMatchCount": {
                         "type": "integer",
                         "description": "Related DLP policies will trigger when the match count exceeds the number set.\n"
+                    },
+                    "contextAwareness": {
+                        "$ref": "#/types/cloudflare:index/DlpProfileContextAwareness:DlpProfileContextAwareness",
+                        "description": "Scan the context of predefined entries to only return matches surrounded by keywords.\n"
                     },
                     "description": {
                         "type": "string",
@@ -14518,6 +14753,78 @@
                         "type": "string",
                         "description": "The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**\n",
                         "willReplaceOnChanges": true
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "cloudflare:index/hyperdriveConfig:HyperdriveConfig": {
+            "description": "The [Hyperdrive Config](https://developers.cloudflare.com/hyperdrive/) resource allows you to manage Cloudflare Hyperdrive Configs.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as cloudflare from \"@pulumi/cloudflare\";\n\n// Config not using any default values\nconst noDefaults = new cloudflare.HyperdriveConfig(\"noDefaults\", {\n    accountId: \"f037e56e89293a057740de681ac9abbe\",\n    caching: {\n        disabled: false,\n    },\n    name: \"my-hyperdrive-config\",\n    origin: {\n        database: \"postgres\",\n        host: \"my-database.example.com\",\n        password: \"my-password\",\n        port: 5432,\n        scheme: \"postgres\",\n        user: \"my-user\",\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_cloudflare as cloudflare\n\n# Config not using any default values\nno_defaults = cloudflare.HyperdriveConfig(\"noDefaults\",\n    account_id=\"f037e56e89293a057740de681ac9abbe\",\n    caching=cloudflare.HyperdriveConfigCachingArgs(\n        disabled=False,\n    ),\n    name=\"my-hyperdrive-config\",\n    origin=cloudflare.HyperdriveConfigOriginArgs(\n        database=\"postgres\",\n        host=\"my-database.example.com\",\n        password=\"my-password\",\n        port=5432,\n        scheme=\"postgres\",\n        user=\"my-user\",\n    ))\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Cloudflare = Pulumi.Cloudflare;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    // Config not using any default values\n    var noDefaults = new Cloudflare.HyperdriveConfig(\"noDefaults\", new()\n    {\n        AccountId = \"f037e56e89293a057740de681ac9abbe\",\n        Caching = new Cloudflare.Inputs.HyperdriveConfigCachingArgs\n        {\n            Disabled = false,\n        },\n        Name = \"my-hyperdrive-config\",\n        Origin = new Cloudflare.Inputs.HyperdriveConfigOriginArgs\n        {\n            Database = \"postgres\",\n            Host = \"my-database.example.com\",\n            Password = \"my-password\",\n            Port = 5432,\n            Scheme = \"postgres\",\n            User = \"my-user\",\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t// Config not using any default values\n\t\t_, err := cloudflare.NewHyperdriveConfig(ctx, \"noDefaults\", \u0026cloudflare.HyperdriveConfigArgs{\n\t\t\tAccountId: pulumi.String(\"f037e56e89293a057740de681ac9abbe\"),\n\t\t\tCaching: \u0026cloudflare.HyperdriveConfigCachingArgs{\n\t\t\t\tDisabled: pulumi.Bool(false),\n\t\t\t},\n\t\t\tName: pulumi.String(\"my-hyperdrive-config\"),\n\t\t\tOrigin: \u0026cloudflare.HyperdriveConfigOriginArgs{\n\t\t\t\tDatabase: pulumi.String(\"postgres\"),\n\t\t\t\tHost:     pulumi.String(\"my-database.example.com\"),\n\t\t\t\tPassword: pulumi.String(\"my-password\"),\n\t\t\t\tPort:     pulumi.Int(5432),\n\t\t\t\tScheme:   pulumi.String(\"postgres\"),\n\t\t\t\tUser:     pulumi.String(\"my-user\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.cloudflare.HyperdriveConfig;\nimport com.pulumi.cloudflare.HyperdriveConfigArgs;\nimport com.pulumi.cloudflare.inputs.HyperdriveConfigCachingArgs;\nimport com.pulumi.cloudflare.inputs.HyperdriveConfigOriginArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var noDefaults = new HyperdriveConfig(\"noDefaults\", HyperdriveConfigArgs.builder()        \n            .accountId(\"f037e56e89293a057740de681ac9abbe\")\n            .caching(HyperdriveConfigCachingArgs.builder()\n                .disabled(false)\n                .build())\n            .name(\"my-hyperdrive-config\")\n            .origin(HyperdriveConfigOriginArgs.builder()\n                .database(\"postgres\")\n                .host(\"my-database.example.com\")\n                .password(\"my-password\")\n                .port(5432)\n                .scheme(\"postgres\")\n                .user(\"my-user\")\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  # Config not using any default values\n  noDefaults:\n    type: cloudflare:HyperdriveConfig\n    properties:\n      accountId: f037e56e89293a057740de681ac9abbe\n      caching:\n        disabled: false\n      name: my-hyperdrive-config\n      origin:\n        database: postgres\n        host: my-database.example.com\n        password: my-password\n        port: 5432\n        scheme: postgres\n        user: my-user\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\n```sh\n$ pulumi import cloudflare:index/hyperdriveConfig:HyperdriveConfig example \u003caccount_id\u003e/\u003chyperdrive_config_id\u003e\n```\n\n",
+            "properties": {
+                "accountId": {
+                    "type": "string",
+                    "description": "The account identifier to target for the resource.\n"
+                },
+                "caching": {
+                    "$ref": "#/types/cloudflare:index/HyperdriveConfigCaching:HyperdriveConfigCaching",
+                    "description": "The caching details for the Hyperdrive configuration.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the Hyperdrive configuration.\n"
+                },
+                "origin": {
+                    "$ref": "#/types/cloudflare:index/HyperdriveConfigOrigin:HyperdriveConfigOrigin",
+                    "description": "The origin details for the Hyperdrive configuration.\n"
+                }
+            },
+            "required": [
+                "accountId",
+                "caching",
+                "name",
+                "origin"
+            ],
+            "inputProperties": {
+                "accountId": {
+                    "type": "string",
+                    "description": "The account identifier to target for the resource.\n"
+                },
+                "caching": {
+                    "$ref": "#/types/cloudflare:index/HyperdriveConfigCaching:HyperdriveConfigCaching",
+                    "description": "The caching details for the Hyperdrive configuration.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the Hyperdrive configuration.\n"
+                },
+                "origin": {
+                    "$ref": "#/types/cloudflare:index/HyperdriveConfigOrigin:HyperdriveConfigOrigin",
+                    "description": "The origin details for the Hyperdrive configuration.\n"
+                }
+            },
+            "requiredInputs": [
+                "accountId",
+                "name",
+                "origin"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering HyperdriveConfig resources.\n",
+                "properties": {
+                    "accountId": {
+                        "type": "string",
+                        "description": "The account identifier to target for the resource.\n"
+                    },
+                    "caching": {
+                        "$ref": "#/types/cloudflare:index/HyperdriveConfigCaching:HyperdriveConfigCaching",
+                        "description": "The caching details for the Hyperdrive configuration.\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The name of the Hyperdrive configuration.\n"
+                    },
+                    "origin": {
+                        "$ref": "#/types/cloudflare:index/HyperdriveConfigOrigin:HyperdriveConfigOrigin",
+                        "description": "The origin details for the Hyperdrive configuration.\n"
                     }
                 },
                 "type": "object"
@@ -15999,6 +16306,10 @@
                     "type": "string",
                     "description": "The name of the logpush job to create.\n"
                 },
+                "outputOptions": {
+                    "$ref": "#/types/cloudflare:index/LogpushJobOutputOptions:LogpushJobOutputOptions",
+                    "description": "Structured replacement for logpull*options. When including this field, the logpull*option field will be ignored.\n"
+                },
                 "ownershipChallenge": {
                     "type": "string",
                     "description": "Ownership challenge token to prove destination ownership, required when destination is Amazon S3, Google Cloud Storage, Microsoft Azure or Sumo Logic. See [Developer documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#usage).\n"
@@ -16060,6 +16371,10 @@
                 "name": {
                     "type": "string",
                     "description": "The name of the logpush job to create.\n"
+                },
+                "outputOptions": {
+                    "$ref": "#/types/cloudflare:index/LogpushJobOutputOptions:LogpushJobOutputOptions",
+                    "description": "Structured replacement for logpull*options. When including this field, the logpull*option field will be ignored.\n"
                 },
                 "ownershipChallenge": {
                     "type": "string",
@@ -16124,6 +16439,10 @@
                     "name": {
                         "type": "string",
                         "description": "The name of the logpush job to create.\n"
+                    },
+                    "outputOptions": {
+                        "$ref": "#/types/cloudflare:index/LogpushJobOutputOptions:LogpushJobOutputOptions",
+                        "description": "Structured replacement for logpull*options. When including this field, the logpull*option field will be ignored.\n"
                     },
                     "ownershipChallenge": {
                         "type": "string",
@@ -20960,6 +21279,10 @@
                         "$ref": "#/types/cloudflare:index/WorkerScriptD1DatabaseBinding:WorkerScriptD1DatabaseBinding"
                     }
                 },
+                "dispatchNamespace": {
+                    "type": "string",
+                    "description": "Name of the Workers for Platforms dispatch namespace.\n"
+                },
                 "kvNamespaceBindings": {
                     "type": "array",
                     "items": {
@@ -21014,6 +21337,12 @@
                         "$ref": "#/types/cloudflare:index/WorkerScriptServiceBinding:WorkerScriptServiceBinding"
                     }
                 },
+                "tags": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
                 "webassemblyBindings": {
                     "type": "array",
                     "items": {
@@ -21025,7 +21354,8 @@
                 "accountId",
                 "compatibilityFlags",
                 "content",
-                "name"
+                "name",
+                "tags"
             ],
             "inputProperties": {
                 "accountId": {
@@ -21058,6 +21388,10 @@
                     "items": {
                         "$ref": "#/types/cloudflare:index/WorkerScriptD1DatabaseBinding:WorkerScriptD1DatabaseBinding"
                     }
+                },
+                "dispatchNamespace": {
+                    "type": "string",
+                    "description": "Name of the Workers for Platforms dispatch namespace.\n"
                 },
                 "kvNamespaceBindings": {
                     "type": "array",
@@ -21114,6 +21448,12 @@
                         "$ref": "#/types/cloudflare:index/WorkerScriptServiceBinding:WorkerScriptServiceBinding"
                     }
                 },
+                "tags": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
                 "webassemblyBindings": {
                     "type": "array",
                     "items": {
@@ -21159,6 +21499,10 @@
                         "items": {
                             "$ref": "#/types/cloudflare:index/WorkerScriptD1DatabaseBinding:WorkerScriptD1DatabaseBinding"
                         }
+                    },
+                    "dispatchNamespace": {
+                        "type": "string",
+                        "description": "Name of the Workers for Platforms dispatch namespace.\n"
                     },
                     "kvNamespaceBindings": {
                         "type": "array",
@@ -21213,6 +21557,12 @@
                         "type": "array",
                         "items": {
                             "$ref": "#/types/cloudflare:index/WorkerScriptServiceBinding:WorkerScriptServiceBinding"
+                        }
+                    },
+                    "tags": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
                         }
                     },
                     "webassemblyBindings": {
@@ -21302,6 +21652,51 @@
                         "description": "The text of the Worker secret. **Modifying this attribute will force creation of a new resource.**\n",
                         "secret": true,
                         "willReplaceOnChanges": true
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "cloudflare:index/workersForPlatformsNamespace:WorkersForPlatformsNamespace": {
+            "description": "The [Workers for Platforms](https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/) resource allows you \nto manage Cloudflare Workers for Platforms namespaces.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as cloudflare from \"@pulumi/cloudflare\";\nimport * as fs from \"fs\";\n\nconst example = new cloudflare.WorkersForPlatformsNamespace(\"example\", {\n    accountId: \"f037e56e89293a057740de681ac9abbe\",\n    name: \"example-namespace\",\n});\nconst customerWorker1 = new cloudflare.WorkerScript(\"customerWorker1\", {\n    accountId: \"f037e56e89293a057740de681ac9abbe\",\n    name: \"customer-worker-1\",\n    content: fs.readFileSync(\"script.js\", \"utf8\"),\n    dispatchNamespace: example.name,\n    tags: [\"free\"],\n});\n```\n```python\nimport pulumi\nimport pulumi_cloudflare as cloudflare\n\nexample = cloudflare.WorkersForPlatformsNamespace(\"example\",\n    account_id=\"f037e56e89293a057740de681ac9abbe\",\n    name=\"example-namespace\")\ncustomer_worker1 = cloudflare.WorkerScript(\"customerWorker1\",\n    account_id=\"f037e56e89293a057740de681ac9abbe\",\n    name=\"customer-worker-1\",\n    content=(lambda path: open(path).read())(\"script.js\"),\n    dispatch_namespace=example.name,\n    tags=[\"free\"])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.IO;\nusing System.Linq;\nusing Pulumi;\nusing Cloudflare = Pulumi.Cloudflare;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = new Cloudflare.WorkersForPlatformsNamespace(\"example\", new()\n    {\n        AccountId = \"f037e56e89293a057740de681ac9abbe\",\n        Name = \"example-namespace\",\n    });\n\n    var customerWorker1 = new Cloudflare.WorkerScript(\"customerWorker1\", new()\n    {\n        AccountId = \"f037e56e89293a057740de681ac9abbe\",\n        Name = \"customer-worker-1\",\n        Content = File.ReadAllText(\"script.js\"),\n        DispatchNamespace = example.Name,\n        Tags = new[]\n        {\n            \"free\",\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"os\"\n\n\t\"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc readFileOrPanic(path string) pulumi.StringPtrInput {\n\tdata, err := os.ReadFile(path)\n\tif err != nil {\n\t\tpanic(err.Error())\n\t}\n\treturn pulumi.String(string(data))\n}\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\texample, err := cloudflare.NewWorkersForPlatformsNamespace(ctx, \"example\", \u0026cloudflare.WorkersForPlatformsNamespaceArgs{\n\t\t\tAccountId: pulumi.String(\"f037e56e89293a057740de681ac9abbe\"),\n\t\t\tName:      pulumi.String(\"example-namespace\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = cloudflare.NewWorkerScript(ctx, \"customerWorker1\", \u0026cloudflare.WorkerScriptArgs{\n\t\t\tAccountId:         pulumi.String(\"f037e56e89293a057740de681ac9abbe\"),\n\t\t\tName:              pulumi.String(\"customer-worker-1\"),\n\t\t\tContent:           readFileOrPanic(\"script.js\"),\n\t\t\tDispatchNamespace: example.Name,\n\t\t\tTags: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"free\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.cloudflare.WorkersForPlatformsNamespace;\nimport com.pulumi.cloudflare.WorkersForPlatformsNamespaceArgs;\nimport com.pulumi.cloudflare.WorkerScript;\nimport com.pulumi.cloudflare.WorkerScriptArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var example = new WorkersForPlatformsNamespace(\"example\", WorkersForPlatformsNamespaceArgs.builder()        \n            .accountId(\"f037e56e89293a057740de681ac9abbe\")\n            .name(\"example-namespace\")\n            .build());\n\n        var customerWorker1 = new WorkerScript(\"customerWorker1\", WorkerScriptArgs.builder()        \n            .accountId(\"f037e56e89293a057740de681ac9abbe\")\n            .name(\"customer-worker-1\")\n            .content(Files.readString(Paths.get(\"script.js\")))\n            .dispatchNamespace(example.name())\n            .tags(\"free\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  example:\n    type: cloudflare:WorkersForPlatformsNamespace\n    properties:\n      accountId: f037e56e89293a057740de681ac9abbe\n      name: example-namespace\n  customerWorker1:\n    type: cloudflare:WorkerScript\n    properties:\n      accountId: f037e56e89293a057740de681ac9abbe\n      name: customer-worker-1\n      content:\n        fn::readFile: script.js\n      dispatchNamespace: ${example.name}\n      tags:\n        - free\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\n```sh\n$ pulumi import cloudflare:index/workersForPlatformsNamespace:WorkersForPlatformsNamespace example \u003caccount_id\u003e/\u003cnamespace_name\u003e\n```\n\n",
+            "properties": {
+                "accountId": {
+                    "type": "string",
+                    "description": "The account identifier to target for the resource.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the Workers for Platforms namespace.\n"
+                }
+            },
+            "required": [
+                "accountId",
+                "name"
+            ],
+            "inputProperties": {
+                "accountId": {
+                    "type": "string",
+                    "description": "The account identifier to target for the resource.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the Workers for Platforms namespace.\n"
+                }
+            },
+            "requiredInputs": [
+                "accountId",
+                "name"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering WorkersForPlatformsNamespace resources.\n",
+                "properties": {
+                    "accountId": {
+                        "type": "string",
+                        "description": "The account identifier to target for the resource.\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The name of the Workers for Platforms namespace.\n"
                     }
                 },
                 "type": "object"
