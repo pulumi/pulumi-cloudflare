@@ -130,8 +130,10 @@ type WorkerScript struct {
 	// Compatibility flags used for Worker Scripts.
 	CompatibilityFlags pulumi.StringArrayOutput `pulumi:"compatibilityFlags"`
 	// The script content.
-	Content             pulumi.StringOutput                       `pulumi:"content"`
-	D1DatabaseBindings  WorkerScriptD1DatabaseBindingArrayOutput  `pulumi:"d1DatabaseBindings"`
+	Content            pulumi.StringOutput                      `pulumi:"content"`
+	D1DatabaseBindings WorkerScriptD1DatabaseBindingArrayOutput `pulumi:"d1DatabaseBindings"`
+	// Name of the Workers for Platforms dispatch namespace.
+	DispatchNamespace   pulumi.StringPtrOutput                    `pulumi:"dispatchNamespace"`
 	KvNamespaceBindings WorkerScriptKvNamespaceBindingArrayOutput `pulumi:"kvNamespaceBindings"`
 	// Enabling allows Worker events to be sent to a defined Logpush destination.
 	Logpush pulumi.BoolPtrOutput `pulumi:"logpush"`
@@ -145,6 +147,7 @@ type WorkerScript struct {
 	R2BucketBindings    WorkerScriptR2BucketBindingArrayOutput    `pulumi:"r2BucketBindings"`
 	SecretTextBindings  WorkerScriptSecretTextBindingArrayOutput  `pulumi:"secretTextBindings"`
 	ServiceBindings     WorkerScriptServiceBindingArrayOutput     `pulumi:"serviceBindings"`
+	Tags                pulumi.StringArrayOutput                  `pulumi:"tags"`
 	WebassemblyBindings WorkerScriptWebassemblyBindingArrayOutput `pulumi:"webassemblyBindings"`
 }
 
@@ -195,8 +198,10 @@ type workerScriptState struct {
 	// Compatibility flags used for Worker Scripts.
 	CompatibilityFlags []string `pulumi:"compatibilityFlags"`
 	// The script content.
-	Content             *string                          `pulumi:"content"`
-	D1DatabaseBindings  []WorkerScriptD1DatabaseBinding  `pulumi:"d1DatabaseBindings"`
+	Content            *string                         `pulumi:"content"`
+	D1DatabaseBindings []WorkerScriptD1DatabaseBinding `pulumi:"d1DatabaseBindings"`
+	// Name of the Workers for Platforms dispatch namespace.
+	DispatchNamespace   *string                          `pulumi:"dispatchNamespace"`
 	KvNamespaceBindings []WorkerScriptKvNamespaceBinding `pulumi:"kvNamespaceBindings"`
 	// Enabling allows Worker events to be sent to a defined Logpush destination.
 	Logpush *bool `pulumi:"logpush"`
@@ -210,6 +215,7 @@ type workerScriptState struct {
 	R2BucketBindings    []WorkerScriptR2BucketBinding    `pulumi:"r2BucketBindings"`
 	SecretTextBindings  []WorkerScriptSecretTextBinding  `pulumi:"secretTextBindings"`
 	ServiceBindings     []WorkerScriptServiceBinding     `pulumi:"serviceBindings"`
+	Tags                []string                         `pulumi:"tags"`
 	WebassemblyBindings []WorkerScriptWebassemblyBinding `pulumi:"webassemblyBindings"`
 }
 
@@ -222,8 +228,10 @@ type WorkerScriptState struct {
 	// Compatibility flags used for Worker Scripts.
 	CompatibilityFlags pulumi.StringArrayInput
 	// The script content.
-	Content             pulumi.StringPtrInput
-	D1DatabaseBindings  WorkerScriptD1DatabaseBindingArrayInput
+	Content            pulumi.StringPtrInput
+	D1DatabaseBindings WorkerScriptD1DatabaseBindingArrayInput
+	// Name of the Workers for Platforms dispatch namespace.
+	DispatchNamespace   pulumi.StringPtrInput
 	KvNamespaceBindings WorkerScriptKvNamespaceBindingArrayInput
 	// Enabling allows Worker events to be sent to a defined Logpush destination.
 	Logpush pulumi.BoolPtrInput
@@ -237,6 +245,7 @@ type WorkerScriptState struct {
 	R2BucketBindings    WorkerScriptR2BucketBindingArrayInput
 	SecretTextBindings  WorkerScriptSecretTextBindingArrayInput
 	ServiceBindings     WorkerScriptServiceBindingArrayInput
+	Tags                pulumi.StringArrayInput
 	WebassemblyBindings WorkerScriptWebassemblyBindingArrayInput
 }
 
@@ -253,8 +262,10 @@ type workerScriptArgs struct {
 	// Compatibility flags used for Worker Scripts.
 	CompatibilityFlags []string `pulumi:"compatibilityFlags"`
 	// The script content.
-	Content             string                           `pulumi:"content"`
-	D1DatabaseBindings  []WorkerScriptD1DatabaseBinding  `pulumi:"d1DatabaseBindings"`
+	Content            string                          `pulumi:"content"`
+	D1DatabaseBindings []WorkerScriptD1DatabaseBinding `pulumi:"d1DatabaseBindings"`
+	// Name of the Workers for Platforms dispatch namespace.
+	DispatchNamespace   *string                          `pulumi:"dispatchNamespace"`
 	KvNamespaceBindings []WorkerScriptKvNamespaceBinding `pulumi:"kvNamespaceBindings"`
 	// Enabling allows Worker events to be sent to a defined Logpush destination.
 	Logpush *bool `pulumi:"logpush"`
@@ -268,6 +279,7 @@ type workerScriptArgs struct {
 	R2BucketBindings    []WorkerScriptR2BucketBinding    `pulumi:"r2BucketBindings"`
 	SecretTextBindings  []WorkerScriptSecretTextBinding  `pulumi:"secretTextBindings"`
 	ServiceBindings     []WorkerScriptServiceBinding     `pulumi:"serviceBindings"`
+	Tags                []string                         `pulumi:"tags"`
 	WebassemblyBindings []WorkerScriptWebassemblyBinding `pulumi:"webassemblyBindings"`
 }
 
@@ -281,8 +293,10 @@ type WorkerScriptArgs struct {
 	// Compatibility flags used for Worker Scripts.
 	CompatibilityFlags pulumi.StringArrayInput
 	// The script content.
-	Content             pulumi.StringInput
-	D1DatabaseBindings  WorkerScriptD1DatabaseBindingArrayInput
+	Content            pulumi.StringInput
+	D1DatabaseBindings WorkerScriptD1DatabaseBindingArrayInput
+	// Name of the Workers for Platforms dispatch namespace.
+	DispatchNamespace   pulumi.StringPtrInput
 	KvNamespaceBindings WorkerScriptKvNamespaceBindingArrayInput
 	// Enabling allows Worker events to be sent to a defined Logpush destination.
 	Logpush pulumi.BoolPtrInput
@@ -296,6 +310,7 @@ type WorkerScriptArgs struct {
 	R2BucketBindings    WorkerScriptR2BucketBindingArrayInput
 	SecretTextBindings  WorkerScriptSecretTextBindingArrayInput
 	ServiceBindings     WorkerScriptServiceBindingArrayInput
+	Tags                pulumi.StringArrayInput
 	WebassemblyBindings WorkerScriptWebassemblyBindingArrayInput
 }
 
@@ -414,6 +429,11 @@ func (o WorkerScriptOutput) D1DatabaseBindings() WorkerScriptD1DatabaseBindingAr
 	return o.ApplyT(func(v *WorkerScript) WorkerScriptD1DatabaseBindingArrayOutput { return v.D1DatabaseBindings }).(WorkerScriptD1DatabaseBindingArrayOutput)
 }
 
+// Name of the Workers for Platforms dispatch namespace.
+func (o WorkerScriptOutput) DispatchNamespace() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkerScript) pulumi.StringPtrOutput { return v.DispatchNamespace }).(pulumi.StringPtrOutput)
+}
+
 func (o WorkerScriptOutput) KvNamespaceBindings() WorkerScriptKvNamespaceBindingArrayOutput {
 	return o.ApplyT(func(v *WorkerScript) WorkerScriptKvNamespaceBindingArrayOutput { return v.KvNamespaceBindings }).(WorkerScriptKvNamespaceBindingArrayOutput)
 }
@@ -455,6 +475,10 @@ func (o WorkerScriptOutput) SecretTextBindings() WorkerScriptSecretTextBindingAr
 
 func (o WorkerScriptOutput) ServiceBindings() WorkerScriptServiceBindingArrayOutput {
 	return o.ApplyT(func(v *WorkerScript) WorkerScriptServiceBindingArrayOutput { return v.ServiceBindings }).(WorkerScriptServiceBindingArrayOutput)
+}
+
+func (o WorkerScriptOutput) Tags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *WorkerScript) pulumi.StringArrayOutput { return v.Tags }).(pulumi.StringArrayOutput)
 }
 
 func (o WorkerScriptOutput) WebassemblyBindings() WorkerScriptWebassemblyBindingArrayOutput {

@@ -14,18 +14,18 @@ import javax.annotation.Nullable;
 @CustomType
 public final class AccessApplicationSaasApp {
     /**
-     * @return The URL where this applications tile redirects users
+     * @return The URL where this applications tile redirects users.
      * 
      */
     private @Nullable String appLauncherUrl;
     private @Nullable String authType;
     /**
-     * @return The application client id
+     * @return The application client id.
      * 
      */
     private @Nullable String clientId;
     /**
-     * @return The application client secret, only returned on initial apply
+     * @return The application client secret, only returned on initial apply.
      * 
      */
     private @Nullable String clientSecret;
@@ -45,12 +45,12 @@ public final class AccessApplicationSaasApp {
      */
     private @Nullable String defaultRelayState;
     /**
-     * @return The OIDC flows supported by this application
+     * @return The OIDC flows supported by this application.
      * 
      */
     private @Nullable List<String> grantTypes;
     /**
-     * @return A regex to filter Cloudflare groups returned in ID token and userinfo endpoint
+     * @return A regex to filter Cloudflare groups returned in ID token and userinfo endpoint.
      * 
      */
     private @Nullable String groupFilterRegex;
@@ -60,7 +60,7 @@ public final class AccessApplicationSaasApp {
      */
     private @Nullable String idpEntityId;
     /**
-     * @return The format of the name identifier sent to the SaaS application. Defaults to `email`.
+     * @return The format of the name identifier sent to the SaaS application.
      * 
      */
     private @Nullable String nameIdFormat;
@@ -75,12 +75,12 @@ public final class AccessApplicationSaasApp {
      */
     private @Nullable String publicKey;
     /**
-     * @return The permitted URL&#39;s for Cloudflare to return Authorization codes and Access/ID tokens
+     * @return The permitted URL&#39;s for Cloudflare to return Authorization codes and Access/ID tokens.
      * 
      */
     private @Nullable List<String> redirectUris;
     /**
-     * @return Define the user information shared with access
+     * @return Define the user information shared with access.
      * 
      */
     private @Nullable List<String> scopes;
@@ -97,7 +97,7 @@ public final class AccessApplicationSaasApp {
 
     private AccessApplicationSaasApp() {}
     /**
-     * @return The URL where this applications tile redirects users
+     * @return The URL where this applications tile redirects users.
      * 
      */
     public Optional<String> appLauncherUrl() {
@@ -107,14 +107,14 @@ public final class AccessApplicationSaasApp {
         return Optional.ofNullable(this.authType);
     }
     /**
-     * @return The application client id
+     * @return The application client id.
      * 
      */
     public Optional<String> clientId() {
         return Optional.ofNullable(this.clientId);
     }
     /**
-     * @return The application client secret, only returned on initial apply
+     * @return The application client secret, only returned on initial apply.
      * 
      */
     public Optional<String> clientSecret() {
@@ -142,14 +142,14 @@ public final class AccessApplicationSaasApp {
         return Optional.ofNullable(this.defaultRelayState);
     }
     /**
-     * @return The OIDC flows supported by this application
+     * @return The OIDC flows supported by this application.
      * 
      */
     public List<String> grantTypes() {
         return this.grantTypes == null ? List.of() : this.grantTypes;
     }
     /**
-     * @return A regex to filter Cloudflare groups returned in ID token and userinfo endpoint
+     * @return A regex to filter Cloudflare groups returned in ID token and userinfo endpoint.
      * 
      */
     public Optional<String> groupFilterRegex() {
@@ -163,7 +163,7 @@ public final class AccessApplicationSaasApp {
         return Optional.ofNullable(this.idpEntityId);
     }
     /**
-     * @return The format of the name identifier sent to the SaaS application. Defaults to `email`.
+     * @return The format of the name identifier sent to the SaaS application.
      * 
      */
     public Optional<String> nameIdFormat() {
@@ -184,14 +184,14 @@ public final class AccessApplicationSaasApp {
         return Optional.ofNullable(this.publicKey);
     }
     /**
-     * @return The permitted URL&#39;s for Cloudflare to return Authorization codes and Access/ID tokens
+     * @return The permitted URL&#39;s for Cloudflare to return Authorization codes and Access/ID tokens.
      * 
      */
     public List<String> redirectUris() {
         return this.redirectUris == null ? List.of() : this.redirectUris;
     }
     /**
-     * @return Define the user information shared with access
+     * @return Define the user information shared with access.
      * 
      */
     public List<String> scopes() {

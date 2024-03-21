@@ -91,16 +91,14 @@ public class AccessOrganization extends com.pulumi.resources.CustomResource {
         return this.accountId;
     }
     /**
-     * When set to true, users can authenticate via WARP for any application in your organization. Application settings will
-     * take precedence over this value.
+     * When set to true, users can authenticate via WARP for any application in your organization. Application settings will take precedence over this value.
      * 
      */
     @Export(name="allowAuthenticateViaWarp", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> allowAuthenticateViaWarp;
 
     /**
-     * @return When set to true, users can authenticate via WARP for any application in your organization. Application settings will
-     * take precedence over this value.
+     * @return When set to true, users can authenticate via WARP for any application in your organization. Application settings will take precedence over this value.
      * 
      */
     public Output<Optional<Boolean>> allowAuthenticateViaWarp() {
@@ -225,16 +223,14 @@ public class AccessOrganization extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.userSeatExpirationInactiveTime);
     }
     /**
-     * The amount of time that tokens issued for applications will be valid. Must be in the format 30m or 2h45m. Valid time
-     * units are: m, h.
+     * The amount of time that tokens issued for applications will be valid. Must be in the format 30m or 2h45m. Valid time units are: m, h.
      * 
      */
     @Export(name="warpAuthSessionDuration", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> warpAuthSessionDuration;
 
     /**
-     * @return The amount of time that tokens issued for applications will be valid. Must be in the format 30m or 2h45m. Valid time
-     * units are: m, h.
+     * @return The amount of time that tokens issued for applications will be valid. Must be in the format 30m or 2h45m. Valid time units are: m, h.
      * 
      */
     public Output<Optional<String>> warpAuthSessionDuration() {

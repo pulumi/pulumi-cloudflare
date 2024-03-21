@@ -76,16 +76,16 @@ export interface AccessApplicationLandingPageDesign {
 
 export interface AccessApplicationSaasApp {
     /**
-     * The URL where this applications tile redirects users
+     * The URL where this applications tile redirects users.
      */
     appLauncherUrl?: pulumi.Input<string>;
     authType?: pulumi.Input<string>;
     /**
-     * The application client id
+     * The application client id.
      */
     clientId?: pulumi.Input<string>;
     /**
-     * The application client secret, only returned on initial apply
+     * The application client secret, only returned on initial apply.
      */
     clientSecret?: pulumi.Input<string>;
     /**
@@ -101,11 +101,11 @@ export interface AccessApplicationSaasApp {
      */
     defaultRelayState?: pulumi.Input<string>;
     /**
-     * The OIDC flows supported by this application
+     * The OIDC flows supported by this application.
      */
     grantTypes?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * A regex to filter Cloudflare groups returned in ID token and userinfo endpoint
+     * A regex to filter Cloudflare groups returned in ID token and userinfo endpoint.
      */
     groupFilterRegex?: pulumi.Input<string>;
     /**
@@ -113,7 +113,7 @@ export interface AccessApplicationSaasApp {
      */
     idpEntityId?: pulumi.Input<string>;
     /**
-     * The format of the name identifier sent to the SaaS application. Defaults to `email`.
+     * The format of the name identifier sent to the SaaS application.
      */
     nameIdFormat?: pulumi.Input<string>;
     /**
@@ -125,11 +125,11 @@ export interface AccessApplicationSaasApp {
      */
     publicKey?: pulumi.Input<string>;
     /**
-     * The permitted URL's for Cloudflare to return Authorization codes and Access/ID tokens
+     * The permitted URL's for Cloudflare to return Authorization codes and Access/ID tokens.
      */
     redirectUris?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Define the user information shared with access
+     * Define the user information shared with access.
      */
     scopes?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -490,6 +490,21 @@ export interface AccessIdentityProviderScimConfig {
     seatDeprovision?: pulumi.Input<boolean>;
     secret?: pulumi.Input<string>;
     userDeprovision?: pulumi.Input<boolean>;
+}
+
+export interface AccessMutualTlsHostnameSettingsSetting {
+    /**
+     * Request client certificates for this hostname in China. Can only be set to true if this zone is china network enabled.
+     */
+    chinaNetwork?: pulumi.Input<boolean>;
+    /**
+     * Client Certificate Forwarding is a feature that takes the client cert provided by the eyeball to the edge, and forwards it to the origin as a HTTP header to allow logging on the origin.
+     */
+    clientCertificateForwarding?: pulumi.Input<boolean>;
+    /**
+     * The hostname that these settings apply to.
+     */
+    hostname: pulumi.Input<string>;
 }
 
 export interface AccessOrganizationCustomPage {
@@ -1212,6 +1227,24 @@ export interface DevicePostureRuleMatch {
     platform?: pulumi.Input<string>;
 }
 
+export interface DlpProfileContextAwareness {
+    /**
+     * Scan the context of predefined entries to only return matches surrounded by keywords.
+     */
+    enabled: pulumi.Input<boolean>;
+    /**
+     * Content types to exclude from context analysis and return all matches.
+     */
+    skip: pulumi.Input<inputs.DlpProfileContextAwarenessSkip>;
+}
+
+export interface DlpProfileContextAwarenessSkip {
+    /**
+     * Return all matches, regardless of context analysis result, if the data is a file.
+     */
+    files: pulumi.Input<boolean>;
+}
+
 export interface DlpProfileEntry {
     /**
      * Whether the entry is active. Defaults to `false`.
@@ -1645,6 +1678,40 @@ export interface HealthcheckHeader {
      * A list of string values for the header.
      */
     values: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface HyperdriveConfigCaching {
+    /**
+     * Disable caching for this Hyperdrive configuration.
+     */
+    disabled?: pulumi.Input<boolean>;
+}
+
+export interface HyperdriveConfigOrigin {
+    /**
+     * The name of your origin database.
+     */
+    database: pulumi.Input<string>;
+    /**
+     * The host (hostname or IP) of your origin database.
+     */
+    host: pulumi.Input<string>;
+    /**
+     * The password of the Hyperdrive configuration.
+     */
+    password: pulumi.Input<string>;
+    /**
+     * The port (default: 5432 for Postgres) of your origin database.
+     */
+    port: pulumi.Input<number>;
+    /**
+     * Specifies the URL scheme used to connect to your origin database.
+     */
+    scheme: pulumi.Input<string>;
+    /**
+     * The user of your origin database.
+     */
+    user: pulumi.Input<string>;
 }
 
 export interface ListItem {
@@ -2088,6 +2155,57 @@ export interface LoadBalancerSessionAffinityAttribute {
     zeroDowntimeFailover?: pulumi.Input<string>;
 }
 
+export interface LogpushJobOutputOptions {
+    /**
+     * String to be prepended before each batch.
+     */
+    batchPrefix?: pulumi.Input<string>;
+    /**
+     * String to be appended after each batch.
+     */
+    batchSuffix?: pulumi.Input<string>;
+    /**
+     * Mitigation for CVE-2021-44228. If set to true, will cause all occurrences of ${ in the generated files to be replaced with x{. Defaults to `false`.
+     */
+    cve20214428?: pulumi.Input<boolean>;
+    /**
+     * String to join fields. This field be ignored when recordTemplate is set. Defaults to `,`.
+     */
+    fieldDelimiter?: pulumi.Input<string>;
+    /**
+     * List of field names to be included in the Logpush output.
+     */
+    fieldNames?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Specifies the output type. Available values: `ndjson`, `csv`. Defaults to `ndjson`.
+     */
+    outputType?: pulumi.Input<string>;
+    /**
+     * String to be inserted in-between the records as separator.
+     */
+    recordDelimiter?: pulumi.Input<string>;
+    /**
+     * String to be prepended before each record. Defaults to `{`.
+     */
+    recordPrefix?: pulumi.Input<string>;
+    /**
+     * String to be appended after each record. Defaults to `}`.
+     */
+    recordSuffix?: pulumi.Input<string>;
+    /**
+     * String to use as template for each record instead of the default comma-separated list.
+     */
+    recordTemplate?: pulumi.Input<string>;
+    /**
+     * Specifies the sampling rate. Defaults to `1`.
+     */
+    sampleRate?: pulumi.Input<number>;
+    /**
+     * Specifies the format for timestamps. Available values: `unixnano`, `unix`, `rfc3339`. Defaults to `unixnano`.
+     */
+    timestampFormat?: pulumi.Input<string>;
+}
+
 export interface ManagedHeadersManagedRequestHeader {
     /**
      * Whether the headers rule is active.
@@ -2127,6 +2245,10 @@ export interface NotificationPolicyFilters {
      * Affected components for alert. Available values: `API`, `API Shield`, `Access`, `Always Online`, `Analytics`, `Apps Marketplace`, `Argo Smart Routing`, `Audit Logs`, `Authoritative DNS`, `Billing`, `Bot Management`, `Bring Your Own IP (BYOIP)`, `Browser Isolation`, `CDN Cache Purge`, `CDN/Cache`, `Cache Reserve`, `Challenge Platform`, `Cloud Access Security Broker (CASB)`, `Community Site`, `DNS Root Servers`, `DNS Updates`, `Dashboard`, `Data Loss Prevention (DLP)`, `Developer's Site`, `Digital Experience Monitoring (DEX)`, `Distributed Web Gateway`, `Durable Objects`, `Email Routing`, `Ethereum Gateway`, `Firewall`, `Gateway`, `Geo-Key Manager`, `Image Resizing`, `Images`, `Infrastructure`, `Lists`, `Load Balancing and Monitoring`, `Logs`, `Magic Firewall`, `Magic Transit`, `Magic WAN`, `Magic WAN Connector`, `Marketing Site`, `Mirage`, `Network`, `Notifications`, `Observatory`, `Page Shield`, `Pages`, `R2`, `Radar`, `Randomness Beacon`, `Recursive DNS`, `Registrar`, `Registration Data Access Protocol (RDAP)`, `SSL Certificate Provisioning`, `SSL for SaaS Provisioning`, `Security Center`, `Snippets`, `Spectrum`, `Speed Optimizations`, `Stream`, `Support Site`, `Time Services`, `Trace`, `Tunnel`, `Turnstile`, `WARP`, `Waiting Room`, `Web Analytics`, `Workers`, `Workers KV`, `Workers Preview`, `Zaraz`, `Zero Trust`, `Zero Trust Dashboard`, `Zone Versioning`.
      */
     affectedComponents?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Filter on Points of Presence.
+     */
+    airportCodes?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Alert trigger preferences. Example: `slo`.
      */

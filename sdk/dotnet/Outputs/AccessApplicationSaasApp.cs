@@ -14,16 +14,16 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class AccessApplicationSaasApp
     {
         /// <summary>
-        /// The URL where this applications tile redirects users
+        /// The URL where this applications tile redirects users.
         /// </summary>
         public readonly string? AppLauncherUrl;
         public readonly string? AuthType;
         /// <summary>
-        /// The application client id
+        /// The application client id.
         /// </summary>
         public readonly string? ClientId;
         /// <summary>
-        /// The application client secret, only returned on initial apply
+        /// The application client secret, only returned on initial apply.
         /// </summary>
         public readonly string? ClientSecret;
         /// <summary>
@@ -39,11 +39,11 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string? DefaultRelayState;
         /// <summary>
-        /// The OIDC flows supported by this application
+        /// The OIDC flows supported by this application.
         /// </summary>
         public readonly ImmutableArray<string> GrantTypes;
         /// <summary>
-        /// A regex to filter Cloudflare groups returned in ID token and userinfo endpoint
+        /// A regex to filter Cloudflare groups returned in ID token and userinfo endpoint.
         /// </summary>
         public readonly string? GroupFilterRegex;
         /// <summary>
@@ -51,7 +51,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string? IdpEntityId;
         /// <summary>
-        /// The format of the name identifier sent to the SaaS application. Defaults to `email`.
+        /// The format of the name identifier sent to the SaaS application.
         /// </summary>
         public readonly string? NameIdFormat;
         /// <summary>
@@ -63,11 +63,11 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string? PublicKey;
         /// <summary>
-        /// The permitted URL's for Cloudflare to return Authorization codes and Access/ID tokens
+        /// The permitted URL's for Cloudflare to return Authorization codes and Access/ID tokens.
         /// </summary>
         public readonly ImmutableArray<string> RedirectUris;
         /// <summary>
-        /// Define the user information shared with access
+        /// Define the user information shared with access.
         /// </summary>
         public readonly ImmutableArray<string> Scopes;
         /// <summary>

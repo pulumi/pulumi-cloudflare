@@ -145,6 +145,12 @@ namespace Pulumi.Cloudflare
         [Output("d1DatabaseBindings")]
         public Output<ImmutableArray<Outputs.WorkerScriptD1DatabaseBinding>> D1DatabaseBindings { get; private set; } = null!;
 
+        /// <summary>
+        /// Name of the Workers for Platforms dispatch namespace.
+        /// </summary>
+        [Output("dispatchNamespace")]
+        public Output<string?> DispatchNamespace { get; private set; } = null!;
+
         [Output("kvNamespaceBindings")]
         public Output<ImmutableArray<Outputs.WorkerScriptKvNamespaceBinding>> KvNamespaceBindings { get; private set; } = null!;
 
@@ -183,6 +189,9 @@ namespace Pulumi.Cloudflare
 
         [Output("serviceBindings")]
         public Output<ImmutableArray<Outputs.WorkerScriptServiceBinding>> ServiceBindings { get; private set; } = null!;
+
+        [Output("tags")]
+        public Output<ImmutableArray<string>> Tags { get; private set; } = null!;
 
         [Output("webassemblyBindings")]
         public Output<ImmutableArray<Outputs.WorkerScriptWebassemblyBinding>> WebassemblyBindings { get; private set; } = null!;
@@ -279,6 +288,12 @@ namespace Pulumi.Cloudflare
             set => _d1DatabaseBindings = value;
         }
 
+        /// <summary>
+        /// Name of the Workers for Platforms dispatch namespace.
+        /// </summary>
+        [Input("dispatchNamespace")]
+        public Input<string>? DispatchNamespace { get; set; }
+
         [Input("kvNamespaceBindings")]
         private InputList<Inputs.WorkerScriptKvNamespaceBindingArgs>? _kvNamespaceBindings;
         public InputList<Inputs.WorkerScriptKvNamespaceBindingArgs> KvNamespaceBindings
@@ -353,6 +368,14 @@ namespace Pulumi.Cloudflare
             set => _serviceBindings = value;
         }
 
+        [Input("tags")]
+        private InputList<string>? _tags;
+        public InputList<string> Tags
+        {
+            get => _tags ?? (_tags = new InputList<string>());
+            set => _tags = value;
+        }
+
         [Input("webassemblyBindings")]
         private InputList<Inputs.WorkerScriptWebassemblyBindingArgs>? _webassemblyBindings;
         public InputList<Inputs.WorkerScriptWebassemblyBindingArgs> WebassemblyBindings
@@ -414,6 +437,12 @@ namespace Pulumi.Cloudflare
             get => _d1DatabaseBindings ?? (_d1DatabaseBindings = new InputList<Inputs.WorkerScriptD1DatabaseBindingGetArgs>());
             set => _d1DatabaseBindings = value;
         }
+
+        /// <summary>
+        /// Name of the Workers for Platforms dispatch namespace.
+        /// </summary>
+        [Input("dispatchNamespace")]
+        public Input<string>? DispatchNamespace { get; set; }
 
         [Input("kvNamespaceBindings")]
         private InputList<Inputs.WorkerScriptKvNamespaceBindingGetArgs>? _kvNamespaceBindings;
@@ -487,6 +516,14 @@ namespace Pulumi.Cloudflare
         {
             get => _serviceBindings ?? (_serviceBindings = new InputList<Inputs.WorkerScriptServiceBindingGetArgs>());
             set => _serviceBindings = value;
+        }
+
+        [Input("tags")]
+        private InputList<string>? _tags;
+        public InputList<string> Tags
+        {
+            get => _tags ?? (_tags = new InputList<string>());
+            set => _tags = value;
         }
 
         [Input("webassemblyBindings")]

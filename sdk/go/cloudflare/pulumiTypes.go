@@ -493,12 +493,12 @@ func (o AccessApplicationLandingPageDesignPtrOutput) Title() pulumi.StringPtrOut
 }
 
 type AccessApplicationSaasApp struct {
-	// The URL where this applications tile redirects users
+	// The URL where this applications tile redirects users.
 	AppLauncherUrl *string `pulumi:"appLauncherUrl"`
 	AuthType       *string `pulumi:"authType"`
-	// The application client id
+	// The application client id.
 	ClientId *string `pulumi:"clientId"`
-	// The application client secret, only returned on initial apply
+	// The application client secret, only returned on initial apply.
 	ClientSecret *string `pulumi:"clientSecret"`
 	// The service provider's endpoint that is responsible for receiving and parsing a SAML assertion.
 	ConsumerServiceUrl *string `pulumi:"consumerServiceUrl"`
@@ -506,21 +506,21 @@ type AccessApplicationSaasApp struct {
 	CustomAttributes []AccessApplicationSaasAppCustomAttribute `pulumi:"customAttributes"`
 	// The relay state used if not provided by the identity provider.
 	DefaultRelayState *string `pulumi:"defaultRelayState"`
-	// The OIDC flows supported by this application
+	// The OIDC flows supported by this application.
 	GrantTypes []string `pulumi:"grantTypes"`
-	// A regex to filter Cloudflare groups returned in ID token and userinfo endpoint
+	// A regex to filter Cloudflare groups returned in ID token and userinfo endpoint.
 	GroupFilterRegex *string `pulumi:"groupFilterRegex"`
 	// The unique identifier for the SaaS application.
 	IdpEntityId *string `pulumi:"idpEntityId"`
-	// The format of the name identifier sent to the SaaS application. Defaults to `email`.
+	// The format of the name identifier sent to the SaaS application.
 	NameIdFormat *string `pulumi:"nameIdFormat"`
 	// A [JSONata](https://jsonata.org/) expression that transforms an application's user identities into a NameID value for its SAML assertion. This expression should evaluate to a singular string. The output of this expression can override the `nameIdFormat` setting.
 	NameIdTransformJsonata *string `pulumi:"nameIdTransformJsonata"`
 	// The public certificate that will be used to verify identities.
 	PublicKey *string `pulumi:"publicKey"`
-	// The permitted URL's for Cloudflare to return Authorization codes and Access/ID tokens
+	// The permitted URL's for Cloudflare to return Authorization codes and Access/ID tokens.
 	RedirectUris []string `pulumi:"redirectUris"`
-	// Define the user information shared with access
+	// Define the user information shared with access.
 	Scopes []string `pulumi:"scopes"`
 	// A globally unique name for an identity or service provider.
 	SpEntityId *string `pulumi:"spEntityId"`
@@ -540,12 +540,12 @@ type AccessApplicationSaasAppInput interface {
 }
 
 type AccessApplicationSaasAppArgs struct {
-	// The URL where this applications tile redirects users
+	// The URL where this applications tile redirects users.
 	AppLauncherUrl pulumi.StringPtrInput `pulumi:"appLauncherUrl"`
 	AuthType       pulumi.StringPtrInput `pulumi:"authType"`
-	// The application client id
+	// The application client id.
 	ClientId pulumi.StringPtrInput `pulumi:"clientId"`
-	// The application client secret, only returned on initial apply
+	// The application client secret, only returned on initial apply.
 	ClientSecret pulumi.StringPtrInput `pulumi:"clientSecret"`
 	// The service provider's endpoint that is responsible for receiving and parsing a SAML assertion.
 	ConsumerServiceUrl pulumi.StringPtrInput `pulumi:"consumerServiceUrl"`
@@ -553,21 +553,21 @@ type AccessApplicationSaasAppArgs struct {
 	CustomAttributes AccessApplicationSaasAppCustomAttributeArrayInput `pulumi:"customAttributes"`
 	// The relay state used if not provided by the identity provider.
 	DefaultRelayState pulumi.StringPtrInput `pulumi:"defaultRelayState"`
-	// The OIDC flows supported by this application
+	// The OIDC flows supported by this application.
 	GrantTypes pulumi.StringArrayInput `pulumi:"grantTypes"`
-	// A regex to filter Cloudflare groups returned in ID token and userinfo endpoint
+	// A regex to filter Cloudflare groups returned in ID token and userinfo endpoint.
 	GroupFilterRegex pulumi.StringPtrInput `pulumi:"groupFilterRegex"`
 	// The unique identifier for the SaaS application.
 	IdpEntityId pulumi.StringPtrInput `pulumi:"idpEntityId"`
-	// The format of the name identifier sent to the SaaS application. Defaults to `email`.
+	// The format of the name identifier sent to the SaaS application.
 	NameIdFormat pulumi.StringPtrInput `pulumi:"nameIdFormat"`
 	// A [JSONata](https://jsonata.org/) expression that transforms an application's user identities into a NameID value for its SAML assertion. This expression should evaluate to a singular string. The output of this expression can override the `nameIdFormat` setting.
 	NameIdTransformJsonata pulumi.StringPtrInput `pulumi:"nameIdTransformJsonata"`
 	// The public certificate that will be used to verify identities.
 	PublicKey pulumi.StringPtrInput `pulumi:"publicKey"`
-	// The permitted URL's for Cloudflare to return Authorization codes and Access/ID tokens
+	// The permitted URL's for Cloudflare to return Authorization codes and Access/ID tokens.
 	RedirectUris pulumi.StringArrayInput `pulumi:"redirectUris"`
-	// Define the user information shared with access
+	// Define the user information shared with access.
 	Scopes pulumi.StringArrayInput `pulumi:"scopes"`
 	// A globally unique name for an identity or service provider.
 	SpEntityId pulumi.StringPtrInput `pulumi:"spEntityId"`
@@ -652,7 +652,7 @@ func (o AccessApplicationSaasAppOutput) ToAccessApplicationSaasAppPtrOutputWithC
 	}).(AccessApplicationSaasAppPtrOutput)
 }
 
-// The URL where this applications tile redirects users
+// The URL where this applications tile redirects users.
 func (o AccessApplicationSaasAppOutput) AppLauncherUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AccessApplicationSaasApp) *string { return v.AppLauncherUrl }).(pulumi.StringPtrOutput)
 }
@@ -661,12 +661,12 @@ func (o AccessApplicationSaasAppOutput) AuthType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AccessApplicationSaasApp) *string { return v.AuthType }).(pulumi.StringPtrOutput)
 }
 
-// The application client id
+// The application client id.
 func (o AccessApplicationSaasAppOutput) ClientId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AccessApplicationSaasApp) *string { return v.ClientId }).(pulumi.StringPtrOutput)
 }
 
-// The application client secret, only returned on initial apply
+// The application client secret, only returned on initial apply.
 func (o AccessApplicationSaasAppOutput) ClientSecret() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AccessApplicationSaasApp) *string { return v.ClientSecret }).(pulumi.StringPtrOutput)
 }
@@ -686,12 +686,12 @@ func (o AccessApplicationSaasAppOutput) DefaultRelayState() pulumi.StringPtrOutp
 	return o.ApplyT(func(v AccessApplicationSaasApp) *string { return v.DefaultRelayState }).(pulumi.StringPtrOutput)
 }
 
-// The OIDC flows supported by this application
+// The OIDC flows supported by this application.
 func (o AccessApplicationSaasAppOutput) GrantTypes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AccessApplicationSaasApp) []string { return v.GrantTypes }).(pulumi.StringArrayOutput)
 }
 
-// A regex to filter Cloudflare groups returned in ID token and userinfo endpoint
+// A regex to filter Cloudflare groups returned in ID token and userinfo endpoint.
 func (o AccessApplicationSaasAppOutput) GroupFilterRegex() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AccessApplicationSaasApp) *string { return v.GroupFilterRegex }).(pulumi.StringPtrOutput)
 }
@@ -701,7 +701,7 @@ func (o AccessApplicationSaasAppOutput) IdpEntityId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AccessApplicationSaasApp) *string { return v.IdpEntityId }).(pulumi.StringPtrOutput)
 }
 
-// The format of the name identifier sent to the SaaS application. Defaults to `email`.
+// The format of the name identifier sent to the SaaS application.
 func (o AccessApplicationSaasAppOutput) NameIdFormat() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AccessApplicationSaasApp) *string { return v.NameIdFormat }).(pulumi.StringPtrOutput)
 }
@@ -716,12 +716,12 @@ func (o AccessApplicationSaasAppOutput) PublicKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AccessApplicationSaasApp) *string { return v.PublicKey }).(pulumi.StringPtrOutput)
 }
 
-// The permitted URL's for Cloudflare to return Authorization codes and Access/ID tokens
+// The permitted URL's for Cloudflare to return Authorization codes and Access/ID tokens.
 func (o AccessApplicationSaasAppOutput) RedirectUris() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AccessApplicationSaasApp) []string { return v.RedirectUris }).(pulumi.StringArrayOutput)
 }
 
-// Define the user information shared with access
+// Define the user information shared with access.
 func (o AccessApplicationSaasAppOutput) Scopes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AccessApplicationSaasApp) []string { return v.Scopes }).(pulumi.StringArrayOutput)
 }
@@ -760,7 +760,7 @@ func (o AccessApplicationSaasAppPtrOutput) Elem() AccessApplicationSaasAppOutput
 	}).(AccessApplicationSaasAppOutput)
 }
 
-// The URL where this applications tile redirects users
+// The URL where this applications tile redirects users.
 func (o AccessApplicationSaasAppPtrOutput) AppLauncherUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AccessApplicationSaasApp) *string {
 		if v == nil {
@@ -779,7 +779,7 @@ func (o AccessApplicationSaasAppPtrOutput) AuthType() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The application client id
+// The application client id.
 func (o AccessApplicationSaasAppPtrOutput) ClientId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AccessApplicationSaasApp) *string {
 		if v == nil {
@@ -789,7 +789,7 @@ func (o AccessApplicationSaasAppPtrOutput) ClientId() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The application client secret, only returned on initial apply
+// The application client secret, only returned on initial apply.
 func (o AccessApplicationSaasAppPtrOutput) ClientSecret() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AccessApplicationSaasApp) *string {
 		if v == nil {
@@ -829,7 +829,7 @@ func (o AccessApplicationSaasAppPtrOutput) DefaultRelayState() pulumi.StringPtrO
 	}).(pulumi.StringPtrOutput)
 }
 
-// The OIDC flows supported by this application
+// The OIDC flows supported by this application.
 func (o AccessApplicationSaasAppPtrOutput) GrantTypes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *AccessApplicationSaasApp) []string {
 		if v == nil {
@@ -839,7 +839,7 @@ func (o AccessApplicationSaasAppPtrOutput) GrantTypes() pulumi.StringArrayOutput
 	}).(pulumi.StringArrayOutput)
 }
 
-// A regex to filter Cloudflare groups returned in ID token and userinfo endpoint
+// A regex to filter Cloudflare groups returned in ID token and userinfo endpoint.
 func (o AccessApplicationSaasAppPtrOutput) GroupFilterRegex() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AccessApplicationSaasApp) *string {
 		if v == nil {
@@ -859,7 +859,7 @@ func (o AccessApplicationSaasAppPtrOutput) IdpEntityId() pulumi.StringPtrOutput 
 	}).(pulumi.StringPtrOutput)
 }
 
-// The format of the name identifier sent to the SaaS application. Defaults to `email`.
+// The format of the name identifier sent to the SaaS application.
 func (o AccessApplicationSaasAppPtrOutput) NameIdFormat() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AccessApplicationSaasApp) *string {
 		if v == nil {
@@ -889,7 +889,7 @@ func (o AccessApplicationSaasAppPtrOutput) PublicKey() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The permitted URL's for Cloudflare to return Authorization codes and Access/ID tokens
+// The permitted URL's for Cloudflare to return Authorization codes and Access/ID tokens.
 func (o AccessApplicationSaasAppPtrOutput) RedirectUris() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *AccessApplicationSaasApp) []string {
 		if v == nil {
@@ -899,7 +899,7 @@ func (o AccessApplicationSaasAppPtrOutput) RedirectUris() pulumi.StringArrayOutp
 	}).(pulumi.StringArrayOutput)
 }
 
-// Define the user information shared with access
+// Define the user information shared with access.
 func (o AccessApplicationSaasAppPtrOutput) Scopes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *AccessApplicationSaasApp) []string {
 		if v == nil {
@@ -4518,6 +4518,121 @@ func (o AccessIdentityProviderScimConfigArrayOutput) Index(i pulumi.IntInput) Ac
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AccessIdentityProviderScimConfig {
 		return vs[0].([]AccessIdentityProviderScimConfig)[vs[1].(int)]
 	}).(AccessIdentityProviderScimConfigOutput)
+}
+
+type AccessMutualTlsHostnameSettingsSetting struct {
+	// Request client certificates for this hostname in China. Can only be set to true if this zone is china network enabled.
+	ChinaNetwork *bool `pulumi:"chinaNetwork"`
+	// Client Certificate Forwarding is a feature that takes the client cert provided by the eyeball to the edge, and forwards it to the origin as a HTTP header to allow logging on the origin.
+	ClientCertificateForwarding *bool `pulumi:"clientCertificateForwarding"`
+	// The hostname that these settings apply to.
+	Hostname string `pulumi:"hostname"`
+}
+
+// AccessMutualTlsHostnameSettingsSettingInput is an input type that accepts AccessMutualTlsHostnameSettingsSettingArgs and AccessMutualTlsHostnameSettingsSettingOutput values.
+// You can construct a concrete instance of `AccessMutualTlsHostnameSettingsSettingInput` via:
+//
+//	AccessMutualTlsHostnameSettingsSettingArgs{...}
+type AccessMutualTlsHostnameSettingsSettingInput interface {
+	pulumi.Input
+
+	ToAccessMutualTlsHostnameSettingsSettingOutput() AccessMutualTlsHostnameSettingsSettingOutput
+	ToAccessMutualTlsHostnameSettingsSettingOutputWithContext(context.Context) AccessMutualTlsHostnameSettingsSettingOutput
+}
+
+type AccessMutualTlsHostnameSettingsSettingArgs struct {
+	// Request client certificates for this hostname in China. Can only be set to true if this zone is china network enabled.
+	ChinaNetwork pulumi.BoolPtrInput `pulumi:"chinaNetwork"`
+	// Client Certificate Forwarding is a feature that takes the client cert provided by the eyeball to the edge, and forwards it to the origin as a HTTP header to allow logging on the origin.
+	ClientCertificateForwarding pulumi.BoolPtrInput `pulumi:"clientCertificateForwarding"`
+	// The hostname that these settings apply to.
+	Hostname pulumi.StringInput `pulumi:"hostname"`
+}
+
+func (AccessMutualTlsHostnameSettingsSettingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessMutualTlsHostnameSettingsSetting)(nil)).Elem()
+}
+
+func (i AccessMutualTlsHostnameSettingsSettingArgs) ToAccessMutualTlsHostnameSettingsSettingOutput() AccessMutualTlsHostnameSettingsSettingOutput {
+	return i.ToAccessMutualTlsHostnameSettingsSettingOutputWithContext(context.Background())
+}
+
+func (i AccessMutualTlsHostnameSettingsSettingArgs) ToAccessMutualTlsHostnameSettingsSettingOutputWithContext(ctx context.Context) AccessMutualTlsHostnameSettingsSettingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessMutualTlsHostnameSettingsSettingOutput)
+}
+
+// AccessMutualTlsHostnameSettingsSettingArrayInput is an input type that accepts AccessMutualTlsHostnameSettingsSettingArray and AccessMutualTlsHostnameSettingsSettingArrayOutput values.
+// You can construct a concrete instance of `AccessMutualTlsHostnameSettingsSettingArrayInput` via:
+//
+//	AccessMutualTlsHostnameSettingsSettingArray{ AccessMutualTlsHostnameSettingsSettingArgs{...} }
+type AccessMutualTlsHostnameSettingsSettingArrayInput interface {
+	pulumi.Input
+
+	ToAccessMutualTlsHostnameSettingsSettingArrayOutput() AccessMutualTlsHostnameSettingsSettingArrayOutput
+	ToAccessMutualTlsHostnameSettingsSettingArrayOutputWithContext(context.Context) AccessMutualTlsHostnameSettingsSettingArrayOutput
+}
+
+type AccessMutualTlsHostnameSettingsSettingArray []AccessMutualTlsHostnameSettingsSettingInput
+
+func (AccessMutualTlsHostnameSettingsSettingArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AccessMutualTlsHostnameSettingsSetting)(nil)).Elem()
+}
+
+func (i AccessMutualTlsHostnameSettingsSettingArray) ToAccessMutualTlsHostnameSettingsSettingArrayOutput() AccessMutualTlsHostnameSettingsSettingArrayOutput {
+	return i.ToAccessMutualTlsHostnameSettingsSettingArrayOutputWithContext(context.Background())
+}
+
+func (i AccessMutualTlsHostnameSettingsSettingArray) ToAccessMutualTlsHostnameSettingsSettingArrayOutputWithContext(ctx context.Context) AccessMutualTlsHostnameSettingsSettingArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessMutualTlsHostnameSettingsSettingArrayOutput)
+}
+
+type AccessMutualTlsHostnameSettingsSettingOutput struct{ *pulumi.OutputState }
+
+func (AccessMutualTlsHostnameSettingsSettingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessMutualTlsHostnameSettingsSetting)(nil)).Elem()
+}
+
+func (o AccessMutualTlsHostnameSettingsSettingOutput) ToAccessMutualTlsHostnameSettingsSettingOutput() AccessMutualTlsHostnameSettingsSettingOutput {
+	return o
+}
+
+func (o AccessMutualTlsHostnameSettingsSettingOutput) ToAccessMutualTlsHostnameSettingsSettingOutputWithContext(ctx context.Context) AccessMutualTlsHostnameSettingsSettingOutput {
+	return o
+}
+
+// Request client certificates for this hostname in China. Can only be set to true if this zone is china network enabled.
+func (o AccessMutualTlsHostnameSettingsSettingOutput) ChinaNetwork() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AccessMutualTlsHostnameSettingsSetting) *bool { return v.ChinaNetwork }).(pulumi.BoolPtrOutput)
+}
+
+// Client Certificate Forwarding is a feature that takes the client cert provided by the eyeball to the edge, and forwards it to the origin as a HTTP header to allow logging on the origin.
+func (o AccessMutualTlsHostnameSettingsSettingOutput) ClientCertificateForwarding() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AccessMutualTlsHostnameSettingsSetting) *bool { return v.ClientCertificateForwarding }).(pulumi.BoolPtrOutput)
+}
+
+// The hostname that these settings apply to.
+func (o AccessMutualTlsHostnameSettingsSettingOutput) Hostname() pulumi.StringOutput {
+	return o.ApplyT(func(v AccessMutualTlsHostnameSettingsSetting) string { return v.Hostname }).(pulumi.StringOutput)
+}
+
+type AccessMutualTlsHostnameSettingsSettingArrayOutput struct{ *pulumi.OutputState }
+
+func (AccessMutualTlsHostnameSettingsSettingArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AccessMutualTlsHostnameSettingsSetting)(nil)).Elem()
+}
+
+func (o AccessMutualTlsHostnameSettingsSettingArrayOutput) ToAccessMutualTlsHostnameSettingsSettingArrayOutput() AccessMutualTlsHostnameSettingsSettingArrayOutput {
+	return o
+}
+
+func (o AccessMutualTlsHostnameSettingsSettingArrayOutput) ToAccessMutualTlsHostnameSettingsSettingArrayOutputWithContext(ctx context.Context) AccessMutualTlsHostnameSettingsSettingArrayOutput {
+	return o
+}
+
+func (o AccessMutualTlsHostnameSettingsSettingArrayOutput) Index(i pulumi.IntInput) AccessMutualTlsHostnameSettingsSettingOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AccessMutualTlsHostnameSettingsSetting {
+		return vs[0].([]AccessMutualTlsHostnameSettingsSetting)[vs[1].(int)]
+	}).(AccessMutualTlsHostnameSettingsSettingOutput)
 }
 
 type AccessOrganizationCustomPage struct {
@@ -10819,6 +10934,299 @@ func (o DevicePostureRuleMatchArrayOutput) Index(i pulumi.IntInput) DevicePostur
 	}).(DevicePostureRuleMatchOutput)
 }
 
+type DlpProfileContextAwareness struct {
+	// Scan the context of predefined entries to only return matches surrounded by keywords.
+	Enabled bool `pulumi:"enabled"`
+	// Content types to exclude from context analysis and return all matches.
+	Skip DlpProfileContextAwarenessSkip `pulumi:"skip"`
+}
+
+// DlpProfileContextAwarenessInput is an input type that accepts DlpProfileContextAwarenessArgs and DlpProfileContextAwarenessOutput values.
+// You can construct a concrete instance of `DlpProfileContextAwarenessInput` via:
+//
+//	DlpProfileContextAwarenessArgs{...}
+type DlpProfileContextAwarenessInput interface {
+	pulumi.Input
+
+	ToDlpProfileContextAwarenessOutput() DlpProfileContextAwarenessOutput
+	ToDlpProfileContextAwarenessOutputWithContext(context.Context) DlpProfileContextAwarenessOutput
+}
+
+type DlpProfileContextAwarenessArgs struct {
+	// Scan the context of predefined entries to only return matches surrounded by keywords.
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+	// Content types to exclude from context analysis and return all matches.
+	Skip DlpProfileContextAwarenessSkipInput `pulumi:"skip"`
+}
+
+func (DlpProfileContextAwarenessArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DlpProfileContextAwareness)(nil)).Elem()
+}
+
+func (i DlpProfileContextAwarenessArgs) ToDlpProfileContextAwarenessOutput() DlpProfileContextAwarenessOutput {
+	return i.ToDlpProfileContextAwarenessOutputWithContext(context.Background())
+}
+
+func (i DlpProfileContextAwarenessArgs) ToDlpProfileContextAwarenessOutputWithContext(ctx context.Context) DlpProfileContextAwarenessOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DlpProfileContextAwarenessOutput)
+}
+
+func (i DlpProfileContextAwarenessArgs) ToDlpProfileContextAwarenessPtrOutput() DlpProfileContextAwarenessPtrOutput {
+	return i.ToDlpProfileContextAwarenessPtrOutputWithContext(context.Background())
+}
+
+func (i DlpProfileContextAwarenessArgs) ToDlpProfileContextAwarenessPtrOutputWithContext(ctx context.Context) DlpProfileContextAwarenessPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DlpProfileContextAwarenessOutput).ToDlpProfileContextAwarenessPtrOutputWithContext(ctx)
+}
+
+// DlpProfileContextAwarenessPtrInput is an input type that accepts DlpProfileContextAwarenessArgs, DlpProfileContextAwarenessPtr and DlpProfileContextAwarenessPtrOutput values.
+// You can construct a concrete instance of `DlpProfileContextAwarenessPtrInput` via:
+//
+//	        DlpProfileContextAwarenessArgs{...}
+//
+//	or:
+//
+//	        nil
+type DlpProfileContextAwarenessPtrInput interface {
+	pulumi.Input
+
+	ToDlpProfileContextAwarenessPtrOutput() DlpProfileContextAwarenessPtrOutput
+	ToDlpProfileContextAwarenessPtrOutputWithContext(context.Context) DlpProfileContextAwarenessPtrOutput
+}
+
+type dlpProfileContextAwarenessPtrType DlpProfileContextAwarenessArgs
+
+func DlpProfileContextAwarenessPtr(v *DlpProfileContextAwarenessArgs) DlpProfileContextAwarenessPtrInput {
+	return (*dlpProfileContextAwarenessPtrType)(v)
+}
+
+func (*dlpProfileContextAwarenessPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DlpProfileContextAwareness)(nil)).Elem()
+}
+
+func (i *dlpProfileContextAwarenessPtrType) ToDlpProfileContextAwarenessPtrOutput() DlpProfileContextAwarenessPtrOutput {
+	return i.ToDlpProfileContextAwarenessPtrOutputWithContext(context.Background())
+}
+
+func (i *dlpProfileContextAwarenessPtrType) ToDlpProfileContextAwarenessPtrOutputWithContext(ctx context.Context) DlpProfileContextAwarenessPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DlpProfileContextAwarenessPtrOutput)
+}
+
+type DlpProfileContextAwarenessOutput struct{ *pulumi.OutputState }
+
+func (DlpProfileContextAwarenessOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DlpProfileContextAwareness)(nil)).Elem()
+}
+
+func (o DlpProfileContextAwarenessOutput) ToDlpProfileContextAwarenessOutput() DlpProfileContextAwarenessOutput {
+	return o
+}
+
+func (o DlpProfileContextAwarenessOutput) ToDlpProfileContextAwarenessOutputWithContext(ctx context.Context) DlpProfileContextAwarenessOutput {
+	return o
+}
+
+func (o DlpProfileContextAwarenessOutput) ToDlpProfileContextAwarenessPtrOutput() DlpProfileContextAwarenessPtrOutput {
+	return o.ToDlpProfileContextAwarenessPtrOutputWithContext(context.Background())
+}
+
+func (o DlpProfileContextAwarenessOutput) ToDlpProfileContextAwarenessPtrOutputWithContext(ctx context.Context) DlpProfileContextAwarenessPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DlpProfileContextAwareness) *DlpProfileContextAwareness {
+		return &v
+	}).(DlpProfileContextAwarenessPtrOutput)
+}
+
+// Scan the context of predefined entries to only return matches surrounded by keywords.
+func (o DlpProfileContextAwarenessOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v DlpProfileContextAwareness) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+// Content types to exclude from context analysis and return all matches.
+func (o DlpProfileContextAwarenessOutput) Skip() DlpProfileContextAwarenessSkipOutput {
+	return o.ApplyT(func(v DlpProfileContextAwareness) DlpProfileContextAwarenessSkip { return v.Skip }).(DlpProfileContextAwarenessSkipOutput)
+}
+
+type DlpProfileContextAwarenessPtrOutput struct{ *pulumi.OutputState }
+
+func (DlpProfileContextAwarenessPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DlpProfileContextAwareness)(nil)).Elem()
+}
+
+func (o DlpProfileContextAwarenessPtrOutput) ToDlpProfileContextAwarenessPtrOutput() DlpProfileContextAwarenessPtrOutput {
+	return o
+}
+
+func (o DlpProfileContextAwarenessPtrOutput) ToDlpProfileContextAwarenessPtrOutputWithContext(ctx context.Context) DlpProfileContextAwarenessPtrOutput {
+	return o
+}
+
+func (o DlpProfileContextAwarenessPtrOutput) Elem() DlpProfileContextAwarenessOutput {
+	return o.ApplyT(func(v *DlpProfileContextAwareness) DlpProfileContextAwareness {
+		if v != nil {
+			return *v
+		}
+		var ret DlpProfileContextAwareness
+		return ret
+	}).(DlpProfileContextAwarenessOutput)
+}
+
+// Scan the context of predefined entries to only return matches surrounded by keywords.
+func (o DlpProfileContextAwarenessPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *DlpProfileContextAwareness) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Content types to exclude from context analysis and return all matches.
+func (o DlpProfileContextAwarenessPtrOutput) Skip() DlpProfileContextAwarenessSkipPtrOutput {
+	return o.ApplyT(func(v *DlpProfileContextAwareness) *DlpProfileContextAwarenessSkip {
+		if v == nil {
+			return nil
+		}
+		return &v.Skip
+	}).(DlpProfileContextAwarenessSkipPtrOutput)
+}
+
+type DlpProfileContextAwarenessSkip struct {
+	// Return all matches, regardless of context analysis result, if the data is a file.
+	Files bool `pulumi:"files"`
+}
+
+// DlpProfileContextAwarenessSkipInput is an input type that accepts DlpProfileContextAwarenessSkipArgs and DlpProfileContextAwarenessSkipOutput values.
+// You can construct a concrete instance of `DlpProfileContextAwarenessSkipInput` via:
+//
+//	DlpProfileContextAwarenessSkipArgs{...}
+type DlpProfileContextAwarenessSkipInput interface {
+	pulumi.Input
+
+	ToDlpProfileContextAwarenessSkipOutput() DlpProfileContextAwarenessSkipOutput
+	ToDlpProfileContextAwarenessSkipOutputWithContext(context.Context) DlpProfileContextAwarenessSkipOutput
+}
+
+type DlpProfileContextAwarenessSkipArgs struct {
+	// Return all matches, regardless of context analysis result, if the data is a file.
+	Files pulumi.BoolInput `pulumi:"files"`
+}
+
+func (DlpProfileContextAwarenessSkipArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DlpProfileContextAwarenessSkip)(nil)).Elem()
+}
+
+func (i DlpProfileContextAwarenessSkipArgs) ToDlpProfileContextAwarenessSkipOutput() DlpProfileContextAwarenessSkipOutput {
+	return i.ToDlpProfileContextAwarenessSkipOutputWithContext(context.Background())
+}
+
+func (i DlpProfileContextAwarenessSkipArgs) ToDlpProfileContextAwarenessSkipOutputWithContext(ctx context.Context) DlpProfileContextAwarenessSkipOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DlpProfileContextAwarenessSkipOutput)
+}
+
+func (i DlpProfileContextAwarenessSkipArgs) ToDlpProfileContextAwarenessSkipPtrOutput() DlpProfileContextAwarenessSkipPtrOutput {
+	return i.ToDlpProfileContextAwarenessSkipPtrOutputWithContext(context.Background())
+}
+
+func (i DlpProfileContextAwarenessSkipArgs) ToDlpProfileContextAwarenessSkipPtrOutputWithContext(ctx context.Context) DlpProfileContextAwarenessSkipPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DlpProfileContextAwarenessSkipOutput).ToDlpProfileContextAwarenessSkipPtrOutputWithContext(ctx)
+}
+
+// DlpProfileContextAwarenessSkipPtrInput is an input type that accepts DlpProfileContextAwarenessSkipArgs, DlpProfileContextAwarenessSkipPtr and DlpProfileContextAwarenessSkipPtrOutput values.
+// You can construct a concrete instance of `DlpProfileContextAwarenessSkipPtrInput` via:
+//
+//	        DlpProfileContextAwarenessSkipArgs{...}
+//
+//	or:
+//
+//	        nil
+type DlpProfileContextAwarenessSkipPtrInput interface {
+	pulumi.Input
+
+	ToDlpProfileContextAwarenessSkipPtrOutput() DlpProfileContextAwarenessSkipPtrOutput
+	ToDlpProfileContextAwarenessSkipPtrOutputWithContext(context.Context) DlpProfileContextAwarenessSkipPtrOutput
+}
+
+type dlpProfileContextAwarenessSkipPtrType DlpProfileContextAwarenessSkipArgs
+
+func DlpProfileContextAwarenessSkipPtr(v *DlpProfileContextAwarenessSkipArgs) DlpProfileContextAwarenessSkipPtrInput {
+	return (*dlpProfileContextAwarenessSkipPtrType)(v)
+}
+
+func (*dlpProfileContextAwarenessSkipPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DlpProfileContextAwarenessSkip)(nil)).Elem()
+}
+
+func (i *dlpProfileContextAwarenessSkipPtrType) ToDlpProfileContextAwarenessSkipPtrOutput() DlpProfileContextAwarenessSkipPtrOutput {
+	return i.ToDlpProfileContextAwarenessSkipPtrOutputWithContext(context.Background())
+}
+
+func (i *dlpProfileContextAwarenessSkipPtrType) ToDlpProfileContextAwarenessSkipPtrOutputWithContext(ctx context.Context) DlpProfileContextAwarenessSkipPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DlpProfileContextAwarenessSkipPtrOutput)
+}
+
+type DlpProfileContextAwarenessSkipOutput struct{ *pulumi.OutputState }
+
+func (DlpProfileContextAwarenessSkipOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DlpProfileContextAwarenessSkip)(nil)).Elem()
+}
+
+func (o DlpProfileContextAwarenessSkipOutput) ToDlpProfileContextAwarenessSkipOutput() DlpProfileContextAwarenessSkipOutput {
+	return o
+}
+
+func (o DlpProfileContextAwarenessSkipOutput) ToDlpProfileContextAwarenessSkipOutputWithContext(ctx context.Context) DlpProfileContextAwarenessSkipOutput {
+	return o
+}
+
+func (o DlpProfileContextAwarenessSkipOutput) ToDlpProfileContextAwarenessSkipPtrOutput() DlpProfileContextAwarenessSkipPtrOutput {
+	return o.ToDlpProfileContextAwarenessSkipPtrOutputWithContext(context.Background())
+}
+
+func (o DlpProfileContextAwarenessSkipOutput) ToDlpProfileContextAwarenessSkipPtrOutputWithContext(ctx context.Context) DlpProfileContextAwarenessSkipPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DlpProfileContextAwarenessSkip) *DlpProfileContextAwarenessSkip {
+		return &v
+	}).(DlpProfileContextAwarenessSkipPtrOutput)
+}
+
+// Return all matches, regardless of context analysis result, if the data is a file.
+func (o DlpProfileContextAwarenessSkipOutput) Files() pulumi.BoolOutput {
+	return o.ApplyT(func(v DlpProfileContextAwarenessSkip) bool { return v.Files }).(pulumi.BoolOutput)
+}
+
+type DlpProfileContextAwarenessSkipPtrOutput struct{ *pulumi.OutputState }
+
+func (DlpProfileContextAwarenessSkipPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DlpProfileContextAwarenessSkip)(nil)).Elem()
+}
+
+func (o DlpProfileContextAwarenessSkipPtrOutput) ToDlpProfileContextAwarenessSkipPtrOutput() DlpProfileContextAwarenessSkipPtrOutput {
+	return o
+}
+
+func (o DlpProfileContextAwarenessSkipPtrOutput) ToDlpProfileContextAwarenessSkipPtrOutputWithContext(ctx context.Context) DlpProfileContextAwarenessSkipPtrOutput {
+	return o
+}
+
+func (o DlpProfileContextAwarenessSkipPtrOutput) Elem() DlpProfileContextAwarenessSkipOutput {
+	return o.ApplyT(func(v *DlpProfileContextAwarenessSkip) DlpProfileContextAwarenessSkip {
+		if v != nil {
+			return *v
+		}
+		var ret DlpProfileContextAwarenessSkip
+		return ret
+	}).(DlpProfileContextAwarenessSkipOutput)
+}
+
+// Return all matches, regardless of context analysis result, if the data is a file.
+func (o DlpProfileContextAwarenessSkipPtrOutput) Files() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *DlpProfileContextAwarenessSkip) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.Files
+	}).(pulumi.BoolPtrOutput)
+}
+
 type DlpProfileEntry struct {
 	// Whether the entry is active. Defaults to `false`.
 	Enabled *bool `pulumi:"enabled"`
@@ -11739,6 +12147,375 @@ func (o HealthcheckHeaderArrayOutput) Index(i pulumi.IntInput) HealthcheckHeader
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) HealthcheckHeader {
 		return vs[0].([]HealthcheckHeader)[vs[1].(int)]
 	}).(HealthcheckHeaderOutput)
+}
+
+type HyperdriveConfigCaching struct {
+	// Disable caching for this Hyperdrive configuration.
+	Disabled *bool `pulumi:"disabled"`
+}
+
+// HyperdriveConfigCachingInput is an input type that accepts HyperdriveConfigCachingArgs and HyperdriveConfigCachingOutput values.
+// You can construct a concrete instance of `HyperdriveConfigCachingInput` via:
+//
+//	HyperdriveConfigCachingArgs{...}
+type HyperdriveConfigCachingInput interface {
+	pulumi.Input
+
+	ToHyperdriveConfigCachingOutput() HyperdriveConfigCachingOutput
+	ToHyperdriveConfigCachingOutputWithContext(context.Context) HyperdriveConfigCachingOutput
+}
+
+type HyperdriveConfigCachingArgs struct {
+	// Disable caching for this Hyperdrive configuration.
+	Disabled pulumi.BoolPtrInput `pulumi:"disabled"`
+}
+
+func (HyperdriveConfigCachingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*HyperdriveConfigCaching)(nil)).Elem()
+}
+
+func (i HyperdriveConfigCachingArgs) ToHyperdriveConfigCachingOutput() HyperdriveConfigCachingOutput {
+	return i.ToHyperdriveConfigCachingOutputWithContext(context.Background())
+}
+
+func (i HyperdriveConfigCachingArgs) ToHyperdriveConfigCachingOutputWithContext(ctx context.Context) HyperdriveConfigCachingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HyperdriveConfigCachingOutput)
+}
+
+func (i HyperdriveConfigCachingArgs) ToHyperdriveConfigCachingPtrOutput() HyperdriveConfigCachingPtrOutput {
+	return i.ToHyperdriveConfigCachingPtrOutputWithContext(context.Background())
+}
+
+func (i HyperdriveConfigCachingArgs) ToHyperdriveConfigCachingPtrOutputWithContext(ctx context.Context) HyperdriveConfigCachingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HyperdriveConfigCachingOutput).ToHyperdriveConfigCachingPtrOutputWithContext(ctx)
+}
+
+// HyperdriveConfigCachingPtrInput is an input type that accepts HyperdriveConfigCachingArgs, HyperdriveConfigCachingPtr and HyperdriveConfigCachingPtrOutput values.
+// You can construct a concrete instance of `HyperdriveConfigCachingPtrInput` via:
+//
+//	        HyperdriveConfigCachingArgs{...}
+//
+//	or:
+//
+//	        nil
+type HyperdriveConfigCachingPtrInput interface {
+	pulumi.Input
+
+	ToHyperdriveConfigCachingPtrOutput() HyperdriveConfigCachingPtrOutput
+	ToHyperdriveConfigCachingPtrOutputWithContext(context.Context) HyperdriveConfigCachingPtrOutput
+}
+
+type hyperdriveConfigCachingPtrType HyperdriveConfigCachingArgs
+
+func HyperdriveConfigCachingPtr(v *HyperdriveConfigCachingArgs) HyperdriveConfigCachingPtrInput {
+	return (*hyperdriveConfigCachingPtrType)(v)
+}
+
+func (*hyperdriveConfigCachingPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**HyperdriveConfigCaching)(nil)).Elem()
+}
+
+func (i *hyperdriveConfigCachingPtrType) ToHyperdriveConfigCachingPtrOutput() HyperdriveConfigCachingPtrOutput {
+	return i.ToHyperdriveConfigCachingPtrOutputWithContext(context.Background())
+}
+
+func (i *hyperdriveConfigCachingPtrType) ToHyperdriveConfigCachingPtrOutputWithContext(ctx context.Context) HyperdriveConfigCachingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HyperdriveConfigCachingPtrOutput)
+}
+
+type HyperdriveConfigCachingOutput struct{ *pulumi.OutputState }
+
+func (HyperdriveConfigCachingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*HyperdriveConfigCaching)(nil)).Elem()
+}
+
+func (o HyperdriveConfigCachingOutput) ToHyperdriveConfigCachingOutput() HyperdriveConfigCachingOutput {
+	return o
+}
+
+func (o HyperdriveConfigCachingOutput) ToHyperdriveConfigCachingOutputWithContext(ctx context.Context) HyperdriveConfigCachingOutput {
+	return o
+}
+
+func (o HyperdriveConfigCachingOutput) ToHyperdriveConfigCachingPtrOutput() HyperdriveConfigCachingPtrOutput {
+	return o.ToHyperdriveConfigCachingPtrOutputWithContext(context.Background())
+}
+
+func (o HyperdriveConfigCachingOutput) ToHyperdriveConfigCachingPtrOutputWithContext(ctx context.Context) HyperdriveConfigCachingPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v HyperdriveConfigCaching) *HyperdriveConfigCaching {
+		return &v
+	}).(HyperdriveConfigCachingPtrOutput)
+}
+
+// Disable caching for this Hyperdrive configuration.
+func (o HyperdriveConfigCachingOutput) Disabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v HyperdriveConfigCaching) *bool { return v.Disabled }).(pulumi.BoolPtrOutput)
+}
+
+type HyperdriveConfigCachingPtrOutput struct{ *pulumi.OutputState }
+
+func (HyperdriveConfigCachingPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**HyperdriveConfigCaching)(nil)).Elem()
+}
+
+func (o HyperdriveConfigCachingPtrOutput) ToHyperdriveConfigCachingPtrOutput() HyperdriveConfigCachingPtrOutput {
+	return o
+}
+
+func (o HyperdriveConfigCachingPtrOutput) ToHyperdriveConfigCachingPtrOutputWithContext(ctx context.Context) HyperdriveConfigCachingPtrOutput {
+	return o
+}
+
+func (o HyperdriveConfigCachingPtrOutput) Elem() HyperdriveConfigCachingOutput {
+	return o.ApplyT(func(v *HyperdriveConfigCaching) HyperdriveConfigCaching {
+		if v != nil {
+			return *v
+		}
+		var ret HyperdriveConfigCaching
+		return ret
+	}).(HyperdriveConfigCachingOutput)
+}
+
+// Disable caching for this Hyperdrive configuration.
+func (o HyperdriveConfigCachingPtrOutput) Disabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *HyperdriveConfigCaching) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Disabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+type HyperdriveConfigOrigin struct {
+	// The name of your origin database.
+	Database string `pulumi:"database"`
+	// The host (hostname or IP) of your origin database.
+	Host string `pulumi:"host"`
+	// The password of the Hyperdrive configuration.
+	Password string `pulumi:"password"`
+	// The port (default: 5432 for Postgres) of your origin database.
+	Port int `pulumi:"port"`
+	// Specifies the URL scheme used to connect to your origin database.
+	Scheme string `pulumi:"scheme"`
+	// The user of your origin database.
+	User string `pulumi:"user"`
+}
+
+// HyperdriveConfigOriginInput is an input type that accepts HyperdriveConfigOriginArgs and HyperdriveConfigOriginOutput values.
+// You can construct a concrete instance of `HyperdriveConfigOriginInput` via:
+//
+//	HyperdriveConfigOriginArgs{...}
+type HyperdriveConfigOriginInput interface {
+	pulumi.Input
+
+	ToHyperdriveConfigOriginOutput() HyperdriveConfigOriginOutput
+	ToHyperdriveConfigOriginOutputWithContext(context.Context) HyperdriveConfigOriginOutput
+}
+
+type HyperdriveConfigOriginArgs struct {
+	// The name of your origin database.
+	Database pulumi.StringInput `pulumi:"database"`
+	// The host (hostname or IP) of your origin database.
+	Host pulumi.StringInput `pulumi:"host"`
+	// The password of the Hyperdrive configuration.
+	Password pulumi.StringInput `pulumi:"password"`
+	// The port (default: 5432 for Postgres) of your origin database.
+	Port pulumi.IntInput `pulumi:"port"`
+	// Specifies the URL scheme used to connect to your origin database.
+	Scheme pulumi.StringInput `pulumi:"scheme"`
+	// The user of your origin database.
+	User pulumi.StringInput `pulumi:"user"`
+}
+
+func (HyperdriveConfigOriginArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*HyperdriveConfigOrigin)(nil)).Elem()
+}
+
+func (i HyperdriveConfigOriginArgs) ToHyperdriveConfigOriginOutput() HyperdriveConfigOriginOutput {
+	return i.ToHyperdriveConfigOriginOutputWithContext(context.Background())
+}
+
+func (i HyperdriveConfigOriginArgs) ToHyperdriveConfigOriginOutputWithContext(ctx context.Context) HyperdriveConfigOriginOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HyperdriveConfigOriginOutput)
+}
+
+func (i HyperdriveConfigOriginArgs) ToHyperdriveConfigOriginPtrOutput() HyperdriveConfigOriginPtrOutput {
+	return i.ToHyperdriveConfigOriginPtrOutputWithContext(context.Background())
+}
+
+func (i HyperdriveConfigOriginArgs) ToHyperdriveConfigOriginPtrOutputWithContext(ctx context.Context) HyperdriveConfigOriginPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HyperdriveConfigOriginOutput).ToHyperdriveConfigOriginPtrOutputWithContext(ctx)
+}
+
+// HyperdriveConfigOriginPtrInput is an input type that accepts HyperdriveConfigOriginArgs, HyperdriveConfigOriginPtr and HyperdriveConfigOriginPtrOutput values.
+// You can construct a concrete instance of `HyperdriveConfigOriginPtrInput` via:
+//
+//	        HyperdriveConfigOriginArgs{...}
+//
+//	or:
+//
+//	        nil
+type HyperdriveConfigOriginPtrInput interface {
+	pulumi.Input
+
+	ToHyperdriveConfigOriginPtrOutput() HyperdriveConfigOriginPtrOutput
+	ToHyperdriveConfigOriginPtrOutputWithContext(context.Context) HyperdriveConfigOriginPtrOutput
+}
+
+type hyperdriveConfigOriginPtrType HyperdriveConfigOriginArgs
+
+func HyperdriveConfigOriginPtr(v *HyperdriveConfigOriginArgs) HyperdriveConfigOriginPtrInput {
+	return (*hyperdriveConfigOriginPtrType)(v)
+}
+
+func (*hyperdriveConfigOriginPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**HyperdriveConfigOrigin)(nil)).Elem()
+}
+
+func (i *hyperdriveConfigOriginPtrType) ToHyperdriveConfigOriginPtrOutput() HyperdriveConfigOriginPtrOutput {
+	return i.ToHyperdriveConfigOriginPtrOutputWithContext(context.Background())
+}
+
+func (i *hyperdriveConfigOriginPtrType) ToHyperdriveConfigOriginPtrOutputWithContext(ctx context.Context) HyperdriveConfigOriginPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HyperdriveConfigOriginPtrOutput)
+}
+
+type HyperdriveConfigOriginOutput struct{ *pulumi.OutputState }
+
+func (HyperdriveConfigOriginOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*HyperdriveConfigOrigin)(nil)).Elem()
+}
+
+func (o HyperdriveConfigOriginOutput) ToHyperdriveConfigOriginOutput() HyperdriveConfigOriginOutput {
+	return o
+}
+
+func (o HyperdriveConfigOriginOutput) ToHyperdriveConfigOriginOutputWithContext(ctx context.Context) HyperdriveConfigOriginOutput {
+	return o
+}
+
+func (o HyperdriveConfigOriginOutput) ToHyperdriveConfigOriginPtrOutput() HyperdriveConfigOriginPtrOutput {
+	return o.ToHyperdriveConfigOriginPtrOutputWithContext(context.Background())
+}
+
+func (o HyperdriveConfigOriginOutput) ToHyperdriveConfigOriginPtrOutputWithContext(ctx context.Context) HyperdriveConfigOriginPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v HyperdriveConfigOrigin) *HyperdriveConfigOrigin {
+		return &v
+	}).(HyperdriveConfigOriginPtrOutput)
+}
+
+// The name of your origin database.
+func (o HyperdriveConfigOriginOutput) Database() pulumi.StringOutput {
+	return o.ApplyT(func(v HyperdriveConfigOrigin) string { return v.Database }).(pulumi.StringOutput)
+}
+
+// The host (hostname or IP) of your origin database.
+func (o HyperdriveConfigOriginOutput) Host() pulumi.StringOutput {
+	return o.ApplyT(func(v HyperdriveConfigOrigin) string { return v.Host }).(pulumi.StringOutput)
+}
+
+// The password of the Hyperdrive configuration.
+func (o HyperdriveConfigOriginOutput) Password() pulumi.StringOutput {
+	return o.ApplyT(func(v HyperdriveConfigOrigin) string { return v.Password }).(pulumi.StringOutput)
+}
+
+// The port (default: 5432 for Postgres) of your origin database.
+func (o HyperdriveConfigOriginOutput) Port() pulumi.IntOutput {
+	return o.ApplyT(func(v HyperdriveConfigOrigin) int { return v.Port }).(pulumi.IntOutput)
+}
+
+// Specifies the URL scheme used to connect to your origin database.
+func (o HyperdriveConfigOriginOutput) Scheme() pulumi.StringOutput {
+	return o.ApplyT(func(v HyperdriveConfigOrigin) string { return v.Scheme }).(pulumi.StringOutput)
+}
+
+// The user of your origin database.
+func (o HyperdriveConfigOriginOutput) User() pulumi.StringOutput {
+	return o.ApplyT(func(v HyperdriveConfigOrigin) string { return v.User }).(pulumi.StringOutput)
+}
+
+type HyperdriveConfigOriginPtrOutput struct{ *pulumi.OutputState }
+
+func (HyperdriveConfigOriginPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**HyperdriveConfigOrigin)(nil)).Elem()
+}
+
+func (o HyperdriveConfigOriginPtrOutput) ToHyperdriveConfigOriginPtrOutput() HyperdriveConfigOriginPtrOutput {
+	return o
+}
+
+func (o HyperdriveConfigOriginPtrOutput) ToHyperdriveConfigOriginPtrOutputWithContext(ctx context.Context) HyperdriveConfigOriginPtrOutput {
+	return o
+}
+
+func (o HyperdriveConfigOriginPtrOutput) Elem() HyperdriveConfigOriginOutput {
+	return o.ApplyT(func(v *HyperdriveConfigOrigin) HyperdriveConfigOrigin {
+		if v != nil {
+			return *v
+		}
+		var ret HyperdriveConfigOrigin
+		return ret
+	}).(HyperdriveConfigOriginOutput)
+}
+
+// The name of your origin database.
+func (o HyperdriveConfigOriginPtrOutput) Database() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *HyperdriveConfigOrigin) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Database
+	}).(pulumi.StringPtrOutput)
+}
+
+// The host (hostname or IP) of your origin database.
+func (o HyperdriveConfigOriginPtrOutput) Host() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *HyperdriveConfigOrigin) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Host
+	}).(pulumi.StringPtrOutput)
+}
+
+// The password of the Hyperdrive configuration.
+func (o HyperdriveConfigOriginPtrOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *HyperdriveConfigOrigin) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Password
+	}).(pulumi.StringPtrOutput)
+}
+
+// The port (default: 5432 for Postgres) of your origin database.
+func (o HyperdriveConfigOriginPtrOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *HyperdriveConfigOrigin) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.Port
+	}).(pulumi.IntPtrOutput)
+}
+
+// Specifies the URL scheme used to connect to your origin database.
+func (o HyperdriveConfigOriginPtrOutput) Scheme() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *HyperdriveConfigOrigin) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Scheme
+	}).(pulumi.StringPtrOutput)
+}
+
+// The user of your origin database.
+func (o HyperdriveConfigOriginPtrOutput) User() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *HyperdriveConfigOrigin) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.User
+	}).(pulumi.StringPtrOutput)
 }
 
 type ListItemType struct {
@@ -15196,6 +15973,352 @@ func (o LoadBalancerSessionAffinityAttributeArrayOutput) Index(i pulumi.IntInput
 	}).(LoadBalancerSessionAffinityAttributeOutput)
 }
 
+type LogpushJobOutputOptions struct {
+	// String to be prepended before each batch.
+	BatchPrefix *string `pulumi:"batchPrefix"`
+	// String to be appended after each batch.
+	BatchSuffix *string `pulumi:"batchSuffix"`
+	// Mitigation for CVE-2021-44228. If set to true, will cause all occurrences of ${ in the generated files to be replaced with x{. Defaults to `false`.
+	Cve20214428 *bool `pulumi:"cve20214428"`
+	// String to join fields. This field be ignored when recordTemplate is set. Defaults to `,`.
+	FieldDelimiter *string `pulumi:"fieldDelimiter"`
+	// List of field names to be included in the Logpush output.
+	FieldNames []string `pulumi:"fieldNames"`
+	// Specifies the output type. Available values: `ndjson`, `csv`. Defaults to `ndjson`.
+	OutputType *string `pulumi:"outputType"`
+	// String to be inserted in-between the records as separator.
+	RecordDelimiter *string `pulumi:"recordDelimiter"`
+	// String to be prepended before each record. Defaults to `{`.
+	RecordPrefix *string `pulumi:"recordPrefix"`
+	// String to be appended after each record. Defaults to `}`.
+	RecordSuffix *string `pulumi:"recordSuffix"`
+	// String to use as template for each record instead of the default comma-separated list.
+	RecordTemplate *string `pulumi:"recordTemplate"`
+	// Specifies the sampling rate. Defaults to `1`.
+	SampleRate *float64 `pulumi:"sampleRate"`
+	// Specifies the format for timestamps. Available values: `unixnano`, `unix`, `rfc3339`. Defaults to `unixnano`.
+	TimestampFormat *string `pulumi:"timestampFormat"`
+}
+
+// LogpushJobOutputOptionsInput is an input type that accepts LogpushJobOutputOptionsArgs and LogpushJobOutputOptionsOutput values.
+// You can construct a concrete instance of `LogpushJobOutputOptionsInput` via:
+//
+//	LogpushJobOutputOptionsArgs{...}
+type LogpushJobOutputOptionsInput interface {
+	pulumi.Input
+
+	ToLogpushJobOutputOptionsOutput() LogpushJobOutputOptionsOutput
+	ToLogpushJobOutputOptionsOutputWithContext(context.Context) LogpushJobOutputOptionsOutput
+}
+
+type LogpushJobOutputOptionsArgs struct {
+	// String to be prepended before each batch.
+	BatchPrefix pulumi.StringPtrInput `pulumi:"batchPrefix"`
+	// String to be appended after each batch.
+	BatchSuffix pulumi.StringPtrInput `pulumi:"batchSuffix"`
+	// Mitigation for CVE-2021-44228. If set to true, will cause all occurrences of ${ in the generated files to be replaced with x{. Defaults to `false`.
+	Cve20214428 pulumi.BoolPtrInput `pulumi:"cve20214428"`
+	// String to join fields. This field be ignored when recordTemplate is set. Defaults to `,`.
+	FieldDelimiter pulumi.StringPtrInput `pulumi:"fieldDelimiter"`
+	// List of field names to be included in the Logpush output.
+	FieldNames pulumi.StringArrayInput `pulumi:"fieldNames"`
+	// Specifies the output type. Available values: `ndjson`, `csv`. Defaults to `ndjson`.
+	OutputType pulumi.StringPtrInput `pulumi:"outputType"`
+	// String to be inserted in-between the records as separator.
+	RecordDelimiter pulumi.StringPtrInput `pulumi:"recordDelimiter"`
+	// String to be prepended before each record. Defaults to `{`.
+	RecordPrefix pulumi.StringPtrInput `pulumi:"recordPrefix"`
+	// String to be appended after each record. Defaults to `}`.
+	RecordSuffix pulumi.StringPtrInput `pulumi:"recordSuffix"`
+	// String to use as template for each record instead of the default comma-separated list.
+	RecordTemplate pulumi.StringPtrInput `pulumi:"recordTemplate"`
+	// Specifies the sampling rate. Defaults to `1`.
+	SampleRate pulumi.Float64PtrInput `pulumi:"sampleRate"`
+	// Specifies the format for timestamps. Available values: `unixnano`, `unix`, `rfc3339`. Defaults to `unixnano`.
+	TimestampFormat pulumi.StringPtrInput `pulumi:"timestampFormat"`
+}
+
+func (LogpushJobOutputOptionsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LogpushJobOutputOptions)(nil)).Elem()
+}
+
+func (i LogpushJobOutputOptionsArgs) ToLogpushJobOutputOptionsOutput() LogpushJobOutputOptionsOutput {
+	return i.ToLogpushJobOutputOptionsOutputWithContext(context.Background())
+}
+
+func (i LogpushJobOutputOptionsArgs) ToLogpushJobOutputOptionsOutputWithContext(ctx context.Context) LogpushJobOutputOptionsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LogpushJobOutputOptionsOutput)
+}
+
+func (i LogpushJobOutputOptionsArgs) ToLogpushJobOutputOptionsPtrOutput() LogpushJobOutputOptionsPtrOutput {
+	return i.ToLogpushJobOutputOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i LogpushJobOutputOptionsArgs) ToLogpushJobOutputOptionsPtrOutputWithContext(ctx context.Context) LogpushJobOutputOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LogpushJobOutputOptionsOutput).ToLogpushJobOutputOptionsPtrOutputWithContext(ctx)
+}
+
+// LogpushJobOutputOptionsPtrInput is an input type that accepts LogpushJobOutputOptionsArgs, LogpushJobOutputOptionsPtr and LogpushJobOutputOptionsPtrOutput values.
+// You can construct a concrete instance of `LogpushJobOutputOptionsPtrInput` via:
+//
+//	        LogpushJobOutputOptionsArgs{...}
+//
+//	or:
+//
+//	        nil
+type LogpushJobOutputOptionsPtrInput interface {
+	pulumi.Input
+
+	ToLogpushJobOutputOptionsPtrOutput() LogpushJobOutputOptionsPtrOutput
+	ToLogpushJobOutputOptionsPtrOutputWithContext(context.Context) LogpushJobOutputOptionsPtrOutput
+}
+
+type logpushJobOutputOptionsPtrType LogpushJobOutputOptionsArgs
+
+func LogpushJobOutputOptionsPtr(v *LogpushJobOutputOptionsArgs) LogpushJobOutputOptionsPtrInput {
+	return (*logpushJobOutputOptionsPtrType)(v)
+}
+
+func (*logpushJobOutputOptionsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**LogpushJobOutputOptions)(nil)).Elem()
+}
+
+func (i *logpushJobOutputOptionsPtrType) ToLogpushJobOutputOptionsPtrOutput() LogpushJobOutputOptionsPtrOutput {
+	return i.ToLogpushJobOutputOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i *logpushJobOutputOptionsPtrType) ToLogpushJobOutputOptionsPtrOutputWithContext(ctx context.Context) LogpushJobOutputOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LogpushJobOutputOptionsPtrOutput)
+}
+
+type LogpushJobOutputOptionsOutput struct{ *pulumi.OutputState }
+
+func (LogpushJobOutputOptionsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LogpushJobOutputOptions)(nil)).Elem()
+}
+
+func (o LogpushJobOutputOptionsOutput) ToLogpushJobOutputOptionsOutput() LogpushJobOutputOptionsOutput {
+	return o
+}
+
+func (o LogpushJobOutputOptionsOutput) ToLogpushJobOutputOptionsOutputWithContext(ctx context.Context) LogpushJobOutputOptionsOutput {
+	return o
+}
+
+func (o LogpushJobOutputOptionsOutput) ToLogpushJobOutputOptionsPtrOutput() LogpushJobOutputOptionsPtrOutput {
+	return o.ToLogpushJobOutputOptionsPtrOutputWithContext(context.Background())
+}
+
+func (o LogpushJobOutputOptionsOutput) ToLogpushJobOutputOptionsPtrOutputWithContext(ctx context.Context) LogpushJobOutputOptionsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v LogpushJobOutputOptions) *LogpushJobOutputOptions {
+		return &v
+	}).(LogpushJobOutputOptionsPtrOutput)
+}
+
+// String to be prepended before each batch.
+func (o LogpushJobOutputOptionsOutput) BatchPrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LogpushJobOutputOptions) *string { return v.BatchPrefix }).(pulumi.StringPtrOutput)
+}
+
+// String to be appended after each batch.
+func (o LogpushJobOutputOptionsOutput) BatchSuffix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LogpushJobOutputOptions) *string { return v.BatchSuffix }).(pulumi.StringPtrOutput)
+}
+
+// Mitigation for CVE-2021-44228. If set to true, will cause all occurrences of ${ in the generated files to be replaced with x{. Defaults to `false`.
+func (o LogpushJobOutputOptionsOutput) Cve20214428() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v LogpushJobOutputOptions) *bool { return v.Cve20214428 }).(pulumi.BoolPtrOutput)
+}
+
+// String to join fields. This field be ignored when recordTemplate is set. Defaults to `,`.
+func (o LogpushJobOutputOptionsOutput) FieldDelimiter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LogpushJobOutputOptions) *string { return v.FieldDelimiter }).(pulumi.StringPtrOutput)
+}
+
+// List of field names to be included in the Logpush output.
+func (o LogpushJobOutputOptionsOutput) FieldNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LogpushJobOutputOptions) []string { return v.FieldNames }).(pulumi.StringArrayOutput)
+}
+
+// Specifies the output type. Available values: `ndjson`, `csv`. Defaults to `ndjson`.
+func (o LogpushJobOutputOptionsOutput) OutputType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LogpushJobOutputOptions) *string { return v.OutputType }).(pulumi.StringPtrOutput)
+}
+
+// String to be inserted in-between the records as separator.
+func (o LogpushJobOutputOptionsOutput) RecordDelimiter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LogpushJobOutputOptions) *string { return v.RecordDelimiter }).(pulumi.StringPtrOutput)
+}
+
+// String to be prepended before each record. Defaults to `{`.
+func (o LogpushJobOutputOptionsOutput) RecordPrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LogpushJobOutputOptions) *string { return v.RecordPrefix }).(pulumi.StringPtrOutput)
+}
+
+// String to be appended after each record. Defaults to `}`.
+func (o LogpushJobOutputOptionsOutput) RecordSuffix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LogpushJobOutputOptions) *string { return v.RecordSuffix }).(pulumi.StringPtrOutput)
+}
+
+// String to use as template for each record instead of the default comma-separated list.
+func (o LogpushJobOutputOptionsOutput) RecordTemplate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LogpushJobOutputOptions) *string { return v.RecordTemplate }).(pulumi.StringPtrOutput)
+}
+
+// Specifies the sampling rate. Defaults to `1`.
+func (o LogpushJobOutputOptionsOutput) SampleRate() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v LogpushJobOutputOptions) *float64 { return v.SampleRate }).(pulumi.Float64PtrOutput)
+}
+
+// Specifies the format for timestamps. Available values: `unixnano`, `unix`, `rfc3339`. Defaults to `unixnano`.
+func (o LogpushJobOutputOptionsOutput) TimestampFormat() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LogpushJobOutputOptions) *string { return v.TimestampFormat }).(pulumi.StringPtrOutput)
+}
+
+type LogpushJobOutputOptionsPtrOutput struct{ *pulumi.OutputState }
+
+func (LogpushJobOutputOptionsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LogpushJobOutputOptions)(nil)).Elem()
+}
+
+func (o LogpushJobOutputOptionsPtrOutput) ToLogpushJobOutputOptionsPtrOutput() LogpushJobOutputOptionsPtrOutput {
+	return o
+}
+
+func (o LogpushJobOutputOptionsPtrOutput) ToLogpushJobOutputOptionsPtrOutputWithContext(ctx context.Context) LogpushJobOutputOptionsPtrOutput {
+	return o
+}
+
+func (o LogpushJobOutputOptionsPtrOutput) Elem() LogpushJobOutputOptionsOutput {
+	return o.ApplyT(func(v *LogpushJobOutputOptions) LogpushJobOutputOptions {
+		if v != nil {
+			return *v
+		}
+		var ret LogpushJobOutputOptions
+		return ret
+	}).(LogpushJobOutputOptionsOutput)
+}
+
+// String to be prepended before each batch.
+func (o LogpushJobOutputOptionsPtrOutput) BatchPrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LogpushJobOutputOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.BatchPrefix
+	}).(pulumi.StringPtrOutput)
+}
+
+// String to be appended after each batch.
+func (o LogpushJobOutputOptionsPtrOutput) BatchSuffix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LogpushJobOutputOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.BatchSuffix
+	}).(pulumi.StringPtrOutput)
+}
+
+// Mitigation for CVE-2021-44228. If set to true, will cause all occurrences of ${ in the generated files to be replaced with x{. Defaults to `false`.
+func (o LogpushJobOutputOptionsPtrOutput) Cve20214428() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *LogpushJobOutputOptions) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Cve20214428
+	}).(pulumi.BoolPtrOutput)
+}
+
+// String to join fields. This field be ignored when recordTemplate is set. Defaults to `,`.
+func (o LogpushJobOutputOptionsPtrOutput) FieldDelimiter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LogpushJobOutputOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.FieldDelimiter
+	}).(pulumi.StringPtrOutput)
+}
+
+// List of field names to be included in the Logpush output.
+func (o LogpushJobOutputOptionsPtrOutput) FieldNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *LogpushJobOutputOptions) []string {
+		if v == nil {
+			return nil
+		}
+		return v.FieldNames
+	}).(pulumi.StringArrayOutput)
+}
+
+// Specifies the output type. Available values: `ndjson`, `csv`. Defaults to `ndjson`.
+func (o LogpushJobOutputOptionsPtrOutput) OutputType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LogpushJobOutputOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.OutputType
+	}).(pulumi.StringPtrOutput)
+}
+
+// String to be inserted in-between the records as separator.
+func (o LogpushJobOutputOptionsPtrOutput) RecordDelimiter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LogpushJobOutputOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RecordDelimiter
+	}).(pulumi.StringPtrOutput)
+}
+
+// String to be prepended before each record. Defaults to `{`.
+func (o LogpushJobOutputOptionsPtrOutput) RecordPrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LogpushJobOutputOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RecordPrefix
+	}).(pulumi.StringPtrOutput)
+}
+
+// String to be appended after each record. Defaults to `}`.
+func (o LogpushJobOutputOptionsPtrOutput) RecordSuffix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LogpushJobOutputOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RecordSuffix
+	}).(pulumi.StringPtrOutput)
+}
+
+// String to use as template for each record instead of the default comma-separated list.
+func (o LogpushJobOutputOptionsPtrOutput) RecordTemplate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LogpushJobOutputOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RecordTemplate
+	}).(pulumi.StringPtrOutput)
+}
+
+// Specifies the sampling rate. Defaults to `1`.
+func (o LogpushJobOutputOptionsPtrOutput) SampleRate() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *LogpushJobOutputOptions) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.SampleRate
+	}).(pulumi.Float64PtrOutput)
+}
+
+// Specifies the format for timestamps. Available values: `unixnano`, `unix`, `rfc3339`. Defaults to `unixnano`.
+func (o LogpushJobOutputOptionsPtrOutput) TimestampFormat() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LogpushJobOutputOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TimestampFormat
+	}).(pulumi.StringPtrOutput)
+}
+
 type ManagedHeadersManagedRequestHeader struct {
 	// Whether the headers rule is active.
 	Enabled bool `pulumi:"enabled"`
@@ -15516,6 +16639,8 @@ type NotificationPolicyFilters struct {
 	Actions []string `pulumi:"actions"`
 	// Affected components for alert. Available values: `API`, `API Shield`, `Access`, `Always Online`, `Analytics`, `Apps Marketplace`, `Argo Smart Routing`, `Audit Logs`, `Authoritative DNS`, `Billing`, `Bot Management`, `Bring Your Own IP (BYOIP)`, `Browser Isolation`, `CDN Cache Purge`, `CDN/Cache`, `Cache Reserve`, `Challenge Platform`, `Cloud Access Security Broker (CASB)`, `Community Site`, `DNS Root Servers`, `DNS Updates`, `Dashboard`, `Data Loss Prevention (DLP)`, `Developer's Site`, `Digital Experience Monitoring (DEX)`, `Distributed Web Gateway`, `Durable Objects`, `Email Routing`, `Ethereum Gateway`, `Firewall`, `Gateway`, `Geo-Key Manager`, `Image Resizing`, `Images`, `Infrastructure`, `Lists`, `Load Balancing and Monitoring`, `Logs`, `Magic Firewall`, `Magic Transit`, `Magic WAN`, `Magic WAN Connector`, `Marketing Site`, `Mirage`, `Network`, `Notifications`, `Observatory`, `Page Shield`, `Pages`, `R2`, `Radar`, `Randomness Beacon`, `Recursive DNS`, `Registrar`, `Registration Data Access Protocol (RDAP)`, `SSL Certificate Provisioning`, `SSL for SaaS Provisioning`, `Security Center`, `Snippets`, `Spectrum`, `Speed Optimizations`, `Stream`, `Support Site`, `Time Services`, `Trace`, `Tunnel`, `Turnstile`, `WARP`, `Waiting Room`, `Web Analytics`, `Workers`, `Workers KV`, `Workers Preview`, `Zaraz`, `Zero Trust`, `Zero Trust Dashboard`, `Zone Versioning`.
 	AffectedComponents []string `pulumi:"affectedComponents"`
+	// Filter on Points of Presence.
+	AirportCodes []string `pulumi:"airportCodes"`
 	// Alert trigger preferences. Example: `slo`.
 	AlertTriggerPreferences []string `pulumi:"alertTriggerPreferences"`
 	// State of the pool to alert on.
@@ -15591,6 +16716,8 @@ type NotificationPolicyFiltersArgs struct {
 	Actions pulumi.StringArrayInput `pulumi:"actions"`
 	// Affected components for alert. Available values: `API`, `API Shield`, `Access`, `Always Online`, `Analytics`, `Apps Marketplace`, `Argo Smart Routing`, `Audit Logs`, `Authoritative DNS`, `Billing`, `Bot Management`, `Bring Your Own IP (BYOIP)`, `Browser Isolation`, `CDN Cache Purge`, `CDN/Cache`, `Cache Reserve`, `Challenge Platform`, `Cloud Access Security Broker (CASB)`, `Community Site`, `DNS Root Servers`, `DNS Updates`, `Dashboard`, `Data Loss Prevention (DLP)`, `Developer's Site`, `Digital Experience Monitoring (DEX)`, `Distributed Web Gateway`, `Durable Objects`, `Email Routing`, `Ethereum Gateway`, `Firewall`, `Gateway`, `Geo-Key Manager`, `Image Resizing`, `Images`, `Infrastructure`, `Lists`, `Load Balancing and Monitoring`, `Logs`, `Magic Firewall`, `Magic Transit`, `Magic WAN`, `Magic WAN Connector`, `Marketing Site`, `Mirage`, `Network`, `Notifications`, `Observatory`, `Page Shield`, `Pages`, `R2`, `Radar`, `Randomness Beacon`, `Recursive DNS`, `Registrar`, `Registration Data Access Protocol (RDAP)`, `SSL Certificate Provisioning`, `SSL for SaaS Provisioning`, `Security Center`, `Snippets`, `Spectrum`, `Speed Optimizations`, `Stream`, `Support Site`, `Time Services`, `Trace`, `Tunnel`, `Turnstile`, `WARP`, `Waiting Room`, `Web Analytics`, `Workers`, `Workers KV`, `Workers Preview`, `Zaraz`, `Zero Trust`, `Zero Trust Dashboard`, `Zone Versioning`.
 	AffectedComponents pulumi.StringArrayInput `pulumi:"affectedComponents"`
+	// Filter on Points of Presence.
+	AirportCodes pulumi.StringArrayInput `pulumi:"airportCodes"`
 	// Alert trigger preferences. Example: `slo`.
 	AlertTriggerPreferences pulumi.StringArrayInput `pulumi:"alertTriggerPreferences"`
 	// State of the pool to alert on.
@@ -15735,6 +16862,11 @@ func (o NotificationPolicyFiltersOutput) Actions() pulumi.StringArrayOutput {
 // Affected components for alert. Available values: `API`, `API Shield`, `Access`, `Always Online`, `Analytics`, `Apps Marketplace`, `Argo Smart Routing`, `Audit Logs`, `Authoritative DNS`, `Billing`, `Bot Management`, `Bring Your Own IP (BYOIP)`, `Browser Isolation`, `CDN Cache Purge`, `CDN/Cache`, `Cache Reserve`, `Challenge Platform`, `Cloud Access Security Broker (CASB)`, `Community Site`, `DNS Root Servers`, `DNS Updates`, `Dashboard`, `Data Loss Prevention (DLP)`, `Developer's Site`, `Digital Experience Monitoring (DEX)`, `Distributed Web Gateway`, `Durable Objects`, `Email Routing`, `Ethereum Gateway`, `Firewall`, `Gateway`, `Geo-Key Manager`, `Image Resizing`, `Images`, `Infrastructure`, `Lists`, `Load Balancing and Monitoring`, `Logs`, `Magic Firewall`, `Magic Transit`, `Magic WAN`, `Magic WAN Connector`, `Marketing Site`, `Mirage`, `Network`, `Notifications`, `Observatory`, `Page Shield`, `Pages`, `R2`, `Radar`, `Randomness Beacon`, `Recursive DNS`, `Registrar`, `Registration Data Access Protocol (RDAP)`, `SSL Certificate Provisioning`, `SSL for SaaS Provisioning`, `Security Center`, `Snippets`, `Spectrum`, `Speed Optimizations`, `Stream`, `Support Site`, `Time Services`, `Trace`, `Tunnel`, `Turnstile`, `WARP`, `Waiting Room`, `Web Analytics`, `Workers`, `Workers KV`, `Workers Preview`, `Zaraz`, `Zero Trust`, `Zero Trust Dashboard`, `Zone Versioning`.
 func (o NotificationPolicyFiltersOutput) AffectedComponents() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v NotificationPolicyFilters) []string { return v.AffectedComponents }).(pulumi.StringArrayOutput)
+}
+
+// Filter on Points of Presence.
+func (o NotificationPolicyFiltersOutput) AirportCodes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v NotificationPolicyFilters) []string { return v.AirportCodes }).(pulumi.StringArrayOutput)
 }
 
 // Alert trigger preferences. Example: `slo`.
@@ -15922,6 +17054,16 @@ func (o NotificationPolicyFiltersPtrOutput) AffectedComponents() pulumi.StringAr
 			return nil
 		}
 		return v.AffectedComponents
+	}).(pulumi.StringArrayOutput)
+}
+
+// Filter on Points of Presence.
+func (o NotificationPolicyFiltersPtrOutput) AirportCodes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *NotificationPolicyFilters) []string {
+		if v == nil {
+			return nil
+		}
+		return v.AirportCodes
 	}).(pulumi.StringArrayOutput)
 }
 
@@ -47865,6 +49007,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessIdentityProviderConfigArrayInput)(nil)).Elem(), AccessIdentityProviderConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessIdentityProviderScimConfigInput)(nil)).Elem(), AccessIdentityProviderScimConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessIdentityProviderScimConfigArrayInput)(nil)).Elem(), AccessIdentityProviderScimConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessMutualTlsHostnameSettingsSettingInput)(nil)).Elem(), AccessMutualTlsHostnameSettingsSettingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessMutualTlsHostnameSettingsSettingArrayInput)(nil)).Elem(), AccessMutualTlsHostnameSettingsSettingArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessOrganizationCustomPageInput)(nil)).Elem(), AccessOrganizationCustomPageArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessOrganizationCustomPageArrayInput)(nil)).Elem(), AccessOrganizationCustomPageArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessOrganizationLoginDesignInput)(nil)).Elem(), AccessOrganizationLoginDesignArgs{})
@@ -47959,6 +49103,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DevicePostureRuleInputTypeArrayInput)(nil)).Elem(), DevicePostureRuleInputTypeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DevicePostureRuleMatchInput)(nil)).Elem(), DevicePostureRuleMatchArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DevicePostureRuleMatchArrayInput)(nil)).Elem(), DevicePostureRuleMatchArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DlpProfileContextAwarenessInput)(nil)).Elem(), DlpProfileContextAwarenessArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DlpProfileContextAwarenessPtrInput)(nil)).Elem(), DlpProfileContextAwarenessArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DlpProfileContextAwarenessSkipInput)(nil)).Elem(), DlpProfileContextAwarenessSkipArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DlpProfileContextAwarenessSkipPtrInput)(nil)).Elem(), DlpProfileContextAwarenessSkipArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DlpProfileEntryInput)(nil)).Elem(), DlpProfileEntryArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DlpProfileEntryArrayInput)(nil)).Elem(), DlpProfileEntryArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DlpProfileEntryPatternInput)(nil)).Elem(), DlpProfileEntryPatternArgs{})
@@ -47975,6 +49123,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*FallbackDomainDomainArrayInput)(nil)).Elem(), FallbackDomainDomainArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*HealthcheckHeaderInput)(nil)).Elem(), HealthcheckHeaderArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*HealthcheckHeaderArrayInput)(nil)).Elem(), HealthcheckHeaderArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HyperdriveConfigCachingInput)(nil)).Elem(), HyperdriveConfigCachingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HyperdriveConfigCachingPtrInput)(nil)).Elem(), HyperdriveConfigCachingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HyperdriveConfigOriginInput)(nil)).Elem(), HyperdriveConfigOriginArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HyperdriveConfigOriginPtrInput)(nil)).Elem(), HyperdriveConfigOriginArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ListItemTypeInput)(nil)).Elem(), ListItemTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ListItemTypeArrayInput)(nil)).Elem(), ListItemTypeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ListItemHostnameInput)(nil)).Elem(), ListItemHostnameArgs{})
@@ -48030,6 +49182,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*LoadBalancerRuleOverrideSessionAffinityAttributeArrayInput)(nil)).Elem(), LoadBalancerRuleOverrideSessionAffinityAttributeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LoadBalancerSessionAffinityAttributeInput)(nil)).Elem(), LoadBalancerSessionAffinityAttributeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LoadBalancerSessionAffinityAttributeArrayInput)(nil)).Elem(), LoadBalancerSessionAffinityAttributeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LogpushJobOutputOptionsInput)(nil)).Elem(), LogpushJobOutputOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LogpushJobOutputOptionsPtrInput)(nil)).Elem(), LogpushJobOutputOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ManagedHeadersManagedRequestHeaderInput)(nil)).Elem(), ManagedHeadersManagedRequestHeaderArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ManagedHeadersManagedRequestHeaderArrayInput)(nil)).Elem(), ManagedHeadersManagedRequestHeaderArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ManagedHeadersManagedResponseHeaderInput)(nil)).Elem(), ManagedHeadersManagedResponseHeaderArgs{})
@@ -48438,6 +49592,8 @@ func init() {
 	pulumi.RegisterOutputType(AccessIdentityProviderConfigArrayOutput{})
 	pulumi.RegisterOutputType(AccessIdentityProviderScimConfigOutput{})
 	pulumi.RegisterOutputType(AccessIdentityProviderScimConfigArrayOutput{})
+	pulumi.RegisterOutputType(AccessMutualTlsHostnameSettingsSettingOutput{})
+	pulumi.RegisterOutputType(AccessMutualTlsHostnameSettingsSettingArrayOutput{})
 	pulumi.RegisterOutputType(AccessOrganizationCustomPageOutput{})
 	pulumi.RegisterOutputType(AccessOrganizationCustomPageArrayOutput{})
 	pulumi.RegisterOutputType(AccessOrganizationLoginDesignOutput{})
@@ -48532,6 +49688,10 @@ func init() {
 	pulumi.RegisterOutputType(DevicePostureRuleInputTypeArrayOutput{})
 	pulumi.RegisterOutputType(DevicePostureRuleMatchOutput{})
 	pulumi.RegisterOutputType(DevicePostureRuleMatchArrayOutput{})
+	pulumi.RegisterOutputType(DlpProfileContextAwarenessOutput{})
+	pulumi.RegisterOutputType(DlpProfileContextAwarenessPtrOutput{})
+	pulumi.RegisterOutputType(DlpProfileContextAwarenessSkipOutput{})
+	pulumi.RegisterOutputType(DlpProfileContextAwarenessSkipPtrOutput{})
 	pulumi.RegisterOutputType(DlpProfileEntryOutput{})
 	pulumi.RegisterOutputType(DlpProfileEntryArrayOutput{})
 	pulumi.RegisterOutputType(DlpProfileEntryPatternOutput{})
@@ -48548,6 +49708,10 @@ func init() {
 	pulumi.RegisterOutputType(FallbackDomainDomainArrayOutput{})
 	pulumi.RegisterOutputType(HealthcheckHeaderOutput{})
 	pulumi.RegisterOutputType(HealthcheckHeaderArrayOutput{})
+	pulumi.RegisterOutputType(HyperdriveConfigCachingOutput{})
+	pulumi.RegisterOutputType(HyperdriveConfigCachingPtrOutput{})
+	pulumi.RegisterOutputType(HyperdriveConfigOriginOutput{})
+	pulumi.RegisterOutputType(HyperdriveConfigOriginPtrOutput{})
 	pulumi.RegisterOutputType(ListItemTypeOutput{})
 	pulumi.RegisterOutputType(ListItemTypeArrayOutput{})
 	pulumi.RegisterOutputType(ListItemHostnameOutput{})
@@ -48603,6 +49767,8 @@ func init() {
 	pulumi.RegisterOutputType(LoadBalancerRuleOverrideSessionAffinityAttributeArrayOutput{})
 	pulumi.RegisterOutputType(LoadBalancerSessionAffinityAttributeOutput{})
 	pulumi.RegisterOutputType(LoadBalancerSessionAffinityAttributeArrayOutput{})
+	pulumi.RegisterOutputType(LogpushJobOutputOptionsOutput{})
+	pulumi.RegisterOutputType(LogpushJobOutputOptionsPtrOutput{})
 	pulumi.RegisterOutputType(ManagedHeadersManagedRequestHeaderOutput{})
 	pulumi.RegisterOutputType(ManagedHeadersManagedRequestHeaderArrayOutput{})
 	pulumi.RegisterOutputType(ManagedHeadersManagedResponseHeaderOutput{})

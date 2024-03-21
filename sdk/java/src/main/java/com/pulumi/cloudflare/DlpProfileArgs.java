@@ -3,6 +3,7 @@
 
 package com.pulumi.cloudflare;
 
+import com.pulumi.cloudflare.inputs.DlpProfileContextAwarenessArgs;
 import com.pulumi.cloudflare.inputs.DlpProfileEntryArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
@@ -47,6 +48,21 @@ public final class DlpProfileArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Output<Integer> allowedMatchCount() {
         return this.allowedMatchCount;
+    }
+
+    /**
+     * Scan the context of predefined entries to only return matches surrounded by keywords.
+     * 
+     */
+    @Import(name="contextAwareness")
+    private @Nullable Output<DlpProfileContextAwarenessArgs> contextAwareness;
+
+    /**
+     * @return Scan the context of predefined entries to only return matches surrounded by keywords.
+     * 
+     */
+    public Optional<Output<DlpProfileContextAwarenessArgs>> contextAwareness() {
+        return Optional.ofNullable(this.contextAwareness);
     }
 
     /**
@@ -114,6 +130,7 @@ public final class DlpProfileArgs extends com.pulumi.resources.ResourceArgs {
     private DlpProfileArgs(DlpProfileArgs $) {
         this.accountId = $.accountId;
         this.allowedMatchCount = $.allowedMatchCount;
+        this.contextAwareness = $.contextAwareness;
         this.description = $.description;
         this.entries = $.entries;
         this.name = $.name;
@@ -178,6 +195,27 @@ public final class DlpProfileArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder allowedMatchCount(Integer allowedMatchCount) {
             return allowedMatchCount(Output.of(allowedMatchCount));
+        }
+
+        /**
+         * @param contextAwareness Scan the context of predefined entries to only return matches surrounded by keywords.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder contextAwareness(@Nullable Output<DlpProfileContextAwarenessArgs> contextAwareness) {
+            $.contextAwareness = contextAwareness;
+            return this;
+        }
+
+        /**
+         * @param contextAwareness Scan the context of predefined entries to only return matches surrounded by keywords.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder contextAwareness(DlpProfileContextAwarenessArgs contextAwareness) {
+            return contextAwareness(Output.of(contextAwareness));
         }
 
         /**

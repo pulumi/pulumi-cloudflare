@@ -54,6 +54,8 @@ type LogpushJob struct {
 	MaxUploadRecords pulumi.IntPtrOutput `pulumi:"maxUploadRecords"`
 	// The name of the logpush job to create.
 	Name pulumi.StringPtrOutput `pulumi:"name"`
+	// Structured replacement for logpull*options. When including this field, the logpull*option field will be ignored.
+	OutputOptions LogpushJobOutputOptionsPtrOutput `pulumi:"outputOptions"`
 	// Ownership challenge token to prove destination ownership, required when destination is Amazon S3, Google Cloud Storage, Microsoft Azure or Sumo Logic. See [Developer documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#usage).
 	OwnershipChallenge pulumi.StringPtrOutput `pulumi:"ownershipChallenge"`
 	// The zone identifier to target for the resource. Must provide only one of `accountId`, `zoneId`.
@@ -120,6 +122,8 @@ type logpushJobState struct {
 	MaxUploadRecords *int `pulumi:"maxUploadRecords"`
 	// The name of the logpush job to create.
 	Name *string `pulumi:"name"`
+	// Structured replacement for logpull*options. When including this field, the logpull*option field will be ignored.
+	OutputOptions *LogpushJobOutputOptions `pulumi:"outputOptions"`
 	// Ownership challenge token to prove destination ownership, required when destination is Amazon S3, Google Cloud Storage, Microsoft Azure or Sumo Logic. See [Developer documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#usage).
 	OwnershipChallenge *string `pulumi:"ownershipChallenge"`
 	// The zone identifier to target for the resource. Must provide only one of `accountId`, `zoneId`.
@@ -151,6 +155,8 @@ type LogpushJobState struct {
 	MaxUploadRecords pulumi.IntPtrInput
 	// The name of the logpush job to create.
 	Name pulumi.StringPtrInput
+	// Structured replacement for logpull*options. When including this field, the logpull*option field will be ignored.
+	OutputOptions LogpushJobOutputOptionsPtrInput
 	// Ownership challenge token to prove destination ownership, required when destination is Amazon S3, Google Cloud Storage, Microsoft Azure or Sumo Logic. See [Developer documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#usage).
 	OwnershipChallenge pulumi.StringPtrInput
 	// The zone identifier to target for the resource. Must provide only one of `accountId`, `zoneId`.
@@ -186,6 +192,8 @@ type logpushJobArgs struct {
 	MaxUploadRecords *int `pulumi:"maxUploadRecords"`
 	// The name of the logpush job to create.
 	Name *string `pulumi:"name"`
+	// Structured replacement for logpull*options. When including this field, the logpull*option field will be ignored.
+	OutputOptions *LogpushJobOutputOptions `pulumi:"outputOptions"`
 	// Ownership challenge token to prove destination ownership, required when destination is Amazon S3, Google Cloud Storage, Microsoft Azure or Sumo Logic. See [Developer documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#usage).
 	OwnershipChallenge *string `pulumi:"ownershipChallenge"`
 	// The zone identifier to target for the resource. Must provide only one of `accountId`, `zoneId`.
@@ -218,6 +226,8 @@ type LogpushJobArgs struct {
 	MaxUploadRecords pulumi.IntPtrInput
 	// The name of the logpush job to create.
 	Name pulumi.StringPtrInput
+	// Structured replacement for logpull*options. When including this field, the logpull*option field will be ignored.
+	OutputOptions LogpushJobOutputOptionsPtrInput
 	// Ownership challenge token to prove destination ownership, required when destination is Amazon S3, Google Cloud Storage, Microsoft Azure or Sumo Logic. See [Developer documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#usage).
 	OwnershipChallenge pulumi.StringPtrInput
 	// The zone identifier to target for the resource. Must provide only one of `accountId`, `zoneId`.
@@ -369,6 +379,11 @@ func (o LogpushJobOutput) MaxUploadRecords() pulumi.IntPtrOutput {
 // The name of the logpush job to create.
 func (o LogpushJobOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *LogpushJob) pulumi.StringPtrOutput { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Structured replacement for logpull*options. When including this field, the logpull*option field will be ignored.
+func (o LogpushJobOutput) OutputOptions() LogpushJobOutputOptionsPtrOutput {
+	return o.ApplyT(func(v *LogpushJob) LogpushJobOutputOptionsPtrOutput { return v.OutputOptions }).(LogpushJobOutputOptionsPtrOutput)
 }
 
 // Ownership challenge token to prove destination ownership, required when destination is Amazon S3, Google Cloud Storage, Microsoft Azure or Sumo Logic. See [Developer documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#usage).

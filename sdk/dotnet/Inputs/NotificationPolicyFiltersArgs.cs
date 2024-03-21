@@ -36,6 +36,18 @@ namespace Pulumi.Cloudflare.Inputs
             set => _affectedComponents = value;
         }
 
+        [Input("airportCodes")]
+        private InputList<string>? _airportCodes;
+
+        /// <summary>
+        /// Filter on Points of Presence.
+        /// </summary>
+        public InputList<string> AirportCodes
+        {
+            get => _airportCodes ?? (_airportCodes = new InputList<string>());
+            set => _airportCodes = value;
+        }
+
         [Input("alertTriggerPreferences")]
         private InputList<string>? _alertTriggerPreferences;
 

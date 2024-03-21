@@ -35,6 +35,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &AccessKeysConfiguration{}
 	case "cloudflare:index/accessMutualTlsCertificate:AccessMutualTlsCertificate":
 		r = &AccessMutualTlsCertificate{}
+	case "cloudflare:index/accessMutualTlsHostnameSettings:AccessMutualTlsHostnameSettings":
+		r = &AccessMutualTlsHostnameSettings{}
 	case "cloudflare:index/accessOrganization:AccessOrganization":
 		r = &AccessOrganization{}
 	case "cloudflare:index/accessPolicy:AccessPolicy":
@@ -121,6 +123,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &HostnameTlsSetting{}
 	case "cloudflare:index/hostnameTlsSettingCiphers:HostnameTlsSettingCiphers":
 		r = &HostnameTlsSettingCiphers{}
+	case "cloudflare:index/hyperdriveConfig:HyperdriveConfig":
+		r = &HyperdriveConfig{}
 	case "cloudflare:index/ipsecTunnel:IpsecTunnel":
 		r = &IpsecTunnel{}
 	case "cloudflare:index/keylessCertificate:KeylessCertificate":
@@ -233,6 +237,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &WorkerScript{}
 	case "cloudflare:index/workerSecret:WorkerSecret":
 		r = &WorkerSecret{}
+	case "cloudflare:index/workersForPlatformsNamespace:WorkersForPlatformsNamespace":
+		r = &WorkersForPlatformsNamespace{}
 	case "cloudflare:index/workersKv:WorkersKv":
 		r = &WorkersKv{}
 	case "cloudflare:index/workersKvNamespace:WorkersKvNamespace":
@@ -315,6 +321,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"cloudflare",
 		"index/accessMutualTlsCertificate",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
+		"index/accessMutualTlsHostnameSettings",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -530,6 +541,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"cloudflare",
 		"index/hostnameTlsSettingCiphers",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
+		"index/hyperdriveConfig",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -810,6 +826,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"cloudflare",
 		"index/workerSecret",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
+		"index/workersForPlatformsNamespace",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
