@@ -35,10 +35,10 @@ public final class ArgoArgs extends com.pulumi.resources.ResourceArgs {
      * Whether tiered caching is enabled. Available values: `on`, `off`.
      * 
      * @deprecated
-     * tiered_caching has been deprecated in favour of using `cloudflare_tiered_cache` resource instead.
+     * tiered_caching has been deprecated in favour of using `cloudflare.TieredCache` resource instead.
      * 
      */
-    @Deprecated /* tiered_caching has been deprecated in favour of using `cloudflare_tiered_cache` resource instead. */
+    @Deprecated /* tiered_caching has been deprecated in favour of using `cloudflare.TieredCache` resource instead. */
     @Import(name="tieredCaching")
     private @Nullable Output<String> tieredCaching;
 
@@ -46,10 +46,10 @@ public final class ArgoArgs extends com.pulumi.resources.ResourceArgs {
      * @return Whether tiered caching is enabled. Available values: `on`, `off`.
      * 
      * @deprecated
-     * tiered_caching has been deprecated in favour of using `cloudflare_tiered_cache` resource instead.
+     * tiered_caching has been deprecated in favour of using `cloudflare.TieredCache` resource instead.
      * 
      */
-    @Deprecated /* tiered_caching has been deprecated in favour of using `cloudflare_tiered_cache` resource instead. */
+    @Deprecated /* tiered_caching has been deprecated in favour of using `cloudflare.TieredCache` resource instead. */
     public Optional<Output<String>> tieredCaching() {
         return Optional.ofNullable(this.tieredCaching);
     }
@@ -122,10 +122,10 @@ public final class ArgoArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          * @deprecated
-         * tiered_caching has been deprecated in favour of using `cloudflare_tiered_cache` resource instead.
+         * tiered_caching has been deprecated in favour of using `cloudflare.TieredCache` resource instead.
          * 
          */
-        @Deprecated /* tiered_caching has been deprecated in favour of using `cloudflare_tiered_cache` resource instead. */
+        @Deprecated /* tiered_caching has been deprecated in favour of using `cloudflare.TieredCache` resource instead. */
         public Builder tieredCaching(@Nullable Output<String> tieredCaching) {
             $.tieredCaching = tieredCaching;
             return this;
@@ -137,10 +137,10 @@ public final class ArgoArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          * @deprecated
-         * tiered_caching has been deprecated in favour of using `cloudflare_tiered_cache` resource instead.
+         * tiered_caching has been deprecated in favour of using `cloudflare.TieredCache` resource instead.
          * 
          */
-        @Deprecated /* tiered_caching has been deprecated in favour of using `cloudflare_tiered_cache` resource instead. */
+        @Deprecated /* tiered_caching has been deprecated in favour of using `cloudflare.TieredCache` resource instead. */
         public Builder tieredCaching(String tieredCaching) {
             return tieredCaching(Output.of(tieredCaching));
         }

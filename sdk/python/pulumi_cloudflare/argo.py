@@ -27,8 +27,8 @@ class ArgoArgs:
         if smart_routing is not None:
             pulumi.set(__self__, "smart_routing", smart_routing)
         if tiered_caching is not None:
-            warnings.warn("""tiered_caching has been deprecated in favour of using `cloudflare_tiered_cache` resource instead.""", DeprecationWarning)
-            pulumi.log.warn("""tiered_caching is deprecated: tiered_caching has been deprecated in favour of using `cloudflare_tiered_cache` resource instead.""")
+            warnings.warn("""tiered_caching has been deprecated in favour of using `TieredCache` resource instead.""", DeprecationWarning)
+            pulumi.log.warn("""tiered_caching is deprecated: tiered_caching has been deprecated in favour of using `TieredCache` resource instead.""")
         if tiered_caching is not None:
             pulumi.set(__self__, "tiered_caching", tiered_caching)
 
@@ -62,8 +62,8 @@ class ArgoArgs:
         """
         Whether tiered caching is enabled. Available values: `on`, `off`.
         """
-        warnings.warn("""tiered_caching has been deprecated in favour of using `cloudflare_tiered_cache` resource instead.""", DeprecationWarning)
-        pulumi.log.warn("""tiered_caching is deprecated: tiered_caching has been deprecated in favour of using `cloudflare_tiered_cache` resource instead.""")
+        warnings.warn("""tiered_caching has been deprecated in favour of using `TieredCache` resource instead.""", DeprecationWarning)
+        pulumi.log.warn("""tiered_caching is deprecated: tiered_caching has been deprecated in favour of using `TieredCache` resource instead.""")
 
         return pulumi.get(self, "tiered_caching")
 
@@ -87,8 +87,8 @@ class _ArgoState:
         if smart_routing is not None:
             pulumi.set(__self__, "smart_routing", smart_routing)
         if tiered_caching is not None:
-            warnings.warn("""tiered_caching has been deprecated in favour of using `cloudflare_tiered_cache` resource instead.""", DeprecationWarning)
-            pulumi.log.warn("""tiered_caching is deprecated: tiered_caching has been deprecated in favour of using `cloudflare_tiered_cache` resource instead.""")
+            warnings.warn("""tiered_caching has been deprecated in favour of using `TieredCache` resource instead.""", DeprecationWarning)
+            pulumi.log.warn("""tiered_caching is deprecated: tiered_caching has been deprecated in favour of using `TieredCache` resource instead.""")
         if tiered_caching is not None:
             pulumi.set(__self__, "tiered_caching", tiered_caching)
         if zone_id is not None:
@@ -112,8 +112,8 @@ class _ArgoState:
         """
         Whether tiered caching is enabled. Available values: `on`, `off`.
         """
-        warnings.warn("""tiered_caching has been deprecated in favour of using `cloudflare_tiered_cache` resource instead.""", DeprecationWarning)
-        pulumi.log.warn("""tiered_caching is deprecated: tiered_caching has been deprecated in favour of using `cloudflare_tiered_cache` resource instead.""")
+        warnings.warn("""tiered_caching has been deprecated in favour of using `TieredCache` resource instead.""", DeprecationWarning)
+        pulumi.log.warn("""tiered_caching is deprecated: tiered_caching has been deprecated in favour of using `TieredCache` resource instead.""")
 
         return pulumi.get(self, "tiered_caching")
 
@@ -282,8 +282,8 @@ class Argo(pulumi.CustomResource):
         """
         Whether tiered caching is enabled. Available values: `on`, `off`.
         """
-        warnings.warn("""tiered_caching has been deprecated in favour of using `cloudflare_tiered_cache` resource instead.""", DeprecationWarning)
-        pulumi.log.warn("""tiered_caching is deprecated: tiered_caching has been deprecated in favour of using `cloudflare_tiered_cache` resource instead.""")
+        warnings.warn("""tiered_caching has been deprecated in favour of using `TieredCache` resource instead.""", DeprecationWarning)
+        pulumi.log.warn("""tiered_caching is deprecated: tiered_caching has been deprecated in favour of using `TieredCache` resource instead.""")
 
         return pulumi.get(self, "tiered_caching")
 
