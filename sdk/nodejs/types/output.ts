@@ -5229,7 +5229,7 @@ export interface ZoneSettingsOverrideInitialSetting {
     sortQueryStringForCache: string;
     ssl: string;
     /**
-     * @deprecated tls_1_2_only has been deprecated in favour of using `min_tls_version = "1.2"` instead.
+     * @deprecated tls_1_2_only has been deprecated in favour of using `minTlsVersion = "1.2"` instead.
      */
     tls12Only: string;
     tls13: string;
@@ -5311,7 +5311,7 @@ export interface ZoneSettingsOverrideSettings {
     sortQueryStringForCache: string;
     ssl: string;
     /**
-     * @deprecated tls_1_2_only has been deprecated in favour of using `min_tls_version = "1.2"` instead.
+     * @deprecated tls_1_2_only has been deprecated in favour of using `minTlsVersion = "1.2"` instead.
      */
     tls12Only: string;
     tls13: string;

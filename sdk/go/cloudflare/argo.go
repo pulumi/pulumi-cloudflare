@@ -57,7 +57,7 @@ type Argo struct {
 	SmartRouting pulumi.StringPtrOutput `pulumi:"smartRouting"`
 	// Whether tiered caching is enabled. Available values: `on`, `off`.
 	//
-	// Deprecated: tiered_caching has been deprecated in favour of using `cloudflare_tiered_cache` resource instead.
+	// Deprecated: tiered_caching has been deprecated in favour of using `TieredCache` resource instead.
 	TieredCaching pulumi.StringPtrOutput `pulumi:"tieredCaching"`
 	// The zone identifier to target for the resource.
 	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
@@ -100,7 +100,7 @@ type argoState struct {
 	SmartRouting *string `pulumi:"smartRouting"`
 	// Whether tiered caching is enabled. Available values: `on`, `off`.
 	//
-	// Deprecated: tiered_caching has been deprecated in favour of using `cloudflare_tiered_cache` resource instead.
+	// Deprecated: tiered_caching has been deprecated in favour of using `TieredCache` resource instead.
 	TieredCaching *string `pulumi:"tieredCaching"`
 	// The zone identifier to target for the resource.
 	ZoneId *string `pulumi:"zoneId"`
@@ -111,7 +111,7 @@ type ArgoState struct {
 	SmartRouting pulumi.StringPtrInput
 	// Whether tiered caching is enabled. Available values: `on`, `off`.
 	//
-	// Deprecated: tiered_caching has been deprecated in favour of using `cloudflare_tiered_cache` resource instead.
+	// Deprecated: tiered_caching has been deprecated in favour of using `TieredCache` resource instead.
 	TieredCaching pulumi.StringPtrInput
 	// The zone identifier to target for the resource.
 	ZoneId pulumi.StringPtrInput
@@ -126,7 +126,7 @@ type argoArgs struct {
 	SmartRouting *string `pulumi:"smartRouting"`
 	// Whether tiered caching is enabled. Available values: `on`, `off`.
 	//
-	// Deprecated: tiered_caching has been deprecated in favour of using `cloudflare_tiered_cache` resource instead.
+	// Deprecated: tiered_caching has been deprecated in favour of using `TieredCache` resource instead.
 	TieredCaching *string `pulumi:"tieredCaching"`
 	// The zone identifier to target for the resource.
 	ZoneId string `pulumi:"zoneId"`
@@ -138,7 +138,7 @@ type ArgoArgs struct {
 	SmartRouting pulumi.StringPtrInput
 	// Whether tiered caching is enabled. Available values: `on`, `off`.
 	//
-	// Deprecated: tiered_caching has been deprecated in favour of using `cloudflare_tiered_cache` resource instead.
+	// Deprecated: tiered_caching has been deprecated in favour of using `TieredCache` resource instead.
 	TieredCaching pulumi.StringPtrInput
 	// The zone identifier to target for the resource.
 	ZoneId pulumi.StringInput
@@ -238,7 +238,7 @@ func (o ArgoOutput) SmartRouting() pulumi.StringPtrOutput {
 
 // Whether tiered caching is enabled. Available values: `on`, `off`.
 //
-// Deprecated: tiered_caching has been deprecated in favour of using `cloudflare_tiered_cache` resource instead.
+// Deprecated: tiered_caching has been deprecated in favour of using `TieredCache` resource instead.
 func (o ArgoOutput) TieredCaching() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Argo) pulumi.StringPtrOutput { return v.TieredCaching }).(pulumi.StringPtrOutput)
 }
