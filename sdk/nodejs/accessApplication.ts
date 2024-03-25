@@ -84,9 +84,7 @@ export class AccessApplication extends pulumi.CustomResource {
      */
     public readonly accountId!: pulumi.Output<string>;
     /**
-     * When set to true, users can authenticate to this application using their WARP session. When set to false this
-     * application will always require direct IdP authentication. This setting always overrides the organization setting for
-     * WARP authentication.
+     * When set to true, users can authenticate to this application using their WARP session. When set to false this application will always require direct IdP authentication. This setting always overrides the organization setting for WARP authentication.
      */
     public readonly allowAuthenticateViaWarp!: pulumi.Output<boolean | undefined>;
     /**
@@ -292,9 +290,7 @@ export interface AccessApplicationState {
      */
     accountId?: pulumi.Input<string>;
     /**
-     * When set to true, users can authenticate to this application using their WARP session. When set to false this
-     * application will always require direct IdP authentication. This setting always overrides the organization setting for
-     * WARP authentication.
+     * When set to true, users can authenticate to this application using their WARP session. When set to false this application will always require direct IdP authentication. This setting always overrides the organization setting for WARP authentication.
      */
     allowAuthenticateViaWarp?: pulumi.Input<boolean>;
     /**
@@ -420,9 +416,7 @@ export interface AccessApplicationArgs {
      */
     accountId?: pulumi.Input<string>;
     /**
-     * When set to true, users can authenticate to this application using their WARP session. When set to false this
-     * application will always require direct IdP authentication. This setting always overrides the organization setting for
-     * WARP authentication.
+     * When set to true, users can authenticate to this application using their WARP session. When set to false this application will always require direct IdP authentication. This setting always overrides the organization setting for WARP authentication.
      */
     allowAuthenticateViaWarp?: pulumi.Input<boolean>;
     /**

@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -98,6 +100,10 @@ export class LogpushJob extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string | undefined>;
     /**
+     * Structured replacement for logpull*options. When including this field, the logpull*option field will be ignored.
+     */
+    public readonly outputOptions!: pulumi.Output<outputs.LogpushJobOutputOptions | undefined>;
+    /**
      * Ownership challenge token to prove destination ownership, required when destination is Amazon S3, Google Cloud Storage, Microsoft Azure or Sumo Logic. See [Developer documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#usage).
      */
     public readonly ownershipChallenge!: pulumi.Output<string | undefined>;
@@ -131,6 +137,7 @@ export class LogpushJob extends pulumi.CustomResource {
             resourceInputs["maxUploadIntervalSeconds"] = state ? state.maxUploadIntervalSeconds : undefined;
             resourceInputs["maxUploadRecords"] = state ? state.maxUploadRecords : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["outputOptions"] = state ? state.outputOptions : undefined;
             resourceInputs["ownershipChallenge"] = state ? state.ownershipChallenge : undefined;
             resourceInputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
@@ -153,6 +160,7 @@ export class LogpushJob extends pulumi.CustomResource {
             resourceInputs["maxUploadIntervalSeconds"] = args ? args.maxUploadIntervalSeconds : undefined;
             resourceInputs["maxUploadRecords"] = args ? args.maxUploadRecords : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["outputOptions"] = args ? args.outputOptions : undefined;
             resourceInputs["ownershipChallenge"] = args ? args.ownershipChallenge : undefined;
             resourceInputs["zoneId"] = args ? args.zoneId : undefined;
         }
@@ -213,6 +221,10 @@ export interface LogpushJobState {
      * The name of the logpush job to create.
      */
     name?: pulumi.Input<string>;
+    /**
+     * Structured replacement for logpull*options. When including this field, the logpull*option field will be ignored.
+     */
+    outputOptions?: pulumi.Input<inputs.LogpushJobOutputOptions>;
     /**
      * Ownership challenge token to prove destination ownership, required when destination is Amazon S3, Google Cloud Storage, Microsoft Azure or Sumo Logic. See [Developer documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#usage).
      */
@@ -275,6 +287,10 @@ export interface LogpushJobArgs {
      * The name of the logpush job to create.
      */
     name?: pulumi.Input<string>;
+    /**
+     * Structured replacement for logpull*options. When including this field, the logpull*option field will be ignored.
+     */
+    outputOptions?: pulumi.Input<inputs.LogpushJobOutputOptions>;
     /**
      * Ownership challenge token to prove destination ownership, required when destination is Amazon S3, Google Cloud Storage, Microsoft Azure or Sumo Logic. See [Developer documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#usage).
      */

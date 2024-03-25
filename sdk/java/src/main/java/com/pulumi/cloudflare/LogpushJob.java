@@ -6,6 +6,7 @@ package com.pulumi.cloudflare;
 import com.pulumi.cloudflare.LogpushJobArgs;
 import com.pulumi.cloudflare.Utilities;
 import com.pulumi.cloudflare.inputs.LogpushJobState;
+import com.pulumi.cloudflare.outputs.LogpushJobOutputOptions;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
@@ -203,6 +204,20 @@ public class LogpushJob extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> name() {
         return Codegen.optional(this.name);
+    }
+    /**
+     * Structured replacement for logpull*options. When including this field, the logpull*option field will be ignored.
+     * 
+     */
+    @Export(name="outputOptions", refs={LogpushJobOutputOptions.class}, tree="[0]")
+    private Output</* @Nullable */ LogpushJobOutputOptions> outputOptions;
+
+    /**
+     * @return Structured replacement for logpull*options. When including this field, the logpull*option field will be ignored.
+     * 
+     */
+    public Output<Optional<LogpushJobOutputOptions>> outputOptions() {
+        return Codegen.optional(this.outputOptions);
     }
     /**
      * Ownership challenge token to prove destination ownership, required when destination is Amazon S3, Google Cloud Storage, Microsoft Azure or Sumo Logic. See [Developer documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#usage).

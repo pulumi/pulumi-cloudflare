@@ -28,6 +28,8 @@ type DlpProfile struct {
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
 	// Related DLP policies will trigger when the match count exceeds the number set.
 	AllowedMatchCount pulumi.IntOutput `pulumi:"allowedMatchCount"`
+	// Scan the context of predefined entries to only return matches surrounded by keywords.
+	ContextAwareness DlpProfileContextAwarenessOutput `pulumi:"contextAwareness"`
 	// Brief summary of the profile and its intended use.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// List of entries to apply to the profile.
@@ -87,6 +89,8 @@ type dlpProfileState struct {
 	AccountId *string `pulumi:"accountId"`
 	// Related DLP policies will trigger when the match count exceeds the number set.
 	AllowedMatchCount *int `pulumi:"allowedMatchCount"`
+	// Scan the context of predefined entries to only return matches surrounded by keywords.
+	ContextAwareness *DlpProfileContextAwareness `pulumi:"contextAwareness"`
 	// Brief summary of the profile and its intended use.
 	Description *string `pulumi:"description"`
 	// List of entries to apply to the profile.
@@ -102,6 +106,8 @@ type DlpProfileState struct {
 	AccountId pulumi.StringPtrInput
 	// Related DLP policies will trigger when the match count exceeds the number set.
 	AllowedMatchCount pulumi.IntPtrInput
+	// Scan the context of predefined entries to only return matches surrounded by keywords.
+	ContextAwareness DlpProfileContextAwarenessPtrInput
 	// Brief summary of the profile and its intended use.
 	Description pulumi.StringPtrInput
 	// List of entries to apply to the profile.
@@ -121,6 +127,8 @@ type dlpProfileArgs struct {
 	AccountId string `pulumi:"accountId"`
 	// Related DLP policies will trigger when the match count exceeds the number set.
 	AllowedMatchCount int `pulumi:"allowedMatchCount"`
+	// Scan the context of predefined entries to only return matches surrounded by keywords.
+	ContextAwareness *DlpProfileContextAwareness `pulumi:"contextAwareness"`
 	// Brief summary of the profile and its intended use.
 	Description *string `pulumi:"description"`
 	// List of entries to apply to the profile.
@@ -137,6 +145,8 @@ type DlpProfileArgs struct {
 	AccountId pulumi.StringInput
 	// Related DLP policies will trigger when the match count exceeds the number set.
 	AllowedMatchCount pulumi.IntInput
+	// Scan the context of predefined entries to only return matches surrounded by keywords.
+	ContextAwareness DlpProfileContextAwarenessPtrInput
 	// Brief summary of the profile and its intended use.
 	Description pulumi.StringPtrInput
 	// List of entries to apply to the profile.
@@ -242,6 +252,11 @@ func (o DlpProfileOutput) AccountId() pulumi.StringOutput {
 // Related DLP policies will trigger when the match count exceeds the number set.
 func (o DlpProfileOutput) AllowedMatchCount() pulumi.IntOutput {
 	return o.ApplyT(func(v *DlpProfile) pulumi.IntOutput { return v.AllowedMatchCount }).(pulumi.IntOutput)
+}
+
+// Scan the context of predefined entries to only return matches surrounded by keywords.
+func (o DlpProfileOutput) ContextAwareness() DlpProfileContextAwarenessOutput {
+	return o.ApplyT(func(v *DlpProfile) DlpProfileContextAwarenessOutput { return v.ContextAwareness }).(DlpProfileContextAwarenessOutput)
 }
 
 // Brief summary of the profile and its intended use.

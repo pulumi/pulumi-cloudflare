@@ -12,6 +12,7 @@ from .access_group import *
 from .access_identity_provider import *
 from .access_keys_configuration import *
 from .access_mutual_tls_certificate import *
+from .access_mutual_tls_hostname_settings import *
 from .access_organization import *
 from .access_policy import *
 from .access_rule import *
@@ -78,6 +79,7 @@ from .gre_tunnel import *
 from .healthcheck import *
 from .hostname_tls_setting import *
 from .hostname_tls_setting_ciphers import *
+from .hyperdrive_config import *
 from .ipsec_tunnel import *
 from .keyless_certificate import *
 from .list import *
@@ -135,6 +137,7 @@ from .worker_domain import *
 from .worker_route import *
 from .worker_script import *
 from .worker_secret import *
+from .workers_for_platforms_namespace import *
 from .workers_kv import *
 from .workers_kv_namespace import *
 from .zone import *
@@ -211,6 +214,14 @@ _utilities.register(
   "fqn": "pulumi_cloudflare",
   "classes": {
    "cloudflare:index/accessMutualTlsCertificate:AccessMutualTlsCertificate": "AccessMutualTlsCertificate"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "index/accessMutualTlsHostnameSettings",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/accessMutualTlsHostnameSettings:AccessMutualTlsHostnameSettings": "AccessMutualTlsHostnameSettings"
   }
  },
  {
@@ -555,6 +566,14 @@ _utilities.register(
   "fqn": "pulumi_cloudflare",
   "classes": {
    "cloudflare:index/hostnameTlsSettingCiphers:HostnameTlsSettingCiphers": "HostnameTlsSettingCiphers"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "index/hyperdriveConfig",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/hyperdriveConfig:HyperdriveConfig": "HyperdriveConfig"
   }
  },
  {
@@ -1003,6 +1022,14 @@ _utilities.register(
   "fqn": "pulumi_cloudflare",
   "classes": {
    "cloudflare:index/workerSecret:WorkerSecret": "WorkerSecret"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "index/workersForPlatformsNamespace",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/workersForPlatformsNamespace:WorkersForPlatformsNamespace": "WorkersForPlatformsNamespace"
   }
  },
  {

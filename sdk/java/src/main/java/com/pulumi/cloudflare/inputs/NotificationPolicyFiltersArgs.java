@@ -47,6 +47,21 @@ public final class NotificationPolicyFiltersArgs extends com.pulumi.resources.Re
     }
 
     /**
+     * Filter on Points of Presence.
+     * 
+     */
+    @Import(name="airportCodes")
+    private @Nullable Output<List<String>> airportCodes;
+
+    /**
+     * @return Filter on Points of Presence.
+     * 
+     */
+    public Optional<Output<List<String>>> airportCodes() {
+        return Optional.ofNullable(this.airportCodes);
+    }
+
+    /**
      * Alert trigger preferences. Example: `slo`.
      * 
      */
@@ -478,6 +493,7 @@ public final class NotificationPolicyFiltersArgs extends com.pulumi.resources.Re
     private NotificationPolicyFiltersArgs(NotificationPolicyFiltersArgs $) {
         this.actions = $.actions;
         this.affectedComponents = $.affectedComponents;
+        this.airportCodes = $.airportCodes;
         this.alertTriggerPreferences = $.alertTriggerPreferences;
         this.enableds = $.enableds;
         this.environments = $.environments;
@@ -587,6 +603,37 @@ public final class NotificationPolicyFiltersArgs extends com.pulumi.resources.Re
          */
         public Builder affectedComponents(String... affectedComponents) {
             return affectedComponents(List.of(affectedComponents));
+        }
+
+        /**
+         * @param airportCodes Filter on Points of Presence.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder airportCodes(@Nullable Output<List<String>> airportCodes) {
+            $.airportCodes = airportCodes;
+            return this;
+        }
+
+        /**
+         * @param airportCodes Filter on Points of Presence.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder airportCodes(List<String> airportCodes) {
+            return airportCodes(Output.of(airportCodes));
+        }
+
+        /**
+         * @param airportCodes Filter on Points of Presence.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder airportCodes(String... airportCodes) {
+            return airportCodes(List.of(airportCodes));
         }
 
         /**

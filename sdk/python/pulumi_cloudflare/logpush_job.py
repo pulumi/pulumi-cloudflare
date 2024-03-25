@@ -8,6 +8,8 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = ['LogpushJobArgs', 'LogpushJob']
 
@@ -26,6 +28,7 @@ class LogpushJobArgs:
                  max_upload_interval_seconds: Optional[pulumi.Input[int]] = None,
                  max_upload_records: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 output_options: Optional[pulumi.Input['LogpushJobOutputOptionsArgs']] = None,
                  ownership_challenge: Optional[pulumi.Input[str]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None):
         """
@@ -42,6 +45,7 @@ class LogpushJobArgs:
         :param pulumi.Input[int] max_upload_interval_seconds: The maximum interval in seconds for log batches. Value must be between 30 and 300.
         :param pulumi.Input[int] max_upload_records: The maximum number of log lines per batch. Value must be between 1000 and 1,000,000.
         :param pulumi.Input[str] name: The name of the logpush job to create.
+        :param pulumi.Input['LogpushJobOutputOptionsArgs'] output_options: Structured replacement for logpull*options. When including this field, the logpull*option field will be ignored.
         :param pulumi.Input[str] ownership_challenge: Ownership challenge token to prove destination ownership, required when destination is Amazon S3, Google Cloud Storage, Microsoft Azure or Sumo Logic. See [Developer documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#usage).
         :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. Must provide only one of `account_id`, `zone_id`.
         """
@@ -67,6 +71,8 @@ class LogpushJobArgs:
             pulumi.set(__self__, "max_upload_records", max_upload_records)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if output_options is not None:
+            pulumi.set(__self__, "output_options", output_options)
         if ownership_challenge is not None:
             pulumi.set(__self__, "ownership_challenge", ownership_challenge)
         if zone_id is not None:
@@ -217,6 +223,18 @@ class LogpushJobArgs:
         pulumi.set(self, "name", value)
 
     @property
+    @pulumi.getter(name="outputOptions")
+    def output_options(self) -> Optional[pulumi.Input['LogpushJobOutputOptionsArgs']]:
+        """
+        Structured replacement for logpull*options. When including this field, the logpull*option field will be ignored.
+        """
+        return pulumi.get(self, "output_options")
+
+    @output_options.setter
+    def output_options(self, value: Optional[pulumi.Input['LogpushJobOutputOptionsArgs']]):
+        pulumi.set(self, "output_options", value)
+
+    @property
     @pulumi.getter(name="ownershipChallenge")
     def ownership_challenge(self) -> Optional[pulumi.Input[str]]:
         """
@@ -256,6 +274,7 @@ class _LogpushJobState:
                  max_upload_interval_seconds: Optional[pulumi.Input[int]] = None,
                  max_upload_records: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 output_options: Optional[pulumi.Input['LogpushJobOutputOptionsArgs']] = None,
                  ownership_challenge: Optional[pulumi.Input[str]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None):
         """
@@ -272,6 +291,7 @@ class _LogpushJobState:
         :param pulumi.Input[int] max_upload_interval_seconds: The maximum interval in seconds for log batches. Value must be between 30 and 300.
         :param pulumi.Input[int] max_upload_records: The maximum number of log lines per batch. Value must be between 1000 and 1,000,000.
         :param pulumi.Input[str] name: The name of the logpush job to create.
+        :param pulumi.Input['LogpushJobOutputOptionsArgs'] output_options: Structured replacement for logpull*options. When including this field, the logpull*option field will be ignored.
         :param pulumi.Input[str] ownership_challenge: Ownership challenge token to prove destination ownership, required when destination is Amazon S3, Google Cloud Storage, Microsoft Azure or Sumo Logic. See [Developer documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#usage).
         :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. Must provide only one of `account_id`, `zone_id`.
         """
@@ -299,6 +319,8 @@ class _LogpushJobState:
             pulumi.set(__self__, "max_upload_records", max_upload_records)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if output_options is not None:
+            pulumi.set(__self__, "output_options", output_options)
         if ownership_challenge is not None:
             pulumi.set(__self__, "ownership_challenge", ownership_challenge)
         if zone_id is not None:
@@ -449,6 +471,18 @@ class _LogpushJobState:
         pulumi.set(self, "name", value)
 
     @property
+    @pulumi.getter(name="outputOptions")
+    def output_options(self) -> Optional[pulumi.Input['LogpushJobOutputOptionsArgs']]:
+        """
+        Structured replacement for logpull*options. When including this field, the logpull*option field will be ignored.
+        """
+        return pulumi.get(self, "output_options")
+
+    @output_options.setter
+    def output_options(self, value: Optional[pulumi.Input['LogpushJobOutputOptionsArgs']]):
+        pulumi.set(self, "output_options", value)
+
+    @property
     @pulumi.getter(name="ownershipChallenge")
     def ownership_challenge(self) -> Optional[pulumi.Input[str]]:
         """
@@ -490,6 +524,7 @@ class LogpushJob(pulumi.CustomResource):
                  max_upload_interval_seconds: Optional[pulumi.Input[int]] = None,
                  max_upload_records: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 output_options: Optional[pulumi.Input[pulumi.InputType['LogpushJobOutputOptionsArgs']]] = None,
                  ownership_challenge: Optional[pulumi.Input[str]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -524,6 +559,7 @@ class LogpushJob(pulumi.CustomResource):
         :param pulumi.Input[int] max_upload_interval_seconds: The maximum interval in seconds for log batches. Value must be between 30 and 300.
         :param pulumi.Input[int] max_upload_records: The maximum number of log lines per batch. Value must be between 1000 and 1,000,000.
         :param pulumi.Input[str] name: The name of the logpush job to create.
+        :param pulumi.Input[pulumi.InputType['LogpushJobOutputOptionsArgs']] output_options: Structured replacement for logpull*options. When including this field, the logpull*option field will be ignored.
         :param pulumi.Input[str] ownership_challenge: Ownership challenge token to prove destination ownership, required when destination is Amazon S3, Google Cloud Storage, Microsoft Azure or Sumo Logic. See [Developer documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#usage).
         :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. Must provide only one of `account_id`, `zone_id`.
         """
@@ -577,6 +613,7 @@ class LogpushJob(pulumi.CustomResource):
                  max_upload_interval_seconds: Optional[pulumi.Input[int]] = None,
                  max_upload_records: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 output_options: Optional[pulumi.Input[pulumi.InputType['LogpushJobOutputOptionsArgs']]] = None,
                  ownership_challenge: Optional[pulumi.Input[str]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -604,6 +641,7 @@ class LogpushJob(pulumi.CustomResource):
             __props__.__dict__["max_upload_interval_seconds"] = max_upload_interval_seconds
             __props__.__dict__["max_upload_records"] = max_upload_records
             __props__.__dict__["name"] = name
+            __props__.__dict__["output_options"] = output_options
             __props__.__dict__["ownership_challenge"] = ownership_challenge
             __props__.__dict__["zone_id"] = zone_id
         super(LogpushJob, __self__).__init__(
@@ -628,6 +666,7 @@ class LogpushJob(pulumi.CustomResource):
             max_upload_interval_seconds: Optional[pulumi.Input[int]] = None,
             max_upload_records: Optional[pulumi.Input[int]] = None,
             name: Optional[pulumi.Input[str]] = None,
+            output_options: Optional[pulumi.Input[pulumi.InputType['LogpushJobOutputOptionsArgs']]] = None,
             ownership_challenge: Optional[pulumi.Input[str]] = None,
             zone_id: Optional[pulumi.Input[str]] = None) -> 'LogpushJob':
         """
@@ -649,6 +688,7 @@ class LogpushJob(pulumi.CustomResource):
         :param pulumi.Input[int] max_upload_interval_seconds: The maximum interval in seconds for log batches. Value must be between 30 and 300.
         :param pulumi.Input[int] max_upload_records: The maximum number of log lines per batch. Value must be between 1000 and 1,000,000.
         :param pulumi.Input[str] name: The name of the logpush job to create.
+        :param pulumi.Input[pulumi.InputType['LogpushJobOutputOptionsArgs']] output_options: Structured replacement for logpull*options. When including this field, the logpull*option field will be ignored.
         :param pulumi.Input[str] ownership_challenge: Ownership challenge token to prove destination ownership, required when destination is Amazon S3, Google Cloud Storage, Microsoft Azure or Sumo Logic. See [Developer documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#usage).
         :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. Must provide only one of `account_id`, `zone_id`.
         """
@@ -668,6 +708,7 @@ class LogpushJob(pulumi.CustomResource):
         __props__.__dict__["max_upload_interval_seconds"] = max_upload_interval_seconds
         __props__.__dict__["max_upload_records"] = max_upload_records
         __props__.__dict__["name"] = name
+        __props__.__dict__["output_options"] = output_options
         __props__.__dict__["ownership_challenge"] = ownership_challenge
         __props__.__dict__["zone_id"] = zone_id
         return LogpushJob(resource_name, opts=opts, __props__=__props__)
@@ -767,6 +808,14 @@ class LogpushJob(pulumi.CustomResource):
         The name of the logpush job to create.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="outputOptions")
+    def output_options(self) -> pulumi.Output[Optional['outputs.LogpushJobOutputOptions']]:
+        """
+        Structured replacement for logpull*options. When including this field, the logpull*option field will be ignored.
+        """
+        return pulumi.get(self, "output_options")
 
     @property
     @pulumi.getter(name="ownershipChallenge")

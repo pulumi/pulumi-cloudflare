@@ -35,16 +35,14 @@ public final class AccessOrganizationState extends com.pulumi.resources.Resource
     }
 
     /**
-     * When set to true, users can authenticate via WARP for any application in your organization. Application settings will
-     * take precedence over this value.
+     * When set to true, users can authenticate via WARP for any application in your organization. Application settings will take precedence over this value.
      * 
      */
     @Import(name="allowAuthenticateViaWarp")
     private @Nullable Output<Boolean> allowAuthenticateViaWarp;
 
     /**
-     * @return When set to true, users can authenticate via WARP for any application in your organization. Application settings will
-     * take precedence over this value.
+     * @return When set to true, users can authenticate via WARP for any application in your organization. Application settings will take precedence over this value.
      * 
      */
     public Optional<Output<Boolean>> allowAuthenticateViaWarp() {
@@ -179,16 +177,14 @@ public final class AccessOrganizationState extends com.pulumi.resources.Resource
     }
 
     /**
-     * The amount of time that tokens issued for applications will be valid. Must be in the format 30m or 2h45m. Valid time
-     * units are: m, h.
+     * The amount of time that tokens issued for applications will be valid. Must be in the format 30m or 2h45m. Valid time units are: m, h.
      * 
      */
     @Import(name="warpAuthSessionDuration")
     private @Nullable Output<String> warpAuthSessionDuration;
 
     /**
-     * @return The amount of time that tokens issued for applications will be valid. Must be in the format 30m or 2h45m. Valid time
-     * units are: m, h.
+     * @return The amount of time that tokens issued for applications will be valid. Must be in the format 30m or 2h45m. Valid time units are: m, h.
      * 
      */
     public Optional<Output<String>> warpAuthSessionDuration() {
@@ -268,8 +264,7 @@ public final class AccessOrganizationState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param allowAuthenticateViaWarp When set to true, users can authenticate via WARP for any application in your organization. Application settings will
-         * take precedence over this value.
+         * @param allowAuthenticateViaWarp When set to true, users can authenticate via WARP for any application in your organization. Application settings will take precedence over this value.
          * 
          * @return builder
          * 
@@ -280,8 +275,7 @@ public final class AccessOrganizationState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param allowAuthenticateViaWarp When set to true, users can authenticate via WARP for any application in your organization. Application settings will
-         * take precedence over this value.
+         * @param allowAuthenticateViaWarp When set to true, users can authenticate via WARP for any application in your organization. Application settings will take precedence over this value.
          * 
          * @return builder
          * 
@@ -482,8 +476,7 @@ public final class AccessOrganizationState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param warpAuthSessionDuration The amount of time that tokens issued for applications will be valid. Must be in the format 30m or 2h45m. Valid time
-         * units are: m, h.
+         * @param warpAuthSessionDuration The amount of time that tokens issued for applications will be valid. Must be in the format 30m or 2h45m. Valid time units are: m, h.
          * 
          * @return builder
          * 
@@ -494,8 +487,7 @@ public final class AccessOrganizationState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param warpAuthSessionDuration The amount of time that tokens issued for applications will be valid. Must be in the format 30m or 2h45m. Valid time
-         * units are: m, h.
+         * @param warpAuthSessionDuration The amount of time that tokens issued for applications will be valid. Must be in the format 30m or 2h45m. Valid time units are: m, h.
          * 
          * @return builder
          * 

@@ -111,6 +111,10 @@ export class WorkerScript extends pulumi.CustomResource {
      */
     public readonly content!: pulumi.Output<string>;
     public readonly d1DatabaseBindings!: pulumi.Output<outputs.WorkerScriptD1DatabaseBinding[] | undefined>;
+    /**
+     * Name of the Workers for Platforms dispatch namespace.
+     */
+    public readonly dispatchNamespace!: pulumi.Output<string | undefined>;
     public readonly kvNamespaceBindings!: pulumi.Output<outputs.WorkerScriptKvNamespaceBinding[] | undefined>;
     /**
      * Enabling allows Worker events to be sent to a defined Logpush destination.
@@ -130,6 +134,7 @@ export class WorkerScript extends pulumi.CustomResource {
     public readonly r2BucketBindings!: pulumi.Output<outputs.WorkerScriptR2BucketBinding[] | undefined>;
     public readonly secretTextBindings!: pulumi.Output<outputs.WorkerScriptSecretTextBinding[] | undefined>;
     public readonly serviceBindings!: pulumi.Output<outputs.WorkerScriptServiceBinding[] | undefined>;
+    public readonly tags!: pulumi.Output<string[]>;
     public readonly webassemblyBindings!: pulumi.Output<outputs.WorkerScriptWebassemblyBinding[] | undefined>;
 
     /**
@@ -151,6 +156,7 @@ export class WorkerScript extends pulumi.CustomResource {
             resourceInputs["compatibilityFlags"] = state ? state.compatibilityFlags : undefined;
             resourceInputs["content"] = state ? state.content : undefined;
             resourceInputs["d1DatabaseBindings"] = state ? state.d1DatabaseBindings : undefined;
+            resourceInputs["dispatchNamespace"] = state ? state.dispatchNamespace : undefined;
             resourceInputs["kvNamespaceBindings"] = state ? state.kvNamespaceBindings : undefined;
             resourceInputs["logpush"] = state ? state.logpush : undefined;
             resourceInputs["module"] = state ? state.module : undefined;
@@ -161,6 +167,7 @@ export class WorkerScript extends pulumi.CustomResource {
             resourceInputs["r2BucketBindings"] = state ? state.r2BucketBindings : undefined;
             resourceInputs["secretTextBindings"] = state ? state.secretTextBindings : undefined;
             resourceInputs["serviceBindings"] = state ? state.serviceBindings : undefined;
+            resourceInputs["tags"] = state ? state.tags : undefined;
             resourceInputs["webassemblyBindings"] = state ? state.webassemblyBindings : undefined;
         } else {
             const args = argsOrState as WorkerScriptArgs | undefined;
@@ -179,6 +186,7 @@ export class WorkerScript extends pulumi.CustomResource {
             resourceInputs["compatibilityFlags"] = args ? args.compatibilityFlags : undefined;
             resourceInputs["content"] = args ? args.content : undefined;
             resourceInputs["d1DatabaseBindings"] = args ? args.d1DatabaseBindings : undefined;
+            resourceInputs["dispatchNamespace"] = args ? args.dispatchNamespace : undefined;
             resourceInputs["kvNamespaceBindings"] = args ? args.kvNamespaceBindings : undefined;
             resourceInputs["logpush"] = args ? args.logpush : undefined;
             resourceInputs["module"] = args ? args.module : undefined;
@@ -189,6 +197,7 @@ export class WorkerScript extends pulumi.CustomResource {
             resourceInputs["r2BucketBindings"] = args ? args.r2BucketBindings : undefined;
             resourceInputs["secretTextBindings"] = args ? args.secretTextBindings : undefined;
             resourceInputs["serviceBindings"] = args ? args.serviceBindings : undefined;
+            resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["webassemblyBindings"] = args ? args.webassemblyBindings : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -218,6 +227,10 @@ export interface WorkerScriptState {
      */
     content?: pulumi.Input<string>;
     d1DatabaseBindings?: pulumi.Input<pulumi.Input<inputs.WorkerScriptD1DatabaseBinding>[]>;
+    /**
+     * Name of the Workers for Platforms dispatch namespace.
+     */
+    dispatchNamespace?: pulumi.Input<string>;
     kvNamespaceBindings?: pulumi.Input<pulumi.Input<inputs.WorkerScriptKvNamespaceBinding>[]>;
     /**
      * Enabling allows Worker events to be sent to a defined Logpush destination.
@@ -237,6 +250,7 @@ export interface WorkerScriptState {
     r2BucketBindings?: pulumi.Input<pulumi.Input<inputs.WorkerScriptR2BucketBinding>[]>;
     secretTextBindings?: pulumi.Input<pulumi.Input<inputs.WorkerScriptSecretTextBinding>[]>;
     serviceBindings?: pulumi.Input<pulumi.Input<inputs.WorkerScriptServiceBinding>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[]>;
     webassemblyBindings?: pulumi.Input<pulumi.Input<inputs.WorkerScriptWebassemblyBinding>[]>;
 }
 
@@ -262,6 +276,10 @@ export interface WorkerScriptArgs {
      */
     content: pulumi.Input<string>;
     d1DatabaseBindings?: pulumi.Input<pulumi.Input<inputs.WorkerScriptD1DatabaseBinding>[]>;
+    /**
+     * Name of the Workers for Platforms dispatch namespace.
+     */
+    dispatchNamespace?: pulumi.Input<string>;
     kvNamespaceBindings?: pulumi.Input<pulumi.Input<inputs.WorkerScriptKvNamespaceBinding>[]>;
     /**
      * Enabling allows Worker events to be sent to a defined Logpush destination.
@@ -281,5 +299,6 @@ export interface WorkerScriptArgs {
     r2BucketBindings?: pulumi.Input<pulumi.Input<inputs.WorkerScriptR2BucketBinding>[]>;
     secretTextBindings?: pulumi.Input<pulumi.Input<inputs.WorkerScriptSecretTextBinding>[]>;
     serviceBindings?: pulumi.Input<pulumi.Input<inputs.WorkerScriptServiceBinding>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[]>;
     webassemblyBindings?: pulumi.Input<pulumi.Input<inputs.WorkerScriptWebassemblyBinding>[]>;
 }

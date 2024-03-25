@@ -6,6 +6,7 @@ package com.pulumi.cloudflare;
 import com.pulumi.cloudflare.DlpProfileArgs;
 import com.pulumi.cloudflare.Utilities;
 import com.pulumi.cloudflare.inputs.DlpProfileState;
+import com.pulumi.cloudflare.outputs.DlpProfileContextAwareness;
 import com.pulumi.cloudflare.outputs.DlpProfileEntry;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
@@ -58,6 +59,20 @@ public class DlpProfile extends com.pulumi.resources.CustomResource {
      */
     public Output<Integer> allowedMatchCount() {
         return this.allowedMatchCount;
+    }
+    /**
+     * Scan the context of predefined entries to only return matches surrounded by keywords.
+     * 
+     */
+    @Export(name="contextAwareness", refs={DlpProfileContextAwareness.class}, tree="[0]")
+    private Output<DlpProfileContextAwareness> contextAwareness;
+
+    /**
+     * @return Scan the context of predefined entries to only return matches surrounded by keywords.
+     * 
+     */
+    public Output<DlpProfileContextAwareness> contextAwareness() {
+        return this.contextAwareness;
     }
     /**
      * Brief summary of the profile and its intended use.

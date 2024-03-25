@@ -101,6 +101,21 @@ public final class WorkerScriptState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.d1DatabaseBindings);
     }
 
+    /**
+     * Name of the Workers for Platforms dispatch namespace.
+     * 
+     */
+    @Import(name="dispatchNamespace")
+    private @Nullable Output<String> dispatchNamespace;
+
+    /**
+     * @return Name of the Workers for Platforms dispatch namespace.
+     * 
+     */
+    public Optional<Output<String>> dispatchNamespace() {
+        return Optional.ofNullable(this.dispatchNamespace);
+    }
+
     @Import(name="kvNamespaceBindings")
     private @Nullable Output<List<WorkerScriptKvNamespaceBindingArgs>> kvNamespaceBindings;
 
@@ -195,6 +210,13 @@ public final class WorkerScriptState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.serviceBindings);
     }
 
+    @Import(name="tags")
+    private @Nullable Output<List<String>> tags;
+
+    public Optional<Output<List<String>>> tags() {
+        return Optional.ofNullable(this.tags);
+    }
+
     @Import(name="webassemblyBindings")
     private @Nullable Output<List<WorkerScriptWebassemblyBindingArgs>> webassemblyBindings;
 
@@ -211,6 +233,7 @@ public final class WorkerScriptState extends com.pulumi.resources.ResourceArgs {
         this.compatibilityFlags = $.compatibilityFlags;
         this.content = $.content;
         this.d1DatabaseBindings = $.d1DatabaseBindings;
+        this.dispatchNamespace = $.dispatchNamespace;
         this.kvNamespaceBindings = $.kvNamespaceBindings;
         this.logpush = $.logpush;
         this.module = $.module;
@@ -221,6 +244,7 @@ public final class WorkerScriptState extends com.pulumi.resources.ResourceArgs {
         this.r2BucketBindings = $.r2BucketBindings;
         this.secretTextBindings = $.secretTextBindings;
         this.serviceBindings = $.serviceBindings;
+        this.tags = $.tags;
         this.webassemblyBindings = $.webassemblyBindings;
     }
 
@@ -360,6 +384,27 @@ public final class WorkerScriptState extends com.pulumi.resources.ResourceArgs {
 
         public Builder d1DatabaseBindings(WorkerScriptD1DatabaseBindingArgs... d1DatabaseBindings) {
             return d1DatabaseBindings(List.of(d1DatabaseBindings));
+        }
+
+        /**
+         * @param dispatchNamespace Name of the Workers for Platforms dispatch namespace.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dispatchNamespace(@Nullable Output<String> dispatchNamespace) {
+            $.dispatchNamespace = dispatchNamespace;
+            return this;
+        }
+
+        /**
+         * @param dispatchNamespace Name of the Workers for Platforms dispatch namespace.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dispatchNamespace(String dispatchNamespace) {
+            return dispatchNamespace(Output.of(dispatchNamespace));
         }
 
         public Builder kvNamespaceBindings(@Nullable Output<List<WorkerScriptKvNamespaceBindingArgs>> kvNamespaceBindings) {
@@ -514,6 +559,19 @@ public final class WorkerScriptState extends com.pulumi.resources.ResourceArgs {
 
         public Builder serviceBindings(WorkerScriptServiceBindingArgs... serviceBindings) {
             return serviceBindings(List.of(serviceBindings));
+        }
+
+        public Builder tags(@Nullable Output<List<String>> tags) {
+            $.tags = tags;
+            return this;
+        }
+
+        public Builder tags(List<String> tags) {
+            return tags(Output.of(tags));
+        }
+
+        public Builder tags(String... tags) {
+            return tags(List.of(tags));
         }
 
         public Builder webassemblyBindings(@Nullable Output<List<WorkerScriptWebassemblyBindingArgs>> webassemblyBindings) {

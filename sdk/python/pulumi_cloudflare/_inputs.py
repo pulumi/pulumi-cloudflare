@@ -42,6 +42,7 @@ __all__ = [
     'AccessGroupRequireSamlArgs',
     'AccessIdentityProviderConfigArgs',
     'AccessIdentityProviderScimConfigArgs',
+    'AccessMutualTlsHostnameSettingsSettingArgs',
     'AccessOrganizationCustomPageArgs',
     'AccessOrganizationLoginDesignArgs',
     'AccessPolicyApprovalGroupArgs',
@@ -89,6 +90,8 @@ __all__ = [
     'DevicePostureIntegrationConfigArgs',
     'DevicePostureRuleInputArgs',
     'DevicePostureRuleMatchArgs',
+    'DlpProfileContextAwarenessArgs',
+    'DlpProfileContextAwarenessSkipArgs',
     'DlpProfileEntryArgs',
     'DlpProfileEntryPatternArgs',
     'EmailRoutingCatchAllActionArgs',
@@ -97,6 +100,8 @@ __all__ = [
     'EmailRoutingRuleMatcherArgs',
     'FallbackDomainDomainArgs',
     'HealthcheckHeaderArgs',
+    'HyperdriveConfigCachingArgs',
+    'HyperdriveConfigOriginArgs',
     'ListItemArgs',
     'ListItemHostnameArgs',
     'ListItemRedirectArgs',
@@ -125,6 +130,7 @@ __all__ = [
     'LoadBalancerRuleOverrideRegionPoolArgs',
     'LoadBalancerRuleOverrideSessionAffinityAttributeArgs',
     'LoadBalancerSessionAffinityAttributeArgs',
+    'LogpushJobOutputOptionsArgs',
     'ManagedHeadersManagedRequestHeaderArgs',
     'ManagedHeadersManagedResponseHeaderArgs',
     'NotificationPolicyEmailIntegrationArgs',
@@ -542,20 +548,20 @@ class AccessApplicationSaasAppArgs:
                  sp_entity_id: Optional[pulumi.Input[str]] = None,
                  sso_endpoint: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] app_launcher_url: The URL where this applications tile redirects users
-        :param pulumi.Input[str] client_id: The application client id
-        :param pulumi.Input[str] client_secret: The application client secret, only returned on initial apply
+        :param pulumi.Input[str] app_launcher_url: The URL where this applications tile redirects users.
+        :param pulumi.Input[str] client_id: The application client id.
+        :param pulumi.Input[str] client_secret: The application client secret, only returned on initial apply.
         :param pulumi.Input[str] consumer_service_url: The service provider's endpoint that is responsible for receiving and parsing a SAML assertion.
         :param pulumi.Input[Sequence[pulumi.Input['AccessApplicationSaasAppCustomAttributeArgs']]] custom_attributes: Custom attribute mapped from IDPs.
         :param pulumi.Input[str] default_relay_state: The relay state used if not provided by the identity provider.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] grant_types: The OIDC flows supported by this application
-        :param pulumi.Input[str] group_filter_regex: A regex to filter Cloudflare groups returned in ID token and userinfo endpoint
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] grant_types: The OIDC flows supported by this application.
+        :param pulumi.Input[str] group_filter_regex: A regex to filter Cloudflare groups returned in ID token and userinfo endpoint.
         :param pulumi.Input[str] idp_entity_id: The unique identifier for the SaaS application.
-        :param pulumi.Input[str] name_id_format: The format of the name identifier sent to the SaaS application. Defaults to `email`.
+        :param pulumi.Input[str] name_id_format: The format of the name identifier sent to the SaaS application.
         :param pulumi.Input[str] name_id_transform_jsonata: A [JSONata](https://jsonata.org/) expression that transforms an application's user identities into a NameID value for its SAML assertion. This expression should evaluate to a singular string. The output of this expression can override the `name_id_format` setting.
         :param pulumi.Input[str] public_key: The public certificate that will be used to verify identities.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] redirect_uris: The permitted URL's for Cloudflare to return Authorization codes and Access/ID tokens
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] scopes: Define the user information shared with access
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] redirect_uris: The permitted URL's for Cloudflare to return Authorization codes and Access/ID tokens.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] scopes: Define the user information shared with access.
         :param pulumi.Input[str] sp_entity_id: A globally unique name for an identity or service provider.
         :param pulumi.Input[str] sso_endpoint: The endpoint where the SaaS application will send login requests.
         """
@@ -598,7 +604,7 @@ class AccessApplicationSaasAppArgs:
     @pulumi.getter(name="appLauncherUrl")
     def app_launcher_url(self) -> Optional[pulumi.Input[str]]:
         """
-        The URL where this applications tile redirects users
+        The URL where this applications tile redirects users.
         """
         return pulumi.get(self, "app_launcher_url")
 
@@ -619,7 +625,7 @@ class AccessApplicationSaasAppArgs:
     @pulumi.getter(name="clientId")
     def client_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The application client id
+        The application client id.
         """
         return pulumi.get(self, "client_id")
 
@@ -631,7 +637,7 @@ class AccessApplicationSaasAppArgs:
     @pulumi.getter(name="clientSecret")
     def client_secret(self) -> Optional[pulumi.Input[str]]:
         """
-        The application client secret, only returned on initial apply
+        The application client secret, only returned on initial apply.
         """
         return pulumi.get(self, "client_secret")
 
@@ -679,7 +685,7 @@ class AccessApplicationSaasAppArgs:
     @pulumi.getter(name="grantTypes")
     def grant_types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        The OIDC flows supported by this application
+        The OIDC flows supported by this application.
         """
         return pulumi.get(self, "grant_types")
 
@@ -691,7 +697,7 @@ class AccessApplicationSaasAppArgs:
     @pulumi.getter(name="groupFilterRegex")
     def group_filter_regex(self) -> Optional[pulumi.Input[str]]:
         """
-        A regex to filter Cloudflare groups returned in ID token and userinfo endpoint
+        A regex to filter Cloudflare groups returned in ID token and userinfo endpoint.
         """
         return pulumi.get(self, "group_filter_regex")
 
@@ -715,7 +721,7 @@ class AccessApplicationSaasAppArgs:
     @pulumi.getter(name="nameIdFormat")
     def name_id_format(self) -> Optional[pulumi.Input[str]]:
         """
-        The format of the name identifier sent to the SaaS application. Defaults to `email`.
+        The format of the name identifier sent to the SaaS application.
         """
         return pulumi.get(self, "name_id_format")
 
@@ -751,7 +757,7 @@ class AccessApplicationSaasAppArgs:
     @pulumi.getter(name="redirectUris")
     def redirect_uris(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        The permitted URL's for Cloudflare to return Authorization codes and Access/ID tokens
+        The permitted URL's for Cloudflare to return Authorization codes and Access/ID tokens.
         """
         return pulumi.get(self, "redirect_uris")
 
@@ -763,7 +769,7 @@ class AccessApplicationSaasAppArgs:
     @pulumi.getter
     def scopes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Define the user information shared with access
+        Define the user information shared with access.
         """
         return pulumi.get(self, "scopes")
 
@@ -2945,6 +2951,60 @@ class AccessIdentityProviderScimConfigArgs:
     @user_deprovision.setter
     def user_deprovision(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "user_deprovision", value)
+
+
+@pulumi.input_type
+class AccessMutualTlsHostnameSettingsSettingArgs:
+    def __init__(__self__, *,
+                 hostname: pulumi.Input[str],
+                 china_network: Optional[pulumi.Input[bool]] = None,
+                 client_certificate_forwarding: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[str] hostname: The hostname that these settings apply to.
+        :param pulumi.Input[bool] china_network: Request client certificates for this hostname in China. Can only be set to true if this zone is china network enabled.
+        :param pulumi.Input[bool] client_certificate_forwarding: Client Certificate Forwarding is a feature that takes the client cert provided by the eyeball to the edge, and forwards it to the origin as a HTTP header to allow logging on the origin.
+        """
+        pulumi.set(__self__, "hostname", hostname)
+        if china_network is not None:
+            pulumi.set(__self__, "china_network", china_network)
+        if client_certificate_forwarding is not None:
+            pulumi.set(__self__, "client_certificate_forwarding", client_certificate_forwarding)
+
+    @property
+    @pulumi.getter
+    def hostname(self) -> pulumi.Input[str]:
+        """
+        The hostname that these settings apply to.
+        """
+        return pulumi.get(self, "hostname")
+
+    @hostname.setter
+    def hostname(self, value: pulumi.Input[str]):
+        pulumi.set(self, "hostname", value)
+
+    @property
+    @pulumi.getter(name="chinaNetwork")
+    def china_network(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Request client certificates for this hostname in China. Can only be set to true if this zone is china network enabled.
+        """
+        return pulumi.get(self, "china_network")
+
+    @china_network.setter
+    def china_network(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "china_network", value)
+
+    @property
+    @pulumi.getter(name="clientCertificateForwarding")
+    def client_certificate_forwarding(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Client Certificate Forwarding is a feature that takes the client cert provided by the eyeball to the edge, and forwards it to the origin as a HTTP header to allow logging on the origin.
+        """
+        return pulumi.get(self, "client_certificate_forwarding")
+
+    @client_certificate_forwarding.setter
+    def client_certificate_forwarding(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "client_certificate_forwarding", value)
 
 
 @pulumi.input_type
@@ -6382,6 +6442,65 @@ class DevicePostureRuleMatchArgs:
 
 
 @pulumi.input_type
+class DlpProfileContextAwarenessArgs:
+    def __init__(__self__, *,
+                 enabled: pulumi.Input[bool],
+                 skip: pulumi.Input['DlpProfileContextAwarenessSkipArgs']):
+        """
+        :param pulumi.Input[bool] enabled: Scan the context of predefined entries to only return matches surrounded by keywords.
+        :param pulumi.Input['DlpProfileContextAwarenessSkipArgs'] skip: Content types to exclude from context analysis and return all matches.
+        """
+        pulumi.set(__self__, "enabled", enabled)
+        pulumi.set(__self__, "skip", skip)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> pulumi.Input[bool]:
+        """
+        Scan the context of predefined entries to only return matches surrounded by keywords.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: pulumi.Input[bool]):
+        pulumi.set(self, "enabled", value)
+
+    @property
+    @pulumi.getter
+    def skip(self) -> pulumi.Input['DlpProfileContextAwarenessSkipArgs']:
+        """
+        Content types to exclude from context analysis and return all matches.
+        """
+        return pulumi.get(self, "skip")
+
+    @skip.setter
+    def skip(self, value: pulumi.Input['DlpProfileContextAwarenessSkipArgs']):
+        pulumi.set(self, "skip", value)
+
+
+@pulumi.input_type
+class DlpProfileContextAwarenessSkipArgs:
+    def __init__(__self__, *,
+                 files: pulumi.Input[bool]):
+        """
+        :param pulumi.Input[bool] files: Return all matches, regardless of context analysis result, if the data is a file.
+        """
+        pulumi.set(__self__, "files", files)
+
+    @property
+    @pulumi.getter
+    def files(self) -> pulumi.Input[bool]:
+        """
+        Return all matches, regardless of context analysis result, if the data is a file.
+        """
+        return pulumi.get(self, "files")
+
+    @files.setter
+    def files(self, value: pulumi.Input[bool]):
+        pulumi.set(self, "files", value)
+
+
+@pulumi.input_type
 class DlpProfileEntryArgs:
     def __init__(__self__, *,
                  name: pulumi.Input[str],
@@ -6726,6 +6845,126 @@ class HealthcheckHeaderArgs:
     @values.setter
     def values(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
         pulumi.set(self, "values", value)
+
+
+@pulumi.input_type
+class HyperdriveConfigCachingArgs:
+    def __init__(__self__, *,
+                 disabled: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[bool] disabled: Disable caching for this Hyperdrive configuration.
+        """
+        if disabled is not None:
+            pulumi.set(__self__, "disabled", disabled)
+
+    @property
+    @pulumi.getter
+    def disabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Disable caching for this Hyperdrive configuration.
+        """
+        return pulumi.get(self, "disabled")
+
+    @disabled.setter
+    def disabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "disabled", value)
+
+
+@pulumi.input_type
+class HyperdriveConfigOriginArgs:
+    def __init__(__self__, *,
+                 database: pulumi.Input[str],
+                 host: pulumi.Input[str],
+                 password: pulumi.Input[str],
+                 port: pulumi.Input[int],
+                 scheme: pulumi.Input[str],
+                 user: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] database: The name of your origin database.
+        :param pulumi.Input[str] host: The host (hostname or IP) of your origin database.
+        :param pulumi.Input[str] password: The password of the Hyperdrive configuration.
+        :param pulumi.Input[int] port: The port (default: 5432 for Postgres) of your origin database.
+        :param pulumi.Input[str] scheme: Specifies the URL scheme used to connect to your origin database.
+        :param pulumi.Input[str] user: The user of your origin database.
+        """
+        pulumi.set(__self__, "database", database)
+        pulumi.set(__self__, "host", host)
+        pulumi.set(__self__, "password", password)
+        pulumi.set(__self__, "port", port)
+        pulumi.set(__self__, "scheme", scheme)
+        pulumi.set(__self__, "user", user)
+
+    @property
+    @pulumi.getter
+    def database(self) -> pulumi.Input[str]:
+        """
+        The name of your origin database.
+        """
+        return pulumi.get(self, "database")
+
+    @database.setter
+    def database(self, value: pulumi.Input[str]):
+        pulumi.set(self, "database", value)
+
+    @property
+    @pulumi.getter
+    def host(self) -> pulumi.Input[str]:
+        """
+        The host (hostname or IP) of your origin database.
+        """
+        return pulumi.get(self, "host")
+
+    @host.setter
+    def host(self, value: pulumi.Input[str]):
+        pulumi.set(self, "host", value)
+
+    @property
+    @pulumi.getter
+    def password(self) -> pulumi.Input[str]:
+        """
+        The password of the Hyperdrive configuration.
+        """
+        return pulumi.get(self, "password")
+
+    @password.setter
+    def password(self, value: pulumi.Input[str]):
+        pulumi.set(self, "password", value)
+
+    @property
+    @pulumi.getter
+    def port(self) -> pulumi.Input[int]:
+        """
+        The port (default: 5432 for Postgres) of your origin database.
+        """
+        return pulumi.get(self, "port")
+
+    @port.setter
+    def port(self, value: pulumi.Input[int]):
+        pulumi.set(self, "port", value)
+
+    @property
+    @pulumi.getter
+    def scheme(self) -> pulumi.Input[str]:
+        """
+        Specifies the URL scheme used to connect to your origin database.
+        """
+        return pulumi.get(self, "scheme")
+
+    @scheme.setter
+    def scheme(self, value: pulumi.Input[str]):
+        pulumi.set(self, "scheme", value)
+
+    @property
+    @pulumi.getter
+    def user(self) -> pulumi.Input[str]:
+        """
+        The user of your origin database.
+        """
+        return pulumi.get(self, "user")
+
+    @user.setter
+    def user(self, value: pulumi.Input[str]):
+        pulumi.set(self, "user", value)
 
 
 @pulumi.input_type
@@ -8365,6 +8604,205 @@ class LoadBalancerSessionAffinityAttributeArgs:
 
 
 @pulumi.input_type
+class LogpushJobOutputOptionsArgs:
+    def __init__(__self__, *,
+                 batch_prefix: Optional[pulumi.Input[str]] = None,
+                 batch_suffix: Optional[pulumi.Input[str]] = None,
+                 cve20214428: Optional[pulumi.Input[bool]] = None,
+                 field_delimiter: Optional[pulumi.Input[str]] = None,
+                 field_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 output_type: Optional[pulumi.Input[str]] = None,
+                 record_delimiter: Optional[pulumi.Input[str]] = None,
+                 record_prefix: Optional[pulumi.Input[str]] = None,
+                 record_suffix: Optional[pulumi.Input[str]] = None,
+                 record_template: Optional[pulumi.Input[str]] = None,
+                 sample_rate: Optional[pulumi.Input[float]] = None,
+                 timestamp_format: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] batch_prefix: String to be prepended before each batch.
+        :param pulumi.Input[str] batch_suffix: String to be appended after each batch.
+        :param pulumi.Input[bool] cve20214428: Mitigation for CVE-2021-44228. If set to true, will cause all occurrences of ${ in the generated files to be replaced with x{. Defaults to `false`.
+        :param pulumi.Input[str] field_delimiter: String to join fields. This field be ignored when record_template is set. Defaults to `,`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] field_names: List of field names to be included in the Logpush output.
+        :param pulumi.Input[str] output_type: Specifies the output type. Available values: `ndjson`, `csv`. Defaults to `ndjson`.
+        :param pulumi.Input[str] record_delimiter: String to be inserted in-between the records as separator.
+        :param pulumi.Input[str] record_prefix: String to be prepended before each record. Defaults to `{`.
+        :param pulumi.Input[str] record_suffix: String to be appended after each record. Defaults to `}`.
+        :param pulumi.Input[str] record_template: String to use as template for each record instead of the default comma-separated list.
+        :param pulumi.Input[float] sample_rate: Specifies the sampling rate. Defaults to `1`.
+        :param pulumi.Input[str] timestamp_format: Specifies the format for timestamps. Available values: `unixnano`, `unix`, `rfc3339`. Defaults to `unixnano`.
+        """
+        if batch_prefix is not None:
+            pulumi.set(__self__, "batch_prefix", batch_prefix)
+        if batch_suffix is not None:
+            pulumi.set(__self__, "batch_suffix", batch_suffix)
+        if cve20214428 is not None:
+            pulumi.set(__self__, "cve20214428", cve20214428)
+        if field_delimiter is not None:
+            pulumi.set(__self__, "field_delimiter", field_delimiter)
+        if field_names is not None:
+            pulumi.set(__self__, "field_names", field_names)
+        if output_type is not None:
+            pulumi.set(__self__, "output_type", output_type)
+        if record_delimiter is not None:
+            pulumi.set(__self__, "record_delimiter", record_delimiter)
+        if record_prefix is not None:
+            pulumi.set(__self__, "record_prefix", record_prefix)
+        if record_suffix is not None:
+            pulumi.set(__self__, "record_suffix", record_suffix)
+        if record_template is not None:
+            pulumi.set(__self__, "record_template", record_template)
+        if sample_rate is not None:
+            pulumi.set(__self__, "sample_rate", sample_rate)
+        if timestamp_format is not None:
+            pulumi.set(__self__, "timestamp_format", timestamp_format)
+
+    @property
+    @pulumi.getter(name="batchPrefix")
+    def batch_prefix(self) -> Optional[pulumi.Input[str]]:
+        """
+        String to be prepended before each batch.
+        """
+        return pulumi.get(self, "batch_prefix")
+
+    @batch_prefix.setter
+    def batch_prefix(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "batch_prefix", value)
+
+    @property
+    @pulumi.getter(name="batchSuffix")
+    def batch_suffix(self) -> Optional[pulumi.Input[str]]:
+        """
+        String to be appended after each batch.
+        """
+        return pulumi.get(self, "batch_suffix")
+
+    @batch_suffix.setter
+    def batch_suffix(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "batch_suffix", value)
+
+    @property
+    @pulumi.getter
+    def cve20214428(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Mitigation for CVE-2021-44228. If set to true, will cause all occurrences of ${ in the generated files to be replaced with x{. Defaults to `false`.
+        """
+        return pulumi.get(self, "cve20214428")
+
+    @cve20214428.setter
+    def cve20214428(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "cve20214428", value)
+
+    @property
+    @pulumi.getter(name="fieldDelimiter")
+    def field_delimiter(self) -> Optional[pulumi.Input[str]]:
+        """
+        String to join fields. This field be ignored when record_template is set. Defaults to `,`.
+        """
+        return pulumi.get(self, "field_delimiter")
+
+    @field_delimiter.setter
+    def field_delimiter(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "field_delimiter", value)
+
+    @property
+    @pulumi.getter(name="fieldNames")
+    def field_names(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        List of field names to be included in the Logpush output.
+        """
+        return pulumi.get(self, "field_names")
+
+    @field_names.setter
+    def field_names(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "field_names", value)
+
+    @property
+    @pulumi.getter(name="outputType")
+    def output_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Specifies the output type. Available values: `ndjson`, `csv`. Defaults to `ndjson`.
+        """
+        return pulumi.get(self, "output_type")
+
+    @output_type.setter
+    def output_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "output_type", value)
+
+    @property
+    @pulumi.getter(name="recordDelimiter")
+    def record_delimiter(self) -> Optional[pulumi.Input[str]]:
+        """
+        String to be inserted in-between the records as separator.
+        """
+        return pulumi.get(self, "record_delimiter")
+
+    @record_delimiter.setter
+    def record_delimiter(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "record_delimiter", value)
+
+    @property
+    @pulumi.getter(name="recordPrefix")
+    def record_prefix(self) -> Optional[pulumi.Input[str]]:
+        """
+        String to be prepended before each record. Defaults to `{`.
+        """
+        return pulumi.get(self, "record_prefix")
+
+    @record_prefix.setter
+    def record_prefix(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "record_prefix", value)
+
+    @property
+    @pulumi.getter(name="recordSuffix")
+    def record_suffix(self) -> Optional[pulumi.Input[str]]:
+        """
+        String to be appended after each record. Defaults to `}`.
+        """
+        return pulumi.get(self, "record_suffix")
+
+    @record_suffix.setter
+    def record_suffix(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "record_suffix", value)
+
+    @property
+    @pulumi.getter(name="recordTemplate")
+    def record_template(self) -> Optional[pulumi.Input[str]]:
+        """
+        String to use as template for each record instead of the default comma-separated list.
+        """
+        return pulumi.get(self, "record_template")
+
+    @record_template.setter
+    def record_template(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "record_template", value)
+
+    @property
+    @pulumi.getter(name="sampleRate")
+    def sample_rate(self) -> Optional[pulumi.Input[float]]:
+        """
+        Specifies the sampling rate. Defaults to `1`.
+        """
+        return pulumi.get(self, "sample_rate")
+
+    @sample_rate.setter
+    def sample_rate(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "sample_rate", value)
+
+    @property
+    @pulumi.getter(name="timestampFormat")
+    def timestamp_format(self) -> Optional[pulumi.Input[str]]:
+        """
+        Specifies the format for timestamps. Available values: `unixnano`, `unix`, `rfc3339`. Defaults to `unixnano`.
+        """
+        return pulumi.get(self, "timestamp_format")
+
+    @timestamp_format.setter
+    def timestamp_format(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "timestamp_format", value)
+
+
+@pulumi.input_type
 class ManagedHeadersManagedRequestHeaderArgs:
     def __init__(__self__, *,
                  enabled: pulumi.Input[bool],
@@ -8477,6 +8915,7 @@ class NotificationPolicyFiltersArgs:
     def __init__(__self__, *,
                  actions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  affected_components: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 airport_codes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  alert_trigger_preferences: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  enableds: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  environments: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -8509,6 +8948,7 @@ class NotificationPolicyFiltersArgs:
         """
         :param pulumi.Input[Sequence[pulumi.Input[str]]] actions: Targeted actions for alert.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] affected_components: Affected components for alert. Available values: `API`, `API Shield`, `Access`, `Always Online`, `Analytics`, `Apps Marketplace`, `Argo Smart Routing`, `Audit Logs`, `Authoritative DNS`, `Billing`, `Bot Management`, `Bring Your Own IP (BYOIP)`, `Browser Isolation`, `CDN Cache Purge`, `CDN/Cache`, `Cache Reserve`, `Challenge Platform`, `Cloud Access Security Broker (CASB)`, `Community Site`, `DNS Root Servers`, `DNS Updates`, `Dashboard`, `Data Loss Prevention (DLP)`, `Developer's Site`, `Digital Experience Monitoring (DEX)`, `Distributed Web Gateway`, `Durable Objects`, `Email Routing`, `Ethereum Gateway`, `Firewall`, `Gateway`, `Geo-Key Manager`, `Image Resizing`, `Images`, `Infrastructure`, `Lists`, `Load Balancing and Monitoring`, `Logs`, `Magic Firewall`, `Magic Transit`, `Magic WAN`, `Magic WAN Connector`, `Marketing Site`, `Mirage`, `Network`, `Notifications`, `Observatory`, `Page Shield`, `Pages`, `R2`, `Radar`, `Randomness Beacon`, `Recursive DNS`, `Registrar`, `Registration Data Access Protocol (RDAP)`, `SSL Certificate Provisioning`, `SSL for SaaS Provisioning`, `Security Center`, `Snippets`, `Spectrum`, `Speed Optimizations`, `Stream`, `Support Site`, `Time Services`, `Trace`, `Tunnel`, `Turnstile`, `WARP`, `Waiting Room`, `Web Analytics`, `Workers`, `Workers KV`, `Workers Preview`, `Zaraz`, `Zero Trust`, `Zero Trust Dashboard`, `Zone Versioning`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] airport_codes: Filter on Points of Presence.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] alert_trigger_preferences: Alert trigger preferences. Example: `slo`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] enableds: State of the pool to alert on.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] environments: Environment of pages. Available values: `ENVIRONMENT_PREVIEW`, `ENVIRONMENT_PRODUCTION`.
@@ -8542,6 +8982,8 @@ class NotificationPolicyFiltersArgs:
             pulumi.set(__self__, "actions", actions)
         if affected_components is not None:
             pulumi.set(__self__, "affected_components", affected_components)
+        if airport_codes is not None:
+            pulumi.set(__self__, "airport_codes", airport_codes)
         if alert_trigger_preferences is not None:
             pulumi.set(__self__, "alert_trigger_preferences", alert_trigger_preferences)
         if enableds is not None:
@@ -8624,6 +9066,18 @@ class NotificationPolicyFiltersArgs:
     @affected_components.setter
     def affected_components(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "affected_components", value)
+
+    @property
+    @pulumi.getter(name="airportCodes")
+    def airport_codes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Filter on Points of Presence.
+        """
+        return pulumi.get(self, "airport_codes")
+
+    @airport_codes.setter
+    def airport_codes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "airport_codes", value)
 
     @property
     @pulumi.getter(name="alertTriggerPreferences")

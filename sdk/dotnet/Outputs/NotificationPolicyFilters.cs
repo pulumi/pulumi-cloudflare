@@ -22,6 +22,10 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly ImmutableArray<string> AffectedComponents;
         /// <summary>
+        /// Filter on Points of Presence.
+        /// </summary>
+        public readonly ImmutableArray<string> AirportCodes;
+        /// <summary>
         /// Alert trigger preferences. Example: `slo`.
         /// </summary>
         public readonly ImmutableArray<string> AlertTriggerPreferences;
@@ -141,6 +145,8 @@ namespace Pulumi.Cloudflare.Outputs
 
             ImmutableArray<string> affectedComponents,
 
+            ImmutableArray<string> airportCodes,
+
             ImmutableArray<string> alertTriggerPreferences,
 
             ImmutableArray<string> enableds,
@@ -201,6 +207,7 @@ namespace Pulumi.Cloudflare.Outputs
         {
             Actions = actions;
             AffectedComponents = affectedComponents;
+            AirportCodes = airportCodes;
             AlertTriggerPreferences = alertTriggerPreferences;
             Enableds = enableds;
             Environments = environments;

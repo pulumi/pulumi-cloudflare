@@ -73,8 +73,7 @@ export class AccessOrganization extends pulumi.CustomResource {
      */
     public readonly accountId!: pulumi.Output<string>;
     /**
-     * When set to true, users can authenticate via WARP for any application in your organization. Application settings will
-     * take precedence over this value.
+     * When set to true, users can authenticate via WARP for any application in your organization. Application settings will take precedence over this value.
      */
     public readonly allowAuthenticateViaWarp!: pulumi.Output<boolean | undefined>;
     /**
@@ -111,8 +110,7 @@ export class AccessOrganization extends pulumi.CustomResource {
      */
     public readonly userSeatExpirationInactiveTime!: pulumi.Output<string | undefined>;
     /**
-     * The amount of time that tokens issued for applications will be valid. Must be in the format 30m or 2h45m. Valid time
-     * units are: m, h.
+     * The amount of time that tokens issued for applications will be valid. Must be in the format 30m or 2h45m. Valid time units are: m, h.
      */
     public readonly warpAuthSessionDuration!: pulumi.Output<string | undefined>;
     /**
@@ -179,8 +177,7 @@ export interface AccessOrganizationState {
      */
     accountId?: pulumi.Input<string>;
     /**
-     * When set to true, users can authenticate via WARP for any application in your organization. Application settings will
-     * take precedence over this value.
+     * When set to true, users can authenticate via WARP for any application in your organization. Application settings will take precedence over this value.
      */
     allowAuthenticateViaWarp?: pulumi.Input<boolean>;
     /**
@@ -217,8 +214,7 @@ export interface AccessOrganizationState {
      */
     userSeatExpirationInactiveTime?: pulumi.Input<string>;
     /**
-     * The amount of time that tokens issued for applications will be valid. Must be in the format 30m or 2h45m. Valid time
-     * units are: m, h.
+     * The amount of time that tokens issued for applications will be valid. Must be in the format 30m or 2h45m. Valid time units are: m, h.
      */
     warpAuthSessionDuration?: pulumi.Input<string>;
     /**
@@ -236,8 +232,7 @@ export interface AccessOrganizationArgs {
      */
     accountId?: pulumi.Input<string>;
     /**
-     * When set to true, users can authenticate via WARP for any application in your organization. Application settings will
-     * take precedence over this value.
+     * When set to true, users can authenticate via WARP for any application in your organization. Application settings will take precedence over this value.
      */
     allowAuthenticateViaWarp?: pulumi.Input<boolean>;
     /**
@@ -274,8 +269,7 @@ export interface AccessOrganizationArgs {
      */
     userSeatExpirationInactiveTime?: pulumi.Input<string>;
     /**
-     * The amount of time that tokens issued for applications will be valid. Must be in the format 30m or 2h45m. Valid time
-     * units are: m, h.
+     * The amount of time that tokens issued for applications will be valid. Must be in the format 30m or 2h45m. Valid time units are: m, h.
      */
     warpAuthSessionDuration?: pulumi.Input<string>;
     /**

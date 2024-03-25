@@ -54,6 +54,10 @@ export class DlpProfile extends pulumi.CustomResource {
      */
     public readonly allowedMatchCount!: pulumi.Output<number>;
     /**
+     * Scan the context of predefined entries to only return matches surrounded by keywords.
+     */
+    public readonly contextAwareness!: pulumi.Output<outputs.DlpProfileContextAwareness>;
+    /**
      * Brief summary of the profile and its intended use.
      */
     public readonly description!: pulumi.Output<string | undefined>;
@@ -85,6 +89,7 @@ export class DlpProfile extends pulumi.CustomResource {
             const state = argsOrState as DlpProfileState | undefined;
             resourceInputs["accountId"] = state ? state.accountId : undefined;
             resourceInputs["allowedMatchCount"] = state ? state.allowedMatchCount : undefined;
+            resourceInputs["contextAwareness"] = state ? state.contextAwareness : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["entries"] = state ? state.entries : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
@@ -108,6 +113,7 @@ export class DlpProfile extends pulumi.CustomResource {
             }
             resourceInputs["accountId"] = args ? args.accountId : undefined;
             resourceInputs["allowedMatchCount"] = args ? args.allowedMatchCount : undefined;
+            resourceInputs["contextAwareness"] = args ? args.contextAwareness : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["entries"] = args ? args.entries : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
@@ -130,6 +136,10 @@ export interface DlpProfileState {
      * Related DLP policies will trigger when the match count exceeds the number set.
      */
     allowedMatchCount?: pulumi.Input<number>;
+    /**
+     * Scan the context of predefined entries to only return matches surrounded by keywords.
+     */
+    contextAwareness?: pulumi.Input<inputs.DlpProfileContextAwareness>;
     /**
      * Brief summary of the profile and its intended use.
      */
@@ -160,6 +170,10 @@ export interface DlpProfileArgs {
      * Related DLP policies will trigger when the match count exceeds the number set.
      */
     allowedMatchCount: pulumi.Input<number>;
+    /**
+     * Scan the context of predefined entries to only return matches surrounded by keywords.
+     */
+    contextAwareness?: pulumi.Input<inputs.DlpProfileContextAwareness>;
     /**
      * Brief summary of the profile and its intended use.
      */

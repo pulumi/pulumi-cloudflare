@@ -22,6 +22,11 @@ public final class NotificationPolicyFilters {
      */
     private @Nullable List<String> affectedComponents;
     /**
+     * @return Filter on Points of Presence.
+     * 
+     */
+    private @Nullable List<String> airportCodes;
+    /**
      * @return Alert trigger preferences. Example: `slo`.
      * 
      */
@@ -177,6 +182,13 @@ public final class NotificationPolicyFilters {
      */
     public List<String> affectedComponents() {
         return this.affectedComponents == null ? List.of() : this.affectedComponents;
+    }
+    /**
+     * @return Filter on Points of Presence.
+     * 
+     */
+    public List<String> airportCodes() {
+        return this.airportCodes == null ? List.of() : this.airportCodes;
     }
     /**
      * @return Alert trigger preferences. Example: `slo`.
@@ -389,6 +401,7 @@ public final class NotificationPolicyFilters {
     public static final class Builder {
         private @Nullable List<String> actions;
         private @Nullable List<String> affectedComponents;
+        private @Nullable List<String> airportCodes;
         private @Nullable List<String> alertTriggerPreferences;
         private @Nullable List<String> enableds;
         private @Nullable List<String> environments;
@@ -423,6 +436,7 @@ public final class NotificationPolicyFilters {
     	      Objects.requireNonNull(defaults);
     	      this.actions = defaults.actions;
     	      this.affectedComponents = defaults.affectedComponents;
+    	      this.airportCodes = defaults.airportCodes;
     	      this.alertTriggerPreferences = defaults.alertTriggerPreferences;
     	      this.enableds = defaults.enableds;
     	      this.environments = defaults.environments;
@@ -471,6 +485,15 @@ public final class NotificationPolicyFilters {
         }
         public Builder affectedComponents(String... affectedComponents) {
             return affectedComponents(List.of(affectedComponents));
+        }
+        @CustomType.Setter
+        public Builder airportCodes(@Nullable List<String> airportCodes) {
+
+            this.airportCodes = airportCodes;
+            return this;
+        }
+        public Builder airportCodes(String... airportCodes) {
+            return airportCodes(List.of(airportCodes));
         }
         @CustomType.Setter
         public Builder alertTriggerPreferences(@Nullable List<String> alertTriggerPreferences) {
@@ -737,6 +760,7 @@ public final class NotificationPolicyFilters {
             final var _resultValue = new NotificationPolicyFilters();
             _resultValue.actions = actions;
             _resultValue.affectedComponents = affectedComponents;
+            _resultValue.airportCodes = airportCodes;
             _resultValue.alertTriggerPreferences = alertTriggerPreferences;
             _resultValue.enableds = enableds;
             _resultValue.environments = environments;

@@ -23,6 +23,7 @@ class WorkerScriptArgs:
                  compatibility_date: Optional[pulumi.Input[str]] = None,
                  compatibility_flags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  d1_database_bindings: Optional[pulumi.Input[Sequence[pulumi.Input['WorkerScriptD1DatabaseBindingArgs']]]] = None,
+                 dispatch_namespace: Optional[pulumi.Input[str]] = None,
                  kv_namespace_bindings: Optional[pulumi.Input[Sequence[pulumi.Input['WorkerScriptKvNamespaceBindingArgs']]]] = None,
                  logpush: Optional[pulumi.Input[bool]] = None,
                  module: Optional[pulumi.Input[bool]] = None,
@@ -32,6 +33,7 @@ class WorkerScriptArgs:
                  r2_bucket_bindings: Optional[pulumi.Input[Sequence[pulumi.Input['WorkerScriptR2BucketBindingArgs']]]] = None,
                  secret_text_bindings: Optional[pulumi.Input[Sequence[pulumi.Input['WorkerScriptSecretTextBindingArgs']]]] = None,
                  service_bindings: Optional[pulumi.Input[Sequence[pulumi.Input['WorkerScriptServiceBindingArgs']]]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  webassembly_bindings: Optional[pulumi.Input[Sequence[pulumi.Input['WorkerScriptWebassemblyBindingArgs']]]] = None):
         """
         The set of arguments for constructing a WorkerScript resource.
@@ -40,6 +42,7 @@ class WorkerScriptArgs:
         :param pulumi.Input[str] name: The global variable for the binding in your Worker code.
         :param pulumi.Input[str] compatibility_date: The date to use for the compatibility flag.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] compatibility_flags: Compatibility flags used for Worker Scripts.
+        :param pulumi.Input[str] dispatch_namespace: Name of the Workers for Platforms dispatch namespace.
         :param pulumi.Input[bool] logpush: Enabling allows Worker events to be sent to a defined Logpush destination.
         :param pulumi.Input[bool] module: The base64 encoded wasm module you want to store.
         """
@@ -54,6 +57,8 @@ class WorkerScriptArgs:
             pulumi.set(__self__, "compatibility_flags", compatibility_flags)
         if d1_database_bindings is not None:
             pulumi.set(__self__, "d1_database_bindings", d1_database_bindings)
+        if dispatch_namespace is not None:
+            pulumi.set(__self__, "dispatch_namespace", dispatch_namespace)
         if kv_namespace_bindings is not None:
             pulumi.set(__self__, "kv_namespace_bindings", kv_namespace_bindings)
         if logpush is not None:
@@ -72,6 +77,8 @@ class WorkerScriptArgs:
             pulumi.set(__self__, "secret_text_bindings", secret_text_bindings)
         if service_bindings is not None:
             pulumi.set(__self__, "service_bindings", service_bindings)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
         if webassembly_bindings is not None:
             pulumi.set(__self__, "webassembly_bindings", webassembly_bindings)
 
@@ -152,6 +159,18 @@ class WorkerScriptArgs:
     @d1_database_bindings.setter
     def d1_database_bindings(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['WorkerScriptD1DatabaseBindingArgs']]]]):
         pulumi.set(self, "d1_database_bindings", value)
+
+    @property
+    @pulumi.getter(name="dispatchNamespace")
+    def dispatch_namespace(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the Workers for Platforms dispatch namespace.
+        """
+        return pulumi.get(self, "dispatch_namespace")
+
+    @dispatch_namespace.setter
+    def dispatch_namespace(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "dispatch_namespace", value)
 
     @property
     @pulumi.getter(name="kvNamespaceBindings")
@@ -241,6 +260,15 @@ class WorkerScriptArgs:
         pulumi.set(self, "service_bindings", value)
 
     @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "tags", value)
+
+    @property
     @pulumi.getter(name="webassemblyBindings")
     def webassembly_bindings(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['WorkerScriptWebassemblyBindingArgs']]]]:
         return pulumi.get(self, "webassembly_bindings")
@@ -259,6 +287,7 @@ class _WorkerScriptState:
                  compatibility_flags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  content: Optional[pulumi.Input[str]] = None,
                  d1_database_bindings: Optional[pulumi.Input[Sequence[pulumi.Input['WorkerScriptD1DatabaseBindingArgs']]]] = None,
+                 dispatch_namespace: Optional[pulumi.Input[str]] = None,
                  kv_namespace_bindings: Optional[pulumi.Input[Sequence[pulumi.Input['WorkerScriptKvNamespaceBindingArgs']]]] = None,
                  logpush: Optional[pulumi.Input[bool]] = None,
                  module: Optional[pulumi.Input[bool]] = None,
@@ -269,6 +298,7 @@ class _WorkerScriptState:
                  r2_bucket_bindings: Optional[pulumi.Input[Sequence[pulumi.Input['WorkerScriptR2BucketBindingArgs']]]] = None,
                  secret_text_bindings: Optional[pulumi.Input[Sequence[pulumi.Input['WorkerScriptSecretTextBindingArgs']]]] = None,
                  service_bindings: Optional[pulumi.Input[Sequence[pulumi.Input['WorkerScriptServiceBindingArgs']]]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  webassembly_bindings: Optional[pulumi.Input[Sequence[pulumi.Input['WorkerScriptWebassemblyBindingArgs']]]] = None):
         """
         Input properties used for looking up and filtering WorkerScript resources.
@@ -276,6 +306,7 @@ class _WorkerScriptState:
         :param pulumi.Input[str] compatibility_date: The date to use for the compatibility flag.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] compatibility_flags: Compatibility flags used for Worker Scripts.
         :param pulumi.Input[str] content: The script content.
+        :param pulumi.Input[str] dispatch_namespace: Name of the Workers for Platforms dispatch namespace.
         :param pulumi.Input[bool] logpush: Enabling allows Worker events to be sent to a defined Logpush destination.
         :param pulumi.Input[bool] module: The base64 encoded wasm module you want to store.
         :param pulumi.Input[str] name: The global variable for the binding in your Worker code.
@@ -292,6 +323,8 @@ class _WorkerScriptState:
             pulumi.set(__self__, "content", content)
         if d1_database_bindings is not None:
             pulumi.set(__self__, "d1_database_bindings", d1_database_bindings)
+        if dispatch_namespace is not None:
+            pulumi.set(__self__, "dispatch_namespace", dispatch_namespace)
         if kv_namespace_bindings is not None:
             pulumi.set(__self__, "kv_namespace_bindings", kv_namespace_bindings)
         if logpush is not None:
@@ -312,6 +345,8 @@ class _WorkerScriptState:
             pulumi.set(__self__, "secret_text_bindings", secret_text_bindings)
         if service_bindings is not None:
             pulumi.set(__self__, "service_bindings", service_bindings)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
         if webassembly_bindings is not None:
             pulumi.set(__self__, "webassembly_bindings", webassembly_bindings)
 
@@ -380,6 +415,18 @@ class _WorkerScriptState:
     @d1_database_bindings.setter
     def d1_database_bindings(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['WorkerScriptD1DatabaseBindingArgs']]]]):
         pulumi.set(self, "d1_database_bindings", value)
+
+    @property
+    @pulumi.getter(name="dispatchNamespace")
+    def dispatch_namespace(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the Workers for Platforms dispatch namespace.
+        """
+        return pulumi.get(self, "dispatch_namespace")
+
+    @dispatch_namespace.setter
+    def dispatch_namespace(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "dispatch_namespace", value)
 
     @property
     @pulumi.getter(name="kvNamespaceBindings")
@@ -481,6 +528,15 @@ class _WorkerScriptState:
         pulumi.set(self, "service_bindings", value)
 
     @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "tags", value)
+
+    @property
     @pulumi.getter(name="webassemblyBindings")
     def webassembly_bindings(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['WorkerScriptWebassemblyBindingArgs']]]]:
         return pulumi.get(self, "webassembly_bindings")
@@ -501,6 +557,7 @@ class WorkerScript(pulumi.CustomResource):
                  compatibility_flags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  content: Optional[pulumi.Input[str]] = None,
                  d1_database_bindings: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WorkerScriptD1DatabaseBindingArgs']]]]] = None,
+                 dispatch_namespace: Optional[pulumi.Input[str]] = None,
                  kv_namespace_bindings: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WorkerScriptKvNamespaceBindingArgs']]]]] = None,
                  logpush: Optional[pulumi.Input[bool]] = None,
                  module: Optional[pulumi.Input[bool]] = None,
@@ -511,6 +568,7 @@ class WorkerScript(pulumi.CustomResource):
                  r2_bucket_bindings: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WorkerScriptR2BucketBindingArgs']]]]] = None,
                  secret_text_bindings: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WorkerScriptSecretTextBindingArgs']]]]] = None,
                  service_bindings: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WorkerScriptServiceBindingArgs']]]]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  webassembly_bindings: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WorkerScriptWebassemblyBindingArgs']]]]] = None,
                  __props__=None):
         """
@@ -576,6 +634,7 @@ class WorkerScript(pulumi.CustomResource):
         :param pulumi.Input[str] compatibility_date: The date to use for the compatibility flag.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] compatibility_flags: Compatibility flags used for Worker Scripts.
         :param pulumi.Input[str] content: The script content.
+        :param pulumi.Input[str] dispatch_namespace: Name of the Workers for Platforms dispatch namespace.
         :param pulumi.Input[bool] logpush: Enabling allows Worker events to be sent to a defined Logpush destination.
         :param pulumi.Input[bool] module: The base64 encoded wasm module you want to store.
         :param pulumi.Input[str] name: The global variable for the binding in your Worker code.
@@ -664,6 +723,7 @@ class WorkerScript(pulumi.CustomResource):
                  compatibility_flags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  content: Optional[pulumi.Input[str]] = None,
                  d1_database_bindings: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WorkerScriptD1DatabaseBindingArgs']]]]] = None,
+                 dispatch_namespace: Optional[pulumi.Input[str]] = None,
                  kv_namespace_bindings: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WorkerScriptKvNamespaceBindingArgs']]]]] = None,
                  logpush: Optional[pulumi.Input[bool]] = None,
                  module: Optional[pulumi.Input[bool]] = None,
@@ -674,6 +734,7 @@ class WorkerScript(pulumi.CustomResource):
                  r2_bucket_bindings: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WorkerScriptR2BucketBindingArgs']]]]] = None,
                  secret_text_bindings: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WorkerScriptSecretTextBindingArgs']]]]] = None,
                  service_bindings: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WorkerScriptServiceBindingArgs']]]]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  webassembly_bindings: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WorkerScriptWebassemblyBindingArgs']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -694,6 +755,7 @@ class WorkerScript(pulumi.CustomResource):
                 raise TypeError("Missing required property 'content'")
             __props__.__dict__["content"] = content
             __props__.__dict__["d1_database_bindings"] = d1_database_bindings
+            __props__.__dict__["dispatch_namespace"] = dispatch_namespace
             __props__.__dict__["kv_namespace_bindings"] = kv_namespace_bindings
             __props__.__dict__["logpush"] = logpush
             __props__.__dict__["module"] = module
@@ -706,6 +768,7 @@ class WorkerScript(pulumi.CustomResource):
             __props__.__dict__["r2_bucket_bindings"] = r2_bucket_bindings
             __props__.__dict__["secret_text_bindings"] = secret_text_bindings
             __props__.__dict__["service_bindings"] = service_bindings
+            __props__.__dict__["tags"] = tags
             __props__.__dict__["webassembly_bindings"] = webassembly_bindings
         super(WorkerScript, __self__).__init__(
             'cloudflare:index/workerScript:WorkerScript',
@@ -723,6 +786,7 @@ class WorkerScript(pulumi.CustomResource):
             compatibility_flags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             content: Optional[pulumi.Input[str]] = None,
             d1_database_bindings: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WorkerScriptD1DatabaseBindingArgs']]]]] = None,
+            dispatch_namespace: Optional[pulumi.Input[str]] = None,
             kv_namespace_bindings: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WorkerScriptKvNamespaceBindingArgs']]]]] = None,
             logpush: Optional[pulumi.Input[bool]] = None,
             module: Optional[pulumi.Input[bool]] = None,
@@ -733,6 +797,7 @@ class WorkerScript(pulumi.CustomResource):
             r2_bucket_bindings: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WorkerScriptR2BucketBindingArgs']]]]] = None,
             secret_text_bindings: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WorkerScriptSecretTextBindingArgs']]]]] = None,
             service_bindings: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WorkerScriptServiceBindingArgs']]]]] = None,
+            tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             webassembly_bindings: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WorkerScriptWebassemblyBindingArgs']]]]] = None) -> 'WorkerScript':
         """
         Get an existing WorkerScript resource's state with the given name, id, and optional extra
@@ -745,6 +810,7 @@ class WorkerScript(pulumi.CustomResource):
         :param pulumi.Input[str] compatibility_date: The date to use for the compatibility flag.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] compatibility_flags: Compatibility flags used for Worker Scripts.
         :param pulumi.Input[str] content: The script content.
+        :param pulumi.Input[str] dispatch_namespace: Name of the Workers for Platforms dispatch namespace.
         :param pulumi.Input[bool] logpush: Enabling allows Worker events to be sent to a defined Logpush destination.
         :param pulumi.Input[bool] module: The base64 encoded wasm module you want to store.
         :param pulumi.Input[str] name: The global variable for the binding in your Worker code.
@@ -759,6 +825,7 @@ class WorkerScript(pulumi.CustomResource):
         __props__.__dict__["compatibility_flags"] = compatibility_flags
         __props__.__dict__["content"] = content
         __props__.__dict__["d1_database_bindings"] = d1_database_bindings
+        __props__.__dict__["dispatch_namespace"] = dispatch_namespace
         __props__.__dict__["kv_namespace_bindings"] = kv_namespace_bindings
         __props__.__dict__["logpush"] = logpush
         __props__.__dict__["module"] = module
@@ -769,6 +836,7 @@ class WorkerScript(pulumi.CustomResource):
         __props__.__dict__["r2_bucket_bindings"] = r2_bucket_bindings
         __props__.__dict__["secret_text_bindings"] = secret_text_bindings
         __props__.__dict__["service_bindings"] = service_bindings
+        __props__.__dict__["tags"] = tags
         __props__.__dict__["webassembly_bindings"] = webassembly_bindings
         return WorkerScript(resource_name, opts=opts, __props__=__props__)
 
@@ -813,6 +881,14 @@ class WorkerScript(pulumi.CustomResource):
     @pulumi.getter(name="d1DatabaseBindings")
     def d1_database_bindings(self) -> pulumi.Output[Optional[Sequence['outputs.WorkerScriptD1DatabaseBinding']]]:
         return pulumi.get(self, "d1_database_bindings")
+
+    @property
+    @pulumi.getter(name="dispatchNamespace")
+    def dispatch_namespace(self) -> pulumi.Output[Optional[str]]:
+        """
+        Name of the Workers for Platforms dispatch namespace.
+        """
+        return pulumi.get(self, "dispatch_namespace")
 
     @property
     @pulumi.getter(name="kvNamespaceBindings")
@@ -872,6 +948,11 @@ class WorkerScript(pulumi.CustomResource):
     @pulumi.getter(name="serviceBindings")
     def service_bindings(self) -> pulumi.Output[Optional[Sequence['outputs.WorkerScriptServiceBinding']]]:
         return pulumi.get(self, "service_bindings")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> pulumi.Output[Sequence[str]]:
+        return pulumi.get(self, "tags")
 
     @property
     @pulumi.getter(name="webassemblyBindings")

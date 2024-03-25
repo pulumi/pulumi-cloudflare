@@ -184,6 +184,20 @@ public class WorkerScript extends com.pulumi.resources.CustomResource {
     public Output<Optional<List<WorkerScriptD1DatabaseBinding>>> d1DatabaseBindings() {
         return Codegen.optional(this.d1DatabaseBindings);
     }
+    /**
+     * Name of the Workers for Platforms dispatch namespace.
+     * 
+     */
+    @Export(name="dispatchNamespace", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> dispatchNamespace;
+
+    /**
+     * @return Name of the Workers for Platforms dispatch namespace.
+     * 
+     */
+    public Output<Optional<String>> dispatchNamespace() {
+        return Codegen.optional(this.dispatchNamespace);
+    }
     @Export(name="kvNamespaceBindings", refs={List.class,WorkerScriptKvNamespaceBinding.class}, tree="[0,1]")
     private Output</* @Nullable */ List<WorkerScriptKvNamespaceBinding>> kvNamespaceBindings;
 
@@ -267,6 +281,12 @@ public class WorkerScript extends com.pulumi.resources.CustomResource {
 
     public Output<Optional<List<WorkerScriptServiceBinding>>> serviceBindings() {
         return Codegen.optional(this.serviceBindings);
+    }
+    @Export(name="tags", refs={List.class,String.class}, tree="[0,1]")
+    private Output<List<String>> tags;
+
+    public Output<List<String>> tags() {
+        return this.tags;
     }
     @Export(name="webassemblyBindings", refs={List.class,WorkerScriptWebassemblyBinding.class}, tree="[0,1]")
     private Output</* @Nullable */ List<WorkerScriptWebassemblyBinding>> webassemblyBindings;

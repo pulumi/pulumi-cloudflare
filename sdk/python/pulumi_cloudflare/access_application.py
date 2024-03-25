@@ -48,9 +48,7 @@ class AccessApplicationArgs:
         """
         The set of arguments for constructing a AccessApplication resource.
         :param pulumi.Input[str] account_id: The account identifier to target for the resource. Conflicts with `zone_id`.
-        :param pulumi.Input[bool] allow_authenticate_via_warp: When set to true, users can authenticate to this application using their WARP session. When set to false this
-               application will always require direct IdP authentication. This setting always overrides the organization setting for
-               WARP authentication.
+        :param pulumi.Input[bool] allow_authenticate_via_warp: When set to true, users can authenticate to this application using their WARP session. When set to false this application will always require direct IdP authentication. This setting always overrides the organization setting for WARP authentication.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_idps: The identity providers selected for the application.
         :param pulumi.Input[str] app_launcher_logo_url: The logo URL of the app launcher.
         :param pulumi.Input[bool] app_launcher_visible: Option to show/hide applications in App Launcher. Defaults to `true`.
@@ -154,9 +152,7 @@ class AccessApplicationArgs:
     @pulumi.getter(name="allowAuthenticateViaWarp")
     def allow_authenticate_via_warp(self) -> Optional[pulumi.Input[bool]]:
         """
-        When set to true, users can authenticate to this application using their WARP session. When set to false this
-        application will always require direct IdP authentication. This setting always overrides the organization setting for
-        WARP authentication.
+        When set to true, users can authenticate to this application using their WARP session. When set to false this application will always require direct IdP authentication. This setting always overrides the organization setting for WARP authentication.
         """
         return pulumi.get(self, "allow_authenticate_via_warp")
 
@@ -525,9 +521,7 @@ class _AccessApplicationState:
         """
         Input properties used for looking up and filtering AccessApplication resources.
         :param pulumi.Input[str] account_id: The account identifier to target for the resource. Conflicts with `zone_id`.
-        :param pulumi.Input[bool] allow_authenticate_via_warp: When set to true, users can authenticate to this application using their WARP session. When set to false this
-               application will always require direct IdP authentication. This setting always overrides the organization setting for
-               WARP authentication.
+        :param pulumi.Input[bool] allow_authenticate_via_warp: When set to true, users can authenticate to this application using their WARP session. When set to false this application will always require direct IdP authentication. This setting always overrides the organization setting for WARP authentication.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_idps: The identity providers selected for the application.
         :param pulumi.Input[str] app_launcher_logo_url: The logo URL of the app launcher.
         :param pulumi.Input[bool] app_launcher_visible: Option to show/hide applications in App Launcher. Defaults to `true`.
@@ -634,9 +628,7 @@ class _AccessApplicationState:
     @pulumi.getter(name="allowAuthenticateViaWarp")
     def allow_authenticate_via_warp(self) -> Optional[pulumi.Input[bool]]:
         """
-        When set to true, users can authenticate to this application using their WARP session. When set to false this
-        application will always require direct IdP authentication. This setting always overrides the organization setting for
-        WARP authentication.
+        When set to true, users can authenticate to this application using their WARP session. When set to false this application will always require direct IdP authentication. This setting always overrides the organization setting for WARP authentication.
         """
         return pulumi.get(self, "allow_authenticate_via_warp")
 
@@ -1063,9 +1055,7 @@ class AccessApplication(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_id: The account identifier to target for the resource. Conflicts with `zone_id`.
-        :param pulumi.Input[bool] allow_authenticate_via_warp: When set to true, users can authenticate to this application using their WARP session. When set to false this
-               application will always require direct IdP authentication. This setting always overrides the organization setting for
-               WARP authentication.
+        :param pulumi.Input[bool] allow_authenticate_via_warp: When set to true, users can authenticate to this application using their WARP session. When set to false this application will always require direct IdP authentication. This setting always overrides the organization setting for WARP authentication.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_idps: The identity providers selected for the application.
         :param pulumi.Input[str] app_launcher_logo_url: The logo URL of the app launcher.
         :param pulumi.Input[bool] app_launcher_visible: Option to show/hide applications in App Launcher. Defaults to `true`.
@@ -1275,9 +1265,7 @@ class AccessApplication(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_id: The account identifier to target for the resource. Conflicts with `zone_id`.
-        :param pulumi.Input[bool] allow_authenticate_via_warp: When set to true, users can authenticate to this application using their WARP session. When set to false this
-               application will always require direct IdP authentication. This setting always overrides the organization setting for
-               WARP authentication.
+        :param pulumi.Input[bool] allow_authenticate_via_warp: When set to true, users can authenticate to this application using their WARP session. When set to false this application will always require direct IdP authentication. This setting always overrides the organization setting for WARP authentication.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_idps: The identity providers selected for the application.
         :param pulumi.Input[str] app_launcher_logo_url: The logo URL of the app launcher.
         :param pulumi.Input[bool] app_launcher_visible: Option to show/hide applications in App Launcher. Defaults to `true`.
@@ -1355,9 +1343,7 @@ class AccessApplication(pulumi.CustomResource):
     @pulumi.getter(name="allowAuthenticateViaWarp")
     def allow_authenticate_via_warp(self) -> pulumi.Output[Optional[bool]]:
         """
-        When set to true, users can authenticate to this application using their WARP session. When set to false this
-        application will always require direct IdP authentication. This setting always overrides the organization setting for
-        WARP authentication.
+        When set to true, users can authenticate to this application using their WARP session. When set to false this application will always require direct IdP authentication. This setting always overrides the organization setting for WARP authentication.
         """
         return pulumi.get(self, "allow_authenticate_via_warp")
 

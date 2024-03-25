@@ -37,18 +37,14 @@ public final class AccessApplicationState extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * When set to true, users can authenticate to this application using their WARP session. When set to false this
-     * application will always require direct IdP authentication. This setting always overrides the organization setting for
-     * WARP authentication.
+     * When set to true, users can authenticate to this application using their WARP session. When set to false this application will always require direct IdP authentication. This setting always overrides the organization setting for WARP authentication.
      * 
      */
     @Import(name="allowAuthenticateViaWarp")
     private @Nullable Output<Boolean> allowAuthenticateViaWarp;
 
     /**
-     * @return When set to true, users can authenticate to this application using their WARP session. When set to false this
-     * application will always require direct IdP authentication. This setting always overrides the organization setting for
-     * WARP authentication.
+     * @return When set to true, users can authenticate to this application using their WARP session. When set to false this application will always require direct IdP authentication. This setting always overrides the organization setting for WARP authentication.
      * 
      */
     public Optional<Output<Boolean>> allowAuthenticateViaWarp() {
@@ -550,9 +546,7 @@ public final class AccessApplicationState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param allowAuthenticateViaWarp When set to true, users can authenticate to this application using their WARP session. When set to false this
-         * application will always require direct IdP authentication. This setting always overrides the organization setting for
-         * WARP authentication.
+         * @param allowAuthenticateViaWarp When set to true, users can authenticate to this application using their WARP session. When set to false this application will always require direct IdP authentication. This setting always overrides the organization setting for WARP authentication.
          * 
          * @return builder
          * 
@@ -563,9 +557,7 @@ public final class AccessApplicationState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param allowAuthenticateViaWarp When set to true, users can authenticate to this application using their WARP session. When set to false this
-         * application will always require direct IdP authentication. This setting always overrides the organization setting for
-         * WARP authentication.
+         * @param allowAuthenticateViaWarp When set to true, users can authenticate to this application using their WARP session. When set to false this application will always require direct IdP authentication. This setting always overrides the organization setting for WARP authentication.
          * 
          * @return builder
          * 

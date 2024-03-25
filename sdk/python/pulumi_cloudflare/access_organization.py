@@ -33,8 +33,7 @@ class AccessOrganizationArgs:
         The set of arguments for constructing a AccessOrganization resource.
         :param pulumi.Input[str] auth_domain: The unique subdomain assigned to your Zero Trust organization.
         :param pulumi.Input[str] account_id: The account identifier to target for the resource. Conflicts with `zone_id`.
-        :param pulumi.Input[bool] allow_authenticate_via_warp: When set to true, users can authenticate via WARP for any application in your organization. Application settings will
-               take precedence over this value.
+        :param pulumi.Input[bool] allow_authenticate_via_warp: When set to true, users can authenticate via WARP for any application in your organization. Application settings will take precedence over this value.
         :param pulumi.Input[bool] auto_redirect_to_identity: When set to true, users skip the identity provider selection step during login.
         :param pulumi.Input[Sequence[pulumi.Input['AccessOrganizationCustomPageArgs']]] custom_pages: Custom pages for your Zero Trust organization.
         :param pulumi.Input[bool] is_ui_read_only: When set to true, this will disable all editing of Access resources via the Zero Trust Dashboard.
@@ -42,8 +41,7 @@ class AccessOrganizationArgs:
         :param pulumi.Input[str] session_duration: How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`.
         :param pulumi.Input[str] ui_read_only_toggle_reason: A description of the reason why the UI read only field is being toggled.
         :param pulumi.Input[str] user_seat_expiration_inactive_time: The amount of time a user seat is inactive before it expires. When the user seat exceeds the set time of inactivity, the user is removed as an active seat and no longer counts against your Teams seat count. Must be in the format `300ms` or `2h45m`.
-        :param pulumi.Input[str] warp_auth_session_duration: The amount of time that tokens issued for applications will be valid. Must be in the format 30m or 2h45m. Valid time
-               units are: m, h.
+        :param pulumi.Input[str] warp_auth_session_duration: The amount of time that tokens issued for applications will be valid. Must be in the format 30m or 2h45m. Valid time units are: m, h.
         :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. Conflicts with `account_id`.
         """
         pulumi.set(__self__, "auth_domain", auth_domain)
@@ -100,8 +98,7 @@ class AccessOrganizationArgs:
     @pulumi.getter(name="allowAuthenticateViaWarp")
     def allow_authenticate_via_warp(self) -> Optional[pulumi.Input[bool]]:
         """
-        When set to true, users can authenticate via WARP for any application in your organization. Application settings will
-        take precedence over this value.
+        When set to true, users can authenticate via WARP for any application in your organization. Application settings will take precedence over this value.
         """
         return pulumi.get(self, "allow_authenticate_via_warp")
 
@@ -206,8 +203,7 @@ class AccessOrganizationArgs:
     @pulumi.getter(name="warpAuthSessionDuration")
     def warp_auth_session_duration(self) -> Optional[pulumi.Input[str]]:
         """
-        The amount of time that tokens issued for applications will be valid. Must be in the format 30m or 2h45m. Valid time
-        units are: m, h.
+        The amount of time that tokens issued for applications will be valid. Must be in the format 30m or 2h45m. Valid time units are: m, h.
         """
         return pulumi.get(self, "warp_auth_session_duration")
 
@@ -247,8 +243,7 @@ class _AccessOrganizationState:
         """
         Input properties used for looking up and filtering AccessOrganization resources.
         :param pulumi.Input[str] account_id: The account identifier to target for the resource. Conflicts with `zone_id`.
-        :param pulumi.Input[bool] allow_authenticate_via_warp: When set to true, users can authenticate via WARP for any application in your organization. Application settings will
-               take precedence over this value.
+        :param pulumi.Input[bool] allow_authenticate_via_warp: When set to true, users can authenticate via WARP for any application in your organization. Application settings will take precedence over this value.
         :param pulumi.Input[str] auth_domain: The unique subdomain assigned to your Zero Trust organization.
         :param pulumi.Input[bool] auto_redirect_to_identity: When set to true, users skip the identity provider selection step during login.
         :param pulumi.Input[Sequence[pulumi.Input['AccessOrganizationCustomPageArgs']]] custom_pages: Custom pages for your Zero Trust organization.
@@ -257,8 +252,7 @@ class _AccessOrganizationState:
         :param pulumi.Input[str] session_duration: How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`.
         :param pulumi.Input[str] ui_read_only_toggle_reason: A description of the reason why the UI read only field is being toggled.
         :param pulumi.Input[str] user_seat_expiration_inactive_time: The amount of time a user seat is inactive before it expires. When the user seat exceeds the set time of inactivity, the user is removed as an active seat and no longer counts against your Teams seat count. Must be in the format `300ms` or `2h45m`.
-        :param pulumi.Input[str] warp_auth_session_duration: The amount of time that tokens issued for applications will be valid. Must be in the format 30m or 2h45m. Valid time
-               units are: m, h.
+        :param pulumi.Input[str] warp_auth_session_duration: The amount of time that tokens issued for applications will be valid. Must be in the format 30m or 2h45m. Valid time units are: m, h.
         :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. Conflicts with `account_id`.
         """
         if account_id is not None:
@@ -304,8 +298,7 @@ class _AccessOrganizationState:
     @pulumi.getter(name="allowAuthenticateViaWarp")
     def allow_authenticate_via_warp(self) -> Optional[pulumi.Input[bool]]:
         """
-        When set to true, users can authenticate via WARP for any application in your organization. Application settings will
-        take precedence over this value.
+        When set to true, users can authenticate via WARP for any application in your organization. Application settings will take precedence over this value.
         """
         return pulumi.get(self, "allow_authenticate_via_warp")
 
@@ -422,8 +415,7 @@ class _AccessOrganizationState:
     @pulumi.getter(name="warpAuthSessionDuration")
     def warp_auth_session_duration(self) -> Optional[pulumi.Input[str]]:
         """
-        The amount of time that tokens issued for applications will be valid. Must be in the format 30m or 2h45m. Valid time
-        units are: m, h.
+        The amount of time that tokens issued for applications will be valid. Must be in the format 30m or 2h45m. Valid time units are: m, h.
         """
         return pulumi.get(self, "warp_auth_session_duration")
 
@@ -499,8 +491,7 @@ class AccessOrganization(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_id: The account identifier to target for the resource. Conflicts with `zone_id`.
-        :param pulumi.Input[bool] allow_authenticate_via_warp: When set to true, users can authenticate via WARP for any application in your organization. Application settings will
-               take precedence over this value.
+        :param pulumi.Input[bool] allow_authenticate_via_warp: When set to true, users can authenticate via WARP for any application in your organization. Application settings will take precedence over this value.
         :param pulumi.Input[str] auth_domain: The unique subdomain assigned to your Zero Trust organization.
         :param pulumi.Input[bool] auto_redirect_to_identity: When set to true, users skip the identity provider selection step during login.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessOrganizationCustomPageArgs']]]] custom_pages: Custom pages for your Zero Trust organization.
@@ -509,8 +500,7 @@ class AccessOrganization(pulumi.CustomResource):
         :param pulumi.Input[str] session_duration: How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`.
         :param pulumi.Input[str] ui_read_only_toggle_reason: A description of the reason why the UI read only field is being toggled.
         :param pulumi.Input[str] user_seat_expiration_inactive_time: The amount of time a user seat is inactive before it expires. When the user seat exceeds the set time of inactivity, the user is removed as an active seat and no longer counts against your Teams seat count. Must be in the format `300ms` or `2h45m`.
-        :param pulumi.Input[str] warp_auth_session_duration: The amount of time that tokens issued for applications will be valid. Must be in the format 30m or 2h45m. Valid time
-               units are: m, h.
+        :param pulumi.Input[str] warp_auth_session_duration: The amount of time that tokens issued for applications will be valid. Must be in the format 30m or 2h45m. Valid time units are: m, h.
         :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. Conflicts with `account_id`.
         """
         ...
@@ -635,8 +625,7 @@ class AccessOrganization(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_id: The account identifier to target for the resource. Conflicts with `zone_id`.
-        :param pulumi.Input[bool] allow_authenticate_via_warp: When set to true, users can authenticate via WARP for any application in your organization. Application settings will
-               take precedence over this value.
+        :param pulumi.Input[bool] allow_authenticate_via_warp: When set to true, users can authenticate via WARP for any application in your organization. Application settings will take precedence over this value.
         :param pulumi.Input[str] auth_domain: The unique subdomain assigned to your Zero Trust organization.
         :param pulumi.Input[bool] auto_redirect_to_identity: When set to true, users skip the identity provider selection step during login.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessOrganizationCustomPageArgs']]]] custom_pages: Custom pages for your Zero Trust organization.
@@ -645,8 +634,7 @@ class AccessOrganization(pulumi.CustomResource):
         :param pulumi.Input[str] session_duration: How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`.
         :param pulumi.Input[str] ui_read_only_toggle_reason: A description of the reason why the UI read only field is being toggled.
         :param pulumi.Input[str] user_seat_expiration_inactive_time: The amount of time a user seat is inactive before it expires. When the user seat exceeds the set time of inactivity, the user is removed as an active seat and no longer counts against your Teams seat count. Must be in the format `300ms` or `2h45m`.
-        :param pulumi.Input[str] warp_auth_session_duration: The amount of time that tokens issued for applications will be valid. Must be in the format 30m or 2h45m. Valid time
-               units are: m, h.
+        :param pulumi.Input[str] warp_auth_session_duration: The amount of time that tokens issued for applications will be valid. Must be in the format 30m or 2h45m. Valid time units are: m, h.
         :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. Conflicts with `account_id`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -680,8 +668,7 @@ class AccessOrganization(pulumi.CustomResource):
     @pulumi.getter(name="allowAuthenticateViaWarp")
     def allow_authenticate_via_warp(self) -> pulumi.Output[Optional[bool]]:
         """
-        When set to true, users can authenticate via WARP for any application in your organization. Application settings will
-        take precedence over this value.
+        When set to true, users can authenticate via WARP for any application in your organization. Application settings will take precedence over this value.
         """
         return pulumi.get(self, "allow_authenticate_via_warp")
 
@@ -758,8 +745,7 @@ class AccessOrganization(pulumi.CustomResource):
     @pulumi.getter(name="warpAuthSessionDuration")
     def warp_auth_session_duration(self) -> pulumi.Output[Optional[str]]:
         """
-        The amount of time that tokens issued for applications will be valid. Must be in the format 30m or 2h45m. Valid time
-        units are: m, h.
+        The amount of time that tokens issued for applications will be valid. Must be in the format 30m or 2h45m. Valid time units are: m, h.
         """
         return pulumi.get(self, "warp_auth_session_duration")
 

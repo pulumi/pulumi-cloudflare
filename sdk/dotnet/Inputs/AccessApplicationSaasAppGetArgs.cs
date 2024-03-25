@@ -13,7 +13,7 @@ namespace Pulumi.Cloudflare.Inputs
     public sealed class AccessApplicationSaasAppGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The URL where this applications tile redirects users
+        /// The URL where this applications tile redirects users.
         /// </summary>
         [Input("appLauncherUrl")]
         public Input<string>? AppLauncherUrl { get; set; }
@@ -22,16 +22,26 @@ namespace Pulumi.Cloudflare.Inputs
         public Input<string>? AuthType { get; set; }
 
         /// <summary>
-        /// The application client id
+        /// The application client id.
         /// </summary>
         [Input("clientId")]
         public Input<string>? ClientId { get; set; }
 
-        /// <summary>
-        /// The application client secret, only returned on initial apply
-        /// </summary>
         [Input("clientSecret")]
-        public Input<string>? ClientSecret { get; set; }
+        private Input<string>? _clientSecret;
+
+        /// <summary>
+        /// The application client secret, only returned on initial apply.
+        /// </summary>
+        public Input<string>? ClientSecret
+        {
+            get => _clientSecret;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _clientSecret = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// The service provider's endpoint that is responsible for receiving and parsing a SAML assertion.
@@ -61,7 +71,7 @@ namespace Pulumi.Cloudflare.Inputs
         private InputList<string>? _grantTypes;
 
         /// <summary>
-        /// The OIDC flows supported by this application
+        /// The OIDC flows supported by this application.
         /// </summary>
         public InputList<string> GrantTypes
         {
@@ -70,7 +80,7 @@ namespace Pulumi.Cloudflare.Inputs
         }
 
         /// <summary>
-        /// A regex to filter Cloudflare groups returned in ID token and userinfo endpoint
+        /// A regex to filter Cloudflare groups returned in ID token and userinfo endpoint.
         /// </summary>
         [Input("groupFilterRegex")]
         public Input<string>? GroupFilterRegex { get; set; }
@@ -82,7 +92,7 @@ namespace Pulumi.Cloudflare.Inputs
         public Input<string>? IdpEntityId { get; set; }
 
         /// <summary>
-        /// The format of the name identifier sent to the SaaS application. Defaults to `email`.
+        /// The format of the name identifier sent to the SaaS application.
         /// </summary>
         [Input("nameIdFormat")]
         public Input<string>? NameIdFormat { get; set; }
@@ -103,7 +113,7 @@ namespace Pulumi.Cloudflare.Inputs
         private InputList<string>? _redirectUris;
 
         /// <summary>
-        /// The permitted URL's for Cloudflare to return Authorization codes and Access/ID tokens
+        /// The permitted URL's for Cloudflare to return Authorization codes and Access/ID tokens.
         /// </summary>
         public InputList<string> RedirectUris
         {
@@ -115,7 +125,7 @@ namespace Pulumi.Cloudflare.Inputs
         private InputList<string>? _scopes;
 
         /// <summary>
-        /// Define the user information shared with access
+        /// Define the user information shared with access.
         /// </summary>
         public InputList<string> Scopes
         {

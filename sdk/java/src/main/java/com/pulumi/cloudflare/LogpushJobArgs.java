@@ -3,6 +3,7 @@
 
 package com.pulumi.cloudflare;
 
+import com.pulumi.cloudflare.inputs.LogpushJobOutputOptionsArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
@@ -199,6 +200,21 @@ public final class LogpushJobArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Structured replacement for logpull*options. When including this field, the logpull*option field will be ignored.
+     * 
+     */
+    @Import(name="outputOptions")
+    private @Nullable Output<LogpushJobOutputOptionsArgs> outputOptions;
+
+    /**
+     * @return Structured replacement for logpull*options. When including this field, the logpull*option field will be ignored.
+     * 
+     */
+    public Optional<Output<LogpushJobOutputOptionsArgs>> outputOptions() {
+        return Optional.ofNullable(this.outputOptions);
+    }
+
+    /**
      * Ownership challenge token to prove destination ownership, required when destination is Amazon S3, Google Cloud Storage, Microsoft Azure or Sumo Logic. See [Developer documentation](https://developers.cloudflare.com/logs/logpush/logpush-configuration-api/understanding-logpush-api/#usage).
      * 
      */
@@ -243,6 +259,7 @@ public final class LogpushJobArgs extends com.pulumi.resources.ResourceArgs {
         this.maxUploadIntervalSeconds = $.maxUploadIntervalSeconds;
         this.maxUploadRecords = $.maxUploadRecords;
         this.name = $.name;
+        this.outputOptions = $.outputOptions;
         this.ownershipChallenge = $.ownershipChallenge;
         this.zoneId = $.zoneId;
     }
@@ -515,6 +532,27 @@ public final class LogpushJobArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder name(String name) {
             return name(Output.of(name));
+        }
+
+        /**
+         * @param outputOptions Structured replacement for logpull*options. When including this field, the logpull*option field will be ignored.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder outputOptions(@Nullable Output<LogpushJobOutputOptionsArgs> outputOptions) {
+            $.outputOptions = outputOptions;
+            return this;
+        }
+
+        /**
+         * @param outputOptions Structured replacement for logpull*options. When including this field, the logpull*option field will be ignored.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder outputOptions(LogpushJobOutputOptionsArgs outputOptions) {
+            return outputOptions(Output.of(outputOptions));
         }
 
         /**

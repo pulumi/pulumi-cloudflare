@@ -40,6 +40,11 @@ export type AccessMutualTlsCertificate = import("./accessMutualTlsCertificate").
 export const AccessMutualTlsCertificate: typeof import("./accessMutualTlsCertificate").AccessMutualTlsCertificate = null as any;
 utilities.lazyLoad(exports, ["AccessMutualTlsCertificate"], () => require("./accessMutualTlsCertificate"));
 
+export { AccessMutualTlsHostnameSettingsArgs, AccessMutualTlsHostnameSettingsState } from "./accessMutualTlsHostnameSettings";
+export type AccessMutualTlsHostnameSettings = import("./accessMutualTlsHostnameSettings").AccessMutualTlsHostnameSettings;
+export const AccessMutualTlsHostnameSettings: typeof import("./accessMutualTlsHostnameSettings").AccessMutualTlsHostnameSettings = null as any;
+utilities.lazyLoad(exports, ["AccessMutualTlsHostnameSettings"], () => require("./accessMutualTlsHostnameSettings"));
+
 export { AccessOrganizationArgs, AccessOrganizationState } from "./accessOrganization";
 export type AccessOrganization = import("./accessOrganization").AccessOrganization;
 export const AccessOrganization: typeof import("./accessOrganization").AccessOrganization = null as any;
@@ -370,6 +375,11 @@ export type HostnameTlsSettingCiphers = import("./hostnameTlsSettingCiphers").Ho
 export const HostnameTlsSettingCiphers: typeof import("./hostnameTlsSettingCiphers").HostnameTlsSettingCiphers = null as any;
 utilities.lazyLoad(exports, ["HostnameTlsSettingCiphers"], () => require("./hostnameTlsSettingCiphers"));
 
+export { HyperdriveConfigArgs, HyperdriveConfigState } from "./hyperdriveConfig";
+export type HyperdriveConfig = import("./hyperdriveConfig").HyperdriveConfig;
+export const HyperdriveConfig: typeof import("./hyperdriveConfig").HyperdriveConfig = null as any;
+utilities.lazyLoad(exports, ["HyperdriveConfig"], () => require("./hyperdriveConfig"));
+
 export { IpsecTunnelArgs, IpsecTunnelState } from "./ipsecTunnel";
 export type IpsecTunnel = import("./ipsecTunnel").IpsecTunnel;
 export const IpsecTunnel: typeof import("./ipsecTunnel").IpsecTunnel = null as any;
@@ -655,6 +665,11 @@ export type WorkerSecret = import("./workerSecret").WorkerSecret;
 export const WorkerSecret: typeof import("./workerSecret").WorkerSecret = null as any;
 utilities.lazyLoad(exports, ["WorkerSecret"], () => require("./workerSecret"));
 
+export { WorkersForPlatformsNamespaceArgs, WorkersForPlatformsNamespaceState } from "./workersForPlatformsNamespace";
+export type WorkersForPlatformsNamespace = import("./workersForPlatformsNamespace").WorkersForPlatformsNamespace;
+export const WorkersForPlatformsNamespace: typeof import("./workersForPlatformsNamespace").WorkersForPlatformsNamespace = null as any;
+utilities.lazyLoad(exports, ["WorkersForPlatformsNamespace"], () => require("./workersForPlatformsNamespace"));
+
 export { WorkersKvArgs, WorkersKvState } from "./workersKv";
 export type WorkersKv = import("./workersKv").WorkersKv;
 export const WorkersKv: typeof import("./workersKv").WorkersKv = null as any;
@@ -728,6 +743,8 @@ const _module = {
                 return new AccessKeysConfiguration(name, <any>undefined, { urn })
             case "cloudflare:index/accessMutualTlsCertificate:AccessMutualTlsCertificate":
                 return new AccessMutualTlsCertificate(name, <any>undefined, { urn })
+            case "cloudflare:index/accessMutualTlsHostnameSettings:AccessMutualTlsHostnameSettings":
+                return new AccessMutualTlsHostnameSettings(name, <any>undefined, { urn })
             case "cloudflare:index/accessOrganization:AccessOrganization":
                 return new AccessOrganization(name, <any>undefined, { urn })
             case "cloudflare:index/accessPolicy:AccessPolicy":
@@ -814,6 +831,8 @@ const _module = {
                 return new HostnameTlsSetting(name, <any>undefined, { urn })
             case "cloudflare:index/hostnameTlsSettingCiphers:HostnameTlsSettingCiphers":
                 return new HostnameTlsSettingCiphers(name, <any>undefined, { urn })
+            case "cloudflare:index/hyperdriveConfig:HyperdriveConfig":
+                return new HyperdriveConfig(name, <any>undefined, { urn })
             case "cloudflare:index/ipsecTunnel:IpsecTunnel":
                 return new IpsecTunnel(name, <any>undefined, { urn })
             case "cloudflare:index/keylessCertificate:KeylessCertificate":
@@ -926,6 +945,8 @@ const _module = {
                 return new WorkerScript(name, <any>undefined, { urn })
             case "cloudflare:index/workerSecret:WorkerSecret":
                 return new WorkerSecret(name, <any>undefined, { urn })
+            case "cloudflare:index/workersForPlatformsNamespace:WorkersForPlatformsNamespace":
+                return new WorkersForPlatformsNamespace(name, <any>undefined, { urn })
             case "cloudflare:index/workersKv:WorkersKv":
                 return new WorkersKv(name, <any>undefined, { urn })
             case "cloudflare:index/workersKvNamespace:WorkersKvNamespace":
@@ -956,6 +977,7 @@ pulumi.runtime.registerResourceModule("cloudflare", "index/accessGroup", _module
 pulumi.runtime.registerResourceModule("cloudflare", "index/accessIdentityProvider", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/accessKeysConfiguration", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/accessMutualTlsCertificate", _module)
+pulumi.runtime.registerResourceModule("cloudflare", "index/accessMutualTlsHostnameSettings", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/accessOrganization", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/accessPolicy", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/accessRule", _module)
@@ -999,6 +1021,7 @@ pulumi.runtime.registerResourceModule("cloudflare", "index/greTunnel", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/healthcheck", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/hostnameTlsSetting", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/hostnameTlsSettingCiphers", _module)
+pulumi.runtime.registerResourceModule("cloudflare", "index/hyperdriveConfig", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/ipsecTunnel", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/keylessCertificate", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/list", _module)
@@ -1055,6 +1078,7 @@ pulumi.runtime.registerResourceModule("cloudflare", "index/workerDomain", _modul
 pulumi.runtime.registerResourceModule("cloudflare", "index/workerRoute", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/workerScript", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/workerSecret", _module)
+pulumi.runtime.registerResourceModule("cloudflare", "index/workersForPlatformsNamespace", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/workersKv", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/workersKvNamespace", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/zone", _module)

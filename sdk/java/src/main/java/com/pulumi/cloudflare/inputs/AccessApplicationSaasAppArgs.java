@@ -18,14 +18,14 @@ public final class AccessApplicationSaasAppArgs extends com.pulumi.resources.Res
     public static final AccessApplicationSaasAppArgs Empty = new AccessApplicationSaasAppArgs();
 
     /**
-     * The URL where this applications tile redirects users
+     * The URL where this applications tile redirects users.
      * 
      */
     @Import(name="appLauncherUrl")
     private @Nullable Output<String> appLauncherUrl;
 
     /**
-     * @return The URL where this applications tile redirects users
+     * @return The URL where this applications tile redirects users.
      * 
      */
     public Optional<Output<String>> appLauncherUrl() {
@@ -40,14 +40,14 @@ public final class AccessApplicationSaasAppArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * The application client id
+     * The application client id.
      * 
      */
     @Import(name="clientId")
     private @Nullable Output<String> clientId;
 
     /**
-     * @return The application client id
+     * @return The application client id.
      * 
      */
     public Optional<Output<String>> clientId() {
@@ -55,14 +55,14 @@ public final class AccessApplicationSaasAppArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * The application client secret, only returned on initial apply
+     * The application client secret, only returned on initial apply.
      * 
      */
     @Import(name="clientSecret")
     private @Nullable Output<String> clientSecret;
 
     /**
-     * @return The application client secret, only returned on initial apply
+     * @return The application client secret, only returned on initial apply.
      * 
      */
     public Optional<Output<String>> clientSecret() {
@@ -115,14 +115,14 @@ public final class AccessApplicationSaasAppArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * The OIDC flows supported by this application
+     * The OIDC flows supported by this application.
      * 
      */
     @Import(name="grantTypes")
     private @Nullable Output<List<String>> grantTypes;
 
     /**
-     * @return The OIDC flows supported by this application
+     * @return The OIDC flows supported by this application.
      * 
      */
     public Optional<Output<List<String>>> grantTypes() {
@@ -130,14 +130,14 @@ public final class AccessApplicationSaasAppArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * A regex to filter Cloudflare groups returned in ID token and userinfo endpoint
+     * A regex to filter Cloudflare groups returned in ID token and userinfo endpoint.
      * 
      */
     @Import(name="groupFilterRegex")
     private @Nullable Output<String> groupFilterRegex;
 
     /**
-     * @return A regex to filter Cloudflare groups returned in ID token and userinfo endpoint
+     * @return A regex to filter Cloudflare groups returned in ID token and userinfo endpoint.
      * 
      */
     public Optional<Output<String>> groupFilterRegex() {
@@ -160,14 +160,14 @@ public final class AccessApplicationSaasAppArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * The format of the name identifier sent to the SaaS application. Defaults to `email`.
+     * The format of the name identifier sent to the SaaS application.
      * 
      */
     @Import(name="nameIdFormat")
     private @Nullable Output<String> nameIdFormat;
 
     /**
-     * @return The format of the name identifier sent to the SaaS application. Defaults to `email`.
+     * @return The format of the name identifier sent to the SaaS application.
      * 
      */
     public Optional<Output<String>> nameIdFormat() {
@@ -205,14 +205,14 @@ public final class AccessApplicationSaasAppArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * The permitted URL&#39;s for Cloudflare to return Authorization codes and Access/ID tokens
+     * The permitted URL&#39;s for Cloudflare to return Authorization codes and Access/ID tokens.
      * 
      */
     @Import(name="redirectUris")
     private @Nullable Output<List<String>> redirectUris;
 
     /**
-     * @return The permitted URL&#39;s for Cloudflare to return Authorization codes and Access/ID tokens
+     * @return The permitted URL&#39;s for Cloudflare to return Authorization codes and Access/ID tokens.
      * 
      */
     public Optional<Output<List<String>>> redirectUris() {
@@ -220,14 +220,14 @@ public final class AccessApplicationSaasAppArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * Define the user information shared with access
+     * Define the user information shared with access.
      * 
      */
     @Import(name="scopes")
     private @Nullable Output<List<String>> scopes;
 
     /**
-     * @return Define the user information shared with access
+     * @return Define the user information shared with access.
      * 
      */
     public Optional<Output<List<String>>> scopes() {
@@ -305,7 +305,7 @@ public final class AccessApplicationSaasAppArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param appLauncherUrl The URL where this applications tile redirects users
+         * @param appLauncherUrl The URL where this applications tile redirects users.
          * 
          * @return builder
          * 
@@ -316,7 +316,7 @@ public final class AccessApplicationSaasAppArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param appLauncherUrl The URL where this applications tile redirects users
+         * @param appLauncherUrl The URL where this applications tile redirects users.
          * 
          * @return builder
          * 
@@ -335,7 +335,7 @@ public final class AccessApplicationSaasAppArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param clientId The application client id
+         * @param clientId The application client id.
          * 
          * @return builder
          * 
@@ -346,7 +346,7 @@ public final class AccessApplicationSaasAppArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param clientId The application client id
+         * @param clientId The application client id.
          * 
          * @return builder
          * 
@@ -356,7 +356,7 @@ public final class AccessApplicationSaasAppArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param clientSecret The application client secret, only returned on initial apply
+         * @param clientSecret The application client secret, only returned on initial apply.
          * 
          * @return builder
          * 
@@ -367,7 +367,7 @@ public final class AccessApplicationSaasAppArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param clientSecret The application client secret, only returned on initial apply
+         * @param clientSecret The application client secret, only returned on initial apply.
          * 
          * @return builder
          * 
@@ -450,7 +450,7 @@ public final class AccessApplicationSaasAppArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param grantTypes The OIDC flows supported by this application
+         * @param grantTypes The OIDC flows supported by this application.
          * 
          * @return builder
          * 
@@ -461,7 +461,7 @@ public final class AccessApplicationSaasAppArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param grantTypes The OIDC flows supported by this application
+         * @param grantTypes The OIDC flows supported by this application.
          * 
          * @return builder
          * 
@@ -471,7 +471,7 @@ public final class AccessApplicationSaasAppArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param grantTypes The OIDC flows supported by this application
+         * @param grantTypes The OIDC flows supported by this application.
          * 
          * @return builder
          * 
@@ -481,7 +481,7 @@ public final class AccessApplicationSaasAppArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param groupFilterRegex A regex to filter Cloudflare groups returned in ID token and userinfo endpoint
+         * @param groupFilterRegex A regex to filter Cloudflare groups returned in ID token and userinfo endpoint.
          * 
          * @return builder
          * 
@@ -492,7 +492,7 @@ public final class AccessApplicationSaasAppArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param groupFilterRegex A regex to filter Cloudflare groups returned in ID token and userinfo endpoint
+         * @param groupFilterRegex A regex to filter Cloudflare groups returned in ID token and userinfo endpoint.
          * 
          * @return builder
          * 
@@ -523,7 +523,7 @@ public final class AccessApplicationSaasAppArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param nameIdFormat The format of the name identifier sent to the SaaS application. Defaults to `email`.
+         * @param nameIdFormat The format of the name identifier sent to the SaaS application.
          * 
          * @return builder
          * 
@@ -534,7 +534,7 @@ public final class AccessApplicationSaasAppArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param nameIdFormat The format of the name identifier sent to the SaaS application. Defaults to `email`.
+         * @param nameIdFormat The format of the name identifier sent to the SaaS application.
          * 
          * @return builder
          * 
@@ -586,7 +586,7 @@ public final class AccessApplicationSaasAppArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param redirectUris The permitted URL&#39;s for Cloudflare to return Authorization codes and Access/ID tokens
+         * @param redirectUris The permitted URL&#39;s for Cloudflare to return Authorization codes and Access/ID tokens.
          * 
          * @return builder
          * 
@@ -597,7 +597,7 @@ public final class AccessApplicationSaasAppArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param redirectUris The permitted URL&#39;s for Cloudflare to return Authorization codes and Access/ID tokens
+         * @param redirectUris The permitted URL&#39;s for Cloudflare to return Authorization codes and Access/ID tokens.
          * 
          * @return builder
          * 
@@ -607,7 +607,7 @@ public final class AccessApplicationSaasAppArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param redirectUris The permitted URL&#39;s for Cloudflare to return Authorization codes and Access/ID tokens
+         * @param redirectUris The permitted URL&#39;s for Cloudflare to return Authorization codes and Access/ID tokens.
          * 
          * @return builder
          * 
@@ -617,7 +617,7 @@ public final class AccessApplicationSaasAppArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param scopes Define the user information shared with access
+         * @param scopes Define the user information shared with access.
          * 
          * @return builder
          * 
@@ -628,7 +628,7 @@ public final class AccessApplicationSaasAppArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param scopes Define the user information shared with access
+         * @param scopes Define the user information shared with access.
          * 
          * @return builder
          * 
@@ -638,7 +638,7 @@ public final class AccessApplicationSaasAppArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param scopes Define the user information shared with access
+         * @param scopes Define the user information shared with access.
          * 
          * @return builder
          * 

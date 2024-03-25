@@ -36,6 +36,12 @@ namespace Pulumi.Cloudflare
         public Output<int> AllowedMatchCount { get; private set; } = null!;
 
         /// <summary>
+        /// Scan the context of predefined entries to only return matches surrounded by keywords.
+        /// </summary>
+        [Output("contextAwareness")]
+        public Output<Outputs.DlpProfileContextAwareness> ContextAwareness { get; private set; } = null!;
+
+        /// <summary>
         /// Brief summary of the profile and its intended use.
         /// </summary>
         [Output("description")]
@@ -118,6 +124,12 @@ namespace Pulumi.Cloudflare
         public Input<int> AllowedMatchCount { get; set; } = null!;
 
         /// <summary>
+        /// Scan the context of predefined entries to only return matches surrounded by keywords.
+        /// </summary>
+        [Input("contextAwareness")]
+        public Input<Inputs.DlpProfileContextAwarenessArgs>? ContextAwareness { get; set; }
+
+        /// <summary>
         /// Brief summary of the profile and its intended use.
         /// </summary>
         [Input("description")]
@@ -166,6 +178,12 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("allowedMatchCount")]
         public Input<int>? AllowedMatchCount { get; set; }
+
+        /// <summary>
+        /// Scan the context of predefined entries to only return matches surrounded by keywords.
+        /// </summary>
+        [Input("contextAwareness")]
+        public Input<Inputs.DlpProfileContextAwarenessGetArgs>? ContextAwareness { get; set; }
 
         /// <summary>
         /// Brief summary of the profile and its intended use.

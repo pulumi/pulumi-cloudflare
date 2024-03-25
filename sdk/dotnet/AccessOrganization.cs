@@ -64,8 +64,7 @@ namespace Pulumi.Cloudflare
         public Output<string> AccountId { get; private set; } = null!;
 
         /// <summary>
-        /// When set to true, users can authenticate via WARP for any application in your organization. Application settings will
-        /// take precedence over this value.
+        /// When set to true, users can authenticate via WARP for any application in your organization. Application settings will take precedence over this value.
         /// </summary>
         [Output("allowAuthenticateViaWarp")]
         public Output<bool?> AllowAuthenticateViaWarp { get; private set; } = null!;
@@ -122,8 +121,7 @@ namespace Pulumi.Cloudflare
         public Output<string?> UserSeatExpirationInactiveTime { get; private set; } = null!;
 
         /// <summary>
-        /// The amount of time that tokens issued for applications will be valid. Must be in the format 30m or 2h45m. Valid time
-        /// units are: m, h.
+        /// The amount of time that tokens issued for applications will be valid. Must be in the format 30m or 2h45m. Valid time units are: m, h.
         /// </summary>
         [Output("warpAuthSessionDuration")]
         public Output<string?> WarpAuthSessionDuration { get; private set; } = null!;
@@ -187,8 +185,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? AccountId { get; set; }
 
         /// <summary>
-        /// When set to true, users can authenticate via WARP for any application in your organization. Application settings will
-        /// take precedence over this value.
+        /// When set to true, users can authenticate via WARP for any application in your organization. Application settings will take precedence over this value.
         /// </summary>
         [Input("allowAuthenticateViaWarp")]
         public Input<bool>? AllowAuthenticateViaWarp { get; set; }
@@ -256,8 +253,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? UserSeatExpirationInactiveTime { get; set; }
 
         /// <summary>
-        /// The amount of time that tokens issued for applications will be valid. Must be in the format 30m or 2h45m. Valid time
-        /// units are: m, h.
+        /// The amount of time that tokens issued for applications will be valid. Must be in the format 30m or 2h45m. Valid time units are: m, h.
         /// </summary>
         [Input("warpAuthSessionDuration")]
         public Input<string>? WarpAuthSessionDuration { get; set; }
@@ -283,8 +279,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? AccountId { get; set; }
 
         /// <summary>
-        /// When set to true, users can authenticate via WARP for any application in your organization. Application settings will
-        /// take precedence over this value.
+        /// When set to true, users can authenticate via WARP for any application in your organization. Application settings will take precedence over this value.
         /// </summary>
         [Input("allowAuthenticateViaWarp")]
         public Input<bool>? AllowAuthenticateViaWarp { get; set; }
@@ -352,8 +347,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? UserSeatExpirationInactiveTime { get; set; }
 
         /// <summary>
-        /// The amount of time that tokens issued for applications will be valid. Must be in the format 30m or 2h45m. Valid time
-        /// units are: m, h.
+        /// The amount of time that tokens issued for applications will be valid. Must be in the format 30m or 2h45m. Valid time units are: m, h.
         /// </summary>
         [Input("warpAuthSessionDuration")]
         public Input<string>? WarpAuthSessionDuration { get; set; }
