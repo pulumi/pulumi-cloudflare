@@ -107,6 +107,15 @@ func Provider() tfbridge.ProviderInfo {
 					"zone": {CSharpName: "ZoneName"},
 				},
 			},
+
+			// Cloudflare's DNS records are all structural, where `name` field uniquely identifies
+			// the resource.
+			//
+			// If `type` or `zoneId` is changed, then the resource will replace but the new
+			// resource will conflict with the old one. To avoid this, we set
+			// `DeleteBeforeReplace: true`.
+			"cloudflare_record": {DeleteBeforeReplace: true},
+
 			"cloudflare_zone_settings_override": {
 				Fields: map[string]*tfbridge.SchemaInfo{
 					"settings": {
