@@ -115,25 +115,6 @@ func Provider() tfbridge.ProviderInfo {
 			// resource will conflict with the old one. To avoid this, we set
 			// `DeleteBeforeReplace: true`.
 			"cloudflare_record": {DeleteBeforeReplace: true},
-
-			"cloudflare_zone_settings_override": {
-				Fields: map[string]*tfbridge.SchemaInfo{
-					"settings": {
-						Elem: &tfbridge.SchemaInfo{
-							Fields: map[string]*tfbridge.SchemaInfo{
-								"0rtt": {Name: "zerortt"},
-							},
-						},
-					},
-					"initial_settings": {
-						Elem: &tfbridge.SchemaInfo{
-							Fields: map[string]*tfbridge.SchemaInfo{
-								"0rtt": {Name: "zerortt"},
-							},
-						},
-					},
-				},
-			},
 		},
 		JavaScript: &tfbridge.JavaScriptInfo{
 			Dependencies: map[string]string{
