@@ -129,6 +129,10 @@ export interface AccessApplicationSaasApp {
      */
     redirectUris?: string[];
     /**
+     * A [JSONata](https://jsonata.org/) expression that transforms an application's user identities into attribute assertions in the SAML response. The expression can transform id, email, name, and groups values. It can also transform fields listed in the saml*attributes or oidc*fields of the identity provider used to authenticate. The output of this expression must be a JSON object.
+     */
+    samlAttributeTransformJsonata?: string;
+    /**
      * Define the user information shared with access.
      */
     scopes: string[];
@@ -1155,6 +1159,10 @@ export interface DevicePostureRuleInput {
      */
     issueCount?: string;
     /**
+     * The duration of time that the host was last seen from Crowdstrike. Must be in the format `1h` or `30m`. Valid units are `d`, `h` and `m`.
+     */
+    lastSeen?: string;
+    /**
      * The network status from SentinelOne. Available values: `connected`, `disconnected`, `disconnecting`, `connecting`.
      */
     networkStatus?: string;
@@ -1202,6 +1210,10 @@ export interface DevicePostureRuleInput {
      * The sha256 hash of the file.
      */
     sha256?: string;
+    /**
+     * The host’s current online status from Crowdstrike. Available values: `online`, `offline`, `unknown`.
+     */
+    state?: string;
     /**
      * The thumbprint of the file certificate.
      */

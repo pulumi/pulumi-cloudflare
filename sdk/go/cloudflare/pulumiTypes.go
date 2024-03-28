@@ -520,6 +520,8 @@ type AccessApplicationSaasApp struct {
 	PublicKey *string `pulumi:"publicKey"`
 	// The permitted URL's for Cloudflare to return Authorization codes and Access/ID tokens.
 	RedirectUris []string `pulumi:"redirectUris"`
+	// A [JSONata](https://jsonata.org/) expression that transforms an application's user identities into attribute assertions in the SAML response. The expression can transform id, email, name, and groups values. It can also transform fields listed in the saml*attributes or oidc*fields of the identity provider used to authenticate. The output of this expression must be a JSON object.
+	SamlAttributeTransformJsonata *string `pulumi:"samlAttributeTransformJsonata"`
 	// Define the user information shared with access.
 	Scopes []string `pulumi:"scopes"`
 	// A globally unique name for an identity or service provider.
@@ -567,6 +569,8 @@ type AccessApplicationSaasAppArgs struct {
 	PublicKey pulumi.StringPtrInput `pulumi:"publicKey"`
 	// The permitted URL's for Cloudflare to return Authorization codes and Access/ID tokens.
 	RedirectUris pulumi.StringArrayInput `pulumi:"redirectUris"`
+	// A [JSONata](https://jsonata.org/) expression that transforms an application's user identities into attribute assertions in the SAML response. The expression can transform id, email, name, and groups values. It can also transform fields listed in the saml*attributes or oidc*fields of the identity provider used to authenticate. The output of this expression must be a JSON object.
+	SamlAttributeTransformJsonata pulumi.StringPtrInput `pulumi:"samlAttributeTransformJsonata"`
 	// Define the user information shared with access.
 	Scopes pulumi.StringArrayInput `pulumi:"scopes"`
 	// A globally unique name for an identity or service provider.
@@ -719,6 +723,11 @@ func (o AccessApplicationSaasAppOutput) PublicKey() pulumi.StringPtrOutput {
 // The permitted URL's for Cloudflare to return Authorization codes and Access/ID tokens.
 func (o AccessApplicationSaasAppOutput) RedirectUris() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AccessApplicationSaasApp) []string { return v.RedirectUris }).(pulumi.StringArrayOutput)
+}
+
+// A [JSONata](https://jsonata.org/) expression that transforms an application's user identities into attribute assertions in the SAML response. The expression can transform id, email, name, and groups values. It can also transform fields listed in the saml*attributes or oidc*fields of the identity provider used to authenticate. The output of this expression must be a JSON object.
+func (o AccessApplicationSaasAppOutput) SamlAttributeTransformJsonata() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AccessApplicationSaasApp) *string { return v.SamlAttributeTransformJsonata }).(pulumi.StringPtrOutput)
 }
 
 // Define the user information shared with access.
@@ -897,6 +906,16 @@ func (o AccessApplicationSaasAppPtrOutput) RedirectUris() pulumi.StringArrayOutp
 		}
 		return v.RedirectUris
 	}).(pulumi.StringArrayOutput)
+}
+
+// A [JSONata](https://jsonata.org/) expression that transforms an application's user identities into attribute assertions in the SAML response. The expression can transform id, email, name, and groups values. It can also transform fields listed in the saml*attributes or oidc*fields of the identity provider used to authenticate. The output of this expression must be a JSON object.
+func (o AccessApplicationSaasAppPtrOutput) SamlAttributeTransformJsonata() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccessApplicationSaasApp) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SamlAttributeTransformJsonata
+	}).(pulumi.StringPtrOutput)
 }
 
 // Define the user information shared with access.
@@ -10501,6 +10520,8 @@ type DevicePostureRuleInputType struct {
 	IsActive *bool `pulumi:"isActive"`
 	// The number of issues for kolide.
 	IssueCount *string `pulumi:"issueCount"`
+	// The duration of time that the host was last seen from Crowdstrike. Must be in the format `1h` or `30m`. Valid units are `d`, `h` and `m`.
+	LastSeen *string `pulumi:"lastSeen"`
 	// The network status from SentinelOne. Available values: `connected`, `disconnected`, `disconnecting`, `connecting`.
 	NetworkStatus *string `pulumi:"networkStatus"`
 	// The version comparison operator. Available values: `>`, `>=`, `<`, `<=`, `==`.
@@ -10525,6 +10546,8 @@ type DevicePostureRuleInputType struct {
 	SensorConfig *string `pulumi:"sensorConfig"`
 	// The sha256 hash of the file.
 	Sha256 *string `pulumi:"sha256"`
+	// The host’s current online status from Crowdstrike. Available values: `online`, `offline`, `unknown`.
+	State *string `pulumi:"state"`
 	// The thumbprint of the file certificate.
 	Thumbprint *string `pulumi:"thumbprint"`
 	// The total score from Tanium.
@@ -10577,6 +10600,8 @@ type DevicePostureRuleInputTypeArgs struct {
 	IsActive pulumi.BoolPtrInput `pulumi:"isActive"`
 	// The number of issues for kolide.
 	IssueCount pulumi.StringPtrInput `pulumi:"issueCount"`
+	// The duration of time that the host was last seen from Crowdstrike. Must be in the format `1h` or `30m`. Valid units are `d`, `h` and `m`.
+	LastSeen pulumi.StringPtrInput `pulumi:"lastSeen"`
 	// The network status from SentinelOne. Available values: `connected`, `disconnected`, `disconnecting`, `connecting`.
 	NetworkStatus pulumi.StringPtrInput `pulumi:"networkStatus"`
 	// The version comparison operator. Available values: `>`, `>=`, `<`, `<=`, `==`.
@@ -10601,6 +10626,8 @@ type DevicePostureRuleInputTypeArgs struct {
 	SensorConfig pulumi.StringPtrInput `pulumi:"sensorConfig"`
 	// The sha256 hash of the file.
 	Sha256 pulumi.StringPtrInput `pulumi:"sha256"`
+	// The host’s current online status from Crowdstrike. Available values: `online`, `offline`, `unknown`.
+	State pulumi.StringPtrInput `pulumi:"state"`
 	// The thumbprint of the file certificate.
 	Thumbprint pulumi.StringPtrInput `pulumi:"thumbprint"`
 	// The total score from Tanium.
@@ -10737,6 +10764,11 @@ func (o DevicePostureRuleInputTypeOutput) IssueCount() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DevicePostureRuleInputType) *string { return v.IssueCount }).(pulumi.StringPtrOutput)
 }
 
+// The duration of time that the host was last seen from Crowdstrike. Must be in the format `1h` or `30m`. Valid units are `d`, `h` and `m`.
+func (o DevicePostureRuleInputTypeOutput) LastSeen() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DevicePostureRuleInputType) *string { return v.LastSeen }).(pulumi.StringPtrOutput)
+}
+
 // The network status from SentinelOne. Available values: `connected`, `disconnected`, `disconnecting`, `connecting`.
 func (o DevicePostureRuleInputTypeOutput) NetworkStatus() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DevicePostureRuleInputType) *string { return v.NetworkStatus }).(pulumi.StringPtrOutput)
@@ -10795,6 +10827,11 @@ func (o DevicePostureRuleInputTypeOutput) SensorConfig() pulumi.StringPtrOutput 
 // The sha256 hash of the file.
 func (o DevicePostureRuleInputTypeOutput) Sha256() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DevicePostureRuleInputType) *string { return v.Sha256 }).(pulumi.StringPtrOutput)
+}
+
+// The host’s current online status from Crowdstrike. Available values: `online`, `offline`, `unknown`.
+func (o DevicePostureRuleInputTypeOutput) State() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DevicePostureRuleInputType) *string { return v.State }).(pulumi.StringPtrOutput)
 }
 
 // The thumbprint of the file certificate.

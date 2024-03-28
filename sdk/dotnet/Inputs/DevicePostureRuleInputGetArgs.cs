@@ -109,6 +109,12 @@ namespace Pulumi.Cloudflare.Inputs
         public Input<string>? IssueCount { get; set; }
 
         /// <summary>
+        /// The duration of time that the host was last seen from Crowdstrike. Must be in the format `1h` or `30m`. Valid units are `d`, `h` and `m`.
+        /// </summary>
+        [Input("lastSeen")]
+        public Input<string>? LastSeen { get; set; }
+
+        /// <summary>
         /// The network status from SentinelOne. Available values: `connected`, `disconnected`, `disconnecting`, `connecting`.
         /// </summary>
         [Input("networkStatus")]
@@ -179,6 +185,12 @@ namespace Pulumi.Cloudflare.Inputs
         /// </summary>
         [Input("sha256")]
         public Input<string>? Sha256 { get; set; }
+
+        /// <summary>
+        /// The host’s current online status from Crowdstrike. Available values: `online`, `offline`, `unknown`.
+        /// </summary>
+        [Input("state")]
+        public Input<string>? State { get; set; }
 
         /// <summary>
         /// The thumbprint of the file certificate.

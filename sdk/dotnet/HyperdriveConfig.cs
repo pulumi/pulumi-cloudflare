@@ -23,14 +23,9 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     // Config not using any default values
     ///     var noDefaults = new Cloudflare.HyperdriveConfig("noDefaults", new()
     ///     {
     ///         AccountId = "f037e56e89293a057740de681ac9abbe",
-    ///         Caching = new Cloudflare.Inputs.HyperdriveConfigCachingArgs
-    ///         {
-    ///             Disabled = false,
-    ///         },
     ///         Name = "my-hyperdrive-config",
     ///         Origin = new Cloudflare.Inputs.HyperdriveConfigOriginArgs
     ///         {

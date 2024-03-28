@@ -74,6 +74,10 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string? IssueCount;
         /// <summary>
+        /// The duration of time that the host was last seen from Crowdstrike. Must be in the format `1h` or `30m`. Valid units are `d`, `h` and `m`.
+        /// </summary>
+        public readonly string? LastSeen;
+        /// <summary>
         /// The network status from SentinelOne. Available values: `connected`, `disconnected`, `disconnecting`, `connecting`.
         /// </summary>
         public readonly string? NetworkStatus;
@@ -121,6 +125,10 @@ namespace Pulumi.Cloudflare.Outputs
         /// The sha256 hash of the file.
         /// </summary>
         public readonly string? Sha256;
+        /// <summary>
+        /// The host’s current online status from Crowdstrike. Available values: `online`, `offline`, `unknown`.
+        /// </summary>
+        public readonly string? State;
         /// <summary>
         /// The thumbprint of the file certificate.
         /// </summary>
@@ -170,6 +178,8 @@ namespace Pulumi.Cloudflare.Outputs
 
             string? issueCount,
 
+            string? lastSeen,
+
             string? networkStatus,
 
             string? @operator,
@@ -194,6 +204,8 @@ namespace Pulumi.Cloudflare.Outputs
 
             string? sha256,
 
+            string? state,
+
             string? thumbprint,
 
             int? totalScore,
@@ -217,6 +229,7 @@ namespace Pulumi.Cloudflare.Outputs
             Infected = infected;
             IsActive = isActive;
             IssueCount = issueCount;
+            LastSeen = lastSeen;
             NetworkStatus = networkStatus;
             Operator = @operator;
             Os = os;
@@ -229,6 +242,7 @@ namespace Pulumi.Cloudflare.Outputs
             Running = running;
             SensorConfig = sensorConfig;
             Sha256 = sha256;
+            State = state;
             Thumbprint = thumbprint;
             TotalScore = totalScore;
             Version = version;

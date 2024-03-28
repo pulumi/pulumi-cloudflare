@@ -593,6 +593,8 @@ class AccessApplicationSaasApp(dict):
             suggest = "public_key"
         elif key == "redirectUris":
             suggest = "redirect_uris"
+        elif key == "samlAttributeTransformJsonata":
+            suggest = "saml_attribute_transform_jsonata"
         elif key == "spEntityId":
             suggest = "sp_entity_id"
         elif key == "ssoEndpoint":
@@ -624,6 +626,7 @@ class AccessApplicationSaasApp(dict):
                  name_id_transform_jsonata: Optional[str] = None,
                  public_key: Optional[str] = None,
                  redirect_uris: Optional[Sequence[str]] = None,
+                 saml_attribute_transform_jsonata: Optional[str] = None,
                  scopes: Optional[Sequence[str]] = None,
                  sp_entity_id: Optional[str] = None,
                  sso_endpoint: Optional[str] = None):
@@ -641,6 +644,7 @@ class AccessApplicationSaasApp(dict):
         :param str name_id_transform_jsonata: A [JSONata](https://jsonata.org/) expression that transforms an application's user identities into a NameID value for its SAML assertion. This expression should evaluate to a singular string. The output of this expression can override the `name_id_format` setting.
         :param str public_key: The public certificate that will be used to verify identities.
         :param Sequence[str] redirect_uris: The permitted URL's for Cloudflare to return Authorization codes and Access/ID tokens.
+        :param str saml_attribute_transform_jsonata: A [JSONata](https://jsonata.org/) expression that transforms an application's user identities into attribute assertions in the SAML response. The expression can transform id, email, name, and groups values. It can also transform fields listed in the saml*attributes or oidc*fields of the identity provider used to authenticate. The output of this expression must be a JSON object.
         :param Sequence[str] scopes: Define the user information shared with access.
         :param str sp_entity_id: A globally unique name for an identity or service provider.
         :param str sso_endpoint: The endpoint where the SaaS application will send login requests.
@@ -673,6 +677,8 @@ class AccessApplicationSaasApp(dict):
             pulumi.set(__self__, "public_key", public_key)
         if redirect_uris is not None:
             pulumi.set(__self__, "redirect_uris", redirect_uris)
+        if saml_attribute_transform_jsonata is not None:
+            pulumi.set(__self__, "saml_attribute_transform_jsonata", saml_attribute_transform_jsonata)
         if scopes is not None:
             pulumi.set(__self__, "scopes", scopes)
         if sp_entity_id is not None:
@@ -788,6 +794,14 @@ class AccessApplicationSaasApp(dict):
         The permitted URL's for Cloudflare to return Authorization codes and Access/ID tokens.
         """
         return pulumi.get(self, "redirect_uris")
+
+    @property
+    @pulumi.getter(name="samlAttributeTransformJsonata")
+    def saml_attribute_transform_jsonata(self) -> Optional[str]:
+        """
+        A [JSONata](https://jsonata.org/) expression that transforms an application's user identities into attribute assertions in the SAML response. The expression can transform id, email, name, and groups values. It can also transform fields listed in the saml*attributes or oidc*fields of the identity provider used to authenticate. The output of this expression must be a JSON object.
+        """
+        return pulumi.get(self, "saml_attribute_transform_jsonata")
 
     @property
     @pulumi.getter
@@ -5964,6 +5978,8 @@ class DevicePostureRuleInput(dict):
             suggest = "is_active"
         elif key == "issueCount":
             suggest = "issue_count"
+        elif key == "lastSeen":
+            suggest = "last_seen"
         elif key == "networkStatus":
             suggest = "network_status"
         elif key == "osDistroName":
@@ -6008,6 +6024,7 @@ class DevicePostureRuleInput(dict):
                  infected: Optional[bool] = None,
                  is_active: Optional[bool] = None,
                  issue_count: Optional[str] = None,
+                 last_seen: Optional[str] = None,
                  network_status: Optional[str] = None,
                  operator: Optional[str] = None,
                  os: Optional[str] = None,
@@ -6020,6 +6037,7 @@ class DevicePostureRuleInput(dict):
                  running: Optional[bool] = None,
                  sensor_config: Optional[str] = None,
                  sha256: Optional[str] = None,
+                 state: Optional[str] = None,
                  thumbprint: Optional[str] = None,
                  total_score: Optional[int] = None,
                  version: Optional[str] = None,
@@ -6040,6 +6058,7 @@ class DevicePostureRuleInput(dict):
         :param bool infected: True if SentinelOne device is infected.
         :param bool is_active: True if SentinelOne device is active.
         :param str issue_count: The number of issues for kolide.
+        :param str last_seen: The duration of time that the host was last seen from Crowdstrike. Must be in the format `1h` or `30m`. Valid units are `d`, `h` and `m`.
         :param str network_status: The network status from SentinelOne. Available values: `connected`, `disconnected`, `disconnecting`, `connecting`.
         :param str operator: The version comparison operator. Available values: `>`, `>=`, `<`, `<=`, `==`.
         :param str os: OS signal score from Crowdstrike. Value must be between 1 and 100.
@@ -6052,6 +6071,7 @@ class DevicePostureRuleInput(dict):
         :param bool running: Checks if the application should be running.
         :param str sensor_config: Sensor signal score from Crowdstrike. Value must be between 1 and 100.
         :param str sha256: The sha256 hash of the file.
+        :param str state: The host’s current online status from Crowdstrike. Available values: `online`, `offline`, `unknown`.
         :param str thumbprint: The thumbprint of the file certificate.
         :param int total_score: The total score from Tanium.
         :param str version: The operating system semantic version.
@@ -6087,6 +6107,8 @@ class DevicePostureRuleInput(dict):
             pulumi.set(__self__, "is_active", is_active)
         if issue_count is not None:
             pulumi.set(__self__, "issue_count", issue_count)
+        if last_seen is not None:
+            pulumi.set(__self__, "last_seen", last_seen)
         if network_status is not None:
             pulumi.set(__self__, "network_status", network_status)
         if operator is not None:
@@ -6111,6 +6133,8 @@ class DevicePostureRuleInput(dict):
             pulumi.set(__self__, "sensor_config", sensor_config)
         if sha256 is not None:
             pulumi.set(__self__, "sha256", sha256)
+        if state is not None:
+            pulumi.set(__self__, "state", state)
         if thumbprint is not None:
             pulumi.set(__self__, "thumbprint", thumbprint)
         if total_score is not None:
@@ -6241,6 +6265,14 @@ class DevicePostureRuleInput(dict):
         return pulumi.get(self, "issue_count")
 
     @property
+    @pulumi.getter(name="lastSeen")
+    def last_seen(self) -> Optional[str]:
+        """
+        The duration of time that the host was last seen from Crowdstrike. Must be in the format `1h` or `30m`. Valid units are `d`, `h` and `m`.
+        """
+        return pulumi.get(self, "last_seen")
+
+    @property
     @pulumi.getter(name="networkStatus")
     def network_status(self) -> Optional[str]:
         """
@@ -6335,6 +6367,14 @@ class DevicePostureRuleInput(dict):
         The sha256 hash of the file.
         """
         return pulumi.get(self, "sha256")
+
+    @property
+    @pulumi.getter
+    def state(self) -> Optional[str]:
+        """
+        The host’s current online status from Crowdstrike. Available values: `online`, `offline`, `unknown`.
+        """
+        return pulumi.get(self, "state")
 
     @property
     @pulumi.getter

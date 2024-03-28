@@ -244,6 +244,21 @@ public final class DevicePostureRuleInputArgs extends com.pulumi.resources.Resou
     }
 
     /**
+     * The duration of time that the host was last seen from Crowdstrike. Must be in the format `1h` or `30m`. Valid units are `d`, `h` and `m`.
+     * 
+     */
+    @Import(name="lastSeen")
+    private @Nullable Output<String> lastSeen;
+
+    /**
+     * @return The duration of time that the host was last seen from Crowdstrike. Must be in the format `1h` or `30m`. Valid units are `d`, `h` and `m`.
+     * 
+     */
+    public Optional<Output<String>> lastSeen() {
+        return Optional.ofNullable(this.lastSeen);
+    }
+
+    /**
      * The network status from SentinelOne. Available values: `connected`, `disconnected`, `disconnecting`, `connecting`.
      * 
      */
@@ -424,6 +439,21 @@ public final class DevicePostureRuleInputArgs extends com.pulumi.resources.Resou
     }
 
     /**
+     * The host’s current online status from Crowdstrike. Available values: `online`, `offline`, `unknown`.
+     * 
+     */
+    @Import(name="state")
+    private @Nullable Output<String> state;
+
+    /**
+     * @return The host’s current online status from Crowdstrike. Available values: `online`, `offline`, `unknown`.
+     * 
+     */
+    public Optional<Output<String>> state() {
+        return Optional.ofNullable(this.state);
+    }
+
+    /**
      * The thumbprint of the file certificate.
      * 
      */
@@ -501,6 +531,7 @@ public final class DevicePostureRuleInputArgs extends com.pulumi.resources.Resou
         this.infected = $.infected;
         this.isActive = $.isActive;
         this.issueCount = $.issueCount;
+        this.lastSeen = $.lastSeen;
         this.networkStatus = $.networkStatus;
         this.operator = $.operator;
         this.os = $.os;
@@ -513,6 +544,7 @@ public final class DevicePostureRuleInputArgs extends com.pulumi.resources.Resou
         this.running = $.running;
         this.sensorConfig = $.sensorConfig;
         this.sha256 = $.sha256;
+        this.state = $.state;
         this.thumbprint = $.thumbprint;
         this.totalScore = $.totalScore;
         this.version = $.version;
@@ -863,6 +895,27 @@ public final class DevicePostureRuleInputArgs extends com.pulumi.resources.Resou
         }
 
         /**
+         * @param lastSeen The duration of time that the host was last seen from Crowdstrike. Must be in the format `1h` or `30m`. Valid units are `d`, `h` and `m`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder lastSeen(@Nullable Output<String> lastSeen) {
+            $.lastSeen = lastSeen;
+            return this;
+        }
+
+        /**
+         * @param lastSeen The duration of time that the host was last seen from Crowdstrike. Must be in the format `1h` or `30m`. Valid units are `d`, `h` and `m`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder lastSeen(String lastSeen) {
+            return lastSeen(Output.of(lastSeen));
+        }
+
+        /**
          * @param networkStatus The network status from SentinelOne. Available values: `connected`, `disconnected`, `disconnecting`, `connecting`.
          * 
          * @return builder
@@ -1112,6 +1165,27 @@ public final class DevicePostureRuleInputArgs extends com.pulumi.resources.Resou
          */
         public Builder sha256(String sha256) {
             return sha256(Output.of(sha256));
+        }
+
+        /**
+         * @param state The host’s current online status from Crowdstrike. Available values: `online`, `offline`, `unknown`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder state(@Nullable Output<String> state) {
+            $.state = state;
+            return this;
+        }
+
+        /**
+         * @param state The host’s current online status from Crowdstrike. Available values: `online`, `offline`, `unknown`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder state(String state) {
+            return state(Output.of(state));
         }
 
         /**

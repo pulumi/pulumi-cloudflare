@@ -80,6 +80,11 @@ public final class AccessApplicationSaasApp {
      */
     private @Nullable List<String> redirectUris;
     /**
+     * @return A [JSONata](https://jsonata.org/) expression that transforms an application&#39;s user identities into attribute assertions in the SAML response. The expression can transform id, email, name, and groups values. It can also transform fields listed in the saml*attributes or oidc*fields of the identity provider used to authenticate. The output of this expression must be a JSON object.
+     * 
+     */
+    private @Nullable String samlAttributeTransformJsonata;
+    /**
      * @return Define the user information shared with access.
      * 
      */
@@ -191,6 +196,13 @@ public final class AccessApplicationSaasApp {
         return this.redirectUris == null ? List.of() : this.redirectUris;
     }
     /**
+     * @return A [JSONata](https://jsonata.org/) expression that transforms an application&#39;s user identities into attribute assertions in the SAML response. The expression can transform id, email, name, and groups values. It can also transform fields listed in the saml*attributes or oidc*fields of the identity provider used to authenticate. The output of this expression must be a JSON object.
+     * 
+     */
+    public Optional<String> samlAttributeTransformJsonata() {
+        return Optional.ofNullable(this.samlAttributeTransformJsonata);
+    }
+    /**
      * @return Define the user information shared with access.
      * 
      */
@@ -235,6 +247,7 @@ public final class AccessApplicationSaasApp {
         private @Nullable String nameIdTransformJsonata;
         private @Nullable String publicKey;
         private @Nullable List<String> redirectUris;
+        private @Nullable String samlAttributeTransformJsonata;
         private @Nullable List<String> scopes;
         private @Nullable String spEntityId;
         private @Nullable String ssoEndpoint;
@@ -255,6 +268,7 @@ public final class AccessApplicationSaasApp {
     	      this.nameIdTransformJsonata = defaults.nameIdTransformJsonata;
     	      this.publicKey = defaults.publicKey;
     	      this.redirectUris = defaults.redirectUris;
+    	      this.samlAttributeTransformJsonata = defaults.samlAttributeTransformJsonata;
     	      this.scopes = defaults.scopes;
     	      this.spEntityId = defaults.spEntityId;
     	      this.ssoEndpoint = defaults.ssoEndpoint;
@@ -354,6 +368,12 @@ public final class AccessApplicationSaasApp {
             return redirectUris(List.of(redirectUris));
         }
         @CustomType.Setter
+        public Builder samlAttributeTransformJsonata(@Nullable String samlAttributeTransformJsonata) {
+
+            this.samlAttributeTransformJsonata = samlAttributeTransformJsonata;
+            return this;
+        }
+        @CustomType.Setter
         public Builder scopes(@Nullable List<String> scopes) {
 
             this.scopes = scopes;
@@ -390,6 +410,7 @@ public final class AccessApplicationSaasApp {
             _resultValue.nameIdTransformJsonata = nameIdTransformJsonata;
             _resultValue.publicKey = publicKey;
             _resultValue.redirectUris = redirectUris;
+            _resultValue.samlAttributeTransformJsonata = samlAttributeTransformJsonata;
             _resultValue.scopes = scopes;
             _resultValue.spEntityId = spEntityId;
             _resultValue.ssoEndpoint = ssoEndpoint;

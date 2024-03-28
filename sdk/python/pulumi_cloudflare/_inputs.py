@@ -544,6 +544,7 @@ class AccessApplicationSaasAppArgs:
                  name_id_transform_jsonata: Optional[pulumi.Input[str]] = None,
                  public_key: Optional[pulumi.Input[str]] = None,
                  redirect_uris: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 saml_attribute_transform_jsonata: Optional[pulumi.Input[str]] = None,
                  scopes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  sp_entity_id: Optional[pulumi.Input[str]] = None,
                  sso_endpoint: Optional[pulumi.Input[str]] = None):
@@ -561,6 +562,7 @@ class AccessApplicationSaasAppArgs:
         :param pulumi.Input[str] name_id_transform_jsonata: A [JSONata](https://jsonata.org/) expression that transforms an application's user identities into a NameID value for its SAML assertion. This expression should evaluate to a singular string. The output of this expression can override the `name_id_format` setting.
         :param pulumi.Input[str] public_key: The public certificate that will be used to verify identities.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] redirect_uris: The permitted URL's for Cloudflare to return Authorization codes and Access/ID tokens.
+        :param pulumi.Input[str] saml_attribute_transform_jsonata: A [JSONata](https://jsonata.org/) expression that transforms an application's user identities into attribute assertions in the SAML response. The expression can transform id, email, name, and groups values. It can also transform fields listed in the saml*attributes or oidc*fields of the identity provider used to authenticate. The output of this expression must be a JSON object.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] scopes: Define the user information shared with access.
         :param pulumi.Input[str] sp_entity_id: A globally unique name for an identity or service provider.
         :param pulumi.Input[str] sso_endpoint: The endpoint where the SaaS application will send login requests.
@@ -593,6 +595,8 @@ class AccessApplicationSaasAppArgs:
             pulumi.set(__self__, "public_key", public_key)
         if redirect_uris is not None:
             pulumi.set(__self__, "redirect_uris", redirect_uris)
+        if saml_attribute_transform_jsonata is not None:
+            pulumi.set(__self__, "saml_attribute_transform_jsonata", saml_attribute_transform_jsonata)
         if scopes is not None:
             pulumi.set(__self__, "scopes", scopes)
         if sp_entity_id is not None:
@@ -764,6 +768,18 @@ class AccessApplicationSaasAppArgs:
     @redirect_uris.setter
     def redirect_uris(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "redirect_uris", value)
+
+    @property
+    @pulumi.getter(name="samlAttributeTransformJsonata")
+    def saml_attribute_transform_jsonata(self) -> Optional[pulumi.Input[str]]:
+        """
+        A [JSONata](https://jsonata.org/) expression that transforms an application's user identities into attribute assertions in the SAML response. The expression can transform id, email, name, and groups values. It can also transform fields listed in the saml*attributes or oidc*fields of the identity provider used to authenticate. The output of this expression must be a JSON object.
+        """
+        return pulumi.get(self, "saml_attribute_transform_jsonata")
+
+    @saml_attribute_transform_jsonata.setter
+    def saml_attribute_transform_jsonata(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "saml_attribute_transform_jsonata", value)
 
     @property
     @pulumi.getter
@@ -5933,6 +5949,7 @@ class DevicePostureRuleInputArgs:
                  infected: Optional[pulumi.Input[bool]] = None,
                  is_active: Optional[pulumi.Input[bool]] = None,
                  issue_count: Optional[pulumi.Input[str]] = None,
+                 last_seen: Optional[pulumi.Input[str]] = None,
                  network_status: Optional[pulumi.Input[str]] = None,
                  operator: Optional[pulumi.Input[str]] = None,
                  os: Optional[pulumi.Input[str]] = None,
@@ -5945,6 +5962,7 @@ class DevicePostureRuleInputArgs:
                  running: Optional[pulumi.Input[bool]] = None,
                  sensor_config: Optional[pulumi.Input[str]] = None,
                  sha256: Optional[pulumi.Input[str]] = None,
+                 state: Optional[pulumi.Input[str]] = None,
                  thumbprint: Optional[pulumi.Input[str]] = None,
                  total_score: Optional[pulumi.Input[int]] = None,
                  version: Optional[pulumi.Input[str]] = None,
@@ -5965,6 +5983,7 @@ class DevicePostureRuleInputArgs:
         :param pulumi.Input[bool] infected: True if SentinelOne device is infected.
         :param pulumi.Input[bool] is_active: True if SentinelOne device is active.
         :param pulumi.Input[str] issue_count: The number of issues for kolide.
+        :param pulumi.Input[str] last_seen: The duration of time that the host was last seen from Crowdstrike. Must be in the format `1h` or `30m`. Valid units are `d`, `h` and `m`.
         :param pulumi.Input[str] network_status: The network status from SentinelOne. Available values: `connected`, `disconnected`, `disconnecting`, `connecting`.
         :param pulumi.Input[str] operator: The version comparison operator. Available values: `>`, `>=`, `<`, `<=`, `==`.
         :param pulumi.Input[str] os: OS signal score from Crowdstrike. Value must be between 1 and 100.
@@ -5977,6 +5996,7 @@ class DevicePostureRuleInputArgs:
         :param pulumi.Input[bool] running: Checks if the application should be running.
         :param pulumi.Input[str] sensor_config: Sensor signal score from Crowdstrike. Value must be between 1 and 100.
         :param pulumi.Input[str] sha256: The sha256 hash of the file.
+        :param pulumi.Input[str] state: The host’s current online status from Crowdstrike. Available values: `online`, `offline`, `unknown`.
         :param pulumi.Input[str] thumbprint: The thumbprint of the file certificate.
         :param pulumi.Input[int] total_score: The total score from Tanium.
         :param pulumi.Input[str] version: The operating system semantic version.
@@ -6012,6 +6032,8 @@ class DevicePostureRuleInputArgs:
             pulumi.set(__self__, "is_active", is_active)
         if issue_count is not None:
             pulumi.set(__self__, "issue_count", issue_count)
+        if last_seen is not None:
+            pulumi.set(__self__, "last_seen", last_seen)
         if network_status is not None:
             pulumi.set(__self__, "network_status", network_status)
         if operator is not None:
@@ -6036,6 +6058,8 @@ class DevicePostureRuleInputArgs:
             pulumi.set(__self__, "sensor_config", sensor_config)
         if sha256 is not None:
             pulumi.set(__self__, "sha256", sha256)
+        if state is not None:
+            pulumi.set(__self__, "state", state)
         if thumbprint is not None:
             pulumi.set(__self__, "thumbprint", thumbprint)
         if total_score is not None:
@@ -6226,6 +6250,18 @@ class DevicePostureRuleInputArgs:
         pulumi.set(self, "issue_count", value)
 
     @property
+    @pulumi.getter(name="lastSeen")
+    def last_seen(self) -> Optional[pulumi.Input[str]]:
+        """
+        The duration of time that the host was last seen from Crowdstrike. Must be in the format `1h` or `30m`. Valid units are `d`, `h` and `m`.
+        """
+        return pulumi.get(self, "last_seen")
+
+    @last_seen.setter
+    def last_seen(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "last_seen", value)
+
+    @property
     @pulumi.getter(name="networkStatus")
     def network_status(self) -> Optional[pulumi.Input[str]]:
         """
@@ -6368,6 +6404,18 @@ class DevicePostureRuleInputArgs:
     @sha256.setter
     def sha256(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "sha256", value)
+
+    @property
+    @pulumi.getter
+    def state(self) -> Optional[pulumi.Input[str]]:
+        """
+        The host’s current online status from Crowdstrike. Available values: `online`, `offline`, `unknown`.
+        """
+        return pulumi.get(self, "state")
+
+    @state.setter
+    def state(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "state", value)
 
     @property
     @pulumi.getter

@@ -107,6 +107,21 @@ public final class IpsecTunnelState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Specifies the direction for the health check. Available values: `unidirectional`, `bidirectional` Default: `unidirectional`.
+     * 
+     */
+    @Import(name="healthCheckDirection")
+    private @Nullable Output<String> healthCheckDirection;
+
+    /**
+     * @return Specifies the direction for the health check. Available values: `unidirectional`, `bidirectional` Default: `unidirectional`.
+     * 
+     */
+    public Optional<Output<String>> healthCheckDirection() {
+        return Optional.ofNullable(this.healthCheckDirection);
+    }
+
+    /**
      * Specifies if ICMP tunnel health checks are enabled. Default: `true`.
      * 
      */
@@ -119,6 +134,21 @@ public final class IpsecTunnelState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<Boolean>> healthCheckEnabled() {
         return Optional.ofNullable(this.healthCheckEnabled);
+    }
+
+    /**
+     * Specifies the ICMP rate for the health check. Available values: `low`, `mid`, `high` Default: `mid`.
+     * 
+     */
+    @Import(name="healthCheckRate")
+    private @Nullable Output<String> healthCheckRate;
+
+    /**
+     * @return Specifies the ICMP rate for the health check. Available values: `low`, `mid`, `high` Default: `mid`.
+     * 
+     */
+    public Optional<Output<String>> healthCheckRate() {
+        return Optional.ofNullable(this.healthCheckRate);
     }
 
     /**
@@ -250,7 +280,9 @@ public final class IpsecTunnelState extends com.pulumi.resources.ResourceArgs {
         this.customerEndpoint = $.customerEndpoint;
         this.description = $.description;
         this.fqdnId = $.fqdnId;
+        this.healthCheckDirection = $.healthCheckDirection;
         this.healthCheckEnabled = $.healthCheckEnabled;
+        this.healthCheckRate = $.healthCheckRate;
         this.healthCheckTarget = $.healthCheckTarget;
         this.healthCheckType = $.healthCheckType;
         this.hexId = $.hexId;
@@ -406,6 +438,27 @@ public final class IpsecTunnelState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param healthCheckDirection Specifies the direction for the health check. Available values: `unidirectional`, `bidirectional` Default: `unidirectional`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder healthCheckDirection(@Nullable Output<String> healthCheckDirection) {
+            $.healthCheckDirection = healthCheckDirection;
+            return this;
+        }
+
+        /**
+         * @param healthCheckDirection Specifies the direction for the health check. Available values: `unidirectional`, `bidirectional` Default: `unidirectional`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder healthCheckDirection(String healthCheckDirection) {
+            return healthCheckDirection(Output.of(healthCheckDirection));
+        }
+
+        /**
          * @param healthCheckEnabled Specifies if ICMP tunnel health checks are enabled. Default: `true`.
          * 
          * @return builder
@@ -424,6 +477,27 @@ public final class IpsecTunnelState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder healthCheckEnabled(Boolean healthCheckEnabled) {
             return healthCheckEnabled(Output.of(healthCheckEnabled));
+        }
+
+        /**
+         * @param healthCheckRate Specifies the ICMP rate for the health check. Available values: `low`, `mid`, `high` Default: `mid`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder healthCheckRate(@Nullable Output<String> healthCheckRate) {
+            $.healthCheckRate = healthCheckRate;
+            return this;
+        }
+
+        /**
+         * @param healthCheckRate Specifies the ICMP rate for the health check. Available values: `low`, `mid`, `high` Default: `mid`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder healthCheckRate(String healthCheckRate) {
+            return healthCheckRate(Output.of(healthCheckRate));
         }
 
         /**

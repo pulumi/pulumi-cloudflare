@@ -29,7 +29,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.cloudflare.HyperdriveConfig;
  * import com.pulumi.cloudflare.HyperdriveConfigArgs;
- * import com.pulumi.cloudflare.inputs.HyperdriveConfigCachingArgs;
  * import com.pulumi.cloudflare.inputs.HyperdriveConfigOriginArgs;
  * import java.util.List;
  * import java.util.ArrayList;
@@ -46,9 +45,6 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var noDefaults = new HyperdriveConfig(&#34;noDefaults&#34;, HyperdriveConfigArgs.builder()        
  *             .accountId(&#34;f037e56e89293a057740de681ac9abbe&#34;)
- *             .caching(HyperdriveConfigCachingArgs.builder()
- *                 .disabled(false)
- *                 .build())
  *             .name(&#34;my-hyperdrive-config&#34;)
  *             .origin(HyperdriveConfigOriginArgs.builder()
  *                 .database(&#34;postgres&#34;)
