@@ -174,12 +174,8 @@ class HyperdriveConfig(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        # Config not using any default values
         no_defaults = cloudflare.HyperdriveConfig("noDefaults",
             account_id="f037e56e89293a057740de681ac9abbe",
-            caching=cloudflare.HyperdriveConfigCachingArgs(
-                disabled=False,
-            ),
             name="my-hyperdrive-config",
             origin=cloudflare.HyperdriveConfigOriginArgs(
                 database="postgres",
@@ -221,12 +217,8 @@ class HyperdriveConfig(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        # Config not using any default values
         no_defaults = cloudflare.HyperdriveConfig("noDefaults",
             account_id="f037e56e89293a057740de681ac9abbe",
-            caching=cloudflare.HyperdriveConfigCachingArgs(
-                disabled=False,
-            ),
             name="my-hyperdrive-config",
             origin=cloudflare.HyperdriveConfigOriginArgs(
                 database="postgres",

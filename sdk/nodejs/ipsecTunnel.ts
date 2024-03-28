@@ -89,9 +89,17 @@ export class IpsecTunnel extends pulumi.CustomResource {
      */
     public readonly fqdnId!: pulumi.Output<string>;
     /**
+     * Specifies the direction for the health check. Available values: `unidirectional`, `bidirectional` Default: `unidirectional`.
+     */
+    public readonly healthCheckDirection!: pulumi.Output<string>;
+    /**
      * Specifies if ICMP tunnel health checks are enabled. Default: `true`.
      */
     public readonly healthCheckEnabled!: pulumi.Output<boolean>;
+    /**
+     * Specifies the ICMP rate for the health check. Available values: `low`, `mid`, `high` Default: `mid`.
+     */
+    public readonly healthCheckRate!: pulumi.Output<string>;
     /**
      * The IP address of the customer endpoint that will receive tunnel health checks. Default: `<customer_gre_endpoint>`.
      */
@@ -144,7 +152,9 @@ export class IpsecTunnel extends pulumi.CustomResource {
             resourceInputs["customerEndpoint"] = state ? state.customerEndpoint : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["fqdnId"] = state ? state.fqdnId : undefined;
+            resourceInputs["healthCheckDirection"] = state ? state.healthCheckDirection : undefined;
             resourceInputs["healthCheckEnabled"] = state ? state.healthCheckEnabled : undefined;
+            resourceInputs["healthCheckRate"] = state ? state.healthCheckRate : undefined;
             resourceInputs["healthCheckTarget"] = state ? state.healthCheckTarget : undefined;
             resourceInputs["healthCheckType"] = state ? state.healthCheckType : undefined;
             resourceInputs["hexId"] = state ? state.hexId : undefined;
@@ -173,7 +183,9 @@ export class IpsecTunnel extends pulumi.CustomResource {
             resourceInputs["customerEndpoint"] = args ? args.customerEndpoint : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["fqdnId"] = args ? args.fqdnId : undefined;
+            resourceInputs["healthCheckDirection"] = args ? args.healthCheckDirection : undefined;
             resourceInputs["healthCheckEnabled"] = args ? args.healthCheckEnabled : undefined;
+            resourceInputs["healthCheckRate"] = args ? args.healthCheckRate : undefined;
             resourceInputs["healthCheckTarget"] = args ? args.healthCheckTarget : undefined;
             resourceInputs["healthCheckType"] = args ? args.healthCheckType : undefined;
             resourceInputs["hexId"] = args ? args.hexId : undefined;
@@ -219,9 +231,17 @@ export interface IpsecTunnelState {
      */
     fqdnId?: pulumi.Input<string>;
     /**
+     * Specifies the direction for the health check. Available values: `unidirectional`, `bidirectional` Default: `unidirectional`.
+     */
+    healthCheckDirection?: pulumi.Input<string>;
+    /**
      * Specifies if ICMP tunnel health checks are enabled. Default: `true`.
      */
     healthCheckEnabled?: pulumi.Input<boolean>;
+    /**
+     * Specifies the ICMP rate for the health check. Available values: `low`, `mid`, `high` Default: `mid`.
+     */
+    healthCheckRate?: pulumi.Input<string>;
     /**
      * The IP address of the customer endpoint that will receive tunnel health checks. Default: `<customer_gre_endpoint>`.
      */
@@ -285,9 +305,17 @@ export interface IpsecTunnelArgs {
      */
     fqdnId?: pulumi.Input<string>;
     /**
+     * Specifies the direction for the health check. Available values: `unidirectional`, `bidirectional` Default: `unidirectional`.
+     */
+    healthCheckDirection?: pulumi.Input<string>;
+    /**
      * Specifies if ICMP tunnel health checks are enabled. Default: `true`.
      */
     healthCheckEnabled?: pulumi.Input<boolean>;
+    /**
+     * Specifies the ICMP rate for the health check. Available values: `low`, `mid`, `high` Default: `mid`.
+     */
+    healthCheckRate?: pulumi.Input<string>;
     /**
      * The IP address of the customer endpoint that will receive tunnel health checks. Default: `<customer_gre_endpoint>`.
      */

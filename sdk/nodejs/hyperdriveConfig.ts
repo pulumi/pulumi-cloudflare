@@ -16,12 +16,8 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * // Config not using any default values
  * const noDefaults = new cloudflare.HyperdriveConfig("noDefaults", {
  *     accountId: "f037e56e89293a057740de681ac9abbe",
- *     caching: {
- *         disabled: false,
- *     },
  *     name: "my-hyperdrive-config",
  *     origin: {
  *         database: "postgres",

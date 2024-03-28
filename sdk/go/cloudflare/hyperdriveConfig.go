@@ -29,13 +29,9 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			// Config not using any default values
 //			_, err := cloudflare.NewHyperdriveConfig(ctx, "noDefaults", &cloudflare.HyperdriveConfigArgs{
 //				AccountId: pulumi.String("f037e56e89293a057740de681ac9abbe"),
-//				Caching: &cloudflare.HyperdriveConfigCachingArgs{
-//					Disabled: pulumi.Bool(false),
-//				},
-//				Name: pulumi.String("my-hyperdrive-config"),
+//				Name:      pulumi.String("my-hyperdrive-config"),
 //				Origin: &cloudflare.HyperdriveConfigOriginArgs{
 //					Database: pulumi.String("postgres"),
 //					Host:     pulumi.String("my-database.example.com"),

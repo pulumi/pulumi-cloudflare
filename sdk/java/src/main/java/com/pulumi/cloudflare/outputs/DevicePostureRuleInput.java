@@ -90,6 +90,11 @@ public final class DevicePostureRuleInput {
      */
     private @Nullable String issueCount;
     /**
+     * @return The duration of time that the host was last seen from Crowdstrike. Must be in the format `1h` or `30m`. Valid units are `d`, `h` and `m`.
+     * 
+     */
+    private @Nullable String lastSeen;
+    /**
      * @return The network status from SentinelOne. Available values: `connected`, `disconnected`, `disconnecting`, `connecting`.
      * 
      */
@@ -149,6 +154,11 @@ public final class DevicePostureRuleInput {
      * 
      */
     private @Nullable String sha256;
+    /**
+     * @return The host’s current online status from Crowdstrike. Available values: `online`, `offline`, `unknown`.
+     * 
+     */
+    private @Nullable String state;
     /**
      * @return The thumbprint of the file certificate.
      * 
@@ -277,6 +287,13 @@ public final class DevicePostureRuleInput {
         return Optional.ofNullable(this.issueCount);
     }
     /**
+     * @return The duration of time that the host was last seen from Crowdstrike. Must be in the format `1h` or `30m`. Valid units are `d`, `h` and `m`.
+     * 
+     */
+    public Optional<String> lastSeen() {
+        return Optional.ofNullable(this.lastSeen);
+    }
+    /**
      * @return The network status from SentinelOne. Available values: `connected`, `disconnected`, `disconnecting`, `connecting`.
      * 
      */
@@ -361,6 +378,13 @@ public final class DevicePostureRuleInput {
         return Optional.ofNullable(this.sha256);
     }
     /**
+     * @return The host’s current online status from Crowdstrike. Available values: `online`, `offline`, `unknown`.
+     * 
+     */
+    public Optional<String> state() {
+        return Optional.ofNullable(this.state);
+    }
+    /**
      * @return The thumbprint of the file certificate.
      * 
      */
@@ -413,6 +437,7 @@ public final class DevicePostureRuleInput {
         private @Nullable Boolean infected;
         private @Nullable Boolean isActive;
         private @Nullable String issueCount;
+        private @Nullable String lastSeen;
         private @Nullable String networkStatus;
         private @Nullable String operator;
         private @Nullable String os;
@@ -425,6 +450,7 @@ public final class DevicePostureRuleInput {
         private @Nullable Boolean running;
         private @Nullable String sensorConfig;
         private @Nullable String sha256;
+        private @Nullable String state;
         private @Nullable String thumbprint;
         private @Nullable Integer totalScore;
         private @Nullable String version;
@@ -447,6 +473,7 @@ public final class DevicePostureRuleInput {
     	      this.infected = defaults.infected;
     	      this.isActive = defaults.isActive;
     	      this.issueCount = defaults.issueCount;
+    	      this.lastSeen = defaults.lastSeen;
     	      this.networkStatus = defaults.networkStatus;
     	      this.operator = defaults.operator;
     	      this.os = defaults.os;
@@ -459,6 +486,7 @@ public final class DevicePostureRuleInput {
     	      this.running = defaults.running;
     	      this.sensorConfig = defaults.sensorConfig;
     	      this.sha256 = defaults.sha256;
+    	      this.state = defaults.state;
     	      this.thumbprint = defaults.thumbprint;
     	      this.totalScore = defaults.totalScore;
     	      this.version = defaults.version;
@@ -559,6 +587,12 @@ public final class DevicePostureRuleInput {
             return this;
         }
         @CustomType.Setter
+        public Builder lastSeen(@Nullable String lastSeen) {
+
+            this.lastSeen = lastSeen;
+            return this;
+        }
+        @CustomType.Setter
         public Builder networkStatus(@Nullable String networkStatus) {
 
             this.networkStatus = networkStatus;
@@ -631,6 +665,12 @@ public final class DevicePostureRuleInput {
             return this;
         }
         @CustomType.Setter
+        public Builder state(@Nullable String state) {
+
+            this.state = state;
+            return this;
+        }
+        @CustomType.Setter
         public Builder thumbprint(@Nullable String thumbprint) {
 
             this.thumbprint = thumbprint;
@@ -671,6 +711,7 @@ public final class DevicePostureRuleInput {
             _resultValue.infected = infected;
             _resultValue.isActive = isActive;
             _resultValue.issueCount = issueCount;
+            _resultValue.lastSeen = lastSeen;
             _resultValue.networkStatus = networkStatus;
             _resultValue.operator = operator;
             _resultValue.os = os;
@@ -683,6 +724,7 @@ public final class DevicePostureRuleInput {
             _resultValue.running = running;
             _resultValue.sensorConfig = sensorConfig;
             _resultValue.sha256 = sha256;
+            _resultValue.state = state;
             _resultValue.thumbprint = thumbprint;
             _resultValue.totalScore = totalScore;
             _resultValue.version = version;

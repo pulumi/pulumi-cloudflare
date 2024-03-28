@@ -220,6 +220,21 @@ public final class AccessApplicationSaasAppArgs extends com.pulumi.resources.Res
     }
 
     /**
+     * A [JSONata](https://jsonata.org/) expression that transforms an application&#39;s user identities into attribute assertions in the SAML response. The expression can transform id, email, name, and groups values. It can also transform fields listed in the saml*attributes or oidc*fields of the identity provider used to authenticate. The output of this expression must be a JSON object.
+     * 
+     */
+    @Import(name="samlAttributeTransformJsonata")
+    private @Nullable Output<String> samlAttributeTransformJsonata;
+
+    /**
+     * @return A [JSONata](https://jsonata.org/) expression that transforms an application&#39;s user identities into attribute assertions in the SAML response. The expression can transform id, email, name, and groups values. It can also transform fields listed in the saml*attributes or oidc*fields of the identity provider used to authenticate. The output of this expression must be a JSON object.
+     * 
+     */
+    public Optional<Output<String>> samlAttributeTransformJsonata() {
+        return Optional.ofNullable(this.samlAttributeTransformJsonata);
+    }
+
+    /**
      * Define the user information shared with access.
      * 
      */
@@ -281,6 +296,7 @@ public final class AccessApplicationSaasAppArgs extends com.pulumi.resources.Res
         this.nameIdTransformJsonata = $.nameIdTransformJsonata;
         this.publicKey = $.publicKey;
         this.redirectUris = $.redirectUris;
+        this.samlAttributeTransformJsonata = $.samlAttributeTransformJsonata;
         this.scopes = $.scopes;
         this.spEntityId = $.spEntityId;
         this.ssoEndpoint = $.ssoEndpoint;
@@ -614,6 +630,27 @@ public final class AccessApplicationSaasAppArgs extends com.pulumi.resources.Res
          */
         public Builder redirectUris(String... redirectUris) {
             return redirectUris(List.of(redirectUris));
+        }
+
+        /**
+         * @param samlAttributeTransformJsonata A [JSONata](https://jsonata.org/) expression that transforms an application&#39;s user identities into attribute assertions in the SAML response. The expression can transform id, email, name, and groups values. It can also transform fields listed in the saml*attributes or oidc*fields of the identity provider used to authenticate. The output of this expression must be a JSON object.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder samlAttributeTransformJsonata(@Nullable Output<String> samlAttributeTransformJsonata) {
+            $.samlAttributeTransformJsonata = samlAttributeTransformJsonata;
+            return this;
+        }
+
+        /**
+         * @param samlAttributeTransformJsonata A [JSONata](https://jsonata.org/) expression that transforms an application&#39;s user identities into attribute assertions in the SAML response. The expression can transform id, email, name, and groups values. It can also transform fields listed in the saml*attributes or oidc*fields of the identity provider used to authenticate. The output of this expression must be a JSON object.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder samlAttributeTransformJsonata(String samlAttributeTransformJsonata) {
+            return samlAttributeTransformJsonata(Output.of(samlAttributeTransformJsonata));
         }
 
         /**

@@ -67,6 +67,10 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly ImmutableArray<string> RedirectUris;
         /// <summary>
+        /// A [JSONata](https://jsonata.org/) expression that transforms an application's user identities into attribute assertions in the SAML response. The expression can transform id, email, name, and groups values. It can also transform fields listed in the saml*attributes or oidc*fields of the identity provider used to authenticate. The output of this expression must be a JSON object.
+        /// </summary>
+        public readonly string? SamlAttributeTransformJsonata;
+        /// <summary>
         /// Define the user information shared with access.
         /// </summary>
         public readonly ImmutableArray<string> Scopes;
@@ -109,6 +113,8 @@ namespace Pulumi.Cloudflare.Outputs
 
             ImmutableArray<string> redirectUris,
 
+            string? samlAttributeTransformJsonata,
+
             ImmutableArray<string> scopes,
 
             string? spEntityId,
@@ -129,6 +135,7 @@ namespace Pulumi.Cloudflare.Outputs
             NameIdTransformJsonata = nameIdTransformJsonata;
             PublicKey = publicKey;
             RedirectUris = redirectUris;
+            SamlAttributeTransformJsonata = samlAttributeTransformJsonata;
             Scopes = scopes;
             SpEntityId = spEntityId;
             SsoEndpoint = ssoEndpoint;

@@ -156,6 +156,20 @@ public class IpsecTunnel extends com.pulumi.resources.CustomResource {
         return this.fqdnId;
     }
     /**
+     * Specifies the direction for the health check. Available values: `unidirectional`, `bidirectional` Default: `unidirectional`.
+     * 
+     */
+    @Export(name="healthCheckDirection", refs={String.class}, tree="[0]")
+    private Output<String> healthCheckDirection;
+
+    /**
+     * @return Specifies the direction for the health check. Available values: `unidirectional`, `bidirectional` Default: `unidirectional`.
+     * 
+     */
+    public Output<String> healthCheckDirection() {
+        return this.healthCheckDirection;
+    }
+    /**
      * Specifies if ICMP tunnel health checks are enabled. Default: `true`.
      * 
      */
@@ -168,6 +182,20 @@ public class IpsecTunnel extends com.pulumi.resources.CustomResource {
      */
     public Output<Boolean> healthCheckEnabled() {
         return this.healthCheckEnabled;
+    }
+    /**
+     * Specifies the ICMP rate for the health check. Available values: `low`, `mid`, `high` Default: `mid`.
+     * 
+     */
+    @Export(name="healthCheckRate", refs={String.class}, tree="[0]")
+    private Output<String> healthCheckRate;
+
+    /**
+     * @return Specifies the ICMP rate for the health check. Available values: `low`, `mid`, `high` Default: `mid`.
+     * 
+     */
+    public Output<String> healthCheckRate() {
+        return this.healthCheckRate;
     }
     /**
      * The IP address of the customer endpoint that will receive tunnel health checks. Default: `&lt;customer_gre_endpoint&gt;`.

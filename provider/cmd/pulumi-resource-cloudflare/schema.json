@@ -284,6 +284,10 @@
                     },
                     "description": "The permitted URL's for Cloudflare to return Authorization codes and Access/ID tokens.\n"
                 },
+                "samlAttributeTransformJsonata": {
+                    "type": "string",
+                    "description": "A [JSONata](https://jsonata.org/) expression that transforms an application's user identities into attribute assertions in the SAML response. The expression can transform id, email, name, and groups values. It can also transform fields listed in the saml*attributes or oidc*fields of the identity provider used to authenticate. The output of this expression must be a JSON object.\n"
+                },
                 "scopes": {
                     "type": "array",
                     "items": {
@@ -2447,6 +2451,10 @@
                     "type": "string",
                     "description": "The number of issues for kolide.\n"
                 },
+                "lastSeen": {
+                    "type": "string",
+                    "description": "The duration of time that the host was last seen from Crowdstrike. Must be in the format `1h` or `30m`. Valid units are `d`, `h` and `m`.\n"
+                },
                 "networkStatus": {
                     "type": "string",
                     "description": "The network status from SentinelOne. Available values: `connected`, `disconnected`, `disconnecting`, `connecting`.\n"
@@ -2494,6 +2502,10 @@
                 "sha256": {
                     "type": "string",
                     "description": "The sha256 hash of the file.\n"
+                },
+                "state": {
+                    "type": "string",
+                    "description": "The host’s current online status from Crowdstrike. Available values: `online`, `offline`, `unknown`.\n"
                 },
                 "thumbprint": {
                     "type": "string",
@@ -14759,7 +14771,7 @@
             }
         },
         "cloudflare:index/hyperdriveConfig:HyperdriveConfig": {
-            "description": "The [Hyperdrive Config](https://developers.cloudflare.com/hyperdrive/) resource allows you to manage Cloudflare Hyperdrive Configs.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as cloudflare from \"@pulumi/cloudflare\";\n\n// Config not using any default values\nconst noDefaults = new cloudflare.HyperdriveConfig(\"noDefaults\", {\n    accountId: \"f037e56e89293a057740de681ac9abbe\",\n    caching: {\n        disabled: false,\n    },\n    name: \"my-hyperdrive-config\",\n    origin: {\n        database: \"postgres\",\n        host: \"my-database.example.com\",\n        password: \"my-password\",\n        port: 5432,\n        scheme: \"postgres\",\n        user: \"my-user\",\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_cloudflare as cloudflare\n\n# Config not using any default values\nno_defaults = cloudflare.HyperdriveConfig(\"noDefaults\",\n    account_id=\"f037e56e89293a057740de681ac9abbe\",\n    caching=cloudflare.HyperdriveConfigCachingArgs(\n        disabled=False,\n    ),\n    name=\"my-hyperdrive-config\",\n    origin=cloudflare.HyperdriveConfigOriginArgs(\n        database=\"postgres\",\n        host=\"my-database.example.com\",\n        password=\"my-password\",\n        port=5432,\n        scheme=\"postgres\",\n        user=\"my-user\",\n    ))\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Cloudflare = Pulumi.Cloudflare;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    // Config not using any default values\n    var noDefaults = new Cloudflare.HyperdriveConfig(\"noDefaults\", new()\n    {\n        AccountId = \"f037e56e89293a057740de681ac9abbe\",\n        Caching = new Cloudflare.Inputs.HyperdriveConfigCachingArgs\n        {\n            Disabled = false,\n        },\n        Name = \"my-hyperdrive-config\",\n        Origin = new Cloudflare.Inputs.HyperdriveConfigOriginArgs\n        {\n            Database = \"postgres\",\n            Host = \"my-database.example.com\",\n            Password = \"my-password\",\n            Port = 5432,\n            Scheme = \"postgres\",\n            User = \"my-user\",\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t// Config not using any default values\n\t\t_, err := cloudflare.NewHyperdriveConfig(ctx, \"noDefaults\", \u0026cloudflare.HyperdriveConfigArgs{\n\t\t\tAccountId: pulumi.String(\"f037e56e89293a057740de681ac9abbe\"),\n\t\t\tCaching: \u0026cloudflare.HyperdriveConfigCachingArgs{\n\t\t\t\tDisabled: pulumi.Bool(false),\n\t\t\t},\n\t\t\tName: pulumi.String(\"my-hyperdrive-config\"),\n\t\t\tOrigin: \u0026cloudflare.HyperdriveConfigOriginArgs{\n\t\t\t\tDatabase: pulumi.String(\"postgres\"),\n\t\t\t\tHost:     pulumi.String(\"my-database.example.com\"),\n\t\t\t\tPassword: pulumi.String(\"my-password\"),\n\t\t\t\tPort:     pulumi.Int(5432),\n\t\t\t\tScheme:   pulumi.String(\"postgres\"),\n\t\t\t\tUser:     pulumi.String(\"my-user\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.cloudflare.HyperdriveConfig;\nimport com.pulumi.cloudflare.HyperdriveConfigArgs;\nimport com.pulumi.cloudflare.inputs.HyperdriveConfigCachingArgs;\nimport com.pulumi.cloudflare.inputs.HyperdriveConfigOriginArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var noDefaults = new HyperdriveConfig(\"noDefaults\", HyperdriveConfigArgs.builder()        \n            .accountId(\"f037e56e89293a057740de681ac9abbe\")\n            .caching(HyperdriveConfigCachingArgs.builder()\n                .disabled(false)\n                .build())\n            .name(\"my-hyperdrive-config\")\n            .origin(HyperdriveConfigOriginArgs.builder()\n                .database(\"postgres\")\n                .host(\"my-database.example.com\")\n                .password(\"my-password\")\n                .port(5432)\n                .scheme(\"postgres\")\n                .user(\"my-user\")\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  # Config not using any default values\n  noDefaults:\n    type: cloudflare:HyperdriveConfig\n    properties:\n      accountId: f037e56e89293a057740de681ac9abbe\n      caching:\n        disabled: false\n      name: my-hyperdrive-config\n      origin:\n        database: postgres\n        host: my-database.example.com\n        password: my-password\n        port: 5432\n        scheme: postgres\n        user: my-user\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\n```sh\n$ pulumi import cloudflare:index/hyperdriveConfig:HyperdriveConfig example \u003caccount_id\u003e/\u003chyperdrive_config_id\u003e\n```\n\n",
+            "description": "The [Hyperdrive Config](https://developers.cloudflare.com/hyperdrive/) resource allows you to manage Cloudflare Hyperdrive Configs.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as cloudflare from \"@pulumi/cloudflare\";\n\nconst noDefaults = new cloudflare.HyperdriveConfig(\"noDefaults\", {\n    accountId: \"f037e56e89293a057740de681ac9abbe\",\n    name: \"my-hyperdrive-config\",\n    origin: {\n        database: \"postgres\",\n        host: \"my-database.example.com\",\n        password: \"my-password\",\n        port: 5432,\n        scheme: \"postgres\",\n        user: \"my-user\",\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_cloudflare as cloudflare\n\nno_defaults = cloudflare.HyperdriveConfig(\"noDefaults\",\n    account_id=\"f037e56e89293a057740de681ac9abbe\",\n    name=\"my-hyperdrive-config\",\n    origin=cloudflare.HyperdriveConfigOriginArgs(\n        database=\"postgres\",\n        host=\"my-database.example.com\",\n        password=\"my-password\",\n        port=5432,\n        scheme=\"postgres\",\n        user=\"my-user\",\n    ))\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Cloudflare = Pulumi.Cloudflare;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var noDefaults = new Cloudflare.HyperdriveConfig(\"noDefaults\", new()\n    {\n        AccountId = \"f037e56e89293a057740de681ac9abbe\",\n        Name = \"my-hyperdrive-config\",\n        Origin = new Cloudflare.Inputs.HyperdriveConfigOriginArgs\n        {\n            Database = \"postgres\",\n            Host = \"my-database.example.com\",\n            Password = \"my-password\",\n            Port = 5432,\n            Scheme = \"postgres\",\n            User = \"my-user\",\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := cloudflare.NewHyperdriveConfig(ctx, \"noDefaults\", \u0026cloudflare.HyperdriveConfigArgs{\n\t\t\tAccountId: pulumi.String(\"f037e56e89293a057740de681ac9abbe\"),\n\t\t\tName:      pulumi.String(\"my-hyperdrive-config\"),\n\t\t\tOrigin: \u0026cloudflare.HyperdriveConfigOriginArgs{\n\t\t\t\tDatabase: pulumi.String(\"postgres\"),\n\t\t\t\tHost:     pulumi.String(\"my-database.example.com\"),\n\t\t\t\tPassword: pulumi.String(\"my-password\"),\n\t\t\t\tPort:     pulumi.Int(5432),\n\t\t\t\tScheme:   pulumi.String(\"postgres\"),\n\t\t\t\tUser:     pulumi.String(\"my-user\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.cloudflare.HyperdriveConfig;\nimport com.pulumi.cloudflare.HyperdriveConfigArgs;\nimport com.pulumi.cloudflare.inputs.HyperdriveConfigOriginArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var noDefaults = new HyperdriveConfig(\"noDefaults\", HyperdriveConfigArgs.builder()        \n            .accountId(\"f037e56e89293a057740de681ac9abbe\")\n            .name(\"my-hyperdrive-config\")\n            .origin(HyperdriveConfigOriginArgs.builder()\n                .database(\"postgres\")\n                .host(\"my-database.example.com\")\n                .password(\"my-password\")\n                .port(5432)\n                .scheme(\"postgres\")\n                .user(\"my-user\")\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  noDefaults:\n    type: cloudflare:HyperdriveConfig\n    properties:\n      accountId: f037e56e89293a057740de681ac9abbe\n      name: my-hyperdrive-config\n      origin:\n        database: postgres\n        host: my-database.example.com\n        password: my-password\n        port: 5432\n        scheme: postgres\n        user: my-user\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\n```sh\n$ pulumi import cloudflare:index/hyperdriveConfig:HyperdriveConfig example \u003caccount_id\u003e/\u003chyperdrive_config_id\u003e\n```\n\n",
             "properties": {
                 "accountId": {
                     "type": "string",
@@ -14857,9 +14869,17 @@
                     "type": "string",
                     "description": "`remote_id` in the form of a fqdn. This value is generated by cloudflare.\n"
                 },
+                "healthCheckDirection": {
+                    "type": "string",
+                    "description": "Specifies the direction for the health check. Available values: `unidirectional`, `bidirectional` Default: `unidirectional`.\n"
+                },
                 "healthCheckEnabled": {
                     "type": "boolean",
                     "description": "Specifies if ICMP tunnel health checks are enabled. Default: `true`.\n"
+                },
+                "healthCheckRate": {
+                    "type": "string",
+                    "description": "Specifies the ICMP rate for the health check. Available values: `low`, `mid`, `high` Default: `mid`.\n"
                 },
                 "healthCheckTarget": {
                     "type": "string",
@@ -14899,7 +14919,9 @@
                 "cloudflareEndpoint",
                 "customerEndpoint",
                 "fqdnId",
+                "healthCheckDirection",
                 "healthCheckEnabled",
+                "healthCheckRate",
                 "healthCheckTarget",
                 "healthCheckType",
                 "hexId",
@@ -14935,9 +14957,17 @@
                     "type": "string",
                     "description": "`remote_id` in the form of a fqdn. This value is generated by cloudflare.\n"
                 },
+                "healthCheckDirection": {
+                    "type": "string",
+                    "description": "Specifies the direction for the health check. Available values: `unidirectional`, `bidirectional` Default: `unidirectional`.\n"
+                },
                 "healthCheckEnabled": {
                     "type": "boolean",
                     "description": "Specifies if ICMP tunnel health checks are enabled. Default: `true`.\n"
+                },
+                "healthCheckRate": {
+                    "type": "string",
+                    "description": "Specifies the ICMP rate for the health check. Available values: `low`, `mid`, `high` Default: `mid`.\n"
                 },
                 "healthCheckTarget": {
                     "type": "string",
@@ -15007,9 +15037,17 @@
                         "type": "string",
                         "description": "`remote_id` in the form of a fqdn. This value is generated by cloudflare.\n"
                     },
+                    "healthCheckDirection": {
+                        "type": "string",
+                        "description": "Specifies the direction for the health check. Available values: `unidirectional`, `bidirectional` Default: `unidirectional`.\n"
+                    },
                     "healthCheckEnabled": {
                         "type": "boolean",
                         "description": "Specifies if ICMP tunnel health checks are enabled. Default: `true`.\n"
+                    },
+                    "healthCheckRate": {
+                        "type": "string",
+                        "description": "Specifies the ICMP rate for the health check. Available values: `low`, `mid`, `high` Default: `mid`.\n"
                     },
                     "healthCheckTarget": {
                         "type": "string",

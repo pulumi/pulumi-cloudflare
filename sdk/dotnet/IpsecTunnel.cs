@@ -88,10 +88,22 @@ namespace Pulumi.Cloudflare
         public Output<string> FqdnId { get; private set; } = null!;
 
         /// <summary>
+        /// Specifies the direction for the health check. Available values: `unidirectional`, `bidirectional` Default: `unidirectional`.
+        /// </summary>
+        [Output("healthCheckDirection")]
+        public Output<string> HealthCheckDirection { get; private set; } = null!;
+
+        /// <summary>
         /// Specifies if ICMP tunnel health checks are enabled. Default: `true`.
         /// </summary>
         [Output("healthCheckEnabled")]
         public Output<bool> HealthCheckEnabled { get; private set; } = null!;
+
+        /// <summary>
+        /// Specifies the ICMP rate for the health check. Available values: `low`, `mid`, `high` Default: `mid`.
+        /// </summary>
+        [Output("healthCheckRate")]
+        public Output<string> HealthCheckRate { get; private set; } = null!;
 
         /// <summary>
         /// The IP address of the customer endpoint that will receive tunnel health checks. Default: `&lt;customer_gre_endpoint&gt;`.
@@ -228,10 +240,22 @@ namespace Pulumi.Cloudflare
         public Input<string>? FqdnId { get; set; }
 
         /// <summary>
+        /// Specifies the direction for the health check. Available values: `unidirectional`, `bidirectional` Default: `unidirectional`.
+        /// </summary>
+        [Input("healthCheckDirection")]
+        public Input<string>? HealthCheckDirection { get; set; }
+
+        /// <summary>
         /// Specifies if ICMP tunnel health checks are enabled. Default: `true`.
         /// </summary>
         [Input("healthCheckEnabled")]
         public Input<bool>? HealthCheckEnabled { get; set; }
+
+        /// <summary>
+        /// Specifies the ICMP rate for the health check. Available values: `low`, `mid`, `high` Default: `mid`.
+        /// </summary>
+        [Input("healthCheckRate")]
+        public Input<string>? HealthCheckRate { get; set; }
 
         /// <summary>
         /// The IP address of the customer endpoint that will receive tunnel health checks. Default: `&lt;customer_gre_endpoint&gt;`.
@@ -336,10 +360,22 @@ namespace Pulumi.Cloudflare
         public Input<string>? FqdnId { get; set; }
 
         /// <summary>
+        /// Specifies the direction for the health check. Available values: `unidirectional`, `bidirectional` Default: `unidirectional`.
+        /// </summary>
+        [Input("healthCheckDirection")]
+        public Input<string>? HealthCheckDirection { get; set; }
+
+        /// <summary>
         /// Specifies if ICMP tunnel health checks are enabled. Default: `true`.
         /// </summary>
         [Input("healthCheckEnabled")]
         public Input<bool>? HealthCheckEnabled { get; set; }
+
+        /// <summary>
+        /// Specifies the ICMP rate for the health check. Available values: `low`, `mid`, `high` Default: `mid`.
+        /// </summary>
+        [Input("healthCheckRate")]
+        public Input<string>? HealthCheckRate { get; set; }
 
         /// <summary>
         /// The IP address of the customer endpoint that will receive tunnel health checks. Default: `&lt;customer_gre_endpoint&gt;`.
