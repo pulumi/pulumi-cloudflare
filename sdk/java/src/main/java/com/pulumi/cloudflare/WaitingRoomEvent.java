@@ -43,6 +43,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         // Waiting Room Event
  *         var example = new WaitingRoomEvent(&#34;example&#34;, WaitingRoomEventArgs.builder()        
  *             .eventEndTime(&#34;2006-01-02T20:04:05Z&#34;)
  *             .eventStartTime(&#34;2006-01-02T15:04:05Z&#34;)

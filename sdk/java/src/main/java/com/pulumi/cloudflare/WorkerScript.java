@@ -67,6 +67,7 @@ import javax.annotation.Nullable;
  *             .title(&#34;example&#34;)
  *             .build());
  * 
+ *         // Sets the script with the name &#34;script_1&#34;
  *         var myScript = new WorkerScript(&#34;myScript&#34;, WorkerScriptArgs.builder()        
  *             .accountId(&#34;f037e56e89293a057740de681ac9abbe&#34;)
  *             .name(&#34;script_1&#34;)

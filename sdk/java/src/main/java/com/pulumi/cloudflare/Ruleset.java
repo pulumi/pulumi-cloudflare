@@ -70,6 +70,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         // Magic Transit
  *         var magicTransitExample = new Ruleset(&#34;magicTransitExample&#34;, RulesetArgs.builder()        
  *             .accountId(&#34;f037e56e89293a057740de681ac9abbe&#34;)
  *             .description(&#34;example magic transit ruleset description&#34;)
@@ -83,6 +84,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
+ *         // Zone-level WAF Managed Ruleset
  *         var zoneLevelManagedWaf = new Ruleset(&#34;zoneLevelManagedWaf&#34;, RulesetArgs.builder()        
  *             .description(&#34;managed WAF ruleset description&#34;)
  *             .kind(&#34;zone&#34;)
@@ -100,6 +102,7 @@ import javax.annotation.Nullable;
  *             .zoneId(&#34;0da42c8d2132a9ddaf714f9e7c920711&#34;)
  *             .build());
  * 
+ *         // Zone-level WAF with tag-based overrides
  *         var zoneLevelManagedWafWithCategoryBasedOverrides = new Ruleset(&#34;zoneLevelManagedWafWithCategoryBasedOverrides&#34;, RulesetArgs.builder()        
  *             .description(&#34;managed WAF with tag-based overrides ruleset description&#34;)
  *             .kind(&#34;zone&#34;)
@@ -130,6 +133,7 @@ import javax.annotation.Nullable;
  *             .zoneId(&#34;0da42c8d2132a9ddaf714f9e7c920711&#34;)
  *             .build());
  * 
+ *         // Rewrite the URI path component to a static path
  *         var transformUriRulePath = new Ruleset(&#34;transformUriRulePath&#34;, RulesetArgs.builder()        
  *             .description(&#34;change the URI path to a new static path&#34;)
  *             .kind(&#34;zone&#34;)
@@ -151,6 +155,7 @@ import javax.annotation.Nullable;
  *             .zoneId(&#34;0da42c8d2132a9ddaf714f9e7c920711&#34;)
  *             .build());
  * 
+ *         // Rewrite the URI query component to a static query
  *         var transformUriRuleQuery = new Ruleset(&#34;transformUriRuleQuery&#34;, RulesetArgs.builder()        
  *             .description(&#34;change the URI query to a new static query&#34;)
  *             .kind(&#34;zone&#34;)
@@ -172,6 +177,7 @@ import javax.annotation.Nullable;
  *             .zoneId(&#34;0da42c8d2132a9ddaf714f9e7c920711&#34;)
  *             .build());
  * 
+ *         // Rewrite HTTP headers to a modified values
  *         var transformUriHttpHeaders = new Ruleset(&#34;transformUriHttpHeaders&#34;, RulesetArgs.builder()        
  *             .description(&#34;modify HTTP headers before reaching origin&#34;)
  *             .kind(&#34;zone&#34;)
@@ -203,6 +209,7 @@ import javax.annotation.Nullable;
  *             .zoneId(&#34;0da42c8d2132a9ddaf714f9e7c920711&#34;)
  *             .build());
  * 
+ *         // HTTP rate limit for an API route
  *         var rateLimitingExample = new Ruleset(&#34;rateLimitingExample&#34;, RulesetArgs.builder()        
  *             .description(&#34;apply HTTP rate limiting for a route&#34;)
  *             .kind(&#34;zone&#34;)
@@ -225,6 +232,7 @@ import javax.annotation.Nullable;
  *             .zoneId(&#34;0da42c8d2132a9ddaf714f9e7c920711&#34;)
  *             .build());
  * 
+ *         // Change origin for an API route
  *         var httpOriginExample = new Ruleset(&#34;httpOriginExample&#34;, RulesetArgs.builder()        
  *             .description(&#34;Change origin for a route&#34;)
  *             .kind(&#34;zone&#34;)
@@ -246,6 +254,7 @@ import javax.annotation.Nullable;
  *             .zoneId(&#34;0da42c8d2132a9ddaf714f9e7c920711&#34;)
  *             .build());
  * 
+ *         // Custom fields logging
  *         var customFieldsLoggingExample = new Ruleset(&#34;customFieldsLoggingExample&#34;, RulesetArgs.builder()        
  *             .description(&#34;add custom fields to logging&#34;)
  *             .kind(&#34;zone&#34;)
@@ -274,6 +283,7 @@ import javax.annotation.Nullable;
  *             .zoneId(&#34;0da42c8d2132a9ddaf714f9e7c920711&#34;)
  *             .build());
  * 
+ *         // Custom cache keys + settings
  *         var cacheSettingsExample = new Ruleset(&#34;cacheSettingsExample&#34;, RulesetArgs.builder()        
  *             .description(&#34;set cache settings for the request&#34;)
  *             .kind(&#34;zone&#34;)
@@ -338,6 +348,7 @@ import javax.annotation.Nullable;
  *             .zoneId(&#34;0da42c8d2132a9ddaf714f9e7c920711&#34;)
  *             .build());
  * 
+ *         // Redirects based on a List resource
  *         var redirectFromListExample = new Ruleset(&#34;redirectFromListExample&#34;, RulesetArgs.builder()        
  *             .accountId(&#34;f037e56e89293a057740de681ac9abbe&#34;)
  *             .description(&#34;Redirect ruleset&#34;)
@@ -358,6 +369,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
+ *         // Dynamic Redirects from value resource
  *         var redirectFromValueExample = new Ruleset(&#34;redirectFromValueExample&#34;, RulesetArgs.builder()        
  *             .description(&#34;Redirect ruleset&#34;)
  *             .kind(&#34;zone&#34;)
@@ -381,6 +393,7 @@ import javax.annotation.Nullable;
  *             .zoneId(&#34;0da42c8d2132a9ddaf714f9e7c920711&#34;)
  *             .build());
  * 
+ *         // Serve some custom error response
  *         var httpCustomErrorExample = new Ruleset(&#34;httpCustomErrorExample&#34;, RulesetArgs.builder()        
  *             .description(&#34;Serve some error response&#34;)
  *             .kind(&#34;zone&#34;)
@@ -400,6 +413,7 @@ import javax.annotation.Nullable;
  *             .zoneId(&#34;0da42c8d2132a9ddaf714f9e7c920711&#34;)
  *             .build());
  * 
+ *         // Set Configuration Rules for an API route
  *         var httpConfigRulesExample = new Ruleset(&#34;httpConfigRulesExample&#34;, RulesetArgs.builder()        
  *             .description(&#34;set config rules for request&#34;)
  *             .kind(&#34;zone&#34;)
@@ -418,6 +432,7 @@ import javax.annotation.Nullable;
  *             .zoneId(&#34;0da42c8d2132a9ddaf714f9e7c920711&#34;)
  *             .build());
  * 
+ *         // Set compress algorithm for response.
  *         var responseCompressBrotliHtml = new Ruleset(&#34;responseCompressBrotliHtml&#34;, RulesetArgs.builder()        
  *             .description(&#34;Response compression ruleset&#34;)
  *             .kind(&#34;zone&#34;)

@@ -58,6 +58,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         // Allowing access to `test@example.com` email address only
  *         var testPolicyAccessPolicy = new AccessPolicy(&#34;testPolicyAccessPolicy&#34;, AccessPolicyArgs.builder()        
  *             .applicationId(&#34;cb029e245cfdd66dc8d2e570d5dd3322&#34;)
  *             .zoneId(&#34;0da42c8d2132a9ddaf714f9e7c920711&#34;)
@@ -72,6 +73,8 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
+ *         // Allowing `test@example.com` to access but only when coming from a
+ *         // specific IP.
  *         var testPolicyIndex_accessPolicyAccessPolicy = new AccessPolicy(&#34;testPolicyIndex/accessPolicyAccessPolicy&#34;, AccessPolicyArgs.builder()        
  *             .applicationId(&#34;cb029e245cfdd66dc8d2e570d5dd3322&#34;)
  *             .zoneId(&#34;0da42c8d2132a9ddaf714f9e7c920711&#34;)

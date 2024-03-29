@@ -47,6 +47,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
+ *         // Challenge requests coming from known Tor exit nodes.
  *         var torExitNodes = new AccessRule(&#34;torExitNodes&#34;, AccessRuleArgs.builder()        
  *             .zoneId(&#34;0da42c8d2132a9ddaf714f9e7c920711&#34;)
  *             .notes(&#34;Requests coming from known Tor exit nodes&#34;)
@@ -57,6 +58,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
+ *         // Allowlist requests coming from Antarctica, but only for single zone.
  *         var antarctica = new AccessRule(&#34;antarctica&#34;, AccessRuleArgs.builder()        
  *             .zoneId(&#34;0da42c8d2132a9ddaf714f9e7c920711&#34;)
  *             .notes(&#34;Requests coming from Antarctica&#34;)

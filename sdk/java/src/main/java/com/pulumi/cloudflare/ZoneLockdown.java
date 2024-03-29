@@ -50,6 +50,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         // Restrict access to these endpoints to requests from a known IP address range.
  *         var example = new ZoneLockdown(&#34;example&#34;, ZoneLockdownArgs.builder()        
  *             .configurations(ZoneLockdownConfigurationArgs.builder()
  *                 .target(&#34;ip_range&#34;)
