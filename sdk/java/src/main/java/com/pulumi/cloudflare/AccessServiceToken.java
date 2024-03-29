@@ -44,6 +44,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         // Generate a service token that will renew if terraform is ran within 30 days of expiration
  *         var myApp = new AccessServiceToken(&#34;myApp&#34;, AccessServiceTokenArgs.builder()        
  *             .accountId(&#34;f037e56e89293a057740de681ac9abbe&#34;)
  *             .minDaysForRenewal(30)

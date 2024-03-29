@@ -47,6 +47,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         // HTTPS Healthcheck
  *         var httpHealthCheck = new Healthcheck(&#34;httpHealthCheck&#34;, HealthcheckArgs.builder()        
  *             .zoneId(var_.cloudflare_zone_id())
  *             .name(&#34;http-health-check&#34;)
@@ -77,6 +78,7 @@ import javax.annotation.Nullable;
  *             .consecutiveSuccesses(2)
  *             .build());
  * 
+ *         // TCP Healthcheck
  *         var tcpHealthCheck = new Healthcheck(&#34;tcpHealthCheck&#34;, HealthcheckArgs.builder()        
  *             .zoneId(var_.cloudflare_zone_id())
  *             .name(&#34;tcp-health-check&#34;)

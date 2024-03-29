@@ -56,6 +56,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         // With CORS configuration
  *         var stagingApp = new AccessApplication(&#34;stagingApp&#34;, AccessApplicationArgs.builder()        
  *             .corsHeaders(AccessApplicationCorsHeaderArgs.builder()
  *                 .allowCredentials(true)

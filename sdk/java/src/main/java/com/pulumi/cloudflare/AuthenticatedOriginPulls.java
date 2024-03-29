@@ -46,11 +46,13 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         // Authenticated Origin Pulls
  *         var myAop = new AuthenticatedOriginPulls(&#34;myAop&#34;, AuthenticatedOriginPullsArgs.builder()        
  *             .zoneId(&#34;0da42c8d2132a9ddaf714f9e7c920711&#34;)
  *             .enabled(true)
  *             .build());
  * 
+ *         // Per-Zone Authenticated Origin Pulls
  *         var myPerZoneAopCert = new AuthenticatedOriginPullsCertificate(&#34;myPerZoneAopCert&#34;, AuthenticatedOriginPullsCertificateArgs.builder()        
  *             .zoneId(&#34;0da42c8d2132a9ddaf714f9e7c920711&#34;)
  *             .certificate(&#34;-----INSERT CERTIFICATE-----&#34;)
@@ -64,6 +66,7 @@ import javax.annotation.Nullable;
  *             .enabled(true)
  *             .build());
  * 
+ *         // Per-Hostname Authenticated Origin Pulls
  *         var myPerHostnameAopCert = new AuthenticatedOriginPullsCertificate(&#34;myPerHostnameAopCert&#34;, AuthenticatedOriginPullsCertificateArgs.builder()        
  *             .zoneId(&#34;0da42c8d2132a9ddaf714f9e7c920711&#34;)
  *             .certificate(&#34;-----INSERT CERTIFICATE-----&#34;)

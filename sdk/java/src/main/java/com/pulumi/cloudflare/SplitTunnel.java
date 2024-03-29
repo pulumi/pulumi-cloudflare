@@ -47,6 +47,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         // Excluding *.example.com from WARP routes
  *         var exampleSplitTunnelExclude = new SplitTunnel(&#34;exampleSplitTunnelExclude&#34;, SplitTunnelArgs.builder()        
  *             .accountId(&#34;f037e56e89293a057740de681ac9abbe&#34;)
  *             .mode(&#34;exclude&#34;)
@@ -56,6 +57,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
+ *         // Including *.example.com in WARP routes
  *         var exampleSplitTunnelIncludeSplitTunnel = new SplitTunnel(&#34;exampleSplitTunnelIncludeSplitTunnel&#34;, SplitTunnelArgs.builder()        
  *             .accountId(&#34;f037e56e89293a057740de681ac9abbe&#34;)
  *             .mode(&#34;include&#34;)
@@ -65,6 +67,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
+ *         // Create a device policy
  *         var developerWarpPolicy = new DeviceSettingsPolicy(&#34;developerWarpPolicy&#34;, DeviceSettingsPolicyArgs.builder()        
  *             .accountId(&#34;f037e56e89293a057740de681ac9abbe&#34;)
  *             .name(&#34;Developers&#34;)
@@ -73,6 +76,7 @@ import javax.annotation.Nullable;
  *             .switchLocked(true)
  *             .build());
  * 
+ *         // Excluding *.example.com from WARP routes for a particular device policy
  *         var exampleDeviceSettingsPolicySplitTunnelExclude = new SplitTunnel(&#34;exampleDeviceSettingsPolicySplitTunnelExclude&#34;, SplitTunnelArgs.builder()        
  *             .accountId(&#34;f037e56e89293a057740de681ac9abbe&#34;)
  *             .policyId(developerWarpPolicy.id())
@@ -83,6 +87,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
+ *         // Including *.example.com in WARP routes for a particular device policy
  *         var exampleSplitTunnelIncludeIndex_splitTunnelSplitTunnel = new SplitTunnel(&#34;exampleSplitTunnelIncludeIndex/splitTunnelSplitTunnel&#34;, SplitTunnelArgs.builder()        
  *             .accountId(&#34;f037e56e89293a057740de681ac9abbe&#34;)
  *             .policyId(cloudflare_device_policy.developer_warp_policy().id())

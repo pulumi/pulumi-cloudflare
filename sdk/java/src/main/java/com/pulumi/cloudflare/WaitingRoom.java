@@ -46,6 +46,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         // Waiting Room
  *         var example = new WaitingRoom(&#34;example&#34;, WaitingRoomArgs.builder()        
  *             .additionalRoutes(            
  *                 WaitingRoomAdditionalRouteArgs.builder()

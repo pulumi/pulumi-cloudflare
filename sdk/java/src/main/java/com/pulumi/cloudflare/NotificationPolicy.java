@@ -53,6 +53,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         //## With Filters
  *         var example = new NotificationPolicy(&#34;example&#34;, NotificationPolicyArgs.builder()        
  *             .accountId(&#34;f037e56e89293a057740de681ac9abbe&#34;)
  *             .alertType(&#34;health_check_status_notification&#34;)

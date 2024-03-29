@@ -44,6 +44,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         // Advanced certificate manager for Let&#39;s Encrypt
  *         var example = new CertificatePack(&#34;example&#34;, CertificatePackArgs.builder()        
  *             .certificateAuthority(&#34;lets_encrypt&#34;)
  *             .cloudflareBranding(false)

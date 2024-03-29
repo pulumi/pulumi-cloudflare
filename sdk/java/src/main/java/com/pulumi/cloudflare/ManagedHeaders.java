@@ -48,6 +48,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         // Enable security headers using Managed Meaders
  *         var example = new ManagedHeaders(&#34;example&#34;, ManagedHeadersArgs.builder()        
  *             .managedRequestHeaders(ManagedHeadersManagedRequestHeaderArgs.builder()
  *                 .enabled(true)
