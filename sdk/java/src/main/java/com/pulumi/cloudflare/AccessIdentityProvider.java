@@ -53,12 +53,14 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         // one time pin
  *         var pinLogin = new AccessIdentityProvider(&#34;pinLogin&#34;, AccessIdentityProviderArgs.builder()        
  *             .accountId(&#34;f037e56e89293a057740de681ac9abbe&#34;)
  *             .name(&#34;PIN login&#34;)
  *             .type(&#34;onetimepin&#34;)
  *             .build());
  * 
+ *         // oauth
  *         var githubOauth = new AccessIdentityProvider(&#34;githubOauth&#34;, AccessIdentityProviderArgs.builder()        
  *             .accountId(&#34;f037e56e89293a057740de681ac9abbe&#34;)
  *             .configs(AccessIdentityProviderConfigArgs.builder()
@@ -69,6 +71,7 @@ import javax.annotation.Nullable;
  *             .type(&#34;github&#34;)
  *             .build());
  * 
+ *         // saml
  *         var jumpcloudSaml = new AccessIdentityProvider(&#34;jumpcloudSaml&#34;, AccessIdentityProviderArgs.builder()        
  *             .accountId(&#34;f037e56e89293a057740de681ac9abbe&#34;)
  *             .configs(AccessIdentityProviderConfigArgs.builder()
@@ -87,6 +90,7 @@ import javax.annotation.Nullable;
  *             .type(&#34;saml&#34;)
  *             .build());
  * 
+ *         // okta
  *         var okta = new AccessIdentityProvider(&#34;okta&#34;, AccessIdentityProviderArgs.builder()        
  *             .accountId(&#34;f037e56e89293a057740de681ac9abbe&#34;)
  *             .configs(AccessIdentityProviderConfigArgs.builder()

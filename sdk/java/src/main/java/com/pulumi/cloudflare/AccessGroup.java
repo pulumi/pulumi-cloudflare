@@ -55,6 +55,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         // Allowing access to `test@example.com` email address only
  *         var exampleAccessGroup = new AccessGroup(&#34;exampleAccessGroup&#34;, AccessGroupArgs.builder()        
  *             .accountId(&#34;f037e56e89293a057740de681ac9abbe&#34;)
  *             .name(&#34;staging group&#34;)
@@ -63,6 +64,8 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
+ *         // Allowing `test@example.com` to access but only when coming from a
+ *         // specific IP.
  *         var exampleIndex_accessGroupAccessGroup = new AccessGroup(&#34;exampleIndex/accessGroupAccessGroup&#34;, AccessGroupArgs.builder()        
  *             .accountId(&#34;f037e56e89293a057740de681ac9abbe&#34;)
  *             .name(&#34;staging group&#34;)
@@ -74,6 +77,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
+ *         // Allow members of an Azure Group. The ID is the group UUID (id) in Azure.
  *         var exampleCloudflareIndex_accessGroupAccessGroup = new AccessGroup(&#34;exampleCloudflareIndex/accessGroupAccessGroup&#34;, AccessGroupArgs.builder()        
  *             .accountId(&#34;f037e56e89293a057740de681ac9abbe&#34;)
  *             .name(&#34;test_group&#34;)

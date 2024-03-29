@@ -45,6 +45,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         // Tunnel route
  *         var exampleTunnelRoute = new TunnelRoute(&#34;exampleTunnelRoute&#34;, TunnelRouteArgs.builder()        
  *             .accountId(&#34;f037e56e89293a057740de681ac9abbe&#34;)
  *             .tunnelId(&#34;f70ff985-a4ef-4643-bbbc-4a0ed4fc8415&#34;)
@@ -53,6 +54,7 @@ import javax.annotation.Nullable;
  *             .virtualNetworkId(&#34;bdc39a3c-3104-4c23-8ac0-9f455dda691a&#34;)
  *             .build());
  * 
+ *         // Tunnel with tunnel route
  *         var tunnel = new Tunnel(&#34;tunnel&#34;, TunnelArgs.builder()        
  *             .accountId(&#34;f037e56e89293a057740de681ac9abbe&#34;)
  *             .name(&#34;my_tunnel&#34;)

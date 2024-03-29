@@ -49,6 +49,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         // IP List
  *         var exampleIpList = new List(&#34;exampleIpList&#34;, ListArgs.builder()        
  *             .accountId(&#34;f037e56e89293a057740de681ac9abbe&#34;)
  *             .name(&#34;example_list&#34;)
@@ -56,6 +57,7 @@ import javax.annotation.Nullable;
  *             .kind(&#34;ip&#34;)
  *             .build());
  * 
+ *         // IP List Item
  *         var exampleIpItem = new ListItem(&#34;exampleIpItem&#34;, ListItemArgs.builder()        
  *             .accountId(&#34;f037e56e89293a057740de681ac9abbe&#34;)
  *             .listId(exampleIpList.id())
@@ -63,6 +65,7 @@ import javax.annotation.Nullable;
  *             .ip(&#34;192.0.2.0&#34;)
  *             .build());
  * 
+ *         // Redirect List
  *         var exampleRedirectList = new List(&#34;exampleRedirectList&#34;, ListArgs.builder()        
  *             .accountId(&#34;f037e56e89293a057740de681ac9abbe&#34;)
  *             .name(&#34;example_list&#34;)
@@ -70,6 +73,7 @@ import javax.annotation.Nullable;
  *             .kind(&#34;redirect&#34;)
  *             .build());
  * 
+ *         // Redirect List Item
  *         var exampleRedirectItem = new ListItem(&#34;exampleRedirectItem&#34;, ListItemArgs.builder()        
  *             .accountId(&#34;f037e56e89293a057740de681ac9abbe&#34;)
  *             .listId(exampleIpList.id())
@@ -81,6 +85,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
+ *         // ASN List
  *         var exampleAsnList = new List(&#34;exampleAsnList&#34;, ListArgs.builder()        
  *             .accountId(&#34;f037e56e89293a057740de681ac9abbe&#34;)
  *             .name(&#34;example_asn_list&#34;)
@@ -88,6 +93,7 @@ import javax.annotation.Nullable;
  *             .kind(&#34;asn&#34;)
  *             .build());
  * 
+ *         // ASN List Item
  *         var exampleAsnItem = new ListItem(&#34;exampleAsnItem&#34;, ListItemArgs.builder()        
  *             .accountId(&#34;f037e56e89293a057740de681ac9abbe&#34;)
  *             .listId(exampleAsnList.id())
@@ -95,6 +101,7 @@ import javax.annotation.Nullable;
  *             .asn(6789)
  *             .build());
  * 
+ *         // Hostname List
  *         var exampleHostnameList = new List(&#34;exampleHostnameList&#34;, ListArgs.builder()        
  *             .accountId(&#34;f037e56e89293a057740de681ac9abbe&#34;)
  *             .name(&#34;example_hostname_list&#34;)
@@ -102,6 +109,7 @@ import javax.annotation.Nullable;
  *             .kind(&#34;hostname&#34;)
  *             .build());
  * 
+ *         // Hostname List Item
  *         var exampleHostnameItem = new ListItem(&#34;exampleHostnameItem&#34;, ListItemArgs.builder()        
  *             .accountId(&#34;f037e56e89293a057740de681ac9abbe&#34;)
  *             .listId(exampleHostnameList.id())

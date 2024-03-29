@@ -44,6 +44,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         // Add a page rule to the domain
  *         var foobar = new PageRule(&#34;foobar&#34;, PageRuleArgs.builder()        
  *             .zoneId(var_.cloudflare_zone_id())
  *             .target(String.format(&#34;sub.%s/page&#34;, var_.cloudflare_zone()))

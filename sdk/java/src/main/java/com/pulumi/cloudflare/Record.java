@@ -48,6 +48,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         // Add a record to the domain
  *         var example = new Record(&#34;example&#34;, RecordArgs.builder()        
  *             .zoneId(var_.cloudflare_zone_id())
  *             .name(&#34;example&#34;)
@@ -56,6 +57,7 @@ import javax.annotation.Nullable;
  *             .ttl(3600)
  *             .build());
  * 
+ *         // Add a record requiring a data map
  *         var _sipTls = new Record(&#34;_sipTls&#34;, RecordArgs.builder()        
  *             .zoneId(var_.cloudflare_zone_id())
  *             .name(&#34;_sip._tls&#34;)

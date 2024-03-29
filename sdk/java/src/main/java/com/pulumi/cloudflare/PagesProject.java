@@ -55,12 +55,14 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         // Direct upload Pages project
  *         var basicProject = new PagesProject(&#34;basicProject&#34;, PagesProjectArgs.builder()        
  *             .accountId(&#34;f037e56e89293a057740de681ac9abbe&#34;)
  *             .name(&#34;this-is-my-project-01&#34;)
  *             .productionBranch(&#34;main&#34;)
  *             .build());
  * 
+ *         // Pages project with managing build config
  *         var buildConfig = new PagesProject(&#34;buildConfig&#34;, PagesProjectArgs.builder()        
  *             .accountId(&#34;f037e56e89293a057740de681ac9abbe&#34;)
  *             .buildConfig(PagesProjectBuildConfigArgs.builder()
@@ -74,6 +76,7 @@ import javax.annotation.Nullable;
  *             .productionBranch(&#34;main&#34;)
  *             .build());
  * 
+ *         // Pages project managing project source
  *         var sourceConfig = new PagesProject(&#34;sourceConfig&#34;, PagesProjectArgs.builder()        
  *             .accountId(&#34;f037e56e89293a057740de681ac9abbe&#34;)
  *             .name(&#34;this-is-my-project-01&#34;)
@@ -98,6 +101,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
+ *         // Pages project managing all configs
  *         var deploymentConfigs = new PagesProject(&#34;deploymentConfigs&#34;, PagesProjectArgs.builder()        
  *             .accountId(&#34;f037e56e89293a057740de681ac9abbe&#34;)
  *             .buildConfig(PagesProjectBuildConfigArgs.builder()

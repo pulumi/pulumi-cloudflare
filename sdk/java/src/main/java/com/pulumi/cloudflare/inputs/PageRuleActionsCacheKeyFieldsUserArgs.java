@@ -79,6 +79,7 @@ public final class PageRuleActionsCacheKeyFieldsUserArgs extends com.pulumi.reso
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // Unrealistic example with all features used
      *         var foobar = new PageRule(&#34;foobar&#34;, PageRuleArgs.builder()        
      *             .zoneId(var_.cloudflare_zone_id())
      *             .target(String.format(&#34;%s/app/*&#34;, var_.cloudflare_zone()))
@@ -153,6 +154,7 @@ public final class PageRuleActionsCacheKeyFieldsUserArgs extends com.pulumi.reso
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // Unrealistic example with all features used
      *         var foobar = new PageRule(&#34;foobar&#34;, PageRuleArgs.builder()        
      *             .zoneId(var_.cloudflare_zone_id())
      *             .target(String.format(&#34;%s/app/*&#34;, var_.cloudflare_zone()))
@@ -296,6 +298,7 @@ public final class PageRuleActionsCacheKeyFieldsUserArgs extends com.pulumi.reso
          *     }
          * 
          *     public static void stack(Context ctx) {
+         *         // Unrealistic example with all features used
          *         var foobar = new PageRule(&#34;foobar&#34;, PageRuleArgs.builder()        
          *             .zoneId(var_.cloudflare_zone_id())
          *             .target(String.format(&#34;%s/app/*&#34;, var_.cloudflare_zone()))
@@ -374,6 +377,7 @@ public final class PageRuleActionsCacheKeyFieldsUserArgs extends com.pulumi.reso
          *     }
          * 
          *     public static void stack(Context ctx) {
+         *         // Unrealistic example with all features used
          *         var foobar = new PageRule(&#34;foobar&#34;, PageRuleArgs.builder()        
          *             .zoneId(var_.cloudflare_zone_id())
          *             .target(String.format(&#34;%s/app/*&#34;, var_.cloudflare_zone()))
