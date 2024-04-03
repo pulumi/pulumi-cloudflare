@@ -17,14 +17,14 @@ public final class TeamsRuleRuleSettingsEgressArgs extends com.pulumi.resources.
     public static final TeamsRuleRuleSettingsEgressArgs Empty = new TeamsRuleRuleSettingsEgressArgs();
 
     /**
-     * The IPv4 address to be used for egress.
+     * IPv4 resolvers.
      * 
      */
     @Import(name="ipv4", required=true)
     private Output<String> ipv4;
 
     /**
-     * @return The IPv4 address to be used for egress.
+     * @return IPv4 resolvers.
      * 
      */
     public Output<String> ipv4() {
@@ -47,14 +47,14 @@ public final class TeamsRuleRuleSettingsEgressArgs extends com.pulumi.resources.
     }
 
     /**
-     * The IPv6 range to be used for egress.
+     * IPv6 resolvers.
      * 
      */
     @Import(name="ipv6", required=true)
     private Output<String> ipv6;
 
     /**
-     * @return The IPv6 range to be used for egress.
+     * @return IPv6 resolvers.
      * 
      */
     public Output<String> ipv6() {
@@ -88,7 +88,7 @@ public final class TeamsRuleRuleSettingsEgressArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param ipv4 The IPv4 address to be used for egress.
+         * @param ipv4 IPv4 resolvers.
          * 
          * @return builder
          * 
@@ -99,7 +99,7 @@ public final class TeamsRuleRuleSettingsEgressArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param ipv4 The IPv4 address to be used for egress.
+         * @param ipv4 IPv4 resolvers.
          * 
          * @return builder
          * 
@@ -130,7 +130,7 @@ public final class TeamsRuleRuleSettingsEgressArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param ipv6 The IPv6 range to be used for egress.
+         * @param ipv6 IPv6 resolvers.
          * 
          * @return builder
          * 
@@ -141,7 +141,7 @@ public final class TeamsRuleRuleSettingsEgressArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param ipv6 The IPv6 range to be used for egress.
+         * @param ipv6 IPv6 resolvers.
          * 
          * @return builder
          * 

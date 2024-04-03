@@ -55,6 +55,8 @@ func LookupTunnel(ctx *pulumi.Context, args *LookupTunnelArgs, opts ...pulumi.In
 type LookupTunnelArgs struct {
 	// The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
 	AccountId string `pulumi:"accountId"`
+	// If true, only include deleted tunnels. If false, exclude deleted tunnels. If empty, all tunnels will be included. **Modifying this attribute will force creation of a new resource.**
+	IsDeleted *bool `pulumi:"isDeleted"`
 	// Name of the tunnel. **Modifying this attribute will force creation of a new resource.**
 	Name string `pulumi:"name"`
 }
@@ -65,6 +67,8 @@ type LookupTunnelResult struct {
 	AccountId string `pulumi:"accountId"`
 	// ID of the tunnel.
 	Id string `pulumi:"id"`
+	// If true, only include deleted tunnels. If false, exclude deleted tunnels. If empty, all tunnels will be included. **Modifying this attribute will force creation of a new resource.**
+	IsDeleted *bool `pulumi:"isDeleted"`
 	// Name of the tunnel. **Modifying this attribute will force creation of a new resource.**
 	Name string `pulumi:"name"`
 	// Whether the tunnel can be configured remotely from the Zero Trust dashboard.
@@ -92,6 +96,8 @@ func LookupTunnelOutput(ctx *pulumi.Context, args LookupTunnelOutputArgs, opts .
 type LookupTunnelOutputArgs struct {
 	// The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
 	AccountId pulumi.StringInput `pulumi:"accountId"`
+	// If true, only include deleted tunnels. If false, exclude deleted tunnels. If empty, all tunnels will be included. **Modifying this attribute will force creation of a new resource.**
+	IsDeleted pulumi.BoolPtrInput `pulumi:"isDeleted"`
 	// Name of the tunnel. **Modifying this attribute will force creation of a new resource.**
 	Name pulumi.StringInput `pulumi:"name"`
 }
@@ -123,6 +129,11 @@ func (o LookupTunnelResultOutput) AccountId() pulumi.StringOutput {
 // ID of the tunnel.
 func (o LookupTunnelResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTunnelResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// If true, only include deleted tunnels. If false, exclude deleted tunnels. If empty, all tunnels will be included. **Modifying this attribute will force creation of a new resource.**
+func (o LookupTunnelResultOutput) IsDeleted() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v LookupTunnelResult) *bool { return v.IsDeleted }).(pulumi.BoolPtrOutput)
 }
 
 // Name of the tunnel. **Modifying this attribute will force creation of a new resource.**

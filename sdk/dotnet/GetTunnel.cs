@@ -76,6 +76,12 @@ namespace Pulumi.Cloudflare
         public string AccountId { get; set; } = null!;
 
         /// <summary>
+        /// If true, only include deleted tunnels. If false, exclude deleted tunnels. If empty, all tunnels will be included. **Modifying this attribute will force creation of a new resource.**
+        /// </summary>
+        [Input("isDeleted")]
+        public bool? IsDeleted { get; set; }
+
+        /// <summary>
         /// Name of the tunnel. **Modifying this attribute will force creation of a new resource.**
         /// </summary>
         [Input("name", required: true)]
@@ -94,6 +100,12 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("accountId", required: true)]
         public Input<string> AccountId { get; set; } = null!;
+
+        /// <summary>
+        /// If true, only include deleted tunnels. If false, exclude deleted tunnels. If empty, all tunnels will be included. **Modifying this attribute will force creation of a new resource.**
+        /// </summary>
+        [Input("isDeleted")]
+        public Input<bool>? IsDeleted { get; set; }
 
         /// <summary>
         /// Name of the tunnel. **Modifying this attribute will force creation of a new resource.**
@@ -120,6 +132,10 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly string Id;
         /// <summary>
+        /// If true, only include deleted tunnels. If false, exclude deleted tunnels. If empty, all tunnels will be included. **Modifying this attribute will force creation of a new resource.**
+        /// </summary>
+        public readonly bool? IsDeleted;
+        /// <summary>
         /// Name of the tunnel. **Modifying this attribute will force creation of a new resource.**
         /// </summary>
         public readonly string Name;
@@ -142,6 +158,8 @@ namespace Pulumi.Cloudflare
 
             string id,
 
+            bool? isDeleted,
+
             string name,
 
             bool remoteConfig,
@@ -152,6 +170,7 @@ namespace Pulumi.Cloudflare
         {
             AccountId = accountId;
             Id = id;
+            IsDeleted = isDeleted;
             Name = name;
             RemoteConfig = remoteConfig;
             Status = status;

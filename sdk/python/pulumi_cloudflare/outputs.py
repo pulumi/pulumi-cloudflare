@@ -222,6 +222,9 @@ __all__ = [
     'TeamsRuleRuleSettingsAuditSsh',
     'TeamsRuleRuleSettingsBisoAdminControls',
     'TeamsRuleRuleSettingsCheckSession',
+    'TeamsRuleRuleSettingsDnsResolvers',
+    'TeamsRuleRuleSettingsDnsResolversIpv4',
+    'TeamsRuleRuleSettingsDnsResolversIpv6',
     'TeamsRuleRuleSettingsEgress',
     'TeamsRuleRuleSettingsL4override',
     'TeamsRuleRuleSettingsNotificationSettings',
@@ -15091,6 +15094,8 @@ class TeamsRuleRuleSettings(dict):
             suggest = "bypass_parent_rule"
         elif key == "checkSession":
             suggest = "check_session"
+        elif key == "dnsResolvers":
+            suggest = "dns_resolvers"
         elif key == "insecureDisableDnssecValidation":
             suggest = "insecure_disable_dnssec_validation"
         elif key == "ipCategories":
@@ -15103,6 +15108,8 @@ class TeamsRuleRuleSettings(dict):
             suggest = "override_ips"
         elif key == "payloadLog":
             suggest = "payload_log"
+        elif key == "resolveDnsThroughCloudflare":
+            suggest = "resolve_dns_through_cloudflare"
         elif key == "untrustedCert":
             suggest = "untrusted_cert"
 
@@ -15126,6 +15133,7 @@ class TeamsRuleRuleSettings(dict):
                  block_page_reason: Optional[str] = None,
                  bypass_parent_rule: Optional[bool] = None,
                  check_session: Optional['outputs.TeamsRuleRuleSettingsCheckSession'] = None,
+                 dns_resolvers: Optional['outputs.TeamsRuleRuleSettingsDnsResolvers'] = None,
                  egress: Optional['outputs.TeamsRuleRuleSettingsEgress'] = None,
                  insecure_disable_dnssec_validation: Optional[bool] = None,
                  ip_categories: Optional[bool] = None,
@@ -15134,6 +15142,7 @@ class TeamsRuleRuleSettings(dict):
                  override_host: Optional[str] = None,
                  override_ips: Optional[Sequence[str]] = None,
                  payload_log: Optional['outputs.TeamsRuleRuleSettingsPayloadLog'] = None,
+                 resolve_dns_through_cloudflare: Optional[bool] = None,
                  untrusted_cert: Optional['outputs.TeamsRuleRuleSettingsUntrustedCert'] = None):
         """
         :param Mapping[str, str] add_headers: Add custom headers to allowed requests in the form of key-value pairs.
@@ -15144,6 +15153,7 @@ class TeamsRuleRuleSettings(dict):
         :param str block_page_reason: The displayed reason for a user being blocked.
         :param bool bypass_parent_rule: Allow child MSP accounts to bypass their parent's rule.
         :param 'TeamsRuleRuleSettingsCheckSessionArgs' check_session: Configure how session check behaves.
+        :param 'TeamsRuleRuleSettingsDnsResolversArgs' dns_resolvers: Add your own custom resolvers to route queries that match the resolver policy. Cannot be used when resolve*dns*through*cloudflare is set. DNS queries will route to the address closest to their origin.
         :param 'TeamsRuleRuleSettingsEgressArgs' egress: Configure how Proxy traffic egresses. Can be set for rules with Egress action and Egress filter. Can be omitted to indicate local egress via Warp IPs.
         :param bool insecure_disable_dnssec_validation: Disable DNSSEC validation (must be Allow rule).
         :param bool ip_categories: Turns on IP category based filter on dns if the rule contains dns category checks.
@@ -15152,6 +15162,7 @@ class TeamsRuleRuleSettings(dict):
         :param str override_host: The host to override matching DNS queries with.
         :param Sequence[str] override_ips: The IPs to override matching DNS queries with.
         :param 'TeamsRuleRuleSettingsPayloadLogArgs' payload_log: Configure DLP Payload Logging settings for this rule.
+        :param bool resolve_dns_through_cloudflare: Enable sending queries that match the resolver policy to Cloudflare's default 1.1.1.1 DNS resolver. Cannot be set when `dns_resolvers` are specified.
         :param 'TeamsRuleRuleSettingsUntrustedCertArgs' untrusted_cert: Configure untrusted certificate settings for this rule.
         """
         if add_headers is not None:
@@ -15170,6 +15181,8 @@ class TeamsRuleRuleSettings(dict):
             pulumi.set(__self__, "bypass_parent_rule", bypass_parent_rule)
         if check_session is not None:
             pulumi.set(__self__, "check_session", check_session)
+        if dns_resolvers is not None:
+            pulumi.set(__self__, "dns_resolvers", dns_resolvers)
         if egress is not None:
             pulumi.set(__self__, "egress", egress)
         if insecure_disable_dnssec_validation is not None:
@@ -15186,6 +15199,8 @@ class TeamsRuleRuleSettings(dict):
             pulumi.set(__self__, "override_ips", override_ips)
         if payload_log is not None:
             pulumi.set(__self__, "payload_log", payload_log)
+        if resolve_dns_through_cloudflare is not None:
+            pulumi.set(__self__, "resolve_dns_through_cloudflare", resolve_dns_through_cloudflare)
         if untrusted_cert is not None:
             pulumi.set(__self__, "untrusted_cert", untrusted_cert)
 
@@ -15254,6 +15269,14 @@ class TeamsRuleRuleSettings(dict):
         return pulumi.get(self, "check_session")
 
     @property
+    @pulumi.getter(name="dnsResolvers")
+    def dns_resolvers(self) -> Optional['outputs.TeamsRuleRuleSettingsDnsResolvers']:
+        """
+        Add your own custom resolvers to route queries that match the resolver policy. Cannot be used when resolve*dns*through*cloudflare is set. DNS queries will route to the address closest to their origin.
+        """
+        return pulumi.get(self, "dns_resolvers")
+
+    @property
     @pulumi.getter
     def egress(self) -> Optional['outputs.TeamsRuleRuleSettingsEgress']:
         """
@@ -15316,6 +15339,14 @@ class TeamsRuleRuleSettings(dict):
         Configure DLP Payload Logging settings for this rule.
         """
         return pulumi.get(self, "payload_log")
+
+    @property
+    @pulumi.getter(name="resolveDnsThroughCloudflare")
+    def resolve_dns_through_cloudflare(self) -> Optional[bool]:
+        """
+        Enable sending queries that match the resolver policy to Cloudflare's default 1.1.1.1 DNS resolver. Cannot be set when `dns_resolvers` are specified.
+        """
+        return pulumi.get(self, "resolve_dns_through_cloudflare")
 
     @property
     @pulumi.getter(name="untrustedCert")
@@ -15483,6 +15514,183 @@ class TeamsRuleRuleSettingsCheckSession(dict):
 
 
 @pulumi.output_type
+class TeamsRuleRuleSettingsDnsResolvers(dict):
+    def __init__(__self__, *,
+                 ipv4s: Optional[Sequence['outputs.TeamsRuleRuleSettingsDnsResolversIpv4']] = None,
+                 ipv6s: Optional[Sequence['outputs.TeamsRuleRuleSettingsDnsResolversIpv6']] = None):
+        """
+        :param Sequence['TeamsRuleRuleSettingsDnsResolversIpv4Args'] ipv4s: IPv4 resolvers.
+        :param Sequence['TeamsRuleRuleSettingsDnsResolversIpv6Args'] ipv6s: IPv6 resolvers.
+        """
+        if ipv4s is not None:
+            pulumi.set(__self__, "ipv4s", ipv4s)
+        if ipv6s is not None:
+            pulumi.set(__self__, "ipv6s", ipv6s)
+
+    @property
+    @pulumi.getter
+    def ipv4s(self) -> Optional[Sequence['outputs.TeamsRuleRuleSettingsDnsResolversIpv4']]:
+        """
+        IPv4 resolvers.
+        """
+        return pulumi.get(self, "ipv4s")
+
+    @property
+    @pulumi.getter
+    def ipv6s(self) -> Optional[Sequence['outputs.TeamsRuleRuleSettingsDnsResolversIpv6']]:
+        """
+        IPv6 resolvers.
+        """
+        return pulumi.get(self, "ipv6s")
+
+
+@pulumi.output_type
+class TeamsRuleRuleSettingsDnsResolversIpv4(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "routeThroughPrivateNetwork":
+            suggest = "route_through_private_network"
+        elif key == "vnetId":
+            suggest = "vnet_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in TeamsRuleRuleSettingsDnsResolversIpv4. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        TeamsRuleRuleSettingsDnsResolversIpv4.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        TeamsRuleRuleSettingsDnsResolversIpv4.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 ip: str,
+                 port: Optional[int] = None,
+                 route_through_private_network: Optional[bool] = None,
+                 vnet_id: Optional[str] = None):
+        """
+        :param str ip: The IPv4 or IPv6 address of the upstream resolver.
+        :param int port: A port number to use for the upstream resolver. Defaults to `53`.
+        :param bool route_through_private_network: Whether to connect to this resolver over a private network. Must be set when `vnet_id` is set.
+        :param str vnet_id: specify a virtual network for this resolver. Uses default virtual network id if omitted.
+        """
+        pulumi.set(__self__, "ip", ip)
+        if port is not None:
+            pulumi.set(__self__, "port", port)
+        if route_through_private_network is not None:
+            pulumi.set(__self__, "route_through_private_network", route_through_private_network)
+        if vnet_id is not None:
+            pulumi.set(__self__, "vnet_id", vnet_id)
+
+    @property
+    @pulumi.getter
+    def ip(self) -> str:
+        """
+        The IPv4 or IPv6 address of the upstream resolver.
+        """
+        return pulumi.get(self, "ip")
+
+    @property
+    @pulumi.getter
+    def port(self) -> Optional[int]:
+        """
+        A port number to use for the upstream resolver. Defaults to `53`.
+        """
+        return pulumi.get(self, "port")
+
+    @property
+    @pulumi.getter(name="routeThroughPrivateNetwork")
+    def route_through_private_network(self) -> Optional[bool]:
+        """
+        Whether to connect to this resolver over a private network. Must be set when `vnet_id` is set.
+        """
+        return pulumi.get(self, "route_through_private_network")
+
+    @property
+    @pulumi.getter(name="vnetId")
+    def vnet_id(self) -> Optional[str]:
+        """
+        specify a virtual network for this resolver. Uses default virtual network id if omitted.
+        """
+        return pulumi.get(self, "vnet_id")
+
+
+@pulumi.output_type
+class TeamsRuleRuleSettingsDnsResolversIpv6(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "routeThroughPrivateNetwork":
+            suggest = "route_through_private_network"
+        elif key == "vnetId":
+            suggest = "vnet_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in TeamsRuleRuleSettingsDnsResolversIpv6. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        TeamsRuleRuleSettingsDnsResolversIpv6.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        TeamsRuleRuleSettingsDnsResolversIpv6.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 ip: str,
+                 port: Optional[int] = None,
+                 route_through_private_network: Optional[bool] = None,
+                 vnet_id: Optional[str] = None):
+        """
+        :param str ip: The IPv4 or IPv6 address of the upstream resolver.
+        :param int port: A port number to use for the upstream resolver. Defaults to `53`.
+        :param bool route_through_private_network: Whether to connect to this resolver over a private network. Must be set when `vnet_id` is set.
+        :param str vnet_id: specify a virtual network for this resolver. Uses default virtual network id if omitted.
+        """
+        pulumi.set(__self__, "ip", ip)
+        if port is not None:
+            pulumi.set(__self__, "port", port)
+        if route_through_private_network is not None:
+            pulumi.set(__self__, "route_through_private_network", route_through_private_network)
+        if vnet_id is not None:
+            pulumi.set(__self__, "vnet_id", vnet_id)
+
+    @property
+    @pulumi.getter
+    def ip(self) -> str:
+        """
+        The IPv4 or IPv6 address of the upstream resolver.
+        """
+        return pulumi.get(self, "ip")
+
+    @property
+    @pulumi.getter
+    def port(self) -> Optional[int]:
+        """
+        A port number to use for the upstream resolver. Defaults to `53`.
+        """
+        return pulumi.get(self, "port")
+
+    @property
+    @pulumi.getter(name="routeThroughPrivateNetwork")
+    def route_through_private_network(self) -> Optional[bool]:
+        """
+        Whether to connect to this resolver over a private network. Must be set when `vnet_id` is set.
+        """
+        return pulumi.get(self, "route_through_private_network")
+
+    @property
+    @pulumi.getter(name="vnetId")
+    def vnet_id(self) -> Optional[str]:
+        """
+        specify a virtual network for this resolver. Uses default virtual network id if omitted.
+        """
+        return pulumi.get(self, "vnet_id")
+
+
+@pulumi.output_type
 class TeamsRuleRuleSettingsEgress(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -15506,8 +15714,8 @@ class TeamsRuleRuleSettingsEgress(dict):
                  ipv6: str,
                  ipv4_fallback: Optional[str] = None):
         """
-        :param str ipv4: The IPv4 address to be used for egress.
-        :param str ipv6: The IPv6 range to be used for egress.
+        :param str ipv4: IPv4 resolvers.
+        :param str ipv6: IPv6 resolvers.
         :param str ipv4_fallback: The IPv4 address to be used for egress in the event of an error egressing with the primary IPv4. Can be '0.0.0.0' to indicate local egreass via Warp IPs.
         """
         pulumi.set(__self__, "ipv4", ipv4)
@@ -15519,7 +15727,7 @@ class TeamsRuleRuleSettingsEgress(dict):
     @pulumi.getter
     def ipv4(self) -> str:
         """
-        The IPv4 address to be used for egress.
+        IPv4 resolvers.
         """
         return pulumi.get(self, "ipv4")
 
@@ -15527,7 +15735,7 @@ class TeamsRuleRuleSettingsEgress(dict):
     @pulumi.getter
     def ipv6(self) -> str:
         """
-        The IPv6 range to be used for egress.
+        IPv6 resolvers.
         """
         return pulumi.get(self, "ipv6")
 
@@ -15546,8 +15754,8 @@ class TeamsRuleRuleSettingsL4override(dict):
                  ip: str,
                  port: int):
         """
-        :param str ip: Override IP to forward traffic to.
-        :param int port: Override Port to forward traffic to.
+        :param str ip: The IPv4 or IPv6 address of the upstream resolver.
+        :param int port: A port number to use for the upstream resolver. Defaults to `53`.
         """
         pulumi.set(__self__, "ip", ip)
         pulumi.set(__self__, "port", port)
@@ -15556,7 +15764,7 @@ class TeamsRuleRuleSettingsL4override(dict):
     @pulumi.getter
     def ip(self) -> str:
         """
-        Override IP to forward traffic to.
+        The IPv4 or IPv6 address of the upstream resolver.
         """
         return pulumi.get(self, "ip")
 
@@ -15564,7 +15772,7 @@ class TeamsRuleRuleSettingsL4override(dict):
     @pulumi.getter
     def port(self) -> int:
         """
-        Override Port to forward traffic to.
+        A port number to use for the upstream resolver. Defaults to `53`.
         """
         return pulumi.get(self, "port")
 

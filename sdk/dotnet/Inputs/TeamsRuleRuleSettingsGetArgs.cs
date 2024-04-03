@@ -67,6 +67,12 @@ namespace Pulumi.Cloudflare.Inputs
         public Input<Inputs.TeamsRuleRuleSettingsCheckSessionGetArgs>? CheckSession { get; set; }
 
         /// <summary>
+        /// Add your own custom resolvers to route queries that match the resolver policy. Cannot be used when resolve*dns*through*cloudflare is set. DNS queries will route to the address closest to their origin.
+        /// </summary>
+        [Input("dnsResolvers")]
+        public Input<Inputs.TeamsRuleRuleSettingsDnsResolversGetArgs>? DnsResolvers { get; set; }
+
+        /// <summary>
         /// Configure how Proxy traffic egresses. Can be set for rules with Egress action and Egress filter. Can be omitted to indicate local egress via Warp IPs.
         /// </summary>
         [Input("egress")]
@@ -119,6 +125,12 @@ namespace Pulumi.Cloudflare.Inputs
         /// </summary>
         [Input("payloadLog")]
         public Input<Inputs.TeamsRuleRuleSettingsPayloadLogGetArgs>? PayloadLog { get; set; }
+
+        /// <summary>
+        /// Enable sending queries that match the resolver policy to Cloudflare's default 1.1.1.1 DNS resolver. Cannot be set when `dns_resolvers` are specified.
+        /// </summary>
+        [Input("resolveDnsThroughCloudflare")]
+        public Input<bool>? ResolveDnsThroughCloudflare { get; set; }
 
         /// <summary>
         /// Configure untrusted certificate settings for this rule.

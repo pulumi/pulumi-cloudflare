@@ -46,6 +46,10 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly Outputs.TeamsRuleRuleSettingsCheckSession? CheckSession;
         /// <summary>
+        /// Add your own custom resolvers to route queries that match the resolver policy. Cannot be used when resolve*dns*through*cloudflare is set. DNS queries will route to the address closest to their origin.
+        /// </summary>
+        public readonly Outputs.TeamsRuleRuleSettingsDnsResolvers? DnsResolvers;
+        /// <summary>
         /// Configure how Proxy traffic egresses. Can be set for rules with Egress action and Egress filter. Can be omitted to indicate local egress via Warp IPs.
         /// </summary>
         public readonly Outputs.TeamsRuleRuleSettingsEgress? Egress;
@@ -78,6 +82,10 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly Outputs.TeamsRuleRuleSettingsPayloadLog? PayloadLog;
         /// <summary>
+        /// Enable sending queries that match the resolver policy to Cloudflare's default 1.1.1.1 DNS resolver. Cannot be set when `dns_resolvers` are specified.
+        /// </summary>
+        public readonly bool? ResolveDnsThroughCloudflare;
+        /// <summary>
         /// Configure untrusted certificate settings for this rule.
         /// </summary>
         public readonly Outputs.TeamsRuleRuleSettingsUntrustedCert? UntrustedCert;
@@ -100,6 +108,8 @@ namespace Pulumi.Cloudflare.Outputs
 
             Outputs.TeamsRuleRuleSettingsCheckSession? checkSession,
 
+            Outputs.TeamsRuleRuleSettingsDnsResolvers? dnsResolvers,
+
             Outputs.TeamsRuleRuleSettingsEgress? egress,
 
             bool? insecureDisableDnssecValidation,
@@ -116,6 +126,8 @@ namespace Pulumi.Cloudflare.Outputs
 
             Outputs.TeamsRuleRuleSettingsPayloadLog? payloadLog,
 
+            bool? resolveDnsThroughCloudflare,
+
             Outputs.TeamsRuleRuleSettingsUntrustedCert? untrustedCert)
         {
             AddHeaders = addHeaders;
@@ -126,6 +138,7 @@ namespace Pulumi.Cloudflare.Outputs
             BlockPageReason = blockPageReason;
             BypassParentRule = bypassParentRule;
             CheckSession = checkSession;
+            DnsResolvers = dnsResolvers;
             Egress = egress;
             InsecureDisableDnssecValidation = insecureDisableDnssecValidation;
             IpCategories = ipCategories;
@@ -134,6 +147,7 @@ namespace Pulumi.Cloudflare.Outputs
             OverrideHost = overrideHost;
             OverrideIps = overrideIps;
             PayloadLog = payloadLog;
+            ResolveDnsThroughCloudflare = resolveDnsThroughCloudflare;
             UntrustedCert = untrustedCert;
         }
     }

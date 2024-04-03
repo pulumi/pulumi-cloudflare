@@ -73,8 +73,6 @@ type LookupRecordResult struct {
 	Hostname string `pulumi:"hostname"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
-	// Locked status of the found DNS record.
-	Locked bool `pulumi:"locked"`
 	// DNS priority to filter record results on.
 	Priority *int `pulumi:"priority"`
 	// Proxiable status of the found DNS record.
@@ -152,11 +150,6 @@ func (o LookupRecordResultOutput) Hostname() pulumi.StringOutput {
 // The provider-assigned unique ID for this managed resource.
 func (o LookupRecordResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRecordResult) string { return v.Id }).(pulumi.StringOutput)
-}
-
-// Locked status of the found DNS record.
-func (o LookupRecordResultOutput) Locked() pulumi.BoolOutput {
-	return o.ApplyT(func(v LookupRecordResult) bool { return v.Locked }).(pulumi.BoolOutput)
 }
 
 // DNS priority to filter record results on.
