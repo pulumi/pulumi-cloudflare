@@ -4,10 +4,11 @@ description: ""
 config:
   pulumi:tags:
     value:
-      pulumi:template: https://www.pulumi.com/ai/api/project/7d2a4f06-1a26-404e-b4de-3c03333a51d6.zip
+      pulumi:template: https://www.pulumi.com/ai/api/project/173aa3fd-738a-4bbe-91b3-3819cb968ee6.zip
 resources:
-  myZone:
+  my_zone:
     properties:
-      accountId: your-account-id
+      accountId: YOUR_ACCOUNT_ID
+      plan: BASIC_PLAN_ID
       zone: example.com
     type: cloudflare:Zone

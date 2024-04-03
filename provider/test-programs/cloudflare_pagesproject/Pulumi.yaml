@@ -4,17 +4,34 @@ description: ""
 config:
   pulumi:tags:
     value:
-      pulumi:template: https://www.pulumi.com/ai/api/project/2036543b-ec5d-4e35-b0dd-90f3d0478a95.zip
+      pulumi:template: https://www.pulumi.com/ai/api/project/8d585c40-777f-47a5-9902-ec635ba8fd65.zip
+outputs:
+  pagesUrl: ${myPagesProject.url}
 resources:
+  myPagesDomain:
+    properties:
+      accountId: 12345abcde
+      domain: my-custom-domain.com
+      projectName: ${myPagesProject.name}
+    type: cloudflare:PagesDomain
   myPagesProject:
     properties:
-      accountId: ${env:CLOUDFLARE_ACCOUNT_ID}
-      name: my-static-site
+      accountId: 12345abcde
+      buildConfig:
+        buildCommand: npm run build
+        destinationDir: build
+        rootDir: /
+      deploymentConfigs:
+        preview: null
+        production: null
+      name: my-pages-project
       productionBranch: main
       source:
         config:
-          owner: my-github-username
+          deploymentsEnabled: true
+          owner: example-user
+          prCommentsEnabled: true
           productionBranch: main
-          repoName: my-repo-name
+          repoName: example-repo
         type: github
     type: cloudflare:PagesProject

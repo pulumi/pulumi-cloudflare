@@ -4,16 +4,17 @@ description: ""
 config:
   pulumi:tags:
     value:
-      pulumi:template: https://www.pulumi.com/ai/api/project/8e82edac-9d1d-4005-8311-d46f5c27d0ba.zip
+      pulumi:template: https://www.pulumi.com/ai/api/project/e0a916c0-3827-474b-a6b9-b27b5a32b232.zip
 resources:
   myAccessPolicy:
     properties:
-      accountId: exampleAccountId
-      applicationId: exampleApplicationId
-      decision: non_identity
+      accountId: <ACCOUNT_ID>
+      applicationId: <APPLICATION_ID>
+      decision: allow
       includes:
-        - everyone: true
+        - ips:
+            - 192.0.2.1
       name: my-access-policy
       precedence: 1
-      zoneId: exampleZoneId
+      zoneId: <ZONE_ID>
     type: cloudflare:AccessPolicy

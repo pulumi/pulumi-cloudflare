@@ -4,11 +4,11 @@ description: ""
 config:
   pulumi:tags:
     value:
-      pulumi:template: https://www.pulumi.com/ai/api/project/29b7833f-1bd4-4b81-94c8-747989aab6d1.zip
+      pulumi:template: https://www.pulumi.com/ai/api/project/8cc94935-fc0d-4d4f-bd7a-39f00df65062.zip
 resources:
   myWorkerScript:
     properties:
-      accountId: your-cloudflare-account-id
+      accountId: REPLACE_WITH_YOUR_ACCOUNT_ID
       content: |
         addEventListener('fetch', event => {
           event.respondWith(handleRequest(event.request))
