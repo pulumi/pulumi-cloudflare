@@ -2061,6 +2061,19 @@
                                 "check_session": {
                                     "maxItemsOne": true
                                 },
+                                "dns_resolvers": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "ipv4": {
+                                                "maxItemsOne": false
+                                            },
+                                            "ipv6": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
                                 "egress": {
                                     "maxItemsOne": true
                                 },
