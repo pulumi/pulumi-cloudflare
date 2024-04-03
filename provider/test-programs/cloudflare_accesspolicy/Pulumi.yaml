@@ -1,0 +1,19 @@
+name: cloudflare_accesspolicy
+runtime: yaml
+description: ""
+config:
+  pulumi:tags:
+    value:
+      pulumi:template: https://www.pulumi.com/ai/api/project/8e82edac-9d1d-4005-8311-d46f5c27d0ba.zip
+resources:
+  myAccessPolicy:
+    properties:
+      accountId: exampleAccountId
+      applicationId: exampleApplicationId
+      decision: non_identity
+      includes:
+        - everyone: true
+      name: my-access-policy
+      precedence: 1
+      zoneId: exampleZoneId
+    type: cloudflare:AccessPolicy

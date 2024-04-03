@@ -1,0 +1,27 @@
+name: cloudflare_workerscript
+runtime: yaml
+description: ""
+config:
+  pulumi:tags:
+    value:
+      pulumi:template: https://www.pulumi.com/ai/api/project/29b7833f-1bd4-4b81-94c8-747989aab6d1.zip
+resources:
+  myWorkerScript:
+    properties:
+      accountId: your-cloudflare-account-id
+      content: |
+        addEventListener('fetch', event => {
+          event.respondWith(handleRequest(event.request))
+        })
+
+        /**
+         * Respond to the request
+         * @param {Request} request
+         */
+        async function handleRequest(request) {
+          return new Response('Hello worker!', {
+            headers: { 'content-type': 'text/plain' },
+          })
+        }
+      name: my-worker-script
+    type: cloudflare:WorkerScript

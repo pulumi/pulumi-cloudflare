@@ -1,0 +1,16 @@
+name: cloudflare_record
+runtime: yaml
+description: A minimal Pulumi YAML program to create a Cloudflare DNS record.
+config:
+  pulumi:tags:
+    value:
+      pulumi:template: https://www.pulumi.com/ai/api/project/0a921c87-5486-4ba0-afac-bb78bfe53e22.zip
+resources:
+  myDnsRecord:
+    properties:
+      name: example
+      ttl: 3600
+      type: A
+      value: 192.0.2.1
+      zoneId: 023e105f4ecef8ad9ca31a8372d0c353
+    type: cloudflare:Record

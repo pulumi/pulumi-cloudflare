@@ -1,0 +1,15 @@
+name: cloudflare_accessapplication
+runtime: yaml
+description: ""
+config:
+  pulumi:tags:
+    value:
+      pulumi:template: https://www.pulumi.com/ai/api/project/8eb7b7ca-5a92-4222-957b-6a92ff9d215e.zip
+resources:
+  access_application:
+    properties:
+      accountId: your-account-id
+      domain: example-app.yourdomain.com
+      name: example-access-application
+      zoneId: your-zone-id
+    type: cloudflare:AccessApplication

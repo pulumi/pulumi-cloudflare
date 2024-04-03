@@ -1,0 +1,23 @@
+name: cloudflare_ruleset
+runtime: yaml
+description: ""
+config:
+  pulumi:tags:
+    value:
+      pulumi:template: https://www.pulumi.com/ai/api/project/65a0a7ab-f994-4fbb-95d6-1f2e9f1d54dd.zip
+resources:
+  myRuleset:
+    properties:
+      description: A minimal Cloudflare ruleset example
+      kind: custom
+      name: my_minimal_ruleset
+      phase: http_request_transform
+      rules:
+        - action: rewrite
+          actionParameters:
+            uri:
+              path:
+                value: /api/v1
+          expression: http.request.uri.path eq '/api'
+      zoneId: replace-with-your-zone-id
+    type: cloudflare:Ruleset

@@ -1,0 +1,20 @@
+name: cloudflare_pagesproject
+runtime: yaml
+description: ""
+config:
+  pulumi:tags:
+    value:
+      pulumi:template: https://www.pulumi.com/ai/api/project/2036543b-ec5d-4e35-b0dd-90f3d0478a95.zip
+resources:
+  myPagesProject:
+    properties:
+      accountId: ${env:CLOUDFLARE_ACCOUNT_ID}
+      name: my-static-site
+      productionBranch: main
+      source:
+        config:
+          owner: my-github-username
+          productionBranch: main
+          repoName: my-repo-name
+        type: github
+    type: cloudflare:PagesProject

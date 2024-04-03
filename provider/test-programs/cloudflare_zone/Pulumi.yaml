@@ -1,0 +1,13 @@
+name: cloudflare_zone
+runtime: yaml
+description: ""
+config:
+  pulumi:tags:
+    value:
+      pulumi:template: https://www.pulumi.com/ai/api/project/7d2a4f06-1a26-404e-b4de-3c03333a51d6.zip
+resources:
+  myZone:
+    properties:
+      accountId: your-account-id
+      zone: example.com
+    type: cloudflare:Zone
