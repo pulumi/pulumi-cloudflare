@@ -4,12 +4,16 @@ description: ""
 config:
   pulumi:tags:
     value:
-      pulumi:template: https://www.pulumi.com/ai/api/project/8eb7b7ca-5a92-4222-957b-6a92ff9d215e.zip
+      pulumi:template: https://www.pulumi.com/ai/api/project/c33ae27b-ef65-442a-8048-864cd156ea6a.zip
 resources:
-  access_application:
+  myAccessApplication:
     properties:
-      accountId: your-account-id
-      domain: example-app.yourdomain.com
-      name: example-access-application
-      zoneId: your-zone-id
+      accountId: your-cloudflare-account-id
+      domain: app.example.com
+      name: My Access Application
+      zoneId: ${myZone.id}
     type: cloudflare:AccessApplication
+  myZone:
+    properties:
+      zone: example.com
+    type: cloudflare:Zone

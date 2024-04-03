@@ -4,15 +4,26 @@ description: ""
 config:
   pulumi:tags:
     value:
-      pulumi:template: https://www.pulumi.com/ai/api/project/0756b688-2ccf-422b-94e6-9db86fc88f75.zip
+      pulumi:template: https://www.pulumi.com/ai/api/project/fa20bbf6-7933-4490-8d25-b1fd3a7f37c1.zip
+outputs:
+  zoneSettingsId: ${myZoneSettingsOverride.id}
 resources:
-  zoneSettingsOverride:
+  myZone:
+    properties:
+      plan: free
+      zone: example.com
+    type: cloudflare:Zone
+  myZoneSettingsOverride:
     properties:
       settings:
+        alwaysOnline: on
+        emailObfuscation: on
         minify:
           css: off
           html: off
           js: off
-        ssl: off
-      zoneId: YOUR_ZONE_ID
+        rocketLoader: off
+        securityLevel: high
+        ssl: strict
+      zoneId: ${myZone.id}
     type: cloudflare:ZoneSettingsOverride

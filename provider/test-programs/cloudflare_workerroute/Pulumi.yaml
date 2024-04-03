@@ -4,11 +4,22 @@ description: ""
 config:
   pulumi:tags:
     value:
-      pulumi:template: https://www.pulumi.com/ai/api/project/4b3e9550-578b-4ffd-8d56-af977fac8673.zip
+      pulumi:template: https://www.pulumi.com/ai/api/project/c0814194-b1a1-4314-b769-766304330048.zip
+outputs:
+  workerRouteUrl: ${my-worker-route.pattern}
 resources:
-  worker-route:
+  my-worker-route:
     properties:
       pattern: example.com/*
-      scriptName: your-worker-script-name
+      scriptName: ${my-worker-script.name}
       zoneId: your-zone-id
     type: cloudflare:WorkerRoute
+  my-worker-script:
+    properties:
+      accountId: your-cloudflare-account-id
+      content: |
+        addEventListener('fetch', event => {
+          event.respondWith(new Response('Hello world!'))
+        })
+      name: my-worker-script
+    type: cloudflare:WorkerScript
