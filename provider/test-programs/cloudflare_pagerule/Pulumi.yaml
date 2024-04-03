@@ -1,0 +1,17 @@
+name: cloudflare_pagerule
+runtime: yaml
+description: ""
+config:
+  pulumi:tags:
+    value:
+      pulumi:template: https://www.pulumi.com/ai/api/project/979cea38-c3a7-4fe5-adb4-75ac16a8a6c3.zip
+resources:
+  myPageRule:
+    properties:
+      actions:
+        alwaysUseHttps: true
+      priority: 1
+      status: active
+      target: www.mydomain.com/path
+      zoneId: 023e105f4ecef8ad9ca31a8372d0c353
+    type: cloudflare:PageRule

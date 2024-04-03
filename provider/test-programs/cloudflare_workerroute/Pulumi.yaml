@@ -1,0 +1,14 @@
+name: cloudflare_workerroute
+runtime: yaml
+description: ""
+config:
+  pulumi:tags:
+    value:
+      pulumi:template: https://www.pulumi.com/ai/api/project/4b3e9550-578b-4ffd-8d56-af977fac8673.zip
+resources:
+  worker-route:
+    properties:
+      pattern: example.com/*
+      scriptName: your-worker-script-name
+      zoneId: your-zone-id
+    type: cloudflare:WorkerRoute
