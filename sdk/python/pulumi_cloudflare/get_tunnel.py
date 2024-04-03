@@ -21,13 +21,16 @@ class GetTunnelResult:
     """
     A collection of values returned by getTunnel.
     """
-    def __init__(__self__, account_id=None, id=None, name=None, remote_config=None, status=None, tunnel_type=None):
+    def __init__(__self__, account_id=None, id=None, is_deleted=None, name=None, remote_config=None, status=None, tunnel_type=None):
         if account_id and not isinstance(account_id, str):
             raise TypeError("Expected argument 'account_id' to be a str")
         pulumi.set(__self__, "account_id", account_id)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
+        if is_deleted and not isinstance(is_deleted, bool):
+            raise TypeError("Expected argument 'is_deleted' to be a bool")
+        pulumi.set(__self__, "is_deleted", is_deleted)
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
@@ -56,6 +59,14 @@ class GetTunnelResult:
         ID of the tunnel.
         """
         return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="isDeleted")
+    def is_deleted(self) -> Optional[bool]:
+        """
+        If true, only include deleted tunnels. If false, exclude deleted tunnels. If empty, all tunnels will be included. **Modifying this attribute will force creation of a new resource.**
+        """
+        return pulumi.get(self, "is_deleted")
 
     @property
     @pulumi.getter
@@ -98,6 +109,7 @@ class AwaitableGetTunnelResult(GetTunnelResult):
         return GetTunnelResult(
             account_id=self.account_id,
             id=self.id,
+            is_deleted=self.is_deleted,
             name=self.name,
             remote_config=self.remote_config,
             status=self.status,
@@ -105,6 +117,7 @@ class AwaitableGetTunnelResult(GetTunnelResult):
 
 
 def get_tunnel(account_id: Optional[str] = None,
+               is_deleted: Optional[bool] = None,
                name: Optional[str] = None,
                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetTunnelResult:
     """
@@ -124,10 +137,12 @@ def get_tunnel(account_id: Optional[str] = None,
 
 
     :param str account_id: The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+    :param bool is_deleted: If true, only include deleted tunnels. If false, exclude deleted tunnels. If empty, all tunnels will be included. **Modifying this attribute will force creation of a new resource.**
     :param str name: Name of the tunnel. **Modifying this attribute will force creation of a new resource.**
     """
     __args__ = dict()
     __args__['accountId'] = account_id
+    __args__['isDeleted'] = is_deleted
     __args__['name'] = name
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('cloudflare:index/getTunnel:getTunnel', __args__, opts=opts, typ=GetTunnelResult).value
@@ -135,6 +150,7 @@ def get_tunnel(account_id: Optional[str] = None,
     return AwaitableGetTunnelResult(
         account_id=pulumi.get(__ret__, 'account_id'),
         id=pulumi.get(__ret__, 'id'),
+        is_deleted=pulumi.get(__ret__, 'is_deleted'),
         name=pulumi.get(__ret__, 'name'),
         remote_config=pulumi.get(__ret__, 'remote_config'),
         status=pulumi.get(__ret__, 'status'),
@@ -143,6 +159,7 @@ def get_tunnel(account_id: Optional[str] = None,
 
 @_utilities.lift_output_func(get_tunnel)
 def get_tunnel_output(account_id: Optional[pulumi.Input[str]] = None,
+                      is_deleted: Optional[pulumi.Input[Optional[bool]]] = None,
                       name: Optional[pulumi.Input[str]] = None,
                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetTunnelResult]:
     """
@@ -162,6 +179,7 @@ def get_tunnel_output(account_id: Optional[pulumi.Input[str]] = None,
 
 
     :param str account_id: The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
+    :param bool is_deleted: If true, only include deleted tunnels. If false, exclude deleted tunnels. If empty, all tunnels will be included. **Modifying this attribute will force creation of a new resource.**
     :param str name: Name of the tunnel. **Modifying this attribute will force creation of a new resource.**
     """
     ...

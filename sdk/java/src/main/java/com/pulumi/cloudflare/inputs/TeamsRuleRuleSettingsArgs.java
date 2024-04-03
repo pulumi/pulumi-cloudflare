@@ -6,6 +6,7 @@ package com.pulumi.cloudflare.inputs;
 import com.pulumi.cloudflare.inputs.TeamsRuleRuleSettingsAuditSshArgs;
 import com.pulumi.cloudflare.inputs.TeamsRuleRuleSettingsBisoAdminControlsArgs;
 import com.pulumi.cloudflare.inputs.TeamsRuleRuleSettingsCheckSessionArgs;
+import com.pulumi.cloudflare.inputs.TeamsRuleRuleSettingsDnsResolversArgs;
 import com.pulumi.cloudflare.inputs.TeamsRuleRuleSettingsEgressArgs;
 import com.pulumi.cloudflare.inputs.TeamsRuleRuleSettingsL4overrideArgs;
 import com.pulumi.cloudflare.inputs.TeamsRuleRuleSettingsNotificationSettingsArgs;
@@ -147,6 +148,21 @@ public final class TeamsRuleRuleSettingsArgs extends com.pulumi.resources.Resour
     }
 
     /**
+     * Add your own custom resolvers to route queries that match the resolver policy. Cannot be used when resolve*dns*through*cloudflare is set. DNS queries will route to the address closest to their origin.
+     * 
+     */
+    @Import(name="dnsResolvers")
+    private @Nullable Output<TeamsRuleRuleSettingsDnsResolversArgs> dnsResolvers;
+
+    /**
+     * @return Add your own custom resolvers to route queries that match the resolver policy. Cannot be used when resolve*dns*through*cloudflare is set. DNS queries will route to the address closest to their origin.
+     * 
+     */
+    public Optional<Output<TeamsRuleRuleSettingsDnsResolversArgs>> dnsResolvers() {
+        return Optional.ofNullable(this.dnsResolvers);
+    }
+
+    /**
      * Configure how Proxy traffic egresses. Can be set for rules with Egress action and Egress filter. Can be omitted to indicate local egress via Warp IPs.
      * 
      */
@@ -267,6 +283,21 @@ public final class TeamsRuleRuleSettingsArgs extends com.pulumi.resources.Resour
     }
 
     /**
+     * Enable sending queries that match the resolver policy to Cloudflare&#39;s default 1.1.1.1 DNS resolver. Cannot be set when `dns_resolvers` are specified.
+     * 
+     */
+    @Import(name="resolveDnsThroughCloudflare")
+    private @Nullable Output<Boolean> resolveDnsThroughCloudflare;
+
+    /**
+     * @return Enable sending queries that match the resolver policy to Cloudflare&#39;s default 1.1.1.1 DNS resolver. Cannot be set when `dns_resolvers` are specified.
+     * 
+     */
+    public Optional<Output<Boolean>> resolveDnsThroughCloudflare() {
+        return Optional.ofNullable(this.resolveDnsThroughCloudflare);
+    }
+
+    /**
      * Configure untrusted certificate settings for this rule.
      * 
      */
@@ -292,6 +323,7 @@ public final class TeamsRuleRuleSettingsArgs extends com.pulumi.resources.Resour
         this.blockPageReason = $.blockPageReason;
         this.bypassParentRule = $.bypassParentRule;
         this.checkSession = $.checkSession;
+        this.dnsResolvers = $.dnsResolvers;
         this.egress = $.egress;
         this.insecureDisableDnssecValidation = $.insecureDisableDnssecValidation;
         this.ipCategories = $.ipCategories;
@@ -300,6 +332,7 @@ public final class TeamsRuleRuleSettingsArgs extends com.pulumi.resources.Resour
         this.overrideHost = $.overrideHost;
         this.overrideIps = $.overrideIps;
         this.payloadLog = $.payloadLog;
+        this.resolveDnsThroughCloudflare = $.resolveDnsThroughCloudflare;
         this.untrustedCert = $.untrustedCert;
     }
 
@@ -490,6 +523,27 @@ public final class TeamsRuleRuleSettingsArgs extends com.pulumi.resources.Resour
         }
 
         /**
+         * @param dnsResolvers Add your own custom resolvers to route queries that match the resolver policy. Cannot be used when resolve*dns*through*cloudflare is set. DNS queries will route to the address closest to their origin.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dnsResolvers(@Nullable Output<TeamsRuleRuleSettingsDnsResolversArgs> dnsResolvers) {
+            $.dnsResolvers = dnsResolvers;
+            return this;
+        }
+
+        /**
+         * @param dnsResolvers Add your own custom resolvers to route queries that match the resolver policy. Cannot be used when resolve*dns*through*cloudflare is set. DNS queries will route to the address closest to their origin.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dnsResolvers(TeamsRuleRuleSettingsDnsResolversArgs dnsResolvers) {
+            return dnsResolvers(Output.of(dnsResolvers));
+        }
+
+        /**
          * @param egress Configure how Proxy traffic egresses. Can be set for rules with Egress action and Egress filter. Can be omitted to indicate local egress via Warp IPs.
          * 
          * @return builder
@@ -665,6 +719,27 @@ public final class TeamsRuleRuleSettingsArgs extends com.pulumi.resources.Resour
          */
         public Builder payloadLog(TeamsRuleRuleSettingsPayloadLogArgs payloadLog) {
             return payloadLog(Output.of(payloadLog));
+        }
+
+        /**
+         * @param resolveDnsThroughCloudflare Enable sending queries that match the resolver policy to Cloudflare&#39;s default 1.1.1.1 DNS resolver. Cannot be set when `dns_resolvers` are specified.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder resolveDnsThroughCloudflare(@Nullable Output<Boolean> resolveDnsThroughCloudflare) {
+            $.resolveDnsThroughCloudflare = resolveDnsThroughCloudflare;
+            return this;
+        }
+
+        /**
+         * @param resolveDnsThroughCloudflare Enable sending queries that match the resolver policy to Cloudflare&#39;s default 1.1.1.1 DNS resolver. Cannot be set when `dns_resolvers` are specified.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder resolveDnsThroughCloudflare(Boolean resolveDnsThroughCloudflare) {
+            return resolveDnsThroughCloudflare(Output.of(resolveDnsThroughCloudflare));
         }
 
         /**

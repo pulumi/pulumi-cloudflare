@@ -26,6 +26,7 @@ export function getTunnel(args: GetTunnelArgs, opts?: pulumi.InvokeOptions): Pro
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("cloudflare:index/getTunnel:getTunnel", {
         "accountId": args.accountId,
+        "isDeleted": args.isDeleted,
         "name": args.name,
     }, opts);
 }
@@ -38,6 +39,10 @@ export interface GetTunnelArgs {
      * The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
      */
     accountId: string;
+    /**
+     * If true, only include deleted tunnels. If false, exclude deleted tunnels. If empty, all tunnels will be included. **Modifying this attribute will force creation of a new resource.**
+     */
+    isDeleted?: boolean;
     /**
      * Name of the tunnel. **Modifying this attribute will force creation of a new resource.**
      */
@@ -56,6 +61,10 @@ export interface GetTunnelResult {
      * ID of the tunnel.
      */
     readonly id: string;
+    /**
+     * If true, only include deleted tunnels. If false, exclude deleted tunnels. If empty, all tunnels will be included. **Modifying this attribute will force creation of a new resource.**
+     */
+    readonly isDeleted?: boolean;
     /**
      * Name of the tunnel. **Modifying this attribute will force creation of a new resource.**
      */
@@ -102,6 +111,10 @@ export interface GetTunnelOutputArgs {
      * The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
      */
     accountId: pulumi.Input<string>;
+    /**
+     * If true, only include deleted tunnels. If false, exclude deleted tunnels. If empty, all tunnels will be included. **Modifying this attribute will force creation of a new resource.**
+     */
+    isDeleted?: pulumi.Input<boolean>;
     /**
      * Name of the tunnel. **Modifying this attribute will force creation of a new resource.**
      */

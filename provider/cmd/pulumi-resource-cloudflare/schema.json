@@ -6073,6 +6073,10 @@
                     "$ref": "#/types/cloudflare:index/TeamsRuleRuleSettingsCheckSession:TeamsRuleRuleSettingsCheckSession",
                     "description": "Configure how session check behaves.\n"
                 },
+                "dnsResolvers": {
+                    "$ref": "#/types/cloudflare:index/TeamsRuleRuleSettingsDnsResolvers:TeamsRuleRuleSettingsDnsResolvers",
+                    "description": "Add your own custom resolvers to route queries that match the resolver policy. Cannot be used when resolve*dns*through*cloudflare is set. DNS queries will route to the address closest to their origin.\n"
+                },
                 "egress": {
                     "$ref": "#/types/cloudflare:index/TeamsRuleRuleSettingsEgress:TeamsRuleRuleSettingsEgress",
                     "description": "Configure how Proxy traffic egresses. Can be set for rules with Egress action and Egress filter. Can be omitted to indicate local egress via Warp IPs.\n"
@@ -6107,6 +6111,10 @@
                 "payloadLog": {
                     "$ref": "#/types/cloudflare:index/TeamsRuleRuleSettingsPayloadLog:TeamsRuleRuleSettingsPayloadLog",
                     "description": "Configure DLP Payload Logging settings for this rule.\n"
+                },
+                "resolveDnsThroughCloudflare": {
+                    "type": "boolean",
+                    "description": "Enable sending queries that match the resolver policy to Cloudflare's default 1.1.1.1 DNS resolver. Cannot be set when `dns_resolvers` are specified.\n"
                 },
                 "untrustedCert": {
                     "$ref": "#/types/cloudflare:index/TeamsRuleRuleSettingsUntrustedCert:TeamsRuleRuleSettingsUntrustedCert",
@@ -6169,11 +6177,78 @@
                 "enforce"
             ]
         },
+        "cloudflare:index/TeamsRuleRuleSettingsDnsResolvers:TeamsRuleRuleSettingsDnsResolvers": {
+            "properties": {
+                "ipv4s": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/cloudflare:index/TeamsRuleRuleSettingsDnsResolversIpv4:TeamsRuleRuleSettingsDnsResolversIpv4"
+                    },
+                    "description": "IPv4 resolvers.\n"
+                },
+                "ipv6s": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/cloudflare:index/TeamsRuleRuleSettingsDnsResolversIpv6:TeamsRuleRuleSettingsDnsResolversIpv6"
+                    },
+                    "description": "IPv6 resolvers.\n"
+                }
+            },
+            "type": "object"
+        },
+        "cloudflare:index/TeamsRuleRuleSettingsDnsResolversIpv4:TeamsRuleRuleSettingsDnsResolversIpv4": {
+            "properties": {
+                "ip": {
+                    "type": "string",
+                    "description": "The IPv4 or IPv6 address of the upstream resolver.\n"
+                },
+                "port": {
+                    "type": "integer",
+                    "description": "A port number to use for the upstream resolver. Defaults to `53`.\n"
+                },
+                "routeThroughPrivateNetwork": {
+                    "type": "boolean",
+                    "description": "Whether to connect to this resolver over a private network. Must be set when `vnet_id` is set.\n"
+                },
+                "vnetId": {
+                    "type": "string",
+                    "description": "specify a virtual network for this resolver. Uses default virtual network id if omitted.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "ip"
+            ]
+        },
+        "cloudflare:index/TeamsRuleRuleSettingsDnsResolversIpv6:TeamsRuleRuleSettingsDnsResolversIpv6": {
+            "properties": {
+                "ip": {
+                    "type": "string",
+                    "description": "The IPv4 or IPv6 address of the upstream resolver.\n"
+                },
+                "port": {
+                    "type": "integer",
+                    "description": "A port number to use for the upstream resolver. Defaults to `53`.\n"
+                },
+                "routeThroughPrivateNetwork": {
+                    "type": "boolean",
+                    "description": "Whether to connect to this resolver over a private network. Must be set when `vnet_id` is set.\n"
+                },
+                "vnetId": {
+                    "type": "string",
+                    "description": "specify a virtual network for this resolver. Uses default virtual network id if omitted.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "ip"
+            ]
+        },
         "cloudflare:index/TeamsRuleRuleSettingsEgress:TeamsRuleRuleSettingsEgress": {
             "properties": {
                 "ipv4": {
                     "type": "string",
-                    "description": "The IPv4 address to be used for egress.\n"
+                    "description": "IPv4 resolvers.\n"
                 },
                 "ipv4Fallback": {
                     "type": "string",
@@ -6181,7 +6256,7 @@
                 },
                 "ipv6": {
                     "type": "string",
-                    "description": "The IPv6 range to be used for egress.\n"
+                    "description": "IPv6 resolvers.\n"
                 }
             },
             "type": "object",
@@ -6194,11 +6269,11 @@
             "properties": {
                 "ip": {
                     "type": "string",
-                    "description": "Override IP to forward traffic to.\n"
+                    "description": "The IPv4 or IPv6 address of the upstream resolver.\n"
                 },
                 "port": {
                     "type": "integer",
-                    "description": "Override Port to forward traffic to.\n"
+                    "description": "A port number to use for the upstream resolver. Defaults to `53`.\n"
                 }
             },
             "type": "object",
@@ -23501,10 +23576,6 @@
                         "type": "string",
                         "description": "The provider-assigned unique ID for this managed resource.\n"
                     },
-                    "locked": {
-                        "type": "boolean",
-                        "description": "Locked status of the found DNS record.\n"
-                    },
                     "priority": {
                         "type": "integer",
                         "description": "DNS priority to filter record results on.\n"
@@ -23541,7 +23612,6 @@
                 "type": "object",
                 "required": [
                     "hostname",
-                    "locked",
                     "proxiable",
                     "proxied",
                     "ttl",
@@ -23621,6 +23691,11 @@
                         "description": "The account identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**\n",
                         "willReplaceOnChanges": true
                     },
+                    "isDeleted": {
+                        "type": "boolean",
+                        "description": "If true, only include deleted tunnels. If false, exclude deleted tunnels. If empty, all tunnels will be included. **Modifying this attribute will force creation of a new resource.**\n",
+                        "willReplaceOnChanges": true
+                    },
                     "name": {
                         "type": "string",
                         "description": "Name of the tunnel. **Modifying this attribute will force creation of a new resource.**\n",
@@ -23643,6 +23718,10 @@
                     "id": {
                         "type": "string",
                         "description": "ID of the tunnel.\n"
+                    },
+                    "isDeleted": {
+                        "type": "boolean",
+                        "description": "If true, only include deleted tunnels. If false, exclude deleted tunnels. If empty, all tunnels will be included. **Modifying this attribute will force creation of a new resource.**\n"
                     },
                     "name": {
                         "type": "string",

@@ -21,7 +21,7 @@ class GetRecordResult:
     """
     A collection of values returned by getRecord.
     """
-    def __init__(__self__, content=None, hostname=None, id=None, locked=None, priority=None, proxiable=None, proxied=None, ttl=None, type=None, value=None, zone_id=None, zone_name=None):
+    def __init__(__self__, content=None, hostname=None, id=None, priority=None, proxiable=None, proxied=None, ttl=None, type=None, value=None, zone_id=None, zone_name=None):
         if content and not isinstance(content, str):
             raise TypeError("Expected argument 'content' to be a str")
         pulumi.set(__self__, "content", content)
@@ -31,9 +31,6 @@ class GetRecordResult:
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
-        if locked and not isinstance(locked, bool):
-            raise TypeError("Expected argument 'locked' to be a bool")
-        pulumi.set(__self__, "locked", locked)
         if priority and not isinstance(priority, int):
             raise TypeError("Expected argument 'priority' to be a int")
         pulumi.set(__self__, "priority", priority)
@@ -82,14 +79,6 @@ class GetRecordResult:
         The provider-assigned unique ID for this managed resource.
         """
         return pulumi.get(self, "id")
-
-    @property
-    @pulumi.getter
-    def locked(self) -> bool:
-        """
-        Locked status of the found DNS record.
-        """
-        return pulumi.get(self, "locked")
 
     @property
     @pulumi.getter
@@ -165,7 +154,6 @@ class AwaitableGetRecordResult(GetRecordResult):
             content=self.content,
             hostname=self.hostname,
             id=self.id,
-            locked=self.locked,
             priority=self.priority,
             proxiable=self.proxiable,
             proxied=self.proxied,
@@ -217,7 +205,6 @@ def get_record(content: Optional[str] = None,
         content=pulumi.get(__ret__, 'content'),
         hostname=pulumi.get(__ret__, 'hostname'),
         id=pulumi.get(__ret__, 'id'),
-        locked=pulumi.get(__ret__, 'locked'),
         priority=pulumi.get(__ret__, 'priority'),
         proxiable=pulumi.get(__ret__, 'proxiable'),
         proxied=pulumi.get(__ret__, 'proxied'),

@@ -160,10 +160,6 @@ namespace Pulumi.Cloudflare
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// Locked status of the found DNS record.
-        /// </summary>
-        public readonly bool Locked;
-        /// <summary>
         /// DNS priority to filter record results on.
         /// </summary>
         public readonly int? Priority;
@@ -204,8 +200,6 @@ namespace Pulumi.Cloudflare
 
             string id,
 
-            bool locked,
-
             int? priority,
 
             bool proxiable,
@@ -225,7 +219,6 @@ namespace Pulumi.Cloudflare
             Content = content;
             Hostname = hostname;
             Id = id;
-            Locked = locked;
             Priority = priority;
             Proxiable = proxiable;
             Proxied = proxied;

@@ -5,8 +5,11 @@ package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class GetTunnelPlainArgs extends com.pulumi.resources.InvokeArgs {
@@ -29,6 +32,21 @@ public final class GetTunnelPlainArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
+     * If true, only include deleted tunnels. If false, exclude deleted tunnels. If empty, all tunnels will be included. **Modifying this attribute will force creation of a new resource.**
+     * 
+     */
+    @Import(name="isDeleted")
+    private @Nullable Boolean isDeleted;
+
+    /**
+     * @return If true, only include deleted tunnels. If false, exclude deleted tunnels. If empty, all tunnels will be included. **Modifying this attribute will force creation of a new resource.**
+     * 
+     */
+    public Optional<Boolean> isDeleted() {
+        return Optional.ofNullable(this.isDeleted);
+    }
+
+    /**
      * Name of the tunnel. **Modifying this attribute will force creation of a new resource.**
      * 
      */
@@ -47,6 +65,7 @@ public final class GetTunnelPlainArgs extends com.pulumi.resources.InvokeArgs {
 
     private GetTunnelPlainArgs(GetTunnelPlainArgs $) {
         this.accountId = $.accountId;
+        this.isDeleted = $.isDeleted;
         this.name = $.name;
     }
 
@@ -76,6 +95,17 @@ public final class GetTunnelPlainArgs extends com.pulumi.resources.InvokeArgs {
          */
         public Builder accountId(String accountId) {
             $.accountId = accountId;
+            return this;
+        }
+
+        /**
+         * @param isDeleted If true, only include deleted tunnels. If false, exclude deleted tunnels. If empty, all tunnels will be included. **Modifying this attribute will force creation of a new resource.**
+         * 
+         * @return builder
+         * 
+         */
+        public Builder isDeleted(@Nullable Boolean isDeleted) {
+            $.isDeleted = isDeleted;
             return this;
         }
 

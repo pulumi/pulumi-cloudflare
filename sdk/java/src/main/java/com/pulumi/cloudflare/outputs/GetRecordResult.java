@@ -30,11 +30,6 @@ public final class GetRecordResult {
      */
     private String id;
     /**
-     * @return Locked status of the found DNS record.
-     * 
-     */
-    private Boolean locked;
-    /**
      * @return DNS priority to filter record results on.
      * 
      */
@@ -96,13 +91,6 @@ public final class GetRecordResult {
      */
     public String id() {
         return this.id;
-    }
-    /**
-     * @return Locked status of the found DNS record.
-     * 
-     */
-    public Boolean locked() {
-        return this.locked;
     }
     /**
      * @return DNS priority to filter record results on.
@@ -173,7 +161,6 @@ public final class GetRecordResult {
         private @Nullable String content;
         private String hostname;
         private String id;
-        private Boolean locked;
         private @Nullable Integer priority;
         private Boolean proxiable;
         private Boolean proxied;
@@ -188,7 +175,6 @@ public final class GetRecordResult {
     	      this.content = defaults.content;
     	      this.hostname = defaults.hostname;
     	      this.id = defaults.id;
-    	      this.locked = defaults.locked;
     	      this.priority = defaults.priority;
     	      this.proxiable = defaults.proxiable;
     	      this.proxied = defaults.proxied;
@@ -219,14 +205,6 @@ public final class GetRecordResult {
               throw new MissingRequiredPropertyException("GetRecordResult", "id");
             }
             this.id = id;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder locked(Boolean locked) {
-            if (locked == null) {
-              throw new MissingRequiredPropertyException("GetRecordResult", "locked");
-            }
-            this.locked = locked;
             return this;
         }
         @CustomType.Setter
@@ -294,7 +272,6 @@ public final class GetRecordResult {
             _resultValue.content = content;
             _resultValue.hostname = hostname;
             _resultValue.id = id;
-            _resultValue.locked = locked;
             _resultValue.priority = priority;
             _resultValue.proxiable = proxiable;
             _resultValue.proxied = proxied;
