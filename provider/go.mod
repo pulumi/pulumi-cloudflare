@@ -4,8 +4,8 @@ go 1.21
 
 require (
 	github.com/cloudflare/terraform-provider-cloudflare v1.18.2-0.20220823222840-b2cee3be8c57
-	github.com/pulumi/pulumi-terraform-bridge/pf v0.32.1-0.20240403143912-aaea88a50769
-	github.com/pulumi/pulumi-terraform-bridge/v3 v3.79.1-0.20240403143912-aaea88a50769
+	github.com/pulumi/pulumi-terraform-bridge/pf v0.33.0
+	github.com/pulumi/pulumi-terraform-bridge/v3 v3.80.0
 )
 
 replace github.com/cloudflare/terraform-provider-cloudflare => ../upstream
