@@ -1,0 +1,36 @@
+name: index_workerscriptielSrtchSkfd
+runtime: yaml
+description: ""
+config:
+  cloudflare-account-id:
+    type: string
+    default: ACCOUNT_ID
+  cloudflare-zone-id:
+    type: string
+    default: ZONE_ID
+  pulumi:tags:
+    value:
+      pulumi:template: https://www.pulumi.com/ai/api/project/f0297e00-7bf2-4b80-92e9-f7338375bd26.zip
+resources:
+  myWorkerScript:
+    properties:
+      name: script${randomName.result}
+      accountId: ${cloudflare-account-id}
+      content: |
+        addEventListener('fetch', event => {
+          event.respondWith(handleRequest(event.request))
+        })
+
+        async function handleRequest(request) {
+          return new Response('Hello worker!', {
+            headers: { 'content-type': 'text/plain' },
+          })
+        }
+    type: cloudflare:WorkerScript
+  randomName:
+    properties:
+      length: 10
+      special: false
+      upper: false
+      numeric: false
+    type: random:RandomString
