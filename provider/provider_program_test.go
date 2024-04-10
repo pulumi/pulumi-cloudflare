@@ -18,12 +18,13 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/auto"
 )
 
-const providerName = "cloudflare"
-const defaultBaselineVersion = "5.25.0"
+const (
+	providerName           = "cloudflare"
+	defaultBaselineVersion = "5.25.0"
+)
 
 var programs = []string{
 	"test-programs/index_workerscript",
-	"test-programs/.DS_Store",
 	"test-programs/index_workerskvnamespace",
 }
 
@@ -54,6 +55,7 @@ func WithConfig(config map[string]string) func(opts *UpgradeTestOpts) {
 		opts.config = config
 	}
 }
+
 func testProviderUpgrade(t *testing.T, dir string, opts ...func(*UpgradeTestOpts)) {
 	options := &UpgradeTestOpts{}
 	for _, o := range opts {
@@ -99,6 +101,8 @@ func testProgram(t *testing.T, dir string) {
 		opttest.LocalProviderPath(providerName, filepath.Join(cwd, "..", "bin")),
 		opttest.SkipInstall(),
 	)
+	test.SetConfig("cloudflare-account-id", os.Getenv("CLOUDFLARE_ACCOUNT_ID"))
+	test.SetConfig("cloudflare-zone-id", os.Getenv("CLOUDFLARE_ZONE_ID"))
 	test.Up()
 }
 
@@ -111,10 +115,12 @@ func TestPrograms(t *testing.T) {
 }
 
 func TestProgramsUpgrade(t *testing.T) {
-	t.Skipf("skip upgrade tests for now as we have not recorded them.")
 	for _, p := range programs {
 		t.Run(p, func(t *testing.T) {
-			testProviderUpgrade(t, p)
+			testProviderUpgrade(t, p, WithConfig(map[string]string{
+				"cloudflare-account-id": os.Getenv("CLOUDFLARE_ACCOUNT_ID"),
+				"cloudflare-zone-id":    os.Getenv("CLOUDFLARE_ZONE_ID"),
+			}))
 		})
 	}
 }
