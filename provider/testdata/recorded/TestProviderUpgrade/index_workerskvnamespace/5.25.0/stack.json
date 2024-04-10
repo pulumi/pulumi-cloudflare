@@ -1,0 +1,126 @@
+{
+  "version": 3,
+  "deployment": {
+    "manifest": {
+      "time": "2024-04-10T16:43:47.470062+01:00",
+      "magic": "0e109972342b6ebd571fa6d2cffefcb95394f9c4f7bdd855463082d16126072c",
+      "version": "v3.111.1"
+    },
+    "secrets_providers": {
+      "type": "passphrase",
+      "state": {
+        "salt": "v1:lqspCjrP9F4=:v1:Z/JgG6uwvpCtr08r:42jRcG27ghx7pej/wRF8jYNcIKsGCw=="
+      }
+    },
+    "resources": [
+      {
+        "urn": "urn:pulumi:test::index_workerskvnamespace9PC9vCoap51M::pulumi:pulumi:Stack::index_workerskvnamespace9PC9vCoap51M-test",
+        "custom": false,
+        "type": "pulumi:pulumi:Stack",
+        "outputs": {
+          "kvNamespaceId": "0e1d8683b4e7463fb0b37cf9ec1c8ee2"
+        },
+        "created": "2024-04-10T15:43:45.405798Z",
+        "modified": "2024-04-10T15:43:45.405798Z"
+      },
+      {
+        "urn": "urn:pulumi:test::index_workerskvnamespace9PC9vCoap51M::pulumi:providers:random::default",
+        "custom": true,
+        "id": "18f54d62-7655-461d-982c-5390534059b1",
+        "type": "pulumi:providers:random",
+        "created": "2024-04-10T15:43:45.465601Z",
+        "modified": "2024-04-10T15:43:45.465601Z"
+      },
+      {
+        "urn": "urn:pulumi:test::index_workerskvnamespace9PC9vCoap51M::random:index/randomString:RandomString::randomId",
+        "custom": true,
+        "id": "jpozii",
+        "type": "random:index/randomString:RandomString",
+        "inputs": {
+          "length": 6,
+          "lower": true,
+          "number": false,
+          "special": false,
+          "upper": false
+        },
+        "outputs": {
+          "__meta": "{\"schema_version\":\"2\"}",
+          "id": "jpozii",
+          "length": 6,
+          "lower": true,
+          "minLower": 0,
+          "minNumeric": 0,
+          "minSpecial": 0,
+          "minUpper": 0,
+          "number": false,
+          "numeric": false,
+          "result": "jpozii",
+          "special": false,
+          "upper": false
+        },
+        "parent": "urn:pulumi:test::index_workerskvnamespace9PC9vCoap51M::pulumi:pulumi:Stack::index_workerskvnamespace9PC9vCoap51M-test",
+        "provider": "urn:pulumi:test::index_workerskvnamespace9PC9vCoap51M::pulumi:providers:random::default::18f54d62-7655-461d-982c-5390534059b1",
+        "propertyDependencies": {
+          "length": [],
+          "lower": [],
+          "number": [],
+          "special": [],
+          "upper": []
+        },
+        "created": "2024-04-10T15:43:45.469776Z",
+        "modified": "2024-04-10T15:43:45.469776Z"
+      },
+      {
+        "urn": "urn:pulumi:test::index_workerskvnamespace9PC9vCoap51M::pulumi:providers:cloudflare::default",
+        "custom": true,
+        "id": "c74f26cb-bf46-42a4-93e3-2f5e538f7aa6",
+        "type": "pulumi:providers:cloudflare",
+        "inputs": {
+          "apiClientLogging": "false",
+          "maxBackoff": "30",
+          "minBackoff": "1",
+          "retries": "3",
+          "rps": "4"
+        },
+        "outputs": {
+          "apiClientLogging": "false",
+          "maxBackoff": "30",
+          "minBackoff": "1",
+          "retries": "3",
+          "rps": "4"
+        },
+        "created": "2024-04-10T15:43:45.498265Z",
+        "modified": "2024-04-10T15:43:45.498265Z"
+      },
+      {
+        "urn": "urn:pulumi:test::index_workerskvnamespace9PC9vCoap51M::cloudflare:index/workersKvNamespace:WorkersKvNamespace::cloudflareWorkersKvNamespace",
+        "custom": true,
+        "id": "0e1d8683b4e7463fb0b37cf9ec1c8ee2",
+        "type": "cloudflare:index/workersKvNamespace:WorkersKvNamespace",
+        "inputs": {
+          "__defaults": [],
+          "accountId": "48364b099cc965f71761d67bc5314bd4",
+          "title": "kv-jpozii"
+        },
+        "outputs": {
+          "accountId": "48364b099cc965f71761d67bc5314bd4",
+          "id": "0e1d8683b4e7463fb0b37cf9ec1c8ee2",
+          "title": "kv-jpozii"
+        },
+        "parent": "urn:pulumi:test::index_workerskvnamespace9PC9vCoap51M::pulumi:pulumi:Stack::index_workerskvnamespace9PC9vCoap51M-test",
+        "dependencies": [
+          "urn:pulumi:test::index_workerskvnamespace9PC9vCoap51M::random:index/randomString:RandomString::randomId"
+        ],
+        "provider": "urn:pulumi:test::index_workerskvnamespace9PC9vCoap51M::pulumi:providers:cloudflare::default::c74f26cb-bf46-42a4-93e3-2f5e538f7aa6",
+        "propertyDependencies": {
+          "accountId": [],
+          "title": [
+            "urn:pulumi:test::index_workerskvnamespace9PC9vCoap51M::random:index/randomString:RandomString::randomId"
+          ]
+        },
+        "created": "2024-04-10T15:43:47.465395Z",
+        "modified": "2024-04-10T15:43:47.465395Z"
+      }
+    ]
+  }
+}

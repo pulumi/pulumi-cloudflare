@@ -1,0 +1,126 @@
+{
+  "version": 3,
+  "deployment": {
+    "manifest": {
+      "time": "2024-04-10T16:43:40.196728+01:00",
+      "magic": "0e109972342b6ebd571fa6d2cffefcb95394f9c4f7bdd855463082d16126072c",
+      "version": "v3.111.1"
+    },
+    "secrets_providers": {
+      "type": "passphrase",
+      "state": {
+        "salt": "v1:o3EiwoSyVoI=:v1:UDSpJn06nVFCo4Hh:wgcXBxLHTRKaymDaAwoXGkYiiAeNAA=="
+      }
+    },
+    "resources": [
+      {
+        "urn": "urn:pulumi:test::index_workerscriptielSrtchSkfd::pulumi:pulumi:Stack::index_workerscriptielSrtchSkfd-test",
+        "custom": false,
+        "type": "pulumi:pulumi:Stack",
+        "created": "2024-04-10T15:43:38.016852Z",
+        "modified": "2024-04-10T15:43:38.016852Z"
+      },
+      {
+        "urn": "urn:pulumi:test::index_workerscriptielSrtchSkfd::pulumi:providers:random::default",
+        "custom": true,
+        "id": "e93f7229-9378-40c6-b739-aa4473d7b284",
+        "type": "pulumi:providers:random",
+        "created": "2024-04-10T15:43:38.081793Z",
+        "modified": "2024-04-10T15:43:38.081793Z"
+      },
+      {
+        "urn": "urn:pulumi:test::index_workerscriptielSrtchSkfd::random:index/randomString:RandomString::randomName",
+        "custom": true,
+        "id": "kogyvpnceh",
+        "type": "random:index/randomString:RandomString",
+        "inputs": {
+          "length": 10,
+          "numeric": false,
+          "special": false,
+          "upper": false
+        },
+        "outputs": {
+          "__meta": "{\"schema_version\":\"2\"}",
+          "id": "kogyvpnceh",
+          "length": 10,
+          "lower": true,
+          "minLower": 0,
+          "minNumeric": 0,
+          "minSpecial": 0,
+          "minUpper": 0,
+          "number": false,
+          "numeric": false,
+          "result": "kogyvpnceh",
+          "special": false,
+          "upper": false
+        },
+        "parent": "urn:pulumi:test::index_workerscriptielSrtchSkfd::pulumi:pulumi:Stack::index_workerscriptielSrtchSkfd-test",
+        "provider": "urn:pulumi:test::index_workerscriptielSrtchSkfd::pulumi:providers:random::default::e93f7229-9378-40c6-b739-aa4473d7b284",
+        "propertyDependencies": {
+          "length": [],
+          "numeric": [],
+          "special": [],
+          "upper": []
+        },
+        "created": "2024-04-10T15:43:38.085399Z",
+        "modified": "2024-04-10T15:43:38.085399Z"
+      },
+      {
+        "urn": "urn:pulumi:test::index_workerscriptielSrtchSkfd::pulumi:providers:cloudflare::default",
+        "custom": true,
+        "id": "8eb384fd-d50b-4cee-a2a8-9794d7252694",
+        "type": "pulumi:providers:cloudflare",
+        "inputs": {
+          "apiClientLogging": "false",
+          "maxBackoff": "30",
+          "minBackoff": "1",
+          "retries": "3",
+          "rps": "4"
+        },
+        "outputs": {
+          "apiClientLogging": "false",
+          "maxBackoff": "30",
+          "minBackoff": "1",
+          "retries": "3",
+          "rps": "4"
+        },
+        "created": "2024-04-10T15:43:38.111439Z",
+        "modified": "2024-04-10T15:43:38.111439Z"
+      },
+      {
+        "urn": "urn:pulumi:test::index_workerscriptielSrtchSkfd::cloudflare:index/workerScript:WorkerScript::myWorkerScript",
+        "custom": true,
+        "id": "scriptkogyvpnceh",
+        "type": "cloudflare:index/workerScript:WorkerScript",
+        "inputs": {
+          "__defaults": [],
+          "accountId": "48364b099cc965f71761d67bc5314bd4",
+          "content": "addEventListener('fetch', event =\u003e {\n  event.respondWith(handleRequest(event.request))\n})\n\nasync function handleRequest(request) {\n  return new Response('Hello worker!', {\n    headers: { 'content-type': 'text/plain' },\n  })\n}\n",
+          "name": "scriptkogyvpnceh"
+        },
+        "outputs": {
+          "accountId": "48364b099cc965f71761d67bc5314bd4",
+          "compatibilityFlags": [],
+          "content": "addEventListener('fetch', event =\u003e {\n  event.respondWith(handleRequest(event.request))\n})\n\nasync function handleRequest(request) {\n  return new Response('Hello worker!', {\n    headers: { 'content-type': 'text/plain' },\n  })\n}\n",
+          "id": "scriptkogyvpnceh",
+          "name": "scriptkogyvpnceh",
+          "tags": []
+        },
+        "parent": "urn:pulumi:test::index_workerscriptielSrtchSkfd::pulumi:pulumi:Stack::index_workerscriptielSrtchSkfd-test",
+        "dependencies": [
+          "urn:pulumi:test::index_workerscriptielSrtchSkfd::random:index/randomString:RandomString::randomName"
+        ],
+        "provider": "urn:pulumi:test::index_workerscriptielSrtchSkfd::pulumi:providers:cloudflare::default::8eb384fd-d50b-4cee-a2a8-9794d7252694",
+        "propertyDependencies": {
+          "accountId": [],
+          "content": [],
+          "name": [
+            "urn:pulumi:test::index_workerscriptielSrtchSkfd::random:index/randomString:RandomString::randomName"
+          ]
+        },
+        "created": "2024-04-10T15:43:40.19653Z",
+        "modified": "2024-04-10T15:43:40.19653Z"
+      }
+    ]
+  }
+}
