@@ -11,7 +11,7 @@ namespace Pulumi.Cloudflare.Outputs
 {
 
     [OutputType]
-    public sealed class TeamsRuleRuleSettingsL4override
+    public sealed class TeamsRuleRuleSettingsDnsResolversIpv4
     {
         /// <summary>
         /// The IPv4 or IPv6 address of the upstream resolver.
@@ -20,16 +20,30 @@ namespace Pulumi.Cloudflare.Outputs
         /// <summary>
         /// A port number to use for the upstream resolver. Defaults to `53`.
         /// </summary>
-        public readonly int Port;
+        public readonly int? Port;
+        /// <summary>
+        /// Whether to connect to this resolver over a private network. Must be set when `vnet_id` is set.
+        /// </summary>
+        public readonly bool? RouteThroughPrivateNetwork;
+        /// <summary>
+        /// specify a virtual network for this resolver. Uses default virtual network id if omitted.
+        /// </summary>
+        public readonly string? VnetId;
 
         [OutputConstructor]
-        private TeamsRuleRuleSettingsL4override(
+        private TeamsRuleRuleSettingsDnsResolversIpv4(
             string ip,
 
-            int port)
+            int? port,
+
+            bool? routeThroughPrivateNetwork,
+
+            string? vnetId)
         {
             Ip = ip;
             Port = port;
+            RouteThroughPrivateNetwork = routeThroughPrivateNetwork;
+            VnetId = vnetId;
         }
     }
 }

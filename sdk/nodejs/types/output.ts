@@ -4767,6 +4767,10 @@ export interface TeamsRuleRuleSettings {
      */
     checkSession?: outputs.TeamsRuleRuleSettingsCheckSession;
     /**
+     * Add your own custom resolvers to route queries that match the resolver policy. Cannot be used when resolve*dns*through*cloudflare is set. DNS queries will route to the address closest to their origin.
+     */
+    dnsResolvers?: outputs.TeamsRuleRuleSettingsDnsResolvers;
+    /**
      * Configure how Proxy traffic egresses. Can be set for rules with Egress action and Egress filter. Can be omitted to indicate local egress via Warp IPs.
      */
     egress?: outputs.TeamsRuleRuleSettingsEgress;
@@ -4798,6 +4802,10 @@ export interface TeamsRuleRuleSettings {
      * Configure DLP Payload Logging settings for this rule.
      */
     payloadLog?: outputs.TeamsRuleRuleSettingsPayloadLog;
+    /**
+     * Enable sending queries that match the resolver policy to Cloudflare's default 1.1.1.1 DNS resolver. Cannot be set when `dnsResolvers` are specified.
+     */
+    resolveDnsThroughCloudflare?: boolean;
     /**
      * Configure untrusted certificate settings for this rule.
      */
@@ -4845,9 +4853,58 @@ export interface TeamsRuleRuleSettingsCheckSession {
     enforce: boolean;
 }
 
+export interface TeamsRuleRuleSettingsDnsResolvers {
+    /**
+     * IPv4 resolvers.
+     */
+    ipv4s?: outputs.TeamsRuleRuleSettingsDnsResolversIpv4[];
+    /**
+     * IPv6 resolvers.
+     */
+    ipv6s?: outputs.TeamsRuleRuleSettingsDnsResolversIpv6[];
+}
+
+export interface TeamsRuleRuleSettingsDnsResolversIpv4 {
+    /**
+     * The IPv4 or IPv6 address of the upstream resolver.
+     */
+    ip: string;
+    /**
+     * A port number to use for the upstream resolver. Defaults to `53`.
+     */
+    port?: number;
+    /**
+     * Whether to connect to this resolver over a private network. Must be set when `vnetId` is set.
+     */
+    routeThroughPrivateNetwork?: boolean;
+    /**
+     * specify a virtual network for this resolver. Uses default virtual network id if omitted.
+     */
+    vnetId?: string;
+}
+
+export interface TeamsRuleRuleSettingsDnsResolversIpv6 {
+    /**
+     * The IPv4 or IPv6 address of the upstream resolver.
+     */
+    ip: string;
+    /**
+     * A port number to use for the upstream resolver. Defaults to `53`.
+     */
+    port?: number;
+    /**
+     * Whether to connect to this resolver over a private network. Must be set when `vnetId` is set.
+     */
+    routeThroughPrivateNetwork?: boolean;
+    /**
+     * specify a virtual network for this resolver. Uses default virtual network id if omitted.
+     */
+    vnetId?: string;
+}
+
 export interface TeamsRuleRuleSettingsEgress {
     /**
-     * The IPv4 address to be used for egress.
+     * IPv4 resolvers.
      */
     ipv4: string;
     /**
@@ -4855,18 +4912,18 @@ export interface TeamsRuleRuleSettingsEgress {
      */
     ipv4Fallback?: string;
     /**
-     * The IPv6 range to be used for egress.
+     * IPv6 resolvers.
      */
     ipv6: string;
 }
 
 export interface TeamsRuleRuleSettingsL4override {
     /**
-     * Override IP to forward traffic to.
+     * The IPv4 or IPv6 address of the upstream resolver.
      */
     ip: string;
     /**
-     * Override Port to forward traffic to.
+     * A port number to use for the upstream resolver. Defaults to `53`.
      */
     port: number;
 }

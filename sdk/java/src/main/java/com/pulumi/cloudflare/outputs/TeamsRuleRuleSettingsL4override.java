@@ -12,26 +12,26 @@ import java.util.Objects;
 @CustomType
 public final class TeamsRuleRuleSettingsL4override {
     /**
-     * @return Override IP to forward traffic to.
+     * @return The IPv4 or IPv6 address of the upstream resolver.
      * 
      */
     private String ip;
     /**
-     * @return Override Port to forward traffic to.
+     * @return A port number to use for the upstream resolver. Defaults to `53`.
      * 
      */
     private Integer port;
 
     private TeamsRuleRuleSettingsL4override() {}
     /**
-     * @return Override IP to forward traffic to.
+     * @return The IPv4 or IPv6 address of the upstream resolver.
      * 
      */
     public String ip() {
         return this.ip;
     }
     /**
-     * @return Override Port to forward traffic to.
+     * @return A port number to use for the upstream resolver. Defaults to `53`.
      * 
      */
     public Integer port() {

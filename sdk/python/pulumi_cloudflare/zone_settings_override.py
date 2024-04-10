@@ -160,6 +160,17 @@ class ZoneSettingsOverride(pulumi.CustomResource):
           Attempting to manage all settings will result in problems with the resource
           applying in a consistent manner.
 
+        ## Plan-Dependent Settings
+
+        Note that some settings are only available on certain plans. Setting an argument
+        for a feature that is not available on the plan configured for the zone will
+        result in an error:
+
+        This is true even when setting the argument to its default value. These values
+        should either be omitted or set to `null` for zones with plans that don't
+        support the feature. See the [plan feature matrices](https://www.cloudflare.com/plans/) for details on
+        feature support by plan.
+
         ## Example Usage
 
         <!--Start PulumiCodeChooser -->
@@ -206,6 +217,17 @@ class ZoneSettingsOverride(pulumi.CustomResource):
           resource is only intended to override those which you do not want the default.
           Attempting to manage all settings will result in problems with the resource
           applying in a consistent manner.
+
+        ## Plan-Dependent Settings
+
+        Note that some settings are only available on certain plans. Setting an argument
+        for a feature that is not available on the plan configured for the zone will
+        result in an error:
+
+        This is true even when setting the argument to its default value. These values
+        should either be omitted or set to `null` for zones with plans that don't
+        support the feature. See the [plan feature matrices](https://www.cloudflare.com/plans/) for details on
+        feature support by plan.
 
         ## Example Usage
 

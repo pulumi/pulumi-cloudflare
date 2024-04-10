@@ -6,6 +6,7 @@ package com.pulumi.cloudflare.outputs;
 import com.pulumi.cloudflare.outputs.TeamsRuleRuleSettingsAuditSsh;
 import com.pulumi.cloudflare.outputs.TeamsRuleRuleSettingsBisoAdminControls;
 import com.pulumi.cloudflare.outputs.TeamsRuleRuleSettingsCheckSession;
+import com.pulumi.cloudflare.outputs.TeamsRuleRuleSettingsDnsResolvers;
 import com.pulumi.cloudflare.outputs.TeamsRuleRuleSettingsEgress;
 import com.pulumi.cloudflare.outputs.TeamsRuleRuleSettingsL4override;
 import com.pulumi.cloudflare.outputs.TeamsRuleRuleSettingsNotificationSettings;
@@ -63,6 +64,11 @@ public final class TeamsRuleRuleSettings {
      */
     private @Nullable TeamsRuleRuleSettingsCheckSession checkSession;
     /**
+     * @return Add your own custom resolvers to route queries that match the resolver policy. Cannot be used when resolve*dns*through*cloudflare is set. DNS queries will route to the address closest to their origin.
+     * 
+     */
+    private @Nullable TeamsRuleRuleSettingsDnsResolvers dnsResolvers;
+    /**
      * @return Configure how Proxy traffic egresses. Can be set for rules with Egress action and Egress filter. Can be omitted to indicate local egress via Warp IPs.
      * 
      */
@@ -102,6 +108,11 @@ public final class TeamsRuleRuleSettings {
      * 
      */
     private @Nullable TeamsRuleRuleSettingsPayloadLog payloadLog;
+    /**
+     * @return Enable sending queries that match the resolver policy to Cloudflare&#39;s default 1.1.1.1 DNS resolver. Cannot be set when `dns_resolvers` are specified.
+     * 
+     */
+    private @Nullable Boolean resolveDnsThroughCloudflare;
     /**
      * @return Configure untrusted certificate settings for this rule.
      * 
@@ -166,6 +177,13 @@ public final class TeamsRuleRuleSettings {
         return Optional.ofNullable(this.checkSession);
     }
     /**
+     * @return Add your own custom resolvers to route queries that match the resolver policy. Cannot be used when resolve*dns*through*cloudflare is set. DNS queries will route to the address closest to their origin.
+     * 
+     */
+    public Optional<TeamsRuleRuleSettingsDnsResolvers> dnsResolvers() {
+        return Optional.ofNullable(this.dnsResolvers);
+    }
+    /**
      * @return Configure how Proxy traffic egresses. Can be set for rules with Egress action and Egress filter. Can be omitted to indicate local egress via Warp IPs.
      * 
      */
@@ -222,6 +240,13 @@ public final class TeamsRuleRuleSettings {
         return Optional.ofNullable(this.payloadLog);
     }
     /**
+     * @return Enable sending queries that match the resolver policy to Cloudflare&#39;s default 1.1.1.1 DNS resolver. Cannot be set when `dns_resolvers` are specified.
+     * 
+     */
+    public Optional<Boolean> resolveDnsThroughCloudflare() {
+        return Optional.ofNullable(this.resolveDnsThroughCloudflare);
+    }
+    /**
      * @return Configure untrusted certificate settings for this rule.
      * 
      */
@@ -246,6 +271,7 @@ public final class TeamsRuleRuleSettings {
         private @Nullable String blockPageReason;
         private @Nullable Boolean bypassParentRule;
         private @Nullable TeamsRuleRuleSettingsCheckSession checkSession;
+        private @Nullable TeamsRuleRuleSettingsDnsResolvers dnsResolvers;
         private @Nullable TeamsRuleRuleSettingsEgress egress;
         private @Nullable Boolean insecureDisableDnssecValidation;
         private @Nullable Boolean ipCategories;
@@ -254,6 +280,7 @@ public final class TeamsRuleRuleSettings {
         private @Nullable String overrideHost;
         private @Nullable List<String> overrideIps;
         private @Nullable TeamsRuleRuleSettingsPayloadLog payloadLog;
+        private @Nullable Boolean resolveDnsThroughCloudflare;
         private @Nullable TeamsRuleRuleSettingsUntrustedCert untrustedCert;
         public Builder() {}
         public Builder(TeamsRuleRuleSettings defaults) {
@@ -266,6 +293,7 @@ public final class TeamsRuleRuleSettings {
     	      this.blockPageReason = defaults.blockPageReason;
     	      this.bypassParentRule = defaults.bypassParentRule;
     	      this.checkSession = defaults.checkSession;
+    	      this.dnsResolvers = defaults.dnsResolvers;
     	      this.egress = defaults.egress;
     	      this.insecureDisableDnssecValidation = defaults.insecureDisableDnssecValidation;
     	      this.ipCategories = defaults.ipCategories;
@@ -274,6 +302,7 @@ public final class TeamsRuleRuleSettings {
     	      this.overrideHost = defaults.overrideHost;
     	      this.overrideIps = defaults.overrideIps;
     	      this.payloadLog = defaults.payloadLog;
+    	      this.resolveDnsThroughCloudflare = defaults.resolveDnsThroughCloudflare;
     	      this.untrustedCert = defaults.untrustedCert;
         }
 
@@ -323,6 +352,12 @@ public final class TeamsRuleRuleSettings {
         public Builder checkSession(@Nullable TeamsRuleRuleSettingsCheckSession checkSession) {
 
             this.checkSession = checkSession;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder dnsResolvers(@Nullable TeamsRuleRuleSettingsDnsResolvers dnsResolvers) {
+
+            this.dnsResolvers = dnsResolvers;
             return this;
         }
         @CustomType.Setter
@@ -377,6 +412,12 @@ public final class TeamsRuleRuleSettings {
             return this;
         }
         @CustomType.Setter
+        public Builder resolveDnsThroughCloudflare(@Nullable Boolean resolveDnsThroughCloudflare) {
+
+            this.resolveDnsThroughCloudflare = resolveDnsThroughCloudflare;
+            return this;
+        }
+        @CustomType.Setter
         public Builder untrustedCert(@Nullable TeamsRuleRuleSettingsUntrustedCert untrustedCert) {
 
             this.untrustedCert = untrustedCert;
@@ -392,6 +433,7 @@ public final class TeamsRuleRuleSettings {
             _resultValue.blockPageReason = blockPageReason;
             _resultValue.bypassParentRule = bypassParentRule;
             _resultValue.checkSession = checkSession;
+            _resultValue.dnsResolvers = dnsResolvers;
             _resultValue.egress = egress;
             _resultValue.insecureDisableDnssecValidation = insecureDisableDnssecValidation;
             _resultValue.ipCategories = ipCategories;
@@ -400,6 +442,7 @@ public final class TeamsRuleRuleSettings {
             _resultValue.overrideHost = overrideHost;
             _resultValue.overrideIps = overrideIps;
             _resultValue.payloadLog = payloadLog;
+            _resultValue.resolveDnsThroughCloudflare = resolveDnsThroughCloudflare;
             _resultValue.untrustedCert = untrustedCert;
             return _resultValue;
         }

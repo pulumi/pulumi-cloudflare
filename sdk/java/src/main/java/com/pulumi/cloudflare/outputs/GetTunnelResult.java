@@ -8,6 +8,8 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetTunnelResult {
@@ -21,6 +23,11 @@ public final class GetTunnelResult {
      * 
      */
     private String id;
+    /**
+     * @return If true, only include deleted tunnels. If false, exclude deleted tunnels. If empty, all tunnels will be included. **Modifying this attribute will force creation of a new resource.**
+     * 
+     */
+    private @Nullable Boolean isDeleted;
     /**
      * @return Name of the tunnel. **Modifying this attribute will force creation of a new resource.**
      * 
@@ -56,6 +63,13 @@ public final class GetTunnelResult {
      */
     public String id() {
         return this.id;
+    }
+    /**
+     * @return If true, only include deleted tunnels. If false, exclude deleted tunnels. If empty, all tunnels will be included. **Modifying this attribute will force creation of a new resource.**
+     * 
+     */
+    public Optional<Boolean> isDeleted() {
+        return Optional.ofNullable(this.isDeleted);
     }
     /**
      * @return Name of the tunnel. **Modifying this attribute will force creation of a new resource.**
@@ -97,6 +111,7 @@ public final class GetTunnelResult {
     public static final class Builder {
         private String accountId;
         private String id;
+        private @Nullable Boolean isDeleted;
         private String name;
         private Boolean remoteConfig;
         private String status;
@@ -106,6 +121,7 @@ public final class GetTunnelResult {
     	      Objects.requireNonNull(defaults);
     	      this.accountId = defaults.accountId;
     	      this.id = defaults.id;
+    	      this.isDeleted = defaults.isDeleted;
     	      this.name = defaults.name;
     	      this.remoteConfig = defaults.remoteConfig;
     	      this.status = defaults.status;
@@ -126,6 +142,12 @@ public final class GetTunnelResult {
               throw new MissingRequiredPropertyException("GetTunnelResult", "id");
             }
             this.id = id;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder isDeleted(@Nullable Boolean isDeleted) {
+
+            this.isDeleted = isDeleted;
             return this;
         }
         @CustomType.Setter
@@ -164,6 +186,7 @@ public final class GetTunnelResult {
             final var _resultValue = new GetTunnelResult();
             _resultValue.accountId = accountId;
             _resultValue.id = id;
+            _resultValue.isDeleted = isDeleted;
             _resultValue.name = name;
             _resultValue.remoteConfig = remoteConfig;
             _resultValue.status = status;

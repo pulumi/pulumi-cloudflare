@@ -76,10 +76,6 @@ export interface GetRecordResult {
      */
     readonly id: string;
     /**
-     * Locked status of the found DNS record.
-     */
-    readonly locked: boolean;
-    /**
      * DNS priority to filter record results on.
      */
     readonly priority?: number;

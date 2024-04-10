@@ -13,13 +13,13 @@ namespace Pulumi.Cloudflare.Inputs
     public sealed class TeamsRuleRuleSettingsL4overrideGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Override IP to forward traffic to.
+        /// The IPv4 or IPv6 address of the upstream resolver.
         /// </summary>
         [Input("ip", required: true)]
         public Input<string> Ip { get; set; } = null!;
 
         /// <summary>
-        /// Override Port to forward traffic to.
+        /// A port number to use for the upstream resolver. Defaults to `53`.
         /// </summary>
         [Input("port", required: true)]
         public Input<int> Port { get; set; } = null!;

@@ -33064,6 +33064,8 @@ type TeamsRuleRuleSettings struct {
 	BypassParentRule *bool `pulumi:"bypassParentRule"`
 	// Configure how session check behaves.
 	CheckSession *TeamsRuleRuleSettingsCheckSession `pulumi:"checkSession"`
+	// Add your own custom resolvers to route queries that match the resolver policy. Cannot be used when resolve*dns*through*cloudflare is set. DNS queries will route to the address closest to their origin.
+	DnsResolvers *TeamsRuleRuleSettingsDnsResolvers `pulumi:"dnsResolvers"`
 	// Configure how Proxy traffic egresses. Can be set for rules with Egress action and Egress filter. Can be omitted to indicate local egress via Warp IPs.
 	Egress *TeamsRuleRuleSettingsEgress `pulumi:"egress"`
 	// Disable DNSSEC validation (must be Allow rule).
@@ -33080,6 +33082,8 @@ type TeamsRuleRuleSettings struct {
 	OverrideIps []string `pulumi:"overrideIps"`
 	// Configure DLP Payload Logging settings for this rule.
 	PayloadLog *TeamsRuleRuleSettingsPayloadLog `pulumi:"payloadLog"`
+	// Enable sending queries that match the resolver policy to Cloudflare's default 1.1.1.1 DNS resolver. Cannot be set when `dnsResolvers` are specified.
+	ResolveDnsThroughCloudflare *bool `pulumi:"resolveDnsThroughCloudflare"`
 	// Configure untrusted certificate settings for this rule.
 	UntrustedCert *TeamsRuleRuleSettingsUntrustedCert `pulumi:"untrustedCert"`
 }
@@ -33112,6 +33116,8 @@ type TeamsRuleRuleSettingsArgs struct {
 	BypassParentRule pulumi.BoolPtrInput `pulumi:"bypassParentRule"`
 	// Configure how session check behaves.
 	CheckSession TeamsRuleRuleSettingsCheckSessionPtrInput `pulumi:"checkSession"`
+	// Add your own custom resolvers to route queries that match the resolver policy. Cannot be used when resolve*dns*through*cloudflare is set. DNS queries will route to the address closest to their origin.
+	DnsResolvers TeamsRuleRuleSettingsDnsResolversPtrInput `pulumi:"dnsResolvers"`
 	// Configure how Proxy traffic egresses. Can be set for rules with Egress action and Egress filter. Can be omitted to indicate local egress via Warp IPs.
 	Egress TeamsRuleRuleSettingsEgressPtrInput `pulumi:"egress"`
 	// Disable DNSSEC validation (must be Allow rule).
@@ -33128,6 +33134,8 @@ type TeamsRuleRuleSettingsArgs struct {
 	OverrideIps pulumi.StringArrayInput `pulumi:"overrideIps"`
 	// Configure DLP Payload Logging settings for this rule.
 	PayloadLog TeamsRuleRuleSettingsPayloadLogPtrInput `pulumi:"payloadLog"`
+	// Enable sending queries that match the resolver policy to Cloudflare's default 1.1.1.1 DNS resolver. Cannot be set when `dnsResolvers` are specified.
+	ResolveDnsThroughCloudflare pulumi.BoolPtrInput `pulumi:"resolveDnsThroughCloudflare"`
 	// Configure untrusted certificate settings for this rule.
 	UntrustedCert TeamsRuleRuleSettingsUntrustedCertPtrInput `pulumi:"untrustedCert"`
 }
@@ -33249,6 +33257,11 @@ func (o TeamsRuleRuleSettingsOutput) CheckSession() TeamsRuleRuleSettingsCheckSe
 	return o.ApplyT(func(v TeamsRuleRuleSettings) *TeamsRuleRuleSettingsCheckSession { return v.CheckSession }).(TeamsRuleRuleSettingsCheckSessionPtrOutput)
 }
 
+// Add your own custom resolvers to route queries that match the resolver policy. Cannot be used when resolve*dns*through*cloudflare is set. DNS queries will route to the address closest to their origin.
+func (o TeamsRuleRuleSettingsOutput) DnsResolvers() TeamsRuleRuleSettingsDnsResolversPtrOutput {
+	return o.ApplyT(func(v TeamsRuleRuleSettings) *TeamsRuleRuleSettingsDnsResolvers { return v.DnsResolvers }).(TeamsRuleRuleSettingsDnsResolversPtrOutput)
+}
+
 // Configure how Proxy traffic egresses. Can be set for rules with Egress action and Egress filter. Can be omitted to indicate local egress via Warp IPs.
 func (o TeamsRuleRuleSettingsOutput) Egress() TeamsRuleRuleSettingsEgressPtrOutput {
 	return o.ApplyT(func(v TeamsRuleRuleSettings) *TeamsRuleRuleSettingsEgress { return v.Egress }).(TeamsRuleRuleSettingsEgressPtrOutput)
@@ -33289,6 +33302,11 @@ func (o TeamsRuleRuleSettingsOutput) OverrideIps() pulumi.StringArrayOutput {
 // Configure DLP Payload Logging settings for this rule.
 func (o TeamsRuleRuleSettingsOutput) PayloadLog() TeamsRuleRuleSettingsPayloadLogPtrOutput {
 	return o.ApplyT(func(v TeamsRuleRuleSettings) *TeamsRuleRuleSettingsPayloadLog { return v.PayloadLog }).(TeamsRuleRuleSettingsPayloadLogPtrOutput)
+}
+
+// Enable sending queries that match the resolver policy to Cloudflare's default 1.1.1.1 DNS resolver. Cannot be set when `dnsResolvers` are specified.
+func (o TeamsRuleRuleSettingsOutput) ResolveDnsThroughCloudflare() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v TeamsRuleRuleSettings) *bool { return v.ResolveDnsThroughCloudflare }).(pulumi.BoolPtrOutput)
 }
 
 // Configure untrusted certificate settings for this rule.
@@ -33400,6 +33418,16 @@ func (o TeamsRuleRuleSettingsPtrOutput) CheckSession() TeamsRuleRuleSettingsChec
 	}).(TeamsRuleRuleSettingsCheckSessionPtrOutput)
 }
 
+// Add your own custom resolvers to route queries that match the resolver policy. Cannot be used when resolve*dns*through*cloudflare is set. DNS queries will route to the address closest to their origin.
+func (o TeamsRuleRuleSettingsPtrOutput) DnsResolvers() TeamsRuleRuleSettingsDnsResolversPtrOutput {
+	return o.ApplyT(func(v *TeamsRuleRuleSettings) *TeamsRuleRuleSettingsDnsResolvers {
+		if v == nil {
+			return nil
+		}
+		return v.DnsResolvers
+	}).(TeamsRuleRuleSettingsDnsResolversPtrOutput)
+}
+
 // Configure how Proxy traffic egresses. Can be set for rules with Egress action and Egress filter. Can be omitted to indicate local egress via Warp IPs.
 func (o TeamsRuleRuleSettingsPtrOutput) Egress() TeamsRuleRuleSettingsEgressPtrOutput {
 	return o.ApplyT(func(v *TeamsRuleRuleSettings) *TeamsRuleRuleSettingsEgress {
@@ -33478,6 +33506,16 @@ func (o TeamsRuleRuleSettingsPtrOutput) PayloadLog() TeamsRuleRuleSettingsPayloa
 		}
 		return v.PayloadLog
 	}).(TeamsRuleRuleSettingsPayloadLogPtrOutput)
+}
+
+// Enable sending queries that match the resolver policy to Cloudflare's default 1.1.1.1 DNS resolver. Cannot be set when `dnsResolvers` are specified.
+func (o TeamsRuleRuleSettingsPtrOutput) ResolveDnsThroughCloudflare() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *TeamsRuleRuleSettings) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ResolveDnsThroughCloudflare
+	}).(pulumi.BoolPtrOutput)
 }
 
 // Configure untrusted certificate settings for this rule.
@@ -33996,12 +34034,416 @@ func (o TeamsRuleRuleSettingsCheckSessionPtrOutput) Enforce() pulumi.BoolPtrOutp
 	}).(pulumi.BoolPtrOutput)
 }
 
+type TeamsRuleRuleSettingsDnsResolvers struct {
+	// IPv4 resolvers.
+	Ipv4s []TeamsRuleRuleSettingsDnsResolversIpv4 `pulumi:"ipv4s"`
+	// IPv6 resolvers.
+	Ipv6s []TeamsRuleRuleSettingsDnsResolversIpv6 `pulumi:"ipv6s"`
+}
+
+// TeamsRuleRuleSettingsDnsResolversInput is an input type that accepts TeamsRuleRuleSettingsDnsResolversArgs and TeamsRuleRuleSettingsDnsResolversOutput values.
+// You can construct a concrete instance of `TeamsRuleRuleSettingsDnsResolversInput` via:
+//
+//	TeamsRuleRuleSettingsDnsResolversArgs{...}
+type TeamsRuleRuleSettingsDnsResolversInput interface {
+	pulumi.Input
+
+	ToTeamsRuleRuleSettingsDnsResolversOutput() TeamsRuleRuleSettingsDnsResolversOutput
+	ToTeamsRuleRuleSettingsDnsResolversOutputWithContext(context.Context) TeamsRuleRuleSettingsDnsResolversOutput
+}
+
+type TeamsRuleRuleSettingsDnsResolversArgs struct {
+	// IPv4 resolvers.
+	Ipv4s TeamsRuleRuleSettingsDnsResolversIpv4ArrayInput `pulumi:"ipv4s"`
+	// IPv6 resolvers.
+	Ipv6s TeamsRuleRuleSettingsDnsResolversIpv6ArrayInput `pulumi:"ipv6s"`
+}
+
+func (TeamsRuleRuleSettingsDnsResolversArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TeamsRuleRuleSettingsDnsResolvers)(nil)).Elem()
+}
+
+func (i TeamsRuleRuleSettingsDnsResolversArgs) ToTeamsRuleRuleSettingsDnsResolversOutput() TeamsRuleRuleSettingsDnsResolversOutput {
+	return i.ToTeamsRuleRuleSettingsDnsResolversOutputWithContext(context.Background())
+}
+
+func (i TeamsRuleRuleSettingsDnsResolversArgs) ToTeamsRuleRuleSettingsDnsResolversOutputWithContext(ctx context.Context) TeamsRuleRuleSettingsDnsResolversOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TeamsRuleRuleSettingsDnsResolversOutput)
+}
+
+func (i TeamsRuleRuleSettingsDnsResolversArgs) ToTeamsRuleRuleSettingsDnsResolversPtrOutput() TeamsRuleRuleSettingsDnsResolversPtrOutput {
+	return i.ToTeamsRuleRuleSettingsDnsResolversPtrOutputWithContext(context.Background())
+}
+
+func (i TeamsRuleRuleSettingsDnsResolversArgs) ToTeamsRuleRuleSettingsDnsResolversPtrOutputWithContext(ctx context.Context) TeamsRuleRuleSettingsDnsResolversPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TeamsRuleRuleSettingsDnsResolversOutput).ToTeamsRuleRuleSettingsDnsResolversPtrOutputWithContext(ctx)
+}
+
+// TeamsRuleRuleSettingsDnsResolversPtrInput is an input type that accepts TeamsRuleRuleSettingsDnsResolversArgs, TeamsRuleRuleSettingsDnsResolversPtr and TeamsRuleRuleSettingsDnsResolversPtrOutput values.
+// You can construct a concrete instance of `TeamsRuleRuleSettingsDnsResolversPtrInput` via:
+//
+//	        TeamsRuleRuleSettingsDnsResolversArgs{...}
+//
+//	or:
+//
+//	        nil
+type TeamsRuleRuleSettingsDnsResolversPtrInput interface {
+	pulumi.Input
+
+	ToTeamsRuleRuleSettingsDnsResolversPtrOutput() TeamsRuleRuleSettingsDnsResolversPtrOutput
+	ToTeamsRuleRuleSettingsDnsResolversPtrOutputWithContext(context.Context) TeamsRuleRuleSettingsDnsResolversPtrOutput
+}
+
+type teamsRuleRuleSettingsDnsResolversPtrType TeamsRuleRuleSettingsDnsResolversArgs
+
+func TeamsRuleRuleSettingsDnsResolversPtr(v *TeamsRuleRuleSettingsDnsResolversArgs) TeamsRuleRuleSettingsDnsResolversPtrInput {
+	return (*teamsRuleRuleSettingsDnsResolversPtrType)(v)
+}
+
+func (*teamsRuleRuleSettingsDnsResolversPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TeamsRuleRuleSettingsDnsResolvers)(nil)).Elem()
+}
+
+func (i *teamsRuleRuleSettingsDnsResolversPtrType) ToTeamsRuleRuleSettingsDnsResolversPtrOutput() TeamsRuleRuleSettingsDnsResolversPtrOutput {
+	return i.ToTeamsRuleRuleSettingsDnsResolversPtrOutputWithContext(context.Background())
+}
+
+func (i *teamsRuleRuleSettingsDnsResolversPtrType) ToTeamsRuleRuleSettingsDnsResolversPtrOutputWithContext(ctx context.Context) TeamsRuleRuleSettingsDnsResolversPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TeamsRuleRuleSettingsDnsResolversPtrOutput)
+}
+
+type TeamsRuleRuleSettingsDnsResolversOutput struct{ *pulumi.OutputState }
+
+func (TeamsRuleRuleSettingsDnsResolversOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TeamsRuleRuleSettingsDnsResolvers)(nil)).Elem()
+}
+
+func (o TeamsRuleRuleSettingsDnsResolversOutput) ToTeamsRuleRuleSettingsDnsResolversOutput() TeamsRuleRuleSettingsDnsResolversOutput {
+	return o
+}
+
+func (o TeamsRuleRuleSettingsDnsResolversOutput) ToTeamsRuleRuleSettingsDnsResolversOutputWithContext(ctx context.Context) TeamsRuleRuleSettingsDnsResolversOutput {
+	return o
+}
+
+func (o TeamsRuleRuleSettingsDnsResolversOutput) ToTeamsRuleRuleSettingsDnsResolversPtrOutput() TeamsRuleRuleSettingsDnsResolversPtrOutput {
+	return o.ToTeamsRuleRuleSettingsDnsResolversPtrOutputWithContext(context.Background())
+}
+
+func (o TeamsRuleRuleSettingsDnsResolversOutput) ToTeamsRuleRuleSettingsDnsResolversPtrOutputWithContext(ctx context.Context) TeamsRuleRuleSettingsDnsResolversPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TeamsRuleRuleSettingsDnsResolvers) *TeamsRuleRuleSettingsDnsResolvers {
+		return &v
+	}).(TeamsRuleRuleSettingsDnsResolversPtrOutput)
+}
+
+// IPv4 resolvers.
+func (o TeamsRuleRuleSettingsDnsResolversOutput) Ipv4s() TeamsRuleRuleSettingsDnsResolversIpv4ArrayOutput {
+	return o.ApplyT(func(v TeamsRuleRuleSettingsDnsResolvers) []TeamsRuleRuleSettingsDnsResolversIpv4 { return v.Ipv4s }).(TeamsRuleRuleSettingsDnsResolversIpv4ArrayOutput)
+}
+
+// IPv6 resolvers.
+func (o TeamsRuleRuleSettingsDnsResolversOutput) Ipv6s() TeamsRuleRuleSettingsDnsResolversIpv6ArrayOutput {
+	return o.ApplyT(func(v TeamsRuleRuleSettingsDnsResolvers) []TeamsRuleRuleSettingsDnsResolversIpv6 { return v.Ipv6s }).(TeamsRuleRuleSettingsDnsResolversIpv6ArrayOutput)
+}
+
+type TeamsRuleRuleSettingsDnsResolversPtrOutput struct{ *pulumi.OutputState }
+
+func (TeamsRuleRuleSettingsDnsResolversPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TeamsRuleRuleSettingsDnsResolvers)(nil)).Elem()
+}
+
+func (o TeamsRuleRuleSettingsDnsResolversPtrOutput) ToTeamsRuleRuleSettingsDnsResolversPtrOutput() TeamsRuleRuleSettingsDnsResolversPtrOutput {
+	return o
+}
+
+func (o TeamsRuleRuleSettingsDnsResolversPtrOutput) ToTeamsRuleRuleSettingsDnsResolversPtrOutputWithContext(ctx context.Context) TeamsRuleRuleSettingsDnsResolversPtrOutput {
+	return o
+}
+
+func (o TeamsRuleRuleSettingsDnsResolversPtrOutput) Elem() TeamsRuleRuleSettingsDnsResolversOutput {
+	return o.ApplyT(func(v *TeamsRuleRuleSettingsDnsResolvers) TeamsRuleRuleSettingsDnsResolvers {
+		if v != nil {
+			return *v
+		}
+		var ret TeamsRuleRuleSettingsDnsResolvers
+		return ret
+	}).(TeamsRuleRuleSettingsDnsResolversOutput)
+}
+
+// IPv4 resolvers.
+func (o TeamsRuleRuleSettingsDnsResolversPtrOutput) Ipv4s() TeamsRuleRuleSettingsDnsResolversIpv4ArrayOutput {
+	return o.ApplyT(func(v *TeamsRuleRuleSettingsDnsResolvers) []TeamsRuleRuleSettingsDnsResolversIpv4 {
+		if v == nil {
+			return nil
+		}
+		return v.Ipv4s
+	}).(TeamsRuleRuleSettingsDnsResolversIpv4ArrayOutput)
+}
+
+// IPv6 resolvers.
+func (o TeamsRuleRuleSettingsDnsResolversPtrOutput) Ipv6s() TeamsRuleRuleSettingsDnsResolversIpv6ArrayOutput {
+	return o.ApplyT(func(v *TeamsRuleRuleSettingsDnsResolvers) []TeamsRuleRuleSettingsDnsResolversIpv6 {
+		if v == nil {
+			return nil
+		}
+		return v.Ipv6s
+	}).(TeamsRuleRuleSettingsDnsResolversIpv6ArrayOutput)
+}
+
+type TeamsRuleRuleSettingsDnsResolversIpv4 struct {
+	// The IPv4 or IPv6 address of the upstream resolver.
+	Ip string `pulumi:"ip"`
+	// A port number to use for the upstream resolver. Defaults to `53`.
+	Port *int `pulumi:"port"`
+	// Whether to connect to this resolver over a private network. Must be set when `vnetId` is set.
+	RouteThroughPrivateNetwork *bool `pulumi:"routeThroughPrivateNetwork"`
+	// specify a virtual network for this resolver. Uses default virtual network id if omitted.
+	VnetId *string `pulumi:"vnetId"`
+}
+
+// TeamsRuleRuleSettingsDnsResolversIpv4Input is an input type that accepts TeamsRuleRuleSettingsDnsResolversIpv4Args and TeamsRuleRuleSettingsDnsResolversIpv4Output values.
+// You can construct a concrete instance of `TeamsRuleRuleSettingsDnsResolversIpv4Input` via:
+//
+//	TeamsRuleRuleSettingsDnsResolversIpv4Args{...}
+type TeamsRuleRuleSettingsDnsResolversIpv4Input interface {
+	pulumi.Input
+
+	ToTeamsRuleRuleSettingsDnsResolversIpv4Output() TeamsRuleRuleSettingsDnsResolversIpv4Output
+	ToTeamsRuleRuleSettingsDnsResolversIpv4OutputWithContext(context.Context) TeamsRuleRuleSettingsDnsResolversIpv4Output
+}
+
+type TeamsRuleRuleSettingsDnsResolversIpv4Args struct {
+	// The IPv4 or IPv6 address of the upstream resolver.
+	Ip pulumi.StringInput `pulumi:"ip"`
+	// A port number to use for the upstream resolver. Defaults to `53`.
+	Port pulumi.IntPtrInput `pulumi:"port"`
+	// Whether to connect to this resolver over a private network. Must be set when `vnetId` is set.
+	RouteThroughPrivateNetwork pulumi.BoolPtrInput `pulumi:"routeThroughPrivateNetwork"`
+	// specify a virtual network for this resolver. Uses default virtual network id if omitted.
+	VnetId pulumi.StringPtrInput `pulumi:"vnetId"`
+}
+
+func (TeamsRuleRuleSettingsDnsResolversIpv4Args) ElementType() reflect.Type {
+	return reflect.TypeOf((*TeamsRuleRuleSettingsDnsResolversIpv4)(nil)).Elem()
+}
+
+func (i TeamsRuleRuleSettingsDnsResolversIpv4Args) ToTeamsRuleRuleSettingsDnsResolversIpv4Output() TeamsRuleRuleSettingsDnsResolversIpv4Output {
+	return i.ToTeamsRuleRuleSettingsDnsResolversIpv4OutputWithContext(context.Background())
+}
+
+func (i TeamsRuleRuleSettingsDnsResolversIpv4Args) ToTeamsRuleRuleSettingsDnsResolversIpv4OutputWithContext(ctx context.Context) TeamsRuleRuleSettingsDnsResolversIpv4Output {
+	return pulumi.ToOutputWithContext(ctx, i).(TeamsRuleRuleSettingsDnsResolversIpv4Output)
+}
+
+// TeamsRuleRuleSettingsDnsResolversIpv4ArrayInput is an input type that accepts TeamsRuleRuleSettingsDnsResolversIpv4Array and TeamsRuleRuleSettingsDnsResolversIpv4ArrayOutput values.
+// You can construct a concrete instance of `TeamsRuleRuleSettingsDnsResolversIpv4ArrayInput` via:
+//
+//	TeamsRuleRuleSettingsDnsResolversIpv4Array{ TeamsRuleRuleSettingsDnsResolversIpv4Args{...} }
+type TeamsRuleRuleSettingsDnsResolversIpv4ArrayInput interface {
+	pulumi.Input
+
+	ToTeamsRuleRuleSettingsDnsResolversIpv4ArrayOutput() TeamsRuleRuleSettingsDnsResolversIpv4ArrayOutput
+	ToTeamsRuleRuleSettingsDnsResolversIpv4ArrayOutputWithContext(context.Context) TeamsRuleRuleSettingsDnsResolversIpv4ArrayOutput
+}
+
+type TeamsRuleRuleSettingsDnsResolversIpv4Array []TeamsRuleRuleSettingsDnsResolversIpv4Input
+
+func (TeamsRuleRuleSettingsDnsResolversIpv4Array) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TeamsRuleRuleSettingsDnsResolversIpv4)(nil)).Elem()
+}
+
+func (i TeamsRuleRuleSettingsDnsResolversIpv4Array) ToTeamsRuleRuleSettingsDnsResolversIpv4ArrayOutput() TeamsRuleRuleSettingsDnsResolversIpv4ArrayOutput {
+	return i.ToTeamsRuleRuleSettingsDnsResolversIpv4ArrayOutputWithContext(context.Background())
+}
+
+func (i TeamsRuleRuleSettingsDnsResolversIpv4Array) ToTeamsRuleRuleSettingsDnsResolversIpv4ArrayOutputWithContext(ctx context.Context) TeamsRuleRuleSettingsDnsResolversIpv4ArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TeamsRuleRuleSettingsDnsResolversIpv4ArrayOutput)
+}
+
+type TeamsRuleRuleSettingsDnsResolversIpv4Output struct{ *pulumi.OutputState }
+
+func (TeamsRuleRuleSettingsDnsResolversIpv4Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*TeamsRuleRuleSettingsDnsResolversIpv4)(nil)).Elem()
+}
+
+func (o TeamsRuleRuleSettingsDnsResolversIpv4Output) ToTeamsRuleRuleSettingsDnsResolversIpv4Output() TeamsRuleRuleSettingsDnsResolversIpv4Output {
+	return o
+}
+
+func (o TeamsRuleRuleSettingsDnsResolversIpv4Output) ToTeamsRuleRuleSettingsDnsResolversIpv4OutputWithContext(ctx context.Context) TeamsRuleRuleSettingsDnsResolversIpv4Output {
+	return o
+}
+
+// The IPv4 or IPv6 address of the upstream resolver.
+func (o TeamsRuleRuleSettingsDnsResolversIpv4Output) Ip() pulumi.StringOutput {
+	return o.ApplyT(func(v TeamsRuleRuleSettingsDnsResolversIpv4) string { return v.Ip }).(pulumi.StringOutput)
+}
+
+// A port number to use for the upstream resolver. Defaults to `53`.
+func (o TeamsRuleRuleSettingsDnsResolversIpv4Output) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v TeamsRuleRuleSettingsDnsResolversIpv4) *int { return v.Port }).(pulumi.IntPtrOutput)
+}
+
+// Whether to connect to this resolver over a private network. Must be set when `vnetId` is set.
+func (o TeamsRuleRuleSettingsDnsResolversIpv4Output) RouteThroughPrivateNetwork() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v TeamsRuleRuleSettingsDnsResolversIpv4) *bool { return v.RouteThroughPrivateNetwork }).(pulumi.BoolPtrOutput)
+}
+
+// specify a virtual network for this resolver. Uses default virtual network id if omitted.
+func (o TeamsRuleRuleSettingsDnsResolversIpv4Output) VnetId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TeamsRuleRuleSettingsDnsResolversIpv4) *string { return v.VnetId }).(pulumi.StringPtrOutput)
+}
+
+type TeamsRuleRuleSettingsDnsResolversIpv4ArrayOutput struct{ *pulumi.OutputState }
+
+func (TeamsRuleRuleSettingsDnsResolversIpv4ArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TeamsRuleRuleSettingsDnsResolversIpv4)(nil)).Elem()
+}
+
+func (o TeamsRuleRuleSettingsDnsResolversIpv4ArrayOutput) ToTeamsRuleRuleSettingsDnsResolversIpv4ArrayOutput() TeamsRuleRuleSettingsDnsResolversIpv4ArrayOutput {
+	return o
+}
+
+func (o TeamsRuleRuleSettingsDnsResolversIpv4ArrayOutput) ToTeamsRuleRuleSettingsDnsResolversIpv4ArrayOutputWithContext(ctx context.Context) TeamsRuleRuleSettingsDnsResolversIpv4ArrayOutput {
+	return o
+}
+
+func (o TeamsRuleRuleSettingsDnsResolversIpv4ArrayOutput) Index(i pulumi.IntInput) TeamsRuleRuleSettingsDnsResolversIpv4Output {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TeamsRuleRuleSettingsDnsResolversIpv4 {
+		return vs[0].([]TeamsRuleRuleSettingsDnsResolversIpv4)[vs[1].(int)]
+	}).(TeamsRuleRuleSettingsDnsResolversIpv4Output)
+}
+
+type TeamsRuleRuleSettingsDnsResolversIpv6 struct {
+	// The IPv4 or IPv6 address of the upstream resolver.
+	Ip string `pulumi:"ip"`
+	// A port number to use for the upstream resolver. Defaults to `53`.
+	Port *int `pulumi:"port"`
+	// Whether to connect to this resolver over a private network. Must be set when `vnetId` is set.
+	RouteThroughPrivateNetwork *bool `pulumi:"routeThroughPrivateNetwork"`
+	// specify a virtual network for this resolver. Uses default virtual network id if omitted.
+	VnetId *string `pulumi:"vnetId"`
+}
+
+// TeamsRuleRuleSettingsDnsResolversIpv6Input is an input type that accepts TeamsRuleRuleSettingsDnsResolversIpv6Args and TeamsRuleRuleSettingsDnsResolversIpv6Output values.
+// You can construct a concrete instance of `TeamsRuleRuleSettingsDnsResolversIpv6Input` via:
+//
+//	TeamsRuleRuleSettingsDnsResolversIpv6Args{...}
+type TeamsRuleRuleSettingsDnsResolversIpv6Input interface {
+	pulumi.Input
+
+	ToTeamsRuleRuleSettingsDnsResolversIpv6Output() TeamsRuleRuleSettingsDnsResolversIpv6Output
+	ToTeamsRuleRuleSettingsDnsResolversIpv6OutputWithContext(context.Context) TeamsRuleRuleSettingsDnsResolversIpv6Output
+}
+
+type TeamsRuleRuleSettingsDnsResolversIpv6Args struct {
+	// The IPv4 or IPv6 address of the upstream resolver.
+	Ip pulumi.StringInput `pulumi:"ip"`
+	// A port number to use for the upstream resolver. Defaults to `53`.
+	Port pulumi.IntPtrInput `pulumi:"port"`
+	// Whether to connect to this resolver over a private network. Must be set when `vnetId` is set.
+	RouteThroughPrivateNetwork pulumi.BoolPtrInput `pulumi:"routeThroughPrivateNetwork"`
+	// specify a virtual network for this resolver. Uses default virtual network id if omitted.
+	VnetId pulumi.StringPtrInput `pulumi:"vnetId"`
+}
+
+func (TeamsRuleRuleSettingsDnsResolversIpv6Args) ElementType() reflect.Type {
+	return reflect.TypeOf((*TeamsRuleRuleSettingsDnsResolversIpv6)(nil)).Elem()
+}
+
+func (i TeamsRuleRuleSettingsDnsResolversIpv6Args) ToTeamsRuleRuleSettingsDnsResolversIpv6Output() TeamsRuleRuleSettingsDnsResolversIpv6Output {
+	return i.ToTeamsRuleRuleSettingsDnsResolversIpv6OutputWithContext(context.Background())
+}
+
+func (i TeamsRuleRuleSettingsDnsResolversIpv6Args) ToTeamsRuleRuleSettingsDnsResolversIpv6OutputWithContext(ctx context.Context) TeamsRuleRuleSettingsDnsResolversIpv6Output {
+	return pulumi.ToOutputWithContext(ctx, i).(TeamsRuleRuleSettingsDnsResolversIpv6Output)
+}
+
+// TeamsRuleRuleSettingsDnsResolversIpv6ArrayInput is an input type that accepts TeamsRuleRuleSettingsDnsResolversIpv6Array and TeamsRuleRuleSettingsDnsResolversIpv6ArrayOutput values.
+// You can construct a concrete instance of `TeamsRuleRuleSettingsDnsResolversIpv6ArrayInput` via:
+//
+//	TeamsRuleRuleSettingsDnsResolversIpv6Array{ TeamsRuleRuleSettingsDnsResolversIpv6Args{...} }
+type TeamsRuleRuleSettingsDnsResolversIpv6ArrayInput interface {
+	pulumi.Input
+
+	ToTeamsRuleRuleSettingsDnsResolversIpv6ArrayOutput() TeamsRuleRuleSettingsDnsResolversIpv6ArrayOutput
+	ToTeamsRuleRuleSettingsDnsResolversIpv6ArrayOutputWithContext(context.Context) TeamsRuleRuleSettingsDnsResolversIpv6ArrayOutput
+}
+
+type TeamsRuleRuleSettingsDnsResolversIpv6Array []TeamsRuleRuleSettingsDnsResolversIpv6Input
+
+func (TeamsRuleRuleSettingsDnsResolversIpv6Array) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TeamsRuleRuleSettingsDnsResolversIpv6)(nil)).Elem()
+}
+
+func (i TeamsRuleRuleSettingsDnsResolversIpv6Array) ToTeamsRuleRuleSettingsDnsResolversIpv6ArrayOutput() TeamsRuleRuleSettingsDnsResolversIpv6ArrayOutput {
+	return i.ToTeamsRuleRuleSettingsDnsResolversIpv6ArrayOutputWithContext(context.Background())
+}
+
+func (i TeamsRuleRuleSettingsDnsResolversIpv6Array) ToTeamsRuleRuleSettingsDnsResolversIpv6ArrayOutputWithContext(ctx context.Context) TeamsRuleRuleSettingsDnsResolversIpv6ArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TeamsRuleRuleSettingsDnsResolversIpv6ArrayOutput)
+}
+
+type TeamsRuleRuleSettingsDnsResolversIpv6Output struct{ *pulumi.OutputState }
+
+func (TeamsRuleRuleSettingsDnsResolversIpv6Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*TeamsRuleRuleSettingsDnsResolversIpv6)(nil)).Elem()
+}
+
+func (o TeamsRuleRuleSettingsDnsResolversIpv6Output) ToTeamsRuleRuleSettingsDnsResolversIpv6Output() TeamsRuleRuleSettingsDnsResolversIpv6Output {
+	return o
+}
+
+func (o TeamsRuleRuleSettingsDnsResolversIpv6Output) ToTeamsRuleRuleSettingsDnsResolversIpv6OutputWithContext(ctx context.Context) TeamsRuleRuleSettingsDnsResolversIpv6Output {
+	return o
+}
+
+// The IPv4 or IPv6 address of the upstream resolver.
+func (o TeamsRuleRuleSettingsDnsResolversIpv6Output) Ip() pulumi.StringOutput {
+	return o.ApplyT(func(v TeamsRuleRuleSettingsDnsResolversIpv6) string { return v.Ip }).(pulumi.StringOutput)
+}
+
+// A port number to use for the upstream resolver. Defaults to `53`.
+func (o TeamsRuleRuleSettingsDnsResolversIpv6Output) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v TeamsRuleRuleSettingsDnsResolversIpv6) *int { return v.Port }).(pulumi.IntPtrOutput)
+}
+
+// Whether to connect to this resolver over a private network. Must be set when `vnetId` is set.
+func (o TeamsRuleRuleSettingsDnsResolversIpv6Output) RouteThroughPrivateNetwork() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v TeamsRuleRuleSettingsDnsResolversIpv6) *bool { return v.RouteThroughPrivateNetwork }).(pulumi.BoolPtrOutput)
+}
+
+// specify a virtual network for this resolver. Uses default virtual network id if omitted.
+func (o TeamsRuleRuleSettingsDnsResolversIpv6Output) VnetId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TeamsRuleRuleSettingsDnsResolversIpv6) *string { return v.VnetId }).(pulumi.StringPtrOutput)
+}
+
+type TeamsRuleRuleSettingsDnsResolversIpv6ArrayOutput struct{ *pulumi.OutputState }
+
+func (TeamsRuleRuleSettingsDnsResolversIpv6ArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TeamsRuleRuleSettingsDnsResolversIpv6)(nil)).Elem()
+}
+
+func (o TeamsRuleRuleSettingsDnsResolversIpv6ArrayOutput) ToTeamsRuleRuleSettingsDnsResolversIpv6ArrayOutput() TeamsRuleRuleSettingsDnsResolversIpv6ArrayOutput {
+	return o
+}
+
+func (o TeamsRuleRuleSettingsDnsResolversIpv6ArrayOutput) ToTeamsRuleRuleSettingsDnsResolversIpv6ArrayOutputWithContext(ctx context.Context) TeamsRuleRuleSettingsDnsResolversIpv6ArrayOutput {
+	return o
+}
+
+func (o TeamsRuleRuleSettingsDnsResolversIpv6ArrayOutput) Index(i pulumi.IntInput) TeamsRuleRuleSettingsDnsResolversIpv6Output {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TeamsRuleRuleSettingsDnsResolversIpv6 {
+		return vs[0].([]TeamsRuleRuleSettingsDnsResolversIpv6)[vs[1].(int)]
+	}).(TeamsRuleRuleSettingsDnsResolversIpv6Output)
+}
+
 type TeamsRuleRuleSettingsEgress struct {
-	// The IPv4 address to be used for egress.
+	// IPv4 resolvers.
 	Ipv4 string `pulumi:"ipv4"`
 	// The IPv4 address to be used for egress in the event of an error egressing with the primary IPv4. Can be '0.0.0.0' to indicate local egreass via Warp IPs.
 	Ipv4Fallback *string `pulumi:"ipv4Fallback"`
-	// The IPv6 range to be used for egress.
+	// IPv6 resolvers.
 	Ipv6 string `pulumi:"ipv6"`
 }
 
@@ -34017,11 +34459,11 @@ type TeamsRuleRuleSettingsEgressInput interface {
 }
 
 type TeamsRuleRuleSettingsEgressArgs struct {
-	// The IPv4 address to be used for egress.
+	// IPv4 resolvers.
 	Ipv4 pulumi.StringInput `pulumi:"ipv4"`
 	// The IPv4 address to be used for egress in the event of an error egressing with the primary IPv4. Can be '0.0.0.0' to indicate local egreass via Warp IPs.
 	Ipv4Fallback pulumi.StringPtrInput `pulumi:"ipv4Fallback"`
-	// The IPv6 range to be used for egress.
+	// IPv6 resolvers.
 	Ipv6 pulumi.StringInput `pulumi:"ipv6"`
 }
 
@@ -34102,7 +34544,7 @@ func (o TeamsRuleRuleSettingsEgressOutput) ToTeamsRuleRuleSettingsEgressPtrOutpu
 	}).(TeamsRuleRuleSettingsEgressPtrOutput)
 }
 
-// The IPv4 address to be used for egress.
+// IPv4 resolvers.
 func (o TeamsRuleRuleSettingsEgressOutput) Ipv4() pulumi.StringOutput {
 	return o.ApplyT(func(v TeamsRuleRuleSettingsEgress) string { return v.Ipv4 }).(pulumi.StringOutput)
 }
@@ -34112,7 +34554,7 @@ func (o TeamsRuleRuleSettingsEgressOutput) Ipv4Fallback() pulumi.StringPtrOutput
 	return o.ApplyT(func(v TeamsRuleRuleSettingsEgress) *string { return v.Ipv4Fallback }).(pulumi.StringPtrOutput)
 }
 
-// The IPv6 range to be used for egress.
+// IPv6 resolvers.
 func (o TeamsRuleRuleSettingsEgressOutput) Ipv6() pulumi.StringOutput {
 	return o.ApplyT(func(v TeamsRuleRuleSettingsEgress) string { return v.Ipv6 }).(pulumi.StringOutput)
 }
@@ -34141,7 +34583,7 @@ func (o TeamsRuleRuleSettingsEgressPtrOutput) Elem() TeamsRuleRuleSettingsEgress
 	}).(TeamsRuleRuleSettingsEgressOutput)
 }
 
-// The IPv4 address to be used for egress.
+// IPv4 resolvers.
 func (o TeamsRuleRuleSettingsEgressPtrOutput) Ipv4() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TeamsRuleRuleSettingsEgress) *string {
 		if v == nil {
@@ -34161,7 +34603,7 @@ func (o TeamsRuleRuleSettingsEgressPtrOutput) Ipv4Fallback() pulumi.StringPtrOut
 	}).(pulumi.StringPtrOutput)
 }
 
-// The IPv6 range to be used for egress.
+// IPv6 resolvers.
 func (o TeamsRuleRuleSettingsEgressPtrOutput) Ipv6() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TeamsRuleRuleSettingsEgress) *string {
 		if v == nil {
@@ -34172,9 +34614,9 @@ func (o TeamsRuleRuleSettingsEgressPtrOutput) Ipv6() pulumi.StringPtrOutput {
 }
 
 type TeamsRuleRuleSettingsL4override struct {
-	// Override IP to forward traffic to.
+	// The IPv4 or IPv6 address of the upstream resolver.
 	Ip string `pulumi:"ip"`
-	// Override Port to forward traffic to.
+	// A port number to use for the upstream resolver. Defaults to `53`.
 	Port int `pulumi:"port"`
 }
 
@@ -34190,9 +34632,9 @@ type TeamsRuleRuleSettingsL4overrideInput interface {
 }
 
 type TeamsRuleRuleSettingsL4overrideArgs struct {
-	// Override IP to forward traffic to.
+	// The IPv4 or IPv6 address of the upstream resolver.
 	Ip pulumi.StringInput `pulumi:"ip"`
-	// Override Port to forward traffic to.
+	// A port number to use for the upstream resolver. Defaults to `53`.
 	Port pulumi.IntInput `pulumi:"port"`
 }
 
@@ -34273,12 +34715,12 @@ func (o TeamsRuleRuleSettingsL4overrideOutput) ToTeamsRuleRuleSettingsL4override
 	}).(TeamsRuleRuleSettingsL4overridePtrOutput)
 }
 
-// Override IP to forward traffic to.
+// The IPv4 or IPv6 address of the upstream resolver.
 func (o TeamsRuleRuleSettingsL4overrideOutput) Ip() pulumi.StringOutput {
 	return o.ApplyT(func(v TeamsRuleRuleSettingsL4override) string { return v.Ip }).(pulumi.StringOutput)
 }
 
-// Override Port to forward traffic to.
+// A port number to use for the upstream resolver. Defaults to `53`.
 func (o TeamsRuleRuleSettingsL4overrideOutput) Port() pulumi.IntOutput {
 	return o.ApplyT(func(v TeamsRuleRuleSettingsL4override) int { return v.Port }).(pulumi.IntOutput)
 }
@@ -34307,7 +34749,7 @@ func (o TeamsRuleRuleSettingsL4overridePtrOutput) Elem() TeamsRuleRuleSettingsL4
 	}).(TeamsRuleRuleSettingsL4overrideOutput)
 }
 
-// Override IP to forward traffic to.
+// The IPv4 or IPv6 address of the upstream resolver.
 func (o TeamsRuleRuleSettingsL4overridePtrOutput) Ip() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TeamsRuleRuleSettingsL4override) *string {
 		if v == nil {
@@ -34317,7 +34759,7 @@ func (o TeamsRuleRuleSettingsL4overridePtrOutput) Ip() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Override Port to forward traffic to.
+// A port number to use for the upstream resolver. Defaults to `53`.
 func (o TeamsRuleRuleSettingsL4overridePtrOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *TeamsRuleRuleSettingsL4override) *int {
 		if v == nil {
@@ -49401,6 +49843,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*TeamsRuleRuleSettingsBisoAdminControlsPtrInput)(nil)).Elem(), TeamsRuleRuleSettingsBisoAdminControlsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TeamsRuleRuleSettingsCheckSessionInput)(nil)).Elem(), TeamsRuleRuleSettingsCheckSessionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TeamsRuleRuleSettingsCheckSessionPtrInput)(nil)).Elem(), TeamsRuleRuleSettingsCheckSessionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TeamsRuleRuleSettingsDnsResolversInput)(nil)).Elem(), TeamsRuleRuleSettingsDnsResolversArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TeamsRuleRuleSettingsDnsResolversPtrInput)(nil)).Elem(), TeamsRuleRuleSettingsDnsResolversArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TeamsRuleRuleSettingsDnsResolversIpv4Input)(nil)).Elem(), TeamsRuleRuleSettingsDnsResolversIpv4Args{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TeamsRuleRuleSettingsDnsResolversIpv4ArrayInput)(nil)).Elem(), TeamsRuleRuleSettingsDnsResolversIpv4Array{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TeamsRuleRuleSettingsDnsResolversIpv6Input)(nil)).Elem(), TeamsRuleRuleSettingsDnsResolversIpv6Args{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TeamsRuleRuleSettingsDnsResolversIpv6ArrayInput)(nil)).Elem(), TeamsRuleRuleSettingsDnsResolversIpv6Array{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TeamsRuleRuleSettingsEgressInput)(nil)).Elem(), TeamsRuleRuleSettingsEgressArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TeamsRuleRuleSettingsEgressPtrInput)(nil)).Elem(), TeamsRuleRuleSettingsEgressArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TeamsRuleRuleSettingsL4overrideInput)(nil)).Elem(), TeamsRuleRuleSettingsL4overrideArgs{})
@@ -49986,6 +50434,12 @@ func init() {
 	pulumi.RegisterOutputType(TeamsRuleRuleSettingsBisoAdminControlsPtrOutput{})
 	pulumi.RegisterOutputType(TeamsRuleRuleSettingsCheckSessionOutput{})
 	pulumi.RegisterOutputType(TeamsRuleRuleSettingsCheckSessionPtrOutput{})
+	pulumi.RegisterOutputType(TeamsRuleRuleSettingsDnsResolversOutput{})
+	pulumi.RegisterOutputType(TeamsRuleRuleSettingsDnsResolversPtrOutput{})
+	pulumi.RegisterOutputType(TeamsRuleRuleSettingsDnsResolversIpv4Output{})
+	pulumi.RegisterOutputType(TeamsRuleRuleSettingsDnsResolversIpv4ArrayOutput{})
+	pulumi.RegisterOutputType(TeamsRuleRuleSettingsDnsResolversIpv6Output{})
+	pulumi.RegisterOutputType(TeamsRuleRuleSettingsDnsResolversIpv6ArrayOutput{})
 	pulumi.RegisterOutputType(TeamsRuleRuleSettingsEgressOutput{})
 	pulumi.RegisterOutputType(TeamsRuleRuleSettingsEgressPtrOutput{})
 	pulumi.RegisterOutputType(TeamsRuleRuleSettingsL4overrideOutput{})
