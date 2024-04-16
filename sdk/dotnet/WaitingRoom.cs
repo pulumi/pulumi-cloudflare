@@ -26,6 +26,13 @@ namespace Pulumi.Cloudflare
     ///     // Waiting Room
     ///     var example = new Cloudflare.WaitingRoom("example", new()
     ///     {
+    ///         ZoneId = "0da42c8d2132a9ddaf714f9e7c920711",
+    ///         Name = "foo",
+    ///         Host = "foo.example.com",
+    ///         Path = "/",
+    ///         NewUsersPerMinute = 200,
+    ///         TotalActiveUsers = 200,
+    ///         CookieSuffix = "queue1",
     ///         AdditionalRoutes = new[]
     ///         {
     ///             new Cloudflare.Inputs.WaitingRoomAdditionalRouteArgs
@@ -38,14 +45,7 @@ namespace Pulumi.Cloudflare
     ///                 Host = "shop2.example.com",
     ///             },
     ///         },
-    ///         CookieSuffix = "queue1",
-    ///         Host = "foo.example.com",
-    ///         Name = "foo",
-    ///         NewUsersPerMinute = 200,
-    ///         Path = "/",
     ///         QueueingStatusCode = 200,
-    ///         TotalActiveUsers = 200,
-    ///         ZoneId = "0da42c8d2132a9ddaf714f9e7c920711",
     ///     });
     /// 
     /// });

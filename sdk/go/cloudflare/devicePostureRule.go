@@ -43,7 +43,7 @@ import (
 //				},
 //				Inputs: cloudflare.DevicePostureRuleInputTypeArray{
 //					&cloudflare.DevicePostureRuleInputTypeArgs{
-//						Id:               pulumi.Any(cloudflare_teams_list.Corporate_devices.Id),
+//						Id:               pulumi.Any(corporateDevices.Id),
 //						Version:          pulumi.String("1.0.0"),
 //						Operator:         pulumi.String("<"),
 //						OsDistroName:     pulumi.String("ubuntu"),

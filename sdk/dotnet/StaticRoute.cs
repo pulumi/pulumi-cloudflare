@@ -28,6 +28,11 @@ namespace Pulumi.Cloudflare
     ///     var example = new Cloudflare.StaticRoute("example", new()
     ///     {
     ///         AccountId = "f037e56e89293a057740de681ac9abbe",
+    ///         Description = "New route for new prefix 192.0.2.0/24",
+    ///         Prefix = "192.0.2.0/24",
+    ///         Nexthop = "10.0.0.0",
+    ///         Priority = 100,
+    ///         Weight = 10,
     ///         ColoNames = new[]
     ///         {
     ///             "den01",
@@ -36,11 +41,6 @@ namespace Pulumi.Cloudflare
     ///         {
     ///             "APAC",
     ///         },
-    ///         Description = "New route for new prefix 192.0.2.0/24",
-    ///         Nexthop = "10.0.0.0",
-    ///         Prefix = "192.0.2.0/24",
-    ///         Priority = 100,
-    ///         Weight = 10,
     ///     });
     /// 
     /// });

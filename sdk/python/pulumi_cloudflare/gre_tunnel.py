@@ -404,16 +404,16 @@ class GreTunnel(pulumi.CustomResource):
 
         example = cloudflare.GreTunnel("example",
             account_id="f037e56e89293a057740de681ac9abbe",
-            cloudflare_gre_endpoint="203.0.113.2",
+            name="GRE_1",
             customer_gre_endpoint="203.0.113.1",
+            cloudflare_gre_endpoint="203.0.113.2",
+            interface_address="192.0.2.0/31",
             description="Tunnel for ISP X",
+            ttl=64,
+            mtu=1476,
             health_check_enabled=True,
             health_check_target="203.0.113.1",
-            health_check_type="reply",
-            interface_address="192.0.2.0/31",
-            mtu=1476,
-            name="GRE_1",
-            ttl=64)
+            health_check_type="reply")
         ```
         <!--End PulumiCodeChooser -->
 
@@ -455,16 +455,16 @@ class GreTunnel(pulumi.CustomResource):
 
         example = cloudflare.GreTunnel("example",
             account_id="f037e56e89293a057740de681ac9abbe",
-            cloudflare_gre_endpoint="203.0.113.2",
+            name="GRE_1",
             customer_gre_endpoint="203.0.113.1",
+            cloudflare_gre_endpoint="203.0.113.2",
+            interface_address="192.0.2.0/31",
             description="Tunnel for ISP X",
+            ttl=64,
+            mtu=1476,
             health_check_enabled=True,
             health_check_target="203.0.113.1",
-            health_check_type="reply",
-            interface_address="192.0.2.0/31",
-            mtu=1476,
-            name="GRE_1",
-            ttl=64)
+            health_check_type="reply")
         ```
         <!--End PulumiCodeChooser -->
 

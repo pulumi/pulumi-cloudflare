@@ -75,20 +75,6 @@ def get_zones(filter: Optional[pulumi.InputType['GetZonesFilterArgs']] = None,
     """
     Use this data source to look up Zone results for use in other resources.
 
-    ## Example Usage
-
-    <!--Start PulumiCodeChooser -->
-    ```python
-    import pulumi
-    import pulumi_cloudflare as cloudflare
-
-    example = cloudflare.get_zones(filter=cloudflare.GetZonesFilterArgs(
-        account_id="f037e56e89293a057740de681ac9abbe",
-        status="active",
-    ))
-    ```
-    <!--End PulumiCodeChooser -->
-
 
     :param pulumi.InputType['GetZonesFilterArgs'] filter: One or more values used to look up zone records. If more than one value is given all values must match in order to be included.
     """
@@ -108,20 +94,6 @@ def get_zones_output(filter: Optional[pulumi.Input[pulumi.InputType['GetZonesFil
                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetZonesResult]:
     """
     Use this data source to look up Zone results for use in other resources.
-
-    ## Example Usage
-
-    <!--Start PulumiCodeChooser -->
-    ```python
-    import pulumi
-    import pulumi_cloudflare as cloudflare
-
-    example = cloudflare.get_zones(filter=cloudflare.GetZonesFilterArgs(
-        account_id="f037e56e89293a057740de681ac9abbe",
-        status="active",
-    ))
-    ```
-    <!--End PulumiCodeChooser -->
 
 
     :param pulumi.InputType['GetZonesFilterArgs'] filter: One or more values used to look up zone records. If more than one value is given all values must match in order to be included.

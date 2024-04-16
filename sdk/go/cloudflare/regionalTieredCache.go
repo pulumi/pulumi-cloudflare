@@ -31,8 +31,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.NewRegionalTieredCache(ctx, "example", &cloudflare.RegionalTieredCacheArgs{
-//				Value:  pulumi.String("on"),
 //				ZoneId: pulumi.String("0da42c8d2132a9ddaf714f9e7c920711"),
+//				Value:  pulumi.String("on"),
 //			})
 //			if err != nil {
 //				return err

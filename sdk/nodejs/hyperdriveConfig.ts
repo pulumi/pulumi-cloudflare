@@ -16,13 +16,13 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const noDefaults = new cloudflare.HyperdriveConfig("noDefaults", {
+ * const noDefaults = new cloudflare.HyperdriveConfig("no_defaults", {
  *     accountId: "f037e56e89293a057740de681ac9abbe",
  *     name: "my-hyperdrive-config",
  *     origin: {
  *         database: "postgres",
- *         host: "my-database.example.com",
  *         password: "my-password",
+ *         host: "my-database.example.com",
  *         port: 5432,
  *         scheme: "postgres",
  *         user: "my-user",

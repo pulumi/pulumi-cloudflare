@@ -48,16 +48,16 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var example = new TeamsRule(&#34;example&#34;, TeamsRuleArgs.builder()        
  *             .accountId(&#34;f037e56e89293a057740de681ac9abbe&#34;)
- *             .action(&#34;block&#34;)
- *             .description(&#34;desc&#34;)
- *             .filters(&#34;http&#34;)
  *             .name(&#34;office&#34;)
+ *             .description(&#34;desc&#34;)
  *             .precedence(1)
+ *             .action(&#34;block&#34;)
+ *             .filters(&#34;http&#34;)
+ *             .traffic(&#34;http.request.uri == \&#34;https://www.example.com/malicious\&#34;&#34;)
  *             .ruleSettings(TeamsRuleRuleSettingsArgs.builder()
  *                 .blockPageEnabled(true)
  *                 .blockPageReason(&#34;access not permitted&#34;)
  *                 .build())
- *             .traffic(&#34;http.request.uri == \&#34;https://www.example.com/malicious\&#34;&#34;)
  *             .build());
  * 
  *     }

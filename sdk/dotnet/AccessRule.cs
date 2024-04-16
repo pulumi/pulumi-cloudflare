@@ -26,7 +26,7 @@ namespace Pulumi.Cloudflare
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     // Challenge requests coming from known Tor exit nodes.
-    ///     var torExitNodes = new Cloudflare.AccessRule("torExitNodes", new()
+    ///     var torExitNodes = new Cloudflare.AccessRule("tor_exit_nodes", new()
     ///     {
     ///         ZoneId = "0da42c8d2132a9ddaf714f9e7c920711",
     ///         Notes = "Requests coming from known Tor exit nodes",
@@ -62,7 +62,7 @@ namespace Pulumi.Cloudflare
     ///     for (var rangeIndex = 0; rangeIndex &lt; myOffice.Length; rangeIndex++)
     ///     {
     ///         var range = new { Value = rangeIndex };
-    ///         officeNetwork.Add(new Cloudflare.AccessRule($"officeNetwork-{range.Value}", new()
+    ///         officeNetwork.Add(new Cloudflare.AccessRule($"office_network-{range.Value}", new()
     ///         {
     ///             AccountId = "f037e56e89293a057740de681ac9abbe",
     ///             Notes = "Requests coming from office network",
@@ -70,7 +70,7 @@ namespace Pulumi.Cloudflare
     ///             Configuration = new Cloudflare.Inputs.AccessRuleConfigurationArgs
     ///             {
     ///                 Target = "ip_range",
-    ///                 Value = myOffice[count.Index],
+    ///                 Value = myOffice[range.Value],
     ///             },
     ///         }));
     ///     }

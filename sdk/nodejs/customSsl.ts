@@ -17,14 +17,14 @@ import * as utilities from "./utilities";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
  * const example = new cloudflare.CustomSsl("example", {
+ *     zoneId: "0da42c8d2132a9ddaf714f9e7c920711",
  *     customSslOptions: {
- *         bundleMethod: "ubiquitous",
  *         certificate: "-----INSERT CERTIFICATE-----",
- *         geoRestrictions: "us",
  *         privateKey: "-----INSERT PRIVATE KEY-----",
+ *         bundleMethod: "ubiquitous",
+ *         geoRestrictions: "us",
  *         type: "legacy_custom",
  *     },
- *     zoneId: "0da42c8d2132a9ddaf714f9e7c920711",
  * });
  * ```
  * <!--End PulumiCodeChooser -->

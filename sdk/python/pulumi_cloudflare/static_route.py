@@ -308,13 +308,13 @@ class StaticRoute(pulumi.CustomResource):
 
         example = cloudflare.StaticRoute("example",
             account_id="f037e56e89293a057740de681ac9abbe",
-            colo_names=["den01"],
-            colo_regions=["APAC"],
             description="New route for new prefix 192.0.2.0/24",
-            nexthop="10.0.0.0",
             prefix="192.0.2.0/24",
+            nexthop="10.0.0.0",
             priority=100,
-            weight=10)
+            weight=10,
+            colo_names=["den01"],
+            colo_regions=["APAC"])
         ```
         <!--End PulumiCodeChooser -->
 
@@ -355,13 +355,13 @@ class StaticRoute(pulumi.CustomResource):
 
         example = cloudflare.StaticRoute("example",
             account_id="f037e56e89293a057740de681ac9abbe",
-            colo_names=["den01"],
-            colo_regions=["APAC"],
             description="New route for new prefix 192.0.2.0/24",
-            nexthop="10.0.0.0",
             prefix="192.0.2.0/24",
+            nexthop="10.0.0.0",
             priority=100,
-            weight=10)
+            weight=10,
+            colo_names=["den01"],
+            colo_regions=["APAC"])
         ```
         <!--End PulumiCodeChooser -->
 

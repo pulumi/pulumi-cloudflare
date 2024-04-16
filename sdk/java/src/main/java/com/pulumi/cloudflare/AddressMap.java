@@ -50,8 +50,8 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var example = new AddressMap(&#34;example&#34;, AddressMapArgs.builder()        
  *             .accountId(&#34;f037e56e89293a057740de681ac9abbe&#34;)
- *             .defaultSni(&#34;*.example.com&#34;)
  *             .description(&#34;My address map&#34;)
+ *             .defaultSni(&#34;*.example.com&#34;)
  *             .enabled(true)
  *             .ips(            
  *                 AddressMapIpArgs.builder()

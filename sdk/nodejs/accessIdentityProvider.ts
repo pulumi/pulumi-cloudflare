@@ -25,50 +25,49 @@ import * as utilities from "./utilities";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
  * // one time pin
- * const pinLogin = new cloudflare.AccessIdentityProvider("pinLogin", {
+ * const pinLogin = new cloudflare.AccessIdentityProvider("pin_login", {
  *     accountId: "f037e56e89293a057740de681ac9abbe",
  *     name: "PIN login",
  *     type: "onetimepin",
  * });
  * // oauth
- * const githubOauth = new cloudflare.AccessIdentityProvider("githubOauth", {
+ * const githubOauth = new cloudflare.AccessIdentityProvider("github_oauth", {
  *     accountId: "f037e56e89293a057740de681ac9abbe",
+ *     name: "GitHub OAuth",
+ *     type: "github",
  *     configs: [{
  *         clientId: "example",
  *         clientSecret: "secret_key",
  *     }],
- *     name: "GitHub OAuth",
- *     type: "github",
  * });
  * // saml
- * const jumpcloudSaml = new cloudflare.AccessIdentityProvider("jumpcloudSaml", {
+ * const jumpcloudSaml = new cloudflare.AccessIdentityProvider("jumpcloud_saml", {
  *     accountId: "f037e56e89293a057740de681ac9abbe",
+ *     name: "JumpCloud SAML",
+ *     type: "saml",
  *     configs: [{
+ *         issuerUrl: "jumpcloud",
+ *         ssoTargetUrl: "https://sso.myexample.jumpcloud.com/saml2/cloudflareaccess",
  *         attributes: [
  *             "email",
  *             "username",
  *         ],
- *         idpPublicCert: `MIIDpDCCAoygAwIBAgIGAV2ka+55MA0GCSqGSIb3DQEBCwUAMIGSMQswCQ...GF/Q2/MHadws97cZg
- * uTnQyuOqPuHbnN83d/2l1NSYKCbHt24o
- * `,
- *         issuerUrl: "jumpcloud",
  *         signRequest: false,
- *         ssoTargetUrl: "https://sso.myexample.jumpcloud.com/saml2/cloudflareaccess",
+ *         idpPublicCert: `MIIDpDCCAoygAwIBAgIGAV2ka+55MA0GCSqGSIb3DQEBCwUAMIGSMQswCQ...GF/Q2/MHadws97cZg
+ * uTnQyuOqPuHbnN83d/2l1NSYKCbHt24o`,
  *     }],
- *     name: "JumpCloud SAML",
- *     type: "saml",
  * });
  * // okta
  * const okta = new cloudflare.AccessIdentityProvider("okta", {
  *     accountId: "f037e56e89293a057740de681ac9abbe",
- *     configs: [{
- *         apiToken: "okta_api_token",
- *         clientId: "example",
- *         clientSecret: "secret_key",
- *         oktaAccount: "https://example.com",
- *     }],
  *     name: "Okta",
  *     type: "okta",
+ *     configs: [{
+ *         clientId: "example",
+ *         clientSecret: "secret_key",
+ *         apiToken: "okta_api_token",
+ *         oktaAccount: "https://example.com",
+ *     }],
  * });
  * ```
  * <!--End PulumiCodeChooser -->

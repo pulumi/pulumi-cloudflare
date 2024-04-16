@@ -33,8 +33,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.NewLogpushOwnershipChallenge(ctx, "example", &cloudflare.LogpushOwnershipChallengeArgs{
-//				DestinationConf: pulumi.String("s3://my-bucket-path?region=us-west-2"),
 //				ZoneId:          pulumi.String("0da42c8d2132a9ddaf714f9e7c920711"),
+//				DestinationConf: pulumi.String("s3://my-bucket-path?region=us-west-2"),
 //			})
 //			if err != nil {
 //				return err

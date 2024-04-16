@@ -31,9 +31,9 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.NewArgo(ctx, "example", &cloudflare.ArgoArgs{
-//				SmartRouting:  pulumi.String("on"),
-//				TieredCaching: pulumi.String("on"),
 //				ZoneId:        pulumi.String("0da42c8d2132a9ddaf714f9e7c920711"),
+//				TieredCaching: pulumi.String("on"),
+//				SmartRouting:  pulumi.String("on"),
 //			})
 //			if err != nil {
 //				return err

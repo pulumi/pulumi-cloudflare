@@ -14,20 +14,20 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleWebAnalyticsSite = new cloudflare.WebAnalyticsSite("exampleWebAnalyticsSite", {
+ * const example = new cloudflare.WebAnalyticsSite("example", {
  *     accountId: "f037e56e89293a057740de681ac9abbe",
  *     zoneTag: "0da42c8d2132a9ddaf714f9e7c920711",
  *     autoInstall: true,
  * });
- * const exampleWebAnalyticsRule = new cloudflare.WebAnalyticsRule("exampleWebAnalyticsRule", {
+ * const exampleWebAnalyticsRule = new cloudflare.WebAnalyticsRule("example", {
  *     accountId: "f037e56e89293a057740de681ac9abbe",
- *     rulesetId: exampleWebAnalyticsSite.rulesetId,
+ *     rulesetId: example.rulesetId,
  *     host: "*",
  *     paths: ["/excluded"],
  *     inclusive: false,
  *     isPaused: false,
  * }, {
- *     dependsOn: [exampleWebAnalyticsSite],
+ *     dependsOn: [example],
  * });
  * ```
  * <!--End PulumiCodeChooser -->

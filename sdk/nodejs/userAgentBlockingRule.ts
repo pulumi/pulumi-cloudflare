@@ -16,25 +16,25 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const example1 = new cloudflare.UserAgentBlockingRule("example1", {
+ * const example1 = new cloudflare.UserAgentBlockingRule("example_1", {
+ *     zoneId: "0da42c8d2132a9ddaf714f9e7c920711",
+ *     mode: "js_challenge",
+ *     paused: false,
+ *     description: "My description 1",
  *     configuration: {
  *         target: "ua",
  *         value: "Chrome",
  *     },
- *     description: "My description 1",
- *     mode: "js_challenge",
- *     paused: false,
- *     zoneId: "0da42c8d2132a9ddaf714f9e7c920711",
  * });
- * const example2 = new cloudflare.UserAgentBlockingRule("example2", {
+ * const example2 = new cloudflare.UserAgentBlockingRule("example_2", {
+ *     zoneId: "0da42c8d2132a9ddaf714f9e7c920711",
+ *     mode: "challenge",
+ *     paused: true,
+ *     description: "My description 22",
  *     configuration: {
  *         target: "ua",
  *         value: "Mozilla",
  *     },
- *     description: "My description 22",
- *     mode: "challenge",
- *     paused: true,
- *     zoneId: "0da42c8d2132a9ddaf714f9e7c920711",
  * });
  * ```
  * <!--End PulumiCodeChooser -->

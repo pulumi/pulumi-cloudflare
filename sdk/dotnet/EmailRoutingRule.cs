@@ -25,6 +25,18 @@ namespace Pulumi.Cloudflare
     /// {
     ///     var main = new Cloudflare.EmailRoutingRule("main", new()
     ///     {
+    ///         ZoneId = "0da42c8d2132a9ddaf714f9e7c920711",
+    ///         Name = "terraform rule",
+    ///         Enabled = true,
+    ///         Matchers = new[]
+    ///         {
+    ///             new Cloudflare.Inputs.EmailRoutingRuleMatcherArgs
+    ///             {
+    ///                 Type = "literal",
+    ///                 Field = "to",
+    ///                 Value = "test@example.com",
+    ///             },
+    ///         },
     ///         Actions = new[]
     ///         {
     ///             new Cloudflare.Inputs.EmailRoutingRuleActionArgs
@@ -36,18 +48,6 @@ namespace Pulumi.Cloudflare
     ///                 },
     ///             },
     ///         },
-    ///         Enabled = true,
-    ///         Matchers = new[]
-    ///         {
-    ///             new Cloudflare.Inputs.EmailRoutingRuleMatcherArgs
-    ///             {
-    ///                 Field = "to",
-    ///                 Type = "literal",
-    ///                 Value = "test@example.com",
-    ///             },
-    ///         },
-    ///         Name = "terraform rule",
-    ///         ZoneId = "0da42c8d2132a9ddaf714f9e7c920711",
     ///     });
     /// 
     /// });

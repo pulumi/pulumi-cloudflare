@@ -24,47 +24,6 @@ import javax.annotation.Nullable;
  * to actively check the availability of those servers over HTTP(S) or
  * TCP.
  * 
- * ## Example Usage
- * 
- * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.LoadBalancerMonitor;
- * import com.pulumi.cloudflare.LoadBalancerMonitorArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         // TCP Monitor
- *         var example = new LoadBalancerMonitor(&#34;example&#34;, LoadBalancerMonitorArgs.builder()        
- *             .accountId(&#34;f037e56e89293a057740de681ac9abbe&#34;)
- *             .description(&#34;example tcp load balancer&#34;)
- *             .interval(60)
- *             .method(&#34;connection_established&#34;)
- *             .port(8080)
- *             .retries(5)
- *             .timeout(7)
- *             .type(&#34;tcp&#34;)
- *             .build());
- * 
- *     }
- * }
- * ```
- * &lt;!--End PulumiCodeChooser --&gt;
- * 
  * ## Import
  * 
  * ```sh

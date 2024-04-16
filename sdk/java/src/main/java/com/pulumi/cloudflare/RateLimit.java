@@ -36,12 +36,12 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.cloudflare.RateLimit;
  * import com.pulumi.cloudflare.RateLimitArgs;
- * import com.pulumi.cloudflare.inputs.RateLimitActionArgs;
- * import com.pulumi.cloudflare.inputs.RateLimitActionResponseArgs;
- * import com.pulumi.cloudflare.inputs.RateLimitCorrelateArgs;
  * import com.pulumi.cloudflare.inputs.RateLimitMatchArgs;
  * import com.pulumi.cloudflare.inputs.RateLimitMatchRequestArgs;
  * import com.pulumi.cloudflare.inputs.RateLimitMatchResponseArgs;
+ * import com.pulumi.cloudflare.inputs.RateLimitActionArgs;
+ * import com.pulumi.cloudflare.inputs.RateLimitActionResponseArgs;
+ * import com.pulumi.cloudflare.inputs.RateLimitCorrelateArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -56,24 +56,15 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var example = new RateLimit(&#34;example&#34;, RateLimitArgs.builder()        
- *             .action(RateLimitActionArgs.builder()
- *                 .mode(&#34;simulate&#34;)
- *                 .response(RateLimitActionResponseArgs.builder()
- *                     .body(&#34;custom response body&#34;)
- *                     .contentType(&#34;text/plain&#34;)
- *                     .build())
- *                 .timeout(43200)
- *                 .build())
- *             .bypassUrlPatterns(            
- *                 &#34;example.com/bypass1&#34;,
- *                 &#34;example.com/bypass2&#34;)
- *             .correlate(RateLimitCorrelateArgs.builder()
- *                 .by(&#34;nat&#34;)
- *                 .build())
- *             .description(&#34;example rate limit for a zone&#34;)
- *             .disabled(false)
+ *             .zoneId(&#34;0da42c8d2132a9ddaf714f9e7c920711&#34;)
+ *             .threshold(2000)
+ *             .period(2)
  *             .match(RateLimitMatchArgs.builder()
  *                 .request(RateLimitMatchRequestArgs.builder()
+ *                     .urlPattern(String.format(&#34;%s/*&#34;, cloudflareZone))
+ *                     .schemes(                    
+ *                         &#34;HTTP&#34;,
+ *                         &#34;HTTPS&#34;)
  *                     .methods(                    
  *                         &#34;GET&#34;,
  *                         &#34;POST&#34;,
@@ -81,12 +72,15 @@ import javax.annotation.Nullable;
  *                         &#34;DELETE&#34;,
  *                         &#34;PATCH&#34;,
  *                         &#34;HEAD&#34;)
- *                     .schemes(                    
- *                         &#34;HTTP&#34;,
- *                         &#34;HTTPS&#34;)
- *                     .urlPattern(String.format(&#34;%s/*&#34;, var_.cloudflare_zone()))
  *                     .build())
  *                 .response(RateLimitMatchResponseArgs.builder()
+ *                     .statuses(                    
+ *                         200,
+ *                         201,
+ *                         202,
+ *                         301,
+ *                         429)
+ *                     .originTraffic(false)
  *                     .headers(                    
  *                         Map.ofEntries(
  *                             Map.entry(&#34;name&#34;, &#34;Host&#34;),
@@ -98,18 +92,24 @@ import javax.annotation.Nullable;
  *                             Map.entry(&#34;op&#34;, &#34;ne&#34;),
  *                             Map.entry(&#34;value&#34;, &#34;my-example&#34;)
  *                         ))
- *                     .originTraffic(false)
- *                     .statuses(                    
- *                         200,
- *                         201,
- *                         202,
- *                         301,
- *                         429)
  *                     .build())
  *                 .build())
- *             .period(2)
- *             .threshold(2000)
- *             .zoneId(&#34;0da42c8d2132a9ddaf714f9e7c920711&#34;)
+ *             .action(RateLimitActionArgs.builder()
+ *                 .mode(&#34;simulate&#34;)
+ *                 .timeout(43200)
+ *                 .response(RateLimitActionResponseArgs.builder()
+ *                     .contentType(&#34;text/plain&#34;)
+ *                     .body(&#34;custom response body&#34;)
+ *                     .build())
+ *                 .build())
+ *             .correlate(RateLimitCorrelateArgs.builder()
+ *                 .by(&#34;nat&#34;)
+ *                 .build())
+ *             .disabled(false)
+ *             .description(&#34;example rate limit for a zone&#34;)
+ *             .bypassUrlPatterns(            
+ *                 &#34;example.com/bypass1&#34;,
+ *                 &#34;example.com/bypass2&#34;)
  *             .build());
  * 
  *     }

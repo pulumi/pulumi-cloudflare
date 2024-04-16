@@ -26,21 +26,21 @@ namespace Pulumi.Cloudflare
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     // Per-Zone Authenticated Origin Pulls certificate
-    ///     var myPerZoneAopCert = new Cloudflare.AuthenticatedOriginPullsCertificate("myPerZoneAopCert", new()
+    ///     var myPerZoneAopCert = new Cloudflare.AuthenticatedOriginPullsCertificate("my_per_zone_aop_cert", new()
     ///     {
+    ///         ZoneId = "0da42c8d2132a9ddaf714f9e7c920711",
     ///         Certificate = "-----INSERT CERTIFICATE-----",
     ///         PrivateKey = "-----INSERT PRIVATE KEY-----",
     ///         Type = "per-zone",
-    ///         ZoneId = "0da42c8d2132a9ddaf714f9e7c920711",
     ///     });
     /// 
     ///     // Per-Hostname Authenticated Origin Pulls certificate
-    ///     var myPerHostnameAopCert = new Cloudflare.AuthenticatedOriginPullsCertificate("myPerHostnameAopCert", new()
+    ///     var myPerHostnameAopCert = new Cloudflare.AuthenticatedOriginPullsCertificate("my_per_hostname_aop_cert", new()
     ///     {
+    ///         ZoneId = "0da42c8d2132a9ddaf714f9e7c920711",
     ///         Certificate = "-----INSERT CERTIFICATE-----",
     ///         PrivateKey = "-----INSERT PRIVATE KEY-----",
     ///         Type = "per-hostname",
-    ///         ZoneId = "0da42c8d2132a9ddaf714f9e7c920711",
     ///     });
     /// 
     /// });

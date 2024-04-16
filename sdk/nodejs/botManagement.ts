@@ -21,13 +21,13 @@ import * as utilities from "./utilities";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
  * const example = new cloudflare.BotManagement("example", {
+ *     zoneId: "0da42c8d2132a9ddaf714f9e7c920711",
  *     enableJs: true,
- *     optimizeWordpress: true,
  *     sbfmDefinitelyAutomated: "block",
  *     sbfmLikelyAutomated: "managed_challenge",
- *     sbfmStaticResourceProtection: false,
  *     sbfmVerifiedBots: "allow",
- *     zoneId: "0da42c8d2132a9ddaf714f9e7c920711",
+ *     sbfmStaticResourceProtection: false,
+ *     optimizeWordpress: true,
  * });
  * ```
  * <!--End PulumiCodeChooser -->

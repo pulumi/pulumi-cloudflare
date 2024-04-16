@@ -28,6 +28,9 @@ namespace Pulumi.Cloudflare
     ///     var example = new Cloudflare.DevicePostureIntegration("example", new()
     ///     {
     ///         AccountId = "f037e56e89293a057740de681ac9abbe",
+    ///         Name = "Device posture integration",
+    ///         Type = "workspace_one",
+    ///         Interval = "24h",
     ///         Configs = new[]
     ///         {
     ///             new Cloudflare.Inputs.DevicePostureIntegrationConfigArgs
@@ -38,9 +41,6 @@ namespace Pulumi.Cloudflare
     ///                 ClientSecret = "client-secret",
     ///             },
     ///         },
-    ///         Interval = "24h",
-    ///         Name = "Device posture integration",
-    ///         Type = "workspace_one",
     ///     });
     /// 
     /// });

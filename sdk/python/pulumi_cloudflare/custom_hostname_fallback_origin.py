@@ -124,8 +124,8 @@ class CustomHostnameFallbackOrigin(pulumi.CustomResource):
         import pulumi_cloudflare as cloudflare
 
         example = cloudflare.CustomHostnameFallbackOrigin("example",
-            origin="fallback.example.com",
-            zone_id="0da42c8d2132a9ddaf714f9e7c920711")
+            zone_id="0da42c8d2132a9ddaf714f9e7c920711",
+            origin="fallback.example.com")
         ```
         <!--End PulumiCodeChooser -->
 
@@ -157,8 +157,8 @@ class CustomHostnameFallbackOrigin(pulumi.CustomResource):
         import pulumi_cloudflare as cloudflare
 
         example = cloudflare.CustomHostnameFallbackOrigin("example",
-            origin="fallback.example.com",
-            zone_id="0da42c8d2132a9ddaf714f9e7c920711")
+            zone_id="0da42c8d2132a9ddaf714f9e7c920711",
+            origin="fallback.example.com")
         ```
         <!--End PulumiCodeChooser -->
 

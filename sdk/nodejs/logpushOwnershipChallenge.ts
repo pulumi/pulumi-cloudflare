@@ -18,8 +18,8 @@ import * as utilities from "./utilities";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
  * const example = new cloudflare.LogpushOwnershipChallenge("example", {
- *     destinationConf: "s3://my-bucket-path?region=us-west-2",
  *     zoneId: "0da42c8d2132a9ddaf714f9e7c920711",
+ *     destinationConf: "s3://my-bucket-path?region=us-west-2",
  * });
  * ```
  * <!--End PulumiCodeChooser -->

@@ -38,8 +38,8 @@ namespace Pulumi.Cloudflare.Outputs
         ///     // Unrealistic example with all features used
         ///     var foobar = new Cloudflare.PageRule("foobar", new()
         ///     {
-        ///         ZoneId = @var.Cloudflare_zone_id,
-        ///         Target = $"{@var.Cloudflare_zone}/app/*",
+        ///         ZoneId = cloudflareZoneId,
+        ///         Target = $"{cloudflareZone}/app/*",
         ///         Priority = 1,
         ///         Actions = new Cloudflare.Inputs.PageRuleActionsArgs
         ///         {

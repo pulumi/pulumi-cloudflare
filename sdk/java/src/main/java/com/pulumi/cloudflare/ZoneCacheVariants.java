@@ -43,6 +43,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var example = new ZoneCacheVariants(&#34;example&#34;, ZoneCacheVariantsArgs.builder()        
+ *             .zoneId(&#34;0da42c8d2132a9ddaf714f9e7c920711&#34;)
  *             .avifs(            
  *                 &#34;image/avif&#34;,
  *                 &#34;image/webp&#34;)
@@ -51,9 +52,6 @@ import javax.annotation.Nullable;
  *                 &#34;image/webp&#34;)
  *             .gifs(            
  *                 &#34;image/gif&#34;,
- *                 &#34;image/webp&#34;)
- *             .jp2s(            
- *                 &#34;image/jp2&#34;,
  *                 &#34;image/webp&#34;)
  *             .jpegs(            
  *                 &#34;image/jpeg&#34;,
@@ -64,19 +62,21 @@ import javax.annotation.Nullable;
  *             .jpg2s(            
  *                 &#34;image/jpg2&#34;,
  *                 &#34;image/webp&#34;)
+ *             .jp2s(            
+ *                 &#34;image/jp2&#34;,
+ *                 &#34;image/webp&#34;)
  *             .pngs(            
  *                 &#34;image/png&#34;,
- *                 &#34;image/webp&#34;)
- *             .tifs(            
- *                 &#34;image/tif&#34;,
  *                 &#34;image/webp&#34;)
  *             .tiffs(            
  *                 &#34;image/tiff&#34;,
  *                 &#34;image/webp&#34;)
+ *             .tifs(            
+ *                 &#34;image/tif&#34;,
+ *                 &#34;image/webp&#34;)
  *             .webps(            
  *                 &#34;image/jpeg&#34;,
  *                 &#34;image/webp&#34;)
- *             .zoneId(&#34;0da42c8d2132a9ddaf714f9e7c920711&#34;)
  *             .build());
  * 
  *     }

@@ -31,54 +31,6 @@ import javax.annotation.Nullable;
  *    scope. For example, an access token that is scoped to the &#34;example.com&#34;
  *    zone needs to use the `zone_id` argument.
  * 
- * ## Example Usage
- * 
- * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.AccessApplication;
- * import com.pulumi.cloudflare.AccessApplicationArgs;
- * import com.pulumi.cloudflare.inputs.AccessApplicationCorsHeaderArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         // With CORS configuration
- *         var stagingApp = new AccessApplication(&#34;stagingApp&#34;, AccessApplicationArgs.builder()        
- *             .corsHeaders(AccessApplicationCorsHeaderArgs.builder()
- *                 .allowCredentials(true)
- *                 .allowedMethods(                
- *                     &#34;GET&#34;,
- *                     &#34;POST&#34;,
- *                     &#34;OPTIONS&#34;)
- *                 .allowedOrigins(&#34;https://example.com&#34;)
- *                 .maxAge(10)
- *                 .build())
- *             .domain(&#34;staging.example.com&#34;)
- *             .name(&#34;staging application&#34;)
- *             .sessionDuration(&#34;24h&#34;)
- *             .type(&#34;self_hosted&#34;)
- *             .zoneId(&#34;0da42c8d2132a9ddaf714f9e7c920711&#34;)
- *             .build());
- * 
- *     }
- * }
- * ```
- * &lt;!--End PulumiCodeChooser --&gt;
- * 
  * ## Import
  * 
  * ```sh

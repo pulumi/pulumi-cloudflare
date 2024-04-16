@@ -42,7 +42,7 @@ namespace Pulumi.Cloudflare
     ///         {
     ///             new Cloudflare.Inputs.DevicePostureRuleInputArgs
     ///             {
-    ///                 Id = cloudflare_teams_list.Corporate_devices.Id,
+    ///                 Id = corporateDevices.Id,
     ///                 Version = "1.0.0",
     ///                 Operator = "&lt;",
     ///                 OsDistroName = "ubuntu",

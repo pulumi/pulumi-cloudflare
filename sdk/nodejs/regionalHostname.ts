@@ -16,19 +16,19 @@ import * as utilities from "./utilities";
  *
  * // Regionalized hostname record resources are managed independently from the
  * // Regionalized Hostname resources.
- * const exampleRecord = new cloudflare.Record("exampleRecord", {
- *     name: "example.com",
- *     ttl: 3600,
- *     type: "A",
- *     value: "192.0.2.1",
+ * const example = new cloudflare.Record("example", {
  *     zoneId: "0da42c8d2132a9ddaf714f9e7c920711",
+ *     name: "example.com",
+ *     value: "192.0.2.1",
+ *     type: "A",
+ *     ttl: 3600,
  * });
  * // The cloudflare_regional_hostname resource may exist with or without its
  * // corresponding record resource.
- * const exampleRegionalHostname = new cloudflare.RegionalHostname("exampleRegionalHostname", {
+ * const exampleRegionalHostname = new cloudflare.RegionalHostname("example", {
+ *     zoneId: "0da42c8d2132a9ddaf714f9e7c920711",
  *     hostname: "example.com",
  *     regionKey: "eu",
- *     zoneId: "0da42c8d2132a9ddaf714f9e7c920711",
  * });
  * ```
  * <!--End PulumiCodeChooser -->

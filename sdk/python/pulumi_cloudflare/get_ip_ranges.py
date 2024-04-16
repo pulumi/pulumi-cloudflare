@@ -117,7 +117,7 @@ def get_ip_ranges(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetIp
     import pulumi_example as example
 
     cloudflare = cloudflare.get_ip_ranges()
-    example = example.index.Example_firewall_resource("example",
+    example = example.index.FirewallResource("example",
         name=from-cloudflare,
         network=default,
         source_ranges=cloudflare.ipv4_cidr_blocks,
@@ -155,7 +155,7 @@ def get_ip_ranges_output(opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.
     import pulumi_example as example
 
     cloudflare = cloudflare.get_ip_ranges()
-    example = example.index.Example_firewall_resource("example",
+    example = example.index.FirewallResource("example",
         name=from-cloudflare,
         network=default,
         source_ranges=cloudflare.ipv4_cidr_blocks,

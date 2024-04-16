@@ -80,7 +80,7 @@ import javax.annotation.Nullable;
  *                 .mode(&#34;whitelist&#34;)
  *                 .configuration(AccessRuleConfigurationArgs.builder()
  *                     .target(&#34;ip_range&#34;)
- *                     .value(myOffice[count.index()])
+ *                     .value(myOffice[range.value()])
  *                     .build())
  *                 .build());
  * 

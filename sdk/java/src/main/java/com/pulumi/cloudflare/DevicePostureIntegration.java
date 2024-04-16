@@ -48,15 +48,15 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var example = new DevicePostureIntegration(&#34;example&#34;, DevicePostureIntegrationArgs.builder()        
  *             .accountId(&#34;f037e56e89293a057740de681ac9abbe&#34;)
+ *             .name(&#34;Device posture integration&#34;)
+ *             .type(&#34;workspace_one&#34;)
+ *             .interval(&#34;24h&#34;)
  *             .configs(DevicePostureIntegrationConfigArgs.builder()
  *                 .apiUrl(&#34;https://example.com/api&#34;)
  *                 .authUrl(&#34;https://example.com/connect/token&#34;)
  *                 .clientId(&#34;client-id&#34;)
  *                 .clientSecret(&#34;client-secret&#34;)
  *                 .build())
- *             .interval(&#34;24h&#34;)
- *             .name(&#34;Device posture integration&#34;)
- *             .type(&#34;workspace_one&#34;)
  *             .build());
  * 
  *     }

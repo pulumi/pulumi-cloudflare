@@ -209,8 +209,8 @@ class PageRule(pulumi.CustomResource):
 
         # Add a page rule to the domain
         foobar = cloudflare.PageRule("foobar",
-            zone_id=var["cloudflare_zone_id"],
-            target=f"sub.{var['cloudflare_zone']}/page",
+            zone_id=cloudflare_zone_id,
+            target=f"sub.{cloudflare_zone}/page",
             priority=1,
             actions=cloudflare.PageRuleActionsArgs(
                 ssl="flexible",
@@ -258,8 +258,8 @@ class PageRule(pulumi.CustomResource):
 
         # Add a page rule to the domain
         foobar = cloudflare.PageRule("foobar",
-            zone_id=var["cloudflare_zone_id"],
-            target=f"sub.{var['cloudflare_zone']}/page",
+            zone_id=cloudflare_zone_id,
+            target=f"sub.{cloudflare_zone}/page",
             priority=1,
             actions=cloudflare.PageRuleActionsArgs(
                 ssl="flexible",

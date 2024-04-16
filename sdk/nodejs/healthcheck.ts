@@ -18,8 +18,8 @@ import * as utilities from "./utilities";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
  * // HTTPS Healthcheck
- * const httpHealthCheck = new cloudflare.Healthcheck("httpHealthCheck", {
- *     zoneId: _var.cloudflare_zone_id,
+ * const httpHealthCheck = new cloudflare.Healthcheck("http_health_check", {
+ *     zoneId: cloudflareZoneId,
  *     name: "http-health-check",
  *     description: "example http health check",
  *     address: "example.com",
@@ -50,8 +50,8 @@ import * as utilities from "./utilities";
  *     consecutiveSuccesses: 2,
  * });
  * // TCP Healthcheck
- * const tcpHealthCheck = new cloudflare.Healthcheck("tcpHealthCheck", {
- *     zoneId: _var.cloudflare_zone_id,
+ * const tcpHealthCheck = new cloudflare.Healthcheck("tcp_health_check", {
+ *     zoneId: cloudflareZoneId,
  *     name: "tcp-health-check",
  *     description: "example tcp health check",
  *     address: "example.com",

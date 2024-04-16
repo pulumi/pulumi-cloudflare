@@ -13,48 +13,6 @@ import (
 )
 
 // Provides a resource to manage a schema in API Shield Schema Validation 2.0.
-//
-// ## Example Usage
-//
-// <!--Start PulumiCodeChooser -->
-// ```go
-// package main
-//
-// import (
-//
-//	"os"
-//
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func readFileOrPanic(path string) pulumi.StringPtrInput {
-//		data, err := os.ReadFile(path)
-//		if err != nil {
-//			panic(err.Error())
-//		}
-//		return pulumi.String(string(data))
-//	}
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewApiShieldSchema(ctx, "petstoreSchema", &cloudflare.ApiShieldSchemaArgs{
-//				ZoneId:            pulumi.String("0da42c8d2132a9ddaf714f9e7c920711"),
-//				Name:              pulumi.String("myschema"),
-//				Kind:              pulumi.String("openapi_v3"),
-//				ValidationEnabled: pulumi.Bool(true),
-//				Source:            readFileOrPanic("./schemas/petstore.json"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-// <!--End PulumiCodeChooser -->
 type ApiShieldSchema struct {
 	pulumi.CustomResourceState
 

@@ -25,25 +25,25 @@ namespace Pulumi.Cloudflare
     /// {
     ///     var example = new Cloudflare.WaitingRoomRules("example", new()
     ///     {
+    ///         ZoneId = "0da42c8d2132a9ddaf714f9e7c920711",
+    ///         WaitingRoomId = "d41d8cd98f00b204e9800998ecf8427e",
     ///         Rules = new[]
     ///         {
     ///             new Cloudflare.Inputs.WaitingRoomRulesRuleArgs
     ///             {
-    ///                 Action = "bypass_waiting_room",
     ///                 Description = "bypass ip list",
     ///                 Expression = "src.ip in {192.0.2.0 192.0.2.1}",
+    ///                 Action = "bypass_waiting_room",
     ///                 Status = "enabled",
     ///             },
     ///             new Cloudflare.Inputs.WaitingRoomRulesRuleArgs
     ///             {
-    ///                 Action = "bypass_waiting_room",
     ///                 Description = "bypass query string",
     ///                 Expression = "http.request.uri.query contains \"bypass=true\"",
+    ///                 Action = "bypass_waiting_room",
     ///                 Status = "enabled",
     ///             },
     ///         },
-    ///         WaitingRoomId = "d41d8cd98f00b204e9800998ecf8427e",
-    ///         ZoneId = "0da42c8d2132a9ddaf714f9e7c920711",
     ///     });
     /// 
     /// });

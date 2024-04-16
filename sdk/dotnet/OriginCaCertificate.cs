@@ -28,25 +28,25 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var examplePrivateKey = new Tls.PrivateKey("examplePrivateKey", new()
+    ///     var example = new Tls.Index.PrivateKey("example", new()
     ///     {
     ///         Algorithm = "RSA",
     ///     });
     /// 
-    ///     var exampleCertRequest = new Tls.CertRequest("exampleCertRequest", new()
+    ///     var exampleCertRequest = new Tls.Index.CertRequest("example", new()
     ///     {
-    ///         PrivateKeyPem = examplePrivateKey.PrivateKeyPem,
-    ///         Subjects = new[]
+    ///         PrivateKeyPem = example.PrivateKeyPem,
+    ///         Subject = new[]
     ///         {
-    ///             new Tls.Inputs.CertRequestSubjectArgs
+    ///             
     ///             {
-    ///                 CommonName = "",
-    ///                 Organization = "Terraform Test",
+    ///                 { "commonName", "" },
+    ///                 { "organization", "Terraform Test" },
     ///             },
     ///         },
     ///     });
     /// 
-    ///     var exampleOriginCaCertificate = new Cloudflare.OriginCaCertificate("exampleOriginCaCertificate", new()
+    ///     var exampleOriginCaCertificate = new Cloudflare.OriginCaCertificate("example", new()
     ///     {
     ///         Csr = exampleCertRequest.CertRequestPem,
     ///         Hostnames = new[]

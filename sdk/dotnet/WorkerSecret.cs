@@ -23,7 +23,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var mySecret = new Cloudflare.WorkerSecret("mySecret", new()
+    ///     var mySecret = new Cloudflare.WorkerSecret("my_secret", new()
     ///     {
     ///         AccountId = "f037e56e89293a057740de681ac9abbe",
     ///         Name = "MY_EXAMPLE_SECRET_TEXT",

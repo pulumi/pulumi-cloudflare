@@ -506,41 +506,41 @@ class LoadBalancerPool(pulumi.CustomResource):
 
         example = cloudflare.LoadBalancerPool("example",
             account_id="f037e56e89293a057740de681ac9abbe",
-            description="example load balancer pool",
-            enabled=False,
-            latitude=55,
-            load_sheddings=[cloudflare.LoadBalancerPoolLoadSheddingArgs(
-                default_percent=55,
-                default_policy="random",
-                session_percent=12,
-                session_policy="hash",
-            )],
-            longitude=-12,
-            minimum_origins=1,
             name="example-pool",
-            notification_email="someone@example.com",
-            origin_steerings=[cloudflare.LoadBalancerPoolOriginSteeringArgs(
-                policy="random",
-            )],
             origins=[
                 cloudflare.LoadBalancerPoolOriginArgs(
+                    name="example-1",
                     address="192.0.2.1",
                     enabled=False,
                     headers=[cloudflare.LoadBalancerPoolOriginHeaderArgs(
                         header="Host",
                         values=["example-1"],
                     )],
-                    name="example-1",
                 ),
                 cloudflare.LoadBalancerPoolOriginArgs(
+                    name="example-2",
                     address="192.0.2.2",
                     headers=[cloudflare.LoadBalancerPoolOriginHeaderArgs(
                         header="Host",
                         values=["example-2"],
                     )],
-                    name="example-2",
                 ),
-            ])
+            ],
+            latitude=55,
+            longitude=-12,
+            description="example load balancer pool",
+            enabled=False,
+            minimum_origins=1,
+            notification_email="someone@example.com",
+            load_sheddings=[cloudflare.LoadBalancerPoolLoadSheddingArgs(
+                default_percent=55,
+                default_policy="random",
+                session_percent=12,
+                session_policy="hash",
+            )],
+            origin_steerings=[cloudflare.LoadBalancerPoolOriginSteeringArgs(
+                policy="random",
+            )])
         ```
         <!--End PulumiCodeChooser -->
 
@@ -585,41 +585,41 @@ class LoadBalancerPool(pulumi.CustomResource):
 
         example = cloudflare.LoadBalancerPool("example",
             account_id="f037e56e89293a057740de681ac9abbe",
-            description="example load balancer pool",
-            enabled=False,
-            latitude=55,
-            load_sheddings=[cloudflare.LoadBalancerPoolLoadSheddingArgs(
-                default_percent=55,
-                default_policy="random",
-                session_percent=12,
-                session_policy="hash",
-            )],
-            longitude=-12,
-            minimum_origins=1,
             name="example-pool",
-            notification_email="someone@example.com",
-            origin_steerings=[cloudflare.LoadBalancerPoolOriginSteeringArgs(
-                policy="random",
-            )],
             origins=[
                 cloudflare.LoadBalancerPoolOriginArgs(
+                    name="example-1",
                     address="192.0.2.1",
                     enabled=False,
                     headers=[cloudflare.LoadBalancerPoolOriginHeaderArgs(
                         header="Host",
                         values=["example-1"],
                     )],
-                    name="example-1",
                 ),
                 cloudflare.LoadBalancerPoolOriginArgs(
+                    name="example-2",
                     address="192.0.2.2",
                     headers=[cloudflare.LoadBalancerPoolOriginHeaderArgs(
                         header="Host",
                         values=["example-2"],
                     )],
-                    name="example-2",
                 ),
-            ])
+            ],
+            latitude=55,
+            longitude=-12,
+            description="example load balancer pool",
+            enabled=False,
+            minimum_origins=1,
+            notification_email="someone@example.com",
+            load_sheddings=[cloudflare.LoadBalancerPoolLoadSheddingArgs(
+                default_percent=55,
+                default_policy="random",
+                session_percent=12,
+                session_policy="hash",
+            )],
+            origin_steerings=[cloudflare.LoadBalancerPoolOriginSteeringArgs(
+                policy="random",
+            )])
         ```
         <!--End PulumiCodeChooser -->
 

@@ -474,21 +474,21 @@ class SpectrumApplication(pulumi.CustomResource):
         import pulumi_cloudflare as cloudflare
 
         example = cloudflare.SpectrumApplication("example",
+            zone_id="0da42c8d2132a9ddaf714f9e7c920711",
+            protocol="tcp/22",
+            traffic_type="direct",
             dns=cloudflare.SpectrumApplicationDnsArgs(
-                name="ssh.example.com",
                 type="CNAME",
+                name="ssh.example.com",
             ),
+            origin_directs=["tcp://192.0.2.1:22"],
             edge_ips=cloudflare.SpectrumApplicationEdgeIpsArgs(
+                type="static",
                 ips=[
                     "203.0.113.1",
                     "203.0.113.2",
                 ],
-                type="static",
-            ),
-            origin_directs=["tcp://192.0.2.1:22"],
-            protocol="tcp/22",
-            traffic_type="direct",
-            zone_id="0da42c8d2132a9ddaf714f9e7c920711")
+            ))
         ```
         <!--End PulumiCodeChooser -->
 
@@ -533,21 +533,21 @@ class SpectrumApplication(pulumi.CustomResource):
         import pulumi_cloudflare as cloudflare
 
         example = cloudflare.SpectrumApplication("example",
+            zone_id="0da42c8d2132a9ddaf714f9e7c920711",
+            protocol="tcp/22",
+            traffic_type="direct",
             dns=cloudflare.SpectrumApplicationDnsArgs(
-                name="ssh.example.com",
                 type="CNAME",
+                name="ssh.example.com",
             ),
+            origin_directs=["tcp://192.0.2.1:22"],
             edge_ips=cloudflare.SpectrumApplicationEdgeIpsArgs(
+                type="static",
                 ips=[
                     "203.0.113.1",
                     "203.0.113.2",
                 ],
-                type="static",
-            ),
-            origin_directs=["tcp://192.0.2.1:22"],
-            protocol="tcp/22",
-            traffic_type="direct",
-            zone_id="0da42c8d2132a9ddaf714f9e7c920711")
+            ))
         ```
         <!--End PulumiCodeChooser -->
 

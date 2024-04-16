@@ -31,6 +31,13 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// Waiting Room
 //			_, err := cloudflare.NewWaitingRoom(ctx, "example", &cloudflare.WaitingRoomArgs{
+//				ZoneId:            pulumi.String("0da42c8d2132a9ddaf714f9e7c920711"),
+//				Name:              pulumi.String("foo"),
+//				Host:              pulumi.String("foo.example.com"),
+//				Path:              pulumi.String("/"),
+//				NewUsersPerMinute: pulumi.Int(200),
+//				TotalActiveUsers:  pulumi.Int(200),
+//				CookieSuffix:      pulumi.String("queue1"),
 //				AdditionalRoutes: cloudflare.WaitingRoomAdditionalRouteArray{
 //					&cloudflare.WaitingRoomAdditionalRouteArgs{
 //						Host: pulumi.String("shop1.example.com"),
@@ -40,14 +47,7 @@ import (
 //						Host: pulumi.String("shop2.example.com"),
 //					},
 //				},
-//				CookieSuffix:       pulumi.String("queue1"),
-//				Host:               pulumi.String("foo.example.com"),
-//				Name:               pulumi.String("foo"),
-//				NewUsersPerMinute:  pulumi.Int(200),
-//				Path:               pulumi.String("/"),
 //				QueueingStatusCode: pulumi.Int(200),
-//				TotalActiveUsers:   pulumi.Int(200),
-//				ZoneId:             pulumi.String("0da42c8d2132a9ddaf714f9e7c920711"),
 //			})
 //			if err != nil {
 //				return err

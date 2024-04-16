@@ -32,23 +32,23 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.NewSpectrumApplication(ctx, "example", &cloudflare.SpectrumApplicationArgs{
+//				ZoneId:      pulumi.String("0da42c8d2132a9ddaf714f9e7c920711"),
+//				Protocol:    pulumi.String("tcp/22"),
+//				TrafficType: pulumi.String("direct"),
 //				Dns: &cloudflare.SpectrumApplicationDnsArgs{
-//					Name: pulumi.String("ssh.example.com"),
 //					Type: pulumi.String("CNAME"),
-//				},
-//				EdgeIps: &cloudflare.SpectrumApplicationEdgeIpsArgs{
-//					Ips: pulumi.StringArray{
-//						pulumi.String("203.0.113.1"),
-//						pulumi.String("203.0.113.2"),
-//					},
-//					Type: pulumi.String("static"),
+//					Name: pulumi.String("ssh.example.com"),
 //				},
 //				OriginDirects: pulumi.StringArray{
 //					pulumi.String("tcp://192.0.2.1:22"),
 //				},
-//				Protocol:    pulumi.String("tcp/22"),
-//				TrafficType: pulumi.String("direct"),
-//				ZoneId:      pulumi.String("0da42c8d2132a9ddaf714f9e7c920711"),
+//				EdgeIps: &cloudflare.SpectrumApplicationEdgeIpsArgs{
+//					Type: pulumi.String("static"),
+//					Ips: pulumi.StringArray{
+//						pulumi.String("203.0.113.1"),
+//						pulumi.String("203.0.113.2"),
+//					},
+//				},
 //			})
 //			if err != nil {
 //				return err

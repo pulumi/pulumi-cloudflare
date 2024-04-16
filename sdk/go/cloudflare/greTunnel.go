@@ -31,16 +31,16 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.NewGreTunnel(ctx, "example", &cloudflare.GreTunnelArgs{
 //				AccountId:             pulumi.String("f037e56e89293a057740de681ac9abbe"),
-//				CloudflareGreEndpoint: pulumi.String("203.0.113.2"),
+//				Name:                  pulumi.String("GRE_1"),
 //				CustomerGreEndpoint:   pulumi.String("203.0.113.1"),
+//				CloudflareGreEndpoint: pulumi.String("203.0.113.2"),
+//				InterfaceAddress:      pulumi.String("192.0.2.0/31"),
 //				Description:           pulumi.String("Tunnel for ISP X"),
+//				Ttl:                   pulumi.Int(64),
+//				Mtu:                   pulumi.Int(1476),
 //				HealthCheckEnabled:    pulumi.Bool(true),
 //				HealthCheckTarget:     pulumi.String("203.0.113.1"),
 //				HealthCheckType:       pulumi.String("reply"),
-//				InterfaceAddress:      pulumi.String("192.0.2.0/31"),
-//				Mtu:                   pulumi.Int(1476),
-//				Name:                  pulumi.String("GRE_1"),
-//				Ttl:                   pulumi.Int(64),
 //			})
 //			if err != nil {
 //				return err

@@ -32,11 +32,10 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.tls.PrivateKey;
+ * import com.pulumi.tls.privateKey;
  * import com.pulumi.tls.PrivateKeyArgs;
- * import com.pulumi.tls.CertRequest;
+ * import com.pulumi.tls.certRequest;
  * import com.pulumi.tls.CertRequestArgs;
- * import com.pulumi.tls.inputs.CertRequestSubjectArgs;
  * import com.pulumi.cloudflare.OriginCaCertificate;
  * import com.pulumi.cloudflare.OriginCaCertificateArgs;
  * import java.util.List;
@@ -52,16 +51,13 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var examplePrivateKey = new PrivateKey(&#34;examplePrivateKey&#34;, PrivateKeyArgs.builder()        
+ *         var example = new PrivateKey(&#34;example&#34;, PrivateKeyArgs.builder()        
  *             .algorithm(&#34;RSA&#34;)
  *             .build());
  * 
  *         var exampleCertRequest = new CertRequest(&#34;exampleCertRequest&#34;, CertRequestArgs.builder()        
- *             .privateKeyPem(examplePrivateKey.privateKeyPem())
- *             .subjects(CertRequestSubjectArgs.builder()
- *                 .commonName(&#34;&#34;)
- *                 .organization(&#34;Terraform Test&#34;)
- *                 .build())
+ *             .privateKeyPem(example.privateKeyPem())
+ *             .subject(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
  *             .build());
  * 
  *         var exampleOriginCaCertificate = new OriginCaCertificate(&#34;exampleOriginCaCertificate&#34;, OriginCaCertificateArgs.builder()        

@@ -9,37 +9,6 @@ import * as utilities from "./utilities";
  * Trust. Tunnel routes are used to direct IP traffic through
  * Cloudflare Tunnels.
  *
- * ## Example Usage
- *
- * <!--Start PulumiCodeChooser -->
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as cloudflare from "@pulumi/cloudflare";
- *
- * // Tunnel route
- * const exampleTunnelRoute = new cloudflare.TunnelRoute("exampleTunnelRoute", {
- *     accountId: "f037e56e89293a057740de681ac9abbe",
- *     tunnelId: "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
- *     network: "192.0.2.24/32",
- *     comment: "New tunnel route for documentation",
- *     virtualNetworkId: "bdc39a3c-3104-4c23-8ac0-9f455dda691a",
- * });
- * // Tunnel with tunnel route
- * const tunnel = new cloudflare.Tunnel("tunnel", {
- *     accountId: "f037e56e89293a057740de681ac9abbe",
- *     name: "my_tunnel",
- *     secret: "AQIDBAUGBwgBAgMEBQYHCAECAwQFBgcIAQIDBAUGBwg=",
- * });
- * const exampleIndex_tunnelRouteTunnelRoute = new cloudflare.TunnelRoute("exampleIndex/tunnelRouteTunnelRoute", {
- *     accountId: "f037e56e89293a057740de681ac9abbe",
- *     tunnelId: tunnel.id,
- *     network: "192.0.2.24/32",
- *     comment: "New tunnel route for documentation",
- *     virtualNetworkId: "bdc39a3c-3104-4c23-8ac0-9f455dda691a",
- * });
- * ```
- * <!--End PulumiCodeChooser -->
- *
  * ## Import
  *
  * ```sh

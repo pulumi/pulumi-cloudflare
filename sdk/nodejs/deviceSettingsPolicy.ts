@@ -14,25 +14,25 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const developerWarpPolicy = new cloudflare.DeviceSettingsPolicy("developerWarpPolicy", {
+ * const developerWarpPolicy = new cloudflare.DeviceSettingsPolicy("developer_warp_policy", {
  *     accountId: "f037e56e89293a057740de681ac9abbe",
+ *     name: "Developers WARP settings policy",
+ *     description: "Developers WARP settings policy description",
+ *     precedence: 10,
+ *     match: "any(identity.groups.name[*] in {\"Developers\"})",
+ *     "default": false,
+ *     enabled: true,
  *     allowModeSwitch: true,
  *     allowUpdates: true,
  *     allowedToLeave: true,
  *     autoConnect: 0,
  *     captivePortal: 5,
- *     "default": false,
- *     description: "Developers WARP settings policy description",
  *     disableAutoFallback: true,
- *     enabled: true,
- *     excludeOfficeIps: false,
- *     match: "any(identity.groups.name[*] in {\"Developers\"})",
- *     name: "Developers WARP settings policy",
- *     precedence: 10,
- *     serviceModeV2Mode: "warp",
- *     serviceModeV2Port: 3000,
  *     supportUrl: "https://cloudflare.com",
  *     switchLocked: true,
+ *     serviceModeV2Mode: "warp",
+ *     serviceModeV2Port: 3000,
+ *     excludeOfficeIps: false,
  * });
  * ```
  * <!--End PulumiCodeChooser -->

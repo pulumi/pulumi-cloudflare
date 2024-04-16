@@ -25,13 +25,13 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleAccessIdentityProvider = Cloudflare.GetAccessIdentityProvider.Invoke(new()
+        ///     var example = Cloudflare.GetAccessIdentityProvider.Invoke(new()
         ///     {
         ///         Name = "Google SSO",
         ///         AccountId = "f037e56e89293a057740de681ac9abbe",
         ///     });
         /// 
-        ///     var exampleAccessApplication = new Cloudflare.AccessApplication("exampleAccessApplication", new()
+        ///     var exampleAccessApplication = new Cloudflare.AccessApplication("example", new()
         ///     {
         ///         ZoneId = "0da42c8d2132a9ddaf714f9e7c920711",
         ///         Name = "name",
@@ -40,7 +40,7 @@ namespace Pulumi.Cloudflare
         ///         SessionDuration = "24h",
         ///         AllowedIdps = new[]
         ///         {
-        ///             exampleAccessIdentityProvider.Apply(getAccessIdentityProviderResult =&gt; getAccessIdentityProviderResult.Id),
+        ///             example.Apply(getAccessIdentityProviderResult =&gt; getAccessIdentityProviderResult.Id),
         ///         },
         ///         AutoRedirectToIdentity = true,
         ///     });
@@ -66,13 +66,13 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleAccessIdentityProvider = Cloudflare.GetAccessIdentityProvider.Invoke(new()
+        ///     var example = Cloudflare.GetAccessIdentityProvider.Invoke(new()
         ///     {
         ///         Name = "Google SSO",
         ///         AccountId = "f037e56e89293a057740de681ac9abbe",
         ///     });
         /// 
-        ///     var exampleAccessApplication = new Cloudflare.AccessApplication("exampleAccessApplication", new()
+        ///     var exampleAccessApplication = new Cloudflare.AccessApplication("example", new()
         ///     {
         ///         ZoneId = "0da42c8d2132a9ddaf714f9e7c920711",
         ///         Name = "name",
@@ -81,7 +81,7 @@ namespace Pulumi.Cloudflare
         ///         SessionDuration = "24h",
         ///         AllowedIdps = new[]
         ///         {
-        ///             exampleAccessIdentityProvider.Apply(getAccessIdentityProviderResult =&gt; getAccessIdentityProviderResult.Id),
+        ///             example.Apply(getAccessIdentityProviderResult =&gt; getAccessIdentityProviderResult.Id),
         ///         },
         ///         AutoRedirectToIdentity = true,
         ///     });

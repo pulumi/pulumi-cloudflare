@@ -16,8 +16,8 @@ import * as utilities from "./utilities";
  *
  * const example = new cloudflare.WebAnalyticsSite("example", {
  *     accountId: "f037e56e89293a057740de681ac9abbe",
- *     autoInstall: true,
  *     zoneTag: "0da42c8d2132a9ddaf714f9e7c920711",
+ *     autoInstall: true,
  * });
  * ```
  * <!--End PulumiCodeChooser -->

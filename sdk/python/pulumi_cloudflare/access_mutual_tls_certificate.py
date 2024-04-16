@@ -229,10 +229,10 @@ class AccessMutualTlsCertificate(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        my_cert = cloudflare.AccessMutualTlsCertificate("myCert",
+        my_cert = cloudflare.AccessMutualTlsCertificate("my_cert",
             zone_id="0da42c8d2132a9ddaf714f9e7c920711",
             name="My Root Cert",
-            certificate=var["ca_pem"],
+            certificate=ca_pem,
             associated_hostnames=["staging.example.com"])
         ```
         <!--End PulumiCodeChooser -->
@@ -285,10 +285,10 @@ class AccessMutualTlsCertificate(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        my_cert = cloudflare.AccessMutualTlsCertificate("myCert",
+        my_cert = cloudflare.AccessMutualTlsCertificate("my_cert",
             zone_id="0da42c8d2132a9ddaf714f9e7c920711",
             name="My Root Cert",
-            certificate=var["ca_pem"],
+            certificate=ca_pem,
             associated_hostnames=["staging.example.com"])
         ```
         <!--End PulumiCodeChooser -->

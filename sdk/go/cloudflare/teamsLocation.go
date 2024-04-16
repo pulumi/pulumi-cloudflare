@@ -32,8 +32,8 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.NewTeamsLocation(ctx, "example", &cloudflare.TeamsLocationArgs{
 //				AccountId:     pulumi.String("f037e56e89293a057740de681ac9abbe"),
-//				ClientDefault: pulumi.Bool(true),
 //				Name:          pulumi.String("office"),
+//				ClientDefault: pulumi.Bool(true),
 //				Networks: cloudflare.TeamsLocationNetworkArray{
 //					&cloudflare.TeamsLocationNetworkArgs{
 //						Network: pulumi.String("203.0.113.1/32"),

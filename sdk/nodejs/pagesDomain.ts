@@ -19,8 +19,8 @@ import * as utilities from "./utilities";
  *
  * const my_domain = new cloudflare.PagesDomain("my-domain", {
  *     accountId: "f037e56e89293a057740de681ac9abbe",
- *     domain: "example.com",
  *     projectName: "my-example-project",
+ *     domain: "example.com",
  * });
  * ```
  * <!--End PulumiCodeChooser -->

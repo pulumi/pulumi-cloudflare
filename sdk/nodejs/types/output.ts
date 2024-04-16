@@ -3378,8 +3378,8 @@ export interface PageRuleActionsCacheKeyFieldsUser {
      *
      * // Unrealistic example with all features used
      * const foobar = new cloudflare.PageRule("foobar", {
-     *     zoneId: _var.cloudflare_zone_id,
-     *     target: `${_var.cloudflare_zone}/app/*`,
+     *     zoneId: cloudflareZoneId,
+     *     target: `${cloudflareZone}/app/*`,
      *     priority: 1,
      *     actions: {
      *         cacheKeyFields: {

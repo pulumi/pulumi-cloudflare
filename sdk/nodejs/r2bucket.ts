@@ -14,8 +14,8 @@ import * as utilities from "./utilities";
  *
  * const example = new cloudflare.R2Bucket("example", {
  *     accountId: "f037e56e89293a057740de681ac9abbe",
- *     location: "enam",
  *     name: "terraform-bucket",
+ *     location: "enam",
  * });
  * ```
  * <!--End PulumiCodeChooser -->

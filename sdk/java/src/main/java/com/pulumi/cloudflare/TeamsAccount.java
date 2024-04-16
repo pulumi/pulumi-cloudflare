@@ -39,18 +39,18 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.cloudflare.TeamsAccount;
  * import com.pulumi.cloudflare.TeamsAccountArgs;
- * import com.pulumi.cloudflare.inputs.TeamsAccountAntivirusArgs;
- * import com.pulumi.cloudflare.inputs.TeamsAccountAntivirusNotificationSettingsArgs;
  * import com.pulumi.cloudflare.inputs.TeamsAccountBlockPageArgs;
  * import com.pulumi.cloudflare.inputs.TeamsAccountBodyScanningArgs;
- * import com.pulumi.cloudflare.inputs.TeamsAccountExtendedEmailMatchingArgs;
+ * import com.pulumi.cloudflare.inputs.TeamsAccountAntivirusArgs;
+ * import com.pulumi.cloudflare.inputs.TeamsAccountAntivirusNotificationSettingsArgs;
  * import com.pulumi.cloudflare.inputs.TeamsAccountFipsArgs;
+ * import com.pulumi.cloudflare.inputs.TeamsAccountProxyArgs;
  * import com.pulumi.cloudflare.inputs.TeamsAccountLoggingArgs;
  * import com.pulumi.cloudflare.inputs.TeamsAccountLoggingSettingsByRuleTypeArgs;
  * import com.pulumi.cloudflare.inputs.TeamsAccountLoggingSettingsByRuleTypeDnsArgs;
  * import com.pulumi.cloudflare.inputs.TeamsAccountLoggingSettingsByRuleTypeHttpArgs;
  * import com.pulumi.cloudflare.inputs.TeamsAccountLoggingSettingsByRuleTypeL4Args;
- * import com.pulumi.cloudflare.inputs.TeamsAccountProxyArgs;
+ * import com.pulumi.cloudflare.inputs.TeamsAccountExtendedEmailMatchingArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -66,6 +66,17 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var example = new TeamsAccount(&#34;example&#34;, TeamsAccountArgs.builder()        
  *             .accountId(&#34;f037e56e89293a057740de681ac9abbe&#34;)
+ *             .tlsDecryptEnabled(true)
+ *             .protocolDetectionEnabled(true)
+ *             .blockPage(TeamsAccountBlockPageArgs.builder()
+ *                 .footerText(&#34;hello&#34;)
+ *                 .headerText(&#34;hello&#34;)
+ *                 .logoPath(&#34;https://example.com/logo.jpg&#34;)
+ *                 .backgroundColor(&#34;#000000&#34;)
+ *                 .build())
+ *             .bodyScanning(TeamsAccountBodyScanningArgs.builder()
+ *                 .inspectionMode(&#34;deep&#34;)
+ *                 .build())
  *             .antivirus(TeamsAccountAntivirusArgs.builder()
  *                 .enabledDownloadPhase(true)
  *                 .enabledUploadPhase(false)
@@ -76,21 +87,15 @@ import javax.annotation.Nullable;
  *                     .supportUrl(&#34;https://example.com/blocked&#34;)
  *                     .build())
  *                 .build())
- *             .blockPage(TeamsAccountBlockPageArgs.builder()
- *                 .backgroundColor(&#34;#000000&#34;)
- *                 .footerText(&#34;hello&#34;)
- *                 .headerText(&#34;hello&#34;)
- *                 .logoPath(&#34;https://example.com/logo.jpg&#34;)
- *                 .build())
- *             .bodyScanning(TeamsAccountBodyScanningArgs.builder()
- *                 .inspectionMode(&#34;deep&#34;)
- *                 .build())
- *             .extendedEmailMatching(TeamsAccountExtendedEmailMatchingArgs.builder()
- *                 .enabled(true)
- *                 .build())
  *             .fips(TeamsAccountFipsArgs.builder()
  *                 .tls(true)
  *                 .build())
+ *             .proxy(TeamsAccountProxyArgs.builder()
+ *                 .tcp(true)
+ *                 .udp(true)
+ *                 .rootCa(true)
+ *                 .build())
+ *             .urlBrowserIsolationEnabled(true)
  *             .logging(TeamsAccountLoggingArgs.builder()
  *                 .redactPii(true)
  *                 .settingsByRuleType(TeamsAccountLoggingSettingsByRuleTypeArgs.builder()
@@ -108,14 +113,9 @@ import javax.annotation.Nullable;
  *                         .build())
  *                     .build())
  *                 .build())
- *             .protocolDetectionEnabled(true)
- *             .proxy(TeamsAccountProxyArgs.builder()
- *                 .rootCa(true)
- *                 .tcp(true)
- *                 .udp(true)
+ *             .extendedEmailMatching(TeamsAccountExtendedEmailMatchingArgs.builder()
+ *                 .enabled(true)
  *                 .build())
- *             .tlsDecryptEnabled(true)
- *             .urlBrowserIsolationEnabled(true)
  *             .build());
  * 
  *     }

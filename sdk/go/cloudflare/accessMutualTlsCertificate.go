@@ -41,10 +41,10 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewAccessMutualTlsCertificate(ctx, "myCert", &cloudflare.AccessMutualTlsCertificateArgs{
+//			_, err := cloudflare.NewAccessMutualTlsCertificate(ctx, "my_cert", &cloudflare.AccessMutualTlsCertificateArgs{
 //				ZoneId:      pulumi.String("0da42c8d2132a9ddaf714f9e7c920711"),
 //				Name:        pulumi.String("My Root Cert"),
-//				Certificate: pulumi.Any(_var.Ca_pem),
+//				Certificate: pulumi.Any(caPem),
 //				AssociatedHostnames: pulumi.StringArray{
 //					pulumi.String("staging.example.com"),
 //				},

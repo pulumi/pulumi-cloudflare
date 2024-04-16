@@ -315,11 +315,11 @@ class CustomHostname(pulumi.CustomResource):
         import pulumi_cloudflare as cloudflare
 
         example = cloudflare.CustomHostname("example",
+            zone_id="0da42c8d2132a9ddaf714f9e7c920711",
             hostname="hostname.example.com",
             ssls=[cloudflare.CustomHostnameSslArgs(
                 method="txt",
-            )],
-            zone_id="0da42c8d2132a9ddaf714f9e7c920711")
+            )])
         ```
         <!--End PulumiCodeChooser -->
 
@@ -356,11 +356,11 @@ class CustomHostname(pulumi.CustomResource):
         import pulumi_cloudflare as cloudflare
 
         example = cloudflare.CustomHostname("example",
+            zone_id="0da42c8d2132a9ddaf714f9e7c920711",
             hostname="hostname.example.com",
             ssls=[cloudflare.CustomHostnameSslArgs(
                 method="txt",
-            )],
-            zone_id="0da42c8d2132a9ddaf714f9e7c920711")
+            )])
         ```
         <!--End PulumiCodeChooser -->
 

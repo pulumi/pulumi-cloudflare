@@ -27,9 +27,9 @@ namespace Pulumi.Cloudflare
     ///     var example = new Cloudflare.ByoIpPrefix("example", new()
     ///     {
     ///         AccountId = "f037e56e89293a057740de681ac9abbe",
-    ///         Advertisement = "on",
-    ///         Description = "Example IP Prefix",
     ///         PrefixId = "d41d8cd98f00b204e9800998ecf8427e",
+    ///         Description = "Example IP Prefix",
+    ///         Advertisement = "on",
     ///     });
     /// 
     /// });

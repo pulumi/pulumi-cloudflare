@@ -12,27 +12,6 @@ import * as utilities from "./utilities";
  * to actively check the availability of those servers over HTTP(S) or
  * TCP.
  *
- * ## Example Usage
- *
- * <!--Start PulumiCodeChooser -->
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as cloudflare from "@pulumi/cloudflare";
- *
- * // TCP Monitor
- * const example = new cloudflare.LoadBalancerMonitor("example", {
- *     accountId: "f037e56e89293a057740de681ac9abbe",
- *     description: "example tcp load balancer",
- *     interval: 60,
- *     method: "connection_established",
- *     port: 8080,
- *     retries: 5,
- *     timeout: 7,
- *     type: "tcp",
- * });
- * ```
- * <!--End PulumiCodeChooser -->
- *
  * ## Import
  *
  * ```sh

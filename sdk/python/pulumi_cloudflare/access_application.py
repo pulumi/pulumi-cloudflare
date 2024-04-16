@@ -1019,33 +1019,6 @@ class AccessApplication(pulumi.CustomResource):
            scope. For example, an access token that is scoped to the "example.com"
            zone needs to use the `zone_id` argument.
 
-        ## Example Usage
-
-        <!--Start PulumiCodeChooser -->
-        ```python
-        import pulumi
-        import pulumi_cloudflare as cloudflare
-
-        # With CORS configuration
-        staging_app = cloudflare.AccessApplication("stagingApp",
-            cors_headers=[cloudflare.AccessApplicationCorsHeaderArgs(
-                allow_credentials=True,
-                allowed_methods=[
-                    "GET",
-                    "POST",
-                    "OPTIONS",
-                ],
-                allowed_origins=["https://example.com"],
-                max_age=10,
-            )],
-            domain="staging.example.com",
-            name="staging application",
-            session_duration="24h",
-            type="self_hosted",
-            zone_id="0da42c8d2132a9ddaf714f9e7c920711")
-        ```
-        <!--End PulumiCodeChooser -->
-
         ## Import
 
         ```sh
@@ -1100,33 +1073,6 @@ class AccessApplication(pulumi.CustomResource):
            access token, you must provide the argument that matches the token's
            scope. For example, an access token that is scoped to the "example.com"
            zone needs to use the `zone_id` argument.
-
-        ## Example Usage
-
-        <!--Start PulumiCodeChooser -->
-        ```python
-        import pulumi
-        import pulumi_cloudflare as cloudflare
-
-        # With CORS configuration
-        staging_app = cloudflare.AccessApplication("stagingApp",
-            cors_headers=[cloudflare.AccessApplicationCorsHeaderArgs(
-                allow_credentials=True,
-                allowed_methods=[
-                    "GET",
-                    "POST",
-                    "OPTIONS",
-                ],
-                allowed_origins=["https://example.com"],
-                max_age=10,
-            )],
-            domain="staging.example.com",
-            name="staging application",
-            session_duration="24h",
-            type="self_hosted",
-            zone_id="0da42c8d2132a9ddaf714f9e7c920711")
-        ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

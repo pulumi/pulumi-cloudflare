@@ -14,8 +14,8 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleZone = new cloudflare.Zone("exampleZone", {zone: "example.com"});
- * const exampleZoneDnssec = new cloudflare.ZoneDnssec("exampleZoneDnssec", {zoneId: exampleZone.id});
+ * const example = new cloudflare.Zone("example", {zone: "example.com"});
+ * const exampleZoneDnssec = new cloudflare.ZoneDnssec("example", {zoneId: example.id});
  * ```
  * <!--End PulumiCodeChooser -->
  *

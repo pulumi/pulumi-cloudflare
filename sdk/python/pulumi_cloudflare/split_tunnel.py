@@ -168,57 +168,6 @@ class SplitTunnel(pulumi.CustomResource):
         Provides a Cloudflare Split Tunnel resource. Split tunnels are used to either
         include or exclude lists of routes from the WARP client's tunnel.
 
-        ## Example Usage
-
-        <!--Start PulumiCodeChooser -->
-        ```python
-        import pulumi
-        import pulumi_cloudflare as cloudflare
-
-        # Excluding *.example.com from WARP routes
-        example_split_tunnel_exclude = cloudflare.SplitTunnel("exampleSplitTunnelExclude",
-            account_id="f037e56e89293a057740de681ac9abbe",
-            mode="exclude",
-            tunnels=[cloudflare.SplitTunnelTunnelArgs(
-                host="*.example.com",
-                description="example domain",
-            )])
-        # Including *.example.com in WARP routes
-        example_split_tunnel_include_split_tunnel = cloudflare.SplitTunnel("exampleSplitTunnelIncludeSplitTunnel",
-            account_id="f037e56e89293a057740de681ac9abbe",
-            mode="include",
-            tunnels=[cloudflare.SplitTunnelTunnelArgs(
-                host="*.example.com",
-                description="example domain",
-            )])
-        # Create a device policy
-        developer_warp_policy = cloudflare.DeviceSettingsPolicy("developerWarpPolicy",
-            account_id="f037e56e89293a057740de681ac9abbe",
-            name="Developers",
-            precedence=10,
-            match="any(identity.groups.name[*] in {\\"Developers\\"})",
-            switch_locked=True)
-        # Excluding *.example.com from WARP routes for a particular device policy
-        example_device_settings_policy_split_tunnel_exclude = cloudflare.SplitTunnel("exampleDeviceSettingsPolicySplitTunnelExclude",
-            account_id="f037e56e89293a057740de681ac9abbe",
-            policy_id=developer_warp_policy.id,
-            mode="exclude",
-            tunnels=[cloudflare.SplitTunnelTunnelArgs(
-                host="*.example.com",
-                description="example domain",
-            )])
-        # Including *.example.com in WARP routes for a particular device policy
-        example_split_tunnel_include_index_split_tunnel_split_tunnel = cloudflare.SplitTunnel("exampleSplitTunnelIncludeIndex/splitTunnelSplitTunnel",
-            account_id="f037e56e89293a057740de681ac9abbe",
-            policy_id=cloudflare_device_policy["developer_warp_policy"]["id"],
-            mode="include",
-            tunnels=[cloudflare.SplitTunnelTunnelArgs(
-                host="*.example.com",
-                description="example domain",
-            )])
-        ```
-        <!--End PulumiCodeChooser -->
-
         ## Import
 
         Split Tunnels for default device policies must use "default" as the policy ID.
@@ -243,57 +192,6 @@ class SplitTunnel(pulumi.CustomResource):
         """
         Provides a Cloudflare Split Tunnel resource. Split tunnels are used to either
         include or exclude lists of routes from the WARP client's tunnel.
-
-        ## Example Usage
-
-        <!--Start PulumiCodeChooser -->
-        ```python
-        import pulumi
-        import pulumi_cloudflare as cloudflare
-
-        # Excluding *.example.com from WARP routes
-        example_split_tunnel_exclude = cloudflare.SplitTunnel("exampleSplitTunnelExclude",
-            account_id="f037e56e89293a057740de681ac9abbe",
-            mode="exclude",
-            tunnels=[cloudflare.SplitTunnelTunnelArgs(
-                host="*.example.com",
-                description="example domain",
-            )])
-        # Including *.example.com in WARP routes
-        example_split_tunnel_include_split_tunnel = cloudflare.SplitTunnel("exampleSplitTunnelIncludeSplitTunnel",
-            account_id="f037e56e89293a057740de681ac9abbe",
-            mode="include",
-            tunnels=[cloudflare.SplitTunnelTunnelArgs(
-                host="*.example.com",
-                description="example domain",
-            )])
-        # Create a device policy
-        developer_warp_policy = cloudflare.DeviceSettingsPolicy("developerWarpPolicy",
-            account_id="f037e56e89293a057740de681ac9abbe",
-            name="Developers",
-            precedence=10,
-            match="any(identity.groups.name[*] in {\\"Developers\\"})",
-            switch_locked=True)
-        # Excluding *.example.com from WARP routes for a particular device policy
-        example_device_settings_policy_split_tunnel_exclude = cloudflare.SplitTunnel("exampleDeviceSettingsPolicySplitTunnelExclude",
-            account_id="f037e56e89293a057740de681ac9abbe",
-            policy_id=developer_warp_policy.id,
-            mode="exclude",
-            tunnels=[cloudflare.SplitTunnelTunnelArgs(
-                host="*.example.com",
-                description="example domain",
-            )])
-        # Including *.example.com in WARP routes for a particular device policy
-        example_split_tunnel_include_index_split_tunnel_split_tunnel = cloudflare.SplitTunnel("exampleSplitTunnelIncludeIndex/splitTunnelSplitTunnel",
-            account_id="f037e56e89293a057740de681ac9abbe",
-            policy_id=cloudflare_device_policy["developer_warp_policy"]["id"],
-            mode="include",
-            tunnels=[cloudflare.SplitTunnelTunnelArgs(
-                host="*.example.com",
-                description="example domain",
-            )])
-        ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

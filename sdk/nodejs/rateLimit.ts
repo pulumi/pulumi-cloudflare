@@ -19,25 +19,16 @@ import * as utilities from "./utilities";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
  * const example = new cloudflare.RateLimit("example", {
- *     action: {
- *         mode: "simulate",
- *         response: {
- *             body: "custom response body",
- *             contentType: "text/plain",
- *         },
- *         timeout: 43200,
- *     },
- *     bypassUrlPatterns: [
- *         "example.com/bypass1",
- *         "example.com/bypass2",
- *     ],
- *     correlate: {
- *         by: "nat",
- *     },
- *     description: "example rate limit for a zone",
- *     disabled: false,
+ *     zoneId: "0da42c8d2132a9ddaf714f9e7c920711",
+ *     threshold: 2000,
+ *     period: 2,
  *     match: {
  *         request: {
+ *             urlPattern: `${cloudflareZone}/*`,
+ *             schemes: [
+ *                 "HTTP",
+ *                 "HTTPS",
+ *             ],
  *             methods: [
  *                 "GET",
  *                 "POST",
@@ -46,13 +37,16 @@ import * as utilities from "./utilities";
  *                 "PATCH",
  *                 "HEAD",
  *             ],
- *             schemes: [
- *                 "HTTP",
- *                 "HTTPS",
- *             ],
- *             urlPattern: `${_var.cloudflare_zone}/*`,
  *         },
  *         response: {
+ *             statuses: [
+ *                 200,
+ *                 201,
+ *                 202,
+ *                 301,
+ *                 429,
+ *             ],
+ *             originTraffic: false,
  *             headers: [
  *                 {
  *                     name: "Host",
@@ -65,19 +59,25 @@ import * as utilities from "./utilities";
  *                     value: "my-example",
  *                 },
  *             ],
- *             originTraffic: false,
- *             statuses: [
- *                 200,
- *                 201,
- *                 202,
- *                 301,
- *                 429,
- *             ],
  *         },
  *     },
- *     period: 2,
- *     threshold: 2000,
- *     zoneId: "0da42c8d2132a9ddaf714f9e7c920711",
+ *     action: {
+ *         mode: "simulate",
+ *         timeout: 43200,
+ *         response: {
+ *             contentType: "text/plain",
+ *             body: "custom response body",
+ *         },
+ *     },
+ *     correlate: {
+ *         by: "nat",
+ *     },
+ *     disabled: false,
+ *     description: "example rate limit for a zone",
+ *     bypassUrlPatterns: [
+ *         "example.com/bypass1",
+ *         "example.com/bypass2",
+ *     ],
  * });
  * ```
  * <!--End PulumiCodeChooser -->

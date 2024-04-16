@@ -33,10 +33,10 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.NewTeamsProxyEndpoint(ctx, "example", &cloudflare.TeamsProxyEndpointArgs{
 //				AccountId: pulumi.String("f037e56e89293a057740de681ac9abbe"),
+//				Name:      pulumi.String("office"),
 //				Ips: pulumi.StringArray{
 //					pulumi.String("192.0.2.0/24"),
 //				},
-//				Name: pulumi.String("office"),
 //			})
 //			if err != nil {
 //				return err

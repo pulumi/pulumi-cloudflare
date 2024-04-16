@@ -33,11 +33,11 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var myCert = new Cloudflare.AccessMutualTlsCertificate("myCert", new()
+    ///     var myCert = new Cloudflare.AccessMutualTlsCertificate("my_cert", new()
     ///     {
     ///         ZoneId = "0da42c8d2132a9ddaf714f9e7c920711",
     ///         Name = "My Root Cert",
-    ///         Certificate = @var.Ca_pem,
+    ///         Certificate = caPem,
     ///         AssociatedHostnames = new[]
     ///         {
     ///             "staging.example.com",

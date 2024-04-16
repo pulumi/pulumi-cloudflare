@@ -17,22 +17,22 @@ import * as utilities from "./utilities";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
  * const example = new cloudflare.WaitingRoomRules("example", {
+ *     zoneId: "0da42c8d2132a9ddaf714f9e7c920711",
+ *     waitingRoomId: "d41d8cd98f00b204e9800998ecf8427e",
  *     rules: [
  *         {
- *             action: "bypass_waiting_room",
  *             description: "bypass ip list",
  *             expression: "src.ip in {192.0.2.0 192.0.2.1}",
+ *             action: "bypass_waiting_room",
  *             status: "enabled",
  *         },
  *         {
- *             action: "bypass_waiting_room",
  *             description: "bypass query string",
  *             expression: "http.request.uri.query contains \"bypass=true\"",
+ *             action: "bypass_waiting_room",
  *             status: "enabled",
  *         },
  *     ],
- *     waitingRoomId: "d41d8cd98f00b204e9800998ecf8427e",
- *     zoneId: "0da42c8d2132a9ddaf714f9e7c920711",
  * });
  * ```
  * <!--End PulumiCodeChooser -->

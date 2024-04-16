@@ -41,10 +41,10 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var example = new ObservatoryScheduledTest(&#34;example&#34;, ObservatoryScheduledTestArgs.builder()        
- *             .frequency(&#34;WEEKLY&#34;)
- *             .region(&#34;us-central1&#34;)
- *             .url(&#34;example.com&#34;)
  *             .zoneId(&#34;0da42c8d2132a9ddaf714f9e7c920711&#34;)
+ *             .url(&#34;example.com&#34;)
+ *             .region(&#34;us-central1&#34;)
+ *             .frequency(&#34;WEEKLY&#34;)
  *             .build());
  * 
  *     }

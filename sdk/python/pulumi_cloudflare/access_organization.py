@@ -467,18 +467,18 @@ class AccessOrganization(pulumi.CustomResource):
 
         example = cloudflare.AccessOrganization("example",
             account_id="f037e56e89293a057740de681ac9abbe",
+            name="example.cloudflareaccess.com",
             auth_domain="example.cloudflareaccess.com",
-            auto_redirect_to_identity=False,
             is_ui_read_only=False,
+            user_seat_expiration_inactive_time="720h",
+            auto_redirect_to_identity=False,
             login_designs=[cloudflare.AccessOrganizationLoginDesignArgs(
                 background_color="#ffffff",
-                footer_text="My footer text",
-                header_text="My header text",
-                logo_path="https://example.com/logo.png",
                 text_color="#000000",
-            )],
-            name="example.cloudflareaccess.com",
-            user_seat_expiration_inactive_time="720h")
+                logo_path="https://example.com/logo.png",
+                header_text="My header text",
+                footer_text="My footer text",
+            )])
         ```
         <!--End PulumiCodeChooser -->
 
@@ -521,18 +521,18 @@ class AccessOrganization(pulumi.CustomResource):
 
         example = cloudflare.AccessOrganization("example",
             account_id="f037e56e89293a057740de681ac9abbe",
+            name="example.cloudflareaccess.com",
             auth_domain="example.cloudflareaccess.com",
-            auto_redirect_to_identity=False,
             is_ui_read_only=False,
+            user_seat_expiration_inactive_time="720h",
+            auto_redirect_to_identity=False,
             login_designs=[cloudflare.AccessOrganizationLoginDesignArgs(
                 background_color="#ffffff",
-                footer_text="My footer text",
-                header_text="My header text",
-                logo_path="https://example.com/logo.png",
                 text_color="#000000",
-            )],
-            name="example.cloudflareaccess.com",
-            user_seat_expiration_inactive_time="720h")
+                logo_path="https://example.com/logo.png",
+                header_text="My header text",
+                footer_text="My footer text",
+            )])
         ```
         <!--End PulumiCodeChooser -->
 

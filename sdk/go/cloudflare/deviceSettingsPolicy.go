@@ -29,25 +29,25 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewDeviceSettingsPolicy(ctx, "developerWarpPolicy", &cloudflare.DeviceSettingsPolicyArgs{
+//			_, err := cloudflare.NewDeviceSettingsPolicy(ctx, "developer_warp_policy", &cloudflare.DeviceSettingsPolicyArgs{
 //				AccountId:           pulumi.String("f037e56e89293a057740de681ac9abbe"),
+//				Name:                pulumi.String("Developers WARP settings policy"),
+//				Description:         pulumi.String("Developers WARP settings policy description"),
+//				Precedence:          pulumi.Int(10),
+//				Match:               pulumi.String("any(identity.groups.name[*] in {\"Developers\"})"),
+//				Default:             pulumi.Bool(false),
+//				Enabled:             pulumi.Bool(true),
 //				AllowModeSwitch:     pulumi.Bool(true),
 //				AllowUpdates:        pulumi.Bool(true),
 //				AllowedToLeave:      pulumi.Bool(true),
 //				AutoConnect:         pulumi.Int(0),
 //				CaptivePortal:       pulumi.Int(5),
-//				Default:             pulumi.Bool(false),
-//				Description:         pulumi.String("Developers WARP settings policy description"),
 //				DisableAutoFallback: pulumi.Bool(true),
-//				Enabled:             pulumi.Bool(true),
-//				ExcludeOfficeIps:    pulumi.Bool(false),
-//				Match:               pulumi.String("any(identity.groups.name[*] in {\"Developers\"})"),
-//				Name:                pulumi.String("Developers WARP settings policy"),
-//				Precedence:          pulumi.Int(10),
-//				ServiceModeV2Mode:   pulumi.String("warp"),
-//				ServiceModeV2Port:   pulumi.Int(3000),
 //				SupportUrl:          pulumi.String("https://cloudflare.com"),
 //				SwitchLocked:        pulumi.Bool(true),
+//				ServiceModeV2Mode:   pulumi.String("warp"),
+//				ServiceModeV2Port:   pulumi.Int(3000),
+//				ExcludeOfficeIps:    pulumi.Bool(false),
 //			})
 //			if err != nil {
 //				return err

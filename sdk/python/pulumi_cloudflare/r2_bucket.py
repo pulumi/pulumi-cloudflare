@@ -140,8 +140,8 @@ class R2Bucket(pulumi.CustomResource):
 
         example = cloudflare.R2Bucket("example",
             account_id="f037e56e89293a057740de681ac9abbe",
-            location="enam",
-            name="terraform-bucket")
+            name="terraform-bucket",
+            location="enam")
         ```
         <!--End PulumiCodeChooser -->
 
@@ -175,8 +175,8 @@ class R2Bucket(pulumi.CustomResource):
 
         example = cloudflare.R2Bucket("example",
             account_id="f037e56e89293a057740de681ac9abbe",
-            location="enam",
-            name="terraform-bucket")
+            name="terraform-bucket",
+            location="enam")
         ```
         <!--End PulumiCodeChooser -->
 

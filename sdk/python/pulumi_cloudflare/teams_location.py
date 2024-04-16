@@ -254,8 +254,8 @@ class TeamsLocation(pulumi.CustomResource):
 
         example = cloudflare.TeamsLocation("example",
             account_id="f037e56e89293a057740de681ac9abbe",
-            client_default=True,
             name="office",
+            client_default=True,
             networks=[
                 cloudflare.TeamsLocationNetworkArgs(
                     network="203.0.113.1/32",
@@ -299,8 +299,8 @@ class TeamsLocation(pulumi.CustomResource):
 
         example = cloudflare.TeamsLocation("example",
             account_id="f037e56e89293a057740de681ac9abbe",
-            client_default=True,
             name="office",
+            client_default=True,
             networks=[
                 cloudflare.TeamsLocationNetworkArgs(
                     network="203.0.113.1/32",

@@ -29,7 +29,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewWorkerSecret(ctx, "mySecret", &cloudflare.WorkerSecretArgs{
+//			_, err := cloudflare.NewWorkerSecret(ctx, "my_secret", &cloudflare.WorkerSecretArgs{
 //				AccountId:  pulumi.String("f037e56e89293a057740de681ac9abbe"),
 //				Name:       pulumi.String("MY_EXAMPLE_SECRET_TEXT"),
 //				ScriptName: pulumi.String("script_1"),

@@ -31,7 +31,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// Add a record to the domain
 //			_, err := cloudflare.NewRecord(ctx, "example", &cloudflare.RecordArgs{
-//				ZoneId: pulumi.Any(_var.Cloudflare_zone_id),
+//				ZoneId: pulumi.Any(cloudflareZoneId),
 //				Name:   pulumi.String("example"),
 //				Value:  pulumi.String("192.0.2.1"),
 //				Type:   pulumi.String("A"),
@@ -41,8 +41,8 @@ import (
 //				return err
 //			}
 //			// Add a record requiring a data map
-//			_, err = cloudflare.NewRecord(ctx, "_sipTls", &cloudflare.RecordArgs{
-//				ZoneId: pulumi.Any(_var.Cloudflare_zone_id),
+//			_, err = cloudflare.NewRecord(ctx, "_sip_tls", &cloudflare.RecordArgs{
+//				ZoneId: pulumi.Any(cloudflareZoneId),
 //				Name:   pulumi.String("_sip._tls"),
 //				Type:   pulumi.String("SRV"),
 //				Data: &cloudflare.RecordDataArgs{

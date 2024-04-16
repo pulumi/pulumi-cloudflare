@@ -42,10 +42,10 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var example = new CustomPages(&#34;example&#34;, CustomPagesArgs.builder()        
- *             .state(&#34;customized&#34;)
+ *             .zoneId(&#34;0da42c8d2132a9ddaf714f9e7c920711&#34;)
  *             .type(&#34;basic_challenge&#34;)
  *             .url(&#34;https://example.com/challenge.html&#34;)
- *             .zoneId(&#34;0da42c8d2132a9ddaf714f9e7c920711&#34;)
+ *             .state(&#34;customized&#34;)
  *             .build());
  * 
  *     }

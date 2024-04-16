@@ -63,44 +63,43 @@ import javax.annotation.Nullable;
  *         // oauth
  *         var githubOauth = new AccessIdentityProvider(&#34;githubOauth&#34;, AccessIdentityProviderArgs.builder()        
  *             .accountId(&#34;f037e56e89293a057740de681ac9abbe&#34;)
+ *             .name(&#34;GitHub OAuth&#34;)
+ *             .type(&#34;github&#34;)
  *             .configs(AccessIdentityProviderConfigArgs.builder()
  *                 .clientId(&#34;example&#34;)
  *                 .clientSecret(&#34;secret_key&#34;)
  *                 .build())
- *             .name(&#34;GitHub OAuth&#34;)
- *             .type(&#34;github&#34;)
  *             .build());
  * 
  *         // saml
  *         var jumpcloudSaml = new AccessIdentityProvider(&#34;jumpcloudSaml&#34;, AccessIdentityProviderArgs.builder()        
  *             .accountId(&#34;f037e56e89293a057740de681ac9abbe&#34;)
+ *             .name(&#34;JumpCloud SAML&#34;)
+ *             .type(&#34;saml&#34;)
  *             .configs(AccessIdentityProviderConfigArgs.builder()
+ *                 .issuerUrl(&#34;jumpcloud&#34;)
+ *                 .ssoTargetUrl(&#34;https://sso.myexample.jumpcloud.com/saml2/cloudflareaccess&#34;)
  *                 .attributes(                
  *                     &#34;email&#34;,
  *                     &#34;username&#34;)
+ *                 .signRequest(false)
  *                 .idpPublicCert(&#34;&#34;&#34;
  * MIIDpDCCAoygAwIBAgIGAV2ka+55MA0GCSqGSIb3DQEBCwUAMIGSMQswCQ...GF/Q2/MHadws97cZg
- * uTnQyuOqPuHbnN83d/2l1NSYKCbHt24o
- *                 &#34;&#34;&#34;)
- *                 .issuerUrl(&#34;jumpcloud&#34;)
- *                 .signRequest(false)
- *                 .ssoTargetUrl(&#34;https://sso.myexample.jumpcloud.com/saml2/cloudflareaccess&#34;)
+ * uTnQyuOqPuHbnN83d/2l1NSYKCbHt24o                &#34;&#34;&#34;)
  *                 .build())
- *             .name(&#34;JumpCloud SAML&#34;)
- *             .type(&#34;saml&#34;)
  *             .build());
  * 
  *         // okta
  *         var okta = new AccessIdentityProvider(&#34;okta&#34;, AccessIdentityProviderArgs.builder()        
  *             .accountId(&#34;f037e56e89293a057740de681ac9abbe&#34;)
- *             .configs(AccessIdentityProviderConfigArgs.builder()
- *                 .apiToken(&#34;okta_api_token&#34;)
- *                 .clientId(&#34;example&#34;)
- *                 .clientSecret(&#34;secret_key&#34;)
- *                 .oktaAccount(&#34;https://example.com&#34;)
- *                 .build())
  *             .name(&#34;Okta&#34;)
  *             .type(&#34;okta&#34;)
+ *             .configs(AccessIdentityProviderConfigArgs.builder()
+ *                 .clientId(&#34;example&#34;)
+ *                 .clientSecret(&#34;secret_key&#34;)
+ *                 .apiToken(&#34;okta_api_token&#34;)
+ *                 .oktaAccount(&#34;https://example.com&#34;)
+ *                 .build())
  *             .build());
  * 
  *     }

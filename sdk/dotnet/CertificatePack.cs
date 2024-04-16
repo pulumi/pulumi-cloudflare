@@ -12,36 +12,6 @@ namespace Pulumi.Cloudflare
     /// <summary>
     /// ## Example Usage
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Cloudflare = Pulumi.Cloudflare;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     // Advanced certificate manager for Let's Encrypt
-    ///     var example = new Cloudflare.CertificatePack("example", new()
-    ///     {
-    ///         CertificateAuthority = "lets_encrypt",
-    ///         CloudflareBranding = false,
-    ///         Hosts = new[]
-    ///         {
-    ///             "example.com",
-    ///             "*.example.com",
-    ///         },
-    ///         Type = "advanced",
-    ///         ValidationMethod = "http",
-    ///         ValidityDays = 90,
-    ///         WaitForActiveStatus = true,
-    ///         ZoneId = "0da42c8d2132a9ddaf714f9e7c920711",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
-    /// 
     /// ## Import
     /// 
     /// ```sh

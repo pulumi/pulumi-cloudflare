@@ -24,10 +24,10 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const myCert = new cloudflare.AccessMutualTlsCertificate("myCert", {
+ * const myCert = new cloudflare.AccessMutualTlsCertificate("my_cert", {
  *     zoneId: "0da42c8d2132a9ddaf714f9e7c920711",
  *     name: "My Root Cert",
- *     certificate: _var.ca_pem,
+ *     certificate: caPem,
  *     associatedHostnames: ["staging.example.com"],
  * });
  * ```

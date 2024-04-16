@@ -18,16 +18,16 @@ import * as utilities from "./utilities";
  *
  * const example = new cloudflare.TeamsRule("example", {
  *     accountId: "f037e56e89293a057740de681ac9abbe",
- *     action: "block",
- *     description: "desc",
- *     filters: ["http"],
  *     name: "office",
+ *     description: "desc",
  *     precedence: 1,
+ *     action: "block",
+ *     filters: ["http"],
+ *     traffic: "http.request.uri == \"https://www.example.com/malicious\"",
  *     ruleSettings: {
  *         blockPageEnabled: true,
  *         blockPageReason: "access not permitted",
  *     },
- *     traffic: "http.request.uri == \"https://www.example.com/malicious\"",
  * });
  * ```
  * <!--End PulumiCodeChooser -->

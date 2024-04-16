@@ -29,14 +29,14 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewDeviceManagedNetworks(ctx, "managedNetworks", &cloudflare.DeviceManagedNetworksArgs{
+//			_, err := cloudflare.NewDeviceManagedNetworks(ctx, "managed_networks", &cloudflare.DeviceManagedNetworksArgs{
 //				AccountId: pulumi.String("f037e56e89293a057740de681ac9abbe"),
+//				Name:      pulumi.String("managed-network-1"),
+//				Type:      pulumi.String("tls"),
 //				Config: &cloudflare.DeviceManagedNetworksConfigArgs{
-//					Sha256:      pulumi.String("b5bb9d8014a0f9b1d61e21e796d78dccdf1352f23cd32812f4850b878ae4944c"),
 //					TlsSockaddr: pulumi.String("foobar:1234"),
+//					Sha256:      pulumi.String("b5bb9d8014a0f9b1d61e21e796d78dccdf1352f23cd32812f4850b878ae4944c"),
 //				},
-//				Name: pulumi.String("managed-network-1"),
-//				Type: pulumi.String("tls"),
 //			})
 //			if err != nil {
 //				return err

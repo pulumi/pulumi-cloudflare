@@ -27,7 +27,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleLoadBalancerPool = new Cloudflare.LoadBalancerPool("exampleLoadBalancerPool", new()
+    ///     var exampleLoadBalancerPool = new Cloudflare.LoadBalancerPool("example", new()
     ///     {
     ///         Name = "example-lb-pool",
     ///         Origins = new[]
@@ -45,7 +45,7 @@ namespace Pulumi.Cloudflare
     ///     // In normal usage, would have different pools set for different pops
     ///     // (cloudflare points-of-presence) and/or for different regions.
     ///     // Within each pop or region we can define multiple pools in failover order.
-    ///     var exampleLoadBalancer = new Cloudflare.LoadBalancer("exampleLoadBalancer", new()
+    ///     var example = new Cloudflare.LoadBalancer("example", new()
     ///     {
     ///         ZoneId = "0da42c8d2132a9ddaf714f9e7c920711",
     ///         Name = "example-load-balancer.example.com",

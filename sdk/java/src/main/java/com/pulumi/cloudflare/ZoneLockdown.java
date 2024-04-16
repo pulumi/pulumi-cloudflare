@@ -52,14 +52,14 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         // Restrict access to these endpoints to requests from a known IP address range.
  *         var example = new ZoneLockdown(&#34;example&#34;, ZoneLockdownArgs.builder()        
+ *             .zoneId(&#34;0da42c8d2132a9ddaf714f9e7c920711&#34;)
+ *             .paused(&#34;false&#34;)
+ *             .description(&#34;Restrict access to these endpoints to requests from a known IP address range&#34;)
+ *             .urls(&#34;api.mysite.com/some/endpoint*&#34;)
  *             .configurations(ZoneLockdownConfigurationArgs.builder()
  *                 .target(&#34;ip_range&#34;)
  *                 .value(&#34;192.0.2.0/24&#34;)
  *                 .build())
- *             .description(&#34;Restrict access to these endpoints to requests from a known IP address range&#34;)
- *             .paused(&#34;false&#34;)
- *             .urls(&#34;api.mysite.com/some/endpoint*&#34;)
- *             .zoneId(&#34;0da42c8d2132a9ddaf714f9e7c920711&#34;)
  *             .build());
  * 
  *     }

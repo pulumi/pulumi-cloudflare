@@ -44,25 +44,25 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var example1 = new UserAgentBlockingRule(&#34;example1&#34;, UserAgentBlockingRuleArgs.builder()        
+ *             .zoneId(&#34;0da42c8d2132a9ddaf714f9e7c920711&#34;)
+ *             .mode(&#34;js_challenge&#34;)
+ *             .paused(false)
+ *             .description(&#34;My description 1&#34;)
  *             .configuration(UserAgentBlockingRuleConfigurationArgs.builder()
  *                 .target(&#34;ua&#34;)
  *                 .value(&#34;Chrome&#34;)
  *                 .build())
- *             .description(&#34;My description 1&#34;)
- *             .mode(&#34;js_challenge&#34;)
- *             .paused(false)
- *             .zoneId(&#34;0da42c8d2132a9ddaf714f9e7c920711&#34;)
  *             .build());
  * 
  *         var example2 = new UserAgentBlockingRule(&#34;example2&#34;, UserAgentBlockingRuleArgs.builder()        
+ *             .zoneId(&#34;0da42c8d2132a9ddaf714f9e7c920711&#34;)
+ *             .mode(&#34;challenge&#34;)
+ *             .paused(true)
+ *             .description(&#34;My description 22&#34;)
  *             .configuration(UserAgentBlockingRuleConfigurationArgs.builder()
  *                 .target(&#34;ua&#34;)
  *                 .value(&#34;Mozilla&#34;)
  *                 .build())
- *             .description(&#34;My description 22&#34;)
- *             .mode(&#34;challenge&#34;)
- *             .paused(true)
- *             .zoneId(&#34;0da42c8d2132a9ddaf714f9e7c920711&#34;)
  *             .build());
  * 
  *     }

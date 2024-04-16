@@ -44,16 +44,16 @@ import javax.annotation.Nullable;
  * import com.pulumi.cloudflare.inputs.RulesetRuleActionParametersUriQueryArgs;
  * import com.pulumi.cloudflare.inputs.RulesetRuleRatelimitArgs;
  * import com.pulumi.cloudflare.inputs.RulesetRuleActionParametersOriginArgs;
+ * import com.pulumi.cloudflare.inputs.RulesetRuleActionParametersEdgeTtlArgs;
  * import com.pulumi.cloudflare.inputs.RulesetRuleActionParametersBrowserTtlArgs;
+ * import com.pulumi.cloudflare.inputs.RulesetRuleActionParametersServeStaleArgs;
  * import com.pulumi.cloudflare.inputs.RulesetRuleActionParametersCacheKeyArgs;
  * import com.pulumi.cloudflare.inputs.RulesetRuleActionParametersCacheKeyCustomKeyArgs;
- * import com.pulumi.cloudflare.inputs.RulesetRuleActionParametersCacheKeyCustomKeyCookieArgs;
- * import com.pulumi.cloudflare.inputs.RulesetRuleActionParametersCacheKeyCustomKeyHeaderArgs;
- * import com.pulumi.cloudflare.inputs.RulesetRuleActionParametersCacheKeyCustomKeyHostArgs;
  * import com.pulumi.cloudflare.inputs.RulesetRuleActionParametersCacheKeyCustomKeyQueryStringArgs;
+ * import com.pulumi.cloudflare.inputs.RulesetRuleActionParametersCacheKeyCustomKeyHeaderArgs;
+ * import com.pulumi.cloudflare.inputs.RulesetRuleActionParametersCacheKeyCustomKeyCookieArgs;
  * import com.pulumi.cloudflare.inputs.RulesetRuleActionParametersCacheKeyCustomKeyUserArgs;
- * import com.pulumi.cloudflare.inputs.RulesetRuleActionParametersEdgeTtlArgs;
- * import com.pulumi.cloudflare.inputs.RulesetRuleActionParametersServeStaleArgs;
+ * import com.pulumi.cloudflare.inputs.RulesetRuleActionParametersCacheKeyCustomKeyHostArgs;
  * import com.pulumi.cloudflare.inputs.RulesetRuleActionParametersFromListArgs;
  * import com.pulumi.cloudflare.inputs.RulesetRuleActionParametersFromValueArgs;
  * import com.pulumi.cloudflare.inputs.RulesetRuleActionParametersFromValueTargetUrlArgs;
@@ -73,40 +73,41 @@ import javax.annotation.Nullable;
  *         // Magic Transit
  *         var magicTransitExample = new Ruleset(&#34;magicTransitExample&#34;, RulesetArgs.builder()        
  *             .accountId(&#34;f037e56e89293a057740de681ac9abbe&#34;)
+ *             .name(&#34;account magic transit&#34;)
  *             .description(&#34;example magic transit ruleset description&#34;)
  *             .kind(&#34;root&#34;)
- *             .name(&#34;account magic transit&#34;)
  *             .phase(&#34;magic_transit&#34;)
  *             .rules(RulesetRuleArgs.builder()
  *                 .action(&#34;allow&#34;)
- *                 .description(&#34;Allow TCP Ephemeral Ports&#34;)
  *                 .expression(&#34;tcp.dstport in { 32768..65535 }&#34;)
+ *                 .description(&#34;Allow TCP Ephemeral Ports&#34;)
  *                 .build())
  *             .build());
  * 
  *         // Zone-level WAF Managed Ruleset
  *         var zoneLevelManagedWaf = new Ruleset(&#34;zoneLevelManagedWaf&#34;, RulesetArgs.builder()        
+ *             .zoneId(&#34;0da42c8d2132a9ddaf714f9e7c920711&#34;)
+ *             .name(&#34;managed WAF&#34;)
  *             .description(&#34;managed WAF ruleset description&#34;)
  *             .kind(&#34;zone&#34;)
- *             .name(&#34;managed WAF&#34;)
  *             .phase(&#34;http_request_firewall_managed&#34;)
  *             .rules(RulesetRuleArgs.builder()
  *                 .action(&#34;execute&#34;)
  *                 .actionParameters(RulesetRuleActionParametersArgs.builder()
  *                     .id(&#34;efb7b8c949ac4650a09736fc376e9aee&#34;)
  *                     .build())
+ *                 .expression(&#34;(http.host eq \&#34;example.host.com\&#34;)&#34;)
  *                 .description(&#34;Execute Cloudflare Managed Ruleset on my zone-level phase entry point ruleset&#34;)
  *                 .enabled(true)
- *                 .expression(&#34;(http.host eq \&#34;example.host.com\&#34;)&#34;)
  *                 .build())
- *             .zoneId(&#34;0da42c8d2132a9ddaf714f9e7c920711&#34;)
  *             .build());
  * 
  *         // Zone-level WAF with tag-based overrides
  *         var zoneLevelManagedWafWithCategoryBasedOverrides = new Ruleset(&#34;zoneLevelManagedWafWithCategoryBasedOverrides&#34;, RulesetArgs.builder()        
+ *             .zoneId(&#34;0da42c8d2132a9ddaf714f9e7c920711&#34;)
+ *             .name(&#34;managed WAF with tag-based overrides&#34;)
  *             .description(&#34;managed WAF with tag-based overrides ruleset description&#34;)
  *             .kind(&#34;zone&#34;)
- *             .name(&#34;managed WAF with tag-based overrides&#34;)
  *             .phase(&#34;http_request_firewall_managed&#34;)
  *             .rules(RulesetRuleArgs.builder()
  *                 .action(&#34;execute&#34;)
@@ -115,29 +116,29 @@ import javax.annotation.Nullable;
  *                     .overrides(RulesetRuleActionParametersOverridesArgs.builder()
  *                         .categories(                        
  *                             RulesetRuleActionParametersOverridesCategoryArgs.builder()
- *                                 .action(&#34;block&#34;)
  *                                 .category(&#34;wordpress&#34;)
+ *                                 .action(&#34;block&#34;)
  *                                 .enabled(true)
  *                                 .build(),
  *                             RulesetRuleActionParametersOverridesCategoryArgs.builder()
- *                                 .action(&#34;block&#34;)
  *                                 .category(&#34;joomla&#34;)
+ *                                 .action(&#34;block&#34;)
  *                                 .enabled(true)
  *                                 .build())
  *                         .build())
  *                     .build())
+ *                 .expression(&#34;(http.host eq \&#34;example.host.com\&#34;)&#34;)
  *                 .description(&#34;overrides to only enable wordpress rules to block&#34;)
  *                 .enabled(false)
- *                 .expression(&#34;(http.host eq \&#34;example.host.com\&#34;)&#34;)
  *                 .build())
- *             .zoneId(&#34;0da42c8d2132a9ddaf714f9e7c920711&#34;)
  *             .build());
  * 
  *         // Rewrite the URI path component to a static path
  *         var transformUriRulePath = new Ruleset(&#34;transformUriRulePath&#34;, RulesetArgs.builder()        
+ *             .zoneId(&#34;0da42c8d2132a9ddaf714f9e7c920711&#34;)
+ *             .name(&#34;transform rule for URI path&#34;)
  *             .description(&#34;change the URI path to a new static path&#34;)
  *             .kind(&#34;zone&#34;)
- *             .name(&#34;transform rule for URI path&#34;)
  *             .phase(&#34;http_request_transform&#34;)
  *             .rules(RulesetRuleArgs.builder()
  *                 .action(&#34;rewrite&#34;)
@@ -148,18 +149,18 @@ import javax.annotation.Nullable;
  *                             .build())
  *                         .build())
  *                     .build())
+ *                 .expression(&#34;(http.host eq \&#34;example.com\&#34; and http.request.uri.path eq \&#34;/old-path\&#34;)&#34;)
  *                 .description(&#34;example URI path transform rule&#34;)
  *                 .enabled(true)
- *                 .expression(&#34;(http.host eq \&#34;example.com\&#34; and http.request.uri.path eq \&#34;/old-path\&#34;)&#34;)
  *                 .build())
- *             .zoneId(&#34;0da42c8d2132a9ddaf714f9e7c920711&#34;)
  *             .build());
  * 
  *         // Rewrite the URI query component to a static query
  *         var transformUriRuleQuery = new Ruleset(&#34;transformUriRuleQuery&#34;, RulesetArgs.builder()        
+ *             .zoneId(&#34;0da42c8d2132a9ddaf714f9e7c920711&#34;)
+ *             .name(&#34;transform rule for URI query parameter&#34;)
  *             .description(&#34;change the URI query to a new static query&#34;)
  *             .kind(&#34;zone&#34;)
- *             .name(&#34;transform rule for URI query parameter&#34;)
  *             .phase(&#34;http_request_transform&#34;)
  *             .rules(RulesetRuleArgs.builder()
  *                 .action(&#34;rewrite&#34;)
@@ -170,18 +171,18 @@ import javax.annotation.Nullable;
  *                             .build())
  *                         .build())
  *                     .build())
+ *                 .expression(&#34;(http.host eq \&#34;example.host.com\&#34;)&#34;)
  *                 .description(&#34;URI transformation query example&#34;)
  *                 .enabled(true)
- *                 .expression(&#34;(http.host eq \&#34;example.host.com\&#34;)&#34;)
  *                 .build())
- *             .zoneId(&#34;0da42c8d2132a9ddaf714f9e7c920711&#34;)
  *             .build());
  * 
  *         // Rewrite HTTP headers to a modified values
  *         var transformUriHttpHeaders = new Ruleset(&#34;transformUriHttpHeaders&#34;, RulesetArgs.builder()        
+ *             .zoneId(&#34;0da42c8d2132a9ddaf714f9e7c920711&#34;)
+ *             .name(&#34;transform rule for HTTP headers&#34;)
  *             .description(&#34;modify HTTP headers before reaching origin&#34;)
  *             .kind(&#34;zone&#34;)
- *             .name(&#34;transform rule for HTTP headers&#34;)
  *             .phase(&#34;http_request_late_transform&#34;)
  *             .rules(RulesetRuleArgs.builder()
  *                 .action(&#34;rewrite&#34;)
@@ -193,50 +194,50 @@ import javax.annotation.Nullable;
  *                             .value(&#34;my-http-header-value-1&#34;)
  *                             .build(),
  *                         RulesetRuleActionParametersHeaderArgs.builder()
- *                             .expression(&#34;cf.zone.name&#34;)
  *                             .name(&#34;example-http-header-2&#34;)
  *                             .operation(&#34;set&#34;)
+ *                             .expression(&#34;cf.zone.name&#34;)
  *                             .build(),
  *                         RulesetRuleActionParametersHeaderArgs.builder()
  *                             .name(&#34;example-http-header-3-to-remove&#34;)
  *                             .operation(&#34;remove&#34;)
  *                             .build())
  *                     .build())
+ *                 .expression(&#34;(http.host eq \&#34;example.host.com\&#34;)&#34;)
  *                 .description(&#34;example request header transform rule&#34;)
  *                 .enabled(false)
- *                 .expression(&#34;(http.host eq \&#34;example.host.com\&#34;)&#34;)
  *                 .build())
- *             .zoneId(&#34;0da42c8d2132a9ddaf714f9e7c920711&#34;)
  *             .build());
  * 
  *         // HTTP rate limit for an API route
  *         var rateLimitingExample = new Ruleset(&#34;rateLimitingExample&#34;, RulesetArgs.builder()        
+ *             .zoneId(&#34;0da42c8d2132a9ddaf714f9e7c920711&#34;)
+ *             .name(&#34;restrict API requests count&#34;)
  *             .description(&#34;apply HTTP rate limiting for a route&#34;)
  *             .kind(&#34;zone&#34;)
- *             .name(&#34;restrict API requests count&#34;)
  *             .phase(&#34;http_ratelimit&#34;)
  *             .rules(RulesetRuleArgs.builder()
  *                 .action(&#34;block&#34;)
- *                 .description(&#34;rate limit for API&#34;)
- *                 .enabled(true)
- *                 .expression(&#34;(http.request.uri.path matches \&#34;^/api/\&#34;)&#34;)
  *                 .ratelimit(RulesetRuleRatelimitArgs.builder()
  *                     .characteristics(                    
  *                         &#34;cf.colo.id&#34;,
  *                         &#34;ip.src&#34;)
- *                     .mitigationTimeout(600)
  *                     .period(60)
  *                     .requestsPerPeriod(100)
+ *                     .mitigationTimeout(600)
  *                     .build())
+ *                 .expression(&#34;(http.request.uri.path matches \&#34;^/api/\&#34;)&#34;)
+ *                 .description(&#34;rate limit for API&#34;)
+ *                 .enabled(true)
  *                 .build())
- *             .zoneId(&#34;0da42c8d2132a9ddaf714f9e7c920711&#34;)
  *             .build());
  * 
  *         // Change origin for an API route
  *         var httpOriginExample = new Ruleset(&#34;httpOriginExample&#34;, RulesetArgs.builder()        
+ *             .zoneId(&#34;0da42c8d2132a9ddaf714f9e7c920711&#34;)
+ *             .name(&#34;Change to some origin&#34;)
  *             .description(&#34;Change origin for a route&#34;)
  *             .kind(&#34;zone&#34;)
- *             .name(&#34;Change to some origin&#34;)
  *             .phase(&#34;http_request_origin&#34;)
  *             .rules(RulesetRuleArgs.builder()
  *                 .action(&#34;route&#34;)
@@ -247,26 +248,22 @@ import javax.annotation.Nullable;
  *                         .port(80)
  *                         .build())
  *                     .build())
+ *                 .expression(&#34;(http.request.uri.path matches \&#34;^/api/\&#34;)&#34;)
  *                 .description(&#34;change origin to some.host&#34;)
  *                 .enabled(true)
- *                 .expression(&#34;(http.request.uri.path matches \&#34;^/api/\&#34;)&#34;)
  *                 .build())
- *             .zoneId(&#34;0da42c8d2132a9ddaf714f9e7c920711&#34;)
  *             .build());
  * 
  *         // Custom fields logging
  *         var customFieldsLoggingExample = new Ruleset(&#34;customFieldsLoggingExample&#34;, RulesetArgs.builder()        
+ *             .zoneId(&#34;0da42c8d2132a9ddaf714f9e7c920711&#34;)
+ *             .name(&#34;log custom fields&#34;)
  *             .description(&#34;add custom fields to logging&#34;)
  *             .kind(&#34;zone&#34;)
- *             .name(&#34;log custom fields&#34;)
  *             .phase(&#34;http_log_custom_fields&#34;)
  *             .rules(RulesetRuleArgs.builder()
  *                 .action(&#34;log_custom_field&#34;)
  *                 .actionParameters(RulesetRuleActionParametersArgs.builder()
- *                     .cookieFields(                    
- *                         &#34;__ga&#34;,
- *                         &#34;accountNumber&#34;,
- *                         &#34;__cfruid&#34;)
  *                     .requestFields(                    
  *                         &#34;content-type&#34;,
  *                         &#34;x-forwarded-for&#34;,
@@ -275,129 +272,139 @@ import javax.annotation.Nullable;
  *                         &#34;server&#34;,
  *                         &#34;content-type&#34;,
  *                         &#34;allow&#34;)
+ *                     .cookieFields(                    
+ *                         &#34;__ga&#34;,
+ *                         &#34;accountNumber&#34;,
+ *                         &#34;__cfruid&#34;)
  *                     .build())
+ *                 .expression(&#34;(http.host eq \&#34;example.host.com\&#34;)&#34;)
  *                 .description(&#34;log custom fields rule&#34;)
  *                 .enabled(true)
- *                 .expression(&#34;(http.host eq \&#34;example.host.com\&#34;)&#34;)
  *                 .build())
- *             .zoneId(&#34;0da42c8d2132a9ddaf714f9e7c920711&#34;)
  *             .build());
  * 
  *         // Custom cache keys + settings
  *         var cacheSettingsExample = new Ruleset(&#34;cacheSettingsExample&#34;, RulesetArgs.builder()        
+ *             .zoneId(&#34;0da42c8d2132a9ddaf714f9e7c920711&#34;)
+ *             .name(&#34;set cache settings&#34;)
  *             .description(&#34;set cache settings for the request&#34;)
  *             .kind(&#34;zone&#34;)
- *             .name(&#34;set cache settings&#34;)
  *             .phase(&#34;http_request_cache_settings&#34;)
  *             .rules(RulesetRuleArgs.builder()
  *                 .action(&#34;set_cache_settings&#34;)
  *                 .actionParameters(RulesetRuleActionParametersArgs.builder()
+ *                     .edgeTtl(RulesetRuleActionParametersEdgeTtlArgs.builder()
+ *                         .mode(&#34;override_origin&#34;)
+ *                         .default_(60)
+ *                         .statusCodeTtls(                        
+ *                             RulesetRuleActionParametersEdgeTtlStatusCodeTtlArgs.builder()
+ *                                 .statusCode(200)
+ *                                 .value(50)
+ *                                 .build(),
+ *                             RulesetRuleActionParametersEdgeTtlStatusCodeTtlArgs.builder()
+ *                                 .statusCodeRange(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+ *                                 .value(30)
+ *                                 .build())
+ *                         .build())
  *                     .browserTtl(RulesetRuleActionParametersBrowserTtlArgs.builder()
  *                         .mode(&#34;respect_origin&#34;)
  *                         .build())
+ *                     .serveStale(RulesetRuleActionParametersServeStaleArgs.builder()
+ *                         .disableStaleWhileUpdating(true)
+ *                         .build())
+ *                     .respectStrongEtags(true)
  *                     .cacheKey(RulesetRuleActionParametersCacheKeyArgs.builder()
+ *                         .ignoreQueryStringsOrder(false)
  *                         .cacheDeceptionArmor(true)
  *                         .customKey(RulesetRuleActionParametersCacheKeyCustomKeyArgs.builder()
- *                             .cookie(RulesetRuleActionParametersCacheKeyCustomKeyCookieArgs.builder()
- *                                 .checkPresence(                                
- *                                     &#34;cabc_t&#34;,
- *                                     &#34;cdef_t&#34;)
- *                                 .include(                                
- *                                     &#34;cabc&#34;,
- *                                     &#34;cdef&#34;)
+ *                             .queryString(RulesetRuleActionParametersCacheKeyCustomKeyQueryStringArgs.builder()
+ *                                 .excludes(&#34;*&#34;)
  *                                 .build())
  *                             .header(RulesetRuleActionParametersCacheKeyCustomKeyHeaderArgs.builder()
- *                                 .checkPresence(                                
+ *                                 .includes(                                
+ *                                     &#34;habc&#34;,
+ *                                     &#34;hdef&#34;)
+ *                                 .checkPresences(                                
  *                                     &#34;habc_t&#34;,
  *                                     &#34;hdef_t&#34;)
  *                                 .excludeOrigin(true)
- *                                 .include(                                
- *                                     &#34;habc&#34;,
- *                                     &#34;hdef&#34;)
  *                                 .build())
- *                             .host(RulesetRuleActionParametersCacheKeyCustomKeyHostArgs.builder()
- *                                 .resolved(true)
- *                                 .build())
- *                             .queryString(RulesetRuleActionParametersCacheKeyCustomKeyQueryStringArgs.builder()
- *                                 .exclude(&#34;*&#34;)
+ *                             .cookie(RulesetRuleActionParametersCacheKeyCustomKeyCookieArgs.builder()
+ *                                 .includes(                                
+ *                                     &#34;cabc&#34;,
+ *                                     &#34;cdef&#34;)
+ *                                 .checkPresences(                                
+ *                                     &#34;cabc_t&#34;,
+ *                                     &#34;cdef_t&#34;)
  *                                 .build())
  *                             .user(RulesetRuleActionParametersCacheKeyCustomKeyUserArgs.builder()
  *                                 .deviceType(true)
  *                                 .geo(false)
  *                                 .build())
+ *                             .host(RulesetRuleActionParametersCacheKeyCustomKeyHostArgs.builder()
+ *                                 .resolved(true)
+ *                                 .build())
  *                             .build())
- *                         .ignoreQueryStringsOrder(false)
- *                         .build())
- *                     .edgeTtl(RulesetRuleActionParametersEdgeTtlArgs.builder()
- *                         .default_(60)
- *                         .mode(&#34;override_origin&#34;)
- *                         .statusCodeTtl(                        
- *                             %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
- *                             %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
  *                         .build())
  *                     .originErrorPagePassthru(false)
- *                     .respectStrongEtags(true)
- *                     .serveStale(RulesetRuleActionParametersServeStaleArgs.builder()
- *                         .disableStaleWhileUpdating(true)
- *                         .build())
  *                     .build())
+ *                 .expression(&#34;(http.host eq \&#34;example.host.com\&#34;)&#34;)
  *                 .description(&#34;set cache settings rule&#34;)
  *                 .enabled(true)
- *                 .expression(&#34;(http.host eq \&#34;example.host.com\&#34;)&#34;)
  *                 .build())
- *             .zoneId(&#34;0da42c8d2132a9ddaf714f9e7c920711&#34;)
  *             .build());
  * 
  *         // Redirects based on a List resource
  *         var redirectFromListExample = new Ruleset(&#34;redirectFromListExample&#34;, RulesetArgs.builder()        
  *             .accountId(&#34;f037e56e89293a057740de681ac9abbe&#34;)
+ *             .name(&#34;redirects&#34;)
  *             .description(&#34;Redirect ruleset&#34;)
  *             .kind(&#34;root&#34;)
- *             .name(&#34;redirects&#34;)
  *             .phase(&#34;http_request_redirect&#34;)
  *             .rules(RulesetRuleArgs.builder()
  *                 .action(&#34;redirect&#34;)
  *                 .actionParameters(RulesetRuleActionParametersArgs.builder()
  *                     .fromList(RulesetRuleActionParametersFromListArgs.builder()
- *                         .key(&#34;http.request.full_uri&#34;)
  *                         .name(&#34;redirect_list&#34;)
+ *                         .key(&#34;http.request.full_uri&#34;)
  *                         .build())
  *                     .build())
+ *                 .expression(&#34;http.request.full_uri in $redirect_list&#34;)
  *                 .description(&#34;Apply redirects from redirect_list&#34;)
  *                 .enabled(true)
- *                 .expression(&#34;http.request.full_uri in $redirect_list&#34;)
  *                 .build())
  *             .build());
  * 
  *         // Dynamic Redirects from value resource
  *         var redirectFromValueExample = new Ruleset(&#34;redirectFromValueExample&#34;, RulesetArgs.builder()        
+ *             .zoneId(&#34;0da42c8d2132a9ddaf714f9e7c920711&#34;)
+ *             .name(&#34;redirects&#34;)
  *             .description(&#34;Redirect ruleset&#34;)
  *             .kind(&#34;zone&#34;)
- *             .name(&#34;redirects&#34;)
  *             .phase(&#34;http_request_dynamic_redirect&#34;)
  *             .rules(RulesetRuleArgs.builder()
  *                 .action(&#34;redirect&#34;)
  *                 .actionParameters(RulesetRuleActionParametersArgs.builder()
  *                     .fromValue(RulesetRuleActionParametersFromValueArgs.builder()
- *                         .preserveQueryString(true)
  *                         .statusCode(301)
  *                         .targetUrl(RulesetRuleActionParametersFromValueTargetUrlArgs.builder()
  *                             .value(&#34;some_host.com&#34;)
  *                             .build())
+ *                         .preserveQueryString(true)
  *                         .build())
  *                     .build())
+ *                 .expression(&#34;(http.request.uri.path matches \&#34;^/api/\&#34;)&#34;)
  *                 .description(&#34;Apply redirect from value&#34;)
  *                 .enabled(true)
- *                 .expression(&#34;(http.request.uri.path matches \&#34;^/api/\&#34;)&#34;)
  *                 .build())
- *             .zoneId(&#34;0da42c8d2132a9ddaf714f9e7c920711&#34;)
  *             .build());
  * 
  *         // Serve some custom error response
  *         var httpCustomErrorExample = new Ruleset(&#34;httpCustomErrorExample&#34;, RulesetArgs.builder()        
+ *             .zoneId(&#34;0da42c8d2132a9ddaf714f9e7c920711&#34;)
+ *             .name(&#34;Serve some error response&#34;)
  *             .description(&#34;Serve some error response&#34;)
  *             .kind(&#34;zone&#34;)
- *             .name(&#34;Serve some error response&#34;)
  *             .phase(&#34;http_custom_errors&#34;)
  *             .rules(RulesetRuleArgs.builder()
  *                 .action(&#34;serve_error&#34;)
@@ -406,37 +413,37 @@ import javax.annotation.Nullable;
  *                     .contentType(&#34;text/html&#34;)
  *                     .statusCode(&#34;530&#34;)
  *                     .build())
+ *                 .expression(&#34;(http.request.uri.path matches \&#34;^/api/\&#34;)&#34;)
  *                 .description(&#34;serve some error response&#34;)
  *                 .enabled(true)
- *                 .expression(&#34;(http.request.uri.path matches \&#34;^/api/\&#34;)&#34;)
  *                 .build())
- *             .zoneId(&#34;0da42c8d2132a9ddaf714f9e7c920711&#34;)
  *             .build());
  * 
  *         // Set Configuration Rules for an API route
  *         var httpConfigRulesExample = new Ruleset(&#34;httpConfigRulesExample&#34;, RulesetArgs.builder()        
+ *             .zoneId(&#34;0da42c8d2132a9ddaf714f9e7c920711&#34;)
+ *             .name(&#34;set config rules&#34;)
  *             .description(&#34;set config rules for request&#34;)
  *             .kind(&#34;zone&#34;)
- *             .name(&#34;set config rules&#34;)
  *             .phase(&#34;http_config_settings&#34;)
  *             .rules(RulesetRuleArgs.builder()
  *                 .action(&#34;set_config&#34;)
  *                 .actionParameters(RulesetRuleActionParametersArgs.builder()
- *                     .bic(true)
  *                     .emailObfuscation(true)
+ *                     .bic(true)
  *                     .build())
+ *                 .expression(&#34;(http.request.uri.path matches \&#34;^/api/\&#34;)&#34;)
  *                 .description(&#34;set config rules for matching request&#34;)
  *                 .enabled(true)
- *                 .expression(&#34;(http.request.uri.path matches \&#34;^/api/\&#34;)&#34;)
  *                 .build())
- *             .zoneId(&#34;0da42c8d2132a9ddaf714f9e7c920711&#34;)
  *             .build());
  * 
  *         // Set compress algorithm for response.
  *         var responseCompressBrotliHtml = new Ruleset(&#34;responseCompressBrotliHtml&#34;, RulesetArgs.builder()        
+ *             .zoneId(&#34;0da42c8d2132a9ddaf714f9e7c920711&#34;)
+ *             .name(&#34;Brotli response compression for HTML&#34;)
  *             .description(&#34;Response compression ruleset&#34;)
  *             .kind(&#34;zone&#34;)
- *             .name(&#34;Brotli response compression for HTML&#34;)
  *             .phase(&#34;http_response_compression&#34;)
  *             .rules(RulesetRuleArgs.builder()
  *                 .action(&#34;compress_response&#34;)
@@ -449,11 +456,10 @@ import javax.annotation.Nullable;
  *                             .name(&#34;auto&#34;)
  *                             .build())
  *                     .build())
+ *                 .expression(&#34;http.response.content_type.media_type == \&#34;text/html\&#34;&#34;)
  *                 .description(&#34;Prefer brotli compression for HTML&#34;)
  *                 .enabled(true)
- *                 .expression(&#34;http.response.content_type.media_type == \&#34;text/html\&#34;&#34;)
  *                 .build())
- *             .zoneId(&#34;0da42c8d2132a9ddaf714f9e7c920711&#34;)
  *             .build());
  * 
  *     }

@@ -333,25 +333,16 @@ class RateLimit(pulumi.CustomResource):
         import pulumi_cloudflare as cloudflare
 
         example = cloudflare.RateLimit("example",
-            action=cloudflare.RateLimitActionArgs(
-                mode="simulate",
-                response=cloudflare.RateLimitActionResponseArgs(
-                    body="custom response body",
-                    content_type="text/plain",
-                ),
-                timeout=43200,
-            ),
-            bypass_url_patterns=[
-                "example.com/bypass1",
-                "example.com/bypass2",
-            ],
-            correlate=cloudflare.RateLimitCorrelateArgs(
-                by="nat",
-            ),
-            description="example rate limit for a zone",
-            disabled=False,
+            zone_id="0da42c8d2132a9ddaf714f9e7c920711",
+            threshold=2000,
+            period=2,
             match=cloudflare.RateLimitMatchArgs(
                 request=cloudflare.RateLimitMatchRequestArgs(
+                    url_pattern=f"{cloudflare_zone}/*",
+                    schemes=[
+                        "HTTP",
+                        "HTTPS",
+                    ],
                     methods=[
                         "GET",
                         "POST",
@@ -360,13 +351,16 @@ class RateLimit(pulumi.CustomResource):
                         "PATCH",
                         "HEAD",
                     ],
-                    schemes=[
-                        "HTTP",
-                        "HTTPS",
-                    ],
-                    url_pattern=f"{var['cloudflare_zone']}/*",
                 ),
                 response=cloudflare.RateLimitMatchResponseArgs(
+                    statuses=[
+                        200,
+                        201,
+                        202,
+                        301,
+                        429,
+                    ],
+                    origin_traffic=False,
                     headers=[
                         {
                             "name": "Host",
@@ -379,19 +373,25 @@ class RateLimit(pulumi.CustomResource):
                             "value": "my-example",
                         },
                     ],
-                    origin_traffic=False,
-                    statuses=[
-                        200,
-                        201,
-                        202,
-                        301,
-                        429,
-                    ],
                 ),
             ),
-            period=2,
-            threshold=2000,
-            zone_id="0da42c8d2132a9ddaf714f9e7c920711")
+            action=cloudflare.RateLimitActionArgs(
+                mode="simulate",
+                timeout=43200,
+                response=cloudflare.RateLimitActionResponseArgs(
+                    content_type="text/plain",
+                    body="custom response body",
+                ),
+            ),
+            correlate=cloudflare.RateLimitCorrelateArgs(
+                by="nat",
+            ),
+            disabled=False,
+            description="example rate limit for a zone",
+            bypass_url_patterns=[
+                "example.com/bypass1",
+                "example.com/bypass2",
+            ])
         ```
         <!--End PulumiCodeChooser -->
 
@@ -431,25 +431,16 @@ class RateLimit(pulumi.CustomResource):
         import pulumi_cloudflare as cloudflare
 
         example = cloudflare.RateLimit("example",
-            action=cloudflare.RateLimitActionArgs(
-                mode="simulate",
-                response=cloudflare.RateLimitActionResponseArgs(
-                    body="custom response body",
-                    content_type="text/plain",
-                ),
-                timeout=43200,
-            ),
-            bypass_url_patterns=[
-                "example.com/bypass1",
-                "example.com/bypass2",
-            ],
-            correlate=cloudflare.RateLimitCorrelateArgs(
-                by="nat",
-            ),
-            description="example rate limit for a zone",
-            disabled=False,
+            zone_id="0da42c8d2132a9ddaf714f9e7c920711",
+            threshold=2000,
+            period=2,
             match=cloudflare.RateLimitMatchArgs(
                 request=cloudflare.RateLimitMatchRequestArgs(
+                    url_pattern=f"{cloudflare_zone}/*",
+                    schemes=[
+                        "HTTP",
+                        "HTTPS",
+                    ],
                     methods=[
                         "GET",
                         "POST",
@@ -458,13 +449,16 @@ class RateLimit(pulumi.CustomResource):
                         "PATCH",
                         "HEAD",
                     ],
-                    schemes=[
-                        "HTTP",
-                        "HTTPS",
-                    ],
-                    url_pattern=f"{var['cloudflare_zone']}/*",
                 ),
                 response=cloudflare.RateLimitMatchResponseArgs(
+                    statuses=[
+                        200,
+                        201,
+                        202,
+                        301,
+                        429,
+                    ],
+                    origin_traffic=False,
                     headers=[
                         {
                             "name": "Host",
@@ -477,19 +471,25 @@ class RateLimit(pulumi.CustomResource):
                             "value": "my-example",
                         },
                     ],
-                    origin_traffic=False,
-                    statuses=[
-                        200,
-                        201,
-                        202,
-                        301,
-                        429,
-                    ],
                 ),
             ),
-            period=2,
-            threshold=2000,
-            zone_id="0da42c8d2132a9ddaf714f9e7c920711")
+            action=cloudflare.RateLimitActionArgs(
+                mode="simulate",
+                timeout=43200,
+                response=cloudflare.RateLimitActionResponseArgs(
+                    content_type="text/plain",
+                    body="custom response body",
+                ),
+            ),
+            correlate=cloudflare.RateLimitCorrelateArgs(
+                by="nat",
+            ),
+            disabled=False,
+            description="example rate limit for a zone",
+            bypass_url_patterns=[
+                "example.com/bypass1",
+                "example.com/bypass2",
+            ])
         ```
         <!--End PulumiCodeChooser -->
 

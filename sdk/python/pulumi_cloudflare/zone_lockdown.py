@@ -238,14 +238,14 @@ class ZoneLockdown(pulumi.CustomResource):
 
         # Restrict access to these endpoints to requests from a known IP address range.
         example = cloudflare.ZoneLockdown("example",
+            zone_id="0da42c8d2132a9ddaf714f9e7c920711",
+            paused=False,
+            description="Restrict access to these endpoints to requests from a known IP address range",
+            urls=["api.mysite.com/some/endpoint*"],
             configurations=[cloudflare.ZoneLockdownConfigurationArgs(
                 target="ip_range",
                 value="192.0.2.0/24",
-            )],
-            description="Restrict access to these endpoints to requests from a known IP address range",
-            paused=False,
-            urls=["api.mysite.com/some/endpoint*"],
-            zone_id="0da42c8d2132a9ddaf714f9e7c920711")
+            )])
         ```
         <!--End PulumiCodeChooser -->
 
@@ -285,14 +285,14 @@ class ZoneLockdown(pulumi.CustomResource):
 
         # Restrict access to these endpoints to requests from a known IP address range.
         example = cloudflare.ZoneLockdown("example",
+            zone_id="0da42c8d2132a9ddaf714f9e7c920711",
+            paused=False,
+            description="Restrict access to these endpoints to requests from a known IP address range",
+            urls=["api.mysite.com/some/endpoint*"],
             configurations=[cloudflare.ZoneLockdownConfigurationArgs(
                 target="ip_range",
                 value="192.0.2.0/24",
-            )],
-            description="Restrict access to these endpoints to requests from a known IP address range",
-            paused=False,
-            urls=["api.mysite.com/some/endpoint*"],
-            zone_id="0da42c8d2132a9ddaf714f9e7c920711")
+            )])
         ```
         <!--End PulumiCodeChooser -->
 

@@ -13,29 +13,6 @@ namespace Pulumi.Cloudflare
     /// Access Service Tokens are used for service-to-service communication
     /// when an application is behind Cloudflare Access.
     /// 
-    /// ## Example Usage
-    /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Cloudflare = Pulumi.Cloudflare;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     // Generate a service token that will renew if terraform is ran within 30 days of expiration
-    ///     var myApp = new Cloudflare.AccessServiceToken("myApp", new()
-    ///     {
-    ///         AccountId = "f037e56e89293a057740de681ac9abbe",
-    ///         MinDaysForRenewal = 30,
-    ///         Name = "CI/CD app renewed",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
-    /// 
     /// ## Import
     /// 
     /// If you are importing an Access Service Token you will not have the

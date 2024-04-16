@@ -25,6 +25,16 @@ namespace Pulumi.Cloudflare
     /// {
     ///     var example = new Cloudflare.EmailRoutingCatchAll("example", new()
     ///     {
+    ///         ZoneId = "0da42c8d2132a9ddaf714f9e7c920711",
+    ///         Name = "example catch all",
+    ///         Enabled = true,
+    ///         Matchers = new[]
+    ///         {
+    ///             new Cloudflare.Inputs.EmailRoutingCatchAllMatcherArgs
+    ///             {
+    ///                 Type = "all",
+    ///             },
+    ///         },
     ///         Actions = new[]
     ///         {
     ///             new Cloudflare.Inputs.EmailRoutingCatchAllActionArgs
@@ -36,16 +46,6 @@ namespace Pulumi.Cloudflare
     ///                 },
     ///             },
     ///         },
-    ///         Enabled = true,
-    ///         Matchers = new[]
-    ///         {
-    ///             new Cloudflare.Inputs.EmailRoutingCatchAllMatcherArgs
-    ///             {
-    ///                 Type = "all",
-    ///             },
-    ///         },
-    ///         Name = "example catch all",
-    ///         ZoneId = "0da42c8d2132a9ddaf714f9e7c920711",
     ///     });
     /// 
     /// });

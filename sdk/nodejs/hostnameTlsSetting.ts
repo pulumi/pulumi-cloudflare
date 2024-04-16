@@ -15,10 +15,10 @@ import * as utilities from "./utilities";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
  * const example = new cloudflare.HostnameTlsSetting("example", {
+ *     zoneId: "0da42c8d2132a9ddaf714f9e7c920711",
  *     hostname: "sub.example.com",
  *     setting: "min_tls_version",
  *     value: "1.2",
- *     zoneId: "0da42c8d2132a9ddaf714f9e7c920711",
  * });
  * ```
  * <!--End PulumiCodeChooser -->

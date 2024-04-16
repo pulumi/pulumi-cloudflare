@@ -115,10 +115,10 @@ def get_rulesets(account_id: Optional[str] = None,
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example = cloudflare.get_rulesets(filter=cloudflare.GetRulesetsFilterArgs(
+    example = cloudflare.get_rulesets(zone_id="0da42c8d2132a9ddaf714f9e7c920711",
+        filter=cloudflare.GetRulesetsFilterArgs(
             name=".*OWASP.*",
-        ),
-        zone_id="0da42c8d2132a9ddaf714f9e7c920711")
+        ))
     ```
     <!--End PulumiCodeChooser -->
 
@@ -160,10 +160,10 @@ def get_rulesets_output(account_id: Optional[pulumi.Input[Optional[str]]] = None
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example = cloudflare.get_rulesets(filter=cloudflare.GetRulesetsFilterArgs(
+    example = cloudflare.get_rulesets(zone_id="0da42c8d2132a9ddaf714f9e7c920711",
+        filter=cloudflare.GetRulesetsFilterArgs(
             name=".*OWASP.*",
-        ),
-        zone_id="0da42c8d2132a9ddaf714f9e7c920711")
+        ))
     ```
     <!--End PulumiCodeChooser -->
 

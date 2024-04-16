@@ -26,13 +26,13 @@ namespace Pulumi.Cloudflare
     ///     var example = new Cloudflare.TurnstileWidget("example", new()
     ///     {
     ///         AccountId = "f037e56e89293a057740de681ac9abbe",
+    ///         Name = "example widget",
     ///         BotFightMode = false,
     ///         Domains = new[]
     ///         {
     ///             "example.com",
     ///         },
     ///         Mode = "invisible",
-    ///         Name = "example widget",
     ///         Region = "world",
     ///     });
     /// 

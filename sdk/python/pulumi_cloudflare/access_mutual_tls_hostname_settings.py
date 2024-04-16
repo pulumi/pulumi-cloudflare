@@ -137,12 +137,12 @@ class AccessMutualTlsHostnameSettings(pulumi.CustomResource):
         import pulumi_cloudflare as cloudflare
 
         example = cloudflare.AccessMutualTlsHostnameSettings("example",
+            zone_id="0da42c8d2132a9ddaf714f9e7c920711",
             settings=[cloudflare.AccessMutualTlsHostnameSettingsSettingArgs(
-                china_network=False,
-                client_certificate_forwarding=True,
                 hostname="example.com",
-            )],
-            zone_id="0da42c8d2132a9ddaf714f9e7c920711")
+                client_certificate_forwarding=True,
+                china_network=False,
+            )])
         ```
         <!--End PulumiCodeChooser -->
 
@@ -182,12 +182,12 @@ class AccessMutualTlsHostnameSettings(pulumi.CustomResource):
         import pulumi_cloudflare as cloudflare
 
         example = cloudflare.AccessMutualTlsHostnameSettings("example",
+            zone_id="0da42c8d2132a9ddaf714f9e7c920711",
             settings=[cloudflare.AccessMutualTlsHostnameSettingsSettingArgs(
-                china_network=False,
-                client_certificate_forwarding=True,
                 hostname="example.com",
-            )],
-            zone_id="0da42c8d2132a9ddaf714f9e7c920711")
+                client_certificate_forwarding=True,
+                china_network=False,
+            )])
         ```
         <!--End PulumiCodeChooser -->
 

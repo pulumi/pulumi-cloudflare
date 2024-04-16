@@ -197,9 +197,9 @@ class HostnameTlsSettingCiphers(pulumi.CustomResource):
         import pulumi_cloudflare as cloudflare
 
         example = cloudflare.HostnameTlsSettingCiphers("example",
+            zone_id="0da42c8d2132a9ddaf714f9e7c920711",
             hostname="sub.example.com",
-            values=["ECDHE-RSA-AES128-GCM-SHA256"],
-            zone_id="0da42c8d2132a9ddaf714f9e7c920711")
+            values=["ECDHE-RSA-AES128-GCM-SHA256"])
         ```
         <!--End PulumiCodeChooser -->
 
@@ -233,9 +233,9 @@ class HostnameTlsSettingCiphers(pulumi.CustomResource):
         import pulumi_cloudflare as cloudflare
 
         example = cloudflare.HostnameTlsSettingCiphers("example",
+            zone_id="0da42c8d2132a9ddaf714f9e7c920711",
             hostname="sub.example.com",
-            values=["ECDHE-RSA-AES128-GCM-SHA256"],
-            zone_id="0da42c8d2132a9ddaf714f9e7c920711")
+            values=["ECDHE-RSA-AES128-GCM-SHA256"])
         ```
         <!--End PulumiCodeChooser -->
 

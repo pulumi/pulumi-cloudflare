@@ -22,14 +22,14 @@ import * as utilities from "./utilities";
  *
  * // Restrict access to these endpoints to requests from a known IP address range.
  * const example = new cloudflare.ZoneLockdown("example", {
+ *     zoneId: "0da42c8d2132a9ddaf714f9e7c920711",
+ *     paused: false,
+ *     description: "Restrict access to these endpoints to requests from a known IP address range",
+ *     urls: ["api.mysite.com/some/endpoint*"],
  *     configurations: [{
  *         target: "ip_range",
  *         value: "192.0.2.0/24",
  *     }],
- *     description: "Restrict access to these endpoints to requests from a known IP address range",
- *     paused: false,
- *     urls: ["api.mysite.com/some/endpoint*"],
- *     zoneId: "0da42c8d2132a9ddaf714f9e7c920711",
  * });
  * ```
  * <!--End PulumiCodeChooser -->

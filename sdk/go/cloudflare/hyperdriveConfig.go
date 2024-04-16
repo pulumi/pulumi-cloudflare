@@ -29,13 +29,13 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewHyperdriveConfig(ctx, "noDefaults", &cloudflare.HyperdriveConfigArgs{
+//			_, err := cloudflare.NewHyperdriveConfig(ctx, "no_defaults", &cloudflare.HyperdriveConfigArgs{
 //				AccountId: pulumi.String("f037e56e89293a057740de681ac9abbe"),
 //				Name:      pulumi.String("my-hyperdrive-config"),
 //				Origin: &cloudflare.HyperdriveConfigOriginArgs{
 //					Database: pulumi.String("postgres"),
-//					Host:     pulumi.String("my-database.example.com"),
 //					Password: pulumi.String("my-password"),
+//					Host:     pulumi.String("my-database.example.com"),
 //					Port:     pulumi.Int(5432),
 //					Scheme:   pulumi.String("postgres"),
 //					User:     pulumi.String("my-user"),

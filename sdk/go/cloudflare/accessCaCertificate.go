@@ -47,9 +47,9 @@ import (
 //				return err
 //			}
 //			// zone level
-//			_, err = cloudflare.NewAccessCaCertificate(ctx, "anotherExample", &cloudflare.AccessCaCertificateArgs{
-//				ApplicationId: pulumi.String("fe2be0ff-7f13-4350-8c8e-a9b9795fe3c2"),
+//			_, err = cloudflare.NewAccessCaCertificate(ctx, "another_example", &cloudflare.AccessCaCertificateArgs{
 //				ZoneId:        pulumi.String("0da42c8d2132a9ddaf714f9e7c920711"),
+//				ApplicationId: pulumi.String("fe2be0ff-7f13-4350-8c8e-a9b9795fe3c2"),
 //			})
 //			if err != nil {
 //				return err

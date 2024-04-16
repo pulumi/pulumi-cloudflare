@@ -23,14 +23,14 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleZone = new Cloudflare.Zone("exampleZone", new()
+    ///     var example = new Cloudflare.Zone("example", new()
     ///     {
     ///         ZoneName = "example.com",
     ///     });
     /// 
-    ///     var exampleZoneDnssec = new Cloudflare.ZoneDnssec("exampleZoneDnssec", new()
+    ///     var exampleZoneDnssec = new Cloudflare.ZoneDnssec("example", new()
     ///     {
-    ///         ZoneId = exampleZone.Id,
+    ///         ZoneId = example.Id,
     ///     });
     /// 
     /// });

@@ -276,8 +276,8 @@ class AddressMap(pulumi.CustomResource):
 
         example = cloudflare.AddressMap("example",
             account_id="f037e56e89293a057740de681ac9abbe",
-            default_sni="*.example.com",
             description="My address map",
+            default_sni="*.example.com",
             enabled=True,
             ips=[
                 cloudflare.AddressMapIpArgs(
@@ -334,8 +334,8 @@ class AddressMap(pulumi.CustomResource):
 
         example = cloudflare.AddressMap("example",
             account_id="f037e56e89293a057740de681ac9abbe",
-            default_sni="*.example.com",
             description="My address map",
+            default_sni="*.example.com",
             enabled=True,
             ips=[
                 cloudflare.AddressMapIpArgs(

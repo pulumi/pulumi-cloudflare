@@ -17,18 +17,18 @@ import * as utilities from "./utilities";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
  * const main = new cloudflare.EmailRoutingRule("main", {
+ *     zoneId: "0da42c8d2132a9ddaf714f9e7c920711",
+ *     name: "terraform rule",
+ *     enabled: true,
+ *     matchers: [{
+ *         type: "literal",
+ *         field: "to",
+ *         value: "test@example.com",
+ *     }],
  *     actions: [{
  *         type: "forward",
  *         values: ["destinationaddress@example.net"],
  *     }],
- *     enabled: true,
- *     matchers: [{
- *         field: "to",
- *         type: "literal",
- *         value: "test@example.com",
- *     }],
- *     name: "terraform rule",
- *     zoneId: "0da42c8d2132a9ddaf714f9e7c920711",
  * });
  * ```
  * <!--End PulumiCodeChooser -->

@@ -45,21 +45,21 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var example = new WaitingRoomRules(&#34;example&#34;, WaitingRoomRulesArgs.builder()        
+ *             .zoneId(&#34;0da42c8d2132a9ddaf714f9e7c920711&#34;)
+ *             .waitingRoomId(&#34;d41d8cd98f00b204e9800998ecf8427e&#34;)
  *             .rules(            
  *                 WaitingRoomRulesRuleArgs.builder()
- *                     .action(&#34;bypass_waiting_room&#34;)
  *                     .description(&#34;bypass ip list&#34;)
  *                     .expression(&#34;src.ip in {192.0.2.0 192.0.2.1}&#34;)
+ *                     .action(&#34;bypass_waiting_room&#34;)
  *                     .status(&#34;enabled&#34;)
  *                     .build(),
  *                 WaitingRoomRulesRuleArgs.builder()
- *                     .action(&#34;bypass_waiting_room&#34;)
  *                     .description(&#34;bypass query string&#34;)
  *                     .expression(&#34;http.request.uri.query contains \&#34;bypass=true\&#34;&#34;)
+ *                     .action(&#34;bypass_waiting_room&#34;)
  *                     .status(&#34;enabled&#34;)
  *                     .build())
- *             .waitingRoomId(&#34;d41d8cd98f00b204e9800998ecf8427e&#34;)
- *             .zoneId(&#34;0da42c8d2132a9ddaf714f9e7c920711&#34;)
  *             .build());
  * 
  *     }

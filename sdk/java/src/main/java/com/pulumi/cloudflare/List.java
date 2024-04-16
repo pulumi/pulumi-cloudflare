@@ -18,56 +18,6 @@ import javax.annotation.Nullable;
 /**
  * ## Example Usage
  * 
- * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.List;
- * import com.pulumi.cloudflare.ListArgs;
- * import com.pulumi.cloudflare.inputs.ListItemArgs;
- * import com.pulumi.cloudflare.inputs.ListItemValueArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         // Hostname list
- *         var example = new List(&#34;example&#34;, ListArgs.builder()        
- *             .accountId(&#34;f037e56e89293a057740de681ac9abbe&#34;)
- *             .description(&#34;example hostnames for a list&#34;)
- *             .items(            
- *                 ListItemArgs.builder()
- *                     .comment(&#34;one&#34;)
- *                     .value(ListItemValueArgs.builder()
- *                         .hostname(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
- *                         .build())
- *                     .build(),
- *                 ListItemArgs.builder()
- *                     .comment(&#34;two&#34;)
- *                     .value(ListItemValueArgs.builder()
- *                         .hostname(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
- *                         .build())
- *                     .build())
- *             .kind(&#34;hostname&#34;)
- *             .name(&#34;example_list&#34;)
- *             .build());
- * 
- *     }
- * }
- * ```
- * &lt;!--End PulumiCodeChooser --&gt;
- * 
  * ## Import
  * 
  * ```sh

@@ -26,20 +26,20 @@ namespace Pulumi.Cloudflare
     ///     var example = new Cloudflare.TeamsRule("example", new()
     ///     {
     ///         AccountId = "f037e56e89293a057740de681ac9abbe",
-    ///         Action = "block",
+    ///         Name = "office",
     ///         Description = "desc",
+    ///         Precedence = 1,
+    ///         Action = "block",
     ///         Filters = new[]
     ///         {
     ///             "http",
     ///         },
-    ///         Name = "office",
-    ///         Precedence = 1,
+    ///         Traffic = "http.request.uri == \"https://www.example.com/malicious\"",
     ///         RuleSettings = new Cloudflare.Inputs.TeamsRuleRuleSettingsArgs
     ///         {
     ///             BlockPageEnabled = true,
     ///             BlockPageReason = "access not permitted",
     ///         },
-    ///         Traffic = "http.request.uri == \"https://www.example.com/malicious\"",
     ///     });
     /// 
     /// });

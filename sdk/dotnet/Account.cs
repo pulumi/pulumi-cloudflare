@@ -26,9 +26,9 @@ namespace Pulumi.Cloudflare
     /// {
     ///     var example = new Cloudflare.Account("example", new()
     ///     {
-    ///         EnforceTwofactor = true,
     ///         Name = "some-enterprise-account",
     ///         Type = "enterprise",
+    ///         EnforceTwofactor = true,
     ///     });
     /// 
     /// });

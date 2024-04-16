@@ -31,9 +31,9 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.NewAccount(ctx, "example", &cloudflare.AccountArgs{
-//				EnforceTwofactor: pulumi.Bool(true),
 //				Name:             pulumi.String("some-enterprise-account"),
 //				Type:             pulumi.String("enterprise"),
+//				EnforceTwofactor: pulumi.Bool(true),
 //			})
 //			if err != nil {
 //				return err

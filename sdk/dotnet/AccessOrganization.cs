@@ -26,22 +26,22 @@ namespace Pulumi.Cloudflare
     ///     var example = new Cloudflare.AccessOrganization("example", new()
     ///     {
     ///         AccountId = "f037e56e89293a057740de681ac9abbe",
+    ///         Name = "example.cloudflareaccess.com",
     ///         AuthDomain = "example.cloudflareaccess.com",
-    ///         AutoRedirectToIdentity = false,
     ///         IsUiReadOnly = false,
+    ///         UserSeatExpirationInactiveTime = "720h",
+    ///         AutoRedirectToIdentity = false,
     ///         LoginDesigns = new[]
     ///         {
     ///             new Cloudflare.Inputs.AccessOrganizationLoginDesignArgs
     ///             {
     ///                 BackgroundColor = "#ffffff",
-    ///                 FooterText = "My footer text",
-    ///                 HeaderText = "My header text",
-    ///                 LogoPath = "https://example.com/logo.png",
     ///                 TextColor = "#000000",
+    ///                 LogoPath = "https://example.com/logo.png",
+    ///                 HeaderText = "My header text",
+    ///                 FooterText = "My footer text",
     ///             },
     ///         },
-    ///         Name = "example.cloudflareaccess.com",
-    ///         UserSeatExpirationInactiveTime = "720h",
     ///     });
     /// 
     /// });

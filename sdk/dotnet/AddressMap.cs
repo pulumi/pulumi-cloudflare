@@ -27,8 +27,8 @@ namespace Pulumi.Cloudflare
     ///     var example = new Cloudflare.AddressMap("example", new()
     ///     {
     ///         AccountId = "f037e56e89293a057740de681ac9abbe",
-    ///         DefaultSni = "*.example.com",
     ///         Description = "My address map",
+    ///         DefaultSni = "*.example.com",
     ///         Enabled = true,
     ///         Ips = new[]
     ///         {

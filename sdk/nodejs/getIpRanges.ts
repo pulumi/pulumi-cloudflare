@@ -16,7 +16,7 @@ import * as utilities from "./utilities";
  * import * as example from "@pulumi/example";
  *
  * const cloudflare = cloudflare.getIpRanges({});
- * const example = new example.index.Example_firewall_resource("example", {
+ * const example = new example.index.FirewallResource("example", {
  *     name: "from-cloudflare",
  *     network: "default",
  *     sourceRanges: cloudflare.ipv4CidrBlocks,
@@ -76,7 +76,7 @@ export interface GetIpRangesResult {
  * import * as example from "@pulumi/example";
  *
  * const cloudflare = cloudflare.getIpRanges({});
- * const example = new example.index.Example_firewall_resource("example", {
+ * const example = new example.index.FirewallResource("example", {
  *     name: "from-cloudflare",
  *     network: "default",
  *     sourceRanges: cloudflare.ipv4CidrBlocks,

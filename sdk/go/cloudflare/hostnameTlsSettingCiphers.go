@@ -30,11 +30,11 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.NewHostnameTlsSettingCiphers(ctx, "example", &cloudflare.HostnameTlsSettingCiphersArgs{
+//				ZoneId:   pulumi.String("0da42c8d2132a9ddaf714f9e7c920711"),
 //				Hostname: pulumi.String("sub.example.com"),
 //				Values: pulumi.StringArray{
 //					pulumi.String("ECDHE-RSA-AES128-GCM-SHA256"),
 //				},
-//				ZoneId: pulumi.String("0da42c8d2132a9ddaf714f9e7c920711"),
 //			})
 //			if err != nil {
 //				return err

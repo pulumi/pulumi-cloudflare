@@ -196,10 +196,10 @@ class HostnameTlsSetting(pulumi.CustomResource):
         import pulumi_cloudflare as cloudflare
 
         example = cloudflare.HostnameTlsSetting("example",
+            zone_id="0da42c8d2132a9ddaf714f9e7c920711",
             hostname="sub.example.com",
             setting="min_tls_version",
-            value="1.2",
-            zone_id="0da42c8d2132a9ddaf714f9e7c920711")
+            value="1.2")
         ```
         <!--End PulumiCodeChooser -->
 
@@ -233,10 +233,10 @@ class HostnameTlsSetting(pulumi.CustomResource):
         import pulumi_cloudflare as cloudflare
 
         example = cloudflare.HostnameTlsSetting("example",
+            zone_id="0da42c8d2132a9ddaf714f9e7c920711",
             hostname="sub.example.com",
             setting="min_tls_version",
-            value="1.2",
-            zone_id="0da42c8d2132a9ddaf714f9e7c920711")
+            value="1.2")
         ```
         <!--End PulumiCodeChooser -->
 

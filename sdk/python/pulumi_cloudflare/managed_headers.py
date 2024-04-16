@@ -147,15 +147,15 @@ class ManagedHeaders(pulumi.CustomResource):
 
         # Enable security headers using Managed Meaders
         example = cloudflare.ManagedHeaders("example",
+            zone_id="0da42c8d2132a9ddaf714f9e7c920711",
             managed_request_headers=[cloudflare.ManagedHeadersManagedRequestHeaderArgs(
-                enabled=True,
                 id="add_true_client_ip_headers",
+                enabled=True,
             )],
             managed_response_headers=[cloudflare.ManagedHeadersManagedResponseHeaderArgs(
-                enabled=True,
                 id="remove_x-powered-by_header",
-            )],
-            zone_id="0da42c8d2132a9ddaf714f9e7c920711")
+                enabled=True,
+            )])
         ```
         <!--End PulumiCodeChooser -->
 
@@ -185,15 +185,15 @@ class ManagedHeaders(pulumi.CustomResource):
 
         # Enable security headers using Managed Meaders
         example = cloudflare.ManagedHeaders("example",
+            zone_id="0da42c8d2132a9ddaf714f9e7c920711",
             managed_request_headers=[cloudflare.ManagedHeadersManagedRequestHeaderArgs(
-                enabled=True,
                 id="add_true_client_ip_headers",
+                enabled=True,
             )],
             managed_response_headers=[cloudflare.ManagedHeadersManagedResponseHeaderArgs(
-                enabled=True,
                 id="remove_x-powered-by_header",
-            )],
-            zone_id="0da42c8d2132a9ddaf714f9e7c920711")
+                enabled=True,
+            )])
         ```
         <!--End PulumiCodeChooser -->
 

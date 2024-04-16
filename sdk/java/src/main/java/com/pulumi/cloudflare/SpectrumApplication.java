@@ -53,20 +53,20 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var example = new SpectrumApplication(&#34;example&#34;, SpectrumApplicationArgs.builder()        
+ *             .zoneId(&#34;0da42c8d2132a9ddaf714f9e7c920711&#34;)
+ *             .protocol(&#34;tcp/22&#34;)
+ *             .trafficType(&#34;direct&#34;)
  *             .dns(SpectrumApplicationDnsArgs.builder()
- *                 .name(&#34;ssh.example.com&#34;)
  *                 .type(&#34;CNAME&#34;)
+ *                 .name(&#34;ssh.example.com&#34;)
  *                 .build())
+ *             .originDirects(&#34;tcp://192.0.2.1:22&#34;)
  *             .edgeIps(SpectrumApplicationEdgeIpsArgs.builder()
+ *                 .type(&#34;static&#34;)
  *                 .ips(                
  *                     &#34;203.0.113.1&#34;,
  *                     &#34;203.0.113.2&#34;)
- *                 .type(&#34;static&#34;)
  *                 .build())
- *             .originDirects(&#34;tcp://192.0.2.1:22&#34;)
- *             .protocol(&#34;tcp/22&#34;)
- *             .trafficType(&#34;direct&#34;)
- *             .zoneId(&#34;0da42c8d2132a9ddaf714f9e7c920711&#34;)
  *             .build());
  * 
  *     }

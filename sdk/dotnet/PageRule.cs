@@ -26,8 +26,8 @@ namespace Pulumi.Cloudflare
     ///     // Add a page rule to the domain
     ///     var foobar = new Cloudflare.PageRule("foobar", new()
     ///     {
-    ///         ZoneId = @var.Cloudflare_zone_id,
-    ///         Target = $"sub.{@var.Cloudflare_zone}/page",
+    ///         ZoneId = cloudflareZoneId,
+    ///         Target = $"sub.{cloudflareZone}/page",
     ///         Priority = 1,
     ///         Actions = new Cloudflare.Inputs.PageRuleActionsArgs
     ///         {

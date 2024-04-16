@@ -15,34 +15,6 @@ namespace Pulumi.Cloudflare
     /// to actively check the availability of those servers over HTTP(S) or
     /// TCP.
     /// 
-    /// ## Example Usage
-    /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Cloudflare = Pulumi.Cloudflare;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     // TCP Monitor
-    ///     var example = new Cloudflare.LoadBalancerMonitor("example", new()
-    ///     {
-    ///         AccountId = "f037e56e89293a057740de681ac9abbe",
-    ///         Description = "example tcp load balancer",
-    ///         Interval = 60,
-    ///         Method = "connection_established",
-    ///         Port = 8080,
-    ///         Retries = 5,
-    ///         Timeout = 7,
-    ///         Type = "tcp",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
-    /// 
     /// ## Import
     /// 
     /// ```sh

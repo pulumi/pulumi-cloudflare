@@ -35,18 +35,18 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var wordpressFilter = new Cloudflare.Filter("wordpressFilter", new()
+    ///     var wordpress = new Cloudflare.Filter("wordpress", new()
     ///     {
     ///         ZoneId = "0da42c8d2132a9ddaf714f9e7c920711",
     ///         Description = "Wordpress break-in attempts that are outside of the office",
     ///         Expression = "(http.request.uri.path ~ \".*wp-login.php\" or http.request.uri.path ~ \".*xmlrpc.php\") and ip.src ne 192.0.2.1",
     ///     });
     /// 
-    ///     var wordpressFirewallRule = new Cloudflare.FirewallRule("wordpressFirewallRule", new()
+    ///     var wordpressFirewallRule = new Cloudflare.FirewallRule("wordpress", new()
     ///     {
     ///         ZoneId = "0da42c8d2132a9ddaf714f9e7c920711",
     ///         Description = "Block wordpress break-in attempts",
-    ///         FilterId = wordpressFilter.Id,
+    ///         FilterId = wordpress.Id,
     ///         Action = "block",
     ///     });
     /// 

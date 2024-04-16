@@ -30,8 +30,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.NewCustomHostnameFallbackOrigin(ctx, "example", &cloudflare.CustomHostnameFallbackOriginArgs{
-//				Origin: pulumi.String("fallback.example.com"),
 //				ZoneId: pulumi.String("0da42c8d2132a9ddaf714f9e7c920711"),
+//				Origin: pulumi.String("fallback.example.com"),
 //			})
 //			if err != nil {
 //				return err

@@ -439,6 +439,7 @@ class ZoneCacheVariants(pulumi.CustomResource):
         import pulumi_cloudflare as cloudflare
 
         example = cloudflare.ZoneCacheVariants("example",
+            zone_id="0da42c8d2132a9ddaf714f9e7c920711",
             avifs=[
                 "image/avif",
                 "image/webp",
@@ -449,10 +450,6 @@ class ZoneCacheVariants(pulumi.CustomResource):
             ],
             gifs=[
                 "image/gif",
-                "image/webp",
-            ],
-            jp2s=[
-                "image/jp2",
                 "image/webp",
             ],
             jpegs=[
@@ -467,23 +464,26 @@ class ZoneCacheVariants(pulumi.CustomResource):
                 "image/jpg2",
                 "image/webp",
             ],
-            pngs=[
-                "image/png",
+            jp2s=[
+                "image/jp2",
                 "image/webp",
             ],
-            tifs=[
-                "image/tif",
+            pngs=[
+                "image/png",
                 "image/webp",
             ],
             tiffs=[
                 "image/tiff",
                 "image/webp",
             ],
+            tifs=[
+                "image/tif",
+                "image/webp",
+            ],
             webps=[
                 "image/jpeg",
                 "image/webp",
-            ],
-            zone_id="0da42c8d2132a9ddaf714f9e7c920711")
+            ])
         ```
         <!--End PulumiCodeChooser -->
 
@@ -519,6 +519,7 @@ class ZoneCacheVariants(pulumi.CustomResource):
         import pulumi_cloudflare as cloudflare
 
         example = cloudflare.ZoneCacheVariants("example",
+            zone_id="0da42c8d2132a9ddaf714f9e7c920711",
             avifs=[
                 "image/avif",
                 "image/webp",
@@ -529,10 +530,6 @@ class ZoneCacheVariants(pulumi.CustomResource):
             ],
             gifs=[
                 "image/gif",
-                "image/webp",
-            ],
-            jp2s=[
-                "image/jp2",
                 "image/webp",
             ],
             jpegs=[
@@ -547,23 +544,26 @@ class ZoneCacheVariants(pulumi.CustomResource):
                 "image/jpg2",
                 "image/webp",
             ],
-            pngs=[
-                "image/png",
+            jp2s=[
+                "image/jp2",
                 "image/webp",
             ],
-            tifs=[
-                "image/tif",
+            pngs=[
+                "image/png",
                 "image/webp",
             ],
             tiffs=[
                 "image/tiff",
                 "image/webp",
             ],
+            tifs=[
+                "image/tif",
+                "image/webp",
+            ],
             webps=[
                 "image/jpeg",
                 "image/webp",
-            ],
-            zone_id="0da42c8d2132a9ddaf714f9e7c920711")
+            ])
         ```
         <!--End PulumiCodeChooser -->
 

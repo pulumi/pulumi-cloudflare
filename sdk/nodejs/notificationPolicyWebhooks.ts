@@ -17,8 +17,8 @@ import * as utilities from "./utilities";
  * const example = new cloudflare.NotificationPolicyWebhooks("example", {
  *     accountId: "f037e56e89293a057740de681ac9abbe",
  *     name: "Webhooks destination",
- *     secret: "my-secret",
  *     url: "https://example.com",
+ *     secret: "my-secret",
  * });
  * ```
  * <!--End PulumiCodeChooser -->

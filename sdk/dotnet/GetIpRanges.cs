@@ -28,7 +28,7 @@ namespace Pulumi.Cloudflare
         /// {
         ///     var cloudflare = Cloudflare.GetIpRanges.Invoke();
         /// 
-        ///     var example = new Example.Index.Example_firewall_resource("example", new()
+        ///     var example = new Example.Index.FirewallResource("example", new()
         ///     {
         ///         Name = "from-cloudflare",
         ///         Network = "default",
@@ -67,7 +67,7 @@ namespace Pulumi.Cloudflare
         /// {
         ///     var cloudflare = Cloudflare.GetIpRanges.Invoke();
         /// 
-        ///     var example = new Example.Index.Example_firewall_resource("example", new()
+        ///     var example = new Example.Index.FirewallResource("example", new()
         ///     {
         ///         Name = "from-cloudflare",
         ///         Network = "default",

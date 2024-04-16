@@ -33,6 +33,9 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.NewDevicePostureIntegration(ctx, "example", &cloudflare.DevicePostureIntegrationArgs{
 //				AccountId: pulumi.String("f037e56e89293a057740de681ac9abbe"),
+//				Name:      pulumi.String("Device posture integration"),
+//				Type:      pulumi.String("workspace_one"),
+//				Interval:  pulumi.String("24h"),
 //				Configs: cloudflare.DevicePostureIntegrationConfigArray{
 //					&cloudflare.DevicePostureIntegrationConfigArgs{
 //						ApiUrl:       pulumi.String("https://example.com/api"),
@@ -41,9 +44,6 @@ import (
 //						ClientSecret: pulumi.String("client-secret"),
 //					},
 //				},
-//				Interval: pulumi.String("24h"),
-//				Name:     pulumi.String("Device posture integration"),
-//				Type:     pulumi.String("workspace_one"),
 //			})
 //			if err != nil {
 //				return err

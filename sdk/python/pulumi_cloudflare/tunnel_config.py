@@ -141,11 +141,11 @@ class TunnelConfig(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_tunnel = cloudflare.Tunnel("exampleTunnel",
+        example_tunnel = cloudflare.Tunnel("example_tunnel",
             account_id="f037e56e89293a057740de681ac9abbe",
             name="example_tunnel",
             secret="<32 character secret>")
-        example_config = cloudflare.TunnelConfig("exampleConfig",
+        example_config = cloudflare.TunnelConfig("example_config",
             account_id="f037e56e89293a057740de681ac9abbe",
             tunnel_id=example_tunnel.id,
             config=cloudflare.TunnelConfigConfigArgs(
@@ -227,11 +227,11 @@ class TunnelConfig(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_tunnel = cloudflare.Tunnel("exampleTunnel",
+        example_tunnel = cloudflare.Tunnel("example_tunnel",
             account_id="f037e56e89293a057740de681ac9abbe",
             name="example_tunnel",
             secret="<32 character secret>")
-        example_config = cloudflare.TunnelConfig("exampleConfig",
+        example_config = cloudflare.TunnelConfig("example_config",
             account_id="f037e56e89293a057740de681ac9abbe",
             tunnel_id=example_tunnel.id,
             config=cloudflare.TunnelConfigConfigArgs(

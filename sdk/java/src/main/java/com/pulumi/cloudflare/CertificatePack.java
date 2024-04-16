@@ -22,47 +22,6 @@ import javax.annotation.Nullable;
 /**
  * ## Example Usage
  * 
- * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.CertificatePack;
- * import com.pulumi.cloudflare.CertificatePackArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         // Advanced certificate manager for Let&#39;s Encrypt
- *         var example = new CertificatePack(&#34;example&#34;, CertificatePackArgs.builder()        
- *             .certificateAuthority(&#34;lets_encrypt&#34;)
- *             .cloudflareBranding(false)
- *             .hosts(            
- *                 &#34;example.com&#34;,
- *                 &#34;*.example.com&#34;)
- *             .type(&#34;advanced&#34;)
- *             .validationMethod(&#34;http&#34;)
- *             .validityDays(90)
- *             .waitForActiveStatus(true)
- *             .zoneId(&#34;0da42c8d2132a9ddaf714f9e7c920711&#34;)
- *             .build());
- * 
- *     }
- * }
- * ```
- * &lt;!--End PulumiCodeChooser --&gt;
- * 
  * ## Import
  * 
  * ```sh

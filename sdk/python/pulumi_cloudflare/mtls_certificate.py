@@ -287,16 +287,14 @@ class MtlsCertificate(pulumi.CustomResource):
 
         example = cloudflare.MtlsCertificate("example",
             account_id="f037e56e89293a057740de681ac9abbe",
-            ca=True,
+            name="example",
             certificates=\"\"\"-----BEGIN CERTIFICATE-----
         MIIDmDCCAoCgAwIBAgIUKTOAZNj...i4JhqeoTewsxndhDDE
-        -----END CERTIFICATE-----
-        \"\"\",
-            name="example",
+        -----END CERTIFICATE-----\"\"\",
             private_key=\"\"\"-----BEGIN PRIVATE KEY-----
         MIIEvQIBADANBgkqhkiG9w0BAQE...1IS3EnQRrz6WMYA=
-        -----END PRIVATE KEY-----
-        \"\"\")
+        -----END PRIVATE KEY-----\"\"\",
+            ca=True)
         ```
         <!--End PulumiCodeChooser -->
 
@@ -332,16 +330,14 @@ class MtlsCertificate(pulumi.CustomResource):
 
         example = cloudflare.MtlsCertificate("example",
             account_id="f037e56e89293a057740de681ac9abbe",
-            ca=True,
+            name="example",
             certificates=\"\"\"-----BEGIN CERTIFICATE-----
         MIIDmDCCAoCgAwIBAgIUKTOAZNj...i4JhqeoTewsxndhDDE
-        -----END CERTIFICATE-----
-        \"\"\",
-            name="example",
+        -----END CERTIFICATE-----\"\"\",
             private_key=\"\"\"-----BEGIN PRIVATE KEY-----
         MIIEvQIBADANBgkqhkiG9w0BAQE...1IS3EnQRrz6WMYA=
-        -----END PRIVATE KEY-----
-        \"\"\")
+        -----END PRIVATE KEY-----\"\"\",
+            ca=True)
         ```
         <!--End PulumiCodeChooser -->
 

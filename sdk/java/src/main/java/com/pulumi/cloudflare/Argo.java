@@ -43,9 +43,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var example = new Argo(&#34;example&#34;, ArgoArgs.builder()        
- *             .smartRouting(&#34;on&#34;)
- *             .tieredCaching(&#34;on&#34;)
  *             .zoneId(&#34;0da42c8d2132a9ddaf714f9e7c920711&#34;)
+ *             .tieredCaching(&#34;on&#34;)
+ *             .smartRouting(&#34;on&#34;)
  *             .build());
  * 
  *     }

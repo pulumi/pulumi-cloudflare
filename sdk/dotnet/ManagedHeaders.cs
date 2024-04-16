@@ -28,23 +28,23 @@ namespace Pulumi.Cloudflare
     ///     // Enable security headers using Managed Meaders
     ///     var example = new Cloudflare.ManagedHeaders("example", new()
     ///     {
+    ///         ZoneId = "0da42c8d2132a9ddaf714f9e7c920711",
     ///         ManagedRequestHeaders = new[]
     ///         {
     ///             new Cloudflare.Inputs.ManagedHeadersManagedRequestHeaderArgs
     ///             {
-    ///                 Enabled = true,
     ///                 Id = "add_true_client_ip_headers",
+    ///                 Enabled = true,
     ///             },
     ///         },
     ///         ManagedResponseHeaders = new[]
     ///         {
     ///             new Cloudflare.Inputs.ManagedHeadersManagedResponseHeaderArgs
     ///             {
-    ///                 Enabled = true,
     ///                 Id = "remove_x-powered-by_header",
+    ///                 Enabled = true,
     ///             },
     ///         },
-    ///         ZoneId = "0da42c8d2132a9ddaf714f9e7c920711",
     ///     });
     /// 
     /// });

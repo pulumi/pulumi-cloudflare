@@ -81,8 +81,8 @@ public final class PageRuleActionsCacheKeyFieldsUserArgs extends com.pulumi.reso
      *     public static void stack(Context ctx) {
      *         // Unrealistic example with all features used
      *         var foobar = new PageRule(&#34;foobar&#34;, PageRuleArgs.builder()        
-     *             .zoneId(var_.cloudflare_zone_id())
-     *             .target(String.format(&#34;%s/app/*&#34;, var_.cloudflare_zone()))
+     *             .zoneId(cloudflareZoneId)
+     *             .target(String.format(&#34;%s/app/*&#34;, cloudflareZone))
      *             .priority(1)
      *             .actions(PageRuleActionsArgs.builder()
      *                 .cacheKeyFields(PageRuleActionsCacheKeyFieldsArgs.builder()
@@ -156,8 +156,8 @@ public final class PageRuleActionsCacheKeyFieldsUserArgs extends com.pulumi.reso
      *     public static void stack(Context ctx) {
      *         // Unrealistic example with all features used
      *         var foobar = new PageRule(&#34;foobar&#34;, PageRuleArgs.builder()        
-     *             .zoneId(var_.cloudflare_zone_id())
-     *             .target(String.format(&#34;%s/app/*&#34;, var_.cloudflare_zone()))
+     *             .zoneId(cloudflareZoneId)
+     *             .target(String.format(&#34;%s/app/*&#34;, cloudflareZone))
      *             .priority(1)
      *             .actions(PageRuleActionsArgs.builder()
      *                 .cacheKeyFields(PageRuleActionsCacheKeyFieldsArgs.builder()
@@ -300,8 +300,8 @@ public final class PageRuleActionsCacheKeyFieldsUserArgs extends com.pulumi.reso
          *     public static void stack(Context ctx) {
          *         // Unrealistic example with all features used
          *         var foobar = new PageRule(&#34;foobar&#34;, PageRuleArgs.builder()        
-         *             .zoneId(var_.cloudflare_zone_id())
-         *             .target(String.format(&#34;%s/app/*&#34;, var_.cloudflare_zone()))
+         *             .zoneId(cloudflareZoneId)
+         *             .target(String.format(&#34;%s/app/*&#34;, cloudflareZone))
          *             .priority(1)
          *             .actions(PageRuleActionsArgs.builder()
          *                 .cacheKeyFields(PageRuleActionsCacheKeyFieldsArgs.builder()
@@ -379,8 +379,8 @@ public final class PageRuleActionsCacheKeyFieldsUserArgs extends com.pulumi.reso
          *     public static void stack(Context ctx) {
          *         // Unrealistic example with all features used
          *         var foobar = new PageRule(&#34;foobar&#34;, PageRuleArgs.builder()        
-         *             .zoneId(var_.cloudflare_zone_id())
-         *             .target(String.format(&#34;%s/app/*&#34;, var_.cloudflare_zone()))
+         *             .zoneId(cloudflareZoneId)
+         *             .target(String.format(&#34;%s/app/*&#34;, cloudflareZone))
          *             .priority(1)
          *             .actions(PageRuleActionsArgs.builder()
          *                 .cacheKeyFields(PageRuleActionsCacheKeyFieldsArgs.builder()

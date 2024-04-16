@@ -30,16 +30,16 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.NewDeviceDexTest(ctx, "example", &cloudflare.DeviceDexTestArgs{
-//				AccountId: pulumi.String("f037e56e89293a057740de681ac9abbe"),
+//				AccountId:   pulumi.String("f037e56e89293a057740de681ac9abbe"),
+//				Name:        pulumi.String("GET homepage"),
+//				Description: pulumi.String("Send a HTTP GET request to the home endpoint every half hour."),
+//				Interval:    pulumi.String("0h30m0s"),
+//				Enabled:     pulumi.Bool(true),
 //				Data: &cloudflare.DeviceDexTestDataArgs{
 //					Host:   pulumi.String("https://example.com/home"),
 //					Kind:   pulumi.String("http"),
 //					Method: pulumi.String("GET"),
 //				},
-//				Description: pulumi.String("Send a HTTP GET request to the home endpoint every half hour."),
-//				Enabled:     pulumi.Bool(true),
-//				Interval:    pulumi.String("0h30m0s"),
-//				Name:        pulumi.String("GET homepage"),
 //			})
 //			if err != nil {
 //				return err

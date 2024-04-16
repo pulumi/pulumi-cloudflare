@@ -20,15 +20,15 @@ import * as utilities from "./utilities";
  *
  * const example = new cloudflare.DevicePostureIntegration("example", {
  *     accountId: "f037e56e89293a057740de681ac9abbe",
+ *     name: "Device posture integration",
+ *     type: "workspace_one",
+ *     interval: "24h",
  *     configs: [{
  *         apiUrl: "https://example.com/api",
  *         authUrl: "https://example.com/connect/token",
  *         clientId: "client-id",
  *         clientSecret: "client-secret",
  *     }],
- *     interval: "24h",
- *     name: "Device posture integration",
- *     type: "workspace_one",
  * });
  * ```
  * <!--End PulumiCodeChooser -->

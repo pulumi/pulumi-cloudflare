@@ -32,18 +32,18 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.NewStaticRoute(ctx, "example", &cloudflare.StaticRouteArgs{
-//				AccountId: pulumi.String("f037e56e89293a057740de681ac9abbe"),
+//				AccountId:   pulumi.String("f037e56e89293a057740de681ac9abbe"),
+//				Description: pulumi.String("New route for new prefix 192.0.2.0/24"),
+//				Prefix:      pulumi.String("192.0.2.0/24"),
+//				Nexthop:     pulumi.String("10.0.0.0"),
+//				Priority:    pulumi.Int(100),
+//				Weight:      pulumi.Int(10),
 //				ColoNames: pulumi.StringArray{
 //					pulumi.String("den01"),
 //				},
 //				ColoRegions: pulumi.StringArray{
 //					pulumi.String("APAC"),
 //				},
-//				Description: pulumi.String("New route for new prefix 192.0.2.0/24"),
-//				Nexthop:     pulumi.String("10.0.0.0"),
-//				Prefix:      pulumi.String("192.0.2.0/24"),
-//				Priority:    pulumi.Int(100),
-//				Weight:      pulumi.Int(10),
 //			})
 //			if err != nil {
 //				return err

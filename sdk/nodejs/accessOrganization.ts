@@ -18,18 +18,18 @@ import * as utilities from "./utilities";
  *
  * const example = new cloudflare.AccessOrganization("example", {
  *     accountId: "f037e56e89293a057740de681ac9abbe",
+ *     name: "example.cloudflareaccess.com",
  *     authDomain: "example.cloudflareaccess.com",
- *     autoRedirectToIdentity: false,
  *     isUiReadOnly: false,
+ *     userSeatExpirationInactiveTime: "720h",
+ *     autoRedirectToIdentity: false,
  *     loginDesigns: [{
  *         backgroundColor: "#ffffff",
- *         footerText: "My footer text",
- *         headerText: "My header text",
- *         logoPath: "https://example.com/logo.png",
  *         textColor: "#000000",
+ *         logoPath: "https://example.com/logo.png",
+ *         headerText: "My header text",
+ *         footerText: "My footer text",
  *     }],
- *     name: "example.cloudflareaccess.com",
- *     userSeatExpirationInactiveTime: "720h",
  * });
  * ```
  * <!--End PulumiCodeChooser -->

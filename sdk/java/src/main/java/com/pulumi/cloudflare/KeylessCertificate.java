@@ -44,13 +44,13 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var example = new KeylessCertificate(&#34;example&#34;, KeylessCertificateArgs.builder()        
- *             .bundleMethod(&#34;ubiquitous&#34;)
- *             .certificate(&#34;-----INSERT CERTIFICATE-----&#34;)
- *             .enabled(true)
- *             .host(&#34;example.com&#34;)
- *             .name(&#34;example.com Keyless SSL&#34;)
- *             .port(24008)
  *             .zoneId(&#34;0da42c8d2132a9ddaf714f9e7c920711&#34;)
+ *             .bundleMethod(&#34;ubiquitous&#34;)
+ *             .name(&#34;example.com Keyless SSL&#34;)
+ *             .host(&#34;example.com&#34;)
+ *             .port(24008)
+ *             .enabled(true)
+ *             .certificate(&#34;-----INSERT CERTIFICATE-----&#34;)
  *             .build());
  * 
  *     }

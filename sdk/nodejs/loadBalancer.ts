@@ -20,7 +20,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleLoadBalancerPool = new cloudflare.LoadBalancerPool("exampleLoadBalancerPool", {
+ * const exampleLoadBalancerPool = new cloudflare.LoadBalancerPool("example", {
  *     name: "example-lb-pool",
  *     origins: [{
  *         name: "example-1",
@@ -32,7 +32,7 @@ import * as utilities from "./utilities";
  * // In normal usage, would have different pools set for different pops
  * // (cloudflare points-of-presence) and/or for different regions.
  * // Within each pop or region we can define multiple pools in failover order.
- * const exampleLoadBalancer = new cloudflare.LoadBalancer("exampleLoadBalancer", {
+ * const example = new cloudflare.LoadBalancer("example", {
  *     zoneId: "0da42c8d2132a9ddaf714f9e7c920711",
  *     name: "example-load-balancer.example.com",
  *     fallbackPoolId: exampleLoadBalancerPool.id,

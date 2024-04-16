@@ -28,21 +28,21 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			exampleAccessIdentityProvider, err := cloudflare.LookupAccessIdentityProvider(ctx, &cloudflare.LookupAccessIdentityProviderArgs{
+//			example, err := cloudflare.LookupAccessIdentityProvider(ctx, &cloudflare.LookupAccessIdentityProviderArgs{
 //				Name:      "Google SSO",
 //				AccountId: pulumi.StringRef("f037e56e89293a057740de681ac9abbe"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			_, err = cloudflare.NewAccessApplication(ctx, "exampleAccessApplication", &cloudflare.AccessApplicationArgs{
+//			_, err = cloudflare.NewAccessApplication(ctx, "example", &cloudflare.AccessApplicationArgs{
 //				ZoneId:          pulumi.String("0da42c8d2132a9ddaf714f9e7c920711"),
 //				Name:            pulumi.String("name"),
 //				Domain:          pulumi.String("name.example.com"),
 //				Type:            pulumi.String("self_hosted"),
 //				SessionDuration: pulumi.String("24h"),
 //				AllowedIdps: pulumi.StringArray{
-//					pulumi.String(exampleAccessIdentityProvider.Id),
+//					pulumi.String(example.Id),
 //				},
 //				AutoRedirectToIdentity: pulumi.Bool(true),
 //			})

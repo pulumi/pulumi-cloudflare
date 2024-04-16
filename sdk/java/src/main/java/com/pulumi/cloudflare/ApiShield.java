@@ -45,11 +45,11 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var example = new ApiShield(&#34;example&#34;, ApiShieldArgs.builder()        
+ *             .zoneId(&#34;0da42c8d2132a9ddaf714f9e7c920711&#34;)
  *             .authIdCharacteristics(ApiShieldAuthIdCharacteristicArgs.builder()
  *                 .name(&#34;my-example-header&#34;)
  *                 .type(&#34;header&#34;)
  *                 .build())
- *             .zoneId(&#34;0da42c8d2132a9ddaf714f9e7c920711&#34;)
  *             .build());
  * 
  *     }

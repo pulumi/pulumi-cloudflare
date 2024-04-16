@@ -171,7 +171,7 @@ class WorkerSecret(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        my_secret = cloudflare.WorkerSecret("mySecret",
+        my_secret = cloudflare.WorkerSecret("my_secret",
             account_id="f037e56e89293a057740de681ac9abbe",
             name="MY_EXAMPLE_SECRET_TEXT",
             script_name="script_1",
@@ -208,7 +208,7 @@ class WorkerSecret(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        my_secret = cloudflare.WorkerSecret("mySecret",
+        my_secret = cloudflare.WorkerSecret("my_secret",
             account_id="f037e56e89293a057740de681ac9abbe",
             name="MY_EXAMPLE_SECRET_TEXT",
             script_name="script_1",

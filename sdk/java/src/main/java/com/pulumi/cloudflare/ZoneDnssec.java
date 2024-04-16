@@ -43,12 +43,12 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleZone = new Zone(&#34;exampleZone&#34;, ZoneArgs.builder()        
+ *         var example = new Zone(&#34;example&#34;, ZoneArgs.builder()        
  *             .zone(&#34;example.com&#34;)
  *             .build());
  * 
  *         var exampleZoneDnssec = new ZoneDnssec(&#34;exampleZoneDnssec&#34;, ZoneDnssecArgs.builder()        
- *             .zoneId(exampleZone.id())
+ *             .zoneId(example.id())
  *             .build());
  * 
  *     }

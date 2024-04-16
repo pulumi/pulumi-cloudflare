@@ -26,9 +26,9 @@ namespace Pulumi.Cloudflare
     /// {
     ///     var example = new Cloudflare.Argo("example", new()
     ///     {
-    ///         SmartRouting = "on",
-    ///         TieredCaching = "on",
     ///         ZoneId = "0da42c8d2132a9ddaf714f9e7c920711",
+    ///         TieredCaching = "on",
+    ///         SmartRouting = "on",
     ///     });
     /// 
     /// });

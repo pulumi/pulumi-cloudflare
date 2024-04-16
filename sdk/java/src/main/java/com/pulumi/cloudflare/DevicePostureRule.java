@@ -57,7 +57,7 @@ import javax.annotation.Nullable;
  *                 .platform(&#34;linux&#34;)
  *                 .build())
  *             .inputs(DevicePostureRuleInputArgs.builder()
- *                 .id(cloudflare_teams_list.corporate_devices().id())
+ *                 .id(corporateDevices.id())
  *                 .version(&#34;1.0.0&#34;)
  *                 .operator(&#34;&lt;&#34;)
  *                 .osDistroName(&#34;ubuntu&#34;)

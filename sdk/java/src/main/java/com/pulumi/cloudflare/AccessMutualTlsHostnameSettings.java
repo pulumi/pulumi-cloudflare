@@ -45,12 +45,12 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var example = new AccessMutualTlsHostnameSettings(&#34;example&#34;, AccessMutualTlsHostnameSettingsArgs.builder()        
- *             .settings(AccessMutualTlsHostnameSettingsSettingArgs.builder()
- *                 .chinaNetwork(false)
- *                 .clientCertificateForwarding(true)
- *                 .hostname(&#34;example.com&#34;)
- *                 .build())
  *             .zoneId(&#34;0da42c8d2132a9ddaf714f9e7c920711&#34;)
+ *             .settings(AccessMutualTlsHostnameSettingsSettingArgs.builder()
+ *                 .hostname(&#34;example.com&#34;)
+ *                 .clientCertificateForwarding(true)
+ *                 .chinaNetwork(false)
+ *                 .build())
  *             .build());
  * 
  *     }

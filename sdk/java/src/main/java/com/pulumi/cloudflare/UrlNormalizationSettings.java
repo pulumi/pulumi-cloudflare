@@ -41,9 +41,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var example = new UrlNormalizationSettings(&#34;example&#34;, UrlNormalizationSettingsArgs.builder()        
- *             .scope(&#34;incoming&#34;)
- *             .type(&#34;cloudflare&#34;)
  *             .zoneId(&#34;0da42c8d2132a9ddaf714f9e7c920711&#34;)
+ *             .type(&#34;cloudflare&#34;)
+ *             .scope(&#34;incoming&#34;)
  *             .build());
  * 
  *     }

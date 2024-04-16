@@ -31,29 +31,11 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.NewLoadBalancerPool(ctx, "example", &cloudflare.LoadBalancerPoolArgs{
-//				AccountId:   pulumi.String("f037e56e89293a057740de681ac9abbe"),
-//				Description: pulumi.String("example load balancer pool"),
-//				Enabled:     pulumi.Bool(false),
-//				Latitude:    pulumi.Float64(55),
-//				LoadSheddings: cloudflare.LoadBalancerPoolLoadSheddingArray{
-//					&cloudflare.LoadBalancerPoolLoadSheddingArgs{
-//						DefaultPercent: pulumi.Float64(55),
-//						DefaultPolicy:  pulumi.String("random"),
-//						SessionPercent: pulumi.Float64(12),
-//						SessionPolicy:  pulumi.String("hash"),
-//					},
-//				},
-//				Longitude:         -12,
-//				MinimumOrigins:    pulumi.Int(1),
-//				Name:              pulumi.String("example-pool"),
-//				NotificationEmail: pulumi.String("someone@example.com"),
-//				OriginSteerings: cloudflare.LoadBalancerPoolOriginSteeringArray{
-//					&cloudflare.LoadBalancerPoolOriginSteeringArgs{
-//						Policy: pulumi.String("random"),
-//					},
-//				},
+//				AccountId: pulumi.String("f037e56e89293a057740de681ac9abbe"),
+//				Name:      pulumi.String("example-pool"),
 //				Origins: cloudflare.LoadBalancerPoolOriginArray{
 //					&cloudflare.LoadBalancerPoolOriginArgs{
+//						Name:    pulumi.String("example-1"),
 //						Address: pulumi.String("192.0.2.1"),
 //						Enabled: pulumi.Bool(false),
 //						Headers: cloudflare.LoadBalancerPoolOriginHeaderArray{
@@ -64,9 +46,9 @@ import (
 //								},
 //							},
 //						},
-//						Name: pulumi.String("example-1"),
 //					},
 //					&cloudflare.LoadBalancerPoolOriginArgs{
+//						Name:    pulumi.String("example-2"),
 //						Address: pulumi.String("192.0.2.2"),
 //						Headers: cloudflare.LoadBalancerPoolOriginHeaderArray{
 //							&cloudflare.LoadBalancerPoolOriginHeaderArgs{
@@ -76,7 +58,25 @@ import (
 //								},
 //							},
 //						},
-//						Name: pulumi.String("example-2"),
+//					},
+//				},
+//				Latitude:          pulumi.Float64(55),
+//				Longitude:         -12,
+//				Description:       pulumi.String("example load balancer pool"),
+//				Enabled:           pulumi.Bool(false),
+//				MinimumOrigins:    pulumi.Int(1),
+//				NotificationEmail: pulumi.String("someone@example.com"),
+//				LoadSheddings: cloudflare.LoadBalancerPoolLoadSheddingArray{
+//					&cloudflare.LoadBalancerPoolLoadSheddingArgs{
+//						DefaultPercent: pulumi.Float64(55),
+//						DefaultPolicy:  pulumi.String("random"),
+//						SessionPercent: pulumi.Float64(12),
+//						SessionPolicy:  pulumi.String("hash"),
+//					},
+//				},
+//				OriginSteerings: cloudflare.LoadBalancerPoolOriginSteeringArray{
+//					&cloudflare.LoadBalancerPoolOriginSteeringArgs{
+//						Policy: pulumi.String("random"),
 //					},
 //				},
 //			})

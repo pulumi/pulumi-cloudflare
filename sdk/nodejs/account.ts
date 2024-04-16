@@ -16,9 +16,9 @@ import * as utilities from "./utilities";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
  * const example = new cloudflare.Account("example", {
- *     enforceTwofactor: true,
  *     name: "some-enterprise-account",
  *     type: "enterprise",
+ *     enforceTwofactor: true,
  * });
  * ```
  * <!--End PulumiCodeChooser -->

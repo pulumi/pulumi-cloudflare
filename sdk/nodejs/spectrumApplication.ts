@@ -19,21 +19,21 @@ import * as utilities from "./utilities";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
  * const example = new cloudflare.SpectrumApplication("example", {
+ *     zoneId: "0da42c8d2132a9ddaf714f9e7c920711",
+ *     protocol: "tcp/22",
+ *     trafficType: "direct",
  *     dns: {
- *         name: "ssh.example.com",
  *         type: "CNAME",
+ *         name: "ssh.example.com",
  *     },
+ *     originDirects: ["tcp://192.0.2.1:22"],
  *     edgeIps: {
+ *         type: "static",
  *         ips: [
  *             "203.0.113.1",
  *             "203.0.113.2",
  *         ],
- *         type: "static",
  *     },
- *     originDirects: ["tcp://192.0.2.1:22"],
- *     protocol: "tcp/22",
- *     trafficType: "direct",
- *     zoneId: "0da42c8d2132a9ddaf714f9e7c920711",
  * });
  * ```
  * <!--End PulumiCodeChooser -->

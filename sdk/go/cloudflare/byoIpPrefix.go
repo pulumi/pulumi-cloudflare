@@ -32,9 +32,9 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.NewByoIpPrefix(ctx, "example", &cloudflare.ByoIpPrefixArgs{
 //				AccountId:     pulumi.String("f037e56e89293a057740de681ac9abbe"),
-//				Advertisement: pulumi.String("on"),
-//				Description:   pulumi.String("Example IP Prefix"),
 //				PrefixId:      pulumi.String("d41d8cd98f00b204e9800998ecf8427e"),
+//				Description:   pulumi.String("Example IP Prefix"),
+//				Advertisement: pulumi.String("on"),
 //			})
 //			if err != nil {
 //				return err

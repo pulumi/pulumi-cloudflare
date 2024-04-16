@@ -157,18 +157,18 @@ class RegionalHostname(pulumi.CustomResource):
 
         # Regionalized hostname record resources are managed independently from the
         # Regionalized Hostname resources.
-        example_record = cloudflare.Record("exampleRecord",
+        example = cloudflare.Record("example",
+            zone_id="0da42c8d2132a9ddaf714f9e7c920711",
             name="example.com",
-            ttl=3600,
-            type="A",
             value="192.0.2.1",
-            zone_id="0da42c8d2132a9ddaf714f9e7c920711")
+            type="A",
+            ttl=3600)
         # The cloudflare_regional_hostname resource may exist with or without its
         # corresponding record resource.
-        example_regional_hostname = cloudflare.RegionalHostname("exampleRegionalHostname",
+        example_regional_hostname = cloudflare.RegionalHostname("example",
+            zone_id="0da42c8d2132a9ddaf714f9e7c920711",
             hostname="example.com",
-            region_key="eu",
-            zone_id="0da42c8d2132a9ddaf714f9e7c920711")
+            region_key="eu")
         ```
         <!--End PulumiCodeChooser -->
 
@@ -196,18 +196,18 @@ class RegionalHostname(pulumi.CustomResource):
 
         # Regionalized hostname record resources are managed independently from the
         # Regionalized Hostname resources.
-        example_record = cloudflare.Record("exampleRecord",
+        example = cloudflare.Record("example",
+            zone_id="0da42c8d2132a9ddaf714f9e7c920711",
             name="example.com",
-            ttl=3600,
-            type="A",
             value="192.0.2.1",
-            zone_id="0da42c8d2132a9ddaf714f9e7c920711")
+            type="A",
+            ttl=3600)
         # The cloudflare_regional_hostname resource may exist with or without its
         # corresponding record resource.
-        example_regional_hostname = cloudflare.RegionalHostname("exampleRegionalHostname",
+        example_regional_hostname = cloudflare.RegionalHostname("example",
+            zone_id="0da42c8d2132a9ddaf714f9e7c920711",
             hostname="example.com",
-            region_key="eu",
-            zone_id="0da42c8d2132a9ddaf714f9e7c920711")
+            region_key="eu")
         ```
         <!--End PulumiCodeChooser -->
 

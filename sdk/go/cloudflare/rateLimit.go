@@ -34,25 +34,16 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.NewRateLimit(ctx, "example", &cloudflare.RateLimitArgs{
-//				Action: &cloudflare.RateLimitActionArgs{
-//					Mode: pulumi.String("simulate"),
-//					Response: &cloudflare.RateLimitActionResponseArgs{
-//						Body:        pulumi.String("custom response body"),
-//						ContentType: pulumi.String("text/plain"),
-//					},
-//					Timeout: pulumi.Int(43200),
-//				},
-//				BypassUrlPatterns: pulumi.StringArray{
-//					pulumi.String("example.com/bypass1"),
-//					pulumi.String("example.com/bypass2"),
-//				},
-//				Correlate: &cloudflare.RateLimitCorrelateArgs{
-//					By: pulumi.String("nat"),
-//				},
-//				Description: pulumi.String("example rate limit for a zone"),
-//				Disabled:    pulumi.Bool(false),
+//				ZoneId:    pulumi.String("0da42c8d2132a9ddaf714f9e7c920711"),
+//				Threshold: pulumi.Int(2000),
+//				Period:    pulumi.Int(2),
 //				Match: &cloudflare.RateLimitMatchArgs{
 //					Request: &cloudflare.RateLimitMatchRequestArgs{
+//						UrlPattern: pulumi.String(fmt.Sprintf("%v/*", cloudflareZone)),
+//						Schemes: pulumi.StringArray{
+//							pulumi.String("HTTP"),
+//							pulumi.String("HTTPS"),
+//						},
 //						Methods: pulumi.StringArray{
 //							pulumi.String("GET"),
 //							pulumi.String("POST"),
@@ -61,13 +52,16 @@ import (
 //							pulumi.String("PATCH"),
 //							pulumi.String("HEAD"),
 //						},
-//						Schemes: pulumi.StringArray{
-//							pulumi.String("HTTP"),
-//							pulumi.String("HTTPS"),
-//						},
-//						UrlPattern: pulumi.String(fmt.Sprintf("%v/*", _var.Cloudflare_zone)),
 //					},
 //					Response: &cloudflare.RateLimitMatchResponseArgs{
+//						Statuses: pulumi.IntArray{
+//							pulumi.Int(200),
+//							pulumi.Int(201),
+//							pulumi.Int(202),
+//							pulumi.Int(301),
+//							pulumi.Int(429),
+//						},
+//						OriginTraffic: pulumi.Bool(false),
 //						Headers: pulumi.StringMapArray{
 //							pulumi.StringMap{
 //								"name":  pulumi.String("Host"),
@@ -80,19 +74,25 @@ import (
 //								"value": pulumi.String("my-example"),
 //							},
 //						},
-//						OriginTraffic: pulumi.Bool(false),
-//						Statuses: pulumi.IntArray{
-//							pulumi.Int(200),
-//							pulumi.Int(201),
-//							pulumi.Int(202),
-//							pulumi.Int(301),
-//							pulumi.Int(429),
-//						},
 //					},
 //				},
-//				Period:    pulumi.Int(2),
-//				Threshold: pulumi.Int(2000),
-//				ZoneId:    pulumi.String("0da42c8d2132a9ddaf714f9e7c920711"),
+//				Action: &cloudflare.RateLimitActionArgs{
+//					Mode:    pulumi.String("simulate"),
+//					Timeout: pulumi.Int(43200),
+//					Response: &cloudflare.RateLimitActionResponseArgs{
+//						ContentType: pulumi.String("text/plain"),
+//						Body:        pulumi.String("custom response body"),
+//					},
+//				},
+//				Correlate: &cloudflare.RateLimitCorrelateArgs{
+//					By: pulumi.String("nat"),
+//				},
+//				Disabled:    pulumi.Bool(false),
+//				Description: pulumi.String("example rate limit for a zone"),
+//				BypassUrlPatterns: pulumi.StringArray{
+//					pulumi.String("example.com/bypass1"),
+//					pulumi.String("example.com/bypass2"),
+//				},
 //			})
 //			if err != nil {
 //				return err

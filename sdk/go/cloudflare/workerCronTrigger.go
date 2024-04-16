@@ -17,57 +17,6 @@ import (
 // schedule. Worker Cron Triggers are ideal for running periodic jobs for
 // maintenance or calling third-party APIs to collect up-to-date data.
 //
-// ## Example Usage
-//
-// <!--Start PulumiCodeChooser -->
-// ```go
-// package main
-//
-// import (
-//
-//	"os"
-//
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func readFileOrPanic(path string) pulumi.StringPtrInput {
-//		data, err := os.ReadFile(path)
-//		if err != nil {
-//			panic(err.Error())
-//		}
-//		return pulumi.String(string(data))
-//	}
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			exampleScript, err := cloudflare.NewWorkerScript(ctx, "exampleScript", &cloudflare.WorkerScriptArgs{
-//				AccountId: pulumi.String("f037e56e89293a057740de681ac9abbe"),
-//				Name:      pulumi.String("example-script"),
-//				Content:   readFileOrPanic("path/to/my.js"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = cloudflare.NewWorkerCronTrigger(ctx, "exampleTrigger", &cloudflare.WorkerCronTriggerArgs{
-//				AccountId:  pulumi.String("f037e56e89293a057740de681ac9abbe"),
-//				ScriptName: exampleScript.Name,
-//				Schedules: pulumi.StringArray{
-//					pulumi.String("*/5 * * * *"),
-//					pulumi.String("10 7 * * mon-fri"),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-// <!--End PulumiCodeChooser -->
-//
 // ## Import
 //
 // ```sh

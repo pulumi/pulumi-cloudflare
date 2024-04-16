@@ -236,8 +236,8 @@ class NotificationPolicyWebhooks(pulumi.CustomResource):
         example = cloudflare.NotificationPolicyWebhooks("example",
             account_id="f037e56e89293a057740de681ac9abbe",
             name="Webhooks destination",
-            secret="my-secret",
-            url="https://example.com")
+            url="https://example.com",
+            secret="my-secret")
         ```
         <!--End PulumiCodeChooser -->
 
@@ -273,8 +273,8 @@ class NotificationPolicyWebhooks(pulumi.CustomResource):
         example = cloudflare.NotificationPolicyWebhooks("example",
             account_id="f037e56e89293a057740de681ac9abbe",
             name="Webhooks destination",
-            secret="my-secret",
-            url="https://example.com")
+            url="https://example.com",
+            secret="my-secret")
         ```
         <!--End PulumiCodeChooser -->
 

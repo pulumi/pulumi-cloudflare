@@ -31,7 +31,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// IP List
-//			exampleIpList, err := cloudflare.NewList(ctx, "exampleIpList", &cloudflare.ListArgs{
+//			exampleIpList, err := cloudflare.NewList(ctx, "example_ip_list", &cloudflare.ListArgs{
 //				AccountId:   pulumi.String("f037e56e89293a057740de681ac9abbe"),
 //				Name:        pulumi.String("example_list"),
 //				Description: pulumi.String("example IPs for a list"),
@@ -41,7 +41,7 @@ import (
 //				return err
 //			}
 //			// IP List Item
-//			_, err = cloudflare.NewListItem(ctx, "exampleIpItem", &cloudflare.ListItemArgs{
+//			_, err = cloudflare.NewListItem(ctx, "example_ip_item", &cloudflare.ListItemArgs{
 //				AccountId: pulumi.String("f037e56e89293a057740de681ac9abbe"),
 //				ListId:    exampleIpList.ID(),
 //				Comment:   pulumi.String("List Item Comment"),
@@ -51,7 +51,7 @@ import (
 //				return err
 //			}
 //			// Redirect List
-//			_, err = cloudflare.NewList(ctx, "exampleRedirectList", &cloudflare.ListArgs{
+//			_, err = cloudflare.NewList(ctx, "example_redirect_list", &cloudflare.ListArgs{
 //				AccountId:   pulumi.String("f037e56e89293a057740de681ac9abbe"),
 //				Name:        pulumi.String("example_list"),
 //				Description: pulumi.String("example Redirects for a list"),
@@ -61,7 +61,7 @@ import (
 //				return err
 //			}
 //			// Redirect List Item
-//			_, err = cloudflare.NewListItem(ctx, "exampleRedirectItem", &cloudflare.ListItemArgs{
+//			_, err = cloudflare.NewListItem(ctx, "example_redirect_item", &cloudflare.ListItemArgs{
 //				AccountId: pulumi.String("f037e56e89293a057740de681ac9abbe"),
 //				ListId:    exampleIpList.ID(),
 //				Redirect: &cloudflare.ListItemRedirectArgs{
@@ -75,7 +75,7 @@ import (
 //				return err
 //			}
 //			// ASN List
-//			exampleAsnList, err := cloudflare.NewList(ctx, "exampleAsnList", &cloudflare.ListArgs{
+//			exampleAsnList, err := cloudflare.NewList(ctx, "example_asn_list", &cloudflare.ListArgs{
 //				AccountId:   pulumi.String("f037e56e89293a057740de681ac9abbe"),
 //				Name:        pulumi.String("example_asn_list"),
 //				Description: pulumi.String("example ASNs for a list"),
@@ -85,7 +85,7 @@ import (
 //				return err
 //			}
 //			// ASN List Item
-//			_, err = cloudflare.NewListItem(ctx, "exampleAsnItem", &cloudflare.ListItemArgs{
+//			_, err = cloudflare.NewListItem(ctx, "example_asn_item", &cloudflare.ListItemArgs{
 //				AccountId: pulumi.String("f037e56e89293a057740de681ac9abbe"),
 //				ListId:    exampleAsnList.ID(),
 //				Comment:   pulumi.String("List Item Comment"),
@@ -95,7 +95,7 @@ import (
 //				return err
 //			}
 //			// Hostname List
-//			exampleHostnameList, err := cloudflare.NewList(ctx, "exampleHostnameList", &cloudflare.ListArgs{
+//			exampleHostnameList, err := cloudflare.NewList(ctx, "example_hostname_list", &cloudflare.ListArgs{
 //				AccountId:   pulumi.String("f037e56e89293a057740de681ac9abbe"),
 //				Name:        pulumi.String("example_hostname_list"),
 //				Description: pulumi.String("example Hostnames for a list"),
@@ -105,7 +105,7 @@ import (
 //				return err
 //			}
 //			// Hostname List Item
-//			_, err = cloudflare.NewListItem(ctx, "exampleHostnameItem", &cloudflare.ListItemArgs{
+//			_, err = cloudflare.NewListItem(ctx, "example_hostname_item", &cloudflare.ListItemArgs{
 //				AccountId: pulumi.String("f037e56e89293a057740de681ac9abbe"),
 //				ListId:    exampleHostnameList.ID(),
 //				Comment:   pulumi.String("List Item Comment"),

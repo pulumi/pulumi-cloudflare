@@ -283,14 +283,14 @@ class FirewallRule(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        wordpress_filter = cloudflare.Filter("wordpressFilter",
+        wordpress = cloudflare.Filter("wordpress",
             zone_id="0da42c8d2132a9ddaf714f9e7c920711",
             description="Wordpress break-in attempts that are outside of the office",
             expression="(http.request.uri.path ~ \\".*wp-login.php\\" or http.request.uri.path ~ \\".*xmlrpc.php\\") and ip.src ne 192.0.2.1")
-        wordpress_firewall_rule = cloudflare.FirewallRule("wordpressFirewallRule",
+        wordpress_firewall_rule = cloudflare.FirewallRule("wordpress",
             zone_id="0da42c8d2132a9ddaf714f9e7c920711",
             description="Block wordpress break-in attempts",
-            filter_id=wordpress_filter.id,
+            filter_id=wordpress.id,
             action="block")
         ```
         <!--End PulumiCodeChooser -->
@@ -339,14 +339,14 @@ class FirewallRule(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        wordpress_filter = cloudflare.Filter("wordpressFilter",
+        wordpress = cloudflare.Filter("wordpress",
             zone_id="0da42c8d2132a9ddaf714f9e7c920711",
             description="Wordpress break-in attempts that are outside of the office",
             expression="(http.request.uri.path ~ \\".*wp-login.php\\" or http.request.uri.path ~ \\".*xmlrpc.php\\") and ip.src ne 192.0.2.1")
-        wordpress_firewall_rule = cloudflare.FirewallRule("wordpressFirewallRule",
+        wordpress_firewall_rule = cloudflare.FirewallRule("wordpress",
             zone_id="0da42c8d2132a9ddaf714f9e7c920711",
             description="Block wordpress break-in attempts",
-            filter_id=wordpress_filter.id,
+            filter_id=wordpress.id,
             action="block")
         ```
         <!--End PulumiCodeChooser -->

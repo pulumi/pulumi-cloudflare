@@ -17,16 +17,16 @@ import * as utilities from "./utilities";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
  * const example = new cloudflare.EmailRoutingCatchAll("example", {
- *     actions: [{
- *         type: "forward",
- *         values: ["destinationaddress@example.net"],
- *     }],
+ *     zoneId: "0da42c8d2132a9ddaf714f9e7c920711",
+ *     name: "example catch all",
  *     enabled: true,
  *     matchers: [{
  *         type: "all",
  *     }],
- *     name: "example catch all",
- *     zoneId: "0da42c8d2132a9ddaf714f9e7c920711",
+ *     actions: [{
+ *         type: "forward",
+ *         values: ["destinationaddress@example.net"],
+ *     }],
  * });
  * ```
  * <!--End PulumiCodeChooser -->

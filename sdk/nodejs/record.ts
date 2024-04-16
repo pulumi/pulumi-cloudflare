@@ -18,15 +18,15 @@ import * as utilities from "./utilities";
  *
  * // Add a record to the domain
  * const example = new cloudflare.Record("example", {
- *     zoneId: _var.cloudflare_zone_id,
+ *     zoneId: cloudflareZoneId,
  *     name: "example",
  *     value: "192.0.2.1",
  *     type: "A",
  *     ttl: 3600,
  * });
  * // Add a record requiring a data map
- * const _sipTls = new cloudflare.Record("_sipTls", {
- *     zoneId: _var.cloudflare_zone_id,
+ * const _sipTls = new cloudflare.Record("_sip_tls", {
+ *     zoneId: cloudflareZoneId,
  *     name: "_sip._tls",
  *     type: "SRV",
  *     data: {

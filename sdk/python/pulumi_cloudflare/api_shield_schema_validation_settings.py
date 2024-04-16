@@ -141,9 +141,9 @@ class ApiShieldSchemaValidationSettings(pulumi.CustomResource):
         import pulumi_cloudflare as cloudflare
 
         example = cloudflare.ApiShieldSchemaValidationSettings("example",
+            zone_id="0da42c8d2132a9ddaf714f9e7c920711",
             validation_default_mitigation_action="log",
-            validation_override_mitigation_action="none",
-            zone_id="0da42c8d2132a9ddaf714f9e7c920711")
+            validation_override_mitigation_action="none")
         ```
         <!--End PulumiCodeChooser -->
 
@@ -170,9 +170,9 @@ class ApiShieldSchemaValidationSettings(pulumi.CustomResource):
         import pulumi_cloudflare as cloudflare
 
         example = cloudflare.ApiShieldSchemaValidationSettings("example",
+            zone_id="0da42c8d2132a9ddaf714f9e7c920711",
             validation_default_mitigation_action="log",
-            validation_override_mitigation_action="none",
-            zone_id="0da42c8d2132a9ddaf714f9e7c920711")
+            validation_override_mitigation_action="none")
         ```
         <!--End PulumiCodeChooser -->
 

@@ -346,27 +346,6 @@ class CertificatePack(pulumi.CustomResource):
         """
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
-        ```python
-        import pulumi
-        import pulumi_cloudflare as cloudflare
-
-        # Advanced certificate manager for Let's Encrypt
-        example = cloudflare.CertificatePack("example",
-            certificate_authority="lets_encrypt",
-            cloudflare_branding=False,
-            hosts=[
-                "example.com",
-                "*.example.com",
-            ],
-            type="advanced",
-            validation_method="http",
-            validity_days=90,
-            wait_for_active_status=True,
-            zone_id="0da42c8d2132a9ddaf714f9e7c920711")
-        ```
-        <!--End PulumiCodeChooser -->
-
         ## Import
 
         ```sh
@@ -396,27 +375,6 @@ class CertificatePack(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Example Usage
-
-        <!--Start PulumiCodeChooser -->
-        ```python
-        import pulumi
-        import pulumi_cloudflare as cloudflare
-
-        # Advanced certificate manager for Let's Encrypt
-        example = cloudflare.CertificatePack("example",
-            certificate_authority="lets_encrypt",
-            cloudflare_branding=False,
-            hosts=[
-                "example.com",
-                "*.example.com",
-            ],
-            type="advanced",
-            validation_method="http",
-            validity_days=90,
-            wait_for_active_status=True,
-            zone_id="0da42c8d2132a9ddaf714f9e7c920711")
-        ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

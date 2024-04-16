@@ -20,11 +20,11 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleZone = cloudflare.getZone({
+ * const example = cloudflare.getZone({
  *     name: "example.com",
  * });
- * const exampleRecord = new cloudflare.Record("exampleRecord", {
- *     zoneId: exampleZone.then(exampleZone => exampleZone.id),
+ * const exampleRecord = new cloudflare.Record("example", {
+ *     zoneId: example.then(example => example.id),
  *     name: "www",
  *     value: "203.0.113.1",
  *     type: "A",
@@ -119,11 +119,11 @@ export interface GetZoneResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleZone = cloudflare.getZone({
+ * const example = cloudflare.getZone({
  *     name: "example.com",
  * });
- * const exampleRecord = new cloudflare.Record("exampleRecord", {
- *     zoneId: exampleZone.then(exampleZone => exampleZone.id),
+ * const exampleRecord = new cloudflare.Record("example", {
+ *     zoneId: example.then(example => example.id),
  *     name: "www",
  *     value: "203.0.113.1",
  *     type: "A",

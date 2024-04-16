@@ -50,15 +50,15 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         // Enable security headers using Managed Meaders
  *         var example = new ManagedHeaders(&#34;example&#34;, ManagedHeadersArgs.builder()        
+ *             .zoneId(&#34;0da42c8d2132a9ddaf714f9e7c920711&#34;)
  *             .managedRequestHeaders(ManagedHeadersManagedRequestHeaderArgs.builder()
- *                 .enabled(true)
  *                 .id(&#34;add_true_client_ip_headers&#34;)
+ *                 .enabled(true)
  *                 .build())
  *             .managedResponseHeaders(ManagedHeadersManagedResponseHeaderArgs.builder()
- *                 .enabled(true)
  *                 .id(&#34;remove_x-powered-by_header&#34;)
+ *                 .enabled(true)
  *                 .build())
- *             .zoneId(&#34;0da42c8d2132a9ddaf714f9e7c920711&#34;)
  *             .build());
  * 
  *     }

@@ -26,16 +26,16 @@ namespace Pulumi.Cloudflare
     ///     var example = new Cloudflare.IpsecTunnel("example", new()
     ///     {
     ///         AccountId = "f037e56e89293a057740de681ac9abbe",
-    ///         AllowNullCipher = false,
-    ///         CloudflareEndpoint = "203.0.113.1",
+    ///         Name = "IPsec_1",
     ///         CustomerEndpoint = "203.0.113.1",
+    ///         CloudflareEndpoint = "203.0.113.1",
+    ///         InterfaceAddress = "192.0.2.0/31",
     ///         Description = "Tunnel for ISP X",
     ///         HealthCheckEnabled = true,
     ///         HealthCheckTarget = "203.0.113.1",
     ///         HealthCheckType = "reply",
-    ///         InterfaceAddress = "192.0.2.0/31",
-    ///         Name = "IPsec_1",
     ///         Psk = "asdf12341234",
+    ///         AllowNullCipher = false,
     ///     });
     /// 
     /// });

@@ -29,14 +29,14 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.NewAccessMutualTlsHostnameSettings(ctx, "example", &cloudflare.AccessMutualTlsHostnameSettingsArgs{
+//				ZoneId: pulumi.String("0da42c8d2132a9ddaf714f9e7c920711"),
 //				Settings: cloudflare.AccessMutualTlsHostnameSettingsSettingArray{
 //					&cloudflare.AccessMutualTlsHostnameSettingsSettingArgs{
-//						ChinaNetwork:                pulumi.Bool(false),
-//						ClientCertificateForwarding: pulumi.Bool(true),
 //						Hostname:                    pulumi.String("example.com"),
+//						ClientCertificateForwarding: pulumi.Bool(true),
+//						ChinaNetwork:                pulumi.Bool(false),
 //					},
 //				},
-//				ZoneId: pulumi.String("0da42c8d2132a9ddaf714f9e7c920711"),
 //			})
 //			if err != nil {
 //				return err

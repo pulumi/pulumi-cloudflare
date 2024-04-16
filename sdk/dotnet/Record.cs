@@ -26,7 +26,7 @@ namespace Pulumi.Cloudflare
     ///     // Add a record to the domain
     ///     var example = new Cloudflare.Record("example", new()
     ///     {
-    ///         ZoneId = @var.Cloudflare_zone_id,
+    ///         ZoneId = cloudflareZoneId,
     ///         Name = "example",
     ///         Value = "192.0.2.1",
     ///         Type = "A",
@@ -34,9 +34,9 @@ namespace Pulumi.Cloudflare
     ///     });
     /// 
     ///     // Add a record requiring a data map
-    ///     var _sipTls = new Cloudflare.Record("_sipTls", new()
+    ///     var _sipTls = new Cloudflare.Record("_sip_tls", new()
     ///     {
-    ///         ZoneId = @var.Cloudflare_zone_id,
+    ///         ZoneId = cloudflareZoneId,
     ///         Name = "_sip._tls",
     ///         Type = "SRV",
     ///         Data = new Cloudflare.Inputs.RecordDataArgs

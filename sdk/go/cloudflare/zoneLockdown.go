@@ -35,18 +35,18 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// Restrict access to these endpoints to requests from a known IP address range.
 //			_, err := cloudflare.NewZoneLockdown(ctx, "example", &cloudflare.ZoneLockdownArgs{
+//				ZoneId:      pulumi.String("0da42c8d2132a9ddaf714f9e7c920711"),
+//				Paused:      pulumi.Bool(false),
+//				Description: pulumi.String("Restrict access to these endpoints to requests from a known IP address range"),
+//				Urls: pulumi.StringArray{
+//					pulumi.String("api.mysite.com/some/endpoint*"),
+//				},
 //				Configurations: cloudflare.ZoneLockdownConfigurationArray{
 //					&cloudflare.ZoneLockdownConfigurationArgs{
 //						Target: pulumi.String("ip_range"),
 //						Value:  pulumi.String("192.0.2.0/24"),
 //					},
 //				},
-//				Description: pulumi.String("Restrict access to these endpoints to requests from a known IP address range"),
-//				Paused:      pulumi.Bool(false),
-//				Urls: pulumi.StringArray{
-//					pulumi.String("api.mysite.com/some/endpoint*"),
-//				},
-//				ZoneId: pulumi.String("0da42c8d2132a9ddaf714f9e7c920711"),
 //			})
 //			if err != nil {
 //				return err

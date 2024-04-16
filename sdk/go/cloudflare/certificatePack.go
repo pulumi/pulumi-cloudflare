@@ -14,43 +14,6 @@ import (
 
 // ## Example Usage
 //
-// <!--Start PulumiCodeChooser -->
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			// Advanced certificate manager for Let's Encrypt
-//			_, err := cloudflare.NewCertificatePack(ctx, "example", &cloudflare.CertificatePackArgs{
-//				CertificateAuthority: pulumi.String("lets_encrypt"),
-//				CloudflareBranding:   pulumi.Bool(false),
-//				Hosts: pulumi.StringArray{
-//					pulumi.String("example.com"),
-//					pulumi.String("*.example.com"),
-//				},
-//				Type:                pulumi.String("advanced"),
-//				ValidationMethod:    pulumi.String("http"),
-//				ValidityDays:        pulumi.Int(90),
-//				WaitForActiveStatus: pulumi.Bool(true),
-//				ZoneId:              pulumi.String("0da42c8d2132a9ddaf714f9e7c920711"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-// <!--End PulumiCodeChooser -->
-//
 // ## Import
 //
 // ```sh

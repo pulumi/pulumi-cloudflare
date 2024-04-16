@@ -30,9 +30,9 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.NewUrlNormalizationSettings(ctx, "example", &cloudflare.UrlNormalizationSettingsArgs{
-//				Scope:  pulumi.String("incoming"),
-//				Type:   pulumi.String("cloudflare"),
 //				ZoneId: pulumi.String("0da42c8d2132a9ddaf714f9e7c920711"),
+//				Type:   pulumi.String("cloudflare"),
+//				Scope:  pulumi.String("incoming"),
 //			})
 //			if err != nil {
 //				return err

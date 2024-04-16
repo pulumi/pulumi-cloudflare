@@ -14,10 +14,9 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const myScript = new cloudflare.WorkerScript("myScript", {});
- * // see "cloudflare_worker_script" documentation ...
+ * const myScript = new cloudflare.WorkerScript("my_script", {});
  * // Runs the specified worker script for all URLs that match `example.com/*`
- * const myRoute = new cloudflare.WorkerRoute("myRoute", {
+ * const myRoute = new cloudflare.WorkerRoute("my_route", {
  *     zoneId: "0da42c8d2132a9ddaf714f9e7c920711",
  *     pattern: "example.com/*",
  *     scriptName: myScript.name,

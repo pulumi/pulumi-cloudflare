@@ -18,6 +18,13 @@ import * as utilities from "./utilities";
  *
  * // Waiting Room
  * const example = new cloudflare.WaitingRoom("example", {
+ *     zoneId: "0da42c8d2132a9ddaf714f9e7c920711",
+ *     name: "foo",
+ *     host: "foo.example.com",
+ *     path: "/",
+ *     newUsersPerMinute: 200,
+ *     totalActiveUsers: 200,
+ *     cookieSuffix: "queue1",
  *     additionalRoutes: [
  *         {
  *             host: "shop1.example.com",
@@ -27,14 +34,7 @@ import * as utilities from "./utilities";
  *             host: "shop2.example.com",
  *         },
  *     ],
- *     cookieSuffix: "queue1",
- *     host: "foo.example.com",
- *     name: "foo",
- *     newUsersPerMinute: 200,
- *     path: "/",
  *     queueingStatusCode: 200,
- *     totalActiveUsers: 200,
- *     zoneId: "0da42c8d2132a9ddaf714f9e7c920711",
  * });
  * ```
  * <!--End PulumiCodeChooser -->

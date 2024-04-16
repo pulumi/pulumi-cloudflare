@@ -19,7 +19,7 @@ import * as utilities from "./utilities";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
  * // Challenge requests coming from known Tor exit nodes.
- * const torExitNodes = new cloudflare.AccessRule("torExitNodes", {
+ * const torExitNodes = new cloudflare.AccessRule("tor_exit_nodes", {
  *     zoneId: "0da42c8d2132a9ddaf714f9e7c920711",
  *     notes: "Requests coming from known Tor exit nodes",
  *     mode: "challenge",
@@ -46,13 +46,13 @@ import * as utilities from "./utilities";
  * ];
  * const officeNetwork: cloudflare.AccessRule[] = [];
  * for (const range = {value: 0}; range.value < myOffice.length; range.value++) {
- *     officeNetwork.push(new cloudflare.AccessRule(`officeNetwork-${range.value}`, {
+ *     officeNetwork.push(new cloudflare.AccessRule(`office_network-${range.value}`, {
  *         accountId: "f037e56e89293a057740de681ac9abbe",
  *         notes: "Requests coming from office network",
  *         mode: "whitelist",
  *         configuration: {
  *             target: "ip_range",
- *             value: myOffice[count.index],
+ *             value: myOffice[range.value],
  *         },
  *     }));
  * }

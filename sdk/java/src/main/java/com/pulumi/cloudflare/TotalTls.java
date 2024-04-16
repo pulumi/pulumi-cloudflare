@@ -43,9 +43,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var example = new TotalTls(&#34;example&#34;, TotalTlsArgs.builder()        
- *             .certificateAuthority(&#34;lets_encrypt&#34;)
- *             .enabled(true)
  *             .zoneId(&#34;0da42c8d2132a9ddaf714f9e7c920711&#34;)
+ *             .enabled(true)
+ *             .certificateAuthority(&#34;lets_encrypt&#34;)
  *             .build());
  * 
  *     }

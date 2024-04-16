@@ -16,8 +16,8 @@ import * as utilities from "./utilities";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
  * const example = new cloudflare.TieredCache("example", {
- *     cacheType: "smart",
  *     zoneId: "0da42c8d2132a9ddaf714f9e7c920711",
+ *     cacheType: "smart",
  * });
  * ```
  * <!--End PulumiCodeChooser -->

@@ -44,8 +44,8 @@ import javax.annotation.Nullable;
  *         var example = new NotificationPolicyWebhooks(&#34;example&#34;, NotificationPolicyWebhooksArgs.builder()        
  *             .accountId(&#34;f037e56e89293a057740de681ac9abbe&#34;)
  *             .name(&#34;Webhooks destination&#34;)
- *             .secret(&#34;my-secret&#34;)
  *             .url(&#34;https://example.com&#34;)
+ *             .secret(&#34;my-secret&#34;)
  *             .build());
  * 
  *     }

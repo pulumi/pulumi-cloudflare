@@ -25,10 +25,10 @@ namespace Pulumi.Cloudflare
     /// {
     ///     var example = new Cloudflare.CustomPages("example", new()
     ///     {
-    ///         State = "customized",
+    ///         ZoneId = "0da42c8d2132a9ddaf714f9e7c920711",
     ///         Type = "basic_challenge",
     ///         Url = "https://example.com/challenge.html",
-    ///         ZoneId = "0da42c8d2132a9ddaf714f9e7c920711",
+    ///         State = "customized",
     ///     });
     /// 
     /// });

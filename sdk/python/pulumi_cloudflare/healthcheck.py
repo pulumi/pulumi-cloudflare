@@ -735,8 +735,8 @@ class Healthcheck(pulumi.CustomResource):
         import pulumi_cloudflare as cloudflare
 
         # HTTPS Healthcheck
-        http_health_check = cloudflare.Healthcheck("httpHealthCheck",
-            zone_id=var["cloudflare_zone_id"],
+        http_health_check = cloudflare.Healthcheck("http_health_check",
+            zone_id=cloudflare_zone_id,
             name="http-health-check",
             description="example http health check",
             address="example.com",
@@ -766,8 +766,8 @@ class Healthcheck(pulumi.CustomResource):
             consecutive_fails=3,
             consecutive_successes=2)
         # TCP Healthcheck
-        tcp_health_check = cloudflare.Healthcheck("tcpHealthCheck",
-            zone_id=var["cloudflare_zone_id"],
+        tcp_health_check = cloudflare.Healthcheck("tcp_health_check",
+            zone_id=cloudflare_zone_id,
             name="tcp-health-check",
             description="example tcp health check",
             address="example.com",
@@ -836,8 +836,8 @@ class Healthcheck(pulumi.CustomResource):
         import pulumi_cloudflare as cloudflare
 
         # HTTPS Healthcheck
-        http_health_check = cloudflare.Healthcheck("httpHealthCheck",
-            zone_id=var["cloudflare_zone_id"],
+        http_health_check = cloudflare.Healthcheck("http_health_check",
+            zone_id=cloudflare_zone_id,
             name="http-health-check",
             description="example http health check",
             address="example.com",
@@ -867,8 +867,8 @@ class Healthcheck(pulumi.CustomResource):
             consecutive_fails=3,
             consecutive_successes=2)
         # TCP Healthcheck
-        tcp_health_check = cloudflare.Healthcheck("tcpHealthCheck",
-            zone_id=var["cloudflare_zone_id"],
+        tcp_health_check = cloudflare.Healthcheck("tcp_health_check",
+            zone_id=cloudflare_zone_id,
             name="tcp-health-check",
             description="example tcp health check",
             address="example.com",

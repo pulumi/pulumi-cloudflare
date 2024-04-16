@@ -31,7 +31,18 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.NewTeamsAccount(ctx, "example", &cloudflare.TeamsAccountArgs{
-//				AccountId: pulumi.String("f037e56e89293a057740de681ac9abbe"),
+//				AccountId:                pulumi.String("f037e56e89293a057740de681ac9abbe"),
+//				TlsDecryptEnabled:        pulumi.Bool(true),
+//				ProtocolDetectionEnabled: pulumi.Bool(true),
+//				BlockPage: &cloudflare.TeamsAccountBlockPageArgs{
+//					FooterText:      pulumi.String("hello"),
+//					HeaderText:      pulumi.String("hello"),
+//					LogoPath:        pulumi.String("https://example.com/logo.jpg"),
+//					BackgroundColor: pulumi.String("#000000"),
+//				},
+//				BodyScanning: &cloudflare.TeamsAccountBodyScanningArgs{
+//					InspectionMode: pulumi.String("deep"),
+//				},
 //				Antivirus: &cloudflare.TeamsAccountAntivirusArgs{
 //					EnabledDownloadPhase: pulumi.Bool(true),
 //					EnabledUploadPhase:   pulumi.Bool(false),
@@ -42,21 +53,15 @@ import (
 //						SupportUrl: pulumi.String("https://example.com/blocked"),
 //					},
 //				},
-//				BlockPage: &cloudflare.TeamsAccountBlockPageArgs{
-//					BackgroundColor: pulumi.String("#000000"),
-//					FooterText:      pulumi.String("hello"),
-//					HeaderText:      pulumi.String("hello"),
-//					LogoPath:        pulumi.String("https://example.com/logo.jpg"),
-//				},
-//				BodyScanning: &cloudflare.TeamsAccountBodyScanningArgs{
-//					InspectionMode: pulumi.String("deep"),
-//				},
-//				ExtendedEmailMatching: &cloudflare.TeamsAccountExtendedEmailMatchingArgs{
-//					Enabled: pulumi.Bool(true),
-//				},
 //				Fips: &cloudflare.TeamsAccountFipsArgs{
 //					Tls: pulumi.Bool(true),
 //				},
+//				Proxy: &cloudflare.TeamsAccountProxyArgs{
+//					Tcp:    pulumi.Bool(true),
+//					Udp:    pulumi.Bool(true),
+//					RootCa: pulumi.Bool(true),
+//				},
+//				UrlBrowserIsolationEnabled: pulumi.Bool(true),
 //				Logging: &cloudflare.TeamsAccountLoggingArgs{
 //					RedactPii: pulumi.Bool(true),
 //					SettingsByRuleType: &cloudflare.TeamsAccountLoggingSettingsByRuleTypeArgs{
@@ -74,14 +79,9 @@ import (
 //						},
 //					},
 //				},
-//				ProtocolDetectionEnabled: pulumi.Bool(true),
-//				Proxy: &cloudflare.TeamsAccountProxyArgs{
-//					RootCa: pulumi.Bool(true),
-//					Tcp:    pulumi.Bool(true),
-//					Udp:    pulumi.Bool(true),
+//				ExtendedEmailMatching: &cloudflare.TeamsAccountExtendedEmailMatchingArgs{
+//					Enabled: pulumi.Bool(true),
 //				},
-//				TlsDecryptEnabled:          pulumi.Bool(true),
-//				UrlBrowserIsolationEnabled: pulumi.Bool(true),
 //			})
 //			if err != nil {
 //				return err

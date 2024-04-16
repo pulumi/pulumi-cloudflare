@@ -106,15 +106,15 @@ def get_access_identity_provider(account_id: Optional[str] = None,
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_access_identity_provider = cloudflare.get_access_identity_provider(name="Google SSO",
+    example = cloudflare.get_access_identity_provider(name="Google SSO",
         account_id="f037e56e89293a057740de681ac9abbe")
-    example_access_application = cloudflare.AccessApplication("exampleAccessApplication",
+    example_access_application = cloudflare.AccessApplication("example",
         zone_id="0da42c8d2132a9ddaf714f9e7c920711",
         name="name",
         domain="name.example.com",
         type="self_hosted",
         session_duration="24h",
-        allowed_idps=[example_access_identity_provider.id],
+        allowed_idps=[example.id],
         auto_redirect_to_identity=True)
     ```
     <!--End PulumiCodeChooser -->
@@ -154,15 +154,15 @@ def get_access_identity_provider_output(account_id: Optional[pulumi.Input[Option
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_access_identity_provider = cloudflare.get_access_identity_provider(name="Google SSO",
+    example = cloudflare.get_access_identity_provider(name="Google SSO",
         account_id="f037e56e89293a057740de681ac9abbe")
-    example_access_application = cloudflare.AccessApplication("exampleAccessApplication",
+    example_access_application = cloudflare.AccessApplication("example",
         zone_id="0da42c8d2132a9ddaf714f9e7c920711",
         name="name",
         domain="name.example.com",
         type="self_hosted",
         session_duration="24h",
-        allowed_idps=[example_access_identity_provider.id],
+        allowed_idps=[example.id],
         auto_redirect_to_identity=True)
     ```
     <!--End PulumiCodeChooser -->

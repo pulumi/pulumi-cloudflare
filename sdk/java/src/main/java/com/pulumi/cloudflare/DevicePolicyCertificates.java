@@ -44,8 +44,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var example = new DevicePolicyCertificates(&#34;example&#34;, DevicePolicyCertificatesArgs.builder()        
- *             .enabled(true)
  *             .zoneId(&#34;0da42c8d2132a9ddaf714f9e7c920711&#34;)
+ *             .enabled(true)
  *             .build());
  * 
  *     }

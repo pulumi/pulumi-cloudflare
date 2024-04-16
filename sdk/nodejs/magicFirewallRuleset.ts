@@ -18,20 +18,20 @@ import * as utilities from "./utilities";
  *
  * const example = new cloudflare.MagicFirewallRuleset("example", {
  *     accountId: "d41d8cd98f00b204e9800998ecf8427e",
- *     description: "Global mitigations",
  *     name: "Magic Transit Ruleset",
+ *     description: "Global mitigations",
  *     rules: [
  *         {
  *             action: "allow",
+ *             expression: "tcp.dstport in { 32768..65535 }",
  *             description: "Allow TCP Ephemeral Ports",
  *             enabled: "true",
- *             expression: "tcp.dstport in { 32768..65535 }",
  *         },
  *         {
  *             action: "block",
+ *             expression: "ip.len >= 0",
  *             description: "Block all",
  *             enabled: "true",
- *             expression: "ip.len >= 0",
  *         },
  *     ],
  * });

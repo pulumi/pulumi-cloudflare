@@ -31,18 +31,18 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.NewTeamsRule(ctx, "example", &cloudflare.TeamsRuleArgs{
 //				AccountId:   pulumi.String("f037e56e89293a057740de681ac9abbe"),
-//				Action:      pulumi.String("block"),
+//				Name:        pulumi.String("office"),
 //				Description: pulumi.String("desc"),
+//				Precedence:  pulumi.Int(1),
+//				Action:      pulumi.String("block"),
 //				Filters: pulumi.StringArray{
 //					pulumi.String("http"),
 //				},
-//				Name:       pulumi.String("office"),
-//				Precedence: pulumi.Int(1),
+//				Traffic: pulumi.String("http.request.uri == \"https://www.example.com/malicious\""),
 //				RuleSettings: &cloudflare.TeamsRuleRuleSettingsArgs{
 //					BlockPageEnabled: pulumi.Bool(true),
 //					BlockPageReason:  pulumi.String("access not permitted"),
 //				},
-//				Traffic: pulumi.String("http.request.uri == \"https://www.example.com/malicious\""),
 //			})
 //			if err != nil {
 //				return err

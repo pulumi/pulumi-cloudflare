@@ -236,15 +236,15 @@ class DevicePostureIntegration(pulumi.CustomResource):
 
         example = cloudflare.DevicePostureIntegration("example",
             account_id="f037e56e89293a057740de681ac9abbe",
+            name="Device posture integration",
+            type="workspace_one",
+            interval="24h",
             configs=[cloudflare.DevicePostureIntegrationConfigArgs(
                 api_url="https://example.com/api",
                 auth_url="https://example.com/connect/token",
                 client_id="client-id",
                 client_secret="client-secret",
-            )],
-            interval="24h",
-            name="Device posture integration",
-            type="workspace_one")
+            )])
         ```
         <!--End PulumiCodeChooser -->
 
@@ -282,15 +282,15 @@ class DevicePostureIntegration(pulumi.CustomResource):
 
         example = cloudflare.DevicePostureIntegration("example",
             account_id="f037e56e89293a057740de681ac9abbe",
+            name="Device posture integration",
+            type="workspace_one",
+            interval="24h",
             configs=[cloudflare.DevicePostureIntegrationConfigArgs(
                 api_url="https://example.com/api",
                 auth_url="https://example.com/connect/token",
                 client_id="client-id",
                 client_secret="client-secret",
-            )],
-            interval="24h",
-            name="Device posture integration",
-            type="workspace_one")
+            )])
         ```
         <!--End PulumiCodeChooser -->
 

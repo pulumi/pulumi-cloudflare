@@ -30,6 +30,16 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.NewEmailRoutingRule(ctx, "main", &cloudflare.EmailRoutingRuleArgs{
+//				ZoneId:  pulumi.String("0da42c8d2132a9ddaf714f9e7c920711"),
+//				Name:    pulumi.String("terraform rule"),
+//				Enabled: pulumi.Bool(true),
+//				Matchers: cloudflare.EmailRoutingRuleMatcherArray{
+//					&cloudflare.EmailRoutingRuleMatcherArgs{
+//						Type:  pulumi.String("literal"),
+//						Field: pulumi.String("to"),
+//						Value: pulumi.String("test@example.com"),
+//					},
+//				},
 //				Actions: cloudflare.EmailRoutingRuleActionArray{
 //					&cloudflare.EmailRoutingRuleActionArgs{
 //						Type: pulumi.String("forward"),
@@ -38,16 +48,6 @@ import (
 //						},
 //					},
 //				},
-//				Enabled: pulumi.Bool(true),
-//				Matchers: cloudflare.EmailRoutingRuleMatcherArray{
-//					&cloudflare.EmailRoutingRuleMatcherArgs{
-//						Field: pulumi.String("to"),
-//						Type:  pulumi.String("literal"),
-//						Value: pulumi.String("test@example.com"),
-//					},
-//				},
-//				Name:   pulumi.String("terraform rule"),
-//				ZoneId: pulumi.String("0da42c8d2132a9ddaf714f9e7c920711"),
 //			})
 //			if err != nil {
 //				return err

@@ -174,13 +174,13 @@ class HyperdriveConfig(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        no_defaults = cloudflare.HyperdriveConfig("noDefaults",
+        no_defaults = cloudflare.HyperdriveConfig("no_defaults",
             account_id="f037e56e89293a057740de681ac9abbe",
             name="my-hyperdrive-config",
             origin=cloudflare.HyperdriveConfigOriginArgs(
                 database="postgres",
-                host="my-database.example.com",
                 password="my-password",
+                host="my-database.example.com",
                 port=5432,
                 scheme="postgres",
                 user="my-user",
@@ -217,13 +217,13 @@ class HyperdriveConfig(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        no_defaults = cloudflare.HyperdriveConfig("noDefaults",
+        no_defaults = cloudflare.HyperdriveConfig("no_defaults",
             account_id="f037e56e89293a057740de681ac9abbe",
             name="my-hyperdrive-config",
             origin=cloudflare.HyperdriveConfigOriginArgs(
                 database="postgres",
-                host="my-database.example.com",
                 password="my-password",
+                host="my-database.example.com",
                 port=5432,
                 scheme="postgres",
                 user="my-user",
