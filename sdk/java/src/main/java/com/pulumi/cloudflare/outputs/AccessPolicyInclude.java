@@ -26,6 +26,11 @@ public final class AccessPolicyInclude {
     private @Nullable List<AccessPolicyIncludeAzure> azures;
     private @Nullable Boolean certificate;
     private @Nullable String commonName;
+    /**
+     * @return Overflow field if you need to have multiple common*name rules in a single policy.  Use in place of the singular common*name field.
+     * 
+     */
+    private @Nullable List<String> commonNames;
     private @Nullable List<String> devicePostures;
     private @Nullable List<String> emailDomains;
     private @Nullable List<String> emails;
@@ -68,6 +73,13 @@ public final class AccessPolicyInclude {
     }
     public Optional<String> commonName() {
         return Optional.ofNullable(this.commonName);
+    }
+    /**
+     * @return Overflow field if you need to have multiple common*name rules in a single policy.  Use in place of the singular common*name field.
+     * 
+     */
+    public List<String> commonNames() {
+        return this.commonNames == null ? List.of() : this.commonNames;
     }
     public List<String> devicePostures() {
         return this.devicePostures == null ? List.of() : this.devicePostures;
@@ -138,6 +150,7 @@ public final class AccessPolicyInclude {
         private @Nullable List<AccessPolicyIncludeAzure> azures;
         private @Nullable Boolean certificate;
         private @Nullable String commonName;
+        private @Nullable List<String> commonNames;
         private @Nullable List<String> devicePostures;
         private @Nullable List<String> emailDomains;
         private @Nullable List<String> emails;
@@ -162,6 +175,7 @@ public final class AccessPolicyInclude {
     	      this.azures = defaults.azures;
     	      this.certificate = defaults.certificate;
     	      this.commonName = defaults.commonName;
+    	      this.commonNames = defaults.commonNames;
     	      this.devicePostures = defaults.devicePostures;
     	      this.emailDomains = defaults.emailDomains;
     	      this.emails = defaults.emails;
@@ -220,6 +234,15 @@ public final class AccessPolicyInclude {
 
             this.commonName = commonName;
             return this;
+        }
+        @CustomType.Setter
+        public Builder commonNames(@Nullable List<String> commonNames) {
+
+            this.commonNames = commonNames;
+            return this;
+        }
+        public Builder commonNames(String... commonNames) {
+            return commonNames(List.of(commonNames));
         }
         @CustomType.Setter
         public Builder devicePostures(@Nullable List<String> devicePostures) {
@@ -358,6 +381,7 @@ public final class AccessPolicyInclude {
             _resultValue.azures = azures;
             _resultValue.certificate = certificate;
             _resultValue.commonName = commonName;
+            _resultValue.commonNames = commonNames;
             _resultValue.devicePostures = devicePostures;
             _resultValue.emailDomains = emailDomains;
             _resultValue.emails = emails;

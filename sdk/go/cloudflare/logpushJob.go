@@ -32,7 +32,7 @@ type LogpushJob struct {
 
 	// The account identifier to target for the resource. Must provide only one of `accountId`, `zoneId`.
 	AccountId pulumi.StringPtrOutput `pulumi:"accountId"`
-	// The kind of the dataset to use with the logpush job. Available values: `accessRequests`, `casbFindings`, `firewallEvents`, `httpRequests`, `spectrumEvents`, `nelReports`, `auditLogs`, `gatewayDns`, `gatewayHttp`, `gatewayNetwork`, `dnsLogs`, `networkAnalyticsLogs`, `workersTraceEvents`, `devicePostureResults`, `zeroTrustNetworkSessions`, `magicIdsDetections`.
+	// The kind of the dataset to use with the logpush job. Available values: `accessRequests`, `casbFindings`, `firewallEvents`, `httpRequests`, `spectrumEvents`, `nelReports`, `auditLogs`, `gatewayDns`, `gatewayHttp`, `gatewayNetwork`, `dnsLogs`, `networkAnalyticsLogs`, `workersTraceEvents`, `devicePostureResults`, `zeroTrustNetworkSessions`, `magicIdsDetections`, `pageShieldEvents`.
 	Dataset pulumi.StringOutput `pulumi:"dataset"`
 	// Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included. See [Logpush destination documentation](https://developers.cloudflare.com/logs/reference/logpush-api-configuration#destination).
 	DestinationConf pulumi.StringOutput `pulumi:"destinationConf"`
@@ -100,7 +100,7 @@ func GetLogpushJob(ctx *pulumi.Context,
 type logpushJobState struct {
 	// The account identifier to target for the resource. Must provide only one of `accountId`, `zoneId`.
 	AccountId *string `pulumi:"accountId"`
-	// The kind of the dataset to use with the logpush job. Available values: `accessRequests`, `casbFindings`, `firewallEvents`, `httpRequests`, `spectrumEvents`, `nelReports`, `auditLogs`, `gatewayDns`, `gatewayHttp`, `gatewayNetwork`, `dnsLogs`, `networkAnalyticsLogs`, `workersTraceEvents`, `devicePostureResults`, `zeroTrustNetworkSessions`, `magicIdsDetections`.
+	// The kind of the dataset to use with the logpush job. Available values: `accessRequests`, `casbFindings`, `firewallEvents`, `httpRequests`, `spectrumEvents`, `nelReports`, `auditLogs`, `gatewayDns`, `gatewayHttp`, `gatewayNetwork`, `dnsLogs`, `networkAnalyticsLogs`, `workersTraceEvents`, `devicePostureResults`, `zeroTrustNetworkSessions`, `magicIdsDetections`, `pageShieldEvents`.
 	Dataset *string `pulumi:"dataset"`
 	// Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included. See [Logpush destination documentation](https://developers.cloudflare.com/logs/reference/logpush-api-configuration#destination).
 	DestinationConf *string `pulumi:"destinationConf"`
@@ -133,7 +133,7 @@ type logpushJobState struct {
 type LogpushJobState struct {
 	// The account identifier to target for the resource. Must provide only one of `accountId`, `zoneId`.
 	AccountId pulumi.StringPtrInput
-	// The kind of the dataset to use with the logpush job. Available values: `accessRequests`, `casbFindings`, `firewallEvents`, `httpRequests`, `spectrumEvents`, `nelReports`, `auditLogs`, `gatewayDns`, `gatewayHttp`, `gatewayNetwork`, `dnsLogs`, `networkAnalyticsLogs`, `workersTraceEvents`, `devicePostureResults`, `zeroTrustNetworkSessions`, `magicIdsDetections`.
+	// The kind of the dataset to use with the logpush job. Available values: `accessRequests`, `casbFindings`, `firewallEvents`, `httpRequests`, `spectrumEvents`, `nelReports`, `auditLogs`, `gatewayDns`, `gatewayHttp`, `gatewayNetwork`, `dnsLogs`, `networkAnalyticsLogs`, `workersTraceEvents`, `devicePostureResults`, `zeroTrustNetworkSessions`, `magicIdsDetections`, `pageShieldEvents`.
 	Dataset pulumi.StringPtrInput
 	// Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included. See [Logpush destination documentation](https://developers.cloudflare.com/logs/reference/logpush-api-configuration#destination).
 	DestinationConf pulumi.StringPtrInput
@@ -170,7 +170,7 @@ func (LogpushJobState) ElementType() reflect.Type {
 type logpushJobArgs struct {
 	// The account identifier to target for the resource. Must provide only one of `accountId`, `zoneId`.
 	AccountId *string `pulumi:"accountId"`
-	// The kind of the dataset to use with the logpush job. Available values: `accessRequests`, `casbFindings`, `firewallEvents`, `httpRequests`, `spectrumEvents`, `nelReports`, `auditLogs`, `gatewayDns`, `gatewayHttp`, `gatewayNetwork`, `dnsLogs`, `networkAnalyticsLogs`, `workersTraceEvents`, `devicePostureResults`, `zeroTrustNetworkSessions`, `magicIdsDetections`.
+	// The kind of the dataset to use with the logpush job. Available values: `accessRequests`, `casbFindings`, `firewallEvents`, `httpRequests`, `spectrumEvents`, `nelReports`, `auditLogs`, `gatewayDns`, `gatewayHttp`, `gatewayNetwork`, `dnsLogs`, `networkAnalyticsLogs`, `workersTraceEvents`, `devicePostureResults`, `zeroTrustNetworkSessions`, `magicIdsDetections`, `pageShieldEvents`.
 	Dataset string `pulumi:"dataset"`
 	// Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included. See [Logpush destination documentation](https://developers.cloudflare.com/logs/reference/logpush-api-configuration#destination).
 	DestinationConf string `pulumi:"destinationConf"`
@@ -204,7 +204,7 @@ type logpushJobArgs struct {
 type LogpushJobArgs struct {
 	// The account identifier to target for the resource. Must provide only one of `accountId`, `zoneId`.
 	AccountId pulumi.StringPtrInput
-	// The kind of the dataset to use with the logpush job. Available values: `accessRequests`, `casbFindings`, `firewallEvents`, `httpRequests`, `spectrumEvents`, `nelReports`, `auditLogs`, `gatewayDns`, `gatewayHttp`, `gatewayNetwork`, `dnsLogs`, `networkAnalyticsLogs`, `workersTraceEvents`, `devicePostureResults`, `zeroTrustNetworkSessions`, `magicIdsDetections`.
+	// The kind of the dataset to use with the logpush job. Available values: `accessRequests`, `casbFindings`, `firewallEvents`, `httpRequests`, `spectrumEvents`, `nelReports`, `auditLogs`, `gatewayDns`, `gatewayHttp`, `gatewayNetwork`, `dnsLogs`, `networkAnalyticsLogs`, `workersTraceEvents`, `devicePostureResults`, `zeroTrustNetworkSessions`, `magicIdsDetections`, `pageShieldEvents`.
 	Dataset pulumi.StringInput
 	// Uniquely identifies a resource (such as an s3 bucket) where data will be pushed. Additional configuration parameters supported by the destination may be included. See [Logpush destination documentation](https://developers.cloudflare.com/logs/reference/logpush-api-configuration#destination).
 	DestinationConf pulumi.StringInput
@@ -326,7 +326,7 @@ func (o LogpushJobOutput) AccountId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *LogpushJob) pulumi.StringPtrOutput { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
-// The kind of the dataset to use with the logpush job. Available values: `accessRequests`, `casbFindings`, `firewallEvents`, `httpRequests`, `spectrumEvents`, `nelReports`, `auditLogs`, `gatewayDns`, `gatewayHttp`, `gatewayNetwork`, `dnsLogs`, `networkAnalyticsLogs`, `workersTraceEvents`, `devicePostureResults`, `zeroTrustNetworkSessions`, `magicIdsDetections`.
+// The kind of the dataset to use with the logpush job. Available values: `accessRequests`, `casbFindings`, `firewallEvents`, `httpRequests`, `spectrumEvents`, `nelReports`, `auditLogs`, `gatewayDns`, `gatewayHttp`, `gatewayNetwork`, `dnsLogs`, `networkAnalyticsLogs`, `workersTraceEvents`, `devicePostureResults`, `zeroTrustNetworkSessions`, `magicIdsDetections`, `pageShieldEvents`.
 func (o LogpushJobOutput) Dataset() pulumi.StringOutput {
 	return o.ApplyT(func(v *LogpushJob) pulumi.StringOutput { return v.Dataset }).(pulumi.StringOutput)
 }

@@ -180,6 +180,10 @@ export interface AccessGroupExclude {
     azures?: pulumi.Input<pulumi.Input<inputs.AccessGroupExcludeAzure>[]>;
     certificate?: pulumi.Input<boolean>;
     commonName?: pulumi.Input<string>;
+    /**
+     * Overflow field if you need to have multiple common*name rules in a single policy.  Use in place of the singular common*name field.
+     */
+    commonNames?: pulumi.Input<pulumi.Input<string>[]>;
     devicePostures?: pulumi.Input<pulumi.Input<string>[]>;
     emailDomains?: pulumi.Input<pulumi.Input<string>[]>;
     emails?: pulumi.Input<pulumi.Input<string>[]>;
@@ -275,6 +279,10 @@ export interface AccessGroupInclude {
     azures?: pulumi.Input<pulumi.Input<inputs.AccessGroupIncludeAzure>[]>;
     certificate?: pulumi.Input<boolean>;
     commonName?: pulumi.Input<string>;
+    /**
+     * Overflow field if you need to have multiple common*name rules in a single policy.  Use in place of the singular common*name field.
+     */
+    commonNames?: pulumi.Input<pulumi.Input<string>[]>;
     devicePostures?: pulumi.Input<pulumi.Input<string>[]>;
     emailDomains?: pulumi.Input<pulumi.Input<string>[]>;
     emails?: pulumi.Input<pulumi.Input<string>[]>;
@@ -370,6 +378,10 @@ export interface AccessGroupRequire {
     azures?: pulumi.Input<pulumi.Input<inputs.AccessGroupRequireAzure>[]>;
     certificate?: pulumi.Input<boolean>;
     commonName?: pulumi.Input<string>;
+    /**
+     * Overflow field if you need to have multiple common*name rules in a single policy.  Use in place of the singular common*name field.
+     */
+    commonNames?: pulumi.Input<pulumi.Input<string>[]>;
     devicePostures?: pulumi.Input<pulumi.Input<string>[]>;
     emailDomains?: pulumi.Input<pulumi.Input<string>[]>;
     emails?: pulumi.Input<pulumi.Input<string>[]>;
@@ -564,6 +576,10 @@ export interface AccessPolicyExclude {
     azures?: pulumi.Input<pulumi.Input<inputs.AccessPolicyExcludeAzure>[]>;
     certificate?: pulumi.Input<boolean>;
     commonName?: pulumi.Input<string>;
+    /**
+     * Overflow field if you need to have multiple common*name rules in a single policy.  Use in place of the singular common*name field.
+     */
+    commonNames?: pulumi.Input<pulumi.Input<string>[]>;
     devicePostures?: pulumi.Input<pulumi.Input<string>[]>;
     emailDomains?: pulumi.Input<pulumi.Input<string>[]>;
     emails?: pulumi.Input<pulumi.Input<string>[]>;
@@ -659,6 +675,10 @@ export interface AccessPolicyInclude {
     azures?: pulumi.Input<pulumi.Input<inputs.AccessPolicyIncludeAzure>[]>;
     certificate?: pulumi.Input<boolean>;
     commonName?: pulumi.Input<string>;
+    /**
+     * Overflow field if you need to have multiple common*name rules in a single policy.  Use in place of the singular common*name field.
+     */
+    commonNames?: pulumi.Input<pulumi.Input<string>[]>;
     devicePostures?: pulumi.Input<pulumi.Input<string>[]>;
     emailDomains?: pulumi.Input<pulumi.Input<string>[]>;
     emails?: pulumi.Input<pulumi.Input<string>[]>;
@@ -754,6 +774,10 @@ export interface AccessPolicyRequire {
     azures?: pulumi.Input<pulumi.Input<inputs.AccessPolicyRequireAzure>[]>;
     certificate?: pulumi.Input<boolean>;
     commonName?: pulumi.Input<string>;
+    /**
+     * Overflow field if you need to have multiple common*name rules in a single policy.  Use in place of the singular common*name field.
+     */
+    commonNames?: pulumi.Input<pulumi.Input<string>[]>;
     devicePostures?: pulumi.Input<pulumi.Input<string>[]>;
     emailDomains?: pulumi.Input<pulumi.Input<string>[]>;
     emails?: pulumi.Input<pulumi.Input<string>[]>;

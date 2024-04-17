@@ -1133,21 +1133,23 @@ func (o AccessApplicationSaasAppCustomAttributeSourceOutput) Name() pulumi.Strin
 }
 
 type AccessGroupExclude struct {
-	AnyValidServiceToken *bool                                 `pulumi:"anyValidServiceToken"`
-	AuthContexts         []AccessGroupExcludeAuthContext       `pulumi:"authContexts"`
-	AuthMethod           *string                               `pulumi:"authMethod"`
-	Azures               []AccessGroupExcludeAzure             `pulumi:"azures"`
-	Certificate          *bool                                 `pulumi:"certificate"`
-	CommonName           *string                               `pulumi:"commonName"`
-	DevicePostures       []string                              `pulumi:"devicePostures"`
-	EmailDomains         []string                              `pulumi:"emailDomains"`
-	Emails               []string                              `pulumi:"emails"`
-	Everyone             *bool                                 `pulumi:"everyone"`
-	ExternalEvaluation   *AccessGroupExcludeExternalEvaluation `pulumi:"externalEvaluation"`
-	Geos                 []string                              `pulumi:"geos"`
-	Githubs              []AccessGroupExcludeGithub            `pulumi:"githubs"`
-	Groups               []string                              `pulumi:"groups"`
-	Gsuites              []AccessGroupExcludeGsuite            `pulumi:"gsuites"`
+	AnyValidServiceToken *bool                           `pulumi:"anyValidServiceToken"`
+	AuthContexts         []AccessGroupExcludeAuthContext `pulumi:"authContexts"`
+	AuthMethod           *string                         `pulumi:"authMethod"`
+	Azures               []AccessGroupExcludeAzure       `pulumi:"azures"`
+	Certificate          *bool                           `pulumi:"certificate"`
+	CommonName           *string                         `pulumi:"commonName"`
+	// Overflow field if you need to have multiple common*name rules in a single policy.  Use in place of the singular common*name field.
+	CommonNames        []string                              `pulumi:"commonNames"`
+	DevicePostures     []string                              `pulumi:"devicePostures"`
+	EmailDomains       []string                              `pulumi:"emailDomains"`
+	Emails             []string                              `pulumi:"emails"`
+	Everyone           *bool                                 `pulumi:"everyone"`
+	ExternalEvaluation *AccessGroupExcludeExternalEvaluation `pulumi:"externalEvaluation"`
+	Geos               []string                              `pulumi:"geos"`
+	Githubs            []AccessGroupExcludeGithub            `pulumi:"githubs"`
+	Groups             []string                              `pulumi:"groups"`
+	Gsuites            []AccessGroupExcludeGsuite            `pulumi:"gsuites"`
 	// The ID of an existing IP list to reference.
 	IpLists []string `pulumi:"ipLists"`
 	// An IPv4 or IPv6 CIDR block.
@@ -1170,21 +1172,23 @@ type AccessGroupExcludeInput interface {
 }
 
 type AccessGroupExcludeArgs struct {
-	AnyValidServiceToken pulumi.BoolPtrInput                          `pulumi:"anyValidServiceToken"`
-	AuthContexts         AccessGroupExcludeAuthContextArrayInput      `pulumi:"authContexts"`
-	AuthMethod           pulumi.StringPtrInput                        `pulumi:"authMethod"`
-	Azures               AccessGroupExcludeAzureArrayInput            `pulumi:"azures"`
-	Certificate          pulumi.BoolPtrInput                          `pulumi:"certificate"`
-	CommonName           pulumi.StringPtrInput                        `pulumi:"commonName"`
-	DevicePostures       pulumi.StringArrayInput                      `pulumi:"devicePostures"`
-	EmailDomains         pulumi.StringArrayInput                      `pulumi:"emailDomains"`
-	Emails               pulumi.StringArrayInput                      `pulumi:"emails"`
-	Everyone             pulumi.BoolPtrInput                          `pulumi:"everyone"`
-	ExternalEvaluation   AccessGroupExcludeExternalEvaluationPtrInput `pulumi:"externalEvaluation"`
-	Geos                 pulumi.StringArrayInput                      `pulumi:"geos"`
-	Githubs              AccessGroupExcludeGithubArrayInput           `pulumi:"githubs"`
-	Groups               pulumi.StringArrayInput                      `pulumi:"groups"`
-	Gsuites              AccessGroupExcludeGsuiteArrayInput           `pulumi:"gsuites"`
+	AnyValidServiceToken pulumi.BoolPtrInput                     `pulumi:"anyValidServiceToken"`
+	AuthContexts         AccessGroupExcludeAuthContextArrayInput `pulumi:"authContexts"`
+	AuthMethod           pulumi.StringPtrInput                   `pulumi:"authMethod"`
+	Azures               AccessGroupExcludeAzureArrayInput       `pulumi:"azures"`
+	Certificate          pulumi.BoolPtrInput                     `pulumi:"certificate"`
+	CommonName           pulumi.StringPtrInput                   `pulumi:"commonName"`
+	// Overflow field if you need to have multiple common*name rules in a single policy.  Use in place of the singular common*name field.
+	CommonNames        pulumi.StringArrayInput                      `pulumi:"commonNames"`
+	DevicePostures     pulumi.StringArrayInput                      `pulumi:"devicePostures"`
+	EmailDomains       pulumi.StringArrayInput                      `pulumi:"emailDomains"`
+	Emails             pulumi.StringArrayInput                      `pulumi:"emails"`
+	Everyone           pulumi.BoolPtrInput                          `pulumi:"everyone"`
+	ExternalEvaluation AccessGroupExcludeExternalEvaluationPtrInput `pulumi:"externalEvaluation"`
+	Geos               pulumi.StringArrayInput                      `pulumi:"geos"`
+	Githubs            AccessGroupExcludeGithubArrayInput           `pulumi:"githubs"`
+	Groups             pulumi.StringArrayInput                      `pulumi:"groups"`
+	Gsuites            AccessGroupExcludeGsuiteArrayInput           `pulumi:"gsuites"`
 	// The ID of an existing IP list to reference.
 	IpLists pulumi.StringArrayInput `pulumi:"ipLists"`
 	// An IPv4 or IPv6 CIDR block.
@@ -1268,6 +1272,11 @@ func (o AccessGroupExcludeOutput) Certificate() pulumi.BoolPtrOutput {
 
 func (o AccessGroupExcludeOutput) CommonName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AccessGroupExclude) *string { return v.CommonName }).(pulumi.StringPtrOutput)
+}
+
+// Overflow field if you need to have multiple common*name rules in a single policy.  Use in place of the singular common*name field.
+func (o AccessGroupExcludeOutput) CommonNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AccessGroupExclude) []string { return v.CommonNames }).(pulumi.StringArrayOutput)
 }
 
 func (o AccessGroupExcludeOutput) DevicePostures() pulumi.StringArrayOutput {
@@ -2146,21 +2155,23 @@ func (o AccessGroupExcludeSamlArrayOutput) Index(i pulumi.IntInput) AccessGroupE
 }
 
 type AccessGroupInclude struct {
-	AnyValidServiceToken *bool                                 `pulumi:"anyValidServiceToken"`
-	AuthContexts         []AccessGroupIncludeAuthContext       `pulumi:"authContexts"`
-	AuthMethod           *string                               `pulumi:"authMethod"`
-	Azures               []AccessGroupIncludeAzure             `pulumi:"azures"`
-	Certificate          *bool                                 `pulumi:"certificate"`
-	CommonName           *string                               `pulumi:"commonName"`
-	DevicePostures       []string                              `pulumi:"devicePostures"`
-	EmailDomains         []string                              `pulumi:"emailDomains"`
-	Emails               []string                              `pulumi:"emails"`
-	Everyone             *bool                                 `pulumi:"everyone"`
-	ExternalEvaluation   *AccessGroupIncludeExternalEvaluation `pulumi:"externalEvaluation"`
-	Geos                 []string                              `pulumi:"geos"`
-	Githubs              []AccessGroupIncludeGithub            `pulumi:"githubs"`
-	Groups               []string                              `pulumi:"groups"`
-	Gsuites              []AccessGroupIncludeGsuite            `pulumi:"gsuites"`
+	AnyValidServiceToken *bool                           `pulumi:"anyValidServiceToken"`
+	AuthContexts         []AccessGroupIncludeAuthContext `pulumi:"authContexts"`
+	AuthMethod           *string                         `pulumi:"authMethod"`
+	Azures               []AccessGroupIncludeAzure       `pulumi:"azures"`
+	Certificate          *bool                           `pulumi:"certificate"`
+	CommonName           *string                         `pulumi:"commonName"`
+	// Overflow field if you need to have multiple common*name rules in a single policy.  Use in place of the singular common*name field.
+	CommonNames        []string                              `pulumi:"commonNames"`
+	DevicePostures     []string                              `pulumi:"devicePostures"`
+	EmailDomains       []string                              `pulumi:"emailDomains"`
+	Emails             []string                              `pulumi:"emails"`
+	Everyone           *bool                                 `pulumi:"everyone"`
+	ExternalEvaluation *AccessGroupIncludeExternalEvaluation `pulumi:"externalEvaluation"`
+	Geos               []string                              `pulumi:"geos"`
+	Githubs            []AccessGroupIncludeGithub            `pulumi:"githubs"`
+	Groups             []string                              `pulumi:"groups"`
+	Gsuites            []AccessGroupIncludeGsuite            `pulumi:"gsuites"`
 	// The ID of an existing IP list to reference.
 	IpLists []string `pulumi:"ipLists"`
 	// An IPv4 or IPv6 CIDR block.
@@ -2183,21 +2194,23 @@ type AccessGroupIncludeInput interface {
 }
 
 type AccessGroupIncludeArgs struct {
-	AnyValidServiceToken pulumi.BoolPtrInput                          `pulumi:"anyValidServiceToken"`
-	AuthContexts         AccessGroupIncludeAuthContextArrayInput      `pulumi:"authContexts"`
-	AuthMethod           pulumi.StringPtrInput                        `pulumi:"authMethod"`
-	Azures               AccessGroupIncludeAzureArrayInput            `pulumi:"azures"`
-	Certificate          pulumi.BoolPtrInput                          `pulumi:"certificate"`
-	CommonName           pulumi.StringPtrInput                        `pulumi:"commonName"`
-	DevicePostures       pulumi.StringArrayInput                      `pulumi:"devicePostures"`
-	EmailDomains         pulumi.StringArrayInput                      `pulumi:"emailDomains"`
-	Emails               pulumi.StringArrayInput                      `pulumi:"emails"`
-	Everyone             pulumi.BoolPtrInput                          `pulumi:"everyone"`
-	ExternalEvaluation   AccessGroupIncludeExternalEvaluationPtrInput `pulumi:"externalEvaluation"`
-	Geos                 pulumi.StringArrayInput                      `pulumi:"geos"`
-	Githubs              AccessGroupIncludeGithubArrayInput           `pulumi:"githubs"`
-	Groups               pulumi.StringArrayInput                      `pulumi:"groups"`
-	Gsuites              AccessGroupIncludeGsuiteArrayInput           `pulumi:"gsuites"`
+	AnyValidServiceToken pulumi.BoolPtrInput                     `pulumi:"anyValidServiceToken"`
+	AuthContexts         AccessGroupIncludeAuthContextArrayInput `pulumi:"authContexts"`
+	AuthMethod           pulumi.StringPtrInput                   `pulumi:"authMethod"`
+	Azures               AccessGroupIncludeAzureArrayInput       `pulumi:"azures"`
+	Certificate          pulumi.BoolPtrInput                     `pulumi:"certificate"`
+	CommonName           pulumi.StringPtrInput                   `pulumi:"commonName"`
+	// Overflow field if you need to have multiple common*name rules in a single policy.  Use in place of the singular common*name field.
+	CommonNames        pulumi.StringArrayInput                      `pulumi:"commonNames"`
+	DevicePostures     pulumi.StringArrayInput                      `pulumi:"devicePostures"`
+	EmailDomains       pulumi.StringArrayInput                      `pulumi:"emailDomains"`
+	Emails             pulumi.StringArrayInput                      `pulumi:"emails"`
+	Everyone           pulumi.BoolPtrInput                          `pulumi:"everyone"`
+	ExternalEvaluation AccessGroupIncludeExternalEvaluationPtrInput `pulumi:"externalEvaluation"`
+	Geos               pulumi.StringArrayInput                      `pulumi:"geos"`
+	Githubs            AccessGroupIncludeGithubArrayInput           `pulumi:"githubs"`
+	Groups             pulumi.StringArrayInput                      `pulumi:"groups"`
+	Gsuites            AccessGroupIncludeGsuiteArrayInput           `pulumi:"gsuites"`
 	// The ID of an existing IP list to reference.
 	IpLists pulumi.StringArrayInput `pulumi:"ipLists"`
 	// An IPv4 or IPv6 CIDR block.
@@ -2281,6 +2294,11 @@ func (o AccessGroupIncludeOutput) Certificate() pulumi.BoolPtrOutput {
 
 func (o AccessGroupIncludeOutput) CommonName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AccessGroupInclude) *string { return v.CommonName }).(pulumi.StringPtrOutput)
+}
+
+// Overflow field if you need to have multiple common*name rules in a single policy.  Use in place of the singular common*name field.
+func (o AccessGroupIncludeOutput) CommonNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AccessGroupInclude) []string { return v.CommonNames }).(pulumi.StringArrayOutput)
 }
 
 func (o AccessGroupIncludeOutput) DevicePostures() pulumi.StringArrayOutput {
@@ -3159,21 +3177,23 @@ func (o AccessGroupIncludeSamlArrayOutput) Index(i pulumi.IntInput) AccessGroupI
 }
 
 type AccessGroupRequire struct {
-	AnyValidServiceToken *bool                                 `pulumi:"anyValidServiceToken"`
-	AuthContexts         []AccessGroupRequireAuthContext       `pulumi:"authContexts"`
-	AuthMethod           *string                               `pulumi:"authMethod"`
-	Azures               []AccessGroupRequireAzure             `pulumi:"azures"`
-	Certificate          *bool                                 `pulumi:"certificate"`
-	CommonName           *string                               `pulumi:"commonName"`
-	DevicePostures       []string                              `pulumi:"devicePostures"`
-	EmailDomains         []string                              `pulumi:"emailDomains"`
-	Emails               []string                              `pulumi:"emails"`
-	Everyone             *bool                                 `pulumi:"everyone"`
-	ExternalEvaluation   *AccessGroupRequireExternalEvaluation `pulumi:"externalEvaluation"`
-	Geos                 []string                              `pulumi:"geos"`
-	Githubs              []AccessGroupRequireGithub            `pulumi:"githubs"`
-	Groups               []string                              `pulumi:"groups"`
-	Gsuites              []AccessGroupRequireGsuite            `pulumi:"gsuites"`
+	AnyValidServiceToken *bool                           `pulumi:"anyValidServiceToken"`
+	AuthContexts         []AccessGroupRequireAuthContext `pulumi:"authContexts"`
+	AuthMethod           *string                         `pulumi:"authMethod"`
+	Azures               []AccessGroupRequireAzure       `pulumi:"azures"`
+	Certificate          *bool                           `pulumi:"certificate"`
+	CommonName           *string                         `pulumi:"commonName"`
+	// Overflow field if you need to have multiple common*name rules in a single policy.  Use in place of the singular common*name field.
+	CommonNames        []string                              `pulumi:"commonNames"`
+	DevicePostures     []string                              `pulumi:"devicePostures"`
+	EmailDomains       []string                              `pulumi:"emailDomains"`
+	Emails             []string                              `pulumi:"emails"`
+	Everyone           *bool                                 `pulumi:"everyone"`
+	ExternalEvaluation *AccessGroupRequireExternalEvaluation `pulumi:"externalEvaluation"`
+	Geos               []string                              `pulumi:"geos"`
+	Githubs            []AccessGroupRequireGithub            `pulumi:"githubs"`
+	Groups             []string                              `pulumi:"groups"`
+	Gsuites            []AccessGroupRequireGsuite            `pulumi:"gsuites"`
 	// The ID of an existing IP list to reference.
 	IpLists []string `pulumi:"ipLists"`
 	// An IPv4 or IPv6 CIDR block.
@@ -3196,21 +3216,23 @@ type AccessGroupRequireInput interface {
 }
 
 type AccessGroupRequireArgs struct {
-	AnyValidServiceToken pulumi.BoolPtrInput                          `pulumi:"anyValidServiceToken"`
-	AuthContexts         AccessGroupRequireAuthContextArrayInput      `pulumi:"authContexts"`
-	AuthMethod           pulumi.StringPtrInput                        `pulumi:"authMethod"`
-	Azures               AccessGroupRequireAzureArrayInput            `pulumi:"azures"`
-	Certificate          pulumi.BoolPtrInput                          `pulumi:"certificate"`
-	CommonName           pulumi.StringPtrInput                        `pulumi:"commonName"`
-	DevicePostures       pulumi.StringArrayInput                      `pulumi:"devicePostures"`
-	EmailDomains         pulumi.StringArrayInput                      `pulumi:"emailDomains"`
-	Emails               pulumi.StringArrayInput                      `pulumi:"emails"`
-	Everyone             pulumi.BoolPtrInput                          `pulumi:"everyone"`
-	ExternalEvaluation   AccessGroupRequireExternalEvaluationPtrInput `pulumi:"externalEvaluation"`
-	Geos                 pulumi.StringArrayInput                      `pulumi:"geos"`
-	Githubs              AccessGroupRequireGithubArrayInput           `pulumi:"githubs"`
-	Groups               pulumi.StringArrayInput                      `pulumi:"groups"`
-	Gsuites              AccessGroupRequireGsuiteArrayInput           `pulumi:"gsuites"`
+	AnyValidServiceToken pulumi.BoolPtrInput                     `pulumi:"anyValidServiceToken"`
+	AuthContexts         AccessGroupRequireAuthContextArrayInput `pulumi:"authContexts"`
+	AuthMethod           pulumi.StringPtrInput                   `pulumi:"authMethod"`
+	Azures               AccessGroupRequireAzureArrayInput       `pulumi:"azures"`
+	Certificate          pulumi.BoolPtrInput                     `pulumi:"certificate"`
+	CommonName           pulumi.StringPtrInput                   `pulumi:"commonName"`
+	// Overflow field if you need to have multiple common*name rules in a single policy.  Use in place of the singular common*name field.
+	CommonNames        pulumi.StringArrayInput                      `pulumi:"commonNames"`
+	DevicePostures     pulumi.StringArrayInput                      `pulumi:"devicePostures"`
+	EmailDomains       pulumi.StringArrayInput                      `pulumi:"emailDomains"`
+	Emails             pulumi.StringArrayInput                      `pulumi:"emails"`
+	Everyone           pulumi.BoolPtrInput                          `pulumi:"everyone"`
+	ExternalEvaluation AccessGroupRequireExternalEvaluationPtrInput `pulumi:"externalEvaluation"`
+	Geos               pulumi.StringArrayInput                      `pulumi:"geos"`
+	Githubs            AccessGroupRequireGithubArrayInput           `pulumi:"githubs"`
+	Groups             pulumi.StringArrayInput                      `pulumi:"groups"`
+	Gsuites            AccessGroupRequireGsuiteArrayInput           `pulumi:"gsuites"`
 	// The ID of an existing IP list to reference.
 	IpLists pulumi.StringArrayInput `pulumi:"ipLists"`
 	// An IPv4 or IPv6 CIDR block.
@@ -3294,6 +3316,11 @@ func (o AccessGroupRequireOutput) Certificate() pulumi.BoolPtrOutput {
 
 func (o AccessGroupRequireOutput) CommonName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AccessGroupRequire) *string { return v.CommonName }).(pulumi.StringPtrOutput)
+}
+
+// Overflow field if you need to have multiple common*name rules in a single policy.  Use in place of the singular common*name field.
+func (o AccessGroupRequireOutput) CommonNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AccessGroupRequire) []string { return v.CommonNames }).(pulumi.StringArrayOutput)
 }
 
 func (o AccessGroupRequireOutput) DevicePostures() pulumi.StringArrayOutput {
@@ -5006,21 +5033,23 @@ func (o AccessPolicyApprovalGroupArrayOutput) Index(i pulumi.IntInput) AccessPol
 }
 
 type AccessPolicyExclude struct {
-	AnyValidServiceToken *bool                                  `pulumi:"anyValidServiceToken"`
-	AuthContexts         []AccessPolicyExcludeAuthContext       `pulumi:"authContexts"`
-	AuthMethod           *string                                `pulumi:"authMethod"`
-	Azures               []AccessPolicyExcludeAzure             `pulumi:"azures"`
-	Certificate          *bool                                  `pulumi:"certificate"`
-	CommonName           *string                                `pulumi:"commonName"`
-	DevicePostures       []string                               `pulumi:"devicePostures"`
-	EmailDomains         []string                               `pulumi:"emailDomains"`
-	Emails               []string                               `pulumi:"emails"`
-	Everyone             *bool                                  `pulumi:"everyone"`
-	ExternalEvaluation   *AccessPolicyExcludeExternalEvaluation `pulumi:"externalEvaluation"`
-	Geos                 []string                               `pulumi:"geos"`
-	Githubs              []AccessPolicyExcludeGithub            `pulumi:"githubs"`
-	Groups               []string                               `pulumi:"groups"`
-	Gsuites              []AccessPolicyExcludeGsuite            `pulumi:"gsuites"`
+	AnyValidServiceToken *bool                            `pulumi:"anyValidServiceToken"`
+	AuthContexts         []AccessPolicyExcludeAuthContext `pulumi:"authContexts"`
+	AuthMethod           *string                          `pulumi:"authMethod"`
+	Azures               []AccessPolicyExcludeAzure       `pulumi:"azures"`
+	Certificate          *bool                            `pulumi:"certificate"`
+	CommonName           *string                          `pulumi:"commonName"`
+	// Overflow field if you need to have multiple common*name rules in a single policy.  Use in place of the singular common*name field.
+	CommonNames        []string                               `pulumi:"commonNames"`
+	DevicePostures     []string                               `pulumi:"devicePostures"`
+	EmailDomains       []string                               `pulumi:"emailDomains"`
+	Emails             []string                               `pulumi:"emails"`
+	Everyone           *bool                                  `pulumi:"everyone"`
+	ExternalEvaluation *AccessPolicyExcludeExternalEvaluation `pulumi:"externalEvaluation"`
+	Geos               []string                               `pulumi:"geos"`
+	Githubs            []AccessPolicyExcludeGithub            `pulumi:"githubs"`
+	Groups             []string                               `pulumi:"groups"`
+	Gsuites            []AccessPolicyExcludeGsuite            `pulumi:"gsuites"`
 	// The ID of an existing IP list to reference.
 	IpLists []string `pulumi:"ipLists"`
 	// An IPv4 or IPv6 CIDR block.
@@ -5043,21 +5072,23 @@ type AccessPolicyExcludeInput interface {
 }
 
 type AccessPolicyExcludeArgs struct {
-	AnyValidServiceToken pulumi.BoolPtrInput                           `pulumi:"anyValidServiceToken"`
-	AuthContexts         AccessPolicyExcludeAuthContextArrayInput      `pulumi:"authContexts"`
-	AuthMethod           pulumi.StringPtrInput                         `pulumi:"authMethod"`
-	Azures               AccessPolicyExcludeAzureArrayInput            `pulumi:"azures"`
-	Certificate          pulumi.BoolPtrInput                           `pulumi:"certificate"`
-	CommonName           pulumi.StringPtrInput                         `pulumi:"commonName"`
-	DevicePostures       pulumi.StringArrayInput                       `pulumi:"devicePostures"`
-	EmailDomains         pulumi.StringArrayInput                       `pulumi:"emailDomains"`
-	Emails               pulumi.StringArrayInput                       `pulumi:"emails"`
-	Everyone             pulumi.BoolPtrInput                           `pulumi:"everyone"`
-	ExternalEvaluation   AccessPolicyExcludeExternalEvaluationPtrInput `pulumi:"externalEvaluation"`
-	Geos                 pulumi.StringArrayInput                       `pulumi:"geos"`
-	Githubs              AccessPolicyExcludeGithubArrayInput           `pulumi:"githubs"`
-	Groups               pulumi.StringArrayInput                       `pulumi:"groups"`
-	Gsuites              AccessPolicyExcludeGsuiteArrayInput           `pulumi:"gsuites"`
+	AnyValidServiceToken pulumi.BoolPtrInput                      `pulumi:"anyValidServiceToken"`
+	AuthContexts         AccessPolicyExcludeAuthContextArrayInput `pulumi:"authContexts"`
+	AuthMethod           pulumi.StringPtrInput                    `pulumi:"authMethod"`
+	Azures               AccessPolicyExcludeAzureArrayInput       `pulumi:"azures"`
+	Certificate          pulumi.BoolPtrInput                      `pulumi:"certificate"`
+	CommonName           pulumi.StringPtrInput                    `pulumi:"commonName"`
+	// Overflow field if you need to have multiple common*name rules in a single policy.  Use in place of the singular common*name field.
+	CommonNames        pulumi.StringArrayInput                       `pulumi:"commonNames"`
+	DevicePostures     pulumi.StringArrayInput                       `pulumi:"devicePostures"`
+	EmailDomains       pulumi.StringArrayInput                       `pulumi:"emailDomains"`
+	Emails             pulumi.StringArrayInput                       `pulumi:"emails"`
+	Everyone           pulumi.BoolPtrInput                           `pulumi:"everyone"`
+	ExternalEvaluation AccessPolicyExcludeExternalEvaluationPtrInput `pulumi:"externalEvaluation"`
+	Geos               pulumi.StringArrayInput                       `pulumi:"geos"`
+	Githubs            AccessPolicyExcludeGithubArrayInput           `pulumi:"githubs"`
+	Groups             pulumi.StringArrayInput                       `pulumi:"groups"`
+	Gsuites            AccessPolicyExcludeGsuiteArrayInput           `pulumi:"gsuites"`
 	// The ID of an existing IP list to reference.
 	IpLists pulumi.StringArrayInput `pulumi:"ipLists"`
 	// An IPv4 or IPv6 CIDR block.
@@ -5141,6 +5172,11 @@ func (o AccessPolicyExcludeOutput) Certificate() pulumi.BoolPtrOutput {
 
 func (o AccessPolicyExcludeOutput) CommonName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AccessPolicyExclude) *string { return v.CommonName }).(pulumi.StringPtrOutput)
+}
+
+// Overflow field if you need to have multiple common*name rules in a single policy.  Use in place of the singular common*name field.
+func (o AccessPolicyExcludeOutput) CommonNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AccessPolicyExclude) []string { return v.CommonNames }).(pulumi.StringArrayOutput)
 }
 
 func (o AccessPolicyExcludeOutput) DevicePostures() pulumi.StringArrayOutput {
@@ -6019,21 +6055,23 @@ func (o AccessPolicyExcludeSamlArrayOutput) Index(i pulumi.IntInput) AccessPolic
 }
 
 type AccessPolicyInclude struct {
-	AnyValidServiceToken *bool                                  `pulumi:"anyValidServiceToken"`
-	AuthContexts         []AccessPolicyIncludeAuthContext       `pulumi:"authContexts"`
-	AuthMethod           *string                                `pulumi:"authMethod"`
-	Azures               []AccessPolicyIncludeAzure             `pulumi:"azures"`
-	Certificate          *bool                                  `pulumi:"certificate"`
-	CommonName           *string                                `pulumi:"commonName"`
-	DevicePostures       []string                               `pulumi:"devicePostures"`
-	EmailDomains         []string                               `pulumi:"emailDomains"`
-	Emails               []string                               `pulumi:"emails"`
-	Everyone             *bool                                  `pulumi:"everyone"`
-	ExternalEvaluation   *AccessPolicyIncludeExternalEvaluation `pulumi:"externalEvaluation"`
-	Geos                 []string                               `pulumi:"geos"`
-	Githubs              []AccessPolicyIncludeGithub            `pulumi:"githubs"`
-	Groups               []string                               `pulumi:"groups"`
-	Gsuites              []AccessPolicyIncludeGsuite            `pulumi:"gsuites"`
+	AnyValidServiceToken *bool                            `pulumi:"anyValidServiceToken"`
+	AuthContexts         []AccessPolicyIncludeAuthContext `pulumi:"authContexts"`
+	AuthMethod           *string                          `pulumi:"authMethod"`
+	Azures               []AccessPolicyIncludeAzure       `pulumi:"azures"`
+	Certificate          *bool                            `pulumi:"certificate"`
+	CommonName           *string                          `pulumi:"commonName"`
+	// Overflow field if you need to have multiple common*name rules in a single policy.  Use in place of the singular common*name field.
+	CommonNames        []string                               `pulumi:"commonNames"`
+	DevicePostures     []string                               `pulumi:"devicePostures"`
+	EmailDomains       []string                               `pulumi:"emailDomains"`
+	Emails             []string                               `pulumi:"emails"`
+	Everyone           *bool                                  `pulumi:"everyone"`
+	ExternalEvaluation *AccessPolicyIncludeExternalEvaluation `pulumi:"externalEvaluation"`
+	Geos               []string                               `pulumi:"geos"`
+	Githubs            []AccessPolicyIncludeGithub            `pulumi:"githubs"`
+	Groups             []string                               `pulumi:"groups"`
+	Gsuites            []AccessPolicyIncludeGsuite            `pulumi:"gsuites"`
 	// The ID of an existing IP list to reference.
 	IpLists []string `pulumi:"ipLists"`
 	// An IPv4 or IPv6 CIDR block.
@@ -6056,21 +6094,23 @@ type AccessPolicyIncludeInput interface {
 }
 
 type AccessPolicyIncludeArgs struct {
-	AnyValidServiceToken pulumi.BoolPtrInput                           `pulumi:"anyValidServiceToken"`
-	AuthContexts         AccessPolicyIncludeAuthContextArrayInput      `pulumi:"authContexts"`
-	AuthMethod           pulumi.StringPtrInput                         `pulumi:"authMethod"`
-	Azures               AccessPolicyIncludeAzureArrayInput            `pulumi:"azures"`
-	Certificate          pulumi.BoolPtrInput                           `pulumi:"certificate"`
-	CommonName           pulumi.StringPtrInput                         `pulumi:"commonName"`
-	DevicePostures       pulumi.StringArrayInput                       `pulumi:"devicePostures"`
-	EmailDomains         pulumi.StringArrayInput                       `pulumi:"emailDomains"`
-	Emails               pulumi.StringArrayInput                       `pulumi:"emails"`
-	Everyone             pulumi.BoolPtrInput                           `pulumi:"everyone"`
-	ExternalEvaluation   AccessPolicyIncludeExternalEvaluationPtrInput `pulumi:"externalEvaluation"`
-	Geos                 pulumi.StringArrayInput                       `pulumi:"geos"`
-	Githubs              AccessPolicyIncludeGithubArrayInput           `pulumi:"githubs"`
-	Groups               pulumi.StringArrayInput                       `pulumi:"groups"`
-	Gsuites              AccessPolicyIncludeGsuiteArrayInput           `pulumi:"gsuites"`
+	AnyValidServiceToken pulumi.BoolPtrInput                      `pulumi:"anyValidServiceToken"`
+	AuthContexts         AccessPolicyIncludeAuthContextArrayInput `pulumi:"authContexts"`
+	AuthMethod           pulumi.StringPtrInput                    `pulumi:"authMethod"`
+	Azures               AccessPolicyIncludeAzureArrayInput       `pulumi:"azures"`
+	Certificate          pulumi.BoolPtrInput                      `pulumi:"certificate"`
+	CommonName           pulumi.StringPtrInput                    `pulumi:"commonName"`
+	// Overflow field if you need to have multiple common*name rules in a single policy.  Use in place of the singular common*name field.
+	CommonNames        pulumi.StringArrayInput                       `pulumi:"commonNames"`
+	DevicePostures     pulumi.StringArrayInput                       `pulumi:"devicePostures"`
+	EmailDomains       pulumi.StringArrayInput                       `pulumi:"emailDomains"`
+	Emails             pulumi.StringArrayInput                       `pulumi:"emails"`
+	Everyone           pulumi.BoolPtrInput                           `pulumi:"everyone"`
+	ExternalEvaluation AccessPolicyIncludeExternalEvaluationPtrInput `pulumi:"externalEvaluation"`
+	Geos               pulumi.StringArrayInput                       `pulumi:"geos"`
+	Githubs            AccessPolicyIncludeGithubArrayInput           `pulumi:"githubs"`
+	Groups             pulumi.StringArrayInput                       `pulumi:"groups"`
+	Gsuites            AccessPolicyIncludeGsuiteArrayInput           `pulumi:"gsuites"`
 	// The ID of an existing IP list to reference.
 	IpLists pulumi.StringArrayInput `pulumi:"ipLists"`
 	// An IPv4 or IPv6 CIDR block.
@@ -6154,6 +6194,11 @@ func (o AccessPolicyIncludeOutput) Certificate() pulumi.BoolPtrOutput {
 
 func (o AccessPolicyIncludeOutput) CommonName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AccessPolicyInclude) *string { return v.CommonName }).(pulumi.StringPtrOutput)
+}
+
+// Overflow field if you need to have multiple common*name rules in a single policy.  Use in place of the singular common*name field.
+func (o AccessPolicyIncludeOutput) CommonNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AccessPolicyInclude) []string { return v.CommonNames }).(pulumi.StringArrayOutput)
 }
 
 func (o AccessPolicyIncludeOutput) DevicePostures() pulumi.StringArrayOutput {
@@ -7032,21 +7077,23 @@ func (o AccessPolicyIncludeSamlArrayOutput) Index(i pulumi.IntInput) AccessPolic
 }
 
 type AccessPolicyRequire struct {
-	AnyValidServiceToken *bool                                  `pulumi:"anyValidServiceToken"`
-	AuthContexts         []AccessPolicyRequireAuthContext       `pulumi:"authContexts"`
-	AuthMethod           *string                                `pulumi:"authMethod"`
-	Azures               []AccessPolicyRequireAzure             `pulumi:"azures"`
-	Certificate          *bool                                  `pulumi:"certificate"`
-	CommonName           *string                                `pulumi:"commonName"`
-	DevicePostures       []string                               `pulumi:"devicePostures"`
-	EmailDomains         []string                               `pulumi:"emailDomains"`
-	Emails               []string                               `pulumi:"emails"`
-	Everyone             *bool                                  `pulumi:"everyone"`
-	ExternalEvaluation   *AccessPolicyRequireExternalEvaluation `pulumi:"externalEvaluation"`
-	Geos                 []string                               `pulumi:"geos"`
-	Githubs              []AccessPolicyRequireGithub            `pulumi:"githubs"`
-	Groups               []string                               `pulumi:"groups"`
-	Gsuites              []AccessPolicyRequireGsuite            `pulumi:"gsuites"`
+	AnyValidServiceToken *bool                            `pulumi:"anyValidServiceToken"`
+	AuthContexts         []AccessPolicyRequireAuthContext `pulumi:"authContexts"`
+	AuthMethod           *string                          `pulumi:"authMethod"`
+	Azures               []AccessPolicyRequireAzure       `pulumi:"azures"`
+	Certificate          *bool                            `pulumi:"certificate"`
+	CommonName           *string                          `pulumi:"commonName"`
+	// Overflow field if you need to have multiple common*name rules in a single policy.  Use in place of the singular common*name field.
+	CommonNames        []string                               `pulumi:"commonNames"`
+	DevicePostures     []string                               `pulumi:"devicePostures"`
+	EmailDomains       []string                               `pulumi:"emailDomains"`
+	Emails             []string                               `pulumi:"emails"`
+	Everyone           *bool                                  `pulumi:"everyone"`
+	ExternalEvaluation *AccessPolicyRequireExternalEvaluation `pulumi:"externalEvaluation"`
+	Geos               []string                               `pulumi:"geos"`
+	Githubs            []AccessPolicyRequireGithub            `pulumi:"githubs"`
+	Groups             []string                               `pulumi:"groups"`
+	Gsuites            []AccessPolicyRequireGsuite            `pulumi:"gsuites"`
 	// The ID of an existing IP list to reference.
 	IpLists []string `pulumi:"ipLists"`
 	// An IPv4 or IPv6 CIDR block.
@@ -7069,21 +7116,23 @@ type AccessPolicyRequireInput interface {
 }
 
 type AccessPolicyRequireArgs struct {
-	AnyValidServiceToken pulumi.BoolPtrInput                           `pulumi:"anyValidServiceToken"`
-	AuthContexts         AccessPolicyRequireAuthContextArrayInput      `pulumi:"authContexts"`
-	AuthMethod           pulumi.StringPtrInput                         `pulumi:"authMethod"`
-	Azures               AccessPolicyRequireAzureArrayInput            `pulumi:"azures"`
-	Certificate          pulumi.BoolPtrInput                           `pulumi:"certificate"`
-	CommonName           pulumi.StringPtrInput                         `pulumi:"commonName"`
-	DevicePostures       pulumi.StringArrayInput                       `pulumi:"devicePostures"`
-	EmailDomains         pulumi.StringArrayInput                       `pulumi:"emailDomains"`
-	Emails               pulumi.StringArrayInput                       `pulumi:"emails"`
-	Everyone             pulumi.BoolPtrInput                           `pulumi:"everyone"`
-	ExternalEvaluation   AccessPolicyRequireExternalEvaluationPtrInput `pulumi:"externalEvaluation"`
-	Geos                 pulumi.StringArrayInput                       `pulumi:"geos"`
-	Githubs              AccessPolicyRequireGithubArrayInput           `pulumi:"githubs"`
-	Groups               pulumi.StringArrayInput                       `pulumi:"groups"`
-	Gsuites              AccessPolicyRequireGsuiteArrayInput           `pulumi:"gsuites"`
+	AnyValidServiceToken pulumi.BoolPtrInput                      `pulumi:"anyValidServiceToken"`
+	AuthContexts         AccessPolicyRequireAuthContextArrayInput `pulumi:"authContexts"`
+	AuthMethod           pulumi.StringPtrInput                    `pulumi:"authMethod"`
+	Azures               AccessPolicyRequireAzureArrayInput       `pulumi:"azures"`
+	Certificate          pulumi.BoolPtrInput                      `pulumi:"certificate"`
+	CommonName           pulumi.StringPtrInput                    `pulumi:"commonName"`
+	// Overflow field if you need to have multiple common*name rules in a single policy.  Use in place of the singular common*name field.
+	CommonNames        pulumi.StringArrayInput                       `pulumi:"commonNames"`
+	DevicePostures     pulumi.StringArrayInput                       `pulumi:"devicePostures"`
+	EmailDomains       pulumi.StringArrayInput                       `pulumi:"emailDomains"`
+	Emails             pulumi.StringArrayInput                       `pulumi:"emails"`
+	Everyone           pulumi.BoolPtrInput                           `pulumi:"everyone"`
+	ExternalEvaluation AccessPolicyRequireExternalEvaluationPtrInput `pulumi:"externalEvaluation"`
+	Geos               pulumi.StringArrayInput                       `pulumi:"geos"`
+	Githubs            AccessPolicyRequireGithubArrayInput           `pulumi:"githubs"`
+	Groups             pulumi.StringArrayInput                       `pulumi:"groups"`
+	Gsuites            AccessPolicyRequireGsuiteArrayInput           `pulumi:"gsuites"`
 	// The ID of an existing IP list to reference.
 	IpLists pulumi.StringArrayInput `pulumi:"ipLists"`
 	// An IPv4 or IPv6 CIDR block.
@@ -7167,6 +7216,11 @@ func (o AccessPolicyRequireOutput) Certificate() pulumi.BoolPtrOutput {
 
 func (o AccessPolicyRequireOutput) CommonName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AccessPolicyRequire) *string { return v.CommonName }).(pulumi.StringPtrOutput)
+}
+
+// Overflow field if you need to have multiple common*name rules in a single policy.  Use in place of the singular common*name field.
+func (o AccessPolicyRequireOutput) CommonNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AccessPolicyRequire) []string { return v.CommonNames }).(pulumi.StringArrayOutput)
 }
 
 func (o AccessPolicyRequireOutput) DevicePostures() pulumi.StringArrayOutput {

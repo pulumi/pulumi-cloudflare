@@ -66,6 +66,21 @@ public final class AccessPolicyRequireArgs extends com.pulumi.resources.Resource
         return Optional.ofNullable(this.commonName);
     }
 
+    /**
+     * Overflow field if you need to have multiple common*name rules in a single policy.  Use in place of the singular common*name field.
+     * 
+     */
+    @Import(name="commonNames")
+    private @Nullable Output<List<String>> commonNames;
+
+    /**
+     * @return Overflow field if you need to have multiple common*name rules in a single policy.  Use in place of the singular common*name field.
+     * 
+     */
+    public Optional<Output<List<String>>> commonNames() {
+        return Optional.ofNullable(this.commonNames);
+    }
+
     @Import(name="devicePostures")
     private @Nullable Output<List<String>> devicePostures;
 
@@ -196,6 +211,7 @@ public final class AccessPolicyRequireArgs extends com.pulumi.resources.Resource
         this.azures = $.azures;
         this.certificate = $.certificate;
         this.commonName = $.commonName;
+        this.commonNames = $.commonNames;
         this.devicePostures = $.devicePostures;
         this.emailDomains = $.emailDomains;
         this.emails = $.emails;
@@ -291,6 +307,37 @@ public final class AccessPolicyRequireArgs extends com.pulumi.resources.Resource
 
         public Builder commonName(String commonName) {
             return commonName(Output.of(commonName));
+        }
+
+        /**
+         * @param commonNames Overflow field if you need to have multiple common*name rules in a single policy.  Use in place of the singular common*name field.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder commonNames(@Nullable Output<List<String>> commonNames) {
+            $.commonNames = commonNames;
+            return this;
+        }
+
+        /**
+         * @param commonNames Overflow field if you need to have multiple common*name rules in a single policy.  Use in place of the singular common*name field.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder commonNames(List<String> commonNames) {
+            return commonNames(Output.of(commonNames));
+        }
+
+        /**
+         * @param commonNames Overflow field if you need to have multiple common*name rules in a single policy.  Use in place of the singular common*name field.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder commonNames(String... commonNames) {
+            return commonNames(List.of(commonNames));
         }
 
         public Builder devicePostures(@Nullable Output<List<String>> devicePostures) {

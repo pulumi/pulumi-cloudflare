@@ -180,6 +180,10 @@ export interface AccessGroupExclude {
     azures?: outputs.AccessGroupExcludeAzure[];
     certificate?: boolean;
     commonName?: string;
+    /**
+     * Overflow field if you need to have multiple common*name rules in a single policy.  Use in place of the singular common*name field.
+     */
+    commonNames?: string[];
     devicePostures?: string[];
     emailDomains?: string[];
     emails?: string[];
@@ -275,6 +279,10 @@ export interface AccessGroupInclude {
     azures?: outputs.AccessGroupIncludeAzure[];
     certificate?: boolean;
     commonName?: string;
+    /**
+     * Overflow field if you need to have multiple common*name rules in a single policy.  Use in place of the singular common*name field.
+     */
+    commonNames?: string[];
     devicePostures?: string[];
     emailDomains?: string[];
     emails?: string[];
@@ -370,6 +378,10 @@ export interface AccessGroupRequire {
     azures?: outputs.AccessGroupRequireAzure[];
     certificate?: boolean;
     commonName?: string;
+    /**
+     * Overflow field if you need to have multiple common*name rules in a single policy.  Use in place of the singular common*name field.
+     */
+    commonNames?: string[];
     devicePostures?: string[];
     emailDomains?: string[];
     emails?: string[];
@@ -564,6 +576,10 @@ export interface AccessPolicyExclude {
     azures?: outputs.AccessPolicyExcludeAzure[];
     certificate?: boolean;
     commonName?: string;
+    /**
+     * Overflow field if you need to have multiple common*name rules in a single policy.  Use in place of the singular common*name field.
+     */
+    commonNames?: string[];
     devicePostures?: string[];
     emailDomains?: string[];
     emails?: string[];
@@ -659,6 +675,10 @@ export interface AccessPolicyInclude {
     azures?: outputs.AccessPolicyIncludeAzure[];
     certificate?: boolean;
     commonName?: string;
+    /**
+     * Overflow field if you need to have multiple common*name rules in a single policy.  Use in place of the singular common*name field.
+     */
+    commonNames?: string[];
     devicePostures?: string[];
     emailDomains?: string[];
     emails?: string[];
@@ -754,6 +774,10 @@ export interface AccessPolicyRequire {
     azures?: outputs.AccessPolicyRequireAzure[];
     certificate?: boolean;
     commonName?: string;
+    /**
+     * Overflow field if you need to have multiple common*name rules in a single policy.  Use in place of the singular common*name field.
+     */
+    commonNames?: string[];
     devicePostures?: string[];
     emailDomains?: string[];
     emails?: string[];
