@@ -40,6 +40,18 @@ namespace Pulumi.Cloudflare.Inputs
         [Input("commonName")]
         public Input<string>? CommonName { get; set; }
 
+        [Input("commonNames")]
+        private InputList<string>? _commonNames;
+
+        /// <summary>
+        /// Overflow field if you need to have multiple common*name rules in a single policy.  Use in place of the singular common*name field.
+        /// </summary>
+        public InputList<string> CommonNames
+        {
+            get => _commonNames ?? (_commonNames = new InputList<string>());
+            set => _commonNames = value;
+        }
+
         [Input("devicePostures")]
         private InputList<string>? _devicePostures;
         public InputList<string> DevicePostures

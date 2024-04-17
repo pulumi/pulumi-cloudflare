@@ -19,6 +19,10 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly ImmutableArray<Outputs.AccessGroupIncludeAzure> Azures;
         public readonly bool? Certificate;
         public readonly string? CommonName;
+        /// <summary>
+        /// Overflow field if you need to have multiple common*name rules in a single policy.  Use in place of the singular common*name field.
+        /// </summary>
+        public readonly ImmutableArray<string> CommonNames;
         public readonly ImmutableArray<string> DevicePostures;
         public readonly ImmutableArray<string> EmailDomains;
         public readonly ImmutableArray<string> Emails;
@@ -54,6 +58,8 @@ namespace Pulumi.Cloudflare.Outputs
             bool? certificate,
 
             string? commonName,
+
+            ImmutableArray<string> commonNames,
 
             ImmutableArray<string> devicePostures,
 
@@ -91,6 +97,7 @@ namespace Pulumi.Cloudflare.Outputs
             Azures = azures;
             Certificate = certificate;
             CommonName = commonName;
+            CommonNames = commonNames;
             DevicePostures = devicePostures;
             EmailDomains = emailDomains;
             Emails = emails;

@@ -943,6 +943,8 @@ class AccessGroupExclude(dict):
             suggest = "auth_method"
         elif key == "commonName":
             suggest = "common_name"
+        elif key == "commonNames":
+            suggest = "common_names"
         elif key == "devicePostures":
             suggest = "device_postures"
         elif key == "emailDomains":
@@ -974,6 +976,7 @@ class AccessGroupExclude(dict):
                  azures: Optional[Sequence['outputs.AccessGroupExcludeAzure']] = None,
                  certificate: Optional[bool] = None,
                  common_name: Optional[str] = None,
+                 common_names: Optional[Sequence[str]] = None,
                  device_postures: Optional[Sequence[str]] = None,
                  email_domains: Optional[Sequence[str]] = None,
                  emails: Optional[Sequence[str]] = None,
@@ -990,6 +993,7 @@ class AccessGroupExclude(dict):
                  samls: Optional[Sequence['outputs.AccessGroupExcludeSaml']] = None,
                  service_tokens: Optional[Sequence[str]] = None):
         """
+        :param Sequence[str] common_names: Overflow field if you need to have multiple common*name rules in a single policy.  Use in place of the singular common*name field.
         :param Sequence[str] ip_lists: The ID of an existing IP list to reference.
         :param Sequence[str] ips: An IPv4 or IPv6 CIDR block.
         """
@@ -1005,6 +1009,8 @@ class AccessGroupExclude(dict):
             pulumi.set(__self__, "certificate", certificate)
         if common_name is not None:
             pulumi.set(__self__, "common_name", common_name)
+        if common_names is not None:
+            pulumi.set(__self__, "common_names", common_names)
         if device_postures is not None:
             pulumi.set(__self__, "device_postures", device_postures)
         if email_domains is not None:
@@ -1065,6 +1071,14 @@ class AccessGroupExclude(dict):
     @pulumi.getter(name="commonName")
     def common_name(self) -> Optional[str]:
         return pulumi.get(self, "common_name")
+
+    @property
+    @pulumi.getter(name="commonNames")
+    def common_names(self) -> Optional[Sequence[str]]:
+        """
+        Overflow field if you need to have multiple common*name rules in a single policy.  Use in place of the singular common*name field.
+        """
+        return pulumi.get(self, "common_names")
 
     @property
     @pulumi.getter(name="devicePostures")
@@ -1504,6 +1518,8 @@ class AccessGroupInclude(dict):
             suggest = "auth_method"
         elif key == "commonName":
             suggest = "common_name"
+        elif key == "commonNames":
+            suggest = "common_names"
         elif key == "devicePostures":
             suggest = "device_postures"
         elif key == "emailDomains":
@@ -1535,6 +1551,7 @@ class AccessGroupInclude(dict):
                  azures: Optional[Sequence['outputs.AccessGroupIncludeAzure']] = None,
                  certificate: Optional[bool] = None,
                  common_name: Optional[str] = None,
+                 common_names: Optional[Sequence[str]] = None,
                  device_postures: Optional[Sequence[str]] = None,
                  email_domains: Optional[Sequence[str]] = None,
                  emails: Optional[Sequence[str]] = None,
@@ -1551,6 +1568,7 @@ class AccessGroupInclude(dict):
                  samls: Optional[Sequence['outputs.AccessGroupIncludeSaml']] = None,
                  service_tokens: Optional[Sequence[str]] = None):
         """
+        :param Sequence[str] common_names: Overflow field if you need to have multiple common*name rules in a single policy.  Use in place of the singular common*name field.
         :param Sequence[str] ip_lists: The ID of an existing IP list to reference.
         :param Sequence[str] ips: An IPv4 or IPv6 CIDR block.
         """
@@ -1566,6 +1584,8 @@ class AccessGroupInclude(dict):
             pulumi.set(__self__, "certificate", certificate)
         if common_name is not None:
             pulumi.set(__self__, "common_name", common_name)
+        if common_names is not None:
+            pulumi.set(__self__, "common_names", common_names)
         if device_postures is not None:
             pulumi.set(__self__, "device_postures", device_postures)
         if email_domains is not None:
@@ -1626,6 +1646,14 @@ class AccessGroupInclude(dict):
     @pulumi.getter(name="commonName")
     def common_name(self) -> Optional[str]:
         return pulumi.get(self, "common_name")
+
+    @property
+    @pulumi.getter(name="commonNames")
+    def common_names(self) -> Optional[Sequence[str]]:
+        """
+        Overflow field if you need to have multiple common*name rules in a single policy.  Use in place of the singular common*name field.
+        """
+        return pulumi.get(self, "common_names")
 
     @property
     @pulumi.getter(name="devicePostures")
@@ -2065,6 +2093,8 @@ class AccessGroupRequire(dict):
             suggest = "auth_method"
         elif key == "commonName":
             suggest = "common_name"
+        elif key == "commonNames":
+            suggest = "common_names"
         elif key == "devicePostures":
             suggest = "device_postures"
         elif key == "emailDomains":
@@ -2096,6 +2126,7 @@ class AccessGroupRequire(dict):
                  azures: Optional[Sequence['outputs.AccessGroupRequireAzure']] = None,
                  certificate: Optional[bool] = None,
                  common_name: Optional[str] = None,
+                 common_names: Optional[Sequence[str]] = None,
                  device_postures: Optional[Sequence[str]] = None,
                  email_domains: Optional[Sequence[str]] = None,
                  emails: Optional[Sequence[str]] = None,
@@ -2112,6 +2143,7 @@ class AccessGroupRequire(dict):
                  samls: Optional[Sequence['outputs.AccessGroupRequireSaml']] = None,
                  service_tokens: Optional[Sequence[str]] = None):
         """
+        :param Sequence[str] common_names: Overflow field if you need to have multiple common*name rules in a single policy.  Use in place of the singular common*name field.
         :param Sequence[str] ip_lists: The ID of an existing IP list to reference.
         :param Sequence[str] ips: An IPv4 or IPv6 CIDR block.
         """
@@ -2127,6 +2159,8 @@ class AccessGroupRequire(dict):
             pulumi.set(__self__, "certificate", certificate)
         if common_name is not None:
             pulumi.set(__self__, "common_name", common_name)
+        if common_names is not None:
+            pulumi.set(__self__, "common_names", common_names)
         if device_postures is not None:
             pulumi.set(__self__, "device_postures", device_postures)
         if email_domains is not None:
@@ -2187,6 +2221,14 @@ class AccessGroupRequire(dict):
     @pulumi.getter(name="commonName")
     def common_name(self) -> Optional[str]:
         return pulumi.get(self, "common_name")
+
+    @property
+    @pulumi.getter(name="commonNames")
+    def common_names(self) -> Optional[Sequence[str]]:
+        """
+        Overflow field if you need to have multiple common*name rules in a single policy.  Use in place of the singular common*name field.
+        """
+        return pulumi.get(self, "common_names")
 
     @property
     @pulumi.getter(name="devicePostures")
@@ -3236,6 +3278,8 @@ class AccessPolicyExclude(dict):
             suggest = "auth_method"
         elif key == "commonName":
             suggest = "common_name"
+        elif key == "commonNames":
+            suggest = "common_names"
         elif key == "devicePostures":
             suggest = "device_postures"
         elif key == "emailDomains":
@@ -3267,6 +3311,7 @@ class AccessPolicyExclude(dict):
                  azures: Optional[Sequence['outputs.AccessPolicyExcludeAzure']] = None,
                  certificate: Optional[bool] = None,
                  common_name: Optional[str] = None,
+                 common_names: Optional[Sequence[str]] = None,
                  device_postures: Optional[Sequence[str]] = None,
                  email_domains: Optional[Sequence[str]] = None,
                  emails: Optional[Sequence[str]] = None,
@@ -3283,6 +3328,7 @@ class AccessPolicyExclude(dict):
                  samls: Optional[Sequence['outputs.AccessPolicyExcludeSaml']] = None,
                  service_tokens: Optional[Sequence[str]] = None):
         """
+        :param Sequence[str] common_names: Overflow field if you need to have multiple common*name rules in a single policy.  Use in place of the singular common*name field.
         :param Sequence[str] ip_lists: The ID of an existing IP list to reference.
         :param Sequence[str] ips: An IPv4 or IPv6 CIDR block.
         """
@@ -3298,6 +3344,8 @@ class AccessPolicyExclude(dict):
             pulumi.set(__self__, "certificate", certificate)
         if common_name is not None:
             pulumi.set(__self__, "common_name", common_name)
+        if common_names is not None:
+            pulumi.set(__self__, "common_names", common_names)
         if device_postures is not None:
             pulumi.set(__self__, "device_postures", device_postures)
         if email_domains is not None:
@@ -3358,6 +3406,14 @@ class AccessPolicyExclude(dict):
     @pulumi.getter(name="commonName")
     def common_name(self) -> Optional[str]:
         return pulumi.get(self, "common_name")
+
+    @property
+    @pulumi.getter(name="commonNames")
+    def common_names(self) -> Optional[Sequence[str]]:
+        """
+        Overflow field if you need to have multiple common*name rules in a single policy.  Use in place of the singular common*name field.
+        """
+        return pulumi.get(self, "common_names")
 
     @property
     @pulumi.getter(name="devicePostures")
@@ -3797,6 +3853,8 @@ class AccessPolicyInclude(dict):
             suggest = "auth_method"
         elif key == "commonName":
             suggest = "common_name"
+        elif key == "commonNames":
+            suggest = "common_names"
         elif key == "devicePostures":
             suggest = "device_postures"
         elif key == "emailDomains":
@@ -3828,6 +3886,7 @@ class AccessPolicyInclude(dict):
                  azures: Optional[Sequence['outputs.AccessPolicyIncludeAzure']] = None,
                  certificate: Optional[bool] = None,
                  common_name: Optional[str] = None,
+                 common_names: Optional[Sequence[str]] = None,
                  device_postures: Optional[Sequence[str]] = None,
                  email_domains: Optional[Sequence[str]] = None,
                  emails: Optional[Sequence[str]] = None,
@@ -3844,6 +3903,7 @@ class AccessPolicyInclude(dict):
                  samls: Optional[Sequence['outputs.AccessPolicyIncludeSaml']] = None,
                  service_tokens: Optional[Sequence[str]] = None):
         """
+        :param Sequence[str] common_names: Overflow field if you need to have multiple common*name rules in a single policy.  Use in place of the singular common*name field.
         :param Sequence[str] ip_lists: The ID of an existing IP list to reference.
         :param Sequence[str] ips: An IPv4 or IPv6 CIDR block.
         """
@@ -3859,6 +3919,8 @@ class AccessPolicyInclude(dict):
             pulumi.set(__self__, "certificate", certificate)
         if common_name is not None:
             pulumi.set(__self__, "common_name", common_name)
+        if common_names is not None:
+            pulumi.set(__self__, "common_names", common_names)
         if device_postures is not None:
             pulumi.set(__self__, "device_postures", device_postures)
         if email_domains is not None:
@@ -3919,6 +3981,14 @@ class AccessPolicyInclude(dict):
     @pulumi.getter(name="commonName")
     def common_name(self) -> Optional[str]:
         return pulumi.get(self, "common_name")
+
+    @property
+    @pulumi.getter(name="commonNames")
+    def common_names(self) -> Optional[Sequence[str]]:
+        """
+        Overflow field if you need to have multiple common*name rules in a single policy.  Use in place of the singular common*name field.
+        """
+        return pulumi.get(self, "common_names")
 
     @property
     @pulumi.getter(name="devicePostures")
@@ -4358,6 +4428,8 @@ class AccessPolicyRequire(dict):
             suggest = "auth_method"
         elif key == "commonName":
             suggest = "common_name"
+        elif key == "commonNames":
+            suggest = "common_names"
         elif key == "devicePostures":
             suggest = "device_postures"
         elif key == "emailDomains":
@@ -4389,6 +4461,7 @@ class AccessPolicyRequire(dict):
                  azures: Optional[Sequence['outputs.AccessPolicyRequireAzure']] = None,
                  certificate: Optional[bool] = None,
                  common_name: Optional[str] = None,
+                 common_names: Optional[Sequence[str]] = None,
                  device_postures: Optional[Sequence[str]] = None,
                  email_domains: Optional[Sequence[str]] = None,
                  emails: Optional[Sequence[str]] = None,
@@ -4405,6 +4478,7 @@ class AccessPolicyRequire(dict):
                  samls: Optional[Sequence['outputs.AccessPolicyRequireSaml']] = None,
                  service_tokens: Optional[Sequence[str]] = None):
         """
+        :param Sequence[str] common_names: Overflow field if you need to have multiple common*name rules in a single policy.  Use in place of the singular common*name field.
         :param Sequence[str] ip_lists: The ID of an existing IP list to reference.
         :param Sequence[str] ips: An IPv4 or IPv6 CIDR block.
         """
@@ -4420,6 +4494,8 @@ class AccessPolicyRequire(dict):
             pulumi.set(__self__, "certificate", certificate)
         if common_name is not None:
             pulumi.set(__self__, "common_name", common_name)
+        if common_names is not None:
+            pulumi.set(__self__, "common_names", common_names)
         if device_postures is not None:
             pulumi.set(__self__, "device_postures", device_postures)
         if email_domains is not None:
@@ -4480,6 +4556,14 @@ class AccessPolicyRequire(dict):
     @pulumi.getter(name="commonName")
     def common_name(self) -> Optional[str]:
         return pulumi.get(self, "common_name")
+
+    @property
+    @pulumi.getter(name="commonNames")
+    def common_names(self) -> Optional[Sequence[str]]:
+        """
+        Overflow field if you need to have multiple common*name rules in a single policy.  Use in place of the singular common*name field.
+        """
+        return pulumi.get(self, "common_names")
 
     @property
     @pulumi.getter(name="devicePostures")
