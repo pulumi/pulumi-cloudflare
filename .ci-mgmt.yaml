@@ -5,7 +5,8 @@ plugins:
   - name: terraform
     version: "1.0.16"
     kind: converter
-
+  - name: std
+    version: "1.6.2"
   - name: gcp
     version: "5.0.0"
   - name: tls
