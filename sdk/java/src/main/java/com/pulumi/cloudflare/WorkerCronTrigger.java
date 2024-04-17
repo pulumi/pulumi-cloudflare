@@ -20,6 +20,53 @@ import javax.annotation.Nullable;
  * schedule. Worker Cron Triggers are ideal for running periodic jobs for
  * maintenance or calling third-party APIs to collect up-to-date data.
  * 
+ * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.cloudflare.WorkerScript;
+ * import com.pulumi.cloudflare.WorkerScriptArgs;
+ * import com.pulumi.cloudflare.WorkerCronTrigger;
+ * import com.pulumi.cloudflare.WorkerCronTriggerArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var exampleScript = new WorkerScript(&#34;exampleScript&#34;, WorkerScriptArgs.builder()        
+ *             .accountId(&#34;f037e56e89293a057740de681ac9abbe&#34;)
+ *             .name(&#34;example-script&#34;)
+ *             .content(StdFunctions.file(FileArgs.builder()
+ *                 .input(&#34;path/to/my.js&#34;)
+ *                 .build()).result())
+ *             .build());
+ * 
+ *         var exampleTrigger = new WorkerCronTrigger(&#34;exampleTrigger&#34;, WorkerCronTriggerArgs.builder()        
+ *             .accountId(&#34;f037e56e89293a057740de681ac9abbe&#34;)
+ *             .scriptName(exampleScript.name())
+ *             .schedules(            
+ *                 &#34;*{@literal /}5 * * * *&#34;,
+ *                 &#34;10 7 * * mon-fri&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ## Import
  * 
  * ```sh

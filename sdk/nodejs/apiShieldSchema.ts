@@ -6,6 +6,26 @@ import * as utilities from "./utilities";
 
 /**
  * Provides a resource to manage a schema in API Shield Schema Validation 2.0.
+ *
+ * ## Example Usage
+ *
+ * <!--Start PulumiCodeChooser -->
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as cloudflare from "@pulumi/cloudflare";
+ * import * as std from "@pulumi/std";
+ *
+ * const petstoreSchema = new cloudflare.ApiShieldSchema("petstore_schema", {
+ *     zoneId: "0da42c8d2132a9ddaf714f9e7c920711",
+ *     name: "myschema",
+ *     kind: "openapi_v3",
+ *     validationEnabled: true,
+ *     source: std.file({
+ *         input: "./schemas/petstore.json",
+ *     }).then(invoke => invoke.result),
+ * });
+ * ```
+ * <!--End PulumiCodeChooser -->
  */
 export class ApiShieldSchema extends pulumi.CustomResource {
     /**

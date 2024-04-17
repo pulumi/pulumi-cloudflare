@@ -15,6 +15,54 @@ import (
 // The [Workers for Platforms](https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/) resource allows you
 // to manage Cloudflare Workers for Platforms namespaces.
 //
+// ## Example Usage
+//
+// <!--Start PulumiCodeChooser -->
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare"
+//	"github.com/pulumi/pulumi-std/sdk/go/std"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			example, err := cloudflare.NewWorkersForPlatformsNamespace(ctx, "example", &cloudflare.WorkersForPlatformsNamespaceArgs{
+//				AccountId: pulumi.String("f037e56e89293a057740de681ac9abbe"),
+//				Name:      pulumi.String("example-namespace"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			invokeFile, err := std.File(ctx, &std.FileArgs{
+//				Input: "script.js",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = cloudflare.NewWorkerScript(ctx, "customer_worker_1", &cloudflare.WorkerScriptArgs{
+//				AccountId:         pulumi.String("f037e56e89293a057740de681ac9abbe"),
+//				Name:              pulumi.String("customer-worker-1"),
+//				Content:           invokeFile.Result,
+//				DispatchNamespace: example.Name,
+//				Tags: pulumi.StringArray{
+//					pulumi.String("free"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// <!--End PulumiCodeChooser -->
+//
 // ## Import
 //
 // ```sh

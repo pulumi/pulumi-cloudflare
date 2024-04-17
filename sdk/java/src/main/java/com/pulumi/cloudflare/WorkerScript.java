@@ -29,6 +29,89 @@ import javax.annotation.Nullable;
 /**
  * Provides a Cloudflare worker script resource. In order for a script to be active, you&#39;ll also need to setup a `cloudflare.WorkerRoute`.
  * 
+ * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.cloudflare.WorkersKvNamespace;
+ * import com.pulumi.cloudflare.WorkersKvNamespaceArgs;
+ * import com.pulumi.cloudflare.WorkerScript;
+ * import com.pulumi.cloudflare.WorkerScriptArgs;
+ * import com.pulumi.cloudflare.inputs.WorkerScriptKvNamespaceBindingArgs;
+ * import com.pulumi.cloudflare.inputs.WorkerScriptPlainTextBindingArgs;
+ * import com.pulumi.cloudflare.inputs.WorkerScriptSecretTextBindingArgs;
+ * import com.pulumi.cloudflare.inputs.WorkerScriptWebassemblyBindingArgs;
+ * import com.pulumi.cloudflare.inputs.WorkerScriptServiceBindingArgs;
+ * import com.pulumi.cloudflare.inputs.WorkerScriptR2BucketBindingArgs;
+ * import com.pulumi.cloudflare.inputs.WorkerScriptAnalyticsEngineBindingArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var myNamespace = new WorkersKvNamespace(&#34;myNamespace&#34;, WorkersKvNamespaceArgs.builder()        
+ *             .accountId(&#34;f037e56e89293a057740de681ac9abbe&#34;)
+ *             .title(&#34;example&#34;)
+ *             .build());
+ * 
+ *         // Sets the script with the name &#34;script_1&#34;
+ *         var myScript = new WorkerScript(&#34;myScript&#34;, WorkerScriptArgs.builder()        
+ *             .accountId(&#34;f037e56e89293a057740de681ac9abbe&#34;)
+ *             .name(&#34;script_1&#34;)
+ *             .content(StdFunctions.file(FileArgs.builder()
+ *                 .input(&#34;script.js&#34;)
+ *                 .build()).result())
+ *             .kvNamespaceBindings(WorkerScriptKvNamespaceBindingArgs.builder()
+ *                 .name(&#34;MY_EXAMPLE_KV_NAMESPACE&#34;)
+ *                 .namespaceId(myNamespace.id())
+ *                 .build())
+ *             .plainTextBindings(WorkerScriptPlainTextBindingArgs.builder()
+ *                 .name(&#34;MY_EXAMPLE_PLAIN_TEXT&#34;)
+ *                 .text(&#34;foobar&#34;)
+ *                 .build())
+ *             .secretTextBindings(WorkerScriptSecretTextBindingArgs.builder()
+ *                 .name(&#34;MY_EXAMPLE_SECRET_TEXT&#34;)
+ *                 .text(secretFooValue)
+ *                 .build())
+ *             .webassemblyBindings(WorkerScriptWebassemblyBindingArgs.builder()
+ *                 .name(&#34;MY_EXAMPLE_WASM&#34;)
+ *                 .module(StdFunctions.filebase64(Filebase64Args.builder()
+ *                     .input(&#34;example.wasm&#34;)
+ *                     .build()).result())
+ *                 .build())
+ *             .serviceBindings(WorkerScriptServiceBindingArgs.builder()
+ *                 .name(&#34;MY_SERVICE_BINDING&#34;)
+ *                 .service(&#34;MY_SERVICE&#34;)
+ *                 .environment(&#34;production&#34;)
+ *                 .build())
+ *             .r2BucketBindings(WorkerScriptR2BucketBindingArgs.builder()
+ *                 .name(&#34;MY_BUCKET&#34;)
+ *                 .bucketName(&#34;MY_BUCKET_NAME&#34;)
+ *                 .build())
+ *             .analyticsEngineBindings(WorkerScriptAnalyticsEngineBindingArgs.builder()
+ *                 .name(&#34;MY_DATASET&#34;)
+ *                 .dataset(&#34;dataset1&#34;)
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ## Import
  * 
  * ```sh

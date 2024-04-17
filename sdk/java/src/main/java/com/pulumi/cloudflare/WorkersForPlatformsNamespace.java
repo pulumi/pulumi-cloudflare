@@ -17,6 +17,52 @@ import javax.annotation.Nullable;
  * The [Workers for Platforms](https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/) resource allows you
  * to manage Cloudflare Workers for Platforms namespaces.
  * 
+ * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.cloudflare.WorkersForPlatformsNamespace;
+ * import com.pulumi.cloudflare.WorkersForPlatformsNamespaceArgs;
+ * import com.pulumi.cloudflare.WorkerScript;
+ * import com.pulumi.cloudflare.WorkerScriptArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var example = new WorkersForPlatformsNamespace(&#34;example&#34;, WorkersForPlatformsNamespaceArgs.builder()        
+ *             .accountId(&#34;f037e56e89293a057740de681ac9abbe&#34;)
+ *             .name(&#34;example-namespace&#34;)
+ *             .build());
+ * 
+ *         var customerWorker1 = new WorkerScript(&#34;customerWorker1&#34;, WorkerScriptArgs.builder()        
+ *             .accountId(&#34;f037e56e89293a057740de681ac9abbe&#34;)
+ *             .name(&#34;customer-worker-1&#34;)
+ *             .content(StdFunctions.file(FileArgs.builder()
+ *                 .input(&#34;script.js&#34;)
+ *                 .build()).result())
+ *             .dispatchNamespace(example.name())
+ *             .tags(&#34;free&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ## Import
  * 
  * ```sh

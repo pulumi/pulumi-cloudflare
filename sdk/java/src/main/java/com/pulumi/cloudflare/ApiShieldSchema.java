@@ -18,6 +18,45 @@ import javax.annotation.Nullable;
 /**
  * Provides a resource to manage a schema in API Shield Schema Validation 2.0.
  * 
+ * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.cloudflare.ApiShieldSchema;
+ * import com.pulumi.cloudflare.ApiShieldSchemaArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var petstoreSchema = new ApiShieldSchema(&#34;petstoreSchema&#34;, ApiShieldSchemaArgs.builder()        
+ *             .zoneId(&#34;0da42c8d2132a9ddaf714f9e7c920711&#34;)
+ *             .name(&#34;myschema&#34;)
+ *             .kind(&#34;openapi_v3&#34;)
+ *             .validationEnabled(true)
+ *             .source(StdFunctions.file(FileArgs.builder()
+ *                 .input(&#34;./schemas/petstore.json&#34;)
+ *                 .build()).result())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  */
 @ResourceType(type="cloudflare:index/apiShieldSchema:ApiShieldSchema")
 public class ApiShieldSchema extends com.pulumi.resources.CustomResource {

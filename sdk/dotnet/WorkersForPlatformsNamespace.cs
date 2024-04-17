@@ -13,6 +13,43 @@ namespace Pulumi.Cloudflare
     /// The [Workers for Platforms](https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/) resource allows you
     /// to manage Cloudflare Workers for Platforms namespaces.
     /// 
+    /// ## Example Usage
+    /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Cloudflare = Pulumi.Cloudflare;
+    /// using Std = Pulumi.Std;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var example = new Cloudflare.WorkersForPlatformsNamespace("example", new()
+    ///     {
+    ///         AccountId = "f037e56e89293a057740de681ac9abbe",
+    ///         Name = "example-namespace",
+    ///     });
+    /// 
+    ///     var customerWorker1 = new Cloudflare.WorkerScript("customer_worker_1", new()
+    ///     {
+    ///         AccountId = "f037e56e89293a057740de681ac9abbe",
+    ///         Name = "customer-worker-1",
+    ///         Content = Std.File.Invoke(new()
+    ///         {
+    ///             Input = "script.js",
+    ///         }).Apply(invoke =&gt; invoke.Result),
+    ///         DispatchNamespace = example.Name,
+    ///         Tags = new[]
+    ///         {
+    ///             "free",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
+    /// 
     /// ## Import
     /// 
     /// ```sh

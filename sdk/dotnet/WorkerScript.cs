@@ -12,6 +12,99 @@ namespace Pulumi.Cloudflare
     /// <summary>
     /// Provides a Cloudflare worker script resource. In order for a script to be active, you'll also need to setup a `cloudflare.WorkerRoute`.
     /// 
+    /// ## Example Usage
+    /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Cloudflare = Pulumi.Cloudflare;
+    /// using Std = Pulumi.Std;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var myNamespace = new Cloudflare.WorkersKvNamespace("my_namespace", new()
+    ///     {
+    ///         AccountId = "f037e56e89293a057740de681ac9abbe",
+    ///         Title = "example",
+    ///     });
+    /// 
+    ///     // Sets the script with the name "script_1"
+    ///     var myScript = new Cloudflare.WorkerScript("my_script", new()
+    ///     {
+    ///         AccountId = "f037e56e89293a057740de681ac9abbe",
+    ///         Name = "script_1",
+    ///         Content = Std.File.Invoke(new()
+    ///         {
+    ///             Input = "script.js",
+    ///         }).Apply(invoke =&gt; invoke.Result),
+    ///         KvNamespaceBindings = new[]
+    ///         {
+    ///             new Cloudflare.Inputs.WorkerScriptKvNamespaceBindingArgs
+    ///             {
+    ///                 Name = "MY_EXAMPLE_KV_NAMESPACE",
+    ///                 NamespaceId = myNamespace.Id,
+    ///             },
+    ///         },
+    ///         PlainTextBindings = new[]
+    ///         {
+    ///             new Cloudflare.Inputs.WorkerScriptPlainTextBindingArgs
+    ///             {
+    ///                 Name = "MY_EXAMPLE_PLAIN_TEXT",
+    ///                 Text = "foobar",
+    ///             },
+    ///         },
+    ///         SecretTextBindings = new[]
+    ///         {
+    ///             new Cloudflare.Inputs.WorkerScriptSecretTextBindingArgs
+    ///             {
+    ///                 Name = "MY_EXAMPLE_SECRET_TEXT",
+    ///                 Text = secretFooValue,
+    ///             },
+    ///         },
+    ///         WebassemblyBindings = new[]
+    ///         {
+    ///             new Cloudflare.Inputs.WorkerScriptWebassemblyBindingArgs
+    ///             {
+    ///                 Name = "MY_EXAMPLE_WASM",
+    ///                 Module = Std.Filebase64.Invoke(new()
+    ///                 {
+    ///                     Input = "example.wasm",
+    ///                 }).Apply(invoke =&gt; invoke.Result),
+    ///             },
+    ///         },
+    ///         ServiceBindings = new[]
+    ///         {
+    ///             new Cloudflare.Inputs.WorkerScriptServiceBindingArgs
+    ///             {
+    ///                 Name = "MY_SERVICE_BINDING",
+    ///                 Service = "MY_SERVICE",
+    ///                 Environment = "production",
+    ///             },
+    ///         },
+    ///         R2BucketBindings = new[]
+    ///         {
+    ///             new Cloudflare.Inputs.WorkerScriptR2BucketBindingArgs
+    ///             {
+    ///                 Name = "MY_BUCKET",
+    ///                 BucketName = "MY_BUCKET_NAME",
+    ///             },
+    ///         },
+    ///         AnalyticsEngineBindings = new[]
+    ///         {
+    ///             new Cloudflare.Inputs.WorkerScriptAnalyticsEngineBindingArgs
+    ///             {
+    ///                 Name = "MY_DATASET",
+    ///                 Dataset = "dataset1",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
+    /// 
     /// ## Import
     /// 
     /// ```sh

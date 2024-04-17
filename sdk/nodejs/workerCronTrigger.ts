@@ -10,6 +10,32 @@ import * as utilities from "./utilities";
  * schedule. Worker Cron Triggers are ideal for running periodic jobs for
  * maintenance or calling third-party APIs to collect up-to-date data.
  *
+ * ## Example Usage
+ *
+ * <!--Start PulumiCodeChooser -->
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as cloudflare from "@pulumi/cloudflare";
+ * import * as std from "@pulumi/std";
+ *
+ * const exampleScript = new cloudflare.WorkerScript("example_script", {
+ *     accountId: "f037e56e89293a057740de681ac9abbe",
+ *     name: "example-script",
+ *     content: std.file({
+ *         input: "path/to/my.js",
+ *     }).then(invoke => invoke.result),
+ * });
+ * const exampleTrigger = new cloudflare.WorkerCronTrigger("example_trigger", {
+ *     accountId: "f037e56e89293a057740de681ac9abbe",
+ *     scriptName: exampleScript.name,
+ *     schedules: [
+ *         "*&#47;5 * * * *",
+ *         "10 7 * * mon-fri",
+ *     ],
+ * });
+ * ```
+ * <!--End PulumiCodeChooser -->
+ *
  * ## Import
  *
  * ```sh

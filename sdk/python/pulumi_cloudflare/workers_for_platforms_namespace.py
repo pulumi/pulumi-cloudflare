@@ -101,6 +101,26 @@ class WorkersForPlatformsNamespace(pulumi.CustomResource):
         The [Workers for Platforms](https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/) resource allows you
         to manage Cloudflare Workers for Platforms namespaces.
 
+        ## Example Usage
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+        import pulumi_std as std
+
+        example = cloudflare.WorkersForPlatformsNamespace("example",
+            account_id="f037e56e89293a057740de681ac9abbe",
+            name="example-namespace")
+        customer_worker1 = cloudflare.WorkerScript("customer_worker_1",
+            account_id="f037e56e89293a057740de681ac9abbe",
+            name="customer-worker-1",
+            content=std.file(input="script.js").result,
+            dispatch_namespace=example.name,
+            tags=["free"])
+        ```
+        <!--End PulumiCodeChooser -->
+
         ## Import
 
         ```sh
@@ -121,6 +141,26 @@ class WorkersForPlatformsNamespace(pulumi.CustomResource):
         """
         The [Workers for Platforms](https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/) resource allows you
         to manage Cloudflare Workers for Platforms namespaces.
+
+        ## Example Usage
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_cloudflare as cloudflare
+        import pulumi_std as std
+
+        example = cloudflare.WorkersForPlatformsNamespace("example",
+            account_id="f037e56e89293a057740de681ac9abbe",
+            name="example-namespace")
+        customer_worker1 = cloudflare.WorkerScript("customer_worker_1",
+            account_id="f037e56e89293a057740de681ac9abbe",
+            name="customer-worker-1",
+            content=std.file(input="script.js").result,
+            dispatch_namespace=example.name,
+            tags=["free"])
+        ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
