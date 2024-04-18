@@ -42,7 +42,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			wordpressFilter, err := cloudflare.NewFilter(ctx, "wordpressFilter", &cloudflare.FilterArgs{
+//			wordpress, err := cloudflare.NewFilter(ctx, "wordpress", &cloudflare.FilterArgs{
 //				ZoneId:      pulumi.String("0da42c8d2132a9ddaf714f9e7c920711"),
 //				Description: pulumi.String("Wordpress break-in attempts that are outside of the office"),
 //				Expression:  pulumi.String("(http.request.uri.path ~ \".*wp-login.php\" or http.request.uri.path ~ \".*xmlrpc.php\") and ip.src ne 192.0.2.1"),
@@ -50,10 +50,10 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = cloudflare.NewFirewallRule(ctx, "wordpressFirewallRule", &cloudflare.FirewallRuleArgs{
+//			_, err = cloudflare.NewFirewallRule(ctx, "wordpress", &cloudflare.FirewallRuleArgs{
 //				ZoneId:      pulumi.String("0da42c8d2132a9ddaf714f9e7c920711"),
 //				Description: pulumi.String("Block wordpress break-in attempts"),
-//				FilterId:    wordpressFilter.ID(),
+//				FilterId:    wordpress.ID(),
 //				Action:      pulumi.String("block"),
 //			})
 //			if err != nil {

@@ -22,44 +22,38 @@ import (
 //
 // import (
 //
-//	"encoding/base64"
-//	"os"
-//
 //	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare"
+//	"github.com/pulumi/pulumi-std/sdk/go/std"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
-//	func filebase64OrPanic(path string) string {
-//		if fileData, err := os.ReadFile(path); err == nil {
-//			return base64.StdEncoding.EncodeToString(fileData[:])
-//		} else {
-//			panic(err.Error())
-//		}
-//	}
-//
-//	func readFileOrPanic(path string) pulumi.StringPtrInput {
-//		data, err := os.ReadFile(path)
-//		if err != nil {
-//			panic(err.Error())
-//		}
-//		return pulumi.String(string(data))
-//	}
-//
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			myNamespace, err := cloudflare.NewWorkersKvNamespace(ctx, "myNamespace", &cloudflare.WorkersKvNamespaceArgs{
+//			myNamespace, err := cloudflare.NewWorkersKvNamespace(ctx, "my_namespace", &cloudflare.WorkersKvNamespaceArgs{
 //				AccountId: pulumi.String("f037e56e89293a057740de681ac9abbe"),
 //				Title:     pulumi.String("example"),
 //			})
 //			if err != nil {
 //				return err
 //			}
+//			invokeFile, err := std.File(ctx, &std.FileArgs{
+//				Input: "script.js",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			invokeFilebase641, err := std.Filebase64(ctx, &std.Filebase64Args{
+//				Input: "example.wasm",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
 //			// Sets the script with the name "script_1"
-//			_, err = cloudflare.NewWorkerScript(ctx, "myScript", &cloudflare.WorkerScriptArgs{
+//			_, err = cloudflare.NewWorkerScript(ctx, "my_script", &cloudflare.WorkerScriptArgs{
 //				AccountId: pulumi.String("f037e56e89293a057740de681ac9abbe"),
 //				Name:      pulumi.String("script_1"),
-//				Content:   readFileOrPanic("script.js"),
+//				Content:   invokeFile.Result,
 //				KvNamespaceBindings: cloudflare.WorkerScriptKvNamespaceBindingArray{
 //					&cloudflare.WorkerScriptKvNamespaceBindingArgs{
 //						Name:        pulumi.String("MY_EXAMPLE_KV_NAMESPACE"),
@@ -75,13 +69,13 @@ import (
 //				SecretTextBindings: cloudflare.WorkerScriptSecretTextBindingArray{
 //					&cloudflare.WorkerScriptSecretTextBindingArgs{
 //						Name: pulumi.String("MY_EXAMPLE_SECRET_TEXT"),
-//						Text: pulumi.Any(_var.Secret_foo_value),
+//						Text: pulumi.Any(secretFooValue),
 //					},
 //				},
 //				WebassemblyBindings: cloudflare.WorkerScriptWebassemblyBindingArray{
 //					&cloudflare.WorkerScriptWebassemblyBindingArgs{
 //						Name:   pulumi.String("MY_EXAMPLE_WASM"),
-//						Module: filebase64OrPanic("example.wasm"),
+//						Module: invokeFilebase641.Result,
 //					},
 //				},
 //				ServiceBindings: cloudflare.WorkerScriptServiceBindingArray{

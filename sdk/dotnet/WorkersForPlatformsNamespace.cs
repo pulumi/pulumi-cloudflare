@@ -18,10 +18,10 @@ namespace Pulumi.Cloudflare
     /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
-    /// using System.IO;
     /// using System.Linq;
     /// using Pulumi;
     /// using Cloudflare = Pulumi.Cloudflare;
+    /// using Std = Pulumi.Std;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
@@ -31,11 +31,14 @@ namespace Pulumi.Cloudflare
     ///         Name = "example-namespace",
     ///     });
     /// 
-    ///     var customerWorker1 = new Cloudflare.WorkerScript("customerWorker1", new()
+    ///     var customerWorker1 = new Cloudflare.WorkerScript("customer_worker_1", new()
     ///     {
     ///         AccountId = "f037e56e89293a057740de681ac9abbe",
     ///         Name = "customer-worker-1",
-    ///         Content = File.ReadAllText("script.js"),
+    ///         Content = Std.File.Invoke(new()
+    ///         {
+    ///             Input = "script.js",
+    ///         }).Apply(invoke =&gt; invoke.Result),
     ///         DispatchNamespace = example.Name,
     ///         Tags = new[]
     ///         {

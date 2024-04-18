@@ -19,8 +19,8 @@ import * as utilities from "./utilities";
  *
  * const example = new cloudflare.AddressMap("example", {
  *     accountId: "f037e56e89293a057740de681ac9abbe",
- *     defaultSni: "*.example.com",
  *     description: "My address map",
+ *     defaultSni: "*.example.com",
  *     enabled: true,
  *     ips: [
  *         {

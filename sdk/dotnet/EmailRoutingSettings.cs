@@ -23,10 +23,10 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var myZone = new Cloudflare.EmailRoutingSettings("myZone", new()
+    ///     var myZone = new Cloudflare.EmailRoutingSettings("my_zone", new()
     ///     {
-    ///         Enabled = true,
     ///         ZoneId = "0da42c8d2132a9ddaf714f9e7c920711",
+    ///         Enabled = true,
     ///     });
     /// 
     /// });

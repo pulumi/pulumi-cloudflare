@@ -49,7 +49,9 @@ import javax.annotation.Nullable;
  *         var exampleScript = new WorkerScript(&#34;exampleScript&#34;, WorkerScriptArgs.builder()        
  *             .accountId(&#34;f037e56e89293a057740de681ac9abbe&#34;)
  *             .name(&#34;example-script&#34;)
- *             .content(Files.readString(Paths.get(&#34;path/to/my.js&#34;)))
+ *             .content(StdFunctions.file(FileArgs.builder()
+ *                 .input(&#34;path/to/my.js&#34;)
+ *                 .build()).result())
  *             .build());
  * 
  *         var exampleTrigger = new WorkerCronTrigger(&#34;exampleTrigger&#34;, WorkerCronTriggerArgs.builder()        

@@ -32,8 +32,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.cloudflare.EmailRoutingCatchAll;
  * import com.pulumi.cloudflare.EmailRoutingCatchAllArgs;
- * import com.pulumi.cloudflare.inputs.EmailRoutingCatchAllActionArgs;
  * import com.pulumi.cloudflare.inputs.EmailRoutingCatchAllMatcherArgs;
+ * import com.pulumi.cloudflare.inputs.EmailRoutingCatchAllActionArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -48,16 +48,16 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var example = new EmailRoutingCatchAll(&#34;example&#34;, EmailRoutingCatchAllArgs.builder()        
- *             .actions(EmailRoutingCatchAllActionArgs.builder()
- *                 .type(&#34;forward&#34;)
- *                 .values(&#34;destinationaddress@example.net&#34;)
- *                 .build())
+ *             .zoneId(&#34;0da42c8d2132a9ddaf714f9e7c920711&#34;)
+ *             .name(&#34;example catch all&#34;)
  *             .enabled(true)
  *             .matchers(EmailRoutingCatchAllMatcherArgs.builder()
  *                 .type(&#34;all&#34;)
  *                 .build())
- *             .name(&#34;example catch all&#34;)
- *             .zoneId(&#34;0da42c8d2132a9ddaf714f9e7c920711&#34;)
+ *             .actions(EmailRoutingCatchAllActionArgs.builder()
+ *                 .type(&#34;forward&#34;)
+ *                 .values(&#34;destinationaddress@example.net&#34;)
+ *                 .build())
  *             .build());
  * 
  *     }

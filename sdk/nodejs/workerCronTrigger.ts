@@ -16,14 +16,16 @@ import * as utilities from "./utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
- * import * as fs from "fs";
+ * import * as std from "@pulumi/std";
  *
- * const exampleScript = new cloudflare.WorkerScript("exampleScript", {
+ * const exampleScript = new cloudflare.WorkerScript("example_script", {
  *     accountId: "f037e56e89293a057740de681ac9abbe",
  *     name: "example-script",
- *     content: fs.readFileSync("path/to/my.js", "utf8"),
+ *     content: std.file({
+ *         input: "path/to/my.js",
+ *     }).then(invoke => invoke.result),
  * });
- * const exampleTrigger = new cloudflare.WorkerCronTrigger("exampleTrigger", {
+ * const exampleTrigger = new cloudflare.WorkerCronTrigger("example_trigger", {
  *     accountId: "f037e56e89293a057740de681ac9abbe",
  *     scriptName: exampleScript.name,
  *     schedules: [

@@ -45,15 +45,15 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var example = new DeviceDexTest(&#34;example&#34;, DeviceDexTestArgs.builder()        
  *             .accountId(&#34;f037e56e89293a057740de681ac9abbe&#34;)
+ *             .name(&#34;GET homepage&#34;)
+ *             .description(&#34;Send a HTTP GET request to the home endpoint every half hour.&#34;)
+ *             .interval(&#34;0h30m0s&#34;)
+ *             .enabled(true)
  *             .data(DeviceDexTestDataArgs.builder()
  *                 .host(&#34;https://example.com/home&#34;)
  *                 .kind(&#34;http&#34;)
  *                 .method(&#34;GET&#34;)
  *                 .build())
- *             .description(&#34;Send a HTTP GET request to the home endpoint every half hour.&#34;)
- *             .enabled(true)
- *             .interval(&#34;0h30m0s&#34;)
- *             .name(&#34;GET homepage&#34;)
  *             .build());
  * 
  *     }

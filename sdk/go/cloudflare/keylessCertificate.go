@@ -30,13 +30,13 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.NewKeylessCertificate(ctx, "example", &cloudflare.KeylessCertificateArgs{
-//				BundleMethod: pulumi.String("ubiquitous"),
-//				Certificate:  pulumi.String("-----INSERT CERTIFICATE-----"),
-//				Enabled:      pulumi.Bool(true),
-//				Host:         pulumi.String("example.com"),
-//				Name:         pulumi.String("example.com Keyless SSL"),
-//				Port:         pulumi.Int(24008),
 //				ZoneId:       pulumi.String("0da42c8d2132a9ddaf714f9e7c920711"),
+//				BundleMethod: pulumi.String("ubiquitous"),
+//				Name:         pulumi.String("example.com Keyless SSL"),
+//				Host:         pulumi.String("example.com"),
+//				Port:         pulumi.Int(24008),
+//				Enabled:      pulumi.Bool(true),
+//				Certificate:  pulumi.String("-----INSERT CERTIFICATE-----"),
 //			})
 //			if err != nil {
 //				return err

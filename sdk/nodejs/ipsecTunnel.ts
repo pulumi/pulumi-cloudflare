@@ -16,16 +16,16 @@ import * as utilities from "./utilities";
  *
  * const example = new cloudflare.IpsecTunnel("example", {
  *     accountId: "f037e56e89293a057740de681ac9abbe",
- *     allowNullCipher: false,
- *     cloudflareEndpoint: "203.0.113.1",
+ *     name: "IPsec_1",
  *     customerEndpoint: "203.0.113.1",
+ *     cloudflareEndpoint: "203.0.113.1",
+ *     interfaceAddress: "192.0.2.0/31",
  *     description: "Tunnel for ISP X",
  *     healthCheckEnabled: true,
  *     healthCheckTarget: "203.0.113.1",
  *     healthCheckType: "reply",
- *     interfaceAddress: "192.0.2.0/31",
- *     name: "IPsec_1",
  *     psk: "asdf12341234",
+ *     allowNullCipher: false,
  * });
  * ```
  * <!--End PulumiCodeChooser -->

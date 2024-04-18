@@ -288,13 +288,13 @@ class KeylessCertificate(pulumi.CustomResource):
         import pulumi_cloudflare as cloudflare
 
         example = cloudflare.KeylessCertificate("example",
+            zone_id="0da42c8d2132a9ddaf714f9e7c920711",
             bundle_method="ubiquitous",
-            certificate="-----INSERT CERTIFICATE-----",
-            enabled=True,
-            host="example.com",
             name="example.com Keyless SSL",
+            host="example.com",
             port=24008,
-            zone_id="0da42c8d2132a9ddaf714f9e7c920711")
+            enabled=True,
+            certificate="-----INSERT CERTIFICATE-----")
         ```
         <!--End PulumiCodeChooser -->
 
@@ -331,13 +331,13 @@ class KeylessCertificate(pulumi.CustomResource):
         import pulumi_cloudflare as cloudflare
 
         example = cloudflare.KeylessCertificate("example",
+            zone_id="0da42c8d2132a9ddaf714f9e7c920711",
             bundle_method="ubiquitous",
-            certificate="-----INSERT CERTIFICATE-----",
-            enabled=True,
-            host="example.com",
             name="example.com Keyless SSL",
+            host="example.com",
             port=24008,
-            zone_id="0da42c8d2132a9ddaf714f9e7c920711")
+            enabled=True,
+            certificate="-----INSERT CERTIFICATE-----")
         ```
         <!--End PulumiCodeChooser -->
 

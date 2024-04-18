@@ -143,9 +143,9 @@ class Account(pulumi.CustomResource):
         import pulumi_cloudflare as cloudflare
 
         example = cloudflare.Account("example",
-            enforce_twofactor=True,
             name="some-enterprise-account",
-            type="enterprise")
+            type="enterprise",
+            enforce_twofactor=True)
         ```
         <!--End PulumiCodeChooser -->
 
@@ -179,9 +179,9 @@ class Account(pulumi.CustomResource):
         import pulumi_cloudflare as cloudflare
 
         example = cloudflare.Account("example",
-            enforce_twofactor=True,
             name="some-enterprise-account",
-            type="enterprise")
+            type="enterprise",
+            enforce_twofactor=True)
         ```
         <!--End PulumiCodeChooser -->
 

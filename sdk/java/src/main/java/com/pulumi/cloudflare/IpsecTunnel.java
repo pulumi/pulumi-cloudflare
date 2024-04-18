@@ -45,16 +45,16 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var example = new IpsecTunnel(&#34;example&#34;, IpsecTunnelArgs.builder()        
  *             .accountId(&#34;f037e56e89293a057740de681ac9abbe&#34;)
- *             .allowNullCipher(false)
- *             .cloudflareEndpoint(&#34;203.0.113.1&#34;)
+ *             .name(&#34;IPsec_1&#34;)
  *             .customerEndpoint(&#34;203.0.113.1&#34;)
+ *             .cloudflareEndpoint(&#34;203.0.113.1&#34;)
+ *             .interfaceAddress(&#34;192.0.2.0/31&#34;)
  *             .description(&#34;Tunnel for ISP X&#34;)
  *             .healthCheckEnabled(true)
  *             .healthCheckTarget(&#34;203.0.113.1&#34;)
  *             .healthCheckType(&#34;reply&#34;)
- *             .interfaceAddress(&#34;192.0.2.0/31&#34;)
- *             .name(&#34;IPsec_1&#34;)
  *             .psk(&#34;asdf12341234&#34;)
+ *             .allowNullCipher(false)
  *             .build());
  * 
  *     }

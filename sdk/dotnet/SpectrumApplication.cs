@@ -27,27 +27,27 @@ namespace Pulumi.Cloudflare
     /// {
     ///     var example = new Cloudflare.SpectrumApplication("example", new()
     ///     {
+    ///         ZoneId = "0da42c8d2132a9ddaf714f9e7c920711",
+    ///         Protocol = "tcp/22",
+    ///         TrafficType = "direct",
     ///         Dns = new Cloudflare.Inputs.SpectrumApplicationDnsArgs
     ///         {
-    ///             Name = "ssh.example.com",
     ///             Type = "CNAME",
-    ///         },
-    ///         EdgeIps = new Cloudflare.Inputs.SpectrumApplicationEdgeIpsArgs
-    ///         {
-    ///             Ips = new[]
-    ///             {
-    ///                 "203.0.113.1",
-    ///                 "203.0.113.2",
-    ///             },
-    ///             Type = "static",
+    ///             Name = "ssh.example.com",
     ///         },
     ///         OriginDirects = new[]
     ///         {
     ///             "tcp://192.0.2.1:22",
     ///         },
-    ///         Protocol = "tcp/22",
-    ///         TrafficType = "direct",
-    ///         ZoneId = "0da42c8d2132a9ddaf714f9e7c920711",
+    ///         EdgeIps = new Cloudflare.Inputs.SpectrumApplicationEdgeIpsArgs
+    ///         {
+    ///             Type = "static",
+    ///             Ips = new[]
+    ///             {
+    ///                 "203.0.113.1",
+    ///                 "203.0.113.2",
+    ///             },
+    ///         },
     ///     });
     /// 
     /// });

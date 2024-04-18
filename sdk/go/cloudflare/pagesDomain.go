@@ -35,8 +35,8 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.NewPagesDomain(ctx, "my-domain", &cloudflare.PagesDomainArgs{
 //				AccountId:   pulumi.String("f037e56e89293a057740de681ac9abbe"),
-//				Domain:      pulumi.String("example.com"),
 //				ProjectName: pulumi.String("my-example-project"),
+//				Domain:      pulumi.String("example.com"),
 //			})
 //			if err != nil {
 //				return err

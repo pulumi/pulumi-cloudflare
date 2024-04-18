@@ -395,13 +395,13 @@ class BotManagement(pulumi.CustomResource):
         import pulumi_cloudflare as cloudflare
 
         example = cloudflare.BotManagement("example",
+            zone_id="0da42c8d2132a9ddaf714f9e7c920711",
             enable_js=True,
-            optimize_wordpress=True,
             sbfm_definitely_automated="block",
             sbfm_likely_automated="managed_challenge",
-            sbfm_static_resource_protection=False,
             sbfm_verified_bots="allow",
-            zone_id="0da42c8d2132a9ddaf714f9e7c920711")
+            sbfm_static_resource_protection=False,
+            optimize_wordpress=True)
         ```
         <!--End PulumiCodeChooser -->
 
@@ -447,13 +447,13 @@ class BotManagement(pulumi.CustomResource):
         import pulumi_cloudflare as cloudflare
 
         example = cloudflare.BotManagement("example",
+            zone_id="0da42c8d2132a9ddaf714f9e7c920711",
             enable_js=True,
-            optimize_wordpress=True,
             sbfm_definitely_automated="block",
             sbfm_likely_automated="managed_challenge",
-            sbfm_static_resource_protection=False,
             sbfm_verified_bots="allow",
-            zone_id="0da42c8d2132a9ddaf714f9e7c920711")
+            sbfm_static_resource_protection=False,
+            optimize_wordpress=True)
         ```
         <!--End PulumiCodeChooser -->
 

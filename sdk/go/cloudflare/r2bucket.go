@@ -29,8 +29,8 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.NewR2Bucket(ctx, "example", &cloudflare.R2BucketArgs{
 //				AccountId: pulumi.String("f037e56e89293a057740de681ac9abbe"),
-//				Location:  pulumi.String("enam"),
 //				Name:      pulumi.String("terraform-bucket"),
+//				Location:  pulumi.String("enam"),
 //			})
 //			if err != nil {
 //				return err

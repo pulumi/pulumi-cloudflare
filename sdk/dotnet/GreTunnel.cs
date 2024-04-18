@@ -26,16 +26,16 @@ namespace Pulumi.Cloudflare
     ///     var example = new Cloudflare.GreTunnel("example", new()
     ///     {
     ///         AccountId = "f037e56e89293a057740de681ac9abbe",
-    ///         CloudflareGreEndpoint = "203.0.113.2",
+    ///         Name = "GRE_1",
     ///         CustomerGreEndpoint = "203.0.113.1",
+    ///         CloudflareGreEndpoint = "203.0.113.2",
+    ///         InterfaceAddress = "192.0.2.0/31",
     ///         Description = "Tunnel for ISP X",
+    ///         Ttl = 64,
+    ///         Mtu = 1476,
     ///         HealthCheckEnabled = true,
     ///         HealthCheckTarget = "203.0.113.1",
     ///         HealthCheckType = "reply",
-    ///         InterfaceAddress = "192.0.2.0/31",
-    ///         Mtu = 1476,
-    ///         Name = "GRE_1",
-    ///         Ttl = 64,
     ///     });
     /// 
     /// });

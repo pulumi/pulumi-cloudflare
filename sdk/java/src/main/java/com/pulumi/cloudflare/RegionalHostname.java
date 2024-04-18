@@ -44,20 +44,20 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         // Regionalized hostname record resources are managed independently from the
  *         // Regionalized Hostname resources.
- *         var exampleRecord = new Record(&#34;exampleRecord&#34;, RecordArgs.builder()        
- *             .name(&#34;example.com&#34;)
- *             .ttl(3600)
- *             .type(&#34;A&#34;)
- *             .value(&#34;192.0.2.1&#34;)
+ *         var example = new Record(&#34;example&#34;, RecordArgs.builder()        
  *             .zoneId(&#34;0da42c8d2132a9ddaf714f9e7c920711&#34;)
+ *             .name(&#34;example.com&#34;)
+ *             .value(&#34;192.0.2.1&#34;)
+ *             .type(&#34;A&#34;)
+ *             .ttl(3600)
  *             .build());
  * 
  *         // The cloudflare_regional_hostname resource may exist with or without its
  *         // corresponding record resource.
  *         var exampleRegionalHostname = new RegionalHostname(&#34;exampleRegionalHostname&#34;, RegionalHostnameArgs.builder()        
+ *             .zoneId(&#34;0da42c8d2132a9ddaf714f9e7c920711&#34;)
  *             .hostname(&#34;example.com&#34;)
  *             .regionKey(&#34;eu&#34;)
- *             .zoneId(&#34;0da42c8d2132a9ddaf714f9e7c920711&#34;)
  *             .build());
  * 
  *     }

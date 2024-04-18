@@ -27,8 +27,8 @@ namespace Pulumi.Cloudflare
     ///     var example = new Cloudflare.TeamsLocation("example", new()
     ///     {
     ///         AccountId = "f037e56e89293a057740de681ac9abbe",
-    ///         ClientDefault = true,
     ///         Name = "office",
+    ///         ClientDefault = true,
     ///         Networks = new[]
     ///         {
     ///             new Cloudflare.Inputs.TeamsLocationNetworkArgs

@@ -25,7 +25,7 @@ namespace Pulumi.Cloudflare
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     // IP List
-    ///     var exampleIpList = new Cloudflare.List("exampleIpList", new()
+    ///     var exampleIpList = new Cloudflare.List("example_ip_list", new()
     ///     {
     ///         AccountId = "f037e56e89293a057740de681ac9abbe",
     ///         Name = "example_list",
@@ -34,7 +34,7 @@ namespace Pulumi.Cloudflare
     ///     });
     /// 
     ///     // IP List Item
-    ///     var exampleIpItem = new Cloudflare.ListItem("exampleIpItem", new()
+    ///     var exampleIpItem = new Cloudflare.ListItem("example_ip_item", new()
     ///     {
     ///         AccountId = "f037e56e89293a057740de681ac9abbe",
     ///         ListId = exampleIpList.Id,
@@ -43,7 +43,7 @@ namespace Pulumi.Cloudflare
     ///     });
     /// 
     ///     // Redirect List
-    ///     var exampleRedirectList = new Cloudflare.List("exampleRedirectList", new()
+    ///     var exampleRedirectList = new Cloudflare.List("example_redirect_list", new()
     ///     {
     ///         AccountId = "f037e56e89293a057740de681ac9abbe",
     ///         Name = "example_list",
@@ -52,7 +52,7 @@ namespace Pulumi.Cloudflare
     ///     });
     /// 
     ///     // Redirect List Item
-    ///     var exampleRedirectItem = new Cloudflare.ListItem("exampleRedirectItem", new()
+    ///     var exampleRedirectItem = new Cloudflare.ListItem("example_redirect_item", new()
     ///     {
     ///         AccountId = "f037e56e89293a057740de681ac9abbe",
     ///         ListId = exampleIpList.Id,
@@ -66,7 +66,7 @@ namespace Pulumi.Cloudflare
     ///     });
     /// 
     ///     // ASN List
-    ///     var exampleAsnList = new Cloudflare.List("exampleAsnList", new()
+    ///     var exampleAsnList = new Cloudflare.List("example_asn_list", new()
     ///     {
     ///         AccountId = "f037e56e89293a057740de681ac9abbe",
     ///         Name = "example_asn_list",
@@ -75,7 +75,7 @@ namespace Pulumi.Cloudflare
     ///     });
     /// 
     ///     // ASN List Item
-    ///     var exampleAsnItem = new Cloudflare.ListItem("exampleAsnItem", new()
+    ///     var exampleAsnItem = new Cloudflare.ListItem("example_asn_item", new()
     ///     {
     ///         AccountId = "f037e56e89293a057740de681ac9abbe",
     ///         ListId = exampleAsnList.Id,
@@ -84,7 +84,7 @@ namespace Pulumi.Cloudflare
     ///     });
     /// 
     ///     // Hostname List
-    ///     var exampleHostnameList = new Cloudflare.List("exampleHostnameList", new()
+    ///     var exampleHostnameList = new Cloudflare.List("example_hostname_list", new()
     ///     {
     ///         AccountId = "f037e56e89293a057740de681ac9abbe",
     ///         Name = "example_hostname_list",
@@ -93,7 +93,7 @@ namespace Pulumi.Cloudflare
     ///     });
     /// 
     ///     // Hostname List Item
-    ///     var exampleHostnameItem = new Cloudflare.ListItem("exampleHostnameItem", new()
+    ///     var exampleHostnameItem = new Cloudflare.ListItem("example_hostname_item", new()
     ///     {
     ///         AccountId = "f037e56e89293a057740de681ac9abbe",
     ///         ListId = exampleHostnameList.Id,

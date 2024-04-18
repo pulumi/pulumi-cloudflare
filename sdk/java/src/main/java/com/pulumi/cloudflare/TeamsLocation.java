@@ -48,8 +48,8 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var example = new TeamsLocation(&#34;example&#34;, TeamsLocationArgs.builder()        
  *             .accountId(&#34;f037e56e89293a057740de681ac9abbe&#34;)
- *             .clientDefault(true)
  *             .name(&#34;office&#34;)
+ *             .clientDefault(true)
  *             .networks(            
  *                 TeamsLocationNetworkArgs.builder()
  *                     .network(&#34;203.0.113.1/32&#34;)

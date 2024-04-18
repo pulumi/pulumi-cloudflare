@@ -47,20 +47,20 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var example = new MagicFirewallRuleset(&#34;example&#34;, MagicFirewallRulesetArgs.builder()        
  *             .accountId(&#34;d41d8cd98f00b204e9800998ecf8427e&#34;)
- *             .description(&#34;Global mitigations&#34;)
  *             .name(&#34;Magic Transit Ruleset&#34;)
+ *             .description(&#34;Global mitigations&#34;)
  *             .rules(            
  *                 Map.ofEntries(
  *                     Map.entry(&#34;action&#34;, &#34;allow&#34;),
+ *                     Map.entry(&#34;expression&#34;, &#34;tcp.dstport in { 32768..65535 }&#34;),
  *                     Map.entry(&#34;description&#34;, &#34;Allow TCP Ephemeral Ports&#34;),
- *                     Map.entry(&#34;enabled&#34;, &#34;true&#34;),
- *                     Map.entry(&#34;expression&#34;, &#34;tcp.dstport in { 32768..65535 }&#34;)
+ *                     Map.entry(&#34;enabled&#34;, &#34;true&#34;)
  *                 ),
  *                 Map.ofEntries(
  *                     Map.entry(&#34;action&#34;, &#34;block&#34;),
+ *                     Map.entry(&#34;expression&#34;, &#34;ip.len &gt;= 0&#34;),
  *                     Map.entry(&#34;description&#34;, &#34;Block all&#34;),
- *                     Map.entry(&#34;enabled&#34;, &#34;true&#34;),
- *                     Map.entry(&#34;expression&#34;, &#34;ip.len &gt;= 0&#34;)
+ *                     Map.entry(&#34;enabled&#34;, &#34;true&#34;)
  *                 ))
  *             .build());
  * 

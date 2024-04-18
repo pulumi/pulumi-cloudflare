@@ -26,16 +26,16 @@ namespace Pulumi.Cloudflare
     ///     var example = new Cloudflare.DeviceDexTest("example", new()
     ///     {
     ///         AccountId = "f037e56e89293a057740de681ac9abbe",
+    ///         Name = "GET homepage",
+    ///         Description = "Send a HTTP GET request to the home endpoint every half hour.",
+    ///         Interval = "0h30m0s",
+    ///         Enabled = true,
     ///         Data = new Cloudflare.Inputs.DeviceDexTestDataArgs
     ///         {
     ///             Host = "https://example.com/home",
     ///             Kind = "http",
     ///             Method = "GET",
     ///         },
-    ///         Description = "Send a HTTP GET request to the home endpoint every half hour.",
-    ///         Enabled = true,
-    ///         Interval = "0h30m0s",
-    ///         Name = "GET homepage",
     ///     });
     /// 
     /// });

@@ -51,7 +51,9 @@ import javax.annotation.Nullable;
  *         var customerWorker1 = new WorkerScript(&#34;customerWorker1&#34;, WorkerScriptArgs.builder()        
  *             .accountId(&#34;f037e56e89293a057740de681ac9abbe&#34;)
  *             .name(&#34;customer-worker-1&#34;)
- *             .content(Files.readString(Paths.get(&#34;script.js&#34;)))
+ *             .content(StdFunctions.file(FileArgs.builder()
+ *                 .input(&#34;script.js&#34;)
+ *                 .build()).result())
  *             .dispatchNamespace(example.name())
  *             .tags(&#34;free&#34;)
  *             .build());

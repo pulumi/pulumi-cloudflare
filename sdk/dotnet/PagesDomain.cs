@@ -29,8 +29,8 @@ namespace Pulumi.Cloudflare
     ///     var my_domain = new Cloudflare.PagesDomain("my-domain", new()
     ///     {
     ///         AccountId = "f037e56e89293a057740de681ac9abbe",
-    ///         Domain = "example.com",
     ///         ProjectName = "my-example-project",
+    ///         Domain = "example.com",
     ///     });
     /// 
     /// });

@@ -28,11 +28,11 @@ namespace Pulumi.Cloudflare
     ///     var example = new Cloudflare.TeamsProxyEndpoint("example", new()
     ///     {
     ///         AccountId = "f037e56e89293a057740de681ac9abbe",
+    ///         Name = "office",
     ///         Ips = new[]
     ///         {
     ///             "192.0.2.0/24",
     ///         },
-    ///         Name = "office",
     ///     });
     /// 
     /// });

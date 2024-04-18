@@ -31,13 +31,13 @@ namespace Pulumi.Cloudflare
     /// {
     ///     var example = new Cloudflare.BotManagement("example", new()
     ///     {
+    ///         ZoneId = "0da42c8d2132a9ddaf714f9e7c920711",
     ///         EnableJs = true,
-    ///         OptimizeWordpress = true,
     ///         SbfmDefinitelyAutomated = "block",
     ///         SbfmLikelyAutomated = "managed_challenge",
-    ///         SbfmStaticResourceProtection = false,
     ///         SbfmVerifiedBots = "allow",
-    ///         ZoneId = "0da42c8d2132a9ddaf714f9e7c920711",
+    ///         SbfmStaticResourceProtection = false,
+    ///         OptimizeWordpress = true,
     ///     });
     /// 
     /// });

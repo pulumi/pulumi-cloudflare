@@ -200,34 +200,6 @@ class TunnelRoute(pulumi.CustomResource):
         Trust. Tunnel routes are used to direct IP traffic through
         Cloudflare Tunnels.
 
-        ## Example Usage
-
-        <!--Start PulumiCodeChooser -->
-        ```python
-        import pulumi
-        import pulumi_cloudflare as cloudflare
-
-        # Tunnel route
-        example_tunnel_route = cloudflare.TunnelRoute("exampleTunnelRoute",
-            account_id="f037e56e89293a057740de681ac9abbe",
-            tunnel_id="f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
-            network="192.0.2.24/32",
-            comment="New tunnel route for documentation",
-            virtual_network_id="bdc39a3c-3104-4c23-8ac0-9f455dda691a")
-        # Tunnel with tunnel route
-        tunnel = cloudflare.Tunnel("tunnel",
-            account_id="f037e56e89293a057740de681ac9abbe",
-            name="my_tunnel",
-            secret="AQIDBAUGBwgBAgMEBQYHCAECAwQFBgcIAQIDBAUGBwg=")
-        example_index_tunnel_route_tunnel_route = cloudflare.TunnelRoute("exampleIndex/tunnelRouteTunnelRoute",
-            account_id="f037e56e89293a057740de681ac9abbe",
-            tunnel_id=tunnel.id,
-            network="192.0.2.24/32",
-            comment="New tunnel route for documentation",
-            virtual_network_id="bdc39a3c-3104-4c23-8ac0-9f455dda691a")
-        ```
-        <!--End PulumiCodeChooser -->
-
         ## Import
 
         ```sh
@@ -252,34 +224,6 @@ class TunnelRoute(pulumi.CustomResource):
         Provides a resource, that manages Cloudflare tunnel routes for Zero
         Trust. Tunnel routes are used to direct IP traffic through
         Cloudflare Tunnels.
-
-        ## Example Usage
-
-        <!--Start PulumiCodeChooser -->
-        ```python
-        import pulumi
-        import pulumi_cloudflare as cloudflare
-
-        # Tunnel route
-        example_tunnel_route = cloudflare.TunnelRoute("exampleTunnelRoute",
-            account_id="f037e56e89293a057740de681ac9abbe",
-            tunnel_id="f70ff985-a4ef-4643-bbbc-4a0ed4fc8415",
-            network="192.0.2.24/32",
-            comment="New tunnel route for documentation",
-            virtual_network_id="bdc39a3c-3104-4c23-8ac0-9f455dda691a")
-        # Tunnel with tunnel route
-        tunnel = cloudflare.Tunnel("tunnel",
-            account_id="f037e56e89293a057740de681ac9abbe",
-            name="my_tunnel",
-            secret="AQIDBAUGBwgBAgMEBQYHCAECAwQFBgcIAQIDBAUGBwg=")
-        example_index_tunnel_route_tunnel_route = cloudflare.TunnelRoute("exampleIndex/tunnelRouteTunnelRoute",
-            account_id="f037e56e89293a057740de681ac9abbe",
-            tunnel_id=tunnel.id,
-            network="192.0.2.24/32",
-            comment="New tunnel route for documentation",
-            virtual_network_id="bdc39a3c-3104-4c23-8ac0-9f455dda691a")
-        ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

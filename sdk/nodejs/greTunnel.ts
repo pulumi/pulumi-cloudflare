@@ -16,16 +16,16 @@ import * as utilities from "./utilities";
  *
  * const example = new cloudflare.GreTunnel("example", {
  *     accountId: "f037e56e89293a057740de681ac9abbe",
- *     cloudflareGreEndpoint: "203.0.113.2",
+ *     name: "GRE_1",
  *     customerGreEndpoint: "203.0.113.1",
+ *     cloudflareGreEndpoint: "203.0.113.2",
+ *     interfaceAddress: "192.0.2.0/31",
  *     description: "Tunnel for ISP X",
+ *     ttl: 64,
+ *     mtu: 1476,
  *     healthCheckEnabled: true,
  *     healthCheckTarget: "203.0.113.1",
  *     healthCheckType: "reply",
- *     interfaceAddress: "192.0.2.0/31",
- *     mtu: 1476,
- *     name: "GRE_1",
- *     ttl: 64,
  * });
  * ```
  * <!--End PulumiCodeChooser -->

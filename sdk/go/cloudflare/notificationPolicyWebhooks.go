@@ -32,8 +32,8 @@ import (
 //			_, err := cloudflare.NewNotificationPolicyWebhooks(ctx, "example", &cloudflare.NotificationPolicyWebhooksArgs{
 //				AccountId: pulumi.String("f037e56e89293a057740de681ac9abbe"),
 //				Name:      pulumi.String("Webhooks destination"),
-//				Secret:    pulumi.String("my-secret"),
 //				Url:       pulumi.String("https://example.com"),
+//				Secret:    pulumi.String("my-secret"),
 //			})
 //			if err != nil {
 //				return err

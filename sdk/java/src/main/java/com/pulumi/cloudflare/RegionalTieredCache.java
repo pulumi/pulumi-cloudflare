@@ -42,8 +42,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var example = new RegionalTieredCache(&#34;example&#34;, RegionalTieredCacheArgs.builder()        
- *             .value(&#34;on&#34;)
  *             .zoneId(&#34;0da42c8d2132a9ddaf714f9e7c920711&#34;)
+ *             .value(&#34;on&#34;)
  *             .build());
  * 
  *     }

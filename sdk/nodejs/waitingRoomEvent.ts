@@ -16,11 +16,11 @@ import * as utilities from "./utilities";
  *
  * // Waiting Room Event
  * const example = new cloudflare.WaitingRoomEvent("example", {
- *     eventEndTime: "2006-01-02T20:04:05Z",
- *     eventStartTime: "2006-01-02T15:04:05Z",
- *     name: "foo",
- *     waitingRoomId: "d41d8cd98f00b204e9800998ecf8427e",
  *     zoneId: "0da42c8d2132a9ddaf714f9e7c920711",
+ *     waitingRoomId: "d41d8cd98f00b204e9800998ecf8427e",
+ *     name: "foo",
+ *     eventStartTime: "2006-01-02T15:04:05Z",
+ *     eventEndTime: "2006-01-02T20:04:05Z",
  * });
  * ```
  * <!--End PulumiCodeChooser -->

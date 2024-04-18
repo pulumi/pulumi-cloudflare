@@ -579,17 +579,17 @@ class WorkerScript(pulumi.CustomResource):
         <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
-        import base64
         import pulumi_cloudflare as cloudflare
+        import pulumi_std as std
 
-        my_namespace = cloudflare.WorkersKvNamespace("myNamespace",
+        my_namespace = cloudflare.WorkersKvNamespace("my_namespace",
             account_id="f037e56e89293a057740de681ac9abbe",
             title="example")
         # Sets the script with the name "script_1"
-        my_script = cloudflare.WorkerScript("myScript",
+        my_script = cloudflare.WorkerScript("my_script",
             account_id="f037e56e89293a057740de681ac9abbe",
             name="script_1",
-            content=(lambda path: open(path).read())("script.js"),
+            content=std.file(input="script.js").result,
             kv_namespace_bindings=[cloudflare.WorkerScriptKvNamespaceBindingArgs(
                 name="MY_EXAMPLE_KV_NAMESPACE",
                 namespace_id=my_namespace.id,
@@ -600,11 +600,11 @@ class WorkerScript(pulumi.CustomResource):
             )],
             secret_text_bindings=[cloudflare.WorkerScriptSecretTextBindingArgs(
                 name="MY_EXAMPLE_SECRET_TEXT",
-                text=var["secret_foo_value"],
+                text=secret_foo_value,
             )],
             webassembly_bindings=[cloudflare.WorkerScriptWebassemblyBindingArgs(
                 name="MY_EXAMPLE_WASM",
-                module=(lambda path: base64.b64encode(open(path).read().encode()).decode())("example.wasm"),
+                module=std.filebase64(input="example.wasm").result,
             )],
             service_bindings=[cloudflare.WorkerScriptServiceBindingArgs(
                 name="MY_SERVICE_BINDING",
@@ -653,17 +653,17 @@ class WorkerScript(pulumi.CustomResource):
         <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
-        import base64
         import pulumi_cloudflare as cloudflare
+        import pulumi_std as std
 
-        my_namespace = cloudflare.WorkersKvNamespace("myNamespace",
+        my_namespace = cloudflare.WorkersKvNamespace("my_namespace",
             account_id="f037e56e89293a057740de681ac9abbe",
             title="example")
         # Sets the script with the name "script_1"
-        my_script = cloudflare.WorkerScript("myScript",
+        my_script = cloudflare.WorkerScript("my_script",
             account_id="f037e56e89293a057740de681ac9abbe",
             name="script_1",
-            content=(lambda path: open(path).read())("script.js"),
+            content=std.file(input="script.js").result,
             kv_namespace_bindings=[cloudflare.WorkerScriptKvNamespaceBindingArgs(
                 name="MY_EXAMPLE_KV_NAMESPACE",
                 namespace_id=my_namespace.id,
@@ -674,11 +674,11 @@ class WorkerScript(pulumi.CustomResource):
             )],
             secret_text_bindings=[cloudflare.WorkerScriptSecretTextBindingArgs(
                 name="MY_EXAMPLE_SECRET_TEXT",
-                text=var["secret_foo_value"],
+                text=secret_foo_value,
             )],
             webassembly_bindings=[cloudflare.WorkerScriptWebassemblyBindingArgs(
                 name="MY_EXAMPLE_WASM",
-                module=(lambda path: base64.b64encode(open(path).read().encode()).decode())("example.wasm"),
+                module=std.filebase64(input="example.wasm").result,
             )],
             service_bindings=[cloudflare.WorkerScriptServiceBindingArgs(
                 name="MY_SERVICE_BINDING",

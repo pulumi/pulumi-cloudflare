@@ -19,8 +19,8 @@ import * as utilities from "./utilities";
  *
  * const example = new cloudflare.TeamsLocation("example", {
  *     accountId: "f037e56e89293a057740de681ac9abbe",
- *     clientDefault: true,
  *     name: "office",
+ *     clientDefault: true,
  *     networks: [
  *         {
  *             network: "203.0.113.1/32",

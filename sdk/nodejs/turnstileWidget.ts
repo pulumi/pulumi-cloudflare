@@ -16,10 +16,10 @@ import * as utilities from "./utilities";
  *
  * const example = new cloudflare.TurnstileWidget("example", {
  *     accountId: "f037e56e89293a057740de681ac9abbe",
+ *     name: "example widget",
  *     botFightMode: false,
  *     domains: ["example.com"],
  *     mode: "invisible",
- *     name: "example widget",
  *     region: "world",
  * });
  * ```

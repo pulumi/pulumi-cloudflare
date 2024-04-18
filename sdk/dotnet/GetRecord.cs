@@ -27,8 +27,8 @@ namespace Pulumi.Cloudflare
         /// {
         ///     var example = Cloudflare.GetRecord.Invoke(new()
         ///     {
-        ///         Hostname = "example.com",
         ///         ZoneId = "0da42c8d2132a9ddaf714f9e7c920711",
+        ///         Hostname = "example.com",
         ///     });
         /// 
         /// });
@@ -54,8 +54,8 @@ namespace Pulumi.Cloudflare
         /// {
         ///     var example = Cloudflare.GetRecord.Invoke(new()
         ///     {
-        ///         Hostname = "example.com",
         ///         ZoneId = "0da42c8d2132a9ddaf714f9e7c920711",
+        ///         Hostname = "example.com",
         ///     });
         /// 
         /// });

@@ -16,8 +16,8 @@ import * as utilities from "./utilities";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
  * const example = new cloudflare.RegionalTieredCache("example", {
- *     value: "on",
  *     zoneId: "0da42c8d2132a9ddaf714f9e7c920711",
+ *     value: "on",
  * });
  * ```
  * <!--End PulumiCodeChooser -->

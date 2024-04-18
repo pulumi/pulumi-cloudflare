@@ -47,7 +47,9 @@ import javax.annotation.Nullable;
  *             .name(&#34;myschema&#34;)
  *             .kind(&#34;openapi_v3&#34;)
  *             .validationEnabled(true)
- *             .source(Files.readString(Paths.get(&#34;./schemas/petstore.json&#34;)))
+ *             .source(StdFunctions.file(FileArgs.builder()
+ *                 .input(&#34;./schemas/petstore.json&#34;)
+ *                 .build()).result())
  *             .build());
  * 
  *     }

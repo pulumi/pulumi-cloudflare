@@ -15,17 +15,19 @@ import * as utilities from "./utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
- * import * as fs from "fs";
+ * import * as std from "@pulumi/std";
  *
- * const myNamespace = new cloudflare.WorkersKvNamespace("myNamespace", {
+ * const myNamespace = new cloudflare.WorkersKvNamespace("my_namespace", {
  *     accountId: "f037e56e89293a057740de681ac9abbe",
  *     title: "example",
  * });
  * // Sets the script with the name "script_1"
- * const myScript = new cloudflare.WorkerScript("myScript", {
+ * const myScript = new cloudflare.WorkerScript("my_script", {
  *     accountId: "f037e56e89293a057740de681ac9abbe",
  *     name: "script_1",
- *     content: fs.readFileSync("script.js", "utf8"),
+ *     content: std.file({
+ *         input: "script.js",
+ *     }).then(invoke => invoke.result),
  *     kvNamespaceBindings: [{
  *         name: "MY_EXAMPLE_KV_NAMESPACE",
  *         namespaceId: myNamespace.id,
@@ -36,11 +38,13 @@ import * as utilities from "./utilities";
  *     }],
  *     secretTextBindings: [{
  *         name: "MY_EXAMPLE_SECRET_TEXT",
- *         text: _var.secret_foo_value,
+ *         text: secretFooValue,
  *     }],
  *     webassemblyBindings: [{
  *         name: "MY_EXAMPLE_WASM",
- *         module: fs.readFileSync("example.wasm", { encoding: "base64" }),
+ *         module: std.filebase64({
+ *             input: "example.wasm",
+ *         }).then(invoke => invoke.result),
  *     }],
  *     serviceBindings: [{
  *         name: "MY_SERVICE_BINDING",

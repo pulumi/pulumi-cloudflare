@@ -29,7 +29,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			exampleWebAnalyticsSite, err := cloudflare.NewWebAnalyticsSite(ctx, "exampleWebAnalyticsSite", &cloudflare.WebAnalyticsSiteArgs{
+//			example, err := cloudflare.NewWebAnalyticsSite(ctx, "example", &cloudflare.WebAnalyticsSiteArgs{
 //				AccountId:   pulumi.String("f037e56e89293a057740de681ac9abbe"),
 //				ZoneTag:     pulumi.String("0da42c8d2132a9ddaf714f9e7c920711"),
 //				AutoInstall: pulumi.Bool(true),
@@ -37,9 +37,9 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = cloudflare.NewWebAnalyticsRule(ctx, "exampleWebAnalyticsRule", &cloudflare.WebAnalyticsRuleArgs{
+//			_, err = cloudflare.NewWebAnalyticsRule(ctx, "example", &cloudflare.WebAnalyticsRuleArgs{
 //				AccountId: pulumi.String("f037e56e89293a057740de681ac9abbe"),
-//				RulesetId: exampleWebAnalyticsSite.RulesetId,
+//				RulesetId: example.RulesetId,
 //				Host:      pulumi.String("*"),
 //				Paths: pulumi.StringArray{
 //					pulumi.String("/excluded"),
@@ -47,7 +47,7 @@ import (
 //				Inclusive: pulumi.Bool(false),
 //				IsPaused:  pulumi.Bool(false),
 //			}, pulumi.DependsOn([]pulumi.Resource{
-//				exampleWebAnalyticsSite,
+//				example,
 //			}))
 //			if err != nil {
 //				return err

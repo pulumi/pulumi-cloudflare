@@ -634,25 +634,25 @@ class DeviceSettingsPolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        developer_warp_policy = cloudflare.DeviceSettingsPolicy("developerWarpPolicy",
+        developer_warp_policy = cloudflare.DeviceSettingsPolicy("developer_warp_policy",
             account_id="f037e56e89293a057740de681ac9abbe",
+            name="Developers WARP settings policy",
+            description="Developers WARP settings policy description",
+            precedence=10,
+            match="any(identity.groups.name[*] in {\\"Developers\\"})",
+            default=False,
+            enabled=True,
             allow_mode_switch=True,
             allow_updates=True,
             allowed_to_leave=True,
             auto_connect=0,
             captive_portal=5,
-            default=False,
-            description="Developers WARP settings policy description",
             disable_auto_fallback=True,
-            enabled=True,
-            exclude_office_ips=False,
-            match="any(identity.groups.name[*] in {\\"Developers\\"})",
-            name="Developers WARP settings policy",
-            precedence=10,
+            support_url="https://cloudflare.com",
+            switch_locked=True,
             service_mode_v2_mode="warp",
             service_mode_v2_port=3000,
-            support_url="https://cloudflare.com",
-            switch_locked=True)
+            exclude_office_ips=False)
         ```
         <!--End PulumiCodeChooser -->
 
@@ -701,25 +701,25 @@ class DeviceSettingsPolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        developer_warp_policy = cloudflare.DeviceSettingsPolicy("developerWarpPolicy",
+        developer_warp_policy = cloudflare.DeviceSettingsPolicy("developer_warp_policy",
             account_id="f037e56e89293a057740de681ac9abbe",
+            name="Developers WARP settings policy",
+            description="Developers WARP settings policy description",
+            precedence=10,
+            match="any(identity.groups.name[*] in {\\"Developers\\"})",
+            default=False,
+            enabled=True,
             allow_mode_switch=True,
             allow_updates=True,
             allowed_to_leave=True,
             auto_connect=0,
             captive_portal=5,
-            default=False,
-            description="Developers WARP settings policy description",
             disable_auto_fallback=True,
-            enabled=True,
-            exclude_office_ips=False,
-            match="any(identity.groups.name[*] in {\\"Developers\\"})",
-            name="Developers WARP settings policy",
-            precedence=10,
+            support_url="https://cloudflare.com",
+            switch_locked=True,
             service_mode_v2_mode="warp",
             service_mode_v2_port=3000,
-            support_url="https://cloudflare.com",
-            switch_locked=True)
+            exclude_office_ips=False)
         ```
         <!--End PulumiCodeChooser -->
 

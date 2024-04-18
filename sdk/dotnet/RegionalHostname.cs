@@ -25,22 +25,22 @@ namespace Pulumi.Cloudflare
     /// {
     ///     // Regionalized hostname record resources are managed independently from the
     ///     // Regionalized Hostname resources.
-    ///     var exampleRecord = new Cloudflare.Record("exampleRecord", new()
+    ///     var example = new Cloudflare.Record("example", new()
     ///     {
-    ///         Name = "example.com",
-    ///         Ttl = 3600,
-    ///         Type = "A",
-    ///         Value = "192.0.2.1",
     ///         ZoneId = "0da42c8d2132a9ddaf714f9e7c920711",
+    ///         Name = "example.com",
+    ///         Value = "192.0.2.1",
+    ///         Type = "A",
+    ///         Ttl = 3600,
     ///     });
     /// 
     ///     // The cloudflare_regional_hostname resource may exist with or without its
     ///     // corresponding record resource.
-    ///     var exampleRegionalHostname = new Cloudflare.RegionalHostname("exampleRegionalHostname", new()
+    ///     var exampleRegionalHostname = new Cloudflare.RegionalHostname("example", new()
     ///     {
+    ///         ZoneId = "0da42c8d2132a9ddaf714f9e7c920711",
     ///         Hostname = "example.com",
     ///         RegionKey = "eu",
-    ///         ZoneId = "0da42c8d2132a9ddaf714f9e7c920711",
     ///     });
     /// 
     /// });

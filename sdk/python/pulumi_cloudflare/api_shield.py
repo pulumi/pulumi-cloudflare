@@ -111,11 +111,11 @@ class ApiShield(pulumi.CustomResource):
         import pulumi_cloudflare as cloudflare
 
         example = cloudflare.ApiShield("example",
+            zone_id="0da42c8d2132a9ddaf714f9e7c920711",
             auth_id_characteristics=[cloudflare.ApiShieldAuthIdCharacteristicArgs(
                 name="my-example-header",
                 type="header",
-            )],
-            zone_id="0da42c8d2132a9ddaf714f9e7c920711")
+            )])
         ```
         <!--End PulumiCodeChooser -->
 
@@ -141,11 +141,11 @@ class ApiShield(pulumi.CustomResource):
         import pulumi_cloudflare as cloudflare
 
         example = cloudflare.ApiShield("example",
+            zone_id="0da42c8d2132a9ddaf714f9e7c920711",
             auth_id_characteristics=[cloudflare.ApiShieldAuthIdCharacteristicArgs(
                 name="my-example-header",
                 type="header",
-            )],
-            zone_id="0da42c8d2132a9ddaf714f9e7c920711")
+            )])
         ```
         <!--End PulumiCodeChooser -->
 

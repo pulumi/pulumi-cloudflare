@@ -28,8 +28,8 @@ namespace Pulumi.Cloudflare
     /// {
     ///     var example = new Cloudflare.LogpushOwnershipChallenge("example", new()
     ///     {
-    ///         DestinationConf = "s3://my-bucket-path?region=us-west-2",
     ///         ZoneId = "0da42c8d2132a9ddaf714f9e7c920711",
+    ///         DestinationConf = "s3://my-bucket-path?region=us-west-2",
     ///     });
     /// 
     /// });

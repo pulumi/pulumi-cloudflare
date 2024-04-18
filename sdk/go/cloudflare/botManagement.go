@@ -36,13 +36,13 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.NewBotManagement(ctx, "example", &cloudflare.BotManagementArgs{
+//				ZoneId:                       pulumi.String("0da42c8d2132a9ddaf714f9e7c920711"),
 //				EnableJs:                     pulumi.Bool(true),
-//				OptimizeWordpress:            pulumi.Bool(true),
 //				SbfmDefinitelyAutomated:      pulumi.String("block"),
 //				SbfmLikelyAutomated:          pulumi.String("managed_challenge"),
-//				SbfmStaticResourceProtection: pulumi.Bool(false),
 //				SbfmVerifiedBots:             pulumi.String("allow"),
-//				ZoneId:                       pulumi.String("0da42c8d2132a9ddaf714f9e7c920711"),
+//				SbfmStaticResourceProtection: pulumi.Bool(false),
+//				OptimizeWordpress:            pulumi.Bool(true),
 //			})
 //			if err != nil {
 //				return err

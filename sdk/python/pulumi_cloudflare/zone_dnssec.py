@@ -268,8 +268,8 @@ class ZoneDnssec(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_zone = cloudflare.Zone("exampleZone", zone="example.com")
-        example_zone_dnssec = cloudflare.ZoneDnssec("exampleZoneDnssec", zone_id=example_zone.id)
+        example = cloudflare.Zone("example", zone="example.com")
+        example_zone_dnssec = cloudflare.ZoneDnssec("example", zone_id=example.id)
         ```
         <!--End PulumiCodeChooser -->
 
@@ -300,8 +300,8 @@ class ZoneDnssec(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_zone = cloudflare.Zone("exampleZone", zone="example.com")
-        example_zone_dnssec = cloudflare.ZoneDnssec("exampleZoneDnssec", zone_id=example_zone.id)
+        example = cloudflare.Zone("example", zone="example.com")
+        example_zone_dnssec = cloudflare.ZoneDnssec("example", zone_id=example.id)
         ```
         <!--End PulumiCodeChooser -->
 

@@ -56,8 +56,8 @@ import javax.annotation.Nullable;
  * 
  *         // zone level
  *         var anotherExample = new AccessCaCertificate(&#34;anotherExample&#34;, AccessCaCertificateArgs.builder()        
- *             .applicationId(&#34;fe2be0ff-7f13-4350-8c8e-a9b9795fe3c2&#34;)
  *             .zoneId(&#34;0da42c8d2132a9ddaf714f9e7c920711&#34;)
+ *             .applicationId(&#34;fe2be0ff-7f13-4350-8c8e-a9b9795fe3c2&#34;)
  *             .build());
  * 
  *     }

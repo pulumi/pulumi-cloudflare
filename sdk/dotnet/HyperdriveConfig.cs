@@ -23,15 +23,15 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var noDefaults = new Cloudflare.HyperdriveConfig("noDefaults", new()
+    ///     var noDefaults = new Cloudflare.HyperdriveConfig("no_defaults", new()
     ///     {
     ///         AccountId = "f037e56e89293a057740de681ac9abbe",
     ///         Name = "my-hyperdrive-config",
     ///         Origin = new Cloudflare.Inputs.HyperdriveConfigOriginArgs
     ///         {
     ///             Database = "postgres",
-    ///             Host = "my-database.example.com",
     ///             Password = "my-password",
+    ///             Host = "my-database.example.com",
     ///             Port = 5432,
     ///             Scheme = "postgres",
     ///             User = "my-user",

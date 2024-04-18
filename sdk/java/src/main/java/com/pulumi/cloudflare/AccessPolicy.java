@@ -32,68 +32,6 @@ import javax.annotation.Nullable;
  *    scope. For example, an access token that is scoped to the &#34;example.com&#34;
  *    zone needs to use the `zone_id` argument.
  * 
- * ## Example Usage
- * 
- * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.AccessPolicy;
- * import com.pulumi.cloudflare.AccessPolicyArgs;
- * import com.pulumi.cloudflare.inputs.AccessPolicyIncludeArgs;
- * import com.pulumi.cloudflare.inputs.AccessPolicyRequireArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         // Allowing access to `test@example.com` email address only
- *         var testPolicyAccessPolicy = new AccessPolicy(&#34;testPolicyAccessPolicy&#34;, AccessPolicyArgs.builder()        
- *             .applicationId(&#34;cb029e245cfdd66dc8d2e570d5dd3322&#34;)
- *             .zoneId(&#34;0da42c8d2132a9ddaf714f9e7c920711&#34;)
- *             .name(&#34;staging policy&#34;)
- *             .precedence(&#34;1&#34;)
- *             .decision(&#34;allow&#34;)
- *             .includes(AccessPolicyIncludeArgs.builder()
- *                 .emails(&#34;test@example.com&#34;)
- *                 .build())
- *             .requires(AccessPolicyRequireArgs.builder()
- *                 .emails(&#34;test@example.com&#34;)
- *                 .build())
- *             .build());
- * 
- *         // Allowing `test@example.com` to access but only when coming from a
- *         // specific IP.
- *         var testPolicyIndex_accessPolicyAccessPolicy = new AccessPolicy(&#34;testPolicyIndex/accessPolicyAccessPolicy&#34;, AccessPolicyArgs.builder()        
- *             .applicationId(&#34;cb029e245cfdd66dc8d2e570d5dd3322&#34;)
- *             .zoneId(&#34;0da42c8d2132a9ddaf714f9e7c920711&#34;)
- *             .name(&#34;staging policy&#34;)
- *             .precedence(&#34;1&#34;)
- *             .decision(&#34;allow&#34;)
- *             .includes(AccessPolicyIncludeArgs.builder()
- *                 .emails(&#34;test@example.com&#34;)
- *                 .build())
- *             .requires(AccessPolicyRequireArgs.builder()
- *                 .ips(var_.office_ip())
- *                 .build())
- *             .build());
- * 
- *     }
- * }
- * ```
- * &lt;!--End PulumiCodeChooser --&gt;
- * 
  * ## Import
  * 
  * Account level import.

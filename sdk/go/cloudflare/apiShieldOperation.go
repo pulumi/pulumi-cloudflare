@@ -30,10 +30,10 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.NewApiShieldOperation(ctx, "example", &cloudflare.ApiShieldOperationArgs{
-//				Endpoint: pulumi.String("/path"),
-//				Host:     pulumi.String("api.example.com"),
-//				Method:   pulumi.String("GET"),
 //				ZoneId:   pulumi.String("0da42c8d2132a9ddaf714f9e7c920711"),
+//				Method:   pulumi.String("GET"),
+//				Host:     pulumi.String("api.example.com"),
+//				Endpoint: pulumi.String("/path"),
 //			})
 //			if err != nil {
 //				return err

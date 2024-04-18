@@ -23,17 +23,17 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleWebAnalyticsSite = new Cloudflare.WebAnalyticsSite("exampleWebAnalyticsSite", new()
+    ///     var example = new Cloudflare.WebAnalyticsSite("example", new()
     ///     {
     ///         AccountId = "f037e56e89293a057740de681ac9abbe",
     ///         ZoneTag = "0da42c8d2132a9ddaf714f9e7c920711",
     ///         AutoInstall = true,
     ///     });
     /// 
-    ///     var exampleWebAnalyticsRule = new Cloudflare.WebAnalyticsRule("exampleWebAnalyticsRule", new()
+    ///     var exampleWebAnalyticsRule = new Cloudflare.WebAnalyticsRule("example", new()
     ///     {
     ///         AccountId = "f037e56e89293a057740de681ac9abbe",
-    ///         RulesetId = exampleWebAnalyticsSite.RulesetId,
+    ///         RulesetId = example.RulesetId,
     ///         Host = "*",
     ///         Paths = new[]
     ///         {
@@ -45,7 +45,7 @@ namespace Pulumi.Cloudflare
     ///     {
     ///         DependsOn =
     ///         {
-    ///             exampleWebAnalyticsSite, 
+    ///             example, 
     ///         },
     ///     });
     /// 

@@ -310,7 +310,7 @@ class DevicePostureRule(pulumi.CustomResource):
                 platform="linux",
             )],
             inputs=[cloudflare.DevicePostureRuleInputArgs(
-                id=cloudflare_teams_list["corporate_devices"]["id"],
+                id=corporate_devices["id"],
                 version="1.0.0",
                 operator="<",
                 os_distro_name="ubuntu",
@@ -362,7 +362,7 @@ class DevicePostureRule(pulumi.CustomResource):
                 platform="linux",
             )],
             inputs=[cloudflare.DevicePostureRuleInputArgs(
-                id=cloudflare_teams_list["corporate_devices"]["id"],
+                id=corporate_devices["id"],
                 version="1.0.0",
                 operator="<",
                 os_distro_name="ubuntu",

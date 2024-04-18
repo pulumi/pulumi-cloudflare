@@ -58,7 +58,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var wordpressFilter = new Filter(&#34;wordpressFilter&#34;, FilterArgs.builder()        
+ *         var wordpress = new Filter(&#34;wordpress&#34;, FilterArgs.builder()        
  *             .zoneId(&#34;0da42c8d2132a9ddaf714f9e7c920711&#34;)
  *             .description(&#34;Wordpress break-in attempts that are outside of the office&#34;)
  *             .expression(&#34;(http.request.uri.path ~ \&#34;.*wp-login.php\&#34; or http.request.uri.path ~ \&#34;.*xmlrpc.php\&#34;) and ip.src ne 192.0.2.1&#34;)
@@ -67,7 +67,7 @@ import javax.annotation.Nullable;
  *         var wordpressFirewallRule = new FirewallRule(&#34;wordpressFirewallRule&#34;, FirewallRuleArgs.builder()        
  *             .zoneId(&#34;0da42c8d2132a9ddaf714f9e7c920711&#34;)
  *             .description(&#34;Block wordpress break-in attempts&#34;)
- *             .filterId(wordpressFilter.id())
+ *             .filterId(wordpress.id())
  *             .action(&#34;block&#34;)
  *             .build());
  * 

@@ -258,18 +258,18 @@ class EmailRoutingRule(pulumi.CustomResource):
         import pulumi_cloudflare as cloudflare
 
         main = cloudflare.EmailRoutingRule("main",
+            zone_id="0da42c8d2132a9ddaf714f9e7c920711",
+            name="terraform rule",
+            enabled=True,
+            matchers=[cloudflare.EmailRoutingRuleMatcherArgs(
+                type="literal",
+                field="to",
+                value="test@example.com",
+            )],
             actions=[cloudflare.EmailRoutingRuleActionArgs(
                 type="forward",
                 values=["destinationaddress@example.net"],
-            )],
-            enabled=True,
-            matchers=[cloudflare.EmailRoutingRuleMatcherArgs(
-                field="to",
-                type="literal",
-                value="test@example.com",
-            )],
-            name="terraform rule",
-            zone_id="0da42c8d2132a9ddaf714f9e7c920711")
+            )])
         ```
         <!--End PulumiCodeChooser -->
 
@@ -305,18 +305,18 @@ class EmailRoutingRule(pulumi.CustomResource):
         import pulumi_cloudflare as cloudflare
 
         main = cloudflare.EmailRoutingRule("main",
+            zone_id="0da42c8d2132a9ddaf714f9e7c920711",
+            name="terraform rule",
+            enabled=True,
+            matchers=[cloudflare.EmailRoutingRuleMatcherArgs(
+                type="literal",
+                field="to",
+                value="test@example.com",
+            )],
             actions=[cloudflare.EmailRoutingRuleActionArgs(
                 type="forward",
                 values=["destinationaddress@example.net"],
-            )],
-            enabled=True,
-            matchers=[cloudflare.EmailRoutingRuleMatcherArgs(
-                field="to",
-                type="literal",
-                value="test@example.com",
-            )],
-            name="terraform rule",
-            zone_id="0da42c8d2132a9ddaf714f9e7c920711")
+            )])
         ```
         <!--End PulumiCodeChooser -->
 

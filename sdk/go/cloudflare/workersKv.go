@@ -29,7 +29,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			exampleNs, err := cloudflare.NewWorkersKvNamespace(ctx, "exampleNs", &cloudflare.WorkersKvNamespaceArgs{
+//			exampleNs, err := cloudflare.NewWorkersKvNamespace(ctx, "example_ns", &cloudflare.WorkersKvNamespaceArgs{
 //				AccountId: pulumi.String("f037e56e89293a057740de681ac9abbe"),
 //				Title:     pulumi.String("test-namespace"),
 //			})

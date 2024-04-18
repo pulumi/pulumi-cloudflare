@@ -159,8 +159,8 @@ class TeamsProxyEndpoint(pulumi.CustomResource):
 
         example = cloudflare.TeamsProxyEndpoint("example",
             account_id="f037e56e89293a057740de681ac9abbe",
-            ips=["192.0.2.0/24"],
-            name="office")
+            name="office",
+            ips=["192.0.2.0/24"])
         ```
         <!--End PulumiCodeChooser -->
 
@@ -196,8 +196,8 @@ class TeamsProxyEndpoint(pulumi.CustomResource):
 
         example = cloudflare.TeamsProxyEndpoint("example",
             account_id="f037e56e89293a057740de681ac9abbe",
-            ips=["192.0.2.0/24"],
-            name="office")
+            name="office",
+            ips=["192.0.2.0/24"])
         ```
         <!--End PulumiCodeChooser -->
 

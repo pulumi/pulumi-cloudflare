@@ -220,9 +220,9 @@ class EmailRoutingSettings(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        my_zone = cloudflare.EmailRoutingSettings("myZone",
-            enabled=True,
-            zone_id="0da42c8d2132a9ddaf714f9e7c920711")
+        my_zone = cloudflare.EmailRoutingSettings("my_zone",
+            zone_id="0da42c8d2132a9ddaf714f9e7c920711",
+            enabled=True)
         ```
         <!--End PulumiCodeChooser -->
 
@@ -248,9 +248,9 @@ class EmailRoutingSettings(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        my_zone = cloudflare.EmailRoutingSettings("myZone",
-            enabled=True,
-            zone_id="0da42c8d2132a9ddaf714f9e7c920711")
+        my_zone = cloudflare.EmailRoutingSettings("my_zone",
+            zone_id="0da42c8d2132a9ddaf714f9e7c920711",
+            enabled=True)
         ```
         <!--End PulumiCodeChooser -->
 

@@ -29,14 +29,14 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			exampleZone, err := cloudflare.NewZone(ctx, "exampleZone", &cloudflare.ZoneArgs{
+//			example, err := cloudflare.NewZone(ctx, "example", &cloudflare.ZoneArgs{
 //				Zone: pulumi.String("example.com"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = cloudflare.NewZoneDnssec(ctx, "exampleZoneDnssec", &cloudflare.ZoneDnssecArgs{
-//				ZoneId: exampleZone.ID(),
+//			_, err = cloudflare.NewZoneDnssec(ctx, "example", &cloudflare.ZoneDnssecArgs{
+//				ZoneId: example.ID(),
 //			})
 //			if err != nil {
 //				return err

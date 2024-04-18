@@ -31,8 +31,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.NewZoneHold(ctx, "example", &cloudflare.ZoneHoldArgs{
-//				Hold:   pulumi.Bool(true),
 //				ZoneId: pulumi.String("0da42c8d2132a9ddaf714f9e7c920711"),
+//				Hold:   pulumi.Bool(true),
 //			})
 //			if err != nil {
 //				return err

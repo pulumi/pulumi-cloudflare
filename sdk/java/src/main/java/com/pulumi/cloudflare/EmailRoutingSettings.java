@@ -42,8 +42,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var myZone = new EmailRoutingSettings(&#34;myZone&#34;, EmailRoutingSettingsArgs.builder()        
- *             .enabled(&#34;true&#34;)
  *             .zoneId(&#34;0da42c8d2132a9ddaf714f9e7c920711&#34;)
+ *             .enabled(&#34;true&#34;)
  *             .build());
  * 
  *     }

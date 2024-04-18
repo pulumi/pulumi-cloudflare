@@ -704,7 +704,7 @@ class LoadBalancer(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_load_balancer_pool = cloudflare.LoadBalancerPool("exampleLoadBalancerPool",
+        example_load_balancer_pool = cloudflare.LoadBalancerPool("example",
             name="example-lb-pool",
             origins=[cloudflare.LoadBalancerPoolOriginArgs(
                 name="example-1",
@@ -715,7 +715,7 @@ class LoadBalancer(pulumi.CustomResource):
         # In normal usage, would have different pools set for different pops
         # (cloudflare points-of-presence) and/or for different regions.
         # Within each pop or region we can define multiple pools in failover order.
-        example_load_balancer = cloudflare.LoadBalancer("exampleLoadBalancer",
+        example = cloudflare.LoadBalancer("example",
             zone_id="0da42c8d2132a9ddaf714f9e7c920711",
             name="example-load-balancer.example.com",
             fallback_pool_id=example_load_balancer_pool.id,
@@ -796,7 +796,7 @@ class LoadBalancer(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_load_balancer_pool = cloudflare.LoadBalancerPool("exampleLoadBalancerPool",
+        example_load_balancer_pool = cloudflare.LoadBalancerPool("example",
             name="example-lb-pool",
             origins=[cloudflare.LoadBalancerPoolOriginArgs(
                 name="example-1",
@@ -807,7 +807,7 @@ class LoadBalancer(pulumi.CustomResource):
         # In normal usage, would have different pools set for different pops
         # (cloudflare points-of-presence) and/or for different regions.
         # Within each pop or region we can define multiple pools in failover order.
-        example_load_balancer = cloudflare.LoadBalancer("exampleLoadBalancer",
+        example = cloudflare.LoadBalancer("example",
             zone_id="0da42c8d2132a9ddaf714f9e7c920711",
             name="example-load-balancer.example.com",
             fallback_pool_id=example_load_balancer_pool.id,

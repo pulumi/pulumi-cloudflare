@@ -14,15 +14,15 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleApiShieldOperation = new cloudflare.ApiShieldOperation("exampleApiShieldOperation", {
+ * const example = new cloudflare.ApiShieldOperation("example", {
  *     zoneId: "0da42c8d2132a9ddaf714f9e7c920711",
  *     method: "GET",
  *     host: "api.example.com",
  *     endpoint: "/path",
  * });
- * const exampleApiShieldOperationSchemaValidationSettings = new cloudflare.ApiShieldOperationSchemaValidationSettings("exampleApiShieldOperationSchemaValidationSettings", {
+ * const exampleApiShieldOperationSchemaValidationSettings = new cloudflare.ApiShieldOperationSchemaValidationSettings("example", {
  *     zoneId: "0da42c8d2132a9ddaf714f9e7c920711",
- *     operationId: exampleApiShieldOperation.id,
+ *     operationId: example.id,
  *     mitigationAction: "block",
  * });
  * ```

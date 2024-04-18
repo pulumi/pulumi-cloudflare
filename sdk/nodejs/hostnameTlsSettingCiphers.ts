@@ -15,9 +15,9 @@ import * as utilities from "./utilities";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
  * const example = new cloudflare.HostnameTlsSettingCiphers("example", {
+ *     zoneId: "0da42c8d2132a9ddaf714f9e7c920711",
  *     hostname: "sub.example.com",
  *     values: ["ECDHE-RSA-AES128-GCM-SHA256"],
- *     zoneId: "0da42c8d2132a9ddaf714f9e7c920711",
  * });
  * ```
  * <!--End PulumiCodeChooser -->

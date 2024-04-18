@@ -27,31 +27,19 @@ namespace Pulumi.Cloudflare
     /// {
     ///     var example = new Cloudflare.RateLimit("example", new()
     ///     {
-    ///         Action = new Cloudflare.Inputs.RateLimitActionArgs
-    ///         {
-    ///             Mode = "simulate",
-    ///             Response = new Cloudflare.Inputs.RateLimitActionResponseArgs
-    ///             {
-    ///                 Body = "custom response body",
-    ///                 ContentType = "text/plain",
-    ///             },
-    ///             Timeout = 43200,
-    ///         },
-    ///         BypassUrlPatterns = new[]
-    ///         {
-    ///             "example.com/bypass1",
-    ///             "example.com/bypass2",
-    ///         },
-    ///         Correlate = new Cloudflare.Inputs.RateLimitCorrelateArgs
-    ///         {
-    ///             By = "nat",
-    ///         },
-    ///         Description = "example rate limit for a zone",
-    ///         Disabled = false,
+    ///         ZoneId = "0da42c8d2132a9ddaf714f9e7c920711",
+    ///         Threshold = 2000,
+    ///         Period = 2,
     ///         Match = new Cloudflare.Inputs.RateLimitMatchArgs
     ///         {
     ///             Request = new Cloudflare.Inputs.RateLimitMatchRequestArgs
     ///             {
+    ///                 UrlPattern = $"{cloudflareZone}/*",
+    ///                 Schemes = new[]
+    ///                 {
+    ///                     "HTTP",
+    ///                     "HTTPS",
+    ///                 },
     ///                 Methods = new[]
     ///                 {
     ///                     "GET",
@@ -61,15 +49,18 @@ namespace Pulumi.Cloudflare
     ///                     "PATCH",
     ///                     "HEAD",
     ///                 },
-    ///                 Schemes = new[]
-    ///                 {
-    ///                     "HTTP",
-    ///                     "HTTPS",
-    ///                 },
-    ///                 UrlPattern = $"{@var.Cloudflare_zone}/*",
     ///             },
     ///             Response = new Cloudflare.Inputs.RateLimitMatchResponseArgs
     ///             {
+    ///                 Statuses = new[]
+    ///                 {
+    ///                     200,
+    ///                     201,
+    ///                     202,
+    ///                     301,
+    ///                     429,
+    ///                 },
+    ///                 OriginTraffic = false,
     ///                 Headers = new[]
     ///                 {
     ///                     
@@ -85,20 +76,29 @@ namespace Pulumi.Cloudflare
     ///                         { "value", "my-example" },
     ///                     },
     ///                 },
-    ///                 OriginTraffic = false,
-    ///                 Statuses = new[]
-    ///                 {
-    ///                     200,
-    ///                     201,
-    ///                     202,
-    ///                     301,
-    ///                     429,
-    ///                 },
     ///             },
     ///         },
-    ///         Period = 2,
-    ///         Threshold = 2000,
-    ///         ZoneId = "0da42c8d2132a9ddaf714f9e7c920711",
+    ///         Action = new Cloudflare.Inputs.RateLimitActionArgs
+    ///         {
+    ///             Mode = "simulate",
+    ///             Timeout = 43200,
+    ///             Response = new Cloudflare.Inputs.RateLimitActionResponseArgs
+    ///             {
+    ///                 ContentType = "text/plain",
+    ///                 Body = "custom response body",
+    ///             },
+    ///         },
+    ///         Correlate = new Cloudflare.Inputs.RateLimitCorrelateArgs
+    ///         {
+    ///             By = "nat",
+    ///         },
+    ///         Disabled = false,
+    ///         Description = "example rate limit for a zone",
+    ///         BypassUrlPatterns = new[]
+    ///         {
+    ///             "example.com/bypass1",
+    ///             "example.com/bypass2",
+    ///         },
     ///     });
     /// 
     /// });

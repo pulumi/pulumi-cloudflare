@@ -31,22 +31,22 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// Regionalized hostname record resources are managed independently from the
 //			// Regionalized Hostname resources.
-//			_, err := cloudflare.NewRecord(ctx, "exampleRecord", &cloudflare.RecordArgs{
-//				Name:   pulumi.String("example.com"),
-//				Ttl:    pulumi.Int(3600),
-//				Type:   pulumi.String("A"),
-//				Value:  pulumi.String("192.0.2.1"),
+//			_, err := cloudflare.NewRecord(ctx, "example", &cloudflare.RecordArgs{
 //				ZoneId: pulumi.String("0da42c8d2132a9ddaf714f9e7c920711"),
+//				Name:   pulumi.String("example.com"),
+//				Value:  pulumi.String("192.0.2.1"),
+//				Type:   pulumi.String("A"),
+//				Ttl:    pulumi.Int(3600),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			// The cloudflare_regional_hostname resource may exist with or without its
 //			// corresponding record resource.
-//			_, err = cloudflare.NewRegionalHostname(ctx, "exampleRegionalHostname", &cloudflare.RegionalHostnameArgs{
+//			_, err = cloudflare.NewRegionalHostname(ctx, "example", &cloudflare.RegionalHostnameArgs{
+//				ZoneId:    pulumi.String("0da42c8d2132a9ddaf714f9e7c920711"),
 //				Hostname:  pulumi.String("example.com"),
 //				RegionKey: pulumi.String("eu"),
-//				ZoneId:    pulumi.String("0da42c8d2132a9ddaf714f9e7c920711"),
 //			})
 //			if err != nil {
 //				return err

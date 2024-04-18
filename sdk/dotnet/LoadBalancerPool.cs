@@ -27,34 +27,12 @@ namespace Pulumi.Cloudflare
     ///     var example = new Cloudflare.LoadBalancerPool("example", new()
     ///     {
     ///         AccountId = "f037e56e89293a057740de681ac9abbe",
-    ///         Description = "example load balancer pool",
-    ///         Enabled = false,
-    ///         Latitude = 55,
-    ///         LoadSheddings = new[]
-    ///         {
-    ///             new Cloudflare.Inputs.LoadBalancerPoolLoadSheddingArgs
-    ///             {
-    ///                 DefaultPercent = 55,
-    ///                 DefaultPolicy = "random",
-    ///                 SessionPercent = 12,
-    ///                 SessionPolicy = "hash",
-    ///             },
-    ///         },
-    ///         Longitude = -12,
-    ///         MinimumOrigins = 1,
     ///         Name = "example-pool",
-    ///         NotificationEmail = "someone@example.com",
-    ///         OriginSteerings = new[]
-    ///         {
-    ///             new Cloudflare.Inputs.LoadBalancerPoolOriginSteeringArgs
-    ///             {
-    ///                 Policy = "random",
-    ///             },
-    ///         },
     ///         Origins = new[]
     ///         {
     ///             new Cloudflare.Inputs.LoadBalancerPoolOriginArgs
     ///             {
+    ///                 Name = "example-1",
     ///                 Address = "192.0.2.1",
     ///                 Enabled = false,
     ///                 Headers = new[]
@@ -68,10 +46,10 @@ namespace Pulumi.Cloudflare
     ///                         },
     ///                     },
     ///                 },
-    ///                 Name = "example-1",
     ///             },
     ///             new Cloudflare.Inputs.LoadBalancerPoolOriginArgs
     ///             {
+    ///                 Name = "example-2",
     ///                 Address = "192.0.2.2",
     ///                 Headers = new[]
     ///                 {
@@ -84,7 +62,29 @@ namespace Pulumi.Cloudflare
     ///                         },
     ///                     },
     ///                 },
-    ///                 Name = "example-2",
+    ///             },
+    ///         },
+    ///         Latitude = 55,
+    ///         Longitude = -12,
+    ///         Description = "example load balancer pool",
+    ///         Enabled = false,
+    ///         MinimumOrigins = 1,
+    ///         NotificationEmail = "someone@example.com",
+    ///         LoadSheddings = new[]
+    ///         {
+    ///             new Cloudflare.Inputs.LoadBalancerPoolLoadSheddingArgs
+    ///             {
+    ///                 DefaultPercent = 55,
+    ///                 DefaultPolicy = "random",
+    ///                 SessionPercent = 12,
+    ///                 SessionPolicy = "hash",
+    ///             },
+    ///         },
+    ///         OriginSteerings = new[]
+    ///         {
+    ///             new Cloudflare.Inputs.LoadBalancerPoolOriginSteeringArgs
+    ///             {
+    ///                 Policy = "random",
     ///             },
     ///         },
     ///     });

@@ -25,9 +25,9 @@ namespace Pulumi.Cloudflare
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     // HTTPS Healthcheck
-    ///     var httpHealthCheck = new Cloudflare.Healthcheck("httpHealthCheck", new()
+    ///     var httpHealthCheck = new Cloudflare.Healthcheck("http_health_check", new()
     ///     {
-    ///         ZoneId = @var.Cloudflare_zone_id,
+    ///         ZoneId = cloudflareZoneId,
     ///         Name = "http-health-check",
     ///         Description = "example http health check",
     ///         Address = "example.com",
@@ -68,9 +68,9 @@ namespace Pulumi.Cloudflare
     ///     });
     /// 
     ///     // TCP Healthcheck
-    ///     var tcpHealthCheck = new Cloudflare.Healthcheck("tcpHealthCheck", new()
+    ///     var tcpHealthCheck = new Cloudflare.Healthcheck("tcp_health_check", new()
     ///     {
-    ///         ZoneId = @var.Cloudflare_zone_id,
+    ///         ZoneId = cloudflareZoneId,
     ///         Name = "tcp-health-check",
     ///         Description = "example tcp health check",
     ///         Address = "example.com",

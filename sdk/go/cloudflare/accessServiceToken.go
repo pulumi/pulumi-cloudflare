@@ -15,37 +15,6 @@ import (
 // Access Service Tokens are used for service-to-service communication
 // when an application is behind Cloudflare Access.
 //
-// ## Example Usage
-//
-// <!--Start PulumiCodeChooser -->
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			// Generate a service token that will renew if terraform is ran within 30 days of expiration
-//			_, err := cloudflare.NewAccessServiceToken(ctx, "myApp", &cloudflare.AccessServiceTokenArgs{
-//				AccountId:         pulumi.String("f037e56e89293a057740de681ac9abbe"),
-//				MinDaysForRenewal: pulumi.Int(30),
-//				Name:              pulumi.String("CI/CD app renewed"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-// <!--End PulumiCodeChooser -->
-//
 // ## Import
 //
 // # If you are importing an Access Service Token you will not have the

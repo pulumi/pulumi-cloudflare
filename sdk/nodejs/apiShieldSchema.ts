@@ -13,14 +13,16 @@ import * as utilities from "./utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
- * import * as fs from "fs";
+ * import * as std from "@pulumi/std";
  *
- * const petstoreSchema = new cloudflare.ApiShieldSchema("petstoreSchema", {
+ * const petstoreSchema = new cloudflare.ApiShieldSchema("petstore_schema", {
  *     zoneId: "0da42c8d2132a9ddaf714f9e7c920711",
  *     name: "myschema",
  *     kind: "openapi_v3",
  *     validationEnabled: true,
- *     source: fs.readFileSync("./schemas/petstore.json", "utf8"),
+ *     source: std.file({
+ *         input: "./schemas/petstore.json",
+ *     }).then(invoke => invoke.result),
  * });
  * ```
  * <!--End PulumiCodeChooser -->

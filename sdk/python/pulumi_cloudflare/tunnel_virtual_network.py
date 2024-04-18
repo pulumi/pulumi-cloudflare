@@ -178,8 +178,8 @@ class TunnelVirtualNetwork(pulumi.CustomResource):
 
         example = cloudflare.TunnelVirtualNetwork("example",
             account_id="f037e56e89293a057740de681ac9abbe",
-            comment="New tunnel virtual network for documentation",
-            name="vnet-for-documentation")
+            name="vnet-for-documentation",
+            comment="New tunnel virtual network for documentation")
         ```
         <!--End PulumiCodeChooser -->
 
@@ -217,8 +217,8 @@ class TunnelVirtualNetwork(pulumi.CustomResource):
 
         example = cloudflare.TunnelVirtualNetwork("example",
             account_id="f037e56e89293a057740de681ac9abbe",
-            comment="New tunnel virtual network for documentation",
-            name="vnet-for-documentation")
+            name="vnet-for-documentation",
+            comment="New tunnel virtual network for documentation")
         ```
         <!--End PulumiCodeChooser -->
 

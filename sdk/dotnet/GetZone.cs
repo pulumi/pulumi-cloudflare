@@ -31,14 +31,14 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleZone = Cloudflare.GetZone.Invoke(new()
+        ///     var example = Cloudflare.GetZone.Invoke(new()
         ///     {
         ///         Name = "example.com",
         ///     });
         /// 
-        ///     var exampleRecord = new Cloudflare.Record("exampleRecord", new()
+        ///     var exampleRecord = new Cloudflare.Record("example", new()
         ///     {
-        ///         ZoneId = exampleZone.Apply(getZoneResult =&gt; getZoneResult.Id),
+        ///         ZoneId = example.Apply(getZoneResult =&gt; getZoneResult.Id),
         ///         Name = "www",
         ///         Value = "203.0.113.1",
         ///         Type = "A",
@@ -72,14 +72,14 @@ namespace Pulumi.Cloudflare
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleZone = Cloudflare.GetZone.Invoke(new()
+        ///     var example = Cloudflare.GetZone.Invoke(new()
         ///     {
         ///         Name = "example.com",
         ///     });
         /// 
-        ///     var exampleRecord = new Cloudflare.Record("exampleRecord", new()
+        ///     var exampleRecord = new Cloudflare.Record("example", new()
         ///     {
-        ///         ZoneId = exampleZone.Apply(getZoneResult =&gt; getZoneResult.Id),
+        ///         ZoneId = example.Apply(getZoneResult =&gt; getZoneResult.Id),
         ///         Name = "www",
         ///         Value = "203.0.113.1",
         ///         Type = "A",

@@ -205,24 +205,24 @@ class UserAgentBlockingRule(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example1 = cloudflare.UserAgentBlockingRule("example1",
+        example1 = cloudflare.UserAgentBlockingRule("example_1",
+            zone_id="0da42c8d2132a9ddaf714f9e7c920711",
+            mode="js_challenge",
+            paused=False,
+            description="My description 1",
             configuration=cloudflare.UserAgentBlockingRuleConfigurationArgs(
                 target="ua",
                 value="Chrome",
-            ),
-            description="My description 1",
-            mode="js_challenge",
-            paused=False,
-            zone_id="0da42c8d2132a9ddaf714f9e7c920711")
-        example2 = cloudflare.UserAgentBlockingRule("example2",
+            ))
+        example2 = cloudflare.UserAgentBlockingRule("example_2",
+            zone_id="0da42c8d2132a9ddaf714f9e7c920711",
+            mode="challenge",
+            paused=True,
+            description="My description 22",
             configuration=cloudflare.UserAgentBlockingRuleConfigurationArgs(
                 target="ua",
                 value="Mozilla",
-            ),
-            description="My description 22",
-            mode="challenge",
-            paused=True,
-            zone_id="0da42c8d2132a9ddaf714f9e7c920711")
+            ))
         ```
         <!--End PulumiCodeChooser -->
 
@@ -256,24 +256,24 @@ class UserAgentBlockingRule(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example1 = cloudflare.UserAgentBlockingRule("example1",
+        example1 = cloudflare.UserAgentBlockingRule("example_1",
+            zone_id="0da42c8d2132a9ddaf714f9e7c920711",
+            mode="js_challenge",
+            paused=False,
+            description="My description 1",
             configuration=cloudflare.UserAgentBlockingRuleConfigurationArgs(
                 target="ua",
                 value="Chrome",
-            ),
-            description="My description 1",
-            mode="js_challenge",
-            paused=False,
-            zone_id="0da42c8d2132a9ddaf714f9e7c920711")
-        example2 = cloudflare.UserAgentBlockingRule("example2",
+            ))
+        example2 = cloudflare.UserAgentBlockingRule("example_2",
+            zone_id="0da42c8d2132a9ddaf714f9e7c920711",
+            mode="challenge",
+            paused=True,
+            description="My description 22",
             configuration=cloudflare.UserAgentBlockingRuleConfigurationArgs(
                 target="ua",
                 value="Mozilla",
-            ),
-            description="My description 22",
-            mode="challenge",
-            paused=True,
-            zone_id="0da42c8d2132a9ddaf714f9e7c920711")
+            ))
         ```
         <!--End PulumiCodeChooser -->
 

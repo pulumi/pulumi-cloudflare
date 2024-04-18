@@ -30,10 +30,10 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.NewObservatoryScheduledTest(ctx, "example", &cloudflare.ObservatoryScheduledTestArgs{
-//				Frequency: pulumi.String("WEEKLY"),
-//				Region:    pulumi.String("us-central1"),
-//				Url:       pulumi.String("example.com"),
 //				ZoneId:    pulumi.String("0da42c8d2132a9ddaf714f9e7c920711"),
+//				Url:       pulumi.String("example.com"),
+//				Region:    pulumi.String("us-central1"),
+//				Frequency: pulumi.String("WEEKLY"),
 //			})
 //			if err != nil {
 //				return err

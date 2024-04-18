@@ -17,12 +17,12 @@ import * as utilities from "./utilities";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
  * const example = new cloudflare.AccessMutualTlsHostnameSettings("example", {
- *     settings: [{
- *         chinaNetwork: false,
- *         clientCertificateForwarding: true,
- *         hostname: "example.com",
- *     }],
  *     zoneId: "0da42c8d2132a9ddaf714f9e7c920711",
+ *     settings: [{
+ *         hostname: "example.com",
+ *         clientCertificateForwarding: true,
+ *         chinaNetwork: false,
+ *     }],
  * });
  * ```
  * <!--End PulumiCodeChooser -->

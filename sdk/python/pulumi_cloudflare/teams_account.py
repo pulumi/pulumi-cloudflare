@@ -534,6 +534,17 @@ class TeamsAccount(pulumi.CustomResource):
 
         example = cloudflare.TeamsAccount("example",
             account_id="f037e56e89293a057740de681ac9abbe",
+            tls_decrypt_enabled=True,
+            protocol_detection_enabled=True,
+            block_page=cloudflare.TeamsAccountBlockPageArgs(
+                footer_text="hello",
+                header_text="hello",
+                logo_path="https://example.com/logo.jpg",
+                background_color="#000000",
+            ),
+            body_scanning=cloudflare.TeamsAccountBodyScanningArgs(
+                inspection_mode="deep",
+            ),
             antivirus=cloudflare.TeamsAccountAntivirusArgs(
                 enabled_download_phase=True,
                 enabled_upload_phase=False,
@@ -544,21 +555,15 @@ class TeamsAccount(pulumi.CustomResource):
                     support_url="https://example.com/blocked",
                 ),
             ),
-            block_page=cloudflare.TeamsAccountBlockPageArgs(
-                background_color="#000000",
-                footer_text="hello",
-                header_text="hello",
-                logo_path="https://example.com/logo.jpg",
-            ),
-            body_scanning=cloudflare.TeamsAccountBodyScanningArgs(
-                inspection_mode="deep",
-            ),
-            extended_email_matching=cloudflare.TeamsAccountExtendedEmailMatchingArgs(
-                enabled=True,
-            ),
             fips=cloudflare.TeamsAccountFipsArgs(
                 tls=True,
             ),
+            proxy=cloudflare.TeamsAccountProxyArgs(
+                tcp=True,
+                udp=True,
+                root_ca=True,
+            ),
+            url_browser_isolation_enabled=True,
             logging=cloudflare.TeamsAccountLoggingArgs(
                 redact_pii=True,
                 settings_by_rule_type=cloudflare.TeamsAccountLoggingSettingsByRuleTypeArgs(
@@ -576,14 +581,9 @@ class TeamsAccount(pulumi.CustomResource):
                     ),
                 ),
             ),
-            protocol_detection_enabled=True,
-            proxy=cloudflare.TeamsAccountProxyArgs(
-                root_ca=True,
-                tcp=True,
-                udp=True,
-            ),
-            tls_decrypt_enabled=True,
-            url_browser_isolation_enabled=True)
+            extended_email_matching=cloudflare.TeamsAccountExtendedEmailMatchingArgs(
+                enabled=True,
+            ))
         ```
         <!--End PulumiCodeChooser -->
 
@@ -629,6 +629,17 @@ class TeamsAccount(pulumi.CustomResource):
 
         example = cloudflare.TeamsAccount("example",
             account_id="f037e56e89293a057740de681ac9abbe",
+            tls_decrypt_enabled=True,
+            protocol_detection_enabled=True,
+            block_page=cloudflare.TeamsAccountBlockPageArgs(
+                footer_text="hello",
+                header_text="hello",
+                logo_path="https://example.com/logo.jpg",
+                background_color="#000000",
+            ),
+            body_scanning=cloudflare.TeamsAccountBodyScanningArgs(
+                inspection_mode="deep",
+            ),
             antivirus=cloudflare.TeamsAccountAntivirusArgs(
                 enabled_download_phase=True,
                 enabled_upload_phase=False,
@@ -639,21 +650,15 @@ class TeamsAccount(pulumi.CustomResource):
                     support_url="https://example.com/blocked",
                 ),
             ),
-            block_page=cloudflare.TeamsAccountBlockPageArgs(
-                background_color="#000000",
-                footer_text="hello",
-                header_text="hello",
-                logo_path="https://example.com/logo.jpg",
-            ),
-            body_scanning=cloudflare.TeamsAccountBodyScanningArgs(
-                inspection_mode="deep",
-            ),
-            extended_email_matching=cloudflare.TeamsAccountExtendedEmailMatchingArgs(
-                enabled=True,
-            ),
             fips=cloudflare.TeamsAccountFipsArgs(
                 tls=True,
             ),
+            proxy=cloudflare.TeamsAccountProxyArgs(
+                tcp=True,
+                udp=True,
+                root_ca=True,
+            ),
+            url_browser_isolation_enabled=True,
             logging=cloudflare.TeamsAccountLoggingArgs(
                 redact_pii=True,
                 settings_by_rule_type=cloudflare.TeamsAccountLoggingSettingsByRuleTypeArgs(
@@ -671,14 +676,9 @@ class TeamsAccount(pulumi.CustomResource):
                     ),
                 ),
             ),
-            protocol_detection_enabled=True,
-            proxy=cloudflare.TeamsAccountProxyArgs(
-                root_ca=True,
-                tcp=True,
-                udp=True,
-            ),
-            tls_decrypt_enabled=True,
-            url_browser_isolation_enabled=True)
+            extended_email_matching=cloudflare.TeamsAccountExtendedEmailMatchingArgs(
+                enabled=True,
+            ))
         ```
         <!--End PulumiCodeChooser -->
 

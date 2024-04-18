@@ -250,47 +250,46 @@ class AccessIdentityProvider(pulumi.CustomResource):
         import pulumi_cloudflare as cloudflare
 
         # one time pin
-        pin_login = cloudflare.AccessIdentityProvider("pinLogin",
+        pin_login = cloudflare.AccessIdentityProvider("pin_login",
             account_id="f037e56e89293a057740de681ac9abbe",
             name="PIN login",
             type="onetimepin")
         # oauth
-        github_oauth = cloudflare.AccessIdentityProvider("githubOauth",
+        github_oauth = cloudflare.AccessIdentityProvider("github_oauth",
             account_id="f037e56e89293a057740de681ac9abbe",
+            name="GitHub OAuth",
+            type="github",
             configs=[cloudflare.AccessIdentityProviderConfigArgs(
                 client_id="example",
                 client_secret="secret_key",
-            )],
-            name="GitHub OAuth",
-            type="github")
+            )])
         # saml
-        jumpcloud_saml = cloudflare.AccessIdentityProvider("jumpcloudSaml",
+        jumpcloud_saml = cloudflare.AccessIdentityProvider("jumpcloud_saml",
             account_id="f037e56e89293a057740de681ac9abbe",
+            name="JumpCloud SAML",
+            type="saml",
             configs=[cloudflare.AccessIdentityProviderConfigArgs(
+                issuer_url="jumpcloud",
+                sso_target_url="https://sso.myexample.jumpcloud.com/saml2/cloudflareaccess",
                 attributes=[
                     "email",
                     "username",
                 ],
-                idp_public_cert=\"\"\"MIIDpDCCAoygAwIBAgIGAV2ka+55MA0GCSqGSIb3DQEBCwUAMIGSMQswCQ...GF/Q2/MHadws97cZg
-        uTnQyuOqPuHbnN83d/2l1NSYKCbHt24o
-        \"\"\",
-                issuer_url="jumpcloud",
                 sign_request=False,
-                sso_target_url="https://sso.myexample.jumpcloud.com/saml2/cloudflareaccess",
-            )],
-            name="JumpCloud SAML",
-            type="saml")
+                idp_public_cert=\"\"\"MIIDpDCCAoygAwIBAgIGAV2ka+55MA0GCSqGSIb3DQEBCwUAMIGSMQswCQ...GF/Q2/MHadws97cZg
+        uTnQyuOqPuHbnN83d/2l1NSYKCbHt24o\"\"\",
+            )])
         # okta
         okta = cloudflare.AccessIdentityProvider("okta",
             account_id="f037e56e89293a057740de681ac9abbe",
+            name="Okta",
+            type="okta",
             configs=[cloudflare.AccessIdentityProviderConfigArgs(
-                api_token="okta_api_token",
                 client_id="example",
                 client_secret="secret_key",
+                api_token="okta_api_token",
                 okta_account="https://example.com",
-            )],
-            name="Okta",
-            type="okta")
+            )])
         ```
         <!--End PulumiCodeChooser -->
 
@@ -334,47 +333,46 @@ class AccessIdentityProvider(pulumi.CustomResource):
         import pulumi_cloudflare as cloudflare
 
         # one time pin
-        pin_login = cloudflare.AccessIdentityProvider("pinLogin",
+        pin_login = cloudflare.AccessIdentityProvider("pin_login",
             account_id="f037e56e89293a057740de681ac9abbe",
             name="PIN login",
             type="onetimepin")
         # oauth
-        github_oauth = cloudflare.AccessIdentityProvider("githubOauth",
+        github_oauth = cloudflare.AccessIdentityProvider("github_oauth",
             account_id="f037e56e89293a057740de681ac9abbe",
+            name="GitHub OAuth",
+            type="github",
             configs=[cloudflare.AccessIdentityProviderConfigArgs(
                 client_id="example",
                 client_secret="secret_key",
-            )],
-            name="GitHub OAuth",
-            type="github")
+            )])
         # saml
-        jumpcloud_saml = cloudflare.AccessIdentityProvider("jumpcloudSaml",
+        jumpcloud_saml = cloudflare.AccessIdentityProvider("jumpcloud_saml",
             account_id="f037e56e89293a057740de681ac9abbe",
+            name="JumpCloud SAML",
+            type="saml",
             configs=[cloudflare.AccessIdentityProviderConfigArgs(
+                issuer_url="jumpcloud",
+                sso_target_url="https://sso.myexample.jumpcloud.com/saml2/cloudflareaccess",
                 attributes=[
                     "email",
                     "username",
                 ],
-                idp_public_cert=\"\"\"MIIDpDCCAoygAwIBAgIGAV2ka+55MA0GCSqGSIb3DQEBCwUAMIGSMQswCQ...GF/Q2/MHadws97cZg
-        uTnQyuOqPuHbnN83d/2l1NSYKCbHt24o
-        \"\"\",
-                issuer_url="jumpcloud",
                 sign_request=False,
-                sso_target_url="https://sso.myexample.jumpcloud.com/saml2/cloudflareaccess",
-            )],
-            name="JumpCloud SAML",
-            type="saml")
+                idp_public_cert=\"\"\"MIIDpDCCAoygAwIBAgIGAV2ka+55MA0GCSqGSIb3DQEBCwUAMIGSMQswCQ...GF/Q2/MHadws97cZg
+        uTnQyuOqPuHbnN83d/2l1NSYKCbHt24o\"\"\",
+            )])
         # okta
         okta = cloudflare.AccessIdentityProvider("okta",
             account_id="f037e56e89293a057740de681ac9abbe",
+            name="Okta",
+            type="okta",
             configs=[cloudflare.AccessIdentityProviderConfigArgs(
-                api_token="okta_api_token",
                 client_id="example",
                 client_secret="secret_key",
+                api_token="okta_api_token",
                 okta_account="https://example.com",
-            )],
-            name="Okta",
-            type="okta")
+            )])
         ```
         <!--End PulumiCodeChooser -->
 

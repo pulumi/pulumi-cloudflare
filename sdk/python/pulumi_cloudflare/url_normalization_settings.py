@@ -140,9 +140,9 @@ class UrlNormalizationSettings(pulumi.CustomResource):
         import pulumi_cloudflare as cloudflare
 
         example = cloudflare.UrlNormalizationSettings("example",
-            scope="incoming",
+            zone_id="0da42c8d2132a9ddaf714f9e7c920711",
             type="cloudflare",
-            zone_id="0da42c8d2132a9ddaf714f9e7c920711")
+            scope="incoming")
         ```
         <!--End PulumiCodeChooser -->
 
@@ -169,9 +169,9 @@ class UrlNormalizationSettings(pulumi.CustomResource):
         import pulumi_cloudflare as cloudflare
 
         example = cloudflare.UrlNormalizationSettings("example",
-            scope="incoming",
+            zone_id="0da42c8d2132a9ddaf714f9e7c920711",
             type="cloudflare",
-            zone_id="0da42c8d2132a9ddaf714f9e7c920711")
+            scope="incoming")
         ```
         <!--End PulumiCodeChooser -->
 

@@ -633,26 +633,6 @@ class LoadBalancerMonitor(pulumi.CustomResource):
         to actively check the availability of those servers over HTTP(S) or
         TCP.
 
-        ## Example Usage
-
-        <!--Start PulumiCodeChooser -->
-        ```python
-        import pulumi
-        import pulumi_cloudflare as cloudflare
-
-        # TCP Monitor
-        example = cloudflare.LoadBalancerMonitor("example",
-            account_id="f037e56e89293a057740de681ac9abbe",
-            description="example tcp load balancer",
-            interval=60,
-            method="connection_established",
-            port=8080,
-            retries=5,
-            timeout=7,
-            type="tcp")
-        ```
-        <!--End PulumiCodeChooser -->
-
         ## Import
 
         ```sh
@@ -690,26 +670,6 @@ class LoadBalancerMonitor(pulumi.CustomResource):
         origin servers or data centers, you configure one of these Monitors
         to actively check the availability of those servers over HTTP(S) or
         TCP.
-
-        ## Example Usage
-
-        <!--Start PulumiCodeChooser -->
-        ```python
-        import pulumi
-        import pulumi_cloudflare as cloudflare
-
-        # TCP Monitor
-        example = cloudflare.LoadBalancerMonitor("example",
-            account_id="f037e56e89293a057740de681ac9abbe",
-            description="example tcp load balancer",
-            interval=60,
-            method="connection_established",
-            port=8080,
-            retries=5,
-            timeout=7,
-            type="tcp")
-        ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

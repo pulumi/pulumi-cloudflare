@@ -39,10 +39,10 @@ namespace Pulumi.Cloudflare
     ///     });
     /// 
     ///     // zone level
-    ///     var anotherExample = new Cloudflare.AccessCaCertificate("anotherExample", new()
+    ///     var anotherExample = new Cloudflare.AccessCaCertificate("another_example", new()
     ///     {
-    ///         ApplicationId = "fe2be0ff-7f13-4350-8c8e-a9b9795fe3c2",
     ///         ZoneId = "0da42c8d2132a9ddaf714f9e7c920711",
+    ///         ApplicationId = "fe2be0ff-7f13-4350-8c8e-a9b9795fe3c2",
     ///     });
     /// 
     /// });

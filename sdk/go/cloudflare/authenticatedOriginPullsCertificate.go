@@ -33,21 +33,21 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// Per-Zone Authenticated Origin Pulls certificate
-//			_, err := cloudflare.NewAuthenticatedOriginPullsCertificate(ctx, "myPerZoneAopCert", &cloudflare.AuthenticatedOriginPullsCertificateArgs{
+//			_, err := cloudflare.NewAuthenticatedOriginPullsCertificate(ctx, "my_per_zone_aop_cert", &cloudflare.AuthenticatedOriginPullsCertificateArgs{
+//				ZoneId:      pulumi.String("0da42c8d2132a9ddaf714f9e7c920711"),
 //				Certificate: pulumi.String("-----INSERT CERTIFICATE-----"),
 //				PrivateKey:  pulumi.String("-----INSERT PRIVATE KEY-----"),
 //				Type:        pulumi.String("per-zone"),
-//				ZoneId:      pulumi.String("0da42c8d2132a9ddaf714f9e7c920711"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			// Per-Hostname Authenticated Origin Pulls certificate
-//			_, err = cloudflare.NewAuthenticatedOriginPullsCertificate(ctx, "myPerHostnameAopCert", &cloudflare.AuthenticatedOriginPullsCertificateArgs{
+//			_, err = cloudflare.NewAuthenticatedOriginPullsCertificate(ctx, "my_per_hostname_aop_cert", &cloudflare.AuthenticatedOriginPullsCertificateArgs{
+//				ZoneId:      pulumi.String("0da42c8d2132a9ddaf714f9e7c920711"),
 //				Certificate: pulumi.String("-----INSERT CERTIFICATE-----"),
 //				PrivateKey:  pulumi.String("-----INSERT PRIVATE KEY-----"),
 //				Type:        pulumi.String("per-hostname"),
-//				ZoneId:      pulumi.String("0da42c8d2132a9ddaf714f9e7c920711"),
 //			})
 //			if err != nil {
 //				return err

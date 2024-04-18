@@ -30,13 +30,13 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.NewApiShield(ctx, "example", &cloudflare.ApiShieldArgs{
+//				ZoneId: pulumi.String("0da42c8d2132a9ddaf714f9e7c920711"),
 //				AuthIdCharacteristics: cloudflare.ApiShieldAuthIdCharacteristicArray{
 //					&cloudflare.ApiShieldAuthIdCharacteristicArgs{
 //						Name: pulumi.String("my-example-header"),
 //						Type: pulumi.String("header"),
 //					},
 //				},
-//				ZoneId: pulumi.String("0da42c8d2132a9ddaf714f9e7c920711"),
 //			})
 //			if err != nil {
 //				return err

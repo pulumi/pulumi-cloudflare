@@ -520,43 +520,6 @@ class AccessPolicy(pulumi.CustomResource):
            scope. For example, an access token that is scoped to the "example.com"
            zone needs to use the `zone_id` argument.
 
-        ## Example Usage
-
-        <!--Start PulumiCodeChooser -->
-        ```python
-        import pulumi
-        import pulumi_cloudflare as cloudflare
-
-        # Allowing access to `test@example.com` email address only
-        test_policy_access_policy = cloudflare.AccessPolicy("testPolicyAccessPolicy",
-            application_id="cb029e245cfdd66dc8d2e570d5dd3322",
-            zone_id="0da42c8d2132a9ddaf714f9e7c920711",
-            name="staging policy",
-            precedence=1,
-            decision="allow",
-            includes=[cloudflare.AccessPolicyIncludeArgs(
-                emails=["test@example.com"],
-            )],
-            requires=[cloudflare.AccessPolicyRequireArgs(
-                emails=["test@example.com"],
-            )])
-        # Allowing `test@example.com` to access but only when coming from a
-        # specific IP.
-        test_policy_index_access_policy_access_policy = cloudflare.AccessPolicy("testPolicyIndex/accessPolicyAccessPolicy",
-            application_id="cb029e245cfdd66dc8d2e570d5dd3322",
-            zone_id="0da42c8d2132a9ddaf714f9e7c920711",
-            name="staging policy",
-            precedence=1,
-            decision="allow",
-            includes=[cloudflare.AccessPolicyIncludeArgs(
-                emails=["test@example.com"],
-            )],
-            requires=[cloudflare.AccessPolicyRequireArgs(
-                ips=[var["office_ip"]],
-            )])
-        ```
-        <!--End PulumiCodeChooser -->
-
         ## Import
 
         Account level import.
@@ -603,43 +566,6 @@ class AccessPolicy(pulumi.CustomResource):
            access token, you must provide the argument that matches the token's
            scope. For example, an access token that is scoped to the "example.com"
            zone needs to use the `zone_id` argument.
-
-        ## Example Usage
-
-        <!--Start PulumiCodeChooser -->
-        ```python
-        import pulumi
-        import pulumi_cloudflare as cloudflare
-
-        # Allowing access to `test@example.com` email address only
-        test_policy_access_policy = cloudflare.AccessPolicy("testPolicyAccessPolicy",
-            application_id="cb029e245cfdd66dc8d2e570d5dd3322",
-            zone_id="0da42c8d2132a9ddaf714f9e7c920711",
-            name="staging policy",
-            precedence=1,
-            decision="allow",
-            includes=[cloudflare.AccessPolicyIncludeArgs(
-                emails=["test@example.com"],
-            )],
-            requires=[cloudflare.AccessPolicyRequireArgs(
-                emails=["test@example.com"],
-            )])
-        # Allowing `test@example.com` to access but only when coming from a
-        # specific IP.
-        test_policy_index_access_policy_access_policy = cloudflare.AccessPolicy("testPolicyIndex/accessPolicyAccessPolicy",
-            application_id="cb029e245cfdd66dc8d2e570d5dd3322",
-            zone_id="0da42c8d2132a9ddaf714f9e7c920711",
-            name="staging policy",
-            precedence=1,
-            decision="allow",
-            includes=[cloudflare.AccessPolicyIncludeArgs(
-                emails=["test@example.com"],
-            )],
-            requires=[cloudflare.AccessPolicyRequireArgs(
-                ips=[var["office_ip"]],
-            )])
-        ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

@@ -18,15 +18,15 @@ import * as utilities from "./utilities";
  *
  * const example = new cloudflare.DeviceDexTest("example", {
  *     accountId: "f037e56e89293a057740de681ac9abbe",
+ *     name: "GET homepage",
+ *     description: "Send a HTTP GET request to the home endpoint every half hour.",
+ *     interval: "0h30m0s",
+ *     enabled: true,
  *     data: {
  *         host: "https://example.com/home",
  *         kind: "http",
  *         method: "GET",
  *     },
- *     description: "Send a HTTP GET request to the home endpoint every half hour.",
- *     enabled: true,
- *     interval: "0h30m0s",
- *     name: "GET homepage",
  * });
  * ```
  * <!--End PulumiCodeChooser -->

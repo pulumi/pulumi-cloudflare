@@ -26,16 +26,14 @@ namespace Pulumi.Cloudflare
     ///     var example = new Cloudflare.MtlsCertificate("example", new()
     ///     {
     ///         AccountId = "f037e56e89293a057740de681ac9abbe",
-    ///         Ca = true,
+    ///         Name = "example",
     ///         Certificates = @"-----BEGIN CERTIFICATE-----
     /// MIIDmDCCAoCgAwIBAgIUKTOAZNj...i4JhqeoTewsxndhDDE
-    /// -----END CERTIFICATE-----
-    /// ",
-    ///         Name = "example",
+    /// -----END CERTIFICATE-----",
     ///         PrivateKey = @"-----BEGIN PRIVATE KEY-----
     /// MIIEvQIBADANBgkqhkiG9w0BAQE...1IS3EnQRrz6WMYA=
-    /// -----END PRIVATE KEY-----
-    /// ",
+    /// -----END PRIVATE KEY-----",
+    ///         Ca = true,
     ///     });
     /// 
     /// });

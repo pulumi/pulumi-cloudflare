@@ -31,16 +31,16 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.NewIpsecTunnel(ctx, "example", &cloudflare.IpsecTunnelArgs{
 //				AccountId:          pulumi.String("f037e56e89293a057740de681ac9abbe"),
-//				AllowNullCipher:    pulumi.Bool(false),
-//				CloudflareEndpoint: pulumi.String("203.0.113.1"),
+//				Name:               pulumi.String("IPsec_1"),
 //				CustomerEndpoint:   pulumi.String("203.0.113.1"),
+//				CloudflareEndpoint: pulumi.String("203.0.113.1"),
+//				InterfaceAddress:   pulumi.String("192.0.2.0/31"),
 //				Description:        pulumi.String("Tunnel for ISP X"),
 //				HealthCheckEnabled: pulumi.Bool(true),
 //				HealthCheckTarget:  pulumi.String("203.0.113.1"),
 //				HealthCheckType:    pulumi.String("reply"),
-//				InterfaceAddress:   pulumi.String("192.0.2.0/31"),
-//				Name:               pulumi.String("IPsec_1"),
 //				Psk:                pulumi.String("asdf12341234"),
+//				AllowNullCipher:    pulumi.Bool(false),
 //			})
 //			if err != nil {
 //				return err

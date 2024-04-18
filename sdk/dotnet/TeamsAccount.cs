@@ -27,6 +27,19 @@ namespace Pulumi.Cloudflare
     ///     var example = new Cloudflare.TeamsAccount("example", new()
     ///     {
     ///         AccountId = "f037e56e89293a057740de681ac9abbe",
+    ///         TlsDecryptEnabled = true,
+    ///         ProtocolDetectionEnabled = true,
+    ///         BlockPage = new Cloudflare.Inputs.TeamsAccountBlockPageArgs
+    ///         {
+    ///             FooterText = "hello",
+    ///             HeaderText = "hello",
+    ///             LogoPath = "https://example.com/logo.jpg",
+    ///             BackgroundColor = "#000000",
+    ///         },
+    ///         BodyScanning = new Cloudflare.Inputs.TeamsAccountBodyScanningArgs
+    ///         {
+    ///             InspectionMode = "deep",
+    ///         },
     ///         Antivirus = new Cloudflare.Inputs.TeamsAccountAntivirusArgs
     ///         {
     ///             EnabledDownloadPhase = true,
@@ -39,25 +52,17 @@ namespace Pulumi.Cloudflare
     ///                 SupportUrl = "https://example.com/blocked",
     ///             },
     ///         },
-    ///         BlockPage = new Cloudflare.Inputs.TeamsAccountBlockPageArgs
-    ///         {
-    ///             BackgroundColor = "#000000",
-    ///             FooterText = "hello",
-    ///             HeaderText = "hello",
-    ///             LogoPath = "https://example.com/logo.jpg",
-    ///         },
-    ///         BodyScanning = new Cloudflare.Inputs.TeamsAccountBodyScanningArgs
-    ///         {
-    ///             InspectionMode = "deep",
-    ///         },
-    ///         ExtendedEmailMatching = new Cloudflare.Inputs.TeamsAccountExtendedEmailMatchingArgs
-    ///         {
-    ///             Enabled = true,
-    ///         },
     ///         Fips = new Cloudflare.Inputs.TeamsAccountFipsArgs
     ///         {
     ///             Tls = true,
     ///         },
+    ///         Proxy = new Cloudflare.Inputs.TeamsAccountProxyArgs
+    ///         {
+    ///             Tcp = true,
+    ///             Udp = true,
+    ///             RootCa = true,
+    ///         },
+    ///         UrlBrowserIsolationEnabled = true,
     ///         Logging = new Cloudflare.Inputs.TeamsAccountLoggingArgs
     ///         {
     ///             RedactPii = true,
@@ -80,15 +85,10 @@ namespace Pulumi.Cloudflare
     ///                 },
     ///             },
     ///         },
-    ///         ProtocolDetectionEnabled = true,
-    ///         Proxy = new Cloudflare.Inputs.TeamsAccountProxyArgs
+    ///         ExtendedEmailMatching = new Cloudflare.Inputs.TeamsAccountExtendedEmailMatchingArgs
     ///         {
-    ///             RootCa = true,
-    ///             Tcp = true,
-    ///             Udp = true,
+    ///             Enabled = true,
     ///         },
-    ///         TlsDecryptEnabled = true,
-    ///         UrlBrowserIsolationEnabled = true,
     ///     });
     /// 
     /// });

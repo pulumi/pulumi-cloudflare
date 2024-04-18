@@ -23,7 +23,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleApiShieldOperation = new Cloudflare.ApiShieldOperation("exampleApiShieldOperation", new()
+    ///     var example = new Cloudflare.ApiShieldOperation("example", new()
     ///     {
     ///         ZoneId = "0da42c8d2132a9ddaf714f9e7c920711",
     ///         Method = "GET",
@@ -31,10 +31,10 @@ namespace Pulumi.Cloudflare
     ///         Endpoint = "/path",
     ///     });
     /// 
-    ///     var exampleApiShieldOperationSchemaValidationSettings = new Cloudflare.ApiShieldOperationSchemaValidationSettings("exampleApiShieldOperationSchemaValidationSettings", new()
+    ///     var exampleApiShieldOperationSchemaValidationSettings = new Cloudflare.ApiShieldOperationSchemaValidationSettings("example", new()
     ///     {
     ///         ZoneId = "0da42c8d2132a9ddaf714f9e7c920711",
-    ///         OperationId = exampleApiShieldOperation.Id,
+    ///         OperationId = example.Id,
     ///         MitigationAction = "block",
     ///     });
     /// 

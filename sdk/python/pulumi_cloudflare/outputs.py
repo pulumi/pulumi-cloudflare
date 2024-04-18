@@ -10228,8 +10228,8 @@ class PageRuleActionsCacheKeyFieldsUser(dict):
                
                # Unrealistic example with all features used
                foobar = cloudflare.PageRule("foobar",
-                   zone_id=var["cloudflare_zone_id"],
-                   target=f"{var['cloudflare_zone']}/app/*",
+                   zone_id=cloudflare_zone_id,
+                   target=f"{cloudflare_zone}/app/*",
                    priority=1,
                    actions=cloudflare.PageRuleActionsArgs(
                        cache_key_fields=cloudflare.PageRuleActionsCacheKeyFieldsArgs(
@@ -10298,8 +10298,8 @@ class PageRuleActionsCacheKeyFieldsUser(dict):
 
         # Unrealistic example with all features used
         foobar = cloudflare.PageRule("foobar",
-            zone_id=var["cloudflare_zone_id"],
-            target=f"{var['cloudflare_zone']}/app/*",
+            zone_id=cloudflare_zone_id,
+            target=f"{cloudflare_zone}/app/*",
             priority=1,
             actions=cloudflare.PageRuleActionsArgs(
                 cache_key_fields=cloudflare.PageRuleActionsCacheKeyFieldsArgs(

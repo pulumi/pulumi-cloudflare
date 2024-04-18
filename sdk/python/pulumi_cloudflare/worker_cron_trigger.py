@@ -141,12 +141,13 @@ class WorkerCronTrigger(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
+        import pulumi_std as std
 
-        example_script = cloudflare.WorkerScript("exampleScript",
+        example_script = cloudflare.WorkerScript("example_script",
             account_id="f037e56e89293a057740de681ac9abbe",
             name="example-script",
-            content=(lambda path: open(path).read())("path/to/my.js"))
-        example_trigger = cloudflare.WorkerCronTrigger("exampleTrigger",
+            content=std.file(input="path/to/my.js").result)
+        example_trigger = cloudflare.WorkerCronTrigger("example_trigger",
             account_id="f037e56e89293a057740de681ac9abbe",
             script_name=example_script.name,
             schedules=[
@@ -186,12 +187,13 @@ class WorkerCronTrigger(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
+        import pulumi_std as std
 
-        example_script = cloudflare.WorkerScript("exampleScript",
+        example_script = cloudflare.WorkerScript("example_script",
             account_id="f037e56e89293a057740de681ac9abbe",
             name="example-script",
-            content=(lambda path: open(path).read())("path/to/my.js"))
-        example_trigger = cloudflare.WorkerCronTrigger("exampleTrigger",
+            content=std.file(input="path/to/my.js").result)
+        example_trigger = cloudflare.WorkerCronTrigger("example_trigger",
             account_id="f037e56e89293a057740de681ac9abbe",
             script_name=example_script.name,
             schedules=[

@@ -207,10 +207,10 @@ class CustomPages(pulumi.CustomResource):
         import pulumi_cloudflare as cloudflare
 
         example = cloudflare.CustomPages("example",
-            state="customized",
+            zone_id="0da42c8d2132a9ddaf714f9e7c920711",
             type="basic_challenge",
             url="https://example.com/challenge.html",
-            zone_id="0da42c8d2132a9ddaf714f9e7c920711")
+            state="customized")
         ```
         <!--End PulumiCodeChooser -->
 
@@ -245,10 +245,10 @@ class CustomPages(pulumi.CustomResource):
         import pulumi_cloudflare as cloudflare
 
         example = cloudflare.CustomPages("example",
-            state="customized",
+            zone_id="0da42c8d2132a9ddaf714f9e7c920711",
             type="basic_challenge",
             url="https://example.com/challenge.html",
-            zone_id="0da42c8d2132a9ddaf714f9e7c920711")
+            state="customized")
         ```
         <!--End PulumiCodeChooser -->
 

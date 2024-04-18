@@ -25,15 +25,15 @@ namespace Pulumi.Cloudflare
     /// {
     ///     var example = new Cloudflare.CustomSsl("example", new()
     ///     {
+    ///         ZoneId = "0da42c8d2132a9ddaf714f9e7c920711",
     ///         CustomSslOptions = new Cloudflare.Inputs.CustomSslCustomSslOptionsArgs
     ///         {
-    ///             BundleMethod = "ubiquitous",
     ///             Certificate = "-----INSERT CERTIFICATE-----",
-    ///             GeoRestrictions = "us",
     ///             PrivateKey = "-----INSERT PRIVATE KEY-----",
+    ///             BundleMethod = "ubiquitous",
+    ///             GeoRestrictions = "us",
     ///             Type = "legacy_custom",
     ///         },
-    ///         ZoneId = "0da42c8d2132a9ddaf714f9e7c920711",
     ///     });
     /// 
     /// });

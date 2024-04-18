@@ -19354,8 +19354,8 @@ type PageRuleActionsCacheKeyFieldsUser struct {
 	// 	pulumi.Run(func(ctx *pulumi.Context) error {
 	// 		// Unrealistic example with all features used
 	// 		_, err := cloudflare.NewPageRule(ctx, "foobar", &cloudflare.PageRuleArgs{
-	// 			ZoneId:   pulumi.Any(_var.Cloudflare_zone_id),
-	// 			Target:   pulumi.String(fmt.Sprintf("%v/app/*", _var.Cloudflare_zone)),
+	// 			ZoneId:   pulumi.Any(cloudflareZoneId),
+	// 			Target:   pulumi.String(fmt.Sprintf("%v/app/*", cloudflareZone)),
 	// 			Priority: pulumi.Int(1),
 	// 			Actions: &cloudflare.PageRuleActionsArgs{
 	// 				CacheKeyFields: &cloudflare.PageRuleActionsCacheKeyFieldsArgs{
@@ -19436,8 +19436,8 @@ type PageRuleActionsCacheKeyFieldsUserArgs struct {
 	// 	pulumi.Run(func(ctx *pulumi.Context) error {
 	// 		// Unrealistic example with all features used
 	// 		_, err := cloudflare.NewPageRule(ctx, "foobar", &cloudflare.PageRuleArgs{
-	// 			ZoneId:   pulumi.Any(_var.Cloudflare_zone_id),
-	// 			Target:   pulumi.String(fmt.Sprintf("%v/app/*", _var.Cloudflare_zone)),
+	// 			ZoneId:   pulumi.Any(cloudflareZoneId),
+	// 			Target:   pulumi.String(fmt.Sprintf("%v/app/*", cloudflareZone)),
 	// 			Priority: pulumi.Int(1),
 	// 			Actions: &cloudflare.PageRuleActionsArgs{
 	// 				CacheKeyFields: &cloudflare.PageRuleActionsCacheKeyFieldsArgs{
@@ -19591,8 +19591,8 @@ func (o PageRuleActionsCacheKeyFieldsUserOutput) Geo() pulumi.BoolPtrOutput {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// Unrealistic example with all features used
 //			_, err := cloudflare.NewPageRule(ctx, "foobar", &cloudflare.PageRuleArgs{
-//				ZoneId:   pulumi.Any(_var.Cloudflare_zone_id),
-//				Target:   pulumi.String(fmt.Sprintf("%v/app/*", _var.Cloudflare_zone)),
+//				ZoneId:   pulumi.Any(cloudflareZoneId),
+//				Target:   pulumi.String(fmt.Sprintf("%v/app/*", cloudflareZone)),
 //				Priority: pulumi.Int(1),
 //				Actions: &cloudflare.PageRuleActionsArgs{
 //					CacheKeyFields: &cloudflare.PageRuleActionsCacheKeyFieldsArgs{
@@ -19705,8 +19705,8 @@ func (o PageRuleActionsCacheKeyFieldsUserPtrOutput) Geo() pulumi.BoolPtrOutput {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// Unrealistic example with all features used
 //			_, err := cloudflare.NewPageRule(ctx, "foobar", &cloudflare.PageRuleArgs{
-//				ZoneId:   pulumi.Any(_var.Cloudflare_zone_id),
-//				Target:   pulumi.String(fmt.Sprintf("%v/app/*", _var.Cloudflare_zone)),
+//				ZoneId:   pulumi.Any(cloudflareZoneId),
+//				Target:   pulumi.String(fmt.Sprintf("%v/app/*", cloudflareZone)),
 //				Priority: pulumi.Int(1),
 //				Actions: &cloudflare.PageRuleActionsArgs{
 //					CacheKeyFields: &cloudflare.PageRuleActionsCacheKeyFieldsArgs{

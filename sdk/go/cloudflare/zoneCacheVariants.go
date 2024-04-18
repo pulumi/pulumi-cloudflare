@@ -30,6 +30,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.NewZoneCacheVariants(ctx, "example", &cloudflare.ZoneCacheVariantsArgs{
+//				ZoneId: pulumi.String("0da42c8d2132a9ddaf714f9e7c920711"),
 //				Avifs: pulumi.StringArray{
 //					pulumi.String("image/avif"),
 //					pulumi.String("image/webp"),
@@ -40,10 +41,6 @@ import (
 //				},
 //				Gifs: pulumi.StringArray{
 //					pulumi.String("image/gif"),
-//					pulumi.String("image/webp"),
-//				},
-//				Jp2s: pulumi.StringArray{
-//					pulumi.String("image/jp2"),
 //					pulumi.String("image/webp"),
 //				},
 //				Jpegs: pulumi.StringArray{
@@ -58,23 +55,26 @@ import (
 //					pulumi.String("image/jpg2"),
 //					pulumi.String("image/webp"),
 //				},
-//				Pngs: pulumi.StringArray{
-//					pulumi.String("image/png"),
+//				Jp2s: pulumi.StringArray{
+//					pulumi.String("image/jp2"),
 //					pulumi.String("image/webp"),
 //				},
-//				Tifs: pulumi.StringArray{
-//					pulumi.String("image/tif"),
+//				Pngs: pulumi.StringArray{
+//					pulumi.String("image/png"),
 //					pulumi.String("image/webp"),
 //				},
 //				Tiffs: pulumi.StringArray{
 //					pulumi.String("image/tiff"),
 //					pulumi.String("image/webp"),
 //				},
+//				Tifs: pulumi.StringArray{
+//					pulumi.String("image/tif"),
+//					pulumi.String("image/webp"),
+//				},
 //				Webps: pulumi.StringArray{
 //					pulumi.String("image/jpeg"),
 //					pulumi.String("image/webp"),
 //				},
-//				ZoneId: pulumi.String("0da42c8d2132a9ddaf714f9e7c920711"),
 //			})
 //			if err != nil {
 //				return err

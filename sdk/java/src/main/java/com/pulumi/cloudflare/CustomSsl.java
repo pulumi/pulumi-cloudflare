@@ -47,14 +47,14 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var example = new CustomSsl(&#34;example&#34;, CustomSslArgs.builder()        
+ *             .zoneId(&#34;0da42c8d2132a9ddaf714f9e7c920711&#34;)
  *             .customSslOptions(CustomSslCustomSslOptionsArgs.builder()
- *                 .bundleMethod(&#34;ubiquitous&#34;)
  *                 .certificate(&#34;-----INSERT CERTIFICATE-----&#34;)
- *                 .geoRestrictions(&#34;us&#34;)
  *                 .privateKey(&#34;-----INSERT PRIVATE KEY-----&#34;)
+ *                 .bundleMethod(&#34;ubiquitous&#34;)
+ *                 .geoRestrictions(&#34;us&#34;)
  *                 .type(&#34;legacy_custom&#34;)
  *                 .build())
- *             .zoneId(&#34;0da42c8d2132a9ddaf714f9e7c920711&#34;)
  *             .build());
  * 
  *     }

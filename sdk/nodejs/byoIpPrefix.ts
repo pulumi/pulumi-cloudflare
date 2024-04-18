@@ -17,9 +17,9 @@ import * as utilities from "./utilities";
  *
  * const example = new cloudflare.ByoIpPrefix("example", {
  *     accountId: "f037e56e89293a057740de681ac9abbe",
- *     advertisement: "on",
- *     description: "Example IP Prefix",
  *     prefixId: "d41d8cd98f00b204e9800998ecf8427e",
+ *     description: "Example IP Prefix",
+ *     advertisement: "on",
  * });
  * ```
  * <!--End PulumiCodeChooser -->

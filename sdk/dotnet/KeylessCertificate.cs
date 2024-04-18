@@ -25,13 +25,13 @@ namespace Pulumi.Cloudflare
     /// {
     ///     var example = new Cloudflare.KeylessCertificate("example", new()
     ///     {
-    ///         BundleMethod = "ubiquitous",
-    ///         Certificate = "-----INSERT CERTIFICATE-----",
-    ///         Enabled = true,
-    ///         Host = "example.com",
-    ///         Name = "example.com Keyless SSL",
-    ///         Port = 24008,
     ///         ZoneId = "0da42c8d2132a9ddaf714f9e7c920711",
+    ///         BundleMethod = "ubiquitous",
+    ///         Name = "example.com Keyless SSL",
+    ///         Host = "example.com",
+    ///         Port = 24008,
+    ///         Enabled = true,
+    ///         Certificate = "-----INSERT CERTIFICATE-----",
     ///     });
     /// 
     /// });

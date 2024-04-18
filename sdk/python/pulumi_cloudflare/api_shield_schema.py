@@ -204,13 +204,14 @@ class ApiShieldSchema(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
+        import pulumi_std as std
 
-        petstore_schema = cloudflare.ApiShieldSchema("petstoreSchema",
+        petstore_schema = cloudflare.ApiShieldSchema("petstore_schema",
             zone_id="0da42c8d2132a9ddaf714f9e7c920711",
             name="myschema",
             kind="openapi_v3",
             validation_enabled=True,
-            source=(lambda path: open(path).read())("./schemas/petstore.json"))
+            source=std.file(input="./schemas/petstore.json").result)
         ```
         <!--End PulumiCodeChooser -->
 
@@ -237,13 +238,14 @@ class ApiShieldSchema(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
+        import pulumi_std as std
 
-        petstore_schema = cloudflare.ApiShieldSchema("petstoreSchema",
+        petstore_schema = cloudflare.ApiShieldSchema("petstore_schema",
             zone_id="0da42c8d2132a9ddaf714f9e7c920711",
             name="myschema",
             kind="openapi_v3",
             validation_enabled=True,
-            source=(lambda path: open(path).read())("./schemas/petstore.json"))
+            source=std.file(input="./schemas/petstore.json").result)
         ```
         <!--End PulumiCodeChooser -->
 

@@ -25,10 +25,10 @@ namespace Pulumi.Cloudflare
     /// {
     ///     var example = new Cloudflare.HostnameTlsSetting("example", new()
     ///     {
+    ///         ZoneId = "0da42c8d2132a9ddaf714f9e7c920711",
     ///         Hostname = "sub.example.com",
     ///         Setting = "min_tls_version",
     ///         Value = "1.2",
-    ///         ZoneId = "0da42c8d2132a9ddaf714f9e7c920711",
     ///     });
     /// 
     /// });

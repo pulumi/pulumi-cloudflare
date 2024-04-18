@@ -19,6 +19,17 @@ import * as utilities from "./utilities";
  *
  * const example = new cloudflare.TeamsAccount("example", {
  *     accountId: "f037e56e89293a057740de681ac9abbe",
+ *     tlsDecryptEnabled: true,
+ *     protocolDetectionEnabled: true,
+ *     blockPage: {
+ *         footerText: "hello",
+ *         headerText: "hello",
+ *         logoPath: "https://example.com/logo.jpg",
+ *         backgroundColor: "#000000",
+ *     },
+ *     bodyScanning: {
+ *         inspectionMode: "deep",
+ *     },
  *     antivirus: {
  *         enabledDownloadPhase: true,
  *         enabledUploadPhase: false,
@@ -29,21 +40,15 @@ import * as utilities from "./utilities";
  *             supportUrl: "https://example.com/blocked",
  *         },
  *     },
- *     blockPage: {
- *         backgroundColor: "#000000",
- *         footerText: "hello",
- *         headerText: "hello",
- *         logoPath: "https://example.com/logo.jpg",
- *     },
- *     bodyScanning: {
- *         inspectionMode: "deep",
- *     },
- *     extendedEmailMatching: {
- *         enabled: true,
- *     },
  *     fips: {
  *         tls: true,
  *     },
+ *     proxy: {
+ *         tcp: true,
+ *         udp: true,
+ *         rootCa: true,
+ *     },
+ *     urlBrowserIsolationEnabled: true,
  *     logging: {
  *         redactPii: true,
  *         settingsByRuleType: {
@@ -61,14 +66,9 @@ import * as utilities from "./utilities";
  *             },
  *         },
  *     },
- *     protocolDetectionEnabled: true,
- *     proxy: {
- *         rootCa: true,
- *         tcp: true,
- *         udp: true,
+ *     extendedEmailMatching: {
+ *         enabled: true,
  *     },
- *     tlsDecryptEnabled: true,
- *     urlBrowserIsolationEnabled: true,
  * });
  * ```
  * <!--End PulumiCodeChooser -->

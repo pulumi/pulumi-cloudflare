@@ -23,11 +23,10 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var myScript = new Cloudflare.WorkerScript("myScript");
+    ///     var myScript = new Cloudflare.WorkerScript("my_script");
     /// 
-    ///     // see "cloudflare_worker_script" documentation ...
     ///     // Runs the specified worker script for all URLs that match `example.com/*`
-    ///     var myRoute = new Cloudflare.WorkerRoute("myRoute", new()
+    ///     var myRoute = new Cloudflare.WorkerRoute("my_route", new()
     ///     {
     ///         ZoneId = "0da42c8d2132a9ddaf714f9e7c920711",
     ///         Pattern = "example.com/*",

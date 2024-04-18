@@ -55,7 +55,7 @@ import javax.annotation.Nullable;
  *         var myCert = new AccessMutualTlsCertificate(&#34;myCert&#34;, AccessMutualTlsCertificateArgs.builder()        
  *             .zoneId(&#34;0da42c8d2132a9ddaf714f9e7c920711&#34;)
  *             .name(&#34;My Root Cert&#34;)
- *             .certificate(var_.ca_pem())
+ *             .certificate(caPem)
  *             .associatedHostnames(&#34;staging.example.com&#34;)
  *             .build());
  * 

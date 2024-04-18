@@ -173,14 +173,14 @@ class DeviceManagedNetworks(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        managed_networks = cloudflare.DeviceManagedNetworks("managedNetworks",
+        managed_networks = cloudflare.DeviceManagedNetworks("managed_networks",
             account_id="f037e56e89293a057740de681ac9abbe",
-            config=cloudflare.DeviceManagedNetworksConfigArgs(
-                sha256="b5bb9d8014a0f9b1d61e21e796d78dccdf1352f23cd32812f4850b878ae4944c",
-                tls_sockaddr="foobar:1234",
-            ),
             name="managed-network-1",
-            type="tls")
+            type="tls",
+            config=cloudflare.DeviceManagedNetworksConfigArgs(
+                tls_sockaddr="foobar:1234",
+                sha256="b5bb9d8014a0f9b1d61e21e796d78dccdf1352f23cd32812f4850b878ae4944c",
+            ))
         ```
         <!--End PulumiCodeChooser -->
 
@@ -213,14 +213,14 @@ class DeviceManagedNetworks(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        managed_networks = cloudflare.DeviceManagedNetworks("managedNetworks",
+        managed_networks = cloudflare.DeviceManagedNetworks("managed_networks",
             account_id="f037e56e89293a057740de681ac9abbe",
-            config=cloudflare.DeviceManagedNetworksConfigArgs(
-                sha256="b5bb9d8014a0f9b1d61e21e796d78dccdf1352f23cd32812f4850b878ae4944c",
-                tls_sockaddr="foobar:1234",
-            ),
             name="managed-network-1",
-            type="tls")
+            type="tls",
+            config=cloudflare.DeviceManagedNetworksConfigArgs(
+                tls_sockaddr="foobar:1234",
+                sha256="b5bb9d8014a0f9b1d61e21e796d78dccdf1352f23cd32812f4850b878ae4944c",
+            ))
         ```
         <!--End PulumiCodeChooser -->
 

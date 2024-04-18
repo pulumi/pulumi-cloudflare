@@ -33,7 +33,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = index.NewExample_firewall_resource(ctx, "example", &index.Example_firewall_resourceArgs{
+//			_, err = index.NewFirewallResource(ctx, "example", &index.FirewallResourceArgs{
 //				Name:         "from-cloudflare",
 //				Network:      "default",
 //				SourceRanges: cloudflare.Ipv4CidrBlocks,

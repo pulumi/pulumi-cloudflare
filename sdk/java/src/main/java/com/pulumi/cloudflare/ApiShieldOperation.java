@@ -41,10 +41,10 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var example = new ApiShieldOperation(&#34;example&#34;, ApiShieldOperationArgs.builder()        
- *             .endpoint(&#34;/path&#34;)
- *             .host(&#34;api.example.com&#34;)
- *             .method(&#34;GET&#34;)
  *             .zoneId(&#34;0da42c8d2132a9ddaf714f9e7c920711&#34;)
+ *             .method(&#34;GET&#34;)
+ *             .host(&#34;api.example.com&#34;)
+ *             .endpoint(&#34;/path&#34;)
  *             .build());
  * 
  *     }

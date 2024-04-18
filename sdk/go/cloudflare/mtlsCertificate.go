@@ -31,10 +31,10 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.NewMtlsCertificate(ctx, "example", &cloudflare.MtlsCertificateArgs{
 //				AccountId:    pulumi.String("f037e56e89293a057740de681ac9abbe"),
-//				Ca:           pulumi.Bool(true),
-//				Certificates: pulumi.String("-----BEGIN CERTIFICATE-----\nMIIDmDCCAoCgAwIBAgIUKTOAZNj...i4JhqeoTewsxndhDDE\n-----END CERTIFICATE-----\n"),
 //				Name:         pulumi.String("example"),
-//				PrivateKey:   pulumi.String("-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQE...1IS3EnQRrz6WMYA=\n-----END PRIVATE KEY-----\n"),
+//				Certificates: pulumi.String("-----BEGIN CERTIFICATE-----\nMIIDmDCCAoCgAwIBAgIUKTOAZNj...i4JhqeoTewsxndhDDE\n-----END CERTIFICATE-----"),
+//				PrivateKey:   pulumi.String("-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQE...1IS3EnQRrz6WMYA=\n-----END PRIVATE KEY-----"),
+//				Ca:           pulumi.Bool(true),
 //			})
 //			if err != nil {
 //				return err

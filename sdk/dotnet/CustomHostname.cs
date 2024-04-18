@@ -25,6 +25,7 @@ namespace Pulumi.Cloudflare
     /// {
     ///     var example = new Cloudflare.CustomHostname("example", new()
     ///     {
+    ///         ZoneId = "0da42c8d2132a9ddaf714f9e7c920711",
     ///         Hostname = "hostname.example.com",
     ///         Ssls = new[]
     ///         {
@@ -33,7 +34,6 @@ namespace Pulumi.Cloudflare
     ///                 Method = "txt",
     ///             },
     ///         },
-    ///         ZoneId = "0da42c8d2132a9ddaf714f9e7c920711",
     ///     });
     /// 
     /// });

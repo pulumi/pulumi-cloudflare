@@ -29,8 +29,8 @@ namespace Pulumi.Cloudflare
     ///     var example = new Cloudflare.TunnelVirtualNetwork("example", new()
     ///     {
     ///         AccountId = "f037e56e89293a057740de681ac9abbe",
-    ///         Comment = "New tunnel virtual network for documentation",
     ///         Name = "vnet-for-documentation",
+    ///         Comment = "New tunnel virtual network for documentation",
     ///     });
     /// 
     /// });

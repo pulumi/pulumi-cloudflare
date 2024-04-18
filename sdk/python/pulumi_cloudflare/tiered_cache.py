@@ -109,8 +109,8 @@ class TieredCache(pulumi.CustomResource):
         import pulumi_cloudflare as cloudflare
 
         example = cloudflare.TieredCache("example",
-            cache_type="smart",
-            zone_id="0da42c8d2132a9ddaf714f9e7c920711")
+            zone_id="0da42c8d2132a9ddaf714f9e7c920711",
+            cache_type="smart")
         ```
         <!--End PulumiCodeChooser -->
 
@@ -137,8 +137,8 @@ class TieredCache(pulumi.CustomResource):
         import pulumi_cloudflare as cloudflare
 
         example = cloudflare.TieredCache("example",
-            cache_type="smart",
-            zone_id="0da42c8d2132a9ddaf714f9e7c920711")
+            zone_id="0da42c8d2132a9ddaf714f9e7c920711",
+            cache_type="smart")
         ```
         <!--End PulumiCodeChooser -->
 

@@ -172,10 +172,10 @@ class ApiShieldOperation(pulumi.CustomResource):
         import pulumi_cloudflare as cloudflare
 
         example = cloudflare.ApiShieldOperation("example",
-            endpoint="/path",
-            host="api.example.com",
+            zone_id="0da42c8d2132a9ddaf714f9e7c920711",
             method="GET",
-            zone_id="0da42c8d2132a9ddaf714f9e7c920711")
+            host="api.example.com",
+            endpoint="/path")
         ```
         <!--End PulumiCodeChooser -->
 
@@ -203,10 +203,10 @@ class ApiShieldOperation(pulumi.CustomResource):
         import pulumi_cloudflare as cloudflare
 
         example = cloudflare.ApiShieldOperation("example",
-            endpoint="/path",
-            host="api.example.com",
+            zone_id="0da42c8d2132a9ddaf714f9e7c920711",
             method="GET",
-            zone_id="0da42c8d2132a9ddaf714f9e7c920711")
+            host="api.example.com",
+            endpoint="/path")
         ```
         <!--End PulumiCodeChooser -->
 

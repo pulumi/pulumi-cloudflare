@@ -20,42 +20,6 @@ import javax.annotation.Nullable;
  * Access Service Tokens are used for service-to-service communication
  * when an application is behind Cloudflare Access.
  * 
- * ## Example Usage
- * 
- * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.cloudflare.AccessServiceToken;
- * import com.pulumi.cloudflare.AccessServiceTokenArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         // Generate a service token that will renew if terraform is ran within 30 days of expiration
- *         var myApp = new AccessServiceToken(&#34;myApp&#34;, AccessServiceTokenArgs.builder()        
- *             .accountId(&#34;f037e56e89293a057740de681ac9abbe&#34;)
- *             .minDaysForRenewal(30)
- *             .name(&#34;CI/CD app renewed&#34;)
- *             .build());
- * 
- *     }
- * }
- * ```
- * &lt;!--End PulumiCodeChooser --&gt;
- * 
  * ## Import
  * 
  * If you are importing an Access Service Token you will not have the

@@ -33,8 +33,8 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// Add a page rule to the domain
 //			_, err := cloudflare.NewPageRule(ctx, "foobar", &cloudflare.PageRuleArgs{
-//				ZoneId:   pulumi.Any(_var.Cloudflare_zone_id),
-//				Target:   pulumi.String(fmt.Sprintf("sub.%v/page", _var.Cloudflare_zone)),
+//				ZoneId:   pulumi.Any(cloudflareZoneId),
+//				Target:   pulumi.String(fmt.Sprintf("sub.%v/page", cloudflareZone)),
 //				Priority: pulumi.Int(1),
 //				Actions: &cloudflare.PageRuleActionsArgs{
 //					Ssl:              pulumi.String("flexible"),

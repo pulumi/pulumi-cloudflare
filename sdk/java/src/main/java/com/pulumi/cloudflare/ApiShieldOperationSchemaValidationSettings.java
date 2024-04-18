@@ -43,7 +43,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleApiShieldOperation = new ApiShieldOperation(&#34;exampleApiShieldOperation&#34;, ApiShieldOperationArgs.builder()        
+ *         var example = new ApiShieldOperation(&#34;example&#34;, ApiShieldOperationArgs.builder()        
  *             .zoneId(&#34;0da42c8d2132a9ddaf714f9e7c920711&#34;)
  *             .method(&#34;GET&#34;)
  *             .host(&#34;api.example.com&#34;)
@@ -52,7 +52,7 @@ import javax.annotation.Nullable;
  * 
  *         var exampleApiShieldOperationSchemaValidationSettings = new ApiShieldOperationSchemaValidationSettings(&#34;exampleApiShieldOperationSchemaValidationSettings&#34;, ApiShieldOperationSchemaValidationSettingsArgs.builder()        
  *             .zoneId(&#34;0da42c8d2132a9ddaf714f9e7c920711&#34;)
- *             .operationId(exampleApiShieldOperation.id())
+ *             .operationId(example.id())
  *             .mitigationAction(&#34;block&#34;)
  *             .build());
  * 

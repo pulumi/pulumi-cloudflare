@@ -26,10 +26,10 @@ namespace Pulumi.Cloudflare
     /// {
     ///     var example = new Cloudflare.AccessCustomPage("example", new()
     ///     {
-    ///         CustomHtml = "&lt;html&gt;&lt;body&gt;&lt;h1&gt;Forbidden&lt;/h1&gt;&lt;/body&gt;&lt;/html&gt;",
+    ///         ZoneId = "0da42c8d2132a9ddaf714f9e7c920711",
     ///         Name = "example",
     ///         Type = "forbidden",
-    ///         ZoneId = "0da42c8d2132a9ddaf714f9e7c920711",
+    ///         CustomHtml = "&lt;html&gt;&lt;body&gt;&lt;h1&gt;Forbidden&lt;/h1&gt;&lt;/body&gt;&lt;/html&gt;",
     ///     });
     /// 
     /// });

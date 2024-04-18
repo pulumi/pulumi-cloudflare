@@ -35,25 +35,25 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			examplePrivateKey, err := tls.NewPrivateKey(ctx, "examplePrivateKey", &tls.PrivateKeyArgs{
-//				Algorithm: pulumi.String("RSA"),
+//			example, err := tls.NewPrivateKey(ctx, "example", &tls.PrivateKeyArgs{
+//				Algorithm: "RSA",
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			exampleCertRequest, err := tls.NewCertRequest(ctx, "exampleCertRequest", &tls.CertRequestArgs{
-//				PrivateKeyPem: examplePrivateKey.PrivateKeyPem,
-//				Subjects: tls.CertRequestSubjectArray{
-//					&tls.CertRequestSubjectArgs{
-//						CommonName:   pulumi.String(""),
-//						Organization: pulumi.String("Terraform Test"),
+//			exampleCertRequest, err := tls.NewCertRequest(ctx, "example", &tls.CertRequestArgs{
+//				PrivateKeyPem: example.PrivateKeyPem,
+//				Subject: []map[string]interface{}{
+//					map[string]interface{}{
+//						"commonName":   "",
+//						"organization": "Terraform Test",
 //					},
 //				},
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = cloudflare.NewOriginCaCertificate(ctx, "exampleOriginCaCertificate", &cloudflare.OriginCaCertificateArgs{
+//			_, err = cloudflare.NewOriginCaCertificate(ctx, "example", &cloudflare.OriginCaCertificateArgs{
 //				Csr: exampleCertRequest.CertRequestPem,
 //				Hostnames: pulumi.StringArray{
 //					pulumi.String("example.com"),

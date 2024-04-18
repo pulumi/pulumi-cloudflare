@@ -44,18 +44,16 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var example = new MtlsCertificate(&#34;example&#34;, MtlsCertificateArgs.builder()        
  *             .accountId(&#34;f037e56e89293a057740de681ac9abbe&#34;)
- *             .ca(true)
+ *             .name(&#34;example&#34;)
  *             .certificates(&#34;&#34;&#34;
  * -----BEGIN CERTIFICATE-----
  * MIIDmDCCAoCgAwIBAgIUKTOAZNj...i4JhqeoTewsxndhDDE
- * -----END CERTIFICATE-----
- *             &#34;&#34;&#34;)
- *             .name(&#34;example&#34;)
+ * -----END CERTIFICATE-----            &#34;&#34;&#34;)
  *             .privateKey(&#34;&#34;&#34;
  * -----BEGIN PRIVATE KEY-----
  * MIIEvQIBADANBgkqhkiG9w0BAQE...1IS3EnQRrz6WMYA=
- * -----END PRIVATE KEY-----
- *             &#34;&#34;&#34;)
+ * -----END PRIVATE KEY-----            &#34;&#34;&#34;)
+ *             .ca(true)
  *             .build());
  * 
  *     }

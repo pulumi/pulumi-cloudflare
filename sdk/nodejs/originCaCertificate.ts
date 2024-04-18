@@ -19,15 +19,15 @@ import * as utilities from "./utilities";
  * import * as cloudflare from "@pulumi/cloudflare";
  * import * as tls from "@pulumi/tls";
  *
- * const examplePrivateKey = new tls.PrivateKey("examplePrivateKey", {algorithm: "RSA"});
- * const exampleCertRequest = new tls.CertRequest("exampleCertRequest", {
- *     privateKeyPem: examplePrivateKey.privateKeyPem,
- *     subjects: [{
+ * const example = new tls.index.PrivateKey("example", {algorithm: "RSA"});
+ * const exampleCertRequest = new tls.index.CertRequest("example", {
+ *     privateKeyPem: example.privateKeyPem,
+ *     subject: [{
  *         commonName: "",
  *         organization: "Terraform Test",
  *     }],
  * });
- * const exampleOriginCaCertificate = new cloudflare.OriginCaCertificate("exampleOriginCaCertificate", {
+ * const exampleOriginCaCertificate = new cloudflare.OriginCaCertificate("example", {
  *     csr: exampleCertRequest.certRequestPem,
  *     hostnames: ["example.com"],
  *     requestType: "origin-rsa",

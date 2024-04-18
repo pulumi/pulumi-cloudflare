@@ -211,7 +211,7 @@ class AccessRule(pulumi.CustomResource):
         import pulumi_cloudflare as cloudflare
 
         # Challenge requests coming from known Tor exit nodes.
-        tor_exit_nodes = cloudflare.AccessRule("torExitNodes",
+        tor_exit_nodes = cloudflare.AccessRule("tor_exit_nodes",
             zone_id="0da42c8d2132a9ddaf714f9e7c920711",
             notes="Requests coming from known Tor exit nodes",
             mode="challenge",
@@ -238,13 +238,13 @@ class AccessRule(pulumi.CustomResource):
             ]
         office_network = []
         for range in [{"value": i} for i in range(0, len(my_office))]:
-            office_network.append(cloudflare.AccessRule(f"officeNetwork-{range['value']}",
+            office_network.append(cloudflare.AccessRule(f"office_network-{range['value']}",
                 account_id="f037e56e89293a057740de681ac9abbe",
                 notes="Requests coming from office network",
                 mode="whitelist",
                 configuration=cloudflare.AccessRuleConfigurationArgs(
                     target="ip_range",
-                    value=my_office[count["index"]],
+                    value=my_office[range["value"]],
                 )))
         ```
         <!--End PulumiCodeChooser -->
@@ -296,7 +296,7 @@ class AccessRule(pulumi.CustomResource):
         import pulumi_cloudflare as cloudflare
 
         # Challenge requests coming from known Tor exit nodes.
-        tor_exit_nodes = cloudflare.AccessRule("torExitNodes",
+        tor_exit_nodes = cloudflare.AccessRule("tor_exit_nodes",
             zone_id="0da42c8d2132a9ddaf714f9e7c920711",
             notes="Requests coming from known Tor exit nodes",
             mode="challenge",
@@ -323,13 +323,13 @@ class AccessRule(pulumi.CustomResource):
             ]
         office_network = []
         for range in [{"value": i} for i in range(0, len(my_office))]:
-            office_network.append(cloudflare.AccessRule(f"officeNetwork-{range['value']}",
+            office_network.append(cloudflare.AccessRule(f"office_network-{range['value']}",
                 account_id="f037e56e89293a057740de681ac9abbe",
                 notes="Requests coming from office network",
                 mode="whitelist",
                 configuration=cloudflare.AccessRuleConfigurationArgs(
                     target="ip_range",
-                    value=my_office[count["index"]],
+                    value=my_office[range["value"]],
                 )))
         ```
         <!--End PulumiCodeChooser -->

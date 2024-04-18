@@ -25,10 +25,10 @@ namespace Pulumi.Cloudflare
     /// {
     ///     var example = new Cloudflare.ObservatoryScheduledTest("example", new()
     ///     {
-    ///         Frequency = "WEEKLY",
-    ///         Region = "us-central1",
-    ///         Url = "example.com",
     ///         ZoneId = "0da42c8d2132a9ddaf714f9e7c920711",
+    ///         Url = "example.com",
+    ///         Region = "us-central1",
+    ///         Frequency = "WEEKLY",
     ///     });
     /// 
     /// });

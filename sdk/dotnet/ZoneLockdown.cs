@@ -30,6 +30,13 @@ namespace Pulumi.Cloudflare
     ///     // Restrict access to these endpoints to requests from a known IP address range.
     ///     var example = new Cloudflare.ZoneLockdown("example", new()
     ///     {
+    ///         ZoneId = "0da42c8d2132a9ddaf714f9e7c920711",
+    ///         Paused = false,
+    ///         Description = "Restrict access to these endpoints to requests from a known IP address range",
+    ///         Urls = new[]
+    ///         {
+    ///             "api.mysite.com/some/endpoint*",
+    ///         },
     ///         Configurations = new[]
     ///         {
     ///             new Cloudflare.Inputs.ZoneLockdownConfigurationArgs
@@ -38,13 +45,6 @@ namespace Pulumi.Cloudflare
     ///                 Value = "192.0.2.0/24",
     ///             },
     ///         },
-    ///         Description = "Restrict access to these endpoints to requests from a known IP address range",
-    ///         Paused = false,
-    ///         Urls = new[]
-    ///         {
-    ///             "api.mysite.com/some/endpoint*",
-    ///         },
-    ///         ZoneId = "0da42c8d2132a9ddaf714f9e7c920711",
     ///     });
     /// 
     /// });

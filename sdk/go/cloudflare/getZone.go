@@ -34,14 +34,14 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			exampleZone, err := cloudflare.LookupZone(ctx, &cloudflare.LookupZoneArgs{
+//			example, err := cloudflare.LookupZone(ctx, &cloudflare.LookupZoneArgs{
 //				Name: pulumi.StringRef("example.com"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			_, err = cloudflare.NewRecord(ctx, "exampleRecord", &cloudflare.RecordArgs{
-//				ZoneId:  pulumi.String(exampleZone.Id),
+//			_, err = cloudflare.NewRecord(ctx, "example", &cloudflare.RecordArgs{
+//				ZoneId:  pulumi.String(example.Id),
 //				Name:    pulumi.String("www"),
 //				Value:   pulumi.String("203.0.113.1"),
 //				Type:    pulumi.String("A"),

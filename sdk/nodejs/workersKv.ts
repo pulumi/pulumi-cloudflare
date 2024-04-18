@@ -14,7 +14,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
- * const exampleNs = new cloudflare.WorkersKvNamespace("exampleNs", {
+ * const exampleNs = new cloudflare.WorkersKvNamespace("example_ns", {
  *     accountId: "f037e56e89293a057740de681ac9abbe",
  *     title: "test-namespace",
  * });

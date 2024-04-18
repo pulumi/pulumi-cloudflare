@@ -17,30 +17,30 @@ import * as utilities from "./utilities";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
  * // Authenticated Origin Pulls
- * const myAop = new cloudflare.AuthenticatedOriginPulls("myAop", {
+ * const myAop = new cloudflare.AuthenticatedOriginPulls("my_aop", {
  *     zoneId: "0da42c8d2132a9ddaf714f9e7c920711",
  *     enabled: true,
  * });
  * // Per-Zone Authenticated Origin Pulls
- * const myPerZoneAopCert = new cloudflare.AuthenticatedOriginPullsCertificate("myPerZoneAopCert", {
+ * const myPerZoneAopCert = new cloudflare.AuthenticatedOriginPullsCertificate("my_per_zone_aop_cert", {
  *     zoneId: "0da42c8d2132a9ddaf714f9e7c920711",
  *     certificate: "-----INSERT CERTIFICATE-----",
  *     privateKey: "-----INSERT PRIVATE KEY-----",
  *     type: "per-zone",
  * });
- * const myPerZoneAop = new cloudflare.AuthenticatedOriginPulls("myPerZoneAop", {
+ * const myPerZoneAop = new cloudflare.AuthenticatedOriginPulls("my_per_zone_aop", {
  *     zoneId: "0da42c8d2132a9ddaf714f9e7c920711",
  *     authenticatedOriginPullsCertificate: myPerZoneAopCert.id,
  *     enabled: true,
  * });
  * // Per-Hostname Authenticated Origin Pulls
- * const myPerHostnameAopCert = new cloudflare.AuthenticatedOriginPullsCertificate("myPerHostnameAopCert", {
+ * const myPerHostnameAopCert = new cloudflare.AuthenticatedOriginPullsCertificate("my_per_hostname_aop_cert", {
  *     zoneId: "0da42c8d2132a9ddaf714f9e7c920711",
  *     certificate: "-----INSERT CERTIFICATE-----",
  *     privateKey: "-----INSERT PRIVATE KEY-----",
  *     type: "per-hostname",
  * });
- * const myPerHostnameAop = new cloudflare.AuthenticatedOriginPulls("myPerHostnameAop", {
+ * const myPerHostnameAop = new cloudflare.AuthenticatedOriginPulls("my_per_hostname_aop", {
  *     zoneId: "0da42c8d2132a9ddaf714f9e7c920711",
  *     authenticatedOriginPullsCertificate: myPerHostnameAopCert.id,
  *     hostname: "aop.example.com",

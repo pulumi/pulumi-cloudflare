@@ -27,8 +27,8 @@ namespace Pulumi.Cloudflare
     ///     {
     ///         AccountId = "f037e56e89293a057740de681ac9abbe",
     ///         Name = "Webhooks destination",
-    ///         Secret = "my-secret",
     ///         Url = "https://example.com",
+    ///         Secret = "my-secret",
     ///     });
     /// 
     /// });

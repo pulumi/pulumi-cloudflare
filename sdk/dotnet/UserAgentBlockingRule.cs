@@ -23,30 +23,30 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example1 = new Cloudflare.UserAgentBlockingRule("example1", new()
+    ///     var example1 = new Cloudflare.UserAgentBlockingRule("example_1", new()
     ///     {
+    ///         ZoneId = "0da42c8d2132a9ddaf714f9e7c920711",
+    ///         Mode = "js_challenge",
+    ///         Paused = false,
+    ///         Description = "My description 1",
     ///         Configuration = new Cloudflare.Inputs.UserAgentBlockingRuleConfigurationArgs
     ///         {
     ///             Target = "ua",
     ///             Value = "Chrome",
     ///         },
-    ///         Description = "My description 1",
-    ///         Mode = "js_challenge",
-    ///         Paused = false,
-    ///         ZoneId = "0da42c8d2132a9ddaf714f9e7c920711",
     ///     });
     /// 
-    ///     var example2 = new Cloudflare.UserAgentBlockingRule("example2", new()
+    ///     var example2 = new Cloudflare.UserAgentBlockingRule("example_2", new()
     ///     {
+    ///         ZoneId = "0da42c8d2132a9ddaf714f9e7c920711",
+    ///         Mode = "challenge",
+    ///         Paused = true,
+    ///         Description = "My description 22",
     ///         Configuration = new Cloudflare.Inputs.UserAgentBlockingRuleConfigurationArgs
     ///         {
     ///             Target = "ua",
     ///             Value = "Mozilla",
     ///         },
-    ///         Description = "My description 22",
-    ///         Mode = "challenge",
-    ///         Paused = true,
-    ///         ZoneId = "0da42c8d2132a9ddaf714f9e7c920711",
     ///     });
     /// 
     /// });

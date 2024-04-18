@@ -41,8 +41,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var example = new CustomHostnameFallbackOrigin(&#34;example&#34;, CustomHostnameFallbackOriginArgs.builder()        
- *             .origin(&#34;fallback.example.com&#34;)
  *             .zoneId(&#34;0da42c8d2132a9ddaf714f9e7c920711&#34;)
+ *             .origin(&#34;fallback.example.com&#34;)
  *             .build());
  * 
  *     }

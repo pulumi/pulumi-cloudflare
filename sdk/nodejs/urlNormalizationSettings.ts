@@ -15,9 +15,9 @@ import * as utilities from "./utilities";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
  * const example = new cloudflare.UrlNormalizationSettings("example", {
- *     scope: "incoming",
- *     type: "cloudflare",
  *     zoneId: "0da42c8d2132a9ddaf714f9e7c920711",
+ *     type: "cloudflare",
+ *     scope: "incoming",
  * });
  * ```
  * <!--End PulumiCodeChooser -->

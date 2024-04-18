@@ -30,21 +30,21 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.NewAccessOrganization(ctx, "example", &cloudflare.AccessOrganizationArgs{
-//				AccountId:              pulumi.String("f037e56e89293a057740de681ac9abbe"),
-//				AuthDomain:             pulumi.String("example.cloudflareaccess.com"),
-//				AutoRedirectToIdentity: pulumi.Bool(false),
-//				IsUiReadOnly:           pulumi.Bool(false),
+//				AccountId:                      pulumi.String("f037e56e89293a057740de681ac9abbe"),
+//				Name:                           pulumi.String("example.cloudflareaccess.com"),
+//				AuthDomain:                     pulumi.String("example.cloudflareaccess.com"),
+//				IsUiReadOnly:                   pulumi.Bool(false),
+//				UserSeatExpirationInactiveTime: pulumi.String("720h"),
+//				AutoRedirectToIdentity:         pulumi.Bool(false),
 //				LoginDesigns: cloudflare.AccessOrganizationLoginDesignArray{
 //					&cloudflare.AccessOrganizationLoginDesignArgs{
 //						BackgroundColor: pulumi.String("#ffffff"),
-//						FooterText:      pulumi.String("My footer text"),
-//						HeaderText:      pulumi.String("My header text"),
-//						LogoPath:        pulumi.String("https://example.com/logo.png"),
 //						TextColor:       pulumi.String("#000000"),
+//						LogoPath:        pulumi.String("https://example.com/logo.png"),
+//						HeaderText:      pulumi.String("My header text"),
+//						FooterText:      pulumi.String("My footer text"),
 //					},
 //				},
-//				Name:                           pulumi.String("example.cloudflareaccess.com"),
-//				UserSeatExpirationInactiveTime: pulumi.String("720h"),
 //			})
 //			if err != nil {
 //				return err

@@ -18,28 +18,28 @@ import * as utilities from "./utilities";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
  * // IP List
- * const exampleIpList = new cloudflare.List("exampleIpList", {
+ * const exampleIpList = new cloudflare.List("example_ip_list", {
  *     accountId: "f037e56e89293a057740de681ac9abbe",
  *     name: "example_list",
  *     description: "example IPs for a list",
  *     kind: "ip",
  * });
  * // IP List Item
- * const exampleIpItem = new cloudflare.ListItem("exampleIpItem", {
+ * const exampleIpItem = new cloudflare.ListItem("example_ip_item", {
  *     accountId: "f037e56e89293a057740de681ac9abbe",
  *     listId: exampleIpList.id,
  *     comment: "List Item Comment",
  *     ip: "192.0.2.0",
  * });
  * // Redirect List
- * const exampleRedirectList = new cloudflare.List("exampleRedirectList", {
+ * const exampleRedirectList = new cloudflare.List("example_redirect_list", {
  *     accountId: "f037e56e89293a057740de681ac9abbe",
  *     name: "example_list",
  *     description: "example Redirects for a list",
  *     kind: "redirect",
  * });
  * // Redirect List Item
- * const exampleRedirectItem = new cloudflare.ListItem("exampleRedirectItem", {
+ * const exampleRedirectItem = new cloudflare.ListItem("example_redirect_item", {
  *     accountId: "f037e56e89293a057740de681ac9abbe",
  *     listId: exampleIpList.id,
  *     redirect: {
@@ -50,28 +50,28 @@ import * as utilities from "./utilities";
  *     },
  * });
  * // ASN List
- * const exampleAsnList = new cloudflare.List("exampleAsnList", {
+ * const exampleAsnList = new cloudflare.List("example_asn_list", {
  *     accountId: "f037e56e89293a057740de681ac9abbe",
  *     name: "example_asn_list",
  *     description: "example ASNs for a list",
  *     kind: "asn",
  * });
  * // ASN List Item
- * const exampleAsnItem = new cloudflare.ListItem("exampleAsnItem", {
+ * const exampleAsnItem = new cloudflare.ListItem("example_asn_item", {
  *     accountId: "f037e56e89293a057740de681ac9abbe",
  *     listId: exampleAsnList.id,
  *     comment: "List Item Comment",
  *     asn: 6789,
  * });
  * // Hostname List
- * const exampleHostnameList = new cloudflare.List("exampleHostnameList", {
+ * const exampleHostnameList = new cloudflare.List("example_hostname_list", {
  *     accountId: "f037e56e89293a057740de681ac9abbe",
  *     name: "example_hostname_list",
  *     description: "example Hostnames for a list",
  *     kind: "hostname",
  * });
  * // Hostname List Item
- * const exampleHostnameItem = new cloudflare.ListItem("exampleHostnameItem", {
+ * const exampleHostnameItem = new cloudflare.ListItem("example_hostname_item", {
  *     accountId: "f037e56e89293a057740de681ac9abbe",
  *     listId: exampleHostnameList.id,
  *     comment: "List Item Comment",

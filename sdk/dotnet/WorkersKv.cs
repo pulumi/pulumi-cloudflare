@@ -23,7 +23,7 @@ namespace Pulumi.Cloudflare
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleNs = new Cloudflare.WorkersKvNamespace("exampleNs", new()
+    ///     var exampleNs = new Cloudflare.WorkersKvNamespace("example_ns", new()
     ///     {
     ///         AccountId = "f037e56e89293a057740de681ac9abbe",
     ///         Title = "test-namespace",

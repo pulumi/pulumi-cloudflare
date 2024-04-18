@@ -288,10 +288,10 @@ class TurnstileWidget(pulumi.CustomResource):
 
         example = cloudflare.TurnstileWidget("example",
             account_id="f037e56e89293a057740de681ac9abbe",
+            name="example widget",
             bot_fight_mode=False,
             domains=["example.com"],
             mode="invisible",
-            name="example widget",
             region="world")
         ```
         <!--End PulumiCodeChooser -->
@@ -330,10 +330,10 @@ class TurnstileWidget(pulumi.CustomResource):
 
         example = cloudflare.TurnstileWidget("example",
             account_id="f037e56e89293a057740de681ac9abbe",
+            name="example widget",
             bot_fight_mode=False,
             domains=["example.com"],
             mode="invisible",
-            name="example widget",
             region="world")
         ```
         <!--End PulumiCodeChooser -->

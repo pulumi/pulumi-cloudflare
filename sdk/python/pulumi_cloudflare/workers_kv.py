@@ -171,7 +171,7 @@ class WorkersKv(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_ns = cloudflare.WorkersKvNamespace("exampleNs",
+        example_ns = cloudflare.WorkersKvNamespace("example_ns",
             account_id="f037e56e89293a057740de681ac9abbe",
             title="test-namespace")
         example = cloudflare.WorkersKv("example",
@@ -211,7 +211,7 @@ class WorkersKv(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_ns = cloudflare.WorkersKvNamespace("exampleNs",
+        example_ns = cloudflare.WorkersKvNamespace("example_ns",
             account_id="f037e56e89293a057740de681ac9abbe",
             title="test-namespace")
         example = cloudflare.WorkersKv("example",

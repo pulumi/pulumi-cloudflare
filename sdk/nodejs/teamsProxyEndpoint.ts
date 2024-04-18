@@ -18,8 +18,8 @@ import * as utilities from "./utilities";
  *
  * const example = new cloudflare.TeamsProxyEndpoint("example", {
  *     accountId: "f037e56e89293a057740de681ac9abbe",
- *     ips: ["192.0.2.0/24"],
  *     name: "office",
+ *     ips: ["192.0.2.0/24"],
  * });
  * ```
  * <!--End PulumiCodeChooser -->

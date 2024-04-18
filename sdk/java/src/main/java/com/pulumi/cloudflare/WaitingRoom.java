@@ -48,6 +48,13 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         // Waiting Room
  *         var example = new WaitingRoom(&#34;example&#34;, WaitingRoomArgs.builder()        
+ *             .zoneId(&#34;0da42c8d2132a9ddaf714f9e7c920711&#34;)
+ *             .name(&#34;foo&#34;)
+ *             .host(&#34;foo.example.com&#34;)
+ *             .path(&#34;/&#34;)
+ *             .newUsersPerMinute(200)
+ *             .totalActiveUsers(200)
+ *             .cookieSuffix(&#34;queue1&#34;)
  *             .additionalRoutes(            
  *                 WaitingRoomAdditionalRouteArgs.builder()
  *                     .host(&#34;shop1.example.com&#34;)
@@ -56,14 +63,7 @@ import javax.annotation.Nullable;
  *                 WaitingRoomAdditionalRouteArgs.builder()
  *                     .host(&#34;shop2.example.com&#34;)
  *                     .build())
- *             .cookieSuffix(&#34;queue1&#34;)
- *             .host(&#34;foo.example.com&#34;)
- *             .name(&#34;foo&#34;)
- *             .newUsersPerMinute(200)
- *             .path(&#34;/&#34;)
  *             .queueingStatusCode(200)
- *             .totalActiveUsers(200)
- *             .zoneId(&#34;0da42c8d2132a9ddaf714f9e7c920711&#34;)
  *             .build());
  * 
  *     }

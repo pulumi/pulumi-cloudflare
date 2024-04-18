@@ -25,9 +25,9 @@ namespace Pulumi.Cloudflare
     /// {
     ///     var example = new Cloudflare.UrlNormalizationSettings("example", new()
     ///     {
-    ///         Scope = "incoming",
-    ///         Type = "cloudflare",
     ///         ZoneId = "0da42c8d2132a9ddaf714f9e7c920711",
+    ///         Type = "cloudflare",
+    ///         Scope = "incoming",
     ///     });
     /// 
     /// });

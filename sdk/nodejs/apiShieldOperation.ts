@@ -15,10 +15,10 @@ import * as utilities from "./utilities";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
  * const example = new cloudflare.ApiShieldOperation("example", {
- *     endpoint: "/path",
- *     host: "api.example.com",
- *     method: "GET",
  *     zoneId: "0da42c8d2132a9ddaf714f9e7c920711",
+ *     method: "GET",
+ *     host: "api.example.com",
+ *     endpoint: "/path",
  * });
  * ```
  * <!--End PulumiCodeChooser -->

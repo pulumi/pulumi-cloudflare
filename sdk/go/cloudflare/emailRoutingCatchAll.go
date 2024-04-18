@@ -30,6 +30,14 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.NewEmailRoutingCatchAll(ctx, "example", &cloudflare.EmailRoutingCatchAllArgs{
+//				ZoneId:  pulumi.String("0da42c8d2132a9ddaf714f9e7c920711"),
+//				Name:    pulumi.String("example catch all"),
+//				Enabled: pulumi.Bool(true),
+//				Matchers: cloudflare.EmailRoutingCatchAllMatcherArray{
+//					&cloudflare.EmailRoutingCatchAllMatcherArgs{
+//						Type: pulumi.String("all"),
+//					},
+//				},
 //				Actions: cloudflare.EmailRoutingCatchAllActionArray{
 //					&cloudflare.EmailRoutingCatchAllActionArgs{
 //						Type: pulumi.String("forward"),
@@ -38,14 +46,6 @@ import (
 //						},
 //					},
 //				},
-//				Enabled: pulumi.Bool(true),
-//				Matchers: cloudflare.EmailRoutingCatchAllMatcherArray{
-//					&cloudflare.EmailRoutingCatchAllMatcherArgs{
-//						Type: pulumi.String("all"),
-//					},
-//				},
-//				Name:   pulumi.String("example catch all"),
-//				ZoneId: pulumi.String("0da42c8d2132a9ddaf714f9e7c920711"),
 //			})
 //			if err != nil {
 //				return err

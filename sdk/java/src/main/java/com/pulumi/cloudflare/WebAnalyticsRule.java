@@ -45,7 +45,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleWebAnalyticsSite = new WebAnalyticsSite(&#34;exampleWebAnalyticsSite&#34;, WebAnalyticsSiteArgs.builder()        
+ *         var example = new WebAnalyticsSite(&#34;example&#34;, WebAnalyticsSiteArgs.builder()        
  *             .accountId(&#34;f037e56e89293a057740de681ac9abbe&#34;)
  *             .zoneTag(&#34;0da42c8d2132a9ddaf714f9e7c920711&#34;)
  *             .autoInstall(true)
@@ -53,13 +53,13 @@ import javax.annotation.Nullable;
  * 
  *         var exampleWebAnalyticsRule = new WebAnalyticsRule(&#34;exampleWebAnalyticsRule&#34;, WebAnalyticsRuleArgs.builder()        
  *             .accountId(&#34;f037e56e89293a057740de681ac9abbe&#34;)
- *             .rulesetId(exampleWebAnalyticsSite.rulesetId())
+ *             .rulesetId(example.rulesetId())
  *             .host(&#34;*&#34;)
  *             .paths(&#34;/excluded&#34;)
  *             .inclusive(false)
  *             .isPaused(false)
  *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(exampleWebAnalyticsSite)
+ *                 .dependsOn(example)
  *                 .build());
  * 
  *     }

@@ -107,14 +107,15 @@ class WorkersForPlatformsNamespace(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
+        import pulumi_std as std
 
         example = cloudflare.WorkersForPlatformsNamespace("example",
             account_id="f037e56e89293a057740de681ac9abbe",
             name="example-namespace")
-        customer_worker1 = cloudflare.WorkerScript("customerWorker1",
+        customer_worker1 = cloudflare.WorkerScript("customer_worker_1",
             account_id="f037e56e89293a057740de681ac9abbe",
             name="customer-worker-1",
-            content=(lambda path: open(path).read())("script.js"),
+            content=std.file(input="script.js").result,
             dispatch_namespace=example.name,
             tags=["free"])
         ```
@@ -147,14 +148,15 @@ class WorkersForPlatformsNamespace(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
+        import pulumi_std as std
 
         example = cloudflare.WorkersForPlatformsNamespace("example",
             account_id="f037e56e89293a057740de681ac9abbe",
             name="example-namespace")
-        customer_worker1 = cloudflare.WorkerScript("customerWorker1",
+        customer_worker1 = cloudflare.WorkerScript("customer_worker_1",
             account_id="f037e56e89293a057740de681ac9abbe",
             name="customer-worker-1",
-            content=(lambda path: open(path).read())("script.js"),
+            content=std.file(input="script.js").result,
             dispatch_namespace=example.name,
             tags=["free"])
         ```

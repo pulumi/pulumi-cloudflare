@@ -271,15 +271,15 @@ class DeviceDexTest(pulumi.CustomResource):
 
         example = cloudflare.DeviceDexTest("example",
             account_id="f037e56e89293a057740de681ac9abbe",
+            name="GET homepage",
+            description="Send a HTTP GET request to the home endpoint every half hour.",
+            interval="0h30m0s",
+            enabled=True,
             data=cloudflare.DeviceDexTestDataArgs(
                 host="https://example.com/home",
                 kind="http",
                 method="GET",
-            ),
-            description="Send a HTTP GET request to the home endpoint every half hour.",
-            enabled=True,
-            interval="0h30m0s",
-            name="GET homepage")
+            ))
         ```
         <!--End PulumiCodeChooser -->
 
@@ -316,15 +316,15 @@ class DeviceDexTest(pulumi.CustomResource):
 
         example = cloudflare.DeviceDexTest("example",
             account_id="f037e56e89293a057740de681ac9abbe",
+            name="GET homepage",
+            description="Send a HTTP GET request to the home endpoint every half hour.",
+            interval="0h30m0s",
+            enabled=True,
             data=cloudflare.DeviceDexTestDataArgs(
                 host="https://example.com/home",
                 kind="http",
                 method="GET",
-            ),
-            description="Send a HTTP GET request to the home endpoint every half hour.",
-            enabled=True,
-            interval="0h30m0s",
-            name="GET homepage")
+            ))
         ```
         <!--End PulumiCodeChooser -->
 

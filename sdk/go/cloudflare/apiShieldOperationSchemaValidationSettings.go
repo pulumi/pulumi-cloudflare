@@ -29,7 +29,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			exampleApiShieldOperation, err := cloudflare.NewApiShieldOperation(ctx, "exampleApiShieldOperation", &cloudflare.ApiShieldOperationArgs{
+//			example, err := cloudflare.NewApiShieldOperation(ctx, "example", &cloudflare.ApiShieldOperationArgs{
 //				ZoneId:   pulumi.String("0da42c8d2132a9ddaf714f9e7c920711"),
 //				Method:   pulumi.String("GET"),
 //				Host:     pulumi.String("api.example.com"),
@@ -38,9 +38,9 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = cloudflare.NewApiShieldOperationSchemaValidationSettings(ctx, "exampleApiShieldOperationSchemaValidationSettings", &cloudflare.ApiShieldOperationSchemaValidationSettingsArgs{
+//			_, err = cloudflare.NewApiShieldOperationSchemaValidationSettings(ctx, "example", &cloudflare.ApiShieldOperationSchemaValidationSettingsArgs{
 //				ZoneId:           pulumi.String("0da42c8d2132a9ddaf714f9e7c920711"),
-//				OperationId:      exampleApiShieldOperation.ID(),
+//				OperationId:      example.ID(),
 //				MitigationAction: pulumi.String("block"),
 //			})
 //			if err != nil {

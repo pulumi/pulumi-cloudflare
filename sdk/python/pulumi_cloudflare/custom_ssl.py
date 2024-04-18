@@ -232,14 +232,14 @@ class CustomSsl(pulumi.CustomResource):
         import pulumi_cloudflare as cloudflare
 
         example = cloudflare.CustomSsl("example",
+            zone_id="0da42c8d2132a9ddaf714f9e7c920711",
             custom_ssl_options=cloudflare.CustomSslCustomSslOptionsArgs(
-                bundle_method="ubiquitous",
                 certificate="-----INSERT CERTIFICATE-----",
-                geo_restrictions="us",
                 private_key="-----INSERT PRIVATE KEY-----",
+                bundle_method="ubiquitous",
+                geo_restrictions="us",
                 type="legacy_custom",
-            ),
-            zone_id="0da42c8d2132a9ddaf714f9e7c920711")
+            ))
         ```
         <!--End PulumiCodeChooser -->
 
@@ -271,14 +271,14 @@ class CustomSsl(pulumi.CustomResource):
         import pulumi_cloudflare as cloudflare
 
         example = cloudflare.CustomSsl("example",
+            zone_id="0da42c8d2132a9ddaf714f9e7c920711",
             custom_ssl_options=cloudflare.CustomSslCustomSslOptionsArgs(
-                bundle_method="ubiquitous",
                 certificate="-----INSERT CERTIFICATE-----",
-                geo_restrictions="us",
                 private_key="-----INSERT PRIVATE KEY-----",
+                bundle_method="ubiquitous",
+                geo_restrictions="us",
                 type="legacy_custom",
-            ),
-            zone_id="0da42c8d2132a9ddaf714f9e7c920711")
+            ))
         ```
         <!--End PulumiCodeChooser -->
 

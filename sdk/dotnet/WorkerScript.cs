@@ -16,33 +16,29 @@ namespace Pulumi.Cloudflare
     /// 
     /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
-    /// using System;
     /// using System.Collections.Generic;
-    /// using System.IO;
     /// using System.Linq;
     /// using Pulumi;
     /// using Cloudflare = Pulumi.Cloudflare;
-    /// 
-    /// 	
-    /// string ReadFileBase64(string path) 
-    /// {
-    ///     return Convert.ToBase64String(Encoding.UTF8.GetBytes(File.ReadAllText(path)));
-    /// }
+    /// using Std = Pulumi.Std;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var myNamespace = new Cloudflare.WorkersKvNamespace("myNamespace", new()
+    ///     var myNamespace = new Cloudflare.WorkersKvNamespace("my_namespace", new()
     ///     {
     ///         AccountId = "f037e56e89293a057740de681ac9abbe",
     ///         Title = "example",
     ///     });
     /// 
     ///     // Sets the script with the name "script_1"
-    ///     var myScript = new Cloudflare.WorkerScript("myScript", new()
+    ///     var myScript = new Cloudflare.WorkerScript("my_script", new()
     ///     {
     ///         AccountId = "f037e56e89293a057740de681ac9abbe",
     ///         Name = "script_1",
-    ///         Content = File.ReadAllText("script.js"),
+    ///         Content = Std.File.Invoke(new()
+    ///         {
+    ///             Input = "script.js",
+    ///         }).Apply(invoke =&gt; invoke.Result),
     ///         KvNamespaceBindings = new[]
     ///         {
     ///             new Cloudflare.Inputs.WorkerScriptKvNamespaceBindingArgs
@@ -64,7 +60,7 @@ namespace Pulumi.Cloudflare
     ///             new Cloudflare.Inputs.WorkerScriptSecretTextBindingArgs
     ///             {
     ///                 Name = "MY_EXAMPLE_SECRET_TEXT",
-    ///                 Text = @var.Secret_foo_value,
+    ///                 Text = secretFooValue,
     ///             },
     ///         },
     ///         WebassemblyBindings = new[]
@@ -72,7 +68,10 @@ namespace Pulumi.Cloudflare
     ///             new Cloudflare.Inputs.WorkerScriptWebassemblyBindingArgs
     ///             {
     ///                 Name = "MY_EXAMPLE_WASM",
-    ///                 Module = ReadFileBase64("example.wasm"),
+    ///                 Module = Std.Filebase64.Invoke(new()
+    ///                 {
+    ///                     Input = "example.wasm",
+    ///                 }).Apply(invoke =&gt; invoke.Result),
     ///             },
     ///         },
     ///         ServiceBindings = new[]

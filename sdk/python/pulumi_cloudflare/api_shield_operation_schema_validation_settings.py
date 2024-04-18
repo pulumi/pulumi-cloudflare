@@ -140,14 +140,14 @@ class ApiShieldOperationSchemaValidationSettings(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_api_shield_operation = cloudflare.ApiShieldOperation("exampleApiShieldOperation",
+        example = cloudflare.ApiShieldOperation("example",
             zone_id="0da42c8d2132a9ddaf714f9e7c920711",
             method="GET",
             host="api.example.com",
             endpoint="/path")
-        example_api_shield_operation_schema_validation_settings = cloudflare.ApiShieldOperationSchemaValidationSettings("exampleApiShieldOperationSchemaValidationSettings",
+        example_api_shield_operation_schema_validation_settings = cloudflare.ApiShieldOperationSchemaValidationSettings("example",
             zone_id="0da42c8d2132a9ddaf714f9e7c920711",
-            operation_id=example_api_shield_operation.id,
+            operation_id=example.id,
             mitigation_action="block")
         ```
         <!--End PulumiCodeChooser -->
@@ -174,14 +174,14 @@ class ApiShieldOperationSchemaValidationSettings(pulumi.CustomResource):
         import pulumi
         import pulumi_cloudflare as cloudflare
 
-        example_api_shield_operation = cloudflare.ApiShieldOperation("exampleApiShieldOperation",
+        example = cloudflare.ApiShieldOperation("example",
             zone_id="0da42c8d2132a9ddaf714f9e7c920711",
             method="GET",
             host="api.example.com",
             endpoint="/path")
-        example_api_shield_operation_schema_validation_settings = cloudflare.ApiShieldOperationSchemaValidationSettings("exampleApiShieldOperationSchemaValidationSettings",
+        example_api_shield_operation_schema_validation_settings = cloudflare.ApiShieldOperationSchemaValidationSettings("example",
             zone_id="0da42c8d2132a9ddaf714f9e7c920711",
-            operation_id=example_api_shield_operation.id,
+            operation_id=example.id,
             mitigation_action="block")
         ```
         <!--End PulumiCodeChooser -->

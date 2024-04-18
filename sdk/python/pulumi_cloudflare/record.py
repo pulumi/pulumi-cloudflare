@@ -499,14 +499,14 @@ class Record(pulumi.CustomResource):
 
         # Add a record to the domain
         example = cloudflare.Record("example",
-            zone_id=var["cloudflare_zone_id"],
+            zone_id=cloudflare_zone_id,
             name="example",
             value="192.0.2.1",
             type="A",
             ttl=3600)
         # Add a record requiring a data map
-        _sip_tls = cloudflare.Record("_sipTls",
-            zone_id=var["cloudflare_zone_id"],
+        _sip_tls = cloudflare.Record("_sip_tls",
+            zone_id=cloudflare_zone_id,
             name="_sip._tls",
             type="SRV",
             data=cloudflare.RecordDataArgs(
@@ -562,14 +562,14 @@ class Record(pulumi.CustomResource):
 
         # Add a record to the domain
         example = cloudflare.Record("example",
-            zone_id=var["cloudflare_zone_id"],
+            zone_id=cloudflare_zone_id,
             name="example",
             value="192.0.2.1",
             type="A",
             ttl=3600)
         # Add a record requiring a data map
-        _sip_tls = cloudflare.Record("_sipTls",
-            zone_id=var["cloudflare_zone_id"],
+        _sip_tls = cloudflare.Record("_sip_tls",
+            zone_id=cloudflare_zone_id,
             name="_sip._tls",
             type="SRV",
             data=cloudflare.RecordDataArgs(

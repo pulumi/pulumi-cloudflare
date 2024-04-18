@@ -25,32 +25,29 @@ import (
 //
 // import (
 //
-//	"os"
-//
 //	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare"
+//	"github.com/pulumi/pulumi-std/sdk/go/std"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
-//	func readFileOrPanic(path string) pulumi.StringPtrInput {
-//		data, err := os.ReadFile(path)
-//		if err != nil {
-//			panic(err.Error())
-//		}
-//		return pulumi.String(string(data))
-//	}
-//
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			exampleScript, err := cloudflare.NewWorkerScript(ctx, "exampleScript", &cloudflare.WorkerScriptArgs{
+//			invokeFile, err := std.File(ctx, &std.FileArgs{
+//				Input: "path/to/my.js",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			exampleScript, err := cloudflare.NewWorkerScript(ctx, "example_script", &cloudflare.WorkerScriptArgs{
 //				AccountId: pulumi.String("f037e56e89293a057740de681ac9abbe"),
 //				Name:      pulumi.String("example-script"),
-//				Content:   readFileOrPanic("path/to/my.js"),
+//				Content:   invokeFile.Result,
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = cloudflare.NewWorkerCronTrigger(ctx, "exampleTrigger", &cloudflare.WorkerCronTriggerArgs{
+//			_, err = cloudflare.NewWorkerCronTrigger(ctx, "example_trigger", &cloudflare.WorkerCronTriggerArgs{
 //				AccountId:  pulumi.String("f037e56e89293a057740de681ac9abbe"),
 //				ScriptName: exampleScript.Name,
 //				Schedules: pulumi.StringArray{

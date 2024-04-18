@@ -109,8 +109,8 @@ class WaitingRoomSettings(pulumi.CustomResource):
         import pulumi_cloudflare as cloudflare
 
         example = cloudflare.WaitingRoomSettings("example",
-            search_engine_crawler_bypass=True,
-            zone_id="0da42c8d2132a9ddaf714f9e7c920711")
+            zone_id="0da42c8d2132a9ddaf714f9e7c920711",
+            search_engine_crawler_bypass=True)
         ```
         <!--End PulumiCodeChooser -->
 
@@ -142,8 +142,8 @@ class WaitingRoomSettings(pulumi.CustomResource):
         import pulumi_cloudflare as cloudflare
 
         example = cloudflare.WaitingRoomSettings("example",
-            search_engine_crawler_bypass=True,
-            zone_id="0da42c8d2132a9ddaf714f9e7c920711")
+            zone_id="0da42c8d2132a9ddaf714f9e7c920711",
+            search_engine_crawler_bypass=True)
         ```
         <!--End PulumiCodeChooser -->
 

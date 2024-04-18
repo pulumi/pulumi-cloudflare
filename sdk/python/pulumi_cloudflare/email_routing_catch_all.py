@@ -223,16 +223,16 @@ class EmailRoutingCatchAll(pulumi.CustomResource):
         import pulumi_cloudflare as cloudflare
 
         example = cloudflare.EmailRoutingCatchAll("example",
-            actions=[cloudflare.EmailRoutingCatchAllActionArgs(
-                type="forward",
-                values=["destinationaddress@example.net"],
-            )],
+            zone_id="0da42c8d2132a9ddaf714f9e7c920711",
+            name="example catch all",
             enabled=True,
             matchers=[cloudflare.EmailRoutingCatchAllMatcherArgs(
                 type="all",
             )],
-            name="example catch all",
-            zone_id="0da42c8d2132a9ddaf714f9e7c920711")
+            actions=[cloudflare.EmailRoutingCatchAllActionArgs(
+                type="forward",
+                values=["destinationaddress@example.net"],
+            )])
         ```
         <!--End PulumiCodeChooser -->
 
@@ -261,16 +261,16 @@ class EmailRoutingCatchAll(pulumi.CustomResource):
         import pulumi_cloudflare as cloudflare
 
         example = cloudflare.EmailRoutingCatchAll("example",
-            actions=[cloudflare.EmailRoutingCatchAllActionArgs(
-                type="forward",
-                values=["destinationaddress@example.net"],
-            )],
+            zone_id="0da42c8d2132a9ddaf714f9e7c920711",
+            name="example catch all",
             enabled=True,
             matchers=[cloudflare.EmailRoutingCatchAllMatcherArgs(
                 type="all",
             )],
-            name="example catch all",
-            zone_id="0da42c8d2132a9ddaf714f9e7c920711")
+            actions=[cloudflare.EmailRoutingCatchAllActionArgs(
+                type="forward",
+                values=["destinationaddress@example.net"],
+            )])
         ```
         <!--End PulumiCodeChooser -->
 

@@ -25,6 +25,7 @@ namespace Pulumi.Cloudflare
     /// {
     ///     var example = new Cloudflare.ZoneCacheVariants("example", new()
     ///     {
+    ///         ZoneId = "0da42c8d2132a9ddaf714f9e7c920711",
     ///         Avifs = new[]
     ///         {
     ///             "image/avif",
@@ -38,11 +39,6 @@ namespace Pulumi.Cloudflare
     ///         Gifs = new[]
     ///         {
     ///             "image/gif",
-    ///             "image/webp",
-    ///         },
-    ///         Jp2s = new[]
-    ///         {
-    ///             "image/jp2",
     ///             "image/webp",
     ///         },
     ///         Jpegs = new[]
@@ -60,14 +56,14 @@ namespace Pulumi.Cloudflare
     ///             "image/jpg2",
     ///             "image/webp",
     ///         },
+    ///         Jp2s = new[]
+    ///         {
+    ///             "image/jp2",
+    ///             "image/webp",
+    ///         },
     ///         Pngs = new[]
     ///         {
     ///             "image/png",
-    ///             "image/webp",
-    ///         },
-    ///         Tifs = new[]
-    ///         {
-    ///             "image/tif",
     ///             "image/webp",
     ///         },
     ///         Tiffs = new[]
@@ -75,12 +71,16 @@ namespace Pulumi.Cloudflare
     ///             "image/tiff",
     ///             "image/webp",
     ///         },
+    ///         Tifs = new[]
+    ///         {
+    ///             "image/tif",
+    ///             "image/webp",
+    ///         },
     ///         Webps = new[]
     ///         {
     ///             "image/jpeg",
     ///             "image/webp",
     ///         },
-    ///         ZoneId = "0da42c8d2132a9ddaf714f9e7c920711",
     ///     });
     /// 
     /// });

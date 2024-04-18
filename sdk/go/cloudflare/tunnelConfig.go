@@ -29,7 +29,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			exampleTunnel, err := cloudflare.NewTunnel(ctx, "exampleTunnel", &cloudflare.TunnelArgs{
+//			exampleTunnel, err := cloudflare.NewTunnel(ctx, "example_tunnel", &cloudflare.TunnelArgs{
 //				AccountId: pulumi.String("f037e56e89293a057740de681ac9abbe"),
 //				Name:      pulumi.String("example_tunnel"),
 //				Secret:    pulumi.String("<32 character secret>"),
@@ -37,7 +37,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = cloudflare.NewTunnelConfig(ctx, "exampleConfig", &cloudflare.TunnelConfigArgs{
+//			_, err = cloudflare.NewTunnelConfig(ctx, "example_config", &cloudflare.TunnelConfigArgs{
 //				AccountId: pulumi.String("f037e56e89293a057740de681ac9abbe"),
 //				TunnelId:  exampleTunnel.ID(),
 //				Config: &cloudflare.TunnelConfigConfigArgs{

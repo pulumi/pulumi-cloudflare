@@ -160,9 +160,9 @@ def get_zone(account_id: Optional[str] = None,
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_zone = cloudflare.get_zone(name="example.com")
-    example_record = cloudflare.Record("exampleRecord",
-        zone_id=example_zone.id,
+    example = cloudflare.get_zone(name="example.com")
+    example_record = cloudflare.Record("example",
+        zone_id=example.id,
         name="www",
         value="203.0.113.1",
         type="A",
@@ -215,9 +215,9 @@ def get_zone_output(account_id: Optional[pulumi.Input[Optional[str]]] = None,
     import pulumi
     import pulumi_cloudflare as cloudflare
 
-    example_zone = cloudflare.get_zone(name="example.com")
-    example_record = cloudflare.Record("exampleRecord",
-        zone_id=example_zone.id,
+    example = cloudflare.get_zone(name="example.com")
+    example_record = cloudflare.Record("example",
+        zone_id=example.id,
         name="www",
         value="203.0.113.1",
         type="A",

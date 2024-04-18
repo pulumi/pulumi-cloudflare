@@ -17,18 +17,18 @@ import * as utilities from "./utilities";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
  * // Per-Zone Authenticated Origin Pulls certificate
- * const myPerZoneAopCert = new cloudflare.AuthenticatedOriginPullsCertificate("myPerZoneAopCert", {
+ * const myPerZoneAopCert = new cloudflare.AuthenticatedOriginPullsCertificate("my_per_zone_aop_cert", {
+ *     zoneId: "0da42c8d2132a9ddaf714f9e7c920711",
  *     certificate: "-----INSERT CERTIFICATE-----",
  *     privateKey: "-----INSERT PRIVATE KEY-----",
  *     type: "per-zone",
- *     zoneId: "0da42c8d2132a9ddaf714f9e7c920711",
  * });
  * // Per-Hostname Authenticated Origin Pulls certificate
- * const myPerHostnameAopCert = new cloudflare.AuthenticatedOriginPullsCertificate("myPerHostnameAopCert", {
+ * const myPerHostnameAopCert = new cloudflare.AuthenticatedOriginPullsCertificate("my_per_hostname_aop_cert", {
+ *     zoneId: "0da42c8d2132a9ddaf714f9e7c920711",
  *     certificate: "-----INSERT CERTIFICATE-----",
  *     privateKey: "-----INSERT PRIVATE KEY-----",
  *     type: "per-hostname",
- *     zoneId: "0da42c8d2132a9ddaf714f9e7c920711",
  * });
  * ```
  * <!--End PulumiCodeChooser -->

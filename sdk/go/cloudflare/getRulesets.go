@@ -29,10 +29,10 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.GetRulesets(ctx, &cloudflare.GetRulesetsArgs{
+//				ZoneId: pulumi.StringRef("0da42c8d2132a9ddaf714f9e7c920711"),
 //				Filter: cloudflare.GetRulesetsFilter{
 //					Name: pulumi.StringRef(".*OWASP.*"),
 //				},
-//				ZoneId: pulumi.StringRef("0da42c8d2132a9ddaf714f9e7c920711"),
 //			}, nil)
 //			if err != nil {
 //				return err

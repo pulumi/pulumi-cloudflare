@@ -30,10 +30,10 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.NewHostnameTlsSetting(ctx, "example", &cloudflare.HostnameTlsSettingArgs{
+//				ZoneId:   pulumi.String("0da42c8d2132a9ddaf714f9e7c920711"),
 //				Hostname: pulumi.String("sub.example.com"),
 //				Setting:  pulumi.String("min_tls_version"),
 //				Value:    pulumi.String("1.2"),
-//				ZoneId:   pulumi.String("0da42c8d2132a9ddaf714f9e7c920711"),
 //			})
 //			if err != nil {
 //				return err

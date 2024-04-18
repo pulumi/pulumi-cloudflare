@@ -16,10 +16,10 @@ import * as utilities from "./utilities";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
  * const example = new cloudflare.AccessCustomPage("example", {
- *     customHtml: "<html><body><h1>Forbidden</h1></body></html>",
+ *     zoneId: "0da42c8d2132a9ddaf714f9e7c920711",
  *     name: "example",
  *     type: "forbidden",
- *     zoneId: "0da42c8d2132a9ddaf714f9e7c920711",
+ *     customHtml: "<html><body><h1>Forbidden</h1></body></html>",
  * });
  * ```
  * <!--End PulumiCodeChooser -->

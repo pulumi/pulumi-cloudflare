@@ -31,12 +31,12 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.NewTurnstileWidget(ctx, "example", &cloudflare.TurnstileWidgetArgs{
 //				AccountId:    pulumi.String("f037e56e89293a057740de681ac9abbe"),
+//				Name:         pulumi.String("example widget"),
 //				BotFightMode: pulumi.Bool(false),
 //				Domains: pulumi.StringArray{
 //					pulumi.String("example.com"),
 //				},
 //				Mode:   pulumi.String("invisible"),
-//				Name:   pulumi.String("example widget"),
 //				Region: pulumi.String("world"),
 //			})
 //			if err != nil {

@@ -26,11 +26,11 @@ namespace Pulumi.Cloudflare
     ///     // Waiting Room Event
     ///     var example = new Cloudflare.WaitingRoomEvent("example", new()
     ///     {
-    ///         EventEndTime = "2006-01-02T20:04:05Z",
-    ///         EventStartTime = "2006-01-02T15:04:05Z",
-    ///         Name = "foo",
-    ///         WaitingRoomId = "d41d8cd98f00b204e9800998ecf8427e",
     ///         ZoneId = "0da42c8d2132a9ddaf714f9e7c920711",
+    ///         WaitingRoomId = "d41d8cd98f00b204e9800998ecf8427e",
+    ///         Name = "foo",
+    ///         EventStartTime = "2006-01-02T15:04:05Z",
+    ///         EventEndTime = "2006-01-02T20:04:05Z",
     ///     });
     /// 
     /// });

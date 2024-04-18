@@ -30,9 +30,9 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.NewApiShieldSchemaValidationSettings(ctx, "example", &cloudflare.ApiShieldSchemaValidationSettingsArgs{
+//				ZoneId:                             pulumi.String("0da42c8d2132a9ddaf714f9e7c920711"),
 //				ValidationDefaultMitigationAction:  pulumi.String("log"),
 //				ValidationOverrideMitigationAction: pulumi.String("none"),
-//				ZoneId:                             pulumi.String("0da42c8d2132a9ddaf714f9e7c920711"),
 //			})
 //			if err != nil {
 //				return err

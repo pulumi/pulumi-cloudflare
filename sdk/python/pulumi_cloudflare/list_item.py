@@ -276,25 +276,25 @@ class ListItem(pulumi.CustomResource):
         import pulumi_cloudflare as cloudflare
 
         # IP List
-        example_ip_list = cloudflare.List("exampleIpList",
+        example_ip_list = cloudflare.List("example_ip_list",
             account_id="f037e56e89293a057740de681ac9abbe",
             name="example_list",
             description="example IPs for a list",
             kind="ip")
         # IP List Item
-        example_ip_item = cloudflare.ListItem("exampleIpItem",
+        example_ip_item = cloudflare.ListItem("example_ip_item",
             account_id="f037e56e89293a057740de681ac9abbe",
             list_id=example_ip_list.id,
             comment="List Item Comment",
             ip="192.0.2.0")
         # Redirect List
-        example_redirect_list = cloudflare.List("exampleRedirectList",
+        example_redirect_list = cloudflare.List("example_redirect_list",
             account_id="f037e56e89293a057740de681ac9abbe",
             name="example_list",
             description="example Redirects for a list",
             kind="redirect")
         # Redirect List Item
-        example_redirect_item = cloudflare.ListItem("exampleRedirectItem",
+        example_redirect_item = cloudflare.ListItem("example_redirect_item",
             account_id="f037e56e89293a057740de681ac9abbe",
             list_id=example_ip_list.id,
             redirect=cloudflare.ListItemRedirectArgs(
@@ -304,25 +304,25 @@ class ListItem(pulumi.CustomResource):
                 subpath_matching=True,
             ))
         # ASN List
-        example_asn_list = cloudflare.List("exampleAsnList",
+        example_asn_list = cloudflare.List("example_asn_list",
             account_id="f037e56e89293a057740de681ac9abbe",
             name="example_asn_list",
             description="example ASNs for a list",
             kind="asn")
         # ASN List Item
-        example_asn_item = cloudflare.ListItem("exampleAsnItem",
+        example_asn_item = cloudflare.ListItem("example_asn_item",
             account_id="f037e56e89293a057740de681ac9abbe",
             list_id=example_asn_list.id,
             comment="List Item Comment",
             asn=6789)
         # Hostname List
-        example_hostname_list = cloudflare.List("exampleHostnameList",
+        example_hostname_list = cloudflare.List("example_hostname_list",
             account_id="f037e56e89293a057740de681ac9abbe",
             name="example_hostname_list",
             description="example Hostnames for a list",
             kind="hostname")
         # Hostname List Item
-        example_hostname_item = cloudflare.ListItem("exampleHostnameItem",
+        example_hostname_item = cloudflare.ListItem("example_hostname_item",
             account_id="f037e56e89293a057740de681ac9abbe",
             list_id=example_hostname_list.id,
             comment="List Item Comment",
@@ -366,25 +366,25 @@ class ListItem(pulumi.CustomResource):
         import pulumi_cloudflare as cloudflare
 
         # IP List
-        example_ip_list = cloudflare.List("exampleIpList",
+        example_ip_list = cloudflare.List("example_ip_list",
             account_id="f037e56e89293a057740de681ac9abbe",
             name="example_list",
             description="example IPs for a list",
             kind="ip")
         # IP List Item
-        example_ip_item = cloudflare.ListItem("exampleIpItem",
+        example_ip_item = cloudflare.ListItem("example_ip_item",
             account_id="f037e56e89293a057740de681ac9abbe",
             list_id=example_ip_list.id,
             comment="List Item Comment",
             ip="192.0.2.0")
         # Redirect List
-        example_redirect_list = cloudflare.List("exampleRedirectList",
+        example_redirect_list = cloudflare.List("example_redirect_list",
             account_id="f037e56e89293a057740de681ac9abbe",
             name="example_list",
             description="example Redirects for a list",
             kind="redirect")
         # Redirect List Item
-        example_redirect_item = cloudflare.ListItem("exampleRedirectItem",
+        example_redirect_item = cloudflare.ListItem("example_redirect_item",
             account_id="f037e56e89293a057740de681ac9abbe",
             list_id=example_ip_list.id,
             redirect=cloudflare.ListItemRedirectArgs(
@@ -394,25 +394,25 @@ class ListItem(pulumi.CustomResource):
                 subpath_matching=True,
             ))
         # ASN List
-        example_asn_list = cloudflare.List("exampleAsnList",
+        example_asn_list = cloudflare.List("example_asn_list",
             account_id="f037e56e89293a057740de681ac9abbe",
             name="example_asn_list",
             description="example ASNs for a list",
             kind="asn")
         # ASN List Item
-        example_asn_item = cloudflare.ListItem("exampleAsnItem",
+        example_asn_item = cloudflare.ListItem("example_asn_item",
             account_id="f037e56e89293a057740de681ac9abbe",
             list_id=example_asn_list.id,
             comment="List Item Comment",
             asn=6789)
         # Hostname List
-        example_hostname_list = cloudflare.List("exampleHostnameList",
+        example_hostname_list = cloudflare.List("example_hostname_list",
             account_id="f037e56e89293a057740de681ac9abbe",
             name="example_hostname_list",
             description="example Hostnames for a list",
             kind="hostname")
         # Hostname List Item
-        example_hostname_item = cloudflare.ListItem("exampleHostnameItem",
+        example_hostname_item = cloudflare.ListItem("example_hostname_item",
             account_id="f037e56e89293a057740de681ac9abbe",
             list_id=example_hostname_list.id,
             comment="List Item Comment",

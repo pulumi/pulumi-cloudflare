@@ -41,10 +41,10 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var example = new HostnameTlsSetting(&#34;example&#34;, HostnameTlsSettingArgs.builder()        
+ *             .zoneId(&#34;0da42c8d2132a9ddaf714f9e7c920711&#34;)
  *             .hostname(&#34;sub.example.com&#34;)
  *             .setting(&#34;min_tls_version&#34;)
  *             .value(&#34;1.2&#34;)
- *             .zoneId(&#34;0da42c8d2132a9ddaf714f9e7c920711&#34;)
  *             .build());
  * 
  *     }

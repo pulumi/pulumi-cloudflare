@@ -44,10 +44,10 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var example = new TurnstileWidget(&#34;example&#34;, TurnstileWidgetArgs.builder()        
  *             .accountId(&#34;f037e56e89293a057740de681ac9abbe&#34;)
+ *             .name(&#34;example widget&#34;)
  *             .botFightMode(false)
  *             .domains(&#34;example.com&#34;)
  *             .mode(&#34;invisible&#34;)
- *             .name(&#34;example widget&#34;)
  *             .region(&#34;world&#34;)
  *             .build());
  * 

@@ -15,6 +15,7 @@ import * as utilities from "./utilities";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
  * const example = new cloudflare.ZoneCacheVariants("example", {
+ *     zoneId: "0da42c8d2132a9ddaf714f9e7c920711",
  *     avifs: [
  *         "image/avif",
  *         "image/webp",
@@ -25,10 +26,6 @@ import * as utilities from "./utilities";
  *     ],
  *     gifs: [
  *         "image/gif",
- *         "image/webp",
- *     ],
- *     jp2s: [
- *         "image/jp2",
  *         "image/webp",
  *     ],
  *     jpegs: [
@@ -43,23 +40,26 @@ import * as utilities from "./utilities";
  *         "image/jpg2",
  *         "image/webp",
  *     ],
- *     pngs: [
- *         "image/png",
+ *     jp2s: [
+ *         "image/jp2",
  *         "image/webp",
  *     ],
- *     tifs: [
- *         "image/tif",
+ *     pngs: [
+ *         "image/png",
  *         "image/webp",
  *     ],
  *     tiffs: [
  *         "image/tiff",
  *         "image/webp",
  *     ],
+ *     tifs: [
+ *         "image/tif",
+ *         "image/webp",
+ *     ],
  *     webps: [
  *         "image/jpeg",
  *         "image/webp",
  *     ],
- *     zoneId: "0da42c8d2132a9ddaf714f9e7c920711",
  * });
  * ```
  * <!--End PulumiCodeChooser -->

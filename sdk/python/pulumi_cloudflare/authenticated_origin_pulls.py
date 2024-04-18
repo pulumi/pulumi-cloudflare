@@ -176,26 +176,26 @@ class AuthenticatedOriginPulls(pulumi.CustomResource):
         import pulumi_cloudflare as cloudflare
 
         # Authenticated Origin Pulls
-        my_aop = cloudflare.AuthenticatedOriginPulls("myAop",
+        my_aop = cloudflare.AuthenticatedOriginPulls("my_aop",
             zone_id="0da42c8d2132a9ddaf714f9e7c920711",
             enabled=True)
         # Per-Zone Authenticated Origin Pulls
-        my_per_zone_aop_cert = cloudflare.AuthenticatedOriginPullsCertificate("myPerZoneAopCert",
+        my_per_zone_aop_cert = cloudflare.AuthenticatedOriginPullsCertificate("my_per_zone_aop_cert",
             zone_id="0da42c8d2132a9ddaf714f9e7c920711",
             certificate="-----INSERT CERTIFICATE-----",
             private_key="-----INSERT PRIVATE KEY-----",
             type="per-zone")
-        my_per_zone_aop = cloudflare.AuthenticatedOriginPulls("myPerZoneAop",
+        my_per_zone_aop = cloudflare.AuthenticatedOriginPulls("my_per_zone_aop",
             zone_id="0da42c8d2132a9ddaf714f9e7c920711",
             authenticated_origin_pulls_certificate=my_per_zone_aop_cert.id,
             enabled=True)
         # Per-Hostname Authenticated Origin Pulls
-        my_per_hostname_aop_cert = cloudflare.AuthenticatedOriginPullsCertificate("myPerHostnameAopCert",
+        my_per_hostname_aop_cert = cloudflare.AuthenticatedOriginPullsCertificate("my_per_hostname_aop_cert",
             zone_id="0da42c8d2132a9ddaf714f9e7c920711",
             certificate="-----INSERT CERTIFICATE-----",
             private_key="-----INSERT PRIVATE KEY-----",
             type="per-hostname")
-        my_per_hostname_aop = cloudflare.AuthenticatedOriginPulls("myPerHostnameAop",
+        my_per_hostname_aop = cloudflare.AuthenticatedOriginPulls("my_per_hostname_aop",
             zone_id="0da42c8d2132a9ddaf714f9e7c920711",
             authenticated_origin_pulls_certificate=my_per_hostname_aop_cert.id,
             hostname="aop.example.com",
@@ -249,26 +249,26 @@ class AuthenticatedOriginPulls(pulumi.CustomResource):
         import pulumi_cloudflare as cloudflare
 
         # Authenticated Origin Pulls
-        my_aop = cloudflare.AuthenticatedOriginPulls("myAop",
+        my_aop = cloudflare.AuthenticatedOriginPulls("my_aop",
             zone_id="0da42c8d2132a9ddaf714f9e7c920711",
             enabled=True)
         # Per-Zone Authenticated Origin Pulls
-        my_per_zone_aop_cert = cloudflare.AuthenticatedOriginPullsCertificate("myPerZoneAopCert",
+        my_per_zone_aop_cert = cloudflare.AuthenticatedOriginPullsCertificate("my_per_zone_aop_cert",
             zone_id="0da42c8d2132a9ddaf714f9e7c920711",
             certificate="-----INSERT CERTIFICATE-----",
             private_key="-----INSERT PRIVATE KEY-----",
             type="per-zone")
-        my_per_zone_aop = cloudflare.AuthenticatedOriginPulls("myPerZoneAop",
+        my_per_zone_aop = cloudflare.AuthenticatedOriginPulls("my_per_zone_aop",
             zone_id="0da42c8d2132a9ddaf714f9e7c920711",
             authenticated_origin_pulls_certificate=my_per_zone_aop_cert.id,
             enabled=True)
         # Per-Hostname Authenticated Origin Pulls
-        my_per_hostname_aop_cert = cloudflare.AuthenticatedOriginPullsCertificate("myPerHostnameAopCert",
+        my_per_hostname_aop_cert = cloudflare.AuthenticatedOriginPullsCertificate("my_per_hostname_aop_cert",
             zone_id="0da42c8d2132a9ddaf714f9e7c920711",
             certificate="-----INSERT CERTIFICATE-----",
             private_key="-----INSERT PRIVATE KEY-----",
             type="per-hostname")
-        my_per_hostname_aop = cloudflare.AuthenticatedOriginPulls("myPerHostnameAop",
+        my_per_hostname_aop = cloudflare.AuthenticatedOriginPulls("my_per_hostname_aop",
             zone_id="0da42c8d2132a9ddaf714f9e7c920711",
             authenticated_origin_pulls_certificate=my_per_hostname_aop_cert.id,
             hostname="aop.example.com",

@@ -241,10 +241,10 @@ class AccessCustomPage(pulumi.CustomResource):
         import pulumi_cloudflare as cloudflare
 
         example = cloudflare.AccessCustomPage("example",
-            custom_html="<html><body><h1>Forbidden</h1></body></html>",
+            zone_id="0da42c8d2132a9ddaf714f9e7c920711",
             name="example",
             type="forbidden",
-            zone_id="0da42c8d2132a9ddaf714f9e7c920711")
+            custom_html="<html><body><h1>Forbidden</h1></body></html>")
         ```
         <!--End PulumiCodeChooser -->
 
@@ -275,10 +275,10 @@ class AccessCustomPage(pulumi.CustomResource):
         import pulumi_cloudflare as cloudflare
 
         example = cloudflare.AccessCustomPage("example",
-            custom_html="<html><body><h1>Forbidden</h1></body></html>",
+            zone_id="0da42c8d2132a9ddaf714f9e7c920711",
             name="example",
             type="forbidden",
-            zone_id="0da42c8d2132a9ddaf714f9e7c920711")
+            custom_html="<html><body><h1>Forbidden</h1></body></html>")
         ```
         <!--End PulumiCodeChooser -->
 

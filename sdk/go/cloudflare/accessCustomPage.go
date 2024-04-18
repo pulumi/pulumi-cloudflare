@@ -31,10 +31,10 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.NewAccessCustomPage(ctx, "example", &cloudflare.AccessCustomPageArgs{
-//				CustomHtml: pulumi.String("<html><body><h1>Forbidden</h1></body></html>"),
+//				ZoneId:     pulumi.String("0da42c8d2132a9ddaf714f9e7c920711"),
 //				Name:       pulumi.String("example"),
 //				Type:       pulumi.String("forbidden"),
-//				ZoneId:     pulumi.String("0da42c8d2132a9ddaf714f9e7c920711"),
+//				CustomHtml: pulumi.String("<html><body><h1>Forbidden</h1></body></html>"),
 //			})
 //			if err != nil {
 //				return err

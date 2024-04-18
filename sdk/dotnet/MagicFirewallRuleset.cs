@@ -28,23 +28,23 @@ namespace Pulumi.Cloudflare
     ///     var example = new Cloudflare.MagicFirewallRuleset("example", new()
     ///     {
     ///         AccountId = "d41d8cd98f00b204e9800998ecf8427e",
-    ///         Description = "Global mitigations",
     ///         Name = "Magic Transit Ruleset",
+    ///         Description = "Global mitigations",
     ///         Rules = new[]
     ///         {
     ///             
     ///             {
     ///                 { "action", "allow" },
+    ///                 { "expression", "tcp.dstport in { 32768..65535 }" },
     ///                 { "description", "Allow TCP Ephemeral Ports" },
     ///                 { "enabled", "true" },
-    ///                 { "expression", "tcp.dstport in { 32768..65535 }" },
     ///             },
     ///             
     ///             {
     ///                 { "action", "block" },
+    ///                 { "expression", "ip.len &gt;= 0" },
     ///                 { "description", "Block all" },
     ///                 { "enabled", "true" },
-    ///                 { "expression", "ip.len &gt;= 0" },
     ///             },
     ///         },
     ///     });

@@ -26,14 +26,14 @@ namespace Pulumi.Cloudflare
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     // Authenticated Origin Pulls
-    ///     var myAop = new Cloudflare.AuthenticatedOriginPulls("myAop", new()
+    ///     var myAop = new Cloudflare.AuthenticatedOriginPulls("my_aop", new()
     ///     {
     ///         ZoneId = "0da42c8d2132a9ddaf714f9e7c920711",
     ///         Enabled = true,
     ///     });
     /// 
     ///     // Per-Zone Authenticated Origin Pulls
-    ///     var myPerZoneAopCert = new Cloudflare.AuthenticatedOriginPullsCertificate("myPerZoneAopCert", new()
+    ///     var myPerZoneAopCert = new Cloudflare.AuthenticatedOriginPullsCertificate("my_per_zone_aop_cert", new()
     ///     {
     ///         ZoneId = "0da42c8d2132a9ddaf714f9e7c920711",
     ///         Certificate = "-----INSERT CERTIFICATE-----",
@@ -41,7 +41,7 @@ namespace Pulumi.Cloudflare
     ///         Type = "per-zone",
     ///     });
     /// 
-    ///     var myPerZoneAop = new Cloudflare.AuthenticatedOriginPulls("myPerZoneAop", new()
+    ///     var myPerZoneAop = new Cloudflare.AuthenticatedOriginPulls("my_per_zone_aop", new()
     ///     {
     ///         ZoneId = "0da42c8d2132a9ddaf714f9e7c920711",
     ///         AuthenticatedOriginPullsCertificate = myPerZoneAopCert.Id,
@@ -49,7 +49,7 @@ namespace Pulumi.Cloudflare
     ///     });
     /// 
     ///     // Per-Hostname Authenticated Origin Pulls
-    ///     var myPerHostnameAopCert = new Cloudflare.AuthenticatedOriginPullsCertificate("myPerHostnameAopCert", new()
+    ///     var myPerHostnameAopCert = new Cloudflare.AuthenticatedOriginPullsCertificate("my_per_hostname_aop_cert", new()
     ///     {
     ///         ZoneId = "0da42c8d2132a9ddaf714f9e7c920711",
     ///         Certificate = "-----INSERT CERTIFICATE-----",
@@ -57,7 +57,7 @@ namespace Pulumi.Cloudflare
     ///         Type = "per-hostname",
     ///     });
     /// 
-    ///     var myPerHostnameAop = new Cloudflare.AuthenticatedOriginPulls("myPerHostnameAop", new()
+    ///     var myPerHostnameAop = new Cloudflare.AuthenticatedOriginPulls("my_per_hostname_aop", new()
     ///     {
     ///         ZoneId = "0da42c8d2132a9ddaf714f9e7c920711",
     ///         AuthenticatedOriginPullsCertificate = myPerHostnameAopCert.Id,

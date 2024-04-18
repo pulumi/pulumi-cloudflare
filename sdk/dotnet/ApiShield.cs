@@ -25,6 +25,7 @@ namespace Pulumi.Cloudflare
     /// {
     ///     var example = new Cloudflare.ApiShield("example", new()
     ///     {
+    ///         ZoneId = "0da42c8d2132a9ddaf714f9e7c920711",
     ///         AuthIdCharacteristics = new[]
     ///         {
     ///             new Cloudflare.Inputs.ApiShieldAuthIdCharacteristicArgs
@@ -33,7 +34,6 @@ namespace Pulumi.Cloudflare
     ///                 Type = "header",
     ///             },
     ///         },
-    ///         ZoneId = "0da42c8d2132a9ddaf714f9e7c920711",
     ///     });
     /// 
     /// });

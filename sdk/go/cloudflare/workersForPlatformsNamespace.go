@@ -23,20 +23,11 @@ import (
 //
 // import (
 //
-//	"os"
-//
 //	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare"
+//	"github.com/pulumi/pulumi-std/sdk/go/std"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
-//
-//	func readFileOrPanic(path string) pulumi.StringPtrInput {
-//		data, err := os.ReadFile(path)
-//		if err != nil {
-//			panic(err.Error())
-//		}
-//		return pulumi.String(string(data))
-//	}
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
@@ -47,10 +38,16 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = cloudflare.NewWorkerScript(ctx, "customerWorker1", &cloudflare.WorkerScriptArgs{
+//			invokeFile, err := std.File(ctx, &std.FileArgs{
+//				Input: "script.js",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = cloudflare.NewWorkerScript(ctx, "customer_worker_1", &cloudflare.WorkerScriptArgs{
 //				AccountId:         pulumi.String("f037e56e89293a057740de681ac9abbe"),
 //				Name:              pulumi.String("customer-worker-1"),
-//				Content:           readFileOrPanic("script.js"),
+//				Content:           invokeFile.Result,
 //				DispatchNamespace: example.Name,
 //				Tags: pulumi.StringArray{
 //					pulumi.String("free"),

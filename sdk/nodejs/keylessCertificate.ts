@@ -15,13 +15,13 @@ import * as utilities from "./utilities";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
  * const example = new cloudflare.KeylessCertificate("example", {
- *     bundleMethod: "ubiquitous",
- *     certificate: "-----INSERT CERTIFICATE-----",
- *     enabled: true,
- *     host: "example.com",
- *     name: "example.com Keyless SSL",
- *     port: 24008,
  *     zoneId: "0da42c8d2132a9ddaf714f9e7c920711",
+ *     bundleMethod: "ubiquitous",
+ *     name: "example.com Keyless SSL",
+ *     host: "example.com",
+ *     port: 24008,
+ *     enabled: true,
+ *     certificate: "-----INSERT CERTIFICATE-----",
  * });
  * ```
  * <!--End PulumiCodeChooser -->

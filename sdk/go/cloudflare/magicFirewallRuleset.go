@@ -33,20 +33,20 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.NewMagicFirewallRuleset(ctx, "example", &cloudflare.MagicFirewallRulesetArgs{
 //				AccountId:   pulumi.String("d41d8cd98f00b204e9800998ecf8427e"),
-//				Description: pulumi.String("Global mitigations"),
 //				Name:        pulumi.String("Magic Transit Ruleset"),
+//				Description: pulumi.String("Global mitigations"),
 //				Rules: pulumi.StringMapArray{
 //					pulumi.StringMap{
 //						"action":      pulumi.String("allow"),
+//						"expression":  pulumi.String("tcp.dstport in { 32768..65535 }"),
 //						"description": pulumi.String("Allow TCP Ephemeral Ports"),
 //						"enabled":     pulumi.String("true"),
-//						"expression":  pulumi.String("tcp.dstport in { 32768..65535 }"),
 //					},
 //					pulumi.StringMap{
 //						"action":      pulumi.String("block"),
+//						"expression":  pulumi.String("ip.len >= 0"),
 //						"description": pulumi.String("Block all"),
 //						"enabled":     pulumi.String("true"),
-//						"expression":  pulumi.String("ip.len >= 0"),
 //					},
 //				},
 //			})

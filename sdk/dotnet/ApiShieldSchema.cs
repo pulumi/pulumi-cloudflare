@@ -17,20 +17,23 @@ namespace Pulumi.Cloudflare
     /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
-    /// using System.IO;
     /// using System.Linq;
     /// using Pulumi;
     /// using Cloudflare = Pulumi.Cloudflare;
+    /// using Std = Pulumi.Std;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var petstoreSchema = new Cloudflare.ApiShieldSchema("petstoreSchema", new()
+    ///     var petstoreSchema = new Cloudflare.ApiShieldSchema("petstore_schema", new()
     ///     {
     ///         ZoneId = "0da42c8d2132a9ddaf714f9e7c920711",
     ///         Name = "myschema",
     ///         Kind = "openapi_v3",
     ///         ValidationEnabled = true,
-    ///         Source = File.ReadAllText("./schemas/petstore.json"),
+    ///         Source = Std.File.Invoke(new()
+    ///         {
+    ///             Input = "./schemas/petstore.json",
+    ///         }).Apply(invoke =&gt; invoke.Result),
     ///     });
     /// 
     /// });

@@ -32,8 +32,8 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.NewAddressMap(ctx, "example", &cloudflare.AddressMapArgs{
 //				AccountId:   pulumi.String("f037e56e89293a057740de681ac9abbe"),
-//				DefaultSni:  pulumi.String("*.example.com"),
 //				Description: pulumi.String("My address map"),
+//				DefaultSni:  pulumi.String("*.example.com"),
 //				Enabled:     pulumi.Bool(true),
 //				Ips: cloudflare.AddressMapIpArray{
 //					&cloudflare.AddressMapIpArgs{

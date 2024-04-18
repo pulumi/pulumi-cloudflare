@@ -25,16 +25,16 @@ namespace Pulumi.Cloudflare
     /// {
     ///     var example = new Cloudflare.AccessMutualTlsHostnameSettings("example", new()
     ///     {
+    ///         ZoneId = "0da42c8d2132a9ddaf714f9e7c920711",
     ///         Settings = new[]
     ///         {
     ///             new Cloudflare.Inputs.AccessMutualTlsHostnameSettingsSettingArgs
     ///             {
-    ///                 ChinaNetwork = false,
-    ///                 ClientCertificateForwarding = true,
     ///                 Hostname = "example.com",
+    ///                 ClientCertificateForwarding = true,
+    ///                 ChinaNetwork = false,
     ///             },
     ///         },
-    ///         ZoneId = "0da42c8d2132a9ddaf714f9e7c920711",
     ///     });
     /// 
     /// });

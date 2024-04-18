@@ -31,11 +31,11 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// Waiting Room Event
 //			_, err := cloudflare.NewWaitingRoomEvent(ctx, "example", &cloudflare.WaitingRoomEventArgs{
-//				EventEndTime:   pulumi.String("2006-01-02T20:04:05Z"),
-//				EventStartTime: pulumi.String("2006-01-02T15:04:05Z"),
-//				Name:           pulumi.String("foo"),
-//				WaitingRoomId:  pulumi.String("d41d8cd98f00b204e9800998ecf8427e"),
 //				ZoneId:         pulumi.String("0da42c8d2132a9ddaf714f9e7c920711"),
+//				WaitingRoomId:  pulumi.String("d41d8cd98f00b204e9800998ecf8427e"),
+//				Name:           pulumi.String("foo"),
+//				EventStartTime: pulumi.String("2006-01-02T15:04:05Z"),
+//				EventEndTime:   pulumi.String("2006-01-02T20:04:05Z"),
 //			})
 //			if err != nil {
 //				return err

@@ -27,7 +27,7 @@ import * as utilities from "./utilities";
  *         platform: "linux",
  *     }],
  *     inputs: [{
- *         id: cloudflare_teams_list.corporate_devices.id,
+ *         id: corporateDevices.id,
  *         version: "1.0.0",
  *         operator: "<",
  *         osDistroName: "ubuntu",

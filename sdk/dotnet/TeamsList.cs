@@ -28,6 +28,8 @@ namespace Pulumi.Cloudflare
     ///     var example = new Cloudflare.TeamsList("example", new()
     ///     {
     ///         AccountId = "f037e56e89293a057740de681ac9abbe",
+    ///         Name = "Corporate devices",
+    ///         Type = "SERIAL",
     ///         Description = "Serial numbers for all corporate devices.",
     ///         Items = new[]
     ///         {
@@ -35,8 +37,6 @@ namespace Pulumi.Cloudflare
     ///             "5RE8543EGG",
     ///             "1YE2880LNP",
     ///         },
-    ///         Name = "Corporate devices",
-    ///         Type = "SERIAL",
     ///     });
     /// 
     /// });

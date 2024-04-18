@@ -30,10 +30,10 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.NewCustomPages(ctx, "example", &cloudflare.CustomPagesArgs{
-//				State:  pulumi.String("customized"),
+//				ZoneId: pulumi.String("0da42c8d2132a9ddaf714f9e7c920711"),
 //				Type:   pulumi.String("basic_challenge"),
 //				Url:    pulumi.String("https://example.com/challenge.html"),
-//				ZoneId: pulumi.String("0da42c8d2132a9ddaf714f9e7c920711"),
+//				State:  pulumi.String("customized"),
 //			})
 //			if err != nil {
 //				return err

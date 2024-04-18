@@ -172,10 +172,10 @@ class ObservatoryScheduledTest(pulumi.CustomResource):
         import pulumi_cloudflare as cloudflare
 
         example = cloudflare.ObservatoryScheduledTest("example",
-            frequency="WEEKLY",
-            region="us-central1",
+            zone_id="0da42c8d2132a9ddaf714f9e7c920711",
             url="example.com",
-            zone_id="0da42c8d2132a9ddaf714f9e7c920711")
+            region="us-central1",
+            frequency="WEEKLY")
         ```
         <!--End PulumiCodeChooser -->
 
@@ -209,10 +209,10 @@ class ObservatoryScheduledTest(pulumi.CustomResource):
         import pulumi_cloudflare as cloudflare
 
         example = cloudflare.ObservatoryScheduledTest("example",
-            frequency="WEEKLY",
-            region="us-central1",
+            zone_id="0da42c8d2132a9ddaf714f9e7c920711",
             url="example.com",
-            zone_id="0da42c8d2132a9ddaf714f9e7c920711")
+            region="us-central1",
+            frequency="WEEKLY")
         ```
         <!--End PulumiCodeChooser -->
 

@@ -45,11 +45,11 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         // Waiting Room Event
  *         var example = new WaitingRoomEvent(&#34;example&#34;, WaitingRoomEventArgs.builder()        
- *             .eventEndTime(&#34;2006-01-02T20:04:05Z&#34;)
- *             .eventStartTime(&#34;2006-01-02T15:04:05Z&#34;)
- *             .name(&#34;foo&#34;)
- *             .waitingRoomId(&#34;d41d8cd98f00b204e9800998ecf8427e&#34;)
  *             .zoneId(&#34;0da42c8d2132a9ddaf714f9e7c920711&#34;)
+ *             .waitingRoomId(&#34;d41d8cd98f00b204e9800998ecf8427e&#34;)
+ *             .name(&#34;foo&#34;)
+ *             .eventStartTime(&#34;2006-01-02T15:04:05Z&#34;)
+ *             .eventEndTime(&#34;2006-01-02T20:04:05Z&#34;)
  *             .build());
  * 
  *     }

@@ -22,29 +22,26 @@ import (
 //
 // import (
 //
-//	"os"
-//
 //	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare"
+//	"github.com/pulumi/pulumi-std/sdk/go/std"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
-//	func readFileOrPanic(path string) pulumi.StringPtrInput {
-//		data, err := os.ReadFile(path)
-//		if err != nil {
-//			panic(err.Error())
-//		}
-//		return pulumi.String(string(data))
-//	}
-//
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudflare.NewApiShieldSchema(ctx, "petstoreSchema", &cloudflare.ApiShieldSchemaArgs{
+//			invokeFile, err := std.File(ctx, &std.FileArgs{
+//				Input: "./schemas/petstore.json",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = cloudflare.NewApiShieldSchema(ctx, "petstore_schema", &cloudflare.ApiShieldSchemaArgs{
 //				ZoneId:            pulumi.String("0da42c8d2132a9ddaf714f9e7c920711"),
 //				Name:              pulumi.String("myschema"),
 //				Kind:              pulumi.String("openapi_v3"),
 //				ValidationEnabled: pulumi.Bool(true),
-//				Source:            readFileOrPanic("./schemas/petstore.json"),
+//				Source:            invokeFile.Result,
 //			})
 //			if err != nil {
 //				return err
