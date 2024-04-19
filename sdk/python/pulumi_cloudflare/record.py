@@ -492,7 +492,6 @@ class Record(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
@@ -519,7 +518,6 @@ class Record(pulumi.CustomResource):
                 target="example.com",
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -555,7 +553,6 @@ class Record(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
@@ -582,7 +579,6 @@ class Record(pulumi.CustomResource):
                 target="example.com",
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

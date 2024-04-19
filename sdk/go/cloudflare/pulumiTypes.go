@@ -19339,7 +19339,6 @@ type PageRuleActionsCacheKeyFieldsUser struct {
 	//
 	// Example:
 	//
-	// <!--Start PulumiCodeChooser -->
 	// ```go
 	// package main
 	//
@@ -19397,7 +19396,6 @@ type PageRuleActionsCacheKeyFieldsUser struct {
 	// 	})
 	// }
 	// ```
-	// <!--End PulumiCodeChooser -->
 	Lang *bool `pulumi:"lang"`
 }
 
@@ -19421,7 +19419,6 @@ type PageRuleActionsCacheKeyFieldsUserArgs struct {
 	//
 	// Example:
 	//
-	// <!--Start PulumiCodeChooser -->
 	// ```go
 	// package main
 	//
@@ -19479,7 +19476,6 @@ type PageRuleActionsCacheKeyFieldsUserArgs struct {
 	// 	})
 	// }
 	// ```
-	// <!--End PulumiCodeChooser -->
 	Lang pulumi.BoolPtrInput `pulumi:"lang"`
 }
 
@@ -19574,7 +19570,6 @@ func (o PageRuleActionsCacheKeyFieldsUserOutput) Geo() pulumi.BoolPtrOutput {
 //
 // Example:
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -19635,7 +19630,6 @@ func (o PageRuleActionsCacheKeyFieldsUserOutput) Geo() pulumi.BoolPtrOutput {
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func (o PageRuleActionsCacheKeyFieldsUserOutput) Lang() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v PageRuleActionsCacheKeyFieldsUser) *bool { return v.Lang }).(pulumi.BoolPtrOutput)
 }
@@ -19688,7 +19682,6 @@ func (o PageRuleActionsCacheKeyFieldsUserPtrOutput) Geo() pulumi.BoolPtrOutput {
 //
 // Example:
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -19749,7 +19742,6 @@ func (o PageRuleActionsCacheKeyFieldsUserPtrOutput) Geo() pulumi.BoolPtrOutput {
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func (o PageRuleActionsCacheKeyFieldsUserPtrOutput) Lang() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *PageRuleActionsCacheKeyFieldsUser) *bool {
 		if v == nil {

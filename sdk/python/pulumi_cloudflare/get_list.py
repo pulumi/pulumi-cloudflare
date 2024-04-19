@@ -112,7 +112,6 @@ def get_list(account_id: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_cloudflare as cloudflare
@@ -120,7 +119,6 @@ def get_list(account_id: Optional[str] = None,
     example = cloudflare.get_list(account_id="f037e56e89293a057740de681ac9abbe",
         name="list_name")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str account_id: The account identifier to target for the resource.
@@ -150,7 +148,6 @@ def get_list_output(account_id: Optional[pulumi.Input[str]] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_cloudflare as cloudflare
@@ -158,7 +155,6 @@ def get_list_output(account_id: Optional[pulumi.Input[str]] = None,
     example = cloudflare.get_list(account_id="f037e56e89293a057740de681ac9abbe",
         name="list_name")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str account_id: The account identifier to target for the resource.

@@ -9,7 +9,6 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
@@ -19,7 +18,6 @@ import * as utilities from "./utilities";
  *     name: "example",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getTunnelVirtualNetwork(args: GetTunnelVirtualNetworkArgs, opts?: pulumi.InvokeOptions): Promise<GetTunnelVirtualNetworkResult> {
 
@@ -74,7 +72,6 @@ export interface GetTunnelVirtualNetworkResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
@@ -84,7 +81,6 @@ export interface GetTunnelVirtualNetworkResult {
  *     name: "example",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getTunnelVirtualNetworkOutput(args: GetTunnelVirtualNetworkOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTunnelVirtualNetworkResult> {
     return pulumi.output(args).apply((a: any) => getTunnelVirtualNetwork(a, opts))

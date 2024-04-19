@@ -137,7 +137,6 @@ class WorkerCronTrigger(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
@@ -155,7 +154,6 @@ class WorkerCronTrigger(pulumi.CustomResource):
                 "10 7 * * mon-fri",
             ])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -183,7 +181,6 @@ class WorkerCronTrigger(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
@@ -201,7 +198,6 @@ class WorkerCronTrigger(pulumi.CustomResource):
                 "10 7 * * mon-fri",
             ])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

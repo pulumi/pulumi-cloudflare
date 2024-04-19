@@ -16,7 +16,6 @@ namespace Pulumi.Cloudflare
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -34,7 +33,6 @@ namespace Pulumi.Cloudflare
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetDevicePostureRulesResult> InvokeAsync(GetDevicePostureRulesArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetDevicePostureRulesResult>("cloudflare:index/getDevicePostureRules:getDevicePostureRules", args ?? new GetDevicePostureRulesArgs(), options.WithDefaults());
@@ -44,7 +42,6 @@ namespace Pulumi.Cloudflare
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -62,7 +59,6 @@ namespace Pulumi.Cloudflare
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetDevicePostureRulesResult> Invoke(GetDevicePostureRulesInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetDevicePostureRulesResult>("cloudflare:index/getDevicePostureRules:getDevicePostureRules", args ?? new GetDevicePostureRulesInvokeArgs(), options.WithDefaults());

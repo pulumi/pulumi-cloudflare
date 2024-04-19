@@ -629,7 +629,6 @@ class DeviceSettingsPolicy(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
@@ -654,7 +653,6 @@ class DeviceSettingsPolicy(pulumi.CustomResource):
             service_mode_v2_port=3000,
             exclude_office_ips=False)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -696,7 +694,6 @@ class DeviceSettingsPolicy(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
@@ -721,7 +718,6 @@ class DeviceSettingsPolicy(pulumi.CustomResource):
             service_mode_v2_port=3000,
             exclude_office_ips=False)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

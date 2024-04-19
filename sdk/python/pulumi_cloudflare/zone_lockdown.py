@@ -231,7 +231,6 @@ class ZoneLockdown(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
@@ -247,7 +246,6 @@ class ZoneLockdown(pulumi.CustomResource):
                 value="192.0.2.0/24",
             )])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -278,7 +276,6 @@ class ZoneLockdown(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
@@ -294,7 +291,6 @@ class ZoneLockdown(pulumi.CustomResource):
                 value="192.0.2.0/24",
             )])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

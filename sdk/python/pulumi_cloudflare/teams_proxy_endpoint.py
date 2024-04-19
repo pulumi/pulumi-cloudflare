@@ -152,7 +152,6 @@ class TeamsProxyEndpoint(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
@@ -162,7 +161,6 @@ class TeamsProxyEndpoint(pulumi.CustomResource):
             name="office",
             ips=["192.0.2.0/24"])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -189,7 +187,6 @@ class TeamsProxyEndpoint(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
@@ -199,7 +196,6 @@ class TeamsProxyEndpoint(pulumi.CustomResource):
             name="office",
             ips=["192.0.2.0/24"])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

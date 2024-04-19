@@ -111,14 +111,12 @@ def get_origin_ca_certificate(id: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_cloudflare as cloudflare
 
     example = cloudflare.get_origin_ca_certificate(id="REPLACE_ME")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str id: The Origin CA Certificate unique identifier.
@@ -145,14 +143,12 @@ def get_origin_ca_certificate_output(id: Optional[pulumi.Input[str]] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_cloudflare as cloudflare
 
     example = cloudflare.get_origin_ca_certificate(id="REPLACE_ME")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str id: The Origin CA Certificate unique identifier.

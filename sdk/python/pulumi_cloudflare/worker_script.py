@@ -576,7 +576,6 @@ class WorkerScript(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
@@ -620,7 +619,6 @@ class WorkerScript(pulumi.CustomResource):
                 dataset="dataset1",
             )])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -650,7 +648,6 @@ class WorkerScript(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
@@ -694,7 +691,6 @@ class WorkerScript(pulumi.CustomResource):
                 dataset="dataset1",
             )])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

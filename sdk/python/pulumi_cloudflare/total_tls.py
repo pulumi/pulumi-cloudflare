@@ -135,7 +135,6 @@ class TotalTls(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
@@ -145,7 +144,6 @@ class TotalTls(pulumi.CustomResource):
             enabled=True,
             certificate_authority="lets_encrypt")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -170,7 +168,6 @@ class TotalTls(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
@@ -180,7 +177,6 @@ class TotalTls(pulumi.CustomResource):
             enabled=True,
             certificate_authority="lets_encrypt")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

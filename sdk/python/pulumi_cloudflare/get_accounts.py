@@ -73,14 +73,12 @@ def get_accounts(name: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_cloudflare as cloudflare
 
     example = cloudflare.get_accounts(name="example account")
     ```
-    <!--End PulumiCodeChooser -->
     """
     __args__ = dict()
     __args__['name'] = name
@@ -101,13 +99,11 @@ def get_accounts_output(name: Optional[pulumi.Input[Optional[str]]] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_cloudflare as cloudflare
 
     example = cloudflare.get_accounts(name="example account")
     ```
-    <!--End PulumiCodeChooser -->
     """
     ...

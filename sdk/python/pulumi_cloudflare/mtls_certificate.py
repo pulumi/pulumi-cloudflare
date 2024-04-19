@@ -280,7 +280,6 @@ class MtlsCertificate(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
@@ -296,7 +295,6 @@ class MtlsCertificate(pulumi.CustomResource):
         -----END PRIVATE KEY-----\"\"\",
             ca=True)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -323,7 +321,6 @@ class MtlsCertificate(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
@@ -339,7 +336,6 @@ class MtlsCertificate(pulumi.CustomResource):
         -----END PRIVATE KEY-----\"\"\",
             ca=True)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

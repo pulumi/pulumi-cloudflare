@@ -301,7 +301,6 @@ class StaticRoute(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
@@ -316,7 +315,6 @@ class StaticRoute(pulumi.CustomResource):
             colo_names=["den01"],
             colo_regions=["APAC"])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -348,7 +346,6 @@ class StaticRoute(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
@@ -363,7 +360,6 @@ class StaticRoute(pulumi.CustomResource):
             colo_names=["den01"],
             colo_regions=["APAC"])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

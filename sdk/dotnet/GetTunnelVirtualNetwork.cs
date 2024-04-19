@@ -16,7 +16,6 @@ namespace Pulumi.Cloudflare
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -33,7 +32,6 @@ namespace Pulumi.Cloudflare
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetTunnelVirtualNetworkResult> InvokeAsync(GetTunnelVirtualNetworkArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetTunnelVirtualNetworkResult>("cloudflare:index/getTunnelVirtualNetwork:getTunnelVirtualNetwork", args ?? new GetTunnelVirtualNetworkArgs(), options.WithDefaults());
@@ -43,7 +41,6 @@ namespace Pulumi.Cloudflare
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -60,7 +57,6 @@ namespace Pulumi.Cloudflare
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetTunnelVirtualNetworkResult> Invoke(GetTunnelVirtualNetworkInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetTunnelVirtualNetworkResult>("cloudflare:index/getTunnelVirtualNetwork:getTunnelVirtualNetwork", args ?? new GetTunnelVirtualNetworkInvokeArgs(), options.WithDefaults());

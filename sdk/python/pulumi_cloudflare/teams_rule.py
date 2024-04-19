@@ -410,7 +410,6 @@ class TeamsRule(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
@@ -428,7 +427,6 @@ class TeamsRule(pulumi.CustomResource):
                 block_page_reason="access not permitted",
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -461,7 +459,6 @@ class TeamsRule(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
@@ -479,7 +476,6 @@ class TeamsRule(pulumi.CustomResource):
                 block_page_reason="access not permitted",
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

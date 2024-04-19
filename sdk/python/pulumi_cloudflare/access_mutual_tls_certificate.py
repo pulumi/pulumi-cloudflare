@@ -224,7 +224,6 @@ class AccessMutualTlsCertificate(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
@@ -235,7 +234,6 @@ class AccessMutualTlsCertificate(pulumi.CustomResource):
             certificate=ca_pem,
             associated_hostnames=["staging.example.com"])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -280,7 +278,6 @@ class AccessMutualTlsCertificate(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
@@ -291,7 +288,6 @@ class AccessMutualTlsCertificate(pulumi.CustomResource):
             certificate=ca_pem,
             associated_hostnames=["staging.example.com"])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

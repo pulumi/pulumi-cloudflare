@@ -10221,7 +10221,6 @@ class PageRuleActionsCacheKeyFieldsUser(dict):
                
                Example:
                
-               <!--Start PulumiCodeChooser -->
                ```python
                import pulumi
                import pulumi_cloudflare as cloudflare
@@ -10258,7 +10257,6 @@ class PageRuleActionsCacheKeyFieldsUser(dict):
                        ),
                    ))
                ```
-               <!--End PulumiCodeChooser -->
         """
         if device_type is not None:
             pulumi.set(__self__, "device_type", device_type)
@@ -10291,7 +10289,6 @@ class PageRuleActionsCacheKeyFieldsUser(dict):
 
         Example:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
@@ -10328,7 +10325,6 @@ class PageRuleActionsCacheKeyFieldsUser(dict):
                 ),
             ))
         ```
-        <!--End PulumiCodeChooser -->
         """
         return pulumi.get(self, "lang")
 

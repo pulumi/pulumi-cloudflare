@@ -11,7 +11,6 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
@@ -22,7 +21,6 @@ import * as utilities from "./utilities";
  *     type: "file",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getDevicePostureRules(args: GetDevicePostureRulesArgs, opts?: pulumi.InvokeOptions): Promise<GetDevicePostureRulesResult> {
 
@@ -76,7 +74,6 @@ export interface GetDevicePostureRulesResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
@@ -87,7 +84,6 @@ export interface GetDevicePostureRulesResult {
  *     type: "file",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getDevicePostureRulesOutput(args: GetDevicePostureRulesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDevicePostureRulesResult> {
     return pulumi.output(args).apply((a: any) => getDevicePostureRules(a, opts))

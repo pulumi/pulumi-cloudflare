@@ -103,7 +103,6 @@ class TieredCache(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
@@ -112,7 +111,6 @@ class TieredCache(pulumi.CustomResource):
             zone_id="0da42c8d2132a9ddaf714f9e7c920711",
             cache_type="smart")
         ```
-        <!--End PulumiCodeChooser -->
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -131,7 +129,6 @@ class TieredCache(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
@@ -140,7 +137,6 @@ class TieredCache(pulumi.CustomResource):
             zone_id="0da42c8d2132a9ddaf714f9e7c920711",
             cache_type="smart")
         ```
-        <!--End PulumiCodeChooser -->
 
         :param str resource_name: The name of the resource.
         :param TieredCacheArgs args: The arguments to use to populate this resource's properties.

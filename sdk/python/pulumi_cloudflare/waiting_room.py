@@ -629,7 +629,6 @@ class WaitingRoom(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
@@ -654,7 +653,6 @@ class WaitingRoom(pulumi.CustomResource):
             ],
             queueing_status_code=200)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -696,7 +694,6 @@ class WaitingRoom(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
@@ -721,7 +718,6 @@ class WaitingRoom(pulumi.CustomResource):
             ],
             queueing_status_code=200)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

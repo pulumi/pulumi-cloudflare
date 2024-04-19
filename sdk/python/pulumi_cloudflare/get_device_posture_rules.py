@@ -102,7 +102,6 @@ def get_device_posture_rules(account_id: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_cloudflare as cloudflare
@@ -111,7 +110,6 @@ def get_device_posture_rules(account_id: Optional[str] = None,
         name="check for /dev/random",
         type="file")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str account_id: The account identifier to target for the resource.
@@ -141,7 +139,6 @@ def get_device_posture_rules_output(account_id: Optional[pulumi.Input[str]] = No
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_cloudflare as cloudflare
@@ -150,7 +147,6 @@ def get_device_posture_rules_output(account_id: Optional[pulumi.Input[str]] = No
         name="check for /dev/random",
         type="file")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str account_id: The account identifier to target for the resource.

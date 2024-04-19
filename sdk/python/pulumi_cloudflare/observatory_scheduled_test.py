@@ -166,7 +166,6 @@ class ObservatoryScheduledTest(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
@@ -177,7 +176,6 @@ class ObservatoryScheduledTest(pulumi.CustomResource):
             region="us-central1",
             frequency="WEEKLY")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -203,7 +201,6 @@ class ObservatoryScheduledTest(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
@@ -214,7 +211,6 @@ class ObservatoryScheduledTest(pulumi.CustomResource):
             region="us-central1",
             frequency="WEEKLY")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

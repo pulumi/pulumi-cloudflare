@@ -133,7 +133,6 @@ class R2Bucket(pulumi.CustomResource):
         """
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
@@ -143,7 +142,6 @@ class R2Bucket(pulumi.CustomResource):
             name="terraform-bucket",
             location="enam")
         ```
-        <!--End PulumiCodeChooser -->
 
         > Available location values can be found in the [R2 documentation](https://developers.cloudflare.com/r2/reference/data-location/#available-hints).
 
@@ -168,7 +166,6 @@ class R2Bucket(pulumi.CustomResource):
         """
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
@@ -178,7 +175,6 @@ class R2Bucket(pulumi.CustomResource):
             name="terraform-bucket",
             location="enam")
         ```
-        <!--End PulumiCodeChooser -->
 
         > Available location values can be found in the [R2 documentation](https://developers.cloudflare.com/r2/reference/data-location/#available-hints).
 

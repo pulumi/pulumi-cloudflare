@@ -77,14 +77,12 @@ def get_origin_ca_root_certificate(algorithm: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_cloudflare as cloudflare
 
     example = cloudflare.get_origin_ca_root_certificate(algorithm="rsa")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str algorithm: The name of the algorithm used when creating an Origin CA certificate. Available values: `rsa`, `ecc`.
@@ -110,14 +108,12 @@ def get_origin_ca_root_certificate_output(algorithm: Optional[pulumi.Input[str]]
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_cloudflare as cloudflare
 
     example = cloudflare.get_origin_ca_root_certificate(algorithm="rsa")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str algorithm: The name of the algorithm used when creating an Origin CA certificate. Available values: `rsa`, `ecc`.

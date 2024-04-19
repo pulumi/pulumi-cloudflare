@@ -264,7 +264,6 @@ class AuthenticatedOriginPullsCertificate(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
@@ -282,7 +281,6 @@ class AuthenticatedOriginPullsCertificate(pulumi.CustomResource):
             private_key="-----INSERT PRIVATE KEY-----",
             type="per-hostname")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -310,7 +308,6 @@ class AuthenticatedOriginPullsCertificate(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
@@ -328,7 +325,6 @@ class AuthenticatedOriginPullsCertificate(pulumi.CustomResource):
             private_key="-----INSERT PRIVATE KEY-----",
             type="per-hostname")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

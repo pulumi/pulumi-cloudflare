@@ -3395,7 +3395,6 @@ export interface PageRuleActionsCacheKeyFieldsUser {
      *
      * Example:
      *
-     * <!--Start PulumiCodeChooser -->
      * ```typescript
      * import * as pulumi from "@pulumi/pulumi";
      * import * as cloudflare from "@pulumi/cloudflare";
@@ -3433,7 +3432,6 @@ export interface PageRuleActionsCacheKeyFieldsUser {
      *     },
      * });
      * ```
-     * <!--End PulumiCodeChooser -->
      */
     lang: boolean;
 }

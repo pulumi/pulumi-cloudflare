@@ -201,7 +201,6 @@ class Tunnel(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
@@ -211,7 +210,6 @@ class Tunnel(pulumi.CustomResource):
             name="my-tunnel",
             secret="AQIDBAUGBwgBAgMEBQYHCAECAwQFBgcIAQIDBAUGBwg=")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -239,7 +237,6 @@ class Tunnel(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
@@ -249,7 +246,6 @@ class Tunnel(pulumi.CustomResource):
             name="my-tunnel",
             secret="AQIDBAUGBwgBAgMEBQYHCAECAwQFBgcIAQIDBAUGBwg=")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

@@ -9,7 +9,6 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
@@ -28,7 +27,6 @@ import * as utilities from "./utilities";
  *     autoRedirectToIdentity: true,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getAccessIdentityProvider(args: GetAccessIdentityProviderArgs, opts?: pulumi.InvokeOptions): Promise<GetAccessIdentityProviderResult> {
 
@@ -88,7 +86,6 @@ export interface GetAccessIdentityProviderResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
@@ -107,7 +104,6 @@ export interface GetAccessIdentityProviderResult {
  *     autoRedirectToIdentity: true,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getAccessIdentityProviderOutput(args: GetAccessIdentityProviderOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAccessIdentityProviderResult> {
     return pulumi.output(args).apply((a: any) => getAccessIdentityProvider(a, opts))

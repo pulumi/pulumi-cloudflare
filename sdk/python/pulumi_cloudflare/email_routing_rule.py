@@ -252,7 +252,6 @@ class EmailRoutingRule(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
@@ -271,7 +270,6 @@ class EmailRoutingRule(pulumi.CustomResource):
                 values=["destinationaddress@example.net"],
             )])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -299,7 +297,6 @@ class EmailRoutingRule(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
@@ -318,7 +315,6 @@ class EmailRoutingRule(pulumi.CustomResource):
                 values=["destinationaddress@example.net"],
             )])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

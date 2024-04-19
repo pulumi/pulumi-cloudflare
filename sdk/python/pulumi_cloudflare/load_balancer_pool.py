@@ -499,7 +499,6 @@ class LoadBalancerPool(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
@@ -542,7 +541,6 @@ class LoadBalancerPool(pulumi.CustomResource):
                 policy="random",
             )])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -578,7 +576,6 @@ class LoadBalancerPool(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
@@ -621,7 +618,6 @@ class LoadBalancerPool(pulumi.CustomResource):
                 policy="random",
             )])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
