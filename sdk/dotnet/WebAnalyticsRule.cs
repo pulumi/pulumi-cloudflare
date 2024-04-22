@@ -45,7 +45,7 @@ namespace Pulumi.Cloudflare
     ///     {
     ///         DependsOn =
     ///         {
-    ///             example, 
+    ///             example,
     ///         },
     ///     });
     /// 
