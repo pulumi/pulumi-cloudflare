@@ -14,7 +14,7 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class TeamsRuleRuleSettingsEgress
     {
         /// <summary>
-        /// IPv4 resolvers.
+        /// The IPv4 address to be used for egress.
         /// </summary>
         public readonly string Ipv4;
         /// <summary>
@@ -22,7 +22,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string? Ipv4Fallback;
         /// <summary>
-        /// IPv6 resolvers.
+        /// The IPv6 range to be used for egress.
         /// </summary>
         public readonly string Ipv6;
 

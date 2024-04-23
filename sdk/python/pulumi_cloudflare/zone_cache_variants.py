@@ -433,7 +433,6 @@ class ZoneCacheVariants(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
@@ -485,7 +484,6 @@ class ZoneCacheVariants(pulumi.CustomResource):
                 "image/webp",
             ])
         ```
-        <!--End PulumiCodeChooser -->
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -513,7 +511,6 @@ class ZoneCacheVariants(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
@@ -565,7 +562,6 @@ class ZoneCacheVariants(pulumi.CustomResource):
                 "image/webp",
             ])
         ```
-        <!--End PulumiCodeChooser -->
 
         :param str resource_name: The name of the resource.
         :param ZoneCacheVariantsArgs args: The arguments to use to populate this resource's properties.

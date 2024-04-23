@@ -322,14 +322,14 @@ public final class AccessApplicationState extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The name of the footer link.
+     * Friendly name of the Access Application.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return The name of the footer link.
+     * @return Friendly name of the Access Application.
      * 
      */
     public Optional<Output<String>> name() {
@@ -985,7 +985,7 @@ public final class AccessApplicationState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param name The name of the footer link.
+         * @param name Friendly name of the Access Application.
          * 
          * @return builder
          * 
@@ -996,7 +996,7 @@ public final class AccessApplicationState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param name The name of the footer link.
+         * @param name Friendly name of the Access Application.
          * 
          * @return builder
          * 

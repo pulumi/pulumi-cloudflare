@@ -191,7 +191,6 @@ class HostnameTlsSettingCiphers(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
@@ -201,7 +200,6 @@ class HostnameTlsSettingCiphers(pulumi.CustomResource):
             hostname="sub.example.com",
             values=["ECDHE-RSA-AES128-GCM-SHA256"])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -227,7 +225,6 @@ class HostnameTlsSettingCiphers(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
@@ -237,7 +234,6 @@ class HostnameTlsSettingCiphers(pulumi.CustomResource):
             hostname="sub.example.com",
             values=["ECDHE-RSA-AES128-GCM-SHA256"])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

@@ -35,14 +35,14 @@ public final class GetLoadBalancerPoolsPoolOrigin extends com.pulumi.resources.I
     }
 
     /**
-     * Whether this pool is enabled. Disabled pools will not receive traffic and are excluded from health checks.
+     * Whether this origin is enabled. Disabled origins will not receive traffic and are excluded from health checks.
      * 
      */
     @Import(name="enabled")
     private @Nullable Boolean enabled;
 
     /**
-     * @return Whether this pool is enabled. Disabled pools will not receive traffic and are excluded from health checks.
+     * @return Whether this origin is enabled. Disabled origins will not receive traffic and are excluded from health checks.
      * 
      */
     public Optional<Boolean> enabled() {
@@ -65,14 +65,14 @@ public final class GetLoadBalancerPoolsPoolOrigin extends com.pulumi.resources.I
     }
 
     /**
-     * A regular expression matching the name of the Load Balancer pool to lookup.
+     * A human-identifiable name for the origin.
      * 
      */
     @Import(name="name", required=true)
     private String name;
 
     /**
-     * @return A regular expression matching the name of the Load Balancer pool to lookup.
+     * @return A human-identifiable name for the origin.
      * 
      */
     public String name() {
@@ -134,7 +134,7 @@ public final class GetLoadBalancerPoolsPoolOrigin extends com.pulumi.resources.I
         }
 
         /**
-         * @param enabled Whether this pool is enabled. Disabled pools will not receive traffic and are excluded from health checks.
+         * @param enabled Whether this origin is enabled. Disabled origins will not receive traffic and are excluded from health checks.
          * 
          * @return builder
          * 
@@ -166,7 +166,7 @@ public final class GetLoadBalancerPoolsPoolOrigin extends com.pulumi.resources.I
         }
 
         /**
-         * @param name A regular expression matching the name of the Load Balancer pool to lookup.
+         * @param name A human-identifiable name for the origin.
          * 
          * @return builder
          * 

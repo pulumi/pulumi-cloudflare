@@ -12,7 +12,6 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
@@ -42,7 +41,6 @@ import * as utilities from "./utilities";
  *     ],
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
@@ -83,7 +81,7 @@ export class AddressMap extends pulumi.CustomResource {
      */
     public readonly accountId!: pulumi.Output<string>;
     /**
-     * Controls whether the membership can be deleted via the API or not.
+     * If set to false, then the Address Map cannot be deleted via API. This is true for Cloudflare-managed maps.
      */
     public /*out*/ readonly canDelete!: pulumi.Output<boolean>;
     /**
@@ -163,7 +161,7 @@ export interface AddressMapState {
      */
     accountId?: pulumi.Input<string>;
     /**
-     * Controls whether the membership can be deleted via the API or not.
+     * If set to false, then the Address Map cannot be deleted via API. This is true for Cloudflare-managed maps.
      */
     canDelete?: pulumi.Input<boolean>;
     /**

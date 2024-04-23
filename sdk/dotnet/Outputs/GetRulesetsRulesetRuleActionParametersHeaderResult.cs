@@ -18,7 +18,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string? Expression;
         /// <summary>
-        /// Name of the ruleset.
+        /// Name of the HTTP request header to target.
         /// </summary>
         public readonly string? Name;
         /// <summary>

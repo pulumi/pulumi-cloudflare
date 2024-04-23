@@ -39,9 +39,9 @@ type PagesProject struct {
 	DeploymentConfigs PagesProjectDeploymentConfigsOutput `pulumi:"deploymentConfigs"`
 	// A list of associated custom domains for the project.
 	Domains pulumi.StringArrayOutput `pulumi:"domains"`
-	// The global variable for the binding in your Worker code.
+	// Name of the project.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Project production branch name.
+	// The name of the branch that is used for the production environment.
 	ProductionBranch pulumi.StringOutput `pulumi:"productionBranch"`
 	// Configuration for the project source. Read more about the source configuration in the [developer documentation](https://developers.cloudflare.com/pages/platform/branch-build-controls/).
 	Source PagesProjectSourcePtrOutput `pulumi:"source"`
@@ -98,9 +98,9 @@ type pagesProjectState struct {
 	DeploymentConfigs *PagesProjectDeploymentConfigs `pulumi:"deploymentConfigs"`
 	// A list of associated custom domains for the project.
 	Domains []string `pulumi:"domains"`
-	// The global variable for the binding in your Worker code.
+	// Name of the project.
 	Name *string `pulumi:"name"`
-	// Project production branch name.
+	// The name of the branch that is used for the production environment.
 	ProductionBranch *string `pulumi:"productionBranch"`
 	// Configuration for the project source. Read more about the source configuration in the [developer documentation](https://developers.cloudflare.com/pages/platform/branch-build-controls/).
 	Source *PagesProjectSource `pulumi:"source"`
@@ -119,9 +119,9 @@ type PagesProjectState struct {
 	DeploymentConfigs PagesProjectDeploymentConfigsPtrInput
 	// A list of associated custom domains for the project.
 	Domains pulumi.StringArrayInput
-	// The global variable for the binding in your Worker code.
+	// Name of the project.
 	Name pulumi.StringPtrInput
-	// Project production branch name.
+	// The name of the branch that is used for the production environment.
 	ProductionBranch pulumi.StringPtrInput
 	// Configuration for the project source. Read more about the source configuration in the [developer documentation](https://developers.cloudflare.com/pages/platform/branch-build-controls/).
 	Source PagesProjectSourcePtrInput
@@ -140,9 +140,9 @@ type pagesProjectArgs struct {
 	BuildConfig *PagesProjectBuildConfig `pulumi:"buildConfig"`
 	// Configuration for deployments in a project.
 	DeploymentConfigs *PagesProjectDeploymentConfigs `pulumi:"deploymentConfigs"`
-	// The global variable for the binding in your Worker code.
+	// Name of the project.
 	Name string `pulumi:"name"`
-	// Project production branch name.
+	// The name of the branch that is used for the production environment.
 	ProductionBranch string `pulumi:"productionBranch"`
 	// Configuration for the project source. Read more about the source configuration in the [developer documentation](https://developers.cloudflare.com/pages/platform/branch-build-controls/).
 	Source *PagesProjectSource `pulumi:"source"`
@@ -156,9 +156,9 @@ type PagesProjectArgs struct {
 	BuildConfig PagesProjectBuildConfigPtrInput
 	// Configuration for deployments in a project.
 	DeploymentConfigs PagesProjectDeploymentConfigsPtrInput
-	// The global variable for the binding in your Worker code.
+	// Name of the project.
 	Name pulumi.StringInput
-	// Project production branch name.
+	// The name of the branch that is used for the production environment.
 	ProductionBranch pulumi.StringInput
 	// Configuration for the project source. Read more about the source configuration in the [developer documentation](https://developers.cloudflare.com/pages/platform/branch-build-controls/).
 	Source PagesProjectSourcePtrInput
@@ -276,12 +276,12 @@ func (o PagesProjectOutput) Domains() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *PagesProject) pulumi.StringArrayOutput { return v.Domains }).(pulumi.StringArrayOutput)
 }
 
-// The global variable for the binding in your Worker code.
+// Name of the project.
 func (o PagesProjectOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *PagesProject) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Project production branch name.
+// The name of the branch that is used for the production environment.
 func (o PagesProjectOutput) ProductionBranch() pulumi.StringOutput {
 	return o.ApplyT(func(v *PagesProject) pulumi.StringOutput { return v.ProductionBranch }).(pulumi.StringOutput)
 }

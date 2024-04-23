@@ -103,14 +103,14 @@ public class DlpProfile extends com.pulumi.resources.CustomResource {
         return this.entries;
     }
     /**
-     * Name of the entry to deploy.
+     * Name of the profile. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return Name of the entry to deploy.
+     * @return Name of the profile. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     public Output<String> name() {

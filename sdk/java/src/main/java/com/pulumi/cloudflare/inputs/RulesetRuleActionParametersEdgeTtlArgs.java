@@ -20,14 +20,14 @@ public final class RulesetRuleActionParametersEdgeTtlArgs extends com.pulumi.res
     public static final RulesetRuleActionParametersEdgeTtlArgs Empty = new RulesetRuleActionParametersEdgeTtlArgs();
 
     /**
-     * Default browser TTL. This value is required when override_origin is set
+     * Default edge TTL.
      * 
      */
     @Import(name="default")
     private @Nullable Output<Integer> default_;
 
     /**
-     * @return Default browser TTL. This value is required when override_origin is set
+     * @return Default edge TTL.
      * 
      */
     public Optional<Output<Integer>> default_() {
@@ -35,14 +35,14 @@ public final class RulesetRuleActionParametersEdgeTtlArgs extends com.pulumi.res
     }
 
     /**
-     * Mode of the browser TTL. Available values: `override_origin`, `respect_origin`, `bypass`
+     * Mode of the edge TTL. Available values: `override_origin`, `respect_origin`, `bypass_by_default`
      * 
      */
     @Import(name="mode", required=true)
     private Output<String> mode;
 
     /**
-     * @return Mode of the browser TTL. Available values: `override_origin`, `respect_origin`, `bypass`
+     * @return Mode of the edge TTL. Available values: `override_origin`, `respect_origin`, `bypass_by_default`
      * 
      */
     public Output<String> mode() {
@@ -91,7 +91,7 @@ public final class RulesetRuleActionParametersEdgeTtlArgs extends com.pulumi.res
         }
 
         /**
-         * @param default_ Default browser TTL. This value is required when override_origin is set
+         * @param default_ Default edge TTL.
          * 
          * @return builder
          * 
@@ -102,7 +102,7 @@ public final class RulesetRuleActionParametersEdgeTtlArgs extends com.pulumi.res
         }
 
         /**
-         * @param default_ Default browser TTL. This value is required when override_origin is set
+         * @param default_ Default edge TTL.
          * 
          * @return builder
          * 
@@ -112,7 +112,7 @@ public final class RulesetRuleActionParametersEdgeTtlArgs extends com.pulumi.res
         }
 
         /**
-         * @param mode Mode of the browser TTL. Available values: `override_origin`, `respect_origin`, `bypass`
+         * @param mode Mode of the edge TTL. Available values: `override_origin`, `respect_origin`, `bypass_by_default`
          * 
          * @return builder
          * 
@@ -123,7 +123,7 @@ public final class RulesetRuleActionParametersEdgeTtlArgs extends com.pulumi.res
         }
 
         /**
-         * @param mode Mode of the browser TTL. Available values: `override_origin`, `respect_origin`, `bypass`
+         * @param mode Mode of the edge TTL. Available values: `override_origin`, `respect_origin`, `bypass_by_default`
          * 
          * @return builder
          * 

@@ -97,14 +97,14 @@ public final class NotificationPolicyState extends com.pulumi.resources.Resource
     }
 
     /**
-     * State of the pool to alert on.
+     * The status of the notification policy.
      * 
      */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
     /**
-     * @return State of the pool to alert on.
+     * @return The status of the notification policy.
      * 
      */
     public Optional<Output<Boolean>> enabled() {
@@ -336,7 +336,7 @@ public final class NotificationPolicyState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param enabled State of the pool to alert on.
+         * @param enabled The status of the notification policy.
          * 
          * @return builder
          * 
@@ -347,7 +347,7 @@ public final class NotificationPolicyState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param enabled State of the pool to alert on.
+         * @param enabled The status of the notification policy.
          * 
          * @return builder
          * 

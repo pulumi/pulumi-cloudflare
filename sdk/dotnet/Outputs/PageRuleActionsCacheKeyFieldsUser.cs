@@ -26,7 +26,6 @@ namespace Pulumi.Cloudflare.Outputs
         /// 
         /// Example:
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -88,7 +87,6 @@ namespace Pulumi.Cloudflare.Outputs
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public readonly bool? Lang;
 

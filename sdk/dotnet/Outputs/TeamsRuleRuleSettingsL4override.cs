@@ -14,11 +14,11 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class TeamsRuleRuleSettingsL4override
     {
         /// <summary>
-        /// The IPv4 or IPv6 address of the upstream resolver.
+        /// Override IP to forward traffic to.
         /// </summary>
         public readonly string Ip;
         /// <summary>
-        /// A port number to use for the upstream resolver. Defaults to `53`.
+        /// Override Port to forward traffic to.
         /// </summary>
         public readonly int Port;
 

@@ -18,14 +18,14 @@ public final class RulesetRuleActionParametersOverridesRuleArgs extends com.pulu
     public static final RulesetRuleActionParametersOverridesRuleArgs Empty = new RulesetRuleActionParametersOverridesRuleArgs();
 
     /**
-     * Action to perform in the ruleset rule. Available values: `block`, `challenge`, `compress_response`, `ddos_dynamic`, `ddos_mitigation`, `execute`, `force_connection_close`, `js_challenge`, `log`, `log_custom_field`, `managed_challenge`, `redirect`, `rewrite`, `route`, `score`, `serve_error`, `set_cache_settings`, `set_config`, `skip`.
+     * Action to perform in the rule-level override. Available values: `block`, `challenge`, `compress_response`, `ddos_dynamic`, `ddos_mitigation`, `execute`, `force_connection_close`, `js_challenge`, `log`, `log_custom_field`, `managed_challenge`, `redirect`, `rewrite`, `route`, `score`, `serve_error`, `set_cache_settings`, `set_config`, `skip`.
      * 
      */
     @Import(name="action")
     private @Nullable Output<String> action;
 
     /**
-     * @return Action to perform in the ruleset rule. Available values: `block`, `challenge`, `compress_response`, `ddos_dynamic`, `ddos_mitigation`, `execute`, `force_connection_close`, `js_challenge`, `log`, `log_custom_field`, `managed_challenge`, `redirect`, `rewrite`, `route`, `score`, `serve_error`, `set_cache_settings`, `set_config`, `skip`.
+     * @return Action to perform in the rule-level override. Available values: `block`, `challenge`, `compress_response`, `ddos_dynamic`, `ddos_mitigation`, `execute`, `force_connection_close`, `js_challenge`, `log`, `log_custom_field`, `managed_challenge`, `redirect`, `rewrite`, `route`, `score`, `serve_error`, `set_cache_settings`, `set_config`, `skip`.
      * 
      */
     public Optional<Output<String>> action() {
@@ -33,14 +33,14 @@ public final class RulesetRuleActionParametersOverridesRuleArgs extends com.pulu
     }
 
     /**
-     * Whether the rule is active.
+     * Defines if the current rule-level override enables or disables the rule.
      * 
      */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
     /**
-     * @return Whether the rule is active.
+     * @return Defines if the current rule-level override enables or disables the rule.
      * 
      */
     public Optional<Output<Boolean>> enabled() {
@@ -48,14 +48,14 @@ public final class RulesetRuleActionParametersOverridesRuleArgs extends com.pulu
     }
 
     /**
-     * Unique rule identifier.
+     * Rule ID to apply the override to.
      * 
      */
     @Import(name="id")
     private @Nullable Output<String> id;
 
     /**
-     * @return Unique rule identifier.
+     * @return Rule ID to apply the override to.
      * 
      */
     public Optional<Output<String>> id() {
@@ -121,7 +121,7 @@ public final class RulesetRuleActionParametersOverridesRuleArgs extends com.pulu
         }
 
         /**
-         * @param action Action to perform in the ruleset rule. Available values: `block`, `challenge`, `compress_response`, `ddos_dynamic`, `ddos_mitigation`, `execute`, `force_connection_close`, `js_challenge`, `log`, `log_custom_field`, `managed_challenge`, `redirect`, `rewrite`, `route`, `score`, `serve_error`, `set_cache_settings`, `set_config`, `skip`.
+         * @param action Action to perform in the rule-level override. Available values: `block`, `challenge`, `compress_response`, `ddos_dynamic`, `ddos_mitigation`, `execute`, `force_connection_close`, `js_challenge`, `log`, `log_custom_field`, `managed_challenge`, `redirect`, `rewrite`, `route`, `score`, `serve_error`, `set_cache_settings`, `set_config`, `skip`.
          * 
          * @return builder
          * 
@@ -132,7 +132,7 @@ public final class RulesetRuleActionParametersOverridesRuleArgs extends com.pulu
         }
 
         /**
-         * @param action Action to perform in the ruleset rule. Available values: `block`, `challenge`, `compress_response`, `ddos_dynamic`, `ddos_mitigation`, `execute`, `force_connection_close`, `js_challenge`, `log`, `log_custom_field`, `managed_challenge`, `redirect`, `rewrite`, `route`, `score`, `serve_error`, `set_cache_settings`, `set_config`, `skip`.
+         * @param action Action to perform in the rule-level override. Available values: `block`, `challenge`, `compress_response`, `ddos_dynamic`, `ddos_mitigation`, `execute`, `force_connection_close`, `js_challenge`, `log`, `log_custom_field`, `managed_challenge`, `redirect`, `rewrite`, `route`, `score`, `serve_error`, `set_cache_settings`, `set_config`, `skip`.
          * 
          * @return builder
          * 
@@ -142,7 +142,7 @@ public final class RulesetRuleActionParametersOverridesRuleArgs extends com.pulu
         }
 
         /**
-         * @param enabled Whether the rule is active.
+         * @param enabled Defines if the current rule-level override enables or disables the rule.
          * 
          * @return builder
          * 
@@ -153,7 +153,7 @@ public final class RulesetRuleActionParametersOverridesRuleArgs extends com.pulu
         }
 
         /**
-         * @param enabled Whether the rule is active.
+         * @param enabled Defines if the current rule-level override enables or disables the rule.
          * 
          * @return builder
          * 
@@ -163,7 +163,7 @@ public final class RulesetRuleActionParametersOverridesRuleArgs extends com.pulu
         }
 
         /**
-         * @param id Unique rule identifier.
+         * @param id Rule ID to apply the override to.
          * 
          * @return builder
          * 
@@ -174,7 +174,7 @@ public final class RulesetRuleActionParametersOverridesRuleArgs extends com.pulu
         }
 
         /**
-         * @param id Unique rule identifier.
+         * @param id Rule ID to apply the override to.
          * 
          * @return builder
          * 

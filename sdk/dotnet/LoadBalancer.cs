@@ -18,7 +18,6 @@ namespace Pulumi.Cloudflare
     /// 
     /// ## Example Usage
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -109,7 +108,6 @@ namespace Pulumi.Cloudflare
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
@@ -175,7 +173,7 @@ namespace Pulumi.Cloudflare
         public Output<string> ModifiedOn { get; private set; } = null!;
 
         /// <summary>
-        /// Human readable name for this rule.
+        /// The DNS hostname to associate with your load balancer. If this hostname already exists as a DNS record in Cloudflare's DNS, the load balancer will take precedence and the DNS record will not be used.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -211,13 +209,13 @@ namespace Pulumi.Cloudflare
         public Output<ImmutableArray<Outputs.LoadBalancerRule>> Rules { get; private set; } = null!;
 
         /// <summary>
-        /// Configure attributes for session affinity.
+        /// Specifies the type of session affinity the load balancer should use unless specified as `none` or `""` (default). With value `cookie`, on the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy then a new origin server is calculated and used. Value `ip_cookie` behaves the same as `cookie` except the initial origin selection is stable and based on the client's IP address. Available values: `""`, `none`, `cookie`, `ip_cookie`, `header`. Defaults to `none`.
         /// </summary>
         [Output("sessionAffinity")]
         public Output<string?> SessionAffinity { get; private set; } = null!;
 
         /// <summary>
-        /// Configure attributes for session affinity. Note that the property `drain_duration` is not currently supported as a rule override.
+        /// Configure attributes for session affinity.
         /// </summary>
         [Output("sessionAffinityAttributes")]
         public Output<ImmutableArray<Outputs.LoadBalancerSessionAffinityAttribute>> SessionAffinityAttributes { get; private set; } = null!;
@@ -235,7 +233,7 @@ namespace Pulumi.Cloudflare
         public Output<string> SteeringPolicy { get; private set; } = null!;
 
         /// <summary>
-        /// Time to live (TTL) of the DNS entry for the IP address returned by this load balancer. This cannot be set for proxied load balancers. Defaults to `30`.
+        /// Time to live (TTL) of the DNS entry for the IP address returned by this load balancer. This cannot be set for proxied load balancers. Defaults to `30`. Conflicts with `proxied`.
         /// </summary>
         [Output("ttl")]
         public Output<int> Ttl { get; private set; } = null!;
@@ -359,7 +357,7 @@ namespace Pulumi.Cloudflare
         }
 
         /// <summary>
-        /// Human readable name for this rule.
+        /// The DNS hostname to associate with your load balancer. If this hostname already exists as a DNS record in Cloudflare's DNS, the load balancer will take precedence and the DNS record will not be used.
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
@@ -419,7 +417,7 @@ namespace Pulumi.Cloudflare
         }
 
         /// <summary>
-        /// Configure attributes for session affinity.
+        /// Specifies the type of session affinity the load balancer should use unless specified as `none` or `""` (default). With value `cookie`, on the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy then a new origin server is calculated and used. Value `ip_cookie` behaves the same as `cookie` except the initial origin selection is stable and based on the client's IP address. Available values: `""`, `none`, `cookie`, `ip_cookie`, `header`. Defaults to `none`.
         /// </summary>
         [Input("sessionAffinity")]
         public Input<string>? SessionAffinity { get; set; }
@@ -428,7 +426,7 @@ namespace Pulumi.Cloudflare
         private InputList<Inputs.LoadBalancerSessionAffinityAttributeArgs>? _sessionAffinityAttributes;
 
         /// <summary>
-        /// Configure attributes for session affinity. Note that the property `drain_duration` is not currently supported as a rule override.
+        /// Configure attributes for session affinity.
         /// </summary>
         public InputList<Inputs.LoadBalancerSessionAffinityAttributeArgs> SessionAffinityAttributes
         {
@@ -449,7 +447,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? SteeringPolicy { get; set; }
 
         /// <summary>
-        /// Time to live (TTL) of the DNS entry for the IP address returned by this load balancer. This cannot be set for proxied load balancers. Defaults to `30`.
+        /// Time to live (TTL) of the DNS entry for the IP address returned by this load balancer. This cannot be set for proxied load balancers. Defaults to `30`. Conflicts with `proxied`.
         /// </summary>
         [Input("ttl")]
         public Input<int>? Ttl { get; set; }
@@ -547,7 +545,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? ModifiedOn { get; set; }
 
         /// <summary>
-        /// Human readable name for this rule.
+        /// The DNS hostname to associate with your load balancer. If this hostname already exists as a DNS record in Cloudflare's DNS, the load balancer will take precedence and the DNS record will not be used.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -607,7 +605,7 @@ namespace Pulumi.Cloudflare
         }
 
         /// <summary>
-        /// Configure attributes for session affinity.
+        /// Specifies the type of session affinity the load balancer should use unless specified as `none` or `""` (default). With value `cookie`, on the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy then a new origin server is calculated and used. Value `ip_cookie` behaves the same as `cookie` except the initial origin selection is stable and based on the client's IP address. Available values: `""`, `none`, `cookie`, `ip_cookie`, `header`. Defaults to `none`.
         /// </summary>
         [Input("sessionAffinity")]
         public Input<string>? SessionAffinity { get; set; }
@@ -616,7 +614,7 @@ namespace Pulumi.Cloudflare
         private InputList<Inputs.LoadBalancerSessionAffinityAttributeGetArgs>? _sessionAffinityAttributes;
 
         /// <summary>
-        /// Configure attributes for session affinity. Note that the property `drain_duration` is not currently supported as a rule override.
+        /// Configure attributes for session affinity.
         /// </summary>
         public InputList<Inputs.LoadBalancerSessionAffinityAttributeGetArgs> SessionAffinityAttributes
         {
@@ -637,7 +635,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? SteeringPolicy { get; set; }
 
         /// <summary>
-        /// Time to live (TTL) of the DNS entry for the IP address returned by this load balancer. This cannot be set for proxied load balancers. Defaults to `30`.
+        /// Time to live (TTL) of the DNS entry for the IP address returned by this load balancer. This cannot be set for proxied load balancers. Defaults to `30`. Conflicts with `proxied`.
         /// </summary>
         [Input("ttl")]
         public Input<int>? Ttl { get; set; }

@@ -10,7 +10,6 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
@@ -20,7 +19,6 @@ import * as utilities from "./utilities";
  * export const accountLbMonitorsAndReadId = all.then(all => all.account?.["Load Balancing: Monitors and Pools Read"]);
  * export const userMembershipsReadId = all.then(all => all.user?.["Memberships Read"]);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getApiTokenPermissionGroups(opts?: pulumi.InvokeOptions): Promise<GetApiTokenPermissionGroupsResult> {
 
@@ -66,7 +64,6 @@ export interface GetApiTokenPermissionGroupsResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
@@ -76,7 +73,6 @@ export interface GetApiTokenPermissionGroupsResult {
  * export const accountLbMonitorsAndReadId = all.then(all => all.account?.["Load Balancing: Monitors and Pools Read"]);
  * export const userMembershipsReadId = all.then(all => all.user?.["Memberships Read"]);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getApiTokenPermissionGroupsOutput(opts?: pulumi.InvokeOptions): pulumi.Output<GetApiTokenPermissionGroupsResult> {
     return pulumi.output(getApiTokenPermissionGroups(opts))

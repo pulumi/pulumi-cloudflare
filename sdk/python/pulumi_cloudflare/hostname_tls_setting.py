@@ -190,7 +190,6 @@ class HostnameTlsSetting(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
@@ -201,7 +200,6 @@ class HostnameTlsSetting(pulumi.CustomResource):
             setting="min_tls_version",
             value="1.2")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -227,7 +225,6 @@ class HostnameTlsSetting(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
@@ -238,7 +235,6 @@ class HostnameTlsSetting(pulumi.CustomResource):
             setting="min_tls_version",
             value="1.2")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

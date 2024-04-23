@@ -11,7 +11,6 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
@@ -20,7 +19,6 @@ import * as utilities from "./utilities";
  *     accountId: "f037e56e89293a057740de681ac9abbe",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getDlpDatasets(args: GetDlpDatasetsArgs, opts?: pulumi.InvokeOptions): Promise<GetDlpDatasetsResult> {
 
@@ -62,7 +60,6 @@ export interface GetDlpDatasetsResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
@@ -71,7 +68,6 @@ export interface GetDlpDatasetsResult {
  *     accountId: "f037e56e89293a057740de681ac9abbe",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getDlpDatasetsOutput(args: GetDlpDatasetsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDlpDatasetsResult> {
     return pulumi.output(args).apply((a: any) => getDlpDatasets(a, opts))

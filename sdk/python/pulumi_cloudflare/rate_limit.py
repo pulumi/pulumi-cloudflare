@@ -327,7 +327,6 @@ class RateLimit(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
@@ -393,7 +392,6 @@ class RateLimit(pulumi.CustomResource):
                 "example.com/bypass2",
             ])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -425,7 +423,6 @@ class RateLimit(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
@@ -491,7 +488,6 @@ class RateLimit(pulumi.CustomResource):
                 "example.com/bypass2",
             ])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

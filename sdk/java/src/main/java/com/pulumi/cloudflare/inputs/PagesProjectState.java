@@ -95,14 +95,14 @@ public final class PagesProjectState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The global variable for the binding in your Worker code.
+     * Name of the project.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return The global variable for the binding in your Worker code.
+     * @return Name of the project.
      * 
      */
     public Optional<Output<String>> name() {
@@ -110,14 +110,14 @@ public final class PagesProjectState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Project production branch name.
+     * The name of the branch that is used for the production environment.
      * 
      */
     @Import(name="productionBranch")
     private @Nullable Output<String> productionBranch;
 
     /**
-     * @return Project production branch name.
+     * @return The name of the branch that is used for the production environment.
      * 
      */
     public Optional<Output<String>> productionBranch() {
@@ -302,7 +302,7 @@ public final class PagesProjectState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name The global variable for the binding in your Worker code.
+         * @param name Name of the project.
          * 
          * @return builder
          * 
@@ -313,7 +313,7 @@ public final class PagesProjectState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name The global variable for the binding in your Worker code.
+         * @param name Name of the project.
          * 
          * @return builder
          * 
@@ -323,7 +323,7 @@ public final class PagesProjectState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param productionBranch Project production branch name.
+         * @param productionBranch The name of the branch that is used for the production environment.
          * 
          * @return builder
          * 
@@ -334,7 +334,7 @@ public final class PagesProjectState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param productionBranch Project production branch name.
+         * @param productionBranch The name of the branch that is used for the production environment.
          * 
          * @return builder
          * 

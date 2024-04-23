@@ -150,7 +150,6 @@ class RegionalHostname(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
@@ -170,7 +169,6 @@ class RegionalHostname(pulumi.CustomResource):
             hostname="example.com",
             region_key="eu")
         ```
-        <!--End PulumiCodeChooser -->
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -189,7 +187,6 @@ class RegionalHostname(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
@@ -209,7 +206,6 @@ class RegionalHostname(pulumi.CustomResource):
             hostname="example.com",
             region_key="eu")
         ```
-        <!--End PulumiCodeChooser -->
 
         :param str resource_name: The name of the resource.
         :param RegionalHostnameArgs args: The arguments to use to populate this resource's properties.

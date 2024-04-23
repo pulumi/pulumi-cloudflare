@@ -28,7 +28,7 @@ public final class GetRulesetsRulesetRuleActionParametersOverridesRule {
     @Deprecated /* Use `status` instead. Continuing to use `enabled` will result in an inconsistent state for your Ruleset configuration. */
     private @Nullable Boolean enabled;
     /**
-     * @return The ID of the Ruleset to target.
+     * @return The ID of this resource.
      * 
      */
     private @Nullable String id;
@@ -68,7 +68,7 @@ public final class GetRulesetsRulesetRuleActionParametersOverridesRule {
         return Optional.ofNullable(this.enabled);
     }
     /**
-     * @return The ID of the Ruleset to target.
+     * @return The ID of this resource.
      * 
      */
     public Optional<String> id() {

@@ -38,7 +38,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string Expression;
         /// <summary>
-        /// The ID of the Ruleset to target.
+        /// Unique rule identifier.
         /// </summary>
         public readonly string Id;
         /// <summary>
@@ -58,7 +58,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string Ref;
         /// <summary>
-        /// Version of the ruleset to filter on.
+        /// Version of the ruleset to deploy.
         /// </summary>
         public readonly string Version;
 

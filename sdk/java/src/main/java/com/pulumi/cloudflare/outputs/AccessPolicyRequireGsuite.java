@@ -13,20 +13,12 @@ import javax.annotation.Nullable;
 @CustomType
 public final class AccessPolicyRequireGsuite {
     private @Nullable List<String> emails;
-    /**
-     * @return The ID of the Azure Identity provider.
-     * 
-     */
     private @Nullable String identityProviderId;
 
     private AccessPolicyRequireGsuite() {}
     public List<String> emails() {
         return this.emails == null ? List.of() : this.emails;
     }
-    /**
-     * @return The ID of the Azure Identity provider.
-     * 
-     */
     public Optional<String> identityProviderId() {
         return Optional.ofNullable(this.identityProviderId);
     }

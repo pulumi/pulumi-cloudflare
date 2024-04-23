@@ -35,14 +35,14 @@ public final class AddressMapState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Controls whether the membership can be deleted via the API or not.
+     * If set to false, then the Address Map cannot be deleted via API. This is true for Cloudflare-managed maps.
      * 
      */
     @Import(name="canDelete")
     private @Nullable Output<Boolean> canDelete;
 
     /**
-     * @return Controls whether the membership can be deleted via the API or not.
+     * @return If set to false, then the Address Map cannot be deleted via API. This is true for Cloudflare-managed maps.
      * 
      */
     public Optional<Output<Boolean>> canDelete() {
@@ -192,7 +192,7 @@ public final class AddressMapState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param canDelete Controls whether the membership can be deleted via the API or not.
+         * @param canDelete If set to false, then the Address Map cannot be deleted via API. This is true for Cloudflare-managed maps.
          * 
          * @return builder
          * 
@@ -203,7 +203,7 @@ public final class AddressMapState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param canDelete Controls whether the membership can be deleted via the API or not.
+         * @param canDelete If set to false, then the Address Map cannot be deleted via API. This is true for Cloudflare-managed maps.
          * 
          * @return builder
          * 

@@ -10,7 +10,6 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
@@ -22,7 +21,6 @@ import * as utilities from "./utilities";
  *     customHtml: "<html><body><h1>Forbidden</h1></body></html>",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export class AccessCustomPage extends pulumi.CustomResource {
     /**

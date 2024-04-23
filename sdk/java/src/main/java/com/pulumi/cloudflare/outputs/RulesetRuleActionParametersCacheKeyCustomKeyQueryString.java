@@ -17,7 +17,7 @@ public final class RulesetRuleActionParametersCacheKeyCustomKeyQueryString {
      */
     private @Nullable List<String> excludes;
     /**
-     * @return List of cookies to include in the custom key.
+     * @return List of query string parameters to include in the custom key.
      * 
      */
     private @Nullable List<String> includes;
@@ -31,7 +31,7 @@ public final class RulesetRuleActionParametersCacheKeyCustomKeyQueryString {
         return this.excludes == null ? List.of() : this.excludes;
     }
     /**
-     * @return List of cookies to include in the custom key.
+     * @return List of query string parameters to include in the custom key.
      * 
      */
     public List<String> includes() {

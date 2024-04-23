@@ -282,7 +282,6 @@ class KeylessCertificate(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
@@ -296,7 +295,6 @@ class KeylessCertificate(pulumi.CustomResource):
             enabled=True,
             certificate="-----INSERT CERTIFICATE-----")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -325,7 +323,6 @@ class KeylessCertificate(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
@@ -339,7 +336,6 @@ class KeylessCertificate(pulumi.CustomResource):
             enabled=True,
             certificate="-----INSERT CERTIFICATE-----")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

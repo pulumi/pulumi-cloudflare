@@ -66,7 +66,7 @@ export class DlpProfile extends pulumi.CustomResource {
      */
     public readonly entries!: pulumi.Output<outputs.DlpProfileEntry[]>;
     /**
-     * Name of the entry to deploy.
+     * Name of the profile. **Modifying this attribute will force creation of a new resource.**
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -149,7 +149,7 @@ export interface DlpProfileState {
      */
     entries?: pulumi.Input<pulumi.Input<inputs.DlpProfileEntry>[]>;
     /**
-     * Name of the entry to deploy.
+     * Name of the profile. **Modifying this attribute will force creation of a new resource.**
      */
     name?: pulumi.Input<string>;
     /**
@@ -183,7 +183,7 @@ export interface DlpProfileArgs {
      */
     entries: pulumi.Input<pulumi.Input<inputs.DlpProfileEntry>[]>;
     /**
-     * Name of the entry to deploy.
+     * Name of the profile. **Modifying this attribute will force creation of a new resource.**
      */
     name: pulumi.Input<string>;
     /**

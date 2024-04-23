@@ -9,7 +9,6 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
@@ -17,7 +16,6 @@ import * as utilities from "./utilities";
  * const example = new cloudflare.Zone("example", {zone: "example.com"});
  * const exampleZoneDnssec = new cloudflare.ZoneDnssec("example", {zoneId: example.id});
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

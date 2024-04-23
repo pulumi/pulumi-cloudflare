@@ -460,7 +460,6 @@ class AccessOrganization(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
@@ -480,7 +479,6 @@ class AccessOrganization(pulumi.CustomResource):
                 footer_text="My footer text",
             )])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -514,7 +512,6 @@ class AccessOrganization(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
@@ -534,7 +531,6 @@ class AccessOrganization(pulumi.CustomResource):
                 footer_text="My footer text",
             )])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

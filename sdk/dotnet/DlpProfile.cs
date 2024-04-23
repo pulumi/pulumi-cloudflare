@@ -54,7 +54,7 @@ namespace Pulumi.Cloudflare
         public Output<ImmutableArray<Outputs.DlpProfileEntry>> Entries { get; private set; } = null!;
 
         /// <summary>
-        /// Name of the entry to deploy.
+        /// Name of the profile. **Modifying this attribute will force creation of a new resource.**
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -148,7 +148,7 @@ namespace Pulumi.Cloudflare
         }
 
         /// <summary>
-        /// Name of the entry to deploy.
+        /// Name of the profile. **Modifying this attribute will force creation of a new resource.**
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
@@ -204,7 +204,7 @@ namespace Pulumi.Cloudflare
         }
 
         /// <summary>
-        /// Name of the entry to deploy.
+        /// Name of the profile. **Modifying this attribute will force creation of a new resource.**
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

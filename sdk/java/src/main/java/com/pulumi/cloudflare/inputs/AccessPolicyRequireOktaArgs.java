@@ -16,17 +16,9 @@ public final class AccessPolicyRequireOktaArgs extends com.pulumi.resources.Reso
 
     public static final AccessPolicyRequireOktaArgs Empty = new AccessPolicyRequireOktaArgs();
 
-    /**
-     * The ID of the Azure Identity provider.
-     * 
-     */
     @Import(name="identityProviderId")
     private @Nullable Output<String> identityProviderId;
 
-    /**
-     * @return The ID of the Azure Identity provider.
-     * 
-     */
     public Optional<Output<String>> identityProviderId() {
         return Optional.ofNullable(this.identityProviderId);
     }
@@ -63,23 +55,11 @@ public final class AccessPolicyRequireOktaArgs extends com.pulumi.resources.Reso
             $ = new AccessPolicyRequireOktaArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param identityProviderId The ID of the Azure Identity provider.
-         * 
-         * @return builder
-         * 
-         */
         public Builder identityProviderId(@Nullable Output<String> identityProviderId) {
             $.identityProviderId = identityProviderId;
             return this;
         }
 
-        /**
-         * @param identityProviderId The ID of the Azure Identity provider.
-         * 
-         * @return builder
-         * 
-         */
         public Builder identityProviderId(String identityProviderId) {
             return identityProviderId(Output.of(identityProviderId));
         }

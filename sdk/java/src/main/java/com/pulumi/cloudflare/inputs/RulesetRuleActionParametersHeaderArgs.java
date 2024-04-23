@@ -31,14 +31,14 @@ public final class RulesetRuleActionParametersHeaderArgs extends com.pulumi.reso
     }
 
     /**
-     * Name of the compression algorithm to use. Available values: `gzip`, `brotli`, `auto`, `default`, `none`
+     * Name of the HTTP request header to target.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return Name of the compression algorithm to use. Available values: `gzip`, `brotli`, `auto`, `default`, `none`
+     * @return Name of the HTTP request header to target.
      * 
      */
     public Optional<Output<String>> name() {
@@ -61,14 +61,14 @@ public final class RulesetRuleActionParametersHeaderArgs extends com.pulumi.reso
     }
 
     /**
-     * Status code edge TTL value.
+     * Static value to provide as the HTTP request header value.
      * 
      */
     @Import(name="value")
     private @Nullable Output<String> value;
 
     /**
-     * @return Status code edge TTL value.
+     * @return Static value to provide as the HTTP request header value.
      * 
      */
     public Optional<Output<String>> value() {
@@ -124,7 +124,7 @@ public final class RulesetRuleActionParametersHeaderArgs extends com.pulumi.reso
         }
 
         /**
-         * @param name Name of the compression algorithm to use. Available values: `gzip`, `brotli`, `auto`, `default`, `none`
+         * @param name Name of the HTTP request header to target.
          * 
          * @return builder
          * 
@@ -135,7 +135,7 @@ public final class RulesetRuleActionParametersHeaderArgs extends com.pulumi.reso
         }
 
         /**
-         * @param name Name of the compression algorithm to use. Available values: `gzip`, `brotli`, `auto`, `default`, `none`
+         * @param name Name of the HTTP request header to target.
          * 
          * @return builder
          * 
@@ -166,7 +166,7 @@ public final class RulesetRuleActionParametersHeaderArgs extends com.pulumi.reso
         }
 
         /**
-         * @param value Status code edge TTL value.
+         * @param value Static value to provide as the HTTP request header value.
          * 
          * @return builder
          * 
@@ -177,7 +177,7 @@ public final class RulesetRuleActionParametersHeaderArgs extends com.pulumi.reso
         }
 
         /**
-         * @param value Status code edge TTL value.
+         * @param value Static value to provide as the HTTP request header value.
          * 
          * @return builder
          * 

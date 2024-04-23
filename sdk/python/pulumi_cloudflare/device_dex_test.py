@@ -264,7 +264,6 @@ class DeviceDexTest(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
@@ -281,7 +280,6 @@ class DeviceDexTest(pulumi.CustomResource):
                 method="GET",
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -309,7 +307,6 @@ class DeviceDexTest(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
@@ -326,7 +323,6 @@ class DeviceDexTest(pulumi.CustomResource):
                 method="GET",
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

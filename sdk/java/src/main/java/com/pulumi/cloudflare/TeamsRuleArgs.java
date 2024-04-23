@@ -36,14 +36,14 @@ public final class TeamsRuleArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Action to be taken when the SSL certificate of upstream is invalid. Available values: `pass_through`, `block`, `error`.
+     * The action executed by matched teams rule. Available values: `allow`, `block`, `safesearch`, `ytrestricted`, `on`, `off`, `scan`, `noscan`, `isolate`, `noisolate`, `override`, `l4_override`, `egress`, `audit_ssh`, `resolve`.
      * 
      */
     @Import(name="action", required=true)
     private Output<String> action;
 
     /**
-     * @return Action to be taken when the SSL certificate of upstream is invalid. Available values: `pass_through`, `block`, `error`.
+     * @return The action executed by matched teams rule. Available values: `allow`, `block`, `safesearch`, `ytrestricted`, `on`, `off`, `scan`, `noscan`, `isolate`, `noisolate`, `override`, `l4_override`, `egress`, `audit_ssh`, `resolve`.
      * 
      */
     public Output<String> action() {
@@ -81,14 +81,14 @@ public final class TeamsRuleArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Enable notification settings.
+     * Indicator of rule enablement.
      * 
      */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
     /**
-     * @return Enable notification settings.
+     * @return Indicator of rule enablement.
      * 
      */
     public Optional<Output<Boolean>> enabled() {
@@ -241,7 +241,7 @@ public final class TeamsRuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param action Action to be taken when the SSL certificate of upstream is invalid. Available values: `pass_through`, `block`, `error`.
+         * @param action The action executed by matched teams rule. Available values: `allow`, `block`, `safesearch`, `ytrestricted`, `on`, `off`, `scan`, `noscan`, `isolate`, `noisolate`, `override`, `l4_override`, `egress`, `audit_ssh`, `resolve`.
          * 
          * @return builder
          * 
@@ -252,7 +252,7 @@ public final class TeamsRuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param action Action to be taken when the SSL certificate of upstream is invalid. Available values: `pass_through`, `block`, `error`.
+         * @param action The action executed by matched teams rule. Available values: `allow`, `block`, `safesearch`, `ytrestricted`, `on`, `off`, `scan`, `noscan`, `isolate`, `noisolate`, `override`, `l4_override`, `egress`, `audit_ssh`, `resolve`.
          * 
          * @return builder
          * 
@@ -304,7 +304,7 @@ public final class TeamsRuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param enabled Enable notification settings.
+         * @param enabled Indicator of rule enablement.
          * 
          * @return builder
          * 
@@ -315,7 +315,7 @@ public final class TeamsRuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param enabled Enable notification settings.
+         * @param enabled Indicator of rule enablement.
          * 
          * @return builder
          * 

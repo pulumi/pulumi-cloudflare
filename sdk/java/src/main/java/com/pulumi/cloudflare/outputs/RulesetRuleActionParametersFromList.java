@@ -17,7 +17,7 @@ public final class RulesetRuleActionParametersFromList {
      */
     private @Nullable String key;
     /**
-     * @return Name of the compression algorithm to use. Available values: `gzip`, `brotli`, `auto`, `default`, `none`
+     * @return Name of the list.
      * 
      */
     private @Nullable String name;
@@ -31,7 +31,7 @@ public final class RulesetRuleActionParametersFromList {
         return Optional.ofNullable(this.key);
     }
     /**
-     * @return Name of the compression algorithm to use. Available values: `gzip`, `brotli`, `auto`, `default`, `none`
+     * @return Name of the list.
      * 
      */
     public Optional<String> name() {

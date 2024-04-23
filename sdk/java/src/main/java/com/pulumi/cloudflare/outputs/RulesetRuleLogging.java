@@ -12,14 +12,14 @@ import javax.annotation.Nullable;
 @CustomType
 public final class RulesetRuleLogging {
     /**
-     * @return Defines if the current tag-level override enables or disables the ruleset rules with the specified tag.
+     * @return Override the default logging behavior when a rule is matched.
      * 
      */
     private @Nullable Boolean enabled;
 
     private RulesetRuleLogging() {}
     /**
-     * @return Defines if the current tag-level override enables or disables the ruleset rules with the specified tag.
+     * @return Override the default logging behavior when a rule is matched.
      * 
      */
     public Optional<Boolean> enabled() {

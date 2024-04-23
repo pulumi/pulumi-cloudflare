@@ -209,7 +209,6 @@ class Filter(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
@@ -219,7 +218,6 @@ class Filter(pulumi.CustomResource):
             description="Wordpress break-in attempts that are outside of the office",
             expression="(http.request.uri.path ~ \\".*wp-login.php\\" or http.request.uri.path ~ \\".*xmlrpc.php\\") and ip.src ne 192.0.2.1")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -254,7 +252,6 @@ class Filter(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
@@ -264,7 +261,6 @@ class Filter(pulumi.CustomResource):
             description="Wordpress break-in attempts that are outside of the office",
             expression="(http.request.uri.path ~ \\".*wp-login.php\\" or http.request.uri.path ~ \\".*xmlrpc.php\\") and ip.src ne 192.0.2.1")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

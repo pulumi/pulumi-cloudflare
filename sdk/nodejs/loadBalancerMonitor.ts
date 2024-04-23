@@ -83,7 +83,7 @@ export class LoadBalancerMonitor extends pulumi.CustomResource {
      */
     public readonly followRedirects!: pulumi.Output<boolean | undefined>;
     /**
-     * The header name.
+     * The HTTP request headers to send in the health check. It is recommended you set a Host header by default. The User-Agent header cannot be overridden.
      */
     public readonly headers!: pulumi.Output<outputs.LoadBalancerMonitorHeader[] | undefined>;
     /**
@@ -226,7 +226,7 @@ export interface LoadBalancerMonitorState {
      */
     followRedirects?: pulumi.Input<boolean>;
     /**
-     * The header name.
+     * The HTTP request headers to send in the health check. It is recommended you set a Host header by default. The User-Agent header cannot be overridden.
      */
     headers?: pulumi.Input<pulumi.Input<inputs.LoadBalancerMonitorHeader>[]>;
     /**
@@ -304,7 +304,7 @@ export interface LoadBalancerMonitorArgs {
      */
     followRedirects?: pulumi.Input<boolean>;
     /**
-     * The header name.
+     * The HTTP request headers to send in the health check. It is recommended you set a Host header by default. The User-Agent header cannot be overridden.
      */
     headers?: pulumi.Input<pulumi.Input<inputs.LoadBalancerMonitorHeader>[]>;
     /**

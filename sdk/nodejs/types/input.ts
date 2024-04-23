@@ -152,7 +152,7 @@ export interface AccessApplicationSaasAppCustomAttribute {
      */
     friendlyName?: pulumi.Input<string>;
     /**
-     * The name of the footer link.
+     * The name of the attribute as provided to the SaaS app.
      */
     name?: pulumi.Input<string>;
     /**
@@ -168,7 +168,7 @@ export interface AccessApplicationSaasAppCustomAttribute {
 
 export interface AccessApplicationSaasAppCustomAttributeSource {
     /**
-     * The name of the footer link.
+     * The name of the attribute as provided by the IDP.
      */
     name: pulumi.Input<string>;
 }
@@ -228,7 +228,7 @@ export interface AccessGroupExcludeAzure {
      */
     identityProviderId?: pulumi.Input<string>;
     /**
-     * The ID of the Authentication Context.
+     * The ID of the Azure group or user.
      */
     ids?: pulumi.Input<pulumi.Input<string>[]>;
 }
@@ -239,9 +239,6 @@ export interface AccessGroupExcludeExternalEvaluation {
 }
 
 export interface AccessGroupExcludeGithub {
-    /**
-     * The ID of the Azure Identity provider.
-     */
     identityProviderId?: pulumi.Input<string>;
     name?: pulumi.Input<string>;
     teams?: pulumi.Input<pulumi.Input<string>[]>;
@@ -249,16 +246,10 @@ export interface AccessGroupExcludeGithub {
 
 export interface AccessGroupExcludeGsuite {
     emails?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * The ID of the Azure Identity provider.
-     */
     identityProviderId?: pulumi.Input<string>;
 }
 
 export interface AccessGroupExcludeOkta {
-    /**
-     * The ID of the Azure Identity provider.
-     */
     identityProviderId?: pulumi.Input<string>;
     names?: pulumi.Input<pulumi.Input<string>[]>;
 }
@@ -266,9 +257,6 @@ export interface AccessGroupExcludeOkta {
 export interface AccessGroupExcludeSaml {
     attributeName?: pulumi.Input<string>;
     attributeValue?: pulumi.Input<string>;
-    /**
-     * The ID of the Azure Identity provider.
-     */
     identityProviderId?: pulumi.Input<string>;
 }
 
@@ -327,7 +315,7 @@ export interface AccessGroupIncludeAzure {
      */
     identityProviderId?: pulumi.Input<string>;
     /**
-     * The ID of the Authentication Context.
+     * The ID of the Azure group or user.
      */
     ids?: pulumi.Input<pulumi.Input<string>[]>;
 }
@@ -338,9 +326,6 @@ export interface AccessGroupIncludeExternalEvaluation {
 }
 
 export interface AccessGroupIncludeGithub {
-    /**
-     * The ID of the Azure Identity provider.
-     */
     identityProviderId?: pulumi.Input<string>;
     name?: pulumi.Input<string>;
     teams?: pulumi.Input<pulumi.Input<string>[]>;
@@ -348,16 +333,10 @@ export interface AccessGroupIncludeGithub {
 
 export interface AccessGroupIncludeGsuite {
     emails?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * The ID of the Azure Identity provider.
-     */
     identityProviderId?: pulumi.Input<string>;
 }
 
 export interface AccessGroupIncludeOkta {
-    /**
-     * The ID of the Azure Identity provider.
-     */
     identityProviderId?: pulumi.Input<string>;
     names?: pulumi.Input<pulumi.Input<string>[]>;
 }
@@ -365,9 +344,6 @@ export interface AccessGroupIncludeOkta {
 export interface AccessGroupIncludeSaml {
     attributeName?: pulumi.Input<string>;
     attributeValue?: pulumi.Input<string>;
-    /**
-     * The ID of the Azure Identity provider.
-     */
     identityProviderId?: pulumi.Input<string>;
 }
 
@@ -426,7 +402,7 @@ export interface AccessGroupRequireAzure {
      */
     identityProviderId?: pulumi.Input<string>;
     /**
-     * The ID of the Authentication Context.
+     * The ID of the Azure group or user.
      */
     ids?: pulumi.Input<pulumi.Input<string>[]>;
 }
@@ -437,9 +413,6 @@ export interface AccessGroupRequireExternalEvaluation {
 }
 
 export interface AccessGroupRequireGithub {
-    /**
-     * The ID of the Azure Identity provider.
-     */
     identityProviderId?: pulumi.Input<string>;
     name?: pulumi.Input<string>;
     teams?: pulumi.Input<pulumi.Input<string>[]>;
@@ -447,16 +420,10 @@ export interface AccessGroupRequireGithub {
 
 export interface AccessGroupRequireGsuite {
     emails?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * The ID of the Azure Identity provider.
-     */
     identityProviderId?: pulumi.Input<string>;
 }
 
 export interface AccessGroupRequireOkta {
-    /**
-     * The ID of the Azure Identity provider.
-     */
     identityProviderId?: pulumi.Input<string>;
     names?: pulumi.Input<pulumi.Input<string>[]>;
 }
@@ -464,9 +431,6 @@ export interface AccessGroupRequireOkta {
 export interface AccessGroupRequireSaml {
     attributeName?: pulumi.Input<string>;
     attributeValue?: pulumi.Input<string>;
-    /**
-     * The ID of the Azure Identity provider.
-     */
     identityProviderId?: pulumi.Input<string>;
 }
 
@@ -624,7 +588,7 @@ export interface AccessPolicyExcludeAzure {
      */
     identityProviderId?: pulumi.Input<string>;
     /**
-     * The ID of the Authentication Context.
+     * The ID of the Azure group or user.
      */
     ids?: pulumi.Input<pulumi.Input<string>[]>;
 }
@@ -635,9 +599,6 @@ export interface AccessPolicyExcludeExternalEvaluation {
 }
 
 export interface AccessPolicyExcludeGithub {
-    /**
-     * The ID of the Azure Identity provider.
-     */
     identityProviderId?: pulumi.Input<string>;
     name?: pulumi.Input<string>;
     teams?: pulumi.Input<pulumi.Input<string>[]>;
@@ -645,16 +606,10 @@ export interface AccessPolicyExcludeGithub {
 
 export interface AccessPolicyExcludeGsuite {
     emails?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * The ID of the Azure Identity provider.
-     */
     identityProviderId?: pulumi.Input<string>;
 }
 
 export interface AccessPolicyExcludeOkta {
-    /**
-     * The ID of the Azure Identity provider.
-     */
     identityProviderId?: pulumi.Input<string>;
     names?: pulumi.Input<pulumi.Input<string>[]>;
 }
@@ -662,9 +617,6 @@ export interface AccessPolicyExcludeOkta {
 export interface AccessPolicyExcludeSaml {
     attributeName?: pulumi.Input<string>;
     attributeValue?: pulumi.Input<string>;
-    /**
-     * The ID of the Azure Identity provider.
-     */
     identityProviderId?: pulumi.Input<string>;
 }
 
@@ -723,7 +675,7 @@ export interface AccessPolicyIncludeAzure {
      */
     identityProviderId?: pulumi.Input<string>;
     /**
-     * The ID of the Authentication Context.
+     * The ID of the Azure group or user.
      */
     ids?: pulumi.Input<pulumi.Input<string>[]>;
 }
@@ -734,9 +686,6 @@ export interface AccessPolicyIncludeExternalEvaluation {
 }
 
 export interface AccessPolicyIncludeGithub {
-    /**
-     * The ID of the Azure Identity provider.
-     */
     identityProviderId?: pulumi.Input<string>;
     name?: pulumi.Input<string>;
     teams?: pulumi.Input<pulumi.Input<string>[]>;
@@ -744,16 +693,10 @@ export interface AccessPolicyIncludeGithub {
 
 export interface AccessPolicyIncludeGsuite {
     emails?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * The ID of the Azure Identity provider.
-     */
     identityProviderId?: pulumi.Input<string>;
 }
 
 export interface AccessPolicyIncludeOkta {
-    /**
-     * The ID of the Azure Identity provider.
-     */
     identityProviderId?: pulumi.Input<string>;
     names?: pulumi.Input<pulumi.Input<string>[]>;
 }
@@ -761,9 +704,6 @@ export interface AccessPolicyIncludeOkta {
 export interface AccessPolicyIncludeSaml {
     attributeName?: pulumi.Input<string>;
     attributeValue?: pulumi.Input<string>;
-    /**
-     * The ID of the Azure Identity provider.
-     */
     identityProviderId?: pulumi.Input<string>;
 }
 
@@ -822,7 +762,7 @@ export interface AccessPolicyRequireAzure {
      */
     identityProviderId?: pulumi.Input<string>;
     /**
-     * The ID of the Authentication Context.
+     * The ID of the Azure group or user.
      */
     ids?: pulumi.Input<pulumi.Input<string>[]>;
 }
@@ -833,9 +773,6 @@ export interface AccessPolicyRequireExternalEvaluation {
 }
 
 export interface AccessPolicyRequireGithub {
-    /**
-     * The ID of the Azure Identity provider.
-     */
     identityProviderId?: pulumi.Input<string>;
     name?: pulumi.Input<string>;
     teams?: pulumi.Input<pulumi.Input<string>[]>;
@@ -843,16 +780,10 @@ export interface AccessPolicyRequireGithub {
 
 export interface AccessPolicyRequireGsuite {
     emails?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * The ID of the Azure Identity provider.
-     */
     identityProviderId?: pulumi.Input<string>;
 }
 
 export interface AccessPolicyRequireOkta {
-    /**
-     * The ID of the Azure Identity provider.
-     */
     identityProviderId?: pulumi.Input<string>;
     names?: pulumi.Input<pulumi.Input<string>[]>;
 }
@@ -860,9 +791,6 @@ export interface AccessPolicyRequireOkta {
 export interface AccessPolicyRequireSaml {
     attributeName?: pulumi.Input<string>;
     attributeValue?: pulumi.Input<string>;
-    /**
-     * The ID of the Azure Identity provider.
-     */
     identityProviderId?: pulumi.Input<string>;
 }
 
@@ -1543,7 +1471,7 @@ export interface GetLoadBalancerPoolsPoolOrigin {
      */
     address: string;
     /**
-     * Whether this pool is enabled. Disabled pools will not receive traffic and are excluded from health checks.
+     * Whether this origin is enabled. Disabled origins will not receive traffic and are excluded from health checks.
      */
     enabled?: boolean;
     /**
@@ -1551,7 +1479,7 @@ export interface GetLoadBalancerPoolsPoolOrigin {
      */
     headers?: inputs.GetLoadBalancerPoolsPoolOriginHeader[];
     /**
-     * A regular expression matching the name of the Load Balancer pool to lookup.
+     * A human-identifiable name for the origin.
      */
     name: string;
     /**
@@ -1566,7 +1494,7 @@ export interface GetLoadBalancerPoolsPoolOriginArgs {
      */
     address: pulumi.Input<string>;
     /**
-     * Whether this pool is enabled. Disabled pools will not receive traffic and are excluded from health checks.
+     * Whether this origin is enabled. Disabled origins will not receive traffic and are excluded from health checks.
      */
     enabled?: pulumi.Input<boolean>;
     /**
@@ -1574,7 +1502,7 @@ export interface GetLoadBalancerPoolsPoolOriginArgs {
      */
     headers?: pulumi.Input<pulumi.Input<inputs.GetLoadBalancerPoolsPoolOriginHeaderArgs>[]>;
     /**
-     * A regular expression matching the name of the Load Balancer pool to lookup.
+     * A human-identifiable name for the origin.
      */
     name: pulumi.Input<string>;
     /**
@@ -1925,7 +1853,7 @@ export interface LoadBalancerPoolOrigin {
 
 export interface LoadBalancerPoolOriginHeader {
     /**
-     * HTTP request headers.
+     * HTTP Header name.
      */
     header: pulumi.Input<string>;
     /**
@@ -2081,7 +2009,7 @@ export interface LoadBalancerRuleOverride {
 
 export interface LoadBalancerRuleOverrideAdaptiveRouting {
     /**
-     * Extends zero-downtime failover of requests to healthy origins from alternate pools, when no healthy alternate exists in the same pool, according to the failover order defined by traffic and origin steering. When set `false`, zero-downtime failover will only occur between origins within the same pool. Defaults to `false`.
+     * Extends zero-downtime failover of requests to healthy origins from alternate pools, when no healthy alternate exists in the same pool, according to the failover order defined by traffic and origin steering. When set `false`, zero-downtime failover will only occur between origins within the same pool.
      */
     failoverAcrossPools?: pulumi.Input<boolean>;
 }
@@ -2099,11 +2027,11 @@ export interface LoadBalancerRuleOverrideCountryPool {
 
 export interface LoadBalancerRuleOverrideLocationStrategy {
     /**
-     * Determines the authoritative location when ECS is not preferred, does not exist in the request, or its GeoIP lookup is unsuccessful. Value `pop` will use the Cloudflare PoP location. Value `resolverIp` will use the DNS resolver GeoIP location. If the GeoIP lookup is unsuccessful, it will use the Cloudflare PoP location. Available values: `pop`, `resolverIp`. Defaults to `pop`.
+     * Determines the authoritative location when ECS is not preferred, does not exist in the request, or its GeoIP lookup is unsuccessful. Value `pop` will use the Cloudflare PoP location. Value `resolverIp` will use the DNS resolver GeoIP location. If the GeoIP lookup is unsuccessful, it will use the Cloudflare PoP location. Available values: `pop`, `resolverIp`.
      */
     mode?: pulumi.Input<string>;
     /**
-     * Whether the EDNS Client Subnet (ECS) GeoIP should be preferred as the authoritative location. Value `always` will always prefer ECS, `never` will never prefer ECS, `proximity` will prefer ECS only when `steering_policy="proximity"`, and `geo` will prefer ECS only when `steering_policy="geo"`. Available values: `always`, `never`, `proximity`, `geo`. Defaults to `proximity`.
+     * Whether the EDNS Client Subnet (ECS) GeoIP should be preferred as the authoritative location. Value `always` will always prefer ECS, `never` will never prefer ECS, `proximity` will prefer ECS only when `steering_policy="proximity"`, and `geo` will prefer ECS only when `steering_policy="geo"`. Available values: `always`, `never`, `proximity`, `geo`.
      */
     preferEcs?: pulumi.Input<string>;
 }
@@ -2151,15 +2079,15 @@ export interface LoadBalancerRuleOverrideSessionAffinityAttribute {
      */
     requireAllHeaders?: pulumi.Input<boolean>;
     /**
-     * Configures the SameSite attribute on session affinity cookie. Value `Auto` will be translated to `Lax` or `None` depending if Always Use HTTPS is enabled. Note: when using value `None`, then you can not set `secure="Never"`. Available values: `Auto`, `Lax`, `None`, `Strict`. Defaults to `Auto`.
+     * Configures the SameSite attribute on session affinity cookie. Value `Auto` will be translated to `Lax` or `None` depending if Always Use HTTPS is enabled. Note: when using value `None`, then you can not set `secure="Never"`. Available values: `Auto`, `Lax`, `None`, `Strict`.
      */
     samesite?: pulumi.Input<string>;
     /**
-     * Configures the Secure attribute on session affinity cookie. Value `Always` indicates the Secure attribute will be set in the Set-Cookie header, `Never` indicates the Secure attribute will not be set, and `Auto` will set the Secure attribute depending if Always Use HTTPS is enabled. Available values: `Auto`, `Always`, `Never`. Defaults to `Auto`.
+     * Configures the Secure attribute on session affinity cookie. Value `Always` indicates the Secure attribute will be set in the Set-Cookie header, `Never` indicates the Secure attribute will not be set, and `Auto` will set the Secure attribute depending if Always Use HTTPS is enabled. Available values: `Auto`, `Always`, `Never`.
      */
     secure?: pulumi.Input<string>;
     /**
-     * Configures the zero-downtime failover between origins within a pool when session affinity is enabled. Value `none` means no failover takes place for sessions pinned to the origin. Value `temporary` means traffic will be sent to another other healthy origin until the originally pinned origin is available; note that this can potentially result in heavy origin flapping. Value `sticky` means the session affinity cookie is updated and subsequent requests are sent to the new origin. This feature is currently incompatible with Argo, Tiered Cache, and Bandwidth Alliance. Available values: `none`, `temporary`, `sticky`. Defaults to `none`.
+     * Configures the zero-downtime failover between origins within a pool when session affinity is enabled. Value `none` means no failover takes place for sessions pinned to the origin. Value `temporary` means traffic will be sent to another other healthy origin until the originally pinned origin is available; note that this can potentially result in heavy origin flapping. Value `sticky` means the session affinity cookie is updated and subsequent requests are sent to the new origin. This feature is currently incompatible with Argo, Tiered Cache, and Bandwidth Alliance. Available values: `none`, `temporary`, `sticky`.
      */
     zeroDowntimeFailover?: pulumi.Input<string>;
 }
@@ -2592,11 +2520,11 @@ export interface PageRuleActionsCacheKeyFields {
 
 export interface PageRuleActionsCacheKeyFieldsCookie {
     /**
-     * Check for presence of specified HTTP headers, without including their actual values.
+     * Check for presence of specified cookies, without including their actual values.
      */
     checkPresences?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Only use values of specified query string parameters in Cache Key.
+     * Use values of specified cookies in Cache Key.
      */
     includes?: pulumi.Input<pulumi.Input<string>[]>;
 }
@@ -2607,11 +2535,11 @@ export interface PageRuleActionsCacheKeyFieldsHeader {
      */
     checkPresences?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Exclude these query string parameters from Cache Key.
+     * Exclude these HTTP headers from Cache Key. Currently, only the `Origin` header can be excluded.
      */
     excludes?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Only use values of specified query string parameters in Cache Key.
+     * Use values of specified HTTP headers in Cache Key. Please refer to [Support article](https://support.cloudflare.com/hc/en-us/articles/115004290387-Creating-Cache-Keys) for the list of HTTP headers that cannot be included. The `Origin` header is always included unless explicitly excluded.
      */
     includes?: pulumi.Input<pulumi.Input<string>[]>;
 }
@@ -2652,7 +2580,6 @@ export interface PageRuleActionsCacheKeyFieldsUser {
      *
      * Example:
      *
-     * <!--Start PulumiCodeChooser -->
      * ```typescript
      * import * as pulumi from "@pulumi/pulumi";
      * import * as cloudflare from "@pulumi/cloudflare";
@@ -2690,7 +2617,6 @@ export interface PageRuleActionsCacheKeyFieldsUser {
      *     },
      * });
      * ```
-     * <!--End PulumiCodeChooser -->
      */
     lang?: pulumi.Input<boolean>;
 }
@@ -3297,7 +3223,7 @@ export interface RulesetRuleActionParameters {
      */
     rocketLoader?: pulumi.Input<boolean>;
     /**
-     * List of rule-based overrides.
+     * Map of managed WAF rule ID to comma-delimited string of ruleset rule IDs. Example: `rules = { "efb7b8c949ac4650a09736fc376e9aee" = "5de7edfa648c4d6891dc3e7f84534ffa,e3a567afc347477d9702d9047e97d760" }`.
      */
     rules?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -3329,7 +3255,7 @@ export interface RulesetRuleActionParameters {
      */
     ssl?: pulumi.Input<string>;
     /**
-     * Status code for which the edge TTL is applied.
+     * HTTP status code of the custom error response.
      */
     statusCode?: pulumi.Input<number>;
     /**
@@ -3434,7 +3360,7 @@ export interface RulesetRuleActionParametersCacheKeyCustomKeyCookie {
 
 export interface RulesetRuleActionParametersCacheKeyCustomKeyHeader {
     /**
-     * List of cookies to check for presence in the custom key.
+     * List of headers to check for presence in the custom key.
      */
     checkPresences?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -3442,7 +3368,7 @@ export interface RulesetRuleActionParametersCacheKeyCustomKeyHeader {
      */
     excludeOrigin?: pulumi.Input<boolean>;
     /**
-     * List of cookies to include in the custom key.
+     * List of headers to include in the custom key.
      */
     includes?: pulumi.Input<pulumi.Input<string>[]>;
 }
@@ -3460,7 +3386,7 @@ export interface RulesetRuleActionParametersCacheKeyCustomKeyQueryString {
      */
     excludes?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * List of cookies to include in the custom key.
+     * List of query string parameters to include in the custom key.
      */
     includes?: pulumi.Input<pulumi.Input<string>[]>;
 }
@@ -3482,11 +3408,11 @@ export interface RulesetRuleActionParametersCacheKeyCustomKeyUser {
 
 export interface RulesetRuleActionParametersEdgeTtl {
     /**
-     * Default browser TTL. This value is required when overrideOrigin is set
+     * Default edge TTL.
      */
     default?: pulumi.Input<number>;
     /**
-     * Mode of the browser TTL. Available values: `overrideOrigin`, `respectOrigin`, `bypass`
+     * Mode of the edge TTL. Available values: `overrideOrigin`, `respectOrigin`, `bypassByDefault`
      */
     mode: pulumi.Input<string>;
     /**
@@ -3527,7 +3453,7 @@ export interface RulesetRuleActionParametersFromList {
      */
     key?: pulumi.Input<string>;
     /**
-     * Name of the compression algorithm to use. Available values: `gzip`, `brotli`, `auto`, `default`, `none`
+     * Name of the list.
      */
     name?: pulumi.Input<string>;
 }
@@ -3538,7 +3464,7 @@ export interface RulesetRuleActionParametersFromValue {
      */
     preserveQueryString?: pulumi.Input<boolean>;
     /**
-     * Status code for which the edge TTL is applied.
+     * Status code for redirect.
      */
     statusCode?: pulumi.Input<number>;
     /**
@@ -3553,7 +3479,7 @@ export interface RulesetRuleActionParametersFromValueTargetUrl {
      */
     expression?: pulumi.Input<string>;
     /**
-     * Status code edge TTL value.
+     * Static value to provide as the HTTP request header value.
      */
     value?: pulumi.Input<string>;
 }
@@ -3564,7 +3490,7 @@ export interface RulesetRuleActionParametersHeader {
      */
     expression?: pulumi.Input<string>;
     /**
-     * Name of the compression algorithm to use. Available values: `gzip`, `brotli`, `auto`, `default`, `none`
+     * Name of the HTTP request header to target.
      */
     name?: pulumi.Input<string>;
     /**
@@ -3572,7 +3498,7 @@ export interface RulesetRuleActionParametersHeader {
      */
     operation?: pulumi.Input<string>;
     /**
-     * Status code edge TTL value.
+     * Static value to provide as the HTTP request header value.
      */
     value?: pulumi.Input<string>;
 }
@@ -3586,7 +3512,7 @@ export interface RulesetRuleActionParametersMatchedData {
 
 export interface RulesetRuleActionParametersOrigin {
     /**
-     * Host parameters for the custom key.
+     * Origin Hostname where request is sent.
      */
     host?: pulumi.Input<string>;
     /**
@@ -3597,7 +3523,7 @@ export interface RulesetRuleActionParametersOrigin {
 
 export interface RulesetRuleActionParametersOverrides {
     /**
-     * Action to perform in the ruleset rule. Available values: `block`, `challenge`, `compressResponse`, `ddosDynamic`, `ddosMitigation`, `execute`, `forceConnectionClose`, `jsChallenge`, `log`, `logCustomField`, `managedChallenge`, `redirect`, `rewrite`, `route`, `score`, `serveError`, `setCacheSettings`, `setConfig`, `skip`.
+     * Action to perform in the rule-level override. Available values: `block`, `challenge`, `compressResponse`, `ddosDynamic`, `ddosMitigation`, `execute`, `forceConnectionClose`, `jsChallenge`, `log`, `logCustomField`, `managedChallenge`, `redirect`, `rewrite`, `route`, `score`, `serveError`, `setCacheSettings`, `setConfig`, `skip`.
      */
     action?: pulumi.Input<string>;
     /**
@@ -3605,7 +3531,7 @@ export interface RulesetRuleActionParametersOverrides {
      */
     categories?: pulumi.Input<pulumi.Input<inputs.RulesetRuleActionParametersOverridesCategory>[]>;
     /**
-     * Defines if the current tag-level override enables or disables the ruleset rules with the specified tag.
+     * Defines if the current ruleset-level override enables or disables the ruleset.
      */
     enabled?: pulumi.Input<boolean>;
     /**
@@ -3613,14 +3539,14 @@ export interface RulesetRuleActionParametersOverrides {
      */
     rules?: pulumi.Input<pulumi.Input<inputs.RulesetRuleActionParametersOverridesRule>[]>;
     /**
-     * Sensitivity level for a ruleset rule override.
+     * Sensitivity level to override for all ruleset rules. Available values: `default`, `medium`, `low`, `eoff`.
      */
     sensitivityLevel?: pulumi.Input<string>;
 }
 
 export interface RulesetRuleActionParametersOverridesCategory {
     /**
-     * Action to perform in the ruleset rule. Available values: `block`, `challenge`, `compressResponse`, `ddosDynamic`, `ddosMitigation`, `execute`, `forceConnectionClose`, `jsChallenge`, `log`, `logCustomField`, `managedChallenge`, `redirect`, `rewrite`, `route`, `score`, `serveError`, `setCacheSettings`, `setConfig`, `skip`.
+     * Action to perform in the tag-level override. Available values: `block`, `challenge`, `compressResponse`, `ddosDynamic`, `ddosMitigation`, `execute`, `forceConnectionClose`, `jsChallenge`, `log`, `logCustomField`, `managedChallenge`, `redirect`, `rewrite`, `route`, `score`, `serveError`, `setCacheSettings`, `setConfig`, `skip`.
      */
     action?: pulumi.Input<string>;
     /**
@@ -3635,15 +3561,15 @@ export interface RulesetRuleActionParametersOverridesCategory {
 
 export interface RulesetRuleActionParametersOverridesRule {
     /**
-     * Action to perform in the ruleset rule. Available values: `block`, `challenge`, `compressResponse`, `ddosDynamic`, `ddosMitigation`, `execute`, `forceConnectionClose`, `jsChallenge`, `log`, `logCustomField`, `managedChallenge`, `redirect`, `rewrite`, `route`, `score`, `serveError`, `setCacheSettings`, `setConfig`, `skip`.
+     * Action to perform in the rule-level override. Available values: `block`, `challenge`, `compressResponse`, `ddosDynamic`, `ddosMitigation`, `execute`, `forceConnectionClose`, `jsChallenge`, `log`, `logCustomField`, `managedChallenge`, `redirect`, `rewrite`, `route`, `score`, `serveError`, `setCacheSettings`, `setConfig`, `skip`.
      */
     action?: pulumi.Input<string>;
     /**
-     * Whether the rule is active.
+     * Defines if the current rule-level override enables or disables the rule.
      */
     enabled?: pulumi.Input<boolean>;
     /**
-     * Unique rule identifier.
+     * Rule ID to apply the override to.
      */
     id?: pulumi.Input<string>;
     /**
@@ -3658,15 +3584,15 @@ export interface RulesetRuleActionParametersOverridesRule {
 
 export interface RulesetRuleActionParametersResponse {
     /**
-     * Content of the custom error response.
+     * Body content to include in the response.
      */
     content?: pulumi.Input<string>;
     /**
-     * Content-Type of the custom error response.
+     * HTTP content type to send in the response.
      */
     contentType?: pulumi.Input<string>;
     /**
-     * Status code for which the edge TTL is applied.
+     * HTTP status code to send in the response.
      */
     statusCode?: pulumi.Input<number>;
 }
@@ -3680,15 +3606,12 @@ export interface RulesetRuleActionParametersServeStale {
 
 export interface RulesetRuleActionParametersSni {
     /**
-     * Status code edge TTL value.
+     * Value to define for SNI.
      */
     value?: pulumi.Input<string>;
 }
 
 export interface RulesetRuleActionParametersUri {
-    /**
-     * List of properties to change request origin.
-     */
     origin?: pulumi.Input<boolean>;
     /**
      * URI path configuration when performing a URL rewrite.
@@ -3702,22 +3625,22 @@ export interface RulesetRuleActionParametersUri {
 
 export interface RulesetRuleActionParametersUriPath {
     /**
-     * Use a value dynamically determined by the Firewall Rules expression language based on Wireshark display filters. Refer to the [Firewall Rules language](https://developers.cloudflare.com/firewall/cf-firewall-language) documentation for all available fields, operators, and functions.
+     * Expression that defines the updated (dynamic) value of the URI path or query string component. Uses the Firewall Rules expression language based on Wireshark display filters. Refer to the [Firewall Rules language](https://developers.cloudflare.com/firewall/cf-firewall-language) documentation for all available fields, operators, and functions.
      */
     expression?: pulumi.Input<string>;
     /**
-     * Status code edge TTL value.
+     * Static string value of the updated URI path or query string component.
      */
     value?: pulumi.Input<string>;
 }
 
 export interface RulesetRuleActionParametersUriQuery {
     /**
-     * Use a value dynamically determined by the Firewall Rules expression language based on Wireshark display filters. Refer to the [Firewall Rules language](https://developers.cloudflare.com/firewall/cf-firewall-language) documentation for all available fields, operators, and functions.
+     * Expression that defines the updated (dynamic) value of the URI path or query string component. Uses the Firewall Rules expression language based on Wireshark display filters. Refer to the [Firewall Rules language](https://developers.cloudflare.com/firewall/cf-firewall-language) documentation for all available fields, operators, and functions.
      */
     expression?: pulumi.Input<string>;
     /**
-     * Status code edge TTL value.
+     * Static string value of the updated URI path or query string component.
      */
     value?: pulumi.Input<string>;
 }
@@ -3735,7 +3658,7 @@ export interface RulesetRuleExposedCredentialCheck {
 
 export interface RulesetRuleLogging {
     /**
-     * Defines if the current tag-level override enables or disables the ruleset rules with the specified tag.
+     * Override the default logging behavior when a rule is matched.
      */
     enabled?: pulumi.Input<boolean>;
 }
@@ -4185,7 +4108,7 @@ export interface TeamsRuleRuleSettingsDnsResolversIpv6 {
 
 export interface TeamsRuleRuleSettingsEgress {
     /**
-     * IPv4 resolvers.
+     * The IPv4 address to be used for egress.
      */
     ipv4: pulumi.Input<string>;
     /**
@@ -4193,18 +4116,18 @@ export interface TeamsRuleRuleSettingsEgress {
      */
     ipv4Fallback?: pulumi.Input<string>;
     /**
-     * IPv6 resolvers.
+     * The IPv6 range to be used for egress.
      */
     ipv6: pulumi.Input<string>;
 }
 
 export interface TeamsRuleRuleSettingsL4override {
     /**
-     * The IPv4 or IPv6 address of the upstream resolver.
+     * Override IP to forward traffic to.
      */
     ip: pulumi.Input<string>;
     /**
-     * A port number to use for the upstream resolver. Defaults to `53`.
+     * Override Port to forward traffic to.
      */
     port: pulumi.Input<number>;
 }
@@ -4226,7 +4149,7 @@ export interface TeamsRuleRuleSettingsNotificationSettings {
 
 export interface TeamsRuleRuleSettingsPayloadLog {
     /**
-     * Enable notification settings.
+     * Enable or disable DLP Payload Logging for this rule.
      */
     enabled: pulumi.Input<boolean>;
 }

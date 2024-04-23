@@ -17,7 +17,6 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
@@ -33,7 +32,6 @@ import * as utilities from "./utilities";
  *     applicationId: "fe2be0ff-7f13-4350-8c8e-a9b9795fe3c2",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

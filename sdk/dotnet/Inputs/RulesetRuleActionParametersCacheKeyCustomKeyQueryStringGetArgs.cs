@@ -28,7 +28,7 @@ namespace Pulumi.Cloudflare.Inputs
         private InputList<string>? _includes;
 
         /// <summary>
-        /// List of cookies to include in the custom key.
+        /// List of query string parameters to include in the custom key.
         /// </summary>
         public InputList<string> Includes
         {

@@ -18,7 +18,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string Address;
         /// <summary>
-        /// Whether this pool is enabled. Disabled pools will not receive traffic and are excluded from health checks.
+        /// Whether this origin is enabled. Disabled origins will not receive traffic and are excluded from health checks.
         /// </summary>
         public readonly bool? Enabled;
         /// <summary>
@@ -26,7 +26,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.GetLoadBalancerPoolsPoolOriginHeaderResult> Headers;
         /// <summary>
-        /// A regular expression matching the name of the Load Balancer pool to lookup.
+        /// A human-identifiable name for the origin.
         /// </summary>
         public readonly string Name;
         /// <summary>

@@ -12,7 +12,6 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
@@ -70,7 +69,6 @@ import * as utilities from "./utilities";
  *     consecutiveSuccesses: 2,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
@@ -149,7 +147,7 @@ export class Healthcheck extends pulumi.CustomResource {
      */
     public readonly followRedirects!: pulumi.Output<boolean | undefined>;
     /**
-     * The header name.
+     * The HTTP request headers to send in the health check. It is recommended you set a Host header by default. The User-Agent header cannot be overridden.
      */
     public readonly headers!: pulumi.Output<outputs.HealthcheckHeader[] | undefined>;
     /**
@@ -319,7 +317,7 @@ export interface HealthcheckState {
      */
     followRedirects?: pulumi.Input<boolean>;
     /**
-     * The header name.
+     * The HTTP request headers to send in the health check. It is recommended you set a Host header by default. The User-Agent header cannot be overridden.
      */
     headers?: pulumi.Input<pulumi.Input<inputs.HealthcheckHeader>[]>;
     /**
@@ -409,7 +407,7 @@ export interface HealthcheckArgs {
      */
     followRedirects?: pulumi.Input<boolean>;
     /**
-     * The header name.
+     * The HTTP request headers to send in the health check. It is recommended you set a Host header by default. The User-Agent header cannot be overridden.
      */
     headers?: pulumi.Input<pulumi.Input<inputs.HealthcheckHeader>[]>;
     /**

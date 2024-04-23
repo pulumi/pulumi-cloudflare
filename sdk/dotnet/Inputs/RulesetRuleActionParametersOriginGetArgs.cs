@@ -13,7 +13,7 @@ namespace Pulumi.Cloudflare.Inputs
     public sealed class RulesetRuleActionParametersOriginGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Host parameters for the custom key.
+        /// Origin Hostname where request is sent.
         /// </summary>
         [Input("host")]
         public Input<string>? Host { get; set; }

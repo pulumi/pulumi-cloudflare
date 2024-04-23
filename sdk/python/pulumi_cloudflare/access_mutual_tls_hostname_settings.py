@@ -131,7 +131,6 @@ class AccessMutualTlsHostnameSettings(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
@@ -144,7 +143,6 @@ class AccessMutualTlsHostnameSettings(pulumi.CustomResource):
                 china_network=False,
             )])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -176,7 +174,6 @@ class AccessMutualTlsHostnameSettings(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
@@ -189,7 +186,6 @@ class AccessMutualTlsHostnameSettings(pulumi.CustomResource):
                 china_network=False,
             )])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

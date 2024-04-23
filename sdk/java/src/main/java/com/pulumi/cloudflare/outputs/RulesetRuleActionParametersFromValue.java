@@ -19,7 +19,7 @@ public final class RulesetRuleActionParametersFromValue {
      */
     private @Nullable Boolean preserveQueryString;
     /**
-     * @return Status code for which the edge TTL is applied.
+     * @return Status code for redirect.
      * 
      */
     private @Nullable Integer statusCode;
@@ -38,7 +38,7 @@ public final class RulesetRuleActionParametersFromValue {
         return Optional.ofNullable(this.preserveQueryString);
     }
     /**
-     * @return Status code for which the edge TTL is applied.
+     * @return Status code for redirect.
      * 
      */
     public Optional<Integer> statusCode() {

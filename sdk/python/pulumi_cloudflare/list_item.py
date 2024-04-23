@@ -270,7 +270,6 @@ class ListItem(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
@@ -330,7 +329,6 @@ class ListItem(pulumi.CustomResource):
                 url_hostname="example.com",
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -360,7 +358,6 @@ class ListItem(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
@@ -420,7 +417,6 @@ class ListItem(pulumi.CustomResource):
                 url_hostname="example.com",
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

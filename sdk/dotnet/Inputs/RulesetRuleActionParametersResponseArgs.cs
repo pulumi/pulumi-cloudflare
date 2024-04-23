@@ -13,19 +13,19 @@ namespace Pulumi.Cloudflare.Inputs
     public sealed class RulesetRuleActionParametersResponseArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Content of the custom error response.
+        /// Body content to include in the response.
         /// </summary>
         [Input("content")]
         public Input<string>? Content { get; set; }
 
         /// <summary>
-        /// Content-Type of the custom error response.
+        /// HTTP content type to send in the response.
         /// </summary>
         [Input("contentType")]
         public Input<string>? ContentType { get; set; }
 
         /// <summary>
-        /// Status code for which the edge TTL is applied.
+        /// HTTP status code to send in the response.
         /// </summary>
         [Input("statusCode")]
         public Input<int>? StatusCode { get; set; }

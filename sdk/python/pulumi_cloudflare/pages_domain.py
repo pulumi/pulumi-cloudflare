@@ -153,7 +153,6 @@ class PagesDomain(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
@@ -163,7 +162,6 @@ class PagesDomain(pulumi.CustomResource):
             project_name="my-example-project",
             domain="example.com")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -191,7 +189,6 @@ class PagesDomain(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
@@ -201,7 +198,6 @@ class PagesDomain(pulumi.CustomResource):
             project_name="my-example-project",
             domain="example.com")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

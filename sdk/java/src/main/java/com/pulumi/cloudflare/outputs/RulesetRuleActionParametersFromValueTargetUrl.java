@@ -17,7 +17,7 @@ public final class RulesetRuleActionParametersFromValueTargetUrl {
      */
     private @Nullable String expression;
     /**
-     * @return Status code edge TTL value.
+     * @return Static value to provide as the HTTP request header value.
      * 
      */
     private @Nullable String value;
@@ -31,7 +31,7 @@ public final class RulesetRuleActionParametersFromValueTargetUrl {
         return Optional.ofNullable(this.expression);
     }
     /**
-     * @return Status code edge TTL value.
+     * @return Static value to provide as the HTTP request header value.
      * 
      */
     public Optional<String> value() {

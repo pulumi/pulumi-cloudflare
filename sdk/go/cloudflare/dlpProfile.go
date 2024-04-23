@@ -34,7 +34,7 @@ type DlpProfile struct {
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// List of entries to apply to the profile.
 	Entries DlpProfileEntryArrayOutput `pulumi:"entries"`
-	// Name of the entry to deploy.
+	// Name of the profile. **Modifying this attribute will force creation of a new resource.**
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The type of the profile. Available values: `custom`, `predefined`. **Modifying this attribute will force creation of a new resource.**
 	Type pulumi.StringOutput `pulumi:"type"`
@@ -95,7 +95,7 @@ type dlpProfileState struct {
 	Description *string `pulumi:"description"`
 	// List of entries to apply to the profile.
 	Entries []DlpProfileEntry `pulumi:"entries"`
-	// Name of the entry to deploy.
+	// Name of the profile. **Modifying this attribute will force creation of a new resource.**
 	Name *string `pulumi:"name"`
 	// The type of the profile. Available values: `custom`, `predefined`. **Modifying this attribute will force creation of a new resource.**
 	Type *string `pulumi:"type"`
@@ -112,7 +112,7 @@ type DlpProfileState struct {
 	Description pulumi.StringPtrInput
 	// List of entries to apply to the profile.
 	Entries DlpProfileEntryArrayInput
-	// Name of the entry to deploy.
+	// Name of the profile. **Modifying this attribute will force creation of a new resource.**
 	Name pulumi.StringPtrInput
 	// The type of the profile. Available values: `custom`, `predefined`. **Modifying this attribute will force creation of a new resource.**
 	Type pulumi.StringPtrInput
@@ -133,7 +133,7 @@ type dlpProfileArgs struct {
 	Description *string `pulumi:"description"`
 	// List of entries to apply to the profile.
 	Entries []DlpProfileEntry `pulumi:"entries"`
-	// Name of the entry to deploy.
+	// Name of the profile. **Modifying this attribute will force creation of a new resource.**
 	Name string `pulumi:"name"`
 	// The type of the profile. Available values: `custom`, `predefined`. **Modifying this attribute will force creation of a new resource.**
 	Type string `pulumi:"type"`
@@ -151,7 +151,7 @@ type DlpProfileArgs struct {
 	Description pulumi.StringPtrInput
 	// List of entries to apply to the profile.
 	Entries DlpProfileEntryArrayInput
-	// Name of the entry to deploy.
+	// Name of the profile. **Modifying this attribute will force creation of a new resource.**
 	Name pulumi.StringInput
 	// The type of the profile. Available values: `custom`, `predefined`. **Modifying this attribute will force creation of a new resource.**
 	Type pulumi.StringInput
@@ -269,7 +269,7 @@ func (o DlpProfileOutput) Entries() DlpProfileEntryArrayOutput {
 	return o.ApplyT(func(v *DlpProfile) DlpProfileEntryArrayOutput { return v.Entries }).(DlpProfileEntryArrayOutput)
 }
 
-// Name of the entry to deploy.
+// Name of the profile. **Modifying this attribute will force creation of a new resource.**
 func (o DlpProfileOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *DlpProfile) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

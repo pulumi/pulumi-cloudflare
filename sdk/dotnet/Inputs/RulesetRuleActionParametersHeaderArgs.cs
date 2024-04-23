@@ -19,7 +19,7 @@ namespace Pulumi.Cloudflare.Inputs
         public Input<string>? Expression { get; set; }
 
         /// <summary>
-        /// Name of the compression algorithm to use. Available values: `gzip`, `brotli`, `auto`, `default`, `none`
+        /// Name of the HTTP request header to target.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -31,7 +31,7 @@ namespace Pulumi.Cloudflare.Inputs
         public Input<string>? Operation { get; set; }
 
         /// <summary>
-        /// Status code edge TTL value.
+        /// Static value to provide as the HTTP request header value.
         /// </summary>
         [Input("value")]
         public Input<string>? Value { get; set; }
