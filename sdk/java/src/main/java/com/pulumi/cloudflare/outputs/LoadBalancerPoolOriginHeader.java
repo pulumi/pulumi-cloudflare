@@ -12,7 +12,7 @@ import java.util.Objects;
 @CustomType
 public final class LoadBalancerPoolOriginHeader {
     /**
-     * @return HTTP request headers.
+     * @return HTTP Header name.
      * 
      */
     private String header;
@@ -24,7 +24,7 @@ public final class LoadBalancerPoolOriginHeader {
 
     private LoadBalancerPoolOriginHeader() {}
     /**
-     * @return HTTP request headers.
+     * @return HTTP Header name.
      * 
      */
     public String header() {

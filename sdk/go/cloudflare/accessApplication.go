@@ -70,7 +70,7 @@ type AccessApplication struct {
 	LandingPageDesign AccessApplicationLandingPageDesignPtrOutput `pulumi:"landingPageDesign"`
 	// Image URL for the logo shown in the app launcher dashboard.
 	LogoUrl pulumi.StringPtrOutput `pulumi:"logoUrl"`
-	// The name of the footer link.
+	// Friendly name of the Access Application.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// SaaS configuration for the Access Application.
 	SaasApp AccessApplicationSaasAppPtrOutput `pulumi:"saasApp"`
@@ -162,7 +162,7 @@ type accessApplicationState struct {
 	LandingPageDesign *AccessApplicationLandingPageDesign `pulumi:"landingPageDesign"`
 	// Image URL for the logo shown in the app launcher dashboard.
 	LogoUrl *string `pulumi:"logoUrl"`
-	// The name of the footer link.
+	// Friendly name of the Access Application.
 	Name *string `pulumi:"name"`
 	// SaaS configuration for the Access Application.
 	SaasApp *AccessApplicationSaasApp `pulumi:"saasApp"`
@@ -225,7 +225,7 @@ type AccessApplicationState struct {
 	LandingPageDesign AccessApplicationLandingPageDesignPtrInput
 	// Image URL for the logo shown in the app launcher dashboard.
 	LogoUrl pulumi.StringPtrInput
-	// The name of the footer link.
+	// Friendly name of the Access Application.
 	Name pulumi.StringPtrInput
 	// SaaS configuration for the Access Application.
 	SaasApp AccessApplicationSaasAppPtrInput
@@ -290,7 +290,7 @@ type accessApplicationArgs struct {
 	LandingPageDesign *AccessApplicationLandingPageDesign `pulumi:"landingPageDesign"`
 	// Image URL for the logo shown in the app launcher dashboard.
 	LogoUrl *string `pulumi:"logoUrl"`
-	// The name of the footer link.
+	// Friendly name of the Access Application.
 	Name *string `pulumi:"name"`
 	// SaaS configuration for the Access Application.
 	SaasApp *AccessApplicationSaasApp `pulumi:"saasApp"`
@@ -352,7 +352,7 @@ type AccessApplicationArgs struct {
 	LandingPageDesign AccessApplicationLandingPageDesignPtrInput
 	// Image URL for the logo shown in the app launcher dashboard.
 	LogoUrl pulumi.StringPtrInput
-	// The name of the footer link.
+	// Friendly name of the Access Application.
 	Name pulumi.StringPtrInput
 	// SaaS configuration for the Access Application.
 	SaasApp AccessApplicationSaasAppPtrInput
@@ -561,7 +561,7 @@ func (o AccessApplicationOutput) LogoUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AccessApplication) pulumi.StringPtrOutput { return v.LogoUrl }).(pulumi.StringPtrOutput)
 }
 
-// The name of the footer link.
+// Friendly name of the Access Application.
 func (o AccessApplicationOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *AccessApplication) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

@@ -18,7 +18,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string? Key;
         /// <summary>
-        /// Name of the compression algorithm to use. Available values: `gzip`, `brotli`, `auto`, `default`, `none`
+        /// Name of the list.
         /// </summary>
         public readonly string? Name;
 

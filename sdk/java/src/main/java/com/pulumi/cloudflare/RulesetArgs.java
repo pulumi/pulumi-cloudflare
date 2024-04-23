@@ -34,14 +34,14 @@ public final class RulesetArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Brief summary of the ruleset rule and its intended use.
+     * Brief summary of the ruleset and its intended use.
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return Brief summary of the ruleset rule and its intended use.
+     * @return Brief summary of the ruleset and its intended use.
      * 
      */
     public Optional<Output<String>> description() {
@@ -64,14 +64,14 @@ public final class RulesetArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Name of the compression algorithm to use. Available values: `gzip`, `brotli`, `auto`, `default`, `none`
+     * Name of the ruleset.
      * 
      */
     @Import(name="name", required=true)
     private Output<String> name;
 
     /**
-     * @return Name of the compression algorithm to use. Available values: `gzip`, `brotli`, `auto`, `default`, `none`
+     * @return Name of the ruleset.
      * 
      */
     public Output<String> name() {
@@ -94,14 +94,14 @@ public final class RulesetArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * List of rule-based overrides.
+     * List of rules to apply to the ruleset.
      * 
      */
     @Import(name="rules")
     private @Nullable Output<List<RulesetRuleArgs>> rules;
 
     /**
-     * @return List of rule-based overrides.
+     * @return List of rules to apply to the ruleset.
      * 
      */
     public Optional<Output<List<RulesetRuleArgs>>> rules() {
@@ -175,7 +175,7 @@ public final class RulesetArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description Brief summary of the ruleset rule and its intended use.
+         * @param description Brief summary of the ruleset and its intended use.
          * 
          * @return builder
          * 
@@ -186,7 +186,7 @@ public final class RulesetArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description Brief summary of the ruleset rule and its intended use.
+         * @param description Brief summary of the ruleset and its intended use.
          * 
          * @return builder
          * 
@@ -217,7 +217,7 @@ public final class RulesetArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Name of the compression algorithm to use. Available values: `gzip`, `brotli`, `auto`, `default`, `none`
+         * @param name Name of the ruleset.
          * 
          * @return builder
          * 
@@ -228,7 +228,7 @@ public final class RulesetArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Name of the compression algorithm to use. Available values: `gzip`, `brotli`, `auto`, `default`, `none`
+         * @param name Name of the ruleset.
          * 
          * @return builder
          * 
@@ -259,7 +259,7 @@ public final class RulesetArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param rules List of rule-based overrides.
+         * @param rules List of rules to apply to the ruleset.
          * 
          * @return builder
          * 
@@ -270,7 +270,7 @@ public final class RulesetArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param rules List of rule-based overrides.
+         * @param rules List of rules to apply to the ruleset.
          * 
          * @return builder
          * 
@@ -280,7 +280,7 @@ public final class RulesetArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param rules List of rule-based overrides.
+         * @param rules List of rules to apply to the ruleset.
          * 
          * @return builder
          * 

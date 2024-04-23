@@ -16,14 +16,14 @@ public final class LoadBalancerRuleOverrideLocationStrategyArgs extends com.pulu
     public static final LoadBalancerRuleOverrideLocationStrategyArgs Empty = new LoadBalancerRuleOverrideLocationStrategyArgs();
 
     /**
-     * Determines the authoritative location when ECS is not preferred, does not exist in the request, or its GeoIP lookup is unsuccessful. Value `pop` will use the Cloudflare PoP location. Value `resolver_ip` will use the DNS resolver GeoIP location. If the GeoIP lookup is unsuccessful, it will use the Cloudflare PoP location. Available values: `pop`, `resolver_ip`. Defaults to `pop`.
+     * Determines the authoritative location when ECS is not preferred, does not exist in the request, or its GeoIP lookup is unsuccessful. Value `pop` will use the Cloudflare PoP location. Value `resolver_ip` will use the DNS resolver GeoIP location. If the GeoIP lookup is unsuccessful, it will use the Cloudflare PoP location. Available values: `pop`, `resolver_ip`.
      * 
      */
     @Import(name="mode")
     private @Nullable Output<String> mode;
 
     /**
-     * @return Determines the authoritative location when ECS is not preferred, does not exist in the request, or its GeoIP lookup is unsuccessful. Value `pop` will use the Cloudflare PoP location. Value `resolver_ip` will use the DNS resolver GeoIP location. If the GeoIP lookup is unsuccessful, it will use the Cloudflare PoP location. Available values: `pop`, `resolver_ip`. Defaults to `pop`.
+     * @return Determines the authoritative location when ECS is not preferred, does not exist in the request, or its GeoIP lookup is unsuccessful. Value `pop` will use the Cloudflare PoP location. Value `resolver_ip` will use the DNS resolver GeoIP location. If the GeoIP lookup is unsuccessful, it will use the Cloudflare PoP location. Available values: `pop`, `resolver_ip`.
      * 
      */
     public Optional<Output<String>> mode() {
@@ -31,14 +31,14 @@ public final class LoadBalancerRuleOverrideLocationStrategyArgs extends com.pulu
     }
 
     /**
-     * Whether the EDNS Client Subnet (ECS) GeoIP should be preferred as the authoritative location. Value `always` will always prefer ECS, `never` will never prefer ECS, `proximity` will prefer ECS only when `steering_policy=&#34;proximity&#34;`, and `geo` will prefer ECS only when `steering_policy=&#34;geo&#34;`. Available values: `always`, `never`, `proximity`, `geo`. Defaults to `proximity`.
+     * Whether the EDNS Client Subnet (ECS) GeoIP should be preferred as the authoritative location. Value `always` will always prefer ECS, `never` will never prefer ECS, `proximity` will prefer ECS only when `steering_policy=&#34;proximity&#34;`, and `geo` will prefer ECS only when `steering_policy=&#34;geo&#34;`. Available values: `always`, `never`, `proximity`, `geo`.
      * 
      */
     @Import(name="preferEcs")
     private @Nullable Output<String> preferEcs;
 
     /**
-     * @return Whether the EDNS Client Subnet (ECS) GeoIP should be preferred as the authoritative location. Value `always` will always prefer ECS, `never` will never prefer ECS, `proximity` will prefer ECS only when `steering_policy=&#34;proximity&#34;`, and `geo` will prefer ECS only when `steering_policy=&#34;geo&#34;`. Available values: `always`, `never`, `proximity`, `geo`. Defaults to `proximity`.
+     * @return Whether the EDNS Client Subnet (ECS) GeoIP should be preferred as the authoritative location. Value `always` will always prefer ECS, `never` will never prefer ECS, `proximity` will prefer ECS only when `steering_policy=&#34;proximity&#34;`, and `geo` will prefer ECS only when `steering_policy=&#34;geo&#34;`. Available values: `always`, `never`, `proximity`, `geo`.
      * 
      */
     public Optional<Output<String>> preferEcs() {
@@ -71,7 +71,7 @@ public final class LoadBalancerRuleOverrideLocationStrategyArgs extends com.pulu
         }
 
         /**
-         * @param mode Determines the authoritative location when ECS is not preferred, does not exist in the request, or its GeoIP lookup is unsuccessful. Value `pop` will use the Cloudflare PoP location. Value `resolver_ip` will use the DNS resolver GeoIP location. If the GeoIP lookup is unsuccessful, it will use the Cloudflare PoP location. Available values: `pop`, `resolver_ip`. Defaults to `pop`.
+         * @param mode Determines the authoritative location when ECS is not preferred, does not exist in the request, or its GeoIP lookup is unsuccessful. Value `pop` will use the Cloudflare PoP location. Value `resolver_ip` will use the DNS resolver GeoIP location. If the GeoIP lookup is unsuccessful, it will use the Cloudflare PoP location. Available values: `pop`, `resolver_ip`.
          * 
          * @return builder
          * 
@@ -82,7 +82,7 @@ public final class LoadBalancerRuleOverrideLocationStrategyArgs extends com.pulu
         }
 
         /**
-         * @param mode Determines the authoritative location when ECS is not preferred, does not exist in the request, or its GeoIP lookup is unsuccessful. Value `pop` will use the Cloudflare PoP location. Value `resolver_ip` will use the DNS resolver GeoIP location. If the GeoIP lookup is unsuccessful, it will use the Cloudflare PoP location. Available values: `pop`, `resolver_ip`. Defaults to `pop`.
+         * @param mode Determines the authoritative location when ECS is not preferred, does not exist in the request, or its GeoIP lookup is unsuccessful. Value `pop` will use the Cloudflare PoP location. Value `resolver_ip` will use the DNS resolver GeoIP location. If the GeoIP lookup is unsuccessful, it will use the Cloudflare PoP location. Available values: `pop`, `resolver_ip`.
          * 
          * @return builder
          * 
@@ -92,7 +92,7 @@ public final class LoadBalancerRuleOverrideLocationStrategyArgs extends com.pulu
         }
 
         /**
-         * @param preferEcs Whether the EDNS Client Subnet (ECS) GeoIP should be preferred as the authoritative location. Value `always` will always prefer ECS, `never` will never prefer ECS, `proximity` will prefer ECS only when `steering_policy=&#34;proximity&#34;`, and `geo` will prefer ECS only when `steering_policy=&#34;geo&#34;`. Available values: `always`, `never`, `proximity`, `geo`. Defaults to `proximity`.
+         * @param preferEcs Whether the EDNS Client Subnet (ECS) GeoIP should be preferred as the authoritative location. Value `always` will always prefer ECS, `never` will never prefer ECS, `proximity` will prefer ECS only when `steering_policy=&#34;proximity&#34;`, and `geo` will prefer ECS only when `steering_policy=&#34;geo&#34;`. Available values: `always`, `never`, `proximity`, `geo`.
          * 
          * @return builder
          * 
@@ -103,7 +103,7 @@ public final class LoadBalancerRuleOverrideLocationStrategyArgs extends com.pulu
         }
 
         /**
-         * @param preferEcs Whether the EDNS Client Subnet (ECS) GeoIP should be preferred as the authoritative location. Value `always` will always prefer ECS, `never` will never prefer ECS, `proximity` will prefer ECS only when `steering_policy=&#34;proximity&#34;`, and `geo` will prefer ECS only when `steering_policy=&#34;geo&#34;`. Available values: `always`, `never`, `proximity`, `geo`. Defaults to `proximity`.
+         * @param preferEcs Whether the EDNS Client Subnet (ECS) GeoIP should be preferred as the authoritative location. Value `always` will always prefer ECS, `never` will never prefer ECS, `proximity` will prefer ECS only when `steering_policy=&#34;proximity&#34;`, and `geo` will prefer ECS only when `steering_policy=&#34;geo&#34;`. Available values: `always`, `never`, `proximity`, `geo`.
          * 
          * @return builder
          * 

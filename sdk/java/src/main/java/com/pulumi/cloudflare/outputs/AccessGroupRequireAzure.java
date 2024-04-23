@@ -18,7 +18,7 @@ public final class AccessGroupRequireAzure {
      */
     private @Nullable String identityProviderId;
     /**
-     * @return The ID of the Authentication Context.
+     * @return The ID of the Azure group or user.
      * 
      */
     private @Nullable List<String> ids;
@@ -32,7 +32,7 @@ public final class AccessGroupRequireAzure {
         return Optional.ofNullable(this.identityProviderId);
     }
     /**
-     * @return The ID of the Authentication Context.
+     * @return The ID of the Azure group or user.
      * 
      */
     public List<String> ids() {

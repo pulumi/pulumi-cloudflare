@@ -33,14 +33,14 @@ public final class RulesetRuleActionParametersFromValueArgs extends com.pulumi.r
     }
 
     /**
-     * Status code for which the edge TTL is applied.
+     * Status code for redirect.
      * 
      */
     @Import(name="statusCode")
     private @Nullable Output<Integer> statusCode;
 
     /**
-     * @return Status code for which the edge TTL is applied.
+     * @return Status code for redirect.
      * 
      */
     public Optional<Output<Integer>> statusCode() {
@@ -110,7 +110,7 @@ public final class RulesetRuleActionParametersFromValueArgs extends com.pulumi.r
         }
 
         /**
-         * @param statusCode Status code for which the edge TTL is applied.
+         * @param statusCode Status code for redirect.
          * 
          * @return builder
          * 
@@ -121,7 +121,7 @@ public final class RulesetRuleActionParametersFromValueArgs extends com.pulumi.r
         }
 
         /**
-         * @param statusCode Status code for which the edge TTL is applied.
+         * @param statusCode Status code for redirect.
          * 
          * @return builder
          * 

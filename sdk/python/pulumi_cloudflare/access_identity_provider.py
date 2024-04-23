@@ -244,7 +244,6 @@ class AccessIdentityProvider(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
@@ -291,7 +290,6 @@ class AccessIdentityProvider(pulumi.CustomResource):
                 okta_account="https://example.com",
             )])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -327,7 +325,6 @@ class AccessIdentityProvider(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
@@ -374,7 +371,6 @@ class AccessIdentityProvider(pulumi.CustomResource):
                 okta_account="https://example.com",
             )])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

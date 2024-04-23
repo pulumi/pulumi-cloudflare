@@ -11,7 +11,6 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
@@ -30,7 +29,6 @@ import * as utilities from "./utilities";
  *     },
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
@@ -71,7 +69,7 @@ export class TeamsRule extends pulumi.CustomResource {
      */
     public readonly accountId!: pulumi.Output<string>;
     /**
-     * Action to be taken when the SSL certificate of upstream is invalid. Available values: `passThrough`, `block`, `error`.
+     * The action executed by matched teams rule. Available values: `allow`, `block`, `safesearch`, `ytrestricted`, `on`, `off`, `scan`, `noscan`, `isolate`, `noisolate`, `override`, `l4Override`, `egress`, `auditSsh`, `resolve`.
      */
     public readonly action!: pulumi.Output<string>;
     /**
@@ -83,7 +81,7 @@ export class TeamsRule extends pulumi.CustomResource {
      */
     public readonly devicePosture!: pulumi.Output<string | undefined>;
     /**
-     * Enable notification settings.
+     * Indicator of rule enablement.
      */
     public readonly enabled!: pulumi.Output<boolean | undefined>;
     /**
@@ -181,7 +179,7 @@ export interface TeamsRuleState {
      */
     accountId?: pulumi.Input<string>;
     /**
-     * Action to be taken when the SSL certificate of upstream is invalid. Available values: `passThrough`, `block`, `error`.
+     * The action executed by matched teams rule. Available values: `allow`, `block`, `safesearch`, `ytrestricted`, `on`, `off`, `scan`, `noscan`, `isolate`, `noisolate`, `override`, `l4Override`, `egress`, `auditSsh`, `resolve`.
      */
     action?: pulumi.Input<string>;
     /**
@@ -193,7 +191,7 @@ export interface TeamsRuleState {
      */
     devicePosture?: pulumi.Input<string>;
     /**
-     * Enable notification settings.
+     * Indicator of rule enablement.
      */
     enabled?: pulumi.Input<boolean>;
     /**
@@ -232,7 +230,7 @@ export interface TeamsRuleArgs {
      */
     accountId: pulumi.Input<string>;
     /**
-     * Action to be taken when the SSL certificate of upstream is invalid. Available values: `passThrough`, `block`, `error`.
+     * The action executed by matched teams rule. Available values: `allow`, `block`, `safesearch`, `ytrestricted`, `on`, `off`, `scan`, `noscan`, `isolate`, `noisolate`, `override`, `l4Override`, `egress`, `auditSsh`, `resolve`.
      */
     action: pulumi.Input<string>;
     /**
@@ -244,7 +242,7 @@ export interface TeamsRuleArgs {
      */
     devicePosture?: pulumi.Input<string>;
     /**
-     * Enable notification settings.
+     * Indicator of rule enablement.
      */
     enabled?: pulumi.Input<boolean>;
     /**

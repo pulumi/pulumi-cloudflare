@@ -135,7 +135,6 @@ class WorkerRoute(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
@@ -147,7 +146,6 @@ class WorkerRoute(pulumi.CustomResource):
             pattern="example.com/*",
             script_name=my_script.name)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -172,7 +170,6 @@ class WorkerRoute(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
@@ -184,7 +181,6 @@ class WorkerRoute(pulumi.CustomResource):
             pattern="example.com/*",
             script_name=my_script.name)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

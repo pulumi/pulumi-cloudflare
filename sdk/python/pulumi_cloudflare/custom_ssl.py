@@ -226,7 +226,6 @@ class CustomSsl(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
@@ -241,7 +240,6 @@ class CustomSsl(pulumi.CustomResource):
                 type="legacy_custom",
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -265,7 +263,6 @@ class CustomSsl(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
@@ -280,7 +277,6 @@ class CustomSsl(pulumi.CustomResource):
                 type="legacy_custom",
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

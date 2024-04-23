@@ -20,14 +20,14 @@ public final class RulesetRuleActionParametersOverridesArgs extends com.pulumi.r
     public static final RulesetRuleActionParametersOverridesArgs Empty = new RulesetRuleActionParametersOverridesArgs();
 
     /**
-     * Action to perform in the ruleset rule. Available values: `block`, `challenge`, `compress_response`, `ddos_dynamic`, `ddos_mitigation`, `execute`, `force_connection_close`, `js_challenge`, `log`, `log_custom_field`, `managed_challenge`, `redirect`, `rewrite`, `route`, `score`, `serve_error`, `set_cache_settings`, `set_config`, `skip`.
+     * Action to perform in the rule-level override. Available values: `block`, `challenge`, `compress_response`, `ddos_dynamic`, `ddos_mitigation`, `execute`, `force_connection_close`, `js_challenge`, `log`, `log_custom_field`, `managed_challenge`, `redirect`, `rewrite`, `route`, `score`, `serve_error`, `set_cache_settings`, `set_config`, `skip`.
      * 
      */
     @Import(name="action")
     private @Nullable Output<String> action;
 
     /**
-     * @return Action to perform in the ruleset rule. Available values: `block`, `challenge`, `compress_response`, `ddos_dynamic`, `ddos_mitigation`, `execute`, `force_connection_close`, `js_challenge`, `log`, `log_custom_field`, `managed_challenge`, `redirect`, `rewrite`, `route`, `score`, `serve_error`, `set_cache_settings`, `set_config`, `skip`.
+     * @return Action to perform in the rule-level override. Available values: `block`, `challenge`, `compress_response`, `ddos_dynamic`, `ddos_mitigation`, `execute`, `force_connection_close`, `js_challenge`, `log`, `log_custom_field`, `managed_challenge`, `redirect`, `rewrite`, `route`, `score`, `serve_error`, `set_cache_settings`, `set_config`, `skip`.
      * 
      */
     public Optional<Output<String>> action() {
@@ -50,14 +50,14 @@ public final class RulesetRuleActionParametersOverridesArgs extends com.pulumi.r
     }
 
     /**
-     * Defines if the current tag-level override enables or disables the ruleset rules with the specified tag.
+     * Defines if the current ruleset-level override enables or disables the ruleset.
      * 
      */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
     /**
-     * @return Defines if the current tag-level override enables or disables the ruleset rules with the specified tag.
+     * @return Defines if the current ruleset-level override enables or disables the ruleset.
      * 
      */
     public Optional<Output<Boolean>> enabled() {
@@ -80,14 +80,14 @@ public final class RulesetRuleActionParametersOverridesArgs extends com.pulumi.r
     }
 
     /**
-     * Sensitivity level for a ruleset rule override.
+     * Sensitivity level to override for all ruleset rules. Available values: `default`, `medium`, `low`, `eoff`.
      * 
      */
     @Import(name="sensitivityLevel")
     private @Nullable Output<String> sensitivityLevel;
 
     /**
-     * @return Sensitivity level for a ruleset rule override.
+     * @return Sensitivity level to override for all ruleset rules. Available values: `default`, `medium`, `low`, `eoff`.
      * 
      */
     public Optional<Output<String>> sensitivityLevel() {
@@ -123,7 +123,7 @@ public final class RulesetRuleActionParametersOverridesArgs extends com.pulumi.r
         }
 
         /**
-         * @param action Action to perform in the ruleset rule. Available values: `block`, `challenge`, `compress_response`, `ddos_dynamic`, `ddos_mitigation`, `execute`, `force_connection_close`, `js_challenge`, `log`, `log_custom_field`, `managed_challenge`, `redirect`, `rewrite`, `route`, `score`, `serve_error`, `set_cache_settings`, `set_config`, `skip`.
+         * @param action Action to perform in the rule-level override. Available values: `block`, `challenge`, `compress_response`, `ddos_dynamic`, `ddos_mitigation`, `execute`, `force_connection_close`, `js_challenge`, `log`, `log_custom_field`, `managed_challenge`, `redirect`, `rewrite`, `route`, `score`, `serve_error`, `set_cache_settings`, `set_config`, `skip`.
          * 
          * @return builder
          * 
@@ -134,7 +134,7 @@ public final class RulesetRuleActionParametersOverridesArgs extends com.pulumi.r
         }
 
         /**
-         * @param action Action to perform in the ruleset rule. Available values: `block`, `challenge`, `compress_response`, `ddos_dynamic`, `ddos_mitigation`, `execute`, `force_connection_close`, `js_challenge`, `log`, `log_custom_field`, `managed_challenge`, `redirect`, `rewrite`, `route`, `score`, `serve_error`, `set_cache_settings`, `set_config`, `skip`.
+         * @param action Action to perform in the rule-level override. Available values: `block`, `challenge`, `compress_response`, `ddos_dynamic`, `ddos_mitigation`, `execute`, `force_connection_close`, `js_challenge`, `log`, `log_custom_field`, `managed_challenge`, `redirect`, `rewrite`, `route`, `score`, `serve_error`, `set_cache_settings`, `set_config`, `skip`.
          * 
          * @return builder
          * 
@@ -175,7 +175,7 @@ public final class RulesetRuleActionParametersOverridesArgs extends com.pulumi.r
         }
 
         /**
-         * @param enabled Defines if the current tag-level override enables or disables the ruleset rules with the specified tag.
+         * @param enabled Defines if the current ruleset-level override enables or disables the ruleset.
          * 
          * @return builder
          * 
@@ -186,7 +186,7 @@ public final class RulesetRuleActionParametersOverridesArgs extends com.pulumi.r
         }
 
         /**
-         * @param enabled Defines if the current tag-level override enables or disables the ruleset rules with the specified tag.
+         * @param enabled Defines if the current ruleset-level override enables or disables the ruleset.
          * 
          * @return builder
          * 
@@ -227,7 +227,7 @@ public final class RulesetRuleActionParametersOverridesArgs extends com.pulumi.r
         }
 
         /**
-         * @param sensitivityLevel Sensitivity level for a ruleset rule override.
+         * @param sensitivityLevel Sensitivity level to override for all ruleset rules. Available values: `default`, `medium`, `low`, `eoff`.
          * 
          * @return builder
          * 
@@ -238,7 +238,7 @@ public final class RulesetRuleActionParametersOverridesArgs extends com.pulumi.r
         }
 
         /**
-         * @param sensitivityLevel Sensitivity level for a ruleset rule override.
+         * @param sensitivityLevel Sensitivity level to override for all ruleset rules. Available values: `default`, `medium`, `low`, `eoff`.
          * 
          * @return builder
          * 

@@ -43,7 +43,7 @@ type LoadBalancerMonitor struct {
 	ExpectedCodes pulumi.StringPtrOutput `pulumi:"expectedCodes"`
 	// Follow redirects if returned by the origin. Only valid if `type` is "http" or "https".
 	FollowRedirects pulumi.BoolPtrOutput `pulumi:"followRedirects"`
-	// The header name.
+	// The HTTP request headers to send in the health check. It is recommended you set a Host header by default. The User-Agent header cannot be overridden.
 	Headers LoadBalancerMonitorHeaderArrayOutput `pulumi:"headers"`
 	// The interval between each health check. Shorter intervals may improve failover time, but will increase load on the origins as we check from multiple locations. Defaults to `60`.
 	Interval pulumi.IntPtrOutput `pulumi:"interval"`
@@ -116,7 +116,7 @@ type loadBalancerMonitorState struct {
 	ExpectedCodes *string `pulumi:"expectedCodes"`
 	// Follow redirects if returned by the origin. Only valid if `type` is "http" or "https".
 	FollowRedirects *bool `pulumi:"followRedirects"`
-	// The header name.
+	// The HTTP request headers to send in the health check. It is recommended you set a Host header by default. The User-Agent header cannot be overridden.
 	Headers []LoadBalancerMonitorHeader `pulumi:"headers"`
 	// The interval between each health check. Shorter intervals may improve failover time, but will increase load on the origins as we check from multiple locations. Defaults to `60`.
 	Interval *int `pulumi:"interval"`
@@ -157,7 +157,7 @@ type LoadBalancerMonitorState struct {
 	ExpectedCodes pulumi.StringPtrInput
 	// Follow redirects if returned by the origin. Only valid if `type` is "http" or "https".
 	FollowRedirects pulumi.BoolPtrInput
-	// The header name.
+	// The HTTP request headers to send in the health check. It is recommended you set a Host header by default. The User-Agent header cannot be overridden.
 	Headers LoadBalancerMonitorHeaderArrayInput
 	// The interval between each health check. Shorter intervals may improve failover time, but will increase load on the origins as we check from multiple locations. Defaults to `60`.
 	Interval pulumi.IntPtrInput
@@ -200,7 +200,7 @@ type loadBalancerMonitorArgs struct {
 	ExpectedCodes *string `pulumi:"expectedCodes"`
 	// Follow redirects if returned by the origin. Only valid if `type` is "http" or "https".
 	FollowRedirects *bool `pulumi:"followRedirects"`
-	// The header name.
+	// The HTTP request headers to send in the health check. It is recommended you set a Host header by default. The User-Agent header cannot be overridden.
 	Headers []LoadBalancerMonitorHeader `pulumi:"headers"`
 	// The interval between each health check. Shorter intervals may improve failover time, but will increase load on the origins as we check from multiple locations. Defaults to `60`.
 	Interval *int `pulumi:"interval"`
@@ -238,7 +238,7 @@ type LoadBalancerMonitorArgs struct {
 	ExpectedCodes pulumi.StringPtrInput
 	// Follow redirects if returned by the origin. Only valid if `type` is "http" or "https".
 	FollowRedirects pulumi.BoolPtrInput
-	// The header name.
+	// The HTTP request headers to send in the health check. It is recommended you set a Host header by default. The User-Agent header cannot be overridden.
 	Headers LoadBalancerMonitorHeaderArrayInput
 	// The interval between each health check. Shorter intervals may improve failover time, but will increase load on the origins as we check from multiple locations. Defaults to `60`.
 	Interval pulumi.IntPtrInput
@@ -390,7 +390,7 @@ func (o LoadBalancerMonitorOutput) FollowRedirects() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *LoadBalancerMonitor) pulumi.BoolPtrOutput { return v.FollowRedirects }).(pulumi.BoolPtrOutput)
 }
 
-// The header name.
+// The HTTP request headers to send in the health check. It is recommended you set a Host header by default. The User-Agent header cannot be overridden.
 func (o LoadBalancerMonitorOutput) Headers() LoadBalancerMonitorHeaderArrayOutput {
 	return o.ApplyT(func(v *LoadBalancerMonitor) LoadBalancerMonitorHeaderArrayOutput { return v.Headers }).(LoadBalancerMonitorHeaderArrayOutput)
 }

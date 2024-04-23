@@ -14,7 +14,7 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class RulesetRuleActionParametersSni
     {
         /// <summary>
-        /// Status code edge TTL value.
+        /// Value to define for SNI.
         /// </summary>
         public readonly string? Value;
 

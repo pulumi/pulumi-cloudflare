@@ -19,7 +19,7 @@ namespace Pulumi.Cloudflare.Inputs
         public Input<bool>? PreserveQueryString { get; set; }
 
         /// <summary>
-        /// Status code for which the edge TTL is applied.
+        /// Status code for redirect.
         /// </summary>
         [Input("statusCode")]
         public Input<int>? StatusCode { get; set; }

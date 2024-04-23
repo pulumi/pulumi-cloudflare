@@ -70,11 +70,11 @@ export class PagesProject extends pulumi.CustomResource {
      */
     public /*out*/ readonly domains!: pulumi.Output<string[]>;
     /**
-     * The global variable for the binding in your Worker code.
+     * Name of the project.
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * Project production branch name.
+     * The name of the branch that is used for the production environment.
      */
     public readonly productionBranch!: pulumi.Output<string>;
     /**
@@ -159,11 +159,11 @@ export interface PagesProjectState {
      */
     domains?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The global variable for the binding in your Worker code.
+     * Name of the project.
      */
     name?: pulumi.Input<string>;
     /**
-     * Project production branch name.
+     * The name of the branch that is used for the production environment.
      */
     productionBranch?: pulumi.Input<string>;
     /**
@@ -193,11 +193,11 @@ export interface PagesProjectArgs {
      */
     deploymentConfigs?: pulumi.Input<inputs.PagesProjectDeploymentConfigs>;
     /**
-     * The global variable for the binding in your Worker code.
+     * Name of the project.
      */
     name: pulumi.Input<string>;
     /**
-     * Project production branch name.
+     * The name of the branch that is used for the production environment.
      */
     productionBranch: pulumi.Input<string>;
     /**

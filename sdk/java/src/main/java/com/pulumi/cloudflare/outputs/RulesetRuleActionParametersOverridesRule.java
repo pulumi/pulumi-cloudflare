@@ -14,17 +14,17 @@ import javax.annotation.Nullable;
 @CustomType
 public final class RulesetRuleActionParametersOverridesRule {
     /**
-     * @return Action to perform in the ruleset rule. Available values: `block`, `challenge`, `compress_response`, `ddos_dynamic`, `ddos_mitigation`, `execute`, `force_connection_close`, `js_challenge`, `log`, `log_custom_field`, `managed_challenge`, `redirect`, `rewrite`, `route`, `score`, `serve_error`, `set_cache_settings`, `set_config`, `skip`.
+     * @return Action to perform in the rule-level override. Available values: `block`, `challenge`, `compress_response`, `ddos_dynamic`, `ddos_mitigation`, `execute`, `force_connection_close`, `js_challenge`, `log`, `log_custom_field`, `managed_challenge`, `redirect`, `rewrite`, `route`, `score`, `serve_error`, `set_cache_settings`, `set_config`, `skip`.
      * 
      */
     private @Nullable String action;
     /**
-     * @return Whether the rule is active.
+     * @return Defines if the current rule-level override enables or disables the rule.
      * 
      */
     private @Nullable Boolean enabled;
     /**
-     * @return Unique rule identifier.
+     * @return Rule ID to apply the override to.
      * 
      */
     private @Nullable String id;
@@ -41,21 +41,21 @@ public final class RulesetRuleActionParametersOverridesRule {
 
     private RulesetRuleActionParametersOverridesRule() {}
     /**
-     * @return Action to perform in the ruleset rule. Available values: `block`, `challenge`, `compress_response`, `ddos_dynamic`, `ddos_mitigation`, `execute`, `force_connection_close`, `js_challenge`, `log`, `log_custom_field`, `managed_challenge`, `redirect`, `rewrite`, `route`, `score`, `serve_error`, `set_cache_settings`, `set_config`, `skip`.
+     * @return Action to perform in the rule-level override. Available values: `block`, `challenge`, `compress_response`, `ddos_dynamic`, `ddos_mitigation`, `execute`, `force_connection_close`, `js_challenge`, `log`, `log_custom_field`, `managed_challenge`, `redirect`, `rewrite`, `route`, `score`, `serve_error`, `set_cache_settings`, `set_config`, `skip`.
      * 
      */
     public Optional<String> action() {
         return Optional.ofNullable(this.action);
     }
     /**
-     * @return Whether the rule is active.
+     * @return Defines if the current rule-level override enables or disables the rule.
      * 
      */
     public Optional<Boolean> enabled() {
         return Optional.ofNullable(this.enabled);
     }
     /**
-     * @return Unique rule identifier.
+     * @return Rule ID to apply the override to.
      * 
      */
     public Optional<String> id() {

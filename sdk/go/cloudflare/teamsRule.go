@@ -16,7 +16,6 @@ import (
 //
 // ## Example Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -52,7 +51,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
@@ -64,13 +62,13 @@ type TeamsRule struct {
 
 	// The account identifier to target for the resource.
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
-	// Action to be taken when the SSL certificate of upstream is invalid. Available values: `passThrough`, `block`, `error`.
+	// The action executed by matched teams rule. Available values: `allow`, `block`, `safesearch`, `ytrestricted`, `on`, `off`, `scan`, `noscan`, `isolate`, `noisolate`, `override`, `l4Override`, `egress`, `auditSsh`, `resolve`.
 	Action pulumi.StringOutput `pulumi:"action"`
 	// The description of the teams rule.
 	Description pulumi.StringOutput `pulumi:"description"`
 	// The wirefilter expression to be used for devicePosture check matching.
 	DevicePosture pulumi.StringPtrOutput `pulumi:"devicePosture"`
-	// Enable notification settings.
+	// Indicator of rule enablement.
 	Enabled pulumi.BoolPtrOutput `pulumi:"enabled"`
 	// The protocol or layer to evaluate the traffic and identity expressions.
 	Filters pulumi.StringArrayOutput `pulumi:"filters"`
@@ -134,13 +132,13 @@ func GetTeamsRule(ctx *pulumi.Context,
 type teamsRuleState struct {
 	// The account identifier to target for the resource.
 	AccountId *string `pulumi:"accountId"`
-	// Action to be taken when the SSL certificate of upstream is invalid. Available values: `passThrough`, `block`, `error`.
+	// The action executed by matched teams rule. Available values: `allow`, `block`, `safesearch`, `ytrestricted`, `on`, `off`, `scan`, `noscan`, `isolate`, `noisolate`, `override`, `l4Override`, `egress`, `auditSsh`, `resolve`.
 	Action *string `pulumi:"action"`
 	// The description of the teams rule.
 	Description *string `pulumi:"description"`
 	// The wirefilter expression to be used for devicePosture check matching.
 	DevicePosture *string `pulumi:"devicePosture"`
-	// Enable notification settings.
+	// Indicator of rule enablement.
 	Enabled *bool `pulumi:"enabled"`
 	// The protocol or layer to evaluate the traffic and identity expressions.
 	Filters []string `pulumi:"filters"`
@@ -160,13 +158,13 @@ type teamsRuleState struct {
 type TeamsRuleState struct {
 	// The account identifier to target for the resource.
 	AccountId pulumi.StringPtrInput
-	// Action to be taken when the SSL certificate of upstream is invalid. Available values: `passThrough`, `block`, `error`.
+	// The action executed by matched teams rule. Available values: `allow`, `block`, `safesearch`, `ytrestricted`, `on`, `off`, `scan`, `noscan`, `isolate`, `noisolate`, `override`, `l4Override`, `egress`, `auditSsh`, `resolve`.
 	Action pulumi.StringPtrInput
 	// The description of the teams rule.
 	Description pulumi.StringPtrInput
 	// The wirefilter expression to be used for devicePosture check matching.
 	DevicePosture pulumi.StringPtrInput
-	// Enable notification settings.
+	// Indicator of rule enablement.
 	Enabled pulumi.BoolPtrInput
 	// The protocol or layer to evaluate the traffic and identity expressions.
 	Filters pulumi.StringArrayInput
@@ -190,13 +188,13 @@ func (TeamsRuleState) ElementType() reflect.Type {
 type teamsRuleArgs struct {
 	// The account identifier to target for the resource.
 	AccountId string `pulumi:"accountId"`
-	// Action to be taken when the SSL certificate of upstream is invalid. Available values: `passThrough`, `block`, `error`.
+	// The action executed by matched teams rule. Available values: `allow`, `block`, `safesearch`, `ytrestricted`, `on`, `off`, `scan`, `noscan`, `isolate`, `noisolate`, `override`, `l4Override`, `egress`, `auditSsh`, `resolve`.
 	Action string `pulumi:"action"`
 	// The description of the teams rule.
 	Description string `pulumi:"description"`
 	// The wirefilter expression to be used for devicePosture check matching.
 	DevicePosture *string `pulumi:"devicePosture"`
-	// Enable notification settings.
+	// Indicator of rule enablement.
 	Enabled *bool `pulumi:"enabled"`
 	// The protocol or layer to evaluate the traffic and identity expressions.
 	Filters []string `pulumi:"filters"`
@@ -216,13 +214,13 @@ type teamsRuleArgs struct {
 type TeamsRuleArgs struct {
 	// The account identifier to target for the resource.
 	AccountId pulumi.StringInput
-	// Action to be taken when the SSL certificate of upstream is invalid. Available values: `passThrough`, `block`, `error`.
+	// The action executed by matched teams rule. Available values: `allow`, `block`, `safesearch`, `ytrestricted`, `on`, `off`, `scan`, `noscan`, `isolate`, `noisolate`, `override`, `l4Override`, `egress`, `auditSsh`, `resolve`.
 	Action pulumi.StringInput
 	// The description of the teams rule.
 	Description pulumi.StringInput
 	// The wirefilter expression to be used for devicePosture check matching.
 	DevicePosture pulumi.StringPtrInput
-	// Enable notification settings.
+	// Indicator of rule enablement.
 	Enabled pulumi.BoolPtrInput
 	// The protocol or layer to evaluate the traffic and identity expressions.
 	Filters pulumi.StringArrayInput
@@ -330,7 +328,7 @@ func (o TeamsRuleOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v *TeamsRule) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
 
-// Action to be taken when the SSL certificate of upstream is invalid. Available values: `passThrough`, `block`, `error`.
+// The action executed by matched teams rule. Available values: `allow`, `block`, `safesearch`, `ytrestricted`, `on`, `off`, `scan`, `noscan`, `isolate`, `noisolate`, `override`, `l4Override`, `egress`, `auditSsh`, `resolve`.
 func (o TeamsRuleOutput) Action() pulumi.StringOutput {
 	return o.ApplyT(func(v *TeamsRule) pulumi.StringOutput { return v.Action }).(pulumi.StringOutput)
 }
@@ -345,7 +343,7 @@ func (o TeamsRuleOutput) DevicePosture() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TeamsRule) pulumi.StringPtrOutput { return v.DevicePosture }).(pulumi.StringPtrOutput)
 }
 
-// Enable notification settings.
+// Indicator of rule enablement.
 func (o TeamsRuleOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *TeamsRule) pulumi.BoolPtrOutput { return v.Enabled }).(pulumi.BoolPtrOutput)
 }

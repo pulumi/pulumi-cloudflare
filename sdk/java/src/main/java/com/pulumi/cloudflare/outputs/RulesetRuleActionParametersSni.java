@@ -12,14 +12,14 @@ import javax.annotation.Nullable;
 @CustomType
 public final class RulesetRuleActionParametersSni {
     /**
-     * @return Status code edge TTL value.
+     * @return Value to define for SNI.
      * 
      */
     private @Nullable String value;
 
     private RulesetRuleActionParametersSni() {}
     /**
-     * @return Status code edge TTL value.
+     * @return Value to define for SNI.
      * 
      */
     public Optional<String> value() {

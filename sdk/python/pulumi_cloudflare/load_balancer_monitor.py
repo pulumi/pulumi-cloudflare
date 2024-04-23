@@ -43,7 +43,7 @@ class LoadBalancerMonitorArgs:
         :param pulumi.Input[str] expected_body: A case-insensitive sub-string to look for in the response body. If this string is not found, the origin will be marked as unhealthy. Only valid if `type` is "http" or "https".
         :param pulumi.Input[str] expected_codes: The expected HTTP response code or code range of the health check. Eg `2xx`. Only valid and required if `type` is "http" or "https".
         :param pulumi.Input[bool] follow_redirects: Follow redirects if returned by the origin. Only valid if `type` is "http" or "https".
-        :param pulumi.Input[Sequence[pulumi.Input['LoadBalancerMonitorHeaderArgs']]] headers: The header name.
+        :param pulumi.Input[Sequence[pulumi.Input['LoadBalancerMonitorHeaderArgs']]] headers: The HTTP request headers to send in the health check. It is recommended you set a Host header by default. The User-Agent header cannot be overridden.
         :param pulumi.Input[int] interval: The interval between each health check. Shorter intervals may improve failover time, but will increase load on the origins as we check from multiple locations. Defaults to `60`.
         :param pulumi.Input[str] method: The method to use for the health check.
         :param pulumi.Input[str] path: The endpoint path to health check against.
@@ -187,7 +187,7 @@ class LoadBalancerMonitorArgs:
     @pulumi.getter
     def headers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['LoadBalancerMonitorHeaderArgs']]]]:
         """
-        The header name.
+        The HTTP request headers to send in the health check. It is recommended you set a Host header by default. The User-Agent header cannot be overridden.
         """
         return pulumi.get(self, "headers")
 
@@ -325,7 +325,7 @@ class _LoadBalancerMonitorState:
         :param pulumi.Input[str] expected_body: A case-insensitive sub-string to look for in the response body. If this string is not found, the origin will be marked as unhealthy. Only valid if `type` is "http" or "https".
         :param pulumi.Input[str] expected_codes: The expected HTTP response code or code range of the health check. Eg `2xx`. Only valid and required if `type` is "http" or "https".
         :param pulumi.Input[bool] follow_redirects: Follow redirects if returned by the origin. Only valid if `type` is "http" or "https".
-        :param pulumi.Input[Sequence[pulumi.Input['LoadBalancerMonitorHeaderArgs']]] headers: The header name.
+        :param pulumi.Input[Sequence[pulumi.Input['LoadBalancerMonitorHeaderArgs']]] headers: The HTTP request headers to send in the health check. It is recommended you set a Host header by default. The User-Agent header cannot be overridden.
         :param pulumi.Input[int] interval: The interval between each health check. Shorter intervals may improve failover time, but will increase load on the origins as we check from multiple locations. Defaults to `60`.
         :param pulumi.Input[str] method: The method to use for the health check.
         :param pulumi.Input[str] modified_on: The RFC3339 timestamp of when the load balancer monitor was last modified.
@@ -487,7 +487,7 @@ class _LoadBalancerMonitorState:
     @pulumi.getter
     def headers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['LoadBalancerMonitorHeaderArgs']]]]:
         """
-        The header name.
+        The HTTP request headers to send in the health check. It is recommended you set a Host header by default. The User-Agent header cannot be overridden.
         """
         return pulumi.get(self, "headers")
 
@@ -649,7 +649,7 @@ class LoadBalancerMonitor(pulumi.CustomResource):
         :param pulumi.Input[str] expected_body: A case-insensitive sub-string to look for in the response body. If this string is not found, the origin will be marked as unhealthy. Only valid if `type` is "http" or "https".
         :param pulumi.Input[str] expected_codes: The expected HTTP response code or code range of the health check. Eg `2xx`. Only valid and required if `type` is "http" or "https".
         :param pulumi.Input[bool] follow_redirects: Follow redirects if returned by the origin. Only valid if `type` is "http" or "https".
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['LoadBalancerMonitorHeaderArgs']]]] headers: The header name.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['LoadBalancerMonitorHeaderArgs']]]] headers: The HTTP request headers to send in the health check. It is recommended you set a Host header by default. The User-Agent header cannot be overridden.
         :param pulumi.Input[int] interval: The interval between each health check. Shorter intervals may improve failover time, but will increase load on the origins as we check from multiple locations. Defaults to `60`.
         :param pulumi.Input[str] method: The method to use for the health check.
         :param pulumi.Input[str] path: The endpoint path to health check against.
@@ -784,7 +784,7 @@ class LoadBalancerMonitor(pulumi.CustomResource):
         :param pulumi.Input[str] expected_body: A case-insensitive sub-string to look for in the response body. If this string is not found, the origin will be marked as unhealthy. Only valid if `type` is "http" or "https".
         :param pulumi.Input[str] expected_codes: The expected HTTP response code or code range of the health check. Eg `2xx`. Only valid and required if `type` is "http" or "https".
         :param pulumi.Input[bool] follow_redirects: Follow redirects if returned by the origin. Only valid if `type` is "http" or "https".
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['LoadBalancerMonitorHeaderArgs']]]] headers: The header name.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['LoadBalancerMonitorHeaderArgs']]]] headers: The HTTP request headers to send in the health check. It is recommended you set a Host header by default. The User-Agent header cannot be overridden.
         :param pulumi.Input[int] interval: The interval between each health check. Shorter intervals may improve failover time, but will increase load on the origins as we check from multiple locations. Defaults to `60`.
         :param pulumi.Input[str] method: The method to use for the health check.
         :param pulumi.Input[str] modified_on: The RFC3339 timestamp of when the load balancer monitor was last modified.
@@ -896,7 +896,7 @@ class LoadBalancerMonitor(pulumi.CustomResource):
     @pulumi.getter
     def headers(self) -> pulumi.Output[Optional[Sequence['outputs.LoadBalancerMonitorHeader']]]:
         """
-        The header name.
+        The HTTP request headers to send in the health check. It is recommended you set a Host header by default. The User-Agent header cannot be overridden.
         """
         return pulumi.get(self, "headers")
 

@@ -389,7 +389,6 @@ class BotManagement(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
@@ -403,7 +402,6 @@ class BotManagement(pulumi.CustomResource):
             sbfm_static_resource_protection=False,
             optimize_wordpress=True)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -441,7 +439,6 @@ class BotManagement(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
@@ -455,7 +452,6 @@ class BotManagement(pulumi.CustomResource):
             sbfm_static_resource_protection=False,
             optimize_wordpress=True)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

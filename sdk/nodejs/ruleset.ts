@@ -62,7 +62,7 @@ export class Ruleset extends pulumi.CustomResource {
      */
     public readonly accountId!: pulumi.Output<string | undefined>;
     /**
-     * Brief summary of the ruleset rule and its intended use.
+     * Brief summary of the ruleset and its intended use.
      */
     public readonly description!: pulumi.Output<string>;
     /**
@@ -70,7 +70,7 @@ export class Ruleset extends pulumi.CustomResource {
      */
     public readonly kind!: pulumi.Output<string>;
     /**
-     * Name of the compression algorithm to use. Available values: `gzip`, `brotli`, `auto`, `default`, `none`
+     * Name of the ruleset.
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -78,7 +78,7 @@ export class Ruleset extends pulumi.CustomResource {
      */
     public readonly phase!: pulumi.Output<string>;
     /**
-     * List of rule-based overrides.
+     * List of rules to apply to the ruleset.
      */
     public readonly rules!: pulumi.Output<outputs.RulesetRule[] | undefined>;
     /**
@@ -139,7 +139,7 @@ export interface RulesetState {
      */
     accountId?: pulumi.Input<string>;
     /**
-     * Brief summary of the ruleset rule and its intended use.
+     * Brief summary of the ruleset and its intended use.
      */
     description?: pulumi.Input<string>;
     /**
@@ -147,7 +147,7 @@ export interface RulesetState {
      */
     kind?: pulumi.Input<string>;
     /**
-     * Name of the compression algorithm to use. Available values: `gzip`, `brotli`, `auto`, `default`, `none`
+     * Name of the ruleset.
      */
     name?: pulumi.Input<string>;
     /**
@@ -155,7 +155,7 @@ export interface RulesetState {
      */
     phase?: pulumi.Input<string>;
     /**
-     * List of rule-based overrides.
+     * List of rules to apply to the ruleset.
      */
     rules?: pulumi.Input<pulumi.Input<inputs.RulesetRule>[]>;
     /**
@@ -173,7 +173,7 @@ export interface RulesetArgs {
      */
     accountId?: pulumi.Input<string>;
     /**
-     * Brief summary of the ruleset rule and its intended use.
+     * Brief summary of the ruleset and its intended use.
      */
     description?: pulumi.Input<string>;
     /**
@@ -181,7 +181,7 @@ export interface RulesetArgs {
      */
     kind: pulumi.Input<string>;
     /**
-     * Name of the compression algorithm to use. Available values: `gzip`, `brotli`, `auto`, `default`, `none`
+     * Name of the ruleset.
      */
     name: pulumi.Input<string>;
     /**
@@ -189,7 +189,7 @@ export interface RulesetArgs {
      */
     phase: pulumi.Input<string>;
     /**
-     * List of rule-based overrides.
+     * List of rules to apply to the ruleset.
      */
     rules?: pulumi.Input<pulumi.Input<inputs.RulesetRule>[]>;
     /**

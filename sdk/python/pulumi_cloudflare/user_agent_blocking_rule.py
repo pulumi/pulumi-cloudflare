@@ -200,7 +200,6 @@ class UserAgentBlockingRule(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
@@ -224,7 +223,6 @@ class UserAgentBlockingRule(pulumi.CustomResource):
                 value="Mozilla",
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -251,7 +249,6 @@ class UserAgentBlockingRule(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
@@ -275,7 +272,6 @@ class UserAgentBlockingRule(pulumi.CustomResource):
                 value="Mozilla",
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

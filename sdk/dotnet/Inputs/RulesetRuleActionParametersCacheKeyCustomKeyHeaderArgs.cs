@@ -16,7 +16,7 @@ namespace Pulumi.Cloudflare.Inputs
         private InputList<string>? _checkPresences;
 
         /// <summary>
-        /// List of cookies to check for presence in the custom key.
+        /// List of headers to check for presence in the custom key.
         /// </summary>
         public InputList<string> CheckPresences
         {
@@ -34,7 +34,7 @@ namespace Pulumi.Cloudflare.Inputs
         private InputList<string>? _includes;
 
         /// <summary>
-        /// List of cookies to include in the custom key.
+        /// List of headers to include in the custom key.
         /// </summary>
         public InputList<string> Includes
         {

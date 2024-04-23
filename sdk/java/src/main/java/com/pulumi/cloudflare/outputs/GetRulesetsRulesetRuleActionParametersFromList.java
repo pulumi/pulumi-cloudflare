@@ -16,7 +16,7 @@ public final class GetRulesetsRulesetRuleActionParametersFromList {
      */
     private String key;
     /**
-     * @return Name of the ruleset.
+     * @return Name of the list.
      * 
      */
     private String name;
@@ -30,7 +30,7 @@ public final class GetRulesetsRulesetRuleActionParametersFromList {
         return this.key;
     }
     /**
-     * @return Name of the ruleset.
+     * @return Name of the list.
      * 
      */
     public String name() {

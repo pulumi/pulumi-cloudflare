@@ -16,7 +16,6 @@ import (
 //
 // ## Example Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -63,7 +62,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
@@ -89,7 +87,7 @@ type Record struct {
 	Metadata pulumi.MapOutput `pulumi:"metadata"`
 	// The RFC3339 timestamp of when the record was last modified.
 	ModifiedOn pulumi.StringOutput `pulumi:"modifiedOn"`
-	// The name of the record.
+	// The name of the record. **Modifying this attribute will force creation of a new resource.**
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The priority of the record.
 	Priority pulumi.IntPtrOutput `pulumi:"priority"`
@@ -101,10 +99,9 @@ type Record struct {
 	Tags pulumi.StringArrayOutput `pulumi:"tags"`
 	// The TTL of the record.
 	Ttl pulumi.IntOutput `pulumi:"ttl"`
-	// The type of the record. Available values: `A`, `AAAA`, `CAA`, `CNAME`, `TXT`, `SRV`, `LOC`, `MX`, `NS`, `SPF`, `CERT`,
-	// `DNSKEY`, `DS`, `NAPTR`, `SMIMEA`, `SSHFP`, `TLSA`, `URI`, `PTR`, `HTTPS`, `SVCB`
+	// The type of the record. Available values: `A`, `AAAA`, `CAA`, `CNAME`, `TXT`, `SRV`, `LOC`, `MX`, `NS`, `SPF`, `CERT`, `DNSKEY`, `DS`, `NAPTR`, `SMIMEA`, `SSHFP`, `TLSA`, `URI`, `PTR`, `HTTPS`, `SVCB`. **Modifying this attribute will force creation of a new resource.**
 	Type pulumi.StringOutput `pulumi:"type"`
-	// The value of the record.
+	// The value of the record. Conflicts with `data`.
 	Value pulumi.StringOutput `pulumi:"value"`
 	// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
 	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
@@ -165,7 +162,7 @@ type recordState struct {
 	Metadata map[string]interface{} `pulumi:"metadata"`
 	// The RFC3339 timestamp of when the record was last modified.
 	ModifiedOn *string `pulumi:"modifiedOn"`
-	// The name of the record.
+	// The name of the record. **Modifying this attribute will force creation of a new resource.**
 	Name *string `pulumi:"name"`
 	// The priority of the record.
 	Priority *int `pulumi:"priority"`
@@ -177,10 +174,9 @@ type recordState struct {
 	Tags []string `pulumi:"tags"`
 	// The TTL of the record.
 	Ttl *int `pulumi:"ttl"`
-	// The type of the record. Available values: `A`, `AAAA`, `CAA`, `CNAME`, `TXT`, `SRV`, `LOC`, `MX`, `NS`, `SPF`, `CERT`,
-	// `DNSKEY`, `DS`, `NAPTR`, `SMIMEA`, `SSHFP`, `TLSA`, `URI`, `PTR`, `HTTPS`, `SVCB`
+	// The type of the record. Available values: `A`, `AAAA`, `CAA`, `CNAME`, `TXT`, `SRV`, `LOC`, `MX`, `NS`, `SPF`, `CERT`, `DNSKEY`, `DS`, `NAPTR`, `SMIMEA`, `SSHFP`, `TLSA`, `URI`, `PTR`, `HTTPS`, `SVCB`. **Modifying this attribute will force creation of a new resource.**
 	Type *string `pulumi:"type"`
-	// The value of the record.
+	// The value of the record. Conflicts with `data`.
 	Value *string `pulumi:"value"`
 	// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
 	ZoneId *string `pulumi:"zoneId"`
@@ -203,7 +199,7 @@ type RecordState struct {
 	Metadata pulumi.MapInput
 	// The RFC3339 timestamp of when the record was last modified.
 	ModifiedOn pulumi.StringPtrInput
-	// The name of the record.
+	// The name of the record. **Modifying this attribute will force creation of a new resource.**
 	Name pulumi.StringPtrInput
 	// The priority of the record.
 	Priority pulumi.IntPtrInput
@@ -215,10 +211,9 @@ type RecordState struct {
 	Tags pulumi.StringArrayInput
 	// The TTL of the record.
 	Ttl pulumi.IntPtrInput
-	// The type of the record. Available values: `A`, `AAAA`, `CAA`, `CNAME`, `TXT`, `SRV`, `LOC`, `MX`, `NS`, `SPF`, `CERT`,
-	// `DNSKEY`, `DS`, `NAPTR`, `SMIMEA`, `SSHFP`, `TLSA`, `URI`, `PTR`, `HTTPS`, `SVCB`
+	// The type of the record. Available values: `A`, `AAAA`, `CAA`, `CNAME`, `TXT`, `SRV`, `LOC`, `MX`, `NS`, `SPF`, `CERT`, `DNSKEY`, `DS`, `NAPTR`, `SMIMEA`, `SSHFP`, `TLSA`, `URI`, `PTR`, `HTTPS`, `SVCB`. **Modifying this attribute will force creation of a new resource.**
 	Type pulumi.StringPtrInput
-	// The value of the record.
+	// The value of the record. Conflicts with `data`.
 	Value pulumi.StringPtrInput
 	// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
 	ZoneId pulumi.StringPtrInput
@@ -237,7 +232,7 @@ type recordArgs struct {
 	Comment *string `pulumi:"comment"`
 	// Map of attributes that constitute the record value. Conflicts with `value`.
 	Data *RecordData `pulumi:"data"`
-	// The name of the record.
+	// The name of the record. **Modifying this attribute will force creation of a new resource.**
 	Name string `pulumi:"name"`
 	// The priority of the record.
 	Priority *int `pulumi:"priority"`
@@ -247,10 +242,9 @@ type recordArgs struct {
 	Tags []string `pulumi:"tags"`
 	// The TTL of the record.
 	Ttl *int `pulumi:"ttl"`
-	// The type of the record. Available values: `A`, `AAAA`, `CAA`, `CNAME`, `TXT`, `SRV`, `LOC`, `MX`, `NS`, `SPF`, `CERT`,
-	// `DNSKEY`, `DS`, `NAPTR`, `SMIMEA`, `SSHFP`, `TLSA`, `URI`, `PTR`, `HTTPS`, `SVCB`
+	// The type of the record. Available values: `A`, `AAAA`, `CAA`, `CNAME`, `TXT`, `SRV`, `LOC`, `MX`, `NS`, `SPF`, `CERT`, `DNSKEY`, `DS`, `NAPTR`, `SMIMEA`, `SSHFP`, `TLSA`, `URI`, `PTR`, `HTTPS`, `SVCB`. **Modifying this attribute will force creation of a new resource.**
 	Type string `pulumi:"type"`
-	// The value of the record.
+	// The value of the record. Conflicts with `data`.
 	Value *string `pulumi:"value"`
 	// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
 	ZoneId string `pulumi:"zoneId"`
@@ -266,7 +260,7 @@ type RecordArgs struct {
 	Comment pulumi.StringPtrInput
 	// Map of attributes that constitute the record value. Conflicts with `value`.
 	Data RecordDataPtrInput
-	// The name of the record.
+	// The name of the record. **Modifying this attribute will force creation of a new resource.**
 	Name pulumi.StringInput
 	// The priority of the record.
 	Priority pulumi.IntPtrInput
@@ -276,10 +270,9 @@ type RecordArgs struct {
 	Tags pulumi.StringArrayInput
 	// The TTL of the record.
 	Ttl pulumi.IntPtrInput
-	// The type of the record. Available values: `A`, `AAAA`, `CAA`, `CNAME`, `TXT`, `SRV`, `LOC`, `MX`, `NS`, `SPF`, `CERT`,
-	// `DNSKEY`, `DS`, `NAPTR`, `SMIMEA`, `SSHFP`, `TLSA`, `URI`, `PTR`, `HTTPS`, `SVCB`
+	// The type of the record. Available values: `A`, `AAAA`, `CAA`, `CNAME`, `TXT`, `SRV`, `LOC`, `MX`, `NS`, `SPF`, `CERT`, `DNSKEY`, `DS`, `NAPTR`, `SMIMEA`, `SSHFP`, `TLSA`, `URI`, `PTR`, `HTTPS`, `SVCB`. **Modifying this attribute will force creation of a new resource.**
 	Type pulumi.StringInput
-	// The value of the record.
+	// The value of the record. Conflicts with `data`.
 	Value pulumi.StringPtrInput
 	// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
 	ZoneId pulumi.StringInput
@@ -409,7 +402,7 @@ func (o RecordOutput) ModifiedOn() pulumi.StringOutput {
 	return o.ApplyT(func(v *Record) pulumi.StringOutput { return v.ModifiedOn }).(pulumi.StringOutput)
 }
 
-// The name of the record.
+// The name of the record. **Modifying this attribute will force creation of a new resource.**
 func (o RecordOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Record) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -439,13 +432,12 @@ func (o RecordOutput) Ttl() pulumi.IntOutput {
 	return o.ApplyT(func(v *Record) pulumi.IntOutput { return v.Ttl }).(pulumi.IntOutput)
 }
 
-// The type of the record. Available values: `A`, `AAAA`, `CAA`, `CNAME`, `TXT`, `SRV`, `LOC`, `MX`, `NS`, `SPF`, `CERT`,
-// `DNSKEY`, `DS`, `NAPTR`, `SMIMEA`, `SSHFP`, `TLSA`, `URI`, `PTR`, `HTTPS`, `SVCB`
+// The type of the record. Available values: `A`, `AAAA`, `CAA`, `CNAME`, `TXT`, `SRV`, `LOC`, `MX`, `NS`, `SPF`, `CERT`, `DNSKEY`, `DS`, `NAPTR`, `SMIMEA`, `SSHFP`, `TLSA`, `URI`, `PTR`, `HTTPS`, `SVCB`. **Modifying this attribute will force creation of a new resource.**
 func (o RecordOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *Record) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }
 
-// The value of the record.
+// The value of the record. Conflicts with `data`.
 func (o RecordOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v *Record) pulumi.StringOutput { return v.Value }).(pulumi.StringOutput)
 }

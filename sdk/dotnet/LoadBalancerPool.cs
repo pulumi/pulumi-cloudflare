@@ -15,7 +15,6 @@ namespace Pulumi.Cloudflare
     /// 
     /// ## Example Usage
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -91,7 +90,6 @@ namespace Pulumi.Cloudflare
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
@@ -127,7 +125,7 @@ namespace Pulumi.Cloudflare
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// Whether this origin is enabled. Disabled origins will not receive traffic and are excluded from health checks. Defaults to `true`.
+        /// Whether to enable (the default) this pool. Disabled pools will not receive traffic and are excluded from health checks. Disabling a pool will cause any load balancers using it to failover to the next pool (if any). Defaults to `true`.
         /// </summary>
         [Output("enabled")]
         public Output<bool?> Enabled { get; private set; } = null!;
@@ -169,7 +167,7 @@ namespace Pulumi.Cloudflare
         public Output<string?> Monitor { get; private set; } = null!;
 
         /// <summary>
-        /// A human-identifiable name for the origin.
+        /// A short name (tag) for the pool.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -263,7 +261,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Whether this origin is enabled. Disabled origins will not receive traffic and are excluded from health checks. Defaults to `true`.
+        /// Whether to enable (the default) this pool. Disabled pools will not receive traffic and are excluded from health checks. Disabling a pool will cause any load balancers using it to failover to the next pool (if any). Defaults to `true`.
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
@@ -305,7 +303,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? Monitor { get; set; }
 
         /// <summary>
-        /// A human-identifiable name for the origin.
+        /// A short name (tag) for the pool.
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
@@ -379,7 +377,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Whether this origin is enabled. Disabled origins will not receive traffic and are excluded from health checks. Defaults to `true`.
+        /// Whether to enable (the default) this pool. Disabled pools will not receive traffic and are excluded from health checks. Disabling a pool will cause any load balancers using it to failover to the next pool (if any). Defaults to `true`.
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
@@ -427,7 +425,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? Monitor { get; set; }
 
         /// <summary>
-        /// A human-identifiable name for the origin.
+        /// A short name (tag) for the pool.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

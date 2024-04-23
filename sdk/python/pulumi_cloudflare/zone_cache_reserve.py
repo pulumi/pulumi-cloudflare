@@ -106,7 +106,6 @@ class ZoneCacheReserve(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
@@ -115,7 +114,6 @@ class ZoneCacheReserve(pulumi.CustomResource):
             zone_id="0da42c8d2132a9ddaf714f9e7c920711",
             enabled=True)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -143,7 +141,6 @@ class ZoneCacheReserve(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
@@ -152,7 +149,6 @@ class ZoneCacheReserve(pulumi.CustomResource):
             zone_id="0da42c8d2132a9ddaf714f9e7c920711",
             enabled=True)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

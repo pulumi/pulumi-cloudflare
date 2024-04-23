@@ -22,7 +22,7 @@ namespace Pulumi.Cloudflare.Inputs
         private InputList<string>? _ids;
 
         /// <summary>
-        /// The ID of the Authentication Context.
+        /// The ID of the Azure group or user.
         /// </summary>
         public InputList<string> Ids
         {

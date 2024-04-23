@@ -15,7 +15,6 @@ import (
 //
 // ## Example Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -39,7 +38,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func GetAccounts(ctx *pulumi.Context, args *GetAccountsArgs, opts ...pulumi.InvokeOption) (*GetAccountsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetAccountsResult
@@ -52,6 +50,7 @@ func GetAccounts(ctx *pulumi.Context, args *GetAccountsArgs, opts ...pulumi.Invo
 
 // A collection of arguments for invoking getAccounts.
 type GetAccountsArgs struct {
+	// The account name to target for the resource.
 	Name *string `pulumi:"name"`
 }
 
@@ -79,6 +78,7 @@ func GetAccountsOutput(ctx *pulumi.Context, args GetAccountsOutputArgs, opts ...
 
 // A collection of arguments for invoking getAccounts.
 type GetAccountsOutputArgs struct {
+	// The account name to target for the resource.
 	Name pulumi.StringPtrInput `pulumi:"name"`
 }
 

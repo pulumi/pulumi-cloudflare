@@ -14,7 +14,7 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class RulesetRuleLogging
     {
         /// <summary>
-        /// Defines if the current tag-level override enables or disables the ruleset rules with the specified tag.
+        /// Override the default logging behavior when a rule is matched.
         /// </summary>
         public readonly bool? Enabled;
 

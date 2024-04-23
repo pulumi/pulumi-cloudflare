@@ -101,7 +101,6 @@ def get_access_identity_provider(account_id: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_cloudflare as cloudflare
@@ -117,7 +116,6 @@ def get_access_identity_provider(account_id: Optional[str] = None,
         allowed_idps=[example.id],
         auto_redirect_to_identity=True)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str account_id: The account identifier to target for the resource. Must provide only one of `zone_id`, `account_id`.
@@ -149,7 +147,6 @@ def get_access_identity_provider_output(account_id: Optional[pulumi.Input[Option
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_cloudflare as cloudflare
@@ -165,7 +162,6 @@ def get_access_identity_provider_output(account_id: Optional[pulumi.Input[Option
         allowed_idps=[example.id],
         auto_redirect_to_identity=True)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str account_id: The account identifier to target for the resource. Must provide only one of `zone_id`, `account_id`.

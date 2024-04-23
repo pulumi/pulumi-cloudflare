@@ -205,7 +205,6 @@ class AccessRule(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
@@ -247,7 +246,6 @@ class AccessRule(pulumi.CustomResource):
                     value=my_office[range["value"]],
                 )))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -290,7 +288,6 @@ class AccessRule(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
@@ -332,7 +329,6 @@ class AccessRule(pulumi.CustomResource):
                     value=my_office[range["value"]],
                 )))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

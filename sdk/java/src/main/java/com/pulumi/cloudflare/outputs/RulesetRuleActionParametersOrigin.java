@@ -13,7 +13,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class RulesetRuleActionParametersOrigin {
     /**
-     * @return Host parameters for the custom key.
+     * @return Origin Hostname where request is sent.
      * 
      */
     private @Nullable String host;
@@ -25,7 +25,7 @@ public final class RulesetRuleActionParametersOrigin {
 
     private RulesetRuleActionParametersOrigin() {}
     /**
-     * @return Host parameters for the custom key.
+     * @return Origin Hostname where request is sent.
      * 
      */
     public Optional<String> host() {

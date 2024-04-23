@@ -111,14 +111,14 @@ public final class WaitingRoomArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The additional host name for which the waiting room to be applied on (no wildcards).
+     * Host name for which the waiting room will be applied (no wildcards).
      * 
      */
     @Import(name="host", required=true)
     private Output<String> host;
 
     /**
-     * @return The additional host name for which the waiting room to be applied on (no wildcards).
+     * @return Host name for which the waiting room will be applied (no wildcards).
      * 
      */
     public Output<String> host() {
@@ -171,14 +171,14 @@ public final class WaitingRoomArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The path within the additional host to enable the waiting room on. Defaults to `/`.
+     * The path within the host to enable the waiting room on. Defaults to `/`.
      * 
      */
     @Import(name="path")
     private @Nullable Output<String> path;
 
     /**
-     * @return The path within the additional host to enable the waiting room on. Defaults to `/`.
+     * @return The path within the host to enable the waiting room on. Defaults to `/`.
      * 
      */
     public Optional<Output<String>> path() {
@@ -468,7 +468,7 @@ public final class WaitingRoomArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param host The additional host name for which the waiting room to be applied on (no wildcards).
+         * @param host Host name for which the waiting room will be applied (no wildcards).
          * 
          * @return builder
          * 
@@ -479,7 +479,7 @@ public final class WaitingRoomArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param host The additional host name for which the waiting room to be applied on (no wildcards).
+         * @param host Host name for which the waiting room will be applied (no wildcards).
          * 
          * @return builder
          * 
@@ -552,7 +552,7 @@ public final class WaitingRoomArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param path The path within the additional host to enable the waiting room on. Defaults to `/`.
+         * @param path The path within the host to enable the waiting room on. Defaults to `/`.
          * 
          * @return builder
          * 
@@ -563,7 +563,7 @@ public final class WaitingRoomArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param path The path within the additional host to enable the waiting room on. Defaults to `/`.
+         * @param path The path within the host to enable the waiting room on. Defaults to `/`.
          * 
          * @return builder
          * 

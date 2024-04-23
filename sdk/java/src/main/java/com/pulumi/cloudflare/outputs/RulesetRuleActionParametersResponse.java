@@ -13,38 +13,38 @@ import javax.annotation.Nullable;
 @CustomType
 public final class RulesetRuleActionParametersResponse {
     /**
-     * @return Content of the custom error response.
+     * @return Body content to include in the response.
      * 
      */
     private @Nullable String content;
     /**
-     * @return Content-Type of the custom error response.
+     * @return HTTP content type to send in the response.
      * 
      */
     private @Nullable String contentType;
     /**
-     * @return Status code for which the edge TTL is applied.
+     * @return HTTP status code to send in the response.
      * 
      */
     private @Nullable Integer statusCode;
 
     private RulesetRuleActionParametersResponse() {}
     /**
-     * @return Content of the custom error response.
+     * @return Body content to include in the response.
      * 
      */
     public Optional<String> content() {
         return Optional.ofNullable(this.content);
     }
     /**
-     * @return Content-Type of the custom error response.
+     * @return HTTP content type to send in the response.
      * 
      */
     public Optional<String> contentType() {
         return Optional.ofNullable(this.contentType);
     }
     /**
-     * @return Status code for which the edge TTL is applied.
+     * @return HTTP status code to send in the response.
      * 
      */
     public Optional<Integer> statusCode() {

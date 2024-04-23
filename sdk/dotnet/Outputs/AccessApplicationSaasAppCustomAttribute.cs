@@ -18,7 +18,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string? FriendlyName;
         /// <summary>
-        /// The name of the footer link.
+        /// The name of the attribute as provided to the SaaS app.
         /// </summary>
         public readonly string? Name;
         /// <summary>

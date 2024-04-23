@@ -18,7 +18,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly bool? PreserveQueryString;
         /// <summary>
-        /// Status code for which the edge TTL is applied.
+        /// Status code for redirect.
         /// </summary>
         public readonly int? StatusCode;
         /// <summary>

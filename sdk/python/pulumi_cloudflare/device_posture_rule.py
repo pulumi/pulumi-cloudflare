@@ -294,7 +294,6 @@ class DevicePostureRule(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
@@ -317,7 +316,6 @@ class DevicePostureRule(pulumi.CustomResource):
                 os_distro_revision="1.0.0",
             )])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -346,7 +344,6 @@ class DevicePostureRule(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
@@ -369,7 +366,6 @@ class DevicePostureRule(pulumi.CustomResource):
                 os_distro_revision="1.0.0",
             )])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

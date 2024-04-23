@@ -314,7 +314,6 @@ class Zone(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
@@ -323,7 +322,6 @@ class Zone(pulumi.CustomResource):
             account_id="f037e56e89293a057740de681ac9abbe",
             zone="example.com")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -355,7 +353,6 @@ class Zone(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
@@ -364,7 +361,6 @@ class Zone(pulumi.CustomResource):
             account_id="f037e56e89293a057740de681ac9abbe",
             zone="example.com")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

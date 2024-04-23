@@ -149,7 +149,6 @@ class Argo(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
@@ -159,7 +158,6 @@ class Argo(pulumi.CustomResource):
             tiered_caching="on",
             smart_routing="on")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -185,7 +183,6 @@ class Argo(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
@@ -195,7 +192,6 @@ class Argo(pulumi.CustomResource):
             tiered_caching="on",
             smart_routing="on")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

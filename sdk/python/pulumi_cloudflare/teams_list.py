@@ -202,7 +202,6 @@ class TeamsList(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
@@ -218,7 +217,6 @@ class TeamsList(pulumi.CustomResource):
                 "1YE2880LNP",
             ])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -247,7 +245,6 @@ class TeamsList(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
@@ -263,7 +260,6 @@ class TeamsList(pulumi.CustomResource):
                 "1YE2880LNP",
             ])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

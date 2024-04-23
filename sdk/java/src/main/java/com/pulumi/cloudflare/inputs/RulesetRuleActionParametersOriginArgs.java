@@ -17,14 +17,14 @@ public final class RulesetRuleActionParametersOriginArgs extends com.pulumi.reso
     public static final RulesetRuleActionParametersOriginArgs Empty = new RulesetRuleActionParametersOriginArgs();
 
     /**
-     * Host parameters for the custom key.
+     * Origin Hostname where request is sent.
      * 
      */
     @Import(name="host")
     private @Nullable Output<String> host;
 
     /**
-     * @return Host parameters for the custom key.
+     * @return Origin Hostname where request is sent.
      * 
      */
     public Optional<Output<String>> host() {
@@ -72,7 +72,7 @@ public final class RulesetRuleActionParametersOriginArgs extends com.pulumi.reso
         }
 
         /**
-         * @param host Host parameters for the custom key.
+         * @param host Origin Hostname where request is sent.
          * 
          * @return builder
          * 
@@ -83,7 +83,7 @@ public final class RulesetRuleActionParametersOriginArgs extends com.pulumi.reso
         }
 
         /**
-         * @param host Host parameters for the custom key.
+         * @param host Origin Hostname where request is sent.
          * 
          * @return builder
          * 

@@ -166,7 +166,6 @@ class WorkersKv(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
@@ -180,7 +179,6 @@ class WorkersKv(pulumi.CustomResource):
             key="test-key",
             value="test value")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -206,7 +204,6 @@ class WorkersKv(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
@@ -220,7 +217,6 @@ class WorkersKv(pulumi.CustomResource):
             key="test-key",
             value="test value")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

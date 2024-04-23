@@ -22,7 +22,7 @@ public final class GetLoadBalancerPoolsPoolOrigin {
      */
     private String address;
     /**
-     * @return Whether this pool is enabled. Disabled pools will not receive traffic and are excluded from health checks.
+     * @return Whether this origin is enabled. Disabled origins will not receive traffic and are excluded from health checks.
      * 
      */
     private @Nullable Boolean enabled;
@@ -32,7 +32,7 @@ public final class GetLoadBalancerPoolsPoolOrigin {
      */
     private @Nullable List<GetLoadBalancerPoolsPoolOriginHeader> headers;
     /**
-     * @return A regular expression matching the name of the Load Balancer pool to lookup.
+     * @return A human-identifiable name for the origin.
      * 
      */
     private String name;
@@ -51,7 +51,7 @@ public final class GetLoadBalancerPoolsPoolOrigin {
         return this.address;
     }
     /**
-     * @return Whether this pool is enabled. Disabled pools will not receive traffic and are excluded from health checks.
+     * @return Whether this origin is enabled. Disabled origins will not receive traffic and are excluded from health checks.
      * 
      */
     public Optional<Boolean> enabled() {
@@ -65,7 +65,7 @@ public final class GetLoadBalancerPoolsPoolOrigin {
         return this.headers == null ? List.of() : this.headers;
     }
     /**
-     * @return A regular expression matching the name of the Load Balancer pool to lookup.
+     * @return A human-identifiable name for the origin.
      * 
      */
     public String name() {

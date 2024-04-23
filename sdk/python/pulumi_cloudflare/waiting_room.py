@@ -36,7 +36,7 @@ class WaitingRoomArgs:
                  suspended: Optional[pulumi.Input[bool]] = None):
         """
         The set of arguments for constructing a WaitingRoom resource.
-        :param pulumi.Input[str] host: The additional host name for which the waiting room to be applied on (no wildcards).
+        :param pulumi.Input[str] host: Host name for which the waiting room will be applied (no wildcards).
         :param pulumi.Input[str] name: A unique name to identify the waiting room. **Modifying this attribute will force creation of a new resource.**
         :param pulumi.Input[int] new_users_per_minute: The number of new users that will be let into the route every minute.
         :param pulumi.Input[int] total_active_users: The total number of active user sessions on the route at a point in time.
@@ -48,7 +48,7 @@ class WaitingRoomArgs:
         :param pulumi.Input[str] description: A description to add more details about the waiting room.
         :param pulumi.Input[bool] disable_session_renewal: Disables automatic renewal of session cookies.
         :param pulumi.Input[bool] json_response_enabled: If true, requests to the waiting room with the header `Accept: application/json` will receive a JSON response object.
-        :param pulumi.Input[str] path: The path within the additional host to enable the waiting room on. Defaults to `/`.
+        :param pulumi.Input[str] path: The path within the host to enable the waiting room on. Defaults to `/`.
         :param pulumi.Input[bool] queue_all: If queue_all is true, then all traffic will be sent to the waiting room.
         :param pulumi.Input[str] queueing_method: The queueing method used by the waiting room. Available values: `fifo`, `random`, `passthrough`, `reject`. Defaults to `fifo`.
         :param pulumi.Input[int] queueing_status_code: HTTP status code returned to a user while in the queue. Defaults to `200`.
@@ -91,7 +91,7 @@ class WaitingRoomArgs:
     @pulumi.getter
     def host(self) -> pulumi.Input[str]:
         """
-        The additional host name for which the waiting room to be applied on (no wildcards).
+        Host name for which the waiting room will be applied (no wildcards).
         """
         return pulumi.get(self, "host")
 
@@ -235,7 +235,7 @@ class WaitingRoomArgs:
     @pulumi.getter
     def path(self) -> Optional[pulumi.Input[str]]:
         """
-        The path within the additional host to enable the waiting room on. Defaults to `/`.
+        The path within the host to enable the waiting room on. Defaults to `/`.
         """
         return pulumi.get(self, "path")
 
@@ -333,11 +333,11 @@ class _WaitingRoomState:
         :param pulumi.Input[str] default_template_language: The language to use for the default waiting room page. Available values: `de-DE`, `es-ES`, `en-US`, `fr-FR`, `id-ID`, `it-IT`, `ja-JP`, `ko-KR`, `nl-NL`, `pl-PL`, `pt-BR`, `tr-TR`, `zh-CN`, `zh-TW`, `ru-RU`, `fa-IR`. Defaults to `en-US`.
         :param pulumi.Input[str] description: A description to add more details about the waiting room.
         :param pulumi.Input[bool] disable_session_renewal: Disables automatic renewal of session cookies.
-        :param pulumi.Input[str] host: The additional host name for which the waiting room to be applied on (no wildcards).
+        :param pulumi.Input[str] host: Host name for which the waiting room will be applied (no wildcards).
         :param pulumi.Input[bool] json_response_enabled: If true, requests to the waiting room with the header `Accept: application/json` will receive a JSON response object.
         :param pulumi.Input[str] name: A unique name to identify the waiting room. **Modifying this attribute will force creation of a new resource.**
         :param pulumi.Input[int] new_users_per_minute: The number of new users that will be let into the route every minute.
-        :param pulumi.Input[str] path: The path within the additional host to enable the waiting room on. Defaults to `/`.
+        :param pulumi.Input[str] path: The path within the host to enable the waiting room on. Defaults to `/`.
         :param pulumi.Input[bool] queue_all: If queue_all is true, then all traffic will be sent to the waiting room.
         :param pulumi.Input[str] queueing_method: The queueing method used by the waiting room. Available values: `fifo`, `random`, `passthrough`, `reject`. Defaults to `fifo`.
         :param pulumi.Input[int] queueing_status_code: HTTP status code returned to a user while in the queue. Defaults to `200`.
@@ -459,7 +459,7 @@ class _WaitingRoomState:
     @pulumi.getter
     def host(self) -> Optional[pulumi.Input[str]]:
         """
-        The additional host name for which the waiting room to be applied on (no wildcards).
+        Host name for which the waiting room will be applied (no wildcards).
         """
         return pulumi.get(self, "host")
 
@@ -507,7 +507,7 @@ class _WaitingRoomState:
     @pulumi.getter
     def path(self) -> Optional[pulumi.Input[str]]:
         """
-        The path within the additional host to enable the waiting room on. Defaults to `/`.
+        The path within the host to enable the waiting room on. Defaults to `/`.
         """
         return pulumi.get(self, "path")
 
@@ -629,7 +629,6 @@ class WaitingRoom(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
@@ -654,7 +653,6 @@ class WaitingRoom(pulumi.CustomResource):
             ],
             queueing_status_code=200)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -672,11 +670,11 @@ class WaitingRoom(pulumi.CustomResource):
         :param pulumi.Input[str] default_template_language: The language to use for the default waiting room page. Available values: `de-DE`, `es-ES`, `en-US`, `fr-FR`, `id-ID`, `it-IT`, `ja-JP`, `ko-KR`, `nl-NL`, `pl-PL`, `pt-BR`, `tr-TR`, `zh-CN`, `zh-TW`, `ru-RU`, `fa-IR`. Defaults to `en-US`.
         :param pulumi.Input[str] description: A description to add more details about the waiting room.
         :param pulumi.Input[bool] disable_session_renewal: Disables automatic renewal of session cookies.
-        :param pulumi.Input[str] host: The additional host name for which the waiting room to be applied on (no wildcards).
+        :param pulumi.Input[str] host: Host name for which the waiting room will be applied (no wildcards).
         :param pulumi.Input[bool] json_response_enabled: If true, requests to the waiting room with the header `Accept: application/json` will receive a JSON response object.
         :param pulumi.Input[str] name: A unique name to identify the waiting room. **Modifying this attribute will force creation of a new resource.**
         :param pulumi.Input[int] new_users_per_minute: The number of new users that will be let into the route every minute.
-        :param pulumi.Input[str] path: The path within the additional host to enable the waiting room on. Defaults to `/`.
+        :param pulumi.Input[str] path: The path within the host to enable the waiting room on. Defaults to `/`.
         :param pulumi.Input[bool] queue_all: If queue_all is true, then all traffic will be sent to the waiting room.
         :param pulumi.Input[str] queueing_method: The queueing method used by the waiting room. Available values: `fifo`, `random`, `passthrough`, `reject`. Defaults to `fifo`.
         :param pulumi.Input[int] queueing_status_code: HTTP status code returned to a user while in the queue. Defaults to `200`.
@@ -696,7 +694,6 @@ class WaitingRoom(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
@@ -721,7 +718,6 @@ class WaitingRoom(pulumi.CustomResource):
             ],
             queueing_status_code=200)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -842,11 +838,11 @@ class WaitingRoom(pulumi.CustomResource):
         :param pulumi.Input[str] default_template_language: The language to use for the default waiting room page. Available values: `de-DE`, `es-ES`, `en-US`, `fr-FR`, `id-ID`, `it-IT`, `ja-JP`, `ko-KR`, `nl-NL`, `pl-PL`, `pt-BR`, `tr-TR`, `zh-CN`, `zh-TW`, `ru-RU`, `fa-IR`. Defaults to `en-US`.
         :param pulumi.Input[str] description: A description to add more details about the waiting room.
         :param pulumi.Input[bool] disable_session_renewal: Disables automatic renewal of session cookies.
-        :param pulumi.Input[str] host: The additional host name for which the waiting room to be applied on (no wildcards).
+        :param pulumi.Input[str] host: Host name for which the waiting room will be applied (no wildcards).
         :param pulumi.Input[bool] json_response_enabled: If true, requests to the waiting room with the header `Accept: application/json` will receive a JSON response object.
         :param pulumi.Input[str] name: A unique name to identify the waiting room. **Modifying this attribute will force creation of a new resource.**
         :param pulumi.Input[int] new_users_per_minute: The number of new users that will be let into the route every minute.
-        :param pulumi.Input[str] path: The path within the additional host to enable the waiting room on. Defaults to `/`.
+        :param pulumi.Input[str] path: The path within the host to enable the waiting room on. Defaults to `/`.
         :param pulumi.Input[bool] queue_all: If queue_all is true, then all traffic will be sent to the waiting room.
         :param pulumi.Input[str] queueing_method: The queueing method used by the waiting room. Available values: `fifo`, `random`, `passthrough`, `reject`. Defaults to `fifo`.
         :param pulumi.Input[int] queueing_status_code: HTTP status code returned to a user while in the queue. Defaults to `200`.
@@ -931,7 +927,7 @@ class WaitingRoom(pulumi.CustomResource):
     @pulumi.getter
     def host(self) -> pulumi.Output[str]:
         """
-        The additional host name for which the waiting room to be applied on (no wildcards).
+        Host name for which the waiting room will be applied (no wildcards).
         """
         return pulumi.get(self, "host")
 
@@ -963,7 +959,7 @@ class WaitingRoom(pulumi.CustomResource):
     @pulumi.getter
     def path(self) -> pulumi.Output[Optional[str]]:
         """
-        The path within the additional host to enable the waiting room on. Defaults to `/`.
+        The path within the host to enable the waiting room on. Defaults to `/`.
         """
         return pulumi.get(self, "path")
 

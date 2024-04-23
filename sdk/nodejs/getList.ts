@@ -9,7 +9,6 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
@@ -19,7 +18,6 @@ import * as utilities from "./utilities";
  *     name: "list_name",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getList(args: GetListArgs, opts?: pulumi.InvokeOptions): Promise<GetListResult> {
 
@@ -78,7 +76,6 @@ export interface GetListResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
@@ -88,7 +85,6 @@ export interface GetListResult {
  *     name: "list_name",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getListOutput(args: GetListOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetListResult> {
     return pulumi.output(args).apply((a: any) => getList(a, opts))

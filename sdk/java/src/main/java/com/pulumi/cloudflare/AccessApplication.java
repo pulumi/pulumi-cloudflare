@@ -321,14 +321,14 @@ public class AccessApplication extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.logoUrl);
     }
     /**
-     * The name of the footer link.
+     * Friendly name of the Access Application.
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return The name of the footer link.
+     * @return Friendly name of the Access Application.
      * 
      */
     public Output<String> name() {

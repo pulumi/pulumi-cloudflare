@@ -16,14 +16,14 @@ public final class LoadBalancerRuleOverrideAdaptiveRoutingArgs extends com.pulum
     public static final LoadBalancerRuleOverrideAdaptiveRoutingArgs Empty = new LoadBalancerRuleOverrideAdaptiveRoutingArgs();
 
     /**
-     * Extends zero-downtime failover of requests to healthy origins from alternate pools, when no healthy alternate exists in the same pool, according to the failover order defined by traffic and origin steering. When set `false`, zero-downtime failover will only occur between origins within the same pool. Defaults to `false`.
+     * Extends zero-downtime failover of requests to healthy origins from alternate pools, when no healthy alternate exists in the same pool, according to the failover order defined by traffic and origin steering. When set `false`, zero-downtime failover will only occur between origins within the same pool.
      * 
      */
     @Import(name="failoverAcrossPools")
     private @Nullable Output<Boolean> failoverAcrossPools;
 
     /**
-     * @return Extends zero-downtime failover of requests to healthy origins from alternate pools, when no healthy alternate exists in the same pool, according to the failover order defined by traffic and origin steering. When set `false`, zero-downtime failover will only occur between origins within the same pool. Defaults to `false`.
+     * @return Extends zero-downtime failover of requests to healthy origins from alternate pools, when no healthy alternate exists in the same pool, according to the failover order defined by traffic and origin steering. When set `false`, zero-downtime failover will only occur between origins within the same pool.
      * 
      */
     public Optional<Output<Boolean>> failoverAcrossPools() {
@@ -55,7 +55,7 @@ public final class LoadBalancerRuleOverrideAdaptiveRoutingArgs extends com.pulum
         }
 
         /**
-         * @param failoverAcrossPools Extends zero-downtime failover of requests to healthy origins from alternate pools, when no healthy alternate exists in the same pool, according to the failover order defined by traffic and origin steering. When set `false`, zero-downtime failover will only occur between origins within the same pool. Defaults to `false`.
+         * @param failoverAcrossPools Extends zero-downtime failover of requests to healthy origins from alternate pools, when no healthy alternate exists in the same pool, according to the failover order defined by traffic and origin steering. When set `false`, zero-downtime failover will only occur between origins within the same pool.
          * 
          * @return builder
          * 
@@ -66,7 +66,7 @@ public final class LoadBalancerRuleOverrideAdaptiveRoutingArgs extends com.pulum
         }
 
         /**
-         * @param failoverAcrossPools Extends zero-downtime failover of requests to healthy origins from alternate pools, when no healthy alternate exists in the same pool, according to the failover order defined by traffic and origin steering. When set `false`, zero-downtime failover will only occur between origins within the same pool. Defaults to `false`.
+         * @param failoverAcrossPools Extends zero-downtime failover of requests to healthy origins from alternate pools, when no healthy alternate exists in the same pool, according to the failover order defined by traffic and origin steering. When set `false`, zero-downtime failover will only occur between origins within the same pool.
          * 
          * @return builder
          * 

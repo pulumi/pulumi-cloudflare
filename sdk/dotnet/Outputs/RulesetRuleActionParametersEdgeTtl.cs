@@ -14,11 +14,11 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class RulesetRuleActionParametersEdgeTtl
     {
         /// <summary>
-        /// Default browser TTL. This value is required when override_origin is set
+        /// Default edge TTL.
         /// </summary>
         public readonly int? Default;
         /// <summary>
-        /// Mode of the browser TTL. Available values: `override_origin`, `respect_origin`, `bypass`
+        /// Mode of the edge TTL. Available values: `override_origin`, `respect_origin`, `bypass_by_default`
         /// </summary>
         public readonly string Mode;
         /// <summary>

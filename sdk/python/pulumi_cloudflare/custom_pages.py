@@ -201,7 +201,6 @@ class CustomPages(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
@@ -212,7 +211,6 @@ class CustomPages(pulumi.CustomResource):
             url="https://example.com/challenge.html",
             state="customized")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -239,7 +237,6 @@ class CustomPages(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
@@ -250,7 +247,6 @@ class CustomPages(pulumi.CustomResource):
             url="https://example.com/challenge.html",
             state="customized")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

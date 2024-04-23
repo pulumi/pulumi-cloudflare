@@ -32,14 +32,14 @@ public final class RulesetRuleActionParametersCacheKeyCustomKeyQueryStringArgs e
     }
 
     /**
-     * List of cookies to include in the custom key.
+     * List of query string parameters to include in the custom key.
      * 
      */
     @Import(name="includes")
     private @Nullable Output<List<String>> includes;
 
     /**
-     * @return List of cookies to include in the custom key.
+     * @return List of query string parameters to include in the custom key.
      * 
      */
     public Optional<Output<List<String>>> includes() {
@@ -103,7 +103,7 @@ public final class RulesetRuleActionParametersCacheKeyCustomKeyQueryStringArgs e
         }
 
         /**
-         * @param includes List of cookies to include in the custom key.
+         * @param includes List of query string parameters to include in the custom key.
          * 
          * @return builder
          * 
@@ -114,7 +114,7 @@ public final class RulesetRuleActionParametersCacheKeyCustomKeyQueryStringArgs e
         }
 
         /**
-         * @param includes List of cookies to include in the custom key.
+         * @param includes List of query string parameters to include in the custom key.
          * 
          * @return builder
          * 
@@ -124,7 +124,7 @@ public final class RulesetRuleActionParametersCacheKeyCustomKeyQueryStringArgs e
         }
 
         /**
-         * @param includes List of cookies to include in the custom key.
+         * @param includes List of query string parameters to include in the custom key.
          * 
          * @return builder
          * 

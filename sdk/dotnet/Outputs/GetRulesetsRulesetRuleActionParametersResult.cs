@@ -94,7 +94,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly bool? HotlinkProtection;
         /// <summary>
-        /// The ID of the Ruleset to target.
+        /// Identifier of the action parameter to modify.
         /// </summary>
         public readonly string? Id;
         public readonly int? Increment;
@@ -207,7 +207,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly Outputs.GetRulesetsRulesetRuleActionParametersUriResult? Uri;
         /// <summary>
-        /// Version of the ruleset to filter on.
+        /// Version of the ruleset to deploy.
         /// </summary>
         public readonly string Version;
 

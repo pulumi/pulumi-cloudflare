@@ -34,7 +34,7 @@ type NotificationPolicy struct {
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The email ID to which the notification should be dispatched.
 	EmailIntegrations NotificationPolicyEmailIntegrationArrayOutput `pulumi:"emailIntegrations"`
-	// State of the pool to alert on.
+	// The status of the notification policy.
 	Enabled pulumi.BoolOutput `pulumi:"enabled"`
 	// An optional nested block of filters that applies to the selected `alertType`. A key-value map that specifies the type of filter and the values to match against (refer to the alert type block for available fields).
 	Filters NotificationPolicyFiltersPtrOutput `pulumi:"filters"`
@@ -100,7 +100,7 @@ type notificationPolicyState struct {
 	Description *string `pulumi:"description"`
 	// The email ID to which the notification should be dispatched.
 	EmailIntegrations []NotificationPolicyEmailIntegration `pulumi:"emailIntegrations"`
-	// State of the pool to alert on.
+	// The status of the notification policy.
 	Enabled *bool `pulumi:"enabled"`
 	// An optional nested block of filters that applies to the selected `alertType`. A key-value map that specifies the type of filter and the values to match against (refer to the alert type block for available fields).
 	Filters *NotificationPolicyFilters `pulumi:"filters"`
@@ -125,7 +125,7 @@ type NotificationPolicyState struct {
 	Description pulumi.StringPtrInput
 	// The email ID to which the notification should be dispatched.
 	EmailIntegrations NotificationPolicyEmailIntegrationArrayInput
-	// State of the pool to alert on.
+	// The status of the notification policy.
 	Enabled pulumi.BoolPtrInput
 	// An optional nested block of filters that applies to the selected `alertType`. A key-value map that specifies the type of filter and the values to match against (refer to the alert type block for available fields).
 	Filters NotificationPolicyFiltersPtrInput
@@ -152,7 +152,7 @@ type notificationPolicyArgs struct {
 	Description *string `pulumi:"description"`
 	// The email ID to which the notification should be dispatched.
 	EmailIntegrations []NotificationPolicyEmailIntegration `pulumi:"emailIntegrations"`
-	// State of the pool to alert on.
+	// The status of the notification policy.
 	Enabled bool `pulumi:"enabled"`
 	// An optional nested block of filters that applies to the selected `alertType`. A key-value map that specifies the type of filter and the values to match against (refer to the alert type block for available fields).
 	Filters *NotificationPolicyFilters `pulumi:"filters"`
@@ -174,7 +174,7 @@ type NotificationPolicyArgs struct {
 	Description pulumi.StringPtrInput
 	// The email ID to which the notification should be dispatched.
 	EmailIntegrations NotificationPolicyEmailIntegrationArrayInput
-	// State of the pool to alert on.
+	// The status of the notification policy.
 	Enabled pulumi.BoolInput
 	// An optional nested block of filters that applies to the selected `alertType`. A key-value map that specifies the type of filter and the values to match against (refer to the alert type block for available fields).
 	Filters NotificationPolicyFiltersPtrInput
@@ -298,7 +298,7 @@ func (o NotificationPolicyOutput) EmailIntegrations() NotificationPolicyEmailInt
 	return o.ApplyT(func(v *NotificationPolicy) NotificationPolicyEmailIntegrationArrayOutput { return v.EmailIntegrations }).(NotificationPolicyEmailIntegrationArrayOutput)
 }
 
-// State of the pool to alert on.
+// The status of the notification policy.
 func (o NotificationPolicyOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v *NotificationPolicy) pulumi.BoolOutput { return v.Enabled }).(pulumi.BoolOutput)
 }

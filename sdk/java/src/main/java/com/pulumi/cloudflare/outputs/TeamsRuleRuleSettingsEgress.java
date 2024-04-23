@@ -13,7 +13,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class TeamsRuleRuleSettingsEgress {
     /**
-     * @return IPv4 resolvers.
+     * @return The IPv4 address to be used for egress.
      * 
      */
     private String ipv4;
@@ -23,14 +23,14 @@ public final class TeamsRuleRuleSettingsEgress {
      */
     private @Nullable String ipv4Fallback;
     /**
-     * @return IPv6 resolvers.
+     * @return The IPv6 range to be used for egress.
      * 
      */
     private String ipv6;
 
     private TeamsRuleRuleSettingsEgress() {}
     /**
-     * @return IPv4 resolvers.
+     * @return The IPv4 address to be used for egress.
      * 
      */
     public String ipv4() {
@@ -44,7 +44,7 @@ public final class TeamsRuleRuleSettingsEgress {
         return Optional.ofNullable(this.ipv4Fallback);
     }
     /**
-     * @return IPv6 resolvers.
+     * @return The IPv6 range to be used for egress.
      * 
      */
     public String ipv6() {

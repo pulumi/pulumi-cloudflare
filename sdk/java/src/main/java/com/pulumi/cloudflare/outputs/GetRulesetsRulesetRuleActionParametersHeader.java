@@ -17,7 +17,7 @@ public final class GetRulesetsRulesetRuleActionParametersHeader {
      */
     private @Nullable String expression;
     /**
-     * @return Name of the ruleset.
+     * @return Name of the HTTP request header to target.
      * 
      */
     private @Nullable String name;
@@ -41,7 +41,7 @@ public final class GetRulesetsRulesetRuleActionParametersHeader {
         return Optional.ofNullable(this.expression);
     }
     /**
-     * @return Name of the ruleset.
+     * @return Name of the HTTP request header to target.
      * 
      */
     public Optional<String> name() {

@@ -14,9 +14,6 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class AccessGroupIncludeGsuite
     {
         public readonly ImmutableArray<string> Emails;
-        /// <summary>
-        /// The ID of the Azure Identity provider.
-        /// </summary>
         public readonly string? IdentityProviderId;
 
         [OutputConstructor]

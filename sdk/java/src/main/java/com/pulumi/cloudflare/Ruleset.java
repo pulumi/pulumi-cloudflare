@@ -499,14 +499,14 @@ public class Ruleset extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.accountId);
     }
     /**
-     * Brief summary of the ruleset rule and its intended use.
+     * Brief summary of the ruleset and its intended use.
      * 
      */
     @Export(name="description", refs={String.class}, tree="[0]")
     private Output<String> description;
 
     /**
-     * @return Brief summary of the ruleset rule and its intended use.
+     * @return Brief summary of the ruleset and its intended use.
      * 
      */
     public Output<String> description() {
@@ -527,14 +527,14 @@ public class Ruleset extends com.pulumi.resources.CustomResource {
         return this.kind;
     }
     /**
-     * Name of the compression algorithm to use. Available values: `gzip`, `brotli`, `auto`, `default`, `none`
+     * Name of the ruleset.
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return Name of the compression algorithm to use. Available values: `gzip`, `brotli`, `auto`, `default`, `none`
+     * @return Name of the ruleset.
      * 
      */
     public Output<String> name() {
@@ -555,14 +555,14 @@ public class Ruleset extends com.pulumi.resources.CustomResource {
         return this.phase;
     }
     /**
-     * List of rule-based overrides.
+     * List of rules to apply to the ruleset.
      * 
      */
     @Export(name="rules", refs={List.class,RulesetRule.class}, tree="[0,1]")
     private Output</* @Nullable */ List<RulesetRule>> rules;
 
     /**
-     * @return List of rule-based overrides.
+     * @return List of rules to apply to the ruleset.
      * 
      */
     public Output<Optional<List<RulesetRule>>> rules() {

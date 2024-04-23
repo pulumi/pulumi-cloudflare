@@ -17,7 +17,7 @@ public final class RulesetRuleActionParametersHeader {
      */
     private @Nullable String expression;
     /**
-     * @return Name of the compression algorithm to use. Available values: `gzip`, `brotli`, `auto`, `default`, `none`
+     * @return Name of the HTTP request header to target.
      * 
      */
     private @Nullable String name;
@@ -27,7 +27,7 @@ public final class RulesetRuleActionParametersHeader {
      */
     private @Nullable String operation;
     /**
-     * @return Status code edge TTL value.
+     * @return Static value to provide as the HTTP request header value.
      * 
      */
     private @Nullable String value;
@@ -41,7 +41,7 @@ public final class RulesetRuleActionParametersHeader {
         return Optional.ofNullable(this.expression);
     }
     /**
-     * @return Name of the compression algorithm to use. Available values: `gzip`, `brotli`, `auto`, `default`, `none`
+     * @return Name of the HTTP request header to target.
      * 
      */
     public Optional<String> name() {
@@ -55,7 +55,7 @@ public final class RulesetRuleActionParametersHeader {
         return Optional.ofNullable(this.operation);
     }
     /**
-     * @return Status code edge TTL value.
+     * @return Static value to provide as the HTTP request header value.
      * 
      */
     public Optional<String> value() {
