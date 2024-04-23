@@ -18,7 +18,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string Key;
         /// <summary>
-        /// Name of the ruleset.
+        /// Name of the list.
         /// </summary>
         public readonly string Name;
 

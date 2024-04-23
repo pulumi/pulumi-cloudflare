@@ -222,7 +222,7 @@ public final class RulesetRuleActionParameters {
      */
     private @Nullable Boolean rocketLoader;
     /**
-     * @return List of rule-based overrides.
+     * @return Map of managed WAF rule ID to comma-delimited string of ruleset rule IDs. Example: `rules = { &#34;efb7b8c949ac4650a09736fc376e9aee&#34; = &#34;5de7edfa648c4d6891dc3e7f84534ffa,e3a567afc347477d9702d9047e97d760&#34; }`.
      * 
      */
     private @Nullable Map<String,String> rules;
@@ -262,7 +262,7 @@ public final class RulesetRuleActionParameters {
      */
     private @Nullable String ssl;
     /**
-     * @return Status code for which the edge TTL is applied.
+     * @return HTTP status code of the custom error response.
      * 
      */
     private @Nullable Integer statusCode;
@@ -553,7 +553,7 @@ public final class RulesetRuleActionParameters {
         return Optional.ofNullable(this.rocketLoader);
     }
     /**
-     * @return List of rule-based overrides.
+     * @return Map of managed WAF rule ID to comma-delimited string of ruleset rule IDs. Example: `rules = { &#34;efb7b8c949ac4650a09736fc376e9aee&#34; = &#34;5de7edfa648c4d6891dc3e7f84534ffa,e3a567afc347477d9702d9047e97d760&#34; }`.
      * 
      */
     public Map<String,String> rules() {
@@ -609,7 +609,7 @@ public final class RulesetRuleActionParameters {
         return Optional.ofNullable(this.ssl);
     }
     /**
-     * @return Status code for which the edge TTL is applied.
+     * @return HTTP status code of the custom error response.
      * 
      */
     public Optional<Integer> statusCode() {

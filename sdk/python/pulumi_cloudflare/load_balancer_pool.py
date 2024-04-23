@@ -32,11 +32,11 @@ class LoadBalancerPoolArgs:
         """
         The set of arguments for constructing a LoadBalancerPool resource.
         :param pulumi.Input[str] account_id: The account identifier to target for the resource.
-        :param pulumi.Input[str] name: A human-identifiable name for the origin.
+        :param pulumi.Input[str] name: A short name (tag) for the pool.
         :param pulumi.Input[Sequence[pulumi.Input['LoadBalancerPoolOriginArgs']]] origins: The list of origins within this pool. Traffic directed at this pool is balanced across all currently healthy origins, provided the pool itself is healthy.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] check_regions: A list of regions (specified by region code) from which to run health checks. Empty means every Cloudflare data center (the default), but requires an Enterprise plan. Region codes can be found [here](https://developers.cloudflare.com/load-balancing/reference/region-mapping-api).
         :param pulumi.Input[str] description: Free text description.
-        :param pulumi.Input[bool] enabled: Whether this origin is enabled. Disabled origins will not receive traffic and are excluded from health checks. Defaults to `true`.
+        :param pulumi.Input[bool] enabled: Whether to enable (the default) this pool. Disabled pools will not receive traffic and are excluded from health checks. Disabling a pool will cause any load balancers using it to failover to the next pool (if any). Defaults to `true`.
         :param pulumi.Input[float] latitude: The latitude this pool is physically located at; used for proximity steering.
         :param pulumi.Input[Sequence[pulumi.Input['LoadBalancerPoolLoadSheddingArgs']]] load_sheddings: Setting for controlling load shedding for this pool.
         :param pulumi.Input[float] longitude: The longitude this pool is physically located at; used for proximity steering.
@@ -85,7 +85,7 @@ class LoadBalancerPoolArgs:
     @pulumi.getter
     def name(self) -> pulumi.Input[str]:
         """
-        A human-identifiable name for the origin.
+        A short name (tag) for the pool.
         """
         return pulumi.get(self, "name")
 
@@ -133,7 +133,7 @@ class LoadBalancerPoolArgs:
     @pulumi.getter
     def enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether this origin is enabled. Disabled origins will not receive traffic and are excluded from health checks. Defaults to `true`.
+        Whether to enable (the default) this pool. Disabled pools will not receive traffic and are excluded from health checks. Disabling a pool will cause any load balancers using it to failover to the next pool (if any). Defaults to `true`.
         """
         return pulumi.get(self, "enabled")
 
@@ -250,14 +250,14 @@ class _LoadBalancerPoolState:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] check_regions: A list of regions (specified by region code) from which to run health checks. Empty means every Cloudflare data center (the default), but requires an Enterprise plan. Region codes can be found [here](https://developers.cloudflare.com/load-balancing/reference/region-mapping-api).
         :param pulumi.Input[str] created_on: The RFC3339 timestamp of when the load balancer was created.
         :param pulumi.Input[str] description: Free text description.
-        :param pulumi.Input[bool] enabled: Whether this origin is enabled. Disabled origins will not receive traffic and are excluded from health checks. Defaults to `true`.
+        :param pulumi.Input[bool] enabled: Whether to enable (the default) this pool. Disabled pools will not receive traffic and are excluded from health checks. Disabling a pool will cause any load balancers using it to failover to the next pool (if any). Defaults to `true`.
         :param pulumi.Input[float] latitude: The latitude this pool is physically located at; used for proximity steering.
         :param pulumi.Input[Sequence[pulumi.Input['LoadBalancerPoolLoadSheddingArgs']]] load_sheddings: Setting for controlling load shedding for this pool.
         :param pulumi.Input[float] longitude: The longitude this pool is physically located at; used for proximity steering.
         :param pulumi.Input[int] minimum_origins: The minimum number of origins that must be healthy for this pool to serve traffic. If the number of healthy origins falls below this number, the pool will be marked unhealthy and we will failover to the next available pool. Defaults to `1`.
         :param pulumi.Input[str] modified_on: The RFC3339 timestamp of when the load balancer was last modified.
         :param pulumi.Input[str] monitor: The ID of the Monitor to use for health checking origins within this pool.
-        :param pulumi.Input[str] name: A human-identifiable name for the origin.
+        :param pulumi.Input[str] name: A short name (tag) for the pool.
         :param pulumi.Input[str] notification_email: The email address to send health status notifications to. This can be an individual mailbox or a mailing list. Multiple emails can be supplied as a comma delimited list.
         :param pulumi.Input[Sequence[pulumi.Input['LoadBalancerPoolOriginSteeringArgs']]] origin_steerings: Set an origin steering policy to control origin selection within a pool.
         :param pulumi.Input[Sequence[pulumi.Input['LoadBalancerPoolOriginArgs']]] origins: The list of origins within this pool. Traffic directed at this pool is balanced across all currently healthy origins, provided the pool itself is healthy.
@@ -345,7 +345,7 @@ class _LoadBalancerPoolState:
     @pulumi.getter
     def enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether this origin is enabled. Disabled origins will not receive traffic and are excluded from health checks. Defaults to `true`.
+        Whether to enable (the default) this pool. Disabled pools will not receive traffic and are excluded from health checks. Disabling a pool will cause any load balancers using it to failover to the next pool (if any). Defaults to `true`.
         """
         return pulumi.get(self, "enabled")
 
@@ -429,7 +429,7 @@ class _LoadBalancerPoolState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        A human-identifiable name for the origin.
+        A short name (tag) for the pool.
         """
         return pulumi.get(self, "name")
 
@@ -499,7 +499,6 @@ class LoadBalancerPool(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
@@ -542,7 +541,6 @@ class LoadBalancerPool(pulumi.CustomResource):
                 policy="random",
             )])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -555,13 +553,13 @@ class LoadBalancerPool(pulumi.CustomResource):
         :param pulumi.Input[str] account_id: The account identifier to target for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] check_regions: A list of regions (specified by region code) from which to run health checks. Empty means every Cloudflare data center (the default), but requires an Enterprise plan. Region codes can be found [here](https://developers.cloudflare.com/load-balancing/reference/region-mapping-api).
         :param pulumi.Input[str] description: Free text description.
-        :param pulumi.Input[bool] enabled: Whether this origin is enabled. Disabled origins will not receive traffic and are excluded from health checks. Defaults to `true`.
+        :param pulumi.Input[bool] enabled: Whether to enable (the default) this pool. Disabled pools will not receive traffic and are excluded from health checks. Disabling a pool will cause any load balancers using it to failover to the next pool (if any). Defaults to `true`.
         :param pulumi.Input[float] latitude: The latitude this pool is physically located at; used for proximity steering.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['LoadBalancerPoolLoadSheddingArgs']]]] load_sheddings: Setting for controlling load shedding for this pool.
         :param pulumi.Input[float] longitude: The longitude this pool is physically located at; used for proximity steering.
         :param pulumi.Input[int] minimum_origins: The minimum number of origins that must be healthy for this pool to serve traffic. If the number of healthy origins falls below this number, the pool will be marked unhealthy and we will failover to the next available pool. Defaults to `1`.
         :param pulumi.Input[str] monitor: The ID of the Monitor to use for health checking origins within this pool.
-        :param pulumi.Input[str] name: A human-identifiable name for the origin.
+        :param pulumi.Input[str] name: A short name (tag) for the pool.
         :param pulumi.Input[str] notification_email: The email address to send health status notifications to. This can be an individual mailbox or a mailing list. Multiple emails can be supplied as a comma delimited list.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['LoadBalancerPoolOriginSteeringArgs']]]] origin_steerings: Set an origin steering policy to control origin selection within a pool.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['LoadBalancerPoolOriginArgs']]]] origins: The list of origins within this pool. Traffic directed at this pool is balanced across all currently healthy origins, provided the pool itself is healthy.
@@ -578,7 +576,6 @@ class LoadBalancerPool(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
@@ -621,7 +618,6 @@ class LoadBalancerPool(pulumi.CustomResource):
                 policy="random",
             )])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -723,14 +719,14 @@ class LoadBalancerPool(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] check_regions: A list of regions (specified by region code) from which to run health checks. Empty means every Cloudflare data center (the default), but requires an Enterprise plan. Region codes can be found [here](https://developers.cloudflare.com/load-balancing/reference/region-mapping-api).
         :param pulumi.Input[str] created_on: The RFC3339 timestamp of when the load balancer was created.
         :param pulumi.Input[str] description: Free text description.
-        :param pulumi.Input[bool] enabled: Whether this origin is enabled. Disabled origins will not receive traffic and are excluded from health checks. Defaults to `true`.
+        :param pulumi.Input[bool] enabled: Whether to enable (the default) this pool. Disabled pools will not receive traffic and are excluded from health checks. Disabling a pool will cause any load balancers using it to failover to the next pool (if any). Defaults to `true`.
         :param pulumi.Input[float] latitude: The latitude this pool is physically located at; used for proximity steering.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['LoadBalancerPoolLoadSheddingArgs']]]] load_sheddings: Setting for controlling load shedding for this pool.
         :param pulumi.Input[float] longitude: The longitude this pool is physically located at; used for proximity steering.
         :param pulumi.Input[int] minimum_origins: The minimum number of origins that must be healthy for this pool to serve traffic. If the number of healthy origins falls below this number, the pool will be marked unhealthy and we will failover to the next available pool. Defaults to `1`.
         :param pulumi.Input[str] modified_on: The RFC3339 timestamp of when the load balancer was last modified.
         :param pulumi.Input[str] monitor: The ID of the Monitor to use for health checking origins within this pool.
-        :param pulumi.Input[str] name: A human-identifiable name for the origin.
+        :param pulumi.Input[str] name: A short name (tag) for the pool.
         :param pulumi.Input[str] notification_email: The email address to send health status notifications to. This can be an individual mailbox or a mailing list. Multiple emails can be supplied as a comma delimited list.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['LoadBalancerPoolOriginSteeringArgs']]]] origin_steerings: Set an origin steering policy to control origin selection within a pool.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['LoadBalancerPoolOriginArgs']]]] origins: The list of origins within this pool. Traffic directed at this pool is balanced across all currently healthy origins, provided the pool itself is healthy.
@@ -792,7 +788,7 @@ class LoadBalancerPool(pulumi.CustomResource):
     @pulumi.getter
     def enabled(self) -> pulumi.Output[Optional[bool]]:
         """
-        Whether this origin is enabled. Disabled origins will not receive traffic and are excluded from health checks. Defaults to `true`.
+        Whether to enable (the default) this pool. Disabled pools will not receive traffic and are excluded from health checks. Disabling a pool will cause any load balancers using it to failover to the next pool (if any). Defaults to `true`.
         """
         return pulumi.get(self, "enabled")
 
@@ -848,7 +844,7 @@ class LoadBalancerPool(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        A human-identifiable name for the origin.
+        A short name (tag) for the pool.
         """
         return pulumi.get(self, "name")
 

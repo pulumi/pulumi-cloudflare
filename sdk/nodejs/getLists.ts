@@ -11,7 +11,6 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
@@ -20,7 +19,6 @@ import * as utilities from "./utilities";
  *     accountId: "f037e56e89293a057740de681ac9abbe",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getLists(args: GetListsArgs, opts?: pulumi.InvokeOptions): Promise<GetListsResult> {
 
@@ -59,7 +57,6 @@ export interface GetListsResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
@@ -68,7 +65,6 @@ export interface GetListsResult {
  *     accountId: "f037e56e89293a057740de681ac9abbe",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getListsOutput(args: GetListsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetListsResult> {
     return pulumi.output(args).apply((a: any) => getLists(a, opts))

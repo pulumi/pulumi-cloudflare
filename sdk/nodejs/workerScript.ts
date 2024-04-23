@@ -11,7 +11,6 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
@@ -61,7 +60,6 @@ import * as utilities from "./utilities";
  *     }],
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
@@ -125,11 +123,11 @@ export class WorkerScript extends pulumi.CustomResource {
      */
     public readonly logpush!: pulumi.Output<boolean | undefined>;
     /**
-     * The base64 encoded wasm module you want to store.
+     * Whether to upload Worker as a module.
      */
     public readonly module!: pulumi.Output<boolean | undefined>;
     /**
-     * The global variable for the binding in your Worker code.
+     * The name for the script. **Modifying this attribute will force creation of a new resource.**
      */
     public readonly name!: pulumi.Output<string>;
     public readonly placements!: pulumi.Output<outputs.WorkerScriptPlacement[] | undefined>;
@@ -241,11 +239,11 @@ export interface WorkerScriptState {
      */
     logpush?: pulumi.Input<boolean>;
     /**
-     * The base64 encoded wasm module you want to store.
+     * Whether to upload Worker as a module.
      */
     module?: pulumi.Input<boolean>;
     /**
-     * The global variable for the binding in your Worker code.
+     * The name for the script. **Modifying this attribute will force creation of a new resource.**
      */
     name?: pulumi.Input<string>;
     placements?: pulumi.Input<pulumi.Input<inputs.WorkerScriptPlacement>[]>;
@@ -290,11 +288,11 @@ export interface WorkerScriptArgs {
      */
     logpush?: pulumi.Input<boolean>;
     /**
-     * The base64 encoded wasm module you want to store.
+     * Whether to upload Worker as a module.
      */
     module?: pulumi.Input<boolean>;
     /**
-     * The global variable for the binding in your Worker code.
+     * The name for the script. **Modifying this attribute will force creation of a new resource.**
      */
     name: pulumi.Input<string>;
     placements?: pulumi.Input<pulumi.Input<inputs.WorkerScriptPlacement>[]>;

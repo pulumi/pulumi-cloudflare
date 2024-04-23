@@ -169,7 +169,6 @@ class HyperdriveConfig(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
@@ -186,7 +185,6 @@ class HyperdriveConfig(pulumi.CustomResource):
                 user="my-user",
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -212,7 +210,6 @@ class HyperdriveConfig(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
@@ -229,7 +226,6 @@ class HyperdriveConfig(pulumi.CustomResource):
                 user="my-user",
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

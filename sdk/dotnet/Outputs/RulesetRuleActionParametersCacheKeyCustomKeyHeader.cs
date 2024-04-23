@@ -14,7 +14,7 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class RulesetRuleActionParametersCacheKeyCustomKeyHeader
     {
         /// <summary>
-        /// List of cookies to check for presence in the custom key.
+        /// List of headers to check for presence in the custom key.
         /// </summary>
         public readonly ImmutableArray<string> CheckPresences;
         /// <summary>
@@ -22,7 +22,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly bool? ExcludeOrigin;
         /// <summary>
-        /// List of cookies to include in the custom key.
+        /// List of headers to include in the custom key.
         /// </summary>
         public readonly ImmutableArray<string> Includes;
 

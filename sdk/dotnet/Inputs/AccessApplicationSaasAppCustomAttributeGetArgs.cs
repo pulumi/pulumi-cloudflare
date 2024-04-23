@@ -19,7 +19,7 @@ namespace Pulumi.Cloudflare.Inputs
         public Input<string>? FriendlyName { get; set; }
 
         /// <summary>
-        /// The name of the footer link.
+        /// The name of the attribute as provided to the SaaS app.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

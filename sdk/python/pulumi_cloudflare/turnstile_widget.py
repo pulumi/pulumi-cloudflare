@@ -281,7 +281,6 @@ class TurnstileWidget(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
@@ -294,7 +293,6 @@ class TurnstileWidget(pulumi.CustomResource):
             mode="invisible",
             region="world")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -323,7 +321,6 @@ class TurnstileWidget(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
@@ -336,7 +333,6 @@ class TurnstileWidget(pulumi.CustomResource):
             mode="invisible",
             region="world")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

@@ -16,14 +16,14 @@ public final class RulesetRuleLoggingArgs extends com.pulumi.resources.ResourceA
     public static final RulesetRuleLoggingArgs Empty = new RulesetRuleLoggingArgs();
 
     /**
-     * Defines if the current tag-level override enables or disables the ruleset rules with the specified tag.
+     * Override the default logging behavior when a rule is matched.
      * 
      */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
     /**
-     * @return Defines if the current tag-level override enables or disables the ruleset rules with the specified tag.
+     * @return Override the default logging behavior when a rule is matched.
      * 
      */
     public Optional<Output<Boolean>> enabled() {
@@ -55,7 +55,7 @@ public final class RulesetRuleLoggingArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param enabled Defines if the current tag-level override enables or disables the ruleset rules with the specified tag.
+         * @param enabled Override the default logging behavior when a rule is matched.
          * 
          * @return builder
          * 
@@ -66,7 +66,7 @@ public final class RulesetRuleLoggingArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param enabled Defines if the current tag-level override enables or disables the ruleset rules with the specified tag.
+         * @param enabled Override the default logging behavior when a rule is matched.
          * 
          * @return builder
          * 

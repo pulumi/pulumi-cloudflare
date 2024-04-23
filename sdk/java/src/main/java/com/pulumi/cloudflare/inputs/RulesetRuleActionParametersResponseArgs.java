@@ -17,14 +17,14 @@ public final class RulesetRuleActionParametersResponseArgs extends com.pulumi.re
     public static final RulesetRuleActionParametersResponseArgs Empty = new RulesetRuleActionParametersResponseArgs();
 
     /**
-     * Content of the custom error response.
+     * Body content to include in the response.
      * 
      */
     @Import(name="content")
     private @Nullable Output<String> content;
 
     /**
-     * @return Content of the custom error response.
+     * @return Body content to include in the response.
      * 
      */
     public Optional<Output<String>> content() {
@@ -32,14 +32,14 @@ public final class RulesetRuleActionParametersResponseArgs extends com.pulumi.re
     }
 
     /**
-     * Content-Type of the custom error response.
+     * HTTP content type to send in the response.
      * 
      */
     @Import(name="contentType")
     private @Nullable Output<String> contentType;
 
     /**
-     * @return Content-Type of the custom error response.
+     * @return HTTP content type to send in the response.
      * 
      */
     public Optional<Output<String>> contentType() {
@@ -47,14 +47,14 @@ public final class RulesetRuleActionParametersResponseArgs extends com.pulumi.re
     }
 
     /**
-     * Status code for which the edge TTL is applied.
+     * HTTP status code to send in the response.
      * 
      */
     @Import(name="statusCode")
     private @Nullable Output<Integer> statusCode;
 
     /**
-     * @return Status code for which the edge TTL is applied.
+     * @return HTTP status code to send in the response.
      * 
      */
     public Optional<Output<Integer>> statusCode() {
@@ -88,7 +88,7 @@ public final class RulesetRuleActionParametersResponseArgs extends com.pulumi.re
         }
 
         /**
-         * @param content Content of the custom error response.
+         * @param content Body content to include in the response.
          * 
          * @return builder
          * 
@@ -99,7 +99,7 @@ public final class RulesetRuleActionParametersResponseArgs extends com.pulumi.re
         }
 
         /**
-         * @param content Content of the custom error response.
+         * @param content Body content to include in the response.
          * 
          * @return builder
          * 
@@ -109,7 +109,7 @@ public final class RulesetRuleActionParametersResponseArgs extends com.pulumi.re
         }
 
         /**
-         * @param contentType Content-Type of the custom error response.
+         * @param contentType HTTP content type to send in the response.
          * 
          * @return builder
          * 
@@ -120,7 +120,7 @@ public final class RulesetRuleActionParametersResponseArgs extends com.pulumi.re
         }
 
         /**
-         * @param contentType Content-Type of the custom error response.
+         * @param contentType HTTP content type to send in the response.
          * 
          * @return builder
          * 
@@ -130,7 +130,7 @@ public final class RulesetRuleActionParametersResponseArgs extends com.pulumi.re
         }
 
         /**
-         * @param statusCode Status code for which the edge TTL is applied.
+         * @param statusCode HTTP status code to send in the response.
          * 
          * @return builder
          * 
@@ -141,7 +141,7 @@ public final class RulesetRuleActionParametersResponseArgs extends com.pulumi.re
         }
 
         /**
-         * @param statusCode Status code for which the edge TTL is applied.
+         * @param statusCode HTTP status code to send in the response.
          * 
          * @return builder
          * 

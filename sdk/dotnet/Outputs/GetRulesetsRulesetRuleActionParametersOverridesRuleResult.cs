@@ -22,7 +22,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly bool? Enabled;
         /// <summary>
-        /// The ID of the Ruleset to target.
+        /// The ID of this resource.
         /// </summary>
         public readonly string? Id;
         /// <summary>

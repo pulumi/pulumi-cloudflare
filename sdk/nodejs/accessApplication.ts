@@ -132,7 +132,7 @@ export class AccessApplication extends pulumi.CustomResource {
      */
     public readonly logoUrl!: pulumi.Output<string | undefined>;
     /**
-     * The name of the footer link.
+     * Friendly name of the Access Application.
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -338,7 +338,7 @@ export interface AccessApplicationState {
      */
     logoUrl?: pulumi.Input<string>;
     /**
-     * The name of the footer link.
+     * Friendly name of the Access Application.
      */
     name?: pulumi.Input<string>;
     /**
@@ -460,7 +460,7 @@ export interface AccessApplicationArgs {
      */
     logoUrl?: pulumi.Input<string>;
     /**
-     * The name of the footer link.
+     * Friendly name of the Access Application.
      */
     name?: pulumi.Input<string>;
     /**

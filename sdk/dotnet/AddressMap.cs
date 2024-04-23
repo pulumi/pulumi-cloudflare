@@ -15,7 +15,6 @@ namespace Pulumi.Cloudflare
     /// 
     /// ## Example Usage
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -58,7 +57,6 @@ namespace Pulumi.Cloudflare
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
@@ -76,7 +74,7 @@ namespace Pulumi.Cloudflare
         public Output<string> AccountId { get; private set; } = null!;
 
         /// <summary>
-        /// Controls whether the membership can be deleted via the API or not.
+        /// If set to false, then the Address Map cannot be deleted via API. This is true for Cloudflare-managed maps.
         /// </summary>
         [Output("canDelete")]
         public Output<bool> CanDelete { get; private set; } = null!;
@@ -226,7 +224,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? AccountId { get; set; }
 
         /// <summary>
-        /// Controls whether the membership can be deleted via the API or not.
+        /// If set to false, then the Address Map cannot be deleted via API. This is true for Cloudflare-managed maps.
         /// </summary>
         [Input("canDelete")]
         public Input<bool>? CanDelete { get; set; }

@@ -612,14 +612,14 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
     }
 
     /**
-     * List of rule-based overrides.
+     * Map of managed WAF rule ID to comma-delimited string of ruleset rule IDs. Example: `rules = { &#34;efb7b8c949ac4650a09736fc376e9aee&#34; = &#34;5de7edfa648c4d6891dc3e7f84534ffa,e3a567afc347477d9702d9047e97d760&#34; }`.
      * 
      */
     @Import(name="rules")
     private @Nullable Output<Map<String,String>> rules;
 
     /**
-     * @return List of rule-based overrides.
+     * @return Map of managed WAF rule ID to comma-delimited string of ruleset rule IDs. Example: `rules = { &#34;efb7b8c949ac4650a09736fc376e9aee&#34; = &#34;5de7edfa648c4d6891dc3e7f84534ffa,e3a567afc347477d9702d9047e97d760&#34; }`.
      * 
      */
     public Optional<Output<Map<String,String>>> rules() {
@@ -732,14 +732,14 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
     }
 
     /**
-     * Status code for which the edge TTL is applied.
+     * HTTP status code of the custom error response.
      * 
      */
     @Import(name="statusCode")
     private @Nullable Output<Integer> statusCode;
 
     /**
-     * @return Status code for which the edge TTL is applied.
+     * @return HTTP status code of the custom error response.
      * 
      */
     public Optional<Output<Integer>> statusCode() {
@@ -1773,7 +1773,7 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param rules List of rule-based overrides.
+         * @param rules Map of managed WAF rule ID to comma-delimited string of ruleset rule IDs. Example: `rules = { &#34;efb7b8c949ac4650a09736fc376e9aee&#34; = &#34;5de7edfa648c4d6891dc3e7f84534ffa,e3a567afc347477d9702d9047e97d760&#34; }`.
          * 
          * @return builder
          * 
@@ -1784,7 +1784,7 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param rules List of rule-based overrides.
+         * @param rules Map of managed WAF rule ID to comma-delimited string of ruleset rule IDs. Example: `rules = { &#34;efb7b8c949ac4650a09736fc376e9aee&#34; = &#34;5de7edfa648c4d6891dc3e7f84534ffa,e3a567afc347477d9702d9047e97d760&#34; }`.
          * 
          * @return builder
          * 
@@ -1951,7 +1951,7 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param statusCode Status code for which the edge TTL is applied.
+         * @param statusCode HTTP status code of the custom error response.
          * 
          * @return builder
          * 
@@ -1962,7 +1962,7 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param statusCode Status code for which the edge TTL is applied.
+         * @param statusCode HTTP status code of the custom error response.
          * 
          * @return builder
          * 

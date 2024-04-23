@@ -17,17 +17,9 @@ public final class RulesetRuleActionParametersUriArgs extends com.pulumi.resourc
 
     public static final RulesetRuleActionParametersUriArgs Empty = new RulesetRuleActionParametersUriArgs();
 
-    /**
-     * List of properties to change request origin.
-     * 
-     */
     @Import(name="origin")
     private @Nullable Output<Boolean> origin;
 
-    /**
-     * @return List of properties to change request origin.
-     * 
-     */
     public Optional<Output<Boolean>> origin() {
         return Optional.ofNullable(this.origin);
     }
@@ -88,23 +80,11 @@ public final class RulesetRuleActionParametersUriArgs extends com.pulumi.resourc
             $ = new RulesetRuleActionParametersUriArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param origin List of properties to change request origin.
-         * 
-         * @return builder
-         * 
-         */
         public Builder origin(@Nullable Output<Boolean> origin) {
             $.origin = origin;
             return this;
         }
 
-        /**
-         * @param origin List of properties to change request origin.
-         * 
-         * @return builder
-         * 
-         */
         public Builder origin(Boolean origin) {
             return origin(Output.of(origin));
         }

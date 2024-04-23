@@ -42,7 +42,7 @@ namespace Pulumi.Cloudflare
         public Output<string?> AccountId { get; private set; } = null!;
 
         /// <summary>
-        /// Brief summary of the ruleset rule and its intended use.
+        /// Brief summary of the ruleset and its intended use.
         /// </summary>
         [Output("description")]
         public Output<string> Description { get; private set; } = null!;
@@ -54,7 +54,7 @@ namespace Pulumi.Cloudflare
         public Output<string> Kind { get; private set; } = null!;
 
         /// <summary>
-        /// Name of the compression algorithm to use. Available values: `gzip`, `brotli`, `auto`, `default`, `none`
+        /// Name of the ruleset.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -66,7 +66,7 @@ namespace Pulumi.Cloudflare
         public Output<string> Phase { get; private set; } = null!;
 
         /// <summary>
-        /// List of rule-based overrides.
+        /// List of rules to apply to the ruleset.
         /// </summary>
         [Output("rules")]
         public Output<ImmutableArray<Outputs.RulesetRule>> Rules { get; private set; } = null!;
@@ -130,7 +130,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? AccountId { get; set; }
 
         /// <summary>
-        /// Brief summary of the ruleset rule and its intended use.
+        /// Brief summary of the ruleset and its intended use.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -142,7 +142,7 @@ namespace Pulumi.Cloudflare
         public Input<string> Kind { get; set; } = null!;
 
         /// <summary>
-        /// Name of the compression algorithm to use. Available values: `gzip`, `brotli`, `auto`, `default`, `none`
+        /// Name of the ruleset.
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
@@ -157,7 +157,7 @@ namespace Pulumi.Cloudflare
         private InputList<Inputs.RulesetRuleArgs>? _rules;
 
         /// <summary>
-        /// List of rule-based overrides.
+        /// List of rules to apply to the ruleset.
         /// </summary>
         public InputList<Inputs.RulesetRuleArgs> Rules
         {
@@ -186,7 +186,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? AccountId { get; set; }
 
         /// <summary>
-        /// Brief summary of the ruleset rule and its intended use.
+        /// Brief summary of the ruleset and its intended use.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -198,7 +198,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? Kind { get; set; }
 
         /// <summary>
-        /// Name of the compression algorithm to use. Available values: `gzip`, `brotli`, `auto`, `default`, `none`
+        /// Name of the ruleset.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -213,7 +213,7 @@ namespace Pulumi.Cloudflare
         private InputList<Inputs.RulesetRuleGetArgs>? _rules;
 
         /// <summary>
-        /// List of rule-based overrides.
+        /// List of rules to apply to the ruleset.
         /// </summary>
         public InputList<Inputs.RulesetRuleGetArgs> Rules
         {

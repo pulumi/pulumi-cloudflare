@@ -14,7 +14,7 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class LoadBalancerPoolOriginHeader
     {
         /// <summary>
-        /// HTTP request headers.
+        /// HTTP Header name.
         /// </summary>
         public readonly string Header;
         /// <summary>

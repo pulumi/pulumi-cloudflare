@@ -18,7 +18,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string? Expression;
         /// <summary>
-        /// Name of the compression algorithm to use. Available values: `gzip`, `brotli`, `auto`, `default`, `none`
+        /// Name of the HTTP request header to target.
         /// </summary>
         public readonly string? Name;
         /// <summary>
@@ -26,7 +26,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string? Operation;
         /// <summary>
-        /// Status code edge TTL value.
+        /// Static value to provide as the HTTP request header value.
         /// </summary>
         public readonly string? Value;
 

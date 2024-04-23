@@ -89,14 +89,14 @@ public class TeamsRule extends com.pulumi.resources.CustomResource {
         return this.accountId;
     }
     /**
-     * Action to be taken when the SSL certificate of upstream is invalid. Available values: `pass_through`, `block`, `error`.
+     * The action executed by matched teams rule. Available values: `allow`, `block`, `safesearch`, `ytrestricted`, `on`, `off`, `scan`, `noscan`, `isolate`, `noisolate`, `override`, `l4_override`, `egress`, `audit_ssh`, `resolve`.
      * 
      */
     @Export(name="action", refs={String.class}, tree="[0]")
     private Output<String> action;
 
     /**
-     * @return Action to be taken when the SSL certificate of upstream is invalid. Available values: `pass_through`, `block`, `error`.
+     * @return The action executed by matched teams rule. Available values: `allow`, `block`, `safesearch`, `ytrestricted`, `on`, `off`, `scan`, `noscan`, `isolate`, `noisolate`, `override`, `l4_override`, `egress`, `audit_ssh`, `resolve`.
      * 
      */
     public Output<String> action() {
@@ -131,14 +131,14 @@ public class TeamsRule extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.devicePosture);
     }
     /**
-     * Enable notification settings.
+     * Indicator of rule enablement.
      * 
      */
     @Export(name="enabled", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> enabled;
 
     /**
-     * @return Enable notification settings.
+     * @return Indicator of rule enablement.
      * 
      */
     public Output<Optional<Boolean>> enabled() {

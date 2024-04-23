@@ -31,14 +31,14 @@ public final class RulesetRuleActionParametersFromValueTargetUrlArgs extends com
     }
 
     /**
-     * Status code edge TTL value.
+     * Static value to provide as the HTTP request header value.
      * 
      */
     @Import(name="value")
     private @Nullable Output<String> value;
 
     /**
-     * @return Status code edge TTL value.
+     * @return Static value to provide as the HTTP request header value.
      * 
      */
     public Optional<Output<String>> value() {
@@ -92,7 +92,7 @@ public final class RulesetRuleActionParametersFromValueTargetUrlArgs extends com
         }
 
         /**
-         * @param value Status code edge TTL value.
+         * @param value Static value to provide as the HTTP request header value.
          * 
          * @return builder
          * 
@@ -103,7 +103,7 @@ public final class RulesetRuleActionParametersFromValueTargetUrlArgs extends com
         }
 
         /**
-         * @param value Status code edge TTL value.
+         * @param value Static value to provide as the HTTP request header value.
          * 
          * @return builder
          * 

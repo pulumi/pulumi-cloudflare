@@ -14,7 +14,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class RulesetRuleActionParametersCacheKeyCustomKeyHeader {
     /**
-     * @return List of cookies to check for presence in the custom key.
+     * @return List of headers to check for presence in the custom key.
      * 
      */
     private @Nullable List<String> checkPresences;
@@ -24,14 +24,14 @@ public final class RulesetRuleActionParametersCacheKeyCustomKeyHeader {
      */
     private @Nullable Boolean excludeOrigin;
     /**
-     * @return List of cookies to include in the custom key.
+     * @return List of headers to include in the custom key.
      * 
      */
     private @Nullable List<String> includes;
 
     private RulesetRuleActionParametersCacheKeyCustomKeyHeader() {}
     /**
-     * @return List of cookies to check for presence in the custom key.
+     * @return List of headers to check for presence in the custom key.
      * 
      */
     public List<String> checkPresences() {
@@ -45,7 +45,7 @@ public final class RulesetRuleActionParametersCacheKeyCustomKeyHeader {
         return Optional.ofNullable(this.excludeOrigin);
     }
     /**
-     * @return List of cookies to include in the custom key.
+     * @return List of headers to include in the custom key.
      * 
      */
     public List<String> includes() {

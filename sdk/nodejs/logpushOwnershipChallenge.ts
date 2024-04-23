@@ -12,7 +12,6 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
@@ -22,7 +21,6 @@ import * as utilities from "./utilities";
  *     destinationConf: "s3://my-bucket-path?region=us-west-2",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export class LogpushOwnershipChallenge extends pulumi.CustomResource {
     /**

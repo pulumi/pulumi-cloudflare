@@ -13,9 +13,6 @@ namespace Pulumi.Cloudflare.Outputs
     [OutputType]
     public sealed class AccessPolicyRequireGithub
     {
-        /// <summary>
-        /// The ID of the Azure Identity provider.
-        /// </summary>
         public readonly string? IdentityProviderId;
         public readonly string? Name;
         public readonly ImmutableArray<string> Teams;

@@ -167,7 +167,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly bool? RocketLoader;
         /// <summary>
-        /// List of rule-based overrides.
+        /// Map of managed WAF rule ID to comma-delimited string of ruleset rule IDs. Example: `rules = { "efb7b8c949ac4650a09736fc376e9aee" = "5de7edfa648c4d6891dc3e7f84534ffa,e3a567afc347477d9702d9047e97d760" }`.
         /// </summary>
         public readonly ImmutableDictionary<string, string>? Rules;
         /// <summary>
@@ -199,7 +199,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string? Ssl;
         /// <summary>
-        /// Status code for which the edge TTL is applied.
+        /// HTTP status code of the custom error response.
         /// </summary>
         public readonly int? StatusCode;
         /// <summary>

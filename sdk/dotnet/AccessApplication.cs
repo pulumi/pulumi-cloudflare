@@ -150,7 +150,7 @@ namespace Pulumi.Cloudflare
         public Output<string?> LogoUrl { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the footer link.
+        /// Friendly name of the Access Application.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -394,7 +394,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? LogoUrl { get; set; }
 
         /// <summary>
-        /// The name of the footer link.
+        /// Friendly name of the Access Application.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -618,7 +618,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? LogoUrl { get; set; }
 
         /// <summary>
-        /// The name of the footer link.
+        /// Friendly name of the Access Application.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

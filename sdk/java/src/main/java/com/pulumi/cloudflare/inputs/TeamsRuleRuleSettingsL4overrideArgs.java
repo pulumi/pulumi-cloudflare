@@ -16,14 +16,14 @@ public final class TeamsRuleRuleSettingsL4overrideArgs extends com.pulumi.resour
     public static final TeamsRuleRuleSettingsL4overrideArgs Empty = new TeamsRuleRuleSettingsL4overrideArgs();
 
     /**
-     * The IPv4 or IPv6 address of the upstream resolver.
+     * Override IP to forward traffic to.
      * 
      */
     @Import(name="ip", required=true)
     private Output<String> ip;
 
     /**
-     * @return The IPv4 or IPv6 address of the upstream resolver.
+     * @return Override IP to forward traffic to.
      * 
      */
     public Output<String> ip() {
@@ -31,14 +31,14 @@ public final class TeamsRuleRuleSettingsL4overrideArgs extends com.pulumi.resour
     }
 
     /**
-     * A port number to use for the upstream resolver. Defaults to `53`.
+     * Override Port to forward traffic to.
      * 
      */
     @Import(name="port", required=true)
     private Output<Integer> port;
 
     /**
-     * @return A port number to use for the upstream resolver. Defaults to `53`.
+     * @return Override Port to forward traffic to.
      * 
      */
     public Output<Integer> port() {
@@ -71,7 +71,7 @@ public final class TeamsRuleRuleSettingsL4overrideArgs extends com.pulumi.resour
         }
 
         /**
-         * @param ip The IPv4 or IPv6 address of the upstream resolver.
+         * @param ip Override IP to forward traffic to.
          * 
          * @return builder
          * 
@@ -82,7 +82,7 @@ public final class TeamsRuleRuleSettingsL4overrideArgs extends com.pulumi.resour
         }
 
         /**
-         * @param ip The IPv4 or IPv6 address of the upstream resolver.
+         * @param ip Override IP to forward traffic to.
          * 
          * @return builder
          * 
@@ -92,7 +92,7 @@ public final class TeamsRuleRuleSettingsL4overrideArgs extends com.pulumi.resour
         }
 
         /**
-         * @param port A port number to use for the upstream resolver. Defaults to `53`.
+         * @param port Override Port to forward traffic to.
          * 
          * @return builder
          * 
@@ -103,7 +103,7 @@ public final class TeamsRuleRuleSettingsL4overrideArgs extends com.pulumi.resour
         }
 
         /**
-         * @param port A port number to use for the upstream resolver. Defaults to `53`.
+         * @param port Override Port to forward traffic to.
          * 
          * @return builder
          * 

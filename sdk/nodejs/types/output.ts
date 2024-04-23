@@ -152,7 +152,7 @@ export interface AccessApplicationSaasAppCustomAttribute {
      */
     friendlyName?: string;
     /**
-     * The name of the footer link.
+     * The name of the attribute as provided to the SaaS app.
      */
     name?: string;
     /**
@@ -168,7 +168,7 @@ export interface AccessApplicationSaasAppCustomAttribute {
 
 export interface AccessApplicationSaasAppCustomAttributeSource {
     /**
-     * The name of the footer link.
+     * The name of the attribute as provided by the IDP.
      */
     name: string;
 }
@@ -228,7 +228,7 @@ export interface AccessGroupExcludeAzure {
      */
     identityProviderId?: string;
     /**
-     * The ID of the Authentication Context.
+     * The ID of the Azure group or user.
      */
     ids?: string[];
 }
@@ -239,9 +239,6 @@ export interface AccessGroupExcludeExternalEvaluation {
 }
 
 export interface AccessGroupExcludeGithub {
-    /**
-     * The ID of the Azure Identity provider.
-     */
     identityProviderId?: string;
     name?: string;
     teams?: string[];
@@ -249,16 +246,10 @@ export interface AccessGroupExcludeGithub {
 
 export interface AccessGroupExcludeGsuite {
     emails?: string[];
-    /**
-     * The ID of the Azure Identity provider.
-     */
     identityProviderId?: string;
 }
 
 export interface AccessGroupExcludeOkta {
-    /**
-     * The ID of the Azure Identity provider.
-     */
     identityProviderId?: string;
     names?: string[];
 }
@@ -266,9 +257,6 @@ export interface AccessGroupExcludeOkta {
 export interface AccessGroupExcludeSaml {
     attributeName?: string;
     attributeValue?: string;
-    /**
-     * The ID of the Azure Identity provider.
-     */
     identityProviderId?: string;
 }
 
@@ -327,7 +315,7 @@ export interface AccessGroupIncludeAzure {
      */
     identityProviderId?: string;
     /**
-     * The ID of the Authentication Context.
+     * The ID of the Azure group or user.
      */
     ids?: string[];
 }
@@ -338,9 +326,6 @@ export interface AccessGroupIncludeExternalEvaluation {
 }
 
 export interface AccessGroupIncludeGithub {
-    /**
-     * The ID of the Azure Identity provider.
-     */
     identityProviderId?: string;
     name?: string;
     teams?: string[];
@@ -348,16 +333,10 @@ export interface AccessGroupIncludeGithub {
 
 export interface AccessGroupIncludeGsuite {
     emails?: string[];
-    /**
-     * The ID of the Azure Identity provider.
-     */
     identityProviderId?: string;
 }
 
 export interface AccessGroupIncludeOkta {
-    /**
-     * The ID of the Azure Identity provider.
-     */
     identityProviderId?: string;
     names?: string[];
 }
@@ -365,9 +344,6 @@ export interface AccessGroupIncludeOkta {
 export interface AccessGroupIncludeSaml {
     attributeName?: string;
     attributeValue?: string;
-    /**
-     * The ID of the Azure Identity provider.
-     */
     identityProviderId?: string;
 }
 
@@ -426,7 +402,7 @@ export interface AccessGroupRequireAzure {
      */
     identityProviderId?: string;
     /**
-     * The ID of the Authentication Context.
+     * The ID of the Azure group or user.
      */
     ids?: string[];
 }
@@ -437,9 +413,6 @@ export interface AccessGroupRequireExternalEvaluation {
 }
 
 export interface AccessGroupRequireGithub {
-    /**
-     * The ID of the Azure Identity provider.
-     */
     identityProviderId?: string;
     name?: string;
     teams?: string[];
@@ -447,16 +420,10 @@ export interface AccessGroupRequireGithub {
 
 export interface AccessGroupRequireGsuite {
     emails?: string[];
-    /**
-     * The ID of the Azure Identity provider.
-     */
     identityProviderId?: string;
 }
 
 export interface AccessGroupRequireOkta {
-    /**
-     * The ID of the Azure Identity provider.
-     */
     identityProviderId?: string;
     names?: string[];
 }
@@ -464,9 +431,6 @@ export interface AccessGroupRequireOkta {
 export interface AccessGroupRequireSaml {
     attributeName?: string;
     attributeValue?: string;
-    /**
-     * The ID of the Azure Identity provider.
-     */
     identityProviderId?: string;
 }
 
@@ -624,7 +588,7 @@ export interface AccessPolicyExcludeAzure {
      */
     identityProviderId?: string;
     /**
-     * The ID of the Authentication Context.
+     * The ID of the Azure group or user.
      */
     ids?: string[];
 }
@@ -635,9 +599,6 @@ export interface AccessPolicyExcludeExternalEvaluation {
 }
 
 export interface AccessPolicyExcludeGithub {
-    /**
-     * The ID of the Azure Identity provider.
-     */
     identityProviderId?: string;
     name?: string;
     teams?: string[];
@@ -645,16 +606,10 @@ export interface AccessPolicyExcludeGithub {
 
 export interface AccessPolicyExcludeGsuite {
     emails?: string[];
-    /**
-     * The ID of the Azure Identity provider.
-     */
     identityProviderId?: string;
 }
 
 export interface AccessPolicyExcludeOkta {
-    /**
-     * The ID of the Azure Identity provider.
-     */
     identityProviderId?: string;
     names?: string[];
 }
@@ -662,9 +617,6 @@ export interface AccessPolicyExcludeOkta {
 export interface AccessPolicyExcludeSaml {
     attributeName?: string;
     attributeValue?: string;
-    /**
-     * The ID of the Azure Identity provider.
-     */
     identityProviderId?: string;
 }
 
@@ -723,7 +675,7 @@ export interface AccessPolicyIncludeAzure {
      */
     identityProviderId?: string;
     /**
-     * The ID of the Authentication Context.
+     * The ID of the Azure group or user.
      */
     ids?: string[];
 }
@@ -734,9 +686,6 @@ export interface AccessPolicyIncludeExternalEvaluation {
 }
 
 export interface AccessPolicyIncludeGithub {
-    /**
-     * The ID of the Azure Identity provider.
-     */
     identityProviderId?: string;
     name?: string;
     teams?: string[];
@@ -744,16 +693,10 @@ export interface AccessPolicyIncludeGithub {
 
 export interface AccessPolicyIncludeGsuite {
     emails?: string[];
-    /**
-     * The ID of the Azure Identity provider.
-     */
     identityProviderId?: string;
 }
 
 export interface AccessPolicyIncludeOkta {
-    /**
-     * The ID of the Azure Identity provider.
-     */
     identityProviderId?: string;
     names?: string[];
 }
@@ -761,9 +704,6 @@ export interface AccessPolicyIncludeOkta {
 export interface AccessPolicyIncludeSaml {
     attributeName?: string;
     attributeValue?: string;
-    /**
-     * The ID of the Azure Identity provider.
-     */
     identityProviderId?: string;
 }
 
@@ -822,7 +762,7 @@ export interface AccessPolicyRequireAzure {
      */
     identityProviderId?: string;
     /**
-     * The ID of the Authentication Context.
+     * The ID of the Azure group or user.
      */
     ids?: string[];
 }
@@ -833,9 +773,6 @@ export interface AccessPolicyRequireExternalEvaluation {
 }
 
 export interface AccessPolicyRequireGithub {
-    /**
-     * The ID of the Azure Identity provider.
-     */
     identityProviderId?: string;
     name?: string;
     teams?: string[];
@@ -843,16 +780,10 @@ export interface AccessPolicyRequireGithub {
 
 export interface AccessPolicyRequireGsuite {
     emails?: string[];
-    /**
-     * The ID of the Azure Identity provider.
-     */
     identityProviderId?: string;
 }
 
 export interface AccessPolicyRequireOkta {
-    /**
-     * The ID of the Azure Identity provider.
-     */
     identityProviderId?: string;
     names?: string[];
 }
@@ -860,9 +791,6 @@ export interface AccessPolicyRequireOkta {
 export interface AccessPolicyRequireSaml {
     attributeName?: string;
     attributeValue?: string;
-    /**
-     * The ID of the Azure Identity provider.
-     */
     identityProviderId?: string;
 }
 
@@ -1634,7 +1562,7 @@ export interface GetLoadBalancerPoolsPoolOrigin {
      */
     address: string;
     /**
-     * Whether this pool is enabled. Disabled pools will not receive traffic and are excluded from health checks.
+     * Whether this origin is enabled. Disabled origins will not receive traffic and are excluded from health checks.
      */
     enabled?: boolean;
     /**
@@ -1642,7 +1570,7 @@ export interface GetLoadBalancerPoolsPoolOrigin {
      */
     headers?: outputs.GetLoadBalancerPoolsPoolOriginHeader[];
     /**
-     * A regular expression matching the name of the Load Balancer pool to lookup.
+     * A human-identifiable name for the origin.
      */
     name: string;
     /**
@@ -1742,7 +1670,7 @@ export interface GetRulesetsRulesetRule {
      */
     expression: string;
     /**
-     * The ID of the Ruleset to target.
+     * Unique rule identifier.
      */
     id: string;
     /**
@@ -1762,7 +1690,7 @@ export interface GetRulesetsRulesetRule {
      */
     ref: string;
     /**
-     * Version of the ruleset to filter on.
+     * Version of the ruleset to deploy.
      */
     version: string;
 }
@@ -1849,7 +1777,7 @@ export interface GetRulesetsRulesetRuleActionParameters {
      */
     hotlinkProtection?: boolean;
     /**
-     * The ID of the Ruleset to target.
+     * Identifier of the action parameter to modify.
      */
     id?: string;
     increment?: number;
@@ -1962,7 +1890,7 @@ export interface GetRulesetsRulesetRuleActionParameters {
      */
     uri?: outputs.GetRulesetsRulesetRuleActionParametersUri;
     /**
-     * Version of the ruleset to filter on.
+     * Version of the ruleset to deploy.
      */
     version: string;
 }
@@ -2141,7 +2069,7 @@ export interface GetRulesetsRulesetRuleActionParametersFromList {
      */
     key: string;
     /**
-     * Name of the ruleset.
+     * Name of the list.
      */
     name: string;
 }
@@ -2178,7 +2106,7 @@ export interface GetRulesetsRulesetRuleActionParametersHeader {
      */
     expression?: string;
     /**
-     * Name of the ruleset.
+     * Name of the HTTP request header to target.
      */
     name?: string;
     /**
@@ -2271,7 +2199,7 @@ export interface GetRulesetsRulesetRuleActionParametersOverridesRule {
      */
     enabled?: boolean;
     /**
-     * The ID of the Ruleset to target.
+     * The ID of this resource.
      */
     id?: string;
     /**
@@ -2668,7 +2596,7 @@ export interface LoadBalancerPoolOrigin {
 
 export interface LoadBalancerPoolOriginHeader {
     /**
-     * HTTP request headers.
+     * HTTP Header name.
      */
     header: string;
     /**
@@ -2824,7 +2752,7 @@ export interface LoadBalancerRuleOverride {
 
 export interface LoadBalancerRuleOverrideAdaptiveRouting {
     /**
-     * Extends zero-downtime failover of requests to healthy origins from alternate pools, when no healthy alternate exists in the same pool, according to the failover order defined by traffic and origin steering. When set `false`, zero-downtime failover will only occur between origins within the same pool. Defaults to `false`.
+     * Extends zero-downtime failover of requests to healthy origins from alternate pools, when no healthy alternate exists in the same pool, according to the failover order defined by traffic and origin steering. When set `false`, zero-downtime failover will only occur between origins within the same pool.
      */
     failoverAcrossPools?: boolean;
 }
@@ -2842,11 +2770,11 @@ export interface LoadBalancerRuleOverrideCountryPool {
 
 export interface LoadBalancerRuleOverrideLocationStrategy {
     /**
-     * Determines the authoritative location when ECS is not preferred, does not exist in the request, or its GeoIP lookup is unsuccessful. Value `pop` will use the Cloudflare PoP location. Value `resolverIp` will use the DNS resolver GeoIP location. If the GeoIP lookup is unsuccessful, it will use the Cloudflare PoP location. Available values: `pop`, `resolverIp`. Defaults to `pop`.
+     * Determines the authoritative location when ECS is not preferred, does not exist in the request, or its GeoIP lookup is unsuccessful. Value `pop` will use the Cloudflare PoP location. Value `resolverIp` will use the DNS resolver GeoIP location. If the GeoIP lookup is unsuccessful, it will use the Cloudflare PoP location. Available values: `pop`, `resolverIp`.
      */
     mode?: string;
     /**
-     * Whether the EDNS Client Subnet (ECS) GeoIP should be preferred as the authoritative location. Value `always` will always prefer ECS, `never` will never prefer ECS, `proximity` will prefer ECS only when `steering_policy="proximity"`, and `geo` will prefer ECS only when `steering_policy="geo"`. Available values: `always`, `never`, `proximity`, `geo`. Defaults to `proximity`.
+     * Whether the EDNS Client Subnet (ECS) GeoIP should be preferred as the authoritative location. Value `always` will always prefer ECS, `never` will never prefer ECS, `proximity` will prefer ECS only when `steering_policy="proximity"`, and `geo` will prefer ECS only when `steering_policy="geo"`. Available values: `always`, `never`, `proximity`, `geo`.
      */
     preferEcs?: string;
 }
@@ -2894,15 +2822,15 @@ export interface LoadBalancerRuleOverrideSessionAffinityAttribute {
      */
     requireAllHeaders?: boolean;
     /**
-     * Configures the SameSite attribute on session affinity cookie. Value `Auto` will be translated to `Lax` or `None` depending if Always Use HTTPS is enabled. Note: when using value `None`, then you can not set `secure="Never"`. Available values: `Auto`, `Lax`, `None`, `Strict`. Defaults to `Auto`.
+     * Configures the SameSite attribute on session affinity cookie. Value `Auto` will be translated to `Lax` or `None` depending if Always Use HTTPS is enabled. Note: when using value `None`, then you can not set `secure="Never"`. Available values: `Auto`, `Lax`, `None`, `Strict`.
      */
     samesite?: string;
     /**
-     * Configures the Secure attribute on session affinity cookie. Value `Always` indicates the Secure attribute will be set in the Set-Cookie header, `Never` indicates the Secure attribute will not be set, and `Auto` will set the Secure attribute depending if Always Use HTTPS is enabled. Available values: `Auto`, `Always`, `Never`. Defaults to `Auto`.
+     * Configures the Secure attribute on session affinity cookie. Value `Always` indicates the Secure attribute will be set in the Set-Cookie header, `Never` indicates the Secure attribute will not be set, and `Auto` will set the Secure attribute depending if Always Use HTTPS is enabled. Available values: `Auto`, `Always`, `Never`.
      */
     secure?: string;
     /**
-     * Configures the zero-downtime failover between origins within a pool when session affinity is enabled. Value `none` means no failover takes place for sessions pinned to the origin. Value `temporary` means traffic will be sent to another other healthy origin until the originally pinned origin is available; note that this can potentially result in heavy origin flapping. Value `sticky` means the session affinity cookie is updated and subsequent requests are sent to the new origin. This feature is currently incompatible with Argo, Tiered Cache, and Bandwidth Alliance. Available values: `none`, `temporary`, `sticky`. Defaults to `none`.
+     * Configures the zero-downtime failover between origins within a pool when session affinity is enabled. Value `none` means no failover takes place for sessions pinned to the origin. Value `temporary` means traffic will be sent to another other healthy origin until the originally pinned origin is available; note that this can potentially result in heavy origin flapping. Value `sticky` means the session affinity cookie is updated and subsequent requests are sent to the new origin. This feature is currently incompatible with Argo, Tiered Cache, and Bandwidth Alliance. Available values: `none`, `temporary`, `sticky`.
      */
     zeroDowntimeFailover?: string;
 }
@@ -3335,11 +3263,11 @@ export interface PageRuleActionsCacheKeyFields {
 
 export interface PageRuleActionsCacheKeyFieldsCookie {
     /**
-     * Check for presence of specified HTTP headers, without including their actual values.
+     * Check for presence of specified cookies, without including their actual values.
      */
     checkPresences: string[];
     /**
-     * Only use values of specified query string parameters in Cache Key.
+     * Use values of specified cookies in Cache Key.
      */
     includes: string[];
 }
@@ -3350,11 +3278,11 @@ export interface PageRuleActionsCacheKeyFieldsHeader {
      */
     checkPresences: string[];
     /**
-     * Exclude these query string parameters from Cache Key.
+     * Exclude these HTTP headers from Cache Key. Currently, only the `Origin` header can be excluded.
      */
     excludes: string[];
     /**
-     * Only use values of specified query string parameters in Cache Key.
+     * Use values of specified HTTP headers in Cache Key. Please refer to [Support article](https://support.cloudflare.com/hc/en-us/articles/115004290387-Creating-Cache-Keys) for the list of HTTP headers that cannot be included. The `Origin` header is always included unless explicitly excluded.
      */
     includes: string[];
 }
@@ -3395,7 +3323,6 @@ export interface PageRuleActionsCacheKeyFieldsUser {
      *
      * Example:
      *
-     * <!--Start PulumiCodeChooser -->
      * ```typescript
      * import * as pulumi from "@pulumi/pulumi";
      * import * as cloudflare from "@pulumi/cloudflare";
@@ -3433,7 +3360,6 @@ export interface PageRuleActionsCacheKeyFieldsUser {
      *     },
      * });
      * ```
-     * <!--End PulumiCodeChooser -->
      */
     lang: boolean;
 }
@@ -4040,7 +3966,7 @@ export interface RulesetRuleActionParameters {
      */
     rocketLoader?: boolean;
     /**
-     * List of rule-based overrides.
+     * Map of managed WAF rule ID to comma-delimited string of ruleset rule IDs. Example: `rules = { "efb7b8c949ac4650a09736fc376e9aee" = "5de7edfa648c4d6891dc3e7f84534ffa,e3a567afc347477d9702d9047e97d760" }`.
      */
     rules?: {[key: string]: string};
     /**
@@ -4072,7 +3998,7 @@ export interface RulesetRuleActionParameters {
      */
     ssl?: string;
     /**
-     * Status code for which the edge TTL is applied.
+     * HTTP status code of the custom error response.
      */
     statusCode?: number;
     /**
@@ -4177,7 +4103,7 @@ export interface RulesetRuleActionParametersCacheKeyCustomKeyCookie {
 
 export interface RulesetRuleActionParametersCacheKeyCustomKeyHeader {
     /**
-     * List of cookies to check for presence in the custom key.
+     * List of headers to check for presence in the custom key.
      */
     checkPresences?: string[];
     /**
@@ -4185,7 +4111,7 @@ export interface RulesetRuleActionParametersCacheKeyCustomKeyHeader {
      */
     excludeOrigin: boolean;
     /**
-     * List of cookies to include in the custom key.
+     * List of headers to include in the custom key.
      */
     includes?: string[];
 }
@@ -4203,7 +4129,7 @@ export interface RulesetRuleActionParametersCacheKeyCustomKeyQueryString {
      */
     excludes?: string[];
     /**
-     * List of cookies to include in the custom key.
+     * List of query string parameters to include in the custom key.
      */
     includes?: string[];
 }
@@ -4225,11 +4151,11 @@ export interface RulesetRuleActionParametersCacheKeyCustomKeyUser {
 
 export interface RulesetRuleActionParametersEdgeTtl {
     /**
-     * Default browser TTL. This value is required when overrideOrigin is set
+     * Default edge TTL.
      */
     default?: number;
     /**
-     * Mode of the browser TTL. Available values: `overrideOrigin`, `respectOrigin`, `bypass`
+     * Mode of the edge TTL. Available values: `overrideOrigin`, `respectOrigin`, `bypassByDefault`
      */
     mode: string;
     /**
@@ -4270,7 +4196,7 @@ export interface RulesetRuleActionParametersFromList {
      */
     key?: string;
     /**
-     * Name of the compression algorithm to use. Available values: `gzip`, `brotli`, `auto`, `default`, `none`
+     * Name of the list.
      */
     name?: string;
 }
@@ -4281,7 +4207,7 @@ export interface RulesetRuleActionParametersFromValue {
      */
     preserveQueryString?: boolean;
     /**
-     * Status code for which the edge TTL is applied.
+     * Status code for redirect.
      */
     statusCode?: number;
     /**
@@ -4296,7 +4222,7 @@ export interface RulesetRuleActionParametersFromValueTargetUrl {
      */
     expression?: string;
     /**
-     * Status code edge TTL value.
+     * Static value to provide as the HTTP request header value.
      */
     value?: string;
 }
@@ -4307,7 +4233,7 @@ export interface RulesetRuleActionParametersHeader {
      */
     expression?: string;
     /**
-     * Name of the compression algorithm to use. Available values: `gzip`, `brotli`, `auto`, `default`, `none`
+     * Name of the HTTP request header to target.
      */
     name?: string;
     /**
@@ -4315,7 +4241,7 @@ export interface RulesetRuleActionParametersHeader {
      */
     operation?: string;
     /**
-     * Status code edge TTL value.
+     * Static value to provide as the HTTP request header value.
      */
     value?: string;
 }
@@ -4329,7 +4255,7 @@ export interface RulesetRuleActionParametersMatchedData {
 
 export interface RulesetRuleActionParametersOrigin {
     /**
-     * Host parameters for the custom key.
+     * Origin Hostname where request is sent.
      */
     host?: string;
     /**
@@ -4340,7 +4266,7 @@ export interface RulesetRuleActionParametersOrigin {
 
 export interface RulesetRuleActionParametersOverrides {
     /**
-     * Action to perform in the ruleset rule. Available values: `block`, `challenge`, `compressResponse`, `ddosDynamic`, `ddosMitigation`, `execute`, `forceConnectionClose`, `jsChallenge`, `log`, `logCustomField`, `managedChallenge`, `redirect`, `rewrite`, `route`, `score`, `serveError`, `setCacheSettings`, `setConfig`, `skip`.
+     * Action to perform in the rule-level override. Available values: `block`, `challenge`, `compressResponse`, `ddosDynamic`, `ddosMitigation`, `execute`, `forceConnectionClose`, `jsChallenge`, `log`, `logCustomField`, `managedChallenge`, `redirect`, `rewrite`, `route`, `score`, `serveError`, `setCacheSettings`, `setConfig`, `skip`.
      */
     action?: string;
     /**
@@ -4348,7 +4274,7 @@ export interface RulesetRuleActionParametersOverrides {
      */
     categories?: outputs.RulesetRuleActionParametersOverridesCategory[];
     /**
-     * Defines if the current tag-level override enables or disables the ruleset rules with the specified tag.
+     * Defines if the current ruleset-level override enables or disables the ruleset.
      */
     enabled?: boolean;
     /**
@@ -4356,14 +4282,14 @@ export interface RulesetRuleActionParametersOverrides {
      */
     rules?: outputs.RulesetRuleActionParametersOverridesRule[];
     /**
-     * Sensitivity level for a ruleset rule override.
+     * Sensitivity level to override for all ruleset rules. Available values: `default`, `medium`, `low`, `eoff`.
      */
     sensitivityLevel?: string;
 }
 
 export interface RulesetRuleActionParametersOverridesCategory {
     /**
-     * Action to perform in the ruleset rule. Available values: `block`, `challenge`, `compressResponse`, `ddosDynamic`, `ddosMitigation`, `execute`, `forceConnectionClose`, `jsChallenge`, `log`, `logCustomField`, `managedChallenge`, `redirect`, `rewrite`, `route`, `score`, `serveError`, `setCacheSettings`, `setConfig`, `skip`.
+     * Action to perform in the tag-level override. Available values: `block`, `challenge`, `compressResponse`, `ddosDynamic`, `ddosMitigation`, `execute`, `forceConnectionClose`, `jsChallenge`, `log`, `logCustomField`, `managedChallenge`, `redirect`, `rewrite`, `route`, `score`, `serveError`, `setCacheSettings`, `setConfig`, `skip`.
      */
     action?: string;
     /**
@@ -4378,15 +4304,15 @@ export interface RulesetRuleActionParametersOverridesCategory {
 
 export interface RulesetRuleActionParametersOverridesRule {
     /**
-     * Action to perform in the ruleset rule. Available values: `block`, `challenge`, `compressResponse`, `ddosDynamic`, `ddosMitigation`, `execute`, `forceConnectionClose`, `jsChallenge`, `log`, `logCustomField`, `managedChallenge`, `redirect`, `rewrite`, `route`, `score`, `serveError`, `setCacheSettings`, `setConfig`, `skip`.
+     * Action to perform in the rule-level override. Available values: `block`, `challenge`, `compressResponse`, `ddosDynamic`, `ddosMitigation`, `execute`, `forceConnectionClose`, `jsChallenge`, `log`, `logCustomField`, `managedChallenge`, `redirect`, `rewrite`, `route`, `score`, `serveError`, `setCacheSettings`, `setConfig`, `skip`.
      */
     action?: string;
     /**
-     * Whether the rule is active.
+     * Defines if the current rule-level override enables or disables the rule.
      */
     enabled?: boolean;
     /**
-     * Unique rule identifier.
+     * Rule ID to apply the override to.
      */
     id?: string;
     /**
@@ -4401,15 +4327,15 @@ export interface RulesetRuleActionParametersOverridesRule {
 
 export interface RulesetRuleActionParametersResponse {
     /**
-     * Content of the custom error response.
+     * Body content to include in the response.
      */
     content?: string;
     /**
-     * Content-Type of the custom error response.
+     * HTTP content type to send in the response.
      */
     contentType?: string;
     /**
-     * Status code for which the edge TTL is applied.
+     * HTTP status code to send in the response.
      */
     statusCode?: number;
 }
@@ -4423,15 +4349,12 @@ export interface RulesetRuleActionParametersServeStale {
 
 export interface RulesetRuleActionParametersSni {
     /**
-     * Status code edge TTL value.
+     * Value to define for SNI.
      */
     value?: string;
 }
 
 export interface RulesetRuleActionParametersUri {
-    /**
-     * List of properties to change request origin.
-     */
     origin?: boolean;
     /**
      * URI path configuration when performing a URL rewrite.
@@ -4445,22 +4368,22 @@ export interface RulesetRuleActionParametersUri {
 
 export interface RulesetRuleActionParametersUriPath {
     /**
-     * Use a value dynamically determined by the Firewall Rules expression language based on Wireshark display filters. Refer to the [Firewall Rules language](https://developers.cloudflare.com/firewall/cf-firewall-language) documentation for all available fields, operators, and functions.
+     * Expression that defines the updated (dynamic) value of the URI path or query string component. Uses the Firewall Rules expression language based on Wireshark display filters. Refer to the [Firewall Rules language](https://developers.cloudflare.com/firewall/cf-firewall-language) documentation for all available fields, operators, and functions.
      */
     expression?: string;
     /**
-     * Status code edge TTL value.
+     * Static string value of the updated URI path or query string component.
      */
     value?: string;
 }
 
 export interface RulesetRuleActionParametersUriQuery {
     /**
-     * Use a value dynamically determined by the Firewall Rules expression language based on Wireshark display filters. Refer to the [Firewall Rules language](https://developers.cloudflare.com/firewall/cf-firewall-language) documentation for all available fields, operators, and functions.
+     * Expression that defines the updated (dynamic) value of the URI path or query string component. Uses the Firewall Rules expression language based on Wireshark display filters. Refer to the [Firewall Rules language](https://developers.cloudflare.com/firewall/cf-firewall-language) documentation for all available fields, operators, and functions.
      */
     expression?: string;
     /**
-     * Status code edge TTL value.
+     * Static string value of the updated URI path or query string component.
      */
     value?: string;
 }
@@ -4478,7 +4401,7 @@ export interface RulesetRuleExposedCredentialCheck {
 
 export interface RulesetRuleLogging {
     /**
-     * Defines if the current tag-level override enables or disables the ruleset rules with the specified tag.
+     * Override the default logging behavior when a rule is matched.
      */
     enabled?: boolean;
 }
@@ -4928,7 +4851,7 @@ export interface TeamsRuleRuleSettingsDnsResolversIpv6 {
 
 export interface TeamsRuleRuleSettingsEgress {
     /**
-     * IPv4 resolvers.
+     * The IPv4 address to be used for egress.
      */
     ipv4: string;
     /**
@@ -4936,18 +4859,18 @@ export interface TeamsRuleRuleSettingsEgress {
      */
     ipv4Fallback?: string;
     /**
-     * IPv6 resolvers.
+     * The IPv6 range to be used for egress.
      */
     ipv6: string;
 }
 
 export interface TeamsRuleRuleSettingsL4override {
     /**
-     * The IPv4 or IPv6 address of the upstream resolver.
+     * Override IP to forward traffic to.
      */
     ip: string;
     /**
-     * A port number to use for the upstream resolver. Defaults to `53`.
+     * Override Port to forward traffic to.
      */
     port: number;
 }
@@ -4969,7 +4892,7 @@ export interface TeamsRuleRuleSettingsNotificationSettings {
 
 export interface TeamsRuleRuleSettingsPayloadLog {
     /**
-     * Enable notification settings.
+     * Enable or disable DLP Payload Logging for this rule.
      */
     enabled: boolean;
 }

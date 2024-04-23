@@ -628,7 +628,6 @@ class IpsecTunnel(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
@@ -646,7 +645,6 @@ class IpsecTunnel(pulumi.CustomResource):
             psk="asdf12341234",
             allow_null_cipher=False)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -686,7 +684,6 @@ class IpsecTunnel(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
@@ -704,7 +701,6 @@ class IpsecTunnel(pulumi.CustomResource):
             psk="asdf12341234",
             allow_null_cipher=False)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

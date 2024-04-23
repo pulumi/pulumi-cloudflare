@@ -39,12 +39,12 @@ class WorkerScriptArgs:
         The set of arguments for constructing a WorkerScript resource.
         :param pulumi.Input[str] account_id: The account identifier to target for the resource.
         :param pulumi.Input[str] content: The script content.
-        :param pulumi.Input[str] name: The global variable for the binding in your Worker code.
+        :param pulumi.Input[str] name: The name for the script. **Modifying this attribute will force creation of a new resource.**
         :param pulumi.Input[str] compatibility_date: The date to use for the compatibility flag.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] compatibility_flags: Compatibility flags used for Worker Scripts.
         :param pulumi.Input[str] dispatch_namespace: Name of the Workers for Platforms dispatch namespace.
         :param pulumi.Input[bool] logpush: Enabling allows Worker events to be sent to a defined Logpush destination.
-        :param pulumi.Input[bool] module: The base64 encoded wasm module you want to store.
+        :param pulumi.Input[bool] module: Whether to upload Worker as a module.
         """
         pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "content", content)
@@ -110,7 +110,7 @@ class WorkerScriptArgs:
     @pulumi.getter
     def name(self) -> pulumi.Input[str]:
         """
-        The global variable for the binding in your Worker code.
+        The name for the script. **Modifying this attribute will force creation of a new resource.**
         """
         return pulumi.get(self, "name")
 
@@ -197,7 +197,7 @@ class WorkerScriptArgs:
     @pulumi.getter
     def module(self) -> Optional[pulumi.Input[bool]]:
         """
-        The base64 encoded wasm module you want to store.
+        Whether to upload Worker as a module.
         """
         return pulumi.get(self, "module")
 
@@ -308,8 +308,8 @@ class _WorkerScriptState:
         :param pulumi.Input[str] content: The script content.
         :param pulumi.Input[str] dispatch_namespace: Name of the Workers for Platforms dispatch namespace.
         :param pulumi.Input[bool] logpush: Enabling allows Worker events to be sent to a defined Logpush destination.
-        :param pulumi.Input[bool] module: The base64 encoded wasm module you want to store.
-        :param pulumi.Input[str] name: The global variable for the binding in your Worker code.
+        :param pulumi.Input[bool] module: Whether to upload Worker as a module.
+        :param pulumi.Input[str] name: The name for the script. **Modifying this attribute will force creation of a new resource.**
         """
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
@@ -453,7 +453,7 @@ class _WorkerScriptState:
     @pulumi.getter
     def module(self) -> Optional[pulumi.Input[bool]]:
         """
-        The base64 encoded wasm module you want to store.
+        Whether to upload Worker as a module.
         """
         return pulumi.get(self, "module")
 
@@ -465,7 +465,7 @@ class _WorkerScriptState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The global variable for the binding in your Worker code.
+        The name for the script. **Modifying this attribute will force creation of a new resource.**
         """
         return pulumi.get(self, "name")
 
@@ -576,7 +576,6 @@ class WorkerScript(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
@@ -620,7 +619,6 @@ class WorkerScript(pulumi.CustomResource):
                 dataset="dataset1",
             )])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -636,8 +634,8 @@ class WorkerScript(pulumi.CustomResource):
         :param pulumi.Input[str] content: The script content.
         :param pulumi.Input[str] dispatch_namespace: Name of the Workers for Platforms dispatch namespace.
         :param pulumi.Input[bool] logpush: Enabling allows Worker events to be sent to a defined Logpush destination.
-        :param pulumi.Input[bool] module: The base64 encoded wasm module you want to store.
-        :param pulumi.Input[str] name: The global variable for the binding in your Worker code.
+        :param pulumi.Input[bool] module: Whether to upload Worker as a module.
+        :param pulumi.Input[str] name: The name for the script. **Modifying this attribute will force creation of a new resource.**
         """
         ...
     @overload
@@ -650,7 +648,6 @@ class WorkerScript(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
@@ -694,7 +691,6 @@ class WorkerScript(pulumi.CustomResource):
                 dataset="dataset1",
             )])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -812,8 +808,8 @@ class WorkerScript(pulumi.CustomResource):
         :param pulumi.Input[str] content: The script content.
         :param pulumi.Input[str] dispatch_namespace: Name of the Workers for Platforms dispatch namespace.
         :param pulumi.Input[bool] logpush: Enabling allows Worker events to be sent to a defined Logpush destination.
-        :param pulumi.Input[bool] module: The base64 encoded wasm module you want to store.
-        :param pulumi.Input[str] name: The global variable for the binding in your Worker code.
+        :param pulumi.Input[bool] module: Whether to upload Worker as a module.
+        :param pulumi.Input[str] name: The name for the script. **Modifying this attribute will force creation of a new resource.**
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -907,7 +903,7 @@ class WorkerScript(pulumi.CustomResource):
     @pulumi.getter
     def module(self) -> pulumi.Output[Optional[bool]]:
         """
-        The base64 encoded wasm module you want to store.
+        Whether to upload Worker as a module.
         """
         return pulumi.get(self, "module")
 
@@ -915,7 +911,7 @@ class WorkerScript(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        The global variable for the binding in your Worker code.
+        The name for the script. **Modifying this attribute will force creation of a new resource.**
         """
         return pulumi.get(self, "name")
 

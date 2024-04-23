@@ -18,7 +18,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly ImmutableArray<string> Excludes;
         /// <summary>
-        /// List of cookies to include in the custom key.
+        /// List of query string parameters to include in the custom key.
         /// </summary>
         public readonly ImmutableArray<string> Includes;
 

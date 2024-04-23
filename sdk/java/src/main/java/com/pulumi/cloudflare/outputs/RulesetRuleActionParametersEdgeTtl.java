@@ -16,12 +16,12 @@ import javax.annotation.Nullable;
 @CustomType
 public final class RulesetRuleActionParametersEdgeTtl {
     /**
-     * @return Default browser TTL. This value is required when override_origin is set
+     * @return Default edge TTL.
      * 
      */
     private @Nullable Integer default_;
     /**
-     * @return Mode of the browser TTL. Available values: `override_origin`, `respect_origin`, `bypass`
+     * @return Mode of the edge TTL. Available values: `override_origin`, `respect_origin`, `bypass_by_default`
      * 
      */
     private String mode;
@@ -33,14 +33,14 @@ public final class RulesetRuleActionParametersEdgeTtl {
 
     private RulesetRuleActionParametersEdgeTtl() {}
     /**
-     * @return Default browser TTL. This value is required when override_origin is set
+     * @return Default edge TTL.
      * 
      */
     public Optional<Integer> default_() {
         return Optional.ofNullable(this.default_);
     }
     /**
-     * @return Mode of the browser TTL. Available values: `override_origin`, `respect_origin`, `bypass`
+     * @return Mode of the edge TTL. Available values: `override_origin`, `respect_origin`, `bypass_by_default`
      * 
      */
     public String mode() {

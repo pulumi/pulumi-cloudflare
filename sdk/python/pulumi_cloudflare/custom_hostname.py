@@ -309,7 +309,6 @@ class CustomHostname(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
@@ -321,7 +320,6 @@ class CustomHostname(pulumi.CustomResource):
                 method="txt",
             )])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -350,7 +348,6 @@ class CustomHostname(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
@@ -362,7 +359,6 @@ class CustomHostname(pulumi.CustomResource):
                 method="txt",
             )])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

@@ -34,14 +34,14 @@ public final class AccessApplicationSaasAppCustomAttributeArgs extends com.pulum
     }
 
     /**
-     * The name of the footer link.
+     * The name of the attribute as provided to the SaaS app.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return The name of the footer link.
+     * @return The name of the attribute as provided to the SaaS app.
      * 
      */
     public Optional<Output<String>> name() {
@@ -135,7 +135,7 @@ public final class AccessApplicationSaasAppCustomAttributeArgs extends com.pulum
         }
 
         /**
-         * @param name The name of the footer link.
+         * @param name The name of the attribute as provided to the SaaS app.
          * 
          * @return builder
          * 
@@ -146,7 +146,7 @@ public final class AccessApplicationSaasAppCustomAttributeArgs extends com.pulum
         }
 
         /**
-         * @param name The name of the footer link.
+         * @param name The name of the attribute as provided to the SaaS app.
          * 
          * @return builder
          * 

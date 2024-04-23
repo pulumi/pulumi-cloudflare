@@ -19,7 +19,7 @@ namespace Pulumi.Cloudflare.Inputs
         public Input<string>? Expression { get; set; }
 
         /// <summary>
-        /// Status code edge TTL value.
+        /// Static value to provide as the HTTP request header value.
         /// </summary>
         [Input("value")]
         public Input<string>? Value { get; set; }

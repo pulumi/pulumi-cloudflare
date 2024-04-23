@@ -19,7 +19,7 @@ namespace Pulumi.Cloudflare.Inputs
         public string Address { get; set; } = null!;
 
         /// <summary>
-        /// Whether this pool is enabled. Disabled pools will not receive traffic and are excluded from health checks.
+        /// Whether this origin is enabled. Disabled origins will not receive traffic and are excluded from health checks.
         /// </summary>
         [Input("enabled")]
         public bool? Enabled { get; set; }
@@ -37,7 +37,7 @@ namespace Pulumi.Cloudflare.Inputs
         }
 
         /// <summary>
-        /// A regular expression matching the name of the Load Balancer pool to lookup.
+        /// A human-identifiable name for the origin.
         /// </summary>
         [Input("name", required: true)]
         public string Name { get; set; } = null!;

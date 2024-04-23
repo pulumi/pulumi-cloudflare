@@ -229,7 +229,6 @@ class DevicePostureIntegration(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
@@ -246,7 +245,6 @@ class DevicePostureIntegration(pulumi.CustomResource):
                 client_secret="client-secret",
             )])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -275,7 +273,6 @@ class DevicePostureIntegration(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
@@ -292,7 +289,6 @@ class DevicePostureIntegration(pulumi.CustomResource):
                 client_secret="client-secret",
             )])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

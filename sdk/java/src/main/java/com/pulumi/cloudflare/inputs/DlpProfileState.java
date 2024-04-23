@@ -95,14 +95,14 @@ public final class DlpProfileState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Name of the entry to deploy.
+     * Name of the profile. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return Name of the entry to deploy.
+     * @return Name of the profile. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     public Optional<Output<String>> name() {
@@ -270,7 +270,7 @@ public final class DlpProfileState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Name of the entry to deploy.
+         * @param name Name of the profile. **Modifying this attribute will force creation of a new resource.**
          * 
          * @return builder
          * 
@@ -281,7 +281,7 @@ public final class DlpProfileState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Name of the entry to deploy.
+         * @param name Name of the profile. **Modifying this attribute will force creation of a new resource.**
          * 
          * @return builder
          * 

@@ -18,14 +18,14 @@ public final class RulesetRuleActionParametersCacheKeyCustomKeyHeaderArgs extend
     public static final RulesetRuleActionParametersCacheKeyCustomKeyHeaderArgs Empty = new RulesetRuleActionParametersCacheKeyCustomKeyHeaderArgs();
 
     /**
-     * List of cookies to check for presence in the custom key.
+     * List of headers to check for presence in the custom key.
      * 
      */
     @Import(name="checkPresences")
     private @Nullable Output<List<String>> checkPresences;
 
     /**
-     * @return List of cookies to check for presence in the custom key.
+     * @return List of headers to check for presence in the custom key.
      * 
      */
     public Optional<Output<List<String>>> checkPresences() {
@@ -48,14 +48,14 @@ public final class RulesetRuleActionParametersCacheKeyCustomKeyHeaderArgs extend
     }
 
     /**
-     * List of cookies to include in the custom key.
+     * List of headers to include in the custom key.
      * 
      */
     @Import(name="includes")
     private @Nullable Output<List<String>> includes;
 
     /**
-     * @return List of cookies to include in the custom key.
+     * @return List of headers to include in the custom key.
      * 
      */
     public Optional<Output<List<String>>> includes() {
@@ -89,7 +89,7 @@ public final class RulesetRuleActionParametersCacheKeyCustomKeyHeaderArgs extend
         }
 
         /**
-         * @param checkPresences List of cookies to check for presence in the custom key.
+         * @param checkPresences List of headers to check for presence in the custom key.
          * 
          * @return builder
          * 
@@ -100,7 +100,7 @@ public final class RulesetRuleActionParametersCacheKeyCustomKeyHeaderArgs extend
         }
 
         /**
-         * @param checkPresences List of cookies to check for presence in the custom key.
+         * @param checkPresences List of headers to check for presence in the custom key.
          * 
          * @return builder
          * 
@@ -110,7 +110,7 @@ public final class RulesetRuleActionParametersCacheKeyCustomKeyHeaderArgs extend
         }
 
         /**
-         * @param checkPresences List of cookies to check for presence in the custom key.
+         * @param checkPresences List of headers to check for presence in the custom key.
          * 
          * @return builder
          * 
@@ -141,7 +141,7 @@ public final class RulesetRuleActionParametersCacheKeyCustomKeyHeaderArgs extend
         }
 
         /**
-         * @param includes List of cookies to include in the custom key.
+         * @param includes List of headers to include in the custom key.
          * 
          * @return builder
          * 
@@ -152,7 +152,7 @@ public final class RulesetRuleActionParametersCacheKeyCustomKeyHeaderArgs extend
         }
 
         /**
-         * @param includes List of cookies to include in the custom key.
+         * @param includes List of headers to include in the custom key.
          * 
          * @return builder
          * 
@@ -162,7 +162,7 @@ public final class RulesetRuleActionParametersCacheKeyCustomKeyHeaderArgs extend
         }
 
         /**
-         * @param includes List of cookies to include in the custom key.
+         * @param includes List of headers to include in the custom key.
          * 
          * @return builder
          * 

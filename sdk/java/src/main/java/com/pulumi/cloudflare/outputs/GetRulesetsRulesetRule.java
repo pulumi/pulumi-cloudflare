@@ -48,7 +48,7 @@ public final class GetRulesetsRulesetRule {
      */
     private String expression;
     /**
-     * @return The ID of the Ruleset to target.
+     * @return Unique rule identifier.
      * 
      */
     private String id;
@@ -73,7 +73,7 @@ public final class GetRulesetsRulesetRule {
      */
     private String ref;
     /**
-     * @return Version of the ruleset to filter on.
+     * @return Version of the ruleset to deploy.
      * 
      */
     private String version;
@@ -122,7 +122,7 @@ public final class GetRulesetsRulesetRule {
         return this.expression;
     }
     /**
-     * @return The ID of the Ruleset to target.
+     * @return Unique rule identifier.
      * 
      */
     public String id() {
@@ -157,7 +157,7 @@ public final class GetRulesetsRulesetRule {
         return this.ref;
     }
     /**
-     * @return Version of the ruleset to filter on.
+     * @return Version of the ruleset to deploy.
      * 
      */
     public String version() {

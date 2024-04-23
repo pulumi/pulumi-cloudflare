@@ -54,7 +54,7 @@ namespace Pulumi.Cloudflare
         public Output<ImmutableArray<Outputs.NotificationPolicyEmailIntegration>> EmailIntegrations { get; private set; } = null!;
 
         /// <summary>
-        /// State of the pool to alert on.
+        /// The status of the notification policy.
         /// </summary>
         [Output("enabled")]
         public Output<bool> Enabled { get; private set; } = null!;
@@ -166,7 +166,7 @@ namespace Pulumi.Cloudflare
         }
 
         /// <summary>
-        /// State of the pool to alert on.
+        /// The status of the notification policy.
         /// </summary>
         [Input("enabled", required: true)]
         public Input<bool> Enabled { get; set; } = null!;
@@ -252,7 +252,7 @@ namespace Pulumi.Cloudflare
         }
 
         /// <summary>
-        /// State of the pool to alert on.
+        /// The status of the notification policy.
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }

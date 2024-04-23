@@ -14,7 +14,6 @@ namespace Pulumi.Cloudflare
     /// 
     /// ## Example Usage
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -103,7 +102,6 @@ namespace Pulumi.Cloudflare
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
@@ -160,13 +158,13 @@ namespace Pulumi.Cloudflare
         public Output<bool?> Logpush { get; private set; } = null!;
 
         /// <summary>
-        /// The base64 encoded wasm module you want to store.
+        /// Whether to upload Worker as a module.
         /// </summary>
         [Output("module")]
         public Output<bool?> Module { get; private set; } = null!;
 
         /// <summary>
-        /// The global variable for the binding in your Worker code.
+        /// The name for the script. **Modifying this attribute will force creation of a new resource.**
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -308,13 +306,13 @@ namespace Pulumi.Cloudflare
         public Input<bool>? Logpush { get; set; }
 
         /// <summary>
-        /// The base64 encoded wasm module you want to store.
+        /// Whether to upload Worker as a module.
         /// </summary>
         [Input("module")]
         public Input<bool>? Module { get; set; }
 
         /// <summary>
-        /// The global variable for the binding in your Worker code.
+        /// The name for the script. **Modifying this attribute will force creation of a new resource.**
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
@@ -458,13 +456,13 @@ namespace Pulumi.Cloudflare
         public Input<bool>? Logpush { get; set; }
 
         /// <summary>
-        /// The base64 encoded wasm module you want to store.
+        /// Whether to upload Worker as a module.
         /// </summary>
         [Input("module")]
         public Input<bool>? Module { get; set; }
 
         /// <summary>
-        /// The global variable for the binding in your Worker code.
+        /// The name for the script. **Modifying this attribute will force creation of a new resource.**
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

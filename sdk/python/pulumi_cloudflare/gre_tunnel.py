@@ -397,7 +397,6 @@ class GreTunnel(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
@@ -415,7 +414,6 @@ class GreTunnel(pulumi.CustomResource):
             health_check_target="203.0.113.1",
             health_check_type="reply")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -448,7 +446,6 @@ class GreTunnel(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
@@ -466,7 +463,6 @@ class GreTunnel(pulumi.CustomResource):
             health_check_target="203.0.113.1",
             health_check_type="reply")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

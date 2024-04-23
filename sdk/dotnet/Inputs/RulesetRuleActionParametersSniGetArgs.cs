@@ -13,7 +13,7 @@ namespace Pulumi.Cloudflare.Inputs
     public sealed class RulesetRuleActionParametersSniGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Status code edge TTL value.
+        /// Value to define for SNI.
         /// </summary>
         [Input("value")]
         public Input<string>? Value { get; set; }

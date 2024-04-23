@@ -13,7 +13,7 @@ namespace Pulumi.Cloudflare.Inputs
     public sealed class TeamsRuleRuleSettingsEgressArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// IPv4 resolvers.
+        /// The IPv4 address to be used for egress.
         /// </summary>
         [Input("ipv4", required: true)]
         public Input<string> Ipv4 { get; set; } = null!;
@@ -25,7 +25,7 @@ namespace Pulumi.Cloudflare.Inputs
         public Input<string>? Ipv4Fallback { get; set; }
 
         /// <summary>
-        /// IPv6 resolvers.
+        /// The IPv6 range to be used for egress.
         /// </summary>
         [Input("ipv6", required: true)]
         public Input<string> Ipv6 { get; set; } = null!;

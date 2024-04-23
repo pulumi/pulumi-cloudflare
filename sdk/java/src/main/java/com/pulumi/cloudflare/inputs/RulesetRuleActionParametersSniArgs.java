@@ -16,14 +16,14 @@ public final class RulesetRuleActionParametersSniArgs extends com.pulumi.resourc
     public static final RulesetRuleActionParametersSniArgs Empty = new RulesetRuleActionParametersSniArgs();
 
     /**
-     * Status code edge TTL value.
+     * Value to define for SNI.
      * 
      */
     @Import(name="value")
     private @Nullable Output<String> value;
 
     /**
-     * @return Status code edge TTL value.
+     * @return Value to define for SNI.
      * 
      */
     public Optional<Output<String>> value() {
@@ -55,7 +55,7 @@ public final class RulesetRuleActionParametersSniArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param value Status code edge TTL value.
+         * @param value Value to define for SNI.
          * 
          * @return builder
          * 
@@ -66,7 +66,7 @@ public final class RulesetRuleActionParametersSniArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param value Status code edge TTL value.
+         * @param value Value to define for SNI.
          * 
          * @return builder
          * 

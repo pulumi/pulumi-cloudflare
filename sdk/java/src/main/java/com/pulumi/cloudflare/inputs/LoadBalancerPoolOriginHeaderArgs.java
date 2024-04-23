@@ -16,14 +16,14 @@ public final class LoadBalancerPoolOriginHeaderArgs extends com.pulumi.resources
     public static final LoadBalancerPoolOriginHeaderArgs Empty = new LoadBalancerPoolOriginHeaderArgs();
 
     /**
-     * HTTP request headers.
+     * HTTP Header name.
      * 
      */
     @Import(name="header", required=true)
     private Output<String> header;
 
     /**
-     * @return HTTP request headers.
+     * @return HTTP Header name.
      * 
      */
     public Output<String> header() {
@@ -71,7 +71,7 @@ public final class LoadBalancerPoolOriginHeaderArgs extends com.pulumi.resources
         }
 
         /**
-         * @param header HTTP request headers.
+         * @param header HTTP Header name.
          * 
          * @return builder
          * 
@@ -82,7 +82,7 @@ public final class LoadBalancerPoolOriginHeaderArgs extends com.pulumi.resources
         }
 
         /**
-         * @param header HTTP request headers.
+         * @param header HTTP Header name.
          * 
          * @return builder
          * 

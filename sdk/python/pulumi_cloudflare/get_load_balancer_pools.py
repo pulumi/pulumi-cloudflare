@@ -91,7 +91,6 @@ def get_load_balancer_pools(account_id: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_cloudflare as cloudflare
@@ -101,7 +100,6 @@ def get_load_balancer_pools(account_id: Optional[str] = None,
             name="example-lb-pool",
         ))
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str account_id: The account identifier to target for the datasource lookups.
@@ -132,7 +130,6 @@ def get_load_balancer_pools_output(account_id: Optional[pulumi.Input[str]] = Non
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_cloudflare as cloudflare
@@ -142,7 +139,6 @@ def get_load_balancer_pools_output(account_id: Optional[pulumi.Input[str]] = Non
             name="example-lb-pool",
         ))
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str account_id: The account identifier to target for the datasource lookups.

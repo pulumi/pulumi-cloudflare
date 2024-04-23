@@ -15,14 +15,14 @@ public final class TeamsRuleRuleSettingsPayloadLogArgs extends com.pulumi.resour
     public static final TeamsRuleRuleSettingsPayloadLogArgs Empty = new TeamsRuleRuleSettingsPayloadLogArgs();
 
     /**
-     * Enable notification settings.
+     * Enable or disable DLP Payload Logging for this rule.
      * 
      */
     @Import(name="enabled", required=true)
     private Output<Boolean> enabled;
 
     /**
-     * @return Enable notification settings.
+     * @return Enable or disable DLP Payload Logging for this rule.
      * 
      */
     public Output<Boolean> enabled() {
@@ -54,7 +54,7 @@ public final class TeamsRuleRuleSettingsPayloadLogArgs extends com.pulumi.resour
         }
 
         /**
-         * @param enabled Enable notification settings.
+         * @param enabled Enable or disable DLP Payload Logging for this rule.
          * 
          * @return builder
          * 
@@ -65,7 +65,7 @@ public final class TeamsRuleRuleSettingsPayloadLogArgs extends com.pulumi.resour
         }
 
         /**
-         * @param enabled Enable notification settings.
+         * @param enabled Enable or disable DLP Payload Logging for this rule.
          * 
          * @return builder
          * 

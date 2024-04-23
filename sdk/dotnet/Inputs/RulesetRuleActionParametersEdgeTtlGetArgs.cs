@@ -13,13 +13,13 @@ namespace Pulumi.Cloudflare.Inputs
     public sealed class RulesetRuleActionParametersEdgeTtlGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Default browser TTL. This value is required when override_origin is set
+        /// Default edge TTL.
         /// </summary>
         [Input("default")]
         public Input<int>? Default { get; set; }
 
         /// <summary>
-        /// Mode of the browser TTL. Available values: `override_origin`, `respect_origin`, `bypass`
+        /// Mode of the edge TTL. Available values: `override_origin`, `respect_origin`, `bypass_by_default`
         /// </summary>
         [Input("mode", required: true)]
         public Input<string> Mode { get; set; } = null!;

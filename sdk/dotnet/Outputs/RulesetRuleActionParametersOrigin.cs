@@ -14,7 +14,7 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class RulesetRuleActionParametersOrigin
     {
         /// <summary>
-        /// Host parameters for the custom key.
+        /// Origin Hostname where request is sent.
         /// </summary>
         public readonly string? Host;
         /// <summary>

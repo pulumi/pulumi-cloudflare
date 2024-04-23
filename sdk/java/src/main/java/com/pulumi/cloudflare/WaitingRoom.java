@@ -167,14 +167,14 @@ public class WaitingRoom extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.disableSessionRenewal);
     }
     /**
-     * The additional host name for which the waiting room to be applied on (no wildcards).
+     * Host name for which the waiting room will be applied (no wildcards).
      * 
      */
     @Export(name="host", refs={String.class}, tree="[0]")
     private Output<String> host;
 
     /**
-     * @return The additional host name for which the waiting room to be applied on (no wildcards).
+     * @return Host name for which the waiting room will be applied (no wildcards).
      * 
      */
     public Output<String> host() {
@@ -223,14 +223,14 @@ public class WaitingRoom extends com.pulumi.resources.CustomResource {
         return this.newUsersPerMinute;
     }
     /**
-     * The path within the additional host to enable the waiting room on. Defaults to `/`.
+     * The path within the host to enable the waiting room on. Defaults to `/`.
      * 
      */
     @Export(name="path", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> path;
 
     /**
-     * @return The path within the additional host to enable the waiting room on. Defaults to `/`.
+     * @return The path within the host to enable the waiting room on. Defaults to `/`.
      * 
      */
     public Output<Optional<String>> path() {

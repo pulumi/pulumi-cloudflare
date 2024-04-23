@@ -16,7 +16,6 @@ import (
 //
 // ## Example Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -57,7 +56,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
@@ -81,7 +79,7 @@ type WaitingRoom struct {
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Disables automatic renewal of session cookies.
 	DisableSessionRenewal pulumi.BoolPtrOutput `pulumi:"disableSessionRenewal"`
-	// The additional host name for which the waiting room to be applied on (no wildcards).
+	// Host name for which the waiting room will be applied (no wildcards).
 	Host pulumi.StringOutput `pulumi:"host"`
 	// If true, requests to the waiting room with the header `Accept: application/json` will receive a JSON response object.
 	JsonResponseEnabled pulumi.BoolPtrOutput `pulumi:"jsonResponseEnabled"`
@@ -89,7 +87,7 @@ type WaitingRoom struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The number of new users that will be let into the route every minute.
 	NewUsersPerMinute pulumi.IntOutput `pulumi:"newUsersPerMinute"`
-	// The path within the additional host to enable the waiting room on. Defaults to `/`.
+	// The path within the host to enable the waiting room on. Defaults to `/`.
 	Path pulumi.StringPtrOutput `pulumi:"path"`
 	// If queueAll is true, then all traffic will be sent to the waiting room.
 	QueueAll pulumi.BoolPtrOutput `pulumi:"queueAll"`
@@ -164,7 +162,7 @@ type waitingRoomState struct {
 	Description *string `pulumi:"description"`
 	// Disables automatic renewal of session cookies.
 	DisableSessionRenewal *bool `pulumi:"disableSessionRenewal"`
-	// The additional host name for which the waiting room to be applied on (no wildcards).
+	// Host name for which the waiting room will be applied (no wildcards).
 	Host *string `pulumi:"host"`
 	// If true, requests to the waiting room with the header `Accept: application/json` will receive a JSON response object.
 	JsonResponseEnabled *bool `pulumi:"jsonResponseEnabled"`
@@ -172,7 +170,7 @@ type waitingRoomState struct {
 	Name *string `pulumi:"name"`
 	// The number of new users that will be let into the route every minute.
 	NewUsersPerMinute *int `pulumi:"newUsersPerMinute"`
-	// The path within the additional host to enable the waiting room on. Defaults to `/`.
+	// The path within the host to enable the waiting room on. Defaults to `/`.
 	Path *string `pulumi:"path"`
 	// If queueAll is true, then all traffic will be sent to the waiting room.
 	QueueAll *bool `pulumi:"queueAll"`
@@ -203,7 +201,7 @@ type WaitingRoomState struct {
 	Description pulumi.StringPtrInput
 	// Disables automatic renewal of session cookies.
 	DisableSessionRenewal pulumi.BoolPtrInput
-	// The additional host name for which the waiting room to be applied on (no wildcards).
+	// Host name for which the waiting room will be applied (no wildcards).
 	Host pulumi.StringPtrInput
 	// If true, requests to the waiting room with the header `Accept: application/json` will receive a JSON response object.
 	JsonResponseEnabled pulumi.BoolPtrInput
@@ -211,7 +209,7 @@ type WaitingRoomState struct {
 	Name pulumi.StringPtrInput
 	// The number of new users that will be let into the route every minute.
 	NewUsersPerMinute pulumi.IntPtrInput
-	// The path within the additional host to enable the waiting room on. Defaults to `/`.
+	// The path within the host to enable the waiting room on. Defaults to `/`.
 	Path pulumi.StringPtrInput
 	// If queueAll is true, then all traffic will be sent to the waiting room.
 	QueueAll pulumi.BoolPtrInput
@@ -246,7 +244,7 @@ type waitingRoomArgs struct {
 	Description *string `pulumi:"description"`
 	// Disables automatic renewal of session cookies.
 	DisableSessionRenewal *bool `pulumi:"disableSessionRenewal"`
-	// The additional host name for which the waiting room to be applied on (no wildcards).
+	// Host name for which the waiting room will be applied (no wildcards).
 	Host string `pulumi:"host"`
 	// If true, requests to the waiting room with the header `Accept: application/json` will receive a JSON response object.
 	JsonResponseEnabled *bool `pulumi:"jsonResponseEnabled"`
@@ -254,7 +252,7 @@ type waitingRoomArgs struct {
 	Name string `pulumi:"name"`
 	// The number of new users that will be let into the route every minute.
 	NewUsersPerMinute int `pulumi:"newUsersPerMinute"`
-	// The path within the additional host to enable the waiting room on. Defaults to `/`.
+	// The path within the host to enable the waiting room on. Defaults to `/`.
 	Path *string `pulumi:"path"`
 	// If queueAll is true, then all traffic will be sent to the waiting room.
 	QueueAll *bool `pulumi:"queueAll"`
@@ -286,7 +284,7 @@ type WaitingRoomArgs struct {
 	Description pulumi.StringPtrInput
 	// Disables automatic renewal of session cookies.
 	DisableSessionRenewal pulumi.BoolPtrInput
-	// The additional host name for which the waiting room to be applied on (no wildcards).
+	// Host name for which the waiting room will be applied (no wildcards).
 	Host pulumi.StringInput
 	// If true, requests to the waiting room with the header `Accept: application/json` will receive a JSON response object.
 	JsonResponseEnabled pulumi.BoolPtrInput
@@ -294,7 +292,7 @@ type WaitingRoomArgs struct {
 	Name pulumi.StringInput
 	// The number of new users that will be let into the route every minute.
 	NewUsersPerMinute pulumi.IntInput
-	// The path within the additional host to enable the waiting room on. Defaults to `/`.
+	// The path within the host to enable the waiting room on. Defaults to `/`.
 	Path pulumi.StringPtrInput
 	// If queueAll is true, then all traffic will be sent to the waiting room.
 	QueueAll pulumi.BoolPtrInput
@@ -429,7 +427,7 @@ func (o WaitingRoomOutput) DisableSessionRenewal() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *WaitingRoom) pulumi.BoolPtrOutput { return v.DisableSessionRenewal }).(pulumi.BoolPtrOutput)
 }
 
-// The additional host name for which the waiting room to be applied on (no wildcards).
+// Host name for which the waiting room will be applied (no wildcards).
 func (o WaitingRoomOutput) Host() pulumi.StringOutput {
 	return o.ApplyT(func(v *WaitingRoom) pulumi.StringOutput { return v.Host }).(pulumi.StringOutput)
 }
@@ -449,7 +447,7 @@ func (o WaitingRoomOutput) NewUsersPerMinute() pulumi.IntOutput {
 	return o.ApplyT(func(v *WaitingRoom) pulumi.IntOutput { return v.NewUsersPerMinute }).(pulumi.IntOutput)
 }
 
-// The path within the additional host to enable the waiting room on. Defaults to `/`.
+// The path within the host to enable the waiting room on. Defaults to `/`.
 func (o WaitingRoomOutput) Path() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WaitingRoom) pulumi.StringPtrOutput { return v.Path }).(pulumi.StringPtrOutput)
 }

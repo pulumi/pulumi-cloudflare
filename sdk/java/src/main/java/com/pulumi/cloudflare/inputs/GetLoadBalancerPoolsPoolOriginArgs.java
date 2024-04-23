@@ -36,14 +36,14 @@ public final class GetLoadBalancerPoolsPoolOriginArgs extends com.pulumi.resourc
     }
 
     /**
-     * Whether this pool is enabled. Disabled pools will not receive traffic and are excluded from health checks.
+     * Whether this origin is enabled. Disabled origins will not receive traffic and are excluded from health checks.
      * 
      */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
     /**
-     * @return Whether this pool is enabled. Disabled pools will not receive traffic and are excluded from health checks.
+     * @return Whether this origin is enabled. Disabled origins will not receive traffic and are excluded from health checks.
      * 
      */
     public Optional<Output<Boolean>> enabled() {
@@ -66,14 +66,14 @@ public final class GetLoadBalancerPoolsPoolOriginArgs extends com.pulumi.resourc
     }
 
     /**
-     * A regular expression matching the name of the Load Balancer pool to lookup.
+     * A human-identifiable name for the origin.
      * 
      */
     @Import(name="name", required=true)
     private Output<String> name;
 
     /**
-     * @return A regular expression matching the name of the Load Balancer pool to lookup.
+     * @return A human-identifiable name for the origin.
      * 
      */
     public Output<String> name() {
@@ -145,7 +145,7 @@ public final class GetLoadBalancerPoolsPoolOriginArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param enabled Whether this pool is enabled. Disabled pools will not receive traffic and are excluded from health checks.
+         * @param enabled Whether this origin is enabled. Disabled origins will not receive traffic and are excluded from health checks.
          * 
          * @return builder
          * 
@@ -156,7 +156,7 @@ public final class GetLoadBalancerPoolsPoolOriginArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param enabled Whether this pool is enabled. Disabled pools will not receive traffic and are excluded from health checks.
+         * @param enabled Whether this origin is enabled. Disabled origins will not receive traffic and are excluded from health checks.
          * 
          * @return builder
          * 
@@ -197,7 +197,7 @@ public final class GetLoadBalancerPoolsPoolOriginArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param name A regular expression matching the name of the Load Balancer pool to lookup.
+         * @param name A human-identifiable name for the origin.
          * 
          * @return builder
          * 
@@ -208,7 +208,7 @@ public final class GetLoadBalancerPoolsPoolOriginArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param name A regular expression matching the name of the Load Balancer pool to lookup.
+         * @param name A human-identifiable name for the origin.
          * 
          * @return builder
          * 

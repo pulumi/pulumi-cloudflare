@@ -13,7 +13,7 @@ namespace Pulumi.Cloudflare.Inputs
     public sealed class LoadBalancerPoolOriginHeaderGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// HTTP request headers.
+        /// HTTP Header name.
         /// </summary>
         [Input("header", required: true)]
         public Input<string> Header { get; set; } = null!;

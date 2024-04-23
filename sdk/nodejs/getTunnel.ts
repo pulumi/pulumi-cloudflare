@@ -9,7 +9,6 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
@@ -19,7 +18,6 @@ import * as utilities from "./utilities";
  *     name: "my-tunnel",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getTunnel(args: GetTunnelArgs, opts?: pulumi.InvokeOptions): Promise<GetTunnelResult> {
 
@@ -87,7 +85,6 @@ export interface GetTunnelResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
@@ -97,7 +94,6 @@ export interface GetTunnelResult {
  *     name: "my-tunnel",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getTunnelOutput(args: GetTunnelOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTunnelResult> {
     return pulumi.output(args).apply((a: any) => getTunnel(a, opts))

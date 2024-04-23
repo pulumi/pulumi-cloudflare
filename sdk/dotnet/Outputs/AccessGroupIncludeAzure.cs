@@ -18,7 +18,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string? IdentityProviderId;
         /// <summary>
-        /// The ID of the Authentication Context.
+        /// The ID of the Azure group or user.
         /// </summary>
         public readonly ImmutableArray<string> Ids;
 

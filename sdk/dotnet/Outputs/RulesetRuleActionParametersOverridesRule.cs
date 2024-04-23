@@ -14,15 +14,15 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class RulesetRuleActionParametersOverridesRule
     {
         /// <summary>
-        /// Action to perform in the ruleset rule. Available values: `block`, `challenge`, `compress_response`, `ddos_dynamic`, `ddos_mitigation`, `execute`, `force_connection_close`, `js_challenge`, `log`, `log_custom_field`, `managed_challenge`, `redirect`, `rewrite`, `route`, `score`, `serve_error`, `set_cache_settings`, `set_config`, `skip`.
+        /// Action to perform in the rule-level override. Available values: `block`, `challenge`, `compress_response`, `ddos_dynamic`, `ddos_mitigation`, `execute`, `force_connection_close`, `js_challenge`, `log`, `log_custom_field`, `managed_challenge`, `redirect`, `rewrite`, `route`, `score`, `serve_error`, `set_cache_settings`, `set_config`, `skip`.
         /// </summary>
         public readonly string? Action;
         /// <summary>
-        /// Whether the rule is active.
+        /// Defines if the current rule-level override enables or disables the rule.
         /// </summary>
         public readonly bool? Enabled;
         /// <summary>
-        /// Unique rule identifier.
+        /// Rule ID to apply the override to.
         /// </summary>
         public readonly string? Id;
         /// <summary>

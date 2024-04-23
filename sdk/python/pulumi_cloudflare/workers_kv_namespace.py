@@ -102,7 +102,6 @@ class WorkersKvNamespace(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
@@ -111,7 +110,6 @@ class WorkersKvNamespace(pulumi.CustomResource):
             account_id="f037e56e89293a057740de681ac9abbe",
             title="test-namespace")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -135,7 +133,6 @@ class WorkersKvNamespace(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
@@ -144,7 +141,6 @@ class WorkersKvNamespace(pulumi.CustomResource):
             account_id="f037e56e89293a057740de681ac9abbe",
             title="test-namespace")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

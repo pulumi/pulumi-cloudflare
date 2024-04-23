@@ -140,14 +140,14 @@ public final class WorkerScriptArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The base64 encoded wasm module you want to store.
+     * Whether to upload Worker as a module.
      * 
      */
     @Import(name="module")
     private @Nullable Output<Boolean> module;
 
     /**
-     * @return The base64 encoded wasm module you want to store.
+     * @return Whether to upload Worker as a module.
      * 
      */
     public Optional<Output<Boolean>> module() {
@@ -155,14 +155,14 @@ public final class WorkerScriptArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The global variable for the binding in your Worker code.
+     * The name for the script. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     @Import(name="name", required=true)
     private Output<String> name;
 
     /**
-     * @return The global variable for the binding in your Worker code.
+     * @return The name for the script. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     public Output<String> name() {
@@ -443,7 +443,7 @@ public final class WorkerScriptArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param module The base64 encoded wasm module you want to store.
+         * @param module Whether to upload Worker as a module.
          * 
          * @return builder
          * 
@@ -454,7 +454,7 @@ public final class WorkerScriptArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param module The base64 encoded wasm module you want to store.
+         * @param module Whether to upload Worker as a module.
          * 
          * @return builder
          * 
@@ -464,7 +464,7 @@ public final class WorkerScriptArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name The global variable for the binding in your Worker code.
+         * @param name The name for the script. **Modifying this attribute will force creation of a new resource.**
          * 
          * @return builder
          * 
@@ -475,7 +475,7 @@ public final class WorkerScriptArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name The global variable for the binding in your Worker code.
+         * @param name The name for the script. **Modifying this attribute will force creation of a new resource.**
          * 
          * @return builder
          * 

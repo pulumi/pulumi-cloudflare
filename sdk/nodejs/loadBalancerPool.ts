@@ -12,7 +12,6 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
@@ -56,7 +55,6 @@ import * as utilities from "./utilities";
  *     }],
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
@@ -109,7 +107,7 @@ export class LoadBalancerPool extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
-     * Whether this origin is enabled. Disabled origins will not receive traffic and are excluded from health checks. Defaults to `true`.
+     * Whether to enable (the default) this pool. Disabled pools will not receive traffic and are excluded from health checks. Disabling a pool will cause any load balancers using it to failover to the next pool (if any). Defaults to `true`.
      */
     public readonly enabled!: pulumi.Output<boolean | undefined>;
     /**
@@ -137,7 +135,7 @@ export class LoadBalancerPool extends pulumi.CustomResource {
      */
     public readonly monitor!: pulumi.Output<string | undefined>;
     /**
-     * A human-identifiable name for the origin.
+     * A short name (tag) for the pool.
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -234,7 +232,7 @@ export interface LoadBalancerPoolState {
      */
     description?: pulumi.Input<string>;
     /**
-     * Whether this origin is enabled. Disabled origins will not receive traffic and are excluded from health checks. Defaults to `true`.
+     * Whether to enable (the default) this pool. Disabled pools will not receive traffic and are excluded from health checks. Disabling a pool will cause any load balancers using it to failover to the next pool (if any). Defaults to `true`.
      */
     enabled?: pulumi.Input<boolean>;
     /**
@@ -262,7 +260,7 @@ export interface LoadBalancerPoolState {
      */
     monitor?: pulumi.Input<string>;
     /**
-     * A human-identifiable name for the origin.
+     * A short name (tag) for the pool.
      */
     name?: pulumi.Input<string>;
     /**
@@ -296,7 +294,7 @@ export interface LoadBalancerPoolArgs {
      */
     description?: pulumi.Input<string>;
     /**
-     * Whether this origin is enabled. Disabled origins will not receive traffic and are excluded from health checks. Defaults to `true`.
+     * Whether to enable (the default) this pool. Disabled pools will not receive traffic and are excluded from health checks. Disabling a pool will cause any load balancers using it to failover to the next pool (if any). Defaults to `true`.
      */
     enabled?: pulumi.Input<boolean>;
     /**
@@ -320,7 +318,7 @@ export interface LoadBalancerPoolArgs {
      */
     monitor?: pulumi.Input<string>;
     /**
-     * A human-identifiable name for the origin.
+     * A short name (tag) for the pool.
      */
     name: pulumi.Input<string>;
     /**

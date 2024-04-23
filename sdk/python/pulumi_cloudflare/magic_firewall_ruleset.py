@@ -162,7 +162,6 @@ class MagicFirewallRuleset(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
@@ -186,7 +185,6 @@ class MagicFirewallRuleset(pulumi.CustomResource):
                 },
             ])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -215,7 +213,6 @@ class MagicFirewallRuleset(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
@@ -239,7 +236,6 @@ class MagicFirewallRuleset(pulumi.CustomResource):
                 },
             ])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

@@ -15,7 +15,6 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
@@ -64,7 +63,6 @@ import * as utilities from "./utilities";
  *     }],
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
@@ -137,7 +135,7 @@ export class LoadBalancer extends pulumi.CustomResource {
      */
     public /*out*/ readonly modifiedOn!: pulumi.Output<string>;
     /**
-     * Human readable name for this rule.
+     * The DNS hostname to associate with your load balancer. If this hostname already exists as a DNS record in Cloudflare's DNS, the load balancer will take precedence and the DNS record will not be used.
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -161,11 +159,11 @@ export class LoadBalancer extends pulumi.CustomResource {
      */
     public readonly rules!: pulumi.Output<outputs.LoadBalancerRule[] | undefined>;
     /**
-     * Configure attributes for session affinity.
+     * Specifies the type of session affinity the load balancer should use unless specified as `none` or `""` (default). With value `cookie`, on the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy then a new origin server is calculated and used. Value `ipCookie` behaves the same as `cookie` except the initial origin selection is stable and based on the client's IP address. Available values: `""`, `none`, `cookie`, `ipCookie`, `header`. Defaults to `none`.
      */
     public readonly sessionAffinity!: pulumi.Output<string | undefined>;
     /**
-     * Configure attributes for session affinity. Note that the property `drainDuration` is not currently supported as a rule override.
+     * Configure attributes for session affinity.
      */
     public readonly sessionAffinityAttributes!: pulumi.Output<outputs.LoadBalancerSessionAffinityAttribute[] | undefined>;
     /**
@@ -177,7 +175,7 @@ export class LoadBalancer extends pulumi.CustomResource {
      */
     public readonly steeringPolicy!: pulumi.Output<string>;
     /**
-     * Time to live (TTL) of the DNS entry for the IP address returned by this load balancer. This cannot be set for proxied load balancers. Defaults to `30`.
+     * Time to live (TTL) of the DNS entry for the IP address returned by this load balancer. This cannot be set for proxied load balancers. Defaults to `30`. Conflicts with `proxied`.
      */
     public readonly ttl!: pulumi.Output<number>;
     /**
@@ -301,7 +299,7 @@ export interface LoadBalancerState {
      */
     modifiedOn?: pulumi.Input<string>;
     /**
-     * Human readable name for this rule.
+     * The DNS hostname to associate with your load balancer. If this hostname already exists as a DNS record in Cloudflare's DNS, the load balancer will take precedence and the DNS record will not be used.
      */
     name?: pulumi.Input<string>;
     /**
@@ -325,11 +323,11 @@ export interface LoadBalancerState {
      */
     rules?: pulumi.Input<pulumi.Input<inputs.LoadBalancerRule>[]>;
     /**
-     * Configure attributes for session affinity.
+     * Specifies the type of session affinity the load balancer should use unless specified as `none` or `""` (default). With value `cookie`, on the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy then a new origin server is calculated and used. Value `ipCookie` behaves the same as `cookie` except the initial origin selection is stable and based on the client's IP address. Available values: `""`, `none`, `cookie`, `ipCookie`, `header`. Defaults to `none`.
      */
     sessionAffinity?: pulumi.Input<string>;
     /**
-     * Configure attributes for session affinity. Note that the property `drainDuration` is not currently supported as a rule override.
+     * Configure attributes for session affinity.
      */
     sessionAffinityAttributes?: pulumi.Input<pulumi.Input<inputs.LoadBalancerSessionAffinityAttribute>[]>;
     /**
@@ -341,7 +339,7 @@ export interface LoadBalancerState {
      */
     steeringPolicy?: pulumi.Input<string>;
     /**
-     * Time to live (TTL) of the DNS entry for the IP address returned by this load balancer. This cannot be set for proxied load balancers. Defaults to `30`.
+     * Time to live (TTL) of the DNS entry for the IP address returned by this load balancer. This cannot be set for proxied load balancers. Defaults to `30`. Conflicts with `proxied`.
      */
     ttl?: pulumi.Input<number>;
     /**
@@ -383,7 +381,7 @@ export interface LoadBalancerArgs {
      */
     locationStrategies?: pulumi.Input<pulumi.Input<inputs.LoadBalancerLocationStrategy>[]>;
     /**
-     * Human readable name for this rule.
+     * The DNS hostname to associate with your load balancer. If this hostname already exists as a DNS record in Cloudflare's DNS, the load balancer will take precedence and the DNS record will not be used.
      */
     name: pulumi.Input<string>;
     /**
@@ -407,11 +405,11 @@ export interface LoadBalancerArgs {
      */
     rules?: pulumi.Input<pulumi.Input<inputs.LoadBalancerRule>[]>;
     /**
-     * Configure attributes for session affinity.
+     * Specifies the type of session affinity the load balancer should use unless specified as `none` or `""` (default). With value `cookie`, on the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy then a new origin server is calculated and used. Value `ipCookie` behaves the same as `cookie` except the initial origin selection is stable and based on the client's IP address. Available values: `""`, `none`, `cookie`, `ipCookie`, `header`. Defaults to `none`.
      */
     sessionAffinity?: pulumi.Input<string>;
     /**
-     * Configure attributes for session affinity. Note that the property `drainDuration` is not currently supported as a rule override.
+     * Configure attributes for session affinity.
      */
     sessionAffinityAttributes?: pulumi.Input<pulumi.Input<inputs.LoadBalancerSessionAffinityAttribute>[]>;
     /**
@@ -423,7 +421,7 @@ export interface LoadBalancerArgs {
      */
     steeringPolicy?: pulumi.Input<string>;
     /**
-     * Time to live (TTL) of the DNS entry for the IP address returned by this load balancer. This cannot be set for proxied load balancers. Defaults to `30`.
+     * Time to live (TTL) of the DNS entry for the IP address returned by this load balancer. This cannot be set for proxied load balancers. Defaults to `30`. Conflicts with `proxied`.
      */
     ttl?: pulumi.Input<number>;
     /**

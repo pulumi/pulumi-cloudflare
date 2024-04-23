@@ -131,7 +131,7 @@ public final class GetRulesetsRulesetRuleActionParameters {
      */
     private @Nullable Boolean hotlinkProtection;
     /**
-     * @return The ID of the Ruleset to target.
+     * @return Identifier of the action parameter to modify.
      * 
      */
     private @Nullable String id;
@@ -272,7 +272,7 @@ public final class GetRulesetsRulesetRuleActionParameters {
      */
     private @Nullable GetRulesetsRulesetRuleActionParametersUri uri;
     /**
-     * @return Version of the ruleset to filter on.
+     * @return Version of the ruleset to deploy.
      * 
      */
     private String version;
@@ -419,7 +419,7 @@ public final class GetRulesetsRulesetRuleActionParameters {
         return Optional.ofNullable(this.hotlinkProtection);
     }
     /**
-     * @return The ID of the Ruleset to target.
+     * @return Identifier of the action parameter to modify.
      * 
      */
     public Optional<String> id() {
@@ -618,7 +618,7 @@ public final class GetRulesetsRulesetRuleActionParameters {
         return Optional.ofNullable(this.uri);
     }
     /**
-     * @return Version of the ruleset to filter on.
+     * @return Version of the ruleset to deploy.
      * 
      */
     public String version() {

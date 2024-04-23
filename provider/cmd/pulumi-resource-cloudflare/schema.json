@@ -327,7 +327,7 @@
                 },
                 "name": {
                     "type": "string",
-                    "description": "The name of the footer link.\n"
+                    "description": "The name of the attribute as provided to the SaaS app.\n"
                 },
                 "nameFormat": {
                     "type": "string",
@@ -350,7 +350,7 @@
             "properties": {
                 "name": {
                     "type": "string",
-                    "description": "The name of the footer link.\n"
+                    "description": "The name of the attribute as provided by the IDP.\n"
                 }
             },
             "type": "object",
@@ -513,7 +513,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "The ID of the Authentication Context.\n"
+                    "description": "The ID of the Azure group or user.\n"
                 }
             },
             "type": "object"
@@ -532,8 +532,7 @@
         "cloudflare:index/AccessGroupExcludeGithub:AccessGroupExcludeGithub": {
             "properties": {
                 "identityProviderId": {
-                    "type": "string",
-                    "description": "The ID of the Azure Identity provider.\n"
+                    "type": "string"
                 },
                 "name": {
                     "type": "string"
@@ -556,8 +555,7 @@
                     }
                 },
                 "identityProviderId": {
-                    "type": "string",
-                    "description": "The ID of the Azure Identity provider.\n"
+                    "type": "string"
                 }
             },
             "type": "object"
@@ -565,8 +563,7 @@
         "cloudflare:index/AccessGroupExcludeOkta:AccessGroupExcludeOkta": {
             "properties": {
                 "identityProviderId": {
-                    "type": "string",
-                    "description": "The ID of the Azure Identity provider.\n"
+                    "type": "string"
                 },
                 "names": {
                     "type": "array",
@@ -586,8 +583,7 @@
                     "type": "string"
                 },
                 "identityProviderId": {
-                    "type": "string",
-                    "description": "The ID of the Azure Identity provider.\n"
+                    "type": "string"
                 }
             },
             "type": "object"
@@ -747,7 +743,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "The ID of the Authentication Context.\n"
+                    "description": "The ID of the Azure group or user.\n"
                 }
             },
             "type": "object"
@@ -766,8 +762,7 @@
         "cloudflare:index/AccessGroupIncludeGithub:AccessGroupIncludeGithub": {
             "properties": {
                 "identityProviderId": {
-                    "type": "string",
-                    "description": "The ID of the Azure Identity provider.\n"
+                    "type": "string"
                 },
                 "name": {
                     "type": "string"
@@ -790,8 +785,7 @@
                     }
                 },
                 "identityProviderId": {
-                    "type": "string",
-                    "description": "The ID of the Azure Identity provider.\n"
+                    "type": "string"
                 }
             },
             "type": "object"
@@ -799,8 +793,7 @@
         "cloudflare:index/AccessGroupIncludeOkta:AccessGroupIncludeOkta": {
             "properties": {
                 "identityProviderId": {
-                    "type": "string",
-                    "description": "The ID of the Azure Identity provider.\n"
+                    "type": "string"
                 },
                 "names": {
                     "type": "array",
@@ -820,8 +813,7 @@
                     "type": "string"
                 },
                 "identityProviderId": {
-                    "type": "string",
-                    "description": "The ID of the Azure Identity provider.\n"
+                    "type": "string"
                 }
             },
             "type": "object"
@@ -981,7 +973,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "The ID of the Authentication Context.\n"
+                    "description": "The ID of the Azure group or user.\n"
                 }
             },
             "type": "object"
@@ -1000,8 +992,7 @@
         "cloudflare:index/AccessGroupRequireGithub:AccessGroupRequireGithub": {
             "properties": {
                 "identityProviderId": {
-                    "type": "string",
-                    "description": "The ID of the Azure Identity provider.\n"
+                    "type": "string"
                 },
                 "name": {
                     "type": "string"
@@ -1024,8 +1015,7 @@
                     }
                 },
                 "identityProviderId": {
-                    "type": "string",
-                    "description": "The ID of the Azure Identity provider.\n"
+                    "type": "string"
                 }
             },
             "type": "object"
@@ -1033,8 +1023,7 @@
         "cloudflare:index/AccessGroupRequireOkta:AccessGroupRequireOkta": {
             "properties": {
                 "identityProviderId": {
-                    "type": "string",
-                    "description": "The ID of the Azure Identity provider.\n"
+                    "type": "string"
                 },
                 "names": {
                     "type": "array",
@@ -1054,8 +1043,7 @@
                     "type": "string"
                 },
                 "identityProviderId": {
-                    "type": "string",
-                    "description": "The ID of the Azure Identity provider.\n"
+                    "type": "string"
                 }
             },
             "type": "object"
@@ -1428,7 +1416,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "The ID of the Authentication Context.\n"
+                    "description": "The ID of the Azure group or user.\n"
                 }
             },
             "type": "object"
@@ -1447,8 +1435,7 @@
         "cloudflare:index/AccessPolicyExcludeGithub:AccessPolicyExcludeGithub": {
             "properties": {
                 "identityProviderId": {
-                    "type": "string",
-                    "description": "The ID of the Azure Identity provider.\n"
+                    "type": "string"
                 },
                 "name": {
                     "type": "string"
@@ -1471,8 +1458,7 @@
                     }
                 },
                 "identityProviderId": {
-                    "type": "string",
-                    "description": "The ID of the Azure Identity provider.\n"
+                    "type": "string"
                 }
             },
             "type": "object"
@@ -1480,8 +1466,7 @@
         "cloudflare:index/AccessPolicyExcludeOkta:AccessPolicyExcludeOkta": {
             "properties": {
                 "identityProviderId": {
-                    "type": "string",
-                    "description": "The ID of the Azure Identity provider.\n"
+                    "type": "string"
                 },
                 "names": {
                     "type": "array",
@@ -1501,8 +1486,7 @@
                     "type": "string"
                 },
                 "identityProviderId": {
-                    "type": "string",
-                    "description": "The ID of the Azure Identity provider.\n"
+                    "type": "string"
                 }
             },
             "type": "object"
@@ -1662,7 +1646,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "The ID of the Authentication Context.\n"
+                    "description": "The ID of the Azure group or user.\n"
                 }
             },
             "type": "object"
@@ -1681,8 +1665,7 @@
         "cloudflare:index/AccessPolicyIncludeGithub:AccessPolicyIncludeGithub": {
             "properties": {
                 "identityProviderId": {
-                    "type": "string",
-                    "description": "The ID of the Azure Identity provider.\n"
+                    "type": "string"
                 },
                 "name": {
                     "type": "string"
@@ -1705,8 +1688,7 @@
                     }
                 },
                 "identityProviderId": {
-                    "type": "string",
-                    "description": "The ID of the Azure Identity provider.\n"
+                    "type": "string"
                 }
             },
             "type": "object"
@@ -1714,8 +1696,7 @@
         "cloudflare:index/AccessPolicyIncludeOkta:AccessPolicyIncludeOkta": {
             "properties": {
                 "identityProviderId": {
-                    "type": "string",
-                    "description": "The ID of the Azure Identity provider.\n"
+                    "type": "string"
                 },
                 "names": {
                     "type": "array",
@@ -1735,8 +1716,7 @@
                     "type": "string"
                 },
                 "identityProviderId": {
-                    "type": "string",
-                    "description": "The ID of the Azure Identity provider.\n"
+                    "type": "string"
                 }
             },
             "type": "object"
@@ -1896,7 +1876,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "The ID of the Authentication Context.\n"
+                    "description": "The ID of the Azure group or user.\n"
                 }
             },
             "type": "object"
@@ -1915,8 +1895,7 @@
         "cloudflare:index/AccessPolicyRequireGithub:AccessPolicyRequireGithub": {
             "properties": {
                 "identityProviderId": {
-                    "type": "string",
-                    "description": "The ID of the Azure Identity provider.\n"
+                    "type": "string"
                 },
                 "name": {
                     "type": "string"
@@ -1939,8 +1918,7 @@
                     }
                 },
                 "identityProviderId": {
-                    "type": "string",
-                    "description": "The ID of the Azure Identity provider.\n"
+                    "type": "string"
                 }
             },
             "type": "object"
@@ -1948,8 +1926,7 @@
         "cloudflare:index/AccessPolicyRequireOkta:AccessPolicyRequireOkta": {
             "properties": {
                 "identityProviderId": {
-                    "type": "string",
-                    "description": "The ID of the Azure Identity provider.\n"
+                    "type": "string"
                 },
                 "names": {
                     "type": "array",
@@ -1969,8 +1946,7 @@
                     "type": "string"
                 },
                 "identityProviderId": {
-                    "type": "string",
-                    "description": "The ID of the Azure Identity provider.\n"
+                    "type": "string"
                 }
             },
             "type": "object"
@@ -3085,7 +3061,7 @@
             "properties": {
                 "header": {
                     "type": "string",
-                    "description": "HTTP request headers.\n"
+                    "description": "HTTP Header name.\n"
                 },
                 "values": {
                     "type": "array",
@@ -3329,7 +3305,7 @@
             "properties": {
                 "failoverAcrossPools": {
                     "type": "boolean",
-                    "description": "Extends zero-downtime failover of requests to healthy origins from alternate pools, when no healthy alternate exists in the same pool, according to the failover order defined by traffic and origin steering. When set `false`, zero-downtime failover will only occur between origins within the same pool. Defaults to `false`.\n"
+                    "description": "Extends zero-downtime failover of requests to healthy origins from alternate pools, when no healthy alternate exists in the same pool, according to the failover order defined by traffic and origin steering. When set `false`, zero-downtime failover will only occur between origins within the same pool.\n"
                 }
             },
             "type": "object"
@@ -3358,11 +3334,11 @@
             "properties": {
                 "mode": {
                     "type": "string",
-                    "description": "Determines the authoritative location when ECS is not preferred, does not exist in the request, or its GeoIP lookup is unsuccessful. Value `pop` will use the Cloudflare PoP location. Value `resolver_ip` will use the DNS resolver GeoIP location. If the GeoIP lookup is unsuccessful, it will use the Cloudflare PoP location. Available values: `pop`, `resolver_ip`. Defaults to `pop`.\n"
+                    "description": "Determines the authoritative location when ECS is not preferred, does not exist in the request, or its GeoIP lookup is unsuccessful. Value `pop` will use the Cloudflare PoP location. Value `resolver_ip` will use the DNS resolver GeoIP location. If the GeoIP lookup is unsuccessful, it will use the Cloudflare PoP location. Available values: `pop`, `resolver_ip`.\n"
                 },
                 "preferEcs": {
                     "type": "string",
-                    "description": "Whether the EDNS Client Subnet (ECS) GeoIP should be preferred as the authoritative location. Value `always` will always prefer ECS, `never` will never prefer ECS, `proximity` will prefer ECS only when `steering_policy=\"proximity\"`, and `geo` will prefer ECS only when `steering_policy=\"geo\"`. Available values: `always`, `never`, `proximity`, `geo`. Defaults to `proximity`.\n"
+                    "description": "Whether the EDNS Client Subnet (ECS) GeoIP should be preferred as the authoritative location. Value `always` will always prefer ECS, `never` will never prefer ECS, `proximity` will prefer ECS only when `steering_policy=\"proximity\"`, and `geo` will prefer ECS only when `steering_policy=\"geo\"`. Available values: `always`, `never`, `proximity`, `geo`.\n"
                 }
             },
             "type": "object"
@@ -3438,15 +3414,15 @@
                 },
                 "samesite": {
                     "type": "string",
-                    "description": "Configures the SameSite attribute on session affinity cookie. Value `Auto` will be translated to `Lax` or `None` depending if Always Use HTTPS is enabled. Note: when using value `None`, then you can not set `secure=\"Never\"`. Available values: `Auto`, `Lax`, `None`, `Strict`. Defaults to `Auto`.\n"
+                    "description": "Configures the SameSite attribute on session affinity cookie. Value `Auto` will be translated to `Lax` or `None` depending if Always Use HTTPS is enabled. Note: when using value `None`, then you can not set `secure=\"Never\"`. Available values: `Auto`, `Lax`, `None`, `Strict`.\n"
                 },
                 "secure": {
                     "type": "string",
-                    "description": "Configures the Secure attribute on session affinity cookie. Value `Always` indicates the Secure attribute will be set in the Set-Cookie header, `Never` indicates the Secure attribute will not be set, and `Auto` will set the Secure attribute depending if Always Use HTTPS is enabled. Available values: `Auto`, `Always`, `Never`. Defaults to `Auto`.\n"
+                    "description": "Configures the Secure attribute on session affinity cookie. Value `Always` indicates the Secure attribute will be set in the Set-Cookie header, `Never` indicates the Secure attribute will not be set, and `Auto` will set the Secure attribute depending if Always Use HTTPS is enabled. Available values: `Auto`, `Always`, `Never`.\n"
                 },
                 "zeroDowntimeFailover": {
                     "type": "string",
-                    "description": "Configures the zero-downtime failover between origins within a pool when session affinity is enabled. Value `none` means no failover takes place for sessions pinned to the origin. Value `temporary` means traffic will be sent to another other healthy origin until the originally pinned origin is available; note that this can potentially result in heavy origin flapping. Value `sticky` means the session affinity cookie is updated and subsequent requests are sent to the new origin. This feature is currently incompatible with Argo, Tiered Cache, and Bandwidth Alliance. Available values: `none`, `temporary`, `sticky`. Defaults to `none`.\n"
+                    "description": "Configures the zero-downtime failover between origins within a pool when session affinity is enabled. Value `none` means no failover takes place for sessions pinned to the origin. Value `temporary` means traffic will be sent to another other healthy origin until the originally pinned origin is available; note that this can potentially result in heavy origin flapping. Value `sticky` means the session affinity cookie is updated and subsequent requests are sent to the new origin. This feature is currently incompatible with Argo, Tiered Cache, and Bandwidth Alliance. Available values: `none`, `temporary`, `sticky`.\n"
                 }
             },
             "type": "object"
@@ -4042,14 +4018,14 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "Check for presence of specified HTTP headers, without including their actual values.\n"
+                    "description": "Check for presence of specified cookies, without including their actual values.\n"
                 },
                 "includes": {
                     "type": "array",
                     "items": {
                         "type": "string"
                     },
-                    "description": "Only use values of specified query string parameters in Cache Key.\n"
+                    "description": "Use values of specified cookies in Cache Key.\n"
                 }
             },
             "type": "object",
@@ -4076,14 +4052,14 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "Exclude these query string parameters from Cache Key.\n"
+                    "description": "Exclude these HTTP headers from Cache Key. Currently, only the `Origin` header can be excluded.\n"
                 },
                 "includes": {
                     "type": "array",
                     "items": {
                         "type": "string"
                     },
-                    "description": "Only use values of specified query string parameters in Cache Key.\n"
+                    "description": "Use values of specified HTTP headers in Cache Key. Please refer to [Support article](https://support.cloudflare.com/hc/en-us/articles/115004290387-Creating-Cache-Keys) for the list of HTTP headers that cannot be included. The `Origin` header is always included unless explicitly excluded.\n"
                 }
             },
             "type": "object",
@@ -5116,7 +5092,7 @@
                     "additionalProperties": {
                         "type": "string"
                     },
-                    "description": "List of rule-based overrides.\n"
+                    "description": "Map of managed WAF rule ID to comma-delimited string of ruleset rule IDs. Example: `rules = { \"efb7b8c949ac4650a09736fc376e9aee\" = \"5de7edfa648c4d6891dc3e7f84534ffa,e3a567afc347477d9702d9047e97d760\" }`.\n"
                 },
                 "ruleset": {
                     "type": "string",
@@ -5151,7 +5127,7 @@
                 },
                 "statusCode": {
                     "type": "integer",
-                    "description": "Status code for which the edge TTL is applied.\n"
+                    "description": "HTTP status code of the custom error response.\n"
                 },
                 "sxg": {
                     "type": "boolean",
@@ -5292,7 +5268,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "List of cookies to check for presence in the custom key.\n"
+                    "description": "List of headers to check for presence in the custom key.\n"
                 },
                 "excludeOrigin": {
                     "type": "boolean",
@@ -5303,7 +5279,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "List of cookies to include in the custom key.\n"
+                    "description": "List of headers to include in the custom key.\n"
                 }
             },
             "type": "object",
@@ -5338,7 +5314,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "List of cookies to include in the custom key.\n"
+                    "description": "List of query string parameters to include in the custom key.\n"
                 }
             },
             "type": "object"
@@ -5364,11 +5340,11 @@
             "properties": {
                 "default": {
                     "type": "integer",
-                    "description": "Default browser TTL. This value is required when override_origin is set\n"
+                    "description": "Default edge TTL.\n"
                 },
                 "mode": {
                     "type": "string",
-                    "description": "Mode of the browser TTL. Available values: `override_origin`, `respect_origin`, `bypass`\n"
+                    "description": "Mode of the edge TTL. Available values: `override_origin`, `respect_origin`, `bypass_by_default`\n"
                 },
                 "statusCodeTtls": {
                     "type": "array",
@@ -5424,7 +5400,7 @@
                 },
                 "name": {
                     "type": "string",
-                    "description": "Name of the compression algorithm to use. Available values: `gzip`, `brotli`, `auto`, `default`, `none`\n"
+                    "description": "Name of the list.\n"
                 }
             },
             "type": "object"
@@ -5437,7 +5413,7 @@
                 },
                 "statusCode": {
                     "type": "integer",
-                    "description": "Status code for which the edge TTL is applied.\n"
+                    "description": "Status code for redirect.\n"
                 },
                 "targetUrl": {
                     "$ref": "#/types/cloudflare:index/RulesetRuleActionParametersFromValueTargetUrl:RulesetRuleActionParametersFromValueTargetUrl",
@@ -5454,7 +5430,7 @@
                 },
                 "value": {
                     "type": "string",
-                    "description": "Status code edge TTL value.\n"
+                    "description": "Static value to provide as the HTTP request header value.\n"
                 }
             },
             "type": "object"
@@ -5467,7 +5443,7 @@
                 },
                 "name": {
                     "type": "string",
-                    "description": "Name of the compression algorithm to use. Available values: `gzip`, `brotli`, `auto`, `default`, `none`\n"
+                    "description": "Name of the HTTP request header to target.\n"
                 },
                 "operation": {
                     "type": "string",
@@ -5475,7 +5451,7 @@
                 },
                 "value": {
                     "type": "string",
-                    "description": "Status code edge TTL value.\n"
+                    "description": "Static value to provide as the HTTP request header value.\n"
                 }
             },
             "type": "object"
@@ -5493,7 +5469,7 @@
             "properties": {
                 "host": {
                     "type": "string",
-                    "description": "Host parameters for the custom key.\n"
+                    "description": "Origin Hostname where request is sent.\n"
                 },
                 "port": {
                     "type": "integer",
@@ -5506,7 +5482,7 @@
             "properties": {
                 "action": {
                     "type": "string",
-                    "description": "Action to perform in the ruleset rule. Available values: `block`, `challenge`, `compress_response`, `ddos_dynamic`, `ddos_mitigation`, `execute`, `force_connection_close`, `js_challenge`, `log`, `log_custom_field`, `managed_challenge`, `redirect`, `rewrite`, `route`, `score`, `serve_error`, `set_cache_settings`, `set_config`, `skip`.\n"
+                    "description": "Action to perform in the rule-level override. Available values: `block`, `challenge`, `compress_response`, `ddos_dynamic`, `ddos_mitigation`, `execute`, `force_connection_close`, `js_challenge`, `log`, `log_custom_field`, `managed_challenge`, `redirect`, `rewrite`, `route`, `score`, `serve_error`, `set_cache_settings`, `set_config`, `skip`.\n"
                 },
                 "categories": {
                     "type": "array",
@@ -5517,7 +5493,7 @@
                 },
                 "enabled": {
                     "type": "boolean",
-                    "description": "Defines if the current tag-level override enables or disables the ruleset rules with the specified tag.\n"
+                    "description": "Defines if the current ruleset-level override enables or disables the ruleset.\n"
                 },
                 "rules": {
                     "type": "array",
@@ -5528,7 +5504,7 @@
                 },
                 "sensitivityLevel": {
                     "type": "string",
-                    "description": "Sensitivity level for a ruleset rule override.\n"
+                    "description": "Sensitivity level to override for all ruleset rules. Available values: `default`, `medium`, `low`, `eoff`.\n"
                 }
             },
             "type": "object"
@@ -5537,7 +5513,7 @@
             "properties": {
                 "action": {
                     "type": "string",
-                    "description": "Action to perform in the ruleset rule. Available values: `block`, `challenge`, `compress_response`, `ddos_dynamic`, `ddos_mitigation`, `execute`, `force_connection_close`, `js_challenge`, `log`, `log_custom_field`, `managed_challenge`, `redirect`, `rewrite`, `route`, `score`, `serve_error`, `set_cache_settings`, `set_config`, `skip`.\n"
+                    "description": "Action to perform in the tag-level override. Available values: `block`, `challenge`, `compress_response`, `ddos_dynamic`, `ddos_mitigation`, `execute`, `force_connection_close`, `js_challenge`, `log`, `log_custom_field`, `managed_challenge`, `redirect`, `rewrite`, `route`, `score`, `serve_error`, `set_cache_settings`, `set_config`, `skip`.\n"
                 },
                 "category": {
                     "type": "string",
@@ -5554,15 +5530,15 @@
             "properties": {
                 "action": {
                     "type": "string",
-                    "description": "Action to perform in the ruleset rule. Available values: `block`, `challenge`, `compress_response`, `ddos_dynamic`, `ddos_mitigation`, `execute`, `force_connection_close`, `js_challenge`, `log`, `log_custom_field`, `managed_challenge`, `redirect`, `rewrite`, `route`, `score`, `serve_error`, `set_cache_settings`, `set_config`, `skip`.\n"
+                    "description": "Action to perform in the rule-level override. Available values: `block`, `challenge`, `compress_response`, `ddos_dynamic`, `ddos_mitigation`, `execute`, `force_connection_close`, `js_challenge`, `log`, `log_custom_field`, `managed_challenge`, `redirect`, `rewrite`, `route`, `score`, `serve_error`, `set_cache_settings`, `set_config`, `skip`.\n"
                 },
                 "enabled": {
                     "type": "boolean",
-                    "description": "Whether the rule is active.\n"
+                    "description": "Defines if the current rule-level override enables or disables the rule.\n"
                 },
                 "id": {
                     "type": "string",
-                    "description": "Unique rule identifier.\n"
+                    "description": "Rule ID to apply the override to.\n"
                 },
                 "scoreThreshold": {
                     "type": "integer",
@@ -5579,15 +5555,15 @@
             "properties": {
                 "content": {
                     "type": "string",
-                    "description": "Content of the custom error response.\n"
+                    "description": "Body content to include in the response.\n"
                 },
                 "contentType": {
                     "type": "string",
-                    "description": "Content-Type of the custom error response.\n"
+                    "description": "HTTP content type to send in the response.\n"
                 },
                 "statusCode": {
                     "type": "integer",
-                    "description": "Status code for which the edge TTL is applied.\n"
+                    "description": "HTTP status code to send in the response.\n"
                 }
             },
             "type": "object"
@@ -5605,7 +5581,7 @@
             "properties": {
                 "value": {
                     "type": "string",
-                    "description": "Status code edge TTL value.\n"
+                    "description": "Value to define for SNI.\n"
                 }
             },
             "type": "object"
@@ -5613,8 +5589,7 @@
         "cloudflare:index/RulesetRuleActionParametersUri:RulesetRuleActionParametersUri": {
             "properties": {
                 "origin": {
-                    "type": "boolean",
-                    "description": "List of properties to change request origin.\n"
+                    "type": "boolean"
                 },
                 "path": {
                     "$ref": "#/types/cloudflare:index/RulesetRuleActionParametersUriPath:RulesetRuleActionParametersUriPath",
@@ -5631,11 +5606,11 @@
             "properties": {
                 "expression": {
                     "type": "string",
-                    "description": "Use a value dynamically determined by the Firewall Rules expression language based on Wireshark display filters. Refer to the [Firewall Rules language](https://developers.cloudflare.com/firewall/cf-firewall-language) documentation for all available fields, operators, and functions.\n"
+                    "description": "Expression that defines the updated (dynamic) value of the URI path or query string component. Uses the Firewall Rules expression language based on Wireshark display filters. Refer to the [Firewall Rules language](https://developers.cloudflare.com/firewall/cf-firewall-language) documentation for all available fields, operators, and functions.\n"
                 },
                 "value": {
                     "type": "string",
-                    "description": "Status code edge TTL value.\n"
+                    "description": "Static string value of the updated URI path or query string component.\n"
                 }
             },
             "type": "object"
@@ -5644,11 +5619,11 @@
             "properties": {
                 "expression": {
                     "type": "string",
-                    "description": "Use a value dynamically determined by the Firewall Rules expression language based on Wireshark display filters. Refer to the [Firewall Rules language](https://developers.cloudflare.com/firewall/cf-firewall-language) documentation for all available fields, operators, and functions.\n"
+                    "description": "Expression that defines the updated (dynamic) value of the URI path or query string component. Uses the Firewall Rules expression language based on Wireshark display filters. Refer to the [Firewall Rules language](https://developers.cloudflare.com/firewall/cf-firewall-language) documentation for all available fields, operators, and functions.\n"
                 },
                 "value": {
                     "type": "string",
-                    "description": "Status code edge TTL value.\n"
+                    "description": "Static string value of the updated URI path or query string component.\n"
                 }
             },
             "type": "object"
@@ -5670,7 +5645,7 @@
             "properties": {
                 "enabled": {
                     "type": "boolean",
-                    "description": "Defines if the current tag-level override enables or disables the ruleset rules with the specified tag.\n"
+                    "description": "Override the default logging behavior when a rule is matched.\n"
                 }
             },
             "type": "object"
@@ -6290,7 +6265,7 @@
             "properties": {
                 "ipv4": {
                     "type": "string",
-                    "description": "IPv4 resolvers.\n"
+                    "description": "The IPv4 address to be used for egress.\n"
                 },
                 "ipv4Fallback": {
                     "type": "string",
@@ -6298,7 +6273,7 @@
                 },
                 "ipv6": {
                     "type": "string",
-                    "description": "IPv6 resolvers.\n"
+                    "description": "The IPv6 range to be used for egress.\n"
                 }
             },
             "type": "object",
@@ -6311,11 +6286,11 @@
             "properties": {
                 "ip": {
                     "type": "string",
-                    "description": "The IPv4 or IPv6 address of the upstream resolver.\n"
+                    "description": "Override IP to forward traffic to.\n"
                 },
                 "port": {
                     "type": "integer",
-                    "description": "A port number to use for the upstream resolver. Defaults to `53`.\n"
+                    "description": "Override Port to forward traffic to.\n"
                 }
             },
             "type": "object",
@@ -6345,7 +6320,7 @@
             "properties": {
                 "enabled": {
                     "type": "boolean",
-                    "description": "Enable notification settings.\n"
+                    "description": "Enable or disable DLP Payload Logging for this rule.\n"
                 }
             },
             "type": "object",
@@ -7885,7 +7860,7 @@
                 },
                 "enabled": {
                     "type": "boolean",
-                    "description": "Whether this pool is enabled. Disabled pools will not receive traffic and are excluded from health checks.\n"
+                    "description": "Whether this origin is enabled. Disabled origins will not receive traffic and are excluded from health checks.\n"
                 },
                 "headers": {
                     "type": "array",
@@ -7896,7 +7871,7 @@
                 },
                 "name": {
                     "type": "string",
-                    "description": "A regular expression matching the name of the Load Balancer pool to lookup.\n"
+                    "description": "A human-identifiable name for the origin.\n"
                 },
                 "weight": {
                     "type": "number",
@@ -8030,7 +8005,7 @@
                 },
                 "id": {
                     "type": "string",
-                    "description": "The ID of the Ruleset to target.\n"
+                    "description": "Unique rule identifier.\n"
                 },
                 "lastUpdated": {
                     "type": "string",
@@ -8050,7 +8025,7 @@
                 },
                 "version": {
                     "type": "string",
-                    "description": "Version of the ruleset to filter on.\n"
+                    "description": "Version of the ruleset to deploy.\n"
                 }
             },
             "type": "object",
@@ -8162,7 +8137,7 @@
                 },
                 "id": {
                     "type": "string",
-                    "description": "The ID of the Ruleset to target.\n"
+                    "description": "Identifier of the action parameter to modify.\n"
                 },
                 "increment": {
                     "type": "integer"
@@ -8298,7 +8273,7 @@
                 },
                 "version": {
                     "type": "string",
-                    "description": "Version of the ruleset to filter on.\n"
+                    "description": "Version of the ruleset to deploy.\n"
                 }
             },
             "type": "object",
@@ -8559,7 +8534,7 @@
                 },
                 "name": {
                     "type": "string",
-                    "description": "Name of the ruleset.\n"
+                    "description": "Name of the list.\n"
                 }
             },
             "type": "object",
@@ -8611,7 +8586,7 @@
                 },
                 "name": {
                     "type": "string",
-                    "description": "Name of the ruleset.\n"
+                    "description": "Name of the HTTP request header to target.\n"
                 },
                 "operation": {
                     "type": "string",
@@ -8717,7 +8692,7 @@
                 },
                 "id": {
                     "type": "string",
-                    "description": "The ID of the Ruleset to target.\n"
+                    "description": "The ID of this resource.\n"
                 },
                 "scoreThreshold": {
                     "type": "integer",
@@ -9152,7 +9127,7 @@
                 },
                 "name": {
                     "type": "string",
-                    "description": "The name of the footer link.\n"
+                    "description": "Friendly name of the Access Application.\n"
                 },
                 "saasApp": {
                     "$ref": "#/types/cloudflare:index/AccessApplicationSaasApp:AccessApplicationSaasApp",
@@ -9295,7 +9270,7 @@
                 },
                 "name": {
                     "type": "string",
-                    "description": "The name of the footer link.\n"
+                    "description": "Friendly name of the Access Application.\n"
                 },
                 "saasApp": {
                     "$ref": "#/types/cloudflare:index/AccessApplicationSaasApp:AccessApplicationSaasApp",
@@ -9437,7 +9412,7 @@
                     },
                     "name": {
                         "type": "string",
-                        "description": "The name of the footer link.\n"
+                        "description": "Friendly name of the Access Application.\n"
                     },
                     "saasApp": {
                         "$ref": "#/types/cloudflare:index/AccessApplicationSaasApp:AccessApplicationSaasApp",
@@ -10931,7 +10906,7 @@
                 },
                 "canDelete": {
                     "type": "boolean",
-                    "description": "Controls whether the membership can be deleted via the API or not.\n"
+                    "description": "If set to false, then the Address Map cannot be deleted via API. This is true for Cloudflare-managed maps.\n"
                 },
                 "canModifyIps": {
                     "type": "boolean",
@@ -11015,7 +10990,7 @@
                     },
                     "canDelete": {
                         "type": "boolean",
-                        "description": "Controls whether the membership can be deleted via the API or not.\n"
+                        "description": "If set to false, then the Address Map cannot be deleted via API. This is true for Cloudflare-managed maps.\n"
                     },
                     "canModifyIps": {
                         "type": "boolean",
@@ -13425,7 +13400,7 @@
                 },
                 "name": {
                     "type": "string",
-                    "description": "Name of the entry to deploy.\n"
+                    "description": "Name of the profile. **Modifying this attribute will force creation of a new resource.**\n"
                 },
                 "type": {
                     "type": "string",
@@ -13467,7 +13442,7 @@
                 },
                 "name": {
                     "type": "string",
-                    "description": "Name of the entry to deploy.\n",
+                    "description": "Name of the profile. **Modifying this attribute will force creation of a new resource.**\n",
                     "willReplaceOnChanges": true
                 },
                 "type": {
@@ -13512,7 +13487,7 @@
                     },
                     "name": {
                         "type": "string",
-                        "description": "Name of the entry to deploy.\n",
+                        "description": "Name of the profile. **Modifying this attribute will force creation of a new resource.**\n",
                         "willReplaceOnChanges": true
                     },
                     "type": {
@@ -14427,7 +14402,7 @@
                     "items": {
                         "$ref": "#/types/cloudflare:index/HealthcheckHeader:HealthcheckHeader"
                     },
-                    "description": "The header name.\n"
+                    "description": "The HTTP request headers to send in the health check. It is recommended you set a Host header by default. The User-Agent header cannot be overridden.\n"
                 },
                 "interval": {
                     "type": "integer",
@@ -14532,7 +14507,7 @@
                     "items": {
                         "$ref": "#/types/cloudflare:index/HealthcheckHeader:HealthcheckHeader"
                     },
-                    "description": "The header name.\n"
+                    "description": "The HTTP request headers to send in the health check. It is recommended you set a Host header by default. The User-Agent header cannot be overridden.\n"
                 },
                 "interval": {
                     "type": "integer",
@@ -14636,7 +14611,7 @@
                         "items": {
                             "$ref": "#/types/cloudflare:index/HealthcheckHeader:HealthcheckHeader"
                         },
-                        "description": "The header name.\n"
+                        "description": "The HTTP request headers to send in the health check. It is recommended you set a Host header by default. The User-Agent header cannot be overridden.\n"
                     },
                     "interval": {
                         "type": "integer",
@@ -15586,7 +15561,7 @@
                 },
                 "name": {
                     "type": "string",
-                    "description": "Human readable name for this rule.\n"
+                    "description": "The DNS hostname to associate with your load balancer. If this hostname already exists as a DNS record in Cloudflare's DNS, the load balancer will take precedence and the DNS record will not be used.\n"
                 },
                 "popPools": {
                     "type": "array",
@@ -15622,14 +15597,14 @@
                 },
                 "sessionAffinity": {
                     "type": "string",
-                    "description": "Configure attributes for session affinity.\n"
+                    "description": "Specifies the type of session affinity the load balancer should use unless specified as `none` or `\"\"` (default). With value `cookie`, on the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy then a new origin server is calculated and used. Value `ip_cookie` behaves the same as `cookie` except the initial origin selection is stable and based on the client's IP address. Available values: `\"\"`, `none`, `cookie`, `ip_cookie`, `header`. Defaults to `none`.\n"
                 },
                 "sessionAffinityAttributes": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/cloudflare:index/LoadBalancerSessionAffinityAttribute:LoadBalancerSessionAffinityAttribute"
                     },
-                    "description": "Configure attributes for session affinity. Note that the property `drain_duration` is not currently supported as a rule override.\n"
+                    "description": "Configure attributes for session affinity.\n"
                 },
                 "sessionAffinityTtl": {
                     "type": "integer",
@@ -15641,7 +15616,7 @@
                 },
                 "ttl": {
                     "type": "integer",
-                    "description": "Time to live (TTL) of the DNS entry for the IP address returned by this load balancer. This cannot be set for proxied load balancers. Defaults to `30`.\n"
+                    "description": "Time to live (TTL) of the DNS entry for the IP address returned by this load balancer. This cannot be set for proxied load balancers. Defaults to `30`. Conflicts with `proxied`.\n"
                 },
                 "zoneId": {
                     "type": "string",
@@ -15701,7 +15676,7 @@
                 },
                 "name": {
                     "type": "string",
-                    "description": "Human readable name for this rule.\n"
+                    "description": "The DNS hostname to associate with your load balancer. If this hostname already exists as a DNS record in Cloudflare's DNS, the load balancer will take precedence and the DNS record will not be used.\n"
                 },
                 "popPools": {
                     "type": "array",
@@ -15737,14 +15712,14 @@
                 },
                 "sessionAffinity": {
                     "type": "string",
-                    "description": "Configure attributes for session affinity.\n"
+                    "description": "Specifies the type of session affinity the load balancer should use unless specified as `none` or `\"\"` (default). With value `cookie`, on the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy then a new origin server is calculated and used. Value `ip_cookie` behaves the same as `cookie` except the initial origin selection is stable and based on the client's IP address. Available values: `\"\"`, `none`, `cookie`, `ip_cookie`, `header`. Defaults to `none`.\n"
                 },
                 "sessionAffinityAttributes": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/cloudflare:index/LoadBalancerSessionAffinityAttribute:LoadBalancerSessionAffinityAttribute"
                     },
-                    "description": "Configure attributes for session affinity. Note that the property `drain_duration` is not currently supported as a rule override.\n"
+                    "description": "Configure attributes for session affinity.\n"
                 },
                 "sessionAffinityTtl": {
                     "type": "integer",
@@ -15756,7 +15731,7 @@
                 },
                 "ttl": {
                     "type": "integer",
-                    "description": "Time to live (TTL) of the DNS entry for the IP address returned by this load balancer. This cannot be set for proxied load balancers. Defaults to `30`.\n"
+                    "description": "Time to live (TTL) of the DNS entry for the IP address returned by this load balancer. This cannot be set for proxied load balancers. Defaults to `30`. Conflicts with `proxied`.\n"
                 },
                 "zoneId": {
                     "type": "string",
@@ -15823,7 +15798,7 @@
                     },
                     "name": {
                         "type": "string",
-                        "description": "Human readable name for this rule.\n"
+                        "description": "The DNS hostname to associate with your load balancer. If this hostname already exists as a DNS record in Cloudflare's DNS, the load balancer will take precedence and the DNS record will not be used.\n"
                     },
                     "popPools": {
                         "type": "array",
@@ -15859,14 +15834,14 @@
                     },
                     "sessionAffinity": {
                         "type": "string",
-                        "description": "Configure attributes for session affinity.\n"
+                        "description": "Specifies the type of session affinity the load balancer should use unless specified as `none` or `\"\"` (default). With value `cookie`, on the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy then a new origin server is calculated and used. Value `ip_cookie` behaves the same as `cookie` except the initial origin selection is stable and based on the client's IP address. Available values: `\"\"`, `none`, `cookie`, `ip_cookie`, `header`. Defaults to `none`.\n"
                     },
                     "sessionAffinityAttributes": {
                         "type": "array",
                         "items": {
                             "$ref": "#/types/cloudflare:index/LoadBalancerSessionAffinityAttribute:LoadBalancerSessionAffinityAttribute"
                         },
-                        "description": "Configure attributes for session affinity. Note that the property `drain_duration` is not currently supported as a rule override.\n"
+                        "description": "Configure attributes for session affinity.\n"
                     },
                     "sessionAffinityTtl": {
                         "type": "integer",
@@ -15878,7 +15853,7 @@
                     },
                     "ttl": {
                         "type": "integer",
-                        "description": "Time to live (TTL) of the DNS entry for the IP address returned by this load balancer. This cannot be set for proxied load balancers. Defaults to `30`.\n"
+                        "description": "Time to live (TTL) of the DNS entry for the IP address returned by this load balancer. This cannot be set for proxied load balancers. Defaults to `30`. Conflicts with `proxied`.\n"
                     },
                     "zoneId": {
                         "type": "string",
@@ -15933,7 +15908,7 @@
                     "items": {
                         "$ref": "#/types/cloudflare:index/LoadBalancerMonitorHeader:LoadBalancerMonitorHeader"
                     },
-                    "description": "The header name.\n"
+                    "description": "The HTTP request headers to send in the health check. It is recommended you set a Host header by default. The User-Agent header cannot be overridden.\n"
                 },
                 "interval": {
                     "type": "integer",
@@ -16017,7 +15992,7 @@
                     "items": {
                         "$ref": "#/types/cloudflare:index/LoadBalancerMonitorHeader:LoadBalancerMonitorHeader"
                     },
-                    "description": "The header name.\n"
+                    "description": "The HTTP request headers to send in the health check. It is recommended you set a Host header by default. The User-Agent header cannot be overridden.\n"
                 },
                 "interval": {
                     "type": "integer",
@@ -16099,7 +16074,7 @@
                         "items": {
                             "$ref": "#/types/cloudflare:index/LoadBalancerMonitorHeader:LoadBalancerMonitorHeader"
                         },
-                        "description": "The header name.\n"
+                        "description": "The HTTP request headers to send in the health check. It is recommended you set a Host header by default. The User-Agent header cannot be overridden.\n"
                     },
                     "interval": {
                         "type": "integer",
@@ -16165,7 +16140,7 @@
                 },
                 "enabled": {
                     "type": "boolean",
-                    "description": "Whether this origin is enabled. Disabled origins will not receive traffic and are excluded from health checks. Defaults to `true`.\n"
+                    "description": "Whether to enable (the default) this pool. Disabled pools will not receive traffic and are excluded from health checks. Disabling a pool will cause any load balancers using it to failover to the next pool (if any). Defaults to `true`.\n"
                 },
                 "latitude": {
                     "type": "number",
@@ -16196,7 +16171,7 @@
                 },
                 "name": {
                     "type": "string",
-                    "description": "A human-identifiable name for the origin.\n"
+                    "description": "A short name (tag) for the pool.\n"
                 },
                 "notificationEmail": {
                     "type": "string",
@@ -16243,7 +16218,7 @@
                 },
                 "enabled": {
                     "type": "boolean",
-                    "description": "Whether this origin is enabled. Disabled origins will not receive traffic and are excluded from health checks. Defaults to `true`.\n"
+                    "description": "Whether to enable (the default) this pool. Disabled pools will not receive traffic and are excluded from health checks. Disabling a pool will cause any load balancers using it to failover to the next pool (if any). Defaults to `true`.\n"
                 },
                 "latitude": {
                     "type": "number",
@@ -16270,7 +16245,7 @@
                 },
                 "name": {
                     "type": "string",
-                    "description": "A human-identifiable name for the origin.\n"
+                    "description": "A short name (tag) for the pool.\n"
                 },
                 "notificationEmail": {
                     "type": "string",
@@ -16320,7 +16295,7 @@
                     },
                     "enabled": {
                         "type": "boolean",
-                        "description": "Whether this origin is enabled. Disabled origins will not receive traffic and are excluded from health checks. Defaults to `true`.\n"
+                        "description": "Whether to enable (the default) this pool. Disabled pools will not receive traffic and are excluded from health checks. Disabling a pool will cause any load balancers using it to failover to the next pool (if any). Defaults to `true`.\n"
                     },
                     "latitude": {
                         "type": "number",
@@ -16351,7 +16326,7 @@
                     },
                     "name": {
                         "type": "string",
-                        "description": "A human-identifiable name for the origin.\n"
+                        "description": "A short name (tag) for the pool.\n"
                     },
                     "notificationEmail": {
                         "type": "string",
@@ -17019,7 +16994,7 @@
                 },
                 "enabled": {
                     "type": "boolean",
-                    "description": "State of the pool to alert on.\n"
+                    "description": "The status of the notification policy.\n"
                 },
                 "filters": {
                     "$ref": "#/types/cloudflare:index/NotificationPolicyFilters:NotificationPolicyFilters",
@@ -17078,7 +17053,7 @@
                 },
                 "enabled": {
                     "type": "boolean",
-                    "description": "State of the pool to alert on.\n"
+                    "description": "The status of the notification policy.\n"
                 },
                 "filters": {
                     "$ref": "#/types/cloudflare:index/NotificationPolicyFilters:NotificationPolicyFilters",
@@ -17137,7 +17112,7 @@
                     },
                     "enabled": {
                         "type": "boolean",
-                        "description": "State of the pool to alert on.\n"
+                        "description": "The status of the notification policy.\n"
                     },
                     "filters": {
                         "$ref": "#/types/cloudflare:index/NotificationPolicyFilters:NotificationPolicyFilters",
@@ -17661,11 +17636,11 @@
                 },
                 "name": {
                     "type": "string",
-                    "description": "The global variable for the binding in your Worker code.\n"
+                    "description": "Name of the project.\n"
                 },
                 "productionBranch": {
                     "type": "string",
-                    "description": "Project production branch name.\n"
+                    "description": "The name of the branch that is used for the production environment.\n"
                 },
                 "source": {
                     "$ref": "#/types/cloudflare:index/PagesProjectSource:PagesProjectSource",
@@ -17700,11 +17675,11 @@
                 },
                 "name": {
                     "type": "string",
-                    "description": "The global variable for the binding in your Worker code.\n"
+                    "description": "Name of the project.\n"
                 },
                 "productionBranch": {
                     "type": "string",
-                    "description": "Project production branch name.\n"
+                    "description": "The name of the branch that is used for the production environment.\n"
                 },
                 "source": {
                     "$ref": "#/types/cloudflare:index/PagesProjectSource:PagesProjectSource",
@@ -17744,11 +17719,11 @@
                     },
                     "name": {
                         "type": "string",
-                        "description": "The global variable for the binding in your Worker code.\n"
+                        "description": "Name of the project.\n"
                     },
                     "productionBranch": {
                         "type": "string",
-                        "description": "Project production branch name.\n"
+                        "description": "The name of the branch that is used for the production environment.\n"
                     },
                     "source": {
                         "$ref": "#/types/cloudflare:index/PagesProjectSource:PagesProjectSource",
@@ -18043,7 +18018,7 @@
                 },
                 "name": {
                     "type": "string",
-                    "description": "The name of the record.\n"
+                    "description": "The name of the record. **Modifying this attribute will force creation of a new resource.**\n"
                 },
                 "priority": {
                     "type": "integer",
@@ -18070,11 +18045,11 @@
                 },
                 "type": {
                     "type": "string",
-                    "description": "The type of the record. Available values: `A`, `AAAA`, `CAA`, `CNAME`, `TXT`, `SRV`, `LOC`, `MX`, `NS`, `SPF`, `CERT`,\n`DNSKEY`, `DS`, `NAPTR`, `SMIMEA`, `SSHFP`, `TLSA`, `URI`, `PTR`, `HTTPS`, `SVCB`\n"
+                    "description": "The type of the record. Available values: `A`, `AAAA`, `CAA`, `CNAME`, `TXT`, `SRV`, `LOC`, `MX`, `NS`, `SPF`, `CERT`, `DNSKEY`, `DS`, `NAPTR`, `SMIMEA`, `SSHFP`, `TLSA`, `URI`, `PTR`, `HTTPS`, `SVCB`. **Modifying this attribute will force creation of a new resource.**\n"
                 },
                 "value": {
                     "type": "string",
-                    "description": "The value of the record.\n"
+                    "description": "The value of the record. Conflicts with `data`.\n"
                 },
                 "zoneId": {
                     "type": "string",
@@ -18108,7 +18083,7 @@
                 },
                 "name": {
                     "type": "string",
-                    "description": "The name of the record.\n",
+                    "description": "The name of the record. **Modifying this attribute will force creation of a new resource.**\n",
                     "willReplaceOnChanges": true
                 },
                 "priority": {
@@ -18132,12 +18107,12 @@
                 },
                 "type": {
                     "type": "string",
-                    "description": "The type of the record. Available values: `A`, `AAAA`, `CAA`, `CNAME`, `TXT`, `SRV`, `LOC`, `MX`, `NS`, `SPF`, `CERT`,\n`DNSKEY`, `DS`, `NAPTR`, `SMIMEA`, `SSHFP`, `TLSA`, `URI`, `PTR`, `HTTPS`, `SVCB`\n",
+                    "description": "The type of the record. Available values: `A`, `AAAA`, `CAA`, `CNAME`, `TXT`, `SRV`, `LOC`, `MX`, `NS`, `SPF`, `CERT`, `DNSKEY`, `DS`, `NAPTR`, `SMIMEA`, `SSHFP`, `TLSA`, `URI`, `PTR`, `HTTPS`, `SVCB`. **Modifying this attribute will force creation of a new resource.**\n",
                     "willReplaceOnChanges": true
                 },
                 "value": {
                     "type": "string",
-                    "description": "The value of the record.\n"
+                    "description": "The value of the record. Conflicts with `data`.\n"
                 },
                 "zoneId": {
                     "type": "string",
@@ -18186,7 +18161,7 @@
                     },
                     "name": {
                         "type": "string",
-                        "description": "The name of the record.\n",
+                        "description": "The name of the record. **Modifying this attribute will force creation of a new resource.**\n",
                         "willReplaceOnChanges": true
                     },
                     "priority": {
@@ -18214,12 +18189,12 @@
                     },
                     "type": {
                         "type": "string",
-                        "description": "The type of the record. Available values: `A`, `AAAA`, `CAA`, `CNAME`, `TXT`, `SRV`, `LOC`, `MX`, `NS`, `SPF`, `CERT`,\n`DNSKEY`, `DS`, `NAPTR`, `SMIMEA`, `SSHFP`, `TLSA`, `URI`, `PTR`, `HTTPS`, `SVCB`\n",
+                        "description": "The type of the record. Available values: `A`, `AAAA`, `CAA`, `CNAME`, `TXT`, `SRV`, `LOC`, `MX`, `NS`, `SPF`, `CERT`, `DNSKEY`, `DS`, `NAPTR`, `SMIMEA`, `SSHFP`, `TLSA`, `URI`, `PTR`, `HTTPS`, `SVCB`. **Modifying this attribute will force creation of a new resource.**\n",
                         "willReplaceOnChanges": true
                     },
                     "value": {
                         "type": "string",
-                        "description": "The value of the record.\n"
+                        "description": "The value of the record. Conflicts with `data`.\n"
                     },
                     "zoneId": {
                         "type": "string",
@@ -18352,7 +18327,7 @@
                 },
                 "description": {
                     "type": "string",
-                    "description": "Brief summary of the ruleset rule and its intended use.\n"
+                    "description": "Brief summary of the ruleset and its intended use.\n"
                 },
                 "kind": {
                     "type": "string",
@@ -18360,7 +18335,7 @@
                 },
                 "name": {
                     "type": "string",
-                    "description": "Name of the compression algorithm to use. Available values: `gzip`, `brotli`, `auto`, `default`, `none`\n"
+                    "description": "Name of the ruleset.\n"
                 },
                 "phase": {
                     "type": "string",
@@ -18371,7 +18346,7 @@
                     "items": {
                         "$ref": "#/types/cloudflare:index/RulesetRule:RulesetRule"
                     },
-                    "description": "List of rule-based overrides.\n"
+                    "description": "List of rules to apply to the ruleset.\n"
                 },
                 "zoneId": {
                     "type": "string",
@@ -18391,7 +18366,7 @@
                 },
                 "description": {
                     "type": "string",
-                    "description": "Brief summary of the ruleset rule and its intended use.\n"
+                    "description": "Brief summary of the ruleset and its intended use.\n"
                 },
                 "kind": {
                     "type": "string",
@@ -18399,7 +18374,7 @@
                 },
                 "name": {
                     "type": "string",
-                    "description": "Name of the compression algorithm to use. Available values: `gzip`, `brotli`, `auto`, `default`, `none`\n"
+                    "description": "Name of the ruleset.\n"
                 },
                 "phase": {
                     "type": "string",
@@ -18410,7 +18385,7 @@
                     "items": {
                         "$ref": "#/types/cloudflare:index/RulesetRule:RulesetRule"
                     },
-                    "description": "List of rule-based overrides.\n"
+                    "description": "List of rules to apply to the ruleset.\n"
                 },
                 "zoneId": {
                     "type": "string",
@@ -18431,7 +18406,7 @@
                     },
                     "description": {
                         "type": "string",
-                        "description": "Brief summary of the ruleset rule and its intended use.\n"
+                        "description": "Brief summary of the ruleset and its intended use.\n"
                     },
                     "kind": {
                         "type": "string",
@@ -18439,7 +18414,7 @@
                     },
                     "name": {
                         "type": "string",
-                        "description": "Name of the compression algorithm to use. Available values: `gzip`, `brotli`, `auto`, `default`, `none`\n"
+                        "description": "Name of the ruleset.\n"
                     },
                     "phase": {
                         "type": "string",
@@ -18450,7 +18425,7 @@
                         "items": {
                             "$ref": "#/types/cloudflare:index/RulesetRule:RulesetRule"
                         },
-                        "description": "List of rule-based overrides.\n"
+                        "description": "List of rules to apply to the ruleset.\n"
                     },
                     "zoneId": {
                         "type": "string",
@@ -19376,7 +19351,7 @@
                 },
                 "action": {
                     "type": "string",
-                    "description": "Action to be taken when the SSL certificate of upstream is invalid. Available values: `pass_through`, `block`, `error`.\n"
+                    "description": "The action executed by matched teams rule. Available values: `allow`, `block`, `safesearch`, `ytrestricted`, `on`, `off`, `scan`, `noscan`, `isolate`, `noisolate`, `override`, `l4_override`, `egress`, `audit_ssh`, `resolve`.\n"
                 },
                 "description": {
                     "type": "string",
@@ -19388,7 +19363,7 @@
                 },
                 "enabled": {
                     "type": "boolean",
-                    "description": "Enable notification settings.\n"
+                    "description": "Indicator of rule enablement.\n"
                 },
                 "filters": {
                     "type": "array",
@@ -19436,7 +19411,7 @@
                 },
                 "action": {
                     "type": "string",
-                    "description": "Action to be taken when the SSL certificate of upstream is invalid. Available values: `pass_through`, `block`, `error`.\n"
+                    "description": "The action executed by matched teams rule. Available values: `allow`, `block`, `safesearch`, `ytrestricted`, `on`, `off`, `scan`, `noscan`, `isolate`, `noisolate`, `override`, `l4_override`, `egress`, `audit_ssh`, `resolve`.\n"
                 },
                 "description": {
                     "type": "string",
@@ -19448,7 +19423,7 @@
                 },
                 "enabled": {
                     "type": "boolean",
-                    "description": "Enable notification settings.\n"
+                    "description": "Indicator of rule enablement.\n"
                 },
                 "filters": {
                     "type": "array",
@@ -19494,7 +19469,7 @@
                     },
                     "action": {
                         "type": "string",
-                        "description": "Action to be taken when the SSL certificate of upstream is invalid. Available values: `pass_through`, `block`, `error`.\n"
+                        "description": "The action executed by matched teams rule. Available values: `allow`, `block`, `safesearch`, `ytrestricted`, `on`, `off`, `scan`, `noscan`, `isolate`, `noisolate`, `override`, `l4_override`, `egress`, `audit_ssh`, `resolve`.\n"
                     },
                     "description": {
                         "type": "string",
@@ -19506,7 +19481,7 @@
                     },
                     "enabled": {
                         "type": "boolean",
-                        "description": "Enable notification settings.\n"
+                        "description": "Indicator of rule enablement.\n"
                     },
                     "filters": {
                         "type": "array",
@@ -20281,7 +20256,7 @@
                 },
                 "host": {
                     "type": "string",
-                    "description": "The additional host name for which the waiting room to be applied on (no wildcards).\n"
+                    "description": "Host name for which the waiting room will be applied (no wildcards).\n"
                 },
                 "jsonResponseEnabled": {
                     "type": "boolean",
@@ -20297,7 +20272,7 @@
                 },
                 "path": {
                     "type": "string",
-                    "description": "The path within the additional host to enable the waiting room on. Defaults to `/`.\n"
+                    "description": "The path within the host to enable the waiting room on. Defaults to `/`.\n"
                 },
                 "queueAll": {
                     "type": "boolean",
@@ -20365,7 +20340,7 @@
                 },
                 "host": {
                     "type": "string",
-                    "description": "The additional host name for which the waiting room to be applied on (no wildcards).\n"
+                    "description": "Host name for which the waiting room will be applied (no wildcards).\n"
                 },
                 "jsonResponseEnabled": {
                     "type": "boolean",
@@ -20382,7 +20357,7 @@
                 },
                 "path": {
                     "type": "string",
-                    "description": "The path within the additional host to enable the waiting room on. Defaults to `/`.\n"
+                    "description": "The path within the host to enable the waiting room on. Defaults to `/`.\n"
                 },
                 "queueAll": {
                     "type": "boolean",
@@ -20453,7 +20428,7 @@
                     },
                     "host": {
                         "type": "string",
-                        "description": "The additional host name for which the waiting room to be applied on (no wildcards).\n"
+                        "description": "Host name for which the waiting room will be applied (no wildcards).\n"
                     },
                     "jsonResponseEnabled": {
                         "type": "boolean",
@@ -20470,7 +20445,7 @@
                     },
                     "path": {
                         "type": "string",
-                        "description": "The path within the additional host to enable the waiting room on. Defaults to `/`.\n"
+                        "description": "The path within the host to enable the waiting room on. Defaults to `/`.\n"
                     },
                     "queueAll": {
                         "type": "boolean",
@@ -20966,7 +20941,7 @@
             }
         },
         "cloudflare:index/webAnalyticsRule:WebAnalyticsRule": {
-            "description": "Provides a Cloudflare Web Analytics Rule resource.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as cloudflare from \"@pulumi/cloudflare\";\n\nconst example = new cloudflare.WebAnalyticsSite(\"example\", {\n    accountId: \"f037e56e89293a057740de681ac9abbe\",\n    zoneTag: \"0da42c8d2132a9ddaf714f9e7c920711\",\n    autoInstall: true,\n});\nconst exampleWebAnalyticsRule = new cloudflare.WebAnalyticsRule(\"example\", {\n    accountId: \"f037e56e89293a057740de681ac9abbe\",\n    rulesetId: example.rulesetId,\n    host: \"*\",\n    paths: [\"/excluded\"],\n    inclusive: false,\n    isPaused: false,\n}, {\n    dependsOn: [example],\n});\n```\n```python\nimport pulumi\nimport pulumi_cloudflare as cloudflare\n\nexample = cloudflare.WebAnalyticsSite(\"example\",\n    account_id=\"f037e56e89293a057740de681ac9abbe\",\n    zone_tag=\"0da42c8d2132a9ddaf714f9e7c920711\",\n    auto_install=True)\nexample_web_analytics_rule = cloudflare.WebAnalyticsRule(\"example\",\n    account_id=\"f037e56e89293a057740de681ac9abbe\",\n    ruleset_id=example.ruleset_id,\n    host=\"*\",\n    paths=[\"/excluded\"],\n    inclusive=False,\n    is_paused=False,\n    opts=pulumi.ResourceOptions(depends_on=[example]))\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Cloudflare = Pulumi.Cloudflare;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = new Cloudflare.WebAnalyticsSite(\"example\", new()\n    {\n        AccountId = \"f037e56e89293a057740de681ac9abbe\",\n        ZoneTag = \"0da42c8d2132a9ddaf714f9e7c920711\",\n        AutoInstall = true,\n    });\n\n    var exampleWebAnalyticsRule = new Cloudflare.WebAnalyticsRule(\"example\", new()\n    {\n        AccountId = \"f037e56e89293a057740de681ac9abbe\",\n        RulesetId = example.RulesetId,\n        Host = \"*\",\n        Paths = new[]\n        {\n            \"/excluded\",\n        },\n        Inclusive = false,\n        IsPaused = false,\n    }, new CustomResourceOptions\n    {\n        DependsOn =\n        {\n            example, \n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\texample, err := cloudflare.NewWebAnalyticsSite(ctx, \"example\", \u0026cloudflare.WebAnalyticsSiteArgs{\n\t\t\tAccountId:   pulumi.String(\"f037e56e89293a057740de681ac9abbe\"),\n\t\t\tZoneTag:     pulumi.String(\"0da42c8d2132a9ddaf714f9e7c920711\"),\n\t\t\tAutoInstall: pulumi.Bool(true),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = cloudflare.NewWebAnalyticsRule(ctx, \"example\", \u0026cloudflare.WebAnalyticsRuleArgs{\n\t\t\tAccountId: pulumi.String(\"f037e56e89293a057740de681ac9abbe\"),\n\t\t\tRulesetId: example.RulesetId,\n\t\t\tHost:      pulumi.String(\"*\"),\n\t\t\tPaths: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"/excluded\"),\n\t\t\t},\n\t\t\tInclusive: pulumi.Bool(false),\n\t\t\tIsPaused:  pulumi.Bool(false),\n\t\t}, pulumi.DependsOn([]pulumi.Resource{\n\t\t\texample,\n\t\t}))\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.cloudflare.WebAnalyticsSite;\nimport com.pulumi.cloudflare.WebAnalyticsSiteArgs;\nimport com.pulumi.cloudflare.WebAnalyticsRule;\nimport com.pulumi.cloudflare.WebAnalyticsRuleArgs;\nimport com.pulumi.resources.CustomResourceOptions;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var example = new WebAnalyticsSite(\"example\", WebAnalyticsSiteArgs.builder()        \n            .accountId(\"f037e56e89293a057740de681ac9abbe\")\n            .zoneTag(\"0da42c8d2132a9ddaf714f9e7c920711\")\n            .autoInstall(true)\n            .build());\n\n        var exampleWebAnalyticsRule = new WebAnalyticsRule(\"exampleWebAnalyticsRule\", WebAnalyticsRuleArgs.builder()        \n            .accountId(\"f037e56e89293a057740de681ac9abbe\")\n            .rulesetId(example.rulesetId())\n            .host(\"*\")\n            .paths(\"/excluded\")\n            .inclusive(false)\n            .isPaused(false)\n            .build(), CustomResourceOptions.builder()\n                .dependsOn(example)\n                .build());\n\n    }\n}\n```\n```yaml\nresources:\n  example:\n    type: cloudflare:WebAnalyticsSite\n    properties:\n      accountId: f037e56e89293a057740de681ac9abbe\n      zoneTag: 0da42c8d2132a9ddaf714f9e7c920711\n      autoInstall: true\n  exampleWebAnalyticsRule:\n    type: cloudflare:WebAnalyticsRule\n    name: example\n    properties:\n      accountId: f037e56e89293a057740de681ac9abbe\n      rulesetId: ${example.rulesetId}\n      host: '*'\n      paths:\n        - /excluded\n      inclusive: false\n      isPaused: false\n    options:\n      dependson:\n        - ${example}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\n```sh\n$ pulumi import cloudflare:index/webAnalyticsRule:WebAnalyticsRule example \u003caccount_id\u003e/\u003cruleset_id\u003e/\u003crule_id\u003e\n```\n\n",
+            "description": "Provides a Cloudflare Web Analytics Rule resource.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as cloudflare from \"@pulumi/cloudflare\";\n\nconst example = new cloudflare.WebAnalyticsSite(\"example\", {\n    accountId: \"f037e56e89293a057740de681ac9abbe\",\n    zoneTag: \"0da42c8d2132a9ddaf714f9e7c920711\",\n    autoInstall: true,\n});\nconst exampleWebAnalyticsRule = new cloudflare.WebAnalyticsRule(\"example\", {\n    accountId: \"f037e56e89293a057740de681ac9abbe\",\n    rulesetId: example.rulesetId,\n    host: \"*\",\n    paths: [\"/excluded\"],\n    inclusive: false,\n    isPaused: false,\n}, {\n    dependsOn: [example],\n});\n```\n```python\nimport pulumi\nimport pulumi_cloudflare as cloudflare\n\nexample = cloudflare.WebAnalyticsSite(\"example\",\n    account_id=\"f037e56e89293a057740de681ac9abbe\",\n    zone_tag=\"0da42c8d2132a9ddaf714f9e7c920711\",\n    auto_install=True)\nexample_web_analytics_rule = cloudflare.WebAnalyticsRule(\"example\",\n    account_id=\"f037e56e89293a057740de681ac9abbe\",\n    ruleset_id=example.ruleset_id,\n    host=\"*\",\n    paths=[\"/excluded\"],\n    inclusive=False,\n    is_paused=False,\n    opts=pulumi.ResourceOptions(depends_on=[example]))\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Cloudflare = Pulumi.Cloudflare;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = new Cloudflare.WebAnalyticsSite(\"example\", new()\n    {\n        AccountId = \"f037e56e89293a057740de681ac9abbe\",\n        ZoneTag = \"0da42c8d2132a9ddaf714f9e7c920711\",\n        AutoInstall = true,\n    });\n\n    var exampleWebAnalyticsRule = new Cloudflare.WebAnalyticsRule(\"example\", new()\n    {\n        AccountId = \"f037e56e89293a057740de681ac9abbe\",\n        RulesetId = example.RulesetId,\n        Host = \"*\",\n        Paths = new[]\n        {\n            \"/excluded\",\n        },\n        Inclusive = false,\n        IsPaused = false,\n    }, new CustomResourceOptions\n    {\n        DependsOn =\n        {\n            example,\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\texample, err := cloudflare.NewWebAnalyticsSite(ctx, \"example\", \u0026cloudflare.WebAnalyticsSiteArgs{\n\t\t\tAccountId:   pulumi.String(\"f037e56e89293a057740de681ac9abbe\"),\n\t\t\tZoneTag:     pulumi.String(\"0da42c8d2132a9ddaf714f9e7c920711\"),\n\t\t\tAutoInstall: pulumi.Bool(true),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = cloudflare.NewWebAnalyticsRule(ctx, \"example\", \u0026cloudflare.WebAnalyticsRuleArgs{\n\t\t\tAccountId: pulumi.String(\"f037e56e89293a057740de681ac9abbe\"),\n\t\t\tRulesetId: example.RulesetId,\n\t\t\tHost:      pulumi.String(\"*\"),\n\t\t\tPaths: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"/excluded\"),\n\t\t\t},\n\t\t\tInclusive: pulumi.Bool(false),\n\t\t\tIsPaused:  pulumi.Bool(false),\n\t\t}, pulumi.DependsOn([]pulumi.Resource{\n\t\t\texample,\n\t\t}))\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.cloudflare.WebAnalyticsSite;\nimport com.pulumi.cloudflare.WebAnalyticsSiteArgs;\nimport com.pulumi.cloudflare.WebAnalyticsRule;\nimport com.pulumi.cloudflare.WebAnalyticsRuleArgs;\nimport com.pulumi.resources.CustomResourceOptions;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var example = new WebAnalyticsSite(\"example\", WebAnalyticsSiteArgs.builder()        \n            .accountId(\"f037e56e89293a057740de681ac9abbe\")\n            .zoneTag(\"0da42c8d2132a9ddaf714f9e7c920711\")\n            .autoInstall(true)\n            .build());\n\n        var exampleWebAnalyticsRule = new WebAnalyticsRule(\"exampleWebAnalyticsRule\", WebAnalyticsRuleArgs.builder()        \n            .accountId(\"f037e56e89293a057740de681ac9abbe\")\n            .rulesetId(example.rulesetId())\n            .host(\"*\")\n            .paths(\"/excluded\")\n            .inclusive(false)\n            .isPaused(false)\n            .build(), CustomResourceOptions.builder()\n                .dependsOn(example)\n                .build());\n\n    }\n}\n```\n```yaml\nresources:\n  example:\n    type: cloudflare:WebAnalyticsSite\n    properties:\n      accountId: f037e56e89293a057740de681ac9abbe\n      zoneTag: 0da42c8d2132a9ddaf714f9e7c920711\n      autoInstall: true\n  exampleWebAnalyticsRule:\n    type: cloudflare:WebAnalyticsRule\n    name: example\n    properties:\n      accountId: f037e56e89293a057740de681ac9abbe\n      rulesetId: ${example.rulesetId}\n      host: '*'\n      paths:\n        - /excluded\n      inclusive: false\n      isPaused: false\n    options:\n      dependson:\n        - ${example}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\n```sh\n$ pulumi import cloudflare:index/webAnalyticsRule:WebAnalyticsRule example \u003caccount_id\u003e/\u003cruleset_id\u003e/\u003crule_id\u003e\n```\n\n",
             "properties": {
                 "accountId": {
                     "type": "string",
@@ -21462,11 +21437,11 @@
                 },
                 "module": {
                     "type": "boolean",
-                    "description": "The base64 encoded wasm module you want to store.\n"
+                    "description": "Whether to upload Worker as a module.\n"
                 },
                 "name": {
                     "type": "string",
-                    "description": "The global variable for the binding in your Worker code.\n"
+                    "description": "The name for the script. **Modifying this attribute will force creation of a new resource.**\n"
                 },
                 "placements": {
                     "type": "array",
@@ -21572,11 +21547,11 @@
                 },
                 "module": {
                     "type": "boolean",
-                    "description": "The base64 encoded wasm module you want to store.\n"
+                    "description": "Whether to upload Worker as a module.\n"
                 },
                 "name": {
                     "type": "string",
-                    "description": "The global variable for the binding in your Worker code.\n",
+                    "description": "The name for the script. **Modifying this attribute will force creation of a new resource.**\n",
                     "willReplaceOnChanges": true
                 },
                 "placements": {
@@ -21683,11 +21658,11 @@
                     },
                     "module": {
                         "type": "boolean",
-                        "description": "The base64 encoded wasm module you want to store.\n"
+                        "description": "Whether to upload Worker as a module.\n"
                     },
                     "name": {
                         "type": "string",
-                        "description": "The global variable for the binding in your Worker code.\n",
+                        "description": "The name for the script. **Modifying this attribute will force creation of a new resource.**\n",
                         "willReplaceOnChanges": true
                     },
                     "placements": {
@@ -23048,7 +23023,8 @@
                 "description": "A collection of arguments for invoking getAccounts.\n",
                 "properties": {
                     "name": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "The account name to target for the resource.\n"
                     }
                 },
                 "type": "object"
@@ -23145,10 +23121,12 @@
                         "description": "The account identifier to target for the resource.\n"
                     },
                     "name": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "Name of the Device Posture Rule.\n"
                     },
                     "type": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "The device posture rule type. Available values: `serial_number`, `file`, `application`, `gateway`, `warp`, `domain_joined`, `os_version`, `disk_encryption`, `firewall`, `client_certificate`, `workspace_one`, `unique_client_id`, `crowdstrike_s2s`, `sentinelone`, `kolide`, `tanium_s2s`, `intune`, `sentinelone_s2s`.\n"
                     }
                 },
                 "type": "object",

@@ -103,7 +103,6 @@ class WorkersForPlatformsNamespace(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
@@ -119,7 +118,6 @@ class WorkersForPlatformsNamespace(pulumi.CustomResource):
             dispatch_namespace=example.name,
             tags=["free"])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -144,7 +142,6 @@ class WorkersForPlatformsNamespace(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
@@ -160,7 +157,6 @@ class WorkersForPlatformsNamespace(pulumi.CustomResource):
             dispatch_namespace=example.name,
             tags=["free"])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

@@ -15,7 +15,6 @@ import (
 //
 // ## Example Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -41,7 +40,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func GetDevicePostureRules(ctx *pulumi.Context, args *GetDevicePostureRulesArgs, opts ...pulumi.InvokeOption) (*GetDevicePostureRulesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetDevicePostureRulesResult
@@ -55,9 +53,11 @@ func GetDevicePostureRules(ctx *pulumi.Context, args *GetDevicePostureRulesArgs,
 // A collection of arguments for invoking getDevicePostureRules.
 type GetDevicePostureRulesArgs struct {
 	// The account identifier to target for the resource.
-	AccountId string  `pulumi:"accountId"`
-	Name      *string `pulumi:"name"`
-	Type      *string `pulumi:"type"`
+	AccountId string `pulumi:"accountId"`
+	// Name of the Device Posture Rule.
+	Name *string `pulumi:"name"`
+	// The device posture rule type. Available values: `serialNumber`, `file`, `application`, `gateway`, `warp`, `domainJoined`, `osVersion`, `diskEncryption`, `firewall`, `clientCertificate`, `workspaceOne`, `uniqueClientId`, `crowdstrikeS2s`, `sentinelone`, `kolide`, `taniumS2s`, `intune`, `sentineloneS2s`.
+	Type *string `pulumi:"type"`
 }
 
 // A collection of values returned by getDevicePostureRules.
@@ -90,9 +90,11 @@ func GetDevicePostureRulesOutput(ctx *pulumi.Context, args GetDevicePostureRules
 // A collection of arguments for invoking getDevicePostureRules.
 type GetDevicePostureRulesOutputArgs struct {
 	// The account identifier to target for the resource.
-	AccountId pulumi.StringInput    `pulumi:"accountId"`
-	Name      pulumi.StringPtrInput `pulumi:"name"`
-	Type      pulumi.StringPtrInput `pulumi:"type"`
+	AccountId pulumi.StringInput `pulumi:"accountId"`
+	// Name of the Device Posture Rule.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// The device posture rule type. Available values: `serialNumber`, `file`, `application`, `gateway`, `warp`, `domainJoined`, `osVersion`, `diskEncryption`, `firewall`, `clientCertificate`, `workspaceOne`, `uniqueClientId`, `crowdstrikeS2s`, `sentinelone`, `kolide`, `taniumS2s`, `intune`, `sentineloneS2s`.
+	Type pulumi.StringPtrInput `pulumi:"type"`
 }
 
 func (GetDevicePostureRulesOutputArgs) ElementType() reflect.Type {

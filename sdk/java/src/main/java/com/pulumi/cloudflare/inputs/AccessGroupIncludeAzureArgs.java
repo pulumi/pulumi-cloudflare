@@ -32,14 +32,14 @@ public final class AccessGroupIncludeAzureArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * The ID of the Authentication Context.
+     * The ID of the Azure group or user.
      * 
      */
     @Import(name="ids")
     private @Nullable Output<List<String>> ids;
 
     /**
-     * @return The ID of the Authentication Context.
+     * @return The ID of the Azure group or user.
      * 
      */
     public Optional<Output<List<String>>> ids() {
@@ -93,7 +93,7 @@ public final class AccessGroupIncludeAzureArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param ids The ID of the Authentication Context.
+         * @param ids The ID of the Azure group or user.
          * 
          * @return builder
          * 
@@ -104,7 +104,7 @@ public final class AccessGroupIncludeAzureArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param ids The ID of the Authentication Context.
+         * @param ids The ID of the Azure group or user.
          * 
          * @return builder
          * 
@@ -114,7 +114,7 @@ public final class AccessGroupIncludeAzureArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param ids The ID of the Authentication Context.
+         * @param ids The ID of the Azure group or user.
          * 
          * @return builder
          * 

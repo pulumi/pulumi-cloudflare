@@ -560,7 +560,6 @@ class WaitingRoomEvent(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
@@ -573,7 +572,6 @@ class WaitingRoomEvent(pulumi.CustomResource):
             event_start_time="2006-01-02T15:04:05Z",
             event_end_time="2006-01-02T20:04:05Z")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -612,7 +610,6 @@ class WaitingRoomEvent(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
@@ -625,7 +622,6 @@ class WaitingRoomEvent(pulumi.CustomResource):
             event_start_time="2006-01-02T15:04:05Z",
             event_end_time="2006-01-02T20:04:05Z")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

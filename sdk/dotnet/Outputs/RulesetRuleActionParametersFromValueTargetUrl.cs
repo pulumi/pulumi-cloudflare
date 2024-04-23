@@ -18,7 +18,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string? Expression;
         /// <summary>
-        /// Status code edge TTL value.
+        /// Static value to provide as the HTTP request header value.
         /// </summary>
         public readonly string? Value;
 

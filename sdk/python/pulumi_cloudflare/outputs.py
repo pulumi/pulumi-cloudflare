@@ -860,7 +860,7 @@ class AccessApplicationSaasAppCustomAttribute(dict):
                  required: Optional[bool] = None):
         """
         :param str friendly_name: A friendly name for the attribute as provided to the SaaS app.
-        :param str name: The name of the footer link.
+        :param str name: The name of the attribute as provided to the SaaS app.
         :param str name_format: A globally unique name for an identity or service provider.
         :param bool required: True if the attribute must be always present.
         """
@@ -891,7 +891,7 @@ class AccessApplicationSaasAppCustomAttribute(dict):
     @pulumi.getter
     def name(self) -> Optional[str]:
         """
-        The name of the footer link.
+        The name of the attribute as provided to the SaaS app.
         """
         return pulumi.get(self, "name")
 
@@ -917,7 +917,7 @@ class AccessApplicationSaasAppCustomAttributeSource(dict):
     def __init__(__self__, *,
                  name: str):
         """
-        :param str name: The name of the footer link.
+        :param str name: The name of the attribute as provided by the IDP.
         """
         pulumi.set(__self__, "name", name)
 
@@ -925,7 +925,7 @@ class AccessApplicationSaasAppCustomAttributeSource(dict):
     @pulumi.getter
     def name(self) -> str:
         """
-        The name of the footer link.
+        The name of the attribute as provided by the IDP.
         """
         return pulumi.get(self, "name")
 
@@ -1245,7 +1245,7 @@ class AccessGroupExcludeAzure(dict):
                  ids: Optional[Sequence[str]] = None):
         """
         :param str identity_provider_id: The ID of the Azure Identity provider.
-        :param Sequence[str] ids: The ID of the Authentication Context.
+        :param Sequence[str] ids: The ID of the Azure group or user.
         """
         if identity_provider_id is not None:
             pulumi.set(__self__, "identity_provider_id", identity_provider_id)
@@ -1264,7 +1264,7 @@ class AccessGroupExcludeAzure(dict):
     @pulumi.getter
     def ids(self) -> Optional[Sequence[str]]:
         """
-        The ID of the Authentication Context.
+        The ID of the Azure group or user.
         """
         return pulumi.get(self, "ids")
 
@@ -1332,9 +1332,6 @@ class AccessGroupExcludeGithub(dict):
                  identity_provider_id: Optional[str] = None,
                  name: Optional[str] = None,
                  teams: Optional[Sequence[str]] = None):
-        """
-        :param str identity_provider_id: The ID of the Azure Identity provider.
-        """
         if identity_provider_id is not None:
             pulumi.set(__self__, "identity_provider_id", identity_provider_id)
         if name is not None:
@@ -1345,9 +1342,6 @@ class AccessGroupExcludeGithub(dict):
     @property
     @pulumi.getter(name="identityProviderId")
     def identity_provider_id(self) -> Optional[str]:
-        """
-        The ID of the Azure Identity provider.
-        """
         return pulumi.get(self, "identity_provider_id")
 
     @property
@@ -1383,9 +1377,6 @@ class AccessGroupExcludeGsuite(dict):
     def __init__(__self__, *,
                  emails: Optional[Sequence[str]] = None,
                  identity_provider_id: Optional[str] = None):
-        """
-        :param str identity_provider_id: The ID of the Azure Identity provider.
-        """
         if emails is not None:
             pulumi.set(__self__, "emails", emails)
         if identity_provider_id is not None:
@@ -1399,9 +1390,6 @@ class AccessGroupExcludeGsuite(dict):
     @property
     @pulumi.getter(name="identityProviderId")
     def identity_provider_id(self) -> Optional[str]:
-        """
-        The ID of the Azure Identity provider.
-        """
         return pulumi.get(self, "identity_provider_id")
 
 
@@ -1427,9 +1415,6 @@ class AccessGroupExcludeOkta(dict):
     def __init__(__self__, *,
                  identity_provider_id: Optional[str] = None,
                  names: Optional[Sequence[str]] = None):
-        """
-        :param str identity_provider_id: The ID of the Azure Identity provider.
-        """
         if identity_provider_id is not None:
             pulumi.set(__self__, "identity_provider_id", identity_provider_id)
         if names is not None:
@@ -1438,9 +1423,6 @@ class AccessGroupExcludeOkta(dict):
     @property
     @pulumi.getter(name="identityProviderId")
     def identity_provider_id(self) -> Optional[str]:
-        """
-        The ID of the Azure Identity provider.
-        """
         return pulumi.get(self, "identity_provider_id")
 
     @property
@@ -1476,9 +1458,6 @@ class AccessGroupExcludeSaml(dict):
                  attribute_name: Optional[str] = None,
                  attribute_value: Optional[str] = None,
                  identity_provider_id: Optional[str] = None):
-        """
-        :param str identity_provider_id: The ID of the Azure Identity provider.
-        """
         if attribute_name is not None:
             pulumi.set(__self__, "attribute_name", attribute_name)
         if attribute_value is not None:
@@ -1499,9 +1478,6 @@ class AccessGroupExcludeSaml(dict):
     @property
     @pulumi.getter(name="identityProviderId")
     def identity_provider_id(self) -> Optional[str]:
-        """
-        The ID of the Azure Identity provider.
-        """
         return pulumi.get(self, "identity_provider_id")
 
 
@@ -1820,7 +1796,7 @@ class AccessGroupIncludeAzure(dict):
                  ids: Optional[Sequence[str]] = None):
         """
         :param str identity_provider_id: The ID of the Azure Identity provider.
-        :param Sequence[str] ids: The ID of the Authentication Context.
+        :param Sequence[str] ids: The ID of the Azure group or user.
         """
         if identity_provider_id is not None:
             pulumi.set(__self__, "identity_provider_id", identity_provider_id)
@@ -1839,7 +1815,7 @@ class AccessGroupIncludeAzure(dict):
     @pulumi.getter
     def ids(self) -> Optional[Sequence[str]]:
         """
-        The ID of the Authentication Context.
+        The ID of the Azure group or user.
         """
         return pulumi.get(self, "ids")
 
@@ -1907,9 +1883,6 @@ class AccessGroupIncludeGithub(dict):
                  identity_provider_id: Optional[str] = None,
                  name: Optional[str] = None,
                  teams: Optional[Sequence[str]] = None):
-        """
-        :param str identity_provider_id: The ID of the Azure Identity provider.
-        """
         if identity_provider_id is not None:
             pulumi.set(__self__, "identity_provider_id", identity_provider_id)
         if name is not None:
@@ -1920,9 +1893,6 @@ class AccessGroupIncludeGithub(dict):
     @property
     @pulumi.getter(name="identityProviderId")
     def identity_provider_id(self) -> Optional[str]:
-        """
-        The ID of the Azure Identity provider.
-        """
         return pulumi.get(self, "identity_provider_id")
 
     @property
@@ -1958,9 +1928,6 @@ class AccessGroupIncludeGsuite(dict):
     def __init__(__self__, *,
                  emails: Optional[Sequence[str]] = None,
                  identity_provider_id: Optional[str] = None):
-        """
-        :param str identity_provider_id: The ID of the Azure Identity provider.
-        """
         if emails is not None:
             pulumi.set(__self__, "emails", emails)
         if identity_provider_id is not None:
@@ -1974,9 +1941,6 @@ class AccessGroupIncludeGsuite(dict):
     @property
     @pulumi.getter(name="identityProviderId")
     def identity_provider_id(self) -> Optional[str]:
-        """
-        The ID of the Azure Identity provider.
-        """
         return pulumi.get(self, "identity_provider_id")
 
 
@@ -2002,9 +1966,6 @@ class AccessGroupIncludeOkta(dict):
     def __init__(__self__, *,
                  identity_provider_id: Optional[str] = None,
                  names: Optional[Sequence[str]] = None):
-        """
-        :param str identity_provider_id: The ID of the Azure Identity provider.
-        """
         if identity_provider_id is not None:
             pulumi.set(__self__, "identity_provider_id", identity_provider_id)
         if names is not None:
@@ -2013,9 +1974,6 @@ class AccessGroupIncludeOkta(dict):
     @property
     @pulumi.getter(name="identityProviderId")
     def identity_provider_id(self) -> Optional[str]:
-        """
-        The ID of the Azure Identity provider.
-        """
         return pulumi.get(self, "identity_provider_id")
 
     @property
@@ -2051,9 +2009,6 @@ class AccessGroupIncludeSaml(dict):
                  attribute_name: Optional[str] = None,
                  attribute_value: Optional[str] = None,
                  identity_provider_id: Optional[str] = None):
-        """
-        :param str identity_provider_id: The ID of the Azure Identity provider.
-        """
         if attribute_name is not None:
             pulumi.set(__self__, "attribute_name", attribute_name)
         if attribute_value is not None:
@@ -2074,9 +2029,6 @@ class AccessGroupIncludeSaml(dict):
     @property
     @pulumi.getter(name="identityProviderId")
     def identity_provider_id(self) -> Optional[str]:
-        """
-        The ID of the Azure Identity provider.
-        """
         return pulumi.get(self, "identity_provider_id")
 
 
@@ -2395,7 +2347,7 @@ class AccessGroupRequireAzure(dict):
                  ids: Optional[Sequence[str]] = None):
         """
         :param str identity_provider_id: The ID of the Azure Identity provider.
-        :param Sequence[str] ids: The ID of the Authentication Context.
+        :param Sequence[str] ids: The ID of the Azure group or user.
         """
         if identity_provider_id is not None:
             pulumi.set(__self__, "identity_provider_id", identity_provider_id)
@@ -2414,7 +2366,7 @@ class AccessGroupRequireAzure(dict):
     @pulumi.getter
     def ids(self) -> Optional[Sequence[str]]:
         """
-        The ID of the Authentication Context.
+        The ID of the Azure group or user.
         """
         return pulumi.get(self, "ids")
 
@@ -2482,9 +2434,6 @@ class AccessGroupRequireGithub(dict):
                  identity_provider_id: Optional[str] = None,
                  name: Optional[str] = None,
                  teams: Optional[Sequence[str]] = None):
-        """
-        :param str identity_provider_id: The ID of the Azure Identity provider.
-        """
         if identity_provider_id is not None:
             pulumi.set(__self__, "identity_provider_id", identity_provider_id)
         if name is not None:
@@ -2495,9 +2444,6 @@ class AccessGroupRequireGithub(dict):
     @property
     @pulumi.getter(name="identityProviderId")
     def identity_provider_id(self) -> Optional[str]:
-        """
-        The ID of the Azure Identity provider.
-        """
         return pulumi.get(self, "identity_provider_id")
 
     @property
@@ -2533,9 +2479,6 @@ class AccessGroupRequireGsuite(dict):
     def __init__(__self__, *,
                  emails: Optional[Sequence[str]] = None,
                  identity_provider_id: Optional[str] = None):
-        """
-        :param str identity_provider_id: The ID of the Azure Identity provider.
-        """
         if emails is not None:
             pulumi.set(__self__, "emails", emails)
         if identity_provider_id is not None:
@@ -2549,9 +2492,6 @@ class AccessGroupRequireGsuite(dict):
     @property
     @pulumi.getter(name="identityProviderId")
     def identity_provider_id(self) -> Optional[str]:
-        """
-        The ID of the Azure Identity provider.
-        """
         return pulumi.get(self, "identity_provider_id")
 
 
@@ -2577,9 +2517,6 @@ class AccessGroupRequireOkta(dict):
     def __init__(__self__, *,
                  identity_provider_id: Optional[str] = None,
                  names: Optional[Sequence[str]] = None):
-        """
-        :param str identity_provider_id: The ID of the Azure Identity provider.
-        """
         if identity_provider_id is not None:
             pulumi.set(__self__, "identity_provider_id", identity_provider_id)
         if names is not None:
@@ -2588,9 +2525,6 @@ class AccessGroupRequireOkta(dict):
     @property
     @pulumi.getter(name="identityProviderId")
     def identity_provider_id(self) -> Optional[str]:
-        """
-        The ID of the Azure Identity provider.
-        """
         return pulumi.get(self, "identity_provider_id")
 
     @property
@@ -2626,9 +2560,6 @@ class AccessGroupRequireSaml(dict):
                  attribute_name: Optional[str] = None,
                  attribute_value: Optional[str] = None,
                  identity_provider_id: Optional[str] = None):
-        """
-        :param str identity_provider_id: The ID of the Azure Identity provider.
-        """
         if attribute_name is not None:
             pulumi.set(__self__, "attribute_name", attribute_name)
         if attribute_value is not None:
@@ -2649,9 +2580,6 @@ class AccessGroupRequireSaml(dict):
     @property
     @pulumi.getter(name="identityProviderId")
     def identity_provider_id(self) -> Optional[str]:
-        """
-        The ID of the Azure Identity provider.
-        """
         return pulumi.get(self, "identity_provider_id")
 
 
@@ -3580,7 +3508,7 @@ class AccessPolicyExcludeAzure(dict):
                  ids: Optional[Sequence[str]] = None):
         """
         :param str identity_provider_id: The ID of the Azure Identity provider.
-        :param Sequence[str] ids: The ID of the Authentication Context.
+        :param Sequence[str] ids: The ID of the Azure group or user.
         """
         if identity_provider_id is not None:
             pulumi.set(__self__, "identity_provider_id", identity_provider_id)
@@ -3599,7 +3527,7 @@ class AccessPolicyExcludeAzure(dict):
     @pulumi.getter
     def ids(self) -> Optional[Sequence[str]]:
         """
-        The ID of the Authentication Context.
+        The ID of the Azure group or user.
         """
         return pulumi.get(self, "ids")
 
@@ -3667,9 +3595,6 @@ class AccessPolicyExcludeGithub(dict):
                  identity_provider_id: Optional[str] = None,
                  name: Optional[str] = None,
                  teams: Optional[Sequence[str]] = None):
-        """
-        :param str identity_provider_id: The ID of the Azure Identity provider.
-        """
         if identity_provider_id is not None:
             pulumi.set(__self__, "identity_provider_id", identity_provider_id)
         if name is not None:
@@ -3680,9 +3605,6 @@ class AccessPolicyExcludeGithub(dict):
     @property
     @pulumi.getter(name="identityProviderId")
     def identity_provider_id(self) -> Optional[str]:
-        """
-        The ID of the Azure Identity provider.
-        """
         return pulumi.get(self, "identity_provider_id")
 
     @property
@@ -3718,9 +3640,6 @@ class AccessPolicyExcludeGsuite(dict):
     def __init__(__self__, *,
                  emails: Optional[Sequence[str]] = None,
                  identity_provider_id: Optional[str] = None):
-        """
-        :param str identity_provider_id: The ID of the Azure Identity provider.
-        """
         if emails is not None:
             pulumi.set(__self__, "emails", emails)
         if identity_provider_id is not None:
@@ -3734,9 +3653,6 @@ class AccessPolicyExcludeGsuite(dict):
     @property
     @pulumi.getter(name="identityProviderId")
     def identity_provider_id(self) -> Optional[str]:
-        """
-        The ID of the Azure Identity provider.
-        """
         return pulumi.get(self, "identity_provider_id")
 
 
@@ -3762,9 +3678,6 @@ class AccessPolicyExcludeOkta(dict):
     def __init__(__self__, *,
                  identity_provider_id: Optional[str] = None,
                  names: Optional[Sequence[str]] = None):
-        """
-        :param str identity_provider_id: The ID of the Azure Identity provider.
-        """
         if identity_provider_id is not None:
             pulumi.set(__self__, "identity_provider_id", identity_provider_id)
         if names is not None:
@@ -3773,9 +3686,6 @@ class AccessPolicyExcludeOkta(dict):
     @property
     @pulumi.getter(name="identityProviderId")
     def identity_provider_id(self) -> Optional[str]:
-        """
-        The ID of the Azure Identity provider.
-        """
         return pulumi.get(self, "identity_provider_id")
 
     @property
@@ -3811,9 +3721,6 @@ class AccessPolicyExcludeSaml(dict):
                  attribute_name: Optional[str] = None,
                  attribute_value: Optional[str] = None,
                  identity_provider_id: Optional[str] = None):
-        """
-        :param str identity_provider_id: The ID of the Azure Identity provider.
-        """
         if attribute_name is not None:
             pulumi.set(__self__, "attribute_name", attribute_name)
         if attribute_value is not None:
@@ -3834,9 +3741,6 @@ class AccessPolicyExcludeSaml(dict):
     @property
     @pulumi.getter(name="identityProviderId")
     def identity_provider_id(self) -> Optional[str]:
-        """
-        The ID of the Azure Identity provider.
-        """
         return pulumi.get(self, "identity_provider_id")
 
 
@@ -4155,7 +4059,7 @@ class AccessPolicyIncludeAzure(dict):
                  ids: Optional[Sequence[str]] = None):
         """
         :param str identity_provider_id: The ID of the Azure Identity provider.
-        :param Sequence[str] ids: The ID of the Authentication Context.
+        :param Sequence[str] ids: The ID of the Azure group or user.
         """
         if identity_provider_id is not None:
             pulumi.set(__self__, "identity_provider_id", identity_provider_id)
@@ -4174,7 +4078,7 @@ class AccessPolicyIncludeAzure(dict):
     @pulumi.getter
     def ids(self) -> Optional[Sequence[str]]:
         """
-        The ID of the Authentication Context.
+        The ID of the Azure group or user.
         """
         return pulumi.get(self, "ids")
 
@@ -4242,9 +4146,6 @@ class AccessPolicyIncludeGithub(dict):
                  identity_provider_id: Optional[str] = None,
                  name: Optional[str] = None,
                  teams: Optional[Sequence[str]] = None):
-        """
-        :param str identity_provider_id: The ID of the Azure Identity provider.
-        """
         if identity_provider_id is not None:
             pulumi.set(__self__, "identity_provider_id", identity_provider_id)
         if name is not None:
@@ -4255,9 +4156,6 @@ class AccessPolicyIncludeGithub(dict):
     @property
     @pulumi.getter(name="identityProviderId")
     def identity_provider_id(self) -> Optional[str]:
-        """
-        The ID of the Azure Identity provider.
-        """
         return pulumi.get(self, "identity_provider_id")
 
     @property
@@ -4293,9 +4191,6 @@ class AccessPolicyIncludeGsuite(dict):
     def __init__(__self__, *,
                  emails: Optional[Sequence[str]] = None,
                  identity_provider_id: Optional[str] = None):
-        """
-        :param str identity_provider_id: The ID of the Azure Identity provider.
-        """
         if emails is not None:
             pulumi.set(__self__, "emails", emails)
         if identity_provider_id is not None:
@@ -4309,9 +4204,6 @@ class AccessPolicyIncludeGsuite(dict):
     @property
     @pulumi.getter(name="identityProviderId")
     def identity_provider_id(self) -> Optional[str]:
-        """
-        The ID of the Azure Identity provider.
-        """
         return pulumi.get(self, "identity_provider_id")
 
 
@@ -4337,9 +4229,6 @@ class AccessPolicyIncludeOkta(dict):
     def __init__(__self__, *,
                  identity_provider_id: Optional[str] = None,
                  names: Optional[Sequence[str]] = None):
-        """
-        :param str identity_provider_id: The ID of the Azure Identity provider.
-        """
         if identity_provider_id is not None:
             pulumi.set(__self__, "identity_provider_id", identity_provider_id)
         if names is not None:
@@ -4348,9 +4237,6 @@ class AccessPolicyIncludeOkta(dict):
     @property
     @pulumi.getter(name="identityProviderId")
     def identity_provider_id(self) -> Optional[str]:
-        """
-        The ID of the Azure Identity provider.
-        """
         return pulumi.get(self, "identity_provider_id")
 
     @property
@@ -4386,9 +4272,6 @@ class AccessPolicyIncludeSaml(dict):
                  attribute_name: Optional[str] = None,
                  attribute_value: Optional[str] = None,
                  identity_provider_id: Optional[str] = None):
-        """
-        :param str identity_provider_id: The ID of the Azure Identity provider.
-        """
         if attribute_name is not None:
             pulumi.set(__self__, "attribute_name", attribute_name)
         if attribute_value is not None:
@@ -4409,9 +4292,6 @@ class AccessPolicyIncludeSaml(dict):
     @property
     @pulumi.getter(name="identityProviderId")
     def identity_provider_id(self) -> Optional[str]:
-        """
-        The ID of the Azure Identity provider.
-        """
         return pulumi.get(self, "identity_provider_id")
 
 
@@ -4730,7 +4610,7 @@ class AccessPolicyRequireAzure(dict):
                  ids: Optional[Sequence[str]] = None):
         """
         :param str identity_provider_id: The ID of the Azure Identity provider.
-        :param Sequence[str] ids: The ID of the Authentication Context.
+        :param Sequence[str] ids: The ID of the Azure group or user.
         """
         if identity_provider_id is not None:
             pulumi.set(__self__, "identity_provider_id", identity_provider_id)
@@ -4749,7 +4629,7 @@ class AccessPolicyRequireAzure(dict):
     @pulumi.getter
     def ids(self) -> Optional[Sequence[str]]:
         """
-        The ID of the Authentication Context.
+        The ID of the Azure group or user.
         """
         return pulumi.get(self, "ids")
 
@@ -4817,9 +4697,6 @@ class AccessPolicyRequireGithub(dict):
                  identity_provider_id: Optional[str] = None,
                  name: Optional[str] = None,
                  teams: Optional[Sequence[str]] = None):
-        """
-        :param str identity_provider_id: The ID of the Azure Identity provider.
-        """
         if identity_provider_id is not None:
             pulumi.set(__self__, "identity_provider_id", identity_provider_id)
         if name is not None:
@@ -4830,9 +4707,6 @@ class AccessPolicyRequireGithub(dict):
     @property
     @pulumi.getter(name="identityProviderId")
     def identity_provider_id(self) -> Optional[str]:
-        """
-        The ID of the Azure Identity provider.
-        """
         return pulumi.get(self, "identity_provider_id")
 
     @property
@@ -4868,9 +4742,6 @@ class AccessPolicyRequireGsuite(dict):
     def __init__(__self__, *,
                  emails: Optional[Sequence[str]] = None,
                  identity_provider_id: Optional[str] = None):
-        """
-        :param str identity_provider_id: The ID of the Azure Identity provider.
-        """
         if emails is not None:
             pulumi.set(__self__, "emails", emails)
         if identity_provider_id is not None:
@@ -4884,9 +4755,6 @@ class AccessPolicyRequireGsuite(dict):
     @property
     @pulumi.getter(name="identityProviderId")
     def identity_provider_id(self) -> Optional[str]:
-        """
-        The ID of the Azure Identity provider.
-        """
         return pulumi.get(self, "identity_provider_id")
 
 
@@ -4912,9 +4780,6 @@ class AccessPolicyRequireOkta(dict):
     def __init__(__self__, *,
                  identity_provider_id: Optional[str] = None,
                  names: Optional[Sequence[str]] = None):
-        """
-        :param str identity_provider_id: The ID of the Azure Identity provider.
-        """
         if identity_provider_id is not None:
             pulumi.set(__self__, "identity_provider_id", identity_provider_id)
         if names is not None:
@@ -4923,9 +4788,6 @@ class AccessPolicyRequireOkta(dict):
     @property
     @pulumi.getter(name="identityProviderId")
     def identity_provider_id(self) -> Optional[str]:
-        """
-        The ID of the Azure Identity provider.
-        """
         return pulumi.get(self, "identity_provider_id")
 
     @property
@@ -4961,9 +4823,6 @@ class AccessPolicyRequireSaml(dict):
                  attribute_name: Optional[str] = None,
                  attribute_value: Optional[str] = None,
                  identity_provider_id: Optional[str] = None):
-        """
-        :param str identity_provider_id: The ID of the Azure Identity provider.
-        """
         if attribute_name is not None:
             pulumi.set(__self__, "attribute_name", attribute_name)
         if attribute_value is not None:
@@ -4984,9 +4843,6 @@ class AccessPolicyRequireSaml(dict):
     @property
     @pulumi.getter(name="identityProviderId")
     def identity_provider_id(self) -> Optional[str]:
-        """
-        The ID of the Azure Identity provider.
-        """
         return pulumi.get(self, "identity_provider_id")
 
 
@@ -7619,7 +7475,7 @@ class LoadBalancerPoolOriginHeader(dict):
                  header: str,
                  values: Sequence[str]):
         """
-        :param str header: HTTP request headers.
+        :param str header: HTTP Header name.
         :param Sequence[str] values: Values for the HTTP headers.
         """
         pulumi.set(__self__, "header", header)
@@ -7629,7 +7485,7 @@ class LoadBalancerPoolOriginHeader(dict):
     @pulumi.getter
     def header(self) -> str:
         """
-        HTTP request headers.
+        HTTP Header name.
         """
         return pulumi.get(self, "header")
 
@@ -8210,7 +8066,7 @@ class LoadBalancerRuleOverrideAdaptiveRouting(dict):
     def __init__(__self__, *,
                  failover_across_pools: Optional[bool] = None):
         """
-        :param bool failover_across_pools: Extends zero-downtime failover of requests to healthy origins from alternate pools, when no healthy alternate exists in the same pool, according to the failover order defined by traffic and origin steering. When set `false`, zero-downtime failover will only occur between origins within the same pool. Defaults to `false`.
+        :param bool failover_across_pools: Extends zero-downtime failover of requests to healthy origins from alternate pools, when no healthy alternate exists in the same pool, according to the failover order defined by traffic and origin steering. When set `false`, zero-downtime failover will only occur between origins within the same pool.
         """
         if failover_across_pools is not None:
             pulumi.set(__self__, "failover_across_pools", failover_across_pools)
@@ -8219,7 +8075,7 @@ class LoadBalancerRuleOverrideAdaptiveRouting(dict):
     @pulumi.getter(name="failoverAcrossPools")
     def failover_across_pools(self) -> Optional[bool]:
         """
-        Extends zero-downtime failover of requests to healthy origins from alternate pools, when no healthy alternate exists in the same pool, according to the failover order defined by traffic and origin steering. When set `false`, zero-downtime failover will only occur between origins within the same pool. Defaults to `false`.
+        Extends zero-downtime failover of requests to healthy origins from alternate pools, when no healthy alternate exists in the same pool, according to the failover order defined by traffic and origin steering. When set `false`, zero-downtime failover will only occur between origins within the same pool.
         """
         return pulumi.get(self, "failover_across_pools")
 
@@ -8293,8 +8149,8 @@ class LoadBalancerRuleOverrideLocationStrategy(dict):
                  mode: Optional[str] = None,
                  prefer_ecs: Optional[str] = None):
         """
-        :param str mode: Determines the authoritative location when ECS is not preferred, does not exist in the request, or its GeoIP lookup is unsuccessful. Value `pop` will use the Cloudflare PoP location. Value `resolver_ip` will use the DNS resolver GeoIP location. If the GeoIP lookup is unsuccessful, it will use the Cloudflare PoP location. Available values: `pop`, `resolver_ip`. Defaults to `pop`.
-        :param str prefer_ecs: Whether the EDNS Client Subnet (ECS) GeoIP should be preferred as the authoritative location. Value `always` will always prefer ECS, `never` will never prefer ECS, `proximity` will prefer ECS only when `steering_policy="proximity"`, and `geo` will prefer ECS only when `steering_policy="geo"`. Available values: `always`, `never`, `proximity`, `geo`. Defaults to `proximity`.
+        :param str mode: Determines the authoritative location when ECS is not preferred, does not exist in the request, or its GeoIP lookup is unsuccessful. Value `pop` will use the Cloudflare PoP location. Value `resolver_ip` will use the DNS resolver GeoIP location. If the GeoIP lookup is unsuccessful, it will use the Cloudflare PoP location. Available values: `pop`, `resolver_ip`.
+        :param str prefer_ecs: Whether the EDNS Client Subnet (ECS) GeoIP should be preferred as the authoritative location. Value `always` will always prefer ECS, `never` will never prefer ECS, `proximity` will prefer ECS only when `steering_policy="proximity"`, and `geo` will prefer ECS only when `steering_policy="geo"`. Available values: `always`, `never`, `proximity`, `geo`.
         """
         if mode is not None:
             pulumi.set(__self__, "mode", mode)
@@ -8305,7 +8161,7 @@ class LoadBalancerRuleOverrideLocationStrategy(dict):
     @pulumi.getter
     def mode(self) -> Optional[str]:
         """
-        Determines the authoritative location when ECS is not preferred, does not exist in the request, or its GeoIP lookup is unsuccessful. Value `pop` will use the Cloudflare PoP location. Value `resolver_ip` will use the DNS resolver GeoIP location. If the GeoIP lookup is unsuccessful, it will use the Cloudflare PoP location. Available values: `pop`, `resolver_ip`. Defaults to `pop`.
+        Determines the authoritative location when ECS is not preferred, does not exist in the request, or its GeoIP lookup is unsuccessful. Value `pop` will use the Cloudflare PoP location. Value `resolver_ip` will use the DNS resolver GeoIP location. If the GeoIP lookup is unsuccessful, it will use the Cloudflare PoP location. Available values: `pop`, `resolver_ip`.
         """
         return pulumi.get(self, "mode")
 
@@ -8313,7 +8169,7 @@ class LoadBalancerRuleOverrideLocationStrategy(dict):
     @pulumi.getter(name="preferEcs")
     def prefer_ecs(self) -> Optional[str]:
         """
-        Whether the EDNS Client Subnet (ECS) GeoIP should be preferred as the authoritative location. Value `always` will always prefer ECS, `never` will never prefer ECS, `proximity` will prefer ECS only when `steering_policy="proximity"`, and `geo` will prefer ECS only when `steering_policy="geo"`. Available values: `always`, `never`, `proximity`, `geo`. Defaults to `proximity`.
+        Whether the EDNS Client Subnet (ECS) GeoIP should be preferred as the authoritative location. Value `always` will always prefer ECS, `never` will never prefer ECS, `proximity` will prefer ECS only when `steering_policy="proximity"`, and `geo` will prefer ECS only when `steering_policy="geo"`. Available values: `always`, `never`, `proximity`, `geo`.
         """
         return pulumi.get(self, "prefer_ecs")
 
@@ -8490,9 +8346,9 @@ class LoadBalancerRuleOverrideSessionAffinityAttribute(dict):
         """
         :param Sequence[str] headers: Configures the HTTP header names to use when header session affinity is enabled.
         :param bool require_all_headers: Configures how headers are used when header session affinity is enabled. Set to true to require all headers to be present on requests in order for sessions to be created or false to require at least one header to be present. Defaults to `false`.
-        :param str samesite: Configures the SameSite attribute on session affinity cookie. Value `Auto` will be translated to `Lax` or `None` depending if Always Use HTTPS is enabled. Note: when using value `None`, then you can not set `secure="Never"`. Available values: `Auto`, `Lax`, `None`, `Strict`. Defaults to `Auto`.
-        :param str secure: Configures the Secure attribute on session affinity cookie. Value `Always` indicates the Secure attribute will be set in the Set-Cookie header, `Never` indicates the Secure attribute will not be set, and `Auto` will set the Secure attribute depending if Always Use HTTPS is enabled. Available values: `Auto`, `Always`, `Never`. Defaults to `Auto`.
-        :param str zero_downtime_failover: Configures the zero-downtime failover between origins within a pool when session affinity is enabled. Value `none` means no failover takes place for sessions pinned to the origin. Value `temporary` means traffic will be sent to another other healthy origin until the originally pinned origin is available; note that this can potentially result in heavy origin flapping. Value `sticky` means the session affinity cookie is updated and subsequent requests are sent to the new origin. This feature is currently incompatible with Argo, Tiered Cache, and Bandwidth Alliance. Available values: `none`, `temporary`, `sticky`. Defaults to `none`.
+        :param str samesite: Configures the SameSite attribute on session affinity cookie. Value `Auto` will be translated to `Lax` or `None` depending if Always Use HTTPS is enabled. Note: when using value `None`, then you can not set `secure="Never"`. Available values: `Auto`, `Lax`, `None`, `Strict`.
+        :param str secure: Configures the Secure attribute on session affinity cookie. Value `Always` indicates the Secure attribute will be set in the Set-Cookie header, `Never` indicates the Secure attribute will not be set, and `Auto` will set the Secure attribute depending if Always Use HTTPS is enabled. Available values: `Auto`, `Always`, `Never`.
+        :param str zero_downtime_failover: Configures the zero-downtime failover between origins within a pool when session affinity is enabled. Value `none` means no failover takes place for sessions pinned to the origin. Value `temporary` means traffic will be sent to another other healthy origin until the originally pinned origin is available; note that this can potentially result in heavy origin flapping. Value `sticky` means the session affinity cookie is updated and subsequent requests are sent to the new origin. This feature is currently incompatible with Argo, Tiered Cache, and Bandwidth Alliance. Available values: `none`, `temporary`, `sticky`.
         """
         if headers is not None:
             pulumi.set(__self__, "headers", headers)
@@ -8525,7 +8381,7 @@ class LoadBalancerRuleOverrideSessionAffinityAttribute(dict):
     @pulumi.getter
     def samesite(self) -> Optional[str]:
         """
-        Configures the SameSite attribute on session affinity cookie. Value `Auto` will be translated to `Lax` or `None` depending if Always Use HTTPS is enabled. Note: when using value `None`, then you can not set `secure="Never"`. Available values: `Auto`, `Lax`, `None`, `Strict`. Defaults to `Auto`.
+        Configures the SameSite attribute on session affinity cookie. Value `Auto` will be translated to `Lax` or `None` depending if Always Use HTTPS is enabled. Note: when using value `None`, then you can not set `secure="Never"`. Available values: `Auto`, `Lax`, `None`, `Strict`.
         """
         return pulumi.get(self, "samesite")
 
@@ -8533,7 +8389,7 @@ class LoadBalancerRuleOverrideSessionAffinityAttribute(dict):
     @pulumi.getter
     def secure(self) -> Optional[str]:
         """
-        Configures the Secure attribute on session affinity cookie. Value `Always` indicates the Secure attribute will be set in the Set-Cookie header, `Never` indicates the Secure attribute will not be set, and `Auto` will set the Secure attribute depending if Always Use HTTPS is enabled. Available values: `Auto`, `Always`, `Never`. Defaults to `Auto`.
+        Configures the Secure attribute on session affinity cookie. Value `Always` indicates the Secure attribute will be set in the Set-Cookie header, `Never` indicates the Secure attribute will not be set, and `Auto` will set the Secure attribute depending if Always Use HTTPS is enabled. Available values: `Auto`, `Always`, `Never`.
         """
         return pulumi.get(self, "secure")
 
@@ -8541,7 +8397,7 @@ class LoadBalancerRuleOverrideSessionAffinityAttribute(dict):
     @pulumi.getter(name="zeroDowntimeFailover")
     def zero_downtime_failover(self) -> Optional[str]:
         """
-        Configures the zero-downtime failover between origins within a pool when session affinity is enabled. Value `none` means no failover takes place for sessions pinned to the origin. Value `temporary` means traffic will be sent to another other healthy origin until the originally pinned origin is available; note that this can potentially result in heavy origin flapping. Value `sticky` means the session affinity cookie is updated and subsequent requests are sent to the new origin. This feature is currently incompatible with Argo, Tiered Cache, and Bandwidth Alliance. Available values: `none`, `temporary`, `sticky`. Defaults to `none`.
+        Configures the zero-downtime failover between origins within a pool when session affinity is enabled. Value `none` means no failover takes place for sessions pinned to the origin. Value `temporary` means traffic will be sent to another other healthy origin until the originally pinned origin is available; note that this can potentially result in heavy origin flapping. Value `sticky` means the session affinity cookie is updated and subsequent requests are sent to the new origin. This feature is currently incompatible with Argo, Tiered Cache, and Bandwidth Alliance. Available values: `none`, `temporary`, `sticky`.
         """
         return pulumi.get(self, "zero_downtime_failover")
 
@@ -10044,8 +9900,8 @@ class PageRuleActionsCacheKeyFieldsCookie(dict):
                  check_presences: Optional[Sequence[str]] = None,
                  includes: Optional[Sequence[str]] = None):
         """
-        :param Sequence[str] check_presences: Check for presence of specified HTTP headers, without including their actual values.
-        :param Sequence[str] includes: Only use values of specified query string parameters in Cache Key.
+        :param Sequence[str] check_presences: Check for presence of specified cookies, without including their actual values.
+        :param Sequence[str] includes: Use values of specified cookies in Cache Key.
         """
         if check_presences is not None:
             pulumi.set(__self__, "check_presences", check_presences)
@@ -10056,7 +9912,7 @@ class PageRuleActionsCacheKeyFieldsCookie(dict):
     @pulumi.getter(name="checkPresences")
     def check_presences(self) -> Optional[Sequence[str]]:
         """
-        Check for presence of specified HTTP headers, without including their actual values.
+        Check for presence of specified cookies, without including their actual values.
         """
         return pulumi.get(self, "check_presences")
 
@@ -10064,7 +9920,7 @@ class PageRuleActionsCacheKeyFieldsCookie(dict):
     @pulumi.getter
     def includes(self) -> Optional[Sequence[str]]:
         """
-        Only use values of specified query string parameters in Cache Key.
+        Use values of specified cookies in Cache Key.
         """
         return pulumi.get(self, "includes")
 
@@ -10094,8 +9950,8 @@ class PageRuleActionsCacheKeyFieldsHeader(dict):
                  includes: Optional[Sequence[str]] = None):
         """
         :param Sequence[str] check_presences: Check for presence of specified HTTP headers, without including their actual values.
-        :param Sequence[str] excludes: Exclude these query string parameters from Cache Key.
-        :param Sequence[str] includes: Only use values of specified query string parameters in Cache Key.
+        :param Sequence[str] excludes: Exclude these HTTP headers from Cache Key. Currently, only the `Origin` header can be excluded.
+        :param Sequence[str] includes: Use values of specified HTTP headers in Cache Key. Please refer to [Support article](https://support.cloudflare.com/hc/en-us/articles/115004290387-Creating-Cache-Keys) for the list of HTTP headers that cannot be included. The `Origin` header is always included unless explicitly excluded.
         """
         if check_presences is not None:
             pulumi.set(__self__, "check_presences", check_presences)
@@ -10116,7 +9972,7 @@ class PageRuleActionsCacheKeyFieldsHeader(dict):
     @pulumi.getter
     def excludes(self) -> Optional[Sequence[str]]:
         """
-        Exclude these query string parameters from Cache Key.
+        Exclude these HTTP headers from Cache Key. Currently, only the `Origin` header can be excluded.
         """
         return pulumi.get(self, "excludes")
 
@@ -10124,7 +9980,7 @@ class PageRuleActionsCacheKeyFieldsHeader(dict):
     @pulumi.getter
     def includes(self) -> Optional[Sequence[str]]:
         """
-        Only use values of specified query string parameters in Cache Key.
+        Use values of specified HTTP headers in Cache Key. Please refer to [Support article](https://support.cloudflare.com/hc/en-us/articles/115004290387-Creating-Cache-Keys) for the list of HTTP headers that cannot be included. The `Origin` header is always included unless explicitly excluded.
         """
         return pulumi.get(self, "includes")
 
@@ -10221,7 +10077,6 @@ class PageRuleActionsCacheKeyFieldsUser(dict):
                
                Example:
                
-               <!--Start PulumiCodeChooser -->
                ```python
                import pulumi
                import pulumi_cloudflare as cloudflare
@@ -10258,7 +10113,6 @@ class PageRuleActionsCacheKeyFieldsUser(dict):
                        ),
                    ))
                ```
-               <!--End PulumiCodeChooser -->
         """
         if device_type is not None:
             pulumi.set(__self__, "device_type", device_type)
@@ -10291,7 +10145,6 @@ class PageRuleActionsCacheKeyFieldsUser(dict):
 
         Example:
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
@@ -10328,7 +10181,6 @@ class PageRuleActionsCacheKeyFieldsUser(dict):
                 ),
             ))
         ```
-        <!--End PulumiCodeChooser -->
         """
         return pulumi.get(self, "lang")
 
@@ -12236,7 +12088,7 @@ class RulesetRuleActionParameters(dict):
         :param Sequence[str] response_fields: List of response headers to include as part of custom fields logging, in lowercase.
         :param Sequence['RulesetRuleActionParametersResponseArgs'] responses: List of parameters that configure the response given to end users.
         :param bool rocket_loader: Turn on or off Cloudflare Rocket Loader in the Cloudflare Speed app.
-        :param Mapping[str, str] rules: List of rule-based overrides.
+        :param Mapping[str, str] rules: Map of managed WAF rule ID to comma-delimited string of ruleset rule IDs. Example: `rules = { "efb7b8c949ac4650a09736fc376e9aee" = "5de7edfa648c4d6891dc3e7f84534ffa,e3a567afc347477d9702d9047e97d760" }`.
         :param str ruleset: Which ruleset ID to target.
         :param Sequence[str] rulesets: List of managed WAF rule IDs to target. Only valid when the `"action"` is set to skip.
         :param str security_level: Control options for the Security Level feature from the Security app.
@@ -12244,7 +12096,7 @@ class RulesetRuleActionParameters(dict):
         :param bool server_side_excludes: Turn on or off the Server Side Excludes feature of the Cloudflare Scrape Shield app.
         :param 'RulesetRuleActionParametersSniArgs' sni: List of properties to manange Server Name Indication.
         :param str ssl: Control options for the SSL feature of the Edge Certificates tab in the Cloudflare SSL/TLS app.
-        :param int status_code: Status code for which the edge TTL is applied.
+        :param int status_code: HTTP status code of the custom error response.
         :param bool sxg: Turn on or off the SXG feature.
         :param 'RulesetRuleActionParametersUriArgs' uri: List of URI properties to configure for the ruleset rule when performing URL rewrite transformations.
         :param str version: Version of the ruleset to deploy.
@@ -12665,7 +12517,7 @@ class RulesetRuleActionParameters(dict):
     @pulumi.getter
     def rules(self) -> Optional[Mapping[str, str]]:
         """
-        List of rule-based overrides.
+        Map of managed WAF rule ID to comma-delimited string of ruleset rule IDs. Example: `rules = { "efb7b8c949ac4650a09736fc376e9aee" = "5de7edfa648c4d6891dc3e7f84534ffa,e3a567afc347477d9702d9047e97d760" }`.
         """
         return pulumi.get(self, "rules")
 
@@ -12729,7 +12581,7 @@ class RulesetRuleActionParameters(dict):
     @pulumi.getter(name="statusCode")
     def status_code(self) -> Optional[int]:
         """
-        Status code for which the edge TTL is applied.
+        HTTP status code of the custom error response.
         """
         return pulumi.get(self, "status_code")
 
@@ -13085,9 +12937,9 @@ class RulesetRuleActionParametersCacheKeyCustomKeyHeader(dict):
                  exclude_origin: Optional[bool] = None,
                  includes: Optional[Sequence[str]] = None):
         """
-        :param Sequence[str] check_presences: List of cookies to check for presence in the custom key.
+        :param Sequence[str] check_presences: List of headers to check for presence in the custom key.
         :param bool exclude_origin: Exclude the origin header from the custom key.
-        :param Sequence[str] includes: List of cookies to include in the custom key.
+        :param Sequence[str] includes: List of headers to include in the custom key.
         """
         if check_presences is not None:
             pulumi.set(__self__, "check_presences", check_presences)
@@ -13100,7 +12952,7 @@ class RulesetRuleActionParametersCacheKeyCustomKeyHeader(dict):
     @pulumi.getter(name="checkPresences")
     def check_presences(self) -> Optional[Sequence[str]]:
         """
-        List of cookies to check for presence in the custom key.
+        List of headers to check for presence in the custom key.
         """
         return pulumi.get(self, "check_presences")
 
@@ -13116,7 +12968,7 @@ class RulesetRuleActionParametersCacheKeyCustomKeyHeader(dict):
     @pulumi.getter
     def includes(self) -> Optional[Sequence[str]]:
         """
-        List of cookies to include in the custom key.
+        List of headers to include in the custom key.
         """
         return pulumi.get(self, "includes")
 
@@ -13147,7 +12999,7 @@ class RulesetRuleActionParametersCacheKeyCustomKeyQueryString(dict):
                  includes: Optional[Sequence[str]] = None):
         """
         :param Sequence[str] excludes: List of query string parameters to exclude from the custom key.
-        :param Sequence[str] includes: List of cookies to include in the custom key.
+        :param Sequence[str] includes: List of query string parameters to include in the custom key.
         """
         if excludes is not None:
             pulumi.set(__self__, "excludes", excludes)
@@ -13166,7 +13018,7 @@ class RulesetRuleActionParametersCacheKeyCustomKeyQueryString(dict):
     @pulumi.getter
     def includes(self) -> Optional[Sequence[str]]:
         """
-        List of cookies to include in the custom key.
+        List of query string parameters to include in the custom key.
         """
         return pulumi.get(self, "includes")
 
@@ -13255,8 +13107,8 @@ class RulesetRuleActionParametersEdgeTtl(dict):
                  default: Optional[int] = None,
                  status_code_ttls: Optional[Sequence['outputs.RulesetRuleActionParametersEdgeTtlStatusCodeTtl']] = None):
         """
-        :param str mode: Mode of the browser TTL. Available values: `override_origin`, `respect_origin`, `bypass`
-        :param int default: Default browser TTL. This value is required when override_origin is set
+        :param str mode: Mode of the edge TTL. Available values: `override_origin`, `respect_origin`, `bypass_by_default`
+        :param int default: Default edge TTL.
         :param Sequence['RulesetRuleActionParametersEdgeTtlStatusCodeTtlArgs'] status_code_ttls: Edge TTL for the status codes.
         """
         pulumi.set(__self__, "mode", mode)
@@ -13269,7 +13121,7 @@ class RulesetRuleActionParametersEdgeTtl(dict):
     @pulumi.getter
     def mode(self) -> str:
         """
-        Mode of the browser TTL. Available values: `override_origin`, `respect_origin`, `bypass`
+        Mode of the edge TTL. Available values: `override_origin`, `respect_origin`, `bypass_by_default`
         """
         return pulumi.get(self, "mode")
 
@@ -13277,7 +13129,7 @@ class RulesetRuleActionParametersEdgeTtl(dict):
     @pulumi.getter
     def default(self) -> Optional[int]:
         """
-        Default browser TTL. This value is required when override_origin is set
+        Default edge TTL.
         """
         return pulumi.get(self, "default")
 
@@ -13407,7 +13259,7 @@ class RulesetRuleActionParametersFromList(dict):
                  name: Optional[str] = None):
         """
         :param str key: Expression to use for the list lookup.
-        :param str name: Name of the compression algorithm to use. Available values: `gzip`, `brotli`, `auto`, `default`, `none`
+        :param str name: Name of the list.
         """
         if key is not None:
             pulumi.set(__self__, "key", key)
@@ -13426,7 +13278,7 @@ class RulesetRuleActionParametersFromList(dict):
     @pulumi.getter
     def name(self) -> Optional[str]:
         """
-        Name of the compression algorithm to use. Available values: `gzip`, `brotli`, `auto`, `default`, `none`
+        Name of the list.
         """
         return pulumi.get(self, "name")
 
@@ -13460,7 +13312,7 @@ class RulesetRuleActionParametersFromValue(dict):
                  target_url: Optional['outputs.RulesetRuleActionParametersFromValueTargetUrl'] = None):
         """
         :param bool preserve_query_string: Preserve query string for redirect URL.
-        :param int status_code: Status code for which the edge TTL is applied.
+        :param int status_code: Status code for redirect.
         :param 'RulesetRuleActionParametersFromValueTargetUrlArgs' target_url: Target URL for redirect.
         """
         if preserve_query_string is not None:
@@ -13482,7 +13334,7 @@ class RulesetRuleActionParametersFromValue(dict):
     @pulumi.getter(name="statusCode")
     def status_code(self) -> Optional[int]:
         """
-        Status code for which the edge TTL is applied.
+        Status code for redirect.
         """
         return pulumi.get(self, "status_code")
 
@@ -13502,7 +13354,7 @@ class RulesetRuleActionParametersFromValueTargetUrl(dict):
                  value: Optional[str] = None):
         """
         :param str expression: Use a value dynamically determined by the Firewall Rules expression language based on Wireshark display filters. Refer to the [Firewall Rules language](https://developers.cloudflare.com/firewall/cf-firewall-language) documentation for all available fields, operators, and functions.
-        :param str value: Status code edge TTL value.
+        :param str value: Static value to provide as the HTTP request header value.
         """
         if expression is not None:
             pulumi.set(__self__, "expression", expression)
@@ -13521,7 +13373,7 @@ class RulesetRuleActionParametersFromValueTargetUrl(dict):
     @pulumi.getter
     def value(self) -> Optional[str]:
         """
-        Status code edge TTL value.
+        Static value to provide as the HTTP request header value.
         """
         return pulumi.get(self, "value")
 
@@ -13535,9 +13387,9 @@ class RulesetRuleActionParametersHeader(dict):
                  value: Optional[str] = None):
         """
         :param str expression: Use a value dynamically determined by the Firewall Rules expression language based on Wireshark display filters. Refer to the [Firewall Rules language](https://developers.cloudflare.com/firewall/cf-firewall-language) documentation for all available fields, operators, and functions.
-        :param str name: Name of the compression algorithm to use. Available values: `gzip`, `brotli`, `auto`, `default`, `none`
+        :param str name: Name of the HTTP request header to target.
         :param str operation: Action to perform on the HTTP request header. Available values: `remove`, `set`, `add`.
-        :param str value: Status code edge TTL value.
+        :param str value: Static value to provide as the HTTP request header value.
         """
         if expression is not None:
             pulumi.set(__self__, "expression", expression)
@@ -13560,7 +13412,7 @@ class RulesetRuleActionParametersHeader(dict):
     @pulumi.getter
     def name(self) -> Optional[str]:
         """
-        Name of the compression algorithm to use. Available values: `gzip`, `brotli`, `auto`, `default`, `none`
+        Name of the HTTP request header to target.
         """
         return pulumi.get(self, "name")
 
@@ -13576,7 +13428,7 @@ class RulesetRuleActionParametersHeader(dict):
     @pulumi.getter
     def value(self) -> Optional[str]:
         """
-        Status code edge TTL value.
+        Static value to provide as the HTTP request header value.
         """
         return pulumi.get(self, "value")
 
@@ -13623,7 +13475,7 @@ class RulesetRuleActionParametersOrigin(dict):
                  host: Optional[str] = None,
                  port: Optional[int] = None):
         """
-        :param str host: Host parameters for the custom key.
+        :param str host: Origin Hostname where request is sent.
         :param int port: Origin Port where request is sent.
         """
         if host is not None:
@@ -13635,7 +13487,7 @@ class RulesetRuleActionParametersOrigin(dict):
     @pulumi.getter
     def host(self) -> Optional[str]:
         """
-        Host parameters for the custom key.
+        Origin Hostname where request is sent.
         """
         return pulumi.get(self, "host")
 
@@ -13674,11 +13526,11 @@ class RulesetRuleActionParametersOverrides(dict):
                  rules: Optional[Sequence['outputs.RulesetRuleActionParametersOverridesRule']] = None,
                  sensitivity_level: Optional[str] = None):
         """
-        :param str action: Action to perform in the ruleset rule. Available values: `block`, `challenge`, `compress_response`, `ddos_dynamic`, `ddos_mitigation`, `execute`, `force_connection_close`, `js_challenge`, `log`, `log_custom_field`, `managed_challenge`, `redirect`, `rewrite`, `route`, `score`, `serve_error`, `set_cache_settings`, `set_config`, `skip`.
+        :param str action: Action to perform in the rule-level override. Available values: `block`, `challenge`, `compress_response`, `ddos_dynamic`, `ddos_mitigation`, `execute`, `force_connection_close`, `js_challenge`, `log`, `log_custom_field`, `managed_challenge`, `redirect`, `rewrite`, `route`, `score`, `serve_error`, `set_cache_settings`, `set_config`, `skip`.
         :param Sequence['RulesetRuleActionParametersOverridesCategoryArgs'] categories: List of tag-based overrides.
-        :param bool enabled: Defines if the current tag-level override enables or disables the ruleset rules with the specified tag.
+        :param bool enabled: Defines if the current ruleset-level override enables or disables the ruleset.
         :param Sequence['RulesetRuleActionParametersOverridesRuleArgs'] rules: List of rule-based overrides.
-        :param str sensitivity_level: Sensitivity level for a ruleset rule override.
+        :param str sensitivity_level: Sensitivity level to override for all ruleset rules. Available values: `default`, `medium`, `low`, `eoff`.
         """
         if action is not None:
             pulumi.set(__self__, "action", action)
@@ -13695,7 +13547,7 @@ class RulesetRuleActionParametersOverrides(dict):
     @pulumi.getter
     def action(self) -> Optional[str]:
         """
-        Action to perform in the ruleset rule. Available values: `block`, `challenge`, `compress_response`, `ddos_dynamic`, `ddos_mitigation`, `execute`, `force_connection_close`, `js_challenge`, `log`, `log_custom_field`, `managed_challenge`, `redirect`, `rewrite`, `route`, `score`, `serve_error`, `set_cache_settings`, `set_config`, `skip`.
+        Action to perform in the rule-level override. Available values: `block`, `challenge`, `compress_response`, `ddos_dynamic`, `ddos_mitigation`, `execute`, `force_connection_close`, `js_challenge`, `log`, `log_custom_field`, `managed_challenge`, `redirect`, `rewrite`, `route`, `score`, `serve_error`, `set_cache_settings`, `set_config`, `skip`.
         """
         return pulumi.get(self, "action")
 
@@ -13711,7 +13563,7 @@ class RulesetRuleActionParametersOverrides(dict):
     @pulumi.getter
     def enabled(self) -> Optional[bool]:
         """
-        Defines if the current tag-level override enables or disables the ruleset rules with the specified tag.
+        Defines if the current ruleset-level override enables or disables the ruleset.
         """
         return pulumi.get(self, "enabled")
 
@@ -13727,7 +13579,7 @@ class RulesetRuleActionParametersOverrides(dict):
     @pulumi.getter(name="sensitivityLevel")
     def sensitivity_level(self) -> Optional[str]:
         """
-        Sensitivity level for a ruleset rule override.
+        Sensitivity level to override for all ruleset rules. Available values: `default`, `medium`, `low`, `eoff`.
         """
         return pulumi.get(self, "sensitivity_level")
 
@@ -13739,7 +13591,7 @@ class RulesetRuleActionParametersOverridesCategory(dict):
                  category: Optional[str] = None,
                  enabled: Optional[bool] = None):
         """
-        :param str action: Action to perform in the ruleset rule. Available values: `block`, `challenge`, `compress_response`, `ddos_dynamic`, `ddos_mitigation`, `execute`, `force_connection_close`, `js_challenge`, `log`, `log_custom_field`, `managed_challenge`, `redirect`, `rewrite`, `route`, `score`, `serve_error`, `set_cache_settings`, `set_config`, `skip`.
+        :param str action: Action to perform in the tag-level override. Available values: `block`, `challenge`, `compress_response`, `ddos_dynamic`, `ddos_mitigation`, `execute`, `force_connection_close`, `js_challenge`, `log`, `log_custom_field`, `managed_challenge`, `redirect`, `rewrite`, `route`, `score`, `serve_error`, `set_cache_settings`, `set_config`, `skip`.
         :param str category: Tag name to apply the ruleset rule override to.
         :param bool enabled: Defines if the current tag-level override enables or disables the ruleset rules with the specified tag.
         """
@@ -13754,7 +13606,7 @@ class RulesetRuleActionParametersOverridesCategory(dict):
     @pulumi.getter
     def action(self) -> Optional[str]:
         """
-        Action to perform in the ruleset rule. Available values: `block`, `challenge`, `compress_response`, `ddos_dynamic`, `ddos_mitigation`, `execute`, `force_connection_close`, `js_challenge`, `log`, `log_custom_field`, `managed_challenge`, `redirect`, `rewrite`, `route`, `score`, `serve_error`, `set_cache_settings`, `set_config`, `skip`.
+        Action to perform in the tag-level override. Available values: `block`, `challenge`, `compress_response`, `ddos_dynamic`, `ddos_mitigation`, `execute`, `force_connection_close`, `js_challenge`, `log`, `log_custom_field`, `managed_challenge`, `redirect`, `rewrite`, `route`, `score`, `serve_error`, `set_cache_settings`, `set_config`, `skip`.
         """
         return pulumi.get(self, "action")
 
@@ -13803,9 +13655,9 @@ class RulesetRuleActionParametersOverridesRule(dict):
                  score_threshold: Optional[int] = None,
                  sensitivity_level: Optional[str] = None):
         """
-        :param str action: Action to perform in the ruleset rule. Available values: `block`, `challenge`, `compress_response`, `ddos_dynamic`, `ddos_mitigation`, `execute`, `force_connection_close`, `js_challenge`, `log`, `log_custom_field`, `managed_challenge`, `redirect`, `rewrite`, `route`, `score`, `serve_error`, `set_cache_settings`, `set_config`, `skip`.
-        :param bool enabled: Whether the rule is active.
-        :param str id: Unique rule identifier.
+        :param str action: Action to perform in the rule-level override. Available values: `block`, `challenge`, `compress_response`, `ddos_dynamic`, `ddos_mitigation`, `execute`, `force_connection_close`, `js_challenge`, `log`, `log_custom_field`, `managed_challenge`, `redirect`, `rewrite`, `route`, `score`, `serve_error`, `set_cache_settings`, `set_config`, `skip`.
+        :param bool enabled: Defines if the current rule-level override enables or disables the rule.
+        :param str id: Rule ID to apply the override to.
         :param int score_threshold: Anomaly score threshold to apply in the ruleset rule override. Only applicable to modsecurity-based rulesets.
         :param str sensitivity_level: Sensitivity level for a ruleset rule override.
         """
@@ -13824,7 +13676,7 @@ class RulesetRuleActionParametersOverridesRule(dict):
     @pulumi.getter
     def action(self) -> Optional[str]:
         """
-        Action to perform in the ruleset rule. Available values: `block`, `challenge`, `compress_response`, `ddos_dynamic`, `ddos_mitigation`, `execute`, `force_connection_close`, `js_challenge`, `log`, `log_custom_field`, `managed_challenge`, `redirect`, `rewrite`, `route`, `score`, `serve_error`, `set_cache_settings`, `set_config`, `skip`.
+        Action to perform in the rule-level override. Available values: `block`, `challenge`, `compress_response`, `ddos_dynamic`, `ddos_mitigation`, `execute`, `force_connection_close`, `js_challenge`, `log`, `log_custom_field`, `managed_challenge`, `redirect`, `rewrite`, `route`, `score`, `serve_error`, `set_cache_settings`, `set_config`, `skip`.
         """
         return pulumi.get(self, "action")
 
@@ -13832,7 +13684,7 @@ class RulesetRuleActionParametersOverridesRule(dict):
     @pulumi.getter
     def enabled(self) -> Optional[bool]:
         """
-        Whether the rule is active.
+        Defines if the current rule-level override enables or disables the rule.
         """
         return pulumi.get(self, "enabled")
 
@@ -13840,7 +13692,7 @@ class RulesetRuleActionParametersOverridesRule(dict):
     @pulumi.getter
     def id(self) -> Optional[str]:
         """
-        Unique rule identifier.
+        Rule ID to apply the override to.
         """
         return pulumi.get(self, "id")
 
@@ -13887,9 +13739,9 @@ class RulesetRuleActionParametersResponse(dict):
                  content_type: Optional[str] = None,
                  status_code: Optional[int] = None):
         """
-        :param str content: Content of the custom error response.
-        :param str content_type: Content-Type of the custom error response.
-        :param int status_code: Status code for which the edge TTL is applied.
+        :param str content: Body content to include in the response.
+        :param str content_type: HTTP content type to send in the response.
+        :param int status_code: HTTP status code to send in the response.
         """
         if content is not None:
             pulumi.set(__self__, "content", content)
@@ -13902,7 +13754,7 @@ class RulesetRuleActionParametersResponse(dict):
     @pulumi.getter
     def content(self) -> Optional[str]:
         """
-        Content of the custom error response.
+        Body content to include in the response.
         """
         return pulumi.get(self, "content")
 
@@ -13910,7 +13762,7 @@ class RulesetRuleActionParametersResponse(dict):
     @pulumi.getter(name="contentType")
     def content_type(self) -> Optional[str]:
         """
-        Content-Type of the custom error response.
+        HTTP content type to send in the response.
         """
         return pulumi.get(self, "content_type")
 
@@ -13918,7 +13770,7 @@ class RulesetRuleActionParametersResponse(dict):
     @pulumi.getter(name="statusCode")
     def status_code(self) -> Optional[int]:
         """
-        Status code for which the edge TTL is applied.
+        HTTP status code to send in the response.
         """
         return pulumi.get(self, "status_code")
 
@@ -13964,7 +13816,7 @@ class RulesetRuleActionParametersSni(dict):
     def __init__(__self__, *,
                  value: Optional[str] = None):
         """
-        :param str value: Status code edge TTL value.
+        :param str value: Value to define for SNI.
         """
         if value is not None:
             pulumi.set(__self__, "value", value)
@@ -13973,7 +13825,7 @@ class RulesetRuleActionParametersSni(dict):
     @pulumi.getter
     def value(self) -> Optional[str]:
         """
-        Status code edge TTL value.
+        Value to define for SNI.
         """
         return pulumi.get(self, "value")
 
@@ -13985,7 +13837,6 @@ class RulesetRuleActionParametersUri(dict):
                  path: Optional['outputs.RulesetRuleActionParametersUriPath'] = None,
                  query: Optional['outputs.RulesetRuleActionParametersUriQuery'] = None):
         """
-        :param bool origin: List of properties to change request origin.
         :param 'RulesetRuleActionParametersUriPathArgs' path: URI path configuration when performing a URL rewrite.
         :param 'RulesetRuleActionParametersUriQueryArgs' query: Query string configuration when performing a URL rewrite.
         """
@@ -13999,9 +13850,6 @@ class RulesetRuleActionParametersUri(dict):
     @property
     @pulumi.getter
     def origin(self) -> Optional[bool]:
-        """
-        List of properties to change request origin.
-        """
         return pulumi.get(self, "origin")
 
     @property
@@ -14027,8 +13875,8 @@ class RulesetRuleActionParametersUriPath(dict):
                  expression: Optional[str] = None,
                  value: Optional[str] = None):
         """
-        :param str expression: Use a value dynamically determined by the Firewall Rules expression language based on Wireshark display filters. Refer to the [Firewall Rules language](https://developers.cloudflare.com/firewall/cf-firewall-language) documentation for all available fields, operators, and functions.
-        :param str value: Status code edge TTL value.
+        :param str expression: Expression that defines the updated (dynamic) value of the URI path or query string component. Uses the Firewall Rules expression language based on Wireshark display filters. Refer to the [Firewall Rules language](https://developers.cloudflare.com/firewall/cf-firewall-language) documentation for all available fields, operators, and functions.
+        :param str value: Static string value of the updated URI path or query string component.
         """
         if expression is not None:
             pulumi.set(__self__, "expression", expression)
@@ -14039,7 +13887,7 @@ class RulesetRuleActionParametersUriPath(dict):
     @pulumi.getter
     def expression(self) -> Optional[str]:
         """
-        Use a value dynamically determined by the Firewall Rules expression language based on Wireshark display filters. Refer to the [Firewall Rules language](https://developers.cloudflare.com/firewall/cf-firewall-language) documentation for all available fields, operators, and functions.
+        Expression that defines the updated (dynamic) value of the URI path or query string component. Uses the Firewall Rules expression language based on Wireshark display filters. Refer to the [Firewall Rules language](https://developers.cloudflare.com/firewall/cf-firewall-language) documentation for all available fields, operators, and functions.
         """
         return pulumi.get(self, "expression")
 
@@ -14047,7 +13895,7 @@ class RulesetRuleActionParametersUriPath(dict):
     @pulumi.getter
     def value(self) -> Optional[str]:
         """
-        Status code edge TTL value.
+        Static string value of the updated URI path or query string component.
         """
         return pulumi.get(self, "value")
 
@@ -14058,8 +13906,8 @@ class RulesetRuleActionParametersUriQuery(dict):
                  expression: Optional[str] = None,
                  value: Optional[str] = None):
         """
-        :param str expression: Use a value dynamically determined by the Firewall Rules expression language based on Wireshark display filters. Refer to the [Firewall Rules language](https://developers.cloudflare.com/firewall/cf-firewall-language) documentation for all available fields, operators, and functions.
-        :param str value: Status code edge TTL value.
+        :param str expression: Expression that defines the updated (dynamic) value of the URI path or query string component. Uses the Firewall Rules expression language based on Wireshark display filters. Refer to the [Firewall Rules language](https://developers.cloudflare.com/firewall/cf-firewall-language) documentation for all available fields, operators, and functions.
+        :param str value: Static string value of the updated URI path or query string component.
         """
         if expression is not None:
             pulumi.set(__self__, "expression", expression)
@@ -14070,7 +13918,7 @@ class RulesetRuleActionParametersUriQuery(dict):
     @pulumi.getter
     def expression(self) -> Optional[str]:
         """
-        Use a value dynamically determined by the Firewall Rules expression language based on Wireshark display filters. Refer to the [Firewall Rules language](https://developers.cloudflare.com/firewall/cf-firewall-language) documentation for all available fields, operators, and functions.
+        Expression that defines the updated (dynamic) value of the URI path or query string component. Uses the Firewall Rules expression language based on Wireshark display filters. Refer to the [Firewall Rules language](https://developers.cloudflare.com/firewall/cf-firewall-language) documentation for all available fields, operators, and functions.
         """
         return pulumi.get(self, "expression")
 
@@ -14078,7 +13926,7 @@ class RulesetRuleActionParametersUriQuery(dict):
     @pulumi.getter
     def value(self) -> Optional[str]:
         """
-        Status code edge TTL value.
+        Static string value of the updated URI path or query string component.
         """
         return pulumi.get(self, "value")
 
@@ -14138,7 +13986,7 @@ class RulesetRuleLogging(dict):
     def __init__(__self__, *,
                  enabled: Optional[bool] = None):
         """
-        :param bool enabled: Defines if the current tag-level override enables or disables the ruleset rules with the specified tag.
+        :param bool enabled: Override the default logging behavior when a rule is matched.
         """
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
@@ -14147,7 +13995,7 @@ class RulesetRuleLogging(dict):
     @pulumi.getter
     def enabled(self) -> Optional[bool]:
         """
-        Defines if the current tag-level override enables or disables the ruleset rules with the specified tag.
+        Override the default logging behavior when a rule is matched.
         """
         return pulumi.get(self, "enabled")
 
@@ -15798,8 +15646,8 @@ class TeamsRuleRuleSettingsEgress(dict):
                  ipv6: str,
                  ipv4_fallback: Optional[str] = None):
         """
-        :param str ipv4: IPv4 resolvers.
-        :param str ipv6: IPv6 resolvers.
+        :param str ipv4: The IPv4 address to be used for egress.
+        :param str ipv6: The IPv6 range to be used for egress.
         :param str ipv4_fallback: The IPv4 address to be used for egress in the event of an error egressing with the primary IPv4. Can be '0.0.0.0' to indicate local egreass via Warp IPs.
         """
         pulumi.set(__self__, "ipv4", ipv4)
@@ -15811,7 +15659,7 @@ class TeamsRuleRuleSettingsEgress(dict):
     @pulumi.getter
     def ipv4(self) -> str:
         """
-        IPv4 resolvers.
+        The IPv4 address to be used for egress.
         """
         return pulumi.get(self, "ipv4")
 
@@ -15819,7 +15667,7 @@ class TeamsRuleRuleSettingsEgress(dict):
     @pulumi.getter
     def ipv6(self) -> str:
         """
-        IPv6 resolvers.
+        The IPv6 range to be used for egress.
         """
         return pulumi.get(self, "ipv6")
 
@@ -15838,8 +15686,8 @@ class TeamsRuleRuleSettingsL4override(dict):
                  ip: str,
                  port: int):
         """
-        :param str ip: The IPv4 or IPv6 address of the upstream resolver.
-        :param int port: A port number to use for the upstream resolver. Defaults to `53`.
+        :param str ip: Override IP to forward traffic to.
+        :param int port: Override Port to forward traffic to.
         """
         pulumi.set(__self__, "ip", ip)
         pulumi.set(__self__, "port", port)
@@ -15848,7 +15696,7 @@ class TeamsRuleRuleSettingsL4override(dict):
     @pulumi.getter
     def ip(self) -> str:
         """
-        The IPv4 or IPv6 address of the upstream resolver.
+        Override IP to forward traffic to.
         """
         return pulumi.get(self, "ip")
 
@@ -15856,7 +15704,7 @@ class TeamsRuleRuleSettingsL4override(dict):
     @pulumi.getter
     def port(self) -> int:
         """
-        A port number to use for the upstream resolver. Defaults to `53`.
+        Override Port to forward traffic to.
         """
         return pulumi.get(self, "port")
 
@@ -15926,7 +15774,7 @@ class TeamsRuleRuleSettingsPayloadLog(dict):
     def __init__(__self__, *,
                  enabled: bool):
         """
-        :param bool enabled: Enable notification settings.
+        :param bool enabled: Enable or disable DLP Payload Logging for this rule.
         """
         pulumi.set(__self__, "enabled", enabled)
 
@@ -15934,7 +15782,7 @@ class TeamsRuleRuleSettingsPayloadLog(dict):
     @pulumi.getter
     def enabled(self) -> bool:
         """
-        Enable notification settings.
+        Enable or disable DLP Payload Logging for this rule.
         """
         return pulumi.get(self, "enabled")
 
@@ -19526,8 +19374,8 @@ class GetLoadBalancerPoolsPoolOriginResult(dict):
                  weight: Optional[float] = None):
         """
         :param str address: The IP address (IPv4 or IPv6) of the origin, or the publicly addressable hostname.
-        :param str name: A regular expression matching the name of the Load Balancer pool to lookup.
-        :param bool enabled: Whether this pool is enabled. Disabled pools will not receive traffic and are excluded from health checks.
+        :param str name: A human-identifiable name for the origin.
+        :param bool enabled: Whether this origin is enabled. Disabled origins will not receive traffic and are excluded from health checks.
         :param Sequence['GetLoadBalancerPoolsPoolOriginHeaderArgs'] headers: HTTP request headers.
         :param float weight: The weight (0.01 - 1.00) of this origin, relative to other origins in the pool. Equal values mean equal weighting. A weight of 0 means traffic will not be sent to this origin, but health is still checked. When `origin_steering.policy="least_outstanding_requests"`, weight is used to scale the origin's outstanding requests. When `origin_steering.policy="least_connections"`, weight is used to scale the origin's open connections.
         """
@@ -19552,7 +19400,7 @@ class GetLoadBalancerPoolsPoolOriginResult(dict):
     @pulumi.getter
     def name(self) -> str:
         """
-        A regular expression matching the name of the Load Balancer pool to lookup.
+        A human-identifiable name for the origin.
         """
         return pulumi.get(self, "name")
 
@@ -19560,7 +19408,7 @@ class GetLoadBalancerPoolsPoolOriginResult(dict):
     @pulumi.getter
     def enabled(self) -> Optional[bool]:
         """
-        Whether this pool is enabled. Disabled pools will not receive traffic and are excluded from health checks.
+        Whether this origin is enabled. Disabled origins will not receive traffic and are excluded from health checks.
         """
         return pulumi.get(self, "enabled")
 
@@ -19780,9 +19628,9 @@ class GetRulesetsRulesetRuleResult(dict):
                  ratelimit: Optional['outputs.GetRulesetsRulesetRuleRatelimitResult'] = None):
         """
         :param str expression: Criteria for an HTTP request to trigger the ruleset rule action. Uses the Firewall Rules expression language based on Wireshark display filters. Refer to the [Firewall Rules language](https://developers.cloudflare.com/firewall/cf-firewall-language) documentation for all available fields, operators, and functions
-        :param str id: The ID of the Ruleset to target.
+        :param str id: Unique rule identifier.
         :param str ref: Rule reference.
-        :param str version: Version of the ruleset to filter on.
+        :param str version: Version of the ruleset to deploy.
         :param str action: Action to perform in the ruleset rule. Available values: `block`, `challenge`, `compress_response`, `ddos_dynamic`, `ddos_mitigation`, `execute`, `force_connection_close`, `js_challenge`, `log`, `log_custom_field`, `managed_challenge`, `redirect`, `rewrite`, `route`, `score`, `serve_error`, `set_cache_settings`, `set_config`, `skip`
         :param 'GetRulesetsRulesetRuleActionParametersArgs' action_parameters: List of parameters that configure the behavior of the ruleset rule action.
         :param str description: Brief summary of the ruleset rule and its intended use.
@@ -19825,7 +19673,7 @@ class GetRulesetsRulesetRuleResult(dict):
     @pulumi.getter
     def id(self) -> str:
         """
-        The ID of the Ruleset to target.
+        Unique rule identifier.
         """
         return pulumi.get(self, "id")
 
@@ -19841,7 +19689,7 @@ class GetRulesetsRulesetRuleResult(dict):
     @pulumi.getter
     def version(self) -> str:
         """
-        Version of the ruleset to filter on.
+        Version of the ruleset to deploy.
         """
         return pulumi.get(self, "version")
 
@@ -19964,7 +19812,7 @@ class GetRulesetsRulesetRuleActionParametersResult(dict):
                  sxg: Optional[bool] = None,
                  uri: Optional['outputs.GetRulesetsRulesetRuleActionParametersUriResult'] = None):
         """
-        :param str version: Version of the ruleset to filter on.
+        :param str version: Version of the ruleset to deploy.
         :param Sequence[int] additional_cacheable_ports: Allows for the ability to support caching on non-standard ports.
         :param bool automatic_https_rewrites: Turn on or off Cloudflare Automatic HTTPS rewrites.
         :param Sequence['GetRulesetsRulesetRuleActionParametersAutominifyArgs'] autominifies: Indicate which file extensions to minify automatically.
@@ -19985,7 +19833,7 @@ class GetRulesetsRulesetRuleActionParametersResult(dict):
         :param Sequence['GetRulesetsRulesetRuleActionParametersHeaderArgs'] headers: List of HTTP header modifications to perform in the ruleset rule.
         :param str host_header: Host Header that request origin receives.
         :param bool hotlink_protection: Turn on or off the hotlink protection feature.
-        :param str id: The ID of the Ruleset to target.
+        :param str id: Identifier of the action parameter to modify.
         :param 'GetRulesetsRulesetRuleActionParametersMatchedDataArgs' matched_data: List of properties to configure WAF payload logging.
         :param bool mirage: Turn on or off Cloudflare Mirage of the Cloudflare Speed app.
         :param bool opportunistic_encryption: Turn on or off the Cloudflare Opportunistic Encryption feature of the Edge Certificates tab in the Cloudflare SSL/TLS app.
@@ -20118,7 +19966,7 @@ class GetRulesetsRulesetRuleActionParametersResult(dict):
     @pulumi.getter
     def version(self) -> str:
         """
-        Version of the ruleset to filter on.
+        Version of the ruleset to deploy.
         """
         return pulumi.get(self, "version")
 
@@ -20286,7 +20134,7 @@ class GetRulesetsRulesetRuleActionParametersResult(dict):
     @pulumi.getter
     def id(self) -> Optional[str]:
         """
-        The ID of the Ruleset to target.
+        Identifier of the action parameter to modify.
         """
         return pulumi.get(self, "id")
 
@@ -20996,7 +20844,7 @@ class GetRulesetsRulesetRuleActionParametersFromListResult(dict):
                  name: str):
         """
         :param str key: Expression to use for the list lookup.
-        :param str name: Name of the ruleset.
+        :param str name: Name of the list.
         """
         pulumi.set(__self__, "key", key)
         pulumi.set(__self__, "name", name)
@@ -21013,7 +20861,7 @@ class GetRulesetsRulesetRuleActionParametersFromListResult(dict):
     @pulumi.getter
     def name(self) -> str:
         """
-        Name of the ruleset.
+        Name of the list.
         """
         return pulumi.get(self, "name")
 
@@ -21101,7 +20949,7 @@ class GetRulesetsRulesetRuleActionParametersHeaderResult(dict):
                  value: Optional[str] = None):
         """
         :param str expression: Use a value dynamically determined by the Firewall Rules expression language based on Wireshark display filters. Refer to the [Firewall Rules language](https://developers.cloudflare.com/firewall/cf-firewall-language) documentation for all available fields, operators, and functions. Conflicts with `"value"`.
-        :param str name: Name of the ruleset.
+        :param str name: Name of the HTTP request header to target.
         :param str operation: Action to perform on the HTTP request header. Available values: `remove`, `set`, `add`
         :param str value: Static value to provide as the HTTP request header value. Conflicts with `"expression"`.
         """
@@ -21126,7 +20974,7 @@ class GetRulesetsRulesetRuleActionParametersHeaderResult(dict):
     @pulumi.getter
     def name(self) -> Optional[str]:
         """
-        Name of the ruleset.
+        Name of the HTTP request header to target.
         """
         return pulumi.get(self, "name")
 
@@ -21349,7 +21197,7 @@ class GetRulesetsRulesetRuleActionParametersOverridesRuleResult(dict):
         """
         :param str action: Action to perform in the rule-level override. Available values: `block`, `challenge`, `compress_response`, `ddos_dynamic`, `ddos_mitigation`, `execute`, `force_connection_close`, `js_challenge`, `log`, `log_custom_field`, `managed_challenge`, `redirect`, `rewrite`, `route`, `score`, `serve_error`, `set_cache_settings`, `set_config`, `skip`
         :param bool enabled: Defines if the current rule-level override enables or disables the rule.
-        :param str id: The ID of the Ruleset to target.
+        :param str id: The ID of this resource.
         :param int score_threshold: Anomaly score threshold to apply in the ruleset rule override. Only applicable to modsecurity-based rulesets.
         :param str sensitivity_level: Sensitivity level for a ruleset rule override.
         :param str status: Defines if the current rule-level override enables or disables the rule. Available values: `enabled`, `disabled`
@@ -21390,7 +21238,7 @@ class GetRulesetsRulesetRuleActionParametersOverridesRuleResult(dict):
     @pulumi.getter
     def id(self) -> Optional[str]:
         """
-        The ID of the Ruleset to target.
+        The ID of this resource.
         """
         return pulumi.get(self, "id")
 

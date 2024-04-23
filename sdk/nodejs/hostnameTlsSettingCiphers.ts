@@ -9,7 +9,6 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as cloudflare from "@pulumi/cloudflare";
@@ -20,7 +19,6 @@ import * as utilities from "./utilities";
  *     values: ["ECDHE-RSA-AES128-GCM-SHA256"],
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

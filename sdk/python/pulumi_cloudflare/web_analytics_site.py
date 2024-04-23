@@ -232,7 +232,6 @@ class WebAnalyticsSite(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
@@ -242,7 +241,6 @@ class WebAnalyticsSite(pulumi.CustomResource):
             zone_tag="0da42c8d2132a9ddaf714f9e7c920711",
             auto_install=True)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -268,7 +266,6 @@ class WebAnalyticsSite(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_cloudflare as cloudflare
@@ -278,7 +275,6 @@ class WebAnalyticsSite(pulumi.CustomResource):
             zone_tag="0da42c8d2132a9ddaf714f9e7c920711",
             auto_install=True)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
