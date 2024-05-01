@@ -11,6 +11,74 @@ import * as utilities from "./utilities";
  * are a set of entries that can be matched in HTTP bodies or files.
  * They are referenced in Zero Trust Gateway rules.
  *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as cloudflare from "@pulumi/cloudflare";
+ *
+ * // Predefined profile must be imported, cannot be created
+ * const creds = new cloudflare.DlpProfile("creds", {
+ *     accountId: "f037e56e89293a057740de681ac9abbe",
+ *     name: "Credentials and Secrets",
+ *     type: "predefined",
+ *     allowedMatchCount: 3,
+ *     entries: [
+ *         {
+ *             enabled: true,
+ *             name: "Amazon AWS Access Key ID",
+ *             id: "d8fcfc9c-773c-405e-8426-21ecbb67ba93",
+ *         },
+ *         {
+ *             enabled: false,
+ *             id: "2c0e33e1-71da-40c8-aad3-32e674ad3d96",
+ *             name: "Amazon AWS Secret Access Key",
+ *         },
+ *         {
+ *             enabled: true,
+ *             id: "4e92c006-3802-4dff-bbe1-8e1513b1c92a",
+ *             name: "Microsoft Azure Client Secret",
+ *         },
+ *         {
+ *             enabled: false,
+ *             id: "5c713294-2375-4904-abcf-e4a15be4d592",
+ *             name: "SSH Private Key",
+ *         },
+ *         {
+ *             enabled: true,
+ *             id: "6c6579e4-d832-42d5-905c-8e53340930f2",
+ *             name: "Google GCP API Key",
+ *         },
+ *     ],
+ * });
+ * // Custom profile
+ * const exampleCustom = new cloudflare.DlpProfile("example_custom", {
+ *     accountId: "f037e56e89293a057740de681ac9abbe",
+ *     name: "Example Custom Profile",
+ *     description: "A profile with example entries",
+ *     type: "custom",
+ *     allowedMatchCount: 0,
+ *     entries: [
+ *         {
+ *             name: "Matches visa credit cards",
+ *             enabled: true,
+ *             pattern: {
+ *                 regex: "4\\d{3}([-\\. ])?\\d{4}([-\\. ])?\\d{4}([-\\. ])?\\d{4}",
+ *                 validation: "luhn",
+ *             },
+ *         },
+ *         {
+ *             name: "Matches diners club card",
+ *             enabled: true,
+ *             pattern: {
+ *                 regex: "(?:0[0-5]|[68][0-9])[0-9]{11}",
+ *                 validation: "luhn",
+ *             },
+ *         },
+ *     ],
+ * });
+ * ```
+ *
  * ## Import
  *
  * ```sh
@@ -70,6 +138,10 @@ export class DlpProfile extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
+     * If true, scan images via OCR to determine if any text present matches filters.
+     */
+    public readonly ocrEnabled!: pulumi.Output<boolean | undefined>;
+    /**
      * The type of the profile. Available values: `custom`, `predefined`. **Modifying this attribute will force creation of a new resource.**
      */
     public readonly type!: pulumi.Output<string>;
@@ -93,6 +165,7 @@ export class DlpProfile extends pulumi.CustomResource {
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["entries"] = state ? state.entries : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["ocrEnabled"] = state ? state.ocrEnabled : undefined;
             resourceInputs["type"] = state ? state.type : undefined;
         } else {
             const args = argsOrState as DlpProfileArgs | undefined;
@@ -117,6 +190,7 @@ export class DlpProfile extends pulumi.CustomResource {
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["entries"] = args ? args.entries : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["ocrEnabled"] = args ? args.ocrEnabled : undefined;
             resourceInputs["type"] = args ? args.type : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -153,6 +227,10 @@ export interface DlpProfileState {
      */
     name?: pulumi.Input<string>;
     /**
+     * If true, scan images via OCR to determine if any text present matches filters.
+     */
+    ocrEnabled?: pulumi.Input<boolean>;
+    /**
      * The type of the profile. Available values: `custom`, `predefined`. **Modifying this attribute will force creation of a new resource.**
      */
     type?: pulumi.Input<string>;
@@ -186,6 +264,10 @@ export interface DlpProfileArgs {
      * Name of the profile. **Modifying this attribute will force creation of a new resource.**
      */
     name: pulumi.Input<string>;
+    /**
+     * If true, scan images via OCR to determine if any text present matches filters.
+     */
+    ocrEnabled?: pulumi.Input<boolean>;
     /**
      * The type of the profile. Available values: `custom`, `predefined`. **Modifying this attribute will force creation of a new resource.**
      */

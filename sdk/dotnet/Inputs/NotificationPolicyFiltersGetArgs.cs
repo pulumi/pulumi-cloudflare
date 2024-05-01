@@ -344,6 +344,18 @@ namespace Pulumi.Cloudflare.Inputs
             set => _targetHostnames = value;
         }
 
+        [Input("targetIps")]
+        private InputList<string>? _targetIps;
+
+        /// <summary>
+        /// Target ip to alert on for dos in CIDR notation.
+        /// </summary>
+        public InputList<string> TargetIps
+        {
+            get => _targetIps ?? (_targetIps = new InputList<string>());
+            set => _targetIps = value;
+        }
+
         [Input("targetZoneNames")]
         private InputList<string>? _targetZoneNames;
 

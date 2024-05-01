@@ -8,6 +8,7 @@ import com.pulumi.cloudflare.inputs.DlpProfileEntryArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -111,6 +112,21 @@ public final class DlpProfileArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * If true, scan images via OCR to determine if any text present matches filters.
+     * 
+     */
+    @Import(name="ocrEnabled")
+    private @Nullable Output<Boolean> ocrEnabled;
+
+    /**
+     * @return If true, scan images via OCR to determine if any text present matches filters.
+     * 
+     */
+    public Optional<Output<Boolean>> ocrEnabled() {
+        return Optional.ofNullable(this.ocrEnabled);
+    }
+
+    /**
      * The type of the profile. Available values: `custom`, `predefined`. **Modifying this attribute will force creation of a new resource.**
      * 
      */
@@ -134,6 +150,7 @@ public final class DlpProfileArgs extends com.pulumi.resources.ResourceArgs {
         this.description = $.description;
         this.entries = $.entries;
         this.name = $.name;
+        this.ocrEnabled = $.ocrEnabled;
         this.type = $.type;
     }
 
@@ -289,6 +306,27 @@ public final class DlpProfileArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder name(String name) {
             return name(Output.of(name));
+        }
+
+        /**
+         * @param ocrEnabled If true, scan images via OCR to determine if any text present matches filters.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ocrEnabled(@Nullable Output<Boolean> ocrEnabled) {
+            $.ocrEnabled = ocrEnabled;
+            return this;
+        }
+
+        /**
+         * @param ocrEnabled If true, scan images via OCR to determine if any text present matches filters.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ocrEnabled(Boolean ocrEnabled) {
+            return ocrEnabled(Output.of(ocrEnabled));
         }
 
         /**

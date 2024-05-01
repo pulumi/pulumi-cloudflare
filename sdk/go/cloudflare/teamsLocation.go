@@ -33,6 +33,7 @@ import (
 //				AccountId:     pulumi.String("f037e56e89293a057740de681ac9abbe"),
 //				Name:          pulumi.String("office"),
 //				ClientDefault: pulumi.Bool(true),
+//				EcsSupport:    pulumi.Bool(false),
 //				Networks: cloudflare.TeamsLocationNetworkArray{
 //					&cloudflare.TeamsLocationNetworkArgs{
 //						Network: pulumi.String("203.0.113.1/32"),
@@ -67,6 +68,8 @@ type TeamsLocation struct {
 	ClientDefault pulumi.BoolPtrOutput `pulumi:"clientDefault"`
 	// The FQDN that DoH clients should be pointed at.
 	DohSubdomain pulumi.StringOutput `pulumi:"dohSubdomain"`
+	// Indicator that this location needs to resolve EDNS queries.
+	EcsSupport pulumi.BoolPtrOutput `pulumi:"ecsSupport"`
 	// Client IP address.
 	Ip pulumi.StringOutput `pulumi:"ip"`
 	// IP to direct all IPv4 DNS queries to.
@@ -122,6 +125,8 @@ type teamsLocationState struct {
 	ClientDefault *bool `pulumi:"clientDefault"`
 	// The FQDN that DoH clients should be pointed at.
 	DohSubdomain *string `pulumi:"dohSubdomain"`
+	// Indicator that this location needs to resolve EDNS queries.
+	EcsSupport *bool `pulumi:"ecsSupport"`
 	// Client IP address.
 	Ip *string `pulumi:"ip"`
 	// IP to direct all IPv4 DNS queries to.
@@ -142,6 +147,8 @@ type TeamsLocationState struct {
 	ClientDefault pulumi.BoolPtrInput
 	// The FQDN that DoH clients should be pointed at.
 	DohSubdomain pulumi.StringPtrInput
+	// Indicator that this location needs to resolve EDNS queries.
+	EcsSupport pulumi.BoolPtrInput
 	// Client IP address.
 	Ip pulumi.StringPtrInput
 	// IP to direct all IPv4 DNS queries to.
@@ -162,6 +169,8 @@ type teamsLocationArgs struct {
 	AccountId string `pulumi:"accountId"`
 	// Indicator that this is the default location.
 	ClientDefault *bool `pulumi:"clientDefault"`
+	// Indicator that this location needs to resolve EDNS queries.
+	EcsSupport *bool `pulumi:"ecsSupport"`
 	// Name of the teams location.
 	Name string `pulumi:"name"`
 	// The networks CIDRs that comprise the location.
@@ -174,6 +183,8 @@ type TeamsLocationArgs struct {
 	AccountId pulumi.StringInput
 	// Indicator that this is the default location.
 	ClientDefault pulumi.BoolPtrInput
+	// Indicator that this location needs to resolve EDNS queries.
+	EcsSupport pulumi.BoolPtrInput
 	// Name of the teams location.
 	Name pulumi.StringInput
 	// The networks CIDRs that comprise the location.
@@ -285,6 +296,11 @@ func (o TeamsLocationOutput) ClientDefault() pulumi.BoolPtrOutput {
 // The FQDN that DoH clients should be pointed at.
 func (o TeamsLocationOutput) DohSubdomain() pulumi.StringOutput {
 	return o.ApplyT(func(v *TeamsLocation) pulumi.StringOutput { return v.DohSubdomain }).(pulumi.StringOutput)
+}
+
+// Indicator that this location needs to resolve EDNS queries.
+func (o TeamsLocationOutput) EcsSupport() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *TeamsLocation) pulumi.BoolPtrOutput { return v.EcsSupport }).(pulumi.BoolPtrOutput)
 }
 
 // Client IP address.

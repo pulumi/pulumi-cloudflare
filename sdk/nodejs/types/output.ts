@@ -3054,6 +3054,10 @@ export interface NotificationPolicyFilters {
      */
     targetHostnames?: string[];
     /**
+     * Target ip to alert on for dos in CIDR notation.
+     */
+    targetIps?: string[];
+    /**
      * Target domain to alert on.
      */
     targetZoneNames?: string[];
@@ -4574,6 +4578,18 @@ export interface TeamsAccountBodyScanning {
      * Body scanning inspection mode. Available values: `deep`, `shallow`.
      */
     inspectionMode: string;
+}
+
+export interface TeamsAccountCustomCertificate {
+    /**
+     * Whether TLS encryption should use a custom certificate.
+     */
+    enabled: boolean;
+    /**
+     * ID of custom certificate.
+     */
+    id: string;
+    updatedAt: string;
 }
 
 export interface TeamsAccountExtendedEmailMatching {

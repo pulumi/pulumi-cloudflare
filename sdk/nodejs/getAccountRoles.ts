@@ -8,6 +8,23 @@ import * as utilities from "./utilities";
 
 /**
  * Use this data source to lookup [Account Roles](https://api.cloudflare.com/#account-roles-properties).
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as cloudflare from "@pulumi/cloudflare";
+ *
+ * const accountRoles = cloudflare.getAccountRoles({
+ *     accountId: "f037e56e89293a057740de681ac9abbe",
+ * });
+ * const rolesByName = accountRoles.then(accountRoles => .reduce((__obj, role) => ({ ...__obj, [role.name]: role })));
+ * const member = new cloudflare.AccountMember("member", {
+ *     accountId: "f037e56e89293a057740de681ac9abbe",
+ *     emailAddress: "user@example.com",
+ *     roleIds: [rolesByName.Administrator?.id],
+ * });
+ * ```
  */
 export function getAccountRoles(args: GetAccountRolesArgs, opts?: pulumi.InvokeOptions): Promise<GetAccountRolesResult> {
 
@@ -46,6 +63,23 @@ export interface GetAccountRolesResult {
 }
 /**
  * Use this data source to lookup [Account Roles](https://api.cloudflare.com/#account-roles-properties).
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as cloudflare from "@pulumi/cloudflare";
+ *
+ * const accountRoles = cloudflare.getAccountRoles({
+ *     accountId: "f037e56e89293a057740de681ac9abbe",
+ * });
+ * const rolesByName = accountRoles.then(accountRoles => .reduce((__obj, role) => ({ ...__obj, [role.name]: role })));
+ * const member = new cloudflare.AccountMember("member", {
+ *     accountId: "f037e56e89293a057740de681ac9abbe",
+ *     emailAddress: "user@example.com",
+ *     roleIds: [rolesByName.Administrator?.id],
+ * });
+ * ```
  */
 export function getAccountRolesOutput(args: GetAccountRolesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAccountRolesResult> {
     return pulumi.output(args).apply((a: any) => getAccountRoles(a, opts))

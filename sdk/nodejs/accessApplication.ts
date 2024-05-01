@@ -136,6 +136,10 @@ export class AccessApplication extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
+     * Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if corsHeaders is set. Defaults to `false`.
+     */
+    public readonly optionsPreflightBypass!: pulumi.Output<boolean | undefined>;
+    /**
      * SaaS configuration for the Access Application.
      */
     public readonly saasApp!: pulumi.Output<outputs.AccessApplicationSaasApp | undefined>;
@@ -206,6 +210,7 @@ export class AccessApplication extends pulumi.CustomResource {
             resourceInputs["landingPageDesign"] = state ? state.landingPageDesign : undefined;
             resourceInputs["logoUrl"] = state ? state.logoUrl : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["optionsPreflightBypass"] = state ? state.optionsPreflightBypass : undefined;
             resourceInputs["saasApp"] = state ? state.saasApp : undefined;
             resourceInputs["sameSiteCookieAttribute"] = state ? state.sameSiteCookieAttribute : undefined;
             resourceInputs["selfHostedDomains"] = state ? state.selfHostedDomains : undefined;
@@ -237,6 +242,7 @@ export class AccessApplication extends pulumi.CustomResource {
             resourceInputs["landingPageDesign"] = args ? args.landingPageDesign : undefined;
             resourceInputs["logoUrl"] = args ? args.logoUrl : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["optionsPreflightBypass"] = args ? args.optionsPreflightBypass : undefined;
             resourceInputs["saasApp"] = args ? args.saasApp : undefined;
             resourceInputs["sameSiteCookieAttribute"] = args ? args.sameSiteCookieAttribute : undefined;
             resourceInputs["selfHostedDomains"] = args ? args.selfHostedDomains : undefined;
@@ -341,6 +347,10 @@ export interface AccessApplicationState {
      * Friendly name of the Access Application.
      */
     name?: pulumi.Input<string>;
+    /**
+     * Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if corsHeaders is set. Defaults to `false`.
+     */
+    optionsPreflightBypass?: pulumi.Input<boolean>;
     /**
      * SaaS configuration for the Access Application.
      */
@@ -463,6 +473,10 @@ export interface AccessApplicationArgs {
      * Friendly name of the Access Application.
      */
     name?: pulumi.Input<string>;
+    /**
+     * Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if corsHeaders is set. Defaults to `false`.
+     */
+    optionsPreflightBypass?: pulumi.Input<boolean>;
     /**
      * SaaS configuration for the Access Application.
      */

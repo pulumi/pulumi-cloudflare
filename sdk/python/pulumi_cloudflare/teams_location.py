@@ -19,18 +19,22 @@ class TeamsLocationArgs:
                  account_id: pulumi.Input[str],
                  name: pulumi.Input[str],
                  client_default: Optional[pulumi.Input[bool]] = None,
+                 ecs_support: Optional[pulumi.Input[bool]] = None,
                  networks: Optional[pulumi.Input[Sequence[pulumi.Input['TeamsLocationNetworkArgs']]]] = None):
         """
         The set of arguments for constructing a TeamsLocation resource.
         :param pulumi.Input[str] account_id: The account identifier to target for the resource.
         :param pulumi.Input[str] name: Name of the teams location.
         :param pulumi.Input[bool] client_default: Indicator that this is the default location.
+        :param pulumi.Input[bool] ecs_support: Indicator that this location needs to resolve EDNS queries.
         :param pulumi.Input[Sequence[pulumi.Input['TeamsLocationNetworkArgs']]] networks: The networks CIDRs that comprise the location.
         """
         pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "name", name)
         if client_default is not None:
             pulumi.set(__self__, "client_default", client_default)
+        if ecs_support is not None:
+            pulumi.set(__self__, "ecs_support", ecs_support)
         if networks is not None:
             pulumi.set(__self__, "networks", networks)
 
@@ -71,6 +75,18 @@ class TeamsLocationArgs:
         pulumi.set(self, "client_default", value)
 
     @property
+    @pulumi.getter(name="ecsSupport")
+    def ecs_support(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Indicator that this location needs to resolve EDNS queries.
+        """
+        return pulumi.get(self, "ecs_support")
+
+    @ecs_support.setter
+    def ecs_support(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "ecs_support", value)
+
+    @property
     @pulumi.getter
     def networks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['TeamsLocationNetworkArgs']]]]:
         """
@@ -90,6 +106,7 @@ class _TeamsLocationState:
                  anonymized_logs_enabled: Optional[pulumi.Input[bool]] = None,
                  client_default: Optional[pulumi.Input[bool]] = None,
                  doh_subdomain: Optional[pulumi.Input[str]] = None,
+                 ecs_support: Optional[pulumi.Input[bool]] = None,
                  ip: Optional[pulumi.Input[str]] = None,
                  ipv4_destination: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -101,6 +118,7 @@ class _TeamsLocationState:
         :param pulumi.Input[bool] anonymized_logs_enabled: Indicator that anonymized logs are enabled.
         :param pulumi.Input[bool] client_default: Indicator that this is the default location.
         :param pulumi.Input[str] doh_subdomain: The FQDN that DoH clients should be pointed at.
+        :param pulumi.Input[bool] ecs_support: Indicator that this location needs to resolve EDNS queries.
         :param pulumi.Input[str] ip: Client IP address.
         :param pulumi.Input[str] ipv4_destination: IP to direct all IPv4 DNS queries to.
         :param pulumi.Input[str] name: Name of the teams location.
@@ -114,6 +132,8 @@ class _TeamsLocationState:
             pulumi.set(__self__, "client_default", client_default)
         if doh_subdomain is not None:
             pulumi.set(__self__, "doh_subdomain", doh_subdomain)
+        if ecs_support is not None:
+            pulumi.set(__self__, "ecs_support", ecs_support)
         if ip is not None:
             pulumi.set(__self__, "ip", ip)
         if ipv4_destination is not None:
@@ -172,6 +192,18 @@ class _TeamsLocationState:
     @doh_subdomain.setter
     def doh_subdomain(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "doh_subdomain", value)
+
+    @property
+    @pulumi.getter(name="ecsSupport")
+    def ecs_support(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Indicator that this location needs to resolve EDNS queries.
+        """
+        return pulumi.get(self, "ecs_support")
+
+    @ecs_support.setter
+    def ecs_support(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "ecs_support", value)
 
     @property
     @pulumi.getter
@@ -238,6 +270,7 @@ class TeamsLocation(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: Optional[pulumi.Input[str]] = None,
                  client_default: Optional[pulumi.Input[bool]] = None,
+                 ecs_support: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  networks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TeamsLocationNetworkArgs']]]]] = None,
                  __props__=None):
@@ -255,6 +288,7 @@ class TeamsLocation(pulumi.CustomResource):
             account_id="f037e56e89293a057740de681ac9abbe",
             name="office",
             client_default=True,
+            ecs_support=False,
             networks=[
                 cloudflare.TeamsLocationNetworkArgs(
                     network="203.0.113.1/32",
@@ -275,6 +309,7 @@ class TeamsLocation(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_id: The account identifier to target for the resource.
         :param pulumi.Input[bool] client_default: Indicator that this is the default location.
+        :param pulumi.Input[bool] ecs_support: Indicator that this location needs to resolve EDNS queries.
         :param pulumi.Input[str] name: Name of the teams location.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TeamsLocationNetworkArgs']]]] networks: The networks CIDRs that comprise the location.
         """
@@ -298,6 +333,7 @@ class TeamsLocation(pulumi.CustomResource):
             account_id="f037e56e89293a057740de681ac9abbe",
             name="office",
             client_default=True,
+            ecs_support=False,
             networks=[
                 cloudflare.TeamsLocationNetworkArgs(
                     network="203.0.113.1/32",
@@ -331,6 +367,7 @@ class TeamsLocation(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: Optional[pulumi.Input[str]] = None,
                  client_default: Optional[pulumi.Input[bool]] = None,
+                 ecs_support: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  networks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TeamsLocationNetworkArgs']]]]] = None,
                  __props__=None):
@@ -346,6 +383,7 @@ class TeamsLocation(pulumi.CustomResource):
                 raise TypeError("Missing required property 'account_id'")
             __props__.__dict__["account_id"] = account_id
             __props__.__dict__["client_default"] = client_default
+            __props__.__dict__["ecs_support"] = ecs_support
             if name is None and not opts.urn:
                 raise TypeError("Missing required property 'name'")
             __props__.__dict__["name"] = name
@@ -369,6 +407,7 @@ class TeamsLocation(pulumi.CustomResource):
             anonymized_logs_enabled: Optional[pulumi.Input[bool]] = None,
             client_default: Optional[pulumi.Input[bool]] = None,
             doh_subdomain: Optional[pulumi.Input[str]] = None,
+            ecs_support: Optional[pulumi.Input[bool]] = None,
             ip: Optional[pulumi.Input[str]] = None,
             ipv4_destination: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
@@ -385,6 +424,7 @@ class TeamsLocation(pulumi.CustomResource):
         :param pulumi.Input[bool] anonymized_logs_enabled: Indicator that anonymized logs are enabled.
         :param pulumi.Input[bool] client_default: Indicator that this is the default location.
         :param pulumi.Input[str] doh_subdomain: The FQDN that DoH clients should be pointed at.
+        :param pulumi.Input[bool] ecs_support: Indicator that this location needs to resolve EDNS queries.
         :param pulumi.Input[str] ip: Client IP address.
         :param pulumi.Input[str] ipv4_destination: IP to direct all IPv4 DNS queries to.
         :param pulumi.Input[str] name: Name of the teams location.
@@ -398,6 +438,7 @@ class TeamsLocation(pulumi.CustomResource):
         __props__.__dict__["anonymized_logs_enabled"] = anonymized_logs_enabled
         __props__.__dict__["client_default"] = client_default
         __props__.__dict__["doh_subdomain"] = doh_subdomain
+        __props__.__dict__["ecs_support"] = ecs_support
         __props__.__dict__["ip"] = ip
         __props__.__dict__["ipv4_destination"] = ipv4_destination
         __props__.__dict__["name"] = name
@@ -436,6 +477,14 @@ class TeamsLocation(pulumi.CustomResource):
         The FQDN that DoH clients should be pointed at.
         """
         return pulumi.get(self, "doh_subdomain")
+
+    @property
+    @pulumi.getter(name="ecsSupport")
+    def ecs_support(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Indicator that this location needs to resolve EDNS queries.
+        """
+        return pulumi.get(self, "ecs_support")
 
     @property
     @pulumi.getter

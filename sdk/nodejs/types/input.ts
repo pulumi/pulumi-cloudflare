@@ -2311,6 +2311,10 @@ export interface NotificationPolicyFilters {
      */
     targetHostnames?: pulumi.Input<pulumi.Input<string>[]>;
     /**
+     * Target ip to alert on for dos in CIDR notation.
+     */
+    targetIps?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
      * Target domain to alert on.
      */
     targetZoneNames?: pulumi.Input<pulumi.Input<string>[]>;
@@ -3831,6 +3835,18 @@ export interface TeamsAccountBodyScanning {
      * Body scanning inspection mode. Available values: `deep`, `shallow`.
      */
     inspectionMode: pulumi.Input<string>;
+}
+
+export interface TeamsAccountCustomCertificate {
+    /**
+     * Whether TLS encryption should use a custom certificate.
+     */
+    enabled: pulumi.Input<boolean>;
+    /**
+     * ID of custom certificate.
+     */
+    id?: pulumi.Input<string>;
+    updatedAt?: pulumi.Input<string>;
 }
 
 export interface TeamsAccountExtendedEmailMatching {

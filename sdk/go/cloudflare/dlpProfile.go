@@ -16,6 +16,92 @@ import (
 // are a set of entries that can be matched in HTTP bodies or files.
 // They are referenced in Zero Trust Gateway rules.
 //
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// Predefined profile must be imported, cannot be created
+//			_, err := cloudflare.NewDlpProfile(ctx, "creds", &cloudflare.DlpProfileArgs{
+//				AccountId:         pulumi.String("f037e56e89293a057740de681ac9abbe"),
+//				Name:              pulumi.String("Credentials and Secrets"),
+//				Type:              pulumi.String("predefined"),
+//				AllowedMatchCount: pulumi.Int(3),
+//				Entries: cloudflare.DlpProfileEntryArray{
+//					&cloudflare.DlpProfileEntryArgs{
+//						Enabled: pulumi.Bool(true),
+//						Name:    pulumi.String("Amazon AWS Access Key ID"),
+//						Id:      pulumi.String("d8fcfc9c-773c-405e-8426-21ecbb67ba93"),
+//					},
+//					&cloudflare.DlpProfileEntryArgs{
+//						Enabled: pulumi.Bool(false),
+//						Id:      pulumi.String("2c0e33e1-71da-40c8-aad3-32e674ad3d96"),
+//						Name:    pulumi.String("Amazon AWS Secret Access Key"),
+//					},
+//					&cloudflare.DlpProfileEntryArgs{
+//						Enabled: pulumi.Bool(true),
+//						Id:      pulumi.String("4e92c006-3802-4dff-bbe1-8e1513b1c92a"),
+//						Name:    pulumi.String("Microsoft Azure Client Secret"),
+//					},
+//					&cloudflare.DlpProfileEntryArgs{
+//						Enabled: pulumi.Bool(false),
+//						Id:      pulumi.String("5c713294-2375-4904-abcf-e4a15be4d592"),
+//						Name:    pulumi.String("SSH Private Key"),
+//					},
+//					&cloudflare.DlpProfileEntryArgs{
+//						Enabled: pulumi.Bool(true),
+//						Id:      pulumi.String("6c6579e4-d832-42d5-905c-8e53340930f2"),
+//						Name:    pulumi.String("Google GCP API Key"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			// Custom profile
+//			_, err = cloudflare.NewDlpProfile(ctx, "example_custom", &cloudflare.DlpProfileArgs{
+//				AccountId:         pulumi.String("f037e56e89293a057740de681ac9abbe"),
+//				Name:              pulumi.String("Example Custom Profile"),
+//				Description:       pulumi.String("A profile with example entries"),
+//				Type:              pulumi.String("custom"),
+//				AllowedMatchCount: pulumi.Int(0),
+//				Entries: cloudflare.DlpProfileEntryArray{
+//					&cloudflare.DlpProfileEntryArgs{
+//						Name:    pulumi.String("Matches visa credit cards"),
+//						Enabled: pulumi.Bool(true),
+//						Pattern: &cloudflare.DlpProfileEntryPatternArgs{
+//							Regex:      pulumi.String("4\\d{3}([-\\. ])?\\d{4}([-\\. ])?\\d{4}([-\\. ])?\\d{4}"),
+//							Validation: pulumi.String("luhn"),
+//						},
+//					},
+//					&cloudflare.DlpProfileEntryArgs{
+//						Name:    pulumi.String("Matches diners club card"),
+//						Enabled: pulumi.Bool(true),
+//						Pattern: &cloudflare.DlpProfileEntryPatternArgs{
+//							Regex:      pulumi.String("(?:0[0-5]|[68][0-9])[0-9]{11}"),
+//							Validation: pulumi.String("luhn"),
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // ```sh
@@ -36,6 +122,8 @@ type DlpProfile struct {
 	Entries DlpProfileEntryArrayOutput `pulumi:"entries"`
 	// Name of the profile. **Modifying this attribute will force creation of a new resource.**
 	Name pulumi.StringOutput `pulumi:"name"`
+	// If true, scan images via OCR to determine if any text present matches filters.
+	OcrEnabled pulumi.BoolPtrOutput `pulumi:"ocrEnabled"`
 	// The type of the profile. Available values: `custom`, `predefined`. **Modifying this attribute will force creation of a new resource.**
 	Type pulumi.StringOutput `pulumi:"type"`
 }
@@ -97,6 +185,8 @@ type dlpProfileState struct {
 	Entries []DlpProfileEntry `pulumi:"entries"`
 	// Name of the profile. **Modifying this attribute will force creation of a new resource.**
 	Name *string `pulumi:"name"`
+	// If true, scan images via OCR to determine if any text present matches filters.
+	OcrEnabled *bool `pulumi:"ocrEnabled"`
 	// The type of the profile. Available values: `custom`, `predefined`. **Modifying this attribute will force creation of a new resource.**
 	Type *string `pulumi:"type"`
 }
@@ -114,6 +204,8 @@ type DlpProfileState struct {
 	Entries DlpProfileEntryArrayInput
 	// Name of the profile. **Modifying this attribute will force creation of a new resource.**
 	Name pulumi.StringPtrInput
+	// If true, scan images via OCR to determine if any text present matches filters.
+	OcrEnabled pulumi.BoolPtrInput
 	// The type of the profile. Available values: `custom`, `predefined`. **Modifying this attribute will force creation of a new resource.**
 	Type pulumi.StringPtrInput
 }
@@ -135,6 +227,8 @@ type dlpProfileArgs struct {
 	Entries []DlpProfileEntry `pulumi:"entries"`
 	// Name of the profile. **Modifying this attribute will force creation of a new resource.**
 	Name string `pulumi:"name"`
+	// If true, scan images via OCR to determine if any text present matches filters.
+	OcrEnabled *bool `pulumi:"ocrEnabled"`
 	// The type of the profile. Available values: `custom`, `predefined`. **Modifying this attribute will force creation of a new resource.**
 	Type string `pulumi:"type"`
 }
@@ -153,6 +247,8 @@ type DlpProfileArgs struct {
 	Entries DlpProfileEntryArrayInput
 	// Name of the profile. **Modifying this attribute will force creation of a new resource.**
 	Name pulumi.StringInput
+	// If true, scan images via OCR to determine if any text present matches filters.
+	OcrEnabled pulumi.BoolPtrInput
 	// The type of the profile. Available values: `custom`, `predefined`. **Modifying this attribute will force creation of a new resource.**
 	Type pulumi.StringInput
 }
@@ -272,6 +368,11 @@ func (o DlpProfileOutput) Entries() DlpProfileEntryArrayOutput {
 // Name of the profile. **Modifying this attribute will force creation of a new resource.**
 func (o DlpProfileOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *DlpProfile) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// If true, scan images via OCR to determine if any text present matches filters.
+func (o DlpProfileOutput) OcrEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *DlpProfile) pulumi.BoolPtrOutput { return v.OcrEnabled }).(pulumi.BoolPtrOutput)
 }
 
 // The type of the profile. Available values: `custom`, `predefined`. **Modifying this attribute will force creation of a new resource.**

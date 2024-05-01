@@ -335,6 +335,20 @@ public class AccessApplication extends com.pulumi.resources.CustomResource {
         return this.name;
     }
     /**
+     * Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if cors_headers is set. Defaults to `false`.
+     * 
+     */
+    @Export(name="optionsPreflightBypass", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> optionsPreflightBypass;
+
+    /**
+     * @return Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if cors_headers is set. Defaults to `false`.
+     * 
+     */
+    public Output<Optional<Boolean>> optionsPreflightBypass() {
+        return Codegen.optional(this.optionsPreflightBypass);
+    }
+    /**
      * SaaS configuration for the Access Application.
      * 
      */

@@ -79,6 +79,21 @@ public final class TeamsLocationState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
+     * Indicator that this location needs to resolve EDNS queries.
+     * 
+     */
+    @Import(name="ecsSupport")
+    private @Nullable Output<Boolean> ecsSupport;
+
+    /**
+     * @return Indicator that this location needs to resolve EDNS queries.
+     * 
+     */
+    public Optional<Output<Boolean>> ecsSupport() {
+        return Optional.ofNullable(this.ecsSupport);
+    }
+
+    /**
      * Client IP address.
      * 
      */
@@ -152,6 +167,7 @@ public final class TeamsLocationState extends com.pulumi.resources.ResourceArgs 
         this.anonymizedLogsEnabled = $.anonymizedLogsEnabled;
         this.clientDefault = $.clientDefault;
         this.dohSubdomain = $.dohSubdomain;
+        this.ecsSupport = $.ecsSupport;
         this.ip = $.ip;
         this.ipv4Destination = $.ipv4Destination;
         this.name = $.name;
@@ -259,6 +275,27 @@ public final class TeamsLocationState extends com.pulumi.resources.ResourceArgs 
          */
         public Builder dohSubdomain(String dohSubdomain) {
             return dohSubdomain(Output.of(dohSubdomain));
+        }
+
+        /**
+         * @param ecsSupport Indicator that this location needs to resolve EDNS queries.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ecsSupport(@Nullable Output<Boolean> ecsSupport) {
+            $.ecsSupport = ecsSupport;
+            return this;
+        }
+
+        /**
+         * @param ecsSupport Indicator that this location needs to resolve EDNS queries.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ecsSupport(Boolean ecsSupport) {
+            return ecsSupport(Output.of(ecsSupport));
         }
 
         /**

@@ -126,9 +126,13 @@ export class TeamsAccount extends pulumi.CustomResource {
      */
     public readonly bodyScanning!: pulumi.Output<outputs.TeamsAccountBodyScanning | undefined>;
     /**
+     * Configuration for custom certificates / BYO-PKI.
+     */
+    public readonly customCertificate!: pulumi.Output<outputs.TeamsAccountCustomCertificate | undefined>;
+    /**
      * Configuration for extended e-mail matching.
      */
-    public readonly extendedEmailMatching!: pulumi.Output<outputs.TeamsAccountExtendedEmailMatching | undefined>;
+    public readonly extendedEmailMatching!: pulumi.Output<outputs.TeamsAccountExtendedEmailMatching>;
     /**
      * Configure compliance with Federal Information Processing Standards.
      */
@@ -181,6 +185,7 @@ export class TeamsAccount extends pulumi.CustomResource {
             resourceInputs["antivirus"] = state ? state.antivirus : undefined;
             resourceInputs["blockPage"] = state ? state.blockPage : undefined;
             resourceInputs["bodyScanning"] = state ? state.bodyScanning : undefined;
+            resourceInputs["customCertificate"] = state ? state.customCertificate : undefined;
             resourceInputs["extendedEmailMatching"] = state ? state.extendedEmailMatching : undefined;
             resourceInputs["fips"] = state ? state.fips : undefined;
             resourceInputs["logging"] = state ? state.logging : undefined;
@@ -201,6 +206,7 @@ export class TeamsAccount extends pulumi.CustomResource {
             resourceInputs["antivirus"] = args ? args.antivirus : undefined;
             resourceInputs["blockPage"] = args ? args.blockPage : undefined;
             resourceInputs["bodyScanning"] = args ? args.bodyScanning : undefined;
+            resourceInputs["customCertificate"] = args ? args.customCertificate : undefined;
             resourceInputs["extendedEmailMatching"] = args ? args.extendedEmailMatching : undefined;
             resourceInputs["fips"] = args ? args.fips : undefined;
             resourceInputs["logging"] = args ? args.logging : undefined;
@@ -241,6 +247,10 @@ export interface TeamsAccountState {
      * Configuration for body scanning.
      */
     bodyScanning?: pulumi.Input<inputs.TeamsAccountBodyScanning>;
+    /**
+     * Configuration for custom certificates / BYO-PKI.
+     */
+    customCertificate?: pulumi.Input<inputs.TeamsAccountCustomCertificate>;
     /**
      * Configuration for extended e-mail matching.
      */
@@ -304,6 +314,10 @@ export interface TeamsAccountArgs {
      * Configuration for body scanning.
      */
     bodyScanning?: pulumi.Input<inputs.TeamsAccountBodyScanning>;
+    /**
+     * Configuration for custom certificates / BYO-PKI.
+     */
+    customCertificate?: pulumi.Input<inputs.TeamsAccountCustomCertificate>;
     /**
      * Configuration for extended e-mail matching.
      */

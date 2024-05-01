@@ -133,10 +133,16 @@ namespace Pulumi.Cloudflare
         public Output<Outputs.TeamsAccountBodyScanning?> BodyScanning { get; private set; } = null!;
 
         /// <summary>
+        /// Configuration for custom certificates / BYO-PKI.
+        /// </summary>
+        [Output("customCertificate")]
+        public Output<Outputs.TeamsAccountCustomCertificate?> CustomCertificate { get; private set; } = null!;
+
+        /// <summary>
         /// Configuration for extended e-mail matching.
         /// </summary>
         [Output("extendedEmailMatching")]
-        public Output<Outputs.TeamsAccountExtendedEmailMatching?> ExtendedEmailMatching { get; private set; } = null!;
+        public Output<Outputs.TeamsAccountExtendedEmailMatching> ExtendedEmailMatching { get; private set; } = null!;
 
         /// <summary>
         /// Configure compliance with Federal Information Processing Standards.
@@ -266,6 +272,12 @@ namespace Pulumi.Cloudflare
         public Input<Inputs.TeamsAccountBodyScanningArgs>? BodyScanning { get; set; }
 
         /// <summary>
+        /// Configuration for custom certificates / BYO-PKI.
+        /// </summary>
+        [Input("customCertificate")]
+        public Input<Inputs.TeamsAccountCustomCertificateArgs>? CustomCertificate { get; set; }
+
+        /// <summary>
         /// Configuration for extended e-mail matching.
         /// </summary>
         [Input("extendedEmailMatching")]
@@ -359,6 +371,12 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("bodyScanning")]
         public Input<Inputs.TeamsAccountBodyScanningGetArgs>? BodyScanning { get; set; }
+
+        /// <summary>
+        /// Configuration for custom certificates / BYO-PKI.
+        /// </summary>
+        [Input("customCertificate")]
+        public Input<Inputs.TeamsAccountCustomCertificateGetArgs>? CustomCertificate { get; set; }
 
         /// <summary>
         /// Configuration for extended e-mail matching.
