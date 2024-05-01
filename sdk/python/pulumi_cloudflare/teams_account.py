@@ -21,6 +21,7 @@ class TeamsAccountArgs:
                  antivirus: Optional[pulumi.Input['TeamsAccountAntivirusArgs']] = None,
                  block_page: Optional[pulumi.Input['TeamsAccountBlockPageArgs']] = None,
                  body_scanning: Optional[pulumi.Input['TeamsAccountBodyScanningArgs']] = None,
+                 custom_certificate: Optional[pulumi.Input['TeamsAccountCustomCertificateArgs']] = None,
                  extended_email_matching: Optional[pulumi.Input['TeamsAccountExtendedEmailMatchingArgs']] = None,
                  fips: Optional[pulumi.Input['TeamsAccountFipsArgs']] = None,
                  logging: Optional[pulumi.Input['TeamsAccountLoggingArgs']] = None,
@@ -38,6 +39,7 @@ class TeamsAccountArgs:
         :param pulumi.Input['TeamsAccountAntivirusArgs'] antivirus: Configuration block for antivirus traffic scanning.
         :param pulumi.Input['TeamsAccountBlockPageArgs'] block_page: Configuration for a custom block page.
         :param pulumi.Input['TeamsAccountBodyScanningArgs'] body_scanning: Configuration for body scanning.
+        :param pulumi.Input['TeamsAccountCustomCertificateArgs'] custom_certificate: Configuration for custom certificates / BYO-PKI.
         :param pulumi.Input['TeamsAccountExtendedEmailMatchingArgs'] extended_email_matching: Configuration for extended e-mail matching.
         :param pulumi.Input['TeamsAccountFipsArgs'] fips: Configure compliance with Federal Information Processing Standards.
         :param pulumi.Input[bool] non_identity_browser_isolation_enabled: Enable non-identity onramp for Browser Isolation. Defaults to `false`.
@@ -57,6 +59,8 @@ class TeamsAccountArgs:
             pulumi.set(__self__, "block_page", block_page)
         if body_scanning is not None:
             pulumi.set(__self__, "body_scanning", body_scanning)
+        if custom_certificate is not None:
+            pulumi.set(__self__, "custom_certificate", custom_certificate)
         if extended_email_matching is not None:
             pulumi.set(__self__, "extended_email_matching", extended_email_matching)
         if fips is not None:
@@ -137,6 +141,18 @@ class TeamsAccountArgs:
     @body_scanning.setter
     def body_scanning(self, value: Optional[pulumi.Input['TeamsAccountBodyScanningArgs']]):
         pulumi.set(self, "body_scanning", value)
+
+    @property
+    @pulumi.getter(name="customCertificate")
+    def custom_certificate(self) -> Optional[pulumi.Input['TeamsAccountCustomCertificateArgs']]:
+        """
+        Configuration for custom certificates / BYO-PKI.
+        """
+        return pulumi.get(self, "custom_certificate")
+
+    @custom_certificate.setter
+    def custom_certificate(self, value: Optional[pulumi.Input['TeamsAccountCustomCertificateArgs']]):
+        pulumi.set(self, "custom_certificate", value)
 
     @property
     @pulumi.getter(name="extendedEmailMatching")
@@ -264,6 +280,7 @@ class _TeamsAccountState:
                  antivirus: Optional[pulumi.Input['TeamsAccountAntivirusArgs']] = None,
                  block_page: Optional[pulumi.Input['TeamsAccountBlockPageArgs']] = None,
                  body_scanning: Optional[pulumi.Input['TeamsAccountBodyScanningArgs']] = None,
+                 custom_certificate: Optional[pulumi.Input['TeamsAccountCustomCertificateArgs']] = None,
                  extended_email_matching: Optional[pulumi.Input['TeamsAccountExtendedEmailMatchingArgs']] = None,
                  fips: Optional[pulumi.Input['TeamsAccountFipsArgs']] = None,
                  logging: Optional[pulumi.Input['TeamsAccountLoggingArgs']] = None,
@@ -281,6 +298,7 @@ class _TeamsAccountState:
         :param pulumi.Input['TeamsAccountAntivirusArgs'] antivirus: Configuration block for antivirus traffic scanning.
         :param pulumi.Input['TeamsAccountBlockPageArgs'] block_page: Configuration for a custom block page.
         :param pulumi.Input['TeamsAccountBodyScanningArgs'] body_scanning: Configuration for body scanning.
+        :param pulumi.Input['TeamsAccountCustomCertificateArgs'] custom_certificate: Configuration for custom certificates / BYO-PKI.
         :param pulumi.Input['TeamsAccountExtendedEmailMatchingArgs'] extended_email_matching: Configuration for extended e-mail matching.
         :param pulumi.Input['TeamsAccountFipsArgs'] fips: Configure compliance with Federal Information Processing Standards.
         :param pulumi.Input[bool] non_identity_browser_isolation_enabled: Enable non-identity onramp for Browser Isolation. Defaults to `false`.
@@ -301,6 +319,8 @@ class _TeamsAccountState:
             pulumi.set(__self__, "block_page", block_page)
         if body_scanning is not None:
             pulumi.set(__self__, "body_scanning", body_scanning)
+        if custom_certificate is not None:
+            pulumi.set(__self__, "custom_certificate", custom_certificate)
         if extended_email_matching is not None:
             pulumi.set(__self__, "extended_email_matching", extended_email_matching)
         if fips is not None:
@@ -381,6 +401,18 @@ class _TeamsAccountState:
     @body_scanning.setter
     def body_scanning(self, value: Optional[pulumi.Input['TeamsAccountBodyScanningArgs']]):
         pulumi.set(self, "body_scanning", value)
+
+    @property
+    @pulumi.getter(name="customCertificate")
+    def custom_certificate(self) -> Optional[pulumi.Input['TeamsAccountCustomCertificateArgs']]:
+        """
+        Configuration for custom certificates / BYO-PKI.
+        """
+        return pulumi.get(self, "custom_certificate")
+
+    @custom_certificate.setter
+    def custom_certificate(self, value: Optional[pulumi.Input['TeamsAccountCustomCertificateArgs']]):
+        pulumi.set(self, "custom_certificate", value)
 
     @property
     @pulumi.getter(name="extendedEmailMatching")
@@ -510,6 +542,7 @@ class TeamsAccount(pulumi.CustomResource):
                  antivirus: Optional[pulumi.Input[pulumi.InputType['TeamsAccountAntivirusArgs']]] = None,
                  block_page: Optional[pulumi.Input[pulumi.InputType['TeamsAccountBlockPageArgs']]] = None,
                  body_scanning: Optional[pulumi.Input[pulumi.InputType['TeamsAccountBodyScanningArgs']]] = None,
+                 custom_certificate: Optional[pulumi.Input[pulumi.InputType['TeamsAccountCustomCertificateArgs']]] = None,
                  extended_email_matching: Optional[pulumi.Input[pulumi.InputType['TeamsAccountExtendedEmailMatchingArgs']]] = None,
                  fips: Optional[pulumi.Input[pulumi.InputType['TeamsAccountFipsArgs']]] = None,
                  logging: Optional[pulumi.Input[pulumi.InputType['TeamsAccountLoggingArgs']]] = None,
@@ -598,6 +631,7 @@ class TeamsAccount(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['TeamsAccountAntivirusArgs']] antivirus: Configuration block for antivirus traffic scanning.
         :param pulumi.Input[pulumi.InputType['TeamsAccountBlockPageArgs']] block_page: Configuration for a custom block page.
         :param pulumi.Input[pulumi.InputType['TeamsAccountBodyScanningArgs']] body_scanning: Configuration for body scanning.
+        :param pulumi.Input[pulumi.InputType['TeamsAccountCustomCertificateArgs']] custom_certificate: Configuration for custom certificates / BYO-PKI.
         :param pulumi.Input[pulumi.InputType['TeamsAccountExtendedEmailMatchingArgs']] extended_email_matching: Configuration for extended e-mail matching.
         :param pulumi.Input[pulumi.InputType['TeamsAccountFipsArgs']] fips: Configure compliance with Federal Information Processing Standards.
         :param pulumi.Input[bool] non_identity_browser_isolation_enabled: Enable non-identity onramp for Browser Isolation. Defaults to `false`.
@@ -704,6 +738,7 @@ class TeamsAccount(pulumi.CustomResource):
                  antivirus: Optional[pulumi.Input[pulumi.InputType['TeamsAccountAntivirusArgs']]] = None,
                  block_page: Optional[pulumi.Input[pulumi.InputType['TeamsAccountBlockPageArgs']]] = None,
                  body_scanning: Optional[pulumi.Input[pulumi.InputType['TeamsAccountBodyScanningArgs']]] = None,
+                 custom_certificate: Optional[pulumi.Input[pulumi.InputType['TeamsAccountCustomCertificateArgs']]] = None,
                  extended_email_matching: Optional[pulumi.Input[pulumi.InputType['TeamsAccountExtendedEmailMatchingArgs']]] = None,
                  fips: Optional[pulumi.Input[pulumi.InputType['TeamsAccountFipsArgs']]] = None,
                  logging: Optional[pulumi.Input[pulumi.InputType['TeamsAccountLoggingArgs']]] = None,
@@ -730,6 +765,7 @@ class TeamsAccount(pulumi.CustomResource):
             __props__.__dict__["antivirus"] = antivirus
             __props__.__dict__["block_page"] = block_page
             __props__.__dict__["body_scanning"] = body_scanning
+            __props__.__dict__["custom_certificate"] = custom_certificate
             __props__.__dict__["extended_email_matching"] = extended_email_matching
             __props__.__dict__["fips"] = fips
             __props__.__dict__["logging"] = logging
@@ -755,6 +791,7 @@ class TeamsAccount(pulumi.CustomResource):
             antivirus: Optional[pulumi.Input[pulumi.InputType['TeamsAccountAntivirusArgs']]] = None,
             block_page: Optional[pulumi.Input[pulumi.InputType['TeamsAccountBlockPageArgs']]] = None,
             body_scanning: Optional[pulumi.Input[pulumi.InputType['TeamsAccountBodyScanningArgs']]] = None,
+            custom_certificate: Optional[pulumi.Input[pulumi.InputType['TeamsAccountCustomCertificateArgs']]] = None,
             extended_email_matching: Optional[pulumi.Input[pulumi.InputType['TeamsAccountExtendedEmailMatchingArgs']]] = None,
             fips: Optional[pulumi.Input[pulumi.InputType['TeamsAccountFipsArgs']]] = None,
             logging: Optional[pulumi.Input[pulumi.InputType['TeamsAccountLoggingArgs']]] = None,
@@ -777,6 +814,7 @@ class TeamsAccount(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['TeamsAccountAntivirusArgs']] antivirus: Configuration block for antivirus traffic scanning.
         :param pulumi.Input[pulumi.InputType['TeamsAccountBlockPageArgs']] block_page: Configuration for a custom block page.
         :param pulumi.Input[pulumi.InputType['TeamsAccountBodyScanningArgs']] body_scanning: Configuration for body scanning.
+        :param pulumi.Input[pulumi.InputType['TeamsAccountCustomCertificateArgs']] custom_certificate: Configuration for custom certificates / BYO-PKI.
         :param pulumi.Input[pulumi.InputType['TeamsAccountExtendedEmailMatchingArgs']] extended_email_matching: Configuration for extended e-mail matching.
         :param pulumi.Input[pulumi.InputType['TeamsAccountFipsArgs']] fips: Configure compliance with Federal Information Processing Standards.
         :param pulumi.Input[bool] non_identity_browser_isolation_enabled: Enable non-identity onramp for Browser Isolation. Defaults to `false`.
@@ -796,6 +834,7 @@ class TeamsAccount(pulumi.CustomResource):
         __props__.__dict__["antivirus"] = antivirus
         __props__.__dict__["block_page"] = block_page
         __props__.__dict__["body_scanning"] = body_scanning
+        __props__.__dict__["custom_certificate"] = custom_certificate
         __props__.__dict__["extended_email_matching"] = extended_email_matching
         __props__.__dict__["fips"] = fips
         __props__.__dict__["logging"] = logging
@@ -849,8 +888,16 @@ class TeamsAccount(pulumi.CustomResource):
         return pulumi.get(self, "body_scanning")
 
     @property
+    @pulumi.getter(name="customCertificate")
+    def custom_certificate(self) -> pulumi.Output[Optional['outputs.TeamsAccountCustomCertificate']]:
+        """
+        Configuration for custom certificates / BYO-PKI.
+        """
+        return pulumi.get(self, "custom_certificate")
+
+    @property
     @pulumi.getter(name="extendedEmailMatching")
-    def extended_email_matching(self) -> pulumi.Output[Optional['outputs.TeamsAccountExtendedEmailMatching']]:
+    def extended_email_matching(self) -> pulumi.Output['outputs.TeamsAccountExtendedEmailMatching']:
         """
         Configuration for extended e-mail matching.
         """

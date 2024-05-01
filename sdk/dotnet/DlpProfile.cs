@@ -14,6 +14,94 @@ namespace Pulumi.Cloudflare
     /// are a set of entries that can be matched in HTTP bodies or files.
     /// They are referenced in Zero Trust Gateway rules.
     /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Cloudflare = Pulumi.Cloudflare;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     // Predefined profile must be imported, cannot be created
+    ///     var creds = new Cloudflare.DlpProfile("creds", new()
+    ///     {
+    ///         AccountId = "f037e56e89293a057740de681ac9abbe",
+    ///         Name = "Credentials and Secrets",
+    ///         Type = "predefined",
+    ///         AllowedMatchCount = 3,
+    ///         Entries = new[]
+    ///         {
+    ///             new Cloudflare.Inputs.DlpProfileEntryArgs
+    ///             {
+    ///                 Enabled = true,
+    ///                 Name = "Amazon AWS Access Key ID",
+    ///                 Id = "d8fcfc9c-773c-405e-8426-21ecbb67ba93",
+    ///             },
+    ///             new Cloudflare.Inputs.DlpProfileEntryArgs
+    ///             {
+    ///                 Enabled = false,
+    ///                 Id = "2c0e33e1-71da-40c8-aad3-32e674ad3d96",
+    ///                 Name = "Amazon AWS Secret Access Key",
+    ///             },
+    ///             new Cloudflare.Inputs.DlpProfileEntryArgs
+    ///             {
+    ///                 Enabled = true,
+    ///                 Id = "4e92c006-3802-4dff-bbe1-8e1513b1c92a",
+    ///                 Name = "Microsoft Azure Client Secret",
+    ///             },
+    ///             new Cloudflare.Inputs.DlpProfileEntryArgs
+    ///             {
+    ///                 Enabled = false,
+    ///                 Id = "5c713294-2375-4904-abcf-e4a15be4d592",
+    ///                 Name = "SSH Private Key",
+    ///             },
+    ///             new Cloudflare.Inputs.DlpProfileEntryArgs
+    ///             {
+    ///                 Enabled = true,
+    ///                 Id = "6c6579e4-d832-42d5-905c-8e53340930f2",
+    ///                 Name = "Google GCP API Key",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     // Custom profile
+    ///     var exampleCustom = new Cloudflare.DlpProfile("example_custom", new()
+    ///     {
+    ///         AccountId = "f037e56e89293a057740de681ac9abbe",
+    ///         Name = "Example Custom Profile",
+    ///         Description = "A profile with example entries",
+    ///         Type = "custom",
+    ///         AllowedMatchCount = 0,
+    ///         Entries = new[]
+    ///         {
+    ///             new Cloudflare.Inputs.DlpProfileEntryArgs
+    ///             {
+    ///                 Name = "Matches visa credit cards",
+    ///                 Enabled = true,
+    ///                 Pattern = new Cloudflare.Inputs.DlpProfileEntryPatternArgs
+    ///                 {
+    ///                     Regex = "4\\d{3}([-\\. ])?\\d{4}([-\\. ])?\\d{4}([-\\. ])?\\d{4}",
+    ///                     Validation = "luhn",
+    ///                 },
+    ///             },
+    ///             new Cloudflare.Inputs.DlpProfileEntryArgs
+    ///             {
+    ///                 Name = "Matches diners club card",
+    ///                 Enabled = true,
+    ///                 Pattern = new Cloudflare.Inputs.DlpProfileEntryPatternArgs
+    ///                 {
+    ///                     Regex = "(?:0[0-5]|[68][0-9])[0-9]{11}",
+    ///                     Validation = "luhn",
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// ```sh
@@ -58,6 +146,12 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// If true, scan images via OCR to determine if any text present matches filters.
+        /// </summary>
+        [Output("ocrEnabled")]
+        public Output<bool?> OcrEnabled { get; private set; } = null!;
 
         /// <summary>
         /// The type of the profile. Available values: `custom`, `predefined`. **Modifying this attribute will force creation of a new resource.**
@@ -154,6 +248,12 @@ namespace Pulumi.Cloudflare
         public Input<string> Name { get; set; } = null!;
 
         /// <summary>
+        /// If true, scan images via OCR to determine if any text present matches filters.
+        /// </summary>
+        [Input("ocrEnabled")]
+        public Input<bool>? OcrEnabled { get; set; }
+
+        /// <summary>
         /// The type of the profile. Available values: `custom`, `predefined`. **Modifying this attribute will force creation of a new resource.**
         /// </summary>
         [Input("type", required: true)]
@@ -208,6 +308,12 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// If true, scan images via OCR to determine if any text present matches filters.
+        /// </summary>
+        [Input("ocrEnabled")]
+        public Input<bool>? OcrEnabled { get; set; }
 
         /// <summary>
         /// The type of the profile. Available values: `custom`, `predefined`. **Modifying this attribute will force creation of a new resource.**

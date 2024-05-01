@@ -207,6 +207,7 @@ __all__ = [
     'TeamsAccountAntivirusNotificationSettings',
     'TeamsAccountBlockPage',
     'TeamsAccountBodyScanning',
+    'TeamsAccountCustomCertificate',
     'TeamsAccountExtendedEmailMatching',
     'TeamsAccountFips',
     'TeamsAccountLogging',
@@ -8813,6 +8814,8 @@ class NotificationPolicyFilters(dict):
             suggest = "requests_per_seconds"
         elif key == "targetHostnames":
             suggest = "target_hostnames"
+        elif key == "targetIps":
+            suggest = "target_ips"
         elif key == "targetZoneNames":
             suggest = "target_zone_names"
         elif key == "tunnelIds":
@@ -8858,6 +8861,7 @@ class NotificationPolicyFilters(dict):
                  slos: Optional[Sequence[str]] = None,
                  statuses: Optional[Sequence[str]] = None,
                  target_hostnames: Optional[Sequence[str]] = None,
+                 target_ips: Optional[Sequence[str]] = None,
                  target_zone_names: Optional[Sequence[str]] = None,
                  tunnel_ids: Optional[Sequence[str]] = None,
                  wheres: Optional[Sequence[str]] = None,
@@ -8890,6 +8894,7 @@ class NotificationPolicyFilters(dict):
         :param Sequence[str] slos: A numerical limit. Example: `99.9`.
         :param Sequence[str] statuses: Status to alert on.
         :param Sequence[str] target_hostnames: Target host to alert on for dos.
+        :param Sequence[str] target_ips: Target ip to alert on for dos in CIDR notation.
         :param Sequence[str] target_zone_names: Target domain to alert on.
         :param Sequence[str] tunnel_ids: Tunnel IDs to alert on.
         :param Sequence[str] wheres: Filter for alert.
@@ -8951,6 +8956,8 @@ class NotificationPolicyFilters(dict):
             pulumi.set(__self__, "statuses", statuses)
         if target_hostnames is not None:
             pulumi.set(__self__, "target_hostnames", target_hostnames)
+        if target_ips is not None:
+            pulumi.set(__self__, "target_ips", target_ips)
         if target_zone_names is not None:
             pulumi.set(__self__, "target_zone_names", target_zone_names)
         if tunnel_ids is not None:
@@ -9180,6 +9187,14 @@ class NotificationPolicyFilters(dict):
         Target host to alert on for dos.
         """
         return pulumi.get(self, "target_hostnames")
+
+    @property
+    @pulumi.getter(name="targetIps")
+    def target_ips(self) -> Optional[Sequence[str]]:
+        """
+        Target ip to alert on for dos in CIDR notation.
+        """
+        return pulumi.get(self, "target_ips")
 
     @property
     @pulumi.getter(name="targetZoneNames")
@@ -14589,6 +14604,61 @@ class TeamsAccountBodyScanning(dict):
         Body scanning inspection mode. Available values: `deep`, `shallow`.
         """
         return pulumi.get(self, "inspection_mode")
+
+
+@pulumi.output_type
+class TeamsAccountCustomCertificate(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "updatedAt":
+            suggest = "updated_at"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in TeamsAccountCustomCertificate. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        TeamsAccountCustomCertificate.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        TeamsAccountCustomCertificate.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 enabled: bool,
+                 id: Optional[str] = None,
+                 updated_at: Optional[str] = None):
+        """
+        :param bool enabled: Whether TLS encryption should use a custom certificate.
+        :param str id: ID of custom certificate.
+        """
+        pulumi.set(__self__, "enabled", enabled)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if updated_at is not None:
+            pulumi.set(__self__, "updated_at", updated_at)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> bool:
+        """
+        Whether TLS encryption should use a custom certificate.
+        """
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[str]:
+        """
+        ID of custom certificate.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="updatedAt")
+    def updated_at(self) -> Optional[str]:
+        return pulumi.get(self, "updated_at")
 
 
 @pulumi.output_type

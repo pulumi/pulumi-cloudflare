@@ -28,6 +28,7 @@ namespace Pulumi.Cloudflare
     ///         AccountId = "f037e56e89293a057740de681ac9abbe",
     ///         Name = "office",
     ///         ClientDefault = true,
+    ///         EcsSupport = false,
     ///         Networks = new[]
     ///         {
     ///             new Cloudflare.Inputs.TeamsLocationNetworkArgs
@@ -76,6 +77,12 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Output("dohSubdomain")]
         public Output<string> DohSubdomain { get; private set; } = null!;
+
+        /// <summary>
+        /// Indicator that this location needs to resolve EDNS queries.
+        /// </summary>
+        [Output("ecsSupport")]
+        public Output<bool?> EcsSupport { get; private set; } = null!;
 
         /// <summary>
         /// Client IP address.
@@ -163,6 +170,12 @@ namespace Pulumi.Cloudflare
         public Input<bool>? ClientDefault { get; set; }
 
         /// <summary>
+        /// Indicator that this location needs to resolve EDNS queries.
+        /// </summary>
+        [Input("ecsSupport")]
+        public Input<bool>? EcsSupport { get; set; }
+
+        /// <summary>
         /// Name of the teams location.
         /// </summary>
         [Input("name", required: true)]
@@ -211,6 +224,12 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("dohSubdomain")]
         public Input<string>? DohSubdomain { get; set; }
+
+        /// <summary>
+        /// Indicator that this location needs to resolve EDNS queries.
+        /// </summary>
+        [Input("ecsSupport")]
+        public Input<bool>? EcsSupport { get; set; }
 
         /// <summary>
         /// Client IP address.

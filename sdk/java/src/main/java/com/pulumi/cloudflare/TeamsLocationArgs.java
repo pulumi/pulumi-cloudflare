@@ -50,6 +50,21 @@ public final class TeamsLocationArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Indicator that this location needs to resolve EDNS queries.
+     * 
+     */
+    @Import(name="ecsSupport")
+    private @Nullable Output<Boolean> ecsSupport;
+
+    /**
+     * @return Indicator that this location needs to resolve EDNS queries.
+     * 
+     */
+    public Optional<Output<Boolean>> ecsSupport() {
+        return Optional.ofNullable(this.ecsSupport);
+    }
+
+    /**
      * Name of the teams location.
      * 
      */
@@ -84,6 +99,7 @@ public final class TeamsLocationArgs extends com.pulumi.resources.ResourceArgs {
     private TeamsLocationArgs(TeamsLocationArgs $) {
         this.accountId = $.accountId;
         this.clientDefault = $.clientDefault;
+        this.ecsSupport = $.ecsSupport;
         this.name = $.name;
         this.networks = $.networks;
     }
@@ -146,6 +162,27 @@ public final class TeamsLocationArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder clientDefault(Boolean clientDefault) {
             return clientDefault(Output.of(clientDefault));
+        }
+
+        /**
+         * @param ecsSupport Indicator that this location needs to resolve EDNS queries.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ecsSupport(@Nullable Output<Boolean> ecsSupport) {
+            $.ecsSupport = ecsSupport;
+            return this;
+        }
+
+        /**
+         * @param ecsSupport Indicator that this location needs to resolve EDNS queries.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ecsSupport(Boolean ecsSupport) {
+            return ecsSupport(Output.of(ecsSupport));
         }
 
         /**

@@ -16709,6 +16709,8 @@ type NotificationPolicyFilters struct {
 	Statuses []string `pulumi:"statuses"`
 	// Target host to alert on for dos.
 	TargetHostnames []string `pulumi:"targetHostnames"`
+	// Target ip to alert on for dos in CIDR notation.
+	TargetIps []string `pulumi:"targetIps"`
 	// Target domain to alert on.
 	TargetZoneNames []string `pulumi:"targetZoneNames"`
 	// Tunnel IDs to alert on.
@@ -16786,6 +16788,8 @@ type NotificationPolicyFiltersArgs struct {
 	Statuses pulumi.StringArrayInput `pulumi:"statuses"`
 	// Target host to alert on for dos.
 	TargetHostnames pulumi.StringArrayInput `pulumi:"targetHostnames"`
+	// Target ip to alert on for dos in CIDR notation.
+	TargetIps pulumi.StringArrayInput `pulumi:"targetIps"`
 	// Target domain to alert on.
 	TargetZoneNames pulumi.StringArrayInput `pulumi:"targetZoneNames"`
 	// Tunnel IDs to alert on.
@@ -17010,6 +17014,11 @@ func (o NotificationPolicyFiltersOutput) Statuses() pulumi.StringArrayOutput {
 // Target host to alert on for dos.
 func (o NotificationPolicyFiltersOutput) TargetHostnames() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v NotificationPolicyFilters) []string { return v.TargetHostnames }).(pulumi.StringArrayOutput)
+}
+
+// Target ip to alert on for dos in CIDR notation.
+func (o NotificationPolicyFiltersOutput) TargetIps() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v NotificationPolicyFilters) []string { return v.TargetIps }).(pulumi.StringArrayOutput)
 }
 
 // Target domain to alert on.
@@ -17332,6 +17341,16 @@ func (o NotificationPolicyFiltersPtrOutput) TargetHostnames() pulumi.StringArray
 			return nil
 		}
 		return v.TargetHostnames
+	}).(pulumi.StringArrayOutput)
+}
+
+// Target ip to alert on for dos in CIDR notation.
+func (o NotificationPolicyFiltersPtrOutput) TargetIps() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *NotificationPolicyFilters) []string {
+		if v == nil {
+			return nil
+		}
+		return v.TargetIps
 	}).(pulumi.StringArrayOutput)
 }
 
@@ -31398,6 +31417,177 @@ func (o TeamsAccountBodyScanningPtrOutput) InspectionMode() pulumi.StringPtrOutp
 			return nil
 		}
 		return &v.InspectionMode
+	}).(pulumi.StringPtrOutput)
+}
+
+type TeamsAccountCustomCertificate struct {
+	// Whether TLS encryption should use a custom certificate.
+	Enabled bool `pulumi:"enabled"`
+	// ID of custom certificate.
+	Id        *string `pulumi:"id"`
+	UpdatedAt *string `pulumi:"updatedAt"`
+}
+
+// TeamsAccountCustomCertificateInput is an input type that accepts TeamsAccountCustomCertificateArgs and TeamsAccountCustomCertificateOutput values.
+// You can construct a concrete instance of `TeamsAccountCustomCertificateInput` via:
+//
+//	TeamsAccountCustomCertificateArgs{...}
+type TeamsAccountCustomCertificateInput interface {
+	pulumi.Input
+
+	ToTeamsAccountCustomCertificateOutput() TeamsAccountCustomCertificateOutput
+	ToTeamsAccountCustomCertificateOutputWithContext(context.Context) TeamsAccountCustomCertificateOutput
+}
+
+type TeamsAccountCustomCertificateArgs struct {
+	// Whether TLS encryption should use a custom certificate.
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+	// ID of custom certificate.
+	Id        pulumi.StringPtrInput `pulumi:"id"`
+	UpdatedAt pulumi.StringPtrInput `pulumi:"updatedAt"`
+}
+
+func (TeamsAccountCustomCertificateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TeamsAccountCustomCertificate)(nil)).Elem()
+}
+
+func (i TeamsAccountCustomCertificateArgs) ToTeamsAccountCustomCertificateOutput() TeamsAccountCustomCertificateOutput {
+	return i.ToTeamsAccountCustomCertificateOutputWithContext(context.Background())
+}
+
+func (i TeamsAccountCustomCertificateArgs) ToTeamsAccountCustomCertificateOutputWithContext(ctx context.Context) TeamsAccountCustomCertificateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TeamsAccountCustomCertificateOutput)
+}
+
+func (i TeamsAccountCustomCertificateArgs) ToTeamsAccountCustomCertificatePtrOutput() TeamsAccountCustomCertificatePtrOutput {
+	return i.ToTeamsAccountCustomCertificatePtrOutputWithContext(context.Background())
+}
+
+func (i TeamsAccountCustomCertificateArgs) ToTeamsAccountCustomCertificatePtrOutputWithContext(ctx context.Context) TeamsAccountCustomCertificatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TeamsAccountCustomCertificateOutput).ToTeamsAccountCustomCertificatePtrOutputWithContext(ctx)
+}
+
+// TeamsAccountCustomCertificatePtrInput is an input type that accepts TeamsAccountCustomCertificateArgs, TeamsAccountCustomCertificatePtr and TeamsAccountCustomCertificatePtrOutput values.
+// You can construct a concrete instance of `TeamsAccountCustomCertificatePtrInput` via:
+//
+//	        TeamsAccountCustomCertificateArgs{...}
+//
+//	or:
+//
+//	        nil
+type TeamsAccountCustomCertificatePtrInput interface {
+	pulumi.Input
+
+	ToTeamsAccountCustomCertificatePtrOutput() TeamsAccountCustomCertificatePtrOutput
+	ToTeamsAccountCustomCertificatePtrOutputWithContext(context.Context) TeamsAccountCustomCertificatePtrOutput
+}
+
+type teamsAccountCustomCertificatePtrType TeamsAccountCustomCertificateArgs
+
+func TeamsAccountCustomCertificatePtr(v *TeamsAccountCustomCertificateArgs) TeamsAccountCustomCertificatePtrInput {
+	return (*teamsAccountCustomCertificatePtrType)(v)
+}
+
+func (*teamsAccountCustomCertificatePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TeamsAccountCustomCertificate)(nil)).Elem()
+}
+
+func (i *teamsAccountCustomCertificatePtrType) ToTeamsAccountCustomCertificatePtrOutput() TeamsAccountCustomCertificatePtrOutput {
+	return i.ToTeamsAccountCustomCertificatePtrOutputWithContext(context.Background())
+}
+
+func (i *teamsAccountCustomCertificatePtrType) ToTeamsAccountCustomCertificatePtrOutputWithContext(ctx context.Context) TeamsAccountCustomCertificatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TeamsAccountCustomCertificatePtrOutput)
+}
+
+type TeamsAccountCustomCertificateOutput struct{ *pulumi.OutputState }
+
+func (TeamsAccountCustomCertificateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TeamsAccountCustomCertificate)(nil)).Elem()
+}
+
+func (o TeamsAccountCustomCertificateOutput) ToTeamsAccountCustomCertificateOutput() TeamsAccountCustomCertificateOutput {
+	return o
+}
+
+func (o TeamsAccountCustomCertificateOutput) ToTeamsAccountCustomCertificateOutputWithContext(ctx context.Context) TeamsAccountCustomCertificateOutput {
+	return o
+}
+
+func (o TeamsAccountCustomCertificateOutput) ToTeamsAccountCustomCertificatePtrOutput() TeamsAccountCustomCertificatePtrOutput {
+	return o.ToTeamsAccountCustomCertificatePtrOutputWithContext(context.Background())
+}
+
+func (o TeamsAccountCustomCertificateOutput) ToTeamsAccountCustomCertificatePtrOutputWithContext(ctx context.Context) TeamsAccountCustomCertificatePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TeamsAccountCustomCertificate) *TeamsAccountCustomCertificate {
+		return &v
+	}).(TeamsAccountCustomCertificatePtrOutput)
+}
+
+// Whether TLS encryption should use a custom certificate.
+func (o TeamsAccountCustomCertificateOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v TeamsAccountCustomCertificate) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+// ID of custom certificate.
+func (o TeamsAccountCustomCertificateOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TeamsAccountCustomCertificate) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+func (o TeamsAccountCustomCertificateOutput) UpdatedAt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TeamsAccountCustomCertificate) *string { return v.UpdatedAt }).(pulumi.StringPtrOutput)
+}
+
+type TeamsAccountCustomCertificatePtrOutput struct{ *pulumi.OutputState }
+
+func (TeamsAccountCustomCertificatePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TeamsAccountCustomCertificate)(nil)).Elem()
+}
+
+func (o TeamsAccountCustomCertificatePtrOutput) ToTeamsAccountCustomCertificatePtrOutput() TeamsAccountCustomCertificatePtrOutput {
+	return o
+}
+
+func (o TeamsAccountCustomCertificatePtrOutput) ToTeamsAccountCustomCertificatePtrOutputWithContext(ctx context.Context) TeamsAccountCustomCertificatePtrOutput {
+	return o
+}
+
+func (o TeamsAccountCustomCertificatePtrOutput) Elem() TeamsAccountCustomCertificateOutput {
+	return o.ApplyT(func(v *TeamsAccountCustomCertificate) TeamsAccountCustomCertificate {
+		if v != nil {
+			return *v
+		}
+		var ret TeamsAccountCustomCertificate
+		return ret
+	}).(TeamsAccountCustomCertificateOutput)
+}
+
+// Whether TLS encryption should use a custom certificate.
+func (o TeamsAccountCustomCertificatePtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *TeamsAccountCustomCertificate) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// ID of custom certificate.
+func (o TeamsAccountCustomCertificatePtrOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TeamsAccountCustomCertificate) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Id
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o TeamsAccountCustomCertificatePtrOutput) UpdatedAt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TeamsAccountCustomCertificate) *string {
+		if v == nil {
+			return nil
+		}
+		return v.UpdatedAt
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -49783,6 +49973,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*TeamsAccountBlockPagePtrInput)(nil)).Elem(), TeamsAccountBlockPageArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TeamsAccountBodyScanningInput)(nil)).Elem(), TeamsAccountBodyScanningArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TeamsAccountBodyScanningPtrInput)(nil)).Elem(), TeamsAccountBodyScanningArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TeamsAccountCustomCertificateInput)(nil)).Elem(), TeamsAccountCustomCertificateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TeamsAccountCustomCertificatePtrInput)(nil)).Elem(), TeamsAccountCustomCertificateArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TeamsAccountExtendedEmailMatchingInput)(nil)).Elem(), TeamsAccountExtendedEmailMatchingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TeamsAccountExtendedEmailMatchingPtrInput)(nil)).Elem(), TeamsAccountExtendedEmailMatchingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TeamsAccountFipsInput)(nil)).Elem(), TeamsAccountFipsArgs{})
@@ -50374,6 +50566,8 @@ func init() {
 	pulumi.RegisterOutputType(TeamsAccountBlockPagePtrOutput{})
 	pulumi.RegisterOutputType(TeamsAccountBodyScanningOutput{})
 	pulumi.RegisterOutputType(TeamsAccountBodyScanningPtrOutput{})
+	pulumi.RegisterOutputType(TeamsAccountCustomCertificateOutput{})
+	pulumi.RegisterOutputType(TeamsAccountCustomCertificatePtrOutput{})
 	pulumi.RegisterOutputType(TeamsAccountExtendedEmailMatchingOutput{})
 	pulumi.RegisterOutputType(TeamsAccountExtendedEmailMatchingPtrOutput{})
 	pulumi.RegisterOutputType(TeamsAccountFipsOutput{})

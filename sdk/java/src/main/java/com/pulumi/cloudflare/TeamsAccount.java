@@ -9,6 +9,7 @@ import com.pulumi.cloudflare.inputs.TeamsAccountState;
 import com.pulumi.cloudflare.outputs.TeamsAccountAntivirus;
 import com.pulumi.cloudflare.outputs.TeamsAccountBlockPage;
 import com.pulumi.cloudflare.outputs.TeamsAccountBodyScanning;
+import com.pulumi.cloudflare.outputs.TeamsAccountCustomCertificate;
 import com.pulumi.cloudflare.outputs.TeamsAccountExtendedEmailMatching;
 import com.pulumi.cloudflare.outputs.TeamsAccountFips;
 import com.pulumi.cloudflare.outputs.TeamsAccountLogging;
@@ -203,18 +204,32 @@ public class TeamsAccount extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.bodyScanning);
     }
     /**
+     * Configuration for custom certificates / BYO-PKI.
+     * 
+     */
+    @Export(name="customCertificate", refs={TeamsAccountCustomCertificate.class}, tree="[0]")
+    private Output</* @Nullable */ TeamsAccountCustomCertificate> customCertificate;
+
+    /**
+     * @return Configuration for custom certificates / BYO-PKI.
+     * 
+     */
+    public Output<Optional<TeamsAccountCustomCertificate>> customCertificate() {
+        return Codegen.optional(this.customCertificate);
+    }
+    /**
      * Configuration for extended e-mail matching.
      * 
      */
     @Export(name="extendedEmailMatching", refs={TeamsAccountExtendedEmailMatching.class}, tree="[0]")
-    private Output</* @Nullable */ TeamsAccountExtendedEmailMatching> extendedEmailMatching;
+    private Output<TeamsAccountExtendedEmailMatching> extendedEmailMatching;
 
     /**
      * @return Configuration for extended e-mail matching.
      * 
      */
-    public Output<Optional<TeamsAccountExtendedEmailMatching>> extendedEmailMatching() {
-        return Codegen.optional(this.extendedEmailMatching);
+    public Output<TeamsAccountExtendedEmailMatching> extendedEmailMatching() {
+        return this.extendedEmailMatching;
     }
     /**
      * Configure compliance with Federal Information Processing Standards.

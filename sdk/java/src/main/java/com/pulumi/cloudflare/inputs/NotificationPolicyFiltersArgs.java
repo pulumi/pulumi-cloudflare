@@ -429,6 +429,21 @@ public final class NotificationPolicyFiltersArgs extends com.pulumi.resources.Re
     }
 
     /**
+     * Target ip to alert on for dos in CIDR notation.
+     * 
+     */
+    @Import(name="targetIps")
+    private @Nullable Output<List<String>> targetIps;
+
+    /**
+     * @return Target ip to alert on for dos in CIDR notation.
+     * 
+     */
+    public Optional<Output<List<String>>> targetIps() {
+        return Optional.ofNullable(this.targetIps);
+    }
+
+    /**
      * Target domain to alert on.
      * 
      */
@@ -519,6 +534,7 @@ public final class NotificationPolicyFiltersArgs extends com.pulumi.resources.Re
         this.slos = $.slos;
         this.statuses = $.statuses;
         this.targetHostnames = $.targetHostnames;
+        this.targetIps = $.targetIps;
         this.targetZoneNames = $.targetZoneNames;
         this.tunnelIds = $.tunnelIds;
         this.wheres = $.wheres;
@@ -1391,6 +1407,37 @@ public final class NotificationPolicyFiltersArgs extends com.pulumi.resources.Re
          */
         public Builder targetHostnames(String... targetHostnames) {
             return targetHostnames(List.of(targetHostnames));
+        }
+
+        /**
+         * @param targetIps Target ip to alert on for dos in CIDR notation.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder targetIps(@Nullable Output<List<String>> targetIps) {
+            $.targetIps = targetIps;
+            return this;
+        }
+
+        /**
+         * @param targetIps Target ip to alert on for dos in CIDR notation.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder targetIps(List<String> targetIps) {
+            return targetIps(Output.of(targetIps));
+        }
+
+        /**
+         * @param targetIps Target ip to alert on for dos in CIDR notation.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder targetIps(String... targetIps) {
+            return targetIps(List.of(targetIps));
         }
 
         /**

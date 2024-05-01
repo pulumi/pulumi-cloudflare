@@ -332,12 +332,22 @@ public final class CloudflareFunctions {
     /**
      * Use this data source to lookup [Account Roles](https://api.cloudflare.com/#account-roles-properties).
      * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      */
     public static Output<GetAccountRolesResult> getAccountRoles(GetAccountRolesArgs args) {
         return getAccountRoles(args, InvokeOptions.Empty);
     }
     /**
      * Use this data source to lookup [Account Roles](https://api.cloudflare.com/#account-roles-properties).
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetAccountRolesResult> getAccountRolesPlain(GetAccountRolesPlainArgs args) {
@@ -346,12 +356,22 @@ public final class CloudflareFunctions {
     /**
      * Use this data source to lookup [Account Roles](https://api.cloudflare.com/#account-roles-properties).
      * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      */
     public static Output<GetAccountRolesResult> getAccountRoles(GetAccountRolesArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("cloudflare:index/getAccountRoles:getAccountRoles", TypeShape.of(GetAccountRolesResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Use this data source to lookup [Account Roles](https://api.cloudflare.com/#account-roles-properties).
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetAccountRolesResult> getAccountRolesPlain(GetAccountRolesPlainArgs args, InvokeOptions options) {

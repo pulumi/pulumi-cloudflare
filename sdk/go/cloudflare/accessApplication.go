@@ -72,6 +72,8 @@ type AccessApplication struct {
 	LogoUrl pulumi.StringPtrOutput `pulumi:"logoUrl"`
 	// Friendly name of the Access Application.
 	Name pulumi.StringOutput `pulumi:"name"`
+	// Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if corsHeaders is set. Defaults to `false`.
+	OptionsPreflightBypass pulumi.BoolPtrOutput `pulumi:"optionsPreflightBypass"`
 	// SaaS configuration for the Access Application.
 	SaasApp AccessApplicationSaasAppPtrOutput `pulumi:"saasApp"`
 	// Defines the same-site cookie setting for access tokens. Available values: `none`, `lax`, `strict`.
@@ -164,6 +166,8 @@ type accessApplicationState struct {
 	LogoUrl *string `pulumi:"logoUrl"`
 	// Friendly name of the Access Application.
 	Name *string `pulumi:"name"`
+	// Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if corsHeaders is set. Defaults to `false`.
+	OptionsPreflightBypass *bool `pulumi:"optionsPreflightBypass"`
 	// SaaS configuration for the Access Application.
 	SaasApp *AccessApplicationSaasApp `pulumi:"saasApp"`
 	// Defines the same-site cookie setting for access tokens. Available values: `none`, `lax`, `strict`.
@@ -227,6 +231,8 @@ type AccessApplicationState struct {
 	LogoUrl pulumi.StringPtrInput
 	// Friendly name of the Access Application.
 	Name pulumi.StringPtrInput
+	// Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if corsHeaders is set. Defaults to `false`.
+	OptionsPreflightBypass pulumi.BoolPtrInput
 	// SaaS configuration for the Access Application.
 	SaasApp AccessApplicationSaasAppPtrInput
 	// Defines the same-site cookie setting for access tokens. Available values: `none`, `lax`, `strict`.
@@ -292,6 +298,8 @@ type accessApplicationArgs struct {
 	LogoUrl *string `pulumi:"logoUrl"`
 	// Friendly name of the Access Application.
 	Name *string `pulumi:"name"`
+	// Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if corsHeaders is set. Defaults to `false`.
+	OptionsPreflightBypass *bool `pulumi:"optionsPreflightBypass"`
 	// SaaS configuration for the Access Application.
 	SaasApp *AccessApplicationSaasApp `pulumi:"saasApp"`
 	// Defines the same-site cookie setting for access tokens. Available values: `none`, `lax`, `strict`.
@@ -354,6 +362,8 @@ type AccessApplicationArgs struct {
 	LogoUrl pulumi.StringPtrInput
 	// Friendly name of the Access Application.
 	Name pulumi.StringPtrInput
+	// Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if corsHeaders is set. Defaults to `false`.
+	OptionsPreflightBypass pulumi.BoolPtrInput
 	// SaaS configuration for the Access Application.
 	SaasApp AccessApplicationSaasAppPtrInput
 	// Defines the same-site cookie setting for access tokens. Available values: `none`, `lax`, `strict`.
@@ -564,6 +574,11 @@ func (o AccessApplicationOutput) LogoUrl() pulumi.StringPtrOutput {
 // Friendly name of the Access Application.
 func (o AccessApplicationOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *AccessApplication) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if corsHeaders is set. Defaults to `false`.
+func (o AccessApplicationOutput) OptionsPreflightBypass() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AccessApplication) pulumi.BoolPtrOutput { return v.OptionsPreflightBypass }).(pulumi.BoolPtrOutput)
 }
 
 // SaaS configuration for the Access Application.

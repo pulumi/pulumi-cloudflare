@@ -123,6 +123,10 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly ImmutableArray<string> TargetHostnames;
         /// <summary>
+        /// Target ip to alert on for dos in CIDR notation.
+        /// </summary>
+        public readonly ImmutableArray<string> TargetIps;
+        /// <summary>
         /// Target domain to alert on.
         /// </summary>
         public readonly ImmutableArray<string> TargetZoneNames;
@@ -197,6 +201,8 @@ namespace Pulumi.Cloudflare.Outputs
 
             ImmutableArray<string> targetHostnames,
 
+            ImmutableArray<string> targetIps,
+
             ImmutableArray<string> targetZoneNames,
 
             ImmutableArray<string> tunnelIds,
@@ -233,6 +239,7 @@ namespace Pulumi.Cloudflare.Outputs
             Slos = slos;
             Statuses = statuses;
             TargetHostnames = targetHostnames;
+            TargetIps = targetIps;
             TargetZoneNames = targetZoneNames;
             TunnelIds = tunnelIds;
             Wheres = wheres;

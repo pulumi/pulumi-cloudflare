@@ -6,6 +6,7 @@ package com.pulumi.cloudflare.inputs;
 import com.pulumi.cloudflare.inputs.TeamsAccountAntivirusArgs;
 import com.pulumi.cloudflare.inputs.TeamsAccountBlockPageArgs;
 import com.pulumi.cloudflare.inputs.TeamsAccountBodyScanningArgs;
+import com.pulumi.cloudflare.inputs.TeamsAccountCustomCertificateArgs;
 import com.pulumi.cloudflare.inputs.TeamsAccountExtendedEmailMatchingArgs;
 import com.pulumi.cloudflare.inputs.TeamsAccountFipsArgs;
 import com.pulumi.cloudflare.inputs.TeamsAccountLoggingArgs;
@@ -98,6 +99,21 @@ public final class TeamsAccountState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<TeamsAccountBodyScanningArgs>> bodyScanning() {
         return Optional.ofNullable(this.bodyScanning);
+    }
+
+    /**
+     * Configuration for custom certificates / BYO-PKI.
+     * 
+     */
+    @Import(name="customCertificate")
+    private @Nullable Output<TeamsAccountCustomCertificateArgs> customCertificate;
+
+    /**
+     * @return Configuration for custom certificates / BYO-PKI.
+     * 
+     */
+    public Optional<Output<TeamsAccountCustomCertificateArgs>> customCertificate() {
+        return Optional.ofNullable(this.customCertificate);
     }
 
     /**
@@ -250,6 +266,7 @@ public final class TeamsAccountState extends com.pulumi.resources.ResourceArgs {
         this.antivirus = $.antivirus;
         this.blockPage = $.blockPage;
         this.bodyScanning = $.bodyScanning;
+        this.customCertificate = $.customCertificate;
         this.extendedEmailMatching = $.extendedEmailMatching;
         this.fips = $.fips;
         this.logging = $.logging;
@@ -383,6 +400,27 @@ public final class TeamsAccountState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder bodyScanning(TeamsAccountBodyScanningArgs bodyScanning) {
             return bodyScanning(Output.of(bodyScanning));
+        }
+
+        /**
+         * @param customCertificate Configuration for custom certificates / BYO-PKI.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder customCertificate(@Nullable Output<TeamsAccountCustomCertificateArgs> customCertificate) {
+            $.customCertificate = customCertificate;
+            return this;
+        }
+
+        /**
+         * @param customCertificate Configuration for custom certificates / BYO-PKI.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder customCertificate(TeamsAccountCustomCertificateArgs customCertificate) {
+            return customCertificate(Output.of(customCertificate));
         }
 
         /**

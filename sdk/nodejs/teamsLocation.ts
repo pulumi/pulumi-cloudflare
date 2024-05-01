@@ -20,6 +20,7 @@ import * as utilities from "./utilities";
  *     accountId: "f037e56e89293a057740de681ac9abbe",
  *     name: "office",
  *     clientDefault: true,
+ *     ecsSupport: false,
  *     networks: [
  *         {
  *             network: "203.0.113.1/32",
@@ -82,6 +83,10 @@ export class TeamsLocation extends pulumi.CustomResource {
      */
     public /*out*/ readonly dohSubdomain!: pulumi.Output<string>;
     /**
+     * Indicator that this location needs to resolve EDNS queries.
+     */
+    public readonly ecsSupport!: pulumi.Output<boolean | undefined>;
+    /**
      * Client IP address.
      */
     public /*out*/ readonly ip!: pulumi.Output<string>;
@@ -116,6 +121,7 @@ export class TeamsLocation extends pulumi.CustomResource {
             resourceInputs["anonymizedLogsEnabled"] = state ? state.anonymizedLogsEnabled : undefined;
             resourceInputs["clientDefault"] = state ? state.clientDefault : undefined;
             resourceInputs["dohSubdomain"] = state ? state.dohSubdomain : undefined;
+            resourceInputs["ecsSupport"] = state ? state.ecsSupport : undefined;
             resourceInputs["ip"] = state ? state.ip : undefined;
             resourceInputs["ipv4Destination"] = state ? state.ipv4Destination : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
@@ -131,6 +137,7 @@ export class TeamsLocation extends pulumi.CustomResource {
             }
             resourceInputs["accountId"] = args ? args.accountId : undefined;
             resourceInputs["clientDefault"] = args ? args.clientDefault : undefined;
+            resourceInputs["ecsSupport"] = args ? args.ecsSupport : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["networks"] = args ? args.networks : undefined;
             resourceInputs["anonymizedLogsEnabled"] = undefined /*out*/;
@@ -165,6 +172,10 @@ export interface TeamsLocationState {
      */
     dohSubdomain?: pulumi.Input<string>;
     /**
+     * Indicator that this location needs to resolve EDNS queries.
+     */
+    ecsSupport?: pulumi.Input<boolean>;
+    /**
      * Client IP address.
      */
     ip?: pulumi.Input<string>;
@@ -195,6 +206,10 @@ export interface TeamsLocationArgs {
      * Indicator that this is the default location.
      */
     clientDefault?: pulumi.Input<boolean>;
+    /**
+     * Indicator that this location needs to resolve EDNS queries.
+     */
+    ecsSupport?: pulumi.Input<boolean>;
     /**
      * Name of the teams location.
      */

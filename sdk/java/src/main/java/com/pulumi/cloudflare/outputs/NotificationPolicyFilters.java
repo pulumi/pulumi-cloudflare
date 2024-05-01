@@ -148,6 +148,11 @@ public final class NotificationPolicyFilters {
      */
     private @Nullable List<String> targetHostnames;
     /**
+     * @return Target ip to alert on for dos in CIDR notation.
+     * 
+     */
+    private @Nullable List<String> targetIps;
+    /**
      * @return Target domain to alert on.
      * 
      */
@@ -362,6 +367,13 @@ public final class NotificationPolicyFilters {
         return this.targetHostnames == null ? List.of() : this.targetHostnames;
     }
     /**
+     * @return Target ip to alert on for dos in CIDR notation.
+     * 
+     */
+    public List<String> targetIps() {
+        return this.targetIps == null ? List.of() : this.targetIps;
+    }
+    /**
      * @return Target domain to alert on.
      * 
      */
@@ -427,6 +439,7 @@ public final class NotificationPolicyFilters {
         private @Nullable List<String> slos;
         private @Nullable List<String> statuses;
         private @Nullable List<String> targetHostnames;
+        private @Nullable List<String> targetIps;
         private @Nullable List<String> targetZoneNames;
         private @Nullable List<String> tunnelIds;
         private @Nullable List<String> wheres;
@@ -462,6 +475,7 @@ public final class NotificationPolicyFilters {
     	      this.slos = defaults.slos;
     	      this.statuses = defaults.statuses;
     	      this.targetHostnames = defaults.targetHostnames;
+    	      this.targetIps = defaults.targetIps;
     	      this.targetZoneNames = defaults.targetZoneNames;
     	      this.tunnelIds = defaults.tunnelIds;
     	      this.wheres = defaults.wheres;
@@ -721,6 +735,15 @@ public final class NotificationPolicyFilters {
             return targetHostnames(List.of(targetHostnames));
         }
         @CustomType.Setter
+        public Builder targetIps(@Nullable List<String> targetIps) {
+
+            this.targetIps = targetIps;
+            return this;
+        }
+        public Builder targetIps(String... targetIps) {
+            return targetIps(List.of(targetIps));
+        }
+        @CustomType.Setter
         public Builder targetZoneNames(@Nullable List<String> targetZoneNames) {
 
             this.targetZoneNames = targetZoneNames;
@@ -786,6 +809,7 @@ public final class NotificationPolicyFilters {
             _resultValue.slos = slos;
             _resultValue.statuses = statuses;
             _resultValue.targetHostnames = targetHostnames;
+            _resultValue.targetIps = targetIps;
             _resultValue.targetZoneNames = targetZoneNames;
             _resultValue.tunnelIds = tunnelIds;
             _resultValue.wheres = wheres;

@@ -12,6 +12,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -22,6 +23,97 @@ import javax.annotation.Nullable;
  * Provides a Cloudflare DLP Profile resource. Data Loss Prevention profiles
  * are a set of entries that can be matched in HTTP bodies or files.
  * They are referenced in Zero Trust Gateway rules.
+ * 
+ * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.cloudflare.DlpProfile;
+ * import com.pulumi.cloudflare.DlpProfileArgs;
+ * import com.pulumi.cloudflare.inputs.DlpProfileEntryArgs;
+ * import com.pulumi.cloudflare.inputs.DlpProfileEntryPatternArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         // Predefined profile must be imported, cannot be created
+ *         var creds = new DlpProfile(&#34;creds&#34;, DlpProfileArgs.builder()        
+ *             .accountId(&#34;f037e56e89293a057740de681ac9abbe&#34;)
+ *             .name(&#34;Credentials and Secrets&#34;)
+ *             .type(&#34;predefined&#34;)
+ *             .allowedMatchCount(3)
+ *             .entries(            
+ *                 DlpProfileEntryArgs.builder()
+ *                     .enabled(true)
+ *                     .name(&#34;Amazon AWS Access Key ID&#34;)
+ *                     .id(&#34;d8fcfc9c-773c-405e-8426-21ecbb67ba93&#34;)
+ *                     .build(),
+ *                 DlpProfileEntryArgs.builder()
+ *                     .enabled(false)
+ *                     .id(&#34;2c0e33e1-71da-40c8-aad3-32e674ad3d96&#34;)
+ *                     .name(&#34;Amazon AWS Secret Access Key&#34;)
+ *                     .build(),
+ *                 DlpProfileEntryArgs.builder()
+ *                     .enabled(true)
+ *                     .id(&#34;4e92c006-3802-4dff-bbe1-8e1513b1c92a&#34;)
+ *                     .name(&#34;Microsoft Azure Client Secret&#34;)
+ *                     .build(),
+ *                 DlpProfileEntryArgs.builder()
+ *                     .enabled(false)
+ *                     .id(&#34;5c713294-2375-4904-abcf-e4a15be4d592&#34;)
+ *                     .name(&#34;SSH Private Key&#34;)
+ *                     .build(),
+ *                 DlpProfileEntryArgs.builder()
+ *                     .enabled(true)
+ *                     .id(&#34;6c6579e4-d832-42d5-905c-8e53340930f2&#34;)
+ *                     .name(&#34;Google GCP API Key&#34;)
+ *                     .build())
+ *             .build());
+ * 
+ *         // Custom profile
+ *         var exampleCustom = new DlpProfile(&#34;exampleCustom&#34;, DlpProfileArgs.builder()        
+ *             .accountId(&#34;f037e56e89293a057740de681ac9abbe&#34;)
+ *             .name(&#34;Example Custom Profile&#34;)
+ *             .description(&#34;A profile with example entries&#34;)
+ *             .type(&#34;custom&#34;)
+ *             .allowedMatchCount(0)
+ *             .entries(            
+ *                 DlpProfileEntryArgs.builder()
+ *                     .name(&#34;Matches visa credit cards&#34;)
+ *                     .enabled(true)
+ *                     .pattern(DlpProfileEntryPatternArgs.builder()
+ *                         .regex(&#34;4\\d{3}([-\\. ])?\\d{4}([-\\. ])?\\d{4}([-\\. ])?\\d{4}&#34;)
+ *                         .validation(&#34;luhn&#34;)
+ *                         .build())
+ *                     .build(),
+ *                 DlpProfileEntryArgs.builder()
+ *                     .name(&#34;Matches diners club card&#34;)
+ *                     .enabled(true)
+ *                     .pattern(DlpProfileEntryPatternArgs.builder()
+ *                         .regex(&#34;(?:0[0-5]|[68][0-9])[0-9]{11}&#34;)
+ *                         .validation(&#34;luhn&#34;)
+ *                         .build())
+ *                     .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
@@ -115,6 +207,20 @@ public class DlpProfile extends com.pulumi.resources.CustomResource {
      */
     public Output<String> name() {
         return this.name;
+    }
+    /**
+     * If true, scan images via OCR to determine if any text present matches filters.
+     * 
+     */
+    @Export(name="ocrEnabled", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> ocrEnabled;
+
+    /**
+     * @return If true, scan images via OCR to determine if any text present matches filters.
+     * 
+     */
+    public Output<Optional<Boolean>> ocrEnabled() {
+        return Codegen.optional(this.ocrEnabled);
     }
     /**
      * The type of the profile. Available values: `custom`, `predefined`. **Modifying this attribute will force creation of a new resource.**

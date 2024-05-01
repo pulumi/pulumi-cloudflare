@@ -50,6 +50,7 @@ import javax.annotation.Nullable;
  *             .accountId(&#34;f037e56e89293a057740de681ac9abbe&#34;)
  *             .name(&#34;office&#34;)
  *             .clientDefault(true)
+ *             .ecsSupport(false)
  *             .networks(            
  *                 TeamsLocationNetworkArgs.builder()
  *                     .network(&#34;203.0.113.1/32&#34;)
@@ -128,6 +129,20 @@ public class TeamsLocation extends com.pulumi.resources.CustomResource {
      */
     public Output<String> dohSubdomain() {
         return this.dohSubdomain;
+    }
+    /**
+     * Indicator that this location needs to resolve EDNS queries.
+     * 
+     */
+    @Export(name="ecsSupport", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> ecsSupport;
+
+    /**
+     * @return Indicator that this location needs to resolve EDNS queries.
+     * 
+     */
+    public Output<Optional<Boolean>> ecsSupport() {
+        return Codegen.optional(this.ecsSupport);
     }
     /**
      * Client IP address.

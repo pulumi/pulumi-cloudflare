@@ -156,6 +156,12 @@ namespace Pulumi.Cloudflare
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
+        /// Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if cors_headers is set. Defaults to `false`.
+        /// </summary>
+        [Output("optionsPreflightBypass")]
+        public Output<bool?> OptionsPreflightBypass { get; private set; } = null!;
+
+        /// <summary>
         /// SaaS configuration for the Access Application.
         /// </summary>
         [Output("saasApp")]
@@ -400,6 +406,12 @@ namespace Pulumi.Cloudflare
         public Input<string>? Name { get; set; }
 
         /// <summary>
+        /// Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if cors_headers is set. Defaults to `false`.
+        /// </summary>
+        [Input("optionsPreflightBypass")]
+        public Input<bool>? OptionsPreflightBypass { get; set; }
+
+        /// <summary>
         /// SaaS configuration for the Access Application.
         /// </summary>
         [Input("saasApp")]
@@ -622,6 +634,12 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if cors_headers is set. Defaults to `false`.
+        /// </summary>
+        [Input("optionsPreflightBypass")]
+        public Input<bool>? OptionsPreflightBypass { get; set; }
 
         /// <summary>
         /// SaaS configuration for the Access Application.

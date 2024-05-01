@@ -36,6 +36,7 @@ class AccessApplicationArgs:
                  landing_page_design: Optional[pulumi.Input['AccessApplicationLandingPageDesignArgs']] = None,
                  logo_url: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 options_preflight_bypass: Optional[pulumi.Input[bool]] = None,
                  saas_app: Optional[pulumi.Input['AccessApplicationSaasAppArgs']] = None,
                  same_site_cookie_attribute: Optional[pulumi.Input[str]] = None,
                  self_hosted_domains: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -67,6 +68,7 @@ class AccessApplicationArgs:
         :param pulumi.Input['AccessApplicationLandingPageDesignArgs'] landing_page_design: The landing page design of the app launcher.
         :param pulumi.Input[str] logo_url: Image URL for the logo shown in the app launcher dashboard.
         :param pulumi.Input[str] name: Friendly name of the Access Application.
+        :param pulumi.Input[bool] options_preflight_bypass: Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if cors_headers is set. Defaults to `false`.
         :param pulumi.Input['AccessApplicationSaasAppArgs'] saas_app: SaaS configuration for the Access Application.
         :param pulumi.Input[str] same_site_cookie_attribute: Defines the same-site cookie setting for access tokens. Available values: `none`, `lax`, `strict`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] self_hosted_domains: List of domains that access will secure. Only present for self_hosted, vnc, and ssh applications. Always includes the value set as `domain`.
@@ -117,6 +119,8 @@ class AccessApplicationArgs:
             pulumi.set(__self__, "logo_url", logo_url)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if options_preflight_bypass is not None:
+            pulumi.set(__self__, "options_preflight_bypass", options_preflight_bypass)
         if saas_app is not None:
             pulumi.set(__self__, "saas_app", saas_app)
         if same_site_cookie_attribute is not None:
@@ -377,6 +381,18 @@ class AccessApplicationArgs:
         pulumi.set(self, "name", value)
 
     @property
+    @pulumi.getter(name="optionsPreflightBypass")
+    def options_preflight_bypass(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if cors_headers is set. Defaults to `false`.
+        """
+        return pulumi.get(self, "options_preflight_bypass")
+
+    @options_preflight_bypass.setter
+    def options_preflight_bypass(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "options_preflight_bypass", value)
+
+    @property
     @pulumi.getter(name="saasApp")
     def saas_app(self) -> Optional[pulumi.Input['AccessApplicationSaasAppArgs']]:
         """
@@ -509,6 +525,7 @@ class _AccessApplicationState:
                  landing_page_design: Optional[pulumi.Input['AccessApplicationLandingPageDesignArgs']] = None,
                  logo_url: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 options_preflight_bypass: Optional[pulumi.Input[bool]] = None,
                  saas_app: Optional[pulumi.Input['AccessApplicationSaasAppArgs']] = None,
                  same_site_cookie_attribute: Optional[pulumi.Input[str]] = None,
                  self_hosted_domains: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -541,6 +558,7 @@ class _AccessApplicationState:
         :param pulumi.Input['AccessApplicationLandingPageDesignArgs'] landing_page_design: The landing page design of the app launcher.
         :param pulumi.Input[str] logo_url: Image URL for the logo shown in the app launcher dashboard.
         :param pulumi.Input[str] name: Friendly name of the Access Application.
+        :param pulumi.Input[bool] options_preflight_bypass: Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if cors_headers is set. Defaults to `false`.
         :param pulumi.Input['AccessApplicationSaasAppArgs'] saas_app: SaaS configuration for the Access Application.
         :param pulumi.Input[str] same_site_cookie_attribute: Defines the same-site cookie setting for access tokens. Available values: `none`, `lax`, `strict`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] self_hosted_domains: List of domains that access will secure. Only present for self_hosted, vnc, and ssh applications. Always includes the value set as `domain`.
@@ -593,6 +611,8 @@ class _AccessApplicationState:
             pulumi.set(__self__, "logo_url", logo_url)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if options_preflight_bypass is not None:
+            pulumi.set(__self__, "options_preflight_bypass", options_preflight_bypass)
         if saas_app is not None:
             pulumi.set(__self__, "saas_app", saas_app)
         if same_site_cookie_attribute is not None:
@@ -865,6 +885,18 @@ class _AccessApplicationState:
         pulumi.set(self, "name", value)
 
     @property
+    @pulumi.getter(name="optionsPreflightBypass")
+    def options_preflight_bypass(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if cors_headers is set. Defaults to `false`.
+        """
+        return pulumi.get(self, "options_preflight_bypass")
+
+    @options_preflight_bypass.setter
+    def options_preflight_bypass(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "options_preflight_bypass", value)
+
+    @property
     @pulumi.getter(name="saasApp")
     def saas_app(self) -> Optional[pulumi.Input['AccessApplicationSaasAppArgs']]:
         """
@@ -998,6 +1030,7 @@ class AccessApplication(pulumi.CustomResource):
                  landing_page_design: Optional[pulumi.Input[pulumi.InputType['AccessApplicationLandingPageDesignArgs']]] = None,
                  logo_url: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 options_preflight_bypass: Optional[pulumi.Input[bool]] = None,
                  saas_app: Optional[pulumi.Input[pulumi.InputType['AccessApplicationSaasAppArgs']]] = None,
                  same_site_cookie_attribute: Optional[pulumi.Input[str]] = None,
                  self_hosted_domains: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -1047,6 +1080,7 @@ class AccessApplication(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['AccessApplicationLandingPageDesignArgs']] landing_page_design: The landing page design of the app launcher.
         :param pulumi.Input[str] logo_url: Image URL for the logo shown in the app launcher dashboard.
         :param pulumi.Input[str] name: Friendly name of the Access Application.
+        :param pulumi.Input[bool] options_preflight_bypass: Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if cors_headers is set. Defaults to `false`.
         :param pulumi.Input[pulumi.InputType['AccessApplicationSaasAppArgs']] saas_app: SaaS configuration for the Access Application.
         :param pulumi.Input[str] same_site_cookie_attribute: Defines the same-site cookie setting for access tokens. Available values: `none`, `lax`, `strict`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] self_hosted_domains: List of domains that access will secure. Only present for self_hosted, vnc, and ssh applications. Always includes the value set as `domain`.
@@ -1115,6 +1149,7 @@ class AccessApplication(pulumi.CustomResource):
                  landing_page_design: Optional[pulumi.Input[pulumi.InputType['AccessApplicationLandingPageDesignArgs']]] = None,
                  logo_url: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 options_preflight_bypass: Optional[pulumi.Input[bool]] = None,
                  saas_app: Optional[pulumi.Input[pulumi.InputType['AccessApplicationSaasAppArgs']]] = None,
                  same_site_cookie_attribute: Optional[pulumi.Input[str]] = None,
                  self_hosted_domains: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -1153,6 +1188,7 @@ class AccessApplication(pulumi.CustomResource):
             __props__.__dict__["landing_page_design"] = landing_page_design
             __props__.__dict__["logo_url"] = logo_url
             __props__.__dict__["name"] = name
+            __props__.__dict__["options_preflight_bypass"] = options_preflight_bypass
             __props__.__dict__["saas_app"] = saas_app
             __props__.__dict__["same_site_cookie_attribute"] = same_site_cookie_attribute
             __props__.__dict__["self_hosted_domains"] = self_hosted_domains
@@ -1194,6 +1230,7 @@ class AccessApplication(pulumi.CustomResource):
             landing_page_design: Optional[pulumi.Input[pulumi.InputType['AccessApplicationLandingPageDesignArgs']]] = None,
             logo_url: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
+            options_preflight_bypass: Optional[pulumi.Input[bool]] = None,
             saas_app: Optional[pulumi.Input[pulumi.InputType['AccessApplicationSaasAppArgs']]] = None,
             same_site_cookie_attribute: Optional[pulumi.Input[str]] = None,
             self_hosted_domains: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -1231,6 +1268,7 @@ class AccessApplication(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['AccessApplicationLandingPageDesignArgs']] landing_page_design: The landing page design of the app launcher.
         :param pulumi.Input[str] logo_url: Image URL for the logo shown in the app launcher dashboard.
         :param pulumi.Input[str] name: Friendly name of the Access Application.
+        :param pulumi.Input[bool] options_preflight_bypass: Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if cors_headers is set. Defaults to `false`.
         :param pulumi.Input[pulumi.InputType['AccessApplicationSaasAppArgs']] saas_app: SaaS configuration for the Access Application.
         :param pulumi.Input[str] same_site_cookie_attribute: Defines the same-site cookie setting for access tokens. Available values: `none`, `lax`, `strict`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] self_hosted_domains: List of domains that access will secure. Only present for self_hosted, vnc, and ssh applications. Always includes the value set as `domain`.
@@ -1266,6 +1304,7 @@ class AccessApplication(pulumi.CustomResource):
         __props__.__dict__["landing_page_design"] = landing_page_design
         __props__.__dict__["logo_url"] = logo_url
         __props__.__dict__["name"] = name
+        __props__.__dict__["options_preflight_bypass"] = options_preflight_bypass
         __props__.__dict__["saas_app"] = saas_app
         __props__.__dict__["same_site_cookie_attribute"] = same_site_cookie_attribute
         __props__.__dict__["self_hosted_domains"] = self_hosted_domains
@@ -1444,6 +1483,14 @@ class AccessApplication(pulumi.CustomResource):
         Friendly name of the Access Application.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="optionsPreflightBypass")
+    def options_preflight_bypass(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if cors_headers is set. Defaults to `false`.
+        """
+        return pulumi.get(self, "options_preflight_bypass")
 
     @property
     @pulumi.getter(name="saasApp")

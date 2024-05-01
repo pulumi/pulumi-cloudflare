@@ -109,8 +109,10 @@ type TeamsAccount struct {
 	BlockPage TeamsAccountBlockPagePtrOutput `pulumi:"blockPage"`
 	// Configuration for body scanning.
 	BodyScanning TeamsAccountBodyScanningPtrOutput `pulumi:"bodyScanning"`
+	// Configuration for custom certificates / BYO-PKI.
+	CustomCertificate TeamsAccountCustomCertificatePtrOutput `pulumi:"customCertificate"`
 	// Configuration for extended e-mail matching.
-	ExtendedEmailMatching TeamsAccountExtendedEmailMatchingPtrOutput `pulumi:"extendedEmailMatching"`
+	ExtendedEmailMatching TeamsAccountExtendedEmailMatchingOutput `pulumi:"extendedEmailMatching"`
 	// Configure compliance with Federal Information Processing Standards.
 	Fips    TeamsAccountFipsPtrOutput    `pulumi:"fips"`
 	Logging TeamsAccountLoggingPtrOutput `pulumi:"logging"`
@@ -173,6 +175,8 @@ type teamsAccountState struct {
 	BlockPage *TeamsAccountBlockPage `pulumi:"blockPage"`
 	// Configuration for body scanning.
 	BodyScanning *TeamsAccountBodyScanning `pulumi:"bodyScanning"`
+	// Configuration for custom certificates / BYO-PKI.
+	CustomCertificate *TeamsAccountCustomCertificate `pulumi:"customCertificate"`
 	// Configuration for extended e-mail matching.
 	ExtendedEmailMatching *TeamsAccountExtendedEmailMatching `pulumi:"extendedEmailMatching"`
 	// Configure compliance with Federal Information Processing Standards.
@@ -205,6 +209,8 @@ type TeamsAccountState struct {
 	BlockPage TeamsAccountBlockPagePtrInput
 	// Configuration for body scanning.
 	BodyScanning TeamsAccountBodyScanningPtrInput
+	// Configuration for custom certificates / BYO-PKI.
+	CustomCertificate TeamsAccountCustomCertificatePtrInput
 	// Configuration for extended e-mail matching.
 	ExtendedEmailMatching TeamsAccountExtendedEmailMatchingPtrInput
 	// Configure compliance with Federal Information Processing Standards.
@@ -241,6 +247,8 @@ type teamsAccountArgs struct {
 	BlockPage *TeamsAccountBlockPage `pulumi:"blockPage"`
 	// Configuration for body scanning.
 	BodyScanning *TeamsAccountBodyScanning `pulumi:"bodyScanning"`
+	// Configuration for custom certificates / BYO-PKI.
+	CustomCertificate *TeamsAccountCustomCertificate `pulumi:"customCertificate"`
 	// Configuration for extended e-mail matching.
 	ExtendedEmailMatching *TeamsAccountExtendedEmailMatching `pulumi:"extendedEmailMatching"`
 	// Configure compliance with Federal Information Processing Standards.
@@ -274,6 +282,8 @@ type TeamsAccountArgs struct {
 	BlockPage TeamsAccountBlockPagePtrInput
 	// Configuration for body scanning.
 	BodyScanning TeamsAccountBodyScanningPtrInput
+	// Configuration for custom certificates / BYO-PKI.
+	CustomCertificate TeamsAccountCustomCertificatePtrInput
 	// Configuration for extended e-mail matching.
 	ExtendedEmailMatching TeamsAccountExtendedEmailMatchingPtrInput
 	// Configure compliance with Federal Information Processing Standards.
@@ -407,9 +417,14 @@ func (o TeamsAccountOutput) BodyScanning() TeamsAccountBodyScanningPtrOutput {
 	return o.ApplyT(func(v *TeamsAccount) TeamsAccountBodyScanningPtrOutput { return v.BodyScanning }).(TeamsAccountBodyScanningPtrOutput)
 }
 
+// Configuration for custom certificates / BYO-PKI.
+func (o TeamsAccountOutput) CustomCertificate() TeamsAccountCustomCertificatePtrOutput {
+	return o.ApplyT(func(v *TeamsAccount) TeamsAccountCustomCertificatePtrOutput { return v.CustomCertificate }).(TeamsAccountCustomCertificatePtrOutput)
+}
+
 // Configuration for extended e-mail matching.
-func (o TeamsAccountOutput) ExtendedEmailMatching() TeamsAccountExtendedEmailMatchingPtrOutput {
-	return o.ApplyT(func(v *TeamsAccount) TeamsAccountExtendedEmailMatchingPtrOutput { return v.ExtendedEmailMatching }).(TeamsAccountExtendedEmailMatchingPtrOutput)
+func (o TeamsAccountOutput) ExtendedEmailMatching() TeamsAccountExtendedEmailMatchingOutput {
+	return o.ApplyT(func(v *TeamsAccount) TeamsAccountExtendedEmailMatchingOutput { return v.ExtendedEmailMatching }).(TeamsAccountExtendedEmailMatchingOutput)
 }
 
 // Configure compliance with Federal Information Processing Standards.

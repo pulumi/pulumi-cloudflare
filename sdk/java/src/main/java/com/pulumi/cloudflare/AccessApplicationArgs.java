@@ -322,6 +322,21 @@ public final class AccessApplicationArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
+     * Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if cors_headers is set. Defaults to `false`.
+     * 
+     */
+    @Import(name="optionsPreflightBypass")
+    private @Nullable Output<Boolean> optionsPreflightBypass;
+
+    /**
+     * @return Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if cors_headers is set. Defaults to `false`.
+     * 
+     */
+    public Optional<Output<Boolean>> optionsPreflightBypass() {
+        return Optional.ofNullable(this.optionsPreflightBypass);
+    }
+
+    /**
      * SaaS configuration for the Access Application.
      * 
      */
@@ -479,6 +494,7 @@ public final class AccessApplicationArgs extends com.pulumi.resources.ResourceAr
         this.landingPageDesign = $.landingPageDesign;
         this.logoUrl = $.logoUrl;
         this.name = $.name;
+        this.optionsPreflightBypass = $.optionsPreflightBypass;
         this.saasApp = $.saasApp;
         this.sameSiteCookieAttribute = $.sameSiteCookieAttribute;
         this.selfHostedDomains = $.selfHostedDomains;
@@ -966,6 +982,27 @@ public final class AccessApplicationArgs extends com.pulumi.resources.ResourceAr
          */
         public Builder name(String name) {
             return name(Output.of(name));
+        }
+
+        /**
+         * @param optionsPreflightBypass Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if cors_headers is set. Defaults to `false`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder optionsPreflightBypass(@Nullable Output<Boolean> optionsPreflightBypass) {
+            $.optionsPreflightBypass = optionsPreflightBypass;
+            return this;
+        }
+
+        /**
+         * @param optionsPreflightBypass Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if cors_headers is set. Defaults to `false`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder optionsPreflightBypass(Boolean optionsPreflightBypass) {
+            return optionsPreflightBypass(Output.of(optionsPreflightBypass));
         }
 
         /**

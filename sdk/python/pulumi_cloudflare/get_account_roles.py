@@ -74,6 +74,20 @@ def get_account_roles(account_id: Optional[str] = None,
     """
     Use this data source to lookup [Account Roles](https://api.cloudflare.com/#account-roles-properties).
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_cloudflare as cloudflare
+
+    account_roles = cloudflare.get_account_roles(account_id="f037e56e89293a057740de681ac9abbe")
+    roles_by_name = {role.name: role for role in account_roles.roles}
+    member = cloudflare.AccountMember("member",
+        account_id="f037e56e89293a057740de681ac9abbe",
+        email_address="user@example.com",
+        role_ids=[roles_by_name["Administrator"]])
+    ```
+
 
     :param str account_id: The account identifier to target for the resource.
     """
@@ -93,6 +107,20 @@ def get_account_roles_output(account_id: Optional[pulumi.Input[str]] = None,
                              opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAccountRolesResult]:
     """
     Use this data source to lookup [Account Roles](https://api.cloudflare.com/#account-roles-properties).
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_cloudflare as cloudflare
+
+    account_roles = cloudflare.get_account_roles(account_id="f037e56e89293a057740de681ac9abbe")
+    roles_by_name = {role.name: role for role in account_roles.roles}
+    member = cloudflare.AccountMember("member",
+        account_id="f037e56e89293a057740de681ac9abbe",
+        email_address="user@example.com",
+        role_ids=[roles_by_name["Administrator"]])
+    ```
 
 
     :param str account_id: The account identifier to target for the resource.
