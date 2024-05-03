@@ -24,7 +24,6 @@ class OriginCaCertificateArgs:
         :param pulumi.Input[str] csr: The Certificate Signing Request. Must be newline-encoded. **Modifying this attribute will force creation of a new resource.**
         :param pulumi.Input[Sequence[pulumi.Input[str]]] hostnames: A list of hostnames or wildcard names bound to the certificate. **Modifying this attribute will force creation of a new resource.**
         :param pulumi.Input[str] request_type: The signature type desired on the certificate. Available values: `origin-rsa`, `origin-ecc`, `keyless-certificate`. **Modifying this attribute will force creation of a new resource.**
-        :param pulumi.Input[int] min_days_for_renewal: Number of days prior to the expiry to trigger a renewal of the certificate if a Terraform operation is run.
         :param pulumi.Input[int] requested_validity: The number of days for which the certificate should be valid. Available values: `7`, `30`, `90`, `365`, `730`, `1095`, `5475`. **Modifying this attribute will force creation of a new resource.**
         """
         pulumi.set(__self__, "csr", csr)
@@ -74,9 +73,6 @@ class OriginCaCertificateArgs:
     @property
     @pulumi.getter(name="minDaysForRenewal")
     def min_days_for_renewal(self) -> Optional[pulumi.Input[int]]:
-        """
-        Number of days prior to the expiry to trigger a renewal of the certificate if a Terraform operation is run.
-        """
         return pulumi.get(self, "min_days_for_renewal")
 
     @min_days_for_renewal.setter
@@ -112,7 +108,6 @@ class _OriginCaCertificateState:
         :param pulumi.Input[str] csr: The Certificate Signing Request. Must be newline-encoded. **Modifying this attribute will force creation of a new resource.**
         :param pulumi.Input[str] expires_on: The datetime when the certificate will expire.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] hostnames: A list of hostnames or wildcard names bound to the certificate. **Modifying this attribute will force creation of a new resource.**
-        :param pulumi.Input[int] min_days_for_renewal: Number of days prior to the expiry to trigger a renewal of the certificate if a Terraform operation is run.
         :param pulumi.Input[str] request_type: The signature type desired on the certificate. Available values: `origin-rsa`, `origin-ecc`, `keyless-certificate`. **Modifying this attribute will force creation of a new resource.**
         :param pulumi.Input[int] requested_validity: The number of days for which the certificate should be valid. Available values: `7`, `30`, `90`, `365`, `730`, `1095`, `5475`. **Modifying this attribute will force creation of a new resource.**
         """
@@ -182,9 +177,6 @@ class _OriginCaCertificateState:
     @property
     @pulumi.getter(name="minDaysForRenewal")
     def min_days_for_renewal(self) -> Optional[pulumi.Input[int]]:
-        """
-        Number of days prior to the expiry to trigger a renewal of the certificate if a Terraform operation is run.
-        """
         return pulumi.get(self, "min_days_for_renewal")
 
     @min_days_for_renewal.setter
@@ -265,7 +257,6 @@ class OriginCaCertificate(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] csr: The Certificate Signing Request. Must be newline-encoded. **Modifying this attribute will force creation of a new resource.**
         :param pulumi.Input[Sequence[pulumi.Input[str]]] hostnames: A list of hostnames or wildcard names bound to the certificate. **Modifying this attribute will force creation of a new resource.**
-        :param pulumi.Input[int] min_days_for_renewal: Number of days prior to the expiry to trigger a renewal of the certificate if a Terraform operation is run.
         :param pulumi.Input[str] request_type: The signature type desired on the certificate. Available values: `origin-rsa`, `origin-ecc`, `keyless-certificate`. **Modifying this attribute will force creation of a new resource.**
         :param pulumi.Input[int] requested_validity: The number of days for which the certificate should be valid. Available values: `7`, `30`, `90`, `365`, `730`, `1095`, `5475`. **Modifying this attribute will force creation of a new resource.**
         """
@@ -379,7 +370,6 @@ class OriginCaCertificate(pulumi.CustomResource):
         :param pulumi.Input[str] csr: The Certificate Signing Request. Must be newline-encoded. **Modifying this attribute will force creation of a new resource.**
         :param pulumi.Input[str] expires_on: The datetime when the certificate will expire.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] hostnames: A list of hostnames or wildcard names bound to the certificate. **Modifying this attribute will force creation of a new resource.**
-        :param pulumi.Input[int] min_days_for_renewal: Number of days prior to the expiry to trigger a renewal of the certificate if a Terraform operation is run.
         :param pulumi.Input[str] request_type: The signature type desired on the certificate. Available values: `origin-rsa`, `origin-ecc`, `keyless-certificate`. **Modifying this attribute will force creation of a new resource.**
         :param pulumi.Input[int] requested_validity: The number of days for which the certificate should be valid. Available values: `7`, `30`, `90`, `365`, `730`, `1095`, `5475`. **Modifying this attribute will force creation of a new resource.**
         """
@@ -431,9 +421,6 @@ class OriginCaCertificate(pulumi.CustomResource):
     @property
     @pulumi.getter(name="minDaysForRenewal")
     def min_days_for_renewal(self) -> pulumi.Output[Optional[int]]:
-        """
-        Number of days prior to the expiry to trigger a renewal of the certificate if a Terraform operation is run.
-        """
         return pulumi.get(self, "min_days_for_renewal")
 
     @property

@@ -84,9 +84,6 @@ export class OriginCaCertificate extends pulumi.CustomResource {
      * A list of hostnames or wildcard names bound to the certificate. **Modifying this attribute will force creation of a new resource.**
      */
     public readonly hostnames!: pulumi.Output<string[]>;
-    /**
-     * Number of days prior to the expiry to trigger a renewal of the certificate if a Terraform operation is run.
-     */
     public readonly minDaysForRenewal!: pulumi.Output<number | undefined>;
     /**
      * The signature type desired on the certificate. Available values: `origin-rsa`, `origin-ecc`, `keyless-certificate`. **Modifying this attribute will force creation of a new resource.**
@@ -161,9 +158,6 @@ export interface OriginCaCertificateState {
      * A list of hostnames or wildcard names bound to the certificate. **Modifying this attribute will force creation of a new resource.**
      */
     hostnames?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * Number of days prior to the expiry to trigger a renewal of the certificate if a Terraform operation is run.
-     */
     minDaysForRenewal?: pulumi.Input<number>;
     /**
      * The signature type desired on the certificate. Available values: `origin-rsa`, `origin-ecc`, `keyless-certificate`. **Modifying this attribute will force creation of a new resource.**
@@ -187,9 +181,6 @@ export interface OriginCaCertificateArgs {
      * A list of hostnames or wildcard names bound to the certificate. **Modifying this attribute will force creation of a new resource.**
      */
     hostnames: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * Number of days prior to the expiry to trigger a renewal of the certificate if a Terraform operation is run.
-     */
     minDaysForRenewal?: pulumi.Input<number>;
     /**
      * The signature type desired on the certificate. Available values: `origin-rsa`, `origin-ecc`, `keyless-certificate`. **Modifying this attribute will force creation of a new resource.**

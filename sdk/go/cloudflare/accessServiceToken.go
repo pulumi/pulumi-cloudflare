@@ -40,8 +40,7 @@ type AccessServiceToken struct {
 	// Length of time the service token is valid for. Available values: `8760h`, `17520h`, `43800h`, `87600h`, `forever`.
 	Duration pulumi.StringOutput `pulumi:"duration"`
 	// Date when the token expires.
-	ExpiresAt pulumi.StringOutput `pulumi:"expiresAt"`
-	// Refresh the token if terraform is run within the specified amount of days before expiration.
+	ExpiresAt         pulumi.StringOutput `pulumi:"expiresAt"`
 	MinDaysForRenewal pulumi.IntPtrOutput `pulumi:"minDaysForRenewal"`
 	// Friendly name of the token's intent.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -95,9 +94,8 @@ type accessServiceTokenState struct {
 	// Length of time the service token is valid for. Available values: `8760h`, `17520h`, `43800h`, `87600h`, `forever`.
 	Duration *string `pulumi:"duration"`
 	// Date when the token expires.
-	ExpiresAt *string `pulumi:"expiresAt"`
-	// Refresh the token if terraform is run within the specified amount of days before expiration.
-	MinDaysForRenewal *int `pulumi:"minDaysForRenewal"`
+	ExpiresAt         *string `pulumi:"expiresAt"`
+	MinDaysForRenewal *int    `pulumi:"minDaysForRenewal"`
 	// Friendly name of the token's intent.
 	Name *string `pulumi:"name"`
 	// The zone identifier to target for the resource. Conflicts with `accountId`.
@@ -114,8 +112,7 @@ type AccessServiceTokenState struct {
 	// Length of time the service token is valid for. Available values: `8760h`, `17520h`, `43800h`, `87600h`, `forever`.
 	Duration pulumi.StringPtrInput
 	// Date when the token expires.
-	ExpiresAt pulumi.StringPtrInput
-	// Refresh the token if terraform is run within the specified amount of days before expiration.
+	ExpiresAt         pulumi.StringPtrInput
 	MinDaysForRenewal pulumi.IntPtrInput
 	// Friendly name of the token's intent.
 	Name pulumi.StringPtrInput
@@ -131,9 +128,8 @@ type accessServiceTokenArgs struct {
 	// The account identifier to target for the resource. Conflicts with `zoneId`.
 	AccountId *string `pulumi:"accountId"`
 	// Length of time the service token is valid for. Available values: `8760h`, `17520h`, `43800h`, `87600h`, `forever`.
-	Duration *string `pulumi:"duration"`
-	// Refresh the token if terraform is run within the specified amount of days before expiration.
-	MinDaysForRenewal *int `pulumi:"minDaysForRenewal"`
+	Duration          *string `pulumi:"duration"`
+	MinDaysForRenewal *int    `pulumi:"minDaysForRenewal"`
 	// Friendly name of the token's intent.
 	Name string `pulumi:"name"`
 	// The zone identifier to target for the resource. Conflicts with `accountId`.
@@ -145,8 +141,7 @@ type AccessServiceTokenArgs struct {
 	// The account identifier to target for the resource. Conflicts with `zoneId`.
 	AccountId pulumi.StringPtrInput
 	// Length of time the service token is valid for. Available values: `8760h`, `17520h`, `43800h`, `87600h`, `forever`.
-	Duration pulumi.StringPtrInput
-	// Refresh the token if terraform is run within the specified amount of days before expiration.
+	Duration          pulumi.StringPtrInput
 	MinDaysForRenewal pulumi.IntPtrInput
 	// Friendly name of the token's intent.
 	Name pulumi.StringInput
@@ -266,7 +261,6 @@ func (o AccessServiceTokenOutput) ExpiresAt() pulumi.StringOutput {
 	return o.ApplyT(func(v *AccessServiceToken) pulumi.StringOutput { return v.ExpiresAt }).(pulumi.StringOutput)
 }
 
-// Refresh the token if terraform is run within the specified amount of days before expiration.
 func (o AccessServiceTokenOutput) MinDaysForRenewal() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *AccessServiceToken) pulumi.IntPtrOutput { return v.MinDaysForRenewal }).(pulumi.IntPtrOutput)
 }
