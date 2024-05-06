@@ -53,11 +53,6 @@ class ProviderArgs:
                `CLOUDFLARE_RETRIES` environment variable.
         :param pulumi.Input[int] rps: RPS limit to apply when making calls to the API. Alternatively, can be configured using the `CLOUDFLARE_RPS` environment
                variable.
-        :param pulumi.Input[str] user_agent_operator_suffix: A value to append to the HTTP User Agent for all API calls. This value is not something most users need to modify
-               however, if you are using a non-standard provider or operator configuration, this is recommended to assist in uniquely
-               identifying your traffic. **Setting this value will remove the Terraform version from the HTTP User Agent string and may
-               have unintended consequences**. Alternatively, can be configured using the `CLOUDFLARE_USER_AGENT_OPERATOR_SUFFIX`
-               environment variable.
         """
         if api_base_path is not None:
             pulumi.set(__self__, "api_base_path", api_base_path)
@@ -243,13 +238,6 @@ class ProviderArgs:
     @property
     @pulumi.getter(name="userAgentOperatorSuffix")
     def user_agent_operator_suffix(self) -> Optional[pulumi.Input[str]]:
-        """
-        A value to append to the HTTP User Agent for all API calls. This value is not something most users need to modify
-        however, if you are using a non-standard provider or operator configuration, this is recommended to assist in uniquely
-        identifying your traffic. **Setting this value will remove the Terraform version from the HTTP User Agent string and may
-        have unintended consequences**. Alternatively, can be configured using the `CLOUDFLARE_USER_AGENT_OPERATOR_SUFFIX`
-        environment variable.
-        """
         return pulumi.get(self, "user_agent_operator_suffix")
 
     @user_agent_operator_suffix.setter
@@ -308,11 +296,6 @@ class Provider(pulumi.ProviderResource):
                `CLOUDFLARE_RETRIES` environment variable.
         :param pulumi.Input[int] rps: RPS limit to apply when making calls to the API. Alternatively, can be configured using the `CLOUDFLARE_RPS` environment
                variable.
-        :param pulumi.Input[str] user_agent_operator_suffix: A value to append to the HTTP User Agent for all API calls. This value is not something most users need to modify
-               however, if you are using a non-standard provider or operator configuration, this is recommended to assist in uniquely
-               identifying your traffic. **Setting this value will remove the Terraform version from the HTTP User Agent string and may
-               have unintended consequences**. Alternatively, can be configured using the `CLOUDFLARE_USER_AGENT_OPERATOR_SUFFIX`
-               environment variable.
         """
         ...
     @overload
@@ -450,12 +433,5 @@ class Provider(pulumi.ProviderResource):
     @property
     @pulumi.getter(name="userAgentOperatorSuffix")
     def user_agent_operator_suffix(self) -> pulumi.Output[Optional[str]]:
-        """
-        A value to append to the HTTP User Agent for all API calls. This value is not something most users need to modify
-        however, if you are using a non-standard provider or operator configuration, this is recommended to assist in uniquely
-        identifying your traffic. **Setting this value will remove the Terraform version from the HTTP User Agent string and may
-        have unintended consequences**. Alternatively, can be configured using the `CLOUDFLARE_USER_AGENT_OPERATOR_SUFFIX`
-        environment variable.
-        """
         return pulumi.get(self, "user_agent_operator_suffix")
 

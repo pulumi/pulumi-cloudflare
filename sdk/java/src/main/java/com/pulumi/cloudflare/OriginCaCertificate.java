@@ -137,17 +137,9 @@ public class OriginCaCertificate extends com.pulumi.resources.CustomResource {
     public Output<List<String>> hostnames() {
         return this.hostnames;
     }
-    /**
-     * Number of days prior to the expiry to trigger a renewal of the certificate if a Terraform operation is run.
-     * 
-     */
     @Export(name="minDaysForRenewal", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> minDaysForRenewal;
 
-    /**
-     * @return Number of days prior to the expiry to trigger a renewal of the certificate if a Terraform operation is run.
-     * 
-     */
     public Output<Optional<Integer>> minDaysForRenewal() {
         return Codegen.optional(this.minDaysForRenewal);
     }

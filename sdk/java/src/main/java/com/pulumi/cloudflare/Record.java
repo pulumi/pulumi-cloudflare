@@ -87,21 +87,9 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="cloudflare:index/record:Record")
 public class Record extends com.pulumi.resources.CustomResource {
-    /**
-     * Allow creation of this record in Terraform to overwrite an existing record, if any. This does not affect the ability to
-     * update the record in Terraform and does not prevent other resources within Terraform or manual changes outside Terraform
-     * from overwriting this record. **This configuration is not recommended for most environments**
-     * 
-     */
     @Export(name="allowOverwrite", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> allowOverwrite;
 
-    /**
-     * @return Allow creation of this record in Terraform to overwrite an existing record, if any. This does not affect the ability to
-     * update the record in Terraform and does not prevent other resources within Terraform or manual changes outside Terraform
-     * from overwriting this record. **This configuration is not recommended for most environments**
-     * 
-     */
     public Output<Optional<Boolean>> allowOverwrite() {
         return Codegen.optional(this.allowOverwrite);
     }

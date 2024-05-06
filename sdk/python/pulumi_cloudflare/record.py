@@ -32,9 +32,6 @@ class RecordArgs:
         :param pulumi.Input[str] name: The name of the record. **Modifying this attribute will force creation of a new resource.**
         :param pulumi.Input[str] type: The type of the record. Available values: `A`, `AAAA`, `CAA`, `CNAME`, `TXT`, `SRV`, `LOC`, `MX`, `NS`, `SPF`, `CERT`, `DNSKEY`, `DS`, `NAPTR`, `SMIMEA`, `SSHFP`, `TLSA`, `URI`, `PTR`, `HTTPS`, `SVCB`. **Modifying this attribute will force creation of a new resource.**
         :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
-        :param pulumi.Input[bool] allow_overwrite: Allow creation of this record in Terraform to overwrite an existing record, if any. This does not affect the ability to
-               update the record in Terraform and does not prevent other resources within Terraform or manual changes outside Terraform
-               from overwriting this record. **This configuration is not recommended for most environments**
         :param pulumi.Input[str] comment: Comments or notes about the DNS record. This field has no effect on DNS responses.
         :param pulumi.Input['RecordDataArgs'] data: Map of attributes that constitute the record value. Conflicts with `value`.
         :param pulumi.Input[int] priority: The priority of the record.
@@ -102,11 +99,6 @@ class RecordArgs:
     @property
     @pulumi.getter(name="allowOverwrite")
     def allow_overwrite(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Allow creation of this record in Terraform to overwrite an existing record, if any. This does not affect the ability to
-        update the record in Terraform and does not prevent other resources within Terraform or manual changes outside Terraform
-        from overwriting this record. **This configuration is not recommended for most environments**
-        """
         return pulumi.get(self, "allow_overwrite")
 
     @allow_overwrite.setter
@@ -219,9 +211,6 @@ class _RecordState:
                  zone_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Record resources.
-        :param pulumi.Input[bool] allow_overwrite: Allow creation of this record in Terraform to overwrite an existing record, if any. This does not affect the ability to
-               update the record in Terraform and does not prevent other resources within Terraform or manual changes outside Terraform
-               from overwriting this record. **This configuration is not recommended for most environments**
         :param pulumi.Input[str] comment: Comments or notes about the DNS record. This field has no effect on DNS responses.
         :param pulumi.Input[str] created_on: The RFC3339 timestamp of when the record was created.
         :param pulumi.Input['RecordDataArgs'] data: Map of attributes that constitute the record value. Conflicts with `value`.
@@ -274,11 +263,6 @@ class _RecordState:
     @property
     @pulumi.getter(name="allowOverwrite")
     def allow_overwrite(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Allow creation of this record in Terraform to overwrite an existing record, if any. This does not affect the ability to
-        update the record in Terraform and does not prevent other resources within Terraform or manual changes outside Terraform
-        from overwriting this record. **This configuration is not recommended for most environments**
-        """
         return pulumi.get(self, "allow_overwrite")
 
     @allow_overwrite.setter
@@ -523,9 +507,6 @@ class Record(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[bool] allow_overwrite: Allow creation of this record in Terraform to overwrite an existing record, if any. This does not affect the ability to
-               update the record in Terraform and does not prevent other resources within Terraform or manual changes outside Terraform
-               from overwriting this record. **This configuration is not recommended for most environments**
         :param pulumi.Input[str] comment: Comments or notes about the DNS record. This field has no effect on DNS responses.
         :param pulumi.Input[pulumi.InputType['RecordDataArgs']] data: Map of attributes that constitute the record value. Conflicts with `value`.
         :param pulumi.Input[str] name: The name of the record. **Modifying this attribute will force creation of a new resource.**
@@ -671,9 +652,6 @@ class Record(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[bool] allow_overwrite: Allow creation of this record in Terraform to overwrite an existing record, if any. This does not affect the ability to
-               update the record in Terraform and does not prevent other resources within Terraform or manual changes outside Terraform
-               from overwriting this record. **This configuration is not recommended for most environments**
         :param pulumi.Input[str] comment: Comments or notes about the DNS record. This field has no effect on DNS responses.
         :param pulumi.Input[str] created_on: The RFC3339 timestamp of when the record was created.
         :param pulumi.Input[pulumi.InputType['RecordDataArgs']] data: Map of attributes that constitute the record value. Conflicts with `value`.
@@ -715,11 +693,6 @@ class Record(pulumi.CustomResource):
     @property
     @pulumi.getter(name="allowOverwrite")
     def allow_overwrite(self) -> pulumi.Output[Optional[bool]]:
-        """
-        Allow creation of this record in Terraform to overwrite an existing record, if any. This does not affect the ability to
-        update the record in Terraform and does not prevent other resources within Terraform or manual changes outside Terraform
-        from overwriting this record. **This configuration is not recommended for most environments**
-        """
         return pulumi.get(self, "allow_overwrite")
 
     @property
