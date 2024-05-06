@@ -77,17 +77,9 @@ public final class OriginCaCertificateState extends com.pulumi.resources.Resourc
         return Optional.ofNullable(this.hostnames);
     }
 
-    /**
-     * Number of days prior to the expiry to trigger a renewal of the certificate if a Terraform operation is run.
-     * 
-     */
     @Import(name="minDaysForRenewal")
     private @Nullable Output<Integer> minDaysForRenewal;
 
-    /**
-     * @return Number of days prior to the expiry to trigger a renewal of the certificate if a Terraform operation is run.
-     * 
-     */
     public Optional<Output<Integer>> minDaysForRenewal() {
         return Optional.ofNullable(this.minDaysForRenewal);
     }
@@ -246,23 +238,11 @@ public final class OriginCaCertificateState extends com.pulumi.resources.Resourc
             return hostnames(List.of(hostnames));
         }
 
-        /**
-         * @param minDaysForRenewal Number of days prior to the expiry to trigger a renewal of the certificate if a Terraform operation is run.
-         * 
-         * @return builder
-         * 
-         */
         public Builder minDaysForRenewal(@Nullable Output<Integer> minDaysForRenewal) {
             $.minDaysForRenewal = minDaysForRenewal;
             return this;
         }
 
-        /**
-         * @param minDaysForRenewal Number of days prior to the expiry to trigger a renewal of the certificate if a Terraform operation is run.
-         * 
-         * @return builder
-         * 
-         */
         public Builder minDaysForRenewal(Integer minDaysForRenewal) {
             return minDaysForRenewal(Output.of(minDaysForRenewal));
         }

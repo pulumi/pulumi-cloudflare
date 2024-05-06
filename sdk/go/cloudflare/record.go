@@ -71,9 +71,6 @@ import (
 type Record struct {
 	pulumi.CustomResourceState
 
-	// Allow creation of this record in Terraform to overwrite an existing record, if any. This does not affect the ability to
-	// update the record in Terraform and does not prevent other resources within Terraform or manual changes outside Terraform
-	// from overwriting this record. **This configuration is not recommended for most environments**
 	AllowOverwrite pulumi.BoolPtrOutput `pulumi:"allowOverwrite"`
 	// Comments or notes about the DNS record. This field has no effect on DNS responses.
 	Comment pulumi.StringPtrOutput `pulumi:"comment"`
@@ -146,9 +143,6 @@ func GetRecord(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Record resources.
 type recordState struct {
-	// Allow creation of this record in Terraform to overwrite an existing record, if any. This does not affect the ability to
-	// update the record in Terraform and does not prevent other resources within Terraform or manual changes outside Terraform
-	// from overwriting this record. **This configuration is not recommended for most environments**
 	AllowOverwrite *bool `pulumi:"allowOverwrite"`
 	// Comments or notes about the DNS record. This field has no effect on DNS responses.
 	Comment *string `pulumi:"comment"`
@@ -183,9 +177,6 @@ type recordState struct {
 }
 
 type RecordState struct {
-	// Allow creation of this record in Terraform to overwrite an existing record, if any. This does not affect the ability to
-	// update the record in Terraform and does not prevent other resources within Terraform or manual changes outside Terraform
-	// from overwriting this record. **This configuration is not recommended for most environments**
 	AllowOverwrite pulumi.BoolPtrInput
 	// Comments or notes about the DNS record. This field has no effect on DNS responses.
 	Comment pulumi.StringPtrInput
@@ -224,9 +215,6 @@ func (RecordState) ElementType() reflect.Type {
 }
 
 type recordArgs struct {
-	// Allow creation of this record in Terraform to overwrite an existing record, if any. This does not affect the ability to
-	// update the record in Terraform and does not prevent other resources within Terraform or manual changes outside Terraform
-	// from overwriting this record. **This configuration is not recommended for most environments**
 	AllowOverwrite *bool `pulumi:"allowOverwrite"`
 	// Comments or notes about the DNS record. This field has no effect on DNS responses.
 	Comment *string `pulumi:"comment"`
@@ -252,9 +240,6 @@ type recordArgs struct {
 
 // The set of arguments for constructing a Record resource.
 type RecordArgs struct {
-	// Allow creation of this record in Terraform to overwrite an existing record, if any. This does not affect the ability to
-	// update the record in Terraform and does not prevent other resources within Terraform or manual changes outside Terraform
-	// from overwriting this record. **This configuration is not recommended for most environments**
 	AllowOverwrite pulumi.BoolPtrInput
 	// Comments or notes about the DNS record. This field has no effect on DNS responses.
 	Comment pulumi.StringPtrInput
@@ -365,9 +350,6 @@ func (o RecordOutput) ToRecordOutputWithContext(ctx context.Context) RecordOutpu
 	return o
 }
 
-// Allow creation of this record in Terraform to overwrite an existing record, if any. This does not affect the ability to
-// update the record in Terraform and does not prevent other resources within Terraform or manual changes outside Terraform
-// from overwriting this record. **This configuration is not recommended for most environments**
 func (o RecordOutput) AllowOverwrite() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Record) pulumi.BoolPtrOutput { return v.AllowOverwrite }).(pulumi.BoolPtrOutput)
 }
