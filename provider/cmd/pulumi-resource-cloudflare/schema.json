@@ -8979,8 +8979,7 @@
                 "description": "RPS limit to apply when making calls to the API. Alternatively, can be configured using the `CLOUDFLARE_RPS` environment\nvariable.\n"
             },
             "userAgentOperatorSuffix": {
-                "type": "string",
-                "description": "A value to append to the HTTP User Agent for all API calls. This value is not something most users need to modify\nhowever, if you are using a non-standard provider or operator configuration, this is recommended to assist in uniquely\nidentifying your traffic. **Setting this value will remove the Terraform version from the HTTP User Agent string and may\nhave unintended consequences**. Alternatively, can be configured using the `CLOUDFLARE_USER_AGENT_OPERATOR_SUFFIX`\nenvironment variable.\n"
+                "type": "string"
             }
         },
         "inputProperties": {
@@ -9059,8 +9058,7 @@
                 }
             },
             "userAgentOperatorSuffix": {
-                "type": "string",
-                "description": "A value to append to the HTTP User Agent for all API calls. This value is not something most users need to modify\nhowever, if you are using a non-standard provider or operator configuration, this is recommended to assist in uniquely\nidentifying your traffic. **Setting this value will remove the Terraform version from the HTTP User Agent string and may\nhave unintended consequences**. Alternatively, can be configured using the `CLOUDFLARE_USER_AGENT_OPERATOR_SUFFIX`\nenvironment variable.\n"
+                "type": "string"
             }
         }
     },
@@ -10648,8 +10646,7 @@
                     "description": "Date when the token expires.\n"
                 },
                 "minDaysForRenewal": {
-                    "type": "integer",
-                    "description": "Refresh the token if terraform is run within the specified amount of days before expiration.\n"
+                    "type": "integer"
                 },
                 "name": {
                     "type": "string",
@@ -10677,8 +10674,7 @@
                     "description": "Length of time the service token is valid for. Available values: `8760h`, `17520h`, `43800h`, `87600h`, `forever`.\n"
                 },
                 "minDaysForRenewal": {
-                    "type": "integer",
-                    "description": "Refresh the token if terraform is run within the specified amount of days before expiration.\n"
+                    "type": "integer"
                 },
                 "name": {
                     "type": "string",
@@ -10719,8 +10715,7 @@
                         "description": "Date when the token expires.\n"
                     },
                     "minDaysForRenewal": {
-                        "type": "integer",
-                        "description": "Refresh the token if terraform is run within the specified amount of days before expiration.\n"
+                        "type": "integer"
                     },
                     "name": {
                         "type": "string",
@@ -17412,8 +17407,7 @@
                     "description": "A list of hostnames or wildcard names bound to the certificate. **Modifying this attribute will force creation of a new resource.**\n"
                 },
                 "minDaysForRenewal": {
-                    "type": "integer",
-                    "description": "Number of days prior to the expiry to trigger a renewal of the certificate if a Terraform operation is run.\n"
+                    "type": "integer"
                 },
                 "requestType": {
                     "type": "string",
@@ -17447,8 +17441,7 @@
                     "willReplaceOnChanges": true
                 },
                 "minDaysForRenewal": {
-                    "type": "integer",
-                    "description": "Number of days prior to the expiry to trigger a renewal of the certificate if a Terraform operation is run.\n"
+                    "type": "integer"
                 },
                 "requestType": {
                     "type": "string",
@@ -17491,8 +17484,7 @@
                         "willReplaceOnChanges": true
                     },
                     "minDaysForRenewal": {
-                        "type": "integer",
-                        "description": "Number of days prior to the expiry to trigger a renewal of the certificate if a Terraform operation is run.\n"
+                        "type": "integer"
                     },
                     "requestType": {
                         "type": "string",
@@ -18045,8 +18037,7 @@
             "description": "Provides a Cloudflare record resource.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as cloudflare from \"@pulumi/cloudflare\";\n\n// Add a record to the domain\nconst example = new cloudflare.Record(\"example\", {\n    zoneId: cloudflareZoneId,\n    name: \"example\",\n    value: \"192.0.2.1\",\n    type: \"A\",\n    ttl: 3600,\n});\n// Add a record requiring a data map\nconst _sipTls = new cloudflare.Record(\"_sip_tls\", {\n    zoneId: cloudflareZoneId,\n    name: \"_sip._tls\",\n    type: \"SRV\",\n    data: {\n        service: \"_sip\",\n        proto: \"_tls\",\n        name: \"example-srv\",\n        priority: 0,\n        weight: 0,\n        port: 443,\n        target: \"example.com\",\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_cloudflare as cloudflare\n\n# Add a record to the domain\nexample = cloudflare.Record(\"example\",\n    zone_id=cloudflare_zone_id,\n    name=\"example\",\n    value=\"192.0.2.1\",\n    type=\"A\",\n    ttl=3600)\n# Add a record requiring a data map\n_sip_tls = cloudflare.Record(\"_sip_tls\",\n    zone_id=cloudflare_zone_id,\n    name=\"_sip._tls\",\n    type=\"SRV\",\n    data=cloudflare.RecordDataArgs(\n        service=\"_sip\",\n        proto=\"_tls\",\n        name=\"example-srv\",\n        priority=0,\n        weight=0,\n        port=443,\n        target=\"example.com\",\n    ))\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Cloudflare = Pulumi.Cloudflare;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    // Add a record to the domain\n    var example = new Cloudflare.Record(\"example\", new()\n    {\n        ZoneId = cloudflareZoneId,\n        Name = \"example\",\n        Value = \"192.0.2.1\",\n        Type = \"A\",\n        Ttl = 3600,\n    });\n\n    // Add a record requiring a data map\n    var _sipTls = new Cloudflare.Record(\"_sip_tls\", new()\n    {\n        ZoneId = cloudflareZoneId,\n        Name = \"_sip._tls\",\n        Type = \"SRV\",\n        Data = new Cloudflare.Inputs.RecordDataArgs\n        {\n            Service = \"_sip\",\n            Proto = \"_tls\",\n            Name = \"example-srv\",\n            Priority = 0,\n            Weight = 0,\n            Port = 443,\n            Target = \"example.com\",\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t// Add a record to the domain\n\t\t_, err := cloudflare.NewRecord(ctx, \"example\", \u0026cloudflare.RecordArgs{\n\t\t\tZoneId: pulumi.Any(cloudflareZoneId),\n\t\t\tName:   pulumi.String(\"example\"),\n\t\t\tValue:  pulumi.String(\"192.0.2.1\"),\n\t\t\tType:   pulumi.String(\"A\"),\n\t\t\tTtl:    pulumi.Int(3600),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t// Add a record requiring a data map\n\t\t_, err = cloudflare.NewRecord(ctx, \"_sip_tls\", \u0026cloudflare.RecordArgs{\n\t\t\tZoneId: pulumi.Any(cloudflareZoneId),\n\t\t\tName:   pulumi.String(\"_sip._tls\"),\n\t\t\tType:   pulumi.String(\"SRV\"),\n\t\t\tData: \u0026cloudflare.RecordDataArgs{\n\t\t\t\tService:  pulumi.String(\"_sip\"),\n\t\t\t\tProto:    pulumi.String(\"_tls\"),\n\t\t\t\tName:     pulumi.String(\"example-srv\"),\n\t\t\t\tPriority: pulumi.Int(0),\n\t\t\t\tWeight:   pulumi.Int(0),\n\t\t\t\tPort:     pulumi.Int(443),\n\t\t\t\tTarget:   pulumi.String(\"example.com\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.cloudflare.Record;\nimport com.pulumi.cloudflare.RecordArgs;\nimport com.pulumi.cloudflare.inputs.RecordDataArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        // Add a record to the domain\n        var example = new Record(\"example\", RecordArgs.builder()        \n            .zoneId(cloudflareZoneId)\n            .name(\"example\")\n            .value(\"192.0.2.1\")\n            .type(\"A\")\n            .ttl(3600)\n            .build());\n\n        // Add a record requiring a data map\n        var _sipTls = new Record(\"_sipTls\", RecordArgs.builder()        \n            .zoneId(cloudflareZoneId)\n            .name(\"_sip._tls\")\n            .type(\"SRV\")\n            .data(RecordDataArgs.builder()\n                .service(\"_sip\")\n                .proto(\"_tls\")\n                .name(\"example-srv\")\n                .priority(0)\n                .weight(0)\n                .port(443)\n                .target(\"example.com\")\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  # Add a record to the domain\n  example:\n    type: cloudflare:Record\n    properties:\n      zoneId: ${cloudflareZoneId}\n      name: example\n      value: 192.0.2.1\n      type: A\n      ttl: 3600\n  # Add a record requiring a data map\n  _sipTls:\n    type: cloudflare:Record\n    name: _sip_tls\n    properties:\n      zoneId: ${cloudflareZoneId}\n      name: _sip._tls\n      type: SRV\n      data:\n        service: _sip\n        proto: _tls\n        name: example-srv\n        priority: 0\n        weight: 0\n        port: 443\n        target: example.com\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\n```sh\n$ pulumi import cloudflare:index/record:Record example \u003czone_id\u003e/\u003crecord_id\u003e\n```\n\n",
             "properties": {
                 "allowOverwrite": {
-                    "type": "boolean",
-                    "description": "Allow creation of this record in Terraform to overwrite an existing record, if any. This does not affect the ability to\nupdate the record in Terraform and does not prevent other resources within Terraform or manual changes outside Terraform\nfrom overwriting this record. **This configuration is not recommended for most environments**\n"
+                    "type": "boolean"
                 },
                 "comment": {
                     "type": "string",
@@ -18129,8 +18120,7 @@
             ],
             "inputProperties": {
                 "allowOverwrite": {
-                    "type": "boolean",
-                    "description": "Allow creation of this record in Terraform to overwrite an existing record, if any. This does not affect the ability to\nupdate the record in Terraform and does not prevent other resources within Terraform or manual changes outside Terraform\nfrom overwriting this record. **This configuration is not recommended for most environments**\n"
+                    "type": "boolean"
                 },
                 "comment": {
                     "type": "string",
@@ -18188,8 +18178,7 @@
                 "description": "Input properties used for looking up and filtering Record resources.\n",
                 "properties": {
                     "allowOverwrite": {
-                        "type": "boolean",
-                        "description": "Allow creation of this record in Terraform to overwrite an existing record, if any. This does not affect the ability to\nupdate the record in Terraform and does not prevent other resources within Terraform or manual changes outside Terraform\nfrom overwriting this record. **This configuration is not recommended for most environments**\n"
+                        "type": "boolean"
                     },
                     "comment": {
                         "type": "string",
