@@ -20,21 +20,9 @@ public final class RecordArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final RecordArgs Empty = new RecordArgs();
 
-    /**
-     * Allow creation of this record in Terraform to overwrite an existing record, if any. This does not affect the ability to
-     * update the record in Terraform and does not prevent other resources within Terraform or manual changes outside Terraform
-     * from overwriting this record. **This configuration is not recommended for most environments**
-     * 
-     */
     @Import(name="allowOverwrite")
     private @Nullable Output<Boolean> allowOverwrite;
 
-    /**
-     * @return Allow creation of this record in Terraform to overwrite an existing record, if any. This does not affect the ability to
-     * update the record in Terraform and does not prevent other resources within Terraform or manual changes outside Terraform
-     * from overwriting this record. **This configuration is not recommended for most environments**
-     * 
-     */
     public Optional<Output<Boolean>> allowOverwrite() {
         return Optional.ofNullable(this.allowOverwrite);
     }
@@ -223,27 +211,11 @@ public final class RecordArgs extends com.pulumi.resources.ResourceArgs {
             $ = new RecordArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param allowOverwrite Allow creation of this record in Terraform to overwrite an existing record, if any. This does not affect the ability to
-         * update the record in Terraform and does not prevent other resources within Terraform or manual changes outside Terraform
-         * from overwriting this record. **This configuration is not recommended for most environments**
-         * 
-         * @return builder
-         * 
-         */
         public Builder allowOverwrite(@Nullable Output<Boolean> allowOverwrite) {
             $.allowOverwrite = allowOverwrite;
             return this;
         }
 
-        /**
-         * @param allowOverwrite Allow creation of this record in Terraform to overwrite an existing record, if any. This does not affect the ability to
-         * update the record in Terraform and does not prevent other resources within Terraform or manual changes outside Terraform
-         * from overwriting this record. **This configuration is not recommended for most environments**
-         * 
-         * @return builder
-         * 
-         */
         public Builder allowOverwrite(Boolean allowOverwrite) {
             return allowOverwrite(Output.of(allowOverwrite));
         }
