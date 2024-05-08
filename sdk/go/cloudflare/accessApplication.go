@@ -78,6 +78,8 @@ type AccessApplication struct {
 	SaasApp AccessApplicationSaasAppPtrOutput `pulumi:"saasApp"`
 	// Defines the same-site cookie setting for access tokens. Available values: `none`, `lax`, `strict`.
 	SameSiteCookieAttribute pulumi.StringPtrOutput `pulumi:"sameSiteCookieAttribute"`
+	// Configuration for provisioning to the Access Application via SCIM. This is currently in closed beta.
+	ScimConfig AccessApplicationScimConfigPtrOutput `pulumi:"scimConfig"`
 	// List of domains that access will secure. Only present for self_hosted, vnc, and ssh applications. Always includes the value set as `domain`.
 	SelfHostedDomains pulumi.StringArrayOutput `pulumi:"selfHostedDomains"`
 	// Option to return a 401 status code in service authentication rules on failed requests. Defaults to `false`.
@@ -172,6 +174,8 @@ type accessApplicationState struct {
 	SaasApp *AccessApplicationSaasApp `pulumi:"saasApp"`
 	// Defines the same-site cookie setting for access tokens. Available values: `none`, `lax`, `strict`.
 	SameSiteCookieAttribute *string `pulumi:"sameSiteCookieAttribute"`
+	// Configuration for provisioning to the Access Application via SCIM. This is currently in closed beta.
+	ScimConfig *AccessApplicationScimConfig `pulumi:"scimConfig"`
 	// List of domains that access will secure. Only present for self_hosted, vnc, and ssh applications. Always includes the value set as `domain`.
 	SelfHostedDomains []string `pulumi:"selfHostedDomains"`
 	// Option to return a 401 status code in service authentication rules on failed requests. Defaults to `false`.
@@ -237,6 +241,8 @@ type AccessApplicationState struct {
 	SaasApp AccessApplicationSaasAppPtrInput
 	// Defines the same-site cookie setting for access tokens. Available values: `none`, `lax`, `strict`.
 	SameSiteCookieAttribute pulumi.StringPtrInput
+	// Configuration for provisioning to the Access Application via SCIM. This is currently in closed beta.
+	ScimConfig AccessApplicationScimConfigPtrInput
 	// List of domains that access will secure. Only present for self_hosted, vnc, and ssh applications. Always includes the value set as `domain`.
 	SelfHostedDomains pulumi.StringArrayInput
 	// Option to return a 401 status code in service authentication rules on failed requests. Defaults to `false`.
@@ -304,6 +310,8 @@ type accessApplicationArgs struct {
 	SaasApp *AccessApplicationSaasApp `pulumi:"saasApp"`
 	// Defines the same-site cookie setting for access tokens. Available values: `none`, `lax`, `strict`.
 	SameSiteCookieAttribute *string `pulumi:"sameSiteCookieAttribute"`
+	// Configuration for provisioning to the Access Application via SCIM. This is currently in closed beta.
+	ScimConfig *AccessApplicationScimConfig `pulumi:"scimConfig"`
 	// List of domains that access will secure. Only present for self_hosted, vnc, and ssh applications. Always includes the value set as `domain`.
 	SelfHostedDomains []string `pulumi:"selfHostedDomains"`
 	// Option to return a 401 status code in service authentication rules on failed requests. Defaults to `false`.
@@ -368,6 +376,8 @@ type AccessApplicationArgs struct {
 	SaasApp AccessApplicationSaasAppPtrInput
 	// Defines the same-site cookie setting for access tokens. Available values: `none`, `lax`, `strict`.
 	SameSiteCookieAttribute pulumi.StringPtrInput
+	// Configuration for provisioning to the Access Application via SCIM. This is currently in closed beta.
+	ScimConfig AccessApplicationScimConfigPtrInput
 	// List of domains that access will secure. Only present for self_hosted, vnc, and ssh applications. Always includes the value set as `domain`.
 	SelfHostedDomains pulumi.StringArrayInput
 	// Option to return a 401 status code in service authentication rules on failed requests. Defaults to `false`.
@@ -589,6 +599,11 @@ func (o AccessApplicationOutput) SaasApp() AccessApplicationSaasAppPtrOutput {
 // Defines the same-site cookie setting for access tokens. Available values: `none`, `lax`, `strict`.
 func (o AccessApplicationOutput) SameSiteCookieAttribute() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AccessApplication) pulumi.StringPtrOutput { return v.SameSiteCookieAttribute }).(pulumi.StringPtrOutput)
+}
+
+// Configuration for provisioning to the Access Application via SCIM. This is currently in closed beta.
+func (o AccessApplicationOutput) ScimConfig() AccessApplicationScimConfigPtrOutput {
+	return o.ApplyT(func(v *AccessApplication) AccessApplicationScimConfigPtrOutput { return v.ScimConfig }).(AccessApplicationScimConfigPtrOutput)
 }
 
 // List of domains that access will secure. Only present for self_hosted, vnc, and ssh applications. Always includes the value set as `domain`.

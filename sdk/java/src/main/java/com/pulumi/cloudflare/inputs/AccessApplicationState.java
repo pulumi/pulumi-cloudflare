@@ -7,6 +7,7 @@ import com.pulumi.cloudflare.inputs.AccessApplicationCorsHeaderArgs;
 import com.pulumi.cloudflare.inputs.AccessApplicationFooterLinkArgs;
 import com.pulumi.cloudflare.inputs.AccessApplicationLandingPageDesignArgs;
 import com.pulumi.cloudflare.inputs.AccessApplicationSaasAppArgs;
+import com.pulumi.cloudflare.inputs.AccessApplicationScimConfigArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
@@ -382,6 +383,21 @@ public final class AccessApplicationState extends com.pulumi.resources.ResourceA
     }
 
     /**
+     * Configuration for provisioning to the Access Application via SCIM. This is currently in closed beta.
+     * 
+     */
+    @Import(name="scimConfig")
+    private @Nullable Output<AccessApplicationScimConfigArgs> scimConfig;
+
+    /**
+     * @return Configuration for provisioning to the Access Application via SCIM. This is currently in closed beta.
+     * 
+     */
+    public Optional<Output<AccessApplicationScimConfigArgs>> scimConfig() {
+        return Optional.ofNullable(this.scimConfig);
+    }
+
+    /**
      * List of domains that access will secure. Only present for self_hosted, vnc, and ssh applications. Always includes the value set as `domain`.
      * 
      */
@@ -513,6 +529,7 @@ public final class AccessApplicationState extends com.pulumi.resources.ResourceA
         this.optionsPreflightBypass = $.optionsPreflightBypass;
         this.saasApp = $.saasApp;
         this.sameSiteCookieAttribute = $.sameSiteCookieAttribute;
+        this.scimConfig = $.scimConfig;
         this.selfHostedDomains = $.selfHostedDomains;
         this.serviceAuth401Redirect = $.serviceAuth401Redirect;
         this.sessionDuration = $.sessionDuration;
@@ -1082,6 +1099,27 @@ public final class AccessApplicationState extends com.pulumi.resources.ResourceA
          */
         public Builder sameSiteCookieAttribute(String sameSiteCookieAttribute) {
             return sameSiteCookieAttribute(Output.of(sameSiteCookieAttribute));
+        }
+
+        /**
+         * @param scimConfig Configuration for provisioning to the Access Application via SCIM. This is currently in closed beta.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder scimConfig(@Nullable Output<AccessApplicationScimConfigArgs> scimConfig) {
+            $.scimConfig = scimConfig;
+            return this;
+        }
+
+        /**
+         * @param scimConfig Configuration for provisioning to the Access Application via SCIM. This is currently in closed beta.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder scimConfig(AccessApplicationScimConfigArgs scimConfig) {
+            return scimConfig(Output.of(scimConfig));
         }
 
         /**

@@ -16,6 +16,10 @@ __all__ = [
     'AccessApplicationSaasAppArgs',
     'AccessApplicationSaasAppCustomAttributeArgs',
     'AccessApplicationSaasAppCustomAttributeSourceArgs',
+    'AccessApplicationScimConfigArgs',
+    'AccessApplicationScimConfigAuthenticationArgs',
+    'AccessApplicationScimConfigMappingArgs',
+    'AccessApplicationScimConfigMappingOperationsArgs',
     'AccessGroupExcludeArgs',
     'AccessGroupExcludeAuthContextArgs',
     'AccessGroupExcludeAzureArgs',
@@ -927,6 +931,398 @@ class AccessApplicationSaasAppCustomAttributeSourceArgs:
 
 
 @pulumi.input_type
+class AccessApplicationScimConfigArgs:
+    def __init__(__self__, *,
+                 idp_uid: pulumi.Input[str],
+                 remote_uri: pulumi.Input[str],
+                 authentication: Optional[pulumi.Input['AccessApplicationScimConfigAuthenticationArgs']] = None,
+                 deactivate_on_delete: Optional[pulumi.Input[bool]] = None,
+                 enabled: Optional[pulumi.Input[bool]] = None,
+                 mappings: Optional[pulumi.Input[Sequence[pulumi.Input['AccessApplicationScimConfigMappingArgs']]]] = None):
+        """
+        :param pulumi.Input[str] idp_uid: The ID of the Access IDP to be used as the source for SCIM resources to provision to this application.
+        :param pulumi.Input[str] remote_uri: The base URI for the application's SCIM-compatible API.
+        :param pulumi.Input['AccessApplicationScimConfigAuthenticationArgs'] authentication: Configuration for authenticating with the application's SCIM API. Allowed configurations are HTTP Basic, OAuth Bearer Token, and OAuth 2.
+        :param pulumi.Input[bool] deactivate_on_delete: If false, propagates DELETE requests to the target application for SCIM resources. If true, sets 'active' to false on the SCIM resource. Note: Some targets do not support DELETE operations.
+        :param pulumi.Input[bool] enabled: Whether SCIM provisioning is turned on for this application.
+        :param pulumi.Input[Sequence[pulumi.Input['AccessApplicationScimConfigMappingArgs']]] mappings: A list of filters and transformations to apply to SCIM resources before provisioning them to the application. See below for nested schema.
+        """
+        pulumi.set(__self__, "idp_uid", idp_uid)
+        pulumi.set(__self__, "remote_uri", remote_uri)
+        if authentication is not None:
+            pulumi.set(__self__, "authentication", authentication)
+        if deactivate_on_delete is not None:
+            pulumi.set(__self__, "deactivate_on_delete", deactivate_on_delete)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if mappings is not None:
+            pulumi.set(__self__, "mappings", mappings)
+
+    @property
+    @pulumi.getter(name="idpUid")
+    def idp_uid(self) -> pulumi.Input[str]:
+        """
+        The ID of the Access IDP to be used as the source for SCIM resources to provision to this application.
+        """
+        return pulumi.get(self, "idp_uid")
+
+    @idp_uid.setter
+    def idp_uid(self, value: pulumi.Input[str]):
+        pulumi.set(self, "idp_uid", value)
+
+    @property
+    @pulumi.getter(name="remoteUri")
+    def remote_uri(self) -> pulumi.Input[str]:
+        """
+        The base URI for the application's SCIM-compatible API.
+        """
+        return pulumi.get(self, "remote_uri")
+
+    @remote_uri.setter
+    def remote_uri(self, value: pulumi.Input[str]):
+        pulumi.set(self, "remote_uri", value)
+
+    @property
+    @pulumi.getter
+    def authentication(self) -> Optional[pulumi.Input['AccessApplicationScimConfigAuthenticationArgs']]:
+        """
+        Configuration for authenticating with the application's SCIM API. Allowed configurations are HTTP Basic, OAuth Bearer Token, and OAuth 2.
+        """
+        return pulumi.get(self, "authentication")
+
+    @authentication.setter
+    def authentication(self, value: Optional[pulumi.Input['AccessApplicationScimConfigAuthenticationArgs']]):
+        pulumi.set(self, "authentication", value)
+
+    @property
+    @pulumi.getter(name="deactivateOnDelete")
+    def deactivate_on_delete(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If false, propagates DELETE requests to the target application for SCIM resources. If true, sets 'active' to false on the SCIM resource. Note: Some targets do not support DELETE operations.
+        """
+        return pulumi.get(self, "deactivate_on_delete")
+
+    @deactivate_on_delete.setter
+    def deactivate_on_delete(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "deactivate_on_delete", value)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether SCIM provisioning is turned on for this application.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enabled", value)
+
+    @property
+    @pulumi.getter
+    def mappings(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AccessApplicationScimConfigMappingArgs']]]]:
+        """
+        A list of filters and transformations to apply to SCIM resources before provisioning them to the application. See below for nested schema.
+        """
+        return pulumi.get(self, "mappings")
+
+    @mappings.setter
+    def mappings(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AccessApplicationScimConfigMappingArgs']]]]):
+        pulumi.set(self, "mappings", value)
+
+
+@pulumi.input_type
+class AccessApplicationScimConfigAuthenticationArgs:
+    def __init__(__self__, *,
+                 scheme: pulumi.Input[str],
+                 authorization_url: Optional[pulumi.Input[str]] = None,
+                 client_id: Optional[pulumi.Input[str]] = None,
+                 client_secret: Optional[pulumi.Input[str]] = None,
+                 password: Optional[pulumi.Input[str]] = None,
+                 scopes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 token: Optional[pulumi.Input[str]] = None,
+                 token_url: Optional[pulumi.Input[str]] = None,
+                 user: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] scheme: The authentication scheme to use. For OAuth 2 authentication, this value should be `oauth2`
+        :param pulumi.Input[str] authorization_url: URL used to generate the auth code used during token generation.
+        :param pulumi.Input[str] client_id: Client ID used to authenticate when generating a token for authenticating with the remote SCIM service.
+        :param pulumi.Input[str] client_secret: Secret used to authenticate when generating a token for authenticating with the remove SCIM service.
+        :param pulumi.Input[str] password: The password used to authenticate with the remote SCIM service.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] scopes: The authorization scopes to request when generating the token used to authenticate with the remove SCIM service.
+        :param pulumi.Input[str] token: The token used to authenticate with the remote SCIM service.
+        :param pulumi.Input[str] token_url: URL used to generate the token used to authenticate with the remote SCIM service.
+        :param pulumi.Input[str] user: The username used to authenticate with the remote SCIM service.
+        """
+        pulumi.set(__self__, "scheme", scheme)
+        if authorization_url is not None:
+            pulumi.set(__self__, "authorization_url", authorization_url)
+        if client_id is not None:
+            pulumi.set(__self__, "client_id", client_id)
+        if client_secret is not None:
+            pulumi.set(__self__, "client_secret", client_secret)
+        if password is not None:
+            pulumi.set(__self__, "password", password)
+        if scopes is not None:
+            pulumi.set(__self__, "scopes", scopes)
+        if token is not None:
+            pulumi.set(__self__, "token", token)
+        if token_url is not None:
+            pulumi.set(__self__, "token_url", token_url)
+        if user is not None:
+            pulumi.set(__self__, "user", user)
+
+    @property
+    @pulumi.getter
+    def scheme(self) -> pulumi.Input[str]:
+        """
+        The authentication scheme to use. For OAuth 2 authentication, this value should be `oauth2`
+        """
+        return pulumi.get(self, "scheme")
+
+    @scheme.setter
+    def scheme(self, value: pulumi.Input[str]):
+        pulumi.set(self, "scheme", value)
+
+    @property
+    @pulumi.getter(name="authorizationUrl")
+    def authorization_url(self) -> Optional[pulumi.Input[str]]:
+        """
+        URL used to generate the auth code used during token generation.
+        """
+        return pulumi.get(self, "authorization_url")
+
+    @authorization_url.setter
+    def authorization_url(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "authorization_url", value)
+
+    @property
+    @pulumi.getter(name="clientId")
+    def client_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Client ID used to authenticate when generating a token for authenticating with the remote SCIM service.
+        """
+        return pulumi.get(self, "client_id")
+
+    @client_id.setter
+    def client_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "client_id", value)
+
+    @property
+    @pulumi.getter(name="clientSecret")
+    def client_secret(self) -> Optional[pulumi.Input[str]]:
+        """
+        Secret used to authenticate when generating a token for authenticating with the remove SCIM service.
+        """
+        return pulumi.get(self, "client_secret")
+
+    @client_secret.setter
+    def client_secret(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "client_secret", value)
+
+    @property
+    @pulumi.getter
+    def password(self) -> Optional[pulumi.Input[str]]:
+        """
+        The password used to authenticate with the remote SCIM service.
+        """
+        return pulumi.get(self, "password")
+
+    @password.setter
+    def password(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "password", value)
+
+    @property
+    @pulumi.getter
+    def scopes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The authorization scopes to request when generating the token used to authenticate with the remove SCIM service.
+        """
+        return pulumi.get(self, "scopes")
+
+    @scopes.setter
+    def scopes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "scopes", value)
+
+    @property
+    @pulumi.getter
+    def token(self) -> Optional[pulumi.Input[str]]:
+        """
+        The token used to authenticate with the remote SCIM service.
+        """
+        return pulumi.get(self, "token")
+
+    @token.setter
+    def token(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "token", value)
+
+    @property
+    @pulumi.getter(name="tokenUrl")
+    def token_url(self) -> Optional[pulumi.Input[str]]:
+        """
+        URL used to generate the token used to authenticate with the remote SCIM service.
+        """
+        return pulumi.get(self, "token_url")
+
+    @token_url.setter
+    def token_url(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "token_url", value)
+
+    @property
+    @pulumi.getter
+    def user(self) -> Optional[pulumi.Input[str]]:
+        """
+        The username used to authenticate with the remote SCIM service.
+        """
+        return pulumi.get(self, "user")
+
+    @user.setter
+    def user(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "user", value)
+
+
+@pulumi.input_type
+class AccessApplicationScimConfigMappingArgs:
+    def __init__(__self__, *,
+                 schema: pulumi.Input[str],
+                 enabled: Optional[pulumi.Input[bool]] = None,
+                 filter: Optional[pulumi.Input[str]] = None,
+                 operations: Optional[pulumi.Input['AccessApplicationScimConfigMappingOperationsArgs']] = None,
+                 transform_jsonata: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] schema: Which SCIM resource type this mapping applies to.
+        :param pulumi.Input[bool] enabled: Whether or not this mapping is enabled.
+        :param pulumi.Input[str] filter: A [SCIM filter expression](https://datatracker.ietf.org/doc/html/rfc7644#section-3.4.2.2) that matches resources that should be provisioned to this application.
+        :param pulumi.Input['AccessApplicationScimConfigMappingOperationsArgs'] operations: Whether or not this mapping applies to creates, updates, or deletes.
+        :param pulumi.Input[str] transform_jsonata: A [JSONata](https://jsonata.org/) expression that transforms the resource before provisioning it in the application.
+        """
+        pulumi.set(__self__, "schema", schema)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if filter is not None:
+            pulumi.set(__self__, "filter", filter)
+        if operations is not None:
+            pulumi.set(__self__, "operations", operations)
+        if transform_jsonata is not None:
+            pulumi.set(__self__, "transform_jsonata", transform_jsonata)
+
+    @property
+    @pulumi.getter
+    def schema(self) -> pulumi.Input[str]:
+        """
+        Which SCIM resource type this mapping applies to.
+        """
+        return pulumi.get(self, "schema")
+
+    @schema.setter
+    def schema(self, value: pulumi.Input[str]):
+        pulumi.set(self, "schema", value)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether or not this mapping is enabled.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enabled", value)
+
+    @property
+    @pulumi.getter
+    def filter(self) -> Optional[pulumi.Input[str]]:
+        """
+        A [SCIM filter expression](https://datatracker.ietf.org/doc/html/rfc7644#section-3.4.2.2) that matches resources that should be provisioned to this application.
+        """
+        return pulumi.get(self, "filter")
+
+    @filter.setter
+    def filter(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "filter", value)
+
+    @property
+    @pulumi.getter
+    def operations(self) -> Optional[pulumi.Input['AccessApplicationScimConfigMappingOperationsArgs']]:
+        """
+        Whether or not this mapping applies to creates, updates, or deletes.
+        """
+        return pulumi.get(self, "operations")
+
+    @operations.setter
+    def operations(self, value: Optional[pulumi.Input['AccessApplicationScimConfigMappingOperationsArgs']]):
+        pulumi.set(self, "operations", value)
+
+    @property
+    @pulumi.getter(name="transformJsonata")
+    def transform_jsonata(self) -> Optional[pulumi.Input[str]]:
+        """
+        A [JSONata](https://jsonata.org/) expression that transforms the resource before provisioning it in the application.
+        """
+        return pulumi.get(self, "transform_jsonata")
+
+    @transform_jsonata.setter
+    def transform_jsonata(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "transform_jsonata", value)
+
+
+@pulumi.input_type
+class AccessApplicationScimConfigMappingOperationsArgs:
+    def __init__(__self__, *,
+                 create: Optional[pulumi.Input[bool]] = None,
+                 delete: Optional[pulumi.Input[bool]] = None,
+                 update: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[bool] create: Whether or not this mapping applies to create (POST) operations.
+        :param pulumi.Input[bool] delete: Whether or not this mapping applies to DELETE operations.
+        :param pulumi.Input[bool] update: Whether or not this mapping applies to update (PATCH/PUT) operations.
+        """
+        if create is not None:
+            pulumi.set(__self__, "create", create)
+        if delete is not None:
+            pulumi.set(__self__, "delete", delete)
+        if update is not None:
+            pulumi.set(__self__, "update", update)
+
+    @property
+    @pulumi.getter
+    def create(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether or not this mapping applies to create (POST) operations.
+        """
+        return pulumi.get(self, "create")
+
+    @create.setter
+    def create(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "create", value)
+
+    @property
+    @pulumi.getter
+    def delete(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether or not this mapping applies to DELETE operations.
+        """
+        return pulumi.get(self, "delete")
+
+    @delete.setter
+    def delete(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "delete", value)
+
+    @property
+    @pulumi.getter
+    def update(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether or not this mapping applies to update (PATCH/PUT) operations.
+        """
+        return pulumi.get(self, "update")
+
+    @update.setter
+    def update(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "update", value)
+
+
+@pulumi.input_type
 class AccessGroupExcludeArgs:
     def __init__(__self__, *,
                  any_valid_service_token: Optional[pulumi.Input[bool]] = None,
@@ -938,6 +1334,7 @@ class AccessGroupExcludeArgs:
                  common_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  device_postures: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  email_domains: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 email_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  emails: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  everyone: Optional[pulumi.Input[bool]] = None,
                  external_evaluation: Optional[pulumi.Input['AccessGroupExcludeExternalEvaluationArgs']] = None,
@@ -974,6 +1371,8 @@ class AccessGroupExcludeArgs:
             pulumi.set(__self__, "device_postures", device_postures)
         if email_domains is not None:
             pulumi.set(__self__, "email_domains", email_domains)
+        if email_lists is not None:
+            pulumi.set(__self__, "email_lists", email_lists)
         if emails is not None:
             pulumi.set(__self__, "emails", emails)
         if everyone is not None:
@@ -1084,6 +1483,15 @@ class AccessGroupExcludeArgs:
     @email_domains.setter
     def email_domains(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "email_domains", value)
+
+    @property
+    @pulumi.getter(name="emailLists")
+    def email_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        return pulumi.get(self, "email_lists")
+
+    @email_lists.setter
+    def email_lists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "email_lists", value)
 
     @property
     @pulumi.getter
@@ -1481,6 +1889,7 @@ class AccessGroupIncludeArgs:
                  common_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  device_postures: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  email_domains: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 email_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  emails: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  everyone: Optional[pulumi.Input[bool]] = None,
                  external_evaluation: Optional[pulumi.Input['AccessGroupIncludeExternalEvaluationArgs']] = None,
@@ -1517,6 +1926,8 @@ class AccessGroupIncludeArgs:
             pulumi.set(__self__, "device_postures", device_postures)
         if email_domains is not None:
             pulumi.set(__self__, "email_domains", email_domains)
+        if email_lists is not None:
+            pulumi.set(__self__, "email_lists", email_lists)
         if emails is not None:
             pulumi.set(__self__, "emails", emails)
         if everyone is not None:
@@ -1627,6 +2038,15 @@ class AccessGroupIncludeArgs:
     @email_domains.setter
     def email_domains(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "email_domains", value)
+
+    @property
+    @pulumi.getter(name="emailLists")
+    def email_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        return pulumi.get(self, "email_lists")
+
+    @email_lists.setter
+    def email_lists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "email_lists", value)
 
     @property
     @pulumi.getter
@@ -2024,6 +2444,7 @@ class AccessGroupRequireArgs:
                  common_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  device_postures: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  email_domains: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 email_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  emails: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  everyone: Optional[pulumi.Input[bool]] = None,
                  external_evaluation: Optional[pulumi.Input['AccessGroupRequireExternalEvaluationArgs']] = None,
@@ -2060,6 +2481,8 @@ class AccessGroupRequireArgs:
             pulumi.set(__self__, "device_postures", device_postures)
         if email_domains is not None:
             pulumi.set(__self__, "email_domains", email_domains)
+        if email_lists is not None:
+            pulumi.set(__self__, "email_lists", email_lists)
         if emails is not None:
             pulumi.set(__self__, "emails", emails)
         if everyone is not None:
@@ -2170,6 +2593,15 @@ class AccessGroupRequireArgs:
     @email_domains.setter
     def email_domains(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "email_domains", value)
+
+    @property
+    @pulumi.getter(name="emailLists")
+    def email_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        return pulumi.get(self, "email_lists")
+
+    @email_lists.setter
+    def email_lists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "email_lists", value)
 
     @property
     @pulumi.getter
@@ -3191,6 +3623,7 @@ class AccessPolicyExcludeArgs:
                  common_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  device_postures: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  email_domains: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 email_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  emails: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  everyone: Optional[pulumi.Input[bool]] = None,
                  external_evaluation: Optional[pulumi.Input['AccessPolicyExcludeExternalEvaluationArgs']] = None,
@@ -3227,6 +3660,8 @@ class AccessPolicyExcludeArgs:
             pulumi.set(__self__, "device_postures", device_postures)
         if email_domains is not None:
             pulumi.set(__self__, "email_domains", email_domains)
+        if email_lists is not None:
+            pulumi.set(__self__, "email_lists", email_lists)
         if emails is not None:
             pulumi.set(__self__, "emails", emails)
         if everyone is not None:
@@ -3337,6 +3772,15 @@ class AccessPolicyExcludeArgs:
     @email_domains.setter
     def email_domains(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "email_domains", value)
+
+    @property
+    @pulumi.getter(name="emailLists")
+    def email_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        return pulumi.get(self, "email_lists")
+
+    @email_lists.setter
+    def email_lists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "email_lists", value)
 
     @property
     @pulumi.getter
@@ -3734,6 +4178,7 @@ class AccessPolicyIncludeArgs:
                  common_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  device_postures: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  email_domains: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 email_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  emails: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  everyone: Optional[pulumi.Input[bool]] = None,
                  external_evaluation: Optional[pulumi.Input['AccessPolicyIncludeExternalEvaluationArgs']] = None,
@@ -3770,6 +4215,8 @@ class AccessPolicyIncludeArgs:
             pulumi.set(__self__, "device_postures", device_postures)
         if email_domains is not None:
             pulumi.set(__self__, "email_domains", email_domains)
+        if email_lists is not None:
+            pulumi.set(__self__, "email_lists", email_lists)
         if emails is not None:
             pulumi.set(__self__, "emails", emails)
         if everyone is not None:
@@ -3880,6 +4327,15 @@ class AccessPolicyIncludeArgs:
     @email_domains.setter
     def email_domains(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "email_domains", value)
+
+    @property
+    @pulumi.getter(name="emailLists")
+    def email_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        return pulumi.get(self, "email_lists")
+
+    @email_lists.setter
+    def email_lists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "email_lists", value)
 
     @property
     @pulumi.getter
@@ -4277,6 +4733,7 @@ class AccessPolicyRequireArgs:
                  common_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  device_postures: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  email_domains: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 email_lists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  emails: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  everyone: Optional[pulumi.Input[bool]] = None,
                  external_evaluation: Optional[pulumi.Input['AccessPolicyRequireExternalEvaluationArgs']] = None,
@@ -4313,6 +4770,8 @@ class AccessPolicyRequireArgs:
             pulumi.set(__self__, "device_postures", device_postures)
         if email_domains is not None:
             pulumi.set(__self__, "email_domains", email_domains)
+        if email_lists is not None:
+            pulumi.set(__self__, "email_lists", email_lists)
         if emails is not None:
             pulumi.set(__self__, "emails", emails)
         if everyone is not None:
@@ -4423,6 +4882,15 @@ class AccessPolicyRequireArgs:
     @email_domains.setter
     def email_domains(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "email_domains", value)
+
+    @property
+    @pulumi.getter(name="emailLists")
+    def email_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        return pulumi.get(self, "email_lists")
+
+    @email_lists.setter
+    def email_lists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "email_lists", value)
 
     @property
     @pulumi.getter
@@ -5911,6 +6379,7 @@ class DevicePostureRuleInputArgs:
                  os: Optional[pulumi.Input[str]] = None,
                  os_distro_name: Optional[pulumi.Input[str]] = None,
                  os_distro_revision: Optional[pulumi.Input[str]] = None,
+                 os_version_extra: Optional[pulumi.Input[str]] = None,
                  overall: Optional[pulumi.Input[str]] = None,
                  path: Optional[pulumi.Input[str]] = None,
                  require_all: Optional[pulumi.Input[bool]] = None,
@@ -5945,6 +6414,7 @@ class DevicePostureRuleInputArgs:
         :param pulumi.Input[str] os: OS signal score from Crowdstrike. Value must be between 1 and 100.
         :param pulumi.Input[str] os_distro_name: The operating system excluding version information.
         :param pulumi.Input[str] os_distro_revision: The operating system version excluding OS name information or release name.
+        :param pulumi.Input[str] os_version_extra: Extra operating system version details following the semantic version value.
         :param pulumi.Input[str] overall: Overall ZTA score from Crowdstrike. Value must be between 1 and 100.
         :param pulumi.Input[str] path: The path to the file.
         :param pulumi.Input[bool] require_all: True if all drives must be encrypted.
@@ -6000,6 +6470,8 @@ class DevicePostureRuleInputArgs:
             pulumi.set(__self__, "os_distro_name", os_distro_name)
         if os_distro_revision is not None:
             pulumi.set(__self__, "os_distro_revision", os_distro_revision)
+        if os_version_extra is not None:
+            pulumi.set(__self__, "os_version_extra", os_version_extra)
         if overall is not None:
             pulumi.set(__self__, "overall", overall)
         if path is not None:
@@ -6276,6 +6748,18 @@ class DevicePostureRuleInputArgs:
     @os_distro_revision.setter
     def os_distro_revision(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "os_distro_revision", value)
+
+    @property
+    @pulumi.getter(name="osVersionExtra")
+    def os_version_extra(self) -> Optional[pulumi.Input[str]]:
+        """
+        Extra operating system version details following the semantic version value.
+        """
+        return pulumi.get(self, "os_version_extra")
+
+    @os_version_extra.setter
+    def os_version_extra(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "os_version_extra", value)
 
     @property
     @pulumi.getter

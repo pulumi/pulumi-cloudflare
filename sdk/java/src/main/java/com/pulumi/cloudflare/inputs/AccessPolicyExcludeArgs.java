@@ -95,6 +95,13 @@ public final class AccessPolicyExcludeArgs extends com.pulumi.resources.Resource
         return Optional.ofNullable(this.emailDomains);
     }
 
+    @Import(name="emailLists")
+    private @Nullable Output<List<String>> emailLists;
+
+    public Optional<Output<List<String>>> emailLists() {
+        return Optional.ofNullable(this.emailLists);
+    }
+
     @Import(name="emails")
     private @Nullable Output<List<String>> emails;
 
@@ -214,6 +221,7 @@ public final class AccessPolicyExcludeArgs extends com.pulumi.resources.Resource
         this.commonNames = $.commonNames;
         this.devicePostures = $.devicePostures;
         this.emailDomains = $.emailDomains;
+        this.emailLists = $.emailLists;
         this.emails = $.emails;
         this.everyone = $.everyone;
         this.externalEvaluation = $.externalEvaluation;
@@ -364,6 +372,19 @@ public final class AccessPolicyExcludeArgs extends com.pulumi.resources.Resource
 
         public Builder emailDomains(String... emailDomains) {
             return emailDomains(List.of(emailDomains));
+        }
+
+        public Builder emailLists(@Nullable Output<List<String>> emailLists) {
+            $.emailLists = emailLists;
+            return this;
+        }
+
+        public Builder emailLists(List<String> emailLists) {
+            return emailLists(Output.of(emailLists));
+        }
+
+        public Builder emailLists(String... emailLists) {
+            return emailLists(List.of(emailLists));
         }
 
         public Builder emails(@Nullable Output<List<String>> emails) {

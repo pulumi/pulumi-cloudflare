@@ -1132,6 +1132,839 @@ func (o AccessApplicationSaasAppCustomAttributeSourceOutput) Name() pulumi.Strin
 	return o.ApplyT(func(v AccessApplicationSaasAppCustomAttributeSource) string { return v.Name }).(pulumi.StringOutput)
 }
 
+type AccessApplicationScimConfig struct {
+	// Configuration for authenticating with the application's SCIM API. Allowed configurations are HTTP Basic, OAuth Bearer Token, and OAuth 2.
+	Authentication *AccessApplicationScimConfigAuthentication `pulumi:"authentication"`
+	// If false, propagates DELETE requests to the target application for SCIM resources. If true, sets 'active' to false on the SCIM resource. Note: Some targets do not support DELETE operations.
+	DeactivateOnDelete *bool `pulumi:"deactivateOnDelete"`
+	// Whether SCIM provisioning is turned on for this application.
+	Enabled *bool `pulumi:"enabled"`
+	// The ID of the Access IDP to be used as the source for SCIM resources to provision to this application.
+	IdpUid string `pulumi:"idpUid"`
+	// A list of filters and transformations to apply to SCIM resources before provisioning them to the application. See below for nested schema.
+	Mappings []AccessApplicationScimConfigMapping `pulumi:"mappings"`
+	// The base URI for the application's SCIM-compatible API.
+	RemoteUri string `pulumi:"remoteUri"`
+}
+
+// AccessApplicationScimConfigInput is an input type that accepts AccessApplicationScimConfigArgs and AccessApplicationScimConfigOutput values.
+// You can construct a concrete instance of `AccessApplicationScimConfigInput` via:
+//
+//	AccessApplicationScimConfigArgs{...}
+type AccessApplicationScimConfigInput interface {
+	pulumi.Input
+
+	ToAccessApplicationScimConfigOutput() AccessApplicationScimConfigOutput
+	ToAccessApplicationScimConfigOutputWithContext(context.Context) AccessApplicationScimConfigOutput
+}
+
+type AccessApplicationScimConfigArgs struct {
+	// Configuration for authenticating with the application's SCIM API. Allowed configurations are HTTP Basic, OAuth Bearer Token, and OAuth 2.
+	Authentication AccessApplicationScimConfigAuthenticationPtrInput `pulumi:"authentication"`
+	// If false, propagates DELETE requests to the target application for SCIM resources. If true, sets 'active' to false on the SCIM resource. Note: Some targets do not support DELETE operations.
+	DeactivateOnDelete pulumi.BoolPtrInput `pulumi:"deactivateOnDelete"`
+	// Whether SCIM provisioning is turned on for this application.
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+	// The ID of the Access IDP to be used as the source for SCIM resources to provision to this application.
+	IdpUid pulumi.StringInput `pulumi:"idpUid"`
+	// A list of filters and transformations to apply to SCIM resources before provisioning them to the application. See below for nested schema.
+	Mappings AccessApplicationScimConfigMappingArrayInput `pulumi:"mappings"`
+	// The base URI for the application's SCIM-compatible API.
+	RemoteUri pulumi.StringInput `pulumi:"remoteUri"`
+}
+
+func (AccessApplicationScimConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessApplicationScimConfig)(nil)).Elem()
+}
+
+func (i AccessApplicationScimConfigArgs) ToAccessApplicationScimConfigOutput() AccessApplicationScimConfigOutput {
+	return i.ToAccessApplicationScimConfigOutputWithContext(context.Background())
+}
+
+func (i AccessApplicationScimConfigArgs) ToAccessApplicationScimConfigOutputWithContext(ctx context.Context) AccessApplicationScimConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessApplicationScimConfigOutput)
+}
+
+func (i AccessApplicationScimConfigArgs) ToAccessApplicationScimConfigPtrOutput() AccessApplicationScimConfigPtrOutput {
+	return i.ToAccessApplicationScimConfigPtrOutputWithContext(context.Background())
+}
+
+func (i AccessApplicationScimConfigArgs) ToAccessApplicationScimConfigPtrOutputWithContext(ctx context.Context) AccessApplicationScimConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessApplicationScimConfigOutput).ToAccessApplicationScimConfigPtrOutputWithContext(ctx)
+}
+
+// AccessApplicationScimConfigPtrInput is an input type that accepts AccessApplicationScimConfigArgs, AccessApplicationScimConfigPtr and AccessApplicationScimConfigPtrOutput values.
+// You can construct a concrete instance of `AccessApplicationScimConfigPtrInput` via:
+//
+//	        AccessApplicationScimConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type AccessApplicationScimConfigPtrInput interface {
+	pulumi.Input
+
+	ToAccessApplicationScimConfigPtrOutput() AccessApplicationScimConfigPtrOutput
+	ToAccessApplicationScimConfigPtrOutputWithContext(context.Context) AccessApplicationScimConfigPtrOutput
+}
+
+type accessApplicationScimConfigPtrType AccessApplicationScimConfigArgs
+
+func AccessApplicationScimConfigPtr(v *AccessApplicationScimConfigArgs) AccessApplicationScimConfigPtrInput {
+	return (*accessApplicationScimConfigPtrType)(v)
+}
+
+func (*accessApplicationScimConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AccessApplicationScimConfig)(nil)).Elem()
+}
+
+func (i *accessApplicationScimConfigPtrType) ToAccessApplicationScimConfigPtrOutput() AccessApplicationScimConfigPtrOutput {
+	return i.ToAccessApplicationScimConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *accessApplicationScimConfigPtrType) ToAccessApplicationScimConfigPtrOutputWithContext(ctx context.Context) AccessApplicationScimConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessApplicationScimConfigPtrOutput)
+}
+
+type AccessApplicationScimConfigOutput struct{ *pulumi.OutputState }
+
+func (AccessApplicationScimConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessApplicationScimConfig)(nil)).Elem()
+}
+
+func (o AccessApplicationScimConfigOutput) ToAccessApplicationScimConfigOutput() AccessApplicationScimConfigOutput {
+	return o
+}
+
+func (o AccessApplicationScimConfigOutput) ToAccessApplicationScimConfigOutputWithContext(ctx context.Context) AccessApplicationScimConfigOutput {
+	return o
+}
+
+func (o AccessApplicationScimConfigOutput) ToAccessApplicationScimConfigPtrOutput() AccessApplicationScimConfigPtrOutput {
+	return o.ToAccessApplicationScimConfigPtrOutputWithContext(context.Background())
+}
+
+func (o AccessApplicationScimConfigOutput) ToAccessApplicationScimConfigPtrOutputWithContext(ctx context.Context) AccessApplicationScimConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AccessApplicationScimConfig) *AccessApplicationScimConfig {
+		return &v
+	}).(AccessApplicationScimConfigPtrOutput)
+}
+
+// Configuration for authenticating with the application's SCIM API. Allowed configurations are HTTP Basic, OAuth Bearer Token, and OAuth 2.
+func (o AccessApplicationScimConfigOutput) Authentication() AccessApplicationScimConfigAuthenticationPtrOutput {
+	return o.ApplyT(func(v AccessApplicationScimConfig) *AccessApplicationScimConfigAuthentication {
+		return v.Authentication
+	}).(AccessApplicationScimConfigAuthenticationPtrOutput)
+}
+
+// If false, propagates DELETE requests to the target application for SCIM resources. If true, sets 'active' to false on the SCIM resource. Note: Some targets do not support DELETE operations.
+func (o AccessApplicationScimConfigOutput) DeactivateOnDelete() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AccessApplicationScimConfig) *bool { return v.DeactivateOnDelete }).(pulumi.BoolPtrOutput)
+}
+
+// Whether SCIM provisioning is turned on for this application.
+func (o AccessApplicationScimConfigOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AccessApplicationScimConfig) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+// The ID of the Access IDP to be used as the source for SCIM resources to provision to this application.
+func (o AccessApplicationScimConfigOutput) IdpUid() pulumi.StringOutput {
+	return o.ApplyT(func(v AccessApplicationScimConfig) string { return v.IdpUid }).(pulumi.StringOutput)
+}
+
+// A list of filters and transformations to apply to SCIM resources before provisioning them to the application. See below for nested schema.
+func (o AccessApplicationScimConfigOutput) Mappings() AccessApplicationScimConfigMappingArrayOutput {
+	return o.ApplyT(func(v AccessApplicationScimConfig) []AccessApplicationScimConfigMapping { return v.Mappings }).(AccessApplicationScimConfigMappingArrayOutput)
+}
+
+// The base URI for the application's SCIM-compatible API.
+func (o AccessApplicationScimConfigOutput) RemoteUri() pulumi.StringOutput {
+	return o.ApplyT(func(v AccessApplicationScimConfig) string { return v.RemoteUri }).(pulumi.StringOutput)
+}
+
+type AccessApplicationScimConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (AccessApplicationScimConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AccessApplicationScimConfig)(nil)).Elem()
+}
+
+func (o AccessApplicationScimConfigPtrOutput) ToAccessApplicationScimConfigPtrOutput() AccessApplicationScimConfigPtrOutput {
+	return o
+}
+
+func (o AccessApplicationScimConfigPtrOutput) ToAccessApplicationScimConfigPtrOutputWithContext(ctx context.Context) AccessApplicationScimConfigPtrOutput {
+	return o
+}
+
+func (o AccessApplicationScimConfigPtrOutput) Elem() AccessApplicationScimConfigOutput {
+	return o.ApplyT(func(v *AccessApplicationScimConfig) AccessApplicationScimConfig {
+		if v != nil {
+			return *v
+		}
+		var ret AccessApplicationScimConfig
+		return ret
+	}).(AccessApplicationScimConfigOutput)
+}
+
+// Configuration for authenticating with the application's SCIM API. Allowed configurations are HTTP Basic, OAuth Bearer Token, and OAuth 2.
+func (o AccessApplicationScimConfigPtrOutput) Authentication() AccessApplicationScimConfigAuthenticationPtrOutput {
+	return o.ApplyT(func(v *AccessApplicationScimConfig) *AccessApplicationScimConfigAuthentication {
+		if v == nil {
+			return nil
+		}
+		return v.Authentication
+	}).(AccessApplicationScimConfigAuthenticationPtrOutput)
+}
+
+// If false, propagates DELETE requests to the target application for SCIM resources. If true, sets 'active' to false on the SCIM resource. Note: Some targets do not support DELETE operations.
+func (o AccessApplicationScimConfigPtrOutput) DeactivateOnDelete() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AccessApplicationScimConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.DeactivateOnDelete
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Whether SCIM provisioning is turned on for this application.
+func (o AccessApplicationScimConfigPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AccessApplicationScimConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The ID of the Access IDP to be used as the source for SCIM resources to provision to this application.
+func (o AccessApplicationScimConfigPtrOutput) IdpUid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccessApplicationScimConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.IdpUid
+	}).(pulumi.StringPtrOutput)
+}
+
+// A list of filters and transformations to apply to SCIM resources before provisioning them to the application. See below for nested schema.
+func (o AccessApplicationScimConfigPtrOutput) Mappings() AccessApplicationScimConfigMappingArrayOutput {
+	return o.ApplyT(func(v *AccessApplicationScimConfig) []AccessApplicationScimConfigMapping {
+		if v == nil {
+			return nil
+		}
+		return v.Mappings
+	}).(AccessApplicationScimConfigMappingArrayOutput)
+}
+
+// The base URI for the application's SCIM-compatible API.
+func (o AccessApplicationScimConfigPtrOutput) RemoteUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccessApplicationScimConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.RemoteUri
+	}).(pulumi.StringPtrOutput)
+}
+
+type AccessApplicationScimConfigAuthentication struct {
+	// URL used to generate the auth code used during token generation.
+	AuthorizationUrl *string `pulumi:"authorizationUrl"`
+	// Client ID used to authenticate when generating a token for authenticating with the remote SCIM service.
+	ClientId *string `pulumi:"clientId"`
+	// Secret used to authenticate when generating a token for authenticating with the remove SCIM service.
+	ClientSecret *string `pulumi:"clientSecret"`
+	// The password used to authenticate with the remote SCIM service.
+	Password *string `pulumi:"password"`
+	// The authentication scheme to use. For OAuth 2 authentication, this value should be `oauth2`
+	Scheme string `pulumi:"scheme"`
+	// The authorization scopes to request when generating the token used to authenticate with the remove SCIM service.
+	Scopes []string `pulumi:"scopes"`
+	// The token used to authenticate with the remote SCIM service.
+	Token *string `pulumi:"token"`
+	// URL used to generate the token used to authenticate with the remote SCIM service.
+	TokenUrl *string `pulumi:"tokenUrl"`
+	// The username used to authenticate with the remote SCIM service.
+	User *string `pulumi:"user"`
+}
+
+// AccessApplicationScimConfigAuthenticationInput is an input type that accepts AccessApplicationScimConfigAuthenticationArgs and AccessApplicationScimConfigAuthenticationOutput values.
+// You can construct a concrete instance of `AccessApplicationScimConfigAuthenticationInput` via:
+//
+//	AccessApplicationScimConfigAuthenticationArgs{...}
+type AccessApplicationScimConfigAuthenticationInput interface {
+	pulumi.Input
+
+	ToAccessApplicationScimConfigAuthenticationOutput() AccessApplicationScimConfigAuthenticationOutput
+	ToAccessApplicationScimConfigAuthenticationOutputWithContext(context.Context) AccessApplicationScimConfigAuthenticationOutput
+}
+
+type AccessApplicationScimConfigAuthenticationArgs struct {
+	// URL used to generate the auth code used during token generation.
+	AuthorizationUrl pulumi.StringPtrInput `pulumi:"authorizationUrl"`
+	// Client ID used to authenticate when generating a token for authenticating with the remote SCIM service.
+	ClientId pulumi.StringPtrInput `pulumi:"clientId"`
+	// Secret used to authenticate when generating a token for authenticating with the remove SCIM service.
+	ClientSecret pulumi.StringPtrInput `pulumi:"clientSecret"`
+	// The password used to authenticate with the remote SCIM service.
+	Password pulumi.StringPtrInput `pulumi:"password"`
+	// The authentication scheme to use. For OAuth 2 authentication, this value should be `oauth2`
+	Scheme pulumi.StringInput `pulumi:"scheme"`
+	// The authorization scopes to request when generating the token used to authenticate with the remove SCIM service.
+	Scopes pulumi.StringArrayInput `pulumi:"scopes"`
+	// The token used to authenticate with the remote SCIM service.
+	Token pulumi.StringPtrInput `pulumi:"token"`
+	// URL used to generate the token used to authenticate with the remote SCIM service.
+	TokenUrl pulumi.StringPtrInput `pulumi:"tokenUrl"`
+	// The username used to authenticate with the remote SCIM service.
+	User pulumi.StringPtrInput `pulumi:"user"`
+}
+
+func (AccessApplicationScimConfigAuthenticationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessApplicationScimConfigAuthentication)(nil)).Elem()
+}
+
+func (i AccessApplicationScimConfigAuthenticationArgs) ToAccessApplicationScimConfigAuthenticationOutput() AccessApplicationScimConfigAuthenticationOutput {
+	return i.ToAccessApplicationScimConfigAuthenticationOutputWithContext(context.Background())
+}
+
+func (i AccessApplicationScimConfigAuthenticationArgs) ToAccessApplicationScimConfigAuthenticationOutputWithContext(ctx context.Context) AccessApplicationScimConfigAuthenticationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessApplicationScimConfigAuthenticationOutput)
+}
+
+func (i AccessApplicationScimConfigAuthenticationArgs) ToAccessApplicationScimConfigAuthenticationPtrOutput() AccessApplicationScimConfigAuthenticationPtrOutput {
+	return i.ToAccessApplicationScimConfigAuthenticationPtrOutputWithContext(context.Background())
+}
+
+func (i AccessApplicationScimConfigAuthenticationArgs) ToAccessApplicationScimConfigAuthenticationPtrOutputWithContext(ctx context.Context) AccessApplicationScimConfigAuthenticationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessApplicationScimConfigAuthenticationOutput).ToAccessApplicationScimConfigAuthenticationPtrOutputWithContext(ctx)
+}
+
+// AccessApplicationScimConfigAuthenticationPtrInput is an input type that accepts AccessApplicationScimConfigAuthenticationArgs, AccessApplicationScimConfigAuthenticationPtr and AccessApplicationScimConfigAuthenticationPtrOutput values.
+// You can construct a concrete instance of `AccessApplicationScimConfigAuthenticationPtrInput` via:
+//
+//	        AccessApplicationScimConfigAuthenticationArgs{...}
+//
+//	or:
+//
+//	        nil
+type AccessApplicationScimConfigAuthenticationPtrInput interface {
+	pulumi.Input
+
+	ToAccessApplicationScimConfigAuthenticationPtrOutput() AccessApplicationScimConfigAuthenticationPtrOutput
+	ToAccessApplicationScimConfigAuthenticationPtrOutputWithContext(context.Context) AccessApplicationScimConfigAuthenticationPtrOutput
+}
+
+type accessApplicationScimConfigAuthenticationPtrType AccessApplicationScimConfigAuthenticationArgs
+
+func AccessApplicationScimConfigAuthenticationPtr(v *AccessApplicationScimConfigAuthenticationArgs) AccessApplicationScimConfigAuthenticationPtrInput {
+	return (*accessApplicationScimConfigAuthenticationPtrType)(v)
+}
+
+func (*accessApplicationScimConfigAuthenticationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AccessApplicationScimConfigAuthentication)(nil)).Elem()
+}
+
+func (i *accessApplicationScimConfigAuthenticationPtrType) ToAccessApplicationScimConfigAuthenticationPtrOutput() AccessApplicationScimConfigAuthenticationPtrOutput {
+	return i.ToAccessApplicationScimConfigAuthenticationPtrOutputWithContext(context.Background())
+}
+
+func (i *accessApplicationScimConfigAuthenticationPtrType) ToAccessApplicationScimConfigAuthenticationPtrOutputWithContext(ctx context.Context) AccessApplicationScimConfigAuthenticationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessApplicationScimConfigAuthenticationPtrOutput)
+}
+
+type AccessApplicationScimConfigAuthenticationOutput struct{ *pulumi.OutputState }
+
+func (AccessApplicationScimConfigAuthenticationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessApplicationScimConfigAuthentication)(nil)).Elem()
+}
+
+func (o AccessApplicationScimConfigAuthenticationOutput) ToAccessApplicationScimConfigAuthenticationOutput() AccessApplicationScimConfigAuthenticationOutput {
+	return o
+}
+
+func (o AccessApplicationScimConfigAuthenticationOutput) ToAccessApplicationScimConfigAuthenticationOutputWithContext(ctx context.Context) AccessApplicationScimConfigAuthenticationOutput {
+	return o
+}
+
+func (o AccessApplicationScimConfigAuthenticationOutput) ToAccessApplicationScimConfigAuthenticationPtrOutput() AccessApplicationScimConfigAuthenticationPtrOutput {
+	return o.ToAccessApplicationScimConfigAuthenticationPtrOutputWithContext(context.Background())
+}
+
+func (o AccessApplicationScimConfigAuthenticationOutput) ToAccessApplicationScimConfigAuthenticationPtrOutputWithContext(ctx context.Context) AccessApplicationScimConfigAuthenticationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AccessApplicationScimConfigAuthentication) *AccessApplicationScimConfigAuthentication {
+		return &v
+	}).(AccessApplicationScimConfigAuthenticationPtrOutput)
+}
+
+// URL used to generate the auth code used during token generation.
+func (o AccessApplicationScimConfigAuthenticationOutput) AuthorizationUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AccessApplicationScimConfigAuthentication) *string { return v.AuthorizationUrl }).(pulumi.StringPtrOutput)
+}
+
+// Client ID used to authenticate when generating a token for authenticating with the remote SCIM service.
+func (o AccessApplicationScimConfigAuthenticationOutput) ClientId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AccessApplicationScimConfigAuthentication) *string { return v.ClientId }).(pulumi.StringPtrOutput)
+}
+
+// Secret used to authenticate when generating a token for authenticating with the remove SCIM service.
+func (o AccessApplicationScimConfigAuthenticationOutput) ClientSecret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AccessApplicationScimConfigAuthentication) *string { return v.ClientSecret }).(pulumi.StringPtrOutput)
+}
+
+// The password used to authenticate with the remote SCIM service.
+func (o AccessApplicationScimConfigAuthenticationOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AccessApplicationScimConfigAuthentication) *string { return v.Password }).(pulumi.StringPtrOutput)
+}
+
+// The authentication scheme to use. For OAuth 2 authentication, this value should be `oauth2`
+func (o AccessApplicationScimConfigAuthenticationOutput) Scheme() pulumi.StringOutput {
+	return o.ApplyT(func(v AccessApplicationScimConfigAuthentication) string { return v.Scheme }).(pulumi.StringOutput)
+}
+
+// The authorization scopes to request when generating the token used to authenticate with the remove SCIM service.
+func (o AccessApplicationScimConfigAuthenticationOutput) Scopes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AccessApplicationScimConfigAuthentication) []string { return v.Scopes }).(pulumi.StringArrayOutput)
+}
+
+// The token used to authenticate with the remote SCIM service.
+func (o AccessApplicationScimConfigAuthenticationOutput) Token() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AccessApplicationScimConfigAuthentication) *string { return v.Token }).(pulumi.StringPtrOutput)
+}
+
+// URL used to generate the token used to authenticate with the remote SCIM service.
+func (o AccessApplicationScimConfigAuthenticationOutput) TokenUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AccessApplicationScimConfigAuthentication) *string { return v.TokenUrl }).(pulumi.StringPtrOutput)
+}
+
+// The username used to authenticate with the remote SCIM service.
+func (o AccessApplicationScimConfigAuthenticationOutput) User() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AccessApplicationScimConfigAuthentication) *string { return v.User }).(pulumi.StringPtrOutput)
+}
+
+type AccessApplicationScimConfigAuthenticationPtrOutput struct{ *pulumi.OutputState }
+
+func (AccessApplicationScimConfigAuthenticationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AccessApplicationScimConfigAuthentication)(nil)).Elem()
+}
+
+func (o AccessApplicationScimConfigAuthenticationPtrOutput) ToAccessApplicationScimConfigAuthenticationPtrOutput() AccessApplicationScimConfigAuthenticationPtrOutput {
+	return o
+}
+
+func (o AccessApplicationScimConfigAuthenticationPtrOutput) ToAccessApplicationScimConfigAuthenticationPtrOutputWithContext(ctx context.Context) AccessApplicationScimConfigAuthenticationPtrOutput {
+	return o
+}
+
+func (o AccessApplicationScimConfigAuthenticationPtrOutput) Elem() AccessApplicationScimConfigAuthenticationOutput {
+	return o.ApplyT(func(v *AccessApplicationScimConfigAuthentication) AccessApplicationScimConfigAuthentication {
+		if v != nil {
+			return *v
+		}
+		var ret AccessApplicationScimConfigAuthentication
+		return ret
+	}).(AccessApplicationScimConfigAuthenticationOutput)
+}
+
+// URL used to generate the auth code used during token generation.
+func (o AccessApplicationScimConfigAuthenticationPtrOutput) AuthorizationUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccessApplicationScimConfigAuthentication) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AuthorizationUrl
+	}).(pulumi.StringPtrOutput)
+}
+
+// Client ID used to authenticate when generating a token for authenticating with the remote SCIM service.
+func (o AccessApplicationScimConfigAuthenticationPtrOutput) ClientId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccessApplicationScimConfigAuthentication) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ClientId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Secret used to authenticate when generating a token for authenticating with the remove SCIM service.
+func (o AccessApplicationScimConfigAuthenticationPtrOutput) ClientSecret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccessApplicationScimConfigAuthentication) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ClientSecret
+	}).(pulumi.StringPtrOutput)
+}
+
+// The password used to authenticate with the remote SCIM service.
+func (o AccessApplicationScimConfigAuthenticationPtrOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccessApplicationScimConfigAuthentication) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Password
+	}).(pulumi.StringPtrOutput)
+}
+
+// The authentication scheme to use. For OAuth 2 authentication, this value should be `oauth2`
+func (o AccessApplicationScimConfigAuthenticationPtrOutput) Scheme() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccessApplicationScimConfigAuthentication) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Scheme
+	}).(pulumi.StringPtrOutput)
+}
+
+// The authorization scopes to request when generating the token used to authenticate with the remove SCIM service.
+func (o AccessApplicationScimConfigAuthenticationPtrOutput) Scopes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AccessApplicationScimConfigAuthentication) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Scopes
+	}).(pulumi.StringArrayOutput)
+}
+
+// The token used to authenticate with the remote SCIM service.
+func (o AccessApplicationScimConfigAuthenticationPtrOutput) Token() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccessApplicationScimConfigAuthentication) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Token
+	}).(pulumi.StringPtrOutput)
+}
+
+// URL used to generate the token used to authenticate with the remote SCIM service.
+func (o AccessApplicationScimConfigAuthenticationPtrOutput) TokenUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccessApplicationScimConfigAuthentication) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TokenUrl
+	}).(pulumi.StringPtrOutput)
+}
+
+// The username used to authenticate with the remote SCIM service.
+func (o AccessApplicationScimConfigAuthenticationPtrOutput) User() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccessApplicationScimConfigAuthentication) *string {
+		if v == nil {
+			return nil
+		}
+		return v.User
+	}).(pulumi.StringPtrOutput)
+}
+
+type AccessApplicationScimConfigMapping struct {
+	// Whether or not this mapping is enabled.
+	Enabled *bool `pulumi:"enabled"`
+	// A [SCIM filter expression](https://datatracker.ietf.org/doc/html/rfc7644#section-3.4.2.2) that matches resources that should be provisioned to this application.
+	Filter *string `pulumi:"filter"`
+	// Whether or not this mapping applies to creates, updates, or deletes.
+	Operations *AccessApplicationScimConfigMappingOperations `pulumi:"operations"`
+	// Which SCIM resource type this mapping applies to.
+	Schema string `pulumi:"schema"`
+	// A [JSONata](https://jsonata.org/) expression that transforms the resource before provisioning it in the application.
+	TransformJsonata *string `pulumi:"transformJsonata"`
+}
+
+// AccessApplicationScimConfigMappingInput is an input type that accepts AccessApplicationScimConfigMappingArgs and AccessApplicationScimConfigMappingOutput values.
+// You can construct a concrete instance of `AccessApplicationScimConfigMappingInput` via:
+//
+//	AccessApplicationScimConfigMappingArgs{...}
+type AccessApplicationScimConfigMappingInput interface {
+	pulumi.Input
+
+	ToAccessApplicationScimConfigMappingOutput() AccessApplicationScimConfigMappingOutput
+	ToAccessApplicationScimConfigMappingOutputWithContext(context.Context) AccessApplicationScimConfigMappingOutput
+}
+
+type AccessApplicationScimConfigMappingArgs struct {
+	// Whether or not this mapping is enabled.
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+	// A [SCIM filter expression](https://datatracker.ietf.org/doc/html/rfc7644#section-3.4.2.2) that matches resources that should be provisioned to this application.
+	Filter pulumi.StringPtrInput `pulumi:"filter"`
+	// Whether or not this mapping applies to creates, updates, or deletes.
+	Operations AccessApplicationScimConfigMappingOperationsPtrInput `pulumi:"operations"`
+	// Which SCIM resource type this mapping applies to.
+	Schema pulumi.StringInput `pulumi:"schema"`
+	// A [JSONata](https://jsonata.org/) expression that transforms the resource before provisioning it in the application.
+	TransformJsonata pulumi.StringPtrInput `pulumi:"transformJsonata"`
+}
+
+func (AccessApplicationScimConfigMappingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessApplicationScimConfigMapping)(nil)).Elem()
+}
+
+func (i AccessApplicationScimConfigMappingArgs) ToAccessApplicationScimConfigMappingOutput() AccessApplicationScimConfigMappingOutput {
+	return i.ToAccessApplicationScimConfigMappingOutputWithContext(context.Background())
+}
+
+func (i AccessApplicationScimConfigMappingArgs) ToAccessApplicationScimConfigMappingOutputWithContext(ctx context.Context) AccessApplicationScimConfigMappingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessApplicationScimConfigMappingOutput)
+}
+
+// AccessApplicationScimConfigMappingArrayInput is an input type that accepts AccessApplicationScimConfigMappingArray and AccessApplicationScimConfigMappingArrayOutput values.
+// You can construct a concrete instance of `AccessApplicationScimConfigMappingArrayInput` via:
+//
+//	AccessApplicationScimConfigMappingArray{ AccessApplicationScimConfigMappingArgs{...} }
+type AccessApplicationScimConfigMappingArrayInput interface {
+	pulumi.Input
+
+	ToAccessApplicationScimConfigMappingArrayOutput() AccessApplicationScimConfigMappingArrayOutput
+	ToAccessApplicationScimConfigMappingArrayOutputWithContext(context.Context) AccessApplicationScimConfigMappingArrayOutput
+}
+
+type AccessApplicationScimConfigMappingArray []AccessApplicationScimConfigMappingInput
+
+func (AccessApplicationScimConfigMappingArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AccessApplicationScimConfigMapping)(nil)).Elem()
+}
+
+func (i AccessApplicationScimConfigMappingArray) ToAccessApplicationScimConfigMappingArrayOutput() AccessApplicationScimConfigMappingArrayOutput {
+	return i.ToAccessApplicationScimConfigMappingArrayOutputWithContext(context.Background())
+}
+
+func (i AccessApplicationScimConfigMappingArray) ToAccessApplicationScimConfigMappingArrayOutputWithContext(ctx context.Context) AccessApplicationScimConfigMappingArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessApplicationScimConfigMappingArrayOutput)
+}
+
+type AccessApplicationScimConfigMappingOutput struct{ *pulumi.OutputState }
+
+func (AccessApplicationScimConfigMappingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessApplicationScimConfigMapping)(nil)).Elem()
+}
+
+func (o AccessApplicationScimConfigMappingOutput) ToAccessApplicationScimConfigMappingOutput() AccessApplicationScimConfigMappingOutput {
+	return o
+}
+
+func (o AccessApplicationScimConfigMappingOutput) ToAccessApplicationScimConfigMappingOutputWithContext(ctx context.Context) AccessApplicationScimConfigMappingOutput {
+	return o
+}
+
+// Whether or not this mapping is enabled.
+func (o AccessApplicationScimConfigMappingOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AccessApplicationScimConfigMapping) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+// A [SCIM filter expression](https://datatracker.ietf.org/doc/html/rfc7644#section-3.4.2.2) that matches resources that should be provisioned to this application.
+func (o AccessApplicationScimConfigMappingOutput) Filter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AccessApplicationScimConfigMapping) *string { return v.Filter }).(pulumi.StringPtrOutput)
+}
+
+// Whether or not this mapping applies to creates, updates, or deletes.
+func (o AccessApplicationScimConfigMappingOutput) Operations() AccessApplicationScimConfigMappingOperationsPtrOutput {
+	return o.ApplyT(func(v AccessApplicationScimConfigMapping) *AccessApplicationScimConfigMappingOperations {
+		return v.Operations
+	}).(AccessApplicationScimConfigMappingOperationsPtrOutput)
+}
+
+// Which SCIM resource type this mapping applies to.
+func (o AccessApplicationScimConfigMappingOutput) Schema() pulumi.StringOutput {
+	return o.ApplyT(func(v AccessApplicationScimConfigMapping) string { return v.Schema }).(pulumi.StringOutput)
+}
+
+// A [JSONata](https://jsonata.org/) expression that transforms the resource before provisioning it in the application.
+func (o AccessApplicationScimConfigMappingOutput) TransformJsonata() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AccessApplicationScimConfigMapping) *string { return v.TransformJsonata }).(pulumi.StringPtrOutput)
+}
+
+type AccessApplicationScimConfigMappingArrayOutput struct{ *pulumi.OutputState }
+
+func (AccessApplicationScimConfigMappingArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AccessApplicationScimConfigMapping)(nil)).Elem()
+}
+
+func (o AccessApplicationScimConfigMappingArrayOutput) ToAccessApplicationScimConfigMappingArrayOutput() AccessApplicationScimConfigMappingArrayOutput {
+	return o
+}
+
+func (o AccessApplicationScimConfigMappingArrayOutput) ToAccessApplicationScimConfigMappingArrayOutputWithContext(ctx context.Context) AccessApplicationScimConfigMappingArrayOutput {
+	return o
+}
+
+func (o AccessApplicationScimConfigMappingArrayOutput) Index(i pulumi.IntInput) AccessApplicationScimConfigMappingOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AccessApplicationScimConfigMapping {
+		return vs[0].([]AccessApplicationScimConfigMapping)[vs[1].(int)]
+	}).(AccessApplicationScimConfigMappingOutput)
+}
+
+type AccessApplicationScimConfigMappingOperations struct {
+	// Whether or not this mapping applies to create (POST) operations.
+	Create *bool `pulumi:"create"`
+	// Whether or not this mapping applies to DELETE operations.
+	Delete *bool `pulumi:"delete"`
+	// Whether or not this mapping applies to update (PATCH/PUT) operations.
+	Update *bool `pulumi:"update"`
+}
+
+// AccessApplicationScimConfigMappingOperationsInput is an input type that accepts AccessApplicationScimConfigMappingOperationsArgs and AccessApplicationScimConfigMappingOperationsOutput values.
+// You can construct a concrete instance of `AccessApplicationScimConfigMappingOperationsInput` via:
+//
+//	AccessApplicationScimConfigMappingOperationsArgs{...}
+type AccessApplicationScimConfigMappingOperationsInput interface {
+	pulumi.Input
+
+	ToAccessApplicationScimConfigMappingOperationsOutput() AccessApplicationScimConfigMappingOperationsOutput
+	ToAccessApplicationScimConfigMappingOperationsOutputWithContext(context.Context) AccessApplicationScimConfigMappingOperationsOutput
+}
+
+type AccessApplicationScimConfigMappingOperationsArgs struct {
+	// Whether or not this mapping applies to create (POST) operations.
+	Create pulumi.BoolPtrInput `pulumi:"create"`
+	// Whether or not this mapping applies to DELETE operations.
+	Delete pulumi.BoolPtrInput `pulumi:"delete"`
+	// Whether or not this mapping applies to update (PATCH/PUT) operations.
+	Update pulumi.BoolPtrInput `pulumi:"update"`
+}
+
+func (AccessApplicationScimConfigMappingOperationsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessApplicationScimConfigMappingOperations)(nil)).Elem()
+}
+
+func (i AccessApplicationScimConfigMappingOperationsArgs) ToAccessApplicationScimConfigMappingOperationsOutput() AccessApplicationScimConfigMappingOperationsOutput {
+	return i.ToAccessApplicationScimConfigMappingOperationsOutputWithContext(context.Background())
+}
+
+func (i AccessApplicationScimConfigMappingOperationsArgs) ToAccessApplicationScimConfigMappingOperationsOutputWithContext(ctx context.Context) AccessApplicationScimConfigMappingOperationsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessApplicationScimConfigMappingOperationsOutput)
+}
+
+func (i AccessApplicationScimConfigMappingOperationsArgs) ToAccessApplicationScimConfigMappingOperationsPtrOutput() AccessApplicationScimConfigMappingOperationsPtrOutput {
+	return i.ToAccessApplicationScimConfigMappingOperationsPtrOutputWithContext(context.Background())
+}
+
+func (i AccessApplicationScimConfigMappingOperationsArgs) ToAccessApplicationScimConfigMappingOperationsPtrOutputWithContext(ctx context.Context) AccessApplicationScimConfigMappingOperationsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessApplicationScimConfigMappingOperationsOutput).ToAccessApplicationScimConfigMappingOperationsPtrOutputWithContext(ctx)
+}
+
+// AccessApplicationScimConfigMappingOperationsPtrInput is an input type that accepts AccessApplicationScimConfigMappingOperationsArgs, AccessApplicationScimConfigMappingOperationsPtr and AccessApplicationScimConfigMappingOperationsPtrOutput values.
+// You can construct a concrete instance of `AccessApplicationScimConfigMappingOperationsPtrInput` via:
+//
+//	        AccessApplicationScimConfigMappingOperationsArgs{...}
+//
+//	or:
+//
+//	        nil
+type AccessApplicationScimConfigMappingOperationsPtrInput interface {
+	pulumi.Input
+
+	ToAccessApplicationScimConfigMappingOperationsPtrOutput() AccessApplicationScimConfigMappingOperationsPtrOutput
+	ToAccessApplicationScimConfigMappingOperationsPtrOutputWithContext(context.Context) AccessApplicationScimConfigMappingOperationsPtrOutput
+}
+
+type accessApplicationScimConfigMappingOperationsPtrType AccessApplicationScimConfigMappingOperationsArgs
+
+func AccessApplicationScimConfigMappingOperationsPtr(v *AccessApplicationScimConfigMappingOperationsArgs) AccessApplicationScimConfigMappingOperationsPtrInput {
+	return (*accessApplicationScimConfigMappingOperationsPtrType)(v)
+}
+
+func (*accessApplicationScimConfigMappingOperationsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AccessApplicationScimConfigMappingOperations)(nil)).Elem()
+}
+
+func (i *accessApplicationScimConfigMappingOperationsPtrType) ToAccessApplicationScimConfigMappingOperationsPtrOutput() AccessApplicationScimConfigMappingOperationsPtrOutput {
+	return i.ToAccessApplicationScimConfigMappingOperationsPtrOutputWithContext(context.Background())
+}
+
+func (i *accessApplicationScimConfigMappingOperationsPtrType) ToAccessApplicationScimConfigMappingOperationsPtrOutputWithContext(ctx context.Context) AccessApplicationScimConfigMappingOperationsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessApplicationScimConfigMappingOperationsPtrOutput)
+}
+
+type AccessApplicationScimConfigMappingOperationsOutput struct{ *pulumi.OutputState }
+
+func (AccessApplicationScimConfigMappingOperationsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessApplicationScimConfigMappingOperations)(nil)).Elem()
+}
+
+func (o AccessApplicationScimConfigMappingOperationsOutput) ToAccessApplicationScimConfigMappingOperationsOutput() AccessApplicationScimConfigMappingOperationsOutput {
+	return o
+}
+
+func (o AccessApplicationScimConfigMappingOperationsOutput) ToAccessApplicationScimConfigMappingOperationsOutputWithContext(ctx context.Context) AccessApplicationScimConfigMappingOperationsOutput {
+	return o
+}
+
+func (o AccessApplicationScimConfigMappingOperationsOutput) ToAccessApplicationScimConfigMappingOperationsPtrOutput() AccessApplicationScimConfigMappingOperationsPtrOutput {
+	return o.ToAccessApplicationScimConfigMappingOperationsPtrOutputWithContext(context.Background())
+}
+
+func (o AccessApplicationScimConfigMappingOperationsOutput) ToAccessApplicationScimConfigMappingOperationsPtrOutputWithContext(ctx context.Context) AccessApplicationScimConfigMappingOperationsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AccessApplicationScimConfigMappingOperations) *AccessApplicationScimConfigMappingOperations {
+		return &v
+	}).(AccessApplicationScimConfigMappingOperationsPtrOutput)
+}
+
+// Whether or not this mapping applies to create (POST) operations.
+func (o AccessApplicationScimConfigMappingOperationsOutput) Create() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AccessApplicationScimConfigMappingOperations) *bool { return v.Create }).(pulumi.BoolPtrOutput)
+}
+
+// Whether or not this mapping applies to DELETE operations.
+func (o AccessApplicationScimConfigMappingOperationsOutput) Delete() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AccessApplicationScimConfigMappingOperations) *bool { return v.Delete }).(pulumi.BoolPtrOutput)
+}
+
+// Whether or not this mapping applies to update (PATCH/PUT) operations.
+func (o AccessApplicationScimConfigMappingOperationsOutput) Update() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AccessApplicationScimConfigMappingOperations) *bool { return v.Update }).(pulumi.BoolPtrOutput)
+}
+
+type AccessApplicationScimConfigMappingOperationsPtrOutput struct{ *pulumi.OutputState }
+
+func (AccessApplicationScimConfigMappingOperationsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AccessApplicationScimConfigMappingOperations)(nil)).Elem()
+}
+
+func (o AccessApplicationScimConfigMappingOperationsPtrOutput) ToAccessApplicationScimConfigMappingOperationsPtrOutput() AccessApplicationScimConfigMappingOperationsPtrOutput {
+	return o
+}
+
+func (o AccessApplicationScimConfigMappingOperationsPtrOutput) ToAccessApplicationScimConfigMappingOperationsPtrOutputWithContext(ctx context.Context) AccessApplicationScimConfigMappingOperationsPtrOutput {
+	return o
+}
+
+func (o AccessApplicationScimConfigMappingOperationsPtrOutput) Elem() AccessApplicationScimConfigMappingOperationsOutput {
+	return o.ApplyT(func(v *AccessApplicationScimConfigMappingOperations) AccessApplicationScimConfigMappingOperations {
+		if v != nil {
+			return *v
+		}
+		var ret AccessApplicationScimConfigMappingOperations
+		return ret
+	}).(AccessApplicationScimConfigMappingOperationsOutput)
+}
+
+// Whether or not this mapping applies to create (POST) operations.
+func (o AccessApplicationScimConfigMappingOperationsPtrOutput) Create() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AccessApplicationScimConfigMappingOperations) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Create
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Whether or not this mapping applies to DELETE operations.
+func (o AccessApplicationScimConfigMappingOperationsPtrOutput) Delete() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AccessApplicationScimConfigMappingOperations) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Delete
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Whether or not this mapping applies to update (PATCH/PUT) operations.
+func (o AccessApplicationScimConfigMappingOperationsPtrOutput) Update() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AccessApplicationScimConfigMappingOperations) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Update
+	}).(pulumi.BoolPtrOutput)
+}
+
 type AccessGroupExclude struct {
 	AnyValidServiceToken *bool                           `pulumi:"anyValidServiceToken"`
 	AuthContexts         []AccessGroupExcludeAuthContext `pulumi:"authContexts"`
@@ -1143,6 +1976,7 @@ type AccessGroupExclude struct {
 	CommonNames        []string                              `pulumi:"commonNames"`
 	DevicePostures     []string                              `pulumi:"devicePostures"`
 	EmailDomains       []string                              `pulumi:"emailDomains"`
+	EmailLists         []string                              `pulumi:"emailLists"`
 	Emails             []string                              `pulumi:"emails"`
 	Everyone           *bool                                 `pulumi:"everyone"`
 	ExternalEvaluation *AccessGroupExcludeExternalEvaluation `pulumi:"externalEvaluation"`
@@ -1182,6 +2016,7 @@ type AccessGroupExcludeArgs struct {
 	CommonNames        pulumi.StringArrayInput                      `pulumi:"commonNames"`
 	DevicePostures     pulumi.StringArrayInput                      `pulumi:"devicePostures"`
 	EmailDomains       pulumi.StringArrayInput                      `pulumi:"emailDomains"`
+	EmailLists         pulumi.StringArrayInput                      `pulumi:"emailLists"`
 	Emails             pulumi.StringArrayInput                      `pulumi:"emails"`
 	Everyone           pulumi.BoolPtrInput                          `pulumi:"everyone"`
 	ExternalEvaluation AccessGroupExcludeExternalEvaluationPtrInput `pulumi:"externalEvaluation"`
@@ -1285,6 +2120,10 @@ func (o AccessGroupExcludeOutput) DevicePostures() pulumi.StringArrayOutput {
 
 func (o AccessGroupExcludeOutput) EmailDomains() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AccessGroupExclude) []string { return v.EmailDomains }).(pulumi.StringArrayOutput)
+}
+
+func (o AccessGroupExcludeOutput) EmailLists() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AccessGroupExclude) []string { return v.EmailLists }).(pulumi.StringArrayOutput)
 }
 
 func (o AccessGroupExcludeOutput) Emails() pulumi.StringArrayOutput {
@@ -2153,6 +2992,7 @@ type AccessGroupInclude struct {
 	CommonNames        []string                              `pulumi:"commonNames"`
 	DevicePostures     []string                              `pulumi:"devicePostures"`
 	EmailDomains       []string                              `pulumi:"emailDomains"`
+	EmailLists         []string                              `pulumi:"emailLists"`
 	Emails             []string                              `pulumi:"emails"`
 	Everyone           *bool                                 `pulumi:"everyone"`
 	ExternalEvaluation *AccessGroupIncludeExternalEvaluation `pulumi:"externalEvaluation"`
@@ -2192,6 +3032,7 @@ type AccessGroupIncludeArgs struct {
 	CommonNames        pulumi.StringArrayInput                      `pulumi:"commonNames"`
 	DevicePostures     pulumi.StringArrayInput                      `pulumi:"devicePostures"`
 	EmailDomains       pulumi.StringArrayInput                      `pulumi:"emailDomains"`
+	EmailLists         pulumi.StringArrayInput                      `pulumi:"emailLists"`
 	Emails             pulumi.StringArrayInput                      `pulumi:"emails"`
 	Everyone           pulumi.BoolPtrInput                          `pulumi:"everyone"`
 	ExternalEvaluation AccessGroupIncludeExternalEvaluationPtrInput `pulumi:"externalEvaluation"`
@@ -2295,6 +3136,10 @@ func (o AccessGroupIncludeOutput) DevicePostures() pulumi.StringArrayOutput {
 
 func (o AccessGroupIncludeOutput) EmailDomains() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AccessGroupInclude) []string { return v.EmailDomains }).(pulumi.StringArrayOutput)
+}
+
+func (o AccessGroupIncludeOutput) EmailLists() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AccessGroupInclude) []string { return v.EmailLists }).(pulumi.StringArrayOutput)
 }
 
 func (o AccessGroupIncludeOutput) Emails() pulumi.StringArrayOutput {
@@ -3163,6 +4008,7 @@ type AccessGroupRequire struct {
 	CommonNames        []string                              `pulumi:"commonNames"`
 	DevicePostures     []string                              `pulumi:"devicePostures"`
 	EmailDomains       []string                              `pulumi:"emailDomains"`
+	EmailLists         []string                              `pulumi:"emailLists"`
 	Emails             []string                              `pulumi:"emails"`
 	Everyone           *bool                                 `pulumi:"everyone"`
 	ExternalEvaluation *AccessGroupRequireExternalEvaluation `pulumi:"externalEvaluation"`
@@ -3202,6 +4048,7 @@ type AccessGroupRequireArgs struct {
 	CommonNames        pulumi.StringArrayInput                      `pulumi:"commonNames"`
 	DevicePostures     pulumi.StringArrayInput                      `pulumi:"devicePostures"`
 	EmailDomains       pulumi.StringArrayInput                      `pulumi:"emailDomains"`
+	EmailLists         pulumi.StringArrayInput                      `pulumi:"emailLists"`
 	Emails             pulumi.StringArrayInput                      `pulumi:"emails"`
 	Everyone           pulumi.BoolPtrInput                          `pulumi:"everyone"`
 	ExternalEvaluation AccessGroupRequireExternalEvaluationPtrInput `pulumi:"externalEvaluation"`
@@ -3305,6 +4152,10 @@ func (o AccessGroupRequireOutput) DevicePostures() pulumi.StringArrayOutput {
 
 func (o AccessGroupRequireOutput) EmailDomains() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AccessGroupRequire) []string { return v.EmailDomains }).(pulumi.StringArrayOutput)
+}
+
+func (o AccessGroupRequireOutput) EmailLists() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AccessGroupRequire) []string { return v.EmailLists }).(pulumi.StringArrayOutput)
 }
 
 func (o AccessGroupRequireOutput) Emails() pulumi.StringArrayOutput {
@@ -5007,6 +5858,7 @@ type AccessPolicyExclude struct {
 	CommonNames        []string                               `pulumi:"commonNames"`
 	DevicePostures     []string                               `pulumi:"devicePostures"`
 	EmailDomains       []string                               `pulumi:"emailDomains"`
+	EmailLists         []string                               `pulumi:"emailLists"`
 	Emails             []string                               `pulumi:"emails"`
 	Everyone           *bool                                  `pulumi:"everyone"`
 	ExternalEvaluation *AccessPolicyExcludeExternalEvaluation `pulumi:"externalEvaluation"`
@@ -5046,6 +5898,7 @@ type AccessPolicyExcludeArgs struct {
 	CommonNames        pulumi.StringArrayInput                       `pulumi:"commonNames"`
 	DevicePostures     pulumi.StringArrayInput                       `pulumi:"devicePostures"`
 	EmailDomains       pulumi.StringArrayInput                       `pulumi:"emailDomains"`
+	EmailLists         pulumi.StringArrayInput                       `pulumi:"emailLists"`
 	Emails             pulumi.StringArrayInput                       `pulumi:"emails"`
 	Everyone           pulumi.BoolPtrInput                           `pulumi:"everyone"`
 	ExternalEvaluation AccessPolicyExcludeExternalEvaluationPtrInput `pulumi:"externalEvaluation"`
@@ -5149,6 +6002,10 @@ func (o AccessPolicyExcludeOutput) DevicePostures() pulumi.StringArrayOutput {
 
 func (o AccessPolicyExcludeOutput) EmailDomains() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AccessPolicyExclude) []string { return v.EmailDomains }).(pulumi.StringArrayOutput)
+}
+
+func (o AccessPolicyExcludeOutput) EmailLists() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AccessPolicyExclude) []string { return v.EmailLists }).(pulumi.StringArrayOutput)
 }
 
 func (o AccessPolicyExcludeOutput) Emails() pulumi.StringArrayOutput {
@@ -6017,6 +6874,7 @@ type AccessPolicyInclude struct {
 	CommonNames        []string                               `pulumi:"commonNames"`
 	DevicePostures     []string                               `pulumi:"devicePostures"`
 	EmailDomains       []string                               `pulumi:"emailDomains"`
+	EmailLists         []string                               `pulumi:"emailLists"`
 	Emails             []string                               `pulumi:"emails"`
 	Everyone           *bool                                  `pulumi:"everyone"`
 	ExternalEvaluation *AccessPolicyIncludeExternalEvaluation `pulumi:"externalEvaluation"`
@@ -6056,6 +6914,7 @@ type AccessPolicyIncludeArgs struct {
 	CommonNames        pulumi.StringArrayInput                       `pulumi:"commonNames"`
 	DevicePostures     pulumi.StringArrayInput                       `pulumi:"devicePostures"`
 	EmailDomains       pulumi.StringArrayInput                       `pulumi:"emailDomains"`
+	EmailLists         pulumi.StringArrayInput                       `pulumi:"emailLists"`
 	Emails             pulumi.StringArrayInput                       `pulumi:"emails"`
 	Everyone           pulumi.BoolPtrInput                           `pulumi:"everyone"`
 	ExternalEvaluation AccessPolicyIncludeExternalEvaluationPtrInput `pulumi:"externalEvaluation"`
@@ -6159,6 +7018,10 @@ func (o AccessPolicyIncludeOutput) DevicePostures() pulumi.StringArrayOutput {
 
 func (o AccessPolicyIncludeOutput) EmailDomains() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AccessPolicyInclude) []string { return v.EmailDomains }).(pulumi.StringArrayOutput)
+}
+
+func (o AccessPolicyIncludeOutput) EmailLists() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AccessPolicyInclude) []string { return v.EmailLists }).(pulumi.StringArrayOutput)
 }
 
 func (o AccessPolicyIncludeOutput) Emails() pulumi.StringArrayOutput {
@@ -7027,6 +7890,7 @@ type AccessPolicyRequire struct {
 	CommonNames        []string                               `pulumi:"commonNames"`
 	DevicePostures     []string                               `pulumi:"devicePostures"`
 	EmailDomains       []string                               `pulumi:"emailDomains"`
+	EmailLists         []string                               `pulumi:"emailLists"`
 	Emails             []string                               `pulumi:"emails"`
 	Everyone           *bool                                  `pulumi:"everyone"`
 	ExternalEvaluation *AccessPolicyRequireExternalEvaluation `pulumi:"externalEvaluation"`
@@ -7066,6 +7930,7 @@ type AccessPolicyRequireArgs struct {
 	CommonNames        pulumi.StringArrayInput                       `pulumi:"commonNames"`
 	DevicePostures     pulumi.StringArrayInput                       `pulumi:"devicePostures"`
 	EmailDomains       pulumi.StringArrayInput                       `pulumi:"emailDomains"`
+	EmailLists         pulumi.StringArrayInput                       `pulumi:"emailLists"`
 	Emails             pulumi.StringArrayInput                       `pulumi:"emails"`
 	Everyone           pulumi.BoolPtrInput                           `pulumi:"everyone"`
 	ExternalEvaluation AccessPolicyRequireExternalEvaluationPtrInput `pulumi:"externalEvaluation"`
@@ -7169,6 +8034,10 @@ func (o AccessPolicyRequireOutput) DevicePostures() pulumi.StringArrayOutput {
 
 func (o AccessPolicyRequireOutput) EmailDomains() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AccessPolicyRequire) []string { return v.EmailDomains }).(pulumi.StringArrayOutput)
+}
+
+func (o AccessPolicyRequireOutput) EmailLists() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AccessPolicyRequire) []string { return v.EmailLists }).(pulumi.StringArrayOutput)
 }
 
 func (o AccessPolicyRequireOutput) Emails() pulumi.StringArrayOutput {
@@ -10514,6 +11383,8 @@ type DevicePostureRuleInputType struct {
 	OsDistroName *string `pulumi:"osDistroName"`
 	// The operating system version excluding OS name information or release name.
 	OsDistroRevision *string `pulumi:"osDistroRevision"`
+	// Extra operating system version details following the semantic version value.
+	OsVersionExtra *string `pulumi:"osVersionExtra"`
 	// Overall ZTA score from Crowdstrike. Value must be between 1 and 100.
 	Overall *string `pulumi:"overall"`
 	// The path to the file.
@@ -10594,6 +11465,8 @@ type DevicePostureRuleInputTypeArgs struct {
 	OsDistroName pulumi.StringPtrInput `pulumi:"osDistroName"`
 	// The operating system version excluding OS name information or release name.
 	OsDistroRevision pulumi.StringPtrInput `pulumi:"osDistroRevision"`
+	// Extra operating system version details following the semantic version value.
+	OsVersionExtra pulumi.StringPtrInput `pulumi:"osVersionExtra"`
 	// Overall ZTA score from Crowdstrike. Value must be between 1 and 100.
 	Overall pulumi.StringPtrInput `pulumi:"overall"`
 	// The path to the file.
@@ -10774,6 +11647,11 @@ func (o DevicePostureRuleInputTypeOutput) OsDistroName() pulumi.StringPtrOutput 
 // The operating system version excluding OS name information or release name.
 func (o DevicePostureRuleInputTypeOutput) OsDistroRevision() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DevicePostureRuleInputType) *string { return v.OsDistroRevision }).(pulumi.StringPtrOutput)
+}
+
+// Extra operating system version details following the semantic version value.
+func (o DevicePostureRuleInputTypeOutput) OsVersionExtra() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DevicePostureRuleInputType) *string { return v.OsVersionExtra }).(pulumi.StringPtrOutput)
 }
 
 // Overall ZTA score from Crowdstrike. Value must be between 1 and 100.
@@ -41725,6 +42603,8 @@ type GetDevicesDevice struct {
 	OsDistroRevision *string `pulumi:"osDistroRevision"`
 	// The operating system version.
 	OsVersion *string `pulumi:"osVersion"`
+	// Extra version value following the operating system version.
+	OsVersionExtra *string `pulumi:"osVersionExtra"`
 	// When the device was revoked.
 	RevokedAt *string `pulumi:"revokedAt"`
 	// The device's serial number.
@@ -41781,6 +42661,8 @@ type GetDevicesDeviceArgs struct {
 	OsDistroRevision pulumi.StringPtrInput `pulumi:"osDistroRevision"`
 	// The operating system version.
 	OsVersion pulumi.StringPtrInput `pulumi:"osVersion"`
+	// Extra version value following the operating system version.
+	OsVersionExtra pulumi.StringPtrInput `pulumi:"osVersionExtra"`
 	// When the device was revoked.
 	RevokedAt pulumi.StringPtrInput `pulumi:"revokedAt"`
 	// The device's serial number.
@@ -41916,6 +42798,11 @@ func (o GetDevicesDeviceOutput) OsDistroRevision() pulumi.StringPtrOutput {
 // The operating system version.
 func (o GetDevicesDeviceOutput) OsVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetDevicesDevice) *string { return v.OsVersion }).(pulumi.StringPtrOutput)
+}
+
+// Extra version value following the operating system version.
+func (o GetDevicesDeviceOutput) OsVersionExtra() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetDevicesDevice) *string { return v.OsVersionExtra }).(pulumi.StringPtrOutput)
 }
 
 // When the device was revoked.
@@ -49594,6 +50481,14 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessApplicationSaasAppCustomAttributeInput)(nil)).Elem(), AccessApplicationSaasAppCustomAttributeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessApplicationSaasAppCustomAttributeArrayInput)(nil)).Elem(), AccessApplicationSaasAppCustomAttributeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessApplicationSaasAppCustomAttributeSourceInput)(nil)).Elem(), AccessApplicationSaasAppCustomAttributeSourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessApplicationScimConfigInput)(nil)).Elem(), AccessApplicationScimConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessApplicationScimConfigPtrInput)(nil)).Elem(), AccessApplicationScimConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessApplicationScimConfigAuthenticationInput)(nil)).Elem(), AccessApplicationScimConfigAuthenticationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessApplicationScimConfigAuthenticationPtrInput)(nil)).Elem(), AccessApplicationScimConfigAuthenticationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessApplicationScimConfigMappingInput)(nil)).Elem(), AccessApplicationScimConfigMappingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessApplicationScimConfigMappingArrayInput)(nil)).Elem(), AccessApplicationScimConfigMappingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessApplicationScimConfigMappingOperationsInput)(nil)).Elem(), AccessApplicationScimConfigMappingOperationsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessApplicationScimConfigMappingOperationsPtrInput)(nil)).Elem(), AccessApplicationScimConfigMappingOperationsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessGroupExcludeInput)(nil)).Elem(), AccessGroupExcludeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessGroupExcludeArrayInput)(nil)).Elem(), AccessGroupExcludeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessGroupExcludeAuthContextInput)(nil)).Elem(), AccessGroupExcludeAuthContextArgs{})
@@ -50187,6 +51082,14 @@ func init() {
 	pulumi.RegisterOutputType(AccessApplicationSaasAppCustomAttributeOutput{})
 	pulumi.RegisterOutputType(AccessApplicationSaasAppCustomAttributeArrayOutput{})
 	pulumi.RegisterOutputType(AccessApplicationSaasAppCustomAttributeSourceOutput{})
+	pulumi.RegisterOutputType(AccessApplicationScimConfigOutput{})
+	pulumi.RegisterOutputType(AccessApplicationScimConfigPtrOutput{})
+	pulumi.RegisterOutputType(AccessApplicationScimConfigAuthenticationOutput{})
+	pulumi.RegisterOutputType(AccessApplicationScimConfigAuthenticationPtrOutput{})
+	pulumi.RegisterOutputType(AccessApplicationScimConfigMappingOutput{})
+	pulumi.RegisterOutputType(AccessApplicationScimConfigMappingArrayOutput{})
+	pulumi.RegisterOutputType(AccessApplicationScimConfigMappingOperationsOutput{})
+	pulumi.RegisterOutputType(AccessApplicationScimConfigMappingOperationsPtrOutput{})
 	pulumi.RegisterOutputType(AccessGroupExcludeOutput{})
 	pulumi.RegisterOutputType(AccessGroupExcludeArrayOutput{})
 	pulumi.RegisterOutputType(AccessGroupExcludeAuthContextOutput{})

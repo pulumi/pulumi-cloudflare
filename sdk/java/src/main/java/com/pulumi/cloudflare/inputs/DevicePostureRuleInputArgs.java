@@ -334,6 +334,21 @@ public final class DevicePostureRuleInputArgs extends com.pulumi.resources.Resou
     }
 
     /**
+     * Extra operating system version details following the semantic version value.
+     * 
+     */
+    @Import(name="osVersionExtra")
+    private @Nullable Output<String> osVersionExtra;
+
+    /**
+     * @return Extra operating system version details following the semantic version value.
+     * 
+     */
+    public Optional<Output<String>> osVersionExtra() {
+        return Optional.ofNullable(this.osVersionExtra);
+    }
+
+    /**
      * Overall ZTA score from Crowdstrike. Value must be between 1 and 100.
      * 
      */
@@ -537,6 +552,7 @@ public final class DevicePostureRuleInputArgs extends com.pulumi.resources.Resou
         this.os = $.os;
         this.osDistroName = $.osDistroName;
         this.osDistroRevision = $.osDistroRevision;
+        this.osVersionExtra = $.osVersionExtra;
         this.overall = $.overall;
         this.path = $.path;
         this.requireAll = $.requireAll;
@@ -1018,6 +1034,27 @@ public final class DevicePostureRuleInputArgs extends com.pulumi.resources.Resou
          */
         public Builder osDistroRevision(String osDistroRevision) {
             return osDistroRevision(Output.of(osDistroRevision));
+        }
+
+        /**
+         * @param osVersionExtra Extra operating system version details following the semantic version value.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder osVersionExtra(@Nullable Output<String> osVersionExtra) {
+            $.osVersionExtra = osVersionExtra;
+            return this;
+        }
+
+        /**
+         * @param osVersionExtra Extra operating system version details following the semantic version value.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder osVersionExtra(String osVersionExtra) {
+            return osVersionExtra(Output.of(osVersionExtra));
         }
 
         /**
