@@ -60,9 +60,6 @@ namespace Pulumi.Cloudflare
         [Output("expiresAt")]
         public Output<string> ExpiresAt { get; private set; } = null!;
 
-        /// <summary>
-        /// Refresh the token if terraform is run within the specified amount of days before expiration.
-        /// </summary>
         [Output("minDaysForRenewal")]
         public Output<int?> MinDaysForRenewal { get; private set; } = null!;
 
@@ -140,9 +137,6 @@ namespace Pulumi.Cloudflare
         [Input("duration")]
         public Input<string>? Duration { get; set; }
 
-        /// <summary>
-        /// Refresh the token if terraform is run within the specified amount of days before expiration.
-        /// </summary>
         [Input("minDaysForRenewal")]
         public Input<int>? MinDaysForRenewal { get; set; }
 
@@ -206,9 +200,6 @@ namespace Pulumi.Cloudflare
         [Input("expiresAt")]
         public Input<string>? ExpiresAt { get; set; }
 
-        /// <summary>
-        /// Refresh the token if terraform is run within the specified amount of days before expiration.
-        /// </summary>
         [Input("minDaysForRenewal")]
         public Input<int>? MinDaysForRenewal { get; set; }
 

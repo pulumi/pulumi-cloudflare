@@ -92,9 +92,6 @@ namespace Pulumi.Cloudflare
         [Output("hostnames")]
         public Output<ImmutableArray<string>> Hostnames { get; private set; } = null!;
 
-        /// <summary>
-        /// Number of days prior to the expiry to trigger a renewal of the certificate if a Terraform operation is run.
-        /// </summary>
         [Output("minDaysForRenewal")]
         public Output<int?> MinDaysForRenewal { get; private set; } = null!;
 
@@ -174,9 +171,6 @@ namespace Pulumi.Cloudflare
             set => _hostnames = value;
         }
 
-        /// <summary>
-        /// Number of days prior to the expiry to trigger a renewal of the certificate if a Terraform operation is run.
-        /// </summary>
         [Input("minDaysForRenewal")]
         public Input<int>? MinDaysForRenewal { get; set; }
 
@@ -230,9 +224,6 @@ namespace Pulumi.Cloudflare
             set => _hostnames = value;
         }
 
-        /// <summary>
-        /// Number of days prior to the expiry to trigger a renewal of the certificate if a Terraform operation is run.
-        /// </summary>
         [Input("minDaysForRenewal")]
         public Input<int>? MinDaysForRenewal { get; set; }
 

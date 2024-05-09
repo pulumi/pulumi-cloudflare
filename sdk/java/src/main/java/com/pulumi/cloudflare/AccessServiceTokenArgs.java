@@ -47,17 +47,9 @@ public final class AccessServiceTokenArgs extends com.pulumi.resources.ResourceA
         return Optional.ofNullable(this.duration);
     }
 
-    /**
-     * Refresh the token if terraform is run within the specified amount of days before expiration.
-     * 
-     */
     @Import(name="minDaysForRenewal")
     private @Nullable Output<Integer> minDaysForRenewal;
 
-    /**
-     * @return Refresh the token if terraform is run within the specified amount of days before expiration.
-     * 
-     */
     public Optional<Output<Integer>> minDaysForRenewal() {
         return Optional.ofNullable(this.minDaysForRenewal);
     }
@@ -162,23 +154,11 @@ public final class AccessServiceTokenArgs extends com.pulumi.resources.ResourceA
             return duration(Output.of(duration));
         }
 
-        /**
-         * @param minDaysForRenewal Refresh the token if terraform is run within the specified amount of days before expiration.
-         * 
-         * @return builder
-         * 
-         */
         public Builder minDaysForRenewal(@Nullable Output<Integer> minDaysForRenewal) {
             $.minDaysForRenewal = minDaysForRenewal;
             return this;
         }
 
-        /**
-         * @param minDaysForRenewal Refresh the token if terraform is run within the specified amount of days before expiration.
-         * 
-         * @return builder
-         * 
-         */
         public Builder minDaysForRenewal(Integer minDaysForRenewal) {
             return minDaysForRenewal(Output.of(minDaysForRenewal));
         }

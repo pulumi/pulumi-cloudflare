@@ -70,9 +70,6 @@ export class AccessServiceToken extends pulumi.CustomResource {
      * Date when the token expires.
      */
     public /*out*/ readonly expiresAt!: pulumi.Output<string>;
-    /**
-     * Refresh the token if terraform is run within the specified amount of days before expiration.
-     */
     public readonly minDaysForRenewal!: pulumi.Output<number | undefined>;
     /**
      * Friendly name of the token's intent.
@@ -149,9 +146,6 @@ export interface AccessServiceTokenState {
      * Date when the token expires.
      */
     expiresAt?: pulumi.Input<string>;
-    /**
-     * Refresh the token if terraform is run within the specified amount of days before expiration.
-     */
     minDaysForRenewal?: pulumi.Input<number>;
     /**
      * Friendly name of the token's intent.
@@ -175,9 +169,6 @@ export interface AccessServiceTokenArgs {
      * Length of time the service token is valid for. Available values: `8760h`, `17520h`, `43800h`, `87600h`, `forever`.
      */
     duration?: pulumi.Input<string>;
-    /**
-     * Refresh the token if terraform is run within the specified amount of days before expiration.
-     */
     minDaysForRenewal?: pulumi.Input<number>;
     /**
      * Friendly name of the token's intent.
