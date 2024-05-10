@@ -22,7 +22,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -45,24 +46,25 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // Add a page rule to the domain
- *         var foobar = new PageRule(&#34;foobar&#34;, PageRuleArgs.builder()        
+ *         var foobar = new PageRule("foobar", PageRuleArgs.builder()        
  *             .zoneId(cloudflareZoneId)
- *             .target(String.format(&#34;sub.%s/page&#34;, cloudflareZone))
+ *             .target(String.format("sub.%s/page", cloudflareZone))
  *             .priority(1)
  *             .actions(PageRuleActionsArgs.builder()
- *                 .ssl(&#34;flexible&#34;)
- *                 .emailObfuscation(&#34;on&#34;)
+ *                 .ssl("flexible")
+ *                 .emailObfuscation("on")
  *                 .minifies(PageRuleActionsMinifyArgs.builder()
- *                     .html(&#34;off&#34;)
- *                     .css(&#34;on&#34;)
- *                     .js(&#34;on&#34;)
+ *                     .html("off")
+ *                     .css("on")
+ *                     .js("on")
  *                     .build())
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

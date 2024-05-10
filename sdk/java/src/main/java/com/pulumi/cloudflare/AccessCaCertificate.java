@@ -27,7 +27,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -49,20 +50,21 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // account level
- *         var example = new AccessCaCertificate(&#34;example&#34;, AccessCaCertificateArgs.builder()        
- *             .accountId(&#34;f037e56e89293a057740de681ac9abbe&#34;)
- *             .applicationId(&#34;6cd6cea3-3ef2-4542-9aea-85a0bbcd5414&#34;)
+ *         var example = new AccessCaCertificate("example", AccessCaCertificateArgs.builder()        
+ *             .accountId("f037e56e89293a057740de681ac9abbe")
+ *             .applicationId("6cd6cea3-3ef2-4542-9aea-85a0bbcd5414")
  *             .build());
  * 
  *         // zone level
- *         var anotherExample = new AccessCaCertificate(&#34;anotherExample&#34;, AccessCaCertificateArgs.builder()        
- *             .zoneId(&#34;0da42c8d2132a9ddaf714f9e7c920711&#34;)
- *             .applicationId(&#34;fe2be0ff-7f13-4350-8c8e-a9b9795fe3c2&#34;)
+ *         var anotherExample = new AccessCaCertificate("anotherExample", AccessCaCertificateArgs.builder()        
+ *             .zoneId("0da42c8d2132a9ddaf714f9e7c920711")
+ *             .applicationId("fe2be0ff-7f13-4350-8c8e-a9b9795fe3c2")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

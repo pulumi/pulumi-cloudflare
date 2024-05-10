@@ -21,7 +21,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -43,31 +44,32 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example1 = new UserAgentBlockingRule(&#34;example1&#34;, UserAgentBlockingRuleArgs.builder()        
- *             .zoneId(&#34;0da42c8d2132a9ddaf714f9e7c920711&#34;)
- *             .mode(&#34;js_challenge&#34;)
+ *         var example1 = new UserAgentBlockingRule("example1", UserAgentBlockingRuleArgs.builder()        
+ *             .zoneId("0da42c8d2132a9ddaf714f9e7c920711")
+ *             .mode("js_challenge")
  *             .paused(false)
- *             .description(&#34;My description 1&#34;)
+ *             .description("My description 1")
  *             .configuration(UserAgentBlockingRuleConfigurationArgs.builder()
- *                 .target(&#34;ua&#34;)
- *                 .value(&#34;Chrome&#34;)
+ *                 .target("ua")
+ *                 .value("Chrome")
  *                 .build())
  *             .build());
  * 
- *         var example2 = new UserAgentBlockingRule(&#34;example2&#34;, UserAgentBlockingRuleArgs.builder()        
- *             .zoneId(&#34;0da42c8d2132a9ddaf714f9e7c920711&#34;)
- *             .mode(&#34;challenge&#34;)
+ *         var example2 = new UserAgentBlockingRule("example2", UserAgentBlockingRuleArgs.builder()        
+ *             .zoneId("0da42c8d2132a9ddaf714f9e7c920711")
+ *             .mode("challenge")
  *             .paused(true)
- *             .description(&#34;My description 22&#34;)
+ *             .description("My description 22")
  *             .configuration(UserAgentBlockingRuleConfigurationArgs.builder()
- *                 .target(&#34;ua&#34;)
- *                 .value(&#34;Mozilla&#34;)
+ *                 .target("ua")
+ *                 .value("Mozilla")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

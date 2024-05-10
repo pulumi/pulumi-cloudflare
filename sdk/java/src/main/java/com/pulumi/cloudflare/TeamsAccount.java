@@ -32,7 +32,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -65,18 +66,18 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new TeamsAccount(&#34;example&#34;, TeamsAccountArgs.builder()        
- *             .accountId(&#34;f037e56e89293a057740de681ac9abbe&#34;)
+ *         var example = new TeamsAccount("example", TeamsAccountArgs.builder()        
+ *             .accountId("f037e56e89293a057740de681ac9abbe")
  *             .tlsDecryptEnabled(true)
  *             .protocolDetectionEnabled(true)
  *             .blockPage(TeamsAccountBlockPageArgs.builder()
- *                 .footerText(&#34;hello&#34;)
- *                 .headerText(&#34;hello&#34;)
- *                 .logoPath(&#34;https://example.com/logo.jpg&#34;)
- *                 .backgroundColor(&#34;#000000&#34;)
+ *                 .footerText("hello")
+ *                 .headerText("hello")
+ *                 .logoPath("https://example.com/logo.jpg")
+ *                 .backgroundColor("#000000")
  *                 .build())
  *             .bodyScanning(TeamsAccountBodyScanningArgs.builder()
- *                 .inspectionMode(&#34;deep&#34;)
+ *                 .inspectionMode("deep")
  *                 .build())
  *             .antivirus(TeamsAccountAntivirusArgs.builder()
  *                 .enabledDownloadPhase(true)
@@ -84,8 +85,8 @@ import javax.annotation.Nullable;
  *                 .failClosed(true)
  *                 .notificationSettings(TeamsAccountAntivirusNotificationSettingsArgs.builder()
  *                     .enabled(true)
- *                     .message(&#34;you are blocked&#34;)
- *                     .supportUrl(&#34;https://example.com/blocked&#34;)
+ *                     .message("you are blocked")
+ *                     .supportUrl("https://example.com/blocked")
  *                     .build())
  *                 .build())
  *             .fips(TeamsAccountFipsArgs.builder()
@@ -121,7 +122,8 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

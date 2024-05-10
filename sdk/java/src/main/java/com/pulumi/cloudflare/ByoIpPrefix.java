@@ -20,7 +20,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -41,16 +42,17 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new ByoIpPrefix(&#34;example&#34;, ByoIpPrefixArgs.builder()        
- *             .accountId(&#34;f037e56e89293a057740de681ac9abbe&#34;)
- *             .prefixId(&#34;d41d8cd98f00b204e9800998ecf8427e&#34;)
- *             .description(&#34;Example IP Prefix&#34;)
- *             .advertisement(&#34;on&#34;)
+ *         var example = new ByoIpPrefix("example", ByoIpPrefixArgs.builder()        
+ *             .accountId("f037e56e89293a057740de681ac9abbe")
+ *             .prefixId("d41d8cd98f00b204e9800998ecf8427e")
+ *             .description("Example IP Prefix")
+ *             .advertisement("on")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

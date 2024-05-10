@@ -20,7 +20,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -43,24 +44,25 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new WorkersForPlatformsNamespace(&#34;example&#34;, WorkersForPlatformsNamespaceArgs.builder()        
- *             .accountId(&#34;f037e56e89293a057740de681ac9abbe&#34;)
- *             .name(&#34;example-namespace&#34;)
+ *         var example = new WorkersForPlatformsNamespace("example", WorkersForPlatformsNamespaceArgs.builder()        
+ *             .accountId("f037e56e89293a057740de681ac9abbe")
+ *             .name("example-namespace")
  *             .build());
  * 
- *         var customerWorker1 = new WorkerScript(&#34;customerWorker1&#34;, WorkerScriptArgs.builder()        
- *             .accountId(&#34;f037e56e89293a057740de681ac9abbe&#34;)
- *             .name(&#34;customer-worker-1&#34;)
+ *         var customerWorker1 = new WorkerScript("customerWorker1", WorkerScriptArgs.builder()        
+ *             .accountId("f037e56e89293a057740de681ac9abbe")
+ *             .name("customer-worker-1")
  *             .content(StdFunctions.file(FileArgs.builder()
- *                 .input(&#34;script.js&#34;)
+ *                 .input("script.js")
  *                 .build()).result())
  *             .dispatchNamespace(example.name())
- *             .tags(&#34;free&#34;)
+ *             .tags("free")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

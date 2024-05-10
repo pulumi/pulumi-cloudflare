@@ -24,7 +24,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -46,23 +47,24 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new TeamsRule(&#34;example&#34;, TeamsRuleArgs.builder()        
- *             .accountId(&#34;f037e56e89293a057740de681ac9abbe&#34;)
- *             .name(&#34;office&#34;)
- *             .description(&#34;desc&#34;)
+ *         var example = new TeamsRule("example", TeamsRuleArgs.builder()        
+ *             .accountId("f037e56e89293a057740de681ac9abbe")
+ *             .name("office")
+ *             .description("desc")
  *             .precedence(1)
- *             .action(&#34;block&#34;)
- *             .filters(&#34;http&#34;)
- *             .traffic(&#34;http.request.uri == \&#34;https://www.example.com/malicious\&#34;&#34;)
+ *             .action("block")
+ *             .filters("http")
+ *             .traffic("http.request.uri == \"https://www.example.com/malicious\"")
  *             .ruleSettings(TeamsRuleRuleSettingsArgs.builder()
  *                 .blockPageEnabled(true)
- *                 .blockPageReason(&#34;access not permitted&#34;)
+ *                 .blockPageReason("access not permitted")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

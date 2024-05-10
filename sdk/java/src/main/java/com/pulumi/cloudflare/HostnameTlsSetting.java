@@ -19,7 +19,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -40,16 +41,17 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new HostnameTlsSetting(&#34;example&#34;, HostnameTlsSettingArgs.builder()        
- *             .zoneId(&#34;0da42c8d2132a9ddaf714f9e7c920711&#34;)
- *             .hostname(&#34;sub.example.com&#34;)
- *             .setting(&#34;min_tls_version&#34;)
- *             .value(&#34;1.2&#34;)
+ *         var example = new HostnameTlsSetting("example", HostnameTlsSettingArgs.builder()        
+ *             .zoneId("0da42c8d2132a9ddaf714f9e7c920711")
+ *             .hostname("sub.example.com")
+ *             .setting("min_tls_version")
+ *             .value("1.2")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

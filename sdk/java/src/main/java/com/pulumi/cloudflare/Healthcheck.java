@@ -25,7 +25,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -48,28 +49,28 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // HTTPS Healthcheck
- *         var httpHealthCheck = new Healthcheck(&#34;httpHealthCheck&#34;, HealthcheckArgs.builder()        
+ *         var httpHealthCheck = new Healthcheck("httpHealthCheck", HealthcheckArgs.builder()        
  *             .zoneId(cloudflareZoneId)
- *             .name(&#34;http-health-check&#34;)
- *             .description(&#34;example http health check&#34;)
- *             .address(&#34;example.com&#34;)
+ *             .name("http-health-check")
+ *             .description("example http health check")
+ *             .address("example.com")
  *             .suspended(false)
  *             .checkRegions(            
- *                 &#34;WEU&#34;,
- *                 &#34;EEU&#34;)
- *             .type(&#34;HTTPS&#34;)
+ *                 "WEU",
+ *                 "EEU")
+ *             .type("HTTPS")
  *             .port(443)
- *             .method(&#34;GET&#34;)
- *             .path(&#34;/health&#34;)
- *             .expectedBody(&#34;alive&#34;)
+ *             .method("GET")
+ *             .path("/health")
+ *             .expectedBody("alive")
  *             .expectedCodes(            
- *                 &#34;2xx&#34;,
- *                 &#34;301&#34;)
+ *                 "2xx",
+ *                 "301")
  *             .followRedirects(true)
  *             .allowInsecure(false)
  *             .headers(HealthcheckHeaderArgs.builder()
- *                 .header(&#34;Host&#34;)
- *                 .values(&#34;example.com&#34;)
+ *                 .header("Host")
+ *                 .values("example.com")
  *                 .build())
  *             .timeout(10)
  *             .retries(2)
@@ -79,18 +80,18 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         // TCP Healthcheck
- *         var tcpHealthCheck = new Healthcheck(&#34;tcpHealthCheck&#34;, HealthcheckArgs.builder()        
+ *         var tcpHealthCheck = new Healthcheck("tcpHealthCheck", HealthcheckArgs.builder()        
  *             .zoneId(cloudflareZoneId)
- *             .name(&#34;tcp-health-check&#34;)
- *             .description(&#34;example tcp health check&#34;)
- *             .address(&#34;example.com&#34;)
+ *             .name("tcp-health-check")
+ *             .description("example tcp health check")
+ *             .address("example.com")
  *             .suspended(false)
  *             .checkRegions(            
- *                 &#34;WEU&#34;,
- *                 &#34;EEU&#34;)
- *             .type(&#34;TCP&#34;)
+ *                 "WEU",
+ *                 "EEU")
+ *             .type("TCP")
  *             .port(22)
- *             .method(&#34;connection_established&#34;)
+ *             .method("connection_established")
  *             .timeout(10)
  *             .retries(2)
  *             .interval(60)
@@ -100,7 +101,8 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

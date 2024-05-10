@@ -22,7 +22,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -43,15 +44,16 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new WebAnalyticsSite(&#34;example&#34;, WebAnalyticsSiteArgs.builder()        
- *             .accountId(&#34;f037e56e89293a057740de681ac9abbe&#34;)
- *             .zoneTag(&#34;0da42c8d2132a9ddaf714f9e7c920711&#34;)
+ *         var example = new WebAnalyticsSite("example", WebAnalyticsSiteArgs.builder()        
+ *             .accountId("f037e56e89293a057740de681ac9abbe")
+ *             .zoneTag("0da42c8d2132a9ddaf714f9e7c920711")
  *             .autoInstall(true)
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

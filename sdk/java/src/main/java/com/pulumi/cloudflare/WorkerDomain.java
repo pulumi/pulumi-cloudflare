@@ -20,7 +20,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -41,16 +42,17 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new WorkerDomain(&#34;example&#34;, WorkerDomainArgs.builder()        
- *             .accountId(&#34;f037e56e89293a057740de681ac9abbe&#34;)
- *             .hostname(&#34;subdomain.example.com&#34;)
- *             .service(&#34;my-service&#34;)
- *             .zoneId(&#34;0da42c8d2132a9ddaf714f9e7c920711&#34;)
+ *         var example = new WorkerDomain("example", WorkerDomainArgs.builder()        
+ *             .accountId("f037e56e89293a057740de681ac9abbe")
+ *             .hostname("subdomain.example.com")
+ *             .service("my-service")
+ *             .zoneId("0da42c8d2132a9ddaf714f9e7c920711")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

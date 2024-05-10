@@ -27,7 +27,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -48,19 +49,20 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new BotManagement(&#34;example&#34;, BotManagementArgs.builder()        
- *             .zoneId(&#34;0da42c8d2132a9ddaf714f9e7c920711&#34;)
+ *         var example = new BotManagement("example", BotManagementArgs.builder()        
+ *             .zoneId("0da42c8d2132a9ddaf714f9e7c920711")
  *             .enableJs(true)
- *             .sbfmDefinitelyAutomated(&#34;block&#34;)
- *             .sbfmLikelyAutomated(&#34;managed_challenge&#34;)
- *             .sbfmVerifiedBots(&#34;allow&#34;)
+ *             .sbfmDefinitelyAutomated("block")
+ *             .sbfmLikelyAutomated("managed_challenge")
+ *             .sbfmVerifiedBots("allow")
  *             .sbfmStaticResourceProtection(false)
  *             .optimizeWordpress(true)
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

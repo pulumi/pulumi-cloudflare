@@ -21,7 +21,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -42,18 +43,19 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new TurnstileWidget(&#34;example&#34;, TurnstileWidgetArgs.builder()        
- *             .accountId(&#34;f037e56e89293a057740de681ac9abbe&#34;)
- *             .name(&#34;example widget&#34;)
+ *         var example = new TurnstileWidget("example", TurnstileWidgetArgs.builder()        
+ *             .accountId("f037e56e89293a057740de681ac9abbe")
+ *             .name("example widget")
  *             .botFightMode(false)
- *             .domains(&#34;example.com&#34;)
- *             .mode(&#34;invisible&#34;)
- *             .region(&#34;world&#34;)
+ *             .domains("example.com")
+ *             .mode("invisible")
+ *             .region("world")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

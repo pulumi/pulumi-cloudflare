@@ -74,11 +74,6 @@ export class Record extends pulumi.CustomResource {
         return obj['__pulumiType'] === Record.__pulumiType;
     }
 
-    /**
-     * Allow creation of this record in Terraform to overwrite an existing record, if any. This does not affect the ability to
-     * update the record in Terraform and does not prevent other resources within Terraform or manual changes outside Terraform
-     * from overwriting this record. **This configuration is not recommended for most environments**
-     */
     public readonly allowOverwrite!: pulumi.Output<boolean | undefined>;
     /**
      * Comments or notes about the DNS record. This field has no effect on DNS responses.
@@ -207,11 +202,6 @@ export class Record extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Record resources.
  */
 export interface RecordState {
-    /**
-     * Allow creation of this record in Terraform to overwrite an existing record, if any. This does not affect the ability to
-     * update the record in Terraform and does not prevent other resources within Terraform or manual changes outside Terraform
-     * from overwriting this record. **This configuration is not recommended for most environments**
-     */
     allowOverwrite?: pulumi.Input<boolean>;
     /**
      * Comments or notes about the DNS record. This field has no effect on DNS responses.
@@ -279,11 +269,6 @@ export interface RecordState {
  * The set of arguments for constructing a Record resource.
  */
 export interface RecordArgs {
-    /**
-     * Allow creation of this record in Terraform to overwrite an existing record, if any. This does not affect the ability to
-     * update the record in Terraform and does not prevent other resources within Terraform or manual changes outside Terraform
-     * from overwriting this record. **This configuration is not recommended for most environments**
-     */
     allowOverwrite?: pulumi.Input<boolean>;
     /**
      * Comments or notes about the DNS record. This field has no effect on DNS responses.

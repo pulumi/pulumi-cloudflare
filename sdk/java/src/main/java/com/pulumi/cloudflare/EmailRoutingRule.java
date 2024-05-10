@@ -25,7 +25,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -48,24 +49,25 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var main = new EmailRoutingRule(&#34;main&#34;, EmailRoutingRuleArgs.builder()        
- *             .zoneId(&#34;0da42c8d2132a9ddaf714f9e7c920711&#34;)
- *             .name(&#34;terraform rule&#34;)
+ *         var main = new EmailRoutingRule("main", EmailRoutingRuleArgs.builder()        
+ *             .zoneId("0da42c8d2132a9ddaf714f9e7c920711")
+ *             .name("terraform rule")
  *             .enabled(true)
  *             .matchers(EmailRoutingRuleMatcherArgs.builder()
- *                 .type(&#34;literal&#34;)
- *                 .field(&#34;to&#34;)
- *                 .value(&#34;test@example.com&#34;)
+ *                 .type("literal")
+ *                 .field("to")
+ *                 .value("test{@literal @}example.com")
  *                 .build())
  *             .actions(EmailRoutingRuleActionArgs.builder()
- *                 .type(&#34;forward&#34;)
- *                 .values(&#34;destinationaddress@example.net&#34;)
+ *                 .type("forward")
+ *                 .values("destinationaddress{@literal @}example.net")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

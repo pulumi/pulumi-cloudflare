@@ -28,7 +28,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -55,23 +56,23 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new RateLimit(&#34;example&#34;, RateLimitArgs.builder()        
- *             .zoneId(&#34;0da42c8d2132a9ddaf714f9e7c920711&#34;)
+ *         var example = new RateLimit("example", RateLimitArgs.builder()        
+ *             .zoneId("0da42c8d2132a9ddaf714f9e7c920711")
  *             .threshold(2000)
  *             .period(2)
  *             .match(RateLimitMatchArgs.builder()
  *                 .request(RateLimitMatchRequestArgs.builder()
- *                     .urlPattern(String.format(&#34;%s/*&#34;, cloudflareZone))
+ *                     .urlPattern(String.format("%s/*", cloudflareZone))
  *                     .schemes(                    
- *                         &#34;HTTP&#34;,
- *                         &#34;HTTPS&#34;)
+ *                         "HTTP",
+ *                         "HTTPS")
  *                     .methods(                    
- *                         &#34;GET&#34;,
- *                         &#34;POST&#34;,
- *                         &#34;PUT&#34;,
- *                         &#34;DELETE&#34;,
- *                         &#34;PATCH&#34;,
- *                         &#34;HEAD&#34;)
+ *                         "GET",
+ *                         "POST",
+ *                         "PUT",
+ *                         "DELETE",
+ *                         "PATCH",
+ *                         "HEAD")
  *                     .build())
  *                 .response(RateLimitMatchResponseArgs.builder()
  *                     .statuses(                    
@@ -83,38 +84,39 @@ import javax.annotation.Nullable;
  *                     .originTraffic(false)
  *                     .headers(                    
  *                         Map.ofEntries(
- *                             Map.entry(&#34;name&#34;, &#34;Host&#34;),
- *                             Map.entry(&#34;op&#34;, &#34;eq&#34;),
- *                             Map.entry(&#34;value&#34;, &#34;localhost&#34;)
+ *                             Map.entry("name", "Host"),
+ *                             Map.entry("op", "eq"),
+ *                             Map.entry("value", "localhost")
  *                         ),
  *                         Map.ofEntries(
- *                             Map.entry(&#34;name&#34;, &#34;X-Example&#34;),
- *                             Map.entry(&#34;op&#34;, &#34;ne&#34;),
- *                             Map.entry(&#34;value&#34;, &#34;my-example&#34;)
+ *                             Map.entry("name", "X-Example"),
+ *                             Map.entry("op", "ne"),
+ *                             Map.entry("value", "my-example")
  *                         ))
  *                     .build())
  *                 .build())
  *             .action(RateLimitActionArgs.builder()
- *                 .mode(&#34;simulate&#34;)
+ *                 .mode("simulate")
  *                 .timeout(43200)
  *                 .response(RateLimitActionResponseArgs.builder()
- *                     .contentType(&#34;text/plain&#34;)
- *                     .body(&#34;custom response body&#34;)
+ *                     .contentType("text/plain")
+ *                     .body("custom response body")
  *                     .build())
  *                 .build())
  *             .correlate(RateLimitCorrelateArgs.builder()
- *                 .by(&#34;nat&#34;)
+ *                 .by("nat")
  *                 .build())
  *             .disabled(false)
- *             .description(&#34;example rate limit for a zone&#34;)
+ *             .description("example rate limit for a zone")
  *             .bypassUrlPatterns(            
- *                 &#34;example.com/bypass1&#34;,
- *                 &#34;example.com/bypass2&#34;)
+ *                 "example.com/bypass1",
+ *                 "example.com/bypass2")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

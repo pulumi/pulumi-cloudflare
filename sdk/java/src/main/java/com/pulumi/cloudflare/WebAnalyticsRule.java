@@ -21,7 +21,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -45,17 +46,17 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new WebAnalyticsSite(&#34;example&#34;, WebAnalyticsSiteArgs.builder()        
- *             .accountId(&#34;f037e56e89293a057740de681ac9abbe&#34;)
- *             .zoneTag(&#34;0da42c8d2132a9ddaf714f9e7c920711&#34;)
+ *         var example = new WebAnalyticsSite("example", WebAnalyticsSiteArgs.builder()        
+ *             .accountId("f037e56e89293a057740de681ac9abbe")
+ *             .zoneTag("0da42c8d2132a9ddaf714f9e7c920711")
  *             .autoInstall(true)
  *             .build());
  * 
- *         var exampleWebAnalyticsRule = new WebAnalyticsRule(&#34;exampleWebAnalyticsRule&#34;, WebAnalyticsRuleArgs.builder()        
- *             .accountId(&#34;f037e56e89293a057740de681ac9abbe&#34;)
+ *         var exampleWebAnalyticsRule = new WebAnalyticsRule("exampleWebAnalyticsRule", WebAnalyticsRuleArgs.builder()        
+ *             .accountId("f037e56e89293a057740de681ac9abbe")
  *             .rulesetId(example.rulesetId())
- *             .host(&#34;*&#34;)
- *             .paths(&#34;/excluded&#34;)
+ *             .host("*")
+ *             .paths("/excluded")
  *             .inclusive(false)
  *             .isPaused(false)
  *             .build(), CustomResourceOptions.builder()
@@ -64,7 +65,8 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

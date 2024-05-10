@@ -24,7 +24,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -46,25 +47,26 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new AccessOrganization(&#34;example&#34;, AccessOrganizationArgs.builder()        
- *             .accountId(&#34;f037e56e89293a057740de681ac9abbe&#34;)
- *             .name(&#34;example.cloudflareaccess.com&#34;)
- *             .authDomain(&#34;example.cloudflareaccess.com&#34;)
+ *         var example = new AccessOrganization("example", AccessOrganizationArgs.builder()        
+ *             .accountId("f037e56e89293a057740de681ac9abbe")
+ *             .name("example.cloudflareaccess.com")
+ *             .authDomain("example.cloudflareaccess.com")
  *             .isUiReadOnly(false)
- *             .userSeatExpirationInactiveTime(&#34;720h&#34;)
+ *             .userSeatExpirationInactiveTime("720h")
  *             .autoRedirectToIdentity(false)
  *             .loginDesigns(AccessOrganizationLoginDesignArgs.builder()
- *                 .backgroundColor(&#34;#ffffff&#34;)
- *                 .textColor(&#34;#000000&#34;)
- *                 .logoPath(&#34;https://example.com/logo.png&#34;)
- *                 .headerText(&#34;My header text&#34;)
- *                 .footerText(&#34;My footer text&#34;)
+ *                 .backgroundColor("#ffffff")
+ *                 .textColor("#000000")
+ *                 .logoPath("https://example.com/logo.png")
+ *                 .headerText("My header text")
+ *                 .footerText("My footer text")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

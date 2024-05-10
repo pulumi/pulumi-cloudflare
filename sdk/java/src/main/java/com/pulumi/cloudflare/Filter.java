@@ -29,7 +29,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -50,15 +51,16 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var wordpress = new Filter(&#34;wordpress&#34;, FilterArgs.builder()        
- *             .zoneId(&#34;0da42c8d2132a9ddaf714f9e7c920711&#34;)
- *             .description(&#34;Wordpress break-in attempts that are outside of the office&#34;)
- *             .expression(&#34;(http.request.uri.path ~ \&#34;.*wp-login.php\&#34; or http.request.uri.path ~ \&#34;.*xmlrpc.php\&#34;) and ip.src ne 192.0.2.1&#34;)
+ *         var wordpress = new Filter("wordpress", FilterArgs.builder()        
+ *             .zoneId("0da42c8d2132a9ddaf714f9e7c920711")
+ *             .description("Wordpress break-in attempts that are outside of the office")
+ *             .expression("(http.request.uri.path ~ \".*wp-login.php\" or http.request.uri.path ~ \".*xmlrpc.php\") and ip.src ne 192.0.2.1")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

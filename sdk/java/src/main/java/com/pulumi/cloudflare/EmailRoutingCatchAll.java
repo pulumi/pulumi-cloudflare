@@ -24,7 +24,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -47,22 +48,23 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new EmailRoutingCatchAll(&#34;example&#34;, EmailRoutingCatchAllArgs.builder()        
- *             .zoneId(&#34;0da42c8d2132a9ddaf714f9e7c920711&#34;)
- *             .name(&#34;example catch all&#34;)
+ *         var example = new EmailRoutingCatchAll("example", EmailRoutingCatchAllArgs.builder()        
+ *             .zoneId("0da42c8d2132a9ddaf714f9e7c920711")
+ *             .name("example catch all")
  *             .enabled(true)
  *             .matchers(EmailRoutingCatchAllMatcherArgs.builder()
- *                 .type(&#34;all&#34;)
+ *                 .type("all")
  *                 .build())
  *             .actions(EmailRoutingCatchAllActionArgs.builder()
- *                 .type(&#34;forward&#34;)
- *                 .values(&#34;destinationaddress@example.net&#34;)
+ *                 .type("forward")
+ *                 .values("destinationaddress{@literal @}example.net")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  */

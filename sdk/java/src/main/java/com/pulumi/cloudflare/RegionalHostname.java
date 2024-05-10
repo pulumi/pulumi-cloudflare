@@ -19,7 +19,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -44,25 +45,26 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         // Regionalized hostname record resources are managed independently from the
  *         // Regionalized Hostname resources.
- *         var example = new Record(&#34;example&#34;, RecordArgs.builder()        
- *             .zoneId(&#34;0da42c8d2132a9ddaf714f9e7c920711&#34;)
- *             .name(&#34;example.com&#34;)
- *             .value(&#34;192.0.2.1&#34;)
- *             .type(&#34;A&#34;)
+ *         var example = new Record("example", RecordArgs.builder()        
+ *             .zoneId("0da42c8d2132a9ddaf714f9e7c920711")
+ *             .name("example.com")
+ *             .value("192.0.2.1")
+ *             .type("A")
  *             .ttl(3600)
  *             .build());
  * 
  *         // The cloudflare_regional_hostname resource may exist with or without its
  *         // corresponding record resource.
- *         var exampleRegionalHostname = new RegionalHostname(&#34;exampleRegionalHostname&#34;, RegionalHostnameArgs.builder()        
- *             .zoneId(&#34;0da42c8d2132a9ddaf714f9e7c920711&#34;)
- *             .hostname(&#34;example.com&#34;)
- *             .regionKey(&#34;eu&#34;)
+ *         var exampleRegionalHostname = new RegionalHostname("exampleRegionalHostname", RegionalHostnameArgs.builder()        
+ *             .zoneId("0da42c8d2132a9ddaf714f9e7c920711")
+ *             .hostname("example.com")
+ *             .regionKey("eu")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  */

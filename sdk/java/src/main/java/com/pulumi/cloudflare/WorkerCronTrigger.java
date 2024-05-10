@@ -23,7 +23,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -46,25 +47,26 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleScript = new WorkerScript(&#34;exampleScript&#34;, WorkerScriptArgs.builder()        
- *             .accountId(&#34;f037e56e89293a057740de681ac9abbe&#34;)
- *             .name(&#34;example-script&#34;)
+ *         var exampleScript = new WorkerScript("exampleScript", WorkerScriptArgs.builder()        
+ *             .accountId("f037e56e89293a057740de681ac9abbe")
+ *             .name("example-script")
  *             .content(StdFunctions.file(FileArgs.builder()
- *                 .input(&#34;path/to/my.js&#34;)
+ *                 .input("path/to/my.js")
  *                 .build()).result())
  *             .build());
  * 
- *         var exampleTrigger = new WorkerCronTrigger(&#34;exampleTrigger&#34;, WorkerCronTriggerArgs.builder()        
- *             .accountId(&#34;f037e56e89293a057740de681ac9abbe&#34;)
+ *         var exampleTrigger = new WorkerCronTrigger("exampleTrigger", WorkerCronTriggerArgs.builder()        
+ *             .accountId("f037e56e89293a057740de681ac9abbe")
  *             .scriptName(exampleScript.name())
  *             .schedules(            
- *                 &#34;*{@literal /}5 * * * *&#34;,
- *                 &#34;10 7 * * mon-fri&#34;)
+ *                 "*{@literal /}5 * * * *",
+ *                 "10 7 * * mon-fri")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

@@ -20,7 +20,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -46,37 +47,37 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleTunnel = new Tunnel(&#34;exampleTunnel&#34;, TunnelArgs.builder()        
- *             .accountId(&#34;f037e56e89293a057740de681ac9abbe&#34;)
- *             .name(&#34;example_tunnel&#34;)
- *             .secret(&#34;&lt;32 character secret&gt;&#34;)
+ *         var exampleTunnel = new Tunnel("exampleTunnel", TunnelArgs.builder()        
+ *             .accountId("f037e56e89293a057740de681ac9abbe")
+ *             .name("example_tunnel")
+ *             .secret("<32 character secret>")
  *             .build());
  * 
- *         var exampleConfig = new TunnelConfig(&#34;exampleConfig&#34;, TunnelConfigArgs.builder()        
- *             .accountId(&#34;f037e56e89293a057740de681ac9abbe&#34;)
+ *         var exampleConfig = new TunnelConfig("exampleConfig", TunnelConfigArgs.builder()        
+ *             .accountId("f037e56e89293a057740de681ac9abbe")
  *             .tunnelId(exampleTunnel.id())
  *             .config(TunnelConfigConfigArgs.builder()
  *                 .warpRouting(TunnelConfigConfigWarpRoutingArgs.builder()
  *                     .enabled(true)
  *                     .build())
  *                 .originRequest(TunnelConfigConfigOriginRequestArgs.builder()
- *                     .connectTimeout(&#34;1m0s&#34;)
- *                     .tlsTimeout(&#34;1m0s&#34;)
- *                     .tcpKeepAlive(&#34;1m0s&#34;)
+ *                     .connectTimeout("1m0s")
+ *                     .tlsTimeout("1m0s")
+ *                     .tcpKeepAlive("1m0s")
  *                     .noHappyEyeballs(false)
  *                     .keepAliveConnections(1024)
- *                     .keepAliveTimeout(&#34;1m0s&#34;)
- *                     .httpHostHeader(&#34;baz&#34;)
- *                     .originServerName(&#34;foobar&#34;)
- *                     .caPool(&#34;/path/to/unsigned/ca/pool&#34;)
+ *                     .keepAliveTimeout("1m0s")
+ *                     .httpHostHeader("baz")
+ *                     .originServerName("foobar")
+ *                     .caPool("/path/to/unsigned/ca/pool")
  *                     .noTlsVerify(false)
  *                     .disableChunkedEncoding(false)
  *                     .bastionMode(false)
- *                     .proxyAddress(&#34;10.0.0.1&#34;)
- *                     .proxyPort(&#34;8123&#34;)
- *                     .proxyType(&#34;socks&#34;)
+ *                     .proxyAddress("10.0.0.1")
+ *                     .proxyPort("8123")
+ *                     .proxyType("socks")
  *                     .ipRules(TunnelConfigConfigOriginRequestIpRuleArgs.builder()
- *                         .prefix(&#34;/web&#34;)
+ *                         .prefix("/web")
  *                         .ports(                        
  *                             80,
  *                             443)
@@ -85,27 +86,28 @@ import javax.annotation.Nullable;
  *                     .build())
  *                 .ingressRules(                
  *                     TunnelConfigConfigIngressRuleArgs.builder()
- *                         .hostname(&#34;foo&#34;)
- *                         .path(&#34;/bar&#34;)
- *                         .service(&#34;http://10.0.0.2:8080&#34;)
+ *                         .hostname("foo")
+ *                         .path("/bar")
+ *                         .service("http://10.0.0.2:8080")
  *                         .originRequest(TunnelConfigConfigIngressRuleOriginRequestArgs.builder()
- *                             .connectTimeout(&#34;2m0s&#34;)
+ *                             .connectTimeout("2m0s")
  *                             .access(TunnelConfigConfigIngressRuleOriginRequestAccessArgs.builder()
  *                                 .required(true)
- *                                 .teamName(&#34;terraform&#34;)
- *                                 .audTags(&#34;AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA&#34;)
+ *                                 .teamName("terraform")
+ *                                 .audTags("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA")
  *                                 .build())
  *                             .build())
  *                         .build(),
  *                     TunnelConfigConfigIngressRuleArgs.builder()
- *                         .service(&#34;https://10.0.0.3:8081&#34;)
+ *                         .service("https://10.0.0.3:8081")
  *                         .build())
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

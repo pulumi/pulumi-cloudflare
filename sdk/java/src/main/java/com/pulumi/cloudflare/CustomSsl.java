@@ -24,7 +24,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -46,20 +47,21 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new CustomSsl(&#34;example&#34;, CustomSslArgs.builder()        
- *             .zoneId(&#34;0da42c8d2132a9ddaf714f9e7c920711&#34;)
+ *         var example = new CustomSsl("example", CustomSslArgs.builder()        
+ *             .zoneId("0da42c8d2132a9ddaf714f9e7c920711")
  *             .customSslOptions(CustomSslCustomSslOptionsArgs.builder()
- *                 .certificate(&#34;-----INSERT CERTIFICATE-----&#34;)
- *                 .privateKey(&#34;-----INSERT PRIVATE KEY-----&#34;)
- *                 .bundleMethod(&#34;ubiquitous&#34;)
- *                 .geoRestrictions(&#34;us&#34;)
- *                 .type(&#34;legacy_custom&#34;)
+ *                 .certificate("-----INSERT CERTIFICATE-----")
+ *                 .privateKey("-----INSERT PRIVATE KEY-----")
+ *                 .bundleMethod("ubiquitous")
+ *                 .geoRestrictions("us")
+ *                 .type("legacy_custom")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

@@ -26,7 +26,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -49,33 +50,34 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // Add a record to the domain
- *         var example = new Record(&#34;example&#34;, RecordArgs.builder()        
+ *         var example = new Record("example", RecordArgs.builder()        
  *             .zoneId(cloudflareZoneId)
- *             .name(&#34;example&#34;)
- *             .value(&#34;192.0.2.1&#34;)
- *             .type(&#34;A&#34;)
+ *             .name("example")
+ *             .value("192.0.2.1")
+ *             .type("A")
  *             .ttl(3600)
  *             .build());
  * 
  *         // Add a record requiring a data map
- *         var _sipTls = new Record(&#34;_sipTls&#34;, RecordArgs.builder()        
+ *         var _sipTls = new Record("_sipTls", RecordArgs.builder()        
  *             .zoneId(cloudflareZoneId)
- *             .name(&#34;_sip._tls&#34;)
- *             .type(&#34;SRV&#34;)
+ *             .name("_sip._tls")
+ *             .type("SRV")
  *             .data(RecordDataArgs.builder()
- *                 .service(&#34;_sip&#34;)
- *                 .proto(&#34;_tls&#34;)
- *                 .name(&#34;example-srv&#34;)
+ *                 .service("_sip")
+ *                 .proto("_tls")
+ *                 .name("example-srv")
  *                 .priority(0)
  *                 .weight(0)
  *                 .port(443)
- *                 .target(&#34;example.com&#34;)
+ *                 .target("example.com")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
@@ -87,21 +89,9 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="cloudflare:index/record:Record")
 public class Record extends com.pulumi.resources.CustomResource {
-    /**
-     * Allow creation of this record in Terraform to overwrite an existing record, if any. This does not affect the ability to
-     * update the record in Terraform and does not prevent other resources within Terraform or manual changes outside Terraform
-     * from overwriting this record. **This configuration is not recommended for most environments**
-     * 
-     */
     @Export(name="allowOverwrite", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> allowOverwrite;
 
-    /**
-     * @return Allow creation of this record in Terraform to overwrite an existing record, if any. This does not affect the ability to
-     * update the record in Terraform and does not prevent other resources within Terraform or manual changes outside Terraform
-     * from overwriting this record. **This configuration is not recommended for most environments**
-     * 
-     */
     public Output<Optional<Boolean>> allowOverwrite() {
         return Codegen.optional(this.allowOverwrite);
     }

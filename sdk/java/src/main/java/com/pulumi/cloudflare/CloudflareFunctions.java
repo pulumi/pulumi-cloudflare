@@ -123,7 +123,8 @@ public final class CloudflareFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -147,23 +148,24 @@ public final class CloudflareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = CloudflareFunctions.getAccessIdentityProvider(GetAccessIdentityProviderArgs.builder()
-     *             .name(&#34;Google SSO&#34;)
-     *             .accountId(&#34;f037e56e89293a057740de681ac9abbe&#34;)
+     *             .name("Google SSO")
+     *             .accountId("f037e56e89293a057740de681ac9abbe")
      *             .build());
      * 
-     *         var exampleAccessApplication = new AccessApplication(&#34;exampleAccessApplication&#34;, AccessApplicationArgs.builder()        
-     *             .zoneId(&#34;0da42c8d2132a9ddaf714f9e7c920711&#34;)
-     *             .name(&#34;name&#34;)
-     *             .domain(&#34;name.example.com&#34;)
-     *             .type(&#34;self_hosted&#34;)
-     *             .sessionDuration(&#34;24h&#34;)
-     *             .allowedIdps(example.applyValue(getAccessIdentityProviderResult -&gt; getAccessIdentityProviderResult.id()))
+     *         var exampleAccessApplication = new AccessApplication("exampleAccessApplication", AccessApplicationArgs.builder()        
+     *             .zoneId("0da42c8d2132a9ddaf714f9e7c920711")
+     *             .name("name")
+     *             .domain("name.example.com")
+     *             .type("self_hosted")
+     *             .sessionDuration("24h")
+     *             .allowedIdps(example.applyValue(getAccessIdentityProviderResult -> getAccessIdentityProviderResult.id()))
      *             .autoRedirectToIdentity(true)
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -176,7 +178,8 @@ public final class CloudflareFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -200,23 +203,24 @@ public final class CloudflareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = CloudflareFunctions.getAccessIdentityProvider(GetAccessIdentityProviderArgs.builder()
-     *             .name(&#34;Google SSO&#34;)
-     *             .accountId(&#34;f037e56e89293a057740de681ac9abbe&#34;)
+     *             .name("Google SSO")
+     *             .accountId("f037e56e89293a057740de681ac9abbe")
      *             .build());
      * 
-     *         var exampleAccessApplication = new AccessApplication(&#34;exampleAccessApplication&#34;, AccessApplicationArgs.builder()        
-     *             .zoneId(&#34;0da42c8d2132a9ddaf714f9e7c920711&#34;)
-     *             .name(&#34;name&#34;)
-     *             .domain(&#34;name.example.com&#34;)
-     *             .type(&#34;self_hosted&#34;)
-     *             .sessionDuration(&#34;24h&#34;)
-     *             .allowedIdps(example.applyValue(getAccessIdentityProviderResult -&gt; getAccessIdentityProviderResult.id()))
+     *         var exampleAccessApplication = new AccessApplication("exampleAccessApplication", AccessApplicationArgs.builder()        
+     *             .zoneId("0da42c8d2132a9ddaf714f9e7c920711")
+     *             .name("name")
+     *             .domain("name.example.com")
+     *             .type("self_hosted")
+     *             .sessionDuration("24h")
+     *             .allowedIdps(example.applyValue(getAccessIdentityProviderResult -> getAccessIdentityProviderResult.id()))
      *             .autoRedirectToIdentity(true)
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -229,7 +233,8 @@ public final class CloudflareFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -253,23 +258,24 @@ public final class CloudflareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = CloudflareFunctions.getAccessIdentityProvider(GetAccessIdentityProviderArgs.builder()
-     *             .name(&#34;Google SSO&#34;)
-     *             .accountId(&#34;f037e56e89293a057740de681ac9abbe&#34;)
+     *             .name("Google SSO")
+     *             .accountId("f037e56e89293a057740de681ac9abbe")
      *             .build());
      * 
-     *         var exampleAccessApplication = new AccessApplication(&#34;exampleAccessApplication&#34;, AccessApplicationArgs.builder()        
-     *             .zoneId(&#34;0da42c8d2132a9ddaf714f9e7c920711&#34;)
-     *             .name(&#34;name&#34;)
-     *             .domain(&#34;name.example.com&#34;)
-     *             .type(&#34;self_hosted&#34;)
-     *             .sessionDuration(&#34;24h&#34;)
-     *             .allowedIdps(example.applyValue(getAccessIdentityProviderResult -&gt; getAccessIdentityProviderResult.id()))
+     *         var exampleAccessApplication = new AccessApplication("exampleAccessApplication", AccessApplicationArgs.builder()        
+     *             .zoneId("0da42c8d2132a9ddaf714f9e7c920711")
+     *             .name("name")
+     *             .domain("name.example.com")
+     *             .type("self_hosted")
+     *             .sessionDuration("24h")
+     *             .allowedIdps(example.applyValue(getAccessIdentityProviderResult -> getAccessIdentityProviderResult.id()))
      *             .autoRedirectToIdentity(true)
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -282,7 +288,8 @@ public final class CloudflareFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -306,23 +313,24 @@ public final class CloudflareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = CloudflareFunctions.getAccessIdentityProvider(GetAccessIdentityProviderArgs.builder()
-     *             .name(&#34;Google SSO&#34;)
-     *             .accountId(&#34;f037e56e89293a057740de681ac9abbe&#34;)
+     *             .name("Google SSO")
+     *             .accountId("f037e56e89293a057740de681ac9abbe")
      *             .build());
      * 
-     *         var exampleAccessApplication = new AccessApplication(&#34;exampleAccessApplication&#34;, AccessApplicationArgs.builder()        
-     *             .zoneId(&#34;0da42c8d2132a9ddaf714f9e7c920711&#34;)
-     *             .name(&#34;name&#34;)
-     *             .domain(&#34;name.example.com&#34;)
-     *             .type(&#34;self_hosted&#34;)
-     *             .sessionDuration(&#34;24h&#34;)
-     *             .allowedIdps(example.applyValue(getAccessIdentityProviderResult -&gt; getAccessIdentityProviderResult.id()))
+     *         var exampleAccessApplication = new AccessApplication("exampleAccessApplication", AccessApplicationArgs.builder()        
+     *             .zoneId("0da42c8d2132a9ddaf714f9e7c920711")
+     *             .name("name")
+     *             .domain("name.example.com")
+     *             .type("self_hosted")
+     *             .sessionDuration("24h")
+     *             .allowedIdps(example.applyValue(getAccessIdentityProviderResult -> getAccessIdentityProviderResult.id()))
      *             .autoRedirectToIdentity(true)
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -383,7 +391,8 @@ public final class CloudflareFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -405,12 +414,13 @@ public final class CloudflareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = CloudflareFunctions.getAccounts(GetAccountsArgs.builder()
-     *             .name(&#34;example account&#34;)
+     *             .name("example account")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -423,7 +433,8 @@ public final class CloudflareFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -445,12 +456,13 @@ public final class CloudflareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = CloudflareFunctions.getAccounts(GetAccountsArgs.builder()
-     *             .name(&#34;example account&#34;)
+     *             .name("example account")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -463,7 +475,8 @@ public final class CloudflareFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -485,12 +498,13 @@ public final class CloudflareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = CloudflareFunctions.getAccounts(GetAccountsArgs.builder()
-     *             .name(&#34;example account&#34;)
+     *             .name("example account")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -503,7 +517,8 @@ public final class CloudflareFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -525,12 +540,13 @@ public final class CloudflareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = CloudflareFunctions.getAccounts(GetAccountsArgs.builder()
-     *             .name(&#34;example account&#34;)
+     *             .name("example account")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -543,7 +559,8 @@ public final class CloudflareFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -565,12 +582,13 @@ public final class CloudflareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = CloudflareFunctions.getAccounts(GetAccountsArgs.builder()
-     *             .name(&#34;example account&#34;)
+     *             .name("example account")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -583,7 +601,8 @@ public final class CloudflareFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -605,12 +624,13 @@ public final class CloudflareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = CloudflareFunctions.getAccounts(GetAccountsArgs.builder()
-     *             .name(&#34;example account&#34;)
+     *             .name("example account")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -624,7 +644,8 @@ public final class CloudflareFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -646,12 +667,13 @@ public final class CloudflareFunctions {
      *     public static void stack(Context ctx) {
      *         final var all = CloudflareFunctions.getApiTokenPermissionGroups();
      * 
-     *         ctx.export(&#34;dnsReadPermissionId&#34;, all.applyValue(getApiTokenPermissionGroupsResult -&gt; getApiTokenPermissionGroupsResult.zone().DNS Read()));
-     *         ctx.export(&#34;accountLbMonitorsAndReadId&#34;, all.applyValue(getApiTokenPermissionGroupsResult -&gt; getApiTokenPermissionGroupsResult.account().Load Balancing: Monitors and Pools Read()));
-     *         ctx.export(&#34;userMembershipsReadId&#34;, all.applyValue(getApiTokenPermissionGroupsResult -&gt; getApiTokenPermissionGroupsResult.user().Memberships Read()));
+     *         ctx.export("dnsReadPermissionId", all.applyValue(getApiTokenPermissionGroupsResult -> getApiTokenPermissionGroupsResult.zone().DNS Read()));
+     *         ctx.export("accountLbMonitorsAndReadId", all.applyValue(getApiTokenPermissionGroupsResult -> getApiTokenPermissionGroupsResult.account().Load Balancing: Monitors and Pools Read()));
+     *         ctx.export("userMembershipsReadId", all.applyValue(getApiTokenPermissionGroupsResult -> getApiTokenPermissionGroupsResult.user().Memberships Read()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -665,7 +687,8 @@ public final class CloudflareFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -687,12 +710,13 @@ public final class CloudflareFunctions {
      *     public static void stack(Context ctx) {
      *         final var all = CloudflareFunctions.getApiTokenPermissionGroups();
      * 
-     *         ctx.export(&#34;dnsReadPermissionId&#34;, all.applyValue(getApiTokenPermissionGroupsResult -&gt; getApiTokenPermissionGroupsResult.zone().DNS Read()));
-     *         ctx.export(&#34;accountLbMonitorsAndReadId&#34;, all.applyValue(getApiTokenPermissionGroupsResult -&gt; getApiTokenPermissionGroupsResult.account().Load Balancing: Monitors and Pools Read()));
-     *         ctx.export(&#34;userMembershipsReadId&#34;, all.applyValue(getApiTokenPermissionGroupsResult -&gt; getApiTokenPermissionGroupsResult.user().Memberships Read()));
+     *         ctx.export("dnsReadPermissionId", all.applyValue(getApiTokenPermissionGroupsResult -> getApiTokenPermissionGroupsResult.zone().DNS Read()));
+     *         ctx.export("accountLbMonitorsAndReadId", all.applyValue(getApiTokenPermissionGroupsResult -> getApiTokenPermissionGroupsResult.account().Load Balancing: Monitors and Pools Read()));
+     *         ctx.export("userMembershipsReadId", all.applyValue(getApiTokenPermissionGroupsResult -> getApiTokenPermissionGroupsResult.user().Memberships Read()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -706,7 +730,8 @@ public final class CloudflareFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -728,12 +753,13 @@ public final class CloudflareFunctions {
      *     public static void stack(Context ctx) {
      *         final var all = CloudflareFunctions.getApiTokenPermissionGroups();
      * 
-     *         ctx.export(&#34;dnsReadPermissionId&#34;, all.applyValue(getApiTokenPermissionGroupsResult -&gt; getApiTokenPermissionGroupsResult.zone().DNS Read()));
-     *         ctx.export(&#34;accountLbMonitorsAndReadId&#34;, all.applyValue(getApiTokenPermissionGroupsResult -&gt; getApiTokenPermissionGroupsResult.account().Load Balancing: Monitors and Pools Read()));
-     *         ctx.export(&#34;userMembershipsReadId&#34;, all.applyValue(getApiTokenPermissionGroupsResult -&gt; getApiTokenPermissionGroupsResult.user().Memberships Read()));
+     *         ctx.export("dnsReadPermissionId", all.applyValue(getApiTokenPermissionGroupsResult -> getApiTokenPermissionGroupsResult.zone().DNS Read()));
+     *         ctx.export("accountLbMonitorsAndReadId", all.applyValue(getApiTokenPermissionGroupsResult -> getApiTokenPermissionGroupsResult.account().Load Balancing: Monitors and Pools Read()));
+     *         ctx.export("userMembershipsReadId", all.applyValue(getApiTokenPermissionGroupsResult -> getApiTokenPermissionGroupsResult.user().Memberships Read()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -747,7 +773,8 @@ public final class CloudflareFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -769,12 +796,13 @@ public final class CloudflareFunctions {
      *     public static void stack(Context ctx) {
      *         final var all = CloudflareFunctions.getApiTokenPermissionGroups();
      * 
-     *         ctx.export(&#34;dnsReadPermissionId&#34;, all.applyValue(getApiTokenPermissionGroupsResult -&gt; getApiTokenPermissionGroupsResult.zone().DNS Read()));
-     *         ctx.export(&#34;accountLbMonitorsAndReadId&#34;, all.applyValue(getApiTokenPermissionGroupsResult -&gt; getApiTokenPermissionGroupsResult.account().Load Balancing: Monitors and Pools Read()));
-     *         ctx.export(&#34;userMembershipsReadId&#34;, all.applyValue(getApiTokenPermissionGroupsResult -&gt; getApiTokenPermissionGroupsResult.user().Memberships Read()));
+     *         ctx.export("dnsReadPermissionId", all.applyValue(getApiTokenPermissionGroupsResult -> getApiTokenPermissionGroupsResult.zone().DNS Read()));
+     *         ctx.export("accountLbMonitorsAndReadId", all.applyValue(getApiTokenPermissionGroupsResult -> getApiTokenPermissionGroupsResult.account().Load Balancing: Monitors and Pools Read()));
+     *         ctx.export("userMembershipsReadId", all.applyValue(getApiTokenPermissionGroupsResult -> getApiTokenPermissionGroupsResult.user().Memberships Read()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -788,7 +816,8 @@ public final class CloudflareFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -810,12 +839,13 @@ public final class CloudflareFunctions {
      *     public static void stack(Context ctx) {
      *         final var all = CloudflareFunctions.getApiTokenPermissionGroups();
      * 
-     *         ctx.export(&#34;dnsReadPermissionId&#34;, all.applyValue(getApiTokenPermissionGroupsResult -&gt; getApiTokenPermissionGroupsResult.zone().DNS Read()));
-     *         ctx.export(&#34;accountLbMonitorsAndReadId&#34;, all.applyValue(getApiTokenPermissionGroupsResult -&gt; getApiTokenPermissionGroupsResult.account().Load Balancing: Monitors and Pools Read()));
-     *         ctx.export(&#34;userMembershipsReadId&#34;, all.applyValue(getApiTokenPermissionGroupsResult -&gt; getApiTokenPermissionGroupsResult.user().Memberships Read()));
+     *         ctx.export("dnsReadPermissionId", all.applyValue(getApiTokenPermissionGroupsResult -> getApiTokenPermissionGroupsResult.zone().DNS Read()));
+     *         ctx.export("accountLbMonitorsAndReadId", all.applyValue(getApiTokenPermissionGroupsResult -> getApiTokenPermissionGroupsResult.account().Load Balancing: Monitors and Pools Read()));
+     *         ctx.export("userMembershipsReadId", all.applyValue(getApiTokenPermissionGroupsResult -> getApiTokenPermissionGroupsResult.user().Memberships Read()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -829,7 +859,8 @@ public final class CloudflareFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -851,12 +882,13 @@ public final class CloudflareFunctions {
      *     public static void stack(Context ctx) {
      *         final var all = CloudflareFunctions.getApiTokenPermissionGroups();
      * 
-     *         ctx.export(&#34;dnsReadPermissionId&#34;, all.applyValue(getApiTokenPermissionGroupsResult -&gt; getApiTokenPermissionGroupsResult.zone().DNS Read()));
-     *         ctx.export(&#34;accountLbMonitorsAndReadId&#34;, all.applyValue(getApiTokenPermissionGroupsResult -&gt; getApiTokenPermissionGroupsResult.account().Load Balancing: Monitors and Pools Read()));
-     *         ctx.export(&#34;userMembershipsReadId&#34;, all.applyValue(getApiTokenPermissionGroupsResult -&gt; getApiTokenPermissionGroupsResult.user().Memberships Read()));
+     *         ctx.export("dnsReadPermissionId", all.applyValue(getApiTokenPermissionGroupsResult -> getApiTokenPermissionGroupsResult.zone().DNS Read()));
+     *         ctx.export("accountLbMonitorsAndReadId", all.applyValue(getApiTokenPermissionGroupsResult -> getApiTokenPermissionGroupsResult.account().Load Balancing: Monitors and Pools Read()));
+     *         ctx.export("userMembershipsReadId", all.applyValue(getApiTokenPermissionGroupsResult -> getApiTokenPermissionGroupsResult.user().Memberships Read()));
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -869,7 +901,8 @@ public final class CloudflareFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -891,14 +924,15 @@ public final class CloudflareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = CloudflareFunctions.getDevicePostureRules(GetDevicePostureRulesArgs.builder()
-     *             .accountId(&#34;f037e56e89293a057740de681ac9abbe&#34;)
-     *             .name(&#34;check for /dev/random&#34;)
-     *             .type(&#34;file&#34;)
+     *             .accountId("f037e56e89293a057740de681ac9abbe")
+     *             .name("check for /dev/random")
+     *             .type("file")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -911,7 +945,8 @@ public final class CloudflareFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -933,14 +968,15 @@ public final class CloudflareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = CloudflareFunctions.getDevicePostureRules(GetDevicePostureRulesArgs.builder()
-     *             .accountId(&#34;f037e56e89293a057740de681ac9abbe&#34;)
-     *             .name(&#34;check for /dev/random&#34;)
-     *             .type(&#34;file&#34;)
+     *             .accountId("f037e56e89293a057740de681ac9abbe")
+     *             .name("check for /dev/random")
+     *             .type("file")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -953,7 +989,8 @@ public final class CloudflareFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -975,14 +1012,15 @@ public final class CloudflareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = CloudflareFunctions.getDevicePostureRules(GetDevicePostureRulesArgs.builder()
-     *             .accountId(&#34;f037e56e89293a057740de681ac9abbe&#34;)
-     *             .name(&#34;check for /dev/random&#34;)
-     *             .type(&#34;file&#34;)
+     *             .accountId("f037e56e89293a057740de681ac9abbe")
+     *             .name("check for /dev/random")
+     *             .type("file")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -995,7 +1033,8 @@ public final class CloudflareFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1017,14 +1056,15 @@ public final class CloudflareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = CloudflareFunctions.getDevicePostureRules(GetDevicePostureRulesArgs.builder()
-     *             .accountId(&#34;f037e56e89293a057740de681ac9abbe&#34;)
-     *             .name(&#34;check for /dev/random&#34;)
-     *             .type(&#34;file&#34;)
+     *             .accountId("f037e56e89293a057740de681ac9abbe")
+     *             .name("check for /dev/random")
+     *             .type("file")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1037,7 +1077,8 @@ public final class CloudflareFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1059,12 +1100,13 @@ public final class CloudflareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = CloudflareFunctions.getDevices(GetDevicesArgs.builder()
-     *             .accountId(&#34;f037e56e89293a057740de681ac9abbe&#34;)
+     *             .accountId("f037e56e89293a057740de681ac9abbe")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1077,7 +1119,8 @@ public final class CloudflareFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1099,12 +1142,13 @@ public final class CloudflareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = CloudflareFunctions.getDevices(GetDevicesArgs.builder()
-     *             .accountId(&#34;f037e56e89293a057740de681ac9abbe&#34;)
+     *             .accountId("f037e56e89293a057740de681ac9abbe")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1117,7 +1161,8 @@ public final class CloudflareFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1139,12 +1184,13 @@ public final class CloudflareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = CloudflareFunctions.getDevices(GetDevicesArgs.builder()
-     *             .accountId(&#34;f037e56e89293a057740de681ac9abbe&#34;)
+     *             .accountId("f037e56e89293a057740de681ac9abbe")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1157,7 +1203,8 @@ public final class CloudflareFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1179,12 +1226,13 @@ public final class CloudflareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = CloudflareFunctions.getDevices(GetDevicesArgs.builder()
-     *             .accountId(&#34;f037e56e89293a057740de681ac9abbe&#34;)
+     *             .accountId("f037e56e89293a057740de681ac9abbe")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1197,7 +1245,8 @@ public final class CloudflareFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1219,12 +1268,13 @@ public final class CloudflareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = CloudflareFunctions.getDlpDatasets(GetDlpDatasetsArgs.builder()
-     *             .accountId(&#34;f037e56e89293a057740de681ac9abbe&#34;)
+     *             .accountId("f037e56e89293a057740de681ac9abbe")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1237,7 +1287,8 @@ public final class CloudflareFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1259,12 +1310,13 @@ public final class CloudflareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = CloudflareFunctions.getDlpDatasets(GetDlpDatasetsArgs.builder()
-     *             .accountId(&#34;f037e56e89293a057740de681ac9abbe&#34;)
+     *             .accountId("f037e56e89293a057740de681ac9abbe")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1277,7 +1329,8 @@ public final class CloudflareFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1299,12 +1352,13 @@ public final class CloudflareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = CloudflareFunctions.getDlpDatasets(GetDlpDatasetsArgs.builder()
-     *             .accountId(&#34;f037e56e89293a057740de681ac9abbe&#34;)
+     *             .accountId("f037e56e89293a057740de681ac9abbe")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1317,7 +1371,8 @@ public final class CloudflareFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1339,12 +1394,13 @@ public final class CloudflareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = CloudflareFunctions.getDlpDatasets(GetDlpDatasetsArgs.builder()
-     *             .accountId(&#34;f037e56e89293a057740de681ac9abbe&#34;)
+     *             .accountId("f037e56e89293a057740de681ac9abbe")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1357,7 +1413,8 @@ public final class CloudflareFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1381,16 +1438,17 @@ public final class CloudflareFunctions {
      *     public static void stack(Context ctx) {
      *         final var cloudflare = CloudflareFunctions.getIpRanges();
      * 
-     *         var example = new FirewallResource(&#34;example&#34;, FirewallResourceArgs.builder()        
-     *             .name(&#34;from-cloudflare&#34;)
-     *             .network(&#34;default&#34;)
-     *             .sourceRanges(cloudflare.applyValue(getIpRangesResult -&gt; getIpRangesResult.ipv4CidrBlocks()))
+     *         var example = new FirewallResource("example", FirewallResourceArgs.builder()        
+     *             .name("from-cloudflare")
+     *             .network("default")
+     *             .sourceRanges(cloudflare.applyValue(getIpRangesResult -> getIpRangesResult.ipv4CidrBlocks()))
      *             .allow(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1403,7 +1461,8 @@ public final class CloudflareFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1427,16 +1486,17 @@ public final class CloudflareFunctions {
      *     public static void stack(Context ctx) {
      *         final var cloudflare = CloudflareFunctions.getIpRanges();
      * 
-     *         var example = new FirewallResource(&#34;example&#34;, FirewallResourceArgs.builder()        
-     *             .name(&#34;from-cloudflare&#34;)
-     *             .network(&#34;default&#34;)
-     *             .sourceRanges(cloudflare.applyValue(getIpRangesResult -&gt; getIpRangesResult.ipv4CidrBlocks()))
+     *         var example = new FirewallResource("example", FirewallResourceArgs.builder()        
+     *             .name("from-cloudflare")
+     *             .network("default")
+     *             .sourceRanges(cloudflare.applyValue(getIpRangesResult -> getIpRangesResult.ipv4CidrBlocks()))
      *             .allow(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1449,7 +1509,8 @@ public final class CloudflareFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1473,16 +1534,17 @@ public final class CloudflareFunctions {
      *     public static void stack(Context ctx) {
      *         final var cloudflare = CloudflareFunctions.getIpRanges();
      * 
-     *         var example = new FirewallResource(&#34;example&#34;, FirewallResourceArgs.builder()        
-     *             .name(&#34;from-cloudflare&#34;)
-     *             .network(&#34;default&#34;)
-     *             .sourceRanges(cloudflare.applyValue(getIpRangesResult -&gt; getIpRangesResult.ipv4CidrBlocks()))
+     *         var example = new FirewallResource("example", FirewallResourceArgs.builder()        
+     *             .name("from-cloudflare")
+     *             .network("default")
+     *             .sourceRanges(cloudflare.applyValue(getIpRangesResult -> getIpRangesResult.ipv4CidrBlocks()))
      *             .allow(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1495,7 +1557,8 @@ public final class CloudflareFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1519,16 +1582,17 @@ public final class CloudflareFunctions {
      *     public static void stack(Context ctx) {
      *         final var cloudflare = CloudflareFunctions.getIpRanges();
      * 
-     *         var example = new FirewallResource(&#34;example&#34;, FirewallResourceArgs.builder()        
-     *             .name(&#34;from-cloudflare&#34;)
-     *             .network(&#34;default&#34;)
-     *             .sourceRanges(cloudflare.applyValue(getIpRangesResult -&gt; getIpRangesResult.ipv4CidrBlocks()))
+     *         var example = new FirewallResource("example", FirewallResourceArgs.builder()        
+     *             .name("from-cloudflare")
+     *             .network("default")
+     *             .sourceRanges(cloudflare.applyValue(getIpRangesResult -> getIpRangesResult.ipv4CidrBlocks()))
      *             .allow(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1541,7 +1605,8 @@ public final class CloudflareFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1565,16 +1630,17 @@ public final class CloudflareFunctions {
      *     public static void stack(Context ctx) {
      *         final var cloudflare = CloudflareFunctions.getIpRanges();
      * 
-     *         var example = new FirewallResource(&#34;example&#34;, FirewallResourceArgs.builder()        
-     *             .name(&#34;from-cloudflare&#34;)
-     *             .network(&#34;default&#34;)
-     *             .sourceRanges(cloudflare.applyValue(getIpRangesResult -&gt; getIpRangesResult.ipv4CidrBlocks()))
+     *         var example = new FirewallResource("example", FirewallResourceArgs.builder()        
+     *             .name("from-cloudflare")
+     *             .network("default")
+     *             .sourceRanges(cloudflare.applyValue(getIpRangesResult -> getIpRangesResult.ipv4CidrBlocks()))
      *             .allow(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1587,7 +1653,8 @@ public final class CloudflareFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1611,16 +1678,17 @@ public final class CloudflareFunctions {
      *     public static void stack(Context ctx) {
      *         final var cloudflare = CloudflareFunctions.getIpRanges();
      * 
-     *         var example = new FirewallResource(&#34;example&#34;, FirewallResourceArgs.builder()        
-     *             .name(&#34;from-cloudflare&#34;)
-     *             .network(&#34;default&#34;)
-     *             .sourceRanges(cloudflare.applyValue(getIpRangesResult -&gt; getIpRangesResult.ipv4CidrBlocks()))
+     *         var example = new FirewallResource("example", FirewallResourceArgs.builder()        
+     *             .name("from-cloudflare")
+     *             .network("default")
+     *             .sourceRanges(cloudflare.applyValue(getIpRangesResult -> getIpRangesResult.ipv4CidrBlocks()))
      *             .allow(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1633,7 +1701,8 @@ public final class CloudflareFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1655,13 +1724,14 @@ public final class CloudflareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = CloudflareFunctions.getList(GetListArgs.builder()
-     *             .accountId(&#34;f037e56e89293a057740de681ac9abbe&#34;)
-     *             .name(&#34;list_name&#34;)
+     *             .accountId("f037e56e89293a057740de681ac9abbe")
+     *             .name("list_name")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1674,7 +1744,8 @@ public final class CloudflareFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1696,13 +1767,14 @@ public final class CloudflareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = CloudflareFunctions.getList(GetListArgs.builder()
-     *             .accountId(&#34;f037e56e89293a057740de681ac9abbe&#34;)
-     *             .name(&#34;list_name&#34;)
+     *             .accountId("f037e56e89293a057740de681ac9abbe")
+     *             .name("list_name")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1715,7 +1787,8 @@ public final class CloudflareFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1737,13 +1810,14 @@ public final class CloudflareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = CloudflareFunctions.getList(GetListArgs.builder()
-     *             .accountId(&#34;f037e56e89293a057740de681ac9abbe&#34;)
-     *             .name(&#34;list_name&#34;)
+     *             .accountId("f037e56e89293a057740de681ac9abbe")
+     *             .name("list_name")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1756,7 +1830,8 @@ public final class CloudflareFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1778,13 +1853,14 @@ public final class CloudflareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = CloudflareFunctions.getList(GetListArgs.builder()
-     *             .accountId(&#34;f037e56e89293a057740de681ac9abbe&#34;)
-     *             .name(&#34;list_name&#34;)
+     *             .accountId("f037e56e89293a057740de681ac9abbe")
+     *             .name("list_name")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1797,7 +1873,8 @@ public final class CloudflareFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1819,12 +1896,13 @@ public final class CloudflareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = CloudflareFunctions.getLists(GetListsArgs.builder()
-     *             .accountId(&#34;f037e56e89293a057740de681ac9abbe&#34;)
+     *             .accountId("f037e56e89293a057740de681ac9abbe")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1837,7 +1915,8 @@ public final class CloudflareFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1859,12 +1938,13 @@ public final class CloudflareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = CloudflareFunctions.getLists(GetListsArgs.builder()
-     *             .accountId(&#34;f037e56e89293a057740de681ac9abbe&#34;)
+     *             .accountId("f037e56e89293a057740de681ac9abbe")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1877,7 +1957,8 @@ public final class CloudflareFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1899,12 +1980,13 @@ public final class CloudflareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = CloudflareFunctions.getLists(GetListsArgs.builder()
-     *             .accountId(&#34;f037e56e89293a057740de681ac9abbe&#34;)
+     *             .accountId("f037e56e89293a057740de681ac9abbe")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1917,7 +1999,8 @@ public final class CloudflareFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1939,12 +2022,13 @@ public final class CloudflareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = CloudflareFunctions.getLists(GetListsArgs.builder()
-     *             .accountId(&#34;f037e56e89293a057740de681ac9abbe&#34;)
+     *             .accountId("f037e56e89293a057740de681ac9abbe")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1957,7 +2041,8 @@ public final class CloudflareFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1980,15 +2065,16 @@ public final class CloudflareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = CloudflareFunctions.getLoadBalancerPools(GetLoadBalancerPoolsArgs.builder()
-     *             .accountId(&#34;f037e56e89293a057740de681ac9abbe&#34;)
+     *             .accountId("f037e56e89293a057740de681ac9abbe")
      *             .filter(GetLoadBalancerPoolsFilterArgs.builder()
-     *                 .name(&#34;example-lb-pool&#34;)
+     *                 .name("example-lb-pool")
      *                 .build())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2001,7 +2087,8 @@ public final class CloudflareFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2024,15 +2111,16 @@ public final class CloudflareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = CloudflareFunctions.getLoadBalancerPools(GetLoadBalancerPoolsArgs.builder()
-     *             .accountId(&#34;f037e56e89293a057740de681ac9abbe&#34;)
+     *             .accountId("f037e56e89293a057740de681ac9abbe")
      *             .filter(GetLoadBalancerPoolsFilterArgs.builder()
-     *                 .name(&#34;example-lb-pool&#34;)
+     *                 .name("example-lb-pool")
      *                 .build())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2045,7 +2133,8 @@ public final class CloudflareFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2068,15 +2157,16 @@ public final class CloudflareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = CloudflareFunctions.getLoadBalancerPools(GetLoadBalancerPoolsArgs.builder()
-     *             .accountId(&#34;f037e56e89293a057740de681ac9abbe&#34;)
+     *             .accountId("f037e56e89293a057740de681ac9abbe")
      *             .filter(GetLoadBalancerPoolsFilterArgs.builder()
-     *                 .name(&#34;example-lb-pool&#34;)
+     *                 .name("example-lb-pool")
      *                 .build())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2089,7 +2179,8 @@ public final class CloudflareFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2112,15 +2203,16 @@ public final class CloudflareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = CloudflareFunctions.getLoadBalancerPools(GetLoadBalancerPoolsArgs.builder()
-     *             .accountId(&#34;f037e56e89293a057740de681ac9abbe&#34;)
+     *             .accountId("f037e56e89293a057740de681ac9abbe")
      *             .filter(GetLoadBalancerPoolsFilterArgs.builder()
-     *                 .name(&#34;example-lb-pool&#34;)
+     *                 .name("example-lb-pool")
      *                 .build())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2133,7 +2225,8 @@ public final class CloudflareFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2155,12 +2248,13 @@ public final class CloudflareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = CloudflareFunctions.getOriginCaCertificate(GetOriginCaCertificateArgs.builder()
-     *             .id(&#34;REPLACE_ME&#34;)
+     *             .id("REPLACE_ME")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2173,7 +2267,8 @@ public final class CloudflareFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2195,12 +2290,13 @@ public final class CloudflareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = CloudflareFunctions.getOriginCaCertificate(GetOriginCaCertificateArgs.builder()
-     *             .id(&#34;REPLACE_ME&#34;)
+     *             .id("REPLACE_ME")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2213,7 +2309,8 @@ public final class CloudflareFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2235,12 +2332,13 @@ public final class CloudflareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = CloudflareFunctions.getOriginCaCertificate(GetOriginCaCertificateArgs.builder()
-     *             .id(&#34;REPLACE_ME&#34;)
+     *             .id("REPLACE_ME")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2253,7 +2351,8 @@ public final class CloudflareFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2275,12 +2374,13 @@ public final class CloudflareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = CloudflareFunctions.getOriginCaCertificate(GetOriginCaCertificateArgs.builder()
-     *             .id(&#34;REPLACE_ME&#34;)
+     *             .id("REPLACE_ME")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2295,7 +2395,8 @@ public final class CloudflareFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2317,12 +2418,13 @@ public final class CloudflareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = CloudflareFunctions.getOriginCaRootCertificate(GetOriginCaRootCertificateArgs.builder()
-     *             .algorithm(&#34;rsa&#34;)
+     *             .algorithm("rsa")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2337,7 +2439,8 @@ public final class CloudflareFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2359,12 +2462,13 @@ public final class CloudflareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = CloudflareFunctions.getOriginCaRootCertificate(GetOriginCaRootCertificateArgs.builder()
-     *             .algorithm(&#34;rsa&#34;)
+     *             .algorithm("rsa")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2379,7 +2483,8 @@ public final class CloudflareFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2401,12 +2506,13 @@ public final class CloudflareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = CloudflareFunctions.getOriginCaRootCertificate(GetOriginCaRootCertificateArgs.builder()
-     *             .algorithm(&#34;rsa&#34;)
+     *             .algorithm("rsa")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2421,7 +2527,8 @@ public final class CloudflareFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2443,12 +2550,13 @@ public final class CloudflareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = CloudflareFunctions.getOriginCaRootCertificate(GetOriginCaRootCertificateArgs.builder()
-     *             .algorithm(&#34;rsa&#34;)
+     *             .algorithm("rsa")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2461,7 +2569,8 @@ public final class CloudflareFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2483,13 +2592,14 @@ public final class CloudflareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = CloudflareFunctions.getRecord(GetRecordArgs.builder()
-     *             .zoneId(&#34;0da42c8d2132a9ddaf714f9e7c920711&#34;)
-     *             .hostname(&#34;example.com&#34;)
+     *             .zoneId("0da42c8d2132a9ddaf714f9e7c920711")
+     *             .hostname("example.com")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2502,7 +2612,8 @@ public final class CloudflareFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2524,13 +2635,14 @@ public final class CloudflareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = CloudflareFunctions.getRecord(GetRecordArgs.builder()
-     *             .zoneId(&#34;0da42c8d2132a9ddaf714f9e7c920711&#34;)
-     *             .hostname(&#34;example.com&#34;)
+     *             .zoneId("0da42c8d2132a9ddaf714f9e7c920711")
+     *             .hostname("example.com")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2543,7 +2655,8 @@ public final class CloudflareFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2565,13 +2678,14 @@ public final class CloudflareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = CloudflareFunctions.getRecord(GetRecordArgs.builder()
-     *             .zoneId(&#34;0da42c8d2132a9ddaf714f9e7c920711&#34;)
-     *             .hostname(&#34;example.com&#34;)
+     *             .zoneId("0da42c8d2132a9ddaf714f9e7c920711")
+     *             .hostname("example.com")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2584,7 +2698,8 @@ public final class CloudflareFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2606,13 +2721,14 @@ public final class CloudflareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = CloudflareFunctions.getRecord(GetRecordArgs.builder()
-     *             .zoneId(&#34;0da42c8d2132a9ddaf714f9e7c920711&#34;)
-     *             .hostname(&#34;example.com&#34;)
+     *             .zoneId("0da42c8d2132a9ddaf714f9e7c920711")
+     *             .hostname("example.com")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2625,7 +2741,8 @@ public final class CloudflareFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2648,15 +2765,16 @@ public final class CloudflareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = CloudflareFunctions.getRulesets(GetRulesetsArgs.builder()
-     *             .zoneId(&#34;0da42c8d2132a9ddaf714f9e7c920711&#34;)
+     *             .zoneId("0da42c8d2132a9ddaf714f9e7c920711")
      *             .filter(GetRulesetsFilterArgs.builder()
-     *                 .name(&#34;.*OWASP.*&#34;)
+     *                 .name(".*OWASP.*")
      *                 .build())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2669,7 +2787,8 @@ public final class CloudflareFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2692,15 +2811,16 @@ public final class CloudflareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = CloudflareFunctions.getRulesets(GetRulesetsArgs.builder()
-     *             .zoneId(&#34;0da42c8d2132a9ddaf714f9e7c920711&#34;)
+     *             .zoneId("0da42c8d2132a9ddaf714f9e7c920711")
      *             .filter(GetRulesetsFilterArgs.builder()
-     *                 .name(&#34;.*OWASP.*&#34;)
+     *                 .name(".*OWASP.*")
      *                 .build())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2713,7 +2833,8 @@ public final class CloudflareFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2736,15 +2857,16 @@ public final class CloudflareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = CloudflareFunctions.getRulesets(GetRulesetsArgs.builder()
-     *             .zoneId(&#34;0da42c8d2132a9ddaf714f9e7c920711&#34;)
+     *             .zoneId("0da42c8d2132a9ddaf714f9e7c920711")
      *             .filter(GetRulesetsFilterArgs.builder()
-     *                 .name(&#34;.*OWASP.*&#34;)
+     *                 .name(".*OWASP.*")
      *                 .build())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2757,7 +2879,8 @@ public final class CloudflareFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2780,15 +2903,16 @@ public final class CloudflareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = CloudflareFunctions.getRulesets(GetRulesetsArgs.builder()
-     *             .zoneId(&#34;0da42c8d2132a9ddaf714f9e7c920711&#34;)
+     *             .zoneId("0da42c8d2132a9ddaf714f9e7c920711")
      *             .filter(GetRulesetsFilterArgs.builder()
-     *                 .name(&#34;.*OWASP.*&#34;)
+     *                 .name(".*OWASP.*")
      *                 .build())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2801,7 +2925,8 @@ public final class CloudflareFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2824,15 +2949,16 @@ public final class CloudflareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = CloudflareFunctions.getRulesets(GetRulesetsArgs.builder()
-     *             .zoneId(&#34;0da42c8d2132a9ddaf714f9e7c920711&#34;)
+     *             .zoneId("0da42c8d2132a9ddaf714f9e7c920711")
      *             .filter(GetRulesetsFilterArgs.builder()
-     *                 .name(&#34;.*OWASP.*&#34;)
+     *                 .name(".*OWASP.*")
      *                 .build())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2845,7 +2971,8 @@ public final class CloudflareFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2868,15 +2995,16 @@ public final class CloudflareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = CloudflareFunctions.getRulesets(GetRulesetsArgs.builder()
-     *             .zoneId(&#34;0da42c8d2132a9ddaf714f9e7c920711&#34;)
+     *             .zoneId("0da42c8d2132a9ddaf714f9e7c920711")
      *             .filter(GetRulesetsFilterArgs.builder()
-     *                 .name(&#34;.*OWASP.*&#34;)
+     *                 .name(".*OWASP.*")
      *                 .build())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2889,7 +3017,8 @@ public final class CloudflareFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2911,13 +3040,14 @@ public final class CloudflareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = CloudflareFunctions.getTunnel(GetTunnelArgs.builder()
-     *             .accountId(&#34;f037e56e89293a057740de681ac9abbe&#34;)
-     *             .name(&#34;my-tunnel&#34;)
+     *             .accountId("f037e56e89293a057740de681ac9abbe")
+     *             .name("my-tunnel")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2930,7 +3060,8 @@ public final class CloudflareFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2952,13 +3083,14 @@ public final class CloudflareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = CloudflareFunctions.getTunnel(GetTunnelArgs.builder()
-     *             .accountId(&#34;f037e56e89293a057740de681ac9abbe&#34;)
-     *             .name(&#34;my-tunnel&#34;)
+     *             .accountId("f037e56e89293a057740de681ac9abbe")
+     *             .name("my-tunnel")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2971,7 +3103,8 @@ public final class CloudflareFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2993,13 +3126,14 @@ public final class CloudflareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = CloudflareFunctions.getTunnel(GetTunnelArgs.builder()
-     *             .accountId(&#34;f037e56e89293a057740de681ac9abbe&#34;)
-     *             .name(&#34;my-tunnel&#34;)
+     *             .accountId("f037e56e89293a057740de681ac9abbe")
+     *             .name("my-tunnel")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3012,7 +3146,8 @@ public final class CloudflareFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3034,13 +3169,14 @@ public final class CloudflareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = CloudflareFunctions.getTunnel(GetTunnelArgs.builder()
-     *             .accountId(&#34;f037e56e89293a057740de681ac9abbe&#34;)
-     *             .name(&#34;my-tunnel&#34;)
+     *             .accountId("f037e56e89293a057740de681ac9abbe")
+     *             .name("my-tunnel")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3053,7 +3189,8 @@ public final class CloudflareFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3075,13 +3212,14 @@ public final class CloudflareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = CloudflareFunctions.getTunnelVirtualNetwork(GetTunnelVirtualNetworkArgs.builder()
-     *             .accountId(&#34;f037e56e89293a057740de681ac9abbe&#34;)
-     *             .name(&#34;example&#34;)
+     *             .accountId("f037e56e89293a057740de681ac9abbe")
+     *             .name("example")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3094,7 +3232,8 @@ public final class CloudflareFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3116,13 +3255,14 @@ public final class CloudflareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = CloudflareFunctions.getTunnelVirtualNetwork(GetTunnelVirtualNetworkArgs.builder()
-     *             .accountId(&#34;f037e56e89293a057740de681ac9abbe&#34;)
-     *             .name(&#34;example&#34;)
+     *             .accountId("f037e56e89293a057740de681ac9abbe")
+     *             .name("example")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3135,7 +3275,8 @@ public final class CloudflareFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3157,13 +3298,14 @@ public final class CloudflareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = CloudflareFunctions.getTunnelVirtualNetwork(GetTunnelVirtualNetworkArgs.builder()
-     *             .accountId(&#34;f037e56e89293a057740de681ac9abbe&#34;)
-     *             .name(&#34;example&#34;)
+     *             .accountId("f037e56e89293a057740de681ac9abbe")
+     *             .name("example")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3176,7 +3318,8 @@ public final class CloudflareFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3198,13 +3341,14 @@ public final class CloudflareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = CloudflareFunctions.getTunnelVirtualNetwork(GetTunnelVirtualNetworkArgs.builder()
-     *             .accountId(&#34;f037e56e89293a057740de681ac9abbe&#34;)
-     *             .name(&#34;example&#34;)
+     *             .accountId("f037e56e89293a057740de681ac9abbe")
+     *             .name("example")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3217,7 +3361,8 @@ public final class CloudflareFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3244,17 +3389,18 @@ public final class CloudflareFunctions {
      * 
      *         final var all = CloudflareFunctions.getApiTokenPermissionGroups();
      * 
-     *         var example = new ApiToken(&#34;example&#34;, ApiTokenArgs.builder()        
-     *             .name(&#34;Terraform Cloud (Terraform)&#34;)
+     *         var example = new ApiToken("example", ApiTokenArgs.builder()        
+     *             .name("Terraform Cloud (Terraform)")
      *             .policies(ApiTokenPolicyArgs.builder()
-     *                 .permissionGroups(all.applyValue(getApiTokenPermissionGroupsResult -&gt; getApiTokenPermissionGroupsResult.user().User Details Read()))
-     *                 .resources(Map.of(String.format(&#34;com.cloudflare.api.user.%s&#34;, me.applyValue(getUserResult -&gt; getUserResult.id())), &#34;*&#34;))
+     *                 .permissionGroups(all.applyValue(getApiTokenPermissionGroupsResult -> getApiTokenPermissionGroupsResult.user().User Details Read()))
+     *                 .resources(Map.of(String.format("com.cloudflare.api.user.%s", me.applyValue(getUserResult -> getUserResult.id())), "*"))
      *                 .build())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3267,7 +3413,8 @@ public final class CloudflareFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3294,17 +3441,18 @@ public final class CloudflareFunctions {
      * 
      *         final var all = CloudflareFunctions.getApiTokenPermissionGroups();
      * 
-     *         var example = new ApiToken(&#34;example&#34;, ApiTokenArgs.builder()        
-     *             .name(&#34;Terraform Cloud (Terraform)&#34;)
+     *         var example = new ApiToken("example", ApiTokenArgs.builder()        
+     *             .name("Terraform Cloud (Terraform)")
      *             .policies(ApiTokenPolicyArgs.builder()
-     *                 .permissionGroups(all.applyValue(getApiTokenPermissionGroupsResult -&gt; getApiTokenPermissionGroupsResult.user().User Details Read()))
-     *                 .resources(Map.of(String.format(&#34;com.cloudflare.api.user.%s&#34;, me.applyValue(getUserResult -&gt; getUserResult.id())), &#34;*&#34;))
+     *                 .permissionGroups(all.applyValue(getApiTokenPermissionGroupsResult -> getApiTokenPermissionGroupsResult.user().User Details Read()))
+     *                 .resources(Map.of(String.format("com.cloudflare.api.user.%s", me.applyValue(getUserResult -> getUserResult.id())), "*"))
      *                 .build())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3317,7 +3465,8 @@ public final class CloudflareFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3344,17 +3493,18 @@ public final class CloudflareFunctions {
      * 
      *         final var all = CloudflareFunctions.getApiTokenPermissionGroups();
      * 
-     *         var example = new ApiToken(&#34;example&#34;, ApiTokenArgs.builder()        
-     *             .name(&#34;Terraform Cloud (Terraform)&#34;)
+     *         var example = new ApiToken("example", ApiTokenArgs.builder()        
+     *             .name("Terraform Cloud (Terraform)")
      *             .policies(ApiTokenPolicyArgs.builder()
-     *                 .permissionGroups(all.applyValue(getApiTokenPermissionGroupsResult -&gt; getApiTokenPermissionGroupsResult.user().User Details Read()))
-     *                 .resources(Map.of(String.format(&#34;com.cloudflare.api.user.%s&#34;, me.applyValue(getUserResult -&gt; getUserResult.id())), &#34;*&#34;))
+     *                 .permissionGroups(all.applyValue(getApiTokenPermissionGroupsResult -> getApiTokenPermissionGroupsResult.user().User Details Read()))
+     *                 .resources(Map.of(String.format("com.cloudflare.api.user.%s", me.applyValue(getUserResult -> getUserResult.id())), "*"))
      *                 .build())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3367,7 +3517,8 @@ public final class CloudflareFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3394,17 +3545,18 @@ public final class CloudflareFunctions {
      * 
      *         final var all = CloudflareFunctions.getApiTokenPermissionGroups();
      * 
-     *         var example = new ApiToken(&#34;example&#34;, ApiTokenArgs.builder()        
-     *             .name(&#34;Terraform Cloud (Terraform)&#34;)
+     *         var example = new ApiToken("example", ApiTokenArgs.builder()        
+     *             .name("Terraform Cloud (Terraform)")
      *             .policies(ApiTokenPolicyArgs.builder()
-     *                 .permissionGroups(all.applyValue(getApiTokenPermissionGroupsResult -&gt; getApiTokenPermissionGroupsResult.user().User Details Read()))
-     *                 .resources(Map.of(String.format(&#34;com.cloudflare.api.user.%s&#34;, me.applyValue(getUserResult -&gt; getUserResult.id())), &#34;*&#34;))
+     *                 .permissionGroups(all.applyValue(getApiTokenPermissionGroupsResult -> getApiTokenPermissionGroupsResult.user().User Details Read()))
+     *                 .resources(Map.of(String.format("com.cloudflare.api.user.%s", me.applyValue(getUserResult -> getUserResult.id())), "*"))
      *                 .build())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3417,7 +3569,8 @@ public final class CloudflareFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3444,17 +3597,18 @@ public final class CloudflareFunctions {
      * 
      *         final var all = CloudflareFunctions.getApiTokenPermissionGroups();
      * 
-     *         var example = new ApiToken(&#34;example&#34;, ApiTokenArgs.builder()        
-     *             .name(&#34;Terraform Cloud (Terraform)&#34;)
+     *         var example = new ApiToken("example", ApiTokenArgs.builder()        
+     *             .name("Terraform Cloud (Terraform)")
      *             .policies(ApiTokenPolicyArgs.builder()
-     *                 .permissionGroups(all.applyValue(getApiTokenPermissionGroupsResult -&gt; getApiTokenPermissionGroupsResult.user().User Details Read()))
-     *                 .resources(Map.of(String.format(&#34;com.cloudflare.api.user.%s&#34;, me.applyValue(getUserResult -&gt; getUserResult.id())), &#34;*&#34;))
+     *                 .permissionGroups(all.applyValue(getApiTokenPermissionGroupsResult -> getApiTokenPermissionGroupsResult.user().User Details Read()))
+     *                 .resources(Map.of(String.format("com.cloudflare.api.user.%s", me.applyValue(getUserResult -> getUserResult.id())), "*"))
      *                 .build())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3467,7 +3621,8 @@ public final class CloudflareFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3494,17 +3649,18 @@ public final class CloudflareFunctions {
      * 
      *         final var all = CloudflareFunctions.getApiTokenPermissionGroups();
      * 
-     *         var example = new ApiToken(&#34;example&#34;, ApiTokenArgs.builder()        
-     *             .name(&#34;Terraform Cloud (Terraform)&#34;)
+     *         var example = new ApiToken("example", ApiTokenArgs.builder()        
+     *             .name("Terraform Cloud (Terraform)")
      *             .policies(ApiTokenPolicyArgs.builder()
-     *                 .permissionGroups(all.applyValue(getApiTokenPermissionGroupsResult -&gt; getApiTokenPermissionGroupsResult.user().User Details Read()))
-     *                 .resources(Map.of(String.format(&#34;com.cloudflare.api.user.%s&#34;, me.applyValue(getUserResult -&gt; getUserResult.id())), &#34;*&#34;))
+     *                 .permissionGroups(all.applyValue(getApiTokenPermissionGroupsResult -> getApiTokenPermissionGroupsResult.user().User Details Read()))
+     *                 .resources(Map.of(String.format("com.cloudflare.api.user.%s", me.applyValue(getUserResult -> getUserResult.id())), "*"))
      *                 .build())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3523,7 +3679,8 @@ public final class CloudflareFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3547,20 +3704,21 @@ public final class CloudflareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = CloudflareFunctions.getZone(GetZoneArgs.builder()
-     *             .name(&#34;example.com&#34;)
+     *             .name("example.com")
      *             .build());
      * 
-     *         var exampleRecord = new Record(&#34;exampleRecord&#34;, RecordArgs.builder()        
-     *             .zoneId(example.applyValue(getZoneResult -&gt; getZoneResult.id()))
-     *             .name(&#34;www&#34;)
-     *             .value(&#34;203.0.113.1&#34;)
-     *             .type(&#34;A&#34;)
+     *         var exampleRecord = new Record("exampleRecord", RecordArgs.builder()        
+     *             .zoneId(example.applyValue(getZoneResult -> getZoneResult.id()))
+     *             .name("www")
+     *             .value("203.0.113.1")
+     *             .type("A")
      *             .proxied(true)
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3579,7 +3737,8 @@ public final class CloudflareFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3603,20 +3762,21 @@ public final class CloudflareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = CloudflareFunctions.getZone(GetZoneArgs.builder()
-     *             .name(&#34;example.com&#34;)
+     *             .name("example.com")
      *             .build());
      * 
-     *         var exampleRecord = new Record(&#34;exampleRecord&#34;, RecordArgs.builder()        
-     *             .zoneId(example.applyValue(getZoneResult -&gt; getZoneResult.id()))
-     *             .name(&#34;www&#34;)
-     *             .value(&#34;203.0.113.1&#34;)
-     *             .type(&#34;A&#34;)
+     *         var exampleRecord = new Record("exampleRecord", RecordArgs.builder()        
+     *             .zoneId(example.applyValue(getZoneResult -> getZoneResult.id()))
+     *             .name("www")
+     *             .value("203.0.113.1")
+     *             .type("A")
      *             .proxied(true)
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3635,7 +3795,8 @@ public final class CloudflareFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3659,20 +3820,21 @@ public final class CloudflareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = CloudflareFunctions.getZone(GetZoneArgs.builder()
-     *             .name(&#34;example.com&#34;)
+     *             .name("example.com")
      *             .build());
      * 
-     *         var exampleRecord = new Record(&#34;exampleRecord&#34;, RecordArgs.builder()        
-     *             .zoneId(example.applyValue(getZoneResult -&gt; getZoneResult.id()))
-     *             .name(&#34;www&#34;)
-     *             .value(&#34;203.0.113.1&#34;)
-     *             .type(&#34;A&#34;)
+     *         var exampleRecord = new Record("exampleRecord", RecordArgs.builder()        
+     *             .zoneId(example.applyValue(getZoneResult -> getZoneResult.id()))
+     *             .name("www")
+     *             .value("203.0.113.1")
+     *             .type("A")
      *             .proxied(true)
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3691,7 +3853,8 @@ public final class CloudflareFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3715,20 +3878,21 @@ public final class CloudflareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = CloudflareFunctions.getZone(GetZoneArgs.builder()
-     *             .name(&#34;example.com&#34;)
+     *             .name("example.com")
      *             .build());
      * 
-     *         var exampleRecord = new Record(&#34;exampleRecord&#34;, RecordArgs.builder()        
-     *             .zoneId(example.applyValue(getZoneResult -&gt; getZoneResult.id()))
-     *             .name(&#34;www&#34;)
-     *             .value(&#34;203.0.113.1&#34;)
-     *             .type(&#34;A&#34;)
+     *         var exampleRecord = new Record("exampleRecord", RecordArgs.builder()        
+     *             .zoneId(example.applyValue(getZoneResult -> getZoneResult.id()))
+     *             .name("www")
+     *             .value("203.0.113.1")
+     *             .type("A")
      *             .proxied(true)
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3747,7 +3911,8 @@ public final class CloudflareFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3771,20 +3936,21 @@ public final class CloudflareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = CloudflareFunctions.getZone(GetZoneArgs.builder()
-     *             .name(&#34;example.com&#34;)
+     *             .name("example.com")
      *             .build());
      * 
-     *         var exampleRecord = new Record(&#34;exampleRecord&#34;, RecordArgs.builder()        
-     *             .zoneId(example.applyValue(getZoneResult -&gt; getZoneResult.id()))
-     *             .name(&#34;www&#34;)
-     *             .value(&#34;203.0.113.1&#34;)
-     *             .type(&#34;A&#34;)
+     *         var exampleRecord = new Record("exampleRecord", RecordArgs.builder()        
+     *             .zoneId(example.applyValue(getZoneResult -> getZoneResult.id()))
+     *             .name("www")
+     *             .value("203.0.113.1")
+     *             .type("A")
      *             .proxied(true)
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3803,7 +3969,8 @@ public final class CloudflareFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3827,20 +3994,21 @@ public final class CloudflareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = CloudflareFunctions.getZone(GetZoneArgs.builder()
-     *             .name(&#34;example.com&#34;)
+     *             .name("example.com")
      *             .build());
      * 
-     *         var exampleRecord = new Record(&#34;exampleRecord&#34;, RecordArgs.builder()        
-     *             .zoneId(example.applyValue(getZoneResult -&gt; getZoneResult.id()))
-     *             .name(&#34;www&#34;)
-     *             .value(&#34;203.0.113.1&#34;)
-     *             .type(&#34;A&#34;)
+     *         var exampleRecord = new Record("exampleRecord", RecordArgs.builder()        
+     *             .zoneId(example.applyValue(getZoneResult -> getZoneResult.id()))
+     *             .name("www")
+     *             .value("203.0.113.1")
+     *             .type("A")
      *             .proxied(true)
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3854,7 +4022,8 @@ public final class CloudflareFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3876,12 +4045,13 @@ public final class CloudflareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = CloudflareFunctions.getZoneCacheReserve(GetZoneCacheReserveArgs.builder()
-     *             .zoneId(&#34;0da42c8d2132a9ddaf714f9e7c920711&#34;)
+     *             .zoneId("0da42c8d2132a9ddaf714f9e7c920711")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3895,7 +4065,8 @@ public final class CloudflareFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3917,12 +4088,13 @@ public final class CloudflareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = CloudflareFunctions.getZoneCacheReserve(GetZoneCacheReserveArgs.builder()
-     *             .zoneId(&#34;0da42c8d2132a9ddaf714f9e7c920711&#34;)
+     *             .zoneId("0da42c8d2132a9ddaf714f9e7c920711")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3936,7 +4108,8 @@ public final class CloudflareFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3958,12 +4131,13 @@ public final class CloudflareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = CloudflareFunctions.getZoneCacheReserve(GetZoneCacheReserveArgs.builder()
-     *             .zoneId(&#34;0da42c8d2132a9ddaf714f9e7c920711&#34;)
+     *             .zoneId("0da42c8d2132a9ddaf714f9e7c920711")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3977,7 +4151,8 @@ public final class CloudflareFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3999,12 +4174,13 @@ public final class CloudflareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = CloudflareFunctions.getZoneCacheReserve(GetZoneCacheReserveArgs.builder()
-     *             .zoneId(&#34;0da42c8d2132a9ddaf714f9e7c920711&#34;)
+     *             .zoneId("0da42c8d2132a9ddaf714f9e7c920711")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4017,7 +4193,8 @@ public final class CloudflareFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4039,12 +4216,13 @@ public final class CloudflareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = CloudflareFunctions.getZoneDnssec(GetZoneDnssecArgs.builder()
-     *             .zoneId(&#34;0da42c8d2132a9ddaf714f9e7c920711&#34;)
+     *             .zoneId("0da42c8d2132a9ddaf714f9e7c920711")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4057,7 +4235,8 @@ public final class CloudflareFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4079,12 +4258,13 @@ public final class CloudflareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = CloudflareFunctions.getZoneDnssec(GetZoneDnssecArgs.builder()
-     *             .zoneId(&#34;0da42c8d2132a9ddaf714f9e7c920711&#34;)
+     *             .zoneId("0da42c8d2132a9ddaf714f9e7c920711")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4097,7 +4277,8 @@ public final class CloudflareFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4119,12 +4300,13 @@ public final class CloudflareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = CloudflareFunctions.getZoneDnssec(GetZoneDnssecArgs.builder()
-     *             .zoneId(&#34;0da42c8d2132a9ddaf714f9e7c920711&#34;)
+     *             .zoneId("0da42c8d2132a9ddaf714f9e7c920711")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4137,7 +4319,8 @@ public final class CloudflareFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4159,12 +4342,13 @@ public final class CloudflareFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = CloudflareFunctions.getZoneDnssec(GetZoneDnssecArgs.builder()
-     *             .zoneId(&#34;0da42c8d2132a9ddaf714f9e7c920711&#34;)
+     *             .zoneId("0da42c8d2132a9ddaf714f9e7c920711")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */

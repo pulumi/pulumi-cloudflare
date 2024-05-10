@@ -23,7 +23,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -48,38 +49,38 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         // Challenge requests coming from known Tor exit nodes.
- *         var torExitNodes = new AccessRule(&#34;torExitNodes&#34;, AccessRuleArgs.builder()        
- *             .zoneId(&#34;0da42c8d2132a9ddaf714f9e7c920711&#34;)
- *             .notes(&#34;Requests coming from known Tor exit nodes&#34;)
- *             .mode(&#34;challenge&#34;)
+ *         var torExitNodes = new AccessRule("torExitNodes", AccessRuleArgs.builder()        
+ *             .zoneId("0da42c8d2132a9ddaf714f9e7c920711")
+ *             .notes("Requests coming from known Tor exit nodes")
+ *             .mode("challenge")
  *             .configuration(AccessRuleConfigurationArgs.builder()
- *                 .target(&#34;country&#34;)
- *                 .value(&#34;T1&#34;)
+ *                 .target("country")
+ *                 .value("T1")
  *                 .build())
  *             .build());
  * 
  *         // Allowlist requests coming from Antarctica, but only for single zone.
- *         var antarctica = new AccessRule(&#34;antarctica&#34;, AccessRuleArgs.builder()        
- *             .zoneId(&#34;0da42c8d2132a9ddaf714f9e7c920711&#34;)
- *             .notes(&#34;Requests coming from Antarctica&#34;)
- *             .mode(&#34;whitelist&#34;)
+ *         var antarctica = new AccessRule("antarctica", AccessRuleArgs.builder()        
+ *             .zoneId("0da42c8d2132a9ddaf714f9e7c920711")
+ *             .notes("Requests coming from Antarctica")
+ *             .mode("whitelist")
  *             .configuration(AccessRuleConfigurationArgs.builder()
- *                 .target(&#34;country&#34;)
- *                 .value(&#34;AQ&#34;)
+ *                 .target("country")
+ *                 .value("AQ")
  *                 .build())
  *             .build());
  * 
- *         final var myOffice = config.get(&#34;myOffice&#34;).orElse(        
- *             &#34;192.0.2.0/24&#34;,
- *             &#34;198.51.100.0/24&#34;,
- *             &#34;2001:db8::/56&#34;);
- *         for (var i = 0; i &lt; myOffice.length(); i++) {
- *             new AccessRule(&#34;officeNetwork-&#34; + i, AccessRuleArgs.builder()            
- *                 .accountId(&#34;f037e56e89293a057740de681ac9abbe&#34;)
- *                 .notes(&#34;Requests coming from office network&#34;)
- *                 .mode(&#34;whitelist&#34;)
+ *         final var myOffice = config.get("myOffice").orElse(        
+ *             "192.0.2.0/24",
+ *             "198.51.100.0/24",
+ *             "2001:db8::/56");
+ *         for (var i = 0; i < myOffice.length(); i++) {
+ *             new AccessRule("officeNetwork-" + i, AccessRuleArgs.builder()            
+ *                 .accountId("f037e56e89293a057740de681ac9abbe")
+ *                 .notes("Requests coming from office network")
+ *                 .mode("whitelist")
  *                 .configuration(AccessRuleConfigurationArgs.builder()
- *                     .target(&#34;ip_range&#34;)
+ *                     .target("ip_range")
  *                     .value(myOffice[range.value()])
  *                     .build())
  *                 .build());
@@ -88,7 +89,8 @@ import javax.annotation.Nullable;
  * }
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

@@ -19,7 +19,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -40,16 +41,17 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new ObservatoryScheduledTest(&#34;example&#34;, ObservatoryScheduledTestArgs.builder()        
- *             .zoneId(&#34;0da42c8d2132a9ddaf714f9e7c920711&#34;)
- *             .url(&#34;example.com&#34;)
- *             .region(&#34;us-central1&#34;)
- *             .frequency(&#34;WEEKLY&#34;)
+ *         var example = new ObservatoryScheduledTest("example", ObservatoryScheduledTestArgs.builder()        
+ *             .zoneId("0da42c8d2132a9ddaf714f9e7c920711")
+ *             .url("example.com")
+ *             .region("us-central1")
+ *             .frequency("WEEKLY")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

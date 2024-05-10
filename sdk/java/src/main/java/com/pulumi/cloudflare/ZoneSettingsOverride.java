@@ -38,7 +38,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -62,20 +63,20 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var test = new ZoneSettingsOverride(&#34;test&#34;, ZoneSettingsOverrideArgs.builder()        
+ *         var test = new ZoneSettingsOverride("test", ZoneSettingsOverrideArgs.builder()        
  *             .zoneId(d41d8cd98f00b204e9800998ecf8427e)
  *             .settings(ZoneSettingsOverrideSettingsArgs.builder()
- *                 .brotli(&#34;on&#34;)
+ *                 .brotli("on")
  *                 .challengeTtl(2700)
- *                 .securityLevel(&#34;high&#34;)
- *                 .opportunisticEncryption(&#34;on&#34;)
- *                 .automaticHttpsRewrites(&#34;on&#34;)
- *                 .mirage(&#34;on&#34;)
- *                 .waf(&#34;on&#34;)
+ *                 .securityLevel("high")
+ *                 .opportunisticEncryption("on")
+ *                 .automaticHttpsRewrites("on")
+ *                 .mirage("on")
+ *                 .waf("on")
  *                 .minify(ZoneSettingsOverrideSettingsMinifyArgs.builder()
- *                     .css(&#34;on&#34;)
- *                     .js(&#34;off&#34;)
- *                     .html(&#34;off&#34;)
+ *                     .css("on")
+ *                     .js("off")
+ *                     .html("off")
  *                     .build())
  *                 .securityHeader(ZoneSettingsOverrideSettingsSecurityHeaderArgs.builder()
  *                     .enabled(true)
@@ -85,7 +86,8 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  */

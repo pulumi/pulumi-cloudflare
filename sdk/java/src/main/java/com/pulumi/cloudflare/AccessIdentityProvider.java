@@ -31,7 +31,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -54,57 +55,58 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // one time pin
- *         var pinLogin = new AccessIdentityProvider(&#34;pinLogin&#34;, AccessIdentityProviderArgs.builder()        
- *             .accountId(&#34;f037e56e89293a057740de681ac9abbe&#34;)
- *             .name(&#34;PIN login&#34;)
- *             .type(&#34;onetimepin&#34;)
+ *         var pinLogin = new AccessIdentityProvider("pinLogin", AccessIdentityProviderArgs.builder()        
+ *             .accountId("f037e56e89293a057740de681ac9abbe")
+ *             .name("PIN login")
+ *             .type("onetimepin")
  *             .build());
  * 
  *         // oauth
- *         var githubOauth = new AccessIdentityProvider(&#34;githubOauth&#34;, AccessIdentityProviderArgs.builder()        
- *             .accountId(&#34;f037e56e89293a057740de681ac9abbe&#34;)
- *             .name(&#34;GitHub OAuth&#34;)
- *             .type(&#34;github&#34;)
+ *         var githubOauth = new AccessIdentityProvider("githubOauth", AccessIdentityProviderArgs.builder()        
+ *             .accountId("f037e56e89293a057740de681ac9abbe")
+ *             .name("GitHub OAuth")
+ *             .type("github")
  *             .configs(AccessIdentityProviderConfigArgs.builder()
- *                 .clientId(&#34;example&#34;)
- *                 .clientSecret(&#34;secret_key&#34;)
+ *                 .clientId("example")
+ *                 .clientSecret("secret_key")
  *                 .build())
  *             .build());
  * 
  *         // saml
- *         var jumpcloudSaml = new AccessIdentityProvider(&#34;jumpcloudSaml&#34;, AccessIdentityProviderArgs.builder()        
- *             .accountId(&#34;f037e56e89293a057740de681ac9abbe&#34;)
- *             .name(&#34;JumpCloud SAML&#34;)
- *             .type(&#34;saml&#34;)
+ *         var jumpcloudSaml = new AccessIdentityProvider("jumpcloudSaml", AccessIdentityProviderArgs.builder()        
+ *             .accountId("f037e56e89293a057740de681ac9abbe")
+ *             .name("JumpCloud SAML")
+ *             .type("saml")
  *             .configs(AccessIdentityProviderConfigArgs.builder()
- *                 .issuerUrl(&#34;jumpcloud&#34;)
- *                 .ssoTargetUrl(&#34;https://sso.myexample.jumpcloud.com/saml2/cloudflareaccess&#34;)
+ *                 .issuerUrl("jumpcloud")
+ *                 .ssoTargetUrl("https://sso.myexample.jumpcloud.com/saml2/cloudflareaccess")
  *                 .attributes(                
- *                     &#34;email&#34;,
- *                     &#34;username&#34;)
+ *                     "email",
+ *                     "username")
  *                 .signRequest(false)
- *                 .idpPublicCert(&#34;&#34;&#34;
+ *                 .idpPublicCert("""
  * MIIDpDCCAoygAwIBAgIGAV2ka+55MA0GCSqGSIb3DQEBCwUAMIGSMQswCQ...GF/Q2/MHadws97cZg
- * uTnQyuOqPuHbnN83d/2l1NSYKCbHt24o                &#34;&#34;&#34;)
+ * uTnQyuOqPuHbnN83d/2l1NSYKCbHt24o                """)
  *                 .build())
  *             .build());
  * 
  *         // okta
- *         var okta = new AccessIdentityProvider(&#34;okta&#34;, AccessIdentityProviderArgs.builder()        
- *             .accountId(&#34;f037e56e89293a057740de681ac9abbe&#34;)
- *             .name(&#34;Okta&#34;)
- *             .type(&#34;okta&#34;)
+ *         var okta = new AccessIdentityProvider("okta", AccessIdentityProviderArgs.builder()        
+ *             .accountId("f037e56e89293a057740de681ac9abbe")
+ *             .name("Okta")
+ *             .type("okta")
  *             .configs(AccessIdentityProviderConfigArgs.builder()
- *                 .clientId(&#34;example&#34;)
- *                 .clientSecret(&#34;secret_key&#34;)
- *                 .apiToken(&#34;okta_api_token&#34;)
- *                 .oktaAccount(&#34;https://example.com&#34;)
+ *                 .clientId("example")
+ *                 .clientSecret("secret_key")
+ *                 .apiToken("okta_api_token")
+ *                 .oktaAccount("https://example.com")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

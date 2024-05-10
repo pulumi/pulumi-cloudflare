@@ -21,7 +21,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -42,46 +43,47 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new ZoneCacheVariants(&#34;example&#34;, ZoneCacheVariantsArgs.builder()        
- *             .zoneId(&#34;0da42c8d2132a9ddaf714f9e7c920711&#34;)
+ *         var example = new ZoneCacheVariants("example", ZoneCacheVariantsArgs.builder()        
+ *             .zoneId("0da42c8d2132a9ddaf714f9e7c920711")
  *             .avifs(            
- *                 &#34;image/avif&#34;,
- *                 &#34;image/webp&#34;)
+ *                 "image/avif",
+ *                 "image/webp")
  *             .bmps(            
- *                 &#34;image/bmp&#34;,
- *                 &#34;image/webp&#34;)
+ *                 "image/bmp",
+ *                 "image/webp")
  *             .gifs(            
- *                 &#34;image/gif&#34;,
- *                 &#34;image/webp&#34;)
+ *                 "image/gif",
+ *                 "image/webp")
  *             .jpegs(            
- *                 &#34;image/jpeg&#34;,
- *                 &#34;image/webp&#34;)
+ *                 "image/jpeg",
+ *                 "image/webp")
  *             .jpgs(            
- *                 &#34;image/jpg&#34;,
- *                 &#34;image/webp&#34;)
+ *                 "image/jpg",
+ *                 "image/webp")
  *             .jpg2s(            
- *                 &#34;image/jpg2&#34;,
- *                 &#34;image/webp&#34;)
+ *                 "image/jpg2",
+ *                 "image/webp")
  *             .jp2s(            
- *                 &#34;image/jp2&#34;,
- *                 &#34;image/webp&#34;)
+ *                 "image/jp2",
+ *                 "image/webp")
  *             .pngs(            
- *                 &#34;image/png&#34;,
- *                 &#34;image/webp&#34;)
+ *                 "image/png",
+ *                 "image/webp")
  *             .tiffs(            
- *                 &#34;image/tiff&#34;,
- *                 &#34;image/webp&#34;)
+ *                 "image/tiff",
+ *                 "image/webp")
  *             .tifs(            
- *                 &#34;image/tif&#34;,
- *                 &#34;image/webp&#34;)
+ *                 "image/tif",
+ *                 "image/webp")
  *             .webps(            
- *                 &#34;image/jpeg&#34;,
- *                 &#34;image/webp&#34;)
+ *                 "image/jpeg",
+ *                 "image/webp")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  */
