@@ -173,6 +173,110 @@ export interface AccessApplicationSaasAppCustomAttributeSource {
     name: pulumi.Input<string>;
 }
 
+export interface AccessApplicationScimConfig {
+    /**
+     * Configuration for authenticating with the application's SCIM API. Allowed configurations are HTTP Basic, OAuth Bearer Token, and OAuth 2.
+     */
+    authentication?: pulumi.Input<inputs.AccessApplicationScimConfigAuthentication>;
+    /**
+     * If false, propagates DELETE requests to the target application for SCIM resources. If true, sets 'active' to false on the SCIM resource. Note: Some targets do not support DELETE operations.
+     */
+    deactivateOnDelete?: pulumi.Input<boolean>;
+    /**
+     * Whether SCIM provisioning is turned on for this application.
+     */
+    enabled?: pulumi.Input<boolean>;
+    /**
+     * The ID of the Access IDP to be used as the source for SCIM resources to provision to this application.
+     */
+    idpUid: pulumi.Input<string>;
+    /**
+     * A list of filters and transformations to apply to SCIM resources before provisioning them to the application. See below for nested schema.
+     */
+    mappings?: pulumi.Input<pulumi.Input<inputs.AccessApplicationScimConfigMapping>[]>;
+    /**
+     * The base URI for the application's SCIM-compatible API.
+     */
+    remoteUri: pulumi.Input<string>;
+}
+
+export interface AccessApplicationScimConfigAuthentication {
+    /**
+     * URL used to generate the auth code used during token generation.
+     */
+    authorizationUrl?: pulumi.Input<string>;
+    /**
+     * Client ID used to authenticate when generating a token for authenticating with the remote SCIM service.
+     */
+    clientId?: pulumi.Input<string>;
+    /**
+     * Secret used to authenticate when generating a token for authenticating with the remove SCIM service.
+     */
+    clientSecret?: pulumi.Input<string>;
+    /**
+     * The password used to authenticate with the remote SCIM service.
+     */
+    password?: pulumi.Input<string>;
+    /**
+     * The authentication scheme to use. For OAuth 2 authentication, this value should be `oauth2`
+     */
+    scheme: pulumi.Input<string>;
+    /**
+     * The authorization scopes to request when generating the token used to authenticate with the remove SCIM service.
+     */
+    scopes?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The token used to authenticate with the remote SCIM service.
+     */
+    token?: pulumi.Input<string>;
+    /**
+     * URL used to generate the token used to authenticate with the remote SCIM service.
+     */
+    tokenUrl?: pulumi.Input<string>;
+    /**
+     * The username used to authenticate with the remote SCIM service.
+     */
+    user?: pulumi.Input<string>;
+}
+
+export interface AccessApplicationScimConfigMapping {
+    /**
+     * Whether or not this mapping is enabled.
+     */
+    enabled?: pulumi.Input<boolean>;
+    /**
+     * A [SCIM filter expression](https://datatracker.ietf.org/doc/html/rfc7644#section-3.4.2.2) that matches resources that should be provisioned to this application.
+     */
+    filter?: pulumi.Input<string>;
+    /**
+     * Whether or not this mapping applies to creates, updates, or deletes.
+     */
+    operations?: pulumi.Input<inputs.AccessApplicationScimConfigMappingOperations>;
+    /**
+     * Which SCIM resource type this mapping applies to.
+     */
+    schema: pulumi.Input<string>;
+    /**
+     * A [JSONata](https://jsonata.org/) expression that transforms the resource before provisioning it in the application.
+     */
+    transformJsonata?: pulumi.Input<string>;
+}
+
+export interface AccessApplicationScimConfigMappingOperations {
+    /**
+     * Whether or not this mapping applies to create (POST) operations.
+     */
+    create?: pulumi.Input<boolean>;
+    /**
+     * Whether or not this mapping applies to DELETE operations.
+     */
+    delete?: pulumi.Input<boolean>;
+    /**
+     * Whether or not this mapping applies to update (PATCH/PUT) operations.
+     */
+    update?: pulumi.Input<boolean>;
+}
+
 export interface AccessGroupExclude {
     anyValidServiceToken?: pulumi.Input<boolean>;
     authContexts?: pulumi.Input<pulumi.Input<inputs.AccessGroupExcludeAuthContext>[]>;
@@ -186,6 +290,7 @@ export interface AccessGroupExclude {
     commonNames?: pulumi.Input<pulumi.Input<string>[]>;
     devicePostures?: pulumi.Input<pulumi.Input<string>[]>;
     emailDomains?: pulumi.Input<pulumi.Input<string>[]>;
+    emailLists?: pulumi.Input<pulumi.Input<string>[]>;
     emails?: pulumi.Input<pulumi.Input<string>[]>;
     everyone?: pulumi.Input<boolean>;
     externalEvaluation?: pulumi.Input<inputs.AccessGroupExcludeExternalEvaluation>;
@@ -273,6 +378,7 @@ export interface AccessGroupInclude {
     commonNames?: pulumi.Input<pulumi.Input<string>[]>;
     devicePostures?: pulumi.Input<pulumi.Input<string>[]>;
     emailDomains?: pulumi.Input<pulumi.Input<string>[]>;
+    emailLists?: pulumi.Input<pulumi.Input<string>[]>;
     emails?: pulumi.Input<pulumi.Input<string>[]>;
     everyone?: pulumi.Input<boolean>;
     externalEvaluation?: pulumi.Input<inputs.AccessGroupIncludeExternalEvaluation>;
@@ -360,6 +466,7 @@ export interface AccessGroupRequire {
     commonNames?: pulumi.Input<pulumi.Input<string>[]>;
     devicePostures?: pulumi.Input<pulumi.Input<string>[]>;
     emailDomains?: pulumi.Input<pulumi.Input<string>[]>;
+    emailLists?: pulumi.Input<pulumi.Input<string>[]>;
     emails?: pulumi.Input<pulumi.Input<string>[]>;
     everyone?: pulumi.Input<boolean>;
     externalEvaluation?: pulumi.Input<inputs.AccessGroupRequireExternalEvaluation>;
@@ -546,6 +653,7 @@ export interface AccessPolicyExclude {
     commonNames?: pulumi.Input<pulumi.Input<string>[]>;
     devicePostures?: pulumi.Input<pulumi.Input<string>[]>;
     emailDomains?: pulumi.Input<pulumi.Input<string>[]>;
+    emailLists?: pulumi.Input<pulumi.Input<string>[]>;
     emails?: pulumi.Input<pulumi.Input<string>[]>;
     everyone?: pulumi.Input<boolean>;
     externalEvaluation?: pulumi.Input<inputs.AccessPolicyExcludeExternalEvaluation>;
@@ -633,6 +741,7 @@ export interface AccessPolicyInclude {
     commonNames?: pulumi.Input<pulumi.Input<string>[]>;
     devicePostures?: pulumi.Input<pulumi.Input<string>[]>;
     emailDomains?: pulumi.Input<pulumi.Input<string>[]>;
+    emailLists?: pulumi.Input<pulumi.Input<string>[]>;
     emails?: pulumi.Input<pulumi.Input<string>[]>;
     everyone?: pulumi.Input<boolean>;
     externalEvaluation?: pulumi.Input<inputs.AccessPolicyIncludeExternalEvaluation>;
@@ -720,6 +829,7 @@ export interface AccessPolicyRequire {
     commonNames?: pulumi.Input<pulumi.Input<string>[]>;
     devicePostures?: pulumi.Input<pulumi.Input<string>[]>;
     emailDomains?: pulumi.Input<pulumi.Input<string>[]>;
+    emailLists?: pulumi.Input<pulumi.Input<string>[]>;
     emails?: pulumi.Input<pulumi.Input<string>[]>;
     everyone?: pulumi.Input<boolean>;
     externalEvaluation?: pulumi.Input<inputs.AccessPolicyRequireExternalEvaluation>;
@@ -1134,6 +1244,10 @@ export interface DevicePostureRuleInput {
      * The operating system version excluding OS name information or release name.
      */
     osDistroRevision?: pulumi.Input<string>;
+    /**
+     * Extra operating system version details following the semantic version value.
+     */
+    osVersionExtra?: pulumi.Input<string>;
     /**
      * Overall ZTA score from Crowdstrike. Value must be between 1 and 100.
      */

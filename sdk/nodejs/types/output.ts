@@ -173,6 +173,110 @@ export interface AccessApplicationSaasAppCustomAttributeSource {
     name: string;
 }
 
+export interface AccessApplicationScimConfig {
+    /**
+     * Configuration for authenticating with the application's SCIM API. Allowed configurations are HTTP Basic, OAuth Bearer Token, and OAuth 2.
+     */
+    authentication?: outputs.AccessApplicationScimConfigAuthentication;
+    /**
+     * If false, propagates DELETE requests to the target application for SCIM resources. If true, sets 'active' to false on the SCIM resource. Note: Some targets do not support DELETE operations.
+     */
+    deactivateOnDelete?: boolean;
+    /**
+     * Whether SCIM provisioning is turned on for this application.
+     */
+    enabled?: boolean;
+    /**
+     * The ID of the Access IDP to be used as the source for SCIM resources to provision to this application.
+     */
+    idpUid: string;
+    /**
+     * A list of filters and transformations to apply to SCIM resources before provisioning them to the application. See below for nested schema.
+     */
+    mappings?: outputs.AccessApplicationScimConfigMapping[];
+    /**
+     * The base URI for the application's SCIM-compatible API.
+     */
+    remoteUri: string;
+}
+
+export interface AccessApplicationScimConfigAuthentication {
+    /**
+     * URL used to generate the auth code used during token generation.
+     */
+    authorizationUrl?: string;
+    /**
+     * Client ID used to authenticate when generating a token for authenticating with the remote SCIM service.
+     */
+    clientId?: string;
+    /**
+     * Secret used to authenticate when generating a token for authenticating with the remove SCIM service.
+     */
+    clientSecret?: string;
+    /**
+     * The password used to authenticate with the remote SCIM service.
+     */
+    password?: string;
+    /**
+     * The authentication scheme to use. For OAuth 2 authentication, this value should be `oauth2`
+     */
+    scheme: string;
+    /**
+     * The authorization scopes to request when generating the token used to authenticate with the remove SCIM service.
+     */
+    scopes?: string[];
+    /**
+     * The token used to authenticate with the remote SCIM service.
+     */
+    token?: string;
+    /**
+     * URL used to generate the token used to authenticate with the remote SCIM service.
+     */
+    tokenUrl?: string;
+    /**
+     * The username used to authenticate with the remote SCIM service.
+     */
+    user?: string;
+}
+
+export interface AccessApplicationScimConfigMapping {
+    /**
+     * Whether or not this mapping is enabled.
+     */
+    enabled?: boolean;
+    /**
+     * A [SCIM filter expression](https://datatracker.ietf.org/doc/html/rfc7644#section-3.4.2.2) that matches resources that should be provisioned to this application.
+     */
+    filter?: string;
+    /**
+     * Whether or not this mapping applies to creates, updates, or deletes.
+     */
+    operations?: outputs.AccessApplicationScimConfigMappingOperations;
+    /**
+     * Which SCIM resource type this mapping applies to.
+     */
+    schema: string;
+    /**
+     * A [JSONata](https://jsonata.org/) expression that transforms the resource before provisioning it in the application.
+     */
+    transformJsonata?: string;
+}
+
+export interface AccessApplicationScimConfigMappingOperations {
+    /**
+     * Whether or not this mapping applies to create (POST) operations.
+     */
+    create?: boolean;
+    /**
+     * Whether or not this mapping applies to DELETE operations.
+     */
+    delete?: boolean;
+    /**
+     * Whether or not this mapping applies to update (PATCH/PUT) operations.
+     */
+    update?: boolean;
+}
+
 export interface AccessGroupExclude {
     anyValidServiceToken?: boolean;
     authContexts?: outputs.AccessGroupExcludeAuthContext[];
@@ -186,6 +290,7 @@ export interface AccessGroupExclude {
     commonNames?: string[];
     devicePostures?: string[];
     emailDomains?: string[];
+    emailLists?: string[];
     emails?: string[];
     everyone?: boolean;
     externalEvaluation?: outputs.AccessGroupExcludeExternalEvaluation;
@@ -273,6 +378,7 @@ export interface AccessGroupInclude {
     commonNames?: string[];
     devicePostures?: string[];
     emailDomains?: string[];
+    emailLists?: string[];
     emails?: string[];
     everyone?: boolean;
     externalEvaluation?: outputs.AccessGroupIncludeExternalEvaluation;
@@ -360,6 +466,7 @@ export interface AccessGroupRequire {
     commonNames?: string[];
     devicePostures?: string[];
     emailDomains?: string[];
+    emailLists?: string[];
     emails?: string[];
     everyone?: boolean;
     externalEvaluation?: outputs.AccessGroupRequireExternalEvaluation;
@@ -546,6 +653,7 @@ export interface AccessPolicyExclude {
     commonNames?: string[];
     devicePostures?: string[];
     emailDomains?: string[];
+    emailLists?: string[];
     emails?: string[];
     everyone?: boolean;
     externalEvaluation?: outputs.AccessPolicyExcludeExternalEvaluation;
@@ -633,6 +741,7 @@ export interface AccessPolicyInclude {
     commonNames?: string[];
     devicePostures?: string[];
     emailDomains?: string[];
+    emailLists?: string[];
     emails?: string[];
     everyone?: boolean;
     externalEvaluation?: outputs.AccessPolicyIncludeExternalEvaluation;
@@ -720,6 +829,7 @@ export interface AccessPolicyRequire {
     commonNames?: string[];
     devicePostures?: string[];
     emailDomains?: string[];
+    emailLists?: string[];
     emails?: string[];
     everyone?: boolean;
     externalEvaluation?: outputs.AccessPolicyRequireExternalEvaluation;
@@ -1135,6 +1245,10 @@ export interface DevicePostureRuleInput {
      */
     osDistroRevision?: string;
     /**
+     * Extra operating system version details following the semantic version value.
+     */
+    osVersionExtra?: string;
+    /**
      * Overall ZTA score from Crowdstrike. Value must be between 1 and 100.
      */
     overall?: string;
@@ -1410,6 +1524,10 @@ export interface GetDevicesDevice {
      * The operating system version.
      */
     osVersion?: string;
+    /**
+     * Extra version value following the operating system version.
+     */
+    osVersionExtra?: string;
     /**
      * When the device was revoked.
      */

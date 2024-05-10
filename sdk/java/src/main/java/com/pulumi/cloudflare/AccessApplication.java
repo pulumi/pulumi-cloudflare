@@ -10,6 +10,7 @@ import com.pulumi.cloudflare.outputs.AccessApplicationCorsHeader;
 import com.pulumi.cloudflare.outputs.AccessApplicationFooterLink;
 import com.pulumi.cloudflare.outputs.AccessApplicationLandingPageDesign;
 import com.pulumi.cloudflare.outputs.AccessApplicationSaasApp;
+import com.pulumi.cloudflare.outputs.AccessApplicationScimConfig;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
@@ -375,6 +376,20 @@ public class AccessApplication extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> sameSiteCookieAttribute() {
         return Codegen.optional(this.sameSiteCookieAttribute);
+    }
+    /**
+     * Configuration for provisioning to the Access Application via SCIM. This is currently in closed beta.
+     * 
+     */
+    @Export(name="scimConfig", refs={AccessApplicationScimConfig.class}, tree="[0]")
+    private Output</* @Nullable */ AccessApplicationScimConfig> scimConfig;
+
+    /**
+     * @return Configuration for provisioning to the Access Application via SCIM. This is currently in closed beta.
+     * 
+     */
+    public Output<Optional<AccessApplicationScimConfig>> scimConfig() {
+        return Codegen.optional(this.scimConfig);
     }
     /**
      * List of domains that access will secure. Only present for self_hosted, vnc, and ssh applications. Always includes the value set as `domain`.

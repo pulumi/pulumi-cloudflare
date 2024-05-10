@@ -20,11 +20,11 @@ import (
 // Filter expressions needs to be created first before using Firewall
 // Rule.
 //
-// > `FirewallRule` is in a deprecation phase that will last for one
+// > `FirewallRule` is in a deprecation phase that will last for 14
 //
-//	year (May 1st, 2024). During this time period, this resource is still fully
-//	supported but you are strongly advised  to move to the `Ruleset`
-//	resource. Full details can be found in the
+//	months (July 1st, 2024). During this time period, this resource is still
+//	fully supported but you are strongly advised  to move to the
+//	`Ruleset` resource. Full details can be found in the
 //	developer documentation.
 //
 // ## Example Usage

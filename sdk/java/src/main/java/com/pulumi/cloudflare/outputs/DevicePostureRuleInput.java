@@ -120,6 +120,11 @@ public final class DevicePostureRuleInput {
      */
     private @Nullable String osDistroRevision;
     /**
+     * @return Extra operating system version details following the semantic version value.
+     * 
+     */
+    private @Nullable String osVersionExtra;
+    /**
      * @return Overall ZTA score from Crowdstrike. Value must be between 1 and 100.
      * 
      */
@@ -329,6 +334,13 @@ public final class DevicePostureRuleInput {
         return Optional.ofNullable(this.osDistroRevision);
     }
     /**
+     * @return Extra operating system version details following the semantic version value.
+     * 
+     */
+    public Optional<String> osVersionExtra() {
+        return Optional.ofNullable(this.osVersionExtra);
+    }
+    /**
      * @return Overall ZTA score from Crowdstrike. Value must be between 1 and 100.
      * 
      */
@@ -443,6 +455,7 @@ public final class DevicePostureRuleInput {
         private @Nullable String os;
         private @Nullable String osDistroName;
         private @Nullable String osDistroRevision;
+        private @Nullable String osVersionExtra;
         private @Nullable String overall;
         private @Nullable String path;
         private @Nullable Boolean requireAll;
@@ -479,6 +492,7 @@ public final class DevicePostureRuleInput {
     	      this.os = defaults.os;
     	      this.osDistroName = defaults.osDistroName;
     	      this.osDistroRevision = defaults.osDistroRevision;
+    	      this.osVersionExtra = defaults.osVersionExtra;
     	      this.overall = defaults.overall;
     	      this.path = defaults.path;
     	      this.requireAll = defaults.requireAll;
@@ -623,6 +637,12 @@ public final class DevicePostureRuleInput {
             return this;
         }
         @CustomType.Setter
+        public Builder osVersionExtra(@Nullable String osVersionExtra) {
+
+            this.osVersionExtra = osVersionExtra;
+            return this;
+        }
+        @CustomType.Setter
         public Builder overall(@Nullable String overall) {
 
             this.overall = overall;
@@ -717,6 +737,7 @@ public final class DevicePostureRuleInput {
             _resultValue.os = os;
             _resultValue.osDistroName = osDistroName;
             _resultValue.osDistroRevision = osDistroRevision;
+            _resultValue.osVersionExtra = osVersionExtra;
             _resultValue.overall = overall;
             _resultValue.path = path;
             _resultValue.requireAll = requireAll;

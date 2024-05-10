@@ -33,6 +33,7 @@ public final class AccessPolicyInclude {
     private @Nullable List<String> commonNames;
     private @Nullable List<String> devicePostures;
     private @Nullable List<String> emailDomains;
+    private @Nullable List<String> emailLists;
     private @Nullable List<String> emails;
     private @Nullable Boolean everyone;
     private @Nullable AccessPolicyIncludeExternalEvaluation externalEvaluation;
@@ -86,6 +87,9 @@ public final class AccessPolicyInclude {
     }
     public List<String> emailDomains() {
         return this.emailDomains == null ? List.of() : this.emailDomains;
+    }
+    public List<String> emailLists() {
+        return this.emailLists == null ? List.of() : this.emailLists;
     }
     public List<String> emails() {
         return this.emails == null ? List.of() : this.emails;
@@ -153,6 +157,7 @@ public final class AccessPolicyInclude {
         private @Nullable List<String> commonNames;
         private @Nullable List<String> devicePostures;
         private @Nullable List<String> emailDomains;
+        private @Nullable List<String> emailLists;
         private @Nullable List<String> emails;
         private @Nullable Boolean everyone;
         private @Nullable AccessPolicyIncludeExternalEvaluation externalEvaluation;
@@ -178,6 +183,7 @@ public final class AccessPolicyInclude {
     	      this.commonNames = defaults.commonNames;
     	      this.devicePostures = defaults.devicePostures;
     	      this.emailDomains = defaults.emailDomains;
+    	      this.emailLists = defaults.emailLists;
     	      this.emails = defaults.emails;
     	      this.everyone = defaults.everyone;
     	      this.externalEvaluation = defaults.externalEvaluation;
@@ -261,6 +267,15 @@ public final class AccessPolicyInclude {
         }
         public Builder emailDomains(String... emailDomains) {
             return emailDomains(List.of(emailDomains));
+        }
+        @CustomType.Setter
+        public Builder emailLists(@Nullable List<String> emailLists) {
+
+            this.emailLists = emailLists;
+            return this;
+        }
+        public Builder emailLists(String... emailLists) {
+            return emailLists(List.of(emailLists));
         }
         @CustomType.Setter
         public Builder emails(@Nullable List<String> emails) {
@@ -384,6 +399,7 @@ public final class AccessPolicyInclude {
             _resultValue.commonNames = commonNames;
             _resultValue.devicePostures = devicePostures;
             _resultValue.emailDomains = emailDomains;
+            _resultValue.emailLists = emailLists;
             _resultValue.emails = emails;
             _resultValue.everyone = everyone;
             _resultValue.externalEvaluation = externalEvaluation;

@@ -83,6 +83,11 @@ public final class GetDevicesDevice {
      */
     private @Nullable String osVersion;
     /**
+     * @return Extra version value following the operating system version.
+     * 
+     */
+    private @Nullable String osVersionExtra;
+    /**
      * @return When the device was revoked.
      * 
      */
@@ -218,6 +223,13 @@ public final class GetDevicesDevice {
         return Optional.ofNullable(this.osVersion);
     }
     /**
+     * @return Extra version value following the operating system version.
+     * 
+     */
+    public Optional<String> osVersionExtra() {
+        return Optional.ofNullable(this.osVersionExtra);
+    }
+    /**
      * @return When the device was revoked.
      * 
      */
@@ -290,6 +302,7 @@ public final class GetDevicesDevice {
         private @Nullable String osDistroName;
         private @Nullable String osDistroRevision;
         private @Nullable String osVersion;
+        private @Nullable String osVersionExtra;
         private @Nullable String revokedAt;
         private @Nullable String serialNumber;
         private @Nullable String updated;
@@ -314,6 +327,7 @@ public final class GetDevicesDevice {
     	      this.osDistroName = defaults.osDistroName;
     	      this.osDistroRevision = defaults.osDistroRevision;
     	      this.osVersion = defaults.osVersion;
+    	      this.osVersionExtra = defaults.osVersionExtra;
     	      this.revokedAt = defaults.revokedAt;
     	      this.serialNumber = defaults.serialNumber;
     	      this.updated = defaults.updated;
@@ -408,6 +422,12 @@ public final class GetDevicesDevice {
             return this;
         }
         @CustomType.Setter
+        public Builder osVersionExtra(@Nullable String osVersionExtra) {
+
+            this.osVersionExtra = osVersionExtra;
+            return this;
+        }
+        @CustomType.Setter
         public Builder revokedAt(@Nullable String revokedAt) {
 
             this.revokedAt = revokedAt;
@@ -465,6 +485,7 @@ public final class GetDevicesDevice {
             _resultValue.osDistroName = osDistroName;
             _resultValue.osDistroRevision = osDistroRevision;
             _resultValue.osVersion = osVersion;
+            _resultValue.osVersionExtra = osVersionExtra;
             _resultValue.revokedAt = revokedAt;
             _resultValue.serialNumber = serialNumber;
             _resultValue.updated = updated;

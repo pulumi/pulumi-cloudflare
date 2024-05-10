@@ -14,6 +14,12 @@ namespace Pulumi.Cloudflare
     /// be used to limit the traffic you receive zone-wide, or matching more
     /// specific types of requests/responses.
     /// 
+    /// &gt; `cloudflare.RateLimit` is in a deprecation phase that will last for 14
+    ///   months (July 1st, 2024). During this time period, this resource is still
+    ///   fully supported but you are strongly advised to move to the
+    ///   `cloudflare.Ruleset` resource. Full details can be found in the
+    ///   developer documentation.
+    /// 
     /// ## Example Usage
     /// 
     /// ```csharp

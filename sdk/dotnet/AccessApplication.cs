@@ -174,6 +174,12 @@ namespace Pulumi.Cloudflare
         public Output<string?> SameSiteCookieAttribute { get; private set; } = null!;
 
         /// <summary>
+        /// Configuration for provisioning to the Access Application via SCIM. This is currently in closed beta.
+        /// </summary>
+        [Output("scimConfig")]
+        public Output<Outputs.AccessApplicationScimConfig?> ScimConfig { get; private set; } = null!;
+
+        /// <summary>
         /// List of domains that access will secure. Only present for self_hosted, vnc, and ssh applications. Always includes the value set as `domain`.
         /// </summary>
         [Output("selfHostedDomains")]
@@ -423,6 +429,12 @@ namespace Pulumi.Cloudflare
         [Input("sameSiteCookieAttribute")]
         public Input<string>? SameSiteCookieAttribute { get; set; }
 
+        /// <summary>
+        /// Configuration for provisioning to the Access Application via SCIM. This is currently in closed beta.
+        /// </summary>
+        [Input("scimConfig")]
+        public Input<Inputs.AccessApplicationScimConfigArgs>? ScimConfig { get; set; }
+
         [Input("selfHostedDomains")]
         private InputList<string>? _selfHostedDomains;
 
@@ -652,6 +664,12 @@ namespace Pulumi.Cloudflare
         /// </summary>
         [Input("sameSiteCookieAttribute")]
         public Input<string>? SameSiteCookieAttribute { get; set; }
+
+        /// <summary>
+        /// Configuration for provisioning to the Access Application via SCIM. This is currently in closed beta.
+        /// </summary>
+        [Input("scimConfig")]
+        public Input<Inputs.AccessApplicationScimConfigGetArgs>? ScimConfig { get; set; }
 
         [Input("selfHostedDomains")]
         private InputList<string>? _selfHostedDomains;
