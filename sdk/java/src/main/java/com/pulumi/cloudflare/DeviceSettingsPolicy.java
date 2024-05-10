@@ -22,7 +22,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -43,12 +44,12 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var developerWarpPolicy = new DeviceSettingsPolicy(&#34;developerWarpPolicy&#34;, DeviceSettingsPolicyArgs.builder()        
- *             .accountId(&#34;f037e56e89293a057740de681ac9abbe&#34;)
- *             .name(&#34;Developers WARP settings policy&#34;)
- *             .description(&#34;Developers WARP settings policy description&#34;)
+ *         var developerWarpPolicy = new DeviceSettingsPolicy("developerWarpPolicy", DeviceSettingsPolicyArgs.builder()        
+ *             .accountId("f037e56e89293a057740de681ac9abbe")
+ *             .name("Developers WARP settings policy")
+ *             .description("Developers WARP settings policy description")
  *             .precedence(10)
- *             .match(&#34;any(identity.groups.name[*] in {\&#34;Developers\&#34;})&#34;)
+ *             .match("any(identity.groups.name[*] in {\"Developers\"})")
  *             .default_(false)
  *             .enabled(true)
  *             .allowModeSwitch(true)
@@ -57,16 +58,17 @@ import javax.annotation.Nullable;
  *             .autoConnect(0)
  *             .captivePortal(5)
  *             .disableAutoFallback(true)
- *             .supportUrl(&#34;https://cloudflare.com&#34;)
+ *             .supportUrl("https://cloudflare.com")
  *             .switchLocked(true)
- *             .serviceModeV2Mode(&#34;warp&#34;)
+ *             .serviceModeV2Mode("warp")
  *             .serviceModeV2Port(3000)
  *             .excludeOfficeIps(false)
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

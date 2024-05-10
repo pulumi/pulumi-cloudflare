@@ -26,7 +26,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -51,25 +52,26 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new PrivateKey(&#34;example&#34;, PrivateKeyArgs.builder()        
- *             .algorithm(&#34;RSA&#34;)
+ *         var example = new PrivateKey("example", PrivateKeyArgs.builder()        
+ *             .algorithm("RSA")
  *             .build());
  * 
- *         var exampleCertRequest = new CertRequest(&#34;exampleCertRequest&#34;, CertRequestArgs.builder()        
+ *         var exampleCertRequest = new CertRequest("exampleCertRequest", CertRequestArgs.builder()        
  *             .privateKeyPem(example.privateKeyPem())
  *             .subject(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
  *             .build());
  * 
- *         var exampleOriginCaCertificate = new OriginCaCertificate(&#34;exampleOriginCaCertificate&#34;, OriginCaCertificateArgs.builder()        
+ *         var exampleOriginCaCertificate = new OriginCaCertificate("exampleOriginCaCertificate", OriginCaCertificateArgs.builder()        
  *             .csr(exampleCertRequest.certRequestPem())
- *             .hostnames(&#34;example.com&#34;)
- *             .requestType(&#34;origin-rsa&#34;)
+ *             .hostnames("example.com")
+ *             .requestType("origin-rsa")
  *             .requestedValidity(7)
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
@@ -137,17 +139,9 @@ public class OriginCaCertificate extends com.pulumi.resources.CustomResource {
     public Output<List<String>> hostnames() {
         return this.hostnames;
     }
-    /**
-     * Number of days prior to the expiry to trigger a renewal of the certificate if a Terraform operation is run.
-     * 
-     */
     @Export(name="minDaysForRenewal", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> minDaysForRenewal;
 
-    /**
-     * @return Number of days prior to the expiry to trigger a renewal of the certificate if a Terraform operation is run.
-     * 
-     */
     public Output<Optional<Integer>> minDaysForRenewal() {
         return Codegen.optional(this.minDaysForRenewal);
     }

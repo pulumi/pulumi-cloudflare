@@ -17,7 +17,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -38,15 +39,16 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new R2Bucket(&#34;example&#34;, R2BucketArgs.builder()        
- *             .accountId(&#34;f037e56e89293a057740de681ac9abbe&#34;)
- *             .name(&#34;terraform-bucket&#34;)
- *             .location(&#34;enam&#34;)
+ *         var example = new R2Bucket("example", R2BucketArgs.builder()        
+ *             .accountId("f037e56e89293a057740de681ac9abbe")
+ *             .name("terraform-bucket")
+ *             .location("enam")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * &gt; Available location values can be found in the [R2 documentation](https://developers.cloudflare.com/r2/reference/data-location/#available-hints).

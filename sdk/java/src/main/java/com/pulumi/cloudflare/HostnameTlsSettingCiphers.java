@@ -22,7 +22,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -43,15 +44,16 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new HostnameTlsSettingCiphers(&#34;example&#34;, HostnameTlsSettingCiphersArgs.builder()        
- *             .zoneId(&#34;0da42c8d2132a9ddaf714f9e7c920711&#34;)
- *             .hostname(&#34;sub.example.com&#34;)
- *             .values(&#34;ECDHE-RSA-AES128-GCM-SHA256&#34;)
+ *         var example = new HostnameTlsSettingCiphers("example", HostnameTlsSettingCiphersArgs.builder()        
+ *             .zoneId("0da42c8d2132a9ddaf714f9e7c920711")
+ *             .hostname("sub.example.com")
+ *             .values("ECDHE-RSA-AES128-GCM-SHA256")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

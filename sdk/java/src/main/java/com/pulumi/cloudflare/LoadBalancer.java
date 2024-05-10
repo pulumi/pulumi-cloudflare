@@ -35,7 +35,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -64,11 +65,11 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleLoadBalancerPool = new LoadBalancerPool(&#34;exampleLoadBalancerPool&#34;, LoadBalancerPoolArgs.builder()        
- *             .name(&#34;example-lb-pool&#34;)
+ *         var exampleLoadBalancerPool = new LoadBalancerPool("exampleLoadBalancerPool", LoadBalancerPoolArgs.builder()        
+ *             .name("example-lb-pool")
  *             .origins(LoadBalancerPoolOriginArgs.builder()
- *                 .name(&#34;example-1&#34;)
- *                 .address(&#34;192.0.2.1&#34;)
+ *                 .name("example-1")
+ *                 .address("192.0.2.1")
  *                 .enabled(false)
  *                 .build())
  *             .build());
@@ -77,41 +78,42 @@ import javax.annotation.Nullable;
  *         // In normal usage, would have different pools set for different pops
  *         // (cloudflare points-of-presence) and/or for different regions.
  *         // Within each pop or region we can define multiple pools in failover order.
- *         var example = new LoadBalancer(&#34;example&#34;, LoadBalancerArgs.builder()        
- *             .zoneId(&#34;0da42c8d2132a9ddaf714f9e7c920711&#34;)
- *             .name(&#34;example-load-balancer.example.com&#34;)
+ *         var example = new LoadBalancer("example", LoadBalancerArgs.builder()        
+ *             .zoneId("0da42c8d2132a9ddaf714f9e7c920711")
+ *             .name("example-load-balancer.example.com")
  *             .fallbackPoolId(exampleLoadBalancerPool.id())
  *             .defaultPoolIds(exampleLoadBalancerPool.id())
- *             .description(&#34;example load balancer using geo-balancing&#34;)
+ *             .description("example load balancer using geo-balancing")
  *             .proxied(true)
- *             .steeringPolicy(&#34;geo&#34;)
+ *             .steeringPolicy("geo")
  *             .popPools(LoadBalancerPopPoolArgs.builder()
- *                 .pop(&#34;LAX&#34;)
+ *                 .pop("LAX")
  *                 .poolIds(exampleLoadBalancerPool.id())
  *                 .build())
  *             .countryPools(LoadBalancerCountryPoolArgs.builder()
- *                 .country(&#34;US&#34;)
+ *                 .country("US")
  *                 .poolIds(exampleLoadBalancerPool.id())
  *                 .build())
  *             .regionPools(LoadBalancerRegionPoolArgs.builder()
- *                 .region(&#34;WNAM&#34;)
+ *                 .region("WNAM")
  *                 .poolIds(exampleLoadBalancerPool.id())
  *                 .build())
  *             .rules(LoadBalancerRuleArgs.builder()
- *                 .name(&#34;example rule&#34;)
- *                 .condition(&#34;http.request.uri.path contains \&#34;testing\&#34;&#34;)
+ *                 .name("example rule")
+ *                 .condition("http.request.uri.path contains \"testing\"")
  *                 .fixedResponse(LoadBalancerRuleFixedResponseArgs.builder()
- *                     .messageBody(&#34;hello&#34;)
+ *                     .messageBody("hello")
  *                     .statusCode(200)
- *                     .contentType(&#34;html&#34;)
- *                     .location(&#34;www.example.com&#34;)
+ *                     .contentType("html")
+ *                     .location("www.example.com")
  *                     .build())
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

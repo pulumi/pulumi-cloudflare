@@ -23,7 +23,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -47,43 +48,44 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // Authenticated Origin Pulls
- *         var myAop = new AuthenticatedOriginPulls(&#34;myAop&#34;, AuthenticatedOriginPullsArgs.builder()        
- *             .zoneId(&#34;0da42c8d2132a9ddaf714f9e7c920711&#34;)
+ *         var myAop = new AuthenticatedOriginPulls("myAop", AuthenticatedOriginPullsArgs.builder()        
+ *             .zoneId("0da42c8d2132a9ddaf714f9e7c920711")
  *             .enabled(true)
  *             .build());
  * 
  *         // Per-Zone Authenticated Origin Pulls
- *         var myPerZoneAopCert = new AuthenticatedOriginPullsCertificate(&#34;myPerZoneAopCert&#34;, AuthenticatedOriginPullsCertificateArgs.builder()        
- *             .zoneId(&#34;0da42c8d2132a9ddaf714f9e7c920711&#34;)
- *             .certificate(&#34;-----INSERT CERTIFICATE-----&#34;)
- *             .privateKey(&#34;-----INSERT PRIVATE KEY-----&#34;)
- *             .type(&#34;per-zone&#34;)
+ *         var myPerZoneAopCert = new AuthenticatedOriginPullsCertificate("myPerZoneAopCert", AuthenticatedOriginPullsCertificateArgs.builder()        
+ *             .zoneId("0da42c8d2132a9ddaf714f9e7c920711")
+ *             .certificate("-----INSERT CERTIFICATE-----")
+ *             .privateKey("-----INSERT PRIVATE KEY-----")
+ *             .type("per-zone")
  *             .build());
  * 
- *         var myPerZoneAop = new AuthenticatedOriginPulls(&#34;myPerZoneAop&#34;, AuthenticatedOriginPullsArgs.builder()        
- *             .zoneId(&#34;0da42c8d2132a9ddaf714f9e7c920711&#34;)
+ *         var myPerZoneAop = new AuthenticatedOriginPulls("myPerZoneAop", AuthenticatedOriginPullsArgs.builder()        
+ *             .zoneId("0da42c8d2132a9ddaf714f9e7c920711")
  *             .authenticatedOriginPullsCertificate(myPerZoneAopCert.id())
  *             .enabled(true)
  *             .build());
  * 
  *         // Per-Hostname Authenticated Origin Pulls
- *         var myPerHostnameAopCert = new AuthenticatedOriginPullsCertificate(&#34;myPerHostnameAopCert&#34;, AuthenticatedOriginPullsCertificateArgs.builder()        
- *             .zoneId(&#34;0da42c8d2132a9ddaf714f9e7c920711&#34;)
- *             .certificate(&#34;-----INSERT CERTIFICATE-----&#34;)
- *             .privateKey(&#34;-----INSERT PRIVATE KEY-----&#34;)
- *             .type(&#34;per-hostname&#34;)
+ *         var myPerHostnameAopCert = new AuthenticatedOriginPullsCertificate("myPerHostnameAopCert", AuthenticatedOriginPullsCertificateArgs.builder()        
+ *             .zoneId("0da42c8d2132a9ddaf714f9e7c920711")
+ *             .certificate("-----INSERT CERTIFICATE-----")
+ *             .privateKey("-----INSERT PRIVATE KEY-----")
+ *             .type("per-hostname")
  *             .build());
  * 
- *         var myPerHostnameAop = new AuthenticatedOriginPulls(&#34;myPerHostnameAop&#34;, AuthenticatedOriginPullsArgs.builder()        
- *             .zoneId(&#34;0da42c8d2132a9ddaf714f9e7c920711&#34;)
+ *         var myPerHostnameAop = new AuthenticatedOriginPulls("myPerHostnameAop", AuthenticatedOriginPullsArgs.builder()        
+ *             .zoneId("0da42c8d2132a9ddaf714f9e7c920711")
  *             .authenticatedOriginPullsCertificate(myPerHostnameAopCert.id())
- *             .hostname(&#34;aop.example.com&#34;)
+ *             .hostname("aop.example.com")
  *             .enabled(true)
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

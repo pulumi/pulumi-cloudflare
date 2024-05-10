@@ -27,7 +27,8 @@ public final class PageRuleActionsCacheKeyFieldsUser {
      * Example:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -56,21 +57,21 @@ public final class PageRuleActionsCacheKeyFieldsUser {
      * 
      *     public static void stack(Context ctx) {
      *         // Unrealistic example with all features used
-     *         var foobar = new PageRule(&#34;foobar&#34;, PageRuleArgs.builder()        
+     *         var foobar = new PageRule("foobar", PageRuleArgs.builder()        
      *             .zoneId(cloudflareZoneId)
-     *             .target(String.format(&#34;%s/app/*&#34;, cloudflareZone))
+     *             .target(String.format("%s/app/*", cloudflareZone))
      *             .priority(1)
      *             .actions(PageRuleActionsArgs.builder()
      *                 .cacheKeyFields(PageRuleActionsCacheKeyFieldsArgs.builder()
      *                     .cookie(PageRuleActionsCacheKeyFieldsCookieArgs.builder()
-     *                         .checkPresences(&#34;wordpress_test_cookie&#34;)
+     *                         .checkPresences("wordpress_test_cookie")
      *                         .build())
      *                     .header(PageRuleActionsCacheKeyFieldsHeaderArgs.builder()
-     *                         .checkPresences(&#34;header_present&#34;)
-     *                         .excludes(&#34;origin&#34;)
+     *                         .checkPresences("header_present")
+     *                         .excludes("origin")
      *                         .includes(                        
-     *                             &#34;api-key&#34;,
-     *                             &#34;dnt&#34;)
+     *                             "api-key",
+     *                             "dnt")
      *                         .build())
      *                     .host(PageRuleActionsCacheKeyFieldsHostArgs.builder()
      *                         .resolved(true)
@@ -89,7 +90,8 @@ public final class PageRuleActionsCacheKeyFieldsUser {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -116,7 +118,8 @@ public final class PageRuleActionsCacheKeyFieldsUser {
      * Example:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -145,21 +148,21 @@ public final class PageRuleActionsCacheKeyFieldsUser {
      * 
      *     public static void stack(Context ctx) {
      *         // Unrealistic example with all features used
-     *         var foobar = new PageRule(&#34;foobar&#34;, PageRuleArgs.builder()        
+     *         var foobar = new PageRule("foobar", PageRuleArgs.builder()        
      *             .zoneId(cloudflareZoneId)
-     *             .target(String.format(&#34;%s/app/*&#34;, cloudflareZone))
+     *             .target(String.format("%s/app/*", cloudflareZone))
      *             .priority(1)
      *             .actions(PageRuleActionsArgs.builder()
      *                 .cacheKeyFields(PageRuleActionsCacheKeyFieldsArgs.builder()
      *                     .cookie(PageRuleActionsCacheKeyFieldsCookieArgs.builder()
-     *                         .checkPresences(&#34;wordpress_test_cookie&#34;)
+     *                         .checkPresences("wordpress_test_cookie")
      *                         .build())
      *                     .header(PageRuleActionsCacheKeyFieldsHeaderArgs.builder()
-     *                         .checkPresences(&#34;header_present&#34;)
-     *                         .excludes(&#34;origin&#34;)
+     *                         .checkPresences("header_present")
+     *                         .excludes("origin")
      *                         .includes(                        
-     *                             &#34;api-key&#34;,
-     *                             &#34;dnt&#34;)
+     *                             "api-key",
+     *                             "dnt")
      *                         .build())
      *                     .host(PageRuleActionsCacheKeyFieldsHostArgs.builder()
      *                         .resolved(true)
@@ -178,7 +181,8 @@ public final class PageRuleActionsCacheKeyFieldsUser {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */

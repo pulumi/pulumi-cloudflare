@@ -24,7 +24,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -45,20 +46,21 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new StaticRoute(&#34;example&#34;, StaticRouteArgs.builder()        
- *             .accountId(&#34;f037e56e89293a057740de681ac9abbe&#34;)
- *             .description(&#34;New route for new prefix 192.0.2.0/24&#34;)
- *             .prefix(&#34;192.0.2.0/24&#34;)
- *             .nexthop(&#34;10.0.0.0&#34;)
+ *         var example = new StaticRoute("example", StaticRouteArgs.builder()        
+ *             .accountId("f037e56e89293a057740de681ac9abbe")
+ *             .description("New route for new prefix 192.0.2.0/24")
+ *             .prefix("192.0.2.0/24")
+ *             .nexthop("10.0.0.0")
  *             .priority(100)
  *             .weight(10)
- *             .coloNames(&#34;den01&#34;)
- *             .coloRegions(&#34;APAC&#34;)
+ *             .coloNames("den01")
+ *             .coloRegions("APAC")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

@@ -23,7 +23,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -44,20 +45,21 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new TeamsList(&#34;example&#34;, TeamsListArgs.builder()        
- *             .accountId(&#34;f037e56e89293a057740de681ac9abbe&#34;)
- *             .name(&#34;Corporate devices&#34;)
- *             .type(&#34;SERIAL&#34;)
- *             .description(&#34;Serial numbers for all corporate devices.&#34;)
+ *         var example = new TeamsList("example", TeamsListArgs.builder()        
+ *             .accountId("f037e56e89293a057740de681ac9abbe")
+ *             .name("Corporate devices")
+ *             .type("SERIAL")
+ *             .description("Serial numbers for all corporate devices.")
  *             .items(            
- *                 &#34;8GE8721REF&#34;,
- *                 &#34;5RE8543EGG&#34;,
- *                 &#34;1YE2880LNP&#34;)
+ *                 "8GE8721REF",
+ *                 "5RE8543EGG",
+ *                 "1YE2880LNP")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

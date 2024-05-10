@@ -22,7 +22,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -44,24 +45,25 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // Per-Zone Authenticated Origin Pulls certificate
- *         var myPerZoneAopCert = new AuthenticatedOriginPullsCertificate(&#34;myPerZoneAopCert&#34;, AuthenticatedOriginPullsCertificateArgs.builder()        
- *             .zoneId(&#34;0da42c8d2132a9ddaf714f9e7c920711&#34;)
- *             .certificate(&#34;-----INSERT CERTIFICATE-----&#34;)
- *             .privateKey(&#34;-----INSERT PRIVATE KEY-----&#34;)
- *             .type(&#34;per-zone&#34;)
+ *         var myPerZoneAopCert = new AuthenticatedOriginPullsCertificate("myPerZoneAopCert", AuthenticatedOriginPullsCertificateArgs.builder()        
+ *             .zoneId("0da42c8d2132a9ddaf714f9e7c920711")
+ *             .certificate("-----INSERT CERTIFICATE-----")
+ *             .privateKey("-----INSERT PRIVATE KEY-----")
+ *             .type("per-zone")
  *             .build());
  * 
  *         // Per-Hostname Authenticated Origin Pulls certificate
- *         var myPerHostnameAopCert = new AuthenticatedOriginPullsCertificate(&#34;myPerHostnameAopCert&#34;, AuthenticatedOriginPullsCertificateArgs.builder()        
- *             .zoneId(&#34;0da42c8d2132a9ddaf714f9e7c920711&#34;)
- *             .certificate(&#34;-----INSERT CERTIFICATE-----&#34;)
- *             .privateKey(&#34;-----INSERT PRIVATE KEY-----&#34;)
- *             .type(&#34;per-hostname&#34;)
+ *         var myPerHostnameAopCert = new AuthenticatedOriginPullsCertificate("myPerHostnameAopCert", AuthenticatedOriginPullsCertificateArgs.builder()        
+ *             .zoneId("0da42c8d2132a9ddaf714f9e7c920711")
+ *             .certificate("-----INSERT CERTIFICATE-----")
+ *             .privateKey("-----INSERT PRIVATE KEY-----")
+ *             .type("per-hostname")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

@@ -20,7 +20,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -42,19 +43,20 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var managedNetworks = new DeviceManagedNetworks(&#34;managedNetworks&#34;, DeviceManagedNetworksArgs.builder()        
- *             .accountId(&#34;f037e56e89293a057740de681ac9abbe&#34;)
- *             .name(&#34;managed-network-1&#34;)
- *             .type(&#34;tls&#34;)
+ *         var managedNetworks = new DeviceManagedNetworks("managedNetworks", DeviceManagedNetworksArgs.builder()        
+ *             .accountId("f037e56e89293a057740de681ac9abbe")
+ *             .name("managed-network-1")
+ *             .type("tls")
  *             .config(DeviceManagedNetworksConfigArgs.builder()
- *                 .tlsSockaddr(&#34;foobar:1234&#34;)
- *                 .sha256(&#34;b5bb9d8014a0f9b1d61e21e796d78dccdf1352f23cd32812f4850b878ae4944c&#34;)
+ *                 .tlsSockaddr("foobar:1234")
+ *                 .sha256("b5bb9d8014a0f9b1d61e21e796d78dccdf1352f23cd32812f4850b878ae4944c")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

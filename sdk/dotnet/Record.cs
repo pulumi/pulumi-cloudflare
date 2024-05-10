@@ -62,11 +62,6 @@ namespace Pulumi.Cloudflare
     [CloudflareResourceType("cloudflare:index/record:Record")]
     public partial class Record : global::Pulumi.CustomResource
     {
-        /// <summary>
-        /// Allow creation of this record in Terraform to overwrite an existing record, if any. This does not affect the ability to
-        /// update the record in Terraform and does not prevent other resources within Terraform or manual changes outside Terraform
-        /// from overwriting this record. **This configuration is not recommended for most environments**
-        /// </summary>
         [Output("allowOverwrite")]
         public Output<bool?> AllowOverwrite { get; private set; } = null!;
 
@@ -206,11 +201,6 @@ namespace Pulumi.Cloudflare
 
     public sealed class RecordArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Allow creation of this record in Terraform to overwrite an existing record, if any. This does not affect the ability to
-        /// update the record in Terraform and does not prevent other resources within Terraform or manual changes outside Terraform
-        /// from overwriting this record. **This configuration is not recommended for most environments**
-        /// </summary>
         [Input("allowOverwrite")]
         public Input<bool>? AllowOverwrite { get; set; }
 
@@ -288,11 +278,6 @@ namespace Pulumi.Cloudflare
 
     public sealed class RecordState : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Allow creation of this record in Terraform to overwrite an existing record, if any. This does not affect the ability to
-        /// update the record in Terraform and does not prevent other resources within Terraform or manual changes outside Terraform
-        /// from overwriting this record. **This configuration is not recommended for most environments**
-        /// </summary>
         [Input("allowOverwrite")]
         public Input<bool>? AllowOverwrite { get; set; }
 

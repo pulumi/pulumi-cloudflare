@@ -21,7 +21,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -43,22 +44,23 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new DeviceDexTest(&#34;example&#34;, DeviceDexTestArgs.builder()        
- *             .accountId(&#34;f037e56e89293a057740de681ac9abbe&#34;)
- *             .name(&#34;GET homepage&#34;)
- *             .description(&#34;Send a HTTP GET request to the home endpoint every half hour.&#34;)
- *             .interval(&#34;0h30m0s&#34;)
+ *         var example = new DeviceDexTest("example", DeviceDexTestArgs.builder()        
+ *             .accountId("f037e56e89293a057740de681ac9abbe")
+ *             .name("GET homepage")
+ *             .description("Send a HTTP GET request to the home endpoint every half hour.")
+ *             .interval("0h30m0s")
  *             .enabled(true)
  *             .data(DeviceDexTestDataArgs.builder()
- *                 .host(&#34;https://example.com/home&#34;)
- *                 .kind(&#34;http&#34;)
- *                 .method(&#34;GET&#34;)
+ *                 .host("https://example.com/home")
+ *                 .kind("http")
+ *                 .method("GET")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

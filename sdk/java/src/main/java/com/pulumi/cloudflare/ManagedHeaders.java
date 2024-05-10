@@ -25,7 +25,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -49,21 +50,22 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // Enable security headers using Managed Meaders
- *         var example = new ManagedHeaders(&#34;example&#34;, ManagedHeadersArgs.builder()        
- *             .zoneId(&#34;0da42c8d2132a9ddaf714f9e7c920711&#34;)
+ *         var example = new ManagedHeaders("example", ManagedHeadersArgs.builder()        
+ *             .zoneId("0da42c8d2132a9ddaf714f9e7c920711")
  *             .managedRequestHeaders(ManagedHeadersManagedRequestHeaderArgs.builder()
- *                 .id(&#34;add_true_client_ip_headers&#34;)
+ *                 .id("add_true_client_ip_headers")
  *                 .enabled(true)
  *                 .build())
  *             .managedResponseHeaders(ManagedHeadersManagedResponseHeaderArgs.builder()
- *                 .id(&#34;remove_x-powered-by_header&#34;)
+ *                 .id("remove_x-powered-by_header")
  *                 .enabled(true)
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  */

@@ -20,7 +20,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -41,16 +42,17 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var mySecret = new WorkerSecret(&#34;mySecret&#34;, WorkerSecretArgs.builder()        
- *             .accountId(&#34;f037e56e89293a057740de681ac9abbe&#34;)
- *             .name(&#34;MY_EXAMPLE_SECRET_TEXT&#34;)
- *             .scriptName(&#34;script_1&#34;)
- *             .secretText(&#34;my_secret_value&#34;)
+ *         var mySecret = new WorkerSecret("mySecret", WorkerSecretArgs.builder()        
+ *             .accountId("f037e56e89293a057740de681ac9abbe")
+ *             .name("MY_EXAMPLE_SECRET_TEXT")
+ *             .scriptName("script_1")
+ *             .secretText("my_secret_value")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

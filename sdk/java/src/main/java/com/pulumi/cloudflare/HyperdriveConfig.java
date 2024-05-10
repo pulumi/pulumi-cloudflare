@@ -21,7 +21,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -43,22 +44,23 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var noDefaults = new HyperdriveConfig(&#34;noDefaults&#34;, HyperdriveConfigArgs.builder()        
- *             .accountId(&#34;f037e56e89293a057740de681ac9abbe&#34;)
- *             .name(&#34;my-hyperdrive-config&#34;)
+ *         var noDefaults = new HyperdriveConfig("noDefaults", HyperdriveConfigArgs.builder()        
+ *             .accountId("f037e56e89293a057740de681ac9abbe")
+ *             .name("my-hyperdrive-config")
  *             .origin(HyperdriveConfigOriginArgs.builder()
- *                 .database(&#34;postgres&#34;)
- *                 .password(&#34;my-password&#34;)
- *                 .host(&#34;my-database.example.com&#34;)
+ *                 .database("postgres")
+ *                 .password("my-password")
+ *                 .host("my-database.example.com")
  *                 .port(5432)
- *                 .scheme(&#34;postgres&#34;)
- *                 .user(&#34;my-user&#34;)
+ *                 .scheme("postgres")
+ *                 .user("my-user")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

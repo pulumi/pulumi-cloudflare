@@ -24,7 +24,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -50,78 +51,79 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // IP List
- *         var exampleIpList = new List(&#34;exampleIpList&#34;, ListArgs.builder()        
- *             .accountId(&#34;f037e56e89293a057740de681ac9abbe&#34;)
- *             .name(&#34;example_list&#34;)
- *             .description(&#34;example IPs for a list&#34;)
- *             .kind(&#34;ip&#34;)
+ *         var exampleIpList = new List("exampleIpList", ListArgs.builder()        
+ *             .accountId("f037e56e89293a057740de681ac9abbe")
+ *             .name("example_list")
+ *             .description("example IPs for a list")
+ *             .kind("ip")
  *             .build());
  * 
  *         // IP List Item
- *         var exampleIpItem = new ListItem(&#34;exampleIpItem&#34;, ListItemArgs.builder()        
- *             .accountId(&#34;f037e56e89293a057740de681ac9abbe&#34;)
+ *         var exampleIpItem = new ListItem("exampleIpItem", ListItemArgs.builder()        
+ *             .accountId("f037e56e89293a057740de681ac9abbe")
  *             .listId(exampleIpList.id())
- *             .comment(&#34;List Item Comment&#34;)
- *             .ip(&#34;192.0.2.0&#34;)
+ *             .comment("List Item Comment")
+ *             .ip("192.0.2.0")
  *             .build());
  * 
  *         // Redirect List
- *         var exampleRedirectList = new List(&#34;exampleRedirectList&#34;, ListArgs.builder()        
- *             .accountId(&#34;f037e56e89293a057740de681ac9abbe&#34;)
- *             .name(&#34;example_list&#34;)
- *             .description(&#34;example Redirects for a list&#34;)
- *             .kind(&#34;redirect&#34;)
+ *         var exampleRedirectList = new List("exampleRedirectList", ListArgs.builder()        
+ *             .accountId("f037e56e89293a057740de681ac9abbe")
+ *             .name("example_list")
+ *             .description("example Redirects for a list")
+ *             .kind("redirect")
  *             .build());
  * 
  *         // Redirect List Item
- *         var exampleRedirectItem = new ListItem(&#34;exampleRedirectItem&#34;, ListItemArgs.builder()        
- *             .accountId(&#34;f037e56e89293a057740de681ac9abbe&#34;)
+ *         var exampleRedirectItem = new ListItem("exampleRedirectItem", ListItemArgs.builder()        
+ *             .accountId("f037e56e89293a057740de681ac9abbe")
  *             .listId(exampleIpList.id())
  *             .redirect(ListItemRedirectArgs.builder()
- *                 .sourceUrl(&#34;https://source.tld/&#34;)
- *                 .targetUrl(&#34;https://target.tld&#34;)
+ *                 .sourceUrl("https://source.tld/")
+ *                 .targetUrl("https://target.tld")
  *                 .statusCode(302)
  *                 .subpathMatching(true)
  *                 .build())
  *             .build());
  * 
  *         // ASN List
- *         var exampleAsnList = new List(&#34;exampleAsnList&#34;, ListArgs.builder()        
- *             .accountId(&#34;f037e56e89293a057740de681ac9abbe&#34;)
- *             .name(&#34;example_asn_list&#34;)
- *             .description(&#34;example ASNs for a list&#34;)
- *             .kind(&#34;asn&#34;)
+ *         var exampleAsnList = new List("exampleAsnList", ListArgs.builder()        
+ *             .accountId("f037e56e89293a057740de681ac9abbe")
+ *             .name("example_asn_list")
+ *             .description("example ASNs for a list")
+ *             .kind("asn")
  *             .build());
  * 
  *         // ASN List Item
- *         var exampleAsnItem = new ListItem(&#34;exampleAsnItem&#34;, ListItemArgs.builder()        
- *             .accountId(&#34;f037e56e89293a057740de681ac9abbe&#34;)
+ *         var exampleAsnItem = new ListItem("exampleAsnItem", ListItemArgs.builder()        
+ *             .accountId("f037e56e89293a057740de681ac9abbe")
  *             .listId(exampleAsnList.id())
- *             .comment(&#34;List Item Comment&#34;)
+ *             .comment("List Item Comment")
  *             .asn(6789)
  *             .build());
  * 
  *         // Hostname List
- *         var exampleHostnameList = new List(&#34;exampleHostnameList&#34;, ListArgs.builder()        
- *             .accountId(&#34;f037e56e89293a057740de681ac9abbe&#34;)
- *             .name(&#34;example_hostname_list&#34;)
- *             .description(&#34;example Hostnames for a list&#34;)
- *             .kind(&#34;hostname&#34;)
+ *         var exampleHostnameList = new List("exampleHostnameList", ListArgs.builder()        
+ *             .accountId("f037e56e89293a057740de681ac9abbe")
+ *             .name("example_hostname_list")
+ *             .description("example Hostnames for a list")
+ *             .kind("hostname")
  *             .build());
  * 
  *         // Hostname List Item
- *         var exampleHostnameItem = new ListItem(&#34;exampleHostnameItem&#34;, ListItemArgs.builder()        
- *             .accountId(&#34;f037e56e89293a057740de681ac9abbe&#34;)
+ *         var exampleHostnameItem = new ListItem("exampleHostnameItem", ListItemArgs.builder()        
+ *             .accountId("f037e56e89293a057740de681ac9abbe")
  *             .listId(exampleHostnameList.id())
- *             .comment(&#34;List Item Comment&#34;)
+ *             .comment("List Item Comment")
  *             .hostname(ListItemHostnameArgs.builder()
- *                 .urlHostname(&#34;example.com&#34;)
+ *                 .urlHostname("example.com")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

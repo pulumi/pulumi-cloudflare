@@ -27,7 +27,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -51,68 +52,69 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // Predefined profile must be imported, cannot be created
- *         var creds = new DlpProfile(&#34;creds&#34;, DlpProfileArgs.builder()        
- *             .accountId(&#34;f037e56e89293a057740de681ac9abbe&#34;)
- *             .name(&#34;Credentials and Secrets&#34;)
- *             .type(&#34;predefined&#34;)
+ *         var creds = new DlpProfile("creds", DlpProfileArgs.builder()        
+ *             .accountId("f037e56e89293a057740de681ac9abbe")
+ *             .name("Credentials and Secrets")
+ *             .type("predefined")
  *             .allowedMatchCount(3)
  *             .entries(            
  *                 DlpProfileEntryArgs.builder()
  *                     .enabled(true)
- *                     .name(&#34;Amazon AWS Access Key ID&#34;)
- *                     .id(&#34;d8fcfc9c-773c-405e-8426-21ecbb67ba93&#34;)
+ *                     .name("Amazon AWS Access Key ID")
+ *                     .id("d8fcfc9c-773c-405e-8426-21ecbb67ba93")
  *                     .build(),
  *                 DlpProfileEntryArgs.builder()
  *                     .enabled(false)
- *                     .id(&#34;2c0e33e1-71da-40c8-aad3-32e674ad3d96&#34;)
- *                     .name(&#34;Amazon AWS Secret Access Key&#34;)
+ *                     .id("2c0e33e1-71da-40c8-aad3-32e674ad3d96")
+ *                     .name("Amazon AWS Secret Access Key")
  *                     .build(),
  *                 DlpProfileEntryArgs.builder()
  *                     .enabled(true)
- *                     .id(&#34;4e92c006-3802-4dff-bbe1-8e1513b1c92a&#34;)
- *                     .name(&#34;Microsoft Azure Client Secret&#34;)
+ *                     .id("4e92c006-3802-4dff-bbe1-8e1513b1c92a")
+ *                     .name("Microsoft Azure Client Secret")
  *                     .build(),
  *                 DlpProfileEntryArgs.builder()
  *                     .enabled(false)
- *                     .id(&#34;5c713294-2375-4904-abcf-e4a15be4d592&#34;)
- *                     .name(&#34;SSH Private Key&#34;)
+ *                     .id("5c713294-2375-4904-abcf-e4a15be4d592")
+ *                     .name("SSH Private Key")
  *                     .build(),
  *                 DlpProfileEntryArgs.builder()
  *                     .enabled(true)
- *                     .id(&#34;6c6579e4-d832-42d5-905c-8e53340930f2&#34;)
- *                     .name(&#34;Google GCP API Key&#34;)
+ *                     .id("6c6579e4-d832-42d5-905c-8e53340930f2")
+ *                     .name("Google GCP API Key")
  *                     .build())
  *             .build());
  * 
  *         // Custom profile
- *         var exampleCustom = new DlpProfile(&#34;exampleCustom&#34;, DlpProfileArgs.builder()        
- *             .accountId(&#34;f037e56e89293a057740de681ac9abbe&#34;)
- *             .name(&#34;Example Custom Profile&#34;)
- *             .description(&#34;A profile with example entries&#34;)
- *             .type(&#34;custom&#34;)
+ *         var exampleCustom = new DlpProfile("exampleCustom", DlpProfileArgs.builder()        
+ *             .accountId("f037e56e89293a057740de681ac9abbe")
+ *             .name("Example Custom Profile")
+ *             .description("A profile with example entries")
+ *             .type("custom")
  *             .allowedMatchCount(0)
  *             .entries(            
  *                 DlpProfileEntryArgs.builder()
- *                     .name(&#34;Matches visa credit cards&#34;)
+ *                     .name("Matches visa credit cards")
  *                     .enabled(true)
  *                     .pattern(DlpProfileEntryPatternArgs.builder()
- *                         .regex(&#34;4\\d{3}([-\\. ])?\\d{4}([-\\. ])?\\d{4}([-\\. ])?\\d{4}&#34;)
- *                         .validation(&#34;luhn&#34;)
+ *                         .regex("4\\d{3}([-\\. ])?\\d{4}([-\\. ])?\\d{4}([-\\. ])?\\d{4}")
+ *                         .validation("luhn")
  *                         .build())
  *                     .build(),
  *                 DlpProfileEntryArgs.builder()
- *                     .name(&#34;Matches diners club card&#34;)
+ *                     .name("Matches diners club card")
  *                     .enabled(true)
  *                     .pattern(DlpProfileEntryPatternArgs.builder()
- *                         .regex(&#34;(?:0[0-5]|[68][0-9])[0-9]{11}&#34;)
- *                         .validation(&#34;luhn&#34;)
+ *                         .regex("(?:0[0-5]|[68][0-9])[0-9]{11}")
+ *                         .validation("luhn")
  *                         .build())
  *                     .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

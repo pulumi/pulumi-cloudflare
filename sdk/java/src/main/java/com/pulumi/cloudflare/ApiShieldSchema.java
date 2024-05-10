@@ -21,7 +21,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -42,19 +43,20 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var petstoreSchema = new ApiShieldSchema(&#34;petstoreSchema&#34;, ApiShieldSchemaArgs.builder()        
- *             .zoneId(&#34;0da42c8d2132a9ddaf714f9e7c920711&#34;)
- *             .name(&#34;myschema&#34;)
- *             .kind(&#34;openapi_v3&#34;)
+ *         var petstoreSchema = new ApiShieldSchema("petstoreSchema", ApiShieldSchemaArgs.builder()        
+ *             .zoneId("0da42c8d2132a9ddaf714f9e7c920711")
+ *             .name("myschema")
+ *             .kind("openapi_v3")
  *             .validationEnabled(true)
  *             .source(StdFunctions.file(FileArgs.builder()
- *                 .input(&#34;./schemas/petstore.json&#34;)
+ *                 .input("./schemas/petstore.json")
  *                 .build()).result())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  */

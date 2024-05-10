@@ -24,7 +24,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -46,22 +47,23 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new DevicePostureIntegration(&#34;example&#34;, DevicePostureIntegrationArgs.builder()        
- *             .accountId(&#34;f037e56e89293a057740de681ac9abbe&#34;)
- *             .name(&#34;Device posture integration&#34;)
- *             .type(&#34;workspace_one&#34;)
- *             .interval(&#34;24h&#34;)
+ *         var example = new DevicePostureIntegration("example", DevicePostureIntegrationArgs.builder()        
+ *             .accountId("f037e56e89293a057740de681ac9abbe")
+ *             .name("Device posture integration")
+ *             .type("workspace_one")
+ *             .interval("24h")
  *             .configs(DevicePostureIntegrationConfigArgs.builder()
- *                 .apiUrl(&#34;https://example.com/api&#34;)
- *                 .authUrl(&#34;https://example.com/connect/token&#34;)
- *                 .clientId(&#34;client-id&#34;)
- *                 .clientSecret(&#34;client-secret&#34;)
+ *                 .apiUrl("https://example.com/api")
+ *                 .authUrl("https://example.com/connect/token")
+ *                 .clientId("client-id")
+ *                 .clientSecret("client-secret")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

@@ -24,7 +24,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -46,23 +47,24 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new TeamsLocation(&#34;example&#34;, TeamsLocationArgs.builder()        
- *             .accountId(&#34;f037e56e89293a057740de681ac9abbe&#34;)
- *             .name(&#34;office&#34;)
+ *         var example = new TeamsLocation("example", TeamsLocationArgs.builder()        
+ *             .accountId("f037e56e89293a057740de681ac9abbe")
+ *             .name("office")
  *             .clientDefault(true)
  *             .ecsSupport(false)
  *             .networks(            
  *                 TeamsLocationNetworkArgs.builder()
- *                     .network(&#34;203.0.113.1/32&#34;)
+ *                     .network("203.0.113.1/32")
  *                     .build(),
  *                 TeamsLocationNetworkArgs.builder()
- *                     .network(&#34;203.0.113.2/32&#34;)
+ *                     .network("203.0.113.2/32")
  *                     .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

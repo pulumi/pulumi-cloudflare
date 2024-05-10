@@ -23,7 +23,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -46,28 +47,29 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var eaxmple = new DevicePostureRule(&#34;eaxmple&#34;, DevicePostureRuleArgs.builder()        
- *             .accountId(&#34;f037e56e89293a057740de681ac9abbe&#34;)
- *             .name(&#34;Corporate devices posture rule&#34;)
- *             .type(&#34;os_version&#34;)
- *             .description(&#34;Device posture rule for corporate devices.&#34;)
- *             .schedule(&#34;24h&#34;)
- *             .expiration(&#34;24h&#34;)
+ *         var eaxmple = new DevicePostureRule("eaxmple", DevicePostureRuleArgs.builder()        
+ *             .accountId("f037e56e89293a057740de681ac9abbe")
+ *             .name("Corporate devices posture rule")
+ *             .type("os_version")
+ *             .description("Device posture rule for corporate devices.")
+ *             .schedule("24h")
+ *             .expiration("24h")
  *             .matches(DevicePostureRuleMatchArgs.builder()
- *                 .platform(&#34;linux&#34;)
+ *                 .platform("linux")
  *                 .build())
  *             .inputs(DevicePostureRuleInputArgs.builder()
  *                 .id(corporateDevices.id())
- *                 .version(&#34;1.0.0&#34;)
- *                 .operator(&#34;&lt;&#34;)
- *                 .osDistroName(&#34;ubuntu&#34;)
- *                 .osDistroRevision(&#34;1.0.0&#34;)
+ *                 .version("1.0.0")
+ *                 .operator("<")
+ *                 .osDistroName("ubuntu")
+ *                 .osDistroRevision("1.0.0")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

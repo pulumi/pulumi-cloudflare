@@ -24,7 +24,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -47,28 +48,29 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // Waiting Room
- *         var example = new WaitingRoom(&#34;example&#34;, WaitingRoomArgs.builder()        
- *             .zoneId(&#34;0da42c8d2132a9ddaf714f9e7c920711&#34;)
- *             .name(&#34;foo&#34;)
- *             .host(&#34;foo.example.com&#34;)
- *             .path(&#34;/&#34;)
+ *         var example = new WaitingRoom("example", WaitingRoomArgs.builder()        
+ *             .zoneId("0da42c8d2132a9ddaf714f9e7c920711")
+ *             .name("foo")
+ *             .host("foo.example.com")
+ *             .path("/")
  *             .newUsersPerMinute(200)
  *             .totalActiveUsers(200)
- *             .cookieSuffix(&#34;queue1&#34;)
+ *             .cookieSuffix("queue1")
  *             .additionalRoutes(            
  *                 WaitingRoomAdditionalRouteArgs.builder()
- *                     .host(&#34;shop1.example.com&#34;)
- *                     .path(&#34;/example-path&#34;)
+ *                     .host("shop1.example.com")
+ *                     .path("/example-path")
  *                     .build(),
  *                 WaitingRoomAdditionalRouteArgs.builder()
- *                     .host(&#34;shop2.example.com&#34;)
+ *                     .host("shop2.example.com")
  *                     .build())
  *             .queueingStatusCode(200)
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

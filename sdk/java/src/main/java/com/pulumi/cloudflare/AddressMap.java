@@ -25,7 +25,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -48,32 +49,33 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new AddressMap(&#34;example&#34;, AddressMapArgs.builder()        
- *             .accountId(&#34;f037e56e89293a057740de681ac9abbe&#34;)
- *             .description(&#34;My address map&#34;)
- *             .defaultSni(&#34;*.example.com&#34;)
+ *         var example = new AddressMap("example", AddressMapArgs.builder()        
+ *             .accountId("f037e56e89293a057740de681ac9abbe")
+ *             .description("My address map")
+ *             .defaultSni("*.example.com")
  *             .enabled(true)
  *             .ips(            
  *                 AddressMapIpArgs.builder()
- *                     .ip(&#34;192.0.2.1&#34;)
+ *                     .ip("192.0.2.1")
  *                     .build(),
  *                 AddressMapIpArgs.builder()
- *                     .ip(&#34;203.0.113.1&#34;)
+ *                     .ip("203.0.113.1")
  *                     .build())
  *             .memberships(            
  *                 AddressMapMembershipArgs.builder()
- *                     .identifier(&#34;92f17202ed8bd63d69a66b86a49a8f6b&#34;)
- *                     .kind(&#34;account&#34;)
+ *                     .identifier("92f17202ed8bd63d69a66b86a49a8f6b")
+ *                     .kind("account")
  *                     .build(),
  *                 AddressMapMembershipArgs.builder()
- *                     .identifier(&#34;023e105f4ecef8ad9ca31a8372d0c353&#34;)
- *                     .kind(&#34;zone&#34;)
+ *                     .identifier("023e105f4ecef8ad9ca31a8372d0c353")
+ *                     .kind("zone")
  *                     .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

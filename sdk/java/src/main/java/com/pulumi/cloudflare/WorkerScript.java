@@ -32,7 +32,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -62,54 +63,55 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var myNamespace = new WorkersKvNamespace(&#34;myNamespace&#34;, WorkersKvNamespaceArgs.builder()        
- *             .accountId(&#34;f037e56e89293a057740de681ac9abbe&#34;)
- *             .title(&#34;example&#34;)
+ *         var myNamespace = new WorkersKvNamespace("myNamespace", WorkersKvNamespaceArgs.builder()        
+ *             .accountId("f037e56e89293a057740de681ac9abbe")
+ *             .title("example")
  *             .build());
  * 
- *         // Sets the script with the name &#34;script_1&#34;
- *         var myScript = new WorkerScript(&#34;myScript&#34;, WorkerScriptArgs.builder()        
- *             .accountId(&#34;f037e56e89293a057740de681ac9abbe&#34;)
- *             .name(&#34;script_1&#34;)
+ *         // Sets the script with the name "script_1"
+ *         var myScript = new WorkerScript("myScript", WorkerScriptArgs.builder()        
+ *             .accountId("f037e56e89293a057740de681ac9abbe")
+ *             .name("script_1")
  *             .content(StdFunctions.file(FileArgs.builder()
- *                 .input(&#34;script.js&#34;)
+ *                 .input("script.js")
  *                 .build()).result())
  *             .kvNamespaceBindings(WorkerScriptKvNamespaceBindingArgs.builder()
- *                 .name(&#34;MY_EXAMPLE_KV_NAMESPACE&#34;)
+ *                 .name("MY_EXAMPLE_KV_NAMESPACE")
  *                 .namespaceId(myNamespace.id())
  *                 .build())
  *             .plainTextBindings(WorkerScriptPlainTextBindingArgs.builder()
- *                 .name(&#34;MY_EXAMPLE_PLAIN_TEXT&#34;)
- *                 .text(&#34;foobar&#34;)
+ *                 .name("MY_EXAMPLE_PLAIN_TEXT")
+ *                 .text("foobar")
  *                 .build())
  *             .secretTextBindings(WorkerScriptSecretTextBindingArgs.builder()
- *                 .name(&#34;MY_EXAMPLE_SECRET_TEXT&#34;)
+ *                 .name("MY_EXAMPLE_SECRET_TEXT")
  *                 .text(secretFooValue)
  *                 .build())
  *             .webassemblyBindings(WorkerScriptWebassemblyBindingArgs.builder()
- *                 .name(&#34;MY_EXAMPLE_WASM&#34;)
+ *                 .name("MY_EXAMPLE_WASM")
  *                 .module(StdFunctions.filebase64(Filebase64Args.builder()
- *                     .input(&#34;example.wasm&#34;)
+ *                     .input("example.wasm")
  *                     .build()).result())
  *                 .build())
  *             .serviceBindings(WorkerScriptServiceBindingArgs.builder()
- *                 .name(&#34;MY_SERVICE_BINDING&#34;)
- *                 .service(&#34;MY_SERVICE&#34;)
- *                 .environment(&#34;production&#34;)
+ *                 .name("MY_SERVICE_BINDING")
+ *                 .service("MY_SERVICE")
+ *                 .environment("production")
  *                 .build())
  *             .r2BucketBindings(WorkerScriptR2BucketBindingArgs.builder()
- *                 .name(&#34;MY_BUCKET&#34;)
- *                 .bucketName(&#34;MY_BUCKET_NAME&#34;)
+ *                 .name("MY_BUCKET")
+ *                 .bucketName("MY_BUCKET_NAME")
  *                 .build())
  *             .analyticsEngineBindings(WorkerScriptAnalyticsEngineBindingArgs.builder()
- *                 .name(&#34;MY_DATASET&#34;)
- *                 .dataset(&#34;dataset1&#34;)
+ *                 .name("MY_DATASET")
+ *                 .dataset("dataset1")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

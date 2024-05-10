@@ -20,7 +20,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -43,22 +44,23 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new ApiShieldOperation(&#34;example&#34;, ApiShieldOperationArgs.builder()        
- *             .zoneId(&#34;0da42c8d2132a9ddaf714f9e7c920711&#34;)
- *             .method(&#34;GET&#34;)
- *             .host(&#34;api.example.com&#34;)
- *             .endpoint(&#34;/path&#34;)
+ *         var example = new ApiShieldOperation("example", ApiShieldOperationArgs.builder()        
+ *             .zoneId("0da42c8d2132a9ddaf714f9e7c920711")
+ *             .method("GET")
+ *             .host("api.example.com")
+ *             .endpoint("/path")
  *             .build());
  * 
- *         var exampleApiShieldOperationSchemaValidationSettings = new ApiShieldOperationSchemaValidationSettings(&#34;exampleApiShieldOperationSchemaValidationSettings&#34;, ApiShieldOperationSchemaValidationSettingsArgs.builder()        
- *             .zoneId(&#34;0da42c8d2132a9ddaf714f9e7c920711&#34;)
+ *         var exampleApiShieldOperationSchemaValidationSettings = new ApiShieldOperationSchemaValidationSettings("exampleApiShieldOperationSchemaValidationSettings", ApiShieldOperationSchemaValidationSettingsArgs.builder()        
+ *             .zoneId("0da42c8d2132a9ddaf714f9e7c920711")
  *             .operationId(example.id())
- *             .mitigationAction(&#34;block&#34;)
+ *             .mitigationAction("block")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  */

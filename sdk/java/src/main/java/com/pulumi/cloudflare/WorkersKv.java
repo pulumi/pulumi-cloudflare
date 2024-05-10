@@ -19,7 +19,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -42,21 +43,22 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleNs = new WorkersKvNamespace(&#34;exampleNs&#34;, WorkersKvNamespaceArgs.builder()        
- *             .accountId(&#34;f037e56e89293a057740de681ac9abbe&#34;)
- *             .title(&#34;test-namespace&#34;)
+ *         var exampleNs = new WorkersKvNamespace("exampleNs", WorkersKvNamespaceArgs.builder()        
+ *             .accountId("f037e56e89293a057740de681ac9abbe")
+ *             .title("test-namespace")
  *             .build());
  * 
- *         var example = new WorkersKv(&#34;example&#34;, WorkersKvArgs.builder()        
- *             .accountId(&#34;f037e56e89293a057740de681ac9abbe&#34;)
+ *         var example = new WorkersKv("example", WorkersKvArgs.builder()        
+ *             .accountId("f037e56e89293a057740de681ac9abbe")
  *             .namespaceId(exampleNs.id())
- *             .key(&#34;test-key&#34;)
- *             .value(&#34;test value&#34;)
+ *             .key("test-key")
+ *             .value("test value")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

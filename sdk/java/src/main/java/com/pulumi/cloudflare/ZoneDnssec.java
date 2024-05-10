@@ -20,7 +20,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -43,17 +44,18 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new Zone(&#34;example&#34;, ZoneArgs.builder()        
- *             .zone(&#34;example.com&#34;)
+ *         var example = new Zone("example", ZoneArgs.builder()        
+ *             .zone("example.com")
  *             .build());
  * 
- *         var exampleZoneDnssec = new ZoneDnssec(&#34;exampleZoneDnssec&#34;, ZoneDnssecArgs.builder()        
+ *         var exampleZoneDnssec = new ZoneDnssec("exampleZoneDnssec", ZoneDnssecArgs.builder()        
  *             .zoneId(example.id())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

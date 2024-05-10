@@ -28,7 +28,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -51,20 +52,21 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // Restrict access to these endpoints to requests from a known IP address range.
- *         var example = new ZoneLockdown(&#34;example&#34;, ZoneLockdownArgs.builder()        
- *             .zoneId(&#34;0da42c8d2132a9ddaf714f9e7c920711&#34;)
- *             .paused(&#34;false&#34;)
- *             .description(&#34;Restrict access to these endpoints to requests from a known IP address range&#34;)
- *             .urls(&#34;api.mysite.com/some/endpoint*&#34;)
+ *         var example = new ZoneLockdown("example", ZoneLockdownArgs.builder()        
+ *             .zoneId("0da42c8d2132a9ddaf714f9e7c920711")
+ *             .paused("false")
+ *             .description("Restrict access to these endpoints to requests from a known IP address range")
+ *             .urls("api.mysite.com/some/endpoint*")
  *             .configurations(ZoneLockdownConfigurationArgs.builder()
- *                 .target(&#34;ip_range&#34;)
- *                 .value(&#34;192.0.2.0/24&#34;)
+ *                 .target("ip_range")
+ *                 .value("192.0.2.0/24")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
