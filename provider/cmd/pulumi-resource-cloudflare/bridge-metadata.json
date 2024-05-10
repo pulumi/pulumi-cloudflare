@@ -59,6 +59,33 @@
                             }
                         }
                     },
+                    "scim_config": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "authentication": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "scopes": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
+                                "mappings": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "operations": {
+                                                "maxItemsOne": true
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
                     "self_hosted_domains": {
                         "maxItemsOne": false
                     },
@@ -106,6 +133,9 @@
                                     "maxItemsOne": false
                                 },
                                 "email_domain": {
+                                    "maxItemsOne": false
+                                },
+                                "email_list": {
                                     "maxItemsOne": false
                                 },
                                 "external_evaluation": {
@@ -194,6 +224,9 @@
                                 "email_domain": {
                                     "maxItemsOne": false
                                 },
+                                "email_list": {
+                                    "maxItemsOne": false
+                                },
                                 "external_evaluation": {
                                     "maxItemsOne": true
                                 },
@@ -278,6 +311,9 @@
                                     "maxItemsOne": false
                                 },
                                 "email_domain": {
+                                    "maxItemsOne": false
+                                },
+                                "email_list": {
                                     "maxItemsOne": false
                                 },
                                 "external_evaluation": {
@@ -441,6 +477,9 @@
                                 "email_domain": {
                                     "maxItemsOne": false
                                 },
+                                "email_list": {
+                                    "maxItemsOne": false
+                                },
                                 "external_evaluation": {
                                     "maxItemsOne": true
                                 },
@@ -527,6 +566,9 @@
                                 "email_domain": {
                                     "maxItemsOne": false
                                 },
+                                "email_list": {
+                                    "maxItemsOne": false
+                                },
                                 "external_evaluation": {
                                     "maxItemsOne": true
                                 },
@@ -611,6 +653,9 @@
                                     "maxItemsOne": false
                                 },
                                 "email_domain": {
+                                    "maxItemsOne": false
+                                },
+                                "email_list": {
                                     "maxItemsOne": false
                                 },
                                 "external_evaluation": {

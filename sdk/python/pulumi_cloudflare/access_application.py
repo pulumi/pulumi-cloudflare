@@ -39,6 +39,7 @@ class AccessApplicationArgs:
                  options_preflight_bypass: Optional[pulumi.Input[bool]] = None,
                  saas_app: Optional[pulumi.Input['AccessApplicationSaasAppArgs']] = None,
                  same_site_cookie_attribute: Optional[pulumi.Input[str]] = None,
+                 scim_config: Optional[pulumi.Input['AccessApplicationScimConfigArgs']] = None,
                  self_hosted_domains: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  service_auth401_redirect: Optional[pulumi.Input[bool]] = None,
                  session_duration: Optional[pulumi.Input[str]] = None,
@@ -71,6 +72,7 @@ class AccessApplicationArgs:
         :param pulumi.Input[bool] options_preflight_bypass: Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if cors_headers is set. Defaults to `false`.
         :param pulumi.Input['AccessApplicationSaasAppArgs'] saas_app: SaaS configuration for the Access Application.
         :param pulumi.Input[str] same_site_cookie_attribute: Defines the same-site cookie setting for access tokens. Available values: `none`, `lax`, `strict`.
+        :param pulumi.Input['AccessApplicationScimConfigArgs'] scim_config: Configuration for provisioning to the Access Application via SCIM. This is currently in closed beta.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] self_hosted_domains: List of domains that access will secure. Only present for self_hosted, vnc, and ssh applications. Always includes the value set as `domain`.
         :param pulumi.Input[bool] service_auth401_redirect: Option to return a 401 status code in service authentication rules on failed requests. Defaults to `false`.
         :param pulumi.Input[str] session_duration: How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`. Defaults to `24h`.
@@ -125,6 +127,8 @@ class AccessApplicationArgs:
             pulumi.set(__self__, "saas_app", saas_app)
         if same_site_cookie_attribute is not None:
             pulumi.set(__self__, "same_site_cookie_attribute", same_site_cookie_attribute)
+        if scim_config is not None:
+            pulumi.set(__self__, "scim_config", scim_config)
         if self_hosted_domains is not None:
             pulumi.set(__self__, "self_hosted_domains", self_hosted_domains)
         if service_auth401_redirect is not None:
@@ -417,6 +421,18 @@ class AccessApplicationArgs:
         pulumi.set(self, "same_site_cookie_attribute", value)
 
     @property
+    @pulumi.getter(name="scimConfig")
+    def scim_config(self) -> Optional[pulumi.Input['AccessApplicationScimConfigArgs']]:
+        """
+        Configuration for provisioning to the Access Application via SCIM. This is currently in closed beta.
+        """
+        return pulumi.get(self, "scim_config")
+
+    @scim_config.setter
+    def scim_config(self, value: Optional[pulumi.Input['AccessApplicationScimConfigArgs']]):
+        pulumi.set(self, "scim_config", value)
+
+    @property
     @pulumi.getter(name="selfHostedDomains")
     def self_hosted_domains(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
@@ -528,6 +544,7 @@ class _AccessApplicationState:
                  options_preflight_bypass: Optional[pulumi.Input[bool]] = None,
                  saas_app: Optional[pulumi.Input['AccessApplicationSaasAppArgs']] = None,
                  same_site_cookie_attribute: Optional[pulumi.Input[str]] = None,
+                 scim_config: Optional[pulumi.Input['AccessApplicationScimConfigArgs']] = None,
                  self_hosted_domains: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  service_auth401_redirect: Optional[pulumi.Input[bool]] = None,
                  session_duration: Optional[pulumi.Input[str]] = None,
@@ -561,6 +578,7 @@ class _AccessApplicationState:
         :param pulumi.Input[bool] options_preflight_bypass: Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if cors_headers is set. Defaults to `false`.
         :param pulumi.Input['AccessApplicationSaasAppArgs'] saas_app: SaaS configuration for the Access Application.
         :param pulumi.Input[str] same_site_cookie_attribute: Defines the same-site cookie setting for access tokens. Available values: `none`, `lax`, `strict`.
+        :param pulumi.Input['AccessApplicationScimConfigArgs'] scim_config: Configuration for provisioning to the Access Application via SCIM. This is currently in closed beta.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] self_hosted_domains: List of domains that access will secure. Only present for self_hosted, vnc, and ssh applications. Always includes the value set as `domain`.
         :param pulumi.Input[bool] service_auth401_redirect: Option to return a 401 status code in service authentication rules on failed requests. Defaults to `false`.
         :param pulumi.Input[str] session_duration: How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`. Defaults to `24h`.
@@ -617,6 +635,8 @@ class _AccessApplicationState:
             pulumi.set(__self__, "saas_app", saas_app)
         if same_site_cookie_attribute is not None:
             pulumi.set(__self__, "same_site_cookie_attribute", same_site_cookie_attribute)
+        if scim_config is not None:
+            pulumi.set(__self__, "scim_config", scim_config)
         if self_hosted_domains is not None:
             pulumi.set(__self__, "self_hosted_domains", self_hosted_domains)
         if service_auth401_redirect is not None:
@@ -921,6 +941,18 @@ class _AccessApplicationState:
         pulumi.set(self, "same_site_cookie_attribute", value)
 
     @property
+    @pulumi.getter(name="scimConfig")
+    def scim_config(self) -> Optional[pulumi.Input['AccessApplicationScimConfigArgs']]:
+        """
+        Configuration for provisioning to the Access Application via SCIM. This is currently in closed beta.
+        """
+        return pulumi.get(self, "scim_config")
+
+    @scim_config.setter
+    def scim_config(self, value: Optional[pulumi.Input['AccessApplicationScimConfigArgs']]):
+        pulumi.set(self, "scim_config", value)
+
+    @property
     @pulumi.getter(name="selfHostedDomains")
     def self_hosted_domains(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
@@ -1033,6 +1065,7 @@ class AccessApplication(pulumi.CustomResource):
                  options_preflight_bypass: Optional[pulumi.Input[bool]] = None,
                  saas_app: Optional[pulumi.Input[pulumi.InputType['AccessApplicationSaasAppArgs']]] = None,
                  same_site_cookie_attribute: Optional[pulumi.Input[str]] = None,
+                 scim_config: Optional[pulumi.Input[pulumi.InputType['AccessApplicationScimConfigArgs']]] = None,
                  self_hosted_domains: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  service_auth401_redirect: Optional[pulumi.Input[bool]] = None,
                  session_duration: Optional[pulumi.Input[str]] = None,
@@ -1083,6 +1116,7 @@ class AccessApplication(pulumi.CustomResource):
         :param pulumi.Input[bool] options_preflight_bypass: Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if cors_headers is set. Defaults to `false`.
         :param pulumi.Input[pulumi.InputType['AccessApplicationSaasAppArgs']] saas_app: SaaS configuration for the Access Application.
         :param pulumi.Input[str] same_site_cookie_attribute: Defines the same-site cookie setting for access tokens. Available values: `none`, `lax`, `strict`.
+        :param pulumi.Input[pulumi.InputType['AccessApplicationScimConfigArgs']] scim_config: Configuration for provisioning to the Access Application via SCIM. This is currently in closed beta.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] self_hosted_domains: List of domains that access will secure. Only present for self_hosted, vnc, and ssh applications. Always includes the value set as `domain`.
         :param pulumi.Input[bool] service_auth401_redirect: Option to return a 401 status code in service authentication rules on failed requests. Defaults to `false`.
         :param pulumi.Input[str] session_duration: How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`. Defaults to `24h`.
@@ -1152,6 +1186,7 @@ class AccessApplication(pulumi.CustomResource):
                  options_preflight_bypass: Optional[pulumi.Input[bool]] = None,
                  saas_app: Optional[pulumi.Input[pulumi.InputType['AccessApplicationSaasAppArgs']]] = None,
                  same_site_cookie_attribute: Optional[pulumi.Input[str]] = None,
+                 scim_config: Optional[pulumi.Input[pulumi.InputType['AccessApplicationScimConfigArgs']]] = None,
                  self_hosted_domains: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  service_auth401_redirect: Optional[pulumi.Input[bool]] = None,
                  session_duration: Optional[pulumi.Input[str]] = None,
@@ -1191,6 +1226,7 @@ class AccessApplication(pulumi.CustomResource):
             __props__.__dict__["options_preflight_bypass"] = options_preflight_bypass
             __props__.__dict__["saas_app"] = saas_app
             __props__.__dict__["same_site_cookie_attribute"] = same_site_cookie_attribute
+            __props__.__dict__["scim_config"] = scim_config
             __props__.__dict__["self_hosted_domains"] = self_hosted_domains
             __props__.__dict__["service_auth401_redirect"] = service_auth401_redirect
             __props__.__dict__["session_duration"] = session_duration
@@ -1233,6 +1269,7 @@ class AccessApplication(pulumi.CustomResource):
             options_preflight_bypass: Optional[pulumi.Input[bool]] = None,
             saas_app: Optional[pulumi.Input[pulumi.InputType['AccessApplicationSaasAppArgs']]] = None,
             same_site_cookie_attribute: Optional[pulumi.Input[str]] = None,
+            scim_config: Optional[pulumi.Input[pulumi.InputType['AccessApplicationScimConfigArgs']]] = None,
             self_hosted_domains: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             service_auth401_redirect: Optional[pulumi.Input[bool]] = None,
             session_duration: Optional[pulumi.Input[str]] = None,
@@ -1271,6 +1308,7 @@ class AccessApplication(pulumi.CustomResource):
         :param pulumi.Input[bool] options_preflight_bypass: Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if cors_headers is set. Defaults to `false`.
         :param pulumi.Input[pulumi.InputType['AccessApplicationSaasAppArgs']] saas_app: SaaS configuration for the Access Application.
         :param pulumi.Input[str] same_site_cookie_attribute: Defines the same-site cookie setting for access tokens. Available values: `none`, `lax`, `strict`.
+        :param pulumi.Input[pulumi.InputType['AccessApplicationScimConfigArgs']] scim_config: Configuration for provisioning to the Access Application via SCIM. This is currently in closed beta.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] self_hosted_domains: List of domains that access will secure. Only present for self_hosted, vnc, and ssh applications. Always includes the value set as `domain`.
         :param pulumi.Input[bool] service_auth401_redirect: Option to return a 401 status code in service authentication rules on failed requests. Defaults to `false`.
         :param pulumi.Input[str] session_duration: How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`. Defaults to `24h`.
@@ -1307,6 +1345,7 @@ class AccessApplication(pulumi.CustomResource):
         __props__.__dict__["options_preflight_bypass"] = options_preflight_bypass
         __props__.__dict__["saas_app"] = saas_app
         __props__.__dict__["same_site_cookie_attribute"] = same_site_cookie_attribute
+        __props__.__dict__["scim_config"] = scim_config
         __props__.__dict__["self_hosted_domains"] = self_hosted_domains
         __props__.__dict__["service_auth401_redirect"] = service_auth401_redirect
         __props__.__dict__["session_duration"] = session_duration
@@ -1507,6 +1546,14 @@ class AccessApplication(pulumi.CustomResource):
         Defines the same-site cookie setting for access tokens. Available values: `none`, `lax`, `strict`.
         """
         return pulumi.get(self, "same_site_cookie_attribute")
+
+    @property
+    @pulumi.getter(name="scimConfig")
+    def scim_config(self) -> pulumi.Output[Optional['outputs.AccessApplicationScimConfig']]:
+        """
+        Configuration for provisioning to the Access Application via SCIM. This is currently in closed beta.
+        """
+        return pulumi.get(self, "scim_config")
 
     @property
     @pulumi.getter(name="selfHostedDomains")

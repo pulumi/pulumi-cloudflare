@@ -25,6 +25,7 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly ImmutableArray<string> CommonNames;
         public readonly ImmutableArray<string> DevicePostures;
         public readonly ImmutableArray<string> EmailDomains;
+        public readonly ImmutableArray<string> EmailLists;
         public readonly ImmutableArray<string> Emails;
         public readonly bool? Everyone;
         public readonly Outputs.AccessPolicyIncludeExternalEvaluation? ExternalEvaluation;
@@ -65,6 +66,8 @@ namespace Pulumi.Cloudflare.Outputs
 
             ImmutableArray<string> emailDomains,
 
+            ImmutableArray<string> emailLists,
+
             ImmutableArray<string> emails,
 
             bool? everyone,
@@ -100,6 +103,7 @@ namespace Pulumi.Cloudflare.Outputs
             CommonNames = commonNames;
             DevicePostures = devicePostures;
             EmailDomains = emailDomains;
+            EmailLists = emailLists;
             Emails = emails;
             Everyone = everyone;
             ExternalEvaluation = externalEvaluation;

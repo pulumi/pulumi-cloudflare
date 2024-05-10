@@ -145,6 +145,12 @@ namespace Pulumi.Cloudflare.Inputs
         public Input<string>? OsDistroRevision { get; set; }
 
         /// <summary>
+        /// Extra operating system version details following the semantic version value.
+        /// </summary>
+        [Input("osVersionExtra")]
+        public Input<string>? OsVersionExtra { get; set; }
+
+        /// <summary>
         /// Overall ZTA score from Crowdstrike. Value must be between 1 and 100.
         /// </summary>
         [Input("overall")]

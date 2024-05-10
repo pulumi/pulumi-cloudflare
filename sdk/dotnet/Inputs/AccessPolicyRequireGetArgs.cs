@@ -68,6 +68,14 @@ namespace Pulumi.Cloudflare.Inputs
             set => _emailDomains = value;
         }
 
+        [Input("emailLists")]
+        private InputList<string>? _emailLists;
+        public InputList<string> EmailLists
+        {
+            get => _emailLists ?? (_emailLists = new InputList<string>());
+            set => _emailLists = value;
+        }
+
         [Input("emails")]
         private InputList<string>? _emails;
         public InputList<string> Emails

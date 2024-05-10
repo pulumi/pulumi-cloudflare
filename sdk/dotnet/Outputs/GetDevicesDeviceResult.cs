@@ -70,6 +70,10 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string? OsVersion;
         /// <summary>
+        /// Extra version value following the operating system version.
+        /// </summary>
+        public readonly string? OsVersionExtra;
+        /// <summary>
         /// When the device was revoked.
         /// </summary>
         public readonly string? RevokedAt;
@@ -128,6 +132,8 @@ namespace Pulumi.Cloudflare.Outputs
 
             string? osVersion,
 
+            string? osVersionExtra,
+
             string? revokedAt,
 
             string? serialNumber,
@@ -156,6 +162,7 @@ namespace Pulumi.Cloudflare.Outputs
             OsDistroName = osDistroName;
             OsDistroRevision = osDistroRevision;
             OsVersion = osVersion;
+            OsVersionExtra = osVersionExtra;
             RevokedAt = revokedAt;
             SerialNumber = serialNumber;
             Updated = updated;

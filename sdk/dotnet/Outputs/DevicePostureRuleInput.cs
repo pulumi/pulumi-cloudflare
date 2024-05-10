@@ -98,6 +98,10 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string? OsDistroRevision;
         /// <summary>
+        /// Extra operating system version details following the semantic version value.
+        /// </summary>
+        public readonly string? OsVersionExtra;
+        /// <summary>
         /// Overall ZTA score from Crowdstrike. Value must be between 1 and 100.
         /// </summary>
         public readonly string? Overall;
@@ -190,6 +194,8 @@ namespace Pulumi.Cloudflare.Outputs
 
             string? osDistroRevision,
 
+            string? osVersionExtra,
+
             string? overall,
 
             string? path,
@@ -235,6 +241,7 @@ namespace Pulumi.Cloudflare.Outputs
             Os = os;
             OsDistroName = osDistroName;
             OsDistroRevision = osDistroRevision;
+            OsVersionExtra = osVersionExtra;
             Overall = overall;
             Path = path;
             RequireAll = requireAll;

@@ -148,6 +148,10 @@ export class AccessApplication extends pulumi.CustomResource {
      */
     public readonly sameSiteCookieAttribute!: pulumi.Output<string | undefined>;
     /**
+     * Configuration for provisioning to the Access Application via SCIM. This is currently in closed beta.
+     */
+    public readonly scimConfig!: pulumi.Output<outputs.AccessApplicationScimConfig | undefined>;
+    /**
      * List of domains that access will secure. Only present for self_hosted, vnc, and ssh applications. Always includes the value set as `domain`.
      */
     public readonly selfHostedDomains!: pulumi.Output<string[] | undefined>;
@@ -213,6 +217,7 @@ export class AccessApplication extends pulumi.CustomResource {
             resourceInputs["optionsPreflightBypass"] = state ? state.optionsPreflightBypass : undefined;
             resourceInputs["saasApp"] = state ? state.saasApp : undefined;
             resourceInputs["sameSiteCookieAttribute"] = state ? state.sameSiteCookieAttribute : undefined;
+            resourceInputs["scimConfig"] = state ? state.scimConfig : undefined;
             resourceInputs["selfHostedDomains"] = state ? state.selfHostedDomains : undefined;
             resourceInputs["serviceAuth401Redirect"] = state ? state.serviceAuth401Redirect : undefined;
             resourceInputs["sessionDuration"] = state ? state.sessionDuration : undefined;
@@ -245,6 +250,7 @@ export class AccessApplication extends pulumi.CustomResource {
             resourceInputs["optionsPreflightBypass"] = args ? args.optionsPreflightBypass : undefined;
             resourceInputs["saasApp"] = args ? args.saasApp : undefined;
             resourceInputs["sameSiteCookieAttribute"] = args ? args.sameSiteCookieAttribute : undefined;
+            resourceInputs["scimConfig"] = args ? args.scimConfig : undefined;
             resourceInputs["selfHostedDomains"] = args ? args.selfHostedDomains : undefined;
             resourceInputs["serviceAuth401Redirect"] = args ? args.serviceAuth401Redirect : undefined;
             resourceInputs["sessionDuration"] = args ? args.sessionDuration : undefined;
@@ -359,6 +365,10 @@ export interface AccessApplicationState {
      * Defines the same-site cookie setting for access tokens. Available values: `none`, `lax`, `strict`.
      */
     sameSiteCookieAttribute?: pulumi.Input<string>;
+    /**
+     * Configuration for provisioning to the Access Application via SCIM. This is currently in closed beta.
+     */
+    scimConfig?: pulumi.Input<inputs.AccessApplicationScimConfig>;
     /**
      * List of domains that access will secure. Only present for self_hosted, vnc, and ssh applications. Always includes the value set as `domain`.
      */
@@ -485,6 +495,10 @@ export interface AccessApplicationArgs {
      * Defines the same-site cookie setting for access tokens. Available values: `none`, `lax`, `strict`.
      */
     sameSiteCookieAttribute?: pulumi.Input<string>;
+    /**
+     * Configuration for provisioning to the Access Application via SCIM. This is currently in closed beta.
+     */
+    scimConfig?: pulumi.Input<inputs.AccessApplicationScimConfig>;
     /**
      * List of domains that access will secure. Only present for self_hosted, vnc, and ssh applications. Always includes the value set as `domain`.
      */
