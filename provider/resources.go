@@ -124,8 +124,10 @@ func Provider() tfbridge.ProviderInfo {
 				"@types/node": "^10.0.0", // so we can access strongly typed node definitions.
 				"@types/mime": "^2.0.0",
 			},
+			RespectSchemaVersion: true,
 		},
 		Python: &tfbridge.PythonInfo{
+			RespectSchemaVersion: true,
 			Requires: map[string]string{
 				"pulumi": ">=3.0.0,<4.0.0",
 			},
@@ -142,8 +144,10 @@ func Provider() tfbridge.ProviderInfo {
 				mainPkg,
 			),
 			GenerateResourceContainerTypes: true,
+			RespectSchemaVersion:           true,
 		},
 		CSharp: &tfbridge.CSharpInfo{
+			RespectSchemaVersion: true,
 			PackageReferences: map[string]string{
 				"Pulumi": "3.*",
 			},
