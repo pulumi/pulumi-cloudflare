@@ -26,11 +26,13 @@ import javax.annotation.Nullable;
  * used in conjunction with Access Applications to restrict access to
  * a particular resource.
  * 
- * &gt; It&#39;s required that an `account_id` or `zone_id` is provided and in
- *    most cases using either is fine. However, if you&#39;re using a scoped
- *    access token, you must provide the argument that matches the token&#39;s
- *    scope. For example, an access token that is scoped to the &#34;example.com&#34;
- *    zone needs to use the `zone_id` argument.
+ * &gt; It&#39;s required that an `account_id` or `zone_id` is provided and in most cases using either is fine.
+ *    However, if you&#39;re using a scoped access token, you must provide the argument that matches the token&#39;s
+ *    scope. For example, an access token that is scoped to the &#34;example.com&#34; zone needs to use the `zone_id` argument.
+ *    If &#39;application_id&#39; is omitted, the policy created can be reused by multiple access applications.
+ *    Any access_application resource can reference reusable policies through its `policies` argument.
+ *    To destroy a reusable policy and remove it from all applications&#39; policies lists on the same apply, preemptively set the
+ *    lifecycle option `create_before_destroy` to true on the &#39;access_policy&#39; resource.
  * 
  * ## Import
  * 
@@ -50,32 +52,36 @@ import javax.annotation.Nullable;
 @ResourceType(type="cloudflare:index/accessPolicy:AccessPolicy")
 public class AccessPolicy extends com.pulumi.resources.CustomResource {
     /**
-     * The account identifier to target for the resource. Conflicts with `zone_id`.
+     * The account identifier to target for the resource. Must provide only one of `account_id`, `zone_id`. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     @Export(name="accountId", refs={String.class}, tree="[0]")
-    private Output<String> accountId;
+    private Output</* @Nullable */ String> accountId;
 
     /**
-     * @return The account identifier to target for the resource. Conflicts with `zone_id`.
+     * @return The account identifier to target for the resource. Must provide only one of `account_id`, `zone_id`. **Modifying this attribute will force creation of a new resource.**
      * 
      */
-    public Output<String> accountId() {
-        return this.accountId;
+    public Output<Optional<String>> accountId() {
+        return Codegen.optional(this.accountId);
     }
     /**
-     * The ID of the application the policy is associated with.
+     * The ID of the application the policy is associated with. Required when using `precedence`. **Modifying this attribute will force creation of a new resource.**
+     * 
+     * @deprecated
+     * This field is deprecated. Policies can now be standalone and reusable by multiple applications.Please use `cloudflare_access_application.policies` to associate policies with applications.
      * 
      */
+    @Deprecated /* This field is deprecated. Policies can now be standalone and reusable by multiple applications.Please use `cloudflare_access_application.policies` to associate policies with applications. */
     @Export(name="applicationId", refs={String.class}, tree="[0]")
-    private Output<String> applicationId;
+    private Output</* @Nullable */ String> applicationId;
 
     /**
-     * @return The ID of the application the policy is associated with.
+     * @return The ID of the application the policy is associated with. Required when using `precedence`. **Modifying this attribute will force creation of a new resource.**
      * 
      */
-    public Output<String> applicationId() {
-        return this.applicationId;
+    public Output<Optional<String>> applicationId() {
+        return Codegen.optional(this.applicationId);
     }
     @Export(name="approvalGroups", refs={List.class,AccessPolicyApprovalGroup.class}, tree="[0,1]")
     private Output</* @Nullable */ List<AccessPolicyApprovalGroup>> approvalGroups;
@@ -160,18 +166,22 @@ public class AccessPolicy extends com.pulumi.resources.CustomResource {
         return this.name;
     }
     /**
-     * The unique precedence for policies on a single application.
+     * The unique precedence for policies on a single application. Required when using `application_id`.
+     * 
+     * @deprecated
+     * This field is deprecated. Access policies can now be reusable by multiple applications. Please use `cloudflare_access_application.policies` to link policies to an application with ascending order of precedence.
      * 
      */
+    @Deprecated /* This field is deprecated. Access policies can now be reusable by multiple applications. Please use `cloudflare_access_application.policies` to link policies to an application with ascending order of precedence. */
     @Export(name="precedence", refs={Integer.class}, tree="[0]")
-    private Output<Integer> precedence;
+    private Output</* @Nullable */ Integer> precedence;
 
     /**
-     * @return The unique precedence for policies on a single application.
+     * @return The unique precedence for policies on a single application. Required when using `application_id`.
      * 
      */
-    public Output<Integer> precedence() {
-        return this.precedence;
+    public Output<Optional<Integer>> precedence() {
+        return Codegen.optional(this.precedence);
     }
     /**
      * The prompt to display to the user for a justification for accessing the resource. Required when using `purpose_justification_required`.
@@ -230,18 +240,18 @@ public class AccessPolicy extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.sessionDuration);
     }
     /**
-     * The zone identifier to target for the resource. Conflicts with `account_id`.
+     * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     @Export(name="zoneId", refs={String.class}, tree="[0]")
-    private Output<String> zoneId;
+    private Output</* @Nullable */ String> zoneId;
 
     /**
-     * @return The zone identifier to target for the resource. Conflicts with `account_id`.
+     * @return The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
      * 
      */
-    public Output<String> zoneId() {
-        return this.zoneId;
+    public Output<Optional<String>> zoneId() {
+        return Codegen.optional(this.zoneId);
     }
 
     /**

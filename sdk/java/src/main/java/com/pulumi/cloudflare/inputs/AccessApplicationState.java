@@ -353,6 +353,21 @@ public final class AccessApplicationState extends com.pulumi.resources.ResourceA
     }
 
     /**
+     * The policies associated with the application, in ascending order of precedence. When omitted, the application policies are not be updated. Warning: Do not use this field while you still have this application ID referenced as `application_id` in an `cloudflare.AccessPolicy` resource, as it can result in an inconsistent state.
+     * 
+     */
+    @Import(name="policies")
+    private @Nullable Output<List<String>> policies;
+
+    /**
+     * @return The policies associated with the application, in ascending order of precedence. When omitted, the application policies are not be updated. Warning: Do not use this field while you still have this application ID referenced as `application_id` in an `cloudflare.AccessPolicy` resource, as it can result in an inconsistent state.
+     * 
+     */
+    public Optional<Output<List<String>>> policies() {
+        return Optional.ofNullable(this.policies);
+    }
+
+    /**
      * SaaS configuration for the Access Application.
      * 
      */
@@ -383,14 +398,14 @@ public final class AccessApplicationState extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * Configuration for provisioning to the Access Application via SCIM. This is currently in closed beta.
+     * Configuration for provisioning to this application via SCIM. This is currently in closed beta.
      * 
      */
     @Import(name="scimConfig")
     private @Nullable Output<AccessApplicationScimConfigArgs> scimConfig;
 
     /**
-     * @return Configuration for provisioning to the Access Application via SCIM. This is currently in closed beta.
+     * @return Configuration for provisioning to this application via SCIM. This is currently in closed beta.
      * 
      */
     public Optional<Output<AccessApplicationScimConfigArgs>> scimConfig() {
@@ -527,6 +542,7 @@ public final class AccessApplicationState extends com.pulumi.resources.ResourceA
         this.logoUrl = $.logoUrl;
         this.name = $.name;
         this.optionsPreflightBypass = $.optionsPreflightBypass;
+        this.policies = $.policies;
         this.saasApp = $.saasApp;
         this.sameSiteCookieAttribute = $.sameSiteCookieAttribute;
         this.scimConfig = $.scimConfig;
@@ -1060,6 +1076,37 @@ public final class AccessApplicationState extends com.pulumi.resources.ResourceA
         }
 
         /**
+         * @param policies The policies associated with the application, in ascending order of precedence. When omitted, the application policies are not be updated. Warning: Do not use this field while you still have this application ID referenced as `application_id` in an `cloudflare.AccessPolicy` resource, as it can result in an inconsistent state.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder policies(@Nullable Output<List<String>> policies) {
+            $.policies = policies;
+            return this;
+        }
+
+        /**
+         * @param policies The policies associated with the application, in ascending order of precedence. When omitted, the application policies are not be updated. Warning: Do not use this field while you still have this application ID referenced as `application_id` in an `cloudflare.AccessPolicy` resource, as it can result in an inconsistent state.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder policies(List<String> policies) {
+            return policies(Output.of(policies));
+        }
+
+        /**
+         * @param policies The policies associated with the application, in ascending order of precedence. When omitted, the application policies are not be updated. Warning: Do not use this field while you still have this application ID referenced as `application_id` in an `cloudflare.AccessPolicy` resource, as it can result in an inconsistent state.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder policies(String... policies) {
+            return policies(List.of(policies));
+        }
+
+        /**
          * @param saasApp SaaS configuration for the Access Application.
          * 
          * @return builder
@@ -1102,7 +1149,7 @@ public final class AccessApplicationState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param scimConfig Configuration for provisioning to the Access Application via SCIM. This is currently in closed beta.
+         * @param scimConfig Configuration for provisioning to this application via SCIM. This is currently in closed beta.
          * 
          * @return builder
          * 
@@ -1113,7 +1160,7 @@ public final class AccessApplicationState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param scimConfig Configuration for provisioning to the Access Application via SCIM. This is currently in closed beta.
+         * @param scimConfig Configuration for provisioning to this application via SCIM. This is currently in closed beta.
          * 
          * @return builder
          * 

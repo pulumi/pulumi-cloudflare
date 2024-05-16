@@ -47,6 +47,7 @@ import (
 //						Operator:         pulumi.String("<"),
 //						OsDistroName:     pulumi.String("ubuntu"),
 //						OsDistroRevision: pulumi.String("1.0.0"),
+//						OsVersionExtra:   pulumi.String("(a)"),
 //					},
 //				},
 //			})

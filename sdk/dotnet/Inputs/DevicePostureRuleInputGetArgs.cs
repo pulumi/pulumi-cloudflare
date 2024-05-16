@@ -145,7 +145,7 @@ namespace Pulumi.Cloudflare.Inputs
         public Input<string>? OsDistroRevision { get; set; }
 
         /// <summary>
-        /// Extra operating system version details following the semantic version value.
+        /// Extra version value following the operating system semantic version.
         /// </summary>
         [Input("osVersionExtra")]
         public Input<string>? OsVersionExtra { get; set; }

@@ -162,6 +162,12 @@ namespace Pulumi.Cloudflare
         public Output<bool?> OptionsPreflightBypass { get; private set; } = null!;
 
         /// <summary>
+        /// The policies associated with the application, in ascending order of precedence. When omitted, the application policies are not be updated. Warning: Do not use this field while you still have this application ID referenced as `application_id` in an `cloudflare.AccessPolicy` resource, as it can result in an inconsistent state.
+        /// </summary>
+        [Output("policies")]
+        public Output<ImmutableArray<string>> Policies { get; private set; } = null!;
+
+        /// <summary>
         /// SaaS configuration for the Access Application.
         /// </summary>
         [Output("saasApp")]
@@ -174,7 +180,7 @@ namespace Pulumi.Cloudflare
         public Output<string?> SameSiteCookieAttribute { get; private set; } = null!;
 
         /// <summary>
-        /// Configuration for provisioning to the Access Application via SCIM. This is currently in closed beta.
+        /// Configuration for provisioning to this application via SCIM. This is currently in closed beta.
         /// </summary>
         [Output("scimConfig")]
         public Output<Outputs.AccessApplicationScimConfig?> ScimConfig { get; private set; } = null!;
@@ -417,6 +423,18 @@ namespace Pulumi.Cloudflare
         [Input("optionsPreflightBypass")]
         public Input<bool>? OptionsPreflightBypass { get; set; }
 
+        [Input("policies")]
+        private InputList<string>? _policies;
+
+        /// <summary>
+        /// The policies associated with the application, in ascending order of precedence. When omitted, the application policies are not be updated. Warning: Do not use this field while you still have this application ID referenced as `application_id` in an `cloudflare.AccessPolicy` resource, as it can result in an inconsistent state.
+        /// </summary>
+        public InputList<string> Policies
+        {
+            get => _policies ?? (_policies = new InputList<string>());
+            set => _policies = value;
+        }
+
         /// <summary>
         /// SaaS configuration for the Access Application.
         /// </summary>
@@ -430,7 +448,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? SameSiteCookieAttribute { get; set; }
 
         /// <summary>
-        /// Configuration for provisioning to the Access Application via SCIM. This is currently in closed beta.
+        /// Configuration for provisioning to this application via SCIM. This is currently in closed beta.
         /// </summary>
         [Input("scimConfig")]
         public Input<Inputs.AccessApplicationScimConfigArgs>? ScimConfig { get; set; }
@@ -653,6 +671,18 @@ namespace Pulumi.Cloudflare
         [Input("optionsPreflightBypass")]
         public Input<bool>? OptionsPreflightBypass { get; set; }
 
+        [Input("policies")]
+        private InputList<string>? _policies;
+
+        /// <summary>
+        /// The policies associated with the application, in ascending order of precedence. When omitted, the application policies are not be updated. Warning: Do not use this field while you still have this application ID referenced as `application_id` in an `cloudflare.AccessPolicy` resource, as it can result in an inconsistent state.
+        /// </summary>
+        public InputList<string> Policies
+        {
+            get => _policies ?? (_policies = new InputList<string>());
+            set => _policies = value;
+        }
+
         /// <summary>
         /// SaaS configuration for the Access Application.
         /// </summary>
@@ -666,7 +696,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? SameSiteCookieAttribute { get; set; }
 
         /// <summary>
-        /// Configuration for provisioning to the Access Application via SCIM. This is currently in closed beta.
+        /// Configuration for provisioning to this application via SCIM. This is currently in closed beta.
         /// </summary>
         [Input("scimConfig")]
         public Input<Inputs.AccessApplicationScimConfigGetArgs>? ScimConfig { get; set; }

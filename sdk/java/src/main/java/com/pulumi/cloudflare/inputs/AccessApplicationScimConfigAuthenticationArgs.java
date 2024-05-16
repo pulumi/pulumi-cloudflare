@@ -18,14 +18,14 @@ public final class AccessApplicationScimConfigAuthenticationArgs extends com.pul
     public static final AccessApplicationScimConfigAuthenticationArgs Empty = new AccessApplicationScimConfigAuthenticationArgs();
 
     /**
-     * URL used to generate the auth code used during token generation.
+     * URL used to generate the auth code used during token generation. Required when using `scim_config.0.authentication.0.client_secret`, `scim_config.0.authentication.0.client_id`, `scim_config.0.authentication.0.token_url`. Conflicts with `scim_config.0.authentication.0.user`, `scim_config.0.authentication.0.password`, `scim_config.0.authentication.0.token`.
      * 
      */
     @Import(name="authorizationUrl")
     private @Nullable Output<String> authorizationUrl;
 
     /**
-     * @return URL used to generate the auth code used during token generation.
+     * @return URL used to generate the auth code used during token generation. Required when using `scim_config.0.authentication.0.client_secret`, `scim_config.0.authentication.0.client_id`, `scim_config.0.authentication.0.token_url`. Conflicts with `scim_config.0.authentication.0.user`, `scim_config.0.authentication.0.password`, `scim_config.0.authentication.0.token`.
      * 
      */
     public Optional<Output<String>> authorizationUrl() {
@@ -33,14 +33,14 @@ public final class AccessApplicationScimConfigAuthenticationArgs extends com.pul
     }
 
     /**
-     * Client ID used to authenticate when generating a token for authenticating with the remote SCIM service.
+     * Client ID used to authenticate when generating a token for authenticating with the remote SCIM service. Required when using `scim_config.0.authentication.0.client_secret`, `scim_config.0.authentication.0.authorization_url`, `scim_config.0.authentication.0.token_url`. Conflicts with `scim_config.0.authentication.0.user`, `scim_config.0.authentication.0.password`, `scim_config.0.authentication.0.token`.
      * 
      */
     @Import(name="clientId")
     private @Nullable Output<String> clientId;
 
     /**
-     * @return Client ID used to authenticate when generating a token for authenticating with the remote SCIM service.
+     * @return Client ID used to authenticate when generating a token for authenticating with the remote SCIM service. Required when using `scim_config.0.authentication.0.client_secret`, `scim_config.0.authentication.0.authorization_url`, `scim_config.0.authentication.0.token_url`. Conflicts with `scim_config.0.authentication.0.user`, `scim_config.0.authentication.0.password`, `scim_config.0.authentication.0.token`.
      * 
      */
     public Optional<Output<String>> clientId() {
@@ -48,14 +48,14 @@ public final class AccessApplicationScimConfigAuthenticationArgs extends com.pul
     }
 
     /**
-     * Secret used to authenticate when generating a token for authenticating with the remove SCIM service.
+     * Secret used to authenticate when generating a token for authenticating with the remove SCIM service. Required when using `scim_config.0.authentication.0.client_id`, `scim_config.0.authentication.0.authorization_url`, `scim_config.0.authentication.0.token_url`. Conflicts with `scim_config.0.authentication.0.user`, `scim_config.0.authentication.0.password`, `scim_config.0.authentication.0.token`.
      * 
      */
     @Import(name="clientSecret")
     private @Nullable Output<String> clientSecret;
 
     /**
-     * @return Secret used to authenticate when generating a token for authenticating with the remove SCIM service.
+     * @return Secret used to authenticate when generating a token for authenticating with the remove SCIM service. Required when using `scim_config.0.authentication.0.client_id`, `scim_config.0.authentication.0.authorization_url`, `scim_config.0.authentication.0.token_url`. Conflicts with `scim_config.0.authentication.0.user`, `scim_config.0.authentication.0.password`, `scim_config.0.authentication.0.token`.
      * 
      */
     public Optional<Output<String>> clientSecret() {
@@ -63,14 +63,14 @@ public final class AccessApplicationScimConfigAuthenticationArgs extends com.pul
     }
 
     /**
-     * The password used to authenticate with the remote SCIM service.
+     * Required when using `scim_config.0.authentication.0.user`. Conflicts with `scim_config.0.authentication.0.token`, `scim_config.0.authentication.0.client_id`, `scim_config.0.authentication.0.client_secret`, `scim_config.0.authentication.0.authorization_url`, `scim_config.0.authentication.0.token_url`, `scim_config.0.authentication.0.scopes`.
      * 
      */
     @Import(name="password")
     private @Nullable Output<String> password;
 
     /**
-     * @return The password used to authenticate with the remote SCIM service.
+     * @return Required when using `scim_config.0.authentication.0.user`. Conflicts with `scim_config.0.authentication.0.token`, `scim_config.0.authentication.0.client_id`, `scim_config.0.authentication.0.client_secret`, `scim_config.0.authentication.0.authorization_url`, `scim_config.0.authentication.0.token_url`, `scim_config.0.authentication.0.scopes`.
      * 
      */
     public Optional<Output<String>> password() {
@@ -78,14 +78,14 @@ public final class AccessApplicationScimConfigAuthenticationArgs extends com.pul
     }
 
     /**
-     * The authentication scheme to use. For OAuth 2 authentication, this value should be `oauth2`
+     * The authentication scheme to use when making SCIM requests to this application.
      * 
      */
     @Import(name="scheme", required=true)
     private Output<String> scheme;
 
     /**
-     * @return The authentication scheme to use. For OAuth 2 authentication, this value should be `oauth2`
+     * @return The authentication scheme to use when making SCIM requests to this application.
      * 
      */
     public Output<String> scheme() {
@@ -93,14 +93,14 @@ public final class AccessApplicationScimConfigAuthenticationArgs extends com.pul
     }
 
     /**
-     * The authorization scopes to request when generating the token used to authenticate with the remove SCIM service.
+     * The authorization scopes to request when generating the token used to authenticate with the remove SCIM service. Conflicts with `scim_config.0.authentication.0.user`, `scim_config.0.authentication.0.password`, `scim_config.0.authentication.0.token`.
      * 
      */
     @Import(name="scopes")
     private @Nullable Output<List<String>> scopes;
 
     /**
-     * @return The authorization scopes to request when generating the token used to authenticate with the remove SCIM service.
+     * @return The authorization scopes to request when generating the token used to authenticate with the remove SCIM service. Conflicts with `scim_config.0.authentication.0.user`, `scim_config.0.authentication.0.password`, `scim_config.0.authentication.0.token`.
      * 
      */
     public Optional<Output<List<String>>> scopes() {
@@ -108,14 +108,14 @@ public final class AccessApplicationScimConfigAuthenticationArgs extends com.pul
     }
 
     /**
-     * The token used to authenticate with the remote SCIM service.
+     * Token used to authenticate with the remote SCIM service. Conflicts with `scim_config.0.authentication.0.user`, `scim_config.0.authentication.0.password`, `scim_config.0.authentication.0.client_id`, `scim_config.0.authentication.0.client_secret`, `scim_config.0.authentication.0.authorization_url`, `scim_config.0.authentication.0.token_url`, `scim_config.0.authentication.0.scopes`.
      * 
      */
     @Import(name="token")
     private @Nullable Output<String> token;
 
     /**
-     * @return The token used to authenticate with the remote SCIM service.
+     * @return Token used to authenticate with the remote SCIM service. Conflicts with `scim_config.0.authentication.0.user`, `scim_config.0.authentication.0.password`, `scim_config.0.authentication.0.client_id`, `scim_config.0.authentication.0.client_secret`, `scim_config.0.authentication.0.authorization_url`, `scim_config.0.authentication.0.token_url`, `scim_config.0.authentication.0.scopes`.
      * 
      */
     public Optional<Output<String>> token() {
@@ -123,14 +123,14 @@ public final class AccessApplicationScimConfigAuthenticationArgs extends com.pul
     }
 
     /**
-     * URL used to generate the token used to authenticate with the remote SCIM service.
+     * URL used to generate the token used to authenticate with the remote SCIM service. Required when using `scim_config.0.authentication.0.client_secret`, `scim_config.0.authentication.0.authorization_url`, `scim_config.0.authentication.0.client_id`. Conflicts with `scim_config.0.authentication.0.user`, `scim_config.0.authentication.0.password`, `scim_config.0.authentication.0.token`.
      * 
      */
     @Import(name="tokenUrl")
     private @Nullable Output<String> tokenUrl;
 
     /**
-     * @return URL used to generate the token used to authenticate with the remote SCIM service.
+     * @return URL used to generate the token used to authenticate with the remote SCIM service. Required when using `scim_config.0.authentication.0.client_secret`, `scim_config.0.authentication.0.authorization_url`, `scim_config.0.authentication.0.client_id`. Conflicts with `scim_config.0.authentication.0.user`, `scim_config.0.authentication.0.password`, `scim_config.0.authentication.0.token`.
      * 
      */
     public Optional<Output<String>> tokenUrl() {
@@ -138,14 +138,14 @@ public final class AccessApplicationScimConfigAuthenticationArgs extends com.pul
     }
 
     /**
-     * The username used to authenticate with the remote SCIM service.
+     * User name used to authenticate with the remote SCIM service. Required when using `scim_config.0.authentication.0.password`. Conflicts with `scim_config.0.authentication.0.token`, `scim_config.0.authentication.0.client_id`, `scim_config.0.authentication.0.client_secret`, `scim_config.0.authentication.0.authorization_url`, `scim_config.0.authentication.0.token_url`, `scim_config.0.authentication.0.scopes`.
      * 
      */
     @Import(name="user")
     private @Nullable Output<String> user;
 
     /**
-     * @return The username used to authenticate with the remote SCIM service.
+     * @return User name used to authenticate with the remote SCIM service. Required when using `scim_config.0.authentication.0.password`. Conflicts with `scim_config.0.authentication.0.token`, `scim_config.0.authentication.0.client_id`, `scim_config.0.authentication.0.client_secret`, `scim_config.0.authentication.0.authorization_url`, `scim_config.0.authentication.0.token_url`, `scim_config.0.authentication.0.scopes`.
      * 
      */
     public Optional<Output<String>> user() {
@@ -185,7 +185,7 @@ public final class AccessApplicationScimConfigAuthenticationArgs extends com.pul
         }
 
         /**
-         * @param authorizationUrl URL used to generate the auth code used during token generation.
+         * @param authorizationUrl URL used to generate the auth code used during token generation. Required when using `scim_config.0.authentication.0.client_secret`, `scim_config.0.authentication.0.client_id`, `scim_config.0.authentication.0.token_url`. Conflicts with `scim_config.0.authentication.0.user`, `scim_config.0.authentication.0.password`, `scim_config.0.authentication.0.token`.
          * 
          * @return builder
          * 
@@ -196,7 +196,7 @@ public final class AccessApplicationScimConfigAuthenticationArgs extends com.pul
         }
 
         /**
-         * @param authorizationUrl URL used to generate the auth code used during token generation.
+         * @param authorizationUrl URL used to generate the auth code used during token generation. Required when using `scim_config.0.authentication.0.client_secret`, `scim_config.0.authentication.0.client_id`, `scim_config.0.authentication.0.token_url`. Conflicts with `scim_config.0.authentication.0.user`, `scim_config.0.authentication.0.password`, `scim_config.0.authentication.0.token`.
          * 
          * @return builder
          * 
@@ -206,7 +206,7 @@ public final class AccessApplicationScimConfigAuthenticationArgs extends com.pul
         }
 
         /**
-         * @param clientId Client ID used to authenticate when generating a token for authenticating with the remote SCIM service.
+         * @param clientId Client ID used to authenticate when generating a token for authenticating with the remote SCIM service. Required when using `scim_config.0.authentication.0.client_secret`, `scim_config.0.authentication.0.authorization_url`, `scim_config.0.authentication.0.token_url`. Conflicts with `scim_config.0.authentication.0.user`, `scim_config.0.authentication.0.password`, `scim_config.0.authentication.0.token`.
          * 
          * @return builder
          * 
@@ -217,7 +217,7 @@ public final class AccessApplicationScimConfigAuthenticationArgs extends com.pul
         }
 
         /**
-         * @param clientId Client ID used to authenticate when generating a token for authenticating with the remote SCIM service.
+         * @param clientId Client ID used to authenticate when generating a token for authenticating with the remote SCIM service. Required when using `scim_config.0.authentication.0.client_secret`, `scim_config.0.authentication.0.authorization_url`, `scim_config.0.authentication.0.token_url`. Conflicts with `scim_config.0.authentication.0.user`, `scim_config.0.authentication.0.password`, `scim_config.0.authentication.0.token`.
          * 
          * @return builder
          * 
@@ -227,7 +227,7 @@ public final class AccessApplicationScimConfigAuthenticationArgs extends com.pul
         }
 
         /**
-         * @param clientSecret Secret used to authenticate when generating a token for authenticating with the remove SCIM service.
+         * @param clientSecret Secret used to authenticate when generating a token for authenticating with the remove SCIM service. Required when using `scim_config.0.authentication.0.client_id`, `scim_config.0.authentication.0.authorization_url`, `scim_config.0.authentication.0.token_url`. Conflicts with `scim_config.0.authentication.0.user`, `scim_config.0.authentication.0.password`, `scim_config.0.authentication.0.token`.
          * 
          * @return builder
          * 
@@ -238,7 +238,7 @@ public final class AccessApplicationScimConfigAuthenticationArgs extends com.pul
         }
 
         /**
-         * @param clientSecret Secret used to authenticate when generating a token for authenticating with the remove SCIM service.
+         * @param clientSecret Secret used to authenticate when generating a token for authenticating with the remove SCIM service. Required when using `scim_config.0.authentication.0.client_id`, `scim_config.0.authentication.0.authorization_url`, `scim_config.0.authentication.0.token_url`. Conflicts with `scim_config.0.authentication.0.user`, `scim_config.0.authentication.0.password`, `scim_config.0.authentication.0.token`.
          * 
          * @return builder
          * 
@@ -248,7 +248,7 @@ public final class AccessApplicationScimConfigAuthenticationArgs extends com.pul
         }
 
         /**
-         * @param password The password used to authenticate with the remote SCIM service.
+         * @param password Required when using `scim_config.0.authentication.0.user`. Conflicts with `scim_config.0.authentication.0.token`, `scim_config.0.authentication.0.client_id`, `scim_config.0.authentication.0.client_secret`, `scim_config.0.authentication.0.authorization_url`, `scim_config.0.authentication.0.token_url`, `scim_config.0.authentication.0.scopes`.
          * 
          * @return builder
          * 
@@ -259,7 +259,7 @@ public final class AccessApplicationScimConfigAuthenticationArgs extends com.pul
         }
 
         /**
-         * @param password The password used to authenticate with the remote SCIM service.
+         * @param password Required when using `scim_config.0.authentication.0.user`. Conflicts with `scim_config.0.authentication.0.token`, `scim_config.0.authentication.0.client_id`, `scim_config.0.authentication.0.client_secret`, `scim_config.0.authentication.0.authorization_url`, `scim_config.0.authentication.0.token_url`, `scim_config.0.authentication.0.scopes`.
          * 
          * @return builder
          * 
@@ -269,7 +269,7 @@ public final class AccessApplicationScimConfigAuthenticationArgs extends com.pul
         }
 
         /**
-         * @param scheme The authentication scheme to use. For OAuth 2 authentication, this value should be `oauth2`
+         * @param scheme The authentication scheme to use when making SCIM requests to this application.
          * 
          * @return builder
          * 
@@ -280,7 +280,7 @@ public final class AccessApplicationScimConfigAuthenticationArgs extends com.pul
         }
 
         /**
-         * @param scheme The authentication scheme to use. For OAuth 2 authentication, this value should be `oauth2`
+         * @param scheme The authentication scheme to use when making SCIM requests to this application.
          * 
          * @return builder
          * 
@@ -290,7 +290,7 @@ public final class AccessApplicationScimConfigAuthenticationArgs extends com.pul
         }
 
         /**
-         * @param scopes The authorization scopes to request when generating the token used to authenticate with the remove SCIM service.
+         * @param scopes The authorization scopes to request when generating the token used to authenticate with the remove SCIM service. Conflicts with `scim_config.0.authentication.0.user`, `scim_config.0.authentication.0.password`, `scim_config.0.authentication.0.token`.
          * 
          * @return builder
          * 
@@ -301,7 +301,7 @@ public final class AccessApplicationScimConfigAuthenticationArgs extends com.pul
         }
 
         /**
-         * @param scopes The authorization scopes to request when generating the token used to authenticate with the remove SCIM service.
+         * @param scopes The authorization scopes to request when generating the token used to authenticate with the remove SCIM service. Conflicts with `scim_config.0.authentication.0.user`, `scim_config.0.authentication.0.password`, `scim_config.0.authentication.0.token`.
          * 
          * @return builder
          * 
@@ -311,7 +311,7 @@ public final class AccessApplicationScimConfigAuthenticationArgs extends com.pul
         }
 
         /**
-         * @param scopes The authorization scopes to request when generating the token used to authenticate with the remove SCIM service.
+         * @param scopes The authorization scopes to request when generating the token used to authenticate with the remove SCIM service. Conflicts with `scim_config.0.authentication.0.user`, `scim_config.0.authentication.0.password`, `scim_config.0.authentication.0.token`.
          * 
          * @return builder
          * 
@@ -321,7 +321,7 @@ public final class AccessApplicationScimConfigAuthenticationArgs extends com.pul
         }
 
         /**
-         * @param token The token used to authenticate with the remote SCIM service.
+         * @param token Token used to authenticate with the remote SCIM service. Conflicts with `scim_config.0.authentication.0.user`, `scim_config.0.authentication.0.password`, `scim_config.0.authentication.0.client_id`, `scim_config.0.authentication.0.client_secret`, `scim_config.0.authentication.0.authorization_url`, `scim_config.0.authentication.0.token_url`, `scim_config.0.authentication.0.scopes`.
          * 
          * @return builder
          * 
@@ -332,7 +332,7 @@ public final class AccessApplicationScimConfigAuthenticationArgs extends com.pul
         }
 
         /**
-         * @param token The token used to authenticate with the remote SCIM service.
+         * @param token Token used to authenticate with the remote SCIM service. Conflicts with `scim_config.0.authentication.0.user`, `scim_config.0.authentication.0.password`, `scim_config.0.authentication.0.client_id`, `scim_config.0.authentication.0.client_secret`, `scim_config.0.authentication.0.authorization_url`, `scim_config.0.authentication.0.token_url`, `scim_config.0.authentication.0.scopes`.
          * 
          * @return builder
          * 
@@ -342,7 +342,7 @@ public final class AccessApplicationScimConfigAuthenticationArgs extends com.pul
         }
 
         /**
-         * @param tokenUrl URL used to generate the token used to authenticate with the remote SCIM service.
+         * @param tokenUrl URL used to generate the token used to authenticate with the remote SCIM service. Required when using `scim_config.0.authentication.0.client_secret`, `scim_config.0.authentication.0.authorization_url`, `scim_config.0.authentication.0.client_id`. Conflicts with `scim_config.0.authentication.0.user`, `scim_config.0.authentication.0.password`, `scim_config.0.authentication.0.token`.
          * 
          * @return builder
          * 
@@ -353,7 +353,7 @@ public final class AccessApplicationScimConfigAuthenticationArgs extends com.pul
         }
 
         /**
-         * @param tokenUrl URL used to generate the token used to authenticate with the remote SCIM service.
+         * @param tokenUrl URL used to generate the token used to authenticate with the remote SCIM service. Required when using `scim_config.0.authentication.0.client_secret`, `scim_config.0.authentication.0.authorization_url`, `scim_config.0.authentication.0.client_id`. Conflicts with `scim_config.0.authentication.0.user`, `scim_config.0.authentication.0.password`, `scim_config.0.authentication.0.token`.
          * 
          * @return builder
          * 
@@ -363,7 +363,7 @@ public final class AccessApplicationScimConfigAuthenticationArgs extends com.pul
         }
 
         /**
-         * @param user The username used to authenticate with the remote SCIM service.
+         * @param user User name used to authenticate with the remote SCIM service. Required when using `scim_config.0.authentication.0.password`. Conflicts with `scim_config.0.authentication.0.token`, `scim_config.0.authentication.0.client_id`, `scim_config.0.authentication.0.client_secret`, `scim_config.0.authentication.0.authorization_url`, `scim_config.0.authentication.0.token_url`, `scim_config.0.authentication.0.scopes`.
          * 
          * @return builder
          * 
@@ -374,7 +374,7 @@ public final class AccessApplicationScimConfigAuthenticationArgs extends com.pul
         }
 
         /**
-         * @param user The username used to authenticate with the remote SCIM service.
+         * @param user User name used to authenticate with the remote SCIM service. Required when using `scim_config.0.authentication.0.password`. Conflicts with `scim_config.0.authentication.0.token`, `scim_config.0.authentication.0.client_id`, `scim_config.0.authentication.0.client_secret`, `scim_config.0.authentication.0.authorization_url`, `scim_config.0.authentication.0.token_url`, `scim_config.0.authentication.0.scopes`.
          * 
          * @return builder
          * 

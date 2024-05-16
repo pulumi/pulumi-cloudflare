@@ -350,6 +350,20 @@ public class AccessApplication extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.optionsPreflightBypass);
     }
     /**
+     * The policies associated with the application, in ascending order of precedence. When omitted, the application policies are not be updated. Warning: Do not use this field while you still have this application ID referenced as `application_id` in an `cloudflare.AccessPolicy` resource, as it can result in an inconsistent state.
+     * 
+     */
+    @Export(name="policies", refs={List.class,String.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<String>> policies;
+
+    /**
+     * @return The policies associated with the application, in ascending order of precedence. When omitted, the application policies are not be updated. Warning: Do not use this field while you still have this application ID referenced as `application_id` in an `cloudflare.AccessPolicy` resource, as it can result in an inconsistent state.
+     * 
+     */
+    public Output<Optional<List<String>>> policies() {
+        return Codegen.optional(this.policies);
+    }
+    /**
      * SaaS configuration for the Access Application.
      * 
      */
@@ -378,14 +392,14 @@ public class AccessApplication extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.sameSiteCookieAttribute);
     }
     /**
-     * Configuration for provisioning to the Access Application via SCIM. This is currently in closed beta.
+     * Configuration for provisioning to this application via SCIM. This is currently in closed beta.
      * 
      */
     @Export(name="scimConfig", refs={AccessApplicationScimConfig.class}, tree="[0]")
     private Output</* @Nullable */ AccessApplicationScimConfig> scimConfig;
 
     /**
-     * @return Configuration for provisioning to the Access Application via SCIM. This is currently in closed beta.
+     * @return Configuration for provisioning to this application via SCIM. This is currently in closed beta.
      * 
      */
     public Output<Optional<AccessApplicationScimConfig>> scimConfig() {

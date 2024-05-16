@@ -98,7 +98,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string? OsDistroRevision;
         /// <summary>
-        /// Extra operating system version details following the semantic version value.
+        /// Extra version value following the operating system semantic version.
         /// </summary>
         public readonly string? OsVersionExtra;
         /// <summary>

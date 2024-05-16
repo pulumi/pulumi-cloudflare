@@ -74,11 +74,13 @@ type AccessApplication struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if corsHeaders is set. Defaults to `false`.
 	OptionsPreflightBypass pulumi.BoolPtrOutput `pulumi:"optionsPreflightBypass"`
+	// The policies associated with the application, in ascending order of precedence. When omitted, the application policies are not be updated. Warning: Do not use this field while you still have this application ID referenced as `applicationId` in an `AccessPolicy` resource, as it can result in an inconsistent state.
+	Policies pulumi.StringArrayOutput `pulumi:"policies"`
 	// SaaS configuration for the Access Application.
 	SaasApp AccessApplicationSaasAppPtrOutput `pulumi:"saasApp"`
 	// Defines the same-site cookie setting for access tokens. Available values: `none`, `lax`, `strict`.
 	SameSiteCookieAttribute pulumi.StringPtrOutput `pulumi:"sameSiteCookieAttribute"`
-	// Configuration for provisioning to the Access Application via SCIM. This is currently in closed beta.
+	// Configuration for provisioning to this application via SCIM. This is currently in closed beta.
 	ScimConfig AccessApplicationScimConfigPtrOutput `pulumi:"scimConfig"`
 	// List of domains that access will secure. Only present for self_hosted, vnc, and ssh applications. Always includes the value set as `domain`.
 	SelfHostedDomains pulumi.StringArrayOutput `pulumi:"selfHostedDomains"`
@@ -170,11 +172,13 @@ type accessApplicationState struct {
 	Name *string `pulumi:"name"`
 	// Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if corsHeaders is set. Defaults to `false`.
 	OptionsPreflightBypass *bool `pulumi:"optionsPreflightBypass"`
+	// The policies associated with the application, in ascending order of precedence. When omitted, the application policies are not be updated. Warning: Do not use this field while you still have this application ID referenced as `applicationId` in an `AccessPolicy` resource, as it can result in an inconsistent state.
+	Policies []string `pulumi:"policies"`
 	// SaaS configuration for the Access Application.
 	SaasApp *AccessApplicationSaasApp `pulumi:"saasApp"`
 	// Defines the same-site cookie setting for access tokens. Available values: `none`, `lax`, `strict`.
 	SameSiteCookieAttribute *string `pulumi:"sameSiteCookieAttribute"`
-	// Configuration for provisioning to the Access Application via SCIM. This is currently in closed beta.
+	// Configuration for provisioning to this application via SCIM. This is currently in closed beta.
 	ScimConfig *AccessApplicationScimConfig `pulumi:"scimConfig"`
 	// List of domains that access will secure. Only present for self_hosted, vnc, and ssh applications. Always includes the value set as `domain`.
 	SelfHostedDomains []string `pulumi:"selfHostedDomains"`
@@ -237,11 +241,13 @@ type AccessApplicationState struct {
 	Name pulumi.StringPtrInput
 	// Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if corsHeaders is set. Defaults to `false`.
 	OptionsPreflightBypass pulumi.BoolPtrInput
+	// The policies associated with the application, in ascending order of precedence. When omitted, the application policies are not be updated. Warning: Do not use this field while you still have this application ID referenced as `applicationId` in an `AccessPolicy` resource, as it can result in an inconsistent state.
+	Policies pulumi.StringArrayInput
 	// SaaS configuration for the Access Application.
 	SaasApp AccessApplicationSaasAppPtrInput
 	// Defines the same-site cookie setting for access tokens. Available values: `none`, `lax`, `strict`.
 	SameSiteCookieAttribute pulumi.StringPtrInput
-	// Configuration for provisioning to the Access Application via SCIM. This is currently in closed beta.
+	// Configuration for provisioning to this application via SCIM. This is currently in closed beta.
 	ScimConfig AccessApplicationScimConfigPtrInput
 	// List of domains that access will secure. Only present for self_hosted, vnc, and ssh applications. Always includes the value set as `domain`.
 	SelfHostedDomains pulumi.StringArrayInput
@@ -306,11 +312,13 @@ type accessApplicationArgs struct {
 	Name *string `pulumi:"name"`
 	// Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if corsHeaders is set. Defaults to `false`.
 	OptionsPreflightBypass *bool `pulumi:"optionsPreflightBypass"`
+	// The policies associated with the application, in ascending order of precedence. When omitted, the application policies are not be updated. Warning: Do not use this field while you still have this application ID referenced as `applicationId` in an `AccessPolicy` resource, as it can result in an inconsistent state.
+	Policies []string `pulumi:"policies"`
 	// SaaS configuration for the Access Application.
 	SaasApp *AccessApplicationSaasApp `pulumi:"saasApp"`
 	// Defines the same-site cookie setting for access tokens. Available values: `none`, `lax`, `strict`.
 	SameSiteCookieAttribute *string `pulumi:"sameSiteCookieAttribute"`
-	// Configuration for provisioning to the Access Application via SCIM. This is currently in closed beta.
+	// Configuration for provisioning to this application via SCIM. This is currently in closed beta.
 	ScimConfig *AccessApplicationScimConfig `pulumi:"scimConfig"`
 	// List of domains that access will secure. Only present for self_hosted, vnc, and ssh applications. Always includes the value set as `domain`.
 	SelfHostedDomains []string `pulumi:"selfHostedDomains"`
@@ -372,11 +380,13 @@ type AccessApplicationArgs struct {
 	Name pulumi.StringPtrInput
 	// Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if corsHeaders is set. Defaults to `false`.
 	OptionsPreflightBypass pulumi.BoolPtrInput
+	// The policies associated with the application, in ascending order of precedence. When omitted, the application policies are not be updated. Warning: Do not use this field while you still have this application ID referenced as `applicationId` in an `AccessPolicy` resource, as it can result in an inconsistent state.
+	Policies pulumi.StringArrayInput
 	// SaaS configuration for the Access Application.
 	SaasApp AccessApplicationSaasAppPtrInput
 	// Defines the same-site cookie setting for access tokens. Available values: `none`, `lax`, `strict`.
 	SameSiteCookieAttribute pulumi.StringPtrInput
-	// Configuration for provisioning to the Access Application via SCIM. This is currently in closed beta.
+	// Configuration for provisioning to this application via SCIM. This is currently in closed beta.
 	ScimConfig AccessApplicationScimConfigPtrInput
 	// List of domains that access will secure. Only present for self_hosted, vnc, and ssh applications. Always includes the value set as `domain`.
 	SelfHostedDomains pulumi.StringArrayInput
@@ -591,6 +601,11 @@ func (o AccessApplicationOutput) OptionsPreflightBypass() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *AccessApplication) pulumi.BoolPtrOutput { return v.OptionsPreflightBypass }).(pulumi.BoolPtrOutput)
 }
 
+// The policies associated with the application, in ascending order of precedence. When omitted, the application policies are not be updated. Warning: Do not use this field while you still have this application ID referenced as `applicationId` in an `AccessPolicy` resource, as it can result in an inconsistent state.
+func (o AccessApplicationOutput) Policies() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AccessApplication) pulumi.StringArrayOutput { return v.Policies }).(pulumi.StringArrayOutput)
+}
+
 // SaaS configuration for the Access Application.
 func (o AccessApplicationOutput) SaasApp() AccessApplicationSaasAppPtrOutput {
 	return o.ApplyT(func(v *AccessApplication) AccessApplicationSaasAppPtrOutput { return v.SaasApp }).(AccessApplicationSaasAppPtrOutput)
@@ -601,7 +616,7 @@ func (o AccessApplicationOutput) SameSiteCookieAttribute() pulumi.StringPtrOutpu
 	return o.ApplyT(func(v *AccessApplication) pulumi.StringPtrOutput { return v.SameSiteCookieAttribute }).(pulumi.StringPtrOutput)
 }
 
-// Configuration for provisioning to the Access Application via SCIM. This is currently in closed beta.
+// Configuration for provisioning to this application via SCIM. This is currently in closed beta.
 func (o AccessApplicationOutput) ScimConfig() AccessApplicationScimConfigPtrOutput {
 	return o.ApplyT(func(v *AccessApplication) AccessApplicationScimConfigPtrOutput { return v.ScimConfig }).(AccessApplicationScimConfigPtrOutput)
 }

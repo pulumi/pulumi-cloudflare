@@ -1133,15 +1133,15 @@ func (o AccessApplicationSaasAppCustomAttributeSourceOutput) Name() pulumi.Strin
 }
 
 type AccessApplicationScimConfig struct {
-	// Configuration for authenticating with the application's SCIM API. Allowed configurations are HTTP Basic, OAuth Bearer Token, and OAuth 2.
+	// Attributes for configuring HTTP Basic, OAuth Bearer token, or OAuth 2 authentication schemes for SCIM provisioning to an application.
 	Authentication *AccessApplicationScimConfigAuthentication `pulumi:"authentication"`
 	// If false, propagates DELETE requests to the target application for SCIM resources. If true, sets 'active' to false on the SCIM resource. Note: Some targets do not support DELETE operations.
 	DeactivateOnDelete *bool `pulumi:"deactivateOnDelete"`
 	// Whether SCIM provisioning is turned on for this application.
 	Enabled *bool `pulumi:"enabled"`
-	// The ID of the Access IDP to be used as the source for SCIM resources to provision to this application.
+	// The UID of the IdP to use as the source for SCIM resources to provision to this application.
 	IdpUid string `pulumi:"idpUid"`
-	// A list of filters and transformations to apply to SCIM resources before provisioning them to the application. See below for nested schema.
+	// A list of mappings to apply to SCIM resources before provisioning them in this application. These can transform or filter the resources to be provisioned.
 	Mappings []AccessApplicationScimConfigMapping `pulumi:"mappings"`
 	// The base URI for the application's SCIM-compatible API.
 	RemoteUri string `pulumi:"remoteUri"`
@@ -1159,15 +1159,15 @@ type AccessApplicationScimConfigInput interface {
 }
 
 type AccessApplicationScimConfigArgs struct {
-	// Configuration for authenticating with the application's SCIM API. Allowed configurations are HTTP Basic, OAuth Bearer Token, and OAuth 2.
+	// Attributes for configuring HTTP Basic, OAuth Bearer token, or OAuth 2 authentication schemes for SCIM provisioning to an application.
 	Authentication AccessApplicationScimConfigAuthenticationPtrInput `pulumi:"authentication"`
 	// If false, propagates DELETE requests to the target application for SCIM resources. If true, sets 'active' to false on the SCIM resource. Note: Some targets do not support DELETE operations.
 	DeactivateOnDelete pulumi.BoolPtrInput `pulumi:"deactivateOnDelete"`
 	// Whether SCIM provisioning is turned on for this application.
 	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
-	// The ID of the Access IDP to be used as the source for SCIM resources to provision to this application.
+	// The UID of the IdP to use as the source for SCIM resources to provision to this application.
 	IdpUid pulumi.StringInput `pulumi:"idpUid"`
-	// A list of filters and transformations to apply to SCIM resources before provisioning them to the application. See below for nested schema.
+	// A list of mappings to apply to SCIM resources before provisioning them in this application. These can transform or filter the resources to be provisioned.
 	Mappings AccessApplicationScimConfigMappingArrayInput `pulumi:"mappings"`
 	// The base URI for the application's SCIM-compatible API.
 	RemoteUri pulumi.StringInput `pulumi:"remoteUri"`
@@ -1250,7 +1250,7 @@ func (o AccessApplicationScimConfigOutput) ToAccessApplicationScimConfigPtrOutpu
 	}).(AccessApplicationScimConfigPtrOutput)
 }
 
-// Configuration for authenticating with the application's SCIM API. Allowed configurations are HTTP Basic, OAuth Bearer Token, and OAuth 2.
+// Attributes for configuring HTTP Basic, OAuth Bearer token, or OAuth 2 authentication schemes for SCIM provisioning to an application.
 func (o AccessApplicationScimConfigOutput) Authentication() AccessApplicationScimConfigAuthenticationPtrOutput {
 	return o.ApplyT(func(v AccessApplicationScimConfig) *AccessApplicationScimConfigAuthentication {
 		return v.Authentication
@@ -1267,12 +1267,12 @@ func (o AccessApplicationScimConfigOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v AccessApplicationScimConfig) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
 
-// The ID of the Access IDP to be used as the source for SCIM resources to provision to this application.
+// The UID of the IdP to use as the source for SCIM resources to provision to this application.
 func (o AccessApplicationScimConfigOutput) IdpUid() pulumi.StringOutput {
 	return o.ApplyT(func(v AccessApplicationScimConfig) string { return v.IdpUid }).(pulumi.StringOutput)
 }
 
-// A list of filters and transformations to apply to SCIM resources before provisioning them to the application. See below for nested schema.
+// A list of mappings to apply to SCIM resources before provisioning them in this application. These can transform or filter the resources to be provisioned.
 func (o AccessApplicationScimConfigOutput) Mappings() AccessApplicationScimConfigMappingArrayOutput {
 	return o.ApplyT(func(v AccessApplicationScimConfig) []AccessApplicationScimConfigMapping { return v.Mappings }).(AccessApplicationScimConfigMappingArrayOutput)
 }
@@ -1306,7 +1306,7 @@ func (o AccessApplicationScimConfigPtrOutput) Elem() AccessApplicationScimConfig
 	}).(AccessApplicationScimConfigOutput)
 }
 
-// Configuration for authenticating with the application's SCIM API. Allowed configurations are HTTP Basic, OAuth Bearer Token, and OAuth 2.
+// Attributes for configuring HTTP Basic, OAuth Bearer token, or OAuth 2 authentication schemes for SCIM provisioning to an application.
 func (o AccessApplicationScimConfigPtrOutput) Authentication() AccessApplicationScimConfigAuthenticationPtrOutput {
 	return o.ApplyT(func(v *AccessApplicationScimConfig) *AccessApplicationScimConfigAuthentication {
 		if v == nil {
@@ -1336,7 +1336,7 @@ func (o AccessApplicationScimConfigPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// The ID of the Access IDP to be used as the source for SCIM resources to provision to this application.
+// The UID of the IdP to use as the source for SCIM resources to provision to this application.
 func (o AccessApplicationScimConfigPtrOutput) IdpUid() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AccessApplicationScimConfig) *string {
 		if v == nil {
@@ -1346,7 +1346,7 @@ func (o AccessApplicationScimConfigPtrOutput) IdpUid() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// A list of filters and transformations to apply to SCIM resources before provisioning them to the application. See below for nested schema.
+// A list of mappings to apply to SCIM resources before provisioning them in this application. These can transform or filter the resources to be provisioned.
 func (o AccessApplicationScimConfigPtrOutput) Mappings() AccessApplicationScimConfigMappingArrayOutput {
 	return o.ApplyT(func(v *AccessApplicationScimConfig) []AccessApplicationScimConfigMapping {
 		if v == nil {
@@ -1367,23 +1367,23 @@ func (o AccessApplicationScimConfigPtrOutput) RemoteUri() pulumi.StringPtrOutput
 }
 
 type AccessApplicationScimConfigAuthentication struct {
-	// URL used to generate the auth code used during token generation.
+	// URL used to generate the auth code used during token generation. Required when using `scim_config.0.authentication.0.client_secret`, `scim_config.0.authentication.0.client_id`, `scim_config.0.authentication.0.token_url`. Conflicts with `scim_config.0.authentication.0.user`, `scim_config.0.authentication.0.password`, `scim_config.0.authentication.0.token`.
 	AuthorizationUrl *string `pulumi:"authorizationUrl"`
-	// Client ID used to authenticate when generating a token for authenticating with the remote SCIM service.
+	// Client ID used to authenticate when generating a token for authenticating with the remote SCIM service. Required when using `scim_config.0.authentication.0.client_secret`, `scim_config.0.authentication.0.authorization_url`, `scim_config.0.authentication.0.token_url`. Conflicts with `scim_config.0.authentication.0.user`, `scim_config.0.authentication.0.password`, `scim_config.0.authentication.0.token`.
 	ClientId *string `pulumi:"clientId"`
-	// Secret used to authenticate when generating a token for authenticating with the remove SCIM service.
+	// Secret used to authenticate when generating a token for authenticating with the remove SCIM service. Required when using `scim_config.0.authentication.0.client_id`, `scim_config.0.authentication.0.authorization_url`, `scim_config.0.authentication.0.token_url`. Conflicts with `scim_config.0.authentication.0.user`, `scim_config.0.authentication.0.password`, `scim_config.0.authentication.0.token`.
 	ClientSecret *string `pulumi:"clientSecret"`
-	// The password used to authenticate with the remote SCIM service.
+	// Required when using `scim_config.0.authentication.0.user`. Conflicts with `scim_config.0.authentication.0.token`, `scim_config.0.authentication.0.client_id`, `scim_config.0.authentication.0.client_secret`, `scim_config.0.authentication.0.authorization_url`, `scim_config.0.authentication.0.token_url`, `scim_config.0.authentication.0.scopes`.
 	Password *string `pulumi:"password"`
-	// The authentication scheme to use. For OAuth 2 authentication, this value should be `oauth2`
+	// The authentication scheme to use when making SCIM requests to this application.
 	Scheme string `pulumi:"scheme"`
-	// The authorization scopes to request when generating the token used to authenticate with the remove SCIM service.
+	// The authorization scopes to request when generating the token used to authenticate with the remove SCIM service. Conflicts with `scim_config.0.authentication.0.user`, `scim_config.0.authentication.0.password`, `scim_config.0.authentication.0.token`.
 	Scopes []string `pulumi:"scopes"`
-	// The token used to authenticate with the remote SCIM service.
+	// Token used to authenticate with the remote SCIM service. Conflicts with `scim_config.0.authentication.0.user`, `scim_config.0.authentication.0.password`, `scim_config.0.authentication.0.client_id`, `scim_config.0.authentication.0.client_secret`, `scim_config.0.authentication.0.authorization_url`, `scim_config.0.authentication.0.token_url`, `scim_config.0.authentication.0.scopes`.
 	Token *string `pulumi:"token"`
-	// URL used to generate the token used to authenticate with the remote SCIM service.
+	// URL used to generate the token used to authenticate with the remote SCIM service. Required when using `scim_config.0.authentication.0.client_secret`, `scim_config.0.authentication.0.authorization_url`, `scim_config.0.authentication.0.client_id`. Conflicts with `scim_config.0.authentication.0.user`, `scim_config.0.authentication.0.password`, `scim_config.0.authentication.0.token`.
 	TokenUrl *string `pulumi:"tokenUrl"`
-	// The username used to authenticate with the remote SCIM service.
+	// User name used to authenticate with the remote SCIM service. Required when using `scim_config.0.authentication.0.password`. Conflicts with `scim_config.0.authentication.0.token`, `scim_config.0.authentication.0.client_id`, `scim_config.0.authentication.0.client_secret`, `scim_config.0.authentication.0.authorization_url`, `scim_config.0.authentication.0.token_url`, `scim_config.0.authentication.0.scopes`.
 	User *string `pulumi:"user"`
 }
 
@@ -1399,23 +1399,23 @@ type AccessApplicationScimConfigAuthenticationInput interface {
 }
 
 type AccessApplicationScimConfigAuthenticationArgs struct {
-	// URL used to generate the auth code used during token generation.
+	// URL used to generate the auth code used during token generation. Required when using `scim_config.0.authentication.0.client_secret`, `scim_config.0.authentication.0.client_id`, `scim_config.0.authentication.0.token_url`. Conflicts with `scim_config.0.authentication.0.user`, `scim_config.0.authentication.0.password`, `scim_config.0.authentication.0.token`.
 	AuthorizationUrl pulumi.StringPtrInput `pulumi:"authorizationUrl"`
-	// Client ID used to authenticate when generating a token for authenticating with the remote SCIM service.
+	// Client ID used to authenticate when generating a token for authenticating with the remote SCIM service. Required when using `scim_config.0.authentication.0.client_secret`, `scim_config.0.authentication.0.authorization_url`, `scim_config.0.authentication.0.token_url`. Conflicts with `scim_config.0.authentication.0.user`, `scim_config.0.authentication.0.password`, `scim_config.0.authentication.0.token`.
 	ClientId pulumi.StringPtrInput `pulumi:"clientId"`
-	// Secret used to authenticate when generating a token for authenticating with the remove SCIM service.
+	// Secret used to authenticate when generating a token for authenticating with the remove SCIM service. Required when using `scim_config.0.authentication.0.client_id`, `scim_config.0.authentication.0.authorization_url`, `scim_config.0.authentication.0.token_url`. Conflicts with `scim_config.0.authentication.0.user`, `scim_config.0.authentication.0.password`, `scim_config.0.authentication.0.token`.
 	ClientSecret pulumi.StringPtrInput `pulumi:"clientSecret"`
-	// The password used to authenticate with the remote SCIM service.
+	// Required when using `scim_config.0.authentication.0.user`. Conflicts with `scim_config.0.authentication.0.token`, `scim_config.0.authentication.0.client_id`, `scim_config.0.authentication.0.client_secret`, `scim_config.0.authentication.0.authorization_url`, `scim_config.0.authentication.0.token_url`, `scim_config.0.authentication.0.scopes`.
 	Password pulumi.StringPtrInput `pulumi:"password"`
-	// The authentication scheme to use. For OAuth 2 authentication, this value should be `oauth2`
+	// The authentication scheme to use when making SCIM requests to this application.
 	Scheme pulumi.StringInput `pulumi:"scheme"`
-	// The authorization scopes to request when generating the token used to authenticate with the remove SCIM service.
+	// The authorization scopes to request when generating the token used to authenticate with the remove SCIM service. Conflicts with `scim_config.0.authentication.0.user`, `scim_config.0.authentication.0.password`, `scim_config.0.authentication.0.token`.
 	Scopes pulumi.StringArrayInput `pulumi:"scopes"`
-	// The token used to authenticate with the remote SCIM service.
+	// Token used to authenticate with the remote SCIM service. Conflicts with `scim_config.0.authentication.0.user`, `scim_config.0.authentication.0.password`, `scim_config.0.authentication.0.client_id`, `scim_config.0.authentication.0.client_secret`, `scim_config.0.authentication.0.authorization_url`, `scim_config.0.authentication.0.token_url`, `scim_config.0.authentication.0.scopes`.
 	Token pulumi.StringPtrInput `pulumi:"token"`
-	// URL used to generate the token used to authenticate with the remote SCIM service.
+	// URL used to generate the token used to authenticate with the remote SCIM service. Required when using `scim_config.0.authentication.0.client_secret`, `scim_config.0.authentication.0.authorization_url`, `scim_config.0.authentication.0.client_id`. Conflicts with `scim_config.0.authentication.0.user`, `scim_config.0.authentication.0.password`, `scim_config.0.authentication.0.token`.
 	TokenUrl pulumi.StringPtrInput `pulumi:"tokenUrl"`
-	// The username used to authenticate with the remote SCIM service.
+	// User name used to authenticate with the remote SCIM service. Required when using `scim_config.0.authentication.0.password`. Conflicts with `scim_config.0.authentication.0.token`, `scim_config.0.authentication.0.client_id`, `scim_config.0.authentication.0.client_secret`, `scim_config.0.authentication.0.authorization_url`, `scim_config.0.authentication.0.token_url`, `scim_config.0.authentication.0.scopes`.
 	User pulumi.StringPtrInput `pulumi:"user"`
 }
 
@@ -1496,47 +1496,47 @@ func (o AccessApplicationScimConfigAuthenticationOutput) ToAccessApplicationScim
 	}).(AccessApplicationScimConfigAuthenticationPtrOutput)
 }
 
-// URL used to generate the auth code used during token generation.
+// URL used to generate the auth code used during token generation. Required when using `scim_config.0.authentication.0.client_secret`, `scim_config.0.authentication.0.client_id`, `scim_config.0.authentication.0.token_url`. Conflicts with `scim_config.0.authentication.0.user`, `scim_config.0.authentication.0.password`, `scim_config.0.authentication.0.token`.
 func (o AccessApplicationScimConfigAuthenticationOutput) AuthorizationUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AccessApplicationScimConfigAuthentication) *string { return v.AuthorizationUrl }).(pulumi.StringPtrOutput)
 }
 
-// Client ID used to authenticate when generating a token for authenticating with the remote SCIM service.
+// Client ID used to authenticate when generating a token for authenticating with the remote SCIM service. Required when using `scim_config.0.authentication.0.client_secret`, `scim_config.0.authentication.0.authorization_url`, `scim_config.0.authentication.0.token_url`. Conflicts with `scim_config.0.authentication.0.user`, `scim_config.0.authentication.0.password`, `scim_config.0.authentication.0.token`.
 func (o AccessApplicationScimConfigAuthenticationOutput) ClientId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AccessApplicationScimConfigAuthentication) *string { return v.ClientId }).(pulumi.StringPtrOutput)
 }
 
-// Secret used to authenticate when generating a token for authenticating with the remove SCIM service.
+// Secret used to authenticate when generating a token for authenticating with the remove SCIM service. Required when using `scim_config.0.authentication.0.client_id`, `scim_config.0.authentication.0.authorization_url`, `scim_config.0.authentication.0.token_url`. Conflicts with `scim_config.0.authentication.0.user`, `scim_config.0.authentication.0.password`, `scim_config.0.authentication.0.token`.
 func (o AccessApplicationScimConfigAuthenticationOutput) ClientSecret() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AccessApplicationScimConfigAuthentication) *string { return v.ClientSecret }).(pulumi.StringPtrOutput)
 }
 
-// The password used to authenticate with the remote SCIM service.
+// Required when using `scim_config.0.authentication.0.user`. Conflicts with `scim_config.0.authentication.0.token`, `scim_config.0.authentication.0.client_id`, `scim_config.0.authentication.0.client_secret`, `scim_config.0.authentication.0.authorization_url`, `scim_config.0.authentication.0.token_url`, `scim_config.0.authentication.0.scopes`.
 func (o AccessApplicationScimConfigAuthenticationOutput) Password() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AccessApplicationScimConfigAuthentication) *string { return v.Password }).(pulumi.StringPtrOutput)
 }
 
-// The authentication scheme to use. For OAuth 2 authentication, this value should be `oauth2`
+// The authentication scheme to use when making SCIM requests to this application.
 func (o AccessApplicationScimConfigAuthenticationOutput) Scheme() pulumi.StringOutput {
 	return o.ApplyT(func(v AccessApplicationScimConfigAuthentication) string { return v.Scheme }).(pulumi.StringOutput)
 }
 
-// The authorization scopes to request when generating the token used to authenticate with the remove SCIM service.
+// The authorization scopes to request when generating the token used to authenticate with the remove SCIM service. Conflicts with `scim_config.0.authentication.0.user`, `scim_config.0.authentication.0.password`, `scim_config.0.authentication.0.token`.
 func (o AccessApplicationScimConfigAuthenticationOutput) Scopes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AccessApplicationScimConfigAuthentication) []string { return v.Scopes }).(pulumi.StringArrayOutput)
 }
 
-// The token used to authenticate with the remote SCIM service.
+// Token used to authenticate with the remote SCIM service. Conflicts with `scim_config.0.authentication.0.user`, `scim_config.0.authentication.0.password`, `scim_config.0.authentication.0.client_id`, `scim_config.0.authentication.0.client_secret`, `scim_config.0.authentication.0.authorization_url`, `scim_config.0.authentication.0.token_url`, `scim_config.0.authentication.0.scopes`.
 func (o AccessApplicationScimConfigAuthenticationOutput) Token() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AccessApplicationScimConfigAuthentication) *string { return v.Token }).(pulumi.StringPtrOutput)
 }
 
-// URL used to generate the token used to authenticate with the remote SCIM service.
+// URL used to generate the token used to authenticate with the remote SCIM service. Required when using `scim_config.0.authentication.0.client_secret`, `scim_config.0.authentication.0.authorization_url`, `scim_config.0.authentication.0.client_id`. Conflicts with `scim_config.0.authentication.0.user`, `scim_config.0.authentication.0.password`, `scim_config.0.authentication.0.token`.
 func (o AccessApplicationScimConfigAuthenticationOutput) TokenUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AccessApplicationScimConfigAuthentication) *string { return v.TokenUrl }).(pulumi.StringPtrOutput)
 }
 
-// The username used to authenticate with the remote SCIM service.
+// User name used to authenticate with the remote SCIM service. Required when using `scim_config.0.authentication.0.password`. Conflicts with `scim_config.0.authentication.0.token`, `scim_config.0.authentication.0.client_id`, `scim_config.0.authentication.0.client_secret`, `scim_config.0.authentication.0.authorization_url`, `scim_config.0.authentication.0.token_url`, `scim_config.0.authentication.0.scopes`.
 func (o AccessApplicationScimConfigAuthenticationOutput) User() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AccessApplicationScimConfigAuthentication) *string { return v.User }).(pulumi.StringPtrOutput)
 }
@@ -1565,7 +1565,7 @@ func (o AccessApplicationScimConfigAuthenticationPtrOutput) Elem() AccessApplica
 	}).(AccessApplicationScimConfigAuthenticationOutput)
 }
 
-// URL used to generate the auth code used during token generation.
+// URL used to generate the auth code used during token generation. Required when using `scim_config.0.authentication.0.client_secret`, `scim_config.0.authentication.0.client_id`, `scim_config.0.authentication.0.token_url`. Conflicts with `scim_config.0.authentication.0.user`, `scim_config.0.authentication.0.password`, `scim_config.0.authentication.0.token`.
 func (o AccessApplicationScimConfigAuthenticationPtrOutput) AuthorizationUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AccessApplicationScimConfigAuthentication) *string {
 		if v == nil {
@@ -1575,7 +1575,7 @@ func (o AccessApplicationScimConfigAuthenticationPtrOutput) AuthorizationUrl() p
 	}).(pulumi.StringPtrOutput)
 }
 
-// Client ID used to authenticate when generating a token for authenticating with the remote SCIM service.
+// Client ID used to authenticate when generating a token for authenticating with the remote SCIM service. Required when using `scim_config.0.authentication.0.client_secret`, `scim_config.0.authentication.0.authorization_url`, `scim_config.0.authentication.0.token_url`. Conflicts with `scim_config.0.authentication.0.user`, `scim_config.0.authentication.0.password`, `scim_config.0.authentication.0.token`.
 func (o AccessApplicationScimConfigAuthenticationPtrOutput) ClientId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AccessApplicationScimConfigAuthentication) *string {
 		if v == nil {
@@ -1585,7 +1585,7 @@ func (o AccessApplicationScimConfigAuthenticationPtrOutput) ClientId() pulumi.St
 	}).(pulumi.StringPtrOutput)
 }
 
-// Secret used to authenticate when generating a token for authenticating with the remove SCIM service.
+// Secret used to authenticate when generating a token for authenticating with the remove SCIM service. Required when using `scim_config.0.authentication.0.client_id`, `scim_config.0.authentication.0.authorization_url`, `scim_config.0.authentication.0.token_url`. Conflicts with `scim_config.0.authentication.0.user`, `scim_config.0.authentication.0.password`, `scim_config.0.authentication.0.token`.
 func (o AccessApplicationScimConfigAuthenticationPtrOutput) ClientSecret() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AccessApplicationScimConfigAuthentication) *string {
 		if v == nil {
@@ -1595,7 +1595,7 @@ func (o AccessApplicationScimConfigAuthenticationPtrOutput) ClientSecret() pulum
 	}).(pulumi.StringPtrOutput)
 }
 
-// The password used to authenticate with the remote SCIM service.
+// Required when using `scim_config.0.authentication.0.user`. Conflicts with `scim_config.0.authentication.0.token`, `scim_config.0.authentication.0.client_id`, `scim_config.0.authentication.0.client_secret`, `scim_config.0.authentication.0.authorization_url`, `scim_config.0.authentication.0.token_url`, `scim_config.0.authentication.0.scopes`.
 func (o AccessApplicationScimConfigAuthenticationPtrOutput) Password() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AccessApplicationScimConfigAuthentication) *string {
 		if v == nil {
@@ -1605,7 +1605,7 @@ func (o AccessApplicationScimConfigAuthenticationPtrOutput) Password() pulumi.St
 	}).(pulumi.StringPtrOutput)
 }
 
-// The authentication scheme to use. For OAuth 2 authentication, this value should be `oauth2`
+// The authentication scheme to use when making SCIM requests to this application.
 func (o AccessApplicationScimConfigAuthenticationPtrOutput) Scheme() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AccessApplicationScimConfigAuthentication) *string {
 		if v == nil {
@@ -1615,7 +1615,7 @@ func (o AccessApplicationScimConfigAuthenticationPtrOutput) Scheme() pulumi.Stri
 	}).(pulumi.StringPtrOutput)
 }
 
-// The authorization scopes to request when generating the token used to authenticate with the remove SCIM service.
+// The authorization scopes to request when generating the token used to authenticate with the remove SCIM service. Conflicts with `scim_config.0.authentication.0.user`, `scim_config.0.authentication.0.password`, `scim_config.0.authentication.0.token`.
 func (o AccessApplicationScimConfigAuthenticationPtrOutput) Scopes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *AccessApplicationScimConfigAuthentication) []string {
 		if v == nil {
@@ -1625,7 +1625,7 @@ func (o AccessApplicationScimConfigAuthenticationPtrOutput) Scopes() pulumi.Stri
 	}).(pulumi.StringArrayOutput)
 }
 
-// The token used to authenticate with the remote SCIM service.
+// Token used to authenticate with the remote SCIM service. Conflicts with `scim_config.0.authentication.0.user`, `scim_config.0.authentication.0.password`, `scim_config.0.authentication.0.client_id`, `scim_config.0.authentication.0.client_secret`, `scim_config.0.authentication.0.authorization_url`, `scim_config.0.authentication.0.token_url`, `scim_config.0.authentication.0.scopes`.
 func (o AccessApplicationScimConfigAuthenticationPtrOutput) Token() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AccessApplicationScimConfigAuthentication) *string {
 		if v == nil {
@@ -1635,7 +1635,7 @@ func (o AccessApplicationScimConfigAuthenticationPtrOutput) Token() pulumi.Strin
 	}).(pulumi.StringPtrOutput)
 }
 
-// URL used to generate the token used to authenticate with the remote SCIM service.
+// URL used to generate the token used to authenticate with the remote SCIM service. Required when using `scim_config.0.authentication.0.client_secret`, `scim_config.0.authentication.0.authorization_url`, `scim_config.0.authentication.0.client_id`. Conflicts with `scim_config.0.authentication.0.user`, `scim_config.0.authentication.0.password`, `scim_config.0.authentication.0.token`.
 func (o AccessApplicationScimConfigAuthenticationPtrOutput) TokenUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AccessApplicationScimConfigAuthentication) *string {
 		if v == nil {
@@ -1645,7 +1645,7 @@ func (o AccessApplicationScimConfigAuthenticationPtrOutput) TokenUrl() pulumi.St
 	}).(pulumi.StringPtrOutput)
 }
 
-// The username used to authenticate with the remote SCIM service.
+// User name used to authenticate with the remote SCIM service. Required when using `scim_config.0.authentication.0.password`. Conflicts with `scim_config.0.authentication.0.token`, `scim_config.0.authentication.0.client_id`, `scim_config.0.authentication.0.client_secret`, `scim_config.0.authentication.0.authorization_url`, `scim_config.0.authentication.0.token_url`, `scim_config.0.authentication.0.scopes`.
 func (o AccessApplicationScimConfigAuthenticationPtrOutput) User() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AccessApplicationScimConfigAuthentication) *string {
 		if v == nil {
@@ -11383,7 +11383,7 @@ type DevicePostureRuleInputType struct {
 	OsDistroName *string `pulumi:"osDistroName"`
 	// The operating system version excluding OS name information or release name.
 	OsDistroRevision *string `pulumi:"osDistroRevision"`
-	// Extra operating system version details following the semantic version value.
+	// Extra version value following the operating system semantic version.
 	OsVersionExtra *string `pulumi:"osVersionExtra"`
 	// Overall ZTA score from Crowdstrike. Value must be between 1 and 100.
 	Overall *string `pulumi:"overall"`
@@ -11465,7 +11465,7 @@ type DevicePostureRuleInputTypeArgs struct {
 	OsDistroName pulumi.StringPtrInput `pulumi:"osDistroName"`
 	// The operating system version excluding OS name information or release name.
 	OsDistroRevision pulumi.StringPtrInput `pulumi:"osDistroRevision"`
-	// Extra operating system version details following the semantic version value.
+	// Extra version value following the operating system semantic version.
 	OsVersionExtra pulumi.StringPtrInput `pulumi:"osVersionExtra"`
 	// Overall ZTA score from Crowdstrike. Value must be between 1 and 100.
 	Overall pulumi.StringPtrInput `pulumi:"overall"`
@@ -11649,7 +11649,7 @@ func (o DevicePostureRuleInputTypeOutput) OsDistroRevision() pulumi.StringPtrOut
 	return o.ApplyT(func(v DevicePostureRuleInputType) *string { return v.OsDistroRevision }).(pulumi.StringPtrOutput)
 }
 
-// Extra operating system version details following the semantic version value.
+// Extra version value following the operating system semantic version.
 func (o DevicePostureRuleInputTypeOutput) OsVersionExtra() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DevicePostureRuleInputType) *string { return v.OsVersionExtra }).(pulumi.StringPtrOutput)
 }
@@ -39791,6 +39791,7 @@ type ZoneSettingsOverrideInitialSetting struct {
 	Minify                  *ZoneSettingsOverrideInitialSettingMinify         `pulumi:"minify"`
 	Mirage                  *string                                           `pulumi:"mirage"`
 	MobileRedirect          *ZoneSettingsOverrideInitialSettingMobileRedirect `pulumi:"mobileRedirect"`
+	Nel                     *ZoneSettingsOverrideInitialSettingNel            `pulumi:"nel"`
 	OpportunisticEncryption *string                                           `pulumi:"opportunisticEncryption"`
 	OpportunisticOnion      *string                                           `pulumi:"opportunisticOnion"`
 	OrangeToOrange          *string                                           `pulumi:"orangeToOrange"`
@@ -39862,6 +39863,7 @@ type ZoneSettingsOverrideInitialSettingArgs struct {
 	Minify                  ZoneSettingsOverrideInitialSettingMinifyPtrInput         `pulumi:"minify"`
 	Mirage                  pulumi.StringPtrInput                                    `pulumi:"mirage"`
 	MobileRedirect          ZoneSettingsOverrideInitialSettingMobileRedirectPtrInput `pulumi:"mobileRedirect"`
+	Nel                     ZoneSettingsOverrideInitialSettingNelPtrInput            `pulumi:"nel"`
 	OpportunisticEncryption pulumi.StringPtrInput                                    `pulumi:"opportunisticEncryption"`
 	OpportunisticOnion      pulumi.StringPtrInput                                    `pulumi:"opportunisticOnion"`
 	OrangeToOrange          pulumi.StringPtrInput                                    `pulumi:"orangeToOrange"`
@@ -40059,6 +40061,10 @@ func (o ZoneSettingsOverrideInitialSettingOutput) MobileRedirect() ZoneSettingsO
 	return o.ApplyT(func(v ZoneSettingsOverrideInitialSetting) *ZoneSettingsOverrideInitialSettingMobileRedirect {
 		return v.MobileRedirect
 	}).(ZoneSettingsOverrideInitialSettingMobileRedirectPtrOutput)
+}
+
+func (o ZoneSettingsOverrideInitialSettingOutput) Nel() ZoneSettingsOverrideInitialSettingNelPtrOutput {
+	return o.ApplyT(func(v ZoneSettingsOverrideInitialSetting) *ZoneSettingsOverrideInitialSettingNel { return v.Nel }).(ZoneSettingsOverrideInitialSettingNelPtrOutput)
 }
 
 func (o ZoneSettingsOverrideInitialSettingOutput) OpportunisticEncryption() pulumi.StringPtrOutput {
@@ -40518,6 +40524,139 @@ func (o ZoneSettingsOverrideInitialSettingMobileRedirectPtrOutput) StripUri() pu
 	}).(pulumi.BoolPtrOutput)
 }
 
+type ZoneSettingsOverrideInitialSettingNel struct {
+	Enabled bool `pulumi:"enabled"`
+}
+
+// ZoneSettingsOverrideInitialSettingNelInput is an input type that accepts ZoneSettingsOverrideInitialSettingNelArgs and ZoneSettingsOverrideInitialSettingNelOutput values.
+// You can construct a concrete instance of `ZoneSettingsOverrideInitialSettingNelInput` via:
+//
+//	ZoneSettingsOverrideInitialSettingNelArgs{...}
+type ZoneSettingsOverrideInitialSettingNelInput interface {
+	pulumi.Input
+
+	ToZoneSettingsOverrideInitialSettingNelOutput() ZoneSettingsOverrideInitialSettingNelOutput
+	ToZoneSettingsOverrideInitialSettingNelOutputWithContext(context.Context) ZoneSettingsOverrideInitialSettingNelOutput
+}
+
+type ZoneSettingsOverrideInitialSettingNelArgs struct {
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+}
+
+func (ZoneSettingsOverrideInitialSettingNelArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ZoneSettingsOverrideInitialSettingNel)(nil)).Elem()
+}
+
+func (i ZoneSettingsOverrideInitialSettingNelArgs) ToZoneSettingsOverrideInitialSettingNelOutput() ZoneSettingsOverrideInitialSettingNelOutput {
+	return i.ToZoneSettingsOverrideInitialSettingNelOutputWithContext(context.Background())
+}
+
+func (i ZoneSettingsOverrideInitialSettingNelArgs) ToZoneSettingsOverrideInitialSettingNelOutputWithContext(ctx context.Context) ZoneSettingsOverrideInitialSettingNelOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ZoneSettingsOverrideInitialSettingNelOutput)
+}
+
+func (i ZoneSettingsOverrideInitialSettingNelArgs) ToZoneSettingsOverrideInitialSettingNelPtrOutput() ZoneSettingsOverrideInitialSettingNelPtrOutput {
+	return i.ToZoneSettingsOverrideInitialSettingNelPtrOutputWithContext(context.Background())
+}
+
+func (i ZoneSettingsOverrideInitialSettingNelArgs) ToZoneSettingsOverrideInitialSettingNelPtrOutputWithContext(ctx context.Context) ZoneSettingsOverrideInitialSettingNelPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ZoneSettingsOverrideInitialSettingNelOutput).ToZoneSettingsOverrideInitialSettingNelPtrOutputWithContext(ctx)
+}
+
+// ZoneSettingsOverrideInitialSettingNelPtrInput is an input type that accepts ZoneSettingsOverrideInitialSettingNelArgs, ZoneSettingsOverrideInitialSettingNelPtr and ZoneSettingsOverrideInitialSettingNelPtrOutput values.
+// You can construct a concrete instance of `ZoneSettingsOverrideInitialSettingNelPtrInput` via:
+//
+//	        ZoneSettingsOverrideInitialSettingNelArgs{...}
+//
+//	or:
+//
+//	        nil
+type ZoneSettingsOverrideInitialSettingNelPtrInput interface {
+	pulumi.Input
+
+	ToZoneSettingsOverrideInitialSettingNelPtrOutput() ZoneSettingsOverrideInitialSettingNelPtrOutput
+	ToZoneSettingsOverrideInitialSettingNelPtrOutputWithContext(context.Context) ZoneSettingsOverrideInitialSettingNelPtrOutput
+}
+
+type zoneSettingsOverrideInitialSettingNelPtrType ZoneSettingsOverrideInitialSettingNelArgs
+
+func ZoneSettingsOverrideInitialSettingNelPtr(v *ZoneSettingsOverrideInitialSettingNelArgs) ZoneSettingsOverrideInitialSettingNelPtrInput {
+	return (*zoneSettingsOverrideInitialSettingNelPtrType)(v)
+}
+
+func (*zoneSettingsOverrideInitialSettingNelPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ZoneSettingsOverrideInitialSettingNel)(nil)).Elem()
+}
+
+func (i *zoneSettingsOverrideInitialSettingNelPtrType) ToZoneSettingsOverrideInitialSettingNelPtrOutput() ZoneSettingsOverrideInitialSettingNelPtrOutput {
+	return i.ToZoneSettingsOverrideInitialSettingNelPtrOutputWithContext(context.Background())
+}
+
+func (i *zoneSettingsOverrideInitialSettingNelPtrType) ToZoneSettingsOverrideInitialSettingNelPtrOutputWithContext(ctx context.Context) ZoneSettingsOverrideInitialSettingNelPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ZoneSettingsOverrideInitialSettingNelPtrOutput)
+}
+
+type ZoneSettingsOverrideInitialSettingNelOutput struct{ *pulumi.OutputState }
+
+func (ZoneSettingsOverrideInitialSettingNelOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ZoneSettingsOverrideInitialSettingNel)(nil)).Elem()
+}
+
+func (o ZoneSettingsOverrideInitialSettingNelOutput) ToZoneSettingsOverrideInitialSettingNelOutput() ZoneSettingsOverrideInitialSettingNelOutput {
+	return o
+}
+
+func (o ZoneSettingsOverrideInitialSettingNelOutput) ToZoneSettingsOverrideInitialSettingNelOutputWithContext(ctx context.Context) ZoneSettingsOverrideInitialSettingNelOutput {
+	return o
+}
+
+func (o ZoneSettingsOverrideInitialSettingNelOutput) ToZoneSettingsOverrideInitialSettingNelPtrOutput() ZoneSettingsOverrideInitialSettingNelPtrOutput {
+	return o.ToZoneSettingsOverrideInitialSettingNelPtrOutputWithContext(context.Background())
+}
+
+func (o ZoneSettingsOverrideInitialSettingNelOutput) ToZoneSettingsOverrideInitialSettingNelPtrOutputWithContext(ctx context.Context) ZoneSettingsOverrideInitialSettingNelPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ZoneSettingsOverrideInitialSettingNel) *ZoneSettingsOverrideInitialSettingNel {
+		return &v
+	}).(ZoneSettingsOverrideInitialSettingNelPtrOutput)
+}
+
+func (o ZoneSettingsOverrideInitialSettingNelOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v ZoneSettingsOverrideInitialSettingNel) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+type ZoneSettingsOverrideInitialSettingNelPtrOutput struct{ *pulumi.OutputState }
+
+func (ZoneSettingsOverrideInitialSettingNelPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ZoneSettingsOverrideInitialSettingNel)(nil)).Elem()
+}
+
+func (o ZoneSettingsOverrideInitialSettingNelPtrOutput) ToZoneSettingsOverrideInitialSettingNelPtrOutput() ZoneSettingsOverrideInitialSettingNelPtrOutput {
+	return o
+}
+
+func (o ZoneSettingsOverrideInitialSettingNelPtrOutput) ToZoneSettingsOverrideInitialSettingNelPtrOutputWithContext(ctx context.Context) ZoneSettingsOverrideInitialSettingNelPtrOutput {
+	return o
+}
+
+func (o ZoneSettingsOverrideInitialSettingNelPtrOutput) Elem() ZoneSettingsOverrideInitialSettingNelOutput {
+	return o.ApplyT(func(v *ZoneSettingsOverrideInitialSettingNel) ZoneSettingsOverrideInitialSettingNel {
+		if v != nil {
+			return *v
+		}
+		var ret ZoneSettingsOverrideInitialSettingNel
+		return ret
+	}).(ZoneSettingsOverrideInitialSettingNelOutput)
+}
+
+func (o ZoneSettingsOverrideInitialSettingNelPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ZoneSettingsOverrideInitialSettingNel) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
 type ZoneSettingsOverrideInitialSettingSecurityHeader struct {
 	Enabled           *bool `pulumi:"enabled"`
 	IncludeSubdomains *bool `pulumi:"includeSubdomains"`
@@ -40741,6 +40880,7 @@ type ZoneSettingsOverrideSettings struct {
 	Minify                  *ZoneSettingsOverrideSettingsMinify         `pulumi:"minify"`
 	Mirage                  *string                                     `pulumi:"mirage"`
 	MobileRedirect          *ZoneSettingsOverrideSettingsMobileRedirect `pulumi:"mobileRedirect"`
+	Nel                     *ZoneSettingsOverrideSettingsNel            `pulumi:"nel"`
 	OpportunisticEncryption *string                                     `pulumi:"opportunisticEncryption"`
 	OpportunisticOnion      *string                                     `pulumi:"opportunisticOnion"`
 	OrangeToOrange          *string                                     `pulumi:"orangeToOrange"`
@@ -40812,6 +40952,7 @@ type ZoneSettingsOverrideSettingsArgs struct {
 	Minify                  ZoneSettingsOverrideSettingsMinifyPtrInput         `pulumi:"minify"`
 	Mirage                  pulumi.StringPtrInput                              `pulumi:"mirage"`
 	MobileRedirect          ZoneSettingsOverrideSettingsMobileRedirectPtrInput `pulumi:"mobileRedirect"`
+	Nel                     ZoneSettingsOverrideSettingsNelPtrInput            `pulumi:"nel"`
 	OpportunisticEncryption pulumi.StringPtrInput                              `pulumi:"opportunisticEncryption"`
 	OpportunisticOnion      pulumi.StringPtrInput                              `pulumi:"opportunisticOnion"`
 	OrangeToOrange          pulumi.StringPtrInput                              `pulumi:"orangeToOrange"`
@@ -41035,6 +41176,10 @@ func (o ZoneSettingsOverrideSettingsOutput) MobileRedirect() ZoneSettingsOverrid
 	return o.ApplyT(func(v ZoneSettingsOverrideSettings) *ZoneSettingsOverrideSettingsMobileRedirect {
 		return v.MobileRedirect
 	}).(ZoneSettingsOverrideSettingsMobileRedirectPtrOutput)
+}
+
+func (o ZoneSettingsOverrideSettingsOutput) Nel() ZoneSettingsOverrideSettingsNelPtrOutput {
+	return o.ApplyT(func(v ZoneSettingsOverrideSettings) *ZoneSettingsOverrideSettingsNel { return v.Nel }).(ZoneSettingsOverrideSettingsNelPtrOutput)
 }
 
 func (o ZoneSettingsOverrideSettingsOutput) OpportunisticEncryption() pulumi.StringPtrOutput {
@@ -41431,6 +41576,15 @@ func (o ZoneSettingsOverrideSettingsPtrOutput) MobileRedirect() ZoneSettingsOver
 		}
 		return v.MobileRedirect
 	}).(ZoneSettingsOverrideSettingsMobileRedirectPtrOutput)
+}
+
+func (o ZoneSettingsOverrideSettingsPtrOutput) Nel() ZoneSettingsOverrideSettingsNelPtrOutput {
+	return o.ApplyT(func(v *ZoneSettingsOverrideSettings) *ZoneSettingsOverrideSettingsNel {
+		if v == nil {
+			return nil
+		}
+		return v.Nel
+	}).(ZoneSettingsOverrideSettingsNelPtrOutput)
 }
 
 func (o ZoneSettingsOverrideSettingsPtrOutput) OpportunisticEncryption() pulumi.StringPtrOutput {
@@ -42000,6 +42154,139 @@ func (o ZoneSettingsOverrideSettingsMobileRedirectPtrOutput) StripUri() pulumi.B
 			return nil
 		}
 		return &v.StripUri
+	}).(pulumi.BoolPtrOutput)
+}
+
+type ZoneSettingsOverrideSettingsNel struct {
+	Enabled bool `pulumi:"enabled"`
+}
+
+// ZoneSettingsOverrideSettingsNelInput is an input type that accepts ZoneSettingsOverrideSettingsNelArgs and ZoneSettingsOverrideSettingsNelOutput values.
+// You can construct a concrete instance of `ZoneSettingsOverrideSettingsNelInput` via:
+//
+//	ZoneSettingsOverrideSettingsNelArgs{...}
+type ZoneSettingsOverrideSettingsNelInput interface {
+	pulumi.Input
+
+	ToZoneSettingsOverrideSettingsNelOutput() ZoneSettingsOverrideSettingsNelOutput
+	ToZoneSettingsOverrideSettingsNelOutputWithContext(context.Context) ZoneSettingsOverrideSettingsNelOutput
+}
+
+type ZoneSettingsOverrideSettingsNelArgs struct {
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+}
+
+func (ZoneSettingsOverrideSettingsNelArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ZoneSettingsOverrideSettingsNel)(nil)).Elem()
+}
+
+func (i ZoneSettingsOverrideSettingsNelArgs) ToZoneSettingsOverrideSettingsNelOutput() ZoneSettingsOverrideSettingsNelOutput {
+	return i.ToZoneSettingsOverrideSettingsNelOutputWithContext(context.Background())
+}
+
+func (i ZoneSettingsOverrideSettingsNelArgs) ToZoneSettingsOverrideSettingsNelOutputWithContext(ctx context.Context) ZoneSettingsOverrideSettingsNelOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ZoneSettingsOverrideSettingsNelOutput)
+}
+
+func (i ZoneSettingsOverrideSettingsNelArgs) ToZoneSettingsOverrideSettingsNelPtrOutput() ZoneSettingsOverrideSettingsNelPtrOutput {
+	return i.ToZoneSettingsOverrideSettingsNelPtrOutputWithContext(context.Background())
+}
+
+func (i ZoneSettingsOverrideSettingsNelArgs) ToZoneSettingsOverrideSettingsNelPtrOutputWithContext(ctx context.Context) ZoneSettingsOverrideSettingsNelPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ZoneSettingsOverrideSettingsNelOutput).ToZoneSettingsOverrideSettingsNelPtrOutputWithContext(ctx)
+}
+
+// ZoneSettingsOverrideSettingsNelPtrInput is an input type that accepts ZoneSettingsOverrideSettingsNelArgs, ZoneSettingsOverrideSettingsNelPtr and ZoneSettingsOverrideSettingsNelPtrOutput values.
+// You can construct a concrete instance of `ZoneSettingsOverrideSettingsNelPtrInput` via:
+//
+//	        ZoneSettingsOverrideSettingsNelArgs{...}
+//
+//	or:
+//
+//	        nil
+type ZoneSettingsOverrideSettingsNelPtrInput interface {
+	pulumi.Input
+
+	ToZoneSettingsOverrideSettingsNelPtrOutput() ZoneSettingsOverrideSettingsNelPtrOutput
+	ToZoneSettingsOverrideSettingsNelPtrOutputWithContext(context.Context) ZoneSettingsOverrideSettingsNelPtrOutput
+}
+
+type zoneSettingsOverrideSettingsNelPtrType ZoneSettingsOverrideSettingsNelArgs
+
+func ZoneSettingsOverrideSettingsNelPtr(v *ZoneSettingsOverrideSettingsNelArgs) ZoneSettingsOverrideSettingsNelPtrInput {
+	return (*zoneSettingsOverrideSettingsNelPtrType)(v)
+}
+
+func (*zoneSettingsOverrideSettingsNelPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ZoneSettingsOverrideSettingsNel)(nil)).Elem()
+}
+
+func (i *zoneSettingsOverrideSettingsNelPtrType) ToZoneSettingsOverrideSettingsNelPtrOutput() ZoneSettingsOverrideSettingsNelPtrOutput {
+	return i.ToZoneSettingsOverrideSettingsNelPtrOutputWithContext(context.Background())
+}
+
+func (i *zoneSettingsOverrideSettingsNelPtrType) ToZoneSettingsOverrideSettingsNelPtrOutputWithContext(ctx context.Context) ZoneSettingsOverrideSettingsNelPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ZoneSettingsOverrideSettingsNelPtrOutput)
+}
+
+type ZoneSettingsOverrideSettingsNelOutput struct{ *pulumi.OutputState }
+
+func (ZoneSettingsOverrideSettingsNelOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ZoneSettingsOverrideSettingsNel)(nil)).Elem()
+}
+
+func (o ZoneSettingsOverrideSettingsNelOutput) ToZoneSettingsOverrideSettingsNelOutput() ZoneSettingsOverrideSettingsNelOutput {
+	return o
+}
+
+func (o ZoneSettingsOverrideSettingsNelOutput) ToZoneSettingsOverrideSettingsNelOutputWithContext(ctx context.Context) ZoneSettingsOverrideSettingsNelOutput {
+	return o
+}
+
+func (o ZoneSettingsOverrideSettingsNelOutput) ToZoneSettingsOverrideSettingsNelPtrOutput() ZoneSettingsOverrideSettingsNelPtrOutput {
+	return o.ToZoneSettingsOverrideSettingsNelPtrOutputWithContext(context.Background())
+}
+
+func (o ZoneSettingsOverrideSettingsNelOutput) ToZoneSettingsOverrideSettingsNelPtrOutputWithContext(ctx context.Context) ZoneSettingsOverrideSettingsNelPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ZoneSettingsOverrideSettingsNel) *ZoneSettingsOverrideSettingsNel {
+		return &v
+	}).(ZoneSettingsOverrideSettingsNelPtrOutput)
+}
+
+func (o ZoneSettingsOverrideSettingsNelOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v ZoneSettingsOverrideSettingsNel) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+type ZoneSettingsOverrideSettingsNelPtrOutput struct{ *pulumi.OutputState }
+
+func (ZoneSettingsOverrideSettingsNelPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ZoneSettingsOverrideSettingsNel)(nil)).Elem()
+}
+
+func (o ZoneSettingsOverrideSettingsNelPtrOutput) ToZoneSettingsOverrideSettingsNelPtrOutput() ZoneSettingsOverrideSettingsNelPtrOutput {
+	return o
+}
+
+func (o ZoneSettingsOverrideSettingsNelPtrOutput) ToZoneSettingsOverrideSettingsNelPtrOutputWithContext(ctx context.Context) ZoneSettingsOverrideSettingsNelPtrOutput {
+	return o
+}
+
+func (o ZoneSettingsOverrideSettingsNelPtrOutput) Elem() ZoneSettingsOverrideSettingsNelOutput {
+	return o.ApplyT(func(v *ZoneSettingsOverrideSettingsNel) ZoneSettingsOverrideSettingsNel {
+		if v != nil {
+			return *v
+		}
+		var ret ZoneSettingsOverrideSettingsNel
+		return ret
+	}).(ZoneSettingsOverrideSettingsNelOutput)
+}
+
+func (o ZoneSettingsOverrideSettingsNelPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ZoneSettingsOverrideSettingsNel) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.Enabled
 	}).(pulumi.BoolPtrOutput)
 }
 
@@ -50968,6 +51255,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ZoneSettingsOverrideInitialSettingMinifyPtrInput)(nil)).Elem(), ZoneSettingsOverrideInitialSettingMinifyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ZoneSettingsOverrideInitialSettingMobileRedirectInput)(nil)).Elem(), ZoneSettingsOverrideInitialSettingMobileRedirectArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ZoneSettingsOverrideInitialSettingMobileRedirectPtrInput)(nil)).Elem(), ZoneSettingsOverrideInitialSettingMobileRedirectArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ZoneSettingsOverrideInitialSettingNelInput)(nil)).Elem(), ZoneSettingsOverrideInitialSettingNelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ZoneSettingsOverrideInitialSettingNelPtrInput)(nil)).Elem(), ZoneSettingsOverrideInitialSettingNelArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ZoneSettingsOverrideInitialSettingSecurityHeaderInput)(nil)).Elem(), ZoneSettingsOverrideInitialSettingSecurityHeaderArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ZoneSettingsOverrideInitialSettingSecurityHeaderPtrInput)(nil)).Elem(), ZoneSettingsOverrideInitialSettingSecurityHeaderArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ZoneSettingsOverrideSettingsInput)(nil)).Elem(), ZoneSettingsOverrideSettingsArgs{})
@@ -50976,6 +51265,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ZoneSettingsOverrideSettingsMinifyPtrInput)(nil)).Elem(), ZoneSettingsOverrideSettingsMinifyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ZoneSettingsOverrideSettingsMobileRedirectInput)(nil)).Elem(), ZoneSettingsOverrideSettingsMobileRedirectArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ZoneSettingsOverrideSettingsMobileRedirectPtrInput)(nil)).Elem(), ZoneSettingsOverrideSettingsMobileRedirectArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ZoneSettingsOverrideSettingsNelInput)(nil)).Elem(), ZoneSettingsOverrideSettingsNelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ZoneSettingsOverrideSettingsNelPtrInput)(nil)).Elem(), ZoneSettingsOverrideSettingsNelArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ZoneSettingsOverrideSettingsSecurityHeaderInput)(nil)).Elem(), ZoneSettingsOverrideSettingsSecurityHeaderArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ZoneSettingsOverrideSettingsSecurityHeaderPtrInput)(nil)).Elem(), ZoneSettingsOverrideSettingsSecurityHeaderArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAccountRolesRoleInput)(nil)).Elem(), GetAccountRolesRoleArgs{})
@@ -51569,6 +51860,8 @@ func init() {
 	pulumi.RegisterOutputType(ZoneSettingsOverrideInitialSettingMinifyPtrOutput{})
 	pulumi.RegisterOutputType(ZoneSettingsOverrideInitialSettingMobileRedirectOutput{})
 	pulumi.RegisterOutputType(ZoneSettingsOverrideInitialSettingMobileRedirectPtrOutput{})
+	pulumi.RegisterOutputType(ZoneSettingsOverrideInitialSettingNelOutput{})
+	pulumi.RegisterOutputType(ZoneSettingsOverrideInitialSettingNelPtrOutput{})
 	pulumi.RegisterOutputType(ZoneSettingsOverrideInitialSettingSecurityHeaderOutput{})
 	pulumi.RegisterOutputType(ZoneSettingsOverrideInitialSettingSecurityHeaderPtrOutput{})
 	pulumi.RegisterOutputType(ZoneSettingsOverrideSettingsOutput{})
@@ -51577,6 +51870,8 @@ func init() {
 	pulumi.RegisterOutputType(ZoneSettingsOverrideSettingsMinifyPtrOutput{})
 	pulumi.RegisterOutputType(ZoneSettingsOverrideSettingsMobileRedirectOutput{})
 	pulumi.RegisterOutputType(ZoneSettingsOverrideSettingsMobileRedirectPtrOutput{})
+	pulumi.RegisterOutputType(ZoneSettingsOverrideSettingsNelOutput{})
+	pulumi.RegisterOutputType(ZoneSettingsOverrideSettingsNelPtrOutput{})
 	pulumi.RegisterOutputType(ZoneSettingsOverrideSettingsSecurityHeaderOutput{})
 	pulumi.RegisterOutputType(ZoneSettingsOverrideSettingsSecurityHeaderPtrOutput{})
 	pulumi.RegisterOutputType(GetAccountRolesRoleOutput{})

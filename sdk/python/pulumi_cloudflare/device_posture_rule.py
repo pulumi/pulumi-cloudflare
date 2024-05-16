@@ -314,6 +314,7 @@ class DevicePostureRule(pulumi.CustomResource):
                 operator="<",
                 os_distro_name="ubuntu",
                 os_distro_revision="1.0.0",
+                os_version_extra="(a)",
             )])
         ```
 
@@ -364,6 +365,7 @@ class DevicePostureRule(pulumi.CustomResource):
                 operator="<",
                 os_distro_name="ubuntu",
                 os_distro_revision="1.0.0",
+                os_version_extra="(a)",
             )])
         ```
 

@@ -42,6 +42,7 @@ namespace Pulumi.Cloudflare.Outputs
         public readonly Outputs.ZoneSettingsOverrideInitialSettingMinify? Minify;
         public readonly string? Mirage;
         public readonly Outputs.ZoneSettingsOverrideInitialSettingMobileRedirect? MobileRedirect;
+        public readonly Outputs.ZoneSettingsOverrideInitialSettingNel? Nel;
         public readonly string? OpportunisticEncryption;
         public readonly string? OpportunisticOnion;
         public readonly string? OrangeToOrange;
@@ -130,6 +131,8 @@ namespace Pulumi.Cloudflare.Outputs
 
             Outputs.ZoneSettingsOverrideInitialSettingMobileRedirect? mobileRedirect,
 
+            Outputs.ZoneSettingsOverrideInitialSettingNel? nel,
+
             string? opportunisticEncryption,
 
             string? opportunisticOnion,
@@ -213,6 +216,7 @@ namespace Pulumi.Cloudflare.Outputs
             Minify = minify;
             Mirage = mirage;
             MobileRedirect = mobileRedirect;
+            Nel = nel;
             OpportunisticEncryption = opportunisticEncryption;
             OpportunisticOnion = opportunisticOnion;
             OrangeToOrange = orangeToOrange;

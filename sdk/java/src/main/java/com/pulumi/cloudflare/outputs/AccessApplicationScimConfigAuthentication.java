@@ -14,110 +14,110 @@ import javax.annotation.Nullable;
 @CustomType
 public final class AccessApplicationScimConfigAuthentication {
     /**
-     * @return URL used to generate the auth code used during token generation.
+     * @return URL used to generate the auth code used during token generation. Required when using `scim_config.0.authentication.0.client_secret`, `scim_config.0.authentication.0.client_id`, `scim_config.0.authentication.0.token_url`. Conflicts with `scim_config.0.authentication.0.user`, `scim_config.0.authentication.0.password`, `scim_config.0.authentication.0.token`.
      * 
      */
     private @Nullable String authorizationUrl;
     /**
-     * @return Client ID used to authenticate when generating a token for authenticating with the remote SCIM service.
+     * @return Client ID used to authenticate when generating a token for authenticating with the remote SCIM service. Required when using `scim_config.0.authentication.0.client_secret`, `scim_config.0.authentication.0.authorization_url`, `scim_config.0.authentication.0.token_url`. Conflicts with `scim_config.0.authentication.0.user`, `scim_config.0.authentication.0.password`, `scim_config.0.authentication.0.token`.
      * 
      */
     private @Nullable String clientId;
     /**
-     * @return Secret used to authenticate when generating a token for authenticating with the remove SCIM service.
+     * @return Secret used to authenticate when generating a token for authenticating with the remove SCIM service. Required when using `scim_config.0.authentication.0.client_id`, `scim_config.0.authentication.0.authorization_url`, `scim_config.0.authentication.0.token_url`. Conflicts with `scim_config.0.authentication.0.user`, `scim_config.0.authentication.0.password`, `scim_config.0.authentication.0.token`.
      * 
      */
     private @Nullable String clientSecret;
     /**
-     * @return The password used to authenticate with the remote SCIM service.
+     * @return Required when using `scim_config.0.authentication.0.user`. Conflicts with `scim_config.0.authentication.0.token`, `scim_config.0.authentication.0.client_id`, `scim_config.0.authentication.0.client_secret`, `scim_config.0.authentication.0.authorization_url`, `scim_config.0.authentication.0.token_url`, `scim_config.0.authentication.0.scopes`.
      * 
      */
     private @Nullable String password;
     /**
-     * @return The authentication scheme to use. For OAuth 2 authentication, this value should be `oauth2`
+     * @return The authentication scheme to use when making SCIM requests to this application.
      * 
      */
     private String scheme;
     /**
-     * @return The authorization scopes to request when generating the token used to authenticate with the remove SCIM service.
+     * @return The authorization scopes to request when generating the token used to authenticate with the remove SCIM service. Conflicts with `scim_config.0.authentication.0.user`, `scim_config.0.authentication.0.password`, `scim_config.0.authentication.0.token`.
      * 
      */
     private @Nullable List<String> scopes;
     /**
-     * @return The token used to authenticate with the remote SCIM service.
+     * @return Token used to authenticate with the remote SCIM service. Conflicts with `scim_config.0.authentication.0.user`, `scim_config.0.authentication.0.password`, `scim_config.0.authentication.0.client_id`, `scim_config.0.authentication.0.client_secret`, `scim_config.0.authentication.0.authorization_url`, `scim_config.0.authentication.0.token_url`, `scim_config.0.authentication.0.scopes`.
      * 
      */
     private @Nullable String token;
     /**
-     * @return URL used to generate the token used to authenticate with the remote SCIM service.
+     * @return URL used to generate the token used to authenticate with the remote SCIM service. Required when using `scim_config.0.authentication.0.client_secret`, `scim_config.0.authentication.0.authorization_url`, `scim_config.0.authentication.0.client_id`. Conflicts with `scim_config.0.authentication.0.user`, `scim_config.0.authentication.0.password`, `scim_config.0.authentication.0.token`.
      * 
      */
     private @Nullable String tokenUrl;
     /**
-     * @return The username used to authenticate with the remote SCIM service.
+     * @return User name used to authenticate with the remote SCIM service. Required when using `scim_config.0.authentication.0.password`. Conflicts with `scim_config.0.authentication.0.token`, `scim_config.0.authentication.0.client_id`, `scim_config.0.authentication.0.client_secret`, `scim_config.0.authentication.0.authorization_url`, `scim_config.0.authentication.0.token_url`, `scim_config.0.authentication.0.scopes`.
      * 
      */
     private @Nullable String user;
 
     private AccessApplicationScimConfigAuthentication() {}
     /**
-     * @return URL used to generate the auth code used during token generation.
+     * @return URL used to generate the auth code used during token generation. Required when using `scim_config.0.authentication.0.client_secret`, `scim_config.0.authentication.0.client_id`, `scim_config.0.authentication.0.token_url`. Conflicts with `scim_config.0.authentication.0.user`, `scim_config.0.authentication.0.password`, `scim_config.0.authentication.0.token`.
      * 
      */
     public Optional<String> authorizationUrl() {
         return Optional.ofNullable(this.authorizationUrl);
     }
     /**
-     * @return Client ID used to authenticate when generating a token for authenticating with the remote SCIM service.
+     * @return Client ID used to authenticate when generating a token for authenticating with the remote SCIM service. Required when using `scim_config.0.authentication.0.client_secret`, `scim_config.0.authentication.0.authorization_url`, `scim_config.0.authentication.0.token_url`. Conflicts with `scim_config.0.authentication.0.user`, `scim_config.0.authentication.0.password`, `scim_config.0.authentication.0.token`.
      * 
      */
     public Optional<String> clientId() {
         return Optional.ofNullable(this.clientId);
     }
     /**
-     * @return Secret used to authenticate when generating a token for authenticating with the remove SCIM service.
+     * @return Secret used to authenticate when generating a token for authenticating with the remove SCIM service. Required when using `scim_config.0.authentication.0.client_id`, `scim_config.0.authentication.0.authorization_url`, `scim_config.0.authentication.0.token_url`. Conflicts with `scim_config.0.authentication.0.user`, `scim_config.0.authentication.0.password`, `scim_config.0.authentication.0.token`.
      * 
      */
     public Optional<String> clientSecret() {
         return Optional.ofNullable(this.clientSecret);
     }
     /**
-     * @return The password used to authenticate with the remote SCIM service.
+     * @return Required when using `scim_config.0.authentication.0.user`. Conflicts with `scim_config.0.authentication.0.token`, `scim_config.0.authentication.0.client_id`, `scim_config.0.authentication.0.client_secret`, `scim_config.0.authentication.0.authorization_url`, `scim_config.0.authentication.0.token_url`, `scim_config.0.authentication.0.scopes`.
      * 
      */
     public Optional<String> password() {
         return Optional.ofNullable(this.password);
     }
     /**
-     * @return The authentication scheme to use. For OAuth 2 authentication, this value should be `oauth2`
+     * @return The authentication scheme to use when making SCIM requests to this application.
      * 
      */
     public String scheme() {
         return this.scheme;
     }
     /**
-     * @return The authorization scopes to request when generating the token used to authenticate with the remove SCIM service.
+     * @return The authorization scopes to request when generating the token used to authenticate with the remove SCIM service. Conflicts with `scim_config.0.authentication.0.user`, `scim_config.0.authentication.0.password`, `scim_config.0.authentication.0.token`.
      * 
      */
     public List<String> scopes() {
         return this.scopes == null ? List.of() : this.scopes;
     }
     /**
-     * @return The token used to authenticate with the remote SCIM service.
+     * @return Token used to authenticate with the remote SCIM service. Conflicts with `scim_config.0.authentication.0.user`, `scim_config.0.authentication.0.password`, `scim_config.0.authentication.0.client_id`, `scim_config.0.authentication.0.client_secret`, `scim_config.0.authentication.0.authorization_url`, `scim_config.0.authentication.0.token_url`, `scim_config.0.authentication.0.scopes`.
      * 
      */
     public Optional<String> token() {
         return Optional.ofNullable(this.token);
     }
     /**
-     * @return URL used to generate the token used to authenticate with the remote SCIM service.
+     * @return URL used to generate the token used to authenticate with the remote SCIM service. Required when using `scim_config.0.authentication.0.client_secret`, `scim_config.0.authentication.0.authorization_url`, `scim_config.0.authentication.0.client_id`. Conflicts with `scim_config.0.authentication.0.user`, `scim_config.0.authentication.0.password`, `scim_config.0.authentication.0.token`.
      * 
      */
     public Optional<String> tokenUrl() {
         return Optional.ofNullable(this.tokenUrl);
     }
     /**
-     * @return The username used to authenticate with the remote SCIM service.
+     * @return User name used to authenticate with the remote SCIM service. Required when using `scim_config.0.authentication.0.password`. Conflicts with `scim_config.0.authentication.0.token`, `scim_config.0.authentication.0.client_id`, `scim_config.0.authentication.0.client_secret`, `scim_config.0.authentication.0.authorization_url`, `scim_config.0.authentication.0.token_url`, `scim_config.0.authentication.0.scopes`.
      * 
      */
     public Optional<String> user() {

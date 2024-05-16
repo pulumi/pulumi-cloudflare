@@ -21,14 +21,14 @@ public final class AccessApplicationScimConfigArgs extends com.pulumi.resources.
     public static final AccessApplicationScimConfigArgs Empty = new AccessApplicationScimConfigArgs();
 
     /**
-     * Configuration for authenticating with the application&#39;s SCIM API. Allowed configurations are HTTP Basic, OAuth Bearer Token, and OAuth 2.
+     * Attributes for configuring HTTP Basic, OAuth Bearer token, or OAuth 2 authentication schemes for SCIM provisioning to an application.
      * 
      */
     @Import(name="authentication")
     private @Nullable Output<AccessApplicationScimConfigAuthenticationArgs> authentication;
 
     /**
-     * @return Configuration for authenticating with the application&#39;s SCIM API. Allowed configurations are HTTP Basic, OAuth Bearer Token, and OAuth 2.
+     * @return Attributes for configuring HTTP Basic, OAuth Bearer token, or OAuth 2 authentication schemes for SCIM provisioning to an application.
      * 
      */
     public Optional<Output<AccessApplicationScimConfigAuthenticationArgs>> authentication() {
@@ -66,14 +66,14 @@ public final class AccessApplicationScimConfigArgs extends com.pulumi.resources.
     }
 
     /**
-     * The ID of the Access IDP to be used as the source for SCIM resources to provision to this application.
+     * The UID of the IdP to use as the source for SCIM resources to provision to this application.
      * 
      */
     @Import(name="idpUid", required=true)
     private Output<String> idpUid;
 
     /**
-     * @return The ID of the Access IDP to be used as the source for SCIM resources to provision to this application.
+     * @return The UID of the IdP to use as the source for SCIM resources to provision to this application.
      * 
      */
     public Output<String> idpUid() {
@@ -81,14 +81,14 @@ public final class AccessApplicationScimConfigArgs extends com.pulumi.resources.
     }
 
     /**
-     * A list of filters and transformations to apply to SCIM resources before provisioning them to the application. See below for nested schema.
+     * A list of mappings to apply to SCIM resources before provisioning them in this application. These can transform or filter the resources to be provisioned.
      * 
      */
     @Import(name="mappings")
     private @Nullable Output<List<AccessApplicationScimConfigMappingArgs>> mappings;
 
     /**
-     * @return A list of filters and transformations to apply to SCIM resources before provisioning them to the application. See below for nested schema.
+     * @return A list of mappings to apply to SCIM resources before provisioning them in this application. These can transform or filter the resources to be provisioned.
      * 
      */
     public Optional<Output<List<AccessApplicationScimConfigMappingArgs>>> mappings() {
@@ -140,7 +140,7 @@ public final class AccessApplicationScimConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param authentication Configuration for authenticating with the application&#39;s SCIM API. Allowed configurations are HTTP Basic, OAuth Bearer Token, and OAuth 2.
+         * @param authentication Attributes for configuring HTTP Basic, OAuth Bearer token, or OAuth 2 authentication schemes for SCIM provisioning to an application.
          * 
          * @return builder
          * 
@@ -151,7 +151,7 @@ public final class AccessApplicationScimConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param authentication Configuration for authenticating with the application&#39;s SCIM API. Allowed configurations are HTTP Basic, OAuth Bearer Token, and OAuth 2.
+         * @param authentication Attributes for configuring HTTP Basic, OAuth Bearer token, or OAuth 2 authentication schemes for SCIM provisioning to an application.
          * 
          * @return builder
          * 
@@ -203,7 +203,7 @@ public final class AccessApplicationScimConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param idpUid The ID of the Access IDP to be used as the source for SCIM resources to provision to this application.
+         * @param idpUid The UID of the IdP to use as the source for SCIM resources to provision to this application.
          * 
          * @return builder
          * 
@@ -214,7 +214,7 @@ public final class AccessApplicationScimConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param idpUid The ID of the Access IDP to be used as the source for SCIM resources to provision to this application.
+         * @param idpUid The UID of the IdP to use as the source for SCIM resources to provision to this application.
          * 
          * @return builder
          * 
@@ -224,7 +224,7 @@ public final class AccessApplicationScimConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param mappings A list of filters and transformations to apply to SCIM resources before provisioning them to the application. See below for nested schema.
+         * @param mappings A list of mappings to apply to SCIM resources before provisioning them in this application. These can transform or filter the resources to be provisioned.
          * 
          * @return builder
          * 
@@ -235,7 +235,7 @@ public final class AccessApplicationScimConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param mappings A list of filters and transformations to apply to SCIM resources before provisioning them to the application. See below for nested schema.
+         * @param mappings A list of mappings to apply to SCIM resources before provisioning them in this application. These can transform or filter the resources to be provisioned.
          * 
          * @return builder
          * 
@@ -245,7 +245,7 @@ public final class AccessApplicationScimConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param mappings A list of filters and transformations to apply to SCIM resources before provisioning them to the application. See below for nested schema.
+         * @param mappings A list of mappings to apply to SCIM resources before provisioning them in this application. These can transform or filter the resources to be provisioned.
          * 
          * @return builder
          * 

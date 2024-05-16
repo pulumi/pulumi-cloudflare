@@ -11,11 +11,13 @@ import * as utilities from "./utilities";
  * used in conjunction with Access Applications to restrict access to
  * a particular resource.
  *
- * > It's required that an `accountId` or `zoneId` is provided and in
- *    most cases using either is fine. However, if you're using a scoped
- *    access token, you must provide the argument that matches the token's
- *    scope. For example, an access token that is scoped to the "example.com"
- *    zone needs to use the `zoneId` argument.
+ * > It's required that an `accountId` or `zoneId` is provided and in most cases using either is fine.
+ *    However, if you're using a scoped access token, you must provide the argument that matches the token's
+ *    scope. For example, an access token that is scoped to the "example.com" zone needs to use the `zoneId` argument.
+ *    If 'application_id' is omitted, the policy created can be reused by multiple access applications.
+ *    Any accessApplication resource can reference reusable policies through its `policies` argument.
+ *    To destroy a reusable policy and remove it from all applications' policies lists on the same apply, preemptively set the
+ *    lifecycle option `createBeforeDestroy` to true on the 'access_policy' resource.
  *
  * ## Import
  *
@@ -60,13 +62,15 @@ export class AccessPolicy extends pulumi.CustomResource {
     }
 
     /**
-     * The account identifier to target for the resource. Conflicts with `zoneId`.
+     * The account identifier to target for the resource. Must provide only one of `accountId`, `zoneId`. **Modifying this attribute will force creation of a new resource.**
      */
-    public readonly accountId!: pulumi.Output<string>;
+    public readonly accountId!: pulumi.Output<string | undefined>;
     /**
-     * The ID of the application the policy is associated with.
+     * The ID of the application the policy is associated with. Required when using `precedence`. **Modifying this attribute will force creation of a new resource.**
+     *
+     * @deprecated This field is deprecated. Policies can now be standalone and reusable by multiple applications.Please use `cloudflare_access_application.policies` to associate policies with applications.
      */
-    public readonly applicationId!: pulumi.Output<string>;
+    public readonly applicationId!: pulumi.Output<string | undefined>;
     public readonly approvalGroups!: pulumi.Output<outputs.AccessPolicyApprovalGroup[] | undefined>;
     public readonly approvalRequired!: pulumi.Output<boolean | undefined>;
     /**
@@ -90,9 +94,11 @@ export class AccessPolicy extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * The unique precedence for policies on a single application.
+     * The unique precedence for policies on a single application. Required when using `applicationId`.
+     *
+     * @deprecated This field is deprecated. Access policies can now be reusable by multiple applications. Please use `cloudflare_access_application.policies` to link policies to an application with ascending order of precedence.
      */
-    public readonly precedence!: pulumi.Output<number>;
+    public readonly precedence!: pulumi.Output<number | undefined>;
     /**
      * The prompt to display to the user for a justification for accessing the resource. Required when using `purposeJustificationRequired`.
      */
@@ -110,9 +116,9 @@ export class AccessPolicy extends pulumi.CustomResource {
      */
     public readonly sessionDuration!: pulumi.Output<string | undefined>;
     /**
-     * The zone identifier to target for the resource. Conflicts with `accountId`.
+     * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
      */
-    public readonly zoneId!: pulumi.Output<string>;
+    public readonly zoneId!: pulumi.Output<string | undefined>;
 
     /**
      * Create a AccessPolicy resource with the given unique name, arguments, and options.
@@ -144,9 +150,6 @@ export class AccessPolicy extends pulumi.CustomResource {
             resourceInputs["zoneId"] = state ? state.zoneId : undefined;
         } else {
             const args = argsOrState as AccessPolicyArgs | undefined;
-            if ((!args || args.applicationId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'applicationId'");
-            }
             if ((!args || args.decision === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'decision'");
             }
@@ -155,9 +158,6 @@ export class AccessPolicy extends pulumi.CustomResource {
             }
             if ((!args || args.name === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'name'");
-            }
-            if ((!args || args.precedence === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'precedence'");
             }
             resourceInputs["accountId"] = args ? args.accountId : undefined;
             resourceInputs["applicationId"] = args ? args.applicationId : undefined;
@@ -185,11 +185,13 @@ export class AccessPolicy extends pulumi.CustomResource {
  */
 export interface AccessPolicyState {
     /**
-     * The account identifier to target for the resource. Conflicts with `zoneId`.
+     * The account identifier to target for the resource. Must provide only one of `accountId`, `zoneId`. **Modifying this attribute will force creation of a new resource.**
      */
     accountId?: pulumi.Input<string>;
     /**
-     * The ID of the application the policy is associated with.
+     * The ID of the application the policy is associated with. Required when using `precedence`. **Modifying this attribute will force creation of a new resource.**
+     *
+     * @deprecated This field is deprecated. Policies can now be standalone and reusable by multiple applications.Please use `cloudflare_access_application.policies` to associate policies with applications.
      */
     applicationId?: pulumi.Input<string>;
     approvalGroups?: pulumi.Input<pulumi.Input<inputs.AccessPolicyApprovalGroup>[]>;
@@ -215,7 +217,9 @@ export interface AccessPolicyState {
      */
     name?: pulumi.Input<string>;
     /**
-     * The unique precedence for policies on a single application.
+     * The unique precedence for policies on a single application. Required when using `applicationId`.
+     *
+     * @deprecated This field is deprecated. Access policies can now be reusable by multiple applications. Please use `cloudflare_access_application.policies` to link policies to an application with ascending order of precedence.
      */
     precedence?: pulumi.Input<number>;
     /**
@@ -235,7 +239,7 @@ export interface AccessPolicyState {
      */
     sessionDuration?: pulumi.Input<string>;
     /**
-     * The zone identifier to target for the resource. Conflicts with `accountId`.
+     * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
      */
     zoneId?: pulumi.Input<string>;
 }
@@ -245,13 +249,15 @@ export interface AccessPolicyState {
  */
 export interface AccessPolicyArgs {
     /**
-     * The account identifier to target for the resource. Conflicts with `zoneId`.
+     * The account identifier to target for the resource. Must provide only one of `accountId`, `zoneId`. **Modifying this attribute will force creation of a new resource.**
      */
     accountId?: pulumi.Input<string>;
     /**
-     * The ID of the application the policy is associated with.
+     * The ID of the application the policy is associated with. Required when using `precedence`. **Modifying this attribute will force creation of a new resource.**
+     *
+     * @deprecated This field is deprecated. Policies can now be standalone and reusable by multiple applications.Please use `cloudflare_access_application.policies` to associate policies with applications.
      */
-    applicationId: pulumi.Input<string>;
+    applicationId?: pulumi.Input<string>;
     approvalGroups?: pulumi.Input<pulumi.Input<inputs.AccessPolicyApprovalGroup>[]>;
     approvalRequired?: pulumi.Input<boolean>;
     /**
@@ -275,9 +281,11 @@ export interface AccessPolicyArgs {
      */
     name: pulumi.Input<string>;
     /**
-     * The unique precedence for policies on a single application.
+     * The unique precedence for policies on a single application. Required when using `applicationId`.
+     *
+     * @deprecated This field is deprecated. Access policies can now be reusable by multiple applications. Please use `cloudflare_access_application.policies` to link policies to an application with ascending order of precedence.
      */
-    precedence: pulumi.Input<number>;
+    precedence?: pulumi.Input<number>;
     /**
      * The prompt to display to the user for a justification for accessing the resource. Required when using `purposeJustificationRequired`.
      */
@@ -295,7 +303,7 @@ export interface AccessPolicyArgs {
      */
     sessionDuration?: pulumi.Input<string>;
     /**
-     * The zone identifier to target for the resource. Conflicts with `accountId`.
+     * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
      */
     zoneId?: pulumi.Input<string>;
 }

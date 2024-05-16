@@ -366,7 +366,7 @@
             "properties": {
                 "authentication": {
                     "$ref": "#/types/cloudflare:index/AccessApplicationScimConfigAuthentication:AccessApplicationScimConfigAuthentication",
-                    "description": "Configuration for authenticating with the application's SCIM API. Allowed configurations are HTTP Basic, OAuth Bearer Token, and OAuth 2.\n"
+                    "description": "Attributes for configuring HTTP Basic, OAuth Bearer token, or OAuth 2 authentication schemes for SCIM provisioning to an application.\n"
                 },
                 "deactivateOnDelete": {
                     "type": "boolean",
@@ -378,14 +378,14 @@
                 },
                 "idpUid": {
                     "type": "string",
-                    "description": "The ID of the Access IDP to be used as the source for SCIM resources to provision to this application.\n"
+                    "description": "The UID of the IdP to use as the source for SCIM resources to provision to this application.\n"
                 },
                 "mappings": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/cloudflare:index/AccessApplicationScimConfigMapping:AccessApplicationScimConfigMapping"
                     },
-                    "description": "A list of filters and transformations to apply to SCIM resources before provisioning them to the application. See below for nested schema.\n"
+                    "description": "A list of mappings to apply to SCIM resources before provisioning them in this application. These can transform or filter the resources to be provisioned.\n"
                 },
                 "remoteUri": {
                     "type": "string",
@@ -402,42 +402,42 @@
             "properties": {
                 "authorizationUrl": {
                     "type": "string",
-                    "description": "URL used to generate the auth code used during token generation.\n"
+                    "description": "URL used to generate the auth code used during token generation. Required when using `scim_config.0.authentication.0.client_secret`, `scim_config.0.authentication.0.client_id`, `scim_config.0.authentication.0.token_url`. Conflicts with `scim_config.0.authentication.0.user`, `scim_config.0.authentication.0.password`, `scim_config.0.authentication.0.token`.\n"
                 },
                 "clientId": {
                     "type": "string",
-                    "description": "Client ID used to authenticate when generating a token for authenticating with the remote SCIM service.\n"
+                    "description": "Client ID used to authenticate when generating a token for authenticating with the remote SCIM service. Required when using `scim_config.0.authentication.0.client_secret`, `scim_config.0.authentication.0.authorization_url`, `scim_config.0.authentication.0.token_url`. Conflicts with `scim_config.0.authentication.0.user`, `scim_config.0.authentication.0.password`, `scim_config.0.authentication.0.token`.\n"
                 },
                 "clientSecret": {
                     "type": "string",
-                    "description": "Secret used to authenticate when generating a token for authenticating with the remove SCIM service.\n"
+                    "description": "Secret used to authenticate when generating a token for authenticating with the remove SCIM service. Required when using `scim_config.0.authentication.0.client_id`, `scim_config.0.authentication.0.authorization_url`, `scim_config.0.authentication.0.token_url`. Conflicts with `scim_config.0.authentication.0.user`, `scim_config.0.authentication.0.password`, `scim_config.0.authentication.0.token`.\n"
                 },
                 "password": {
                     "type": "string",
-                    "description": "The password used to authenticate with the remote SCIM service.\n"
+                    "description": "Required when using `scim_config.0.authentication.0.user`. Conflicts with `scim_config.0.authentication.0.token`, `scim_config.0.authentication.0.client_id`, `scim_config.0.authentication.0.client_secret`, `scim_config.0.authentication.0.authorization_url`, `scim_config.0.authentication.0.token_url`, `scim_config.0.authentication.0.scopes`.\n"
                 },
                 "scheme": {
                     "type": "string",
-                    "description": "The authentication scheme to use. For OAuth 2 authentication, this value should be `oauth2`\n"
+                    "description": "The authentication scheme to use when making SCIM requests to this application.\n"
                 },
                 "scopes": {
                     "type": "array",
                     "items": {
                         "type": "string"
                     },
-                    "description": "The authorization scopes to request when generating the token used to authenticate with the remove SCIM service.\n"
+                    "description": "The authorization scopes to request when generating the token used to authenticate with the remove SCIM service. Conflicts with `scim_config.0.authentication.0.user`, `scim_config.0.authentication.0.password`, `scim_config.0.authentication.0.token`.\n"
                 },
                 "token": {
                     "type": "string",
-                    "description": "The token used to authenticate with the remote SCIM service.\n"
+                    "description": "Token used to authenticate with the remote SCIM service. Conflicts with `scim_config.0.authentication.0.user`, `scim_config.0.authentication.0.password`, `scim_config.0.authentication.0.client_id`, `scim_config.0.authentication.0.client_secret`, `scim_config.0.authentication.0.authorization_url`, `scim_config.0.authentication.0.token_url`, `scim_config.0.authentication.0.scopes`.\n"
                 },
                 "tokenUrl": {
                     "type": "string",
-                    "description": "URL used to generate the token used to authenticate with the remote SCIM service.\n"
+                    "description": "URL used to generate the token used to authenticate with the remote SCIM service. Required when using `scim_config.0.authentication.0.client_secret`, `scim_config.0.authentication.0.authorization_url`, `scim_config.0.authentication.0.client_id`. Conflicts with `scim_config.0.authentication.0.user`, `scim_config.0.authentication.0.password`, `scim_config.0.authentication.0.token`.\n"
                 },
                 "user": {
                     "type": "string",
-                    "description": "The username used to authenticate with the remote SCIM service.\n"
+                    "description": "User name used to authenticate with the remote SCIM service. Required when using `scim_config.0.authentication.0.password`. Conflicts with `scim_config.0.authentication.0.token`, `scim_config.0.authentication.0.client_id`, `scim_config.0.authentication.0.client_secret`, `scim_config.0.authentication.0.authorization_url`, `scim_config.0.authentication.0.token_url`, `scim_config.0.authentication.0.scopes`.\n"
                 }
             },
             "type": "object",
@@ -2663,7 +2663,7 @@
                 },
                 "osVersionExtra": {
                     "type": "string",
-                    "description": "Extra operating system version details following the semantic version value.\n"
+                    "description": "Extra version value following the operating system semantic version.\n"
                 },
                 "overall": {
                     "type": "string",
@@ -7193,6 +7193,9 @@
                 "mobileRedirect": {
                     "$ref": "#/types/cloudflare:index/ZoneSettingsOverrideInitialSettingMobileRedirect:ZoneSettingsOverrideInitialSettingMobileRedirect"
                 },
+                "nel": {
+                    "$ref": "#/types/cloudflare:index/ZoneSettingsOverrideInitialSettingNel:ZoneSettingsOverrideInitialSettingNel"
+                },
                 "opportunisticEncryption": {
                     "type": "string"
                 },
@@ -7309,6 +7312,7 @@
                         "minify",
                         "mirage",
                         "mobileRedirect",
+                        "nel",
                         "opportunisticEncryption",
                         "opportunisticOnion",
                         "orangeToOrange",
@@ -7376,6 +7380,17 @@
                 "mobileSubdomain",
                 "status",
                 "stripUri"
+            ]
+        },
+        "cloudflare:index/ZoneSettingsOverrideInitialSettingNel:ZoneSettingsOverrideInitialSettingNel": {
+            "properties": {
+                "enabled": {
+                    "type": "boolean"
+                }
+            },
+            "type": "object",
+            "required": [
+                "enabled"
             ]
         },
         "cloudflare:index/ZoneSettingsOverrideInitialSettingSecurityHeader:ZoneSettingsOverrideInitialSettingSecurityHeader": {
@@ -7501,6 +7516,9 @@
                 "mobileRedirect": {
                     "$ref": "#/types/cloudflare:index/ZoneSettingsOverrideSettingsMobileRedirect:ZoneSettingsOverrideSettingsMobileRedirect"
                 },
+                "nel": {
+                    "$ref": "#/types/cloudflare:index/ZoneSettingsOverrideSettingsNel:ZoneSettingsOverrideSettingsNel"
+                },
                 "opportunisticEncryption": {
                     "type": "string"
                 },
@@ -7617,6 +7635,7 @@
                         "minify",
                         "mirage",
                         "mobileRedirect",
+                        "nel",
                         "opportunisticEncryption",
                         "opportunisticOnion",
                         "orangeToOrange",
@@ -7684,6 +7703,17 @@
                 "mobileSubdomain",
                 "status",
                 "stripUri"
+            ]
+        },
+        "cloudflare:index/ZoneSettingsOverrideSettingsNel:ZoneSettingsOverrideSettingsNel": {
+            "properties": {
+                "enabled": {
+                    "type": "boolean"
+                }
+            },
+            "type": "object",
+            "required": [
+                "enabled"
             ]
         },
         "cloudflare:index/ZoneSettingsOverrideSettingsSecurityHeader:ZoneSettingsOverrideSettingsSecurityHeader": {
@@ -9342,6 +9372,13 @@
                     "type": "boolean",
                     "description": "Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if cors_headers is set. Defaults to `false`.\n"
                 },
+                "policies": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The policies associated with the application, in ascending order of precedence. When omitted, the application policies are not be updated. Warning: Do not use this field while you still have this application ID referenced as `application_id` in an `cloudflare.AccessPolicy` resource, as it can result in an inconsistent state.\n"
+                },
                 "saasApp": {
                     "$ref": "#/types/cloudflare:index/AccessApplicationSaasApp:AccessApplicationSaasApp",
                     "description": "SaaS configuration for the Access Application.\n"
@@ -9352,7 +9389,7 @@
                 },
                 "scimConfig": {
                     "$ref": "#/types/cloudflare:index/AccessApplicationScimConfig:AccessApplicationScimConfig",
-                    "description": "Configuration for provisioning to the Access Application via SCIM. This is currently in closed beta.\n"
+                    "description": "Configuration for provisioning to this application via SCIM. This is currently in closed beta.\n"
                 },
                 "selfHostedDomains": {
                     "type": "array",
@@ -9493,6 +9530,13 @@
                     "type": "boolean",
                     "description": "Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if cors_headers is set. Defaults to `false`.\n"
                 },
+                "policies": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The policies associated with the application, in ascending order of precedence. When omitted, the application policies are not be updated. Warning: Do not use this field while you still have this application ID referenced as `application_id` in an `cloudflare.AccessPolicy` resource, as it can result in an inconsistent state.\n"
+                },
                 "saasApp": {
                     "$ref": "#/types/cloudflare:index/AccessApplicationSaasApp:AccessApplicationSaasApp",
                     "description": "SaaS configuration for the Access Application.\n"
@@ -9503,7 +9547,7 @@
                 },
                 "scimConfig": {
                     "$ref": "#/types/cloudflare:index/AccessApplicationScimConfig:AccessApplicationScimConfig",
-                    "description": "Configuration for provisioning to the Access Application via SCIM. This is currently in closed beta.\n"
+                    "description": "Configuration for provisioning to this application via SCIM. This is currently in closed beta.\n"
                 },
                 "selfHostedDomains": {
                     "type": "array",
@@ -9643,6 +9687,13 @@
                         "type": "boolean",
                         "description": "Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if cors_headers is set. Defaults to `false`.\n"
                     },
+                    "policies": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "The policies associated with the application, in ascending order of precedence. When omitted, the application policies are not be updated. Warning: Do not use this field while you still have this application ID referenced as `application_id` in an `cloudflare.AccessPolicy` resource, as it can result in an inconsistent state.\n"
+                    },
                     "saasApp": {
                         "$ref": "#/types/cloudflare:index/AccessApplicationSaasApp:AccessApplicationSaasApp",
                         "description": "SaaS configuration for the Access Application.\n"
@@ -9653,7 +9704,7 @@
                     },
                     "scimConfig": {
                         "$ref": "#/types/cloudflare:index/AccessApplicationScimConfig:AccessApplicationScimConfig",
-                        "description": "Configuration for provisioning to the Access Application via SCIM. This is currently in closed beta.\n"
+                        "description": "Configuration for provisioning to this application via SCIM. This is currently in closed beta.\n"
                     },
                     "selfHostedDomains": {
                         "type": "array",
@@ -10482,15 +10533,16 @@
             }
         },
         "cloudflare:index/accessPolicy:AccessPolicy": {
-            "description": "Provides a Cloudflare Access Policy resource. Access Policies are\nused in conjunction with Access Applications to restrict access to\na particular resource.\n\n\u003e It's required that an `account_id` or `zone_id` is provided and in\n   most cases using either is fine. However, if you're using a scoped\n   access token, you must provide the argument that matches the token's\n   scope. For example, an access token that is scoped to the \"example.com\"\n   zone needs to use the `zone_id` argument.\n\n## Import\n\nAccount level import.\n\n```sh\n$ pulumi import cloudflare:index/accessPolicy:AccessPolicy example account/\u003caccount_id\u003e/\u003capplication_id\u003e/\u003cpolicy_id\u003e\n```\n\nZone level import.\n\n```sh\n$ pulumi import cloudflare:index/accessPolicy:AccessPolicy example zone/\u003czone_id\u003e/\u003capplication_id\u003e/\u003cpolicy_id\u003e\n```\n\n",
+            "description": "Provides a Cloudflare Access Policy resource. Access Policies are\nused in conjunction with Access Applications to restrict access to\na particular resource.\n\n\u003e It's required that an `account_id` or `zone_id` is provided and in most cases using either is fine.\n   However, if you're using a scoped access token, you must provide the argument that matches the token's\n   scope. For example, an access token that is scoped to the \"example.com\" zone needs to use the `zone_id` argument.\n   If 'application_id' is omitted, the policy created can be reused by multiple access applications.\n   Any access_application resource can reference reusable policies through its `policies` argument.\n   To destroy a reusable policy and remove it from all applications' policies lists on the same apply, preemptively set the\n   lifecycle option `create_before_destroy` to true on the 'access_policy' resource.\n\n## Import\n\nAccount level import.\n\n```sh\n$ pulumi import cloudflare:index/accessPolicy:AccessPolicy example account/\u003caccount_id\u003e/\u003capplication_id\u003e/\u003cpolicy_id\u003e\n```\n\nZone level import.\n\n```sh\n$ pulumi import cloudflare:index/accessPolicy:AccessPolicy example zone/\u003czone_id\u003e/\u003capplication_id\u003e/\u003cpolicy_id\u003e\n```\n\n",
             "properties": {
                 "accountId": {
                     "type": "string",
-                    "description": "The account identifier to target for the resource. Conflicts with `zone_id`.\n"
+                    "description": "The account identifier to target for the resource. Must provide only one of `account_id`, `zone_id`. **Modifying this attribute will force creation of a new resource.**\n"
                 },
                 "applicationId": {
                     "type": "string",
-                    "description": "The ID of the application the policy is associated with.\n"
+                    "description": "The ID of the application the policy is associated with. Required when using `precedence`. **Modifying this attribute will force creation of a new resource.**\n",
+                    "deprecationMessage": "This field is deprecated. Policies can now be standalone and reusable by multiple applications.Please use `cloudflare_access_application.policies` to associate policies with applications."
                 },
                 "approvalGroups": {
                     "type": "array",
@@ -10529,7 +10581,8 @@
                 },
                 "precedence": {
                     "type": "integer",
-                    "description": "The unique precedence for policies on a single application.\n"
+                    "description": "The unique precedence for policies on a single application. Required when using `application_id`.\n",
+                    "deprecationMessage": "This field is deprecated. Access policies can now be reusable by multiple applications. Please use `cloudflare_access_application.policies` to link policies to an application with ascending order of precedence."
                 },
                 "purposeJustificationPrompt": {
                     "type": "string",
@@ -10552,26 +10605,25 @@
                 },
                 "zoneId": {
                     "type": "string",
-                    "description": "The zone identifier to target for the resource. Conflicts with `account_id`.\n"
+                    "description": "The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**\n"
                 }
             },
             "required": [
-                "accountId",
-                "applicationId",
                 "decision",
                 "includes",
-                "name",
-                "precedence",
-                "zoneId"
+                "name"
             ],
             "inputProperties": {
                 "accountId": {
                     "type": "string",
-                    "description": "The account identifier to target for the resource. Conflicts with `zone_id`.\n"
+                    "description": "The account identifier to target for the resource. Must provide only one of `account_id`, `zone_id`. **Modifying this attribute will force creation of a new resource.**\n",
+                    "willReplaceOnChanges": true
                 },
                 "applicationId": {
                     "type": "string",
-                    "description": "The ID of the application the policy is associated with.\n"
+                    "description": "The ID of the application the policy is associated with. Required when using `precedence`. **Modifying this attribute will force creation of a new resource.**\n",
+                    "deprecationMessage": "This field is deprecated. Policies can now be standalone and reusable by multiple applications.Please use `cloudflare_access_application.policies` to associate policies with applications.",
+                    "willReplaceOnChanges": true
                 },
                 "approvalGroups": {
                     "type": "array",
@@ -10610,7 +10662,8 @@
                 },
                 "precedence": {
                     "type": "integer",
-                    "description": "The unique precedence for policies on a single application.\n"
+                    "description": "The unique precedence for policies on a single application. Required when using `application_id`.\n",
+                    "deprecationMessage": "This field is deprecated. Access policies can now be reusable by multiple applications. Please use `cloudflare_access_application.policies` to link policies to an application with ascending order of precedence."
                 },
                 "purposeJustificationPrompt": {
                     "type": "string",
@@ -10633,26 +10686,28 @@
                 },
                 "zoneId": {
                     "type": "string",
-                    "description": "The zone identifier to target for the resource. Conflicts with `account_id`.\n"
+                    "description": "The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**\n",
+                    "willReplaceOnChanges": true
                 }
             },
             "requiredInputs": [
-                "applicationId",
                 "decision",
                 "includes",
-                "name",
-                "precedence"
+                "name"
             ],
             "stateInputs": {
                 "description": "Input properties used for looking up and filtering AccessPolicy resources.\n",
                 "properties": {
                     "accountId": {
                         "type": "string",
-                        "description": "The account identifier to target for the resource. Conflicts with `zone_id`.\n"
+                        "description": "The account identifier to target for the resource. Must provide only one of `account_id`, `zone_id`. **Modifying this attribute will force creation of a new resource.**\n",
+                        "willReplaceOnChanges": true
                     },
                     "applicationId": {
                         "type": "string",
-                        "description": "The ID of the application the policy is associated with.\n"
+                        "description": "The ID of the application the policy is associated with. Required when using `precedence`. **Modifying this attribute will force creation of a new resource.**\n",
+                        "deprecationMessage": "This field is deprecated. Policies can now be standalone and reusable by multiple applications.Please use `cloudflare_access_application.policies` to associate policies with applications.",
+                        "willReplaceOnChanges": true
                     },
                     "approvalGroups": {
                         "type": "array",
@@ -10691,7 +10746,8 @@
                     },
                     "precedence": {
                         "type": "integer",
-                        "description": "The unique precedence for policies on a single application.\n"
+                        "description": "The unique precedence for policies on a single application. Required when using `application_id`.\n",
+                        "deprecationMessage": "This field is deprecated. Access policies can now be reusable by multiple applications. Please use `cloudflare_access_application.policies` to link policies to an application with ascending order of precedence."
                     },
                     "purposeJustificationPrompt": {
                         "type": "string",
@@ -10714,7 +10770,8 @@
                     },
                     "zoneId": {
                         "type": "string",
-                        "description": "The zone identifier to target for the resource. Conflicts with `account_id`.\n"
+                        "description": "The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**\n",
+                        "willReplaceOnChanges": true
                     }
                 },
                 "type": "object"
@@ -13231,7 +13288,7 @@
             }
         },
         "cloudflare:index/devicePostureRule:DevicePostureRule": {
-            "description": "Provides a Cloudflare Device Posture Rule resource. Device posture rules configure security policies for device posture checks.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as cloudflare from \"@pulumi/cloudflare\";\n\nconst eaxmple = new cloudflare.DevicePostureRule(\"eaxmple\", {\n    accountId: \"f037e56e89293a057740de681ac9abbe\",\n    name: \"Corporate devices posture rule\",\n    type: \"os_version\",\n    description: \"Device posture rule for corporate devices.\",\n    schedule: \"24h\",\n    expiration: \"24h\",\n    matches: [{\n        platform: \"linux\",\n    }],\n    inputs: [{\n        id: corporateDevices.id,\n        version: \"1.0.0\",\n        operator: \"\u003c\",\n        osDistroName: \"ubuntu\",\n        osDistroRevision: \"1.0.0\",\n    }],\n});\n```\n```python\nimport pulumi\nimport pulumi_cloudflare as cloudflare\n\neaxmple = cloudflare.DevicePostureRule(\"eaxmple\",\n    account_id=\"f037e56e89293a057740de681ac9abbe\",\n    name=\"Corporate devices posture rule\",\n    type=\"os_version\",\n    description=\"Device posture rule for corporate devices.\",\n    schedule=\"24h\",\n    expiration=\"24h\",\n    matches=[cloudflare.DevicePostureRuleMatchArgs(\n        platform=\"linux\",\n    )],\n    inputs=[cloudflare.DevicePostureRuleInputArgs(\n        id=corporate_devices[\"id\"],\n        version=\"1.0.0\",\n        operator=\"\u003c\",\n        os_distro_name=\"ubuntu\",\n        os_distro_revision=\"1.0.0\",\n    )])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Cloudflare = Pulumi.Cloudflare;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var eaxmple = new Cloudflare.DevicePostureRule(\"eaxmple\", new()\n    {\n        AccountId = \"f037e56e89293a057740de681ac9abbe\",\n        Name = \"Corporate devices posture rule\",\n        Type = \"os_version\",\n        Description = \"Device posture rule for corporate devices.\",\n        Schedule = \"24h\",\n        Expiration = \"24h\",\n        Matches = new[]\n        {\n            new Cloudflare.Inputs.DevicePostureRuleMatchArgs\n            {\n                Platform = \"linux\",\n            },\n        },\n        Inputs = new[]\n        {\n            new Cloudflare.Inputs.DevicePostureRuleInputArgs\n            {\n                Id = corporateDevices.Id,\n                Version = \"1.0.0\",\n                Operator = \"\u003c\",\n                OsDistroName = \"ubuntu\",\n                OsDistroRevision = \"1.0.0\",\n            },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := cloudflare.NewDevicePostureRule(ctx, \"eaxmple\", \u0026cloudflare.DevicePostureRuleArgs{\n\t\t\tAccountId:   pulumi.String(\"f037e56e89293a057740de681ac9abbe\"),\n\t\t\tName:        pulumi.String(\"Corporate devices posture rule\"),\n\t\t\tType:        pulumi.String(\"os_version\"),\n\t\t\tDescription: pulumi.String(\"Device posture rule for corporate devices.\"),\n\t\t\tSchedule:    pulumi.String(\"24h\"),\n\t\t\tExpiration:  pulumi.String(\"24h\"),\n\t\t\tMatches: cloudflare.DevicePostureRuleMatchArray{\n\t\t\t\t\u0026cloudflare.DevicePostureRuleMatchArgs{\n\t\t\t\t\tPlatform: pulumi.String(\"linux\"),\n\t\t\t\t},\n\t\t\t},\n\t\t\tInputs: cloudflare.DevicePostureRuleInputTypeArray{\n\t\t\t\t\u0026cloudflare.DevicePostureRuleInputTypeArgs{\n\t\t\t\t\tId:               pulumi.Any(corporateDevices.Id),\n\t\t\t\t\tVersion:          pulumi.String(\"1.0.0\"),\n\t\t\t\t\tOperator:         pulumi.String(\"\u003c\"),\n\t\t\t\t\tOsDistroName:     pulumi.String(\"ubuntu\"),\n\t\t\t\t\tOsDistroRevision: pulumi.String(\"1.0.0\"),\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.cloudflare.DevicePostureRule;\nimport com.pulumi.cloudflare.DevicePostureRuleArgs;\nimport com.pulumi.cloudflare.inputs.DevicePostureRuleMatchArgs;\nimport com.pulumi.cloudflare.inputs.DevicePostureRuleInputArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var eaxmple = new DevicePostureRule(\"eaxmple\", DevicePostureRuleArgs.builder()        \n            .accountId(\"f037e56e89293a057740de681ac9abbe\")\n            .name(\"Corporate devices posture rule\")\n            .type(\"os_version\")\n            .description(\"Device posture rule for corporate devices.\")\n            .schedule(\"24h\")\n            .expiration(\"24h\")\n            .matches(DevicePostureRuleMatchArgs.builder()\n                .platform(\"linux\")\n                .build())\n            .inputs(DevicePostureRuleInputArgs.builder()\n                .id(corporateDevices.id())\n                .version(\"1.0.0\")\n                .operator(\"\u003c\")\n                .osDistroName(\"ubuntu\")\n                .osDistroRevision(\"1.0.0\")\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  eaxmple:\n    type: cloudflare:DevicePostureRule\n    properties:\n      accountId: f037e56e89293a057740de681ac9abbe\n      name: Corporate devices posture rule\n      type: os_version\n      description: Device posture rule for corporate devices.\n      schedule: 24h\n      expiration: 24h\n      matches:\n        - platform: linux\n      inputs:\n        - id: ${corporateDevices.id}\n          version: 1.0.0\n          operator: \u003c\n          osDistroName: ubuntu\n          osDistroRevision: 1.0.0\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\n```sh\n$ pulumi import cloudflare:index/devicePostureRule:DevicePostureRule example \u003caccount_id\u003e/\u003cdevice_posture_rule_id\u003e\n```\n\n",
+            "description": "Provides a Cloudflare Device Posture Rule resource. Device posture rules configure security policies for device posture checks.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as cloudflare from \"@pulumi/cloudflare\";\n\nconst eaxmple = new cloudflare.DevicePostureRule(\"eaxmple\", {\n    accountId: \"f037e56e89293a057740de681ac9abbe\",\n    name: \"Corporate devices posture rule\",\n    type: \"os_version\",\n    description: \"Device posture rule for corporate devices.\",\n    schedule: \"24h\",\n    expiration: \"24h\",\n    matches: [{\n        platform: \"linux\",\n    }],\n    inputs: [{\n        id: corporateDevices.id,\n        version: \"1.0.0\",\n        operator: \"\u003c\",\n        osDistroName: \"ubuntu\",\n        osDistroRevision: \"1.0.0\",\n        osVersionExtra: \"(a)\",\n    }],\n});\n```\n```python\nimport pulumi\nimport pulumi_cloudflare as cloudflare\n\neaxmple = cloudflare.DevicePostureRule(\"eaxmple\",\n    account_id=\"f037e56e89293a057740de681ac9abbe\",\n    name=\"Corporate devices posture rule\",\n    type=\"os_version\",\n    description=\"Device posture rule for corporate devices.\",\n    schedule=\"24h\",\n    expiration=\"24h\",\n    matches=[cloudflare.DevicePostureRuleMatchArgs(\n        platform=\"linux\",\n    )],\n    inputs=[cloudflare.DevicePostureRuleInputArgs(\n        id=corporate_devices[\"id\"],\n        version=\"1.0.0\",\n        operator=\"\u003c\",\n        os_distro_name=\"ubuntu\",\n        os_distro_revision=\"1.0.0\",\n        os_version_extra=\"(a)\",\n    )])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Cloudflare = Pulumi.Cloudflare;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var eaxmple = new Cloudflare.DevicePostureRule(\"eaxmple\", new()\n    {\n        AccountId = \"f037e56e89293a057740de681ac9abbe\",\n        Name = \"Corporate devices posture rule\",\n        Type = \"os_version\",\n        Description = \"Device posture rule for corporate devices.\",\n        Schedule = \"24h\",\n        Expiration = \"24h\",\n        Matches = new[]\n        {\n            new Cloudflare.Inputs.DevicePostureRuleMatchArgs\n            {\n                Platform = \"linux\",\n            },\n        },\n        Inputs = new[]\n        {\n            new Cloudflare.Inputs.DevicePostureRuleInputArgs\n            {\n                Id = corporateDevices.Id,\n                Version = \"1.0.0\",\n                Operator = \"\u003c\",\n                OsDistroName = \"ubuntu\",\n                OsDistroRevision = \"1.0.0\",\n                OsVersionExtra = \"(a)\",\n            },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := cloudflare.NewDevicePostureRule(ctx, \"eaxmple\", \u0026cloudflare.DevicePostureRuleArgs{\n\t\t\tAccountId:   pulumi.String(\"f037e56e89293a057740de681ac9abbe\"),\n\t\t\tName:        pulumi.String(\"Corporate devices posture rule\"),\n\t\t\tType:        pulumi.String(\"os_version\"),\n\t\t\tDescription: pulumi.String(\"Device posture rule for corporate devices.\"),\n\t\t\tSchedule:    pulumi.String(\"24h\"),\n\t\t\tExpiration:  pulumi.String(\"24h\"),\n\t\t\tMatches: cloudflare.DevicePostureRuleMatchArray{\n\t\t\t\t\u0026cloudflare.DevicePostureRuleMatchArgs{\n\t\t\t\t\tPlatform: pulumi.String(\"linux\"),\n\t\t\t\t},\n\t\t\t},\n\t\t\tInputs: cloudflare.DevicePostureRuleInputTypeArray{\n\t\t\t\t\u0026cloudflare.DevicePostureRuleInputTypeArgs{\n\t\t\t\t\tId:               pulumi.Any(corporateDevices.Id),\n\t\t\t\t\tVersion:          pulumi.String(\"1.0.0\"),\n\t\t\t\t\tOperator:         pulumi.String(\"\u003c\"),\n\t\t\t\t\tOsDistroName:     pulumi.String(\"ubuntu\"),\n\t\t\t\t\tOsDistroRevision: pulumi.String(\"1.0.0\"),\n\t\t\t\t\tOsVersionExtra:   pulumi.String(\"(a)\"),\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.cloudflare.DevicePostureRule;\nimport com.pulumi.cloudflare.DevicePostureRuleArgs;\nimport com.pulumi.cloudflare.inputs.DevicePostureRuleMatchArgs;\nimport com.pulumi.cloudflare.inputs.DevicePostureRuleInputArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var eaxmple = new DevicePostureRule(\"eaxmple\", DevicePostureRuleArgs.builder()        \n            .accountId(\"f037e56e89293a057740de681ac9abbe\")\n            .name(\"Corporate devices posture rule\")\n            .type(\"os_version\")\n            .description(\"Device posture rule for corporate devices.\")\n            .schedule(\"24h\")\n            .expiration(\"24h\")\n            .matches(DevicePostureRuleMatchArgs.builder()\n                .platform(\"linux\")\n                .build())\n            .inputs(DevicePostureRuleInputArgs.builder()\n                .id(corporateDevices.id())\n                .version(\"1.0.0\")\n                .operator(\"\u003c\")\n                .osDistroName(\"ubuntu\")\n                .osDistroRevision(\"1.0.0\")\n                .osVersionExtra(\"(a)\")\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  eaxmple:\n    type: cloudflare:DevicePostureRule\n    properties:\n      accountId: f037e56e89293a057740de681ac9abbe\n      name: Corporate devices posture rule\n      type: os_version\n      description: Device posture rule for corporate devices.\n      schedule: 24h\n      expiration: 24h\n      matches:\n        - platform: linux\n      inputs:\n        - id: ${corporateDevices.id}\n          version: 1.0.0\n          operator: \u003c\n          osDistroName: ubuntu\n          osDistroRevision: 1.0.0\n          osVersionExtra: (a)\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\n```sh\n$ pulumi import cloudflare:index/devicePostureRule:DevicePostureRule example \u003caccount_id\u003e/\u003cdevice_posture_rule_id\u003e\n```\n\n",
             "properties": {
                 "accountId": {
                     "type": "string",

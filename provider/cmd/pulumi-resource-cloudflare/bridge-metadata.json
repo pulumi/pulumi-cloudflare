@@ -33,6 +33,9 @@
                     "landing_page_design": {
                         "maxItemsOne": true
                     },
+                    "policies": {
+                        "maxItemsOne": false
+                    },
                     "saas_app": {
                         "maxItemsOne": true,
                         "elem": {
@@ -2495,6 +2498,9 @@
                                 "mobile_redirect": {
                                     "maxItemsOne": true
                                 },
+                                "nel": {
+                                    "maxItemsOne": true
+                                },
                                 "security_header": {
                                     "maxItemsOne": true
                                 }
@@ -2515,6 +2521,9 @@
                                     "maxItemsOne": true
                                 },
                                 "mobile_redirect": {
+                                    "maxItemsOne": true
+                                },
+                                "nel": {
                                     "maxItemsOne": true
                                 },
                                 "security_header": {

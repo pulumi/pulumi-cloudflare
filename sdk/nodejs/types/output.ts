@@ -175,7 +175,7 @@ export interface AccessApplicationSaasAppCustomAttributeSource {
 
 export interface AccessApplicationScimConfig {
     /**
-     * Configuration for authenticating with the application's SCIM API. Allowed configurations are HTTP Basic, OAuth Bearer Token, and OAuth 2.
+     * Attributes for configuring HTTP Basic, OAuth Bearer token, or OAuth 2 authentication schemes for SCIM provisioning to an application.
      */
     authentication?: outputs.AccessApplicationScimConfigAuthentication;
     /**
@@ -187,11 +187,11 @@ export interface AccessApplicationScimConfig {
      */
     enabled?: boolean;
     /**
-     * The ID of the Access IDP to be used as the source for SCIM resources to provision to this application.
+     * The UID of the IdP to use as the source for SCIM resources to provision to this application.
      */
     idpUid: string;
     /**
-     * A list of filters and transformations to apply to SCIM resources before provisioning them to the application. See below for nested schema.
+     * A list of mappings to apply to SCIM resources before provisioning them in this application. These can transform or filter the resources to be provisioned.
      */
     mappings?: outputs.AccessApplicationScimConfigMapping[];
     /**
@@ -202,39 +202,39 @@ export interface AccessApplicationScimConfig {
 
 export interface AccessApplicationScimConfigAuthentication {
     /**
-     * URL used to generate the auth code used during token generation.
+     * URL used to generate the auth code used during token generation. Required when using `scim_config.0.authentication.0.client_secret`, `scim_config.0.authentication.0.client_id`, `scim_config.0.authentication.0.token_url`. Conflicts with `scim_config.0.authentication.0.user`, `scim_config.0.authentication.0.password`, `scim_config.0.authentication.0.token`.
      */
     authorizationUrl?: string;
     /**
-     * Client ID used to authenticate when generating a token for authenticating with the remote SCIM service.
+     * Client ID used to authenticate when generating a token for authenticating with the remote SCIM service. Required when using `scim_config.0.authentication.0.client_secret`, `scim_config.0.authentication.0.authorization_url`, `scim_config.0.authentication.0.token_url`. Conflicts with `scim_config.0.authentication.0.user`, `scim_config.0.authentication.0.password`, `scim_config.0.authentication.0.token`.
      */
     clientId?: string;
     /**
-     * Secret used to authenticate when generating a token for authenticating with the remove SCIM service.
+     * Secret used to authenticate when generating a token for authenticating with the remove SCIM service. Required when using `scim_config.0.authentication.0.client_id`, `scim_config.0.authentication.0.authorization_url`, `scim_config.0.authentication.0.token_url`. Conflicts with `scim_config.0.authentication.0.user`, `scim_config.0.authentication.0.password`, `scim_config.0.authentication.0.token`.
      */
     clientSecret?: string;
     /**
-     * The password used to authenticate with the remote SCIM service.
+     * Required when using `scim_config.0.authentication.0.user`. Conflicts with `scim_config.0.authentication.0.token`, `scim_config.0.authentication.0.client_id`, `scim_config.0.authentication.0.client_secret`, `scim_config.0.authentication.0.authorization_url`, `scim_config.0.authentication.0.token_url`, `scim_config.0.authentication.0.scopes`.
      */
     password?: string;
     /**
-     * The authentication scheme to use. For OAuth 2 authentication, this value should be `oauth2`
+     * The authentication scheme to use when making SCIM requests to this application.
      */
     scheme: string;
     /**
-     * The authorization scopes to request when generating the token used to authenticate with the remove SCIM service.
+     * The authorization scopes to request when generating the token used to authenticate with the remove SCIM service. Conflicts with `scim_config.0.authentication.0.user`, `scim_config.0.authentication.0.password`, `scim_config.0.authentication.0.token`.
      */
     scopes?: string[];
     /**
-     * The token used to authenticate with the remote SCIM service.
+     * Token used to authenticate with the remote SCIM service. Conflicts with `scim_config.0.authentication.0.user`, `scim_config.0.authentication.0.password`, `scim_config.0.authentication.0.client_id`, `scim_config.0.authentication.0.client_secret`, `scim_config.0.authentication.0.authorization_url`, `scim_config.0.authentication.0.token_url`, `scim_config.0.authentication.0.scopes`.
      */
     token?: string;
     /**
-     * URL used to generate the token used to authenticate with the remote SCIM service.
+     * URL used to generate the token used to authenticate with the remote SCIM service. Required when using `scim_config.0.authentication.0.client_secret`, `scim_config.0.authentication.0.authorization_url`, `scim_config.0.authentication.0.client_id`. Conflicts with `scim_config.0.authentication.0.user`, `scim_config.0.authentication.0.password`, `scim_config.0.authentication.0.token`.
      */
     tokenUrl?: string;
     /**
-     * The username used to authenticate with the remote SCIM service.
+     * User name used to authenticate with the remote SCIM service. Required when using `scim_config.0.authentication.0.password`. Conflicts with `scim_config.0.authentication.0.token`, `scim_config.0.authentication.0.client_id`, `scim_config.0.authentication.0.client_secret`, `scim_config.0.authentication.0.authorization_url`, `scim_config.0.authentication.0.token_url`, `scim_config.0.authentication.0.scopes`.
      */
     user?: string;
 }
@@ -1245,7 +1245,7 @@ export interface DevicePostureRuleInput {
      */
     osDistroRevision?: string;
     /**
-     * Extra operating system version details following the semantic version value.
+     * Extra version value following the operating system semantic version.
      */
     osVersionExtra?: string;
     /**
@@ -5483,6 +5483,7 @@ export interface ZoneSettingsOverrideInitialSetting {
     minify: outputs.ZoneSettingsOverrideInitialSettingMinify;
     mirage: string;
     mobileRedirect: outputs.ZoneSettingsOverrideInitialSettingMobileRedirect;
+    nel: outputs.ZoneSettingsOverrideInitialSettingNel;
     opportunisticEncryption: string;
     opportunisticOnion: string;
     orangeToOrange: string;
@@ -5527,6 +5528,10 @@ export interface ZoneSettingsOverrideInitialSettingMobileRedirect {
     stripUri: boolean;
 }
 
+export interface ZoneSettingsOverrideInitialSettingNel {
+    enabled: boolean;
+}
+
 export interface ZoneSettingsOverrideInitialSettingSecurityHeader {
     enabled: boolean;
     includeSubdomains: boolean;
@@ -5565,6 +5570,7 @@ export interface ZoneSettingsOverrideSettings {
     minify: outputs.ZoneSettingsOverrideSettingsMinify;
     mirage: string;
     mobileRedirect: outputs.ZoneSettingsOverrideSettingsMobileRedirect;
+    nel: outputs.ZoneSettingsOverrideSettingsNel;
     opportunisticEncryption: string;
     opportunisticOnion: string;
     orangeToOrange: string;
@@ -5607,6 +5613,10 @@ export interface ZoneSettingsOverrideSettingsMobileRedirect {
     mobileSubdomain: string;
     status: string;
     stripUri: boolean;
+}
+
+export interface ZoneSettingsOverrideSettingsNel {
+    enabled: boolean;
 }
 
 export interface ZoneSettingsOverrideSettingsSecurityHeader {

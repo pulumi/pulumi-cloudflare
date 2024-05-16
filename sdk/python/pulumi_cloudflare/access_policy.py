@@ -16,16 +16,16 @@ __all__ = ['AccessPolicyArgs', 'AccessPolicy']
 @pulumi.input_type
 class AccessPolicyArgs:
     def __init__(__self__, *,
-                 application_id: pulumi.Input[str],
                  decision: pulumi.Input[str],
                  includes: pulumi.Input[Sequence[pulumi.Input['AccessPolicyIncludeArgs']]],
                  name: pulumi.Input[str],
-                 precedence: pulumi.Input[int],
                  account_id: Optional[pulumi.Input[str]] = None,
+                 application_id: Optional[pulumi.Input[str]] = None,
                  approval_groups: Optional[pulumi.Input[Sequence[pulumi.Input['AccessPolicyApprovalGroupArgs']]]] = None,
                  approval_required: Optional[pulumi.Input[bool]] = None,
                  excludes: Optional[pulumi.Input[Sequence[pulumi.Input['AccessPolicyExcludeArgs']]]] = None,
                  isolation_required: Optional[pulumi.Input[bool]] = None,
+                 precedence: Optional[pulumi.Input[int]] = None,
                  purpose_justification_prompt: Optional[pulumi.Input[str]] = None,
                  purpose_justification_required: Optional[pulumi.Input[bool]] = None,
                  requires: Optional[pulumi.Input[Sequence[pulumi.Input['AccessPolicyRequireArgs']]]] = None,
@@ -33,27 +33,30 @@ class AccessPolicyArgs:
                  zone_id: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a AccessPolicy resource.
-        :param pulumi.Input[str] application_id: The ID of the application the policy is associated with.
         :param pulumi.Input[str] decision: Defines the action Access will take if the policy matches the user. Available values: `allow`, `deny`, `non_identity`, `bypass`.
         :param pulumi.Input[Sequence[pulumi.Input['AccessPolicyIncludeArgs']]] includes: A series of access conditions, see Access Groups.
         :param pulumi.Input[str] name: Friendly name of the Access Policy.
-        :param pulumi.Input[int] precedence: The unique precedence for policies on a single application.
-        :param pulumi.Input[str] account_id: The account identifier to target for the resource. Conflicts with `zone_id`.
+        :param pulumi.Input[str] account_id: The account identifier to target for the resource. Must provide only one of `account_id`, `zone_id`. **Modifying this attribute will force creation of a new resource.**
+        :param pulumi.Input[str] application_id: The ID of the application the policy is associated with. Required when using `precedence`. **Modifying this attribute will force creation of a new resource.**
         :param pulumi.Input[Sequence[pulumi.Input['AccessPolicyExcludeArgs']]] excludes: A series of access conditions, see Access Groups.
         :param pulumi.Input[bool] isolation_required: Require this application to be served in an isolated browser for users matching this policy.
+        :param pulumi.Input[int] precedence: The unique precedence for policies on a single application. Required when using `application_id`.
         :param pulumi.Input[str] purpose_justification_prompt: The prompt to display to the user for a justification for accessing the resource. Required when using `purpose_justification_required`.
         :param pulumi.Input[bool] purpose_justification_required: Whether to prompt the user for a justification for accessing the resource.
         :param pulumi.Input[Sequence[pulumi.Input['AccessPolicyRequireArgs']]] requires: A series of access conditions, see Access Groups.
         :param pulumi.Input[str] session_duration: How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`.
-        :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. Conflicts with `account_id`.
+        :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         """
-        pulumi.set(__self__, "application_id", application_id)
         pulumi.set(__self__, "decision", decision)
         pulumi.set(__self__, "includes", includes)
         pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "precedence", precedence)
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
+        if application_id is not None:
+            warnings.warn("""This field is deprecated. Policies can now be standalone and reusable by multiple applications.Please use `cloudflare_access_application.policies` to associate policies with applications.""", DeprecationWarning)
+            pulumi.log.warn("""application_id is deprecated: This field is deprecated. Policies can now be standalone and reusable by multiple applications.Please use `cloudflare_access_application.policies` to associate policies with applications.""")
+        if application_id is not None:
+            pulumi.set(__self__, "application_id", application_id)
         if approval_groups is not None:
             pulumi.set(__self__, "approval_groups", approval_groups)
         if approval_required is not None:
@@ -62,6 +65,11 @@ class AccessPolicyArgs:
             pulumi.set(__self__, "excludes", excludes)
         if isolation_required is not None:
             pulumi.set(__self__, "isolation_required", isolation_required)
+        if precedence is not None:
+            warnings.warn("""This field is deprecated. Access policies can now be reusable by multiple applications. Please use `cloudflare_access_application.policies` to link policies to an application with ascending order of precedence.""", DeprecationWarning)
+            pulumi.log.warn("""precedence is deprecated: This field is deprecated. Access policies can now be reusable by multiple applications. Please use `cloudflare_access_application.policies` to link policies to an application with ascending order of precedence.""")
+        if precedence is not None:
+            pulumi.set(__self__, "precedence", precedence)
         if purpose_justification_prompt is not None:
             pulumi.set(__self__, "purpose_justification_prompt", purpose_justification_prompt)
         if purpose_justification_required is not None:
@@ -72,18 +80,6 @@ class AccessPolicyArgs:
             pulumi.set(__self__, "session_duration", session_duration)
         if zone_id is not None:
             pulumi.set(__self__, "zone_id", zone_id)
-
-    @property
-    @pulumi.getter(name="applicationId")
-    def application_id(self) -> pulumi.Input[str]:
-        """
-        The ID of the application the policy is associated with.
-        """
-        return pulumi.get(self, "application_id")
-
-    @application_id.setter
-    def application_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "application_id", value)
 
     @property
     @pulumi.getter
@@ -122,28 +118,31 @@ class AccessPolicyArgs:
         pulumi.set(self, "name", value)
 
     @property
-    @pulumi.getter
-    def precedence(self) -> pulumi.Input[int]:
-        """
-        The unique precedence for policies on a single application.
-        """
-        return pulumi.get(self, "precedence")
-
-    @precedence.setter
-    def precedence(self, value: pulumi.Input[int]):
-        pulumi.set(self, "precedence", value)
-
-    @property
     @pulumi.getter(name="accountId")
     def account_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The account identifier to target for the resource. Conflicts with `zone_id`.
+        The account identifier to target for the resource. Must provide only one of `account_id`, `zone_id`. **Modifying this attribute will force creation of a new resource.**
         """
         return pulumi.get(self, "account_id")
 
     @account_id.setter
     def account_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "account_id", value)
+
+    @property
+    @pulumi.getter(name="applicationId")
+    def application_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the application the policy is associated with. Required when using `precedence`. **Modifying this attribute will force creation of a new resource.**
+        """
+        warnings.warn("""This field is deprecated. Policies can now be standalone and reusable by multiple applications.Please use `cloudflare_access_application.policies` to associate policies with applications.""", DeprecationWarning)
+        pulumi.log.warn("""application_id is deprecated: This field is deprecated. Policies can now be standalone and reusable by multiple applications.Please use `cloudflare_access_application.policies` to associate policies with applications.""")
+
+        return pulumi.get(self, "application_id")
+
+    @application_id.setter
+    def application_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "application_id", value)
 
     @property
     @pulumi.getter(name="approvalGroups")
@@ -186,6 +185,21 @@ class AccessPolicyArgs:
     @isolation_required.setter
     def isolation_required(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "isolation_required", value)
+
+    @property
+    @pulumi.getter
+    def precedence(self) -> Optional[pulumi.Input[int]]:
+        """
+        The unique precedence for policies on a single application. Required when using `application_id`.
+        """
+        warnings.warn("""This field is deprecated. Access policies can now be reusable by multiple applications. Please use `cloudflare_access_application.policies` to link policies to an application with ascending order of precedence.""", DeprecationWarning)
+        pulumi.log.warn("""precedence is deprecated: This field is deprecated. Access policies can now be reusable by multiple applications. Please use `cloudflare_access_application.policies` to link policies to an application with ascending order of precedence.""")
+
+        return pulumi.get(self, "precedence")
+
+    @precedence.setter
+    def precedence(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "precedence", value)
 
     @property
     @pulumi.getter(name="purposeJustificationPrompt")
@@ -239,7 +253,7 @@ class AccessPolicyArgs:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The zone identifier to target for the resource. Conflicts with `account_id`.
+        The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         """
         return pulumi.get(self, "zone_id")
 
@@ -268,22 +282,25 @@ class _AccessPolicyState:
                  zone_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering AccessPolicy resources.
-        :param pulumi.Input[str] account_id: The account identifier to target for the resource. Conflicts with `zone_id`.
-        :param pulumi.Input[str] application_id: The ID of the application the policy is associated with.
+        :param pulumi.Input[str] account_id: The account identifier to target for the resource. Must provide only one of `account_id`, `zone_id`. **Modifying this attribute will force creation of a new resource.**
+        :param pulumi.Input[str] application_id: The ID of the application the policy is associated with. Required when using `precedence`. **Modifying this attribute will force creation of a new resource.**
         :param pulumi.Input[str] decision: Defines the action Access will take if the policy matches the user. Available values: `allow`, `deny`, `non_identity`, `bypass`.
         :param pulumi.Input[Sequence[pulumi.Input['AccessPolicyExcludeArgs']]] excludes: A series of access conditions, see Access Groups.
         :param pulumi.Input[Sequence[pulumi.Input['AccessPolicyIncludeArgs']]] includes: A series of access conditions, see Access Groups.
         :param pulumi.Input[bool] isolation_required: Require this application to be served in an isolated browser for users matching this policy.
         :param pulumi.Input[str] name: Friendly name of the Access Policy.
-        :param pulumi.Input[int] precedence: The unique precedence for policies on a single application.
+        :param pulumi.Input[int] precedence: The unique precedence for policies on a single application. Required when using `application_id`.
         :param pulumi.Input[str] purpose_justification_prompt: The prompt to display to the user for a justification for accessing the resource. Required when using `purpose_justification_required`.
         :param pulumi.Input[bool] purpose_justification_required: Whether to prompt the user for a justification for accessing the resource.
         :param pulumi.Input[Sequence[pulumi.Input['AccessPolicyRequireArgs']]] requires: A series of access conditions, see Access Groups.
         :param pulumi.Input[str] session_duration: How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`.
-        :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. Conflicts with `account_id`.
+        :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         """
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
+        if application_id is not None:
+            warnings.warn("""This field is deprecated. Policies can now be standalone and reusable by multiple applications.Please use `cloudflare_access_application.policies` to associate policies with applications.""", DeprecationWarning)
+            pulumi.log.warn("""application_id is deprecated: This field is deprecated. Policies can now be standalone and reusable by multiple applications.Please use `cloudflare_access_application.policies` to associate policies with applications.""")
         if application_id is not None:
             pulumi.set(__self__, "application_id", application_id)
         if approval_groups is not None:
@@ -301,6 +318,9 @@ class _AccessPolicyState:
         if name is not None:
             pulumi.set(__self__, "name", name)
         if precedence is not None:
+            warnings.warn("""This field is deprecated. Access policies can now be reusable by multiple applications. Please use `cloudflare_access_application.policies` to link policies to an application with ascending order of precedence.""", DeprecationWarning)
+            pulumi.log.warn("""precedence is deprecated: This field is deprecated. Access policies can now be reusable by multiple applications. Please use `cloudflare_access_application.policies` to link policies to an application with ascending order of precedence.""")
+        if precedence is not None:
             pulumi.set(__self__, "precedence", precedence)
         if purpose_justification_prompt is not None:
             pulumi.set(__self__, "purpose_justification_prompt", purpose_justification_prompt)
@@ -317,7 +337,7 @@ class _AccessPolicyState:
     @pulumi.getter(name="accountId")
     def account_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The account identifier to target for the resource. Conflicts with `zone_id`.
+        The account identifier to target for the resource. Must provide only one of `account_id`, `zone_id`. **Modifying this attribute will force creation of a new resource.**
         """
         return pulumi.get(self, "account_id")
 
@@ -329,8 +349,11 @@ class _AccessPolicyState:
     @pulumi.getter(name="applicationId")
     def application_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The ID of the application the policy is associated with.
+        The ID of the application the policy is associated with. Required when using `precedence`. **Modifying this attribute will force creation of a new resource.**
         """
+        warnings.warn("""This field is deprecated. Policies can now be standalone and reusable by multiple applications.Please use `cloudflare_access_application.policies` to associate policies with applications.""", DeprecationWarning)
+        pulumi.log.warn("""application_id is deprecated: This field is deprecated. Policies can now be standalone and reusable by multiple applications.Please use `cloudflare_access_application.policies` to associate policies with applications.""")
+
         return pulumi.get(self, "application_id")
 
     @application_id.setter
@@ -419,8 +442,11 @@ class _AccessPolicyState:
     @pulumi.getter
     def precedence(self) -> Optional[pulumi.Input[int]]:
         """
-        The unique precedence for policies on a single application.
+        The unique precedence for policies on a single application. Required when using `application_id`.
         """
+        warnings.warn("""This field is deprecated. Access policies can now be reusable by multiple applications. Please use `cloudflare_access_application.policies` to link policies to an application with ascending order of precedence.""", DeprecationWarning)
+        pulumi.log.warn("""precedence is deprecated: This field is deprecated. Access policies can now be reusable by multiple applications. Please use `cloudflare_access_application.policies` to link policies to an application with ascending order of precedence.""")
+
         return pulumi.get(self, "precedence")
 
     @precedence.setter
@@ -479,7 +505,7 @@ class _AccessPolicyState:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The zone identifier to target for the resource. Conflicts with `account_id`.
+        The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         """
         return pulumi.get(self, "zone_id")
 
@@ -514,11 +540,13 @@ class AccessPolicy(pulumi.CustomResource):
         used in conjunction with Access Applications to restrict access to
         a particular resource.
 
-        > It's required that an `account_id` or `zone_id` is provided and in
-           most cases using either is fine. However, if you're using a scoped
-           access token, you must provide the argument that matches the token's
-           scope. For example, an access token that is scoped to the "example.com"
-           zone needs to use the `zone_id` argument.
+        > It's required that an `account_id` or `zone_id` is provided and in most cases using either is fine.
+           However, if you're using a scoped access token, you must provide the argument that matches the token's
+           scope. For example, an access token that is scoped to the "example.com" zone needs to use the `zone_id` argument.
+           If 'application_id' is omitted, the policy created can be reused by multiple access applications.
+           Any access_application resource can reference reusable policies through its `policies` argument.
+           To destroy a reusable policy and remove it from all applications' policies lists on the same apply, preemptively set the
+           lifecycle option `create_before_destroy` to true on the 'access_policy' resource.
 
         ## Import
 
@@ -536,19 +564,19 @@ class AccessPolicy(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] account_id: The account identifier to target for the resource. Conflicts with `zone_id`.
-        :param pulumi.Input[str] application_id: The ID of the application the policy is associated with.
+        :param pulumi.Input[str] account_id: The account identifier to target for the resource. Must provide only one of `account_id`, `zone_id`. **Modifying this attribute will force creation of a new resource.**
+        :param pulumi.Input[str] application_id: The ID of the application the policy is associated with. Required when using `precedence`. **Modifying this attribute will force creation of a new resource.**
         :param pulumi.Input[str] decision: Defines the action Access will take if the policy matches the user. Available values: `allow`, `deny`, `non_identity`, `bypass`.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessPolicyExcludeArgs']]]] excludes: A series of access conditions, see Access Groups.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessPolicyIncludeArgs']]]] includes: A series of access conditions, see Access Groups.
         :param pulumi.Input[bool] isolation_required: Require this application to be served in an isolated browser for users matching this policy.
         :param pulumi.Input[str] name: Friendly name of the Access Policy.
-        :param pulumi.Input[int] precedence: The unique precedence for policies on a single application.
+        :param pulumi.Input[int] precedence: The unique precedence for policies on a single application. Required when using `application_id`.
         :param pulumi.Input[str] purpose_justification_prompt: The prompt to display to the user for a justification for accessing the resource. Required when using `purpose_justification_required`.
         :param pulumi.Input[bool] purpose_justification_required: Whether to prompt the user for a justification for accessing the resource.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessPolicyRequireArgs']]]] requires: A series of access conditions, see Access Groups.
         :param pulumi.Input[str] session_duration: How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`.
-        :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. Conflicts with `account_id`.
+        :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         """
         ...
     @overload
@@ -561,11 +589,13 @@ class AccessPolicy(pulumi.CustomResource):
         used in conjunction with Access Applications to restrict access to
         a particular resource.
 
-        > It's required that an `account_id` or `zone_id` is provided and in
-           most cases using either is fine. However, if you're using a scoped
-           access token, you must provide the argument that matches the token's
-           scope. For example, an access token that is scoped to the "example.com"
-           zone needs to use the `zone_id` argument.
+        > It's required that an `account_id` or `zone_id` is provided and in most cases using either is fine.
+           However, if you're using a scoped access token, you must provide the argument that matches the token's
+           scope. For example, an access token that is scoped to the "example.com" zone needs to use the `zone_id` argument.
+           If 'application_id' is omitted, the policy created can be reused by multiple access applications.
+           Any access_application resource can reference reusable policies through its `policies` argument.
+           To destroy a reusable policy and remove it from all applications' policies lists on the same apply, preemptively set the
+           lifecycle option `create_before_destroy` to true on the 'access_policy' resource.
 
         ## Import
 
@@ -621,8 +651,6 @@ class AccessPolicy(pulumi.CustomResource):
             __props__ = AccessPolicyArgs.__new__(AccessPolicyArgs)
 
             __props__.__dict__["account_id"] = account_id
-            if application_id is None and not opts.urn:
-                raise TypeError("Missing required property 'application_id'")
             __props__.__dict__["application_id"] = application_id
             __props__.__dict__["approval_groups"] = approval_groups
             __props__.__dict__["approval_required"] = approval_required
@@ -637,8 +665,6 @@ class AccessPolicy(pulumi.CustomResource):
             if name is None and not opts.urn:
                 raise TypeError("Missing required property 'name'")
             __props__.__dict__["name"] = name
-            if precedence is None and not opts.urn:
-                raise TypeError("Missing required property 'precedence'")
             __props__.__dict__["precedence"] = precedence
             __props__.__dict__["purpose_justification_prompt"] = purpose_justification_prompt
             __props__.__dict__["purpose_justification_required"] = purpose_justification_required
@@ -677,19 +703,19 @@ class AccessPolicy(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] account_id: The account identifier to target for the resource. Conflicts with `zone_id`.
-        :param pulumi.Input[str] application_id: The ID of the application the policy is associated with.
+        :param pulumi.Input[str] account_id: The account identifier to target for the resource. Must provide only one of `account_id`, `zone_id`. **Modifying this attribute will force creation of a new resource.**
+        :param pulumi.Input[str] application_id: The ID of the application the policy is associated with. Required when using `precedence`. **Modifying this attribute will force creation of a new resource.**
         :param pulumi.Input[str] decision: Defines the action Access will take if the policy matches the user. Available values: `allow`, `deny`, `non_identity`, `bypass`.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessPolicyExcludeArgs']]]] excludes: A series of access conditions, see Access Groups.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessPolicyIncludeArgs']]]] includes: A series of access conditions, see Access Groups.
         :param pulumi.Input[bool] isolation_required: Require this application to be served in an isolated browser for users matching this policy.
         :param pulumi.Input[str] name: Friendly name of the Access Policy.
-        :param pulumi.Input[int] precedence: The unique precedence for policies on a single application.
+        :param pulumi.Input[int] precedence: The unique precedence for policies on a single application. Required when using `application_id`.
         :param pulumi.Input[str] purpose_justification_prompt: The prompt to display to the user for a justification for accessing the resource. Required when using `purpose_justification_required`.
         :param pulumi.Input[bool] purpose_justification_required: Whether to prompt the user for a justification for accessing the resource.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessPolicyRequireArgs']]]] requires: A series of access conditions, see Access Groups.
         :param pulumi.Input[str] session_duration: How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`.
-        :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. Conflicts with `account_id`.
+        :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -714,18 +740,21 @@ class AccessPolicy(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> pulumi.Output[str]:
+    def account_id(self) -> pulumi.Output[Optional[str]]:
         """
-        The account identifier to target for the resource. Conflicts with `zone_id`.
+        The account identifier to target for the resource. Must provide only one of `account_id`, `zone_id`. **Modifying this attribute will force creation of a new resource.**
         """
         return pulumi.get(self, "account_id")
 
     @property
     @pulumi.getter(name="applicationId")
-    def application_id(self) -> pulumi.Output[str]:
+    def application_id(self) -> pulumi.Output[Optional[str]]:
         """
-        The ID of the application the policy is associated with.
+        The ID of the application the policy is associated with. Required when using `precedence`. **Modifying this attribute will force creation of a new resource.**
         """
+        warnings.warn("""This field is deprecated. Policies can now be standalone and reusable by multiple applications.Please use `cloudflare_access_application.policies` to associate policies with applications.""", DeprecationWarning)
+        pulumi.log.warn("""application_id is deprecated: This field is deprecated. Policies can now be standalone and reusable by multiple applications.Please use `cloudflare_access_application.policies` to associate policies with applications.""")
+
         return pulumi.get(self, "application_id")
 
     @property
@@ -780,10 +809,13 @@ class AccessPolicy(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def precedence(self) -> pulumi.Output[int]:
+    def precedence(self) -> pulumi.Output[Optional[int]]:
         """
-        The unique precedence for policies on a single application.
+        The unique precedence for policies on a single application. Required when using `application_id`.
         """
+        warnings.warn("""This field is deprecated. Access policies can now be reusable by multiple applications. Please use `cloudflare_access_application.policies` to link policies to an application with ascending order of precedence.""", DeprecationWarning)
+        pulumi.log.warn("""precedence is deprecated: This field is deprecated. Access policies can now be reusable by multiple applications. Please use `cloudflare_access_application.policies` to link policies to an application with ascending order of precedence.""")
+
         return pulumi.get(self, "precedence")
 
     @property
@@ -820,9 +852,9 @@ class AccessPolicy(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> pulumi.Output[str]:
+    def zone_id(self) -> pulumi.Output[Optional[str]]:
         """
-        The zone identifier to target for the resource. Conflicts with `account_id`.
+        The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         """
         return pulumi.get(self, "zone_id")
 

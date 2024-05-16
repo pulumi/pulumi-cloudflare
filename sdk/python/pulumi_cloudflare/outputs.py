@@ -261,10 +261,12 @@ __all__ = [
     'ZoneSettingsOverrideInitialSetting',
     'ZoneSettingsOverrideInitialSettingMinify',
     'ZoneSettingsOverrideInitialSettingMobileRedirect',
+    'ZoneSettingsOverrideInitialSettingNel',
     'ZoneSettingsOverrideInitialSettingSecurityHeader',
     'ZoneSettingsOverrideSettings',
     'ZoneSettingsOverrideSettingsMinify',
     'ZoneSettingsOverrideSettingsMobileRedirect',
+    'ZoneSettingsOverrideSettingsNel',
     'ZoneSettingsOverrideSettingsSecurityHeader',
     'GetAccountRolesRoleResult',
     'GetAccountsAccountResult',
@@ -966,12 +968,12 @@ class AccessApplicationScimConfig(dict):
                  enabled: Optional[bool] = None,
                  mappings: Optional[Sequence['outputs.AccessApplicationScimConfigMapping']] = None):
         """
-        :param str idp_uid: The ID of the Access IDP to be used as the source for SCIM resources to provision to this application.
+        :param str idp_uid: The UID of the IdP to use as the source for SCIM resources to provision to this application.
         :param str remote_uri: The base URI for the application's SCIM-compatible API.
-        :param 'AccessApplicationScimConfigAuthenticationArgs' authentication: Configuration for authenticating with the application's SCIM API. Allowed configurations are HTTP Basic, OAuth Bearer Token, and OAuth 2.
+        :param 'AccessApplicationScimConfigAuthenticationArgs' authentication: Attributes for configuring HTTP Basic, OAuth Bearer token, or OAuth 2 authentication schemes for SCIM provisioning to an application.
         :param bool deactivate_on_delete: If false, propagates DELETE requests to the target application for SCIM resources. If true, sets 'active' to false on the SCIM resource. Note: Some targets do not support DELETE operations.
         :param bool enabled: Whether SCIM provisioning is turned on for this application.
-        :param Sequence['AccessApplicationScimConfigMappingArgs'] mappings: A list of filters and transformations to apply to SCIM resources before provisioning them to the application. See below for nested schema.
+        :param Sequence['AccessApplicationScimConfigMappingArgs'] mappings: A list of mappings to apply to SCIM resources before provisioning them in this application. These can transform or filter the resources to be provisioned.
         """
         pulumi.set(__self__, "idp_uid", idp_uid)
         pulumi.set(__self__, "remote_uri", remote_uri)
@@ -988,7 +990,7 @@ class AccessApplicationScimConfig(dict):
     @pulumi.getter(name="idpUid")
     def idp_uid(self) -> str:
         """
-        The ID of the Access IDP to be used as the source for SCIM resources to provision to this application.
+        The UID of the IdP to use as the source for SCIM resources to provision to this application.
         """
         return pulumi.get(self, "idp_uid")
 
@@ -1004,7 +1006,7 @@ class AccessApplicationScimConfig(dict):
     @pulumi.getter
     def authentication(self) -> Optional['outputs.AccessApplicationScimConfigAuthentication']:
         """
-        Configuration for authenticating with the application's SCIM API. Allowed configurations are HTTP Basic, OAuth Bearer Token, and OAuth 2.
+        Attributes for configuring HTTP Basic, OAuth Bearer token, or OAuth 2 authentication schemes for SCIM provisioning to an application.
         """
         return pulumi.get(self, "authentication")
 
@@ -1028,7 +1030,7 @@ class AccessApplicationScimConfig(dict):
     @pulumi.getter
     def mappings(self) -> Optional[Sequence['outputs.AccessApplicationScimConfigMapping']]:
         """
-        A list of filters and transformations to apply to SCIM resources before provisioning them to the application. See below for nested schema.
+        A list of mappings to apply to SCIM resources before provisioning them in this application. These can transform or filter the resources to be provisioned.
         """
         return pulumi.get(self, "mappings")
 
@@ -1069,15 +1071,15 @@ class AccessApplicationScimConfigAuthentication(dict):
                  token_url: Optional[str] = None,
                  user: Optional[str] = None):
         """
-        :param str scheme: The authentication scheme to use. For OAuth 2 authentication, this value should be `oauth2`
-        :param str authorization_url: URL used to generate the auth code used during token generation.
-        :param str client_id: Client ID used to authenticate when generating a token for authenticating with the remote SCIM service.
-        :param str client_secret: Secret used to authenticate when generating a token for authenticating with the remove SCIM service.
-        :param str password: The password used to authenticate with the remote SCIM service.
-        :param Sequence[str] scopes: The authorization scopes to request when generating the token used to authenticate with the remove SCIM service.
-        :param str token: The token used to authenticate with the remote SCIM service.
-        :param str token_url: URL used to generate the token used to authenticate with the remote SCIM service.
-        :param str user: The username used to authenticate with the remote SCIM service.
+        :param str scheme: The authentication scheme to use when making SCIM requests to this application.
+        :param str authorization_url: URL used to generate the auth code used during token generation. Required when using `scim_config.0.authentication.0.client_secret`, `scim_config.0.authentication.0.client_id`, `scim_config.0.authentication.0.token_url`. Conflicts with `scim_config.0.authentication.0.user`, `scim_config.0.authentication.0.password`, `scim_config.0.authentication.0.token`.
+        :param str client_id: Client ID used to authenticate when generating a token for authenticating with the remote SCIM service. Required when using `scim_config.0.authentication.0.client_secret`, `scim_config.0.authentication.0.authorization_url`, `scim_config.0.authentication.0.token_url`. Conflicts with `scim_config.0.authentication.0.user`, `scim_config.0.authentication.0.password`, `scim_config.0.authentication.0.token`.
+        :param str client_secret: Secret used to authenticate when generating a token for authenticating with the remove SCIM service. Required when using `scim_config.0.authentication.0.client_id`, `scim_config.0.authentication.0.authorization_url`, `scim_config.0.authentication.0.token_url`. Conflicts with `scim_config.0.authentication.0.user`, `scim_config.0.authentication.0.password`, `scim_config.0.authentication.0.token`.
+        :param str password: Required when using `scim_config.0.authentication.0.user`. Conflicts with `scim_config.0.authentication.0.token`, `scim_config.0.authentication.0.client_id`, `scim_config.0.authentication.0.client_secret`, `scim_config.0.authentication.0.authorization_url`, `scim_config.0.authentication.0.token_url`, `scim_config.0.authentication.0.scopes`.
+        :param Sequence[str] scopes: The authorization scopes to request when generating the token used to authenticate with the remove SCIM service. Conflicts with `scim_config.0.authentication.0.user`, `scim_config.0.authentication.0.password`, `scim_config.0.authentication.0.token`.
+        :param str token: Token used to authenticate with the remote SCIM service. Conflicts with `scim_config.0.authentication.0.user`, `scim_config.0.authentication.0.password`, `scim_config.0.authentication.0.client_id`, `scim_config.0.authentication.0.client_secret`, `scim_config.0.authentication.0.authorization_url`, `scim_config.0.authentication.0.token_url`, `scim_config.0.authentication.0.scopes`.
+        :param str token_url: URL used to generate the token used to authenticate with the remote SCIM service. Required when using `scim_config.0.authentication.0.client_secret`, `scim_config.0.authentication.0.authorization_url`, `scim_config.0.authentication.0.client_id`. Conflicts with `scim_config.0.authentication.0.user`, `scim_config.0.authentication.0.password`, `scim_config.0.authentication.0.token`.
+        :param str user: User name used to authenticate with the remote SCIM service. Required when using `scim_config.0.authentication.0.password`. Conflicts with `scim_config.0.authentication.0.token`, `scim_config.0.authentication.0.client_id`, `scim_config.0.authentication.0.client_secret`, `scim_config.0.authentication.0.authorization_url`, `scim_config.0.authentication.0.token_url`, `scim_config.0.authentication.0.scopes`.
         """
         pulumi.set(__self__, "scheme", scheme)
         if authorization_url is not None:
@@ -1101,7 +1103,7 @@ class AccessApplicationScimConfigAuthentication(dict):
     @pulumi.getter
     def scheme(self) -> str:
         """
-        The authentication scheme to use. For OAuth 2 authentication, this value should be `oauth2`
+        The authentication scheme to use when making SCIM requests to this application.
         """
         return pulumi.get(self, "scheme")
 
@@ -1109,7 +1111,7 @@ class AccessApplicationScimConfigAuthentication(dict):
     @pulumi.getter(name="authorizationUrl")
     def authorization_url(self) -> Optional[str]:
         """
-        URL used to generate the auth code used during token generation.
+        URL used to generate the auth code used during token generation. Required when using `scim_config.0.authentication.0.client_secret`, `scim_config.0.authentication.0.client_id`, `scim_config.0.authentication.0.token_url`. Conflicts with `scim_config.0.authentication.0.user`, `scim_config.0.authentication.0.password`, `scim_config.0.authentication.0.token`.
         """
         return pulumi.get(self, "authorization_url")
 
@@ -1117,7 +1119,7 @@ class AccessApplicationScimConfigAuthentication(dict):
     @pulumi.getter(name="clientId")
     def client_id(self) -> Optional[str]:
         """
-        Client ID used to authenticate when generating a token for authenticating with the remote SCIM service.
+        Client ID used to authenticate when generating a token for authenticating with the remote SCIM service. Required when using `scim_config.0.authentication.0.client_secret`, `scim_config.0.authentication.0.authorization_url`, `scim_config.0.authentication.0.token_url`. Conflicts with `scim_config.0.authentication.0.user`, `scim_config.0.authentication.0.password`, `scim_config.0.authentication.0.token`.
         """
         return pulumi.get(self, "client_id")
 
@@ -1125,7 +1127,7 @@ class AccessApplicationScimConfigAuthentication(dict):
     @pulumi.getter(name="clientSecret")
     def client_secret(self) -> Optional[str]:
         """
-        Secret used to authenticate when generating a token for authenticating with the remove SCIM service.
+        Secret used to authenticate when generating a token for authenticating with the remove SCIM service. Required when using `scim_config.0.authentication.0.client_id`, `scim_config.0.authentication.0.authorization_url`, `scim_config.0.authentication.0.token_url`. Conflicts with `scim_config.0.authentication.0.user`, `scim_config.0.authentication.0.password`, `scim_config.0.authentication.0.token`.
         """
         return pulumi.get(self, "client_secret")
 
@@ -1133,7 +1135,7 @@ class AccessApplicationScimConfigAuthentication(dict):
     @pulumi.getter
     def password(self) -> Optional[str]:
         """
-        The password used to authenticate with the remote SCIM service.
+        Required when using `scim_config.0.authentication.0.user`. Conflicts with `scim_config.0.authentication.0.token`, `scim_config.0.authentication.0.client_id`, `scim_config.0.authentication.0.client_secret`, `scim_config.0.authentication.0.authorization_url`, `scim_config.0.authentication.0.token_url`, `scim_config.0.authentication.0.scopes`.
         """
         return pulumi.get(self, "password")
 
@@ -1141,7 +1143,7 @@ class AccessApplicationScimConfigAuthentication(dict):
     @pulumi.getter
     def scopes(self) -> Optional[Sequence[str]]:
         """
-        The authorization scopes to request when generating the token used to authenticate with the remove SCIM service.
+        The authorization scopes to request when generating the token used to authenticate with the remove SCIM service. Conflicts with `scim_config.0.authentication.0.user`, `scim_config.0.authentication.0.password`, `scim_config.0.authentication.0.token`.
         """
         return pulumi.get(self, "scopes")
 
@@ -1149,7 +1151,7 @@ class AccessApplicationScimConfigAuthentication(dict):
     @pulumi.getter
     def token(self) -> Optional[str]:
         """
-        The token used to authenticate with the remote SCIM service.
+        Token used to authenticate with the remote SCIM service. Conflicts with `scim_config.0.authentication.0.user`, `scim_config.0.authentication.0.password`, `scim_config.0.authentication.0.client_id`, `scim_config.0.authentication.0.client_secret`, `scim_config.0.authentication.0.authorization_url`, `scim_config.0.authentication.0.token_url`, `scim_config.0.authentication.0.scopes`.
         """
         return pulumi.get(self, "token")
 
@@ -1157,7 +1159,7 @@ class AccessApplicationScimConfigAuthentication(dict):
     @pulumi.getter(name="tokenUrl")
     def token_url(self) -> Optional[str]:
         """
-        URL used to generate the token used to authenticate with the remote SCIM service.
+        URL used to generate the token used to authenticate with the remote SCIM service. Required when using `scim_config.0.authentication.0.client_secret`, `scim_config.0.authentication.0.authorization_url`, `scim_config.0.authentication.0.client_id`. Conflicts with `scim_config.0.authentication.0.user`, `scim_config.0.authentication.0.password`, `scim_config.0.authentication.0.token`.
         """
         return pulumi.get(self, "token_url")
 
@@ -1165,7 +1167,7 @@ class AccessApplicationScimConfigAuthentication(dict):
     @pulumi.getter
     def user(self) -> Optional[str]:
         """
-        The username used to authenticate with the remote SCIM service.
+        User name used to authenticate with the remote SCIM service. Required when using `scim_config.0.authentication.0.password`. Conflicts with `scim_config.0.authentication.0.token`, `scim_config.0.authentication.0.client_id`, `scim_config.0.authentication.0.client_secret`, `scim_config.0.authentication.0.authorization_url`, `scim_config.0.authentication.0.token_url`, `scim_config.0.authentication.0.scopes`.
         """
         return pulumi.get(self, "user")
 
@@ -6436,7 +6438,7 @@ class DevicePostureRuleInput(dict):
         :param str os: OS signal score from Crowdstrike. Value must be between 1 and 100.
         :param str os_distro_name: The operating system excluding version information.
         :param str os_distro_revision: The operating system version excluding OS name information or release name.
-        :param str os_version_extra: Extra operating system version details following the semantic version value.
+        :param str os_version_extra: Extra version value following the operating system semantic version.
         :param str overall: Overall ZTA score from Crowdstrike. Value must be between 1 and 100.
         :param str path: The path to the file.
         :param bool require_all: True if all drives must be encrypted.
@@ -6691,7 +6693,7 @@ class DevicePostureRuleInput(dict):
     @pulumi.getter(name="osVersionExtra")
     def os_version_extra(self) -> Optional[str]:
         """
-        Extra operating system version details following the semantic version value.
+        Extra version value following the operating system semantic version.
         """
         return pulumi.get(self, "os_version_extra")
 
@@ -17852,6 +17854,7 @@ class ZoneSettingsOverrideInitialSetting(dict):
                  minify: Optional['outputs.ZoneSettingsOverrideInitialSettingMinify'] = None,
                  mirage: Optional[str] = None,
                  mobile_redirect: Optional['outputs.ZoneSettingsOverrideInitialSettingMobileRedirect'] = None,
+                 nel: Optional['outputs.ZoneSettingsOverrideInitialSettingNel'] = None,
                  opportunistic_encryption: Optional[str] = None,
                  opportunistic_onion: Optional[str] = None,
                  orange_to_orange: Optional[str] = None,
@@ -17937,6 +17940,8 @@ class ZoneSettingsOverrideInitialSetting(dict):
             pulumi.set(__self__, "mirage", mirage)
         if mobile_redirect is not None:
             pulumi.set(__self__, "mobile_redirect", mobile_redirect)
+        if nel is not None:
+            pulumi.set(__self__, "nel", nel)
         if opportunistic_encryption is not None:
             pulumi.set(__self__, "opportunistic_encryption", opportunistic_encryption)
         if opportunistic_onion is not None:
@@ -18136,6 +18141,11 @@ class ZoneSettingsOverrideInitialSetting(dict):
     @pulumi.getter(name="mobileRedirect")
     def mobile_redirect(self) -> Optional['outputs.ZoneSettingsOverrideInitialSettingMobileRedirect']:
         return pulumi.get(self, "mobile_redirect")
+
+    @property
+    @pulumi.getter
+    def nel(self) -> Optional['outputs.ZoneSettingsOverrideInitialSettingNel']:
+        return pulumi.get(self, "nel")
 
     @property
     @pulumi.getter(name="opportunisticEncryption")
@@ -18348,6 +18358,18 @@ class ZoneSettingsOverrideInitialSettingMobileRedirect(dict):
 
 
 @pulumi.output_type
+class ZoneSettingsOverrideInitialSettingNel(dict):
+    def __init__(__self__, *,
+                 enabled: bool):
+        pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> bool:
+        return pulumi.get(self, "enabled")
+
+
+@pulumi.output_type
 class ZoneSettingsOverrideInitialSettingSecurityHeader(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -18542,6 +18564,7 @@ class ZoneSettingsOverrideSettings(dict):
                  minify: Optional['outputs.ZoneSettingsOverrideSettingsMinify'] = None,
                  mirage: Optional[str] = None,
                  mobile_redirect: Optional['outputs.ZoneSettingsOverrideSettingsMobileRedirect'] = None,
+                 nel: Optional['outputs.ZoneSettingsOverrideSettingsNel'] = None,
                  opportunistic_encryption: Optional[str] = None,
                  opportunistic_onion: Optional[str] = None,
                  orange_to_orange: Optional[str] = None,
@@ -18627,6 +18650,8 @@ class ZoneSettingsOverrideSettings(dict):
             pulumi.set(__self__, "mirage", mirage)
         if mobile_redirect is not None:
             pulumi.set(__self__, "mobile_redirect", mobile_redirect)
+        if nel is not None:
+            pulumi.set(__self__, "nel", nel)
         if opportunistic_encryption is not None:
             pulumi.set(__self__, "opportunistic_encryption", opportunistic_encryption)
         if opportunistic_onion is not None:
@@ -18826,6 +18851,11 @@ class ZoneSettingsOverrideSettings(dict):
     @pulumi.getter(name="mobileRedirect")
     def mobile_redirect(self) -> Optional['outputs.ZoneSettingsOverrideSettingsMobileRedirect']:
         return pulumi.get(self, "mobile_redirect")
+
+    @property
+    @pulumi.getter
+    def nel(self) -> Optional['outputs.ZoneSettingsOverrideSettingsNel']:
+        return pulumi.get(self, "nel")
 
     @property
     @pulumi.getter(name="opportunisticEncryption")
@@ -19035,6 +19065,18 @@ class ZoneSettingsOverrideSettingsMobileRedirect(dict):
     @pulumi.getter(name="stripUri")
     def strip_uri(self) -> bool:
         return pulumi.get(self, "strip_uri")
+
+
+@pulumi.output_type
+class ZoneSettingsOverrideSettingsNel(dict):
+    def __init__(__self__, *,
+                 enabled: bool):
+        pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> bool:
+        return pulumi.get(self, "enabled")
 
 
 @pulumi.output_type

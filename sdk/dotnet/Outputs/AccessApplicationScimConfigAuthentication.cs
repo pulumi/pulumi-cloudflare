@@ -14,39 +14,39 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class AccessApplicationScimConfigAuthentication
     {
         /// <summary>
-        /// URL used to generate the auth code used during token generation.
+        /// URL used to generate the auth code used during token generation. Required when using `scim_config.0.authentication.0.client_secret`, `scim_config.0.authentication.0.client_id`, `scim_config.0.authentication.0.token_url`. Conflicts with `scim_config.0.authentication.0.user`, `scim_config.0.authentication.0.password`, `scim_config.0.authentication.0.token`.
         /// </summary>
         public readonly string? AuthorizationUrl;
         /// <summary>
-        /// Client ID used to authenticate when generating a token for authenticating with the remote SCIM service.
+        /// Client ID used to authenticate when generating a token for authenticating with the remote SCIM service. Required when using `scim_config.0.authentication.0.client_secret`, `scim_config.0.authentication.0.authorization_url`, `scim_config.0.authentication.0.token_url`. Conflicts with `scim_config.0.authentication.0.user`, `scim_config.0.authentication.0.password`, `scim_config.0.authentication.0.token`.
         /// </summary>
         public readonly string? ClientId;
         /// <summary>
-        /// Secret used to authenticate when generating a token for authenticating with the remove SCIM service.
+        /// Secret used to authenticate when generating a token for authenticating with the remove SCIM service. Required when using `scim_config.0.authentication.0.client_id`, `scim_config.0.authentication.0.authorization_url`, `scim_config.0.authentication.0.token_url`. Conflicts with `scim_config.0.authentication.0.user`, `scim_config.0.authentication.0.password`, `scim_config.0.authentication.0.token`.
         /// </summary>
         public readonly string? ClientSecret;
         /// <summary>
-        /// The password used to authenticate with the remote SCIM service.
+        /// Required when using `scim_config.0.authentication.0.user`. Conflicts with `scim_config.0.authentication.0.token`, `scim_config.0.authentication.0.client_id`, `scim_config.0.authentication.0.client_secret`, `scim_config.0.authentication.0.authorization_url`, `scim_config.0.authentication.0.token_url`, `scim_config.0.authentication.0.scopes`.
         /// </summary>
         public readonly string? Password;
         /// <summary>
-        /// The authentication scheme to use. For OAuth 2 authentication, this value should be `oauth2`
+        /// The authentication scheme to use when making SCIM requests to this application.
         /// </summary>
         public readonly string Scheme;
         /// <summary>
-        /// The authorization scopes to request when generating the token used to authenticate with the remove SCIM service.
+        /// The authorization scopes to request when generating the token used to authenticate with the remove SCIM service. Conflicts with `scim_config.0.authentication.0.user`, `scim_config.0.authentication.0.password`, `scim_config.0.authentication.0.token`.
         /// </summary>
         public readonly ImmutableArray<string> Scopes;
         /// <summary>
-        /// The token used to authenticate with the remote SCIM service.
+        /// Token used to authenticate with the remote SCIM service. Conflicts with `scim_config.0.authentication.0.user`, `scim_config.0.authentication.0.password`, `scim_config.0.authentication.0.client_id`, `scim_config.0.authentication.0.client_secret`, `scim_config.0.authentication.0.authorization_url`, `scim_config.0.authentication.0.token_url`, `scim_config.0.authentication.0.scopes`.
         /// </summary>
         public readonly string? Token;
         /// <summary>
-        /// URL used to generate the token used to authenticate with the remote SCIM service.
+        /// URL used to generate the token used to authenticate with the remote SCIM service. Required when using `scim_config.0.authentication.0.client_secret`, `scim_config.0.authentication.0.authorization_url`, `scim_config.0.authentication.0.client_id`. Conflicts with `scim_config.0.authentication.0.user`, `scim_config.0.authentication.0.password`, `scim_config.0.authentication.0.token`.
         /// </summary>
         public readonly string? TokenUrl;
         /// <summary>
-        /// The username used to authenticate with the remote SCIM service.
+        /// User name used to authenticate with the remote SCIM service. Required when using `scim_config.0.authentication.0.password`. Conflicts with `scim_config.0.authentication.0.token`, `scim_config.0.authentication.0.client_id`, `scim_config.0.authentication.0.client_secret`, `scim_config.0.authentication.0.authorization_url`, `scim_config.0.authentication.0.token_url`, `scim_config.0.authentication.0.scopes`.
         /// </summary>
         public readonly string? User;
 
