@@ -140,6 +140,10 @@ export class AccessApplication extends pulumi.CustomResource {
      */
     public readonly optionsPreflightBypass!: pulumi.Output<boolean | undefined>;
     /**
+     * The policies associated with the application, in ascending order of precedence. When omitted, the application policies are not be updated. Warning: Do not use this field while you still have this application ID referenced as `applicationId` in an `cloudflare.AccessPolicy` resource, as it can result in an inconsistent state.
+     */
+    public readonly policies!: pulumi.Output<string[] | undefined>;
+    /**
      * SaaS configuration for the Access Application.
      */
     public readonly saasApp!: pulumi.Output<outputs.AccessApplicationSaasApp | undefined>;
@@ -148,7 +152,7 @@ export class AccessApplication extends pulumi.CustomResource {
      */
     public readonly sameSiteCookieAttribute!: pulumi.Output<string | undefined>;
     /**
-     * Configuration for provisioning to the Access Application via SCIM. This is currently in closed beta.
+     * Configuration for provisioning to this application via SCIM. This is currently in closed beta.
      */
     public readonly scimConfig!: pulumi.Output<outputs.AccessApplicationScimConfig | undefined>;
     /**
@@ -215,6 +219,7 @@ export class AccessApplication extends pulumi.CustomResource {
             resourceInputs["logoUrl"] = state ? state.logoUrl : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["optionsPreflightBypass"] = state ? state.optionsPreflightBypass : undefined;
+            resourceInputs["policies"] = state ? state.policies : undefined;
             resourceInputs["saasApp"] = state ? state.saasApp : undefined;
             resourceInputs["sameSiteCookieAttribute"] = state ? state.sameSiteCookieAttribute : undefined;
             resourceInputs["scimConfig"] = state ? state.scimConfig : undefined;
@@ -248,6 +253,7 @@ export class AccessApplication extends pulumi.CustomResource {
             resourceInputs["logoUrl"] = args ? args.logoUrl : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["optionsPreflightBypass"] = args ? args.optionsPreflightBypass : undefined;
+            resourceInputs["policies"] = args ? args.policies : undefined;
             resourceInputs["saasApp"] = args ? args.saasApp : undefined;
             resourceInputs["sameSiteCookieAttribute"] = args ? args.sameSiteCookieAttribute : undefined;
             resourceInputs["scimConfig"] = args ? args.scimConfig : undefined;
@@ -358,6 +364,10 @@ export interface AccessApplicationState {
      */
     optionsPreflightBypass?: pulumi.Input<boolean>;
     /**
+     * The policies associated with the application, in ascending order of precedence. When omitted, the application policies are not be updated. Warning: Do not use this field while you still have this application ID referenced as `applicationId` in an `cloudflare.AccessPolicy` resource, as it can result in an inconsistent state.
+     */
+    policies?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
      * SaaS configuration for the Access Application.
      */
     saasApp?: pulumi.Input<inputs.AccessApplicationSaasApp>;
@@ -366,7 +376,7 @@ export interface AccessApplicationState {
      */
     sameSiteCookieAttribute?: pulumi.Input<string>;
     /**
-     * Configuration for provisioning to the Access Application via SCIM. This is currently in closed beta.
+     * Configuration for provisioning to this application via SCIM. This is currently in closed beta.
      */
     scimConfig?: pulumi.Input<inputs.AccessApplicationScimConfig>;
     /**
@@ -488,6 +498,10 @@ export interface AccessApplicationArgs {
      */
     optionsPreflightBypass?: pulumi.Input<boolean>;
     /**
+     * The policies associated with the application, in ascending order of precedence. When omitted, the application policies are not be updated. Warning: Do not use this field while you still have this application ID referenced as `applicationId` in an `cloudflare.AccessPolicy` resource, as it can result in an inconsistent state.
+     */
+    policies?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
      * SaaS configuration for the Access Application.
      */
     saasApp?: pulumi.Input<inputs.AccessApplicationSaasApp>;
@@ -496,7 +510,7 @@ export interface AccessApplicationArgs {
      */
     sameSiteCookieAttribute?: pulumi.Input<string>;
     /**
-     * Configuration for provisioning to the Access Application via SCIM. This is currently in closed beta.
+     * Configuration for provisioning to this application via SCIM. This is currently in closed beta.
      */
     scimConfig?: pulumi.Input<inputs.AccessApplicationScimConfig>;
     /**

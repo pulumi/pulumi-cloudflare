@@ -24,14 +24,14 @@ public final class AccessPolicyArgs extends com.pulumi.resources.ResourceArgs {
     public static final AccessPolicyArgs Empty = new AccessPolicyArgs();
 
     /**
-     * The account identifier to target for the resource. Conflicts with `zone_id`.
+     * The account identifier to target for the resource. Must provide only one of `account_id`, `zone_id`. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     @Import(name="accountId")
     private @Nullable Output<String> accountId;
 
     /**
-     * @return The account identifier to target for the resource. Conflicts with `zone_id`.
+     * @return The account identifier to target for the resource. Must provide only one of `account_id`, `zone_id`. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     public Optional<Output<String>> accountId() {
@@ -39,18 +39,26 @@ public final class AccessPolicyArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The ID of the application the policy is associated with.
+     * The ID of the application the policy is associated with. Required when using `precedence`. **Modifying this attribute will force creation of a new resource.**
+     * 
+     * @deprecated
+     * This field is deprecated. Policies can now be standalone and reusable by multiple applications.Please use `cloudflare_access_application.policies` to associate policies with applications.
      * 
      */
-    @Import(name="applicationId", required=true)
-    private Output<String> applicationId;
+    @Deprecated /* This field is deprecated. Policies can now be standalone and reusable by multiple applications.Please use `cloudflare_access_application.policies` to associate policies with applications. */
+    @Import(name="applicationId")
+    private @Nullable Output<String> applicationId;
 
     /**
-     * @return The ID of the application the policy is associated with.
+     * @return The ID of the application the policy is associated with. Required when using `precedence`. **Modifying this attribute will force creation of a new resource.**
+     * 
+     * @deprecated
+     * This field is deprecated. Policies can now be standalone and reusable by multiple applications.Please use `cloudflare_access_application.policies` to associate policies with applications.
      * 
      */
-    public Output<String> applicationId() {
-        return this.applicationId;
+    @Deprecated /* This field is deprecated. Policies can now be standalone and reusable by multiple applications.Please use `cloudflare_access_application.policies` to associate policies with applications. */
+    public Optional<Output<String>> applicationId() {
+        return Optional.ofNullable(this.applicationId);
     }
 
     @Import(name="approvalGroups")
@@ -143,18 +151,26 @@ public final class AccessPolicyArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The unique precedence for policies on a single application.
+     * The unique precedence for policies on a single application. Required when using `application_id`.
+     * 
+     * @deprecated
+     * This field is deprecated. Access policies can now be reusable by multiple applications. Please use `cloudflare_access_application.policies` to link policies to an application with ascending order of precedence.
      * 
      */
-    @Import(name="precedence", required=true)
-    private Output<Integer> precedence;
+    @Deprecated /* This field is deprecated. Access policies can now be reusable by multiple applications. Please use `cloudflare_access_application.policies` to link policies to an application with ascending order of precedence. */
+    @Import(name="precedence")
+    private @Nullable Output<Integer> precedence;
 
     /**
-     * @return The unique precedence for policies on a single application.
+     * @return The unique precedence for policies on a single application. Required when using `application_id`.
+     * 
+     * @deprecated
+     * This field is deprecated. Access policies can now be reusable by multiple applications. Please use `cloudflare_access_application.policies` to link policies to an application with ascending order of precedence.
      * 
      */
-    public Output<Integer> precedence() {
-        return this.precedence;
+    @Deprecated /* This field is deprecated. Access policies can now be reusable by multiple applications. Please use `cloudflare_access_application.policies` to link policies to an application with ascending order of precedence. */
+    public Optional<Output<Integer>> precedence() {
+        return Optional.ofNullable(this.precedence);
     }
 
     /**
@@ -218,14 +234,14 @@ public final class AccessPolicyArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The zone identifier to target for the resource. Conflicts with `account_id`.
+     * The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     @Import(name="zoneId")
     private @Nullable Output<String> zoneId;
 
     /**
-     * @return The zone identifier to target for the resource. Conflicts with `account_id`.
+     * @return The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
      * 
      */
     public Optional<Output<String>> zoneId() {
@@ -271,7 +287,7 @@ public final class AccessPolicyArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accountId The account identifier to target for the resource. Conflicts with `zone_id`.
+         * @param accountId The account identifier to target for the resource. Must provide only one of `account_id`, `zone_id`. **Modifying this attribute will force creation of a new resource.**
          * 
          * @return builder
          * 
@@ -282,7 +298,7 @@ public final class AccessPolicyArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accountId The account identifier to target for the resource. Conflicts with `zone_id`.
+         * @param accountId The account identifier to target for the resource. Must provide only one of `account_id`, `zone_id`. **Modifying this attribute will force creation of a new resource.**
          * 
          * @return builder
          * 
@@ -292,22 +308,30 @@ public final class AccessPolicyArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param applicationId The ID of the application the policy is associated with.
+         * @param applicationId The ID of the application the policy is associated with. Required when using `precedence`. **Modifying this attribute will force creation of a new resource.**
          * 
          * @return builder
          * 
+         * @deprecated
+         * This field is deprecated. Policies can now be standalone and reusable by multiple applications.Please use `cloudflare_access_application.policies` to associate policies with applications.
+         * 
          */
-        public Builder applicationId(Output<String> applicationId) {
+        @Deprecated /* This field is deprecated. Policies can now be standalone and reusable by multiple applications.Please use `cloudflare_access_application.policies` to associate policies with applications. */
+        public Builder applicationId(@Nullable Output<String> applicationId) {
             $.applicationId = applicationId;
             return this;
         }
 
         /**
-         * @param applicationId The ID of the application the policy is associated with.
+         * @param applicationId The ID of the application the policy is associated with. Required when using `precedence`. **Modifying this attribute will force creation of a new resource.**
          * 
          * @return builder
          * 
+         * @deprecated
+         * This field is deprecated. Policies can now be standalone and reusable by multiple applications.Please use `cloudflare_access_application.policies` to associate policies with applications.
+         * 
          */
+        @Deprecated /* This field is deprecated. Policies can now be standalone and reusable by multiple applications.Please use `cloudflare_access_application.policies` to associate policies with applications. */
         public Builder applicationId(String applicationId) {
             return applicationId(Output.of(applicationId));
         }
@@ -460,22 +484,30 @@ public final class AccessPolicyArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param precedence The unique precedence for policies on a single application.
+         * @param precedence The unique precedence for policies on a single application. Required when using `application_id`.
          * 
          * @return builder
          * 
+         * @deprecated
+         * This field is deprecated. Access policies can now be reusable by multiple applications. Please use `cloudflare_access_application.policies` to link policies to an application with ascending order of precedence.
+         * 
          */
-        public Builder precedence(Output<Integer> precedence) {
+        @Deprecated /* This field is deprecated. Access policies can now be reusable by multiple applications. Please use `cloudflare_access_application.policies` to link policies to an application with ascending order of precedence. */
+        public Builder precedence(@Nullable Output<Integer> precedence) {
             $.precedence = precedence;
             return this;
         }
 
         /**
-         * @param precedence The unique precedence for policies on a single application.
+         * @param precedence The unique precedence for policies on a single application. Required when using `application_id`.
          * 
          * @return builder
          * 
+         * @deprecated
+         * This field is deprecated. Access policies can now be reusable by multiple applications. Please use `cloudflare_access_application.policies` to link policies to an application with ascending order of precedence.
+         * 
          */
+        @Deprecated /* This field is deprecated. Access policies can now be reusable by multiple applications. Please use `cloudflare_access_application.policies` to link policies to an application with ascending order of precedence. */
         public Builder precedence(Integer precedence) {
             return precedence(Output.of(precedence));
         }
@@ -575,7 +607,7 @@ public final class AccessPolicyArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param zoneId The zone identifier to target for the resource. Conflicts with `account_id`.
+         * @param zoneId The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
          * 
          * @return builder
          * 
@@ -586,7 +618,7 @@ public final class AccessPolicyArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param zoneId The zone identifier to target for the resource. Conflicts with `account_id`.
+         * @param zoneId The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
          * 
          * @return builder
          * 
@@ -596,9 +628,6 @@ public final class AccessPolicyArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public AccessPolicyArgs build() {
-            if ($.applicationId == null) {
-                throw new MissingRequiredPropertyException("AccessPolicyArgs", "applicationId");
-            }
             if ($.decision == null) {
                 throw new MissingRequiredPropertyException("AccessPolicyArgs", "decision");
             }
@@ -607,9 +636,6 @@ public final class AccessPolicyArgs extends com.pulumi.resources.ResourceArgs {
             }
             if ($.name == null) {
                 throw new MissingRequiredPropertyException("AccessPolicyArgs", "name");
-            }
-            if ($.precedence == null) {
-                throw new MissingRequiredPropertyException("AccessPolicyArgs", "precedence");
             }
             return $;
         }

@@ -37,6 +37,7 @@ class AccessApplicationArgs:
                  logo_url: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  options_preflight_bypass: Optional[pulumi.Input[bool]] = None,
+                 policies: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  saas_app: Optional[pulumi.Input['AccessApplicationSaasAppArgs']] = None,
                  same_site_cookie_attribute: Optional[pulumi.Input[str]] = None,
                  scim_config: Optional[pulumi.Input['AccessApplicationScimConfigArgs']] = None,
@@ -70,9 +71,10 @@ class AccessApplicationArgs:
         :param pulumi.Input[str] logo_url: Image URL for the logo shown in the app launcher dashboard.
         :param pulumi.Input[str] name: Friendly name of the Access Application.
         :param pulumi.Input[bool] options_preflight_bypass: Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if cors_headers is set. Defaults to `false`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] policies: The policies associated with the application, in ascending order of precedence. When omitted, the application policies are not be updated. Warning: Do not use this field while you still have this application ID referenced as `application_id` in an `AccessPolicy` resource, as it can result in an inconsistent state.
         :param pulumi.Input['AccessApplicationSaasAppArgs'] saas_app: SaaS configuration for the Access Application.
         :param pulumi.Input[str] same_site_cookie_attribute: Defines the same-site cookie setting for access tokens. Available values: `none`, `lax`, `strict`.
-        :param pulumi.Input['AccessApplicationScimConfigArgs'] scim_config: Configuration for provisioning to the Access Application via SCIM. This is currently in closed beta.
+        :param pulumi.Input['AccessApplicationScimConfigArgs'] scim_config: Configuration for provisioning to this application via SCIM. This is currently in closed beta.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] self_hosted_domains: List of domains that access will secure. Only present for self_hosted, vnc, and ssh applications. Always includes the value set as `domain`.
         :param pulumi.Input[bool] service_auth401_redirect: Option to return a 401 status code in service authentication rules on failed requests. Defaults to `false`.
         :param pulumi.Input[str] session_duration: How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`. Defaults to `24h`.
@@ -123,6 +125,8 @@ class AccessApplicationArgs:
             pulumi.set(__self__, "name", name)
         if options_preflight_bypass is not None:
             pulumi.set(__self__, "options_preflight_bypass", options_preflight_bypass)
+        if policies is not None:
+            pulumi.set(__self__, "policies", policies)
         if saas_app is not None:
             pulumi.set(__self__, "saas_app", saas_app)
         if same_site_cookie_attribute is not None:
@@ -397,6 +401,18 @@ class AccessApplicationArgs:
         pulumi.set(self, "options_preflight_bypass", value)
 
     @property
+    @pulumi.getter
+    def policies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The policies associated with the application, in ascending order of precedence. When omitted, the application policies are not be updated. Warning: Do not use this field while you still have this application ID referenced as `application_id` in an `AccessPolicy` resource, as it can result in an inconsistent state.
+        """
+        return pulumi.get(self, "policies")
+
+    @policies.setter
+    def policies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "policies", value)
+
+    @property
     @pulumi.getter(name="saasApp")
     def saas_app(self) -> Optional[pulumi.Input['AccessApplicationSaasAppArgs']]:
         """
@@ -424,7 +440,7 @@ class AccessApplicationArgs:
     @pulumi.getter(name="scimConfig")
     def scim_config(self) -> Optional[pulumi.Input['AccessApplicationScimConfigArgs']]:
         """
-        Configuration for provisioning to the Access Application via SCIM. This is currently in closed beta.
+        Configuration for provisioning to this application via SCIM. This is currently in closed beta.
         """
         return pulumi.get(self, "scim_config")
 
@@ -542,6 +558,7 @@ class _AccessApplicationState:
                  logo_url: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  options_preflight_bypass: Optional[pulumi.Input[bool]] = None,
+                 policies: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  saas_app: Optional[pulumi.Input['AccessApplicationSaasAppArgs']] = None,
                  same_site_cookie_attribute: Optional[pulumi.Input[str]] = None,
                  scim_config: Optional[pulumi.Input['AccessApplicationScimConfigArgs']] = None,
@@ -576,9 +593,10 @@ class _AccessApplicationState:
         :param pulumi.Input[str] logo_url: Image URL for the logo shown in the app launcher dashboard.
         :param pulumi.Input[str] name: Friendly name of the Access Application.
         :param pulumi.Input[bool] options_preflight_bypass: Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if cors_headers is set. Defaults to `false`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] policies: The policies associated with the application, in ascending order of precedence. When omitted, the application policies are not be updated. Warning: Do not use this field while you still have this application ID referenced as `application_id` in an `AccessPolicy` resource, as it can result in an inconsistent state.
         :param pulumi.Input['AccessApplicationSaasAppArgs'] saas_app: SaaS configuration for the Access Application.
         :param pulumi.Input[str] same_site_cookie_attribute: Defines the same-site cookie setting for access tokens. Available values: `none`, `lax`, `strict`.
-        :param pulumi.Input['AccessApplicationScimConfigArgs'] scim_config: Configuration for provisioning to the Access Application via SCIM. This is currently in closed beta.
+        :param pulumi.Input['AccessApplicationScimConfigArgs'] scim_config: Configuration for provisioning to this application via SCIM. This is currently in closed beta.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] self_hosted_domains: List of domains that access will secure. Only present for self_hosted, vnc, and ssh applications. Always includes the value set as `domain`.
         :param pulumi.Input[bool] service_auth401_redirect: Option to return a 401 status code in service authentication rules on failed requests. Defaults to `false`.
         :param pulumi.Input[str] session_duration: How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`. Defaults to `24h`.
@@ -631,6 +649,8 @@ class _AccessApplicationState:
             pulumi.set(__self__, "name", name)
         if options_preflight_bypass is not None:
             pulumi.set(__self__, "options_preflight_bypass", options_preflight_bypass)
+        if policies is not None:
+            pulumi.set(__self__, "policies", policies)
         if saas_app is not None:
             pulumi.set(__self__, "saas_app", saas_app)
         if same_site_cookie_attribute is not None:
@@ -917,6 +937,18 @@ class _AccessApplicationState:
         pulumi.set(self, "options_preflight_bypass", value)
 
     @property
+    @pulumi.getter
+    def policies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The policies associated with the application, in ascending order of precedence. When omitted, the application policies are not be updated. Warning: Do not use this field while you still have this application ID referenced as `application_id` in an `AccessPolicy` resource, as it can result in an inconsistent state.
+        """
+        return pulumi.get(self, "policies")
+
+    @policies.setter
+    def policies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "policies", value)
+
+    @property
     @pulumi.getter(name="saasApp")
     def saas_app(self) -> Optional[pulumi.Input['AccessApplicationSaasAppArgs']]:
         """
@@ -944,7 +976,7 @@ class _AccessApplicationState:
     @pulumi.getter(name="scimConfig")
     def scim_config(self) -> Optional[pulumi.Input['AccessApplicationScimConfigArgs']]:
         """
-        Configuration for provisioning to the Access Application via SCIM. This is currently in closed beta.
+        Configuration for provisioning to this application via SCIM. This is currently in closed beta.
         """
         return pulumi.get(self, "scim_config")
 
@@ -1063,6 +1095,7 @@ class AccessApplication(pulumi.CustomResource):
                  logo_url: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  options_preflight_bypass: Optional[pulumi.Input[bool]] = None,
+                 policies: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  saas_app: Optional[pulumi.Input[pulumi.InputType['AccessApplicationSaasAppArgs']]] = None,
                  same_site_cookie_attribute: Optional[pulumi.Input[str]] = None,
                  scim_config: Optional[pulumi.Input[pulumi.InputType['AccessApplicationScimConfigArgs']]] = None,
@@ -1114,9 +1147,10 @@ class AccessApplication(pulumi.CustomResource):
         :param pulumi.Input[str] logo_url: Image URL for the logo shown in the app launcher dashboard.
         :param pulumi.Input[str] name: Friendly name of the Access Application.
         :param pulumi.Input[bool] options_preflight_bypass: Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if cors_headers is set. Defaults to `false`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] policies: The policies associated with the application, in ascending order of precedence. When omitted, the application policies are not be updated. Warning: Do not use this field while you still have this application ID referenced as `application_id` in an `AccessPolicy` resource, as it can result in an inconsistent state.
         :param pulumi.Input[pulumi.InputType['AccessApplicationSaasAppArgs']] saas_app: SaaS configuration for the Access Application.
         :param pulumi.Input[str] same_site_cookie_attribute: Defines the same-site cookie setting for access tokens. Available values: `none`, `lax`, `strict`.
-        :param pulumi.Input[pulumi.InputType['AccessApplicationScimConfigArgs']] scim_config: Configuration for provisioning to the Access Application via SCIM. This is currently in closed beta.
+        :param pulumi.Input[pulumi.InputType['AccessApplicationScimConfigArgs']] scim_config: Configuration for provisioning to this application via SCIM. This is currently in closed beta.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] self_hosted_domains: List of domains that access will secure. Only present for self_hosted, vnc, and ssh applications. Always includes the value set as `domain`.
         :param pulumi.Input[bool] service_auth401_redirect: Option to return a 401 status code in service authentication rules on failed requests. Defaults to `false`.
         :param pulumi.Input[str] session_duration: How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`. Defaults to `24h`.
@@ -1184,6 +1218,7 @@ class AccessApplication(pulumi.CustomResource):
                  logo_url: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  options_preflight_bypass: Optional[pulumi.Input[bool]] = None,
+                 policies: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  saas_app: Optional[pulumi.Input[pulumi.InputType['AccessApplicationSaasAppArgs']]] = None,
                  same_site_cookie_attribute: Optional[pulumi.Input[str]] = None,
                  scim_config: Optional[pulumi.Input[pulumi.InputType['AccessApplicationScimConfigArgs']]] = None,
@@ -1224,6 +1259,7 @@ class AccessApplication(pulumi.CustomResource):
             __props__.__dict__["logo_url"] = logo_url
             __props__.__dict__["name"] = name
             __props__.__dict__["options_preflight_bypass"] = options_preflight_bypass
+            __props__.__dict__["policies"] = policies
             __props__.__dict__["saas_app"] = saas_app
             __props__.__dict__["same_site_cookie_attribute"] = same_site_cookie_attribute
             __props__.__dict__["scim_config"] = scim_config
@@ -1267,6 +1303,7 @@ class AccessApplication(pulumi.CustomResource):
             logo_url: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             options_preflight_bypass: Optional[pulumi.Input[bool]] = None,
+            policies: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             saas_app: Optional[pulumi.Input[pulumi.InputType['AccessApplicationSaasAppArgs']]] = None,
             same_site_cookie_attribute: Optional[pulumi.Input[str]] = None,
             scim_config: Optional[pulumi.Input[pulumi.InputType['AccessApplicationScimConfigArgs']]] = None,
@@ -1306,9 +1343,10 @@ class AccessApplication(pulumi.CustomResource):
         :param pulumi.Input[str] logo_url: Image URL for the logo shown in the app launcher dashboard.
         :param pulumi.Input[str] name: Friendly name of the Access Application.
         :param pulumi.Input[bool] options_preflight_bypass: Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if cors_headers is set. Defaults to `false`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] policies: The policies associated with the application, in ascending order of precedence. When omitted, the application policies are not be updated. Warning: Do not use this field while you still have this application ID referenced as `application_id` in an `AccessPolicy` resource, as it can result in an inconsistent state.
         :param pulumi.Input[pulumi.InputType['AccessApplicationSaasAppArgs']] saas_app: SaaS configuration for the Access Application.
         :param pulumi.Input[str] same_site_cookie_attribute: Defines the same-site cookie setting for access tokens. Available values: `none`, `lax`, `strict`.
-        :param pulumi.Input[pulumi.InputType['AccessApplicationScimConfigArgs']] scim_config: Configuration for provisioning to the Access Application via SCIM. This is currently in closed beta.
+        :param pulumi.Input[pulumi.InputType['AccessApplicationScimConfigArgs']] scim_config: Configuration for provisioning to this application via SCIM. This is currently in closed beta.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] self_hosted_domains: List of domains that access will secure. Only present for self_hosted, vnc, and ssh applications. Always includes the value set as `domain`.
         :param pulumi.Input[bool] service_auth401_redirect: Option to return a 401 status code in service authentication rules on failed requests. Defaults to `false`.
         :param pulumi.Input[str] session_duration: How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`. Defaults to `24h`.
@@ -1343,6 +1381,7 @@ class AccessApplication(pulumi.CustomResource):
         __props__.__dict__["logo_url"] = logo_url
         __props__.__dict__["name"] = name
         __props__.__dict__["options_preflight_bypass"] = options_preflight_bypass
+        __props__.__dict__["policies"] = policies
         __props__.__dict__["saas_app"] = saas_app
         __props__.__dict__["same_site_cookie_attribute"] = same_site_cookie_attribute
         __props__.__dict__["scim_config"] = scim_config
@@ -1532,6 +1571,14 @@ class AccessApplication(pulumi.CustomResource):
         return pulumi.get(self, "options_preflight_bypass")
 
     @property
+    @pulumi.getter
+    def policies(self) -> pulumi.Output[Optional[Sequence[str]]]:
+        """
+        The policies associated with the application, in ascending order of precedence. When omitted, the application policies are not be updated. Warning: Do not use this field while you still have this application ID referenced as `application_id` in an `AccessPolicy` resource, as it can result in an inconsistent state.
+        """
+        return pulumi.get(self, "policies")
+
+    @property
     @pulumi.getter(name="saasApp")
     def saas_app(self) -> pulumi.Output[Optional['outputs.AccessApplicationSaasApp']]:
         """
@@ -1551,7 +1598,7 @@ class AccessApplication(pulumi.CustomResource):
     @pulumi.getter(name="scimConfig")
     def scim_config(self) -> pulumi.Output[Optional['outputs.AccessApplicationScimConfig']]:
         """
-        Configuration for provisioning to the Access Application via SCIM. This is currently in closed beta.
+        Configuration for provisioning to this application via SCIM. This is currently in closed beta.
         """
         return pulumi.get(self, "scim_config")
 

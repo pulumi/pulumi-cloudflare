@@ -46,6 +46,7 @@ namespace Pulumi.Cloudflare
     ///                 Operator = "&lt;",
     ///                 OsDistroName = "ubuntu",
     ///                 OsDistroRevision = "1.0.0",
+    ///                 OsVersionExtra = "(a)",
     ///             },
     ///         },
     ///     });

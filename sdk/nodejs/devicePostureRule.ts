@@ -31,6 +31,7 @@ import * as utilities from "./utilities";
  *         operator: "<",
  *         osDistroName: "ubuntu",
  *         osDistroRevision: "1.0.0",
+ *         osVersionExtra: "(a)",
  *     }],
  * });
  * ```

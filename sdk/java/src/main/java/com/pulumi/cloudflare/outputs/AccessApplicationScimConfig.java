@@ -17,7 +17,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class AccessApplicationScimConfig {
     /**
-     * @return Configuration for authenticating with the application&#39;s SCIM API. Allowed configurations are HTTP Basic, OAuth Bearer Token, and OAuth 2.
+     * @return Attributes for configuring HTTP Basic, OAuth Bearer token, or OAuth 2 authentication schemes for SCIM provisioning to an application.
      * 
      */
     private @Nullable AccessApplicationScimConfigAuthentication authentication;
@@ -32,12 +32,12 @@ public final class AccessApplicationScimConfig {
      */
     private @Nullable Boolean enabled;
     /**
-     * @return The ID of the Access IDP to be used as the source for SCIM resources to provision to this application.
+     * @return The UID of the IdP to use as the source for SCIM resources to provision to this application.
      * 
      */
     private String idpUid;
     /**
-     * @return A list of filters and transformations to apply to SCIM resources before provisioning them to the application. See below for nested schema.
+     * @return A list of mappings to apply to SCIM resources before provisioning them in this application. These can transform or filter the resources to be provisioned.
      * 
      */
     private @Nullable List<AccessApplicationScimConfigMapping> mappings;
@@ -49,7 +49,7 @@ public final class AccessApplicationScimConfig {
 
     private AccessApplicationScimConfig() {}
     /**
-     * @return Configuration for authenticating with the application&#39;s SCIM API. Allowed configurations are HTTP Basic, OAuth Bearer Token, and OAuth 2.
+     * @return Attributes for configuring HTTP Basic, OAuth Bearer token, or OAuth 2 authentication schemes for SCIM provisioning to an application.
      * 
      */
     public Optional<AccessApplicationScimConfigAuthentication> authentication() {
@@ -70,14 +70,14 @@ public final class AccessApplicationScimConfig {
         return Optional.ofNullable(this.enabled);
     }
     /**
-     * @return The ID of the Access IDP to be used as the source for SCIM resources to provision to this application.
+     * @return The UID of the IdP to use as the source for SCIM resources to provision to this application.
      * 
      */
     public String idpUid() {
         return this.idpUid;
     }
     /**
-     * @return A list of filters and transformations to apply to SCIM resources before provisioning them to the application. See below for nested schema.
+     * @return A list of mappings to apply to SCIM resources before provisioning them in this application. These can transform or filter the resources to be provisioned.
      * 
      */
     public List<AccessApplicationScimConfigMapping> mappings() {

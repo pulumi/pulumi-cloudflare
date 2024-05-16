@@ -5,6 +5,7 @@ package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.cloudflare.inputs.ZoneSettingsOverrideInitialSettingMinifyArgs;
 import com.pulumi.cloudflare.inputs.ZoneSettingsOverrideInitialSettingMobileRedirectArgs;
+import com.pulumi.cloudflare.inputs.ZoneSettingsOverrideInitialSettingNelArgs;
 import com.pulumi.cloudflare.inputs.ZoneSettingsOverrideInitialSettingSecurityHeaderArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
@@ -221,6 +222,13 @@ public final class ZoneSettingsOverrideInitialSettingArgs extends com.pulumi.res
 
     public Optional<Output<ZoneSettingsOverrideInitialSettingMobileRedirectArgs>> mobileRedirect() {
         return Optional.ofNullable(this.mobileRedirect);
+    }
+
+    @Import(name="nel")
+    private @Nullable Output<ZoneSettingsOverrideInitialSettingNelArgs> nel;
+
+    public Optional<Output<ZoneSettingsOverrideInitialSettingNelArgs>> nel() {
+        return Optional.ofNullable(this.nel);
     }
 
     @Import(name="opportunisticEncryption")
@@ -456,6 +464,7 @@ public final class ZoneSettingsOverrideInitialSettingArgs extends com.pulumi.res
         this.minify = $.minify;
         this.mirage = $.mirage;
         this.mobileRedirect = $.mobileRedirect;
+        this.nel = $.nel;
         this.opportunisticEncryption = $.opportunisticEncryption;
         this.opportunisticOnion = $.opportunisticOnion;
         this.orangeToOrange = $.orangeToOrange;
@@ -766,6 +775,15 @@ public final class ZoneSettingsOverrideInitialSettingArgs extends com.pulumi.res
 
         public Builder mobileRedirect(ZoneSettingsOverrideInitialSettingMobileRedirectArgs mobileRedirect) {
             return mobileRedirect(Output.of(mobileRedirect));
+        }
+
+        public Builder nel(@Nullable Output<ZoneSettingsOverrideInitialSettingNelArgs> nel) {
+            $.nel = nel;
+            return this;
+        }
+
+        public Builder nel(ZoneSettingsOverrideInitialSettingNelArgs nel) {
+            return nel(Output.of(nel));
         }
 
         public Builder opportunisticEncryption(@Nullable Output<String> opportunisticEncryption) {

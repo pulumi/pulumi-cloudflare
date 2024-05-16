@@ -334,14 +334,14 @@ public final class DevicePostureRuleInputArgs extends com.pulumi.resources.Resou
     }
 
     /**
-     * Extra operating system version details following the semantic version value.
+     * Extra version value following the operating system semantic version.
      * 
      */
     @Import(name="osVersionExtra")
     private @Nullable Output<String> osVersionExtra;
 
     /**
-     * @return Extra operating system version details following the semantic version value.
+     * @return Extra version value following the operating system semantic version.
      * 
      */
     public Optional<Output<String>> osVersionExtra() {
@@ -1037,7 +1037,7 @@ public final class DevicePostureRuleInputArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param osVersionExtra Extra operating system version details following the semantic version value.
+         * @param osVersionExtra Extra version value following the operating system semantic version.
          * 
          * @return builder
          * 
@@ -1048,7 +1048,7 @@ public final class DevicePostureRuleInputArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param osVersionExtra Extra operating system version details following the semantic version value.
+         * @param osVersionExtra Extra version value following the operating system semantic version.
          * 
          * @return builder
          * 

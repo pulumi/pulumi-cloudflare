@@ -14,11 +14,13 @@ namespace Pulumi.Cloudflare
     /// used in conjunction with Access Applications to restrict access to
     /// a particular resource.
     /// 
-    /// &gt; It's required that an `account_id` or `zone_id` is provided and in
-    ///    most cases using either is fine. However, if you're using a scoped
-    ///    access token, you must provide the argument that matches the token's
-    ///    scope. For example, an access token that is scoped to the "example.com"
-    ///    zone needs to use the `zone_id` argument.
+    /// &gt; It's required that an `account_id` or `zone_id` is provided and in most cases using either is fine.
+    ///    However, if you're using a scoped access token, you must provide the argument that matches the token's
+    ///    scope. For example, an access token that is scoped to the "example.com" zone needs to use the `zone_id` argument.
+    ///    If 'application_id' is omitted, the policy created can be reused by multiple access applications.
+    ///    Any access_application resource can reference reusable policies through its `policies` argument.
+    ///    To destroy a reusable policy and remove it from all applications' policies lists on the same apply, preemptively set the
+    ///    lifecycle option `create_before_destroy` to true on the 'access_policy' resource.
     /// 
     /// ## Import
     /// 
@@ -38,16 +40,16 @@ namespace Pulumi.Cloudflare
     public partial class AccessPolicy : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The account identifier to target for the resource. Conflicts with `zone_id`.
+        /// The account identifier to target for the resource. Must provide only one of `account_id`, `zone_id`. **Modifying this attribute will force creation of a new resource.**
         /// </summary>
         [Output("accountId")]
-        public Output<string> AccountId { get; private set; } = null!;
+        public Output<string?> AccountId { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the application the policy is associated with.
+        /// The ID of the application the policy is associated with. Required when using `precedence`. **Modifying this attribute will force creation of a new resource.**
         /// </summary>
         [Output("applicationId")]
-        public Output<string> ApplicationId { get; private set; } = null!;
+        public Output<string?> ApplicationId { get; private set; } = null!;
 
         [Output("approvalGroups")]
         public Output<ImmutableArray<Outputs.AccessPolicyApprovalGroup>> ApprovalGroups { get; private set; } = null!;
@@ -86,10 +88,10 @@ namespace Pulumi.Cloudflare
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// The unique precedence for policies on a single application.
+        /// The unique precedence for policies on a single application. Required when using `application_id`.
         /// </summary>
         [Output("precedence")]
-        public Output<int> Precedence { get; private set; } = null!;
+        public Output<int?> Precedence { get; private set; } = null!;
 
         /// <summary>
         /// The prompt to display to the user for a justification for accessing the resource. Required when using `purpose_justification_required`.
@@ -116,10 +118,10 @@ namespace Pulumi.Cloudflare
         public Output<string?> SessionDuration { get; private set; } = null!;
 
         /// <summary>
-        /// The zone identifier to target for the resource. Conflicts with `account_id`.
+        /// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         /// </summary>
         [Output("zoneId")]
-        public Output<string> ZoneId { get; private set; } = null!;
+        public Output<string?> ZoneId { get; private set; } = null!;
 
 
         /// <summary>
@@ -168,16 +170,16 @@ namespace Pulumi.Cloudflare
     public sealed class AccessPolicyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The account identifier to target for the resource. Conflicts with `zone_id`.
+        /// The account identifier to target for the resource. Must provide only one of `account_id`, `zone_id`. **Modifying this attribute will force creation of a new resource.**
         /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
 
         /// <summary>
-        /// The ID of the application the policy is associated with.
+        /// The ID of the application the policy is associated with. Required when using `precedence`. **Modifying this attribute will force creation of a new resource.**
         /// </summary>
-        [Input("applicationId", required: true)]
-        public Input<string> ApplicationId { get; set; } = null!;
+        [Input("applicationId")]
+        public Input<string>? ApplicationId { get; set; }
 
         [Input("approvalGroups")]
         private InputList<Inputs.AccessPolicyApprovalGroupArgs>? _approvalGroups;
@@ -233,10 +235,10 @@ namespace Pulumi.Cloudflare
         public Input<string> Name { get; set; } = null!;
 
         /// <summary>
-        /// The unique precedence for policies on a single application.
+        /// The unique precedence for policies on a single application. Required when using `application_id`.
         /// </summary>
-        [Input("precedence", required: true)]
-        public Input<int> Precedence { get; set; } = null!;
+        [Input("precedence")]
+        public Input<int>? Precedence { get; set; }
 
         /// <summary>
         /// The prompt to display to the user for a justification for accessing the resource. Required when using `purpose_justification_required`.
@@ -269,7 +271,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? SessionDuration { get; set; }
 
         /// <summary>
-        /// The zone identifier to target for the resource. Conflicts with `account_id`.
+        /// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         /// </summary>
         [Input("zoneId")]
         public Input<string>? ZoneId { get; set; }
@@ -283,13 +285,13 @@ namespace Pulumi.Cloudflare
     public sealed class AccessPolicyState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The account identifier to target for the resource. Conflicts with `zone_id`.
+        /// The account identifier to target for the resource. Must provide only one of `account_id`, `zone_id`. **Modifying this attribute will force creation of a new resource.**
         /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
 
         /// <summary>
-        /// The ID of the application the policy is associated with.
+        /// The ID of the application the policy is associated with. Required when using `precedence`. **Modifying this attribute will force creation of a new resource.**
         /// </summary>
         [Input("applicationId")]
         public Input<string>? ApplicationId { get; set; }
@@ -348,7 +350,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The unique precedence for policies on a single application.
+        /// The unique precedence for policies on a single application. Required when using `application_id`.
         /// </summary>
         [Input("precedence")]
         public Input<int>? Precedence { get; set; }
@@ -384,7 +386,7 @@ namespace Pulumi.Cloudflare
         public Input<string>? SessionDuration { get; set; }
 
         /// <summary>
-        /// The zone identifier to target for the resource. Conflicts with `account_id`.
+        /// The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**
         /// </summary>
         [Input("zoneId")]
         public Input<string>? ZoneId { get; set; }

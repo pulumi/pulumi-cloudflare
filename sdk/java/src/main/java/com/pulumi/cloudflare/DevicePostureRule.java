@@ -63,6 +63,7 @@ import javax.annotation.Nullable;
  *                 .operator("<")
  *                 .osDistroName("ubuntu")
  *                 .osDistroRevision("1.0.0")
+ *                 .osVersionExtra("(a)")
  *                 .build())
  *             .build());
  * 

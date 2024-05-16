@@ -104,6 +104,9 @@ namespace Pulumi.Cloudflare.Inputs
         [Input("mobileRedirect")]
         public Input<Inputs.ZoneSettingsOverrideInitialSettingMobileRedirectArgs>? MobileRedirect { get; set; }
 
+        [Input("nel")]
+        public Input<Inputs.ZoneSettingsOverrideInitialSettingNelArgs>? Nel { get; set; }
+
         [Input("opportunisticEncryption")]
         public Input<string>? OpportunisticEncryption { get; set; }
 

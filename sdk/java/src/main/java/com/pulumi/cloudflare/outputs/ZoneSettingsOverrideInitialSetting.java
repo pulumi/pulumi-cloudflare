@@ -5,6 +5,7 @@ package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.cloudflare.outputs.ZoneSettingsOverrideInitialSettingMinify;
 import com.pulumi.cloudflare.outputs.ZoneSettingsOverrideInitialSettingMobileRedirect;
+import com.pulumi.cloudflare.outputs.ZoneSettingsOverrideInitialSettingNel;
 import com.pulumi.cloudflare.outputs.ZoneSettingsOverrideInitialSettingSecurityHeader;
 import com.pulumi.core.annotations.CustomType;
 import java.lang.Integer;
@@ -45,6 +46,7 @@ public final class ZoneSettingsOverrideInitialSetting {
     private @Nullable ZoneSettingsOverrideInitialSettingMinify minify;
     private @Nullable String mirage;
     private @Nullable ZoneSettingsOverrideInitialSettingMobileRedirect mobileRedirect;
+    private @Nullable ZoneSettingsOverrideInitialSettingNel nel;
     private @Nullable String opportunisticEncryption;
     private @Nullable String opportunisticOnion;
     private @Nullable String orangeToOrange;
@@ -166,6 +168,9 @@ public final class ZoneSettingsOverrideInitialSetting {
     }
     public Optional<ZoneSettingsOverrideInitialSettingMobileRedirect> mobileRedirect() {
         return Optional.ofNullable(this.mobileRedirect);
+    }
+    public Optional<ZoneSettingsOverrideInitialSettingNel> nel() {
+        return Optional.ofNullable(this.nel);
     }
     public Optional<String> opportunisticEncryption() {
         return Optional.ofNullable(this.opportunisticEncryption);
@@ -293,6 +298,7 @@ public final class ZoneSettingsOverrideInitialSetting {
         private @Nullable ZoneSettingsOverrideInitialSettingMinify minify;
         private @Nullable String mirage;
         private @Nullable ZoneSettingsOverrideInitialSettingMobileRedirect mobileRedirect;
+        private @Nullable ZoneSettingsOverrideInitialSettingNel nel;
         private @Nullable String opportunisticEncryption;
         private @Nullable String opportunisticOnion;
         private @Nullable String orangeToOrange;
@@ -352,6 +358,7 @@ public final class ZoneSettingsOverrideInitialSetting {
     	      this.minify = defaults.minify;
     	      this.mirage = defaults.mirage;
     	      this.mobileRedirect = defaults.mobileRedirect;
+    	      this.nel = defaults.nel;
     	      this.opportunisticEncryption = defaults.opportunisticEncryption;
     	      this.opportunisticOnion = defaults.opportunisticOnion;
     	      this.orangeToOrange = defaults.orangeToOrange;
@@ -559,6 +566,12 @@ public final class ZoneSettingsOverrideInitialSetting {
             return this;
         }
         @CustomType.Setter
+        public Builder nel(@Nullable ZoneSettingsOverrideInitialSettingNel nel) {
+
+            this.nel = nel;
+            return this;
+        }
+        @CustomType.Setter
         public Builder opportunisticEncryption(@Nullable String opportunisticEncryption) {
 
             this.opportunisticEncryption = opportunisticEncryption;
@@ -751,6 +764,7 @@ public final class ZoneSettingsOverrideInitialSetting {
             _resultValue.minify = minify;
             _resultValue.mirage = mirage;
             _resultValue.mobileRedirect = mobileRedirect;
+            _resultValue.nel = nel;
             _resultValue.opportunisticEncryption = opportunisticEncryption;
             _resultValue.opportunisticOnion = opportunisticOnion;
             _resultValue.orangeToOrange = orangeToOrange;

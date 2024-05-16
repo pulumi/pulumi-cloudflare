@@ -13,7 +13,7 @@ namespace Pulumi.Cloudflare.Inputs
     public sealed class AccessApplicationScimConfigGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Configuration for authenticating with the application's SCIM API. Allowed configurations are HTTP Basic, OAuth Bearer Token, and OAuth 2.
+        /// Attributes for configuring HTTP Basic, OAuth Bearer token, or OAuth 2 authentication schemes for SCIM provisioning to an application.
         /// </summary>
         [Input("authentication")]
         public Input<Inputs.AccessApplicationScimConfigAuthenticationGetArgs>? Authentication { get; set; }
@@ -31,7 +31,7 @@ namespace Pulumi.Cloudflare.Inputs
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
-        /// The ID of the Access IDP to be used as the source for SCIM resources to provision to this application.
+        /// The UID of the IdP to use as the source for SCIM resources to provision to this application.
         /// </summary>
         [Input("idpUid", required: true)]
         public Input<string> IdpUid { get; set; } = null!;
@@ -40,7 +40,7 @@ namespace Pulumi.Cloudflare.Inputs
         private InputList<Inputs.AccessApplicationScimConfigMappingGetArgs>? _mappings;
 
         /// <summary>
-        /// A list of filters and transformations to apply to SCIM resources before provisioning them to the application. See below for nested schema.
+        /// A list of mappings to apply to SCIM resources before provisioning them in this application. These can transform or filter the resources to be provisioned.
         /// </summary>
         public InputList<Inputs.AccessApplicationScimConfigMappingGetArgs> Mappings
         {

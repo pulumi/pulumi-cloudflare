@@ -5,6 +5,7 @@ package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.cloudflare.inputs.ZoneSettingsOverrideSettingsMinifyArgs;
 import com.pulumi.cloudflare.inputs.ZoneSettingsOverrideSettingsMobileRedirectArgs;
+import com.pulumi.cloudflare.inputs.ZoneSettingsOverrideSettingsNelArgs;
 import com.pulumi.cloudflare.inputs.ZoneSettingsOverrideSettingsSecurityHeaderArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
@@ -221,6 +222,13 @@ public final class ZoneSettingsOverrideSettingsArgs extends com.pulumi.resources
 
     public Optional<Output<ZoneSettingsOverrideSettingsMobileRedirectArgs>> mobileRedirect() {
         return Optional.ofNullable(this.mobileRedirect);
+    }
+
+    @Import(name="nel")
+    private @Nullable Output<ZoneSettingsOverrideSettingsNelArgs> nel;
+
+    public Optional<Output<ZoneSettingsOverrideSettingsNelArgs>> nel() {
+        return Optional.ofNullable(this.nel);
     }
 
     @Import(name="opportunisticEncryption")
@@ -456,6 +464,7 @@ public final class ZoneSettingsOverrideSettingsArgs extends com.pulumi.resources
         this.minify = $.minify;
         this.mirage = $.mirage;
         this.mobileRedirect = $.mobileRedirect;
+        this.nel = $.nel;
         this.opportunisticEncryption = $.opportunisticEncryption;
         this.opportunisticOnion = $.opportunisticOnion;
         this.orangeToOrange = $.orangeToOrange;
@@ -766,6 +775,15 @@ public final class ZoneSettingsOverrideSettingsArgs extends com.pulumi.resources
 
         public Builder mobileRedirect(ZoneSettingsOverrideSettingsMobileRedirectArgs mobileRedirect) {
             return mobileRedirect(Output.of(mobileRedirect));
+        }
+
+        public Builder nel(@Nullable Output<ZoneSettingsOverrideSettingsNelArgs> nel) {
+            $.nel = nel;
+            return this;
+        }
+
+        public Builder nel(ZoneSettingsOverrideSettingsNelArgs nel) {
+            return nel(Output.of(nel));
         }
 
         public Builder opportunisticEncryption(@Nullable Output<String> opportunisticEncryption) {

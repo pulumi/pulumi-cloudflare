@@ -120,7 +120,7 @@ public final class DevicePostureRuleInput {
      */
     private @Nullable String osDistroRevision;
     /**
-     * @return Extra operating system version details following the semantic version value.
+     * @return Extra version value following the operating system semantic version.
      * 
      */
     private @Nullable String osVersionExtra;
@@ -334,7 +334,7 @@ public final class DevicePostureRuleInput {
         return Optional.ofNullable(this.osDistroRevision);
     }
     /**
-     * @return Extra operating system version details following the semantic version value.
+     * @return Extra version value following the operating system semantic version.
      * 
      */
     public Optional<String> osVersionExtra() {
