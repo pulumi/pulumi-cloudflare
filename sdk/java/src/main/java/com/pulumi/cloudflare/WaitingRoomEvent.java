@@ -45,7 +45,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // Waiting Room Event
- *         var example = new WaitingRoomEvent("example", WaitingRoomEventArgs.builder()        
+ *         var example = new WaitingRoomEvent("example", WaitingRoomEventArgs.builder()
  *             .zoneId("0da42c8d2132a9ddaf714f9e7c920711")
  *             .waitingRoomId("d41d8cd98f00b204e9800998ecf8427e")
  *             .name("foo")

@@ -44,7 +44,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new TeamsProxyEndpoint("example", TeamsProxyEndpointArgs.builder()        
+ *         var example = new TeamsProxyEndpoint("example", TeamsProxyEndpointArgs.builder()
  *             .accountId("f037e56e89293a057740de681ac9abbe")
  *             .name("office")
  *             .ips("192.0.2.0/24")

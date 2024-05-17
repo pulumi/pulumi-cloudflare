@@ -52,16 +52,16 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new PrivateKey("example", PrivateKeyArgs.builder()        
+ *         var example = new PrivateKey("example", PrivateKeyArgs.builder()
  *             .algorithm("RSA")
  *             .build());
  * 
- *         var exampleCertRequest = new CertRequest("exampleCertRequest", CertRequestArgs.builder()        
+ *         var exampleCertRequest = new CertRequest("exampleCertRequest", CertRequestArgs.builder()
  *             .privateKeyPem(example.privateKeyPem())
  *             .subject(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
  *             .build());
  * 
- *         var exampleOriginCaCertificate = new OriginCaCertificate("exampleOriginCaCertificate", OriginCaCertificateArgs.builder()        
+ *         var exampleOriginCaCertificate = new OriginCaCertificate("exampleOriginCaCertificate", OriginCaCertificateArgs.builder()
  *             .csr(exampleCertRequest.certRequestPem())
  *             .hostnames("example.com")
  *             .requestType("origin-rsa")

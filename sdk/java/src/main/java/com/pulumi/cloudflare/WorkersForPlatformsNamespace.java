@@ -44,12 +44,12 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new WorkersForPlatformsNamespace("example", WorkersForPlatformsNamespaceArgs.builder()        
+ *         var example = new WorkersForPlatformsNamespace("example", WorkersForPlatformsNamespaceArgs.builder()
  *             .accountId("f037e56e89293a057740de681ac9abbe")
  *             .name("example-namespace")
  *             .build());
  * 
- *         var customerWorker1 = new WorkerScript("customerWorker1", WorkerScriptArgs.builder()        
+ *         var customerWorker1 = new WorkerScript("customerWorker1", WorkerScriptArgs.builder()
  *             .accountId("f037e56e89293a057740de681ac9abbe")
  *             .name("customer-worker-1")
  *             .content(StdFunctions.file(FileArgs.builder()

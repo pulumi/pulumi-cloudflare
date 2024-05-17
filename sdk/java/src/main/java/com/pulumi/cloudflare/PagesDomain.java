@@ -44,7 +44,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var my_domain = new PagesDomain("my-domain", PagesDomainArgs.builder()        
+ *         var my_domain = new PagesDomain("my-domain", PagesDomainArgs.builder()
  *             .accountId("f037e56e89293a057740de681ac9abbe")
  *             .projectName("my-example-project")
  *             .domain("example.com")

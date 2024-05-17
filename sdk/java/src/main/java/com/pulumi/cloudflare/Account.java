@@ -44,7 +44,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new Account("example", AccountArgs.builder()        
+ *         var example = new Account("example", AccountArgs.builder()
  *             .name("some-enterprise-account")
  *             .type("enterprise")
  *             .enforceTwofactor(true)

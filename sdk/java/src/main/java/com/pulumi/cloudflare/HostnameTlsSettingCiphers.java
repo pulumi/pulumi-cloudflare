@@ -44,7 +44,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new HostnameTlsSettingCiphers("example", HostnameTlsSettingCiphersArgs.builder()        
+ *         var example = new HostnameTlsSettingCiphers("example", HostnameTlsSettingCiphersArgs.builder()
  *             .zoneId("0da42c8d2132a9ddaf714f9e7c920711")
  *             .hostname("sub.example.com")
  *             .values("ECDHE-RSA-AES128-GCM-SHA256")

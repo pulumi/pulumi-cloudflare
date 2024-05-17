@@ -45,7 +45,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         // Regionalized hostname record resources are managed independently from the
  *         // Regionalized Hostname resources.
- *         var example = new Record("example", RecordArgs.builder()        
+ *         var example = new Record("example", RecordArgs.builder()
  *             .zoneId("0da42c8d2132a9ddaf714f9e7c920711")
  *             .name("example.com")
  *             .value("192.0.2.1")
@@ -55,7 +55,7 @@ import javax.annotation.Nullable;
  * 
  *         // The cloudflare_regional_hostname resource may exist with or without its
  *         // corresponding record resource.
- *         var exampleRegionalHostname = new RegionalHostname("exampleRegionalHostname", RegionalHostnameArgs.builder()        
+ *         var exampleRegionalHostname = new RegionalHostname("exampleRegionalHostname", RegionalHostnameArgs.builder()
  *             .zoneId("0da42c8d2132a9ddaf714f9e7c920711")
  *             .hostname("example.com")
  *             .regionKey("eu")

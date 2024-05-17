@@ -41,7 +41,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new EmailRoutingAddress("example", EmailRoutingAddressArgs.builder()        
+ *         var example = new EmailRoutingAddress("example", EmailRoutingAddressArgs.builder()
  *             .accountId("f037e56e89293a057740de681ac9abbe")
  *             .email("user{@literal @}example.com")
  *             .build());
