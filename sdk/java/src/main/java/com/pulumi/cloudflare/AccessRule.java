@@ -49,7 +49,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         // Challenge requests coming from known Tor exit nodes.
- *         var torExitNodes = new AccessRule("torExitNodes", AccessRuleArgs.builder()        
+ *         var torExitNodes = new AccessRule("torExitNodes", AccessRuleArgs.builder()
  *             .zoneId("0da42c8d2132a9ddaf714f9e7c920711")
  *             .notes("Requests coming from known Tor exit nodes")
  *             .mode("challenge")
@@ -60,7 +60,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         // Allowlist requests coming from Antarctica, but only for single zone.
- *         var antarctica = new AccessRule("antarctica", AccessRuleArgs.builder()        
+ *         var antarctica = new AccessRule("antarctica", AccessRuleArgs.builder()
  *             .zoneId("0da42c8d2132a9ddaf714f9e7c920711")
  *             .notes("Requests coming from Antarctica")
  *             .mode("whitelist")
@@ -75,7 +75,7 @@ import javax.annotation.Nullable;
  *             "198.51.100.0/24",
  *             "2001:db8::/56");
  *         for (var i = 0; i < myOffice.length(); i++) {
- *             new AccessRule("officeNetwork-" + i, AccessRuleArgs.builder()            
+ *             new AccessRule("officeNetwork-" + i, AccessRuleArgs.builder()
  *                 .accountId("f037e56e89293a057740de681ac9abbe")
  *                 .notes("Requests coming from office network")
  *                 .mode("whitelist")

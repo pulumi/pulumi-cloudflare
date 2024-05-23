@@ -44,7 +44,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var noDefaults = new HyperdriveConfig("noDefaults", HyperdriveConfigArgs.builder()        
+ *         var noDefaults = new HyperdriveConfig("noDefaults", HyperdriveConfigArgs.builder()
  *             .accountId("f037e56e89293a057740de681ac9abbe")
  *             .name("my-hyperdrive-config")
  *             .origin(HyperdriveConfigOriginArgs.builder()

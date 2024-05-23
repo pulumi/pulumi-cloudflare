@@ -57,7 +57,7 @@ public final class PageRuleActionsCacheKeyFieldsUser {
      * 
      *     public static void stack(Context ctx) {
      *         // Unrealistic example with all features used
-     *         var foobar = new PageRule("foobar", PageRuleArgs.builder()        
+     *         var foobar = new PageRule("foobar", PageRuleArgs.builder()
      *             .zoneId(cloudflareZoneId)
      *             .target(String.format("%s/app/*", cloudflareZone))
      *             .priority(1)
@@ -148,7 +148,7 @@ public final class PageRuleActionsCacheKeyFieldsUser {
      * 
      *     public static void stack(Context ctx) {
      *         // Unrealistic example with all features used
-     *         var foobar = new PageRule("foobar", PageRuleArgs.builder()        
+     *         var foobar = new PageRule("foobar", PageRuleArgs.builder()
      *             .zoneId(cloudflareZoneId)
      *             .target(String.format("%s/app/*", cloudflareZone))
      *             .priority(1)

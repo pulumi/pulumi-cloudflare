@@ -42,7 +42,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new WorkerDomain("example", WorkerDomainArgs.builder()        
+ *         var example = new WorkerDomain("example", WorkerDomainArgs.builder()
  *             .accountId("f037e56e89293a057740de681ac9abbe")
  *             .hostname("subdomain.example.com")
  *             .service("my-service")

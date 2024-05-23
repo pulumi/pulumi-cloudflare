@@ -42,7 +42,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new TieredCache("example", TieredCacheArgs.builder()        
+ *         var example = new TieredCache("example", TieredCacheArgs.builder()
  *             .zoneId("0da42c8d2132a9ddaf714f9e7c920711")
  *             .cacheType("smart")
  *             .build());

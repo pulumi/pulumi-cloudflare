@@ -63,13 +63,13 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var myNamespace = new WorkersKvNamespace("myNamespace", WorkersKvNamespaceArgs.builder()        
+ *         var myNamespace = new WorkersKvNamespace("myNamespace", WorkersKvNamespaceArgs.builder()
  *             .accountId("f037e56e89293a057740de681ac9abbe")
  *             .title("example")
  *             .build());
  * 
  *         // Sets the script with the name "script_1"
- *         var myScript = new WorkerScript("myScript", WorkerScriptArgs.builder()        
+ *         var myScript = new WorkerScript("myScript", WorkerScriptArgs.builder()
  *             .accountId("f037e56e89293a057740de681ac9abbe")
  *             .name("script_1")
  *             .content(StdFunctions.file(FileArgs.builder()

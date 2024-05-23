@@ -59,13 +59,13 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var wordpress = new Filter("wordpress", FilterArgs.builder()        
+ *         var wordpress = new Filter("wordpress", FilterArgs.builder()
  *             .zoneId("0da42c8d2132a9ddaf714f9e7c920711")
  *             .description("Wordpress break-in attempts that are outside of the office")
  *             .expression("(http.request.uri.path ~ \".*wp-login.php\" or http.request.uri.path ~ \".*xmlrpc.php\") and ip.src ne 192.0.2.1")
  *             .build());
  * 
- *         var wordpressFirewallRule = new FirewallRule("wordpressFirewallRule", FirewallRuleArgs.builder()        
+ *         var wordpressFirewallRule = new FirewallRule("wordpressFirewallRule", FirewallRuleArgs.builder()
  *             .zoneId("0da42c8d2132a9ddaf714f9e7c920711")
  *             .description("Block wordpress break-in attempts")
  *             .filterId(wordpress.id())

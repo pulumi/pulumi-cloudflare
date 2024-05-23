@@ -42,7 +42,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new NotificationPolicyWebhooks("example", NotificationPolicyWebhooksArgs.builder()        
+ *         var example = new NotificationPolicyWebhooks("example", NotificationPolicyWebhooksArgs.builder()
  *             .accountId("f037e56e89293a057740de681ac9abbe")
  *             .name("Webhooks destination")
  *             .url("https://example.com")

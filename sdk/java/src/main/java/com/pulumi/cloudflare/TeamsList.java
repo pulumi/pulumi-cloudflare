@@ -45,7 +45,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new TeamsList("example", TeamsListArgs.builder()        
+ *         var example = new TeamsList("example", TeamsListArgs.builder()
  *             .accountId("f037e56e89293a057740de681ac9abbe")
  *             .name("Corporate devices")
  *             .type("SERIAL")

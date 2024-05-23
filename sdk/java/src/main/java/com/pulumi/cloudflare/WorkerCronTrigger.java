@@ -47,7 +47,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleScript = new WorkerScript("exampleScript", WorkerScriptArgs.builder()        
+ *         var exampleScript = new WorkerScript("exampleScript", WorkerScriptArgs.builder()
  *             .accountId("f037e56e89293a057740de681ac9abbe")
  *             .name("example-script")
  *             .content(StdFunctions.file(FileArgs.builder()
@@ -55,7 +55,7 @@ import javax.annotation.Nullable;
  *                 .build()).result())
  *             .build());
  * 
- *         var exampleTrigger = new WorkerCronTrigger("exampleTrigger", WorkerCronTriggerArgs.builder()        
+ *         var exampleTrigger = new WorkerCronTrigger("exampleTrigger", WorkerCronTriggerArgs.builder()
  *             .accountId("f037e56e89293a057740de681ac9abbe")
  *             .scriptName(exampleScript.name())
  *             .schedules(            

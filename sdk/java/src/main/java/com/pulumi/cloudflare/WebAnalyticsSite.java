@@ -44,7 +44,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new WebAnalyticsSite("example", WebAnalyticsSiteArgs.builder()        
+ *         var example = new WebAnalyticsSite("example", WebAnalyticsSiteArgs.builder()
  *             .accountId("f037e56e89293a057740de681ac9abbe")
  *             .zoneTag("0da42c8d2132a9ddaf714f9e7c920711")
  *             .autoInstall(true)

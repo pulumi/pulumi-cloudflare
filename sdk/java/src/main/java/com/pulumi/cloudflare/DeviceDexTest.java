@@ -44,7 +44,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new DeviceDexTest("example", DeviceDexTestArgs.builder()        
+ *         var example = new DeviceDexTest("example", DeviceDexTestArgs.builder()
  *             .accountId("f037e56e89293a057740de681ac9abbe")
  *             .name("GET homepage")
  *             .description("Send a HTTP GET request to the home endpoint every half hour.")
