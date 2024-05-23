@@ -5,9 +5,9 @@ go 1.21
 require (
 	github.com/cloudflare/terraform-provider-cloudflare v1.18.2-0.20220823222840-b2cee3be8c57
 	github.com/pulumi/providertest v0.0.11
-	github.com/pulumi/pulumi-terraform-bridge/pf v0.35.0
-	github.com/pulumi/pulumi-terraform-bridge/v3 v3.82.0
-	github.com/pulumi/pulumi/sdk/v3 v3.114.0
+	github.com/pulumi/pulumi-terraform-bridge/pf v0.36.0
+	github.com/pulumi/pulumi-terraform-bridge/v3 v3.83.0
+	github.com/pulumi/pulumi/sdk/v3 v3.116.1
 	github.com/stretchr/testify v1.9.0
 )
 
@@ -186,10 +186,10 @@ require (
 	github.com/posener/complete v1.2.3 // indirect
 	github.com/pulumi/appdash v0.0.0-20231130102222-75f619a67231 // indirect
 	github.com/pulumi/esc v0.6.2 // indirect
-	github.com/pulumi/pulumi-java/pkg v0.10.0 // indirect
+	github.com/pulumi/pulumi-java/pkg v0.11.0 // indirect
 	github.com/pulumi/pulumi-terraform-bridge/x/muxer v0.0.9-0.20240403143912-aaea88a50769 // indirect
-	github.com/pulumi/pulumi-yaml v1.6.0 // indirect
-	github.com/pulumi/pulumi/pkg/v3 v3.114.0 // indirect
+	github.com/pulumi/pulumi-yaml v1.7.0 // indirect
+	github.com/pulumi/pulumi/pkg/v3 v3.116.1 // indirect
 	github.com/pulumi/schema-tools v0.1.2 // indirect
 	github.com/pulumi/terraform-diff-reader v0.0.2 // indirect
 	github.com/rivo/uniseg v0.4.4 // indirect
@@ -261,5 +261,5 @@ require (
 
 replace (
 	github.com/cloudflare/terraform-provider-cloudflare/shim => ./shim
-	github.com/hashicorp/terraform-plugin-sdk/v2 => github.com/pulumi/terraform-plugin-sdk/v2 v2.0.0-20240229143312-4f60ee4e2975
+	github.com/hashicorp/terraform-plugin-sdk/v2 => github.com/pulumi/terraform-plugin-sdk/v2 v2.0.0-20240520223432-0c0bf0d65f10
 )
