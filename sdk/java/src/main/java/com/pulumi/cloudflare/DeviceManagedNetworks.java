@@ -43,7 +43,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var managedNetworks = new DeviceManagedNetworks("managedNetworks", DeviceManagedNetworksArgs.builder()        
+ *         var managedNetworks = new DeviceManagedNetworks("managedNetworks", DeviceManagedNetworksArgs.builder()
  *             .accountId("f037e56e89293a057740de681ac9abbe")
  *             .name("managed-network-1")
  *             .type("tls")

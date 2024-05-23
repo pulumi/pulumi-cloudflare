@@ -41,7 +41,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new WorkersKvNamespace("example", WorkersKvNamespaceArgs.builder()        
+ *         var example = new WorkersKvNamespace("example", WorkersKvNamespaceArgs.builder()
  *             .accountId("f037e56e89293a057740de681ac9abbe")
  *             .title("test-namespace")
  *             .build());

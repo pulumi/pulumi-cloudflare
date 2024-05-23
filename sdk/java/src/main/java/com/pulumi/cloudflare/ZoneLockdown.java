@@ -52,7 +52,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // Restrict access to these endpoints to requests from a known IP address range.
- *         var example = new ZoneLockdown("example", ZoneLockdownArgs.builder()        
+ *         var example = new ZoneLockdown("example", ZoneLockdownArgs.builder()
  *             .zoneId("0da42c8d2132a9ddaf714f9e7c920711")
  *             .paused("false")
  *             .description("Restrict access to these endpoints to requests from a known IP address range")

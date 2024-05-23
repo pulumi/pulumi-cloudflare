@@ -152,7 +152,7 @@ public final class CloudflareFunctions {
      *             .accountId("f037e56e89293a057740de681ac9abbe")
      *             .build());
      * 
-     *         var exampleAccessApplication = new AccessApplication("exampleAccessApplication", AccessApplicationArgs.builder()        
+     *         var exampleAccessApplication = new AccessApplication("exampleAccessApplication", AccessApplicationArgs.builder()
      *             .zoneId("0da42c8d2132a9ddaf714f9e7c920711")
      *             .name("name")
      *             .domain("name.example.com")
@@ -207,7 +207,7 @@ public final class CloudflareFunctions {
      *             .accountId("f037e56e89293a057740de681ac9abbe")
      *             .build());
      * 
-     *         var exampleAccessApplication = new AccessApplication("exampleAccessApplication", AccessApplicationArgs.builder()        
+     *         var exampleAccessApplication = new AccessApplication("exampleAccessApplication", AccessApplicationArgs.builder()
      *             .zoneId("0da42c8d2132a9ddaf714f9e7c920711")
      *             .name("name")
      *             .domain("name.example.com")
@@ -262,7 +262,7 @@ public final class CloudflareFunctions {
      *             .accountId("f037e56e89293a057740de681ac9abbe")
      *             .build());
      * 
-     *         var exampleAccessApplication = new AccessApplication("exampleAccessApplication", AccessApplicationArgs.builder()        
+     *         var exampleAccessApplication = new AccessApplication("exampleAccessApplication", AccessApplicationArgs.builder()
      *             .zoneId("0da42c8d2132a9ddaf714f9e7c920711")
      *             .name("name")
      *             .domain("name.example.com")
@@ -317,7 +317,7 @@ public final class CloudflareFunctions {
      *             .accountId("f037e56e89293a057740de681ac9abbe")
      *             .build());
      * 
-     *         var exampleAccessApplication = new AccessApplication("exampleAccessApplication", AccessApplicationArgs.builder()        
+     *         var exampleAccessApplication = new AccessApplication("exampleAccessApplication", AccessApplicationArgs.builder()
      *             .zoneId("0da42c8d2132a9ddaf714f9e7c920711")
      *             .name("name")
      *             .domain("name.example.com")
@@ -1438,7 +1438,7 @@ public final class CloudflareFunctions {
      *     public static void stack(Context ctx) {
      *         final var cloudflare = CloudflareFunctions.getIpRanges();
      * 
-     *         var example = new FirewallResource("example", FirewallResourceArgs.builder()        
+     *         var example = new FirewallResource("example", FirewallResourceArgs.builder()
      *             .name("from-cloudflare")
      *             .network("default")
      *             .sourceRanges(cloudflare.applyValue(getIpRangesResult -> getIpRangesResult.ipv4CidrBlocks()))
@@ -1486,7 +1486,7 @@ public final class CloudflareFunctions {
      *     public static void stack(Context ctx) {
      *         final var cloudflare = CloudflareFunctions.getIpRanges();
      * 
-     *         var example = new FirewallResource("example", FirewallResourceArgs.builder()        
+     *         var example = new FirewallResource("example", FirewallResourceArgs.builder()
      *             .name("from-cloudflare")
      *             .network("default")
      *             .sourceRanges(cloudflare.applyValue(getIpRangesResult -> getIpRangesResult.ipv4CidrBlocks()))
@@ -1534,7 +1534,7 @@ public final class CloudflareFunctions {
      *     public static void stack(Context ctx) {
      *         final var cloudflare = CloudflareFunctions.getIpRanges();
      * 
-     *         var example = new FirewallResource("example", FirewallResourceArgs.builder()        
+     *         var example = new FirewallResource("example", FirewallResourceArgs.builder()
      *             .name("from-cloudflare")
      *             .network("default")
      *             .sourceRanges(cloudflare.applyValue(getIpRangesResult -> getIpRangesResult.ipv4CidrBlocks()))
@@ -1582,7 +1582,7 @@ public final class CloudflareFunctions {
      *     public static void stack(Context ctx) {
      *         final var cloudflare = CloudflareFunctions.getIpRanges();
      * 
-     *         var example = new FirewallResource("example", FirewallResourceArgs.builder()        
+     *         var example = new FirewallResource("example", FirewallResourceArgs.builder()
      *             .name("from-cloudflare")
      *             .network("default")
      *             .sourceRanges(cloudflare.applyValue(getIpRangesResult -> getIpRangesResult.ipv4CidrBlocks()))
@@ -1630,7 +1630,7 @@ public final class CloudflareFunctions {
      *     public static void stack(Context ctx) {
      *         final var cloudflare = CloudflareFunctions.getIpRanges();
      * 
-     *         var example = new FirewallResource("example", FirewallResourceArgs.builder()        
+     *         var example = new FirewallResource("example", FirewallResourceArgs.builder()
      *             .name("from-cloudflare")
      *             .network("default")
      *             .sourceRanges(cloudflare.applyValue(getIpRangesResult -> getIpRangesResult.ipv4CidrBlocks()))
@@ -1678,7 +1678,7 @@ public final class CloudflareFunctions {
      *     public static void stack(Context ctx) {
      *         final var cloudflare = CloudflareFunctions.getIpRanges();
      * 
-     *         var example = new FirewallResource("example", FirewallResourceArgs.builder()        
+     *         var example = new FirewallResource("example", FirewallResourceArgs.builder()
      *             .name("from-cloudflare")
      *             .network("default")
      *             .sourceRanges(cloudflare.applyValue(getIpRangesResult -> getIpRangesResult.ipv4CidrBlocks()))
@@ -3389,7 +3389,7 @@ public final class CloudflareFunctions {
      * 
      *         final var all = CloudflareFunctions.getApiTokenPermissionGroups();
      * 
-     *         var example = new ApiToken("example", ApiTokenArgs.builder()        
+     *         var example = new ApiToken("example", ApiTokenArgs.builder()
      *             .name("Terraform Cloud (Terraform)")
      *             .policies(ApiTokenPolicyArgs.builder()
      *                 .permissionGroups(all.applyValue(getApiTokenPermissionGroupsResult -> getApiTokenPermissionGroupsResult.user().User Details Read()))
@@ -3441,7 +3441,7 @@ public final class CloudflareFunctions {
      * 
      *         final var all = CloudflareFunctions.getApiTokenPermissionGroups();
      * 
-     *         var example = new ApiToken("example", ApiTokenArgs.builder()        
+     *         var example = new ApiToken("example", ApiTokenArgs.builder()
      *             .name("Terraform Cloud (Terraform)")
      *             .policies(ApiTokenPolicyArgs.builder()
      *                 .permissionGroups(all.applyValue(getApiTokenPermissionGroupsResult -> getApiTokenPermissionGroupsResult.user().User Details Read()))
@@ -3493,7 +3493,7 @@ public final class CloudflareFunctions {
      * 
      *         final var all = CloudflareFunctions.getApiTokenPermissionGroups();
      * 
-     *         var example = new ApiToken("example", ApiTokenArgs.builder()        
+     *         var example = new ApiToken("example", ApiTokenArgs.builder()
      *             .name("Terraform Cloud (Terraform)")
      *             .policies(ApiTokenPolicyArgs.builder()
      *                 .permissionGroups(all.applyValue(getApiTokenPermissionGroupsResult -> getApiTokenPermissionGroupsResult.user().User Details Read()))
@@ -3545,7 +3545,7 @@ public final class CloudflareFunctions {
      * 
      *         final var all = CloudflareFunctions.getApiTokenPermissionGroups();
      * 
-     *         var example = new ApiToken("example", ApiTokenArgs.builder()        
+     *         var example = new ApiToken("example", ApiTokenArgs.builder()
      *             .name("Terraform Cloud (Terraform)")
      *             .policies(ApiTokenPolicyArgs.builder()
      *                 .permissionGroups(all.applyValue(getApiTokenPermissionGroupsResult -> getApiTokenPermissionGroupsResult.user().User Details Read()))
@@ -3597,7 +3597,7 @@ public final class CloudflareFunctions {
      * 
      *         final var all = CloudflareFunctions.getApiTokenPermissionGroups();
      * 
-     *         var example = new ApiToken("example", ApiTokenArgs.builder()        
+     *         var example = new ApiToken("example", ApiTokenArgs.builder()
      *             .name("Terraform Cloud (Terraform)")
      *             .policies(ApiTokenPolicyArgs.builder()
      *                 .permissionGroups(all.applyValue(getApiTokenPermissionGroupsResult -> getApiTokenPermissionGroupsResult.user().User Details Read()))
@@ -3649,7 +3649,7 @@ public final class CloudflareFunctions {
      * 
      *         final var all = CloudflareFunctions.getApiTokenPermissionGroups();
      * 
-     *         var example = new ApiToken("example", ApiTokenArgs.builder()        
+     *         var example = new ApiToken("example", ApiTokenArgs.builder()
      *             .name("Terraform Cloud (Terraform)")
      *             .policies(ApiTokenPolicyArgs.builder()
      *                 .permissionGroups(all.applyValue(getApiTokenPermissionGroupsResult -> getApiTokenPermissionGroupsResult.user().User Details Read()))
@@ -3707,7 +3707,7 @@ public final class CloudflareFunctions {
      *             .name("example.com")
      *             .build());
      * 
-     *         var exampleRecord = new Record("exampleRecord", RecordArgs.builder()        
+     *         var exampleRecord = new Record("exampleRecord", RecordArgs.builder()
      *             .zoneId(example.applyValue(getZoneResult -> getZoneResult.id()))
      *             .name("www")
      *             .value("203.0.113.1")
@@ -3765,7 +3765,7 @@ public final class CloudflareFunctions {
      *             .name("example.com")
      *             .build());
      * 
-     *         var exampleRecord = new Record("exampleRecord", RecordArgs.builder()        
+     *         var exampleRecord = new Record("exampleRecord", RecordArgs.builder()
      *             .zoneId(example.applyValue(getZoneResult -> getZoneResult.id()))
      *             .name("www")
      *             .value("203.0.113.1")
@@ -3823,7 +3823,7 @@ public final class CloudflareFunctions {
      *             .name("example.com")
      *             .build());
      * 
-     *         var exampleRecord = new Record("exampleRecord", RecordArgs.builder()        
+     *         var exampleRecord = new Record("exampleRecord", RecordArgs.builder()
      *             .zoneId(example.applyValue(getZoneResult -> getZoneResult.id()))
      *             .name("www")
      *             .value("203.0.113.1")
@@ -3881,7 +3881,7 @@ public final class CloudflareFunctions {
      *             .name("example.com")
      *             .build());
      * 
-     *         var exampleRecord = new Record("exampleRecord", RecordArgs.builder()        
+     *         var exampleRecord = new Record("exampleRecord", RecordArgs.builder()
      *             .zoneId(example.applyValue(getZoneResult -> getZoneResult.id()))
      *             .name("www")
      *             .value("203.0.113.1")
@@ -3939,7 +3939,7 @@ public final class CloudflareFunctions {
      *             .name("example.com")
      *             .build());
      * 
-     *         var exampleRecord = new Record("exampleRecord", RecordArgs.builder()        
+     *         var exampleRecord = new Record("exampleRecord", RecordArgs.builder()
      *             .zoneId(example.applyValue(getZoneResult -> getZoneResult.id()))
      *             .name("www")
      *             .value("203.0.113.1")
@@ -3997,7 +3997,7 @@ public final class CloudflareFunctions {
      *             .name("example.com")
      *             .build());
      * 
-     *         var exampleRecord = new Record("exampleRecord", RecordArgs.builder()        
+     *         var exampleRecord = new Record("exampleRecord", RecordArgs.builder()
      *             .zoneId(example.applyValue(getZoneResult -> getZoneResult.id()))
      *             .name("www")
      *             .value("203.0.113.1")

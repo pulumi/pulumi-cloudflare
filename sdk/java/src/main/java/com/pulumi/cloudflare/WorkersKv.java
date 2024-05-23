@@ -43,12 +43,12 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleNs = new WorkersKvNamespace("exampleNs", WorkersKvNamespaceArgs.builder()        
+ *         var exampleNs = new WorkersKvNamespace("exampleNs", WorkersKvNamespaceArgs.builder()
  *             .accountId("f037e56e89293a057740de681ac9abbe")
  *             .title("test-namespace")
  *             .build());
  * 
- *         var example = new WorkersKv("example", WorkersKvArgs.builder()        
+ *         var example = new WorkersKv("example", WorkersKvArgs.builder()
  *             .accountId("f037e56e89293a057740de681ac9abbe")
  *             .namespaceId(exampleNs.id())
  *             .key("test-key")

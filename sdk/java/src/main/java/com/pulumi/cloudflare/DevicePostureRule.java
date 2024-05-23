@@ -47,7 +47,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var eaxmple = new DevicePostureRule("eaxmple", DevicePostureRuleArgs.builder()        
+ *         var eaxmple = new DevicePostureRule("eaxmple", DevicePostureRuleArgs.builder()
  *             .accountId("f037e56e89293a057740de681ac9abbe")
  *             .name("Corporate devices posture rule")
  *             .type("os_version")

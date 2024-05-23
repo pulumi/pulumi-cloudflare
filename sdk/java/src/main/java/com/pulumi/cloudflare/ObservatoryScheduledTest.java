@@ -41,7 +41,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new ObservatoryScheduledTest("example", ObservatoryScheduledTestArgs.builder()        
+ *         var example = new ObservatoryScheduledTest("example", ObservatoryScheduledTestArgs.builder()
  *             .zoneId("0da42c8d2132a9ddaf714f9e7c920711")
  *             .url("example.com")
  *             .region("us-central1")

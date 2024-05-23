@@ -44,11 +44,11 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new Zone("example", ZoneArgs.builder()        
+ *         var example = new Zone("example", ZoneArgs.builder()
  *             .zone("example.com")
  *             .build());
  * 
- *         var exampleZoneDnssec = new ZoneDnssec("exampleZoneDnssec", ZoneDnssecArgs.builder()        
+ *         var exampleZoneDnssec = new ZoneDnssec("exampleZoneDnssec", ZoneDnssecArgs.builder()
  *             .zoneId(example.id())
  *             .build());
  * 

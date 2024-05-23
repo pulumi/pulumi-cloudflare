@@ -50,13 +50,13 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // account level
- *         var example = new AccessCaCertificate("example", AccessCaCertificateArgs.builder()        
+ *         var example = new AccessCaCertificate("example", AccessCaCertificateArgs.builder()
  *             .accountId("f037e56e89293a057740de681ac9abbe")
  *             .applicationId("6cd6cea3-3ef2-4542-9aea-85a0bbcd5414")
  *             .build());
  * 
  *         // zone level
- *         var anotherExample = new AccessCaCertificate("anotherExample", AccessCaCertificateArgs.builder()        
+ *         var anotherExample = new AccessCaCertificate("anotherExample", AccessCaCertificateArgs.builder()
  *             .zoneId("0da42c8d2132a9ddaf714f9e7c920711")
  *             .applicationId("fe2be0ff-7f13-4350-8c8e-a9b9795fe3c2")
  *             .build());

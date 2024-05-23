@@ -45,7 +45,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // Per-Zone Authenticated Origin Pulls certificate
- *         var myPerZoneAopCert = new AuthenticatedOriginPullsCertificate("myPerZoneAopCert", AuthenticatedOriginPullsCertificateArgs.builder()        
+ *         var myPerZoneAopCert = new AuthenticatedOriginPullsCertificate("myPerZoneAopCert", AuthenticatedOriginPullsCertificateArgs.builder()
  *             .zoneId("0da42c8d2132a9ddaf714f9e7c920711")
  *             .certificate("-----INSERT CERTIFICATE-----")
  *             .privateKey("-----INSERT PRIVATE KEY-----")
@@ -53,7 +53,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         // Per-Hostname Authenticated Origin Pulls certificate
- *         var myPerHostnameAopCert = new AuthenticatedOriginPullsCertificate("myPerHostnameAopCert", AuthenticatedOriginPullsCertificateArgs.builder()        
+ *         var myPerHostnameAopCert = new AuthenticatedOriginPullsCertificate("myPerHostnameAopCert", AuthenticatedOriginPullsCertificateArgs.builder()
  *             .zoneId("0da42c8d2132a9ddaf714f9e7c920711")
  *             .certificate("-----INSERT CERTIFICATE-----")
  *             .privateKey("-----INSERT PRIVATE KEY-----")

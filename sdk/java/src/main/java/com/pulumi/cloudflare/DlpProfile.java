@@ -52,7 +52,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // Predefined profile must be imported, cannot be created
- *         var creds = new DlpProfile("creds", DlpProfileArgs.builder()        
+ *         var creds = new DlpProfile("creds", DlpProfileArgs.builder()
  *             .accountId("f037e56e89293a057740de681ac9abbe")
  *             .name("Credentials and Secrets")
  *             .type("predefined")
@@ -86,7 +86,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         // Custom profile
- *         var exampleCustom = new DlpProfile("exampleCustom", DlpProfileArgs.builder()        
+ *         var exampleCustom = new DlpProfile("exampleCustom", DlpProfileArgs.builder()
  *             .accountId("f037e56e89293a057740de681ac9abbe")
  *             .name("Example Custom Profile")
  *             .description("A profile with example entries")

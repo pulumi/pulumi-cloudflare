@@ -63,7 +63,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var test = new ZoneSettingsOverride("test", ZoneSettingsOverrideArgs.builder()        
+ *         var test = new ZoneSettingsOverride("test", ZoneSettingsOverrideArgs.builder()
  *             .zoneId(d41d8cd98f00b204e9800998ecf8427e)
  *             .settings(ZoneSettingsOverrideSettingsArgs.builder()
  *                 .brotli("on")

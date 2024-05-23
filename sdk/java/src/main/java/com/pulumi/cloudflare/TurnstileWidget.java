@@ -43,7 +43,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new TurnstileWidget("example", TurnstileWidgetArgs.builder()        
+ *         var example = new TurnstileWidget("example", TurnstileWidgetArgs.builder()
  *             .accountId("f037e56e89293a057740de681ac9abbe")
  *             .name("example widget")
  *             .botFightMode(false)

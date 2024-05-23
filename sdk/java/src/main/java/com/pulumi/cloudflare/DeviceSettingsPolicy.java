@@ -44,7 +44,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var developerWarpPolicy = new DeviceSettingsPolicy("developerWarpPolicy", DeviceSettingsPolicyArgs.builder()        
+ *         var developerWarpPolicy = new DeviceSettingsPolicy("developerWarpPolicy", DeviceSettingsPolicyArgs.builder()
  *             .accountId("f037e56e89293a057740de681ac9abbe")
  *             .name("Developers WARP settings policy")
  *             .description("Developers WARP settings policy description")
