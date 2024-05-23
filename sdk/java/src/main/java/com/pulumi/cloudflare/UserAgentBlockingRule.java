@@ -44,7 +44,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example1 = new UserAgentBlockingRule("example1", UserAgentBlockingRuleArgs.builder()        
+ *         var example1 = new UserAgentBlockingRule("example1", UserAgentBlockingRuleArgs.builder()
  *             .zoneId("0da42c8d2132a9ddaf714f9e7c920711")
  *             .mode("js_challenge")
  *             .paused(false)
@@ -55,7 +55,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         var example2 = new UserAgentBlockingRule("example2", UserAgentBlockingRuleArgs.builder()        
+ *         var example2 = new UserAgentBlockingRule("example2", UserAgentBlockingRuleArgs.builder()
  *             .zoneId("0da42c8d2132a9ddaf714f9e7c920711")
  *             .mode("challenge")
  *             .paused(true)

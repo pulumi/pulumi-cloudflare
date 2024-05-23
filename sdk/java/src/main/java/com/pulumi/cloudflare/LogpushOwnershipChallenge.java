@@ -45,7 +45,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new LogpushOwnershipChallenge("example", LogpushOwnershipChallengeArgs.builder()        
+ *         var example = new LogpushOwnershipChallenge("example", LogpushOwnershipChallengeArgs.builder()
  *             .zoneId("0da42c8d2132a9ddaf714f9e7c920711")
  *             .destinationConf("s3://my-bucket-path?region=us-west-2")
  *             .build());

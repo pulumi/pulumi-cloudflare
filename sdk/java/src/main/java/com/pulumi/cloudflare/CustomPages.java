@@ -42,7 +42,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new CustomPages("example", CustomPagesArgs.builder()        
+ *         var example = new CustomPages("example", CustomPagesArgs.builder()
  *             .zoneId("0da42c8d2132a9ddaf714f9e7c920711")
  *             .type("basic_challenge")
  *             .url("https://example.com/challenge.html")

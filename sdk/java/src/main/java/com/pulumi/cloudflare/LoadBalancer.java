@@ -65,7 +65,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleLoadBalancerPool = new LoadBalancerPool("exampleLoadBalancerPool", LoadBalancerPoolArgs.builder()        
+ *         var exampleLoadBalancerPool = new LoadBalancerPool("exampleLoadBalancerPool", LoadBalancerPoolArgs.builder()
  *             .name("example-lb-pool")
  *             .origins(LoadBalancerPoolOriginArgs.builder()
  *                 .name("example-1")
@@ -78,7 +78,7 @@ import javax.annotation.Nullable;
  *         // In normal usage, would have different pools set for different pops
  *         // (cloudflare points-of-presence) and/or for different regions.
  *         // Within each pop or region we can define multiple pools in failover order.
- *         var example = new LoadBalancer("example", LoadBalancerArgs.builder()        
+ *         var example = new LoadBalancer("example", LoadBalancerArgs.builder()
  *             .zoneId("0da42c8d2132a9ddaf714f9e7c920711")
  *             .name("example-load-balancer.example.com")
  *             .fallbackPoolId(exampleLoadBalancerPool.id())

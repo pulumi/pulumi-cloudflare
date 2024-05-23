@@ -46,7 +46,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new MagicFirewallRuleset("example", MagicFirewallRulesetArgs.builder()        
+ *         var example = new MagicFirewallRuleset("example", MagicFirewallRulesetArgs.builder()
  *             .accountId("d41d8cd98f00b204e9800998ecf8427e")
  *             .name("Magic Transit Ruleset")
  *             .description("Global mitigations")

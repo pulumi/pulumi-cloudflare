@@ -39,7 +39,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new R2Bucket("example", R2BucketArgs.builder()        
+ *         var example = new R2Bucket("example", R2BucketArgs.builder()
  *             .accountId("f037e56e89293a057740de681ac9abbe")
  *             .name("terraform-bucket")
  *             .location("enam")

@@ -53,7 +53,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new SpectrumApplication("example", SpectrumApplicationArgs.builder()        
+ *         var example = new SpectrumApplication("example", SpectrumApplicationArgs.builder()
  *             .zoneId("0da42c8d2132a9ddaf714f9e7c920711")
  *             .protocol("tcp/22")
  *             .trafficType("direct")

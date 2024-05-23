@@ -48,34 +48,34 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // Authenticated Origin Pulls
- *         var myAop = new AuthenticatedOriginPulls("myAop", AuthenticatedOriginPullsArgs.builder()        
+ *         var myAop = new AuthenticatedOriginPulls("myAop", AuthenticatedOriginPullsArgs.builder()
  *             .zoneId("0da42c8d2132a9ddaf714f9e7c920711")
  *             .enabled(true)
  *             .build());
  * 
  *         // Per-Zone Authenticated Origin Pulls
- *         var myPerZoneAopCert = new AuthenticatedOriginPullsCertificate("myPerZoneAopCert", AuthenticatedOriginPullsCertificateArgs.builder()        
+ *         var myPerZoneAopCert = new AuthenticatedOriginPullsCertificate("myPerZoneAopCert", AuthenticatedOriginPullsCertificateArgs.builder()
  *             .zoneId("0da42c8d2132a9ddaf714f9e7c920711")
  *             .certificate("-----INSERT CERTIFICATE-----")
  *             .privateKey("-----INSERT PRIVATE KEY-----")
  *             .type("per-zone")
  *             .build());
  * 
- *         var myPerZoneAop = new AuthenticatedOriginPulls("myPerZoneAop", AuthenticatedOriginPullsArgs.builder()        
+ *         var myPerZoneAop = new AuthenticatedOriginPulls("myPerZoneAop", AuthenticatedOriginPullsArgs.builder()
  *             .zoneId("0da42c8d2132a9ddaf714f9e7c920711")
  *             .authenticatedOriginPullsCertificate(myPerZoneAopCert.id())
  *             .enabled(true)
  *             .build());
  * 
  *         // Per-Hostname Authenticated Origin Pulls
- *         var myPerHostnameAopCert = new AuthenticatedOriginPullsCertificate("myPerHostnameAopCert", AuthenticatedOriginPullsCertificateArgs.builder()        
+ *         var myPerHostnameAopCert = new AuthenticatedOriginPullsCertificate("myPerHostnameAopCert", AuthenticatedOriginPullsCertificateArgs.builder()
  *             .zoneId("0da42c8d2132a9ddaf714f9e7c920711")
  *             .certificate("-----INSERT CERTIFICATE-----")
  *             .privateKey("-----INSERT PRIVATE KEY-----")
  *             .type("per-hostname")
  *             .build());
  * 
- *         var myPerHostnameAop = new AuthenticatedOriginPulls("myPerHostnameAop", AuthenticatedOriginPullsArgs.builder()        
+ *         var myPerHostnameAop = new AuthenticatedOriginPulls("myPerHostnameAop", AuthenticatedOriginPullsArgs.builder()
  *             .zoneId("0da42c8d2132a9ddaf714f9e7c920711")
  *             .authenticatedOriginPullsCertificate(myPerHostnameAopCert.id())
  *             .hostname("aop.example.com")

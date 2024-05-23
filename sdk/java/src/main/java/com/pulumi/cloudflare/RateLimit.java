@@ -62,7 +62,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new RateLimit("example", RateLimitArgs.builder()        
+ *         var example = new RateLimit("example", RateLimitArgs.builder()
  *             .zoneId("0da42c8d2132a9ddaf714f9e7c920711")
  *             .threshold(2000)
  *             .period(2)

@@ -46,7 +46,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new StaticRoute("example", StaticRouteArgs.builder()        
+ *         var example = new StaticRoute("example", StaticRouteArgs.builder()
  *             .accountId("f037e56e89293a057740de681ac9abbe")
  *             .description("New route for new prefix 192.0.2.0/24")
  *             .prefix("192.0.2.0/24")

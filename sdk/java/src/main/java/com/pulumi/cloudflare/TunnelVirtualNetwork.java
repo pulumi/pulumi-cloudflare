@@ -46,7 +46,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new TunnelVirtualNetwork("example", TunnelVirtualNetworkArgs.builder()        
+ *         var example = new TunnelVirtualNetwork("example", TunnelVirtualNetworkArgs.builder()
  *             .accountId("f037e56e89293a057740de681ac9abbe")
  *             .name("vnet-for-documentation")
  *             .comment("New tunnel virtual network for documentation")

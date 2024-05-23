@@ -41,7 +41,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new CustomHostnameFallbackOrigin("example", CustomHostnameFallbackOriginArgs.builder()        
+ *         var example = new CustomHostnameFallbackOrigin("example", CustomHostnameFallbackOriginArgs.builder()
  *             .zoneId("0da42c8d2132a9ddaf714f9e7c920711")
  *             .origin("fallback.example.com")
  *             .build());
