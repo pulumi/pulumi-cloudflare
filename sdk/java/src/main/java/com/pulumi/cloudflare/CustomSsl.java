@@ -47,7 +47,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new CustomSsl("example", CustomSslArgs.builder()        
+ *         var example = new CustomSsl("example", CustomSslArgs.builder()
  *             .zoneId("0da42c8d2132a9ddaf714f9e7c920711")
  *             .customSslOptions(CustomSslCustomSslOptionsArgs.builder()
  *                 .certificate("-----INSERT CERTIFICATE-----")

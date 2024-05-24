@@ -47,7 +47,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new DevicePostureIntegration("example", DevicePostureIntegrationArgs.builder()        
+ *         var example = new DevicePostureIntegration("example", DevicePostureIntegrationArgs.builder()
  *             .accountId("f037e56e89293a057740de681ac9abbe")
  *             .name("Device posture integration")
  *             .type("workspace_one")

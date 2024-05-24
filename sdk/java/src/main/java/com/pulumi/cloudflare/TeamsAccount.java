@@ -66,7 +66,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new TeamsAccount("example", TeamsAccountArgs.builder()        
+ *         var example = new TeamsAccount("example", TeamsAccountArgs.builder()
  *             .accountId("f037e56e89293a057740de681ac9abbe")
  *             .tlsDecryptEnabled(true)
  *             .protocolDetectionEnabled(true)

@@ -44,14 +44,14 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new ApiShieldOperation("example", ApiShieldOperationArgs.builder()        
+ *         var example = new ApiShieldOperation("example", ApiShieldOperationArgs.builder()
  *             .zoneId("0da42c8d2132a9ddaf714f9e7c920711")
  *             .method("GET")
  *             .host("api.example.com")
  *             .endpoint("/path")
  *             .build());
  * 
- *         var exampleApiShieldOperationSchemaValidationSettings = new ApiShieldOperationSchemaValidationSettings("exampleApiShieldOperationSchemaValidationSettings", ApiShieldOperationSchemaValidationSettingsArgs.builder()        
+ *         var exampleApiShieldOperationSchemaValidationSettings = new ApiShieldOperationSchemaValidationSettings("exampleApiShieldOperationSchemaValidationSettings", ApiShieldOperationSchemaValidationSettingsArgs.builder()
  *             .zoneId("0da42c8d2132a9ddaf714f9e7c920711")
  *             .operationId(example.id())
  *             .mitigationAction("block")

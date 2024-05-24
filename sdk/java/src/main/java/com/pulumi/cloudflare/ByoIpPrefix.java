@@ -42,7 +42,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new ByoIpPrefix("example", ByoIpPrefixArgs.builder()        
+ *         var example = new ByoIpPrefix("example", ByoIpPrefixArgs.builder()
  *             .accountId("f037e56e89293a057740de681ac9abbe")
  *             .prefixId("d41d8cd98f00b204e9800998ecf8427e")
  *             .description("Example IP Prefix")

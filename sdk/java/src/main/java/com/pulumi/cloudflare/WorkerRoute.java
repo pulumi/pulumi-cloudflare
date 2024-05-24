@@ -46,7 +46,7 @@ import javax.annotation.Nullable;
  *         var myScript = new WorkerScript("myScript");
  * 
  *         // Runs the specified worker script for all URLs that match `example.com/*`
- *         var myRoute = new WorkerRoute("myRoute", WorkerRouteArgs.builder()        
+ *         var myRoute = new WorkerRoute("myRoute", WorkerRouteArgs.builder()
  *             .zoneId("0da42c8d2132a9ddaf714f9e7c920711")
  *             .pattern("example.com/*")
  *             .scriptName(myScript.name())

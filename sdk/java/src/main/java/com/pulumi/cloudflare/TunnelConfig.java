@@ -47,13 +47,13 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleTunnel = new Tunnel("exampleTunnel", TunnelArgs.builder()        
+ *         var exampleTunnel = new Tunnel("exampleTunnel", TunnelArgs.builder()
  *             .accountId("f037e56e89293a057740de681ac9abbe")
  *             .name("example_tunnel")
  *             .secret("<32 character secret>")
  *             .build());
  * 
- *         var exampleConfig = new TunnelConfig("exampleConfig", TunnelConfigArgs.builder()        
+ *         var exampleConfig = new TunnelConfig("exampleConfig", TunnelConfigArgs.builder()
  *             .accountId("f037e56e89293a057740de681ac9abbe")
  *             .tunnelId(exampleTunnel.id())
  *             .config(TunnelConfigConfigArgs.builder()
