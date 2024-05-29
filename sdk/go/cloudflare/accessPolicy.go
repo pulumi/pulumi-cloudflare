@@ -21,9 +21,9 @@ import (
 //	However, if you're using a scoped access token, you must provide the argument that matches the token's
 //	scope. For example, an access token that is scoped to the "example.com" zone needs to use the `zoneId` argument.
 //	If 'application_id' is omitted, the policy created can be reused by multiple access applications.
-//	Any accessApplication resource can reference reusable policies through its `policies` argument.
+//	Any AccessApplication resource can reference reusable policies through its `policies` argument.
 //	To destroy a reusable policy and remove it from all applications' policies lists on the same apply, preemptively set the
-//	lifecycle option `createBeforeDestroy` to true on the 'access_policy' resource.
+//	lifecycle option `createBeforeDestroy` to true on the 'cloudflare_access_policy' resource.
 //
 // ## Import
 //
@@ -45,7 +45,7 @@ type AccessPolicy struct {
 	AccountId pulumi.StringPtrOutput `pulumi:"accountId"`
 	// The ID of the application the policy is associated with. Required when using `precedence`. **Modifying this attribute will force creation of a new resource.**
 	//
-	// Deprecated: This field is deprecated. Policies can now be standalone and reusable by multiple applications.Please use `cloudflare_access_application.policies` to associate policies with applications.
+	// Deprecated: This field is deprecated. Policies can now be standalone and reusable by multiple applications.Please use `cloudflare_access_application.policies` to associate reusable access policies with access applications.
 	ApplicationId    pulumi.StringPtrOutput               `pulumi:"applicationId"`
 	ApprovalGroups   AccessPolicyApprovalGroupArrayOutput `pulumi:"approvalGroups"`
 	ApprovalRequired pulumi.BoolPtrOutput                 `pulumi:"approvalRequired"`
@@ -118,7 +118,7 @@ type accessPolicyState struct {
 	AccountId *string `pulumi:"accountId"`
 	// The ID of the application the policy is associated with. Required when using `precedence`. **Modifying this attribute will force creation of a new resource.**
 	//
-	// Deprecated: This field is deprecated. Policies can now be standalone and reusable by multiple applications.Please use `cloudflare_access_application.policies` to associate policies with applications.
+	// Deprecated: This field is deprecated. Policies can now be standalone and reusable by multiple applications.Please use `cloudflare_access_application.policies` to associate reusable access policies with access applications.
 	ApplicationId    *string                     `pulumi:"applicationId"`
 	ApprovalGroups   []AccessPolicyApprovalGroup `pulumi:"approvalGroups"`
 	ApprovalRequired *bool                       `pulumi:"approvalRequired"`
@@ -153,7 +153,7 @@ type AccessPolicyState struct {
 	AccountId pulumi.StringPtrInput
 	// The ID of the application the policy is associated with. Required when using `precedence`. **Modifying this attribute will force creation of a new resource.**
 	//
-	// Deprecated: This field is deprecated. Policies can now be standalone and reusable by multiple applications.Please use `cloudflare_access_application.policies` to associate policies with applications.
+	// Deprecated: This field is deprecated. Policies can now be standalone and reusable by multiple applications.Please use `cloudflare_access_application.policies` to associate reusable access policies with access applications.
 	ApplicationId    pulumi.StringPtrInput
 	ApprovalGroups   AccessPolicyApprovalGroupArrayInput
 	ApprovalRequired pulumi.BoolPtrInput
@@ -192,7 +192,7 @@ type accessPolicyArgs struct {
 	AccountId *string `pulumi:"accountId"`
 	// The ID of the application the policy is associated with. Required when using `precedence`. **Modifying this attribute will force creation of a new resource.**
 	//
-	// Deprecated: This field is deprecated. Policies can now be standalone and reusable by multiple applications.Please use `cloudflare_access_application.policies` to associate policies with applications.
+	// Deprecated: This field is deprecated. Policies can now be standalone and reusable by multiple applications.Please use `cloudflare_access_application.policies` to associate reusable access policies with access applications.
 	ApplicationId    *string                     `pulumi:"applicationId"`
 	ApprovalGroups   []AccessPolicyApprovalGroup `pulumi:"approvalGroups"`
 	ApprovalRequired *bool                       `pulumi:"approvalRequired"`
@@ -228,7 +228,7 @@ type AccessPolicyArgs struct {
 	AccountId pulumi.StringPtrInput
 	// The ID of the application the policy is associated with. Required when using `precedence`. **Modifying this attribute will force creation of a new resource.**
 	//
-	// Deprecated: This field is deprecated. Policies can now be standalone and reusable by multiple applications.Please use `cloudflare_access_application.policies` to associate policies with applications.
+	// Deprecated: This field is deprecated. Policies can now be standalone and reusable by multiple applications.Please use `cloudflare_access_application.policies` to associate reusable access policies with access applications.
 	ApplicationId    pulumi.StringPtrInput
 	ApprovalGroups   AccessPolicyApprovalGroupArrayInput
 	ApprovalRequired pulumi.BoolPtrInput
@@ -352,7 +352,7 @@ func (o AccessPolicyOutput) AccountId() pulumi.StringPtrOutput {
 
 // The ID of the application the policy is associated with. Required when using `precedence`. **Modifying this attribute will force creation of a new resource.**
 //
-// Deprecated: This field is deprecated. Policies can now be standalone and reusable by multiple applications.Please use `cloudflare_access_application.policies` to associate policies with applications.
+// Deprecated: This field is deprecated. Policies can now be standalone and reusable by multiple applications.Please use `cloudflare_access_application.policies` to associate reusable access policies with access applications.
 func (o AccessPolicyOutput) ApplicationId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AccessPolicy) pulumi.StringPtrOutput { return v.ApplicationId }).(pulumi.StringPtrOutput)
 }

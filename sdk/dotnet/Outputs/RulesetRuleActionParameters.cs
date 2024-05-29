@@ -66,6 +66,10 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly bool? DisableRailgun;
         /// <summary>
+        /// Turn off RUM feature.
+        /// </summary>
+        public readonly bool? DisableRum;
+        /// <summary>
         /// Turn off zaraz feature.
         /// </summary>
         public readonly bool? DisableZaraz;
@@ -77,6 +81,10 @@ namespace Pulumi.Cloudflare.Outputs
         /// Turn on or off the Cloudflare Email Obfuscation feature of the Cloudflare Scrape Shield app.
         /// </summary>
         public readonly bool? EmailObfuscation;
+        /// <summary>
+        /// Toggle fonts.
+        /// </summary>
+        public readonly bool? Fonts;
         /// <summary>
         /// Use a list to lookup information for the action.
         /// </summary>
@@ -243,11 +251,15 @@ namespace Pulumi.Cloudflare.Outputs
 
             bool? disableRailgun,
 
+            bool? disableRum,
+
             bool? disableZaraz,
 
             Outputs.RulesetRuleActionParametersEdgeTtl? edgeTtl,
 
             bool? emailObfuscation,
+
+            bool? fonts,
 
             Outputs.RulesetRuleActionParametersFromList? fromList,
 
@@ -332,9 +344,11 @@ namespace Pulumi.Cloudflare.Outputs
             CookieFields = cookieFields;
             DisableApps = disableApps;
             DisableRailgun = disableRailgun;
+            DisableRum = disableRum;
             DisableZaraz = disableZaraz;
             EdgeTtl = edgeTtl;
             EmailObfuscation = emailObfuscation;
+            Fonts = fonts;
             FromList = fromList;
             FromValue = fromValue;
             Headers = headers;

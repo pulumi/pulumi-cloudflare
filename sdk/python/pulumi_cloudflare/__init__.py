@@ -107,6 +107,7 @@ from .rate_limit import *
 from .record import *
 from .regional_hostname import *
 from .regional_tiered_cache import *
+from .risk_behavior import *
 from .ruleset import *
 from .spectrum_application import *
 from .split_tunnel import *
@@ -782,6 +783,14 @@ _utilities.register(
   "fqn": "pulumi_cloudflare",
   "classes": {
    "cloudflare:index/regionalTieredCache:RegionalTieredCache": "RegionalTieredCache"
+  }
+ },
+ {
+  "pkg": "cloudflare",
+  "mod": "index/riskBehavior",
+  "fqn": "pulumi_cloudflare",
+  "classes": {
+   "cloudflare:index/riskBehavior:RiskBehavior": "RiskBehavior"
   }
  },
  {

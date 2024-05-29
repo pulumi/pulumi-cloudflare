@@ -14,6 +14,10 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class AccessApplicationSaasApp
     {
         /// <summary>
+        /// Allow PKCE flow without a client secret
+        /// </summary>
+        public readonly bool? AllowPkceWithoutClientSecret;
+        /// <summary>
         /// The URL where this applications tile redirects users.
         /// </summary>
         public readonly string? AppLauncherUrl;
@@ -34,6 +38,10 @@ namespace Pulumi.Cloudflare.Outputs
         /// Custom attribute mapped from IDPs.
         /// </summary>
         public readonly ImmutableArray<Outputs.AccessApplicationSaasAppCustomAttribute> CustomAttributes;
+        /// <summary>
+        /// Custom claim mapped from IDPs.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.AccessApplicationSaasAppCustomClaim> CustomClaims;
         /// <summary>
         /// The relay state used if not provided by the identity provider.
         /// </summary>
@@ -67,6 +75,10 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly ImmutableArray<string> RedirectUris;
         /// <summary>
+        /// Refresh token grant options
+        /// </summary>
+        public readonly ImmutableArray<Outputs.AccessApplicationSaasAppRefreshTokenOption> RefreshTokenOptions;
+        /// <summary>
         /// A [JSONata](https://jsonata.org/) expression that transforms an application's user identities into attribute assertions in the SAML response. The expression can transform id, email, name, and groups values. It can also transform fields listed in the saml*attributes or oidc*fields of the identity provider used to authenticate. The output of this expression must be a JSON object.
         /// </summary>
         public readonly string? SamlAttributeTransformJsonata;
@@ -85,6 +97,8 @@ namespace Pulumi.Cloudflare.Outputs
 
         [OutputConstructor]
         private AccessApplicationSaasApp(
+            bool? allowPkceWithoutClientSecret,
+
             string? appLauncherUrl,
 
             string? authType,
@@ -96,6 +110,8 @@ namespace Pulumi.Cloudflare.Outputs
             string? consumerServiceUrl,
 
             ImmutableArray<Outputs.AccessApplicationSaasAppCustomAttribute> customAttributes,
+
+            ImmutableArray<Outputs.AccessApplicationSaasAppCustomClaim> customClaims,
 
             string? defaultRelayState,
 
@@ -113,6 +129,8 @@ namespace Pulumi.Cloudflare.Outputs
 
             ImmutableArray<string> redirectUris,
 
+            ImmutableArray<Outputs.AccessApplicationSaasAppRefreshTokenOption> refreshTokenOptions,
+
             string? samlAttributeTransformJsonata,
 
             ImmutableArray<string> scopes,
@@ -121,12 +139,14 @@ namespace Pulumi.Cloudflare.Outputs
 
             string? ssoEndpoint)
         {
+            AllowPkceWithoutClientSecret = allowPkceWithoutClientSecret;
             AppLauncherUrl = appLauncherUrl;
             AuthType = authType;
             ClientId = clientId;
             ClientSecret = clientSecret;
             ConsumerServiceUrl = consumerServiceUrl;
             CustomAttributes = customAttributes;
+            CustomClaims = customClaims;
             DefaultRelayState = defaultRelayState;
             GrantTypes = grantTypes;
             GroupFilterRegex = groupFilterRegex;
@@ -135,6 +155,7 @@ namespace Pulumi.Cloudflare.Outputs
             NameIdTransformJsonata = nameIdTransformJsonata;
             PublicKey = publicKey;
             RedirectUris = redirectUris;
+            RefreshTokenOptions = refreshTokenOptions;
             SamlAttributeTransformJsonata = samlAttributeTransformJsonata;
             Scopes = scopes;
             SpEntityId = spEntityId;

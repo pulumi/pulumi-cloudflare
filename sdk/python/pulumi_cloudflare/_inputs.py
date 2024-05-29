@@ -16,6 +16,9 @@ __all__ = [
     'AccessApplicationSaasAppArgs',
     'AccessApplicationSaasAppCustomAttributeArgs',
     'AccessApplicationSaasAppCustomAttributeSourceArgs',
+    'AccessApplicationSaasAppCustomClaimArgs',
+    'AccessApplicationSaasAppCustomClaimSourceArgs',
+    'AccessApplicationSaasAppRefreshTokenOptionArgs',
     'AccessApplicationScimConfigArgs',
     'AccessApplicationScimConfigAuthenticationArgs',
     'AccessApplicationScimConfigMappingArgs',
@@ -168,6 +171,7 @@ __all__ = [
     'RateLimitMatchRequestArgs',
     'RateLimitMatchResponseArgs',
     'RecordDataArgs',
+    'RiskBehaviorBehaviorArgs',
     'RulesetRuleArgs',
     'RulesetRuleActionParametersArgs',
     'RulesetRuleActionParametersAlgorithmArgs',
@@ -540,12 +544,14 @@ class AccessApplicationLandingPageDesignArgs:
 @pulumi.input_type
 class AccessApplicationSaasAppArgs:
     def __init__(__self__, *,
+                 allow_pkce_without_client_secret: Optional[pulumi.Input[bool]] = None,
                  app_launcher_url: Optional[pulumi.Input[str]] = None,
                  auth_type: Optional[pulumi.Input[str]] = None,
                  client_id: Optional[pulumi.Input[str]] = None,
                  client_secret: Optional[pulumi.Input[str]] = None,
                  consumer_service_url: Optional[pulumi.Input[str]] = None,
                  custom_attributes: Optional[pulumi.Input[Sequence[pulumi.Input['AccessApplicationSaasAppCustomAttributeArgs']]]] = None,
+                 custom_claims: Optional[pulumi.Input[Sequence[pulumi.Input['AccessApplicationSaasAppCustomClaimArgs']]]] = None,
                  default_relay_state: Optional[pulumi.Input[str]] = None,
                  grant_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  group_filter_regex: Optional[pulumi.Input[str]] = None,
@@ -554,16 +560,19 @@ class AccessApplicationSaasAppArgs:
                  name_id_transform_jsonata: Optional[pulumi.Input[str]] = None,
                  public_key: Optional[pulumi.Input[str]] = None,
                  redirect_uris: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 refresh_token_options: Optional[pulumi.Input[Sequence[pulumi.Input['AccessApplicationSaasAppRefreshTokenOptionArgs']]]] = None,
                  saml_attribute_transform_jsonata: Optional[pulumi.Input[str]] = None,
                  scopes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  sp_entity_id: Optional[pulumi.Input[str]] = None,
                  sso_endpoint: Optional[pulumi.Input[str]] = None):
         """
+        :param pulumi.Input[bool] allow_pkce_without_client_secret: Allow PKCE flow without a client secret
         :param pulumi.Input[str] app_launcher_url: The URL where this applications tile redirects users.
         :param pulumi.Input[str] client_id: The application client id.
         :param pulumi.Input[str] client_secret: The application client secret, only returned on initial apply.
         :param pulumi.Input[str] consumer_service_url: The service provider's endpoint that is responsible for receiving and parsing a SAML assertion.
         :param pulumi.Input[Sequence[pulumi.Input['AccessApplicationSaasAppCustomAttributeArgs']]] custom_attributes: Custom attribute mapped from IDPs.
+        :param pulumi.Input[Sequence[pulumi.Input['AccessApplicationSaasAppCustomClaimArgs']]] custom_claims: Custom claim mapped from IDPs.
         :param pulumi.Input[str] default_relay_state: The relay state used if not provided by the identity provider.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] grant_types: The OIDC flows supported by this application.
         :param pulumi.Input[str] group_filter_regex: A regex to filter Cloudflare groups returned in ID token and userinfo endpoint.
@@ -572,11 +581,14 @@ class AccessApplicationSaasAppArgs:
         :param pulumi.Input[str] name_id_transform_jsonata: A [JSONata](https://jsonata.org/) expression that transforms an application's user identities into a NameID value for its SAML assertion. This expression should evaluate to a singular string. The output of this expression can override the `name_id_format` setting.
         :param pulumi.Input[str] public_key: The public certificate that will be used to verify identities.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] redirect_uris: The permitted URL's for Cloudflare to return Authorization codes and Access/ID tokens.
+        :param pulumi.Input[Sequence[pulumi.Input['AccessApplicationSaasAppRefreshTokenOptionArgs']]] refresh_token_options: Refresh token grant options
         :param pulumi.Input[str] saml_attribute_transform_jsonata: A [JSONata](https://jsonata.org/) expression that transforms an application's user identities into attribute assertions in the SAML response. The expression can transform id, email, name, and groups values. It can also transform fields listed in the saml*attributes or oidc*fields of the identity provider used to authenticate. The output of this expression must be a JSON object.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] scopes: Define the user information shared with access.
         :param pulumi.Input[str] sp_entity_id: A globally unique name for an identity or service provider.
         :param pulumi.Input[str] sso_endpoint: The endpoint where the SaaS application will send login requests.
         """
+        if allow_pkce_without_client_secret is not None:
+            pulumi.set(__self__, "allow_pkce_without_client_secret", allow_pkce_without_client_secret)
         if app_launcher_url is not None:
             pulumi.set(__self__, "app_launcher_url", app_launcher_url)
         if auth_type is not None:
@@ -589,6 +601,8 @@ class AccessApplicationSaasAppArgs:
             pulumi.set(__self__, "consumer_service_url", consumer_service_url)
         if custom_attributes is not None:
             pulumi.set(__self__, "custom_attributes", custom_attributes)
+        if custom_claims is not None:
+            pulumi.set(__self__, "custom_claims", custom_claims)
         if default_relay_state is not None:
             pulumi.set(__self__, "default_relay_state", default_relay_state)
         if grant_types is not None:
@@ -605,6 +619,8 @@ class AccessApplicationSaasAppArgs:
             pulumi.set(__self__, "public_key", public_key)
         if redirect_uris is not None:
             pulumi.set(__self__, "redirect_uris", redirect_uris)
+        if refresh_token_options is not None:
+            pulumi.set(__self__, "refresh_token_options", refresh_token_options)
         if saml_attribute_transform_jsonata is not None:
             pulumi.set(__self__, "saml_attribute_transform_jsonata", saml_attribute_transform_jsonata)
         if scopes is not None:
@@ -613,6 +629,18 @@ class AccessApplicationSaasAppArgs:
             pulumi.set(__self__, "sp_entity_id", sp_entity_id)
         if sso_endpoint is not None:
             pulumi.set(__self__, "sso_endpoint", sso_endpoint)
+
+    @property
+    @pulumi.getter(name="allowPkceWithoutClientSecret")
+    def allow_pkce_without_client_secret(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Allow PKCE flow without a client secret
+        """
+        return pulumi.get(self, "allow_pkce_without_client_secret")
+
+    @allow_pkce_without_client_secret.setter
+    def allow_pkce_without_client_secret(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "allow_pkce_without_client_secret", value)
 
     @property
     @pulumi.getter(name="appLauncherUrl")
@@ -682,6 +710,18 @@ class AccessApplicationSaasAppArgs:
     @custom_attributes.setter
     def custom_attributes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AccessApplicationSaasAppCustomAttributeArgs']]]]):
         pulumi.set(self, "custom_attributes", value)
+
+    @property
+    @pulumi.getter(name="customClaims")
+    def custom_claims(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AccessApplicationSaasAppCustomClaimArgs']]]]:
+        """
+        Custom claim mapped from IDPs.
+        """
+        return pulumi.get(self, "custom_claims")
+
+    @custom_claims.setter
+    def custom_claims(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AccessApplicationSaasAppCustomClaimArgs']]]]):
+        pulumi.set(self, "custom_claims", value)
 
     @property
     @pulumi.getter(name="defaultRelayState")
@@ -778,6 +818,18 @@ class AccessApplicationSaasAppArgs:
     @redirect_uris.setter
     def redirect_uris(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "redirect_uris", value)
+
+    @property
+    @pulumi.getter(name="refreshTokenOptions")
+    def refresh_token_options(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AccessApplicationSaasAppRefreshTokenOptionArgs']]]]:
+        """
+        Refresh token grant options
+        """
+        return pulumi.get(self, "refresh_token_options")
+
+    @refresh_token_options.setter
+    def refresh_token_options(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AccessApplicationSaasAppRefreshTokenOptionArgs']]]]):
+        pulumi.set(self, "refresh_token_options", value)
 
     @property
     @pulumi.getter(name="samlAttributeTransformJsonata")
@@ -913,11 +965,15 @@ class AccessApplicationSaasAppCustomAttributeArgs:
 @pulumi.input_type
 class AccessApplicationSaasAppCustomAttributeSourceArgs:
     def __init__(__self__, *,
-                 name: pulumi.Input[str]):
+                 name: pulumi.Input[str],
+                 name_by_idp: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         :param pulumi.Input[str] name: The name of the attribute as provided by the IDP.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] name_by_idp: A mapping from IdP ID to claim name.
         """
         pulumi.set(__self__, "name", name)
+        if name_by_idp is not None:
+            pulumi.set(__self__, "name_by_idp", name_by_idp)
 
     @property
     @pulumi.getter
@@ -930,6 +986,145 @@ class AccessApplicationSaasAppCustomAttributeSourceArgs:
     @name.setter
     def name(self, value: pulumi.Input[str]):
         pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="nameByIdp")
+    def name_by_idp(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        A mapping from IdP ID to claim name.
+        """
+        return pulumi.get(self, "name_by_idp")
+
+    @name_by_idp.setter
+    def name_by_idp(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "name_by_idp", value)
+
+
+@pulumi.input_type
+class AccessApplicationSaasAppCustomClaimArgs:
+    def __init__(__self__, *,
+                 source: pulumi.Input['AccessApplicationSaasAppCustomClaimSourceArgs'],
+                 name: Optional[pulumi.Input[str]] = None,
+                 required: Optional[pulumi.Input[bool]] = None,
+                 scope: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] name: Friendly name of the Access Application.
+        :param pulumi.Input[bool] required: True if the attribute must be always present.
+        :param pulumi.Input[str] scope: The scope of the claim.
+        """
+        pulumi.set(__self__, "source", source)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if required is not None:
+            pulumi.set(__self__, "required", required)
+        if scope is not None:
+            pulumi.set(__self__, "scope", scope)
+
+    @property
+    @pulumi.getter
+    def source(self) -> pulumi.Input['AccessApplicationSaasAppCustomClaimSourceArgs']:
+        return pulumi.get(self, "source")
+
+    @source.setter
+    def source(self, value: pulumi.Input['AccessApplicationSaasAppCustomClaimSourceArgs']):
+        pulumi.set(self, "source", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Friendly name of the Access Application.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def required(self) -> Optional[pulumi.Input[bool]]:
+        """
+        True if the attribute must be always present.
+        """
+        return pulumi.get(self, "required")
+
+    @required.setter
+    def required(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "required", value)
+
+    @property
+    @pulumi.getter
+    def scope(self) -> Optional[pulumi.Input[str]]:
+        """
+        The scope of the claim.
+        """
+        return pulumi.get(self, "scope")
+
+    @scope.setter
+    def scope(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "scope", value)
+
+
+@pulumi.input_type
+class AccessApplicationSaasAppCustomClaimSourceArgs:
+    def __init__(__self__, *,
+                 name: pulumi.Input[str],
+                 name_by_idp: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[str] name: Friendly name of the Access Application.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] name_by_idp: A mapping from IdP ID to claim name.
+        """
+        pulumi.set(__self__, "name", name)
+        if name_by_idp is not None:
+            pulumi.set(__self__, "name_by_idp", name_by_idp)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        """
+        Friendly name of the Access Application.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="nameByIdp")
+    def name_by_idp(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        A mapping from IdP ID to claim name.
+        """
+        return pulumi.get(self, "name_by_idp")
+
+    @name_by_idp.setter
+    def name_by_idp(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "name_by_idp", value)
+
+
+@pulumi.input_type
+class AccessApplicationSaasAppRefreshTokenOptionArgs:
+    def __init__(__self__, *,
+                 lifetime: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] lifetime: How long a refresh token will be valid for after creation. Valid units are m,h,d. Must be longer than 1m.
+        """
+        if lifetime is not None:
+            pulumi.set(__self__, "lifetime", lifetime)
+
+    @property
+    @pulumi.getter
+    def lifetime(self) -> Optional[pulumi.Input[str]]:
+        """
+        How long a refresh token will be valid for after creation. Valid units are m,h,d. Must be longer than 1m.
+        """
+        return pulumi.get(self, "lifetime")
+
+    @lifetime.setter
+    def lifetime(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "lifetime", value)
 
 
 @pulumi.input_type
@@ -12765,6 +12960,58 @@ class RecordDataArgs:
 
 
 @pulumi.input_type
+class RiskBehaviorBehaviorArgs:
+    def __init__(__self__, *,
+                 enabled: pulumi.Input[bool],
+                 name: pulumi.Input[str],
+                 risk_level: pulumi.Input[str]):
+        """
+        :param pulumi.Input[bool] enabled: Whether this risk behavior type is enabled.
+        :param pulumi.Input[str] name: Name of this risk behavior type
+        :param pulumi.Input[str] risk_level: Risk level. Available values: `low`, `medium`, `high`
+        """
+        pulumi.set(__self__, "enabled", enabled)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "risk_level", risk_level)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> pulumi.Input[bool]:
+        """
+        Whether this risk behavior type is enabled.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: pulumi.Input[bool]):
+        pulumi.set(self, "enabled", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        """
+        Name of this risk behavior type
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="riskLevel")
+    def risk_level(self) -> pulumi.Input[str]:
+        """
+        Risk level. Available values: `low`, `medium`, `high`
+        """
+        return pulumi.get(self, "risk_level")
+
+    @risk_level.setter
+    def risk_level(self, value: pulumi.Input[str]):
+        pulumi.set(self, "risk_level", value)
+
+
+@pulumi.input_type
 class RulesetRuleArgs:
     def __init__(__self__, *,
                  expression: pulumi.Input[str],
@@ -12978,9 +13225,11 @@ class RulesetRuleActionParametersArgs:
                  cookie_fields: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  disable_apps: Optional[pulumi.Input[bool]] = None,
                  disable_railgun: Optional[pulumi.Input[bool]] = None,
+                 disable_rum: Optional[pulumi.Input[bool]] = None,
                  disable_zaraz: Optional[pulumi.Input[bool]] = None,
                  edge_ttl: Optional[pulumi.Input['RulesetRuleActionParametersEdgeTtlArgs']] = None,
                  email_obfuscation: Optional[pulumi.Input[bool]] = None,
+                 fonts: Optional[pulumi.Input[bool]] = None,
                  from_list: Optional[pulumi.Input['RulesetRuleActionParametersFromListArgs']] = None,
                  from_value: Optional[pulumi.Input['RulesetRuleActionParametersFromValueArgs']] = None,
                  headers: Optional[pulumi.Input[Sequence[pulumi.Input['RulesetRuleActionParametersHeaderArgs']]]] = None,
@@ -13030,9 +13279,11 @@ class RulesetRuleActionParametersArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] cookie_fields: List of cookie values to include as part of custom fields logging.
         :param pulumi.Input[bool] disable_apps: Turn off all active Cloudflare Apps.
         :param pulumi.Input[bool] disable_railgun: Turn off railgun feature of the Cloudflare Speed app.
+        :param pulumi.Input[bool] disable_rum: Turn off RUM feature.
         :param pulumi.Input[bool] disable_zaraz: Turn off zaraz feature.
         :param pulumi.Input['RulesetRuleActionParametersEdgeTtlArgs'] edge_ttl: List of edge TTL parameters to apply to the request.
         :param pulumi.Input[bool] email_obfuscation: Turn on or off the Cloudflare Email Obfuscation feature of the Cloudflare Scrape Shield app.
+        :param pulumi.Input[bool] fonts: Toggle fonts.
         :param pulumi.Input['RulesetRuleActionParametersFromListArgs'] from_list: Use a list to lookup information for the action.
         :param pulumi.Input['RulesetRuleActionParametersFromValueArgs'] from_value: Use a value to lookup information for the action.
         :param pulumi.Input[Sequence[pulumi.Input['RulesetRuleActionParametersHeaderArgs']]] headers: List of HTTP header modifications to perform in the ruleset rule. Note: Headers are order dependent and must be provided sorted alphabetically ascending based on the `name` value.
@@ -13094,12 +13345,16 @@ class RulesetRuleActionParametersArgs:
             pulumi.set(__self__, "disable_apps", disable_apps)
         if disable_railgun is not None:
             pulumi.set(__self__, "disable_railgun", disable_railgun)
+        if disable_rum is not None:
+            pulumi.set(__self__, "disable_rum", disable_rum)
         if disable_zaraz is not None:
             pulumi.set(__self__, "disable_zaraz", disable_zaraz)
         if edge_ttl is not None:
             pulumi.set(__self__, "edge_ttl", edge_ttl)
         if email_obfuscation is not None:
             pulumi.set(__self__, "email_obfuscation", email_obfuscation)
+        if fonts is not None:
+            pulumi.set(__self__, "fonts", fonts)
         if from_list is not None:
             pulumi.set(__self__, "from_list", from_list)
         if from_value is not None:
@@ -13328,6 +13583,18 @@ class RulesetRuleActionParametersArgs:
         pulumi.set(self, "disable_railgun", value)
 
     @property
+    @pulumi.getter(name="disableRum")
+    def disable_rum(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Turn off RUM feature.
+        """
+        return pulumi.get(self, "disable_rum")
+
+    @disable_rum.setter
+    def disable_rum(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "disable_rum", value)
+
+    @property
     @pulumi.getter(name="disableZaraz")
     def disable_zaraz(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -13362,6 +13629,18 @@ class RulesetRuleActionParametersArgs:
     @email_obfuscation.setter
     def email_obfuscation(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "email_obfuscation", value)
+
+    @property
+    @pulumi.getter
+    def fonts(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Toggle fonts.
+        """
+        return pulumi.get(self, "fonts")
+
+    @fonts.setter
+    def fonts(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "fonts", value)
 
     @property
     @pulumi.getter(name="fromList")
@@ -17070,7 +17349,7 @@ class TunnelConfigConfigArgs:
                  origin_request: Optional[pulumi.Input['TunnelConfigConfigOriginRequestArgs']] = None,
                  warp_routing: Optional[pulumi.Input['TunnelConfigConfigWarpRoutingArgs']] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['TunnelConfigConfigIngressRuleArgs']]] ingress_rules: Each incoming request received by cloudflared causes cloudflared to send a request to a local service. This section configures the rules that determine which requests are sent to which local services. [Read more](https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/install-and-setup/tunnel-guide/local/local-management/ingress/).
+        :param pulumi.Input[Sequence[pulumi.Input['TunnelConfigConfigIngressRuleArgs']]] ingress_rules: Each incoming request received by cloudflared causes cloudflared to send a request to a local service. This section configures the rules that determine which requests are sent to which local services. Last rule must match all requests, e.g `service = "http_status:503"`. [Read more](https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/install-and-setup/tunnel-guide/local/local-management/ingress/).
         :param pulumi.Input['TunnelConfigConfigWarpRoutingArgs'] warp_routing: If you're exposing a [private network](https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/private-net/), you need to add the `warp-routing` key and set it to `true`.
         """
         pulumi.set(__self__, "ingress_rules", ingress_rules)
@@ -17083,7 +17362,7 @@ class TunnelConfigConfigArgs:
     @pulumi.getter(name="ingressRules")
     def ingress_rules(self) -> pulumi.Input[Sequence[pulumi.Input['TunnelConfigConfigIngressRuleArgs']]]:
         """
-        Each incoming request received by cloudflared causes cloudflared to send a request to a local service. This section configures the rules that determine which requests are sent to which local services. [Read more](https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/install-and-setup/tunnel-guide/local/local-management/ingress/).
+        Each incoming request received by cloudflared causes cloudflared to send a request to a local service. This section configures the rules that determine which requests are sent to which local services. Last rule must match all requests, e.g `service = "http_status:503"`. [Read more](https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/install-and-setup/tunnel-guide/local/local-management/ingress/).
         """
         return pulumi.get(self, "ingress_rules")
 

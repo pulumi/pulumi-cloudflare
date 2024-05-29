@@ -96,6 +96,11 @@ public final class RulesetRuleActionParameters {
      */
     private @Nullable Boolean disableRailgun;
     /**
+     * @return Turn off RUM feature.
+     * 
+     */
+    private @Nullable Boolean disableRum;
+    /**
      * @return Turn off zaraz feature.
      * 
      */
@@ -110,6 +115,11 @@ public final class RulesetRuleActionParameters {
      * 
      */
     private @Nullable Boolean emailObfuscation;
+    /**
+     * @return Toggle fonts.
+     * 
+     */
+    private @Nullable Boolean fonts;
     /**
      * @return Use a list to lookup information for the action.
      * 
@@ -375,6 +385,13 @@ public final class RulesetRuleActionParameters {
         return Optional.ofNullable(this.disableRailgun);
     }
     /**
+     * @return Turn off RUM feature.
+     * 
+     */
+    public Optional<Boolean> disableRum() {
+        return Optional.ofNullable(this.disableRum);
+    }
+    /**
      * @return Turn off zaraz feature.
      * 
      */
@@ -394,6 +411,13 @@ public final class RulesetRuleActionParameters {
      */
     public Optional<Boolean> emailObfuscation() {
         return Optional.ofNullable(this.emailObfuscation);
+    }
+    /**
+     * @return Toggle fonts.
+     * 
+     */
+    public Optional<Boolean> fonts() {
+        return Optional.ofNullable(this.fonts);
     }
     /**
      * @return Use a list to lookup information for the action.
@@ -659,9 +683,11 @@ public final class RulesetRuleActionParameters {
         private @Nullable List<String> cookieFields;
         private @Nullable Boolean disableApps;
         private @Nullable Boolean disableRailgun;
+        private @Nullable Boolean disableRum;
         private @Nullable Boolean disableZaraz;
         private @Nullable RulesetRuleActionParametersEdgeTtl edgeTtl;
         private @Nullable Boolean emailObfuscation;
+        private @Nullable Boolean fonts;
         private @Nullable RulesetRuleActionParametersFromList fromList;
         private @Nullable RulesetRuleActionParametersFromValue fromValue;
         private @Nullable List<RulesetRuleActionParametersHeader> headers;
@@ -713,9 +739,11 @@ public final class RulesetRuleActionParameters {
     	      this.cookieFields = defaults.cookieFields;
     	      this.disableApps = defaults.disableApps;
     	      this.disableRailgun = defaults.disableRailgun;
+    	      this.disableRum = defaults.disableRum;
     	      this.disableZaraz = defaults.disableZaraz;
     	      this.edgeTtl = defaults.edgeTtl;
     	      this.emailObfuscation = defaults.emailObfuscation;
+    	      this.fonts = defaults.fonts;
     	      this.fromList = defaults.fromList;
     	      this.fromValue = defaults.fromValue;
     	      this.headers = defaults.headers;
@@ -844,6 +872,12 @@ public final class RulesetRuleActionParameters {
             return this;
         }
         @CustomType.Setter
+        public Builder disableRum(@Nullable Boolean disableRum) {
+
+            this.disableRum = disableRum;
+            return this;
+        }
+        @CustomType.Setter
         public Builder disableZaraz(@Nullable Boolean disableZaraz) {
 
             this.disableZaraz = disableZaraz;
@@ -859,6 +893,12 @@ public final class RulesetRuleActionParameters {
         public Builder emailObfuscation(@Nullable Boolean emailObfuscation) {
 
             this.emailObfuscation = emailObfuscation;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder fonts(@Nullable Boolean fonts) {
+
+            this.fonts = fonts;
             return this;
         }
         @CustomType.Setter
@@ -1107,9 +1147,11 @@ public final class RulesetRuleActionParameters {
             _resultValue.cookieFields = cookieFields;
             _resultValue.disableApps = disableApps;
             _resultValue.disableRailgun = disableRailgun;
+            _resultValue.disableRum = disableRum;
             _resultValue.disableZaraz = disableZaraz;
             _resultValue.edgeTtl = edgeTtl;
             _resultValue.emailObfuscation = emailObfuscation;
+            _resultValue.fonts = fonts;
             _resultValue.fromList = fromList;
             _resultValue.fromValue = fromValue;
             _resultValue.headers = headers;

@@ -230,6 +230,21 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
     }
 
     /**
+     * Turn off RUM feature.
+     * 
+     */
+    @Import(name="disableRum")
+    private @Nullable Output<Boolean> disableRum;
+
+    /**
+     * @return Turn off RUM feature.
+     * 
+     */
+    public Optional<Output<Boolean>> disableRum() {
+        return Optional.ofNullable(this.disableRum);
+    }
+
+    /**
      * Turn off zaraz feature.
      * 
      */
@@ -272,6 +287,21 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
      */
     public Optional<Output<Boolean>> emailObfuscation() {
         return Optional.ofNullable(this.emailObfuscation);
+    }
+
+    /**
+     * Toggle fonts.
+     * 
+     */
+    @Import(name="fonts")
+    private @Nullable Output<Boolean> fonts;
+
+    /**
+     * @return Toggle fonts.
+     * 
+     */
+    public Optional<Output<Boolean>> fonts() {
+        return Optional.ofNullable(this.fonts);
     }
 
     /**
@@ -807,9 +837,11 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
         this.cookieFields = $.cookieFields;
         this.disableApps = $.disableApps;
         this.disableRailgun = $.disableRailgun;
+        this.disableRum = $.disableRum;
         this.disableZaraz = $.disableZaraz;
         this.edgeTtl = $.edgeTtl;
         this.emailObfuscation = $.emailObfuscation;
+        this.fonts = $.fonts;
         this.fromList = $.fromList;
         this.fromValue = $.fromValue;
         this.headers = $.headers;
@@ -1179,6 +1211,27 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
         }
 
         /**
+         * @param disableRum Turn off RUM feature.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder disableRum(@Nullable Output<Boolean> disableRum) {
+            $.disableRum = disableRum;
+            return this;
+        }
+
+        /**
+         * @param disableRum Turn off RUM feature.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder disableRum(Boolean disableRum) {
+            return disableRum(Output.of(disableRum));
+        }
+
+        /**
          * @param disableZaraz Turn off zaraz feature.
          * 
          * @return builder
@@ -1239,6 +1292,27 @@ public final class RulesetRuleActionParametersArgs extends com.pulumi.resources.
          */
         public Builder emailObfuscation(Boolean emailObfuscation) {
             return emailObfuscation(Output.of(emailObfuscation));
+        }
+
+        /**
+         * @param fonts Toggle fonts.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder fonts(@Nullable Output<Boolean> fonts) {
+            $.fonts = fonts;
+            return this;
+        }
+
+        /**
+         * @param fonts Toggle fonts.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder fonts(Boolean fonts) {
+            return fonts(Output.of(fonts));
         }
 
         /**

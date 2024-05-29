@@ -493,6 +493,8 @@ func (o AccessApplicationLandingPageDesignPtrOutput) Title() pulumi.StringPtrOut
 }
 
 type AccessApplicationSaasApp struct {
+	// Allow PKCE flow without a client secret
+	AllowPkceWithoutClientSecret *bool `pulumi:"allowPkceWithoutClientSecret"`
 	// The URL where this applications tile redirects users.
 	AppLauncherUrl *string `pulumi:"appLauncherUrl"`
 	AuthType       *string `pulumi:"authType"`
@@ -504,6 +506,8 @@ type AccessApplicationSaasApp struct {
 	ConsumerServiceUrl *string `pulumi:"consumerServiceUrl"`
 	// Custom attribute mapped from IDPs.
 	CustomAttributes []AccessApplicationSaasAppCustomAttribute `pulumi:"customAttributes"`
+	// Custom claim mapped from IDPs.
+	CustomClaims []AccessApplicationSaasAppCustomClaim `pulumi:"customClaims"`
 	// The relay state used if not provided by the identity provider.
 	DefaultRelayState *string `pulumi:"defaultRelayState"`
 	// The OIDC flows supported by this application.
@@ -520,6 +524,8 @@ type AccessApplicationSaasApp struct {
 	PublicKey *string `pulumi:"publicKey"`
 	// The permitted URL's for Cloudflare to return Authorization codes and Access/ID tokens.
 	RedirectUris []string `pulumi:"redirectUris"`
+	// Refresh token grant options
+	RefreshTokenOptions []AccessApplicationSaasAppRefreshTokenOption `pulumi:"refreshTokenOptions"`
 	// A [JSONata](https://jsonata.org/) expression that transforms an application's user identities into attribute assertions in the SAML response. The expression can transform id, email, name, and groups values. It can also transform fields listed in the saml*attributes or oidc*fields of the identity provider used to authenticate. The output of this expression must be a JSON object.
 	SamlAttributeTransformJsonata *string `pulumi:"samlAttributeTransformJsonata"`
 	// Define the user information shared with access.
@@ -542,6 +548,8 @@ type AccessApplicationSaasAppInput interface {
 }
 
 type AccessApplicationSaasAppArgs struct {
+	// Allow PKCE flow without a client secret
+	AllowPkceWithoutClientSecret pulumi.BoolPtrInput `pulumi:"allowPkceWithoutClientSecret"`
 	// The URL where this applications tile redirects users.
 	AppLauncherUrl pulumi.StringPtrInput `pulumi:"appLauncherUrl"`
 	AuthType       pulumi.StringPtrInput `pulumi:"authType"`
@@ -553,6 +561,8 @@ type AccessApplicationSaasAppArgs struct {
 	ConsumerServiceUrl pulumi.StringPtrInput `pulumi:"consumerServiceUrl"`
 	// Custom attribute mapped from IDPs.
 	CustomAttributes AccessApplicationSaasAppCustomAttributeArrayInput `pulumi:"customAttributes"`
+	// Custom claim mapped from IDPs.
+	CustomClaims AccessApplicationSaasAppCustomClaimArrayInput `pulumi:"customClaims"`
 	// The relay state used if not provided by the identity provider.
 	DefaultRelayState pulumi.StringPtrInput `pulumi:"defaultRelayState"`
 	// The OIDC flows supported by this application.
@@ -569,6 +579,8 @@ type AccessApplicationSaasAppArgs struct {
 	PublicKey pulumi.StringPtrInput `pulumi:"publicKey"`
 	// The permitted URL's for Cloudflare to return Authorization codes and Access/ID tokens.
 	RedirectUris pulumi.StringArrayInput `pulumi:"redirectUris"`
+	// Refresh token grant options
+	RefreshTokenOptions AccessApplicationSaasAppRefreshTokenOptionArrayInput `pulumi:"refreshTokenOptions"`
 	// A [JSONata](https://jsonata.org/) expression that transforms an application's user identities into attribute assertions in the SAML response. The expression can transform id, email, name, and groups values. It can also transform fields listed in the saml*attributes or oidc*fields of the identity provider used to authenticate. The output of this expression must be a JSON object.
 	SamlAttributeTransformJsonata pulumi.StringPtrInput `pulumi:"samlAttributeTransformJsonata"`
 	// Define the user information shared with access.
@@ -656,6 +668,11 @@ func (o AccessApplicationSaasAppOutput) ToAccessApplicationSaasAppPtrOutputWithC
 	}).(AccessApplicationSaasAppPtrOutput)
 }
 
+// Allow PKCE flow without a client secret
+func (o AccessApplicationSaasAppOutput) AllowPkceWithoutClientSecret() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AccessApplicationSaasApp) *bool { return v.AllowPkceWithoutClientSecret }).(pulumi.BoolPtrOutput)
+}
+
 // The URL where this applications tile redirects users.
 func (o AccessApplicationSaasAppOutput) AppLauncherUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AccessApplicationSaasApp) *string { return v.AppLauncherUrl }).(pulumi.StringPtrOutput)
@@ -683,6 +700,11 @@ func (o AccessApplicationSaasAppOutput) ConsumerServiceUrl() pulumi.StringPtrOut
 // Custom attribute mapped from IDPs.
 func (o AccessApplicationSaasAppOutput) CustomAttributes() AccessApplicationSaasAppCustomAttributeArrayOutput {
 	return o.ApplyT(func(v AccessApplicationSaasApp) []AccessApplicationSaasAppCustomAttribute { return v.CustomAttributes }).(AccessApplicationSaasAppCustomAttributeArrayOutput)
+}
+
+// Custom claim mapped from IDPs.
+func (o AccessApplicationSaasAppOutput) CustomClaims() AccessApplicationSaasAppCustomClaimArrayOutput {
+	return o.ApplyT(func(v AccessApplicationSaasApp) []AccessApplicationSaasAppCustomClaim { return v.CustomClaims }).(AccessApplicationSaasAppCustomClaimArrayOutput)
 }
 
 // The relay state used if not provided by the identity provider.
@@ -723,6 +745,13 @@ func (o AccessApplicationSaasAppOutput) PublicKey() pulumi.StringPtrOutput {
 // The permitted URL's for Cloudflare to return Authorization codes and Access/ID tokens.
 func (o AccessApplicationSaasAppOutput) RedirectUris() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AccessApplicationSaasApp) []string { return v.RedirectUris }).(pulumi.StringArrayOutput)
+}
+
+// Refresh token grant options
+func (o AccessApplicationSaasAppOutput) RefreshTokenOptions() AccessApplicationSaasAppRefreshTokenOptionArrayOutput {
+	return o.ApplyT(func(v AccessApplicationSaasApp) []AccessApplicationSaasAppRefreshTokenOption {
+		return v.RefreshTokenOptions
+	}).(AccessApplicationSaasAppRefreshTokenOptionArrayOutput)
 }
 
 // A [JSONata](https://jsonata.org/) expression that transforms an application's user identities into attribute assertions in the SAML response. The expression can transform id, email, name, and groups values. It can also transform fields listed in the saml*attributes or oidc*fields of the identity provider used to authenticate. The output of this expression must be a JSON object.
@@ -767,6 +796,16 @@ func (o AccessApplicationSaasAppPtrOutput) Elem() AccessApplicationSaasAppOutput
 		var ret AccessApplicationSaasApp
 		return ret
 	}).(AccessApplicationSaasAppOutput)
+}
+
+// Allow PKCE flow without a client secret
+func (o AccessApplicationSaasAppPtrOutput) AllowPkceWithoutClientSecret() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AccessApplicationSaasApp) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.AllowPkceWithoutClientSecret
+	}).(pulumi.BoolPtrOutput)
 }
 
 // The URL where this applications tile redirects users.
@@ -826,6 +865,16 @@ func (o AccessApplicationSaasAppPtrOutput) CustomAttributes() AccessApplicationS
 		}
 		return v.CustomAttributes
 	}).(AccessApplicationSaasAppCustomAttributeArrayOutput)
+}
+
+// Custom claim mapped from IDPs.
+func (o AccessApplicationSaasAppPtrOutput) CustomClaims() AccessApplicationSaasAppCustomClaimArrayOutput {
+	return o.ApplyT(func(v *AccessApplicationSaasApp) []AccessApplicationSaasAppCustomClaim {
+		if v == nil {
+			return nil
+		}
+		return v.CustomClaims
+	}).(AccessApplicationSaasAppCustomClaimArrayOutput)
 }
 
 // The relay state used if not provided by the identity provider.
@@ -906,6 +955,16 @@ func (o AccessApplicationSaasAppPtrOutput) RedirectUris() pulumi.StringArrayOutp
 		}
 		return v.RedirectUris
 	}).(pulumi.StringArrayOutput)
+}
+
+// Refresh token grant options
+func (o AccessApplicationSaasAppPtrOutput) RefreshTokenOptions() AccessApplicationSaasAppRefreshTokenOptionArrayOutput {
+	return o.ApplyT(func(v *AccessApplicationSaasApp) []AccessApplicationSaasAppRefreshTokenOption {
+		if v == nil {
+			return nil
+		}
+		return v.RefreshTokenOptions
+	}).(AccessApplicationSaasAppRefreshTokenOptionArrayOutput)
 }
 
 // A [JSONata](https://jsonata.org/) expression that transforms an application's user identities into attribute assertions in the SAML response. The expression can transform id, email, name, and groups values. It can also transform fields listed in the saml*attributes or oidc*fields of the identity provider used to authenticate. The output of this expression must be a JSON object.
@@ -1083,6 +1142,8 @@ func (o AccessApplicationSaasAppCustomAttributeArrayOutput) Index(i pulumi.IntIn
 type AccessApplicationSaasAppCustomAttributeSource struct {
 	// The name of the attribute as provided by the IDP.
 	Name string `pulumi:"name"`
+	// A mapping from IdP ID to claim name.
+	NameByIdp map[string]string `pulumi:"nameByIdp"`
 }
 
 // AccessApplicationSaasAppCustomAttributeSourceInput is an input type that accepts AccessApplicationSaasAppCustomAttributeSourceArgs and AccessApplicationSaasAppCustomAttributeSourceOutput values.
@@ -1099,6 +1160,8 @@ type AccessApplicationSaasAppCustomAttributeSourceInput interface {
 type AccessApplicationSaasAppCustomAttributeSourceArgs struct {
 	// The name of the attribute as provided by the IDP.
 	Name pulumi.StringInput `pulumi:"name"`
+	// A mapping from IdP ID to claim name.
+	NameByIdp pulumi.StringMapInput `pulumi:"nameByIdp"`
 }
 
 func (AccessApplicationSaasAppCustomAttributeSourceArgs) ElementType() reflect.Type {
@@ -1130,6 +1193,290 @@ func (o AccessApplicationSaasAppCustomAttributeSourceOutput) ToAccessApplication
 // The name of the attribute as provided by the IDP.
 func (o AccessApplicationSaasAppCustomAttributeSourceOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v AccessApplicationSaasAppCustomAttributeSource) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// A mapping from IdP ID to claim name.
+func (o AccessApplicationSaasAppCustomAttributeSourceOutput) NameByIdp() pulumi.StringMapOutput {
+	return o.ApplyT(func(v AccessApplicationSaasAppCustomAttributeSource) map[string]string { return v.NameByIdp }).(pulumi.StringMapOutput)
+}
+
+type AccessApplicationSaasAppCustomClaim struct {
+	// Friendly name of the Access Application.
+	Name *string `pulumi:"name"`
+	// True if the attribute must be always present.
+	Required *bool `pulumi:"required"`
+	// The scope of the claim.
+	Scope  *string                                   `pulumi:"scope"`
+	Source AccessApplicationSaasAppCustomClaimSource `pulumi:"source"`
+}
+
+// AccessApplicationSaasAppCustomClaimInput is an input type that accepts AccessApplicationSaasAppCustomClaimArgs and AccessApplicationSaasAppCustomClaimOutput values.
+// You can construct a concrete instance of `AccessApplicationSaasAppCustomClaimInput` via:
+//
+//	AccessApplicationSaasAppCustomClaimArgs{...}
+type AccessApplicationSaasAppCustomClaimInput interface {
+	pulumi.Input
+
+	ToAccessApplicationSaasAppCustomClaimOutput() AccessApplicationSaasAppCustomClaimOutput
+	ToAccessApplicationSaasAppCustomClaimOutputWithContext(context.Context) AccessApplicationSaasAppCustomClaimOutput
+}
+
+type AccessApplicationSaasAppCustomClaimArgs struct {
+	// Friendly name of the Access Application.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// True if the attribute must be always present.
+	Required pulumi.BoolPtrInput `pulumi:"required"`
+	// The scope of the claim.
+	Scope  pulumi.StringPtrInput                          `pulumi:"scope"`
+	Source AccessApplicationSaasAppCustomClaimSourceInput `pulumi:"source"`
+}
+
+func (AccessApplicationSaasAppCustomClaimArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessApplicationSaasAppCustomClaim)(nil)).Elem()
+}
+
+func (i AccessApplicationSaasAppCustomClaimArgs) ToAccessApplicationSaasAppCustomClaimOutput() AccessApplicationSaasAppCustomClaimOutput {
+	return i.ToAccessApplicationSaasAppCustomClaimOutputWithContext(context.Background())
+}
+
+func (i AccessApplicationSaasAppCustomClaimArgs) ToAccessApplicationSaasAppCustomClaimOutputWithContext(ctx context.Context) AccessApplicationSaasAppCustomClaimOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessApplicationSaasAppCustomClaimOutput)
+}
+
+// AccessApplicationSaasAppCustomClaimArrayInput is an input type that accepts AccessApplicationSaasAppCustomClaimArray and AccessApplicationSaasAppCustomClaimArrayOutput values.
+// You can construct a concrete instance of `AccessApplicationSaasAppCustomClaimArrayInput` via:
+//
+//	AccessApplicationSaasAppCustomClaimArray{ AccessApplicationSaasAppCustomClaimArgs{...} }
+type AccessApplicationSaasAppCustomClaimArrayInput interface {
+	pulumi.Input
+
+	ToAccessApplicationSaasAppCustomClaimArrayOutput() AccessApplicationSaasAppCustomClaimArrayOutput
+	ToAccessApplicationSaasAppCustomClaimArrayOutputWithContext(context.Context) AccessApplicationSaasAppCustomClaimArrayOutput
+}
+
+type AccessApplicationSaasAppCustomClaimArray []AccessApplicationSaasAppCustomClaimInput
+
+func (AccessApplicationSaasAppCustomClaimArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AccessApplicationSaasAppCustomClaim)(nil)).Elem()
+}
+
+func (i AccessApplicationSaasAppCustomClaimArray) ToAccessApplicationSaasAppCustomClaimArrayOutput() AccessApplicationSaasAppCustomClaimArrayOutput {
+	return i.ToAccessApplicationSaasAppCustomClaimArrayOutputWithContext(context.Background())
+}
+
+func (i AccessApplicationSaasAppCustomClaimArray) ToAccessApplicationSaasAppCustomClaimArrayOutputWithContext(ctx context.Context) AccessApplicationSaasAppCustomClaimArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessApplicationSaasAppCustomClaimArrayOutput)
+}
+
+type AccessApplicationSaasAppCustomClaimOutput struct{ *pulumi.OutputState }
+
+func (AccessApplicationSaasAppCustomClaimOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessApplicationSaasAppCustomClaim)(nil)).Elem()
+}
+
+func (o AccessApplicationSaasAppCustomClaimOutput) ToAccessApplicationSaasAppCustomClaimOutput() AccessApplicationSaasAppCustomClaimOutput {
+	return o
+}
+
+func (o AccessApplicationSaasAppCustomClaimOutput) ToAccessApplicationSaasAppCustomClaimOutputWithContext(ctx context.Context) AccessApplicationSaasAppCustomClaimOutput {
+	return o
+}
+
+// Friendly name of the Access Application.
+func (o AccessApplicationSaasAppCustomClaimOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AccessApplicationSaasAppCustomClaim) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// True if the attribute must be always present.
+func (o AccessApplicationSaasAppCustomClaimOutput) Required() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AccessApplicationSaasAppCustomClaim) *bool { return v.Required }).(pulumi.BoolPtrOutput)
+}
+
+// The scope of the claim.
+func (o AccessApplicationSaasAppCustomClaimOutput) Scope() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AccessApplicationSaasAppCustomClaim) *string { return v.Scope }).(pulumi.StringPtrOutput)
+}
+
+func (o AccessApplicationSaasAppCustomClaimOutput) Source() AccessApplicationSaasAppCustomClaimSourceOutput {
+	return o.ApplyT(func(v AccessApplicationSaasAppCustomClaim) AccessApplicationSaasAppCustomClaimSource { return v.Source }).(AccessApplicationSaasAppCustomClaimSourceOutput)
+}
+
+type AccessApplicationSaasAppCustomClaimArrayOutput struct{ *pulumi.OutputState }
+
+func (AccessApplicationSaasAppCustomClaimArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AccessApplicationSaasAppCustomClaim)(nil)).Elem()
+}
+
+func (o AccessApplicationSaasAppCustomClaimArrayOutput) ToAccessApplicationSaasAppCustomClaimArrayOutput() AccessApplicationSaasAppCustomClaimArrayOutput {
+	return o
+}
+
+func (o AccessApplicationSaasAppCustomClaimArrayOutput) ToAccessApplicationSaasAppCustomClaimArrayOutputWithContext(ctx context.Context) AccessApplicationSaasAppCustomClaimArrayOutput {
+	return o
+}
+
+func (o AccessApplicationSaasAppCustomClaimArrayOutput) Index(i pulumi.IntInput) AccessApplicationSaasAppCustomClaimOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AccessApplicationSaasAppCustomClaim {
+		return vs[0].([]AccessApplicationSaasAppCustomClaim)[vs[1].(int)]
+	}).(AccessApplicationSaasAppCustomClaimOutput)
+}
+
+type AccessApplicationSaasAppCustomClaimSource struct {
+	// Friendly name of the Access Application.
+	Name string `pulumi:"name"`
+	// A mapping from IdP ID to claim name.
+	NameByIdp map[string]string `pulumi:"nameByIdp"`
+}
+
+// AccessApplicationSaasAppCustomClaimSourceInput is an input type that accepts AccessApplicationSaasAppCustomClaimSourceArgs and AccessApplicationSaasAppCustomClaimSourceOutput values.
+// You can construct a concrete instance of `AccessApplicationSaasAppCustomClaimSourceInput` via:
+//
+//	AccessApplicationSaasAppCustomClaimSourceArgs{...}
+type AccessApplicationSaasAppCustomClaimSourceInput interface {
+	pulumi.Input
+
+	ToAccessApplicationSaasAppCustomClaimSourceOutput() AccessApplicationSaasAppCustomClaimSourceOutput
+	ToAccessApplicationSaasAppCustomClaimSourceOutputWithContext(context.Context) AccessApplicationSaasAppCustomClaimSourceOutput
+}
+
+type AccessApplicationSaasAppCustomClaimSourceArgs struct {
+	// Friendly name of the Access Application.
+	Name pulumi.StringInput `pulumi:"name"`
+	// A mapping from IdP ID to claim name.
+	NameByIdp pulumi.StringMapInput `pulumi:"nameByIdp"`
+}
+
+func (AccessApplicationSaasAppCustomClaimSourceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessApplicationSaasAppCustomClaimSource)(nil)).Elem()
+}
+
+func (i AccessApplicationSaasAppCustomClaimSourceArgs) ToAccessApplicationSaasAppCustomClaimSourceOutput() AccessApplicationSaasAppCustomClaimSourceOutput {
+	return i.ToAccessApplicationSaasAppCustomClaimSourceOutputWithContext(context.Background())
+}
+
+func (i AccessApplicationSaasAppCustomClaimSourceArgs) ToAccessApplicationSaasAppCustomClaimSourceOutputWithContext(ctx context.Context) AccessApplicationSaasAppCustomClaimSourceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessApplicationSaasAppCustomClaimSourceOutput)
+}
+
+type AccessApplicationSaasAppCustomClaimSourceOutput struct{ *pulumi.OutputState }
+
+func (AccessApplicationSaasAppCustomClaimSourceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessApplicationSaasAppCustomClaimSource)(nil)).Elem()
+}
+
+func (o AccessApplicationSaasAppCustomClaimSourceOutput) ToAccessApplicationSaasAppCustomClaimSourceOutput() AccessApplicationSaasAppCustomClaimSourceOutput {
+	return o
+}
+
+func (o AccessApplicationSaasAppCustomClaimSourceOutput) ToAccessApplicationSaasAppCustomClaimSourceOutputWithContext(ctx context.Context) AccessApplicationSaasAppCustomClaimSourceOutput {
+	return o
+}
+
+// Friendly name of the Access Application.
+func (o AccessApplicationSaasAppCustomClaimSourceOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v AccessApplicationSaasAppCustomClaimSource) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// A mapping from IdP ID to claim name.
+func (o AccessApplicationSaasAppCustomClaimSourceOutput) NameByIdp() pulumi.StringMapOutput {
+	return o.ApplyT(func(v AccessApplicationSaasAppCustomClaimSource) map[string]string { return v.NameByIdp }).(pulumi.StringMapOutput)
+}
+
+type AccessApplicationSaasAppRefreshTokenOption struct {
+	// How long a refresh token will be valid for after creation. Valid units are m,h,d. Must be longer than 1m.
+	Lifetime *string `pulumi:"lifetime"`
+}
+
+// AccessApplicationSaasAppRefreshTokenOptionInput is an input type that accepts AccessApplicationSaasAppRefreshTokenOptionArgs and AccessApplicationSaasAppRefreshTokenOptionOutput values.
+// You can construct a concrete instance of `AccessApplicationSaasAppRefreshTokenOptionInput` via:
+//
+//	AccessApplicationSaasAppRefreshTokenOptionArgs{...}
+type AccessApplicationSaasAppRefreshTokenOptionInput interface {
+	pulumi.Input
+
+	ToAccessApplicationSaasAppRefreshTokenOptionOutput() AccessApplicationSaasAppRefreshTokenOptionOutput
+	ToAccessApplicationSaasAppRefreshTokenOptionOutputWithContext(context.Context) AccessApplicationSaasAppRefreshTokenOptionOutput
+}
+
+type AccessApplicationSaasAppRefreshTokenOptionArgs struct {
+	// How long a refresh token will be valid for after creation. Valid units are m,h,d. Must be longer than 1m.
+	Lifetime pulumi.StringPtrInput `pulumi:"lifetime"`
+}
+
+func (AccessApplicationSaasAppRefreshTokenOptionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessApplicationSaasAppRefreshTokenOption)(nil)).Elem()
+}
+
+func (i AccessApplicationSaasAppRefreshTokenOptionArgs) ToAccessApplicationSaasAppRefreshTokenOptionOutput() AccessApplicationSaasAppRefreshTokenOptionOutput {
+	return i.ToAccessApplicationSaasAppRefreshTokenOptionOutputWithContext(context.Background())
+}
+
+func (i AccessApplicationSaasAppRefreshTokenOptionArgs) ToAccessApplicationSaasAppRefreshTokenOptionOutputWithContext(ctx context.Context) AccessApplicationSaasAppRefreshTokenOptionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessApplicationSaasAppRefreshTokenOptionOutput)
+}
+
+// AccessApplicationSaasAppRefreshTokenOptionArrayInput is an input type that accepts AccessApplicationSaasAppRefreshTokenOptionArray and AccessApplicationSaasAppRefreshTokenOptionArrayOutput values.
+// You can construct a concrete instance of `AccessApplicationSaasAppRefreshTokenOptionArrayInput` via:
+//
+//	AccessApplicationSaasAppRefreshTokenOptionArray{ AccessApplicationSaasAppRefreshTokenOptionArgs{...} }
+type AccessApplicationSaasAppRefreshTokenOptionArrayInput interface {
+	pulumi.Input
+
+	ToAccessApplicationSaasAppRefreshTokenOptionArrayOutput() AccessApplicationSaasAppRefreshTokenOptionArrayOutput
+	ToAccessApplicationSaasAppRefreshTokenOptionArrayOutputWithContext(context.Context) AccessApplicationSaasAppRefreshTokenOptionArrayOutput
+}
+
+type AccessApplicationSaasAppRefreshTokenOptionArray []AccessApplicationSaasAppRefreshTokenOptionInput
+
+func (AccessApplicationSaasAppRefreshTokenOptionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AccessApplicationSaasAppRefreshTokenOption)(nil)).Elem()
+}
+
+func (i AccessApplicationSaasAppRefreshTokenOptionArray) ToAccessApplicationSaasAppRefreshTokenOptionArrayOutput() AccessApplicationSaasAppRefreshTokenOptionArrayOutput {
+	return i.ToAccessApplicationSaasAppRefreshTokenOptionArrayOutputWithContext(context.Background())
+}
+
+func (i AccessApplicationSaasAppRefreshTokenOptionArray) ToAccessApplicationSaasAppRefreshTokenOptionArrayOutputWithContext(ctx context.Context) AccessApplicationSaasAppRefreshTokenOptionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessApplicationSaasAppRefreshTokenOptionArrayOutput)
+}
+
+type AccessApplicationSaasAppRefreshTokenOptionOutput struct{ *pulumi.OutputState }
+
+func (AccessApplicationSaasAppRefreshTokenOptionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessApplicationSaasAppRefreshTokenOption)(nil)).Elem()
+}
+
+func (o AccessApplicationSaasAppRefreshTokenOptionOutput) ToAccessApplicationSaasAppRefreshTokenOptionOutput() AccessApplicationSaasAppRefreshTokenOptionOutput {
+	return o
+}
+
+func (o AccessApplicationSaasAppRefreshTokenOptionOutput) ToAccessApplicationSaasAppRefreshTokenOptionOutputWithContext(ctx context.Context) AccessApplicationSaasAppRefreshTokenOptionOutput {
+	return o
+}
+
+// How long a refresh token will be valid for after creation. Valid units are m,h,d. Must be longer than 1m.
+func (o AccessApplicationSaasAppRefreshTokenOptionOutput) Lifetime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AccessApplicationSaasAppRefreshTokenOption) *string { return v.Lifetime }).(pulumi.StringPtrOutput)
+}
+
+type AccessApplicationSaasAppRefreshTokenOptionArrayOutput struct{ *pulumi.OutputState }
+
+func (AccessApplicationSaasAppRefreshTokenOptionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AccessApplicationSaasAppRefreshTokenOption)(nil)).Elem()
+}
+
+func (o AccessApplicationSaasAppRefreshTokenOptionArrayOutput) ToAccessApplicationSaasAppRefreshTokenOptionArrayOutput() AccessApplicationSaasAppRefreshTokenOptionArrayOutput {
+	return o
+}
+
+func (o AccessApplicationSaasAppRefreshTokenOptionArrayOutput) ToAccessApplicationSaasAppRefreshTokenOptionArrayOutputWithContext(ctx context.Context) AccessApplicationSaasAppRefreshTokenOptionArrayOutput {
+	return o
+}
+
+func (o AccessApplicationSaasAppRefreshTokenOptionArrayOutput) Index(i pulumi.IntInput) AccessApplicationSaasAppRefreshTokenOptionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AccessApplicationSaasAppRefreshTokenOption {
+		return vs[0].([]AccessApplicationSaasAppRefreshTokenOption)[vs[1].(int)]
+	}).(AccessApplicationSaasAppRefreshTokenOptionOutput)
 }
 
 type AccessApplicationScimConfig struct {
@@ -24710,6 +25057,121 @@ func (o RecordDataPtrOutput) Weight() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+type RiskBehaviorBehavior struct {
+	// Whether this risk behavior type is enabled.
+	Enabled bool `pulumi:"enabled"`
+	// Name of this risk behavior type
+	Name string `pulumi:"name"`
+	// Risk level. Available values: `low`, `medium`, `high`
+	RiskLevel string `pulumi:"riskLevel"`
+}
+
+// RiskBehaviorBehaviorInput is an input type that accepts RiskBehaviorBehaviorArgs and RiskBehaviorBehaviorOutput values.
+// You can construct a concrete instance of `RiskBehaviorBehaviorInput` via:
+//
+//	RiskBehaviorBehaviorArgs{...}
+type RiskBehaviorBehaviorInput interface {
+	pulumi.Input
+
+	ToRiskBehaviorBehaviorOutput() RiskBehaviorBehaviorOutput
+	ToRiskBehaviorBehaviorOutputWithContext(context.Context) RiskBehaviorBehaviorOutput
+}
+
+type RiskBehaviorBehaviorArgs struct {
+	// Whether this risk behavior type is enabled.
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+	// Name of this risk behavior type
+	Name pulumi.StringInput `pulumi:"name"`
+	// Risk level. Available values: `low`, `medium`, `high`
+	RiskLevel pulumi.StringInput `pulumi:"riskLevel"`
+}
+
+func (RiskBehaviorBehaviorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RiskBehaviorBehavior)(nil)).Elem()
+}
+
+func (i RiskBehaviorBehaviorArgs) ToRiskBehaviorBehaviorOutput() RiskBehaviorBehaviorOutput {
+	return i.ToRiskBehaviorBehaviorOutputWithContext(context.Background())
+}
+
+func (i RiskBehaviorBehaviorArgs) ToRiskBehaviorBehaviorOutputWithContext(ctx context.Context) RiskBehaviorBehaviorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RiskBehaviorBehaviorOutput)
+}
+
+// RiskBehaviorBehaviorArrayInput is an input type that accepts RiskBehaviorBehaviorArray and RiskBehaviorBehaviorArrayOutput values.
+// You can construct a concrete instance of `RiskBehaviorBehaviorArrayInput` via:
+//
+//	RiskBehaviorBehaviorArray{ RiskBehaviorBehaviorArgs{...} }
+type RiskBehaviorBehaviorArrayInput interface {
+	pulumi.Input
+
+	ToRiskBehaviorBehaviorArrayOutput() RiskBehaviorBehaviorArrayOutput
+	ToRiskBehaviorBehaviorArrayOutputWithContext(context.Context) RiskBehaviorBehaviorArrayOutput
+}
+
+type RiskBehaviorBehaviorArray []RiskBehaviorBehaviorInput
+
+func (RiskBehaviorBehaviorArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RiskBehaviorBehavior)(nil)).Elem()
+}
+
+func (i RiskBehaviorBehaviorArray) ToRiskBehaviorBehaviorArrayOutput() RiskBehaviorBehaviorArrayOutput {
+	return i.ToRiskBehaviorBehaviorArrayOutputWithContext(context.Background())
+}
+
+func (i RiskBehaviorBehaviorArray) ToRiskBehaviorBehaviorArrayOutputWithContext(ctx context.Context) RiskBehaviorBehaviorArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RiskBehaviorBehaviorArrayOutput)
+}
+
+type RiskBehaviorBehaviorOutput struct{ *pulumi.OutputState }
+
+func (RiskBehaviorBehaviorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RiskBehaviorBehavior)(nil)).Elem()
+}
+
+func (o RiskBehaviorBehaviorOutput) ToRiskBehaviorBehaviorOutput() RiskBehaviorBehaviorOutput {
+	return o
+}
+
+func (o RiskBehaviorBehaviorOutput) ToRiskBehaviorBehaviorOutputWithContext(ctx context.Context) RiskBehaviorBehaviorOutput {
+	return o
+}
+
+// Whether this risk behavior type is enabled.
+func (o RiskBehaviorBehaviorOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v RiskBehaviorBehavior) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+// Name of this risk behavior type
+func (o RiskBehaviorBehaviorOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v RiskBehaviorBehavior) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Risk level. Available values: `low`, `medium`, `high`
+func (o RiskBehaviorBehaviorOutput) RiskLevel() pulumi.StringOutput {
+	return o.ApplyT(func(v RiskBehaviorBehavior) string { return v.RiskLevel }).(pulumi.StringOutput)
+}
+
+type RiskBehaviorBehaviorArrayOutput struct{ *pulumi.OutputState }
+
+func (RiskBehaviorBehaviorArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RiskBehaviorBehavior)(nil)).Elem()
+}
+
+func (o RiskBehaviorBehaviorArrayOutput) ToRiskBehaviorBehaviorArrayOutput() RiskBehaviorBehaviorArrayOutput {
+	return o
+}
+
+func (o RiskBehaviorBehaviorArrayOutput) ToRiskBehaviorBehaviorArrayOutputWithContext(ctx context.Context) RiskBehaviorBehaviorArrayOutput {
+	return o
+}
+
+func (o RiskBehaviorBehaviorArrayOutput) Index(i pulumi.IntInput) RiskBehaviorBehaviorOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RiskBehaviorBehavior {
+		return vs[0].([]RiskBehaviorBehavior)[vs[1].(int)]
+	}).(RiskBehaviorBehaviorOutput)
+}
+
 type RulesetRule struct {
 	// Action to perform in the ruleset rule. Available values: `block`, `challenge`, `compressResponse`, `ddosDynamic`, `ddosMitigation`, `execute`, `forceConnectionClose`, `jsChallenge`, `log`, `logCustomField`, `managedChallenge`, `redirect`, `rewrite`, `route`, `score`, `serveError`, `setCacheSettings`, `setConfig`, `skip`.
 	Action *string `pulumi:"action"`
@@ -24933,12 +25395,16 @@ type RulesetRuleActionParameters struct {
 	DisableApps *bool `pulumi:"disableApps"`
 	// Turn off railgun feature of the Cloudflare Speed app.
 	DisableRailgun *bool `pulumi:"disableRailgun"`
+	// Turn off RUM feature.
+	DisableRum *bool `pulumi:"disableRum"`
 	// Turn off zaraz feature.
 	DisableZaraz *bool `pulumi:"disableZaraz"`
 	// List of edge TTL parameters to apply to the request.
 	EdgeTtl *RulesetRuleActionParametersEdgeTtl `pulumi:"edgeTtl"`
 	// Turn on or off the Cloudflare Email Obfuscation feature of the Cloudflare Scrape Shield app.
 	EmailObfuscation *bool `pulumi:"emailObfuscation"`
+	// Toggle fonts.
+	Fonts *bool `pulumi:"fonts"`
 	// Use a list to lookup information for the action.
 	FromList *RulesetRuleActionParametersFromList `pulumi:"fromList"`
 	// Use a value to lookup information for the action.
@@ -25048,12 +25514,16 @@ type RulesetRuleActionParametersArgs struct {
 	DisableApps pulumi.BoolPtrInput `pulumi:"disableApps"`
 	// Turn off railgun feature of the Cloudflare Speed app.
 	DisableRailgun pulumi.BoolPtrInput `pulumi:"disableRailgun"`
+	// Turn off RUM feature.
+	DisableRum pulumi.BoolPtrInput `pulumi:"disableRum"`
 	// Turn off zaraz feature.
 	DisableZaraz pulumi.BoolPtrInput `pulumi:"disableZaraz"`
 	// List of edge TTL parameters to apply to the request.
 	EdgeTtl RulesetRuleActionParametersEdgeTtlPtrInput `pulumi:"edgeTtl"`
 	// Turn on or off the Cloudflare Email Obfuscation feature of the Cloudflare Scrape Shield app.
 	EmailObfuscation pulumi.BoolPtrInput `pulumi:"emailObfuscation"`
+	// Toggle fonts.
+	Fonts pulumi.BoolPtrInput `pulumi:"fonts"`
 	// Use a list to lookup information for the action.
 	FromList RulesetRuleActionParametersFromListPtrInput `pulumi:"fromList"`
 	// Use a value to lookup information for the action.
@@ -25267,6 +25737,11 @@ func (o RulesetRuleActionParametersOutput) DisableRailgun() pulumi.BoolPtrOutput
 	return o.ApplyT(func(v RulesetRuleActionParameters) *bool { return v.DisableRailgun }).(pulumi.BoolPtrOutput)
 }
 
+// Turn off RUM feature.
+func (o RulesetRuleActionParametersOutput) DisableRum() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v RulesetRuleActionParameters) *bool { return v.DisableRum }).(pulumi.BoolPtrOutput)
+}
+
 // Turn off zaraz feature.
 func (o RulesetRuleActionParametersOutput) DisableZaraz() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v RulesetRuleActionParameters) *bool { return v.DisableZaraz }).(pulumi.BoolPtrOutput)
@@ -25280,6 +25755,11 @@ func (o RulesetRuleActionParametersOutput) EdgeTtl() RulesetRuleActionParameters
 // Turn on or off the Cloudflare Email Obfuscation feature of the Cloudflare Scrape Shield app.
 func (o RulesetRuleActionParametersOutput) EmailObfuscation() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v RulesetRuleActionParameters) *bool { return v.EmailObfuscation }).(pulumi.BoolPtrOutput)
+}
+
+// Toggle fonts.
+func (o RulesetRuleActionParametersOutput) Fonts() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v RulesetRuleActionParameters) *bool { return v.Fonts }).(pulumi.BoolPtrOutput)
 }
 
 // Use a list to lookup information for the action.
@@ -25610,6 +26090,16 @@ func (o RulesetRuleActionParametersPtrOutput) DisableRailgun() pulumi.BoolPtrOut
 	}).(pulumi.BoolPtrOutput)
 }
 
+// Turn off RUM feature.
+func (o RulesetRuleActionParametersPtrOutput) DisableRum() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *RulesetRuleActionParameters) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.DisableRum
+	}).(pulumi.BoolPtrOutput)
+}
+
 // Turn off zaraz feature.
 func (o RulesetRuleActionParametersPtrOutput) DisableZaraz() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *RulesetRuleActionParameters) *bool {
@@ -25637,6 +26127,16 @@ func (o RulesetRuleActionParametersPtrOutput) EmailObfuscation() pulumi.BoolPtrO
 			return nil
 		}
 		return v.EmailObfuscation
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Toggle fonts.
+func (o RulesetRuleActionParametersPtrOutput) Fonts() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *RulesetRuleActionParameters) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Fonts
 	}).(pulumi.BoolPtrOutput)
 }
 
@@ -36257,7 +36757,7 @@ func (o TeamsRuleRuleSettingsUntrustedCertPtrOutput) Action() pulumi.StringPtrOu
 }
 
 type TunnelConfigConfig struct {
-	// Each incoming request received by cloudflared causes cloudflared to send a request to a local service. This section configures the rules that determine which requests are sent to which local services. [Read more](https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/install-and-setup/tunnel-guide/local/local-management/ingress/).
+	// Each incoming request received by cloudflared causes cloudflared to send a request to a local service. This section configures the rules that determine which requests are sent to which local services. Last rule must match all requests, e.g `service = "http_status:503"`. [Read more](https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/install-and-setup/tunnel-guide/local/local-management/ingress/).
 	IngressRules  []TunnelConfigConfigIngressRule  `pulumi:"ingressRules"`
 	OriginRequest *TunnelConfigConfigOriginRequest `pulumi:"originRequest"`
 	// If you're exposing a [private network](https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/private-net/), you need to add the `warp-routing` key and set it to `true`.
@@ -36276,7 +36776,7 @@ type TunnelConfigConfigInput interface {
 }
 
 type TunnelConfigConfigArgs struct {
-	// Each incoming request received by cloudflared causes cloudflared to send a request to a local service. This section configures the rules that determine which requests are sent to which local services. [Read more](https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/install-and-setup/tunnel-guide/local/local-management/ingress/).
+	// Each incoming request received by cloudflared causes cloudflared to send a request to a local service. This section configures the rules that determine which requests are sent to which local services. Last rule must match all requests, e.g `service = "http_status:503"`. [Read more](https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/install-and-setup/tunnel-guide/local/local-management/ingress/).
 	IngressRules  TunnelConfigConfigIngressRuleArrayInput `pulumi:"ingressRules"`
 	OriginRequest TunnelConfigConfigOriginRequestPtrInput `pulumi:"originRequest"`
 	// If you're exposing a [private network](https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/private-net/), you need to add the `warp-routing` key and set it to `true`.
@@ -36360,7 +36860,7 @@ func (o TunnelConfigConfigOutput) ToTunnelConfigConfigPtrOutputWithContext(ctx c
 	}).(TunnelConfigConfigPtrOutput)
 }
 
-// Each incoming request received by cloudflared causes cloudflared to send a request to a local service. This section configures the rules that determine which requests are sent to which local services. [Read more](https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/install-and-setup/tunnel-guide/local/local-management/ingress/).
+// Each incoming request received by cloudflared causes cloudflared to send a request to a local service. This section configures the rules that determine which requests are sent to which local services. Last rule must match all requests, e.g `service = "http_status:503"`. [Read more](https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/install-and-setup/tunnel-guide/local/local-management/ingress/).
 func (o TunnelConfigConfigOutput) IngressRules() TunnelConfigConfigIngressRuleArrayOutput {
 	return o.ApplyT(func(v TunnelConfigConfig) []TunnelConfigConfigIngressRule { return v.IngressRules }).(TunnelConfigConfigIngressRuleArrayOutput)
 }
@@ -36398,7 +36898,7 @@ func (o TunnelConfigConfigPtrOutput) Elem() TunnelConfigConfigOutput {
 	}).(TunnelConfigConfigOutput)
 }
 
-// Each incoming request received by cloudflared causes cloudflared to send a request to a local service. This section configures the rules that determine which requests are sent to which local services. [Read more](https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/install-and-setup/tunnel-guide/local/local-management/ingress/).
+// Each incoming request received by cloudflared causes cloudflared to send a request to a local service. This section configures the rules that determine which requests are sent to which local services. Last rule must match all requests, e.g `service = "http_status:503"`. [Read more](https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/install-and-setup/tunnel-guide/local/local-management/ingress/).
 func (o TunnelConfigConfigPtrOutput) IngressRules() TunnelConfigConfigIngressRuleArrayOutput {
 	return o.ApplyT(func(v *TunnelConfigConfig) []TunnelConfigConfigIngressRule {
 		if v == nil {
@@ -50768,6 +51268,11 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessApplicationSaasAppCustomAttributeInput)(nil)).Elem(), AccessApplicationSaasAppCustomAttributeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessApplicationSaasAppCustomAttributeArrayInput)(nil)).Elem(), AccessApplicationSaasAppCustomAttributeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessApplicationSaasAppCustomAttributeSourceInput)(nil)).Elem(), AccessApplicationSaasAppCustomAttributeSourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessApplicationSaasAppCustomClaimInput)(nil)).Elem(), AccessApplicationSaasAppCustomClaimArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessApplicationSaasAppCustomClaimArrayInput)(nil)).Elem(), AccessApplicationSaasAppCustomClaimArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessApplicationSaasAppCustomClaimSourceInput)(nil)).Elem(), AccessApplicationSaasAppCustomClaimSourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessApplicationSaasAppRefreshTokenOptionInput)(nil)).Elem(), AccessApplicationSaasAppRefreshTokenOptionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessApplicationSaasAppRefreshTokenOptionArrayInput)(nil)).Elem(), AccessApplicationSaasAppRefreshTokenOptionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessApplicationScimConfigInput)(nil)).Elem(), AccessApplicationScimConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessApplicationScimConfigPtrInput)(nil)).Elem(), AccessApplicationScimConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessApplicationScimConfigAuthenticationInput)(nil)).Elem(), AccessApplicationScimConfigAuthenticationArgs{})
@@ -51071,6 +51576,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*RateLimitMatchResponsePtrInput)(nil)).Elem(), RateLimitMatchResponseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RecordDataInput)(nil)).Elem(), RecordDataArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RecordDataPtrInput)(nil)).Elem(), RecordDataArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RiskBehaviorBehaviorInput)(nil)).Elem(), RiskBehaviorBehaviorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RiskBehaviorBehaviorArrayInput)(nil)).Elem(), RiskBehaviorBehaviorArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RulesetRuleInput)(nil)).Elem(), RulesetRuleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RulesetRuleArrayInput)(nil)).Elem(), RulesetRuleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RulesetRuleActionParametersInput)(nil)).Elem(), RulesetRuleActionParametersArgs{})
@@ -51373,6 +51880,11 @@ func init() {
 	pulumi.RegisterOutputType(AccessApplicationSaasAppCustomAttributeOutput{})
 	pulumi.RegisterOutputType(AccessApplicationSaasAppCustomAttributeArrayOutput{})
 	pulumi.RegisterOutputType(AccessApplicationSaasAppCustomAttributeSourceOutput{})
+	pulumi.RegisterOutputType(AccessApplicationSaasAppCustomClaimOutput{})
+	pulumi.RegisterOutputType(AccessApplicationSaasAppCustomClaimArrayOutput{})
+	pulumi.RegisterOutputType(AccessApplicationSaasAppCustomClaimSourceOutput{})
+	pulumi.RegisterOutputType(AccessApplicationSaasAppRefreshTokenOptionOutput{})
+	pulumi.RegisterOutputType(AccessApplicationSaasAppRefreshTokenOptionArrayOutput{})
 	pulumi.RegisterOutputType(AccessApplicationScimConfigOutput{})
 	pulumi.RegisterOutputType(AccessApplicationScimConfigPtrOutput{})
 	pulumi.RegisterOutputType(AccessApplicationScimConfigAuthenticationOutput{})
@@ -51676,6 +52188,8 @@ func init() {
 	pulumi.RegisterOutputType(RateLimitMatchResponsePtrOutput{})
 	pulumi.RegisterOutputType(RecordDataOutput{})
 	pulumi.RegisterOutputType(RecordDataPtrOutput{})
+	pulumi.RegisterOutputType(RiskBehaviorBehaviorOutput{})
+	pulumi.RegisterOutputType(RiskBehaviorBehaviorArrayOutput{})
 	pulumi.RegisterOutputType(RulesetRuleOutput{})
 	pulumi.RegisterOutputType(RulesetRuleArrayOutput{})
 	pulumi.RegisterOutputType(RulesetRuleActionParametersOutput{})

@@ -338,14 +338,14 @@ public final class AccessApplicationArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The policies associated with the application, in ascending order of precedence. When omitted, the application policies are not be updated. Warning: Do not use this field while you still have this application ID referenced as `application_id` in an `cloudflare.AccessPolicy` resource, as it can result in an inconsistent state.
+     * The policies associated with the application, in ascending order of precedence. When omitted, the application policies are not be updated. Warning: Do not use this field while you still have this application ID referenced as `application_id` in any `cloudflare.AccessPolicy` resource, as it can result in an inconsistent state.
      * 
      */
     @Import(name="policies")
     private @Nullable Output<List<String>> policies;
 
     /**
-     * @return The policies associated with the application, in ascending order of precedence. When omitted, the application policies are not be updated. Warning: Do not use this field while you still have this application ID referenced as `application_id` in an `cloudflare.AccessPolicy` resource, as it can result in an inconsistent state.
+     * @return The policies associated with the application, in ascending order of precedence. When omitted, the application policies are not be updated. Warning: Do not use this field while you still have this application ID referenced as `application_id` in any `cloudflare.AccessPolicy` resource, as it can result in an inconsistent state.
      * 
      */
     public Optional<Output<List<String>>> policies() {
@@ -1039,7 +1039,7 @@ public final class AccessApplicationArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param policies The policies associated with the application, in ascending order of precedence. When omitted, the application policies are not be updated. Warning: Do not use this field while you still have this application ID referenced as `application_id` in an `cloudflare.AccessPolicy` resource, as it can result in an inconsistent state.
+         * @param policies The policies associated with the application, in ascending order of precedence. When omitted, the application policies are not be updated. Warning: Do not use this field while you still have this application ID referenced as `application_id` in any `cloudflare.AccessPolicy` resource, as it can result in an inconsistent state.
          * 
          * @return builder
          * 
@@ -1050,7 +1050,7 @@ public final class AccessApplicationArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param policies The policies associated with the application, in ascending order of precedence. When omitted, the application policies are not be updated. Warning: Do not use this field while you still have this application ID referenced as `application_id` in an `cloudflare.AccessPolicy` resource, as it can result in an inconsistent state.
+         * @param policies The policies associated with the application, in ascending order of precedence. When omitted, the application policies are not be updated. Warning: Do not use this field while you still have this application ID referenced as `application_id` in any `cloudflare.AccessPolicy` resource, as it can result in an inconsistent state.
          * 
          * @return builder
          * 
@@ -1060,7 +1060,7 @@ public final class AccessApplicationArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param policies The policies associated with the application, in ascending order of precedence. When omitted, the application policies are not be updated. Warning: Do not use this field while you still have this application ID referenced as `application_id` in an `cloudflare.AccessPolicy` resource, as it can result in an inconsistent state.
+         * @param policies The policies associated with the application, in ascending order of precedence. When omitted, the application policies are not be updated. Warning: Do not use this field while you still have this application ID referenced as `application_id` in any `cloudflare.AccessPolicy` resource, as it can result in an inconsistent state.
          * 
          * @return builder
          * 

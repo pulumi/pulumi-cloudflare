@@ -162,7 +162,7 @@ namespace Pulumi.Cloudflare
         public Output<bool?> OptionsPreflightBypass { get; private set; } = null!;
 
         /// <summary>
-        /// The policies associated with the application, in ascending order of precedence. When omitted, the application policies are not be updated. Warning: Do not use this field while you still have this application ID referenced as `application_id` in an `cloudflare.AccessPolicy` resource, as it can result in an inconsistent state.
+        /// The policies associated with the application, in ascending order of precedence. When omitted, the application policies are not be updated. Warning: Do not use this field while you still have this application ID referenced as `application_id` in any `cloudflare.AccessPolicy` resource, as it can result in an inconsistent state.
         /// </summary>
         [Output("policies")]
         public Output<ImmutableArray<string>> Policies { get; private set; } = null!;
@@ -427,7 +427,7 @@ namespace Pulumi.Cloudflare
         private InputList<string>? _policies;
 
         /// <summary>
-        /// The policies associated with the application, in ascending order of precedence. When omitted, the application policies are not be updated. Warning: Do not use this field while you still have this application ID referenced as `application_id` in an `cloudflare.AccessPolicy` resource, as it can result in an inconsistent state.
+        /// The policies associated with the application, in ascending order of precedence. When omitted, the application policies are not be updated. Warning: Do not use this field while you still have this application ID referenced as `application_id` in any `cloudflare.AccessPolicy` resource, as it can result in an inconsistent state.
         /// </summary>
         public InputList<string> Policies
         {
@@ -675,7 +675,7 @@ namespace Pulumi.Cloudflare
         private InputList<string>? _policies;
 
         /// <summary>
-        /// The policies associated with the application, in ascending order of precedence. When omitted, the application policies are not be updated. Warning: Do not use this field while you still have this application ID referenced as `application_id` in an `cloudflare.AccessPolicy` resource, as it can result in an inconsistent state.
+        /// The policies associated with the application, in ascending order of precedence. When omitted, the application policies are not be updated. Warning: Do not use this field while you still have this application ID referenced as `application_id` in any `cloudflare.AccessPolicy` resource, as it can result in an inconsistent state.
         /// </summary>
         public InputList<string> Policies
         {

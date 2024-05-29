@@ -13,6 +13,12 @@ namespace Pulumi.Cloudflare.Inputs
     public sealed class AccessApplicationSaasAppArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Allow PKCE flow without a client secret
+        /// </summary>
+        [Input("allowPkceWithoutClientSecret")]
+        public Input<bool>? AllowPkceWithoutClientSecret { get; set; }
+
+        /// <summary>
         /// The URL where this applications tile redirects users.
         /// </summary>
         [Input("appLauncherUrl")]
@@ -59,6 +65,18 @@ namespace Pulumi.Cloudflare.Inputs
         {
             get => _customAttributes ?? (_customAttributes = new InputList<Inputs.AccessApplicationSaasAppCustomAttributeArgs>());
             set => _customAttributes = value;
+        }
+
+        [Input("customClaims")]
+        private InputList<Inputs.AccessApplicationSaasAppCustomClaimArgs>? _customClaims;
+
+        /// <summary>
+        /// Custom claim mapped from IDPs.
+        /// </summary>
+        public InputList<Inputs.AccessApplicationSaasAppCustomClaimArgs> CustomClaims
+        {
+            get => _customClaims ?? (_customClaims = new InputList<Inputs.AccessApplicationSaasAppCustomClaimArgs>());
+            set => _customClaims = value;
         }
 
         /// <summary>
@@ -119,6 +137,18 @@ namespace Pulumi.Cloudflare.Inputs
         {
             get => _redirectUris ?? (_redirectUris = new InputList<string>());
             set => _redirectUris = value;
+        }
+
+        [Input("refreshTokenOptions")]
+        private InputList<Inputs.AccessApplicationSaasAppRefreshTokenOptionArgs>? _refreshTokenOptions;
+
+        /// <summary>
+        /// Refresh token grant options
+        /// </summary>
+        public InputList<Inputs.AccessApplicationSaasAppRefreshTokenOptionArgs> RefreshTokenOptions
+        {
+            get => _refreshTokenOptions ?? (_refreshTokenOptions = new InputList<Inputs.AccessApplicationSaasAppRefreshTokenOptionArgs>());
+            set => _refreshTokenOptions = value;
         }
 
         /// <summary>

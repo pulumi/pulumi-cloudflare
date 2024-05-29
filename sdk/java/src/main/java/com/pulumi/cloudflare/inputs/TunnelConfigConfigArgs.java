@@ -20,14 +20,14 @@ public final class TunnelConfigConfigArgs extends com.pulumi.resources.ResourceA
     public static final TunnelConfigConfigArgs Empty = new TunnelConfigConfigArgs();
 
     /**
-     * Each incoming request received by cloudflared causes cloudflared to send a request to a local service. This section configures the rules that determine which requests are sent to which local services. [Read more](https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/install-and-setup/tunnel-guide/local/local-management/ingress/).
+     * Each incoming request received by cloudflared causes cloudflared to send a request to a local service. This section configures the rules that determine which requests are sent to which local services. Last rule must match all requests, e.g `service = &#34;http_status:503&#34;`. [Read more](https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/install-and-setup/tunnel-guide/local/local-management/ingress/).
      * 
      */
     @Import(name="ingressRules", required=true)
     private Output<List<TunnelConfigConfigIngressRuleArgs>> ingressRules;
 
     /**
-     * @return Each incoming request received by cloudflared causes cloudflared to send a request to a local service. This section configures the rules that determine which requests are sent to which local services. [Read more](https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/install-and-setup/tunnel-guide/local/local-management/ingress/).
+     * @return Each incoming request received by cloudflared causes cloudflared to send a request to a local service. This section configures the rules that determine which requests are sent to which local services. Last rule must match all requests, e.g `service = &#34;http_status:503&#34;`. [Read more](https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/install-and-setup/tunnel-guide/local/local-management/ingress/).
      * 
      */
     public Output<List<TunnelConfigConfigIngressRuleArgs>> ingressRules() {
@@ -83,7 +83,7 @@ public final class TunnelConfigConfigArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param ingressRules Each incoming request received by cloudflared causes cloudflared to send a request to a local service. This section configures the rules that determine which requests are sent to which local services. [Read more](https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/install-and-setup/tunnel-guide/local/local-management/ingress/).
+         * @param ingressRules Each incoming request received by cloudflared causes cloudflared to send a request to a local service. This section configures the rules that determine which requests are sent to which local services. Last rule must match all requests, e.g `service = &#34;http_status:503&#34;`. [Read more](https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/install-and-setup/tunnel-guide/local/local-management/ingress/).
          * 
          * @return builder
          * 
@@ -94,7 +94,7 @@ public final class TunnelConfigConfigArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param ingressRules Each incoming request received by cloudflared causes cloudflared to send a request to a local service. This section configures the rules that determine which requests are sent to which local services. [Read more](https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/install-and-setup/tunnel-guide/local/local-management/ingress/).
+         * @param ingressRules Each incoming request received by cloudflared causes cloudflared to send a request to a local service. This section configures the rules that determine which requests are sent to which local services. Last rule must match all requests, e.g `service = &#34;http_status:503&#34;`. [Read more](https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/install-and-setup/tunnel-guide/local/local-management/ingress/).
          * 
          * @return builder
          * 
@@ -104,7 +104,7 @@ public final class TunnelConfigConfigArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param ingressRules Each incoming request received by cloudflared causes cloudflared to send a request to a local service. This section configures the rules that determine which requests are sent to which local services. [Read more](https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/install-and-setup/tunnel-guide/local/local-management/ingress/).
+         * @param ingressRules Each incoming request received by cloudflared causes cloudflared to send a request to a local service. This section configures the rules that determine which requests are sent to which local services. Last rule must match all requests, e.g `service = &#34;http_status:503&#34;`. [Read more](https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/install-and-setup/tunnel-guide/local/local-management/ingress/).
          * 
          * @return builder
          * 

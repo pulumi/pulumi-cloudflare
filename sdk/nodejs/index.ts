@@ -515,6 +515,11 @@ export type RegionalTieredCache = import("./regionalTieredCache").RegionalTiered
 export const RegionalTieredCache: typeof import("./regionalTieredCache").RegionalTieredCache = null as any;
 utilities.lazyLoad(exports, ["RegionalTieredCache"], () => require("./regionalTieredCache"));
 
+export { RiskBehaviorArgs, RiskBehaviorState } from "./riskBehavior";
+export type RiskBehavior = import("./riskBehavior").RiskBehavior;
+export const RiskBehavior: typeof import("./riskBehavior").RiskBehavior = null as any;
+utilities.lazyLoad(exports, ["RiskBehavior"], () => require("./riskBehavior"));
+
 export { RulesetArgs, RulesetState } from "./ruleset";
 export type Ruleset = import("./ruleset").Ruleset;
 export const Ruleset: typeof import("./ruleset").Ruleset = null as any;
@@ -885,6 +890,8 @@ const _module = {
                 return new RegionalHostname(name, <any>undefined, { urn })
             case "cloudflare:index/regionalTieredCache:RegionalTieredCache":
                 return new RegionalTieredCache(name, <any>undefined, { urn })
+            case "cloudflare:index/riskBehavior:RiskBehavior":
+                return new RiskBehavior(name, <any>undefined, { urn })
             case "cloudflare:index/ruleset:Ruleset":
                 return new Ruleset(name, <any>undefined, { urn })
             case "cloudflare:index/spectrumApplication:SpectrumApplication":
@@ -1048,6 +1055,7 @@ pulumi.runtime.registerResourceModule("cloudflare", "index/rateLimit", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/record", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/regionalHostname", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/regionalTieredCache", _module)
+pulumi.runtime.registerResourceModule("cloudflare", "index/riskBehavior", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/ruleset", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/spectrumApplication", _module)
 pulumi.runtime.registerResourceModule("cloudflare", "index/splitTunnel", _module)

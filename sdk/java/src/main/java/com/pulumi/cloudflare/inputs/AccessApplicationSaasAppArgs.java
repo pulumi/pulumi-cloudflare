@@ -4,8 +4,11 @@
 package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.cloudflare.inputs.AccessApplicationSaasAppCustomAttributeArgs;
+import com.pulumi.cloudflare.inputs.AccessApplicationSaasAppCustomClaimArgs;
+import com.pulumi.cloudflare.inputs.AccessApplicationSaasAppRefreshTokenOptionArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -16,6 +19,21 @@ import javax.annotation.Nullable;
 public final class AccessApplicationSaasAppArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final AccessApplicationSaasAppArgs Empty = new AccessApplicationSaasAppArgs();
+
+    /**
+     * Allow PKCE flow without a client secret
+     * 
+     */
+    @Import(name="allowPkceWithoutClientSecret")
+    private @Nullable Output<Boolean> allowPkceWithoutClientSecret;
+
+    /**
+     * @return Allow PKCE flow without a client secret
+     * 
+     */
+    public Optional<Output<Boolean>> allowPkceWithoutClientSecret() {
+        return Optional.ofNullable(this.allowPkceWithoutClientSecret);
+    }
 
     /**
      * The URL where this applications tile redirects users.
@@ -97,6 +115,21 @@ public final class AccessApplicationSaasAppArgs extends com.pulumi.resources.Res
      */
     public Optional<Output<List<AccessApplicationSaasAppCustomAttributeArgs>>> customAttributes() {
         return Optional.ofNullable(this.customAttributes);
+    }
+
+    /**
+     * Custom claim mapped from IDPs.
+     * 
+     */
+    @Import(name="customClaims")
+    private @Nullable Output<List<AccessApplicationSaasAppCustomClaimArgs>> customClaims;
+
+    /**
+     * @return Custom claim mapped from IDPs.
+     * 
+     */
+    public Optional<Output<List<AccessApplicationSaasAppCustomClaimArgs>>> customClaims() {
+        return Optional.ofNullable(this.customClaims);
     }
 
     /**
@@ -220,6 +253,21 @@ public final class AccessApplicationSaasAppArgs extends com.pulumi.resources.Res
     }
 
     /**
+     * Refresh token grant options
+     * 
+     */
+    @Import(name="refreshTokenOptions")
+    private @Nullable Output<List<AccessApplicationSaasAppRefreshTokenOptionArgs>> refreshTokenOptions;
+
+    /**
+     * @return Refresh token grant options
+     * 
+     */
+    public Optional<Output<List<AccessApplicationSaasAppRefreshTokenOptionArgs>>> refreshTokenOptions() {
+        return Optional.ofNullable(this.refreshTokenOptions);
+    }
+
+    /**
      * A [JSONata](https://jsonata.org/) expression that transforms an application&#39;s user identities into attribute assertions in the SAML response. The expression can transform id, email, name, and groups values. It can also transform fields listed in the saml*attributes or oidc*fields of the identity provider used to authenticate. The output of this expression must be a JSON object.
      * 
      */
@@ -282,12 +330,14 @@ public final class AccessApplicationSaasAppArgs extends com.pulumi.resources.Res
     private AccessApplicationSaasAppArgs() {}
 
     private AccessApplicationSaasAppArgs(AccessApplicationSaasAppArgs $) {
+        this.allowPkceWithoutClientSecret = $.allowPkceWithoutClientSecret;
         this.appLauncherUrl = $.appLauncherUrl;
         this.authType = $.authType;
         this.clientId = $.clientId;
         this.clientSecret = $.clientSecret;
         this.consumerServiceUrl = $.consumerServiceUrl;
         this.customAttributes = $.customAttributes;
+        this.customClaims = $.customClaims;
         this.defaultRelayState = $.defaultRelayState;
         this.grantTypes = $.grantTypes;
         this.groupFilterRegex = $.groupFilterRegex;
@@ -296,6 +346,7 @@ public final class AccessApplicationSaasAppArgs extends com.pulumi.resources.Res
         this.nameIdTransformJsonata = $.nameIdTransformJsonata;
         this.publicKey = $.publicKey;
         this.redirectUris = $.redirectUris;
+        this.refreshTokenOptions = $.refreshTokenOptions;
         this.samlAttributeTransformJsonata = $.samlAttributeTransformJsonata;
         this.scopes = $.scopes;
         this.spEntityId = $.spEntityId;
@@ -318,6 +369,27 @@ public final class AccessApplicationSaasAppArgs extends com.pulumi.resources.Res
 
         public Builder(AccessApplicationSaasAppArgs defaults) {
             $ = new AccessApplicationSaasAppArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param allowPkceWithoutClientSecret Allow PKCE flow without a client secret
+         * 
+         * @return builder
+         * 
+         */
+        public Builder allowPkceWithoutClientSecret(@Nullable Output<Boolean> allowPkceWithoutClientSecret) {
+            $.allowPkceWithoutClientSecret = allowPkceWithoutClientSecret;
+            return this;
+        }
+
+        /**
+         * @param allowPkceWithoutClientSecret Allow PKCE flow without a client secret
+         * 
+         * @return builder
+         * 
+         */
+        public Builder allowPkceWithoutClientSecret(Boolean allowPkceWithoutClientSecret) {
+            return allowPkceWithoutClientSecret(Output.of(allowPkceWithoutClientSecret));
         }
 
         /**
@@ -442,6 +514,37 @@ public final class AccessApplicationSaasAppArgs extends com.pulumi.resources.Res
          */
         public Builder customAttributes(AccessApplicationSaasAppCustomAttributeArgs... customAttributes) {
             return customAttributes(List.of(customAttributes));
+        }
+
+        /**
+         * @param customClaims Custom claim mapped from IDPs.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder customClaims(@Nullable Output<List<AccessApplicationSaasAppCustomClaimArgs>> customClaims) {
+            $.customClaims = customClaims;
+            return this;
+        }
+
+        /**
+         * @param customClaims Custom claim mapped from IDPs.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder customClaims(List<AccessApplicationSaasAppCustomClaimArgs> customClaims) {
+            return customClaims(Output.of(customClaims));
+        }
+
+        /**
+         * @param customClaims Custom claim mapped from IDPs.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder customClaims(AccessApplicationSaasAppCustomClaimArgs... customClaims) {
+            return customClaims(List.of(customClaims));
         }
 
         /**
@@ -630,6 +733,37 @@ public final class AccessApplicationSaasAppArgs extends com.pulumi.resources.Res
          */
         public Builder redirectUris(String... redirectUris) {
             return redirectUris(List.of(redirectUris));
+        }
+
+        /**
+         * @param refreshTokenOptions Refresh token grant options
+         * 
+         * @return builder
+         * 
+         */
+        public Builder refreshTokenOptions(@Nullable Output<List<AccessApplicationSaasAppRefreshTokenOptionArgs>> refreshTokenOptions) {
+            $.refreshTokenOptions = refreshTokenOptions;
+            return this;
+        }
+
+        /**
+         * @param refreshTokenOptions Refresh token grant options
+         * 
+         * @return builder
+         * 
+         */
+        public Builder refreshTokenOptions(List<AccessApplicationSaasAppRefreshTokenOptionArgs> refreshTokenOptions) {
+            return refreshTokenOptions(Output.of(refreshTokenOptions));
+        }
+
+        /**
+         * @param refreshTokenOptions Refresh token grant options
+         * 
+         * @return builder
+         * 
+         */
+        public Builder refreshTokenOptions(AccessApplicationSaasAppRefreshTokenOptionArgs... refreshTokenOptions) {
+            return refreshTokenOptions(List.of(refreshTokenOptions));
         }
 
         /**

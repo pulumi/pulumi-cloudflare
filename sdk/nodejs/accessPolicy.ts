@@ -15,9 +15,9 @@ import * as utilities from "./utilities";
  *    However, if you're using a scoped access token, you must provide the argument that matches the token's
  *    scope. For example, an access token that is scoped to the "example.com" zone needs to use the `zoneId` argument.
  *    If 'application_id' is omitted, the policy created can be reused by multiple access applications.
- *    Any accessApplication resource can reference reusable policies through its `policies` argument.
+ *    Any cloudflare.AccessApplication resource can reference reusable policies through its `policies` argument.
  *    To destroy a reusable policy and remove it from all applications' policies lists on the same apply, preemptively set the
- *    lifecycle option `createBeforeDestroy` to true on the 'access_policy' resource.
+ *    lifecycle option `createBeforeDestroy` to true on the 'cloudflare_access_policy' resource.
  *
  * ## Import
  *
@@ -68,7 +68,7 @@ export class AccessPolicy extends pulumi.CustomResource {
     /**
      * The ID of the application the policy is associated with. Required when using `precedence`. **Modifying this attribute will force creation of a new resource.**
      *
-     * @deprecated This field is deprecated. Policies can now be standalone and reusable by multiple applications.Please use `cloudflare_access_application.policies` to associate policies with applications.
+     * @deprecated This field is deprecated. Policies can now be standalone and reusable by multiple applications.Please use `cloudflare_access_application.policies` to associate reusable access policies with access applications.
      */
     public readonly applicationId!: pulumi.Output<string | undefined>;
     public readonly approvalGroups!: pulumi.Output<outputs.AccessPolicyApprovalGroup[] | undefined>;
@@ -191,7 +191,7 @@ export interface AccessPolicyState {
     /**
      * The ID of the application the policy is associated with. Required when using `precedence`. **Modifying this attribute will force creation of a new resource.**
      *
-     * @deprecated This field is deprecated. Policies can now be standalone and reusable by multiple applications.Please use `cloudflare_access_application.policies` to associate policies with applications.
+     * @deprecated This field is deprecated. Policies can now be standalone and reusable by multiple applications.Please use `cloudflare_access_application.policies` to associate reusable access policies with access applications.
      */
     applicationId?: pulumi.Input<string>;
     approvalGroups?: pulumi.Input<pulumi.Input<inputs.AccessPolicyApprovalGroup>[]>;
@@ -255,7 +255,7 @@ export interface AccessPolicyArgs {
     /**
      * The ID of the application the policy is associated with. Required when using `precedence`. **Modifying this attribute will force creation of a new resource.**
      *
-     * @deprecated This field is deprecated. Policies can now be standalone and reusable by multiple applications.Please use `cloudflare_access_application.policies` to associate policies with applications.
+     * @deprecated This field is deprecated. Policies can now be standalone and reusable by multiple applications.Please use `cloudflare_access_application.policies` to associate reusable access policies with access applications.
      */
     applicationId?: pulumi.Input<string>;
     approvalGroups?: pulumi.Input<pulumi.Input<inputs.AccessPolicyApprovalGroup>[]>;

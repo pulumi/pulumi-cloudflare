@@ -16,7 +16,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class TunnelConfigConfig {
     /**
-     * @return Each incoming request received by cloudflared causes cloudflared to send a request to a local service. This section configures the rules that determine which requests are sent to which local services. [Read more](https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/install-and-setup/tunnel-guide/local/local-management/ingress/).
+     * @return Each incoming request received by cloudflared causes cloudflared to send a request to a local service. This section configures the rules that determine which requests are sent to which local services. Last rule must match all requests, e.g `service = &#34;http_status:503&#34;`. [Read more](https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/install-and-setup/tunnel-guide/local/local-management/ingress/).
      * 
      */
     private List<TunnelConfigConfigIngressRule> ingressRules;
@@ -29,7 +29,7 @@ public final class TunnelConfigConfig {
 
     private TunnelConfigConfig() {}
     /**
-     * @return Each incoming request received by cloudflared causes cloudflared to send a request to a local service. This section configures the rules that determine which requests are sent to which local services. [Read more](https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/install-and-setup/tunnel-guide/local/local-management/ingress/).
+     * @return Each incoming request received by cloudflared causes cloudflared to send a request to a local service. This section configures the rules that determine which requests are sent to which local services. Last rule must match all requests, e.g `service = &#34;http_status:503&#34;`. [Read more](https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/install-and-setup/tunnel-guide/local/local-management/ingress/).
      * 
      */
     public List<TunnelConfigConfigIngressRule> ingressRules() {
