@@ -177,6 +177,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &RegionalHostname{}
 	case "cloudflare:index/regionalTieredCache:RegionalTieredCache":
 		r = &RegionalTieredCache{}
+	case "cloudflare:index/riskBehavior:RiskBehavior":
+		r = &RiskBehavior{}
 	case "cloudflare:index/ruleset:Ruleset":
 		r = &Ruleset{}
 	case "cloudflare:index/spectrumApplication:SpectrumApplication":
@@ -676,6 +678,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"cloudflare",
 		"index/regionalTieredCache",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"cloudflare",
+		"index/riskBehavior",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

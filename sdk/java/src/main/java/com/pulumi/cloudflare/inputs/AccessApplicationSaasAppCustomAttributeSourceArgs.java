@@ -7,7 +7,10 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class AccessApplicationSaasAppCustomAttributeSourceArgs extends com.pulumi.resources.ResourceArgs {
@@ -29,10 +32,26 @@ public final class AccessApplicationSaasAppCustomAttributeSourceArgs extends com
         return this.name;
     }
 
+    /**
+     * A mapping from IdP ID to claim name.
+     * 
+     */
+    @Import(name="nameByIdp")
+    private @Nullable Output<Map<String,String>> nameByIdp;
+
+    /**
+     * @return A mapping from IdP ID to claim name.
+     * 
+     */
+    public Optional<Output<Map<String,String>>> nameByIdp() {
+        return Optional.ofNullable(this.nameByIdp);
+    }
+
     private AccessApplicationSaasAppCustomAttributeSourceArgs() {}
 
     private AccessApplicationSaasAppCustomAttributeSourceArgs(AccessApplicationSaasAppCustomAttributeSourceArgs $) {
         this.name = $.name;
+        this.nameByIdp = $.nameByIdp;
     }
 
     public static Builder builder() {
@@ -72,6 +91,27 @@ public final class AccessApplicationSaasAppCustomAttributeSourceArgs extends com
          */
         public Builder name(String name) {
             return name(Output.of(name));
+        }
+
+        /**
+         * @param nameByIdp A mapping from IdP ID to claim name.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder nameByIdp(@Nullable Output<Map<String,String>> nameByIdp) {
+            $.nameByIdp = nameByIdp;
+            return this;
+        }
+
+        /**
+         * @param nameByIdp A mapping from IdP ID to claim name.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder nameByIdp(Map<String,String> nameByIdp) {
+            return nameByIdp(Output.of(nameByIdp));
         }
 
         public AccessApplicationSaasAppCustomAttributeSourceArgs build() {

@@ -53,8 +53,8 @@ class AccessPolicyArgs:
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
         if application_id is not None:
-            warnings.warn("""This field is deprecated. Policies can now be standalone and reusable by multiple applications.Please use `cloudflare_access_application.policies` to associate policies with applications.""", DeprecationWarning)
-            pulumi.log.warn("""application_id is deprecated: This field is deprecated. Policies can now be standalone and reusable by multiple applications.Please use `cloudflare_access_application.policies` to associate policies with applications.""")
+            warnings.warn("""This field is deprecated. Policies can now be standalone and reusable by multiple applications.Please use `cloudflare_access_application.policies` to associate reusable access policies with access applications.""", DeprecationWarning)
+            pulumi.log.warn("""application_id is deprecated: This field is deprecated. Policies can now be standalone and reusable by multiple applications.Please use `cloudflare_access_application.policies` to associate reusable access policies with access applications.""")
         if application_id is not None:
             pulumi.set(__self__, "application_id", application_id)
         if approval_groups is not None:
@@ -135,8 +135,8 @@ class AccessPolicyArgs:
         """
         The ID of the application the policy is associated with. Required when using `precedence`. **Modifying this attribute will force creation of a new resource.**
         """
-        warnings.warn("""This field is deprecated. Policies can now be standalone and reusable by multiple applications.Please use `cloudflare_access_application.policies` to associate policies with applications.""", DeprecationWarning)
-        pulumi.log.warn("""application_id is deprecated: This field is deprecated. Policies can now be standalone and reusable by multiple applications.Please use `cloudflare_access_application.policies` to associate policies with applications.""")
+        warnings.warn("""This field is deprecated. Policies can now be standalone and reusable by multiple applications.Please use `cloudflare_access_application.policies` to associate reusable access policies with access applications.""", DeprecationWarning)
+        pulumi.log.warn("""application_id is deprecated: This field is deprecated. Policies can now be standalone and reusable by multiple applications.Please use `cloudflare_access_application.policies` to associate reusable access policies with access applications.""")
 
         return pulumi.get(self, "application_id")
 
@@ -299,8 +299,8 @@ class _AccessPolicyState:
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
         if application_id is not None:
-            warnings.warn("""This field is deprecated. Policies can now be standalone and reusable by multiple applications.Please use `cloudflare_access_application.policies` to associate policies with applications.""", DeprecationWarning)
-            pulumi.log.warn("""application_id is deprecated: This field is deprecated. Policies can now be standalone and reusable by multiple applications.Please use `cloudflare_access_application.policies` to associate policies with applications.""")
+            warnings.warn("""This field is deprecated. Policies can now be standalone and reusable by multiple applications.Please use `cloudflare_access_application.policies` to associate reusable access policies with access applications.""", DeprecationWarning)
+            pulumi.log.warn("""application_id is deprecated: This field is deprecated. Policies can now be standalone and reusable by multiple applications.Please use `cloudflare_access_application.policies` to associate reusable access policies with access applications.""")
         if application_id is not None:
             pulumi.set(__self__, "application_id", application_id)
         if approval_groups is not None:
@@ -351,8 +351,8 @@ class _AccessPolicyState:
         """
         The ID of the application the policy is associated with. Required when using `precedence`. **Modifying this attribute will force creation of a new resource.**
         """
-        warnings.warn("""This field is deprecated. Policies can now be standalone and reusable by multiple applications.Please use `cloudflare_access_application.policies` to associate policies with applications.""", DeprecationWarning)
-        pulumi.log.warn("""application_id is deprecated: This field is deprecated. Policies can now be standalone and reusable by multiple applications.Please use `cloudflare_access_application.policies` to associate policies with applications.""")
+        warnings.warn("""This field is deprecated. Policies can now be standalone and reusable by multiple applications.Please use `cloudflare_access_application.policies` to associate reusable access policies with access applications.""", DeprecationWarning)
+        pulumi.log.warn("""application_id is deprecated: This field is deprecated. Policies can now be standalone and reusable by multiple applications.Please use `cloudflare_access_application.policies` to associate reusable access policies with access applications.""")
 
         return pulumi.get(self, "application_id")
 
@@ -544,9 +544,9 @@ class AccessPolicy(pulumi.CustomResource):
            However, if you're using a scoped access token, you must provide the argument that matches the token's
            scope. For example, an access token that is scoped to the "example.com" zone needs to use the `zone_id` argument.
            If 'application_id' is omitted, the policy created can be reused by multiple access applications.
-           Any access_application resource can reference reusable policies through its `policies` argument.
+           Any AccessApplication resource can reference reusable policies through its `policies` argument.
            To destroy a reusable policy and remove it from all applications' policies lists on the same apply, preemptively set the
-           lifecycle option `create_before_destroy` to true on the 'access_policy' resource.
+           lifecycle option `create_before_destroy` to true on the 'cloudflare_access_policy' resource.
 
         ## Import
 
@@ -593,9 +593,9 @@ class AccessPolicy(pulumi.CustomResource):
            However, if you're using a scoped access token, you must provide the argument that matches the token's
            scope. For example, an access token that is scoped to the "example.com" zone needs to use the `zone_id` argument.
            If 'application_id' is omitted, the policy created can be reused by multiple access applications.
-           Any access_application resource can reference reusable policies through its `policies` argument.
+           Any AccessApplication resource can reference reusable policies through its `policies` argument.
            To destroy a reusable policy and remove it from all applications' policies lists on the same apply, preemptively set the
-           lifecycle option `create_before_destroy` to true on the 'access_policy' resource.
+           lifecycle option `create_before_destroy` to true on the 'cloudflare_access_policy' resource.
 
         ## Import
 
@@ -752,8 +752,8 @@ class AccessPolicy(pulumi.CustomResource):
         """
         The ID of the application the policy is associated with. Required when using `precedence`. **Modifying this attribute will force creation of a new resource.**
         """
-        warnings.warn("""This field is deprecated. Policies can now be standalone and reusable by multiple applications.Please use `cloudflare_access_application.policies` to associate policies with applications.""", DeprecationWarning)
-        pulumi.log.warn("""application_id is deprecated: This field is deprecated. Policies can now be standalone and reusable by multiple applications.Please use `cloudflare_access_application.policies` to associate policies with applications.""")
+        warnings.warn("""This field is deprecated. Policies can now be standalone and reusable by multiple applications.Please use `cloudflare_access_application.policies` to associate reusable access policies with access applications.""", DeprecationWarning)
+        pulumi.log.warn("""application_id is deprecated: This field is deprecated. Policies can now be standalone and reusable by multiple applications.Please use `cloudflare_access_application.policies` to associate reusable access policies with access applications.""")
 
         return pulumi.get(self, "application_id")
 

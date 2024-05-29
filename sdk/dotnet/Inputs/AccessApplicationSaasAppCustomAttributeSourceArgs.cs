@@ -18,6 +18,18 @@ namespace Pulumi.Cloudflare.Inputs
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
+        [Input("nameByIdp")]
+        private InputMap<string>? _nameByIdp;
+
+        /// <summary>
+        /// A mapping from IdP ID to claim name.
+        /// </summary>
+        public InputMap<string> NameByIdp
+        {
+            get => _nameByIdp ?? (_nameByIdp = new InputMap<string>());
+            set => _nameByIdp = value;
+        }
+
         public AccessApplicationSaasAppCustomAttributeSourceArgs()
         {
         }

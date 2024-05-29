@@ -115,6 +115,12 @@ namespace Pulumi.Cloudflare.Inputs
         public Input<bool>? DisableRailgun { get; set; }
 
         /// <summary>
+        /// Turn off RUM feature.
+        /// </summary>
+        [Input("disableRum")]
+        public Input<bool>? DisableRum { get; set; }
+
+        /// <summary>
         /// Turn off zaraz feature.
         /// </summary>
         [Input("disableZaraz")]
@@ -131,6 +137,12 @@ namespace Pulumi.Cloudflare.Inputs
         /// </summary>
         [Input("emailObfuscation")]
         public Input<bool>? EmailObfuscation { get; set; }
+
+        /// <summary>
+        /// Toggle fonts.
+        /// </summary>
+        [Input("fonts")]
+        public Input<bool>? Fonts { get; set; }
 
         /// <summary>
         /// Use a list to lookup information for the action.

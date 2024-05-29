@@ -76,6 +76,10 @@ export interface AccessApplicationLandingPageDesign {
 
 export interface AccessApplicationSaasApp {
     /**
+     * Allow PKCE flow without a client secret
+     */
+    allowPkceWithoutClientSecret?: boolean;
+    /**
      * The URL where this applications tile redirects users.
      */
     appLauncherUrl?: string;
@@ -96,6 +100,10 @@ export interface AccessApplicationSaasApp {
      * Custom attribute mapped from IDPs.
      */
     customAttributes?: outputs.AccessApplicationSaasAppCustomAttribute[];
+    /**
+     * Custom claim mapped from IDPs.
+     */
+    customClaims?: outputs.AccessApplicationSaasAppCustomClaim[];
     /**
      * The relay state used if not provided by the identity provider.
      */
@@ -128,6 +136,10 @@ export interface AccessApplicationSaasApp {
      * The permitted URL's for Cloudflare to return Authorization codes and Access/ID tokens.
      */
     redirectUris?: string[];
+    /**
+     * Refresh token grant options
+     */
+    refreshTokenOptions?: outputs.AccessApplicationSaasAppRefreshTokenOption[];
     /**
      * A [JSONata](https://jsonata.org/) expression that transforms an application's user identities into attribute assertions in the SAML response. The expression can transform id, email, name, and groups values. It can also transform fields listed in the saml*attributes or oidc*fields of the identity provider used to authenticate. The output of this expression must be a JSON object.
      */
@@ -171,6 +183,44 @@ export interface AccessApplicationSaasAppCustomAttributeSource {
      * The name of the attribute as provided by the IDP.
      */
     name: string;
+    /**
+     * A mapping from IdP ID to claim name.
+     */
+    nameByIdp?: {[key: string]: string};
+}
+
+export interface AccessApplicationSaasAppCustomClaim {
+    /**
+     * Friendly name of the Access Application.
+     */
+    name?: string;
+    /**
+     * True if the attribute must be always present.
+     */
+    required?: boolean;
+    /**
+     * The scope of the claim.
+     */
+    scope?: string;
+    source: outputs.AccessApplicationSaasAppCustomClaimSource;
+}
+
+export interface AccessApplicationSaasAppCustomClaimSource {
+    /**
+     * Friendly name of the Access Application.
+     */
+    name: string;
+    /**
+     * A mapping from IdP ID to claim name.
+     */
+    nameByIdp?: {[key: string]: string};
+}
+
+export interface AccessApplicationSaasAppRefreshTokenOption {
+    /**
+     * How long a refresh token will be valid for after creation. Valid units are m,h,d. Must be longer than 1m.
+     */
+    lifetime?: string;
 }
 
 export interface AccessApplicationScimConfig {
@@ -3882,6 +3932,21 @@ export interface RecordData {
     weight?: number;
 }
 
+export interface RiskBehaviorBehavior {
+    /**
+     * Whether this risk behavior type is enabled.
+     */
+    enabled: boolean;
+    /**
+     * Name of this risk behavior type
+     */
+    name: string;
+    /**
+     * Risk level. Available values: `low`, `medium`, `high`
+     */
+    riskLevel: string;
+}
+
 export interface RulesetRule {
     /**
      * Action to perform in the ruleset rule. Available values: `block`, `challenge`, `compressResponse`, `ddosDynamic`, `ddosMitigation`, `execute`, `forceConnectionClose`, `jsChallenge`, `log`, `logCustomField`, `managedChallenge`, `redirect`, `rewrite`, `route`, `score`, `serveError`, `setCacheSettings`, `setConfig`, `skip`.
@@ -3987,6 +4052,10 @@ export interface RulesetRuleActionParameters {
      */
     disableRailgun?: boolean;
     /**
+     * Turn off RUM feature.
+     */
+    disableRum?: boolean;
+    /**
      * Turn off zaraz feature.
      */
     disableZaraz?: boolean;
@@ -3998,6 +4067,10 @@ export interface RulesetRuleActionParameters {
      * Turn on or off the Cloudflare Email Obfuscation feature of the Cloudflare Scrape Shield app.
      */
     emailObfuscation?: boolean;
+    /**
+     * Toggle fonts.
+     */
+    fonts?: boolean;
     /**
      * Use a list to lookup information for the action.
      */
@@ -5040,7 +5113,7 @@ export interface TeamsRuleRuleSettingsUntrustedCert {
 
 export interface TunnelConfigConfig {
     /**
-     * Each incoming request received by cloudflared causes cloudflared to send a request to a local service. This section configures the rules that determine which requests are sent to which local services. [Read more](https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/install-and-setup/tunnel-guide/local/local-management/ingress/).
+     * Each incoming request received by cloudflared causes cloudflared to send a request to a local service. This section configures the rules that determine which requests are sent to which local services. Last rule must match all requests, e.g `service = "http_status:503"`. [Read more](https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/install-and-setup/tunnel-guide/local/local-management/ingress/).
      */
     ingressRules: outputs.TunnelConfigConfigIngressRule[];
     originRequest?: outputs.TunnelConfigConfigOriginRequest;

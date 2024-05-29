@@ -74,7 +74,7 @@ type AccessApplication struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if corsHeaders is set. Defaults to `false`.
 	OptionsPreflightBypass pulumi.BoolPtrOutput `pulumi:"optionsPreflightBypass"`
-	// The policies associated with the application, in ascending order of precedence. When omitted, the application policies are not be updated. Warning: Do not use this field while you still have this application ID referenced as `applicationId` in an `AccessPolicy` resource, as it can result in an inconsistent state.
+	// The policies associated with the application, in ascending order of precedence. When omitted, the application policies are not be updated. Warning: Do not use this field while you still have this application ID referenced as `applicationId` in any `AccessPolicy` resource, as it can result in an inconsistent state.
 	Policies pulumi.StringArrayOutput `pulumi:"policies"`
 	// SaaS configuration for the Access Application.
 	SaasApp AccessApplicationSaasAppPtrOutput `pulumi:"saasApp"`
@@ -172,7 +172,7 @@ type accessApplicationState struct {
 	Name *string `pulumi:"name"`
 	// Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if corsHeaders is set. Defaults to `false`.
 	OptionsPreflightBypass *bool `pulumi:"optionsPreflightBypass"`
-	// The policies associated with the application, in ascending order of precedence. When omitted, the application policies are not be updated. Warning: Do not use this field while you still have this application ID referenced as `applicationId` in an `AccessPolicy` resource, as it can result in an inconsistent state.
+	// The policies associated with the application, in ascending order of precedence. When omitted, the application policies are not be updated. Warning: Do not use this field while you still have this application ID referenced as `applicationId` in any `AccessPolicy` resource, as it can result in an inconsistent state.
 	Policies []string `pulumi:"policies"`
 	// SaaS configuration for the Access Application.
 	SaasApp *AccessApplicationSaasApp `pulumi:"saasApp"`
@@ -241,7 +241,7 @@ type AccessApplicationState struct {
 	Name pulumi.StringPtrInput
 	// Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if corsHeaders is set. Defaults to `false`.
 	OptionsPreflightBypass pulumi.BoolPtrInput
-	// The policies associated with the application, in ascending order of precedence. When omitted, the application policies are not be updated. Warning: Do not use this field while you still have this application ID referenced as `applicationId` in an `AccessPolicy` resource, as it can result in an inconsistent state.
+	// The policies associated with the application, in ascending order of precedence. When omitted, the application policies are not be updated. Warning: Do not use this field while you still have this application ID referenced as `applicationId` in any `AccessPolicy` resource, as it can result in an inconsistent state.
 	Policies pulumi.StringArrayInput
 	// SaaS configuration for the Access Application.
 	SaasApp AccessApplicationSaasAppPtrInput
@@ -312,7 +312,7 @@ type accessApplicationArgs struct {
 	Name *string `pulumi:"name"`
 	// Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if corsHeaders is set. Defaults to `false`.
 	OptionsPreflightBypass *bool `pulumi:"optionsPreflightBypass"`
-	// The policies associated with the application, in ascending order of precedence. When omitted, the application policies are not be updated. Warning: Do not use this field while you still have this application ID referenced as `applicationId` in an `AccessPolicy` resource, as it can result in an inconsistent state.
+	// The policies associated with the application, in ascending order of precedence. When omitted, the application policies are not be updated. Warning: Do not use this field while you still have this application ID referenced as `applicationId` in any `AccessPolicy` resource, as it can result in an inconsistent state.
 	Policies []string `pulumi:"policies"`
 	// SaaS configuration for the Access Application.
 	SaasApp *AccessApplicationSaasApp `pulumi:"saasApp"`
@@ -380,7 +380,7 @@ type AccessApplicationArgs struct {
 	Name pulumi.StringPtrInput
 	// Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if corsHeaders is set. Defaults to `false`.
 	OptionsPreflightBypass pulumi.BoolPtrInput
-	// The policies associated with the application, in ascending order of precedence. When omitted, the application policies are not be updated. Warning: Do not use this field while you still have this application ID referenced as `applicationId` in an `AccessPolicy` resource, as it can result in an inconsistent state.
+	// The policies associated with the application, in ascending order of precedence. When omitted, the application policies are not be updated. Warning: Do not use this field while you still have this application ID referenced as `applicationId` in any `AccessPolicy` resource, as it can result in an inconsistent state.
 	Policies pulumi.StringArrayInput
 	// SaaS configuration for the Access Application.
 	SaasApp AccessApplicationSaasAppPtrInput
@@ -601,7 +601,7 @@ func (o AccessApplicationOutput) OptionsPreflightBypass() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *AccessApplication) pulumi.BoolPtrOutput { return v.OptionsPreflightBypass }).(pulumi.BoolPtrOutput)
 }
 
-// The policies associated with the application, in ascending order of precedence. When omitted, the application policies are not be updated. Warning: Do not use this field while you still have this application ID referenced as `applicationId` in an `AccessPolicy` resource, as it can result in an inconsistent state.
+// The policies associated with the application, in ascending order of precedence. When omitted, the application policies are not be updated. Warning: Do not use this field while you still have this application ID referenced as `applicationId` in any `AccessPolicy` resource, as it can result in an inconsistent state.
 func (o AccessApplicationOutput) Policies() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *AccessApplication) pulumi.StringArrayOutput { return v.Policies }).(pulumi.StringArrayOutput)
 }

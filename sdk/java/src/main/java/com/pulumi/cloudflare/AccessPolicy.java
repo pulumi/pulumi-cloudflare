@@ -30,9 +30,9 @@ import javax.annotation.Nullable;
  *    However, if you&#39;re using a scoped access token, you must provide the argument that matches the token&#39;s
  *    scope. For example, an access token that is scoped to the &#34;example.com&#34; zone needs to use the `zone_id` argument.
  *    If &#39;application_id&#39; is omitted, the policy created can be reused by multiple access applications.
- *    Any access_application resource can reference reusable policies through its `policies` argument.
+ *    Any cloudflare.AccessApplication resource can reference reusable policies through its `policies` argument.
  *    To destroy a reusable policy and remove it from all applications&#39; policies lists on the same apply, preemptively set the
- *    lifecycle option `create_before_destroy` to true on the &#39;access_policy&#39; resource.
+ *    lifecycle option `create_before_destroy` to true on the &#39;cloudflare_access_policy&#39; resource.
  * 
  * ## Import
  * 
@@ -69,10 +69,10 @@ public class AccessPolicy extends com.pulumi.resources.CustomResource {
      * The ID of the application the policy is associated with. Required when using `precedence`. **Modifying this attribute will force creation of a new resource.**
      * 
      * @deprecated
-     * This field is deprecated. Policies can now be standalone and reusable by multiple applications.Please use `cloudflare_access_application.policies` to associate policies with applications.
+     * This field is deprecated. Policies can now be standalone and reusable by multiple applications.Please use `cloudflare_access_application.policies` to associate reusable access policies with access applications.
      * 
      */
-    @Deprecated /* This field is deprecated. Policies can now be standalone and reusable by multiple applications.Please use `cloudflare_access_application.policies` to associate policies with applications. */
+    @Deprecated /* This field is deprecated. Policies can now be standalone and reusable by multiple applications.Please use `cloudflare_access_application.policies` to associate reusable access policies with access applications. */
     @Export(name="applicationId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> applicationId;
 

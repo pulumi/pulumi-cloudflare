@@ -17,6 +17,9 @@ __all__ = [
     'AccessApplicationSaasApp',
     'AccessApplicationSaasAppCustomAttribute',
     'AccessApplicationSaasAppCustomAttributeSource',
+    'AccessApplicationSaasAppCustomClaim',
+    'AccessApplicationSaasAppCustomClaimSource',
+    'AccessApplicationSaasAppRefreshTokenOption',
     'AccessApplicationScimConfig',
     'AccessApplicationScimConfigAuthentication',
     'AccessApplicationScimConfigMapping',
@@ -169,6 +172,7 @@ __all__ = [
     'RateLimitMatchRequest',
     'RateLimitMatchResponse',
     'RecordData',
+    'RiskBehaviorBehavior',
     'RulesetRule',
     'RulesetRuleActionParameters',
     'RulesetRuleActionParametersAlgorithm',
@@ -575,7 +579,9 @@ class AccessApplicationSaasApp(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "appLauncherUrl":
+        if key == "allowPkceWithoutClientSecret":
+            suggest = "allow_pkce_without_client_secret"
+        elif key == "appLauncherUrl":
             suggest = "app_launcher_url"
         elif key == "authType":
             suggest = "auth_type"
@@ -587,6 +593,8 @@ class AccessApplicationSaasApp(dict):
             suggest = "consumer_service_url"
         elif key == "customAttributes":
             suggest = "custom_attributes"
+        elif key == "customClaims":
+            suggest = "custom_claims"
         elif key == "defaultRelayState":
             suggest = "default_relay_state"
         elif key == "grantTypes":
@@ -603,6 +611,8 @@ class AccessApplicationSaasApp(dict):
             suggest = "public_key"
         elif key == "redirectUris":
             suggest = "redirect_uris"
+        elif key == "refreshTokenOptions":
+            suggest = "refresh_token_options"
         elif key == "samlAttributeTransformJsonata":
             suggest = "saml_attribute_transform_jsonata"
         elif key == "spEntityId":
@@ -622,12 +632,14 @@ class AccessApplicationSaasApp(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 allow_pkce_without_client_secret: Optional[bool] = None,
                  app_launcher_url: Optional[str] = None,
                  auth_type: Optional[str] = None,
                  client_id: Optional[str] = None,
                  client_secret: Optional[str] = None,
                  consumer_service_url: Optional[str] = None,
                  custom_attributes: Optional[Sequence['outputs.AccessApplicationSaasAppCustomAttribute']] = None,
+                 custom_claims: Optional[Sequence['outputs.AccessApplicationSaasAppCustomClaim']] = None,
                  default_relay_state: Optional[str] = None,
                  grant_types: Optional[Sequence[str]] = None,
                  group_filter_regex: Optional[str] = None,
@@ -636,16 +648,19 @@ class AccessApplicationSaasApp(dict):
                  name_id_transform_jsonata: Optional[str] = None,
                  public_key: Optional[str] = None,
                  redirect_uris: Optional[Sequence[str]] = None,
+                 refresh_token_options: Optional[Sequence['outputs.AccessApplicationSaasAppRefreshTokenOption']] = None,
                  saml_attribute_transform_jsonata: Optional[str] = None,
                  scopes: Optional[Sequence[str]] = None,
                  sp_entity_id: Optional[str] = None,
                  sso_endpoint: Optional[str] = None):
         """
+        :param bool allow_pkce_without_client_secret: Allow PKCE flow without a client secret
         :param str app_launcher_url: The URL where this applications tile redirects users.
         :param str client_id: The application client id.
         :param str client_secret: The application client secret, only returned on initial apply.
         :param str consumer_service_url: The service provider's endpoint that is responsible for receiving and parsing a SAML assertion.
         :param Sequence['AccessApplicationSaasAppCustomAttributeArgs'] custom_attributes: Custom attribute mapped from IDPs.
+        :param Sequence['AccessApplicationSaasAppCustomClaimArgs'] custom_claims: Custom claim mapped from IDPs.
         :param str default_relay_state: The relay state used if not provided by the identity provider.
         :param Sequence[str] grant_types: The OIDC flows supported by this application.
         :param str group_filter_regex: A regex to filter Cloudflare groups returned in ID token and userinfo endpoint.
@@ -654,11 +669,14 @@ class AccessApplicationSaasApp(dict):
         :param str name_id_transform_jsonata: A [JSONata](https://jsonata.org/) expression that transforms an application's user identities into a NameID value for its SAML assertion. This expression should evaluate to a singular string. The output of this expression can override the `name_id_format` setting.
         :param str public_key: The public certificate that will be used to verify identities.
         :param Sequence[str] redirect_uris: The permitted URL's for Cloudflare to return Authorization codes and Access/ID tokens.
+        :param Sequence['AccessApplicationSaasAppRefreshTokenOptionArgs'] refresh_token_options: Refresh token grant options
         :param str saml_attribute_transform_jsonata: A [JSONata](https://jsonata.org/) expression that transforms an application's user identities into attribute assertions in the SAML response. The expression can transform id, email, name, and groups values. It can also transform fields listed in the saml*attributes or oidc*fields of the identity provider used to authenticate. The output of this expression must be a JSON object.
         :param Sequence[str] scopes: Define the user information shared with access.
         :param str sp_entity_id: A globally unique name for an identity or service provider.
         :param str sso_endpoint: The endpoint where the SaaS application will send login requests.
         """
+        if allow_pkce_without_client_secret is not None:
+            pulumi.set(__self__, "allow_pkce_without_client_secret", allow_pkce_without_client_secret)
         if app_launcher_url is not None:
             pulumi.set(__self__, "app_launcher_url", app_launcher_url)
         if auth_type is not None:
@@ -671,6 +689,8 @@ class AccessApplicationSaasApp(dict):
             pulumi.set(__self__, "consumer_service_url", consumer_service_url)
         if custom_attributes is not None:
             pulumi.set(__self__, "custom_attributes", custom_attributes)
+        if custom_claims is not None:
+            pulumi.set(__self__, "custom_claims", custom_claims)
         if default_relay_state is not None:
             pulumi.set(__self__, "default_relay_state", default_relay_state)
         if grant_types is not None:
@@ -687,6 +707,8 @@ class AccessApplicationSaasApp(dict):
             pulumi.set(__self__, "public_key", public_key)
         if redirect_uris is not None:
             pulumi.set(__self__, "redirect_uris", redirect_uris)
+        if refresh_token_options is not None:
+            pulumi.set(__self__, "refresh_token_options", refresh_token_options)
         if saml_attribute_transform_jsonata is not None:
             pulumi.set(__self__, "saml_attribute_transform_jsonata", saml_attribute_transform_jsonata)
         if scopes is not None:
@@ -695,6 +717,14 @@ class AccessApplicationSaasApp(dict):
             pulumi.set(__self__, "sp_entity_id", sp_entity_id)
         if sso_endpoint is not None:
             pulumi.set(__self__, "sso_endpoint", sso_endpoint)
+
+    @property
+    @pulumi.getter(name="allowPkceWithoutClientSecret")
+    def allow_pkce_without_client_secret(self) -> Optional[bool]:
+        """
+        Allow PKCE flow without a client secret
+        """
+        return pulumi.get(self, "allow_pkce_without_client_secret")
 
     @property
     @pulumi.getter(name="appLauncherUrl")
@@ -740,6 +770,14 @@ class AccessApplicationSaasApp(dict):
         Custom attribute mapped from IDPs.
         """
         return pulumi.get(self, "custom_attributes")
+
+    @property
+    @pulumi.getter(name="customClaims")
+    def custom_claims(self) -> Optional[Sequence['outputs.AccessApplicationSaasAppCustomClaim']]:
+        """
+        Custom claim mapped from IDPs.
+        """
+        return pulumi.get(self, "custom_claims")
 
     @property
     @pulumi.getter(name="defaultRelayState")
@@ -804,6 +842,14 @@ class AccessApplicationSaasApp(dict):
         The permitted URL's for Cloudflare to return Authorization codes and Access/ID tokens.
         """
         return pulumi.get(self, "redirect_uris")
+
+    @property
+    @pulumi.getter(name="refreshTokenOptions")
+    def refresh_token_options(self) -> Optional[Sequence['outputs.AccessApplicationSaasAppRefreshTokenOption']]:
+        """
+        Refresh token grant options
+        """
+        return pulumi.get(self, "refresh_token_options")
 
     @property
     @pulumi.getter(name="samlAttributeTransformJsonata")
@@ -921,12 +967,33 @@ class AccessApplicationSaasAppCustomAttribute(dict):
 
 @pulumi.output_type
 class AccessApplicationSaasAppCustomAttributeSource(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "nameByIdp":
+            suggest = "name_by_idp"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AccessApplicationSaasAppCustomAttributeSource. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AccessApplicationSaasAppCustomAttributeSource.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AccessApplicationSaasAppCustomAttributeSource.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
-                 name: str):
+                 name: str,
+                 name_by_idp: Optional[Mapping[str, str]] = None):
         """
         :param str name: The name of the attribute as provided by the IDP.
+        :param Mapping[str, str] name_by_idp: A mapping from IdP ID to claim name.
         """
         pulumi.set(__self__, "name", name)
+        if name_by_idp is not None:
+            pulumi.set(__self__, "name_by_idp", name_by_idp)
 
     @property
     @pulumi.getter
@@ -935,6 +1002,130 @@ class AccessApplicationSaasAppCustomAttributeSource(dict):
         The name of the attribute as provided by the IDP.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="nameByIdp")
+    def name_by_idp(self) -> Optional[Mapping[str, str]]:
+        """
+        A mapping from IdP ID to claim name.
+        """
+        return pulumi.get(self, "name_by_idp")
+
+
+@pulumi.output_type
+class AccessApplicationSaasAppCustomClaim(dict):
+    def __init__(__self__, *,
+                 source: 'outputs.AccessApplicationSaasAppCustomClaimSource',
+                 name: Optional[str] = None,
+                 required: Optional[bool] = None,
+                 scope: Optional[str] = None):
+        """
+        :param str name: Friendly name of the Access Application.
+        :param bool required: True if the attribute must be always present.
+        :param str scope: The scope of the claim.
+        """
+        pulumi.set(__self__, "source", source)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if required is not None:
+            pulumi.set(__self__, "required", required)
+        if scope is not None:
+            pulumi.set(__self__, "scope", scope)
+
+    @property
+    @pulumi.getter
+    def source(self) -> 'outputs.AccessApplicationSaasAppCustomClaimSource':
+        return pulumi.get(self, "source")
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        """
+        Friendly name of the Access Application.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def required(self) -> Optional[bool]:
+        """
+        True if the attribute must be always present.
+        """
+        return pulumi.get(self, "required")
+
+    @property
+    @pulumi.getter
+    def scope(self) -> Optional[str]:
+        """
+        The scope of the claim.
+        """
+        return pulumi.get(self, "scope")
+
+
+@pulumi.output_type
+class AccessApplicationSaasAppCustomClaimSource(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "nameByIdp":
+            suggest = "name_by_idp"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AccessApplicationSaasAppCustomClaimSource. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AccessApplicationSaasAppCustomClaimSource.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AccessApplicationSaasAppCustomClaimSource.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 name: str,
+                 name_by_idp: Optional[Mapping[str, str]] = None):
+        """
+        :param str name: Friendly name of the Access Application.
+        :param Mapping[str, str] name_by_idp: A mapping from IdP ID to claim name.
+        """
+        pulumi.set(__self__, "name", name)
+        if name_by_idp is not None:
+            pulumi.set(__self__, "name_by_idp", name_by_idp)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        Friendly name of the Access Application.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="nameByIdp")
+    def name_by_idp(self) -> Optional[Mapping[str, str]]:
+        """
+        A mapping from IdP ID to claim name.
+        """
+        return pulumi.get(self, "name_by_idp")
+
+
+@pulumi.output_type
+class AccessApplicationSaasAppRefreshTokenOption(dict):
+    def __init__(__self__, *,
+                 lifetime: Optional[str] = None):
+        """
+        :param str lifetime: How long a refresh token will be valid for after creation. Valid units are m,h,d. Must be longer than 1m.
+        """
+        if lifetime is not None:
+            pulumi.set(__self__, "lifetime", lifetime)
+
+    @property
+    @pulumi.getter
+    def lifetime(self) -> Optional[str]:
+        """
+        How long a refresh token will be valid for after creation. Valid units are m,h,d. Must be longer than 1m.
+        """
+        return pulumi.get(self, "lifetime")
 
 
 @pulumi.output_type
@@ -12210,6 +12401,63 @@ class RecordData(dict):
 
 
 @pulumi.output_type
+class RiskBehaviorBehavior(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "riskLevel":
+            suggest = "risk_level"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RiskBehaviorBehavior. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RiskBehaviorBehavior.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RiskBehaviorBehavior.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 enabled: bool,
+                 name: str,
+                 risk_level: str):
+        """
+        :param bool enabled: Whether this risk behavior type is enabled.
+        :param str name: Name of this risk behavior type
+        :param str risk_level: Risk level. Available values: `low`, `medium`, `high`
+        """
+        pulumi.set(__self__, "enabled", enabled)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "risk_level", risk_level)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> bool:
+        """
+        Whether this risk behavior type is enabled.
+        """
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        Name of this risk behavior type
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="riskLevel")
+    def risk_level(self) -> str:
+        """
+        Risk level. Available values: `low`, `medium`, `high`
+        """
+        return pulumi.get(self, "risk_level")
+
+
+@pulumi.output_type
 class RulesetRule(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -12401,6 +12649,8 @@ class RulesetRuleActionParameters(dict):
             suggest = "disable_apps"
         elif key == "disableRailgun":
             suggest = "disable_railgun"
+        elif key == "disableRum":
+            suggest = "disable_rum"
         elif key == "disableZaraz":
             suggest = "disable_zaraz"
         elif key == "edgeTtl":
@@ -12467,9 +12717,11 @@ class RulesetRuleActionParameters(dict):
                  cookie_fields: Optional[Sequence[str]] = None,
                  disable_apps: Optional[bool] = None,
                  disable_railgun: Optional[bool] = None,
+                 disable_rum: Optional[bool] = None,
                  disable_zaraz: Optional[bool] = None,
                  edge_ttl: Optional['outputs.RulesetRuleActionParametersEdgeTtl'] = None,
                  email_obfuscation: Optional[bool] = None,
+                 fonts: Optional[bool] = None,
                  from_list: Optional['outputs.RulesetRuleActionParametersFromList'] = None,
                  from_value: Optional['outputs.RulesetRuleActionParametersFromValue'] = None,
                  headers: Optional[Sequence['outputs.RulesetRuleActionParametersHeader']] = None,
@@ -12519,9 +12771,11 @@ class RulesetRuleActionParameters(dict):
         :param Sequence[str] cookie_fields: List of cookie values to include as part of custom fields logging.
         :param bool disable_apps: Turn off all active Cloudflare Apps.
         :param bool disable_railgun: Turn off railgun feature of the Cloudflare Speed app.
+        :param bool disable_rum: Turn off RUM feature.
         :param bool disable_zaraz: Turn off zaraz feature.
         :param 'RulesetRuleActionParametersEdgeTtlArgs' edge_ttl: List of edge TTL parameters to apply to the request.
         :param bool email_obfuscation: Turn on or off the Cloudflare Email Obfuscation feature of the Cloudflare Scrape Shield app.
+        :param bool fonts: Toggle fonts.
         :param 'RulesetRuleActionParametersFromListArgs' from_list: Use a list to lookup information for the action.
         :param 'RulesetRuleActionParametersFromValueArgs' from_value: Use a value to lookup information for the action.
         :param Sequence['RulesetRuleActionParametersHeaderArgs'] headers: List of HTTP header modifications to perform in the ruleset rule. Note: Headers are order dependent and must be provided sorted alphabetically ascending based on the `name` value.
@@ -12583,12 +12837,16 @@ class RulesetRuleActionParameters(dict):
             pulumi.set(__self__, "disable_apps", disable_apps)
         if disable_railgun is not None:
             pulumi.set(__self__, "disable_railgun", disable_railgun)
+        if disable_rum is not None:
+            pulumi.set(__self__, "disable_rum", disable_rum)
         if disable_zaraz is not None:
             pulumi.set(__self__, "disable_zaraz", disable_zaraz)
         if edge_ttl is not None:
             pulumi.set(__self__, "edge_ttl", edge_ttl)
         if email_obfuscation is not None:
             pulumi.set(__self__, "email_obfuscation", email_obfuscation)
+        if fonts is not None:
+            pulumi.set(__self__, "fonts", fonts)
         if from_list is not None:
             pulumi.set(__self__, "from_list", from_list)
         if from_value is not None:
@@ -12765,6 +13023,14 @@ class RulesetRuleActionParameters(dict):
         return pulumi.get(self, "disable_railgun")
 
     @property
+    @pulumi.getter(name="disableRum")
+    def disable_rum(self) -> Optional[bool]:
+        """
+        Turn off RUM feature.
+        """
+        return pulumi.get(self, "disable_rum")
+
+    @property
     @pulumi.getter(name="disableZaraz")
     def disable_zaraz(self) -> Optional[bool]:
         """
@@ -12787,6 +13053,14 @@ class RulesetRuleActionParameters(dict):
         Turn on or off the Cloudflare Email Obfuscation feature of the Cloudflare Scrape Shield app.
         """
         return pulumi.get(self, "email_obfuscation")
+
+    @property
+    @pulumi.getter
+    def fonts(self) -> Optional[bool]:
+        """
+        Toggle fonts.
+        """
+        return pulumi.get(self, "fonts")
 
     @property
     @pulumi.getter(name="fromList")
@@ -16345,7 +16619,7 @@ class TunnelConfigConfig(dict):
                  origin_request: Optional['outputs.TunnelConfigConfigOriginRequest'] = None,
                  warp_routing: Optional['outputs.TunnelConfigConfigWarpRouting'] = None):
         """
-        :param Sequence['TunnelConfigConfigIngressRuleArgs'] ingress_rules: Each incoming request received by cloudflared causes cloudflared to send a request to a local service. This section configures the rules that determine which requests are sent to which local services. [Read more](https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/install-and-setup/tunnel-guide/local/local-management/ingress/).
+        :param Sequence['TunnelConfigConfigIngressRuleArgs'] ingress_rules: Each incoming request received by cloudflared causes cloudflared to send a request to a local service. This section configures the rules that determine which requests are sent to which local services. Last rule must match all requests, e.g `service = "http_status:503"`. [Read more](https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/install-and-setup/tunnel-guide/local/local-management/ingress/).
         :param 'TunnelConfigConfigWarpRoutingArgs' warp_routing: If you're exposing a [private network](https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/private-net/), you need to add the `warp-routing` key and set it to `true`.
         """
         pulumi.set(__self__, "ingress_rules", ingress_rules)
@@ -16358,7 +16632,7 @@ class TunnelConfigConfig(dict):
     @pulumi.getter(name="ingressRules")
     def ingress_rules(self) -> Sequence['outputs.TunnelConfigConfigIngressRule']:
         """
-        Each incoming request received by cloudflared causes cloudflared to send a request to a local service. This section configures the rules that determine which requests are sent to which local services. [Read more](https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/install-and-setup/tunnel-guide/local/local-management/ingress/).
+        Each incoming request received by cloudflared causes cloudflared to send a request to a local service. This section configures the rules that determine which requests are sent to which local services. Last rule must match all requests, e.g `service = "http_status:503"`. [Read more](https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/install-and-setup/tunnel-guide/local/local-management/ingress/).
         """
         return pulumi.get(self, "ingress_rules")
 

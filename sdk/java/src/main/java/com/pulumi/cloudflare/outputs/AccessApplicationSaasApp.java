@@ -4,7 +4,10 @@
 package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.cloudflare.outputs.AccessApplicationSaasAppCustomAttribute;
+import com.pulumi.cloudflare.outputs.AccessApplicationSaasAppCustomClaim;
+import com.pulumi.cloudflare.outputs.AccessApplicationSaasAppRefreshTokenOption;
 import com.pulumi.core.annotations.CustomType;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -13,6 +16,11 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class AccessApplicationSaasApp {
+    /**
+     * @return Allow PKCE flow without a client secret
+     * 
+     */
+    private @Nullable Boolean allowPkceWithoutClientSecret;
     /**
      * @return The URL where this applications tile redirects users.
      * 
@@ -39,6 +47,11 @@ public final class AccessApplicationSaasApp {
      * 
      */
     private @Nullable List<AccessApplicationSaasAppCustomAttribute> customAttributes;
+    /**
+     * @return Custom claim mapped from IDPs.
+     * 
+     */
+    private @Nullable List<AccessApplicationSaasAppCustomClaim> customClaims;
     /**
      * @return The relay state used if not provided by the identity provider.
      * 
@@ -80,6 +93,11 @@ public final class AccessApplicationSaasApp {
      */
     private @Nullable List<String> redirectUris;
     /**
+     * @return Refresh token grant options
+     * 
+     */
+    private @Nullable List<AccessApplicationSaasAppRefreshTokenOption> refreshTokenOptions;
+    /**
      * @return A [JSONata](https://jsonata.org/) expression that transforms an application&#39;s user identities into attribute assertions in the SAML response. The expression can transform id, email, name, and groups values. It can also transform fields listed in the saml*attributes or oidc*fields of the identity provider used to authenticate. The output of this expression must be a JSON object.
      * 
      */
@@ -101,6 +119,13 @@ public final class AccessApplicationSaasApp {
     private @Nullable String ssoEndpoint;
 
     private AccessApplicationSaasApp() {}
+    /**
+     * @return Allow PKCE flow without a client secret
+     * 
+     */
+    public Optional<Boolean> allowPkceWithoutClientSecret() {
+        return Optional.ofNullable(this.allowPkceWithoutClientSecret);
+    }
     /**
      * @return The URL where this applications tile redirects users.
      * 
@@ -138,6 +163,13 @@ public final class AccessApplicationSaasApp {
      */
     public List<AccessApplicationSaasAppCustomAttribute> customAttributes() {
         return this.customAttributes == null ? List.of() : this.customAttributes;
+    }
+    /**
+     * @return Custom claim mapped from IDPs.
+     * 
+     */
+    public List<AccessApplicationSaasAppCustomClaim> customClaims() {
+        return this.customClaims == null ? List.of() : this.customClaims;
     }
     /**
      * @return The relay state used if not provided by the identity provider.
@@ -196,6 +228,13 @@ public final class AccessApplicationSaasApp {
         return this.redirectUris == null ? List.of() : this.redirectUris;
     }
     /**
+     * @return Refresh token grant options
+     * 
+     */
+    public List<AccessApplicationSaasAppRefreshTokenOption> refreshTokenOptions() {
+        return this.refreshTokenOptions == null ? List.of() : this.refreshTokenOptions;
+    }
+    /**
      * @return A [JSONata](https://jsonata.org/) expression that transforms an application&#39;s user identities into attribute assertions in the SAML response. The expression can transform id, email, name, and groups values. It can also transform fields listed in the saml*attributes or oidc*fields of the identity provider used to authenticate. The output of this expression must be a JSON object.
      * 
      */
@@ -233,12 +272,14 @@ public final class AccessApplicationSaasApp {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable Boolean allowPkceWithoutClientSecret;
         private @Nullable String appLauncherUrl;
         private @Nullable String authType;
         private @Nullable String clientId;
         private @Nullable String clientSecret;
         private @Nullable String consumerServiceUrl;
         private @Nullable List<AccessApplicationSaasAppCustomAttribute> customAttributes;
+        private @Nullable List<AccessApplicationSaasAppCustomClaim> customClaims;
         private @Nullable String defaultRelayState;
         private @Nullable List<String> grantTypes;
         private @Nullable String groupFilterRegex;
@@ -247,6 +288,7 @@ public final class AccessApplicationSaasApp {
         private @Nullable String nameIdTransformJsonata;
         private @Nullable String publicKey;
         private @Nullable List<String> redirectUris;
+        private @Nullable List<AccessApplicationSaasAppRefreshTokenOption> refreshTokenOptions;
         private @Nullable String samlAttributeTransformJsonata;
         private @Nullable List<String> scopes;
         private @Nullable String spEntityId;
@@ -254,12 +296,14 @@ public final class AccessApplicationSaasApp {
         public Builder() {}
         public Builder(AccessApplicationSaasApp defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.allowPkceWithoutClientSecret = defaults.allowPkceWithoutClientSecret;
     	      this.appLauncherUrl = defaults.appLauncherUrl;
     	      this.authType = defaults.authType;
     	      this.clientId = defaults.clientId;
     	      this.clientSecret = defaults.clientSecret;
     	      this.consumerServiceUrl = defaults.consumerServiceUrl;
     	      this.customAttributes = defaults.customAttributes;
+    	      this.customClaims = defaults.customClaims;
     	      this.defaultRelayState = defaults.defaultRelayState;
     	      this.grantTypes = defaults.grantTypes;
     	      this.groupFilterRegex = defaults.groupFilterRegex;
@@ -268,12 +312,19 @@ public final class AccessApplicationSaasApp {
     	      this.nameIdTransformJsonata = defaults.nameIdTransformJsonata;
     	      this.publicKey = defaults.publicKey;
     	      this.redirectUris = defaults.redirectUris;
+    	      this.refreshTokenOptions = defaults.refreshTokenOptions;
     	      this.samlAttributeTransformJsonata = defaults.samlAttributeTransformJsonata;
     	      this.scopes = defaults.scopes;
     	      this.spEntityId = defaults.spEntityId;
     	      this.ssoEndpoint = defaults.ssoEndpoint;
         }
 
+        @CustomType.Setter
+        public Builder allowPkceWithoutClientSecret(@Nullable Boolean allowPkceWithoutClientSecret) {
+
+            this.allowPkceWithoutClientSecret = allowPkceWithoutClientSecret;
+            return this;
+        }
         @CustomType.Setter
         public Builder appLauncherUrl(@Nullable String appLauncherUrl) {
 
@@ -312,6 +363,15 @@ public final class AccessApplicationSaasApp {
         }
         public Builder customAttributes(AccessApplicationSaasAppCustomAttribute... customAttributes) {
             return customAttributes(List.of(customAttributes));
+        }
+        @CustomType.Setter
+        public Builder customClaims(@Nullable List<AccessApplicationSaasAppCustomClaim> customClaims) {
+
+            this.customClaims = customClaims;
+            return this;
+        }
+        public Builder customClaims(AccessApplicationSaasAppCustomClaim... customClaims) {
+            return customClaims(List.of(customClaims));
         }
         @CustomType.Setter
         public Builder defaultRelayState(@Nullable String defaultRelayState) {
@@ -368,6 +428,15 @@ public final class AccessApplicationSaasApp {
             return redirectUris(List.of(redirectUris));
         }
         @CustomType.Setter
+        public Builder refreshTokenOptions(@Nullable List<AccessApplicationSaasAppRefreshTokenOption> refreshTokenOptions) {
+
+            this.refreshTokenOptions = refreshTokenOptions;
+            return this;
+        }
+        public Builder refreshTokenOptions(AccessApplicationSaasAppRefreshTokenOption... refreshTokenOptions) {
+            return refreshTokenOptions(List.of(refreshTokenOptions));
+        }
+        @CustomType.Setter
         public Builder samlAttributeTransformJsonata(@Nullable String samlAttributeTransformJsonata) {
 
             this.samlAttributeTransformJsonata = samlAttributeTransformJsonata;
@@ -396,12 +465,14 @@ public final class AccessApplicationSaasApp {
         }
         public AccessApplicationSaasApp build() {
             final var _resultValue = new AccessApplicationSaasApp();
+            _resultValue.allowPkceWithoutClientSecret = allowPkceWithoutClientSecret;
             _resultValue.appLauncherUrl = appLauncherUrl;
             _resultValue.authType = authType;
             _resultValue.clientId = clientId;
             _resultValue.clientSecret = clientSecret;
             _resultValue.consumerServiceUrl = consumerServiceUrl;
             _resultValue.customAttributes = customAttributes;
+            _resultValue.customClaims = customClaims;
             _resultValue.defaultRelayState = defaultRelayState;
             _resultValue.grantTypes = grantTypes;
             _resultValue.groupFilterRegex = groupFilterRegex;
@@ -410,6 +481,7 @@ public final class AccessApplicationSaasApp {
             _resultValue.nameIdTransformJsonata = nameIdTransformJsonata;
             _resultValue.publicKey = publicKey;
             _resultValue.redirectUris = redirectUris;
+            _resultValue.refreshTokenOptions = refreshTokenOptions;
             _resultValue.samlAttributeTransformJsonata = samlAttributeTransformJsonata;
             _resultValue.scopes = scopes;
             _resultValue.spEntityId = spEntityId;

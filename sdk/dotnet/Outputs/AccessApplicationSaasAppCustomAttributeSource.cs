@@ -17,11 +17,19 @@ namespace Pulumi.Cloudflare.Outputs
         /// The name of the attribute as provided by the IDP.
         /// </summary>
         public readonly string Name;
+        /// <summary>
+        /// A mapping from IdP ID to claim name.
+        /// </summary>
+        public readonly ImmutableDictionary<string, string>? NameByIdp;
 
         [OutputConstructor]
-        private AccessApplicationSaasAppCustomAttributeSource(string name)
+        private AccessApplicationSaasAppCustomAttributeSource(
+            string name,
+
+            ImmutableDictionary<string, string>? nameByIdp)
         {
             Name = name;
+            NameByIdp = nameByIdp;
         }
     }
 }

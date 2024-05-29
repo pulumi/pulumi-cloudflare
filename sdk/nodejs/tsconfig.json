@@ -118,6 +118,7 @@
         "record.ts",
         "regionalHostname.ts",
         "regionalTieredCache.ts",
+        "riskBehavior.ts",
         "ruleset.ts",
         "spectrumApplication.ts",
         "splitTunnel.ts",
