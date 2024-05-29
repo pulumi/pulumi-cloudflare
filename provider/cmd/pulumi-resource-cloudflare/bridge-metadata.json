@@ -50,10 +50,23 @@
                                         }
                                     }
                                 },
+                                "custom_claim": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "source": {
+                                                "maxItemsOne": true
+                                            }
+                                        }
+                                    }
+                                },
                                 "grant_types": {
                                     "maxItemsOne": false
                                 },
                                 "redirect_uris": {
+                                    "maxItemsOne": false
+                                },
+                                "refresh_token_options": {
                                     "maxItemsOne": false
                                 },
                                 "scopes": {
@@ -1772,6 +1785,15 @@
                 "current": "cloudflare:index/regionalTieredCache:RegionalTieredCache",
                 "majorVersion": 5
             },
+            "cloudflare_risk_behavior": {
+                "current": "cloudflare:index/riskBehavior:RiskBehavior",
+                "majorVersion": 5,
+                "fields": {
+                    "behavior": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "cloudflare_ruleset": {
                 "current": "cloudflare:index/ruleset:Ruleset",
                 "majorVersion": 5,
@@ -2937,6 +2959,20 @@
     },
     "auto-settings": {
         "resources": {
+            "cloudflare_access_group": {
+                "maxItemsOneOverrides": {
+                    "exclude.$.external_evaluation": true,
+                    "include.$.external_evaluation": true,
+                    "require.$.external_evaluation": true
+                }
+            },
+            "cloudflare_access_policy": {
+                "maxItemsOneOverrides": {
+                    "exclude.$.external_evaluation": true,
+                    "include.$.external_evaluation": true,
+                    "require.$.external_evaluation": true
+                }
+            },
             "cloudflare_ruleset": {
                 "maxItemsOneOverrides": {
                     "rules.$.action_parameters.$.autominify": false,
@@ -3026,6 +3062,7 @@
             "cloudflare:index/record:Record": 0,
             "cloudflare:index/regionalHostname:RegionalHostname": 0,
             "cloudflare:index/regionalTieredCache:RegionalTieredCache": 0,
+            "cloudflare:index/riskBehavior:RiskBehavior": 1,
             "cloudflare:index/ruleset:Ruleset": 1,
             "cloudflare:index/spectrumApplication:SpectrumApplication": 0,
             "cloudflare:index/splitTunnel:SplitTunnel": 0,
