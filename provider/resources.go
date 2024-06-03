@@ -28,6 +28,7 @@ import (
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
 	tfbridgetokens "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/tokens"
 	shimv2 "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/sdk-v2"
+	"github.com/pulumi/pulumi/sdk/v3/go/common/resource"
 
 	"github.com/pulumi/pulumi-cloudflare/provider/v5/pkg/version"
 )
@@ -50,6 +51,11 @@ func Provider() tfbridge.ProviderInfo {
 		shimv2.NewProvider(provShim.SDKProvider()),
 		provShim.PFProvider(),
 	)
+
+	delegateID := func(pulumiField string) tfbridge.ComputeID {
+		return tfbridge.DelegateIDField(resource.PropertyKey(pulumiField),
+			"cloudflare", "https://github.com/pulumi/pulumi-cloudflare")
+	}
 
 	// Create a Pulumi provider mapping
 	prov := tfbridge.ProviderInfo{
@@ -115,6 +121,25 @@ func Provider() tfbridge.ProviderInfo {
 			// resource will conflict with the old one. To avoid this, we set
 			// `DeleteBeforeReplace: true`.
 			"cloudflare_record": {DeleteBeforeReplace: true},
+
+			"cloudflare_risk_behavior": {ComputeID: delegateID("accountId")},
+			// cloudflare_access_mutual_tls_hostname_settings has no
+			"cloudflare_access_mutual_tls_hostname_settings": {
+				ComputeID: func(_ context.Context, state resource.PropertyMap) (resource.ID, error) {
+					account, hasAccount := state["accountId"]
+					zone, hasZone := state["zoneId"]
+					switch {
+					case hasAccount && hasZone:
+						return resource.ID(account.StringValue() + "__" + zone.StringValue()), nil
+					case hasAccount:
+						return resource.ID(account.StringValue()), nil
+					case hasZone:
+						return resource.ID(zone.StringValue()), nil
+					default:
+						return "id", nil
+					}
+				},
+			},
 		},
 		JavaScript: &tfbridge.JavaScriptInfo{
 			Dependencies: map[string]string{
