@@ -63,6 +63,9 @@
                                 "grant_types": {
                                     "maxItemsOne": false
                                 },
+                                "hybrid_and_implicit_options": {
+                                    "maxItemsOne": true
+                                },
                                 "redirect_uris": {
                                     "maxItemsOne": false
                                 },
