@@ -174,6 +174,8 @@ type zoneArgs struct {
 	Plan *string `pulumi:"plan"`
 	// A full zone implies that DNS is hosted with Cloudflare. A partial zone is typically a partner-hosted zone or a CNAME setup. Available values: `full`, `partial`, `secondary`. Defaults to `full`.
 	Type *string `pulumi:"type"`
+	// List of Vanity Nameservers (if set).
+	VanityNameServers []string `pulumi:"vanityNameServers"`
 	// The DNS zone name which will be added. **Modifying this attribute will force creation of a new resource.**
 	Zone string `pulumi:"zone"`
 }
@@ -190,6 +192,8 @@ type ZoneArgs struct {
 	Plan pulumi.StringPtrInput
 	// A full zone implies that DNS is hosted with Cloudflare. A partial zone is typically a partner-hosted zone or a CNAME setup. Available values: `full`, `partial`, `secondary`. Defaults to `full`.
 	Type pulumi.StringPtrInput
+	// List of Vanity Nameservers (if set).
+	VanityNameServers pulumi.StringArrayInput
 	// The DNS zone name which will be added. **Modifying this attribute will force creation of a new resource.**
 	Zone pulumi.StringInput
 }

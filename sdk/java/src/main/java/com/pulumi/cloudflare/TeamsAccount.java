@@ -96,6 +96,7 @@ import javax.annotation.Nullable;
  *                 .tcp(true)
  *                 .udp(true)
  *                 .rootCa(true)
+ *                 .virtualIp(false)
  *                 .build())
  *             .urlBrowserIsolationEnabled(true)
  *             .logging(TeamsAccountLoggingArgs.builder()

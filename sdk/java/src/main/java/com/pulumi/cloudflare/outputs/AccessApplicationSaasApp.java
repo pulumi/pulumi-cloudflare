@@ -5,6 +5,7 @@ package com.pulumi.cloudflare.outputs;
 
 import com.pulumi.cloudflare.outputs.AccessApplicationSaasAppCustomAttribute;
 import com.pulumi.cloudflare.outputs.AccessApplicationSaasAppCustomClaim;
+import com.pulumi.cloudflare.outputs.AccessApplicationSaasAppHybridAndImplicitOptions;
 import com.pulumi.cloudflare.outputs.AccessApplicationSaasAppRefreshTokenOption;
 import com.pulumi.core.annotations.CustomType;
 import java.lang.Boolean;
@@ -17,7 +18,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class AccessApplicationSaasApp {
     /**
-     * @return Allow PKCE flow without a client secret
+     * @return Allow PKCE flow without a client secret.
      * 
      */
     private @Nullable Boolean allowPkceWithoutClientSecret;
@@ -26,6 +27,10 @@ public final class AccessApplicationSaasApp {
      * 
      */
     private @Nullable String appLauncherUrl;
+    /**
+     * @return **Modifying this attribute will force creation of a new resource.**
+     * 
+     */
     private @Nullable String authType;
     /**
      * @return The application client id.
@@ -68,6 +73,11 @@ public final class AccessApplicationSaasApp {
      */
     private @Nullable String groupFilterRegex;
     /**
+     * @return Hybrid and Implicit Flow options.
+     * 
+     */
+    private @Nullable AccessApplicationSaasAppHybridAndImplicitOptions hybridAndImplicitOptions;
+    /**
      * @return The unique identifier for the SaaS application.
      * 
      */
@@ -93,7 +103,7 @@ public final class AccessApplicationSaasApp {
      */
     private @Nullable List<String> redirectUris;
     /**
-     * @return Refresh token grant options
+     * @return Refresh token grant options.
      * 
      */
     private @Nullable List<AccessApplicationSaasAppRefreshTokenOption> refreshTokenOptions;
@@ -120,7 +130,7 @@ public final class AccessApplicationSaasApp {
 
     private AccessApplicationSaasApp() {}
     /**
-     * @return Allow PKCE flow without a client secret
+     * @return Allow PKCE flow without a client secret.
      * 
      */
     public Optional<Boolean> allowPkceWithoutClientSecret() {
@@ -133,6 +143,10 @@ public final class AccessApplicationSaasApp {
     public Optional<String> appLauncherUrl() {
         return Optional.ofNullable(this.appLauncherUrl);
     }
+    /**
+     * @return **Modifying this attribute will force creation of a new resource.**
+     * 
+     */
     public Optional<String> authType() {
         return Optional.ofNullable(this.authType);
     }
@@ -193,6 +207,13 @@ public final class AccessApplicationSaasApp {
         return Optional.ofNullable(this.groupFilterRegex);
     }
     /**
+     * @return Hybrid and Implicit Flow options.
+     * 
+     */
+    public Optional<AccessApplicationSaasAppHybridAndImplicitOptions> hybridAndImplicitOptions() {
+        return Optional.ofNullable(this.hybridAndImplicitOptions);
+    }
+    /**
      * @return The unique identifier for the SaaS application.
      * 
      */
@@ -228,7 +249,7 @@ public final class AccessApplicationSaasApp {
         return this.redirectUris == null ? List.of() : this.redirectUris;
     }
     /**
-     * @return Refresh token grant options
+     * @return Refresh token grant options.
      * 
      */
     public List<AccessApplicationSaasAppRefreshTokenOption> refreshTokenOptions() {
@@ -283,6 +304,7 @@ public final class AccessApplicationSaasApp {
         private @Nullable String defaultRelayState;
         private @Nullable List<String> grantTypes;
         private @Nullable String groupFilterRegex;
+        private @Nullable AccessApplicationSaasAppHybridAndImplicitOptions hybridAndImplicitOptions;
         private @Nullable String idpEntityId;
         private @Nullable String nameIdFormat;
         private @Nullable String nameIdTransformJsonata;
@@ -307,6 +329,7 @@ public final class AccessApplicationSaasApp {
     	      this.defaultRelayState = defaults.defaultRelayState;
     	      this.grantTypes = defaults.grantTypes;
     	      this.groupFilterRegex = defaults.groupFilterRegex;
+    	      this.hybridAndImplicitOptions = defaults.hybridAndImplicitOptions;
     	      this.idpEntityId = defaults.idpEntityId;
     	      this.nameIdFormat = defaults.nameIdFormat;
     	      this.nameIdTransformJsonata = defaults.nameIdTransformJsonata;
@@ -395,6 +418,12 @@ public final class AccessApplicationSaasApp {
             return this;
         }
         @CustomType.Setter
+        public Builder hybridAndImplicitOptions(@Nullable AccessApplicationSaasAppHybridAndImplicitOptions hybridAndImplicitOptions) {
+
+            this.hybridAndImplicitOptions = hybridAndImplicitOptions;
+            return this;
+        }
+        @CustomType.Setter
         public Builder idpEntityId(@Nullable String idpEntityId) {
 
             this.idpEntityId = idpEntityId;
@@ -476,6 +505,7 @@ public final class AccessApplicationSaasApp {
             _resultValue.defaultRelayState = defaultRelayState;
             _resultValue.grantTypes = grantTypes;
             _resultValue.groupFilterRegex = groupFilterRegex;
+            _resultValue.hybridAndImplicitOptions = hybridAndImplicitOptions;
             _resultValue.idpEntityId = idpEntityId;
             _resultValue.nameIdFormat = nameIdFormat;
             _resultValue.nameIdTransformJsonata = nameIdTransformJsonata;

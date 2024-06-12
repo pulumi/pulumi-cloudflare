@@ -55,7 +55,8 @@ public final class LogpushJobOutputOptions {
      */
     private @Nullable String recordPrefix;
     /**
-     * @return String to be appended after each record. Defaults to `}`.
+     * @return String to be appended after each record. Defaults to `}
+     * `.
      * 
      */
     private @Nullable String recordSuffix;
@@ -133,7 +134,8 @@ public final class LogpushJobOutputOptions {
         return Optional.ofNullable(this.recordPrefix);
     }
     /**
-     * @return String to be appended after each record. Defaults to `}`.
+     * @return String to be appended after each record. Defaults to `}
+     * `.
      * 
      */
     public Optional<String> recordSuffix() {

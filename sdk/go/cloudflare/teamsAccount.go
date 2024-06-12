@@ -56,9 +56,10 @@ import (
 //					Tls: pulumi.Bool(true),
 //				},
 //				Proxy: &cloudflare.TeamsAccountProxyArgs{
-//					Tcp:    pulumi.Bool(true),
-//					Udp:    pulumi.Bool(true),
-//					RootCa: pulumi.Bool(true),
+//					Tcp:       pulumi.Bool(true),
+//					Udp:       pulumi.Bool(true),
+//					RootCa:    pulumi.Bool(true),
+//					VirtualIp: pulumi.Bool(false),
 //				},
 //				UrlBrowserIsolationEnabled: pulumi.Bool(true),
 //				Logging: &cloudflare.TeamsAccountLoggingArgs{

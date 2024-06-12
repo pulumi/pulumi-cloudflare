@@ -46,7 +46,8 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string? RecordPrefix;
         /// <summary>
-        /// String to be appended after each record. Defaults to `}`.
+        /// String to be appended after each record. Defaults to `}
+        /// `.
         /// </summary>
         public readonly string? RecordSuffix;
         /// <summary>

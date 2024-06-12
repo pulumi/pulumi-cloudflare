@@ -37,6 +37,11 @@ public final class LoadBalancerPoolOrigin {
      */
     private String name;
     /**
+     * @return The virtual network subnet ID the origin belongs in. Virtual network must also belong to the account.
+     * 
+     */
+    private @Nullable String virtualNetworkId;
+    /**
      * @return The weight (0.01 - 1.00) of this origin, relative to other origins in the pool. Equal values mean equal weighting. A weight of 0 means traffic will not be sent to this origin, but health is still checked. When `origin_steering.policy=&#34;least_outstanding_requests&#34;`, weight is used to scale the origin&#39;s outstanding requests. When `origin_steering.policy=&#34;least_connections&#34;`, weight is used to scale the origin&#39;s open connections. Defaults to `1`.
      * 
      */
@@ -72,6 +77,13 @@ public final class LoadBalancerPoolOrigin {
         return this.name;
     }
     /**
+     * @return The virtual network subnet ID the origin belongs in. Virtual network must also belong to the account.
+     * 
+     */
+    public Optional<String> virtualNetworkId() {
+        return Optional.ofNullable(this.virtualNetworkId);
+    }
+    /**
      * @return The weight (0.01 - 1.00) of this origin, relative to other origins in the pool. Equal values mean equal weighting. A weight of 0 means traffic will not be sent to this origin, but health is still checked. When `origin_steering.policy=&#34;least_outstanding_requests&#34;`, weight is used to scale the origin&#39;s outstanding requests. When `origin_steering.policy=&#34;least_connections&#34;`, weight is used to scale the origin&#39;s open connections. Defaults to `1`.
      * 
      */
@@ -92,6 +104,7 @@ public final class LoadBalancerPoolOrigin {
         private @Nullable Boolean enabled;
         private @Nullable List<LoadBalancerPoolOriginHeader> headers;
         private String name;
+        private @Nullable String virtualNetworkId;
         private @Nullable Double weight;
         public Builder() {}
         public Builder(LoadBalancerPoolOrigin defaults) {
@@ -100,6 +113,7 @@ public final class LoadBalancerPoolOrigin {
     	      this.enabled = defaults.enabled;
     	      this.headers = defaults.headers;
     	      this.name = defaults.name;
+    	      this.virtualNetworkId = defaults.virtualNetworkId;
     	      this.weight = defaults.weight;
         }
 
@@ -135,6 +149,12 @@ public final class LoadBalancerPoolOrigin {
             return this;
         }
         @CustomType.Setter
+        public Builder virtualNetworkId(@Nullable String virtualNetworkId) {
+
+            this.virtualNetworkId = virtualNetworkId;
+            return this;
+        }
+        @CustomType.Setter
         public Builder weight(@Nullable Double weight) {
 
             this.weight = weight;
@@ -146,6 +166,7 @@ public final class LoadBalancerPoolOrigin {
             _resultValue.enabled = enabled;
             _resultValue.headers = headers;
             _resultValue.name = name;
+            _resultValue.virtualNetworkId = virtualNetworkId;
             _resultValue.weight = weight;
             return _resultValue;
         }

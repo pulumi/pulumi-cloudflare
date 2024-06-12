@@ -76,13 +76,16 @@ export interface AccessApplicationLandingPageDesign {
 
 export interface AccessApplicationSaasApp {
     /**
-     * Allow PKCE flow without a client secret
+     * Allow PKCE flow without a client secret.
      */
     allowPkceWithoutClientSecret?: boolean;
     /**
      * The URL where this applications tile redirects users.
      */
     appLauncherUrl?: string;
+    /**
+     * **Modifying this attribute will force creation of a new resource.**
+     */
     authType?: string;
     /**
      * The application client id.
@@ -117,6 +120,10 @@ export interface AccessApplicationSaasApp {
      */
     groupFilterRegex?: string;
     /**
+     * Hybrid and Implicit Flow options.
+     */
+    hybridAndImplicitOptions?: outputs.AccessApplicationSaasAppHybridAndImplicitOptions;
+    /**
      * The unique identifier for the SaaS application.
      */
     idpEntityId: string;
@@ -137,7 +144,7 @@ export interface AccessApplicationSaasApp {
      */
     redirectUris?: string[];
     /**
-     * Refresh token grant options
+     * Refresh token grant options.
      */
     refreshTokenOptions?: outputs.AccessApplicationSaasAppRefreshTokenOption[];
     /**
@@ -191,7 +198,7 @@ export interface AccessApplicationSaasAppCustomAttributeSource {
 
 export interface AccessApplicationSaasAppCustomClaim {
     /**
-     * Friendly name of the Access Application.
+     * The name of the attribute as provided to the SaaS app.
      */
     name?: string;
     /**
@@ -207,13 +214,24 @@ export interface AccessApplicationSaasAppCustomClaim {
 
 export interface AccessApplicationSaasAppCustomClaimSource {
     /**
-     * Friendly name of the Access Application.
+     * The name of the attribute as provided by the IDP.
      */
     name: string;
     /**
      * A mapping from IdP ID to claim name.
      */
     nameByIdp?: {[key: string]: string};
+}
+
+export interface AccessApplicationSaasAppHybridAndImplicitOptions {
+    /**
+     * If true, the authorization endpoint will return an access token.
+     */
+    returnAccessTokenFromAuthorizationEndpoint?: boolean;
+    /**
+     * If true, the authorization endpoint will return an id token.
+     */
+    returnIdTokenFromAuthorizationEndpoint?: boolean;
 }
 
 export interface AccessApplicationSaasAppRefreshTokenOption {
@@ -1742,6 +1760,10 @@ export interface GetLoadBalancerPoolsPoolOrigin {
      */
     name: string;
     /**
+     * The virtual network subnet ID the origin belongs in. Virtual network must also belong to the account.
+     */
+    virtualNetworkId?: string;
+    /**
      * The weight (0.01 - 1.00) of this origin, relative to other origins in the pool. Equal values mean equal weighting. A weight of 0 means traffic will not be sent to this origin, but health is still checked. When `origin_steering.policy="leastOutstandingRequests"`, weight is used to scale the origin's outstanding requests. When `origin_steering.policy="leastConnections"`, weight is used to scale the origin's open connections.
      */
     weight?: number;
@@ -2757,6 +2779,10 @@ export interface LoadBalancerPoolOrigin {
      */
     name: string;
     /**
+     * The virtual network subnet ID the origin belongs in. Virtual network must also belong to the account.
+     */
+    virtualNetworkId?: string;
+    /**
      * The weight (0.01 - 1.00) of this origin, relative to other origins in the pool. Equal values mean equal weighting. A weight of 0 means traffic will not be sent to this origin, but health is still checked. When `origin_steering.policy="leastOutstandingRequests"`, weight is used to scale the origin's outstanding requests. When `origin_steering.policy="leastConnections"`, weight is used to scale the origin's open connections. Defaults to `1`.
      */
     weight?: number;
@@ -3064,7 +3090,8 @@ export interface LogpushJobOutputOptions {
      */
     recordPrefix?: string;
     /**
-     * String to be appended after each record. Defaults to `}`.
+     * String to be appended after each record. Defaults to `}
+     * `.
      */
     recordSuffix?: string;
     /**
@@ -4867,6 +4894,10 @@ export interface TeamsAccountProxy {
      * Whether gateway proxy is enabled on gateway devices for UDP traffic.
      */
     udp: boolean;
+    /**
+     * Whether virtual IP (CGNAT) is enabled account wide and will override existing local interface IP for ZT clients.
+     */
+    virtualIp: boolean;
 }
 
 export interface TeamsAccountSshSessionLog {

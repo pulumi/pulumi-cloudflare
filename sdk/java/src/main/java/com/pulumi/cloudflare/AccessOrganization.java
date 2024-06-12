@@ -173,14 +173,14 @@ public class AccessOrganization extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> name;
+    private Output<String> name;
 
     /**
      * @return The name of your Zero Trust organization.
      * 
      */
-    public Output<Optional<String>> name() {
-        return Codegen.optional(this.name);
+    public Output<String> name() {
+        return this.name;
     }
     /**
      * How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`.

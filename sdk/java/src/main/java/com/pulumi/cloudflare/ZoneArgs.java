@@ -8,6 +8,7 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -93,6 +94,21 @@ public final class ZoneArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * List of Vanity Nameservers (if set).
+     * 
+     */
+    @Import(name="vanityNameServers")
+    private @Nullable Output<List<String>> vanityNameServers;
+
+    /**
+     * @return List of Vanity Nameservers (if set).
+     * 
+     */
+    public Optional<Output<List<String>>> vanityNameServers() {
+        return Optional.ofNullable(this.vanityNameServers);
+    }
+
+    /**
      * The DNS zone name which will be added. **Modifying this attribute will force creation of a new resource.**
      * 
      */
@@ -115,6 +131,7 @@ public final class ZoneArgs extends com.pulumi.resources.ResourceArgs {
         this.paused = $.paused;
         this.plan = $.plan;
         this.type = $.type;
+        this.vanityNameServers = $.vanityNameServers;
         this.zone = $.zone;
     }
 
@@ -239,6 +256,37 @@ public final class ZoneArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder type(String type) {
             return type(Output.of(type));
+        }
+
+        /**
+         * @param vanityNameServers List of Vanity Nameservers (if set).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder vanityNameServers(@Nullable Output<List<String>> vanityNameServers) {
+            $.vanityNameServers = vanityNameServers;
+            return this;
+        }
+
+        /**
+         * @param vanityNameServers List of Vanity Nameservers (if set).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder vanityNameServers(List<String> vanityNameServers) {
+            return vanityNameServers(Output.of(vanityNameServers));
+        }
+
+        /**
+         * @param vanityNameServers List of Vanity Nameservers (if set).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder vanityNameServers(String... vanityNameServers) {
+            return vanityNameServers(List.of(vanityNameServers));
         }
 
         /**

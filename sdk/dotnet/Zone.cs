@@ -183,6 +183,18 @@ namespace Pulumi.Cloudflare
         [Input("type")]
         public Input<string>? Type { get; set; }
 
+        [Input("vanityNameServers")]
+        private InputList<string>? _vanityNameServers;
+
+        /// <summary>
+        /// List of Vanity Nameservers (if set).
+        /// </summary>
+        public InputList<string> VanityNameServers
+        {
+            get => _vanityNameServers ?? (_vanityNameServers = new InputList<string>());
+            set => _vanityNameServers = value;
+        }
+
         /// <summary>
         /// The DNS zone name which will be added. **Modifying this attribute will force creation of a new resource.**
         /// </summary>

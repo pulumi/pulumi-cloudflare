@@ -19,14 +19,14 @@ public final class AccessApplicationSaasAppCustomClaimArgs extends com.pulumi.re
     public static final AccessApplicationSaasAppCustomClaimArgs Empty = new AccessApplicationSaasAppCustomClaimArgs();
 
     /**
-     * Friendly name of the Access Application.
+     * The name of the attribute as provided to the SaaS app.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return Friendly name of the Access Application.
+     * @return The name of the attribute as provided to the SaaS app.
      * 
      */
     public Optional<Output<String>> name() {
@@ -98,7 +98,7 @@ public final class AccessApplicationSaasAppCustomClaimArgs extends com.pulumi.re
         }
 
         /**
-         * @param name Friendly name of the Access Application.
+         * @param name The name of the attribute as provided to the SaaS app.
          * 
          * @return builder
          * 
@@ -109,7 +109,7 @@ public final class AccessApplicationSaasAppCustomClaimArgs extends com.pulumi.re
         }
 
         /**
-         * @param name Friendly name of the Access Application.
+         * @param name The name of the attribute as provided to the SaaS app.
          * 
          * @return builder
          * 

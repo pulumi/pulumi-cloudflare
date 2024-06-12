@@ -43,6 +43,12 @@ namespace Pulumi.Cloudflare.Inputs
         public string Name { get; set; } = null!;
 
         /// <summary>
+        /// The virtual network subnet ID the origin belongs in. Virtual network must also belong to the account.
+        /// </summary>
+        [Input("virtualNetworkId")]
+        public string? VirtualNetworkId { get; set; }
+
+        /// <summary>
         /// The weight (0.01 - 1.00) of this origin, relative to other origins in the pool. Equal values mean equal weighting. A weight of 0 means traffic will not be sent to this origin, but health is still checked. When `origin_steering.policy="least_outstanding_requests"`, weight is used to scale the origin's outstanding requests. When `origin_steering.policy="least_connections"`, weight is used to scale the origin's open connections.
         /// </summary>
         [Input("weight")]

@@ -17,13 +17,13 @@ __all__ = ['AccessOrganizationArgs', 'AccessOrganization']
 class AccessOrganizationArgs:
     def __init__(__self__, *,
                  auth_domain: pulumi.Input[str],
+                 name: pulumi.Input[str],
                  account_id: Optional[pulumi.Input[str]] = None,
                  allow_authenticate_via_warp: Optional[pulumi.Input[bool]] = None,
                  auto_redirect_to_identity: Optional[pulumi.Input[bool]] = None,
                  custom_pages: Optional[pulumi.Input[Sequence[pulumi.Input['AccessOrganizationCustomPageArgs']]]] = None,
                  is_ui_read_only: Optional[pulumi.Input[bool]] = None,
                  login_designs: Optional[pulumi.Input[Sequence[pulumi.Input['AccessOrganizationLoginDesignArgs']]]] = None,
-                 name: Optional[pulumi.Input[str]] = None,
                  session_duration: Optional[pulumi.Input[str]] = None,
                  ui_read_only_toggle_reason: Optional[pulumi.Input[str]] = None,
                  user_seat_expiration_inactive_time: Optional[pulumi.Input[str]] = None,
@@ -32,12 +32,12 @@ class AccessOrganizationArgs:
         """
         The set of arguments for constructing a AccessOrganization resource.
         :param pulumi.Input[str] auth_domain: The unique subdomain assigned to your Zero Trust organization.
+        :param pulumi.Input[str] name: The name of your Zero Trust organization.
         :param pulumi.Input[str] account_id: The account identifier to target for the resource. Conflicts with `zone_id`.
         :param pulumi.Input[bool] allow_authenticate_via_warp: When set to true, users can authenticate via WARP for any application in your organization. Application settings will take precedence over this value.
         :param pulumi.Input[bool] auto_redirect_to_identity: When set to true, users skip the identity provider selection step during login.
         :param pulumi.Input[Sequence[pulumi.Input['AccessOrganizationCustomPageArgs']]] custom_pages: Custom pages for your Zero Trust organization.
         :param pulumi.Input[bool] is_ui_read_only: When set to true, this will disable all editing of Access resources via the Zero Trust Dashboard.
-        :param pulumi.Input[str] name: The name of your Zero Trust organization.
         :param pulumi.Input[str] session_duration: How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`.
         :param pulumi.Input[str] ui_read_only_toggle_reason: A description of the reason why the UI read only field is being toggled.
         :param pulumi.Input[str] user_seat_expiration_inactive_time: The amount of time a user seat is inactive before it expires. When the user seat exceeds the set time of inactivity, the user is removed as an active seat and no longer counts against your Teams seat count. Must be in the format `300ms` or `2h45m`.
@@ -45,6 +45,7 @@ class AccessOrganizationArgs:
         :param pulumi.Input[str] zone_id: The zone identifier to target for the resource. Conflicts with `account_id`.
         """
         pulumi.set(__self__, "auth_domain", auth_domain)
+        pulumi.set(__self__, "name", name)
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
         if allow_authenticate_via_warp is not None:
@@ -57,8 +58,6 @@ class AccessOrganizationArgs:
             pulumi.set(__self__, "is_ui_read_only", is_ui_read_only)
         if login_designs is not None:
             pulumi.set(__self__, "login_designs", login_designs)
-        if name is not None:
-            pulumi.set(__self__, "name", name)
         if session_duration is not None:
             pulumi.set(__self__, "session_duration", session_duration)
         if ui_read_only_toggle_reason is not None:
@@ -81,6 +80,18 @@ class AccessOrganizationArgs:
     @auth_domain.setter
     def auth_domain(self, value: pulumi.Input[str]):
         pulumi.set(self, "auth_domain", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        """
+        The name of your Zero Trust organization.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
 
     @property
     @pulumi.getter(name="accountId")
@@ -150,18 +161,6 @@ class AccessOrganizationArgs:
     @login_designs.setter
     def login_designs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AccessOrganizationLoginDesignArgs']]]]):
         pulumi.set(self, "login_designs", value)
-
-    @property
-    @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[str]]:
-        """
-        The name of your Zero Trust organization.
-        """
-        return pulumi.get(self, "name")
-
-    @name.setter
-    def name(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "name", value)
 
     @property
     @pulumi.getter(name="sessionDuration")
@@ -584,6 +583,8 @@ class AccessOrganization(pulumi.CustomResource):
             __props__.__dict__["custom_pages"] = custom_pages
             __props__.__dict__["is_ui_read_only"] = is_ui_read_only
             __props__.__dict__["login_designs"] = login_designs
+            if name is None and not opts.urn:
+                raise TypeError("Missing required property 'name'")
             __props__.__dict__["name"] = name
             __props__.__dict__["session_duration"] = session_duration
             __props__.__dict__["ui_read_only_toggle_reason"] = ui_read_only_toggle_reason
@@ -707,7 +708,7 @@ class AccessOrganization(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> pulumi.Output[Optional[str]]:
+    def name(self) -> pulumi.Output[str]:
         """
         The name of your Zero Trust organization.
         """
