@@ -94,7 +94,7 @@ export class AccessOrganization extends pulumi.CustomResource {
     /**
      * The name of your Zero Trust organization.
      */
-    public readonly name!: pulumi.Output<string | undefined>;
+    public readonly name!: pulumi.Output<string>;
     /**
      * How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`.
      */
@@ -146,6 +146,9 @@ export class AccessOrganization extends pulumi.CustomResource {
             const args = argsOrState as AccessOrganizationArgs | undefined;
             if ((!args || args.authDomain === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'authDomain'");
+            }
+            if ((!args || args.name === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'name'");
             }
             resourceInputs["accountId"] = args ? args.accountId : undefined;
             resourceInputs["allowAuthenticateViaWarp"] = args ? args.allowAuthenticateViaWarp : undefined;
@@ -253,7 +256,7 @@ export interface AccessOrganizationArgs {
     /**
      * The name of your Zero Trust organization.
      */
-    name?: pulumi.Input<string>;
+    name: pulumi.Input<string>;
     /**
      * How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`.
      */

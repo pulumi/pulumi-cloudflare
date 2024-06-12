@@ -76,7 +76,7 @@ type AccessOrganization struct {
 	IsUiReadOnly pulumi.BoolPtrOutput                     `pulumi:"isUiReadOnly"`
 	LoginDesigns AccessOrganizationLoginDesignArrayOutput `pulumi:"loginDesigns"`
 	// The name of your Zero Trust organization.
-	Name pulumi.StringPtrOutput `pulumi:"name"`
+	Name pulumi.StringOutput `pulumi:"name"`
 	// How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`.
 	SessionDuration pulumi.StringPtrOutput `pulumi:"sessionDuration"`
 	// A description of the reason why the UI read only field is being toggled.
@@ -98,6 +98,9 @@ func NewAccessOrganization(ctx *pulumi.Context,
 
 	if args.AuthDomain == nil {
 		return nil, errors.New("invalid value for required argument 'AuthDomain'")
+	}
+	if args.Name == nil {
+		return nil, errors.New("invalid value for required argument 'Name'")
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource AccessOrganization
@@ -196,7 +199,7 @@ type accessOrganizationArgs struct {
 	IsUiReadOnly *bool                           `pulumi:"isUiReadOnly"`
 	LoginDesigns []AccessOrganizationLoginDesign `pulumi:"loginDesigns"`
 	// The name of your Zero Trust organization.
-	Name *string `pulumi:"name"`
+	Name string `pulumi:"name"`
 	// How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`.
 	SessionDuration *string `pulumi:"sessionDuration"`
 	// A description of the reason why the UI read only field is being toggled.
@@ -225,7 +228,7 @@ type AccessOrganizationArgs struct {
 	IsUiReadOnly pulumi.BoolPtrInput
 	LoginDesigns AccessOrganizationLoginDesignArrayInput
 	// The name of your Zero Trust organization.
-	Name pulumi.StringPtrInput
+	Name pulumi.StringInput
 	// How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`.
 	SessionDuration pulumi.StringPtrInput
 	// A description of the reason why the UI read only field is being toggled.
@@ -360,8 +363,8 @@ func (o AccessOrganizationOutput) LoginDesigns() AccessOrganizationLoginDesignAr
 }
 
 // The name of your Zero Trust organization.
-func (o AccessOrganizationOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AccessOrganization) pulumi.StringPtrOutput { return v.Name }).(pulumi.StringPtrOutput)
+func (o AccessOrganizationOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *AccessOrganization) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
 // How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`.

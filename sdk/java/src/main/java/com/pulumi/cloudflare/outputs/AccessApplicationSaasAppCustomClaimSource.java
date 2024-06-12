@@ -13,7 +13,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class AccessApplicationSaasAppCustomClaimSource {
     /**
-     * @return Friendly name of the Access Application.
+     * @return The name of the attribute as provided by the IDP.
      * 
      */
     private String name;
@@ -25,7 +25,7 @@ public final class AccessApplicationSaasAppCustomClaimSource {
 
     private AccessApplicationSaasAppCustomClaimSource() {}
     /**
-     * @return Friendly name of the Access Application.
+     * @return The name of the attribute as provided by the IDP.
      * 
      */
     public String name() {

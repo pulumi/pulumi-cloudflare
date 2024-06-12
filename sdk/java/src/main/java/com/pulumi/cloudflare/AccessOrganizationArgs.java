@@ -121,15 +121,15 @@ public final class AccessOrganizationArgs extends com.pulumi.resources.ResourceA
      * The name of your Zero Trust organization.
      * 
      */
-    @Import(name="name")
-    private @Nullable Output<String> name;
+    @Import(name="name", required=true)
+    private Output<String> name;
 
     /**
      * @return The name of your Zero Trust organization.
      * 
      */
-    public Optional<Output<String>> name() {
-        return Optional.ofNullable(this.name);
+    public Output<String> name() {
+        return this.name;
     }
 
     /**
@@ -398,7 +398,7 @@ public final class AccessOrganizationArgs extends com.pulumi.resources.ResourceA
          * @return builder
          * 
          */
-        public Builder name(@Nullable Output<String> name) {
+        public Builder name(Output<String> name) {
             $.name = name;
             return this;
         }
@@ -521,6 +521,9 @@ public final class AccessOrganizationArgs extends com.pulumi.resources.ResourceA
         public AccessOrganizationArgs build() {
             if ($.authDomain == null) {
                 throw new MissingRequiredPropertyException("AccessOrganizationArgs", "authDomain");
+            }
+            if ($.name == null) {
+                throw new MissingRequiredPropertyException("AccessOrganizationArgs", "name");
             }
             return $;
         }

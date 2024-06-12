@@ -89,7 +89,7 @@ export class Zone extends pulumi.CustomResource {
     /**
      * List of Vanity Nameservers (if set).
      */
-    public /*out*/ readonly vanityNameServers!: pulumi.Output<string[]>;
+    public readonly vanityNameServers!: pulumi.Output<string[]>;
     /**
      * Contains the TXT record value to validate domain ownership. This is only populated for zones of type `partial`.
      */
@@ -136,11 +136,11 @@ export class Zone extends pulumi.CustomResource {
             resourceInputs["paused"] = args ? args.paused : undefined;
             resourceInputs["plan"] = args ? args.plan : undefined;
             resourceInputs["type"] = args ? args.type : undefined;
+            resourceInputs["vanityNameServers"] = args ? args.vanityNameServers : undefined;
             resourceInputs["zone"] = args ? args.zone : undefined;
             resourceInputs["meta"] = undefined /*out*/;
             resourceInputs["nameServers"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
-            resourceInputs["vanityNameServers"] = undefined /*out*/;
             resourceInputs["verificationKey"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -219,6 +219,10 @@ export interface ZoneArgs {
      * A full zone implies that DNS is hosted with Cloudflare. A partial zone is typically a partner-hosted zone or a CNAME setup. Available values: `full`, `partial`, `secondary`. Defaults to `full`.
      */
     type?: pulumi.Input<string>;
+    /**
+     * List of Vanity Nameservers (if set).
+     */
+    vanityNameServers?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The DNS zone name which will be added. **Modifying this attribute will force creation of a new resource.**
      */

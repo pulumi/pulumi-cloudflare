@@ -13,7 +13,7 @@ namespace Pulumi.Cloudflare.Inputs
     public sealed class AccessApplicationSaasAppArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Allow PKCE flow without a client secret
+        /// Allow PKCE flow without a client secret.
         /// </summary>
         [Input("allowPkceWithoutClientSecret")]
         public Input<bool>? AllowPkceWithoutClientSecret { get; set; }
@@ -24,6 +24,9 @@ namespace Pulumi.Cloudflare.Inputs
         [Input("appLauncherUrl")]
         public Input<string>? AppLauncherUrl { get; set; }
 
+        /// <summary>
+        /// **Modifying this attribute will force creation of a new resource.**
+        /// </summary>
         [Input("authType")]
         public Input<string>? AuthType { get; set; }
 
@@ -104,6 +107,12 @@ namespace Pulumi.Cloudflare.Inputs
         public Input<string>? GroupFilterRegex { get; set; }
 
         /// <summary>
+        /// Hybrid and Implicit Flow options.
+        /// </summary>
+        [Input("hybridAndImplicitOptions")]
+        public Input<Inputs.AccessApplicationSaasAppHybridAndImplicitOptionsArgs>? HybridAndImplicitOptions { get; set; }
+
+        /// <summary>
         /// The unique identifier for the SaaS application.
         /// </summary>
         [Input("idpEntityId")]
@@ -143,7 +152,7 @@ namespace Pulumi.Cloudflare.Inputs
         private InputList<Inputs.AccessApplicationSaasAppRefreshTokenOptionArgs>? _refreshTokenOptions;
 
         /// <summary>
-        /// Refresh token grant options
+        /// Refresh token grant options.
         /// </summary>
         public InputList<Inputs.AccessApplicationSaasAppRefreshTokenOptionArgs> RefreshTokenOptions
         {

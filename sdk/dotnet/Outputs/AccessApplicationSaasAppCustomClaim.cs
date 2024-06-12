@@ -14,7 +14,7 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class AccessApplicationSaasAppCustomClaim
     {
         /// <summary>
-        /// Friendly name of the Access Application.
+        /// The name of the attribute as provided to the SaaS app.
         /// </summary>
         public readonly string? Name;
         /// <summary>

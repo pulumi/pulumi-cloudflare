@@ -30,6 +30,12 @@ namespace Pulumi.Cloudflare.Inputs
         [Input("udp", required: true)]
         public Input<bool> Udp { get; set; } = null!;
 
+        /// <summary>
+        /// Whether virtual IP (CGNAT) is enabled account wide and will override existing local interface IP for ZT clients.
+        /// </summary>
+        [Input("virtualIp", required: true)]
+        public Input<bool> VirtualIp { get; set; } = null!;
+
         public TeamsAccountProxyGetArgs()
         {
         }

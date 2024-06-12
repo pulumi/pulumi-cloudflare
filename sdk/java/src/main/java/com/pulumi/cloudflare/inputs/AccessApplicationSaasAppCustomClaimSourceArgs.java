@@ -18,14 +18,14 @@ public final class AccessApplicationSaasAppCustomClaimSourceArgs extends com.pul
     public static final AccessApplicationSaasAppCustomClaimSourceArgs Empty = new AccessApplicationSaasAppCustomClaimSourceArgs();
 
     /**
-     * Friendly name of the Access Application.
+     * The name of the attribute as provided by the IDP.
      * 
      */
     @Import(name="name", required=true)
     private Output<String> name;
 
     /**
-     * @return Friendly name of the Access Application.
+     * @return The name of the attribute as provided by the IDP.
      * 
      */
     public Output<String> name() {
@@ -73,7 +73,7 @@ public final class AccessApplicationSaasAppCustomClaimSourceArgs extends com.pul
         }
 
         /**
-         * @param name Friendly name of the Access Application.
+         * @param name The name of the attribute as provided by the IDP.
          * 
          * @return builder
          * 
@@ -84,7 +84,7 @@ public final class AccessApplicationSaasAppCustomClaimSourceArgs extends com.pul
         }
 
         /**
-         * @param name Friendly name of the Access Application.
+         * @param name The name of the attribute as provided by the IDP.
          * 
          * @return builder
          * 

@@ -13,7 +13,7 @@ namespace Pulumi.Cloudflare.Inputs
     public sealed class AccessApplicationSaasAppCustomClaimGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Friendly name of the Access Application.
+        /// The name of the attribute as provided to the SaaS app.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

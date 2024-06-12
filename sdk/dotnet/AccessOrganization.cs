@@ -98,7 +98,7 @@ namespace Pulumi.Cloudflare
         /// The name of your Zero Trust organization.
         /// </summary>
         [Output("name")]
-        public Output<string?> Name { get; private set; } = null!;
+        public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
         /// How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`.
@@ -229,8 +229,8 @@ namespace Pulumi.Cloudflare
         /// <summary>
         /// The name of your Zero Trust organization.
         /// </summary>
-        [Input("name")]
-        public Input<string>? Name { get; set; }
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
 
         /// <summary>
         /// How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`.

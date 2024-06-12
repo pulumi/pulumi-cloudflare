@@ -19,7 +19,8 @@ class ZoneArgs:
                  jump_start: Optional[pulumi.Input[bool]] = None,
                  paused: Optional[pulumi.Input[bool]] = None,
                  plan: Optional[pulumi.Input[str]] = None,
-                 type: Optional[pulumi.Input[str]] = None):
+                 type: Optional[pulumi.Input[str]] = None,
+                 vanity_name_servers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         The set of arguments for constructing a Zone resource.
         :param pulumi.Input[str] account_id: Account ID to manage the zone resource in.
@@ -28,6 +29,7 @@ class ZoneArgs:
         :param pulumi.Input[bool] paused: Whether this zone is paused (traffic bypasses Cloudflare). Defaults to `false`.
         :param pulumi.Input[str] plan: The name of the commercial plan to apply to the zone. Available values: `free`, `lite`, `pro`, `pro_plus`, `business`, `enterprise`, `partners_free`, `partners_pro`, `partners_business`, `partners_enterprise`.
         :param pulumi.Input[str] type: A full zone implies that DNS is hosted with Cloudflare. A partial zone is typically a partner-hosted zone or a CNAME setup. Available values: `full`, `partial`, `secondary`. Defaults to `full`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] vanity_name_servers: List of Vanity Nameservers (if set).
         """
         pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "zone", zone)
@@ -39,6 +41,8 @@ class ZoneArgs:
             pulumi.set(__self__, "plan", plan)
         if type is not None:
             pulumi.set(__self__, "type", type)
+        if vanity_name_servers is not None:
+            pulumi.set(__self__, "vanity_name_servers", vanity_name_servers)
 
     @property
     @pulumi.getter(name="accountId")
@@ -111,6 +115,18 @@ class ZoneArgs:
     @type.setter
     def type(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "type", value)
+
+    @property
+    @pulumi.getter(name="vanityNameServers")
+    def vanity_name_servers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        List of Vanity Nameservers (if set).
+        """
+        return pulumi.get(self, "vanity_name_servers")
+
+    @vanity_name_servers.setter
+    def vanity_name_servers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "vanity_name_servers", value)
 
 
 @pulumi.input_type
@@ -303,6 +319,7 @@ class Zone(pulumi.CustomResource):
                  paused: Optional[pulumi.Input[bool]] = None,
                  plan: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None,
+                 vanity_name_servers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  zone: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -336,6 +353,7 @@ class Zone(pulumi.CustomResource):
         :param pulumi.Input[bool] paused: Whether this zone is paused (traffic bypasses Cloudflare). Defaults to `false`.
         :param pulumi.Input[str] plan: The name of the commercial plan to apply to the zone. Available values: `free`, `lite`, `pro`, `pro_plus`, `business`, `enterprise`, `partners_free`, `partners_pro`, `partners_business`, `partners_enterprise`.
         :param pulumi.Input[str] type: A full zone implies that DNS is hosted with Cloudflare. A partial zone is typically a partner-hosted zone or a CNAME setup. Available values: `full`, `partial`, `secondary`. Defaults to `full`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] vanity_name_servers: List of Vanity Nameservers (if set).
         :param pulumi.Input[str] zone: The DNS zone name which will be added. **Modifying this attribute will force creation of a new resource.**
         """
         ...
@@ -388,6 +406,7 @@ class Zone(pulumi.CustomResource):
                  paused: Optional[pulumi.Input[bool]] = None,
                  plan: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None,
+                 vanity_name_servers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  zone: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -405,13 +424,13 @@ class Zone(pulumi.CustomResource):
             __props__.__dict__["paused"] = paused
             __props__.__dict__["plan"] = plan
             __props__.__dict__["type"] = type
+            __props__.__dict__["vanity_name_servers"] = vanity_name_servers
             if zone is None and not opts.urn:
                 raise TypeError("Missing required property 'zone'")
             __props__.__dict__["zone"] = zone
             __props__.__dict__["meta"] = None
             __props__.__dict__["name_servers"] = None
             __props__.__dict__["status"] = None
-            __props__.__dict__["vanity_name_servers"] = None
             __props__.__dict__["verification_key"] = None
         super(Zone, __self__).__init__(
             'cloudflare:index/zone:Zone',

@@ -60,6 +60,7 @@ namespace Pulumi.Cloudflare
     ///             Tcp = true,
     ///             Udp = true,
     ///             RootCa = true,
+    ///             VirtualIp = false,
     ///         },
     ///         UrlBrowserIsolationEnabled = true,
     ///         Logging = new Cloudflare.Inputs.TeamsAccountLoggingArgs

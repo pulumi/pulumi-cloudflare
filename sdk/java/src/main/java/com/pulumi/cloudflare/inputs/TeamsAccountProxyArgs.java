@@ -59,12 +59,28 @@ public final class TeamsAccountProxyArgs extends com.pulumi.resources.ResourceAr
         return this.udp;
     }
 
+    /**
+     * Whether virtual IP (CGNAT) is enabled account wide and will override existing local interface IP for ZT clients.
+     * 
+     */
+    @Import(name="virtualIp", required=true)
+    private Output<Boolean> virtualIp;
+
+    /**
+     * @return Whether virtual IP (CGNAT) is enabled account wide and will override existing local interface IP for ZT clients.
+     * 
+     */
+    public Output<Boolean> virtualIp() {
+        return this.virtualIp;
+    }
+
     private TeamsAccountProxyArgs() {}
 
     private TeamsAccountProxyArgs(TeamsAccountProxyArgs $) {
         this.rootCa = $.rootCa;
         this.tcp = $.tcp;
         this.udp = $.udp;
+        this.virtualIp = $.virtualIp;
     }
 
     public static Builder builder() {
@@ -148,6 +164,27 @@ public final class TeamsAccountProxyArgs extends com.pulumi.resources.ResourceAr
             return udp(Output.of(udp));
         }
 
+        /**
+         * @param virtualIp Whether virtual IP (CGNAT) is enabled account wide and will override existing local interface IP for ZT clients.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder virtualIp(Output<Boolean> virtualIp) {
+            $.virtualIp = virtualIp;
+            return this;
+        }
+
+        /**
+         * @param virtualIp Whether virtual IP (CGNAT) is enabled account wide and will override existing local interface IP for ZT clients.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder virtualIp(Boolean virtualIp) {
+            return virtualIp(Output.of(virtualIp));
+        }
+
         public TeamsAccountProxyArgs build() {
             if ($.rootCa == null) {
                 throw new MissingRequiredPropertyException("TeamsAccountProxyArgs", "rootCa");
@@ -157,6 +194,9 @@ public final class TeamsAccountProxyArgs extends com.pulumi.resources.ResourceAr
             }
             if ($.udp == null) {
                 throw new MissingRequiredPropertyException("TeamsAccountProxyArgs", "udp");
+            }
+            if ($.virtualIp == null) {
+                throw new MissingRequiredPropertyException("TeamsAccountProxyArgs", "virtualIp");
             }
             return $;
         }

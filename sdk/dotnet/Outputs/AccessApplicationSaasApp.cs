@@ -14,13 +14,16 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class AccessApplicationSaasApp
     {
         /// <summary>
-        /// Allow PKCE flow without a client secret
+        /// Allow PKCE flow without a client secret.
         /// </summary>
         public readonly bool? AllowPkceWithoutClientSecret;
         /// <summary>
         /// The URL where this applications tile redirects users.
         /// </summary>
         public readonly string? AppLauncherUrl;
+        /// <summary>
+        /// **Modifying this attribute will force creation of a new resource.**
+        /// </summary>
         public readonly string? AuthType;
         /// <summary>
         /// The application client id.
@@ -55,6 +58,10 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly string? GroupFilterRegex;
         /// <summary>
+        /// Hybrid and Implicit Flow options.
+        /// </summary>
+        public readonly Outputs.AccessApplicationSaasAppHybridAndImplicitOptions? HybridAndImplicitOptions;
+        /// <summary>
         /// The unique identifier for the SaaS application.
         /// </summary>
         public readonly string? IdpEntityId;
@@ -75,7 +82,7 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly ImmutableArray<string> RedirectUris;
         /// <summary>
-        /// Refresh token grant options
+        /// Refresh token grant options.
         /// </summary>
         public readonly ImmutableArray<Outputs.AccessApplicationSaasAppRefreshTokenOption> RefreshTokenOptions;
         /// <summary>
@@ -119,6 +126,8 @@ namespace Pulumi.Cloudflare.Outputs
 
             string? groupFilterRegex,
 
+            Outputs.AccessApplicationSaasAppHybridAndImplicitOptions? hybridAndImplicitOptions,
+
             string? idpEntityId,
 
             string? nameIdFormat,
@@ -150,6 +159,7 @@ namespace Pulumi.Cloudflare.Outputs
             DefaultRelayState = defaultRelayState;
             GrantTypes = grantTypes;
             GroupFilterRegex = groupFilterRegex;
+            HybridAndImplicitOptions = hybridAndImplicitOptions;
             IdpEntityId = idpEntityId;
             NameIdFormat = nameIdFormat;
             NameIdTransformJsonata = nameIdTransformJsonata;

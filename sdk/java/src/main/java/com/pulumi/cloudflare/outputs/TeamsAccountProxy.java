@@ -25,6 +25,11 @@ public final class TeamsAccountProxy {
      * 
      */
     private Boolean udp;
+    /**
+     * @return Whether virtual IP (CGNAT) is enabled account wide and will override existing local interface IP for ZT clients.
+     * 
+     */
+    private Boolean virtualIp;
 
     private TeamsAccountProxy() {}
     /**
@@ -48,6 +53,13 @@ public final class TeamsAccountProxy {
     public Boolean udp() {
         return this.udp;
     }
+    /**
+     * @return Whether virtual IP (CGNAT) is enabled account wide and will override existing local interface IP for ZT clients.
+     * 
+     */
+    public Boolean virtualIp() {
+        return this.virtualIp;
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -61,12 +73,14 @@ public final class TeamsAccountProxy {
         private Boolean rootCa;
         private Boolean tcp;
         private Boolean udp;
+        private Boolean virtualIp;
         public Builder() {}
         public Builder(TeamsAccountProxy defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.rootCa = defaults.rootCa;
     	      this.tcp = defaults.tcp;
     	      this.udp = defaults.udp;
+    	      this.virtualIp = defaults.virtualIp;
         }
 
         @CustomType.Setter
@@ -93,11 +107,20 @@ public final class TeamsAccountProxy {
             this.udp = udp;
             return this;
         }
+        @CustomType.Setter
+        public Builder virtualIp(Boolean virtualIp) {
+            if (virtualIp == null) {
+              throw new MissingRequiredPropertyException("TeamsAccountProxy", "virtualIp");
+            }
+            this.virtualIp = virtualIp;
+            return this;
+        }
         public TeamsAccountProxy build() {
             final var _resultValue = new TeamsAccountProxy();
             _resultValue.rootCa = rootCa;
             _resultValue.tcp = tcp;
             _resultValue.udp = udp;
+            _resultValue.virtualIp = virtualIp;
             return _resultValue;
         }
     }

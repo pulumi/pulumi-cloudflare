@@ -139,14 +139,16 @@ public final class LogpushJobOutputOptionsArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * String to be appended after each record. Defaults to `}`.
+     * String to be appended after each record. Defaults to `}
+     * `.
      * 
      */
     @Import(name="recordSuffix")
     private @Nullable Output<String> recordSuffix;
 
     /**
-     * @return String to be appended after each record. Defaults to `}`.
+     * @return String to be appended after each record. Defaults to `}
+     * `.
      * 
      */
     public Optional<Output<String>> recordSuffix() {
@@ -412,7 +414,8 @@ public final class LogpushJobOutputOptionsArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param recordSuffix String to be appended after each record. Defaults to `}`.
+         * @param recordSuffix String to be appended after each record. Defaults to `}
+         * `.
          * 
          * @return builder
          * 
@@ -423,7 +426,8 @@ public final class LogpushJobOutputOptionsArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param recordSuffix String to be appended after each record. Defaults to `}`.
+         * @param recordSuffix String to be appended after each record. Defaults to `}
+         * `.
          * 
          * @return builder
          * 

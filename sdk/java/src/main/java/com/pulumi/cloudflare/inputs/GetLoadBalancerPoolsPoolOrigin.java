@@ -80,6 +80,21 @@ public final class GetLoadBalancerPoolsPoolOrigin extends com.pulumi.resources.I
     }
 
     /**
+     * The virtual network subnet ID the origin belongs in. Virtual network must also belong to the account.
+     * 
+     */
+    @Import(name="virtualNetworkId")
+    private @Nullable String virtualNetworkId;
+
+    /**
+     * @return The virtual network subnet ID the origin belongs in. Virtual network must also belong to the account.
+     * 
+     */
+    public Optional<String> virtualNetworkId() {
+        return Optional.ofNullable(this.virtualNetworkId);
+    }
+
+    /**
      * The weight (0.01 - 1.00) of this origin, relative to other origins in the pool. Equal values mean equal weighting. A weight of 0 means traffic will not be sent to this origin, but health is still checked. When `origin_steering.policy=&#34;least_outstanding_requests&#34;`, weight is used to scale the origin&#39;s outstanding requests. When `origin_steering.policy=&#34;least_connections&#34;`, weight is used to scale the origin&#39;s open connections.
      * 
      */
@@ -101,6 +116,7 @@ public final class GetLoadBalancerPoolsPoolOrigin extends com.pulumi.resources.I
         this.enabled = $.enabled;
         this.headers = $.headers;
         this.name = $.name;
+        this.virtualNetworkId = $.virtualNetworkId;
         this.weight = $.weight;
     }
 
@@ -173,6 +189,17 @@ public final class GetLoadBalancerPoolsPoolOrigin extends com.pulumi.resources.I
          */
         public Builder name(String name) {
             $.name = name;
+            return this;
+        }
+
+        /**
+         * @param virtualNetworkId The virtual network subnet ID the origin belongs in. Virtual network must also belong to the account.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder virtualNetworkId(@Nullable String virtualNetworkId) {
+            $.virtualNetworkId = virtualNetworkId;
             return this;
         }
 

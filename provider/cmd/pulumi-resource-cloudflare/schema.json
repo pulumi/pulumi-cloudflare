@@ -225,14 +225,16 @@
             "properties": {
                 "allowPkceWithoutClientSecret": {
                     "type": "boolean",
-                    "description": "Allow PKCE flow without a client secret\n"
+                    "description": "Allow PKCE flow without a client secret.\n"
                 },
                 "appLauncherUrl": {
                     "type": "string",
                     "description": "The URL where this applications tile redirects users.\n"
                 },
                 "authType": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "**Modifying this attribute will force creation of a new resource.**\n",
+                    "willReplaceOnChanges": true
                 },
                 "clientId": {
                     "type": "string",
@@ -276,6 +278,10 @@
                     "type": "string",
                     "description": "A regex to filter Cloudflare groups returned in ID token and userinfo endpoint.\n"
                 },
+                "hybridAndImplicitOptions": {
+                    "$ref": "#/types/cloudflare:index/AccessApplicationSaasAppHybridAndImplicitOptions:AccessApplicationSaasAppHybridAndImplicitOptions",
+                    "description": "Hybrid and Implicit Flow options.\n"
+                },
                 "idpEntityId": {
                     "type": "string",
                     "description": "The unique identifier for the SaaS application.\n"
@@ -304,7 +310,7 @@
                     "items": {
                         "$ref": "#/types/cloudflare:index/AccessApplicationSaasAppRefreshTokenOption:AccessApplicationSaasAppRefreshTokenOption"
                     },
-                    "description": "Refresh token grant options\n"
+                    "description": "Refresh token grant options.\n"
                 },
                 "samlAttributeTransformJsonata": {
                     "type": "string",
@@ -391,7 +397,7 @@
             "properties": {
                 "name": {
                     "type": "string",
-                    "description": "Friendly name of the Access Application.\n"
+                    "description": "The name of the attribute as provided to the SaaS app.\n"
                 },
                 "required": {
                     "type": "boolean",
@@ -414,7 +420,7 @@
             "properties": {
                 "name": {
                     "type": "string",
-                    "description": "Friendly name of the Access Application.\n"
+                    "description": "The name of the attribute as provided by the IDP.\n"
                 },
                 "nameByIdp": {
                     "type": "object",
@@ -428,6 +434,19 @@
             "required": [
                 "name"
             ]
+        },
+        "cloudflare:index/AccessApplicationSaasAppHybridAndImplicitOptions:AccessApplicationSaasAppHybridAndImplicitOptions": {
+            "properties": {
+                "returnAccessTokenFromAuthorizationEndpoint": {
+                    "type": "boolean",
+                    "description": "If true, the authorization endpoint will return an access token.\n"
+                },
+                "returnIdTokenFromAuthorizationEndpoint": {
+                    "type": "boolean",
+                    "description": "If true, the authorization endpoint will return an id token.\n"
+                }
+            },
+            "type": "object"
         },
         "cloudflare:index/AccessApplicationSaasAppRefreshTokenOption:AccessApplicationSaasAppRefreshTokenOption": {
             "properties": {
@@ -3294,6 +3313,10 @@
                     "type": "string",
                     "description": "A human-identifiable name for the origin.\n"
                 },
+                "virtualNetworkId": {
+                    "type": "string",
+                    "description": "The virtual network subnet ID the origin belongs in. Virtual network must also belong to the account.\n"
+                },
                 "weight": {
                     "type": "number",
                     "description": "The weight (0.01 - 1.00) of this origin, relative to other origins in the pool. Equal values mean equal weighting. A weight of 0 means traffic will not be sent to this origin, but health is still checked. When `origin_steering.policy=\"least_outstanding_requests\"`, weight is used to scale the origin's outstanding requests. When `origin_steering.policy=\"least_connections\"`, weight is used to scale the origin's open connections. Defaults to `1`.\n"
@@ -3746,7 +3769,7 @@
                 },
                 "recordSuffix": {
                     "type": "string",
-                    "description": "String to be appended after each record. Defaults to `}`.\n"
+                    "description": "String to be appended after each record. Defaults to `}\n`.\n"
                 },
                 "recordTemplate": {
                     "type": "string",
@@ -6321,13 +6344,18 @@
                 "udp": {
                     "type": "boolean",
                     "description": "Whether gateway proxy is enabled on gateway devices for UDP traffic.\n"
+                },
+                "virtualIp": {
+                    "type": "boolean",
+                    "description": "Whether virtual IP (CGNAT) is enabled account wide and will override existing local interface IP for ZT clients.\n"
                 }
             },
             "type": "object",
             "required": [
                 "rootCa",
                 "tcp",
-                "udp"
+                "udp",
+                "virtualIp"
             ]
         },
         "cloudflare:index/TeamsAccountSshSessionLog:TeamsAccountSshSessionLog": {
@@ -8219,6 +8247,10 @@
                 "name": {
                     "type": "string",
                     "description": "A human-identifiable name for the origin.\n"
+                },
+                "virtualNetworkId": {
+                    "type": "string",
+                    "description": "The virtual network subnet ID the origin belongs in. Virtual network must also belong to the account.\n"
                 },
                 "weight": {
                     "type": "number",
@@ -10510,6 +10542,7 @@
             "required": [
                 "accountId",
                 "authDomain",
+                "name",
                 "zoneId"
             ],
             "inputProperties": {
@@ -10572,7 +10605,8 @@
                 }
             },
             "requiredInputs": [
-                "authDomain"
+                "authDomain",
+                "name"
             ],
             "stateInputs": {
                 "description": "Input properties used for looking up and filtering AccessOrganization resources.\n",
@@ -10639,11 +10673,11 @@
             }
         },
         "cloudflare:index/accessPolicy:AccessPolicy": {
-            "description": "Provides a Cloudflare Access Policy resource. Access Policies are\nused in conjunction with Access Applications to restrict access to\na particular resource.\n\n\u003e It's required that an `account_id` or `zone_id` is provided and in most cases using either is fine.\n   However, if you're using a scoped access token, you must provide the argument that matches the token's\n   scope. For example, an access token that is scoped to the \"example.com\" zone needs to use the `zone_id` argument.\n   If 'application_id' is omitted, the policy created can be reused by multiple access applications.\n   Any cloudflare.AccessApplication resource can reference reusable policies through its `policies` argument.\n   To destroy a reusable policy and remove it from all applications' policies lists on the same apply, preemptively set the\n   lifecycle option `create_before_destroy` to true on the 'cloudflare_access_policy' resource.\n\n## Import\n\nAccount level import.\n\n```sh\n$ pulumi import cloudflare:index/accessPolicy:AccessPolicy example account/\u003caccount_id\u003e/\u003capplication_id\u003e/\u003cpolicy_id\u003e\n```\n\nZone level import.\n\n```sh\n$ pulumi import cloudflare:index/accessPolicy:AccessPolicy example zone/\u003czone_id\u003e/\u003capplication_id\u003e/\u003cpolicy_id\u003e\n```\n\n",
+            "description": "Provides a Cloudflare Access Policy resource. Access Policies are\nused in conjunction with Access Applications to restrict access to\na particular resource.\n\n\u003e It's required that an `account_id` or `zone_id` is provided and in most cases using either is fine.\n   However, if you're using a scoped access token, you must provide the argument that matches the token's\n   scope. For example, an access token that is scoped to the \"example.com\" zone needs to use the `zone_id` argument.\n   If 'application_id' is omitted, the policy created can be reused by multiple access applications.\n   Any cloudflare.AccessApplication resource can reference reusable policies through its `policies` argument.\n   To destroy a reusable policy and remove it from all applications' policies lists on the same apply, preemptively set the\n   lifecycle option `create_before_destroy` to true on the 'cloudflare_access_policy' resource.\n\n## Import\n\n```sh\n$ pulumi import cloudflare:index/accessPolicy:AccessPolicy example account/\u003caccount_id\u003e/\u003capplication_id\u003e/\u003cpolicy_id\u003e\n```\n\n",
             "properties": {
                 "accountId": {
                     "type": "string",
-                    "description": "The account identifier to target for the resource. Must provide only one of `account_id`, `zone_id`. **Modifying this attribute will force creation of a new resource.**\n"
+                    "description": "The account identifier to target for the resource. Conflicts with `zone_id`. **Modifying this attribute will force creation of a new resource.**\n"
                 },
                 "applicationId": {
                     "type": "string",
@@ -10711,7 +10745,7 @@
                 },
                 "zoneId": {
                     "type": "string",
-                    "description": "The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**\n"
+                    "description": "The zone identifier to target for the resource. Conflicts with `account_id`. **Modifying this attribute will force creation of a new resource.**\n"
                 }
             },
             "required": [
@@ -10722,7 +10756,7 @@
             "inputProperties": {
                 "accountId": {
                     "type": "string",
-                    "description": "The account identifier to target for the resource. Must provide only one of `account_id`, `zone_id`. **Modifying this attribute will force creation of a new resource.**\n",
+                    "description": "The account identifier to target for the resource. Conflicts with `zone_id`. **Modifying this attribute will force creation of a new resource.**\n",
                     "willReplaceOnChanges": true
                 },
                 "applicationId": {
@@ -10792,7 +10826,7 @@
                 },
                 "zoneId": {
                     "type": "string",
-                    "description": "The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**\n",
+                    "description": "The zone identifier to target for the resource. Conflicts with `account_id`. **Modifying this attribute will force creation of a new resource.**\n",
                     "willReplaceOnChanges": true
                 }
             },
@@ -10806,7 +10840,7 @@
                 "properties": {
                     "accountId": {
                         "type": "string",
-                        "description": "The account identifier to target for the resource. Must provide only one of `account_id`, `zone_id`. **Modifying this attribute will force creation of a new resource.**\n",
+                        "description": "The account identifier to target for the resource. Conflicts with `zone_id`. **Modifying this attribute will force creation of a new resource.**\n",
                         "willReplaceOnChanges": true
                     },
                     "applicationId": {
@@ -10876,7 +10910,7 @@
                     },
                     "zoneId": {
                         "type": "string",
-                        "description": "The zone identifier to target for the resource. **Modifying this attribute will force creation of a new resource.**\n",
+                        "description": "The zone identifier to target for the resource. Conflicts with `account_id`. **Modifying this attribute will force creation of a new resource.**\n",
                         "willReplaceOnChanges": true
                     }
                 },
@@ -19302,7 +19336,7 @@
             }
         },
         "cloudflare:index/teamsAccount:TeamsAccount": {
-            "description": "Provides a Cloudflare Teams Account resource. The Teams Account\nresource defines configuration for secure web gateway.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as cloudflare from \"@pulumi/cloudflare\";\n\nconst example = new cloudflare.TeamsAccount(\"example\", {\n    accountId: \"f037e56e89293a057740de681ac9abbe\",\n    tlsDecryptEnabled: true,\n    protocolDetectionEnabled: true,\n    blockPage: {\n        footerText: \"hello\",\n        headerText: \"hello\",\n        logoPath: \"https://example.com/logo.jpg\",\n        backgroundColor: \"#000000\",\n    },\n    bodyScanning: {\n        inspectionMode: \"deep\",\n    },\n    antivirus: {\n        enabledDownloadPhase: true,\n        enabledUploadPhase: false,\n        failClosed: true,\n        notificationSettings: {\n            enabled: true,\n            message: \"you are blocked\",\n            supportUrl: \"https://example.com/blocked\",\n        },\n    },\n    fips: {\n        tls: true,\n    },\n    proxy: {\n        tcp: true,\n        udp: true,\n        rootCa: true,\n    },\n    urlBrowserIsolationEnabled: true,\n    logging: {\n        redactPii: true,\n        settingsByRuleType: {\n            dns: {\n                logAll: false,\n                logBlocks: true,\n            },\n            http: {\n                logAll: true,\n                logBlocks: true,\n            },\n            l4: {\n                logAll: false,\n                logBlocks: true,\n            },\n        },\n    },\n    extendedEmailMatching: {\n        enabled: true,\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_cloudflare as cloudflare\n\nexample = cloudflare.TeamsAccount(\"example\",\n    account_id=\"f037e56e89293a057740de681ac9abbe\",\n    tls_decrypt_enabled=True,\n    protocol_detection_enabled=True,\n    block_page=cloudflare.TeamsAccountBlockPageArgs(\n        footer_text=\"hello\",\n        header_text=\"hello\",\n        logo_path=\"https://example.com/logo.jpg\",\n        background_color=\"#000000\",\n    ),\n    body_scanning=cloudflare.TeamsAccountBodyScanningArgs(\n        inspection_mode=\"deep\",\n    ),\n    antivirus=cloudflare.TeamsAccountAntivirusArgs(\n        enabled_download_phase=True,\n        enabled_upload_phase=False,\n        fail_closed=True,\n        notification_settings=cloudflare.TeamsAccountAntivirusNotificationSettingsArgs(\n            enabled=True,\n            message=\"you are blocked\",\n            support_url=\"https://example.com/blocked\",\n        ),\n    ),\n    fips=cloudflare.TeamsAccountFipsArgs(\n        tls=True,\n    ),\n    proxy=cloudflare.TeamsAccountProxyArgs(\n        tcp=True,\n        udp=True,\n        root_ca=True,\n    ),\n    url_browser_isolation_enabled=True,\n    logging=cloudflare.TeamsAccountLoggingArgs(\n        redact_pii=True,\n        settings_by_rule_type=cloudflare.TeamsAccountLoggingSettingsByRuleTypeArgs(\n            dns=cloudflare.TeamsAccountLoggingSettingsByRuleTypeDnsArgs(\n                log_all=False,\n                log_blocks=True,\n            ),\n            http=cloudflare.TeamsAccountLoggingSettingsByRuleTypeHttpArgs(\n                log_all=True,\n                log_blocks=True,\n            ),\n            l4=cloudflare.TeamsAccountLoggingSettingsByRuleTypeL4Args(\n                log_all=False,\n                log_blocks=True,\n            ),\n        ),\n    ),\n    extended_email_matching=cloudflare.TeamsAccountExtendedEmailMatchingArgs(\n        enabled=True,\n    ))\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Cloudflare = Pulumi.Cloudflare;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = new Cloudflare.TeamsAccount(\"example\", new()\n    {\n        AccountId = \"f037e56e89293a057740de681ac9abbe\",\n        TlsDecryptEnabled = true,\n        ProtocolDetectionEnabled = true,\n        BlockPage = new Cloudflare.Inputs.TeamsAccountBlockPageArgs\n        {\n            FooterText = \"hello\",\n            HeaderText = \"hello\",\n            LogoPath = \"https://example.com/logo.jpg\",\n            BackgroundColor = \"#000000\",\n        },\n        BodyScanning = new Cloudflare.Inputs.TeamsAccountBodyScanningArgs\n        {\n            InspectionMode = \"deep\",\n        },\n        Antivirus = new Cloudflare.Inputs.TeamsAccountAntivirusArgs\n        {\n            EnabledDownloadPhase = true,\n            EnabledUploadPhase = false,\n            FailClosed = true,\n            NotificationSettings = new Cloudflare.Inputs.TeamsAccountAntivirusNotificationSettingsArgs\n            {\n                Enabled = true,\n                Message = \"you are blocked\",\n                SupportUrl = \"https://example.com/blocked\",\n            },\n        },\n        Fips = new Cloudflare.Inputs.TeamsAccountFipsArgs\n        {\n            Tls = true,\n        },\n        Proxy = new Cloudflare.Inputs.TeamsAccountProxyArgs\n        {\n            Tcp = true,\n            Udp = true,\n            RootCa = true,\n        },\n        UrlBrowserIsolationEnabled = true,\n        Logging = new Cloudflare.Inputs.TeamsAccountLoggingArgs\n        {\n            RedactPii = true,\n            SettingsByRuleType = new Cloudflare.Inputs.TeamsAccountLoggingSettingsByRuleTypeArgs\n            {\n                Dns = new Cloudflare.Inputs.TeamsAccountLoggingSettingsByRuleTypeDnsArgs\n                {\n                    LogAll = false,\n                    LogBlocks = true,\n                },\n                Http = new Cloudflare.Inputs.TeamsAccountLoggingSettingsByRuleTypeHttpArgs\n                {\n                    LogAll = true,\n                    LogBlocks = true,\n                },\n                L4 = new Cloudflare.Inputs.TeamsAccountLoggingSettingsByRuleTypeL4Args\n                {\n                    LogAll = false,\n                    LogBlocks = true,\n                },\n            },\n        },\n        ExtendedEmailMatching = new Cloudflare.Inputs.TeamsAccountExtendedEmailMatchingArgs\n        {\n            Enabled = true,\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := cloudflare.NewTeamsAccount(ctx, \"example\", \u0026cloudflare.TeamsAccountArgs{\n\t\t\tAccountId:                pulumi.String(\"f037e56e89293a057740de681ac9abbe\"),\n\t\t\tTlsDecryptEnabled:        pulumi.Bool(true),\n\t\t\tProtocolDetectionEnabled: pulumi.Bool(true),\n\t\t\tBlockPage: \u0026cloudflare.TeamsAccountBlockPageArgs{\n\t\t\t\tFooterText:      pulumi.String(\"hello\"),\n\t\t\t\tHeaderText:      pulumi.String(\"hello\"),\n\t\t\t\tLogoPath:        pulumi.String(\"https://example.com/logo.jpg\"),\n\t\t\t\tBackgroundColor: pulumi.String(\"#000000\"),\n\t\t\t},\n\t\t\tBodyScanning: \u0026cloudflare.TeamsAccountBodyScanningArgs{\n\t\t\t\tInspectionMode: pulumi.String(\"deep\"),\n\t\t\t},\n\t\t\tAntivirus: \u0026cloudflare.TeamsAccountAntivirusArgs{\n\t\t\t\tEnabledDownloadPhase: pulumi.Bool(true),\n\t\t\t\tEnabledUploadPhase:   pulumi.Bool(false),\n\t\t\t\tFailClosed:           pulumi.Bool(true),\n\t\t\t\tNotificationSettings: \u0026cloudflare.TeamsAccountAntivirusNotificationSettingsArgs{\n\t\t\t\t\tEnabled:    pulumi.Bool(true),\n\t\t\t\t\tMessage:    pulumi.String(\"you are blocked\"),\n\t\t\t\t\tSupportUrl: pulumi.String(\"https://example.com/blocked\"),\n\t\t\t\t},\n\t\t\t},\n\t\t\tFips: \u0026cloudflare.TeamsAccountFipsArgs{\n\t\t\t\tTls: pulumi.Bool(true),\n\t\t\t},\n\t\t\tProxy: \u0026cloudflare.TeamsAccountProxyArgs{\n\t\t\t\tTcp:    pulumi.Bool(true),\n\t\t\t\tUdp:    pulumi.Bool(true),\n\t\t\t\tRootCa: pulumi.Bool(true),\n\t\t\t},\n\t\t\tUrlBrowserIsolationEnabled: pulumi.Bool(true),\n\t\t\tLogging: \u0026cloudflare.TeamsAccountLoggingArgs{\n\t\t\t\tRedactPii: pulumi.Bool(true),\n\t\t\t\tSettingsByRuleType: \u0026cloudflare.TeamsAccountLoggingSettingsByRuleTypeArgs{\n\t\t\t\t\tDns: \u0026cloudflare.TeamsAccountLoggingSettingsByRuleTypeDnsArgs{\n\t\t\t\t\t\tLogAll:    pulumi.Bool(false),\n\t\t\t\t\t\tLogBlocks: pulumi.Bool(true),\n\t\t\t\t\t},\n\t\t\t\t\tHttp: \u0026cloudflare.TeamsAccountLoggingSettingsByRuleTypeHttpArgs{\n\t\t\t\t\t\tLogAll:    pulumi.Bool(true),\n\t\t\t\t\t\tLogBlocks: pulumi.Bool(true),\n\t\t\t\t\t},\n\t\t\t\t\tL4: \u0026cloudflare.TeamsAccountLoggingSettingsByRuleTypeL4Args{\n\t\t\t\t\t\tLogAll:    pulumi.Bool(false),\n\t\t\t\t\t\tLogBlocks: pulumi.Bool(true),\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t\tExtendedEmailMatching: \u0026cloudflare.TeamsAccountExtendedEmailMatchingArgs{\n\t\t\t\tEnabled: pulumi.Bool(true),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.cloudflare.TeamsAccount;\nimport com.pulumi.cloudflare.TeamsAccountArgs;\nimport com.pulumi.cloudflare.inputs.TeamsAccountBlockPageArgs;\nimport com.pulumi.cloudflare.inputs.TeamsAccountBodyScanningArgs;\nimport com.pulumi.cloudflare.inputs.TeamsAccountAntivirusArgs;\nimport com.pulumi.cloudflare.inputs.TeamsAccountAntivirusNotificationSettingsArgs;\nimport com.pulumi.cloudflare.inputs.TeamsAccountFipsArgs;\nimport com.pulumi.cloudflare.inputs.TeamsAccountProxyArgs;\nimport com.pulumi.cloudflare.inputs.TeamsAccountLoggingArgs;\nimport com.pulumi.cloudflare.inputs.TeamsAccountLoggingSettingsByRuleTypeArgs;\nimport com.pulumi.cloudflare.inputs.TeamsAccountLoggingSettingsByRuleTypeDnsArgs;\nimport com.pulumi.cloudflare.inputs.TeamsAccountLoggingSettingsByRuleTypeHttpArgs;\nimport com.pulumi.cloudflare.inputs.TeamsAccountLoggingSettingsByRuleTypeL4Args;\nimport com.pulumi.cloudflare.inputs.TeamsAccountExtendedEmailMatchingArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var example = new TeamsAccount(\"example\", TeamsAccountArgs.builder()\n            .accountId(\"f037e56e89293a057740de681ac9abbe\")\n            .tlsDecryptEnabled(true)\n            .protocolDetectionEnabled(true)\n            .blockPage(TeamsAccountBlockPageArgs.builder()\n                .footerText(\"hello\")\n                .headerText(\"hello\")\n                .logoPath(\"https://example.com/logo.jpg\")\n                .backgroundColor(\"#000000\")\n                .build())\n            .bodyScanning(TeamsAccountBodyScanningArgs.builder()\n                .inspectionMode(\"deep\")\n                .build())\n            .antivirus(TeamsAccountAntivirusArgs.builder()\n                .enabledDownloadPhase(true)\n                .enabledUploadPhase(false)\n                .failClosed(true)\n                .notificationSettings(TeamsAccountAntivirusNotificationSettingsArgs.builder()\n                    .enabled(true)\n                    .message(\"you are blocked\")\n                    .supportUrl(\"https://example.com/blocked\")\n                    .build())\n                .build())\n            .fips(TeamsAccountFipsArgs.builder()\n                .tls(true)\n                .build())\n            .proxy(TeamsAccountProxyArgs.builder()\n                .tcp(true)\n                .udp(true)\n                .rootCa(true)\n                .build())\n            .urlBrowserIsolationEnabled(true)\n            .logging(TeamsAccountLoggingArgs.builder()\n                .redactPii(true)\n                .settingsByRuleType(TeamsAccountLoggingSettingsByRuleTypeArgs.builder()\n                    .dns(TeamsAccountLoggingSettingsByRuleTypeDnsArgs.builder()\n                        .logAll(false)\n                        .logBlocks(true)\n                        .build())\n                    .http(TeamsAccountLoggingSettingsByRuleTypeHttpArgs.builder()\n                        .logAll(true)\n                        .logBlocks(true)\n                        .build())\n                    .l4(TeamsAccountLoggingSettingsByRuleTypeL4Args.builder()\n                        .logAll(false)\n                        .logBlocks(true)\n                        .build())\n                    .build())\n                .build())\n            .extendedEmailMatching(TeamsAccountExtendedEmailMatchingArgs.builder()\n                .enabled(true)\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  example:\n    type: cloudflare:TeamsAccount\n    properties:\n      accountId: f037e56e89293a057740de681ac9abbe\n      tlsDecryptEnabled: true\n      protocolDetectionEnabled: true\n      blockPage:\n        footerText: hello\n        headerText: hello\n        logoPath: https://example.com/logo.jpg\n        backgroundColor: '#000000'\n      bodyScanning:\n        inspectionMode: deep\n      antivirus:\n        enabledDownloadPhase: true\n        enabledUploadPhase: false\n        failClosed: true\n        notificationSettings:\n          enabled: true\n          message: you are blocked\n          supportUrl: https://example.com/blocked\n      fips:\n        tls: true\n      proxy:\n        tcp: true\n        udp: true\n        rootCa: true\n      urlBrowserIsolationEnabled: true\n      logging:\n        redactPii: true\n        settingsByRuleType:\n          dns:\n            logAll: false\n            logBlocks: true\n          http:\n            logAll: true\n            logBlocks: true\n          l4:\n            logAll: false\n            logBlocks: true\n      extendedEmailMatching:\n        enabled: true\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\n```sh\n$ pulumi import cloudflare:index/teamsAccount:TeamsAccount example \u003caccount_id\u003e\n```\n\n",
+            "description": "Provides a Cloudflare Teams Account resource. The Teams Account\nresource defines configuration for secure web gateway.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as cloudflare from \"@pulumi/cloudflare\";\n\nconst example = new cloudflare.TeamsAccount(\"example\", {\n    accountId: \"f037e56e89293a057740de681ac9abbe\",\n    tlsDecryptEnabled: true,\n    protocolDetectionEnabled: true,\n    blockPage: {\n        footerText: \"hello\",\n        headerText: \"hello\",\n        logoPath: \"https://example.com/logo.jpg\",\n        backgroundColor: \"#000000\",\n    },\n    bodyScanning: {\n        inspectionMode: \"deep\",\n    },\n    antivirus: {\n        enabledDownloadPhase: true,\n        enabledUploadPhase: false,\n        failClosed: true,\n        notificationSettings: {\n            enabled: true,\n            message: \"you are blocked\",\n            supportUrl: \"https://example.com/blocked\",\n        },\n    },\n    fips: {\n        tls: true,\n    },\n    proxy: {\n        tcp: true,\n        udp: true,\n        rootCa: true,\n        virtualIp: false,\n    },\n    urlBrowserIsolationEnabled: true,\n    logging: {\n        redactPii: true,\n        settingsByRuleType: {\n            dns: {\n                logAll: false,\n                logBlocks: true,\n            },\n            http: {\n                logAll: true,\n                logBlocks: true,\n            },\n            l4: {\n                logAll: false,\n                logBlocks: true,\n            },\n        },\n    },\n    extendedEmailMatching: {\n        enabled: true,\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_cloudflare as cloudflare\n\nexample = cloudflare.TeamsAccount(\"example\",\n    account_id=\"f037e56e89293a057740de681ac9abbe\",\n    tls_decrypt_enabled=True,\n    protocol_detection_enabled=True,\n    block_page=cloudflare.TeamsAccountBlockPageArgs(\n        footer_text=\"hello\",\n        header_text=\"hello\",\n        logo_path=\"https://example.com/logo.jpg\",\n        background_color=\"#000000\",\n    ),\n    body_scanning=cloudflare.TeamsAccountBodyScanningArgs(\n        inspection_mode=\"deep\",\n    ),\n    antivirus=cloudflare.TeamsAccountAntivirusArgs(\n        enabled_download_phase=True,\n        enabled_upload_phase=False,\n        fail_closed=True,\n        notification_settings=cloudflare.TeamsAccountAntivirusNotificationSettingsArgs(\n            enabled=True,\n            message=\"you are blocked\",\n            support_url=\"https://example.com/blocked\",\n        ),\n    ),\n    fips=cloudflare.TeamsAccountFipsArgs(\n        tls=True,\n    ),\n    proxy=cloudflare.TeamsAccountProxyArgs(\n        tcp=True,\n        udp=True,\n        root_ca=True,\n        virtual_ip=False,\n    ),\n    url_browser_isolation_enabled=True,\n    logging=cloudflare.TeamsAccountLoggingArgs(\n        redact_pii=True,\n        settings_by_rule_type=cloudflare.TeamsAccountLoggingSettingsByRuleTypeArgs(\n            dns=cloudflare.TeamsAccountLoggingSettingsByRuleTypeDnsArgs(\n                log_all=False,\n                log_blocks=True,\n            ),\n            http=cloudflare.TeamsAccountLoggingSettingsByRuleTypeHttpArgs(\n                log_all=True,\n                log_blocks=True,\n            ),\n            l4=cloudflare.TeamsAccountLoggingSettingsByRuleTypeL4Args(\n                log_all=False,\n                log_blocks=True,\n            ),\n        ),\n    ),\n    extended_email_matching=cloudflare.TeamsAccountExtendedEmailMatchingArgs(\n        enabled=True,\n    ))\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Cloudflare = Pulumi.Cloudflare;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = new Cloudflare.TeamsAccount(\"example\", new()\n    {\n        AccountId = \"f037e56e89293a057740de681ac9abbe\",\n        TlsDecryptEnabled = true,\n        ProtocolDetectionEnabled = true,\n        BlockPage = new Cloudflare.Inputs.TeamsAccountBlockPageArgs\n        {\n            FooterText = \"hello\",\n            HeaderText = \"hello\",\n            LogoPath = \"https://example.com/logo.jpg\",\n            BackgroundColor = \"#000000\",\n        },\n        BodyScanning = new Cloudflare.Inputs.TeamsAccountBodyScanningArgs\n        {\n            InspectionMode = \"deep\",\n        },\n        Antivirus = new Cloudflare.Inputs.TeamsAccountAntivirusArgs\n        {\n            EnabledDownloadPhase = true,\n            EnabledUploadPhase = false,\n            FailClosed = true,\n            NotificationSettings = new Cloudflare.Inputs.TeamsAccountAntivirusNotificationSettingsArgs\n            {\n                Enabled = true,\n                Message = \"you are blocked\",\n                SupportUrl = \"https://example.com/blocked\",\n            },\n        },\n        Fips = new Cloudflare.Inputs.TeamsAccountFipsArgs\n        {\n            Tls = true,\n        },\n        Proxy = new Cloudflare.Inputs.TeamsAccountProxyArgs\n        {\n            Tcp = true,\n            Udp = true,\n            RootCa = true,\n            VirtualIp = false,\n        },\n        UrlBrowserIsolationEnabled = true,\n        Logging = new Cloudflare.Inputs.TeamsAccountLoggingArgs\n        {\n            RedactPii = true,\n            SettingsByRuleType = new Cloudflare.Inputs.TeamsAccountLoggingSettingsByRuleTypeArgs\n            {\n                Dns = new Cloudflare.Inputs.TeamsAccountLoggingSettingsByRuleTypeDnsArgs\n                {\n                    LogAll = false,\n                    LogBlocks = true,\n                },\n                Http = new Cloudflare.Inputs.TeamsAccountLoggingSettingsByRuleTypeHttpArgs\n                {\n                    LogAll = true,\n                    LogBlocks = true,\n                },\n                L4 = new Cloudflare.Inputs.TeamsAccountLoggingSettingsByRuleTypeL4Args\n                {\n                    LogAll = false,\n                    LogBlocks = true,\n                },\n            },\n        },\n        ExtendedEmailMatching = new Cloudflare.Inputs.TeamsAccountExtendedEmailMatchingArgs\n        {\n            Enabled = true,\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := cloudflare.NewTeamsAccount(ctx, \"example\", \u0026cloudflare.TeamsAccountArgs{\n\t\t\tAccountId:                pulumi.String(\"f037e56e89293a057740de681ac9abbe\"),\n\t\t\tTlsDecryptEnabled:        pulumi.Bool(true),\n\t\t\tProtocolDetectionEnabled: pulumi.Bool(true),\n\t\t\tBlockPage: \u0026cloudflare.TeamsAccountBlockPageArgs{\n\t\t\t\tFooterText:      pulumi.String(\"hello\"),\n\t\t\t\tHeaderText:      pulumi.String(\"hello\"),\n\t\t\t\tLogoPath:        pulumi.String(\"https://example.com/logo.jpg\"),\n\t\t\t\tBackgroundColor: pulumi.String(\"#000000\"),\n\t\t\t},\n\t\t\tBodyScanning: \u0026cloudflare.TeamsAccountBodyScanningArgs{\n\t\t\t\tInspectionMode: pulumi.String(\"deep\"),\n\t\t\t},\n\t\t\tAntivirus: \u0026cloudflare.TeamsAccountAntivirusArgs{\n\t\t\t\tEnabledDownloadPhase: pulumi.Bool(true),\n\t\t\t\tEnabledUploadPhase:   pulumi.Bool(false),\n\t\t\t\tFailClosed:           pulumi.Bool(true),\n\t\t\t\tNotificationSettings: \u0026cloudflare.TeamsAccountAntivirusNotificationSettingsArgs{\n\t\t\t\t\tEnabled:    pulumi.Bool(true),\n\t\t\t\t\tMessage:    pulumi.String(\"you are blocked\"),\n\t\t\t\t\tSupportUrl: pulumi.String(\"https://example.com/blocked\"),\n\t\t\t\t},\n\t\t\t},\n\t\t\tFips: \u0026cloudflare.TeamsAccountFipsArgs{\n\t\t\t\tTls: pulumi.Bool(true),\n\t\t\t},\n\t\t\tProxy: \u0026cloudflare.TeamsAccountProxyArgs{\n\t\t\t\tTcp:       pulumi.Bool(true),\n\t\t\t\tUdp:       pulumi.Bool(true),\n\t\t\t\tRootCa:    pulumi.Bool(true),\n\t\t\t\tVirtualIp: pulumi.Bool(false),\n\t\t\t},\n\t\t\tUrlBrowserIsolationEnabled: pulumi.Bool(true),\n\t\t\tLogging: \u0026cloudflare.TeamsAccountLoggingArgs{\n\t\t\t\tRedactPii: pulumi.Bool(true),\n\t\t\t\tSettingsByRuleType: \u0026cloudflare.TeamsAccountLoggingSettingsByRuleTypeArgs{\n\t\t\t\t\tDns: \u0026cloudflare.TeamsAccountLoggingSettingsByRuleTypeDnsArgs{\n\t\t\t\t\t\tLogAll:    pulumi.Bool(false),\n\t\t\t\t\t\tLogBlocks: pulumi.Bool(true),\n\t\t\t\t\t},\n\t\t\t\t\tHttp: \u0026cloudflare.TeamsAccountLoggingSettingsByRuleTypeHttpArgs{\n\t\t\t\t\t\tLogAll:    pulumi.Bool(true),\n\t\t\t\t\t\tLogBlocks: pulumi.Bool(true),\n\t\t\t\t\t},\n\t\t\t\t\tL4: \u0026cloudflare.TeamsAccountLoggingSettingsByRuleTypeL4Args{\n\t\t\t\t\t\tLogAll:    pulumi.Bool(false),\n\t\t\t\t\t\tLogBlocks: pulumi.Bool(true),\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t\tExtendedEmailMatching: \u0026cloudflare.TeamsAccountExtendedEmailMatchingArgs{\n\t\t\t\tEnabled: pulumi.Bool(true),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.cloudflare.TeamsAccount;\nimport com.pulumi.cloudflare.TeamsAccountArgs;\nimport com.pulumi.cloudflare.inputs.TeamsAccountBlockPageArgs;\nimport com.pulumi.cloudflare.inputs.TeamsAccountBodyScanningArgs;\nimport com.pulumi.cloudflare.inputs.TeamsAccountAntivirusArgs;\nimport com.pulumi.cloudflare.inputs.TeamsAccountAntivirusNotificationSettingsArgs;\nimport com.pulumi.cloudflare.inputs.TeamsAccountFipsArgs;\nimport com.pulumi.cloudflare.inputs.TeamsAccountProxyArgs;\nimport com.pulumi.cloudflare.inputs.TeamsAccountLoggingArgs;\nimport com.pulumi.cloudflare.inputs.TeamsAccountLoggingSettingsByRuleTypeArgs;\nimport com.pulumi.cloudflare.inputs.TeamsAccountLoggingSettingsByRuleTypeDnsArgs;\nimport com.pulumi.cloudflare.inputs.TeamsAccountLoggingSettingsByRuleTypeHttpArgs;\nimport com.pulumi.cloudflare.inputs.TeamsAccountLoggingSettingsByRuleTypeL4Args;\nimport com.pulumi.cloudflare.inputs.TeamsAccountExtendedEmailMatchingArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var example = new TeamsAccount(\"example\", TeamsAccountArgs.builder()\n            .accountId(\"f037e56e89293a057740de681ac9abbe\")\n            .tlsDecryptEnabled(true)\n            .protocolDetectionEnabled(true)\n            .blockPage(TeamsAccountBlockPageArgs.builder()\n                .footerText(\"hello\")\n                .headerText(\"hello\")\n                .logoPath(\"https://example.com/logo.jpg\")\n                .backgroundColor(\"#000000\")\n                .build())\n            .bodyScanning(TeamsAccountBodyScanningArgs.builder()\n                .inspectionMode(\"deep\")\n                .build())\n            .antivirus(TeamsAccountAntivirusArgs.builder()\n                .enabledDownloadPhase(true)\n                .enabledUploadPhase(false)\n                .failClosed(true)\n                .notificationSettings(TeamsAccountAntivirusNotificationSettingsArgs.builder()\n                    .enabled(true)\n                    .message(\"you are blocked\")\n                    .supportUrl(\"https://example.com/blocked\")\n                    .build())\n                .build())\n            .fips(TeamsAccountFipsArgs.builder()\n                .tls(true)\n                .build())\n            .proxy(TeamsAccountProxyArgs.builder()\n                .tcp(true)\n                .udp(true)\n                .rootCa(true)\n                .virtualIp(false)\n                .build())\n            .urlBrowserIsolationEnabled(true)\n            .logging(TeamsAccountLoggingArgs.builder()\n                .redactPii(true)\n                .settingsByRuleType(TeamsAccountLoggingSettingsByRuleTypeArgs.builder()\n                    .dns(TeamsAccountLoggingSettingsByRuleTypeDnsArgs.builder()\n                        .logAll(false)\n                        .logBlocks(true)\n                        .build())\n                    .http(TeamsAccountLoggingSettingsByRuleTypeHttpArgs.builder()\n                        .logAll(true)\n                        .logBlocks(true)\n                        .build())\n                    .l4(TeamsAccountLoggingSettingsByRuleTypeL4Args.builder()\n                        .logAll(false)\n                        .logBlocks(true)\n                        .build())\n                    .build())\n                .build())\n            .extendedEmailMatching(TeamsAccountExtendedEmailMatchingArgs.builder()\n                .enabled(true)\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  example:\n    type: cloudflare:TeamsAccount\n    properties:\n      accountId: f037e56e89293a057740de681ac9abbe\n      tlsDecryptEnabled: true\n      protocolDetectionEnabled: true\n      blockPage:\n        footerText: hello\n        headerText: hello\n        logoPath: https://example.com/logo.jpg\n        backgroundColor: '#000000'\n      bodyScanning:\n        inspectionMode: deep\n      antivirus:\n        enabledDownloadPhase: true\n        enabledUploadPhase: false\n        failClosed: true\n        notificationSettings:\n          enabled: true\n          message: you are blocked\n          supportUrl: https://example.com/blocked\n      fips:\n        tls: true\n      proxy:\n        tcp: true\n        udp: true\n        rootCa: true\n        virtualIp: false\n      urlBrowserIsolationEnabled: true\n      logging:\n        redactPii: true\n        settingsByRuleType:\n          dns:\n            logAll: false\n            logBlocks: true\n          http:\n            logAll: true\n            logBlocks: true\n          l4:\n            logAll: false\n            logBlocks: true\n      extendedEmailMatching:\n        enabled: true\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\n```sh\n$ pulumi import cloudflare:index/teamsAccount:TeamsAccount example \u003caccount_id\u003e\n```\n\n",
             "properties": {
                 "accountId": {
                     "type": "string",
@@ -22533,6 +22567,13 @@
                 "type": {
                     "type": "string",
                     "description": "A full zone implies that DNS is hosted with Cloudflare. A partial zone is typically a partner-hosted zone or a CNAME setup. Available values: `full`, `partial`, `secondary`. Defaults to `full`.\n"
+                },
+                "vanityNameServers": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "List of Vanity Nameservers (if set).\n"
                 },
                 "zone": {
                     "type": "string",

@@ -46,6 +46,7 @@ import * as utilities from "./utilities";
  *         tcp: true,
  *         udp: true,
  *         rootCa: true,
+ *         virtualIp: false,
  *     },
  *     urlBrowserIsolationEnabled: true,
  *     logging: {

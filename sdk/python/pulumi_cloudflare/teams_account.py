@@ -594,6 +594,7 @@ class TeamsAccount(pulumi.CustomResource):
                 tcp=True,
                 udp=True,
                 root_ca=True,
+                virtual_ip=False,
             ),
             url_browser_isolation_enabled=True,
             logging=cloudflare.TeamsAccountLoggingArgs(
@@ -688,6 +689,7 @@ class TeamsAccount(pulumi.CustomResource):
                 tcp=True,
                 udp=True,
                 root_ca=True,
+                virtual_ip=False,
             ),
             url_browser_isolation_enabled=True,
             logging=cloudflare.TeamsAccountLoggingArgs(

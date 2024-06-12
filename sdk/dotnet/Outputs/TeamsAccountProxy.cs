@@ -25,6 +25,10 @@ namespace Pulumi.Cloudflare.Outputs
         /// Whether gateway proxy is enabled on gateway devices for UDP traffic.
         /// </summary>
         public readonly bool Udp;
+        /// <summary>
+        /// Whether virtual IP (CGNAT) is enabled account wide and will override existing local interface IP for ZT clients.
+        /// </summary>
+        public readonly bool VirtualIp;
 
         [OutputConstructor]
         private TeamsAccountProxy(
@@ -32,11 +36,14 @@ namespace Pulumi.Cloudflare.Outputs
 
             bool tcp,
 
-            bool udp)
+            bool udp,
+
+            bool virtualIp)
         {
             RootCa = rootCa;
             Tcp = tcp;
             Udp = udp;
+            VirtualIp = virtualIp;
         }
     }
 }

@@ -5,6 +5,7 @@ package com.pulumi.cloudflare.inputs;
 
 import com.pulumi.cloudflare.inputs.AccessApplicationSaasAppCustomAttributeArgs;
 import com.pulumi.cloudflare.inputs.AccessApplicationSaasAppCustomClaimArgs;
+import com.pulumi.cloudflare.inputs.AccessApplicationSaasAppHybridAndImplicitOptionsArgs;
 import com.pulumi.cloudflare.inputs.AccessApplicationSaasAppRefreshTokenOptionArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
@@ -21,14 +22,14 @@ public final class AccessApplicationSaasAppArgs extends com.pulumi.resources.Res
     public static final AccessApplicationSaasAppArgs Empty = new AccessApplicationSaasAppArgs();
 
     /**
-     * Allow PKCE flow without a client secret
+     * Allow PKCE flow without a client secret.
      * 
      */
     @Import(name="allowPkceWithoutClientSecret")
     private @Nullable Output<Boolean> allowPkceWithoutClientSecret;
 
     /**
-     * @return Allow PKCE flow without a client secret
+     * @return Allow PKCE flow without a client secret.
      * 
      */
     public Optional<Output<Boolean>> allowPkceWithoutClientSecret() {
@@ -50,9 +51,17 @@ public final class AccessApplicationSaasAppArgs extends com.pulumi.resources.Res
         return Optional.ofNullable(this.appLauncherUrl);
     }
 
+    /**
+     * **Modifying this attribute will force creation of a new resource.**
+     * 
+     */
     @Import(name="authType")
     private @Nullable Output<String> authType;
 
+    /**
+     * @return **Modifying this attribute will force creation of a new resource.**
+     * 
+     */
     public Optional<Output<String>> authType() {
         return Optional.ofNullable(this.authType);
     }
@@ -178,6 +187,21 @@ public final class AccessApplicationSaasAppArgs extends com.pulumi.resources.Res
     }
 
     /**
+     * Hybrid and Implicit Flow options.
+     * 
+     */
+    @Import(name="hybridAndImplicitOptions")
+    private @Nullable Output<AccessApplicationSaasAppHybridAndImplicitOptionsArgs> hybridAndImplicitOptions;
+
+    /**
+     * @return Hybrid and Implicit Flow options.
+     * 
+     */
+    public Optional<Output<AccessApplicationSaasAppHybridAndImplicitOptionsArgs>> hybridAndImplicitOptions() {
+        return Optional.ofNullable(this.hybridAndImplicitOptions);
+    }
+
+    /**
      * The unique identifier for the SaaS application.
      * 
      */
@@ -253,14 +277,14 @@ public final class AccessApplicationSaasAppArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * Refresh token grant options
+     * Refresh token grant options.
      * 
      */
     @Import(name="refreshTokenOptions")
     private @Nullable Output<List<AccessApplicationSaasAppRefreshTokenOptionArgs>> refreshTokenOptions;
 
     /**
-     * @return Refresh token grant options
+     * @return Refresh token grant options.
      * 
      */
     public Optional<Output<List<AccessApplicationSaasAppRefreshTokenOptionArgs>>> refreshTokenOptions() {
@@ -341,6 +365,7 @@ public final class AccessApplicationSaasAppArgs extends com.pulumi.resources.Res
         this.defaultRelayState = $.defaultRelayState;
         this.grantTypes = $.grantTypes;
         this.groupFilterRegex = $.groupFilterRegex;
+        this.hybridAndImplicitOptions = $.hybridAndImplicitOptions;
         this.idpEntityId = $.idpEntityId;
         this.nameIdFormat = $.nameIdFormat;
         this.nameIdTransformJsonata = $.nameIdTransformJsonata;
@@ -372,7 +397,7 @@ public final class AccessApplicationSaasAppArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param allowPkceWithoutClientSecret Allow PKCE flow without a client secret
+         * @param allowPkceWithoutClientSecret Allow PKCE flow without a client secret.
          * 
          * @return builder
          * 
@@ -383,7 +408,7 @@ public final class AccessApplicationSaasAppArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param allowPkceWithoutClientSecret Allow PKCE flow without a client secret
+         * @param allowPkceWithoutClientSecret Allow PKCE flow without a client secret.
          * 
          * @return builder
          * 
@@ -413,11 +438,23 @@ public final class AccessApplicationSaasAppArgs extends com.pulumi.resources.Res
             return appLauncherUrl(Output.of(appLauncherUrl));
         }
 
+        /**
+         * @param authType **Modifying this attribute will force creation of a new resource.**
+         * 
+         * @return builder
+         * 
+         */
         public Builder authType(@Nullable Output<String> authType) {
             $.authType = authType;
             return this;
         }
 
+        /**
+         * @param authType **Modifying this attribute will force creation of a new resource.**
+         * 
+         * @return builder
+         * 
+         */
         public Builder authType(String authType) {
             return authType(Output.of(authType));
         }
@@ -621,6 +658,27 @@ public final class AccessApplicationSaasAppArgs extends com.pulumi.resources.Res
         }
 
         /**
+         * @param hybridAndImplicitOptions Hybrid and Implicit Flow options.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder hybridAndImplicitOptions(@Nullable Output<AccessApplicationSaasAppHybridAndImplicitOptionsArgs> hybridAndImplicitOptions) {
+            $.hybridAndImplicitOptions = hybridAndImplicitOptions;
+            return this;
+        }
+
+        /**
+         * @param hybridAndImplicitOptions Hybrid and Implicit Flow options.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder hybridAndImplicitOptions(AccessApplicationSaasAppHybridAndImplicitOptionsArgs hybridAndImplicitOptions) {
+            return hybridAndImplicitOptions(Output.of(hybridAndImplicitOptions));
+        }
+
+        /**
          * @param idpEntityId The unique identifier for the SaaS application.
          * 
          * @return builder
@@ -736,7 +794,7 @@ public final class AccessApplicationSaasAppArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param refreshTokenOptions Refresh token grant options
+         * @param refreshTokenOptions Refresh token grant options.
          * 
          * @return builder
          * 
@@ -747,7 +805,7 @@ public final class AccessApplicationSaasAppArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param refreshTokenOptions Refresh token grant options
+         * @param refreshTokenOptions Refresh token grant options.
          * 
          * @return builder
          * 
@@ -757,7 +815,7 @@ public final class AccessApplicationSaasAppArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param refreshTokenOptions Refresh token grant options
+         * @param refreshTokenOptions Refresh token grant options.
          * 
          * @return builder
          * 

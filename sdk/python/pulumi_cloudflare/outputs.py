@@ -19,6 +19,7 @@ __all__ = [
     'AccessApplicationSaasAppCustomAttributeSource',
     'AccessApplicationSaasAppCustomClaim',
     'AccessApplicationSaasAppCustomClaimSource',
+    'AccessApplicationSaasAppHybridAndImplicitOptions',
     'AccessApplicationSaasAppRefreshTokenOption',
     'AccessApplicationScimConfig',
     'AccessApplicationScimConfigAuthentication',
@@ -601,6 +602,8 @@ class AccessApplicationSaasApp(dict):
             suggest = "grant_types"
         elif key == "groupFilterRegex":
             suggest = "group_filter_regex"
+        elif key == "hybridAndImplicitOptions":
+            suggest = "hybrid_and_implicit_options"
         elif key == "idpEntityId":
             suggest = "idp_entity_id"
         elif key == "nameIdFormat":
@@ -643,6 +646,7 @@ class AccessApplicationSaasApp(dict):
                  default_relay_state: Optional[str] = None,
                  grant_types: Optional[Sequence[str]] = None,
                  group_filter_regex: Optional[str] = None,
+                 hybrid_and_implicit_options: Optional['outputs.AccessApplicationSaasAppHybridAndImplicitOptions'] = None,
                  idp_entity_id: Optional[str] = None,
                  name_id_format: Optional[str] = None,
                  name_id_transform_jsonata: Optional[str] = None,
@@ -654,8 +658,9 @@ class AccessApplicationSaasApp(dict):
                  sp_entity_id: Optional[str] = None,
                  sso_endpoint: Optional[str] = None):
         """
-        :param bool allow_pkce_without_client_secret: Allow PKCE flow without a client secret
+        :param bool allow_pkce_without_client_secret: Allow PKCE flow without a client secret.
         :param str app_launcher_url: The URL where this applications tile redirects users.
+        :param str auth_type: **Modifying this attribute will force creation of a new resource.**
         :param str client_id: The application client id.
         :param str client_secret: The application client secret, only returned on initial apply.
         :param str consumer_service_url: The service provider's endpoint that is responsible for receiving and parsing a SAML assertion.
@@ -664,12 +669,13 @@ class AccessApplicationSaasApp(dict):
         :param str default_relay_state: The relay state used if not provided by the identity provider.
         :param Sequence[str] grant_types: The OIDC flows supported by this application.
         :param str group_filter_regex: A regex to filter Cloudflare groups returned in ID token and userinfo endpoint.
+        :param 'AccessApplicationSaasAppHybridAndImplicitOptionsArgs' hybrid_and_implicit_options: Hybrid and Implicit Flow options.
         :param str idp_entity_id: The unique identifier for the SaaS application.
         :param str name_id_format: The format of the name identifier sent to the SaaS application.
         :param str name_id_transform_jsonata: A [JSONata](https://jsonata.org/) expression that transforms an application's user identities into a NameID value for its SAML assertion. This expression should evaluate to a singular string. The output of this expression can override the `name_id_format` setting.
         :param str public_key: The public certificate that will be used to verify identities.
         :param Sequence[str] redirect_uris: The permitted URL's for Cloudflare to return Authorization codes and Access/ID tokens.
-        :param Sequence['AccessApplicationSaasAppRefreshTokenOptionArgs'] refresh_token_options: Refresh token grant options
+        :param Sequence['AccessApplicationSaasAppRefreshTokenOptionArgs'] refresh_token_options: Refresh token grant options.
         :param str saml_attribute_transform_jsonata: A [JSONata](https://jsonata.org/) expression that transforms an application's user identities into attribute assertions in the SAML response. The expression can transform id, email, name, and groups values. It can also transform fields listed in the saml*attributes or oidc*fields of the identity provider used to authenticate. The output of this expression must be a JSON object.
         :param Sequence[str] scopes: Define the user information shared with access.
         :param str sp_entity_id: A globally unique name for an identity or service provider.
@@ -697,6 +703,8 @@ class AccessApplicationSaasApp(dict):
             pulumi.set(__self__, "grant_types", grant_types)
         if group_filter_regex is not None:
             pulumi.set(__self__, "group_filter_regex", group_filter_regex)
+        if hybrid_and_implicit_options is not None:
+            pulumi.set(__self__, "hybrid_and_implicit_options", hybrid_and_implicit_options)
         if idp_entity_id is not None:
             pulumi.set(__self__, "idp_entity_id", idp_entity_id)
         if name_id_format is not None:
@@ -722,7 +730,7 @@ class AccessApplicationSaasApp(dict):
     @pulumi.getter(name="allowPkceWithoutClientSecret")
     def allow_pkce_without_client_secret(self) -> Optional[bool]:
         """
-        Allow PKCE flow without a client secret
+        Allow PKCE flow without a client secret.
         """
         return pulumi.get(self, "allow_pkce_without_client_secret")
 
@@ -737,6 +745,9 @@ class AccessApplicationSaasApp(dict):
     @property
     @pulumi.getter(name="authType")
     def auth_type(self) -> Optional[str]:
+        """
+        **Modifying this attribute will force creation of a new resource.**
+        """
         return pulumi.get(self, "auth_type")
 
     @property
@@ -804,6 +815,14 @@ class AccessApplicationSaasApp(dict):
         return pulumi.get(self, "group_filter_regex")
 
     @property
+    @pulumi.getter(name="hybridAndImplicitOptions")
+    def hybrid_and_implicit_options(self) -> Optional['outputs.AccessApplicationSaasAppHybridAndImplicitOptions']:
+        """
+        Hybrid and Implicit Flow options.
+        """
+        return pulumi.get(self, "hybrid_and_implicit_options")
+
+    @property
     @pulumi.getter(name="idpEntityId")
     def idp_entity_id(self) -> Optional[str]:
         """
@@ -847,7 +866,7 @@ class AccessApplicationSaasApp(dict):
     @pulumi.getter(name="refreshTokenOptions")
     def refresh_token_options(self) -> Optional[Sequence['outputs.AccessApplicationSaasAppRefreshTokenOption']]:
         """
-        Refresh token grant options
+        Refresh token grant options.
         """
         return pulumi.get(self, "refresh_token_options")
 
@@ -1020,7 +1039,7 @@ class AccessApplicationSaasAppCustomClaim(dict):
                  required: Optional[bool] = None,
                  scope: Optional[str] = None):
         """
-        :param str name: Friendly name of the Access Application.
+        :param str name: The name of the attribute as provided to the SaaS app.
         :param bool required: True if the attribute must be always present.
         :param str scope: The scope of the claim.
         """
@@ -1041,7 +1060,7 @@ class AccessApplicationSaasAppCustomClaim(dict):
     @pulumi.getter
     def name(self) -> Optional[str]:
         """
-        Friendly name of the Access Application.
+        The name of the attribute as provided to the SaaS app.
         """
         return pulumi.get(self, "name")
 
@@ -1085,7 +1104,7 @@ class AccessApplicationSaasAppCustomClaimSource(dict):
                  name: str,
                  name_by_idp: Optional[Mapping[str, str]] = None):
         """
-        :param str name: Friendly name of the Access Application.
+        :param str name: The name of the attribute as provided by the IDP.
         :param Mapping[str, str] name_by_idp: A mapping from IdP ID to claim name.
         """
         pulumi.set(__self__, "name", name)
@@ -1096,7 +1115,7 @@ class AccessApplicationSaasAppCustomClaimSource(dict):
     @pulumi.getter
     def name(self) -> str:
         """
-        Friendly name of the Access Application.
+        The name of the attribute as provided by the IDP.
         """
         return pulumi.get(self, "name")
 
@@ -1107,6 +1126,56 @@ class AccessApplicationSaasAppCustomClaimSource(dict):
         A mapping from IdP ID to claim name.
         """
         return pulumi.get(self, "name_by_idp")
+
+
+@pulumi.output_type
+class AccessApplicationSaasAppHybridAndImplicitOptions(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "returnAccessTokenFromAuthorizationEndpoint":
+            suggest = "return_access_token_from_authorization_endpoint"
+        elif key == "returnIdTokenFromAuthorizationEndpoint":
+            suggest = "return_id_token_from_authorization_endpoint"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AccessApplicationSaasAppHybridAndImplicitOptions. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AccessApplicationSaasAppHybridAndImplicitOptions.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AccessApplicationSaasAppHybridAndImplicitOptions.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 return_access_token_from_authorization_endpoint: Optional[bool] = None,
+                 return_id_token_from_authorization_endpoint: Optional[bool] = None):
+        """
+        :param bool return_access_token_from_authorization_endpoint: If true, the authorization endpoint will return an access token.
+        :param bool return_id_token_from_authorization_endpoint: If true, the authorization endpoint will return an id token.
+        """
+        if return_access_token_from_authorization_endpoint is not None:
+            pulumi.set(__self__, "return_access_token_from_authorization_endpoint", return_access_token_from_authorization_endpoint)
+        if return_id_token_from_authorization_endpoint is not None:
+            pulumi.set(__self__, "return_id_token_from_authorization_endpoint", return_id_token_from_authorization_endpoint)
+
+    @property
+    @pulumi.getter(name="returnAccessTokenFromAuthorizationEndpoint")
+    def return_access_token_from_authorization_endpoint(self) -> Optional[bool]:
+        """
+        If true, the authorization endpoint will return an access token.
+        """
+        return pulumi.get(self, "return_access_token_from_authorization_endpoint")
+
+    @property
+    @pulumi.getter(name="returnIdTokenFromAuthorizationEndpoint")
+    def return_id_token_from_authorization_endpoint(self) -> Optional[bool]:
+        """
+        If true, the authorization endpoint will return an id token.
+        """
+        return pulumi.get(self, "return_id_token_from_authorization_endpoint")
 
 
 @pulumi.output_type
@@ -8039,17 +8108,36 @@ class LoadBalancerPoolLoadShedding(dict):
 
 @pulumi.output_type
 class LoadBalancerPoolOrigin(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "virtualNetworkId":
+            suggest = "virtual_network_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in LoadBalancerPoolOrigin. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        LoadBalancerPoolOrigin.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        LoadBalancerPoolOrigin.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  address: str,
                  name: str,
                  enabled: Optional[bool] = None,
                  headers: Optional[Sequence['outputs.LoadBalancerPoolOriginHeader']] = None,
+                 virtual_network_id: Optional[str] = None,
                  weight: Optional[float] = None):
         """
         :param str address: The IP address (IPv4 or IPv6) of the origin, or the publicly addressable hostname.
         :param str name: A human-identifiable name for the origin.
         :param bool enabled: Whether this origin is enabled. Disabled origins will not receive traffic and are excluded from health checks. Defaults to `true`.
         :param Sequence['LoadBalancerPoolOriginHeaderArgs'] headers: HTTP request headers.
+        :param str virtual_network_id: The virtual network subnet ID the origin belongs in. Virtual network must also belong to the account.
         :param float weight: The weight (0.01 - 1.00) of this origin, relative to other origins in the pool. Equal values mean equal weighting. A weight of 0 means traffic will not be sent to this origin, but health is still checked. When `origin_steering.policy="least_outstanding_requests"`, weight is used to scale the origin's outstanding requests. When `origin_steering.policy="least_connections"`, weight is used to scale the origin's open connections. Defaults to `1`.
         """
         pulumi.set(__self__, "address", address)
@@ -8058,6 +8146,8 @@ class LoadBalancerPoolOrigin(dict):
             pulumi.set(__self__, "enabled", enabled)
         if headers is not None:
             pulumi.set(__self__, "headers", headers)
+        if virtual_network_id is not None:
+            pulumi.set(__self__, "virtual_network_id", virtual_network_id)
         if weight is not None:
             pulumi.set(__self__, "weight", weight)
 
@@ -8092,6 +8182,14 @@ class LoadBalancerPoolOrigin(dict):
         HTTP request headers.
         """
         return pulumi.get(self, "headers")
+
+    @property
+    @pulumi.getter(name="virtualNetworkId")
+    def virtual_network_id(self) -> Optional[str]:
+        """
+        The virtual network subnet ID the origin belongs in. Virtual network must also belong to the account.
+        """
+        return pulumi.get(self, "virtual_network_id")
 
     @property
     @pulumi.getter
@@ -9196,7 +9294,8 @@ class LogpushJobOutputOptions(dict):
         :param str output_type: Specifies the output type. Available values: `ndjson`, `csv`. Defaults to `ndjson`.
         :param str record_delimiter: String to be inserted in-between the records as separator.
         :param str record_prefix: String to be prepended before each record. Defaults to `{`.
-        :param str record_suffix: String to be appended after each record. Defaults to `}`.
+        :param str record_suffix: String to be appended after each record. Defaults to `}
+               `.
         :param str record_template: String to use as template for each record instead of the default comma-separated list.
         :param float sample_rate: Specifies the sampling rate. Defaults to `1`.
         :param str timestamp_format: Specifies the format for timestamps. Available values: `unixnano`, `unix`, `rfc3339`. Defaults to `unixnano`.
@@ -9294,7 +9393,8 @@ class LogpushJobOutputOptions(dict):
     @pulumi.getter(name="recordSuffix")
     def record_suffix(self) -> Optional[str]:
         """
-        String to be appended after each record. Defaults to `}`.
+        String to be appended after each record. Defaults to `}
+        `.
         """
         return pulumi.get(self, "record_suffix")
 
@@ -15675,6 +15775,8 @@ class TeamsAccountProxy(dict):
         suggest = None
         if key == "rootCa":
             suggest = "root_ca"
+        elif key == "virtualIp":
+            suggest = "virtual_ip"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in TeamsAccountProxy. Access the value via the '{suggest}' property getter instead.")
@@ -15690,15 +15792,18 @@ class TeamsAccountProxy(dict):
     def __init__(__self__, *,
                  root_ca: bool,
                  tcp: bool,
-                 udp: bool):
+                 udp: bool,
+                 virtual_ip: bool):
         """
         :param bool root_ca: Whether root ca is enabled account wide for ZT clients.
         :param bool tcp: Whether gateway proxy is enabled on gateway devices for TCP traffic.
         :param bool udp: Whether gateway proxy is enabled on gateway devices for UDP traffic.
+        :param bool virtual_ip: Whether virtual IP (CGNAT) is enabled account wide and will override existing local interface IP for ZT clients.
         """
         pulumi.set(__self__, "root_ca", root_ca)
         pulumi.set(__self__, "tcp", tcp)
         pulumi.set(__self__, "udp", udp)
+        pulumi.set(__self__, "virtual_ip", virtual_ip)
 
     @property
     @pulumi.getter(name="rootCa")
@@ -15723,6 +15828,14 @@ class TeamsAccountProxy(dict):
         Whether gateway proxy is enabled on gateway devices for UDP traffic.
         """
         return pulumi.get(self, "udp")
+
+    @property
+    @pulumi.getter(name="virtualIp")
+    def virtual_ip(self) -> bool:
+        """
+        Whether virtual IP (CGNAT) is enabled account wide and will override existing local interface IP for ZT clients.
+        """
+        return pulumi.get(self, "virtual_ip")
 
 
 @pulumi.output_type
@@ -20208,12 +20321,14 @@ class GetLoadBalancerPoolsPoolOriginResult(dict):
                  name: str,
                  enabled: Optional[bool] = None,
                  headers: Optional[Sequence['outputs.GetLoadBalancerPoolsPoolOriginHeaderResult']] = None,
+                 virtual_network_id: Optional[str] = None,
                  weight: Optional[float] = None):
         """
         :param str address: The IP address (IPv4 or IPv6) of the origin, or the publicly addressable hostname.
         :param str name: A human-identifiable name for the origin.
         :param bool enabled: Whether this origin is enabled. Disabled origins will not receive traffic and are excluded from health checks.
         :param Sequence['GetLoadBalancerPoolsPoolOriginHeaderArgs'] headers: HTTP request headers.
+        :param str virtual_network_id: The virtual network subnet ID the origin belongs in. Virtual network must also belong to the account.
         :param float weight: The weight (0.01 - 1.00) of this origin, relative to other origins in the pool. Equal values mean equal weighting. A weight of 0 means traffic will not be sent to this origin, but health is still checked. When `origin_steering.policy="least_outstanding_requests"`, weight is used to scale the origin's outstanding requests. When `origin_steering.policy="least_connections"`, weight is used to scale the origin's open connections.
         """
         pulumi.set(__self__, "address", address)
@@ -20222,6 +20337,8 @@ class GetLoadBalancerPoolsPoolOriginResult(dict):
             pulumi.set(__self__, "enabled", enabled)
         if headers is not None:
             pulumi.set(__self__, "headers", headers)
+        if virtual_network_id is not None:
+            pulumi.set(__self__, "virtual_network_id", virtual_network_id)
         if weight is not None:
             pulumi.set(__self__, "weight", weight)
 
@@ -20256,6 +20373,14 @@ class GetLoadBalancerPoolsPoolOriginResult(dict):
         HTTP request headers.
         """
         return pulumi.get(self, "headers")
+
+    @property
+    @pulumi.getter(name="virtualNetworkId")
+    def virtual_network_id(self) -> Optional[str]:
+        """
+        The virtual network subnet ID the origin belongs in. Virtual network must also belong to the account.
+        """
+        return pulumi.get(self, "virtual_network_id")
 
     @property
     @pulumi.getter

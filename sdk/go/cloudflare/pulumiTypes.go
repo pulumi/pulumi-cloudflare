@@ -493,11 +493,12 @@ func (o AccessApplicationLandingPageDesignPtrOutput) Title() pulumi.StringPtrOut
 }
 
 type AccessApplicationSaasApp struct {
-	// Allow PKCE flow without a client secret
+	// Allow PKCE flow without a client secret.
 	AllowPkceWithoutClientSecret *bool `pulumi:"allowPkceWithoutClientSecret"`
 	// The URL where this applications tile redirects users.
 	AppLauncherUrl *string `pulumi:"appLauncherUrl"`
-	AuthType       *string `pulumi:"authType"`
+	// **Modifying this attribute will force creation of a new resource.**
+	AuthType *string `pulumi:"authType"`
 	// The application client id.
 	ClientId *string `pulumi:"clientId"`
 	// The application client secret, only returned on initial apply.
@@ -514,6 +515,8 @@ type AccessApplicationSaasApp struct {
 	GrantTypes []string `pulumi:"grantTypes"`
 	// A regex to filter Cloudflare groups returned in ID token and userinfo endpoint.
 	GroupFilterRegex *string `pulumi:"groupFilterRegex"`
+	// Hybrid and Implicit Flow options.
+	HybridAndImplicitOptions *AccessApplicationSaasAppHybridAndImplicitOptions `pulumi:"hybridAndImplicitOptions"`
 	// The unique identifier for the SaaS application.
 	IdpEntityId *string `pulumi:"idpEntityId"`
 	// The format of the name identifier sent to the SaaS application.
@@ -524,7 +527,7 @@ type AccessApplicationSaasApp struct {
 	PublicKey *string `pulumi:"publicKey"`
 	// The permitted URL's for Cloudflare to return Authorization codes and Access/ID tokens.
 	RedirectUris []string `pulumi:"redirectUris"`
-	// Refresh token grant options
+	// Refresh token grant options.
 	RefreshTokenOptions []AccessApplicationSaasAppRefreshTokenOption `pulumi:"refreshTokenOptions"`
 	// A [JSONata](https://jsonata.org/) expression that transforms an application's user identities into attribute assertions in the SAML response. The expression can transform id, email, name, and groups values. It can also transform fields listed in the saml*attributes or oidc*fields of the identity provider used to authenticate. The output of this expression must be a JSON object.
 	SamlAttributeTransformJsonata *string `pulumi:"samlAttributeTransformJsonata"`
@@ -548,11 +551,12 @@ type AccessApplicationSaasAppInput interface {
 }
 
 type AccessApplicationSaasAppArgs struct {
-	// Allow PKCE flow without a client secret
+	// Allow PKCE flow without a client secret.
 	AllowPkceWithoutClientSecret pulumi.BoolPtrInput `pulumi:"allowPkceWithoutClientSecret"`
 	// The URL where this applications tile redirects users.
 	AppLauncherUrl pulumi.StringPtrInput `pulumi:"appLauncherUrl"`
-	AuthType       pulumi.StringPtrInput `pulumi:"authType"`
+	// **Modifying this attribute will force creation of a new resource.**
+	AuthType pulumi.StringPtrInput `pulumi:"authType"`
 	// The application client id.
 	ClientId pulumi.StringPtrInput `pulumi:"clientId"`
 	// The application client secret, only returned on initial apply.
@@ -569,6 +573,8 @@ type AccessApplicationSaasAppArgs struct {
 	GrantTypes pulumi.StringArrayInput `pulumi:"grantTypes"`
 	// A regex to filter Cloudflare groups returned in ID token and userinfo endpoint.
 	GroupFilterRegex pulumi.StringPtrInput `pulumi:"groupFilterRegex"`
+	// Hybrid and Implicit Flow options.
+	HybridAndImplicitOptions AccessApplicationSaasAppHybridAndImplicitOptionsPtrInput `pulumi:"hybridAndImplicitOptions"`
 	// The unique identifier for the SaaS application.
 	IdpEntityId pulumi.StringPtrInput `pulumi:"idpEntityId"`
 	// The format of the name identifier sent to the SaaS application.
@@ -579,7 +585,7 @@ type AccessApplicationSaasAppArgs struct {
 	PublicKey pulumi.StringPtrInput `pulumi:"publicKey"`
 	// The permitted URL's for Cloudflare to return Authorization codes and Access/ID tokens.
 	RedirectUris pulumi.StringArrayInput `pulumi:"redirectUris"`
-	// Refresh token grant options
+	// Refresh token grant options.
 	RefreshTokenOptions AccessApplicationSaasAppRefreshTokenOptionArrayInput `pulumi:"refreshTokenOptions"`
 	// A [JSONata](https://jsonata.org/) expression that transforms an application's user identities into attribute assertions in the SAML response. The expression can transform id, email, name, and groups values. It can also transform fields listed in the saml*attributes or oidc*fields of the identity provider used to authenticate. The output of this expression must be a JSON object.
 	SamlAttributeTransformJsonata pulumi.StringPtrInput `pulumi:"samlAttributeTransformJsonata"`
@@ -668,7 +674,7 @@ func (o AccessApplicationSaasAppOutput) ToAccessApplicationSaasAppPtrOutputWithC
 	}).(AccessApplicationSaasAppPtrOutput)
 }
 
-// Allow PKCE flow without a client secret
+// Allow PKCE flow without a client secret.
 func (o AccessApplicationSaasAppOutput) AllowPkceWithoutClientSecret() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v AccessApplicationSaasApp) *bool { return v.AllowPkceWithoutClientSecret }).(pulumi.BoolPtrOutput)
 }
@@ -678,6 +684,7 @@ func (o AccessApplicationSaasAppOutput) AppLauncherUrl() pulumi.StringPtrOutput 
 	return o.ApplyT(func(v AccessApplicationSaasApp) *string { return v.AppLauncherUrl }).(pulumi.StringPtrOutput)
 }
 
+// **Modifying this attribute will force creation of a new resource.**
 func (o AccessApplicationSaasAppOutput) AuthType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AccessApplicationSaasApp) *string { return v.AuthType }).(pulumi.StringPtrOutput)
 }
@@ -722,6 +729,13 @@ func (o AccessApplicationSaasAppOutput) GroupFilterRegex() pulumi.StringPtrOutpu
 	return o.ApplyT(func(v AccessApplicationSaasApp) *string { return v.GroupFilterRegex }).(pulumi.StringPtrOutput)
 }
 
+// Hybrid and Implicit Flow options.
+func (o AccessApplicationSaasAppOutput) HybridAndImplicitOptions() AccessApplicationSaasAppHybridAndImplicitOptionsPtrOutput {
+	return o.ApplyT(func(v AccessApplicationSaasApp) *AccessApplicationSaasAppHybridAndImplicitOptions {
+		return v.HybridAndImplicitOptions
+	}).(AccessApplicationSaasAppHybridAndImplicitOptionsPtrOutput)
+}
+
 // The unique identifier for the SaaS application.
 func (o AccessApplicationSaasAppOutput) IdpEntityId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AccessApplicationSaasApp) *string { return v.IdpEntityId }).(pulumi.StringPtrOutput)
@@ -747,7 +761,7 @@ func (o AccessApplicationSaasAppOutput) RedirectUris() pulumi.StringArrayOutput 
 	return o.ApplyT(func(v AccessApplicationSaasApp) []string { return v.RedirectUris }).(pulumi.StringArrayOutput)
 }
 
-// Refresh token grant options
+// Refresh token grant options.
 func (o AccessApplicationSaasAppOutput) RefreshTokenOptions() AccessApplicationSaasAppRefreshTokenOptionArrayOutput {
 	return o.ApplyT(func(v AccessApplicationSaasApp) []AccessApplicationSaasAppRefreshTokenOption {
 		return v.RefreshTokenOptions
@@ -798,7 +812,7 @@ func (o AccessApplicationSaasAppPtrOutput) Elem() AccessApplicationSaasAppOutput
 	}).(AccessApplicationSaasAppOutput)
 }
 
-// Allow PKCE flow without a client secret
+// Allow PKCE flow without a client secret.
 func (o AccessApplicationSaasAppPtrOutput) AllowPkceWithoutClientSecret() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *AccessApplicationSaasApp) *bool {
 		if v == nil {
@@ -818,6 +832,7 @@ func (o AccessApplicationSaasAppPtrOutput) AppLauncherUrl() pulumi.StringPtrOutp
 	}).(pulumi.StringPtrOutput)
 }
 
+// **Modifying this attribute will force creation of a new resource.**
 func (o AccessApplicationSaasAppPtrOutput) AuthType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AccessApplicationSaasApp) *string {
 		if v == nil {
@@ -907,6 +922,16 @@ func (o AccessApplicationSaasAppPtrOutput) GroupFilterRegex() pulumi.StringPtrOu
 	}).(pulumi.StringPtrOutput)
 }
 
+// Hybrid and Implicit Flow options.
+func (o AccessApplicationSaasAppPtrOutput) HybridAndImplicitOptions() AccessApplicationSaasAppHybridAndImplicitOptionsPtrOutput {
+	return o.ApplyT(func(v *AccessApplicationSaasApp) *AccessApplicationSaasAppHybridAndImplicitOptions {
+		if v == nil {
+			return nil
+		}
+		return v.HybridAndImplicitOptions
+	}).(AccessApplicationSaasAppHybridAndImplicitOptionsPtrOutput)
+}
+
 // The unique identifier for the SaaS application.
 func (o AccessApplicationSaasAppPtrOutput) IdpEntityId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AccessApplicationSaasApp) *string {
@@ -957,7 +982,7 @@ func (o AccessApplicationSaasAppPtrOutput) RedirectUris() pulumi.StringArrayOutp
 	}).(pulumi.StringArrayOutput)
 }
 
-// Refresh token grant options
+// Refresh token grant options.
 func (o AccessApplicationSaasAppPtrOutput) RefreshTokenOptions() AccessApplicationSaasAppRefreshTokenOptionArrayOutput {
 	return o.ApplyT(func(v *AccessApplicationSaasApp) []AccessApplicationSaasAppRefreshTokenOption {
 		if v == nil {
@@ -1201,7 +1226,7 @@ func (o AccessApplicationSaasAppCustomAttributeSourceOutput) NameByIdp() pulumi.
 }
 
 type AccessApplicationSaasAppCustomClaim struct {
-	// Friendly name of the Access Application.
+	// The name of the attribute as provided to the SaaS app.
 	Name *string `pulumi:"name"`
 	// True if the attribute must be always present.
 	Required *bool `pulumi:"required"`
@@ -1222,7 +1247,7 @@ type AccessApplicationSaasAppCustomClaimInput interface {
 }
 
 type AccessApplicationSaasAppCustomClaimArgs struct {
-	// Friendly name of the Access Application.
+	// The name of the attribute as provided to the SaaS app.
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// True if the attribute must be always present.
 	Required pulumi.BoolPtrInput `pulumi:"required"`
@@ -1282,7 +1307,7 @@ func (o AccessApplicationSaasAppCustomClaimOutput) ToAccessApplicationSaasAppCus
 	return o
 }
 
-// Friendly name of the Access Application.
+// The name of the attribute as provided to the SaaS app.
 func (o AccessApplicationSaasAppCustomClaimOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AccessApplicationSaasAppCustomClaim) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
@@ -1322,7 +1347,7 @@ func (o AccessApplicationSaasAppCustomClaimArrayOutput) Index(i pulumi.IntInput)
 }
 
 type AccessApplicationSaasAppCustomClaimSource struct {
-	// Friendly name of the Access Application.
+	// The name of the attribute as provided by the IDP.
 	Name string `pulumi:"name"`
 	// A mapping from IdP ID to claim name.
 	NameByIdp map[string]string `pulumi:"nameByIdp"`
@@ -1340,7 +1365,7 @@ type AccessApplicationSaasAppCustomClaimSourceInput interface {
 }
 
 type AccessApplicationSaasAppCustomClaimSourceArgs struct {
-	// Friendly name of the Access Application.
+	// The name of the attribute as provided by the IDP.
 	Name pulumi.StringInput `pulumi:"name"`
 	// A mapping from IdP ID to claim name.
 	NameByIdp pulumi.StringMapInput `pulumi:"nameByIdp"`
@@ -1372,7 +1397,7 @@ func (o AccessApplicationSaasAppCustomClaimSourceOutput) ToAccessApplicationSaas
 	return o
 }
 
-// Friendly name of the Access Application.
+// The name of the attribute as provided by the IDP.
 func (o AccessApplicationSaasAppCustomClaimSourceOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v AccessApplicationSaasAppCustomClaimSource) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -1380,6 +1405,166 @@ func (o AccessApplicationSaasAppCustomClaimSourceOutput) Name() pulumi.StringOut
 // A mapping from IdP ID to claim name.
 func (o AccessApplicationSaasAppCustomClaimSourceOutput) NameByIdp() pulumi.StringMapOutput {
 	return o.ApplyT(func(v AccessApplicationSaasAppCustomClaimSource) map[string]string { return v.NameByIdp }).(pulumi.StringMapOutput)
+}
+
+type AccessApplicationSaasAppHybridAndImplicitOptions struct {
+	// If true, the authorization endpoint will return an access token.
+	ReturnAccessTokenFromAuthorizationEndpoint *bool `pulumi:"returnAccessTokenFromAuthorizationEndpoint"`
+	// If true, the authorization endpoint will return an id token.
+	ReturnIdTokenFromAuthorizationEndpoint *bool `pulumi:"returnIdTokenFromAuthorizationEndpoint"`
+}
+
+// AccessApplicationSaasAppHybridAndImplicitOptionsInput is an input type that accepts AccessApplicationSaasAppHybridAndImplicitOptionsArgs and AccessApplicationSaasAppHybridAndImplicitOptionsOutput values.
+// You can construct a concrete instance of `AccessApplicationSaasAppHybridAndImplicitOptionsInput` via:
+//
+//	AccessApplicationSaasAppHybridAndImplicitOptionsArgs{...}
+type AccessApplicationSaasAppHybridAndImplicitOptionsInput interface {
+	pulumi.Input
+
+	ToAccessApplicationSaasAppHybridAndImplicitOptionsOutput() AccessApplicationSaasAppHybridAndImplicitOptionsOutput
+	ToAccessApplicationSaasAppHybridAndImplicitOptionsOutputWithContext(context.Context) AccessApplicationSaasAppHybridAndImplicitOptionsOutput
+}
+
+type AccessApplicationSaasAppHybridAndImplicitOptionsArgs struct {
+	// If true, the authorization endpoint will return an access token.
+	ReturnAccessTokenFromAuthorizationEndpoint pulumi.BoolPtrInput `pulumi:"returnAccessTokenFromAuthorizationEndpoint"`
+	// If true, the authorization endpoint will return an id token.
+	ReturnIdTokenFromAuthorizationEndpoint pulumi.BoolPtrInput `pulumi:"returnIdTokenFromAuthorizationEndpoint"`
+}
+
+func (AccessApplicationSaasAppHybridAndImplicitOptionsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessApplicationSaasAppHybridAndImplicitOptions)(nil)).Elem()
+}
+
+func (i AccessApplicationSaasAppHybridAndImplicitOptionsArgs) ToAccessApplicationSaasAppHybridAndImplicitOptionsOutput() AccessApplicationSaasAppHybridAndImplicitOptionsOutput {
+	return i.ToAccessApplicationSaasAppHybridAndImplicitOptionsOutputWithContext(context.Background())
+}
+
+func (i AccessApplicationSaasAppHybridAndImplicitOptionsArgs) ToAccessApplicationSaasAppHybridAndImplicitOptionsOutputWithContext(ctx context.Context) AccessApplicationSaasAppHybridAndImplicitOptionsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessApplicationSaasAppHybridAndImplicitOptionsOutput)
+}
+
+func (i AccessApplicationSaasAppHybridAndImplicitOptionsArgs) ToAccessApplicationSaasAppHybridAndImplicitOptionsPtrOutput() AccessApplicationSaasAppHybridAndImplicitOptionsPtrOutput {
+	return i.ToAccessApplicationSaasAppHybridAndImplicitOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i AccessApplicationSaasAppHybridAndImplicitOptionsArgs) ToAccessApplicationSaasAppHybridAndImplicitOptionsPtrOutputWithContext(ctx context.Context) AccessApplicationSaasAppHybridAndImplicitOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessApplicationSaasAppHybridAndImplicitOptionsOutput).ToAccessApplicationSaasAppHybridAndImplicitOptionsPtrOutputWithContext(ctx)
+}
+
+// AccessApplicationSaasAppHybridAndImplicitOptionsPtrInput is an input type that accepts AccessApplicationSaasAppHybridAndImplicitOptionsArgs, AccessApplicationSaasAppHybridAndImplicitOptionsPtr and AccessApplicationSaasAppHybridAndImplicitOptionsPtrOutput values.
+// You can construct a concrete instance of `AccessApplicationSaasAppHybridAndImplicitOptionsPtrInput` via:
+//
+//	        AccessApplicationSaasAppHybridAndImplicitOptionsArgs{...}
+//
+//	or:
+//
+//	        nil
+type AccessApplicationSaasAppHybridAndImplicitOptionsPtrInput interface {
+	pulumi.Input
+
+	ToAccessApplicationSaasAppHybridAndImplicitOptionsPtrOutput() AccessApplicationSaasAppHybridAndImplicitOptionsPtrOutput
+	ToAccessApplicationSaasAppHybridAndImplicitOptionsPtrOutputWithContext(context.Context) AccessApplicationSaasAppHybridAndImplicitOptionsPtrOutput
+}
+
+type accessApplicationSaasAppHybridAndImplicitOptionsPtrType AccessApplicationSaasAppHybridAndImplicitOptionsArgs
+
+func AccessApplicationSaasAppHybridAndImplicitOptionsPtr(v *AccessApplicationSaasAppHybridAndImplicitOptionsArgs) AccessApplicationSaasAppHybridAndImplicitOptionsPtrInput {
+	return (*accessApplicationSaasAppHybridAndImplicitOptionsPtrType)(v)
+}
+
+func (*accessApplicationSaasAppHybridAndImplicitOptionsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AccessApplicationSaasAppHybridAndImplicitOptions)(nil)).Elem()
+}
+
+func (i *accessApplicationSaasAppHybridAndImplicitOptionsPtrType) ToAccessApplicationSaasAppHybridAndImplicitOptionsPtrOutput() AccessApplicationSaasAppHybridAndImplicitOptionsPtrOutput {
+	return i.ToAccessApplicationSaasAppHybridAndImplicitOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i *accessApplicationSaasAppHybridAndImplicitOptionsPtrType) ToAccessApplicationSaasAppHybridAndImplicitOptionsPtrOutputWithContext(ctx context.Context) AccessApplicationSaasAppHybridAndImplicitOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessApplicationSaasAppHybridAndImplicitOptionsPtrOutput)
+}
+
+type AccessApplicationSaasAppHybridAndImplicitOptionsOutput struct{ *pulumi.OutputState }
+
+func (AccessApplicationSaasAppHybridAndImplicitOptionsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessApplicationSaasAppHybridAndImplicitOptions)(nil)).Elem()
+}
+
+func (o AccessApplicationSaasAppHybridAndImplicitOptionsOutput) ToAccessApplicationSaasAppHybridAndImplicitOptionsOutput() AccessApplicationSaasAppHybridAndImplicitOptionsOutput {
+	return o
+}
+
+func (o AccessApplicationSaasAppHybridAndImplicitOptionsOutput) ToAccessApplicationSaasAppHybridAndImplicitOptionsOutputWithContext(ctx context.Context) AccessApplicationSaasAppHybridAndImplicitOptionsOutput {
+	return o
+}
+
+func (o AccessApplicationSaasAppHybridAndImplicitOptionsOutput) ToAccessApplicationSaasAppHybridAndImplicitOptionsPtrOutput() AccessApplicationSaasAppHybridAndImplicitOptionsPtrOutput {
+	return o.ToAccessApplicationSaasAppHybridAndImplicitOptionsPtrOutputWithContext(context.Background())
+}
+
+func (o AccessApplicationSaasAppHybridAndImplicitOptionsOutput) ToAccessApplicationSaasAppHybridAndImplicitOptionsPtrOutputWithContext(ctx context.Context) AccessApplicationSaasAppHybridAndImplicitOptionsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AccessApplicationSaasAppHybridAndImplicitOptions) *AccessApplicationSaasAppHybridAndImplicitOptions {
+		return &v
+	}).(AccessApplicationSaasAppHybridAndImplicitOptionsPtrOutput)
+}
+
+// If true, the authorization endpoint will return an access token.
+func (o AccessApplicationSaasAppHybridAndImplicitOptionsOutput) ReturnAccessTokenFromAuthorizationEndpoint() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AccessApplicationSaasAppHybridAndImplicitOptions) *bool {
+		return v.ReturnAccessTokenFromAuthorizationEndpoint
+	}).(pulumi.BoolPtrOutput)
+}
+
+// If true, the authorization endpoint will return an id token.
+func (o AccessApplicationSaasAppHybridAndImplicitOptionsOutput) ReturnIdTokenFromAuthorizationEndpoint() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AccessApplicationSaasAppHybridAndImplicitOptions) *bool {
+		return v.ReturnIdTokenFromAuthorizationEndpoint
+	}).(pulumi.BoolPtrOutput)
+}
+
+type AccessApplicationSaasAppHybridAndImplicitOptionsPtrOutput struct{ *pulumi.OutputState }
+
+func (AccessApplicationSaasAppHybridAndImplicitOptionsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AccessApplicationSaasAppHybridAndImplicitOptions)(nil)).Elem()
+}
+
+func (o AccessApplicationSaasAppHybridAndImplicitOptionsPtrOutput) ToAccessApplicationSaasAppHybridAndImplicitOptionsPtrOutput() AccessApplicationSaasAppHybridAndImplicitOptionsPtrOutput {
+	return o
+}
+
+func (o AccessApplicationSaasAppHybridAndImplicitOptionsPtrOutput) ToAccessApplicationSaasAppHybridAndImplicitOptionsPtrOutputWithContext(ctx context.Context) AccessApplicationSaasAppHybridAndImplicitOptionsPtrOutput {
+	return o
+}
+
+func (o AccessApplicationSaasAppHybridAndImplicitOptionsPtrOutput) Elem() AccessApplicationSaasAppHybridAndImplicitOptionsOutput {
+	return o.ApplyT(func(v *AccessApplicationSaasAppHybridAndImplicitOptions) AccessApplicationSaasAppHybridAndImplicitOptions {
+		if v != nil {
+			return *v
+		}
+		var ret AccessApplicationSaasAppHybridAndImplicitOptions
+		return ret
+	}).(AccessApplicationSaasAppHybridAndImplicitOptionsOutput)
+}
+
+// If true, the authorization endpoint will return an access token.
+func (o AccessApplicationSaasAppHybridAndImplicitOptionsPtrOutput) ReturnAccessTokenFromAuthorizationEndpoint() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AccessApplicationSaasAppHybridAndImplicitOptions) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ReturnAccessTokenFromAuthorizationEndpoint
+	}).(pulumi.BoolPtrOutput)
+}
+
+// If true, the authorization endpoint will return an id token.
+func (o AccessApplicationSaasAppHybridAndImplicitOptionsPtrOutput) ReturnIdTokenFromAuthorizationEndpoint() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AccessApplicationSaasAppHybridAndImplicitOptions) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ReturnIdTokenFromAuthorizationEndpoint
+	}).(pulumi.BoolPtrOutput)
 }
 
 type AccessApplicationSaasAppRefreshTokenOption struct {
@@ -15116,6 +15301,8 @@ type LoadBalancerPoolOrigin struct {
 	Headers []LoadBalancerPoolOriginHeader `pulumi:"headers"`
 	// A human-identifiable name for the origin.
 	Name string `pulumi:"name"`
+	// The virtual network subnet ID the origin belongs in. Virtual network must also belong to the account.
+	VirtualNetworkId *string `pulumi:"virtualNetworkId"`
 	// The weight (0.01 - 1.00) of this origin, relative to other origins in the pool. Equal values mean equal weighting. A weight of 0 means traffic will not be sent to this origin, but health is still checked. When `origin_steering.policy="leastOutstandingRequests"`, weight is used to scale the origin's outstanding requests. When `origin_steering.policy="leastConnections"`, weight is used to scale the origin's open connections. Defaults to `1`.
 	Weight *float64 `pulumi:"weight"`
 }
@@ -15140,6 +15327,8 @@ type LoadBalancerPoolOriginArgs struct {
 	Headers LoadBalancerPoolOriginHeaderArrayInput `pulumi:"headers"`
 	// A human-identifiable name for the origin.
 	Name pulumi.StringInput `pulumi:"name"`
+	// The virtual network subnet ID the origin belongs in. Virtual network must also belong to the account.
+	VirtualNetworkId pulumi.StringPtrInput `pulumi:"virtualNetworkId"`
 	// The weight (0.01 - 1.00) of this origin, relative to other origins in the pool. Equal values mean equal weighting. A weight of 0 means traffic will not be sent to this origin, but health is still checked. When `origin_steering.policy="leastOutstandingRequests"`, weight is used to scale the origin's outstanding requests. When `origin_steering.policy="leastConnections"`, weight is used to scale the origin's open connections. Defaults to `1`.
 	Weight pulumi.Float64PtrInput `pulumi:"weight"`
 }
@@ -15213,6 +15402,11 @@ func (o LoadBalancerPoolOriginOutput) Headers() LoadBalancerPoolOriginHeaderArra
 // A human-identifiable name for the origin.
 func (o LoadBalancerPoolOriginOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LoadBalancerPoolOrigin) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The virtual network subnet ID the origin belongs in. Virtual network must also belong to the account.
+func (o LoadBalancerPoolOriginOutput) VirtualNetworkId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LoadBalancerPoolOrigin) *string { return v.VirtualNetworkId }).(pulumi.StringPtrOutput)
 }
 
 // The weight (0.01 - 1.00) of this origin, relative to other origins in the pool. Equal values mean equal weighting. A weight of 0 means traffic will not be sent to this origin, but health is still checked. When `origin_steering.policy="leastOutstandingRequests"`, weight is used to scale the origin's outstanding requests. When `origin_steering.policy="leastConnections"`, weight is used to scale the origin's open connections. Defaults to `1`.
@@ -17234,7 +17428,8 @@ type LogpushJobOutputOptions struct {
 	RecordDelimiter *string `pulumi:"recordDelimiter"`
 	// String to be prepended before each record. Defaults to `{`.
 	RecordPrefix *string `pulumi:"recordPrefix"`
-	// String to be appended after each record. Defaults to `}`.
+	// String to be appended after each record. Defaults to `}
+	// `.
 	RecordSuffix *string `pulumi:"recordSuffix"`
 	// String to use as template for each record instead of the default comma-separated list.
 	RecordTemplate *string `pulumi:"recordTemplate"`
@@ -17272,7 +17467,8 @@ type LogpushJobOutputOptionsArgs struct {
 	RecordDelimiter pulumi.StringPtrInput `pulumi:"recordDelimiter"`
 	// String to be prepended before each record. Defaults to `{`.
 	RecordPrefix pulumi.StringPtrInput `pulumi:"recordPrefix"`
-	// String to be appended after each record. Defaults to `}`.
+	// String to be appended after each record. Defaults to `}
+	// `.
 	RecordSuffix pulumi.StringPtrInput `pulumi:"recordSuffix"`
 	// String to use as template for each record instead of the default comma-separated list.
 	RecordTemplate pulumi.StringPtrInput `pulumi:"recordTemplate"`
@@ -17399,7 +17595,8 @@ func (o LogpushJobOutputOptionsOutput) RecordPrefix() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LogpushJobOutputOptions) *string { return v.RecordPrefix }).(pulumi.StringPtrOutput)
 }
 
-// String to be appended after each record. Defaults to `}`.
+// String to be appended after each record. Defaults to `}
+// `.
 func (o LogpushJobOutputOptionsOutput) RecordSuffix() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LogpushJobOutputOptions) *string { return v.RecordSuffix }).(pulumi.StringPtrOutput)
 }
@@ -17523,7 +17720,8 @@ func (o LogpushJobOutputOptionsPtrOutput) RecordPrefix() pulumi.StringPtrOutput 
 	}).(pulumi.StringPtrOutput)
 }
 
-// String to be appended after each record. Defaults to `}`.
+// String to be appended after each record. Defaults to `}
+// `.
 func (o LogpushJobOutputOptionsPtrOutput) RecordSuffix() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *LogpushJobOutputOptions) *string {
 		if v == nil {
@@ -34174,6 +34372,8 @@ type TeamsAccountProxy struct {
 	Tcp bool `pulumi:"tcp"`
 	// Whether gateway proxy is enabled on gateway devices for UDP traffic.
 	Udp bool `pulumi:"udp"`
+	// Whether virtual IP (CGNAT) is enabled account wide and will override existing local interface IP for ZT clients.
+	VirtualIp bool `pulumi:"virtualIp"`
 }
 
 // TeamsAccountProxyInput is an input type that accepts TeamsAccountProxyArgs and TeamsAccountProxyOutput values.
@@ -34194,6 +34394,8 @@ type TeamsAccountProxyArgs struct {
 	Tcp pulumi.BoolInput `pulumi:"tcp"`
 	// Whether gateway proxy is enabled on gateway devices for UDP traffic.
 	Udp pulumi.BoolInput `pulumi:"udp"`
+	// Whether virtual IP (CGNAT) is enabled account wide and will override existing local interface IP for ZT clients.
+	VirtualIp pulumi.BoolInput `pulumi:"virtualIp"`
 }
 
 func (TeamsAccountProxyArgs) ElementType() reflect.Type {
@@ -34288,6 +34490,11 @@ func (o TeamsAccountProxyOutput) Udp() pulumi.BoolOutput {
 	return o.ApplyT(func(v TeamsAccountProxy) bool { return v.Udp }).(pulumi.BoolOutput)
 }
 
+// Whether virtual IP (CGNAT) is enabled account wide and will override existing local interface IP for ZT clients.
+func (o TeamsAccountProxyOutput) VirtualIp() pulumi.BoolOutput {
+	return o.ApplyT(func(v TeamsAccountProxy) bool { return v.VirtualIp }).(pulumi.BoolOutput)
+}
+
 type TeamsAccountProxyPtrOutput struct{ *pulumi.OutputState }
 
 func (TeamsAccountProxyPtrOutput) ElementType() reflect.Type {
@@ -34339,6 +34546,16 @@ func (o TeamsAccountProxyPtrOutput) Udp() pulumi.BoolPtrOutput {
 			return nil
 		}
 		return &v.Udp
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Whether virtual IP (CGNAT) is enabled account wide and will override existing local interface IP for ZT clients.
+func (o TeamsAccountProxyPtrOutput) VirtualIp() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *TeamsAccountProxy) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.VirtualIp
 	}).(pulumi.BoolPtrOutput)
 }
 
@@ -44382,6 +44599,8 @@ type GetLoadBalancerPoolsPoolOrigin struct {
 	Headers []GetLoadBalancerPoolsPoolOriginHeader `pulumi:"headers"`
 	// A human-identifiable name for the origin.
 	Name string `pulumi:"name"`
+	// The virtual network subnet ID the origin belongs in. Virtual network must also belong to the account.
+	VirtualNetworkId *string `pulumi:"virtualNetworkId"`
 	// The weight (0.01 - 1.00) of this origin, relative to other origins in the pool. Equal values mean equal weighting. A weight of 0 means traffic will not be sent to this origin, but health is still checked. When `origin_steering.policy="leastOutstandingRequests"`, weight is used to scale the origin's outstanding requests. When `origin_steering.policy="leastConnections"`, weight is used to scale the origin's open connections.
 	Weight *float64 `pulumi:"weight"`
 }
@@ -44406,6 +44625,8 @@ type GetLoadBalancerPoolsPoolOriginArgs struct {
 	Headers GetLoadBalancerPoolsPoolOriginHeaderArrayInput `pulumi:"headers"`
 	// A human-identifiable name for the origin.
 	Name pulumi.StringInput `pulumi:"name"`
+	// The virtual network subnet ID the origin belongs in. Virtual network must also belong to the account.
+	VirtualNetworkId pulumi.StringPtrInput `pulumi:"virtualNetworkId"`
 	// The weight (0.01 - 1.00) of this origin, relative to other origins in the pool. Equal values mean equal weighting. A weight of 0 means traffic will not be sent to this origin, but health is still checked. When `origin_steering.policy="leastOutstandingRequests"`, weight is used to scale the origin's outstanding requests. When `origin_steering.policy="leastConnections"`, weight is used to scale the origin's open connections.
 	Weight pulumi.Float64PtrInput `pulumi:"weight"`
 }
@@ -44479,6 +44700,11 @@ func (o GetLoadBalancerPoolsPoolOriginOutput) Headers() GetLoadBalancerPoolsPool
 // A human-identifiable name for the origin.
 func (o GetLoadBalancerPoolsPoolOriginOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetLoadBalancerPoolsPoolOrigin) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The virtual network subnet ID the origin belongs in. Virtual network must also belong to the account.
+func (o GetLoadBalancerPoolsPoolOriginOutput) VirtualNetworkId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetLoadBalancerPoolsPoolOrigin) *string { return v.VirtualNetworkId }).(pulumi.StringPtrOutput)
 }
 
 // The weight (0.01 - 1.00) of this origin, relative to other origins in the pool. Equal values mean equal weighting. A weight of 0 means traffic will not be sent to this origin, but health is still checked. When `origin_steering.policy="leastOutstandingRequests"`, weight is used to scale the origin's outstanding requests. When `origin_steering.policy="leastConnections"`, weight is used to scale the origin's open connections.
@@ -51271,6 +51497,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessApplicationSaasAppCustomClaimInput)(nil)).Elem(), AccessApplicationSaasAppCustomClaimArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessApplicationSaasAppCustomClaimArrayInput)(nil)).Elem(), AccessApplicationSaasAppCustomClaimArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessApplicationSaasAppCustomClaimSourceInput)(nil)).Elem(), AccessApplicationSaasAppCustomClaimSourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessApplicationSaasAppHybridAndImplicitOptionsInput)(nil)).Elem(), AccessApplicationSaasAppHybridAndImplicitOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessApplicationSaasAppHybridAndImplicitOptionsPtrInput)(nil)).Elem(), AccessApplicationSaasAppHybridAndImplicitOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessApplicationSaasAppRefreshTokenOptionInput)(nil)).Elem(), AccessApplicationSaasAppRefreshTokenOptionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessApplicationSaasAppRefreshTokenOptionArrayInput)(nil)).Elem(), AccessApplicationSaasAppRefreshTokenOptionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessApplicationScimConfigInput)(nil)).Elem(), AccessApplicationScimConfigArgs{})
@@ -51883,6 +52111,8 @@ func init() {
 	pulumi.RegisterOutputType(AccessApplicationSaasAppCustomClaimOutput{})
 	pulumi.RegisterOutputType(AccessApplicationSaasAppCustomClaimArrayOutput{})
 	pulumi.RegisterOutputType(AccessApplicationSaasAppCustomClaimSourceOutput{})
+	pulumi.RegisterOutputType(AccessApplicationSaasAppHybridAndImplicitOptionsOutput{})
+	pulumi.RegisterOutputType(AccessApplicationSaasAppHybridAndImplicitOptionsPtrOutput{})
 	pulumi.RegisterOutputType(AccessApplicationSaasAppRefreshTokenOptionOutput{})
 	pulumi.RegisterOutputType(AccessApplicationSaasAppRefreshTokenOptionArrayOutput{})
 	pulumi.RegisterOutputType(AccessApplicationScimConfigOutput{})

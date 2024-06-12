@@ -15,7 +15,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class AccessApplicationSaasAppCustomClaim {
     /**
-     * @return Friendly name of the Access Application.
+     * @return The name of the attribute as provided to the SaaS app.
      * 
      */
     private @Nullable String name;
@@ -33,7 +33,7 @@ public final class AccessApplicationSaasAppCustomClaim {
 
     private AccessApplicationSaasAppCustomClaim() {}
     /**
-     * @return Friendly name of the Access Application.
+     * @return The name of the attribute as provided to the SaaS app.
      * 
      */
     public Optional<String> name() {

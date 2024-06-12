@@ -67,7 +67,8 @@ namespace Pulumi.Cloudflare.Inputs
         public Input<string>? RecordPrefix { get; set; }
 
         /// <summary>
-        /// String to be appended after each record. Defaults to `}`.
+        /// String to be appended after each record. Defaults to `}
+        /// `.
         /// </summary>
         [Input("recordSuffix")]
         public Input<string>? RecordSuffix { get; set; }
