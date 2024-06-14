@@ -34,6 +34,7 @@ func TestRegress554(t *testing.T) {
 		With(integration.ProgramTestOptions{
 			Dir: filepath.Join(getCwd(t), "regress-554"),
 		})
+	test.SkipRefresh = true
 
 	integration.ProgramTest(t, &test)
 }
