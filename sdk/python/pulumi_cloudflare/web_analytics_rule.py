@@ -245,7 +245,7 @@ class WebAnalyticsRule(pulumi.CustomResource):
             paths=["/excluded"],
             inclusive=False,
             is_paused=False,
-            opts=pulumi.ResourceOptions(depends_on=[example]))
+            opts = pulumi.ResourceOptions(depends_on=[example]))
         ```
 
         ## Import
@@ -289,7 +289,7 @@ class WebAnalyticsRule(pulumi.CustomResource):
             paths=["/excluded"],
             inclusive=False,
             is_paused=False,
-            opts=pulumi.ResourceOptions(depends_on=[example]))
+            opts = pulumi.ResourceOptions(depends_on=[example]))
         ```
 
         ## Import

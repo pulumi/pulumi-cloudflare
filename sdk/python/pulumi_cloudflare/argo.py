@@ -58,13 +58,11 @@ class ArgoArgs:
 
     @property
     @pulumi.getter(name="tieredCaching")
+    @_utilities.deprecated("""tiered_caching has been deprecated in favour of using `TieredCache` resource instead.""")
     def tiered_caching(self) -> Optional[pulumi.Input[str]]:
         """
         Whether tiered caching is enabled. Available values: `on`, `off`.
         """
-        warnings.warn("""tiered_caching has been deprecated in favour of using `TieredCache` resource instead.""", DeprecationWarning)
-        pulumi.log.warn("""tiered_caching is deprecated: tiered_caching has been deprecated in favour of using `TieredCache` resource instead.""")
-
         return pulumi.get(self, "tiered_caching")
 
     @tiered_caching.setter
@@ -108,13 +106,11 @@ class _ArgoState:
 
     @property
     @pulumi.getter(name="tieredCaching")
+    @_utilities.deprecated("""tiered_caching has been deprecated in favour of using `TieredCache` resource instead.""")
     def tiered_caching(self) -> Optional[pulumi.Input[str]]:
         """
         Whether tiered caching is enabled. Available values: `on`, `off`.
         """
-        warnings.warn("""tiered_caching has been deprecated in favour of using `TieredCache` resource instead.""", DeprecationWarning)
-        pulumi.log.warn("""tiered_caching is deprecated: tiered_caching has been deprecated in favour of using `TieredCache` resource instead.""")
-
         return pulumi.get(self, "tiered_caching")
 
     @tiered_caching.setter
@@ -274,13 +270,11 @@ class Argo(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="tieredCaching")
+    @_utilities.deprecated("""tiered_caching has been deprecated in favour of using `TieredCache` resource instead.""")
     def tiered_caching(self) -> pulumi.Output[Optional[str]]:
         """
         Whether tiered caching is enabled. Available values: `on`, `off`.
         """
-        warnings.warn("""tiered_caching has been deprecated in favour of using `TieredCache` resource instead.""", DeprecationWarning)
-        pulumi.log.warn("""tiered_caching is deprecated: tiered_caching has been deprecated in favour of using `TieredCache` resource instead.""")
-
         return pulumi.get(self, "tiered_caching")
 
     @property

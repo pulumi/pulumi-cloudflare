@@ -59,13 +59,11 @@ class GetApiTokenPermissionGroupsResult:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Use specific account, zone or user attributes instead.""")
     def permissions(self) -> Mapping[str, str]:
         """
         Map of all permissions available. Should not be used as some permissions will overlap resource scope. Instead, use resource level specific attributes.
         """
-        warnings.warn("""Use specific account, zone or user attributes instead.""", DeprecationWarning)
-        pulumi.log.warn("""permissions is deprecated: Use specific account, zone or user attributes instead.""")
-
         return pulumi.get(self, "permissions")
 
     @property
