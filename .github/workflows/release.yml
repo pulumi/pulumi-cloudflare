@@ -21,15 +21,25 @@ env:
   SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
   TF_APPEND_USER_AGENT: pulumi
 jobs:
+  prerequisites:
+    uses: ./.github/workflows/prerequisites.yml
+    secrets: inherit
+    with:
+      default_branch: ${{ github.event.repository.default_branch }}
+      is_pr: ${{ github.event_name == 'pull_request' }}
+      is_automated: ${{ github.actor == 'dependabot[bot]' }}
+
   build_sdk:
     name: build_sdk
     needs: prerequisites
     uses: ./.github/workflows/build_sdk.yml
     secrets: inherit
+    with:
+      version: ${{ needs.prerequisites.outputs.version }}
 
   create_docs_build:
     name: create_docs_build
-    needs: tag_sdk
+    needs: publish_go_sdk
     runs-on: ubuntu-latest
     steps:
       - name: Dispatch Metadata build
@@ -52,17 +62,11 @@ jobs:
     name: License Check
     uses: ./.github/workflows/license.yml
     secrets: inherit
-  prerequisites:
-    uses: ./.github/workflows/prerequisites.yml
-    secrets: inherit
-    with:
-      default_branch: ${{ github.event.repository.default_branch }}
-      is_pr: ${{ github.event_name == 'pull_request' }}
-      is_automated: ${{ github.actor == 'dependabot[bot]' }}
 
   publish:
     name: publish
     needs:
+      - prerequisites
       - test
       - license_check
     runs-on: ubuntu-latest
@@ -101,13 +105,11 @@ jobs:
         role-external-id: upload-pulumi-release
         role-session-name: cloudflare@githubActions
         role-to-assume: ${{ secrets.AWS_UPLOAD_ROLE_ARN }}
-    - id: version
-      uses: pulumi/provider-version-action@v1
     - name: Run GoReleaser
       uses: goreleaser/goreleaser-action@v5
       env:
-        GORELEASER_CURRENT_TAG: v${{ steps.version.outputs.version }}
-        PROVIDER_VERSION: ${{ steps.version.outputs.version }}
+        GORELEASER_CURRENT_TAG: v${{ needs.prerequisites.outputs.version }}
+        PROVIDER_VERSION: ${{ needs.prerequisites.outputs.version }}
       with:
         args: -p 3 release --rm-dist --timeout 60m0s
         version: latest
@@ -120,16 +122,16 @@ jobs:
         status: ${{ job.status }}
   publish_sdk:
     name: publish_sdk
-    needs: publish
+    needs:
+      - prerequisites
+      - publish
     runs-on: ubuntu-latest
     steps:
-    - id: version
-      uses: pulumi/provider-version-action@v1
     - name: Publish SDKs
       uses: pulumi/pulumi-package-publisher@v0.0.18
       with:
         sdk: all
-        version: ${{ steps.version.outputs.version }}
+        version: ${{ needs.prerequisites.outputs.version }}
         dotnet-version: "6.0.x"
         java-version: "11"
         node-version: "20.x"
@@ -145,9 +147,11 @@ jobs:
       if: failure()
       name: Send Publish Failure To Slack
       uses: rtCamp/action-slack-notify@v2
-  tag_sdk:
-    name: tag_sdk
-    needs: publish_sdk
+  publish_go_sdk:
+    name: publish_go_sdk
+    needs:
+      - prerequisites
+      - publish_sdk
     runs-on: ubuntu-latest
     steps:
     - name: Checkout Repo
@@ -157,8 +161,6 @@ jobs:
       with:
         tag: v0.0.46
         repo: pulumi/pulumictl
-    - id: version
-      uses: pulumi/provider-version-action@v1
     - name: Download Go SDK
       uses: actions/download-artifact@v4
       with:
@@ -174,7 +176,7 @@ jobs:
         base-ref: ${{ github.sha }}
         source: sdk
         path: sdk
-        version: ${{ steps.version.outputs.version }}
+        version: ${{ needs.prerequisites.outputs.version }}
         additive: false
         # Avoid including other language SDKs & artifacts in the commit
         files: |
@@ -201,17 +203,18 @@ jobs:
 
   test:
     name: test
-    needs: build_sdk
+    needs:
+      - prerequisites
+      - build_sdk
     permissions:
       contents: read
       id-token: write
     runs-on: ubuntu-latest
+    env:
+      PROVIDER_VERSION: ${{ needs.prerequisites.outputs.version }}
     steps:
     - name: Checkout Repo
       uses: actions/checkout@v4
-    - uses: pulumi/provider-version-action@v1
-      with:
-        set-env: 'PROVIDER_VERSION'
     - name: Install Go
       uses: actions/setup-go@v5
       with:
@@ -308,6 +311,19 @@ jobs:
         - dotnet
         - go
         - java
+  verify-release:
+    name: verify-release
+    needs:
+      - prerequisites
+      - publish
+      - publish_sdk
+      - publish_go_sdk
+    uses: ./.github/workflows/verify-release.yml
+    secrets: inherit
+    with:
+      providerVersion: ${{ needs.prerequisites.outputs.version }}
+      enableMacosRunner: true
+
 name: release
 on:
   push:
