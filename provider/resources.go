@@ -48,7 +48,10 @@ var metadata []byte
 func Provider() tfbridge.ProviderInfo {
 	// Instantiate the Terraform provider
 	p := pfbridge.MuxShimWithPF(context.Background(),
-		shimv2.NewProvider(provShim.SDKProvider(), shimv2.WithPlanResourceChange(func(_ string) bool {return true})),
+		shimv2.NewProvider(
+			provShim.SDKProvider(),
+			shimv2.WithPlanResourceChange(func(_ string) bool { return true }),
+		),
 		provShim.PFProvider(),
 	)
 
