@@ -50,7 +50,7 @@ func Provider() tfbridge.ProviderInfo {
 	p := pfbridge.MuxShimWithPF(context.Background(),
 		shimv2.NewProvider(
 			provShim.SDKProvider(),
-			shimv2.WithPlanResourceChange(func(_ string) bool { return true }),
+			shimv2.WithPlanResourceChange(func(string) bool { return true }),
 		),
 		provShim.PFProvider(),
 	)
