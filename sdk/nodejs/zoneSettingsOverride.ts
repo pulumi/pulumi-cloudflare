@@ -32,7 +32,7 @@ import * as utilities from "./utilities";
  * import * as cloudflare from "@pulumi/cloudflare";
  *
  * const test = new cloudflare.ZoneSettingsOverride("test", {
- *     zoneId: d41d8cd98f00b204e9800998ecf8427e,
+ *     zoneId: "0da42c8d2132a9ddaf714f9e7c920711",
  *     settings: {
  *         brotli: "on",
  *         challengeTtl: 2700,

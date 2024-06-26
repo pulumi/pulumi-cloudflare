@@ -64,7 +64,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var test = new ZoneSettingsOverride("test", ZoneSettingsOverrideArgs.builder()
- *             .zoneId(d41d8cd98f00b204e9800998ecf8427e)
+ *             .zoneId("0da42c8d2132a9ddaf714f9e7c920711")
  *             .settings(ZoneSettingsOverrideSettingsArgs.builder()
  *                 .brotli("on")
  *                 .challengeTtl(2700)

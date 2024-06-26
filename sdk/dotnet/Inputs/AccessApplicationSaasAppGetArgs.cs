@@ -13,6 +13,12 @@ namespace Pulumi.Cloudflare.Inputs
     public sealed class AccessApplicationSaasAppGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// The lifetime of the Access Token after creation. Valid units are `m` and `h`. Must be greater than or equal to 1m and less than or equal to 24h.
+        /// </summary>
+        [Input("accessTokenLifetime")]
+        public Input<string>? AccessTokenLifetime { get; set; }
+
+        /// <summary>
         /// Allow PKCE flow without a client secret.
         /// </summary>
         [Input("allowPkceWithoutClientSecret")]

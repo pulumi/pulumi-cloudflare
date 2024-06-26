@@ -217,9 +217,21 @@ public final class ZoneSettingsOverrideSettingsArgs extends com.pulumi.resources
         return Optional.ofNullable(this.mirage);
     }
 
+    /**
+     * @deprecated
+     * Mobile redirects has been deprecated and disabled in favour of [Single Redirects](https://developers.cloudflare.com/rules/url-forwarding/single-redirects/) and are no longer configurable using the API. Refer to [Perform mobile redirects](https://developers.cloudflare.com/rules/url-forwarding/single-redirects/examples/#perform-mobile-redirects) for examples of performing mobile redirects with Single Redirects.
+     * 
+     */
+    @Deprecated /* Mobile redirects has been deprecated and disabled in favour of [Single Redirects](https://developers.cloudflare.com/rules/url-forwarding/single-redirects/) and are no longer configurable using the API. Refer to [Perform mobile redirects](https://developers.cloudflare.com/rules/url-forwarding/single-redirects/examples/#perform-mobile-redirects) for examples of performing mobile redirects with Single Redirects. */
     @Import(name="mobileRedirect")
     private @Nullable Output<ZoneSettingsOverrideSettingsMobileRedirectArgs> mobileRedirect;
 
+    /**
+     * @deprecated
+     * Mobile redirects has been deprecated and disabled in favour of [Single Redirects](https://developers.cloudflare.com/rules/url-forwarding/single-redirects/) and are no longer configurable using the API. Refer to [Perform mobile redirects](https://developers.cloudflare.com/rules/url-forwarding/single-redirects/examples/#perform-mobile-redirects) for examples of performing mobile redirects with Single Redirects.
+     * 
+     */
+    @Deprecated /* Mobile redirects has been deprecated and disabled in favour of [Single Redirects](https://developers.cloudflare.com/rules/url-forwarding/single-redirects/) and are no longer configurable using the API. Refer to [Perform mobile redirects](https://developers.cloudflare.com/rules/url-forwarding/single-redirects/examples/#perform-mobile-redirects) for examples of performing mobile redirects with Single Redirects. */
     public Optional<Output<ZoneSettingsOverrideSettingsMobileRedirectArgs>> mobileRedirect() {
         return Optional.ofNullable(this.mobileRedirect);
     }
@@ -768,11 +780,27 @@ public final class ZoneSettingsOverrideSettingsArgs extends com.pulumi.resources
             return mirage(Output.of(mirage));
         }
 
+        /**
+         * @return builder
+         * 
+         * @deprecated
+         * Mobile redirects has been deprecated and disabled in favour of [Single Redirects](https://developers.cloudflare.com/rules/url-forwarding/single-redirects/) and are no longer configurable using the API. Refer to [Perform mobile redirects](https://developers.cloudflare.com/rules/url-forwarding/single-redirects/examples/#perform-mobile-redirects) for examples of performing mobile redirects with Single Redirects.
+         * 
+         */
+        @Deprecated /* Mobile redirects has been deprecated and disabled in favour of [Single Redirects](https://developers.cloudflare.com/rules/url-forwarding/single-redirects/) and are no longer configurable using the API. Refer to [Perform mobile redirects](https://developers.cloudflare.com/rules/url-forwarding/single-redirects/examples/#perform-mobile-redirects) for examples of performing mobile redirects with Single Redirects. */
         public Builder mobileRedirect(@Nullable Output<ZoneSettingsOverrideSettingsMobileRedirectArgs> mobileRedirect) {
             $.mobileRedirect = mobileRedirect;
             return this;
         }
 
+        /**
+         * @return builder
+         * 
+         * @deprecated
+         * Mobile redirects has been deprecated and disabled in favour of [Single Redirects](https://developers.cloudflare.com/rules/url-forwarding/single-redirects/) and are no longer configurable using the API. Refer to [Perform mobile redirects](https://developers.cloudflare.com/rules/url-forwarding/single-redirects/examples/#perform-mobile-redirects) for examples of performing mobile redirects with Single Redirects.
+         * 
+         */
+        @Deprecated /* Mobile redirects has been deprecated and disabled in favour of [Single Redirects](https://developers.cloudflare.com/rules/url-forwarding/single-redirects/) and are no longer configurable using the API. Refer to [Perform mobile redirects](https://developers.cloudflare.com/rules/url-forwarding/single-redirects/examples/#perform-mobile-redirects) for examples of performing mobile redirects with Single Redirects. */
         public Builder mobileRedirect(ZoneSettingsOverrideSettingsMobileRedirectArgs mobileRedirect) {
             return mobileRedirect(Output.of(mobileRedirect));
         }

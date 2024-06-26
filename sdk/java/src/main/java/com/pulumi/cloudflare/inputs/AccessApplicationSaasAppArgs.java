@@ -22,6 +22,21 @@ public final class AccessApplicationSaasAppArgs extends com.pulumi.resources.Res
     public static final AccessApplicationSaasAppArgs Empty = new AccessApplicationSaasAppArgs();
 
     /**
+     * The lifetime of the Access Token after creation. Valid units are `m` and `h`. Must be greater than or equal to 1m and less than or equal to 24h.
+     * 
+     */
+    @Import(name="accessTokenLifetime")
+    private @Nullable Output<String> accessTokenLifetime;
+
+    /**
+     * @return The lifetime of the Access Token after creation. Valid units are `m` and `h`. Must be greater than or equal to 1m and less than or equal to 24h.
+     * 
+     */
+    public Optional<Output<String>> accessTokenLifetime() {
+        return Optional.ofNullable(this.accessTokenLifetime);
+    }
+
+    /**
      * Allow PKCE flow without a client secret.
      * 
      */
@@ -354,6 +369,7 @@ public final class AccessApplicationSaasAppArgs extends com.pulumi.resources.Res
     private AccessApplicationSaasAppArgs() {}
 
     private AccessApplicationSaasAppArgs(AccessApplicationSaasAppArgs $) {
+        this.accessTokenLifetime = $.accessTokenLifetime;
         this.allowPkceWithoutClientSecret = $.allowPkceWithoutClientSecret;
         this.appLauncherUrl = $.appLauncherUrl;
         this.authType = $.authType;
@@ -394,6 +410,27 @@ public final class AccessApplicationSaasAppArgs extends com.pulumi.resources.Res
 
         public Builder(AccessApplicationSaasAppArgs defaults) {
             $ = new AccessApplicationSaasAppArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param accessTokenLifetime The lifetime of the Access Token after creation. Valid units are `m` and `h`. Must be greater than or equal to 1m and less than or equal to 24h.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder accessTokenLifetime(@Nullable Output<String> accessTokenLifetime) {
+            $.accessTokenLifetime = accessTokenLifetime;
+            return this;
+        }
+
+        /**
+         * @param accessTokenLifetime The lifetime of the Access Token after creation. Valid units are `m` and `h`. Must be greater than or equal to 1m and less than or equal to 24h.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder accessTokenLifetime(String accessTokenLifetime) {
+            return accessTokenLifetime(Output.of(accessTokenLifetime));
         }
 
         /**

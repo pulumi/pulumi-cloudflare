@@ -14,6 +14,10 @@ namespace Pulumi.Cloudflare.Outputs
     public sealed class AccessApplicationSaasApp
     {
         /// <summary>
+        /// The lifetime of the Access Token after creation. Valid units are `m` and `h`. Must be greater than or equal to 1m and less than or equal to 24h.
+        /// </summary>
+        public readonly string? AccessTokenLifetime;
+        /// <summary>
         /// Allow PKCE flow without a client secret.
         /// </summary>
         public readonly bool? AllowPkceWithoutClientSecret;
@@ -104,6 +108,8 @@ namespace Pulumi.Cloudflare.Outputs
 
         [OutputConstructor]
         private AccessApplicationSaasApp(
+            string? accessTokenLifetime,
+
             bool? allowPkceWithoutClientSecret,
 
             string? appLauncherUrl,
@@ -148,6 +154,7 @@ namespace Pulumi.Cloudflare.Outputs
 
             string? ssoEndpoint)
         {
+            AccessTokenLifetime = accessTokenLifetime;
             AllowPkceWithoutClientSecret = allowPkceWithoutClientSecret;
             AppLauncherUrl = appLauncherUrl;
             AuthType = authType;

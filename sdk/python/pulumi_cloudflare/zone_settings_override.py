@@ -178,7 +178,7 @@ class ZoneSettingsOverride(pulumi.CustomResource):
         import pulumi_cloudflare as cloudflare
 
         test = cloudflare.ZoneSettingsOverride("test",
-            zone_id=d41d8cd98f00b204e9800998ecf8427e,
+            zone_id="0da42c8d2132a9ddaf714f9e7c920711",
             settings=cloudflare.ZoneSettingsOverrideSettingsArgs(
                 brotli="on",
                 challenge_ttl=2700,
@@ -234,7 +234,7 @@ class ZoneSettingsOverride(pulumi.CustomResource):
         import pulumi_cloudflare as cloudflare
 
         test = cloudflare.ZoneSettingsOverride("test",
-            zone_id=d41d8cd98f00b204e9800998ecf8427e,
+            zone_id="0da42c8d2132a9ddaf714f9e7c920711",
             settings=cloudflare.ZoneSettingsOverrideSettingsArgs(
                 brotli="on",
                 challenge_ttl=2700,
