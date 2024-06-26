@@ -16,14 +16,14 @@ public final class AccessApplicationSaasAppRefreshTokenOptionArgs extends com.pu
     public static final AccessApplicationSaasAppRefreshTokenOptionArgs Empty = new AccessApplicationSaasAppRefreshTokenOptionArgs();
 
     /**
-     * How long a refresh token will be valid for after creation. Valid units are m,h,d. Must be longer than 1m.
+     * How long a refresh token will be valid for after creation. Valid units are `m`, `h` and `d`. Must be longer than 1m.
      * 
      */
     @Import(name="lifetime")
     private @Nullable Output<String> lifetime;
 
     /**
-     * @return How long a refresh token will be valid for after creation. Valid units are m,h,d. Must be longer than 1m.
+     * @return How long a refresh token will be valid for after creation. Valid units are `m`, `h` and `d`. Must be longer than 1m.
      * 
      */
     public Optional<Output<String>> lifetime() {
@@ -55,7 +55,7 @@ public final class AccessApplicationSaasAppRefreshTokenOptionArgs extends com.pu
         }
 
         /**
-         * @param lifetime How long a refresh token will be valid for after creation. Valid units are m,h,d. Must be longer than 1m.
+         * @param lifetime How long a refresh token will be valid for after creation. Valid units are `m`, `h` and `d`. Must be longer than 1m.
          * 
          * @return builder
          * 
@@ -66,7 +66,7 @@ public final class AccessApplicationSaasAppRefreshTokenOptionArgs extends com.pu
         }
 
         /**
-         * @param lifetime How long a refresh token will be valid for after creation. Valid units are m,h,d. Must be longer than 1m.
+         * @param lifetime How long a refresh token will be valid for after creation. Valid units are `m`, `h` and `d`. Must be longer than 1m.
          * 
          * @return builder
          * 

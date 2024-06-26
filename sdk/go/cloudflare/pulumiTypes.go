@@ -493,6 +493,8 @@ func (o AccessApplicationLandingPageDesignPtrOutput) Title() pulumi.StringPtrOut
 }
 
 type AccessApplicationSaasApp struct {
+	// The lifetime of the Access Token after creation. Valid units are `m` and `h`. Must be greater than or equal to 1m and less than or equal to 24h.
+	AccessTokenLifetime *string `pulumi:"accessTokenLifetime"`
 	// Allow PKCE flow without a client secret.
 	AllowPkceWithoutClientSecret *bool `pulumi:"allowPkceWithoutClientSecret"`
 	// The URL where this applications tile redirects users.
@@ -551,6 +553,8 @@ type AccessApplicationSaasAppInput interface {
 }
 
 type AccessApplicationSaasAppArgs struct {
+	// The lifetime of the Access Token after creation. Valid units are `m` and `h`. Must be greater than or equal to 1m and less than or equal to 24h.
+	AccessTokenLifetime pulumi.StringPtrInput `pulumi:"accessTokenLifetime"`
 	// Allow PKCE flow without a client secret.
 	AllowPkceWithoutClientSecret pulumi.BoolPtrInput `pulumi:"allowPkceWithoutClientSecret"`
 	// The URL where this applications tile redirects users.
@@ -672,6 +676,11 @@ func (o AccessApplicationSaasAppOutput) ToAccessApplicationSaasAppPtrOutputWithC
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v AccessApplicationSaasApp) *AccessApplicationSaasApp {
 		return &v
 	}).(AccessApplicationSaasAppPtrOutput)
+}
+
+// The lifetime of the Access Token after creation. Valid units are `m` and `h`. Must be greater than or equal to 1m and less than or equal to 24h.
+func (o AccessApplicationSaasAppOutput) AccessTokenLifetime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AccessApplicationSaasApp) *string { return v.AccessTokenLifetime }).(pulumi.StringPtrOutput)
 }
 
 // Allow PKCE flow without a client secret.
@@ -810,6 +819,16 @@ func (o AccessApplicationSaasAppPtrOutput) Elem() AccessApplicationSaasAppOutput
 		var ret AccessApplicationSaasApp
 		return ret
 	}).(AccessApplicationSaasAppOutput)
+}
+
+// The lifetime of the Access Token after creation. Valid units are `m` and `h`. Must be greater than or equal to 1m and less than or equal to 24h.
+func (o AccessApplicationSaasAppPtrOutput) AccessTokenLifetime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccessApplicationSaasApp) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AccessTokenLifetime
+	}).(pulumi.StringPtrOutput)
 }
 
 // Allow PKCE flow without a client secret.
@@ -1568,7 +1587,7 @@ func (o AccessApplicationSaasAppHybridAndImplicitOptionsPtrOutput) ReturnIdToken
 }
 
 type AccessApplicationSaasAppRefreshTokenOption struct {
-	// How long a refresh token will be valid for after creation. Valid units are m,h,d. Must be longer than 1m.
+	// How long a refresh token will be valid for after creation. Valid units are `m`, `h` and `d`. Must be longer than 1m.
 	Lifetime *string `pulumi:"lifetime"`
 }
 
@@ -1584,7 +1603,7 @@ type AccessApplicationSaasAppRefreshTokenOptionInput interface {
 }
 
 type AccessApplicationSaasAppRefreshTokenOptionArgs struct {
-	// How long a refresh token will be valid for after creation. Valid units are m,h,d. Must be longer than 1m.
+	// How long a refresh token will be valid for after creation. Valid units are `m`, `h` and `d`. Must be longer than 1m.
 	Lifetime pulumi.StringPtrInput `pulumi:"lifetime"`
 }
 
@@ -1639,7 +1658,7 @@ func (o AccessApplicationSaasAppRefreshTokenOptionOutput) ToAccessApplicationSaa
 	return o
 }
 
-// How long a refresh token will be valid for after creation. Valid units are m,h,d. Must be longer than 1m.
+// How long a refresh token will be valid for after creation. Valid units are `m`, `h` and `d`. Must be longer than 1m.
 func (o AccessApplicationSaasAppRefreshTokenOptionOutput) Lifetime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AccessApplicationSaasAppRefreshTokenOption) *string { return v.Lifetime }).(pulumi.StringPtrOutput)
 }
@@ -40479,34 +40498,35 @@ func (o ZoneLockdownConfigurationArrayOutput) Index(i pulumi.IntInput) ZoneLockd
 }
 
 type ZoneSettingsOverrideInitialSetting struct {
-	AlwaysOnline            *string                                           `pulumi:"alwaysOnline"`
-	AlwaysUseHttps          *string                                           `pulumi:"alwaysUseHttps"`
-	AutomaticHttpsRewrites  *string                                           `pulumi:"automaticHttpsRewrites"`
-	BinaryAst               *string                                           `pulumi:"binaryAst"`
-	Brotli                  *string                                           `pulumi:"brotli"`
-	BrowserCacheTtl         *int                                              `pulumi:"browserCacheTtl"`
-	BrowserCheck            *string                                           `pulumi:"browserCheck"`
-	CacheLevel              *string                                           `pulumi:"cacheLevel"`
-	ChallengeTtl            *int                                              `pulumi:"challengeTtl"`
-	Ciphers                 []string                                          `pulumi:"ciphers"`
-	CnameFlattening         *string                                           `pulumi:"cnameFlattening"`
-	DevelopmentMode         *string                                           `pulumi:"developmentMode"`
-	EarlyHints              *string                                           `pulumi:"earlyHints"`
-	EmailObfuscation        *string                                           `pulumi:"emailObfuscation"`
-	FilterLogsToCloudflare  *string                                           `pulumi:"filterLogsToCloudflare"`
-	Fonts                   *string                                           `pulumi:"fonts"`
-	H2Prioritization        *string                                           `pulumi:"h2Prioritization"`
-	HotlinkProtection       *string                                           `pulumi:"hotlinkProtection"`
-	Http2                   *string                                           `pulumi:"http2"`
-	Http3                   *string                                           `pulumi:"http3"`
-	ImageResizing           *string                                           `pulumi:"imageResizing"`
-	IpGeolocation           *string                                           `pulumi:"ipGeolocation"`
-	Ipv6                    *string                                           `pulumi:"ipv6"`
-	LogToCloudflare         *string                                           `pulumi:"logToCloudflare"`
-	MaxUpload               *int                                              `pulumi:"maxUpload"`
-	MinTlsVersion           *string                                           `pulumi:"minTlsVersion"`
-	Minify                  *ZoneSettingsOverrideInitialSettingMinify         `pulumi:"minify"`
-	Mirage                  *string                                           `pulumi:"mirage"`
+	AlwaysOnline           *string                                   `pulumi:"alwaysOnline"`
+	AlwaysUseHttps         *string                                   `pulumi:"alwaysUseHttps"`
+	AutomaticHttpsRewrites *string                                   `pulumi:"automaticHttpsRewrites"`
+	BinaryAst              *string                                   `pulumi:"binaryAst"`
+	Brotli                 *string                                   `pulumi:"brotli"`
+	BrowserCacheTtl        *int                                      `pulumi:"browserCacheTtl"`
+	BrowserCheck           *string                                   `pulumi:"browserCheck"`
+	CacheLevel             *string                                   `pulumi:"cacheLevel"`
+	ChallengeTtl           *int                                      `pulumi:"challengeTtl"`
+	Ciphers                []string                                  `pulumi:"ciphers"`
+	CnameFlattening        *string                                   `pulumi:"cnameFlattening"`
+	DevelopmentMode        *string                                   `pulumi:"developmentMode"`
+	EarlyHints             *string                                   `pulumi:"earlyHints"`
+	EmailObfuscation       *string                                   `pulumi:"emailObfuscation"`
+	FilterLogsToCloudflare *string                                   `pulumi:"filterLogsToCloudflare"`
+	Fonts                  *string                                   `pulumi:"fonts"`
+	H2Prioritization       *string                                   `pulumi:"h2Prioritization"`
+	HotlinkProtection      *string                                   `pulumi:"hotlinkProtection"`
+	Http2                  *string                                   `pulumi:"http2"`
+	Http3                  *string                                   `pulumi:"http3"`
+	ImageResizing          *string                                   `pulumi:"imageResizing"`
+	IpGeolocation          *string                                   `pulumi:"ipGeolocation"`
+	Ipv6                   *string                                   `pulumi:"ipv6"`
+	LogToCloudflare        *string                                   `pulumi:"logToCloudflare"`
+	MaxUpload              *int                                      `pulumi:"maxUpload"`
+	MinTlsVersion          *string                                   `pulumi:"minTlsVersion"`
+	Minify                 *ZoneSettingsOverrideInitialSettingMinify `pulumi:"minify"`
+	Mirage                 *string                                   `pulumi:"mirage"`
+	// Deprecated: Mobile redirects has been deprecated and disabled in favour of [Single Redirects](https://developers.cloudflare.com/rules/url-forwarding/single-redirects/) and are no longer configurable using the API. Refer to [Perform mobile redirects](https://developers.cloudflare.com/rules/url-forwarding/single-redirects/examples/#perform-mobile-redirects) for examples of performing mobile redirects with Single Redirects.
 	MobileRedirect          *ZoneSettingsOverrideInitialSettingMobileRedirect `pulumi:"mobileRedirect"`
 	Nel                     *ZoneSettingsOverrideInitialSettingNel            `pulumi:"nel"`
 	OpportunisticEncryption *string                                           `pulumi:"opportunisticEncryption"`
@@ -40551,34 +40571,35 @@ type ZoneSettingsOverrideInitialSettingInput interface {
 }
 
 type ZoneSettingsOverrideInitialSettingArgs struct {
-	AlwaysOnline            pulumi.StringPtrInput                                    `pulumi:"alwaysOnline"`
-	AlwaysUseHttps          pulumi.StringPtrInput                                    `pulumi:"alwaysUseHttps"`
-	AutomaticHttpsRewrites  pulumi.StringPtrInput                                    `pulumi:"automaticHttpsRewrites"`
-	BinaryAst               pulumi.StringPtrInput                                    `pulumi:"binaryAst"`
-	Brotli                  pulumi.StringPtrInput                                    `pulumi:"brotli"`
-	BrowserCacheTtl         pulumi.IntPtrInput                                       `pulumi:"browserCacheTtl"`
-	BrowserCheck            pulumi.StringPtrInput                                    `pulumi:"browserCheck"`
-	CacheLevel              pulumi.StringPtrInput                                    `pulumi:"cacheLevel"`
-	ChallengeTtl            pulumi.IntPtrInput                                       `pulumi:"challengeTtl"`
-	Ciphers                 pulumi.StringArrayInput                                  `pulumi:"ciphers"`
-	CnameFlattening         pulumi.StringPtrInput                                    `pulumi:"cnameFlattening"`
-	DevelopmentMode         pulumi.StringPtrInput                                    `pulumi:"developmentMode"`
-	EarlyHints              pulumi.StringPtrInput                                    `pulumi:"earlyHints"`
-	EmailObfuscation        pulumi.StringPtrInput                                    `pulumi:"emailObfuscation"`
-	FilterLogsToCloudflare  pulumi.StringPtrInput                                    `pulumi:"filterLogsToCloudflare"`
-	Fonts                   pulumi.StringPtrInput                                    `pulumi:"fonts"`
-	H2Prioritization        pulumi.StringPtrInput                                    `pulumi:"h2Prioritization"`
-	HotlinkProtection       pulumi.StringPtrInput                                    `pulumi:"hotlinkProtection"`
-	Http2                   pulumi.StringPtrInput                                    `pulumi:"http2"`
-	Http3                   pulumi.StringPtrInput                                    `pulumi:"http3"`
-	ImageResizing           pulumi.StringPtrInput                                    `pulumi:"imageResizing"`
-	IpGeolocation           pulumi.StringPtrInput                                    `pulumi:"ipGeolocation"`
-	Ipv6                    pulumi.StringPtrInput                                    `pulumi:"ipv6"`
-	LogToCloudflare         pulumi.StringPtrInput                                    `pulumi:"logToCloudflare"`
-	MaxUpload               pulumi.IntPtrInput                                       `pulumi:"maxUpload"`
-	MinTlsVersion           pulumi.StringPtrInput                                    `pulumi:"minTlsVersion"`
-	Minify                  ZoneSettingsOverrideInitialSettingMinifyPtrInput         `pulumi:"minify"`
-	Mirage                  pulumi.StringPtrInput                                    `pulumi:"mirage"`
+	AlwaysOnline           pulumi.StringPtrInput                            `pulumi:"alwaysOnline"`
+	AlwaysUseHttps         pulumi.StringPtrInput                            `pulumi:"alwaysUseHttps"`
+	AutomaticHttpsRewrites pulumi.StringPtrInput                            `pulumi:"automaticHttpsRewrites"`
+	BinaryAst              pulumi.StringPtrInput                            `pulumi:"binaryAst"`
+	Brotli                 pulumi.StringPtrInput                            `pulumi:"brotli"`
+	BrowserCacheTtl        pulumi.IntPtrInput                               `pulumi:"browserCacheTtl"`
+	BrowserCheck           pulumi.StringPtrInput                            `pulumi:"browserCheck"`
+	CacheLevel             pulumi.StringPtrInput                            `pulumi:"cacheLevel"`
+	ChallengeTtl           pulumi.IntPtrInput                               `pulumi:"challengeTtl"`
+	Ciphers                pulumi.StringArrayInput                          `pulumi:"ciphers"`
+	CnameFlattening        pulumi.StringPtrInput                            `pulumi:"cnameFlattening"`
+	DevelopmentMode        pulumi.StringPtrInput                            `pulumi:"developmentMode"`
+	EarlyHints             pulumi.StringPtrInput                            `pulumi:"earlyHints"`
+	EmailObfuscation       pulumi.StringPtrInput                            `pulumi:"emailObfuscation"`
+	FilterLogsToCloudflare pulumi.StringPtrInput                            `pulumi:"filterLogsToCloudflare"`
+	Fonts                  pulumi.StringPtrInput                            `pulumi:"fonts"`
+	H2Prioritization       pulumi.StringPtrInput                            `pulumi:"h2Prioritization"`
+	HotlinkProtection      pulumi.StringPtrInput                            `pulumi:"hotlinkProtection"`
+	Http2                  pulumi.StringPtrInput                            `pulumi:"http2"`
+	Http3                  pulumi.StringPtrInput                            `pulumi:"http3"`
+	ImageResizing          pulumi.StringPtrInput                            `pulumi:"imageResizing"`
+	IpGeolocation          pulumi.StringPtrInput                            `pulumi:"ipGeolocation"`
+	Ipv6                   pulumi.StringPtrInput                            `pulumi:"ipv6"`
+	LogToCloudflare        pulumi.StringPtrInput                            `pulumi:"logToCloudflare"`
+	MaxUpload              pulumi.IntPtrInput                               `pulumi:"maxUpload"`
+	MinTlsVersion          pulumi.StringPtrInput                            `pulumi:"minTlsVersion"`
+	Minify                 ZoneSettingsOverrideInitialSettingMinifyPtrInput `pulumi:"minify"`
+	Mirage                 pulumi.StringPtrInput                            `pulumi:"mirage"`
+	// Deprecated: Mobile redirects has been deprecated and disabled in favour of [Single Redirects](https://developers.cloudflare.com/rules/url-forwarding/single-redirects/) and are no longer configurable using the API. Refer to [Perform mobile redirects](https://developers.cloudflare.com/rules/url-forwarding/single-redirects/examples/#perform-mobile-redirects) for examples of performing mobile redirects with Single Redirects.
 	MobileRedirect          ZoneSettingsOverrideInitialSettingMobileRedirectPtrInput `pulumi:"mobileRedirect"`
 	Nel                     ZoneSettingsOverrideInitialSettingNelPtrInput            `pulumi:"nel"`
 	OpportunisticEncryption pulumi.StringPtrInput                                    `pulumi:"opportunisticEncryption"`
@@ -40774,6 +40795,7 @@ func (o ZoneSettingsOverrideInitialSettingOutput) Mirage() pulumi.StringPtrOutpu
 	return o.ApplyT(func(v ZoneSettingsOverrideInitialSetting) *string { return v.Mirage }).(pulumi.StringPtrOutput)
 }
 
+// Deprecated: Mobile redirects has been deprecated and disabled in favour of [Single Redirects](https://developers.cloudflare.com/rules/url-forwarding/single-redirects/) and are no longer configurable using the API. Refer to [Perform mobile redirects](https://developers.cloudflare.com/rules/url-forwarding/single-redirects/examples/#perform-mobile-redirects) for examples of performing mobile redirects with Single Redirects.
 func (o ZoneSettingsOverrideInitialSettingOutput) MobileRedirect() ZoneSettingsOverrideInitialSettingMobileRedirectPtrOutput {
 	return o.ApplyT(func(v ZoneSettingsOverrideInitialSetting) *ZoneSettingsOverrideInitialSettingMobileRedirect {
 		return v.MobileRedirect
@@ -41568,34 +41590,35 @@ func (o ZoneSettingsOverrideInitialSettingSecurityHeaderPtrOutput) Preload() pul
 }
 
 type ZoneSettingsOverrideSettings struct {
-	AlwaysOnline            *string                                     `pulumi:"alwaysOnline"`
-	AlwaysUseHttps          *string                                     `pulumi:"alwaysUseHttps"`
-	AutomaticHttpsRewrites  *string                                     `pulumi:"automaticHttpsRewrites"`
-	BinaryAst               *string                                     `pulumi:"binaryAst"`
-	Brotli                  *string                                     `pulumi:"brotli"`
-	BrowserCacheTtl         *int                                        `pulumi:"browserCacheTtl"`
-	BrowserCheck            *string                                     `pulumi:"browserCheck"`
-	CacheLevel              *string                                     `pulumi:"cacheLevel"`
-	ChallengeTtl            *int                                        `pulumi:"challengeTtl"`
-	Ciphers                 []string                                    `pulumi:"ciphers"`
-	CnameFlattening         *string                                     `pulumi:"cnameFlattening"`
-	DevelopmentMode         *string                                     `pulumi:"developmentMode"`
-	EarlyHints              *string                                     `pulumi:"earlyHints"`
-	EmailObfuscation        *string                                     `pulumi:"emailObfuscation"`
-	FilterLogsToCloudflare  *string                                     `pulumi:"filterLogsToCloudflare"`
-	Fonts                   *string                                     `pulumi:"fonts"`
-	H2Prioritization        *string                                     `pulumi:"h2Prioritization"`
-	HotlinkProtection       *string                                     `pulumi:"hotlinkProtection"`
-	Http2                   *string                                     `pulumi:"http2"`
-	Http3                   *string                                     `pulumi:"http3"`
-	ImageResizing           *string                                     `pulumi:"imageResizing"`
-	IpGeolocation           *string                                     `pulumi:"ipGeolocation"`
-	Ipv6                    *string                                     `pulumi:"ipv6"`
-	LogToCloudflare         *string                                     `pulumi:"logToCloudflare"`
-	MaxUpload               *int                                        `pulumi:"maxUpload"`
-	MinTlsVersion           *string                                     `pulumi:"minTlsVersion"`
-	Minify                  *ZoneSettingsOverrideSettingsMinify         `pulumi:"minify"`
-	Mirage                  *string                                     `pulumi:"mirage"`
+	AlwaysOnline           *string                             `pulumi:"alwaysOnline"`
+	AlwaysUseHttps         *string                             `pulumi:"alwaysUseHttps"`
+	AutomaticHttpsRewrites *string                             `pulumi:"automaticHttpsRewrites"`
+	BinaryAst              *string                             `pulumi:"binaryAst"`
+	Brotli                 *string                             `pulumi:"brotli"`
+	BrowserCacheTtl        *int                                `pulumi:"browserCacheTtl"`
+	BrowserCheck           *string                             `pulumi:"browserCheck"`
+	CacheLevel             *string                             `pulumi:"cacheLevel"`
+	ChallengeTtl           *int                                `pulumi:"challengeTtl"`
+	Ciphers                []string                            `pulumi:"ciphers"`
+	CnameFlattening        *string                             `pulumi:"cnameFlattening"`
+	DevelopmentMode        *string                             `pulumi:"developmentMode"`
+	EarlyHints             *string                             `pulumi:"earlyHints"`
+	EmailObfuscation       *string                             `pulumi:"emailObfuscation"`
+	FilterLogsToCloudflare *string                             `pulumi:"filterLogsToCloudflare"`
+	Fonts                  *string                             `pulumi:"fonts"`
+	H2Prioritization       *string                             `pulumi:"h2Prioritization"`
+	HotlinkProtection      *string                             `pulumi:"hotlinkProtection"`
+	Http2                  *string                             `pulumi:"http2"`
+	Http3                  *string                             `pulumi:"http3"`
+	ImageResizing          *string                             `pulumi:"imageResizing"`
+	IpGeolocation          *string                             `pulumi:"ipGeolocation"`
+	Ipv6                   *string                             `pulumi:"ipv6"`
+	LogToCloudflare        *string                             `pulumi:"logToCloudflare"`
+	MaxUpload              *int                                `pulumi:"maxUpload"`
+	MinTlsVersion          *string                             `pulumi:"minTlsVersion"`
+	Minify                 *ZoneSettingsOverrideSettingsMinify `pulumi:"minify"`
+	Mirage                 *string                             `pulumi:"mirage"`
+	// Deprecated: Mobile redirects has been deprecated and disabled in favour of [Single Redirects](https://developers.cloudflare.com/rules/url-forwarding/single-redirects/) and are no longer configurable using the API. Refer to [Perform mobile redirects](https://developers.cloudflare.com/rules/url-forwarding/single-redirects/examples/#perform-mobile-redirects) for examples of performing mobile redirects with Single Redirects.
 	MobileRedirect          *ZoneSettingsOverrideSettingsMobileRedirect `pulumi:"mobileRedirect"`
 	Nel                     *ZoneSettingsOverrideSettingsNel            `pulumi:"nel"`
 	OpportunisticEncryption *string                                     `pulumi:"opportunisticEncryption"`
@@ -41640,34 +41663,35 @@ type ZoneSettingsOverrideSettingsInput interface {
 }
 
 type ZoneSettingsOverrideSettingsArgs struct {
-	AlwaysOnline            pulumi.StringPtrInput                              `pulumi:"alwaysOnline"`
-	AlwaysUseHttps          pulumi.StringPtrInput                              `pulumi:"alwaysUseHttps"`
-	AutomaticHttpsRewrites  pulumi.StringPtrInput                              `pulumi:"automaticHttpsRewrites"`
-	BinaryAst               pulumi.StringPtrInput                              `pulumi:"binaryAst"`
-	Brotli                  pulumi.StringPtrInput                              `pulumi:"brotli"`
-	BrowserCacheTtl         pulumi.IntPtrInput                                 `pulumi:"browserCacheTtl"`
-	BrowserCheck            pulumi.StringPtrInput                              `pulumi:"browserCheck"`
-	CacheLevel              pulumi.StringPtrInput                              `pulumi:"cacheLevel"`
-	ChallengeTtl            pulumi.IntPtrInput                                 `pulumi:"challengeTtl"`
-	Ciphers                 pulumi.StringArrayInput                            `pulumi:"ciphers"`
-	CnameFlattening         pulumi.StringPtrInput                              `pulumi:"cnameFlattening"`
-	DevelopmentMode         pulumi.StringPtrInput                              `pulumi:"developmentMode"`
-	EarlyHints              pulumi.StringPtrInput                              `pulumi:"earlyHints"`
-	EmailObfuscation        pulumi.StringPtrInput                              `pulumi:"emailObfuscation"`
-	FilterLogsToCloudflare  pulumi.StringPtrInput                              `pulumi:"filterLogsToCloudflare"`
-	Fonts                   pulumi.StringPtrInput                              `pulumi:"fonts"`
-	H2Prioritization        pulumi.StringPtrInput                              `pulumi:"h2Prioritization"`
-	HotlinkProtection       pulumi.StringPtrInput                              `pulumi:"hotlinkProtection"`
-	Http2                   pulumi.StringPtrInput                              `pulumi:"http2"`
-	Http3                   pulumi.StringPtrInput                              `pulumi:"http3"`
-	ImageResizing           pulumi.StringPtrInput                              `pulumi:"imageResizing"`
-	IpGeolocation           pulumi.StringPtrInput                              `pulumi:"ipGeolocation"`
-	Ipv6                    pulumi.StringPtrInput                              `pulumi:"ipv6"`
-	LogToCloudflare         pulumi.StringPtrInput                              `pulumi:"logToCloudflare"`
-	MaxUpload               pulumi.IntPtrInput                                 `pulumi:"maxUpload"`
-	MinTlsVersion           pulumi.StringPtrInput                              `pulumi:"minTlsVersion"`
-	Minify                  ZoneSettingsOverrideSettingsMinifyPtrInput         `pulumi:"minify"`
-	Mirage                  pulumi.StringPtrInput                              `pulumi:"mirage"`
+	AlwaysOnline           pulumi.StringPtrInput                      `pulumi:"alwaysOnline"`
+	AlwaysUseHttps         pulumi.StringPtrInput                      `pulumi:"alwaysUseHttps"`
+	AutomaticHttpsRewrites pulumi.StringPtrInput                      `pulumi:"automaticHttpsRewrites"`
+	BinaryAst              pulumi.StringPtrInput                      `pulumi:"binaryAst"`
+	Brotli                 pulumi.StringPtrInput                      `pulumi:"brotli"`
+	BrowserCacheTtl        pulumi.IntPtrInput                         `pulumi:"browserCacheTtl"`
+	BrowserCheck           pulumi.StringPtrInput                      `pulumi:"browserCheck"`
+	CacheLevel             pulumi.StringPtrInput                      `pulumi:"cacheLevel"`
+	ChallengeTtl           pulumi.IntPtrInput                         `pulumi:"challengeTtl"`
+	Ciphers                pulumi.StringArrayInput                    `pulumi:"ciphers"`
+	CnameFlattening        pulumi.StringPtrInput                      `pulumi:"cnameFlattening"`
+	DevelopmentMode        pulumi.StringPtrInput                      `pulumi:"developmentMode"`
+	EarlyHints             pulumi.StringPtrInput                      `pulumi:"earlyHints"`
+	EmailObfuscation       pulumi.StringPtrInput                      `pulumi:"emailObfuscation"`
+	FilterLogsToCloudflare pulumi.StringPtrInput                      `pulumi:"filterLogsToCloudflare"`
+	Fonts                  pulumi.StringPtrInput                      `pulumi:"fonts"`
+	H2Prioritization       pulumi.StringPtrInput                      `pulumi:"h2Prioritization"`
+	HotlinkProtection      pulumi.StringPtrInput                      `pulumi:"hotlinkProtection"`
+	Http2                  pulumi.StringPtrInput                      `pulumi:"http2"`
+	Http3                  pulumi.StringPtrInput                      `pulumi:"http3"`
+	ImageResizing          pulumi.StringPtrInput                      `pulumi:"imageResizing"`
+	IpGeolocation          pulumi.StringPtrInput                      `pulumi:"ipGeolocation"`
+	Ipv6                   pulumi.StringPtrInput                      `pulumi:"ipv6"`
+	LogToCloudflare        pulumi.StringPtrInput                      `pulumi:"logToCloudflare"`
+	MaxUpload              pulumi.IntPtrInput                         `pulumi:"maxUpload"`
+	MinTlsVersion          pulumi.StringPtrInput                      `pulumi:"minTlsVersion"`
+	Minify                 ZoneSettingsOverrideSettingsMinifyPtrInput `pulumi:"minify"`
+	Mirage                 pulumi.StringPtrInput                      `pulumi:"mirage"`
+	// Deprecated: Mobile redirects has been deprecated and disabled in favour of [Single Redirects](https://developers.cloudflare.com/rules/url-forwarding/single-redirects/) and are no longer configurable using the API. Refer to [Perform mobile redirects](https://developers.cloudflare.com/rules/url-forwarding/single-redirects/examples/#perform-mobile-redirects) for examples of performing mobile redirects with Single Redirects.
 	MobileRedirect          ZoneSettingsOverrideSettingsMobileRedirectPtrInput `pulumi:"mobileRedirect"`
 	Nel                     ZoneSettingsOverrideSettingsNelPtrInput            `pulumi:"nel"`
 	OpportunisticEncryption pulumi.StringPtrInput                              `pulumi:"opportunisticEncryption"`
@@ -41889,6 +41913,7 @@ func (o ZoneSettingsOverrideSettingsOutput) Mirage() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ZoneSettingsOverrideSettings) *string { return v.Mirage }).(pulumi.StringPtrOutput)
 }
 
+// Deprecated: Mobile redirects has been deprecated and disabled in favour of [Single Redirects](https://developers.cloudflare.com/rules/url-forwarding/single-redirects/) and are no longer configurable using the API. Refer to [Perform mobile redirects](https://developers.cloudflare.com/rules/url-forwarding/single-redirects/examples/#perform-mobile-redirects) for examples of performing mobile redirects with Single Redirects.
 func (o ZoneSettingsOverrideSettingsOutput) MobileRedirect() ZoneSettingsOverrideSettingsMobileRedirectPtrOutput {
 	return o.ApplyT(func(v ZoneSettingsOverrideSettings) *ZoneSettingsOverrideSettingsMobileRedirect {
 		return v.MobileRedirect
@@ -42286,6 +42311,7 @@ func (o ZoneSettingsOverrideSettingsPtrOutput) Mirage() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Deprecated: Mobile redirects has been deprecated and disabled in favour of [Single Redirects](https://developers.cloudflare.com/rules/url-forwarding/single-redirects/) and are no longer configurable using the API. Refer to [Perform mobile redirects](https://developers.cloudflare.com/rules/url-forwarding/single-redirects/examples/#perform-mobile-redirects) for examples of performing mobile redirects with Single Redirects.
 func (o ZoneSettingsOverrideSettingsPtrOutput) MobileRedirect() ZoneSettingsOverrideSettingsMobileRedirectPtrOutput {
 	return o.ApplyT(func(v *ZoneSettingsOverrideSettings) *ZoneSettingsOverrideSettingsMobileRedirect {
 		if v == nil {

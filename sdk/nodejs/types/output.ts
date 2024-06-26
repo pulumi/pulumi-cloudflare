@@ -76,6 +76,10 @@ export interface AccessApplicationLandingPageDesign {
 
 export interface AccessApplicationSaasApp {
     /**
+     * The lifetime of the Access Token after creation. Valid units are `m` and `h`. Must be greater than or equal to 1m and less than or equal to 24h.
+     */
+    accessTokenLifetime?: string;
+    /**
      * Allow PKCE flow without a client secret.
      */
     allowPkceWithoutClientSecret?: boolean;
@@ -236,7 +240,7 @@ export interface AccessApplicationSaasAppHybridAndImplicitOptions {
 
 export interface AccessApplicationSaasAppRefreshTokenOption {
     /**
-     * How long a refresh token will be valid for after creation. Valid units are m,h,d. Must be longer than 1m.
+     * How long a refresh token will be valid for after creation. Valid units are `m`, `h` and `d`. Must be longer than 1m.
      */
     lifetime?: string;
 }
@@ -5586,6 +5590,9 @@ export interface ZoneSettingsOverrideInitialSetting {
     minTlsVersion: string;
     minify: outputs.ZoneSettingsOverrideInitialSettingMinify;
     mirage: string;
+    /**
+     * @deprecated Mobile redirects has been deprecated and disabled in favour of [Single Redirects](https://developers.cloudflare.com/rules/url-forwarding/single-redirects/) and are no longer configurable using the API. Refer to [Perform mobile redirects](https://developers.cloudflare.com/rules/url-forwarding/single-redirects/examples/#perform-mobile-redirects) for examples of performing mobile redirects with Single Redirects.
+     */
     mobileRedirect: outputs.ZoneSettingsOverrideInitialSettingMobileRedirect;
     nel: outputs.ZoneSettingsOverrideInitialSettingNel;
     opportunisticEncryption: string;
@@ -5673,6 +5680,9 @@ export interface ZoneSettingsOverrideSettings {
     minTlsVersion: string;
     minify: outputs.ZoneSettingsOverrideSettingsMinify;
     mirage: string;
+    /**
+     * @deprecated Mobile redirects has been deprecated and disabled in favour of [Single Redirects](https://developers.cloudflare.com/rules/url-forwarding/single-redirects/) and are no longer configurable using the API. Refer to [Perform mobile redirects](https://developers.cloudflare.com/rules/url-forwarding/single-redirects/examples/#perform-mobile-redirects) for examples of performing mobile redirects with Single Redirects.
+     */
     mobileRedirect: outputs.ZoneSettingsOverrideSettingsMobileRedirect;
     nel: outputs.ZoneSettingsOverrideSettingsNel;
     opportunisticEncryption: string;

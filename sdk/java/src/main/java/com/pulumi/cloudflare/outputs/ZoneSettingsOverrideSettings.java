@@ -45,6 +45,12 @@ public final class ZoneSettingsOverrideSettings {
     private @Nullable String minTlsVersion;
     private @Nullable ZoneSettingsOverrideSettingsMinify minify;
     private @Nullable String mirage;
+    /**
+     * @deprecated
+     * Mobile redirects has been deprecated and disabled in favour of [Single Redirects](https://developers.cloudflare.com/rules/url-forwarding/single-redirects/) and are no longer configurable using the API. Refer to [Perform mobile redirects](https://developers.cloudflare.com/rules/url-forwarding/single-redirects/examples/#perform-mobile-redirects) for examples of performing mobile redirects with Single Redirects.
+     * 
+     */
+    @Deprecated /* Mobile redirects has been deprecated and disabled in favour of [Single Redirects](https://developers.cloudflare.com/rules/url-forwarding/single-redirects/) and are no longer configurable using the API. Refer to [Perform mobile redirects](https://developers.cloudflare.com/rules/url-forwarding/single-redirects/examples/#perform-mobile-redirects) for examples of performing mobile redirects with Single Redirects. */
     private @Nullable ZoneSettingsOverrideSettingsMobileRedirect mobileRedirect;
     private @Nullable ZoneSettingsOverrideSettingsNel nel;
     private @Nullable String opportunisticEncryption;
@@ -166,6 +172,12 @@ public final class ZoneSettingsOverrideSettings {
     public Optional<String> mirage() {
         return Optional.ofNullable(this.mirage);
     }
+    /**
+     * @deprecated
+     * Mobile redirects has been deprecated and disabled in favour of [Single Redirects](https://developers.cloudflare.com/rules/url-forwarding/single-redirects/) and are no longer configurable using the API. Refer to [Perform mobile redirects](https://developers.cloudflare.com/rules/url-forwarding/single-redirects/examples/#perform-mobile-redirects) for examples of performing mobile redirects with Single Redirects.
+     * 
+     */
+    @Deprecated /* Mobile redirects has been deprecated and disabled in favour of [Single Redirects](https://developers.cloudflare.com/rules/url-forwarding/single-redirects/) and are no longer configurable using the API. Refer to [Perform mobile redirects](https://developers.cloudflare.com/rules/url-forwarding/single-redirects/examples/#perform-mobile-redirects) for examples of performing mobile redirects with Single Redirects. */
     public Optional<ZoneSettingsOverrideSettingsMobileRedirect> mobileRedirect() {
         return Optional.ofNullable(this.mobileRedirect);
     }

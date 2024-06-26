@@ -12,14 +12,14 @@ import javax.annotation.Nullable;
 @CustomType
 public final class AccessApplicationSaasAppRefreshTokenOption {
     /**
-     * @return How long a refresh token will be valid for after creation. Valid units are m,h,d. Must be longer than 1m.
+     * @return How long a refresh token will be valid for after creation. Valid units are `m`, `h` and `d`. Must be longer than 1m.
      * 
      */
     private @Nullable String lifetime;
 
     private AccessApplicationSaasAppRefreshTokenOption() {}
     /**
-     * @return How long a refresh token will be valid for after creation. Valid units are m,h,d. Must be longer than 1m.
+     * @return How long a refresh token will be valid for after creation. Valid units are `m`, `h` and `d`. Must be longer than 1m.
      * 
      */
     public Optional<String> lifetime() {

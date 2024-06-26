@@ -13,7 +13,7 @@ namespace Pulumi.Cloudflare.Inputs
     public sealed class AccessApplicationSaasAppRefreshTokenOptionArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// How long a refresh token will be valid for after creation. Valid units are m,h,d. Must be longer than 1m.
+        /// How long a refresh token will be valid for after creation. Valid units are `m`, `h` and `d`. Must be longer than 1m.
         /// </summary>
         [Input("lifetime")]
         public Input<string>? Lifetime { get; set; }

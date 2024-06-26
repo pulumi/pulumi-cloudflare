@@ -46,7 +46,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudflare.NewZoneSettingsOverride(ctx, "test", &cloudflare.ZoneSettingsOverrideArgs{
-//				ZoneId: pulumi.Any(d41d8cd98f00b204e9800998ecf8427e),
+//				ZoneId: pulumi.String("0da42c8d2132a9ddaf714f9e7c920711"),
 //				Settings: &cloudflare.ZoneSettingsOverrideSettingsArgs{
 //					Brotli:                  pulumi.String("on"),
 //					ChallengeTtl:            pulumi.Int(2700),

@@ -580,7 +580,9 @@ class AccessApplicationSaasApp(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "allowPkceWithoutClientSecret":
+        if key == "accessTokenLifetime":
+            suggest = "access_token_lifetime"
+        elif key == "allowPkceWithoutClientSecret":
             suggest = "allow_pkce_without_client_secret"
         elif key == "appLauncherUrl":
             suggest = "app_launcher_url"
@@ -635,6 +637,7 @@ class AccessApplicationSaasApp(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 access_token_lifetime: Optional[str] = None,
                  allow_pkce_without_client_secret: Optional[bool] = None,
                  app_launcher_url: Optional[str] = None,
                  auth_type: Optional[str] = None,
@@ -658,6 +661,7 @@ class AccessApplicationSaasApp(dict):
                  sp_entity_id: Optional[str] = None,
                  sso_endpoint: Optional[str] = None):
         """
+        :param str access_token_lifetime: The lifetime of the Access Token after creation. Valid units are `m` and `h`. Must be greater than or equal to 1m and less than or equal to 24h.
         :param bool allow_pkce_without_client_secret: Allow PKCE flow without a client secret.
         :param str app_launcher_url: The URL where this applications tile redirects users.
         :param str auth_type: **Modifying this attribute will force creation of a new resource.**
@@ -681,6 +685,8 @@ class AccessApplicationSaasApp(dict):
         :param str sp_entity_id: A globally unique name for an identity or service provider.
         :param str sso_endpoint: The endpoint where the SaaS application will send login requests.
         """
+        if access_token_lifetime is not None:
+            pulumi.set(__self__, "access_token_lifetime", access_token_lifetime)
         if allow_pkce_without_client_secret is not None:
             pulumi.set(__self__, "allow_pkce_without_client_secret", allow_pkce_without_client_secret)
         if app_launcher_url is not None:
@@ -725,6 +731,14 @@ class AccessApplicationSaasApp(dict):
             pulumi.set(__self__, "sp_entity_id", sp_entity_id)
         if sso_endpoint is not None:
             pulumi.set(__self__, "sso_endpoint", sso_endpoint)
+
+    @property
+    @pulumi.getter(name="accessTokenLifetime")
+    def access_token_lifetime(self) -> Optional[str]:
+        """
+        The lifetime of the Access Token after creation. Valid units are `m` and `h`. Must be greater than or equal to 1m and less than or equal to 24h.
+        """
+        return pulumi.get(self, "access_token_lifetime")
 
     @property
     @pulumi.getter(name="allowPkceWithoutClientSecret")
@@ -1183,7 +1197,7 @@ class AccessApplicationSaasAppRefreshTokenOption(dict):
     def __init__(__self__, *,
                  lifetime: Optional[str] = None):
         """
-        :param str lifetime: How long a refresh token will be valid for after creation. Valid units are m,h,d. Must be longer than 1m.
+        :param str lifetime: How long a refresh token will be valid for after creation. Valid units are `m`, `h` and `d`. Must be longer than 1m.
         """
         if lifetime is not None:
             pulumi.set(__self__, "lifetime", lifetime)
@@ -1192,7 +1206,7 @@ class AccessApplicationSaasAppRefreshTokenOption(dict):
     @pulumi.getter
     def lifetime(self) -> Optional[str]:
         """
-        How long a refresh token will be valid for after creation. Valid units are m,h,d. Must be longer than 1m.
+        How long a refresh token will be valid for after creation. Valid units are `m`, `h` and `d`. Must be longer than 1m.
         """
         return pulumi.get(self, "lifetime")
 
@@ -18526,6 +18540,7 @@ class ZoneSettingsOverrideInitialSetting(dict):
 
     @property
     @pulumi.getter(name="mobileRedirect")
+    @_utilities.deprecated("""Mobile redirects has been deprecated and disabled in favour of [Single Redirects](https://developers.cloudflare.com/rules/url-forwarding/single-redirects/) and are no longer configurable using the API. Refer to [Perform mobile redirects](https://developers.cloudflare.com/rules/url-forwarding/single-redirects/examples/#perform-mobile-redirects) for examples of performing mobile redirects with Single Redirects.""")
     def mobile_redirect(self) -> Optional['outputs.ZoneSettingsOverrideInitialSettingMobileRedirect']:
         return pulumi.get(self, "mobile_redirect")
 
@@ -19234,6 +19249,7 @@ class ZoneSettingsOverrideSettings(dict):
 
     @property
     @pulumi.getter(name="mobileRedirect")
+    @_utilities.deprecated("""Mobile redirects has been deprecated and disabled in favour of [Single Redirects](https://developers.cloudflare.com/rules/url-forwarding/single-redirects/) and are no longer configurable using the API. Refer to [Perform mobile redirects](https://developers.cloudflare.com/rules/url-forwarding/single-redirects/examples/#perform-mobile-redirects) for examples of performing mobile redirects with Single Redirects.""")
     def mobile_redirect(self) -> Optional['outputs.ZoneSettingsOverrideSettingsMobileRedirect']:
         return pulumi.get(self, "mobile_redirect")
 

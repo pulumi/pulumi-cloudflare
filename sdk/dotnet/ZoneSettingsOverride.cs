@@ -40,7 +40,7 @@ namespace Pulumi.Cloudflare
     /// {
     ///     var test = new Cloudflare.ZoneSettingsOverride("test", new()
     ///     {
-    ///         ZoneId = d41d8cd98f00b204e9800998ecf8427e,
+    ///         ZoneId = "0da42c8d2132a9ddaf714f9e7c920711",
     ///         Settings = new Cloudflare.Inputs.ZoneSettingsOverrideSettingsArgs
     ///         {
     ///             Brotli = "on",

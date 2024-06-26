@@ -18,6 +18,11 @@ import javax.annotation.Nullable;
 @CustomType
 public final class AccessApplicationSaasApp {
     /**
+     * @return The lifetime of the Access Token after creation. Valid units are `m` and `h`. Must be greater than or equal to 1m and less than or equal to 24h.
+     * 
+     */
+    private @Nullable String accessTokenLifetime;
+    /**
      * @return Allow PKCE flow without a client secret.
      * 
      */
@@ -129,6 +134,13 @@ public final class AccessApplicationSaasApp {
     private @Nullable String ssoEndpoint;
 
     private AccessApplicationSaasApp() {}
+    /**
+     * @return The lifetime of the Access Token after creation. Valid units are `m` and `h`. Must be greater than or equal to 1m and less than or equal to 24h.
+     * 
+     */
+    public Optional<String> accessTokenLifetime() {
+        return Optional.ofNullable(this.accessTokenLifetime);
+    }
     /**
      * @return Allow PKCE flow without a client secret.
      * 
@@ -293,6 +305,7 @@ public final class AccessApplicationSaasApp {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable String accessTokenLifetime;
         private @Nullable Boolean allowPkceWithoutClientSecret;
         private @Nullable String appLauncherUrl;
         private @Nullable String authType;
@@ -318,6 +331,7 @@ public final class AccessApplicationSaasApp {
         public Builder() {}
         public Builder(AccessApplicationSaasApp defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.accessTokenLifetime = defaults.accessTokenLifetime;
     	      this.allowPkceWithoutClientSecret = defaults.allowPkceWithoutClientSecret;
     	      this.appLauncherUrl = defaults.appLauncherUrl;
     	      this.authType = defaults.authType;
@@ -342,6 +356,12 @@ public final class AccessApplicationSaasApp {
     	      this.ssoEndpoint = defaults.ssoEndpoint;
         }
 
+        @CustomType.Setter
+        public Builder accessTokenLifetime(@Nullable String accessTokenLifetime) {
+
+            this.accessTokenLifetime = accessTokenLifetime;
+            return this;
+        }
         @CustomType.Setter
         public Builder allowPkceWithoutClientSecret(@Nullable Boolean allowPkceWithoutClientSecret) {
 
@@ -494,6 +514,7 @@ public final class AccessApplicationSaasApp {
         }
         public AccessApplicationSaasApp build() {
             final var _resultValue = new AccessApplicationSaasApp();
+            _resultValue.accessTokenLifetime = accessTokenLifetime;
             _resultValue.allowPkceWithoutClientSecret = allowPkceWithoutClientSecret;
             _resultValue.appLauncherUrl = appLauncherUrl;
             _resultValue.authType = authType;
