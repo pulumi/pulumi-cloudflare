@@ -52,7 +52,7 @@ type R2Bucket struct {
 
 	// The account identifier to target for the resource.
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
-	// The location hint of the R2 bucket.
+	// The location hint of the R2 bucket. Available values: `WNAM`, `ENAM`, `WEUR`, `EEUR`, `APAC`
 	Location pulumi.StringOutput `pulumi:"location"`
 	// The name of the R2 bucket.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -96,7 +96,7 @@ func GetR2Bucket(ctx *pulumi.Context,
 type r2bucketState struct {
 	// The account identifier to target for the resource.
 	AccountId *string `pulumi:"accountId"`
-	// The location hint of the R2 bucket.
+	// The location hint of the R2 bucket. Available values: `WNAM`, `ENAM`, `WEUR`, `EEUR`, `APAC`
 	Location *string `pulumi:"location"`
 	// The name of the R2 bucket.
 	Name *string `pulumi:"name"`
@@ -105,7 +105,7 @@ type r2bucketState struct {
 type R2BucketState struct {
 	// The account identifier to target for the resource.
 	AccountId pulumi.StringPtrInput
-	// The location hint of the R2 bucket.
+	// The location hint of the R2 bucket. Available values: `WNAM`, `ENAM`, `WEUR`, `EEUR`, `APAC`
 	Location pulumi.StringPtrInput
 	// The name of the R2 bucket.
 	Name pulumi.StringPtrInput
@@ -118,7 +118,7 @@ func (R2BucketState) ElementType() reflect.Type {
 type r2bucketArgs struct {
 	// The account identifier to target for the resource.
 	AccountId string `pulumi:"accountId"`
-	// The location hint of the R2 bucket.
+	// The location hint of the R2 bucket. Available values: `WNAM`, `ENAM`, `WEUR`, `EEUR`, `APAC`
 	Location *string `pulumi:"location"`
 	// The name of the R2 bucket.
 	Name string `pulumi:"name"`
@@ -128,7 +128,7 @@ type r2bucketArgs struct {
 type R2BucketArgs struct {
 	// The account identifier to target for the resource.
 	AccountId pulumi.StringInput
-	// The location hint of the R2 bucket.
+	// The location hint of the R2 bucket. Available values: `WNAM`, `ENAM`, `WEUR`, `EEUR`, `APAC`
 	Location pulumi.StringPtrInput
 	// The name of the R2 bucket.
 	Name pulumi.StringInput
@@ -226,7 +226,7 @@ func (o R2BucketOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v *R2Bucket) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
 }
 
-// The location hint of the R2 bucket.
+// The location hint of the R2 bucket. Available values: `WNAM`, `ENAM`, `WEUR`, `EEUR`, `APAC`
 func (o R2BucketOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *R2Bucket) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }

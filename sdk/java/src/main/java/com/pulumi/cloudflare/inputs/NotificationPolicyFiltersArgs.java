@@ -474,6 +474,21 @@ public final class NotificationPolicyFiltersArgs extends com.pulumi.resources.Re
     }
 
     /**
+     * Tunnel Names to alert on.
+     * 
+     */
+    @Import(name="tunnelNames")
+    private @Nullable Output<List<String>> tunnelNames;
+
+    /**
+     * @return Tunnel Names to alert on.
+     * 
+     */
+    public Optional<Output<List<String>>> tunnelNames() {
+        return Optional.ofNullable(this.tunnelNames);
+    }
+
+    /**
      * Filter for alert.
      * 
      */
@@ -537,6 +552,7 @@ public final class NotificationPolicyFiltersArgs extends com.pulumi.resources.Re
         this.targetIps = $.targetIps;
         this.targetZoneNames = $.targetZoneNames;
         this.tunnelIds = $.tunnelIds;
+        this.tunnelNames = $.tunnelNames;
         this.wheres = $.wheres;
         this.zones = $.zones;
     }
@@ -1500,6 +1516,37 @@ public final class NotificationPolicyFiltersArgs extends com.pulumi.resources.Re
          */
         public Builder tunnelIds(String... tunnelIds) {
             return tunnelIds(List.of(tunnelIds));
+        }
+
+        /**
+         * @param tunnelNames Tunnel Names to alert on.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tunnelNames(@Nullable Output<List<String>> tunnelNames) {
+            $.tunnelNames = tunnelNames;
+            return this;
+        }
+
+        /**
+         * @param tunnelNames Tunnel Names to alert on.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tunnelNames(List<String> tunnelNames) {
+            return tunnelNames(Output.of(tunnelNames));
+        }
+
+        /**
+         * @param tunnelNames Tunnel Names to alert on.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tunnelNames(String... tunnelNames) {
+            return tunnelNames(List.of(tunnelNames));
         }
 
         /**

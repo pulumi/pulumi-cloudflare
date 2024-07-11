@@ -3265,6 +3265,10 @@ export interface NotificationPolicyFilters {
      */
     tunnelIds?: string[];
     /**
+     * Tunnel Names to alert on.
+     */
+    tunnelNames?: string[];
+    /**
      * Filter for alert.
      */
     wheres?: string[];

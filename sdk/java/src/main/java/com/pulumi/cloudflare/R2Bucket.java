@@ -77,14 +77,14 @@ public class R2Bucket extends com.pulumi.resources.CustomResource {
         return this.accountId;
     }
     /**
-     * The location hint of the R2 bucket.
+     * The location hint of the R2 bucket. Available values: `WNAM`, `ENAM`, `WEUR`, `EEUR`, `APAC`
      * 
      */
     @Export(name="location", refs={String.class}, tree="[0]")
     private Output<String> location;
 
     /**
-     * @return The location hint of the R2 bucket.
+     * @return The location hint of the R2 bucket. Available values: `WNAM`, `ENAM`, `WEUR`, `EEUR`, `APAC`
      * 
      */
     public Output<String> location() {

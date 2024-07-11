@@ -163,6 +163,11 @@ public final class NotificationPolicyFilters {
      */
     private @Nullable List<String> tunnelIds;
     /**
+     * @return Tunnel Names to alert on.
+     * 
+     */
+    private @Nullable List<String> tunnelNames;
+    /**
      * @return Filter for alert.
      * 
      */
@@ -388,6 +393,13 @@ public final class NotificationPolicyFilters {
         return this.tunnelIds == null ? List.of() : this.tunnelIds;
     }
     /**
+     * @return Tunnel Names to alert on.
+     * 
+     */
+    public List<String> tunnelNames() {
+        return this.tunnelNames == null ? List.of() : this.tunnelNames;
+    }
+    /**
      * @return Filter for alert.
      * 
      */
@@ -442,6 +454,7 @@ public final class NotificationPolicyFilters {
         private @Nullable List<String> targetIps;
         private @Nullable List<String> targetZoneNames;
         private @Nullable List<String> tunnelIds;
+        private @Nullable List<String> tunnelNames;
         private @Nullable List<String> wheres;
         private @Nullable List<String> zones;
         public Builder() {}
@@ -478,6 +491,7 @@ public final class NotificationPolicyFilters {
     	      this.targetIps = defaults.targetIps;
     	      this.targetZoneNames = defaults.targetZoneNames;
     	      this.tunnelIds = defaults.tunnelIds;
+    	      this.tunnelNames = defaults.tunnelNames;
     	      this.wheres = defaults.wheres;
     	      this.zones = defaults.zones;
         }
@@ -762,6 +776,15 @@ public final class NotificationPolicyFilters {
             return tunnelIds(List.of(tunnelIds));
         }
         @CustomType.Setter
+        public Builder tunnelNames(@Nullable List<String> tunnelNames) {
+
+            this.tunnelNames = tunnelNames;
+            return this;
+        }
+        public Builder tunnelNames(String... tunnelNames) {
+            return tunnelNames(List.of(tunnelNames));
+        }
+        @CustomType.Setter
         public Builder wheres(@Nullable List<String> wheres) {
 
             this.wheres = wheres;
@@ -812,6 +835,7 @@ public final class NotificationPolicyFilters {
             _resultValue.targetIps = targetIps;
             _resultValue.targetZoneNames = targetZoneNames;
             _resultValue.tunnelIds = tunnelIds;
+            _resultValue.tunnelNames = tunnelNames;
             _resultValue.wheres = wheres;
             _resultValue.zones = zones;
             return _resultValue;

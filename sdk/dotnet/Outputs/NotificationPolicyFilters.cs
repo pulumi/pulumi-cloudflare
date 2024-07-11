@@ -135,6 +135,10 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly ImmutableArray<string> TunnelIds;
         /// <summary>
+        /// Tunnel Names to alert on.
+        /// </summary>
+        public readonly ImmutableArray<string> TunnelNames;
+        /// <summary>
         /// Filter for alert.
         /// </summary>
         public readonly ImmutableArray<string> Wheres;
@@ -207,6 +211,8 @@ namespace Pulumi.Cloudflare.Outputs
 
             ImmutableArray<string> tunnelIds,
 
+            ImmutableArray<string> tunnelNames,
+
             ImmutableArray<string> wheres,
 
             ImmutableArray<string> zones)
@@ -242,6 +248,7 @@ namespace Pulumi.Cloudflare.Outputs
             TargetIps = targetIps;
             TargetZoneNames = targetZoneNames;
             TunnelIds = tunnelIds;
+            TunnelNames = tunnelNames;
             Wheres = wheres;
             Zones = zones;
         }
