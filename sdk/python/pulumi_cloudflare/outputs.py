@@ -9566,6 +9566,8 @@ class NotificationPolicyFilters(dict):
             suggest = "target_zone_names"
         elif key == "tunnelIds":
             suggest = "tunnel_ids"
+        elif key == "tunnelNames":
+            suggest = "tunnel_names"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in NotificationPolicyFilters. Access the value via the '{suggest}' property getter instead.")
@@ -9610,6 +9612,7 @@ class NotificationPolicyFilters(dict):
                  target_ips: Optional[Sequence[str]] = None,
                  target_zone_names: Optional[Sequence[str]] = None,
                  tunnel_ids: Optional[Sequence[str]] = None,
+                 tunnel_names: Optional[Sequence[str]] = None,
                  wheres: Optional[Sequence[str]] = None,
                  zones: Optional[Sequence[str]] = None):
         """
@@ -9643,6 +9646,7 @@ class NotificationPolicyFilters(dict):
         :param Sequence[str] target_ips: Target ip to alert on for dos in CIDR notation.
         :param Sequence[str] target_zone_names: Target domain to alert on.
         :param Sequence[str] tunnel_ids: Tunnel IDs to alert on.
+        :param Sequence[str] tunnel_names: Tunnel Names to alert on.
         :param Sequence[str] wheres: Filter for alert.
         :param Sequence[str] zones: A list of zone identifiers.
         """
@@ -9708,6 +9712,8 @@ class NotificationPolicyFilters(dict):
             pulumi.set(__self__, "target_zone_names", target_zone_names)
         if tunnel_ids is not None:
             pulumi.set(__self__, "tunnel_ids", tunnel_ids)
+        if tunnel_names is not None:
+            pulumi.set(__self__, "tunnel_names", tunnel_names)
         if wheres is not None:
             pulumi.set(__self__, "wheres", wheres)
         if zones is not None:
@@ -9957,6 +9963,14 @@ class NotificationPolicyFilters(dict):
         Tunnel IDs to alert on.
         """
         return pulumi.get(self, "tunnel_ids")
+
+    @property
+    @pulumi.getter(name="tunnelNames")
+    def tunnel_names(self) -> Optional[Sequence[str]]:
+        """
+        Tunnel Names to alert on.
+        """
+        return pulumi.get(self, "tunnel_names")
 
     @property
     @pulumi.getter

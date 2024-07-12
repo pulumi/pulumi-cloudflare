@@ -1519,6 +1519,9 @@
                                 "tunnel_id": {
                                     "maxItemsOne": false
                                 },
+                                "tunnel_name": {
+                                    "maxItemsOne": false
+                                },
                                 "where": {
                                     "maxItemsOne": false
                                 },

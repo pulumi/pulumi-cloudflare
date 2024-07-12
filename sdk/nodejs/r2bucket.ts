@@ -59,7 +59,7 @@ export class R2Bucket extends pulumi.CustomResource {
      */
     public readonly accountId!: pulumi.Output<string>;
     /**
-     * The location hint of the R2 bucket.
+     * The location hint of the R2 bucket. Available values: `WNAM`, `ENAM`, `WEUR`, `EEUR`, `APAC`
      */
     public readonly location!: pulumi.Output<string>;
     /**
@@ -109,7 +109,7 @@ export interface R2BucketState {
      */
     accountId?: pulumi.Input<string>;
     /**
-     * The location hint of the R2 bucket.
+     * The location hint of the R2 bucket. Available values: `WNAM`, `ENAM`, `WEUR`, `EEUR`, `APAC`
      */
     location?: pulumi.Input<string>;
     /**
@@ -127,7 +127,7 @@ export interface R2BucketArgs {
      */
     accountId: pulumi.Input<string>;
     /**
-     * The location hint of the R2 bucket.
+     * The location hint of the R2 bucket. Available values: `WNAM`, `ENAM`, `WEUR`, `EEUR`, `APAC`
      */
     location?: pulumi.Input<string>;
     /**

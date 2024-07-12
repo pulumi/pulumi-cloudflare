@@ -18157,6 +18157,8 @@ type NotificationPolicyFilters struct {
 	TargetZoneNames []string `pulumi:"targetZoneNames"`
 	// Tunnel IDs to alert on.
 	TunnelIds []string `pulumi:"tunnelIds"`
+	// Tunnel Names to alert on.
+	TunnelNames []string `pulumi:"tunnelNames"`
 	// Filter for alert.
 	Wheres []string `pulumi:"wheres"`
 	// A list of zone identifiers.
@@ -18236,6 +18238,8 @@ type NotificationPolicyFiltersArgs struct {
 	TargetZoneNames pulumi.StringArrayInput `pulumi:"targetZoneNames"`
 	// Tunnel IDs to alert on.
 	TunnelIds pulumi.StringArrayInput `pulumi:"tunnelIds"`
+	// Tunnel Names to alert on.
+	TunnelNames pulumi.StringArrayInput `pulumi:"tunnelNames"`
 	// Filter for alert.
 	Wheres pulumi.StringArrayInput `pulumi:"wheres"`
 	// A list of zone identifiers.
@@ -18471,6 +18475,11 @@ func (o NotificationPolicyFiltersOutput) TargetZoneNames() pulumi.StringArrayOut
 // Tunnel IDs to alert on.
 func (o NotificationPolicyFiltersOutput) TunnelIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v NotificationPolicyFilters) []string { return v.TunnelIds }).(pulumi.StringArrayOutput)
+}
+
+// Tunnel Names to alert on.
+func (o NotificationPolicyFiltersOutput) TunnelNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v NotificationPolicyFilters) []string { return v.TunnelNames }).(pulumi.StringArrayOutput)
 }
 
 // Filter for alert.
@@ -18813,6 +18822,16 @@ func (o NotificationPolicyFiltersPtrOutput) TunnelIds() pulumi.StringArrayOutput
 			return nil
 		}
 		return v.TunnelIds
+	}).(pulumi.StringArrayOutput)
+}
+
+// Tunnel Names to alert on.
+func (o NotificationPolicyFiltersPtrOutput) TunnelNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *NotificationPolicyFilters) []string {
+		if v == nil {
+			return nil
+		}
+		return v.TunnelNames
 	}).(pulumi.StringArrayOutput)
 }
 

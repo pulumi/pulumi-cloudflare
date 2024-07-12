@@ -2522,6 +2522,10 @@ export interface NotificationPolicyFilters {
      */
     tunnelIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
+     * Tunnel Names to alert on.
+     */
+    tunnelNames?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
      * Filter for alert.
      */
     wheres?: pulumi.Input<pulumi.Input<string>[]>;

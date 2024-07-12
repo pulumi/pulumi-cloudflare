@@ -21,7 +21,7 @@ class R2BucketArgs:
         The set of arguments for constructing a R2Bucket resource.
         :param pulumi.Input[str] account_id: The account identifier to target for the resource.
         :param pulumi.Input[str] name: The name of the R2 bucket.
-        :param pulumi.Input[str] location: The location hint of the R2 bucket.
+        :param pulumi.Input[str] location: The location hint of the R2 bucket. Available values: `WNAM`, `ENAM`, `WEUR`, `EEUR`, `APAC`
         """
         pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "name", name)
@@ -56,7 +56,7 @@ class R2BucketArgs:
     @pulumi.getter
     def location(self) -> Optional[pulumi.Input[str]]:
         """
-        The location hint of the R2 bucket.
+        The location hint of the R2 bucket. Available values: `WNAM`, `ENAM`, `WEUR`, `EEUR`, `APAC`
         """
         return pulumi.get(self, "location")
 
@@ -74,7 +74,7 @@ class _R2BucketState:
         """
         Input properties used for looking up and filtering R2Bucket resources.
         :param pulumi.Input[str] account_id: The account identifier to target for the resource.
-        :param pulumi.Input[str] location: The location hint of the R2 bucket.
+        :param pulumi.Input[str] location: The location hint of the R2 bucket. Available values: `WNAM`, `ENAM`, `WEUR`, `EEUR`, `APAC`
         :param pulumi.Input[str] name: The name of the R2 bucket.
         """
         if account_id is not None:
@@ -100,7 +100,7 @@ class _R2BucketState:
     @pulumi.getter
     def location(self) -> Optional[pulumi.Input[str]]:
         """
-        The location hint of the R2 bucket.
+        The location hint of the R2 bucket. Available values: `WNAM`, `ENAM`, `WEUR`, `EEUR`, `APAC`
         """
         return pulumi.get(self, "location")
 
@@ -154,7 +154,7 @@ class R2Bucket(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_id: The account identifier to target for the resource.
-        :param pulumi.Input[str] location: The location hint of the R2 bucket.
+        :param pulumi.Input[str] location: The location hint of the R2 bucket. Available values: `WNAM`, `ENAM`, `WEUR`, `EEUR`, `APAC`
         :param pulumi.Input[str] name: The name of the R2 bucket.
         """
         ...
@@ -239,7 +239,7 @@ class R2Bucket(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_id: The account identifier to target for the resource.
-        :param pulumi.Input[str] location: The location hint of the R2 bucket.
+        :param pulumi.Input[str] location: The location hint of the R2 bucket. Available values: `WNAM`, `ENAM`, `WEUR`, `EEUR`, `APAC`
         :param pulumi.Input[str] name: The name of the R2 bucket.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -263,7 +263,7 @@ class R2Bucket(pulumi.CustomResource):
     @pulumi.getter
     def location(self) -> pulumi.Output[str]:
         """
-        The location hint of the R2 bucket.
+        The location hint of the R2 bucket. Available values: `WNAM`, `ENAM`, `WEUR`, `EEUR`, `APAC`
         """
         return pulumi.get(self, "location")
 
