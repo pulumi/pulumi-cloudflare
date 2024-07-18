@@ -21,7 +21,7 @@ import (
 // import (
 //
 //	"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare"
-//	"github.com/pulumi/pulumi-example/sdk/v1/go/example"
+//	"github.com/pulumi/pulumi-example/sdk/go/example"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -32,7 +32,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = index.NewFirewallResource(ctx, "example", &index.FirewallResourceArgs{
+//			_, err = example.NewFirewallResource(ctx, "example", &example.FirewallResourceArgs{
 //				Name:         "from-cloudflare",
 //				Network:      "default",
 //				SourceRanges: cloudflare.Ipv4CidrBlocks,
