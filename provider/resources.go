@@ -126,7 +126,7 @@ func Provider() tfbridge.ProviderInfo {
 			"cloudflare_record": {DeleteBeforeReplace: true},
 
 			"cloudflare_risk_behavior": {ComputeID: delegateID("accountId")},
-			// cloudflare_access_mutual_tls_hostname_settings has no
+			// cloudflare_access_mutual_tls_hostname_settings has no ID or canonical ID field.
 			"cloudflare_access_mutual_tls_hostname_settings": {
 				ComputeID: func(_ context.Context, state resource.PropertyMap) (resource.ID, error) {
 					account, hasAccount := state["accountId"]

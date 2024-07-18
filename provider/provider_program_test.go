@@ -83,7 +83,8 @@ func testProviderUpgradeWithOpts(
 	for k, v := range config {
 		test.SetConfig(k, v)
 	}
-	result := providertest.PreviewProviderUpgrade(test, providerName, baselineVersion, optproviderupgrade.DisableAttach())
+	result := providertest.PreviewProviderUpgrade(t, test, providerName, baselineVersion,
+		optproviderupgrade.DisableAttach())
 	if assertFunction != nil {
 		assertFunction(t, result)
 	} else {
