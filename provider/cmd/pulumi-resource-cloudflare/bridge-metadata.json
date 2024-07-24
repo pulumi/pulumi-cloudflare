@@ -2117,6 +2117,9 @@
                 "fields": {
                     "items": {
                         "maxItemsOne": false
+                    },
+                    "items_with_description": {
+                        "maxItemsOne": false
                     }
                 }
             },
@@ -2621,6 +2624,22 @@
                     }
                 }
             },
+            "cloudflare_gateway_categories": {
+                "current": "cloudflare:index/getGatewayCategories:getGatewayCategories",
+                "majorVersion": 5,
+                "fields": {
+                    "categories": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "subcategories": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
+            },
             "cloudflare_ip_ranges": {
                 "current": "cloudflare:index/getIpRanges:getIpRanges",
                 "majorVersion": 5,
@@ -3119,6 +3138,7 @@
             "cloudflare:index/getDevicePostureRules:getDevicePostureRules": 0,
             "cloudflare:index/getDevices:getDevices": 0,
             "cloudflare:index/getDlpDatasets:getDlpDatasets": 1,
+            "cloudflare:index/getGatewayCategories:getGatewayCategories": 1,
             "cloudflare:index/getIpRanges:getIpRanges": 0,
             "cloudflare:index/getList:getList": 0,
             "cloudflare:index/getLists:getLists": 0,

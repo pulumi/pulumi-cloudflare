@@ -1,16 +1,12 @@
-From ca021ac1f47f1ad92f20e4f0e8f0a4103966d5d2 Mon Sep 17 00:00:00 2001
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
 From: Ian Wahbe <ian@wahbe.com>
 Date: Thu, 11 May 2023 18:11:47 -0700
-Subject: [PATCH 2/2] expose providers
+Subject: [PATCH] expose providers
 
----
- shim/shim.go | 17 +++++++++++++++++
- 1 file changed, 17 insertions(+)
- create mode 100644 shim/shim.go
 
 diff --git a/shim/shim.go b/shim/shim.go
 new file mode 100644
-index 00000000..c0bed505
+index 00000000..15d62e4b
 --- /dev/null
 +++ b/shim/shim.go
 @@ -0,0 +1,17 @@
@@ -31,6 +27,3 @@ index 00000000..c0bed505
 +func PFProvider() provider.Provider {
 +	return pf.New("")()
 +}
--- 
-2.40.1
-

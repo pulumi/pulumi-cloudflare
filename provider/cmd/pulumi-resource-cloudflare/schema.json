@@ -6381,6 +6381,22 @@
                 "publicKey"
             ]
         },
+        "cloudflare:index/TeamsListItemsWithDescription:TeamsListItemsWithDescription": {
+            "properties": {
+                "description": {
+                    "type": "string",
+                    "description": "The description of the teams list.\n"
+                },
+                "value": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "description",
+                "value"
+            ]
+        },
         "cloudflare:index/TeamsLocationNetwork:TeamsLocationNetwork": {
             "properties": {
                 "id": {
@@ -6449,6 +6465,10 @@
                 "egress": {
                     "$ref": "#/types/cloudflare:index/TeamsRuleRuleSettingsEgress:TeamsRuleRuleSettingsEgress",
                     "description": "Configure how Proxy traffic egresses. Can be set for rules with Egress action and Egress filter. Can be omitted to indicate local egress via Warp IPs.\n"
+                },
+                "ignoreCnameCategoryMatches": {
+                    "type": "boolean",
+                    "description": "Set to true, to ignore the category matches at CNAME domains in a response.\n"
                 },
                 "insecureDisableDnssecValidation": {
                     "type": "boolean",
@@ -8094,6 +8114,88 @@
                 }
             }
         },
+        "cloudflare:index/getGatewayCategoriesCategory:getGatewayCategoriesCategory": {
+            "properties": {
+                "beta": {
+                    "type": "boolean",
+                    "description": "True if the category is in beta and subject to change.\n"
+                },
+                "class": {
+                    "type": "string",
+                    "description": "Which account types are allowed to create policies based on this category.\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "A short summary of domains in the category.\n"
+                },
+                "id": {
+                    "type": "integer",
+                    "description": "The identifier for this category. There is only one category per ID.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the category.\n"
+                },
+                "subcategories": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/cloudflare:index/getGatewayCategoriesCategorySubcategory:getGatewayCategoriesCategorySubcategory"
+                    },
+                    "description": "A list of subcategories.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "beta",
+                "class",
+                "description",
+                "id",
+                "name",
+                "subcategories"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "cloudflare:index/getGatewayCategoriesCategorySubcategory:getGatewayCategoriesCategorySubcategory": {
+            "properties": {
+                "beta": {
+                    "type": "boolean",
+                    "description": "True if the subcategory is in beta and subject to change.\n"
+                },
+                "class": {
+                    "type": "string",
+                    "description": "Which account types are allowed to create policies based on this subcategory.\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "A short summary of domains in the subcategory.\n"
+                },
+                "id": {
+                    "type": "integer",
+                    "description": "The identifier for this subcategory. There is only one subcategory per ID.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the subcategory.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "beta",
+                "class",
+                "description",
+                "id",
+                "name"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
         "cloudflare:index/getListsList:getListsList": {
             "properties": {
                 "description": {
@@ -9528,7 +9630,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "The policies associated with the application, in ascending order of precedence. When omitted, the application policies are not be updated. Warning: Do not use this field while you still have this application ID referenced as `application_id` in any `cloudflare.AccessPolicy` resource, as it can result in an inconsistent state.\n"
+                    "description": "The policies associated with the application, in ascending order of precedence. Warning: Do not use this field while you still have this application ID referenced as `application_id` in any `cloudflare.AccessPolicy` resource, as it can result in an inconsistent state.\n"
                 },
                 "saasApp": {
                     "$ref": "#/types/cloudflare:index/AccessApplicationSaasApp:AccessApplicationSaasApp",
@@ -9686,7 +9788,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "The policies associated with the application, in ascending order of precedence. When omitted, the application policies are not be updated. Warning: Do not use this field while you still have this application ID referenced as `application_id` in any `cloudflare.AccessPolicy` resource, as it can result in an inconsistent state.\n"
+                    "description": "The policies associated with the application, in ascending order of precedence. Warning: Do not use this field while you still have this application ID referenced as `application_id` in any `cloudflare.AccessPolicy` resource, as it can result in an inconsistent state.\n"
                 },
                 "saasApp": {
                     "$ref": "#/types/cloudflare:index/AccessApplicationSaasApp:AccessApplicationSaasApp",
@@ -9843,7 +9945,7 @@
                         "items": {
                             "type": "string"
                         },
-                        "description": "The policies associated with the application, in ascending order of precedence. When omitted, the application policies are not be updated. Warning: Do not use this field while you still have this application ID referenced as `application_id` in any `cloudflare.AccessPolicy` resource, as it can result in an inconsistent state.\n"
+                        "description": "The policies associated with the application, in ascending order of precedence. Warning: Do not use this field while you still have this application ID referenced as `application_id` in any `cloudflare.AccessPolicy` resource, as it can result in an inconsistent state.\n"
                     },
                     "saasApp": {
                         "$ref": "#/types/cloudflare:index/AccessApplicationSaasApp:AccessApplicationSaasApp",
@@ -19575,6 +19677,13 @@
                     },
                     "description": "The items of the teams list.\n"
                 },
+                "itemsWithDescriptions": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/cloudflare:index/TeamsListItemsWithDescription:TeamsListItemsWithDescription"
+                    },
+                    "description": "The items of the teams list that has explicit description.\n"
+                },
                 "name": {
                     "type": "string",
                     "description": "Name of the teams list.\n"
@@ -19604,6 +19713,13 @@
                         "type": "string"
                     },
                     "description": "The items of the teams list.\n"
+                },
+                "itemsWithDescriptions": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/cloudflare:index/TeamsListItemsWithDescription:TeamsListItemsWithDescription"
+                    },
+                    "description": "The items of the teams list that has explicit description.\n"
                 },
                 "name": {
                     "type": "string",
@@ -19636,6 +19752,13 @@
                             "type": "string"
                         },
                         "description": "The items of the teams list.\n"
+                    },
+                    "itemsWithDescriptions": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/cloudflare:index/TeamsListItemsWithDescription:TeamsListItemsWithDescription"
+                        },
+                        "description": "The items of the teams list that has explicit description.\n"
                     },
                     "name": {
                         "type": "string",
@@ -23777,6 +23900,48 @@
                 "required": [
                     "accountId",
                     "datasets",
+                    "id"
+                ],
+                "type": "object"
+            }
+        },
+        "cloudflare:index/getGatewayCategories:getGatewayCategories": {
+            "description": "Use this data source to retrieve all Gateway categories for an account.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as cloudflare from \"@pulumi/cloudflare\";\n\nconst example = cloudflare.getGatewayCategories({\n    accountId: \"f037e56e89293a057740de681ac9abbe\",\n});\n```\n```python\nimport pulumi\nimport pulumi_cloudflare as cloudflare\n\nexample = cloudflare.get_gateway_categories(account_id=\"f037e56e89293a057740de681ac9abbe\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Cloudflare = Pulumi.Cloudflare;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = Cloudflare.GetGatewayCategories.Invoke(new()\n    {\n        AccountId = \"f037e56e89293a057740de681ac9abbe\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-cloudflare/sdk/v5/go/cloudflare\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := cloudflare.GetGatewayCategories(ctx, \u0026cloudflare.GetGatewayCategoriesArgs{\n\t\t\tAccountId: \"f037e56e89293a057740de681ac9abbe\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.cloudflare.CloudflareFunctions;\nimport com.pulumi.cloudflare.inputs.GetGatewayCategoriesArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var example = CloudflareFunctions.getGatewayCategories(GetGatewayCategoriesArgs.builder()\n            .accountId(\"f037e56e89293a057740de681ac9abbe\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  example:\n    fn::invoke:\n      Function: cloudflare:getGatewayCategories\n      Arguments:\n        accountId: f037e56e89293a057740de681ac9abbe\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getGatewayCategories.\n",
+                "properties": {
+                    "accountId": {
+                        "type": "string",
+                        "description": "The account ID to fetch Gateway Categories from.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "accountId"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getGatewayCategories.\n",
+                "properties": {
+                    "accountId": {
+                        "description": "The account ID to fetch Gateway Categories from.\n",
+                        "type": "string"
+                    },
+                    "categories": {
+                        "description": "A list of Gateway Categories.\n",
+                        "items": {
+                            "$ref": "#/types/cloudflare:index/getGatewayCategoriesCategory:getGatewayCategoriesCategory"
+                        },
+                        "type": "array"
+                    },
+                    "id": {
+                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "accountId",
+                    "categories",
                     "id"
                 ],
                 "type": "object"
