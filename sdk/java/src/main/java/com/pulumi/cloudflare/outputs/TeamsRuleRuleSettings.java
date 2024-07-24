@@ -74,6 +74,11 @@ public final class TeamsRuleRuleSettings {
      */
     private @Nullable TeamsRuleRuleSettingsEgress egress;
     /**
+     * @return Set to true, to ignore the category matches at CNAME domains in a response.
+     * 
+     */
+    private @Nullable Boolean ignoreCnameCategoryMatches;
+    /**
      * @return Disable DNSSEC validation (must be Allow rule).
      * 
      */
@@ -191,6 +196,13 @@ public final class TeamsRuleRuleSettings {
         return Optional.ofNullable(this.egress);
     }
     /**
+     * @return Set to true, to ignore the category matches at CNAME domains in a response.
+     * 
+     */
+    public Optional<Boolean> ignoreCnameCategoryMatches() {
+        return Optional.ofNullable(this.ignoreCnameCategoryMatches);
+    }
+    /**
      * @return Disable DNSSEC validation (must be Allow rule).
      * 
      */
@@ -273,6 +285,7 @@ public final class TeamsRuleRuleSettings {
         private @Nullable TeamsRuleRuleSettingsCheckSession checkSession;
         private @Nullable TeamsRuleRuleSettingsDnsResolvers dnsResolvers;
         private @Nullable TeamsRuleRuleSettingsEgress egress;
+        private @Nullable Boolean ignoreCnameCategoryMatches;
         private @Nullable Boolean insecureDisableDnssecValidation;
         private @Nullable Boolean ipCategories;
         private @Nullable TeamsRuleRuleSettingsL4override l4override;
@@ -295,6 +308,7 @@ public final class TeamsRuleRuleSettings {
     	      this.checkSession = defaults.checkSession;
     	      this.dnsResolvers = defaults.dnsResolvers;
     	      this.egress = defaults.egress;
+    	      this.ignoreCnameCategoryMatches = defaults.ignoreCnameCategoryMatches;
     	      this.insecureDisableDnssecValidation = defaults.insecureDisableDnssecValidation;
     	      this.ipCategories = defaults.ipCategories;
     	      this.l4override = defaults.l4override;
@@ -367,6 +381,12 @@ public final class TeamsRuleRuleSettings {
             return this;
         }
         @CustomType.Setter
+        public Builder ignoreCnameCategoryMatches(@Nullable Boolean ignoreCnameCategoryMatches) {
+
+            this.ignoreCnameCategoryMatches = ignoreCnameCategoryMatches;
+            return this;
+        }
+        @CustomType.Setter
         public Builder insecureDisableDnssecValidation(@Nullable Boolean insecureDisableDnssecValidation) {
 
             this.insecureDisableDnssecValidation = insecureDisableDnssecValidation;
@@ -435,6 +455,7 @@ public final class TeamsRuleRuleSettings {
             _resultValue.checkSession = checkSession;
             _resultValue.dnsResolvers = dnsResolvers;
             _resultValue.egress = egress;
+            _resultValue.ignoreCnameCategoryMatches = ignoreCnameCategoryMatches;
             _resultValue.insecureDisableDnssecValidation = insecureDisableDnssecValidation;
             _resultValue.ipCategories = ipCategories;
             _resultValue.l4override = l4override;

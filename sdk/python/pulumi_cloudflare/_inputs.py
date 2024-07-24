@@ -226,6 +226,7 @@ __all__ = [
     'TeamsAccountPayloadLogArgs',
     'TeamsAccountProxyArgs',
     'TeamsAccountSshSessionLogArgs',
+    'TeamsListItemsWithDescriptionArgs',
     'TeamsLocationNetworkArgs',
     'TeamsRuleRuleSettingsArgs',
     'TeamsRuleRuleSettingsAuditSshArgs',
@@ -16604,6 +16605,39 @@ class TeamsAccountSshSessionLogArgs:
 
 
 @pulumi.input_type
+class TeamsListItemsWithDescriptionArgs:
+    def __init__(__self__, *,
+                 description: pulumi.Input[str],
+                 value: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] description: The description of the teams list.
+        """
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> pulumi.Input[str]:
+        """
+        The description of the teams list.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: pulumi.Input[str]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: pulumi.Input[str]):
+        pulumi.set(self, "value", value)
+
+
+@pulumi.input_type
 class TeamsLocationNetworkArgs:
     def __init__(__self__, *,
                  network: pulumi.Input[str],
@@ -16654,6 +16688,7 @@ class TeamsRuleRuleSettingsArgs:
                  check_session: Optional[pulumi.Input['TeamsRuleRuleSettingsCheckSessionArgs']] = None,
                  dns_resolvers: Optional[pulumi.Input['TeamsRuleRuleSettingsDnsResolversArgs']] = None,
                  egress: Optional[pulumi.Input['TeamsRuleRuleSettingsEgressArgs']] = None,
+                 ignore_cname_category_matches: Optional[pulumi.Input[bool]] = None,
                  insecure_disable_dnssec_validation: Optional[pulumi.Input[bool]] = None,
                  ip_categories: Optional[pulumi.Input[bool]] = None,
                  l4override: Optional[pulumi.Input['TeamsRuleRuleSettingsL4overrideArgs']] = None,
@@ -16674,6 +16709,7 @@ class TeamsRuleRuleSettingsArgs:
         :param pulumi.Input['TeamsRuleRuleSettingsCheckSessionArgs'] check_session: Configure how session check behaves.
         :param pulumi.Input['TeamsRuleRuleSettingsDnsResolversArgs'] dns_resolvers: Add your own custom resolvers to route queries that match the resolver policy. Cannot be used when resolve*dns*through*cloudflare is set. DNS queries will route to the address closest to their origin.
         :param pulumi.Input['TeamsRuleRuleSettingsEgressArgs'] egress: Configure how Proxy traffic egresses. Can be set for rules with Egress action and Egress filter. Can be omitted to indicate local egress via Warp IPs.
+        :param pulumi.Input[bool] ignore_cname_category_matches: Set to true, to ignore the category matches at CNAME domains in a response.
         :param pulumi.Input[bool] insecure_disable_dnssec_validation: Disable DNSSEC validation (must be Allow rule).
         :param pulumi.Input[bool] ip_categories: Turns on IP category based filter on dns if the rule contains dns category checks.
         :param pulumi.Input['TeamsRuleRuleSettingsL4overrideArgs'] l4override: Settings to forward layer 4 traffic.
@@ -16704,6 +16740,8 @@ class TeamsRuleRuleSettingsArgs:
             pulumi.set(__self__, "dns_resolvers", dns_resolvers)
         if egress is not None:
             pulumi.set(__self__, "egress", egress)
+        if ignore_cname_category_matches is not None:
+            pulumi.set(__self__, "ignore_cname_category_matches", ignore_cname_category_matches)
         if insecure_disable_dnssec_validation is not None:
             pulumi.set(__self__, "insecure_disable_dnssec_validation", insecure_disable_dnssec_validation)
         if ip_categories is not None:
@@ -16842,6 +16880,18 @@ class TeamsRuleRuleSettingsArgs:
     @egress.setter
     def egress(self, value: Optional[pulumi.Input['TeamsRuleRuleSettingsEgressArgs']]):
         pulumi.set(self, "egress", value)
+
+    @property
+    @pulumi.getter(name="ignoreCnameCategoryMatches")
+    def ignore_cname_category_matches(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Set to true, to ignore the category matches at CNAME domains in a response.
+        """
+        return pulumi.get(self, "ignore_cname_category_matches")
+
+    @ignore_cname_category_matches.setter
+    def ignore_cname_category_matches(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "ignore_cname_category_matches", value)
 
     @property
     @pulumi.getter(name="insecureDisableDnssecValidation")

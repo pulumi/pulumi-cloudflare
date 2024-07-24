@@ -3,6 +3,7 @@
 
 package com.pulumi.cloudflare;
 
+import com.pulumi.cloudflare.inputs.TeamsListItemsWithDescriptionArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
@@ -63,6 +64,21 @@ public final class TeamsListArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The items of the teams list that has explicit description.
+     * 
+     */
+    @Import(name="itemsWithDescriptions")
+    private @Nullable Output<List<TeamsListItemsWithDescriptionArgs>> itemsWithDescriptions;
+
+    /**
+     * @return The items of the teams list that has explicit description.
+     * 
+     */
+    public Optional<Output<List<TeamsListItemsWithDescriptionArgs>>> itemsWithDescriptions() {
+        return Optional.ofNullable(this.itemsWithDescriptions);
+    }
+
+    /**
      * Name of the teams list.
      * 
      */
@@ -98,6 +114,7 @@ public final class TeamsListArgs extends com.pulumi.resources.ResourceArgs {
         this.accountId = $.accountId;
         this.description = $.description;
         this.items = $.items;
+        this.itemsWithDescriptions = $.itemsWithDescriptions;
         this.name = $.name;
         this.type = $.type;
     }
@@ -191,6 +208,37 @@ public final class TeamsListArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder items(String... items) {
             return items(List.of(items));
+        }
+
+        /**
+         * @param itemsWithDescriptions The items of the teams list that has explicit description.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder itemsWithDescriptions(@Nullable Output<List<TeamsListItemsWithDescriptionArgs>> itemsWithDescriptions) {
+            $.itemsWithDescriptions = itemsWithDescriptions;
+            return this;
+        }
+
+        /**
+         * @param itemsWithDescriptions The items of the teams list that has explicit description.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder itemsWithDescriptions(List<TeamsListItemsWithDescriptionArgs> itemsWithDescriptions) {
+            return itemsWithDescriptions(Output.of(itemsWithDescriptions));
+        }
+
+        /**
+         * @param itemsWithDescriptions The items of the teams list that has explicit description.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder itemsWithDescriptions(TeamsListItemsWithDescriptionArgs... itemsWithDescriptions) {
+            return itemsWithDescriptions(List.of(itemsWithDescriptions));
         }
 
         /**

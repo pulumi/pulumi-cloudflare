@@ -70,6 +70,7 @@
         "getDevicePostureRules.ts",
         "getDevices.ts",
         "getDlpDatasets.ts",
+        "getGatewayCategories.ts",
         "getIpRanges.ts",
         "getList.ts",
         "getLists.ts",

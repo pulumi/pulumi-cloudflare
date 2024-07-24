@@ -54,6 +54,10 @@ namespace Pulumi.Cloudflare.Outputs
         /// </summary>
         public readonly Outputs.TeamsRuleRuleSettingsEgress? Egress;
         /// <summary>
+        /// Set to true, to ignore the category matches at CNAME domains in a response.
+        /// </summary>
+        public readonly bool? IgnoreCnameCategoryMatches;
+        /// <summary>
         /// Disable DNSSEC validation (must be Allow rule).
         /// </summary>
         public readonly bool? InsecureDisableDnssecValidation;
@@ -112,6 +116,8 @@ namespace Pulumi.Cloudflare.Outputs
 
             Outputs.TeamsRuleRuleSettingsEgress? egress,
 
+            bool? ignoreCnameCategoryMatches,
+
             bool? insecureDisableDnssecValidation,
 
             bool? ipCategories,
@@ -140,6 +146,7 @@ namespace Pulumi.Cloudflare.Outputs
             CheckSession = checkSession;
             DnsResolvers = dnsResolvers;
             Egress = egress;
+            IgnoreCnameCategoryMatches = ignoreCnameCategoryMatches;
             InsecureDisableDnssecValidation = insecureDisableDnssecValidation;
             IpCategories = ipCategories;
             L4override = l4override;

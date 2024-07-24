@@ -79,6 +79,12 @@ namespace Pulumi.Cloudflare.Inputs
         public Input<Inputs.TeamsRuleRuleSettingsEgressArgs>? Egress { get; set; }
 
         /// <summary>
+        /// Set to true, to ignore the category matches at CNAME domains in a response.
+        /// </summary>
+        [Input("ignoreCnameCategoryMatches")]
+        public Input<bool>? IgnoreCnameCategoryMatches { get; set; }
+
+        /// <summary>
         /// Disable DNSSEC validation (must be Allow rule).
         /// </summary>
         [Input("insecureDisableDnssecValidation")]

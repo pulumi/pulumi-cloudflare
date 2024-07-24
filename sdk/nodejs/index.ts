@@ -280,6 +280,11 @@ export const getDlpDatasets: typeof import("./getDlpDatasets").getDlpDatasets = 
 export const getDlpDatasetsOutput: typeof import("./getDlpDatasets").getDlpDatasetsOutput = null as any;
 utilities.lazyLoad(exports, ["getDlpDatasets","getDlpDatasetsOutput"], () => require("./getDlpDatasets"));
 
+export { GetGatewayCategoriesArgs, GetGatewayCategoriesResult, GetGatewayCategoriesOutputArgs } from "./getGatewayCategories";
+export const getGatewayCategories: typeof import("./getGatewayCategories").getGatewayCategories = null as any;
+export const getGatewayCategoriesOutput: typeof import("./getGatewayCategories").getGatewayCategoriesOutput = null as any;
+utilities.lazyLoad(exports, ["getGatewayCategories","getGatewayCategoriesOutput"], () => require("./getGatewayCategories"));
+
 export { GetIpRangesResult } from "./getIpRanges";
 export const getIpRanges: typeof import("./getIpRanges").getIpRanges = null as any;
 export const getIpRangesOutput: typeof import("./getIpRanges").getIpRangesOutput = null as any;

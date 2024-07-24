@@ -34734,6 +34734,109 @@ func (o TeamsAccountSshSessionLogPtrOutput) PublicKey() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type TeamsListItemsWithDescription struct {
+	// The description of the teams list.
+	Description string `pulumi:"description"`
+	Value       string `pulumi:"value"`
+}
+
+// TeamsListItemsWithDescriptionInput is an input type that accepts TeamsListItemsWithDescriptionArgs and TeamsListItemsWithDescriptionOutput values.
+// You can construct a concrete instance of `TeamsListItemsWithDescriptionInput` via:
+//
+//	TeamsListItemsWithDescriptionArgs{...}
+type TeamsListItemsWithDescriptionInput interface {
+	pulumi.Input
+
+	ToTeamsListItemsWithDescriptionOutput() TeamsListItemsWithDescriptionOutput
+	ToTeamsListItemsWithDescriptionOutputWithContext(context.Context) TeamsListItemsWithDescriptionOutput
+}
+
+type TeamsListItemsWithDescriptionArgs struct {
+	// The description of the teams list.
+	Description pulumi.StringInput `pulumi:"description"`
+	Value       pulumi.StringInput `pulumi:"value"`
+}
+
+func (TeamsListItemsWithDescriptionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TeamsListItemsWithDescription)(nil)).Elem()
+}
+
+func (i TeamsListItemsWithDescriptionArgs) ToTeamsListItemsWithDescriptionOutput() TeamsListItemsWithDescriptionOutput {
+	return i.ToTeamsListItemsWithDescriptionOutputWithContext(context.Background())
+}
+
+func (i TeamsListItemsWithDescriptionArgs) ToTeamsListItemsWithDescriptionOutputWithContext(ctx context.Context) TeamsListItemsWithDescriptionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TeamsListItemsWithDescriptionOutput)
+}
+
+// TeamsListItemsWithDescriptionArrayInput is an input type that accepts TeamsListItemsWithDescriptionArray and TeamsListItemsWithDescriptionArrayOutput values.
+// You can construct a concrete instance of `TeamsListItemsWithDescriptionArrayInput` via:
+//
+//	TeamsListItemsWithDescriptionArray{ TeamsListItemsWithDescriptionArgs{...} }
+type TeamsListItemsWithDescriptionArrayInput interface {
+	pulumi.Input
+
+	ToTeamsListItemsWithDescriptionArrayOutput() TeamsListItemsWithDescriptionArrayOutput
+	ToTeamsListItemsWithDescriptionArrayOutputWithContext(context.Context) TeamsListItemsWithDescriptionArrayOutput
+}
+
+type TeamsListItemsWithDescriptionArray []TeamsListItemsWithDescriptionInput
+
+func (TeamsListItemsWithDescriptionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TeamsListItemsWithDescription)(nil)).Elem()
+}
+
+func (i TeamsListItemsWithDescriptionArray) ToTeamsListItemsWithDescriptionArrayOutput() TeamsListItemsWithDescriptionArrayOutput {
+	return i.ToTeamsListItemsWithDescriptionArrayOutputWithContext(context.Background())
+}
+
+func (i TeamsListItemsWithDescriptionArray) ToTeamsListItemsWithDescriptionArrayOutputWithContext(ctx context.Context) TeamsListItemsWithDescriptionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TeamsListItemsWithDescriptionArrayOutput)
+}
+
+type TeamsListItemsWithDescriptionOutput struct{ *pulumi.OutputState }
+
+func (TeamsListItemsWithDescriptionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TeamsListItemsWithDescription)(nil)).Elem()
+}
+
+func (o TeamsListItemsWithDescriptionOutput) ToTeamsListItemsWithDescriptionOutput() TeamsListItemsWithDescriptionOutput {
+	return o
+}
+
+func (o TeamsListItemsWithDescriptionOutput) ToTeamsListItemsWithDescriptionOutputWithContext(ctx context.Context) TeamsListItemsWithDescriptionOutput {
+	return o
+}
+
+// The description of the teams list.
+func (o TeamsListItemsWithDescriptionOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v TeamsListItemsWithDescription) string { return v.Description }).(pulumi.StringOutput)
+}
+
+func (o TeamsListItemsWithDescriptionOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v TeamsListItemsWithDescription) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type TeamsListItemsWithDescriptionArrayOutput struct{ *pulumi.OutputState }
+
+func (TeamsListItemsWithDescriptionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TeamsListItemsWithDescription)(nil)).Elem()
+}
+
+func (o TeamsListItemsWithDescriptionArrayOutput) ToTeamsListItemsWithDescriptionArrayOutput() TeamsListItemsWithDescriptionArrayOutput {
+	return o
+}
+
+func (o TeamsListItemsWithDescriptionArrayOutput) ToTeamsListItemsWithDescriptionArrayOutputWithContext(ctx context.Context) TeamsListItemsWithDescriptionArrayOutput {
+	return o
+}
+
+func (o TeamsListItemsWithDescriptionArrayOutput) Index(i pulumi.IntInput) TeamsListItemsWithDescriptionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TeamsListItemsWithDescription {
+		return vs[0].([]TeamsListItemsWithDescription)[vs[1].(int)]
+	}).(TeamsListItemsWithDescriptionOutput)
+}
+
 type TeamsLocationNetwork struct {
 	// The ID of this resource.
 	Id *string `pulumi:"id"`
@@ -34861,6 +34964,8 @@ type TeamsRuleRuleSettings struct {
 	DnsResolvers *TeamsRuleRuleSettingsDnsResolvers `pulumi:"dnsResolvers"`
 	// Configure how Proxy traffic egresses. Can be set for rules with Egress action and Egress filter. Can be omitted to indicate local egress via Warp IPs.
 	Egress *TeamsRuleRuleSettingsEgress `pulumi:"egress"`
+	// Set to true, to ignore the category matches at CNAME domains in a response.
+	IgnoreCnameCategoryMatches *bool `pulumi:"ignoreCnameCategoryMatches"`
 	// Disable DNSSEC validation (must be Allow rule).
 	InsecureDisableDnssecValidation *bool `pulumi:"insecureDisableDnssecValidation"`
 	// Turns on IP category based filter on dns if the rule contains dns category checks.
@@ -34913,6 +35018,8 @@ type TeamsRuleRuleSettingsArgs struct {
 	DnsResolvers TeamsRuleRuleSettingsDnsResolversPtrInput `pulumi:"dnsResolvers"`
 	// Configure how Proxy traffic egresses. Can be set for rules with Egress action and Egress filter. Can be omitted to indicate local egress via Warp IPs.
 	Egress TeamsRuleRuleSettingsEgressPtrInput `pulumi:"egress"`
+	// Set to true, to ignore the category matches at CNAME domains in a response.
+	IgnoreCnameCategoryMatches pulumi.BoolPtrInput `pulumi:"ignoreCnameCategoryMatches"`
 	// Disable DNSSEC validation (must be Allow rule).
 	InsecureDisableDnssecValidation pulumi.BoolPtrInput `pulumi:"insecureDisableDnssecValidation"`
 	// Turns on IP category based filter on dns if the rule contains dns category checks.
@@ -35058,6 +35165,11 @@ func (o TeamsRuleRuleSettingsOutput) DnsResolvers() TeamsRuleRuleSettingsDnsReso
 // Configure how Proxy traffic egresses. Can be set for rules with Egress action and Egress filter. Can be omitted to indicate local egress via Warp IPs.
 func (o TeamsRuleRuleSettingsOutput) Egress() TeamsRuleRuleSettingsEgressPtrOutput {
 	return o.ApplyT(func(v TeamsRuleRuleSettings) *TeamsRuleRuleSettingsEgress { return v.Egress }).(TeamsRuleRuleSettingsEgressPtrOutput)
+}
+
+// Set to true, to ignore the category matches at CNAME domains in a response.
+func (o TeamsRuleRuleSettingsOutput) IgnoreCnameCategoryMatches() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v TeamsRuleRuleSettings) *bool { return v.IgnoreCnameCategoryMatches }).(pulumi.BoolPtrOutput)
 }
 
 // Disable DNSSEC validation (must be Allow rule).
@@ -35229,6 +35341,16 @@ func (o TeamsRuleRuleSettingsPtrOutput) Egress() TeamsRuleRuleSettingsEgressPtrO
 		}
 		return v.Egress
 	}).(TeamsRuleRuleSettingsEgressPtrOutput)
+}
+
+// Set to true, to ignore the category matches at CNAME domains in a response.
+func (o TeamsRuleRuleSettingsPtrOutput) IgnoreCnameCategoryMatches() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *TeamsRuleRuleSettings) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.IgnoreCnameCategoryMatches
+	}).(pulumi.BoolPtrOutput)
 }
 
 // Disable DNSSEC validation (must be Allow rule).
@@ -44027,6 +44149,281 @@ func (o GetDlpDatasetsDatasetArrayOutput) Index(i pulumi.IntInput) GetDlpDataset
 	}).(GetDlpDatasetsDatasetOutput)
 }
 
+type GetGatewayCategoriesCategory struct {
+	// True if the category is in beta and subject to change.
+	Beta bool `pulumi:"beta"`
+	// Which account types are allowed to create policies based on this category.
+	Class string `pulumi:"class"`
+	// A short summary of domains in the category.
+	Description string `pulumi:"description"`
+	// The identifier for this category. There is only one category per ID.
+	Id int `pulumi:"id"`
+	// The name of the category.
+	Name string `pulumi:"name"`
+	// A list of subcategories.
+	Subcategories []GetGatewayCategoriesCategorySubcategory `pulumi:"subcategories"`
+}
+
+// GetGatewayCategoriesCategoryInput is an input type that accepts GetGatewayCategoriesCategoryArgs and GetGatewayCategoriesCategoryOutput values.
+// You can construct a concrete instance of `GetGatewayCategoriesCategoryInput` via:
+//
+//	GetGatewayCategoriesCategoryArgs{...}
+type GetGatewayCategoriesCategoryInput interface {
+	pulumi.Input
+
+	ToGetGatewayCategoriesCategoryOutput() GetGatewayCategoriesCategoryOutput
+	ToGetGatewayCategoriesCategoryOutputWithContext(context.Context) GetGatewayCategoriesCategoryOutput
+}
+
+type GetGatewayCategoriesCategoryArgs struct {
+	// True if the category is in beta and subject to change.
+	Beta pulumi.BoolInput `pulumi:"beta"`
+	// Which account types are allowed to create policies based on this category.
+	Class pulumi.StringInput `pulumi:"class"`
+	// A short summary of domains in the category.
+	Description pulumi.StringInput `pulumi:"description"`
+	// The identifier for this category. There is only one category per ID.
+	Id pulumi.IntInput `pulumi:"id"`
+	// The name of the category.
+	Name pulumi.StringInput `pulumi:"name"`
+	// A list of subcategories.
+	Subcategories GetGatewayCategoriesCategorySubcategoryArrayInput `pulumi:"subcategories"`
+}
+
+func (GetGatewayCategoriesCategoryArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGatewayCategoriesCategory)(nil)).Elem()
+}
+
+func (i GetGatewayCategoriesCategoryArgs) ToGetGatewayCategoriesCategoryOutput() GetGatewayCategoriesCategoryOutput {
+	return i.ToGetGatewayCategoriesCategoryOutputWithContext(context.Background())
+}
+
+func (i GetGatewayCategoriesCategoryArgs) ToGetGatewayCategoriesCategoryOutputWithContext(ctx context.Context) GetGatewayCategoriesCategoryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGatewayCategoriesCategoryOutput)
+}
+
+// GetGatewayCategoriesCategoryArrayInput is an input type that accepts GetGatewayCategoriesCategoryArray and GetGatewayCategoriesCategoryArrayOutput values.
+// You can construct a concrete instance of `GetGatewayCategoriesCategoryArrayInput` via:
+//
+//	GetGatewayCategoriesCategoryArray{ GetGatewayCategoriesCategoryArgs{...} }
+type GetGatewayCategoriesCategoryArrayInput interface {
+	pulumi.Input
+
+	ToGetGatewayCategoriesCategoryArrayOutput() GetGatewayCategoriesCategoryArrayOutput
+	ToGetGatewayCategoriesCategoryArrayOutputWithContext(context.Context) GetGatewayCategoriesCategoryArrayOutput
+}
+
+type GetGatewayCategoriesCategoryArray []GetGatewayCategoriesCategoryInput
+
+func (GetGatewayCategoriesCategoryArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGatewayCategoriesCategory)(nil)).Elem()
+}
+
+func (i GetGatewayCategoriesCategoryArray) ToGetGatewayCategoriesCategoryArrayOutput() GetGatewayCategoriesCategoryArrayOutput {
+	return i.ToGetGatewayCategoriesCategoryArrayOutputWithContext(context.Background())
+}
+
+func (i GetGatewayCategoriesCategoryArray) ToGetGatewayCategoriesCategoryArrayOutputWithContext(ctx context.Context) GetGatewayCategoriesCategoryArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGatewayCategoriesCategoryArrayOutput)
+}
+
+type GetGatewayCategoriesCategoryOutput struct{ *pulumi.OutputState }
+
+func (GetGatewayCategoriesCategoryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGatewayCategoriesCategory)(nil)).Elem()
+}
+
+func (o GetGatewayCategoriesCategoryOutput) ToGetGatewayCategoriesCategoryOutput() GetGatewayCategoriesCategoryOutput {
+	return o
+}
+
+func (o GetGatewayCategoriesCategoryOutput) ToGetGatewayCategoriesCategoryOutputWithContext(ctx context.Context) GetGatewayCategoriesCategoryOutput {
+	return o
+}
+
+// True if the category is in beta and subject to change.
+func (o GetGatewayCategoriesCategoryOutput) Beta() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetGatewayCategoriesCategory) bool { return v.Beta }).(pulumi.BoolOutput)
+}
+
+// Which account types are allowed to create policies based on this category.
+func (o GetGatewayCategoriesCategoryOutput) Class() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewayCategoriesCategory) string { return v.Class }).(pulumi.StringOutput)
+}
+
+// A short summary of domains in the category.
+func (o GetGatewayCategoriesCategoryOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewayCategoriesCategory) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// The identifier for this category. There is only one category per ID.
+func (o GetGatewayCategoriesCategoryOutput) Id() pulumi.IntOutput {
+	return o.ApplyT(func(v GetGatewayCategoriesCategory) int { return v.Id }).(pulumi.IntOutput)
+}
+
+// The name of the category.
+func (o GetGatewayCategoriesCategoryOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewayCategoriesCategory) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// A list of subcategories.
+func (o GetGatewayCategoriesCategoryOutput) Subcategories() GetGatewayCategoriesCategorySubcategoryArrayOutput {
+	return o.ApplyT(func(v GetGatewayCategoriesCategory) []GetGatewayCategoriesCategorySubcategory { return v.Subcategories }).(GetGatewayCategoriesCategorySubcategoryArrayOutput)
+}
+
+type GetGatewayCategoriesCategoryArrayOutput struct{ *pulumi.OutputState }
+
+func (GetGatewayCategoriesCategoryArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGatewayCategoriesCategory)(nil)).Elem()
+}
+
+func (o GetGatewayCategoriesCategoryArrayOutput) ToGetGatewayCategoriesCategoryArrayOutput() GetGatewayCategoriesCategoryArrayOutput {
+	return o
+}
+
+func (o GetGatewayCategoriesCategoryArrayOutput) ToGetGatewayCategoriesCategoryArrayOutputWithContext(ctx context.Context) GetGatewayCategoriesCategoryArrayOutput {
+	return o
+}
+
+func (o GetGatewayCategoriesCategoryArrayOutput) Index(i pulumi.IntInput) GetGatewayCategoriesCategoryOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGatewayCategoriesCategory {
+		return vs[0].([]GetGatewayCategoriesCategory)[vs[1].(int)]
+	}).(GetGatewayCategoriesCategoryOutput)
+}
+
+type GetGatewayCategoriesCategorySubcategory struct {
+	// True if the subcategory is in beta and subject to change.
+	Beta bool `pulumi:"beta"`
+	// Which account types are allowed to create policies based on this subcategory.
+	Class string `pulumi:"class"`
+	// A short summary of domains in the subcategory.
+	Description string `pulumi:"description"`
+	// The identifier for this subcategory. There is only one subcategory per ID.
+	Id int `pulumi:"id"`
+	// The name of the subcategory.
+	Name string `pulumi:"name"`
+}
+
+// GetGatewayCategoriesCategorySubcategoryInput is an input type that accepts GetGatewayCategoriesCategorySubcategoryArgs and GetGatewayCategoriesCategorySubcategoryOutput values.
+// You can construct a concrete instance of `GetGatewayCategoriesCategorySubcategoryInput` via:
+//
+//	GetGatewayCategoriesCategorySubcategoryArgs{...}
+type GetGatewayCategoriesCategorySubcategoryInput interface {
+	pulumi.Input
+
+	ToGetGatewayCategoriesCategorySubcategoryOutput() GetGatewayCategoriesCategorySubcategoryOutput
+	ToGetGatewayCategoriesCategorySubcategoryOutputWithContext(context.Context) GetGatewayCategoriesCategorySubcategoryOutput
+}
+
+type GetGatewayCategoriesCategorySubcategoryArgs struct {
+	// True if the subcategory is in beta and subject to change.
+	Beta pulumi.BoolInput `pulumi:"beta"`
+	// Which account types are allowed to create policies based on this subcategory.
+	Class pulumi.StringInput `pulumi:"class"`
+	// A short summary of domains in the subcategory.
+	Description pulumi.StringInput `pulumi:"description"`
+	// The identifier for this subcategory. There is only one subcategory per ID.
+	Id pulumi.IntInput `pulumi:"id"`
+	// The name of the subcategory.
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (GetGatewayCategoriesCategorySubcategoryArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGatewayCategoriesCategorySubcategory)(nil)).Elem()
+}
+
+func (i GetGatewayCategoriesCategorySubcategoryArgs) ToGetGatewayCategoriesCategorySubcategoryOutput() GetGatewayCategoriesCategorySubcategoryOutput {
+	return i.ToGetGatewayCategoriesCategorySubcategoryOutputWithContext(context.Background())
+}
+
+func (i GetGatewayCategoriesCategorySubcategoryArgs) ToGetGatewayCategoriesCategorySubcategoryOutputWithContext(ctx context.Context) GetGatewayCategoriesCategorySubcategoryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGatewayCategoriesCategorySubcategoryOutput)
+}
+
+// GetGatewayCategoriesCategorySubcategoryArrayInput is an input type that accepts GetGatewayCategoriesCategorySubcategoryArray and GetGatewayCategoriesCategorySubcategoryArrayOutput values.
+// You can construct a concrete instance of `GetGatewayCategoriesCategorySubcategoryArrayInput` via:
+//
+//	GetGatewayCategoriesCategorySubcategoryArray{ GetGatewayCategoriesCategorySubcategoryArgs{...} }
+type GetGatewayCategoriesCategorySubcategoryArrayInput interface {
+	pulumi.Input
+
+	ToGetGatewayCategoriesCategorySubcategoryArrayOutput() GetGatewayCategoriesCategorySubcategoryArrayOutput
+	ToGetGatewayCategoriesCategorySubcategoryArrayOutputWithContext(context.Context) GetGatewayCategoriesCategorySubcategoryArrayOutput
+}
+
+type GetGatewayCategoriesCategorySubcategoryArray []GetGatewayCategoriesCategorySubcategoryInput
+
+func (GetGatewayCategoriesCategorySubcategoryArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGatewayCategoriesCategorySubcategory)(nil)).Elem()
+}
+
+func (i GetGatewayCategoriesCategorySubcategoryArray) ToGetGatewayCategoriesCategorySubcategoryArrayOutput() GetGatewayCategoriesCategorySubcategoryArrayOutput {
+	return i.ToGetGatewayCategoriesCategorySubcategoryArrayOutputWithContext(context.Background())
+}
+
+func (i GetGatewayCategoriesCategorySubcategoryArray) ToGetGatewayCategoriesCategorySubcategoryArrayOutputWithContext(ctx context.Context) GetGatewayCategoriesCategorySubcategoryArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGatewayCategoriesCategorySubcategoryArrayOutput)
+}
+
+type GetGatewayCategoriesCategorySubcategoryOutput struct{ *pulumi.OutputState }
+
+func (GetGatewayCategoriesCategorySubcategoryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGatewayCategoriesCategorySubcategory)(nil)).Elem()
+}
+
+func (o GetGatewayCategoriesCategorySubcategoryOutput) ToGetGatewayCategoriesCategorySubcategoryOutput() GetGatewayCategoriesCategorySubcategoryOutput {
+	return o
+}
+
+func (o GetGatewayCategoriesCategorySubcategoryOutput) ToGetGatewayCategoriesCategorySubcategoryOutputWithContext(ctx context.Context) GetGatewayCategoriesCategorySubcategoryOutput {
+	return o
+}
+
+// True if the subcategory is in beta and subject to change.
+func (o GetGatewayCategoriesCategorySubcategoryOutput) Beta() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetGatewayCategoriesCategorySubcategory) bool { return v.Beta }).(pulumi.BoolOutput)
+}
+
+// Which account types are allowed to create policies based on this subcategory.
+func (o GetGatewayCategoriesCategorySubcategoryOutput) Class() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewayCategoriesCategorySubcategory) string { return v.Class }).(pulumi.StringOutput)
+}
+
+// A short summary of domains in the subcategory.
+func (o GetGatewayCategoriesCategorySubcategoryOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewayCategoriesCategorySubcategory) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// The identifier for this subcategory. There is only one subcategory per ID.
+func (o GetGatewayCategoriesCategorySubcategoryOutput) Id() pulumi.IntOutput {
+	return o.ApplyT(func(v GetGatewayCategoriesCategorySubcategory) int { return v.Id }).(pulumi.IntOutput)
+}
+
+// The name of the subcategory.
+func (o GetGatewayCategoriesCategorySubcategoryOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGatewayCategoriesCategorySubcategory) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type GetGatewayCategoriesCategorySubcategoryArrayOutput struct{ *pulumi.OutputState }
+
+func (GetGatewayCategoriesCategorySubcategoryArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGatewayCategoriesCategorySubcategory)(nil)).Elem()
+}
+
+func (o GetGatewayCategoriesCategorySubcategoryArrayOutput) ToGetGatewayCategoriesCategorySubcategoryArrayOutput() GetGatewayCategoriesCategorySubcategoryArrayOutput {
+	return o
+}
+
+func (o GetGatewayCategoriesCategorySubcategoryArrayOutput) ToGetGatewayCategoriesCategorySubcategoryArrayOutputWithContext(ctx context.Context) GetGatewayCategoriesCategorySubcategoryArrayOutput {
+	return o
+}
+
+func (o GetGatewayCategoriesCategorySubcategoryArrayOutput) Index(i pulumi.IntInput) GetGatewayCategoriesCategorySubcategoryOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGatewayCategoriesCategorySubcategory {
+		return vs[0].([]GetGatewayCategoriesCategorySubcategory)[vs[1].(int)]
+	}).(GetGatewayCategoriesCategorySubcategoryOutput)
+}
+
 type GetListsList struct {
 	// List description.
 	Description *string `pulumi:"description"`
@@ -51957,6 +52354,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*TeamsAccountProxyPtrInput)(nil)).Elem(), TeamsAccountProxyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TeamsAccountSshSessionLogInput)(nil)).Elem(), TeamsAccountSshSessionLogArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TeamsAccountSshSessionLogPtrInput)(nil)).Elem(), TeamsAccountSshSessionLogArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TeamsListItemsWithDescriptionInput)(nil)).Elem(), TeamsListItemsWithDescriptionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TeamsListItemsWithDescriptionArrayInput)(nil)).Elem(), TeamsListItemsWithDescriptionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TeamsLocationNetworkInput)(nil)).Elem(), TeamsLocationNetworkArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TeamsLocationNetworkArrayInput)(nil)).Elem(), TeamsLocationNetworkArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TeamsRuleRuleSettingsInput)(nil)).Elem(), TeamsRuleRuleSettingsArgs{})
@@ -52059,6 +52458,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDevicesDeviceArrayInput)(nil)).Elem(), GetDevicesDeviceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDlpDatasetsDatasetInput)(nil)).Elem(), GetDlpDatasetsDatasetArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDlpDatasetsDatasetArrayInput)(nil)).Elem(), GetDlpDatasetsDatasetArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGatewayCategoriesCategoryInput)(nil)).Elem(), GetGatewayCategoriesCategoryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGatewayCategoriesCategoryArrayInput)(nil)).Elem(), GetGatewayCategoriesCategoryArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGatewayCategoriesCategorySubcategoryInput)(nil)).Elem(), GetGatewayCategoriesCategorySubcategoryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGatewayCategoriesCategorySubcategoryArrayInput)(nil)).Elem(), GetGatewayCategoriesCategorySubcategoryArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetListsListInput)(nil)).Elem(), GetListsListArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetListsListArrayInput)(nil)).Elem(), GetListsListArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetLoadBalancerPoolsFilterInput)(nil)).Elem(), GetLoadBalancerPoolsFilterArgs{})
@@ -52571,6 +52974,8 @@ func init() {
 	pulumi.RegisterOutputType(TeamsAccountProxyPtrOutput{})
 	pulumi.RegisterOutputType(TeamsAccountSshSessionLogOutput{})
 	pulumi.RegisterOutputType(TeamsAccountSshSessionLogPtrOutput{})
+	pulumi.RegisterOutputType(TeamsListItemsWithDescriptionOutput{})
+	pulumi.RegisterOutputType(TeamsListItemsWithDescriptionArrayOutput{})
 	pulumi.RegisterOutputType(TeamsLocationNetworkOutput{})
 	pulumi.RegisterOutputType(TeamsLocationNetworkArrayOutput{})
 	pulumi.RegisterOutputType(TeamsRuleRuleSettingsOutput{})
@@ -52673,6 +53078,10 @@ func init() {
 	pulumi.RegisterOutputType(GetDevicesDeviceArrayOutput{})
 	pulumi.RegisterOutputType(GetDlpDatasetsDatasetOutput{})
 	pulumi.RegisterOutputType(GetDlpDatasetsDatasetArrayOutput{})
+	pulumi.RegisterOutputType(GetGatewayCategoriesCategoryOutput{})
+	pulumi.RegisterOutputType(GetGatewayCategoriesCategoryArrayOutput{})
+	pulumi.RegisterOutputType(GetGatewayCategoriesCategorySubcategoryOutput{})
+	pulumi.RegisterOutputType(GetGatewayCategoriesCategorySubcategoryArrayOutput{})
 	pulumi.RegisterOutputType(GetListsListOutput{})
 	pulumi.RegisterOutputType(GetListsListArrayOutput{})
 	pulumi.RegisterOutputType(GetLoadBalancerPoolsFilterOutput{})

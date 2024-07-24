@@ -4172,6 +4172,14 @@ export interface TeamsAccountSshSessionLog {
     publicKey: pulumi.Input<string>;
 }
 
+export interface TeamsListItemsWithDescription {
+    /**
+     * The description of the teams list.
+     */
+    description: pulumi.Input<string>;
+    value: pulumi.Input<string>;
+}
+
 export interface TeamsLocationNetwork {
     /**
      * The ID of this resource.
@@ -4224,6 +4232,10 @@ export interface TeamsRuleRuleSettings {
      * Configure how Proxy traffic egresses. Can be set for rules with Egress action and Egress filter. Can be omitted to indicate local egress via Warp IPs.
      */
     egress?: pulumi.Input<inputs.TeamsRuleRuleSettingsEgress>;
+    /**
+     * Set to true, to ignore the category matches at CNAME domains in a response.
+     */
+    ignoreCnameCategoryMatches?: pulumi.Input<boolean>;
     /**
      * Disable DNSSEC validation (must be Allow rule).
      */
