@@ -40,7 +40,7 @@ import (
 //				Name:              pulumi.String("myschema"),
 //				Kind:              pulumi.String("openapi_v3"),
 //				ValidationEnabled: pulumi.Bool(true),
-//				Source:            invokeFile.Result,
+//				Source:            pulumi.String(invokeFile.Result),
 //			})
 //			if err != nil {
 //				return err

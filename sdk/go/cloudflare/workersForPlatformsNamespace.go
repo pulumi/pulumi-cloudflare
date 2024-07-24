@@ -46,7 +46,7 @@ import (
 //			_, err = cloudflare.NewWorkerScript(ctx, "customer_worker_1", &cloudflare.WorkerScriptArgs{
 //				AccountId:         pulumi.String("f037e56e89293a057740de681ac9abbe"),
 //				Name:              pulumi.String("customer-worker-1"),
-//				Content:           invokeFile.Result,
+//				Content:           pulumi.String(invokeFile.Result),
 //				DispatchNamespace: example.Name,
 //				Tags: pulumi.StringArray{
 //					pulumi.String("free"),
