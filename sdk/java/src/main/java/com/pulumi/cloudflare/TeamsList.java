@@ -6,6 +6,7 @@ package com.pulumi.cloudflare;
 import com.pulumi.cloudflare.TeamsListArgs;
 import com.pulumi.cloudflare.Utilities;
 import com.pulumi.cloudflare.inputs.TeamsListState;
+import com.pulumi.cloudflare.outputs.TeamsListItemsWithDescription;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
@@ -112,6 +113,20 @@ public class TeamsList extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<List<String>>> items() {
         return Codegen.optional(this.items);
+    }
+    /**
+     * The items of the teams list that has explicit description.
+     * 
+     */
+    @Export(name="itemsWithDescriptions", refs={List.class,TeamsListItemsWithDescription.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<TeamsListItemsWithDescription>> itemsWithDescriptions;
+
+    /**
+     * @return The items of the teams list that has explicit description.
+     * 
+     */
+    public Output<Optional<List<TeamsListItemsWithDescription>>> itemsWithDescriptions() {
+        return Codegen.optional(this.itemsWithDescriptions);
     }
     /**
      * Name of the teams list.

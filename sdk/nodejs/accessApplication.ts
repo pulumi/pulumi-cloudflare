@@ -140,7 +140,7 @@ export class AccessApplication extends pulumi.CustomResource {
      */
     public readonly optionsPreflightBypass!: pulumi.Output<boolean | undefined>;
     /**
-     * The policies associated with the application, in ascending order of precedence. When omitted, the application policies are not be updated. Warning: Do not use this field while you still have this application ID referenced as `applicationId` in any `cloudflare.AccessPolicy` resource, as it can result in an inconsistent state.
+     * The policies associated with the application, in ascending order of precedence. Warning: Do not use this field while you still have this application ID referenced as `applicationId` in any `cloudflare.AccessPolicy` resource, as it can result in an inconsistent state.
      */
     public readonly policies!: pulumi.Output<string[] | undefined>;
     /**
@@ -364,7 +364,7 @@ export interface AccessApplicationState {
      */
     optionsPreflightBypass?: pulumi.Input<boolean>;
     /**
-     * The policies associated with the application, in ascending order of precedence. When omitted, the application policies are not be updated. Warning: Do not use this field while you still have this application ID referenced as `applicationId` in any `cloudflare.AccessPolicy` resource, as it can result in an inconsistent state.
+     * The policies associated with the application, in ascending order of precedence. Warning: Do not use this field while you still have this application ID referenced as `applicationId` in any `cloudflare.AccessPolicy` resource, as it can result in an inconsistent state.
      */
     policies?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -498,7 +498,7 @@ export interface AccessApplicationArgs {
      */
     optionsPreflightBypass?: pulumi.Input<boolean>;
     /**
-     * The policies associated with the application, in ascending order of precedence. When omitted, the application policies are not be updated. Warning: Do not use this field while you still have this application ID referenced as `applicationId` in any `cloudflare.AccessPolicy` resource, as it can result in an inconsistent state.
+     * The policies associated with the application, in ascending order of precedence. Warning: Do not use this field while you still have this application ID referenced as `applicationId` in any `cloudflare.AccessPolicy` resource, as it can result in an inconsistent state.
      */
     policies?: pulumi.Input<pulumi.Input<string>[]>;
     /**

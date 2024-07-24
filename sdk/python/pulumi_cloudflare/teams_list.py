@@ -8,6 +8,8 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = ['TeamsListArgs', 'TeamsList']
 
@@ -18,7 +20,8 @@ class TeamsListArgs:
                  name: pulumi.Input[str],
                  type: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None,
-                 items: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+                 items: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 items_with_descriptions: Optional[pulumi.Input[Sequence[pulumi.Input['TeamsListItemsWithDescriptionArgs']]]] = None):
         """
         The set of arguments for constructing a TeamsList resource.
         :param pulumi.Input[str] account_id: The account identifier to target for the resource.
@@ -26,6 +29,7 @@ class TeamsListArgs:
         :param pulumi.Input[str] type: The teams list type. Available values: `IP`, `SERIAL`, `URL`, `DOMAIN`, `EMAIL`.
         :param pulumi.Input[str] description: The description of the teams list.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] items: The items of the teams list.
+        :param pulumi.Input[Sequence[pulumi.Input['TeamsListItemsWithDescriptionArgs']]] items_with_descriptions: The items of the teams list that has explicit description.
         """
         pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "name", name)
@@ -34,6 +38,8 @@ class TeamsListArgs:
             pulumi.set(__self__, "description", description)
         if items is not None:
             pulumi.set(__self__, "items", items)
+        if items_with_descriptions is not None:
+            pulumi.set(__self__, "items_with_descriptions", items_with_descriptions)
 
     @property
     @pulumi.getter(name="accountId")
@@ -95,6 +101,18 @@ class TeamsListArgs:
     def items(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "items", value)
 
+    @property
+    @pulumi.getter(name="itemsWithDescriptions")
+    def items_with_descriptions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['TeamsListItemsWithDescriptionArgs']]]]:
+        """
+        The items of the teams list that has explicit description.
+        """
+        return pulumi.get(self, "items_with_descriptions")
+
+    @items_with_descriptions.setter
+    def items_with_descriptions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['TeamsListItemsWithDescriptionArgs']]]]):
+        pulumi.set(self, "items_with_descriptions", value)
+
 
 @pulumi.input_type
 class _TeamsListState:
@@ -102,6 +120,7 @@ class _TeamsListState:
                  account_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  items: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 items_with_descriptions: Optional[pulumi.Input[Sequence[pulumi.Input['TeamsListItemsWithDescriptionArgs']]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None):
         """
@@ -109,6 +128,7 @@ class _TeamsListState:
         :param pulumi.Input[str] account_id: The account identifier to target for the resource.
         :param pulumi.Input[str] description: The description of the teams list.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] items: The items of the teams list.
+        :param pulumi.Input[Sequence[pulumi.Input['TeamsListItemsWithDescriptionArgs']]] items_with_descriptions: The items of the teams list that has explicit description.
         :param pulumi.Input[str] name: Name of the teams list.
         :param pulumi.Input[str] type: The teams list type. Available values: `IP`, `SERIAL`, `URL`, `DOMAIN`, `EMAIL`.
         """
@@ -118,6 +138,8 @@ class _TeamsListState:
             pulumi.set(__self__, "description", description)
         if items is not None:
             pulumi.set(__self__, "items", items)
+        if items_with_descriptions is not None:
+            pulumi.set(__self__, "items_with_descriptions", items_with_descriptions)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if type is not None:
@@ -160,6 +182,18 @@ class _TeamsListState:
         pulumi.set(self, "items", value)
 
     @property
+    @pulumi.getter(name="itemsWithDescriptions")
+    def items_with_descriptions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['TeamsListItemsWithDescriptionArgs']]]]:
+        """
+        The items of the teams list that has explicit description.
+        """
+        return pulumi.get(self, "items_with_descriptions")
+
+    @items_with_descriptions.setter
+    def items_with_descriptions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['TeamsListItemsWithDescriptionArgs']]]]):
+        pulumi.set(self, "items_with_descriptions", value)
+
+    @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
@@ -192,6 +226,7 @@ class TeamsList(pulumi.CustomResource):
                  account_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  items: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 items_with_descriptions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TeamsListItemsWithDescriptionArgs']]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -229,6 +264,7 @@ class TeamsList(pulumi.CustomResource):
         :param pulumi.Input[str] account_id: The account identifier to target for the resource.
         :param pulumi.Input[str] description: The description of the teams list.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] items: The items of the teams list.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TeamsListItemsWithDescriptionArgs']]]] items_with_descriptions: The items of the teams list that has explicit description.
         :param pulumi.Input[str] name: Name of the teams list.
         :param pulumi.Input[str] type: The teams list type. Available values: `IP`, `SERIAL`, `URL`, `DOMAIN`, `EMAIL`.
         """
@@ -285,6 +321,7 @@ class TeamsList(pulumi.CustomResource):
                  account_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  items: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 items_with_descriptions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TeamsListItemsWithDescriptionArgs']]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -301,6 +338,7 @@ class TeamsList(pulumi.CustomResource):
             __props__.__dict__["account_id"] = account_id
             __props__.__dict__["description"] = description
             __props__.__dict__["items"] = items
+            __props__.__dict__["items_with_descriptions"] = items_with_descriptions
             if name is None and not opts.urn:
                 raise TypeError("Missing required property 'name'")
             __props__.__dict__["name"] = name
@@ -320,6 +358,7 @@ class TeamsList(pulumi.CustomResource):
             account_id: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
             items: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+            items_with_descriptions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TeamsListItemsWithDescriptionArgs']]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
             type: Optional[pulumi.Input[str]] = None) -> 'TeamsList':
         """
@@ -332,6 +371,7 @@ class TeamsList(pulumi.CustomResource):
         :param pulumi.Input[str] account_id: The account identifier to target for the resource.
         :param pulumi.Input[str] description: The description of the teams list.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] items: The items of the teams list.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TeamsListItemsWithDescriptionArgs']]]] items_with_descriptions: The items of the teams list that has explicit description.
         :param pulumi.Input[str] name: Name of the teams list.
         :param pulumi.Input[str] type: The teams list type. Available values: `IP`, `SERIAL`, `URL`, `DOMAIN`, `EMAIL`.
         """
@@ -342,6 +382,7 @@ class TeamsList(pulumi.CustomResource):
         __props__.__dict__["account_id"] = account_id
         __props__.__dict__["description"] = description
         __props__.__dict__["items"] = items
+        __props__.__dict__["items_with_descriptions"] = items_with_descriptions
         __props__.__dict__["name"] = name
         __props__.__dict__["type"] = type
         return TeamsList(resource_name, opts=opts, __props__=__props__)
@@ -369,6 +410,14 @@ class TeamsList(pulumi.CustomResource):
         The items of the teams list.
         """
         return pulumi.get(self, "items")
+
+    @property
+    @pulumi.getter(name="itemsWithDescriptions")
+    def items_with_descriptions(self) -> pulumi.Output[Optional[Sequence['outputs.TeamsListItemsWithDescription']]]:
+        """
+        The items of the teams list that has explicit description.
+        """
+        return pulumi.get(self, "items_with_descriptions")
 
     @property
     @pulumi.getter

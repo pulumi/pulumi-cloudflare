@@ -69,6 +69,12 @@ namespace Pulumi.Cloudflare
         public Output<ImmutableArray<string>> Items { get; private set; } = null!;
 
         /// <summary>
+        /// The items of the teams list that has explicit description.
+        /// </summary>
+        [Output("itemsWithDescriptions")]
+        public Output<ImmutableArray<Outputs.TeamsListItemsWithDescription>> ItemsWithDescriptions { get; private set; } = null!;
+
+        /// <summary>
         /// Name of the teams list.
         /// </summary>
         [Output("name")]
@@ -150,6 +156,18 @@ namespace Pulumi.Cloudflare
             set => _items = value;
         }
 
+        [Input("itemsWithDescriptions")]
+        private InputList<Inputs.TeamsListItemsWithDescriptionArgs>? _itemsWithDescriptions;
+
+        /// <summary>
+        /// The items of the teams list that has explicit description.
+        /// </summary>
+        public InputList<Inputs.TeamsListItemsWithDescriptionArgs> ItemsWithDescriptions
+        {
+            get => _itemsWithDescriptions ?? (_itemsWithDescriptions = new InputList<Inputs.TeamsListItemsWithDescriptionArgs>());
+            set => _itemsWithDescriptions = value;
+        }
+
         /// <summary>
         /// Name of the teams list.
         /// </summary>
@@ -192,6 +210,18 @@ namespace Pulumi.Cloudflare
         {
             get => _items ?? (_items = new InputList<string>());
             set => _items = value;
+        }
+
+        [Input("itemsWithDescriptions")]
+        private InputList<Inputs.TeamsListItemsWithDescriptionGetArgs>? _itemsWithDescriptions;
+
+        /// <summary>
+        /// The items of the teams list that has explicit description.
+        /// </summary>
+        public InputList<Inputs.TeamsListItemsWithDescriptionGetArgs> ItemsWithDescriptions
+        {
+            get => _itemsWithDescriptions ?? (_itemsWithDescriptions = new InputList<Inputs.TeamsListItemsWithDescriptionGetArgs>());
+            set => _itemsWithDescriptions = value;
         }
 
         /// <summary>

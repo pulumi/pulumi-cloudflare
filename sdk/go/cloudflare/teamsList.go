@@ -64,6 +64,8 @@ type TeamsList struct {
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The items of the teams list.
 	Items pulumi.StringArrayOutput `pulumi:"items"`
+	// The items of the teams list that has explicit description.
+	ItemsWithDescriptions TeamsListItemsWithDescriptionArrayOutput `pulumi:"itemsWithDescriptions"`
 	// Name of the teams list.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The teams list type. Available values: `IP`, `SERIAL`, `URL`, `DOMAIN`, `EMAIL`.
@@ -115,6 +117,8 @@ type teamsListState struct {
 	Description *string `pulumi:"description"`
 	// The items of the teams list.
 	Items []string `pulumi:"items"`
+	// The items of the teams list that has explicit description.
+	ItemsWithDescriptions []TeamsListItemsWithDescription `pulumi:"itemsWithDescriptions"`
 	// Name of the teams list.
 	Name *string `pulumi:"name"`
 	// The teams list type. Available values: `IP`, `SERIAL`, `URL`, `DOMAIN`, `EMAIL`.
@@ -128,6 +132,8 @@ type TeamsListState struct {
 	Description pulumi.StringPtrInput
 	// The items of the teams list.
 	Items pulumi.StringArrayInput
+	// The items of the teams list that has explicit description.
+	ItemsWithDescriptions TeamsListItemsWithDescriptionArrayInput
 	// Name of the teams list.
 	Name pulumi.StringPtrInput
 	// The teams list type. Available values: `IP`, `SERIAL`, `URL`, `DOMAIN`, `EMAIL`.
@@ -145,6 +151,8 @@ type teamsListArgs struct {
 	Description *string `pulumi:"description"`
 	// The items of the teams list.
 	Items []string `pulumi:"items"`
+	// The items of the teams list that has explicit description.
+	ItemsWithDescriptions []TeamsListItemsWithDescription `pulumi:"itemsWithDescriptions"`
 	// Name of the teams list.
 	Name string `pulumi:"name"`
 	// The teams list type. Available values: `IP`, `SERIAL`, `URL`, `DOMAIN`, `EMAIL`.
@@ -159,6 +167,8 @@ type TeamsListArgs struct {
 	Description pulumi.StringPtrInput
 	// The items of the teams list.
 	Items pulumi.StringArrayInput
+	// The items of the teams list that has explicit description.
+	ItemsWithDescriptions TeamsListItemsWithDescriptionArrayInput
 	// Name of the teams list.
 	Name pulumi.StringInput
 	// The teams list type. Available values: `IP`, `SERIAL`, `URL`, `DOMAIN`, `EMAIL`.
@@ -265,6 +275,11 @@ func (o TeamsListOutput) Description() pulumi.StringPtrOutput {
 // The items of the teams list.
 func (o TeamsListOutput) Items() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *TeamsList) pulumi.StringArrayOutput { return v.Items }).(pulumi.StringArrayOutput)
+}
+
+// The items of the teams list that has explicit description.
+func (o TeamsListOutput) ItemsWithDescriptions() TeamsListItemsWithDescriptionArrayOutput {
+	return o.ApplyT(func(v *TeamsList) TeamsListItemsWithDescriptionArrayOutput { return v.ItemsWithDescriptions }).(TeamsListItemsWithDescriptionArrayOutput)
 }
 
 // Name of the teams list.

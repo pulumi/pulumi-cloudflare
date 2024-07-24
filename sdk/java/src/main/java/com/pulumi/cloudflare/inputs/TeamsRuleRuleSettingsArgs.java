@@ -178,6 +178,21 @@ public final class TeamsRuleRuleSettingsArgs extends com.pulumi.resources.Resour
     }
 
     /**
+     * Set to true, to ignore the category matches at CNAME domains in a response.
+     * 
+     */
+    @Import(name="ignoreCnameCategoryMatches")
+    private @Nullable Output<Boolean> ignoreCnameCategoryMatches;
+
+    /**
+     * @return Set to true, to ignore the category matches at CNAME domains in a response.
+     * 
+     */
+    public Optional<Output<Boolean>> ignoreCnameCategoryMatches() {
+        return Optional.ofNullable(this.ignoreCnameCategoryMatches);
+    }
+
+    /**
      * Disable DNSSEC validation (must be Allow rule).
      * 
      */
@@ -325,6 +340,7 @@ public final class TeamsRuleRuleSettingsArgs extends com.pulumi.resources.Resour
         this.checkSession = $.checkSession;
         this.dnsResolvers = $.dnsResolvers;
         this.egress = $.egress;
+        this.ignoreCnameCategoryMatches = $.ignoreCnameCategoryMatches;
         this.insecureDisableDnssecValidation = $.insecureDisableDnssecValidation;
         this.ipCategories = $.ipCategories;
         this.l4override = $.l4override;
@@ -562,6 +578,27 @@ public final class TeamsRuleRuleSettingsArgs extends com.pulumi.resources.Resour
          */
         public Builder egress(TeamsRuleRuleSettingsEgressArgs egress) {
             return egress(Output.of(egress));
+        }
+
+        /**
+         * @param ignoreCnameCategoryMatches Set to true, to ignore the category matches at CNAME domains in a response.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ignoreCnameCategoryMatches(@Nullable Output<Boolean> ignoreCnameCategoryMatches) {
+            $.ignoreCnameCategoryMatches = ignoreCnameCategoryMatches;
+            return this;
+        }
+
+        /**
+         * @param ignoreCnameCategoryMatches Set to true, to ignore the category matches at CNAME domains in a response.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ignoreCnameCategoryMatches(Boolean ignoreCnameCategoryMatches) {
+            return ignoreCnameCategoryMatches(Output.of(ignoreCnameCategoryMatches));
         }
 
         /**

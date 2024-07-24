@@ -227,6 +227,7 @@ __all__ = [
     'TeamsAccountPayloadLog',
     'TeamsAccountProxy',
     'TeamsAccountSshSessionLog',
+    'TeamsListItemsWithDescription',
     'TeamsLocationNetwork',
     'TeamsRuleRuleSettings',
     'TeamsRuleRuleSettingsAuditSsh',
@@ -278,6 +279,8 @@ __all__ = [
     'GetDevicePostureRulesRuleResult',
     'GetDevicesDeviceResult',
     'GetDlpDatasetsDatasetResult',
+    'GetGatewayCategoriesCategoryResult',
+    'GetGatewayCategoriesCategorySubcategoryResult',
     'GetListsListResult',
     'GetLoadBalancerPoolsFilterResult',
     'GetLoadBalancerPoolsPoolResult',
@@ -15902,6 +15905,31 @@ class TeamsAccountSshSessionLog(dict):
 
 
 @pulumi.output_type
+class TeamsListItemsWithDescription(dict):
+    def __init__(__self__, *,
+                 description: str,
+                 value: str):
+        """
+        :param str description: The description of the teams list.
+        """
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
+        """
+        The description of the teams list.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def value(self) -> str:
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
 class TeamsLocationNetwork(dict):
     def __init__(__self__, *,
                  network: str,
@@ -15954,6 +15982,8 @@ class TeamsRuleRuleSettings(dict):
             suggest = "check_session"
         elif key == "dnsResolvers":
             suggest = "dns_resolvers"
+        elif key == "ignoreCnameCategoryMatches":
+            suggest = "ignore_cname_category_matches"
         elif key == "insecureDisableDnssecValidation":
             suggest = "insecure_disable_dnssec_validation"
         elif key == "ipCategories":
@@ -15993,6 +16023,7 @@ class TeamsRuleRuleSettings(dict):
                  check_session: Optional['outputs.TeamsRuleRuleSettingsCheckSession'] = None,
                  dns_resolvers: Optional['outputs.TeamsRuleRuleSettingsDnsResolvers'] = None,
                  egress: Optional['outputs.TeamsRuleRuleSettingsEgress'] = None,
+                 ignore_cname_category_matches: Optional[bool] = None,
                  insecure_disable_dnssec_validation: Optional[bool] = None,
                  ip_categories: Optional[bool] = None,
                  l4override: Optional['outputs.TeamsRuleRuleSettingsL4override'] = None,
@@ -16013,6 +16044,7 @@ class TeamsRuleRuleSettings(dict):
         :param 'TeamsRuleRuleSettingsCheckSessionArgs' check_session: Configure how session check behaves.
         :param 'TeamsRuleRuleSettingsDnsResolversArgs' dns_resolvers: Add your own custom resolvers to route queries that match the resolver policy. Cannot be used when resolve*dns*through*cloudflare is set. DNS queries will route to the address closest to their origin.
         :param 'TeamsRuleRuleSettingsEgressArgs' egress: Configure how Proxy traffic egresses. Can be set for rules with Egress action and Egress filter. Can be omitted to indicate local egress via Warp IPs.
+        :param bool ignore_cname_category_matches: Set to true, to ignore the category matches at CNAME domains in a response.
         :param bool insecure_disable_dnssec_validation: Disable DNSSEC validation (must be Allow rule).
         :param bool ip_categories: Turns on IP category based filter on dns if the rule contains dns category checks.
         :param 'TeamsRuleRuleSettingsL4overrideArgs' l4override: Settings to forward layer 4 traffic.
@@ -16043,6 +16075,8 @@ class TeamsRuleRuleSettings(dict):
             pulumi.set(__self__, "dns_resolvers", dns_resolvers)
         if egress is not None:
             pulumi.set(__self__, "egress", egress)
+        if ignore_cname_category_matches is not None:
+            pulumi.set(__self__, "ignore_cname_category_matches", ignore_cname_category_matches)
         if insecure_disable_dnssec_validation is not None:
             pulumi.set(__self__, "insecure_disable_dnssec_validation", insecure_disable_dnssec_validation)
         if ip_categories is not None:
@@ -16141,6 +16175,14 @@ class TeamsRuleRuleSettings(dict):
         Configure how Proxy traffic egresses. Can be set for rules with Egress action and Egress filter. Can be omitted to indicate local egress via Warp IPs.
         """
         return pulumi.get(self, "egress")
+
+    @property
+    @pulumi.getter(name="ignoreCnameCategoryMatches")
+    def ignore_cname_category_matches(self) -> Optional[bool]:
+        """
+        Set to true, to ignore the category matches at CNAME domains in a response.
+        """
+        return pulumi.get(self, "ignore_cname_category_matches")
 
     @property
     @pulumi.getter(name="insecureDisableDnssecValidation")
@@ -20036,6 +20078,141 @@ class GetDlpDatasetsDatasetResult(dict):
     @pulumi.getter
     def status(self) -> str:
         return pulumi.get(self, "status")
+
+
+@pulumi.output_type
+class GetGatewayCategoriesCategoryResult(dict):
+    def __init__(__self__, *,
+                 beta: bool,
+                 class_: str,
+                 description: str,
+                 id: int,
+                 name: str,
+                 subcategories: Sequence['outputs.GetGatewayCategoriesCategorySubcategoryResult']):
+        """
+        :param bool beta: True if the category is in beta and subject to change.
+        :param str class_: Which account types are allowed to create policies based on this category.
+        :param str description: A short summary of domains in the category.
+        :param int id: The identifier for this category. There is only one category per ID.
+        :param str name: The name of the category.
+        :param Sequence['GetGatewayCategoriesCategorySubcategoryArgs'] subcategories: A list of subcategories.
+        """
+        pulumi.set(__self__, "beta", beta)
+        pulumi.set(__self__, "class_", class_)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "subcategories", subcategories)
+
+    @property
+    @pulumi.getter
+    def beta(self) -> bool:
+        """
+        True if the category is in beta and subject to change.
+        """
+        return pulumi.get(self, "beta")
+
+    @property
+    @pulumi.getter(name="class")
+    def class_(self) -> str:
+        """
+        Which account types are allowed to create policies based on this category.
+        """
+        return pulumi.get(self, "class_")
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
+        """
+        A short summary of domains in the category.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def id(self) -> int:
+        """
+        The identifier for this category. There is only one category per ID.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of the category.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def subcategories(self) -> Sequence['outputs.GetGatewayCategoriesCategorySubcategoryResult']:
+        """
+        A list of subcategories.
+        """
+        return pulumi.get(self, "subcategories")
+
+
+@pulumi.output_type
+class GetGatewayCategoriesCategorySubcategoryResult(dict):
+    def __init__(__self__, *,
+                 beta: bool,
+                 class_: str,
+                 description: str,
+                 id: int,
+                 name: str):
+        """
+        :param bool beta: True if the subcategory is in beta and subject to change.
+        :param str class_: Which account types are allowed to create policies based on this subcategory.
+        :param str description: A short summary of domains in the subcategory.
+        :param int id: The identifier for this subcategory. There is only one subcategory per ID.
+        :param str name: The name of the subcategory.
+        """
+        pulumi.set(__self__, "beta", beta)
+        pulumi.set(__self__, "class_", class_)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def beta(self) -> bool:
+        """
+        True if the subcategory is in beta and subject to change.
+        """
+        return pulumi.get(self, "beta")
+
+    @property
+    @pulumi.getter(name="class")
+    def class_(self) -> str:
+        """
+        Which account types are allowed to create policies based on this subcategory.
+        """
+        return pulumi.get(self, "class_")
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
+        """
+        A short summary of domains in the subcategory.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def id(self) -> int:
+        """
+        The identifier for this subcategory. There is only one subcategory per ID.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of the subcategory.
+        """
+        return pulumi.get(self, "name")
 
 
 @pulumi.output_type

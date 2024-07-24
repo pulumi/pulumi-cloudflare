@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -75,6 +77,10 @@ export class TeamsList extends pulumi.CustomResource {
      */
     public readonly items!: pulumi.Output<string[] | undefined>;
     /**
+     * The items of the teams list that has explicit description.
+     */
+    public readonly itemsWithDescriptions!: pulumi.Output<outputs.TeamsListItemsWithDescription[] | undefined>;
+    /**
      * Name of the teams list.
      */
     public readonly name!: pulumi.Output<string>;
@@ -99,6 +105,7 @@ export class TeamsList extends pulumi.CustomResource {
             resourceInputs["accountId"] = state ? state.accountId : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["items"] = state ? state.items : undefined;
+            resourceInputs["itemsWithDescriptions"] = state ? state.itemsWithDescriptions : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["type"] = state ? state.type : undefined;
         } else {
@@ -115,6 +122,7 @@ export class TeamsList extends pulumi.CustomResource {
             resourceInputs["accountId"] = args ? args.accountId : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["items"] = args ? args.items : undefined;
+            resourceInputs["itemsWithDescriptions"] = args ? args.itemsWithDescriptions : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["type"] = args ? args.type : undefined;
         }
@@ -139,6 +147,10 @@ export interface TeamsListState {
      * The items of the teams list.
      */
     items?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The items of the teams list that has explicit description.
+     */
+    itemsWithDescriptions?: pulumi.Input<pulumi.Input<inputs.TeamsListItemsWithDescription>[]>;
     /**
      * Name of the teams list.
      */
@@ -165,6 +177,10 @@ export interface TeamsListArgs {
      * The items of the teams list.
      */
     items?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The items of the teams list that has explicit description.
+     */
+    itemsWithDescriptions?: pulumi.Input<pulumi.Input<inputs.TeamsListItemsWithDescription>[]>;
     /**
      * Name of the teams list.
      */

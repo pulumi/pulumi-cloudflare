@@ -1638,6 +1638,56 @@ export interface GetDlpDatasetsDataset {
     status: string;
 }
 
+export interface GetGatewayCategoriesCategory {
+    /**
+     * True if the category is in beta and subject to change.
+     */
+    beta: boolean;
+    /**
+     * Which account types are allowed to create policies based on this category.
+     */
+    class: string;
+    /**
+     * A short summary of domains in the category.
+     */
+    description: string;
+    /**
+     * The identifier for this category. There is only one category per ID.
+     */
+    id: number;
+    /**
+     * The name of the category.
+     */
+    name: string;
+    /**
+     * A list of subcategories.
+     */
+    subcategories: outputs.GetGatewayCategoriesCategorySubcategory[];
+}
+
+export interface GetGatewayCategoriesCategorySubcategory {
+    /**
+     * True if the subcategory is in beta and subject to change.
+     */
+    beta: boolean;
+    /**
+     * Which account types are allowed to create policies based on this subcategory.
+     */
+    class: string;
+    /**
+     * A short summary of domains in the subcategory.
+     */
+    description: string;
+    /**
+     * The identifier for this subcategory. There is only one subcategory per ID.
+     */
+    id: number;
+    /**
+     * The name of the subcategory.
+     */
+    name: string;
+}
+
 export interface GetListsList {
     /**
      * List description.
@@ -4915,6 +4965,14 @@ export interface TeamsAccountSshSessionLog {
     publicKey: string;
 }
 
+export interface TeamsListItemsWithDescription {
+    /**
+     * The description of the teams list.
+     */
+    description: string;
+    value: string;
+}
+
 export interface TeamsLocationNetwork {
     /**
      * The ID of this resource.
@@ -4967,6 +5025,10 @@ export interface TeamsRuleRuleSettings {
      * Configure how Proxy traffic egresses. Can be set for rules with Egress action and Egress filter. Can be omitted to indicate local egress via Warp IPs.
      */
     egress?: outputs.TeamsRuleRuleSettingsEgress;
+    /**
+     * Set to true, to ignore the category matches at CNAME domains in a response.
+     */
+    ignoreCnameCategoryMatches?: boolean;
     /**
      * Disable DNSSEC validation (must be Allow rule).
      */
