@@ -41,7 +41,7 @@ import (
 //			exampleScript, err := cloudflare.NewWorkerScript(ctx, "example_script", &cloudflare.WorkerScriptArgs{
 //				AccountId: pulumi.String("f037e56e89293a057740de681ac9abbe"),
 //				Name:      pulumi.String("example-script"),
-//				Content:   invokeFile.Result,
+//				Content:   pulumi.String(invokeFile.Result),
 //			})
 //			if err != nil {
 //				return err
