@@ -52,7 +52,7 @@ import (
 //			_, err = cloudflare.NewWorkerScript(ctx, "my_script", &cloudflare.WorkerScriptArgs{
 //				AccountId: pulumi.String("f037e56e89293a057740de681ac9abbe"),
 //				Name:      pulumi.String("script_1"),
-//				Content:   invokeFile.Result,
+//				Content:   pulumi.String(invokeFile.Result),
 //				KvNamespaceBindings: cloudflare.WorkerScriptKvNamespaceBindingArray{
 //					&cloudflare.WorkerScriptKvNamespaceBindingArgs{
 //						Name:        pulumi.String("MY_EXAMPLE_KV_NAMESPACE"),
@@ -74,7 +74,7 @@ import (
 //				WebassemblyBindings: cloudflare.WorkerScriptWebassemblyBindingArray{
 //					&cloudflare.WorkerScriptWebassemblyBindingArgs{
 //						Name:   pulumi.String("MY_EXAMPLE_WASM"),
-//						Module: invokeFilebase641.Result,
+//						Module: pulumi.String(invokeFilebase641.Result),
 //					},
 //				},
 //				ServiceBindings: cloudflare.WorkerScriptServiceBindingArray{
