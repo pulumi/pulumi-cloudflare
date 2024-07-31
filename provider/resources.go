@@ -183,6 +183,7 @@ func Provider() tfbridge.ProviderInfo {
 				mainPkg: "Cloudflare",
 			},
 		},
+		EnableZeroDefaultSchemaVersion: true,
 	}
 
 	prov.MustComputeTokens(tfbridgetokens.SingleModule("cloudflare_", mainMod,
