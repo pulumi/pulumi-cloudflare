@@ -125,7 +125,7 @@ public class ByoIpPrefix extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public ByoIpPrefix(String name) {
+    public ByoIpPrefix(java.lang.String name) {
         this(name, ByoIpPrefixArgs.Empty);
     }
     /**
@@ -133,7 +133,7 @@ public class ByoIpPrefix extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public ByoIpPrefix(String name, ByoIpPrefixArgs args) {
+    public ByoIpPrefix(java.lang.String name, ByoIpPrefixArgs args) {
         this(name, args, null);
     }
     /**
@@ -142,15 +142,22 @@ public class ByoIpPrefix extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public ByoIpPrefix(String name, ByoIpPrefixArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("cloudflare:index/byoIpPrefix:ByoIpPrefix", name, args == null ? ByoIpPrefixArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public ByoIpPrefix(java.lang.String name, ByoIpPrefixArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("cloudflare:index/byoIpPrefix:ByoIpPrefix", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private ByoIpPrefix(String name, Output<String> id, @Nullable ByoIpPrefixState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("cloudflare:index/byoIpPrefix:ByoIpPrefix", name, state, makeResourceOptions(options, id));
+    private ByoIpPrefix(java.lang.String name, Output<java.lang.String> id, @Nullable ByoIpPrefixState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("cloudflare:index/byoIpPrefix:ByoIpPrefix", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static ByoIpPrefixArgs makeArgs(ByoIpPrefixArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? ByoIpPrefixArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -166,7 +173,7 @@ public class ByoIpPrefix extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static ByoIpPrefix get(String name, Output<String> id, @Nullable ByoIpPrefixState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static ByoIpPrefix get(java.lang.String name, Output<java.lang.String> id, @Nullable ByoIpPrefixState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new ByoIpPrefix(name, id, state, options);
     }
 }

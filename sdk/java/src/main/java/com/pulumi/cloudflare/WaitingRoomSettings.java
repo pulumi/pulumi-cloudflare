@@ -96,7 +96,7 @@ public class WaitingRoomSettings extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public WaitingRoomSettings(String name) {
+    public WaitingRoomSettings(java.lang.String name) {
         this(name, WaitingRoomSettingsArgs.Empty);
     }
     /**
@@ -104,7 +104,7 @@ public class WaitingRoomSettings extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public WaitingRoomSettings(String name, WaitingRoomSettingsArgs args) {
+    public WaitingRoomSettings(java.lang.String name, WaitingRoomSettingsArgs args) {
         this(name, args, null);
     }
     /**
@@ -113,15 +113,22 @@ public class WaitingRoomSettings extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public WaitingRoomSettings(String name, WaitingRoomSettingsArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("cloudflare:index/waitingRoomSettings:WaitingRoomSettings", name, args == null ? WaitingRoomSettingsArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public WaitingRoomSettings(java.lang.String name, WaitingRoomSettingsArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("cloudflare:index/waitingRoomSettings:WaitingRoomSettings", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private WaitingRoomSettings(String name, Output<String> id, @Nullable WaitingRoomSettingsState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("cloudflare:index/waitingRoomSettings:WaitingRoomSettings", name, state, makeResourceOptions(options, id));
+    private WaitingRoomSettings(java.lang.String name, Output<java.lang.String> id, @Nullable WaitingRoomSettingsState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("cloudflare:index/waitingRoomSettings:WaitingRoomSettings", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static WaitingRoomSettingsArgs makeArgs(WaitingRoomSettingsArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? WaitingRoomSettingsArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -137,7 +144,7 @@ public class WaitingRoomSettings extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static WaitingRoomSettings get(String name, Output<String> id, @Nullable WaitingRoomSettingsState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static WaitingRoomSettings get(java.lang.String name, Output<java.lang.String> id, @Nullable WaitingRoomSettingsState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new WaitingRoomSettings(name, id, state, options);
     }
 }

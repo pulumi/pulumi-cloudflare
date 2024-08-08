@@ -94,7 +94,7 @@ public class WorkersKvNamespace extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public WorkersKvNamespace(String name) {
+    public WorkersKvNamespace(java.lang.String name) {
         this(name, WorkersKvNamespaceArgs.Empty);
     }
     /**
@@ -102,7 +102,7 @@ public class WorkersKvNamespace extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public WorkersKvNamespace(String name, WorkersKvNamespaceArgs args) {
+    public WorkersKvNamespace(java.lang.String name, WorkersKvNamespaceArgs args) {
         this(name, args, null);
     }
     /**
@@ -111,15 +111,22 @@ public class WorkersKvNamespace extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public WorkersKvNamespace(String name, WorkersKvNamespaceArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("cloudflare:index/workersKvNamespace:WorkersKvNamespace", name, args == null ? WorkersKvNamespaceArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public WorkersKvNamespace(java.lang.String name, WorkersKvNamespaceArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("cloudflare:index/workersKvNamespace:WorkersKvNamespace", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private WorkersKvNamespace(String name, Output<String> id, @Nullable WorkersKvNamespaceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("cloudflare:index/workersKvNamespace:WorkersKvNamespace", name, state, makeResourceOptions(options, id));
+    private WorkersKvNamespace(java.lang.String name, Output<java.lang.String> id, @Nullable WorkersKvNamespaceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("cloudflare:index/workersKvNamespace:WorkersKvNamespace", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static WorkersKvNamespaceArgs makeArgs(WorkersKvNamespaceArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? WorkersKvNamespaceArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -135,7 +142,7 @@ public class WorkersKvNamespace extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static WorkersKvNamespace get(String name, Output<String> id, @Nullable WorkersKvNamespaceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static WorkersKvNamespace get(java.lang.String name, Output<java.lang.String> id, @Nullable WorkersKvNamespaceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new WorkersKvNamespace(name, id, state, options);
     }
 }

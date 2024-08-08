@@ -156,7 +156,7 @@ public class UserAgentBlockingRule extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public UserAgentBlockingRule(String name) {
+    public UserAgentBlockingRule(java.lang.String name) {
         this(name, UserAgentBlockingRuleArgs.Empty);
     }
     /**
@@ -164,7 +164,7 @@ public class UserAgentBlockingRule extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public UserAgentBlockingRule(String name, UserAgentBlockingRuleArgs args) {
+    public UserAgentBlockingRule(java.lang.String name, UserAgentBlockingRuleArgs args) {
         this(name, args, null);
     }
     /**
@@ -173,15 +173,22 @@ public class UserAgentBlockingRule extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public UserAgentBlockingRule(String name, UserAgentBlockingRuleArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("cloudflare:index/userAgentBlockingRule:UserAgentBlockingRule", name, args == null ? UserAgentBlockingRuleArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public UserAgentBlockingRule(java.lang.String name, UserAgentBlockingRuleArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("cloudflare:index/userAgentBlockingRule:UserAgentBlockingRule", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private UserAgentBlockingRule(String name, Output<String> id, @Nullable UserAgentBlockingRuleState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("cloudflare:index/userAgentBlockingRule:UserAgentBlockingRule", name, state, makeResourceOptions(options, id));
+    private UserAgentBlockingRule(java.lang.String name, Output<java.lang.String> id, @Nullable UserAgentBlockingRuleState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("cloudflare:index/userAgentBlockingRule:UserAgentBlockingRule", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static UserAgentBlockingRuleArgs makeArgs(UserAgentBlockingRuleArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? UserAgentBlockingRuleArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -197,7 +204,7 @@ public class UserAgentBlockingRule extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static UserAgentBlockingRule get(String name, Output<String> id, @Nullable UserAgentBlockingRuleState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static UserAgentBlockingRule get(java.lang.String name, Output<java.lang.String> id, @Nullable UserAgentBlockingRuleState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new UserAgentBlockingRule(name, id, state, options);
     }
 }

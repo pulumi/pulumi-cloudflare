@@ -111,7 +111,7 @@ public class D1Database extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public D1Database(String name) {
+    public D1Database(java.lang.String name) {
         this(name, D1DatabaseArgs.Empty);
     }
     /**
@@ -119,7 +119,7 @@ public class D1Database extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public D1Database(String name, D1DatabaseArgs args) {
+    public D1Database(java.lang.String name, D1DatabaseArgs args) {
         this(name, args, null);
     }
     /**
@@ -128,15 +128,22 @@ public class D1Database extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public D1Database(String name, D1DatabaseArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("cloudflare:index/d1Database:D1Database", name, args == null ? D1DatabaseArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public D1Database(java.lang.String name, D1DatabaseArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("cloudflare:index/d1Database:D1Database", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private D1Database(String name, Output<String> id, @Nullable D1DatabaseState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("cloudflare:index/d1Database:D1Database", name, state, makeResourceOptions(options, id));
+    private D1Database(java.lang.String name, Output<java.lang.String> id, @Nullable D1DatabaseState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("cloudflare:index/d1Database:D1Database", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static D1DatabaseArgs makeArgs(D1DatabaseArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? D1DatabaseArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -152,7 +159,7 @@ public class D1Database extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static D1Database get(String name, Output<String> id, @Nullable D1DatabaseState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static D1Database get(java.lang.String name, Output<java.lang.String> id, @Nullable D1DatabaseState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new D1Database(name, id, state, options);
     }
 }

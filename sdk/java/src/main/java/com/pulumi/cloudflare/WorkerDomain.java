@@ -139,7 +139,7 @@ public class WorkerDomain extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public WorkerDomain(String name) {
+    public WorkerDomain(java.lang.String name) {
         this(name, WorkerDomainArgs.Empty);
     }
     /**
@@ -147,7 +147,7 @@ public class WorkerDomain extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public WorkerDomain(String name, WorkerDomainArgs args) {
+    public WorkerDomain(java.lang.String name, WorkerDomainArgs args) {
         this(name, args, null);
     }
     /**
@@ -156,15 +156,22 @@ public class WorkerDomain extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public WorkerDomain(String name, WorkerDomainArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("cloudflare:index/workerDomain:WorkerDomain", name, args == null ? WorkerDomainArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public WorkerDomain(java.lang.String name, WorkerDomainArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("cloudflare:index/workerDomain:WorkerDomain", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private WorkerDomain(String name, Output<String> id, @Nullable WorkerDomainState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("cloudflare:index/workerDomain:WorkerDomain", name, state, makeResourceOptions(options, id));
+    private WorkerDomain(java.lang.String name, Output<java.lang.String> id, @Nullable WorkerDomainState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("cloudflare:index/workerDomain:WorkerDomain", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static WorkerDomainArgs makeArgs(WorkerDomainArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? WorkerDomainArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -180,7 +187,7 @@ public class WorkerDomain extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static WorkerDomain get(String name, Output<String> id, @Nullable WorkerDomainState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static WorkerDomain get(java.lang.String name, Output<java.lang.String> id, @Nullable WorkerDomainState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new WorkerDomain(name, id, state, options);
     }
 }

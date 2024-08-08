@@ -172,7 +172,7 @@ public class AuthenticatedOriginPulls extends com.pulumi.resources.CustomResourc
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public AuthenticatedOriginPulls(String name) {
+    public AuthenticatedOriginPulls(java.lang.String name) {
         this(name, AuthenticatedOriginPullsArgs.Empty);
     }
     /**
@@ -180,7 +180,7 @@ public class AuthenticatedOriginPulls extends com.pulumi.resources.CustomResourc
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public AuthenticatedOriginPulls(String name, AuthenticatedOriginPullsArgs args) {
+    public AuthenticatedOriginPulls(java.lang.String name, AuthenticatedOriginPullsArgs args) {
         this(name, args, null);
     }
     /**
@@ -189,15 +189,22 @@ public class AuthenticatedOriginPulls extends com.pulumi.resources.CustomResourc
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public AuthenticatedOriginPulls(String name, AuthenticatedOriginPullsArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("cloudflare:index/authenticatedOriginPulls:AuthenticatedOriginPulls", name, args == null ? AuthenticatedOriginPullsArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public AuthenticatedOriginPulls(java.lang.String name, AuthenticatedOriginPullsArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("cloudflare:index/authenticatedOriginPulls:AuthenticatedOriginPulls", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private AuthenticatedOriginPulls(String name, Output<String> id, @Nullable AuthenticatedOriginPullsState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("cloudflare:index/authenticatedOriginPulls:AuthenticatedOriginPulls", name, state, makeResourceOptions(options, id));
+    private AuthenticatedOriginPulls(java.lang.String name, Output<java.lang.String> id, @Nullable AuthenticatedOriginPullsState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("cloudflare:index/authenticatedOriginPulls:AuthenticatedOriginPulls", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static AuthenticatedOriginPullsArgs makeArgs(AuthenticatedOriginPullsArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? AuthenticatedOriginPullsArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -213,7 +220,7 @@ public class AuthenticatedOriginPulls extends com.pulumi.resources.CustomResourc
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static AuthenticatedOriginPulls get(String name, Output<String> id, @Nullable AuthenticatedOriginPullsState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static AuthenticatedOriginPulls get(java.lang.String name, Output<java.lang.String> id, @Nullable AuthenticatedOriginPullsState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new AuthenticatedOriginPulls(name, id, state, options);
     }
 }

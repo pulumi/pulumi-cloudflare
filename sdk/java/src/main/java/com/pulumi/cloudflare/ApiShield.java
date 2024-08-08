@@ -95,7 +95,7 @@ public class ApiShield extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public ApiShield(String name) {
+    public ApiShield(java.lang.String name) {
         this(name, ApiShieldArgs.Empty);
     }
     /**
@@ -103,7 +103,7 @@ public class ApiShield extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public ApiShield(String name, ApiShieldArgs args) {
+    public ApiShield(java.lang.String name, ApiShieldArgs args) {
         this(name, args, null);
     }
     /**
@@ -112,15 +112,22 @@ public class ApiShield extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public ApiShield(String name, ApiShieldArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("cloudflare:index/apiShield:ApiShield", name, args == null ? ApiShieldArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public ApiShield(java.lang.String name, ApiShieldArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("cloudflare:index/apiShield:ApiShield", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private ApiShield(String name, Output<String> id, @Nullable ApiShieldState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("cloudflare:index/apiShield:ApiShield", name, state, makeResourceOptions(options, id));
+    private ApiShield(java.lang.String name, Output<java.lang.String> id, @Nullable ApiShieldState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("cloudflare:index/apiShield:ApiShield", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static ApiShieldArgs makeArgs(ApiShieldArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? ApiShieldArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -136,7 +143,7 @@ public class ApiShield extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static ApiShield get(String name, Output<String> id, @Nullable ApiShieldState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static ApiShield get(java.lang.String name, Output<java.lang.String> id, @Nullable ApiShieldState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new ApiShield(name, id, state, options);
     }
 }

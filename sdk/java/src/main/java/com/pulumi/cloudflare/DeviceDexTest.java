@@ -189,7 +189,7 @@ public class DeviceDexTest extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public DeviceDexTest(String name) {
+    public DeviceDexTest(java.lang.String name) {
         this(name, DeviceDexTestArgs.Empty);
     }
     /**
@@ -197,7 +197,7 @@ public class DeviceDexTest extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public DeviceDexTest(String name, DeviceDexTestArgs args) {
+    public DeviceDexTest(java.lang.String name, DeviceDexTestArgs args) {
         this(name, args, null);
     }
     /**
@@ -206,15 +206,22 @@ public class DeviceDexTest extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public DeviceDexTest(String name, DeviceDexTestArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("cloudflare:index/deviceDexTest:DeviceDexTest", name, args == null ? DeviceDexTestArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public DeviceDexTest(java.lang.String name, DeviceDexTestArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("cloudflare:index/deviceDexTest:DeviceDexTest", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private DeviceDexTest(String name, Output<String> id, @Nullable DeviceDexTestState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("cloudflare:index/deviceDexTest:DeviceDexTest", name, state, makeResourceOptions(options, id));
+    private DeviceDexTest(java.lang.String name, Output<java.lang.String> id, @Nullable DeviceDexTestState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("cloudflare:index/deviceDexTest:DeviceDexTest", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static DeviceDexTestArgs makeArgs(DeviceDexTestArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? DeviceDexTestArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -230,7 +237,7 @@ public class DeviceDexTest extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static DeviceDexTest get(String name, Output<String> id, @Nullable DeviceDexTestState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static DeviceDexTest get(java.lang.String name, Output<java.lang.String> id, @Nullable DeviceDexTestState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new DeviceDexTest(name, id, state, options);
     }
 }

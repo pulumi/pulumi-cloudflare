@@ -136,7 +136,7 @@ public class HostnameTlsSetting extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public HostnameTlsSetting(String name) {
+    public HostnameTlsSetting(java.lang.String name) {
         this(name, HostnameTlsSettingArgs.Empty);
     }
     /**
@@ -144,7 +144,7 @@ public class HostnameTlsSetting extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public HostnameTlsSetting(String name, HostnameTlsSettingArgs args) {
+    public HostnameTlsSetting(java.lang.String name, HostnameTlsSettingArgs args) {
         this(name, args, null);
     }
     /**
@@ -153,15 +153,22 @@ public class HostnameTlsSetting extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public HostnameTlsSetting(String name, HostnameTlsSettingArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("cloudflare:index/hostnameTlsSetting:HostnameTlsSetting", name, args == null ? HostnameTlsSettingArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public HostnameTlsSetting(java.lang.String name, HostnameTlsSettingArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("cloudflare:index/hostnameTlsSetting:HostnameTlsSetting", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private HostnameTlsSetting(String name, Output<String> id, @Nullable HostnameTlsSettingState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("cloudflare:index/hostnameTlsSetting:HostnameTlsSetting", name, state, makeResourceOptions(options, id));
+    private HostnameTlsSetting(java.lang.String name, Output<java.lang.String> id, @Nullable HostnameTlsSettingState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("cloudflare:index/hostnameTlsSetting:HostnameTlsSetting", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static HostnameTlsSettingArgs makeArgs(HostnameTlsSettingArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? HostnameTlsSettingArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -177,7 +184,7 @@ public class HostnameTlsSetting extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static HostnameTlsSetting get(String name, Output<String> id, @Nullable HostnameTlsSettingState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static HostnameTlsSetting get(java.lang.String name, Output<java.lang.String> id, @Nullable HostnameTlsSettingState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new HostnameTlsSetting(name, id, state, options);
     }
 }

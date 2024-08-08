@@ -260,8 +260,8 @@ class AddressMap(pulumi.CustomResource):
                  default_sni: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
-                 ips: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AddressMapIpArgs']]]]] = None,
-                 memberships: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AddressMapMembershipArgs']]]]] = None,
+                 ips: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AddressMapIpArgs', 'AddressMapIpArgsDict']]]]] = None,
+                 memberships: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AddressMapMembershipArgs', 'AddressMapMembershipArgsDict']]]]] = None,
                  __props__=None):
         """
         Provides the ability to manage IP addresses that can be used by DNS records when
@@ -279,22 +279,22 @@ class AddressMap(pulumi.CustomResource):
             default_sni="*.example.com",
             enabled=True,
             ips=[
-                cloudflare.AddressMapIpArgs(
-                    ip="192.0.2.1",
-                ),
-                cloudflare.AddressMapIpArgs(
-                    ip="203.0.113.1",
-                ),
+                {
+                    "ip": "192.0.2.1",
+                },
+                {
+                    "ip": "203.0.113.1",
+                },
             ],
             memberships=[
-                cloudflare.AddressMapMembershipArgs(
-                    identifier="92f17202ed8bd63d69a66b86a49a8f6b",
-                    kind="account",
-                ),
-                cloudflare.AddressMapMembershipArgs(
-                    identifier="023e105f4ecef8ad9ca31a8372d0c353",
-                    kind="zone",
-                ),
+                {
+                    "identifier": "92f17202ed8bd63d69a66b86a49a8f6b",
+                    "kind": "account",
+                },
+                {
+                    "identifier": "023e105f4ecef8ad9ca31a8372d0c353",
+                    "kind": "zone",
+                },
             ])
         ```
 
@@ -310,8 +310,8 @@ class AddressMap(pulumi.CustomResource):
         :param pulumi.Input[str] default_sni: If you have legacy TLS clients which do not send the TLS server name indicator, then you can specify one default SNI on the map.
         :param pulumi.Input[str] description: Description of the address map.
         :param pulumi.Input[bool] enabled: Whether the Address Map is enabled or not.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AddressMapIpArgs']]]] ips: The set of IPs on the Address Map.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AddressMapMembershipArgs']]]] memberships: Zones and Accounts which will be assigned IPs on this Address Map.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AddressMapIpArgs', 'AddressMapIpArgsDict']]]] ips: The set of IPs on the Address Map.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AddressMapMembershipArgs', 'AddressMapMembershipArgsDict']]]] memberships: Zones and Accounts which will be assigned IPs on this Address Map.
         """
         ...
     @overload
@@ -335,22 +335,22 @@ class AddressMap(pulumi.CustomResource):
             default_sni="*.example.com",
             enabled=True,
             ips=[
-                cloudflare.AddressMapIpArgs(
-                    ip="192.0.2.1",
-                ),
-                cloudflare.AddressMapIpArgs(
-                    ip="203.0.113.1",
-                ),
+                {
+                    "ip": "192.0.2.1",
+                },
+                {
+                    "ip": "203.0.113.1",
+                },
             ],
             memberships=[
-                cloudflare.AddressMapMembershipArgs(
-                    identifier="92f17202ed8bd63d69a66b86a49a8f6b",
-                    kind="account",
-                ),
-                cloudflare.AddressMapMembershipArgs(
-                    identifier="023e105f4ecef8ad9ca31a8372d0c353",
-                    kind="zone",
-                ),
+                {
+                    "identifier": "92f17202ed8bd63d69a66b86a49a8f6b",
+                    "kind": "account",
+                },
+                {
+                    "identifier": "023e105f4ecef8ad9ca31a8372d0c353",
+                    "kind": "zone",
+                },
             ])
         ```
 
@@ -379,8 +379,8 @@ class AddressMap(pulumi.CustomResource):
                  default_sni: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
-                 ips: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AddressMapIpArgs']]]]] = None,
-                 memberships: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AddressMapMembershipArgs']]]]] = None,
+                 ips: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AddressMapIpArgs', 'AddressMapIpArgsDict']]]]] = None,
+                 memberships: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AddressMapMembershipArgs', 'AddressMapMembershipArgsDict']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -418,8 +418,8 @@ class AddressMap(pulumi.CustomResource):
             default_sni: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
             enabled: Optional[pulumi.Input[bool]] = None,
-            ips: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AddressMapIpArgs']]]]] = None,
-            memberships: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AddressMapMembershipArgs']]]]] = None) -> 'AddressMap':
+            ips: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AddressMapIpArgs', 'AddressMapIpArgsDict']]]]] = None,
+            memberships: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AddressMapMembershipArgs', 'AddressMapMembershipArgsDict']]]]] = None) -> 'AddressMap':
         """
         Get an existing AddressMap resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -433,8 +433,8 @@ class AddressMap(pulumi.CustomResource):
         :param pulumi.Input[str] default_sni: If you have legacy TLS clients which do not send the TLS server name indicator, then you can specify one default SNI on the map.
         :param pulumi.Input[str] description: Description of the address map.
         :param pulumi.Input[bool] enabled: Whether the Address Map is enabled or not.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AddressMapIpArgs']]]] ips: The set of IPs on the Address Map.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AddressMapMembershipArgs']]]] memberships: Zones and Accounts which will be assigned IPs on this Address Map.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AddressMapIpArgs', 'AddressMapIpArgsDict']]]] ips: The set of IPs on the Address Map.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AddressMapMembershipArgs', 'AddressMapMembershipArgsDict']]]] memberships: Zones and Accounts which will be assigned IPs on this Address Map.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

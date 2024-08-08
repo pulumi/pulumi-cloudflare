@@ -240,7 +240,7 @@ public class ZoneDnssec extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public ZoneDnssec(String name) {
+    public ZoneDnssec(java.lang.String name) {
         this(name, ZoneDnssecArgs.Empty);
     }
     /**
@@ -248,7 +248,7 @@ public class ZoneDnssec extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public ZoneDnssec(String name, ZoneDnssecArgs args) {
+    public ZoneDnssec(java.lang.String name, ZoneDnssecArgs args) {
         this(name, args, null);
     }
     /**
@@ -257,15 +257,22 @@ public class ZoneDnssec extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public ZoneDnssec(String name, ZoneDnssecArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("cloudflare:index/zoneDnssec:ZoneDnssec", name, args == null ? ZoneDnssecArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public ZoneDnssec(java.lang.String name, ZoneDnssecArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("cloudflare:index/zoneDnssec:ZoneDnssec", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private ZoneDnssec(String name, Output<String> id, @Nullable ZoneDnssecState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("cloudflare:index/zoneDnssec:ZoneDnssec", name, state, makeResourceOptions(options, id));
+    private ZoneDnssec(java.lang.String name, Output<java.lang.String> id, @Nullable ZoneDnssecState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("cloudflare:index/zoneDnssec:ZoneDnssec", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static ZoneDnssecArgs makeArgs(ZoneDnssecArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? ZoneDnssecArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -281,7 +288,7 @@ public class ZoneDnssec extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static ZoneDnssec get(String name, Output<String> id, @Nullable ZoneDnssecState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static ZoneDnssec get(java.lang.String name, Output<java.lang.String> id, @Nullable ZoneDnssecState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new ZoneDnssec(name, id, state, options);
     }
 }

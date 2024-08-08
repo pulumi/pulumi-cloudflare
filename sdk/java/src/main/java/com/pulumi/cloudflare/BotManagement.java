@@ -233,7 +233,7 @@ public class BotManagement extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public BotManagement(String name) {
+    public BotManagement(java.lang.String name) {
         this(name, BotManagementArgs.Empty);
     }
     /**
@@ -241,7 +241,7 @@ public class BotManagement extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public BotManagement(String name, BotManagementArgs args) {
+    public BotManagement(java.lang.String name, BotManagementArgs args) {
         this(name, args, null);
     }
     /**
@@ -250,15 +250,22 @@ public class BotManagement extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public BotManagement(String name, BotManagementArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("cloudflare:index/botManagement:BotManagement", name, args == null ? BotManagementArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public BotManagement(java.lang.String name, BotManagementArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("cloudflare:index/botManagement:BotManagement", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private BotManagement(String name, Output<String> id, @Nullable BotManagementState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("cloudflare:index/botManagement:BotManagement", name, state, makeResourceOptions(options, id));
+    private BotManagement(java.lang.String name, Output<java.lang.String> id, @Nullable BotManagementState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("cloudflare:index/botManagement:BotManagement", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static BotManagementArgs makeArgs(BotManagementArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? BotManagementArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -274,7 +281,7 @@ public class BotManagement extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static BotManagement get(String name, Output<String> id, @Nullable BotManagementState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static BotManagement get(java.lang.String name, Output<java.lang.String> id, @Nullable BotManagementState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new BotManagement(name, id, state, options);
     }
 }

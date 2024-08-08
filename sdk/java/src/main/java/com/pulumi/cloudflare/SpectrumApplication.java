@@ -272,7 +272,7 @@ public class SpectrumApplication extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public SpectrumApplication(String name) {
+    public SpectrumApplication(java.lang.String name) {
         this(name, SpectrumApplicationArgs.Empty);
     }
     /**
@@ -280,7 +280,7 @@ public class SpectrumApplication extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public SpectrumApplication(String name, SpectrumApplicationArgs args) {
+    public SpectrumApplication(java.lang.String name, SpectrumApplicationArgs args) {
         this(name, args, null);
     }
     /**
@@ -289,15 +289,22 @@ public class SpectrumApplication extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public SpectrumApplication(String name, SpectrumApplicationArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("cloudflare:index/spectrumApplication:SpectrumApplication", name, args == null ? SpectrumApplicationArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public SpectrumApplication(java.lang.String name, SpectrumApplicationArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("cloudflare:index/spectrumApplication:SpectrumApplication", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private SpectrumApplication(String name, Output<String> id, @Nullable SpectrumApplicationState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("cloudflare:index/spectrumApplication:SpectrumApplication", name, state, makeResourceOptions(options, id));
+    private SpectrumApplication(java.lang.String name, Output<java.lang.String> id, @Nullable SpectrumApplicationState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("cloudflare:index/spectrumApplication:SpectrumApplication", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static SpectrumApplicationArgs makeArgs(SpectrumApplicationArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? SpectrumApplicationArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -313,7 +320,7 @@ public class SpectrumApplication extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static SpectrumApplication get(String name, Output<String> id, @Nullable SpectrumApplicationState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static SpectrumApplication get(java.lang.String name, Output<java.lang.String> id, @Nullable SpectrumApplicationState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new SpectrumApplication(name, id, state, options);
     }
 }

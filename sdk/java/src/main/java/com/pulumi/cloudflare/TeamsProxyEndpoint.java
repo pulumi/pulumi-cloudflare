@@ -126,7 +126,7 @@ public class TeamsProxyEndpoint extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public TeamsProxyEndpoint(String name) {
+    public TeamsProxyEndpoint(java.lang.String name) {
         this(name, TeamsProxyEndpointArgs.Empty);
     }
     /**
@@ -134,7 +134,7 @@ public class TeamsProxyEndpoint extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public TeamsProxyEndpoint(String name, TeamsProxyEndpointArgs args) {
+    public TeamsProxyEndpoint(java.lang.String name, TeamsProxyEndpointArgs args) {
         this(name, args, null);
     }
     /**
@@ -143,15 +143,22 @@ public class TeamsProxyEndpoint extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public TeamsProxyEndpoint(String name, TeamsProxyEndpointArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("cloudflare:index/teamsProxyEndpoint:TeamsProxyEndpoint", name, args == null ? TeamsProxyEndpointArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public TeamsProxyEndpoint(java.lang.String name, TeamsProxyEndpointArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("cloudflare:index/teamsProxyEndpoint:TeamsProxyEndpoint", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private TeamsProxyEndpoint(String name, Output<String> id, @Nullable TeamsProxyEndpointState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("cloudflare:index/teamsProxyEndpoint:TeamsProxyEndpoint", name, state, makeResourceOptions(options, id));
+    private TeamsProxyEndpoint(java.lang.String name, Output<java.lang.String> id, @Nullable TeamsProxyEndpointState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("cloudflare:index/teamsProxyEndpoint:TeamsProxyEndpoint", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static TeamsProxyEndpointArgs makeArgs(TeamsProxyEndpointArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? TeamsProxyEndpointArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -167,7 +174,7 @@ public class TeamsProxyEndpoint extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static TeamsProxyEndpoint get(String name, Output<String> id, @Nullable TeamsProxyEndpointState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static TeamsProxyEndpoint get(java.lang.String name, Output<java.lang.String> id, @Nullable TeamsProxyEndpointState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new TeamsProxyEndpoint(name, id, state, options);
     }
 }

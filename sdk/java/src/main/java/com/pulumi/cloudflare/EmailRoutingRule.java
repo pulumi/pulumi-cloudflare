@@ -43,12 +43,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var main = new EmailRoutingRule("main", EmailRoutingRuleArgs.builder()
  *             .zoneId("0da42c8d2132a9ddaf714f9e7c920711")
  *             .name("terraform rule")
@@ -56,16 +56,16 @@ import javax.annotation.Nullable;
  *             .matchers(EmailRoutingRuleMatcherArgs.builder()
  *                 .type("literal")
  *                 .field("to")
- *                 .value("test{@literal @}example.com")
+ *                 .value("test}{@literal @}{@code example.com")
  *                 .build())
  *             .actions(EmailRoutingRuleActionArgs.builder()
  *                 .type("forward")
- *                 .values("destinationaddress{@literal @}example.net")
+ *                 .values("destinationaddress}{@literal @}{@code example.net")
  *                 .build())
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
@@ -182,7 +182,7 @@ public class EmailRoutingRule extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public EmailRoutingRule(String name) {
+    public EmailRoutingRule(java.lang.String name) {
         this(name, EmailRoutingRuleArgs.Empty);
     }
     /**
@@ -190,7 +190,7 @@ public class EmailRoutingRule extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public EmailRoutingRule(String name, EmailRoutingRuleArgs args) {
+    public EmailRoutingRule(java.lang.String name, EmailRoutingRuleArgs args) {
         this(name, args, null);
     }
     /**
@@ -199,15 +199,22 @@ public class EmailRoutingRule extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public EmailRoutingRule(String name, EmailRoutingRuleArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("cloudflare:index/emailRoutingRule:EmailRoutingRule", name, args == null ? EmailRoutingRuleArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public EmailRoutingRule(java.lang.String name, EmailRoutingRuleArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("cloudflare:index/emailRoutingRule:EmailRoutingRule", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private EmailRoutingRule(String name, Output<String> id, @Nullable EmailRoutingRuleState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("cloudflare:index/emailRoutingRule:EmailRoutingRule", name, state, makeResourceOptions(options, id));
+    private EmailRoutingRule(java.lang.String name, Output<java.lang.String> id, @Nullable EmailRoutingRuleState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("cloudflare:index/emailRoutingRule:EmailRoutingRule", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static EmailRoutingRuleArgs makeArgs(EmailRoutingRuleArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? EmailRoutingRuleArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -223,7 +230,7 @@ public class EmailRoutingRule extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static EmailRoutingRule get(String name, Output<String> id, @Nullable EmailRoutingRuleState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static EmailRoutingRule get(java.lang.String name, Output<java.lang.String> id, @Nullable EmailRoutingRuleState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new EmailRoutingRule(name, id, state, options);
     }
 }

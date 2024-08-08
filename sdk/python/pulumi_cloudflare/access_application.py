@@ -1081,24 +1081,24 @@ class AccessApplication(pulumi.CustomResource):
                  app_launcher_visible: Optional[pulumi.Input[bool]] = None,
                  auto_redirect_to_identity: Optional[pulumi.Input[bool]] = None,
                  bg_color: Optional[pulumi.Input[str]] = None,
-                 cors_headers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessApplicationCorsHeaderArgs']]]]] = None,
+                 cors_headers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AccessApplicationCorsHeaderArgs', 'AccessApplicationCorsHeaderArgsDict']]]]] = None,
                  custom_deny_message: Optional[pulumi.Input[str]] = None,
                  custom_deny_url: Optional[pulumi.Input[str]] = None,
                  custom_non_identity_deny_url: Optional[pulumi.Input[str]] = None,
                  custom_pages: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  domain: Optional[pulumi.Input[str]] = None,
                  enable_binding_cookie: Optional[pulumi.Input[bool]] = None,
-                 footer_links: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessApplicationFooterLinkArgs']]]]] = None,
+                 footer_links: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AccessApplicationFooterLinkArgs', 'AccessApplicationFooterLinkArgsDict']]]]] = None,
                  header_bg_color: Optional[pulumi.Input[str]] = None,
                  http_only_cookie_attribute: Optional[pulumi.Input[bool]] = None,
-                 landing_page_design: Optional[pulumi.Input[pulumi.InputType['AccessApplicationLandingPageDesignArgs']]] = None,
+                 landing_page_design: Optional[pulumi.Input[Union['AccessApplicationLandingPageDesignArgs', 'AccessApplicationLandingPageDesignArgsDict']]] = None,
                  logo_url: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  options_preflight_bypass: Optional[pulumi.Input[bool]] = None,
                  policies: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 saas_app: Optional[pulumi.Input[pulumi.InputType['AccessApplicationSaasAppArgs']]] = None,
+                 saas_app: Optional[pulumi.Input[Union['AccessApplicationSaasAppArgs', 'AccessApplicationSaasAppArgsDict']]] = None,
                  same_site_cookie_attribute: Optional[pulumi.Input[str]] = None,
-                 scim_config: Optional[pulumi.Input[pulumi.InputType['AccessApplicationScimConfigArgs']]] = None,
+                 scim_config: Optional[pulumi.Input[Union['AccessApplicationScimConfigArgs', 'AccessApplicationScimConfigArgsDict']]] = None,
                  self_hosted_domains: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  service_auth401_redirect: Optional[pulumi.Input[bool]] = None,
                  session_duration: Optional[pulumi.Input[str]] = None,
@@ -1133,24 +1133,24 @@ class AccessApplication(pulumi.CustomResource):
         :param pulumi.Input[bool] app_launcher_visible: Option to show/hide applications in App Launcher. Defaults to `true`.
         :param pulumi.Input[bool] auto_redirect_to_identity: Option to skip identity provider selection if only one is configured in `allowed_idps`. Defaults to `false`.
         :param pulumi.Input[str] bg_color: The background color of the app launcher.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessApplicationCorsHeaderArgs']]]] cors_headers: CORS configuration for the Access Application. See below for reference structure.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AccessApplicationCorsHeaderArgs', 'AccessApplicationCorsHeaderArgsDict']]]] cors_headers: CORS configuration for the Access Application. See below for reference structure.
         :param pulumi.Input[str] custom_deny_message: Option that returns a custom error message when a user is denied access to the application.
         :param pulumi.Input[str] custom_deny_url: Option that redirects to a custom URL when a user is denied access to the application via identity based rules.
         :param pulumi.Input[str] custom_non_identity_deny_url: Option that redirects to a custom URL when a user is denied access to the application via non identity rules.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] custom_pages: The custom pages selected for the application.
         :param pulumi.Input[str] domain: The primary hostname and path that Access will secure. If the app is visible in the App Launcher dashboard, this is the domain that will be displayed.
         :param pulumi.Input[bool] enable_binding_cookie: Option to provide increased security against compromised authorization tokens and CSRF attacks by requiring an additional "binding" cookie on requests. Defaults to `false`.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessApplicationFooterLinkArgs']]]] footer_links: The footer links of the app launcher.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AccessApplicationFooterLinkArgs', 'AccessApplicationFooterLinkArgsDict']]]] footer_links: The footer links of the app launcher.
         :param pulumi.Input[str] header_bg_color: The background color of the header bar in the app launcher.
         :param pulumi.Input[bool] http_only_cookie_attribute: Option to add the `HttpOnly` cookie flag to access tokens.
-        :param pulumi.Input[pulumi.InputType['AccessApplicationLandingPageDesignArgs']] landing_page_design: The landing page design of the app launcher.
+        :param pulumi.Input[Union['AccessApplicationLandingPageDesignArgs', 'AccessApplicationLandingPageDesignArgsDict']] landing_page_design: The landing page design of the app launcher.
         :param pulumi.Input[str] logo_url: Image URL for the logo shown in the app launcher dashboard.
         :param pulumi.Input[str] name: Friendly name of the Access Application.
         :param pulumi.Input[bool] options_preflight_bypass: Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if cors_headers is set. Defaults to `false`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] policies: The policies associated with the application, in ascending order of precedence. Warning: Do not use this field while you still have this application ID referenced as `application_id` in any `AccessPolicy` resource, as it can result in an inconsistent state.
-        :param pulumi.Input[pulumi.InputType['AccessApplicationSaasAppArgs']] saas_app: SaaS configuration for the Access Application.
+        :param pulumi.Input[Union['AccessApplicationSaasAppArgs', 'AccessApplicationSaasAppArgsDict']] saas_app: SaaS configuration for the Access Application.
         :param pulumi.Input[str] same_site_cookie_attribute: Defines the same-site cookie setting for access tokens. Available values: `none`, `lax`, `strict`.
-        :param pulumi.Input[pulumi.InputType['AccessApplicationScimConfigArgs']] scim_config: Configuration for provisioning to this application via SCIM. This is currently in closed beta.
+        :param pulumi.Input[Union['AccessApplicationScimConfigArgs', 'AccessApplicationScimConfigArgsDict']] scim_config: Configuration for provisioning to this application via SCIM. This is currently in closed beta.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] self_hosted_domains: List of domains that access will secure. Only present for self_hosted, vnc, and ssh applications. Always includes the value set as `domain`.
         :param pulumi.Input[bool] service_auth401_redirect: Option to return a 401 status code in service authentication rules on failed requests. Defaults to `false`.
         :param pulumi.Input[str] session_duration: How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`. Defaults to `24h`.
@@ -1204,24 +1204,24 @@ class AccessApplication(pulumi.CustomResource):
                  app_launcher_visible: Optional[pulumi.Input[bool]] = None,
                  auto_redirect_to_identity: Optional[pulumi.Input[bool]] = None,
                  bg_color: Optional[pulumi.Input[str]] = None,
-                 cors_headers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessApplicationCorsHeaderArgs']]]]] = None,
+                 cors_headers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AccessApplicationCorsHeaderArgs', 'AccessApplicationCorsHeaderArgsDict']]]]] = None,
                  custom_deny_message: Optional[pulumi.Input[str]] = None,
                  custom_deny_url: Optional[pulumi.Input[str]] = None,
                  custom_non_identity_deny_url: Optional[pulumi.Input[str]] = None,
                  custom_pages: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  domain: Optional[pulumi.Input[str]] = None,
                  enable_binding_cookie: Optional[pulumi.Input[bool]] = None,
-                 footer_links: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessApplicationFooterLinkArgs']]]]] = None,
+                 footer_links: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AccessApplicationFooterLinkArgs', 'AccessApplicationFooterLinkArgsDict']]]]] = None,
                  header_bg_color: Optional[pulumi.Input[str]] = None,
                  http_only_cookie_attribute: Optional[pulumi.Input[bool]] = None,
-                 landing_page_design: Optional[pulumi.Input[pulumi.InputType['AccessApplicationLandingPageDesignArgs']]] = None,
+                 landing_page_design: Optional[pulumi.Input[Union['AccessApplicationLandingPageDesignArgs', 'AccessApplicationLandingPageDesignArgsDict']]] = None,
                  logo_url: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  options_preflight_bypass: Optional[pulumi.Input[bool]] = None,
                  policies: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 saas_app: Optional[pulumi.Input[pulumi.InputType['AccessApplicationSaasAppArgs']]] = None,
+                 saas_app: Optional[pulumi.Input[Union['AccessApplicationSaasAppArgs', 'AccessApplicationSaasAppArgsDict']]] = None,
                  same_site_cookie_attribute: Optional[pulumi.Input[str]] = None,
-                 scim_config: Optional[pulumi.Input[pulumi.InputType['AccessApplicationScimConfigArgs']]] = None,
+                 scim_config: Optional[pulumi.Input[Union['AccessApplicationScimConfigArgs', 'AccessApplicationScimConfigArgsDict']]] = None,
                  self_hosted_domains: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  service_auth401_redirect: Optional[pulumi.Input[bool]] = None,
                  session_duration: Optional[pulumi.Input[str]] = None,
@@ -1289,24 +1289,24 @@ class AccessApplication(pulumi.CustomResource):
             aud: Optional[pulumi.Input[str]] = None,
             auto_redirect_to_identity: Optional[pulumi.Input[bool]] = None,
             bg_color: Optional[pulumi.Input[str]] = None,
-            cors_headers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessApplicationCorsHeaderArgs']]]]] = None,
+            cors_headers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AccessApplicationCorsHeaderArgs', 'AccessApplicationCorsHeaderArgsDict']]]]] = None,
             custom_deny_message: Optional[pulumi.Input[str]] = None,
             custom_deny_url: Optional[pulumi.Input[str]] = None,
             custom_non_identity_deny_url: Optional[pulumi.Input[str]] = None,
             custom_pages: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             domain: Optional[pulumi.Input[str]] = None,
             enable_binding_cookie: Optional[pulumi.Input[bool]] = None,
-            footer_links: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessApplicationFooterLinkArgs']]]]] = None,
+            footer_links: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AccessApplicationFooterLinkArgs', 'AccessApplicationFooterLinkArgsDict']]]]] = None,
             header_bg_color: Optional[pulumi.Input[str]] = None,
             http_only_cookie_attribute: Optional[pulumi.Input[bool]] = None,
-            landing_page_design: Optional[pulumi.Input[pulumi.InputType['AccessApplicationLandingPageDesignArgs']]] = None,
+            landing_page_design: Optional[pulumi.Input[Union['AccessApplicationLandingPageDesignArgs', 'AccessApplicationLandingPageDesignArgsDict']]] = None,
             logo_url: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             options_preflight_bypass: Optional[pulumi.Input[bool]] = None,
             policies: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-            saas_app: Optional[pulumi.Input[pulumi.InputType['AccessApplicationSaasAppArgs']]] = None,
+            saas_app: Optional[pulumi.Input[Union['AccessApplicationSaasAppArgs', 'AccessApplicationSaasAppArgsDict']]] = None,
             same_site_cookie_attribute: Optional[pulumi.Input[str]] = None,
-            scim_config: Optional[pulumi.Input[pulumi.InputType['AccessApplicationScimConfigArgs']]] = None,
+            scim_config: Optional[pulumi.Input[Union['AccessApplicationScimConfigArgs', 'AccessApplicationScimConfigArgsDict']]] = None,
             self_hosted_domains: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             service_auth401_redirect: Optional[pulumi.Input[bool]] = None,
             session_duration: Optional[pulumi.Input[str]] = None,
@@ -1329,24 +1329,24 @@ class AccessApplication(pulumi.CustomResource):
         :param pulumi.Input[str] aud: Application Audience (AUD) Tag of the application.
         :param pulumi.Input[bool] auto_redirect_to_identity: Option to skip identity provider selection if only one is configured in `allowed_idps`. Defaults to `false`.
         :param pulumi.Input[str] bg_color: The background color of the app launcher.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessApplicationCorsHeaderArgs']]]] cors_headers: CORS configuration for the Access Application. See below for reference structure.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AccessApplicationCorsHeaderArgs', 'AccessApplicationCorsHeaderArgsDict']]]] cors_headers: CORS configuration for the Access Application. See below for reference structure.
         :param pulumi.Input[str] custom_deny_message: Option that returns a custom error message when a user is denied access to the application.
         :param pulumi.Input[str] custom_deny_url: Option that redirects to a custom URL when a user is denied access to the application via identity based rules.
         :param pulumi.Input[str] custom_non_identity_deny_url: Option that redirects to a custom URL when a user is denied access to the application via non identity rules.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] custom_pages: The custom pages selected for the application.
         :param pulumi.Input[str] domain: The primary hostname and path that Access will secure. If the app is visible in the App Launcher dashboard, this is the domain that will be displayed.
         :param pulumi.Input[bool] enable_binding_cookie: Option to provide increased security against compromised authorization tokens and CSRF attacks by requiring an additional "binding" cookie on requests. Defaults to `false`.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessApplicationFooterLinkArgs']]]] footer_links: The footer links of the app launcher.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AccessApplicationFooterLinkArgs', 'AccessApplicationFooterLinkArgsDict']]]] footer_links: The footer links of the app launcher.
         :param pulumi.Input[str] header_bg_color: The background color of the header bar in the app launcher.
         :param pulumi.Input[bool] http_only_cookie_attribute: Option to add the `HttpOnly` cookie flag to access tokens.
-        :param pulumi.Input[pulumi.InputType['AccessApplicationLandingPageDesignArgs']] landing_page_design: The landing page design of the app launcher.
+        :param pulumi.Input[Union['AccessApplicationLandingPageDesignArgs', 'AccessApplicationLandingPageDesignArgsDict']] landing_page_design: The landing page design of the app launcher.
         :param pulumi.Input[str] logo_url: Image URL for the logo shown in the app launcher dashboard.
         :param pulumi.Input[str] name: Friendly name of the Access Application.
         :param pulumi.Input[bool] options_preflight_bypass: Allows options preflight requests to bypass Access authentication and go directly to the origin. Cannot turn on if cors_headers is set. Defaults to `false`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] policies: The policies associated with the application, in ascending order of precedence. Warning: Do not use this field while you still have this application ID referenced as `application_id` in any `AccessPolicy` resource, as it can result in an inconsistent state.
-        :param pulumi.Input[pulumi.InputType['AccessApplicationSaasAppArgs']] saas_app: SaaS configuration for the Access Application.
+        :param pulumi.Input[Union['AccessApplicationSaasAppArgs', 'AccessApplicationSaasAppArgsDict']] saas_app: SaaS configuration for the Access Application.
         :param pulumi.Input[str] same_site_cookie_attribute: Defines the same-site cookie setting for access tokens. Available values: `none`, `lax`, `strict`.
-        :param pulumi.Input[pulumi.InputType['AccessApplicationScimConfigArgs']] scim_config: Configuration for provisioning to this application via SCIM. This is currently in closed beta.
+        :param pulumi.Input[Union['AccessApplicationScimConfigArgs', 'AccessApplicationScimConfigArgsDict']] scim_config: Configuration for provisioning to this application via SCIM. This is currently in closed beta.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] self_hosted_domains: List of domains that access will secure. Only present for self_hosted, vnc, and ssh applications. Always includes the value set as `domain`.
         :param pulumi.Input[bool] service_auth401_redirect: Option to return a 401 status code in service authentication rules on failed requests. Defaults to `false`.
         :param pulumi.Input[str] session_duration: How often a user will be forced to re-authorise. Must be in the format `48h` or `2h45m`. Defaults to `24h`.

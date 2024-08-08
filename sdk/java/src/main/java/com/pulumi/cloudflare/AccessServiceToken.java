@@ -146,7 +146,7 @@ public class AccessServiceToken extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public AccessServiceToken(String name) {
+    public AccessServiceToken(java.lang.String name) {
         this(name, AccessServiceTokenArgs.Empty);
     }
     /**
@@ -154,7 +154,7 @@ public class AccessServiceToken extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public AccessServiceToken(String name, AccessServiceTokenArgs args) {
+    public AccessServiceToken(java.lang.String name, AccessServiceTokenArgs args) {
         this(name, args, null);
     }
     /**
@@ -163,15 +163,22 @@ public class AccessServiceToken extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public AccessServiceToken(String name, AccessServiceTokenArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("cloudflare:index/accessServiceToken:AccessServiceToken", name, args == null ? AccessServiceTokenArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public AccessServiceToken(java.lang.String name, AccessServiceTokenArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("cloudflare:index/accessServiceToken:AccessServiceToken", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private AccessServiceToken(String name, Output<String> id, @Nullable AccessServiceTokenState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("cloudflare:index/accessServiceToken:AccessServiceToken", name, state, makeResourceOptions(options, id));
+    private AccessServiceToken(java.lang.String name, Output<java.lang.String> id, @Nullable AccessServiceTokenState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("cloudflare:index/accessServiceToken:AccessServiceToken", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static AccessServiceTokenArgs makeArgs(AccessServiceTokenArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? AccessServiceTokenArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .additionalSecretOutputs(List.of(
@@ -190,7 +197,7 @@ public class AccessServiceToken extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static AccessServiceToken get(String name, Output<String> id, @Nullable AccessServiceTokenState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static AccessServiceToken get(java.lang.String name, Output<java.lang.String> id, @Nullable AccessServiceTokenState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new AccessServiceToken(name, id, state, options);
     }
 }

@@ -20762,7 +20762,7 @@ type PageRuleActionsCacheKeyFieldsUser struct {
 	// 		// Unrealistic example with all features used
 	// 		_, err := cloudflare.NewPageRule(ctx, "foobar", &cloudflare.PageRuleArgs{
 	// 			ZoneId:   pulumi.Any(cloudflareZoneId),
-	// 			Target:   pulumi.String(fmt.Sprintf("%v/app/*", cloudflareZone)),
+	// 			Target:   pulumi.Sprintf("%v/app/*", cloudflareZone),
 	// 			Priority: pulumi.Int(1),
 	// 			Actions: &cloudflare.PageRuleActionsArgs{
 	// 				CacheKeyFields: &cloudflare.PageRuleActionsCacheKeyFieldsArgs{
@@ -20842,7 +20842,7 @@ type PageRuleActionsCacheKeyFieldsUserArgs struct {
 	// 		// Unrealistic example with all features used
 	// 		_, err := cloudflare.NewPageRule(ctx, "foobar", &cloudflare.PageRuleArgs{
 	// 			ZoneId:   pulumi.Any(cloudflareZoneId),
-	// 			Target:   pulumi.String(fmt.Sprintf("%v/app/*", cloudflareZone)),
+	// 			Target:   pulumi.Sprintf("%v/app/*", cloudflareZone),
 	// 			Priority: pulumi.Int(1),
 	// 			Actions: &cloudflare.PageRuleActionsArgs{
 	// 				CacheKeyFields: &cloudflare.PageRuleActionsCacheKeyFieldsArgs{
@@ -20995,7 +20995,7 @@ func (o PageRuleActionsCacheKeyFieldsUserOutput) Geo() pulumi.BoolPtrOutput {
 //			// Unrealistic example with all features used
 //			_, err := cloudflare.NewPageRule(ctx, "foobar", &cloudflare.PageRuleArgs{
 //				ZoneId:   pulumi.Any(cloudflareZoneId),
-//				Target:   pulumi.String(fmt.Sprintf("%v/app/*", cloudflareZone)),
+//				Target:   pulumi.Sprintf("%v/app/*", cloudflareZone),
 //				Priority: pulumi.Int(1),
 //				Actions: &cloudflare.PageRuleActionsArgs{
 //					CacheKeyFields: &cloudflare.PageRuleActionsCacheKeyFieldsArgs{
@@ -21107,7 +21107,7 @@ func (o PageRuleActionsCacheKeyFieldsUserPtrOutput) Geo() pulumi.BoolPtrOutput {
 //			// Unrealistic example with all features used
 //			_, err := cloudflare.NewPageRule(ctx, "foobar", &cloudflare.PageRuleArgs{
 //				ZoneId:   pulumi.Any(cloudflareZoneId),
-//				Target:   pulumi.String(fmt.Sprintf("%v/app/*", cloudflareZone)),
+//				Target:   pulumi.Sprintf("%v/app/*", cloudflareZone),
 //				Priority: pulumi.Int(1),
 //				Actions: &cloudflare.PageRuleActionsArgs{
 //					CacheKeyFields: &cloudflare.PageRuleActionsCacheKeyFieldsArgs{

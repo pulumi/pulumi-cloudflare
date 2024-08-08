@@ -107,7 +107,7 @@ public class WorkersForPlatformsNamespace extends com.pulumi.resources.CustomRes
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public WorkersForPlatformsNamespace(String name) {
+    public WorkersForPlatformsNamespace(java.lang.String name) {
         this(name, WorkersForPlatformsNamespaceArgs.Empty);
     }
     /**
@@ -115,7 +115,7 @@ public class WorkersForPlatformsNamespace extends com.pulumi.resources.CustomRes
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public WorkersForPlatformsNamespace(String name, WorkersForPlatformsNamespaceArgs args) {
+    public WorkersForPlatformsNamespace(java.lang.String name, WorkersForPlatformsNamespaceArgs args) {
         this(name, args, null);
     }
     /**
@@ -124,15 +124,22 @@ public class WorkersForPlatformsNamespace extends com.pulumi.resources.CustomRes
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public WorkersForPlatformsNamespace(String name, WorkersForPlatformsNamespaceArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("cloudflare:index/workersForPlatformsNamespace:WorkersForPlatformsNamespace", name, args == null ? WorkersForPlatformsNamespaceArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public WorkersForPlatformsNamespace(java.lang.String name, WorkersForPlatformsNamespaceArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("cloudflare:index/workersForPlatformsNamespace:WorkersForPlatformsNamespace", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private WorkersForPlatformsNamespace(String name, Output<String> id, @Nullable WorkersForPlatformsNamespaceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("cloudflare:index/workersForPlatformsNamespace:WorkersForPlatformsNamespace", name, state, makeResourceOptions(options, id));
+    private WorkersForPlatformsNamespace(java.lang.String name, Output<java.lang.String> id, @Nullable WorkersForPlatformsNamespaceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("cloudflare:index/workersForPlatformsNamespace:WorkersForPlatformsNamespace", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static WorkersForPlatformsNamespaceArgs makeArgs(WorkersForPlatformsNamespaceArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? WorkersForPlatformsNamespaceArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -148,7 +155,7 @@ public class WorkersForPlatformsNamespace extends com.pulumi.resources.CustomRes
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static WorkersForPlatformsNamespace get(String name, Output<String> id, @Nullable WorkersForPlatformsNamespaceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static WorkersForPlatformsNamespace get(java.lang.String name, Output<java.lang.String> id, @Nullable WorkersForPlatformsNamespaceState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new WorkersForPlatformsNamespace(name, id, state, options);
     }
 }

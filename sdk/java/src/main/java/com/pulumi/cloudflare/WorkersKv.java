@@ -131,7 +131,7 @@ public class WorkersKv extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public WorkersKv(String name) {
+    public WorkersKv(java.lang.String name) {
         this(name, WorkersKvArgs.Empty);
     }
     /**
@@ -139,7 +139,7 @@ public class WorkersKv extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public WorkersKv(String name, WorkersKvArgs args) {
+    public WorkersKv(java.lang.String name, WorkersKvArgs args) {
         this(name, args, null);
     }
     /**
@@ -148,15 +148,22 @@ public class WorkersKv extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public WorkersKv(String name, WorkersKvArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("cloudflare:index/workersKv:WorkersKv", name, args == null ? WorkersKvArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public WorkersKv(java.lang.String name, WorkersKvArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("cloudflare:index/workersKv:WorkersKv", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private WorkersKv(String name, Output<String> id, @Nullable WorkersKvState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("cloudflare:index/workersKv:WorkersKv", name, state, makeResourceOptions(options, id));
+    private WorkersKv(java.lang.String name, Output<java.lang.String> id, @Nullable WorkersKvState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("cloudflare:index/workersKv:WorkersKv", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static WorkersKvArgs makeArgs(WorkersKvArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? WorkersKvArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -172,7 +179,7 @@ public class WorkersKv extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static WorkersKv get(String name, Output<String> id, @Nullable WorkersKvState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static WorkersKv get(java.lang.String name, Output<java.lang.String> id, @Nullable WorkersKvState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new WorkersKv(name, id, state, options);
     }
 }

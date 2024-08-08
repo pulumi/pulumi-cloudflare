@@ -114,7 +114,7 @@ public class WorkerRoute extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public WorkerRoute(String name) {
+    public WorkerRoute(java.lang.String name) {
         this(name, WorkerRouteArgs.Empty);
     }
     /**
@@ -122,7 +122,7 @@ public class WorkerRoute extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public WorkerRoute(String name, WorkerRouteArgs args) {
+    public WorkerRoute(java.lang.String name, WorkerRouteArgs args) {
         this(name, args, null);
     }
     /**
@@ -131,15 +131,22 @@ public class WorkerRoute extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public WorkerRoute(String name, WorkerRouteArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("cloudflare:index/workerRoute:WorkerRoute", name, args == null ? WorkerRouteArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public WorkerRoute(java.lang.String name, WorkerRouteArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("cloudflare:index/workerRoute:WorkerRoute", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private WorkerRoute(String name, Output<String> id, @Nullable WorkerRouteState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("cloudflare:index/workerRoute:WorkerRoute", name, state, makeResourceOptions(options, id));
+    private WorkerRoute(java.lang.String name, Output<java.lang.String> id, @Nullable WorkerRouteState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("cloudflare:index/workerRoute:WorkerRoute", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static WorkerRouteArgs makeArgs(WorkerRouteArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? WorkerRouteArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -155,7 +162,7 @@ public class WorkerRoute extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static WorkerRoute get(String name, Output<String> id, @Nullable WorkerRouteState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static WorkerRoute get(java.lang.String name, Output<java.lang.String> id, @Nullable WorkerRouteState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new WorkerRoute(name, id, state, options);
     }
 }

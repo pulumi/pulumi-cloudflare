@@ -159,7 +159,7 @@ public class ZoneLockdown extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public ZoneLockdown(String name) {
+    public ZoneLockdown(java.lang.String name) {
         this(name, ZoneLockdownArgs.Empty);
     }
     /**
@@ -167,7 +167,7 @@ public class ZoneLockdown extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public ZoneLockdown(String name, ZoneLockdownArgs args) {
+    public ZoneLockdown(java.lang.String name, ZoneLockdownArgs args) {
         this(name, args, null);
     }
     /**
@@ -176,15 +176,22 @@ public class ZoneLockdown extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public ZoneLockdown(String name, ZoneLockdownArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("cloudflare:index/zoneLockdown:ZoneLockdown", name, args == null ? ZoneLockdownArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public ZoneLockdown(java.lang.String name, ZoneLockdownArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("cloudflare:index/zoneLockdown:ZoneLockdown", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private ZoneLockdown(String name, Output<String> id, @Nullable ZoneLockdownState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("cloudflare:index/zoneLockdown:ZoneLockdown", name, state, makeResourceOptions(options, id));
+    private ZoneLockdown(java.lang.String name, Output<java.lang.String> id, @Nullable ZoneLockdownState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("cloudflare:index/zoneLockdown:ZoneLockdown", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static ZoneLockdownArgs makeArgs(ZoneLockdownArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? ZoneLockdownArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -200,7 +207,7 @@ public class ZoneLockdown extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static ZoneLockdown get(String name, Output<String> id, @Nullable ZoneLockdownState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static ZoneLockdown get(java.lang.String name, Output<java.lang.String> id, @Nullable ZoneLockdownState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new ZoneLockdown(name, id, state, options);
     }
 }

@@ -116,7 +116,7 @@ public class AccessMutualTlsHostnameSettings extends com.pulumi.resources.Custom
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public AccessMutualTlsHostnameSettings(String name) {
+    public AccessMutualTlsHostnameSettings(java.lang.String name) {
         this(name, AccessMutualTlsHostnameSettingsArgs.Empty);
     }
     /**
@@ -124,7 +124,7 @@ public class AccessMutualTlsHostnameSettings extends com.pulumi.resources.Custom
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public AccessMutualTlsHostnameSettings(String name, @Nullable AccessMutualTlsHostnameSettingsArgs args) {
+    public AccessMutualTlsHostnameSettings(java.lang.String name, @Nullable AccessMutualTlsHostnameSettingsArgs args) {
         this(name, args, null);
     }
     /**
@@ -133,15 +133,22 @@ public class AccessMutualTlsHostnameSettings extends com.pulumi.resources.Custom
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public AccessMutualTlsHostnameSettings(String name, @Nullable AccessMutualTlsHostnameSettingsArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("cloudflare:index/accessMutualTlsHostnameSettings:AccessMutualTlsHostnameSettings", name, args == null ? AccessMutualTlsHostnameSettingsArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public AccessMutualTlsHostnameSettings(java.lang.String name, @Nullable AccessMutualTlsHostnameSettingsArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("cloudflare:index/accessMutualTlsHostnameSettings:AccessMutualTlsHostnameSettings", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private AccessMutualTlsHostnameSettings(String name, Output<String> id, @Nullable AccessMutualTlsHostnameSettingsState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("cloudflare:index/accessMutualTlsHostnameSettings:AccessMutualTlsHostnameSettings", name, state, makeResourceOptions(options, id));
+    private AccessMutualTlsHostnameSettings(java.lang.String name, Output<java.lang.String> id, @Nullable AccessMutualTlsHostnameSettingsState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("cloudflare:index/accessMutualTlsHostnameSettings:AccessMutualTlsHostnameSettings", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static AccessMutualTlsHostnameSettingsArgs makeArgs(@Nullable AccessMutualTlsHostnameSettingsArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? AccessMutualTlsHostnameSettingsArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -157,7 +164,7 @@ public class AccessMutualTlsHostnameSettings extends com.pulumi.resources.Custom
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static AccessMutualTlsHostnameSettings get(String name, Output<String> id, @Nullable AccessMutualTlsHostnameSettingsState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static AccessMutualTlsHostnameSettings get(java.lang.String name, Output<java.lang.String> id, @Nullable AccessMutualTlsHostnameSettingsState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new AccessMutualTlsHostnameSettings(name, id, state, options);
     }
 }

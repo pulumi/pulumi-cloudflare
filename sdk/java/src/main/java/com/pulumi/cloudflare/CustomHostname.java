@@ -199,7 +199,7 @@ public class CustomHostname extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public CustomHostname(String name) {
+    public CustomHostname(java.lang.String name) {
         this(name, CustomHostnameArgs.Empty);
     }
     /**
@@ -207,7 +207,7 @@ public class CustomHostname extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public CustomHostname(String name, CustomHostnameArgs args) {
+    public CustomHostname(java.lang.String name, CustomHostnameArgs args) {
         this(name, args, null);
     }
     /**
@@ -216,15 +216,22 @@ public class CustomHostname extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public CustomHostname(String name, CustomHostnameArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("cloudflare:index/customHostname:CustomHostname", name, args == null ? CustomHostnameArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public CustomHostname(java.lang.String name, CustomHostnameArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("cloudflare:index/customHostname:CustomHostname", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private CustomHostname(String name, Output<String> id, @Nullable CustomHostnameState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("cloudflare:index/customHostname:CustomHostname", name, state, makeResourceOptions(options, id));
+    private CustomHostname(java.lang.String name, Output<java.lang.String> id, @Nullable CustomHostnameState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("cloudflare:index/customHostname:CustomHostname", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static CustomHostnameArgs makeArgs(CustomHostnameArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? CustomHostnameArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -240,7 +247,7 @@ public class CustomHostname extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static CustomHostname get(String name, Output<String> id, @Nullable CustomHostnameState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static CustomHostname get(java.lang.String name, Output<java.lang.String> id, @Nullable CustomHostnameState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new CustomHostname(name, id, state, options);
     }
 }

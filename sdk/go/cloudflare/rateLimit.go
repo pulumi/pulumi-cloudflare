@@ -45,7 +45,7 @@ import (
 //				Period:    pulumi.Int(2),
 //				Match: &cloudflare.RateLimitMatchArgs{
 //					Request: &cloudflare.RateLimitMatchRequestArgs{
-//						UrlPattern: pulumi.String(fmt.Sprintf("%v/*", cloudflareZone)),
+//						UrlPattern: pulumi.Sprintf("%v/*", cloudflareZone),
 //						Schemes: pulumi.StringArray{
 //							pulumi.String("HTTP"),
 //							pulumi.String("HTTPS"),

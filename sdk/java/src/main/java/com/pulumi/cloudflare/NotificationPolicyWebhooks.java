@@ -173,7 +173,7 @@ public class NotificationPolicyWebhooks extends com.pulumi.resources.CustomResou
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public NotificationPolicyWebhooks(String name) {
+    public NotificationPolicyWebhooks(java.lang.String name) {
         this(name, NotificationPolicyWebhooksArgs.Empty);
     }
     /**
@@ -181,7 +181,7 @@ public class NotificationPolicyWebhooks extends com.pulumi.resources.CustomResou
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public NotificationPolicyWebhooks(String name, NotificationPolicyWebhooksArgs args) {
+    public NotificationPolicyWebhooks(java.lang.String name, NotificationPolicyWebhooksArgs args) {
         this(name, args, null);
     }
     /**
@@ -190,15 +190,22 @@ public class NotificationPolicyWebhooks extends com.pulumi.resources.CustomResou
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public NotificationPolicyWebhooks(String name, NotificationPolicyWebhooksArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("cloudflare:index/notificationPolicyWebhooks:NotificationPolicyWebhooks", name, args == null ? NotificationPolicyWebhooksArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public NotificationPolicyWebhooks(java.lang.String name, NotificationPolicyWebhooksArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("cloudflare:index/notificationPolicyWebhooks:NotificationPolicyWebhooks", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private NotificationPolicyWebhooks(String name, Output<String> id, @Nullable NotificationPolicyWebhooksState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("cloudflare:index/notificationPolicyWebhooks:NotificationPolicyWebhooks", name, state, makeResourceOptions(options, id));
+    private NotificationPolicyWebhooks(java.lang.String name, Output<java.lang.String> id, @Nullable NotificationPolicyWebhooksState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("cloudflare:index/notificationPolicyWebhooks:NotificationPolicyWebhooks", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static NotificationPolicyWebhooksArgs makeArgs(NotificationPolicyWebhooksArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? NotificationPolicyWebhooksArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -214,7 +221,7 @@ public class NotificationPolicyWebhooks extends com.pulumi.resources.CustomResou
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static NotificationPolicyWebhooks get(String name, Output<String> id, @Nullable NotificationPolicyWebhooksState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static NotificationPolicyWebhooks get(java.lang.String name, Output<java.lang.String> id, @Nullable NotificationPolicyWebhooksState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new NotificationPolicyWebhooks(name, id, state, options);
     }
 }

@@ -232,7 +232,7 @@ public class GreTunnel extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public GreTunnel(String name) {
+    public GreTunnel(java.lang.String name) {
         this(name, GreTunnelArgs.Empty);
     }
     /**
@@ -240,7 +240,7 @@ public class GreTunnel extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public GreTunnel(String name, GreTunnelArgs args) {
+    public GreTunnel(java.lang.String name, GreTunnelArgs args) {
         this(name, args, null);
     }
     /**
@@ -249,15 +249,22 @@ public class GreTunnel extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public GreTunnel(String name, GreTunnelArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("cloudflare:index/greTunnel:GreTunnel", name, args == null ? GreTunnelArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public GreTunnel(java.lang.String name, GreTunnelArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("cloudflare:index/greTunnel:GreTunnel", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private GreTunnel(String name, Output<String> id, @Nullable GreTunnelState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("cloudflare:index/greTunnel:GreTunnel", name, state, makeResourceOptions(options, id));
+    private GreTunnel(java.lang.String name, Output<java.lang.String> id, @Nullable GreTunnelState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("cloudflare:index/greTunnel:GreTunnel", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static GreTunnelArgs makeArgs(GreTunnelArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? GreTunnelArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -273,7 +280,7 @@ public class GreTunnel extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static GreTunnel get(String name, Output<String> id, @Nullable GreTunnelState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static GreTunnel get(java.lang.String name, Output<java.lang.String> id, @Nullable GreTunnelState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new GreTunnel(name, id, state, options);
     }
 }

@@ -10864,32 +10864,32 @@ class PageRuleActionsCacheKeyFieldsUser(dict):
                    zone_id=cloudflare_zone_id,
                    target=f"{cloudflare_zone}/app/*",
                    priority=1,
-                   actions=cloudflare.PageRuleActionsArgs(
-                       cache_key_fields=cloudflare.PageRuleActionsCacheKeyFieldsArgs(
-                           cookie=cloudflare.PageRuleActionsCacheKeyFieldsCookieArgs(
-                               check_presences=["wordpress_test_cookie"],
-                           ),
-                           header=cloudflare.PageRuleActionsCacheKeyFieldsHeaderArgs(
-                               check_presences=["header_present"],
-                               excludes=["origin"],
-                               includes=[
+                   actions={
+                       "cache_key_fields": {
+                           "cookie": {
+                               "check_presences": ["wordpress_test_cookie"],
+                           },
+                           "header": {
+                               "check_presences": ["header_present"],
+                               "excludes": ["origin"],
+                               "includes": [
                                    "api-key",
                                    "dnt",
                                ],
-                           ),
-                           host=cloudflare.PageRuleActionsCacheKeyFieldsHostArgs(
-                               resolved=True,
-                           ),
-                           query_string=cloudflare.PageRuleActionsCacheKeyFieldsQueryStringArgs(
-                               ignore=True,
-                           ),
-                           user=cloudflare.PageRuleActionsCacheKeyFieldsUserArgs(
-                               device_type=False,
-                               geo=True,
-                               lang=True,
-                           ),
-                       ),
-                   ))
+                           },
+                           "host": {
+                               "resolved": True,
+                           },
+                           "query_string": {
+                               "ignore": True,
+                           },
+                           "user": {
+                               "device_type": False,
+                               "geo": True,
+                               "lang": True,
+                           },
+                       },
+                   })
                ```
         """
         if device_type is not None:
@@ -10932,32 +10932,32 @@ class PageRuleActionsCacheKeyFieldsUser(dict):
             zone_id=cloudflare_zone_id,
             target=f"{cloudflare_zone}/app/*",
             priority=1,
-            actions=cloudflare.PageRuleActionsArgs(
-                cache_key_fields=cloudflare.PageRuleActionsCacheKeyFieldsArgs(
-                    cookie=cloudflare.PageRuleActionsCacheKeyFieldsCookieArgs(
-                        check_presences=["wordpress_test_cookie"],
-                    ),
-                    header=cloudflare.PageRuleActionsCacheKeyFieldsHeaderArgs(
-                        check_presences=["header_present"],
-                        excludes=["origin"],
-                        includes=[
+            actions={
+                "cache_key_fields": {
+                    "cookie": {
+                        "check_presences": ["wordpress_test_cookie"],
+                    },
+                    "header": {
+                        "check_presences": ["header_present"],
+                        "excludes": ["origin"],
+                        "includes": [
                             "api-key",
                             "dnt",
                         ],
-                    ),
-                    host=cloudflare.PageRuleActionsCacheKeyFieldsHostArgs(
-                        resolved=True,
-                    ),
-                    query_string=cloudflare.PageRuleActionsCacheKeyFieldsQueryStringArgs(
-                        ignore=True,
-                    ),
-                    user=cloudflare.PageRuleActionsCacheKeyFieldsUserArgs(
-                        device_type=False,
-                        geo=True,
-                        lang=True,
-                    ),
-                ),
-            ))
+                    },
+                    "host": {
+                        "resolved": True,
+                    },
+                    "query_string": {
+                        "ignore": True,
+                    },
+                    "user": {
+                        "device_type": False,
+                        "geo": True,
+                        "lang": True,
+                    },
+                },
+            })
         ```
         """
         return pulumi.get(self, "lang")

@@ -131,7 +131,7 @@ public class RegionalHostname extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public RegionalHostname(String name) {
+    public RegionalHostname(java.lang.String name) {
         this(name, RegionalHostnameArgs.Empty);
     }
     /**
@@ -139,7 +139,7 @@ public class RegionalHostname extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public RegionalHostname(String name, RegionalHostnameArgs args) {
+    public RegionalHostname(java.lang.String name, RegionalHostnameArgs args) {
         this(name, args, null);
     }
     /**
@@ -148,15 +148,22 @@ public class RegionalHostname extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public RegionalHostname(String name, RegionalHostnameArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("cloudflare:index/regionalHostname:RegionalHostname", name, args == null ? RegionalHostnameArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public RegionalHostname(java.lang.String name, RegionalHostnameArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("cloudflare:index/regionalHostname:RegionalHostname", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private RegionalHostname(String name, Output<String> id, @Nullable RegionalHostnameState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("cloudflare:index/regionalHostname:RegionalHostname", name, state, makeResourceOptions(options, id));
+    private RegionalHostname(java.lang.String name, Output<java.lang.String> id, @Nullable RegionalHostnameState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("cloudflare:index/regionalHostname:RegionalHostname", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static RegionalHostnameArgs makeArgs(RegionalHostnameArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? RegionalHostnameArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -172,7 +179,7 @@ public class RegionalHostname extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static RegionalHostname get(String name, Output<String> id, @Nullable RegionalHostnameState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static RegionalHostname get(java.lang.String name, Output<java.lang.String> id, @Nullable RegionalHostnameState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new RegionalHostname(name, id, state, options);
     }
 }

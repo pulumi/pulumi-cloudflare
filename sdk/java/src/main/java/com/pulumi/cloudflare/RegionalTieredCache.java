@@ -95,7 +95,7 @@ public class RegionalTieredCache extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public RegionalTieredCache(String name) {
+    public RegionalTieredCache(java.lang.String name) {
         this(name, RegionalTieredCacheArgs.Empty);
     }
     /**
@@ -103,7 +103,7 @@ public class RegionalTieredCache extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public RegionalTieredCache(String name, RegionalTieredCacheArgs args) {
+    public RegionalTieredCache(java.lang.String name, RegionalTieredCacheArgs args) {
         this(name, args, null);
     }
     /**
@@ -112,15 +112,22 @@ public class RegionalTieredCache extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public RegionalTieredCache(String name, RegionalTieredCacheArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("cloudflare:index/regionalTieredCache:RegionalTieredCache", name, args == null ? RegionalTieredCacheArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public RegionalTieredCache(java.lang.String name, RegionalTieredCacheArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("cloudflare:index/regionalTieredCache:RegionalTieredCache", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private RegionalTieredCache(String name, Output<String> id, @Nullable RegionalTieredCacheState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("cloudflare:index/regionalTieredCache:RegionalTieredCache", name, state, makeResourceOptions(options, id));
+    private RegionalTieredCache(java.lang.String name, Output<java.lang.String> id, @Nullable RegionalTieredCacheState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("cloudflare:index/regionalTieredCache:RegionalTieredCache", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static RegionalTieredCacheArgs makeArgs(RegionalTieredCacheArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? RegionalTieredCacheArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -136,7 +143,7 @@ public class RegionalTieredCache extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static RegionalTieredCache get(String name, Output<String> id, @Nullable RegionalTieredCacheState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static RegionalTieredCache get(java.lang.String name, Output<java.lang.String> id, @Nullable RegionalTieredCacheState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new RegionalTieredCache(name, id, state, options);
     }
 }

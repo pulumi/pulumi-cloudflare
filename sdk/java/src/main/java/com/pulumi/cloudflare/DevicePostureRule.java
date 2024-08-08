@@ -191,7 +191,7 @@ public class DevicePostureRule extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public DevicePostureRule(String name) {
+    public DevicePostureRule(java.lang.String name) {
         this(name, DevicePostureRuleArgs.Empty);
     }
     /**
@@ -199,7 +199,7 @@ public class DevicePostureRule extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public DevicePostureRule(String name, DevicePostureRuleArgs args) {
+    public DevicePostureRule(java.lang.String name, DevicePostureRuleArgs args) {
         this(name, args, null);
     }
     /**
@@ -208,15 +208,22 @@ public class DevicePostureRule extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public DevicePostureRule(String name, DevicePostureRuleArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("cloudflare:index/devicePostureRule:DevicePostureRule", name, args == null ? DevicePostureRuleArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public DevicePostureRule(java.lang.String name, DevicePostureRuleArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("cloudflare:index/devicePostureRule:DevicePostureRule", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private DevicePostureRule(String name, Output<String> id, @Nullable DevicePostureRuleState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("cloudflare:index/devicePostureRule:DevicePostureRule", name, state, makeResourceOptions(options, id));
+    private DevicePostureRule(java.lang.String name, Output<java.lang.String> id, @Nullable DevicePostureRuleState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("cloudflare:index/devicePostureRule:DevicePostureRule", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static DevicePostureRuleArgs makeArgs(DevicePostureRuleArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? DevicePostureRuleArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -232,7 +239,7 @@ public class DevicePostureRule extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static DevicePostureRule get(String name, Output<String> id, @Nullable DevicePostureRuleState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static DevicePostureRule get(java.lang.String name, Output<java.lang.String> id, @Nullable DevicePostureRuleState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new DevicePostureRule(name, id, state, options);
     }
 }

@@ -241,7 +241,7 @@ public class TeamsRule extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public TeamsRule(String name) {
+    public TeamsRule(java.lang.String name) {
         this(name, TeamsRuleArgs.Empty);
     }
     /**
@@ -249,7 +249,7 @@ public class TeamsRule extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public TeamsRule(String name, TeamsRuleArgs args) {
+    public TeamsRule(java.lang.String name, TeamsRuleArgs args) {
         this(name, args, null);
     }
     /**
@@ -258,15 +258,22 @@ public class TeamsRule extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public TeamsRule(String name, TeamsRuleArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("cloudflare:index/teamsRule:TeamsRule", name, args == null ? TeamsRuleArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public TeamsRule(java.lang.String name, TeamsRuleArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("cloudflare:index/teamsRule:TeamsRule", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private TeamsRule(String name, Output<String> id, @Nullable TeamsRuleState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("cloudflare:index/teamsRule:TeamsRule", name, state, makeResourceOptions(options, id));
+    private TeamsRule(java.lang.String name, Output<java.lang.String> id, @Nullable TeamsRuleState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("cloudflare:index/teamsRule:TeamsRule", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static TeamsRuleArgs makeArgs(TeamsRuleArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? TeamsRuleArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -282,7 +289,7 @@ public class TeamsRule extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static TeamsRule get(String name, Output<String> id, @Nullable TeamsRuleState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static TeamsRule get(java.lang.String name, Output<java.lang.String> id, @Nullable TeamsRuleState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new TeamsRule(name, id, state, options);
     }
 }

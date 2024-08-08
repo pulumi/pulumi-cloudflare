@@ -97,7 +97,7 @@ public class DevicePolicyCertificates extends com.pulumi.resources.CustomResourc
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public DevicePolicyCertificates(String name) {
+    public DevicePolicyCertificates(java.lang.String name) {
         this(name, DevicePolicyCertificatesArgs.Empty);
     }
     /**
@@ -105,7 +105,7 @@ public class DevicePolicyCertificates extends com.pulumi.resources.CustomResourc
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public DevicePolicyCertificates(String name, DevicePolicyCertificatesArgs args) {
+    public DevicePolicyCertificates(java.lang.String name, DevicePolicyCertificatesArgs args) {
         this(name, args, null);
     }
     /**
@@ -114,15 +114,22 @@ public class DevicePolicyCertificates extends com.pulumi.resources.CustomResourc
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public DevicePolicyCertificates(String name, DevicePolicyCertificatesArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("cloudflare:index/devicePolicyCertificates:DevicePolicyCertificates", name, args == null ? DevicePolicyCertificatesArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public DevicePolicyCertificates(java.lang.String name, DevicePolicyCertificatesArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("cloudflare:index/devicePolicyCertificates:DevicePolicyCertificates", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private DevicePolicyCertificates(String name, Output<String> id, @Nullable DevicePolicyCertificatesState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("cloudflare:index/devicePolicyCertificates:DevicePolicyCertificates", name, state, makeResourceOptions(options, id));
+    private DevicePolicyCertificates(java.lang.String name, Output<java.lang.String> id, @Nullable DevicePolicyCertificatesState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("cloudflare:index/devicePolicyCertificates:DevicePolicyCertificates", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static DevicePolicyCertificatesArgs makeArgs(DevicePolicyCertificatesArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? DevicePolicyCertificatesArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -138,7 +145,7 @@ public class DevicePolicyCertificates extends com.pulumi.resources.CustomResourc
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static DevicePolicyCertificates get(String name, Output<String> id, @Nullable DevicePolicyCertificatesState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static DevicePolicyCertificates get(java.lang.String name, Output<java.lang.String> id, @Nullable DevicePolicyCertificatesState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new DevicePolicyCertificates(name, id, state, options);
     }
 }

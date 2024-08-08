@@ -216,7 +216,7 @@ class DevicePostureIntegration(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: Optional[pulumi.Input[str]] = None,
-                 configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DevicePostureIntegrationConfigArgs']]]]] = None,
+                 configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DevicePostureIntegrationConfigArgs', 'DevicePostureIntegrationConfigArgsDict']]]]] = None,
                  identifier: Optional[pulumi.Input[str]] = None,
                  interval: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -238,12 +238,12 @@ class DevicePostureIntegration(pulumi.CustomResource):
             name="Device posture integration",
             type="workspace_one",
             interval="24h",
-            configs=[cloudflare.DevicePostureIntegrationConfigArgs(
-                api_url="https://example.com/api",
-                auth_url="https://example.com/connect/token",
-                client_id="client-id",
-                client_secret="client-secret",
-            )])
+            configs=[{
+                "api_url": "https://example.com/api",
+                "auth_url": "https://example.com/connect/token",
+                "client_id": "client-id",
+                "client_secret": "client-secret",
+            }])
         ```
 
         ## Import
@@ -255,7 +255,7 @@ class DevicePostureIntegration(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_id: The account identifier to target for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DevicePostureIntegrationConfigArgs']]]] configs: The device posture integration's connection authorization parameters.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DevicePostureIntegrationConfigArgs', 'DevicePostureIntegrationConfigArgsDict']]]] configs: The device posture integration's connection authorization parameters.
         :param pulumi.Input[str] interval: Indicates the frequency with which to poll the third-party API. Must be in the format `1h` or `30m`.
         :param pulumi.Input[str] name: Name of the device posture integration.
         :param pulumi.Input[str] type: The device posture integration type. Available values: `workspace_one`, `uptycs`, `crowdstrike_s2s`, `intune`, `kolide`, `sentinelone_s2s`, `tanium_s2s`.
@@ -282,12 +282,12 @@ class DevicePostureIntegration(pulumi.CustomResource):
             name="Device posture integration",
             type="workspace_one",
             interval="24h",
-            configs=[cloudflare.DevicePostureIntegrationConfigArgs(
-                api_url="https://example.com/api",
-                auth_url="https://example.com/connect/token",
-                client_id="client-id",
-                client_secret="client-secret",
-            )])
+            configs=[{
+                "api_url": "https://example.com/api",
+                "auth_url": "https://example.com/connect/token",
+                "client_id": "client-id",
+                "client_secret": "client-secret",
+            }])
         ```
 
         ## Import
@@ -312,7 +312,7 @@ class DevicePostureIntegration(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: Optional[pulumi.Input[str]] = None,
-                 configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DevicePostureIntegrationConfigArgs']]]]] = None,
+                 configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DevicePostureIntegrationConfigArgs', 'DevicePostureIntegrationConfigArgsDict']]]]] = None,
                  identifier: Optional[pulumi.Input[str]] = None,
                  interval: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -349,7 +349,7 @@ class DevicePostureIntegration(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             account_id: Optional[pulumi.Input[str]] = None,
-            configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DevicePostureIntegrationConfigArgs']]]]] = None,
+            configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DevicePostureIntegrationConfigArgs', 'DevicePostureIntegrationConfigArgsDict']]]]] = None,
             identifier: Optional[pulumi.Input[str]] = None,
             interval: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
@@ -362,7 +362,7 @@ class DevicePostureIntegration(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_id: The account identifier to target for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DevicePostureIntegrationConfigArgs']]]] configs: The device posture integration's connection authorization parameters.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DevicePostureIntegrationConfigArgs', 'DevicePostureIntegrationConfigArgsDict']]]] configs: The device posture integration's connection authorization parameters.
         :param pulumi.Input[str] interval: Indicates the frequency with which to poll the third-party API. Must be in the format `1h` or `30m`.
         :param pulumi.Input[str] name: Name of the device posture integration.
         :param pulumi.Input[str] type: The device posture integration type. Available values: `workspace_one`, `uptycs`, `crowdstrike_s2s`, `intune`, `kolide`, `sentinelone_s2s`, `tanium_s2s`.

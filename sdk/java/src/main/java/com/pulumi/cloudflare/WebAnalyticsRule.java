@@ -167,7 +167,7 @@ public class WebAnalyticsRule extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public WebAnalyticsRule(String name) {
+    public WebAnalyticsRule(java.lang.String name) {
         this(name, WebAnalyticsRuleArgs.Empty);
     }
     /**
@@ -175,7 +175,7 @@ public class WebAnalyticsRule extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public WebAnalyticsRule(String name, WebAnalyticsRuleArgs args) {
+    public WebAnalyticsRule(java.lang.String name, WebAnalyticsRuleArgs args) {
         this(name, args, null);
     }
     /**
@@ -184,15 +184,22 @@ public class WebAnalyticsRule extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public WebAnalyticsRule(String name, WebAnalyticsRuleArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("cloudflare:index/webAnalyticsRule:WebAnalyticsRule", name, args == null ? WebAnalyticsRuleArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public WebAnalyticsRule(java.lang.String name, WebAnalyticsRuleArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("cloudflare:index/webAnalyticsRule:WebAnalyticsRule", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private WebAnalyticsRule(String name, Output<String> id, @Nullable WebAnalyticsRuleState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("cloudflare:index/webAnalyticsRule:WebAnalyticsRule", name, state, makeResourceOptions(options, id));
+    private WebAnalyticsRule(java.lang.String name, Output<java.lang.String> id, @Nullable WebAnalyticsRuleState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("cloudflare:index/webAnalyticsRule:WebAnalyticsRule", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static WebAnalyticsRuleArgs makeArgs(WebAnalyticsRuleArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? WebAnalyticsRuleArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -208,7 +215,7 @@ public class WebAnalyticsRule extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static WebAnalyticsRule get(String name, Output<String> id, @Nullable WebAnalyticsRuleState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static WebAnalyticsRule get(java.lang.String name, Output<java.lang.String> id, @Nullable WebAnalyticsRuleState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new WebAnalyticsRule(name, id, state, options);
     }
 }

@@ -128,7 +128,7 @@ public class TunnelVirtualNetwork extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public TunnelVirtualNetwork(String name) {
+    public TunnelVirtualNetwork(java.lang.String name) {
         this(name, TunnelVirtualNetworkArgs.Empty);
     }
     /**
@@ -136,7 +136,7 @@ public class TunnelVirtualNetwork extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public TunnelVirtualNetwork(String name, TunnelVirtualNetworkArgs args) {
+    public TunnelVirtualNetwork(java.lang.String name, TunnelVirtualNetworkArgs args) {
         this(name, args, null);
     }
     /**
@@ -145,15 +145,22 @@ public class TunnelVirtualNetwork extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public TunnelVirtualNetwork(String name, TunnelVirtualNetworkArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("cloudflare:index/tunnelVirtualNetwork:TunnelVirtualNetwork", name, args == null ? TunnelVirtualNetworkArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public TunnelVirtualNetwork(java.lang.String name, TunnelVirtualNetworkArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("cloudflare:index/tunnelVirtualNetwork:TunnelVirtualNetwork", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private TunnelVirtualNetwork(String name, Output<String> id, @Nullable TunnelVirtualNetworkState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("cloudflare:index/tunnelVirtualNetwork:TunnelVirtualNetwork", name, state, makeResourceOptions(options, id));
+    private TunnelVirtualNetwork(java.lang.String name, Output<java.lang.String> id, @Nullable TunnelVirtualNetworkState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("cloudflare:index/tunnelVirtualNetwork:TunnelVirtualNetwork", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static TunnelVirtualNetworkArgs makeArgs(TunnelVirtualNetworkArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? TunnelVirtualNetworkArgs.Empty : args;
+    }
+
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -169,7 +176,7 @@ public class TunnelVirtualNetwork extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static TunnelVirtualNetwork get(String name, Output<String> id, @Nullable TunnelVirtualNetworkState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static TunnelVirtualNetwork get(java.lang.String name, Output<java.lang.String> id, @Nullable TunnelVirtualNetworkState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new TunnelVirtualNetwork(name, id, state, options);
     }
 }

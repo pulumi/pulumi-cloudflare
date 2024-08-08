@@ -240,9 +240,9 @@ class EmailRoutingRule(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 actions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EmailRoutingRuleActionArgs']]]]] = None,
+                 actions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['EmailRoutingRuleActionArgs', 'EmailRoutingRuleActionArgsDict']]]]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
-                 matchers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EmailRoutingRuleMatcherArgs']]]]] = None,
+                 matchers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['EmailRoutingRuleMatcherArgs', 'EmailRoutingRuleMatcherArgsDict']]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  priority: Optional[pulumi.Input[int]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None,
@@ -260,15 +260,15 @@ class EmailRoutingRule(pulumi.CustomResource):
             zone_id="0da42c8d2132a9ddaf714f9e7c920711",
             name="terraform rule",
             enabled=True,
-            matchers=[cloudflare.EmailRoutingRuleMatcherArgs(
-                type="literal",
-                field="to",
-                value="test@example.com",
-            )],
-            actions=[cloudflare.EmailRoutingRuleActionArgs(
-                type="forward",
-                values=["destinationaddress@example.net"],
-            )])
+            matchers=[{
+                "type": "literal",
+                "field": "to",
+                "value": "test@example.com",
+            }],
+            actions=[{
+                "type": "forward",
+                "values": ["destinationaddress@example.net"],
+            }])
         ```
 
         ## Import
@@ -279,9 +279,9 @@ class EmailRoutingRule(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EmailRoutingRuleActionArgs']]]] actions: Actions to take when a match is found.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['EmailRoutingRuleActionArgs', 'EmailRoutingRuleActionArgsDict']]]] actions: Actions to take when a match is found.
         :param pulumi.Input[bool] enabled: Whether the email routing rule is enabled.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EmailRoutingRuleMatcherArgs']]]] matchers: Matching patterns to forward to your actions.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['EmailRoutingRuleMatcherArgs', 'EmailRoutingRuleMatcherArgsDict']]]] matchers: Matching patterns to forward to your actions.
         :param pulumi.Input[str] name: Routing rule name.
         :param pulumi.Input[int] priority: The priority of the email routing rule.
         :param pulumi.Input[str] zone_id: The zone identifier to target for the resource.
@@ -305,15 +305,15 @@ class EmailRoutingRule(pulumi.CustomResource):
             zone_id="0da42c8d2132a9ddaf714f9e7c920711",
             name="terraform rule",
             enabled=True,
-            matchers=[cloudflare.EmailRoutingRuleMatcherArgs(
-                type="literal",
-                field="to",
-                value="test@example.com",
-            )],
-            actions=[cloudflare.EmailRoutingRuleActionArgs(
-                type="forward",
-                values=["destinationaddress@example.net"],
-            )])
+            matchers=[{
+                "type": "literal",
+                "field": "to",
+                "value": "test@example.com",
+            }],
+            actions=[{
+                "type": "forward",
+                "values": ["destinationaddress@example.net"],
+            }])
         ```
 
         ## Import
@@ -337,9 +337,9 @@ class EmailRoutingRule(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 actions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EmailRoutingRuleActionArgs']]]]] = None,
+                 actions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['EmailRoutingRuleActionArgs', 'EmailRoutingRuleActionArgsDict']]]]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
-                 matchers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EmailRoutingRuleMatcherArgs']]]]] = None,
+                 matchers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['EmailRoutingRuleMatcherArgs', 'EmailRoutingRuleMatcherArgsDict']]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  priority: Optional[pulumi.Input[int]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None,
@@ -373,9 +373,9 @@ class EmailRoutingRule(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            actions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EmailRoutingRuleActionArgs']]]]] = None,
+            actions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['EmailRoutingRuleActionArgs', 'EmailRoutingRuleActionArgsDict']]]]] = None,
             enabled: Optional[pulumi.Input[bool]] = None,
-            matchers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EmailRoutingRuleMatcherArgs']]]]] = None,
+            matchers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['EmailRoutingRuleMatcherArgs', 'EmailRoutingRuleMatcherArgsDict']]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
             priority: Optional[pulumi.Input[int]] = None,
             tag: Optional[pulumi.Input[str]] = None,
@@ -387,9 +387,9 @@ class EmailRoutingRule(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EmailRoutingRuleActionArgs']]]] actions: Actions to take when a match is found.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['EmailRoutingRuleActionArgs', 'EmailRoutingRuleActionArgsDict']]]] actions: Actions to take when a match is found.
         :param pulumi.Input[bool] enabled: Whether the email routing rule is enabled.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EmailRoutingRuleMatcherArgs']]]] matchers: Matching patterns to forward to your actions.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['EmailRoutingRuleMatcherArgs', 'EmailRoutingRuleMatcherArgsDict']]]] matchers: Matching patterns to forward to your actions.
         :param pulumi.Input[str] name: Routing rule name.
         :param pulumi.Input[int] priority: The priority of the email routing rule.
         :param pulumi.Input[str] tag: The tag of the email routing rule.
